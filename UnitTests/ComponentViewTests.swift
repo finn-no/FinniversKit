@@ -250,4 +250,8 @@ class ComponentViewTests: XCTestCase {
     func testViewingsView() {
         snapshot(.viewingsView)
     }
+
+    func testColumnListsView() {
+        snapshot(.columnListsView)
+    }
 }

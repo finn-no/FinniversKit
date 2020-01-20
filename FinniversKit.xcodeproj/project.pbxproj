@@ -297,6 +297,7 @@
 		9B057AAC235EEBAA007B1CF0 /* ChristmasButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B057AAB235EEBAA007B1CF0 /* ChristmasButton.swift */; };
 		9B057AAE235EEBE9007B1CF0 /* MissionPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B057AAD235EEBE9007B1CF0 /* MissionPopupView.swift */; };
 		9B057AB0235EEC0F007B1CF0 /* ChristmasWishListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B057AAF235EEC0F007B1CF0 /* ChristmasWishListViewModel.swift */; };
+		9B1B12C623D5ACE900282F3E /* ColumnListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1B12C523D5ACE900282F3E /* ColumnListsView.swift */; };
 		9B23769122DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */; };
 		9B238F02225B95F600B0E0C2 /* InfoboxView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B238F01225B95F600B0E0C2 /* InfoboxView+Style.swift */; };
 		9B239E1122E093E800A4E9D0 /* KlimabroletContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B239E1022E093E800A4E9D0 /* KlimabroletContentView.swift */; };
@@ -316,6 +317,7 @@
 		9BAB37DC230BEA5700E861D4 /* SaveSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAB37D9230BE87500E861D4 /* SaveSearchView.swift */; };
 		9BAB37E0230C070400E861D4 /* SaveSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAB37DF230C070400E861D4 /* SaveSearchViewModel.swift */; };
 		9BB12AC2238289F100A04F61 /* StatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB12AC1238289F100A04F61 /* StatisticsModel.swift */; };
+		9BB5438423D20107003FC9C3 /* ColumnListsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5438323D20107003FC9C3 /* ColumnListsDemoView.swift */; };
 		9BBC8AE122DF50E5003453B6 /* KlimabroletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC8AE022DF50E5003453B6 /* KlimabroletView.swift */; };
 		9BC33DE322D71986007CCD65 /* LoginEntryViewDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DE222D71986007CCD65 /* LoginEntryViewDemoViewController.swift */; };
 		9BC33DE922D72293007CCD65 /* LoginEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DE722D721E6007CCD65 /* LoginEntryView.swift */; };
@@ -914,6 +916,7 @@
 		9B057AAB235EEBAA007B1CF0 /* ChristmasButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasButton.swift; sourceTree = "<group>"; };
 		9B057AAD235EEBE9007B1CF0 /* MissionPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPopupView.swift; sourceTree = "<group>"; };
 		9B057AAF235EEC0F007B1CF0 /* ChristmasWishListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasWishListViewModel.swift; sourceTree = "<group>"; };
+		9B1B12C523D5ACE900282F3E /* ColumnListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnListsView.swift; sourceTree = "<group>"; };
 		9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutAnchorExtensions.swift; sourceTree = "<group>"; };
 		9B238F01225B95F600B0E0C2 /* InfoboxView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoboxView+Style.swift"; sourceTree = "<group>"; };
 		9B239E1022E093E800A4E9D0 /* KlimabroletContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletContentView.swift; sourceTree = "<group>"; };
@@ -934,6 +937,7 @@
 		9BAB37D9230BE87500E861D4 /* SaveSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchView.swift; sourceTree = "<group>"; };
 		9BAB37DF230C070400E861D4 /* SaveSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchViewModel.swift; sourceTree = "<group>"; };
 		9BB12AC1238289F100A04F61 /* StatisticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsModel.swift; sourceTree = "<group>"; };
+		9BB5438323D20107003FC9C3 /* ColumnListsDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnListsDemoView.swift; sourceTree = "<group>"; };
 		9BBC8AE022DF50E5003453B6 /* KlimabroletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletView.swift; sourceTree = "<group>"; };
 		9BC33DE222D71986007CCD65 /* LoginEntryViewDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryViewDemoViewController.swift; sourceTree = "<group>"; };
 		9BC33DE722D721E6007CCD65 /* LoginEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryView.swift; sourceTree = "<group>"; };
@@ -1716,7 +1720,6 @@
 		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				494047FA23CDBA7600ECBCFD /* Viewings */,
 				CFDF39CB2385419E00D3B966 /* AddressCardView */,
 				DAB7FAAC21B690E900BF8CC6 /* BottomSheet */,
 				AF91BB95202C7487003E6366 /* Broadcast */,
@@ -1726,6 +1729,7 @@
 				9BD8ABBE2359B1CE001078CA /* ChristmasWishListView */,
 				F26CABF123AC9B2E00CACF71 /* CollapseView */,
 				9BCD171323CCBB590045BD61 /* CollpsibleContentView */,
+				9B1B12C423D5ACCB00282F3E /* ColumnListsView */,
 				45B2E06B207E181C00C68B92 /* Consent */,
 				F2BE212E22819ED8004640F3 /* Control */,
 				AA7A854C22255A5700AF5F42 /* Dialogue */,
@@ -1766,6 +1770,7 @@
 				081F51BB222932C900026C84 /* TextView */,
 				4447F6A81FDB2B110033DBC1 /* Toast */,
 				F2597C73231D1A0B00BE74EC /* VerificationView */,
+				494047FA23CDBA7600ECBCFD /* Viewings */,
 				08E9F54E2341FBC300943E5D /* VisibilityDrivenTitleView */,
 			);
 			path = Components;
@@ -2488,6 +2493,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		9B1B12C423D5ACCB00282F3E /* ColumnListsView */ = {
+			isa = PBXGroup;
+			children = (
+				9B1B12C523D5ACE900282F3E /* ColumnListsView.swift */,
+			);
+			path = ColumnListsView;
+			sourceTree = "<group>";
+		};
 		9B239E0F22E093D000A4E9D0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -2551,6 +2564,14 @@
 				4974725E239A49570058D7B0 /* SearchListEmptyViewModel.swift */,
 			);
 			path = SaveSearchView;
+			sourceTree = "<group>";
+		};
+		9BB5438223D200E6003FC9C3 /* ColumnListsView */ = {
+			isa = PBXGroup;
+			children = (
+				9BB5438323D20107003FC9C3 /* ColumnListsDemoView.swift */,
+			);
+			path = ColumnListsView;
 			sourceTree = "<group>";
 		};
 		9BBC8ADC22DF4CA2003453B6 /* Klimabrolet */ = {
@@ -3259,7 +3280,6 @@
 			isa = PBXGroup;
 			children = (
 				4940480323CDC54E00ECBCFD /* Viewings */,
-				9BCD171623CCBBC30045BD61 /* CollapsibleContentView */,
 				CFDF39CC238541D400D3B966 /* AddressCardView */,
 				083349EA21EF24AE000E68D3 /* BottomSheet */,
 				CF8F021D21DCC691004C4042 /* Broadcast */,
@@ -3268,6 +3288,8 @@
 				F2BE6C0B236C29F80085A05A /* CheckmarkTitleView */,
 				9BD8ABBA2359B0A1001078CA /* ChristmasWishList */,
 				F26CAC0223AC9BDC00CACF71 /* CollapseView */,
+				9BCD171623CCBBC30045BD61 /* CollapsibleContentView */,
+				9BB5438223D200E6003FC9C3 /* ColumnListsView */,
 				CF8F021821DCC624004C4042 /* Consent */,
 				AA7A854F22258A0B00AF5F42 /* Dialogue */,
 				0884C6CA22B7B5DA0015474D /* Disclaimer */,
@@ -4561,6 +4583,7 @@
 				44AEFC2522E722FC00D3C307 /* BasicCellVariationsDemoView.swift in Sources */,
 				4940480523CDC57400ECBCFD /* ViewingsDemoView.swift in Sources */,
 				4441F9EF22CCF72F00DCFD2F /* AddressMapDemoView.swift in Sources */,
+				9BB5438423D20107003FC9C3 /* ColumnListsDemoView.swift in Sources */,
 				9B7D5A2B22E1A5AF001E4005 /* KlimabroletDemoViewController.swift in Sources */,
 				44FEBC1223322D4C009AC5E4 /* ComponentDemoViews.swift in Sources */,
 				CF7C460E22257AE1001FB92C /* EarthHourDefaultData.swift in Sources */,
@@ -4783,6 +4806,7 @@
 				CF164CF3230E8FB900250822 /* FavoriteAdSortOption.swift in Sources */,
 				CF7E7B53230C2A7A001D514E /* FavoriteFolderActionViewModel.swift in Sources */,
 				4940480023CDBEC500ECBCFD /* ViewingsView.swift in Sources */,
+				9B1B12C623D5ACE900282F3E /* ColumnListsView.swift in Sources */,
 				8908E83622BD0CA100ED671C /* MessageInputTextView.swift in Sources */,
 				9BB12AC2238289F100A04F61 /* StatisticsModel.swift in Sources */,
 				DAAAC8FD21C14FEE0071B028 /* FireworksView.swift in Sources */,
