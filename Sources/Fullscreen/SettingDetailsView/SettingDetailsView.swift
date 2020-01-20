@@ -121,8 +121,6 @@ public extension SettingDetailsView {
         secondaryButton.isHidden = model.secondaryButtonTitle(for: state) == nil
         secondaryButton.setTitle(model.secondaryButtonTitle(for: state), for: .normal)
 
-
-
         UIView.transition(
             with: textLabel,
             duration: animated ? 0.2 : 0,
