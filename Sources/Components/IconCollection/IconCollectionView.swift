@@ -10,6 +10,13 @@ public final class IconCollectionView: UIView {
         case vertical
     }
 
+    // MARK: - Public properties
+
+    public override var backgroundColor: UIColor? {
+        get { collectionView.backgroundColor }
+        set { collectionView.backgroundColor = newValue }
+    }
+
     // MARK: - Private properties
 
     private var alignment: Alignment
@@ -17,7 +24,6 @@ public final class IconCollectionView: UIView {
 
     private lazy var collectionView: UICollectionView = {
         let collectionView = CollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-        collectionView.backgroundColor = .bgPrimary
         collectionView.register(VerticalIconCollectionViewCell.self)
         collectionView.register(HorizontalIconCollectionViewCell.self)
         collectionView.allowsSelection = false
