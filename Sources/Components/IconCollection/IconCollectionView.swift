@@ -85,7 +85,7 @@ public final class IconCollectionView: UIView {
         let cellWidths = viewModels.map { cellWidth(forWidth: targetWidth, viewModel: $0) }
 
         let cellSizes = zip(viewModels, cellWidths).map { (viewModel, width) -> CGSize in
-            let height = IconCollectionViewCell.height(for: viewModel, withWidth: width)
+            let height = cellHeight(for: viewModel, withWidth: width)
             return CGSize(width: width, height: height)
         }
 
@@ -128,7 +128,7 @@ extension IconCollectionView: UICollectionViewDelegateFlowLayout {
                                sizeForItemAt indexPath: IndexPath) -> CGSize {
         let viewModel = viewModels[indexPath.item]
         let width = cellWidth(forWidth: collectionView.frame.width, viewModel: viewModel)
-        let height = IconCollectionViewCell.height(for: viewModel, withWidth: width)
+        let height = cellHeight(for: viewModel, withWidth: width)
 
         return CGSize(width: width, height: height)
     }
@@ -138,6 +138,15 @@ extension IconCollectionView: UICollectionViewDelegateFlowLayout {
             ? max(width / CGFloat(viewModels.count), viewModel.image.size.width * 2)
             : width / 2
         return width
+    }
+
+    private func cellHeight(for viewModel: IconCollectionViewModel, withWidth width: CGFloat) -> CGFloat {
+        switch alignment {
+        case .horizontal:
+            return HorizontalIconCollectionViewCell.height(for: viewModel, withWidth: width)
+        case .vertical:
+            return VerticalIconCollectionViewCell.height(for: viewModel, withWidth: width)
+        }
     }
 }
 
