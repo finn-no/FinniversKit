@@ -15,3 +15,9 @@ extension Array {
         return indices.contains(index) ? self[index] : nil
     }
 }
+
+public extension Array where Element == String {
+    func bulletPoints(withFont font: UIFont) -> NSAttributedString {
+        return NSAttributedString.bulletPoints(from: self, font: font)
+    }
+}

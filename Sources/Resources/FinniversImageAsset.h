@@ -21,6 +21,7 @@ extern NSString *const FinniversImageAssetballoon00;
 extern NSString *const FinniversImageAssetballoon2;
 extern NSString *const FinniversImageAssetballoon22;
 extern NSString *const FinniversImageAssetbankID;
+extern NSString *const FinniversImageAssetbetaPill;
 extern NSString *const FinniversImageAssetblockUser;
 extern NSString *const FinniversImageAssetboat;
 extern NSString *const FinniversImageAssetcalendar;

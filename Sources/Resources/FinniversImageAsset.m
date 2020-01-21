@@ -21,6 +21,7 @@ NSString *const FinniversImageAssetballoon00 = @"balloon00";
 NSString *const FinniversImageAssetballoon2 = @"balloon2";
 NSString *const FinniversImageAssetballoon22 = @"balloon22";
 NSString *const FinniversImageAssetbankID = @"bankID";
+NSString *const FinniversImageAssetbetaPill = @"betaPill";
 NSString *const FinniversImageAssetblockUser = @"blockUser";
 NSString *const FinniversImageAssetboat = @"boat";
 NSString *const FinniversImageAssetcalendar = @"calendar";
@@ -186,6 +187,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetballoon2,
              FinniversImageAssetballoon22,
              FinniversImageAssetbankID,
+             FinniversImageAssetbetaPill,
              FinniversImageAssetblockUser,
              FinniversImageAssetboat,
              FinniversImageAssetcalendar,

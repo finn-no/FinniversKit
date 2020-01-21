@@ -17,14 +17,14 @@ public class OrderSummaryView: UIView {
         return summaryView
     }()
 
-    private let model: OrderSummaryViewModel
+    private let orderLines: [OrderSummaryLineViewModel]
     private let orderLineViewHeight: CGFloat = 32
 
     // MARK: Initalizer
 
-    public init(model: OrderSummaryViewModel, withAutoLayout: Bool = false) {
-        self.model = model
-        self.height = CGFloat(model.orderLines.count * Int(orderLineViewHeight) + 16)
+    public init(orderLines: [OrderSummaryLineViewModel], withAutoLayout: Bool = false) {
+        self.orderLines = orderLines
+        self.height = CGFloat(orderLines.count * Int(orderLineViewHeight) + 16)
 
         super.init(frame: .zero)
 
@@ -44,7 +44,7 @@ public class OrderSummaryView: UIView {
 
 private extension OrderSummaryView {
     func setup() {
-        for line in model.orderLines {
+        for line in orderLines {
             let orderLine = OrderSummaryLineView(title: line.title, price: line.price, withAutoLayout: true)
             summaryView.setCustomSpacing(.mediumSpacing, after: orderLine)
 
