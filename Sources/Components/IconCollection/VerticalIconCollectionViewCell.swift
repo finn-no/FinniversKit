@@ -4,21 +4,20 @@
 
 import UIKit
 
-public class IconCollectionViewCell: UICollectionViewCell {
-    private static let titleSideMargin = CGFloat.mediumSpacing
+public class VerticalIconCollectionViewCell: UICollectionViewCell {
+    private static let textSideMargin = CGFloat.mediumSpacing
 
     static func height(for viewModel: IconCollectionViewModel, withWidth width: CGFloat) -> CGFloat {
-        let titleRect = viewModel.title.boundingRect(
-            with: CGSize(width: width - (2 * titleSideMargin), height: CGFloat.greatestFiniteMagnitude),
+        let textRect = viewModel.text.boundingRect(
+            with: CGSize(width: width - (2 * textSideMargin), height: CGFloat.greatestFiniteMagnitude),
             options: .usesLineFragmentOrigin,
             attributes: [.font: UIFont.body],
             context: nil
         )
 
-        let titleHeight = titleRect.height
         let imageHeight = viewModel.image.size.height
 
-        return titleHeight + imageHeight + .mediumSpacing
+        return textRect.height + imageHeight + .mediumSpacing
     }
 
     private lazy var iconImageView: UIImageView = {
@@ -29,7 +28,7 @@ public class IconCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
 
-    private lazy var titleLabel: UILabel = {
+    private lazy var textLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .body
         label.textColor = .textPrimary
@@ -56,7 +55,7 @@ public class IconCollectionViewCell: UICollectionViewCell {
     public override func prepareForReuse() {
         super.prepareForReuse()
         iconImageView.image = nil
-        titleLabel.text = ""
+        textLabel.text = ""
         accessibilityLabel = ""
     }
 
@@ -64,24 +63,23 @@ public class IconCollectionViewCell: UICollectionViewCell {
 
     func configure(with viewModel: IconCollectionViewModel) {
         iconImageView.image = viewModel.image
-        titleLabel.text = viewModel.title
-        accessibilityLabel = viewModel.title
+        textLabel.text = viewModel.text
+        accessibilityLabel = viewModel.text
     }
 
     private func setup() {
-        backgroundColor = .bgPrimary
         isAccessibilityElement = true
 
         addSubview(iconImageView)
-        addSubview(titleLabel)
+        addSubview(textLabel)
 
         NSLayoutConstraint.activate([
             iconImageView.topAnchor.constraint(equalTo: topAnchor),
             iconImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            titleLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: .smallSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: IconCollectionViewCell.titleSideMargin),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -IconCollectionViewCell.titleSideMargin)
+            textLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: .smallSpacing),
+            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: VerticalIconCollectionViewCell.textSideMargin),
+            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -VerticalIconCollectionViewCell.textSideMargin)
         ])
     }
 }
