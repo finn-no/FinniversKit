@@ -91,8 +91,6 @@ class PushNotificationDetailsView: UIControl {
     // MARK: - Internal methods
 
     func configure(with details: PushNotificationDetails?, timestamp: String?) {
-        stackView.subviews.forEach { $0.removeFromSuperview() }
-
         let textAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.caption,
             .foregroundColor: UIColor.textPrimary
@@ -100,12 +98,8 @@ class PushNotificationDetailsView: UIControl {
 
         switch details {
         case let .savedSearch(text, title):
-            stackView.addArrangedSubview(magnifyingIconView)
-            stackView.addArrangedSubview(textLabel)
-            stackView.addArrangedSubview(arrowIconView)
-            stackView.addArrangedSubview(UIView())
-            stackView.addArrangedSubview(timestampLabel)
-            stackView.setCustomSpacing(.smallSpacing, after: magnifyingIconView)
+            magnifyingIconView.isHidden = false
+            arrowIconView.isHidden = false
 
             let textRange = NSRange(location: 0, length: text.count + 1)
             highlightedRange = NSRange(location: text.count + 1, length: title.count)
@@ -120,8 +114,8 @@ class PushNotificationDetailsView: UIControl {
             attributedString?.setAttributes(titleAttributes, range: highlightedRange!)
 
         case let .priceChange(text, value):
-            stackView.addArrangedSubview(textLabel)
-            stackView.addArrangedSubview(timestampLabel)
+            magnifyingIconView.isHidden = true
+            arrowIconView.isHidden = true
 
             let textRange = NSRange(location: 0, length: text.count + 1)
             let valueRange = NSRange(location: text.count + 1, length: value.count)
@@ -147,6 +141,12 @@ class PushNotificationDetailsView: UIControl {
     // MARK: - Private methods
 
     private func setup() {
+        stackView.addArrangedSubview(magnifyingIconView)
+        stackView.addArrangedSubview(textLabel)
+        stackView.addArrangedSubview(arrowIconView)
+        stackView.addArrangedSubview(UIView())
+        stackView.addArrangedSubview(timestampLabel)
+        stackView.setCustomSpacing(.smallSpacing, after: magnifyingIconView)
         addSubview(stackView)
 
         NSLayoutConstraint.activate([
