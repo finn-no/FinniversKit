@@ -5,12 +5,27 @@
 import UIKit
 
 public final class IconCollectionView: UIView {
+    public enum Alignment {
+        case horizontal
+        case vertical
+    }
+
+    // MARK: - Public properties
+
+    public override var backgroundColor: UIColor? {
+        get { collectionView.backgroundColor }
+        set { collectionView.backgroundColor = newValue }
+    }
+
+    // MARK: - Private properties
+
+    private var alignment: Alignment
     private var viewModels = [IconCollectionViewModel]()
 
     private lazy var collectionView: UICollectionView = {
         let collectionView = CollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-        collectionView.register(IconCollectionViewCell.self)
-        collectionView.backgroundColor = .bgPrimary
+        collectionView.register(VerticalIconCollectionViewCell.self)
+        collectionView.register(HorizontalIconCollectionViewCell.self)
         collectionView.allowsSelection = false
         collectionView.isScrollEnabled = false
         collectionView.bounces = false
@@ -27,17 +42,24 @@ public final class IconCollectionView: UIView {
         return layout
     }()
 
+    private lazy var margins: UIEdgeInsets = {
+        switch alignment {
+        case .horizontal:
+            return UIEdgeInsets(vertical: .mediumSpacing, horizontal: .smallSpacing)
+        case .vertical:
+            return .zero
+        }
+    }()
+
     // MARK: - Init
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(alignment: Alignment = .vertical) {
+        self.alignment = alignment
+        super.init(frame: .zero)
         setup()
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     // MARK: - Setup
 
@@ -65,11 +87,11 @@ public final class IconCollectionView: UIView {
     //   - it ignores any potential targetHeight.
     //   - it ignores both horizontal and vertical fitting priority.
     public override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
-        let targetWidth = targetSize.width
+        let targetWidth = targetSize.width - margins.horizontalMargins
         let cellWidths = viewModels.map { cellWidth(forWidth: targetWidth, viewModel: $0) }
 
         let cellSizes = zip(viewModels, cellWidths).map { (viewModel, width) -> CGSize in
-            let height = IconCollectionViewCell.height(for: viewModel, withWidth: width)
+            let height = cellHeight(for: viewModel, withWidth: width)
             return CGSize(width: width, height: height)
         }
 
@@ -79,7 +101,7 @@ public final class IconCollectionView: UIView {
         let totalHeight = cellRows.compactMap { $0.max(by: { $0.height < $1.height }) }.reduce(0, { $0 + $1.height })
 
         let extraSpacing: CGFloat = .mediumSpacing * CGFloat(cellRows.count)
-        return CGSize(width: targetWidth, height: totalHeight + extraSpacing)
+        return CGSize(width: targetWidth, height: totalHeight + extraSpacing + margins.verticalMargins)
     }
 }
 
@@ -87,25 +109,40 @@ public final class IconCollectionView: UIView {
 
 extension IconCollectionView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModels.count
+        viewModels.count
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeue(IconCollectionViewCell.self, for: indexPath)
-        cell.configure(with: viewModels[indexPath.item])
-        return cell
+        switch alignment {
+        case .horizontal:
+            let cell = collectionView.dequeue(HorizontalIconCollectionViewCell.self, for: indexPath)
+            cell.configure(with: viewModels[indexPath.item])
+            return cell
+        case .vertical:
+            let cell = collectionView.dequeue(VerticalIconCollectionViewCell.self, for: indexPath)
+            cell.configure(with: viewModels[indexPath.item])
+            return cell
+        }
     }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension IconCollectionView: UICollectionViewDelegateFlowLayout {
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int
+    ) -> UIEdgeInsets {
+        margins
+    }
+
     public func collectionView(_ collectionView: UICollectionView,
                                layout collectionViewLayout: UICollectionViewLayout,
                                sizeForItemAt indexPath: IndexPath) -> CGSize {
         let viewModel = viewModels[indexPath.item]
-        let width = cellWidth(forWidth: collectionView.frame.width, viewModel: viewModel)
-        let height = IconCollectionViewCell.height(for: viewModel, withWidth: width)
+        let width = cellWidth(forWidth: collectionView.frame.width - margins.horizontalMargins, viewModel: viewModel)
+        let height = cellHeight(for: viewModel, withWidth: width)
 
         return CGSize(width: width, height: height)
     }
@@ -116,13 +153,22 @@ extension IconCollectionView: UICollectionViewDelegateFlowLayout {
             : width / 2
         return width
     }
+
+    private func cellHeight(for viewModel: IconCollectionViewModel, withWidth width: CGFloat) -> CGFloat {
+        switch alignment {
+        case .horizontal:
+            return HorizontalIconCollectionViewCell.height(for: viewModel, withWidth: width)
+        case .vertical:
+            return VerticalIconCollectionViewCell.height(for: viewModel, withWidth: width)
+        }
+    }
 }
 
-// MARK: - Private types
+// MARK: - Private extensions & types
 
 private final class CollectionView: UICollectionView {
     override var intrinsicContentSize: CGSize {
-        return contentSize
+        contentSize
     }
 
     override func layoutSubviews() {
@@ -136,8 +182,13 @@ private final class CollectionView: UICollectionView {
 
 private extension Array {
     func chunked(into size: Int) -> [[Element]] {
-        return stride(from: 0, to: count, by: size).map {
+        stride(from: 0, to: count, by: size).map {
             Array(self[$0 ..< Swift.min($0 + size, count)])
         }
     }
+}
+
+private extension UIEdgeInsets {
+    var horizontalMargins: CGFloat { left + right }
+    var verticalMargins: CGFloat { top + bottom }
 }
