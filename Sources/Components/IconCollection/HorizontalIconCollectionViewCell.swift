@@ -43,19 +43,13 @@ public class HorizontalIconCollectionViewCell: UICollectionViewCell {
     }()
 
     private lazy var titleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .body
-        label.textColor = .textPrimary
-        label.adjustsFontSizeToFitWidth = true
+        let label = Label(style: .body, withAutoLayout: true)
         label.numberOfLines = 0
         return label
     }()
 
     private lazy var bodyLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .bodyStrong
-        label.textColor = .textPrimary
-        label.adjustsFontSizeToFitWidth = true
+        let label = Label(style: .bodyStrong, withAutoLayout: true)
         label.numberOfLines = 0
         return label
     }()

@@ -29,11 +29,8 @@ public class VerticalIconCollectionViewCell: UICollectionViewCell {
     }()
 
     private lazy var textLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .body
-        label.textColor = .textPrimary
+        let label = Label(style: .body, withAutoLayout: true)
         label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
         return label
     }()
