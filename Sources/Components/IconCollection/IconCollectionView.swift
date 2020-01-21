@@ -81,7 +81,7 @@ public final class IconCollectionView: UIView {
     //   - it ignores any potential targetHeight.
     //   - it ignores both horizontal and vertical fitting priority.
     public override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
-        let targetWidth = targetSize.width
+        let targetWidth = targetSize.width - margins.horizontalMargins
         let cellWidths = viewModels.map { cellWidth(forWidth: targetWidth, viewModel: $0) }
 
         let cellSizes = zip(viewModels, cellWidths).map { (viewModel, width) -> CGSize in
@@ -95,7 +95,7 @@ public final class IconCollectionView: UIView {
         let totalHeight = cellRows.compactMap { $0.max(by: { $0.height < $1.height }) }.reduce(0, { $0 + $1.height })
 
         let extraSpacing: CGFloat = .mediumSpacing * CGFloat(cellRows.count)
-        return CGSize(width: targetWidth, height: totalHeight + extraSpacing)
+        return CGSize(width: targetWidth, height: totalHeight + extraSpacing + margins.verticalMargins)
     }
 }
 
@@ -127,7 +127,7 @@ extension IconCollectionView: UICollectionViewDelegateFlowLayout {
                                layout collectionViewLayout: UICollectionViewLayout,
                                sizeForItemAt indexPath: IndexPath) -> CGSize {
         let viewModel = viewModels[indexPath.item]
-        let width = cellWidth(forWidth: collectionView.frame.width, viewModel: viewModel)
+        let width = cellWidth(forWidth: collectionView.frame.width - margins.horizontalMargins, viewModel: viewModel)
         let height = cellHeight(for: viewModel, withWidth: width)
 
         return CGSize(width: width, height: height)
