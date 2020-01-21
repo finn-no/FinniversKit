@@ -17,8 +17,9 @@ public final class IconCollectionView: UIView {
 
     private lazy var collectionView: UICollectionView = {
         let collectionView = CollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-        collectionView.register(IconCollectionViewCell.self)
         collectionView.backgroundColor = .bgPrimary
+        collectionView.register(VerticalIconCollectionViewCell.self)
+        collectionView.register(HorizontalIconCollectionViewCell.self)
         collectionView.allowsSelection = false
         collectionView.isScrollEnabled = false
         collectionView.bounces = false
@@ -97,9 +98,16 @@ extension IconCollectionView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeue(IconCollectionViewCell.self, for: indexPath)
-        cell.configure(with: viewModels[indexPath.item])
-        return cell
+        switch alignment {
+        case .horizontal:
+            let cell = collectionView.dequeue(HorizontalIconCollectionViewCell.self, for: indexPath)
+            cell.configure(with: viewModels[indexPath.item])
+            return cell
+        case .vertical:
+            let cell = collectionView.dequeue(VerticalIconCollectionViewCell.self, for: indexPath)
+            cell.configure(with: viewModels[indexPath.item])
+            return cell
+        }
     }
 }
 
