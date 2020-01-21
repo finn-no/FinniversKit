@@ -90,9 +90,9 @@ public class HorizontalIconCollectionViewCell: UICollectionViewCell {
     private func setup() {
         isAccessibilityElement = true
 
-        addSubview(iconImageView)
-        addSubview(titleLabel)
-        addSubview(bodyLabel)
+        contentView.addSubview(iconImageView)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(bodyLabel)
 
         NSLayoutConstraint.activate([
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: HorizontalIconCollectionViewCell.titleSideMargin),

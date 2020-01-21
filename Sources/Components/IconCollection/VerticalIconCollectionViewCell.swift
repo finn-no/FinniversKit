@@ -67,16 +67,16 @@ public class VerticalIconCollectionViewCell: UICollectionViewCell {
     private func setup() {
         isAccessibilityElement = true
 
-        addSubview(iconImageView)
-        addSubview(textLabel)
+        contentView.addSubview(iconImageView)
+        contentView.addSubview(textLabel)
 
         NSLayoutConstraint.activate([
-            iconImageView.topAnchor.constraint(equalTo: topAnchor),
-            iconImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            iconImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
             textLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: .smallSpacing),
-            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: VerticalIconCollectionViewCell.textSideMargin),
-            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -VerticalIconCollectionViewCell.textSideMargin)
+            textLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: VerticalIconCollectionViewCell.textSideMargin),
+            textLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -VerticalIconCollectionViewCell.textSideMargin)
         ])
     }
 }
