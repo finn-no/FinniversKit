@@ -36,6 +36,15 @@ public final class IconCollectionView: UIView {
         return layout
     }()
 
+    private lazy var margins: UIEdgeInsets = {
+        switch alignment {
+        case .horizontal:
+            return UIEdgeInsets(vertical: .mediumSpacing, horizontal: .smallSpacing)
+        case .vertical:
+            return .zero
+        }
+    }()
+
     // MARK: - Init
 
     public init(alignment: Alignment = .vertical) {
