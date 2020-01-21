@@ -132,7 +132,7 @@ extension IconCollectionView: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - Private types
+// MARK: - Private extensions & types
 
 private final class CollectionView: UICollectionView {
     override var intrinsicContentSize: CGSize {
@@ -154,4 +154,9 @@ private extension Array {
             Array(self[$0 ..< Swift.min($0 + size, count)])
         }
     }
+}
+
+private extension UIEdgeInsets {
+    var horizontalMargins: CGFloat { left + right }
+    var verticalMargins: CGFloat { top + bottom }
 }
