@@ -107,10 +107,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.bannerTransparencyView)
     }
 
-    func testBottomSheetMechanics() {
-        snapshot(.bottomSheetMechanics)
-    }
-
     func testInfobox() {
         snapshot(.infobox)
     }

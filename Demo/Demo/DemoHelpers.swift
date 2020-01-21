@@ -3,6 +3,7 @@
 //
 import FinniversKit
 import UIKit
+import BottomSheet
 
 enum TabletDisplayMode {
     case master
@@ -150,10 +151,8 @@ enum Sections: String, CaseIterable {
 
         let shouldPresentInBottomSheet = containmentOptions.contains(.bottomSheet)
         if shouldPresentInBottomSheet {
-            if let unwrappedViewController = viewController {
-                let bottomSheet = BottomSheet(rootViewController: unwrappedViewController)
-                viewController = bottomSheet
-            }
+            viewController?.modalPresentationStyle = .custom
+            viewController?.transitioningDelegate = BottomSheetTransitioningDelegate.default
         }
 
         return viewController
@@ -192,4 +191,8 @@ extension Foundation.Notification.Name {
             return UIImage(named: "filledMoon")!
         }
     }
+}
+
+private extension BottomSheetTransitioningDelegate {
+    static let `default` = BottomSheetTransitioningDelegate(contentHeights: .bottomSheetDefault)
 }

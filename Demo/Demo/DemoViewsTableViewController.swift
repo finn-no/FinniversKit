@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import BottomSheet
 
 class DemoViewsTableViewController: UITableViewController {
     private lazy var selectorTitleView: SelectorTitleView = {
@@ -11,8 +12,7 @@ class DemoViewsTableViewController: UITableViewController {
         return titleView
     }()
 
-    private var bottomSheet: BottomSheet?
-
+    private var sectionSelectorTransition = BottomSheetTransitioningDelegate(contentHeights: .bottomSheetDefault)
     private var indexAndValues = [String: [String]]()
 
     init() {
@@ -34,11 +34,7 @@ class DemoViewsTableViewController: UITableViewController {
 
         if let indexPath = State.lastSelectedIndexPath {
             if let viewController = Sections.viewController(for: indexPath) {
-                if let bottomSheet = viewController as? BottomSheet {
-                    present(bottomSheet, animated: true)
-                } else {
-                    present(viewController, animated: false)
-                }
+                present(viewController, animated: false)
             }
         }
     }
@@ -214,12 +210,17 @@ extension DemoViewsTableViewController: SelectorTitleViewDelegate {
     func selectorTitleViewDidSelectButton(_ selectorTitleView: SelectorTitleView) {
         let items = Sections.items.map { BasicTableViewItem(title: $0.rawValue.uppercased()) }
         let sectionsTableView = BasicTableView(items: items)
+        sectionsTableView.translatesAutoresizingMaskIntoConstraints = false
         sectionsTableView.selectedIndexPath = IndexPath(row: State.lastSelectedSection, section: 0)
         sectionsTableView.delegate = self
-        bottomSheet = BottomSheet(view: sectionsTableView, draggableArea: .everything)
-        if let controller = bottomSheet {
-            present(controller, animated: true)
-        }
+
+        let sectionsViewController = UIViewController()
+        sectionsViewController.modalPresentationStyle = .custom
+        sectionsViewController.transitioningDelegate = sectionSelectorTransition
+        sectionsViewController.view.addSubview(sectionsTableView)
+        sectionsTableView.fillInSuperview()
+
+        present(sectionsViewController, animated: true)
     }
 }
 
@@ -229,6 +230,6 @@ extension DemoViewsTableViewController: BasicTableViewDelegate {
         selectorTitleView.title = Sections.title(for: State.lastSelectedSection).uppercased()
         evaluateIndexAndValues()
         tableView.reloadData()
-        bottomSheet?.state = .dismissed
+        dismiss(animated: true)
     }
 }

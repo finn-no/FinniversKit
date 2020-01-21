@@ -1,4 +1,5 @@
 import FinniversKit
+import BottomSheet
 
 class DemoViewController<View: UIView>: UIViewController {
 
@@ -7,7 +8,7 @@ class DemoViewController<View: UIView>: UIViewController {
     private var preferredInterfaceOrientation: UIInterfaceOrientationMask = .all
     private let constrainToBottomSafeArea: Bool
     private let constrainToTopSafeArea: Bool
-    private var bottomSheet: BottomSheet?
+    private lazy var transitionDelegate = BottomSheetTransitioningDelegate(contentHeights: .bottomSheetDefault)
 
     public init(dismissType: DismissType = .doubleTap,
                 containmentOptions: ContainmentOptions = .none,
@@ -76,10 +77,10 @@ extension DemoViewController: CornerAnchoringViewDelegate {
         tweakingController.delegate = self
         let navigationController = NavigationController(rootViewController: tweakingController)
         navigationController.hairlineIsHidden = true
-        bottomSheet = BottomSheet(rootViewController: navigationController, draggableArea: .everything)
-        if let controller = bottomSheet {
-            present(controller, animated: true)
-        }
+        navigationController.modalPresentationStyle = .custom
+        navigationController.transitioningDelegate = transitionDelegate
+
+        present(navigationController, animated: true)
     }
 }
 
@@ -95,6 +96,6 @@ extension DemoViewController: TweakingOptionsTableViewControllerDelegate {
     }
 
     func tweakingOptionsTableViewControllerDidDismiss(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController) {
-        bottomSheet?.state = .dismissed
+        tweakingOptionsTableViewController.dismiss(animated: true)
     }
 }

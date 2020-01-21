@@ -501,7 +501,6 @@
 		DABA6F47232FAF1D0007B24D /* BannerAdDemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABA6F46232FAF1D0007B24D /* BannerAdDemoCell.swift */; };
 		DAC0383B2119B7DC00CD49B7 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */; };
 		DAC1EC4E21C1297500F4FEC4 /* BalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1EC4D21C1297500F4FEC4 /* BalloonView.swift */; };
-		DAC65FBB21E35F7300644CDE /* BottomSheetMechanicsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC65FBA21E35F7300644CDE /* BottomSheetMechanicsDemoViewController.swift */; };
 		DAD0D48E210731C60091DD4D /* AdReporterDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */; };
 		DAD0D48F210735060091DD4D /* RadiobuttonAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadiobuttonAnimation.xcassets */; };
 		DAD0D492210737A30091DD4D /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D491210737A30091DD4D /* TextView.swift */; };
@@ -526,8 +525,6 @@
 		F253C5112313FA6E008175FD /* VerificationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253C5102313FA6E008175FD /* VerificationDemoView.swift */; };
 		F253C5142314015C008175FD /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253C5122313FEFC008175FD /* VerificationViewModel.swift */; };
 		F253C51A23151830008175FD /* VerificationViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253C51923151830008175FD /* VerificationViewDefaultData.swift */; };
-		F253C51D2315601A008175FD /* VerificationActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253C51B23155587008175FD /* VerificationActionSheet.swift */; };
-		F2597C76231D3E2300BE74EC /* VerificationActionSheetDemoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2597C75231D3E2300BE74EC /* VerificationActionSheetDemoDelegate.swift */; };
 		F26852D621F7530A000978C8 /* UserAdsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852D521F7530A000978C8 /* UserAdsListView.swift */; };
 		F26852D821F753A5000978C8 /* UserAdsListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852D721F753A5000978C8 /* UserAdsListHeaderView.swift */; };
 		F26852DA21F75435000978C8 /* UserAdsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852D921F75435000978C8 /* UserAdsListViewCell.swift */; };
@@ -1114,7 +1111,6 @@
 		DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		DAC1EC4D21C1297500F4FEC4 /* BalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonView.swift; sourceTree = "<group>"; };
 		DAC1EC5021C1322900F4FEC4 /* NewYearsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewYearsView.swift; sourceTree = "<group>"; };
-		DAC65FBA21E35F7300644CDE /* BottomSheetMechanicsDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetMechanicsDemoViewController.swift; sourceTree = "<group>"; };
 		DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterDemoView.swift; sourceTree = "<group>"; };
 		DAD0D491210737A30091DD4D /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		DAD0D493210739500091DD4D /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
@@ -1138,8 +1134,6 @@
 		F253C5102313FA6E008175FD /* VerificationDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationDemoView.swift; sourceTree = "<group>"; };
 		F253C5122313FEFC008175FD /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
 		F253C51923151830008175FD /* VerificationViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationViewDefaultData.swift; sourceTree = "<group>"; };
-		F253C51B23155587008175FD /* VerificationActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationActionSheet.swift; sourceTree = "<group>"; };
-		F2597C75231D3E2300BE74EC /* VerificationActionSheetDemoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationActionSheetDemoDelegate.swift; sourceTree = "<group>"; };
 		F26852D521F7530A000978C8 /* UserAdsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListView.swift; sourceTree = "<group>"; };
 		F26852D721F753A5000978C8 /* UserAdsListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListHeaderView.swift; sourceTree = "<group>"; };
 		F26852D921F75435000978C8 /* UserAdsListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewCell.swift; sourceTree = "<group>"; };
@@ -1228,14 +1222,6 @@
 				DAD0D491210737A30091DD4D /* TextView.swift */,
 			);
 			path = TextView;
-			sourceTree = "<group>";
-		};
-		083349EA21EF24AE000E68D3 /* BottomSheet */ = {
-			isa = PBXGroup;
-			children = (
-				DAC65FBA21E35F7300644CDE /* BottomSheetMechanicsDemoViewController.swift */,
-			);
-			path = BottomSheet;
 			sourceTree = "<group>";
 		};
 		087A5BB422A7D84600184640 /* Util */ = {
@@ -2098,7 +2084,6 @@
 				DAD6EB302369BCFC00968497 /* SettingDetailsView */,
 				43EA978021941E63003A548A /* SoldView */,
 				CF70B95023421E1B00B8A285 /* SplashView */,
-				F2597C72231D19B900BE74EC /* VerificationActionSheet */,
 			);
 			path = Fullscreen;
 			sourceTree = "<group>";
@@ -3237,7 +3222,6 @@
 				4940480323CDC54E00ECBCFD /* Viewings */,
 				9BCD171623CCBBC30045BD61 /* CollapsibleContentView */,
 				CFDF39CC238541D400D3B966 /* AddressCardView */,
-				083349EA21EF24AE000E68D3 /* BottomSheet */,
 				CF8F021D21DCC691004C4042 /* Broadcast */,
 				CF8F021E21DCC6A0004C4042 /* Button */,
 				CFCDDA5D22731D4D005E1F4A /* Callout */,
@@ -3468,7 +3452,6 @@
 				DAD6EB332369BD2300968497 /* SettingDetailsView */,
 				CF8F023621DCC830004C4042 /* SoldView */,
 				CF70B95323421E8800B8A285 /* SplashView */,
-				F253C50B2313F948008175FD /* VerificationView */,
 			);
 			path = Fullscreen;
 			sourceTree = "<group>";
@@ -3930,22 +3913,6 @@
 				9BB12AC1238289F100A04F61 /* StatisticsModel.swift */,
 			);
 			path = StatisticsView;
-			sourceTree = "<group>";
-		};
-		F253C50B2313F948008175FD /* VerificationView */ = {
-			isa = PBXGroup;
-			children = (
-				F2597C75231D3E2300BE74EC /* VerificationActionSheetDemoDelegate.swift */,
-			);
-			path = VerificationView;
-			sourceTree = "<group>";
-		};
-		F2597C72231D19B900BE74EC /* VerificationActionSheet */ = {
-			isa = PBXGroup;
-			children = (
-				F253C51B23155587008175FD /* VerificationActionSheet.swift */,
-			);
-			path = VerificationActionSheet;
 			sourceTree = "<group>";
 		};
 		F2597C73231D1A0B00BE74EC /* VerificationView */ = {
@@ -4545,7 +4512,6 @@
 				CF39ADFF22034F9B002FC43E /* InfoboxDefaultData.swift in Sources */,
 				4458701E213FA353009187BE /* RegisterViewDemoView.swift in Sources */,
 				F253C51A23151830008175FD /* VerificationViewDefaultData.swift in Sources */,
-				DAC65FBB21E35F7300644CDE /* BottomSheetMechanicsDemoViewController.swift in Sources */,
 				F2C3E96322CB688800CED7E0 /* QuestionnaireDemoView.swift in Sources */,
 				449C60B8234DD8BC00C51A63 /* BasicTableViewDemoView.swift in Sources */,
 				4974725F239A49570058D7B0 /* SearchListEmptyViewModel.swift in Sources */,
@@ -4588,7 +4554,6 @@
 				CF164D04230EB80900250822 /* FavoriteAdSortingDemoView.swift in Sources */,
 				9F21365157F385AC63928150 /* FullscreenGalleryDemoViewController.swift in Sources */,
 				9A37DDB3353F56739B23D22B /* FavoriteAdCellDemoView.swift in Sources */,
-				F2597C76231D3E2300BE74EC /* VerificationActionSheetDemoDelegate.swift in Sources */,
 				F2BE6BF8236843E40085A05A /* AdConfirmationDemoView.swift in Sources */,
 				F2A7B71523BF2C4800651850 /* PaymentOptionsListDemoView.swift in Sources */,
 				9BEB2905231E4A9500D28BAD /* IntegerNumberSuffixFormatter.swift in Sources */,
@@ -4857,7 +4822,6 @@
 				CF7C460422257A8A001FB92C /* EarthHourContentView.swift in Sources */,
 				CF5CA71222F85A94007C4124 /* NeighborhoodProfileHeaderView.swift in Sources */,
 				441FE435209A24E500B04EF1 /* AdsGridViewModel.swift in Sources */,
-				F253C51D2315601A008175FD /* VerificationActionSheet.swift in Sources */,
 				91341EDB23C38288005B65CF /* NativeAdvertRecommendationView.swift in Sources */,
 				CFEB220F232B96550039421C /* UIBarButtonItemExtensions.swift in Sources */,
 				44A149EC21377C7B0053D5F7 /* SavedSearchesListView.swift in Sources */,

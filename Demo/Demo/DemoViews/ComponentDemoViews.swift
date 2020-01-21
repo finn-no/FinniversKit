@@ -27,7 +27,6 @@ public enum ComponentDemoViews: String, CaseIterable {
     case refreshControl
     case reviewButtonView
     case horizontalSlide
-    case bottomSheetMechanics
     case feedbackView
     case happinessRating
     case earthHourView
@@ -102,7 +101,7 @@ public enum ComponentDemoViews: String, CaseIterable {
         case .consentTransparencyInfo:
             return DemoViewController<ConsentTransparencyInfoDemoView>()
         case .bannerTransparencyView:
-            return DemoViewController<BannerTransparencyDemoView>(containmentOptions: .bottomSheet)
+            return DemoViewController<BannerTransparencyDemoView>()
         case .checkbox:
             return DemoViewController<CheckboxDemoView>(dismissType: .dismissButton)
         case .radioButton:
@@ -119,8 +118,6 @@ public enum ComponentDemoViews: String, CaseIterable {
             secondViewController.transitioningDelegate = presentedViewController.transition
             secondViewController.modalPresentationStyle = .custom
             return secondViewController
-        case .bottomSheetMechanics:
-            return BottomSheetMechanicsDemoViewController()
         case .feedbackView:
             return DemoViewController<FeedbackDemoView>(dismissType: .dismissButton)
         case .happinessRating:
@@ -172,10 +169,7 @@ public enum ComponentDemoViews: String, CaseIterable {
         case .selectorTitleView:
             return DemoViewController<SelectorTitleViewDemoView>()
         case .priming:
-            return DemoViewController<PrimingDemoView>(
-                containmentOptions: .bottomSheet,
-                constrainToBottomSafeArea: false
-            )
+            return DemoViewController<PrimingDemoView>(constrainToBottomSafeArea: false)
         case .footerButtonView:
             return DemoViewController<FooterButtonDemoView>(constrainToBottomSafeArea: false)
         case .checkmarkTitleView:

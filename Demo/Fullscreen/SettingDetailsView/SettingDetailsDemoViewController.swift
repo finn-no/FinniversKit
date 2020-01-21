@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import BottomSheet
 
 private struct DemoViewModel: SettingDetailsViewModel {
     var icon: UIImage {
@@ -46,7 +47,6 @@ private struct DemoViewModel: SettingDetailsViewModel {
 }
 
 final class SettingDetailsDemoViewController: UIViewController {
-
     private lazy var settingDetailsView: SettingDetailsView = {
         let detailsView = SettingDetailsView(withAutoLayout: true)
         detailsView.configure(with: DemoViewModel())
@@ -54,7 +54,16 @@ final class SettingDetailsDemoViewController: UIViewController {
         return detailsView
     }()
 
-    weak var bottomSheet: BottomSheet?
+    private lazy var transitionDelegate = BottomSheetTransitioningDelegate(contentHeights: [contentSize.height])
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        transitioningDelegate = transitionDelegate
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,8 +83,8 @@ extension SettingDetailsDemoViewController: SettingDetailsViewDelegate {
     func settingDetailsView(_ detailsView: SettingDetailsView, didChangeTo state: SettingDetailsView.State, with model: SettingDetailsViewModel) {
         view.layoutIfNeeded()
         let contentHeight = contentSize.height
-        let height = min(contentHeight, BottomSheet.Height.defaultFilterHeight.expanded)
-        bottomSheet?.height = .init(compact: height, expanded: height)
+        let height = min(contentHeight, [CGFloat].bottomSheetDefault.last!)
+        transitionDelegate.reload(with: [height])
     }
 
     func settingDetailsView(_ detailsView: SettingDetailsView, didTapPrimaryButtonWith model: SettingDetailsViewModel) {
