@@ -5,6 +5,14 @@
 import UIKit
 
 public final class IconCollectionView: UIView {
+    public enum Alignment {
+        case horizontal
+        case vertical
+    }
+
+    // MARK: - Private properties
+
+    private var alignment: Alignment
     private var viewModels = [IconCollectionViewModel]()
 
     private lazy var collectionView: UICollectionView = {
@@ -29,15 +37,13 @@ public final class IconCollectionView: UIView {
 
     // MARK: - Init
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(alignment: Alignment = .vertical) {
+        self.alignment = alignment
+        super.init(frame: .zero)
         setup()
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     // MARK: - Setup
 
