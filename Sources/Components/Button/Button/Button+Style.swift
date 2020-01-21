@@ -193,6 +193,29 @@ public extension Button.Style {
         )
     }
 
+    static var utility: Button.Style {
+        Button.Style(
+            borderWidth: 2.0,
+            stateStyles: [
+                .normal: Button.StateStyle(
+                    textColor: .textPrimary,
+                    backgroundColor: .bgPrimary,
+                    borderColor: .btnDisabled
+                ),
+                .highlighted: Button.StateStyle(
+                    textColor: .utilityButtonHighlightedTextColor,
+                    backgroundColor: .bgPrimary,
+                    borderColor: .utilityButtonHighlightedBorderColor
+                ),
+                .disabled: Button.StateStyle(
+                    textColor: .textDisabled,
+                    backgroundColor: nil,
+                    borderColor: .btnDisabled
+                )
+            ]
+        )
+    }
+
     static var callToAction: Button.Style {
         Button.Style(
             borderWidth: 0.0,

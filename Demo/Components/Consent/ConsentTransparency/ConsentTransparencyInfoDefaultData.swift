@@ -18,7 +18,7 @@ public struct ConsentTransparencyInfoDefaultData: ConsentTransparencyInfoViewMod
             "Forbedre produktene våre gjennom statistikk: Sjekke hvordan tjenesten fungerer, og måle effekten av endringer vi gjør",
             "Sikre en trygg markedsplass ved å forhindre svindel, brudd på annonsereglene og annen misbruk av tjenestene våre"
         ]
-        return NSAttributedString.makeBulletPointFrom(stringList: bulletPoints, font: .body)
+        return bulletPoints.bulletPoints(withFont: .body)
     }
     public var finnButtonIntroWithSettingsText = "Du kan endre innstillingene dine eller lese vår personvernerklæring her:"
     public var finnButtonIntroWithoutSettingsText = "Du kan lese vår personvernerklæring her:"
@@ -32,7 +32,7 @@ public struct ConsentTransparencyInfoDefaultData: ConsentTransparencyInfoViewMod
             "Tilby en trygg, enkel og effektiv påloggingstjeneste.",
             "Gi deg relevant reklameinnhold: Vi tror du setter mer pris på reklame som er tilpasset deg, enn tilfeldig reklame."
         ]
-        return NSAttributedString.makeBulletPointFrom(stringList: bulletPoints, font: .body)
+        return bulletPoints.bulletPoints(withFont: .body)
     }
     public var schibstedButtonIntroWithSettingsText = "Du kan endre innstillingene dine eller lese Schibsted Norges personvernerklæring her:"
     public var schibstedButtonIntroWithoutSettingsText = "Du kan lese Schibsted Norges personvernerklæring her:"

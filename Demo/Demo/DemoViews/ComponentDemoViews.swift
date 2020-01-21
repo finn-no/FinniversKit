@@ -35,7 +35,7 @@ public enum ComponentDemoViews: String, CaseIterable {
     case klimabroletView
     case christmasWishListView
     case stepIndicatorView
-    case nativeAdverts
+    case nativeAdvert
     case callout
     case phaseList
     case iconCollection
@@ -43,6 +43,8 @@ public enum ComponentDemoViews: String, CaseIterable {
     case questionnaireView
     case tweakable
     case saveSearchView
+    case saveSearchPromptView
+    case searchListEmptyView
     case identityView
     case stepSlider
     case loanCalculatorView
@@ -54,6 +56,13 @@ public enum ComponentDemoViews: String, CaseIterable {
     case priming
     case footerButtonView
     case checkmarkTitleView
+    case collapseView
+    case orderSummaryView
+    case orderTotalSumView
+    case viewingsView
+    case selfDeclarationView
+    case collapsibleContentView
+    case columnListsView
 
     public static var items: [ComponentDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -125,7 +134,7 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<ChristmasWishListDemoView>()
         case .stepIndicatorView:
             return DemoViewController<StepIndicatorDemoView>(dismissType: .dismissButton)
-        case .nativeAdverts:
+        case .nativeAdvert:
             return DemoViewController<NativeAdvertDemoView>(dismissType: .dismissButton)
         case .callout:
             return DemoViewController<CalloutDemoView>()
@@ -141,6 +150,10 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<TweakableDemoView>()
         case .saveSearchView:
             return SaveSearchViewDemoViewController(containmentOptions: [.bottomSheet, .navigationController])
+        case .saveSearchPromptView:
+            return DemoViewController<SaveSearchPromptViewDemoView>()
+        case .searchListEmptyView:
+            return DemoViewController<SearchListEmptyDemoView>()
         case .identityView:
             return DemoViewController<IdentityDemoView>()
         case .stepSlider:
@@ -168,6 +181,20 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<FooterButtonDemoView>(constrainToBottomSafeArea: false)
         case .checkmarkTitleView:
             return DemoViewController<CheckmarkTitleViewDemoView>()
+        case .collapseView:
+            return DemoViewController<CollapseDemoView>()
+        case .orderSummaryView:
+            return DemoViewController<OrderSummaryDemoView>()
+        case .orderTotalSumView:
+            return DemoViewController<OrderTotalSumDemoView>()
+        case .viewingsView:
+            return DemoViewController<ViewingsDemoView>()
+        case .selfDeclarationView:
+            return DemoViewController<SelfDeclarationDemoView>()
+        case .collapsibleContentView:
+            return DemoViewController<CollapsibleContentDemoView>(dismissType: .dismissButton)
+        case .columnListsView:
+            return DemoViewController<ColumnListsDemoView>()
         }
     }
 }

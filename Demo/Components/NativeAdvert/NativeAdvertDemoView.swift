@@ -4,43 +4,57 @@
 
 import FinniversKit
 
-private struct DemoViewModel: NativeAdvertViewModel {
-    let title: String?
-    let mainImageURL: URL?
-    let iconImageURL: URL?
-    let sponsoredText: String?
-}
-
 class NativeAdvertDemoView: UIView {
-    private let advertModel = DemoViewModel(
-        title: "Kan være inntil 50 tegn, og denne er faktisk på 50",
-        mainImageURL: URL(string: "https://upload.wikimedia.org/wikipedia/commons/2/2b/Jupiter_and_its_shrunken_Great_Red_Spot.jpg"),
-        iconImageURL: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Five-pointed_star.svg/1920px-Five-pointed_star.svg.png"),
-        sponsoredText: "Sponset av Den LengsteMuligeAnnonsør"
-    )
 
-    private let contentModel = DemoViewModel(
-        title: "Du har skjært avocadoen feil i alle år! 50 tegn!",
-        mainImageURL: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Guacomole.jpg/2560px-Guacomole.jpg"),
-        iconImageURL: URL(string: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Avocado.jpeg"),
-        sponsoredText: "ANNONSØRINNHOLD"
-    )
+    private lazy var scrollView = UIScrollView(withAutoLayout: true)
 
-    private lazy var advertView: NativeAdvertView = {
-        let view = NativeAdvertView(viewModel: advertModel, imageDelegate: self)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.delegate = self
-        view.backgroundColor = .bgPrimary
+    private lazy var stackView: UIStackView = {
+        let view = UIStackView(withAutoLayout: true)
+        view.axis = .vertical
+        view.distribution = .equalSpacing
+        view.spacing = .largeSpacing
         return view
     }()
 
-    private lazy var contentAdvertView: NativeContentAdvertView = {
-        let view = NativeContentAdvertView(viewModel: contentModel, imageDelegate: self)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.delegate = self
-        view.backgroundColor = .bgPrimary
+    private lazy var nativeAdvertRecommendationStack: UIStackView = {
+        let view = UIStackView(withAutoLayout: false)
+        view.alignment = .fill
+        view.distribution = .fillEqually
+        view.spacing = .mediumLargeSpacing
         return view
     }()
+
+    private lazy var nativeAdvertListView: NativeAdvertListView = {
+        let view = NativeAdvertListView(withAutoLayout: false)
+        view.delegate = self
+        view.imageDelegate = self
+        view.configure(with: NativeAdvertDefaultData.native)
+        return view
+    }()
+
+    private lazy var nativeAdvertGridView: NativeAdvertGridView = {
+        let view = NativeAdvertGridView(withAutoLayout: false)
+        view.delegate = self
+        view.imageDelegate = self
+        view.configure(with: NativeAdvertDefaultData.native)
+        return view
+    }()
+
+    private lazy var nativeAdvertContentView: NativeAdvertContentView = {
+        let view = NativeAdvertContentView(withAutoLayout: false)
+        view.delegate = self
+        view.imageDelegate = self
+        view.configure(with: NativeAdvertDefaultData.content)
+        return view
+    }()
+
+    private lazy var nativeAdvertRecommendationViews: [NativeAdvertRecommendationView] = (0...1).map { _ in
+        let view = NativeAdvertRecommendationView(withAutoLayout: false)
+        view.delegate = self
+        view.imageDelegate = self
+        view.configure(with: NativeAdvertDefaultData.nativeRecommendation)
+        return view
+    }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -53,47 +67,29 @@ class NativeAdvertDemoView: UIView {
     }
 
     private func setup() {
-        addSubview(advertView)
-        addSubview(contentAdvertView)
+        addSubview(scrollView)
+        scrollView.fillInSuperview()
 
-        let hairlineContentTop = createHairlineView()
-        let hairlineContentBottom = createHairlineView()
-        addSubview(hairlineContentTop)
-        addSubview(hairlineContentBottom)
+        scrollView.addSubview(stackView)
+        stackView.fillInSuperview()
 
-        NSLayoutConstraint.activate([
-            advertView.topAnchor.constraint(equalTo: topAnchor),
-            advertView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            advertView.trailingAnchor.constraint(equalTo: trailingAnchor),
+        stackView.addArrangedSubview(nativeAdvertRecommendationStack)
+        stackView.addArrangedSubview(nativeAdvertListView)
+        stackView.addArrangedSubview(nativeAdvertGridView)
+        stackView.addArrangedSubview(nativeAdvertContentView)
 
-            hairlineContentTop.topAnchor.constraint(equalTo: advertView.bottomAnchor, constant: .mediumLargeSpacing),
-            hairlineContentTop.leadingAnchor.constraint(equalTo: leadingAnchor),
-            hairlineContentTop.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            contentAdvertView.topAnchor.constraint(equalTo: hairlineContentTop.bottomAnchor, constant: .mediumLargeSpacing),
-            contentAdvertView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            contentAdvertView.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            hairlineContentBottom.topAnchor.constraint(equalTo: contentAdvertView.bottomAnchor, constant: .mediumLargeSpacing),
-            hairlineContentBottom.leadingAnchor.constraint(equalTo: leadingAnchor),
-            hairlineContentBottom.trailingAnchor.constraint(equalTo: trailingAnchor),
-            hairlineContentBottom.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
-        ])
-    }
-
-    private func createHairlineView() -> UIView {
-        let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .lightGray //DARK
+        nativeAdvertRecommendationViews.forEach { nativeAdvertRecommendationStack.addArrangedSubview($0) }
 
         NSLayoutConstraint.activate([
-            view.heightAnchor.constraint(equalToConstant: 0.5)
+            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
         ])
 
-        return view
     }
+
 }
 
 extension NativeAdvertDemoView: NativeAdvertViewDelegate, NativeAdvertImageDelegate {
+
     func nativeAdvertViewDidSelectSettingsButton() {
         var viewController = UIApplication.shared.keyWindow?.rootViewController
         while viewController?.presentedViewController != nil {

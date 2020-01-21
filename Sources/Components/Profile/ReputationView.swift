@@ -325,7 +325,7 @@ extension ReputationView {
 
         let imageView = UIImageView(image: model.category.icon)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.tintColor = .stone
+        imageView.tintColor = .iconSecondary
         imageView.contentMode = .scaleAspectFit
         imageWrapper.addSubview(imageView)
 

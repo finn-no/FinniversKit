@@ -131,8 +131,8 @@ class ComponentViewTests: XCTestCase {
         snapshot(.stepIndicatorView)
     }
 
-    func testNativeAdverts() {
-        snapshot(.nativeAdverts)
+    func testNativeAdvert() {
+        snapshot(.nativeAdvert)
     }
 
     func testCallout() {
@@ -167,8 +167,16 @@ class ComponentViewTests: XCTestCase {
         snapshot(.klimabroletView)
     }
 
+    func testSaveSearchPromptView() {
+        snapshot(.saveSearchPromptView)
+    }
+
     func testSaveSearchView() {
         snapshot(.saveSearchView)
+    }
+
+    func testSearchListEmptyView() {
+        snapshot(.searchListEmptyView)
     }
 
     func testStepSlider() {
@@ -217,5 +225,33 @@ class ComponentViewTests: XCTestCase {
 
     func testCheckmarkTitleView() {
         snapshot(.checkmarkTitleView)
+    }
+
+    func testOrderTotalSumView() {
+        snapshot(.orderTotalSumView)
+    }
+
+    func testOrderSummaryView() {
+        snapshot(.orderSummaryView)
+    }
+
+    func testCollapseView() {
+        snapshot(.collapseView)
+    }
+
+    func testSelfDeclarationView() {
+        snapshot(.selfDeclarationView)
+    }
+
+    func testCollapsibleContentView() {
+        snapshot(.collapsibleContentView)
+    }
+
+    func testViewingsView() {
+        snapshot(.viewingsView)
+    }
+
+    func testColumnListsView() {
+        snapshot(.columnListsView)
     }
 }
