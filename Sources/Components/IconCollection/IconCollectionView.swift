@@ -94,7 +94,7 @@ public final class IconCollectionView: UIView {
 
 extension IconCollectionView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModels.count
+        viewModels.count
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -136,7 +136,7 @@ extension IconCollectionView: UICollectionViewDelegateFlowLayout {
 
 private final class CollectionView: UICollectionView {
     override var intrinsicContentSize: CGSize {
-        return contentSize
+        contentSize
     }
 
     override func layoutSubviews() {
@@ -150,7 +150,7 @@ private final class CollectionView: UICollectionView {
 
 private extension Array {
     func chunked(into size: Int) -> [[Element]] {
-        return stride(from: 0, to: count, by: size).map {
+        stride(from: 0, to: count, by: size).map {
             Array(self[$0 ..< Swift.min($0 + size, count)])
         }
     }
