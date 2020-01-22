@@ -11,7 +11,7 @@ public class HorizontalIconCollectionViewCell: UICollectionViewCell {
 
     static func height(for viewModel: IconCollectionViewModel, withWidth width: CGFloat) -> CGFloat {
         let imageSize = viewModel.image.size
-        let textWidth = width - imageSize.width - (2 * titleSideMargin)
+        let textWidth = width - imageSize.width - (3 * titleSideMargin)
 
         let textRect = viewModel.text.boundingRect(
             with: CGSize(width: textWidth, height: CGFloat.greatestFiniteMagnitude),
