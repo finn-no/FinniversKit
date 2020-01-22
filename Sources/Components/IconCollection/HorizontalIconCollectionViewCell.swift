@@ -30,13 +30,13 @@ public class HorizontalIconCollectionViewCell: UICollectionViewCell {
     }()
 
     private lazy var titleLabel: UILabel = {
-        let label = Label(style: .body, withAutoLayout: true)
+        let label = Label(style: Self.titleStyle, withAutoLayout: true)
         label.numberOfLines = 0
         return label
     }()
 
     private lazy var bodyLabel: UILabel = {
-        let label = Label(style: .bodyStrong, withAutoLayout: true)
+        let label = Label(style: Self.bodyStyle, withAutoLayout: true)
         label.numberOfLines = 0
         return label
     }()
