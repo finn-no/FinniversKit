@@ -195,7 +195,7 @@ public extension Button.Style {
 
     static var utility: Button.Style {
         Button.Style(
-            borderWidth: 2.0,
+            borderWidth: 1.0,
             stateStyles: [
                 .normal: Button.StateStyle(
                     textColor: .textPrimary,
