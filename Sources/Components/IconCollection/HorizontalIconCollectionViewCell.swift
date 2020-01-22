@@ -6,6 +6,8 @@ import UIKit
 
 public class HorizontalIconCollectionViewCell: UICollectionViewCell {
     private static let titleSideMargin = CGFloat.mediumSpacing
+    private static let titleStyle = Label.Style.body
+    private static let bodyStyle = Label.Style.bodyStrong
 
     static func height(for viewModel: IconCollectionViewModel, withWidth width: CGFloat) -> CGFloat {
         let imageSize = viewModel.image.size
