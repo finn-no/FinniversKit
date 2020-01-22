@@ -18,8 +18,8 @@ class PushNotificationDetailsView: UIControl {
         let imageView = UIImageView(image: image)
         imageView.tintColor = .textPrimary
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.widthAnchor.constraint(equalToConstant: 14).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 14).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 16).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 16).isActive = true
         return imageView
     }()
 
@@ -83,7 +83,7 @@ class PushNotificationDetailsView: UIControl {
 
     func configure(with details: PushNotificationDetails?, timestamp: String?) {
         let textAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.caption,
+            .font: UIFont.body,
             .foregroundColor: UIColor.textPrimary
         ]
 
@@ -98,7 +98,7 @@ class PushNotificationDetailsView: UIControl {
             highlightedRange = NSRange(location: text.count + 1, length: title.count)
 
             let titleAttributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.captionStrong,
+                .font: UIFont.bodyStrong,
                 .foregroundColor: UIColor.textAction
             ]
 
@@ -116,7 +116,7 @@ class PushNotificationDetailsView: UIControl {
             let valueRange = NSRange(location: text.count + 1, length: value.count)
 
             let valueAttributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.captionStrong,
+                .font: UIFont.bodyStrong,
                 .foregroundColor: UIColor.textPrimary
             ]
 
@@ -146,7 +146,7 @@ class PushNotificationDetailsView: UIControl {
             heightAnchor.constraint(greaterThanOrEqualToConstant: 44),
 
             magnifyingIconView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            magnifyingIconView.centerYAnchor.constraint(equalTo: textLabel.firstBaselineAnchor, constant: -.smallSpacing),
+            magnifyingIconView.bottomAnchor.constraint(equalTo: textLabel.firstBaselineAnchor, constant: 3),
 
             textLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
             textLabel.trailingAnchor.constraint(lessThanOrEqualTo: timestampLabel.leadingAnchor, constant: -.mediumLargeSpacing),
