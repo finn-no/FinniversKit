@@ -69,7 +69,12 @@ public class HorizontalIconCollectionViewCell: UICollectionViewCell {
         iconImageView.image = viewModel.image
         titleLabel.text = viewModel.title
         bodyLabel.text = viewModel.text
-        accessibilityLabel = "\(viewModel.title): \(viewModel.text)"
+
+        if let title = viewModel.title {
+            accessibilityLabel = "\(title): \(viewModel.text)"
+        } else {
+            accessibilityLabel = "\(viewModel.text)"
+        }
     }
 
     private func setup() {
