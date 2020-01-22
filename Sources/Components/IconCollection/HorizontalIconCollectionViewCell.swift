@@ -23,8 +23,8 @@ public class HorizontalIconCollectionViewCell: UICollectionViewCell {
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
+        imageView.setContentHuggingPriority(.required, for: .horizontal)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
