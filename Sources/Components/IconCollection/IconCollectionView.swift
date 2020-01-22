@@ -100,7 +100,7 @@ public final class IconCollectionView: UIView {
         let cellRows = cellSizes.chunked(into: numberOfCellsInRow)
         let totalHeight = cellRows.compactMap { $0.max(by: { $0.height < $1.height }) }.reduce(0, { $0 + $1.height })
 
-        let extraSpacing: CGFloat = .mediumSpacing * CGFloat(cellRows.count)
+        let extraSpacing: CGFloat = .mediumSpacing * CGFloat(cellRows.count - 1)
         return CGSize(width: targetWidth, height: totalHeight + extraSpacing + margins.verticalMargins)
     }
 }
