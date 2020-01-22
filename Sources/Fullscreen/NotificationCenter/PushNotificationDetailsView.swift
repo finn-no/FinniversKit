@@ -23,20 +23,10 @@ class PushNotificationDetailsView: UIControl {
         return imageView
     }()
 
-    private lazy var textLabel = Label(
-        style: .detail,
-        withAutoLayout: true
-    )
-
-    private lazy var arrowIconView: UIImageView = {
-        let image = UIImage(named: .arrowRight).withRenderingMode(.alwaysTemplate)
-        let imageView = UIImageView(image: image)
-        imageView.tintColor = .textAction
-        imageView.contentMode = .scaleAspectFit
-        imageView.widthAnchor.constraint(equalToConstant: 10).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 10).isActive = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    private lazy var textLabel: Label = {
+        let label = Label(style: .detail, withAutoLayout: true)
+        label.numberOfLines = 2
+        return label
     }()
 
     private lazy var timestampLabel = Label(
@@ -44,12 +34,15 @@ class PushNotificationDetailsView: UIControl {
         withAutoLayout: true
     )
 
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.alignment = .center
-        stackView.isUserInteractionEnabled = false
-        return stackView
-    }()
+    private lazy var textLabelToSuperviewConstraint = textLabel.leadingAnchor.constraint(
+        equalTo: leadingAnchor,
+        constant: .mediumLargeSpacing
+    )
+
+    private lazy var textLabelToMagnifyingIconConstraint = textLabel.leadingAnchor.constraint(
+        equalTo: magnifyingIconView.trailingAnchor,
+        constant: .verySmallSpacing
+    )
 
     private var highlightedRange: NSRange?
     private var attributedString: NSMutableAttributedString?
@@ -71,7 +64,6 @@ class PushNotificationDetailsView: UIControl {
         didSet {
             guard !isHighlighted, oldValue else { return }
             guard let range = highlightedRange else { return }
-            arrowIconView.tintColor = .textAction
             attributedString?.removeAttribute(.underlineStyle, range: range)
             attributedString?.addAttribute(.foregroundColor, value: UIColor.textAction, range: range)
             textLabel.attributedText = attributedString
@@ -81,7 +73,6 @@ class PushNotificationDetailsView: UIControl {
     override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         guard super.beginTracking(touch, with: event) else { return false }
         guard let range = highlightedRange else { return false }
-        arrowIconView.tintColor = .linkButtonHighlightedTextColor
         attributedString?.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
         attributedString?.addAttribute(.foregroundColor, value: UIColor.linkButtonHighlightedTextColor, range: range)
         textLabel.attributedText = attributedString
@@ -99,7 +90,9 @@ class PushNotificationDetailsView: UIControl {
         switch details {
         case let .savedSearch(text, title):
             magnifyingIconView.isHidden = false
-            arrowIconView.isHidden = false
+
+            textLabelToSuperviewConstraint.isActive = false
+            textLabelToMagnifyingIconConstraint.isActive = true
 
             let textRange = NSRange(location: 0, length: text.count + 1)
             highlightedRange = NSRange(location: text.count + 1, length: title.count)
@@ -115,7 +108,9 @@ class PushNotificationDetailsView: UIControl {
 
         case let .priceChange(text, value):
             magnifyingIconView.isHidden = true
-            arrowIconView.isHidden = true
+
+            textLabelToSuperviewConstraint.isActive = true
+            textLabelToMagnifyingIconConstraint.isActive = false
 
             let textRange = NSRange(location: 0, length: text.count + 1)
             let valueRange = NSRange(location: text.count + 1, length: value.count)
@@ -141,18 +136,24 @@ class PushNotificationDetailsView: UIControl {
     // MARK: - Private methods
 
     private func setup() {
-        stackView.addArrangedSubview(magnifyingIconView)
-        stackView.addArrangedSubview(textLabel)
-        stackView.addArrangedSubview(arrowIconView)
-        stackView.addArrangedSubview(UIView())
-        stackView.addArrangedSubview(timestampLabel)
-        stackView.setCustomSpacing(.smallSpacing, after: magnifyingIconView)
-        addSubview(stackView)
+        addSubview(magnifyingIconView)
+        addSubview(textLabel)
+        addSubview(timestampLabel)
+
+        timestampLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         NSLayoutConstraint.activate([
-            stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing)
+            heightAnchor.constraint(greaterThanOrEqualToConstant: 44),
+
+            magnifyingIconView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            magnifyingIconView.centerYAnchor.constraint(equalTo: textLabel.firstBaselineAnchor, constant: -.smallSpacing),
+
+            textLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            textLabel.trailingAnchor.constraint(lessThanOrEqualTo: timestampLabel.leadingAnchor, constant: -.mediumLargeSpacing),
+            textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
+
+            timestampLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            timestampLabel.firstBaselineAnchor.constraint(equalTo: textLabel.firstBaselineAnchor)
         ])
     }
 }

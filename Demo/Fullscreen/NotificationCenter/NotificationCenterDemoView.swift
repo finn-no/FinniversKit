@@ -22,12 +22,12 @@ class NotificationCenterDemoView: UIView {
     private var data = [
         Section(title: "I dag", items: [
             NotificationModel(
-                pushNotificationDetails: .savedSearch(text: "Nytt treff i", title: "Husstander"),
+                pushNotificationDetails: .savedSearch(text: "Nytt treff:", title: "Hus som jeg må kjøpe før jeg fyller 40 år"),
                 imagePath: "https://jwproperty.com/files/wp-content/uploads/2015/01/Smart_House-Valley_Hua_Hin0131.jpg",
                 read: false,
                 ribbonViewModel: RibbonViewModel(title: "Solgt", style: .warning)),
             NotificationModel(
-                pushNotificationDetails: .savedSearch(text: "Nytt treff i", title: "Husstander"),
+                pushNotificationDetails: .savedSearch(text: "Nytt treff:", title: "Husstander"),
                 imagePath: "http://i3.au.reastatic.net/home-ideas/raw/a96671bab306bcb39783bc703ac67f0278ffd7de0854d04b7449b2c3ae7f7659/facades.jpg",
                 read: false,
                 ribbonViewModel: nil),
@@ -39,22 +39,22 @@ class NotificationCenterDemoView: UIView {
                 read: true,
                 ribbonViewModel: RibbonViewModel(title: "Ny pris", style: .success)),
             NotificationModel(
-                pushNotificationDetails: .savedSearch(text: "Nytt treff i", title: "Husstander"),
+                pushNotificationDetails: .savedSearch(text: "Nytt treff:", title: "Husstander"),
                 imagePath: "http://jonvilma.com/images/house-6.jpg",
                 read: false,
                 ribbonViewModel: RibbonViewModel(title: "Inaktiv", style: .disabled)),
             NotificationModel(
-                pushNotificationDetails: .savedSearch(text: "Nytt treff i", title: "Husstander"),
+                pushNotificationDetails: .savedSearch(text: "Nytt treff:", title: "Husstander"),
                 imagePath: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
                 read: true,
                 ribbonViewModel: nil),
             NotificationModel(
-                pushNotificationDetails: .savedSearch(text: "Nytt treff i", title: "Husstander"),
+                pushNotificationDetails: .savedSearch(text: "Nytt treff:", title: "Husstander"),
                 imagePath: "https://i.pinimg.com/736x/bf/6d/73/bf6d73ab0234f3ba1a615b22d2dc7e74--home-exterior-design-contemporary-houses.jpg",
                 read: true,
                 ribbonViewModel: nil),
             NotificationModel(
-                pushNotificationDetails: .savedSearch(text: "Nytt treff i", title: "Husstander"),
+                pushNotificationDetails: .savedSearch(text: "Nytt treff:", title: "Husstander"),
                 imagePath: "https://www.tumbleweedhouses.com/wp-content/uploads/tumbleweed-tiny-house-cypress-black-roof-hp.jpg",
                 read: true,
                 ribbonViewModel: nil)

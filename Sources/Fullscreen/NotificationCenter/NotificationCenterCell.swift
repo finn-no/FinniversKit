@@ -48,7 +48,7 @@ class NotificationCenterCell: UITableViewCell {
     }()
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .body, withAutoLayout: true)
+        let label = Label(style: .title3, withAutoLayout: true)
         label.numberOfLines = 2
         return label
     }()
@@ -89,7 +89,7 @@ class NotificationCenterCell: UITableViewCell {
         savedSearchLinkView.configure(with: model?.pushNotificationDetails, timestamp: timestamp)
 
         titleLabel.text = model?.title
-        titleLabel.font = model?.read == true ? .body : .bodyStrong
+        titleLabel.font = model?.read == true ? .title3 : .title3Strong
         backgroundColor = model?.read == true ? .bgPrimary : .bgSecondary
         separatorInset = .leadingInset(adImageWidth + .largeSpacing)
 
@@ -134,7 +134,6 @@ private extension NotificationCenterCell {
             savedSearchLinkView.topAnchor.constraint(equalTo: contentView.topAnchor),
             savedSearchLinkView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             savedSearchLinkView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            savedSearchLinkView.heightAnchor.constraint(equalToConstant: 44),
 
             remoteImageView.topAnchor.constraint(equalTo: savedSearchLinkView.bottomAnchor),
             remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
