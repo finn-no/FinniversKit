@@ -54,8 +54,6 @@ public class HorizontalIconCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    private lazy var textWrappingView = UIView(withAutoLayout: true)
-
     // MARK: - Init
 
     public override init(frame: CGRect) {
