@@ -13,25 +13,10 @@ public class HorizontalIconCollectionViewCell: UICollectionViewCell {
         let imageSize = viewModel.image.size
         let textWidth = width - imageSize.width - (3 * titleSideMargin)
 
-        let textRect = viewModel.text.boundingRect(
-            with: CGSize(width: textWidth, height: CGFloat.greatestFiniteMagnitude),
-            options: .usesLineFragmentOrigin,
-            attributes: [.font: UIFont.body],
-            context: nil
-        )
+        let titleHeight = viewModel.title?.height(withConstrainedWidth: textWidth, font: titleStyle.font) ?? 0
+        let bodyHeight = viewModel.text.height(withConstrainedWidth: textWidth, font: bodyStyle.font)
 
-        guard let title = viewModel.title else {
-            return max(imageSize.height, textRect.height)
-        }
-
-        let titleRect = title.boundingRect(
-            with: CGSize(width: textWidth, height: CGFloat.greatestFiniteMagnitude),
-            options: .usesLineFragmentOrigin,
-            attributes: [.font: UIFont.bodyStrong],
-            context: nil
-        )
-
-        let textHeight = titleRect.height + textRect.height + .smallSpacing
+        let textHeight = titleHeight + bodyHeight + .smallSpacing
 
         return max(imageSize.height, textHeight)
     }
