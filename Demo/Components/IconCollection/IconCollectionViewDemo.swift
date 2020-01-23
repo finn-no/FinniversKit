@@ -88,7 +88,7 @@ private extension Array where Element == IconCollectionViewModel {
     static var horizontalModels: [IconCollectionViewModel] {
         [
             IconCollectionViewModel(title: "Modellår", text: "2006", image: UIImage(named: .iconRealestateBedrooms)),
-            IconCollectionViewModel(title: "Kilometerstand", text: "309 000 km", image: UIImage(named: .iconRealestateApartments)),
+            IconCollectionViewModel(title: "Kilometer", text: "309 000", image: UIImage(named: .iconRealestateApartments)),
             IconCollectionViewModel(title: "Girkasse", text: "Manuell", image: UIImage(named: .iconRealestatePrice)),
             IconCollectionViewModel(title: "Drivstoff", text: "Diesel", image: UIImage(named: .iconRealestateOwner))
         ]
