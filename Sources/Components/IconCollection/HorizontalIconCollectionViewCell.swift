@@ -6,55 +6,40 @@ import UIKit
 
 public class HorizontalIconCollectionViewCell: UICollectionViewCell {
     private static let titleSideMargin = CGFloat.mediumSpacing
+    private static let titleStyle = Label.Style.body
+    private static let bodyStyle = Label.Style.bodyStrong
 
     static func height(for viewModel: IconCollectionViewModel, withWidth width: CGFloat) -> CGFloat {
         let imageSize = viewModel.image.size
-        let textWidth = width - imageSize.width - (2 * titleSideMargin)
+        let textWidth = width - imageSize.width - (3 * titleSideMargin)
 
-        let textRect = viewModel.text.boundingRect(
-            with: CGSize(width: textWidth, height: CGFloat.greatestFiniteMagnitude),
-            options: .usesLineFragmentOrigin,
-            attributes: [.font: UIFont.body],
-            context: nil
-        )
+        let titleHeight = viewModel.title?.height(withConstrainedWidth: textWidth, font: titleStyle.font) ?? 0
+        let bodyHeight = viewModel.text.height(withConstrainedWidth: textWidth, font: bodyStyle.font)
 
-        guard let title = viewModel.title else {
-            return max(imageSize.height, textRect.height)
-        }
-
-        let titleRect = title.boundingRect(
-            with: CGSize(width: textWidth, height: CGFloat.greatestFiniteMagnitude),
-            options: .usesLineFragmentOrigin,
-            attributes: [.font: UIFont.bodyStrong],
-            context: nil
-        )
-
-        let textHeight = titleRect.height + textRect.height + .smallSpacing
+        let textHeight = titleHeight + bodyHeight + .smallSpacing
 
         return max(imageSize.height, textHeight)
     }
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
+        imageView.setContentHuggingPriority(.required, for: .horizontal)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
     private lazy var titleLabel: UILabel = {
-        let label = Label(style: .body, withAutoLayout: true)
+        let label = Label(style: Self.titleStyle, withAutoLayout: true)
         label.numberOfLines = 0
         return label
     }()
 
     private lazy var bodyLabel: UILabel = {
-        let label = Label(style: .bodyStrong, withAutoLayout: true)
+        let label = Label(style: Self.bodyStyle, withAutoLayout: true)
         label.numberOfLines = 0
         return label
     }()
-
-    private lazy var textWrappingView = UIView(withAutoLayout: true)
 
     // MARK: - Init
 
@@ -84,7 +69,12 @@ public class HorizontalIconCollectionViewCell: UICollectionViewCell {
         iconImageView.image = viewModel.image
         titleLabel.text = viewModel.title
         bodyLabel.text = viewModel.text
-        accessibilityLabel = "\(viewModel.title): \(viewModel.text)"
+
+        if let title = viewModel.title {
+            accessibilityLabel = "\(title): \(viewModel.text)"
+        } else {
+            accessibilityLabel = "\(viewModel.text)"
+        }
     }
 
     private func setup() {

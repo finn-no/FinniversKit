@@ -6,18 +6,15 @@ import UIKit
 
 public class VerticalIconCollectionViewCell: UICollectionViewCell {
     private static let textSideMargin = CGFloat.mediumSpacing
+    private static let bodyStyle = Label.Style.body
 
     static func height(for viewModel: IconCollectionViewModel, withWidth width: CGFloat) -> CGFloat {
-        let textRect = viewModel.text.boundingRect(
-            with: CGSize(width: width - (2 * textSideMargin), height: CGFloat.greatestFiniteMagnitude),
-            options: .usesLineFragmentOrigin,
-            attributes: [.font: UIFont.body],
-            context: nil
-        )
+        let textWidth = width - (2 * textSideMargin)
+        let textHeight = viewModel.text.height(withConstrainedWidth: textWidth, font: bodyStyle.font)
 
         let imageHeight = viewModel.image.size.height
 
-        return textRect.height + imageHeight + .mediumSpacing
+        return textHeight + imageHeight + .mediumSpacing
     }
 
     private lazy var iconImageView: UIImageView = {
@@ -29,7 +26,7 @@ public class VerticalIconCollectionViewCell: UICollectionViewCell {
     }()
 
     private lazy var textLabel: UILabel = {
-        let label = Label(style: .body, withAutoLayout: true)
+        let label = Label(style: Self.bodyStyle, withAutoLayout: true)
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
