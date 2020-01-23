@@ -20,7 +20,6 @@ public extension NSAttributedString {
         let indentation = indentation / 2
         paragraphStyle.tabStops = [NSTextTab(textAlignment: .left, location: indentation, options: nonOptions)]
         paragraphStyle.defaultTabInterval = indentation
-        paragraphStyle.lineSpacing = font.lineSpacing
         paragraphStyle.paragraphSpacing = paragraphSpacing
         paragraphStyle.headIndent = indentation * 3
 
@@ -51,24 +50,5 @@ public extension NSAttributedString {
         }
 
         return bulletList
-    }
-}
-
-// MARK: - Private extensions
-
-private extension UIFont {
-    var lineSpacing: CGFloat {
-        switch pointSize {
-        case CGFloat.leastNormalMagnitude..<12:
-            return 2
-        case 12:
-            return 3
-        case 14:
-            return 4
-        case 16:
-            return 5
-        default:
-            return .mediumSpacing
-        }
     }
 }
