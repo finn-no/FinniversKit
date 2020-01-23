@@ -97,6 +97,13 @@ public protocol SearchListEmptyViewDelegate: AnyObject {
         ])
     }
 
+    // MARK: - Overrides
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        button.style = .utility
+    }
+
     // MARK: - Public methods
 
     public func configure(with viewModel: SearchListEmptyViewModel, for state: SearchListEmptyView.ViewState) {

@@ -78,6 +78,13 @@ public class SaveSearchPromptView: UIView {
         ])
     }
 
+    // MARK: - Overrides
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        positiveButton.style = .utility
+    }
+
     // MARK: - Public methods
 
     public func configure(title: String, positiveButtonTitle: String) {
