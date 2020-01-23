@@ -146,6 +146,7 @@ private class RatingView: UIView {
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.spacing = .mediumSpacing
+        stackView.isUserInteractionEnabled = false
         return stackView
     }()
 
@@ -155,6 +156,7 @@ private class RatingView: UIView {
         imageView.isUserInteractionEnabled = true
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .btnPrimary
+        imageView.isUserInteractionEnabled = false
 
         return imageView
     }()
@@ -164,6 +166,7 @@ private class RatingView: UIView {
         label.textAlignment = .center
         label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true
+        label.isUserInteractionEnabled = false
         return label
     }()
 
