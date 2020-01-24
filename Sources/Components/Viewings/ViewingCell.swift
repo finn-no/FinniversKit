@@ -99,13 +99,6 @@ class ViewingCell: UITableViewCell {
         ])
     }
 
-    // MARK: - Overrides
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        addToCalendarButton.style = .utility
-    }
-
     // MARK: - Public methods
 
     public func configure(with viewModel: ViewingCellViewModel, addToCalendarButtonTitle: String) {
