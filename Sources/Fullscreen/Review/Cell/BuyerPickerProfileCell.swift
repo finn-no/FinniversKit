@@ -28,7 +28,7 @@ class BuyerPickerProfileCell: UITableViewCell {
     lazy var hairlineView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .bgSecondary
+        view.backgroundColor = .tableViewSeparator
         return view
     }()
 
@@ -67,8 +67,8 @@ class BuyerPickerProfileCell: UITableViewCell {
 
             hairlineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             hairlineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
-            hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
-            hairlineView.heightAnchor.constraint(equalToConstant: 2)
+            hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: .mediumSpacing),
+            hairlineView.heightAnchor.constraint(equalToConstant: 1)
         ])
 
         selectionStyle = .none
