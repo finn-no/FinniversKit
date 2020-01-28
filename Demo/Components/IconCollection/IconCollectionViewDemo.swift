@@ -70,6 +70,7 @@ public class IconCollectionDemoView: UIView, Tweakable {
             collectionView.backgroundColor = .bgSecondary
             collectionView.layer.cornerRadius = 8
             collectionView.clipsToBounds = true
+            collectionView.tintColor = .textPrimary
 
         case .vertical:
             collectionView.configure(with: .verticalModels)
@@ -87,10 +88,10 @@ public class IconCollectionDemoView: UIView, Tweakable {
 private extension Array where Element == IconCollectionViewModel {
     static var horizontalModels: [IconCollectionViewModel] {
         [
-            IconCollectionViewModel(title: "Modellår", text: "2006", image: UIImage(named: .iconRealestateBedrooms)),
-            IconCollectionViewModel(title: "Kilometer", text: "309 000", image: UIImage(named: .iconRealestateApartments)),
-            IconCollectionViewModel(title: "Girkasse", text: "Manuell", image: UIImage(named: .iconRealestatePrice)),
-            IconCollectionViewModel(title: "Drivstoff", text: "Diesel", image: UIImage(named: .iconRealestateOwner))
+            IconCollectionViewModel(title: "Modellår", text: "2006", image: UIImage(named: .iconRealestateBedrooms).withRenderingMode(.alwaysTemplate)),
+            IconCollectionViewModel(title: "Kilometer", text: "309 000", image: UIImage(named: .iconRealestateApartments).withRenderingMode(.alwaysTemplate)),
+            IconCollectionViewModel(title: "Girkasse", text: "Manuell", image: UIImage(named: .iconRealestatePrice).withRenderingMode(.alwaysTemplate)),
+            IconCollectionViewModel(title: "Drivstoff", text: "Diesel", image: UIImage(named: .iconRealestateOwner).withRenderingMode(.alwaysTemplate))
         ]
     }
 
