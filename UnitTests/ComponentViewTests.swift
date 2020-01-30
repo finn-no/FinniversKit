@@ -254,4 +254,8 @@ class ComponentViewTests: XCTestCase {
     func testColumnListsView() {
         snapshot(.columnListsView)
     }
+
+    func testKeyValueCollectionView() {
+        snapshot(.keyValueCollectionView)
+    }
 }
