@@ -66,9 +66,9 @@ class BuyerPickerProfileCell: UITableViewCell {
             profileImage.widthAnchor.constraint(equalToConstant: BuyerPickerProfileCell.profileImageSize),
 
             hairlineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            hairlineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
-            hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: .mediumSpacing),
-            hairlineView.heightAnchor.constraint(equalToConstant: 1)
+            hairlineView.leadingAnchor.constraint(equalTo: profileImage.leadingAnchor, constant: .mediumSpacing),
+            hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: .largeSpacing),
+            hairlineView.heightAnchor.constraint(equalToConstant: 0.5)
         ])
 
         selectionStyle = .none
