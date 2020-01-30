@@ -274,6 +274,7 @@
 		91D2A55A22F458EE00ED4BB9 /* SearchResultMapViewDemoViewControllerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D2A55922F458EE00ED4BB9 /* SearchResultMapViewDemoViewControllerHelpers.swift */; };
 		9A37D015952CBD1FEF4F0E20 /* FavoriteAdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DA1C8FBA8E3FF6355FB5 /* FavoriteAdViewModel.swift */; };
 		9A37D0977C75034FE9603C2C /* FavoriteAdsListTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D87CCADB89179F11253B /* FavoriteAdsListTableHeader.swift */; };
+		9A37D30A78EB61643224B799 /* HorizontalIconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D6DD0D198F26623B15F0 /* HorizontalIconCollectionViewCell.swift */; };
 		9A37D1D9D2872EC52AF374A2 /* SelfDeclarationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DF66929876DCA81666F3 /* SelfDeclarationItemView.swift */; };
 		9A37D36854B78610AFEADD5C /* UITableViewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DF20BB7306D8D1A25593 /* UITableViewCellExtensions.swift */; };
 		9A37D44F4C1D337B39F07E68 /* SelfDeclarationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D6F3E7CC1A337D037C02 /* SelfDeclarationDemoView.swift */; };
@@ -298,6 +299,7 @@
 		9B057AAE235EEBE9007B1CF0 /* MissionPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B057AAD235EEBE9007B1CF0 /* MissionPopupView.swift */; };
 		9B057AB0235EEC0F007B1CF0 /* ChristmasWishListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B057AAF235EEC0F007B1CF0 /* ChristmasWishListViewModel.swift */; };
 		9B1B12C623D5ACE900282F3E /* ColumnListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1B12C523D5ACE900282F3E /* ColumnListsView.swift */; };
+		9B1B12C923D5D10900282F3E /* KeyValueCollectionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1B12C823D5D10900282F3E /* KeyValueCollectionDemoView.swift */; };
 		9B23769122DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */; };
 		9B238F02225B95F600B0E0C2 /* InfoboxView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B238F01225B95F600B0E0C2 /* InfoboxView+Style.swift */; };
 		9B239E1122E093E800A4E9D0 /* KlimabroletContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B239E1022E093E800A4E9D0 /* KlimabroletContentView.swift */; };
@@ -305,6 +307,12 @@
 		9B28DE8223266CD100D69C15 /* Panel+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B28DE8123266CD100D69C15 /* Panel+Style.swift */; };
 		9B28DE842326732F00D69C15 /* PanelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B28DE832326732F00D69C15 /* PanelViewModel.swift */; };
 		9B28DE872326756E00D69C15 /* PanelDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B28DE862326756E00D69C15 /* PanelDemoView.swift */; };
+		9B2D17CC23E02AB800EF3B50 /* KeyValueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D17CB23E02AB800EF3B50 /* KeyValueCollectionViewCell.swift */; };
+		9B2D17CE23E02AEC00EF3B50 /* KeyValueCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D17CD23E02AEC00EF3B50 /* KeyValueCollectionDataSource.swift */; };
+		9B2D17D023E02B0700EF3B50 /* ColumnBasedFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D17CF23E02B0700EF3B50 /* ColumnBasedFlowLayout.swift */; };
+		9B2D17D223E02B2900EF3B50 /* KeyValuePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D17D123E02B2900EF3B50 /* KeyValuePair.swift */; };
+		9B2D17D423E02B4100EF3B50 /* KeyValueCollectionLayoutFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D17D323E02B4100EF3B50 /* KeyValueCollectionLayoutFactory.swift */; };
+		9B2D17D623E02B6900EF3B50 /* KeyValueCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D17D523E02B6900EF3B50 /* KeyValueCollectionView.swift */; };
 		9B2F2B3922F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2F2B3822F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift */; };
 		9B7D5A2B22E1A5AF001E4005 /* KlimabroletDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D5A2A22E1A5AF001E4005 /* KlimabroletDemoViewController.swift */; };
 		9B7D5A2D22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D5A2C22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift */; };
@@ -467,7 +475,7 @@
 		CFB61374229ACA6900DE283D /* IconCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB61373229ACA6900DE283D /* IconCollectionView.swift */; };
 		CFB61376229ACB0C00DE283D /* IconCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB61375229ACB0C00DE283D /* IconCollectionViewModel.swift */; };
 		CFB61379229ACB8600DE283D /* IconCollectionViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB61378229ACB8600DE283D /* IconCollectionViewDemo.swift */; };
-		CFB6137C229AD43400DE283D /* IconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB6137A229AD41600DE283D /* IconCollectionViewCell.swift */; };
+		CFB6137C229AD43400DE283D /* VerticalIconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB6137A229AD41600DE283D /* VerticalIconCollectionViewCell.swift */; };
 		CFB775F22359D8360097C0ED /* FloatingButton+Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB775F12359D8360097C0ED /* FloatingButton+Favorites.swift */; };
 		CFCC3D3123686C0D002DD4CF /* FooterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC3D3023686C0D002DD4CF /* FooterButtonView.swift */; };
 		CFCDDA5C2273022A005E1F4A /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDDA5B2273022A005E1F4A /* CalloutView.swift */; };
@@ -903,6 +911,7 @@
 		9A37D5137A47B4E2117052C3 /* FavoriteAdsListDemoViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListDemoViewHelper.swift; sourceTree = "<group>"; };
 		9A37D61B28BC0BA6CA6110A5 /* RemoteImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
 		9A37D6A0C42E36E51F034413 /* VisibilityDrivenTitleDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisibilityDrivenTitleDemoView.swift; sourceTree = "<group>"; };
+		9A37D6DD0D198F26623B15F0 /* HorizontalIconCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalIconCollectionViewCell.swift; sourceTree = "<group>"; };
 		9A37D6F3E7CC1A337D037C02 /* SelfDeclarationDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfDeclarationDemoView.swift; sourceTree = "<group>"; };
 		9A37D728DC9D805D74CB8D4F /* FavoriteAdsSortingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsSortingView.swift; sourceTree = "<group>"; };
 		9A37D786CF271A4813AAEB66 /* SelfDeclarationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfDeclarationView.swift; sourceTree = "<group>"; };
@@ -923,6 +932,7 @@
 		9B057AAD235EEBE9007B1CF0 /* MissionPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPopupView.swift; sourceTree = "<group>"; };
 		9B057AAF235EEC0F007B1CF0 /* ChristmasWishListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasWishListViewModel.swift; sourceTree = "<group>"; };
 		9B1B12C523D5ACE900282F3E /* ColumnListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnListsView.swift; sourceTree = "<group>"; };
+		9B1B12C823D5D10900282F3E /* KeyValueCollectionDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueCollectionDemoView.swift; sourceTree = "<group>"; };
 		9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutAnchorExtensions.swift; sourceTree = "<group>"; };
 		9B238F01225B95F600B0E0C2 /* InfoboxView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoboxView+Style.swift"; sourceTree = "<group>"; };
 		9B239E1022E093E800A4E9D0 /* KlimabroletContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletContentView.swift; sourceTree = "<group>"; };
@@ -930,6 +940,12 @@
 		9B28DE8123266CD100D69C15 /* Panel+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel+Style.swift"; sourceTree = "<group>"; };
 		9B28DE832326732F00D69C15 /* PanelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelViewModel.swift; sourceTree = "<group>"; };
 		9B28DE862326756E00D69C15 /* PanelDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelDemoView.swift; sourceTree = "<group>"; };
+		9B2D17CB23E02AB800EF3B50 /* KeyValueCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueCollectionViewCell.swift; sourceTree = "<group>"; };
+		9B2D17CD23E02AEC00EF3B50 /* KeyValueCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueCollectionDataSource.swift; sourceTree = "<group>"; };
+		9B2D17CF23E02B0700EF3B50 /* ColumnBasedFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnBasedFlowLayout.swift; sourceTree = "<group>"; };
+		9B2D17D123E02B2900EF3B50 /* KeyValuePair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValuePair.swift; sourceTree = "<group>"; };
+		9B2D17D323E02B4100EF3B50 /* KeyValueCollectionLayoutFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueCollectionLayoutFactory.swift; sourceTree = "<group>"; };
+		9B2D17D523E02B6900EF3B50 /* KeyValueCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueCollectionView.swift; sourceTree = "<group>"; };
 		9B2F2B3822F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryDemoPageViewController.swift; sourceTree = "<group>"; };
 		9B7D5A2A22E1A5AF001E4005 /* KlimabroletDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletDemoViewController.swift; sourceTree = "<group>"; };
 		9B7D5A2C22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletEventsDemoViewController.swift; sourceTree = "<group>"; };
@@ -1097,7 +1113,7 @@
 		CFB61373229ACA6900DE283D /* IconCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionView.swift; sourceTree = "<group>"; };
 		CFB61375229ACB0C00DE283D /* IconCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewModel.swift; sourceTree = "<group>"; };
 		CFB61378229ACB8600DE283D /* IconCollectionViewDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewDemo.swift; sourceTree = "<group>"; };
-		CFB6137A229AD41600DE283D /* IconCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewCell.swift; sourceTree = "<group>"; };
+		CFB6137A229AD41600DE283D /* VerticalIconCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalIconCollectionViewCell.swift; sourceTree = "<group>"; };
 		CFB775F12359D8360097C0ED /* FloatingButton+Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingButton+Favorites.swift"; sourceTree = "<group>"; };
 		CFCC3D3023686C0D002DD4CF /* FooterButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterButtonView.swift; sourceTree = "<group>"; };
 		CFCDDA5B2273022A005E1F4A /* CalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalloutView.swift; sourceTree = "<group>"; };
@@ -1752,6 +1768,7 @@
 				14DC126821593B0000326DC3 /* HorizontalSlide */,
 				CFB61372229ACA5200DE283D /* IconCollection */,
 				CF136ACB220320DD00247B30 /* Infobox */,
+				9B2D17CA23E02AA200EF3B50 /* KeyValueCollectionView */,
 				9BBC8ADC22DF4CA2003453B6 /* Klimabrolet */,
 				4447F6741FDB2B110033DBC1 /* Label */,
 				44AFCE44215839F6005984DB /* LoadingIndicator */,
@@ -2513,6 +2530,14 @@
 			path = ColumnListsView;
 			sourceTree = "<group>";
 		};
+		9B1B12C723D5D0F400282F3E /* KeyValueCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				9B1B12C823D5D10900282F3E /* KeyValueCollectionDemoView.swift */,
+			);
+			path = KeyValueCollectionView;
+			sourceTree = "<group>";
+		};
 		9B239E0F22E093D000A4E9D0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -2538,6 +2563,27 @@
 				9B28DE862326756E00D69C15 /* PanelDemoView.swift */,
 			);
 			path = Panel;
+			sourceTree = "<group>";
+		};
+		9B2D17CA23E02AA200EF3B50 /* KeyValueCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				9B2D17CF23E02B0700EF3B50 /* ColumnBasedFlowLayout.swift */,
+				9B2D17D523E02B6900EF3B50 /* KeyValueCollectionView.swift */,
+				9B2D17D123E02B2900EF3B50 /* KeyValuePair.swift */,
+				9B2D17D723E02BA600EF3B50 /* Internal */,
+			);
+			path = KeyValueCollectionView;
+			sourceTree = "<group>";
+		};
+		9B2D17D723E02BA600EF3B50 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				9B2D17CB23E02AB800EF3B50 /* KeyValueCollectionViewCell.swift */,
+				9B2D17CD23E02AEC00EF3B50 /* KeyValueCollectionDataSource.swift */,
+				9B2D17D323E02B4100EF3B50 /* KeyValueCollectionLayoutFactory.swift */,
+			);
+			path = Internal;
 			sourceTree = "<group>";
 		};
 		9B8CB0A623A3D37A00A79A9E /* BetaFeatureView */ = {
@@ -3291,7 +3337,6 @@
 		CF8F021421DCC5B2004C4042 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				4940480323CDC54E00ECBCFD /* Viewings */,
 				CFDF39CC238541D400D3B966 /* AddressCardView */,
 				083349EA21EF24AE000E68D3 /* BottomSheet */,
 				CF8F021D21DCC691004C4042 /* Broadcast */,
@@ -3335,10 +3380,12 @@
 				895175912248CFC2008003FB /* StepIndicator */,
 				CF376C14231D3D8500ED2B24 /* StepSlider */,
 				CF8F021C21DCC685004C4042 /* Switch */,
+				9B1B12C723D5D0F400282F3E /* KeyValueCollectionView */,
 				CF8F022421DCC6EE004C4042 /* TextField */,
 				081F51B8222930B400026C84 /* TextView */,
 				CF8F022521DCC6F8004C4042 /* Toast */,
 				F2597C74231D3DF700BE74EC /* VerificationView */,
+				4940480323CDC54E00ECBCFD /* Viewings */,
 				9A37D777D2BE560FFC071E4D /* VisibilityDrivenTitleView */,
 			);
 			path = Components;
@@ -3763,9 +3810,10 @@
 			isa = PBXGroup;
 			children = (
 				CFB61373229ACA6900DE283D /* IconCollectionView.swift */,
-				CFB6137A229AD41600DE283D /* IconCollectionViewCell.swift */,
+				CFB6137A229AD41600DE283D /* VerticalIconCollectionViewCell.swift */,
 				CF3F85BE229C29B3003A6748 /* IconCollectionViewFlowLayout.swift */,
 				CFB61375229ACB0C00DE283D /* IconCollectionViewModel.swift */,
+				9A37D6DD0D198F26623B15F0 /* HorizontalIconCollectionViewCell.swift */,
 			);
 			path = IconCollection;
 			sourceTree = "<group>";
@@ -4677,6 +4725,7 @@
 				144959E02122D8C20084549F /* AssetsDemoView.swift in Sources */,
 				CFCDDA5F22731D60005E1F4A /* CalloutDemoView.swift in Sources */,
 				44A149F12137805C0053D5F7 /* SavedSearchesListViewDemoView.swift in Sources */,
+				9B1B12C923D5D10900282F3E /* KeyValueCollectionDemoView.swift in Sources */,
 				62AAB23C2327901D007766E6 /* RadioButtonCellDemoView.swift in Sources */,
 				F26CAC0423AC9BDC00CACF71 /* OrderTotalSumDemoView.swift in Sources */,
 				CFF9727321C3BA2200C85238 /* BannerTransparencyDemoView.swift in Sources */,
@@ -4771,6 +4820,7 @@
 				55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */,
 				CF87A857229C0C5700DA8243 /* ContactFormView.swift in Sources */,
 				441FE432209A24E500B04EF1 /* AdsGridViewLayoutConfiguration.swift in Sources */,
+				9B2D17CC23E02AB800EF3B50 /* KeyValueCollectionViewCell.swift in Sources */,
 				CFCC3D3123686C0D002DD4CF /* FooterButtonView.swift in Sources */,
 				431875C1211180F100D71723 /* BuyerPickerProfileCell.swift in Sources */,
 				9BBC8AE122DF50E5003453B6 /* KlimabroletView.swift in Sources */,
@@ -4844,6 +4894,7 @@
 				9BB12AC2238289F100A04F61 /* StatisticsModel.swift in Sources */,
 				DAAAC8FD21C14FEE0071B028 /* FireworksView.swift in Sources */,
 				8951759A224902E4008003FB /* StepDotConnector.swift in Sources */,
+				9B2D17D423E02B4100EF3B50 /* KeyValueCollectionLayoutFactory.swift in Sources */,
 				6266C07022081EEA00FB8004 /* StatisticsItemModel.swift in Sources */,
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
 				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
@@ -4889,12 +4940,14 @@
 				14EBA258215A633800613E5A /* LoadingView.swift in Sources */,
 				9B23769122DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift in Sources */,
 				44A557AE22E7211E001667AE /* RemoteImageTableViewCell.swift in Sources */,
+				9B2D17D023E02B0700EF3B50 /* ColumnBasedFlowLayout.swift in Sources */,
 				9B239E1122E093E800A4E9D0 /* KlimabroletContentView.swift in Sources */,
 				441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */,
 				CF5CA71722F87AED007C4124 /* NeighborhoodProfileInfoViewCell.swift in Sources */,
 				DAB7FAAA21B690DD00BF8CC6 /* BottomSheetGestureController.swift in Sources */,
 				DAB7FAAE21B6924E00BF8CC6 /* SpringAnimator.swift in Sources */,
 				0884C6C922B7B4580015474D /* DisclaimerView.swift in Sources */,
+				9B2D17D623E02B6900EF3B50 /* KeyValueCollectionView.swift in Sources */,
 				89A7A645225352380053D33B /* NativeAdvertDelegates.swift in Sources */,
 				DA9A223F21BA8D8C001452F0 /* BottomSheetStateController.swift in Sources */,
 				441FE42C209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift in Sources */,
@@ -4949,6 +5002,7 @@
 				CF5CA71422F87729007C4124 /* NeighborhoodProfileViewModel.swift in Sources */,
 				082D80D121C1411700831BDE /* StarView.swift in Sources */,
 				CF2E46F22319685C0085A591 /* FavoriteAdActionView.swift in Sources */,
+				9B2D17D223E02B2900EF3B50 /* KeyValuePair.swift in Sources */,
 				62432106231FE97F0027E142 /* UserAdsListEmphasizedActionCell.swift in Sources */,
 				F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */,
 				8908E85322C0D79600ED671C /* MessageFormBottomSheet.swift in Sources */,
@@ -5072,7 +5126,7 @@
 				CFF54E2E234E192A008E18BE /* FavoriteAdsSubtitleView.swift in Sources */,
 				9F213D5FD69FD3EAE67A4D2D /* FullscreenImageViewController.swift in Sources */,
 				CF164CFF230EB3D100250822 /* ContentSizedTableView.swift in Sources */,
-				CFB6137C229AD43400DE283D /* IconCollectionViewCell.swift in Sources */,
+				CFB6137C229AD43400DE283D /* VerticalIconCollectionViewCell.swift in Sources */,
 				9F2133BEBE174152BD809417 /* GalleryPreviewView.swift in Sources */,
 				CF70B95223421E3400B8A285 /* SplashView.swift in Sources */,
 				9F213ABAE416284A53AC6BA5 /* GalleryPreviewCell.swift in Sources */,
@@ -5100,6 +5154,7 @@
 				CF05BA02233B78BC003A7F1C /* FavoriteSearchEmptyView.swift in Sources */,
 				9A37D36854B78610AFEADD5C /* UITableViewCellExtensions.swift in Sources */,
 				9A37D6FADD7DBD952AA395F7 /* FavoriteAdTableViewCell.swift in Sources */,
+				9B2D17CE23E02AEC00EF3B50 /* KeyValueCollectionDataSource.swift in Sources */,
 				9BCD171523CCBB680045BD61 /* CollpsibleContentView.swift in Sources */,
 				9A37D015952CBD1FEF4F0E20 /* FavoriteAdViewModel.swift in Sources */,
 				9A37DFD7CA27F4F25F613DE2 /* FavoriteAdsListView.swift in Sources */,
@@ -5113,6 +5168,7 @@
 				9A37DCEF8B61CDA7813AFB16 /* VisibilityDrivenTitleView.swift in Sources */,
 				449C60B5234DD85C00C51A63 /* ShadowView.swift in Sources */,
 				9A37D6BC5F45EACE68F4EF37 /* FavoriteAdsListEmptyView.swift in Sources */,
+				9A37D30A78EB61643224B799 /* HorizontalIconCollectionViewCell.swift in Sources */,
 				9A37DBFD486B7C3CFDA8CBF4 /* SelfDeclarationView.swift in Sources */,
 				9A37D8D25E07F1F1F3875044 /* SelfDeclarationViewModel.swift in Sources */,
 				9A37DA10C8A9D0ABD161B810 /* SelfDeclarationItemViewModel.swift in Sources */,
