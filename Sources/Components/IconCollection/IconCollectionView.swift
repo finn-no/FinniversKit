@@ -116,10 +116,12 @@ extension IconCollectionView: UICollectionViewDataSource {
         switch alignment {
         case .horizontal:
             let cell = collectionView.dequeue(HorizontalIconCollectionViewCell.self, for: indexPath)
+            cell.tintColor = tintColor
             cell.configure(with: viewModels[indexPath.item])
             return cell
         case .vertical:
             let cell = collectionView.dequeue(VerticalIconCollectionViewCell.self, for: indexPath)
+            cell.tintColor = tintColor
             cell.configure(with: viewModels[indexPath.item])
             return cell
         }
