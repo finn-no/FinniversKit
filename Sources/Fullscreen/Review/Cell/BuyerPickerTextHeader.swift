@@ -22,7 +22,7 @@ class BuyerPickerTextHeader: UITableViewHeaderFooterView {
         let inset = UIEdgeInsets(top: .mediumLargeSpacing,
                                  left: .mediumLargeSpacing,
                                  bottom: -.largeSpacing,
-                                 right: -.mediumLargeSpacing)
+                                 right: 0)
         title.fillInSuperview(insets: inset, isActive: true)
     }
 
