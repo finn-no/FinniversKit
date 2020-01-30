@@ -7,7 +7,7 @@ import UIKit
 
 class BuyerPickerTextHeader: UITableViewHeaderFooterView {
     lazy var title: Label = {
-        let label = Label(style: .title3)
+        let label = Label(style: .title3Strong)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
