@@ -89,7 +89,7 @@ open class BasicTableViewCell: UITableViewCell {
             stackViewToDetailLabelConstraint.isActive = false
         }
 
-        if viewModel.hasChevron {
+        if viewModel.hasChevron == true {
             accessoryType = .disclosureIndicator
             selectionStyle = .default
             if #available(iOS 13.0, *) {
