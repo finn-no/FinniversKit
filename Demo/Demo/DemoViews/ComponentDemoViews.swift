@@ -63,7 +63,7 @@ public enum ComponentDemoViews: String, CaseIterable {
     case selfDeclarationView
     case collapsibleContentView
     case columnListsView
-    case keyValueCollectionView
+    case keyValueGridView
 
     public static var items: [ComponentDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -196,7 +196,7 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<CollapsibleContentDemoView>(dismissType: .dismissButton)
         case .columnListsView:
             return DemoViewController<ColumnListsDemoView>()
-        case .keyValueCollectionView:
+        case .keyValueGridView:
             return DemoViewController<KeyValueCollectionDemoView>()
         }
     }
