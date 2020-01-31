@@ -16,11 +16,11 @@ struct AdViewModel: UserAdViewModel {
 class UserAdCellDemoView: UIView, Tweakable {
 
     lazy var tweakingOptions: [TweakingOption] = [
-        TweakingOption(title: "Regular") { self.style = .regular },
-        TweakingOption(title: "Compact") { self.style = .compact },
+        TweakingOption(title: "Default") { self.style = .default },
+        TweakingOption(title: "Compact") { self.style = .compressed },
     ]
 
-    private var style: UserAdTableViewCell.Style = .regular {
+    private var style: UserAdTableViewCell.Style = .default {
         didSet {
             tableView.reloadData()
         }

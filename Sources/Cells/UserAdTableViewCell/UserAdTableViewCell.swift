@@ -10,8 +10,8 @@ public class UserAdTableViewCell: UITableViewCell {
     // MARK: - Public properties
 
     public enum Style {
-        case regular
-        case compact
+        case `default`
+        case compressed
     }
 
     public var remoteImageViewDataSource: RemoteImageViewDataSource? {
@@ -24,14 +24,14 @@ public class UserAdTableViewCell: UITableViewCell {
 
     private var model: UserAdViewModel?
 
-    private var style: Style? = .regular {
+    private var style: Style? = .default {
         didSet {
             setupStyleConstraints()
         }
     }
 
-    private static var regularImageWidth: CGFloat = 80
-    private static var compactImageWidth: CGFloat = 50
+    private static var defaultImageWidth: CGFloat = 80
+    private static var compressedImageWidth: CGFloat = 50
 
     private lazy var ribbonView = RibbonView(withAutoLayout: true)
 
@@ -88,8 +88,8 @@ public class UserAdTableViewCell: UITableViewCell {
         contentStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
         contentStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
 
-        adImageView.heightAnchor.constraint(equalToConstant: UserAdTableViewCell.regularImageWidth),
-        adImageView.widthAnchor.constraint(equalToConstant: UserAdTableViewCell.regularImageWidth),
+        adImageView.heightAnchor.constraint(equalToConstant: UserAdTableViewCell.defaultImageWidth),
+        adImageView.widthAnchor.constraint(equalToConstant: UserAdTableViewCell.defaultImageWidth),
 
         ribbonView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
     ]
@@ -98,8 +98,8 @@ public class UserAdTableViewCell: UITableViewCell {
         contentStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
         contentStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
 
-        adImageView.heightAnchor.constraint(equalToConstant: UserAdTableViewCell.compactImageWidth),
-        adImageView.widthAnchor.constraint(equalToConstant: UserAdTableViewCell.compactImageWidth),
+        adImageView.heightAnchor.constraint(equalToConstant: UserAdTableViewCell.compressedImageWidth),
+        adImageView.widthAnchor.constraint(equalToConstant: UserAdTableViewCell.compressedImageWidth),
 
         ribbonView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
     ]
@@ -146,7 +146,7 @@ public class UserAdTableViewCell: UITableViewCell {
     private func setupStyleConstraints() {
         NSLayoutConstraint.deactivate(compactConstraints + regularConstraints)
 
-        let constraints = style == .compact ? compactConstraints : regularConstraints
+        let constraints = style == .compressed ? compactConstraints : regularConstraints
         NSLayoutConstraint.activate(sharedConstraints + constraints)
     }
 
@@ -156,14 +156,14 @@ public class UserAdTableViewCell: UITableViewCell {
         self.style = style
         self.model = model
 
-        let imageInset = style == .compact ? UserAdTableViewCell.compactImageWidth : UserAdTableViewCell.regularImageWidth
+        let imageInset = style == .compressed ? UserAdTableViewCell.compressedImageWidth : UserAdTableViewCell.defaultImageWidth
         separatorInset = .leadingInset(.largeSpacing + imageInset)
 
         ribbonView.style = model.ribbonModel.style
         ribbonView.title = model.ribbonModel.title
 
         titleLabel.text = model.title
-        titleLabel.numberOfLines = style == .compact ? 1 : 2
+        titleLabel.numberOfLines = style == .compressed ? 1 : 2
 
         if let subtitle = model.subtitle {
             subtitleLabel.text = subtitle
@@ -172,7 +172,7 @@ public class UserAdTableViewCell: UITableViewCell {
 
         if let detail = model.detail {
             detailLabel.text = detail
-            detailLabel.isHidden = style == .compact
+            detailLabel.isHidden = style == .compressed
         }
     }
 
