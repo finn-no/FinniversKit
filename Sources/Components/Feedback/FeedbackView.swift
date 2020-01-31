@@ -257,7 +257,7 @@ private class ButtonView: UIView {
     }()
 
     lazy var negativeButton: Button = {
-        let button = Button(style: .default, size: .small)
+        let button = Button(style: .negativeButton(), size: .small)
         button.titleLabel?.font = .detailStrong
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -317,7 +317,6 @@ private class ButtonView: UIView {
             positiveButton.removeFromSuperview()
             negativeButton.removeFromSuperview()
         }
-        negativeButton.style = Button.Style.negativeButton()
 
         switch presentation {
         case .list:
