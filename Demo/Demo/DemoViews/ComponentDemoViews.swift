@@ -197,7 +197,7 @@ public enum ComponentDemoViews: String, CaseIterable {
         case .columnListsView:
             return DemoViewController<ColumnListsDemoView>()
         case .keyValueGridView:
-            return DemoViewController<KeyValueCollectionDemoView>()
+            return DemoViewController<KeyValueGridDemoView>()
         }
     }
 }

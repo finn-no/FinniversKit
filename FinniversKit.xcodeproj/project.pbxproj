@@ -299,7 +299,7 @@
 		9B057AAE235EEBE9007B1CF0 /* MissionPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B057AAD235EEBE9007B1CF0 /* MissionPopupView.swift */; };
 		9B057AB0235EEC0F007B1CF0 /* ChristmasWishListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B057AAF235EEC0F007B1CF0 /* ChristmasWishListViewModel.swift */; };
 		9B1B12C623D5ACE900282F3E /* ColumnListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1B12C523D5ACE900282F3E /* ColumnListsView.swift */; };
-		9B1B12C923D5D10900282F3E /* KeyValueCollectionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1B12C823D5D10900282F3E /* KeyValueCollectionDemoView.swift */; };
+		9B1B12C923D5D10900282F3E /* KeyValueGridDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1B12C823D5D10900282F3E /* KeyValueGridDemoView.swift */; };
 		9B23769122DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */; };
 		9B238F02225B95F600B0E0C2 /* InfoboxView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B238F01225B95F600B0E0C2 /* InfoboxView+Style.swift */; };
 		9B239E1122E093E800A4E9D0 /* KlimabroletContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B239E1022E093E800A4E9D0 /* KlimabroletContentView.swift */; };
@@ -927,7 +927,7 @@
 		9B057AAD235EEBE9007B1CF0 /* MissionPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPopupView.swift; sourceTree = "<group>"; };
 		9B057AAF235EEC0F007B1CF0 /* ChristmasWishListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasWishListViewModel.swift; sourceTree = "<group>"; };
 		9B1B12C523D5ACE900282F3E /* ColumnListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnListsView.swift; sourceTree = "<group>"; };
-		9B1B12C823D5D10900282F3E /* KeyValueCollectionDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueCollectionDemoView.swift; sourceTree = "<group>"; };
+		9B1B12C823D5D10900282F3E /* KeyValueGridDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueGridDemoView.swift; sourceTree = "<group>"; };
 		9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutAnchorExtensions.swift; sourceTree = "<group>"; };
 		9B238F01225B95F600B0E0C2 /* InfoboxView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoboxView+Style.swift"; sourceTree = "<group>"; };
 		9B239E1022E093E800A4E9D0 /* KlimabroletContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletContentView.swift; sourceTree = "<group>"; };
@@ -2524,7 +2524,7 @@
 		9B1B12C723D5D0F400282F3E /* KeyValueCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				9B1B12C823D5D10900282F3E /* KeyValueCollectionDemoView.swift */,
+				9B1B12C823D5D10900282F3E /* KeyValueGridDemoView.swift */,
 			);
 			path = KeyValueCollectionView;
 			sourceTree = "<group>";
@@ -4704,7 +4704,7 @@
 				144959E02122D8C20084549F /* AssetsDemoView.swift in Sources */,
 				CFCDDA5F22731D60005E1F4A /* CalloutDemoView.swift in Sources */,
 				44A149F12137805C0053D5F7 /* SavedSearchesListViewDemoView.swift in Sources */,
-				9B1B12C923D5D10900282F3E /* KeyValueCollectionDemoView.swift in Sources */,
+				9B1B12C923D5D10900282F3E /* KeyValueGridDemoView.swift in Sources */,
 				62AAB23C2327901D007766E6 /* RadioButtonCellDemoView.swift in Sources */,
 				F26CAC0423AC9BDC00CACF71 /* OrderTotalSumDemoView.swift in Sources */,
 				CFF9727321C3BA2200C85238 /* BannerTransparencyDemoView.swift in Sources */,
