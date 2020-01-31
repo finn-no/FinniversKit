@@ -158,7 +158,7 @@ public struct UserAdsFactory {
 
     private static var titles: [String] {
         return [
-            "George Condo - My twisted fantasy",
+            "George Condo - My twisted fantasy is an incredibly sick fantasy",
             "Macbook Air",
             "Fender Jaguar Blå",
             "Nixon Kamera",

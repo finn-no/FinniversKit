@@ -7,7 +7,9 @@ import FinniversKit
 
 struct AdViewModel: UserAdViewModel {
     var title: String
-    var ribbon: UserAdViewRibbonViewModel
+    var subtitle: String?
+    var detail: String?
+    var ribbonModel: UserAdViewRibbonViewModel
     var imagePath: String?
 }
 
@@ -16,7 +18,9 @@ class UserAdCellDemoView: UIView {
     private let viewModels: [UserAdViewModel] = UserAdsFactory.createAds().flatMap { $0.ads.map {
         AdViewModel(
             title: $0.title,
-            ribbon: UserAdViewRibbonViewModel(title: "Aktiv", style: .warning),
+            subtitle: $0.title,
+            detail: $0.detail,
+            ribbonModel: UserAdViewRibbonViewModel(title: "Aktiv", style: .warning),
             imagePath: $0.imagePath
         )
         } }
@@ -63,7 +67,7 @@ extension UserAdCellDemoView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(UserAdTableViewCell.self, for: indexPath)
-        cell.configure(with: .regular, model: viewModels[indexPath.row])
+        cell.configure(with: indexPath.row % 2 != 0 ? .regular : .compact, model: viewModels[indexPath.row])
         cell.remoteImageViewDataSource = self
 
         return cell

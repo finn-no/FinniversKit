@@ -5,30 +5,14 @@
 import Foundation
 import UIKit
 
-public struct UserAdViewRibbonViewModel {
-    let title: String
-    let style: RibbonView.Style
-
-    public init(title: String, style: RibbonView.Style) {
-        self.title = title
-        self.style = style
-    }
-}
-
-public enum UserAdViewStyle {
-    case regular
-    case compact
-}
-
-public protocol UserAdViewModel {
-    var title: String { get }
-    var ribbon: UserAdViewRibbonViewModel { get }
-    var imagePath: String? { get }
-}
-
 public class UserAdTableViewCell: UITableViewCell {
 
-    // MARK: - External properties
+    // MARK: - Public properties
+
+    public enum UserAdTableViewCellStyle {
+        case regular
+        case compact
+    }
 
     public var remoteImageViewDataSource: RemoteImageViewDataSource? {
         didSet {
@@ -36,8 +20,22 @@ public class UserAdTableViewCell: UITableViewCell {
         }
     }
 
-    private var style: UserAdViewStyle? = .regular
+    // MARK: - Private properties
+
     private var model: UserAdViewModel?
+
+    private var style: UserAdTableViewCellStyle? = .regular {
+        didSet {
+            setupStyleConstraints()
+        }
+    }
+
+    private static var regularImageWidth: CGFloat = 80
+    private static var compactImageWidth: CGFloat = 50
+
+    private lazy var ribbonView = RibbonView(withAutoLayout: true)
+
+    private lazy var fallbackImage = UIImage(named: .noImage)
 
     private lazy var adImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
@@ -48,28 +46,72 @@ public class UserAdTableViewCell: UITableViewCell {
     }()
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .bodyStrong, withAutoLayout: false)
-        label.numberOfLines = 2
+        let label = Label(style: .captionStrong)
         label.backgroundColor = .clear
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
     private lazy var subtitleLabel: Label = {
-        let label = Label(style: .detailStrong, withAutoLayout: false)
+        let label = Label(style: .bodyStrong)
+        label.isHidden = true
         label.backgroundColor = .clear
-        label.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
-    private lazy var ribbonView: RibbonView = RibbonView(withAutoLayout: true)
+    private lazy var detailLabel: Label = {
+        let label = Label(style: .detail)
+        label.isHidden = true
+        label.backgroundColor = .clear
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        return label
+    }()
 
-    private lazy var descriptionStack: UIStackView = {
+    private lazy var contentStack: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.alignment = .leading
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.spacing = .mediumLargeSpacing
         return stackView
     }()
+
+    private lazy var descriptionStack: UIStackView = {
+        let stackView = UIStackView(withAutoLayout: false)
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.spacing = 0
+        return stackView
+    }()
+
+    private lazy var regularConstraints: [NSLayoutConstraint] = [
+        contentStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
+        contentStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
+
+        adImageView.heightAnchor.constraint(equalToConstant: UserAdTableViewCell.regularImageWidth),
+        adImageView.widthAnchor.constraint(equalToConstant: UserAdTableViewCell.regularImageWidth),
+
+        ribbonView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+    ]
+
+    private lazy var compactConstraints: [NSLayoutConstraint] = [
+        contentStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+        contentStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
+
+        adImageView.heightAnchor.constraint(equalToConstant: UserAdTableViewCell.compactImageWidth),
+        adImageView.widthAnchor.constraint(equalToConstant: UserAdTableViewCell.compactImageWidth),
+
+        ribbonView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+    ]
+
+    private lazy var sharedConstraints: [NSLayoutConstraint] = [
+        contentStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+        contentStack.trailingAnchor.constraint(equalTo: ribbonView.leadingAnchor, constant: -.mediumSpacing),
+
+        ribbonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
+    ]
+
+    // MARK: - Init
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -80,64 +122,90 @@ public class UserAdTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Private methods
+
     private func setup() {
         isAccessibilityElement = true
         backgroundColor = .bgPrimary
         selectionStyle = .none
 
-        contentView.addSubview(adImageView)
-        contentView.addSubview(descriptionStack)
+        contentView.addSubview(contentStack)
         contentView.addSubview(ribbonView)
+
+        contentStack.addArrangedSubview(adImageView)
+        contentStack.addArrangedSubview(descriptionStack)
 
         descriptionStack.addArrangedSubview(titleLabel)
         descriptionStack.addArrangedSubview(subtitleLabel)
+        descriptionStack.addArrangedSubview(detailLabel)
 
-        NSLayoutConstraint.activate([
-            adImageView.topAnchor.constraint(equalTo: descriptionStack.topAnchor),
-            adImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -.largeSpacing),
-            adImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
-            adImageView.heightAnchor.constraint(equalToConstant: .veryLargeSpacing),
-            adImageView.widthAnchor.constraint(equalToConstant: .veryLargeSpacing),
-
-            descriptionStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .largeSpacing),
-            descriptionStack.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            descriptionStack.trailingAnchor.constraint(equalTo: ribbonView.leadingAnchor, constant: .verySmallSpacing),
-            descriptionStack.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
-
-            ribbonView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .smallSpacing),
-            ribbonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
-        ])
+        descriptionStack.setCustomSpacing(.verySmallSpacing, after: titleLabel)
+        descriptionStack.setCustomSpacing(.mediumLargeSpacing, after: subtitleLabel)
     }
 
-    public func configure(with style: UserAdViewStyle, model: UserAdViewModel) {
+    private func setupStyleConstraints() {
+        NSLayoutConstraint.deactivate(compactConstraints + regularConstraints)
+
+        let constraints = style == .compact ? compactConstraints : regularConstraints
+        NSLayoutConstraint.activate(sharedConstraints + constraints)
+    }
+
+    // MARK: Public methods
+
+    public func configure(with style: UserAdTableViewCellStyle, model: UserAdViewModel) {
         self.style = style
         self.model = model
 
-        separatorInset = .leadingInset(.mediumSpacing + .veryLargeSpacing)
+        let imageInset = style == .compact ? UserAdTableViewCell.compactImageWidth : UserAdTableViewCell.regularImageWidth
+        separatorInset = .leadingInset(.largeSpacing + imageInset)
+
+        ribbonView.style = model.ribbonModel.style
+        ribbonView.title = model.ribbonModel.title
 
         titleLabel.text = model.title
-        subtitleLabel.text = model.title
-        ribbonView.style = model.ribbon.style
-        ribbonView.title = model.ribbon.title
-    }
+        titleLabel.numberOfLines = style == .compact ? 1 : 2
 
-    public func loadImage() {
-        if let imagePath = model?.imagePath {
-            let color: UIColor? = [.toothPaste, .mint, .banana, .salmon].randomElement()
-            adImageView.loadImage(for: imagePath, imageWidth: .veryLargeSpacing, loadingColor: color, fallbackImage: UIImage(named: .noImage))
+        if let subtitle = model.subtitle {
+            subtitleLabel.text = subtitle
+            subtitleLabel.isHidden = false
+        }
+
+        if let detail = model.detail {
+            detailLabel.text = detail
+            detailLabel.isHidden = style == .compact
         }
     }
 
-    // MARK: - Superclass Overrides
+    // MARK: - Overrides
 
     public override func prepareForReuse() {
-        super.prepareForReuse()
         adImageView.cancelLoading()
         adImageView.image = nil
-        titleLabel.text = nil
-        subtitleLabel.text = nil
+
         ribbonView.title = ""
         ribbonView.style = .default
+
+        titleLabel.text = nil
+
+        [subtitleLabel, detailLabel].forEach {
+            $0.text = nil
+            $0.isHidden = true
+        }
+
+        super.prepareForReuse()
+    }
+
+}
+
+// MARK: - ImageLoading
+
+extension UserAdTableViewCell: ImageLoading {
+
+    public func loadImage() {
+        if let imagePath = model?.imagePath {
+            let loadingColor: UIColor? = [.toothPaste, .mint, .banana, .salmon].randomElement()
+            adImageView.loadImage(for: imagePath, imageWidth: .veryLargeSpacing, loadingColor: loadingColor, fallbackImage: fallbackImage)
+        }
     }
 
 }
