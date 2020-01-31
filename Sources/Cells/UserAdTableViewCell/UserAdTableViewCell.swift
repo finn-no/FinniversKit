@@ -9,7 +9,7 @@ public class UserAdTableViewCell: UITableViewCell {
 
     // MARK: - Public properties
 
-    public enum UserAdTableViewCellStyle {
+    public enum Style {
         case regular
         case compact
     }
@@ -24,7 +24,7 @@ public class UserAdTableViewCell: UITableViewCell {
 
     private var model: UserAdViewModel?
 
-    private var style: UserAdTableViewCellStyle? = .regular {
+    private var style: Style? = .regular {
         didSet {
             setupStyleConstraints()
         }
@@ -152,7 +152,7 @@ public class UserAdTableViewCell: UITableViewCell {
 
     // MARK: Public methods
 
-    public func configure(with style: UserAdTableViewCellStyle, model: UserAdViewModel) {
+    public func configure(with style: Style, model: UserAdViewModel) {
         self.style = style
         self.model = model
 

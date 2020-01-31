@@ -13,7 +13,18 @@ struct AdViewModel: UserAdViewModel {
     var imagePath: String?
 }
 
-class UserAdCellDemoView: UIView {
+class UserAdCellDemoView: UIView, Tweakable {
+
+    lazy var tweakingOptions: [TweakingOption] = [
+        TweakingOption(title: "Regular") { self.style = .regular },
+        TweakingOption(title: "Compact") { self.style = .compact },
+    ]
+
+    private var style: UserAdTableViewCell.Style = .regular {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
     private let viewModels: [UserAdViewModel] = UserAdsFactory.createAds().flatMap { $0.ads.map {
         AdViewModel(
@@ -67,7 +78,7 @@ extension UserAdCellDemoView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(UserAdTableViewCell.self, for: indexPath)
-        cell.configure(with: indexPath.row % 2 != 0 ? .regular : .compact, model: viewModels[indexPath.row])
+        cell.configure(with: style, model: viewModels[indexPath.row])
         cell.remoteImageViewDataSource = self
 
         return cell
