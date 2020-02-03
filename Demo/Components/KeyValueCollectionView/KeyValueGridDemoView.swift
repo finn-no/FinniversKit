@@ -13,10 +13,7 @@ class KeyValueGridDemoView: UIView {
         return view
     }()
 
-    private lazy var scrollView: UIScrollView = {
-      let scrollView = UIScrollView(withAutoLayout: true)
-      return scrollView
-    }()
+    private lazy var scrollView = UIScrollView(withAutoLayout: true)
 
     let sampleData = [
         KeyValuePair(title: "Omregistrering", value: "1 618 kr"),
