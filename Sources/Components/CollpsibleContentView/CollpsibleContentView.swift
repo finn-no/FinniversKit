@@ -49,6 +49,7 @@ public class CollapsibleContentView: UIView {
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .iconSecondary
         imageView.isUserInteractionEnabled = true
+        imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         return imageView
     }()
 
