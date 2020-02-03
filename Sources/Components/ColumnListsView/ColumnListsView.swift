@@ -92,20 +92,3 @@ public class ColumnListsView: UIView {
         return view
     }
 }
-
-private extension Array {
-    func chunked(by size: Int) -> [[Element]] {
-        return stride(from: 0, to: count, by: size).map {
-            Array(self[$0..<Swift.min($0 + size, count)])
-        }
-    }
-
-    func split(in columns: Int) -> [[Element]] {
-        guard columns > 0 else {
-            return []
-        }
-
-        let size = Int(ceil(Double(count) / Double(columns)))
-        return chunked(by: size)
-    }
-}

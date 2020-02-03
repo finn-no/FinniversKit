@@ -4,14 +4,16 @@
 
 import FinniversKit
 
-class KeyValueCollectionDemoView: UIView {
-    private lazy var keyValueCollection: KeyValueCollectionView = {
-        let view = KeyValueCollectionView(withAutoLayout: true)
+class KeyValueGridDemoView: UIView {
+    private lazy var keyValueGridView: KeyValueGridView = {
+        let view = KeyValueGridView(withAutoLayout: true)
         view.configure(with: sampleData)
         view.backgroundColor = .bgSecondary
         view.numberOfColumns = numberOfColumnsForTraits
         return view
     }()
+
+    private lazy var scrollView = UIScrollView(withAutoLayout: true)
 
     let sampleData = [
         KeyValuePair(title: "Omregistrering", value: "1 618 kr"),
@@ -51,13 +53,15 @@ class KeyValueCollectionDemoView: UIView {
     // MARK: - Private methods
 
     private func setup() {
-        addSubview(keyValueCollection)
         directionalLayoutMargins = NSDirectionalEdgeInsets(all: .largeSpacing)
+        addSubview(scrollView)
 
+        scrollView.addSubview(keyValueGridView)
+        scrollView.fillInSuperviewLayoutMargins()
         NSLayoutConstraint.activate([
-            keyValueCollection.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
-            keyValueCollection.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            keyValueCollection.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            keyValueGridView.topAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.topAnchor),
+            keyValueGridView.leadingAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.leadingAnchor),
+            keyValueGridView.trailingAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.trailingAnchor),
         ])
     }
 
@@ -73,6 +77,6 @@ class KeyValueCollectionDemoView: UIView {
         super.traitCollectionDidChange(previousTraitCollection)
 
         guard previousTraitCollection != traitCollection else { return }
-        keyValueCollection.numberOfColumns = numberOfColumnsForTraits
+        keyValueGridView.numberOfColumns = numberOfColumnsForTraits
     }
 }
