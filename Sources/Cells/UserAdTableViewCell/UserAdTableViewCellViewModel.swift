@@ -9,10 +9,10 @@ public protocol UserAdTableViewCellViewModel {
     var subtitleText: String? { get }
     var detailText: String? { get }
     var imagePath: String? { get }
-    var ribbon: UserAdTableViewCellRibbon { get }
+    var ribbon: UserAdTableViewCellRibbonModel { get }
 }
 
-public struct UserAdTableViewCellRibbon {
+public struct UserAdTableViewCellRibbonModel {
     let title: String
     let style: RibbonView.Style
 

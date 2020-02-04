@@ -10,7 +10,7 @@ struct AdViewModel: UserAdTableViewCellViewModel {
     var subtitleText: String?
     var detailText: String?
     var imagePath: String?
-    var ribbon: UserAdTableViewCellRibbon
+    var ribbon: UserAdTableViewCellRibbonModel
 }
 
 class UserAdCellDemoView: UIView, Tweakable {
@@ -32,7 +32,7 @@ class UserAdCellDemoView: UIView, Tweakable {
             subtitleText: $0.title,
             detailText: $0.detail,
             imagePath: $0.imagePath,
-            ribbon: UserAdTableViewCellRibbon(title: "Aktiv", style: .warning)
+            ribbon: UserAdTableViewCellRibbonModel(title: "Aktiv", style: .warning)
         )
         } }
 
