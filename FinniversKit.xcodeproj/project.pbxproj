@@ -5431,7 +5431,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 32.2.2;
+				MARKETING_VERSION = 33.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.FinniversKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5474,7 +5474,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 32.2.2;
+				MARKETING_VERSION = 33.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.FinniversKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
