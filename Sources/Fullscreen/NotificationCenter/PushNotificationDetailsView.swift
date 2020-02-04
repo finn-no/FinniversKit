@@ -110,7 +110,7 @@ class PushNotificationDetailsView: UIControl {
             magnifyingIconView.isHidden = true
 
             textLabelToSuperviewConstraint.isActive = magnifyingIconView.isHidden
-            textLabelToMagnifyingIconConstraint.isActive = magnifyingIconView.isHidden
+            textLabelToMagnifyingIconConstraint.isActive = !magnifyingIconView.isHidden
 
             highlightedRange = nil
             let textRange = NSRange(location: 0, length: text.count + 1)

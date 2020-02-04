@@ -68,7 +68,7 @@ class NotificationCenterCell: UITableViewCell {
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.distribution = .equalCentering
-        stackView.spacing = .mediumSpacing
+        stackView.spacing = .smallSpacing
         return stackView
     }()
 
@@ -152,14 +152,14 @@ private extension NotificationCenterCell {
             savedSearchLinkView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             savedSearchLinkView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
 
-            remoteImageView.topAnchor.constraint(greaterThanOrEqualTo: savedSearchLinkView.bottomAnchor),
             remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            remoteImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
+            remoteImageView.topAnchor.constraint(equalTo: savedSearchLinkView.bottomAnchor),
+            remoteImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
             remoteImageView.widthAnchor.constraint(equalToConstant: adImageWidth),
             remoteImageView.heightAnchor.constraint(equalToConstant: adImageWidth),
 
             stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            stackView.topAnchor.constraint(equalTo: remoteImageView.topAnchor),
+            stackView.topAnchor.constraint(equalTo: savedSearchLinkView.bottomAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
 
