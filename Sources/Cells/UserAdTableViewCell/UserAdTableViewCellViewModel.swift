@@ -4,15 +4,15 @@
 
 import Foundation
 
-public protocol UserAdViewModel {
-    var title: String { get }
-    var subtitle: String? { get }
-    var detail: String? { get }
-    var ribbonModel: UserAdViewRibbonViewModel { get }
+public protocol UserAdTableViewCellViewModel {
+    var titleText: String { get }
+    var subtitleText: String? { get }
+    var detailText: String? { get }
     var imagePath: String? { get }
+    var ribbon: UserAdTableViewCellRibbon { get }
 }
 
-public struct UserAdViewRibbonViewModel {
+public struct UserAdTableViewCellRibbon {
     let title: String
     let style: RibbonView.Style
 

@@ -5,12 +5,12 @@
 import Foundation
 import FinniversKit
 
-struct AdViewModel: UserAdViewModel {
-    var title: String
-    var subtitle: String?
-    var detail: String?
-    var ribbonModel: UserAdViewRibbonViewModel
+struct AdViewModel: UserAdTableViewCellViewModel {
+    var titleText: String
+    var subtitleText: String?
+    var detailText: String?
     var imagePath: String?
+    var ribbon: UserAdTableViewCellRibbon
 }
 
 class UserAdCellDemoView: UIView, Tweakable {
@@ -26,13 +26,13 @@ class UserAdCellDemoView: UIView, Tweakable {
         }
     }
 
-    private let viewModels: [UserAdViewModel] = UserAdsFactory.createAds().flatMap { $0.ads.map {
+    private let viewModels: [UserAdTableViewCellViewModel] = UserAdsFactory.createAds().flatMap { $0.ads.map {
         AdViewModel(
-            title: $0.title,
-            subtitle: $0.title,
-            detail: $0.detail,
-            ribbonModel: UserAdViewRibbonViewModel(title: "Aktiv", style: .warning),
-            imagePath: $0.imagePath
+            titleText: $0.title,
+            subtitleText: $0.title,
+            detailText: $0.detail,
+            imagePath: $0.imagePath,
+            ribbon: UserAdTableViewCellRibbon(title: "Aktiv", style: .warning)
         )
         } }
 

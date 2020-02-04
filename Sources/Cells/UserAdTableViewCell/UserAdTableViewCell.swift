@@ -22,7 +22,7 @@ public class UserAdTableViewCell: UITableViewCell {
 
     // MARK: - Private properties
 
-    private var model: UserAdViewModel?
+    private var model: UserAdTableViewCellViewModel?
 
     private var style: Style? = .default {
         didSet {
@@ -152,25 +152,28 @@ public class UserAdTableViewCell: UITableViewCell {
 
     // MARK: Public methods
 
-    public func configure(with style: Style, model: UserAdViewModel) {
+    public func configure(with style: Style, model: UserAdTableViewCellViewModel) {
         self.style = style
         self.model = model
 
-        let imageInset = style == .compressed ? UserAdTableViewCell.compressedImageWidth : UserAdTableViewCell.defaultImageWidth
+        let imageInset = style == .compressed
+            ? UserAdTableViewCell.compressedImageWidth
+            : UserAdTableViewCell.defaultImageWidth
+
         separatorInset = .leadingInset(.largeSpacing + imageInset)
 
-        ribbonView.style = model.ribbonModel.style
-        ribbonView.title = model.ribbonModel.title
+        ribbonView.style = model.ribbon.style
+        ribbonView.title = model.ribbon.title
 
-        titleLabel.text = model.title
+        titleLabel.text = model.titleText
         titleLabel.numberOfLines = style == .compressed ? 1 : 2
 
-        if let subtitle = model.subtitle {
+        if let subtitle = model.subtitleText {
             subtitleLabel.text = subtitle
             subtitleLabel.isHidden = false
         }
 
-        if let detail = model.detail {
+        if let detail = model.detailText {
             detailLabel.text = detail
             detailLabel.isHidden = style == .compressed
         }
