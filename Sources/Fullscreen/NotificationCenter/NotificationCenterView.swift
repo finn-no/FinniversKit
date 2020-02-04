@@ -6,10 +6,11 @@ import UIKit
 
 public protocol NotificationCenterViewDelegate: AnyObject {
     func notificationCenterView(_ view: NotificationCenterView, didSelectModelAt indexPath: IndexPath)
-    func notificationCenterView(_ view: NotificationCenterView, didSelectSavedSearchAt indexPath: IndexPath)
+    func notificationCenterView(_ view: NotificationCenterView, didSelectDetailsAt indexPath: IndexPath)
     func notificationCenterView(_ view: NotificationCenterView, titleForSection section: Int) -> String
     func notificationCenterView(_ view: NotificationCenterView, timestampForModelAt indexPath: IndexPath) -> String?
     func notificationCenterView(_ view: NotificationCenterView, didPullToRefreshWith refreshControl: UIRefreshControl)
+    func notificationCenterViewWillReachEndOfContent(_ view: NotificationCenterView)
 }
 
 public protocol NotificationCenterViewDataSource: AnyObject {
@@ -35,14 +36,16 @@ public class NotificationCenterView: UIView {
     }()
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .bgPrimary
-        tableView.estimatedRowHeight = 44 + 80 + 16
+        tableView.estimatedRowHeight = 150
         tableView.estimatedSectionHeaderHeight = 32
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.separatorStyle = .none
         tableView.register(NotificationCenterCell.self)
         tableView.register(NotificationCenterSectionHeaderView.self)
+        tableView.register(ActivityIndicatorSectionFooterView.self)
         tableView.refreshControl = refreshControl
         tableView.panGestureRecognizer.addTarget(self, action: #selector(handleTableViewPan(gesture:)))
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -51,7 +54,8 @@ public class NotificationCenterView: UIView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        addSubview(tableView)
+        tableView.fillInSuperview()
     }
 
     required init?(coder: NSCoder) {
@@ -71,6 +75,16 @@ public extension NotificationCenterView {
     func reloadRows(at indexPaths: [IndexPath], animated: Bool = true) {
         tableView.reloadRows(at: indexPaths, with: animated ? .automatic : .none)
     }
+
+    func resetContentOffset() {
+        guard tableView.numberOfRows(inSection: 0) > 0 else { return }
+
+        tableView.scrollToRow(
+            at: IndexPath(row: 0, section: 0),
+            at: .top,
+            animated: true
+        )
+    }
 }
 
 extension NotificationCenterView: UITableViewDataSource {
@@ -85,12 +99,15 @@ extension NotificationCenterView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = dataSource?.notificationCenterView(self, modelForRowAt: indexPath)
         let cell = tableView.dequeue(NotificationCenterCell.self, for: indexPath)
+        let isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
+
         cell.imageViewDataSource = imageViewDataSource
         cell.delegate = self
 
         cell.configure(
             with: model,
-            timestamp: delegate?.notificationCenterView(self, timestampForModelAt: indexPath)
+            timestamp: delegate?.notificationCenterView(self, timestampForModelAt: indexPath),
+            hideSeparator: isLastCell
         )
 
         if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
@@ -106,6 +123,17 @@ extension NotificationCenterView: UITableViewDelegate {
         delegate?.notificationCenterView(self, didSelectModelAt: indexPath)
     }
 
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastSection = tableView.numberOfSections - 1
+        let lastRow = tableView.numberOfRows(inSection: lastSection) - 1
+
+        if indexPath.section == lastSection, indexPath.row == lastRow {
+            delegate?.notificationCenterViewWillReachEndOfContent(self)
+        }
+    }
+
+    // Header
+
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let title = delegate?.notificationCenterView(self, titleForSection: section) else { return nil }
         let header = tableView.dequeue(NotificationCenterSectionHeaderView.self)
@@ -117,15 +145,29 @@ extension NotificationCenterView: UITableViewDelegate {
         48
     }
 
+    // Footer
+
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard section == tableView.numberOfSections - 1 else { return nil }
+        return tableView.dequeue(ActivityIndicatorSectionFooterView.self)
+    }
+
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        1
+        guard section == tableView.numberOfSections - 1 else { return .leastNormalMagnitude }
+        return .veryLargeSpacing
+    }
+
+    public func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        guard section == tableView.numberOfSections - 1 else { return }
+        guard let activityIndicatorView = view as? ActivityIndicatorSectionFooterView else { return }
+        activityIndicatorView.startAnimating()
     }
 }
 
 extension NotificationCenterView: NotificationCenterCellDelegate {
     func notificationCenterCellDidSelectSavedSearch(_ cell: NotificationCenterCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-        delegate?.notificationCenterView(self, didSelectSavedSearchAt: indexPath)
+        delegate?.notificationCenterView(self, didSelectDetailsAt: indexPath)
     }
 }
 
@@ -138,10 +180,5 @@ private extension NotificationCenterView {
 
     @objc func handleRefresh(control: UIRefreshControl) {
         refreshOnPanEnded = true
-    }
-
-    func setup() {
-        addSubview(tableView)
-        tableView.fillInSuperview()
     }
 }

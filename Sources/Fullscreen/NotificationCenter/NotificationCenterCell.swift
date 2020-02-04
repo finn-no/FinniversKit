@@ -48,7 +48,7 @@ class NotificationCenterCell: UITableViewCell {
     }()
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .title3, withAutoLayout: true)
+        let label = Label(style: .body, withAutoLayout: true)
         label.numberOfLines = 2
         return label
     }()
@@ -64,6 +64,12 @@ class NotificationCenterCell: UITableViewCell {
         stackView.distribution = .equalCentering
         stackView.spacing = .mediumSpacing
         return stackView
+    }()
+
+    private lazy var separatorView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .tableViewSeparator
+        return view
     }()
 
     // MARK: - Init
@@ -85,13 +91,13 @@ class NotificationCenterCell: UITableViewCell {
         configure(with: nil, timestamp: nil)
     }
 
-    func configure(with model: NotificationCenterCellModel?, timestamp: String?) {
+    func configure(with model: NotificationCenterCellModel?, timestamp: String?, hideSeparator: Bool = false) {
         savedSearchLinkView.configure(with: model?.pushNotificationDetails, timestamp: timestamp)
 
         titleLabel.text = model?.title
-        titleLabel.font = model?.read == true ? .title3 : .title3Strong
+        titleLabel.font = model?.read == true ? .body : .bodyStrong
         backgroundColor = model?.read == true ? .bgPrimary : .bgSecondary
-        separatorInset = .leadingInset(adImageWidth + .largeSpacing)
+        separatorView.isHidden = hideSeparator
 
         if let ribbonViewModel = model?.ribbonViewModel {
             statusRibbon.title = ribbonViewModel.title
@@ -129,6 +135,7 @@ private extension NotificationCenterCell {
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(statusRibbon)
         contentView.addSubview(stackView)
+        contentView.addSubview(separatorView)
 
         NSLayoutConstraint.activate([
             savedSearchLinkView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -144,6 +151,11 @@ private extension NotificationCenterCell {
             stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
             stackView.centerYAnchor.constraint(equalTo: remoteImageView.centerYAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+
+            separatorView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
+            separatorView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            separatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
 }

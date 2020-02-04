@@ -5,8 +5,8 @@
 import UIKit
 
 public enum PushNotificationDetails {
-    case savedSearch(text: String, title: String)
-    case priceChange(text: String, value: String)
+    case link(text: String, title: String, showMagnifyingGlass: Bool)
+    case `static`(text: String, value: String)
 }
 
 class PushNotificationDetailsView: UIControl {
@@ -88,11 +88,11 @@ class PushNotificationDetailsView: UIControl {
         ]
 
         switch details {
-        case let .savedSearch(text, title):
-            magnifyingIconView.isHidden = false
+        case let .link(text, title, showMagnifyingGlass):
+            magnifyingIconView.isHidden = !showMagnifyingGlass
 
-            textLabelToSuperviewConstraint.isActive = false
-            textLabelToMagnifyingIconConstraint.isActive = true
+            textLabelToSuperviewConstraint.isActive = magnifyingIconView.isHidden
+            textLabelToMagnifyingIconConstraint.isActive = !magnifyingIconView.isHidden
 
             let textRange = NSRange(location: 0, length: text.count + 1)
             highlightedRange = NSRange(location: text.count + 1, length: title.count)
@@ -106,12 +106,13 @@ class PushNotificationDetailsView: UIControl {
             attributedString?.setAttributes(textAttributes, range: textRange)
             attributedString?.setAttributes(titleAttributes, range: highlightedRange!)
 
-        case let .priceChange(text, value):
+        case let .static(text, value):
             magnifyingIconView.isHidden = true
 
-            textLabelToSuperviewConstraint.isActive = true
-            textLabelToMagnifyingIconConstraint.isActive = false
+            textLabelToSuperviewConstraint.isActive = magnifyingIconView.isHidden
+            textLabelToMagnifyingIconConstraint.isActive = magnifyingIconView.isHidden
 
+            highlightedRange = nil
             let textRange = NSRange(location: 0, length: text.count + 1)
             let valueRange = NSRange(location: text.count + 1, length: value.count)
 

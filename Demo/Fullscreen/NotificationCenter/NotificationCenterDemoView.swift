@@ -22,39 +22,39 @@ class NotificationCenterDemoView: UIView {
     private var data = [
         Section(title: "I dag", items: [
             NotificationModel(
-                pushNotificationDetails: .savedSearch(text: "Nytt treff:", title: "Hus som jeg må kjøpe før jeg fyller 40 år"),
+                pushNotificationDetails: .link(text: "Nytt treff:", title: "Hus som jeg må kjøpe før jeg fyller 40 år", showMagnifyingGlass: true),
                 imagePath: "https://jwproperty.com/files/wp-content/uploads/2015/01/Smart_House-Valley_Hua_Hin0131.jpg",
                 read: false,
                 ribbonViewModel: RibbonViewModel(title: "Solgt", style: .warning)),
             NotificationModel(
-                pushNotificationDetails: .savedSearch(text: "Nytt treff:", title: "Husstander"),
+                pushNotificationDetails: .link(text: "Nytt treff:", title: "Husstander", showMagnifyingGlass: true),
                 imagePath: "http://i3.au.reastatic.net/home-ideas/raw/a96671bab306bcb39783bc703ac67f0278ffd7de0854d04b7449b2c3ae7f7659/facades.jpg",
                 read: false,
                 ribbonViewModel: nil),
         ]),
         Section(title: "Tidligere", items: [
             NotificationModel(
-                pushNotificationDetails: .priceChange(text: "Din favoritt er satt ned med", value: "80 kr"),
+                pushNotificationDetails: .static(text: "Din favoritt er satt ned med", value: "80 kr"),
                 imagePath: nil,
                 read: true,
                 ribbonViewModel: RibbonViewModel(title: "Ny pris", style: .success)),
             NotificationModel(
-                pushNotificationDetails: .savedSearch(text: "Nytt treff:", title: "Husstander"),
+                pushNotificationDetails: .link(text: "Nytt treff:", title: "Husstander", showMagnifyingGlass: true),
                 imagePath: "http://jonvilma.com/images/house-6.jpg",
                 read: false,
                 ribbonViewModel: RibbonViewModel(title: "Inaktiv", style: .disabled)),
             NotificationModel(
-                pushNotificationDetails: .savedSearch(text: "Nytt treff:", title: "Husstander"),
+                pushNotificationDetails: .link(text: "Nytt treff:", title: "Husstander", showMagnifyingGlass: true),
                 imagePath: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
                 read: true,
                 ribbonViewModel: nil),
             NotificationModel(
-                pushNotificationDetails: .savedSearch(text: "Nytt treff:", title: "Husstander"),
+                pushNotificationDetails: .link(text: "Nytt treff:", title: "Husstander", showMagnifyingGlass: true),
                 imagePath: "https://i.pinimg.com/736x/bf/6d/73/bf6d73ab0234f3ba1a615b22d2dc7e74--home-exterior-design-contemporary-houses.jpg",
                 read: true,
                 ribbonViewModel: nil),
             NotificationModel(
-                pushNotificationDetails: .savedSearch(text: "Nytt treff:", title: "Husstander"),
+                pushNotificationDetails: .link(text: "Nytt treff:", title: "Husstander", showMagnifyingGlass: true),
                 imagePath: "https://www.tumbleweedhouses.com/wp-content/uploads/tumbleweed-tiny-house-cypress-black-roof-hp.jpg",
                 read: true,
                 ribbonViewModel: nil)
@@ -100,7 +100,7 @@ extension NotificationCenterDemoView: NotificationCenterViewDelegate {
         notificationCenterView.reloadRows(at: [indexPath])
     }
 
-    func notificationCenterView(_ view: NotificationCenterView, didSelectSavedSearchAt indexPath: IndexPath) {
+    func notificationCenterView(_ view: NotificationCenterView, didSelectDetailsAt indexPath: IndexPath) {
         print("Did select saved search at: \(indexPath)")
     }
 
@@ -117,6 +117,10 @@ extension NotificationCenterDemoView: NotificationCenterViewDelegate {
             view.reloadData()
             refreshControl.endRefreshing()
         }
+    }
+
+    func notificationCenterViewWillReachEndOfContent(_ view: NotificationCenterView) {
+        print("Will reach end of content")
     }
 }
 
