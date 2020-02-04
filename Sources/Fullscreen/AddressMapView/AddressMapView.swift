@@ -85,7 +85,7 @@ public class AddressMapView: UIView {
         annotation = newAnnotation
     }
 
-    public func makePolygonOverlayVisible() {
+    public func makePolygonOverlayVisible(additionalEdgeInsets: UIEdgeInsets = .zero) {
         guard let firstPolygon = polygons.first else {
             return
         }
@@ -93,8 +93,12 @@ public class AddressMapView: UIView {
         let mapRect = polygons.dropFirst().reduce(firstPolygon.boundingMapRect, { (mapRect, polygon) -> MKMapRect in
             return polygon.boundingMapRect.union(mapRect)
         })
-        let bottomInset = traitCollection.horizontalSizeClass == .regular ? 16 : 16 + .mediumLargeSpacing
-        let edgePadding = UIEdgeInsets(top: 16, left: 16, bottom: bottomInset, right: 16)
+        let edgePadding = UIEdgeInsets(
+            top: 16 + additionalEdgeInsets.top,
+            left: 16 + additionalEdgeInsets.left,
+            bottom: 16 + additionalEdgeInsets.bottom,
+            right: 16 + additionalEdgeInsets.right
+        )
 
         mapView.setVisibleMapRect(mapRect, edgePadding: edgePadding, animated: false)
     }
@@ -106,8 +110,6 @@ public class AddressMapView: UIView {
             mapView.addOverlay(newPolygon)
             polygons.append(newPolygon)
         }
-
-        makePolygonOverlayVisible()
     }
 
     public func changeMapType(_ mapType: MKMapType) {
