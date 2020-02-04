@@ -3786,8 +3786,8 @@
 			isa = PBXGroup;
 			children = (
 				DAA4F25123A2615C00FA529C /* NotificationCenterView.swift */,
-				DA9AC56023CF024B0097CD55 /* PushNotificationDetailsView.swift */,
 				DA2E815023ABB2DF00A18264 /* NotificationCenterCell.swift */,
+				DA9AC56023CF024B0097CD55 /* PushNotificationDetailsView.swift */,
 				DA9AC5DE23CF45280097CD55 /* NotificationCenterSectionHeaderView.swift */,
 				DA7EF33523E9639E00BEA8EA /* ActivityIndicatorSectionFooterView.swift */,
 			);

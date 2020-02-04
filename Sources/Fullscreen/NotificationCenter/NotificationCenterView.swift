@@ -11,6 +11,7 @@ public protocol NotificationCenterViewDelegate: AnyObject {
     func notificationCenterView(_ view: NotificationCenterView, timestampForModelAt indexPath: IndexPath) -> String?
     func notificationCenterView(_ view: NotificationCenterView, didPullToRefreshWith refreshControl: UIRefreshControl)
     func notificationCenterViewWillReachEndOfContent(_ view: NotificationCenterView)
+    func notificationCenterViewDidReachEndOfContent(_ view: NotificationCenterView)
 }
 
 public protocol NotificationCenterViewDataSource: AnyObject {
@@ -161,6 +162,7 @@ extension NotificationCenterView: UITableViewDelegate {
         guard section == tableView.numberOfSections - 1 else { return }
         guard let activityIndicatorView = view as? ActivityIndicatorSectionFooterView else { return }
         activityIndicatorView.startAnimating()
+        delegate?.notificationCenterViewDidReachEndOfContent(self)
     }
 }
 

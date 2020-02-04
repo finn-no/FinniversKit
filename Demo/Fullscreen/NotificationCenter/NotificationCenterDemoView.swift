@@ -122,6 +122,10 @@ extension NotificationCenterDemoView: NotificationCenterViewDelegate {
     func notificationCenterViewWillReachEndOfContent(_ view: NotificationCenterView) {
         print("Will reach end of content")
     }
+
+    func notificationCenterViewDidReachEndOfContent(_ view: NotificationCenterView) {
+        print("Did reach end of content")
+    }
 }
 
 extension NotificationCenterDemoView: RemoteImageViewDataSource {
