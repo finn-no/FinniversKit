@@ -8,6 +8,7 @@ public protocol NotificationCenterCellModel {
     var pushNotificationDetails: PushNotificationDetails? { get }
     var imagePath: String? { get }
     var title: String { get }
+    var price: String { get }
     var ribbonViewModel: RibbonViewModel? { get }
     var read: Bool { get }
 }
@@ -53,6 +54,11 @@ class NotificationCenterCell: UITableViewCell {
         return label
     }()
 
+    private lazy var priceLabel = Label(
+        style: .bodyStrong,
+        withAutoLayout: true
+    )
+
     private lazy var statusRibbon = RibbonView(
         withAutoLayout: true
     )
@@ -95,8 +101,11 @@ class NotificationCenterCell: UITableViewCell {
         savedSearchLinkView.configure(with: model?.pushNotificationDetails, timestamp: timestamp)
 
         titleLabel.text = model?.title
+        priceLabel.text = model?.price
+
         titleLabel.font = model?.read == true ? .body : .bodyStrong
         backgroundColor = model?.read == true ? .bgPrimary : .bgSecondary
+
         separatorView.isHidden = hideSeparator
 
         if let ribbonViewModel = model?.ribbonViewModel {
@@ -133,6 +142,7 @@ private extension NotificationCenterCell {
         contentView.addSubview(savedSearchLinkView)
         contentView.addSubview(remoteImageView)
         stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(priceLabel)
         stackView.addArrangedSubview(statusRibbon)
         contentView.addSubview(stackView)
         contentView.addSubview(separatorView)
@@ -142,15 +152,16 @@ private extension NotificationCenterCell {
             savedSearchLinkView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             savedSearchLinkView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
 
-            remoteImageView.topAnchor.constraint(equalTo: savedSearchLinkView.bottomAnchor),
+            remoteImageView.topAnchor.constraint(greaterThanOrEqualTo: savedSearchLinkView.bottomAnchor),
             remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             remoteImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
             remoteImageView.widthAnchor.constraint(equalToConstant: adImageWidth),
             remoteImageView.heightAnchor.constraint(equalToConstant: adImageWidth),
 
             stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            stackView.centerYAnchor.constraint(equalTo: remoteImageView.centerYAnchor),
+            stackView.topAnchor.constraint(equalTo: remoteImageView.topAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
 
             separatorView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
             separatorView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
