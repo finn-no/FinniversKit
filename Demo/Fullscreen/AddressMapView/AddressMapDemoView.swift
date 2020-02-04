@@ -33,6 +33,7 @@ class AddressMapDemoView: UIView, Tweakable {
             let areas = $0.areas
             options.append(TweakingOption(title: "Postalcode shape (\(postalCode))") {
                 self.addressMapView.configurePolygons(areas.compactMap({ $0?.coordinates }))
+                self.addressMapView.makePolygonOverlayVisible(additionalEdgeInsets: UIEdgeInsets.zero)
             })
         })
         return options
@@ -81,7 +82,7 @@ class AddressMapDemoView: UIView, Tweakable {
 extension AddressMapDemoView: AddressMapViewDelegate {
     func addressMapViewDidSelectPinButton(_ view: AddressMapView) {
         print("addressViewDidSelectCenterMapButton")
-        view.makePolygonOverlayVisible()
+        view.makePolygonOverlayVisible(additionalEdgeInsets: UIEdgeInsets.zero)
     }
 
     func addressMapViewDidSelectViewModeButton(_ view: AddressMapView, sender: UIView) {
