@@ -283,6 +283,7 @@
 		9A37D770DA2B07DC0F543B33 /* FavoriteAdsDemoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DB13635127F4DE6BCEC6 /* FavoriteAdsDemoDataSource.swift */; };
 		9A37D84E5603C39844DA83C5 /* VisibilityDrivenTitleDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D6A0C42E36E51F034413 /* VisibilityDrivenTitleDemoView.swift */; };
 		9A37D8D25E07F1F1F3875044 /* SelfDeclarationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DD5C29C02298C78257C1 /* SelfDeclarationViewModel.swift */; };
+		9A37D8FB2E0EB9F3A172E23A /* ObjectPagePriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D04C776B4BFF6C0415CC /* ObjectPagePriceView.swift */; };
 		9A37D91577C7406D942AF82E /* FavoriteAdsSortingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D728DC9D805D74CB8D4F /* FavoriteAdsSortingView.swift */; };
 		9A37D9EDC4E78EC664D528FE /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D9749A60B9BFD125F483 /* FeedbackView.swift */; };
 		9A37DA10C8A9D0ABD161B810 /* SelfDeclarationItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DC5E8BBDBC5DBF3E100B /* SelfDeclarationItemViewModel.swift */; };
@@ -900,6 +901,7 @@
 		918C8AC323A7A82900B566DE /* NativeAdvertListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertListView.swift; sourceTree = "<group>"; };
 		91D2A55322F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMapViewAnnotation.swift; sourceTree = "<group>"; };
 		91D2A55922F458EE00ED4BB9 /* SearchResultMapViewDemoViewControllerHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMapViewDemoViewControllerHelpers.swift; sourceTree = "<group>"; };
+		9A37D04C776B4BFF6C0415CC /* ObjectPagePriceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPagePriceView.swift; sourceTree = "<group>"; };
 		9A37D30A5DD3B5A286743DA3 /* FavoriteAdTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdTableViewCell.swift; sourceTree = "<group>"; };
 		9A37D31AFA28AABED492E588 /* FeedbackDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackDemoView.swift; sourceTree = "<group>"; };
 		9A37D34E21B0FF57F07BE7E0 /* FavoriteAdsListDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListDemoViewController.swift; sourceTree = "<group>"; };
@@ -1767,6 +1769,7 @@
 				44AFCE44215839F6005984DB /* LoadingIndicator */,
 				9BEB2875231D23F500D28BAD /* LoanCalculator */,
 				89A7A63A2253376D0053D33B /* NativeAdvert */,
+				9A37D31426D9544712EBB534 /* ObjectPagePriceView */,
 				F26CABEF23AC9B2E00CACF71 /* OrderTotalSumView */,
 				F26CABF323AC9B2E00CACF71 /* OrderViewSummary */,
 				9B28DE7E23266C2500D69C15 /* Panel */,
@@ -2401,6 +2404,14 @@
 				9A37DF66929876DCA81666F3 /* SelfDeclarationItemView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		9A37D31426D9544712EBB534 /* ObjectPagePriceView */ = {
+			isa = PBXGroup;
+			children = (
+				9A37D04C776B4BFF6C0415CC /* ObjectPagePriceView.swift */,
+			);
+			path = ObjectPagePriceView;
 			sourceTree = "<group>";
 		};
 		9A37D4A128C47173977AAE19 /* FavoriteAdsList */ = {
@@ -3369,6 +3380,7 @@
 				F2597C74231D3DF700BE74EC /* VerificationView */,
 				4940480323CDC54E00ECBCFD /* Viewings */,
 				9A37D777D2BE560FFC071E4D /* VisibilityDrivenTitleView */,
+				9A37D9C36899F1307D89CFE5 /* ObjectPagePriceView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -5152,6 +5164,7 @@
 				9A37DA10C8A9D0ABD161B810 /* SelfDeclarationItemViewModel.swift in Sources */,
 				9A37D1D9D2872EC52AF374A2 /* SelfDeclarationItemView.swift in Sources */,
 				9A37DAAFC21354151CA7FC47 /* UIStackViewExtensions.swift in Sources */,
+				9A37D8FB2E0EB9F3A172E23A /* ObjectPagePriceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
