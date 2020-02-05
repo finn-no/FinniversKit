@@ -44,4 +44,27 @@ public class ObjectPagePriceView: UIView {
         addSubview(wrapperStackView)
         wrapperStackView.fillInSuperview()
     }
+
+    // MARK: - Public methods
+
+    public func configure(with viewModel: ObjectPagePriceViewModel) {
+        titleLabel.text = viewModel.title
+        totalPriceLabel.text = viewModel.totalPrice
+
+        linkStackView.removeArrangedSubviews()
+
+        viewModel.links.map(LinkButtonView.init).forEach {
+            $0.delegate = self
+            $0.setContentHuggingPriority(.required, for: .horizontal)
+            linkStackView.addArrangedSubview($0)
+        }
+        linkStackView.isHidden = viewModel.links.isEmpty
+    }
+}
+
+// MARK: - LinkButtonViewDelegate
+
+extension ObjectPagePriceView: LinkButtonViewDelegate {
+    func linkButtonWasTapped(withUrl url: URL) {
+    }
 }
