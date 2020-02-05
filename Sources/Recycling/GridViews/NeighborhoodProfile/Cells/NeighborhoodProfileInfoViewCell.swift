@@ -235,14 +235,3 @@ private final class InfoRowView: UIView {
         return label
     }
 }
-
-// MARK: - Private extensions
-
-private extension UIStackView {
-    func removeArrangedSubviews() {
-        for oldSubview in arrangedSubviews {
-            removeArrangedSubview(oldSubview)
-            oldSubview.removeFromSuperview()
-        }
-    }
-}
