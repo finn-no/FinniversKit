@@ -2,7 +2,15 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+public protocol ObjectPagePriceViewDelegate: AnyObject {
+    func priceView(_ view: ObjectPagePriceView, didTapLinkWithUrl url: URL)
+}
+
 public class ObjectPagePriceView: UIView {
+
+    // MARK: - Public properties
+
+    public weak var delegate: ObjectPagePriceViewDelegate?
 
     // MARK: - Private properties
 
@@ -66,5 +74,6 @@ public class ObjectPagePriceView: UIView {
 
 extension ObjectPagePriceView: LinkButtonViewDelegate {
     func linkButtonWasTapped(withUrl url: URL) {
+        delegate?.priceView(self, didTapLinkWithUrl: url)
     }
 }
