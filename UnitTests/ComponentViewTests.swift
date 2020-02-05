@@ -258,4 +258,8 @@ class ComponentViewTests: XCTestCase {
     func testKeyValueGridView() {
         snapshot(.keyValueGridView)
     }
+
+    func testObjectPagePriceView() {
+        snapshot(.objectPagePriceView)
+    }
 }
