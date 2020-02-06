@@ -26,15 +26,7 @@ class UserAdCellDemoView: UIView, Tweakable {
         }
     }
 
-    private let viewModels: [UserAdTableViewCellViewModel] = UserAdsFactory.createAds().flatMap { $0.ads.map {
-        AdViewModel(
-            titleText: $0.title,
-            subtitleText: $0.title,
-            detailText: $0.detail,
-            imagePath: $0.imagePath,
-            ribbon: UserAdTableViewCellRibbonModel(title: "Aktiv", style: .warning)
-        )
-        } }
+    private let viewModels: [UserAdTableViewCellViewModel] = UserAdsFactory.createAds()
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(withAutoLayout: true)

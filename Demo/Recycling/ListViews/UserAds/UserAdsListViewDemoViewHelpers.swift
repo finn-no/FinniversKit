@@ -20,6 +20,14 @@ public struct UserAdHeaderCell: UserAdsListHeaderViewModel, Hashable {
     }
 }
 
+public struct UserAdCellViewModel: UserAdTableViewCellViewModel {
+    public let titleText: String
+    public let subtitleText: String?
+    public let detailText: String?
+    public let imagePath: String?
+    public let ribbon: UserAdTableViewCellRibbonModel
+}
+
 public struct UserAdCell: UserAdsListViewModel {
     public let imagePath: String?
     public let imageSize: CGSize
@@ -66,7 +74,7 @@ public struct UserAdsFactory {
         let size: CGSize
     }
 
-    public static func createAds() -> [(header: UserAdHeaderCell, ads: [UserAdCell])] {
+    public static func createSectionedAds() -> [(header: UserAdHeaderCell, ads: [UserAdCell])] {
         let newAd = createNewAd()
         let emphasizedAds = createEmphasizedAds()
         let ongoingAds = createOngoingAds()
@@ -74,6 +82,18 @@ public struct UserAdsFactory {
         let inactiveAds = createInactiveAds()
         let seeAllAds = createSeeAllAds()
         return [newAd, emphasizedAds, ongoingAds, activeAds, inactiveAds, seeAllAds]
+    }
+
+    public static func createAds() -> [UserAdTableViewCellViewModel] {
+        titles.enumerated().map {
+            UserAdCellViewModel(
+                titleText: $1,
+                subtitleText: "Torget",
+                detailText: details[$0],
+                imagePath: imageSources[$0].path,
+                ribbon: ribbons[$0]
+            )
+        }
     }
 
     private static func createNewAd() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {
@@ -148,10 +168,10 @@ public struct UserAdsFactory {
     private static var imageSources: [ImageSource] {
         return [
             ImageSource(path: "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg", size: CGSize(width: 450, height: 354)),
-            ImageSource(path: "http://jonvilma.com/images/house-6.jpg", size: CGSize(width: 992, height: 546)),
+            ImageSource(path: "https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg", size: CGSize(width: 992, height: 546)),
             ImageSource(path: "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg", size: CGSize(width: 450, height: 354)),
             ImageSource(path: "http://i3.au.reastatic.net/home-ideas/raw/a96671bab306bcb39783bc703ac67f0278ffd7de0854d04b7449b2c3ae7f7659/facades.jpg", size: CGSize(width: 800, height: 600)),
-            ImageSource(path: "http://jonvilma.com/images/house-6.jpg", size: CGSize(width: 992, height: 546)),
+            ImageSource(path: "http://failing.example.com", size: CGSize(width: 992, height: 546)),
             ImageSource(path: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg", size: CGSize(width: 736, height: 566)),
         ]
     }
@@ -180,9 +200,9 @@ public struct UserAdsFactory {
 
     private static var details: [String] {
         return [
+            "45 dager igjen",
+            "12 dager igjen",
             "Sist redigert: 09.10.2019",
-            "Sist redigert: 01.01.2019",
-            "Sist redigert: 22.10.2018",
             "Sist redigert: 12.12.2015",
             "Sist redigert: 17.01.2019",
             "Sist redigert: 28.01.2019",
@@ -197,6 +217,17 @@ public struct UserAdsFactory {
             "Deaktivert",
             "Solgt",
             "",
+        ]
+    }
+
+    private static var ribbons: [UserAdTableViewCellRibbonModel] {
+        return [
+            UserAdTableViewCellRibbonModel(title: "Aktiv", style: .success),
+            UserAdTableViewCellRibbonModel(title: "Aktiv", style: .success),
+            UserAdTableViewCellRibbonModel(title: "Solgt", style: .disabled),
+            UserAdTableViewCellRibbonModel(title: "Påbegynt", style: .warning),
+            UserAdTableViewCellRibbonModel(title: "Inaktiv", style: .disabled),
+            UserAdTableViewCellRibbonModel(title: "Inaktiv", style: .disabled),
         ]
     }
 }
