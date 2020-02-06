@@ -141,6 +141,8 @@ public class UserAdTableViewCell: UITableViewCell {
 
         descriptionStack.setCustomSpacing(.verySmallSpacing, after: titleLabel)
         descriptionStack.setCustomSpacing(.mediumSpacing, after: subtitleLabel)
+
+        setupStyleConstraints()
     }
 
     private func setupStyleConstraints() {
