@@ -20,6 +20,8 @@ public class UserAdTableViewCell: UITableViewCell {
         }
     }
 
+    public var loadingColor: UIColor? = .toothPaste
+
     // MARK: - Private properties
 
     private var model: UserAdTableViewCellViewModel?
@@ -208,7 +210,6 @@ extension UserAdTableViewCell: ImageLoading {
 
     public func loadImage() {
         if let imagePath = model?.imagePath {
-            let loadingColor: UIColor? = [.toothPaste, .mint, .banana, .salmon].randomElement()
             adImageView.loadImage(for: imagePath, imageWidth: .veryLargeSpacing, loadingColor: loadingColor, fallbackImage: fallbackImage)
         }
     }

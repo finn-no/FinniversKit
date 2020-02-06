@@ -64,6 +64,7 @@ extension UserAdCellDemoView: UITableViewDataSource {
         let cell = tableView.dequeue(UserAdTableViewCell.self, for: indexPath)
         cell.configure(with: style, model: viewModels[indexPath.row])
         cell.remoteImageViewDataSource = self
+        cell.loadingColor = .toothPaste
 
         return cell
     }
