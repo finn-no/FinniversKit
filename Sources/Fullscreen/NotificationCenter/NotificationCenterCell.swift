@@ -8,7 +8,7 @@ public protocol NotificationCenterCellModel {
     var pushNotificationDetails: PushNotificationDetails? { get }
     var imagePath: String? { get }
     var title: String { get }
-    var priceText: String { get }
+    var priceText: String? { get }
     var ribbonViewModel: RibbonViewModel? { get }
     var read: Bool { get }
 }
@@ -68,7 +68,7 @@ class NotificationCenterCell: UITableViewCell {
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.distribution = .equalCentering
-        stackView.spacing = .smallSpacing
+        stackView.spacing = .mediumSpacing
         return stackView
     }()
 
@@ -101,12 +101,16 @@ class NotificationCenterCell: UITableViewCell {
         savedSearchLinkView.configure(with: model?.pushNotificationDetails, timestamp: timestamp)
 
         titleLabel.text = model?.title
-        priceLabel.text = model?.price
-
         titleLabel.font = model?.read == true ? .body : .bodyStrong
         backgroundColor = model?.read == true ? .bgPrimary : .bgSecondary
-
         separatorView.isHidden = hideSeparator
+
+        if let price = model?.priceText {
+            priceLabel.text = price
+            priceLabel.isHidden = false
+        } else {
+            priceLabel.isHidden = true
+        }
 
         if let ribbonViewModel = model?.ribbonViewModel {
             statusRibbon.title = ribbonViewModel.title

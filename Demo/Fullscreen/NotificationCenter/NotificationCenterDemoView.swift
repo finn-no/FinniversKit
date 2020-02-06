@@ -8,7 +8,7 @@ private struct NotificationModel: NotificationCenterCellModel {
     let pushNotificationDetails: PushNotificationDetails?
     let imagePath: String?
     let title: String
-    let price: String = "3000 kr"
+    let priceText: String? = "3000 kr"
     var read: Bool
     let ribbonViewModel: RibbonViewModel?
 }
