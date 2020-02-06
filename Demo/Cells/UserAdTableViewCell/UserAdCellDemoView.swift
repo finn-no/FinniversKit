@@ -5,14 +5,6 @@
 import Foundation
 import FinniversKit
 
-struct AdViewModel: UserAdTableViewCellViewModel {
-    var titleText: String
-    var subtitleText: String?
-    var detailText: String?
-    var imagePath: String?
-    var ribbon: UserAdTableViewCellRibbonModel
-}
-
 class UserAdCellDemoView: UIView, Tweakable {
 
     lazy var tweakingOptions: [TweakingOption] = [
