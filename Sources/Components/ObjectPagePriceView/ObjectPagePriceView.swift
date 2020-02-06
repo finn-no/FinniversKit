@@ -3,7 +3,7 @@
 //
 
 public protocol ObjectPagePriceViewDelegate: AnyObject {
-    func priceView(_ view: ObjectPagePriceView, didTapLinkWithUrl url: URL)
+    func priceView(_ view: ObjectPagePriceView, didTapLinkButtonWithIdentifier identifier: String?, url: URL)
 }
 
 public class ObjectPagePriceView: UIView {
@@ -73,7 +73,7 @@ public class ObjectPagePriceView: UIView {
 // MARK: - LinkButtonViewDelegate
 
 extension ObjectPagePriceView: LinkButtonViewDelegate {
-    func linkButtonWasTapped(withUrl url: URL) {
-        delegate?.priceView(self, didTapLinkWithUrl: url)
+    func linkButton(withIdentifier identifier: String?, wasTappedWithUrl url: URL) {
+        delegate?.priceView(self, didTapLinkButtonWithIdentifier: identifier, url: url)
     }
 }

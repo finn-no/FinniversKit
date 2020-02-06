@@ -3,7 +3,7 @@
 //
 
 protocol LinkButtonViewDelegate: AnyObject {
-    func linkButtonWasTapped(withUrl url: URL)
+    func linkButton(withIdentifier identifier: String?, wasTappedWithUrl url: URL)
 }
 
 class LinkButtonView: UIView {
@@ -68,6 +68,6 @@ class LinkButtonView: UIView {
     // MARK: - Private methods
 
     @objc private func handleTap() {
-        delegate?.linkButtonWasTapped(withUrl: linkUrl)
+        delegate?.linkButton(withIdentifier: buttonIdentifier, wasTappedWithUrl: linkUrl)
     }
 }
