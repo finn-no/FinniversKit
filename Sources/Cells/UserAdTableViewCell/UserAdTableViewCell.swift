@@ -46,14 +46,14 @@ public class UserAdTableViewCell: UITableViewCell {
     }()
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .captionStrong)
+        let label = Label(style: .bodyStrong)
         label.backgroundColor = .clear
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
     private lazy var subtitleLabel: Label = {
-        let label = Label(style: .bodyStrong)
+        let label = Label(style: .caption)
         label.isHidden = true
         label.backgroundColor = .clear
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
@@ -140,7 +140,7 @@ public class UserAdTableViewCell: UITableViewCell {
         descriptionStack.addArrangedSubview(detailLabel)
 
         descriptionStack.setCustomSpacing(.verySmallSpacing, after: titleLabel)
-        descriptionStack.setCustomSpacing(.mediumLargeSpacing, after: subtitleLabel)
+        descriptionStack.setCustomSpacing(.mediumSpacing, after: subtitleLabel)
     }
 
     private func setupStyleConstraints() {
