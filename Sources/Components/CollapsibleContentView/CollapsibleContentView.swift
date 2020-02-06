@@ -16,6 +16,12 @@ public class CollapsibleContentView: UIView {
     /// this value to be `false` (defaults `true`)
     public var expandsAutomatically: Bool = true
 
+    public var isEnabled: Bool = true {
+        didSet {
+            collapseIndicatorImageView.isHidden = !isEnabled
+        }
+    }
+
     public var isExpanded: Bool {
         get {
             fullHeightConstraint.isActive
@@ -49,6 +55,7 @@ public class CollapsibleContentView: UIView {
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .iconSecondary
         imageView.isUserInteractionEnabled = true
+        imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         return imageView
     }()
 
@@ -149,6 +156,7 @@ public class CollapsibleContentView: UIView {
     }
 
     @objc private func toggleContent() {
+        guard isEnabled else { return }
         guard expandsAutomatically else {
             delegate?.collapsibleContentViewDidTapToggleContent(self)
             return

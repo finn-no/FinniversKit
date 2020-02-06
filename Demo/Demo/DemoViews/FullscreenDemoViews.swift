@@ -29,6 +29,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case splashView
     case settingDetails
     case adConfirmationView
+    case minFinnView
     case favoriteAdActionView
     case favoriteAdCommentInputView
     case favoriteAdSortingView
@@ -111,6 +112,8 @@ public enum FullscreenDemoViews: String, CaseIterable {
             return bottomSheet
         case .adConfirmationView:
             return DemoViewController<AdConfirmationDemoView>()
+        case .minFinnView:
+            return DemoViewController<MinFinnDemoView>()
         case .favoriteAdActionView:
             return DemoViewController<FavoriteAdActionDemoView>()
         case .favoriteAdCommentInputView:

@@ -136,4 +136,8 @@ class FullscreenViewTests: XCTestCase {
     func testBetaFeatureView() {
         snapshot(.betaFeatureView)
     }
+
+    func testMinFinnView() {
+        snapshot(.minFinnView)
+    }
 }

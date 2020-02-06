@@ -256,12 +256,10 @@ private class ButtonView: UIView {
         return button
     }()
 
-    lazy var negativeButton: UIButton = {
-        let button = Button(style: .default, size: .small)
+    lazy var negativeButton: Button = {
+        let button = Button(style: .negativeButton(), size: .small)
         button.titleLabel?.font = .detailStrong
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.borderWidth = 1
-        button.layer.borderColor = .btnPrimary
         return button
     }()
 
@@ -332,5 +330,14 @@ private class ButtonView: UIView {
         }
 
         currentPresentation = presentation
+    }
+}
+
+private extension Button.Style {
+    static func negativeButton() -> Button.Style {
+        Button.Style.default.overrideStyle(
+            borderWidth: 1.0,
+            borderColor: .btnPrimary
+        )
     }
 }
