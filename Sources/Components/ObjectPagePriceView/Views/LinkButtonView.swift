@@ -15,7 +15,7 @@ class LinkButtonView: UIView {
     // MARK: - Private properties
 
     private let linkUrl: URL
-    private let linkButtonStyle = Button.Style.link.overrideStyle(normalFont: .bodyStrong)
+    private let linkButtonStyle = Button.Style.link.overrideStyle(normalFont: .body)
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [linkButton, subtitleLabel])
