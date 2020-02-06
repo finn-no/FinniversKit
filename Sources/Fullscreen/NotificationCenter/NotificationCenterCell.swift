@@ -5,7 +5,6 @@
 import UIKit
 
 public protocol NotificationCenterCellModel {
-    var pushNotificationDetails: PushNotificationDetails? { get }
     var imagePath: String? { get }
     var title: String { get }
     var priceText: String? { get }
@@ -13,15 +12,9 @@ public protocol NotificationCenterCellModel {
     var read: Bool { get }
 }
 
-protocol NotificationCenterCellDelegate: AnyObject {
-    func notificationCenterCellDidSelectSavedSearch(_ cell: NotificationCenterCell)
-}
-
 class NotificationCenterCell: UITableViewCell {
 
     // MARK: - Internal properties
-
-    weak var delegate: NotificationCenterCellDelegate?
 
     weak var imageViewDataSource: RemoteImageViewDataSource? {
         didSet {
@@ -33,12 +26,6 @@ class NotificationCenterCell: UITableViewCell {
 
     private let adImageWidth: CGFloat = 80
     private let fallbackImage = UIImage(named: .noImage)
-
-    private lazy var savedSearchLinkView: PushNotificationDetailsView = {
-        let view = PushNotificationDetailsView(withAutoLayout: true)
-        view.addTarget(self, action: #selector(handleSavedSearchSelected), for: .touchUpInside)
-        return view
-    }()
 
     private lazy var remoteImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
@@ -59,16 +46,27 @@ class NotificationCenterCell: UITableViewCell {
         withAutoLayout: true
     )
 
+    private lazy var timestampLabel = Label(
+        style: .detail,
+        withAutoLayout: true
+    )
+
     private lazy var statusRibbon = RibbonView(
         withAutoLayout: true
     )
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
+        let stackView = UIStackView(arrangedSubviews: [
+            titleLabel,
+            priceLabel,
+            timestampLabel,
+            statusRibbon
+        ])
+
         stackView.axis = .vertical
         stackView.alignment = .leading
-        stackView.distribution = .equalCentering
-        stackView.spacing = .mediumSpacing
+        stackView.spacing = 0
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
 
@@ -98,9 +96,9 @@ class NotificationCenterCell: UITableViewCell {
     }
 
     func configure(with model: NotificationCenterCellModel?, timestamp: String?, hideSeparator: Bool = false) {
-        savedSearchLinkView.configure(with: model?.pushNotificationDetails, timestamp: timestamp)
-
         titleLabel.text = model?.title
+        timestampLabel.text = timestamp
+
         titleLabel.font = model?.read == true ? .body : .bodyStrong
         backgroundColor = model?.read == true ? .bgPrimary : .bgSecondary
         separatorView.isHidden = hideSeparator
@@ -136,41 +134,34 @@ class NotificationCenterCell: UITableViewCell {
 
 // MARK: - Private methods
 private extension NotificationCenterCell {
-    @objc func handleSavedSearchSelected() {
-        delegate?.notificationCenterCellDidSelectSavedSearch(self)
-    }
-
     func setup() {
         setDefaultSelectedBackgound()
 
-        contentView.addSubview(savedSearchLinkView)
         contentView.addSubview(remoteImageView)
-        stackView.addArrangedSubview(titleLabel)
-        stackView.addArrangedSubview(priceLabel)
-        stackView.addArrangedSubview(statusRibbon)
         contentView.addSubview(stackView)
         contentView.addSubview(separatorView)
 
-        NSLayoutConstraint.activate([
-            savedSearchLinkView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            savedSearchLinkView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            savedSearchLinkView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+        stackView.setCustomSpacing(.mediumSpacing, after: titleLabel)
+        stackView.setCustomSpacing(.smallSpacing, after: priceLabel)
+        stackView.setCustomSpacing(.mediumSpacing, after: timestampLabel)
 
+        NSLayoutConstraint.activate([
+            remoteImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
             remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            remoteImageView.topAnchor.constraint(equalTo: savedSearchLinkView.bottomAnchor),
-            remoteImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
             remoteImageView.widthAnchor.constraint(equalToConstant: adImageWidth),
             remoteImageView.heightAnchor.constraint(equalToConstant: adImageWidth),
 
+            stackView.topAnchor.constraint(equalTo: remoteImageView.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            stackView.topAnchor.constraint(equalTo: savedSearchLinkView.bottomAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
 
             separatorView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
             separatorView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            separatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            separatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+
+            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: remoteImageView.bottomAnchor, constant: .mediumLargeSpacing),
+            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: stackView.bottomAnchor, constant: .mediumLargeSpacing)
         ])
     }
 }

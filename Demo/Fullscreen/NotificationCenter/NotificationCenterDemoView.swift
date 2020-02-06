@@ -5,7 +5,6 @@
 import FinniversKit
 
 private struct NotificationModel: NotificationCenterCellModel {
-    let pushNotificationDetails: PushNotificationDetails?
     let imagePath: String?
     let title: String
     let priceText: String? = "3000 kr"
@@ -13,55 +12,60 @@ private struct NotificationModel: NotificationCenterCellModel {
     let ribbonViewModel: RibbonViewModel?
 }
 
-private struct Section {
-    let title: String
+private struct Section: NotificationCenterSectionHeaderViewModel {
+    let title: String?
+    let details: PushNotificationDetails
     var items: [NotificationModel]
 }
 
 class NotificationCenterDemoView: UIView {
 
     private var data = [
-        Section(title: "I dag", items: [
+        Section(
+            title: "I dag",
+            details: .link(text: "2 nye treff:", title: "Hus som jeg må kjøpe før jeg fyller 40 år", showMagnifyingGlass: true),
+            items: [
             NotificationModel(
-                pushNotificationDetails: .link(text: "Nytt treff:", title: "Hus som jeg må kjøpe før jeg fyller 40 år", showMagnifyingGlass: true),
                 imagePath: "https://jwproperty.com/files/wp-content/uploads/2015/01/Smart_House-Valley_Hua_Hin0131.jpg",
                 title: "Dette er en tittel",
                 read: false,
                 ribbonViewModel: RibbonViewModel(title: "Solgt", style: .warning)),
             NotificationModel(
-                pushNotificationDetails: .link(text: "Nytt treff:", title: "Husstander", showMagnifyingGlass: true),
                 imagePath: "http://i3.au.reastatic.net/home-ideas/raw/a96671bab306bcb39783bc703ac67f0278ffd7de0854d04b7449b2c3ae7f7659/facades.jpg",
                 title: "Dette er også en tittel",
                 read: false,
                 ribbonViewModel: nil),
         ]),
-        Section(title: "Tidligere", items: [
+        Section(
+            title: "Tidligere",
+            details: .link(text: "3 nye treff:", title: "Husstander", showMagnifyingGlass: true),
+            items: [
             NotificationModel(
-                pushNotificationDetails: .static(text: "Din favoritt er satt ned med", value: "80 kr"),
                 imagePath: nil,
                 title: "Dette er en tittel som er veeeeeldig lang",
                 read: true,
                 ribbonViewModel: RibbonViewModel(title: "Ny pris", style: .success)),
             NotificationModel(
-                pushNotificationDetails: .link(text: "Nytt treff:", title: "Husstander", showMagnifyingGlass: true),
                 imagePath: "http://jonvilma.com/images/house-6.jpg",
                 title: "Tittel",
                 read: false,
                 ribbonViewModel: RibbonViewModel(title: "Inaktiv", style: .disabled)),
             NotificationModel(
-                pushNotificationDetails: .link(text: "Nytt treff:", title: "Husstander", showMagnifyingGlass: true),
                 imagePath: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
                 title: "Dette er en tittel",
                 read: true,
                 ribbonViewModel: nil),
+        ]),
+        Section(
+            title: nil,
+            details: .link(text: "2 nye treff:", title: "Andre husstander", showMagnifyingGlass: true),
+            items: [
             NotificationModel(
-                pushNotificationDetails: .link(text: "Nytt treff:", title: "Husstander", showMagnifyingGlass: true),
                 imagePath: "https://i.pinimg.com/736x/bf/6d/73/bf6d73ab0234f3ba1a615b22d2dc7e74--home-exterior-design-contemporary-houses.jpg",
                 title: "Dette er en tittel",
                 read: true,
                 ribbonViewModel: nil),
             NotificationModel(
-                pushNotificationDetails: .link(text: "Nytt treff:", title: "Husstander", showMagnifyingGlass: true),
                 imagePath: "https://www.tumbleweedhouses.com/wp-content/uploads/tumbleweed-tiny-house-cypress-black-roof-hp.jpg",
                 title: "Dette er en tittel",
                 read: true,
@@ -108,12 +112,12 @@ extension NotificationCenterDemoView: NotificationCenterViewDelegate {
         notificationCenterView.reloadRows(at: [indexPath])
     }
 
-    func notificationCenterView(_ view: NotificationCenterView, didSelectDetailsAt indexPath: IndexPath) {
-        print("Did select saved search at: \(indexPath)")
+    func notificationCenterView(_ view: NotificationCenterView, didSelectNotificationDetailsIn section: Int) {
+        print("Did select saved search at: \(section)")
     }
 
-    func notificationCenterView(_ view: NotificationCenterView, titleForSection section: Int) -> String {
-        data[section].title
+    func notificationCenterView(_ view: NotificationCenterView, modelForSection section: Int) -> NotificationCenterSectionHeaderViewModel {
+        data[section]
     }
 
     func notificationCenterView(_ view: NotificationCenterView, timestampForModelAt indexPath: IndexPath) -> String? {

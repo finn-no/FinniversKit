@@ -6,8 +6,8 @@ import UIKit
 
 public protocol NotificationCenterViewDelegate: AnyObject {
     func notificationCenterView(_ view: NotificationCenterView, didSelectModelAt indexPath: IndexPath)
-    func notificationCenterView(_ view: NotificationCenterView, didSelectDetailsAt indexPath: IndexPath)
-    func notificationCenterView(_ view: NotificationCenterView, titleForSection section: Int) -> String
+    func notificationCenterView(_ view: NotificationCenterView, didSelectNotificationDetailsIn section: Int)
+    func notificationCenterView(_ view: NotificationCenterView, modelForSection section: Int) -> NotificationCenterSectionHeaderViewModel
     func notificationCenterView(_ view: NotificationCenterView, timestampForModelAt indexPath: IndexPath) -> String?
     func notificationCenterView(_ view: NotificationCenterView, didPullToRefreshWith refreshControl: UIRefreshControl)
     func notificationCenterViewWillReachEndOfContent(_ view: NotificationCenterView)
@@ -40,7 +40,7 @@ public class NotificationCenterView: UIView {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .bgPrimary
         tableView.estimatedRowHeight = 150
-        tableView.estimatedSectionHeaderHeight = 32
+        tableView.estimatedSectionHeaderHeight = 48
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
@@ -103,17 +103,12 @@ extension NotificationCenterView: UITableViewDataSource {
         let isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
 
         cell.imageViewDataSource = imageViewDataSource
-        cell.delegate = self
 
         cell.configure(
             with: model,
             timestamp: delegate?.notificationCenterView(self, timestampForModelAt: indexPath),
             hideSeparator: isLastCell
         )
-
-        if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
-            cell.separatorInset = .leadingInset(.greatestFiniteMagnitude)
-        }
 
         return cell
     }
@@ -136,14 +131,11 @@ extension NotificationCenterView: UITableViewDelegate {
     // Header
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let title = delegate?.notificationCenterView(self, titleForSection: section) else { return nil }
+        guard let model = delegate?.notificationCenterView(self, modelForSection: section) else { return nil }
         let header = tableView.dequeue(NotificationCenterSectionHeaderView.self)
-        header.configure(with: title)
+        header.delegate = self
+        header.configure(with: model, inSection: section)
         return header
-    }
-
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        48
     }
 
     // Footer
@@ -166,10 +158,9 @@ extension NotificationCenterView: UITableViewDelegate {
     }
 }
 
-extension NotificationCenterView: NotificationCenterCellDelegate {
-    func notificationCenterCellDidSelectSavedSearch(_ cell: NotificationCenterCell) {
-        guard let indexPath = tableView.indexPath(for: cell) else { return }
-        delegate?.notificationCenterView(self, didSelectDetailsAt: indexPath)
+extension NotificationCenterView: NotificationCenterSectionHeaderViewDelegate {
+    func notificationCenterSectionHeaderView(_ headerView: NotificationCenterSectionHeaderView, didSelectNotificationDetailsInSection section: Int) {
+        delegate?.notificationCenterView(self, didSelectNotificationDetailsIn: section)
     }
 }
 

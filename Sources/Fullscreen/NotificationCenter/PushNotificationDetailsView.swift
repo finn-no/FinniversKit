@@ -25,14 +25,9 @@ class PushNotificationDetailsView: UIControl {
 
     private lazy var textLabel: Label = {
         let label = Label(style: .detail, withAutoLayout: true)
-        label.numberOfLines = 2
+        label.numberOfLines = 1
         return label
     }()
-
-    private lazy var timestampLabel = Label(
-        style: .detail,
-        withAutoLayout: true
-    )
 
     private lazy var textLabelToSuperviewConstraint = textLabel.leadingAnchor.constraint(
         equalTo: leadingAnchor,
@@ -81,7 +76,7 @@ class PushNotificationDetailsView: UIControl {
 
     // MARK: - Internal methods
 
-    func configure(with details: PushNotificationDetails?, timestamp: String?) {
+    func configure(with details: PushNotificationDetails?) {
         let textAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.body,
             .foregroundColor: UIColor.textPrimary
@@ -130,7 +125,6 @@ class PushNotificationDetailsView: UIControl {
             attributedString = nil
         }
 
-        timestampLabel.text = timestamp
         textLabel.attributedText = attributedString
     }
 
@@ -139,22 +133,16 @@ class PushNotificationDetailsView: UIControl {
     private func setup() {
         addSubview(magnifyingIconView)
         addSubview(textLabel)
-        addSubview(timestampLabel)
-
-        timestampLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         NSLayoutConstraint.activate([
             heightAnchor.constraint(greaterThanOrEqualToConstant: 44),
 
-            magnifyingIconView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            magnifyingIconView.bottomAnchor.constraint(equalTo: textLabel.firstBaselineAnchor, constant: 3),
+            magnifyingIconView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            magnifyingIconView.bottomAnchor.constraint(equalTo: textLabel.firstBaselineAnchor, constant: 2),
 
-            textLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            textLabel.trailingAnchor.constraint(lessThanOrEqualTo: timestampLabel.leadingAnchor, constant: -.mediumLargeSpacing),
-            textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
-
-            timestampLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-            timestampLabel.firstBaselineAnchor.constraint(equalTo: textLabel.firstBaselineAnchor)
+            textLabel.topAnchor.constraint(greaterThanOrEqualTo: topAnchor),
+            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing)
         ])
     }
 }
