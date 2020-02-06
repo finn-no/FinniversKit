@@ -8,7 +8,7 @@ public protocol NotificationCenterCellModel {
     var pushNotificationDetails: PushNotificationDetails? { get }
     var imagePath: String? { get }
     var title: String { get }
-    var price: String { get }
+    var priceText: String { get }
     var ribbonViewModel: RibbonViewModel? { get }
     var read: Bool { get }
 }
