@@ -3,7 +3,7 @@
 //
 
 protocol LinkButtonViewDelegate: AnyObject {
-    func linkButtonWasTapped(withUrl url: URL)
+    func linkButton(withIdentifier identifier: String?, wasTappedWithUrl url: URL)
 }
 
 class LinkButtonView: UIView {
@@ -14,6 +14,7 @@ class LinkButtonView: UIView {
 
     // MARK: - Private properties
 
+    private let buttonIdentifier: String?
     private let linkUrl: URL
     private let linkButtonStyle = Button.Style.link.overrideStyle(normalFont: .body)
 
@@ -41,10 +42,11 @@ class LinkButtonView: UIView {
     // MARK: - Init
 
     convenience init(viewModel: LinkButtonViewModel) {
-        self.init(buttonTitle: viewModel.buttonTitle, subtitle: viewModel.subtitle, linkUrl: viewModel.linkUrl)
+        self.init(buttonIdentifier: viewModel.buttonIdentifier, buttonTitle: viewModel.buttonTitle, subtitle: viewModel.subtitle, linkUrl: viewModel.linkUrl)
     }
 
-    init(buttonTitle: String, subtitle: String?, linkUrl: URL) {
+    init(buttonIdentifier: String?, buttonTitle: String, subtitle: String?, linkUrl: URL) {
+        self.buttonIdentifier = buttonIdentifier
         self.linkUrl = linkUrl
         super.init(frame: .zero)
 
@@ -66,6 +68,6 @@ class LinkButtonView: UIView {
     // MARK: - Private methods
 
     @objc private func handleTap() {
-        delegate?.linkButtonWasTapped(withUrl: linkUrl)
+        delegate?.linkButton(withIdentifier: buttonIdentifier, wasTappedWithUrl: linkUrl)
     }
 }
