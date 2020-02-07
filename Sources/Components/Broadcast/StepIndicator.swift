@@ -48,13 +48,13 @@ public class StepIndicator: UIView {
         fatalError("Not implemented: init(coder:)")
     }
 
-    public init(numberOfSteps: Int, axis: NSLayoutConstraint.Axis) {
-        guard numberOfSteps >= 2 else {
+    public init(steps: Int, axis: NSLayoutConstraint.Axis = .horizontal) {
+        guard steps >= 2 else {
             fatalError("StepIndicator must have at least 2 steps")
         }
 
         self.axis = axis
-        self.numberOfSteps = numberOfSteps
+        self.numberOfSteps = steps
 
         super.init(frame: .zero)
 
