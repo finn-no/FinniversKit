@@ -73,7 +73,7 @@ public class UserAdTableViewCell: UITableViewCell {
     private lazy var contentStack: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .horizontal
-        stackView.alignment = .center
+        stackView.alignment = .top
         stackView.spacing = .mediumLargeSpacing
         return stackView
     }()
@@ -165,6 +165,7 @@ public class UserAdTableViewCell: UITableViewCell {
             : UserAdTableViewCell.defaultImageWidth
 
         separatorInset = .leadingInset(.largeSpacing + imageInset)
+        contentStack.alignment = style == .compressed ? .center : .top
 
         ribbonView.style = model.ribbon.style
         ribbonView.title = model.ribbon.title
