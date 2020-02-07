@@ -32,8 +32,8 @@ public class UserAdTableViewCell: UITableViewCell {
         }
     }
 
-    private static var defaultImageWidth: CGFloat = 80
-    private static var compressedImageWidth: CGFloat = 50
+    private static let defaultImageWidth: CGFloat = 80
+    private static let compressedImageWidth: CGFloat = 50
 
     private lazy var ribbonView = RibbonView(withAutoLayout: true)
 
@@ -212,9 +212,13 @@ public class UserAdTableViewCell: UITableViewCell {
 extension UserAdTableViewCell: ImageLoading {
 
     public func loadImage() {
-        if let imagePath = model?.imagePath {
-            adImageView.loadImage(for: imagePath, imageWidth: .veryLargeSpacing, loadingColor: loadingColor, fallbackImage: fallbackImage)
+        guard let imagePath = model?.imagePath else {
+            adImageView.image = fallbackImage
+            return
         }
+
+
+        adImageView.loadImage(for: imagePath, imageWidth: UserAdTableViewCell.defaultImageWidth, loadingColor: loadingColor, fallbackImage: fallbackImage)
     }
 
 }
