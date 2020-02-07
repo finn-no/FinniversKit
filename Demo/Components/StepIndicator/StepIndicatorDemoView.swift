@@ -89,7 +89,7 @@ class StepIndicatorDemoView: UIView {
         currentStepStepper.maximumValue = Double(numberOfSteps - 1)
 
         stepIndicator?.removeFromSuperview()
-        stepIndicator = StepIndicator(steps: numberOfSteps)
+        stepIndicator = StepIndicator(numberOfSteps: numberOfSteps, axis: .horizontal)
 
         let indicator = stepIndicator!
         indicator.translatesAutoresizingMaskIntoConstraints = false
