@@ -160,6 +160,8 @@ public class UserAdTableViewCell: UITableViewCell {
         self.style = style
         self.model = model
 
+        accessibilityLabel = model.accessibilityLabel
+
         let imageInset = style == .compressed
             ? UserAdTableViewCell.compressedImageWidth
             : UserAdTableViewCell.defaultImageWidth
