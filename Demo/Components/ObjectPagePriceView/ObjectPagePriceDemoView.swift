@@ -9,10 +9,10 @@ class ObjectPagePriceDemoView: UIView, Tweakable {
 
     lazy var tweakingOptions: [TweakingOption] = {
         [
-            TweakingOption(title: "With links", action: { [weak self] in 
+            TweakingOption(title: "With links", action: { [weak self] in
                 self?.priceView.configure(with: .withLinks)
             }),
-            TweakingOption(title: "Without links", action: { [weak self] in 
+            TweakingOption(title: "Without links", action: { [weak self] in
                 self?.priceView.configure(with: .withoutLinks)
             })
         ]
