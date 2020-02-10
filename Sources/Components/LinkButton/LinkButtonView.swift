@@ -38,6 +38,7 @@ class LinkButtonView: UIView {
     private lazy var linkButton: Button = {
         let button = Button(style: linkButtonStyle, size: .normal, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
+        button.contentHorizontalAlignment = .leading
         return button
     }()
 
