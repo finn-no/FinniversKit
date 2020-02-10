@@ -26,12 +26,6 @@ public class UserAdTableViewCell: UITableViewCell {
 
     private var model: UserAdTableViewCellViewModel?
 
-    private var style: Style? = .default {
-        didSet {
-            setupStyleConstraints()
-        }
-    }
-
     private static let defaultImageWidth: CGFloat = 80
     private static let compressedImageWidth: CGFloat = 50
 
@@ -144,10 +138,10 @@ public class UserAdTableViewCell: UITableViewCell {
         descriptionStack.setCustomSpacing(.verySmallSpacing, after: titleLabel)
         descriptionStack.setCustomSpacing(.mediumSpacing, after: subtitleLabel)
 
-        setupStyleConstraints()
+        setupStyleConstraints(for: .default)
     }
 
-    private func setupStyleConstraints() {
+    private func setupStyleConstraints(for style: Style) {
         NSLayoutConstraint.deactivate(compactConstraints + regularConstraints)
 
         let constraints = style == .compressed ? compactConstraints : regularConstraints
@@ -157,16 +151,16 @@ public class UserAdTableViewCell: UITableViewCell {
     // MARK: Public methods
 
     public func configure(with style: Style, model: UserAdTableViewCellViewModel) {
-        self.style = style
         self.model = model
-
-        accessibilityLabel = model.accessibilityLabel
+        setupStyleConstraints(for: style)
 
         let imageInset = style == .compressed
             ? UserAdTableViewCell.compressedImageWidth
             : UserAdTableViewCell.defaultImageWidth
 
         separatorInset = .leadingInset(.largeSpacing + imageInset)
+        accessibilityLabel = model.accessibilityLabel
+
         contentStack.alignment = style == .compressed ? .center : .top
 
         ribbonView.style = model.ribbon.style
@@ -216,7 +210,6 @@ extension UserAdTableViewCell: ImageLoading {
             adImageView.image = fallbackImage
             return
         }
-
 
         adImageView.loadImage(for: imagePath, imageWidth: UserAdTableViewCell.defaultImageWidth, loadingColor: loadingColor, fallbackImage: fallbackImage)
     }
