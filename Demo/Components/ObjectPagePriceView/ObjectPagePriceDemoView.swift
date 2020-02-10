@@ -43,7 +43,7 @@ class ObjectPagePriceDemoView: UIView, Tweakable {
 
 extension ObjectPagePriceDemoView: ObjectPagePriceViewDelegate {
     func priceView(_ view: ObjectPagePriceView, didTapLinkButtonWithIdentifier identifier: String?, url: URL) {
-        print("🔥🔥🔥🔥 \(#function) - buttonIdentifier: \(identifier) - url: \(url)")
+        print("🔥🔥🔥🔥 \(#function) - buttonIdentifier: \(identifier ?? "") - url: \(url)")
     }
 }
 
@@ -57,17 +57,20 @@ extension ObjectPagePriceViewModel {
                     buttonIdentifier: "loan",
                     buttonTitle: "Lån fra 16 581 kr",
                     subtitle: "Eff.rente 3,89 %. 903 232 o/5 år. Kostnad: 91 628 kr. Totalt 994 860 kr.",
-                    linkUrl: URL(string: "https://www.finn.no/")!
+                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    isExternal: true
                 ),
                 LinkButtonViewModel(
                     buttonIdentifier: "insurance",
                     buttonTitle: "Pris på forsikring",
-                    linkUrl: URL(string: "https://www.finn.no/")!
+                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    isExternal: false
                 ),
                 LinkButtonViewModel(
                     buttonIdentifier: "used-car-guarantee",
                     buttonTitle: "Bruktbilgaranti 272 kr",
-                    linkUrl: URL(string: "https://www.finn.no/")!
+                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    isExternal: true
                 )
             ]
         )

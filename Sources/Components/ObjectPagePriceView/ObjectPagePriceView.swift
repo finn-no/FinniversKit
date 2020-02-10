@@ -18,7 +18,7 @@ public class ObjectPagePriceView: UIView {
     private lazy var totalPriceLabel = Label(style: .title3Strong, withAutoLayout: true)
 
     private lazy var wrapperStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [textStackView, linkStackView])
+        let stackView = UIStackView(arrangedSubviews: [textStackView, linkButtonListView])
         stackView.axis = .vertical
         stackView.spacing = .mediumSpacing
         return stackView
@@ -31,10 +31,10 @@ public class ObjectPagePriceView: UIView {
         return stackView
     }()
 
-    private lazy var linkStackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .vertical
-        return stackView
+    private lazy var linkButtonListView: LinkButtonListView = {
+        let view = LinkButtonListView(withAutoLayout: true)
+        view.delegate = self
+        return view
     }()
 
     // MARK: - Init
@@ -59,21 +59,15 @@ public class ObjectPagePriceView: UIView {
         titleLabel.text = viewModel.title
         totalPriceLabel.text = viewModel.totalPrice
 
-        linkStackView.removeArrangedSubviews()
-
-        viewModel.links.map(LinkButtonView.init).forEach {
-            $0.delegate = self
-            $0.setContentHuggingPriority(.required, for: .horizontal)
-            linkStackView.addArrangedSubview($0)
-        }
-        linkStackView.isHidden = viewModel.links.isEmpty
+        linkButtonListView.configure(with: viewModel.links)
+        linkButtonListView.isHidden = viewModel.links.isEmpty
     }
 }
 
-// MARK: - LinkButtonViewDelegate
+// MARK: - LinkButtonListViewDelegate
 
-extension ObjectPagePriceView: LinkButtonViewDelegate {
-    func linkButton(withIdentifier identifier: String?, wasTappedWithUrl url: URL) {
+extension ObjectPagePriceView: LinkButtonListViewDelegate {
+    public func linksListView(_ view: LinkButtonListView, didTapButtonWithIdentifier identifier: String?, url: URL) {
         delegate?.priceView(self, didTapLinkButtonWithIdentifier: identifier, url: url)
     }
 }
