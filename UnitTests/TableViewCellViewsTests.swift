@@ -54,4 +54,8 @@ class TableViewCellsViewTests: XCTestCase {
     func testFavoriteAdCell() {
         snapshot(.favoriteAdCell)
     }
+
+    func testUserAdCell() {
+        snapshot(.userAdCell)
+    }
 }

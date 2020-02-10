@@ -270,6 +270,9 @@
 		918C8A4223A3853400B566DE /* NativeAdvertGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918C8A4123A3853400B566DE /* NativeAdvertGridView.swift */; };
 		918C8A4623A387BD00B566DE /* NativeAdvertDetailsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918C8A4523A387BD00B566DE /* NativeAdvertDetailsContainer.swift */; };
 		918C8AC423A7A82900B566DE /* NativeAdvertListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918C8AC323A7A82900B566DE /* NativeAdvertListView.swift */; };
+		91A5B23E23E2FC5400092ED6 /* UserAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B23D23E2FC5400092ED6 /* UserAdTableViewCell.swift */; };
+		91A5B24123E2FCE200092ED6 /* UserAdCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B24023E2FCE200092ED6 /* UserAdCellDemoView.swift */; };
+		91A5B24423E45B6200092ED6 /* UserAdTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B24223E45AD200092ED6 /* UserAdTableViewCellViewModel.swift */; };
 		91D2A55422F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D2A55322F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift */; };
 		91D2A55A22F458EE00ED4BB9 /* SearchResultMapViewDemoViewControllerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D2A55922F458EE00ED4BB9 /* SearchResultMapViewDemoViewControllerHelpers.swift */; };
 		9A37D015952CBD1FEF4F0E20 /* FavoriteAdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DA1C8FBA8E3FF6355FB5 /* FavoriteAdViewModel.swift */; };
@@ -903,6 +906,9 @@
 		918C8A4123A3853400B566DE /* NativeAdvertGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAdvertGridView.swift; sourceTree = "<group>"; };
 		918C8A4523A387BD00B566DE /* NativeAdvertDetailsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertDetailsContainer.swift; sourceTree = "<group>"; };
 		918C8AC323A7A82900B566DE /* NativeAdvertListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertListView.swift; sourceTree = "<group>"; };
+		91A5B23D23E2FC5400092ED6 /* UserAdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdTableViewCell.swift; sourceTree = "<group>"; };
+		91A5B24023E2FCE200092ED6 /* UserAdCellDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdCellDemoView.swift; sourceTree = "<group>"; };
+		91A5B24223E45AD200092ED6 /* UserAdTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		91D2A55322F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMapViewAnnotation.swift; sourceTree = "<group>"; };
 		91D2A55922F458EE00ED4BB9 /* SearchResultMapViewDemoViewControllerHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMapViewDemoViewControllerHelpers.swift; sourceTree = "<group>"; };
 		9A37D04C776B4BFF6C0415CC /* ObjectPagePriceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPagePriceView.swift; sourceTree = "<group>"; };
@@ -2017,6 +2023,7 @@
 				44A557A322E720A3001667AE /* IconTitleTableViewCell */,
 				44A557AB22E7211E001667AE /* RemoteImageTableViewCell */,
 				44A557B022E72187001667AE /* SelectableTableViewCell */,
+				91A5B23C23E2FC2900092ED6 /* UserAdTableViewCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -2067,6 +2074,7 @@
 				44AEFC1D22E722FC00D3C307 /* IconTitleTableViewCell */,
 				44AEFC1822E722FC00D3C307 /* RemoteImageTableViewCell */,
 				44AEFC1F22E722FC00D3C307 /* SelectableTableViewCell */,
+				91A5B23F23E2FCC100092ED6 /* UserAdTableViewCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -2404,6 +2412,23 @@
 				91D2A55922F458EE00ED4BB9 /* SearchResultMapViewDemoViewControllerHelpers.swift */,
 			);
 			path = SearchResultMapView;
+			sourceTree = "<group>";
+		};
+		91A5B23C23E2FC2900092ED6 /* UserAdTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				91A5B23D23E2FC5400092ED6 /* UserAdTableViewCell.swift */,
+				91A5B24223E45AD200092ED6 /* UserAdTableViewCellViewModel.swift */,
+			);
+			path = UserAdTableViewCell;
+			sourceTree = "<group>";
+		};
+		91A5B23F23E2FCC100092ED6 /* UserAdTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				91A5B24023E2FCE200092ED6 /* UserAdCellDemoView.swift */,
+			);
+			path = UserAdTableViewCell;
 			sourceTree = "<group>";
 		};
 		9A37D0FBA493D29104CFE3A8 /* Views */ = {
@@ -4672,6 +4697,7 @@
 				F26CAC0723AC9BDC00CACF71 /* CollapseDemoView.swift in Sources */,
 				CFFDF89922F313A500FE68EA /* NeighborhoodProfileDemoView.swift in Sources */,
 				4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */,
+				91A5B24123E2FCE200092ED6 /* UserAdCellDemoView.swift in Sources */,
 				AA864B392231589B00BAE95A /* DialogueDemoView.swift in Sources */,
 				CFF9727921C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift in Sources */,
 				4974725B239A48BF0058D7B0 /* SearchListEmptyDemoView.swift in Sources */,
@@ -4899,6 +4925,7 @@
 				CF3D5EEA215A6723006E4D08 /* DrumPadCollectionViewCell.swift in Sources */,
 				89A7A63D225337B50053D33B /* NativeAdvertViewModel.swift in Sources */,
 				0881432822E05391008CB5DA /* FavoriteFolderSelectableViewCell.swift in Sources */,
+				91A5B24423E45B6200092ED6 /* UserAdTableViewCellViewModel.swift in Sources */,
 				441FE430209A24E500B04EF1 /* AdsGridViewCell.swift in Sources */,
 				DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */,
 				CF4A053721FB2ACB000BB7DA /* PianoView.swift in Sources */,
@@ -4906,6 +4933,7 @@
 				14C6F7D5212324CA00A7230C /* FavoritesListViewModel.swift in Sources */,
 				14DC126F21593B0000326DC3 /* HorizontalSlideController.swift in Sources */,
 				44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */,
+				91A5B23E23E2FC5400092ED6 /* UserAdTableViewCell.swift in Sources */,
 				DAD6EB2C2369916100968497 /* SettingsSectionFooterView.swift in Sources */,
 				449C60B1234DD82E00C51A63 /* BasicTableView.swift in Sources */,
 				9BC33DEB22D76405007CCD65 /* LoginEntryDialogueView.swift in Sources */,
