@@ -45,7 +45,7 @@ class LinkButtonView: UIView {
     private lazy var externalImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = externalImage
-        imageView.tintColor = .sardine
+        imageView.tintColor = .externalIconColor
         return imageView
     }()
 
@@ -92,4 +92,10 @@ class LinkButtonView: UIView {
     @objc private func handleTap() {
         delegate?.linkButton(withIdentifier: buttonIdentifier, wasTappedWithUrl: linkUrl)
     }
+}
+
+// MARK: - Private extensions
+
+private extension UIColor {
+    static var externalIconColor = dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
 }
