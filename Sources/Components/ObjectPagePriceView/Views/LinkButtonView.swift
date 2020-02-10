@@ -17,13 +17,21 @@ class LinkButtonView: UIView {
     private let buttonIdentifier: String?
     private let linkUrl: URL
     private let linkButtonStyle = Button.Style.link.overrideStyle(normalFont: .body)
+    private lazy var fillerView = UIView(withAutoLayout: true)
     private lazy var externalImage = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [linkButton, subtitleLabel])
+        let stackView = UIStackView(arrangedSubviews: [topRowStackView, subtitleLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .top
+        return stackView
+    }()
+
+    private lazy var topRowStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [linkButton, fillerView, externalImageView])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.alignment = .center
         return stackView
     }()
 
@@ -72,6 +80,10 @@ class LinkButtonView: UIView {
     private func setup() {
         addSubview(stackView)
         stackView.fillInSuperview()
+
+        NSLayoutConstraint.activate([
+            topRowStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor)
+        ])
     }
 
     // MARK: - Private methods
