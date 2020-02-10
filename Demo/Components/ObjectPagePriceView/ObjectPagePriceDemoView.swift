@@ -43,7 +43,7 @@ class ObjectPagePriceDemoView: UIView, Tweakable {
 
 extension ObjectPagePriceDemoView: ObjectPagePriceViewDelegate {
     func priceView(_ view: ObjectPagePriceView, didTapLinkButtonWithIdentifier identifier: String?, url: URL) {
-        print("🔥🔥🔥🔥 \(#function) - buttonIdentifier: \(identifier) - url: \(url)")
+        print("🔥🔥🔥🔥 \(#function) - buttonIdentifier: \(identifier ?? "") - url: \(url)")
     }
 }
 

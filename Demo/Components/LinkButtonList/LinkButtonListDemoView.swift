@@ -36,7 +36,7 @@ class LinkButtonListDemoView: UIView {
 
 extension LinkButtonListDemoView: LinkButtonListViewDelegate {
     func linksListView(_ view: LinkButtonListView, didTapButtonWithIdentifier identifier: String?, url: URL) {
-        print("🔥🔥🔥🔥 \(#function) - buttonIdentifier: \(identifier) - url: \(url)")
+        print("🔥🔥🔥🔥 \(#function) - buttonIdentifier: \(identifier ?? "") - url: \(url)")
     }
 }
 
