@@ -281,13 +281,13 @@
 		9A37D30A78EB61643224B799 /* HorizontalIconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D6DD0D198F26623B15F0 /* HorizontalIconCollectionViewCell.swift */; };
 		9A37D36854B78610AFEADD5C /* UITableViewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DF20BB7306D8D1A25593 /* UITableViewCellExtensions.swift */; };
 		9A37D44F4C1D337B39F07E68 /* SelfDeclarationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D6F3E7CC1A337D037C02 /* SelfDeclarationDemoView.swift */; };
-		9A37D5EF590E4E9CDF3C065F /* LinkButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DF54CADAB3CBB1ADB6C3 /* LinkButtonViewModel.swift */; };
 		9A37D671719BE998E1BD3DC2 /* ObjectPagePriceDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D099BD9A89A8D9EE9C6B /* ObjectPagePriceDemoView.swift */; };
 		9A37D6BC5F45EACE68F4EF37 /* FavoriteAdsListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DD4DA48E4BA2D5C25B1D /* FavoriteAdsListEmptyView.swift */; };
 		9A37D6FADD7DBD952AA395F7 /* FavoriteAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D30A5DD3B5A286743DA3 /* FavoriteAdTableViewCell.swift */; };
+		9A37D71314CB8E978EDC889C /* LinkButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DB4994CC79F661EA013F /* LinkButtonViewModel.swift */; };
 		9A37D770DA2B07DC0F543B33 /* FavoriteAdsDemoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DB13635127F4DE6BCEC6 /* FavoriteAdsDemoDataSource.swift */; };
-		9A37D7B3F051C13ADB5AD6F4 /* LinkButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DEAEF40A1460F559CBD1 /* LinkButtonView.swift */; };
 		9A37D84E5603C39844DA83C5 /* VisibilityDrivenTitleDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D6A0C42E36E51F034413 /* VisibilityDrivenTitleDemoView.swift */; };
+		9A37D89F84574B63CB61EAAB /* LinkButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DF9788D8084AE7F0B91B /* LinkButtonView.swift */; };
 		9A37D8D25E07F1F1F3875044 /* SelfDeclarationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DD5C29C02298C78257C1 /* SelfDeclarationViewModel.swift */; };
 		9A37D8FB2E0EB9F3A172E23A /* ObjectPagePriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D04C776B4BFF6C0415CC /* ObjectPagePriceView.swift */; };
 		9A37D91577C7406D942AF82E /* FavoriteAdsSortingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D728DC9D805D74CB8D4F /* FavoriteAdsSortingView.swift */; };
@@ -933,15 +933,15 @@
 		9A37DA1C8FBA8E3FF6355FB5 /* FavoriteAdViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdViewModel.swift; sourceTree = "<group>"; };
 		9A37DAD39379A11C6213043C /* VisibilityDrivenTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisibilityDrivenTitleView.swift; sourceTree = "<group>"; };
 		9A37DB13635127F4DE6BCEC6 /* FavoriteAdsDemoDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsDemoDataSource.swift; sourceTree = "<group>"; };
+		9A37DB4994CC79F661EA013F /* LinkButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkButtonViewModel.swift; sourceTree = "<group>"; };
 		9A37DC5E8BBDBC5DBF3E100B /* SelfDeclarationItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfDeclarationItemViewModel.swift; sourceTree = "<group>"; };
 		9A37DD4DA48E4BA2D5C25B1D /* FavoriteAdsListEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListEmptyView.swift; sourceTree = "<group>"; };
 		9A37DD5C29C02298C78257C1 /* SelfDeclarationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfDeclarationViewModel.swift; sourceTree = "<group>"; };
 		9A37DD79F67FC522D64A127E /* FavoriteAdsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListView.swift; sourceTree = "<group>"; };
-		9A37DEAEF40A1460F559CBD1 /* LinkButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkButtonView.swift; sourceTree = "<group>"; };
 		9A37DECC59A6DBC8F54A7614 /* FavoriteAdCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdCellDemoView.swift; sourceTree = "<group>"; };
 		9A37DF20BB7306D8D1A25593 /* UITableViewCellExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtensions.swift; sourceTree = "<group>"; };
-		9A37DF54CADAB3CBB1ADB6C3 /* LinkButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkButtonViewModel.swift; sourceTree = "<group>"; };
 		9A37DF66929876DCA81666F3 /* SelfDeclarationItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfDeclarationItemView.swift; sourceTree = "<group>"; };
+		9A37DF9788D8084AE7F0B91B /* LinkButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkButtonView.swift; sourceTree = "<group>"; };
 		9B057AA8235EEB1C007B1CF0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9B057AAB235EEBAA007B1CF0 /* ChristmasButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasButton.swift; sourceTree = "<group>"; };
 		9B057AAD235EEBE9007B1CF0 /* MissionPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPopupView.swift; sourceTree = "<group>"; };
@@ -2434,6 +2434,14 @@
 			path = UserAdTableViewCell;
 			sourceTree = "<group>";
 		};
+		9A37D04ECAD047206016D29A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9A37DB4994CC79F661EA013F /* LinkButtonViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		9A37D0FBA493D29104CFE3A8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -2446,7 +2454,6 @@
 			isa = PBXGroup;
 			children = (
 				9A37D727744D523F43794CF0 /* ObjectPagePriceViewModel.swift */,
-				9A37DF54CADAB3CBB1ADB6C3 /* LinkButtonViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2456,7 +2463,6 @@
 			children = (
 				9A37D04C776B4BFF6C0415CC /* ObjectPagePriceView.swift */,
 				9A37D2F040D4E0D802DC529B /* Models */,
-				9A37DF1B81BCE896860E7589 /* Views */,
 			);
 			path = ObjectPagePriceView;
 			sourceTree = "<group>";
@@ -2474,7 +2480,9 @@
 		9A37D55C2A64827FF8CBD6E5 /* LinkButton */ = {
 			isa = PBXGroup;
 			children = (
+				9A37D04ECAD047206016D29A /* Models */,
 				9A37D68D75C2E29BF223ADD9 /* LinkButtonListView.swift */,
+				9A37DF9788D8084AE7F0B91B /* LinkButtonView.swift */,
 			);
 			path = LinkButton;
 			sourceTree = "<group>";
@@ -2561,14 +2569,6 @@
 				CFF54E2D234E192A008E18BE /* FavoriteAdsSubtitleView.swift */,
 			);
 			path = Subviews;
-			sourceTree = "<group>";
-		};
-		9A37DF1B81BCE896860E7589 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				9A37DEAEF40A1460F559CBD1 /* LinkButtonView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		9A37DF6791FBBD999EE476C3 /* Models */ = {
@@ -5241,9 +5241,9 @@
 				9A37DAAFC21354151CA7FC47 /* UIStackViewExtensions.swift in Sources */,
 				9A37D8FB2E0EB9F3A172E23A /* ObjectPagePriceView.swift in Sources */,
 				9A37DEBA80091CD61954E2B9 /* ObjectPagePriceViewModel.swift in Sources */,
-				9A37D5EF590E4E9CDF3C065F /* LinkButtonViewModel.swift in Sources */,
-				9A37D7B3F051C13ADB5AD6F4 /* LinkButtonView.swift in Sources */,
 				9A37DA7B24E02E5E9048823A /* LinkButtonListView.swift in Sources */,
+				9A37D89F84574B63CB61EAAB /* LinkButtonView.swift in Sources */,
+				9A37D71314CB8E978EDC889C /* LinkButtonViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
