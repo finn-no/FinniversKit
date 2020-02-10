@@ -3,7 +3,7 @@ import FinniversKit
 class SafetyElementsDemoView: UIView, Tweakable {
     private lazy var safetyElementsView: SafetyElementsView = {
         let view = SafetyElementsView(withAutoLayout: true)
-        view.useCompactLayout = false
+        view.useCompactLayout = true
         view.configure(with: sampleData)
         return view
     }()

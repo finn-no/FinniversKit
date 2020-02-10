@@ -266,4 +266,8 @@ class ComponentViewTests: XCTestCase {
     func testLinkButtonListView() {
         snapshot(.linkButtonListView)
     }
+
+    func testSafetyElementsView() {
+        snapshot(.safetyElementsView)
+    }
 }
