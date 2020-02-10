@@ -1782,7 +1782,7 @@
 				9B2D17CA23E02AA200EF3B50 /* KeyValueGridView */,
 				9BBC8ADC22DF4CA2003453B6 /* Klimabrolet */,
 				4447F6741FDB2B110033DBC1 /* Label */,
-				9A37D55C2A64827FF8CBD6E5 /* LinksList */,
+				9A37D55C2A64827FF8CBD6E5 /* LinkButton */,
 				44AFCE44215839F6005984DB /* LoadingIndicator */,
 				9BEB2875231D23F500D28BAD /* LoanCalculator */,
 				89A7A63A2253376D0053D33B /* NativeAdvert */,
@@ -2471,12 +2471,12 @@
 			path = FavoriteAdsList;
 			sourceTree = "<group>";
 		};
-		9A37D55C2A64827FF8CBD6E5 /* LinksList */ = {
+		9A37D55C2A64827FF8CBD6E5 /* LinkButton */ = {
 			isa = PBXGroup;
 			children = (
 				9A37D68D75C2E29BF223ADD9 /* LinkButtonListView.swift */,
 			);
-			path = LinksList;
+			path = LinkButton;
 			sourceTree = "<group>";
 		};
 		9A37D55FF47FB2736E329236 /* SelfDeclaration */ = {
