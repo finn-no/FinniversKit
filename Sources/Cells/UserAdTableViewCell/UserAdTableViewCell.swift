@@ -183,6 +183,8 @@ public class UserAdTableViewCell: UITableViewCell {
     // MARK: - Overrides
 
     public override func prepareForReuse() {
+        accessoryType = .none
+
         adImageView.cancelLoading()
         adImageView.image = nil
 

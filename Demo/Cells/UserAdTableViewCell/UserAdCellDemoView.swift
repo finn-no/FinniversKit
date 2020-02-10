@@ -65,6 +65,7 @@ extension UserAdCellDemoView: UITableViewDataSource {
         cell.configure(with: style, model: viewModels[indexPath.row])
         cell.remoteImageViewDataSource = self
         cell.loadingColor = .toothPaste
+        cell.accessoryType = indexPath.row == viewModels.count - 1 ? .disclosureIndicator : .none
 
         return cell
     }
