@@ -29,7 +29,9 @@ public class StepIndicator: UIView {
     // MARK: - Private properties
 
     private static let stepDotDiameter: CGFloat = 27.0
+
     private let numberOfSteps: Int
+    private let axis: NSLayoutConstraint.Axis
     private let stackView = UIStackView(withAutoLayout: true)
 
     private var stepDots = [StepDot]()
@@ -46,21 +48,25 @@ public class StepIndicator: UIView {
         fatalError("Not implemented: init(coder:)")
     }
 
-    public init(steps: Int) {
+    public init(steps: Int, axis: NSLayoutConstraint.Axis = .horizontal) {
         guard steps >= 2 else {
             fatalError("StepIndicator must have at least 2 steps")
         }
 
-        numberOfSteps = steps
+        self.axis = axis
+        self.numberOfSteps = steps
+
         super.init(frame: .zero)
-        setup()
+
+        setup(axis: axis)
     }
 
-    private func setup() {
+    private func setup(axis: NSLayoutConstraint.Axis) {
         addSubview(stackView)
         stackView.fillInSuperview()
-        stackView.distribution = .equalSpacing
+        stackView.distribution = axis == .horizontal ? .equalSpacing : .fillEqually
         stackView.alignment = .center
+        stackView.axis = axis
 
         for index in 0..<numberOfSteps {
             let stepDot = StepDot(step: index, diameter: StepIndicator.stepDotDiameter)
@@ -70,7 +76,7 @@ public class StepIndicator: UIView {
         }
 
         for index in 1..<numberOfSteps {
-            let connector = StepDotConnector()
+            let connector = StepDotConnector(axis: axis)
             addSubview(connector)
             connector.connect(from: stepDots[index - 1], to: stepDots[index])
 
