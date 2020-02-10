@@ -17,6 +17,7 @@ class LinkButtonView: UIView {
     private let buttonIdentifier: String?
     private let linkUrl: URL
     private let linkButtonStyle = Button.Style.link.overrideStyle(normalFont: .body)
+    private lazy var externalImage = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [linkButton, subtitleLabel])
@@ -32,6 +33,13 @@ class LinkButtonView: UIView {
         return button
     }()
 
+    private lazy var externalImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.image = externalImage
+        imageView.tintColor = .sardine
+        return imageView
+    }()
+
     private lazy var subtitleLabel: Label = {
         let label = Label(style: .detail, withAutoLayout: true)
         label.textColor = .stone
@@ -42,14 +50,15 @@ class LinkButtonView: UIView {
     // MARK: - Init
 
     convenience init(viewModel: LinkButtonViewModel) {
-        self.init(buttonIdentifier: viewModel.buttonIdentifier, buttonTitle: viewModel.buttonTitle, subtitle: viewModel.subtitle, linkUrl: viewModel.linkUrl)
+        self.init(buttonIdentifier: viewModel.buttonIdentifier, buttonTitle: viewModel.buttonTitle, subtitle: viewModel.subtitle, linkUrl: viewModel.linkUrl, isExternal: viewModel.isExternal)
     }
 
-    init(buttonIdentifier: String?, buttonTitle: String, subtitle: String?, linkUrl: URL) {
+    init(buttonIdentifier: String?, buttonTitle: String, subtitle: String?, linkUrl: URL, isExternal: Bool) {
         self.buttonIdentifier = buttonIdentifier
         self.linkUrl = linkUrl
         super.init(frame: .zero)
 
+        externalImageView.isHidden = !isExternal
         linkButton.setTitle(buttonTitle, for: .normal)
         subtitleLabel.text = subtitle
         subtitleLabel.isHidden = subtitle?.isEmpty ?? true
