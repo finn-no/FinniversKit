@@ -3,6 +3,12 @@
 //
 
 class SafetyElementView: UIView {
+    weak var delegate: SafetyElementContentViewDelegate? {
+        didSet {
+            contentView.delegate = delegate
+        }
+    }
+
     // MARK: - Private properties
     private lazy var headerStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)

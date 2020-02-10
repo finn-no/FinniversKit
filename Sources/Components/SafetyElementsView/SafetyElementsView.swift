@@ -4,6 +4,10 @@
 
 import Foundation
 
+public protocol SafetyElementsViewDelegate: AnyObject {
+    func safetyElementsView(_ view: SafetyElementsView, didClickOnLink identifier: String?, url: URL)
+}
+
 public class SafetyElementsView: UIView {
     // MARK: - Public properties
     public var useCompactLayout: Bool = true {
@@ -12,6 +16,8 @@ public class SafetyElementsView: UIView {
             reconfigureUsedView()
         }
     }
+
+    public weak var delegate: SafetyElementsViewDelegate?
 
     // MARK: - Private properties
     private var viewModels: [SafetyElementViewModel] = []
@@ -41,12 +47,18 @@ public class SafetyElementsView: UIView {
 
         if useCompactLayout {
             addSubview(compactView)
-            compactView.configure(with: viewModels)
+            compactView.configure(with: viewModels, delegate: self)
             compactView.fillInSuperview()
         } else {
             addSubview(regularView)
-            regularView.configure(with: viewModels)
+            regularView.configure(with: viewModels, delegate: self)
             regularView.fillInSuperview()
         }
+    }
+}
+
+extension SafetyElementsView: SafetyElementContentViewDelegate {
+    func safetyElementContentView(_ view: SafetyElementContentView, didClickOnLink identifier: String?, url: URL) {
+        delegate?.safetyElementsView(self, didClickOnLink: identifier, url: url)
     }
 }

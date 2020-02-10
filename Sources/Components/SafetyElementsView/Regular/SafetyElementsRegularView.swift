@@ -78,7 +78,7 @@ class SafetyElementsRegularView: UIView {
         ])
     }
 
-    func configure(with viewModels: [SafetyElementViewModel]) {
+    func configure(with viewModels: [SafetyElementViewModel], delegate: SafetyElementContentViewDelegate? = nil) {
         headerStackView.removeArrangedSubviews()
 
         viewModels.enumerated().forEach { (index, viewModel) in
@@ -86,16 +86,17 @@ class SafetyElementsRegularView: UIView {
             safetyHeaderView.configure(with: viewModel)
             safetyHeaderView.tag = index
             safetyHeaderView.isActive = index == 0
-            safetyHeaderView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap(_:))))
+            safetyHeaderView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOnHeaderView)))
 
             headerStackView.addArrangedSubview(safetyHeaderView)
         }
 
         self.viewModels = viewModels
         setActiveElement(to: 0)
+        contentView.delegate = delegate
     }
 
-    @objc private func didTap(_ gesture: UITapGestureRecognizer) {
+    @objc private func didTapOnHeaderView(_ gesture: UITapGestureRecognizer) {
         guard let index = gesture.view?.tag else { return }
         headerStackView
             .arrangedSubviews
