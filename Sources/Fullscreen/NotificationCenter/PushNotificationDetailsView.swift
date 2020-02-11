@@ -18,8 +18,8 @@ class PushNotificationDetailsView: UIControl {
         let imageView = UIImageView(image: image)
         imageView.tintColor = .textPrimary
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.widthAnchor.constraint(equalToConstant: 16).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 14).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 14).isActive = true
         return imageView
     }()
 
@@ -78,7 +78,7 @@ class PushNotificationDetailsView: UIControl {
 
     func configure(with details: PushNotificationDetails?) {
         let textAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.body,
+            .font: UIFont.caption,
             .foregroundColor: UIColor.textPrimary
         ]
 
@@ -93,7 +93,7 @@ class PushNotificationDetailsView: UIControl {
             highlightedRange = NSRange(location: text.count + 1, length: title.count)
 
             let titleAttributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.bodyStrong,
+                .font: UIFont.captionStrong,
                 .foregroundColor: UIColor.textAction
             ]
 
@@ -112,7 +112,7 @@ class PushNotificationDetailsView: UIControl {
             let valueRange = NSRange(location: text.count + 1, length: value.count)
 
             let valueAttributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.bodyStrong,
+                .font: UIFont.captionStrong,
                 .foregroundColor: UIColor.textPrimary
             ]
 
@@ -135,7 +135,7 @@ class PushNotificationDetailsView: UIControl {
         addSubview(textLabel)
 
         NSLayoutConstraint.activate([
-            heightAnchor.constraint(greaterThanOrEqualToConstant: 44),
+            heightAnchor.constraint(greaterThanOrEqualToConstant: 48),
 
             magnifyingIconView.leadingAnchor.constraint(equalTo: leadingAnchor),
             magnifyingIconView.bottomAnchor.constraint(equalTo: textLabel.firstBaselineAnchor, constant: 2),

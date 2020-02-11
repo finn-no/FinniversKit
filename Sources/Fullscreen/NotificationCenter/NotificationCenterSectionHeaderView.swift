@@ -6,7 +6,7 @@ import UIKit
 
 public protocol NotificationCenterSectionHeaderViewModel {
     var title: String? { get }
-    var details: PushNotificationDetails { get }
+    var details: PushNotificationDetails? { get }
 }
 
 protocol NotificationCenterSectionHeaderViewDelegate: AnyObject {
@@ -47,6 +47,10 @@ class NotificationCenterSectionHeaderView: UITableViewHeaderFooterView {
         return view
     }()
 
+    private lazy var stackViewTopConstraint = stackView.topAnchor.constraint(
+        equalTo: contentView.topAnchor
+    )
+
     // MARK: - Init
 
     override init(reuseIdentifier: String?) {
@@ -57,15 +61,16 @@ class NotificationCenterSectionHeaderView: UITableViewHeaderFooterView {
         contentView.addSubview(separatorView)
 
         NSLayoutConstraint.activate([
+            stackViewTopConstraint,
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
             separatorView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
             separatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            separatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            separatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+
+            contentView.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
         ])
     }
 
@@ -86,8 +91,10 @@ class NotificationCenterSectionHeaderView: UITableViewHeaderFooterView {
         if let title = model?.title {
             titleLabel.text = title
             titleLabel.isHidden = false
+            stackViewTopConstraint.constant = .mediumLargeSpacing
         } else {
             titleLabel.isHidden = true
+            stackViewTopConstraint.constant = 0
         }
 
         notificationDetailsView.configure(with: model?.details)

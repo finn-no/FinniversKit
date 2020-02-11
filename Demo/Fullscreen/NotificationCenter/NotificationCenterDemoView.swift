@@ -14,7 +14,7 @@ private struct NotificationModel: NotificationCenterCellModel {
 
 private struct Section: NotificationCenterSectionHeaderViewModel {
     let title: String?
-    let details: PushNotificationDetails
+    let details: PushNotificationDetails?
     var items: [NotificationModel]
 }
 
