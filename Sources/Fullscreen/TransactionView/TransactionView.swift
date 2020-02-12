@@ -15,7 +15,7 @@ public class TransactionView: UIView {
     private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .equalSpacing
         stackView.alignment = .fill
         stackView.spacing = .mediumSpacing
         return stackView
