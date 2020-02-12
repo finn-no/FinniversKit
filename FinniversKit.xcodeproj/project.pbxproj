@@ -546,6 +546,18 @@
 		DAD6EB322369BCFD00968497 /* SettingDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB312369BCFD00968497 /* SettingDetailsView.swift */; };
 		DAD6EB352369BD2300968497 /* SettingDetailsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB342369BD2300968497 /* SettingDetailsDemoViewController.swift */; };
 		DAE6A55C21CA524B00837BFA /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE6A55B21CA524B00837BFA /* CGPoint.swift */; };
+		F20450B423EC0D31001F7370 /* TransactionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450B323EC0D31001F7370 /* TransactionDemoView.swift */; };
+		F20450B823EC0E24001F7370 /* TransactionDemoViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450B723EC0E24001F7370 /* TransactionDemoViewDefaultData.swift */; };
+		F20450B923EC0E86001F7370 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450B523EC0D48001F7370 /* TransactionView.swift */; };
+		F20450BC23EDA397001F7370 /* TransactionStepIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450BB23EDA397001F7370 /* TransactionStepIndicator.swift */; };
+		F20450BE23EDA3A4001F7370 /* TransactionStepDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450BD23EDA3A4001F7370 /* TransactionStepDot.swift */; };
+		F20450C223EDA844001F7370 /* TransactionStepDotConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450C123EDA844001F7370 /* TransactionStepDotConnector.swift */; };
+		F20450C623EDB4EF001F7370 /* TransactionStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450C523EDB4EF001F7370 /* TransactionStepView.swift */; };
+		F20450C823EDB663001F7370 /* TransactionStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450C723EDB663001F7370 /* TransactionStepViewModel.swift */; };
+		F20450CB23EDB7AE001F7370 /* TransactionStepView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450CA23EDB7AE001F7370 /* TransactionStepView+Style.swift */; };
+		F209739023F3E7860014B90F /* VerticalTransactionStepIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F209738F23F3E7860014B90F /* VerticalTransactionStepIndicator.swift */; };
+		F209739223F3E7970014B90F /* VerticalTransactionStepDotConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F209739123F3E7970014B90F /* VerticalTransactionStepDotConnector.swift */; };
+		F209739423F3E7A60014B90F /* VerticalTransactionStepDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F209739323F3E7A60014B90F /* VerticalTransactionStepDot.swift */; };
 		F22612D822572D9400472D22 /* StatisticsItemEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */; };
 		F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */; };
 		F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */; };
@@ -1186,6 +1198,18 @@
 		DAD6EB312369BCFD00968497 /* SettingDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDetailsView.swift; sourceTree = "<group>"; };
 		DAD6EB342369BD2300968497 /* SettingDetailsDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDetailsDemoViewController.swift; sourceTree = "<group>"; };
 		DAE6A55B21CA524B00837BFA /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
+		F20450B323EC0D31001F7370 /* TransactionDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDemoView.swift; sourceTree = "<group>"; };
+		F20450B523EC0D48001F7370 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
+		F20450B723EC0E24001F7370 /* TransactionDemoViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDemoViewDefaultData.swift; sourceTree = "<group>"; };
+		F20450BB23EDA397001F7370 /* TransactionStepIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepIndicator.swift; sourceTree = "<group>"; };
+		F20450BD23EDA3A4001F7370 /* TransactionStepDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepDot.swift; sourceTree = "<group>"; };
+		F20450C123EDA844001F7370 /* TransactionStepDotConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepDotConnector.swift; sourceTree = "<group>"; };
+		F20450C523EDB4EF001F7370 /* TransactionStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepView.swift; sourceTree = "<group>"; };
+		F20450C723EDB663001F7370 /* TransactionStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepViewModel.swift; sourceTree = "<group>"; };
+		F20450CA23EDB7AE001F7370 /* TransactionStepView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionStepView+Style.swift"; sourceTree = "<group>"; };
+		F209738F23F3E7860014B90F /* VerticalTransactionStepIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalTransactionStepIndicator.swift; sourceTree = "<group>"; };
+		F209739123F3E7970014B90F /* VerticalTransactionStepDotConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalTransactionStepDotConnector.swift; sourceTree = "<group>"; };
+		F209739323F3E7A60014B90F /* VerticalTransactionStepDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalTransactionStepDot.swift; sourceTree = "<group>"; };
 		F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyView.swift; sourceTree = "<group>"; };
 		F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyViewModel.swift; sourceTree = "<group>"; };
 		F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdManagementStatisticsEmptyViewCell.swift; sourceTree = "<group>"; };
@@ -2154,6 +2178,7 @@
 				44D9124A2077AC8A00486848 /* Popup */,
 				44587013213FA344009187BE /* Register */,
 				43BACE6721117CF90052114C /* Review */,
+				F20450B223EC0CB5001F7370 /* TransactionView */,
 				91846C4822E735B60001410F /* SearchResultMapView */,
 				DAD6EB302369BCFC00968497 /* SettingDetailsView */,
 				43EA978021941E63003A548A /* SoldView */,
@@ -3599,6 +3624,7 @@
 				DA0F4E6623952216003E93A4 /* MinFinn */,
 				CF8F023321DCC7B9004C4042 /* Popup */,
 				CF8F023021DCC793004C4042 /* Register */,
+				F20450B123EC0C95001F7370 /* TransactionView */,
 				91846C4B22E736750001410F /* SearchResultMapView */,
 				DAD6EB332369BD2300968497 /* SettingDetailsView */,
 				CF8F023621DCC830004C4042 /* SoldView */,
@@ -4112,6 +4138,56 @@
 				DAE6A55B21CA524B00837BFA /* CGPoint.swift */,
 			);
 			path = "Core Graphics";
+			sourceTree = "<group>";
+		};
+		F20450B123EC0C95001F7370 /* TransactionView */ = {
+			isa = PBXGroup;
+			children = (
+				F20450B323EC0D31001F7370 /* TransactionDemoView.swift */,
+				F20450B723EC0E24001F7370 /* TransactionDemoViewDefaultData.swift */,
+			);
+			path = TransactionView;
+			sourceTree = "<group>";
+		};
+		F20450B223EC0CB5001F7370 /* TransactionView */ = {
+			isa = PBXGroup;
+			children = (
+				F20450B523EC0D48001F7370 /* TransactionView.swift */,
+				F20450BA23EDA373001F7370 /* TransactionStepIndicator */,
+				F209738E23F3E7590014B90F /* VerticalTransactionStepIndicator */,
+				F20450C923EDB675001F7370 /* TransactionStepView */,
+			);
+			path = TransactionView;
+			sourceTree = "<group>";
+		};
+		F20450BA23EDA373001F7370 /* TransactionStepIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				F20450BB23EDA397001F7370 /* TransactionStepIndicator.swift */,
+				F20450C123EDA844001F7370 /* TransactionStepDotConnector.swift */,
+				F20450BD23EDA3A4001F7370 /* TransactionStepDot.swift */,
+			);
+			path = TransactionStepIndicator;
+			sourceTree = "<group>";
+		};
+		F20450C923EDB675001F7370 /* TransactionStepView */ = {
+			isa = PBXGroup;
+			children = (
+				F20450C523EDB4EF001F7370 /* TransactionStepView.swift */,
+				F20450C723EDB663001F7370 /* TransactionStepViewModel.swift */,
+				F20450CA23EDB7AE001F7370 /* TransactionStepView+Style.swift */,
+			);
+			path = TransactionStepView;
+			sourceTree = "<group>";
+		};
+		F209738E23F3E7590014B90F /* VerticalTransactionStepIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				F209738F23F3E7860014B90F /* VerticalTransactionStepIndicator.swift */,
+				F209739123F3E7970014B90F /* VerticalTransactionStepDotConnector.swift */,
+				F209739323F3E7A60014B90F /* VerticalTransactionStepDot.swift */,
+			);
+			path = VerticalTransactionStepIndicator;
 			sourceTree = "<group>";
 		};
 		F22612D6225631FD00472D22 /* StatisticsView */ = {
@@ -4672,6 +4748,7 @@
 				F26CAC0723AC9BDC00CACF71 /* CollapseDemoView.swift in Sources */,
 				CFFDF89922F313A500FE68EA /* NeighborhoodProfileDemoView.swift in Sources */,
 				4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */,
+				F20450B423EC0D31001F7370 /* TransactionDemoView.swift in Sources */,
 				AA864B392231589B00BAE95A /* DialogueDemoView.swift in Sources */,
 				CFF9727921C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift in Sources */,
 				4974725B239A48BF0058D7B0 /* SearchListEmptyDemoView.swift in Sources */,
@@ -4711,6 +4788,7 @@
 				14C6F7D9212324D600A7230C /* FavoritesListViewDemoView.swift in Sources */,
 				14DC127221593B0500326DC3 /* HorizontalSlideDemoViewController.swift in Sources */,
 				44A0F0AB22E1FB6800BCCF4C /* CornerAnchoringViewController.swift in Sources */,
+				F20450B823EC0E24001F7370 /* TransactionDemoViewDefaultData.swift in Sources */,
 				CF9AC8BC21BECE13005A0D2F /* SnowGlobeDemoView.swift in Sources */,
 				CF3D5EFC215A7215006E4D08 /* DrumMachineDemoView.swift in Sources */,
 				44D9126B2077AD0200486848 /* PopupViewDemoView.swift in Sources */,
@@ -4827,6 +4905,7 @@
 				9BAB37DC230BEA5700E861D4 /* SaveSearchView.swift in Sources */,
 				6266C07222081EF600FB8004 /* StatisticsItemView.swift in Sources */,
 				895175902248CF79008003FB /* StepIndicator.swift in Sources */,
+				F20450BE23EDA3A4001F7370 /* TransactionStepDot.swift in Sources */,
 				441FE433209A24E500B04EF1 /* AdsGridViewLayout.swift in Sources */,
 				441FE42B209A24E500B04EF1 /* MarketsGridViewCell.swift in Sources */,
 				08F0D3F422259AD100968256 /* HappinessRatingView.swift in Sources */,
@@ -4885,6 +4964,7 @@
 				CF16F73823292D34006566DE /* FavoriteAdCommentView.swift in Sources */,
 				DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */,
 				4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */,
+				F209739223F3E7970014B90F /* VerticalTransactionStepDotConnector.swift in Sources */,
 				DAA9A3AC210215400021F7DC /* AnimatedSelectionView.swift in Sources */,
 				9BD8ABC02359B1EE001078CA /* ChristmasWishListView.swift in Sources */,
 				CF0F6B972360781E00CA62FD /* PrimingView.swift in Sources */,
@@ -4926,6 +5006,7 @@
 				6266C07022081EEA00FB8004 /* StatisticsItemModel.swift in Sources */,
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
 				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
+				F20450C623EDB4EF001F7370 /* TransactionStepView.swift in Sources */,
 				431875C321118CE200D71723 /* BuyerPickerDemoData.swift in Sources */,
 				CFB775F22359D8360097C0ED /* FloatingButton+Favorites.swift in Sources */,
 				441FE44B209A2F2C00B04EF1 /* NotificationsListViewCell.swift in Sources */,
@@ -4934,6 +5015,7 @@
 				9BCE6A3E23C7272200F37F6D /* BetaFeatureView.swift in Sources */,
 				45EDD63E20A9CA22008F4503 /* PopupView.swift in Sources */,
 				44587016213FA344009187BE /* LoginViewModel.swift in Sources */,
+				F20450CB23EDB7AE001F7370 /* TransactionStepView+Style.swift in Sources */,
 				DAD6EB242369916100968497 /* SettingsViewConsentCell.swift in Sources */,
 				DAC1EC4E21C1297500F4FEC4 /* BalloonView.swift in Sources */,
 				44AFCE49215839F7005984DB /* LoadingIndicatorView.swift in Sources */,
@@ -4951,6 +5033,7 @@
 				443A641E209A503A006BFB38 /* NotificationsListHeaderView.swift in Sources */,
 				DAD0D494210739500091DD4D /* DescriptionView.swift in Sources */,
 				89A7A648225352A30053D33B /* NativeAdvertContentView.swift in Sources */,
+				F20450C823EDB663001F7370 /* TransactionStepViewModel.swift in Sources */,
 				4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */,
 				44F8831220551D59003E3171 /* NSAttributedStringExtensions.swift in Sources */,
 				9135BF8A22F2C31300C8E1F5 /* MKMapViewExtensions.swift in Sources */,
@@ -4958,6 +5041,7 @@
 				44A149EB21377C7B0053D5F7 /* SavedSearchesListViewCell.swift in Sources */,
 				DA0F4E652395091B003E93A4 /* MinFinnProfileCell.swift in Sources */,
 				9BCDFC7622E09E3C00A80D7F /* KlimabroletViewModel.swift in Sources */,
+				F209739023F3E7860014B90F /* VerticalTransactionStepIndicator.swift in Sources */,
 				CF5012452360909200138A36 /* PrimingHeaderView.swift in Sources */,
 				F26CABFA23AC9B2E00CACF71 /* OrderSummaryLineView.swift in Sources */,
 				9BA8248623859B4400163F24 /* MapZoomRange.swift in Sources */,
@@ -5032,6 +5116,7 @@
 				9B2D17D223E02B2900EF3B50 /* KeyValuePair.swift in Sources */,
 				62432106231FE97F0027E142 /* UserAdsListEmphasizedActionCell.swift in Sources */,
 				F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */,
+				F20450BC23EDA397001F7370 /* TransactionStepIndicator.swift in Sources */,
 				8908E85322C0D79600ED671C /* MessageFormBottomSheet.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				1430D441216E4DA10038AC84 /* Spacing.m in Sources */,
@@ -5047,6 +5132,7 @@
 				918C8AC423A7A82900B566DE /* NativeAdvertListView.swift in Sources */,
 				CF5CA71922F9B818007C4124 /* NeighborhoodProfileButtonViewCell.swift in Sources */,
 				CF7C460822257A8A001FB92C /* EarthHourView.swift in Sources */,
+				F209739423F3E7A60014B90F /* VerticalTransactionStepDot.swift in Sources */,
 				14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */,
 				CFB61374229ACA6900DE283D /* IconCollectionView.swift in Sources */,
 				CF848C2C21C7E0860086530E /* CogWheelButton.swift in Sources */,
@@ -5066,6 +5152,7 @@
 				44587019213FA344009187BE /* RegisterViewModel.swift in Sources */,
 				9BEB287F231D488000D28BAD /* TitleValueSliderView.swift in Sources */,
 				CF7C460422257A8A001FB92C /* EarthHourContentView.swift in Sources */,
+				F20450B923EC0E86001F7370 /* TransactionView.swift in Sources */,
 				CF5CA71222F85A94007C4124 /* NeighborhoodProfileHeaderView.swift in Sources */,
 				441FE435209A24E500B04EF1 /* AdsGridViewModel.swift in Sources */,
 				F253C51D2315601A008175FD /* VerificationActionSheet.swift in Sources */,
@@ -5157,6 +5244,7 @@
 				9F2133BEBE174152BD809417 /* GalleryPreviewView.swift in Sources */,
 				CF70B95223421E3400B8A285 /* SplashView.swift in Sources */,
 				9F213ABAE416284A53AC6BA5 /* GalleryPreviewCell.swift in Sources */,
+				F20450C223EDA844001F7370 /* TransactionStepDotConnector.swift in Sources */,
 				9F213EA8026933194D7483E0 /* FullscreenImageView.swift in Sources */,
 				9F213036DE161042F54529B0 /* FullscreenGalleryTransitioningController.swift in Sources */,
 				CF13D6CF2292D40F0087DA37 /* PhaseViewModel.swift in Sources */,
