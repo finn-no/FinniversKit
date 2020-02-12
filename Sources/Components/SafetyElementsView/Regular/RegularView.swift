@@ -2,7 +2,7 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
-protocol SafetyElementsRegularViewDelegate: AnyObject {
+protocol SafetyElementsRegularViewDelegate: SafetyElementContentViewDelegate {
     func safetyElementsRegularView(_ view: SafetyElementsView.RegularView, didSelectElementAt index: Int)
 }
 
@@ -88,7 +88,7 @@ extension SafetyElementsView {
         func configure(
             with viewModels: [SafetyElementViewModel],
             selectedElementIndex elementIndex: Int,
-            contentDelegate: SafetyElementContentViewDelegate? = nil
+            contentDelegate: SafetyElementsRegularViewDelegate? = nil
         ) {
             headerStackView.removeArrangedSubviews()
 
@@ -105,6 +105,7 @@ extension SafetyElementsView {
             self.viewModels = viewModels
             setActiveElement(to: elementIndex)
             contentView.delegate = contentDelegate
+            self.delegate = contentDelegate
         }
 
         @objc private func didTapOnHeaderView(_ gesture: UITapGestureRecognizer) {

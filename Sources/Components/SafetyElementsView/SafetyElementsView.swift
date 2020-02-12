@@ -59,7 +59,6 @@ public class SafetyElementsView: UIView {
                 selectedElementIndex: selectedElementIndex,
                 contentDelegate: self
             )
-            regularView.delegate = self
             regularView.fillInSuperview()
         }
     }

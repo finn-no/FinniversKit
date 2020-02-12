@@ -2628,11 +2628,11 @@
 		9B06096623F14AF4005CB592 /* SafetyElementsView */ = {
 			isa = PBXGroup;
 			children = (
+				9B06097623F14D58005CB592 /* SafetyElementsView.swift */,
 				9B06096723F14B0A005CB592 /* SafetyElementViewModel.swift */,
 				9B06097123F14BC9005CB592 /* Common */,
 				9B06096923F14B23005CB592 /* Compact */,
 				9B06096E23F14B91005CB592 /* Regular */,
-				9B06097623F14D58005CB592 /* SafetyElementsView.swift */,
 			);
 			path = SafetyElementsView;
 			sourceTree = "<group>";
