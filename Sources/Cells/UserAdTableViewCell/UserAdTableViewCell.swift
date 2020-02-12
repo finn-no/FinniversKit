@@ -82,7 +82,7 @@ public class UserAdTableViewCell: UITableViewCell {
 
     private lazy var regularConstraints: [NSLayoutConstraint] = [
         contentStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
-        contentStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
+        contentStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing, priority: .init(999)),
 
         adImageView.heightAnchor.constraint(equalToConstant: UserAdTableViewCell.defaultImageWidth),
         adImageView.widthAnchor.constraint(equalToConstant: UserAdTableViewCell.defaultImageWidth),
