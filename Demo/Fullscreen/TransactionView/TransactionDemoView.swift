@@ -5,11 +5,7 @@
 import FinniversKit
 
 final class TransactionDemoView: UIView {
-    private lazy var transactionView: TransactionView = {
-        let view = TransactionView(withAutoLayout: true)
-        view.configure()
-        return view
-    }()
+    private lazy var transactionView: TransactionView = TransactionView(title: "Salgsprosess", numberOfSteps: 8, withAutoLayout: true)
 
     public override init(frame: CGRect) {
         super.init(frame: frame)

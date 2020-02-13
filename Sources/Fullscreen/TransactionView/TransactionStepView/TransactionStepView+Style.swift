@@ -11,6 +11,15 @@ public extension TransactionStepView {
         case inProgressAwaitingOtherParty
         case completed
 
+        var backgroundColor: UIColor {
+            switch self {
+            case .notStarted, .completed:
+                return .bgPrimary
+            case .inProgress, .inProgressAwaitingOtherParty:
+                return .accentToothpaste
+            }
+        }
+
         var titleStyle: Label.Style {
             switch self {
             default:
@@ -18,7 +27,7 @@ public extension TransactionStepView {
             }
         }
 
-        var detailStyle: Label.Style {
+        var subtitleStyle: Label.Style {
             switch self {
             default:
                 return .caption
@@ -54,12 +63,10 @@ public extension TransactionStepView {
             }
         }
 
-        var backgroundColor: UIColor {
+        var detailStyle: Label.Style {
             switch self {
-            case .notStarted, .completed:
-                return .bgPrimary
-            case .inProgress, .inProgressAwaitingOtherParty:
-                return .accentToothpaste
+            default:
+                return .detail
             }
         }
     }
