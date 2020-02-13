@@ -7,11 +7,13 @@ public struct LinkButtonViewModel {
     let buttonTitle: String
     let subtitle: String?
     let linkUrl: URL
+    let isExternal: Bool
 
-    public init(buttonIdentifier: String?, buttonTitle: String, subtitle: String? = nil, linkUrl: URL) {
+    public init(buttonIdentifier: String?, buttonTitle: String, subtitle: String? = nil, linkUrl: URL, isExternal: Bool) {
         self.buttonIdentifier = buttonIdentifier
         self.buttonTitle = buttonTitle
         self.subtitle = subtitle
         self.linkUrl = linkUrl
+        self.isExternal = isExternal
     }
 }

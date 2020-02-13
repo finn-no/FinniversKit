@@ -20,7 +20,6 @@ class StepDotConnector: UIView {
     // MARK: - Private properties
 
     private var connected = false
-    private var axis: NSLayoutConstraint.Axis
 
     // MARK: - Init
 
@@ -32,9 +31,7 @@ class StepDotConnector: UIView {
         fatalError("Not implemented: init(frame:)")
     }
 
-    init(axis: NSLayoutConstraint.Axis) {
-        self.axis = axis
-
+    init() {
         super.init(frame: .zero)
 
         backgroundColor = StepIndicator.inactiveColor
@@ -47,23 +44,13 @@ class StepDotConnector: UIView {
         guard !connected else { return }
 
         connected = true
-        switch axis {
-        case .horizontal:
-            NSLayoutConstraint.activate([
-                heightAnchor.constraint(equalToConstant: 4),
-                leadingAnchor.constraint(equalTo: from.centerXAnchor),
-                trailingAnchor.constraint(equalTo: to.centerXAnchor),
-                centerYAnchor.constraint(equalTo: from.centerYAnchor)
-            ])
-        case .vertical:
-            NSLayoutConstraint.activate([
-                widthAnchor.constraint(equalToConstant: 4),
-                heightAnchor.constraint(equalTo: to.heightAnchor),
-                bottomAnchor.constraint(equalTo: to.topAnchor),
-                centerXAnchor.constraint(equalTo: from.centerXAnchor),
-            ])
-        default:  return
-        }
+
+        NSLayoutConstraint.activate([
+            heightAnchor.constraint(equalToConstant: 4),
+            leadingAnchor.constraint(equalTo: from.centerXAnchor),
+            trailingAnchor.constraint(equalTo: to.centerXAnchor),
+            centerYAnchor.constraint(equalTo: from.centerYAnchor)
+        ])
     }
 
     // MARK: - Private methods

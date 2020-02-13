@@ -262,4 +262,8 @@ class ComponentViewTests: XCTestCase {
     func testObjectPagePriceView() {
         snapshot(.objectPagePriceView)
     }
+
+    func testLinkButtonListView() {
+        snapshot(.linkButtonListView)
+    }
 }
