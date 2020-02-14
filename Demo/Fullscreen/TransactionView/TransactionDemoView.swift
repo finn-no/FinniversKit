@@ -28,6 +28,6 @@ final class TransactionDemoView: UIView {
 
 extension TransactionDemoView: TransactionViewDelegate {
     public func transactionViewDidSelectActionButton(_ view: TransactionView, inStep step: Int) {
-
+        print("Did tap button in step: \(step)")
     }
 }

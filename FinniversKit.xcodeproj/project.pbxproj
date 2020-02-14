@@ -271,7 +271,6 @@
 		918C8A4623A387BD00B566DE /* NativeAdvertDetailsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918C8A4523A387BD00B566DE /* NativeAdvertDetailsContainer.swift */; };
 		918C8AC423A7A82900B566DE /* NativeAdvertListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918C8AC323A7A82900B566DE /* NativeAdvertListView.swift */; };
 		91A5B23E23E2FC5400092ED6 /* UserAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B23D23E2FC5400092ED6 /* UserAdTableViewCell.swift */; };
-		91A5B24123E2FCE200092ED6 /* UserAdCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B24023E2FCE200092ED6 /* UserAdCellDemoView.swift */; };
 		91A5B24423E45B6200092ED6 /* UserAdTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B24223E45AD200092ED6 /* UserAdTableViewCellViewModel.swift */; };
 		91D2A55422F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D2A55322F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift */; };
 		91D2A55A22F458EE00ED4BB9 /* SearchResultMapViewDemoViewControllerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D2A55922F458EE00ED4BB9 /* SearchResultMapViewDemoViewControllerHelpers.swift */; };
@@ -554,12 +553,12 @@
 		F20450B423EC0D31001F7370 /* TransactionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450B323EC0D31001F7370 /* TransactionDemoView.swift */; };
 		F20450B823EC0E24001F7370 /* TransactionDemoViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450B723EC0E24001F7370 /* TransactionDemoViewDefaultData.swift */; };
 		F20450B923EC0E86001F7370 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450B523EC0D48001F7370 /* TransactionView.swift */; };
-		F20450BC23EDA397001F7370 /* TransactionStepIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450BB23EDA397001F7370 /* TransactionStepIndicator.swift */; };
 		F20450BE23EDA3A4001F7370 /* TransactionStepDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450BD23EDA3A4001F7370 /* TransactionStepDot.swift */; };
 		F20450C223EDA844001F7370 /* TransactionStepDotConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450C123EDA844001F7370 /* TransactionStepDotConnector.swift */; };
 		F20450C623EDB4EF001F7370 /* TransactionStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450C523EDB4EF001F7370 /* TransactionStepView.swift */; };
 		F20450C823EDB663001F7370 /* TransactionStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450C723EDB663001F7370 /* TransactionStepViewModel.swift */; };
 		F20450CB23EDB7AE001F7370 /* TransactionStepView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450CA23EDB7AE001F7370 /* TransactionStepView+Style.swift */; };
+		F209739623F5A2320014B90F /* UserAdCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B24023E2FCE200092ED6 /* UserAdCellDemoView.swift */; };
 		F22612D822572D9400472D22 /* StatisticsItemEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */; };
 		F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */; };
 		F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */; };
@@ -1208,7 +1207,6 @@
 		F20450B323EC0D31001F7370 /* TransactionDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDemoView.swift; sourceTree = "<group>"; };
 		F20450B523EC0D48001F7370 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		F20450B723EC0E24001F7370 /* TransactionDemoViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDemoViewDefaultData.swift; sourceTree = "<group>"; };
-		F20450BB23EDA397001F7370 /* TransactionStepIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepIndicator.swift; sourceTree = "<group>"; };
 		F20450BD23EDA3A4001F7370 /* TransactionStepDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepDot.swift; sourceTree = "<group>"; };
 		F20450C123EDA844001F7370 /* TransactionStepDotConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepDotConnector.swift; sourceTree = "<group>"; };
 		F20450C523EDB4EF001F7370 /* TransactionStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepView.swift; sourceTree = "<group>"; };
@@ -4194,6 +4192,8 @@
 			isa = PBXGroup;
 			children = (
 				F20450B523EC0D48001F7370 /* TransactionView.swift */,
+				F20450BD23EDA3A4001F7370 /* TransactionStepDot.swift */,
+				F20450C123EDA844001F7370 /* TransactionStepDotConnector.swift */,
 				F20450BA23EDA373001F7370 /* TransactionStepIndicator */,
 				F20450C923EDB675001F7370 /* TransactionStepView */,
 			);
@@ -4203,9 +4203,6 @@
 		F20450BA23EDA373001F7370 /* TransactionStepIndicator */ = {
 			isa = PBXGroup;
 			children = (
-				F20450BB23EDA397001F7370 /* TransactionStepIndicator.swift */,
-				F20450C123EDA844001F7370 /* TransactionStepDotConnector.swift */,
-				F20450BD23EDA3A4001F7370 /* TransactionStepDot.swift */,
 			);
 			path = TransactionStepIndicator;
 			sourceTree = "<group>";
@@ -4729,6 +4726,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F209739623F5A2320014B90F /* UserAdCellDemoView.swift in Sources */,
 				08F0D3F72226920C00968256 /* HappinessRatingDemoView.swift in Sources */,
 				DAD6EB2F236991EA00968497 /* SettingsViewDemoView.swift in Sources */,
 				44D912732077AD1200486848 /* EmptyViewDemoView.swift in Sources */,
@@ -5147,7 +5145,6 @@
 				9B2D17D223E02B2900EF3B50 /* KeyValuePair.swift in Sources */,
 				62432106231FE97F0027E142 /* UserAdsListEmphasizedActionCell.swift in Sources */,
 				F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */,
-				F20450BC23EDA397001F7370 /* TransactionStepIndicator.swift in Sources */,
 				8908E85322C0D79600ED671C /* MessageFormBottomSheet.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				1430D441216E4DA10038AC84 /* Spacing.m in Sources */,

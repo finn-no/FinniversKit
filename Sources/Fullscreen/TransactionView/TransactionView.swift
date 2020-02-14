@@ -47,24 +47,10 @@ public class TransactionView: UIView {
         translatesAutoresizingMaskIntoConstraints = !autoLayout
 
         setup()
-
-        progressTo(step: step)
+        progressTo(currentStep)
     }
 
     public required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-}
-
-public extension TransactionView {
-    func progressTo(step: Int) {
-        for index in currentStep..<step {
-            stepDots[safe: index]?.setState(.completed)
-            connectors[safe: index]?.highlighted = true
-
-            currentStep = index
-
-            stepDots[safe: currentStep + 1]?.setState(.inProgress)
-        }
-    }
 }
 
 // MARK: - Private
@@ -94,7 +80,7 @@ private extension TransactionView {
             scrollableContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
             verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            verticalStackView.topAnchor.constraint(equalTo: scrollableContentView.topAnchor),
+            verticalStackView.topAnchor.constraint(equalTo: scrollableContentView.topAnchor, constant: .mediumSpacing),
             verticalStackView.bottomAnchor.constraint(equalTo: scrollableContentView.bottomAnchor),
         ])
 
@@ -165,15 +151,23 @@ private extension TransactionView {
 
         connector.connect(from: stepDot, to: previousStepDot)
     }
+
+    func progressTo(_ step: Int) {
+        for index in 0..<currentStep {
+            stepDots[safe: index]?.setState(.completed)
+            connectors[safe: index]?.highlighted = true
+        }
+
+        stepDots[safe: currentStep]?.setState(.inProgress)
+        stepDots[safe: currentStep]?.setState(.inProgress)
+    }
 }
 
 // MARK: - TransactionStepViewDelegate
 
 extension TransactionView: TransactionStepViewDelegate {
     public func transactionStepViewDidSelectActionButton(_ view: TransactionStepView, inTransactionStep step: Int) {
-        print("Did tap button in step: \(step)")
         currentStep += 1
-
         delegate?.transactionViewDidSelectActionButton(self, inStep: step)
     }
 }
