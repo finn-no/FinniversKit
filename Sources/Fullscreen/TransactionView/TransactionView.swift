@@ -8,9 +8,14 @@ public protocol TransactionViewDelegate: AnyObject {
     func transactionViewDidSelectActionButton(_ view: TransactionView, inStep step: Int)
 }
 
+public protocol TransactionViewDataSource: AnyObject {
+    func transactionViewModelForIndex(_ view: TransactionView, forStep step: Int)
+}
+
 public class TransactionView: UIView {
     // MARK: - Public
 
+    public weak var dataSource: TransactionViewDataSource?
     public weak var delegate: TransactionViewDelegate?
 
     // MARK: - Properties
@@ -167,7 +172,6 @@ private extension TransactionView {
 
 extension TransactionView: TransactionStepViewDelegate {
     public func transactionStepViewDidSelectActionButton(_ view: TransactionStepView, inTransactionStep step: Int) {
-        currentStep += 1
         delegate?.transactionViewDidSelectActionButton(self, inStep: step)
     }
 }
