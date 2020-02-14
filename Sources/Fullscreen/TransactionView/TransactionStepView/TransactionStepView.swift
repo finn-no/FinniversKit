@@ -19,11 +19,13 @@ public class TransactionStepView: UIView {
     private var model: TransactionStepViewModel
     private var style: TransactionStepView.Style
 
-    private lazy var containerView: UIView = {
-        let view = UIView(withAutoLayout: true)
-        view.backgroundColor = style.backgroundColor
-        view.layer.cornerRadius = .mediumSpacing
-        return view
+    private lazy var verticalStackView: UIStackView = {
+        let stackView = UIStackView(withAutoLayout: true)
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .leading
+        stackView.spacing = .mediumSpacing
+        return stackView
     }()
 
     private lazy var titleLabel: Label = Label(style: style.titleStyle, withAutoLayout: true)
@@ -77,31 +79,26 @@ public extension TransactionStepView {
 
 private extension TransactionStepView {
     private func setup() {
-        addSubview(containerView)
+        backgroundColor = style.backgroundColor
+        layer.cornerRadius = .mediumSpacing
+
+        addSubview(verticalStackView)
 
         titleLabel.text = model.title
-        containerView.addSubview(titleLabel)
-
-        NSLayoutConstraint.activate([
-            containerView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.largeSpacing),
-            containerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            containerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-
-            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
-            titleLabel.heightAnchor.constraint(equalToConstant: .mediumLargeSpacing)
-        ])
+        verticalStackView.addArrangedSubview(titleLabel)
 
         switch style {
         case .notStarted, .completed:
             NSLayoutConstraint.activate([
-                titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-                titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: .smallSpacing)
+                verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+                verticalStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+                verticalStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing),
             ])
         case .inProgressAwaitingOtherParty, .inProgress:
             NSLayoutConstraint.activate([
-                titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: .mediumLargeSpacing),
-                titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
+                verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
+                verticalStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
+                verticalStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing),
             ])
         }
 
@@ -109,52 +106,34 @@ private extension TransactionStepView {
     }
 
     private func setupOptionalViews() {
-        var constraints: [NSLayoutConstraint] = []
-
         if let subtitleText = model.subtitle {
             subtitleLabel.text = subtitleText
-            containerView.addSubview(subtitleLabel)
+            verticalStackView.addArrangedSubview(subtitleLabel)
 
-            constraints.append(contentsOf: [
-                subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-                subtitleLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-                subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
-            ])
-
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: .mediumSpacing)
+            subtitleLabel.trailingAnchor.constraint(equalTo: verticalStackView.trailingAnchor).isActive = true
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: .mediumLargeSpacing)
         }
 
         if let buttonText = model.buttonText {
             actionButton.setTitle(buttonText, for: .normal)
-            containerView.addSubview(actionButton)
+            verticalStackView.addArrangedSubview(actionButton)
 
-            constraints.append(contentsOf: [
-                actionButton.leadingAnchor.constraint(equalTo: subtitleLabel.leadingAnchor),
-                actionButton.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: .mediumSpacing),
-            ])
-
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: actionButton.bottomAnchor, constant: .mediumSpacing)
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: actionButton.bottomAnchor, constant: .mediumLargeSpacing)
         }
 
         if let detailText = model.detail {
             detailLabel.text = detailText
-            containerView.addSubview(detailLabel)
+            verticalStackView.addArrangedSubview(detailLabel)
 
-            constraints.append(contentsOf: [
-                detailLabel.leadingAnchor.constraint(equalTo: actionButton.leadingAnchor),
-                detailLabel.trailingAnchor.constraint(equalTo: subtitleLabel.trailingAnchor),
-                detailLabel.topAnchor.constraint(equalTo: actionButton.bottomAnchor, constant: .mediumSpacing),
-            ])
-
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .mediumSpacing)
+            detailLabel.trailingAnchor.constraint(equalTo: subtitleLabel.trailingAnchor).isActive = true
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .mediumLargeSpacing)
         }
 
-        constraints.append(bottomAnchorConstraint!)
-        NSLayoutConstraint.activate(constraints)
+        bottomAnchorConstraint?.isActive = true
     }
 }
 
-// MARK: - Selectorss
+// MARK: - Selectors
 
 private extension TransactionStepView {
     @objc func handlePrimaryButtonTap() {

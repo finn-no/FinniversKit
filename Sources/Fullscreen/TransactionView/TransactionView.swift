@@ -30,7 +30,7 @@ public class TransactionView: UIView {
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
         stackView.alignment = .fill
-        stackView.spacing = .mediumSpacing
+        stackView.spacing = .mediumLargeSpacing
         return stackView
     }()
 
@@ -93,7 +93,7 @@ private extension TransactionView {
             scrollableContentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor, constant: .mediumSpacing),
             scrollableContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
-            verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor),
+            verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.mediumLargeSpacing),
             verticalStackView.topAnchor.constraint(equalTo: scrollableContentView.topAnchor, constant: .mediumLargeSpacing),
             verticalStackView.bottomAnchor.constraint(equalTo: scrollableContentView.bottomAnchor),
         ])
