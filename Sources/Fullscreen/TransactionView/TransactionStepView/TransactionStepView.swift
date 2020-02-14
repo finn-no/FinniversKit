@@ -55,7 +55,7 @@ public class TransactionStepView: UIView {
         self.model = model
         self.style = style
 
-        super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        super.init(frame: .zero)
 
         translatesAutoresizingMaskIntoConstraints = !autoLayout
         setup()
@@ -88,7 +88,7 @@ private extension TransactionStepView {
             containerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             containerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
 
-            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
             titleLabel.heightAnchor.constraint(equalToConstant: .mediumLargeSpacing)
         ])
 
@@ -117,7 +117,7 @@ private extension TransactionStepView {
 
             constraints.append(contentsOf: [
                 subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-                subtitleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
+                subtitleLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
                 subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
             ])
 
@@ -142,7 +142,7 @@ private extension TransactionStepView {
 
             constraints.append(contentsOf: [
                 detailLabel.leadingAnchor.constraint(equalTo: actionButton.leadingAnchor),
-                detailLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
+                detailLabel.trailingAnchor.constraint(equalTo: subtitleLabel.trailingAnchor),
                 detailLabel.topAnchor.constraint(equalTo: actionButton.bottomAnchor, constant: .mediumSpacing),
             ])
 

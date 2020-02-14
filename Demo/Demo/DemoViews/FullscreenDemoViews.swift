@@ -35,6 +35,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case favoriteAdSortingView
     case favoriteFolderActionView
     case betaFeatureView
+    case transactionStepView
 
     public static var items: [FullscreenDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -124,6 +125,8 @@ public enum FullscreenDemoViews: String, CaseIterable {
             return DemoViewController<FavoriteFolderActionDemoView>()
         case .betaFeatureView:
             return DemoViewController<BetaFeatureDemoView>()
+        case .transactionStepView:
+            return DemoViewController<TransactionDemoView>()
         }
     }
 }

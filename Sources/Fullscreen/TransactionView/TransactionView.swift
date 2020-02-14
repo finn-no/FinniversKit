@@ -4,14 +4,22 @@
 
 import Foundation
 
+public protocol TransactionViewDelegate: AnyObject {
+    func transactionViewDidSelectActionButton(_ view: TransactionView, inStep step: Int)
+}
+
 public class TransactionView: UIView {
+    // MARK: - Public
+
+    public weak var delegate: TransactionViewDelegate?
 
     // MARK: - Properties
 
     private var numberOfSteps: Int
-    private var currentStep = 3
+    private var currentStep: Int
 
-    private var stepDots: [TransactionStepDot] = [TransactionStepDot]()
+    private var stepDots = [TransactionStepDot]()
+    private var connectors = [TransactionStepDotConnector]()
 
     private lazy var titleLabel: Label = Label(style: .title1, withAutoLayout: true)
     private lazy var scrollView: UIScrollView = UIScrollView(withAutoLayout: true)
@@ -20,17 +28,18 @@ public class TransactionView: UIView {
     private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .fillProportionally
         stackView.alignment = .fill
-        stackView.spacing = .mediumLargeSpacing
+        stackView.spacing = .mediumSpacing
         return stackView
     }()
 
     // MARK: - Init
 
-    public init(title: String, numberOfSteps steps: Int, withAutoLayout autoLayout: Bool = true) {
-        guard steps > 2 else { fatalError("The number of steps has to be larger than 2") }
+    public init(title: String, numberOfSteps steps: Int, currentStep step: Int, withAutoLayout autoLayout: Bool = true) {
+        guard steps >= 2 else { fatalError("The number of steps has to be larger than 2") }
         self.numberOfSteps = steps
+        self.currentStep = step
 
         super.init(frame: .zero)
 
@@ -38,13 +47,24 @@ public class TransactionView: UIView {
         translatesAutoresizingMaskIntoConstraints = !autoLayout
 
         setup()
+
+        progressTo(step: step)
     }
 
     public required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 }
 
 public extension TransactionView {
-    func progressTo(_ step: Int) {}
+    func progressTo(step: Int) {
+        for index in currentStep..<step {
+            stepDots[safe: index]?.setState(.completed)
+            connectors[safe: index]?.highlighted = true
+
+            currentStep = index
+
+            stepDots[safe: currentStep + 1]?.setState(.inProgress)
+        }
+    }
 }
 
 // MARK: - Private
@@ -80,7 +100,7 @@ private extension TransactionView {
 
         for index in 0..<numberOfSteps {
             addTransactionStepView(index)
-            addTransactionStepConnector(index)
+            addTransactionStepDots(index)
         }
 
         guard let stepDot = stepDots[safe: 0] else { return }
@@ -91,6 +111,8 @@ private extension TransactionView {
         var transactionStepView: TransactionStepView?
         var model = TransactionStepModel(title: "Title", subtitle: "Subtitle", buttonText: "Button", detail: "Info")
 
+        // TODO: This should be moved into setup
+        // TODO: Create a data generator in the TransactionDemoViewDefaultData
         if currentStep > step {
             for index in 0..<currentStep {
                 let model = TransactionStepModel(title: "Title", subtitle: "Subtitle", buttonText: "Button")
@@ -114,17 +136,34 @@ private extension TransactionView {
         verticalStackView.addArrangedSubview(currentStepView)
     }
 
-    private func addTransactionStepConnector(_ step: Int) {
+    private func addTransactionStepDots(_ step: Int) {
         let stepDot = TransactionStepDot(step: step)
         stepDots.append(stepDot)
 
-        guard let stepView = verticalStackView.arrangedSubviews[safe: step] as? TransactionStepView else { return }
+        guard let currentStepView = verticalStackView.arrangedSubviews[safe: step] as? TransactionStepView else { return }
 
         scrollableContentView.addSubview(stepDot)
         NSLayoutConstraint.activate([
             stepDot.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            stepDot.centerYAnchor.constraint(equalTo: stepView.topAnchor),
+            stepDot.topAnchor.constraint(equalTo: currentStepView.topAnchor),
         ])
+
+        guard let previousStepDot = stepDots[safe: step - 1] else { return }
+        let connector = TransactionStepDotConnector(withAutoLayout: true)
+        connectors.append(connector)
+
+        let stackView = UIStackView(withAutoLayout: true)
+        stackView.axis = .vertical
+        stackView.addArrangedSubview(connector)
+
+        scrollableContentView.addSubview(stackView)
+        NSLayoutConstraint.activate([
+            stackView.centerXAnchor.constraint(equalTo: stepDot.centerXAnchor),
+            stackView.topAnchor.constraint(equalTo: previousStepDot.bottomAnchor),
+            stackView.bottomAnchor.constraint(equalTo: currentStepView.topAnchor)
+        ])
+
+        connector.connect(from: stepDot, to: previousStepDot)
     }
 }
 
@@ -134,5 +173,7 @@ extension TransactionView: TransactionStepViewDelegate {
     public func transactionStepViewDidSelectActionButton(_ view: TransactionStepView, inTransactionStep step: Int) {
         print("Did tap button in step: \(step)")
         currentStep += 1
+
+        delegate?.transactionViewDidSelectActionButton(self, inStep: step)
     }
 }
