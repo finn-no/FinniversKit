@@ -30,7 +30,7 @@ public extension TransactionStepView {
         var subtitleStyle: Label.Style {
             switch self {
             default:
-                return .caption
+                return .body
             }
         }
 

@@ -16,7 +16,7 @@ public class TransactionStepDot: UIView {
 
     // MARK: - Private properties
 
-    private let diameter: CGFloat = 27
+    private let diameter: CGFloat = 26
 
     // MARK: - UI properties
 

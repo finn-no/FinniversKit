@@ -28,10 +28,17 @@ public class TransactionStepView: UIView {
         return stackView
     }()
 
-    private lazy var titleLabel: Label = Label(style: style.titleStyle, withAutoLayout: true)
+    private lazy var titleLabel: Label = {
+        let label = Label(style: style.titleStyle, withAutoLayout: true)
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        return label
+    }()
+
     private lazy var subtitleLabel: Label = {
         let label = Label(style: style.subtitleStyle, withAutoLayout: true)
         label.numberOfLines = 0
+        label.textAlignment = .left
         return label
     }()
 
@@ -45,6 +52,7 @@ public class TransactionStepView: UIView {
     private lazy var detailLabel: Label = {
         let label = Label(style: style.detailStyle, withAutoLayout: true)
         label.numberOfLines = 0
+        label.textAlignment = .left
         return label
     }()
 
@@ -91,14 +99,14 @@ private extension TransactionStepView {
         case .notStarted, .completed:
             NSLayoutConstraint.activate([
                 verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-                verticalStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
                 verticalStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing),
+                verticalStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             ])
         case .inProgressAwaitingOtherParty, .inProgress:
             NSLayoutConstraint.activate([
                 verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
-                verticalStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
                 verticalStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing),
+                verticalStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumSpacing),
             ])
         }
 
