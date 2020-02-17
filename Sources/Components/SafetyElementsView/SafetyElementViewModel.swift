@@ -5,11 +5,11 @@
 import Foundation
 
 public struct SafetyElementViewModel {
-    let title: String
-    let icon: UIImage
-    let body: String
-    let topLink: LinkButtonViewModel?
-    let bottomLink: LinkButtonViewModel?
+    public let title: String
+    public let icon: UIImage
+    public let body: String
+    public let topLink: LinkButtonViewModel?
+    public let bottomLink: LinkButtonViewModel?
 
     public init(title: String, icon: UIImage, body: String, topLink: LinkButtonViewModel? = nil, bottomLink: LinkButtonViewModel? = nil) {
         self.title = title

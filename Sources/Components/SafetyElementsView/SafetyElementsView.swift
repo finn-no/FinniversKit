@@ -25,17 +25,8 @@ public class SafetyElementsView: UIView {
     private var selectedElementIndex: Int = 0
 
     // MARK: - Initializers
-    private lazy var compactView: CompactView = {
-      let view = CompactView(withAutoLayout: true)
-
-      return view
-    }()
-
-    private lazy var regularView: RegularView = {
-      let view = RegularView(withAutoLayout: true)
-
-      return view
-    }()
+    private lazy var compactView = CompactView(withAutoLayout: true)
+    private lazy var regularView = RegularView(withAutoLayout: true)
 
     public func configure(with viewModels: [SafetyElementViewModel], selectedElementIndex: Int = 0) {
         self.viewModels = viewModels
