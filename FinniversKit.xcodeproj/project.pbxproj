@@ -270,6 +270,8 @@
 		918C8A4223A3853400B566DE /* NativeAdvertGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918C8A4123A3853400B566DE /* NativeAdvertGridView.swift */; };
 		918C8A4623A387BD00B566DE /* NativeAdvertDetailsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918C8A4523A387BD00B566DE /* NativeAdvertDetailsContainer.swift */; };
 		918C8AC423A7A82900B566DE /* NativeAdvertListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918C8AC323A7A82900B566DE /* NativeAdvertListView.swift */; };
+		9198248023FAA786006861C8 /* UserAdDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9198247F23FAA786006861C8 /* UserAdDetailsView.swift */; };
+		9198248223FAC544006861C8 /* UserAdCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9198248123FAC544006861C8 /* UserAdCellStyle.swift */; };
 		91A5B23E23E2FC5400092ED6 /* UserAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B23D23E2FC5400092ED6 /* UserAdTableViewCell.swift */; };
 		91A5B24123E2FCE200092ED6 /* UserAdCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B24023E2FCE200092ED6 /* UserAdCellDemoView.swift */; };
 		91A5B24423E45B6200092ED6 /* UserAdTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B24223E45AD200092ED6 /* UserAdTableViewCellViewModel.swift */; };
@@ -908,6 +910,8 @@
 		918C8A4123A3853400B566DE /* NativeAdvertGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAdvertGridView.swift; sourceTree = "<group>"; };
 		918C8A4523A387BD00B566DE /* NativeAdvertDetailsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertDetailsContainer.swift; sourceTree = "<group>"; };
 		918C8AC323A7A82900B566DE /* NativeAdvertListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertListView.swift; sourceTree = "<group>"; };
+		9198247F23FAA786006861C8 /* UserAdDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdDetailsView.swift; sourceTree = "<group>"; };
+		9198248123FAC544006861C8 /* UserAdCellStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdCellStyle.swift; sourceTree = "<group>"; };
 		91A5B23D23E2FC5400092ED6 /* UserAdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdTableViewCell.swift; sourceTree = "<group>"; };
 		91A5B24023E2FCE200092ED6 /* UserAdCellDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdCellDemoView.swift; sourceTree = "<group>"; };
 		91A5B24223E45AD200092ED6 /* UserAdTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdTableViewCellViewModel.swift; sourceTree = "<group>"; };
@@ -2423,7 +2427,9 @@
 			isa = PBXGroup;
 			children = (
 				91A5B23D23E2FC5400092ED6 /* UserAdTableViewCell.swift */,
+				9198247F23FAA786006861C8 /* UserAdDetailsView.swift */,
 				91A5B24223E45AD200092ED6 /* UserAdTableViewCellViewModel.swift */,
+				9198248123FAC544006861C8 /* UserAdCellStyle.swift */,
 			);
 			path = UserAdTableViewCell;
 			sourceTree = "<group>";
@@ -5152,6 +5158,7 @@
 				0817FFCF21831045001BD9C4 /* AnimatedCheckboxView.swift in Sources */,
 				44D912632077AC8A00486848 /* TriangleView.swift in Sources */,
 				9B057AB0235EEC0F007B1CF0 /* ChristmasWishListViewModel.swift in Sources */,
+				9198248023FAA786006861C8 /* UserAdDetailsView.swift in Sources */,
 				CF13D6CD2292D2300087DA37 /* PhaseListView.swift in Sources */,
 				CF5012432360905000138A36 /* PrimingTableViewCell.swift in Sources */,
 				144959DC2122C4400084549F /* FinniversImageAsset.m in Sources */,
@@ -5206,6 +5213,7 @@
 				CF164CFF230EB3D100250822 /* ContentSizedTableView.swift in Sources */,
 				CFB6137C229AD43400DE283D /* VerticalIconCollectionViewCell.swift in Sources */,
 				9F2133BEBE174152BD809417 /* GalleryPreviewView.swift in Sources */,
+				9198248223FAC544006861C8 /* UserAdCellStyle.swift in Sources */,
 				CF70B95223421E3400B8A285 /* SplashView.swift in Sources */,
 				9F213ABAE416284A53AC6BA5 /* GalleryPreviewCell.swift in Sources */,
 				9F213EA8026933194D7483E0 /* FullscreenImageView.swift in Sources */,
