@@ -6,6 +6,7 @@ import Foundation
 
 public protocol SafetyElementsViewDelegate: AnyObject {
     func safetyElementsView(_ view: SafetyElementsView, didClickOnLink identifier: String?, url: URL)
+    func safetyElementsView(_ view: SafetyElementsView, didSelectElementAt index: Int)
 }
 
 public class SafetyElementsView: UIView {
@@ -21,6 +22,7 @@ public class SafetyElementsView: UIView {
 
     // MARK: - Private properties
     private var viewModels: [SafetyElementViewModel] = []
+    private var selectedElementIndex: Int = 0
 
     // MARK: - Initializers
     private lazy var compactView: SafetyElementsCompactView = {
@@ -35,8 +37,9 @@ public class SafetyElementsView: UIView {
       return view
     }()
 
-    public func configure(with viewModels: [SafetyElementViewModel]) {
+    public func configure(with viewModels: [SafetyElementViewModel], selectedElementIndex: Int = 0) {
         self.viewModels = viewModels
+        self.selectedElementIndex = selectedElementIndex
         reconfigureUsedView()
     }
 
@@ -47,11 +50,16 @@ public class SafetyElementsView: UIView {
 
         if useCompactLayout {
             addSubview(compactView)
-            compactView.configure(with: viewModels, delegate: self)
+            compactView.configure(with: viewModels, contentDelegate: self)
             compactView.fillInSuperview()
         } else {
             addSubview(regularView)
-            regularView.configure(with: viewModels, delegate: self)
+            regularView.configure(
+                with: viewModels,
+                selectedElementIndex: selectedElementIndex,
+                contentDelegate: self
+            )
+            regularView.delegate = self
             regularView.fillInSuperview()
         }
     }
@@ -60,5 +68,11 @@ public class SafetyElementsView: UIView {
 extension SafetyElementsView: SafetyElementContentViewDelegate {
     func safetyElementContentView(_ view: SafetyElementContentView, didClickOnLink identifier: String?, url: URL) {
         delegate?.safetyElementsView(self, didClickOnLink: identifier, url: url)
+    }
+}
+
+extension SafetyElementsView: SafetyElementsRegularViewDelegate {
+    func safetyElementsRegularView(_ view: SafetyElementsRegularView, didSelectElementAt index: Int) {
+        delegate?.safetyElementsView(self, didSelectElementAt: index)
     }
 }

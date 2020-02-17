@@ -2,6 +2,10 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
+protocol SafetyElementsRegularViewDelegate: AnyObject {
+    func safetyElementsRegularView(_ view: SafetyElementsRegularView, didSelectElementAt index: Int)
+}
+
 class SafetyElementsRegularView: UIView {
     // MARK: - Internal properties
     var contentBackgroundColor: UIColor? = .bgTertiary {
@@ -9,6 +13,8 @@ class SafetyElementsRegularView: UIView {
             contentView.backgroundColor = contentBackgroundColor
         }
     }
+
+    var delegate: SafetyElementsRegularViewDelegate?
 
     // MARK: - Private properties
 
@@ -65,7 +71,7 @@ class SafetyElementsRegularView: UIView {
         outerStackView.addArrangedSubview(contentView)
 
         addSubview(outerStackView)
-        outerStackView.fillInSuperviewLayoutMargins()
+        outerStackView.fillInSuperview()
 
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: outerStackView.widthAnchor),
@@ -78,22 +84,26 @@ class SafetyElementsRegularView: UIView {
         ])
     }
 
-    func configure(with viewModels: [SafetyElementViewModel], delegate: SafetyElementContentViewDelegate? = nil) {
+    func configure(
+        with viewModels: [SafetyElementViewModel],
+        selectedElementIndex elementIndex: Int,
+        contentDelegate: SafetyElementContentViewDelegate? = nil
+    ) {
         headerStackView.removeArrangedSubviews()
 
         viewModels.enumerated().forEach { (index, viewModel) in
             let safetyHeaderView = SafetyHeaderView(withAutoLayout: true)
             safetyHeaderView.configure(with: viewModel)
             safetyHeaderView.tag = index
-            safetyHeaderView.isActive = index == 0
+            safetyHeaderView.isActive = index == elementIndex
             safetyHeaderView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOnHeaderView)))
 
             headerStackView.addArrangedSubview(safetyHeaderView)
         }
 
         self.viewModels = viewModels
-        setActiveElement(to: 0)
-        contentView.delegate = delegate
+        setActiveElement(to: elementIndex)
+        contentView.delegate = contentDelegate
     }
 
     @objc private func didTapOnHeaderView(_ gesture: UITapGestureRecognizer) {
@@ -104,6 +114,7 @@ class SafetyElementsRegularView: UIView {
             .forEach({ $0.isActive = false })
         (gesture.view as? SafetyHeaderView)?.isActive = true
         setActiveElement(to: index)
+        delegate?.safetyElementsRegularView(self, didSelectElementAt: index)
     }
 
     private func setActiveElement(to index: Int) {

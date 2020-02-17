@@ -8,12 +8,14 @@ public struct SafetyElementViewModel {
     let title: String
     let icon: UIImage
     let body: String
-    let externalLink: LinkButtonViewModel?
+    let topLink: LinkButtonViewModel?
+    let bottomLink: LinkButtonViewModel?
 
-    public init(title: String, icon: UIImage, body: String, externalLink: LinkButtonViewModel?) {
+    public init(title: String, icon: UIImage, body: String, topLink: LinkButtonViewModel? = nil, bottomLink: LinkButtonViewModel? = nil) {
         self.title = title
         self.icon = icon
         self.body = body
-        self.externalLink = externalLink
+        self.topLink = topLink
+        self.bottomLink = bottomLink
     }
 }

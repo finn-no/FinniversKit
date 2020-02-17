@@ -25,13 +25,13 @@ class SafetyElementsCompactView: UIView {
     }
 
     // MARK: - Internal methods
-    func configure(with viewModels: [SafetyElementViewModel], delegate: SafetyElementContentViewDelegate?) {
+    func configure(with viewModels: [SafetyElementViewModel], contentDelegate: SafetyElementContentViewDelegate?) {
         stackView.removeArrangedSubviews()
 
         viewModels.enumerated().forEach { (index, viewModel) in
             let subview = SafetyElementView(withAutoLayout: true)
             subview.configure(with: viewModel, isLastElement: index == viewModels.count - 1)
-            subview.delegate = delegate
+            subview.delegate = contentDelegate
             stackView.addArrangedSubview(subview)
         }
     }

@@ -28,16 +28,8 @@ class SafetyElementContentView: UIView {
         return label
     }()
 
-    private lazy var externalLinkButton: Button = {
-        let button = Button(style: linkButtonStyle, withAutoLayout: true)
-        button.isHidden = true
-        button.contentEdgeInsets = .zero
-        button.titleEdgeInsets = .zero
-        button.titleLabel?.numberOfLines = 0
-        button.contentHorizontalAlignment = .leading
-        button.addTarget(self, action: #selector(didTapOnLink), for: .touchUpInside)
-        return button
-    }()
+    private lazy var topLinkButton: Button = makeExternalLinkButton()
+    private lazy var bottomLinkButton: Button = makeExternalLinkButton()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,28 +41,51 @@ class SafetyElementContentView: UIView {
     func configure(with viewModel: SafetyElementViewModel) {
         self.viewModel = viewModel
         contentLabel.text = viewModel.body
-        if let externalLink = viewModel.externalLink {
-            externalLinkButton.setTitle(externalLink.buttonTitle, for: .normal)
-            externalLinkButton.isHidden = false
+
+        if let topLink = viewModel.topLink {
+            topLinkButton.setTitle(topLink.buttonTitle, for: .normal)
+            topLinkButton.isHidden = false
         } else {
-            externalLinkButton.isHidden = true
+            topLinkButton.isHidden = true
+        }
+
+        if let bottomLink = viewModel.bottomLink {
+            bottomLinkButton.setTitle(bottomLink.buttonTitle, for: .normal)
+            bottomLinkButton.isHidden = false
+        } else {
+            bottomLinkButton.isHidden = true
         }
     }
 
     private func setup() {
         addSubview(contentStackView)
 
+        contentStackView.addArrangedSubview(topLinkButton)
         contentStackView.addArrangedSubview(contentLabel)
-        contentStackView.addArrangedSubview(externalLinkButton)
+        contentStackView.addArrangedSubview(bottomLinkButton)
         contentStackView.fillInSuperviewLayoutMargins()
     }
 
     @objc private func didTapOnLink() {
-        guard let externalLink = viewModel?.externalLink else { return }
+        // TODO: support top link too
+        guard let externalLink = viewModel?.bottomLink else { return }
         delegate?.safetyElementContentView(
             self,
             didClickOnLink: externalLink.buttonIdentifier,
             url: externalLink.linkUrl
         )
+    }
+}
+
+extension SafetyElementContentView {
+    func makeExternalLinkButton() -> Button {
+        let button = Button(style: linkButtonStyle, withAutoLayout: true)
+        button.isHidden = true
+        button.contentEdgeInsets = .zero
+        button.titleEdgeInsets = .zero
+        button.titleLabel?.numberOfLines = 0
+        button.contentHorizontalAlignment = .leading
+        button.addTarget(self, action: #selector(didTapOnLink), for: .touchUpInside)
+        return button
     }
 }
