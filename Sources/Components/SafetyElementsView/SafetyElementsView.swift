@@ -25,14 +25,14 @@ public class SafetyElementsView: UIView {
     private var selectedElementIndex: Int = 0
 
     // MARK: - Initializers
-    private lazy var compactView: SafetyElementsCompactView = {
-      let view = SafetyElementsCompactView(withAutoLayout: true)
+    private lazy var compactView: CompactView = {
+      let view = CompactView(withAutoLayout: true)
 
       return view
     }()
 
-    private lazy var regularView: SafetyElementsRegularView = {
-      let view = SafetyElementsRegularView(withAutoLayout: true)
+    private lazy var regularView: RegularView = {
+      let view = RegularView(withAutoLayout: true)
 
       return view
     }()
@@ -66,13 +66,13 @@ public class SafetyElementsView: UIView {
 }
 
 extension SafetyElementsView: SafetyElementContentViewDelegate {
-    func safetyElementContentView(_ view: SafetyElementContentView, didClickOnLink identifier: String?, url: URL) {
+    func safetyElementContentView(_ view: ElementContentView, didClickOnLink identifier: String?, url: URL) {
         delegate?.safetyElementsView(self, didClickOnLink: identifier, url: url)
     }
 }
 
 extension SafetyElementsView: SafetyElementsRegularViewDelegate {
-    func safetyElementsRegularView(_ view: SafetyElementsRegularView, didSelectElementAt index: Int) {
+    func safetyElementsRegularView(_ view: RegularView, didSelectElementAt index: Int) {
         delegate?.safetyElementsView(self, didSelectElementAt: index)
     }
 }
