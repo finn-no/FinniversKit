@@ -77,6 +77,11 @@ extension SafetyElementsView {
             titleView.addSubview(titleLabel)
             titleLabel.fillInSuperviewLayoutMargins()
 
+            NSLayoutConstraint.activate([
+                iconImageView.heightAnchor.constraint(equalToConstant: .mediumLargeSpacing * 1.5),
+                iconImageView.widthAnchor.constraint(equalToConstant: .mediumLargeSpacing * 1.5),
+            ])
+
             outerStackView.addArrangedSubview(iconImageView)
             outerStackView.addArrangedSubview(titleView)
             addSubview(outerStackView)
