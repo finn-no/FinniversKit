@@ -97,7 +97,9 @@ extension SafetyElementsView {
                 safetyHeaderView.configure(with: viewModel)
                 safetyHeaderView.tag = index
                 safetyHeaderView.isActive = index == elementIndex
-                safetyHeaderView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOnHeaderView)))
+                safetyHeaderView.addGestureRecognizer(
+                    UITapGestureRecognizer(target: self, action: #selector(didTapOnHeaderView))
+                )
 
                 headerStackView.addArrangedSubview(safetyHeaderView)
             }
@@ -123,6 +125,20 @@ extension SafetyElementsView {
             guard viewModels.count > 0 else { return }
             let viewModel = viewModels[index]
             contentView.configure(with: viewModel)
+            adjustContentCorners(for: index)
+        }
+
+        private func adjustContentCorners(for index: Int) {
+            switch index {
+            case 0:
+                contentView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner]
+            case viewModels.count - 1:
+                contentView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
+            default:
+                contentView.layer.maskedCorners = [
+                    .layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner, .layerMaxXMinYCorner
+                ]
+            }
         }
     }
 }
