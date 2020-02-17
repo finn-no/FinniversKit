@@ -9,7 +9,7 @@ protocol SafetyElementsRegularViewDelegate: SafetyElementContentViewDelegate {
 extension SafetyElementsView {
     class RegularView: UIView {
         // MARK: - Internal properties
-        var contentBackgroundColor: UIColor? = .bgTertiary {
+        var contentBackgroundColor: UIColor? = .bgSecondary {
             didSet {
                 contentView.backgroundColor = contentBackgroundColor
             }

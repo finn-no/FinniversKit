@@ -6,7 +6,7 @@ import UIKit
 
 extension SafetyElementsView {
     class HeaderView: UIView {
-        var contentBackgroundColor: UIColor? = .bgTertiary {
+        var contentBackgroundColor: UIColor? = .bgSecondary {
             didSet {
                 if isActive {
                     titleView.backgroundColor = contentBackgroundColor

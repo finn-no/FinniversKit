@@ -1776,7 +1776,6 @@
 		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				9B06096623F14AF4005CB592 /* SafetyElementsView */,
 				CFDF39CB2385419E00D3B966 /* AddressCardView */,
 				DAB7FAAC21B690E900BF8CC6 /* BottomSheet */,
 				AF91BB95202C7487003E6366 /* Broadcast */,
@@ -1818,6 +1817,7 @@
 				F2772F3F2280397E0002D21F /* ReviewButtonView */,
 				4447F69C1FDB2B110033DBC1 /* Ribbon */,
 				B01D752811A625A4D0690F25 /* RoundedImageView */,
+				9B06096623F14AF4005CB592 /* SafetyElementsView */,
 				9BAB37D8230BE85F00E861D4 /* SaveSearchView */,
 				DAA9A3A2210214B80021F7DC /* SelectionBoxes */,
 				446EE15A2345A6AA00010818 /* SelectorTitleView */,
