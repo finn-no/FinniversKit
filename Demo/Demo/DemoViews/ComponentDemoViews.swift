@@ -36,7 +36,6 @@ public enum ComponentDemoViews: String, CaseIterable {
     case christmasWishListView
     case stepIndicatorView
     case nativeAdvert
-    case nativeAdvertContent
     case callout
     case phaseList
     case iconCollection
@@ -60,6 +59,13 @@ public enum ComponentDemoViews: String, CaseIterable {
     case collapseView
     case orderSummaryView
     case orderTotalSumView
+    case viewingsView
+    case selfDeclarationView
+    case collapsibleContentView
+    case columnListsView
+    case keyValueGridView
+    case objectPagePriceView
+    case linkButtonListView
 
     public static var items: [ComponentDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -133,8 +139,6 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<StepIndicatorDemoView>(dismissType: .dismissButton)
         case .nativeAdvert:
             return DemoViewController<NativeAdvertDemoView>(dismissType: .dismissButton)
-        case .nativeAdvertContent:
-            return DemoViewController<NativeAdvertContentDemoView>(dismissType: .dismissButton)
         case .callout:
             return DemoViewController<CalloutDemoView>()
         case .phaseList:
@@ -186,6 +190,20 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<OrderSummaryDemoView>()
         case .orderTotalSumView:
             return DemoViewController<OrderTotalSumDemoView>()
+        case .viewingsView:
+            return DemoViewController<ViewingsDemoView>()
+        case .selfDeclarationView:
+            return DemoViewController<SelfDeclarationDemoView>()
+        case .collapsibleContentView:
+            return DemoViewController<CollapsibleContentDemoView>(dismissType: .dismissButton)
+        case .columnListsView:
+            return DemoViewController<ColumnListsDemoView>()
+        case .keyValueGridView:
+            return DemoViewController<KeyValueGridDemoView>()
+        case .objectPagePriceView:
+            return DemoViewController<ObjectPagePriceDemoView>()
+        case .linkButtonListView:
+            return DemoViewController<LinkButtonListDemoView>()
         }
     }
 }

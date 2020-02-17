@@ -7,7 +7,7 @@ import UIKit
 
 class BuyerPickerTextHeader: UITableViewHeaderFooterView {
     lazy var title: Label = {
-        let label = Label(style: .title3)
+        let label = Label(style: .title3Strong)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -22,7 +22,7 @@ class BuyerPickerTextHeader: UITableViewHeaderFooterView {
         let inset = UIEdgeInsets(top: .mediumLargeSpacing,
                                  left: .mediumLargeSpacing,
                                  bottom: -.largeSpacing,
-                                 right: -.mediumLargeSpacing)
+                                 right: 0)
         title.fillInSuperview(insets: inset, isActive: true)
     }
 

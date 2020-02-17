@@ -7,8 +7,6 @@ public enum RecyclingDemoViews: String, CaseIterable {
     case basicTableView
     case notificationsListView
     case favoriteFoldersListView
-    case favoriteAdSortingView
-    case favoriteAdActionView
     case favoritesListView
     case savedSearchesListView
     case marketsGridView
@@ -17,6 +15,7 @@ public enum RecyclingDemoViews: String, CaseIterable {
     case userAds
     case adManagementView
     case neighborhoodProfileView
+    case paymentOptionsListView
 
     public static var items: [RecyclingDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -37,10 +36,6 @@ public enum RecyclingDemoViews: String, CaseIterable {
             navigationController.navigationBar.shadowImage = UIImage()
 
             return navigationController
-        case .favoriteAdSortingView:
-            return DemoViewController<FavoriteAdSortingDemoView>()
-        case .favoriteAdActionView:
-            return DemoViewController<FavoriteAdActionDemoView>()
         case .favoritesListView:
             return DemoViewController<FavoritesListViewDemoView>()
         case .savedSearchesListView:
@@ -57,6 +52,8 @@ public enum RecyclingDemoViews: String, CaseIterable {
             return DemoViewController<AdManagementDemoView>()
         case .neighborhoodProfileView:
             return DemoViewController<NeighborhoodProfileDemoView>()
+        case .paymentOptionsListView:
+            return DemoViewController<PaymentOptionsListViewDemoView>()
         }
     }
 }

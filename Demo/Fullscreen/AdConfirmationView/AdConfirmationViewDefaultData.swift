@@ -19,6 +19,7 @@ struct AdConfirmationObjectViewModelDefaultData: AdConfirmationObjectViewModel {
     var body: String? = "Om ett til to minutter er annonsen synlig på FINN"
 }
 
+// swiftlint:disable:next type_name
 struct AdConfirmationSummaryViewModelDefaultData: AdConfirmationSummaryViewModel {
     var title: String? = "Ditt kjøp"
     var orderLines: [String] = ["Torget annonse", "Bil annonse", "Bolig til leie", "Blink", "Oppsalgsprodukt", "Bolig til leie", "Blink", "Oppsalgsprodukt", "Bolig til leie", "Blink", "Oppsalgsprodukt", "Bolig til leie", "Blink", "Oppsalgsprodukt", "Bolig til leie", "Blink", "Oppsalgsprodukt", "Bolig til leie"]

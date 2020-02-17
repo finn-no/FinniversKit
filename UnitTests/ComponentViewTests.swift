@@ -135,10 +135,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.nativeAdvert)
     }
 
-    func testNativeAdvertContent() {
-        snapshot(.nativeAdvertContent)
-    }
-
     func testCallout() {
         snapshot(.callout)
     }
@@ -241,5 +237,33 @@ class ComponentViewTests: XCTestCase {
 
     func testCollapseView() {
         snapshot(.collapseView)
+    }
+
+    func testSelfDeclarationView() {
+        snapshot(.selfDeclarationView)
+    }
+
+    func testCollapsibleContentView() {
+        snapshot(.collapsibleContentView)
+    }
+
+    func testViewingsView() {
+        snapshot(.viewingsView)
+    }
+
+    func testColumnListsView() {
+        snapshot(.columnListsView)
+    }
+
+    func testKeyValueGridView() {
+        snapshot(.keyValueGridView)
+    }
+
+    func testObjectPagePriceView() {
+        snapshot(.objectPagePriceView)
+    }
+
+    func testLinkButtonListView() {
+        snapshot(.linkButtonListView)
     }
 }

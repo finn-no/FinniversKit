@@ -118,7 +118,7 @@ public extension Button {
 
         /// Given an existing style, this helps to create a new one overriding some of the values of the original style
         /// This method is intended for styles for concrete cases rather than default styles like `callToAction`
-        func overrideStyle(
+        public func overrideStyle(
             bodyColor: UIColor? = nil,
             borderWidth: CGFloat? = nil,
             borderColor: UIColor? = nil,
@@ -195,7 +195,7 @@ public extension Button.Style {
 
     static var utility: Button.Style {
         Button.Style(
-            borderWidth: 2.0,
+            borderWidth: 1.0,
             stateStyles: [
                 .normal: Button.StateStyle(
                     textColor: .textPrimary,

@@ -25,16 +25,17 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case addressMapView
     case messageFormView
     case favoriteAdsList
-    case favoriteFolderActionSheet
-    case favoriteAdSortingSheet
-    case favoriteAdActionSheet
-    case favoriteAdCommentSheet
     case verificationActionSheet
     case splashView
-    case popovers
     case settingDetails
     case adConfirmationView
     case notificationCenterView
+    case minFinnView
+    case favoriteAdActionView
+    case favoriteAdCommentInputView
+    case favoriteAdSortingView
+    case favoriteFolderActionView
+    case betaFeatureView
 
     public static var items: [FullscreenDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -89,34 +90,12 @@ public enum FullscreenDemoViews: String, CaseIterable {
             )
         case .favoriteAdsList:
             return DemoViewController<FavoriteAdsListDemoView>(constrainToBottomSafeArea: false)
-        case .favoriteFolderActionSheet:
-            let bottomSheet = FavoriteFolderActionSheet(viewModel: .default, isShared: true)
-            bottomSheet.actionDelegate = FavoriteFolderActionSheetDemoDelegate.shared
-            return bottomSheet
-        case .favoriteAdSortingSheet:
-            let bottomSheet = FavoriteAdSortingSheet(viewModel: .default, selectedSortOption: .lastAdded)
-            bottomSheet.sortingDelegate = FavoriteAdSortingSheetDemoDelegate.shared
-            return bottomSheet
-        case .favoriteAdActionSheet:
-            let bottomSheet = FavoriteAdActionSheet(viewModel: .default)
-            bottomSheet.actionDelegate = FavoriteAdActionSheetDemoDelegate.shared
-            return bottomSheet
-        case .favoriteAdCommentSheet:
-            let bottomSheet = FavoriteAdCommentSheet(
-                commentViewModel: .default,
-                adViewModel: FavoriteAdsFactory.create().last!,
-                remoteImageViewDataSource: FavoriteAdCommentSheetDemoDelegate.shared
-            )
-            bottomSheet.commentDelegate = FavoriteAdCommentSheetDemoDelegate.shared
-            return bottomSheet
         case .verificationActionSheet:
             let bottomSheet = VerificationActionSheet(viewModel: VerificationViewDefaultData())
             bottomSheet.actionDelegate = VerificationActionSheetDemoDelegate.shared
             return bottomSheet
         case .splashView:
             return DemoViewController<SplashDemoView>(constrainToTopSafeArea: false, constrainToBottomSafeArea: false)
-        case .popovers:
-            return PopoversDemoViewController()
         case .settingDetails:
             let viewController = SettingDetailsDemoViewController()
             viewController.view.layoutIfNeeded()
@@ -136,6 +115,18 @@ public enum FullscreenDemoViews: String, CaseIterable {
             return DemoViewController<AdConfirmationDemoView>()
         case .notificationCenterView:
             return DemoViewController<NotificationCenterDemoView>(dismissType: .dismissButton)
+        case .minFinnView:
+            return DemoViewController<MinFinnDemoView>()
+        case .favoriteAdActionView:
+            return DemoViewController<FavoriteAdActionDemoView>()
+        case .favoriteAdCommentInputView:
+            return DemoViewController<FavoriteAdCommentInputDemoView>()
+        case .favoriteAdSortingView:
+            return DemoViewController<FavoriteAdSortingDemoView>()
+        case .favoriteFolderActionView:
+            return DemoViewController<FavoriteFolderActionDemoView>()
+        case .betaFeatureView:
+            return DemoViewController<BetaFeatureDemoView>()
         }
     }
 }

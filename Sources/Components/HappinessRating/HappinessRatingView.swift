@@ -24,19 +24,20 @@ public class HappinessRatingView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var ratingImageViews: [RatingImageView] = {
-        let ratingImageViews = HappinessRating.allCases.map { RatingImageView(rating: $0, delegate: self) }
-        ratingImageViews.forEach {
-            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ratingImageViewTapped(_:)))
+    private lazy var ratingViews: [RatingView] = {
+        let ratingViews = HappinessRating.allCases.map { RatingView(rating: $0, delegate: self) }
+        ratingViews.forEach {
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ratingViewTapped))
             $0.addGestureRecognizer(tapGestureRecognizer)
         }
-        return ratingImageViews
+        return ratingViews
     }()
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.distribution = .equalSpacing
-        ratingImageViews.forEach { stackView.addArrangedSubview($0) }
+        stackView.alignment = .top
+        ratingViews.forEach { stackView.addArrangedSubview($0) }
         stackView.addGestureRecognizer(panRecognizer)
         return stackView
     }()
@@ -67,14 +68,14 @@ public class HappinessRatingView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         NSLayoutConstraint.activate(
-            ratingImageViews.map { $0.widthAnchor.constraint(lessThanOrEqualToConstant: bounds.width / 6) }
+            ratingViews.map { $0.widthAnchor.constraint(lessThanOrEqualToConstant: bounds.width / 6) }
         )
     }
 
     // MARK: - Private methods
 
-    @objc private func ratingImageViewTapped(_ recognizer: UITapGestureRecognizer) {
-        guard let ratingImageView = recognizer.view as? RatingImageView else { return }
+    @objc private func ratingViewTapped(_ recognizer: UITapGestureRecognizer) {
+        guard let ratingImageView = recognizer.view as? RatingView else { return }
         setSelectedRatingView(ratingImageView)
     }
 
@@ -82,37 +83,37 @@ public class HappinessRatingView: UIView {
         let touchedView = recognizer.view
         var touchLocation = recognizer.location(in: touchedView)
         touchLocation.y = bounds.height / 2
-        guard let ratingImageView = touchedView?.hitTest(touchLocation, with: nil) as? RatingImageView else { return }
-        setSelectedRatingView(ratingImageView)
+        guard let ratingView = touchedView?.hitTest(touchLocation, with: nil) as? RatingView else { return }
+        setSelectedRatingView(ratingView)
     }
 
-    private func setSelectedRatingView(_ ratingImageView: RatingImageView) {
+    private func setSelectedRatingView(_ ratingView: RatingView) {
         let animationDuration: Double
         switch selectedRating {
         case nil: animationDuration = 0.1
-        case _ where selectedRating != ratingImageView.rating: animationDuration = 0.15
+        case _ where selectedRating != ratingView.rating: animationDuration = 0.15
         default: return
         }
 
-        let nonSelectedViews = ratingImageViews.filter { $0.rating != ratingImageView.rating }
+        let nonSelectedViews = ratingViews.filter { $0.rating != ratingView.rating }
         UIView.animate(withDuration: animationDuration, animations: {
-            ratingImageView.tintColor = .btnPrimary
+            ratingView.tintColor = .btnPrimary
             nonSelectedViews.forEach {
                 $0.tintColor = UIColor.btnPrimary.withAlphaComponent(0.6)
                 $0.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
             }
         })
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, animations: {
-            ratingImageView.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
+            ratingView.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
         })
 
         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-        selectedRating = ratingImageView.rating
+        selectedRating = ratingView.rating
     }
 }
 
-extension HappinessRatingView: RatingImageViewDelegate {
-    func ratingImageViewText(for rating: HappinessRating) -> String? {
+extension HappinessRatingView: RatingViewDelegate {
+    func ratingViewText(for rating: HappinessRating) -> String? {
         switch rating {
         case .angry:
             return delegate?.happinessRatingView(self, textFor: rating)
@@ -128,61 +129,73 @@ extension HappinessRatingView: RatingImageViewDelegate {
     }
 }
 
-// MARK: - RatingImageView
+// MARK: - RatingView
 
-private protocol RatingImageViewDelegate: AnyObject {
-    func ratingImageViewText(for rating: HappinessRating) -> String?
+private protocol RatingViewDelegate: AnyObject {
+    func ratingViewText(for rating: HappinessRating) -> String?
 }
 
-private class RatingImageView: UIImageView {
+private class RatingView: UIView {
+    // MARK: - Internal properties
 
-    // MARK: - Public properties
+    let rating: HappinessRating
+    weak var delegate: RatingViewDelegate?
 
-    public let rating: HappinessRating
-    public weak var delegate: RatingImageViewDelegate?
+    private lazy var container: UIStackView = {
+        let stackView = UIStackView(withAutoLayout: true)
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        stackView.spacing = .mediumSpacing
+        stackView.isUserInteractionEnabled = false
+        return stackView
+    }()
+
+    private lazy var imageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.image = rating.image
+        imageView.isUserInteractionEnabled = true
+        imageView.contentMode = .scaleAspectFit
+        imageView.tintColor = .btnPrimary
+        imageView.isUserInteractionEnabled = false
+
+        return imageView
+    }()
+
+    private lazy var label: UILabel = {
+        let label = Label(style: .detail, withAutoLayout: true)
+        label.textAlignment = .center
+        label.numberOfLines = 2
+        label.adjustsFontSizeToFitWidth = true
+        label.isUserInteractionEnabled = false
+        return label
+    }()
 
     // MARK: - Init
 
-    init(rating: HappinessRating, delegate: RatingImageViewDelegate? = nil) {
+    init(rating: HappinessRating, delegate: RatingViewDelegate? = nil) {
         self.rating = rating
         self.delegate = delegate
 
         super.init(frame: .zero)
-
         translatesAutoresizingMaskIntoConstraints = false
-        isUserInteractionEnabled = true
-        image = rating.image
-        contentMode = .scaleAspectFit
-        tintColor = .btnPrimary
 
         setup()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setup() {
-        if delegate != nil {
-            guard let text = delegate?.ratingImageViewText(for: rating) else { return }
-            let label = textLabel(text: text)
-            addSubview(label)
-
-            let paddingToFitTwoLongWords: CGFloat = 3 // e.g: Veldig irriterende
-
-            NSLayoutConstraint.activate([
-                label.topAnchor.constraint(equalTo: bottomAnchor, constant: .mediumSpacing),
-                label.leadingAnchor.constraint(equalTo: leadingAnchor),
-                label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: paddingToFitTwoLongWords)
-            ])
-        }
+    private func setup() {
+        container.addArrangedSubview(imageView)
+        addSubview(container)
+        container.fillInSuperview()
+        setupLabel()
     }
 
-    func textLabel(text: String) -> Label {
-        let label = Label(style: .detail, withAutoLayout: true)
-        label.textAlignment = .center
-        label.numberOfLines = 2
+    func setupLabel() {
+        guard let text = delegate?.ratingViewText(for: rating) else { return }
         label.text = text
-        return label
+        container.addArrangedSubview(label)
     }
 }

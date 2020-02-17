@@ -97,32 +97,12 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.searchResultMapView)
     }
 
-    func testFavoriteFolderActionSheet() {
-        snapshot(.favoriteFolderActionSheet)
-    }
-
-    func testFavoriteAdSortingSheet() {
-        snapshot(.favoriteAdSortingSheet)
-    }
-
-    func testFavoriteAdActionSheet() {
-        snapshot(.favoriteAdActionSheet)
-    }
-
-    func testFavoriteAdCommentSheet() {
-        snapshot(.favoriteAdCommentSheet)
-    }
-
-    func testVerificationActionSheet() {
-        snapshot(.verificationActionSheet)
-    }
-
     func testSplashView() {
         snapshot(.splashView)
     }
 
-    func testPopovers() {
-        snapshot(.popovers)
+    func testVerificationActionSheet() {
+        snapshot(.verificationActionSheet)
     }
 
     func testSettingDetails() {
@@ -135,6 +115,30 @@ class FullscreenViewTests: XCTestCase {
 
     func testAdConfirmationView() {
         snapshot(.adConfirmationView)
+    }
+
+    func testFavoriteAdActionView() {
+        snapshot(.favoriteAdActionView)
+    }
+
+    func testFavoriteAdCommentInputView() {
+        snapshot(.favoriteAdCommentInputView)
+    }
+
+    func testFavoriteAdSortingView() {
+        snapshot(.favoriteAdSortingView)
+    }
+
+    func testFavoriteFolderActionView() {
+        snapshot(.favoriteFolderActionView)
+    }
+
+    func testBetaFeatureView() {
+        snapshot(.betaFeatureView)
+    }
+
+    func testMinFinnView() {
+        snapshot(.minFinnView)
     }
 
     func testNotificationCenterView() {

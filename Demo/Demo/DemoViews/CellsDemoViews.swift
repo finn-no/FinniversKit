@@ -13,6 +13,7 @@ public enum CellsDemoViews: String, CaseIterable {
     case iconTitleCell
     case remoteImageCell
     case favoriteAdCell
+    case userAdCell
 
     public static var items: [CellsDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -38,6 +39,8 @@ public enum CellsDemoViews: String, CaseIterable {
             return DemoViewController<RemoteImageCellDemoView>(dismissType: .dismissButton)
         case .favoriteAdCell:
             return DemoViewController<FavoriteAdCellDemoView>(dismissType: .dismissButton)
+        case .userAdCell:
+            return DemoViewController<UserAdCellDemoView>(dismissType: .dismissButton)
         }
     }
 }

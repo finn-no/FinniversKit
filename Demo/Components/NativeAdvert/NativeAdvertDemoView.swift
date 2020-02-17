@@ -6,12 +6,20 @@ import FinniversKit
 
 class NativeAdvertDemoView: UIView {
 
-    private lazy var defaultData = NativeAdvertDefaultData()
+    private lazy var scrollView = UIScrollView(withAutoLayout: true)
 
     private lazy var stackView: UIStackView = {
         let view = UIStackView(withAutoLayout: true)
         view.axis = .vertical
         view.distribution = .equalSpacing
+        view.spacing = .largeSpacing
+        return view
+    }()
+
+    private lazy var nativeAdvertRecommendationStack: UIStackView = {
+        let view = UIStackView(withAutoLayout: false)
+        view.alignment = .fill
+        view.distribution = .fillEqually
         view.spacing = .mediumLargeSpacing
         return view
     }()
@@ -20,7 +28,7 @@ class NativeAdvertDemoView: UIView {
         let view = NativeAdvertListView(withAutoLayout: false)
         view.delegate = self
         view.imageDelegate = self
-        view.configure(with: defaultData)
+        view.configure(with: NativeAdvertDefaultData.native)
         return view
     }()
 
@@ -28,9 +36,25 @@ class NativeAdvertDemoView: UIView {
         let view = NativeAdvertGridView(withAutoLayout: false)
         view.delegate = self
         view.imageDelegate = self
-        view.configure(with: defaultData)
+        view.configure(with: NativeAdvertDefaultData.native)
         return view
     }()
+
+    private lazy var nativeAdvertContentView: NativeAdvertContentView = {
+        let view = NativeAdvertContentView(withAutoLayout: false)
+        view.delegate = self
+        view.imageDelegate = self
+        view.configure(with: NativeAdvertDefaultData.content)
+        return view
+    }()
+
+    private lazy var nativeAdvertRecommendationViews: [NativeAdvertRecommendationView] = (0...1).map { _ in
+        let view = NativeAdvertRecommendationView(withAutoLayout: false)
+        view.delegate = self
+        view.imageDelegate = self
+        view.configure(with: NativeAdvertDefaultData.nativeRecommendation)
+        return view
+    }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -43,16 +67,23 @@ class NativeAdvertDemoView: UIView {
     }
 
     private func setup() {
-        addSubview(stackView)
+        addSubview(scrollView)
+        scrollView.fillInSuperview()
 
+        scrollView.addSubview(stackView)
+        stackView.fillInSuperview()
+
+        stackView.addArrangedSubview(nativeAdvertRecommendationStack)
         stackView.addArrangedSubview(nativeAdvertListView)
         stackView.addArrangedSubview(nativeAdvertGridView)
+        stackView.addArrangedSubview(nativeAdvertContentView)
+
+        nativeAdvertRecommendationViews.forEach { nativeAdvertRecommendationStack.addArrangedSubview($0) }
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
         ])
+
     }
 
 }

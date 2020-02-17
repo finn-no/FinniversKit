@@ -5,7 +5,7 @@
 import FinniversKit
 
 class UserAdsListDataSource: NSObject {
-    var userAds = UserAdsFactory.createAds()
+    var userAds: [(header: UserAdHeaderCell, ads: [UserAdCell])] = UserAdsFactory.createSectionedAds()
 }
 
 class UserAdsListViewDemoView: UIView {
