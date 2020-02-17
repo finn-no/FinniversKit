@@ -270,4 +270,8 @@ class ComponentViewTests: XCTestCase {
     func testSafetyElementsView() {
         snapshot(.safetyElementsView)
     }
+    
+    func testContractActionView() {
+        snapshot(.contractActionView)
+    }
 }

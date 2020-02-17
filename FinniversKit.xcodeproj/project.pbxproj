@@ -281,11 +281,14 @@
 		9A37D298B79BDDB602E35EDB /* LinkButtonListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D377873F817D415E649E /* LinkButtonListDemoView.swift */; };
 		9A37D30A78EB61643224B799 /* HorizontalIconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D6DD0D198F26623B15F0 /* HorizontalIconCollectionViewCell.swift */; };
 		9A37D36854B78610AFEADD5C /* UITableViewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DF20BB7306D8D1A25593 /* UITableViewCellExtensions.swift */; };
+		9A37D44ADD20BEDD3F754D62 /* ContractActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D11E44763B741F5D6AC4 /* ContractActionViewModel.swift */; };
 		9A37D44F4C1D337B39F07E68 /* SelfDeclarationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D6F3E7CC1A337D037C02 /* SelfDeclarationDemoView.swift */; };
 		9A37D671719BE998E1BD3DC2 /* ObjectPagePriceDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D099BD9A89A8D9EE9C6B /* ObjectPagePriceDemoView.swift */; };
 		9A37D6BC5F45EACE68F4EF37 /* FavoriteAdsListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DD4DA48E4BA2D5C25B1D /* FavoriteAdsListEmptyView.swift */; };
 		9A37D6FADD7DBD952AA395F7 /* FavoriteAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D30A5DD3B5A286743DA3 /* FavoriteAdTableViewCell.swift */; };
+		9A37D6FFB6005AF66CDC8FD0 /* ContractActionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D8976F1168062EE76B2B /* ContractActionDemoView.swift */; };
 		9A37D71314CB8E978EDC889C /* LinkButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DB4994CC79F661EA013F /* LinkButtonViewModel.swift */; };
+		9A37D724F7DF732E308CC530 /* ContractActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D3C7060E7261BD20D9C1 /* ContractActionView.swift */; };
 		9A37D770DA2B07DC0F543B33 /* FavoriteAdsDemoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DB13635127F4DE6BCEC6 /* FavoriteAdsDemoDataSource.swift */; };
 		9A37D84E5603C39844DA83C5 /* VisibilityDrivenTitleDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D6A0C42E36E51F034413 /* VisibilityDrivenTitleDemoView.swift */; };
 		9A37D89F84574B63CB61EAAB /* LinkButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DF9788D8084AE7F0B91B /* LinkButtonView.swift */; };
@@ -923,10 +926,12 @@
 		91D2A55922F458EE00ED4BB9 /* SearchResultMapViewDemoViewControllerHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMapViewDemoViewControllerHelpers.swift; sourceTree = "<group>"; };
 		9A37D04C776B4BFF6C0415CC /* ObjectPagePriceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPagePriceView.swift; sourceTree = "<group>"; };
 		9A37D099BD9A89A8D9EE9C6B /* ObjectPagePriceDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPagePriceDemoView.swift; sourceTree = "<group>"; };
+		9A37D11E44763B741F5D6AC4 /* ContractActionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractActionViewModel.swift; sourceTree = "<group>"; };
 		9A37D30A5DD3B5A286743DA3 /* FavoriteAdTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdTableViewCell.swift; sourceTree = "<group>"; };
 		9A37D31AFA28AABED492E588 /* FeedbackDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackDemoView.swift; sourceTree = "<group>"; };
 		9A37D34E21B0FF57F07BE7E0 /* FavoriteAdsListDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListDemoViewController.swift; sourceTree = "<group>"; };
 		9A37D377873F817D415E649E /* LinkButtonListDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkButtonListDemoView.swift; sourceTree = "<group>"; };
+		9A37D3C7060E7261BD20D9C1 /* ContractActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractActionView.swift; sourceTree = "<group>"; };
 		9A37D4FCB2C97A70AB625A9C /* FavoriteAdsSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsSectionHeaderView.swift; sourceTree = "<group>"; };
 		9A37D5137A47B4E2117052C3 /* FavoriteAdsListDemoViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListDemoViewHelper.swift; sourceTree = "<group>"; };
 		9A37D61B28BC0BA6CA6110A5 /* RemoteImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
@@ -938,6 +943,7 @@
 		9A37D728DC9D805D74CB8D4F /* FavoriteAdsSortingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsSortingView.swift; sourceTree = "<group>"; };
 		9A37D786CF271A4813AAEB66 /* SelfDeclarationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfDeclarationView.swift; sourceTree = "<group>"; };
 		9A37D87CCADB89179F11253B /* FavoriteAdsListTableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListTableHeader.swift; sourceTree = "<group>"; };
+		9A37D8976F1168062EE76B2B /* ContractActionDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractActionDemoView.swift; sourceTree = "<group>"; };
 		9A37D89B6E491254D1C4BC51 /* UIStackViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackViewExtensions.swift; sourceTree = "<group>"; };
 		9A37D9749A60B9BFD125F483 /* FeedbackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 		9A37DA1C8FBA8E3FF6355FB5 /* FavoriteAdViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdViewModel.swift; sourceTree = "<group>"; };
@@ -1832,6 +1838,7 @@
 				F2597C73231D1A0B00BE74EC /* VerificationView */,
 				494047FA23CDBA7600ECBCFD /* Viewings */,
 				08E9F54E2341FBC300943E5D /* VisibilityDrivenTitleView */,
+				9A37D05E50689037A6F118B1 /* ContractActionView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2461,12 +2468,29 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		9A37D05E50689037A6F118B1 /* ContractActionView */ = {
+			isa = PBXGroup;
+			children = (
+				9A37D3C7060E7261BD20D9C1 /* ContractActionView.swift */,
+				9A37D11E44763B741F5D6AC4 /* ContractActionViewModel.swift */,
+			);
+			path = ContractActionView;
+			sourceTree = "<group>";
+		};
 		9A37D0FBA493D29104CFE3A8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				9A37DF66929876DCA81666F3 /* SelfDeclarationItemView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		9A37D17F6372EBA1A8C5C7D1 /* ContractActionView */ = {
+			isa = PBXGroup;
+			children = (
+				9A37D8976F1168062EE76B2B /* ContractActionDemoView.swift */,
+			);
+			path = ContractActionView;
 			sourceTree = "<group>";
 		};
 		9A37D2ACAF5646A1AB7DCCD3 /* LinkButtonList */ = {
@@ -3527,6 +3551,7 @@
 				4940480323CDC54E00ECBCFD /* Viewings */,
 				9A37D777D2BE560FFC071E4D /* VisibilityDrivenTitleView */,
 				9A37D9C36899F1307D89CFE5 /* ObjectPagePriceView */,
+				9A37D17F6372EBA1A8C5C7D1 /* ContractActionView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -4912,6 +4937,7 @@
 				9A37D44F4C1D337B39F07E68 /* SelfDeclarationDemoView.swift in Sources */,
 				9A37D671719BE998E1BD3DC2 /* ObjectPagePriceDemoView.swift in Sources */,
 				9A37D298B79BDDB602E35EDB /* LinkButtonListDemoView.swift in Sources */,
+				9A37D6FFB6005AF66CDC8FD0 /* ContractActionDemoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5328,6 +5354,8 @@
 				9A37DA7B24E02E5E9048823A /* LinkButtonListView.swift in Sources */,
 				9A37D89F84574B63CB61EAAB /* LinkButtonView.swift in Sources */,
 				9A37D71314CB8E978EDC889C /* LinkButtonViewModel.swift in Sources */,
+				9A37D724F7DF732E308CC530 /* ContractActionView.swift in Sources */,
+				9A37D44ADD20BEDD3F754D62 /* ContractActionViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
