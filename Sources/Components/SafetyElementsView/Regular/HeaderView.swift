@@ -45,6 +45,9 @@ extension SafetyElementsView {
         private lazy var iconImageView: UIImageView = {
             let imageView = UIImageView(withAutoLayout: true)
             imageView.isUserInteractionEnabled = true
+            imageView.contentMode = .scaleAspectFit
+            imageView.setContentHuggingPriority(.defaultHigh, for: .vertical)
+            imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
             return imageView
         }()
 
