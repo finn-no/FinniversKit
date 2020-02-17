@@ -11,7 +11,7 @@ public protocol NotificationCenterViewDelegate: AnyObject {
     func notificationCenterView(_ view: NotificationCenterView, timestampForModelAt indexPath: IndexPath) -> String?
     func notificationCenterView(_ view: NotificationCenterView, didPullToRefreshWith refreshControl: UIRefreshControl)
     func notificationCenterViewWillReachEndOfContent(_ view: NotificationCenterView)
-    func notificationCenterViewDidReachEndOfContent(_ view: NotificationCenterView)
+    func notificationCenterView(_ view: NotificationCenterView, didReachEndOfContentWith activityIndicatorView: UIActivityIndicatorView)
 }
 
 public protocol NotificationCenterViewDataSource: AnyObject {
@@ -31,7 +31,7 @@ public class NotificationCenterView: UIView {
     private var refreshOnPanEnded = false
 
     private lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
+        let refreshControl = RefreshControl(frame: .zero)
         refreshControl.addTarget(self, action: #selector(handleRefresh(control:)), for: .valueChanged)
         return refreshControl
     }()
@@ -152,9 +152,8 @@ extension NotificationCenterView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         guard section == tableView.numberOfSections - 1 else { return }
-        guard let activityIndicatorView = view as? ActivityIndicatorSectionFooterView else { return }
-        activityIndicatorView.startAnimating()
-        delegate?.notificationCenterViewDidReachEndOfContent(self)
+        guard let footerView = view as? ActivityIndicatorSectionFooterView else { return }
+        delegate?.notificationCenterView(self, didReachEndOfContentWith: footerView.activityIndicatorView)
     }
 }
 

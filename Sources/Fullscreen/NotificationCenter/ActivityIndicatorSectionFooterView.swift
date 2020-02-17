@@ -10,7 +10,7 @@ import Foundation
 
 class ActivityIndicatorSectionFooterView: UITableViewHeaderFooterView {
 
-    private lazy var activityIndicatorView: UIActivityIndicatorView = {
+    let activityIndicatorView: UIActivityIndicatorView = {
         if #available(iOS 13, *) {
             return UIActivityIndicatorView(style: .medium)
         } else {
@@ -32,9 +32,5 @@ class ActivityIndicatorSectionFooterView: UITableViewHeaderFooterView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    func startAnimating() {
-        activityIndicatorView.startAnimating()
     }
 }
