@@ -122,7 +122,7 @@ extension SafetyElementsView {
         }
 
         private func setActiveElement(to index: Int) {
-            guard viewModels.count > 0 else { return }
+            guard !viewModels.isEmpty else { return }
             let viewModel = viewModels[index]
             contentView.configure(with: viewModel)
             adjustContentCorners(for: index)
