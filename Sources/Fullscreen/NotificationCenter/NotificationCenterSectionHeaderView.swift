@@ -91,7 +91,7 @@ class NotificationCenterSectionHeaderView: UITableViewHeaderFooterView {
         if let title = model?.title {
             titleLabel.text = title
             titleLabel.isHidden = false
-            stackViewTopConstraint.constant = .mediumLargeSpacing
+            stackViewTopConstraint.constant = .largeSpacing
         } else {
             titleLabel.isHidden = true
             stackViewTopConstraint.constant = 0
