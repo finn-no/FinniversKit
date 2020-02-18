@@ -23,9 +23,9 @@ public class UserAdEmphasizedActionTableViewCell: UITableViewCell {
         }
     }
 
-    /// A data source for the loading of the image
     public weak var delegate: UserAdEmphasizedActionTableViewCellDelegate?
 
+    /// A data source for the loading of the image
     public weak var remoteImageViewDataSource: RemoteImageViewDataSource? {
         didSet {
             userAdDetailsView.adImageViewDataSource = remoteImageViewDataSource
