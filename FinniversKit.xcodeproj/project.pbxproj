@@ -2431,6 +2431,7 @@
 				91A5B23D23E2FC5400092ED6 /* UserAdTableViewCell.swift */,
 				62432105231FE97F0027E142 /* UserAdsListEmphasizedActionCell.swift */,
 				91A5B24223E45AD200092ED6 /* UserAdTableViewCellViewModel.swift */,
+				91E3931523FBE3B30001D9E1 /* View */,
 				9198247F23FAA786006861C8 /* UserAdDetailsView.swift */,
 				9198248123FAC544006861C8 /* UserAdCellStyle.swift */,
 			);
@@ -2444,6 +2445,14 @@
 				91E3931323FBCEB10001D9E1 /* UserAdEmphasizedCellDemoView.swift */,
 			);
 			path = UserAdTableViewCell;
+			sourceTree = "<group>";
+		};
+		91E3931523FBE3B30001D9E1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F288CB3D233CD53400C1EE8A /* UserAdsRatingView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		9A37D04ECAD047206016D29A /* Models */ = {
@@ -4335,7 +4344,6 @@
 		F288CB3F233CD81600C1EE8A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F288CB3D233CD53400C1EE8A /* UserAdsRatingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
