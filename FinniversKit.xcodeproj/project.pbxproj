@@ -2427,8 +2427,9 @@
 			isa = PBXGroup;
 			children = (
 				91A5B23D23E2FC5400092ED6 /* UserAdTableViewCell.swift */,
-				9198247F23FAA786006861C8 /* UserAdDetailsView.swift */,
+				62432105231FE97F0027E142 /* UserAdsListEmphasizedActionCell.swift */,
 				91A5B24223E45AD200092ED6 /* UserAdTableViewCellViewModel.swift */,
+				9198247F23FAA786006861C8 /* UserAdDetailsView.swift */,
 				9198248123FAC544006861C8 /* UserAdCellStyle.swift */,
 			);
 			path = UserAdTableViewCell;
@@ -4229,7 +4230,6 @@
 			children = (
 				F26852F722019A9D000978C8 /* UserAdsListViewNewAdCell.swift */,
 				F26852D921F75435000978C8 /* UserAdsListViewCell.swift */,
-				62432105231FE97F0027E142 /* UserAdsListEmphasizedActionCell.swift */,
 				F26852FA2201DA6F000978C8 /* UserAdsListViewSeeAllAdsCell.swift */,
 			);
 			path = Cell;
