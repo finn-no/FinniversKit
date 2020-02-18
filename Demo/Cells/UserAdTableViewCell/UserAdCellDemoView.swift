@@ -71,7 +71,7 @@ extension UserAdCellDemoView: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let cell = cell as? UserAdTableViewCell {
+        if let cell = cell as? ImageLoading {
             cell.loadImage()
         }
     }
