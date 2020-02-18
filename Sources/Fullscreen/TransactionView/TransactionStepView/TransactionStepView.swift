@@ -60,10 +60,10 @@ public class TransactionStepView: UIView {
 
     // MARK: - Init
 
-    public init(step: Int, model: TransactionStepViewModel, style: TransactionStepView.Style, withAutoLayout autoLayout: Bool = false) {
+    public init(step: Int, model: TransactionStepViewModel, withAutoLayout autoLayout: Bool = false) {
         self.step = step
         self.model = model
-        self.style = style
+        self.style = model.state.style
 
         super.init(frame: .zero)
 
