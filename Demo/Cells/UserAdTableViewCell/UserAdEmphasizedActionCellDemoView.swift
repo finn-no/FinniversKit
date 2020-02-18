@@ -5,7 +5,7 @@
 import Foundation
 import FinniversKit
 
-class UserAdEmphasizedCellDemoView: UIView {
+class UserAdEmphasizedActionCellDemoView: UIView {
 
     private var shouldCollapseAction = false
     private var hasGivenRating = false
@@ -18,7 +18,7 @@ class UserAdEmphasizedCellDemoView: UIView {
         tableView.dataSource = self
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.register(UserAdsListEmphasizedActionCell.self)
+        tableView.register(UserAdEmphasizedActionTableViewCell.self)
         return tableView
     }()
 
@@ -46,7 +46,7 @@ class UserAdEmphasizedCellDemoView: UIView {
 
 // MARK: - UITableViewDelegate
 
-extension UserAdEmphasizedCellDemoView: UITableViewDelegate {
+extension UserAdEmphasizedActionCellDemoView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -54,7 +54,7 @@ extension UserAdEmphasizedCellDemoView: UITableViewDelegate {
 
 // MARK: - UITableViewDataSource
 
-extension UserAdEmphasizedCellDemoView: UITableViewDataSource {
+extension UserAdEmphasizedActionCellDemoView: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -65,7 +65,7 @@ extension UserAdEmphasizedCellDemoView: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(UserAdsListEmphasizedActionCell.self, for: indexPath)
+        let cell = tableView.dequeue(UserAdEmphasizedActionTableViewCell.self, for: indexPath)
         cell.delegate = self
         cell.model = viewModels[indexPath.row]
         cell.remoteImageViewDataSource = self
@@ -83,13 +83,13 @@ extension UserAdEmphasizedCellDemoView: UITableViewDataSource {
 
 // MARK: - UserAdsListEmphasizedActionCellDelegate
 
-extension UserAdEmphasizedCellDemoView: UserAdsListEmphasizedActionCellDelegate {
-    func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, buttonWasTapped: Button) {
+extension UserAdEmphasizedActionCellDemoView: UserAdEmphasizedActionTableViewCellDelegate {
+    func userAdEmphasizedActionTableViewCell(_ cell: UserAdEmphasizedActionTableViewCell, buttonWasTapped: Button) {
         shouldCollapseAction = true
         tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
     }
 
-    func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, cancelButtonWasTapped: Button) {
+    func userAdEmphasizedActionTableViewCell(_ cell: UserAdEmphasizedActionTableViewCell, cancelButtonWasTapped: Button) {
         guard hasGivenRating else {
             cell.showRatingView()
             return
@@ -99,7 +99,7 @@ extension UserAdEmphasizedCellDemoView: UserAdsListEmphasizedActionCellDelegate 
         tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
     }
 
-    func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, closeButtonWasTapped: UIButton) {
+    func userAdEmphasizedActionTableViewCell(_ cell: UserAdEmphasizedActionTableViewCell, closeButtonWasTapped: UIButton) {
         shouldCollapseAction = true
 
         cell.hideRatingView { [weak self] in
@@ -107,7 +107,7 @@ extension UserAdEmphasizedCellDemoView: UserAdsListEmphasizedActionCellDelegate 
         }
     }
 
-    func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, textFor rating: HappinessRating) -> String? {
+    func userAdEmphasizedActionTableViewCell(_ cell: UserAdEmphasizedActionTableViewCell, textFor rating: HappinessRating) -> String? {
         switch rating {
         case .angry:
             return "Veldig irriterende"
@@ -122,7 +122,7 @@ extension UserAdEmphasizedCellDemoView: UserAdsListEmphasizedActionCellDelegate 
         }
     }
 
-    func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, didSelectRating rating: HappinessRating) {
+    func userAdEmphasizedActionTableViewCell(_ cell: UserAdEmphasizedActionTableViewCell, didSelectRating rating: HappinessRating) {
         hasGivenRating = true
         shouldCollapseAction = true
 
@@ -138,7 +138,7 @@ extension UserAdEmphasizedCellDemoView: UserAdsListEmphasizedActionCellDelegate 
 
 // MARK: - RemoteImageViewDataSource
 
-extension UserAdEmphasizedCellDemoView: RemoteImageViewDataSource {
+extension UserAdEmphasizedActionCellDemoView: RemoteImageViewDataSource {
     func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
         return nil
     }

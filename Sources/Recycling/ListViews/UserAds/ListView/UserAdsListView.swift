@@ -50,7 +50,7 @@ public class UserAdsListView: UIView {
         tableView.register(UserAdsListViewNewAdCell.self)
         tableView.register(UserAdsListViewCell.self)
         tableView.register(UserAdsListViewSeeAllAdsCell.self)
-        tableView.register(UserAdsListEmphasizedActionCell.self)
+        tableView.register(UserAdEmphasizedActionTableViewCell.self)
         tableView.cellLayoutMarginsFollowReadableWidth = false
         tableView.backgroundColor = .bgPrimary
         tableView.rowHeight = UITableView.automaticDimension
@@ -249,7 +249,7 @@ extension UserAdsListView: UITableViewDataSource {
             return seeAllAdsCell
         default:
             if let emphasizedSection = dataSource?.sectionNumberForEmphasizedAction(in: self), indexPath.section == emphasizedSection {
-                let cell = tableView.dequeue(UserAdsListEmphasizedActionCell.self, for: indexPath)
+                let cell = tableView.dequeue(UserAdEmphasizedActionTableViewCell.self, for: indexPath)
                 cell.loadingColor = color
                 cell.delegate = self
                 cell.remoteImageViewDataSource = self
@@ -333,14 +333,14 @@ extension UserAdsListView: RefreshControlDelegate {
     }
 }
 
-extension UserAdsListView: UserAdsListEmphasizedActionCellDelegate {
-    public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, buttonWasTapped: Button) {
+extension UserAdsListView: UserAdEmphasizedActionTableViewCellDelegate {
+    public func userAdEmphasizedActionTableViewCell(_ cell: UserAdEmphasizedActionTableViewCell, buttonWasTapped: Button) {
         guard let emphasizedSection = dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
         delegate?.userAdsListViewEmphasizedActionWasTapped(self)
         tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
     }
 
-    public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, cancelButtonWasTapped: Button) {
+    public func userAdEmphasizedActionTableViewCell(_ cell: UserAdEmphasizedActionTableViewCell, cancelButtonWasTapped: Button) {
         let showRatingView = dataSource?.emphasizedActionShowRatingView ?? false
         guard showRatingView != false && hasGivenRating != false else {
             cell.showRatingView()
@@ -352,7 +352,7 @@ extension UserAdsListView: UserAdsListEmphasizedActionCellDelegate {
         tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
     }
 
-    public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, closeButtonWasTapped: UIButton) {
+    public func userAdEmphasizedActionTableViewCell(_ cell: UserAdEmphasizedActionTableViewCell, closeButtonWasTapped: UIButton) {
         delegate?.userAdsListViewEmphasizedActionWasCancelled(self)
 
         cell.hideRatingView(completion: {
@@ -361,11 +361,11 @@ extension UserAdsListView: UserAdsListEmphasizedActionCellDelegate {
         })
     }
 
-    public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, textFor rating: HappinessRating) -> String? {
+    public func userAdEmphasizedActionTableViewCell(_ cell: UserAdEmphasizedActionTableViewCell, textFor rating: HappinessRating) -> String? {
         return delegate?.userAdsListViewEmphasized(self, textFor: rating)
     }
 
-    public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, didSelectRating rating: HappinessRating) {
+    public func userAdEmphasizedActionTableViewCell(_ cell: UserAdEmphasizedActionTableViewCell, didSelectRating rating: HappinessRating) {
         hasGivenRating = true
         delegate?.userAdsListViewEmphasized(self, didSelectRating: rating)
 

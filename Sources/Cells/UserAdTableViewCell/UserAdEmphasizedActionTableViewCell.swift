@@ -5,15 +5,15 @@
 import UIKit
 
 /// Delegate to handle interaction happening inside the cell
-public protocol UserAdsListEmphasizedActionCellDelegate: AnyObject {
-    func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, buttonWasTapped: Button)
-    func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, cancelButtonWasTapped: Button)
-    func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, closeButtonWasTapped: UIButton)
-    func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, textFor rating: HappinessRating) -> String?
-    func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, didSelectRating rating: HappinessRating)
+public protocol UserAdEmphasizedActionTableViewCellDelegate: AnyObject {
+    func userAdEmphasizedActionTableViewCell(_ cell: UserAdEmphasizedActionTableViewCell, buttonWasTapped: Button)
+    func userAdEmphasizedActionTableViewCell(_ cell: UserAdEmphasizedActionTableViewCell, cancelButtonWasTapped: Button)
+    func userAdEmphasizedActionTableViewCell(_ cell: UserAdEmphasizedActionTableViewCell, closeButtonWasTapped: UIButton)
+    func userAdEmphasizedActionTableViewCell(_ cell: UserAdEmphasizedActionTableViewCell, textFor rating: HappinessRating) -> String?
+    func userAdEmphasizedActionTableViewCell(_ cell: UserAdEmphasizedActionTableViewCell, didSelectRating rating: HappinessRating)
 }
 
-public class UserAdsListEmphasizedActionCell: UITableViewCell {
+public class UserAdEmphasizedActionTableViewCell: UITableViewCell {
     // MARK: - External properties
 
     /// The loading color is used to fill the image view while we load the image.
@@ -24,7 +24,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
     }
 
     /// A data source for the loading of the image
-    public weak var delegate: UserAdsListEmphasizedActionCellDelegate?
+    public weak var delegate: UserAdEmphasizedActionTableViewCellDelegate?
 
     public weak var remoteImageViewDataSource: RemoteImageViewDataSource? {
         didSet {
@@ -64,7 +64,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
     private lazy var userAdDetailsView: UserAdDetailsView = {
         let view = UserAdDetailsView(withAutoLayout: true)
         view.backgroundColor = .bgPrimary
-        view.layer.cornerRadius = UserAdsListEmphasizedActionCell.cornerRadius
+        view.layer.cornerRadius = UserAdEmphasizedActionTableViewCell.cornerRadius
         return view
     }()
 
@@ -218,11 +218,11 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
     // MARK: - Selectors
 
     @objc private func buttonTapped(_ sender: Button) {
-        delegate?.userAdsListEmphasizedActionCell(self, buttonWasTapped: sender)
+        delegate?.userAdEmphasizedActionTableViewCell(self, buttonWasTapped: sender)
     }
 
     @objc private func cancelButtonTapped(_ sender: Button) {
-        delegate?.userAdsListEmphasizedActionCell(self, cancelButtonWasTapped: sender)
+        delegate?.userAdEmphasizedActionTableViewCell(self, cancelButtonWasTapped: sender)
     }
 
     // MARK: - Public
@@ -265,7 +265,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
 
 // MARK: - ImageLoading
 
-extension UserAdsListEmphasizedActionCell: ImageLoading {
+extension UserAdEmphasizedActionTableViewCell: ImageLoading {
     public func loadImage() {
         userAdDetailsView.loadImage()
     }
@@ -273,16 +273,16 @@ extension UserAdsListEmphasizedActionCell: ImageLoading {
 
 // MARK: - UserAdsRatingViewDelegate
 
-extension UserAdsListEmphasizedActionCell: UserAdsRatingViewDelegate {
+extension UserAdEmphasizedActionTableViewCell: UserAdsRatingViewDelegate {
     public func ratingView(_ userAdsRatingView: UserAdsRatingView, didTapCloseButton button: UIButton) {
-        delegate?.userAdsListEmphasizedActionCell(self, closeButtonWasTapped: button)
+        delegate?.userAdEmphasizedActionTableViewCell(self, closeButtonWasTapped: button)
     }
 
     public func ratingView(_ userAdsRatingView: UserAdsRatingView, didSelectRating rating: HappinessRating) {
-        delegate?.userAdsListEmphasizedActionCell(self, didSelectRating: rating)
+        delegate?.userAdEmphasizedActionTableViewCell(self, didSelectRating: rating)
     }
 
     public func ratingView(_ userAdsRatingView: UserAdsRatingView, textFor rating: HappinessRating) -> String? {
-        return delegate?.userAdsListEmphasizedActionCell(self, textFor: rating)
+        return delegate?.userAdEmphasizedActionTableViewCell(self, textFor: rating)
     }
 }
