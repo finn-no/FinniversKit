@@ -4,24 +4,47 @@
 
 import Foundation
 
+public enum TransactionState {
+    case notStarted
+    case inProgress
+    case inProgressAwaitingOtherParty
+    case completed
+
+    var style: TransactionStepView.Style {
+        switch self {
+        case .notStarted:
+            return .notStarted
+        case .inProgress:
+            return .inProgress
+        case .inProgressAwaitingOtherParty:
+            return .inProgress
+        case .completed:
+            return .completed
+        }
+    }
+
+}
+
 public protocol TransactionViewDelegate: AnyObject {
     func transactionViewDidSelectActionButton(_ view: TransactionView, inStep step: Int)
 }
 
 public protocol TransactionViewDataSource: AnyObject {
-    func transactionViewModelForIndex(_ view: TransactionView, forStep step: Int)
+    func transactionViewModelForIndex(_ view: TransactionView, forStep step: Int) -> TransactionStepViewModel
+    func transactionViewNumberOfSteps(_ view: TransactionView) -> Int
+    func transactionViewCurrentStep(_ view: TransactionView) -> Int
 }
 
 public class TransactionView: UIView {
     // MARK: - Public
 
-    public weak var dataSource: TransactionViewDataSource?
-    public weak var delegate: TransactionViewDelegate?
+    private weak var dataSource: TransactionViewDataSource?
+    private weak var delegate: TransactionViewDelegate?
 
     // MARK: - Properties
 
-    private var numberOfSteps: Int
-    private var currentStep: Int
+    private var numberOfSteps: Int = 0
+    private var currentStep: Int = 0
 
     private var stepDots = [TransactionStepDot]()
     private var connectors = [TransactionStepDotConnector]()
@@ -41,12 +64,14 @@ public class TransactionView: UIView {
 
     // MARK: - Init
 
-    public init(title: String, numberOfSteps steps: Int, currentStep step: Int, withAutoLayout autoLayout: Bool = true) {
-        guard steps >= 2 else { fatalError("The number of steps has to be larger than 2") }
-        self.numberOfSteps = steps
-        self.currentStep = step
+    public init(title: String, dataSource: TransactionViewDataSource, delegate: TransactionViewDelegate, withAutoLayout autoLayout: Bool = true) {
+        self.dataSource = dataSource
+        self.delegate = delegate
 
         super.init(frame: .zero)
+
+        self.numberOfSteps = dataSource.transactionViewNumberOfSteps(self)
+        self.currentStep = dataSource.transactionViewCurrentStep(self)
 
         titleLabel.text = title
         translatesAutoresizingMaskIntoConstraints = !autoLayout
@@ -90,41 +115,20 @@ private extension TransactionView {
         ])
 
         for index in 0..<numberOfSteps {
-            addTransactionStepView(index)
+            guard let model = dataSource?.transactionViewModelForIndex(self, forStep: index) else { return }
+
+            addTransactionStepView(index, model)
             addTransactionStepDots(index)
         }
 
-        guard let stepDot = stepDots[safe: 0] else { return }
+        guard let stepDot = stepDots.first else { return }
         verticalStackView.leadingAnchor.constraint(equalTo: stepDot.trailingAnchor, constant: .mediumSpacing).isActive = true
     }
 
-    private func addTransactionStepView(_ step: Int) {
-        var transactionStepView: TransactionStepView?
-        var model = TransactionStepModel(title: "Title", subtitle: "Subtitle", buttonText: "Button", detail: "Info")
-
-        // TODO: This should be moved into setup
-        // TODO: Create a data generator in the TransactionDemoViewDefaultData
-        if currentStep > step {
-            for index in 0..<currentStep {
-                let model = TransactionStepModel(title: "Title", subtitle: "Subtitle", buttonText: "Button")
-                transactionStepView = TransactionStepView(step: index, model: model, style: .completed, withAutoLayout: true)
-            }
-        } else if step == currentStep {
-            model = TransactionStepModel(title: "Title", subtitle: "Very very very very very very very Very very very very very very very Very very very very very very very long text", buttonText: "Button", detail: "Very very very very very very very Very very very very very very very Very very very very very very very long text")
-
-            let random = Int(arc4random_uniform(10))
-            if random % 2 == 0 {
-                transactionStepView = TransactionStepView(step: step, model: model, style: .inProgress, withAutoLayout: true)
-            } else {
-                transactionStepView = TransactionStepView(step: step, model: model, style: .inProgressAwaitingOtherParty, withAutoLayout: true)
-            }
-        } else {
-            transactionStepView = TransactionStepView(step: step, model: model, style: .notStarted, withAutoLayout: true)
-        }
-
-        guard let currentStepView = transactionStepView else { return }
-        currentStepView.delegate = self
-        verticalStackView.addArrangedSubview(currentStepView)
+    private func addTransactionStepView(_ step: Int, _ model: TransactionStepViewModel) {
+        var transactionStepView = TransactionStepView(step: step, model: model, withAutoLayout: true)
+        transactionStepView.delegate = self
+        verticalStackView.addArrangedSubview(transactionStepView)
     }
 
     private func addTransactionStepDots(_ step: Int) {
