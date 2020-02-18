@@ -4,12 +4,12 @@
 
 import UIKit
 
-public enum PushNotificationDetails {
-    case link(text: String, title: String, showMagnifyingGlass: Bool)
+public enum NotificationCenterSectionDetails {
+    case link(text: String, title: String, showSearchIcon: Bool)
     case `static`(text: String, value: String)
 }
 
-class PushNotificationDetailsView: UIControl {
+class NotificationCenterSectionDetailsView: UIControl {
 
     // MARK: - Private properties
 
@@ -29,10 +29,9 @@ class PushNotificationDetailsView: UIControl {
         return label
     }()
 
-    private lazy var textLabelToSuperviewConstraint = textLabel.leadingAnchor.constraint(
-        equalTo: leadingAnchor,
-        constant: .mediumLargeSpacing
-    )
+//    private lazy var textLabelToSuperviewConstraint = textLabel.leadingAnchor.constraint(
+//        equalTo: leadingAnchor
+//    )
 
     private lazy var textLabelToMagnifyingIconConstraint = textLabel.leadingAnchor.constraint(
         equalTo: magnifyingIconView.trailingAnchor,
@@ -76,7 +75,7 @@ class PushNotificationDetailsView: UIControl {
 
     // MARK: - Internal methods
 
-    func configure(with details: PushNotificationDetails?) {
+    func configure(with details: NotificationCenterSectionDetails?) {
         let textAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.caption,
             .foregroundColor: UIColor.textPrimary
@@ -86,7 +85,7 @@ class PushNotificationDetailsView: UIControl {
         case let .link(text, title, showMagnifyingGlass):
             magnifyingIconView.isHidden = !showMagnifyingGlass
 
-            textLabelToSuperviewConstraint.isActive = magnifyingIconView.isHidden
+//            textLabelToSuperviewConstraint.isActive = magnifyingIconView.isHidden
             textLabelToMagnifyingIconConstraint.isActive = !magnifyingIconView.isHidden
 
             let textRange = NSRange(location: 0, length: text.count + 1)
@@ -104,7 +103,7 @@ class PushNotificationDetailsView: UIControl {
         case let .static(text, value):
             magnifyingIconView.isHidden = true
 
-            textLabelToSuperviewConstraint.isActive = magnifyingIconView.isHidden
+//            textLabelToSuperviewConstraint.isActive = magnifyingIconView.isHidden
             textLabelToMagnifyingIconConstraint.isActive = !magnifyingIconView.isHidden
 
             highlightedRange = nil

@@ -103,20 +103,11 @@ class NotificationCenterCell: UITableViewCell {
         backgroundColor = model?.read == true ? .bgPrimary : .bgSecondary
         separatorView.isHidden = hideSeparator
 
-        if let price = model?.priceText {
-            priceLabel.text = price
-            priceLabel.isHidden = false
-        } else {
-            priceLabel.isHidden = true
-        }
+        priceLabel.text = model?.priceText
+        priceLabel.isHidden = model?.priceText == nil
 
-        if let ribbonViewModel = model?.ribbonViewModel {
-            statusRibbon.title = ribbonViewModel.title
-            statusRibbon.style = ribbonViewModel.style
-            statusRibbon.isHidden = false
-        } else {
-            statusRibbon.isHidden = true
-        }
+        statusRibbon.configure(with: model?.ribbonViewModel)
+        statusRibbon.isHidden = model?.ribbonViewModel == nil
 
         guard let imagePath = model?.imagePath else {
             remoteImageView.image = fallbackImage

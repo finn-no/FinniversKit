@@ -505,12 +505,12 @@
 		CFF9727921C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9727821C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift */; };
 		CFFDF89722F311F600FE68EA /* NeighborhoodProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFDF89622F311F600FE68EA /* NeighborhoodProfileView.swift */; };
 		CFFDF89922F313A500FE68EA /* NeighborhoodProfileDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFDF89822F313A500FE68EA /* NeighborhoodProfileDemoView.swift */; };
-		DA2E814F23ABB1F100A18264 /* NotificationCenterDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E814E23ABB1F100A18264 /* NotificationCenterDemoView.swift */; };
-		DA2E815223ABB42300A18264 /* NotificationCenterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E815023ABB2DF00A18264 /* NotificationCenterCell.swift */; };
 		DA0F4E63239504F3003E93A4 /* MinFinnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0F4E62239504F3003E93A4 /* MinFinnView.swift */; };
 		DA0F4E652395091B003E93A4 /* MinFinnProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0F4E642395091B003E93A4 /* MinFinnProfileCell.swift */; };
 		DA0F4E6823952228003E93A4 /* MinFinnDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0F4E6723952228003E93A4 /* MinFinnDemoView.swift */; };
 		DA0F4E6B23953B85003E93A4 /* MinFinnCellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0F4E6923953B02003E93A4 /* MinFinnCellModels.swift */; };
+		DA2E814F23ABB1F100A18264 /* NotificationCenterDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E814E23ABB1F100A18264 /* NotificationCenterDemoView.swift */; };
+		DA2E815223ABB42300A18264 /* NotificationCenterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E815023ABB2DF00A18264 /* NotificationCenterCell.swift */; };
 		DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */; };
 		DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */; };
 		DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */; };
@@ -522,7 +522,7 @@
 		DA93EFA821C2BA4F00207239 /* NewYearsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1EC5021C1322900F4FEC4 /* NewYearsView.swift */; };
 		DA93EFAA21C2BB2900207239 /* NewYearsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA93EFA921C2BB2900207239 /* NewYearsDemoView.swift */; };
 		DA9A223F21BA8D8C001452F0 /* BottomSheetStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */; };
-		DA9AC56123CF024B0097CD55 /* PushNotificationDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9AC56023CF024B0097CD55 /* PushNotificationDetailsView.swift */; };
+		DA9AC56123CF024B0097CD55 /* NotificationCenterSectionDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9AC56023CF024B0097CD55 /* NotificationCenterSectionDetailsView.swift */; };
 		DA9AC5DF23CF45280097CD55 /* NotificationCenterSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9AC5DE23CF45280097CD55 /* NotificationCenterSectionHeaderView.swift */; };
 		DAA4F25223A2615C00FA529C /* NotificationCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA4F25123A2615C00FA529C /* NotificationCenterView.swift */; };
 		DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A32102153F0021F7DC /* Selectionbox.swift */; };
@@ -1155,12 +1155,12 @@
 		CFF9727821C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTransparencyInfoDefaultData.swift; sourceTree = "<group>"; };
 		CFFDF89622F311F600FE68EA /* NeighborhoodProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileView.swift; sourceTree = "<group>"; };
 		CFFDF89822F313A500FE68EA /* NeighborhoodProfileDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileDemoView.swift; sourceTree = "<group>"; };
-		DA2E814E23ABB1F100A18264 /* NotificationCenterDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterDemoView.swift; sourceTree = "<group>"; };
-		DA2E815023ABB2DF00A18264 /* NotificationCenterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterCell.swift; sourceTree = "<group>"; };
 		DA0F4E62239504F3003E93A4 /* MinFinnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinFinnView.swift; sourceTree = "<group>"; };
 		DA0F4E642395091B003E93A4 /* MinFinnProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinFinnProfileCell.swift; sourceTree = "<group>"; };
 		DA0F4E6723952228003E93A4 /* MinFinnDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinFinnDemoView.swift; sourceTree = "<group>"; };
 		DA0F4E6923953B02003E93A4 /* MinFinnCellModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinFinnCellModels.swift; sourceTree = "<group>"; };
+		DA2E814E23ABB1F100A18264 /* NotificationCenterDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterDemoView.swift; sourceTree = "<group>"; };
+		DA2E815023ABB2DF00A18264 /* NotificationCenterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterCell.swift; sourceTree = "<group>"; };
 		DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterViewModel.swift; sourceTree = "<group>"; };
 		DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxDemoView.swift; sourceTree = "<group>"; };
 		DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonDemoView.swift; sourceTree = "<group>"; };
@@ -1171,7 +1171,7 @@
 		DA8F32B3238295F900EF645F /* VersionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfoView.swift; sourceTree = "<group>"; };
 		DA93EFA921C2BB2900207239 /* NewYearsDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewYearsDemoView.swift; sourceTree = "<group>"; };
 		DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetStateController.swift; sourceTree = "<group>"; };
-		DA9AC56023CF024B0097CD55 /* PushNotificationDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationDetailsView.swift; sourceTree = "<group>"; };
+		DA9AC56023CF024B0097CD55 /* NotificationCenterSectionDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterSectionDetailsView.swift; sourceTree = "<group>"; };
 		DA9AC5DE23CF45280097CD55 /* NotificationCenterSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterSectionHeaderView.swift; sourceTree = "<group>"; };
 		DAA4F25123A2615C00FA529C /* NotificationCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterView.swift; sourceTree = "<group>"; };
 		DAA9A3A32102153F0021F7DC /* Selectionbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectionbox.swift; sourceTree = "<group>"; };
@@ -4010,26 +4010,6 @@
 			path = NeighborhoodProfile;
 			sourceTree = "<group>";
 		};
-		DAA4F25023A2614800FA529C /* NotificationCenter */ = {
-			isa = PBXGroup;
-			children = (
-				DAA4F25123A2615C00FA529C /* NotificationCenterView.swift */,
-				DA2E815023ABB2DF00A18264 /* NotificationCenterCell.swift */,
-				DA9AC56023CF024B0097CD55 /* PushNotificationDetailsView.swift */,
-				DA9AC5DE23CF45280097CD55 /* NotificationCenterSectionHeaderView.swift */,
-				DA7EF33523E9639E00BEA8EA /* ActivityIndicatorSectionFooterView.swift */,
-			);
-			path = NotificationCenter;
-			sourceTree = "<group>";
-		};
-		DAA4F25323A2616400FA529C /* NotificationCenter */ = {
-			isa = PBXGroup;
-			children = (
-				DA2E814E23ABB1F100A18264 /* NotificationCenterDemoView.swift */,
-			);
-			path = NotificationCenter;
-      sourceTree = "<group>";
-    };
 		DA0F4E61239504D3003E93A4 /* MinFinn */ = {
 			isa = PBXGroup;
 			children = (
@@ -4047,6 +4027,26 @@
 				DA0F4E6723952228003E93A4 /* MinFinnDemoView.swift */,
 			);
 			path = MinFinn;
+			sourceTree = "<group>";
+		};
+		DAA4F25023A2614800FA529C /* NotificationCenter */ = {
+			isa = PBXGroup;
+			children = (
+				DAA4F25123A2615C00FA529C /* NotificationCenterView.swift */,
+				DA2E815023ABB2DF00A18264 /* NotificationCenterCell.swift */,
+				DA9AC56023CF024B0097CD55 /* NotificationCenterSectionDetailsView.swift */,
+				DA9AC5DE23CF45280097CD55 /* NotificationCenterSectionHeaderView.swift */,
+				DA7EF33523E9639E00BEA8EA /* ActivityIndicatorSectionFooterView.swift */,
+			);
+			path = NotificationCenter;
+			sourceTree = "<group>";
+		};
+		DAA4F25323A2616400FA529C /* NotificationCenter */ = {
+			isa = PBXGroup;
+			children = (
+				DA2E814E23ABB1F100A18264 /* NotificationCenterDemoView.swift */,
+			);
+			path = NotificationCenter;
 			sourceTree = "<group>";
 		};
 		DAA9A3A2210214B80021F7DC /* SelectionBoxes */ = {
@@ -5102,7 +5102,7 @@
 				CFCED8D922CE2BE90049A3A0 /* FavoriteFoldersSearchBar.swift in Sources */,
 				DA891F53239E509D00FA0688 /* MinFinnVerifyCell.swift in Sources */,
 				14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */,
-				DA9AC56123CF024B0097CD55 /* PushNotificationDetailsView.swift in Sources */,
+				DA9AC56123CF024B0097CD55 /* NotificationCenterSectionDetailsView.swift in Sources */,
 				CF164CF5230E93AE00250822 /* FavoriteAdSortingView.swift in Sources */,
 				F2BE6BF4236840EE0085A05A /* AdConfirmationFeedbackViewModel.swift in Sources */,
 				CFCED8E322CF428B0049A3A0 /* FavoriteFoldersListViewModel.swift in Sources */,

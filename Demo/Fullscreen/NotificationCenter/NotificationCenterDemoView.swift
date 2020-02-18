@@ -14,7 +14,7 @@ private struct NotificationModel: NotificationCenterCellModel {
 
 private struct Section: NotificationCenterSectionHeaderViewModel {
     let title: String?
-    let details: PushNotificationDetails?
+    let details: NotificationCenterSectionDetails?
     var items: [NotificationModel]
 }
 
@@ -23,7 +23,7 @@ class NotificationCenterDemoView: UIView {
     private var data = [
         Section(
             title: "I dag",
-            details: .link(text: "2 nye treff:", title: "Hus som jeg må kjøpe før jeg fyller 40 år", showMagnifyingGlass: true),
+            details: .link(text: "2 nye treff:", title: "Hus som jeg må kjøpe før jeg fyller 40 år", showSearchIcon: true),
             items: [
             NotificationModel(
                 imagePath: "https://jwproperty.com/files/wp-content/uploads/2015/01/Smart_House-Valley_Hua_Hin0131.jpg",
@@ -38,7 +38,7 @@ class NotificationCenterDemoView: UIView {
         ]),
         Section(
             title: "Tidligere",
-            details: .link(text: "3 nye treff:", title: "Husstander", showMagnifyingGlass: true),
+            details: .link(text: "3 nye treff:", title: "Husstander", showSearchIcon: true),
             items: [
             NotificationModel(
                 imagePath: nil,
@@ -58,7 +58,7 @@ class NotificationCenterDemoView: UIView {
         ]),
         Section(
             title: nil,
-            details: .link(text: "2 nye treff:", title: "Andre husstander", showMagnifyingGlass: true),
+            details: .static(text: "2 nye treff:", value: "Andre husstander"),
             items: [
             NotificationModel(
                 imagePath: "https://i.pinimg.com/736x/bf/6d/73/bf6d73ab0234f3ba1a615b22d2dc7e74--home-exterior-design-contemporary-houses.jpg",
@@ -101,8 +101,16 @@ extension NotificationCenterDemoView: NotificationCenterViewDataSource {
         data[section].items.count
     }
 
+    func notificationCenterView(_ view: NotificationCenterView, modelForSection section: Int) -> NotificationCenterSectionHeaderViewModel {
+        data[section]
+    }
+
     func notificationCenterView(_ view: NotificationCenterView, modelForRowAt indexPath: IndexPath) -> NotificationCenterCellModel {
         data[indexPath.section].items[indexPath.row]
+    }
+
+    func notificationCenterView(_ view: NotificationCenterView, timestampForModelAt indexPath: IndexPath) -> String? {
+        "15 minutter siden"
     }
 }
 
@@ -114,14 +122,6 @@ extension NotificationCenterDemoView: NotificationCenterViewDelegate {
 
     func notificationCenterView(_ view: NotificationCenterView, didSelectNotificationDetailsIn section: Int) {
         print("Did select saved search at: \(section)")
-    }
-
-    func notificationCenterView(_ view: NotificationCenterView, modelForSection section: Int) -> NotificationCenterSectionHeaderViewModel {
-        data[section]
-    }
-
-    func notificationCenterView(_ view: NotificationCenterView, timestampForModelAt indexPath: IndexPath) -> String? {
-        "15 minutter siden"
     }
 
     func notificationCenterView(_ view: NotificationCenterView, didPullToRefreshWith refreshControl: UIRefreshControl) {

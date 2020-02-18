@@ -1,8 +1,4 @@
 //
-//  ActivityIndicatorSectionFooterView.swift
-//  FinniversKit
-//
-//  Created by Granheim Brustad , Henrik on 04/02/2020.
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
@@ -11,26 +7,33 @@ import Foundation
 class ActivityIndicatorSectionFooterView: UITableViewHeaderFooterView {
 
     let activityIndicatorView: UIActivityIndicatorView = {
+        let activityIndicatorView: UIActivityIndicatorView
+
         if #available(iOS 13, *) {
-            return UIActivityIndicatorView(style: .medium)
+            activityIndicatorView = UIActivityIndicatorView(style: .medium)
         } else {
-            return UIActivityIndicatorView(style: .gray)
+            activityIndicatorView = UIActivityIndicatorView(style: .gray)
         }
+
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicatorView
     }()
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
+        setup()
+    }
 
-        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setup() {
         contentView.addSubview(activityIndicatorView)
 
         NSLayoutConstraint.activate([
             activityIndicatorView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             activityIndicatorView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

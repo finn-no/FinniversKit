@@ -7,8 +7,6 @@ import UIKit
 public protocol NotificationCenterViewDelegate: AnyObject {
     func notificationCenterView(_ view: NotificationCenterView, didSelectModelAt indexPath: IndexPath)
     func notificationCenterView(_ view: NotificationCenterView, didSelectNotificationDetailsIn section: Int)
-    func notificationCenterView(_ view: NotificationCenterView, modelForSection section: Int) -> NotificationCenterSectionHeaderViewModel
-    func notificationCenterView(_ view: NotificationCenterView, timestampForModelAt indexPath: IndexPath) -> String?
     func notificationCenterView(_ view: NotificationCenterView, didPullToRefreshWith refreshControl: UIRefreshControl)
     func notificationCenterViewWillReachEndOfContent(_ view: NotificationCenterView)
     func notificationCenterView(_ view: NotificationCenterView, didReachEndOfContentWith activityIndicatorView: UIActivityIndicatorView)
@@ -17,7 +15,9 @@ public protocol NotificationCenterViewDelegate: AnyObject {
 public protocol NotificationCenterViewDataSource: AnyObject {
     func numberOfSections(in view: NotificationCenterView) -> Int
     func notificationCenterView(_ view: NotificationCenterView, numberOfRowsIn section: Int) -> Int
+    func notificationCenterView(_ view: NotificationCenterView, modelForSection section: Int) -> NotificationCenterSectionHeaderViewModel
     func notificationCenterView(_ view: NotificationCenterView, modelForRowAt indexPath: IndexPath) -> NotificationCenterCellModel
+    func notificationCenterView(_ view: NotificationCenterView, timestampForModelAt indexPath: IndexPath) -> String?
 }
 
 public class NotificationCenterView: UIView {
@@ -106,7 +106,7 @@ extension NotificationCenterView: UITableViewDataSource {
 
         cell.configure(
             with: model,
-            timestamp: delegate?.notificationCenterView(self, timestampForModelAt: indexPath),
+            timestamp: dataSource?.notificationCenterView(self, timestampForModelAt: indexPath),
             hideSeparator: isLastCell
         )
 
@@ -120,10 +120,7 @@ extension NotificationCenterView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let lastSection = tableView.numberOfSections - 1
-        let lastRow = tableView.numberOfRows(inSection: lastSection) - 1
-
-        if indexPath.section == lastSection, indexPath.row == lastRow {
+        if indexPath.isLastPath(in: tableView) {
             delegate?.notificationCenterViewWillReachEndOfContent(self)
         }
     }
@@ -131,7 +128,7 @@ extension NotificationCenterView: UITableViewDelegate {
     // Header
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let model = delegate?.notificationCenterView(self, modelForSection: section) else { return nil }
+        guard let model = dataSource?.notificationCenterView(self, modelForSection: section) else { return nil }
         let header = tableView.dequeue(NotificationCenterSectionHeaderView.self)
         header.delegate = self
         header.configure(with: model, inSection: section)
@@ -141,17 +138,17 @@ extension NotificationCenterView: UITableViewDelegate {
     // Footer
 
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard section == tableView.numberOfSections - 1 else { return nil }
+        guard section.isLastSection(in: tableView) else { return nil }
         return tableView.dequeue(ActivityIndicatorSectionFooterView.self)
     }
 
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        guard section == tableView.numberOfSections - 1 else { return .leastNormalMagnitude }
+        guard section.isLastSection(in: tableView) else { return .leastNormalMagnitude }
         return .veryLargeSpacing
     }
 
     public func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
-        guard section == tableView.numberOfSections - 1 else { return }
+        guard section.isLastSection(in: tableView) else { return }
         guard let footerView = view as? ActivityIndicatorSectionFooterView else { return }
         delegate?.notificationCenterView(self, didReachEndOfContentWith: footerView.activityIndicatorView)
     }
@@ -172,5 +169,19 @@ private extension NotificationCenterView {
 
     @objc func handleRefresh(control: UIRefreshControl) {
         refreshOnPanEnded = true
+    }
+}
+
+private extension Int {
+    func isLastSection(in tableView: UITableView) -> Bool {
+        self == tableView.numberOfSections - 1
+    }
+}
+
+private extension IndexPath {
+    func isLastPath(in tableView: UITableView) -> Bool {
+        let lastSection = tableView.numberOfSections - 1
+        let lastRow = tableView.numberOfRows(inSection: lastSection) - 1
+        return section == lastSection && row == lastRow
     }
 }

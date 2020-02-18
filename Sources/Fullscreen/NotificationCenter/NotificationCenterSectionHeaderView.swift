@@ -6,7 +6,7 @@ import UIKit
 
 public protocol NotificationCenterSectionHeaderViewModel {
     var title: String? { get }
-    var details: PushNotificationDetails? { get }
+    var details: NotificationCenterSectionDetails? { get }
 }
 
 protocol NotificationCenterSectionHeaderViewDelegate: AnyObject {
@@ -28,14 +28,14 @@ class NotificationCenterSectionHeaderView: UITableViewHeaderFooterView {
         withAutoLayout: true
     )
 
-    private lazy var notificationDetailsView: PushNotificationDetailsView = {
-        let view = PushNotificationDetailsView(withAutoLayout: true)
+    private lazy var detailsView: NotificationCenterSectionDetailsView = {
+        let view = NotificationCenterSectionDetailsView(withAutoLayout: true)
         view.addTarget(self, action: #selector(handleDetailsViewSelected), for: .touchUpInside)
         return view
     }()
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, notificationDetailsView])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, detailsView])
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -55,23 +55,7 @@ class NotificationCenterSectionHeaderView: UITableViewHeaderFooterView {
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-
-        contentView.backgroundColor = .bgPrimary
-        contentView.addSubview(stackView)
-        contentView.addSubview(separatorView)
-
-        NSLayoutConstraint.activate([
-            stackViewTopConstraint,
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-
-            separatorView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
-            separatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            separatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-
-            contentView.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
-        ])
+        setup()
     }
 
     required init?(coder: NSCoder) {
@@ -97,11 +81,31 @@ class NotificationCenterSectionHeaderView: UITableViewHeaderFooterView {
             stackViewTopConstraint.constant = 0
         }
 
-        notificationDetailsView.configure(with: model?.details)
+        detailsView.configure(with: model?.details)
+        detailsView.isHidden = model?.details == nil
     }
 
     @objc private func handleDetailsViewSelected() {
         guard let section = section else { return }
         delegate?.notificationCenterSectionHeaderView(self, didSelectNotificationDetailsInSection: section)
+    }
+
+    private func setup() {
+        contentView.backgroundColor = .bgPrimary
+        contentView.addSubview(stackView)
+        contentView.addSubview(separatorView)
+
+        NSLayoutConstraint.activate([
+            stackViewTopConstraint,
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+
+            separatorView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
+            separatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            separatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+
+            contentView.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
+        ])
     }
 }
