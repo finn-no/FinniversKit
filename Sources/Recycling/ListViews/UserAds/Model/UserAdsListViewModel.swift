@@ -4,7 +4,7 @@
 
 import Foundation
 
-public protocol UserAdsListViewModel {
+public protocol UserAdsListViewModel: UserAdTableViewCellViewModel {
     var imagePath: String? { get }
     var imageSize: CGSize { get }
     var title: String { get }

@@ -20,6 +20,8 @@ public protocol UserAdTableViewCellViewModel {
     var detailText: String? { get }
     var imagePath: String? { get }
     var ribbon: UserAdTableViewCellRibbonModel { get }
+    var action: UserAdsListActionViewModel? { get }
+    var rating: UserAdsListRatingViewModel? { get }
 }
 
 public extension UserAdTableViewCellViewModel {

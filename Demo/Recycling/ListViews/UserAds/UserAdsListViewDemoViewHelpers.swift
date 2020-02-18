@@ -26,6 +26,8 @@ public struct UserAdCellViewModel: UserAdTableViewCellViewModel {
     public let detailText: String?
     public let imagePath: String?
     public let ribbon: UserAdTableViewCellRibbonModel
+    public let action: UserAdsListActionViewModel? = nil
+    public let rating: UserAdsListRatingViewModel? = nil
 }
 
 public struct UserAdCell: UserAdsListViewModel {
@@ -53,6 +55,32 @@ public struct UserAdCell: UserAdsListViewModel {
         self.status = status
         self.actionViewModel = actionViewModel
         self.ratingViewModel = ratingViewModel
+    }
+}
+
+extension UserAdsListViewModel {
+    public var titleText: String {
+        title
+    }
+
+    public var subtitleText: String? {
+        price
+    }
+
+    public var detailText: String? {
+        detail
+    }
+
+    public var ribbon: UserAdTableViewCellRibbonModel {
+        UserAdTableViewCellRibbonModel(title: status, style: .disabled)
+    }
+
+    public var action: UserAdsListActionViewModel? {
+        actionViewModel
+    }
+
+    public var rating: UserAdsListRatingViewModel? {
+        ratingViewModel
     }
 }
 

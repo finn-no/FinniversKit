@@ -251,8 +251,8 @@ extension UserAdsListView: UITableViewDataSource {
             if let emphasizedSection = dataSource?.sectionNumberForEmphasizedAction(in: self), indexPath.section == emphasizedSection {
                 let cell = tableView.dequeue(UserAdsListEmphasizedActionCell.self, for: indexPath)
                 cell.loadingColor = color
-                cell.dataSource = self
                 cell.delegate = self
+                cell.remoteImageViewDataSource = self
 
                 let actionHasBeenCollapsed = dataSource?.emphasizedActionHasBeenCollapsed ?? false
                 cell.shouldShowAction = !actionHasBeenCollapsed
@@ -373,9 +373,38 @@ extension UserAdsListView: UserAdsListEmphasizedActionCellDelegate {
             guard let emphasizedSection = self.dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
             self.tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
 
-            if let feedbackText = cell.model?.ratingViewModel?.feedbackText {
+            if let feedbackText = cell.model?.rating?.feedbackText {
                 self.showToastView(type: .success, placement: .bottom, text: feedbackText, timeOut: 2)
             }
         })
     }
+}
+
+extension UserAdsListView: RemoteImageViewDataSource {
+    public func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
+        return nil
+    }
+
+    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        guard let url = URL(string: imagePath) else {
+            completion(nil)
+            return
+        }
+
+        // Demo code only.
+        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+            usleep(50_000)
+            DispatchQueue.main.async {
+                if let data = data, let image = UIImage(data: data) {
+                    completion(image)
+                } else {
+                    completion(nil)
+                }
+            }
+        }
+
+        task.resume()
+    }
+
+    public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
