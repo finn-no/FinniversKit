@@ -115,17 +115,6 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
         return ratingView
     }()
 
-    // MARK: - Init
-
-    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupView()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     // MARK: - Setup
 
     private func setupView() {
@@ -221,6 +210,8 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
             if model.action?.cancelButtonTitle != nil {
                 cancelButton.isHidden = false
             }
+
+            setupView()
         }
     }
 
