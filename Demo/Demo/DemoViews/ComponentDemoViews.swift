@@ -66,6 +66,8 @@ public enum ComponentDemoViews: String, CaseIterable {
     case keyValueGridView
     case objectPagePriceView
     case linkButtonListView
+    case safetyElementsView
+    case contractActionView
 
     public static var items: [ComponentDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -204,6 +206,10 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<ObjectPagePriceDemoView>()
         case .linkButtonListView:
             return DemoViewController<LinkButtonListDemoView>()
+        case .safetyElementsView:
+            return DemoViewController<SafetyElementsDemoView>(dismissType: .dismissButton)
+        case .contractActionView:
+            return DemoViewController<ContractActionDemoView>()
         }
     }
 }
