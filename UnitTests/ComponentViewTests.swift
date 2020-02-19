@@ -274,4 +274,8 @@ class ComponentViewTests: XCTestCase {
     func testContractActionView() {
         snapshot(.contractActionView)
     }
+
+    func testObjectPageTitleView() {
+        snapshot(.objectPageTitleView)
+    }
 }
