@@ -113,8 +113,7 @@ final class FavoriteAdView: UIView {
 
         configureCommentView()
 
-        statusRibbon.style = viewModel.ribbonStyle
-        statusRibbon.title = viewModel.ribbonTitle
+        statusRibbon.configure(with: viewModel.ribbonViewModel)
 
         addressLabel.text = viewModel.addressText ?? " "
 
@@ -174,8 +173,8 @@ final class FavoriteAdView: UIView {
         remoteImageView.backgroundColor = remoteImageView.image == nil ? loadingColor : .clear
         commentView.backgroundColor = FavoriteAdCommentView.defaultBackgroundColor
 
-        if let ribbonStyle = viewModel?.ribbonStyle {
-            statusRibbon.style = ribbonStyle
+        if let ribbonViewModel = viewModel?.ribbonViewModel {
+            statusRibbon.style = ribbonViewModel.style
         }
     }
 
