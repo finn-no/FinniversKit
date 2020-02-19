@@ -72,4 +72,3 @@ private extension Array where Element == LinkButtonViewModel {
         ]
     }()
 }
-
