@@ -6,18 +6,18 @@ import FinniversKit
 
 class ObjectPageTitleDemoView: UIView, Tweakable {
 
-    private var titleView: ObjectPageTitleView?
+    private lazy var titleView = ObjectPageTitleView(withAutoLayout: true)
 
     lazy var tweakingOptions: [TweakingOption] = {
         [
             TweakingOption(title: "Title and subtitle", description: "Default style") { [weak self] in
-                self?.setupTitleView(title: "Mercedes-Benz C-Klasse", subtitle: "C200 4MATIC aut Hengerfeste, Panoramasoltak, AMG, LED +")
+                self?.configureTitleView(title: "Mercedes-Benz C-Klasse", subtitle: "C200 4MATIC aut Hengerfeste, Panoramasoltak, AMG, LED +")
             },
             TweakingOption(title: "Only title", description: "Default style") { [weak self] in
-                self?.setupTitleView(title: "Sofa med sjeselong - pris diskuterbar!")
+                self?.configureTitleView(title: "Sofa med sjeselong - pris diskuterbar!")
             },
             TweakingOption(title: "Only subtitle", description: "Default style") { [weak self] in
-                self?.setupTitleView(subtitle: "C200 4MATIC aut Hengerfeste, Panoramasoltak, AMG, LED +")
+                self?.configureTitleView(subtitle: "C200 4MATIC aut Hengerfeste, Panoramasoltak, AMG, LED +")
             },
         ]
     }()
@@ -26,6 +26,7 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setup()
         tweakingOptions.first?.action?()
     }
 
@@ -33,22 +34,20 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
 
     // MARK: - Private methods
 
-    private func setupTitleView(
+    private func setup() {
+        addSubview(titleView)
+
+        NSLayoutConstraint.activate([
+            titleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+            titleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            titleView.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
+    }
+
+    private func configureTitleView(
         title: String? = nil,
-        subtitle: String? = nil,
-        titleStyle: Label.Style = .title2,
-        subtitleStyle: Label.Style = .body
+        subtitle: String? = nil
     ) {
-        titleView?.removeFromSuperview()
-        titleView = nil
-
-        let newTitleView = ObjectPageTitleView(titleStyle: titleStyle, subtitleStyle: subtitleStyle, withAutoLayout: true)
-        addSubview(newTitleView)
-
-        newTitleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing).isActive = true
-        newTitleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing).isActive = true
-        newTitleView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        newTitleView.configure(withTitle: title, subtitle: subtitle)
-        self.titleView = newTitleView
+        titleView.configure(withTitle: title, subtitle: subtitle)
     }
 }
