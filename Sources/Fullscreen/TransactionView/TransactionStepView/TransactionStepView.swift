@@ -22,24 +22,31 @@ public class TransactionStepView: UIView {
     private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.distribution = .fill
+        stackView.distribution = .fillProportionally
         stackView.alignment = .leading
-        stackView.spacing = .mediumSpacing
         return stackView
     }()
 
-    private lazy var titleLabel: Label = {
-        let label = Label(style: style.titleStyle, withAutoLayout: true)
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel(withAutoLayout: true)
+        label.font = style.titleFont
+        label.textColor = style.titleTextColor
         label.numberOfLines = 0
         label.textAlignment = .left
         return label
     }()
 
-    private lazy var subtitleLabel: Label = {
-        let label = Label(style: style.subtitleStyle, withAutoLayout: true)
-        label.numberOfLines = 0
-        label.textAlignment = .left
-        return label
+    private lazy var subtitleLabel: UITextView = {
+        let view = UITextView(frame: .zero, textContainer: nil)
+        view.font = style.subtitleFont
+        view.textColor = style.subtitleTextColor
+        view.backgroundColor = style.backgroundColor
+        view.isScrollEnabled = false
+        view.isEditable = false
+        view.contentInset = .leadingInset(-.smallSpacing)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.adjustsFontForContentSizeCategory = true
+        return view
     }()
 
     private lazy var actionButton: Button = {
@@ -49,11 +56,17 @@ public class TransactionStepView: UIView {
         return button
     }()
 
-    private lazy var detailLabel: Label = {
-        let label = Label(style: style.detailStyle, withAutoLayout: true)
-        label.numberOfLines = 0
-        label.textAlignment = .left
-        return label
+    private lazy var detailLabel: UITextView = {
+        let view = UITextView(frame: .zero, textContainer: nil)
+        view.font = style.detailFont
+        view.textColor = style.detailTextColor
+        view.backgroundColor = style.backgroundColor
+        view.isScrollEnabled = false
+        view.isEditable = false
+        view.contentInset = .leadingInset(-.smallSpacing)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.adjustsFontForContentSizeCategory = true
+        return view
     }()
 
     private var bottomAnchorConstraint: NSLayoutConstraint?
@@ -76,19 +89,12 @@ public class TransactionStepView: UIView {
     }
 }
 
-public extension TransactionStepView {
-    func configure(model: TransactionStepViewModel, style: TransactionStepView.Style) {
-        self.model = model
-        self.style = style
-    }
-}
-
 // MARK: - Private
 
 private extension TransactionStepView {
     private func setup() {
         backgroundColor = style.backgroundColor
-        layer.cornerRadius = .mediumSpacing
+        layer.cornerRadius = style.cornerRadius
 
         addSubview(verticalStackView)
 
@@ -98,11 +104,12 @@ private extension TransactionStepView {
         switch style {
         case .notStarted, .completed:
             NSLayoutConstraint.activate([
-                verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+                verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .smallSpacing),
                 verticalStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing),
                 verticalStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             ])
-        case .inProgressAwaitingOtherParty, .inProgress:
+
+        case .inProgress, .inProgressAwaitingOtherParty:
             NSLayoutConstraint.activate([
                 verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
                 verticalStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing),
@@ -125,6 +132,11 @@ private extension TransactionStepView {
         if let buttonText = model.buttonText {
             actionButton.setTitle(buttonText, for: .normal)
             verticalStackView.addArrangedSubview(actionButton)
+
+            if model.state == .completed {
+                actionButton.contentHorizontalAlignment = .leading
+                actionButton.contentEdgeInsets = .leadingInset(-1)
+            }
 
             bottomAnchorConstraint = bottomAnchor.constraint(equalTo: actionButton.bottomAnchor, constant: .mediumLargeSpacing)
         }

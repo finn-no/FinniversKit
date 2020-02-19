@@ -4283,17 +4283,9 @@
 				F20450B523EC0D48001F7370 /* TransactionView.swift */,
 				F20450BD23EDA3A4001F7370 /* TransactionStepDot.swift */,
 				F20450C123EDA844001F7370 /* TransactionStepDotConnector.swift */,
-				F20450BA23EDA373001F7370 /* TransactionStepIndicator */,
 				F20450C923EDB675001F7370 /* TransactionStepView */,
 			);
 			path = TransactionView;
-			sourceTree = "<group>";
-		};
-		F20450BA23EDA373001F7370 /* TransactionStepIndicator */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TransactionStepIndicator;
 			sourceTree = "<group>";
 		};
 		F20450C923EDB675001F7370 /* TransactionStepView */ = {

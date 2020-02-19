@@ -36,6 +36,13 @@ public struct TransactionStepsFactory {
         buttonText: "Forbered betaling")
     ]
 
+    public static var currentStepAwaitingOtherParty = [TransactionStepModel(
+        state: .inProgress,
+        title: "Betaling",
+        subtitle: "Før kjøper kan overføre pengene må du forberede betalingen.",
+        buttonText: "Forbered betaling")
+    ]
+
     public static var notStartedSteps: [TransactionStepModel] = [
         TransactionStepModel(
             state: .notStarted,
@@ -45,7 +52,7 @@ public struct TransactionStepsFactory {
         TransactionStepModel(
             state: .notStarted,
             title: "Gratulerer med salget!",
-            subtitle: "Du kan finne igjen bilen i Mine kjøretøy under <<Eide før>>\n\nDet kan ta noen dager før pengene dukker opp på kontoen din",
-            detail: ""),
+            subtitle: "Du kan finne igjen bilen i Mine kjøretøy under <<Eide før>>.",
+            detail: "Det kan ta noen dager før pengene dukker opp på kontoen din"),
     ]
 }

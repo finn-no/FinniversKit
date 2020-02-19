@@ -4,6 +4,16 @@
 
 import Foundation
 
+public protocol TransactionViewDelegate: AnyObject {
+    func transactionViewDidSelectActionButton(_ view: TransactionView, inStep step: Int)
+}
+
+public protocol TransactionViewDataSource: AnyObject {
+    func transactionViewModelForIndex(_ view: TransactionView, forStep step: Int) -> TransactionStepViewModel
+    func transactionViewNumberOfSteps(_ view: TransactionView) -> Int
+    func transactionViewCurrentStep(_ view: TransactionView) -> Int
+}
+
 public enum TransactionState {
     case notStarted
     case inProgress
@@ -22,17 +32,6 @@ public enum TransactionState {
             return .completed
         }
     }
-
-}
-
-public protocol TransactionViewDelegate: AnyObject {
-    func transactionViewDidSelectActionButton(_ view: TransactionView, inStep step: Int)
-}
-
-public protocol TransactionViewDataSource: AnyObject {
-    func transactionViewModelForIndex(_ view: TransactionView, forStep step: Int) -> TransactionStepViewModel
-    func transactionViewNumberOfSteps(_ view: TransactionView) -> Int
-    func transactionViewCurrentStep(_ view: TransactionView) -> Int
 }
 
 public class TransactionView: UIView {
@@ -126,7 +125,7 @@ private extension TransactionView {
     }
 
     private func addTransactionStepView(_ step: Int, _ model: TransactionStepViewModel) {
-        var transactionStepView = TransactionStepView(step: step, model: model, withAutoLayout: true)
+        let transactionStepView = TransactionStepView(step: step, model: model, withAutoLayout: true)
         transactionStepView.delegate = self
         verticalStackView.addArrangedSubview(transactionStepView)
     }

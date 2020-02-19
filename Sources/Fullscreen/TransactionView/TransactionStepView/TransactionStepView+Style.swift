@@ -16,21 +16,48 @@ public extension TransactionStepView {
             case .notStarted, .completed:
                 return .bgPrimary
             case .inProgress, .inProgressAwaitingOtherParty:
-                return .accentToothpaste
+                return .ice
             }
         }
 
-        var titleStyle: Label.Style {
+        var cornerRadius: CGFloat {
+            switch self {
+            case .notStarted:
+                return 0.0
+            default:
+                return .mediumSpacing
+            }
+        }
+
+        var titleFont: UIFont {
             switch self {
             default:
                 return .title3Strong
             }
         }
 
-        var subtitleStyle: Label.Style {
+        var titleTextColor: UIColor {
+            switch self {
+            case .notStarted:
+                return .stone
+            default:
+                return .licorice
+            }
+        }
+
+        var subtitleFont: UIFont {
             switch self {
             default:
                 return .body
+            }
+        }
+
+        var subtitleTextColor: UIColor {
+            switch self {
+            case .notStarted:
+                return .stone
+            case .inProgress, .inProgressAwaitingOtherParty, .completed:
+                return .licorice
             }
         }
 
@@ -41,16 +68,14 @@ public extension TransactionStepView {
             case .inProgressAwaitingOtherParty:
                 return .default
             case .completed:
-                return .link
+                return .flat
             }
         }
 
         var actionButtonSize: Button.Size {
             switch self {
-            case .inProgress, .inProgressAwaitingOtherParty:
+            default:
                 return .normal
-            case .notStarted, .completed:
-                return .small
             }
         }
 
@@ -63,10 +88,19 @@ public extension TransactionStepView {
             }
         }
 
-        var detailStyle: Label.Style {
+        var detailFont: UIFont {
             switch self {
             default:
-                return .detail
+                return .caption
+            }
+        }
+
+        var detailTextColor: UIColor {
+            switch self {
+            case .notStarted:
+                return .stone
+            case .inProgress, .inProgressAwaitingOtherParty, .completed:
+                return .licorice
             }
         }
     }
