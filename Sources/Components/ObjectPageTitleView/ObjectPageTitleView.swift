@@ -10,11 +10,14 @@ public class ObjectPageTitleView: UIView {
 
     private let titleStyle: Label.Style
     private let subtitleStyle: Label.Style
+    private lazy var ribbonView = RibbonView(withAutoLayout: true)
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
+        let stackView = UIStackView(arrangedSubviews: [ribbonView, titleLabel, subtitleLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.setCustomSpacing(.mediumSpacing, after: ribbonView)
         return stackView
     }()
 
@@ -52,7 +55,12 @@ public class ObjectPageTitleView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(withTitle title: String? = nil, subtitle: String? = nil) {
+    public func configure(withTitle title: String? = nil, subtitle: String? = nil, ribbonViewModel: RibbonViewModel? = nil) {
+        if let ribbonViewModel = ribbonViewModel {
+            ribbonView.configure(with: ribbonViewModel)
+        }
+        ribbonView.isHidden = ribbonViewModel == nil
+
         titleLabel.text = title
         titleLabel.isHidden = title?.isEmpty ?? true
 
