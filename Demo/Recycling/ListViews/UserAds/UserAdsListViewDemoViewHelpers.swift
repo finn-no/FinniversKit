@@ -25,7 +25,7 @@ public struct UserAdCellViewModel: UserAdTableViewCellViewModel {
     public let subtitleText: String?
     public let detailText: String?
     public let imagePath: String?
-    public let ribbon: UserAdTableViewCellRibbonModel
+    public let ribbonViewModel: RibbonViewModel
     public let action: UserAdsListActionViewModel? = nil
     public let rating: UserAdsListRatingViewModel? = nil
 }
@@ -71,8 +71,8 @@ extension UserAdsListViewModel {
         detail
     }
 
-    public var ribbon: UserAdTableViewCellRibbonModel {
-        UserAdTableViewCellRibbonModel(title: status, style: .success)
+    public var ribbonViewModel: RibbonViewModel {
+        RibbonViewModel(style: .success, title: status)
     }
 
     public var action: UserAdsListActionViewModel? {
@@ -119,7 +119,7 @@ public struct UserAdsFactory {
                 subtitleText: "Torget",
                 detailText: details[$0],
                 imagePath: imageSources[$0].path,
-                ribbon: ribbons[$0]
+                ribbonViewModel: ribbons[$0]
             )
         }
     }
@@ -248,14 +248,14 @@ public struct UserAdsFactory {
         ]
     }
 
-    private static var ribbons: [UserAdTableViewCellRibbonModel] {
+    private static var ribbons: [RibbonViewModel] {
         return [
-            UserAdTableViewCellRibbonModel(title: "Aktiv", style: .success),
-            UserAdTableViewCellRibbonModel(title: "Aktiv", style: .success),
-            UserAdTableViewCellRibbonModel(title: "Solgt", style: .disabled),
-            UserAdTableViewCellRibbonModel(title: "Påbegynt", style: .warning),
-            UserAdTableViewCellRibbonModel(title: "Inaktiv", style: .disabled),
-            UserAdTableViewCellRibbonModel(title: "Inaktiv", style: .disabled),
+            RibbonViewModel(style: .success, title: "Aktiv"),
+            RibbonViewModel(style: .success, title: "Aktiv"),
+            RibbonViewModel(style: .disabled, title: "Solgt"),
+            RibbonViewModel(style: .warning, title: "Påbegynt"),
+            RibbonViewModel(style: .disabled, title: "Inaktiv"),
+            RibbonViewModel(style: .disabled, title: "Inaktiv"),
         ]
     }
 }

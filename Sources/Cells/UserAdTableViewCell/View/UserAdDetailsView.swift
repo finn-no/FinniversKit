@@ -150,8 +150,7 @@ final class UserAdDetailsView: UIView {
             detailLabel.isHidden = style == .compressed
         }
 
-        ribbonView.style = model.ribbon.style
-        ribbonView.title = model.ribbon.title
+        ribbonView.configure(with: model.ribbonViewModel)
 
         contentStackTopAnchor.constant = style == .compressed ? .mediumSpacing : .mediumLargeSpacing
         contentStackBottomAnchor.constant = style == .compressed ? -.mediumSpacing : -.mediumLargeSpacing
