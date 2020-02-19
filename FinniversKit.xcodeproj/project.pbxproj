@@ -276,6 +276,7 @@
 		91D2A55422F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D2A55322F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift */; };
 		91D2A55A22F458EE00ED4BB9 /* SearchResultMapViewDemoViewControllerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D2A55922F458EE00ED4BB9 /* SearchResultMapViewDemoViewControllerHelpers.swift */; };
 		9A37D015952CBD1FEF4F0E20 /* FavoriteAdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DA1C8FBA8E3FF6355FB5 /* FavoriteAdViewModel.swift */; };
+		9A37D06D45CCD48B76F0BAEF /* RibbonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DD391E57437520A777DB /* RibbonViewModel.swift */; };
 		9A37D0977C75034FE9603C2C /* FavoriteAdsListTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D87CCADB89179F11253B /* FavoriteAdsListTableHeader.swift */; };
 		9A37D1D9D2872EC52AF374A2 /* SelfDeclarationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DF66929876DCA81666F3 /* SelfDeclarationItemView.swift */; };
 		9A37D298B79BDDB602E35EDB /* LinkButtonListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D377873F817D415E649E /* LinkButtonListDemoView.swift */; };
@@ -954,6 +955,7 @@
 		9A37DB13635127F4DE6BCEC6 /* FavoriteAdsDemoDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsDemoDataSource.swift; sourceTree = "<group>"; };
 		9A37DB4994CC79F661EA013F /* LinkButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkButtonViewModel.swift; sourceTree = "<group>"; };
 		9A37DC5E8BBDBC5DBF3E100B /* SelfDeclarationItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfDeclarationItemViewModel.swift; sourceTree = "<group>"; };
+		9A37DD391E57437520A777DB /* RibbonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonViewModel.swift; sourceTree = "<group>"; };
 		9A37DD4DA48E4BA2D5C25B1D /* FavoriteAdsListEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListEmptyView.swift; sourceTree = "<group>"; };
 		9A37DD5C29C02298C78257C1 /* SelfDeclarationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfDeclarationViewModel.swift; sourceTree = "<group>"; };
 		9A37DD79F67FC522D64A127E /* FavoriteAdsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListView.swift; sourceTree = "<group>"; };
@@ -1872,6 +1874,7 @@
 			children = (
 				4447F69F1FDB2B110033DBC1 /* Ribbon+Style.swift */,
 				4447F6A01FDB2B110033DBC1 /* RibbonView.swift */,
+				9A37DD391E57437520A777DB /* RibbonViewModel.swift */,
 			);
 			path = Ribbon;
 			sourceTree = "<group>";
@@ -5380,6 +5383,7 @@
 				9A37D724F7DF732E308CC530 /* ContractActionView.swift in Sources */,
 				9A37D44ADD20BEDD3F754D62 /* ContractActionViewModel.swift in Sources */,
 				9A37DB164E9BC6E1EBB22504 /* ObjectPageTitleView.swift in Sources */,
+				9A37D06D45CCD48B76F0BAEF /* RibbonViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
