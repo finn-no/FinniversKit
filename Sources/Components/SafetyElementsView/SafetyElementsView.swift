@@ -66,3 +66,11 @@ extension SafetyElementsView: SafetyElementsRegularViewDelegate {
         delegate?.safetyElementsView(self, didSelectElementAt: index)
     }
 }
+
+extension UIColor {
+    class var activeSafetyIconTint: UIColor { .btnPrimary }
+
+    class var inactiveSafetyIconTint: UIColor {
+        dynamicColorIfAvailable(defaultColor: .stone, darkModeColor: .milk)
+    }
+}
