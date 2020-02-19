@@ -10,13 +10,19 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
 
     lazy var tweakingOptions: [TweakingOption] = {
         [
-            TweakingOption(title: "Title and subtitle", description: "Default style") { [weak self] in
+            TweakingOption(title: "Title and subtitle") { [weak self] in
                 self?.configureTitleView(title: "Mercedes-Benz C-Klasse", subtitle: "C200 4MATIC aut Hengerfeste, Panoramasoltak, AMG, LED +")
             },
-            TweakingOption(title: "Only title", description: "Default style") { [weak self] in
+            TweakingOption(title: "Title and subtitle", description: "With ribbon") { [weak self] in
+                self?.configureTitleView(title: "Mercedes-Benz C-Klasse", subtitle: "C200 4MATIC aut Hengerfeste, Panoramasoltak, AMG, LED +", ribbonViewModel: .sold)
+            },
+            TweakingOption(title: "Only title") { [weak self] in
                 self?.configureTitleView(title: "Sofa med sjeselong - pris diskuterbar!")
             },
-            TweakingOption(title: "Only subtitle", description: "Default style") { [weak self] in
+            TweakingOption(title: "Only title", description: "With ribbon") { [weak self] in
+                self?.configureTitleView(title: "Sofa med sjeselong - pris diskuterbar!", ribbonViewModel: .sold)
+            },
+            TweakingOption(title: "Only subtitle") { [weak self] in
                 self?.configureTitleView(subtitle: "C200 4MATIC aut Hengerfeste, Panoramasoltak, AMG, LED +")
             },
         ]
@@ -46,8 +52,15 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
 
     private func configureTitleView(
         title: String? = nil,
-        subtitle: String? = nil
+        subtitle: String? = nil,
+        ribbonViewModel: RibbonViewModel? = nil
     ) {
-        titleView.configure(withTitle: title, subtitle: subtitle)
+        titleView.configure(withTitle: title, subtitle: subtitle, ribbonViewModel: ribbonViewModel)
     }
+}
+
+// MARK: - Private extensions
+
+private extension RibbonViewModel {
+    static var sold = RibbonViewModel(style: .warning, title: "Solgt")
 }
