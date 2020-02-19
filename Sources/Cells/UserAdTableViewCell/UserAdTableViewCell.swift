@@ -5,6 +5,10 @@
 import Foundation
 import UIKit
 
+public protocol ImageLoading {
+    func loadImage()
+}
+
 public class UserAdTableViewCell: UITableViewCell {
 
     // MARK: - Public properties

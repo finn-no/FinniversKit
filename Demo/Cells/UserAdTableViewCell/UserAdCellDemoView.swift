@@ -18,7 +18,7 @@ class UserAdCellDemoView: UIView, Tweakable {
         }
     }
 
-    private let viewModels: [UserAdTableViewCellViewModel] = UserAdsFactory.createAds()
+    private let viewModels: [UserAdCellViewModel] = UserAdsFactory.createAds()
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(withAutoLayout: true)

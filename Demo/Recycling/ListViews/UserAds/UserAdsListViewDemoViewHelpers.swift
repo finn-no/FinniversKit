@@ -4,76 +4,14 @@
 
 import FinniversKit
 
-public struct UserAdHeaderCell: UserAdsListHeaderViewModel, Hashable {
-    public let title: String
-    public let buttonTitle: String
-
-    public var accessibilityLabel: String {
-        var message = title
-        message += ". " + buttonTitle
-        return message
-    }
-
-    public init(title: String = "", buttonTitle: String = "") {
-        self.title = title
-        self.buttonTitle = buttonTitle
-    }
-}
-
 public struct UserAdCellViewModel: UserAdTableViewCellViewModel {
     public let titleText: String
     public let subtitleText: String?
     public let detailText: String?
     public let imagePath: String?
     public let ribbonViewModel: RibbonViewModel
-    public let actionViewModel: UserAdTableViewCellActionViewModel? = nil
-    public let ratingViewModel: UserAdTableViewCellRatingViewModel? = nil
-}
-
-public struct UserAdCell: UserAdsListViewModel {
-    public let imagePath: String?
-    public let imageSize: CGSize
-    public let title: String
-    public let price: String?
-    public let detail: String
-    public let status: String
-    public let actionViewModel: UserAdTableViewCellActionViewModel?
-    public let ratingViewModel: UserAdTableViewCellRatingViewModel?
-
-    public var accessibilityLabel: String {
-        let message = [title, (price ?? ""), detail, status].joined(separator: ". ")
-        return message
-    }
-
-    public init(imagePath: String? = nil, imageSize: CGSize = CGSize(width: 0, height: 0),
-                title: String = "", price: String? = nil, detail: String = "", status: String = "", actionViewModel: UserAdTableViewCellActionViewModel? = nil, ratingViewModel: UserAdTableViewCellRatingViewModel? = nil) {
-        self.imagePath = imagePath
-        self.imageSize = imageSize
-        self.title = title
-        self.price = price
-        self.detail = detail
-        self.status = status
-        self.actionViewModel = actionViewModel
-        self.ratingViewModel = ratingViewModel
-    }
-}
-
-extension UserAdsListViewModel {
-    public var titleText: String {
-        title
-    }
-
-    public var subtitleText: String? {
-        price
-    }
-
-    public var detailText: String? {
-        detail
-    }
-
-    public var ribbonViewModel: RibbonViewModel {
-        RibbonViewModel(style: .success, title: status)
-    }
+    public var actionViewModel: UserAdTableViewCellActionViewModel?
+    public var ratingViewModel: UserAdTableViewCellRatingViewModel?
 }
 
 public struct UserAdCellAction: UserAdTableViewCellActionViewModel {
@@ -89,110 +27,53 @@ public struct UserAdCellRatingAction: UserAdTableViewCellRatingViewModel {
 }
 
 public struct UserAdsFactory {
-    private struct ImageSource {
-        let path: String
-        let size: CGSize
-    }
 
-    public static func createSectionedAds() -> [(header: UserAdHeaderCell, ads: [UserAdCell])] {
-        let newAd = createNewAd()
-        let emphasizedAds = createEmphasizedAds()
-        let ongoingAds = createOngoingAds()
-        let activeAds = createActiveAds()
-        let inactiveAds = createInactiveAds()
-        let seeAllAds = createSeeAllAds()
-        return [newAd, emphasizedAds, ongoingAds, activeAds, inactiveAds, seeAllAds]
-    }
-
-    public static func createAds() -> [UserAdTableViewCellViewModel] {
-        titles.enumerated().map {
+    public static func createAds(includeEmphasized: Bool = false) -> [UserAdCellViewModel] {
+        var ads = titles.enumerated().map {
             UserAdCellViewModel(
                 titleText: $1,
                 subtitleText: "Torget",
                 detailText: details[$0],
-                imagePath: imageSources[$0].path,
+                imagePath: imagePaths[$0],
                 ribbonViewModel: ribbons[$0]
             )
         }
-    }
 
-    private static func createNewAd() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {
-        let header = UserAdHeaderCell()
-        let ads: [UserAdCell] =  [UserAdCell(title: "Lag ny annonse")]
-        return (header: header, ads: ads)
-    }
-
-    private static func createEmphasizedAds() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {
-        let imageSource = imageSources[0]
-        let action = UserAdCellAction(title: "Her går det unna!", description: "Nå er det mange som selger Rancho Cuccamonga! For 89 kr kan du løfte annonsen din øverst i resultatlista, akkurat som da den var ny", buttonTitle: "Legg annonsen min øverst", cancelButtonTitle: "Nei takk")
-        let rating = UserAdCellRatingAction(title: "Hva synes du om å få tips om produktkjøp til dine annonser på denne måten?", feedbackText: "Takk for tilbakemeldingen")
-        let adCell = UserAdCell(imagePath: imageSource.path, imageSize: imageSource.size, title: "Rancho Cuccamonga", price: nil, detail: "Schmorget - Huh?!", status: "Aktiv", actionViewModel: action, ratingViewModel: rating)
-        let header = UserAdHeaderCell()
-        return (header: header, ads: [adCell])
-    }
-
-    private static func createOngoingAds() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {
-        var ongoingAds = [UserAdCell]()
-        for index in 0 ... 1 {
-            let imageSource = imageSources[index]
-            let title = titles[index]
-            let price = prices[index]
-            let detail = details[index]
-            let status = statuses[index]
-            ongoingAds.append(UserAdCell(imagePath: imageSource.path, imageSize: imageSource.size,
-                                         title: title, price: price, detail: detail, status: status))
+        if includeEmphasized {
+            ads.insert(UserAdsFactory.createEmphasizedAd(), at: 0)
         }
 
-        let header = UserAdHeaderCell(title: "PÅBEGYNTE ANNONSER (\(ongoingAds.count))", buttonTitle: "Vis alle")
-        return (header: header, ads: ongoingAds)
+        return ads
     }
 
-    private static func createActiveAds() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {
-        var activeAds = [UserAdCell]()
-        for index in 2 ... 2 {
-            let imageSource = imageSources[index]
-            let title = titles[index]
-            let price = prices[index]
-            let detail = details[index]
-            let status = statuses[index]
-            activeAds.append(UserAdCell(imagePath: imageSource.path, imageSize: imageSource.size, title: title,
-                                        price: price, detail: detail, status: status))
-        }
-
-        let header = UserAdHeaderCell(title: "AKTIVE ANNONSER (\(activeAds.count))", buttonTitle: "Vis alle")
-        return (header: header, ads: activeAds)
+    public static func createEmphasizedAd() -> UserAdCellViewModel {
+        UserAdCellViewModel(
+            titleText: "Rancho Cuccamonga",
+            subtitleText: "Schmorget - Huh?",
+            detailText: nil,
+            imagePath: imagePaths[0],
+            ribbonViewModel: RibbonViewModel(style: .success, title: "Aktiv"),
+            actionViewModel: UserAdCellAction(
+                title: "Her går det unna!",
+                description: "Nå er det mange som selger Rancho Cuccamonga! For 89 kr kan du løfte annonsen din øverst i resultatlista, akkurat som da den var ny",
+                buttonTitle: "Legg annonsen min øverst",
+                cancelButtonTitle: "Nei takk"
+            ),
+            ratingViewModel: UserAdCellRatingAction(
+                title: "Hva synes du om å få tips om produktkjøp til dine annonser på denne måten?",
+                feedbackText: "Takk for tilbakemeldingen"
+            )
+        )
     }
 
-    private static func createInactiveAds() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {
-        var inactiveAds = [UserAdCell]()
-        for index in 3 ... 4 {
-            let imageSource = imageSources[index]
-            let title = titles[index]
-            let price = prices[index]
-            let detail = details[index]
-            let status = statuses[index]
-            inactiveAds.append(UserAdCell(imagePath: imageSource.path, imageSize: imageSource.size, title: title,
-                                          price: price, detail: detail, status: status))
-        }
-
-        let header = UserAdHeaderCell(title: "INAKTIVE ANNONSER (\(inactiveAds.count))", buttonTitle: "Vis alle")
-        return (header: header, ads: inactiveAds)
-    }
-
-    private static func createSeeAllAds() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {
-        let header = UserAdHeaderCell()
-        let ads: [UserAdCell] =  [UserAdCell(title: "Se alle annonsene mine")]
-        return (header: header, ads: ads)
-    }
-
-    private static var imageSources: [ImageSource] {
+    private static var imagePaths: [String] {
         return [
-            ImageSource(path: "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg", size: CGSize(width: 450, height: 354)),
-            ImageSource(path: "https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg", size: CGSize(width: 992, height: 546)),
-            ImageSource(path: "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg", size: CGSize(width: 450, height: 354)),
-            ImageSource(path: "http://i3.au.reastatic.net/home-ideas/raw/a96671bab306bcb39783bc703ac67f0278ffd7de0854d04b7449b2c3ae7f7659/facades.jpg", size: CGSize(width: 800, height: 600)),
-            ImageSource(path: "http://failing.example.com", size: CGSize(width: 992, height: 546)),
-            ImageSource(path: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg", size: CGSize(width: 736, height: 566)),
+            "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg",
+            "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg",
+            "http://i3.au.reastatic.net/home-ideas/raw/a96671bab306bcb39783bc703ac67f0278ffd7de0854d04b7449b2c3ae7f7659/facades.jpg",
+            "http://failing.example.com",
+            "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
         ]
     }
 

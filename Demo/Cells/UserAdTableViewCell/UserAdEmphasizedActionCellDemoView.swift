@@ -10,7 +10,7 @@ class UserAdEmphasizedActionCellDemoView: UIView {
     private var shouldCollapseAction = false
     private var hasGivenRating = false
 
-    private let viewModels: [UserAdTableViewCellViewModel] = UserAdsFactory.createSectionedAds()[1].ads
+    private let viewModels: [UserAdCellViewModel] = [UserAdsFactory.createEmphasizedAd()]
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(withAutoLayout: true)
