@@ -12,7 +12,7 @@ class UserAdCellDemoView: UIView, Tweakable {
         TweakingOption(title: "Compact") { self.style = .compressed },
     ]
 
-    private var style: UserAdCellStyle = .default {
+    private var style: UserAdTableViewCellStyle = .default {
         didSet {
             tableView.reloadData()
         }

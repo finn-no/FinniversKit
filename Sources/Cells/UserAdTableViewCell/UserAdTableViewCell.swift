@@ -58,7 +58,7 @@ public class UserAdTableViewCell: UITableViewCell {
 
     // MARK: Public methods
 
-    public func configure(with style: UserAdCellStyle, model: UserAdTableViewCellViewModel) {
+    public func configure(with style: UserAdTableViewCellStyle, model: UserAdTableViewCellViewModel) {
         separatorInset = .leadingInset(.largeSpacing + style.imageSize)
         accessibilityLabel = model.accessibilityLabel
 

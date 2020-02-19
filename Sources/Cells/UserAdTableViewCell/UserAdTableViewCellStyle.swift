@@ -4,7 +4,7 @@
 
 import Foundation
 
-public enum UserAdCellStyle {
+public enum UserAdTableViewCellStyle {
     case `default`
     case compressed
 

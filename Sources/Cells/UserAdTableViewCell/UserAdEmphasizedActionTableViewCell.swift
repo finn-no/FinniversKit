@@ -122,7 +122,7 @@ public class UserAdEmphasizedActionTableViewCell: UITableViewCell {
         contentView.backgroundColor = .bgTertiary
         accessoryType = .none
         selectionStyle = .none
-        separatorInset = UIEdgeInsets(leading: UserAdCellStyle.default.imageSize + .mediumSpacing)
+        separatorInset = UIEdgeInsets(leading: UserAdTableViewCellStyle.default.imageSize + .mediumSpacing)
 
         contentView.addSubview(contentStack)
         contentView.addSubview(ratingView)
