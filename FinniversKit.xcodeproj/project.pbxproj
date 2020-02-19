@@ -577,7 +577,7 @@
 		F253C51A23151830008175FD /* VerificationViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253C51923151830008175FD /* VerificationViewDefaultData.swift */; };
 		F253C51D2315601A008175FD /* VerificationActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253C51B23155587008175FD /* VerificationActionSheet.swift */; };
 		F2597C76231D3E2300BE74EC /* VerificationActionSheetDemoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2597C75231D3E2300BE74EC /* VerificationActionSheetDemoDelegate.swift */; };
-		F26852E121F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852E021F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift */; };
+		F26852E121F864BA000978C8 /* UserAdCellDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852E021F864BA000978C8 /* UserAdCellDemoViewHelpers.swift */; };
 		F26CABF823AC9B2E00CACF71 /* OrderTotalSumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26CABF023AC9B2E00CACF71 /* OrderTotalSumView.swift */; };
 		F26CABF923AC9B2E00CACF71 /* CollapseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26CABF223AC9B2E00CACF71 /* CollapseView.swift */; };
 		F26CABFA23AC9B2E00CACF71 /* OrderSummaryLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26CABF423AC9B2E00CACF71 /* OrderSummaryLineView.swift */; };
@@ -1231,7 +1231,7 @@
 		F253C51923151830008175FD /* VerificationViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationViewDefaultData.swift; sourceTree = "<group>"; };
 		F253C51B23155587008175FD /* VerificationActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationActionSheet.swift; sourceTree = "<group>"; };
 		F2597C75231D3E2300BE74EC /* VerificationActionSheetDemoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationActionSheetDemoDelegate.swift; sourceTree = "<group>"; };
-		F26852E021F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
+		F26852E021F864BA000978C8 /* UserAdCellDemoViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdCellDemoViewHelpers.swift; sourceTree = "<group>"; };
 		F26CABF023AC9B2E00CACF71 /* OrderTotalSumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTotalSumView.swift; sourceTree = "<group>"; };
 		F26CABF223AC9B2E00CACF71 /* CollapseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapseView.swift; sourceTree = "<group>"; };
 		F26CABF423AC9B2E00CACF71 /* OrderSummaryLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderSummaryLineView.swift; sourceTree = "<group>"; };
@@ -2457,6 +2457,7 @@
 			children = (
 				91A5B24023E2FCE200092ED6 /* UserAdCellDemoView.swift */,
 				91E3931323FBCEB10001D9E1 /* UserAdEmphasizedActionCellDemoView.swift */,
+				F26852E021F864BA000978C8 /* UserAdCellDemoViewHelpers.swift */,
 			);
 			path = UserAdTableViewCell;
 			sourceTree = "<group>";
@@ -3903,7 +3904,6 @@
 				F2A7B71323BF2C0A00651850 /* PaymentOptions */,
 				CF8F023E21DCD539004C4042 /* SavedSearches */,
 				DAD6EB2D236991E900968497 /* Settings */,
-				F26852DD21F754A0000978C8 /* UserAds */,
 			);
 			path = ListViews;
 			sourceTree = "<group>";
@@ -4321,14 +4321,6 @@
 				F253C5102313FA6E008175FD /* VerificationDemoView.swift */,
 			);
 			path = VerificationView;
-			sourceTree = "<group>";
-		};
-		F26852DD21F754A0000978C8 /* UserAds */ = {
-			isa = PBXGroup;
-			children = (
-				F26852E021F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift */,
-			);
-			path = UserAds;
 			sourceTree = "<group>";
 		};
 		F26CABEF23AC9B2E00CACF71 /* OrderTotalSumView */ = {
@@ -4771,7 +4763,7 @@
 				14A873D4220879870029DEA8 /* ConfirmationViewDemoView.swift in Sources */,
 				44D9126A2077AD0200486848 /* PopupViewDefaultData.swift in Sources */,
 				49F114B623980235007D74EF /* SaveSearchPromptViewDemoView.swift in Sources */,
-				F26852E121F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift in Sources */,
+				F26852E121F864BA000978C8 /* UserAdCellDemoViewHelpers.swift in Sources */,
 				44AEFC2722E722FC00D3C307 /* CheckboxCellDemoView.swift in Sources */,
 				44AEFC2822E722FC00D3C307 /* HeartSubtitleCellDemoView.swift in Sources */,
 				444246072137D61200D42AB8 /* FavoriteFoldersListViewDemoViewHelpers.swift in Sources */,
