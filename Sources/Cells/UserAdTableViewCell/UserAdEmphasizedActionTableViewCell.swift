@@ -200,14 +200,14 @@ public class UserAdEmphasizedActionTableViewCell: UITableViewCell {
 
             userAdDetailsView.configure(with: .default, model: model)
 
-            actionTitleLabel.text = model.action?.title
-            actionDescriptionLabel.text = model.action?.description
-            actionButton.setTitle(model.action?.buttonTitle, for: .normal)
-            cancelButton.setTitle(model.action?.cancelButtonTitle, for: .normal)
+            actionTitleLabel.text = model.actionViewModel?.title
+            actionDescriptionLabel.text = model.actionViewModel?.description
+            actionButton.setTitle(model.actionViewModel?.buttonTitle, for: .normal)
+            cancelButton.setTitle(model.actionViewModel?.cancelButtonTitle, for: .normal)
 
-            ratingView.model = model.rating
+            ratingView.model = model.ratingViewModel
 
-            if model.action?.cancelButtonTitle != nil {
+            if model.actionViewModel?.cancelButtonTitle != nil {
                 cancelButton.isHidden = false
             }
 

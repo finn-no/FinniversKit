@@ -10,8 +10,8 @@ public protocol UserAdTableViewCellViewModel {
     var detailText: String? { get }
     var imagePath: String? { get }
     var ribbonViewModel: RibbonViewModel { get }
-    var action: UserAdsListActionViewModel? { get }
-    var rating: UserAdsListRatingViewModel? { get }
+    var actionViewModel: UserAdTableViewCellActionViewModel? { get }
+    var ratingViewModel: UserAdTableViewCellRatingViewModel? { get }
 }
 
 public extension UserAdTableViewCellViewModel {
@@ -23,3 +23,16 @@ public extension UserAdTableViewCellViewModel {
         return message
     }
 }
+
+public protocol UserAdTableViewCellActionViewModel {
+    var title: String? { get }
+    var description: String { get }
+    var buttonTitle: String { get }
+    var cancelButtonTitle: String? { get }
+}
+
+public protocol UserAdTableViewCellRatingViewModel {
+    var title: String { get }
+    var feedbackText: String { get }
+}
+

@@ -26,8 +26,8 @@ public struct UserAdCellViewModel: UserAdTableViewCellViewModel {
     public let detailText: String?
     public let imagePath: String?
     public let ribbonViewModel: RibbonViewModel
-    public let action: UserAdsListActionViewModel? = nil
-    public let rating: UserAdsListRatingViewModel? = nil
+    public let actionViewModel: UserAdTableViewCellActionViewModel? = nil
+    public let ratingViewModel: UserAdTableViewCellRatingViewModel? = nil
 }
 
 public struct UserAdCell: UserAdsListViewModel {
@@ -37,8 +37,8 @@ public struct UserAdCell: UserAdsListViewModel {
     public let price: String?
     public let detail: String
     public let status: String
-    public let actionViewModel: UserAdsListActionViewModel?
-    public let ratingViewModel: UserAdsListRatingViewModel?
+    public let actionViewModel: UserAdTableViewCellActionViewModel?
+    public let ratingViewModel: UserAdTableViewCellRatingViewModel?
 
     public var accessibilityLabel: String {
         let message = [title, (price ?? ""), detail, status].joined(separator: ". ")
@@ -46,7 +46,7 @@ public struct UserAdCell: UserAdsListViewModel {
     }
 
     public init(imagePath: String? = nil, imageSize: CGSize = CGSize(width: 0, height: 0),
-                title: String = "", price: String? = nil, detail: String = "", status: String = "", actionViewModel: UserAdsListActionViewModel? = nil, ratingViewModel: UserAdsListRatingViewModel? = nil) {
+                title: String = "", price: String? = nil, detail: String = "", status: String = "", actionViewModel: UserAdTableViewCellActionViewModel? = nil, ratingViewModel: UserAdTableViewCellRatingViewModel? = nil) {
         self.imagePath = imagePath
         self.imageSize = imageSize
         self.title = title
@@ -74,24 +74,16 @@ extension UserAdsListViewModel {
     public var ribbonViewModel: RibbonViewModel {
         RibbonViewModel(style: .success, title: status)
     }
-
-    public var action: UserAdsListActionViewModel? {
-        actionViewModel
-    }
-
-    public var rating: UserAdsListRatingViewModel? {
-        ratingViewModel
-    }
 }
 
-public struct UserAdCellAction: UserAdsListActionViewModel {
+public struct UserAdCellAction: UserAdTableViewCellActionViewModel {
     public let title: String?
     public let description: String
     public let buttonTitle: String
     public let cancelButtonTitle: String?
 }
 
-public struct UserAdCellRatingAction: UserAdsListRatingViewModel {
+public struct UserAdCellRatingAction: UserAdTableViewCellRatingViewModel {
     public var title: String
     public var feedbackText: String
 }

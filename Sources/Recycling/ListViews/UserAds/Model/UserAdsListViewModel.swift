@@ -12,8 +12,8 @@ public protocol UserAdsListViewModel: UserAdTableViewCellViewModel {
     var detail: String { get }
     var status: String { get }
     var accessibilityLabel: String { get }
-    var actionViewModel: UserAdsListActionViewModel? { get }
-    var ratingViewModel: UserAdsListRatingViewModel? { get }
+    var actionViewModel: UserAdTableViewCellActionViewModel? { get }
+    var ratingViewModel: UserAdTableViewCellRatingViewModel? { get }
 }
 
 public extension UserAdsListViewModel {

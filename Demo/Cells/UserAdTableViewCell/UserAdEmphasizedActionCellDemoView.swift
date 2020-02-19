@@ -129,7 +129,7 @@ extension UserAdEmphasizedActionCellDemoView: UserAdEmphasizedActionTableViewCel
         cell.hideRatingView { [weak self] in
             self?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
 
-            if let feedbackText = cell.model?.rating?.feedbackText {
+            if let feedbackText = cell.model?.ratingViewModel?.feedbackText {
                 self?.showToastView(text: feedbackText, timeout: 2)
             }
         }

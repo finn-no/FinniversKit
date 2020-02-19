@@ -373,7 +373,7 @@ extension UserAdsListView: UserAdEmphasizedActionTableViewCellDelegate {
             guard let emphasizedSection = self.dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
             self.tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
 
-            if let feedbackText = cell.model?.rating?.feedbackText {
+            if let feedbackText = cell.model?.ratingViewModel?.feedbackText {
                 self.showToastView(type: .success, placement: .bottom, text: feedbackText, timeOut: 2)
             }
         })
