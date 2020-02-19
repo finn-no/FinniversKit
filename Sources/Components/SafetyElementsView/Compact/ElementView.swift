@@ -44,6 +44,7 @@ extension SafetyElementsView {
         private lazy var iconImageView: UIImageView = {
             let imageView = UIImageView(withAutoLayout: true)
             imageView.contentMode = .scaleAspectFit
+            imageView.tintColor = .inactiveSafetyIconTint
             imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
             return imageView
         }()
@@ -69,7 +70,7 @@ extension SafetyElementsView {
         // MARK: - Internal methods
 
         func configure(with viewModel: SafetyElementViewModel, isLastElement: Bool) {
-            iconImageView.image = viewModel.icon
+            iconImageView.image = viewModel.icon.withRenderingMode(.alwaysTemplate)
             titleLabel.text = viewModel.title
             hairline.isHidden = isLastElement
             contentView.configure(with: viewModel)

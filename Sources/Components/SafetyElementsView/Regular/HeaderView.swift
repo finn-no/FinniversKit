@@ -23,9 +23,9 @@ extension SafetyElementsView {
             didSet {
                 if isActive {
                     titleView.backgroundColor = contentBackgroundColor
-                    iconImageView.tintColor = .primaryBlue
+                    iconImageView.tintColor = .activeSafetyIconTint
                 } else {
-                    iconImageView.tintColor = .stone
+                    iconImageView.tintColor = .inactiveSafetyIconTint
                     titleView.backgroundColor = .clear
                 }
             }
