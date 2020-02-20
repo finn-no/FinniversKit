@@ -67,7 +67,7 @@ extension UserAdEmphasizedActionCellDemoView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(UserAdEmphasizedActionTableViewCell.self, for: indexPath)
         cell.delegate = self
-        cell.model = viewModels[indexPath.row]
+        cell.configure(with: viewModels[indexPath.row])
         cell.remoteImageViewDataSource = self
         cell.loadingColor = .toothPaste
         cell.shouldShowAction = !shouldCollapseAction

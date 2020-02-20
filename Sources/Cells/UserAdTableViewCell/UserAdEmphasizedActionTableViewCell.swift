@@ -16,6 +16,8 @@ public protocol UserAdEmphasizedActionTableViewCellDelegate: AnyObject {
 public class UserAdEmphasizedActionTableViewCell: UITableViewCell {
     // MARK: - External properties
 
+    public var model: UserAdTableViewCellViewModel?
+
     /// The loading color is used to fill the image view while we load the image.
     public var loadingColor: UIColor? {
         didSet {
@@ -187,32 +189,34 @@ public class UserAdEmphasizedActionTableViewCell: UITableViewCell {
     public override func prepareForReuse() {
         super.prepareForReuse()
         userAdDetailsView.resetContent()
+        actionTitleLabel.text = nil
+        actionDescriptionLabel.text = nil
+        actionButton.setTitle(nil, for: .normal)
+        cancelButton.setTitle(nil, for: .normal)
         cancelButton.isHidden = true
     }
 
-    // MARK: - Dependency injection
+    // MARK: - Public methods
 
-    public var model: UserAdTableViewCellViewModel? {
-        didSet {
-            guard let model = model else { return }
+    public func configure(with model: UserAdTableViewCellViewModel) {
+        self.model = model
 
-            accessibilityLabel = model.accessibilityLabel
+        accessibilityLabel = model.accessibilityLabel
 
-            userAdDetailsView.configure(with: .default, model: model)
+        userAdDetailsView.configure(with: .default, model: model)
 
-            actionTitleLabel.text = model.actionViewModel?.title
-            actionDescriptionLabel.text = model.actionViewModel?.description
-            actionButton.setTitle(model.actionViewModel?.buttonTitle, for: .normal)
-            cancelButton.setTitle(model.actionViewModel?.cancelButtonTitle, for: .normal)
+        ratingView.model = model.ratingViewModel
 
-            ratingView.model = model.ratingViewModel
+        actionTitleLabel.text = model.actionViewModel?.title
+        actionDescriptionLabel.text = model.actionViewModel?.description
+        actionButton.setTitle(model.actionViewModel?.buttonTitle, for: .normal)
+        cancelButton.setTitle(model.actionViewModel?.cancelButtonTitle, for: .normal)
 
-            if model.actionViewModel?.cancelButtonTitle != nil {
-                cancelButton.isHidden = false
-            }
-
-            setupView()
+        if model.actionViewModel?.cancelButtonTitle != nil {
+            cancelButton.isHidden = false
         }
+
+        setupView()
     }
 
     // MARK: - Selectors
