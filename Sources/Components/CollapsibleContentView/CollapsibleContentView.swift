@@ -41,6 +41,7 @@ public class CollapsibleContentView: UIView {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .horizontal
         stackView.layoutMargins = .init(vertical: .mediumSpacing, horizontal: 0)
+        stackView.distribution = .equalSpacing
         stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
