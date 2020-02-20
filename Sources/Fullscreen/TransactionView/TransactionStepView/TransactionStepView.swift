@@ -36,10 +36,10 @@ public class TransactionStepView: UIView {
         return label
     }()
 
-    private lazy var subtitleLabel: UITextView = {
+    private lazy var bodyLabel: UITextView = {
         let view = UITextView(frame: .zero, textContainer: nil)
-        view.font = style.subtitleFont
-        view.textColor = style.subtitleTextColor
+        view.font = style.bodyFont
+        view.textColor = style.bodyTextColor
         view.backgroundColor = style.backgroundColor
         view.isScrollEnabled = false
         view.isEditable = false
@@ -121,12 +121,12 @@ private extension TransactionStepView {
     }
 
     private func setupOptionalViews() {
-        if let subtitleText = model.subtitle {
-            subtitleLabel.text = subtitleText
-            verticalStackView.addArrangedSubview(subtitleLabel)
+        if let bodyText = model.body {
+            bodyLabel.text = bodyText
+            verticalStackView.addArrangedSubview(bodyLabel)
 
-            subtitleLabel.trailingAnchor.constraint(equalTo: verticalStackView.trailingAnchor).isActive = true
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: .mediumLargeSpacing)
+            bodyLabel.trailingAnchor.constraint(equalTo: verticalStackView.trailingAnchor).isActive = true
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: .mediumLargeSpacing)
         }
 
         if let buttonText = model.buttonText {
@@ -145,7 +145,7 @@ private extension TransactionStepView {
             detailLabel.text = detailText
             verticalStackView.addArrangedSubview(detailLabel)
 
-            detailLabel.trailingAnchor.constraint(equalTo: subtitleLabel.trailingAnchor).isActive = true
+            detailLabel.trailingAnchor.constraint(equalTo: bodyLabel.trailingAnchor).isActive = true
             bottomAnchorConstraint = bottomAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .mediumLargeSpacing)
         }
 

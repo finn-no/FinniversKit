@@ -7,7 +7,7 @@ import Foundation
 public protocol TransactionStepViewModel {
     var state: TransactionState { get }
     var title: String { get }
-    var subtitle: String? { get }
+    var body: String? { get }
     var buttonText: String? { get }
     var detail: String? { get }
 }
@@ -15,7 +15,7 @@ public protocol TransactionStepViewModel {
 public struct TransactionStepModel: TransactionStepViewModel {
     public var state: TransactionState
     public var title: String
-    public var subtitle: String?
+    public var body: String?
     public var buttonText: String?
     public var detail: String?
 }

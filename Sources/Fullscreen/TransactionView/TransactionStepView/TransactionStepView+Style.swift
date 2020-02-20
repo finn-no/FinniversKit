@@ -45,14 +45,14 @@ public extension TransactionStepView {
             }
         }
 
-        var subtitleFont: UIFont {
+        var bodyFont: UIFont {
             switch self {
             default:
                 return .body
             }
         }
 
-        var subtitleTextColor: UIColor {
+        var bodyTextColor: UIColor {
             switch self {
             case .notStarted:
                 return .stone
