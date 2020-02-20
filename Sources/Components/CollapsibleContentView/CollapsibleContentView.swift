@@ -45,7 +45,11 @@ public class CollapsibleContentView: UIView {
         return stackView
     }()
 
-    private lazy var titleLabel: Label = Label(style: .title3Strong, withAutoLayout: true)
+    private lazy var titleLabel: Label = {
+        let label = Label(style: .title3Strong, withAutoLayout: true)
+        label.numberOfLines = 0
+        return label
+    }()
 
     private lazy var collapseIndicatorImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
