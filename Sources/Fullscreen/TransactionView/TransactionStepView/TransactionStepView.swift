@@ -27,16 +27,20 @@ public class TransactionStepView: UIView {
         return stackView
     }()
 
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = style.titleFont
-        label.textColor = style.titleTextColor
-        label.numberOfLines = 0
-        label.textAlignment = .left
-        return label
+    private lazy var titleView: UITextView = {
+        let view = UITextView(frame: .zero, textContainer: nil)
+        view.font = style.titleFont
+        view.textColor = style.titleTextColor
+        view.backgroundColor = style.backgroundColor
+        view.isScrollEnabled = false
+        view.isEditable = false
+        view.contentInset = .init(top: -.mediumSpacing, leading: 0, bottom: 0, trailing: 0)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.adjustsFontForContentSizeCategory = true
+        return view
     }()
 
-    private lazy var bodyLabel: UITextView = {
+    private lazy var bodyView: UITextView = {
         let view = UITextView(frame: .zero, textContainer: nil)
         view.font = style.bodyFont
         view.textColor = style.bodyTextColor
@@ -56,7 +60,7 @@ public class TransactionStepView: UIView {
         return button
     }()
 
-    private lazy var detailLabel: UITextView = {
+    private lazy var detailView: UITextView = {
         let view = UITextView(frame: .zero, textContainer: nil)
         view.font = style.detailFont
         view.textColor = style.detailTextColor
@@ -98,8 +102,8 @@ private extension TransactionStepView {
 
         addSubview(verticalStackView)
 
-        titleLabel.text = model.title
-        verticalStackView.addArrangedSubview(titleLabel)
+        titleView.text = model.title
+        verticalStackView.addArrangedSubview(titleView)
 
         switch style {
         case .notStarted, .completed:
@@ -122,11 +126,11 @@ private extension TransactionStepView {
 
     private func setupOptionalViews() {
         if let bodyText = model.body {
-            bodyLabel.text = bodyText
-            verticalStackView.addArrangedSubview(bodyLabel)
+            bodyView.text = bodyText
+            verticalStackView.addArrangedSubview(bodyView)
 
-            bodyLabel.trailingAnchor.constraint(equalTo: verticalStackView.trailingAnchor).isActive = true
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: .mediumLargeSpacing)
+            bodyView.trailingAnchor.constraint(equalTo: verticalStackView.trailingAnchor).isActive = true
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: .mediumLargeSpacing)
         }
 
         if let buttonText = model.buttonText {
@@ -142,11 +146,11 @@ private extension TransactionStepView {
         }
 
         if let detailText = model.detail {
-            detailLabel.text = detailText
-            verticalStackView.addArrangedSubview(detailLabel)
+            detailView.text = detailText
+            verticalStackView.addArrangedSubview(detailView)
 
-            detailLabel.trailingAnchor.constraint(equalTo: bodyLabel.trailingAnchor).isActive = true
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .mediumLargeSpacing)
+            detailView.trailingAnchor.constraint(equalTo: bodyView.trailingAnchor).isActive = true
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: detailView.bottomAnchor, constant: .mediumLargeSpacing)
         }
 
         bottomAnchorConstraint?.isActive = true

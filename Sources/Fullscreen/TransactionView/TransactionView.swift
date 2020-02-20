@@ -109,7 +109,7 @@ private extension TransactionView {
             scrollableContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
             verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            verticalStackView.topAnchor.constraint(equalTo: scrollableContentView.topAnchor, constant: .mediumSpacing),
+            verticalStackView.topAnchor.constraint(equalTo: scrollableContentView.topAnchor, constant: .largeSpacing),
             verticalStackView.bottomAnchor.constraint(equalTo: scrollableContentView.bottomAnchor),
         ])
 
