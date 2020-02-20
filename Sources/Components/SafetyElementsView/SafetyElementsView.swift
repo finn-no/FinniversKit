@@ -56,7 +56,7 @@ public class SafetyElementsView: UIView {
 }
 
 extension SafetyElementsView: SafetyElementContentViewDelegate {
-    func safetyElementContentView(_ view: ElementContentView, didClickOnLink identifier: String?, url: URL) {
+    public func safetyElementContentView(_ view: ElementContentView, didClickOnLink identifier: String?, url: URL) {
         delegate?.safetyElementsView(self, didClickOnLink: identifier, url: url)
     }
 }

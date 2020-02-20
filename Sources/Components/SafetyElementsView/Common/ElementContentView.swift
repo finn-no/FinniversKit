@@ -2,13 +2,13 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
-protocol SafetyElementContentViewDelegate: AnyObject {
+public protocol SafetyElementContentViewDelegate: AnyObject {
     func safetyElementContentView(_ view: SafetyElementsView.ElementContentView, didClickOnLink identifier: String?, url: URL)
 }
 
-extension SafetyElementsView {
+public extension SafetyElementsView {
     class ElementContentView: UIView {
-        weak var delegate: SafetyElementContentViewDelegate?
+        public weak var delegate: SafetyElementContentViewDelegate?
 
         private var viewModel: SafetyElementViewModel?
 
@@ -32,16 +32,16 @@ extension SafetyElementsView {
         private lazy var topLinkButton: Button = makeExternalLinkButton(onTap: #selector(didTapOnTopLink))
         private lazy var bottomLinkButton: Button = makeExternalLinkButton(onTap: #selector(didTapOnBottomLink))
 
-        override init(frame: CGRect) {
+        public override init(frame: CGRect) {
             super.init(frame: frame)
             setup()
         }
 
-        required init?(coder aDecoder: NSCoder) { fatalError() }
+        public required init?(coder aDecoder: NSCoder) { fatalError() }
 
-        func configure(with viewModel: SafetyElementViewModel) {
             self.viewModel = viewModel
             contentLabel.text = viewModel.body
+        public func configure(with viewModel: SafetyElementViewModel) {
 
             if let topLink = viewModel.topLink {
                 topLinkButton.setTitle(topLink.buttonTitle, for: .normal)
