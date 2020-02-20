@@ -2,15 +2,16 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
-protocol SafetyElementContentViewDelegate: AnyObject {
+public protocol SafetyElementContentViewDelegate: AnyObject {
     func safetyElementContentView(_ view: SafetyElementsView.ElementContentView, didClickOnLink identifier: String?, url: URL)
 }
 
-extension SafetyElementsView {
+public extension SafetyElementsView {
     class ElementContentView: UIView {
-        weak var delegate: SafetyElementContentViewDelegate?
+        public weak var delegate: SafetyElementContentViewDelegate?
 
-        private var viewModel: SafetyElementViewModel?
+        private var topLink: LinkButtonViewModel?
+        private var bottomLink: LinkButtonViewModel?
 
         private lazy var contentStackView: UIStackView = {
             let stackView = UIStackView(withAutoLayout: true)
@@ -32,25 +33,34 @@ extension SafetyElementsView {
         private lazy var topLinkButton: Button = makeExternalLinkButton(onTap: #selector(didTapOnTopLink))
         private lazy var bottomLinkButton: Button = makeExternalLinkButton(onTap: #selector(didTapOnBottomLink))
 
-        override init(frame: CGRect) {
+        public override init(frame: CGRect) {
             super.init(frame: frame)
             setup()
         }
 
-        required init?(coder aDecoder: NSCoder) { fatalError() }
+        public required init?(coder aDecoder: NSCoder) { fatalError() }
 
-        func configure(with viewModel: SafetyElementViewModel) {
-            self.viewModel = viewModel
-            contentLabel.text = viewModel.body
+        public func configure(with viewModel: SafetyElementViewModel) {
+            configure(with: viewModel.body, topLink: viewModel.topLink, bottomLink: viewModel.bottomLink)
+        }
 
-            if let topLink = viewModel.topLink {
+        public func configure(
+            with content: String,
+            topLink: LinkButtonViewModel? = nil,
+            bottomLink: LinkButtonViewModel? = nil
+        ) {
+            self.topLink = topLink
+            self.bottomLink = bottomLink
+            contentLabel.text = content
+
+            if let topLink = topLink {
                 topLinkButton.setTitle(topLink.buttonTitle, for: .normal)
                 topLinkButton.isHidden = false
             } else {
                 topLinkButton.isHidden = true
             }
 
-            if let bottomLink = viewModel.bottomLink {
+            if let bottomLink = bottomLink {
                 bottomLinkButton.setTitle(bottomLink.buttonTitle, for: .normal)
                 bottomLinkButton.isHidden = false
             } else {
@@ -68,12 +78,12 @@ extension SafetyElementsView {
         }
 
         @objc private func didTapOnBottomLink() {
-            guard let bottomLink = viewModel?.bottomLink else { return }
+            guard let bottomLink = bottomLink else { return }
             didTap(on: bottomLink)
         }
 
         @objc private func didTapOnTopLink() {
-            guard let topLink = viewModel?.topLink else { return }
+            guard let topLink = topLink else { return }
             didTap(on: topLink)
         }
 

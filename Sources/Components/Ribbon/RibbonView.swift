@@ -36,6 +36,10 @@ public class RibbonView: UIView {
 
     // MARK: - Init
 
+    public convenience init(viewModel: RibbonViewModel) {
+        self.init(style: viewModel.style, with: viewModel.title)
+    }
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -57,6 +61,13 @@ public class RibbonView: UIView {
 
     public required convenience init?(coder aDecoder: NSCoder) {
         self.init(style: .default)
+    }
+
+    // MARK: - Public methods
+
+    public func configure(with viewModel: RibbonViewModel) {
+        style = viewModel.style
+        title = viewModel.title
     }
 
     // MARK: - Private methods

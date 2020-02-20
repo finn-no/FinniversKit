@@ -30,14 +30,10 @@ public class ColumnListsView: UIView {
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = .mediumLargeSpacing
         return stackView
     }()
-
-    private static let maxColumns: Int = 3
-
-    private lazy var textViews: [UITextView] = (1...ColumnListsView.maxColumns).map({ _ in
-        ColumnListsView.createTextView()
-    })
 
     // MARK: - Initializers
 
@@ -64,31 +60,38 @@ public class ColumnListsView: UIView {
     private func setup() {
         addSubview(stackView)
         stackView.fillInSuperview()
-        textViews.forEach({ stackView.addArrangedSubview($0) })
     }
 
     private func reconfigureColumns() {
-        guard (1...ColumnListsView.maxColumns).contains(numberOfColumns) else {
-            preconditionFailure(":(")
-        }
-
-        textViews.forEach({ $0.isHidden = true })
+        stackView.removeArrangedSubviews()
 
         textItems
             .split(in: numberOfColumns)
-            .enumerated()
-            .forEach { (column, elements) in
-                let textView = textViews[column]
-                textView.attributedText = elements.bulletPoints(withFont: font)
-                textView.isHidden = false
-        }
+            .forEach { elements in
+                let columnStackView = createColumnStackView()
+
+                elements.forEach { element in
+                    columnStackView.addArrangedSubview(createLabel(with: element))
+                }
+
+                stackView.addArrangedSubview(columnStackView)
+            }
     }
 
-    private static func createTextView(_ color: UIColor? = .clear) -> UITextView {
-        let view = UITextView(withAutoLayout: true)
-        view.isScrollEnabled = false
-        view.isEditable = false
-        view.backgroundColor = color
-        return view
+    private func createColumnStackView() -> UIStackView {
+        let columnStackView = UIStackView(withAutoLayout: true)
+        columnStackView.axis = .vertical
+        columnStackView.spacing = .mediumLargeSpacing * 1.5
+
+        return columnStackView
+    }
+
+    private func createLabel(with text: String) -> Label {
+        let label = Label(style: .body, withAutoLayout: true)
+        label.text = text
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+
+        return label
     }
 }

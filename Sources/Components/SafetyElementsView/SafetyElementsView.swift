@@ -56,7 +56,7 @@ public class SafetyElementsView: UIView {
 }
 
 extension SafetyElementsView: SafetyElementContentViewDelegate {
-    func safetyElementContentView(_ view: ElementContentView, didClickOnLink identifier: String?, url: URL) {
+    public func safetyElementContentView(_ view: ElementContentView, didClickOnLink identifier: String?, url: URL) {
         delegate?.safetyElementsView(self, didClickOnLink: identifier, url: url)
     }
 }
@@ -64,5 +64,13 @@ extension SafetyElementsView: SafetyElementContentViewDelegate {
 extension SafetyElementsView: SafetyElementsRegularViewDelegate {
     func safetyElementsRegularView(_ view: RegularView, didSelectElementAt index: Int) {
         delegate?.safetyElementsView(self, didSelectElementAt: index)
+    }
+}
+
+extension UIColor {
+    class var activeSafetyIconTint: UIColor { .btnPrimary }
+
+    class var inactiveSafetyIconTint: UIColor {
+        dynamicColorIfAvailable(defaultColor: .stone, darkModeColor: .milk)
     }
 }
