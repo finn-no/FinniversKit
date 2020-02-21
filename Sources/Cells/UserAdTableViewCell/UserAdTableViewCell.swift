@@ -11,6 +11,18 @@ public protocol ImageLoading {
 
 public class UserAdTableViewCell: UITableViewCell {
 
+    public enum Style {
+        case `default`
+        case compressed
+
+        var imageSize: CGFloat {
+            switch self {
+            case .default: return 80
+            case .compressed: return 50
+            }
+        }
+    }
+
     // MARK: - Public properties
 
     public var remoteImageViewDataSource: RemoteImageViewDataSource? {
@@ -62,7 +74,7 @@ public class UserAdTableViewCell: UITableViewCell {
 
     // MARK: Public methods
 
-    public func configure(with style: UserAdTableViewCellStyle, model: UserAdTableViewCellViewModel) {
+    public func configure(with style: Style, model: UserAdTableViewCellViewModel) {
         separatorInset = .leadingInset(.largeSpacing + style.imageSize)
         accessibilityLabel = model.accessibilityLabel
 

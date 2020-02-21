@@ -35,4 +35,3 @@ public protocol UserAdTableViewCellRatingViewModel {
     var title: String { get }
     var feedbackText: String { get }
 }
-

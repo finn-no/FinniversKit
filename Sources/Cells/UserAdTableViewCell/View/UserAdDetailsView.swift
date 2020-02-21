@@ -73,8 +73,8 @@ final class UserAdDetailsView: UIView {
 
     private lazy var contentStackTopAnchor = contentStack.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing)
     private lazy var contentStackBottomAnchor = contentStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
-    private lazy var adImageWidthConstraint = adImageView.widthAnchor.constraint(equalToConstant: UserAdTableViewCellStyle.default.imageSize)
-    private lazy var adImageHeightConstraint = adImageView.heightAnchor.constraint(equalToConstant: UserAdTableViewCellStyle.default.imageSize)
+    private lazy var adImageWidthConstraint = adImageView.widthAnchor.constraint(equalToConstant: UserAdTableViewCell.Style.default.imageSize)
+    private lazy var adImageHeightConstraint = adImageView.heightAnchor.constraint(equalToConstant: UserAdTableViewCell.Style.default.imageSize)
 
     private lazy var ribbonViewTopAnchor: NSLayoutConstraint = {
         let constraint = ribbonView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing)
@@ -132,7 +132,7 @@ final class UserAdDetailsView: UIView {
 
     // MARK: - Public methods
 
-    func configure(with style: UserAdTableViewCellStyle, model: UserAdTableViewCellViewModel) {
+    func configure(with style: UserAdTableViewCell.Style, model: UserAdTableViewCellViewModel) {
         self.model = model
 
         contentStack.alignment = style == .compressed ? .center : .top
@@ -168,7 +168,7 @@ final class UserAdDetailsView: UIView {
 
         adImageView.loadImage(
             for: imagePath,
-            imageWidth: UserAdTableViewCellStyle.default.imageSize,
+            imageWidth: UserAdTableViewCell.Style.default.imageSize,
             loadingColor: loadingColor,
             fallbackImage: fallbackImage
         )
