@@ -6,25 +6,22 @@ import FinniversKit
 
 class ObjectPageTitleDemoView: UIView, Tweakable {
 
-    private lazy var titleView = ObjectPageTitleView(withAutoLayout: true)
+    private var titleView: ObjectPageTitleView?
 
     lazy var tweakingOptions: [TweakingOption] = {
         [
-            TweakingOption(title: "Title and subtitle") { [weak self] in
+            TweakingOption(title: "Motor market") { [weak self] in
                 self?.configureTitleView(title: "Mercedes-Benz C-Klasse", subtitle: "C200 4MATIC aut Hengerfeste, Panoramasoltak, AMG, LED +")
             },
-            TweakingOption(title: "Title and subtitle", description: "With ribbon") { [weak self] in
+            TweakingOption(title: "Motor market w/ ribbon") { [weak self] in
                 self?.configureTitleView(title: "Mercedes-Benz C-Klasse", subtitle: "C200 4MATIC aut Hengerfeste, Panoramasoltak, AMG, LED +", ribbonViewModel: .sold)
             },
-            TweakingOption(title: "Only title") { [weak self] in
-                self?.configureTitleView(title: "Sofa med sjeselong - pris diskuterbar!")
+            TweakingOption(title: "Torget w/ ribbon") { [weak self] in
+                self?.configureTitleView(title: "Sofa med sjeselong - pris diskuterbar!", ribbonViewModel: .sold, spacingAfterTitle: .mediumSpacing)
             },
-            TweakingOption(title: "Only title", description: "With ribbon") { [weak self] in
-                self?.configureTitleView(title: "Sofa med sjeselong - pris diskuterbar!", ribbonViewModel: .sold)
-            },
-            TweakingOption(title: "Only subtitle") { [weak self] in
-                self?.configureTitleView(subtitle: "C200 4MATIC aut Hengerfeste, Panoramasoltak, AMG, LED +")
-            },
+            TweakingOption(title: "Torget giveaway") { [weak self] in
+                self?.configureTitleView(title: "Sofa med sjeselong", subtitle: "Gis bort", subtitleStyle: .title3, spacingAfterTitle: .mediumSpacing)
+            }
         ]
     }()
 
@@ -32,7 +29,6 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
         tweakingOptions.first?.action?()
     }
 
@@ -40,22 +36,28 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
 
     // MARK: - Private methods
 
-    private func setup() {
-        addSubview(titleView)
-
-        NSLayoutConstraint.activate([
-            titleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            titleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            titleView.centerYAnchor.constraint(equalTo: centerYAnchor)
-        ])
-    }
-
     private func configureTitleView(
         title: String? = nil,
+        titleStyle: Label.Style = .title2,
         subtitle: String? = nil,
-        ribbonViewModel: RibbonViewModel? = nil
+        subtitleStyle: Label.Style = .body,
+        ribbonViewModel: RibbonViewModel? = nil,
+        spacingAfterTitle: CGFloat = 0
     ) {
-        titleView.configure(withTitle: title, subtitle: subtitle, ribbonViewModel: ribbonViewModel)
+        titleView?.removeFromSuperview()
+        titleView = nil
+
+        let newTitleView = ObjectPageTitleView(titleStyle: titleStyle, subtitleStyle: subtitleStyle, withAutoLayout: true)
+        addSubview(newTitleView)
+
+        NSLayoutConstraint.activate([
+            newTitleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+            newTitleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            newTitleView.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
+        newTitleView.configure(withTitle: title, subtitle: subtitle, ribbonViewModel: ribbonViewModel, spacingAfterTitle: spacingAfterTitle)
+
+        titleView = newTitleView
     }
 }
 
