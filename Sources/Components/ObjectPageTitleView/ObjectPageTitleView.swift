@@ -55,16 +55,18 @@ public class ObjectPageTitleView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(withTitle title: String? = nil, subtitle: String? = nil, ribbonViewModel: RibbonViewModel? = nil) {
-        if let ribbonViewModel = ribbonViewModel {
-            ribbonView.configure(with: ribbonViewModel)
-        }
-        ribbonView.isHidden = ribbonViewModel == nil
-
+    public func configure(withTitle title: String? = nil, subtitle: String? = nil, ribbonViewModel: RibbonViewModel? = nil, spacingAfterTitle: CGFloat = 0) {
         titleLabel.text = title
         titleLabel.isHidden = title?.isEmpty ?? true
 
         subtitleLabel.text = subtitle
         subtitleLabel.isHidden = subtitle?.isEmpty ?? true
+
+        if let ribbonViewModel = ribbonViewModel {
+            ribbonView.configure(with: ribbonViewModel)
+        }
+        ribbonView.isHidden = ribbonViewModel == nil
+
+        stackView.setCustomSpacing(spacingAfterTitle, after: titleLabel)
     }
 }
