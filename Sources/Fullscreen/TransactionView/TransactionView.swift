@@ -122,7 +122,7 @@ private extension TransactionView {
         }
 
         guard let stepDot = stepDots.first else { return }
-        verticalStackView.leadingAnchor.constraint(equalTo: stepDot.trailingAnchor, constant: .mediumSpacing).isActive = true
+        NSLayoutConstraint.activate([verticalStackView.leadingAnchor.constraint(equalTo: stepDot.trailingAnchor, constant: .mediumSpacing)])
     }
 
     private func addTransactionStepView(_ step: Int, _ model: TransactionStepViewModel) {

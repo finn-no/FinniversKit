@@ -35,7 +35,6 @@ public class TransactionStepView: UIView {
         view.isScrollEnabled = false
         view.isEditable = false
         view.contentInset = .init(top: -.mediumSpacing, leading: 0, bottom: 0, trailing: 0)
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.adjustsFontForContentSizeCategory = true
         return view
     }()
@@ -48,7 +47,6 @@ public class TransactionStepView: UIView {
         view.isScrollEnabled = false
         view.isEditable = false
         view.contentInset = .init(top: -.mediumSpacing, leading: 0, bottom: 0, trailing: 0)
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.adjustsFontForContentSizeCategory = true
         return view
     }()
@@ -68,7 +66,6 @@ public class TransactionStepView: UIView {
         view.isScrollEnabled = false
         view.isEditable = false
         view.contentInset = .leadingInset(0)
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.adjustsFontForContentSizeCategory = true
         return view
     }()
@@ -135,7 +132,7 @@ private extension TransactionStepView {
             verticalStackView.addArrangedSubview(bodyView)
 
             bodyView.setContentHuggingPriority(.required, for: .vertical)
-            bodyView.trailingAnchor.constraint(equalTo: verticalStackView.trailingAnchor).isActive = true
+            NSLayoutConstraint.activate([bodyView.trailingAnchor.constraint(equalTo: verticalStackView.trailingAnchor)])
 
             bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: .mediumLargeSpacing)
         }
@@ -150,7 +147,7 @@ private extension TransactionStepView {
             }
 
             actionButton.setContentHuggingPriority(.required, for: .vertical)
-            actionButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            NSLayoutConstraint.activate([actionButton.heightAnchor.constraint(equalToConstant: 40)])
 
             bottomAnchorConstraint = bottomAnchor.constraint(equalTo: actionButton.bottomAnchor, constant: .mediumLargeSpacing)
         }
