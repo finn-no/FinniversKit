@@ -16,7 +16,7 @@ public extension TransactionStepView {
             case .notStarted, .completed:
                 return .bgPrimary
             case .inProgress, .inProgressAwaitingOtherParty:
-                return .ice
+                return .bgSecondary
             }
         }
 
