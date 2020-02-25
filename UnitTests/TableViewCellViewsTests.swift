@@ -58,4 +58,8 @@ class TableViewCellsViewTests: XCTestCase {
     func testUserAdCell() {
         snapshot(.userAdCell)
     }
+
+    func testUserAdEmphasizedActionCell() {
+        snapshot(.userAdEmphasizedActionCell)
+    }
 }

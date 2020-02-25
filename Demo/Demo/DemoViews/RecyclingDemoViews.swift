@@ -12,7 +12,6 @@ public enum RecyclingDemoViews: String, CaseIterable {
     case marketsGridView
     case adsGridView
     case settingsView
-    case userAds
     case adManagementView
     case neighborhoodProfileView
     case paymentOptionsListView
@@ -46,8 +45,6 @@ public enum RecyclingDemoViews: String, CaseIterable {
             return DemoViewController<AdsGridViewDemoView>()
         case .settingsView:
             return DemoViewController<SettingsViewDemoView>()
-        case .userAds:
-            return DemoViewController<UserAdsListViewDemoView>()
         case .adManagementView:
             return DemoViewController<AdManagementDemoView>()
         case .neighborhoodProfileView:
