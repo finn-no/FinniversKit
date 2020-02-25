@@ -86,8 +86,9 @@ public class TransactionView: UIView {
 
 private extension TransactionView {
     func setup() {
-        addSubview(titleLabel)
+        backgroundColor = .bgPrimary
 
+        addSubview(titleLabel)
         addSubview(scrollView)
         scrollView.addSubview(scrollableContentView)
 
