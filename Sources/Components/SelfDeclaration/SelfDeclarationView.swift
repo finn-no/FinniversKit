@@ -15,7 +15,7 @@ public class SelfDeclarationView: UIView {
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.spacing = .mediumLargeSpacing
+        stackView.spacing = .mediumPlusSpacing
         return stackView
     }()
 
@@ -32,6 +32,7 @@ public class SelfDeclarationView: UIView {
 
     private func setup() {
         stackView.addArrangedSubview(introductionLabel)
+        stackView.setCustomSpacing(.largeSpacing, after: introductionLabel)
         addSubview(stackView)
         stackView.fillInSuperview()
     }

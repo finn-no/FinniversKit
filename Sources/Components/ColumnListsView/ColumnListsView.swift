@@ -74,6 +74,11 @@ public class ColumnListsView: UIView {
                     columnStackView.addArrangedSubview(createLabel(with: element))
                 }
 
+                let numberOfMissingItems = textItems.chunkSize(forColumns: numberOfColumns) - elements.count
+                (0..<numberOfMissingItems).forEach { _ in
+                    columnStackView.addArrangedSubview(UIView())
+                }
+
                 stackView.addArrangedSubview(columnStackView)
             }
     }
@@ -81,7 +86,7 @@ public class ColumnListsView: UIView {
     private func createColumnStackView() -> UIStackView {
         let columnStackView = UIStackView(withAutoLayout: true)
         columnStackView.axis = .vertical
-        columnStackView.spacing = .mediumLargeSpacing * 1.5
+        columnStackView.spacing = .mediumSpacing
 
         return columnStackView
     }

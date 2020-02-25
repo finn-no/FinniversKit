@@ -55,7 +55,7 @@ public class ObjectPageTitleView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(withTitle title: String? = nil, subtitle: String? = nil, ribbonViewModel: RibbonViewModel? = nil, spacingAfterTitle: CGFloat = 0) {
+    public func configure(withTitle title: String? = nil, subtitle: String? = nil, ribbonViewModel: RibbonViewModel? = nil, spacingAfterTitle: CGFloat = .smallSpacing) {
         titleLabel.text = title
         titleLabel.isHidden = title?.isEmpty ?? true
 

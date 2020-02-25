@@ -39,7 +39,7 @@ extension SafetyElementsView {
 
         // MARK: - Private methods
         private func setup() {
-            backgroundColor = .bgTertiary
+            backgroundColor = .bgPrimary
             addSubview(stackView)
             stackView.fillInSuperview()
         }
