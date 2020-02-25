@@ -46,7 +46,7 @@ public class UserAdsRatingView: UIView {
 
     public weak var delegate: UserAdsRatingViewDelegate?
 
-    public var model: UserAdsListRatingViewModel? {
+    public var model: UserAdTableViewCellRatingViewModel? {
         didSet {
             guard let model = model else { return }
             titleLabel.text = model.title
