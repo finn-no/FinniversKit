@@ -16,7 +16,7 @@ class LinkButtonView: UIView {
 
     private let buttonIdentifier: String?
     private let linkUrl: URL
-    private let linkButtonStyle = Button.Style.link.overrideStyle(normalFont: .body)
+    private let linkButtonStyle = Button.Style.link.overrideStyle(smallFont: .body)
     private lazy var fillerView = UIView(withAutoLayout: true)
     private lazy var externalImage = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
 
@@ -36,7 +36,7 @@ class LinkButtonView: UIView {
     }()
 
     private lazy var linkButton: Button = {
-        let button = Button(style: linkButtonStyle, size: .normal, withAutoLayout: true)
+        let button = Button(style: linkButtonStyle, size: .small, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
         button.contentHorizontalAlignment = .leading
         return button
