@@ -42,7 +42,7 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
         subtitle: String? = nil,
         subtitleStyle: Label.Style = .body,
         ribbonViewModel: RibbonViewModel? = nil,
-        spacingAfterTitle: CGFloat = 0
+        spacingAfterTitle: CGFloat = .smallSpacing
     ) {
         titleView?.removeFromSuperview()
         titleView = nil
