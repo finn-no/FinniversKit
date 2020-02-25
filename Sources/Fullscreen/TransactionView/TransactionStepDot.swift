@@ -10,6 +10,11 @@ public class TransactionStepDot: UIView {
         case completed
     }
 
+    // MARK: - Public properties
+
+    public static let activeColor = UIColor(r: 82, g: 188, b: 245)
+    public static let inactiveColor = UIColor.decorationSubtle
+
     // MARK: - Internal properties
 
     let stepIndex: Int
@@ -90,10 +95,10 @@ public class TransactionStepDot: UIView {
 
         switch state {
         case .inProgress:
-            outerFill.toValue = StepIndicator.activeColor.cgColor
+            outerFill.toValue = TransactionStepDot.activeColor.cgColor
             innerSize.toValue = [ 1.0, 1.0 ]
         case .completed:
-            outerFill.toValue = StepIndicator.activeColor.cgColor
+            outerFill.toValue = TransactionStepDot.activeColor.cgColor
             innerSize.toValue = [ 0.0, 0.0 ]
         }
 

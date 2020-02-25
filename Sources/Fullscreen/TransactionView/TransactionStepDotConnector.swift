@@ -11,7 +11,7 @@ class TransactionStepDotConnector: UIView {
     var highlighted = false {
         didSet {
             if oldValue != highlighted {
-                let color = highlighted ? StepIndicator.activeColor : StepIndicator.inactiveColor
+                let color = highlighted ? TransactionStepDot.activeColor : TransactionStepDot.inactiveColor
                 transition(toColor: color)
             }
         }
