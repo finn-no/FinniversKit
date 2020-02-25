@@ -7,6 +7,7 @@
 + (CGFloat)smallSpacing;
 + (CGFloat)mediumSpacing;
 + (CGFloat)mediumLargeSpacing;
++ (CGFloat)mediumPlusSpacing;
 + (CGFloat)largeSpacing;
 + (CGFloat)veryLargeSpacing;
 
