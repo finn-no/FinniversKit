@@ -16,7 +16,6 @@ extension SafetyElementsView {
             stackView.axis = .horizontal
             stackView.alignment = .center
             stackView.spacing = .mediumSpacing
-            stackView.preservesSuperviewLayoutMargins = true
             return stackView
         }()
 
@@ -90,9 +89,7 @@ extension SafetyElementsView {
 
             layoutMargins = UIEdgeInsets(
                 top: .mediumLargeSpacing,
-                leading: .mediumLargeSpacing,
-                bottom: .mediumLargeSpacing * 1.5,
-                trailing: .mediumLargeSpacing
+                bottom: .mediumLargeSpacing * 1.5
             )
 
             addSubview(hairline)
@@ -100,7 +97,7 @@ extension SafetyElementsView {
             NSLayoutConstraint.activate([
                 hairline.heightAnchor.constraint(equalToConstant: 1),
                 hairline.trailingAnchor.constraint(equalTo: trailingAnchor),
-                hairline.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+                hairline.leadingAnchor.constraint(equalTo: leadingAnchor),
                 hairline.bottomAnchor.constraint(equalTo: bottomAnchor),
             ])
         }
