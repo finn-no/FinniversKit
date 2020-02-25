@@ -74,6 +74,11 @@ public class ColumnListsView: UIView {
                     columnStackView.addArrangedSubview(createLabel(with: element))
                 }
 
+                let numberOfMissingItems = textItems.chunkSize(forColumns: numberOfColumns) - elements.count
+                (0..<numberOfMissingItems).forEach { _ in
+                    columnStackView.addArrangedSubview(UIView())
+                }
+
                 stackView.addArrangedSubview(columnStackView)
             }
     }

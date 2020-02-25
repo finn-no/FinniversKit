@@ -36,7 +36,11 @@ extension Array {
             return []
         }
 
-        let size = Int(ceil(Double(count) / Double(columns)))
+        let size = chunkSize(forColumns: columns)
         return chunked(by: size)
+    }
+
+    func chunkSize(forColumns columns: Int) -> Int {
+        Int(ceil(Double(count) / Double(columns)))
     }
 }
