@@ -17,6 +17,9 @@ public extension CGFloat {
     /// Separation of 16 points.
     static let mediumLargeSpacing = Spacing.mediumLargeSpacing()
 
+    /// Separation of 24 points.
+    static let mediumPlusSpacing = Spacing.mediumPlusSpacing()
+
     /// Separation of 32 points.
     static let largeSpacing = Spacing.largeSpacing()
 
