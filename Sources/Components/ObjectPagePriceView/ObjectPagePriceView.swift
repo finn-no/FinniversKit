@@ -20,7 +20,7 @@ public class ObjectPagePriceView: UIView {
     private lazy var wrapperStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [textStackView, linkButtonListView])
         stackView.axis = .vertical
-        stackView.spacing = .mediumSpacing
+        stackView.spacing = .mediumLargeSpacing
         return stackView
     }()
 
