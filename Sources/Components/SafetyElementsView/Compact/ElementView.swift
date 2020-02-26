@@ -87,10 +87,7 @@ extension SafetyElementsView {
             addSubview(outerStackView)
             outerStackView.fillInSuperviewLayoutMargins()
 
-            layoutMargins = UIEdgeInsets(
-                top: .mediumLargeSpacing,
-                bottom: .mediumLargeSpacing * 1.5
-            )
+            layoutMargins = UIEdgeInsets(vertical: .mediumLargeSpacing, horizontal: 0)
 
             addSubview(hairline)
 
