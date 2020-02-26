@@ -17,7 +17,6 @@ public protocol TransactionViewDataSource: AnyObject {
 public enum TransactionState {
     case notStarted
     case inProgress
-    case inProgressAwaitingOtherParty
     case completed
 
     var style: TransactionStepView.Style {
@@ -25,8 +24,6 @@ public enum TransactionState {
         case .notStarted:
             return .notStarted
         case .inProgress:
-            return .inProgress
-        case .inProgressAwaitingOtherParty:
             return .inProgress
         case .completed:
             return .completed
@@ -128,6 +125,11 @@ private extension TransactionView {
     private func addTransactionStepView(_ step: Int, _ model: TransactionStepViewModel) {
         let transactionStepView = TransactionStepView(step: step, model: model, withAutoLayout: true)
         transactionStepView.delegate = self
+
+        if step == numberOfSteps - 1 && model.state == .completed {
+            transactionStepView.hasCompletedLastStep(true)
+        }
+
         verticalStackView.addArrangedSubview(transactionStepView)
     }
 

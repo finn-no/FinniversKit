@@ -13,8 +13,8 @@ public struct TransactionStepModel: TransactionStepViewModel {
 }
 
 public struct TransactionStepsFactory {
-    public static var steps: [TransactionStepModel] = completedSteps + currentStep + notStartedSteps
-    public static var numberOfSteps: Int = completedSteps.count + currentStep.count + notStartedSteps.count
+    public static var steps: [TransactionStepModel] = completedSteps + currentSteps + notStartedSteps
+    public static var numberOfSteps: Int = completedSteps.count + currentSteps.count + notStartedSteps.count
 
     public static var completedSteps: [TransactionStepModel] = [
         TransactionStepModel(
@@ -29,30 +29,23 @@ public struct TransactionStepsFactory {
             buttonText: "Inviter kjøper"),
     ]
 
-    public static var currentStep = [TransactionStepModel(
-        state: .inProgress,
-        title: "Betaling",
-        body: "Før kjøper kan overføre pengene må du forberede betalingen.",
-        buttonText: "Forbered betaling")
-    ]
-
-    public static var currentStepAwaitingOtherParty = [TransactionStepModel(
-        state: .inProgress,
-        title: "Betaling",
-        body: "Før kjøper kan overføre pengene må du forberede betalingen.",
-        buttonText: "Forbered betaling")
+    public static var currentSteps = [
+        TransactionStepModel(
+            state: .completed,
+            title: "Betaling",
+            body: "Før kjøper kan overføre pengene må du forberede betalingen.",
+            buttonText: "Forbered betaling"),
     ]
 
     public static var notStartedSteps: [TransactionStepModel] = [
         TransactionStepModel(
-            state: .notStarted,
+            state: .completed,
             title: "Overlevering",
             body: "Dere må møtes og bekrefte overleveringen innen 7 dager etter kjøper har betalt."),
 
         TransactionStepModel(
-            state: .notStarted,
+            state: .completed,
             title: "Gratulerer med salget!",
-            body: "Du kan finne igjen bilen i Mine kjøretøy under <<Eide før>>.",
-            detail: "Det kan ta noen dager før pengene dukker opp på kontoen din"),
+            body: "Du kan finne igjen bilen i Mine kjøretøy under <<Eide før>>."),
     ]
 }

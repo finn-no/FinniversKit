@@ -8,14 +8,13 @@ public extension TransactionStepView {
     enum Style {
         case notStarted
         case inProgress
-        case inProgressAwaitingOtherParty
         case completed
 
         var backgroundColor: UIColor {
             switch self {
             case .notStarted, .completed:
                 return .bgPrimary
-            case .inProgress, .inProgressAwaitingOtherParty:
+            case .inProgress:
                 return .bgSecondary
             }
         }
@@ -56,7 +55,7 @@ public extension TransactionStepView {
             switch self {
             case .notStarted:
                 return .stone
-            case .inProgress, .inProgressAwaitingOtherParty, .completed:
+            case .inProgress, .completed:
                 return .licorice
             }
         }
@@ -65,8 +64,6 @@ public extension TransactionStepView {
             switch self {
             case .notStarted, .inProgress:
                 return .callToAction
-            case .inProgressAwaitingOtherParty:
-                return .default
             case .completed:
                 return .flat
             }
@@ -83,7 +80,7 @@ public extension TransactionStepView {
             switch self {
             case .notStarted:
                 return false
-            case .inProgress, .inProgressAwaitingOtherParty, .completed:
+            case .inProgress, .completed:
                 return true
             }
         }
@@ -99,7 +96,7 @@ public extension TransactionStepView {
             switch self {
             case .notStarted:
                 return .stone
-            case .inProgress, .inProgressAwaitingOtherParty, .completed:
+            case .inProgress, .completed:
                 return .licorice
             }
         }

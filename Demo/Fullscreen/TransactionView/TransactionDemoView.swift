@@ -34,7 +34,10 @@ extension TransactionDemoView: TransactionViewDataSource {
     }
 
     func transactionViewCurrentStep(_ view: TransactionView) -> Int {
-        return TransactionStepsFactory.steps.firstIndex(where: { $0.state == .inProgress || $0.state == .inProgressAwaitingOtherParty }) ?? 0
+        let isTransactionCompleted = TransactionStepsFactory.steps.filter({ $0.state != .completed }).count == 0
+        let currentStep = TransactionStepsFactory.steps.firstIndex(where: { $0.state == .inProgress }) ?? 0
+        let lastStep = TransactionStepsFactory.numberOfSteps
+        return isTransactionCompleted ? lastStep : currentStep
     }
 
     func transactionViewModelForIndex(_ view: TransactionView, forStep step: Int) -> TransactionStepViewModel {

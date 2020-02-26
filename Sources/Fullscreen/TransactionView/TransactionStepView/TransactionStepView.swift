@@ -19,6 +19,8 @@ public class TransactionStepView: UIView {
     private var model: TransactionStepViewModel
     private var style: TransactionStepView.Style
 
+    private var activeStepColor: UIColor = .bgTertiary
+
     private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
@@ -36,6 +38,8 @@ public class TransactionStepView: UIView {
         view.isEditable = false
         view.contentInset = .init(top: -.mediumSpacing, leading: 0, bottom: 0, trailing: 0)
         view.adjustsFontForContentSizeCategory = true
+        view.textContainer.widthTracksTextView = true
+        view.textContainer.heightTracksTextView = true
         return view
     }()
 
@@ -48,6 +52,8 @@ public class TransactionStepView: UIView {
         view.isEditable = false
         view.contentInset = .init(top: -.mediumSpacing, leading: 0, bottom: 0, trailing: 0)
         view.adjustsFontForContentSizeCategory = true
+        view.textContainer.widthTracksTextView = true
+        view.textContainer.heightTracksTextView = true
         return view
     }()
 
@@ -67,8 +73,14 @@ public class TransactionStepView: UIView {
         view.isEditable = false
         view.contentInset = .leadingInset(0)
         view.adjustsFontForContentSizeCategory = true
+        view.textContainer.widthTracksTextView = true
+        view.textContainer.heightTracksTextView = true
         return view
     }()
+
+    private var verticalStackViewLeadingAnchor: NSLayoutConstraint?
+    private var verticalStackViewTrailingAnchor: NSLayoutConstraint?
+    private var verticalStackViewTopAnchor: NSLayoutConstraint?
 
     private var bottomAnchorConstraint: NSLayoutConstraint?
 
@@ -83,6 +95,18 @@ public class TransactionStepView: UIView {
 
         translatesAutoresizingMaskIntoConstraints = !autoLayout
         setup()
+    }
+
+    public func hasCompletedLastStep(_ isCompleted: Bool) {
+        guard isCompleted == true else { return }
+
+        backgroundColor = activeStepColor
+        titleView.backgroundColor = activeStepColor
+        bodyView.backgroundColor = activeStepColor
+        detailView.backgroundColor = activeStepColor
+
+        verticalStackViewTopAnchor?.constant = .mediumLargeSpacing
+        verticalStackViewLeadingAnchor?.constant = .mediumLargeSpacing
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -104,21 +128,29 @@ private extension TransactionStepView {
 
         switch style {
         case .notStarted, .completed:
-            NSLayoutConstraint.activate([
-                verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .smallSpacing),
-                verticalStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing),
-                verticalStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .smallSpacing)
+            verticalStackViewTrailingAnchor = verticalStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing)
+            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
 
-                titleView.heightAnchor.constraint(greaterThanOrEqualToConstant: 32),
+            NSLayoutConstraint.activate([
+                verticalStackViewLeadingAnchor!,
+                verticalStackViewTrailingAnchor!,
+                verticalStackViewTopAnchor!,
+
+                titleView.heightAnchor.constraint(greaterThanOrEqualToConstant: 24),
             ])
 
-        case .inProgress, .inProgressAwaitingOtherParty:
-            NSLayoutConstraint.activate([
-                verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
-                verticalStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing),
-                verticalStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
+        case .inProgress:
+            verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing)
+            verticalStackViewTrailingAnchor = verticalStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing)
+            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumLargeSpacing)
 
-                titleView.heightAnchor.constraint(greaterThanOrEqualToConstant: 32),
+            NSLayoutConstraint.activate([
+                verticalStackViewLeadingAnchor!,
+                verticalStackViewTrailingAnchor!,
+                verticalStackViewTopAnchor!,
+
+                titleView.heightAnchor.constraint(greaterThanOrEqualToConstant: 24),
             ])
         }
 
@@ -149,14 +181,14 @@ private extension TransactionStepView {
             actionButton.setContentHuggingPriority(.required, for: .vertical)
             NSLayoutConstraint.activate([actionButton.heightAnchor.constraint(equalToConstant: 40)])
 
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: actionButton.bottomAnchor, constant: .mediumLargeSpacing)
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: actionButton.bottomAnchor, constant: .mediumSpacing)
         }
 
         if let detailText = model.detail {
             detailView.text = detailText
             verticalStackView.addArrangedSubview(detailView)
 
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: detailView.bottomAnchor, constant: .mediumLargeSpacing)
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: detailView.bottomAnchor, constant: .mediumSpacing)
         }
 
         bottomAnchorConstraint?.isActive = true
