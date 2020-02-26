@@ -80,9 +80,9 @@ class SafetyElementsDemoView: UIView, Tweakable {
         layoutMargins = UIEdgeInsets(all: .mediumLargeSpacing)
 
         NSLayoutConstraint.activate([
-            safetyElementsView.topAnchor.constraint(equalTo: topAnchor, constant: .veryLargeSpacing),
+            safetyElementsView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
             safetyElementsView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            safetyElementsView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            safetyElementsView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor)
         ])
     }
 }
