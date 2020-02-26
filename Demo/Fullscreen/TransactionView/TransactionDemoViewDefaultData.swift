@@ -31,7 +31,7 @@ public struct TransactionStepsFactory {
 
     public static var currentSteps = [
         TransactionStepModel(
-            state: .completed,
+            state: .inProgress,
             title: "Betaling",
             body: "Før kjøper kan overføre pengene må du forberede betalingen.",
             buttonText: "Forbered betaling"),
@@ -39,12 +39,12 @@ public struct TransactionStepsFactory {
 
     public static var notStartedSteps: [TransactionStepModel] = [
         TransactionStepModel(
-            state: .completed,
+            state: .notStarted,
             title: "Overlevering",
             body: "Dere må møtes og bekrefte overleveringen innen 7 dager etter kjøper har betalt."),
 
         TransactionStepModel(
-            state: .completed,
+            state: .notStarted,
             title: "Gratulerer med salget!",
             body: "Du kan finne igjen bilen i Mine kjøretøy under <<Eide før>>."),
     ]
