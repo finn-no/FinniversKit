@@ -92,7 +92,7 @@ public class ColumnListsView: UIView {
     }
 
     private func createLabel(with text: String) -> Label {
-        let label = Label(style: .body, withAutoLayout: true)
+        let label = Label(style: .caption, withAutoLayout: true)
         label.text = text
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
