@@ -142,7 +142,7 @@ public class CollapsibleContentView: UIView {
     private func addContentView(_ contentView: UIView) {
         innerContainerView.addSubview(contentView)
 
-        let contentTopConstraint = contentView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: .mediumLargeSpacing)
+        let contentTopConstraint = contentView.topAnchor.constraint(equalTo: headerView.bottomAnchor)
         NSLayoutConstraint.activate([
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 10),
             contentTopConstraint,
