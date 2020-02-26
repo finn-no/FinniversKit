@@ -72,6 +72,7 @@ extension SafetyElementsView {
             iconImageView.image = viewModel.icon.withRenderingMode(.alwaysTemplate)
             titleLabel.text = viewModel.title
             hairline.isHidden = isLastElement
+            layoutMargins.bottom = isLastElement ? 0 : .mediumLargeSpacing
             contentView.configure(with: viewModel)
         }
 
@@ -87,7 +88,7 @@ extension SafetyElementsView {
             addSubview(outerStackView)
             outerStackView.fillInSuperviewLayoutMargins()
 
-            layoutMargins = UIEdgeInsets(vertical: .mediumLargeSpacing, horizontal: 0)
+            layoutMargins = UIEdgeInsets(top: .mediumLargeSpacing)
 
             addSubview(hairline)
 
