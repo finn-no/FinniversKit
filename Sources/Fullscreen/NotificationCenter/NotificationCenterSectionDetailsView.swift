@@ -29,9 +29,9 @@ class NotificationCenterSectionDetailsView: UIControl {
         return label
     }()
 
-//    private lazy var textLabelToSuperviewConstraint = textLabel.leadingAnchor.constraint(
-//        equalTo: leadingAnchor
-//    )
+    private lazy var textLabelToSuperviewConstraint = textLabel.leadingAnchor.constraint(
+        equalTo: leadingAnchor
+    )
 
     private lazy var textLabelToMagnifyingIconConstraint = textLabel.leadingAnchor.constraint(
         equalTo: magnifyingIconView.trailingAnchor,
@@ -85,7 +85,7 @@ class NotificationCenterSectionDetailsView: UIControl {
         case let .link(text, title, showMagnifyingGlass):
             magnifyingIconView.isHidden = !showMagnifyingGlass
 
-//            textLabelToSuperviewConstraint.isActive = magnifyingIconView.isHidden
+            textLabelToSuperviewConstraint.isActive = magnifyingIconView.isHidden
             textLabelToMagnifyingIconConstraint.isActive = !magnifyingIconView.isHidden
 
             let textRange = NSRange(location: 0, length: text.count + 1)
@@ -103,7 +103,7 @@ class NotificationCenterSectionDetailsView: UIControl {
         case let .static(text, value):
             magnifyingIconView.isHidden = true
 
-//            textLabelToSuperviewConstraint.isActive = magnifyingIconView.isHidden
+            textLabelToSuperviewConstraint.isActive = magnifyingIconView.isHidden
             textLabelToMagnifyingIconConstraint.isActive = !magnifyingIconView.isHidden
 
             highlightedRange = nil
