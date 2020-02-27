@@ -15,12 +15,12 @@ public protocol TransactionViewDataSource: AnyObject {
 }
 
 public class TransactionView: UIView {
-    // MARK: - Public
-
-    private weak var dataSource: TransactionViewDataSource?
-    private weak var delegate: TransactionViewDelegate?
 
     // MARK: - Properties
+
+    private var model: TransactionViewModel?
+    private weak var dataSource: TransactionViewDataSource?
+    private weak var delegate: TransactionViewDelegate?
 
     private var numberOfSteps: Int = 0
     private var currentStep: Int = 0
@@ -28,9 +28,9 @@ public class TransactionView: UIView {
     private var stepDots = [TransactionStepDot]()
     private var connectors = [TransactionStepDotConnector]()
 
-    private lazy var titleLabel: Label = Label(style: .title1, withAutoLayout: true)
     private lazy var scrollView: UIScrollView = UIScrollView(withAutoLayout: true)
     private lazy var scrollableContentView: UIView = UIView(withAutoLayout: true)
+    private lazy var titleLabel: Label = Label(style: .title1, withAutoLayout: true)
 
     private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
@@ -43,7 +43,12 @@ public class TransactionView: UIView {
 
     // MARK: - Init
 
-    public init(title: String, dataSource: TransactionViewDataSource, delegate: TransactionViewDelegate, withAutoLayout autoLayout: Bool = true) {
+    public init(model: TransactionViewModel,
+                dataSource: TransactionViewDataSource,
+                delegate: TransactionViewDelegate,
+                withAutoLayout autoLayout: Bool = true) {
+
+        self.model = model
         self.dataSource = dataSource
         self.delegate = delegate
 
@@ -52,7 +57,7 @@ public class TransactionView: UIView {
         self.numberOfSteps = dataSource.transactionViewNumberOfSteps(self)
         self.currentStep = dataSource.transactionViewCurrentStep(self)
 
-        titleLabel.text = title
+        titleLabel.text = model.title
         translatesAutoresizingMaskIntoConstraints = !autoLayout
 
         setup()
@@ -68,29 +73,29 @@ private extension TransactionView {
     func setup() {
         backgroundColor = .bgPrimary
 
-        addSubview(titleLabel)
         addSubview(scrollView)
         scrollView.addSubview(scrollableContentView)
 
         scrollableContentView.fillInSuperview()
+        scrollableContentView.addSubview(titleLabel)
         scrollableContentView.addSubview(verticalStackView)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .largeSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumSpacing),
-            titleLabel.heightAnchor.constraint(equalToConstant: 40),
-
             scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            scrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
+            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
 
             scrollableContentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor, constant: .mediumSpacing),
             scrollableContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
+            titleLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .largeSpacing),
+            titleLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            titleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            titleLabel.heightAnchor.constraint(equalToConstant: 40),
+
             verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            verticalStackView.topAnchor.constraint(equalTo: scrollableContentView.topAnchor, constant: .largeSpacing),
+            verticalStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .largeSpacing),
             verticalStackView.bottomAnchor.constraint(equalTo: scrollableContentView.bottomAnchor),
         ])
 
