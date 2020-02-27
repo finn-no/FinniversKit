@@ -7,14 +7,14 @@ import Foundation
 public extension TransactionStepView {
     enum Style {
         case notStarted
-        case inProgress
+        case active
         case completed
 
         var backgroundColor: UIColor {
             switch self {
             case .notStarted, .completed:
                 return .bgPrimary
-            case .inProgress:
+            case .active:
                 return .bgSecondary
             }
         }
@@ -55,14 +55,14 @@ public extension TransactionStepView {
             switch self {
             case .notStarted:
                 return .stone
-            case .inProgress, .completed:
+            case .active, .completed:
                 return .licorice
             }
         }
 
         var actionButtonStyle: Button.Style {
             switch self {
-            case .notStarted, .inProgress:
+            case .notStarted, .active:
                 return .callToAction
             case .completed:
                 return .flat
@@ -80,7 +80,7 @@ public extension TransactionStepView {
             switch self {
             case .notStarted:
                 return false
-            case .inProgress, .completed:
+            case .active, .completed:
                 return true
             }
         }
@@ -96,7 +96,7 @@ public extension TransactionStepView {
             switch self {
             case .notStarted:
                 return .stone
-            case .inProgress, .completed:
+            case .active, .completed:
                 return .licorice
             }
         }

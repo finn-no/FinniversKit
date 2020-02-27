@@ -14,23 +14,6 @@ public protocol TransactionViewDataSource: AnyObject {
     func transactionViewCurrentStep(_ view: TransactionView) -> Int
 }
 
-public enum TransactionState {
-    case notStarted
-    case inProgress
-    case completed
-
-    var style: TransactionStepView.Style {
-        switch self {
-        case .notStarted:
-            return .notStarted
-        case .inProgress:
-            return .inProgress
-        case .completed:
-            return .completed
-        }
-    }
-}
-
 public class TransactionView: UIView {
     // MARK: - Public
 
