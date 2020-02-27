@@ -29,7 +29,7 @@ class NotificationCenterDemoView: UIView {
                 imagePath: "https://jwproperty.com/files/wp-content/uploads/2015/01/Smart_House-Valley_Hua_Hin0131.jpg",
                 title: "Dette er en tittel",
                 read: false,
-                ribbonViewModel: RibbonViewModel(title: "Solgt", style: .warning)),
+                ribbonViewModel: RibbonViewModel(style: .warning, title: "Solgt")),
             NotificationModel(
                 imagePath: "http://i3.au.reastatic.net/home-ideas/raw/a96671bab306bcb39783bc703ac67f0278ffd7de0854d04b7449b2c3ae7f7659/facades.jpg",
                 title: "Dette er også en tittel",
@@ -44,12 +44,12 @@ class NotificationCenterDemoView: UIView {
                 imagePath: nil,
                 title: "Dette er en tittel som er veeeeeldig lang",
                 read: true,
-                ribbonViewModel: RibbonViewModel(title: "Ny pris", style: .success)),
+                ribbonViewModel: RibbonViewModel(style: .success, title: "Ny pris")),
             NotificationModel(
                 imagePath: "http://jonvilma.com/images/house-6.jpg",
                 title: "Tittel",
                 read: false,
-                ribbonViewModel: RibbonViewModel(title: "Inaktiv", style: .disabled)),
+                ribbonViewModel: RibbonViewModel(style: .disabled, title: "Inaktiv")),
             NotificationModel(
                 imagePath: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
                 title: "Dette er en tittel",

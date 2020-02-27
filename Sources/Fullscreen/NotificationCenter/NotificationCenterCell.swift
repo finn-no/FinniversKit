@@ -105,9 +105,12 @@ class NotificationCenterCell: UITableViewCell {
 
         priceLabel.text = model?.priceText
         priceLabel.isHidden = model?.priceText == nil
-
-        statusRibbon.configure(with: model?.ribbonViewModel)
-        statusRibbon.isHidden = model?.ribbonViewModel == nil
+        
+        if let ribbonViewModel = model?.ribbonViewModel {
+            statusRibbon.configure(with: ribbonViewModel)
+        } else {
+            statusRibbon.isHidden = true
+        }
 
         guard let imagePath = model?.imagePath else {
             remoteImageView.image = fallbackImage
