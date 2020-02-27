@@ -4,16 +4,6 @@
 
 import UIKit
 
-public struct RibbonViewModel {
-    public let title: String
-    public let style: RibbonView.Style
-
-    public init(title: String, style: RibbonView.Style) {
-        self.title = title
-        self.style = style
-    }
-}
-
 public class RibbonView: UIView {
 
     // MARK: - Public properties
@@ -46,6 +36,10 @@ public class RibbonView: UIView {
 
     // MARK: - Init
 
+    public convenience init(viewModel: RibbonViewModel) {
+        self.init(style: viewModel.style, with: viewModel.title)
+    }
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -69,9 +63,9 @@ public class RibbonView: UIView {
         self.init(style: .default)
     }
 
-    public func configure(with model: RibbonViewModel?) {
-        style = model?.style ?? .default
-        title = model?.title ?? ""
+    public func configure(with viewModel: RibbonViewModel) {
+        style = viewModel.style
+        title = viewModel.title
     }
 
     // MARK: - Private methods

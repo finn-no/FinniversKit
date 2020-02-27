@@ -19,6 +19,10 @@
     return 16;
 }
 
++ (CGFloat)mediumPlusSpacing {
+    return 24;
+}
+
 + (CGFloat)largeSpacing {
     return 32;
 }

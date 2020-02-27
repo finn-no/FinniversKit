@@ -24,6 +24,8 @@ public extension Array where Element == String {
 
 extension Array {
     func chunked(by size: Int) -> [[Element]] {
+        guard !isEmpty else { return [[]] }
+
         return stride(from: 0, to: count, by: size).map {
             Array(self[$0..<Swift.min($0 + size, count)])
         }
@@ -34,7 +36,11 @@ extension Array {
             return []
         }
 
-        let size = Int(ceil(Double(count) / Double(columns)))
+        let size = chunkSize(forColumns: columns)
         return chunked(by: size)
+    }
+
+    func chunkSize(forColumns columns: Int) -> Int {
+        Int(ceil(Double(count) / Double(columns)))
     }
 }

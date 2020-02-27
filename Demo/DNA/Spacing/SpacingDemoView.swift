@@ -33,6 +33,9 @@ public class SpacingDemoView: UIView {
         let mediumSpacingView = makeLabel(text: "👈        mediumSpacing        👉")
         addSubview(mediumSpacingView)
 
+        let mediumPlusSpacingView = makeLabel(text: "👈        mediumPlusSpacingView        👉")
+        addSubview(mediumPlusSpacingView)
+
         let largeSpacingView = makeLabel(text: "👈        largeSpacing        👉")
         addSubview(largeSpacingView)
 
@@ -52,7 +55,11 @@ public class SpacingDemoView: UIView {
             mediumSpacingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
             mediumSpacingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
 
-            largeSpacingView.topAnchor.constraint(equalTo: mediumSpacingView.bottomAnchor, constant: .veryLargeSpacing),
+            mediumPlusSpacingView.topAnchor.constraint(equalTo: mediumSpacingView.bottomAnchor, constant: .veryLargeSpacing),
+            mediumPlusSpacingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumPlusSpacing),
+            mediumPlusSpacingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumPlusSpacing),
+
+            largeSpacingView.topAnchor.constraint(equalTo: mediumPlusSpacingView.bottomAnchor, constant: .veryLargeSpacing),
             largeSpacingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
             largeSpacingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
 

@@ -5,8 +5,8 @@
 import FinniversKit
 
 extension FavoriteAdViewModel {
-    static func deletedAd(addedToFolderDate: Date, ribbonStyle: RibbonView.Style, ribbonTitle: String) -> FavoriteAdViewModel {
-        return self.init(
+    static func deletedAd(addedToFolderDate: Date, ribbonViewModel: RibbonViewModel) -> FavoriteAdViewModel {
+        self.init(
             addressText: nil,
             titleText: "Annonsen er slettet",
             titleColor: .textSecondary,
@@ -14,8 +14,7 @@ extension FavoriteAdViewModel {
             descriptionSecondaryText: nil,
             descriptionTertiaryText: nil,
             imagePath: nil,
-            ribbonStyle: ribbonStyle,
-            ribbonTitle: ribbonTitle,
+            ribbonViewModel: ribbonViewModel,
             sortingDetailText: nil,
             addedToFolderDate: addedToFolderDate,
             lastUpdated: nil,
@@ -26,12 +25,11 @@ extension FavoriteAdViewModel {
 
 struct FavoriteAdsFactory {
     static func create() -> [FavoriteAdViewModel] {
-        return titles.enumerated().map { (index, title) in
+        titles.enumerated().map { (index, title) in
             guard let title = title else {
                 return FavoriteAdViewModel.deletedAd(
                     addedToFolderDate: addedToFolderDates[index],
-                    ribbonStyle: ribbonStyles[index].style,
-                    ribbonTitle: ribbonStyles[index].title
+                    ribbonViewModel: ribbonViewModels[index]
                 )
             }
             return FavoriteAdViewModel(
@@ -42,8 +40,7 @@ struct FavoriteAdsFactory {
                 descriptionSecondaryText: secondaryDescriptions[index],
                 descriptionTertiaryText: tertiaryDescriptions[index],
                 imagePath: imagePaths[index],
-                ribbonStyle: ribbonStyles[index].style,
-                ribbonTitle: ribbonStyles[index].title,
+                ribbonViewModel: ribbonViewModels[index],
                 sortingDetailText: sortingDetails[index],
                 addedToFolderDate: addedToFolderDates[index],
                 lastUpdated: nil,
@@ -53,7 +50,7 @@ struct FavoriteAdsFactory {
     }
 
     private static var sortingDetails: [String?] {
-        return [
+        [
             "Avtand: 8,8 km",
             nil,
             nil,
@@ -66,7 +63,7 @@ struct FavoriteAdsFactory {
     }
 
     private static var addresses: [String?] {
-        return [
+        [
             "Slottet",
             "Innkjøpsansvarlig, Acme Inc.",
             nil,
@@ -79,7 +76,7 @@ struct FavoriteAdsFactory {
     }
 
     private static var titles: [String?] {
-        return [
+        [
             "Påhengsmotor",
             "Kategoriansvarlig teknisk innkjøp",
             nil,
@@ -92,7 +89,7 @@ struct FavoriteAdsFactory {
     }
 
     private static var primaryDescriptions: [String?] {
-        return [
+        [
             "15 001,-",
             "Kategoriansvarlig teknisk innkjøp",
             nil,
@@ -105,7 +102,7 @@ struct FavoriteAdsFactory {
     }
 
     private static var secondaryDescriptions: [String?] {
-        return [
+        [
             "Båtmotor til salgs・Utenbords・60 hk",
             "Fulltidsstilling・Acme Inc.・Søknadsfrist 2020-02-31・Fast",
             nil,
@@ -118,7 +115,7 @@ struct FavoriteAdsFactory {
     }
 
     private static var tertiaryDescriptions: [String?] {
-        return [
+        [
             nil,
             nil,
             nil,
@@ -131,7 +128,7 @@ struct FavoriteAdsFactory {
     }
 
     private static var imagePaths: [String?] {
-        return [
+        [
             "https://jwproperty.com/files/wp-content/uploads/2015/01/Smart_House-Valley_Hua_Hin0131.jpg",
             "http://i3.au.reastatic.net/home-ideas/raw/a96671bab306bcb39783bc703ac67f0278ffd7de0854d04b7449b2c3ae7f7659/facades.jpg",
             nil,
@@ -144,7 +141,7 @@ struct FavoriteAdsFactory {
     }
 
     private static var comments: [String?] {
-        return [
+        [
             nil,
             nil,
             nil,
@@ -156,16 +153,16 @@ struct FavoriteAdsFactory {
         ]
     }
 
-    private static var ribbonStyles: [(style: RibbonView.Style, title: String)] {
-        return [
-            (style: .success, title: "Aktiv"),
-            (style: .error, title: "Slettet"),
-            (style: .error, title: "Slettet"),
-            (style: .warning, title: "Solgt"),
-            (style: .disabled, title: "Frist utløpt"),
-            (style: .success, title: "Aktiv"),
-            (style: .disabled, title: "Deaktivert"),
-            (style: .warning, title: "Solgt")
+    private static var ribbonViewModels: [RibbonViewModel] {
+        [
+            RibbonViewModel(style: .success, title: "Aktiv"),
+            RibbonViewModel(style: .error, title: "Slettet"),
+            RibbonViewModel(style: .error, title: "Slettet"),
+            RibbonViewModel(style: .warning, title: "Solgt"),
+            RibbonViewModel(style: .disabled, title: "Frist utløpt"),
+            RibbonViewModel(style: .success, title: "Aktiv"),
+            RibbonViewModel(style: .disabled, title: "Deaktivert"),
+            RibbonViewModel(style: .warning, title: "Solgt")
         ]
     }
 

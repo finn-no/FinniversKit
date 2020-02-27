@@ -35,19 +35,22 @@ public class CollapsibleContentView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var innerContainerView: UIView = {
-        let view = UIView(withAutoLayout: true)
-        view.preservesSuperviewLayoutMargins = true
-        return view
-    }()
+    private lazy var innerContainerView: UIView = UIView(withAutoLayout: true)
 
     private lazy var headerView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .horizontal
+        stackView.layoutMargins = .init(vertical: .mediumSpacing, horizontal: 0)
+        stackView.distribution = .equalSpacing
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
-    private lazy var titleLabel: Label = Label(style: .title3Strong, withAutoLayout: true)
+    private lazy var titleLabel: Label = {
+        let label = Label(style: .title3Strong, withAutoLayout: true)
+        label.numberOfLines = 0
+        return label
+    }()
 
     private lazy var collapseIndicatorImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
@@ -73,11 +76,7 @@ public class CollapsibleContentView: UIView {
     }
 
     private lazy var compactHeightConstraint: NSLayoutConstraint = {
-        let constraint = heightAnchor.constraint(
-            equalTo: headerView.heightAnchor,
-            multiplier: 1.0,
-            constant: layoutMargins.top + layoutMargins.bottom
-        )
+        let constraint = heightAnchor.constraint(equalTo: headerView.heightAnchor)
         constraint.priority = .defaultLow
         return constraint
     }()
@@ -100,7 +99,6 @@ public class CollapsibleContentView: UIView {
 
     public override var layoutMargins: UIEdgeInsets {
         didSet {
-            compactHeightConstraint.constant = layoutMargins.top + layoutMargins.bottom
             contentTopConstraint?.constant = layoutMargins.bottom
         }
     }
@@ -132,9 +130,9 @@ public class CollapsibleContentView: UIView {
             innerContainerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             innerContainerView.bottomAnchor.constraint(greaterThanOrEqualTo: bottomAnchor),
 
-            headerView.topAnchor.constraint(equalTo: innerContainerView.layoutMarginsGuide.topAnchor),
-            headerView.leadingAnchor.constraint(equalTo: innerContainerView.layoutMarginsGuide.leadingAnchor),
-            headerView.trailingAnchor.constraint(equalTo: innerContainerView.layoutMarginsGuide.trailingAnchor),
+            headerView.topAnchor.constraint(equalTo: innerContainerView.topAnchor),
+            headerView.leadingAnchor.constraint(equalTo: innerContainerView.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: innerContainerView.trailingAnchor),
             compactHeightConstraint,
         ])
 
@@ -144,13 +142,13 @@ public class CollapsibleContentView: UIView {
     private func addContentView(_ contentView: UIView) {
         innerContainerView.addSubview(contentView)
 
-        let contentTopConstraint = contentView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: .mediumLargeSpacing)
+        let contentTopConstraint = contentView.topAnchor.constraint(equalTo: headerView.bottomAnchor)
         NSLayoutConstraint.activate([
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 10),
             contentTopConstraint,
-            contentView.leadingAnchor.constraint(equalTo: innerContainerView.layoutMarginsGuide.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: innerContainerView.layoutMarginsGuide.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: innerContainerView.layoutMarginsGuide.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: innerContainerView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: innerContainerView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: innerContainerView.bottomAnchor),
         ])
         self.contentTopConstraint = contentTopConstraint
     }
