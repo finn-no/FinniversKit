@@ -64,7 +64,7 @@ class ColumnListsDemoView: UIView {
         "Nivåregulering",
         "Nøkkelløs start",
         "Park.sensor bak",
-        "Parkeringssensor foran",
+        "Parkeringssensor foran og bak og midt i mellom",
         "Radio DAB+",
         "Radio FM",
         "Regnsensor",
