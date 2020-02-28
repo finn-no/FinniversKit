@@ -61,10 +61,10 @@ public struct TransactionDemoViewDefaultData {
                 title: "Annonsen er lagt ut",
                 body: nil,
                 button: TransactionStepButtonModel(
-                    text: "see_ad",
-                    style: "Se annonsen",
-                    action: "flat",
-                    urlString: "www.finn.no/171529672"
+                    text: "Se annonsen",
+                    style: "flat",
+                    action: "see_ad",
+                    fallbackUrlString: "www.finn.no/171529672"
                 ),
                 detail: nil),
 
@@ -87,19 +87,19 @@ public struct TransactionDemoViewDefaultData {
                 detail: "Utbeatlingen starter først når begge har bekreftet at overleveringen har skjedd."),
 
             TransactionStepModel(
-                state: .completed,
+                state: .active,
                 title: "Overlevering",
                 body: "<p>Du har bekreftet overleveringen.<br/>Venter på kjøper.</p><p>Dere må bekrefte før:<br/><strong>8. februar 2020.</strong></p><ol><li>Ved oppmøte registrerer dere først eierskiftet digitalt hos Statens vegvesen.</li><li>Deretter må <strong>begge</strong> bekrefte at overleveringen har skjedd, og at pengene kan utbetales.</li></ol>",
                 button: TransactionStepButtonModel(
-                    text: "url",
-                    style: "Bekreft overlevering",
-                    action: "call_to_action",
+                    text: "Bekreft overlevering",
+                    style: "call_to_action",
+                    action: "url",
                     urlString: "https://www.vegvesen.no/"
                 ),
                 detail: "Hvis fristen går ut før dere har bekreftet, ta kontakt med Swiftcourt for å få pengene ut av hvelvet."),
 
             TransactionStepModel(
-                state: .completed,
+                state: .notStarted,
                 title: "Gratulerer med salget!",
                 body: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før».",
                 button: nil,

@@ -5,7 +5,9 @@
 import UIKit
 
 public protocol TransactionStepViewDelegate: AnyObject {
-    func transactionStepViewDidSelectActionButton(_ view: TransactionStepView, inTransactionStep step: Int)
+    func transactionStepViewDidSelectActionButton(_ view: TransactionStepView, inTransactionStep step: Int,
+                                                  withAction action: String?, withUrl urlString: String?,
+                                                  withFallbackUrl fallbackUrlString: String?)
 }
 
 public enum TransactionStepViewState: String {
@@ -34,9 +36,16 @@ public class TransactionStepView: UIView {
 
     private var step: Int
     private var model: TransactionStepViewModel
-    private var style: TransactionStepView.Style
+    private var actionButtonModel: TransactionStepButtonViewModel?
 
+    private var style: TransactionStepView.Style
     private var activeStepColor: UIColor = .bgTertiary
+
+    private var verticalStackViewLeadingAnchor: NSLayoutConstraint?
+    private var verticalStackViewTrailingAnchor: NSLayoutConstraint?
+    private var verticalStackViewTopAnchor: NSLayoutConstraint?
+
+    private var bottomAnchorConstraint: NSLayoutConstraint?
 
     private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
@@ -74,13 +83,6 @@ public class TransactionStepView: UIView {
         return view
     }()
 
-    private lazy var actionButton: Button = {
-        let button = Button(style: style.actionButtonStyle, size: style.actionButtonSize, withAutoLayout: true)
-        button.isEnabled = style.actionButtonIsEnabled
-        button.addTarget(self, action: #selector(handlePrimaryButtonTap), for: .touchUpInside)
-        return button
-    }()
-
     private lazy var detailView: UITextView = {
         let view = UITextView(withAutoLayout: true)
         view.font = style.detailFont
@@ -95,17 +97,12 @@ public class TransactionStepView: UIView {
         return view
     }()
 
-    private var verticalStackViewLeadingAnchor: NSLayoutConstraint?
-    private var verticalStackViewTrailingAnchor: NSLayoutConstraint?
-    private var verticalStackViewTopAnchor: NSLayoutConstraint?
-
-    private var bottomAnchorConstraint: NSLayoutConstraint?
-
     // MARK: - Init
 
     public init(step: Int, model: TransactionStepViewModel, withAutoLayout autoLayout: Bool = false) {
         self.step = step
         self.model = model
+        self.actionButtonModel = model.button ?? nil
         self.style = model.state.style
 
         super.init(frame: .zero)
@@ -186,19 +183,20 @@ private extension TransactionStepView {
             bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: .mediumPlusSpacing)
         }
 
-        if let buttonModel = model.button {
-            let buttonAction = buttonModel.action
+        if let buttonModel = actionButtonModel {
             let buttonText = buttonModel.text
-            let buttonStyle = buttonModel.style
-            let url = buttonModel.urlString
-            let fallbackUrl = buttonModel.fallbackUrlString
+            let buttonStyle = TransactionStepView.ActionButton(rawValue: buttonModel.style).buttonStyle
 
+            let actionButton = Button(style: buttonStyle, withAutoLayout: true)
             actionButton.setTitle(buttonText, for: .normal)
+            actionButton.isEnabled = style.actionButtonEnabled
+            actionButton.addTarget(self, action: #selector(handleActionButtonTap), for: .touchUpInside)
+
             verticalStackView.addArrangedSubview(actionButton)
 
             if model.state == .completed {
                 actionButton.contentHorizontalAlignment = .leading
-                actionButton.contentEdgeInsets = .leadingInset(.smallSpacing)
+                actionButton.contentEdgeInsets = .leadingInset(-2)
             }
 
             actionButton.setContentHuggingPriority(.required, for: .vertical)
@@ -221,7 +219,11 @@ private extension TransactionStepView {
 // MARK: - Selectors
 
 private extension TransactionStepView {
-    @objc func handlePrimaryButtonTap() {
-        delegate?.transactionStepViewDidSelectActionButton(self, inTransactionStep: step)
+    @objc func handleActionButtonTap() {
+        let buttonAction = actionButtonModel?.action
+        let buttonUrlString = actionButtonModel?.urlString
+        let buttonFallbackUrl = actionButtonModel?.fallbackUrlString
+
+//        delegate?.transactionStepViewDidSelectActionButton(self, inTransactionStep: step, withAction: action, withUrl: urlString, withFallbackUrl: fallbackUrlString)
     }
 }

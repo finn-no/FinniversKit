@@ -60,31 +60,6 @@ public extension TransactionStepView {
             }
         }
 
-        var actionButtonStyle: Button.Style {
-            switch self {
-            case .notStarted, .active:
-                return .callToAction
-            case .completed:
-                return .flat
-            }
-        }
-
-        var actionButtonSize: Button.Size {
-            switch self {
-            default:
-                return .normal
-            }
-        }
-
-        var actionButtonIsEnabled: Bool {
-            switch self {
-            case .notStarted:
-                return false
-            case .active, .completed:
-                return true
-            }
-        }
-
         var detailFont: UIFont {
             switch self {
             default:
@@ -98,6 +73,66 @@ public extension TransactionStepView {
                 return .stone
             case .active, .completed:
                 return .licorice
+            }
+        }
+
+        var actionButtonEnabled: Bool {
+            switch self {
+            case .notStarted:
+                return false
+            case .active, .completed:
+                return true
+            }
+        }
+    }
+}
+
+public extension TransactionStepView {
+    enum ActionButton: String {
+        case `default` = "default"
+        case flat = "flat"
+        case callToAction = "call_to_action"
+
+        public init(rawValue: String) {
+            switch rawValue {
+            case "default":
+                self = .default
+            case "flat":
+                self = .flat
+            case "call_to_action":
+                self = .callToAction
+            default:
+                fatalError("ActionButton style \(rawValue) is not supported")
+            }
+        }
+
+        var buttonStyle: Button.Style {
+            switch self {
+            case .default:
+                return .default
+            case .callToAction:
+                return .callToAction
+            case .flat:
+                return .flat
+            }
+        }
+    }
+}
+
+public extension TransactionStepView {
+    enum ActionButtonType: String {
+        case url = "url"
+        case seeAd = "see_ad"
+        case unknown
+
+        public init(rawValue: String) {
+            switch rawValue {
+            case "url":
+                self = .url
+            case "flat":
+                self = .seeAd
+            default:
+                self = .unknown
             }
         }
     }

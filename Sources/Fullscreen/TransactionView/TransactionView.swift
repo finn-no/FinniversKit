@@ -165,7 +165,10 @@ private extension TransactionView {
 // MARK: - TransactionStepViewDelegate
 
 extension TransactionView: TransactionStepViewDelegate {
-    public func transactionStepViewDidSelectActionButton(_ view: TransactionStepView, inTransactionStep step: Int) {
+    public func transactionStepViewDidSelectActionButton(_ view: TransactionStepView, inTransactionStep step: Int,
+                                                         withAction action: String?, withUrl urlString: String?,
+                                                         withFallbackUrl fallbackUrlString: String?) {
+
         delegate?.transactionViewDidSelectActionButton(self, inStep: step)
     }
 }
