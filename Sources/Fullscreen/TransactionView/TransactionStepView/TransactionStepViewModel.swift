@@ -8,11 +8,11 @@ public protocol TransactionStepViewModel {
     var state: TransactionStepViewState { get }
     var title: String { get }
     var body: String? { get }
-    var button: TransactionStepButtonViewModel? { get }
+    var primaryButton: TransactionStepPrimaryButtonViewModel? { get }
     var detail: String? { get }
 }
 
-public protocol TransactionStepButtonViewModel {
+public protocol TransactionStepPrimaryButtonViewModel {
     var action: String? { get set }
     var text: String { get }
     var style: String { get set }

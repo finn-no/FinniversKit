@@ -5,9 +5,9 @@
 import UIKit
 
 public protocol TransactionStepViewDelegate: AnyObject {
-    func transactionStepViewDidSelectActionButton(_ view: TransactionStepView, inTransactionStep step: Int,
-                                                  withAction action: String?, withUrl urlString: String?,
-                                                  withFallbackUrl fallbackUrlString: String?)
+    func transactionStepViewDidTapPrimaryButton(_ view: TransactionStepView, inTransactionStep step: Int,
+                                                withAction action: TransactionStepView.PrimaryButton.Action, withUrl urlString: String?,
+                                                withFallbackUrl fallbackUrlString: String?)
 }
 
 public enum TransactionStepViewState: String {
@@ -36,7 +36,7 @@ public class TransactionStepView: UIView {
 
     private var step: Int
     private var model: TransactionStepViewModel
-    private var actionButtonModel: TransactionStepButtonViewModel?
+    private var primaryButtonModel: TransactionStepPrimaryButtonViewModel?
 
     private var style: TransactionStepView.Style
     private var activeStepColor: UIColor = .bgTertiary
@@ -102,7 +102,7 @@ public class TransactionStepView: UIView {
     public init(step: Int, model: TransactionStepViewModel, withAutoLayout autoLayout: Bool = false) {
         self.step = step
         self.model = model
-        self.actionButtonModel = model.button ?? nil
+        self.primaryButtonModel = model.primaryButton ?? nil
         self.style = model.state.style
 
         super.init(frame: .zero)
@@ -180,36 +180,36 @@ private extension TransactionStepView {
             bodyView.setContentHuggingPriority(.required, for: .vertical)
             NSLayoutConstraint.activate([bodyView.trailingAnchor.constraint(equalTo: verticalStackView.trailingAnchor)])
 
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: .mediumPlusSpacing)
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: .mediumSpacing)
         }
 
-        if let buttonModel = actionButtonModel {
+        if let buttonModel = primaryButtonModel {
             let buttonText = buttonModel.text
-            let buttonStyle = TransactionStepView.ActionButton(rawValue: buttonModel.style).buttonStyle
+            let buttonStyle = TransactionStepView.PrimaryButton(rawValue: buttonModel.style).style
 
-            let actionButton = Button(style: buttonStyle, withAutoLayout: true)
-            actionButton.setTitle(buttonText, for: .normal)
-            actionButton.isEnabled = style.actionButtonEnabled
-            actionButton.addTarget(self, action: #selector(handleActionButtonTap), for: .touchUpInside)
+            let primaryButton = Button(style: buttonStyle, withAutoLayout: true)
+            primaryButton.setTitle(buttonText, for: .normal)
+            primaryButton.isEnabled = style.actionButtonEnabled
+            primaryButton.addTarget(self, action: #selector(handlePrimaryButtonTap), for: .touchUpInside)
 
-            verticalStackView.addArrangedSubview(actionButton)
+            verticalStackView.addArrangedSubview(primaryButton)
 
             if model.state == .completed {
-                actionButton.contentHorizontalAlignment = .leading
-                actionButton.contentEdgeInsets = .leadingInset(-2)
+                primaryButton.contentHorizontalAlignment = .leading
+                primaryButton.contentEdgeInsets = .leadingInset(4)
             }
 
-            actionButton.setContentHuggingPriority(.required, for: .vertical)
-            NSLayoutConstraint.activate([actionButton.heightAnchor.constraint(equalToConstant: 40)])
+            primaryButton.setContentHuggingPriority(.required, for: .vertical)
+            NSLayoutConstraint.activate([primaryButton.heightAnchor.constraint(equalToConstant: 40)])
 
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: actionButton.bottomAnchor, constant: .mediumPlusSpacing)
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .mediumPlusSpacing)
         }
 
         if let detailText = model.detail {
             detailView.text = detailText
             verticalStackView.addArrangedSubview(detailView)
 
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: detailView.bottomAnchor, constant: .mediumPlusSpacing)
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: detailView.bottomAnchor, constant: .mediumSpacing)
         }
 
         bottomAnchorConstraint?.isActive = true
@@ -219,11 +219,12 @@ private extension TransactionStepView {
 // MARK: - Selectors
 
 private extension TransactionStepView {
-    @objc func handleActionButtonTap() {
-        let buttonAction = actionButtonModel?.action
-        let buttonUrlString = actionButtonModel?.urlString
-        let buttonFallbackUrl = actionButtonModel?.fallbackUrlString
+    @objc func handlePrimaryButtonTap() {
+        let action = PrimaryButton.Action(rawValue: primaryButtonModel?.action ?? "unknown")
+        let urlString = primaryButtonModel?.urlString
+        let fallbackUrlString = primaryButtonModel?.fallbackUrlString
 
-//        delegate?.transactionStepViewDidSelectActionButton(self, inTransactionStep: step, withAction: action, withUrl: urlString, withFallbackUrl: fallbackUrlString)
+        delegate?.transactionStepViewDidTapPrimaryButton(self, inTransactionStep: step, withAction: action,
+                                                         withUrl: urlString, withFallbackUrl: fallbackUrlString)
     }
 }

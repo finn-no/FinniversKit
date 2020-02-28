@@ -5,7 +5,9 @@
 import Foundation
 
 public protocol TransactionViewDelegate: AnyObject {
-    func transactionViewDidSelectActionButton(_ view: TransactionView, inStep step: Int)
+    func transactionViewDidSelectPrimaryButton(_ view: TransactionView, inTransactionStep step: Int,
+                                               withAction action: TransactionStepView.PrimaryButton.Action, withUrl urlString: String?,
+                                               withFallbackUrl fallbackUrlString: String?)
 }
 
 public protocol TransactionViewDataSource: AnyObject {
@@ -94,7 +96,7 @@ private extension TransactionView {
             titleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: 40),
 
-            verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.largeSpacing),
             verticalStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .largeSpacing),
             verticalStackView.bottomAnchor.constraint(equalTo: scrollableContentView.bottomAnchor),
         ])
@@ -103,7 +105,7 @@ private extension TransactionView {
             guard let model = dataSource?.transactionViewModelForIndex(self, forStep: index) else { return }
 
             addTransactionStepView(index, model)
-            addTransactionStepDots(index)
+            addTransactionStepDot(index)
         }
 
         guard let stepDot = stepDots.first else { return }
@@ -121,7 +123,7 @@ private extension TransactionView {
         verticalStackView.addArrangedSubview(transactionStepView)
     }
 
-    private func addTransactionStepDots(_ step: Int) {
+    private func addTransactionStepDot(_ step: Int) {
         let stepDot = TransactionStepDot(step: step)
         stepDots.append(stepDot)
 
@@ -165,10 +167,10 @@ private extension TransactionView {
 // MARK: - TransactionStepViewDelegate
 
 extension TransactionView: TransactionStepViewDelegate {
-    public func transactionStepViewDidSelectActionButton(_ view: TransactionStepView, inTransactionStep step: Int,
-                                                         withAction action: String?, withUrl urlString: String?,
-                                                         withFallbackUrl fallbackUrlString: String?) {
+    public func transactionStepViewDidTapPrimaryButton(_ view: TransactionStepView, inTransactionStep step: Int,
+                                                       withAction action: TransactionStepView.PrimaryButton.Action, withUrl urlString: String?,
+                                                       withFallbackUrl fallbackUrlString: String?) {
 
-        delegate?.transactionViewDidSelectActionButton(self, inStep: step)
+        delegate?.transactionViewDidSelectPrimaryButton(self, inTransactionStep: step, withAction: action, withUrl: urlString, withFallbackUrl: fallbackUrlString)
     }
 }

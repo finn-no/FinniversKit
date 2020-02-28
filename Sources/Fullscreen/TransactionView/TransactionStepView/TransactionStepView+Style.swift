@@ -88,7 +88,7 @@ public extension TransactionStepView {
 }
 
 public extension TransactionStepView {
-    enum ActionButton: String {
+    enum PrimaryButton: String {
         case `default` = "default"
         case flat = "flat"
         case callToAction = "call_to_action"
@@ -106,7 +106,7 @@ public extension TransactionStepView {
             }
         }
 
-        var buttonStyle: Button.Style {
+        var style: Button.Style {
             switch self {
             case .default:
                 return .default
@@ -119,8 +119,8 @@ public extension TransactionStepView {
     }
 }
 
-public extension TransactionStepView {
-    enum ActionButtonType: String {
+public extension TransactionStepView.PrimaryButton {
+    enum Action: String {
         case url = "url"
         case seeAd = "see_ad"
         case unknown
@@ -129,7 +129,7 @@ public extension TransactionStepView {
             switch rawValue {
             case "url":
                 self = .url
-            case "flat":
+            case "see_ad":
                 self = .seeAd
             default:
                 self = .unknown
