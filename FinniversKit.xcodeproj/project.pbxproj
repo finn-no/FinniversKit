@@ -240,6 +240,7 @@
 		6266C0752208235000FB8004 /* AdManagementDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6266C0742208235000FB8004 /* AdManagementDemoView.swift */; };
 		62AAB23A23278087007766E6 /* RadioButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AAB23923278087007766E6 /* RadioButtonTableViewCell.swift */; };
 		62AAB23C2327901D007766E6 /* RadioButtonCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AAB23B2327901D007766E6 /* RadioButtonCellDemoView.swift */; };
+		68AE01E84A4CA1BC83B340EE /* FavoriteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AE0BC04985EF5EE34564D3 /* FavoriteButtonView.swift */; };
 		8908E83622BD0CA100ED671C /* MessageInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E83522BD0CA100ED671C /* MessageInputTextView.swift */; };
 		8908E84922C0C3C600ED671C /* MessageFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84722C0C2F900ED671C /* MessageFormViewController.swift */; };
 		8908E84D22C0D11400ED671C /* MessageFormToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84B22C0D10B00ED671C /* MessageFormToolbar.swift */; };
@@ -894,6 +895,7 @@
 		6266C0742208235000FB8004 /* AdManagementDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdManagementDemoView.swift; sourceTree = "<group>"; };
 		62AAB23923278087007766E6 /* RadioButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonTableViewCell.swift; sourceTree = "<group>"; };
 		62AAB23B2327901D007766E6 /* RadioButtonCellDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonCellDemoView.swift; sourceTree = "<group>"; };
+		68AE0BC04985EF5EE34564D3 /* FavoriteButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteButtonView.swift; sourceTree = "<group>"; };
 		8908E83522BD0CA100ED671C /* MessageInputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputTextView.swift; sourceTree = "<group>"; };
 		8908E84722C0C2F900ED671C /* MessageFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormViewController.swift; sourceTree = "<group>"; };
 		8908E84B22C0D10B00ED671C /* MessageFormToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormToolbar.swift; sourceTree = "<group>"; };
@@ -1849,6 +1851,7 @@
 				08E9F54E2341FBC300943E5D /* VisibilityDrivenTitleView */,
 				9A37D05E50689037A6F118B1 /* ContractActionView */,
 				9A37DAE827DC33BADB4C9AAC /* ObjectPageTitleView */,
+				68AE0C83EEDB0010A3AF0F5C /* FavoriteButton */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2362,6 +2365,14 @@
 				6266C0742208235000FB8004 /* AdManagementDemoView.swift */,
 			);
 			path = AdManagement;
+			sourceTree = "<group>";
+		};
+		68AE0C83EEDB0010A3AF0F5C /* FavoriteButton */ = {
+			isa = PBXGroup;
+			children = (
+				68AE0BC04985EF5EE34564D3 /* FavoriteButtonView.swift */,
+			);
+			path = FavoriteButton;
 			sourceTree = "<group>";
 		};
 		8908E83422BD0C8700ED671C /* MessageForm */ = {
@@ -5376,6 +5387,7 @@
 				9A37D44ADD20BEDD3F754D62 /* ContractActionViewModel.swift in Sources */,
 				9A37DB164E9BC6E1EBB22504 /* ObjectPageTitleView.swift in Sources */,
 				9A37D06D45CCD48B76F0BAEF /* RibbonViewModel.swift in Sources */,
+				68AE01E84A4CA1BC83B340EE /* FavoriteButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
