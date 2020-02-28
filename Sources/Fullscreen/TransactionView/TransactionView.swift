@@ -5,6 +5,7 @@
 import Foundation
 
 public protocol TransactionViewDelegate: AnyObject {
+    func transactionViewDidBeginRefreshing(_ refreshControl: RefreshControl)
     func transactionViewDidSelectPrimaryButton(_ view: TransactionView, inTransactionStep step: Int,
                                                withAction action: TransactionStepView.PrimaryButton.Action, withUrl urlString: String?,
                                                withFallbackUrl fallbackUrlString: String?)
@@ -30,7 +31,19 @@ public class TransactionView: UIView {
     private var stepDots = [TransactionStepDot]()
     private var connectors = [TransactionStepDotConnector]()
 
-    private lazy var scrollView: UIScrollView = UIScrollView(withAutoLayout: true)
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = RefreshControl(frame: .zero)
+        refreshControl.delegate = self
+        return refreshControl
+    }()
+
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView(withAutoLayout: true)
+        scrollView.alwaysBounceVertical = true
+        scrollView.refreshControl = refreshControl
+        return scrollView
+    }()
+
     private lazy var scrollableContentView: UIView = UIView(withAutoLayout: true)
     private lazy var titleLabel: Label = Label(style: .title1, withAutoLayout: true)
 
@@ -170,7 +183,14 @@ extension TransactionView: TransactionStepViewDelegate {
     public func transactionStepViewDidTapPrimaryButton(_ view: TransactionStepView, inTransactionStep step: Int,
                                                        withAction action: TransactionStepView.PrimaryButton.Action, withUrl urlString: String?,
                                                        withFallbackUrl fallbackUrlString: String?) {
-
         delegate?.transactionViewDidSelectPrimaryButton(self, inTransactionStep: step, withAction: action, withUrl: urlString, withFallbackUrl: fallbackUrlString)
+    }
+}
+
+// MARK: - RefreshControlDelegate
+
+extension TransactionView: RefreshControlDelegate {
+    public func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl) {
+        delegate?.transactionViewDidBeginRefreshing(refreshControl)
     }
 }
