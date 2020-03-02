@@ -17,9 +17,9 @@ public class OrderSummaryDemoView: UIView {
     private func setup() {
         addSubview(orderSummaryView)
         NSLayoutConstraint.activate([
-            orderSummaryView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumSpacing),
-            orderSummaryView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumSpacing),
-            orderSummaryView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing),
+            orderSummaryView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingS),
+            orderSummaryView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingS),
+            orderSummaryView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS),
             orderSummaryView.heightAnchor.constraint(equalToConstant: orderSummaryView.height)
         ])
     }

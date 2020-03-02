@@ -144,7 +144,7 @@ extension NotificationCenterView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         guard section.isLastSection(in: tableView) else { return .leastNormalMagnitude }
-        return .veryLargeSpacing
+        return .spacingXXL
     }
 
     public func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {

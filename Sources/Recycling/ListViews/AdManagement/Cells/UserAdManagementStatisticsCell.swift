@@ -115,9 +115,9 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
             separatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            headerStackView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: .mediumSpacing),
-            headerStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            headerStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            headerStackView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: .spacingS),
+            headerStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            headerStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
             headerStackView.bottomAnchor.constraint(equalTo: stackView.topAnchor),
 
             stackView.topAnchor.constraint(equalTo: headerStackView.bottomAnchor),
@@ -149,14 +149,14 @@ extension UserAdManagementStatisticsCell {
             contentHorizontalAlignment = .right
             contentVerticalAlignment = .center
             setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-            titleEdgeInsets = UIEdgeInsets(trailing: (.smallSpacing + iconSize))
+            titleEdgeInsets = UIEdgeInsets(trailing: (.spacingXS + iconSize))
 
             addSubview(iconImageView)
 
             guard let titleLabel = titleLabel else { return }
 
             NSLayoutConstraint.activate([
-                iconImageView.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: .smallSpacing),
+                iconImageView.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: .spacingXS),
                 iconImageView.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
                 iconImageView.widthAnchor.constraint(equalToConstant: iconSize),
                 iconImageView.heightAnchor.constraint(equalToConstant: iconSize),

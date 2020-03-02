@@ -82,17 +82,17 @@ class RootViewController: UIViewController {
         }
 
         NSLayoutConstraint.activate([
-            expandButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
-            expandButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
-            expandButton.topAnchor.constraint(equalTo: view.topAnchor, constant: .mediumSpacing),
+            expandButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .spacingXL),
+            expandButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.spacingXL),
+            expandButton.topAnchor.constraint(equalTo: view.topAnchor, constant: .spacingS),
 
-            compactButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
-            compactButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
+            compactButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .spacingXL),
+            compactButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.spacingXL),
             compactButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0),
 
-            dismissButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
-            dismissButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
-            dismissButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -.veryLargeSpacing),
+            dismissButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .spacingXL),
+            dismissButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.spacingXL),
+            dismissButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -.spacingXXL),
         ])
     }
 
@@ -167,25 +167,25 @@ class BottomSheetMechanicsDemoViewController: UIViewController {
         view.addSubview(presentCustomDraggableButton)
 
         NSLayoutConstraint.activate([
-            requireConfirmationOnDragSwitch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
-            requireConfirmationOnDragSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
-            requireConfirmationOnDragSwitch.bottomAnchor.constraint(equalTo: presentAllDraggableButton.topAnchor, constant: -.veryLargeSpacing),
+            requireConfirmationOnDragSwitch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .spacingXL),
+            requireConfirmationOnDragSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.spacingXL),
+            requireConfirmationOnDragSwitch.bottomAnchor.constraint(equalTo: presentAllDraggableButton.topAnchor, constant: -.spacingXXL),
 
-            presentAllDraggableButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
-            presentAllDraggableButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
-            presentAllDraggableButton.bottomAnchor.constraint(equalTo: presentNavBarDraggableButton.topAnchor, constant: -.largeSpacing),
+            presentAllDraggableButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .spacingXL),
+            presentAllDraggableButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.spacingXL),
+            presentAllDraggableButton.bottomAnchor.constraint(equalTo: presentNavBarDraggableButton.topAnchor, constant: -.spacingXL),
 
-            presentNavBarDraggableButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
-            presentNavBarDraggableButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
-            presentNavBarDraggableButton.bottomAnchor.constraint(equalTo: presentTopAreaDraggableButton.topAnchor, constant: -.largeSpacing),
+            presentNavBarDraggableButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .spacingXL),
+            presentNavBarDraggableButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.spacingXL),
+            presentNavBarDraggableButton.bottomAnchor.constraint(equalTo: presentTopAreaDraggableButton.topAnchor, constant: -.spacingXL),
 
-            presentTopAreaDraggableButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
-            presentTopAreaDraggableButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
-            presentTopAreaDraggableButton.bottomAnchor.constraint(equalTo: presentCustomDraggableButton.topAnchor, constant: -.largeSpacing),
+            presentTopAreaDraggableButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .spacingXL),
+            presentTopAreaDraggableButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.spacingXL),
+            presentTopAreaDraggableButton.bottomAnchor.constraint(equalTo: presentCustomDraggableButton.topAnchor, constant: -.spacingXL),
 
-            presentCustomDraggableButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
-            presentCustomDraggableButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
-            presentCustomDraggableButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -.largeSpacing)
+            presentCustomDraggableButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .spacingXL),
+            presentCustomDraggableButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.spacingXL),
+            presentCustomDraggableButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -.spacingXL)
         ])
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap))

@@ -117,20 +117,20 @@ public class DialogueView: UIView {
         addSubview(primaryButton)
 
         NSLayoutConstraint.activate([
-            title.topAnchor.constraint(equalTo: topAnchor, constant: .largeSpacing),
-            title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            title.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXL),
+            title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
+            title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
 
-            detail.topAnchor.constraint(equalTo: title.bottomAnchor, constant: .mediumSpacing),
-            detail.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            detail.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            detail.topAnchor.constraint(equalTo: title.bottomAnchor, constant: .spacingS),
+            detail.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
+            detail.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
 
-            primaryButton.topAnchor.constraint(equalTo: detail.bottomAnchor, constant: .mediumLargeSpacing),
+            primaryButton.topAnchor.constraint(equalTo: detail.bottomAnchor, constant: .spacingM),
             primaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            link.topAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .mediumSpacing),
-            link.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            link.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            link.topAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .spacingS),
+            link.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
+            link.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
         ])
     }
 
@@ -149,9 +149,9 @@ public class DialogueView: UIView {
         var moreSpacing: CGFloat = 0
 
         if UIDevice.isSmallScreen() {
-            moreSpacing = .largeSpacing
+            moreSpacing = .spacingXL
         } else if UIDevice.isLandscape() {
-            moreSpacing = -.largeSpacing - 10
+            moreSpacing = -.spacingXL - 10
         }
 
         return boundingBox.height - moreSpacing

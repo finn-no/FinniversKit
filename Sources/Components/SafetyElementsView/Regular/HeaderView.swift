@@ -37,7 +37,7 @@ extension SafetyElementsView {
             let stackView = UIStackView(withAutoLayout: true)
             stackView.axis = .vertical
             stackView.alignment = .center
-            stackView.spacing = .mediumSpacing
+            stackView.spacing = .spacingS
             stackView.isUserInteractionEnabled = true
             return stackView
         }()
@@ -55,8 +55,8 @@ extension SafetyElementsView {
             let view = UIView(withAutoLayout: true)
             view.backgroundColor = .bgTertiary
             view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-            view.layer.cornerRadius = .mediumSpacing
-            view.layoutMargins = UIEdgeInsets(vertical: .mediumSpacing, horizontal: .mediumLargeSpacing)
+            view.layer.cornerRadius = .spacingS
+            view.layoutMargins = UIEdgeInsets(vertical: .spacingS, horizontal: .spacingM)
             return view
         }()
 
@@ -78,8 +78,8 @@ extension SafetyElementsView {
             titleLabel.fillInSuperviewLayoutMargins()
 
             NSLayoutConstraint.activate([
-                iconImageView.heightAnchor.constraint(equalToConstant: .mediumLargeSpacing * 1.5),
-                iconImageView.widthAnchor.constraint(equalToConstant: .mediumLargeSpacing * 1.5),
+                iconImageView.heightAnchor.constraint(equalToConstant: .spacingM * 1.5),
+                iconImageView.widthAnchor.constraint(equalToConstant: .spacingM * 1.5),
             ])
 
             outerStackView.addArrangedSubview(iconImageView)

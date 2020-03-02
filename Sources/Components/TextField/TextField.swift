@@ -249,23 +249,23 @@ public class TextField: UIView {
             typeLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             typeLabel.topAnchor.constraint(equalTo: topAnchor),
 
-            textFieldBackgroundView.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: .smallSpacing),
+            textFieldBackgroundView.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: .spacingXS),
             textFieldBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
             textFieldBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            textField.topAnchor.constraint(equalTo: textFieldBackgroundView.topAnchor, constant: .mediumSpacing + .smallSpacing),
-            textField.leadingAnchor.constraint(equalTo: textFieldBackgroundView.leadingAnchor, constant: .mediumSpacing),
-            textField.trailingAnchor.constraint(equalTo: textFieldBackgroundView.trailingAnchor, constant: -.mediumSpacing),
-            textField.bottomAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: -.mediumSpacing + -.smallSpacing),
+            textField.topAnchor.constraint(equalTo: textFieldBackgroundView.topAnchor, constant: .spacingS + .spacingXS),
+            textField.leadingAnchor.constraint(equalTo: textFieldBackgroundView.leadingAnchor, constant: .spacingS),
+            textField.trailingAnchor.constraint(equalTo: textFieldBackgroundView.trailingAnchor, constant: -.spacingS),
+            textField.bottomAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: -.spacingS + -.spacingXS),
 
             underline.leadingAnchor.constraint(equalTo: leadingAnchor),
             underline.trailingAnchor.constraint(equalTo: trailingAnchor),
             underline.bottomAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor),
 
-            errorIconImageView.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: .smallSpacing),
+            errorIconImageView.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: .spacingXS),
             errorIconImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
 
-            helpTextLabel.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: .smallSpacing),
+            helpTextLabel.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: .spacingXS),
             helpTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             helpTextLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
@@ -362,7 +362,7 @@ public class TextField: UIView {
 
         if isHelpTextForErrors() {
             if shouldDisplayErrorHelpText() {
-                helpTextLabelLeadingConstraint?.constant = errorIconImageView.frame.size.width + .smallSpacing
+                helpTextLabelLeadingConstraint?.constant = errorIconImageView.frame.size.width + .spacingXS
             } else {
                 helpTextLabelLeadingConstraint?.constant = 0.0
             }

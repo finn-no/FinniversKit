@@ -142,11 +142,11 @@ extension SettingDetailsView: UIScrollViewDelegate {
 // MARK: - Private methods
 private extension SettingDetailsView {
     var scrollViewBottomInset: CGFloat {
-        bottomInset + 44 + .largeSpacing
+        bottomInset + 44 + .spacingXL
     }
 
     var bottomInset: CGFloat {
-        UIView.windowSafeAreaInsets.bottom + .mediumLargeSpacing
+        UIView.windowSafeAreaInsets.bottom + .spacingM
     }
 
     @objc func secondaryButtonTapped() {
@@ -181,18 +181,18 @@ private extension SettingDetailsView {
         scrollView.fillInSuperview()
 
         NSLayoutConstraint.activate([
-            iconView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: .mediumSpacing + .mediumLargeSpacing),
+            iconView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: .spacingS + .spacingM),
             iconView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
 
-            titleLabel.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: .mediumLargeSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -.mediumLargeSpacing),
-            titleLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.largeSpacing),
+            titleLabel.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: .spacingM),
+            titleLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .spacingM),
+            titleLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -.spacingM),
+            titleLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.spacingXL),
 
-            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
-            textLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .mediumLargeSpacing),
-            textLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -.mediumLargeSpacing),
-            textLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.largeSpacing),
+            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
+            textLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .spacingM),
+            textLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -.spacingM),
+            textLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.spacingXL),
             textLabel.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -44),
 
             secondaryButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
@@ -200,11 +200,11 @@ private extension SettingDetailsView {
 
             shadowView.leadingAnchor.constraint(equalTo: leadingAnchor),
             shadowView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            shadowView.topAnchor.constraint(equalTo: primaryButton.topAnchor, constant: -.mediumLargeSpacing),
+            shadowView.topAnchor.constraint(equalTo: primaryButton.topAnchor, constant: -.spacingM),
             shadowView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            primaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            primaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
             primaryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -bottomInset),
         ])
     }

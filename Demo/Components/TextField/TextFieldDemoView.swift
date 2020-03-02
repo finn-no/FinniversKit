@@ -43,25 +43,25 @@ public class TextFieldDemoView: UIView {
         addSubview(normalWithHelpTextTextField)
 
         NSLayoutConstraint.activate([
-            emailTextField.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            emailTextField.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: .mediumLargeSpacing),
-            passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: .spacingM),
+            passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
-            normalTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: .mediumLargeSpacing),
-            normalTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            normalTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            normalTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: .spacingM),
+            normalTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            normalTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
-            normalWithHelpTextTextField.topAnchor.constraint(equalTo: normalTextField.bottomAnchor, constant: .mediumLargeSpacing),
-            normalWithHelpTextTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            normalWithHelpTextTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            normalWithHelpTextTextField.topAnchor.constraint(equalTo: normalTextField.bottomAnchor, constant: .spacingM),
+            normalWithHelpTextTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            normalWithHelpTextTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
-            multilineTextField.topAnchor.constraint(equalTo: normalWithHelpTextTextField.bottomAnchor, constant: .mediumLargeSpacing),
-            multilineTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            multilineTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing)
+            multilineTextField.topAnchor.constraint(equalTo: normalWithHelpTextTextField.bottomAnchor, constant: .spacingM),
+            multilineTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            multilineTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
         ])
     }
 }

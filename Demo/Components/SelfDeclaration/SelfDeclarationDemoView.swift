@@ -22,10 +22,10 @@ class SelfDeclarationDemoView: UIView {
         scrollView.addSubview(selfDeclarationView)
 
         NSLayoutConstraint.activate([
-            selfDeclarationView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            selfDeclarationView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-            selfDeclarationView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: .mediumLargeSpacing),
-            selfDeclarationView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -.mediumLargeSpacing),
+            selfDeclarationView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            selfDeclarationView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            selfDeclarationView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: .spacingM),
+            selfDeclarationView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -.spacingM),
         ])
 
         selfDeclarationView.configure(with: .default)

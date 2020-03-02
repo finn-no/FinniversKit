@@ -64,8 +64,8 @@ public class ChristmasWishListView: UIView {
     private lazy var stackedButtons: UIView = {
         let view = UIView(withAutoLayout: true)
 
-        let margin: CGFloat = .mediumLargeSpacing * 1.5
-        view.layoutMargins = UIEdgeInsets(top: .mediumSpacing, leading: margin, bottom: margin, trailing: margin)
+        let margin: CGFloat = .spacingM * 1.5
+        view.layoutMargins = UIEdgeInsets(top: .spacingS, leading: margin, bottom: margin, trailing: margin)
 
         view.addSubview(firstPageButton)
         view.addSubview(secondPageButton)

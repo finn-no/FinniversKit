@@ -11,5 +11,13 @@
 + (CGFloat)largeSpacing;
 + (CGFloat)veryLargeSpacing;
 
++ (CGFloat)spacingXXS;
++ (CGFloat)spacingXS;
++ (CGFloat)spacingS;
++ (CGFloat)spacingM;
++ (CGFloat)spacingL;
++ (CGFloat)spacingXL;
++ (CGFloat)spacingXXL;
+
 @end
 

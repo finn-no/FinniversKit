@@ -47,7 +47,7 @@ public class LoginEntryView: UIView {
         button.tintColor = .stone
         button.isHidden = true
         button.addTarget(self, action: #selector(handleTapOnSettingsButton), for: .touchUpInside)
-        button.contentEdgeInsets = UIEdgeInsets(all: .mediumLargeSpacing)
+        button.contentEdgeInsets = UIEdgeInsets(all: .spacingM)
 
         return button
     }()
@@ -102,7 +102,7 @@ public class LoginEntryView: UIView {
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.heightAnchor.constraint(
-                equalTo: loginDialogue.widthAnchor, constant: .largeSpacing, priority: .defaultLow
+                equalTo: loginDialogue.widthAnchor, constant: .spacingXL, priority: .defaultLow
             ),
             contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
         ])
@@ -116,8 +116,8 @@ public class LoginEntryView: UIView {
             ]
         } else {
             dialogueConstraints = [
-                loginDialogue.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-                loginDialogue.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+                loginDialogue.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+                loginDialogue.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
                 loginDialogue.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             ]
         }

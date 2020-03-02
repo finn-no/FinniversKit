@@ -38,6 +38,6 @@ final class AddFavoriteFolderViewCell: BasicTableViewCell {
             button.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
 
-        separatorInset = .leadingInset(.mediumLargeSpacing * 2 + AddFavoriteFolderButton.imageSize)
+        separatorInset = .leadingInset(.spacingM * 2 + AddFavoriteFolderButton.imageSize)
     }
 }

@@ -67,14 +67,14 @@ private extension AdConfirmationSummaryView {
         addSubview(titleLabel)
         NSLayoutConstraint.activate([
             titleLabel.heightAnchor.constraint(equalToConstant: 32),
-            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
+            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingS),
+            titleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM),
             titleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
         ])
 
         for line in model.orderLines {
             let checkmarkView = CheckmarkTitleView(title: line, withAutoLayout: true)
-            summaryView.setCustomSpacing(.mediumSpacing, after: checkmarkView)
+            summaryView.setCustomSpacing(.spacingS, after: checkmarkView)
 
             summaryView.addArrangedSubview(checkmarkView)
             summaryView.addConstraint(checkmarkView.heightAnchor.constraint(equalToConstant: 32))
@@ -82,9 +82,9 @@ private extension AdConfirmationSummaryView {
 
         addSubview(summaryView)
         NSLayoutConstraint.activate([
-            summaryView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
-            summaryView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumSpacing),
-            summaryView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing)
+            summaryView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
+            summaryView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingS),
+            summaryView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS)
         ])
 
         addSubview(seperator)
@@ -98,13 +98,13 @@ private extension AdConfirmationSummaryView {
         addSubview(priceLabel)
         addSubview(totalLabel)
         NSLayoutConstraint.activate([
-            priceLabel.topAnchor.constraint(equalTo: seperator.bottomAnchor, constant: .mediumLargeSpacing),
-            priceLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
+            priceLabel.topAnchor.constraint(equalTo: seperator.bottomAnchor, constant: .spacingM),
+            priceLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM),
             priceLabel.trailingAnchor.constraint(equalTo: centerXAnchor),
 
-            totalLabel.topAnchor.constraint(equalTo: seperator.bottomAnchor, constant: .mediumLargeSpacing),
+            totalLabel.topAnchor.constraint(equalTo: seperator.bottomAnchor, constant: .spacingM),
             totalLabel.leadingAnchor.constraint(equalTo: priceLabel.trailingAnchor),
-            totalLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumLargeSpacing),
+            totalLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingM),
         ])
     }
 }

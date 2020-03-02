@@ -71,7 +71,7 @@ public class PaymentOptionsListViewCell: UITableViewCell {
         }
 
         showSelectionCircle(isPreselected)
-        separatorInset = .leadingInset(.mediumLargeSpacing)
+        separatorInset = .leadingInset(.spacingM)
     }
 
     public func showSeperator(_ shouldShow: Bool) {
@@ -99,16 +99,16 @@ public class PaymentOptionsListViewCell: UITableViewCell {
         contentView.addSubview(seperator)
 
         NSLayoutConstraint.activate([
-            selectionBox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
+            selectionBox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingS),
             selectionBox.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            selectionBox.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
+            selectionBox.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM),
             selectionBox.widthAnchor.constraint(lessThanOrEqualToConstant: 24),
 
-            stackView.leadingAnchor.constraint(equalTo: selectionBox.trailingAnchor, constant: .mediumLargeSpacing),
-            stackView.trailingAnchor.constraint(lessThanOrEqualTo: detailLabel.leadingAnchor, constant: -.mediumSpacing),
+            stackView.leadingAnchor.constraint(equalTo: selectionBox.trailingAnchor, constant: .spacingM),
+            stackView.trailingAnchor.constraint(lessThanOrEqualTo: detailLabel.leadingAnchor, constant: -.spacingS),
             stackView.centerYAnchor.constraint(equalTo: selectionBox.centerYAnchor),
 
-            detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
             detailLabel.topAnchor.constraint(equalTo: stackView.topAnchor),
             detailLabel.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
 

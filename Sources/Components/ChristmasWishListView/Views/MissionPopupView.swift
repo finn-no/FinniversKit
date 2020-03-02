@@ -33,7 +33,7 @@ public class MissionPopupView: UIView {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
         scrollView.bounces = true
-        scrollView.contentInset = UIEdgeInsets(bottom: .largeSpacing)
+        scrollView.contentInset = UIEdgeInsets(bottom: .spacingXL)
         scrollView.delaysContentTouches = false
         scrollView.delegate = self
         return scrollView
@@ -97,8 +97,8 @@ public class MissionPopupView: UIView {
             scrollableContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             scrollableContentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
 
-            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-            closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
 
             scrollView.topAnchor.constraint(equalTo: topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),

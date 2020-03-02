@@ -74,7 +74,7 @@ public final class PrimingView: UIView {
         addSubview(footerView)
 
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: topAnchor, constant: .largeSpacing),
+            headerView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXL),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
 

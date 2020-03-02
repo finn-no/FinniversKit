@@ -24,7 +24,7 @@ class NativeAdvertRibbon: UIView {
         view.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         view.layer.borderWidth = 1
         view.layer.borderColor = .tableViewSeparator
-        view.layer.cornerRadius = .smallSpacing
+        view.layer.cornerRadius = .spacingXS
         return view
     }()
 
@@ -66,12 +66,12 @@ class NativeAdvertRibbon: UIView {
             typeLabelContainer.topAnchor.constraint(equalTo: topAnchor),
             typeLabelContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
             typeLabelContainer.bottomAnchor.constraint(equalTo: bottomAnchor),
-            typeLabelContainer.trailingAnchor.constraint(equalTo: companyLabel.leadingAnchor, constant: -.smallSpacing),
+            typeLabelContainer.trailingAnchor.constraint(equalTo: companyLabel.leadingAnchor, constant: -.spacingXS),
 
-            typeLabel.topAnchor.constraint(equalTo: typeLabelContainer.topAnchor, constant: .verySmallSpacing),
-            typeLabel.leadingAnchor.constraint(equalTo: typeLabelContainer.leadingAnchor, constant: .smallSpacing),
-            typeLabel.bottomAnchor.constraint(equalTo: typeLabelContainer.bottomAnchor, constant: -.verySmallSpacing),
-            typeLabel.trailingAnchor.constraint(equalTo: typeLabelContainer.trailingAnchor, constant: -.verySmallSpacing),
+            typeLabel.topAnchor.constraint(equalTo: typeLabelContainer.topAnchor, constant: .spacingXXS),
+            typeLabel.leadingAnchor.constraint(equalTo: typeLabelContainer.leadingAnchor, constant: .spacingXS),
+            typeLabel.bottomAnchor.constraint(equalTo: typeLabelContainer.bottomAnchor, constant: -.spacingXXS),
+            typeLabel.trailingAnchor.constraint(equalTo: typeLabelContainer.trailingAnchor, constant: -.spacingXXS),
 
             companyLabel.centerYAnchor.constraint(equalTo: typeLabelContainer.centerYAnchor),
             companyLabel.trailingAnchor.constraint(equalTo: trailingAnchor),

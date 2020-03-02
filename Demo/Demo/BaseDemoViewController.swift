@@ -119,7 +119,7 @@ public class BaseDemoViewController<View: UIView>: UIViewController, Containable
                 view.addSubview(button)
                 NSLayoutConstraint.activate([
                     button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                    button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -.veryLargeSpacing)
+                    button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -.spacingXXL)
                 ])
             case .doubleTap:
                 let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))

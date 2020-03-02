@@ -10,7 +10,7 @@ public extension FloatingButton {
         button.primaryBackgroundColor = .cherry
         button.highlightedBackgroundColor = UIColor.cherry.withAlphaComponent(0.8)
         button.tintColor = .milk
-        button.layer.borderWidth = .smallSpacing
+        button.layer.borderWidth = .spacingXS
         button.layer.borderColor = .milk
         button.setImage(UIImage(named: .favoritesXmasButton).withRenderingMode(.alwaysTemplate), for: .normal)
 

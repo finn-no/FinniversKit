@@ -46,10 +46,10 @@ public final class FooterButtonView: TopShadowView {
         addSubview(button)
 
         let insets = UIEdgeInsets(
-            top: .mediumLargeSpacing,
-            leading: .mediumLargeSpacing,
-            bottom: -.mediumLargeSpacing,
-            trailing: -.mediumLargeSpacing
+            top: .spacingM,
+            leading: .spacingM,
+            bottom: -.spacingM,
+            trailing: -.spacingM
         )
 
         button.fillInSuperview(insets: insets)

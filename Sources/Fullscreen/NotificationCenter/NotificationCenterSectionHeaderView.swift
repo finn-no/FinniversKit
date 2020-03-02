@@ -75,7 +75,7 @@ class NotificationCenterSectionHeaderView: UITableViewHeaderFooterView {
         if let title = model?.title {
             titleLabel.text = title
             titleLabel.isHidden = false
-            stackViewTopConstraint.constant = .largeSpacing
+            stackViewTopConstraint.constant = .spacingXL
         } else {
             titleLabel.isHidden = true
             stackViewTopConstraint.constant = 0
@@ -97,8 +97,8 @@ class NotificationCenterSectionHeaderView: UITableViewHeaderFooterView {
 
         NSLayoutConstraint.activate([
             stackViewTopConstraint,
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
 
             separatorView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
             separatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
