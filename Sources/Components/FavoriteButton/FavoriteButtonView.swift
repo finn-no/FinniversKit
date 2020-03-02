@@ -36,6 +36,7 @@ public class FavoriteButtonView: UIView {
         stackView.axis = .vertical
         stackView.alignment = .top
         stackView.distribution = .equalSpacing
+        stackView.spacing = .verySmallSpacing
         return stackView
     }()
 
@@ -49,7 +50,8 @@ public class FavoriteButtonView: UIView {
     }()
 
     private lazy var subtitleLabel: Label = {
-        let label = Label(style: .caption, withAutoLayout: true)
+        let label = Label(style: .detail, withAutoLayout: true)
+        label.textColor = .textSecondary
         return label
     }()
 
