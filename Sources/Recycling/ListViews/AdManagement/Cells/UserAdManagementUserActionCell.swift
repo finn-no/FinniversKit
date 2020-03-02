@@ -149,50 +149,50 @@ public class UserAdManagementUserActionCell: UITableViewCell {
         let hairLineSize = 1.0/UIScreen.main.scale
         let missingMagicNumberSpacing: CGFloat = 24
         NSLayoutConstraint.activate([
-            separator.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: .mediumLargeSpacing),
+            separator.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: .spacingM),
             separator.topAnchor.constraint(equalTo: contentView.topAnchor),
             separator.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             separator.heightAnchor.constraint(equalToConstant: hairLineSize),
-            iconView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            iconView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             iconView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconView.widthAnchor.constraint(equalToConstant: missingMagicNumberSpacing),
             iconView.heightAnchor.constraint(equalToConstant: missingMagicNumberSpacing),
             titleLabel.leadingAnchor.constraint(equalTo: separator.leadingAnchor),
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 48)
             ])
 
         // The chevron is smaller than elsewhere, but this is by design. I guess we'll disuss this
         // while iterating, prior to release, ¯\_(ツ)_/¯
         let chevronSize: CGFloat = 16
-        chevronConstraints = [ chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+        chevronConstraints = [ chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
                                chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                                chevronView.widthAnchor.constraint(equalToConstant: chevronSize),
                                chevronView.heightAnchor.constraint(equalToConstant: chevronSize),
-                               titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: -.mediumSpacing)
+                               titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: -.spacingS)
         ]
-        toggleControlConstraints = [ toggle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+        toggleControlConstraints = [ toggle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
                               toggle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                              titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: toggle.leadingAnchor, constant: -.mediumSpacing)
+                              titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: toggle.leadingAnchor, constant: -.spacingS)
         ]
         let externalSize: CGFloat = 16
         externalActionConstraints = [ externalActionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
                                       externalActionView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                                       externalActionView.widthAnchor.constraint(equalToConstant: externalSize),
                                       externalActionView.heightAnchor.constraint(equalToConstant: externalSize),
-                                      titleLabel.trailingAnchor.constraint(equalTo: externalActionView.leadingAnchor, constant: -.mediumSpacing)
+                                      titleLabel.trailingAnchor.constraint(equalTo: externalActionView.leadingAnchor, constant: -.spacingS)
         ]
         descriptionLabelConstraints = [ descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
                                         descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
         ]
-        descriptionToChevronTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: -.mediumSpacing)
-        descriptionToExternalTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: externalActionView.leadingAnchor, constant: -.mediumSpacing)
-        descriptionToContentTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing)
-        descriptionToToggleTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: toggle.leadingAnchor, constant: -.mediumSpacing)
+        descriptionToChevronTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: -.spacingS)
+        descriptionToExternalTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: externalActionView.leadingAnchor, constant: -.spacingS)
+        descriptionToContentTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM)
+        descriptionToToggleTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: toggle.leadingAnchor, constant: -.spacingS)
         titleLabelCenterYToContentViewConstraint = titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
 
-        contentViewBottomToTitleConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: .mediumLargeSpacing)
-        contentViewBottomToDescriptionConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.bottomAnchor, constant: .mediumLargeSpacing)
+        contentViewBottomToTitleConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: .spacingM)
+        contentViewBottomToDescriptionConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.bottomAnchor, constant: .spacingM)
     }
 
     private func cleanup() {

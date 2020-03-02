@@ -26,7 +26,7 @@ final class UserAdDetailsView: UIView {
 
     private lazy var adImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
-        imageView.layer.cornerRadius = .mediumLargeSpacing
+        imageView.layer.cornerRadius = .spacingM
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
         return imageView
@@ -59,7 +59,7 @@ final class UserAdDetailsView: UIView {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .horizontal
         stackView.alignment = .top
-        stackView.spacing = .mediumLargeSpacing
+        stackView.spacing = .spacingM
         return stackView
     }()
 
@@ -71,13 +71,13 @@ final class UserAdDetailsView: UIView {
         return stackView
     }()
 
-    private lazy var contentStackTopAnchor = contentStack.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing)
-    private lazy var contentStackBottomAnchor = contentStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
+    private lazy var contentStackTopAnchor = contentStack.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM)
+    private lazy var contentStackBottomAnchor = contentStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM)
     private lazy var adImageWidthConstraint = adImageView.widthAnchor.constraint(equalToConstant: UserAdTableViewCell.Style.default.imageSize)
     private lazy var adImageHeightConstraint = adImageView.heightAnchor.constraint(equalToConstant: UserAdTableViewCell.Style.default.imageSize)
 
     private lazy var ribbonViewTopAnchor: NSLayoutConstraint = {
-        let constraint = ribbonView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing)
+        let constraint = ribbonView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS)
         constraint.isActive = false
         return constraint
     }()
@@ -112,16 +112,16 @@ final class UserAdDetailsView: UIView {
         descriptionStack.addArrangedSubview(subtitleLabel)
         descriptionStack.addArrangedSubview(detailLabel)
 
-        descriptionStack.setCustomSpacing(.verySmallSpacing, after: titleLabel)
-        descriptionStack.setCustomSpacing(.mediumSpacing, after: subtitleLabel)
+        descriptionStack.setCustomSpacing(.spacingXXS, after: titleLabel)
+        descriptionStack.setCustomSpacing(.spacingS, after: subtitleLabel)
 
         NSLayoutConstraint.activate([
-            contentStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            contentStack.trailingAnchor.constraint(equalTo: ribbonView.leadingAnchor, constant: -.mediumSpacing),
+            contentStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            contentStack.trailingAnchor.constraint(equalTo: ribbonView.leadingAnchor, constant: -.spacingS),
             contentStackTopAnchor,
             contentStackBottomAnchor,
 
-            ribbonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            ribbonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
             ribbonViewTopAnchor,
 
             adImageHeightConstraint,
@@ -152,8 +152,8 @@ final class UserAdDetailsView: UIView {
 
         ribbonView.configure(with: model.ribbonViewModel)
 
-        contentStackTopAnchor.constant = style == .compressed ? .mediumSpacing : .mediumLargeSpacing
-        contentStackBottomAnchor.constant = style == .compressed ? -.mediumSpacing : -.mediumLargeSpacing
+        contentStackTopAnchor.constant = style == .compressed ? .spacingS : .spacingM
+        contentStackBottomAnchor.constant = style == .compressed ? -.spacingS : -.spacingM
         ribbonViewTopAnchor.isActive = style == .default
         ribbonViewCenterYAnchor.isActive = style == .compressed
         adImageHeightConstraint.constant = style.imageSize

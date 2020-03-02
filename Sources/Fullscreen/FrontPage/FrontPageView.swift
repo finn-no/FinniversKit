@@ -175,14 +175,14 @@ public final class FrontPageView: UIView {
         headerView.addSubview(headerLabel)
 
         NSLayoutConstraint.activate([
-            marketsGridView.topAnchor.constraint(equalTo: headerView.topAnchor, constant: .mediumLargeSpacing),
+            marketsGridView.topAnchor.constraint(equalTo: headerView.topAnchor, constant: .spacingM),
             marketsGridView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
             marketsGridView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             marketsGridViewHeight,
 
-            headerLabel.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor, constant: .mediumLargeSpacing),
-            headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .mediumLargeSpacing),
-            headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.mediumLargeSpacing),
+            headerLabel.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor, constant: .spacingM),
+            headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
+            headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
         ])
 
         adsGridView.fillInSuperview()
@@ -192,15 +192,15 @@ public final class FrontPageView: UIView {
     }
 
     private func setupFrames() {
-        let headerTopSpacing: CGFloat = .mediumLargeSpacing
-        let headerBottomSpacing: CGFloat = .mediumSpacing
-        let labelHeight = headerLabel.intrinsicContentSize.height + .mediumLargeSpacing
-        let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: bounds.size.width).height + .smallSpacing
+        let headerTopSpacing: CGFloat = .spacingM
+        let headerBottomSpacing: CGFloat = .spacingS
+        let labelHeight = headerLabel.intrinsicContentSize.height + .spacingM
+        let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: bounds.size.width).height + .spacingXS
         let height = headerTopSpacing + labelHeight + marketGridViewHeight + headerBottomSpacing
 
         marketsGridViewHeight.constant = marketGridViewHeight
         headerView.frame.size.height = height
-        adsRetryView.frame.origin = CGPoint(x: 0, y: headerView.frame.height + .veryLargeSpacing)
+        adsRetryView.frame.origin = CGPoint(x: 0, y: headerView.frame.height + .spacingXXL)
         adsRetryView.frame.size = CGSize(width: bounds.width, height: 200)
         boundsForCurrentSubviewSetup = bounds
         adsGridView.invalidateLayout()

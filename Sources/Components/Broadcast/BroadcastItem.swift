@@ -94,31 +94,31 @@ extension BroadcastItem {
 
         heightConstraint = heightAnchor.constraint(equalToConstant: 0)
 
-        let topConstraint = contentView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing)
+        let topConstraint = contentView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM)
         topConstraint.priority = .defaultHigh
 
         NSLayoutConstraint.activate([
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             topConstraint,
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
             messageTextView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            messageTextView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .smallSpacing),
-            messageTextView.trailingAnchor.constraint(equalTo: dismissButton.leadingAnchor, constant: -.smallSpacing),
-            messageTextView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: .mediumLargeSpacing),
+            messageTextView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .spacingXS),
+            messageTextView.trailingAnchor.constraint(equalTo: dismissButton.leadingAnchor, constant: -.spacingXS),
+            messageTextView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: .spacingM),
 
-            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
-            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             iconImageView.heightAnchor.constraint(equalToConstant: 28),
             iconImageView.widthAnchor.constraint(equalToConstant: 28),
 
             dismissButton.topAnchor.constraint(equalTo: iconImageView.topAnchor),
-            dismissButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
+            dismissButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingS),
             dismissButton.heightAnchor.constraint(equalToConstant: 28),
             dismissButton.widthAnchor.constraint(equalToConstant: 28),
 
-            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: messageTextView.bottomAnchor, constant: .mediumLargeSpacing),
-            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: iconImageView.bottomAnchor, constant: .mediumLargeSpacing),
+            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: messageTextView.bottomAnchor, constant: .spacingM),
+            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: iconImageView.bottomAnchor, constant: .spacingM),
             bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }

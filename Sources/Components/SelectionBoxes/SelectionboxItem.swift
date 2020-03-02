@@ -56,13 +56,13 @@ extension SelectionboxItem {
         NSLayoutConstraint.activate([
             heightAnchor.constraint(equalToConstant: 40),
 
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
 
             titleLabel.heightAnchor.constraint(greaterThanOrEqualTo: imageView.heightAnchor, multiplier: 1.0),
-            titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingS),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumLargeSpacing)
+            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.spacingM)
             ])
     }
 }

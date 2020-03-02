@@ -90,7 +90,7 @@ class TweakingOptionsTableViewController: ScrollViewController {
         view.addSubview(devicesTableView)
         devicesTableView.fillInSuperview()
         devicesTableView.alpha = 0.6
-        devicesTableView.frame.origin.y = -.largeSpacing
+        devicesTableView.frame.origin.y = -.spacingXL
 
         UIView.animate(withDuration: 0.1, animations: { [weak self] in
             self?.devicesTableView.alpha = 1
@@ -114,7 +114,7 @@ class TweakingOptionsTableViewController: ScrollViewController {
         tableView.alpha = 0
 
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: ({ [weak self] in
-            self?.devicesTableView.frame.origin.y = -.veryLargeSpacing
+            self?.devicesTableView.frame.origin.y = -.spacingXXL
             self?.devicesTableView.alpha = 0
         }), completion: ({ [weak self] _ in
             guard self?.devicesTableView.superview != nil else { return }

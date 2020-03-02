@@ -71,10 +71,10 @@ final class FavoriteFolderActionButton: UIButton {
         guard let imageView = imageView, let titleLabel = titleLabel else { return }
 
         imageView.frame.size = CGSize(width: 24, height: 24)
-        imageView.frame.origin.x = .mediumLargeSpacing
+        imageView.frame.origin.x = .spacingM
 
-        titleLabel.frame.origin.x = imageView.frame.maxX + .mediumLargeSpacing
-        titleLabel.frame.size.width = bounds.width - titleLabel.frame.origin.x - .mediumLargeSpacing
+        titleLabel.frame.origin.x = imageView.frame.maxX + .spacingM
+        titleLabel.frame.size.width = bounds.width - titleLabel.frame.origin.x - .spacingM
 
         let separatorHeight = 1 / UIScreen.main.scale
         separatorView.frame.origin = CGPoint(x: titleLabel.frame.minX, y: bounds.height - separatorHeight)

@@ -77,17 +77,17 @@ final class FavoriteAdSortOptionCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             iconImageView.widthAnchor.constraint(equalToConstant: FavoriteAdSortOptionCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: checkmarkImageView.leadingAnchor, constant: -.mediumSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .spacingM),
+            titleLabel.trailingAnchor.constraint(equalTo: checkmarkImageView.leadingAnchor, constant: -.spacingS),
 
-            checkmarkImageView.heightAnchor.constraint(equalToConstant: .mediumLargeSpacing),
-            checkmarkImageView.widthAnchor.constraint(equalToConstant: .mediumLargeSpacing),
-            checkmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            checkmarkImageView.heightAnchor.constraint(equalToConstant: .spacingM),
+            checkmarkImageView.widthAnchor.constraint(equalToConstant: .spacingM),
+            checkmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
             checkmarkImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         ])
     }

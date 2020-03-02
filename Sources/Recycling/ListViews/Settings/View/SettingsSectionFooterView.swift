@@ -29,12 +29,12 @@ class SettingsSectionFooterView: UITableViewHeaderFooterView {
     private func setup() {
         contentView.addSubview(titleLabel)
 
-        let trailingConstraint = titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing)
+        let trailingConstraint = titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.spacingM)
         trailingConstraint.priority = .defaultHigh
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
             trailingConstraint
         ])
     }

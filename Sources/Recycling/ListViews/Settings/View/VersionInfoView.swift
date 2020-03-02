@@ -57,9 +57,9 @@ class VersionInfoView: UIView {
         NSLayoutConstraint.activate([
             logoImageView.topAnchor.constraint(equalTo: topAnchor, constant: 58),
             logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            versionLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: .mediumSpacing),
+            versionLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: .spacingS),
             versionLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            versionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
+            versionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
         ])
     }
 }

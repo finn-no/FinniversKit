@@ -18,9 +18,9 @@ class PanelDemoView: UIView {
         stackView.alignment = .center
         stackView.axis = .vertical
         stackView.distribution = .fill
-        stackView.spacing = .mediumLargeSpacing
+        stackView.spacing = .spacingM
         addSubview(stackView)
-        stackView.fillInSuperview(margin: .mediumSpacing)
+        stackView.fillInSuperview(margin: .spacingS)
 
         let demoCases: [(Panel.Style, PanelViewModel)] = [
             (.plain, PanelViewModel(text: "Plain panel. Are you sure a normal Label isn't a better fit?")),

@@ -68,19 +68,19 @@ class StepIndicatorDemoView: UIView {
         addSubview(currentStepLabel)
 
         NSLayoutConstraint.activate([
-            numberOfStepsStepper.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumLargeSpacing),
-            numberOfStepsStepper.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.veryLargeSpacing * 2),
+            numberOfStepsStepper.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingM),
+            numberOfStepsStepper.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.spacingXXL * 2),
 
-            numberOfStepsLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
+            numberOfStepsLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM),
             numberOfStepsLabel.centerYAnchor.constraint(equalTo: numberOfStepsStepper.centerYAnchor),
-            numberOfStepsLabel.trailingAnchor.constraint(equalTo: numberOfStepsStepper.leadingAnchor, constant: -.mediumSpacing),
+            numberOfStepsLabel.trailingAnchor.constraint(equalTo: numberOfStepsStepper.leadingAnchor, constant: -.spacingS),
 
-            currentStepStepper.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumLargeSpacing),
-            currentStepStepper.bottomAnchor.constraint(equalTo: numberOfStepsStepper.topAnchor, constant: -.mediumLargeSpacing),
+            currentStepStepper.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingM),
+            currentStepStepper.bottomAnchor.constraint(equalTo: numberOfStepsStepper.topAnchor, constant: -.spacingM),
 
-            currentStepLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
+            currentStepLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM),
             currentStepLabel.centerYAnchor.constraint(equalTo: currentStepStepper.centerYAnchor),
-            currentStepLabel.trailingAnchor.constraint(equalTo: currentStepStepper.leadingAnchor, constant: -.mediumSpacing)
+            currentStepLabel.trailingAnchor.constraint(equalTo: currentStepStepper.leadingAnchor, constant: -.spacingS)
         ])
     }
 
@@ -97,9 +97,9 @@ class StepIndicatorDemoView: UIView {
         addSubview(indicator)
 
         NSLayoutConstraint.activate([
-            indicator.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
-            indicator.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
-            indicator.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumLargeSpacing),
+            indicator.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM),
+            indicator.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingM),
+            indicator.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingM),
             indicator.heightAnchor.constraint(equalToConstant: 100.0)
         ])
     }

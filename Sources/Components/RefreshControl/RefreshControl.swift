@@ -60,8 +60,8 @@ public class RefreshControl: UIRefreshControl {
         NSLayoutConstraint.activate([
             loadingIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
             loadingIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            loadingIndicatorView.widthAnchor.constraint(equalToConstant: .largeSpacing),
-            loadingIndicatorView.heightAnchor.constraint(equalToConstant: .largeSpacing)
+            loadingIndicatorView.widthAnchor.constraint(equalToConstant: .spacingXL),
+            loadingIndicatorView.heightAnchor.constraint(equalToConstant: .spacingXL)
         ])
 
         addTarget(self, action: #selector(handleValueChange), for: .valueChanged)

@@ -34,8 +34,8 @@ class ObjectPagePriceDemoView: UIView, Tweakable {
 
         addSubview(priceView)
         NSLayoutConstraint.activate([
-            priceView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            priceView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            priceView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            priceView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
             priceView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }

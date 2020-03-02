@@ -70,15 +70,15 @@ public class SwitchView: UIView {
         addSubview(uiSwitch)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
 
-            detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .verySmallSpacing),
-            detailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            detailLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
+            detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXXS),
+            detailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            detailLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM),
 
-            uiSwitch.leadingAnchor.constraint(equalTo: detailLabel.trailingAnchor, constant: .mediumSpacing),
-            uiSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            uiSwitch.leadingAnchor.constraint(equalTo: detailLabel.trailingAnchor, constant: .spacingS),
+            uiSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
             uiSwitch.centerYAnchor.constraint(equalTo: centerYAnchor),
             uiSwitch.widthAnchor.constraint(equalToConstant: 49.0)
         ])

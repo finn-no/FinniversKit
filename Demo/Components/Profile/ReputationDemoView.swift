@@ -80,9 +80,9 @@ class ReputationDemoView: UIView, Tweakable {
         addSubview(view)
 
         NSLayoutConstraint.activate([
-            view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            view.topAnchor.constraint(equalTo: anchor, constant: .mediumSpacing),
-            view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing)
+            view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            view.topAnchor.constraint(equalTo: anchor, constant: .spacingS),
+            view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
         ])
     }
 }

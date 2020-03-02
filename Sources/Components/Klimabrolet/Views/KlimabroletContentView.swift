@@ -86,21 +86,21 @@ class KlimabroletContentView: UIView {
             bannerImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             bannerImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            titleLabel.topAnchor.constraint(equalTo: bannerImageView.bottomAnchor, constant: .mediumLargeSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            titleLabel.topAnchor.constraint(equalTo: bannerImageView.bottomAnchor, constant: .spacingM),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
-            subtitleTagView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .smallSpacing),
+            subtitleTagView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXS),
             subtitleTagView.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            bodyTextLabel.topAnchor.constraint(equalTo: subtitleTagView.bottomAnchor, constant: .mediumLargeSpacing),
-            bodyTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            bodyTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            bodyTextLabel.topAnchor.constraint(equalTo: subtitleTagView.bottomAnchor, constant: .spacingM),
+            bodyTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
+            bodyTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
 
-            accessoryButton.topAnchor.constraint(equalTo: bodyTextLabel.bottomAnchor, constant: .mediumLargeSpacing),
-            accessoryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            accessoryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            accessoryButton.heightAnchor.constraint(greaterThanOrEqualToConstant: .largeSpacing),
+            accessoryButton.topAnchor.constraint(equalTo: bodyTextLabel.bottomAnchor, constant: .spacingM),
+            accessoryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            accessoryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            accessoryButton.heightAnchor.constraint(greaterThanOrEqualToConstant: .spacingXL),
             accessoryButton.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }

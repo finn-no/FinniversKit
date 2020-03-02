@@ -29,8 +29,8 @@ class SettingsSectionHeaderView: UITableViewHeaderFooterView {
         contentView.addSubview(titleLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing)
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingS)
         ])
     }
 }

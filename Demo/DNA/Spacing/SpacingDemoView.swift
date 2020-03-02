@@ -24,48 +24,48 @@ public class SpacingDemoView: UIView {
     }
 
     private func setup() {
-        let verySmallSpacingView = makeLabel(text: "👈        verySmallSpacing        👉")
-        addSubview(verySmallSpacingView)
+        let spacingXXSView = makeLabel(text: "👈        spacingXXS        👉")
+        addSubview(spacingXXSView)
 
-        let smallSpacingView = makeLabel(text: "👈        smallSpacing        👉")
-        addSubview(smallSpacingView)
+        let spacingXSView = makeLabel(text: "👈        spacingXS        👉")
+        addSubview(spacingXSView)
 
-        let mediumSpacingView = makeLabel(text: "👈        mediumSpacing        👉")
-        addSubview(mediumSpacingView)
+        let spacingSView = makeLabel(text: "👈        spacingS        👉")
+        addSubview(spacingSView)
 
-        let mediumPlusSpacingView = makeLabel(text: "👈        mediumPlusSpacingView        👉")
-        addSubview(mediumPlusSpacingView)
+        let spacingLView = makeLabel(text: "👈        spacingLView        👉")
+        addSubview(spacingLView)
 
-        let largeSpacingView = makeLabel(text: "👈        largeSpacing        👉")
-        addSubview(largeSpacingView)
+        let spacingXLView = makeLabel(text: "👈        spacingXL        👉")
+        addSubview(spacingXLView)
 
-        let veryLargeSpacingView = makeLabel(text: "👈        veryLargeSpacing        👉")
-        addSubview(veryLargeSpacingView)
+        let spacingXXLView = makeLabel(text: "👈        spacingXXL        👉")
+        addSubview(spacingXXLView)
 
         NSLayoutConstraint.activate([
-            verySmallSpacingView.topAnchor.constraint(equalTo: topAnchor, constant: .veryLargeSpacing),
-            verySmallSpacingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .verySmallSpacing),
-            verySmallSpacingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.verySmallSpacing),
+            spacingXXSView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXXL),
+            spacingXXSView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXXS),
+            spacingXXSView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXXS),
 
-            smallSpacingView.topAnchor.constraint(equalTo: verySmallSpacingView.bottomAnchor, constant: .veryLargeSpacing),
-            smallSpacingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
-            smallSpacingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.smallSpacing),
+            spacingXSView.topAnchor.constraint(equalTo: spacingXXSView.bottomAnchor, constant: .spacingXXL),
+            spacingXSView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXS),
+            spacingXSView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXS),
 
-            mediumSpacingView.topAnchor.constraint(equalTo: smallSpacingView.bottomAnchor, constant: .veryLargeSpacing),
-            mediumSpacingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            mediumSpacingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            spacingSView.topAnchor.constraint(equalTo: spacingXSView.bottomAnchor, constant: .spacingXXL),
+            spacingSView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            spacingSView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
 
-            mediumPlusSpacingView.topAnchor.constraint(equalTo: mediumSpacingView.bottomAnchor, constant: .veryLargeSpacing),
-            mediumPlusSpacingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumPlusSpacing),
-            mediumPlusSpacingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumPlusSpacing),
+            spacingLView.topAnchor.constraint(equalTo: spacingSView.bottomAnchor, constant: .spacingXXL),
+            spacingLView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingL),
+            spacingLView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingL),
 
-            largeSpacingView.topAnchor.constraint(equalTo: mediumPlusSpacingView.bottomAnchor, constant: .veryLargeSpacing),
-            largeSpacingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            largeSpacingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            spacingXLView.topAnchor.constraint(equalTo: spacingLView.bottomAnchor, constant: .spacingXXL),
+            spacingXLView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
+            spacingXLView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
 
-            veryLargeSpacingView.topAnchor.constraint(equalTo: largeSpacingView.bottomAnchor, constant: .veryLargeSpacing),
-            veryLargeSpacingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .veryLargeSpacing),
-            veryLargeSpacingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.veryLargeSpacing)
+            spacingXXLView.topAnchor.constraint(equalTo: spacingXLView.bottomAnchor, constant: .spacingXXL),
+            spacingXXLView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXXL),
+            spacingXXLView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXXL)
         ])
     }
 }

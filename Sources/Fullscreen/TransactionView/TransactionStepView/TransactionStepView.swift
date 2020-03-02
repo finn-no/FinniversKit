@@ -34,7 +34,7 @@ public class TransactionStepView: UIView {
         view.backgroundColor = style.backgroundColor
         view.isScrollEnabled = false
         view.isEditable = false
-        view.contentInset = .init(top: -.mediumSpacing, leading: 0, bottom: 0, trailing: 0)
+        view.contentInset = .init(top: -.spacingS, leading: 0, bottom: 0, trailing: 0)
         view.adjustsFontForContentSizeCategory = true
         return view
     }()
@@ -46,7 +46,7 @@ public class TransactionStepView: UIView {
         view.backgroundColor = style.backgroundColor
         view.isScrollEnabled = false
         view.isEditable = false
-        view.contentInset = .init(top: -.mediumSpacing, leading: 0, bottom: 0, trailing: 0)
+        view.contentInset = .init(top: -.spacingS, leading: 0, bottom: 0, trailing: 0)
         view.adjustsFontForContentSizeCategory = true
         return view
     }()
@@ -105,8 +105,8 @@ private extension TransactionStepView {
         switch style {
         case .notStarted, .completed:
             NSLayoutConstraint.activate([
-                verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .smallSpacing),
-                verticalStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing),
+                verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingXS),
+                verticalStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS),
                 verticalStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
 
                 titleView.heightAnchor.constraint(greaterThanOrEqualToConstant: 32),
@@ -114,9 +114,9 @@ private extension TransactionStepView {
 
         case .inProgress, .inProgressAwaitingOtherParty:
             NSLayoutConstraint.activate([
-                verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
-                verticalStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing),
-                verticalStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
+                verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM),
+                verticalStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS),
+                verticalStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingM),
 
                 titleView.heightAnchor.constraint(greaterThanOrEqualToConstant: 32),
             ])
@@ -134,7 +134,7 @@ private extension TransactionStepView {
             bodyView.setContentHuggingPriority(.required, for: .vertical)
             NSLayoutConstraint.activate([bodyView.trailingAnchor.constraint(equalTo: verticalStackView.trailingAnchor)])
 
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: .mediumLargeSpacing)
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: .spacingM)
         }
 
         if let buttonText = model.buttonText {
@@ -143,20 +143,20 @@ private extension TransactionStepView {
 
             if model.state == .completed {
                 actionButton.contentHorizontalAlignment = .leading
-                actionButton.contentEdgeInsets = .leadingInset(.smallSpacing)
+                actionButton.contentEdgeInsets = .leadingInset(.spacingXS)
             }
 
             actionButton.setContentHuggingPriority(.required, for: .vertical)
             NSLayoutConstraint.activate([actionButton.heightAnchor.constraint(equalToConstant: 40)])
 
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: actionButton.bottomAnchor, constant: .mediumLargeSpacing)
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: actionButton.bottomAnchor, constant: .spacingM)
         }
 
         if let detailText = model.detail {
             detailView.text = detailText
             verticalStackView.addArrangedSubview(detailView)
 
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: detailView.bottomAnchor, constant: .mediumLargeSpacing)
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: detailView.bottomAnchor, constant: .spacingM)
         }
 
         bottomAnchorConstraint?.isActive = true

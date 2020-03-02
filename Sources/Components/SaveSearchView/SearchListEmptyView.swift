@@ -79,19 +79,19 @@ public protocol SearchListEmptyViewDelegate: AnyObject {
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(bodyLabel)
 
-        stackView.setCustomSpacing(.mediumLargeSpacing, after: iconImageView)
-        stackView.setCustomSpacing(.verySmallSpacing, after: titleLabel)
+        stackView.setCustomSpacing(.spacingM, after: iconImageView)
+        stackView.setCustomSpacing(.spacingXXS, after: titleLabel)
 
         addSubview(stackView)
         addSubview(button)
 
         NSLayoutConstraint.activate([
             iconImageView.heightAnchor.constraint(equalToConstant: 40),
-            stackView.topAnchor.constraint(equalTo: centerYAnchor, constant: .veryLargeSpacing * -2),
+            stackView.topAnchor.constraint(equalTo: centerYAnchor, constant: .spacingXXL * -2),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            button.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .mediumLargeSpacing),
+            button.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .spacingM),
             button.centerXAnchor.constraint(equalTo: centerXAnchor),
             button.heightAnchor.constraint(equalToConstant: 31)
         ])

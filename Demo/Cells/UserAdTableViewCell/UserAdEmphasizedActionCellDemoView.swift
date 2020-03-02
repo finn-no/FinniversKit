@@ -34,7 +34,7 @@ class UserAdEmphasizedActionCellDemoView: UIView {
     private func setup() {
         addSubview(tableView)
         // Inset top to avoid the CornerAnchoringView
-        tableView.fillInSuperview(insets: UIEdgeInsets(top: .veryLargeSpacing), isActive: true)
+        tableView.fillInSuperview(insets: UIEdgeInsets(top: .spacingXXL), isActive: true)
     }
 
     private func showToastView(text: String, timeout: Double) {

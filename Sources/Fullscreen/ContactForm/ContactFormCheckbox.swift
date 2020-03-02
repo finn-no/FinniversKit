@@ -62,12 +62,12 @@ final class ContactFormCheckbox: UIView {
             questionLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             questionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            checkboxView.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: .smallSpacing),
+            checkboxView.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: .spacingXS),
             checkboxView.leadingAnchor.constraint(equalTo: leadingAnchor),
             checkboxView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             answerLabel.centerYAnchor.constraint(equalTo: checkboxView.centerYAnchor),
-            answerLabel.leadingAnchor.constraint(equalTo: checkboxView.trailingAnchor, constant: .smallSpacing),
+            answerLabel.leadingAnchor.constraint(equalTo: checkboxView.trailingAnchor, constant: .spacingXS),
             answerLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }

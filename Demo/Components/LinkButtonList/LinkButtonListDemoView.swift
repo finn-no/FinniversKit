@@ -27,8 +27,8 @@ class LinkButtonListDemoView: UIView {
 
         addSubview(linkListView)
         NSLayoutConstraint.activate([
-            linkListView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            linkListView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            linkListView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            linkListView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
             linkListView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }

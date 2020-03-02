@@ -19,9 +19,9 @@ class BuyerPickerTextHeader: UITableViewHeaderFooterView {
         contentView.backgroundColor = .bgPrimary
         contentView.addSubview(title)
 
-        let inset = UIEdgeInsets(top: .mediumLargeSpacing,
-                                 left: .mediumLargeSpacing,
-                                 bottom: -.largeSpacing,
+        let inset = UIEdgeInsets(top: .spacingM,
+                                 left: .spacingM,
+                                 bottom: -.spacingXL,
                                  right: 0)
         title.fillInSuperview(insets: inset, isActive: true)
     }

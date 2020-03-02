@@ -42,13 +42,13 @@ class VisibilityDrivenTitleDemoView: UIView {
         addSubview(visibilitySwitch)
 
         NSLayoutConstraint.activate([
-            titleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            titleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-            titleView.topAnchor.constraint(equalTo: topAnchor, constant: .largeSpacing),
+            titleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            titleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            titleView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXL),
             titleView.heightAnchor.constraint(equalToConstant: 50),
 
             visibilitySwitch.centerXAnchor.constraint(equalTo: centerXAnchor),
-            visibilitySwitch.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: .largeSpacing)
+            visibilitySwitch.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: .spacingXL)
         ])
     }
 

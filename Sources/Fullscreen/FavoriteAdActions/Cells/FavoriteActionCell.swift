@@ -6,7 +6,7 @@ import UIKit
 
 final class FavoriteActionCell: UITableViewCell {
     static let iconSize: CGFloat = 24
-    static let separatorLeadingInset = .mediumLargeSpacing * 2 + FavoriteActionCell.iconSize
+    static let separatorLeadingInset = .spacingM * 2 + FavoriteActionCell.iconSize
 
     private lazy var titleLabel = FavoriteActionCell.makeTitleLabel()
 
@@ -47,13 +47,13 @@ final class FavoriteActionCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             iconImageView.widthAnchor.constraint(equalToConstant: FavoriteActionCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing)
+            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .spacingM),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM)
         ])
     }
 }
