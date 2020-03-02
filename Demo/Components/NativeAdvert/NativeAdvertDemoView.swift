@@ -12,7 +12,7 @@ class NativeAdvertDemoView: UIView {
         let view = UIStackView(withAutoLayout: true)
         view.axis = .vertical
         view.distribution = .equalSpacing
-        view.spacing = .largeSpacing
+        view.spacing = .spacingXL
         return view
     }()
 
@@ -20,7 +20,7 @@ class NativeAdvertDemoView: UIView {
         let view = UIStackView(withAutoLayout: false)
         view.alignment = .fill
         view.distribution = .fillEqually
-        view.spacing = .mediumLargeSpacing
+        view.spacing = .spacingM
         return view
     }()
 

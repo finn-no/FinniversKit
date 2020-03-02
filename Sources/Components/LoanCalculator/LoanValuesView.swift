@@ -31,7 +31,7 @@ class LoanValuesView: UIView {
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.spacing = .mediumLargeSpacing
+        stackView.spacing = .spacingM
         return stackView
     }()
 

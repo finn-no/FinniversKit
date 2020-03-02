@@ -138,9 +138,9 @@ private extension LoadingView {
             loadingIndicator.heightAnchor.constraint(equalToConstant: loadingIndicatorSize),
             loadingIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
-            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.smallSpacing),
-            messageLabel.topAnchor.constraint(equalTo: loadingIndicator.bottomAnchor, constant: .mediumSpacing)
+            messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXS),
+            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXS),
+            messageLabel.topAnchor.constraint(equalTo: loadingIndicator.bottomAnchor, constant: .spacingS)
         ])
     }
 
@@ -176,11 +176,11 @@ private extension LoadingView {
         if let message = message, message.count > 0 {
             messageLabel.text = message
             successImageViewCenterY?.isActive = false
-            successImageViewCenterY = successImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -.mediumSpacing)
+            successImageViewCenterY = successImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -.spacingS)
             successImageViewCenterY?.isActive = true
 
             loadingIndicatorCenterY?.isActive = false
-            loadingIndicatorCenterY = loadingIndicator.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -.mediumSpacing)
+            loadingIndicatorCenterY = loadingIndicator.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -.spacingS)
             loadingIndicatorCenterY?.isActive = true
         } else {
             successImageViewCenterY?.isActive = false

@@ -39,14 +39,14 @@ public class TextViewDemoView: UIView {
         addSubview(scrollableTextView)
 
         NSLayoutConstraint.activate([
-            textView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-            textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            textView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
             scrollableTextView.topAnchor.constraint(equalTo: centerYAnchor),
-            scrollableTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            scrollableTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-            scrollableTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing)
+            scrollableTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            scrollableTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            scrollableTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS)
         ])
     }
 }

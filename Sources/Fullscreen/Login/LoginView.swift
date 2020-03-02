@@ -196,7 +196,7 @@ public class LoginView: UIView {
             if keyboardEndFrame.intersects(inputsContainer.frame) {
                 let intersectionFrame = keyboardEndFrame.intersection(inputsContainer.frame)
                 let keyboardOverlap = intersectionFrame.height
-                let bottomInset = keyboardOverlap + .mediumLargeSpacing
+                let bottomInset = keyboardOverlap + .spacingM
                 let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
 
                 let animationDuration = ((notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]) as? TimeInterval) ?? 0.25
@@ -256,38 +256,38 @@ public class LoginView: UIView {
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            infoLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .largeSpacing),
-            infoLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
-            infoLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
+            infoLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXL),
+            infoLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingXL),
+            infoLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingXL),
 
-            inputsContainer.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: .mediumLargeSpacing),
-            inputsContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
-            inputsContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
+            inputsContainer.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: .spacingM),
+            inputsContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingXL),
+            inputsContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingXL),
 
             emailTextField.topAnchor.constraint(equalTo: inputsContainer.topAnchor),
             emailTextField.leadingAnchor.constraint(equalTo: inputsContainer.leadingAnchor),
             emailTextField.trailingAnchor.constraint(equalTo: inputsContainer.trailingAnchor),
 
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: .largeSpacing),
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: .spacingXL),
             passwordTextField.leadingAnchor.constraint(equalTo: inputsContainer.leadingAnchor),
             passwordTextField.trailingAnchor.constraint(equalTo: inputsContainer.trailingAnchor),
 
-            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: .largeSpacing),
+            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: .spacingXL),
             loginButton.leadingAnchor.constraint(equalTo: inputsContainer.leadingAnchor),
             loginButton.trailingAnchor.constraint(equalTo: inputsContainer.trailingAnchor),
             loginButton.heightAnchor.constraint(equalToConstant: buttonHeight),
             loginButton.bottomAnchor.constraint(equalTo: inputsContainer.bottomAnchor),
 
-            newUserStackView.topAnchor.constraint(equalTo: inputsContainer.bottomAnchor, constant: .mediumLargeSpacing),
-            newUserStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
+            newUserStackView.topAnchor.constraint(equalTo: inputsContainer.bottomAnchor, constant: .spacingM),
+            newUserStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingXL),
             newUserStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             spidLogoImageView.heightAnchor.constraint(equalToConstant: 17),
 
-            forgotPasswordButton.bottomAnchor.constraint(equalTo: newUserStackView.lastBaselineAnchor, constant: .mediumSpacing),
-            forgotPasswordButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
+            forgotPasswordButton.bottomAnchor.constraint(equalTo: newUserStackView.lastBaselineAnchor, constant: .spacingS),
+            forgotPasswordButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingXL),
 
-            customerServiceStackView.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -.veryLargeSpacing),
-            customerServiceStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing)
+            customerServiceStackView.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -.spacingXXL),
+            customerServiceStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL)
         ])
     }
 

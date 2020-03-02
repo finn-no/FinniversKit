@@ -38,7 +38,7 @@ class ViewingCell: UITableViewCell {
         let stackView = UIStackView(frame: .zero)
         stackView.axis = .vertical
         stackView.alignment = .leading
-        stackView.spacing = .verySmallSpacing
+        stackView.spacing = .spacingXXS
         return stackView
     }()
 
@@ -62,7 +62,7 @@ class ViewingCell: UITableViewCell {
 
     static let dateViewWidth: CGFloat = 48.0
     static let cellHeight: CGFloat = 64.0
-    static let contentSpacing: CGFloat = .mediumSpacing
+    static let contentSpacing: CGFloat = .spacingS
 
     // MARK: - Init
 

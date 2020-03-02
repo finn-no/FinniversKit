@@ -46,12 +46,12 @@ public class NotificationsListHeaderView: UITableViewHeaderFooterView {
         contentView.addSubview(dateLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: dateLabel.leadingAnchor, constant: -.mediumSpacing),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            titleLabel.trailingAnchor.constraint(equalTo: dateLabel.leadingAnchor, constant: -.spacingS),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
 
             dateLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor),
-            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing)
+            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
         ])
     }
 

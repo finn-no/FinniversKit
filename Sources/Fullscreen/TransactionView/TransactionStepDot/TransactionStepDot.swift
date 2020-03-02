@@ -36,12 +36,12 @@ public class TransactionStepDot: UIView {
 
     private lazy var innerCircle: CAShapeLayer = {
         let shapeLayer = CAShapeLayer()
-        let radius = (diameter / 2.0) - .smallSpacing
+        let radius = (diameter / 2.0) - .spacingXS
 
-        let size = CGSize(width: self.bounds.width - .smallSpacing * 2,
-                          height: self.bounds.height - .smallSpacing * 2)
+        let size = CGSize(width: self.bounds.width - .spacingXS * 2,
+                          height: self.bounds.height - .spacingXS * 2)
         let bounds = CGRect(origin: .zero, size: size)
-        let frame = CGRect(origin: CGPoint(x: .smallSpacing, y: .smallSpacing), size: size)
+        let frame = CGRect(origin: CGPoint(x: .spacingXS, y: .spacingXS), size: size)
 
         shapeLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: radius).cgPath
         shapeLayer.frame = frame

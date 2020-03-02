@@ -130,13 +130,13 @@ public class LoadingViewDemoView: UIView {
         addSubview(displayTypeSegment)
 
         NSLayoutConstraint.activate([
-            displayTypeSegment.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            displayTypeSegment.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
-            displayTypeSegment.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            displayTypeSegment.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            displayTypeSegment.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM),
+            displayTypeSegment.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: displayTypeSegment.topAnchor, constant: -.mediumLargeSpacing),
+            tableView.bottomAnchor.constraint(equalTo: displayTypeSegment.topAnchor, constant: -.spacingM),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             ])
 
@@ -207,14 +207,14 @@ private class OptionCell: UITableViewCell {
         contentView.addSubview(descriptionLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
-            titleLabel.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingS),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
+            titleLabel.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.trailingAnchor, constant: -.spacingS),
 
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
-            descriptionLabel.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumSpacing),
-            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing)
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingS),
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
+            descriptionLabel.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.trailingAnchor, constant: -.spacingS),
+            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingS)
         ])
     }
 }

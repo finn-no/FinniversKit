@@ -52,7 +52,7 @@ public class TransactionView: UIView {
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
         stackView.alignment = .fill
-        stackView.spacing = .mediumLargeSpacing
+        stackView.spacing = .spacingM
         return stackView
     }()
 
@@ -101,16 +101,16 @@ private extension TransactionView {
             scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
 
-            scrollableContentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor, constant: .mediumSpacing),
+            scrollableContentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor, constant: .spacingS),
             scrollableContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
-            titleLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .largeSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .spacingXL),
             titleLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             titleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: 40),
 
-            verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.largeSpacing),
-            verticalStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .largeSpacing),
+            verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.spacingXL),
+            verticalStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXL),
             verticalStackView.bottomAnchor.constraint(equalTo: scrollableContentView.bottomAnchor),
         ])
 
@@ -122,7 +122,7 @@ private extension TransactionView {
         }
 
         guard let stepDot = stepDots.first else { return }
-        NSLayoutConstraint.activate([verticalStackView.leadingAnchor.constraint(equalTo: stepDot.trailingAnchor, constant: .mediumSpacing)])
+        NSLayoutConstraint.activate([verticalStackView.leadingAnchor.constraint(equalTo: stepDot.trailingAnchor, constant: .spacingS)])
     }
 
     private func addTransactionStepView(_ step: Int, _ model: TransactionStepViewModel) {

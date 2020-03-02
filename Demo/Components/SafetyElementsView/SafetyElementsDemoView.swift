@@ -77,7 +77,7 @@ class SafetyElementsDemoView: UIView, Tweakable {
     // MARK: - Private methods
     private func setup() {
         addSubview(safetyElementsView)
-        layoutMargins = UIEdgeInsets(all: .mediumLargeSpacing)
+        layoutMargins = UIEdgeInsets(all: .spacingM)
 
         NSLayoutConstraint.activate([
             safetyElementsView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),

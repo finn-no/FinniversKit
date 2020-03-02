@@ -137,20 +137,20 @@ public class SaveSearchView: UIView {
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: widthAnchor),
 
-            searchNameContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
+            searchNameContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
             searchNameContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             searchNameContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             searchNameContainer.heightAnchor.constraint(equalToConstant: 65.0),
 
-            searchNameTextField.leadingAnchor.constraint(equalTo: searchNameContainer.leadingAnchor, constant: .mediumLargeSpacing),
-            searchNameTextField.trailingAnchor.constraint(equalTo: searchNameContainer.trailingAnchor, constant: -.mediumLargeSpacing),
+            searchNameTextField.leadingAnchor.constraint(equalTo: searchNameContainer.leadingAnchor, constant: .spacingM),
+            searchNameTextField.trailingAnchor.constraint(equalTo: searchNameContainer.trailingAnchor, constant: -.spacingM),
             searchNameTextField.centerYAnchor.constraint(equalTo: searchNameContainer.centerYAnchor),
 
             pushSwitchView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            pushSwitchView.topAnchor.constraint(equalTo: searchNameContainer.bottomAnchor, constant: .mediumLargeSpacing),
+            pushSwitchView.topAnchor.constraint(equalTo: searchNameContainer.bottomAnchor, constant: .spacingM),
             pushSwitchView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            hairline.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            hairline.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             hairline.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             hairline.topAnchor.constraint(equalTo: pushSwitchView.bottomAnchor),
             hairline.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),

@@ -17,7 +17,7 @@ public final class NativeAdvertGridView: UIView {
 
     private lazy var container: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.layer.cornerRadius = .mediumSpacing
+        view.layer.cornerRadius = .spacingS
         view.layer.masksToBounds = true
         return view
     }()
@@ -40,10 +40,10 @@ public final class NativeAdvertGridView: UIView {
     // MARK: - Constraints
 
     private lazy var sharedConstraints: [NSLayoutConstraint] = [
-        container.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-        container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-        container.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
-        container.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+        container.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+        container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+        container.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
+        container.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
 
         settingsButton.topAnchor.constraint(equalTo: container.topAnchor),
         settingsButton.trailingAnchor.constraint(equalTo: container.trailingAnchor),
@@ -56,8 +56,8 @@ public final class NativeAdvertGridView: UIView {
     private lazy var compactConstraints: [NSLayoutConstraint] = [
         imageView.widthAnchor.constraint(equalTo: container.widthAnchor),
 
-        detailsContainer.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .mediumSpacing),
-        detailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.mediumSpacing),
+        detailsContainer.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .spacingS),
+        detailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.spacingS),
         detailsContainer.leadingAnchor.constraint(equalTo: container.leadingAnchor),
         detailsContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor)
     ]
@@ -66,10 +66,10 @@ public final class NativeAdvertGridView: UIView {
         imageView.widthAnchor.constraint(equalTo: container.widthAnchor, multiplier: 0.5),
         imageView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
 
-        detailsContainer.topAnchor.constraint(equalTo: container.topAnchor, constant: .mediumLargeSpacing),
-        detailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.mediumLargeSpacing),
-        detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumLargeSpacing),
-        detailsContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -.mediumLargeSpacing)
+        detailsContainer.topAnchor.constraint(equalTo: container.topAnchor, constant: .spacingM),
+        detailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.spacingM),
+        detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingM),
+        detailsContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -.spacingM)
     ]
 
     // MARK: - Init

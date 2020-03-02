@@ -27,7 +27,7 @@ class GalleryPreviewView: UIView {
 
     // MARK: - Private properties
 
-    private let cellSpacing: CGFloat = .mediumSpacing
+    private let cellSpacing: CGFloat = .spacingS
 
     private var images = [UIImage?]()
     private var newSuperviewSize: CGSize?

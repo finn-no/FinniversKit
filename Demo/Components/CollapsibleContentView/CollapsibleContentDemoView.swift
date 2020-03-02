@@ -8,7 +8,7 @@ class CollapsibleContentDemoView: UIView {
     private lazy var collapsibleContentView: CollapsibleContentView = {
         let view = CollapsibleContentView(withAutoLayout: true)
         view.backgroundColor = .bgTertiary
-        view.layoutMargins = UIEdgeInsets(all: .mediumLargeSpacing)
+        view.layoutMargins = UIEdgeInsets(all: .spacingM)
         view.configure(with: "Spesifikasjoner", contentView: contentView)
         return view
     }()
@@ -23,7 +23,7 @@ class CollapsibleContentDemoView: UIView {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
-        stackView.spacing = .mediumLargeSpacing
+        stackView.spacing = .spacingM
         return stackView
     }()
 

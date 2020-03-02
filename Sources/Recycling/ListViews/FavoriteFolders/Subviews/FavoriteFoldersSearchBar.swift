@@ -52,9 +52,9 @@ final class FavoriteFoldersSearchBar: BottomShadowView {
         NSLayoutConstraint.activate([
             searchBar.heightAnchor.constraint(equalToConstant: 36),
             searchBar.topAnchor.constraint(equalTo: topAnchor),
-            searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            searchBar.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing)
+            searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            searchBar.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS)
         ])
     }
 }

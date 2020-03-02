@@ -38,9 +38,9 @@ public class NotificationsListFooterView: UITableViewHeaderFooterView {
 
         contentView.addSubview(titleLabel)
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing)
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
         ])
     }
 

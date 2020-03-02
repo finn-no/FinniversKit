@@ -48,8 +48,8 @@ class MessageFormToolbar: UIView {
     private let viewModel: MessageFormViewModel
 
     private let toolbarHeight: CGFloat = 68
-    private let toolbarTopPadding: CGFloat = .mediumSpacing
-    private let toolbarBottomPadding: CGFloat = .mediumSpacing
+    private let toolbarTopPadding: CGFloat = .spacingS
+    private let toolbarBottomPadding: CGFloat = .spacingS
     private var toolbarCellHeight: CGFloat { return toolbarHeight - toolbarTopPadding - toolbarBottomPadding }
     private var toolbarCellMaxWidth: CGFloat {
         if UIDevice.isIPad() {
@@ -107,7 +107,7 @@ class MessageFormToolbar: UIView {
 
 extension MessageFormToolbar: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, leading: .mediumSpacing, bottom: 0, trailing: .mediumSpacing)
+        return UIEdgeInsets(top: 0, leading: .spacingS, bottom: 0, trailing: .spacingS)
     }
 
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
@@ -203,7 +203,7 @@ private class MessageFormTemplateCell: UICollectionViewCell {
         button.fillInSuperview()
 
         button.addSubview(label)
-        label.fillInSuperview(margin: .smallSpacing)
+        label.fillInSuperview(margin: .spacingXS)
     }
 
     // MARK: - Overrides

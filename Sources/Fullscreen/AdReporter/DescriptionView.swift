@@ -41,14 +41,14 @@ class DescriptionView: UIView {
         addSubview(textView)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
 
-            textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumLargeSpacing),
-            textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
+            textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
-            bottomAnchor.constraint(equalTo: textView.bottomAnchor, constant: .mediumLargeSpacing)
+            bottomAnchor.constraint(equalTo: textView.bottomAnchor, constant: .spacingM)
         ])
     }
 

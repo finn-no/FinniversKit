@@ -57,14 +57,14 @@ final class PrimingTableViewCell: UITableViewCell {
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 22),
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
+            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .spacingM),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
 
             detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             detailLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             detailLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing)
+            detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM)
         ])
     }
 }

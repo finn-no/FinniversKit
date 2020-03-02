@@ -16,7 +16,7 @@ public class ViewingsView: UIView {
     private var viewModel: ViewingsViewModel?
 
     private let titleHeight: CGFloat = 27
-    private let noteTopMargin: CGFloat = .mediumSpacing
+    private let noteTopMargin: CGFloat = .spacingS
 
     private lazy var titleLabel: Label = Label(style: .title3, withAutoLayout: true)
 
@@ -98,7 +98,7 @@ public class ViewingsView: UIView {
 
     private func attributedNoteString(with text: String) -> NSAttributedString {
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = .verySmallSpacing
+        paragraphStyle.lineSpacing = .spacingXXS
 
         let attributes: [NSAttributedString.Key: Any] = [
             .paragraphStyle: paragraphStyle,

@@ -60,5 +60,3 @@ extension TransactionDemoViewDefaultData {
                 detail: "Det kan ta noen dager før pengene dukker opp på kontoen din.")
     ])
 }
-
-

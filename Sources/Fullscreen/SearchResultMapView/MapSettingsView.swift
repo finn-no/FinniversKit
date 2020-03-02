@@ -56,10 +56,10 @@ public final class MapSettingsView: UIView {
 
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 0)
-        layer.shadowRadius = .mediumSpacing
+        layer.shadowRadius = .spacingS
         layer.shadowOpacity = 0.4
 
-        layer.cornerRadius = .mediumSpacing
+        layer.cornerRadius = .spacingS
         layer.backgroundColor = UIColor.bgPrimary.withAlphaComponent(0.8).cgColor
     }
 
@@ -69,9 +69,9 @@ public final class MapSettingsView: UIView {
         addSubview(centerMapButton)
 
         NSLayoutConstraint.activate([
-            mapTypeButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+            mapTypeButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
             mapTypeButton.widthAnchor.constraint(equalToConstant: 42),
-            mapTypeButton.heightAnchor.constraint(equalToConstant: .largeSpacing),
+            mapTypeButton.heightAnchor.constraint(equalToConstant: .spacingXL),
             mapTypeButton.leadingAnchor.constraint(equalTo: leadingAnchor),
             mapTypeButton.trailingAnchor.constraint(equalTo: trailingAnchor),
             mapTypeButton.bottomAnchor.constraint(equalTo: divider.topAnchor, constant: -4),
@@ -82,11 +82,11 @@ public final class MapSettingsView: UIView {
             divider.centerYAnchor.constraint(equalTo: centerYAnchor),
 
             centerMapButton.topAnchor.constraint(equalTo: divider.bottomAnchor, constant: 4),
-            centerMapButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
+            centerMapButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
             centerMapButton.leadingAnchor.constraint(equalTo: leadingAnchor),
             centerMapButton.trailingAnchor.constraint(equalTo: trailingAnchor),
             centerMapButton.widthAnchor.constraint(equalToConstant: 42),
-            centerMapButton.heightAnchor.constraint(equalToConstant: .largeSpacing),
+            centerMapButton.heightAnchor.constraint(equalToConstant: .spacingXL),
             ])
     }
 

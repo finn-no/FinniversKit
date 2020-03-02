@@ -78,7 +78,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
         self.previewViewInitiallyVisible = previewVisible
         self.viewModel = viewModel
         self.currentImageIndex = viewModel.selectedIndex
-        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [.interPageSpacing: CGFloat.largeSpacing])
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [.interPageSpacing: CGFloat.spacingXL])
 
         modalPresentationStyle = .overCurrentContext
         delegate = self
@@ -262,7 +262,7 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
     }
 
     func heightForPreviewView(forImageViewController vc: FullscreenImageViewController) -> CGFloat {
-        let spacing: CGFloat = .mediumSpacing
+        let spacing: CGFloat = .spacingS
         let previewHeight = overlayView.previewViewFrame.height
         let bottomInset: CGFloat = view.safeAreaInsets.bottom
 

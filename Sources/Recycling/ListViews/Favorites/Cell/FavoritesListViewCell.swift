@@ -70,18 +70,18 @@ public class FavoritesListViewCell: UITableViewCell {
         backgroundColor = .bgPrimary
 
         NSLayoutConstraint.activate([
-            adImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-            adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+            adImageView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
             adImageView.heightAnchor.constraint(equalToConstant: FavoritesListViewCell.imageSize),
             adImageView.widthAnchor.constraint(equalToConstant: FavoritesListViewCell.imageSize),
 
-            detailLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-            detailLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
-            detailLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            detailLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            detailLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .spacingS),
+            detailLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
 
-            titleLabel.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .smallSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing)
+            titleLabel.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .spacingXS),
+            titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .spacingS),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
         ])
     }
 

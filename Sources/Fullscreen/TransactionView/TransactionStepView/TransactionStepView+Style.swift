@@ -24,7 +24,7 @@ public extension TransactionStepView {
             case .notStarted:
                 return 0.0
             default:
-                return .mediumSpacing
+                return .spacingS
             }
         }
 

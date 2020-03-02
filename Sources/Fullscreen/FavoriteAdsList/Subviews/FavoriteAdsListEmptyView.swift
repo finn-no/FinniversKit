@@ -56,7 +56,7 @@ public class FavoriteAdsListEmptyView: UIView {
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(bodyLabel)
 
-        stackView.setCustomSpacing(.mediumLargeSpacing, after: iconImageView)
+        stackView.setCustomSpacing(.spacingM, after: iconImageView)
 
         addSubview(stackView)
 
@@ -64,9 +64,9 @@ public class FavoriteAdsListEmptyView: UIView {
             iconImageView.widthAnchor.constraint(equalToConstant: 48),
             iconImageView.heightAnchor.constraint(equalToConstant: 48),
 
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .veryLargeSpacing * 2),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXXL * 2),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
         ])
     }
 

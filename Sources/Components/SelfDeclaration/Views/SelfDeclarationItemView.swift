@@ -39,7 +39,7 @@ public class SelfDeclarationItemView: UIView {
             questionAndAnswerLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             questionAndAnswerLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            explanationLabel.topAnchor.constraint(equalTo: questionAndAnswerLabel.bottomAnchor, constant: .mediumSpacing),
+            explanationLabel.topAnchor.constraint(equalTo: questionAndAnswerLabel.bottomAnchor, constant: .spacingS),
             explanationLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             explanationLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             explanationLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
