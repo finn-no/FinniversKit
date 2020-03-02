@@ -79,7 +79,7 @@ public class TransactionWarningView: UIView {
             messageLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
 
-            imageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            imageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: .veryLargeSpacing),
             imageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing),
             imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumSpacing),
             imageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.mediumSpacing),
