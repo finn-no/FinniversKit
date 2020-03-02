@@ -6,23 +6,23 @@ import Foundation
 
 public extension CGFloat {
     /// Separation of 2 points.
-    static let verySmallSpacing = Spacing.verySmallSpacing()
+    static let spacingXXS = Spacing.spacingXXS()
 
     /// Separation of 4 points.
-    static let smallSpacing = Spacing.smallSpacing()
+    static let spacingXS = Spacing.spacingXS()
 
     /// Separation of 8 points.
-    static let mediumSpacing = Spacing.mediumSpacing()
+    static let spacingS = Spacing.spacingS()
 
     /// Separation of 16 points.
-    static let mediumLargeSpacing = Spacing.mediumLargeSpacing()
+    static let spacingM = Spacing.spacingM()
 
     /// Separation of 24 points.
-    static let mediumPlusSpacing = Spacing.mediumPlusSpacing()
+    static let spacingL = Spacing.spacingL()
 
     /// Separation of 32 points.
-    static let largeSpacing = Spacing.largeSpacing()
+    static let spacingXL = Spacing.spacingXL()
 
     /// Separation of 64 points.
-    static let veryLargeSpacing = Spacing.veryLargeSpacing()
+    static let spacingXXL = Spacing.spacingXXL()
 }

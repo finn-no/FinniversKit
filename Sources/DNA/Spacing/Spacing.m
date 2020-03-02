@@ -3,31 +3,31 @@
 
 @implementation Spacing
 
-+ (CGFloat)verySmallSpacing {
++ (CGFloat)spacingXXS {
     return 2;
 }
 
-+ (CGFloat)smallSpacing {
++ (CGFloat)spacingXS {
     return 4;
 }
 
-+ (CGFloat)mediumSpacing {
++ (CGFloat)spacingS {
     return 8;
 }
 
-+ (CGFloat)mediumLargeSpacing {
++ (CGFloat)spacingM {
     return 16;
 }
 
-+ (CGFloat)mediumPlusSpacing {
++ (CGFloat)spacingL {
     return 24;
 }
 
-+ (CGFloat)largeSpacing {
++ (CGFloat)spacingXL {
     return 32;
 }
 
-+ (CGFloat)veryLargeSpacing {
++ (CGFloat)spacingXXL {
     return 64;
 }
 
