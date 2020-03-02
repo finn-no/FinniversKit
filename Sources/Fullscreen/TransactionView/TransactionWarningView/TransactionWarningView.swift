@@ -20,6 +20,7 @@ public class TransactionWarningView: UIView {
     private lazy var imageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
         imageView.layer.cornerRadius = .spacingM
+        imageView.backgroundColor = .clear
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
         return imageView
