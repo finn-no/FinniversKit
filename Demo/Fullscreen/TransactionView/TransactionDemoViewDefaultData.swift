@@ -45,7 +45,7 @@ public struct TransactionDemoViewDefaultData {
 
     mutating func getState() -> TransactionViewModel {
         if currentState == 10 {
-            self.currentState = 0
+            self.currentState = -1
         }
 
         currentState += 1
