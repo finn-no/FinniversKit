@@ -51,11 +51,14 @@ public enum ReputationBreakdownCategory {
     }
 }
 
-// MARK: - ReputationView
+// MARK: - ReputationViewDelegate
 
 public protocol ReputationViewDelegate: AnyObject {
     func reputationViewWasTapped(_ reputationView: ReputationView)
+    func reputationViewLinkWasTapped()
 }
+
+// MARK: - ReputationView
 
 public class ReputationView: UIView {
 
@@ -89,6 +92,12 @@ public class ReputationView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textColor = .textAction
+        label.isUserInteractionEnabled = true
+
+        // Make label tapable
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(onLinkTap))
+        label.addGestureRecognizer(gesture)
+
         return label
     }()
 
@@ -133,6 +142,7 @@ public class ReputationView: UIView {
     public var viewModel: ReputationViewModel? {
         didSet { viewModelChanged() }
     }
+
     public weak var delegate: ReputationViewDelegate?
 
     // MARK: - Private properties
@@ -270,8 +280,14 @@ public class ReputationView: UIView {
         }
     }
 
+    // MARK: - Actions
+
     @objc private func onTap() {
         delegate?.reputationViewWasTapped(self)
+    }
+
+    @objc private func onLinkTap() {
+        delegate?.reputationViewLinkWasTapped()
     }
 }
 
