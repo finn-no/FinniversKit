@@ -52,5 +52,3 @@ extension TransactionDemoViewDefaultData {
                 body: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før».")
     ])
 }
-
-
