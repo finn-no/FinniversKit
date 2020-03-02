@@ -11,6 +11,12 @@ public class LoadingIndicatorViewDemoView: UIView {
         return view
     }()
 
+    private lazy var delayedLoadingIndicatorView: LoadingIndicatorView = {
+        let view = LoadingIndicatorView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -20,14 +26,21 @@ public class LoadingIndicatorViewDemoView: UIView {
 
     private func setup() {
         addSubview(loadingIndicatorView)
+        addSubview(delayedLoadingIndicatorView)
 
         NSLayoutConstraint.activate([
             loadingIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            loadingIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            loadingIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -60),
             loadingIndicatorView.widthAnchor.constraint(equalToConstant: 40),
-            loadingIndicatorView.heightAnchor.constraint(equalToConstant: 40)
+            loadingIndicatorView.heightAnchor.constraint(equalToConstant: 40),
+
+            delayedLoadingIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            delayedLoadingIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 60),
+            delayedLoadingIndicatorView.widthAnchor.constraint(equalToConstant: 40),
+            delayedLoadingIndicatorView.heightAnchor.constraint(equalToConstant: 40)
         ])
 
         loadingIndicatorView.startAnimating()
+        delayedLoadingIndicatorView.startAnimating(after: 2.0)
     }
 }
