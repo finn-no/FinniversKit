@@ -1,7 +1,12 @@
 import UIKit
 
-/// Branded replacement for UIActivityIndicatorView.
+/// Branded replacement for UIActivityIndicatorView with possibility to use delayed start.
 public class LoadingIndicatorView: UIView {
+    public enum State {
+        case delayedStart
+        case started
+        case stopped
+    }
     private let backgroundLayer = CAShapeLayer()
     private let animatedLayer = CAShapeLayer()
     private let duration: CGFloat = 2.5
@@ -11,6 +16,8 @@ public class LoadingIndicatorView: UIView {
     private var endAngle: CGFloat {
         return startAngle + 2 * .pi
     }
+
+    public private(set) var state = State.stopped
 
     public var progress: CGFloat {
         get { return animatedLayer.strokeEnd }
@@ -50,10 +57,24 @@ public class LoadingIndicatorView: UIView {
         layer.addSublayer(animatedLayer)
     }
 
+    /// Starts the animation of the loading indicator after a short delay, unless it has already been stopped.
+    /// - Parameters:
+    ///   - after: Seconds to wait until starting animation (approximately)
+    public func startAnimating(after delay: Double) {
+        guard state == .stopped else { return }
+        state = .delayedStart
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) { [weak self] in
+            if self?.state == .delayedStart {
+                self?.startAnimating()
+            }
+        }
+    }
+
     /// Starts the animation of the loading indicator.
     public func startAnimating() {
         animateGroup()
         isHidden = false
+        state = .started
     }
 
     /// Stops the animation of the loading indicator.
@@ -61,6 +82,7 @@ public class LoadingIndicatorView: UIView {
         backgroundLayer.removeAllAnimations()
         animatedLayer.removeAllAnimations()
         isHidden = true
+        state = .stopped
     }
 }
 
@@ -81,6 +103,8 @@ extension LoadingIndicatorView {
         animatedLayer.strokeEnd = 1
         animatedLayer.lineWidth = lineWidth
         animatedLayer.lineCap = .round
+
+        isHidden = true
     }
 
     private func animateStrokeEnd() -> CABasicAnimation {

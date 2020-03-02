@@ -63,8 +63,6 @@ public class RibbonView: UIView {
         self.init(style: .default)
     }
 
-    // MARK: - Public methods
-
     public func configure(with viewModel: RibbonViewModel) {
         style = viewModel.style
         title = viewModel.title

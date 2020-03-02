@@ -28,12 +28,6 @@ extension SafetyElementsView {
             return stackView
         }()
 
-        private lazy var hairline: UIView = {
-            let view = UIView(withAutoLayout: true)
-            view.backgroundColor = .tableViewSeparator
-            return view
-        }()
-
         private lazy var titleLabel: Label = {
             let label = Label(style: .captionStrong, withAutoLayout: true)
             label.textAlignment = .left
@@ -71,7 +65,7 @@ extension SafetyElementsView {
         func configure(with viewModel: SafetyElementViewModel, isLastElement: Bool) {
             iconImageView.image = viewModel.icon.withRenderingMode(.alwaysTemplate)
             titleLabel.text = viewModel.title
-            hairline.isHidden = isLastElement
+            layoutMargins.bottom = isLastElement ? 0 : .mediumLargeSpacing
             contentView.configure(with: viewModel)
         }
 
@@ -87,16 +81,7 @@ extension SafetyElementsView {
             addSubview(outerStackView)
             outerStackView.fillInSuperviewLayoutMargins()
 
-            layoutMargins = UIEdgeInsets(vertical: .mediumLargeSpacing, horizontal: 0)
-
-            addSubview(hairline)
-
-            NSLayoutConstraint.activate([
-                hairline.heightAnchor.constraint(equalToConstant: 1),
-                hairline.trailingAnchor.constraint(equalTo: trailingAnchor),
-                hairline.leadingAnchor.constraint(equalTo: leadingAnchor),
-                hairline.bottomAnchor.constraint(equalTo: bottomAnchor),
-            ])
+            layoutMargins = UIEdgeInsets(top: .mediumLargeSpacing)
         }
     }
 }
