@@ -33,7 +33,10 @@ public class SpacingDemoView: UIView {
         let spacingSView = makeLabel(text: "👈        spacingS        👉")
         addSubview(spacingSView)
 
-        let spacingLView = makeLabel(text: "👈        spacingLView        👉")
+        let spacingMView = makeLabel(text: "👈        spacingM        👉")
+        addSubview(spacingMView)
+
+        let spacingLView = makeLabel(text: "👈        spacingL        👉")
         addSubview(spacingLView)
 
         let spacingXLView = makeLabel(text: "👈        spacingXL        👉")
@@ -55,7 +58,11 @@ public class SpacingDemoView: UIView {
             spacingSView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
             spacingSView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
 
-            spacingLView.topAnchor.constraint(equalTo: spacingSView.bottomAnchor, constant: .spacingXXL),
+            spacingMView.topAnchor.constraint(equalTo: spacingSView.bottomAnchor, constant: .spacingXXL),
+            spacingMView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            spacingMView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+
+            spacingLView.topAnchor.constraint(equalTo: spacingMView.bottomAnchor, constant: .spacingXXL),
             spacingLView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingL),
             spacingLView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingL),
 
