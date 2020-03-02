@@ -56,6 +56,8 @@ public class TransactionView: UIView {
         return stackView
     }()
 
+    private var verticalStackViewTopAnchor: NSLayoutConstraint?
+
     // MARK: - Init
 
     public init(withAutoLayout autoLayout: Bool = false, model: TransactionViewModel,
@@ -93,6 +95,22 @@ private extension TransactionView {
         scrollableContentView.addSubview(titleLabel)
         scrollableContentView.addSubview(verticalStackView)
 
+        if let warningViewModel = model?.warning {
+            let warningView = TransactionWarningView( withAutoLayout: true, model: warningViewModel)
+            scrollableContentView.addSubview(warningView)
+
+            NSLayoutConstraint.activate([
+                warningView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .mediumLargeSpacing),
+                warningView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -.mediumLargeSpacing),
+                warningView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
+            ])
+
+            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: warningView.bottomAnchor, constant: .largeSpacing)
+
+        } else {
+            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .largeSpacing)
+        }
+
         NSLayoutConstraint.activate([
             scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
@@ -108,7 +126,7 @@ private extension TransactionView {
             titleLabel.heightAnchor.constraint(equalToConstant: 40),
 
             verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.largeSpacing),
-            verticalStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .largeSpacing),
+            verticalStackViewTopAnchor!,
             verticalStackView.bottomAnchor.constraint(equalTo: scrollableContentView.bottomAnchor),
         ])
 
@@ -124,7 +142,7 @@ private extension TransactionView {
     }
 
     private func addTransactionStepView(_ step: Int, _ model: TransactionStepViewModel) {
-        let transactionStepView = TransactionStepView(step: step, model: model, withAutoLayout: true)
+        let transactionStepView = TransactionStepView(withAutoLayout: true, step: step, model: model)
         transactionStepView.delegate = self
 
         if step == numberOfSteps - 1 && model.state == .completed {
