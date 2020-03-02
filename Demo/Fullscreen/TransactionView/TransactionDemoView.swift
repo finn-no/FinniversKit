@@ -5,35 +5,52 @@
 import FinniversKit
 
 final class TransactionDemoView: UIView {
-    private lazy var model = TransactionDemoViewDefaultData.model
+    private lazy var dataSource = TransactionDemoViewDefaultData()
+    private lazy var model: TransactionViewModel = dataSource.getState()
+    private var transactionView: TransactionView?
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        configure()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setup() {
-        let transactionView = TransactionView(model: model, dataSource: self, delegate: self, withAutoLayout: true)
-        addSubview(transactionView)
-        transactionView.fillInSuperview()
+    private func configure() {
+        if transactionView != nil {
+            transactionView?.removeFromSuperview()
+        }
+
+        model = dataSource.getState()
+        transactionView = TransactionView(model: model, dataSource: self, delegate: self, withAutoLayout: true)
+
+        addSubview(transactionView!)
+        transactionView!.fillInSuperview()
     }
 }
+
+// MARK: TransactionViewDelegate
 
 extension TransactionDemoView: TransactionViewDelegate {
     func transactionViewDidBeginRefreshing(_ refreshControl: RefreshControl) {
+        print("Did pull to refresh will update with new state")
+        configure()
         refreshControl.endRefreshing()
     }
 
-    func transactionViewDidSelectPrimaryButton(_ view: TransactionView, inTransactionStep step: Int,
-                                               withAction action: TransactionStepView.PrimaryButton.Action, withUrl urlString: String?,
+    func transactionViewDidSelectPrimaryButton(_ view: TransactionView,
+                                               inTransactionStep step: Int,
+                                               withAction action: TransactionStepView.PrimaryButton.Action,
+                                               withUrl urlString: String?,
                                                withFallbackUrl fallbackUrlString: String?) {
+
         print("Did tap button in step: \(step), with action: \(action.rawValue), with urlString: \(urlString ?? ""), with fallbackUrl:\(fallbackUrlString ?? "")")
     }
 }
+
+// MARK: TransactionViewDataSource
 
 extension TransactionDemoView: TransactionViewDataSource {
     func transactionViewNumberOfSteps(_ view: TransactionView) -> Int {
