@@ -7,7 +7,7 @@ import FinniversKit
 public struct TransactionModel: TransactionViewModel {
     public var title: String
     public var header: TransactionHeaderViewModel
-    public var alert: TransactionWarningViewModel
+    public var warning: TransactionWarningViewModel
     public var steps: [TransactionStepViewModel]
 }
 
