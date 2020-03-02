@@ -4,4 +4,6 @@
 
 import Foundation
 
-public class TransactionAlertView: UIView {}
+public class TransactionWarningView: UIView {
+
+}

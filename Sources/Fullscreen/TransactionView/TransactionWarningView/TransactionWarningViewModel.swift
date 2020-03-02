@@ -4,7 +4,7 @@
 
 import Foundation
 
-public protocol TransactionAlertViewModel {
+public protocol TransactionWarningViewModel {
     var title: String { get set }
     var message: String { get set }
     var imageUrlString: String? { get set }

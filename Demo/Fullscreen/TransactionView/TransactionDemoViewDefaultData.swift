@@ -7,7 +7,7 @@ import FinniversKit
 public struct TransactionModel: TransactionViewModel {
     public var title: String
     public var header: TransactionHeaderViewModel
-    public var alert: TransactionAlertViewModel
+    public var alert: TransactionWarningViewModel
     public var steps: [TransactionStepViewModel]
 }
 
@@ -18,7 +18,7 @@ public struct TransactionHeaderModel: TransactionHeaderViewModel {
     public var imageUrlString: String?
 }
 
-public struct TransactionAlertModel: TransactionAlertViewModel {
+public struct TransactionWarningModel: TransactionWarningViewModel {
     public var title: String
     public var message: String
     public var imageUrlString: String?
