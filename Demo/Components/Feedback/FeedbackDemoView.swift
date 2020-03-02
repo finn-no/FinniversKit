@@ -23,7 +23,7 @@ class FeedbackDemoView: UIView {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
-        stackView.spacing = .mediumSpacing
+        stackView.spacing = .spacingS
         listItems.forEach { stackView.addArrangedSubview($0) }
         return stackView
     }()
@@ -31,7 +31,7 @@ class FeedbackDemoView: UIView {
     private lazy var gridFeedbackStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.distribution = .fillEqually
-        stackView.spacing = .mediumSpacing
+        stackView.spacing = .spacingS
         gridItems.forEach { stackView.addArrangedSubview($0) }
         return stackView
     }()
@@ -55,19 +55,19 @@ class FeedbackDemoView: UIView {
         addSubview(gridFeedbackStackView)
 
         NSLayoutConstraint.activate([
-            switchViewsButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-            switchViewsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            switchViewsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            switchViewsButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            switchViewsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            switchViewsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
 
-            listFeedbackStackView.heightAnchor.constraint(equalToConstant: listItemHeight * 2 + .mediumSpacing),
-            listFeedbackStackView.topAnchor.constraint(equalTo: switchViewsButton.bottomAnchor, constant: .mediumSpacing),
-            listFeedbackStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            listFeedbackStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            listFeedbackStackView.heightAnchor.constraint(equalToConstant: listItemHeight * 2 + .spacingS),
+            listFeedbackStackView.topAnchor.constraint(equalTo: switchViewsButton.bottomAnchor, constant: .spacingS),
+            listFeedbackStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            listFeedbackStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
 
             gridFeedbackStackView.heightAnchor.constraint(equalToConstant: gridItemHeight),
-            gridFeedbackStackView.topAnchor.constraint(equalTo: listFeedbackStackView.bottomAnchor, constant: .mediumSpacing),
-            gridFeedbackStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            gridFeedbackStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            gridFeedbackStackView.topAnchor.constraint(equalTo: listFeedbackStackView.bottomAnchor, constant: .spacingS),
+            gridFeedbackStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            gridFeedbackStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
         ])
     }
 

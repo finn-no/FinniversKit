@@ -61,7 +61,7 @@ class FavoriteAdsListTableHeader: UIView {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleView, searchBar, sortingContainerView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.setCustomSpacing(.smallSpacing, after: titleLabel)
+        stackView.setCustomSpacing(.spacingXS, after: titleLabel)
         stackView.setCustomSpacing(24, after: subtitleView)
         stackView.setCustomSpacing(28, after: searchBar)
         return stackView
@@ -122,9 +122,9 @@ class FavoriteAdsListTableHeader: UIView {
         sortingContainerView.addSubview(sortingView)
 
         NSLayoutConstraint.activate([
-            contentStackView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            contentStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            contentStackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            contentStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
             contentStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             sortingView.leadingAnchor.constraint(equalTo: sortingContainerView.leadingAnchor),

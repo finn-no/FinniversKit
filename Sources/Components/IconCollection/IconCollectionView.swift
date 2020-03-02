@@ -37,7 +37,7 @@ public final class IconCollectionView: UIView {
     private lazy var collectionViewLayout: UICollectionViewLayout = {
         let layout = IconCollectionViewFlowLayout()
         layout.sectionInset = .zero
-        layout.minimumLineSpacing = .mediumSpacing
+        layout.minimumLineSpacing = .spacingS
         layout.minimumInteritemSpacing = 0
         return layout
     }()
@@ -45,7 +45,7 @@ public final class IconCollectionView: UIView {
     private lazy var margins: UIEdgeInsets = {
         switch alignment {
         case .horizontal:
-            return UIEdgeInsets(vertical: .mediumLargeSpacing, horizontal: .smallSpacing)
+            return UIEdgeInsets(vertical: .spacingM, horizontal: .spacingXS)
         case .vertical:
             return .zero
         }
@@ -100,7 +100,7 @@ public final class IconCollectionView: UIView {
         let cellRows = cellSizes.chunked(into: numberOfCellsInRow)
         let totalHeight = cellRows.compactMap { $0.max(by: { $0.height < $1.height }) }.reduce(0, { $0 + $1.height })
 
-        let extraSpacing: CGFloat = .mediumSpacing * CGFloat(cellRows.count - 1)
+        let extraSpacing: CGFloat = .spacingS * CGFloat(cellRows.count - 1)
         return CGSize(width: targetWidth, height: totalHeight + extraSpacing + margins.verticalMargins)
     }
 }

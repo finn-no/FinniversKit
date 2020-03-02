@@ -23,7 +23,7 @@ public class CollapseDemoView: UIView {
         NSLayoutConstraint.activate([
             collapseView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collapseView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collapseView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.largeSpacing),
+            collapseView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingXL),
         ])
     }
 }

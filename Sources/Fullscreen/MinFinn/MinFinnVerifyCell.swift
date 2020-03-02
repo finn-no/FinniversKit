@@ -110,27 +110,27 @@ private extension MinFinnVerifyCell {
         contentView.addSubview(secondaryButton)
 
         NSLayoutConstraint.activate([
-            colorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            colorView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .smallSpacing),
-            colorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            colorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            colorView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXS),
+            colorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
             colorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            iconView.topAnchor.constraint(equalTo: colorView.topAnchor, constant: .mediumLargeSpacing),
+            iconView.topAnchor.constraint(equalTo: colorView.topAnchor, constant: .spacingM),
             iconView.centerXAnchor.constraint(equalTo: colorView.centerXAnchor),
 
-            titleLabel.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: .mediumSpacing),
+            titleLabel.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: .spacingS),
             titleLabel.centerXAnchor.constraint(equalTo: colorView.centerXAnchor),
 
-            bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .smallSpacing),
-            bodyLabel.leadingAnchor.constraint(equalTo: colorView.leadingAnchor, constant: .mediumLargeSpacing),
-            bodyLabel.trailingAnchor.constraint(equalTo: colorView.trailingAnchor, constant: -.mediumLargeSpacing),
+            bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXS),
+            bodyLabel.leadingAnchor.constraint(equalTo: colorView.leadingAnchor, constant: .spacingM),
+            bodyLabel.trailingAnchor.constraint(equalTo: colorView.trailingAnchor, constant: -.spacingM),
 
-            primaryButton.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            primaryButton.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: .spacingM),
             primaryButton.centerXAnchor.constraint(equalTo: colorView.centerXAnchor),
 
             secondaryButton.centerXAnchor.constraint(equalTo: colorView.centerXAnchor),
-            secondaryButton.topAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .mediumSpacing),
-            secondaryButton.bottomAnchor.constraint(equalTo: colorView.bottomAnchor, constant: -.mediumSpacing),
+            secondaryButton.topAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .spacingS),
+            secondaryButton.bottomAnchor.constraint(equalTo: colorView.bottomAnchor, constant: -.spacingS),
         ])
     }
 }

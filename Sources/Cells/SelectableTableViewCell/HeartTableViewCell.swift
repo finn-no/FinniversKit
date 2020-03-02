@@ -37,10 +37,10 @@ open class HeartTableViewCell: BasicTableViewCell {
         heartView.isHighlighted = viewModel.isSelected
 
         if viewModel.subtitle != nil {
-            stackViewToHeartConstraint.constant = .mediumLargeSpacing
+            stackViewToHeartConstraint.constant = .spacingM
             separatorInset = .leadingInset(60)
         } else {
-            stackViewToHeartConstraint.constant = .mediumSpacing
+            stackViewToHeartConstraint.constant = .spacingS
             separatorInset = .leadingInset(52)
         }
 
@@ -65,7 +65,7 @@ open class HeartTableViewCell: BasicTableViewCell {
             stackViewToHeartConstraint,
             heartView.heightAnchor.constraint(equalToConstant: 28),
             heartView.widthAnchor.constraint(equalTo: heartView.heightAnchor),
-            heartView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            heartView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             heartView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }

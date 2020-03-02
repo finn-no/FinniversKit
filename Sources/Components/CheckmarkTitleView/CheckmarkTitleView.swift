@@ -35,10 +35,10 @@ private extension CheckmarkTitleView {
         NSLayoutConstraint.activate([
             checkmarkImageView.heightAnchor.constraint(equalToConstant: 20),
             checkmarkImageView.widthAnchor.constraint(equalToConstant: 20),
-            checkmarkImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+            checkmarkImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
 
             titleLabel.centerYAnchor.constraint(equalTo: checkmarkImageView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: checkmarkImageView.trailingAnchor, constant: .mediumSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: checkmarkImageView.trailingAnchor, constant: .spacingS),
         ])
     }
 }

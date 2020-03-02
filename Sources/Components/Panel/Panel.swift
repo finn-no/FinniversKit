@@ -51,6 +51,6 @@ public class Panel: UIView {
         }
 
         addSubview(textLabel)
-        textLabel.fillInSuperview(margin: .mediumLargeSpacing)
+        textLabel.fillInSuperview(margin: .spacingM)
     }
 }

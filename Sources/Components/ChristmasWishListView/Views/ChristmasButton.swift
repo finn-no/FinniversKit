@@ -25,10 +25,10 @@ extension ChristmasWishListView {
             setTitleColor(.textTertiary, for: .normal)
             backgroundColor = .christmasCallToAction
 
-            layer.cornerRadius = .mediumSpacing
-            imageEdgeInsets = UIEdgeInsets(trailing: .mediumSpacing)
+            layer.cornerRadius = .spacingS
+            imageEdgeInsets = UIEdgeInsets(trailing: .spacingS)
             titleLabel?.font = UIFont.bodyStrong
-            contentEdgeInsets = UIEdgeInsets(all: .mediumSpacing * 1.5)
+            contentEdgeInsets = UIEdgeInsets(all: .spacingS * 1.5)
             adjustsImageWhenHighlighted = false
         }
     }

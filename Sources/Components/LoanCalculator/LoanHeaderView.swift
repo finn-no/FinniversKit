@@ -42,7 +42,7 @@ class LoanHeaderView: UIView {
     private lazy var outerStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.spacing = .mediumLargeSpacing
+        stackView.spacing = .spacingM
 
         return stackView
     }()
@@ -128,15 +128,15 @@ class LoanHeaderView: UIView {
             titleLabel.leadingAnchor.constraint(equalTo: textContainerView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: textContainerView.trailingAnchor),
 
-            valueLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
+            valueLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
             valueLabel.leadingAnchor.constraint(equalTo: textContainerView.leadingAnchor),
             valueLabel.trailingAnchor.constraint(equalTo: textContainerView.trailingAnchor),
 
-            rentLabel.topAnchor.constraint(equalTo: valueLabel.bottomAnchor, constant: .mediumSpacing),
+            rentLabel.topAnchor.constraint(equalTo: valueLabel.bottomAnchor, constant: .spacingS),
             rentLabel.leadingAnchor.constraint(equalTo: textContainerView.leadingAnchor),
             rentLabel.trailingAnchor.constraint(equalTo: textContainerView.trailingAnchor),
 
-            loanTotalLabel.topAnchor.constraint(equalTo: rentLabel.bottomAnchor, constant: .mediumSpacing),
+            loanTotalLabel.topAnchor.constraint(equalTo: rentLabel.bottomAnchor, constant: .spacingS),
             loanTotalLabel.leadingAnchor.constraint(equalTo: textContainerView.leadingAnchor),
             loanTotalLabel.trailingAnchor.constraint(equalTo: textContainerView.trailingAnchor),
             loanTotalLabel.bottomAnchor.constraint(equalTo: textContainerView.bottomAnchor),
@@ -153,7 +153,7 @@ class LoanHeaderView: UIView {
             logoImageView.topAnchor.constraint(equalTo: valuesContainerView.topAnchor),
             logoImageView.heightAnchor.constraint(lessThanOrEqualTo: textContainerView.heightAnchor),
             logoImageView.trailingAnchor.constraint(equalTo: valuesContainerView.trailingAnchor),
-            logoImageView.leadingAnchor.constraint(equalTo: textContainerView.trailingAnchor, constant: .mediumLargeSpacing),
+            logoImageView.leadingAnchor.constraint(equalTo: textContainerView.trailingAnchor, constant: .spacingM),
         ])
 
         outerStackView.addArrangedSubview(valuesContainerView)

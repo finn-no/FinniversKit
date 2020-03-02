@@ -70,14 +70,14 @@ class MessageInputTextView: UIView {
         addSubview(additionalInfoLabel)
 
         NSLayoutConstraint.activate([
-            textView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-            textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            textView.bottomAnchor.constraint(equalTo: additionalInfoLabel.topAnchor, constant: -.mediumSpacing),
+            textView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            textView.bottomAnchor.constraint(equalTo: additionalInfoLabel.topAnchor, constant: -.spacingS),
 
-            additionalInfoLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            additionalInfoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            additionalInfoLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing)
+            additionalInfoLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            additionalInfoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            additionalInfoLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS)
         ])
     }
 

@@ -58,7 +58,7 @@ final class FavoriteFoldersFooterView: UIView {
         addSubview(button)
 
         NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+            button.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
             button.leadingAnchor.constraint(equalTo: leadingAnchor),
             button.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])

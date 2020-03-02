@@ -105,7 +105,7 @@ class NotificationCenterCell: UITableViewCell {
 
         priceLabel.text = model?.priceText
         priceLabel.isHidden = model?.priceText == nil
-        
+
         if let ribbonViewModel = model?.ribbonViewModel {
             statusRibbon.configure(with: ribbonViewModel)
         } else {
@@ -135,27 +135,27 @@ private extension NotificationCenterCell {
         contentView.addSubview(stackView)
         contentView.addSubview(separatorView)
 
-        stackView.setCustomSpacing(.mediumSpacing, after: titleLabel)
-        stackView.setCustomSpacing(.smallSpacing, after: priceLabel)
-        stackView.setCustomSpacing(.mediumSpacing, after: timestampLabel)
+        stackView.setCustomSpacing(.spacingS, after: titleLabel)
+        stackView.setCustomSpacing(.spacingXS, after: priceLabel)
+        stackView.setCustomSpacing(.spacingS, after: timestampLabel)
 
         NSLayoutConstraint.activate([
-            remoteImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
-            remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            remoteImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
+            remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             remoteImageView.widthAnchor.constraint(equalToConstant: adImageWidth),
             remoteImageView.heightAnchor.constraint(equalToConstant: adImageWidth),
 
             stackView.topAnchor.constraint(equalTo: remoteImageView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .spacingM),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
 
             separatorView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
             separatorView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             separatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: remoteImageView.bottomAnchor, constant: .mediumLargeSpacing),
-            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: stackView.bottomAnchor, constant: .mediumLargeSpacing)
+            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: remoteImageView.bottomAnchor, constant: .spacingM),
+            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: stackView.bottomAnchor, constant: .spacingM)
         ])
     }
 }

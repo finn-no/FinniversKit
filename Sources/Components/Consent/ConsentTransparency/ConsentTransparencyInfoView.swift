@@ -198,18 +198,18 @@ private extension ConsentTransparencyInfoView {
         contentView.addSubview(schibstedButtonIntroLabel)
         contentView.addSubview(schibstedPrivacyButton)
 
-        let finnPrivacyButtonConstraintToSettings = finnPrivacyButton.topAnchor.constraint(equalTo: finnSettingsButton.bottomAnchor, constant: .mediumLargeSpacing)
-        let finnPrivacyButtonConstraintToIntro = finnPrivacyButton.topAnchor.constraint(equalTo: finnButtonIntroLabel.bottomAnchor, constant: .mediumLargeSpacing)
+        let finnPrivacyButtonConstraintToSettings = finnPrivacyButton.topAnchor.constraint(equalTo: finnSettingsButton.bottomAnchor, constant: .spacingM)
+        let finnPrivacyButtonConstraintToIntro = finnPrivacyButton.topAnchor.constraint(equalTo: finnButtonIntroLabel.bottomAnchor, constant: .spacingM)
 
-        let schibstedPrivacyButtonConstraintToSettings = schibstedPrivacyButton.topAnchor.constraint(equalTo: schibstedSettingsButton.bottomAnchor, constant: .mediumLargeSpacing)
-        let schibstedPrivacyButtonConstraintToIntro = schibstedPrivacyButton.topAnchor.constraint(equalTo: schibstedButtonIntroLabel.bottomAnchor, constant: .mediumLargeSpacing)
+        let schibstedPrivacyButtonConstraintToSettings = schibstedPrivacyButton.topAnchor.constraint(equalTo: schibstedSettingsButton.bottomAnchor, constant: .spacingM)
+        let schibstedPrivacyButtonConstraintToIntro = schibstedPrivacyButton.topAnchor.constraint(equalTo: schibstedButtonIntroLabel.bottomAnchor, constant: .spacingM)
 
         finnPrivacyButtonConstraintToSettings.isActive = false
         schibstedPrivacyButtonConstraintToSettings.isActive = false
 
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
@@ -219,50 +219,50 @@ private extension ConsentTransparencyInfoView {
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
-            mainHeaderLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
-            mainHeaderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            mainHeaderLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            mainHeaderLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
+            mainHeaderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            mainHeaderLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
 
-            finnHeaderLabel.topAnchor.constraint(equalTo: mainHeaderLabel.bottomAnchor, constant: .mediumLargeSpacing),
-            finnHeaderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            finnHeaderLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            finnHeaderLabel.topAnchor.constraint(equalTo: mainHeaderLabel.bottomAnchor, constant: .spacingM),
+            finnHeaderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            finnHeaderLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
 
-            finnIntroLabel.topAnchor.constraint(equalTo: finnHeaderLabel.bottomAnchor, constant: .mediumLargeSpacing),
-            finnIntroLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            finnIntroLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            finnIntroLabel.topAnchor.constraint(equalTo: finnHeaderLabel.bottomAnchor, constant: .spacingM),
+            finnIntroLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            finnIntroLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
 
-            finnBulletPointsLabel.topAnchor.constraint(equalTo: finnIntroLabel.bottomAnchor, constant: .mediumLargeSpacing),
-            finnBulletPointsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            finnBulletPointsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            finnBulletPointsLabel.topAnchor.constraint(equalTo: finnIntroLabel.bottomAnchor, constant: .spacingM),
+            finnBulletPointsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            finnBulletPointsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
 
-            finnButtonIntroLabel.topAnchor.constraint(equalTo: finnBulletPointsLabel.bottomAnchor, constant: .mediumLargeSpacing),
-            finnButtonIntroLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            finnButtonIntroLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            finnButtonIntroLabel.topAnchor.constraint(equalTo: finnBulletPointsLabel.bottomAnchor, constant: .spacingM),
+            finnButtonIntroLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            finnButtonIntroLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
 
             finnPrivacyButtonConstraintToIntro,
-            finnPrivacyButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            finnPrivacyButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            finnPrivacyButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            finnPrivacyButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.spacingM),
 
-            schibstedHeaderLabel.topAnchor.constraint(equalTo: finnPrivacyButton.bottomAnchor, constant: .mediumLargeSpacing),
-            schibstedHeaderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            schibstedHeaderLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            schibstedHeaderLabel.topAnchor.constraint(equalTo: finnPrivacyButton.bottomAnchor, constant: .spacingM),
+            schibstedHeaderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            schibstedHeaderLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
 
-            schibstedIntroLabel.topAnchor.constraint(equalTo: schibstedHeaderLabel.bottomAnchor, constant: .mediumLargeSpacing),
-            schibstedIntroLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            schibstedIntroLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            schibstedIntroLabel.topAnchor.constraint(equalTo: schibstedHeaderLabel.bottomAnchor, constant: .spacingM),
+            schibstedIntroLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            schibstedIntroLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
 
-            schibstedBulletPointsLabel.topAnchor.constraint(equalTo: schibstedIntroLabel.bottomAnchor, constant: .mediumLargeSpacing),
-            schibstedBulletPointsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            schibstedBulletPointsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            schibstedBulletPointsLabel.topAnchor.constraint(equalTo: schibstedIntroLabel.bottomAnchor, constant: .spacingM),
+            schibstedBulletPointsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            schibstedBulletPointsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
 
-            schibstedButtonIntroLabel.topAnchor.constraint(equalTo: schibstedBulletPointsLabel.bottomAnchor, constant: .mediumLargeSpacing),
-            schibstedButtonIntroLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            schibstedButtonIntroLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            schibstedButtonIntroLabel.topAnchor.constraint(equalTo: schibstedBulletPointsLabel.bottomAnchor, constant: .spacingM),
+            schibstedButtonIntroLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            schibstedButtonIntroLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
 
             schibstedPrivacyButtonConstraintToIntro,
-            schibstedPrivacyButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            schibstedPrivacyButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            schibstedPrivacyButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing)
+            schibstedPrivacyButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            schibstedPrivacyButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.spacingM),
+            schibstedPrivacyButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingS)
         ])
 
         if showSettingsButtons {
@@ -276,13 +276,13 @@ private extension ConsentTransparencyInfoView {
                 finnPrivacyButtonConstraintToSettings,
                 schibstedPrivacyButtonConstraintToSettings,
 
-                schibstedSettingsButton.topAnchor.constraint(equalTo: schibstedButtonIntroLabel.bottomAnchor, constant: .mediumLargeSpacing),
-                schibstedSettingsButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-                schibstedSettingsButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+                schibstedSettingsButton.topAnchor.constraint(equalTo: schibstedButtonIntroLabel.bottomAnchor, constant: .spacingM),
+                schibstedSettingsButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+                schibstedSettingsButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.spacingM),
 
-                finnSettingsButton.topAnchor.constraint(equalTo: finnButtonIntroLabel.bottomAnchor, constant: .mediumLargeSpacing),
-                finnSettingsButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-                finnSettingsButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing)
+                finnSettingsButton.topAnchor.constraint(equalTo: finnButtonIntroLabel.bottomAnchor, constant: .spacingM),
+                finnSettingsButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+                finnSettingsButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.spacingM)
             ])
         }
     }

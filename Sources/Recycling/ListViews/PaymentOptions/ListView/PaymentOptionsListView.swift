@@ -97,11 +97,11 @@ private extension PaymentOptionsListView {
 
             totalSumView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             totalSumView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            totalSumView.bottomAnchor.constraint(equalTo: footerButtonView.topAnchor, constant: -.largeSpacing),
+            totalSumView.bottomAnchor.constraint(equalTo: footerButtonView.topAnchor, constant: -.spacingXL),
 
             collapseView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             collapseView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            collapseView.bottomAnchor.constraint(equalTo: totalSumView.topAnchor, constant: -.largeSpacing),
+            collapseView.bottomAnchor.constraint(equalTo: totalSumView.topAnchor, constant: -.spacingXL),
 
             tableView.heightAnchor.constraint(greaterThanOrEqualToConstant: 300),
             tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),

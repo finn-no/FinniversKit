@@ -71,32 +71,32 @@ public final class AddressCardView: UIView {
         addSubview(getDirectionsButton)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             titleLabel.trailingAnchor.constraint(
                 lessThanOrEqualTo: copyButton.leadingAnchor,
-                constant: -.mediumLargeSpacing
+                constant: -.spacingM
             ),
 
-            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .smallSpacing),
+            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXS),
             subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             subtitleLabel.trailingAnchor.constraint(
                 lessThanOrEqualTo: copyButton.leadingAnchor,
-                constant: -.mediumLargeSpacing
+                constant: -.spacingM
             ),
 
-            copyButton.centerYAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .verySmallSpacing),
-            copyButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            copyButton.centerYAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXXS),
+            copyButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
             getDirectionsButton.topAnchor.constraint(
                 equalTo: subtitleLabel.bottomAnchor,
-                constant: .mediumLargeSpacing + .mediumSpacing
+                constant: .spacingM + .spacingS
             ),
-            getDirectionsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-            getDirectionsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            getDirectionsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            getDirectionsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             getDirectionsButton.bottomAnchor.constraint(
                 equalTo: bottomAnchor,
-                constant: -.mediumLargeSpacing + -.mediumSpacing)
+                constant: -.spacingM + -.spacingS)
         ])
     }
 

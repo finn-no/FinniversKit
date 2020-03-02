@@ -134,12 +134,12 @@ public class AddressMapView: UIView {
             mapView.trailingAnchor.constraint(equalTo: trailingAnchor),
             mapView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            viewModeButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            viewModeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            viewModeButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            viewModeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
             viewModeButton.widthAnchor.constraint(equalToConstant: 46),
             viewModeButton.heightAnchor.constraint(equalTo: viewModeButton.widthAnchor),
 
-            pinButton.topAnchor.constraint(equalTo: viewModeButton.bottomAnchor, constant: .mediumSpacing),
+            pinButton.topAnchor.constraint(equalTo: viewModeButton.bottomAnchor, constant: .spacingS),
             pinButton.trailingAnchor.constraint(equalTo: viewModeButton.trailingAnchor),
             pinButton.widthAnchor.constraint(equalTo: viewModeButton.heightAnchor),
             pinButton.heightAnchor.constraint(equalTo: viewModeButton.widthAnchor)

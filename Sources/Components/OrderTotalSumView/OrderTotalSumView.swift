@@ -56,13 +56,13 @@ private extension OrderTotalSumView {
         addSubview(totalSumLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM),
             titleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             titleLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
 
             totalSumLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             totalSumLabel.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
-            totalSumLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumLargeSpacing),
+            totalSumLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingM),
         ])
     }
 }

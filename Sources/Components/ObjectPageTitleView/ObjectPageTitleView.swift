@@ -17,7 +17,7 @@ public class ObjectPageTitleView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .leading
-        stackView.setCustomSpacing(.mediumSpacing, after: ribbonView)
+        stackView.setCustomSpacing(.spacingS, after: ribbonView)
         return stackView
     }()
 
@@ -55,7 +55,7 @@ public class ObjectPageTitleView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(withTitle title: String? = nil, subtitle: String? = nil, ribbonViewModel: RibbonViewModel? = nil, spacingAfterTitle: CGFloat = .smallSpacing) {
+    public func configure(withTitle title: String? = nil, subtitle: String? = nil, ribbonViewModel: RibbonViewModel? = nil, spacingAfterTitle: CGFloat = .spacingXS) {
         titleLabel.text = title
         titleLabel.isHidden = title?.isEmpty ?? true
 

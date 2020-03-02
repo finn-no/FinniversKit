@@ -34,7 +34,7 @@ public final class CalloutView: UIView {
         view.backgroundColor = .bgSuccess
         view.layer.borderColor = .accentPea
         view.layer.borderWidth = 2
-        view.layer.cornerRadius = .mediumSpacing
+        view.layer.cornerRadius = .spacingS
         return view
     }()
 
@@ -117,10 +117,10 @@ public final class CalloutView: UIView {
             arrowView.heightAnchor.constraint(equalToConstant: 12),
             arrowConstraint,
 
-            textLabel.topAnchor.constraint(equalTo: boxView.topAnchor, constant: .mediumLargeSpacing),
-            textLabel.leadingAnchor.constraint(equalTo: boxView.leadingAnchor, constant: .mediumLargeSpacing),
-            textLabel.trailingAnchor.constraint(equalTo: boxView.trailingAnchor, constant: -.mediumLargeSpacing),
-            textLabel.bottomAnchor.constraint(equalTo: boxView.bottomAnchor, constant: -.mediumLargeSpacing)
+            textLabel.topAnchor.constraint(equalTo: boxView.topAnchor, constant: .spacingM),
+            textLabel.leadingAnchor.constraint(equalTo: boxView.leadingAnchor, constant: .spacingM),
+            textLabel.trailingAnchor.constraint(equalTo: boxView.trailingAnchor, constant: -.spacingM),
+            textLabel.bottomAnchor.constraint(equalTo: boxView.bottomAnchor, constant: -.spacingM)
         ]
 
         NSLayoutConstraint.activate(defaultConstraints + directionConstraints())

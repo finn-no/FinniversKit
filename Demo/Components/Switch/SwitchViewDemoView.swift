@@ -33,13 +33,13 @@ public class SwitchViewDemoView: UIView {
         addSubview(commercialSwitchView)
 
         NSLayoutConstraint.activate([
-            recommendationsSwitchView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            recommendationsSwitchView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            recommendationsSwitchView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            recommendationsSwitchView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            recommendationsSwitchView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            recommendationsSwitchView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
-            commercialSwitchView.topAnchor.constraint(equalTo: recommendationsSwitchView.bottomAnchor, constant: .mediumSpacing),
-            commercialSwitchView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            commercialSwitchView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing)
+            commercialSwitchView.topAnchor.constraint(equalTo: recommendationsSwitchView.bottomAnchor, constant: .spacingS),
+            commercialSwitchView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            commercialSwitchView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
         ])
     }
 }

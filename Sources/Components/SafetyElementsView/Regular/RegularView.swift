@@ -43,7 +43,7 @@ extension SafetyElementsView {
             let stackView = UIStackView(withAutoLayout: true)
             stackView.axis = .horizontal
             stackView.distribution = .equalSpacing
-            stackView.spacing = .mediumLargeSpacing
+            stackView.spacing = .spacingM
             return stackView
         }()
 
@@ -59,8 +59,8 @@ extension SafetyElementsView {
             let view = ElementContentView(withAutoLayout: true)
             view.backgroundColor = contentBackgroundColor
             view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner]
-            view.layer.cornerRadius = .mediumSpacing
-            view.layoutMargins = UIEdgeInsets(all: .mediumLargeSpacing * 1.5)
+            view.layer.cornerRadius = .spacingS
+            view.layoutMargins = UIEdgeInsets(all: .spacingM * 1.5)
             return view
         }()
 

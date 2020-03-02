@@ -88,8 +88,8 @@ public final class FloatingButton: UIButton {
         NSLayoutConstraint.activate([
             badgeView.widthAnchor.constraint(equalToConstant: badgeSize),
             badgeView.heightAnchor.constraint(equalToConstant: badgeSize),
-            badgeView.topAnchor.constraint(equalTo: topAnchor, constant: -.smallSpacing),
-            badgeView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .smallSpacing),
+            badgeView.topAnchor.constraint(equalTo: topAnchor, constant: -.spacingXS),
+            badgeView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .spacingXS),
         ])
     }
 

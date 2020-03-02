@@ -42,7 +42,7 @@ open class BasicTableViewCell: UITableViewCell {
         return stackView
     }()
 
-    open lazy var stackViewLeadingAnchorConstraint = stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing)
+    open lazy var stackViewLeadingAnchorConstraint = stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM)
     open lazy var stackViewTrailingAnchorConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor)
     open lazy var stackViewBottomAnchorConstraint = stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13)
     open lazy var stackViewTopAnchorConstraint = stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13)
@@ -50,7 +50,7 @@ open class BasicTableViewCell: UITableViewCell {
 
     // MARK: - Private properties
 
-    private lazy var stackViewToDetailLabelConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: detailLabel.leadingAnchor, constant: -.smallSpacing)
+    private lazy var stackViewToDetailLabelConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: detailLabel.leadingAnchor, constant: -.spacingXS)
 
     // MARK: - Setup
 
@@ -93,8 +93,8 @@ open class BasicTableViewCell: UITableViewCell {
             accessoryType = .disclosureIndicator
             selectionStyle = .default
             if #available(iOS 13.0, *) {
-                detailLabelTrailingConstraint.constant = -.mediumSpacing
-                stackViewTrailingAnchorConstraint.constant = -.mediumSpacing
+                detailLabelTrailingConstraint.constant = -.spacingS
+                stackViewTrailingAnchorConstraint.constant = -.spacingS
             } else {
                 detailLabelTrailingConstraint.constant = 0
                 stackViewTrailingAnchorConstraint.constant = 0
@@ -102,11 +102,11 @@ open class BasicTableViewCell: UITableViewCell {
         } else {
             accessoryType = .none
             selectionStyle = .none
-            detailLabelTrailingConstraint.constant = -.mediumLargeSpacing
-            stackViewTrailingAnchorConstraint.constant = -.mediumLargeSpacing
+            detailLabelTrailingConstraint.constant = -.spacingM
+            stackViewTrailingAnchorConstraint.constant = -.spacingM
         }
 
-        separatorInset = .leadingInset(.mediumLargeSpacing)
+        separatorInset = .leadingInset(.spacingM)
     }
 
     open override func prepareForReuse() {

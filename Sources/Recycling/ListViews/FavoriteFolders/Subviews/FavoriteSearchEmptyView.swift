@@ -49,8 +49,8 @@ final class FavoriteSearchEmptyView: UIView {
         button.setTitleColor(.flatButtonHighlightedTextColor, for: .highlighted)
         button.setTitleColor(.flatButtonHighlightedTextColor, for: .selected)
         button.addTarget(self, action: #selector(handleAddFolderButtonTap), for: .touchUpInside)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -.smallSpacing, bottom: 0, right: .smallSpacing)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: .smallSpacing, bottom: 0, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -.spacingXS, bottom: 0, right: .spacingXS)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: .spacingXS, bottom: 0, right: 0)
         return button
     }()
 
@@ -82,8 +82,8 @@ final class FavoriteSearchEmptyView: UIView {
         stackView.addArrangedSubview(bodyLabel)
         stackView.addArrangedSubview(addFolderButton)
 
-        stackView.setCustomSpacing(.mediumSpacing, after: magnifyingGlassImageView)
-        stackView.setCustomSpacing(.mediumLargeSpacing, after: bodyLabel)
+        stackView.setCustomSpacing(.spacingS, after: magnifyingGlassImageView)
+        stackView.setCustomSpacing(.spacingM, after: bodyLabel)
 
         wrapperView.addSubview(stackView)
         addSubview(wrapperView)
@@ -94,9 +94,9 @@ final class FavoriteSearchEmptyView: UIView {
             wrapperView.trailingAnchor.constraint(equalTo: trailingAnchor),
             wrapperViewBottomConstraint,
 
-            stackView.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor, constant: -.mediumSpacing),
-            stackView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor, constant: .veryLargeSpacing),
-            stackView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor, constant: -.veryLargeSpacing),
+            stackView.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor, constant: -.spacingS),
+            stackView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor, constant: .spacingXXL),
+            stackView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor, constant: -.spacingXXL),
 
             magnifyingGlassImageView.heightAnchor.constraint(equalToConstant: 48),
             magnifyingGlassImageView.widthAnchor.constraint(equalToConstant: 48)

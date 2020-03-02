@@ -21,7 +21,7 @@ final class EarthHourTagView: UIView {
     private(set) lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .horizontal
-        stackView.spacing = .smallSpacing
+        stackView.spacing = .spacingXS
         stackView.distribution = .fillProportionally
         stackView.alignment = .fill
 
@@ -46,10 +46,10 @@ final class EarthHourTagView: UIView {
 
     private func setup() {
         backgroundColor = UIColor(r: 196, g: 210, b: 231)
-        layer.cornerRadius = .mediumSpacing
+        layer.cornerRadius = .spacingS
 
         addSubview(stackView)
-        stackView.fillInSuperview(insets: .init(top: 6, leading: .mediumSpacing, bottom: -6, trailing: -.mediumSpacing))
+        stackView.fillInSuperview(insets: .init(top: 6, leading: .spacingS, bottom: -6, trailing: -.spacingS))
 
         NSLayoutConstraint.activate([
             imageView.widthAnchor.constraint(equalToConstant: 14),

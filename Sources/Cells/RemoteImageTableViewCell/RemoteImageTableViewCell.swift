@@ -56,7 +56,7 @@ public class RemoteImageTableViewCell: BasicTableViewCell {
         self.viewModel = viewModel
 
         selectionStyle = .default
-        separatorInset = .leadingInset(.mediumLargeSpacing * 2 + viewModel.imageViewWidth)
+        separatorInset = .leadingInset(.spacingM * 2 + viewModel.imageViewWidth)
 
         remoteImageView.layer.cornerRadius = viewModel.cornerRadius
         remoteImageWidthConstraint.constant = viewModel.imageViewWidth
@@ -85,10 +85,10 @@ public class RemoteImageTableViewCell: BasicTableViewCell {
         NSLayoutConstraint.activate([
             remoteImageWidthConstraint,
             remoteImageView.heightAnchor.constraint(equalTo: remoteImageView.widthAnchor),
-            remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             remoteImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
-            stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing)
+            stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .spacingM)
         ])
     }
 }

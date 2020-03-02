@@ -90,13 +90,13 @@ class InlineConsentDemoViewController: UIViewController {
         top.addSubview(presentDialogue)
 
         NSLayoutConstraint.activate([
-            dismiss.topAnchor.constraint(equalTo: top.topAnchor, constant: .largeSpacing + 10),
-            dismiss.leadingAnchor.constraint(equalTo: top.leadingAnchor, constant: .largeSpacing),
-            dismiss.trailingAnchor.constraint(equalTo: top.trailingAnchor, constant: -.largeSpacing),
+            dismiss.topAnchor.constraint(equalTo: top.topAnchor, constant: .spacingXL + 10),
+            dismiss.leadingAnchor.constraint(equalTo: top.leadingAnchor, constant: .spacingXL),
+            dismiss.trailingAnchor.constraint(equalTo: top.trailingAnchor, constant: -.spacingXL),
 
-            presentDialogue.topAnchor.constraint(equalTo: dismiss.topAnchor, constant: .largeSpacing + 20),
-            presentDialogue.leadingAnchor.constraint(equalTo: top.leadingAnchor, constant: .largeSpacing),
-            presentDialogue.trailingAnchor.constraint(equalTo: top.trailingAnchor, constant: -.largeSpacing),
+            presentDialogue.topAnchor.constraint(equalTo: dismiss.topAnchor, constant: .spacingXL + 20),
+            presentDialogue.leadingAnchor.constraint(equalTo: top.leadingAnchor, constant: .spacingXL),
+            presentDialogue.trailingAnchor.constraint(equalTo: top.trailingAnchor, constant: -.spacingXL),
             ])
     }
 

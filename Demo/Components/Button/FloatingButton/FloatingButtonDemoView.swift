@@ -41,8 +41,8 @@ public class FloatingButtonDemoView: UIView, Tweakable {
         NSLayoutConstraint.activate([
             floatingButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             floatingButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            floatingButton.widthAnchor.constraint(equalToConstant: .veryLargeSpacing),
-            floatingButton.heightAnchor.constraint(equalToConstant: .veryLargeSpacing)
+            floatingButton.widthAnchor.constraint(equalToConstant: .spacingXXL),
+            floatingButton.heightAnchor.constraint(equalToConstant: .spacingXXL)
         ])
     }
 }
