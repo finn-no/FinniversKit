@@ -96,22 +96,22 @@ final class EarthHourHeaderView: UIView {
         earthImageView.addSubview(eyesImageView)
 
         NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: .smallSpacing * 3),
-            closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.smallSpacing * 3),
-            closeButton.widthAnchor.constraint(equalToConstant: .largeSpacing),
+            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXS * 3),
+            closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXS * 3),
+            closeButton.widthAnchor.constraint(equalToConstant: .spacingXL),
             closeButton.heightAnchor.constraint(equalTo: closeButton.widthAnchor),
 
             starsImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             starsImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
 
-            heartImageView.topAnchor.constraint(equalTo: earthImageView.topAnchor, constant: .largeSpacing),
+            heartImageView.topAnchor.constraint(equalTo: earthImageView.topAnchor, constant: .spacingXL),
             heartImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
 
             earthImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             earthImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
 
             eyesImageView.centerXAnchor.constraint(equalTo: earthImageView.centerXAnchor),
-            eyesImageView.centerYAnchor.constraint(equalTo: earthImageView.centerYAnchor, constant: -.mediumSpacing),
+            eyesImageView.centerYAnchor.constraint(equalTo: earthImageView.centerYAnchor, constant: -.spacingS),
 
             backgroundView.topAnchor.constraint(equalTo: topAnchor),
             backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -121,7 +121,7 @@ final class EarthHourHeaderView: UIView {
             bottomCurveView.leadingAnchor.constraint(equalTo: leadingAnchor),
             bottomCurveView.trailingAnchor.constraint(equalTo: trailingAnchor),
             bottomCurveView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            bottomCurveView.heightAnchor.constraint(equalToConstant: .veryLargeSpacing)
+            bottomCurveView.heightAnchor.constraint(equalToConstant: .spacingXXL)
         ])
     }
 
@@ -169,7 +169,7 @@ final class EarthHourHeaderView: UIView {
     private func addHeartAnimation() {
         let moveAnimation = CABasicAnimation(keyPath: "position.y")
         moveAnimation.duration = 2
-        moveAnimation.byValue = -CGFloat.veryLargeSpacing
+        moveAnimation.byValue = -CGFloat.spacingXXL
         moveAnimation.isRemovedOnCompletion = false
 
         let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")

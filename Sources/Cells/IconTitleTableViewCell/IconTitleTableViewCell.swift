@@ -19,7 +19,7 @@ open class IconTitleTableViewCell: BasicTableViewCell {
     let iconSize: CGFloat = 24
 
     private lazy var stackViewToIconConstraint = stackView.leadingAnchor.constraint(
-        equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing
+        equalTo: iconImageView.trailingAnchor, constant: .spacingM
     )
 
     // MARK: - Setup
@@ -54,12 +54,12 @@ open class IconTitleTableViewCell: BasicTableViewCell {
             stackViewToIconConstraint.isActive = true
 
             // align it with the text, considering the size of the icon
-            separatorInset = .leadingInset(.mediumLargeSpacing + iconSize + .mediumLargeSpacing)
+            separatorInset = .leadingInset(.spacingM + iconSize + .spacingM)
         } else {
             stackViewToIconConstraint.isActive = false
             stackViewLeadingAnchorConstraint.isActive = true
 
-            separatorInset = .leadingInset(.mediumLargeSpacing)
+            separatorInset = .leadingInset(.spacingM)
         }
 
         setNeedsLayout()
@@ -72,7 +72,7 @@ open class IconTitleTableViewCell: BasicTableViewCell {
         NSLayoutConstraint.activate([
             iconImageView.heightAnchor.constraint(equalToConstant: iconSize),
             iconImageView.widthAnchor.constraint(equalToConstant: iconSize),
-            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }

@@ -49,15 +49,15 @@ public final class PhaseListView: UIView {
 
     private func setup() {
         backgroundColor = .bgSecondary
-        layer.cornerRadius = .mediumSpacing
+        layer.cornerRadius = .spacingS
 
         addSubview(stackView)
 
         let insets = UIEdgeInsets(
-            top: .mediumLargeSpacing,
-            leading: .mediumLargeSpacing,
-            bottom: -.mediumLargeSpacing,
-            trailing: -.mediumLargeSpacing
+            top: .spacingM,
+            leading: .spacingM,
+            bottom: -.spacingM,
+            trailing: -.spacingM
         )
 
         stackView.fillInSuperview(insets: insets)

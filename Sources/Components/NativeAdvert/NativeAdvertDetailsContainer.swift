@@ -40,7 +40,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
         container.topAnchor.constraint(equalTo: topAnchor),
         container.leadingAnchor.constraint(equalTo: leadingAnchor),
         container.bottomAnchor.constraint(equalTo: bottomAnchor),
-        container.trailingAnchor.constraint(equalTo: logoView.leadingAnchor, constant: -.mediumSpacing),
+        container.trailingAnchor.constraint(equalTo: logoView.leadingAnchor, constant: -.spacingS),
 
         nativeAdvertRibbon.leadingAnchor.constraint(equalTo: container.leadingAnchor),
         nativeAdvertRibbon.topAnchor.constraint(equalTo: container.topAnchor),
@@ -49,7 +49,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
         titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
         titleLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor),
 
-        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
+        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
         descriptionLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
         descriptionLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor),
 
@@ -63,7 +63,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
         logoView.widthAnchor.constraint(equalToConstant: logoSizeCompact),
         logoView.heightAnchor.constraint(equalToConstant: logoSizeCompact),
 
-        titleLabel.topAnchor.constraint(equalTo: nativeAdvertRibbon.bottomAnchor, constant: .mediumSpacing),
+        titleLabel.topAnchor.constraint(equalTo: nativeAdvertRibbon.bottomAnchor, constant: .spacingS),
     ]
 
     private lazy var regularConstraints: [NSLayoutConstraint] = [
@@ -72,7 +72,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
         logoView.widthAnchor.constraint(equalToConstant: logoSizeRegular),
         logoView.heightAnchor.constraint(equalToConstant: logoSizeRegular),
 
-        titleLabel.topAnchor.constraint(equalTo: nativeAdvertRibbon.bottomAnchor, constant: .mediumLargeSpacing),
+        titleLabel.topAnchor.constraint(equalTo: nativeAdvertRibbon.bottomAnchor, constant: .spacingM),
     ]
 
     // MARK: - Init

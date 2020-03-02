@@ -34,7 +34,7 @@ class NeighborhoodProfileViewCell: UICollectionViewCell {
         backgroundColor = .clear
         contentView.backgroundColor = .bgPrimary
 
-        contentView.layer.cornerRadius = .mediumSpacing
+        contentView.layer.cornerRadius = .spacingS
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor.decorationSubtle.withAlphaComponent(0.1).cgColor
 

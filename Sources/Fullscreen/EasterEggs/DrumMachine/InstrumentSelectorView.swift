@@ -58,12 +58,12 @@ final class InstrumentSelectorView: UIView {
         segmentedControl.addTarget(self, action: #selector(handleSegmentedControlChange(_:)), for: .valueChanged)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            segmentedControl.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumLargeSpacing),
-            segmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            segmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            segmentedControl.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
+            segmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            segmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
             segmentedControl.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4)
         ])
     }

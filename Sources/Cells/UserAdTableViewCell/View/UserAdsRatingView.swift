@@ -89,16 +89,16 @@ private extension UserAdsRatingView {
         gradientWrapper.layer.addSublayer(gradientLayer)
 
         NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
             titleLabel.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 40),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
 
             happinessRating.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24),
-            happinessRating.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            happinessRating.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            happinessRating.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            happinessRating.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
             gradientWrapper.topAnchor.constraint(equalTo: happinessRating.bottomAnchor, constant: 40),
             gradientWrapper.leadingAnchor.constraint(equalTo: leadingAnchor),

@@ -58,7 +58,7 @@ public final class EarthHourView: UIView {
     private lazy var singUpViewBottom = signUpView.bottomAnchor.constraint(equalTo: bottomAnchor)
     private lazy var thankYouViewBottom = thankYouView.bottomAnchor.constraint(
         equalTo: bottomAnchor,
-        constant: .veryLargeSpacing
+        constant: .spacingXXL
     )
 
     // MARK: - Init
@@ -124,7 +124,7 @@ public final class EarthHourView: UIView {
 
     private func attributedBodyString(with text: String) -> NSAttributedString {
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = .smallSpacing
+        paragraphStyle.lineSpacing = .spacingXS
         paragraphStyle.alignment = .center
 
         let attributes: [NSAttributedString.Key: Any] = [

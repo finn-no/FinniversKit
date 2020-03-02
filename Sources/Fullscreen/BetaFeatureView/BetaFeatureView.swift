@@ -107,9 +107,9 @@ public class BetaFeatureView: UIView {
         layoutMargins = UIEdgeInsets(all: 0)
 
         NSLayoutConstraint.activate([
-            iconImageView.widthAnchor.constraint(equalToConstant: .veryLargeSpacing),
-            iconImageView.heightAnchor.constraint(equalToConstant: .veryLargeSpacing),
-            iconImageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: .largeSpacing),
+            iconImageView.widthAnchor.constraint(equalToConstant: .spacingXXL),
+            iconImageView.heightAnchor.constraint(equalToConstant: .spacingXXL),
+            iconImageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: .spacingXL),
             iconImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
 
             betaFlagView.widthAnchor.constraint(equalToConstant: betaPillSize.width),
@@ -117,26 +117,26 @@ public class BetaFeatureView: UIView {
             betaFlagView.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor),
             betaFlagView.centerXAnchor.constraint(equalTo: iconImageView.centerXAnchor),
 
-            titleLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: .mediumLargeSpacing),
+            titleLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: .spacingM),
             titleLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
 
-            bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
             bodyLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             bodyLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, multiplier: 0.8),
 
-            firstButton.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: .largeSpacing),
+            firstButton.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: .spacingXL),
             firstButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             firstButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
 
-            secondButton.topAnchor.constraint(equalTo: firstButton.bottomAnchor, constant: .mediumSpacing),
+            secondButton.topAnchor.constraint(equalTo: firstButton.bottomAnchor, constant: .spacingS),
             secondButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             secondButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             secondButton.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
         ])
 
         betaFlagView.transform = CGAffineTransform
-            .init(translationX: .largeSpacing - .smallSpacing, y: -.largeSpacing + .smallSpacing)
+            .init(translationX: .spacingXL - .spacingXS, y: -.spacingXL + .spacingXS)
             .rotated(by: .pi / 4.5)
     }
 

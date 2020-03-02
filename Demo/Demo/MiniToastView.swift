@@ -17,9 +17,9 @@ class MiniToastView: UIView {
         super.init(frame: frame)
 
         addSubview(titleLabel)
-        titleLabel.fillInSuperview(insets: UIEdgeInsets(top: .mediumSpacing, leading: .mediumLargeSpacing, bottom: -.mediumSpacing, trailing: -.mediumLargeSpacing))
+        titleLabel.fillInSuperview(insets: UIEdgeInsets(top: .spacingS, leading: .spacingM, bottom: -.spacingS, trailing: -.spacingM))
         backgroundColor = .bgAlert
-        layer.cornerRadius = .mediumLargeSpacing
+        layer.cornerRadius = .spacingM
     }
 
     required init?(coder aDecoder: NSCoder) { fatalError("") }
@@ -29,7 +29,7 @@ class MiniToastView: UIView {
         alpha = 0
         transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         NSLayoutConstraint.activate([
-            self.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -.largeSpacing),
+            self.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -.spacingXL),
             self.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
 

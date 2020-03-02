@@ -60,8 +60,8 @@ public class IconCollectionDemoView: UIView, Tweakable {
         NSLayoutConstraint.activate([
             collectionView.centerYAnchor.constraint(equalTo: centerYAnchor),
             collectionView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumSpacing),
-            collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing)
+            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingS),
+            collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS)
         ])
 
         switch alignment {

@@ -35,7 +35,7 @@ public class KlimabroletView: UIView {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
         scrollView.bounces = true
-        scrollView.contentInset = UIEdgeInsets(bottom: .largeSpacing)
+        scrollView.contentInset = UIEdgeInsets(bottom: .spacingXL)
         scrollView.delegate = self
         scrollView.delaysContentTouches = false
         return scrollView
@@ -98,8 +98,8 @@ public class KlimabroletView: UIView {
         addSubview(closeButton)
 
         NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-            closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
 
             scrollView.topAnchor.constraint(equalTo: topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),

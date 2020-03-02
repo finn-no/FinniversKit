@@ -103,58 +103,58 @@ public class ButtonDemoView: UIView {
         addSubview(disabledLinkButton)
 
         NSLayoutConstraint.activate([
-            normalButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            normalButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            normalButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            normalButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            normalButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
+            normalButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
 
-            smallNormalButton.topAnchor.constraint(equalTo: normalButton.bottomAnchor, constant: .mediumLargeSpacing),
-            smallNormalButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
+            smallNormalButton.topAnchor.constraint(equalTo: normalButton.bottomAnchor, constant: .spacingM),
+            smallNormalButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
             smallNormalButton.trailingAnchor.constraint(lessThanOrEqualTo: button2.leadingAnchor),
 
-            utilityButton.topAnchor.constraint(equalTo: normalButton.bottomAnchor, constant: .mediumLargeSpacing),
-            utilityButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            utilityButton.topAnchor.constraint(equalTo: normalButton.bottomAnchor, constant: .spacingM),
+            utilityButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
 
-            callToActionButton.topAnchor.constraint(equalTo: smallNormalButton.bottomAnchor, constant: .mediumLargeSpacing),
-            callToActionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            callToActionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            callToActionButton.topAnchor.constraint(equalTo: smallNormalButton.bottomAnchor, constant: .spacingM),
+            callToActionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
+            callToActionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
 
-            destructiveButton.topAnchor.constraint(equalTo: callToActionButton.bottomAnchor, constant: .mediumLargeSpacing),
-            destructiveButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            destructiveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            destructiveButton.topAnchor.constraint(equalTo: callToActionButton.bottomAnchor, constant: .spacingM),
+            destructiveButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
+            destructiveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
 
-            flatButton.topAnchor.constraint(equalTo: destructiveButton.bottomAnchor, constant: .mediumLargeSpacing),
-            flatButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
+            flatButton.topAnchor.constraint(equalTo: destructiveButton.bottomAnchor, constant: .spacingM),
+            flatButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
             flatButton.trailingAnchor.constraint(lessThanOrEqualTo: button2.leadingAnchor),
 
             destructiveFlatButton.topAnchor.constraint(equalTo: flatButton.topAnchor),
-            destructiveFlatButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            destructiveFlatButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
 
-            linkButton.topAnchor.constraint(equalTo: flatButton.bottomAnchor, constant: .mediumLargeSpacing),
+            linkButton.topAnchor.constraint(equalTo: flatButton.bottomAnchor, constant: .spacingM),
             linkButton.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            button1.topAnchor.constraint(equalTo: linkButton.bottomAnchor, constant: .mediumLargeSpacing),
-            button1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
+            button1.topAnchor.constraint(equalTo: linkButton.bottomAnchor, constant: .spacingM),
+            button1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
             button1.trailingAnchor.constraint(lessThanOrEqualTo: button2.leadingAnchor),
 
             button2.topAnchor.constraint(equalTo: button1.topAnchor),
-            button2.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            button2.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
 
-            disabledNormalButton.topAnchor.constraint(equalTo: button1.bottomAnchor, constant: .mediumLargeSpacing),
-            disabledNormalButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            disabledNormalButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            disabledNormalButton.topAnchor.constraint(equalTo: button1.bottomAnchor, constant: .spacingM),
+            disabledNormalButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
+            disabledNormalButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
 
-            disabledCallToActionButton.topAnchor.constraint(equalTo: disabledNormalButton.bottomAnchor, constant: .mediumLargeSpacing),
-            disabledCallToActionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            disabledCallToActionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            disabledCallToActionButton.topAnchor.constraint(equalTo: disabledNormalButton.bottomAnchor, constant: .spacingM),
+            disabledCallToActionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
+            disabledCallToActionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
 
-            disabledDestructiveButton.topAnchor.constraint(equalTo: disabledCallToActionButton.bottomAnchor, constant: .mediumLargeSpacing),
-            disabledDestructiveButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            disabledDestructiveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            disabledDestructiveButton.topAnchor.constraint(equalTo: disabledCallToActionButton.bottomAnchor, constant: .spacingM),
+            disabledDestructiveButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
+            disabledDestructiveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
 
-            disabledFlatButton.topAnchor.constraint(equalTo: disabledDestructiveButton.bottomAnchor, constant: .mediumLargeSpacing),
+            disabledFlatButton.topAnchor.constraint(equalTo: disabledDestructiveButton.bottomAnchor, constant: .spacingM),
             disabledFlatButton.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            disabledLinkButton.topAnchor.constraint(equalTo: disabledFlatButton.bottomAnchor, constant: .mediumSpacing),
+            disabledLinkButton.topAnchor.constraint(equalTo: disabledFlatButton.bottomAnchor, constant: .spacingS),
             disabledLinkButton.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }

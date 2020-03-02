@@ -38,8 +38,8 @@ final class StepSliderDemoView: UIView {
         NSLayoutConstraint.activate([
             slider.centerXAnchor.constraint(equalTo: centerXAnchor),
             slider.centerYAnchor.constraint(equalTo: centerYAnchor),
-            slider.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            slider.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            slider.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            slider.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
         ])
     }
 }

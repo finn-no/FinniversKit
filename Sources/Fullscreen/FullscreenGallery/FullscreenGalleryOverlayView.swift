@@ -85,7 +85,7 @@ class FullscreenGalleryOverlayView: UIView {
 
     // The constant exists to prevent the preview-view from jumping back into the visible area
     // during the dismissal animation.
-    private lazy var previewViewHiddenConstraint = previewView.topAnchor.constraint(equalTo: bottomAnchor, constant: .mediumLargeSpacing)
+    private lazy var previewViewHiddenConstraint = previewView.topAnchor.constraint(equalTo: bottomAnchor, constant: .spacingM)
 
     // MARK: - Init
 
@@ -115,12 +115,12 @@ class FullscreenGalleryOverlayView: UIView {
 
         NSLayoutConstraint.activate([
             captionLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            captionLabel.widthAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.widthAnchor, constant: -(2 * CGFloat.mediumLargeSpacing)),
-            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor, constant: -.mediumSpacing),
-            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: previewView.topAnchor, constant: -.mediumSpacing),
+            captionLabel.widthAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.widthAnchor, constant: -(2 * CGFloat.spacingM)),
+            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor, constant: -.spacingS),
+            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: previewView.topAnchor, constant: -.spacingS),
 
-            dismissButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumSpacing),
-            dismissButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumSpacing),
+            dismissButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingS),
+            dismissButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingS),
             dismissButton.widthAnchor.constraint(equalToConstant: FullscreenGalleryOverlayView.dismissButtonTappableSize),
             dismissButton.heightAnchor.constraint(equalToConstant: FullscreenGalleryOverlayView.dismissButtonTappableSize),
 

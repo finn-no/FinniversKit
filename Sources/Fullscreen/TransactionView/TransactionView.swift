@@ -57,7 +57,7 @@ public class TransactionView: UIView {
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
         stackView.alignment = .fill
-        stackView.spacing = .mediumLargeSpacing
+        stackView.spacing = .spacingM
         return stackView
     }()
 
@@ -96,21 +96,21 @@ private extension TransactionView {
         scrollableContentView.addSubview(verticalStackView)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .largeSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingXL),
             titleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumSpacing),
+            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingS),
             titleLabel.heightAnchor.constraint(equalToConstant: 40),
 
             scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            scrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
+            scrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
             scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
 
-            scrollableContentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor, constant: .mediumSpacing),
+            scrollableContentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor, constant: .spacingS),
             scrollableContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
-            verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            verticalStackView.topAnchor.constraint(equalTo: scrollableContentView.topAnchor, constant: .largeSpacing),
+            verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.spacingM),
+            verticalStackView.topAnchor.constraint(equalTo: scrollableContentView.topAnchor, constant: .spacingXL),
             verticalStackView.bottomAnchor.constraint(equalTo: scrollableContentView.bottomAnchor),
         ])
 
@@ -122,7 +122,7 @@ private extension TransactionView {
         }
 
         guard let stepDot = stepDots.first else { return }
-        NSLayoutConstraint.activate([verticalStackView.leadingAnchor.constraint(equalTo: stepDot.trailingAnchor, constant: .mediumSpacing)])
+        NSLayoutConstraint.activate([verticalStackView.leadingAnchor.constraint(equalTo: stepDot.trailingAnchor, constant: .spacingS)])
     }
 
     private func addTransactionStepView(_ step: Int, _ model: TransactionStepViewModel) {

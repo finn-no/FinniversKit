@@ -105,13 +105,13 @@ class TitleValueSlider: UIView {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: valueLabel.leadingAnchor, constant: -.mediumSpacing),
+            titleLabel.trailingAnchor.constraint(equalTo: valueLabel.leadingAnchor, constant: -.spacingS),
 
             valueLabel.topAnchor.constraint(equalTo: topAnchor),
             valueLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             valueLabel.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor),
 
-            slider.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            slider.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
             slider.leadingAnchor.constraint(equalTo: leadingAnchor),
             slider.trailingAnchor.constraint(equalTo: trailingAnchor),
             slider.bottomAnchor.constraint(equalTo: bottomAnchor)

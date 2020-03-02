@@ -18,7 +18,7 @@ public class KeyValueGridView: UIView {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
-        stackView.spacing = .mediumLargeSpacing
+        stackView.spacing = .spacingM
         stackView.alignment = .leading
         return stackView
     }()
@@ -82,7 +82,7 @@ public class KeyValueGridView: UIView {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
-        stackView.spacing = .verySmallSpacing
+        stackView.spacing = .spacingXXS
 
         let titleLabel = Label(style: .body, withAutoLayout: true)
         titleLabel.numberOfLines = 2
@@ -106,7 +106,7 @@ public class KeyValueGridView: UIView {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.alignment = .top
-        stackView.spacing = .mediumLargeSpacing
+        stackView.spacing = .spacingM
         return stackView
     }
 }

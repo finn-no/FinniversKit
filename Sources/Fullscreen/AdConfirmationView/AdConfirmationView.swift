@@ -104,15 +104,15 @@ private extension AdConfirmationView {
             NSLayoutConstraint.activate([
                 summaryView.topAnchor.constraint(equalTo: confirmationObjectView.bottomAnchor, constant: 40),
                 summaryView.heightAnchor.constraint(equalToConstant: summaryViewHeightConstant),
-                summaryView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-                summaryView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+                summaryView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+                summaryView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
 
-                receiptInfoLabel.topAnchor.constraint(equalTo: summaryView.bottomAnchor, constant: .mediumLargeSpacing),
+                receiptInfoLabel.topAnchor.constraint(equalTo: summaryView.bottomAnchor, constant: .spacingM),
                 receiptInfoLabel.leadingAnchor.constraint(equalTo: summaryView.leadingAnchor),
                 receiptInfoLabel.trailingAnchor.constraint(equalTo: summaryView.trailingAnchor),
 
                 confirmationObjectView.topAnchor.constraint(equalTo: contentView.topAnchor),
-                contentView.bottomAnchor.constraint(greaterThanOrEqualTo: receiptInfoLabel.bottomAnchor, constant: .mediumSpacing),
+                contentView.bottomAnchor.constraint(greaterThanOrEqualTo: receiptInfoLabel.bottomAnchor, constant: .spacingS),
             ])
         } else {
             // Disable scrolling since we have no arbitrary sized view to show.

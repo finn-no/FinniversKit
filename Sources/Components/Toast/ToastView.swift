@@ -119,7 +119,7 @@ public class ToastView: UIView {
         addSubview(messageTitle)
         addSubview(actionButton)
 
-        directionalLayoutMargins = NSDirectionalEdgeInsets(all: .mediumLargeSpacing)
+        directionalLayoutMargins = NSDirectionalEdgeInsets(all: .spacingM)
 
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
@@ -129,7 +129,7 @@ public class ToastView: UIView {
             imageView.widthAnchor.constraint(greaterThanOrEqualToConstant: imageSizeAllowedMin.width),
             imageView.heightAnchor.constraint(greaterThanOrEqualToConstant: imageSizeAllowedMin.height),
 
-            messageTitle.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumLargeSpacing),
+            messageTitle.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingM),
             messageTitle.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
             messageTitle.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor)
         ])
@@ -138,7 +138,7 @@ public class ToastView: UIView {
             actionButton.isHidden = false
 
             NSLayoutConstraint.activate([
-                messageTitle.trailingAnchor.constraint(lessThanOrEqualTo: actionButton.leadingAnchor, constant: -.mediumLargeSpacing),
+                messageTitle.trailingAnchor.constraint(lessThanOrEqualTo: actionButton.leadingAnchor, constant: -.spacingM),
                 actionButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
                 actionButton.centerYAnchor.constraint(equalTo: messageTitle.centerYAnchor)
             ])

@@ -24,7 +24,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
     private lazy var stackViewToCheckmarkConstraint = stackView.trailingAnchor.constraint(
         equalTo: checkmarkImageView.leadingAnchor,
-        constant: -.mediumLargeSpacing
+        constant: -.spacingM
     )
 
     // MARK: - Init
@@ -79,7 +79,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         stackViewTrailingAnchorConstraint.isActive = !stackViewToCheckmarkConstraint.isActive
 
         if isEditing {
-            separatorInset = UIEdgeInsets.leadingInset((.largeSpacing + .smallSpacing) * 2 + viewModel.imageViewWidth)
+            separatorInset = UIEdgeInsets.leadingInset((.spacingXL + .spacingXS) * 2 + viewModel.imageViewWidth)
         } else if viewModel.isSelected {
             titleLabel.font = titleLabelSelectedFont
         }
@@ -104,9 +104,9 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         addSubview(editModeView)
 
         NSLayoutConstraint.activate([
-            checkmarkImageView.heightAnchor.constraint(equalToConstant: .mediumLargeSpacing),
-            checkmarkImageView.widthAnchor.constraint(equalToConstant: .mediumLargeSpacing),
-            checkmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            checkmarkImageView.heightAnchor.constraint(equalToConstant: .spacingM),
+            checkmarkImageView.widthAnchor.constraint(equalToConstant: .spacingM),
+            checkmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
             checkmarkImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
             stackViewToCheckmarkConstraint,

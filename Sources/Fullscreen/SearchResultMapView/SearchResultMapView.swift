@@ -139,8 +139,8 @@ public final class SearchResultMapView: UIView {
         mapView.fillInSuperview()
 
         NSLayoutConstraint.activate([
-            mapSettingsButton.topAnchor.constraint(equalTo: mapView.topAnchor, constant: .mediumSpacing),
-            mapSettingsButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -.mediumSpacing)
+            mapSettingsButton.topAnchor.constraint(equalTo: mapView.topAnchor, constant: .spacingS),
+            mapSettingsButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -.spacingS)
             ])
     }
 

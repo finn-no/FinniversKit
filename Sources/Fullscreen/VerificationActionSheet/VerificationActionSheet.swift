@@ -17,7 +17,7 @@ public class VerificationActionSheet: BottomSheet {
     // MARK: - Initalization
 
     public required init(viewModel: VerificationViewModel) {
-        let bottomInset = UIView.windowSafeAreaInsets.bottom + .largeSpacing
+        let bottomInset = UIView.windowSafeAreaInsets.bottom + .spacingXL
         let height = verificationActionSheetHeight + bottomInset
         let bottomSheetHeight = BottomSheet.Height(compact: height, expanded: height)
         let viewController = ActionViewController(viewModel: viewModel)

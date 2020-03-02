@@ -40,7 +40,7 @@ public class CollapsibleContentView: UIView {
     private lazy var headerView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .horizontal
-        stackView.layoutMargins = .init(vertical: .mediumSpacing, horizontal: 0)
+        stackView.layoutMargins = .init(vertical: .spacingS, horizontal: 0)
         stackView.distribution = .equalSpacing
         stackView.isLayoutMarginsRelativeArrangement = true
         return stackView

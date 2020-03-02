@@ -19,7 +19,7 @@ public class LinkButtonListView: UIView {
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.spacing = .mediumSpacing
+        stackView.spacing = .spacingS
         return stackView
     }()
 

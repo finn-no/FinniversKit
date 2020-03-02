@@ -35,7 +35,7 @@ class NotificationCenterSectionDetailsView: UIControl {
 
     private lazy var textLabelToMagnifyingIconConstraint = textLabel.leadingAnchor.constraint(
         equalTo: magnifyingIconView.trailingAnchor,
-        constant: .verySmallSpacing
+        constant: .spacingXXS
     )
 
     private var highlightedRange: NSRange?
@@ -141,7 +141,7 @@ class NotificationCenterSectionDetailsView: UIControl {
 
             textLabel.topAnchor.constraint(greaterThanOrEqualTo: topAnchor),
             textLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing)
+            textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS)
         ])
     }
 }

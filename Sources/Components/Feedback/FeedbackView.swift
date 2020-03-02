@@ -58,21 +58,21 @@ public class FeedbackView: UIView {
     }()
 
     private lazy var gridPresentationConstraints: [NSLayoutConstraint] = [
-        imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+        imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
         imageView.heightAnchor.constraint(equalToConstant: 130),
-        titleView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .mediumSpacing),
-        titleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-        buttonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-        buttonView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
+        titleView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .spacingS),
+        titleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+        buttonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+        buttonView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM)
     ]
 
     private lazy var listPresentationConstraints: [NSLayoutConstraint] = [
-        imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
+        imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
         imageView.widthAnchor.constraint(equalToConstant: 130),
-        titleView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-        titleView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumSpacing),
-        buttonView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumSpacing),
-        buttonView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing)
+        titleView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+        titleView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingS),
+        buttonView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingS),
+        buttonView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS)
     ]
 
     // MARK: - Init
@@ -101,13 +101,13 @@ public class FeedbackView: UIView {
         addSubview(buttonView)
 
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
 
-            titleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            titleView.bottomAnchor.constraint(equalTo: buttonView.topAnchor, constant: -.mediumSpacing),
+            titleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            titleView.bottomAnchor.constraint(equalTo: buttonView.topAnchor, constant: -.spacingS),
 
-            buttonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing)
+            buttonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
         ])
     }
 
@@ -198,7 +198,7 @@ private class TitleView: UIView {
         return label
     }()
 
-    private lazy var titleLabelLeadingConstraint = titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing)
+    private lazy var titleLabelLeadingConstraint = titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS)
 
     // MARK: - Init
 
@@ -219,7 +219,7 @@ private class TitleView: UIView {
         NSLayoutConstraint.activate([
             titleLabelLeadingConstraint,
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing)
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
         ])
     }
 
@@ -238,7 +238,7 @@ private class TitleView: UIView {
         case .grid:
             titleLabel.textAlignment = .center
             titleLabel.font = .bodyStrong
-            titleLabelLeadingConstraint.constant = .mediumSpacing
+            titleLabelLeadingConstraint.constant = .spacingS
         }
     }
 }
@@ -269,7 +269,7 @@ private class ButtonView: UIView {
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
-        stackView.spacing = .mediumSpacing
+        stackView.spacing = .spacingS
         stackView.distribution = .fillEqually
         stackView.addArrangedSubview(positiveButton)
         stackView.addArrangedSubview(negativeButton)

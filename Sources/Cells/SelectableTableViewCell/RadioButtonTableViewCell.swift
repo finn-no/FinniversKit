@@ -31,8 +31,8 @@ open class RadioButtonTableViewCell: BasicTableViewCell {
         stackViewLeadingAnchorConstraint.isActive = false
 
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: radioButton.trailingAnchor, constant: .mediumLargeSpacing),
-            radioButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            stackView.leadingAnchor.constraint(equalTo: radioButton.trailingAnchor, constant: .spacingM),
+            radioButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             radioButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
             ])
     }
