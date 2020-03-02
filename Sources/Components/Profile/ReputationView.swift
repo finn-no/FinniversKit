@@ -92,10 +92,10 @@ public class ReputationView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textColor = .textAction
+        label.isUserInteractionEnabled = true
 
         // Make label tapable
         let gesture = UITapGestureRecognizer(target: self, action: #selector(onLinkTap))
-        label.isUserInteractionEnabled = true
         label.addGestureRecognizer(gesture)
 
         return label
