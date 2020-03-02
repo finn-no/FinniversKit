@@ -86,7 +86,7 @@ extension SearchResultMapViewDemoViewController: SearchResultMapViewDelegate {
 
             if let popoverController = alert.popoverPresentationController {
                 popoverController.sourceView = mapSettingsView
-                popoverController.sourceRect = mapSettingsView.bounds.offsetBy(dx: -.mediumSpacing, dy: -20)
+                popoverController.sourceRect = mapSettingsView.bounds.offsetBy(dx: -.spacingS, dy: -20)
                 popoverController.permittedArrowDirections = [.right]
             }
 

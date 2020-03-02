@@ -83,10 +83,10 @@ final class FavoriteAdActionHeaderView: UIView {
 
 extension FavoriteAdActionHeaderView {
     private static let layoutMargins = UIEdgeInsets(
-        top: .mediumSpacing,
-        left: .mediumLargeSpacing,
+        top: .spacingS,
+        left: .spacingM,
         bottom: 0,
-        right: .mediumLargeSpacing
+        right: .spacingM
     )
 
     private static let imageViewSize: CGFloat = 56

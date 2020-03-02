@@ -21,7 +21,7 @@ public final class CogWheelButton: UIButton {
     }
 
     private let alignment: Alignment
-    private let defaultContentSize: CGFloat = .largeSpacing - .mediumSpacing
+    private let defaultContentSize: CGFloat = .spacingXL - .spacingS
 
     private var cornerConstraint: NSLayoutConstraint {
         switch alignment {
@@ -38,7 +38,7 @@ public final class CogWheelButton: UIButton {
         view.backgroundColor = .buttonBackgroundColor
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: 5)
-        view.layer.shadowRadius = .mediumSpacing
+        view.layer.shadowRadius = .spacingS
         view.layer.shadowOpacity = 0.6
         return view
     }()

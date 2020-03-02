@@ -68,16 +68,16 @@ public class ConfirmationView: UIView {
             titleLabel.topAnchor.constraint(equalTo: view.topAnchor),
 
             messageLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
             messageLabel.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor),
 
             closeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            closeButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: .largeSpacing),
+            closeButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: .spacingXL),
 
             view.topAnchor.constraint(equalTo: titleLabel.topAnchor),
             view.bottomAnchor.constraint(equalTo: closeButton.bottomAnchor),
-            view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
+            view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
             view.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
 

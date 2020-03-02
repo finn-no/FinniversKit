@@ -64,15 +64,15 @@ public class SaveSearchPromptView: UIView {
         addSubview(dismissButton)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing*3),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS*3),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
-            positiveButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            positiveButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
             positiveButton.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            dismissButton.topAnchor.constraint(equalTo: topAnchor, constant: .smallSpacing),
-            dismissButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.smallSpacing),
+            dismissButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXS),
+            dismissButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXS),
             dismissButton.widthAnchor.constraint(equalToConstant: 28),
             dismissButton.heightAnchor.constraint(equalToConstant: 28),
         ])

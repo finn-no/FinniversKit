@@ -56,14 +56,14 @@ class KlimabroletActionsView: UIView {
         addSubview(secondaryButton)
 
         NSLayoutConstraint.activate([
-            primaryButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-            primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            primaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            primaryButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            primaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
             secondaryButton.topAnchor.constraint(equalTo: primaryButton.bottomAnchor),
-            secondaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            secondaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-            secondaryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
+            secondaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            secondaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            secondaryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM),
         ])
     }
 

@@ -37,6 +37,6 @@ public class TweakableDemoView: UIView, Tweakable {
 
     private func setup() {
         addSubview(titleLabel)
-        titleLabel.fillInSuperview(margin: .largeSpacing)
+        titleLabel.fillInSuperview(margin: .spacingXL)
     }
 }

@@ -62,7 +62,7 @@ public class TransactionStepView: UIView {
         view.backgroundColor = style.backgroundColor
         view.isScrollEnabled = false
         view.isEditable = false
-        view.contentInset = .init(top: -.mediumSpacing, leading: 0, bottom: 0, trailing: 0)
+        view.contentInset = .init(top: -.spacingS, leading: 0, bottom: 0, trailing: 0)
         view.adjustsFontForContentSizeCategory = true
         view.textContainer.widthTracksTextView = true
         view.textContainer.heightTracksTextView = true
@@ -76,7 +76,7 @@ public class TransactionStepView: UIView {
         view.backgroundColor = style.backgroundColor
         view.isScrollEnabled = false
         view.isEditable = false
-        view.contentInset = .init(top: -.mediumSpacing, leading: 0, bottom: 0, trailing: 0)
+        view.contentInset = .init(top: -.spacingS, leading: 0, bottom: 0, trailing: 0)
         view.adjustsFontForContentSizeCategory = true
         view.textContainer.widthTracksTextView = true
         view.textContainer.heightTracksTextView = true
@@ -99,7 +99,7 @@ public class TransactionStepView: UIView {
 
     // MARK: - Init
 
-    public init(withAutoLayout autoLayout: Bool = false, step: Int, model: TransactionStepViewModel) {
+    public init(step: Int, model: TransactionStepViewModel, withAutoLayout autoLayout: Bool = false) {
         self.step = step
         self.model = model
         self.primaryButtonModel = model.primaryButton ?? nil
@@ -119,8 +119,8 @@ public class TransactionStepView: UIView {
         bodyView.backgroundColor = activeStepColor
         detailView.backgroundColor = activeStepColor
 
-        verticalStackViewTopAnchor?.constant = .mediumLargeSpacing
-        verticalStackViewLeadingAnchor?.constant = .mediumLargeSpacing
+        verticalStackViewTopAnchor?.constant = .spacingM
+        verticalStackViewLeadingAnchor?.constant = .spacingM
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -142,8 +142,8 @@ private extension TransactionStepView {
 
         switch style {
         case .notStarted, .completed:
-            verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .smallSpacing)
-            verticalStackViewTrailingAnchor = verticalStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing)
+            verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingXS)
+            verticalStackViewTrailingAnchor = verticalStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS)
             verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
 
             NSLayoutConstraint.activate([
@@ -151,20 +151,20 @@ private extension TransactionStepView {
                 verticalStackViewTrailingAnchor!,
                 verticalStackViewTopAnchor!,
 
-                titleView.heightAnchor.constraint(greaterThanOrEqualToConstant: .mediumPlusSpacing),
+                titleView.heightAnchor.constraint(greaterThanOrEqualToConstant: .spacingL),
             ])
 
         case .active:
-            verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing)
-            verticalStackViewTrailingAnchor = verticalStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing)
-            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumLargeSpacing)
+            verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM)
+            verticalStackViewTrailingAnchor = verticalStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS)
+            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingM)
 
             NSLayoutConstraint.activate([
                 verticalStackViewLeadingAnchor!,
                 verticalStackViewTrailingAnchor!,
                 verticalStackViewTopAnchor!,
 
-                titleView.heightAnchor.constraint(greaterThanOrEqualToConstant: .mediumPlusSpacing),
+                titleView.heightAnchor.constraint(greaterThanOrEqualToConstant: .spacingL),
             ])
         }
 
@@ -180,7 +180,7 @@ private extension TransactionStepView {
             bodyView.setContentHuggingPriority(.required, for: .vertical)
             NSLayoutConstraint.activate([bodyView.trailingAnchor.constraint(equalTo: verticalStackView.trailingAnchor)])
 
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: .mediumPlusSpacing)
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: .spacingL)
         }
 
         if let buttonModel = primaryButtonModel {
@@ -202,14 +202,14 @@ private extension TransactionStepView {
             primaryButton.setContentHuggingPriority(.required, for: .vertical)
             NSLayoutConstraint.activate([primaryButton.heightAnchor.constraint(equalToConstant: 40)])
 
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .mediumPlusSpacing)
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .spacingL)
         }
 
         if let detailText = model.detail {
             detailView.text = detailText
             verticalStackView.addArrangedSubview(detailView)
 
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: detailView.bottomAnchor, constant: .mediumPlusSpacing)
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: detailView.bottomAnchor, constant: .spacingL)
         }
 
         bottomAnchorConstraint?.isActive = true

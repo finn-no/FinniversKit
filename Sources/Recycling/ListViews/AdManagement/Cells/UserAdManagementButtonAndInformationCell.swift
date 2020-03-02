@@ -24,8 +24,8 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
     }
 
     private let buttonHeight: CGFloat = 32 // This is too small for comfort (Re. Apple's HIG), won't handle this now as the whole design is still subject to change
-    private let labelToButtonSpacing: CGFloat = .mediumSpacing
-    private let labelLeftInset: CGFloat = .mediumLargeSpacing
+    private let labelToButtonSpacing: CGFloat = .spacingS
+    private let labelLeftInset: CGFloat = .spacingM
     private let labelWidthProportion: CGFloat = 0.67
 
     private var buttonWidthConstraint: NSLayoutConstraint?
@@ -127,11 +127,11 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
 
             informationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: labelLeftInset),
             informationLabel.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: -labelToButtonSpacing),
-            informationLabel.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: .mediumSpacing),
+            informationLabel.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: .spacingS),
 
             button.heightAnchor.constraint(equalToConstant: buttonHeight),
             button.centerYAnchor.constraint(equalTo: informationLabel.centerYAnchor),
-            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
             contentView.heightAnchor.constraint(greaterThanOrEqualTo: informationLabel.heightAnchor, constant: 24),
             contentView.heightAnchor.constraint(greaterThanOrEqualTo: button.heightAnchor, constant: 24),

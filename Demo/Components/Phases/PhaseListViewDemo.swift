@@ -31,8 +31,8 @@ public class PhaseListDemoView: UIView {
         ])
 
         NSLayoutConstraint.activate([
-            phaseListView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            phaseListView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            phaseListView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            phaseListView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
             phaseListView.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
     }

@@ -59,8 +59,8 @@ class LoanCalculatorDemoView: UIView, Tweakable {
         loanCalculatorView.configure(with: LoanCalculatorDemoViewModel.makeViewModel())
         addSubview(loanCalculatorView)
         NSLayoutConstraint.activate([
-            loanCalculatorView.widthAnchor.constraint(equalTo: widthAnchor, constant: -.largeSpacing),
-            loanCalculatorView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor, constant: -.largeSpacing),
+            loanCalculatorView.widthAnchor.constraint(equalTo: widthAnchor, constant: -.spacingXL),
+            loanCalculatorView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor, constant: -.spacingXL),
             loanCalculatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
             loanCalculatorView.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])

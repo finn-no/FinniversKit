@@ -17,10 +17,10 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
                 self?.configureTitleView(title: "Mercedes-Benz C-Klasse", subtitle: "C200 4MATIC aut Hengerfeste, Panoramasoltak, AMG, LED +", ribbonViewModel: .sold)
             },
             TweakingOption(title: "Torget w/ ribbon") { [weak self] in
-                self?.configureTitleView(title: "Sofa med sjeselong - pris diskuterbar!", ribbonViewModel: .sold, spacingAfterTitle: .mediumSpacing)
+                self?.configureTitleView(title: "Sofa med sjeselong - pris diskuterbar!", ribbonViewModel: .sold, spacingAfterTitle: .spacingS)
             },
             TweakingOption(title: "Torget giveaway") { [weak self] in
-                self?.configureTitleView(title: "Sofa med sjeselong", subtitle: "Gis bort", subtitleStyle: .title3, spacingAfterTitle: .mediumSpacing)
+                self?.configureTitleView(title: "Sofa med sjeselong", subtitle: "Gis bort", subtitleStyle: .title3, spacingAfterTitle: .spacingS)
             }
         ]
     }()
@@ -42,7 +42,7 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
         subtitle: String? = nil,
         subtitleStyle: Label.Style = .body,
         ribbonViewModel: RibbonViewModel? = nil,
-        spacingAfterTitle: CGFloat = .smallSpacing
+        spacingAfterTitle: CGFloat = .spacingXS
     ) {
         titleView?.removeFromSuperview()
         titleView = nil
@@ -51,8 +51,8 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
         addSubview(newTitleView)
 
         NSLayoutConstraint.activate([
-            newTitleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            newTitleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            newTitleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            newTitleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
             newTitleView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
         newTitleView.configure(withTitle: title, subtitle: subtitle, ribbonViewModel: ribbonViewModel, spacingAfterTitle: spacingAfterTitle)

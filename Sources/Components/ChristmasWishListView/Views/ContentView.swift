@@ -68,7 +68,7 @@ extension ChristmasWishListView {
 
         private func setup() {
             backgroundColor = .bgPrimary
-            let spacing = .mediumLargeSpacing * 1.5
+            let spacing = .spacingM * 1.5
             layoutMargins = UIEdgeInsets(top: spacing, leading: spacing, bottom: 0, trailing: spacing)
 
             addSubview(titleLabel)
@@ -82,14 +82,14 @@ extension ChristmasWishListView {
                 titleLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
                 titleLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
 
-                bodyTextLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .smallSpacing),
+                bodyTextLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXS),
                 bodyTextLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
                 bodyTextLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
 
-                accessoryButton.topAnchor.constraint(equalTo: bodyTextLabel.bottomAnchor, constant: .mediumLargeSpacing),
+                accessoryButton.topAnchor.constraint(equalTo: bodyTextLabel.bottomAnchor, constant: .spacingM),
                 accessoryButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
                 accessoryButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-                accessoryButton.heightAnchor.constraint(greaterThanOrEqualToConstant: .largeSpacing),
+                accessoryButton.heightAnchor.constraint(greaterThanOrEqualToConstant: .spacingXL),
                 accessoryButton.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
             ])
         }

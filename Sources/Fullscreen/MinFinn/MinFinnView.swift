@@ -159,8 +159,8 @@ extension MinFinnView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
-        case 0: return .mediumLargeSpacing
-        default: return .largeSpacing
+        case 0: return .spacingM
+        default: return .spacingXL
         }
     }
 }

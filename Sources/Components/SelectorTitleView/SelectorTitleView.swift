@@ -53,7 +53,7 @@ public class SelectorTitleView: UIView {
         button.titleLabel?.font = UIFont.bodyStrong.withSize(17).scaledFont(forTextStyle: .footnote)
         button.titleLabel?.adjustsFontForContentSizeCategory = true
 
-        let spacing: CGFloat = .verySmallSpacing
+        let spacing: CGFloat = .spacingXXS
         button.semanticContentAttribute = .forceRightToLeft
         button.imageEdgeInsets = UIEdgeInsets(top: spacing, leading: spacing, bottom: 0, trailing: -spacing)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, leading: -spacing, bottom: 0, trailing: spacing)
@@ -62,9 +62,9 @@ public class SelectorTitleView: UIView {
         if heading != nil {
             button.contentEdgeInsets = UIEdgeInsets(
                 top: titleLabel.font.pointSize,
-                leading: .mediumLargeSpacing + spacing,
+                leading: .spacingM + spacing,
                 bottom: 0,
-                trailing: .mediumLargeSpacing + spacing
+                trailing: .spacingM + spacing
             )
         }
 

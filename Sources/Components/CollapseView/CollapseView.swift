@@ -117,7 +117,7 @@ extension CollapseView {
             hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
             selectorTitleView.heightAnchor.constraint(equalToConstant: defaultContentViewHeight),
-            selectorTitleView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+            selectorTitleView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
             selectorTitleView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             selectorTitleView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
         ])
@@ -146,7 +146,7 @@ extension CollapseView {
             addSubview(view)
 
             NSLayoutConstraint.activate([
-                view.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: .mediumSpacing),
+                view.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: .spacingS),
                 view.heightAnchor.constraint(equalToConstant: injectedViewHeight),
                 view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
                 view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),

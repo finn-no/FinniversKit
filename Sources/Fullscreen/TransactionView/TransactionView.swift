@@ -52,7 +52,7 @@ public class TransactionView: UIView {
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
         stackView.alignment = .fill
-        stackView.spacing = .mediumLargeSpacing
+        stackView.spacing = .spacingM
         return stackView
     }()
 
@@ -60,7 +60,7 @@ public class TransactionView: UIView {
 
     // MARK: - Init
 
-    public init(withAutoLayout autoLayout: Bool = false, model: TransactionViewModel,
+    public init(withAutoLayout autoLayout: Bool = true, model: TransactionViewModel,
                 dataSource: TransactionViewDataSource, delegate: TransactionViewDelegate) {
 
         self.model = model
@@ -100,15 +100,15 @@ private extension TransactionView {
             scrollableContentView.addSubview(warningView)
 
             NSLayoutConstraint.activate([
-                warningView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .mediumLargeSpacing),
-                warningView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -.mediumLargeSpacing),
-                warningView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
+                warningView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .spacingM),
+                warningView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -.spacingM),
+                warningView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
             ])
 
-            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: warningView.bottomAnchor, constant: .largeSpacing)
+            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: warningView.bottomAnchor, constant: .spacingXL)
 
         } else {
-            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .largeSpacing)
+            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXL)
         }
 
         NSLayoutConstraint.activate([
@@ -117,15 +117,15 @@ private extension TransactionView {
             scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
 
-            scrollableContentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor, constant: .mediumSpacing),
+            scrollableContentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor, constant: .spacingS),
             scrollableContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
-            titleLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .largeSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .spacingXL),
             titleLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             titleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: 40),
 
-            verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.largeSpacing),
+            verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.spacingXL),
             verticalStackViewTopAnchor!,
             verticalStackView.bottomAnchor.constraint(equalTo: scrollableContentView.bottomAnchor),
         ])
@@ -138,11 +138,11 @@ private extension TransactionView {
         }
 
         guard let stepDot = stepDots.first else { return }
-        NSLayoutConstraint.activate([verticalStackView.leadingAnchor.constraint(equalTo: stepDot.trailingAnchor, constant: .mediumSpacing)])
+        NSLayoutConstraint.activate([verticalStackView.leadingAnchor.constraint(equalTo: stepDot.trailingAnchor, constant: .spacingS)])
     }
 
     private func addTransactionStepView(_ step: Int, _ model: TransactionStepViewModel) {
-        let transactionStepView = TransactionStepView(withAutoLayout: true, step: step, model: model)
+        let transactionStepView = TransactionStepView(step: step, model: model, withAutoLayout: true)
         transactionStepView.delegate = self
 
         if step == numberOfSteps - 1 && model.state == .completed {

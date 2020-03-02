@@ -23,7 +23,7 @@ public class ContractActionView: UIView {
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [bulletListLabel, actionButton])
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = .mediumPlusSpacing
+        stackView.spacing = .spacingL
         stackView.axis = .vertical
         return stackView
     }()
@@ -53,12 +53,12 @@ public class ContractActionView: UIView {
 
     private func setup() {
         backgroundColor = .bgTertiary
-        layer.cornerRadius = .mediumSpacing
+        layer.cornerRadius = .spacingS
         layoutMargins = UIEdgeInsets(
-            top: .mediumLargeSpacing,
-            leading: .mediumLargeSpacing,
-            bottom: .mediumPlusSpacing,
-            trailing: .mediumLargeSpacing
+            top: .spacingM,
+            leading: .spacingM,
+            bottom: .spacingL,
+            trailing: .spacingM
         )
 
         addSubview(stackView)

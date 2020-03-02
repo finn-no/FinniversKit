@@ -49,7 +49,7 @@ final class FavoriteAdView: UIView {
     private lazy var rootStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.spacing = .mediumLargeSpacing
+        stackView.spacing = .spacingM
         stackView.alignment = .leading
         return stackView
     }()
@@ -57,7 +57,7 @@ final class FavoriteAdView: UIView {
     private lazy var infoStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .horizontal
-        stackView.spacing = .mediumLargeSpacing
+        stackView.spacing = .spacingM
         stackView.alignment = .leading
         return stackView
     }()
@@ -191,11 +191,11 @@ final class FavoriteAdView: UIView {
         textStackView.addArrangedSubview(descriptionSecondaryLabel)
         textStackView.addArrangedSubview(descriptionTertiaryLabel)
 
-        textStackView.setCustomSpacing(.verySmallSpacing, after: sortingDetailLabel)
-        textStackView.setCustomSpacing(.verySmallSpacing, after: addressLabel)
-        textStackView.setCustomSpacing(.mediumSpacing, after: titleLabel)
-        textStackView.setCustomSpacing(.smallSpacing, after: descriptionPrimaryLabel)
-        textStackView.setCustomSpacing(.mediumSpacing, after: descriptionSecondaryLabel)
+        textStackView.setCustomSpacing(.spacingXXS, after: sortingDetailLabel)
+        textStackView.setCustomSpacing(.spacingXXS, after: addressLabel)
+        textStackView.setCustomSpacing(.spacingS, after: titleLabel)
+        textStackView.setCustomSpacing(.spacingXS, after: descriptionPrimaryLabel)
+        textStackView.setCustomSpacing(.spacingS, after: descriptionSecondaryLabel)
 
         contentView.addSubview(infoStackView)
         contentView.addSubview(statusRibbon)
@@ -214,7 +214,7 @@ final class FavoriteAdView: UIView {
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             rootStackView.topAnchor.constraint(equalTo: topAnchor, constant: padding),
-            rootStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            rootStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             rootStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             rootStackViewBottomConstraint,
 
@@ -231,13 +231,13 @@ final class FavoriteAdView: UIView {
             remoteImageView.widthAnchor.constraint(equalToConstant: FavoriteAdView.adImageWidth),
             remoteImageView.heightAnchor.constraint(equalTo: remoteImageView.widthAnchor),
 
-            statusRibbon.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-            statusRibbon.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            statusRibbon.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            statusRibbon.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
 
-            sortingDetailLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.mediumSpacing),
-            addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.mediumSpacing),
+            sortingDetailLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.spacingS),
+            addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.spacingS),
 
-            commentView.trailingAnchor.constraint(equalTo: rootStackView.trailingAnchor, constant: -.mediumLargeSpacing)
+            commentView.trailingAnchor.constraint(equalTo: rootStackView.trailingAnchor, constant: -.spacingM)
         ])
     }
 

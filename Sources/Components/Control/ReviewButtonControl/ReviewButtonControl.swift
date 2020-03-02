@@ -83,7 +83,7 @@ public final class ReviewButtonControl: UIControl {
 
             imageView.topAnchor.constraint(equalTo: titleLabel.topAnchor),
             imageView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            imageView.trailingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: -.smallSpacing)
+            imageView.trailingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: -.spacingXS)
         ])
     }
 }

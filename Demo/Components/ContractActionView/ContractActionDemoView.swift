@@ -23,8 +23,8 @@ class ContractActionDemoView: UIView {
         addSubview(contractActionView)
 
         NSLayoutConstraint.activate([
-            contractActionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            contractActionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            contractActionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            contractActionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
             contractActionView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }

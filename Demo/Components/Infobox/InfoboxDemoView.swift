@@ -51,19 +51,19 @@ public class InfoboxDemoView: UIView {
         NSLayoutConstraint.activate([
             smallInfoboxLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             smallInfoboxLabel.widthAnchor.constraint(equalTo: widthAnchor),
-            smallInfoboxLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+            smallInfoboxLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
 
             smallInfoboxView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
             smallInfoboxView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            smallInfoboxView.topAnchor.constraint(equalTo: smallInfoboxLabel.bottomAnchor, constant: .smallSpacing),
+            smallInfoboxView.topAnchor.constraint(equalTo: smallInfoboxLabel.bottomAnchor, constant: .spacingXS),
 
             normalInfoboxLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             normalInfoboxLabel.widthAnchor.constraint(equalTo: widthAnchor),
-            normalInfoboxLabel.topAnchor.constraint(equalTo: smallInfoboxView.bottomAnchor, constant: .veryLargeSpacing),
+            normalInfoboxLabel.topAnchor.constraint(equalTo: smallInfoboxView.bottomAnchor, constant: .spacingXXL),
 
             normalInfoboxView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
             normalInfoboxView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            normalInfoboxView.topAnchor.constraint(equalTo: normalInfoboxLabel.bottomAnchor, constant: .smallSpacing),
+            normalInfoboxView.topAnchor.constraint(equalTo: normalInfoboxLabel.bottomAnchor, constant: .spacingXS),
         ])
     }
 }

@@ -20,7 +20,7 @@ public class CalloutDemoView: UIView {
         view.axis = .vertical
         view.distribution = .fillEqually
         view.alignment = .center
-        view.spacing = .largeSpacing
+        view.spacing = .spacingXL
         return view
     }()
 
