@@ -58,10 +58,8 @@ public class TransactionView: UIView {
 
     // MARK: - Init
 
-    public init(model: TransactionViewModel,
-                dataSource: TransactionViewDataSource,
-                delegate: TransactionViewDelegate,
-                withAutoLayout autoLayout: Bool = true) {
+    public init(withAutoLayout autoLayout: Bool = false, model: TransactionViewModel,
+                dataSource: TransactionViewDataSource, delegate: TransactionViewDelegate) {
 
         self.model = model
         self.dataSource = dataSource

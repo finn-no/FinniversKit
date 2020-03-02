@@ -99,7 +99,7 @@ public class TransactionStepView: UIView {
 
     // MARK: - Init
 
-    public init(step: Int, model: TransactionStepViewModel, withAutoLayout autoLayout: Bool = false) {
+    public init(withAutoLayout autoLayout: Bool = false, step: Int, model: TransactionStepViewModel) {
         self.step = step
         self.model = model
         self.primaryButtonModel = model.primaryButton ?? nil
