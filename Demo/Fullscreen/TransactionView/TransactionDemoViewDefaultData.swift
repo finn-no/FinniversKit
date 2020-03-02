@@ -7,7 +7,7 @@ import FinniversKit
 public struct TransactionModel: TransactionViewModel {
     public var title: String
     public var header: TransactionHeaderViewModel
-    public var warning: TransactionWarningViewModel
+    public var warning: TransactionWarningViewModel?
     public var steps: [TransactionStepViewModel]
 }
 
@@ -41,7 +41,7 @@ public struct TransactionStepPrimaryButtonModel: TransactionStepPrimaryButtonVie
 }
 
 public struct TransactionDemoViewDefaultData {
-    private var currentState = 0
+    private var currentState = -1
 
     mutating func getState() -> TransactionViewModel {
         if currentState == 10 {

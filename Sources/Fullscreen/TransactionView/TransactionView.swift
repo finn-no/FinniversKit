@@ -102,10 +102,10 @@ private extension TransactionView {
             NSLayoutConstraint.activate([
                 warningView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .spacingM),
                 warningView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -.spacingM),
-                warningView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
+                warningView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
             ])
 
-            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: warningView.bottomAnchor, constant: .spacingXL)
+            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: warningView.bottomAnchor, constant: .spacingM)
 
         } else {
             verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXL)
