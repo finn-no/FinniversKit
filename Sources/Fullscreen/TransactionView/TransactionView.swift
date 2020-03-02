@@ -5,7 +5,10 @@
 import Foundation
 
 public protocol TransactionViewDelegate: AnyObject {
-    func transactionViewDidSelectActionButton(_ view: TransactionView, inStep step: Int)
+    func transactionViewDidBeginRefreshing(_ refreshControl: RefreshControl)
+    func transactionViewDidSelectPrimaryButton(_ view: TransactionView, inTransactionStep step: Int,
+                                               withAction action: TransactionStepView.PrimaryButton.Action, withUrl urlString: String?,
+                                               withFallbackUrl fallbackUrlString: String?)
 }
 
 public protocol TransactionViewDataSource: AnyObject {
@@ -14,33 +17,13 @@ public protocol TransactionViewDataSource: AnyObject {
     func transactionViewCurrentStep(_ view: TransactionView) -> Int
 }
 
-public enum TransactionState {
-    case notStarted
-    case inProgress
-    case inProgressAwaitingOtherParty
-    case completed
-
-    var style: TransactionStepView.Style {
-        switch self {
-        case .notStarted:
-            return .notStarted
-        case .inProgress:
-            return .inProgress
-        case .inProgressAwaitingOtherParty:
-            return .inProgress
-        case .completed:
-            return .completed
-        }
-    }
-}
-
 public class TransactionView: UIView {
-    // MARK: - Public
-
-    private weak var dataSource: TransactionViewDataSource?
-    private weak var delegate: TransactionViewDelegate?
 
     // MARK: - Properties
+
+    private var model: TransactionViewModel?
+    private weak var dataSource: TransactionViewDataSource?
+    private weak var delegate: TransactionViewDelegate?
 
     private var numberOfSteps: Int = 0
     private var currentStep: Int = 0
@@ -48,9 +31,21 @@ public class TransactionView: UIView {
     private var stepDots = [TransactionStepDot]()
     private var connectors = [TransactionStepDotConnector]()
 
-    private lazy var titleLabel: Label = Label(style: .title1, withAutoLayout: true)
-    private lazy var scrollView: UIScrollView = UIScrollView(withAutoLayout: true)
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = RefreshControl(frame: .zero)
+        refreshControl.delegate = self
+        return refreshControl
+    }()
+
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView(withAutoLayout: true)
+        scrollView.alwaysBounceVertical = true
+        scrollView.refreshControl = refreshControl
+        return scrollView
+    }()
+
     private lazy var scrollableContentView: UIView = UIView(withAutoLayout: true)
+    private lazy var titleLabel: Label = Label(style: .title1, withAutoLayout: true)
 
     private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
@@ -63,7 +58,12 @@ public class TransactionView: UIView {
 
     // MARK: - Init
 
-    public init(title: String, dataSource: TransactionViewDataSource, delegate: TransactionViewDelegate, withAutoLayout autoLayout: Bool = true) {
+    public init(model: TransactionViewModel,
+                dataSource: TransactionViewDataSource,
+                delegate: TransactionViewDelegate,
+                withAutoLayout autoLayout: Bool = true) {
+
+        self.model = model
         self.dataSource = dataSource
         self.delegate = delegate
 
@@ -72,7 +72,7 @@ public class TransactionView: UIView {
         self.numberOfSteps = dataSource.transactionViewNumberOfSteps(self)
         self.currentStep = dataSource.transactionViewCurrentStep(self)
 
-        titleLabel.text = title
+        titleLabel.text = model.title
         translatesAutoresizingMaskIntoConstraints = !autoLayout
 
         setup()
@@ -88,29 +88,29 @@ private extension TransactionView {
     func setup() {
         backgroundColor = .bgPrimary
 
-        addSubview(titleLabel)
         addSubview(scrollView)
         scrollView.addSubview(scrollableContentView)
 
         scrollableContentView.fillInSuperview()
+        scrollableContentView.addSubview(titleLabel)
         scrollableContentView.addSubview(verticalStackView)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingXL),
-            titleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingS),
-            titleLabel.heightAnchor.constraint(equalToConstant: 40),
-
             scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            scrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
+            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
 
             scrollableContentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor, constant: .spacingS),
             scrollableContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
-            verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.spacingM),
-            verticalStackView.topAnchor.constraint(equalTo: scrollableContentView.topAnchor, constant: .spacingXL),
+            titleLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .spacingXL),
+            titleLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            titleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            titleLabel.heightAnchor.constraint(equalToConstant: 40),
+
+            verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.spacingXL),
+            verticalStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXL),
             verticalStackView.bottomAnchor.constraint(equalTo: scrollableContentView.bottomAnchor),
         ])
 
@@ -118,7 +118,7 @@ private extension TransactionView {
             guard let model = dataSource?.transactionViewModelForIndex(self, forStep: index) else { return }
 
             addTransactionStepView(index, model)
-            addTransactionStepDots(index)
+            addTransactionStepDot(index)
         }
 
         guard let stepDot = stepDots.first else { return }
@@ -128,10 +128,15 @@ private extension TransactionView {
     private func addTransactionStepView(_ step: Int, _ model: TransactionStepViewModel) {
         let transactionStepView = TransactionStepView(step: step, model: model, withAutoLayout: true)
         transactionStepView.delegate = self
+
+        if step == numberOfSteps - 1 && model.state == .completed {
+            transactionStepView.hasCompletedLastStep(true)
+        }
+
         verticalStackView.addArrangedSubview(transactionStepView)
     }
 
-    private func addTransactionStepDots(_ step: Int) {
+    private func addTransactionStepDot(_ step: Int) {
         let stepDot = TransactionStepDot(step: step)
         stepDots.append(stepDot)
 
@@ -175,7 +180,17 @@ private extension TransactionView {
 // MARK: - TransactionStepViewDelegate
 
 extension TransactionView: TransactionStepViewDelegate {
-    public func transactionStepViewDidSelectActionButton(_ view: TransactionStepView, inTransactionStep step: Int) {
-        delegate?.transactionViewDidSelectActionButton(self, inStep: step)
+    public func transactionStepViewDidTapPrimaryButton(_ view: TransactionStepView, inTransactionStep step: Int,
+                                                       withAction action: TransactionStepView.PrimaryButton.Action, withUrl urlString: String?,
+                                                       withFallbackUrl fallbackUrlString: String?) {
+        delegate?.transactionViewDidSelectPrimaryButton(self, inTransactionStep: step, withAction: action, withUrl: urlString, withFallbackUrl: fallbackUrlString)
+    }
+}
+
+// MARK: - RefreshControlDelegate
+
+extension TransactionView: RefreshControlDelegate {
+    public func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl) {
+        delegate?.transactionViewDidBeginRefreshing(refreshControl)
     }
 }

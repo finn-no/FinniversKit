@@ -7,15 +7,14 @@ import Foundation
 public extension TransactionStepView {
     enum Style {
         case notStarted
-        case inProgress
-        case inProgressAwaitingOtherParty
+        case active
         case completed
 
         var backgroundColor: UIColor {
             switch self {
             case .notStarted, .completed:
                 return .bgPrimary
-            case .inProgress, .inProgressAwaitingOtherParty:
+            case .active:
                 return .bgSecondary
             }
         }
@@ -56,35 +55,8 @@ public extension TransactionStepView {
             switch self {
             case .notStarted:
                 return .stone
-            case .inProgress, .inProgressAwaitingOtherParty, .completed:
+            case .active, .completed:
                 return .licorice
-            }
-        }
-
-        var actionButtonStyle: Button.Style {
-            switch self {
-            case .notStarted, .inProgress:
-                return .callToAction
-            case .inProgressAwaitingOtherParty:
-                return .default
-            case .completed:
-                return .flat
-            }
-        }
-
-        var actionButtonSize: Button.Size {
-            switch self {
-            default:
-                return .normal
-            }
-        }
-
-        var actionButtonIsEnabled: Bool {
-            switch self {
-            case .notStarted:
-                return false
-            case .inProgress, .inProgressAwaitingOtherParty, .completed:
-                return true
             }
         }
 
@@ -99,8 +71,68 @@ public extension TransactionStepView {
             switch self {
             case .notStarted:
                 return .stone
-            case .inProgress, .inProgressAwaitingOtherParty, .completed:
+            case .active, .completed:
                 return .licorice
+            }
+        }
+
+        var actionButtonEnabled: Bool {
+            switch self {
+            case .notStarted:
+                return false
+            case .active, .completed:
+                return true
+            }
+        }
+    }
+}
+
+public extension TransactionStepView {
+    enum PrimaryButton: String {
+        case `default` = "default"
+        case flat = "flat"
+        case callToAction = "call_to_action"
+
+        public init(rawValue: String) {
+            switch rawValue {
+            case "default":
+                self = .default
+            case "flat":
+                self = .flat
+            case "call_to_action":
+                self = .callToAction
+            default:
+                fatalError("ActionButton style \(rawValue) is not supported")
+            }
+        }
+
+        var style: Button.Style {
+            switch self {
+            case .default:
+                return .default
+            case .callToAction:
+                return .callToAction
+            case .flat:
+                return .flat
+            }
+        }
+    }
+}
+
+public extension TransactionStepView.PrimaryButton {
+    enum Action: String {
+        case url = "url"
+        case seeAd = "see_ad"
+        case unknown
+
+        public init(rawValue: String) {
+            switch rawValue {
+            case "url":
+                self = .url
+            case "see_ad":
+                self = .seeAd
+            default:
+                self = .unknown
             }
         }
     }
