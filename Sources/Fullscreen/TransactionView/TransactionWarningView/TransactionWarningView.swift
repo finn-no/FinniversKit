@@ -43,7 +43,7 @@ public class TransactionWarningView: UIView {
     }
 
     public func loadImage() {
-        guard let imagePath = model.imageUrlString else {
+        guard let imagePath = model.imageUrl else {
             imageView.image = fallbackImage
             return
         }

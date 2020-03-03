@@ -7,5 +7,5 @@ import Foundation
 public protocol TransactionAlertViewModel {
     var title: String { get set }
     var message: String { get set }
-    var imageUrlString: String? { get set }
+    var imageUrl: String? { get set }
 }

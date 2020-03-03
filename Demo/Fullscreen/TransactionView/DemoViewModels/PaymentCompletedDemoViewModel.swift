@@ -10,7 +10,7 @@ extension TransactionDemoViewDefaultData {
             adId: "171529672",
             title: "BMW i3",
             registrationNumber: "CF40150",
-            imageUrlString: "2020/2/vertical-0/26/2/171/529/672_525135443.jpg"),
+            imageUrl: "2020/2/vertical-0/26/2/171/529/672_525135443.jpg"),
 
         warning: TransactionWarningModel(
             title: "Du har opprettet flere kontrakter for denne bilen",
@@ -24,7 +24,7 @@ extension TransactionDemoViewDefaultData {
                     text: "Se annonsen",
                     style: "flat",
                     action: "see_ad",
-                    fallbackUrlString: "www.finn.no/171529672")),
+                    fallbackUrl: "www.finn.no/171529672")),
 
             TransactionStepModel(
                 state: .completed,
@@ -33,7 +33,7 @@ extension TransactionDemoViewDefaultData {
                 primaryButton: TransactionStepPrimaryButtonModel(
                     text: "Gå til kontrakt",
                     style: "flat",
-                    urlString: "https://www.google.com/search?q=contract+signed"
+                    url: "https://www.google.com/search?q=contract+signed"
                 )),
 
             TransactionStepModel(
@@ -50,7 +50,7 @@ extension TransactionDemoViewDefaultData {
                     text: "Bekreft overlevering",
                     style: "call_to_action",
                     action: "url",
-                    urlString: "https://www.google.com/search?q=contract+signed"
+                    url: "https://www.google.com/search?q=contract+signed"
                 )),
 
             TransactionStepModel(
