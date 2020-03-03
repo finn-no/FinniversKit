@@ -8,7 +8,7 @@ public class Label: UILabel {
 
     // MARK: - Public properties
 
-    public var isCopyable = false
+    public var isTextCopyable = false
 
     // MARK: - Setup
 
@@ -49,7 +49,7 @@ public class Label: UILabel {
 // MARK: - Copying extension
 
 extension Label {
-    public override var canBecomeFirstResponder: Bool { isCopyable }
+    public override var canBecomeFirstResponder: Bool { isTextCopyable }
 
     public override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         action == #selector(copy(_:))

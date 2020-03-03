@@ -60,8 +60,8 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
             newTitleView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
         newTitleView.configure(withTitle: title, subtitle: subtitle, ribbonViewModel: ribbonViewModel, spacingAfterTitle: spacingAfterTitle)
-        newTitleView.isTitleCopyable = areLabelsCopyable
-        newTitleView.isSubtitleCopyable = areLabelsCopyable
+        newTitleView.isTitleTextCopyable = areLabelsCopyable
+        newTitleView.isSubtitleTextCopyable = areLabelsCopyable
 
         titleView = newTitleView
     }
