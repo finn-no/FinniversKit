@@ -34,7 +34,7 @@ class TransactionStepDotConnector: UIView {
     init() {
         super.init(frame: .zero)
 
-        backgroundColor = StepIndicator.inactiveColor
+        backgroundColor = TransactionStepDot.inactiveColor
         translatesAutoresizingMaskIntoConstraints = false
     }
 
