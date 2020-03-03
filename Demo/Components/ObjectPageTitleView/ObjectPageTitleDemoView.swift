@@ -10,6 +10,9 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
 
     lazy var tweakingOptions: [TweakingOption] = {
         [
+            TweakingOption(title: "Motor market", description: "Copyable labels") { [weak self] in
+                self?.configureTitleView(title: "Mercedes-Benz C-Klasse", subtitle: "C200 4MATIC aut Hengerfeste, Panoramasoltak, AMG, LED +", areLabelsCopyable: true)
+            },
             TweakingOption(title: "Motor market") { [weak self] in
                 self?.configureTitleView(title: "Mercedes-Benz C-Klasse", subtitle: "C200 4MATIC aut Hengerfeste, Panoramasoltak, AMG, LED +")
             },
@@ -42,7 +45,8 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
         subtitle: String? = nil,
         subtitleStyle: Label.Style = .body,
         ribbonViewModel: RibbonViewModel? = nil,
-        spacingAfterTitle: CGFloat = .spacingXS
+        spacingAfterTitle: CGFloat = .spacingXS,
+        areLabelsCopyable: Bool = false
     ) {
         titleView?.removeFromSuperview()
         titleView = nil
@@ -56,6 +60,8 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
             newTitleView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
         newTitleView.configure(withTitle: title, subtitle: subtitle, ribbonViewModel: ribbonViewModel, spacingAfterTitle: spacingAfterTitle)
+        newTitleView.isTitleCopyable = areLabelsCopyable
+        newTitleView.isSubtitleCopyable = areLabelsCopyable
 
         titleView = newTitleView
     }
