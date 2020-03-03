@@ -625,8 +625,8 @@
 		F2C3E96022CB669A00CED7E0 /* QuestionnaireView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95F22CB669A00CED7E0 /* QuestionnaireView+Style.swift */; };
 		F2C3E96322CB688800CED7E0 /* QuestionnaireDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E96222CB688800CED7E0 /* QuestionnaireDemoView.swift */; };
 		F2C3E96522CB69B100CED7E0 /* QuestionnaireDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E96422CB69B100CED7E0 /* QuestionnaireDefaultData.swift */; };
-		F2E48DE4240812AB009DEFBA /* TransactionAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E48DE3240812AB009DEFBA /* TransactionAlertView.swift */; };
-		F2E48DE724081383009DEFBA /* TransactionAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E48DE624081383009DEFBA /* TransactionAlertViewModel.swift */; };
+		F2E48DE4240812AB009DEFBA /* TransactionWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E48DE3240812AB009DEFBA /* TransactionWarningView.swift */; };
+		F2E48DE724081383009DEFBA /* TransactionWarningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E48DE624081383009DEFBA /* TransactionWarningViewModel.swift */; };
 		F2E48DE92408141C009DEFBA /* TransactionStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E48DE82408141C009DEFBA /* TransactionStepViewModel.swift */; };
 		F2E48DEB2408174B009DEFBA /* TransactionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E48DEA2408174B009DEFBA /* TransactionHeaderView.swift */; };
 		F2E48DEE240817BD009DEFBA /* TransactionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E48DED240817BD009DEFBA /* TransactionHeaderViewModel.swift */; };
@@ -1308,8 +1308,8 @@
 		F2C3E95F22CB669A00CED7E0 /* QuestionnaireView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionnaireView+Style.swift"; sourceTree = "<group>"; };
 		F2C3E96222CB688800CED7E0 /* QuestionnaireDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireDemoView.swift; sourceTree = "<group>"; };
 		F2C3E96422CB69B100CED7E0 /* QuestionnaireDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireDefaultData.swift; sourceTree = "<group>"; };
-		F2E48DE3240812AB009DEFBA /* TransactionAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAlertView.swift; sourceTree = "<group>"; };
-		F2E48DE624081383009DEFBA /* TransactionAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAlertViewModel.swift; sourceTree = "<group>"; };
+		F2E48DE3240812AB009DEFBA /* TransactionWarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionWarningView.swift; sourceTree = "<group>"; };
+		F2E48DE624081383009DEFBA /* TransactionWarningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionWarningViewModel.swift; sourceTree = "<group>"; };
 		F2E48DE82408141C009DEFBA /* TransactionStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepViewModel.swift; sourceTree = "<group>"; };
 		F2E48DEA2408174B009DEFBA /* TransactionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHeaderView.swift; sourceTree = "<group>"; };
 		F2E48DED240817BD009DEFBA /* TransactionHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHeaderViewModel.swift; sourceTree = "<group>"; };
@@ -4374,7 +4374,7 @@
 				F20450B523EC0D48001F7370 /* TransactionView.swift */,
 				F20450C723EDB663001F7370 /* TransactionViewModel.swift */,
 				F2E48DEC2408175E009DEFBA /* TransactionHeaderView */,
-				F2E48DE52408135A009DEFBA /* TransactionAlertView */,
+				F2E48DE52408135A009DEFBA /* TransactionWarningView */,
 				F20450C923EDB675001F7370 /* TransactionStepView */,
 				F2E48DE02407D224009DEFBA /* TransactionStepDot */,
 			);
@@ -4646,13 +4646,13 @@
 			path = TransactionStepDot;
 			sourceTree = "<group>";
 		};
-		F2E48DE52408135A009DEFBA /* TransactionAlertView */ = {
+		F2E48DE52408135A009DEFBA /* TransactionWarningView */ = {
 			isa = PBXGroup;
 			children = (
-				F2E48DE3240812AB009DEFBA /* TransactionAlertView.swift */,
-				F2E48DE624081383009DEFBA /* TransactionAlertViewModel.swift */,
+				F2E48DE3240812AB009DEFBA /* TransactionWarningView.swift */,
+				F2E48DE624081383009DEFBA /* TransactionWarningViewModel.swift */,
 			);
-			path = TransactionAlertView;
+			path = TransactionWarningView;
 			sourceTree = "<group>";
 		};
 		F2E48DEC2408175E009DEFBA /* TransactionHeaderView */ = {
@@ -5267,7 +5267,7 @@
 				CF5CA71722F87AED007C4124 /* NeighborhoodProfileInfoViewCell.swift in Sources */,
 				DAB7FAAA21B690DD00BF8CC6 /* BottomSheetGestureController.swift in Sources */,
 				DAB7FAAE21B6924E00BF8CC6 /* SpringAnimator.swift in Sources */,
-				F2E48DE724081383009DEFBA /* TransactionAlertViewModel.swift in Sources */,
+				F2E48DE724081383009DEFBA /* TransactionWarningViewModel.swift in Sources */,
 				9B06097523F14C05005CB592 /* RegularView.swift in Sources */,
 				0884C6C922B7B4580015474D /* DisclaimerView.swift in Sources */,
 				9B2D17D623E02B6900EF3B50 /* KeyValueGridView.swift in Sources */,
@@ -5414,7 +5414,7 @@
 				44A557A522E720A3001667AE /* IconTitleTableViewCell.swift in Sources */,
 				9BEB2881231D489F00D28BAD /* LoanApplyView.swift in Sources */,
 				CF7C460522257A8A001FB92C /* EarthHourSignUpView.swift in Sources */,
-				F2E48DE4240812AB009DEFBA /* TransactionAlertView.swift in Sources */,
+				F2E48DE4240812AB009DEFBA /* TransactionWarningView.swift in Sources */,
 				441FE42D209A24E500B04EF1 /* MarketsGridView.swift in Sources */,
 				45EDD63F20A9CA22008F4503 /* PopupViewModel.swift in Sources */,
 				444246022137D60400D42AB8 /* FavoriteFoldersListView.swift in Sources */,
@@ -5795,7 +5795,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 36.0.0;
+				MARKETING_VERSION = 35.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.FinniversKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5838,7 +5838,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 36.0.0;
+				MARKETING_VERSION = 35.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.FinniversKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
