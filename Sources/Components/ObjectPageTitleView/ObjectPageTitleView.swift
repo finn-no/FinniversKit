@@ -6,6 +6,18 @@ import UIKit
 
 public class ObjectPageTitleView: UIView {
 
+    // MARK: - Public properties
+
+    public var isTitleTextCopyable: Bool {
+        set { titleLabel.isTextCopyable = newValue }
+        get { titleLabel.isTextCopyable }
+    }
+
+    public var isSubtitleTextCopyable: Bool {
+        set { subtitleLabel.isTextCopyable = newValue }
+        get { subtitleLabel.isTextCopyable }
+    }
+
     // MARK: - Private properties
 
     private let titleStyle: Label.Style
