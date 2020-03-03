@@ -24,7 +24,7 @@ final class TransactionDemoView: UIView {
         }
 
         model = dataSource.getState()
-        transactionView = TransactionView(model: model, dataSource: self, delegate: self, withAutoLayout: true)
+        transactionView = TransactionView(withAutoLayout: true, model: model, dataSource: self, delegate: self)
 
         addSubview(transactionView!)
         transactionView!.fillInSuperview()

@@ -56,12 +56,12 @@ public class TransactionView: UIView {
         return stackView
     }()
 
+    private var verticalStackViewTopAnchor: NSLayoutConstraint?
+
     // MARK: - Init
 
-    public init(model: TransactionViewModel,
-                dataSource: TransactionViewDataSource,
-                delegate: TransactionViewDelegate,
-                withAutoLayout autoLayout: Bool = true) {
+    public init(withAutoLayout autoLayout: Bool = true, model: TransactionViewModel,
+                dataSource: TransactionViewDataSource, delegate: TransactionViewDelegate) {
 
         self.model = model
         self.dataSource = dataSource
@@ -95,6 +95,22 @@ private extension TransactionView {
         scrollableContentView.addSubview(titleLabel)
         scrollableContentView.addSubview(verticalStackView)
 
+        if let warningViewModel = model?.warning {
+            let warningView = TransactionWarningView( withAutoLayout: true, model: warningViewModel)
+            scrollableContentView.addSubview(warningView)
+
+            NSLayoutConstraint.activate([
+                warningView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .spacingM),
+                warningView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -.spacingM),
+                warningView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
+            ])
+
+            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: warningView.bottomAnchor, constant: .spacingM)
+
+        } else {
+            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXL)
+        }
+
         NSLayoutConstraint.activate([
             scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
@@ -110,7 +126,7 @@ private extension TransactionView {
             titleLabel.heightAnchor.constraint(equalToConstant: 40),
 
             verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.spacingXL),
-            verticalStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXL),
+            verticalStackViewTopAnchor!,
             verticalStackView.bottomAnchor.constraint(equalTo: scrollableContentView.bottomAnchor),
         ])
 

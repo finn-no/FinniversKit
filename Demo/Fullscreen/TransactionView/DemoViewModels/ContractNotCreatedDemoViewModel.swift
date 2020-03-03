@@ -12,10 +12,6 @@ extension TransactionDemoViewDefaultData {
             registrationNumber: "CF40150",
             imageUrlString: "2020/2/vertical-0/26/2/171/529/672_525135443.jpg"),
 
-        alert: TransactionAlertModel(
-            title: "AlertTitle",
-            message: "You have multiple contracts open"),
-
         steps: [
             TransactionStepModel(
                 state: .completed,
