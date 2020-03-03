@@ -62,8 +62,8 @@ extension Label {
     @objc private func handleLongPress(_ recognizer: UIGestureRecognizer) {
         guard recognizer.state == .began else { return }
 
+        becomeFirstResponder()
         UIMenuController.shared.setTargetRect(bounds, in: self)
         UIMenuController.shared.setMenuVisible(true, animated:true)
-        becomeFirstResponder()
     }
 }
