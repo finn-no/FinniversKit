@@ -16,6 +16,6 @@ public protocol TransactionStepPrimaryButtonViewModel {
     var action: String? { get set }
     var text: String { get }
     var style: String { get set }
-    var urlString: String? { get set }
-    var fallbackUrlString: String? { get set }
+    var url: String? { get set }
+    var fallbackUrl: String? { get set }
 }

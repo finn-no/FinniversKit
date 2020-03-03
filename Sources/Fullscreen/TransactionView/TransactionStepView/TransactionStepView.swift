@@ -221,8 +221,8 @@ private extension TransactionStepView {
 private extension TransactionStepView {
     @objc func handlePrimaryButtonTap() {
         let action = PrimaryButton.Action(rawValue: primaryButtonModel?.action ?? "unknown")
-        let urlString = primaryButtonModel?.urlString
-        let fallbackUrlString = primaryButtonModel?.fallbackUrlString
+        let urlString = primaryButtonModel?.url
+        let fallbackUrlString = primaryButtonModel?.fallbackUrl
 
         delegate?.transactionStepViewDidTapPrimaryButton(self, inTransactionStep: step, withAction: action,
                                                          withUrl: urlString, withFallbackUrl: fallbackUrlString)

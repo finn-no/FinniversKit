@@ -15,13 +15,13 @@ public struct TransactionHeaderModel: TransactionHeaderViewModel {
     public var adId: String
     public var title: String
     public var registrationNumber: String?
-    public var imageUrlString: String?
+    public var imageUrl: String?
 }
 
 public struct TransactionWarningModel: TransactionWarningViewModel {
     public var title: String
     public var message: String
-    public var imageUrlString: String?
+    public var imageUrl: String?
 }
 
 public struct TransactionStepModel: TransactionStepViewModel {
@@ -36,8 +36,8 @@ public struct TransactionStepPrimaryButtonModel: TransactionStepPrimaryButtonVie
     public var text: String
     public var style: String
     public var action: String?
-    public var urlString: String?
-    public var fallbackUrlString: String?
+    public var url: String?
+    public var fallbackUrl: String?
 }
 
 public struct TransactionDemoViewDefaultData {

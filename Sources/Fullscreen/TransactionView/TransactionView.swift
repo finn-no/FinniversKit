@@ -197,9 +197,12 @@ private extension TransactionView {
 
 extension TransactionView: TransactionStepViewDelegate {
     public func transactionStepViewDidTapPrimaryButton(_ view: TransactionStepView, inTransactionStep step: Int,
-                                                       withAction action: TransactionStepView.PrimaryButton.Action, withUrl urlString: String?,
-                                                       withFallbackUrl fallbackUrlString: String?) {
-        delegate?.transactionViewDidSelectPrimaryButton(self, inTransactionStep: step, withAction: action, withUrl: urlString, withFallbackUrl: fallbackUrlString)
+                                                       withAction action: TransactionStepView.PrimaryButton.Action, withUrl url: String?,
+                                                       withFallbackUrl fallbackUrl: String?) {
+
+        delegate?.transactionViewDidSelectPrimaryButton(self, inTransactionStep: step,
+                                                        withAction: action, withUrl: url,
+                                                        withFallbackUrl: fallbackUrl)
     }
 }
 
