@@ -24,7 +24,7 @@ public class TransactionWarningView: UIView {
         imageView.layer.cornerRadius = .spacingM
         imageView.backgroundColor = .clear
         imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
@@ -83,7 +83,7 @@ public class TransactionWarningView: UIView {
             messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
 
             imageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: .spacingXXL),
-            imageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS),
+            imageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingXXL),
             imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingS),
             imageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.spacingS),
 

@@ -56,7 +56,9 @@ public class TransactionView: UIView {
         return stackView
     }()
 
+    private var verticalStackViewLeadingAnchor: NSLayoutConstraint?
     private var verticalStackViewTopAnchor: NSLayoutConstraint?
+    private var verticalStackViewBottomAnchor: NSLayoutConstraint?
 
     // MARK: - Init
 
@@ -107,48 +109,41 @@ private extension TransactionView {
             ])
 
             verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: warningView.bottomAnchor, constant: .spacingM)
-
         } else {
             verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXL)
         }
 
         NSLayoutConstraint.activate([
-            scrollableContentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor, constant: .spacingS),
+            scrollableContentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
             scrollableContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
             titleLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .spacingXL),
             titleLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             titleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: 40),
-
-            verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.spacingXL),
-            verticalStackViewTopAnchor!,
-            verticalStackView.bottomAnchor.constraint(equalTo: scrollableContentView.bottomAnchor),
         ])
 
         for index in 0..<numberOfSteps {
             guard let model = dataSource?.transactionViewModelForIndex(self, forStep: index) else { return }
-
-            addTransactionStepView(index, model)
-            addTransactionStepDot(index)
+            setupTransactionStepView(index, model)
+            setupTransactionStepDot(index)
         }
 
-        guard let stepDot = stepDots.first else { return }
-        NSLayoutConstraint.activate([verticalStackView.leadingAnchor.constraint(equalTo: stepDot.trailingAnchor, constant: .spacingS)])
+        setupVerticalStackViewContraints()
     }
 
-    private func addTransactionStepView(_ step: Int, _ model: TransactionStepViewModel) {
+    func setupTransactionStepView(_ step: Int, _ model: TransactionStepViewModel) {
+        let isLastStep = (step == numberOfSteps - 1)
         let transactionStepView = TransactionStepView(step: step, model: model, withAutoLayout: true)
         transactionStepView.delegate = self
+        verticalStackView.addArrangedSubview(transactionStepView)
 
-        if step == numberOfSteps - 1 && model.state == .completed {
+        if isLastStep && model.state == .completed {
             transactionStepView.hasCompletedLastStep(true)
         }
-
-        verticalStackView.addArrangedSubview(transactionStepView)
     }
 
-    private func addTransactionStepDot(_ step: Int) {
+    func setupTransactionStepDot(_ step: Int) {
         let stepDot = TransactionStepDot(step: step)
         stepDots.append(stepDot)
 
@@ -176,6 +171,27 @@ private extension TransactionView {
         ])
 
         connector.connect(from: stepDot, to: previousStepDot)
+    }
+
+    func setupVerticalStackViewContraints() {
+        guard
+            let firstStepDot = stepDots.first,
+            let lastTransactionStepView = verticalStackView.arrangedSubviews.last
+        else { return }
+
+        verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(equalTo: firstStepDot.trailingAnchor, constant: .spacingS)
+        verticalStackViewBottomAnchor = verticalStackView.bottomAnchor.constraint(equalTo: lastTransactionStepView.bottomAnchor)
+
+        NSLayoutConstraint.activate([
+            verticalStackViewLeadingAnchor!,
+            verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.spacingXL),
+            verticalStackViewTopAnchor!,
+            verticalStackViewBottomAnchor!,
+        ])
+
+        if !UIDevice.isIPad() {
+            scrollableContentView.bottomAnchor.constraint(equalTo: verticalStackView.bottomAnchor, constant: .spacingXL).isActive = true
+        }
     }
 
     func progressTo(_ step: Int) {
