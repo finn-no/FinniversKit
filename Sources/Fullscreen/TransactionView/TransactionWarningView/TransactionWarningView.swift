@@ -7,12 +7,14 @@ import UIKit
 public class TransactionWarningView: UIView {
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
+        label.textColor = .licorice
         label.numberOfLines = 0
         return label
     }()
 
     private lazy var messageLabel: Label = {
         let label = Label(style: .caption, withAutoLayout: true)
+        label.textColor = .licorice
         label.numberOfLines = 0
         return label
     }()
