@@ -38,9 +38,9 @@ public extension TransactionStepView {
         var titleTextColor: UIColor {
             switch self {
             case .notStarted:
-                return .stone
+                return .textSecondary
             default:
-                return .licorice
+                return .textPrimary
             }
         }
 
@@ -54,9 +54,9 @@ public extension TransactionStepView {
         var bodyTextColor: UIColor {
             switch self {
             case .notStarted:
-                return .stone
+                return .textSecondary
             case .active, .completed:
-                return .licorice
+                return .textPrimary
             }
         }
 
@@ -70,9 +70,9 @@ public extension TransactionStepView {
         var detailTextColor: UIColor {
             switch self {
             case .notStarted:
-                return .stone
+                return .textSecondary
             case .active, .completed:
-                return .licorice
+                return .textPrimary
             }
         }
 

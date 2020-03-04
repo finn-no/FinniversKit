@@ -12,8 +12,8 @@ public class TransactionStepDot: UIView {
 
     // MARK: - Public properties
 
-    public static let activeColor = UIColor(r: 82, g: 188, b: 245)
-    public static let inactiveColor = UIColor.decorationSubtle
+    public static let activeColor = UIColor.accentSecondaryBlue
+    public static let inactiveColor = UIColor.textDisabled
 
     // MARK: - Internal properties
 
