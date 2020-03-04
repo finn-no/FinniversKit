@@ -44,8 +44,8 @@ public class TransactionView: UIView {
         return scrollView
     }()
 
-    private lazy var scrollableContentView: UIView = UIView(withAutoLayout: true)
-    private lazy var titleLabel: Label = Label(style: .title1, withAutoLayout: true)
+    private lazy var scrollableContentView = UIView(withAutoLayout: true)
+    private lazy var titleLabel = Label(style: .title1, withAutoLayout: true)
 
     private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
@@ -89,6 +89,7 @@ private extension TransactionView {
         backgroundColor = .bgPrimary
 
         addSubview(scrollView)
+        scrollView.fillInSuperview()
         scrollView.addSubview(scrollableContentView)
 
         scrollableContentView.fillInSuperview()
@@ -112,11 +113,6 @@ private extension TransactionView {
         }
 
         NSLayoutConstraint.activate([
-            scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-
             scrollableContentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor, constant: .spacingS),
             scrollableContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
