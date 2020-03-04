@@ -5,6 +5,12 @@
 import UIKit
 
 public class TransactionWarningView: UIView {
+    weak var dataSource: RemoteImageViewDataSource? {
+        didSet {
+            imageView.dataSource = dataSource
+        }
+    }
+
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
         label.textColor = .licorice
@@ -92,7 +98,5 @@ public class TransactionWarningView: UIView {
 
         titleLabel.setContentHuggingPriority(.required, for: .vertical)
         messageLabel.setContentHuggingPriority(.required, for: .vertical)
-
-        loadImage()
     }
 }

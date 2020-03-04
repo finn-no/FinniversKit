@@ -53,6 +53,25 @@ extension TransactionDemoView: TransactionViewDelegate {
 // MARK: TransactionViewDataSource
 
 extension TransactionDemoView: TransactionViewDataSource {
+    func transactionView(_ view: TransactionView, loadImageWithUrl url: URL, completion: @escaping ((UIImage?) -> Void)) {
+
+        // Demo code only.
+        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+            usleep(50_000)
+            DispatchQueue.main.async {
+                if let data = data, let image = UIImage(data: data) {
+                    completion(image)
+                } else {
+                    completion(nil)
+                }
+            }
+        }
+
+        task.resume()
+    }
+
+    func transactionView(_ view: TransactionView, cancelLoadingImageWithUrl: URL) {}
+
     func transactionViewNumberOfSteps(_ view: TransactionView) -> Int {
         return model.steps.count
     }
