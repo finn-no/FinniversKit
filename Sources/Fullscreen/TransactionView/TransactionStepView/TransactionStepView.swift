@@ -150,8 +150,6 @@ private extension TransactionStepView {
                 verticalStackViewLeadingAnchor!,
                 verticalStackViewTrailingAnchor!,
                 verticalStackViewTopAnchor!,
-
-                titleView.heightAnchor.constraint(greaterThanOrEqualToConstant: .spacingL),
             ])
 
         case .active:
@@ -163,24 +161,18 @@ private extension TransactionStepView {
                 verticalStackViewLeadingAnchor!,
                 verticalStackViewTrailingAnchor!,
                 verticalStackViewTopAnchor!,
-
-                titleView.heightAnchor.constraint(greaterThanOrEqualToConstant: .spacingL),
             ])
         }
 
-        titleView.setContentHuggingPriority(.required, for: .vertical)
         setupOptionalViews()
     }
 
     private func setupOptionalViews() {
         if let bodyText = model.body {
             bodyView.text = bodyText
+
             verticalStackView.addArrangedSubview(bodyView)
-
-            bodyView.setContentHuggingPriority(.required, for: .vertical)
-            NSLayoutConstraint.activate([bodyView.trailingAnchor.constraint(equalTo: verticalStackView.trailingAnchor)])
-
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: .spacingL)
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: .spacingM)
         }
 
         if let buttonModel = primaryButtonModel {
@@ -191,25 +183,22 @@ private extension TransactionStepView {
             primaryButton.setTitle(buttonText, for: .normal)
             primaryButton.isEnabled = style.actionButtonEnabled
             primaryButton.addTarget(self, action: #selector(handlePrimaryButtonTap), for: .touchUpInside)
-
-            verticalStackView.addArrangedSubview(primaryButton)
+            primaryButton.setContentHuggingPriority(.required, for: .vertical)
 
             if model.state == .completed {
                 primaryButton.contentHorizontalAlignment = .leading
                 primaryButton.contentEdgeInsets = .leadingInset(4)
             }
 
-            primaryButton.setContentHuggingPriority(.required, for: .vertical)
-            NSLayoutConstraint.activate([primaryButton.heightAnchor.constraint(equalToConstant: 40)])
-
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .spacingL)
+            verticalStackView.addArrangedSubview(primaryButton)
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .spacingM)
         }
 
         if let detailText = model.detail {
             detailView.text = detailText
-            verticalStackView.addArrangedSubview(detailView)
 
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: detailView.bottomAnchor, constant: .spacingL)
+            verticalStackView.addArrangedSubview(detailView)
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: detailView.bottomAnchor, constant: .spacingM)
         }
 
         bottomAnchorConstraint?.isActive = true
