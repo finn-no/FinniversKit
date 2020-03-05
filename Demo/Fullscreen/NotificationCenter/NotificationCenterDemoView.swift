@@ -135,12 +135,12 @@ extension NotificationCenterDemoView: NotificationCenterViewDelegate {
         print("Will reach end of content")
     }
 
-    func notificationCenterView(_ view: NotificationCenterView, didReachEndOfContentWith activityIndicatorView: UIActivityIndicatorView) {
+    func notificationCenterView(_ view: NotificationCenterView, didReachEndOfContentWith loadingIndicatorView: LoadingIndicatorView) {
         print("Did reach end of content")
-        activityIndicatorView.startAnimating()
+        loadingIndicatorView.startAnimating()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            activityIndicatorView.stopAnimating()
+            loadingIndicatorView.stopAnimating()
         }
     }
 }
