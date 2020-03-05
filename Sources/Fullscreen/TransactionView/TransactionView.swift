@@ -38,6 +38,7 @@ public class TransactionView: UIView {
         let scrollView = UIScrollView(withAutoLayout: true)
         let refreshControl = RefreshControl(frame: .zero)
         scrollView.alwaysBounceVertical = true
+        scrollView.alwaysBounceHorizontal = false
         scrollView.refreshControl = refreshControl
         refreshControl.delegate = self
         return scrollView
