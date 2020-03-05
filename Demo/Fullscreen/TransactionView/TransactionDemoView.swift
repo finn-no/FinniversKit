@@ -70,7 +70,7 @@ extension TransactionDemoView: TransactionViewDataSource {
         task.resume()
     }
 
-    func transactionView(_ view: TransactionView, cancelLoadingImageWithUrl: URL) {}
+    func transactionView(_ view: TransactionView, cancelLoadingImageWithUrl url: URL) {}
 
     func transactionViewNumberOfSteps(_ view: TransactionView) -> Int {
         return model.steps.count
