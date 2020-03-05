@@ -76,6 +76,7 @@ struct ChristmasWishListDemoWrapperView: UIViewRepresentable {
 }
 
 @available(iOS 13.0, *)
+// swiftlint:disable:next type_name
 struct ChristmasWishListDemoView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
