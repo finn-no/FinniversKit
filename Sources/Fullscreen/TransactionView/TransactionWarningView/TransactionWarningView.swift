@@ -5,6 +5,12 @@
 import UIKit
 
 public class TransactionWarningView: UIView {
+    weak var dataSource: RemoteImageViewDataSource? {
+        didSet {
+            imageView.dataSource = dataSource
+        }
+    }
+
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
         label.textColor = .licorice
@@ -24,7 +30,7 @@ public class TransactionWarningView: UIView {
         imageView.layer.cornerRadius = .spacingM
         imageView.backgroundColor = .clear
         imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
@@ -83,7 +89,7 @@ public class TransactionWarningView: UIView {
             messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
 
             imageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: .spacingXXL),
-            imageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS),
+            imageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingXXL),
             imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingS),
             imageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.spacingS),
 
@@ -92,7 +98,5 @@ public class TransactionWarningView: UIView {
 
         titleLabel.setContentHuggingPriority(.required, for: .vertical)
         messageLabel.setContentHuggingPriority(.required, for: .vertical)
-
-        loadImage()
     }
 }
