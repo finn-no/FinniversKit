@@ -9,7 +9,7 @@ public protocol NotificationCenterViewDelegate: AnyObject {
     func notificationCenterView(_ view: NotificationCenterView, didSelectNotificationDetailsIn section: Int)
     func notificationCenterView(_ view: NotificationCenterView, didPullToRefreshWith refreshControl: UIRefreshControl)
     func notificationCenterViewWillReachEndOfContent(_ view: NotificationCenterView)
-    func notificationCenterView(_ view: NotificationCenterView, didReachEndOfContentWith activityIndicatorView: UIActivityIndicatorView)
+    func notificationCenterView(_ view: NotificationCenterView, didReachEndOfContentWith loadingIndicatorView: LoadingIndicatorView)
 }
 
 public protocol NotificationCenterViewDataSource: AnyObject {
