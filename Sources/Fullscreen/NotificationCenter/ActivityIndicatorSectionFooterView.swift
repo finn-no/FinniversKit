@@ -23,8 +23,8 @@ class ActivityIndicatorSectionFooterView: UITableViewHeaderFooterView {
         contentView.addSubview(activityIndicatorView)
 
         NSLayoutConstraint.activate([
-            activityIndicatorView.widthAnchor.constraint(equalToConstant: 24),
-            activityIndicatorView.heightAnchor.constraint(equalToConstant: 24),
+            activityIndicatorView.widthAnchor.constraint(equalToConstant: 20),
+            activityIndicatorView.heightAnchor.constraint(equalToConstant: 20),
             activityIndicatorView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             activityIndicatorView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
