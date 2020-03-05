@@ -44,15 +44,49 @@ public extension UIView {
             return []
         }
 
-        let constrains: [NSLayoutConstraint] = [
+        let constraints: [NSLayoutConstraint] = [
             topAnchor.constraint(equalTo: superview.layoutMarginsGuide.topAnchor),
             leadingAnchor.constraint(equalTo: superview.layoutMarginsGuide.leadingAnchor),
             trailingAnchor.constraint(equalTo: superview.layoutMarginsGuide.trailingAnchor),
             bottomAnchor.constraint(equalTo: superview.layoutMarginsGuide.bottomAnchor),
         ]
 
-        NSLayoutConstraint.activate(constrains)
+        NSLayoutConstraint.activate(constraints)
 
-        return constrains
+        return constraints
+    }
+
+    @discardableResult
+    func centerInSuperview() -> [NSLayoutConstraint] {
+        guard let superview = superview else {
+            return []
+        }
+
+        let constraints: [NSLayoutConstraint] = [
+            centerYAnchor.constraint(equalTo: superview.centerYAnchor),
+            centerXAnchor.constraint(equalTo: superview.centerXAnchor),
+        ]
+
+        NSLayoutConstraint.activate(constraints)
+
+        return constraints
+    }
+
+    @discardableResult
+    func centerAndConstraintInSuperview() -> [NSLayoutConstraint] {
+        guard let superview = superview else {
+            return []
+        }
+
+        centerInSuperview()
+
+        let constraints: [NSLayoutConstraint] = [
+            heightAnchor.constraint(lessThanOrEqualTo: superview.heightAnchor),
+            widthAnchor.constraint(lessThanOrEqualTo: superview.widthAnchor),
+        ]
+
+        NSLayoutConstraint.activate(constraints)
+
+        return constraints
     }
 }
