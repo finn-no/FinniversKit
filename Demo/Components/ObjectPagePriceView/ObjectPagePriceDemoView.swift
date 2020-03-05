@@ -14,7 +14,14 @@ class ObjectPagePriceDemoView: UIView, Tweakable {
             }),
             TweakingOption(title: "Without links", action: { [weak self] in
                 self?.priceView.configure(with: .withoutLinks)
-            })
+            }),
+
+            TweakingOption(title: "With subtitle & links", action: { [weak self] in
+                self?.priceView.configure(with: .subtitleWithLinks)
+            }),
+            TweakingOption(title: "With subtitle, without links", action: { [weak self] in
+                self?.priceView.configure(with: .subtitleWithoutLinks)
+            }),
         ]
     }()
 
@@ -48,7 +55,7 @@ extension ObjectPagePriceDemoView: ObjectPagePriceViewDelegate {
 }
 
 extension ObjectPagePriceViewModel {
-    static var `withLinks`: ObjectPagePriceViewModel = {
+    static var withLinks: ObjectPagePriceViewModel = {
         ObjectPagePriceViewModel(
             title: "Totalpris",
             totalPrice: "1 389 588 kr",
@@ -76,10 +83,48 @@ extension ObjectPagePriceViewModel {
         )
     }()
 
-    static var `withoutLinks`: ObjectPagePriceViewModel = {
+    static var subtitleWithLinks: ObjectPagePriceViewModel = {
         ObjectPagePriceViewModel(
             title: "Totalpris",
             totalPrice: "1 389 588 kr",
+            subtitle: "Inkludert alle klargjøringskostnader",
+            links: [
+                LinkButtonViewModel(
+                    buttonIdentifier: "loan",
+                    buttonTitle: "Lån fra 16 581 kr",
+                    subtitle: "Eff.rente 3,89 %. 903 232 o/5 år. Kostnad: 91 628 kr. Totalt 994 860 kr.",
+                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    isExternal: true
+                ),
+                LinkButtonViewModel(
+                    buttonIdentifier: "insurance",
+                    buttonTitle: "Pris på forsikring",
+                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    isExternal: false
+                ),
+                LinkButtonViewModel(
+                    buttonIdentifier: "used-car-guarantee",
+                    buttonTitle: "Bruktbilgaranti 272 kr",
+                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    isExternal: true
+                )
+            ]
+        )
+    }()
+
+    static var withoutLinks: ObjectPagePriceViewModel = {
+        ObjectPagePriceViewModel(
+            title: "Totalpris",
+            totalPrice: "1 389 588 kr",
+            links: []
+        )
+    }()
+
+    static var subtitleWithoutLinks: ObjectPagePriceViewModel = {
+        ObjectPagePriceViewModel(
+            title: "Totalpris",
+            totalPrice: "1 389 588 kr",
+            subtitle: "Inkludert alle klargjøringskostnader",
             links: []
         )
     }()
