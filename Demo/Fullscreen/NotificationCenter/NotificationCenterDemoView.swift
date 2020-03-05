@@ -135,7 +135,7 @@ extension NotificationCenterDemoView: NotificationCenterViewDelegate {
         print("Will reach end of content")
     }
 
-    func notificationCenterView(_ view: NotificationCenterView, didReachEndOfContentWith activityIndicatorView: UIActivityIndicatorView) {
+    func notificationCenterView(_ view: NotificationCenterView, didReachEndOfContentWith activityIndicatorView: LoadingIndicatorView) {
         print("Did reach end of content")
         activityIndicatorView.startAnimating()
 

@@ -6,18 +6,9 @@ import Foundation
 
 class ActivityIndicatorSectionFooterView: UITableViewHeaderFooterView {
 
-    let activityIndicatorView: UIActivityIndicatorView = {
-        let activityIndicatorView: UIActivityIndicatorView
-
-        if #available(iOS 13, *) {
-            activityIndicatorView = UIActivityIndicatorView(style: .medium)
-        } else {
-            activityIndicatorView = UIActivityIndicatorView(style: .gray)
-        }
-
-        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
-        return activityIndicatorView
-    }()
+    let activityIndicatorView = LoadingIndicatorView(
+        withAutoLayout: true
+    )
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -32,6 +23,8 @@ class ActivityIndicatorSectionFooterView: UITableViewHeaderFooterView {
         contentView.addSubview(activityIndicatorView)
 
         NSLayoutConstraint.activate([
+            activityIndicatorView.widthAnchor.constraint(equalToConstant: 24),
+            activityIndicatorView.heightAnchor.constraint(equalToConstant: 24),
             activityIndicatorView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             activityIndicatorView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
