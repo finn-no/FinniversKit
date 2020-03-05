@@ -21,6 +21,20 @@ public class ErrorView: UIView {
         iconImageView.image = icon
     }
 
+    public func configure(title: NSAttributedString, description: String? = nil, icon: UIImage? = nil) {
+        titleLabel.attributedText = title
+        descriptionLabel.text = description
+        iconImageView.image = icon
+    }
+
+    private func show() {
+        isHidden = false
+    }
+
+    private func hide() {
+        isHidden = true
+    }
+
     private lazy var titleLabel: Label = Label(style: .title3Strong, withAutoLayout: true)
 
     private lazy var descriptionLabel: Label = {
