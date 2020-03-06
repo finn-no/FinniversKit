@@ -15,6 +15,19 @@ public enum TransactionStepViewState: String {
     case active = "active"
     case completed = "completed"
 
+    public init(rawValue: String) {
+        switch rawValue {
+        case "not_started":
+            self = .notStarted
+        case "active":
+            self = .active
+        case "completed":
+            self = .completed
+        default:
+            fatalError("No state exists for rawValue: '\(rawValue)'")
+        }
+    }
+
     var style: TransactionStepView.Style {
         switch self {
         case .notStarted:
