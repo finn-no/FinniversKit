@@ -55,6 +55,7 @@ public class ErrorView: UIView {
         titleLabel.text = title
         titleLabel.textColor = titleColor
         descriptionLabel.text = description
+        descriptionLabel.isHidden = description == nil
         iconImageView.image = icon
         iconImageView.isHidden = icon == nil
     }
