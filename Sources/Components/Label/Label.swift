@@ -64,6 +64,6 @@ extension Label {
 
         becomeFirstResponder()
         UIMenuController.shared.setTargetRect(bounds, in: self)
-        UIMenuController.shared.setMenuVisible(true, animated:true)
+        UIMenuController.shared.setMenuVisible(true, animated: true)
     }
 }

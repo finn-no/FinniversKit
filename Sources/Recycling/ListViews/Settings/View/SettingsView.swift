@@ -156,7 +156,7 @@ extension SettingsView: UITableViewDelegate {
 
         return nil
     }
-    
+
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         48
     }
