@@ -16,7 +16,7 @@ public protocol TransactionViewDataSource: AnyObject {
     func transactionViewNumberOfSteps(_ view: TransactionView) -> Int
     func transactionViewCurrentStep(_ view: TransactionView) -> Int
     func transactionView(_ view: TransactionView, loadImageWithUrl url: URL, completion: @escaping ((UIImage?) -> Void))
-    func transactionView(_ view: TransactionView, cancelLoadingImageWithUrl: URL)
+    func transactionView(_ view: TransactionView, cancelLoadingImageWithUrl url: URL)
 }
 
 public class TransactionView: UIView {
