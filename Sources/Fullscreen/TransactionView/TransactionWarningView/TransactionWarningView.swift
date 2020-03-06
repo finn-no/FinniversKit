@@ -18,11 +18,20 @@ public class TransactionWarningView: UIView {
         return label
     }()
 
-    private lazy var messageLabel: Label = {
-        let label = Label(style: .caption, withAutoLayout: true)
-        label.textColor = .licorice
-        label.numberOfLines = 0
-        return label
+    private lazy var messageView: UITextView = {
+        let view = UITextView(withAutoLayout: true)
+        let style = Label.Style.caption
+        view.font = style.font
+        view.textColor = .licorice
+        view.backgroundColor = .clear
+        view.contentInset = .leadingInset(0)
+        view.isScrollEnabled = false
+        view.isEditable = false
+        view.isUserInteractionEnabled = false
+        view.adjustsFontForContentSizeCategory = true
+        view.textContainer.widthTracksTextView = true
+        view.textContainer.heightTracksTextView = true
+        return view
     }()
 
     private lazy var imageView: RemoteImageView = {
@@ -34,7 +43,7 @@ public class TransactionWarningView: UIView {
         return imageView
     }()
 
-    private var defaultImageSize: CGFloat = 64
+    private var defaultImageSize: CGFloat = UIDevice.isIPad() ? 128 : 64
     private var loadingColor: UIColor? = .toothPaste
     private var fallbackImage = UIImage(named: .noImage)
 
@@ -73,30 +82,30 @@ public class TransactionWarningView: UIView {
         layer.cornerRadius = .spacingS
 
         titleLabel.text = model.title
-        messageLabel.text = model.message
+        messageView.text = model.message
 
         addSubview(titleLabel)
-        addSubview(messageLabel)
+        addSubview(messageView)
         addSubview(imageView)
 
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM),
-            titleLabel.trailingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: -.spacingS),
+            titleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingM),
 
-            messageLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            messageLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
+            messageView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            messageView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+            messageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
 
-            imageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: .spacingXXL),
-            imageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingXXL),
-            imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingS),
-            imageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.spacingS),
+            imageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: .spacingXS),
+            imageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingM),
+            imageView.topAnchor.constraint(equalTo: titleLabel.topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.spacingL),
 
-            bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: .spacingM),
+            bottomAnchor.constraint(equalTo: messageView.bottomAnchor, constant: .spacingM),
         ])
 
         titleLabel.setContentHuggingPriority(.required, for: .vertical)
-        messageLabel.setContentHuggingPriority(.required, for: .vertical)
+        messageView.setContentHuggingPriority(.required, for: .vertical)
     }
 }
