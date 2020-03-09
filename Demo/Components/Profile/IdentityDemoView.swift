@@ -74,6 +74,7 @@ class IdentityDemoView: UIView, Tweakable {
             ViewModel(description: nil, isTappable: true, isVerified: false),
             ViewModel(description: nil, isTappable: false, isVerified: true),
             ViewModel(description: "Hei sveis!", isTappable: false, isVerified: false),
+            ViewModel(description: nil, isTappable: false, isVerified: true, displayMode: .offline),
         ]
 
         identityViews = viewModels.map { model in
@@ -117,6 +118,8 @@ extension IdentityDemoView: IdentityViewDelegate {
             task.resume()
         })
     }
+
+    public func identityViewDidTapOfflineButton() {}
 }
 
 // MARK: - View model
@@ -130,10 +133,14 @@ private class ViewModel: IdentityViewModel {
 
     let description: String?
     let isVerified: Bool
-    var displayMode: IdentityView.DisplayMode = .interactible
+    var displayMode: IdentityView.DisplayMode
 
-    init(description: String?, isTappable: Bool, isVerified: Bool) {
+    let offlineDescription: String? = "Du må være logget inn for å se profilen"
+    let offlineButtonTitle: String? = "Logg inn"
+
+    init(description: String?, isTappable: Bool, isVerified: Bool, displayMode: IdentityView.DisplayMode = .interactible) {
         self.description = description
         self.isVerified = isVerified
+        self.displayMode = displayMode
     }
 }

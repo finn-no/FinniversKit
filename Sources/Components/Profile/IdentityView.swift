@@ -18,11 +18,15 @@ public protocol IdentityViewModel {
 
     var isVerified: Bool { get }
     var displayMode: IdentityView.DisplayMode { get }
+    var offlineDescription: String? { get }
+    var offlineButtonTitle: String? { get }
+
 }
 
 public protocol IdentityViewDelegate: AnyObject {
     func identityViewWasTapped(_ identityView: IdentityView)
     func identityView(_ identityView: IdentityView, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void)
+    func identityViewDidTapOfflineButton()
 }
 
 public class IdentityView: UIView {
@@ -35,6 +39,9 @@ public class IdentityView: UIView {
 
         /// Subtitle hidden, profile name black
         case anonymous
+
+        /// Subtitle hidden, profile name black
+        case offline
     }
 
     private var lastLoadedImageUrl: URL?
@@ -130,6 +137,13 @@ public class IdentityView: UIView {
         return label
     }()
 
+    private lazy var offlineButton: UIButton = {
+        let button = Button(style: .utility, size: .small)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(offlineButtonTapped), for: .touchUpInside)
+        return button
+    }()
+
     private lazy var descriptionLabelConstraints: [NSLayoutConstraint] = [
         descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
         descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: profileImageView.bottomAnchor, constant: .spacingM),
@@ -181,6 +195,15 @@ public class IdentityView: UIView {
             stackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingM),
             stackView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.spacingS),
         ])
+
+        if viewModel?.displayMode == .offline {
+            addSubview(offlineButton)
+
+            NSLayoutConstraint.activate([
+                offlineButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+                offlineButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
+            ])
+        }
     }
 
     private func addTapListener() {
@@ -226,10 +249,10 @@ public class IdentityView: UIView {
     }
 
     private func populateViews(with viewModel: IdentityViewModel) {
-        profileNameLabel.text = viewModel.displayName
-        profileNameLabel.textColor = viewModel.displayMode == .interactible ? .textAction : .textPrimary
+        profileNameLabel.text = viewModel.displayMode == .offline ? viewModel.offlineDescription : viewModel.displayName
+        profileNameLabel.textColor = .textPrimary
 
-        verifiedBadge.isHidden = !viewModel.isVerified
+        verifiedBadge.isHidden = (!viewModel.isVerified || viewModel.displayMode == .offline)
 
         if viewModel.displayMode == .anonymous {
             subtitleLabel.isHidden = true
@@ -237,6 +260,8 @@ public class IdentityView: UIView {
             subtitleLabel.isHidden = false
             subtitleLabel.text = viewModel.subtitle
         }
+
+        offlineButton.setTitle(viewModel.offlineButtonTitle, for: .normal)
 
         let showDescription = viewModel.description != nil && !hideDescription
         descriptionLabel.isHidden = !showDescription
@@ -276,7 +301,13 @@ public class IdentityView: UIView {
         })
     }
 
+    // MARK: - Actions
+
     @objc private func viewWasTapped() {
         delegate?.identityViewWasTapped(self)
+    }
+
+    @objc private func offlineButtonTapped() {
+        delegate?.identityViewDidTapOfflineButton()
     }
 }
