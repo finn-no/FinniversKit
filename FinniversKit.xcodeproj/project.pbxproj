@@ -222,8 +222,6 @@
 		4940480223CDC0F000ECBCFD /* ViewingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940480123CDC0F000ECBCFD /* ViewingCell.swift */; };
 		4940480523CDC57400ECBCFD /* ViewingsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940480423CDC57400ECBCFD /* ViewingsDemoView.swift */; };
 		4974725B239A48BF0058D7B0 /* SearchListEmptyDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974725A239A48BF0058D7B0 /* SearchListEmptyDemoView.swift */; };
-		4974725D239A49480058D7B0 /* SearchListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974725C239A49480058D7B0 /* SearchListEmptyView.swift */; };
-		4974725F239A49570058D7B0 /* SearchListEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974725E239A49570058D7B0 /* SearchListEmptyViewModel.swift */; };
 		49F114B22397F70E007D74EF /* SaveSearchPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F114B12397F70E007D74EF /* SaveSearchPromptView.swift */; };
 		49F114B623980235007D74EF /* SaveSearchPromptViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F114B523980234007D74EF /* SaveSearchPromptViewDemoView.swift */; };
 		559FD9BD2051684F00A101B0 /* BroadcastMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9BB205122C500A101B0 /* BroadcastMessageTests.swift */; };
@@ -240,6 +238,8 @@
 		6266C0752208235000FB8004 /* AdManagementDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6266C0742208235000FB8004 /* AdManagementDemoView.swift */; };
 		62AAB23A23278087007766E6 /* RadioButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AAB23923278087007766E6 /* RadioButtonTableViewCell.swift */; };
 		62AAB23C2327901D007766E6 /* RadioButtonCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AAB23B2327901D007766E6 /* RadioButtonCellDemoView.swift */; };
+		68AE0B39F77F665B42E71042 /* SearchListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974725C239A49480058D7B0 /* SearchListEmptyView.swift */; };
+		68AE0BE3E674E2F909CFF511 /* SearchListEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974725E239A49570058D7B0 /* SearchListEmptyViewModel.swift */; };
 		8908E83622BD0CA100ED671C /* MessageInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E83522BD0CA100ED671C /* MessageInputTextView.swift */; };
 		8908E84922C0C3C600ED671C /* MessageFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84722C0C2F900ED671C /* MessageFormViewController.swift */; };
 		8908E84D22C0D11400ED671C /* MessageFormToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84B22C0D10B00ED671C /* MessageFormToolbar.swift */; };
@@ -353,6 +353,8 @@
 		9BC33DE922D72293007CCD65 /* LoginEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DE722D721E6007CCD65 /* LoginEntryView.swift */; };
 		9BC33DEB22D76405007CCD65 /* LoginEntryDialogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DEA22D76405007CCD65 /* LoginEntryDialogueView.swift */; };
 		9BC33DED22D76D4F007CCD65 /* LoginEntryDemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DEC22D76D4F007CCD65 /* LoginEntryDemoData.swift */; };
+		9BC5F40924114085007D74AC /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC5F40824114085007D74AC /* ErrorView.swift */; };
+		9BC5F40C24114371007D74AC /* ErrorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC5F40B24114371007D74AC /* ErrorDemoView.swift */; };
 		9BCD171523CCBB680045BD61 /* CollapsibleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD171423CCBB680045BD61 /* CollapsibleContentView.swift */; };
 		9BCD171823CCBBD30045BD61 /* CollapsibleContentDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD171723CCBBD30045BD61 /* CollapsibleContentDemoView.swift */; };
 		9BCDFC7422E09DF700A80D7F /* KlimabroletActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCDFC7322E09DF700A80D7F /* KlimabroletActionsView.swift */; };
@@ -1032,6 +1034,8 @@
 		9BC33DE722D721E6007CCD65 /* LoginEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryView.swift; sourceTree = "<group>"; };
 		9BC33DEA22D76405007CCD65 /* LoginEntryDialogueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryDialogueView.swift; sourceTree = "<group>"; };
 		9BC33DEC22D76D4F007CCD65 /* LoginEntryDemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryDemoData.swift; sourceTree = "<group>"; };
+		9BC5F40824114085007D74AC /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		9BC5F40B24114371007D74AC /* ErrorDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDemoView.swift; sourceTree = "<group>"; };
 		9BCD171423CCBB680045BD61 /* CollapsibleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleContentView.swift; sourceTree = "<group>"; };
 		9BCD171723CCBBD30045BD61 /* CollapsibleContentDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleContentDemoView.swift; sourceTree = "<group>"; };
 		9BCDFC7322E09DF700A80D7F /* KlimabroletActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletActionsView.swift; sourceTree = "<group>"; };
@@ -2231,6 +2235,7 @@
 				CF87A851229C0C5700DA8243 /* ContactForm */,
 				CF15D9B0215B9453004F5F02 /* EasterEggs */,
 				44D912502077AC8A00486848 /* EmptyView */,
+				9BC5F4072411407B007D74AC /* ErrorView */,
 				CF2E46F0231968320085A591 /* FavoriteAdActions */,
 				CF164DD4231573F100250822 /* FavoriteAdCommentInput */,
 				9A37D4A128C47173977AAE19 /* FavoriteAdsList */,
@@ -2242,16 +2247,16 @@
 				44587010213FA344009187BE /* Login */,
 				9BC33DE422D7219F007CCD65 /* LoginEntryView */,
 				8908E83422BD0C8700ED671C /* MessageForm */,
-				DAA4F25023A2614800FA529C /* NotificationCenter */,
 				DA0F4E61239504D3003E93A4 /* MinFinn */,
+				DAA4F25023A2614800FA529C /* NotificationCenter */,
 				44D9124A2077AC8A00486848 /* Popup */,
 				44587013213FA344009187BE /* Register */,
 				43BACE6721117CF90052114C /* Review */,
-				F20450B223EC0CB5001F7370 /* TransactionView */,
 				91846C4822E735B60001410F /* SearchResultMapView */,
 				DAD6EB302369BCFC00968497 /* SettingDetailsView */,
 				43EA978021941E63003A548A /* SoldView */,
 				CF70B95023421E1B00B8A285 /* SplashView */,
+				F20450B223EC0CB5001F7370 /* TransactionView */,
 				F2597C72231D19B900BE74EC /* VerificationActionSheet */,
 			);
 			path = Fullscreen;
@@ -2916,6 +2921,22 @@
 				9BC33DEA22D76405007CCD65 /* LoginEntryDialogueView.swift */,
 			);
 			path = LoginEntryView;
+			sourceTree = "<group>";
+		};
+		9BC5F4072411407B007D74AC /* ErrorView */ = {
+			isa = PBXGroup;
+			children = (
+				9BC5F40824114085007D74AC /* ErrorView.swift */,
+			);
+			path = ErrorView;
+			sourceTree = "<group>";
+		};
+		9BC5F40A24114363007D74AC /* ErrorView */ = {
+			isa = PBXGroup;
+			children = (
+				9BC5F40B24114371007D74AC /* ErrorDemoView.swift */,
+			);
+			path = ErrorView;
 			sourceTree = "<group>";
 		};
 		9BCD171323CCBB590045BD61 /* CollapsibleContentView */ = {
@@ -3808,6 +3829,7 @@
 				CF87A858229C0C6600DA8243 /* ContactForm */,
 				CF8F022B21DCC74F004C4042 /* EasterEggs */,
 				CF8F023521DCC81E004C4042 /* EmptyView */,
+				9BC5F40A24114363007D74AC /* ErrorView */,
 				CF164D18230FFEA800250822 /* FavoriteAdActions */,
 				CF164DD12315738800250822 /* FavoriteAdCommentInput */,
 				9A37DB96525D383D10C6A008 /* FavoriteAdsListView */,
@@ -3819,15 +3841,15 @@
 				CF8F022F21DCC788004C4042 /* Login */,
 				9BC33DE122D7192F007CCD65 /* LoginEntry */,
 				8908E85822C0E5F000ED671C /* MessageForm */,
-				DAA4F25323A2616400FA529C /* NotificationCenter */,
 				DA0F4E6623952216003E93A4 /* MinFinn */,
+				DAA4F25323A2616400FA529C /* NotificationCenter */,
 				CF8F023321DCC7B9004C4042 /* Popup */,
 				CF8F023021DCC793004C4042 /* Register */,
-				F20450B123EC0C95001F7370 /* TransactionView */,
 				91846C4B22E736750001410F /* SearchResultMapView */,
 				DAD6EB332369BD2300968497 /* SettingDetailsView */,
 				CF8F023621DCC830004C4042 /* SoldView */,
 				CF70B95323421E8800B8A285 /* SplashView */,
+				F20450B123EC0C95001F7370 /* TransactionView */,
 				F253C50B2313F948008175FD /* VerificationView */,
 			);
 			path = Fullscreen;
@@ -4893,7 +4915,6 @@
 				DAD6EB2F236991EA00968497 /* SettingsViewDemoView.swift in Sources */,
 				44D912732077AD1200486848 /* EmptyViewDemoView.swift in Sources */,
 				44EBDA4F2347465C00F95F2B /* TestCheck.swift in Sources */,
-				4974725D239A49480058D7B0 /* SearchListEmptyView.swift in Sources */,
 				4423F227209CB24500B81D68 /* MiniToastView.swift in Sources */,
 				44AEFC2322E722FC00D3C307 /* RemoteImageCellDemoView.swift in Sources */,
 				55C5B27E203EB9DA007D7277 /* BroadcastDemoView.swift in Sources */,
@@ -4986,6 +5007,7 @@
 				441FE43F209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift in Sources */,
 				14C6F7D9212324D600A7230C /* FavoritesListViewDemoView.swift in Sources */,
 				14DC127221593B0500326DC3 /* HorizontalSlideDemoViewController.swift in Sources */,
+				9BC5F40C24114371007D74AC /* ErrorDemoView.swift in Sources */,
 				44A0F0AB22E1FB6800BCCF4C /* CornerAnchoringViewController.swift in Sources */,
 				F20450B823EC0E24001F7370 /* TransactionDemoViewDefaultData.swift in Sources */,
 				CF9AC8BC21BECE13005A0D2F /* SnowGlobeDemoView.swift in Sources */,
@@ -5019,7 +5041,6 @@
 				F2C3E96322CB688800CED7E0 /* QuestionnaireDemoView.swift in Sources */,
 				449C60B8234DD8BC00C51A63 /* BasicTableViewDemoView.swift in Sources */,
 				8908E85A22C0E5FF00ED671C /* MessageFormDemoViewModel.swift in Sources */,
-				4974725F239A49570058D7B0 /* SearchListEmptyViewModel.swift in Sources */,
 				441FE439209A254200B04EF1 /* AdsGridViewDemoView.swift in Sources */,
 				4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */,
 				9BC33DE322D71986007CCD65 /* LoginEntryViewDemoViewController.swift in Sources */,
@@ -5358,6 +5379,7 @@
 				441FE434209A24E500B04EF1 /* AdsGridView.swift in Sources */,
 				468F59F2220B20EA001CC0C5 /* MarketsGridViewFlowLayout.swift in Sources */,
 				9B06096D23F14B80005CB592 /* CompactView.swift in Sources */,
+				9BC5F40924114085007D74AC /* ErrorView.swift in Sources */,
 				CFCED8E522CF71AC0049A3A0 /* FavoriteFoldersFooterView.swift in Sources */,
 				44C6CE44209CABFE00929269 /* FinniversImageAsset.swift in Sources */,
 				44587019213FA344009187BE /* RegisterViewModel.swift in Sources */,
@@ -5512,6 +5534,8 @@
 				9A37D44ADD20BEDD3F754D62 /* ContractActionViewModel.swift in Sources */,
 				9A37DB164E9BC6E1EBB22504 /* ObjectPageTitleView.swift in Sources */,
 				9A37D06D45CCD48B76F0BAEF /* RibbonViewModel.swift in Sources */,
+				68AE0B39F77F665B42E71042 /* SearchListEmptyView.swift in Sources */,
+				68AE0BE3E674E2F909CFF511 /* SearchListEmptyViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

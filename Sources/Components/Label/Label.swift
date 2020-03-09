@@ -8,7 +8,7 @@ public class Label: UILabel {
 
     // MARK: - Public properties
 
-    public var isTextCopyable = false
+    public private(set) var isTextCopyable = false
 
     // MARK: - Setup
 
@@ -30,7 +30,6 @@ public class Label: UILabel {
     }
 
     private func setup() {
-        isUserInteractionEnabled = true
         addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:))))
 
         isAccessibilityElement = true
@@ -39,6 +38,13 @@ public class Label: UILabel {
         font = style?.font
         textColor = .textPrimary
         adjustsFontForContentSizeCategory = true
+    }
+
+    // MARK: - Public methods
+
+    public func setTextCopyable(_ isTextCopyable: Bool) {
+        self.isTextCopyable = isTextCopyable
+        isUserInteractionEnabled = isTextCopyable
     }
 
     // MARK: - Dependency injection
@@ -64,6 +70,6 @@ extension Label {
 
         becomeFirstResponder()
         UIMenuController.shared.setTargetRect(bounds, in: self)
-        UIMenuController.shared.setMenuVisible(true, animated:true)
+        UIMenuController.shared.setMenuVisible(true, animated: true)
     }
 }

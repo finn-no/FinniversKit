@@ -40,6 +40,11 @@ open class RadioButtonTableViewCell: BasicTableViewCell {
     open func configure(with viewModel: SelectableTableViewCellViewModel) {
         super.configure(with: viewModel)
         separatorInset = .leadingInset(56)
-        radioButton.animateSelection(selected: viewModel.isSelected)
+        radioButton.isHighlighted = viewModel.isSelected
+    }
+    
+    open override func prepareForReuse() {
+        super.prepareForReuse()
+        radioButton.isHighlighted = false
     }
 }

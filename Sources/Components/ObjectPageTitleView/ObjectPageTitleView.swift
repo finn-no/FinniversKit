@@ -9,12 +9,12 @@ public class ObjectPageTitleView: UIView {
     // MARK: - Public properties
 
     public var isTitleTextCopyable: Bool {
-        set { titleLabel.isTextCopyable = newValue }
+        set { titleLabel.setTextCopyable(newValue) }
         get { titleLabel.isTextCopyable }
     }
 
     public var isSubtitleTextCopyable: Bool {
-        set { subtitleLabel.isTextCopyable = newValue }
+        set { subtitleLabel.setTextCopyable(newValue) }
         get { subtitleLabel.isTextCopyable }
     }
 
