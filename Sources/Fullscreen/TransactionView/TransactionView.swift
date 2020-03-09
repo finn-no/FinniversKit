@@ -113,11 +113,11 @@ private extension TransactionView {
                 scrollableContentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
                 scrollableContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
-                headerView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .spacingXL),
+                headerView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .spacingL),
                 headerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
                 headerView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: .spacingS),
 
-                titleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+                titleLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .spacingXL),
                 titleLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
                 titleLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: .spacingM),
                 titleLabel.heightAnchor.constraint(equalToConstant: 40),
