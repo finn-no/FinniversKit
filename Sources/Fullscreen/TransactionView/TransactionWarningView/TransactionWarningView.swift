@@ -36,15 +36,15 @@ public class TransactionWarningView: UIView {
 
     private lazy var imageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
-        imageView.layer.cornerRadius = .spacingM
         imageView.backgroundColor = .clear
-        imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = .spacingM
         return imageView
     }()
 
-    private var defaultImageSize: CGFloat = UIDevice.isIPad() ? 128 : 64
-    private var loadingColor: UIColor? = .toothPaste
+    private static var defaultImageSize: CGFloat = 128
+    private var loadingColor: UIColor = .toothPaste
     private var fallbackImage = UIImage(named: .noImage)
 
     private var model: TransactionWarningViewModel
@@ -67,7 +67,7 @@ public class TransactionWarningView: UIView {
 
         imageView.loadImage(
             for: imagePath,
-            imageWidth: defaultImageSize,
+            imageWidth: TransactionWarningView.defaultImageSize,
             loadingColor: loadingColor,
             fallbackImage: fallbackImage
         )
@@ -97,10 +97,11 @@ public class TransactionWarningView: UIView {
             messageView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             messageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
 
-            imageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: .spacingXS),
-            imageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingM),
+            imageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: .spacingS),
+            imageView.widthAnchor.constraint(equalToConstant: TransactionWarningView.defaultImageSize),
+//            imageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingXXL),
             imageView.topAnchor.constraint(equalTo: titleLabel.topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.spacingL),
+            imageView.bottomAnchor.constraint(equalTo: messageView.bottomAnchor),
 
             bottomAnchor.constraint(equalTo: messageView.bottomAnchor, constant: .spacingM),
         ])
