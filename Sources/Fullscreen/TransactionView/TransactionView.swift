@@ -107,7 +107,6 @@ private extension TransactionView {
         ])
 
         setupHeaderView()
-        setupTransactionWarningView()
 
         for index in 0..<numberOfSteps {
             guard let model = dataSource?.transactionViewModelForIndex(self, forStep: index) else { return }
@@ -136,9 +135,11 @@ private extension TransactionView {
                 equalTo: headerView!.bottomAnchor,
                 constant: .spacingM)
         }
+
+        setupWarningView()
     }
 
-    func setupTransactionWarningView() {
+    func setupWarningView() {
         if let warningViewModel = model?.warning {
             warningView = TransactionWarningView(withAutoLayout: true, model: warningViewModel)
             warningView?.dataSource = self
