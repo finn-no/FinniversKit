@@ -32,6 +32,10 @@ public protocol UserAdTableViewCellActionViewModel {
     var isExternalAction: Bool { get }
 }
 
+public extension UserAdTableViewCellActionViewModel {
+    var isExternalAction: Bool { false }
+}
+
 public protocol UserAdTableViewCellRatingViewModel {
     var title: String { get }
     var feedbackText: String { get }
