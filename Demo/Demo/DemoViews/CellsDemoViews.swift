@@ -43,7 +43,7 @@ public enum CellsDemoViews: String, CaseIterable {
         case .userAdCell:
             return DemoViewController<UserAdCellDemoView>(dismissType: .dismissButton)
         case .userAdEmphasizedActionCell:
-            return DemoViewController<UserAdEmphasizedActionCellDemoView>(dismissType: .dismissButton)
+            return DemoViewController<UserAdEmphasizedActionCellDemoView>(dismissType: .doubleTap)
         }
     }
 }
