@@ -11,13 +11,13 @@ public class TransactionHeaderView: UIView {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
-        label.numberOfLines = 0
+        label.numberOfLines = 3
         return label
      }()
 
     private lazy var detailLabel: Label = {
         let label = Label(style: .caption, withAutoLayout: true)
-        label.numberOfLines = 0
+        label.numberOfLines = 1
         return label
     }()
 
