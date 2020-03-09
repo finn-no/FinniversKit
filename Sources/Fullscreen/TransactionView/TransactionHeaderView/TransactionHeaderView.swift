@@ -30,8 +30,10 @@ public class TransactionHeaderView: UIView {
         return imageView
      }()
 
+    private static var imageUrl = "https://images.finncdn.no/dynamic/default"
     private static var defaultImageSize: CGFloat = UIDevice.isIPad() ? 256 : 128
-    private var loadingColor: UIColor? = .toothPaste
+
+    private var loadingColor: UIColor? = .bgSecondary
     private var fallbackImage = UIImage(named: .noImage)
 
     private var model: TransactionHeaderViewModel
@@ -49,7 +51,7 @@ public class TransactionHeaderView: UIView {
             return
         }
 
-        let url = "https://images.finncdn.no/dynamic/default/\(imagePath)"
+        let url = "\(TransactionHeaderView.imageUrl)/\(imagePath)"
         imageView.loadImage(
             for: url,
             imageWidth: TransactionHeaderView.defaultImageSize,

@@ -13,7 +13,7 @@ public class TransactionWarningView: UIView {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
-        label.textColor = .licorice
+        label.textColor = .textToast
         label.numberOfLines = 0
         return label
     }()
@@ -22,7 +22,7 @@ public class TransactionWarningView: UIView {
         let view = UITextView(withAutoLayout: true)
         let style = Label.Style.caption
         view.font = style.font
-        view.textColor = .licorice
+        view.textColor = .textToast
         view.backgroundColor = .clear
         view.contentInset = .leadingInset(0)
         view.isScrollEnabled = false
@@ -44,7 +44,7 @@ public class TransactionWarningView: UIView {
     }()
 
     private static var defaultImageSize: CGFloat = 128
-    private var loadingColor: UIColor = .toothPaste
+    private var loadingColor: UIColor = .accentToothpaste
     private var fallbackImage = UIImage(named: .noImage)
 
     private var model: TransactionWarningViewModel
@@ -99,7 +99,6 @@ public class TransactionWarningView: UIView {
 
             imageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: .spacingS),
             imageView.widthAnchor.constraint(equalToConstant: TransactionWarningView.defaultImageSize),
-//            imageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingXXL),
             imageView.topAnchor.constraint(equalTo: titleLabel.topAnchor),
             imageView.bottomAnchor.constraint(equalTo: messageView.bottomAnchor),
 

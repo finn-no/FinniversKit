@@ -101,7 +101,7 @@ private extension TransactionView {
         scrollableContentView.fillInSuperview()
         scrollableContentView.addSubview(verticalStackView)
 
-        if  let headerViewModel = model?.header {
+        if let headerViewModel = model?.header {
             let headerView = TransactionHeaderView(withAutoLayout: true, model: headerViewModel)
             headerView.dataSource = self
             headerView.loadImage()
