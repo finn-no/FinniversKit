@@ -145,8 +145,8 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.notificationCenterView)
     }
 
-    func testTransactionStepView() {
-        snapshot(.transactionStepView)
+    func testTransactionView() {
+        snapshot(.transactionView)
     }
 
     func testErrorView() {
