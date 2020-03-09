@@ -34,6 +34,16 @@ public class TransactionView: UIView {
 
     // MARK: - UIView properties
 
+    private var headerView: TransactionHeaderView?
+    private var warningView: TransactionWarningView?
+
+    private var stepDots = [TransactionStepDot]()
+    private var connectors = [TransactionStepDotConnector]()
+
+    private var verticalStackViewLeadingAnchor: NSLayoutConstraint?
+    private var verticalStackViewTopAnchor: NSLayoutConstraint?
+    private var verticalStackViewBottomAnchor: NSLayoutConstraint?
+
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
         let refreshControl = RefreshControl(frame: .zero)
@@ -46,8 +56,6 @@ public class TransactionView: UIView {
 
     private lazy var scrollableContentView = UIView(withAutoLayout: true)
 
-    private lazy var titleLabel = Label(style: .title1, withAutoLayout: true)
-
     private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
@@ -56,13 +64,6 @@ public class TransactionView: UIView {
         stackView.spacing = .spacingM
         return stackView
     }()
-
-    private var stepDots = [TransactionStepDot]()
-    private var connectors = [TransactionStepDotConnector]()
-
-    private var verticalStackViewLeadingAnchor: NSLayoutConstraint?
-    private var verticalStackViewTopAnchor: NSLayoutConstraint?
-    private var verticalStackViewBottomAnchor: NSLayoutConstraint?
 
     // MARK: - Init
 
@@ -78,7 +79,6 @@ public class TransactionView: UIView {
         self.numberOfSteps = dataSource.transactionViewNumberOfSteps(self)
         self.currentStep = dataSource.transactionViewCurrentStep(self)
 
-        titleLabel.text = model.title
         translatesAutoresizingMaskIntoConstraints = !autoLayout
 
         setup()
@@ -101,40 +101,12 @@ private extension TransactionView {
         scrollableContentView.fillInSuperview()
         scrollableContentView.addSubview(verticalStackView)
 
-        if let headerViewModel = model?.header {
-            let headerView = TransactionHeaderView(withAutoLayout: true, model: headerViewModel)
-            headerView.dataSource = self
-            headerView.loadImage()
+        NSLayoutConstraint.activate([
+            scrollableContentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
+            scrollableContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+        ])
 
-            scrollableContentView.addSubview(headerView)
-            scrollableContentView.addSubview(titleLabel)
-
-            NSLayoutConstraint.activate([
-                scrollableContentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
-                scrollableContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-
-                headerView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .spacingL),
-                headerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-                headerView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: .spacingS),
-
-                titleLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .spacingXL),
-                titleLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-                titleLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: .spacingM),
-                titleLabel.heightAnchor.constraint(equalToConstant: 40),
-            ])
-        } else {
-            scrollableContentView.addSubview(titleLabel)
-            NSLayoutConstraint.activate([
-                scrollableContentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
-                scrollableContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-
-                titleLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .spacingXL),
-                titleLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-                titleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor),
-                titleLabel.heightAnchor.constraint(equalToConstant: 40),
-            ])
-        }
-
+        setupHeaderView()
         setupTransactionWarningView()
 
         for index in 0..<numberOfSteps {
@@ -146,23 +118,55 @@ private extension TransactionView {
         setupVerticalStackViewContraints()
     }
 
-    func setupTransactionWarningView() {
-        if let warningViewModel = model?.warning {
-            let warningView = TransactionWarningView(withAutoLayout: true, model: warningViewModel)
-            warningView.dataSource = self
-            warningView.loadImage()
+    func setupHeaderView() {
+        if let headerViewModel = model?.header {
+            headerView = TransactionHeaderView(withAutoLayout: true, model: headerViewModel)
+            headerView?.dataSource = self
+            headerView?.loadImage()
 
-            scrollableContentView.addSubview(warningView)
+            scrollableContentView.addSubview(headerView!)
 
             NSLayoutConstraint.activate([
-                warningView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: -.spacingS),
-                warningView.trailingAnchor.constraint(equalTo: verticalStackView.trailingAnchor),
-                warningView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
+                headerView!.leadingAnchor.constraint(equalTo: scrollableContentView.leadingAnchor, constant: .spacingL),
+                headerView!.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor),
+                headerView!.topAnchor.constraint(equalTo: scrollableContentView.topAnchor, constant: .spacingS),
             ])
 
-            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: warningView.bottomAnchor, constant: .spacingM)
-        } else {
-            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXL)
+            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(
+                equalTo: headerView!.bottomAnchor,
+                constant: .spacingM)
+        }
+    }
+
+    func setupTransactionWarningView() {
+        if let warningViewModel = model?.warning {
+            warningView = TransactionWarningView(withAutoLayout: true, model: warningViewModel)
+            warningView?.dataSource = self
+            warningView?.loadImage()
+
+            scrollableContentView.addSubview(warningView!)
+
+            if let header = headerView {
+                verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(
+                    equalTo: warningView!.bottomAnchor,
+                    constant: .spacingM)
+
+                NSLayoutConstraint.activate([
+                    warningView!.leadingAnchor.constraint(equalTo: scrollableContentView.leadingAnchor, constant: .spacingM),
+                    warningView!.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.spacingM),
+                    warningView!.topAnchor.constraint(equalTo: header.bottomAnchor, constant: .spacingM),
+                ])
+            } else {
+                NSLayoutConstraint.activate([
+                    warningView!.leadingAnchor.constraint(equalTo: scrollableContentView.leadingAnchor, constant: .spacingM),
+                    warningView!.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.spacingM),
+                    warningView!.topAnchor.constraint(equalTo: scrollableContentView.topAnchor, constant: .spacingM),
+                ])
+            }
+
+            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(
+                equalTo: warningView!.bottomAnchor,
+                constant: .spacingM)
         }
     }
 
@@ -185,7 +189,7 @@ private extension TransactionView {
 
         scrollableContentView.addSubview(stepDot)
         NSLayoutConstraint.activate([
-            stepDot.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            stepDot.leadingAnchor.constraint(equalTo: scrollableContentView.leadingAnchor, constant: .spacingXL),
             stepDot.topAnchor.constraint(equalTo: currentStepView.topAnchor),
         ])
 
@@ -213,7 +217,9 @@ private extension TransactionView {
             let lastTransactionStepView = verticalStackView.arrangedSubviews.last
         else { return }
 
-        verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(equalTo: firstStepDot.trailingAnchor, constant: .spacingS)
+        verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(
+            equalTo: firstStepDot.trailingAnchor, constant: .spacingS)
+
         verticalStackViewBottomAnchor = verticalStackView.bottomAnchor.constraint(equalTo: lastTransactionStepView.bottomAnchor)
 
         NSLayoutConstraint.activate([
@@ -224,7 +230,8 @@ private extension TransactionView {
         ])
 
         if !UIDevice.isIPad() {
-            scrollableContentView.bottomAnchor.constraint(equalTo: verticalStackView.bottomAnchor, constant: .spacingXL).isActive = true
+            scrollableContentView.bottomAnchor.constraint(
+                equalTo: verticalStackView.bottomAnchor, constant: .spacingXL).isActive = true
         }
     }
 
