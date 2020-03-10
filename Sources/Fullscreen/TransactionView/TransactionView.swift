@@ -123,16 +123,18 @@ private extension TransactionView {
             headerView?.dataSource = self
             headerView?.loadImage()
 
-            scrollableContentView.addSubview(headerView!)
+            guard let view = headerView else { return }
+
+            scrollableContentView.addSubview(view)
 
             NSLayoutConstraint.activate([
-                headerView!.leadingAnchor.constraint(equalTo: scrollableContentView.leadingAnchor, constant: .spacingL),
-                headerView!.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor),
-                headerView!.topAnchor.constraint(equalTo: scrollableContentView.topAnchor, constant: .spacingS),
+                view.leadingAnchor.constraint(equalTo: scrollableContentView.leadingAnchor, constant: .spacingL),
+                view.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor),
+                view.topAnchor.constraint(equalTo: scrollableContentView.topAnchor, constant: .spacingS),
             ])
 
             verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(
-                equalTo: headerView!.bottomAnchor,
+                equalTo: view.bottomAnchor,
                 constant: .spacingM)
         }
 
@@ -145,28 +147,30 @@ private extension TransactionView {
             warningView?.dataSource = self
             warningView?.loadImage()
 
-            scrollableContentView.addSubview(warningView!)
+            guard let view = warningView else { return }
+
+            scrollableContentView.addSubview(view)
 
             if let header = headerView {
                 verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(
-                    equalTo: warningView!.bottomAnchor,
+                    equalTo: view.bottomAnchor,
                     constant: .spacingM)
 
                 NSLayoutConstraint.activate([
-                    warningView!.leadingAnchor.constraint(equalTo: scrollableContentView.leadingAnchor, constant: .spacingM),
-                    warningView!.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.spacingM),
-                    warningView!.topAnchor.constraint(equalTo: header.bottomAnchor, constant: .spacingM),
+                    view.leadingAnchor.constraint(equalTo: scrollableContentView.leadingAnchor, constant: .spacingM),
+                    view.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.spacingM),
+                    view.topAnchor.constraint(equalTo: header.bottomAnchor, constant: .spacingM),
                 ])
             } else {
                 NSLayoutConstraint.activate([
-                    warningView!.leadingAnchor.constraint(equalTo: scrollableContentView.leadingAnchor, constant: .spacingM),
-                    warningView!.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.spacingM),
-                    warningView!.topAnchor.constraint(equalTo: scrollableContentView.topAnchor, constant: .spacingM),
+                    view.leadingAnchor.constraint(equalTo: scrollableContentView.leadingAnchor, constant: .spacingM),
+                    view.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.spacingM),
+                    view.topAnchor.constraint(equalTo: scrollableContentView.topAnchor, constant: .spacingM),
                 ])
             }
 
             verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(
-                equalTo: warningView!.bottomAnchor,
+                equalTo: view.bottomAnchor,
                 constant: .spacingM)
         }
     }
@@ -223,11 +227,16 @@ private extension TransactionView {
 
         verticalStackViewBottomAnchor = verticalStackView.bottomAnchor.constraint(equalTo: lastTransactionStepView.bottomAnchor)
 
+        guard let leadingAnchor = verticalStackViewLeadingAnchor,
+              let topAnchor = verticalStackViewTopAnchor,
+              let bottomAnchor = verticalStackViewBottomAnchor
+        else { return }
+
         NSLayoutConstraint.activate([
-            verticalStackViewLeadingAnchor!,
+            leadingAnchor,
             verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.spacingXL),
-            verticalStackViewTopAnchor!,
-            verticalStackViewBottomAnchor!,
+            topAnchor,
+            bottomAnchor,
         ])
 
         if !UIDevice.isIPad() {
