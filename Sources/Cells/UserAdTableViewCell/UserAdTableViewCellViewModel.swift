@@ -29,6 +29,11 @@ public protocol UserAdTableViewCellActionViewModel {
     var description: String { get }
     var buttonTitle: String { get }
     var cancelButtonTitle: String? { get }
+    var isExternalAction: Bool { get }
+}
+
+public extension UserAdTableViewCellActionViewModel {
+    var isExternalAction: Bool { false }
 }
 
 public protocol UserAdTableViewCellRatingViewModel {
