@@ -44,6 +44,7 @@ public class UserAdEmphasizedActionTableViewCell: UITableViewCell {
     // MARK: - Internal properties
 
     private static let cornerRadius: CGFloat = 12
+    private static let actionButtonIconWidth: CGFloat = 12
 
     private lazy var contentStack: UIStackView = {
         let stack = UIStackView(withAutoLayout: true)
@@ -93,6 +94,12 @@ public class UserAdEmphasizedActionTableViewCell: UITableViewCell {
         button.addTarget(self, action: #selector(cancelButtonTapped(_:)), for: .touchUpInside)
         button.isHidden = true
         return button
+    }()
+
+    private lazy var actionButtonIcon: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.image = UIImage(named: .webview)
+        return imageView
     }()
 
     private lazy var gradientWrapper: UIView = {
@@ -179,6 +186,26 @@ public class UserAdEmphasizedActionTableViewCell: UITableViewCell {
         ])
     }
 
+    private func setupActionButtonIcon() {
+        let margins = UIEdgeInsets(
+            top: .spacingS,
+            leading: .spacingM,
+            bottom: .spacingS,
+            trailing: .spacingM + UserAdEmphasizedActionTableViewCell.actionButtonIconWidth
+        )
+
+        actionButton.style = actionButton.style.overrideStyle(margins: margins)
+
+        actionButton.addSubview(actionButtonIcon)
+
+        NSLayoutConstraint.activate([
+            actionButtonIcon.widthAnchor.constraint(equalToConstant: UserAdEmphasizedActionTableViewCell.actionButtonIconWidth),
+            actionButtonIcon.heightAnchor.constraint(equalToConstant: UserAdEmphasizedActionTableViewCell.actionButtonIconWidth),
+            actionButtonIcon.trailingAnchor.constraint(equalTo: actionButton.trailingAnchor, constant: -.spacingS - actionButton.style.borderWidth),
+            actionButtonIcon.centerYAnchor.constraint(equalTo: actionButton.centerYAnchor)
+        ])
+    }
+
     // MARK: - Superclass Overrides
 
     public override func layoutSubviews() {
@@ -201,6 +228,8 @@ public class UserAdEmphasizedActionTableViewCell: UITableViewCell {
     public func configure(with model: UserAdTableViewCellViewModel) {
         self.model = model
 
+        setupView()
+
         accessibilityLabel = model.accessibilityLabel
 
         userAdDetailsView.configure(with: .default, model: model)
@@ -212,11 +241,13 @@ public class UserAdEmphasizedActionTableViewCell: UITableViewCell {
         actionButton.setTitle(model.actionViewModel?.buttonTitle, for: .normal)
         cancelButton.setTitle(model.actionViewModel?.cancelButtonTitle, for: .normal)
 
-        if model.actionViewModel?.cancelButtonTitle != nil {
-            cancelButton.isHidden = false
-        }
+        if let actionViewModel = model.actionViewModel {
+            cancelButton.isHidden = actionViewModel.cancelButtonTitle == nil
 
-        setupView()
+            if actionViewModel.isExternalAction {
+                setupActionButtonIcon()
+            }
+        }
     }
 
     // MARK: - Selectors
