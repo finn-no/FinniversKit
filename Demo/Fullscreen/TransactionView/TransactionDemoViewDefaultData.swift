@@ -13,9 +13,9 @@ public struct TransactionModel: TransactionViewModel {
 
 public struct TransactionHeaderModel: TransactionHeaderViewModel {
     public var adId: String
-    public var title: String
+    public var title: String?
     public var registrationNumber: String?
-    public var imageUrl: String?
+    public var imagePath: String?
 }
 
 public struct TransactionWarningModel: TransactionWarningViewModel {

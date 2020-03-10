@@ -10,7 +10,7 @@ extension TransactionDemoViewDefaultData {
             adId: "171529672",
             title: "BMW i3",
             registrationNumber: "CF40150",
-            imageUrl: "2020/2/vertical-0/26/2/171/529/672_525135443.jpg"),
+            imagePath: "2020/2/vertical-0/26/2/171/529/672_525135443.jpg"),
 
         steps: [
             TransactionStepModel(
