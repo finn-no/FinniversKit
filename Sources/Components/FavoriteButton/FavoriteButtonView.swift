@@ -4,20 +4,14 @@
 
 import UIKit
 
-public struct FavoriteButtonViewModel {
-    let title: String
-    let subtitle: String?
-    let isFavorited: Bool
-
-    public init(title: String, subtitle: String?, isFavorited: Bool) {
-        self.title = title
-        self.subtitle = subtitle
-        self.isFavorited = isFavorited
-    }
+public protocol FavoriteButtonViewModel {
+    var title: String { get }
+    var subtitle: String? { get }
+    var isFavorite: Bool { get }
 }
 
 public protocol FavoriteButtonViewDelegate: AnyObject {
-    func favoriteButtonDidSelect(_ button: FavoriteButtonView)
+    func favoriteButtonDidSelect(_ favoriteButtonView: FavoriteButtonView, button: Button, viewModel: FavoriteButtonViewModel)
 }
 
 public class FavoriteButtonView: UIView {
@@ -28,6 +22,7 @@ public class FavoriteButtonView: UIView {
 
     // MARK: - Private properties
 
+    private var viewModel: FavoriteButtonViewModel?
     private let buttonStyle = Button.Style.default.overrideStyle(borderColor: .btnDisabled)
 
     private lazy var stackView: UIStackView = {
@@ -78,19 +73,22 @@ public class FavoriteButtonView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(withTitle title: String, subtitle: String?, isFavorited: Bool) {
-        button.setTitle(title, for: .normal)
+    public func configure(with viewModel: FavoriteButtonViewModel) {
+        self.viewModel = viewModel
 
-        subtitleLabel.text = subtitle
-        subtitleLabel.isHidden = subtitle?.isEmpty ?? true
+        button.setTitle(viewModel.title, for: .normal)
 
-        let buttonImage = isFavorited ? UIImage(named: .favouriteAdded) : UIImage(named: .favoriteAdd)
+        subtitleLabel.text = viewModel.subtitle
+        subtitleLabel.isHidden = viewModel.subtitle?.isEmpty ?? true
+
+        let buttonImage = viewModel.isFavorite ? UIImage(named: .favouriteAdded) : UIImage(named: .favoriteAdd)
         button.setImage(buttonImage, for: .normal)
     }
 
     // MARK: - Private methods
 
     @objc private func handleButtonTap() {
-        delegate?.favoriteButtonDidSelect(self)
+        guard let viewModel = viewModel else { return }
+        delegate?.favoriteButtonDidSelect(self, button: button, viewModel: viewModel)
     }
 }
