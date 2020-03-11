@@ -27,7 +27,7 @@ public struct TransactionWarningModel: TransactionWarningViewModel {
 public struct TransactionStepModel: TransactionStepViewModel {
     public var state: TransactionStepViewState
     public var title: String
-    public var body: String?
+    public var body: NSAttributedString?
     public var primaryButton: TransactionStepPrimaryButtonViewModel?
     public var detail: String?
 }

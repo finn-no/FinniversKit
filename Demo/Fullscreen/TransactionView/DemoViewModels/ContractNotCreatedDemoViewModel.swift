@@ -2,6 +2,8 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
+import Foundation.NSString
+
 extension TransactionDemoViewDefaultData {
     static var ContractNotCreatedDemoViewModel = TransactionModel(
         title: "Salgsprosess",
@@ -25,7 +27,7 @@ extension TransactionDemoViewDefaultData {
             TransactionStepModel(
                 state: .active,
                 title: "Kontrakt",
-                body: "Når du har funnet en kjøper er det neste steget å skrive en kontrakt.",
+                body: NSAttributedString(string: "Når du har funnet en kjøper er det neste steget å skrive en kontrakt."),
                 primaryButton: TransactionStepPrimaryButtonModel(
                     text: "Opprett digital kontrakt",
                     style: "call_to_action",
@@ -34,16 +36,16 @@ extension TransactionDemoViewDefaultData {
             TransactionStepModel(
                 state: .notStarted,
                 title: "Betaling",
-                body: "Dere kan betale trygt gjennom FINN ved å velge det i kontrakten."),
+                body: NSAttributedString(string: "Dere kan betale trygt gjennom FINN ved å velge det i kontrakten.")),
 
             TransactionStepModel(
                 state: .notStarted,
                 title: "Overlevering",
-                body: "<p>Velger dere å betale gjennom FINN, må overleveringen skje innen 7 dager etter kjøper har betalt.</p><p>Registrering av eierskiftet bør gjøres når dere møtes for overlevering.</p>"),
+                body: NSAttributedString(string: "<p>Velger dere å betale gjennom FINN, må overleveringen skje innen 7 dager etter kjøper har betalt.</p><p>Registrering av eierskiftet bør gjøres når dere møtes for overlevering.</p>")),
 
             TransactionStepModel(
                 state: .notStarted,
                 title: "Gratulerer med salget!",
-                body: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før».")
+                body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før»."))
     ])
 }

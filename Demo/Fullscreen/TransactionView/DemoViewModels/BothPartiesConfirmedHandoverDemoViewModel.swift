@@ -2,6 +2,8 @@
 //  Created by Saleh-Jan, Robin on 28/02/2020.
 //
 
+import Foundation.NSString
+
 extension TransactionDemoViewDefaultData {
     static var BothPartiesConfirmedHandoverDemoViewModel = TransactionModel(
         title: "Salgsprosess",
@@ -29,7 +31,7 @@ extension TransactionDemoViewDefaultData {
             TransactionStepModel(
                 state: .completed,
                 title: "Kontrakt",
-                body: "Begge har signert kontrakten.",
+                body: NSAttributedString(string: "Begge har signert kontrakten."),
                 primaryButton: TransactionStepPrimaryButtonModel(
                     text: "Gå til kontrakt",
                     style: "flat",
@@ -39,18 +41,18 @@ extension TransactionDemoViewDefaultData {
             TransactionStepModel(
                 state: .completed,
                 title: "Betaling",
-                body: "Kjøper betalte 1. februar 2020.",
+                body: NSAttributedString(string: "Kjøper betalte 1. februar 2020."),
                 detail: "Utbetalingen starter først når begge har bekreftet at overleveringen har skjedd."),
 
             TransactionStepModel(
                 state: .completed,
                 title: "Overlevering",
-                body: "Dere har bekreftet at overleveringen har skjedd."),
+                body: NSAttributedString(string: "Dere har bekreftet at overleveringen har skjedd.")),
 
             TransactionStepModel(
                 state: .completed,
                 title: "Gratulerer med salget!",
-                body: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før».",
+                body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før»."),
                 detail: "Det kan ta noen dager før pengene dukker opp på kontoen din.")
     ])
 }

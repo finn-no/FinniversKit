@@ -2,6 +2,8 @@
 //  Created by Saleh-Jan, Robin on 28/02/2020.
 //
 
+import Foundation.NSString
+
 extension TransactionDemoViewDefaultData {
     static var BothPartiesSignedDemoViewModel = TransactionModel(
         title: "Salgsprosess",
@@ -29,7 +31,7 @@ extension TransactionDemoViewDefaultData {
             TransactionStepModel(
                 state: .completed,
                 title: "Kontrakt",
-                body: "Begge har signert kontrakten.",
+                body: NSAttributedString(string: "Begge har signert kontrakten."),
                 primaryButton: TransactionStepPrimaryButtonModel(
                     text: "Gå til kontrakt",
                     style: "flat",
@@ -39,7 +41,7 @@ extension TransactionDemoViewDefaultData {
             TransactionStepModel(
                 state: .active,
                 title: "Betaling",
-                body: "Før kjøper kan overføre pengene, må du forberede betalingen.",
+                body: NSAttributedString(string: "Før kjøper kan overføre pengene, må du forberede betalingen."),
                 primaryButton: TransactionStepPrimaryButtonModel(
                     text: "Forbered betaling",
                     style: "call_to_action",
@@ -49,11 +51,11 @@ extension TransactionDemoViewDefaultData {
             TransactionStepModel(
                 state: .notStarted,
                 title: "Overlevering",
-                body: "<p>Dere må møtes og bekrefte overleveringen innen 7 dager etter kjøper har betalt.</p><ol><li>Ved oppmøte registrerer dere først eierskiftet digitalt hos Statens vegvesen.</li><li>Deretter må begge bekrefte at overleveringen har skjedd, og at pengene kan utbetales.</li></ol>"),
+                body: NSAttributedString(string: "<p>Dere må møtes og bekrefte overleveringen innen 7 dager etter kjøper har betalt.</p><ol><li>Ved oppmøte registrerer dere først eierskiftet digitalt hos Statens vegvesen.</li><li>Deretter må begge bekrefte at overleveringen har skjedd, og at pengene kan utbetales.</li></ol>")),
 
             TransactionStepModel(
                 state: .notStarted,
                 title: "Gratulerer med salget!",
-                body: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før».")
+                body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før»."))
     ])
 }

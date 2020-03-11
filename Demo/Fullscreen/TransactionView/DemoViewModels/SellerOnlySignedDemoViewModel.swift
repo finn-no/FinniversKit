@@ -2,6 +2,8 @@
 //  Created by Saleh-Jan, Robin on 28/02/2020.
 //
 
+import Foundation.NSString
+
 extension TransactionDemoViewDefaultData {
     static var SellerOnlySignedDemoViewModel = TransactionModel(
         title: "Salgsprosess",
@@ -30,26 +32,25 @@ extension TransactionDemoViewDefaultData {
             TransactionStepModel(
                 state: .active,
                 title: "Kontrakt",
-                body: "Venter på at kjøper skal signere.",
+                body: NSAttributedString(string: "Venter på at kjøper skal signere."),
                 primaryButton: TransactionStepPrimaryButtonModel(
                     text: "Gå til kontrakt",
                     style: "default",
-                    url: "https://www.google.com/search?q=contract+signed"
-                )),
+                    url: "https://www.google.com/search?q=contract+signed")),
 
             TransactionStepModel(
                 state: .notStarted,
                 title: "Betaling",
-                body: "Dere kan betale trygt gjennom FINN ved å velge det i kontrakten."),
+                body: NSAttributedString(string: "Dere kan betale trygt gjennom FINN ved å velge det i kontrakten.")),
 
             TransactionStepModel(
                 state: .notStarted,
                 title: "Overlevering",
-                body: "<p>Velger dere å betale gjennom FINN, må overleveringen skje innen 7 dager etter kjøper har betalt.</p><p>Registrering av eierskiftet bør gjøres når dere møtes for overlevering.</p>"),
+                body: NSAttributedString(string: "<p>Velger dere å betale gjennom FINN, må overleveringen skje innen 7 dager etter kjøper har betalt.</p><p>Registrering av eierskiftet bør gjøres når dere møtes for overlevering.</p>")),
 
             TransactionStepModel(
                 state: .notStarted,
                 title: "Gratulerer med salget!",
-                body: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før».")
+                body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før».")),
     ])
 }
