@@ -16,7 +16,7 @@ public protocol FavoriteButtonViewDelegate: AnyObject {
 
 public class FavoriteButtonView: UIView {
     /**
-     This view is set up to support two different kinds of favorite button layouts, that will be AB tested in different releases.
+     This view is set up to support two kinds of favorite button layouts, that will be AB tested in different releases.
      Excess code will be removed when the test results are ready.
      */
 
@@ -26,8 +26,16 @@ public class FavoriteButtonView: UIView {
 
     // MARK: - Private properties
 
+    enum ABTestVariant {
+        case buttonOnly
+        case buttonWithCounter
+    }
+
+    private final let activeTest: ABTestVariant = .buttonOnly
+
     private var viewModel: FavoriteButtonViewModel?
     private let buttonStyle = Button.Style.default.overrideStyle(borderColor: .btnDisabled)
+    private let flatButtonStyle = Button.Style.flat.overrideStyle(margins: UIEdgeInsets.zero)
 
     private lazy var button: Button = {
         let button = Button(style: buttonStyle, size: .normal, withAutoLayout: true)
@@ -36,19 +44,29 @@ public class FavoriteButtonView: UIView {
         return button
     }()
 
+    private lazy var flatButton: Button = {
+        let button = Button(style: flatButtonStyle, withAutoLayout: true)
+        button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
+        button.titleEdgeInsets = UIEdgeInsets(leading: .mediumSpacing)
+        button.imageEdgeInsets = UIEdgeInsets(top: -.smallSpacing)
+        button.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        button.contentHorizontalAlignment = .leading
+        return button
+    }()
+
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [button, subtitleLabel])
+        let stackView = UIStackView(arrangedSubviews: [flatButton, subtitleLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.alignment = .top
-        stackView.distribution = .equalSpacing
-        stackView.spacing = .verySmallSpacing
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .fill
         return stackView
     }()
 
     private lazy var subtitleLabel: Label = {
         let label = Label(style: .detail, withAutoLayout: true)
         label.textColor = .textSecondary
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
@@ -56,26 +74,22 @@ public class FavoriteButtonView: UIView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setupABTest1()
+        setup()
     }
 
     public required init?(coder: NSCoder) { fatalError() }
 
     // MARK: - Setup
 
-    private func setupABTest1() {
-        addSubview(button)
-        button.fillInSuperview()
-    }
-
-    private func setupABTest2() {
-        addSubview(stackView)
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-        ])
+    private func setup() {
+        switch activeTest {
+        case .buttonOnly:
+            addSubview(button)
+            button.fillInSuperview()
+        case .buttonWithCounter:
+            addSubview(stackView)
+            stackView.fillInSuperview()
+        }
     }
 
     // MARK: - Public methods
@@ -83,17 +97,28 @@ public class FavoriteButtonView: UIView {
     public func configure(with viewModel: FavoriteButtonViewModel) {
         self.viewModel = viewModel
 
-        button.setTitle(viewModel.title, for: .normal)
-
-        subtitleLabel.text = viewModel.subtitle
-        subtitleLabel.isHidden = viewModel.subtitle?.isEmpty ?? true
-
-        let buttonImage = viewModel.isFavorite ? UIImage(named: .heartActiveSmall) : UIImage(named: .heartDefaultSmall)
-
-        button.setImage(buttonImage, for: .normal)
+        switch activeTest {
+        case .buttonOnly:
+            button.setTitle(viewModel.title, for: .normal)
+            setImage(for: button, isFavorite: viewModel.isFavorite)
+        case .buttonWithCounter:
+            flatButton.setTitle(viewModel.title, for: .normal)
+            subtitleLabel.text = viewModel.subtitle
+            setImage(for: flatButton, isFavorite: viewModel.isFavorite)
+        }
     }
 
     // MARK: - Private methods
+
+    private func setImage(for button: Button, isFavorite: Bool) {
+        let image: UIImage?
+        if button.style == .default {
+            image = isFavorite ? UIImage(named: .heartActiveSmall) : UIImage(named: .heartDefaultSmall)
+        } else {
+            image = isFavorite ? UIImage(named: .heartActive) : UIImage(named: .heartDefault)
+        }
+        button.setImage(image, for: .normal)
+    }
 
     @objc private func handleButtonTap() {
         guard let viewModel = viewModel else { return }

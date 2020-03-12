@@ -1,9 +1,5 @@
 //
-//  FavoriteButtonViewModel.swift
-//  Demo
-//
-//  Created by Graneggen, Nina Røsdal on 12/03/2020.
-//  Copyright © 2020 FINN AS. All rights reserved.
+//  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
 import FinniversKit
@@ -14,7 +10,7 @@ struct FavoriteButtonData: FavoriteButtonViewModel {
     }
 
     var subtitle: String? {
-        return "3 har lagt til som favoritt"
+        return isFavorite ? "4 har lagt til som favoritt" : "3 har lagt til som favoritt"
     }
 
     var isFavorite: Bool
