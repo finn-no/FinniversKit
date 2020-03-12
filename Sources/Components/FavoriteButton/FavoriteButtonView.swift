@@ -31,7 +31,7 @@ public class FavoriteButtonView: UIView {
         case buttonWithCounter
     }
 
-    private final let activeTest: ABTestVariant = .buttonOnly
+    private final let activeTestVariant: ABTestVariant = .buttonOnly
 
     private var viewModel: FavoriteButtonViewModel?
     private let buttonStyle = Button.Style.default.overrideStyle(borderColor: .btnDisabled)
@@ -39,8 +39,10 @@ public class FavoriteButtonView: UIView {
 
     private lazy var button: Button = {
         let button = Button(style: buttonStyle, size: .normal, withAutoLayout: true)
-        button.titleEdgeInsets = UIEdgeInsets(leading: .mediumSpacing)
+        button.titleEdgeInsets = UIEdgeInsets(leading: -.smallSpacing)
+        button.imageEdgeInsets = UIEdgeInsets(leading: -.mediumSpacing)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
+        button.adjustsImageWhenHighlighted = false
         return button
     }()
 
@@ -51,6 +53,7 @@ public class FavoriteButtonView: UIView {
         button.imageEdgeInsets = UIEdgeInsets(top: -.smallSpacing)
         button.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         button.contentHorizontalAlignment = .leading
+        button.adjustsImageWhenHighlighted = false
         return button
     }()
 
@@ -82,7 +85,7 @@ public class FavoriteButtonView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        switch activeTest {
+        switch activeTestVariant {
         case .buttonOnly:
             addSubview(button)
             button.fillInSuperview()
@@ -97,7 +100,7 @@ public class FavoriteButtonView: UIView {
     public func configure(with viewModel: FavoriteButtonViewModel) {
         self.viewModel = viewModel
 
-        switch activeTest {
+        switch activeTestVariant {
         case .buttonOnly:
             button.setTitle(viewModel.title, for: .normal)
             setImage(for: button, isFavorite: viewModel.isFavorite)
@@ -112,12 +115,14 @@ public class FavoriteButtonView: UIView {
 
     private func setImage(for button: Button, isFavorite: Bool) {
         let image: UIImage?
-        if button.style == .default {
+        switch activeTestVariant {
+        case .buttonOnly:
             image = isFavorite ? UIImage(named: .heartActiveSmall) : UIImage(named: .heartDefaultSmall)
-        } else {
+        case .buttonWithCounter:
             image = isFavorite ? UIImage(named: .heartActive) : UIImage(named: .heartDefault)
         }
-        button.setImage(image, for: .normal)
+        button.setImage(image?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.imageView?.tintColor = .btnAction
     }
 
     @objc private func handleButtonTap() {
