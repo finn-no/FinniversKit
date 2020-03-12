@@ -78,6 +78,14 @@ NSString *const FinniversImageAssetgiftSquareYellow = @"giftSquareYellow";
 NSString *const FinniversImageAssetgiftTriangleGreen = @"giftTriangleGreen";
 NSString *const FinniversImageAssetgridView = @"gridView";
 NSString *const FinniversImageAssethandshake = @"handshake";
+NSString *const FinniversImageAssetheartActive = @"heartActive";
+NSString *const FinniversImageAssetheartActiveDarkMode = @"heartActiveDarkMode";
+NSString *const FinniversImageAssetheartActiveSmall = @"heartActiveSmall";
+NSString *const FinniversImageAssetheartActiveSmallDarkMode = @"heartActiveSmallDarkMode";
+NSString *const FinniversImageAssetheartDefault = @"heartDefault";
+NSString *const FinniversImageAssetheartDefaultDarkMode = @"heartDefaultDarkMode";
+NSString *const FinniversImageAssetheartDefaultSmall = @"heartDefaultSmall";
+NSString *const FinniversImageAssetheartDefaultSmallDarkMode = @"heartDefaultSmallDarkMode";
 NSString *const FinniversImageAssetheartEmpty = @"heartEmpty";
 NSString *const FinniversImageAssetheartEmptyDashed = @"heartEmptyDashed";
 NSString *const FinniversImageAssethelp = @"help";
@@ -244,6 +252,14 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetgiftTriangleGreen,
              FinniversImageAssetgridView,
              FinniversImageAssethandshake,
+             FinniversImageAssetheartActive,
+             FinniversImageAssetheartActiveDarkMode,
+             FinniversImageAssetheartActiveSmall,
+             FinniversImageAssetheartActiveSmallDarkMode,
+             FinniversImageAssetheartDefault,
+             FinniversImageAssetheartDefaultDarkMode,
+             FinniversImageAssetheartDefaultSmall,
+             FinniversImageAssetheartDefaultSmallDarkMode,
              FinniversImageAssetheartEmpty,
              FinniversImageAssetheartEmptyDashed,
              FinniversImageAssethelp,

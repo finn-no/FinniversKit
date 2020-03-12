@@ -88,7 +88,8 @@ public class FavoriteButtonView: UIView {
         subtitleLabel.text = viewModel.subtitle
         subtitleLabel.isHidden = viewModel.subtitle?.isEmpty ?? true
 
-        let buttonImage = viewModel.isFavorite ? UIImage(named: .favouriteAdded) : UIImage(named: .favoriteAdd)
+        let buttonImage = viewModel.isFavorite ? UIImage(named: .heartActiveSmall) : UIImage(named: .heartDefaultSmall)
+
         button.setImage(buttonImage, for: .normal)
     }
 

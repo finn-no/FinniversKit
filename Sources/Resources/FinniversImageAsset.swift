@@ -90,6 +90,14 @@ public enum FinniversImageAsset: String {
     case giftTriangleGreen
     case gridView
     case handshake
+    case heartActive
+    case heartActiveDarkMode
+    case heartActiveSmall
+    case heartActiveSmallDarkMode
+    case heartDefault
+    case heartDefaultDarkMode
+    case heartDefaultSmall
+    case heartDefaultSmallDarkMode
     case heartEmpty
     case heartEmptyDashed
     case help
@@ -255,6 +263,14 @@ public enum FinniversImageAsset: String {
             .giftTriangleGreen,
             .gridView,
             .handshake,
+            .heartActive,
+            .heartActiveDarkMode,
+            .heartActiveSmall,
+            .heartActiveSmallDarkMode,
+            .heartDefault,
+            .heartDefaultDarkMode,
+            .heartDefaultSmall,
+            .heartDefaultSmallDarkMode,
             .heartEmpty,
             .heartEmptyDashed,
             .help,
