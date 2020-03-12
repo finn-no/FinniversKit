@@ -51,11 +51,14 @@ public enum ReputationBreakdownCategory {
     }
 }
 
-// MARK: - ReputationView
+// MARK: - ReputationViewDelegate
 
 public protocol ReputationViewDelegate: AnyObject {
     func reputationViewWasTapped(_ reputationView: ReputationView)
+    func reputationViewLinkWasTapped()
 }
+
+// MARK: - ReputationView
 
 public class ReputationView: UIView {
 
@@ -89,6 +92,12 @@ public class ReputationView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textColor = .textAction
+        label.isUserInteractionEnabled = true
+
+        // Make label tapable
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(onLinkTap))
+        label.addGestureRecognizer(gesture)
+
         return label
     }()
 
@@ -112,13 +121,13 @@ public class ReputationView: UIView {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
-        view.spacing = .mediumLargeSpacing
+        view.spacing = .spacingM
         view.distribution = .equalSpacing
         return view
     }()
 
     private lazy var expandedConstraint: NSLayoutConstraint = {
-        let constraint = breakdownWrapper.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
+        let constraint = breakdownWrapper.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM)
         constraint.priority = .defaultHigh
         constraint.isActive = false
         return constraint
@@ -133,6 +142,7 @@ public class ReputationView: UIView {
     public var viewModel: ReputationViewModel? {
         didSet { viewModelChanged() }
     }
+
     public weak var delegate: ReputationViewDelegate?
 
     // MARK: - Private properties
@@ -185,12 +195,12 @@ public class ReputationView: UIView {
 
         addSubview(breakdownWrapper)
 
-        let collapsedConstraint = scoreBackgroundView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
+        let collapsedConstraint = scoreBackgroundView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM)
         collapsedConstraint.priority = .defaultLow
 
         NSLayoutConstraint.activate([
-            scoreBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            scoreBackgroundView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            scoreBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            scoreBackgroundView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
             collapsedConstraint,
             scoreBackgroundView.widthAnchor.constraint(equalToConstant: reviewScoreSize),
             scoreBackgroundView.heightAnchor.constraint(equalToConstant: reviewScoreSize),
@@ -198,26 +208,26 @@ public class ReputationView: UIView {
             scoreLabel.centerXAnchor.constraint(equalTo: scoreBackgroundView.centerXAnchor),
             scoreLabel.centerYAnchor.constraint(equalTo: scoreBackgroundView.centerYAnchor),
 
-            titleLabel.leadingAnchor.constraint(equalTo: scoreBackgroundView.trailingAnchor, constant: .mediumSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: scoreBackgroundView.trailingAnchor, constant: .spacingS),
             titleLabel.topAnchor.constraint(equalTo: scoreBackgroundView.topAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: collapseWrapper.leadingAnchor, constant: -.mediumLargeSpacing),
+            titleLabel.trailingAnchor.constraint(equalTo: collapseWrapper.leadingAnchor, constant: -.spacingM),
 
-            subtitleLabel.leadingAnchor.constraint(equalTo: scoreBackgroundView.trailingAnchor, constant: .mediumSpacing),
-            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .verySmallSpacing),
-            subtitleLabel.trailingAnchor.constraint(equalTo: collapseWrapper.leadingAnchor, constant: -.mediumLargeSpacing),
+            subtitleLabel.leadingAnchor.constraint(equalTo: scoreBackgroundView.trailingAnchor, constant: .spacingS),
+            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXXS),
+            subtitleLabel.trailingAnchor.constraint(equalTo: collapseWrapper.leadingAnchor, constant: -.spacingM),
 
-            collapseWrapper.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            collapseWrapper.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            collapseWrapper.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            collapseWrapper.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
             collapseWrapper.widthAnchor.constraint(equalToConstant: reviewScoreSize),
             collapseWrapper.heightAnchor.constraint(equalToConstant: reviewScoreSize),
 
             collapseImage.centerXAnchor.constraint(equalTo: collapseWrapper.centerXAnchor),
             collapseImage.centerYAnchor.constraint(equalTo: collapseWrapper.centerYAnchor),
 
-            breakdownWrapper.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            breakdownWrapper.topAnchor.constraint(greaterThanOrEqualTo: scoreBackgroundView.bottomAnchor, constant: .mediumLargeSpacing),
-            breakdownWrapper.topAnchor.constraint(greaterThanOrEqualTo: subtitleLabel.bottomAnchor, constant: .mediumLargeSpacing),
-            breakdownWrapper.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            breakdownWrapper.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            breakdownWrapper.topAnchor.constraint(greaterThanOrEqualTo: scoreBackgroundView.bottomAnchor, constant: .spacingM),
+            breakdownWrapper.topAnchor.constraint(greaterThanOrEqualTo: subtitleLabel.bottomAnchor, constant: .spacingM),
+            breakdownWrapper.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
         ])
     }
 
@@ -270,8 +280,14 @@ public class ReputationView: UIView {
         }
     }
 
+    // MARK: - Actions
+
     @objc private func onTap() {
         delegate?.reputationViewWasTapped(self)
+    }
+
+    @objc private func onLinkTap() {
+        delegate?.reputationViewLinkWasTapped()
     }
 }
 
@@ -350,10 +366,10 @@ extension ReputationView {
             imageView.centerYAnchor.constraint(equalTo: imageWrapper.centerYAnchor),
             imageView.centerXAnchor.constraint(equalTo: imageWrapper.centerXAnchor),
 
-            label.leadingAnchor.constraint(equalTo: imageWrapper.trailingAnchor, constant: .mediumSpacing),
+            label.leadingAnchor.constraint(equalTo: imageWrapper.trailingAnchor, constant: .spacingS),
             label.topAnchor.constraint(equalTo: root.topAnchor),
             label.bottomAnchor.constraint(equalTo: root.bottomAnchor),
-            label.trailingAnchor.constraint(equalTo: root.trailingAnchor, constant: -.mediumSpacing),
+            label.trailingAnchor.constraint(equalTo: root.trailingAnchor, constant: -.spacingS),
         ])
 
         return root

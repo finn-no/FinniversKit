@@ -98,7 +98,7 @@ public class IdentityView: UIView {
             profileNameLabel.topAnchor.constraint(equalTo: wrapperView.topAnchor),
             profileNameLabel.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor),
 
-            verifiedBadge.leadingAnchor.constraint(equalTo: profileNameLabel.trailingAnchor, constant: .smallSpacing),
+            verifiedBadge.leadingAnchor.constraint(equalTo: profileNameLabel.trailingAnchor, constant: .spacingXS),
             verifiedBadge.centerYAnchor.constraint(equalTo: profileNameLabel.centerYAnchor),
             verifiedBadge.trailingAnchor.constraint(lessThanOrEqualTo: wrapperView.trailingAnchor),
             verifiedBadge.widthAnchor.constraint(equalToConstant: 18),
@@ -117,7 +117,7 @@ public class IdentityView: UIView {
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
-        stackView.spacing = .verySmallSpacing
+        stackView.spacing = .spacingXXS
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
         return stackView
@@ -131,11 +131,11 @@ public class IdentityView: UIView {
     }()
 
     private lazy var descriptionLabelConstraints: [NSLayoutConstraint] = [
-        descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-        descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: profileImageView.bottomAnchor, constant: .mediumLargeSpacing),
-        descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: stackView.bottomAnchor, constant: .mediumLargeSpacing),
-        descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-        descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
+        descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+        descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: profileImageView.bottomAnchor, constant: .spacingM),
+        descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: stackView.bottomAnchor, constant: .spacingM),
+        descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+        descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM)
     ]
 
     // MARK: - Setup
@@ -169,17 +169,17 @@ public class IdentityView: UIView {
         stackView.addArrangedSubview(subtitleLabel)
 
         NSLayoutConstraint.activate([
-            profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            profileImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            profileImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.mediumLargeSpacing),
+            profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            profileImageView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            profileImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingM),
             profileImageView.widthAnchor.constraint(equalToConstant: IdentityView.profileImageSize),
             profileImageView.heightAnchor.constraint(equalToConstant: IdentityView.profileImageSize),
 
-            stackView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: .mediumSpacing),
+            stackView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: .spacingS),
             stackView.topAnchor.constraint(equalTo: profileImageView.topAnchor),
             stackView.bottomAnchor.constraint(greaterThanOrEqualTo: profileImageView.bottomAnchor),
-            stackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.mediumLargeSpacing),
-            stackView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumSpacing),
+            stackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingM),
+            stackView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.spacingS),
         ])
     }
 

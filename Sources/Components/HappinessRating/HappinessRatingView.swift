@@ -145,7 +145,7 @@ private class RatingView: UIView {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
-        stackView.spacing = .mediumSpacing
+        stackView.spacing = .spacingS
         stackView.isUserInteractionEnabled = false
         return stackView
     }()

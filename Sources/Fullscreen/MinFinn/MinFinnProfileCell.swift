@@ -63,7 +63,7 @@ private extension MinFinnProfileCell {
 
         contentView.addSubview(identityView)
         identityView.fillInSuperview(
-            insets: UIEdgeInsets(top: 0, left: .mediumLargeSpacing, bottom: 0, right: -.mediumLargeSpacing)
+            insets: UIEdgeInsets(top: 0, left: .spacingM, bottom: 0, right: -.spacingM)
         )
     }
 }

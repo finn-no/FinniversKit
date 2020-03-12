@@ -35,7 +35,7 @@ open class CheckboxTableViewCell: BasicTableViewCell {
         super.configure(with: viewModel)
         selectionStyle = .none
         checkbox.isHighlighted = viewModel.isSelected
-        stackViewToCheckboxConstraint.constant = .mediumLargeSpacing
+        stackViewToCheckboxConstraint.constant = .spacingM
         separatorInset = .leadingInset(56)
         layoutIfNeeded()
     }
@@ -57,7 +57,7 @@ open class CheckboxTableViewCell: BasicTableViewCell {
 
         NSLayoutConstraint.activate([
             stackViewToCheckboxConstraint,
-            checkbox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            checkbox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             checkbox.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         ])
     }

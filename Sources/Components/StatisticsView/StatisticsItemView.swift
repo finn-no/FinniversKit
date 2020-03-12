@@ -118,21 +118,21 @@ public class StatisticsItemView: UIView {
 
             valueLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             valueLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 6),
-            valueLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -.mediumLargeSpacing),
+            valueLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -.spacingM),
 
             textLabel.centerXAnchor.constraint(equalTo: valueLabel.centerXAnchor),
             textLabel.topAnchor.constraint(equalTo: valueLabel.bottomAnchor),
-            textLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -.largeSpacing),
-            textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
+            textLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -.spacingXL),
+            textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM),
 
             leftSeparator.centerYAnchor.constraint(equalTo: centerYAnchor),
             leftSeparator.leftAnchor.constraint(equalTo: leftAnchor),
             leftSeparator.widthAnchor.constraint(equalToConstant: hairLineSize),
-            leftSeparator.heightAnchor.constraint(equalTo: heightAnchor, constant: -.veryLargeSpacing),
+            leftSeparator.heightAnchor.constraint(equalTo: heightAnchor, constant: -.spacingXXL),
 
             rightSeparator.centerYAnchor.constraint(equalTo: centerYAnchor),
             rightSeparator.rightAnchor.constraint(equalTo: rightAnchor),
             rightSeparator.widthAnchor.constraint(equalToConstant: hairLineSize),
-            rightSeparator.heightAnchor.constraint(equalTo: heightAnchor, constant: -.veryLargeSpacing)])
+            rightSeparator.heightAnchor.constraint(equalTo: heightAnchor, constant: -.spacingXXL)])
     }
 }

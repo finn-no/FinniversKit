@@ -6,6 +6,18 @@ import UIKit
 
 public class ObjectPageTitleView: UIView {
 
+    // MARK: - Public properties
+
+    public var isTitleTextCopyable: Bool {
+        set { titleLabel.setTextCopyable(newValue) }
+        get { titleLabel.isTextCopyable }
+    }
+
+    public var isSubtitleTextCopyable: Bool {
+        set { subtitleLabel.setTextCopyable(newValue) }
+        get { subtitleLabel.isTextCopyable }
+    }
+
     // MARK: - Private properties
 
     private let titleStyle: Label.Style
@@ -17,7 +29,7 @@ public class ObjectPageTitleView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .leading
-        stackView.setCustomSpacing(.mediumSpacing, after: ribbonView)
+        stackView.setCustomSpacing(.spacingS, after: ribbonView)
         return stackView
     }()
 
@@ -55,7 +67,7 @@ public class ObjectPageTitleView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(withTitle title: String? = nil, subtitle: String? = nil, ribbonViewModel: RibbonViewModel? = nil, spacingAfterTitle: CGFloat = .smallSpacing) {
+    public func configure(withTitle title: String? = nil, subtitle: String? = nil, ribbonViewModel: RibbonViewModel? = nil, spacingAfterTitle: CGFloat = .spacingXS) {
         titleLabel.text = title
         titleLabel.isHidden = title?.isEmpty ?? true
 

@@ -63,7 +63,7 @@ final class NeighborhoodProfileHeaderView: UIView {
 
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: button.leadingAnchor, constant: -.mediumLargeSpacing),
+            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: button.leadingAnchor, constant: -.spacingM),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
 
@@ -113,7 +113,7 @@ private final class ArrowButton: UIButton {
         setTitleColor(.linkButtonHighlightedTextColor, for: .highlighted)
 
         setImage(UIImage(named: .arrowRight).withRenderingMode(.alwaysTemplate), for: .normal)
-        imageEdgeInsets = UIEdgeInsets(top: 3, leading: .smallSpacing, bottom: 3, trailing: -.smallSpacing)
+        imageEdgeInsets = UIEdgeInsets(top: 3, leading: .spacingXS, bottom: 3, trailing: -.spacingXS)
         imageView?.contentMode = .scaleAspectFit
         adjustsImageWhenHighlighted = false
     }

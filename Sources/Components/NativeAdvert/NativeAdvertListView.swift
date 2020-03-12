@@ -26,7 +26,7 @@ public final class NativeAdvertListView: UIView {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = .mediumSpacing
+        imageView.layer.cornerRadius = .spacingS
         return imageView
     }()
 
@@ -41,9 +41,9 @@ public final class NativeAdvertListView: UIView {
     // MARK: - Constraints
 
     private lazy var sharedConstraints: [NSLayoutConstraint] = [
-        container.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-        container.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
-        container.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+        container.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+        container.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
+        container.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
         container.bottomAnchor.constraint(greaterThanOrEqualTo: imageView.bottomAnchor),
 
         settingsButton.topAnchor.constraint(equalTo: container.topAnchor),
@@ -53,25 +53,25 @@ public final class NativeAdvertListView: UIView {
         imageView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
         imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1 / imageAspectRatio),
 
-        detailsContainer.topAnchor.constraint(equalTo: container.topAnchor, constant: .smallSpacing),
+        detailsContainer.topAnchor.constraint(equalTo: container.topAnchor, constant: .spacingXS),
         detailsContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-        detailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.smallSpacing),
+        detailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.spacingXS),
     ]
 
     private lazy var compactConstraints: [NSLayoutConstraint] = [
-        container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
+        container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXS),
         container.heightAnchor.constraint(greaterThanOrEqualToConstant: containerMinimumHeightCompact),
 
-        detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumSpacing),
+        detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingS),
 
         imageView.widthAnchor.constraint(equalToConstant: imageWidthCompact),
     ]
 
     private lazy var regularConstraints: [NSLayoutConstraint] = [
-        container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+        container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
         container.heightAnchor.constraint(greaterThanOrEqualToConstant: containerMinimumHeightRegular),
 
-        detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumLargeSpacing),
+        detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingM),
 
         imageView.widthAnchor.constraint(equalToConstant: imageWidthRegular),
     ]

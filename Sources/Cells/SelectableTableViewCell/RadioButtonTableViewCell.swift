@@ -31,8 +31,8 @@ open class RadioButtonTableViewCell: BasicTableViewCell {
         stackViewLeadingAnchorConstraint.isActive = false
 
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: radioButton.trailingAnchor, constant: .mediumLargeSpacing),
-            radioButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            stackView.leadingAnchor.constraint(equalTo: radioButton.trailingAnchor, constant: .spacingM),
+            radioButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             radioButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
             ])
     }
@@ -40,6 +40,11 @@ open class RadioButtonTableViewCell: BasicTableViewCell {
     open func configure(with viewModel: SelectableTableViewCellViewModel) {
         super.configure(with: viewModel)
         separatorInset = .leadingInset(56)
-        radioButton.animateSelection(selected: viewModel.isSelected)
+        radioButton.isHighlighted = viewModel.isSelected
+    }
+    
+    open override func prepareForReuse() {
+        super.prepareForReuse()
+        radioButton.isHighlighted = false
     }
 }

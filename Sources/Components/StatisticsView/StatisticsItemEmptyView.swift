@@ -69,19 +69,19 @@ public class StatisticsItemEmptyView: UIView {
             hairlineView.trailingAnchor.constraint(equalTo: trailingAnchor),
             hairlineView.heightAnchor.constraint(equalToConstant: hairLineSize),
 
-            imageView.topAnchor.constraint(equalTo: hairlineView.bottomAnchor, constant: .mediumSpacing),
+            imageView.topAnchor.constraint(equalTo: hairlineView.bottomAnchor, constant: .spacingS),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .mediumSpacing),
+            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .spacingS),
             titleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
-            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM),
+            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
+            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
         ])
     }
 

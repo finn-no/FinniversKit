@@ -77,10 +77,10 @@ public class InlineConsentView: UIView {
             descriptionTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             descriptionTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            yesButton.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            yesButton.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: .spacingM),
             yesButton.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            infoButton.topAnchor.constraint(equalTo: yesButton.bottomAnchor, constant: .mediumLargeSpacing),
+            infoButton.topAnchor.constraint(equalTo: yesButton.bottomAnchor, constant: .spacingM),
             infoButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             infoButton.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
@@ -99,7 +99,7 @@ public class InlineConsentView: UIView {
     // MARK: - Superclass overrides
 
     public override var intrinsicContentSize: CGSize {
-        let intermediateSpacing = CGFloat.mediumLargeSpacing * 2
+        let intermediateSpacing = CGFloat.spacingM * 2
 
         guard let descriptionText = descriptionTitleLabel.text else {
             return CGSize.zero

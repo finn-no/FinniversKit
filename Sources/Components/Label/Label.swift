@@ -5,6 +5,11 @@
 import UIKit
 
 public class Label: UILabel {
+
+    // MARK: - Public properties
+
+    public private(set) var isTextCopyable = false
+
     // MARK: - Setup
 
     public init(style: Style, withAutoLayout: Bool = false) {
@@ -25,6 +30,8 @@ public class Label: UILabel {
     }
 
     private func setup() {
+        addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:))))
+
         isAccessibilityElement = true
 
         accessibilityLabel = text
@@ -33,7 +40,36 @@ public class Label: UILabel {
         adjustsFontForContentSizeCategory = true
     }
 
+    // MARK: - Public methods
+
+    public func setTextCopyable(_ isTextCopyable: Bool) {
+        self.isTextCopyable = isTextCopyable
+        isUserInteractionEnabled = isTextCopyable
+    }
+
     // MARK: - Dependency injection
 
     public private(set) var style: Style?
+}
+
+// MARK: - Copying extension
+
+extension Label {
+    public override var canBecomeFirstResponder: Bool { isTextCopyable }
+
+    public override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        action == #selector(copy(_:))
+    }
+
+    public override func copy(_ sender: Any?) {
+        UIPasteboard.general.string = text
+    }
+
+    @objc private func handleLongPress(_ recognizer: UIGestureRecognizer) {
+        guard recognizer.state == .began else { return }
+
+        becomeFirstResponder()
+        UIMenuController.shared.setTargetRect(bounds, in: self)
+        UIMenuController.shared.setMenuVisible(true, animated: true)
+    }
 }

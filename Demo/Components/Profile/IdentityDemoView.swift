@@ -87,9 +87,9 @@ class IdentityDemoView: UIView, Tweakable {
         identityViews.forEach { (view, _) in
             addSubview(view)
             NSLayoutConstraint.activate([
-                view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-                view.topAnchor.constraint(equalTo: nextAnchor, constant: .mediumSpacing),
-                view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+                view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+                view.topAnchor.constraint(equalTo: nextAnchor, constant: .spacingS),
+                view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
             ])
 
             nextAnchor = view.bottomAnchor

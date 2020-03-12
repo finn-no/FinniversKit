@@ -10,7 +10,7 @@ class UserAdEmphasizedActionCellDemoView: UIView {
     private var shouldCollapseAction = false
     private var hasGivenRating = false
 
-    private let viewModels: [UserAdCellViewModel] = [UserAdsFactory.createEmphasizedAd()]
+    private let viewModels: [UserAdCellViewModel] = (0..<2).map { UserAdsFactory.createEmphasizedAd(hasExternalAction: $0 % 2 != 0) }
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(withAutoLayout: true)
@@ -34,7 +34,7 @@ class UserAdEmphasizedActionCellDemoView: UIView {
     private func setup() {
         addSubview(tableView)
         // Inset top to avoid the CornerAnchoringView
-        tableView.fillInSuperview(insets: UIEdgeInsets(top: .veryLargeSpacing), isActive: true)
+        tableView.fillInSuperview(insets: UIEdgeInsets(top: .spacingXXL), isActive: true)
     }
 
     private func showToastView(text: String, timeout: Double) {

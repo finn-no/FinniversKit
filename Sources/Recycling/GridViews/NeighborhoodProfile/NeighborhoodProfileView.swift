@@ -33,10 +33,10 @@ public final class NeighborhoodProfileView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .bgSecondary
         collectionView.contentInset = UIEdgeInsets(
-            top: .mediumSpacing,
-            left: .mediumLargeSpacing,
-            bottom: .mediumSpacing,
-            right: .mediumLargeSpacing
+            top: .spacingS,
+            left: .spacingM,
+            bottom: .spacingS,
+            right: .spacingM
         )
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.decelerationRate = .fast
@@ -123,12 +123,12 @@ public final class NeighborhoodProfileView: UIView {
     ) -> CGSize {
         var height = NeighborhoodProfileView.headerSpacingTop
         height += NeighborhoodProfileHeaderView.height(forTitle: viewModel.title, width: targetSize.width)
-        height += .mediumSpacing + collectionViewHeight(forItemHeight: calculateItemSize().height)
+        height += .spacingS + collectionViewHeight(forItemHeight: calculateItemSize().height)
 
         if isPagingEnabled {
-            height += pageControl.intrinsicContentSize.height + .mediumSpacing
+            height += pageControl.intrinsicContentSize.height + .spacingS
         } else {
-            height += .mediumLargeSpacing
+            height += .spacingM
         }
 
         return CGSize(
@@ -151,10 +151,10 @@ public final class NeighborhoodProfileView: UIView {
 
         var constraints = [
             headerView.topAnchor.constraint(equalTo: topAnchor, constant: NeighborhoodProfileView.headerSpacingTop),
-            headerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            headerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            headerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            headerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
-            collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: .mediumSpacing),
+            collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: .spacingS),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionViewHeightConstraint,
@@ -164,11 +164,11 @@ public final class NeighborhoodProfileView: UIView {
             constraints.append(contentsOf: [
                 pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
                 pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
-                bottomAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: .mediumSpacing)
+                bottomAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: .spacingS)
             ])
         } else {
             constraints.append(
-                bottomAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .mediumLargeSpacing)
+                bottomAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingM)
             )
         }
 
@@ -266,7 +266,7 @@ extension NeighborhoodProfileView: UICollectionViewDelegate {
             pageControl.currentPage = indexPath.row
         }
 
-        let rightOffset = scrollView.horizontalRightOffset - .mediumLargeSpacing
+        let rightOffset = scrollView.horizontalRightOffset - .spacingM
         let reachedEnd = targetOffsetX >= rightOffset
 
         delegate?.neighborhoodProfileViewDidScroll(self, reachedEnd: reachedEnd)

@@ -181,7 +181,7 @@ public class AdsGridViewCell: UICollectionViewCell {
             ribbonView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: AdsGridViewCell.ribbonTopMargin),
             ribbonView.leadingAnchor.constraint(equalTo: leadingAnchor),
 
-            logoImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: .mediumSpacing),
+            logoImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: .spacingS),
             logoImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             logoImageView.widthAnchor.constraint(equalToConstant: 50),
             logoImageView.heightAnchor.constraint(equalToConstant: 30),
@@ -215,8 +215,8 @@ public class AdsGridViewCell: UICollectionViewCell {
             imageDescriptionView.heightAnchor.constraint(equalToConstant: AdsGridViewCell.imageDescriptionHeight),
             imageDescriptionView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor),
 
-            favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: .smallSpacing),
-            favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.smallSpacing),
+            favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXS),
+            favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXS),
             favoriteButton.widthAnchor.constraint(equalToConstant: 34),
             favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.heightAnchor)
         ])

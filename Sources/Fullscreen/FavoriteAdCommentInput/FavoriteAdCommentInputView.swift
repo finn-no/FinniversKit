@@ -127,10 +127,10 @@ public final class FavoriteAdCommentInputView: UIView {
             adView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
             textView.topAnchor.constraint(equalTo: adView.bottomAnchor),
-            textView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            textView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
             textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 86),
-            textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing)
+            textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM)
         ])
 
         scrollViewBottomConstraint.constant = 0

@@ -7,100 +7,132 @@ import Foundation
 public extension TransactionStepView {
     enum Style {
         case notStarted
-        case inProgress
-        case inProgressAwaitingOtherParty
+        case active
         case completed
 
-        var backgroundColor: UIColor {
+        public var backgroundColor: UIColor {
             switch self {
             case .notStarted, .completed:
                 return .bgPrimary
-            case .inProgress, .inProgressAwaitingOtherParty:
+            case .active:
                 return .bgSecondary
             }
         }
 
-        var cornerRadius: CGFloat {
+        public var cornerRadius: CGFloat {
             switch self {
             case .notStarted:
                 return 0.0
             default:
-                return .mediumSpacing
+                return .spacingS
             }
         }
 
-        var titleFont: UIFont {
+        public var titleFont: UIFont {
             switch self {
             default:
                 return .title3Strong
             }
         }
 
-        var titleTextColor: UIColor {
+        public var titleTextColor: UIColor {
             switch self {
             case .notStarted:
-                return .stone
+                return .textSecondary
             default:
-                return .licorice
+                return .textPrimary
             }
         }
 
-        var bodyFont: UIFont {
+        public var bodyFont: UIFont {
             switch self {
             default:
                 return .body
             }
         }
 
-        var bodyTextColor: UIColor {
+        public var bodyTextColor: UIColor {
             switch self {
             case .notStarted:
-                return .stone
-            case .inProgress, .inProgressAwaitingOtherParty, .completed:
-                return .licorice
+                return .textSecondary
+            case .active, .completed:
+                return .textPrimary
             }
         }
 
-        var actionButtonStyle: Button.Style {
-            switch self {
-            case .notStarted, .inProgress:
-                return .callToAction
-            case .inProgressAwaitingOtherParty:
-                return .default
-            case .completed:
-                return .flat
-            }
-        }
-
-        var actionButtonSize: Button.Size {
-            switch self {
-            default:
-                return .normal
-            }
-        }
-
-        var actionButtonIsEnabled: Bool {
-            switch self {
-            case .notStarted:
-                return false
-            case .inProgress, .inProgressAwaitingOtherParty, .completed:
-                return true
-            }
-        }
-
-        var detailFont: UIFont {
+        public var detailFont: UIFont {
             switch self {
             default:
                 return .caption
             }
         }
 
-        var detailTextColor: UIColor {
+        public var detailTextColor: UIColor {
             switch self {
             case .notStarted:
-                return .stone
-            case .inProgress, .inProgressAwaitingOtherParty, .completed:
-                return .licorice
+                return .textSecondary
+            case .active, .completed:
+                return .textPrimary
+            }
+        }
+
+        public var actionButtonEnabled: Bool {
+            switch self {
+            case .notStarted:
+                return false
+            case .active, .completed:
+                return true
+            }
+        }
+    }
+}
+
+public extension TransactionStepView {
+    enum PrimaryButton: String {
+        case `default` = "default"
+        case flat = "flat"
+        case callToAction = "call_to_action"
+
+        public init(rawValue: String) {
+            switch rawValue {
+            case "default":
+                self = .default
+            case "flat":
+                self = .flat
+            case "call_to_action":
+                self = .callToAction
+            default:
+                fatalError("ActionButton style \(rawValue) is not supported")
+            }
+        }
+
+        var style: Button.Style {
+            switch self {
+            case .default:
+                return .default
+            case .callToAction:
+                return .callToAction
+            case .flat:
+                return .flat
+            }
+        }
+    }
+}
+
+public extension TransactionStepView.PrimaryButton {
+    enum Action: String {
+        case url = "url"
+        case seeAd = "see_ad"
+        case unknown
+
+        public init(rawValue: String) {
+            switch rawValue {
+            case "url":
+                self = .url
+            case "see_ad":
+                self = .seeAd
+            default:
+                self = .unknown
             }
         }
     }

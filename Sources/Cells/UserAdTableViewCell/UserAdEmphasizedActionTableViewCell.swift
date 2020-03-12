@@ -44,6 +44,7 @@ public class UserAdEmphasizedActionTableViewCell: UITableViewCell {
     // MARK: - Internal properties
 
     private static let cornerRadius: CGFloat = 12
+    private static let actionButtonIconWidth: CGFloat = 12
 
     private lazy var contentStack: UIStackView = {
         let stack = UIStackView(withAutoLayout: true)
@@ -95,6 +96,12 @@ public class UserAdEmphasizedActionTableViewCell: UITableViewCell {
         return button
     }()
 
+    private lazy var actionButtonIcon: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.image = UIImage(named: .webview)
+        return imageView
+    }()
+
     private lazy var gradientWrapper: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .bgTertiary
@@ -124,7 +131,7 @@ public class UserAdEmphasizedActionTableViewCell: UITableViewCell {
         contentView.backgroundColor = .bgTertiary
         accessoryType = .none
         selectionStyle = .none
-        separatorInset = UIEdgeInsets(leading: UserAdTableViewCell.Style.default.imageSize + .largeSpacing + .mediumSpacing)
+        separatorInset = UIEdgeInsets(leading: UserAdTableViewCell.Style.default.imageSize + .spacingXL + .spacingS)
 
         contentView.addSubview(contentStack)
         contentView.addSubview(ratingView)
@@ -147,35 +154,55 @@ public class UserAdEmphasizedActionTableViewCell: UITableViewCell {
             contentStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             contentStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0, priority: .init(999)),
 
-            userAdDetailsView.topAnchor.constraint(equalTo: adWrapperView.topAnchor, constant: .mediumLargeSpacing),
-            userAdDetailsView.leadingAnchor.constraint(equalTo: adWrapperView.leadingAnchor, constant: .mediumLargeSpacing),
-            userAdDetailsView.trailingAnchor.constraint(equalTo: adWrapperView.trailingAnchor, constant: -.mediumLargeSpacing),
-            userAdDetailsView.bottomAnchor.constraint(equalTo: adWrapperView.bottomAnchor, constant: -.mediumLargeSpacing),
+            userAdDetailsView.topAnchor.constraint(equalTo: adWrapperView.topAnchor, constant: .spacingM),
+            userAdDetailsView.leadingAnchor.constraint(equalTo: adWrapperView.leadingAnchor, constant: .spacingM),
+            userAdDetailsView.trailingAnchor.constraint(equalTo: adWrapperView.trailingAnchor, constant: -.spacingM),
+            userAdDetailsView.bottomAnchor.constraint(equalTo: adWrapperView.bottomAnchor, constant: -.spacingM),
 
             ratingView.topAnchor.constraint(equalTo: contentView.topAnchor),
             ratingView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             ratingView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             ratingView.bottomAnchor.constraint(equalTo: actionWrapper.bottomAnchor),
 
-            actionTitleLabel.leadingAnchor.constraint(equalTo: actionWrapper.leadingAnchor, constant: .mediumLargeSpacing),
-            actionTitleLabel.trailingAnchor.constraint(equalTo: actionWrapper.trailingAnchor, constant: -.mediumLargeSpacing),
+            actionTitleLabel.leadingAnchor.constraint(equalTo: actionWrapper.leadingAnchor, constant: .spacingM),
+            actionTitleLabel.trailingAnchor.constraint(equalTo: actionWrapper.trailingAnchor, constant: -.spacingM),
             actionTitleLabel.topAnchor.constraint(equalTo: actionWrapper.topAnchor),
 
-            actionDescriptionLabel.leadingAnchor.constraint(equalTo: actionWrapper.leadingAnchor, constant: .mediumLargeSpacing),
-            actionDescriptionLabel.trailingAnchor.constraint(equalTo: actionWrapper.trailingAnchor, constant: -.mediumLargeSpacing),
-            actionDescriptionLabel.topAnchor.constraint(equalTo: actionTitleLabel.bottomAnchor, constant: .mediumSpacing),
+            actionDescriptionLabel.leadingAnchor.constraint(equalTo: actionWrapper.leadingAnchor, constant: .spacingM),
+            actionDescriptionLabel.trailingAnchor.constraint(equalTo: actionWrapper.trailingAnchor, constant: -.spacingM),
+            actionDescriptionLabel.topAnchor.constraint(equalTo: actionTitleLabel.bottomAnchor, constant: .spacingS),
 
-            actionButton.leadingAnchor.constraint(equalTo: actionWrapper.leadingAnchor, constant: .mediumLargeSpacing),
+            actionButton.leadingAnchor.constraint(equalTo: actionWrapper.leadingAnchor, constant: .spacingM),
             actionButton.topAnchor.constraint(equalTo: actionDescriptionLabel.bottomAnchor, constant: 24),
 
             cancelButton.centerYAnchor.constraint(equalTo: actionButton.centerYAnchor),
-            cancelButton.leadingAnchor.constraint(equalTo: actionButton.trailingAnchor, constant: .smallSpacing),
+            cancelButton.leadingAnchor.constraint(equalTo: actionButton.trailingAnchor, constant: .spacingXS),
 
-            gradientWrapper.topAnchor.constraint(equalTo: actionButton.bottomAnchor, constant: .mediumSpacing),
+            gradientWrapper.topAnchor.constraint(equalTo: actionButton.bottomAnchor, constant: .spacingS),
             gradientWrapper.heightAnchor.constraint(equalToConstant: 24),
             gradientWrapper.leadingAnchor.constraint(equalTo: actionWrapper.leadingAnchor),
             gradientWrapper.trailingAnchor.constraint(equalTo: actionWrapper.trailingAnchor),
             gradientWrapper.bottomAnchor.constraint(equalTo: actionWrapper.bottomAnchor)
+        ])
+    }
+
+    private func setupActionButtonIcon() {
+        let margins = UIEdgeInsets(
+            top: .spacingS,
+            leading: .spacingM,
+            bottom: .spacingS,
+            trailing: .spacingM + UserAdEmphasizedActionTableViewCell.actionButtonIconWidth
+        )
+
+        actionButton.style = actionButton.style.overrideStyle(margins: margins)
+
+        actionButton.addSubview(actionButtonIcon)
+
+        NSLayoutConstraint.activate([
+            actionButtonIcon.widthAnchor.constraint(equalToConstant: UserAdEmphasizedActionTableViewCell.actionButtonIconWidth),
+            actionButtonIcon.heightAnchor.constraint(equalToConstant: UserAdEmphasizedActionTableViewCell.actionButtonIconWidth),
+            actionButtonIcon.trailingAnchor.constraint(equalTo: actionButton.trailingAnchor, constant: -.spacingS - actionButton.style.borderWidth),
+            actionButtonIcon.centerYAnchor.constraint(equalTo: actionButton.centerYAnchor)
         ])
     }
 
@@ -201,6 +228,8 @@ public class UserAdEmphasizedActionTableViewCell: UITableViewCell {
     public func configure(with model: UserAdTableViewCellViewModel) {
         self.model = model
 
+        setupView()
+
         accessibilityLabel = model.accessibilityLabel
 
         userAdDetailsView.configure(with: .default, model: model)
@@ -212,11 +241,13 @@ public class UserAdEmphasizedActionTableViewCell: UITableViewCell {
         actionButton.setTitle(model.actionViewModel?.buttonTitle, for: .normal)
         cancelButton.setTitle(model.actionViewModel?.cancelButtonTitle, for: .normal)
 
-        if model.actionViewModel?.cancelButtonTitle != nil {
-            cancelButton.isHidden = false
-        }
+        if let actionViewModel = model.actionViewModel {
+            cancelButton.isHidden = actionViewModel.cancelButtonTitle == nil
 
-        setupView()
+            if actionViewModel.isExternalAction {
+                setupActionButtonIcon()
+            }
+        }
     }
 
     // MARK: - Selectors

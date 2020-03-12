@@ -39,8 +39,8 @@ public class FavoriteButtonView: UIView {
 
     private lazy var button: Button = {
         let button = Button(style: buttonStyle, size: .normal, withAutoLayout: true)
-        button.titleEdgeInsets = UIEdgeInsets(leading: -.smallSpacing)
-        button.imageEdgeInsets = UIEdgeInsets(leading: -.mediumSpacing)
+        button.titleEdgeInsets = UIEdgeInsets(leading: -.spacingXS)
+        button.imageEdgeInsets = UIEdgeInsets(leading: -.spacingS)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
         button.adjustsImageWhenHighlighted = false
         return button
@@ -49,8 +49,8 @@ public class FavoriteButtonView: UIView {
     private lazy var flatButton: Button = {
         let button = Button(style: flatButtonStyle, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
-        button.titleEdgeInsets = UIEdgeInsets(leading: .mediumSpacing)
-        button.imageEdgeInsets = UIEdgeInsets(top: -.smallSpacing)
+        button.titleEdgeInsets = UIEdgeInsets(leading: .spacingS)
+        button.imageEdgeInsets = UIEdgeInsets(top: -.spacingXS)
         button.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         button.contentHorizontalAlignment = .leading
         button.adjustsImageWhenHighlighted = false

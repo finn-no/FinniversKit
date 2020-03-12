@@ -53,7 +53,7 @@ class KeyValueGridDemoView: UIView {
     // MARK: - Private methods
 
     private func setup() {
-        directionalLayoutMargins = NSDirectionalEdgeInsets(all: .largeSpacing)
+        directionalLayoutMargins = NSDirectionalEdgeInsets(all: .spacingXL)
         addSubview(scrollView)
 
         scrollView.addSubview(keyValueGridView)

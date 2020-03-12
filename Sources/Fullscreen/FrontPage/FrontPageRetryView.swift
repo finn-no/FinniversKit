@@ -75,11 +75,11 @@ final class FrontPageRetryView: UIView {
         addSubview(loadingIndicatorView)
 
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            label.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
 
-            button.topAnchor.constraint(equalTo: label.bottomAnchor, constant: .largeSpacing),
+            button.topAnchor.constraint(equalTo: label.bottomAnchor, constant: .spacingXL),
             button.centerXAnchor.constraint(equalTo: label.centerXAnchor),
 
             loadingIndicatorView.centerXAnchor.constraint(equalTo: button.centerXAnchor),

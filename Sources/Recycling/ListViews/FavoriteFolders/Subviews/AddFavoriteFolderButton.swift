@@ -46,14 +46,14 @@ final class AddFavoriteFolderButton: UIButton {
         let imageSize = AddFavoriteFolderButton.imageSize
 
         imageView.frame = CGRect(
-            x: .mediumLargeSpacing,
+            x: .spacingM,
             y: (bounds.height - imageSize) / 2,
             width: imageSize,
             height: imageSize
         )
 
-        titleLabel.frame.origin.x = imageView.frame.maxX + .mediumLargeSpacing
-        titleLabel.frame.size.width = bounds.width - .mediumLargeSpacing - titleLabel.frame.minX
+        titleLabel.frame.origin.x = imageView.frame.maxX + .spacingM
+        titleLabel.frame.size.width = bounds.width - .spacingM - titleLabel.frame.minX
     }
 
     // MARK: - Setup

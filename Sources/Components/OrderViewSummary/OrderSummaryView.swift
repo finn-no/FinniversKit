@@ -46,7 +46,7 @@ private extension OrderSummaryView {
     func setup() {
         for line in orderLines {
             let orderLine = OrderSummaryLineView(title: line.title, price: line.price, withAutoLayout: true)
-            summaryView.setCustomSpacing(.mediumSpacing, after: orderLine)
+            summaryView.setCustomSpacing(.spacingS, after: orderLine)
 
             summaryView.addArrangedSubview(orderLine)
             summaryView.addConstraint(orderLine.heightAnchor.constraint(equalToConstant: orderLineViewHeight))
@@ -54,9 +54,9 @@ private extension OrderSummaryView {
 
         addSubview(summaryView)
         NSLayoutConstraint.activate([
-            summaryView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
-            summaryView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumSpacing),
-            summaryView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing),
+            summaryView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingM),
+            summaryView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingS),
+            summaryView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS),
         ])
     }
 }

@@ -90,9 +90,9 @@ public final class ReviewButtonView: UIView {
             hairlineSeperator.trailingAnchor.constraint(equalTo: trailingAnchor),
             hairlineSeperator.heightAnchor.constraint(equalToConstant: 1),
 
-            reviewButtonControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            reviewButtonControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            reviewButtonControl.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
+            reviewButtonControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            reviewButtonControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            reviewButtonControl.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
             reviewButtonControl.heightAnchor.constraint(equalToConstant: 48),
         ])
     }

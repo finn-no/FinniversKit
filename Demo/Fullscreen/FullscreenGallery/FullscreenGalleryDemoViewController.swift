@@ -39,10 +39,10 @@ private class DemoPreviewCell: UICollectionViewCell {
         contentView.addSubview(imageView)
 
         NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
-            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingS),
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingS),
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingS),
         ])
     }
 
@@ -225,26 +225,26 @@ class FullscreenGalleryDemoViewController: BaseDemoViewController<UIView>, UICol
         playgroundView.addSubview(helpLabel)
 
         NSLayoutConstraint.activate([
-            collectionView.heightAnchor.constraint(equalToConstant: collectionCellHeight + .largeSpacing),
+            collectionView.heightAnchor.constraint(equalToConstant: collectionCellHeight + .spacingXL),
             collectionView.leadingAnchor.constraint(equalTo: playgroundView.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: playgroundView.trailingAnchor),
             collectionView.centerYAnchor.constraint(equalTo: playgroundView.centerYAnchor),
 
-            thumbnailSwitch.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .largeSpacing),
-            thumbnailSwitch.leadingAnchor.constraint(equalTo: playgroundView.leadingAnchor, constant: .largeSpacing),
+            thumbnailSwitch.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingXL),
+            thumbnailSwitch.leadingAnchor.constraint(equalTo: playgroundView.leadingAnchor, constant: .spacingXL),
 
-            thumbnailLabel.leadingAnchor.constraint(equalTo: thumbnailSwitch.trailingAnchor, constant: .mediumLargeSpacing),
+            thumbnailLabel.leadingAnchor.constraint(equalTo: thumbnailSwitch.trailingAnchor, constant: .spacingM),
             thumbnailLabel.centerYAnchor.constraint(equalTo: thumbnailSwitch.centerYAnchor),
 
-            simulateLoadingSwitch.topAnchor.constraint(equalTo: thumbnailSwitch.bottomAnchor, constant: .mediumSpacing),
-            simulateLoadingSwitch.leadingAnchor.constraint(equalTo: playgroundView.leadingAnchor, constant: .largeSpacing),
+            simulateLoadingSwitch.topAnchor.constraint(equalTo: thumbnailSwitch.bottomAnchor, constant: .spacingS),
+            simulateLoadingSwitch.leadingAnchor.constraint(equalTo: playgroundView.leadingAnchor, constant: .spacingXL),
 
-            simulateLoadingLabel.leadingAnchor.constraint(equalTo: simulateLoadingSwitch.trailingAnchor, constant: .mediumLargeSpacing),
+            simulateLoadingLabel.leadingAnchor.constraint(equalTo: simulateLoadingSwitch.trailingAnchor, constant: .spacingM),
             simulateLoadingLabel.centerYAnchor.constraint(equalTo: simulateLoadingSwitch.centerYAnchor),
 
-            helpLabel.leadingAnchor.constraint(equalTo: playgroundView.leadingAnchor, constant: .mediumLargeSpacing),
-            helpLabel.trailingAnchor.constraint(equalTo: playgroundView.trailingAnchor, constant: -.mediumLargeSpacing),
-            helpLabel.topAnchor.constraint(equalTo: playgroundView.safeAreaLayoutGuide.topAnchor, constant: .largeSpacing)
+            helpLabel.leadingAnchor.constraint(equalTo: playgroundView.leadingAnchor, constant: .spacingM),
+            helpLabel.trailingAnchor.constraint(equalTo: playgroundView.trailingAnchor, constant: -.spacingM),
+            helpLabel.topAnchor.constraint(equalTo: playgroundView.safeAreaLayoutGuide.topAnchor, constant: .spacingXL)
         ])
     }
 

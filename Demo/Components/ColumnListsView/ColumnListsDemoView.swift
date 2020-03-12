@@ -87,8 +87,8 @@ class ColumnListsDemoView: UIView {
         columnListsView.configure(with: sampleData, numberOfColumns: numberOfColumnsForTraits())
         NSLayoutConstraint.activate([
             columnListsView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            columnListsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            columnListsView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            columnListsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            columnListsView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
         ])
     }
 }

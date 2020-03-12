@@ -30,7 +30,7 @@ final class BetaFeatureDemoView: UIView {
 
     func setup() {
         addSubview(betaFeatureView)
-        layoutMargins = UIEdgeInsets(vertical: 0, horizontal: .mediumLargeSpacing)
+        layoutMargins = UIEdgeInsets(vertical: 0, horizontal: .spacingM)
         NSLayoutConstraint.activate([
             betaFeatureView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
             betaFeatureView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),

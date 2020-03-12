@@ -16,16 +16,17 @@ public class ObjectPagePriceView: UIView {
 
     private lazy var titleLabel = Label(style: .body, withAutoLayout: true)
     private lazy var totalPriceLabel = Label(style: .title3Strong, withAutoLayout: true)
+    private lazy var subtitleLabel = Label(style: .caption, withAutoLayout: true)
 
     private lazy var wrapperStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [textStackView, linkButtonListView])
         stackView.axis = .vertical
-        stackView.spacing = .mediumLargeSpacing
+        stackView.spacing = .spacingM
         return stackView
     }()
 
     private lazy var textStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, totalPriceLabel])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, totalPriceLabel, subtitleLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         return stackView
@@ -58,6 +59,9 @@ public class ObjectPagePriceView: UIView {
     public func configure(with viewModel: ObjectPagePriceViewModel) {
         titleLabel.text = viewModel.title
         totalPriceLabel.text = viewModel.totalPrice
+
+        subtitleLabel.text = viewModel.subtitle
+        subtitleLabel.isHidden = viewModel.subtitle?.isEmpty ?? true
 
         linkButtonListView.configure(with: viewModel.links)
         linkButtonListView.isHidden = viewModel.links.isEmpty

@@ -32,7 +32,7 @@ class SettingsViewConsentCell: SettingsViewCell {
 
         NSLayoutConstraint.activate([
             statusLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            statusLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing)
+            statusLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingS)
         ])
     }
 }

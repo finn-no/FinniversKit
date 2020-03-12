@@ -50,24 +50,24 @@ class BuyerPickerProfileCell: UITableViewCell {
 
         let profileStack = UIStackView(arrangedSubviews: [profileImage, name])
         profileStack.alignment = .center
-        profileStack.spacing = .mediumSpacing
+        profileStack.spacing = .spacingS
         profileStack.translatesAutoresizingMaskIntoConstraints = false
 
         contentView.addSubview(profileStack)
         contentView.addSubview(hairlineView)
 
         NSLayoutConstraint.activate([
-            profileStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
-            profileStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            profileStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            profileStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
+            profileStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
+            profileStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            profileStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            profileStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingS),
 
             profileImage.heightAnchor.constraint(equalToConstant: BuyerPickerProfileCell.profileImageSize),
             profileImage.widthAnchor.constraint(equalToConstant: BuyerPickerProfileCell.profileImageSize),
 
             hairlineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            hairlineView.leadingAnchor.constraint(equalTo: profileImage.leadingAnchor, constant: .mediumSpacing),
-            hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: .largeSpacing),
+            hairlineView.leadingAnchor.constraint(equalTo: profileImage.leadingAnchor, constant: .spacingS),
+            hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: .spacingXL),
             hairlineView.heightAnchor.constraint(equalToConstant: 0.5)
         ])
 

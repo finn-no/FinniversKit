@@ -5,8 +5,8 @@
 import UIKit
 
 public final class DrumMachineView: UIView {
-    private let padSpacing: CGFloat = .largeSpacing
-    private let cellSpacing: CGFloat = .mediumSpacing
+    private let padSpacing: CGFloat = .spacingXL
+    private let cellSpacing: CGFloat = .spacingS
     private let numberOfPads = 16
     private var currentPad = 0
     private var timer: Timer?
@@ -142,13 +142,13 @@ public final class DrumMachineView: UIView {
             selectorView.trailingAnchor.constraint(equalTo: trailingAnchor),
             selectorView.heightAnchor.constraint(equalToConstant: selectorViewHeight),
 
-            collectionView.topAnchor.constraint(equalTo: selectorView.bottomAnchor, constant: .largeSpacing),
+            collectionView.topAnchor.constraint(equalTo: selectorView.bottomAnchor, constant: .spacingXL),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: beatsPerMinuteSlider.topAnchor),
 
-            beatsPerMinuteSlider.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor, constant: .mediumLargeSpacing),
-            beatsPerMinuteSlider.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor, constant: -.mediumLargeSpacing),
+            beatsPerMinuteSlider.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor, constant: .spacingM),
+            beatsPerMinuteSlider.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor, constant: -.spacingM),
             beatsPerMinuteSlider.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }

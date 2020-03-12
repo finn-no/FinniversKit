@@ -29,8 +29,8 @@ class ViewingsDemoView: UIView {
         viewingsView.configure(with: viewModel)
 
         NSLayoutConstraint.activate([
-            viewingsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            viewingsView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            viewingsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            viewingsView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
             viewingsView.heightAnchor.constraint(equalToConstant: viewingsView.heightNeeded(forWidth: viewingsView.frame.size.width)),
             viewingsView.centerXAnchor.constraint(equalTo: centerXAnchor),
             viewingsView.centerYAnchor.constraint(equalTo: centerYAnchor)

@@ -15,7 +15,7 @@ extension SafetyElementsView {
             let stackView = UIStackView(withAutoLayout: true)
             stackView.axis = .horizontal
             stackView.alignment = .center
-            stackView.spacing = .mediumSpacing
+            stackView.spacing = .spacingS
             return stackView
         }()
 
@@ -23,7 +23,7 @@ extension SafetyElementsView {
             let stackView = UIStackView(withAutoLayout: true)
             stackView.axis = .vertical
             stackView.alignment = .leading
-            stackView.spacing = .mediumSpacing
+            stackView.spacing = .spacingS
             stackView.distribution = .equalSpacing
             return stackView
         }()
@@ -65,7 +65,7 @@ extension SafetyElementsView {
         func configure(with viewModel: SafetyElementViewModel, isLastElement: Bool) {
             iconImageView.image = viewModel.icon.withRenderingMode(.alwaysTemplate)
             titleLabel.text = viewModel.title
-            layoutMargins.bottom = isLastElement ? 0 : .mediumLargeSpacing
+            layoutMargins.bottom = isLastElement ? 0 : .spacingM
             contentView.configure(with: viewModel)
         }
 
@@ -81,7 +81,7 @@ extension SafetyElementsView {
             addSubview(outerStackView)
             outerStackView.fillInSuperviewLayoutMargins()
 
-            layoutMargins = UIEdgeInsets(top: .mediumLargeSpacing)
+            layoutMargins = UIEdgeInsets(top: .spacingM)
         }
     }
 }

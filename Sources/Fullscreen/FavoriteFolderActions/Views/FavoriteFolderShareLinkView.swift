@@ -72,12 +72,12 @@ final class FavoriteFolderShareLinkView: UIView {
 
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             iconImageView.widthAnchor.constraint(equalToConstant: FavoriteActionCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             descriptionLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            descriptionLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing),
+            descriptionLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .spacingM),
             descriptionLabel.trailingAnchor.constraint(equalTo: button.leadingAnchor),
 
             button.centerYAnchor.constraint(equalTo: centerYAnchor),

@@ -306,21 +306,21 @@ public class EmptyView: UIView {
         startMotionManager()
 
         NSLayoutConstraint.activate([
-            headerLabel.topAnchor.constraint(equalTo: topAnchor, constant: .veryLargeSpacing),
-            headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            headerLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXXL),
+            headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
+            headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
 
-            messageLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: .largeSpacing),
-            messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            messageLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: .spacingXL),
+            messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
+            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
 
-            imageView.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: .largeSpacing),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            imageView.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: .spacingXL),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
 
-            actionButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .largeSpacing),
-            actionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing)
+            actionButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .spacingXL),
+            actionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
+            actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL)
         ])
 
         hasSetup = true

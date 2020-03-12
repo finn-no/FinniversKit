@@ -71,16 +71,16 @@ public final class SplashView: UIView {
             rightLogoView.heightAnchor.constraint(equalToConstant: 50),
             rightLogoViewWidthConstraint,
 
-            letterViews[0].leadingAnchor.constraint(equalTo: centerXAnchor, constant: -.mediumSpacing),
+            letterViews[0].leadingAnchor.constraint(equalTo: centerXAnchor, constant: -.spacingS),
             letterViews[0].bottomAnchor.constraint(equalTo: rightLogoView.bottomAnchor),
 
-            letterViews[1].leadingAnchor.constraint(equalTo: letterViews[0].trailingAnchor, constant: .smallSpacing),
+            letterViews[1].leadingAnchor.constraint(equalTo: letterViews[0].trailingAnchor, constant: .spacingXS),
             letterViews[1].bottomAnchor.constraint(equalTo: letterViews[0].bottomAnchor),
 
-            letterViews[2].leadingAnchor.constraint(equalTo: letterViews[1].trailingAnchor, constant: .smallSpacing),
+            letterViews[2].leadingAnchor.constraint(equalTo: letterViews[1].trailingAnchor, constant: .spacingXS),
             letterViews[2].bottomAnchor.constraint(equalTo: letterViews[0].bottomAnchor),
 
-            letterViews[3].leadingAnchor.constraint(equalTo: letterViews[2].trailingAnchor, constant: .smallSpacing),
+            letterViews[3].leadingAnchor.constraint(equalTo: letterViews[2].trailingAnchor, constant: .spacingXS),
             letterViews[3].bottomAnchor.constraint(equalTo: letterViews[0].bottomAnchor)
         ])
     }

@@ -74,12 +74,12 @@ private extension AdConfirmationObjectView {
             imageHeight,
 
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .mediumLargeSpacing),
-            titleLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -.largeSpacing),
+            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .spacingM),
+            titleLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -.spacingXL),
 
             bodyLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            bodyLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -.largeSpacing),
+            bodyLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -.spacingXL),
         ])
     }
 
@@ -89,8 +89,8 @@ private extension AdConfirmationObjectView {
         addSubview(checkmarkView)
 
         NSLayoutConstraint.activate([
-            checkmarkView.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: .mediumLargeSpacing),
-            checkmarkView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -.mediumLargeSpacing),
+            checkmarkView.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: .spacingM),
+            checkmarkView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -.spacingM),
             checkmarkView.widthAnchor.constraint(equalToConstant: 40),
             checkmarkView.heightAnchor.constraint(equalToConstant: 40)
         ])

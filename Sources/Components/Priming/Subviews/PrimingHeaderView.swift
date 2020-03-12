@@ -39,13 +39,13 @@ final class PrimingHeaderView: BottomShadowView {
         backgroundColor = .bgPrimary
         addSubview(headingLabel)
 
-        let verticalSpacing = .mediumLargeSpacing + .mediumSpacing
+        let verticalSpacing = .spacingM + .spacingS
 
         layoutMargins = UIEdgeInsets(
             top: verticalSpacing,
-            left: .mediumLargeSpacing,
+            left: .spacingM,
             bottom: verticalSpacing,
-            right: .mediumLargeSpacing
+            right: .spacingM
         )
 
         headingLabel.fillInSuperviewLayoutMargins()
