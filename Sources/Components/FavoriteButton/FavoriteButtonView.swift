@@ -15,6 +15,10 @@ public protocol FavoriteButtonViewDelegate: AnyObject {
 }
 
 public class FavoriteButtonView: UIView {
+    /**
+     This view is set up to support two different kinds of favorite button layouts, that will be AB tested in different releases.
+     Excess code will be removed when the test results are ready.
+     */
 
     // MARK: - Public properties
 
@@ -25,6 +29,13 @@ public class FavoriteButtonView: UIView {
     private var viewModel: FavoriteButtonViewModel?
     private let buttonStyle = Button.Style.default.overrideStyle(borderColor: .btnDisabled)
 
+    private lazy var button: Button = {
+        let button = Button(style: buttonStyle, size: .normal, withAutoLayout: true)
+        button.titleEdgeInsets = UIEdgeInsets(leading: .mediumSpacing)
+        button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
+        return button
+    }()
+
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [button, subtitleLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -33,15 +44,6 @@ public class FavoriteButtonView: UIView {
         stackView.distribution = .equalSpacing
         stackView.spacing = .verySmallSpacing
         return stackView
-    }()
-
-    private lazy var button: Button = {
-        let button = Button(style: buttonStyle, size: .normal, withAutoLayout: true)
-        button.contentEdgeInsets = UIEdgeInsets(vertical: 0, horizontal: .smallSpacing)
-        button.imageEdgeInsets = UIEdgeInsets(leading: -.mediumSpacing)
-        button.titleEdgeInsets = UIEdgeInsets(leading: .mediumSpacing)
-        button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
-        return button
     }()
 
     private lazy var subtitleLabel: Label = {
@@ -54,14 +56,19 @@ public class FavoriteButtonView: UIView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        setupABTest1()
     }
 
     public required init?(coder: NSCoder) { fatalError() }
 
     // MARK: - Setup
 
-    private func setup() {
+    private func setupABTest1() {
+        addSubview(button)
+        button.fillInSuperview()
+    }
+
+    private func setupABTest2() {
         addSubview(stackView)
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: topAnchor),

@@ -5,9 +5,13 @@
 import FinniversKit
 
 class FavoriteButtonDemoView: UIView {
-    private lazy var favoriteButton = FavoriteButtonView(withAutoLayout: true)
-    private var isFavorited = false {
-        didSet { favoriteButton.configure(isFavorited: isFavorited) }
+    private lazy var favoriteButtonView = FavoriteButtonView(withAutoLayout: true)
+    private var data = FavoriteButtonData(isFavorite: false)
+    private var isFavorite = false {
+        didSet {
+            data.isFavorite = isFavorite
+            favoriteButtonView.configure(with: data)
+        }
     }
 
     // MARK: - Init
@@ -24,32 +28,20 @@ class FavoriteButtonDemoView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        favoriteButton.configure(isFavorited: isFavorited)
-        favoriteButton.delegate = self
-        addSubview(favoriteButton)
+        favoriteButtonView.configure(with: data)
+        favoriteButtonView.delegate = self
+        addSubview(favoriteButtonView)
 
         NSLayoutConstraint.activate([
-            favoriteButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            favoriteButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing)
+            favoriteButtonView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            favoriteButtonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            favoriteButtonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing)
         ])
-
     }
 }
 
 extension FavoriteButtonDemoView: FavoriteButtonViewDelegate {
-    func favoriteButtonDidSelect(_ button: FavoriteButtonView) {
-        isFavorited.toggle()
-    }
-}
-
-private extension FavoriteButtonView {
-    func configure(isFavorited: Bool) {
-        switch isFavorited {
-        case true:
-            configure(withTitle: "Lagt til som favoritt", subtitle: "123 456 har lagt til som favoritt", isFavorited: true)
-        case false:
-            configure(withTitle: "Legg til favoritt", subtitle: "123 456 har lagt til som favoritt", isFavorited: false)
-        }
+    func favoriteButtonDidSelect(_ favoriteButtonView: FavoriteButtonView, button: Button, viewModel: FavoriteButtonViewModel) {
+        isFavorite.toggle()
     }
 }

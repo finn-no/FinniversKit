@@ -224,6 +224,7 @@
 		4974725B239A48BF0058D7B0 /* SearchListEmptyDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974725A239A48BF0058D7B0 /* SearchListEmptyDemoView.swift */; };
 		4974725D239A49480058D7B0 /* SearchListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974725C239A49480058D7B0 /* SearchListEmptyView.swift */; };
 		4974725F239A49570058D7B0 /* SearchListEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974725E239A49570058D7B0 /* SearchListEmptyViewModel.swift */; };
+		499543E0241A2D190014DAAD /* FavoriteButtonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499543DF241A2D190014DAAD /* FavoriteButtonData.swift */; };
 		49F114B22397F70E007D74EF /* SaveSearchPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F114B12397F70E007D74EF /* SaveSearchPromptView.swift */; };
 		49F114B623980235007D74EF /* SaveSearchPromptViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F114B523980234007D74EF /* SaveSearchPromptViewDemoView.swift */; };
 		559FD9BD2051684F00A101B0 /* BroadcastMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9BB205122C500A101B0 /* BroadcastMessageTests.swift */; };
@@ -880,6 +881,7 @@
 		4974725A239A48BF0058D7B0 /* SearchListEmptyDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListEmptyDemoView.swift; sourceTree = "<group>"; };
 		4974725C239A49480058D7B0 /* SearchListEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListEmptyView.swift; sourceTree = "<group>"; };
 		4974725E239A49570058D7B0 /* SearchListEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListEmptyViewModel.swift; sourceTree = "<group>"; };
+		499543DF241A2D190014DAAD /* FavoriteButtonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButtonData.swift; sourceTree = "<group>"; };
 		49F114B12397F70E007D74EF /* SaveSearchPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchPromptView.swift; sourceTree = "<group>"; };
 		49F114B523980234007D74EF /* SaveSearchPromptViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchPromptViewDemoView.swift; sourceTree = "<group>"; };
 		559FD9BB205122C500A101B0 /* BroadcastMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastMessageTests.swift; sourceTree = "<group>"; };
@@ -2373,6 +2375,7 @@
 			isa = PBXGroup;
 			children = (
 				68AE05DC8A1CA86502AB3D19 /* FavoriteButtonDemoView.swift */,
+				499543DF241A2D190014DAAD /* FavoriteButtonData.swift */,
 			);
 			path = FavoriteButton;
 			sourceTree = "<group>";
@@ -4940,6 +4943,7 @@
 				9B7D5A2D22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift in Sources */,
 				DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */,
 				4443F9B1209D5ECE00E35719 /* Helpers.swift in Sources */,
+				499543E0241A2D190014DAAD /* FavoriteButtonData.swift in Sources */,
 				CF87A85A229C0C6600DA8243 /* ContactFormDemoView.swift in Sources */,
 				AA864B4D22329E7100BAE95A /* UIDevice.swift in Sources */,
 				9B28DE872326756E00D69C15 /* PanelDemoView.swift in Sources */,
