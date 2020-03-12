@@ -26,7 +26,7 @@ public class FavoriteButtonView: UIView {
 
     // MARK: - Private properties
 
-    enum ABTestVariant {
+    private enum ABTestVariant {
         case buttonOnly
         case buttonWithCounter
     }

@@ -34,8 +34,8 @@ class FavoriteButtonDemoView: UIView {
 
         NSLayoutConstraint.activate([
             favoriteButtonView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            favoriteButtonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            favoriteButtonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing)
+            favoriteButtonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            favoriteButtonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
         ])
     }
 }
