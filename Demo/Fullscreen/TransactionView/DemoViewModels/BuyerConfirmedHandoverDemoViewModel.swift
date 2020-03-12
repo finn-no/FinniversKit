@@ -2,6 +2,8 @@
 //  Created by Saleh-Jan, Robin on 28/02/2020.
 //
 
+import Foundation.NSString
+
 extension TransactionDemoViewDefaultData {
     static var BuyerConfirmedHandoverDemoViewModel = TransactionModel(
         title: "Salgsprosess",
@@ -30,7 +32,7 @@ extension TransactionDemoViewDefaultData {
             TransactionStepModel(
                 state: .completed,
                 title: "Kontrakt",
-                body: "Begge har signert kontrakten.",
+                body: NSAttributedString(string: "Begge har signert kontrakten."),
                 primaryButton: TransactionStepPrimaryButtonModel(
                     text: "Gå til kontrakt",
                     style: "flat",
@@ -40,13 +42,13 @@ extension TransactionDemoViewDefaultData {
             TransactionStepModel(
                 state: .completed,
                 title: "Betaling",
-                body: "Kjøper betalte 1. februar 2020.",
+                body: NSAttributedString(string: "Kjøper betalte 1. februar 2020."),
                 detail: "Utbetalingen starter først når begge har bekreftet at overleveringen har skjedd."),
 
             TransactionStepModel(
                 state: .active,
                 title: "Overlevering",
-                body: "<p>Kjøper har bekreftet.</p><p>Dere må bekrefte før:<br/><strong>8. februar 2020.</strong></p><ol><li>Ved oppmøte registrerer dere først eierskiftet digitalt hos Statens vegvesen.</li><li>Deretter må <strong>begge</strong> bekrefte at overleveringen har skjedd, og at pengene kan utbetales.</li></ol>",
+                body: NSAttributedString(string: "<p>Kjøper har bekreftet.</p><p>Dere må bekrefte før:<br/><strong>8. februar 2020.</strong></p><ol><li>Ved oppmøte registrerer dere først eierskiftet digitalt hos Statens vegvesen.</li><li>Deretter må <strong>begge</strong> bekrefte at overleveringen har skjedd, og at pengene kan utbetales.</li></ol>"),
                 primaryButton: TransactionStepPrimaryButtonModel(
                     text: "Bekreft overlevering",
                     style: "call_to_action",
@@ -57,7 +59,7 @@ extension TransactionDemoViewDefaultData {
             TransactionStepModel(
                 state: .notStarted,
                 title: "Gratulerer med salget!",
-                body: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før».",
+                body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før»."),
                 detail: "Det kan ta noen dager før pengene dukker opp på kontoen din.")
     ])
 }

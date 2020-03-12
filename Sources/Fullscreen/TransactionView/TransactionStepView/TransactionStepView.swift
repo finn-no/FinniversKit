@@ -28,7 +28,7 @@ public enum TransactionStepViewState: String {
         }
     }
 
-    var style: TransactionStepView.Style {
+    public var style: TransactionStepView.Style {
         switch self {
         case .notStarted:
             return .notStarted
@@ -182,7 +182,7 @@ private extension TransactionStepView {
 
     private func setupOptionalViews() {
         if let bodyText = model.body {
-            bodyView.text = bodyText
+            bodyView.attributedText = bodyText
 
             verticalStackView.addArrangedSubview(bodyView)
             bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: .spacingM)

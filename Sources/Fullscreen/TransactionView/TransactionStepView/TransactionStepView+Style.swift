@@ -10,7 +10,7 @@ public extension TransactionStepView {
         case active
         case completed
 
-        var backgroundColor: UIColor {
+        public var backgroundColor: UIColor {
             switch self {
             case .notStarted, .completed:
                 return .bgPrimary
@@ -19,7 +19,7 @@ public extension TransactionStepView {
             }
         }
 
-        var cornerRadius: CGFloat {
+        public var cornerRadius: CGFloat {
             switch self {
             case .notStarted:
                 return 0.0
@@ -28,14 +28,14 @@ public extension TransactionStepView {
             }
         }
 
-        var titleFont: UIFont {
+        public var titleFont: UIFont {
             switch self {
             default:
                 return .title3Strong
             }
         }
 
-        var titleTextColor: UIColor {
+        public var titleTextColor: UIColor {
             switch self {
             case .notStarted:
                 return .textSecondary
@@ -44,14 +44,14 @@ public extension TransactionStepView {
             }
         }
 
-        var bodyFont: UIFont {
+        public var bodyFont: UIFont {
             switch self {
             default:
                 return .body
             }
         }
 
-        var bodyTextColor: UIColor {
+        public var bodyTextColor: UIColor {
             switch self {
             case .notStarted:
                 return .textSecondary
@@ -60,14 +60,14 @@ public extension TransactionStepView {
             }
         }
 
-        var detailFont: UIFont {
+        public var detailFont: UIFont {
             switch self {
             default:
                 return .caption
             }
         }
 
-        var detailTextColor: UIColor {
+        public var detailTextColor: UIColor {
             switch self {
             case .notStarted:
                 return .textSecondary
@@ -76,7 +76,7 @@ public extension TransactionStepView {
             }
         }
 
-        var actionButtonEnabled: Bool {
+        public var actionButtonEnabled: Bool {
             switch self {
             case .notStarted:
                 return false

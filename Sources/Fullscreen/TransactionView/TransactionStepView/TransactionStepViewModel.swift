@@ -7,7 +7,7 @@ import Foundation
 public protocol TransactionStepViewModel {
     var state: TransactionStepViewState { get }
     var title: String { get }
-    var body: String? { get }
+    var body: NSAttributedString? { get }
     var primaryButton: TransactionStepPrimaryButtonViewModel? { get }
     var detail: String? { get }
 }
