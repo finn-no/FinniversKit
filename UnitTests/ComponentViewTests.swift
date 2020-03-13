@@ -278,4 +278,8 @@ class ComponentViewTests: XCTestCase {
     func testObjectPageTitleView() {
         snapshot(.objectPageTitleView)
     }
+
+    func testFavoriteButton() {
+        snapshot(.favoriteButton)
+    }
 }
