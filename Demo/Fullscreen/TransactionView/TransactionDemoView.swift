@@ -40,11 +40,11 @@ extension TransactionDemoView: TransactionViewDelegate {
         refreshControl.endRefreshing()
     }
 
-    func transactionViewDidSelectPrimaryButton(_ view: TransactionView,
-                                               inTransactionStep step: Int,
-                                               withAction action: TransactionStepView.PrimaryButton.Action,
-                                               withUrl urlString: String?,
-                                               withFallbackUrl fallbackUrlString: String?) {
+    func transactionViewDidSelectActionButton(_ view: TransactionView,
+                                              inTransactionStep step: Int,
+                                              withAction action: TransactionStepView.ActionButton.Action,
+                                              withUrl urlString: String?,
+                                              withFallbackUrl fallbackUrlString: String?) {
 
         print("Did tap button in step: \(step), with action: \(action.rawValue), with urlString: \(urlString ?? ""), with fallbackUrl:\(fallbackUrlString ?? "")")
     }

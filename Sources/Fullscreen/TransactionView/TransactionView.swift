@@ -6,9 +6,10 @@ import Foundation
 
 public protocol TransactionViewDelegate: AnyObject {
     func transactionViewDidBeginRefreshing(_ refreshControl: RefreshControl)
-    func transactionViewDidSelectPrimaryButton(_ view: TransactionView, inTransactionStep step: Int,
-                                               withAction action: TransactionStepView.PrimaryButton.Action, withUrl urlString: String?,
-                                               withFallbackUrl fallbackUrlString: String?)
+
+    func transactionViewDidSelectActionButton(_ view: TransactionView, inTransactionStep step: Int,
+                                              withAction action: TransactionStepView.ActionButton.Action, withUrl urlString: String?,
+                                              withFallbackUrl fallbackUrlString: String?)
 }
 
 public protocol TransactionViewDataSource: AnyObject {
@@ -260,12 +261,14 @@ private extension TransactionView {
 
 extension TransactionView: TransactionStepViewDelegate {
     public func transactionStepViewDidTapPrimaryButton(_ view: TransactionStepView, inTransactionStep step: Int,
-                                                       withAction action: TransactionStepView.PrimaryButton.Action, withUrl url: String?,
+                                                       withAction action: TransactionStepView.ActionButton.Action, withUrl url: String?,
                                                        withFallbackUrl fallbackUrl: String?) {
 
-        delegate?.transactionViewDidSelectPrimaryButton(self, inTransactionStep: step,
-                                                        withAction: action, withUrl: url,
-                                                        withFallbackUrl: fallbackUrl)
+        delegate?.transactionViewDidSelectActionButton(self,
+                                                       inTransactionStep: step,
+                                                       withAction: action,
+                                                       withUrl: url,
+                                                       withFallbackUrl: fallbackUrl)
     }
 }
 

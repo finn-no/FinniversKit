@@ -28,11 +28,12 @@ public struct TransactionStepModel: TransactionStepViewModel {
     public var state: TransactionStepViewState
     public var title: String
     public var body: NSAttributedString?
-    public var primaryButton: TransactionStepPrimaryButtonViewModel?
+    public var primaryButton: TransactionStepActionButtonViewModel?
+    public var secondaryButton: TransactionStepActionButtonViewModel?
     public var detail: String?
 }
 
-public struct TransactionStepPrimaryButtonModel: TransactionStepPrimaryButtonViewModel {
+public struct TransactionStepActionButtonModel: TransactionStepActionButtonViewModel {
     public var text: String
     public var style: String
     public var action: String?

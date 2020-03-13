@@ -22,7 +22,7 @@ extension TransactionDemoViewDefaultData {
             TransactionStepModel(
                 state: .completed,
                 title: "Annonsen er lagt ut",
-                primaryButton: TransactionStepPrimaryButtonModel(
+                primaryButton: TransactionStepActionButtonModel(
                     text: "Se annonsen",
                     style: "flat",
                     action: "see_ad",
@@ -32,7 +32,7 @@ extension TransactionDemoViewDefaultData {
                 state: .completed,
                 title: "Kontrakt",
                 body: NSAttributedString(string: "Begge har signert kontrakten."),
-                primaryButton: TransactionStepPrimaryButtonModel(
+                primaryButton: TransactionStepActionButtonModel(
                     text: "Gå til kontrakt",
                     style: "flat",
                     url: "https://www.google.com/search?q=contract+signed"
@@ -42,7 +42,7 @@ extension TransactionDemoViewDefaultData {
                 state: .active,
                 title: "Betaling",
                 body: NSAttributedString(string: "Før kjøper kan overføre pengene, må du forberede betalingen."),
-                primaryButton: TransactionStepPrimaryButtonModel(
+                primaryButton: TransactionStepActionButtonModel(
                     text: "Forbered betaling",
                     style: "call_to_action",
                     url: "https://www.google.com/search?q=contract+signed"

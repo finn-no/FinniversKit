@@ -6,7 +6,7 @@ import UIKit
 
 public protocol TransactionStepViewDelegate: AnyObject {
     func transactionStepViewDidTapPrimaryButton(_ view: TransactionStepView, inTransactionStep step: Int,
-                                                withAction action: TransactionStepView.PrimaryButton.Action, withUrl urlString: String?,
+                                                withAction action: TransactionStepView.ActionButton.Action, withUrl urlString: String?,
                                                 withFallbackUrl fallbackUrlString: String?)
 }
 
@@ -49,7 +49,8 @@ public class TransactionStepView: UIView {
 
     private var step: Int
     private var model: TransactionStepViewModel
-    private var primaryButtonModel: TransactionStepPrimaryButtonViewModel?
+    private var primaryButtonModel: TransactionStepActionButtonViewModel?
+    private var secondaryButtonModel: TransactionStepActionButtonViewModel?
 
     private var style: TransactionStepView.Style
     private var activeStepColor: UIColor = .bgTertiary
@@ -116,6 +117,7 @@ public class TransactionStepView: UIView {
         self.step = step
         self.model = model
         self.primaryButtonModel = model.primaryButton ?? nil
+        self.secondaryButtonModel = model.secondaryButton ?? nil
         self.style = model.state.style
 
         super.init(frame: .zero)
@@ -190,7 +192,7 @@ private extension TransactionStepView {
 
         if let buttonModel = primaryButtonModel {
             let buttonText = buttonModel.text
-            let buttonStyle = TransactionStepView.PrimaryButton(rawValue: buttonModel.style).style
+            let buttonStyle = TransactionStepView.ActionButton(rawValue: buttonModel.style).style
 
             let primaryButton = Button(style: buttonStyle, withAutoLayout: true)
             primaryButton.setTitle(buttonText, for: .normal)
@@ -222,7 +224,7 @@ private extension TransactionStepView {
 
 private extension TransactionStepView {
     @objc func handlePrimaryButtonTap() {
-        let action = PrimaryButton.Action(rawValue: primaryButtonModel?.action ?? "unknown")
+        let action = ActionButton.Action(rawValue: primaryButtonModel?.action ?? "unknown")
         let urlString = primaryButtonModel?.url
         let fallbackUrlString = primaryButtonModel?.fallbackUrl
 
