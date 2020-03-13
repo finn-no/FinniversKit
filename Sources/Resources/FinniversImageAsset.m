@@ -51,7 +51,11 @@ NSString *const FinniversImageAssetedit = @"edit";
 NSString *const FinniversImageAsseteditBig = @"editBig";
 NSString *const FinniversImageAsseterror = @"error";
 NSString *const FinniversImageAsseteyeHide = @"eyeHide";
+NSString *const FinniversImageAssetfavoriteActive = @"favoriteActive";
+NSString *const FinniversImageAssetfavoriteActiveSmall = @"favoriteActiveSmall";
 NSString *const FinniversImageAssetfavoriteAdd = @"favoriteAdd";
+NSString *const FinniversImageAssetfavoriteDefault = @"favoriteDefault";
+NSString *const FinniversImageAssetfavoriteDefaultSmall = @"favoriteDefaultSmall";
 NSString *const FinniversImageAssetfavoritesComment = @"favoritesComment";
 NSString *const FinniversImageAssetfavoritesDelete = @"favoritesDelete";
 NSString *const FinniversImageAssetfavoritesEdit = @"favoritesEdit";
@@ -78,10 +82,6 @@ NSString *const FinniversImageAssetgiftSquareYellow = @"giftSquareYellow";
 NSString *const FinniversImageAssetgiftTriangleGreen = @"giftTriangleGreen";
 NSString *const FinniversImageAssetgridView = @"gridView";
 NSString *const FinniversImageAssethandshake = @"handshake";
-NSString *const FinniversImageAssetheartActive = @"heartActive";
-NSString *const FinniversImageAssetheartActiveSmall = @"heartActiveSmall";
-NSString *const FinniversImageAssetheartDefault = @"heartDefault";
-NSString *const FinniversImageAssetheartDefaultSmall = @"heartDefaultSmall";
 NSString *const FinniversImageAssetheartEmpty = @"heartEmpty";
 NSString *const FinniversImageAssetheartEmptyDashed = @"heartEmptyDashed";
 NSString *const FinniversImageAssethelp = @"help";
@@ -221,7 +221,11 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAsseteditBig,
              FinniversImageAsseterror,
              FinniversImageAsseteyeHide,
+             FinniversImageAssetfavoriteActive,
+             FinniversImageAssetfavoriteActiveSmall,
              FinniversImageAssetfavoriteAdd,
+             FinniversImageAssetfavoriteDefault,
+             FinniversImageAssetfavoriteDefaultSmall,
              FinniversImageAssetfavoritesComment,
              FinniversImageAssetfavoritesDelete,
              FinniversImageAssetfavoritesEdit,
@@ -248,10 +252,6 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetgiftTriangleGreen,
              FinniversImageAssetgridView,
              FinniversImageAssethandshake,
-             FinniversImageAssetheartActive,
-             FinniversImageAssetheartActiveSmall,
-             FinniversImageAssetheartDefault,
-             FinniversImageAssetheartDefaultSmall,
              FinniversImageAssetheartEmpty,
              FinniversImageAssetheartEmptyDashed,
              FinniversImageAssethelp,

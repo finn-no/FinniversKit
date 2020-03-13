@@ -117,9 +117,9 @@ public class FavoriteButtonView: UIView {
         let image: UIImage?
         switch activeTestVariant {
         case .buttonOnly:
-            image = isFavorite ? UIImage(named: .heartActiveSmall) : UIImage(named: .heartDefaultSmall)
+            image = isFavorite ? UIImage(named: .favoriteActiveSmall) : UIImage(named: .favoriteDefaultSmall)
         case .buttonWithCounter:
-            image = isFavorite ? UIImage(named: .heartActive) : UIImage(named: .heartDefault)
+            image = isFavorite ? UIImage(named: .favoriteActive) : UIImage(named: .favoriteDefault)
         }
         button.setImage(image?.withRenderingMode(.alwaysTemplate), for: .normal)
         button.imageView?.tintColor = .btnAction
