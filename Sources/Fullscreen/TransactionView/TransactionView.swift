@@ -7,7 +7,7 @@ import Foundation
 public protocol TransactionViewDelegate: AnyObject {
     func transactionViewDidBeginRefreshing(_ refreshControl: RefreshControl)
 
-    func transactionViewDidSelectActionButton(_ view: TransactionView, inTransactionStep step: Int,
+    func transactionViewDidTapActionButton(_ view: TransactionView, inTransactionStep step: Int,
                                               withAction action: TransactionStepView.ActionButton.Action, withUrl urlString: String?,
                                               withFallbackUrl fallbackUrlString: String?)
 }
@@ -264,11 +264,11 @@ extension TransactionView: TransactionStepViewDelegate {
                                                        withAction action: TransactionStepView.ActionButton.Action, withUrl url: String?,
                                                        withFallbackUrl fallbackUrl: String?) {
 
-        delegate?.transactionViewDidSelectActionButton(self,
-                                                       inTransactionStep: step,
-                                                       withAction: action,
-                                                       withUrl: url,
-                                                       withFallbackUrl: fallbackUrl)
+        delegate?.transactionViewDidTapActionButton(self,
+                                                    inTransactionStep: step,
+                                                    withAction: action,
+                                                    withUrl: url,
+                                                    withFallbackUrl: fallbackUrl)
     }
 }
 
