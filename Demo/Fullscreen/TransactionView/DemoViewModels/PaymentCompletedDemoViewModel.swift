@@ -53,6 +53,11 @@ extension TransactionDemoViewDefaultData {
                     style: "call_to_action",
                     action: "url",
                     url: "https://www.google.com/search?q=contract+signed"
+                ),
+                secondaryButton: TransactionStepActionButtonModel(
+                    text: "Registrer eierskifte",
+                    style: "default",
+                    url: "https://www.vegvesen.no/"
                 )),
 
             TransactionStepModel(

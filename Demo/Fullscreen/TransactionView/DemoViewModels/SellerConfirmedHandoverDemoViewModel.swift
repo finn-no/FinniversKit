@@ -53,6 +53,11 @@ extension TransactionDemoViewDefaultData {
                     style: "call_to_action",
                     action: "url",
                     url: "https://www.vegvesen.no/"),
+                secondaryButton: TransactionStepActionButtonModel(
+                    text: "Registrer eierskifte",
+                    style: "default",
+                    url: "https://www.vegvesen.no/"
+                ),
                 detail: "Hvis fristen går ut før dere har bekreftet, ta kontakt med Swiftcourt for å få pengene ut av hvelvet."),
 
             TransactionStepModel(
