@@ -53,7 +53,15 @@ public class ObjectPagePriceView: UIView {
     // MARK: - Public methods
 
     public func configure(with viewModel: ObjectPagePriceViewModel) {
+        pricesStackView.removeArrangedSubviews()
 
+        let mainPriceView = PriceView(viewModel: viewModel.mainPriceModel, withAutoLayout: true)
+        pricesStackView.addArrangedSubview(mainPriceView)
+
+        if let secondaryPriceModel = viewModel.secondaryPriceModel {
+            let secondaryPriceView = PriceView(viewModel: secondaryPriceModel, withAutoLayout: true)
+            pricesStackView.addArrangedSubview(secondaryPriceView)
+        }
 
         linkButtonListView.configure(with: viewModel.links)
         linkButtonListView.isHidden = viewModel.links.isEmpty
