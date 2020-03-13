@@ -8,8 +8,8 @@ public protocol TransactionViewDelegate: AnyObject {
     func transactionViewDidBeginRefreshing(_ refreshControl: RefreshControl)
 
     func transactionViewDidTapActionButton(_ view: TransactionView, inTransactionStep step: Int,
-                                              withAction action: TransactionStepView.ActionButton.Action, withUrl urlString: String?,
-                                              withFallbackUrl fallbackUrlString: String?)
+                                           withAction action: TransactionStepView.ActionButton.Action, withUrl urlString: String?,
+                                           withFallbackUrl fallbackUrlString: String?)
 }
 
 public protocol TransactionViewDataSource: AnyObject {

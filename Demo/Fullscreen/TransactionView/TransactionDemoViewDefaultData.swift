@@ -44,6 +44,7 @@ public struct TransactionStepActionButtonModel: TransactionStepActionButtonViewM
 public struct TransactionDemoViewDefaultData {
     private var currentState = -1
 
+    // swiftlint:disable cyclomatic_complexity
     mutating func getState() -> TransactionViewModel {
         if currentState == 10 {
             self.currentState = -1
