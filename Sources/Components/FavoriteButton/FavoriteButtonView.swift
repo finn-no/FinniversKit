@@ -22,7 +22,7 @@ public class FavoriteButtonView: UIView {
 
     // MARK: - Public properties
 
-    public var delegate: FavoriteButtonViewDelegate?
+    public weak var delegate: FavoriteButtonViewDelegate?
 
     // MARK: - Private properties
 
@@ -103,27 +103,20 @@ public class FavoriteButtonView: UIView {
         switch activeTestVariant {
         case .buttonOnly:
             button.setTitle(viewModel.title, for: .normal)
-            setImage(for: button, isFavorite: viewModel.isFavorite)
+            let image = viewModel.isFavorite ? UIImage(named: .favoriteActiveSmall) : UIImage(named: .favoriteDefaultSmall)
+            button.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
+            button.imageView?.tintColor = .btnAction
+
         case .buttonWithCounter:
             flatButton.setTitle(viewModel.title, for: .normal)
             subtitleLabel.text = viewModel.subtitle
-            setImage(for: flatButton, isFavorite: viewModel.isFavorite)
+            let image = viewModel.isFavorite ? UIImage(named: .favoriteActive) : UIImage(named: .favoriteDefault)
+            flatButton.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
+            flatButton.imageView?.tintColor = .btnAction
         }
     }
 
     // MARK: - Private methods
-
-    private func setImage(for button: Button, isFavorite: Bool) {
-        let image: UIImage?
-        switch activeTestVariant {
-        case .buttonOnly:
-            image = isFavorite ? UIImage(named: .favoriteActiveSmall) : UIImage(named: .favoriteDefaultSmall)
-        case .buttonWithCounter:
-            image = isFavorite ? UIImage(named: .favoriteActive) : UIImage(named: .favoriteDefault)
-        }
-        button.setImage(image?.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.imageView?.tintColor = .btnAction
-    }
 
     @objc private func handleButtonTap() {
         guard let viewModel = viewModel else { return }

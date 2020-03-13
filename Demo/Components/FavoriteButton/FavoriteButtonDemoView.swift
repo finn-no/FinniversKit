@@ -5,14 +5,11 @@
 import FinniversKit
 
 class FavoriteButtonDemoView: UIView {
+
+    // MARK: - Private properties
+
     private lazy var favoriteButtonView = FavoriteButtonView(withAutoLayout: true)
-    private var data = FavoriteButtonData(isFavorite: false)
-    private var isFavorite = false {
-        didSet {
-            data.isFavorite = isFavorite
-            favoriteButtonView.configure(with: data)
-        }
-    }
+    private lazy var data = FavoriteButtonData(isFavorite: false)
 
     // MARK: - Init
 
@@ -40,8 +37,11 @@ class FavoriteButtonDemoView: UIView {
     }
 }
 
+// MARK: - FavoriteButtonViewDelegate
+
 extension FavoriteButtonDemoView: FavoriteButtonViewDelegate {
     func favoriteButtonDidSelect(_ favoriteButtonView: FavoriteButtonView, button: Button, viewModel: FavoriteButtonViewModel) {
-        isFavorite.toggle()
+        data.isFavorite.toggle()
+        favoriteButtonView.configure(with: data)
     }
 }
