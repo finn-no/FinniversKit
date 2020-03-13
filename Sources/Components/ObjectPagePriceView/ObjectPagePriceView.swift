@@ -75,3 +75,46 @@ extension ObjectPagePriceView: LinkButtonListViewDelegate {
         delegate?.priceView(self, didTapLinkButtonWithIdentifier: identifier, url: url)
     }
 }
+
+// MARK: - Private class
+
+private class PriceView: UIView {
+
+    // MARK: - Private properties
+
+    private let viewModel: ObjectPagePriceViewModel.Price
+    private lazy var titleLabel = Label(style: .body, withAutoLayout: true)
+    private lazy var totalPriceLabel = Label(style: .title3Strong, withAutoLayout: true)
+    private lazy var subtitleLabel = Label(style: .caption, withAutoLayout: true)
+
+    private lazy var textStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, totalPriceLabel, subtitleLabel])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        return stackView
+    }()
+
+    // MARK: - Init
+
+    init(viewModel: ObjectPagePriceViewModel.Price, withAutoLayout: Bool) {
+        self.viewModel = viewModel
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
+        setup()
+    }
+
+    public required init?(coder: NSCoder) { fatalError() }
+
+    // MARK: - Setup
+
+    private func setup() {
+        titleLabel.text = viewModel.title
+        totalPriceLabel.text = viewModel.totalPrice
+
+        subtitleLabel.text = viewModel.subtitle
+        subtitleLabel.isHidden = viewModel.subtitle?.isEmpty ?? true
+
+        addSubview(textStackView)
+        textStackView.fillInSuperview()
+    }
+}
