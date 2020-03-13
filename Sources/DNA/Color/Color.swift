@@ -46,6 +46,10 @@ import UIKit
         return .cherry
     }
 
+    public class var btnAction: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .primaryBlue, darkModeColor: UIColor(hex: "#3F8BFF"))
+    }
+
     public class var textPrimary: UIColor {
         return dynamicColorIfAvailable(defaultColor: .licorice, darkModeColor: .milk)
     }

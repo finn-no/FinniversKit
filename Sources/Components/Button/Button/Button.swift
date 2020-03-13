@@ -56,12 +56,12 @@ public class Button: UIButton {
             return CGSize.zero
         }
         let paddings = style.paddings(forSize: size)
-        let buttonSize = CGSize(
-            width: titleWidth + style.margins.left + style.margins.right,
+        let imageSize = imageView?.image?.size ?? .zero
+
+        return CGSize(
+            width: titleWidth + imageSize.width + style.margins.left + style.margins.right,
             height: titleHeight + style.margins.top + style.margins.bottom + paddings.top + paddings.bottom
         )
-
-        return buttonSize
     }
 
     public override func setTitle(_ title: String?, for state: UIControl.State) {
