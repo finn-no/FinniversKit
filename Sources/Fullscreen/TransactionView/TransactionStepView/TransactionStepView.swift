@@ -5,9 +5,9 @@
 import UIKit
 
 public protocol TransactionStepViewDelegate: AnyObject {
-    func transactionStepViewDidTapPrimaryButton(_ view: TransactionStepView, inTransactionStep step: Int,
-                                                withAction action: TransactionStepView.PrimaryButton.Action, withUrl urlString: String?,
-                                                withFallbackUrl fallbackUrlString: String?)
+    func transactionStepViewDidTapActionButton(_ view: TransactionStepView, inTransactionStep step: Int,
+                                               withAction action: TransactionStepView.ActionButton.Action, withUrl urlString: String?,
+                                               withFallbackUrl fallbackUrlString: String?)
 }
 
 public enum TransactionStepViewState: String {
@@ -47,9 +47,15 @@ public class TransactionStepView: UIView {
 
     // MARK: - Private properties
 
+    private enum ButtonTag: Int {
+        case primary = 1
+        case secondary = 2
+    }
+
     private var step: Int
     private var model: TransactionStepViewModel
-    private var primaryButtonModel: TransactionStepPrimaryButtonViewModel?
+    private var primaryButtonModel: TransactionStepActionButtonViewModel?
+    private var secondaryButtonModel: TransactionStepActionButtonViewModel?
 
     private var style: TransactionStepView.Style
     private var activeStepColor: UIColor = .bgTertiary
@@ -116,6 +122,7 @@ public class TransactionStepView: UIView {
         self.step = step
         self.model = model
         self.primaryButtonModel = model.primaryButton ?? nil
+        self.secondaryButtonModel = model.secondaryButton ?? nil
         self.style = model.state.style
 
         super.init(frame: .zero)
@@ -188,24 +195,8 @@ private extension TransactionStepView {
             bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: .spacingM)
         }
 
-        if let buttonModel = primaryButtonModel {
-            let buttonText = buttonModel.text
-            let buttonStyle = TransactionStepView.PrimaryButton(rawValue: buttonModel.style).style
-
-            let primaryButton = Button(style: buttonStyle, withAutoLayout: true)
-            primaryButton.setTitle(buttonText, for: .normal)
-            primaryButton.isEnabled = style.actionButtonEnabled
-            primaryButton.addTarget(self, action: #selector(handlePrimaryButtonTap), for: .touchUpInside)
-            primaryButton.setContentHuggingPriority(.required, for: .vertical)
-
-            if model.state == .completed {
-                primaryButton.contentHorizontalAlignment = .leading
-                primaryButton.contentEdgeInsets = .leadingInset(4)
-            }
-
-            verticalStackView.addArrangedSubview(primaryButton)
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .spacingM)
-        }
+        setupOptionalButton(model.secondaryButton, tag: ButtonTag.secondary.rawValue)
+        setupOptionalButton(model.primaryButton, tag: ButtonTag.primary.rawValue)
 
         if let detailText = model.detail {
             detailView.text = detailText
@@ -216,17 +207,52 @@ private extension TransactionStepView {
 
         bottomAnchorConstraint?.isActive = true
     }
+
+    func setupOptionalButton(_ buttonModel: TransactionStepActionButtonViewModel?, tag: Int) {
+        if let buttonModel = buttonModel {
+            let buttonText = buttonModel.text
+            let buttonStyle = TransactionStepView.ActionButton(rawValue: buttonModel.style).style
+
+            let button = Button(style: buttonStyle, withAutoLayout: true)
+            button.setTitle(buttonText, for: .normal)
+            button.isEnabled = style.actionButtonEnabled
+            button.tag = tag
+            button.addTarget(self, action: #selector(handleButtonTap(_:)), for: .touchUpInside)
+            button.setContentHuggingPriority(.required, for: .vertical)
+
+            if model.state == .completed {
+                button.contentHorizontalAlignment = .leading
+                button.contentEdgeInsets = .leadingInset(4)
+            }
+
+            verticalStackView.addArrangedSubview(button)
+            verticalStackView.setCustomSpacing(.spacingM, after: button)
+
+            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: .spacingM)
+        }
+    }
 }
 
 // MARK: - Selectors
 
 private extension TransactionStepView {
-    @objc func handlePrimaryButtonTap() {
-        let action = PrimaryButton.Action(rawValue: primaryButtonModel?.action ?? "unknown")
-        let urlString = primaryButtonModel?.url
-        let fallbackUrlString = primaryButtonModel?.fallbackUrl
+    @objc func handleButtonTap(_ sender: Button) {
+        var model: TransactionStepActionButtonViewModel?
 
-        delegate?.transactionStepViewDidTapPrimaryButton(self, inTransactionStep: step, withAction: action,
+        switch sender.tag {
+        case ButtonTag.primary.rawValue:
+            model = primaryButtonModel
+        case ButtonTag.secondary.rawValue:
+            model = secondaryButtonModel
+        default:
+            model = nil
+        }
+
+        let action = ActionButton.Action(rawValue: model?.action ?? "unknown")
+        let urlString = model?.url
+        let fallbackUrlString = model?.fallbackUrl
+
+        delegate?.transactionStepViewDidTapActionButton(self, inTransactionStep: step, withAction: action,
                                                          withUrl: urlString, withFallbackUrl: fallbackUrlString)
     }
 }

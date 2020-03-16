@@ -23,7 +23,7 @@ extension TransactionDemoViewDefaultData {
             TransactionStepModel(
                 state: .completed,
                 title: "Annonsen er lagt ut",
-                primaryButton: TransactionStepPrimaryButtonModel(
+                primaryButton: TransactionStepActionButtonModel(
                     text: "Se annonsen",
                     style: "flat",
                     action: "see_ad",
@@ -33,7 +33,7 @@ extension TransactionDemoViewDefaultData {
                 state: .completed,
                 title: "Kontrakt",
                 body: NSAttributedString(string: "Begge har signert kontrakten."),
-                primaryButton: TransactionStepPrimaryButtonModel(
+                primaryButton: TransactionStepActionButtonModel(
                     text: "Gå til kontrakt",
                     style: "flat",
                     url: "https://www.google.com/search?q=contract+signed"
@@ -49,11 +49,16 @@ extension TransactionDemoViewDefaultData {
                 state: .active,
                 title: "Overlevering",
                 body: NSAttributedString(string: "<p>Kjøper har bekreftet.</p><p>Dere må bekrefte før:<br/><strong>8. februar 2020.</strong></p><ol><li>Ved oppmøte registrerer dere først eierskiftet digitalt hos Statens vegvesen.</li><li>Deretter må <strong>begge</strong> bekrefte at overleveringen har skjedd, og at pengene kan utbetales.</li></ol>"),
-                primaryButton: TransactionStepPrimaryButtonModel(
+                primaryButton: TransactionStepActionButtonModel(
                     text: "Bekreft overlevering",
                     style: "call_to_action",
                     action: "url",
                     url: "https://www.vegvesen.no/"),
+                secondaryButton: TransactionStepActionButtonModel(
+                    text: "Registrer eierskifte",
+                    style: "default",
+                    url: "https://www.vegvesen.no/"
+                ),
                 detail: "Hvis fristen går ut før dere har bekreftet, ta kontakt med Swiftcourt for å få pengene ut av hvelvet."),
 
             TransactionStepModel(
