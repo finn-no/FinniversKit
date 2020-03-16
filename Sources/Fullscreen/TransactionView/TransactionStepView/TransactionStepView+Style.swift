@@ -88,7 +88,7 @@ public extension TransactionStepView {
 }
 
 public extension TransactionStepView {
-    enum PrimaryButton: String {
+    enum ActionButton: String {
         case `default` = "default"
         case flat = "flat"
         case callToAction = "call_to_action"
@@ -119,7 +119,7 @@ public extension TransactionStepView {
     }
 }
 
-public extension TransactionStepView.PrimaryButton {
+public extension TransactionStepView.ActionButton {
     enum Action: String {
         case url = "url"
         case seeAd = "see_ad"

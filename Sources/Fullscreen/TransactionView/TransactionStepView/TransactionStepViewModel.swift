@@ -8,11 +8,12 @@ public protocol TransactionStepViewModel {
     var state: TransactionStepViewState { get }
     var title: String { get }
     var body: NSAttributedString? { get }
-    var primaryButton: TransactionStepPrimaryButtonViewModel? { get }
+    var primaryButton: TransactionStepActionButtonViewModel? { get }
+    var secondaryButton: TransactionStepActionButtonViewModel? { get }
     var detail: String? { get }
 }
 
-public protocol TransactionStepPrimaryButtonViewModel {
+public protocol TransactionStepActionButtonViewModel {
     var action: String? { get set }
     var text: String { get }
     var style: String { get set }
