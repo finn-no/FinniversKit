@@ -52,14 +52,14 @@ public class ObjectPagePriceView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(with viewModel: ObjectPagePriceViewModel) {
+    public func configure(with viewModel: ObjectPagePriceViewModel, style: Style = .init()) {
         pricesStackView.removeArrangedSubviews()
 
-        let mainPriceView = PriceView(viewModel: viewModel.mainPriceModel, withAutoLayout: true)
+        let mainPriceView = PriceView(viewModel: viewModel.mainPriceModel, style: style, withAutoLayout: true)
         pricesStackView.addArrangedSubview(mainPriceView)
 
         if let secondaryPriceModel = viewModel.secondaryPriceModel {
-            let secondaryPriceView = PriceView(viewModel: secondaryPriceModel, withAutoLayout: true)
+            let secondaryPriceView = PriceView(viewModel: secondaryPriceModel, style: style, withAutoLayout: true)
             pricesStackView.addArrangedSubview(secondaryPriceView)
         }
 
@@ -83,9 +83,10 @@ private class PriceView: UIView {
     // MARK: - Private properties
 
     private let viewModel: ObjectPagePriceViewModel.Price
-    private lazy var titleLabel = Label(style: .body, withAutoLayout: true)
-    private lazy var totalPriceLabel = Label(style: .title3Strong, withAutoLayout: true)
-    private lazy var subtitleLabel = Label(style: .caption, withAutoLayout: true)
+    private let style: ObjectPagePriceView.Style
+    private lazy var titleLabel = Label(style: style.titleStyle, withAutoLayout: true)
+    private lazy var totalPriceLabel = Label(style: style.priceStyle, withAutoLayout: true)
+    private lazy var subtitleLabel = Label(style: style.subtitleStyle, withAutoLayout: true)
 
     private lazy var textStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, totalPriceLabel, subtitleLabel])
@@ -96,8 +97,9 @@ private class PriceView: UIView {
 
     // MARK: - Init
 
-    init(viewModel: ObjectPagePriceViewModel.Price, withAutoLayout: Bool) {
+    init(viewModel: ObjectPagePriceViewModel.Price, style: ObjectPagePriceView.Style, withAutoLayout: Bool) {
         self.viewModel = viewModel
+        self.style = style
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setup()
