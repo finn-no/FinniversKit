@@ -120,3 +120,21 @@ private class PriceView: UIView {
         textStackView.fillInSuperview()
     }
 }
+
+public extension ObjectPagePriceView {
+    struct Style {
+        let titleStyle: Label.Style
+        let priceStyle: Label.Style
+        let subtitleStyle: Label.Style
+
+        public init(
+            titleStyle: Label.Style = .body,
+            priceStyle: Label.Style = .title3Strong,
+            subtitleStyle: Label.Style = .caption
+        ) {
+            self.titleStyle = titleStyle
+            self.priceStyle = priceStyle
+            self.subtitleStyle = subtitleStyle
+        }
+    }
+}
