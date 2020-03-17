@@ -109,6 +109,8 @@ private class PriceView: UIView {
 
     private func setup() {
         titleLabel.text = viewModel.title
+        titleLabel.isHidden = viewModel.title?.isEmpty ?? true
+
         totalPriceLabel.text = viewModel.totalPrice
 
         subtitleLabel.text = viewModel.subtitle

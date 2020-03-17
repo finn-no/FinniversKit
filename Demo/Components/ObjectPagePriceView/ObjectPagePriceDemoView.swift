@@ -119,8 +119,7 @@ extension ObjectPagePriceViewModel {
     static var withoutLinks: ObjectPagePriceViewModel = {
         ObjectPagePriceViewModel(
             title: "Totalpris",
-            totalPrice: "1 389 588 kr",
-            links: []
+            totalPrice: "1 389 588 kr"
         )
     }()
 
@@ -128,8 +127,7 @@ extension ObjectPagePriceViewModel {
         ObjectPagePriceViewModel(
             title: "Totalpris",
             totalPrice: "1 389 588 kr",
-            subtitle: "Inkludert alle klargjøringskostnader",
-            links: []
+            subtitle: "Inkludert alle klargjøringskostnader"
         )
     }()
 
