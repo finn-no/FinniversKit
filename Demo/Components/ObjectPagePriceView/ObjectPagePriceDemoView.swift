@@ -22,6 +22,10 @@ class ObjectPagePriceDemoView: UIView, Tweakable {
             TweakingOption(title: "With subtitle, without links", action: { [weak self] in
                 self?.priceView.configure(with: .subtitleWithoutLinks)
             }),
+
+            TweakingOption(title: "With seconday price & links", action: { [weak self] in
+                self?.priceView.configure(with: .secondaryPrice)
+            })
         ]
     }()
 
@@ -126,6 +130,21 @@ extension ObjectPagePriceViewModel {
             totalPrice: "1 389 588 kr",
             subtitle: "Inkludert alle klargjøringskostnader",
             links: []
+        )
+    }()
+
+    static var secondaryPrice: ObjectPagePriceViewModel = {
+        ObjectPagePriceViewModel(
+            mainPriceModel: Price(title: "Månedspris", totalPrice: "3950 kr"),
+            secondaryPriceModel: Price(title: "Innskudd", totalPrice: "120 000 kr"),
+            links: [
+                LinkButtonViewModel(
+                    buttonIdentifier: "insurance",
+                    buttonTitle: "Pris på forsikring",
+                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    isExternal: false
+                )
+            ]
         )
     }()
 }
