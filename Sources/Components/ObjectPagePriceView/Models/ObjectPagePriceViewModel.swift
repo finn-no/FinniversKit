@@ -7,7 +7,7 @@ public struct ObjectPagePriceViewModel {
     let secondaryPriceModel: Price?
     let links: [LinkButtonViewModel]
 
-    public init(title: String, totalPrice: String, subtitle: String? = nil, links: [LinkButtonViewModel]) {
+    public init(title: String? = nil, totalPrice: String, subtitle: String? = nil, links: [LinkButtonViewModel] = []) {
         let mainPriceModel = Price(title: title, totalPrice: totalPrice, subtitle: subtitle)
         self.init(mainPriceModel: mainPriceModel, links: links)
     }
@@ -19,11 +19,11 @@ public struct ObjectPagePriceViewModel {
     }
 
     public struct Price {
-        let title: String
+        let title: String?
         let totalPrice: String
         let subtitle: String?
 
-        public init(title: String, totalPrice: String, subtitle: String? = nil) {
+        public init(title: String?, totalPrice: String, subtitle: String? = nil) {
             self.title = title
             self.totalPrice = totalPrice
             self.subtitle = subtitle
