@@ -92,6 +92,7 @@ public extension TransactionStepView {
         case `default` = "default"
         case flat = "flat"
         case callToAction = "call_to_action"
+        case unknown
 
         public init(rawValue: String) {
             switch rawValue {
@@ -102,7 +103,7 @@ public extension TransactionStepView {
             case "call_to_action":
                 self = .callToAction
             default:
-                fatalError("ActionButton style \(rawValue) is not supported")
+                self = .unknown
             }
         }
 
@@ -114,6 +115,8 @@ public extension TransactionStepView {
                 return .callToAction
             case .flat:
                 return .flat
+            default:
+                return .default
             }
         }
     }
