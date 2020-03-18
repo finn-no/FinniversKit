@@ -110,6 +110,9 @@ private class PriceView: UIView {
     // MARK: - Setup
 
     private func setup() {
+        isAccessibilityElement = true
+        accessibilityLabel = viewModel.accessibilityLabel
+
         titleLabel.text = viewModel.title
         titleLabel.isHidden = viewModel.title?.isEmpty ?? true
 
