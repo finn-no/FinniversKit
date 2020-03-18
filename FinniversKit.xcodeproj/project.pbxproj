@@ -589,6 +589,7 @@
 		F22612D822572D9400472D22 /* StatisticsItemEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */; };
 		F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */; };
 		F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */; };
+		F23A85A7242291680015C139 /* TransactionStepView+ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23A85A6242291680015C139 /* TransactionStepView+ActionButton.swift */; };
 		F253C50E2313F9F5008175FD /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253C50D2313F9F5008175FD /* VerificationView.swift */; };
 		F253C5112313FA6E008175FD /* VerificationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253C5102313FA6E008175FD /* VerificationDemoView.swift */; };
 		F253C5142314015C008175FD /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253C5122313FEFC008175FD /* VerificationViewModel.swift */; };
@@ -1277,6 +1278,7 @@
 		F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyView.swift; sourceTree = "<group>"; };
 		F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyViewModel.swift; sourceTree = "<group>"; };
 		F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdManagementStatisticsEmptyViewCell.swift; sourceTree = "<group>"; };
+		F23A85A6242291680015C139 /* TransactionStepView+ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionStepView+ActionButton.swift"; sourceTree = "<group>"; };
 		F253C50D2313F9F5008175FD /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		F253C5102313FA6E008175FD /* VerificationDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationDemoView.swift; sourceTree = "<group>"; };
 		F253C5122313FEFC008175FD /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
@@ -4434,6 +4436,7 @@
 				F20450C523EDB4EF001F7370 /* TransactionStepView.swift */,
 				F2E48DE82408141C009DEFBA /* TransactionStepViewModel.swift */,
 				F20450CA23EDB7AE001F7370 /* TransactionStepView+Style.swift */,
+				F23A85A6242291680015C139 /* TransactionStepView+ActionButton.swift */,
 			);
 			path = TransactionStepView;
 			sourceTree = "<group>";
@@ -5175,6 +5178,7 @@
 				CF164D15230FFB7400250822 /* FavoriteAdActionViewModel.swift in Sources */,
 				CF136ACD2203211100247B30 /* InfoboxView.swift in Sources */,
 				4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */,
+				F23A85A7242291680015C139 /* TransactionStepView+ActionButton.swift in Sources */,
 				9B057AA9235EEB1C007B1CF0 /* ContentView.swift in Sources */,
 				9B06097023F14BB4005CB592 /* HeaderView.swift in Sources */,
 				AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */,
