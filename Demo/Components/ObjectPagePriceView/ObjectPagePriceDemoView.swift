@@ -67,6 +67,7 @@ extension ObjectPagePriceViewModel {
         ObjectPagePriceViewModel(
             title: "Totalpris",
             totalPrice: "1 389 588 kr",
+            accessibilityLabel: "Totalpris: \(NumberFormatter.spokenFormatter.string(from: 1389588) ?? String(1389588)) kroner",
             links: [
                 LinkButtonViewModel(
                     buttonIdentifier: "loan",
@@ -152,5 +153,14 @@ extension ObjectPagePriceViewModel {
 
     static var mainPriceOnly: ObjectPagePriceViewModel = {
         ObjectPagePriceViewModel(totalPrice: "1 389 588 kr")
+    }()
+}
+
+private extension NumberFormatter {
+    static var spokenFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .spellOut
+        formatter.locale = Locale(identifier: "nb_NO")
+        return formatter
     }()
 }
