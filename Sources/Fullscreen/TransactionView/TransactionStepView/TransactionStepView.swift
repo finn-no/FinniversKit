@@ -71,6 +71,7 @@ public class TransactionStepView: UIView {
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.alignment = .leading
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
@@ -212,6 +213,7 @@ private extension TransactionStepView {
         if let buttonModel = buttonModel {
             let buttonText = buttonModel.text
             let buttonStyle = TransactionStepView.ActionButton(rawValue: buttonModel.style).style
+            let buttonAction = TransactionStepView.ActionButton.Action(rawValue: buttonModel.action ?? "")
 
             let button = Button(style: buttonStyle, withAutoLayout: true)
             button.setTitle(buttonText, for: .normal)
@@ -220,16 +222,40 @@ private extension TransactionStepView {
             button.addTarget(self, action: #selector(handleButtonTap(_:)), for: .touchUpInside)
             button.setContentHuggingPriority(.required, for: .vertical)
 
-            if model.state == .completed {
-                button.contentHorizontalAlignment = .leading
-                button.contentEdgeInsets = .leadingInset(4)
-            }
-
             verticalStackView.addArrangedSubview(button)
             verticalStackView.setCustomSpacing(.spacingM, after: button)
 
+            switch buttonAction {
+            case .seeAd:
+                button.contentHorizontalAlignment = .leading
+                button.contentEdgeInsets = .leadingInset(.spacingXS)
+            default:
+                addWebViewIconToButton(button)
+            }
+
             bottomAnchorConstraint = bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: .spacingM)
         }
+    }
+
+    func addWebViewIconToButton(_ button: Button) {
+        let imageView = UIImageView(image: UIImage(named: .webview))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+
+        let imageWidth: CGFloat = 18
+        button.titleEdgeInsets = UIEdgeInsets(
+            top: button.titleEdgeInsets.top,
+            leading: button.titleEdgeInsets.leading - imageWidth - .spacingXS + .spacingXS,
+            bottom: button.titleEdgeInsets.bottom,
+            trailing: button.titleEdgeInsets.trailing - imageWidth - .spacingXS + .spacingL
+        )
+
+        verticalStackView.addSubview(imageView)
+        NSLayoutConstraint.activate([
+            imageView.widthAnchor.constraint(equalToConstant: imageWidth),
+            imageView.heightAnchor.constraint(equalToConstant: imageWidth),
+            imageView.centerYAnchor.constraint(equalTo: button.centerYAnchor),
+            imageView.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -.spacingXS),
+        ])
     }
 }
 
