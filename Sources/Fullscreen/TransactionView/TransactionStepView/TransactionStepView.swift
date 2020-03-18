@@ -241,20 +241,27 @@ private extension TransactionStepView {
         let imageView = UIImageView(image: UIImage(named: .webview))
         imageView.translatesAutoresizingMaskIntoConstraints = false
 
-        let imageWidth: CGFloat = 18
+        let imageWidth: CGFloat = 16
+
         button.titleEdgeInsets = UIEdgeInsets(
             top: button.titleEdgeInsets.top,
-            leading: button.titleEdgeInsets.leading - imageWidth - .spacingXS + .spacingXS,
+            leading: button.titleEdgeInsets.leading + imageWidth - .spacingM,
             bottom: button.titleEdgeInsets.bottom,
-            trailing: button.titleEdgeInsets.trailing - imageWidth - .spacingXS + .spacingL
+            trailing: button.titleEdgeInsets.trailing + imageWidth + .spacingS
         )
 
-        verticalStackView.addSubview(imageView)
+        addSubview(imageView)
+
+        let buttonWidth = button.widthAnchor.constraint(greaterThanOrEqualToConstant: button.intrinsicContentSize.width + imageWidth + .spacingS)
+        buttonWidth.priority = .required
+
         NSLayoutConstraint.activate([
             imageView.widthAnchor.constraint(equalToConstant: imageWidth),
             imageView.heightAnchor.constraint(equalToConstant: imageWidth),
             imageView.centerYAnchor.constraint(equalTo: button.centerYAnchor),
-            imageView.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -.spacingXS),
+            imageView.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -20),
+
+            buttonWidth
         ])
     }
 }
