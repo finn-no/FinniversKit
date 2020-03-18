@@ -203,6 +203,8 @@ private extension TransactionStepView {
             detailView.text = detailText
 
             verticalStackView.addArrangedSubview(detailView)
+
+            detailView.leadingAnchor.constraint(equalTo: titleView.leadingAnchor).isActive = true
             bottomAnchorConstraint = bottomAnchor.constraint(equalTo: detailView.bottomAnchor, constant: .spacingM)
         }
 
@@ -218,6 +220,7 @@ private extension TransactionStepView {
             let button = Button(style: buttonStyle, withAutoLayout: true)
             button.setTitle(buttonText, for: .normal)
             button.isEnabled = style.actionButtonEnabled
+            button.titleLabel?.numberOfLines = 0
             button.tag = tag
             button.addTarget(self, action: #selector(handleButtonTap(_:)), for: .touchUpInside)
             button.setContentHuggingPriority(.required, for: .vertical)
@@ -228,11 +231,12 @@ private extension TransactionStepView {
             switch buttonAction {
             case .seeAd:
                 button.contentHorizontalAlignment = .leading
-                button.contentEdgeInsets = .leadingInset(.spacingXS)
+                button.contentEdgeInsets = .leadingInset(.spacingS)
             default:
                 addWebViewIconToButton(button)
             }
 
+            button.leadingAnchor.constraint(equalTo: titleView.leadingAnchor).isActive = true
             bottomAnchorConstraint = bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: .spacingM)
         }
     }
@@ -242,10 +246,18 @@ private extension TransactionStepView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
 
         let imageWidth: CGFloat = 16
+        var leadingInset = CGFloat.zero
+
+        if model.state == .completed {
+            button.contentHorizontalAlignment = .leading
+            leadingInset = -10
+        } else {
+            leadingInset = button.titleEdgeInsets.leading + imageWidth - .spacingM
+        }
 
         button.titleEdgeInsets = UIEdgeInsets(
             top: button.titleEdgeInsets.top,
-            leading: button.titleEdgeInsets.leading + imageWidth - .spacingM,
+            leading: leadingInset,
             bottom: button.titleEdgeInsets.bottom,
             trailing: button.titleEdgeInsets.trailing + imageWidth + .spacingS
         )
