@@ -69,7 +69,8 @@ extension Label {
         guard recognizer.state == .began else { return }
 
         becomeFirstResponder()
-        UIMenuController.shared.setTargetRect(bounds, in: self)
+        let textRect = self.textRect(forBounds: bounds, limitedToNumberOfLines: 1)
+        UIMenuController.shared.setTargetRect(textRect, in: self)
         UIMenuController.shared.setMenuVisible(true, animated: true)
     }
 }
