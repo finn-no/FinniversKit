@@ -91,6 +91,7 @@ public class KeyValueGridView: UIView {
         let valueLabel = Label(style: .bodyStrong, withAutoLayout: true)
         valueLabel.numberOfLines = 2
         valueLabel.lineBreakMode = .byCharWrapping
+        valueLabel.setTextCopyable(true)
 
         titleLabel.text = pair.title
         valueLabel.text = pair.value
