@@ -71,6 +71,7 @@ public class TransactionStepView: UIView {
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.alignment = .leading
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
@@ -202,6 +203,8 @@ private extension TransactionStepView {
             detailView.text = detailText
 
             verticalStackView.addArrangedSubview(detailView)
+
+            detailView.leadingAnchor.constraint(equalTo: titleView.leadingAnchor).isActive = true
             bottomAnchorConstraint = bottomAnchor.constraint(equalTo: detailView.bottomAnchor, constant: .spacingM)
         }
 
@@ -212,24 +215,66 @@ private extension TransactionStepView {
         if let buttonModel = buttonModel {
             let buttonText = buttonModel.text
             let buttonStyle = TransactionStepView.ActionButton(rawValue: buttonModel.style).style
+            let buttonAction = TransactionStepView.ActionButton.Action(rawValue: buttonModel.action ?? "")
 
             let button = Button(style: buttonStyle, withAutoLayout: true)
             button.setTitle(buttonText, for: .normal)
             button.isEnabled = style.actionButtonEnabled
+            button.titleLabel?.adjustsFontSizeToFitWidth = true
             button.tag = tag
             button.addTarget(self, action: #selector(handleButtonTap(_:)), for: .touchUpInside)
             button.setContentHuggingPriority(.required, for: .vertical)
 
-            if model.state == .completed {
-                button.contentHorizontalAlignment = .leading
-                button.contentEdgeInsets = .leadingInset(4)
-            }
-
             verticalStackView.addArrangedSubview(button)
             verticalStackView.setCustomSpacing(.spacingM, after: button)
 
+            switch buttonAction {
+            case .seeAd:
+                button.contentHorizontalAlignment = .leading
+                button.contentEdgeInsets = .leadingInset(.spacingS)
+            default:
+                addWebViewIconToButton(button)
+            }
+
+            button.leadingAnchor.constraint(equalTo: titleView.leadingAnchor).isActive = true
             bottomAnchorConstraint = bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: .spacingM)
         }
+    }
+
+    func addWebViewIconToButton(_ button: Button) {
+        let imageView = UIImageView(image: UIImage(named: .webview))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+
+        let imageWidth: CGFloat = 16
+        var leadingInset = CGFloat.zero
+
+        if model.state == .completed {
+            button.contentHorizontalAlignment = .leading
+            leadingInset = -10
+        } else {
+            leadingInset = button.titleEdgeInsets.leading + imageWidth - .spacingM
+        }
+
+        button.titleEdgeInsets = UIEdgeInsets(
+            top: button.titleEdgeInsets.top,
+            leading: leadingInset,
+            bottom: button.titleEdgeInsets.bottom,
+            trailing: button.titleEdgeInsets.trailing + imageWidth + .spacingS
+        )
+
+        addSubview(imageView)
+
+        let buttonWidth = button.widthAnchor.constraint(greaterThanOrEqualToConstant: button.intrinsicContentSize.width + imageWidth + .spacingS)
+        buttonWidth.priority = .required
+
+        NSLayoutConstraint.activate([
+            imageView.widthAnchor.constraint(equalToConstant: imageWidth),
+            imageView.heightAnchor.constraint(equalToConstant: imageWidth),
+            imageView.centerYAnchor.constraint(equalTo: button.centerYAnchor),
+            imageView.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -20),
+
+            buttonWidth
+        ])
     }
 }
 
