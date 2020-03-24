@@ -5,7 +5,12 @@
 import FinniversKit
 
 public class TransactionProcessDemoView: UIView {
-    let transactionProcessView = TransactionProcessView(withAutoLayout: true)
+    lazy var transactionProcessView: TransactionProcessView = {
+        let view = TransactionProcessView(withAutoLayout: true)
+        view.delegate = self
+        return view
+    }()
+
     let model = TransactionProcessViewModel(
         title: "Salgsprosess",
         detail: "Kontrakt",
@@ -30,5 +35,11 @@ private extension TransactionProcessDemoView {
         ])
 
         transactionProcessView.configure(with: model)
+    }
+}
+
+extension TransactionProcessDemoView: TransactionProcessViewDelegate {
+    public func transactionProcessViewWasTapped(_ view: TransactionProcessView) {
+        print("Did tap view")
     }
 }

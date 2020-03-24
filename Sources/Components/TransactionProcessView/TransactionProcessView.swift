@@ -2,7 +2,19 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
+public protocol TransactionProcessViewDelegate: AnyObject {
+    func transactionProcessViewWasTapped(_ view: TransactionProcessView)
+}
+
 public class TransactionProcessView: UIView {
+    public weak var delegate: TransactionProcessViewDelegate?
+
+    // MARK: - Private properties
+
+    private lazy var tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTap))
+    private var iconSize: CGFloat = 24.0
+    private var chevronSize: CGFloat = 16.0
+
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = UIImage(named: .handshake).withRenderingMode(.alwaysTemplate)
@@ -44,9 +56,6 @@ public class TransactionProcessView: UIView {
         return view
     }()
 
-    private var iconSize: CGFloat = 24.0
-    private var chevronSize: CGFloat = 16.0
-
     public override init(frame: CGRect) {
         super.init(frame: .zero)
         setup()
@@ -65,8 +74,10 @@ public class TransactionProcessView: UIView {
 
 private extension TransactionProcessView {
     func setup() {
-        contentView.backgroundColor = .bgPrimary
+        contentView.addGestureRecognizer(tapRecognizer)
+
         backgroundColor = .bgPrimary
+        contentView.backgroundColor = .bgPrimary
 
         contentView.addSubview(iconImageView)
         contentView.addSubview(titleLabel)
@@ -106,5 +117,9 @@ private extension TransactionProcessView {
 
             bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
+    }
+
+    @objc private func onTap() {
+        delegate?.transactionProcessViewWasTapped(self)
     }
 }
