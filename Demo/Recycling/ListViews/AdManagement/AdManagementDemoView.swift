@@ -15,6 +15,7 @@ public class AdManagementDemoView: UIView {
         tableView.register(UserAdManagementStatisticsEmptyViewCell.self)
         tableView.register(UserAdManagementButtonAndInformationCell.self)
         tableView.register(UserAdManagementUserActionCell.self)
+        tableView.register(UserAdManagementTransactionProcessCell.self)
         tableView.separatorStyle = .none
         tableView.backgroundColor = .bgSecondary
         tableView.estimatedRowHeight = estimatedRowHeight
@@ -63,6 +64,12 @@ public class AdManagementDemoView: UIView {
                                             description: "Etter at du har publisert annonsen din kan du se statistikk for hvor mange som har sett annonsen din, favorisert den og som har fått tips om den.")
     }()
 
+    private var transactionProcessCellModel = TransactionProcessViewModel(
+        title: "Salgsprosess",
+        detail: "Kontrakt",
+        description: "Når du har funnet en kjøper er det neste steget å skrive en kontrakt "
+    )
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -82,11 +89,18 @@ public class AdManagementDemoView: UIView {
 
 extension AdManagementDemoView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 2 : actionCellModels[section - 1].count
+        if section == 0 {
+            return 2
+        } else if section == 1 {
+            return 1
+        }
+
+        return actionCellModels[section - 2].count
+
     }
 
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return actionCellModels.count + 1
+        return actionCellModels.count + 2
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -109,9 +123,14 @@ extension AdManagementDemoView: UITableViewDataSource {
                 cell.buttonText = "Kjøp mer synlighet"
                 return cell
             }
+
+        } else if indexPath.section == 1 {
+            let cell = tableView.dequeue(UserAdManagementTransactionProcessCell.self, for: indexPath)
+            cell.configure(with: transactionProcessCellModel)
+            return cell
         } else {
             let cell = tableView.dequeue(UserAdManagementUserActionCell.self, for: indexPath)
-            cell.setupWithModel(actionCellModels[indexPath.section - 1][indexPath.row])
+            cell.setupWithModel(actionCellModels[indexPath.section - 2][indexPath.row])
             cell.showSeparator(indexPath.row != 0)
             return cell
         }
