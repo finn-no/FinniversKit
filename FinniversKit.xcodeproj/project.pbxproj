@@ -586,6 +586,7 @@
 		F20450C823EDB663001F7370 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450C723EDB663001F7370 /* TransactionViewModel.swift */; };
 		F20450CB23EDB7AE001F7370 /* TransactionStepView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450CA23EDB7AE001F7370 /* TransactionStepView+Style.swift */; };
 		F209739623F5A2320014B90F /* UserAdCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B24023E2FCE200092ED6 /* UserAdCellDemoView.swift */; };
+		F21B2E552424AC6200A9B5D6 /* UserAdManagementTransactionProcessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21B2E542424AC6200A9B5D6 /* UserAdManagementTransactionProcessCell.swift */; };
 		F22612D822572D9400472D22 /* StatisticsItemEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */; };
 		F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */; };
 		F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */; };
@@ -1278,6 +1279,7 @@
 		F20450C523EDB4EF001F7370 /* TransactionStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepView.swift; sourceTree = "<group>"; };
 		F20450C723EDB663001F7370 /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
 		F20450CA23EDB7AE001F7370 /* TransactionStepView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionStepView+Style.swift"; sourceTree = "<group>"; };
+		F21B2E542424AC6200A9B5D6 /* UserAdManagementTransactionProcessCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdManagementTransactionProcessCell.swift; sourceTree = "<group>"; };
 		F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyView.swift; sourceTree = "<group>"; };
 		F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyViewModel.swift; sourceTree = "<group>"; };
 		F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdManagementStatisticsEmptyViewCell.swift; sourceTree = "<group>"; };
@@ -2410,6 +2412,7 @@
 				625A220C221EB30700733101 /* UserAdManagementUserActionCell.swift */,
 				620AEE33221175970087C150 /* UserAdManagementButtonAndInformationCell.swift */,
 				F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */,
+				F21B2E542424AC6200A9B5D6 /* UserAdManagementTransactionProcessCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -5571,6 +5574,7 @@
 				9BEB2878231D26C100D28BAD /* LoanCalculatorView.swift in Sources */,
 				9A37D0977C75034FE9603C2C /* FavoriteAdsListTableHeader.swift in Sources */,
 				49F114B22397F70E007D74EF /* SaveSearchPromptView.swift in Sources */,
+				F21B2E552424AC6200A9B5D6 /* UserAdManagementTransactionProcessCell.swift in Sources */,
 				9A37D91577C7406D942AF82E /* FavoriteAdsSortingView.swift in Sources */,
 				9A37DB2BD626D2CA592D303E /* FavoriteAdsSectionHeaderView.swift in Sources */,
 				9F213E38A1CEE430AAD26AEC /* IdentityView.swift in Sources */,
