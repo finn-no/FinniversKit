@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:FinniversKit.xcodeproj">
+      location = "group:FinniversKit/FinniversKit.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:FinnUI/FinnUI.xcodeproj">
