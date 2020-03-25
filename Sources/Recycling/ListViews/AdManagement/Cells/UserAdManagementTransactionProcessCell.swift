@@ -2,14 +2,14 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
-public class UserAdManagementTransactionProcessCell: UITableViewCell {
+public class UserAdManagementTransactionProcessSummaryCell: UITableViewCell {
     // MARK: - Public
 
-    private var model: TransactionProcessViewModel?
+    private var model: TransactionProcessSummaryViewModel?
 
     // MARK: - Private
 
-    private lazy var transactionProcessView = TransactionProcessView(withAutoLayout: true)
+    private lazy var transactionProcessSummaryView = TransactionProcessSummaryView(withAutoLayout: true)
 
     // MARK: - Initalization
 
@@ -25,9 +25,9 @@ public class UserAdManagementTransactionProcessCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    public func configure(with viewModel: TransactionProcessViewModel) {
+    public func configure(with viewModel: TransactionProcessSummaryViewModel) {
         model = viewModel
-        transactionProcessView.configure(with: viewModel)
+        transactionProcessSummaryView.configure(with: viewModel)
     }
 
     // MARK: - Private methods
@@ -36,7 +36,7 @@ public class UserAdManagementTransactionProcessCell: UITableViewCell {
         backgroundColor = .bgPrimary
         selectionStyle = .none
 
-        addSubview(transactionProcessView)
-        transactionProcessView.fillInSuperview()
+        addSubview(transactionProcessSummaryView)
+        transactionProcessSummaryView.fillInSuperview()
     }
 }
