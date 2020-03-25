@@ -662,35 +662,7 @@
 			remoteGlobalIDString = CB3CF1551F73E5870041EF20;
 			remoteInfo = FinniversKit;
 		};
-		44D32C2A1FB07850001E86D6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CB3CF1551F73E5870041EF20;
-			remoteInfo = FinniversKit;
-		};
-		DAD475A221149386009449DF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 14405C691FAFBD1800D03E04;
-			remoteInfo = Demo;
-		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		44D32C2C1FB07850001E86D6 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				44D32C291FB07850001E86D6 /* FinniversKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		08012BE421832C2E00A04F43 /* TableViewCellViewsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellViewsTests.swift; sourceTree = "<group>"; };
@@ -1343,14 +1315,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		14405C6D1FAFBD1800D03E04 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				44D32C281FB07850001E86D6 /* FinniversKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		14F4F1B61FD6CEA800E9CECA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1570,7 +1534,6 @@
 			isa = PBXGroup;
 			children = (
 				4447F6631FDB2B110033DBC1 /* Sources */,
-				14405C521FAFBBF000D03E04 /* Demo */,
 				14F4F1BA1FD6CEA800E9CECA /* UnitTests */,
 				25D04D7C1F583B1800EA317D /* Products */,
 				457B35CF1F7BE2670031E125 /* Frameworks */,
@@ -1581,7 +1544,6 @@
 			isa = PBXGroup;
 			children = (
 				CB3CF1561F73E5870041EF20 /* FinniversKit.framework */,
-				14405C741FAFBD1800D03E04 /* Demo.app */,
 				14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */,
 			);
 			name = Products;
@@ -4752,25 +4714,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		14405C691FAFBD1800D03E04 /* Demo */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 14405C711FAFBD1800D03E04 /* Build configuration list for PBXNativeTarget "Demo" */;
-			buildPhases = (
-				14405C6A1FAFBD1800D03E04 /* Sources */,
-				14405C6D1FAFBD1800D03E04 /* Frameworks */,
-				14405C6E1FAFBD1800D03E04 /* Resources */,
-				44D32C2C1FB07850001E86D6 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				44D32C2B1FB07850001E86D6 /* PBXTargetDependency */,
-			);
-			name = Demo;
-			productName = Demo;
-			productReference = 14405C741FAFBD1800D03E04 /* Demo.app */;
-			productType = "com.apple.product-type.application";
-		};
 		14F4F1B81FD6CEA800E9CECA /* UnitTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 14F4F1C31FD6CEA800E9CECA /* Build configuration list for PBXNativeTarget "UnitTests" */;
@@ -4783,7 +4726,6 @@
 			);
 			dependencies = (
 				14F4F1C01FD6CEA800E9CECA /* PBXTargetDependency */,
-				DAD475A321149386009449DF /* PBXTargetDependency */,
 			);
 			name = UnitTests;
 			packageProductDependencies = (
@@ -4823,11 +4765,6 @@
 				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "FINN AS";
 				TargetAttributes = {
-					14405C691FAFBD1800D03E04 = {
-						DevelopmentTeam = D34XZHQLE3;
-						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
-					};
 					14F4F1B81FD6CEA800E9CECA = {
 						CreatedOnToolsVersion = 9.1;
 						DevelopmentTeam = D34XZHQLE3;
@@ -4859,7 +4796,6 @@
 			projectRoot = "";
 			targets = (
 				CB3CF1551F73E5870041EF20 /* FinniversKit */,
-				14405C691FAFBD1800D03E04 /* Demo */,
 				14F4F1B81FD6CEA800E9CECA /* UnitTests */,
 			);
 		};
