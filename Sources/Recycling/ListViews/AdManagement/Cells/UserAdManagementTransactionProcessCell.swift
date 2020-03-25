@@ -5,7 +5,7 @@
 public class UserAdManagementTransactionProcessCell: UITableViewCell {
     // MARK: - Public
 
-    private(set) public var model: TransactionProcessViewModel?
+    private var model: TransactionProcessViewModel?
 
     // MARK: - Private
 
