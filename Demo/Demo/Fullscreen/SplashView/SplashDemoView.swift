@@ -3,9 +3,10 @@
 //
 
 import FinniversKit
+import FinnUI
 
 public class SplashDemoView: UIView {
-    private lazy var view = UIView(withAutoLayout: true)//SplashView(withAutoLayout: true)
+    private lazy var view = SplashView(withAutoLayout: true)
 
     // MARK: - Init
 
@@ -29,7 +30,7 @@ public class SplashDemoView: UIView {
         super.didMoveToSuperview()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-            //self.view.animate()
+            self.view.animate()
         })
     }
 }
