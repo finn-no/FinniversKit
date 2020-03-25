@@ -4,10 +4,27 @@
 
 import UIKit
 
-public class TransactionWarningView: UIView {
-    weak var dataSource: RemoteImageViewDataSource? {
-        didSet {
-            imageView.dataSource = dataSource
+public class TransactionAlertView: UIView {
+    enum Icon: String {
+        case multipleContracts = "alert-multiple-contracts"
+        case `default` = "noImage"
+
+        init(rawValue: String) {
+            switch rawValue {
+            case "alert-multiple-contracts":
+                self = .multipleContracts
+            default:
+                self = .default
+            }
+        }
+
+        var icon: UIImage {
+            switch self {
+            case .multipleContracts:
+                return UIImage(named: .multipleContracts)
+            case .default:
+                return UIImage(named: .noImage)
+            }
         }
     }
 
@@ -34,22 +51,21 @@ public class TransactionWarningView: UIView {
         return view
     }()
 
-    private lazy var imageView: RemoteImageView = {
-        let imageView = RemoteImageView(withAutoLayout: true)
-        imageView.backgroundColor = .clear
+    private lazy var iconImageView: UIImageView = {
+        let image = Icon(rawValue: model.imageIdentifier).icon
+        let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = .spacingM
         return imageView
     }()
 
-    private static var defaultImageSize: CGFloat = 128
+    private static var iconImageSize: CGFloat = 128
     private var loadingColor: UIColor = .accentToothpaste
-    private var fallbackImage = UIImage(named: .noImage)
 
-    private var model: TransactionWarningViewModel
+    private var model: TransactionAlertViewModel
 
-    public init(withAutoLayout autoLayout: Bool = false, model: TransactionWarningViewModel) {
+    public init(withAutoLayout autoLayout: Bool = false, model: TransactionAlertViewModel) {
         self.model = model
 
         super.init(frame: .zero)
@@ -57,20 +73,6 @@ public class TransactionWarningView: UIView {
         translatesAutoresizingMaskIntoConstraints = !autoLayout
 
         setup()
-    }
-
-    public func loadImage() {
-        guard let imagePath = model.imageUrl else {
-            imageView.image = fallbackImage
-            return
-        }
-
-        imageView.loadImage(
-            for: imagePath,
-            imageWidth: TransactionWarningView.defaultImageSize,
-            loadingColor: loadingColor,
-            fallbackImage: fallbackImage
-        )
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -82,11 +84,11 @@ public class TransactionWarningView: UIView {
         layer.cornerRadius = .spacingS
 
         titleLabel.text = model.title
-        messageView.text = model.message
+        messageView.text = model.body
 
         addSubview(titleLabel)
         addSubview(messageView)
-        addSubview(imageView)
+        addSubview(iconImageView)
 
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM),
@@ -97,10 +99,10 @@ public class TransactionWarningView: UIView {
             messageView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             messageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
 
-            imageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: .spacingS),
-            imageView.widthAnchor.constraint(equalToConstant: TransactionWarningView.defaultImageSize),
-            imageView.topAnchor.constraint(equalTo: titleLabel.topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: messageView.bottomAnchor),
+            iconImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: .spacingS),
+            iconImageView.widthAnchor.constraint(equalToConstant: TransactionAlertView.iconImageSize),
+            iconImageView.topAnchor.constraint(equalTo: titleLabel.topAnchor),
+            iconImageView.bottomAnchor.constraint(equalTo: messageView.bottomAnchor),
 
             bottomAnchor.constraint(equalTo: messageView.bottomAnchor, constant: .spacingM),
         ])

@@ -36,7 +36,7 @@ public class TransactionView: UIView {
     // MARK: - UIView properties
 
     private var headerView: TransactionHeaderView?
-    private var warningView: TransactionWarningView?
+    private var alertView: TransactionAlertView?
 
     private var stepDots = [TransactionStepDot]()
     private var connectors = [TransactionStepDotConnector]()
@@ -139,16 +139,13 @@ private extension TransactionView {
                 constant: .spacingM)
         }
 
-        setupWarningView()
+        setupAlertView()
     }
 
-    func setupWarningView() {
-        if let warningViewModel = model?.warning {
-            warningView = TransactionWarningView(withAutoLayout: true, model: warningViewModel)
-            warningView?.dataSource = self
-            warningView?.loadImage()
-
-            guard let view = warningView else { return }
+    func setupAlertView() {
+        if let alertViewModel = model?.alert {
+            alertView = TransactionAlertView(withAutoLayout: true, model: alertViewModel)
+            guard let view = alertView else { return }
 
             scrollableContentView.addSubview(view)
 
