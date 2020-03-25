@@ -124,6 +124,7 @@ public enum FinniversImageAsset: String {
     case more
     case moreImg
     case moteplassen
+    case multipleContracts
     case navigation
     case noImage
     case notifications
@@ -293,6 +294,7 @@ public enum FinniversImageAsset: String {
             .more,
             .moreImg,
             .moteplassen,
+            .multipleContracts,
             .navigation,
             .noImage,
             .notifications,

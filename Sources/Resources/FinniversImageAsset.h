@@ -112,6 +112,7 @@ extern NSString *const FinniversImageAssetmittanbud;
 extern NSString *const FinniversImageAssetmore;
 extern NSString *const FinniversImageAssetmoreImg;
 extern NSString *const FinniversImageAssetmoteplassen;
+extern NSString *const FinniversImageAssetmultipleContracts;
 extern NSString *const FinniversImageAssetnavigation;
 extern NSString *const FinniversImageAssetnoImage;
 extern NSString *const FinniversImageAssetnotifications;

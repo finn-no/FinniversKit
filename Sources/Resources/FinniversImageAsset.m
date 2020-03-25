@@ -112,6 +112,7 @@ NSString *const FinniversImageAssetmittanbud = @"mittanbud";
 NSString *const FinniversImageAssetmore = @"more";
 NSString *const FinniversImageAssetmoreImg = @"moreImg";
 NSString *const FinniversImageAssetmoteplassen = @"moteplassen";
+NSString *const FinniversImageAssetmultipleContracts = @"multipleContracts";
 NSString *const FinniversImageAssetnavigation = @"navigation";
 NSString *const FinniversImageAssetnoImage = @"noImage";
 NSString *const FinniversImageAssetnotifications = @"notifications";
@@ -282,6 +283,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetmore,
              FinniversImageAssetmoreImg,
              FinniversImageAssetmoteplassen,
+             FinniversImageAssetmultipleContracts,
              FinniversImageAssetnavigation,
              FinniversImageAssetnoImage,
              FinniversImageAssetnotifications,

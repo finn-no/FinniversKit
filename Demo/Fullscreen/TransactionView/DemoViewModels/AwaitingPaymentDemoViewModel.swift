@@ -14,10 +14,11 @@ extension TransactionDemoViewDefaultData {
             registrationNumber: "CF40150",
             imagePath: "2020/2/vertical-0/26/2/171/529/672_525135443.jpg"),
 
-        warning: TransactionWarningModel(
+        alert: TransactionAlertModel(
             title: "Du har opprettet flere kontrakter for denne bilen",
-            message: "En avtale er bindene når begge har signert. Prosessen under viser derfor prosessen for den første kontrakten begge signerte.",
-            imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Avocado.jpeg"),
+            body: "En avtale er bindene når begge har signert. Prosessen under viser derfor prosessen for den første kontrakten begge signerte.",
+            imageIdentifier: "alert-multiple-contracts"
+        ),
 
         steps: [
             TransactionStepModel(
