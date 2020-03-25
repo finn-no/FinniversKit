@@ -4434,7 +4434,7 @@
 				F20450B523EC0D48001F7370 /* TransactionView.swift */,
 				F20450C723EDB663001F7370 /* TransactionViewModel.swift */,
 				F2E48DEC2408175E009DEFBA /* TransactionHeaderView */,
-				F2E48DE52408135A009DEFBA /* TransactionWarningView */,
+				F2E48DE52408135A009DEFBA /* TransactionAlertView */,
 				F20450C923EDB675001F7370 /* TransactionStepView */,
 				F2E48DE02407D224009DEFBA /* TransactionStepDot */,
 			);
@@ -4724,13 +4724,13 @@
 			path = TransactionStepDot;
 			sourceTree = "<group>";
 		};
-		F2E48DE52408135A009DEFBA /* TransactionWarningView */ = {
+		F2E48DE52408135A009DEFBA /* TransactionAlertView */ = {
 			isa = PBXGroup;
 			children = (
 				F2E48DE3240812AB009DEFBA /* TransactionAlertView.swift */,
 				F2E48DE624081383009DEFBA /* TransactionAlertViewModel.swift */,
 			);
-			path = TransactionWarningView;
+			path = TransactionAlertView;
 			sourceTree = "<group>";
 		};
 		F2E48DEC2408175E009DEFBA /* TransactionHeaderView */ = {
