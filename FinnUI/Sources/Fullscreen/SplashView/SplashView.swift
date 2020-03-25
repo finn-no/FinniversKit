@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import FinniversKit
 
 public protocol SplashViewDelegate: AnyObject {
     func splashViewDidFinishAnimating(_ view: SplashView)

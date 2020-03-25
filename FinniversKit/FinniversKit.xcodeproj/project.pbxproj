@@ -473,7 +473,6 @@
 		CF5CA71422F87729007C4124 /* NeighborhoodProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CA71322F87729007C4124 /* NeighborhoodProfileViewModel.swift */; };
 		CF5CA71722F87AED007C4124 /* NeighborhoodProfileInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CA71622F87AED007C4124 /* NeighborhoodProfileInfoViewCell.swift */; };
 		CF5CA71922F9B818007C4124 /* NeighborhoodProfileButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CA71822F9B818007C4124 /* NeighborhoodProfileButtonViewCell.swift */; };
-		CF70B95223421E3400B8A285 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF70B95123421E3400B8A285 /* SplashView.swift */; };
 		CF70B95523421E9B00B8A285 /* SplashDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF70B95423421E9B00B8A285 /* SplashDemoView.swift */; };
 		CF7496BF23BE26D700D60901 /* FavoriteFolderActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7496BE23BE26D700D60901 /* FavoriteFolderActionView.swift */; };
 		CF7C460422257A8A001FB92C /* EarthHourContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C45FE22257A8A001FB92C /* EarthHourContentView.swift */; };
@@ -1168,7 +1167,6 @@
 		CF5CA71322F87729007C4124 /* NeighborhoodProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileViewModel.swift; sourceTree = "<group>"; };
 		CF5CA71622F87AED007C4124 /* NeighborhoodProfileInfoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileInfoViewCell.swift; sourceTree = "<group>"; };
 		CF5CA71822F9B818007C4124 /* NeighborhoodProfileButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileButtonViewCell.swift; sourceTree = "<group>"; };
-		CF70B95123421E3400B8A285 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		CF70B95423421E9B00B8A285 /* SplashDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashDemoView.swift; sourceTree = "<group>"; };
 		CF7496BE23BE26D700D60901 /* FavoriteFolderActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFolderActionView.swift; sourceTree = "<group>"; };
 		CF7C45FE22257A8A001FB92C /* EarthHourContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourContentView.swift; sourceTree = "<group>"; };
@@ -2277,7 +2275,6 @@
 				91846C4822E735B60001410F /* SearchResultMapView */,
 				DAD6EB302369BCFC00968497 /* SettingDetailsView */,
 				43EA978021941E63003A548A /* SoldView */,
-				CF70B95023421E1B00B8A285 /* SplashView */,
 				F20450B223EC0CB5001F7370 /* TransactionView */,
 				F2597C72231D19B900BE74EC /* VerificationActionSheet */,
 			);
@@ -3491,14 +3488,6 @@
 				CF5CA70F22F82D43007C4124 /* NeighborhoodProfileViewCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		CF70B95023421E1B00B8A285 /* SplashView */ = {
-			isa = PBXGroup;
-			children = (
-				CF70B95123421E3400B8A285 /* SplashView.swift */,
-			);
-			path = SplashView;
 			sourceTree = "<group>";
 		};
 		CF70B95323421E8800B8A285 /* SplashView */ = {
@@ -5549,7 +5538,6 @@
 				CF164CFF230EB3D100250822 /* ContentSizedTableView.swift in Sources */,
 				CFB6137C229AD43400DE283D /* VerticalIconCollectionViewCell.swift in Sources */,
 				9F2133BEBE174152BD809417 /* GalleryPreviewView.swift in Sources */,
-				CF70B95223421E3400B8A285 /* SplashView.swift in Sources */,
 				9F213ABAE416284A53AC6BA5 /* GalleryPreviewCell.swift in Sources */,
 				F20450C223EDA844001F7370 /* TransactionStepDotConnector.swift in Sources */,
 				9F213EA8026933194D7483E0 /* FullscreenImageView.swift in Sources */,
