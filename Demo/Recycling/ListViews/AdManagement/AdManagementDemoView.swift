@@ -64,10 +64,10 @@ public class AdManagementDemoView: UIView {
                                             description: "Etter at du har publisert annonsen din kan du se statistikk for hvor mange som har sett annonsen din, favorisert den og som har fått tips om den.")
     }()
 
-    private var transactionProcessCellModel = TransactionProcessViewModel(
+    private let transactionProcessCellModel = TransactionProcessViewModel(
         title: "Salgsprosess",
-        detail: "Kontrakt",
-        description: "Når du har funnet en kjøper er det neste steget å skrive en kontrakt "
+        detail: "Overlevering",
+        description: "Kjøper har bekreftet. Dere må bekrefte før 8.februar 2020."
     )
 
     override init(frame: CGRect) {
