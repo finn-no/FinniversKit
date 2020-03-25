@@ -282,4 +282,8 @@ class ComponentViewTests: XCTestCase {
     func testFavoriteButton() {
         snapshot(.favoriteButton)
     }
+
+    func testTransactionProcessView() {
+        snapshot(.transactionProcessView)
+    }
 }
