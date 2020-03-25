@@ -12,8 +12,8 @@ public class TransactionProcessView: UIView {
     // MARK: - Private properties
 
     private lazy var tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTap))
-    private var iconSize: CGFloat = 24.0
-    private var chevronSize: CGFloat = 16.0
+    private var iconSize: CGFloat = .spacingL
+    private var chevronSize: CGFloat = .spacingM
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
