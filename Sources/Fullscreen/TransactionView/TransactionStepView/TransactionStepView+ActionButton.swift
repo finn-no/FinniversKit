@@ -7,6 +7,7 @@ public extension TransactionStepView {
         case `default` = "default"
         case flat = "flat"
         case callToAction = "call_to_action"
+        case republishAd = "republish_ad"
         case unknown
 
         public init(rawValue: String) {
@@ -17,6 +18,8 @@ public extension TransactionStepView {
                 self = .flat
             case "call_to_action":
                 self = .callToAction
+            case "republish_ad":
+                self = .republishAd
             default:
                 self = .unknown
             }
@@ -26,7 +29,7 @@ public extension TransactionStepView {
             switch self {
             case .default:
                 return .default
-            case .callToAction:
+            case .callToAction, .republishAd:
                 return .callToAction
             case .flat:
                 return .flat
@@ -41,6 +44,7 @@ public extension TransactionStepView.ActionButton {
     enum Action: String {
         case url = "url"
         case seeAd = "see_ad"
+        case republishAd = "republish_ad"
         case unknown
 
         public init(rawValue: String) {
@@ -49,6 +53,8 @@ public extension TransactionStepView.ActionButton {
                 self = .url
             case "see_ad":
                 self = .seeAd
+            case "republish_ad":
+                self = .republishAd
             default:
                 self = .unknown
             }
