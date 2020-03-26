@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -208,7 +208,45 @@
 		46E77469242CEF0A008A5E93 /* FavoriteFoldersListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7739F242CEF0A008A5E93 /* FavoriteFoldersListViewDemoViewHelpers.swift */; };
 		46E7746B242CEF0A008A5E93 /* NotificationsListViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E773A2242CEF0A008A5E93 /* NotificationsListViewDemoView.swift */; };
 		46E7746C242CEF0A008A5E93 /* NotificationsListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E773A3242CEF0A008A5E93 /* NotificationsListViewDemoViewHelpers.swift */; };
+		46E77563242CFFA5008A5E93 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E77561242CFFA5008A5E93 /* FinniversKit.framework */; };
+		46E77564242CFFA5008A5E93 /* FinniversKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 46E77561242CFFA5008A5E93 /* FinniversKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		46E77565242CFFA5008A5E93 /* FinnUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E77562242CFFA5008A5E93 /* FinnUI.framework */; };
+		46E77566242CFFA5008A5E93 /* FinnUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 46E77562242CFFA5008A5E93 /* FinnUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		46E7757C242D476B008A5E93 /* DnaViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77576242D476B008A5E93 /* DnaViewTests.swift */; };
+		46E7757D242D476B008A5E93 /* BroadcastMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77577242D476B008A5E93 /* BroadcastMessageTests.swift */; };
+		46E7757E242D476B008A5E93 /* ComponentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77578242D476B008A5E93 /* ComponentViewTests.swift */; };
+		46E7757F242D476B008A5E93 /* TableViewCellViewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7757A242D476B008A5E93 /* TableViewCellViewsTests.swift */; };
+		46E77580242D476B008A5E93 /* RecyclingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77579242D476B008A5E93 /* RecyclingViewTests.swift */; };
+		46E77581242D476B008A5E93 /* FullscreenViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7757B242D476B008A5E93 /* FullscreenViewTests.swift */; };
+		46E77583242D478D008A5E93 /* XCTestCastExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77582242D478D008A5E93 /* XCTestCastExtensions.swift */; };
+		46E77585242D4805008A5E93 /* TestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77584242D4805008A5E93 /* TestConfig.swift */; };
+		46E77598242D6890008A5E93 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 46E77597242D6890008A5E93 /* SnapshotTesting */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		46E77571242D4736008A5E93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46AE6FB8242BADC9007BB005 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 46AE6FBF242BADC9007BB005;
+			remoteInfo = Demo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		46E77567242CFFA5008A5E93 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				46E77564242CFFA5008A5E93 /* FinniversKit.framework in Embed Frameworks */,
+				46E77566242CFFA5008A5E93 /* FinnUI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		46AE6FC0242BADC9007BB005 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -414,6 +452,21 @@
 		46E7739F242CEF0A008A5E93 /* FavoriteFoldersListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
 		46E773A2242CEF0A008A5E93 /* NotificationsListViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListViewDemoView.swift; sourceTree = "<group>"; };
 		46E773A3242CEF0A008A5E93 /* NotificationsListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
+		46E77561242CFFA5008A5E93 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		46E77562242CFFA5008A5E93 /* FinnUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FinnUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		46E7756C242D4736008A5E93 /* SnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		46E77570242D4736008A5E93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46E77576242D476B008A5E93 /* DnaViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DnaViewTests.swift; sourceTree = "<group>"; };
+		46E77577242D476B008A5E93 /* BroadcastMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastMessageTests.swift; sourceTree = "<group>"; };
+		46E77578242D476B008A5E93 /* ComponentViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentViewTests.swift; sourceTree = "<group>"; };
+		46E77579242D476B008A5E93 /* RecyclingViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecyclingViewTests.swift; sourceTree = "<group>"; };
+		46E7757A242D476B008A5E93 /* TableViewCellViewsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellViewsTests.swift; sourceTree = "<group>"; };
+		46E7757B242D476B008A5E93 /* FullscreenViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenViewTests.swift; sourceTree = "<group>"; };
+		46E77582242D478D008A5E93 /* XCTestCastExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCastExtensions.swift; sourceTree = "<group>"; };
+		46E77584242D4805008A5E93 /* TestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConfig.swift; sourceTree = "<group>"; };
+		46E7758C242D51A5008A5E93 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		46E7758E242D5204008A5E93 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		46E77590242D520C008A5E93 /* FinnUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FinnUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -421,6 +474,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46E77563242CFFA5008A5E93 /* FinniversKit.framework in Frameworks */,
+				46E77565242CFFA5008A5E93 /* FinnUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46E77569242D4736008A5E93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46E77598242D6890008A5E93 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +494,9 @@
 			isa = PBXGroup;
 			children = (
 				46AE6FC2242BADC9007BB005 /* Demo */,
+				46E7756D242D4736008A5E93 /* SnapshotTests */,
 				46AE6FC1242BADC9007BB005 /* Products */,
+				46E77560242CFFA5008A5E93 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -439,6 +504,7 @@
 			isa = PBXGroup;
 			children = (
 				46AE6FC0242BADC9007BB005 /* Demo.app */,
+				46E7756C242D4736008A5E93 /* SnapshotTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1708,6 +1774,34 @@
 			path = Notifications;
 			sourceTree = "<group>";
 		};
+		46E77560242CFFA5008A5E93 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				46E77590242D520C008A5E93 /* FinnUI.framework */,
+				46E7758E242D5204008A5E93 /* FinniversKit.framework */,
+				46E7758C242D51A5008A5E93 /* FinniversKit.framework */,
+				46E77561242CFFA5008A5E93 /* FinniversKit.framework */,
+				46E77562242CFFA5008A5E93 /* FinnUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		46E7756D242D4736008A5E93 /* SnapshotTests */ = {
+			isa = PBXGroup;
+			children = (
+				46E77582242D478D008A5E93 /* XCTestCastExtensions.swift */,
+				46E77577242D476B008A5E93 /* BroadcastMessageTests.swift */,
+				46E77576242D476B008A5E93 /* DnaViewTests.swift */,
+				46E77578242D476B008A5E93 /* ComponentViewTests.swift */,
+				46E7757A242D476B008A5E93 /* TableViewCellViewsTests.swift */,
+				46E77579242D476B008A5E93 /* RecyclingViewTests.swift */,
+				46E7757B242D476B008A5E93 /* FullscreenViewTests.swift */,
+				46E77584242D4805008A5E93 /* TestConfig.swift */,
+				46E77570242D4736008A5E93 /* Info.plist */,
+			);
+			path = SnapshotTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1718,15 +1812,39 @@
 				46AE6FBC242BADC9007BB005 /* Sources */,
 				46AE6FBD242BADC9007BB005 /* Frameworks */,
 				46AE6FBE242BADC9007BB005 /* Resources */,
+				46E77567242CFFA5008A5E93 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Demo;
+			packageProductDependencies = (
+			);
 			productName = Demo;
 			productReference = 46AE6FC0242BADC9007BB005 /* Demo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		46E7756B242D4736008A5E93 /* SnapshotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46E77573242D4736008A5E93 /* Build configuration list for PBXNativeTarget "SnapshotTests" */;
+			buildPhases = (
+				46E77568242D4736008A5E93 /* Sources */,
+				46E77569242D4736008A5E93 /* Frameworks */,
+				46E7756A242D4736008A5E93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				46E77572242D4736008A5E93 /* PBXTargetDependency */,
+			);
+			name = SnapshotTests;
+			packageProductDependencies = (
+				46E77597242D6890008A5E93 /* SnapshotTesting */,
+			);
+			productName = SnapshotTests;
+			productReference = 46E7756C242D4736008A5E93 /* SnapshotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -1734,12 +1852,16 @@
 		46AE6FB8242BADC9007BB005 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "FINN.no AS";
 				TargetAttributes = {
 					46AE6FBF242BADC9007BB005 = {
 						CreatedOnToolsVersion = 11.3.1;
+					};
+					46E7756B242D4736008A5E93 = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = 46AE6FBF242BADC9007BB005;
 					};
 				};
 			};
@@ -1752,11 +1874,15 @@
 				Base,
 			);
 			mainGroup = 46AE6FB7242BADC9007BB005;
+			packageReferences = (
+				46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			productRefGroup = 46AE6FC1242BADC9007BB005 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				46AE6FBF242BADC9007BB005 /* Demo */,
+				46E7756B242D4736008A5E93 /* SnapshotTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1768,6 +1894,13 @@
 			files = (
 				46E7744F242CEF0A008A5E93 /* LaunchScreen.storyboard in Resources */,
 				46E77450242CEF0A008A5E93 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46E7756A242D4736008A5E93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1980,7 +2113,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		46E77568242D4736008A5E93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46E7757E242D476B008A5E93 /* ComponentViewTests.swift in Sources */,
+				46E77580242D476B008A5E93 /* RecyclingViewTests.swift in Sources */,
+				46E77585242D4805008A5E93 /* TestConfig.swift in Sources */,
+				46E77581242D476B008A5E93 /* FullscreenViewTests.swift in Sources */,
+				46E77583242D478D008A5E93 /* XCTestCastExtensions.swift in Sources */,
+				46E7757C242D476B008A5E93 /* DnaViewTests.swift in Sources */,
+				46E7757D242D476B008A5E93 /* BroadcastMessageTests.swift in Sources */,
+				46E7757F242D476B008A5E93 /* TableViewCellViewsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		46E77572242D4736008A5E93 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 46AE6FBF242BADC9007BB005 /* Demo */;
+			targetProxy = 46E77571242D4736008A5E93 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		46AE6FD2242BADCD007BB005 /* Debug */ = {
@@ -2109,6 +2265,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"-weak_framework",
+					SwiftUI,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.FinniversKit.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -2128,10 +2288,56 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"-weak_framework",
+					SwiftUI,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.FinniversKit.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		46E77574242D4736008A5E93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D34XZHQLE3;
+				INFOPLIST_FILE = SnapshotTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = no.finn.FinniversKit.Demo.SnapshotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
+			};
+			name = Debug;
+		};
+		46E77575242D4736008A5E93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D34XZHQLE3;
+				INFOPLIST_FILE = SnapshotTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = no.finn.FinniversKit.Demo.SnapshotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
 			};
 			name = Release;
 		};
@@ -2156,7 +2362,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		46E77573242D4736008A5E93 /* Build configuration list for PBXNativeTarget "SnapshotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46E77574242D4736008A5E93 /* Debug */,
+				46E77575242D4736008A5E93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		46E77597242D6890008A5E93 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 46AE6FB8242BADC9007BB005 /* Project object */;
 }

@@ -2,7 +2,6 @@
 //  Copyright © 2018 FINN AS. All rights reserved.
 //
 
-import Demo
 import XCTest
 import FinniversKit
 
