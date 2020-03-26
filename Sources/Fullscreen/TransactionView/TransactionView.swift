@@ -174,14 +174,14 @@ private extension TransactionView {
     }
 
     func setupTransactionStepView(_ step: Int, _ model: TransactionStepViewModel) {
-        let isLastStep = (step == numberOfSteps - 1)
-        let transactionStepView = TransactionStepView(step: step, model: model, withAutoLayout: true)
+        let transactionStepView = TransactionStepView(
+            step: step,
+            model: model,
+            withCustomBackground: model.customBackground,
+            withAutoLayout: true
+        )
         transactionStepView.delegate = self
         verticalStackView.addArrangedSubview(transactionStepView)
-
-        if isLastStep && model.state == .completed {
-            transactionStepView.hasCompletedLastStep(true)
-        }
     }
 
     func setupTransactionStepDot(_ step: Int) {

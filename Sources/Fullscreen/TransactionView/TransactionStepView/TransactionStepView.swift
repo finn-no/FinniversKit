@@ -5,9 +5,13 @@
 import UIKit
 
 public protocol TransactionStepViewDelegate: AnyObject {
-    func transactionStepViewDidTapActionButton(_ view: TransactionStepView, inTransactionStep step: Int,
-                                               withAction action: TransactionStepView.ActionButton.Action, withUrl urlString: String?,
-                                               withFallbackUrl fallbackUrlString: String?)
+    func transactionStepViewDidTapActionButton(
+        _ view: TransactionStepView,
+        inTransactionStep step: Int,
+        withAction action: TransactionStepView.ActionButton.Action,
+        withUrl urlString: String?,
+        withFallbackUrl fallbackUrlString: String?
+    )
 }
 
 public enum TransactionStepViewState: String {
@@ -36,6 +40,20 @@ public enum TransactionStepViewState: String {
             return .active
         case .completed:
             return .completed
+        }
+    }
+}
+
+public enum TransactionStepViewCustomBackground: String {
+    case warning
+    case error
+
+    public var color: UIColor {
+        switch self {
+        case .error:
+            return .bgCritical
+        case .warning:
+            return .bgAlert
         }
     }
 }
@@ -119,7 +137,12 @@ public class TransactionStepView: UIView {
 
     // MARK: - Init
 
-    public init(step: Int, model: TransactionStepViewModel, withAutoLayout autoLayout: Bool = false) {
+    public init(
+        step: Int,
+        model: TransactionStepViewModel,
+        withCustomBackground backgroundStyle: TransactionStepViewCustomBackground? = nil,
+        withAutoLayout autoLayout: Bool = false
+    ) {
         self.step = step
         self.model = model
         self.primaryButtonModel = model.primaryButton ?? nil
@@ -129,19 +152,7 @@ public class TransactionStepView: UIView {
         super.init(frame: .zero)
 
         translatesAutoresizingMaskIntoConstraints = !autoLayout
-        setup()
-    }
-
-    public func hasCompletedLastStep(_ isCompleted: Bool) {
-        guard isCompleted == true else { return }
-
-        backgroundColor = activeStepColor
-        titleView.backgroundColor = activeStepColor
-        bodyView.backgroundColor = activeStepColor
-        detailView.backgroundColor = activeStepColor
-
-        verticalStackViewTopAnchor?.constant = .spacingM
-        verticalStackViewLeadingAnchor?.constant = .spacingM
+        setup(withCustomBackground: backgroundStyle)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -152,8 +163,8 @@ public class TransactionStepView: UIView {
 // MARK: - Private
 
 private extension TransactionStepView {
-    private func setup() {
-        backgroundColor = style.backgroundColor
+    private func setup(withCustomBackground backgroundStyle: TransactionStepViewCustomBackground?) {
+        backgroundColor = backgroundStyle?.color ?? style.backgroundColor
         layer.cornerRadius = style.cornerRadius
 
         addSubview(verticalStackView)
@@ -264,7 +275,9 @@ private extension TransactionStepView {
 
         addSubview(imageView)
 
-        let buttonWidth = button.widthAnchor.constraint(greaterThanOrEqualToConstant: button.intrinsicContentSize.width + imageWidth + .spacingS)
+        let buttonWidth = button.widthAnchor.constraint(
+            greaterThanOrEqualToConstant: button.intrinsicContentSize.width + imageWidth + .spacingS
+        )
         buttonWidth.priority = .required
 
         NSLayoutConstraint.activate([
@@ -297,7 +310,12 @@ private extension TransactionStepView {
         let urlString = model?.url
         let fallbackUrlString = model?.fallbackUrl
 
-        delegate?.transactionStepViewDidTapActionButton(self, inTransactionStep: step, withAction: action,
-                                                         withUrl: urlString, withFallbackUrl: fallbackUrlString)
+        delegate?.transactionStepViewDidTapActionButton(
+            self,
+            inTransactionStep: step,
+            withAction: action,
+            withUrl: urlString,
+            withFallbackUrl: fallbackUrlString
+        )
     }
 }
