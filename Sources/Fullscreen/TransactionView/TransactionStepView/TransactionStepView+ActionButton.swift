@@ -8,7 +8,6 @@ public extension TransactionStepView {
         case flat = "flat"
         case callToAction = "call_to_action"
         case republishAd = "republish_ad"
-        case unknown
 
         public init(rawValue: String) {
             switch rawValue {
@@ -21,7 +20,7 @@ public extension TransactionStepView {
             case "republish_ad":
                 self = .republishAd
             default:
-                self = .unknown
+                self = .default
             }
         }
 
@@ -33,8 +32,6 @@ public extension TransactionStepView {
                 return .callToAction
             case .flat:
                 return .flat
-            default:
-                return .default
             }
         }
     }
