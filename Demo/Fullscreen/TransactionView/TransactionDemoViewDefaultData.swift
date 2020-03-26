@@ -26,6 +26,7 @@ public struct TransactionAlertModel: TransactionAlertViewModel {
 
 public struct TransactionStepModel: TransactionStepViewModel {
     public var state: TransactionStepViewState
+    public var customBackground: TransactionStepViewCustomBackground?
     public var title: String
     public var body: NSAttributedString?
     public var primaryButton: TransactionStepActionButtonViewModel?
@@ -46,7 +47,7 @@ public struct TransactionDemoViewDefaultData {
 
     // swiftlint:disable cyclomatic_complexity
     mutating func getState() -> TransactionViewModel {
-        if currentState == 10 {
+        if currentState == 12 {
             self.currentState = -1
         }
 
@@ -86,6 +87,12 @@ public struct TransactionDemoViewDefaultData {
         case 10:
             print("State: payment completed - both parties confirmed handover")
             return TransactionDemoViewDefaultData.BothPartiesConfirmedHandoverDemoViewModel
+        case 11:
+            print("State: ad expired - show Nettbil integration")
+            return TransactionDemoViewDefaultData.AdExpiredDemoViewModel
+        case 12:
+            print("State: payment cancelled")
+            return TransactionDemoViewDefaultData.PaymentCancelledDemoViewModel
         default:
             fatalError("No model exists for step \(currentState)")
         }
