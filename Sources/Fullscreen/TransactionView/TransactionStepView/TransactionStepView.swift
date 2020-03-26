@@ -152,19 +152,6 @@ public class TransactionStepView: UIView {
         super.init(frame: .zero)
 
         translatesAutoresizingMaskIntoConstraints = !autoLayout
-        setup()
-    }
-
-    public func hasCompletedLastStep(_ isCompleted: Bool) {
-        guard isCompleted == true else { return }
-
-        backgroundColor = activeStepColor
-        titleView.backgroundColor = activeStepColor
-        bodyView.backgroundColor = activeStepColor
-        detailView.backgroundColor = activeStepColor
-
-        verticalStackViewTopAnchor?.constant = .spacingM
-        verticalStackViewLeadingAnchor?.constant = .spacingM
         setup(withCustomBackground: backgroundStyle)
     }
 
