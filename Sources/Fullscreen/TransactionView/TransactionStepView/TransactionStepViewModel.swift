@@ -6,6 +6,7 @@ import Foundation
 
 public protocol TransactionStepViewModel {
     var state: TransactionStepViewState { get }
+    var customBackground: TransactionStepViewCustomBackground? { get }
     var title: String { get }
     var body: NSAttributedString? { get }
     var primaryButton: TransactionStepActionButtonViewModel? { get }
