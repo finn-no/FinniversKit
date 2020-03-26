@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import FinniversKit
 
 public class BuyerPickerDemoUser: BuyerPickerProfileModel {
     public let name: String
