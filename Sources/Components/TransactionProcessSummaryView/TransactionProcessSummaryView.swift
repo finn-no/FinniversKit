@@ -2,12 +2,12 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
-public protocol TransactionProcessViewDelegate: AnyObject {
-    func transactionProcessViewWasTapped(_ view: TransactionProcessView)
+public protocol TransactionProcessSummaryViewDelegate: AnyObject {
+    func transactionProcessSummaryViewWasTapped(_ view: TransactionProcessSummaryView)
 }
 
-public class TransactionProcessView: UIView {
-    public weak var delegate: TransactionProcessViewDelegate?
+public class TransactionProcessSummaryView: UIView {
+    public weak var delegate: TransactionProcessSummaryViewDelegate?
 
     // MARK: - Private properties
 
@@ -61,7 +61,7 @@ public class TransactionProcessView: UIView {
         setup()
     }
 
-    public func configure(with viewModel: TransactionProcessViewModel) {
+    public func configure(with viewModel: TransactionProcessSummaryViewModel) {
         titleLabel.text = viewModel.title
         detailLabel.text = viewModel.detail
         descriptionLabel.text = viewModel.description
@@ -72,7 +72,7 @@ public class TransactionProcessView: UIView {
     }
 }
 
-private extension TransactionProcessView {
+private extension TransactionProcessSummaryView {
     func setup() {
         contentView.addGestureRecognizer(tapRecognizer)
 
@@ -120,6 +120,6 @@ private extension TransactionProcessView {
     }
 
     @objc private func onTap() {
-        delegate?.transactionProcessViewWasTapped(self)
+        delegate?.transactionProcessSummaryViewWasTapped(self)
     }
 }

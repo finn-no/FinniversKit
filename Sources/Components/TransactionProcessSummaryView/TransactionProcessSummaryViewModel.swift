@@ -2,7 +2,7 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
-public struct TransactionProcessViewModel {
+public struct TransactionProcessSummaryViewModel {
     public let title: String
     public let detail: String
     public let description: String
