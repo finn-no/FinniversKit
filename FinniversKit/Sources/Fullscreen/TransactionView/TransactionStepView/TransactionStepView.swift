@@ -44,20 +44,6 @@ public enum TransactionStepViewState: String {
     }
 }
 
-public enum TransactionStepViewCustomStyle: String {
-    case warning
-    case error
-
-    public var color: UIColor {
-        switch self {
-        case .error:
-            return .bgCritical
-        case .warning:
-            return .bgAlert
-        }
-    }
-}
-
 public class TransactionStepView: UIView {
     // MARK: - Public properties
 
@@ -140,7 +126,7 @@ public class TransactionStepView: UIView {
     public init(
         step: Int,
         model: TransactionStepViewModel,
-        withCustomStyle customStyle: TransactionStepViewCustomStyle? = nil,
+        withCustomStyle customStyle: TransactionStepView.CustomStyle? = nil,
         withAutoLayout autoLayout: Bool = false
     ) {
         self.step = step
@@ -163,8 +149,8 @@ public class TransactionStepView: UIView {
 // MARK: - Private
 
 private extension TransactionStepView {
-    private func setup(withCustomStyle customStyle: TransactionStepViewCustomStyle?) {
-        backgroundColor = customStyle?.color ?? style.backgroundColor
+    private func setup(withCustomStyle customStyle: TransactionStepView.CustomStyle?) {
+        backgroundColor = customStyle?.backgroundColor ?? style.backgroundColor
         layer.cornerRadius = style.cornerRadius
 
         addSubview(verticalStackView)

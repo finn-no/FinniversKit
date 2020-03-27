@@ -26,7 +26,7 @@ public struct TransactionAlertModel: TransactionAlertViewModel {
 
 public struct TransactionStepModel: TransactionStepViewModel {
     public var state: TransactionStepViewState
-    public var style: TransactionStepViewCustomStyle?
+    public var style: TransactionStepView.CustomStyle?
     public var main: TransactionStepContentViewModel?
     public var detail: TransactionStepContentViewModel?
 }

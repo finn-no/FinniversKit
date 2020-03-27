@@ -86,3 +86,19 @@ public extension TransactionStepView {
         }
     }
 }
+
+extension TransactionStepView {
+    public enum CustomStyle: String {
+        case warning
+        case error
+
+        public var backgroundColor: UIColor {
+            switch self {
+            case .error:
+                return .bgCritical
+            case .warning:
+                return .bgAlert
+            }
+        }
+    }
+}
