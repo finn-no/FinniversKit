@@ -62,6 +62,10 @@ public class TransactionStepView: UIView {
     private var primaryButtonModel: TransactionStepActionButtonViewModel?
 
     private var style: TransactionStepView.Style
+
+    // Styling provided by the backend
+    private var customStyle: TransactionStepView.CustomStyle?
+
     private var activeStepColor: UIColor = .bgTertiary
 
     private var verticalStackViewLeadingAnchor: NSLayoutConstraint?
@@ -83,7 +87,6 @@ public class TransactionStepView: UIView {
         let view = UITextView(withAutoLayout: true)
         view.font = style.titleFont
         view.textColor = style.titleTextColor
-        view.backgroundColor = style.backgroundColor
         view.isScrollEnabled = false
         view.isEditable = false
         view.contentInset = .init(top: -.spacingS, leading: 0, bottom: 0, trailing: 0)
@@ -97,7 +100,6 @@ public class TransactionStepView: UIView {
         let view = UITextView(withAutoLayout: true)
         view.font = style.bodyFont
         view.textColor = style.bodyTextColor
-        view.backgroundColor = style.backgroundColor
         view.isScrollEnabled = false
         view.isEditable = false
         view.contentInset = .init(top: -.spacingS, leading: 0, bottom: 0, trailing: 0)
@@ -111,7 +113,6 @@ public class TransactionStepView: UIView {
         let view = UITextView(withAutoLayout: true)
         view.font = style.detailFont
         view.textColor = style.detailTextColor
-        view.backgroundColor = style.backgroundColor
         view.isScrollEnabled = false
         view.isEditable = false
         view.contentInset = .leadingInset(0)
@@ -134,11 +135,12 @@ public class TransactionStepView: UIView {
         self.nativeButtonModel = model.main?.nativeButton ?? nil
         self.primaryButtonModel = model.main?.primaryButton ?? nil
         self.style = model.state.style
+        self.customStyle = customStyle
 
         super.init(frame: .zero)
 
         translatesAutoresizingMaskIntoConstraints = !autoLayout
-        setup(withCustomStyle: customStyle)
+        setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -149,12 +151,13 @@ public class TransactionStepView: UIView {
 // MARK: - Private
 
 private extension TransactionStepView {
-    private func setup(withCustomStyle customStyle: TransactionStepView.CustomStyle?) {
+    private func setup() {
         backgroundColor = customStyle?.backgroundColor ?? style.backgroundColor
         layer.cornerRadius = style.cornerRadius
 
         addSubview(verticalStackView)
 
+        titleView.backgroundColor = customStyle?.backgroundColor ?? style.backgroundColor
         titleView.text = model.main?.title
         verticalStackView.addArrangedSubview(titleView)
 
@@ -187,6 +190,7 @@ private extension TransactionStepView {
 
     private func setupOptionalViews() {
         if let bodyText = model.main?.body {
+            bodyView.backgroundColor = customStyle?.backgroundColor ?? style.backgroundColor
             bodyView.attributedText = bodyText
 
             verticalStackView.addArrangedSubview(bodyView)
@@ -197,6 +201,7 @@ private extension TransactionStepView {
         setupOptionalButton(model.main?.primaryButton, tag: ButtonTag.primary.rawValue)
 
         if let detailText = model.detail?.body {
+            detailView.backgroundColor = customStyle?.backgroundColor ?? style.backgroundColor
             detailView.attributedText = detailText
 
             verticalStackView.addArrangedSubview(detailView)
