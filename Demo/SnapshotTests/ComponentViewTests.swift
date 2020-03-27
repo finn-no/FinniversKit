@@ -4,6 +4,7 @@
 
 import XCTest
 import FinniversKit
+import Demo
 
 class ComponentViewTests: XCTestCase {
     private func snapshot(_ component: ComponentDemoViews, includeIPad: Bool = false, testName: String = #function) {
