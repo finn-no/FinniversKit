@@ -230,9 +230,11 @@ private extension TransactionStepView {
             verticalStackView.setCustomSpacing(.spacingM, after: button)
 
             switch buttonAction {
-            case .seeAd, .republishAd:
+            case .seeAd:
                 button.contentHorizontalAlignment = .leading
-                button.contentEdgeInsets = .leadingInset(.spacingS)
+                button.contentEdgeInsets = .leadingInset(.spacingXS)
+            case .republishAd:
+                break
             default:
                 addWebViewIconToButton(button)
             }
