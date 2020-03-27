@@ -221,7 +221,6 @@ private extension TransactionStepView {
 
             let button = Button(style: buttonStyle, withAutoLayout: true)
             button.setTitle(buttonText, for: .normal)
-            button.isEnabled = style.actionButtonEnabled
             button.titleLabel?.adjustsFontSizeToFitWidth = true
             button.tag = tag
             button.addTarget(self, action: #selector(handleButtonTap(_:)), for: .touchUpInside)
@@ -231,7 +230,7 @@ private extension TransactionStepView {
             verticalStackView.setCustomSpacing(.spacingM, after: button)
 
             switch buttonAction {
-            case .seeAd:
+            case .seeAd, .republishAd:
                 button.contentHorizontalAlignment = .leading
                 button.contentEdgeInsets = .leadingInset(.spacingS)
             default:

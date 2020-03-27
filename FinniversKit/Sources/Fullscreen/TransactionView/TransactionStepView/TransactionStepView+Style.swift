@@ -75,15 +75,6 @@ public extension TransactionStepView {
                 return .textPrimary
             }
         }
-
-        public var actionButtonEnabled: Bool {
-            switch self {
-            case .notStarted:
-                return false
-            case .active, .completed:
-                return true
-            }
-        }
     }
 }
 
