@@ -44,7 +44,7 @@ public enum TransactionStepViewState: String {
     }
 }
 
-public enum TransactionStepViewCustomBackground: String {
+public enum TransactionStepViewCustomStyle: String {
     case warning
     case error
 
@@ -140,19 +140,19 @@ public class TransactionStepView: UIView {
     public init(
         step: Int,
         model: TransactionStepViewModel,
-        withCustomBackground backgroundStyle: TransactionStepViewCustomBackground? = nil,
+        withCustomStyle customStyle: TransactionStepViewCustomStyle? = nil,
         withAutoLayout autoLayout: Bool = false
     ) {
         self.step = step
         self.model = model
-        self.primaryButtonModel = model.primaryButton ?? nil
-        self.secondaryButtonModel = model.secondaryButton ?? nil
+        self.primaryButtonModel = model.main?.primaryButton ?? nil
+        self.secondaryButtonModel = model.main?.secondaryButton ?? nil
         self.style = model.state.style
 
         super.init(frame: .zero)
 
         translatesAutoresizingMaskIntoConstraints = !autoLayout
-        setup(withCustomBackground: backgroundStyle)
+        setup(withCustomStyle: customStyle)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -163,8 +163,8 @@ public class TransactionStepView: UIView {
 // MARK: - Private
 
 private extension TransactionStepView {
-    private func setup(withCustomBackground backgroundStyle: TransactionStepViewCustomBackground?) {
-        backgroundColor = backgroundStyle?.color ?? style.backgroundColor
+    private func setup(withCustomStyle customStyle: TransactionStepViewCustomStyle?) {
+        backgroundColor = customStyle?.color ?? style.backgroundColor
         layer.cornerRadius = style.cornerRadius
 
         addSubview(verticalStackView)
