@@ -2377,7 +2377,7 @@
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 1.6.0;
+				minimumVersion = 1.7.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
