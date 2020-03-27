@@ -23,38 +23,46 @@ extension TransactionDemoViewDefaultData {
         steps: [
             TransactionStepModel(
                 state: .completed,
-                title: "Annonsen er lagt ut",
-                primaryButton: TransactionStepActionButtonModel(
-                    text: "Se annonsen",
-                    style: "flat",
-                    action: "see_ad",
-                    fallbackUrl: "www.finn.no/171529672")),
+                main: TransactionStepContentModel(
+                    title: "Annonsen er lagt ut",
+                    primaryButton: TransactionStepActionButtonModel(
+                        text: "Se annonsen",
+                        style: "flat",
+                        action: "see_ad",
+                        fallbackUrl: "/171529672"))),
 
             TransactionStepModel(
                 state: .completed,
-                title: "Kontrakt",
-                body: NSAttributedString(string: "Begge har signert kontrakten."),
-                primaryButton: TransactionStepActionButtonModel(
-                    text: "Gå til kontrakt",
-                    style: "flat",
-                    url: "https://www.google.com/search?q=contract+signed"
-                )),
+                main: TransactionStepContentModel(
+                    title: "Kontrakt",
+                    body: NSAttributedString(string: "Begge har signert kontrakten."),
+                    primaryButton: TransactionStepActionButtonModel(
+                        text: "Gå til kontrakt",
+                        style: "flat",
+                        url: "https://www.google.com/search?q=contract+signed"))),
 
             TransactionStepModel(
                 state: .completed,
-                title: "Betaling",
-                body: NSAttributedString(string: "Kjøper betalte 1. februar 2020."),
-                detail: "Utbetalingen starter først når begge har bekreftet at overleveringen har skjedd."),
+                main: TransactionStepContentModel(
+                    title: "Betaling",
+                    body: NSAttributedString(string: "Kjøper betalte 1. februar 2020."))),
 
             TransactionStepModel(
                 state: .completed,
-                title: "Overlevering",
-                body: NSAttributedString(string: "Dere har bekreftet at overleveringen har skjedd.")),
+                main: TransactionStepContentModel(
+                    title: "Overlevering",
+                    body: NSAttributedString(string: "Dere har bekreftet at overleveringen har skjedd."))),
 
             TransactionStepModel(
-                state: .completed,
-                title: "Gratulerer med salget!",
-                body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før»."),
-                detail: "Det kan ta noen dager før pengene dukker opp på kontoen din.")
+                state: .active,
+                main: TransactionStepContentModel(
+                    title: "Gratulerer med salget!",
+                    body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «<a href=\"/minekjoretoy\">Eide før</a>».")),
+                detail: TransactionStepContentModel(
+                    body: NSAttributedString(string: "Det kan ta noen dager før pengene dukker opp på kontoen din."),
+                    secondaryButton: TransactionStepActionButtonModel(
+                        text: "Gå til Mine kjøretøy",
+                        style: "flat",
+                        url: "/minekjoretoy"))),
     ])
 }
