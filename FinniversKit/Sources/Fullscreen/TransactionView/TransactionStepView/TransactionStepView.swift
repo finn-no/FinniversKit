@@ -169,7 +169,7 @@ private extension TransactionStepView {
 
         addSubview(verticalStackView)
 
-        titleView.text = model.title
+        titleView.text = model.main?.title
         verticalStackView.addArrangedSubview(titleView)
 
         switch style {
@@ -200,18 +200,18 @@ private extension TransactionStepView {
     }
 
     private func setupOptionalViews() {
-        if let bodyText = model.body {
+        if let bodyText = model.main?.body {
             bodyView.attributedText = bodyText
 
             verticalStackView.addArrangedSubview(bodyView)
             bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: .spacingM)
         }
 
-        setupOptionalButton(model.secondaryButton, tag: ButtonTag.secondary.rawValue)
-        setupOptionalButton(model.primaryButton, tag: ButtonTag.primary.rawValue)
+        setupOptionalButton(model.main?.secondaryButton, tag: ButtonTag.secondary.rawValue)
+        setupOptionalButton(model.main?.primaryButton, tag: ButtonTag.primary.rawValue)
 
-        if let detailText = model.detail {
-            detailView.text = detailText
+        if let detailText = model.detail?.body {
+            detailView.attributedText = detailText
 
             verticalStackView.addArrangedSubview(detailView)
 
