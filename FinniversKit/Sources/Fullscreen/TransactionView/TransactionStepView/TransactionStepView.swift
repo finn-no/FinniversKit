@@ -66,14 +66,14 @@ public class TransactionStepView: UIView {
     // MARK: - Private properties
 
     private enum ButtonTag: Int {
-        case primary = 1
-        case secondary = 2
+        case native = 1
+        case primary = 2
     }
 
     private var step: Int
     private var model: TransactionStepViewModel
+    private var nativeButtonModel: TransactionStepActionButtonViewModel?
     private var primaryButtonModel: TransactionStepActionButtonViewModel?
-    private var secondaryButtonModel: TransactionStepActionButtonViewModel?
 
     private var style: TransactionStepView.Style
     private var activeStepColor: UIColor = .bgTertiary
@@ -145,8 +145,8 @@ public class TransactionStepView: UIView {
     ) {
         self.step = step
         self.model = model
+        self.nativeButtonModel = model.main?.nativeButton ?? nil
         self.primaryButtonModel = model.main?.primaryButton ?? nil
-        self.secondaryButtonModel = model.main?.secondaryButton ?? nil
         self.style = model.state.style
 
         super.init(frame: .zero)
@@ -207,7 +207,7 @@ private extension TransactionStepView {
             bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: .spacingM)
         }
 
-        setupOptionalButton(model.main?.secondaryButton, tag: ButtonTag.secondary.rawValue)
+        setupOptionalButton(model.main?.nativeButton, tag: ButtonTag.native.rawValue)
         setupOptionalButton(model.main?.primaryButton, tag: ButtonTag.primary.rawValue)
 
         if let detailText = model.detail?.body {
@@ -298,10 +298,10 @@ private extension TransactionStepView {
         var model: TransactionStepActionButtonViewModel?
 
         switch sender.tag {
+        case ButtonTag.native.rawValue:
+            model = nativeButtonModel
         case ButtonTag.primary.rawValue:
             model = primaryButtonModel
-        case ButtonTag.secondary.rawValue:
-            model = secondaryButtonModel
         default:
             model = nil
         }

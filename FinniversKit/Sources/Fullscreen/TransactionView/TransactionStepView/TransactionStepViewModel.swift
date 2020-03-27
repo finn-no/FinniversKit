@@ -14,12 +14,12 @@ public protocol TransactionStepViewModel {
 public protocol TransactionStepContentViewModel {
     var title: String? { get }
     var body: NSAttributedString? { get }
-    var primaryButton: TransactionStepActionButtonViewModel? { get }
     /*
      For certain steps the attributed string assigned to body will contain a href element.
-     The host app will remove the <a href> element and the nativeButton will be rendered with the necessary action/url.
+     The host app will remove the <a href> element and the nativeButton will be rendered above the primaryButton.
      */
-    var secondaryButton: TransactionStepActionButtonViewModel? { get }
+    var nativeButton: TransactionStepActionButtonViewModel? { get }
+    var primaryButton: TransactionStepActionButtonViewModel? { get }
 }
 
 public protocol TransactionStepActionButtonViewModel {

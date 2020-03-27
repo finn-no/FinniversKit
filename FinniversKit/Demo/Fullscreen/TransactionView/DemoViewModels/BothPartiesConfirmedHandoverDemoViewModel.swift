@@ -60,7 +60,7 @@ extension TransactionDemoViewDefaultData {
                     body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «<a href=\"/minekjoretoy\">Eide før</a>».")),
                 detail: TransactionStepContentModel(
                     body: NSAttributedString(string: "Det kan ta noen dager før pengene dukker opp på kontoen din."),
-                    secondaryButton: TransactionStepActionButtonModel(
+                    nativeButton: TransactionStepActionButtonModel(
                         text: "Gå til Mine kjøretøy",
                         style: "flat",
                         url: "/minekjoretoy"))),

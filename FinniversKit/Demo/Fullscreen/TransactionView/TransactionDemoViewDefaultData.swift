@@ -34,8 +34,8 @@ public struct TransactionStepModel: TransactionStepViewModel {
 public struct TransactionStepContentModel: TransactionStepContentViewModel {
     public var title: String?
     public var body: NSAttributedString?
+    public var nativeButton: TransactionStepActionButtonViewModel?
     public var primaryButton: TransactionStepActionButtonViewModel?
-    public var secondaryButton: TransactionStepActionButtonViewModel?
 }
 
 public struct TransactionStepActionButtonModel: TransactionStepActionButtonViewModel {

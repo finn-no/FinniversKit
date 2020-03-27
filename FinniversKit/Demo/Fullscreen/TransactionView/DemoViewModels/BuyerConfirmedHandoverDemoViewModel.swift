@@ -54,16 +54,15 @@ extension TransactionDemoViewDefaultData {
                 main: TransactionStepContentModel(
                     title: "Overlevering",
                     body: NSAttributedString(string: "<p>Kjøper har bekreftet.</p><p>Dere må bekrefte før:<br/><strong>8. februar 2020.</strong></p><ol><li>Ved oppmøte registrerer dere først eierskiftet digitalt hos Statens vegvesen.</li><li>Deretter må <strong>begge</strong> bekrefte at overleveringen har skjedd, og at pengene kan utbetales.</li></ol>"),
+                    nativeButton: TransactionStepActionButtonModel(
+                        text: "Registrer eierskifte",
+                        style: "default",
+                        url: "https://www.vegvesen.no/"),
                     primaryButton: TransactionStepActionButtonModel(
                         text: "Bekreft overlevering",
                         style: "call_to_action",
                         action: "url",
-                        url: "https://www.google.com/search?q=contract+signed"
-                    ),
-                    secondaryButton: TransactionStepActionButtonModel(
-                        text: "Registrer eierskifte",
-                        style: "default",
-                        url: "https://www.vegvesen.no/")),
+                        url: "https://www.google.com/search?q=contract+signed")),
                 detail: TransactionStepContentModel(
                     body: NSAttributedString(string: "Hvis fristen går ut før dere har bekreftet, ta kontakt med Swiftcourt for å få pengene ut av hvelvet."))),
 
