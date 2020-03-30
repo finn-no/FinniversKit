@@ -143,9 +143,7 @@ class ViewingCell: UITableViewCell {
             noteLabel.isHidden = true
         }
 
-        if bottomMargin > 0 || topEdgeInset > 0 {
-            contentStackView.layoutMargins = UIEdgeInsets(top: topEdgeInset, bottom: bottomMargin)
-        }
+        contentStackView.layoutMargins = UIEdgeInsets(top: topEdgeInset, bottom: bottomMargin)
     }
 
     // MARK: - Internal methods

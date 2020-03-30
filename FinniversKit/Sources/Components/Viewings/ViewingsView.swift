@@ -132,10 +132,7 @@ extension ViewingsView: UITableViewDataSource {
         let cell = tableView.dequeue(ViewingCell.self, for: indexPath)
         guard let viewModel = viewModel else { return cell }
 
-        var topMargin: CGFloat = 0
-        if viewModel.note != nil && indexPath.row == 0 {
-            topMargin = noteBottomMargin
-        }
+        let topMargin = viewModel.note != nil && indexPath.row == 0 ? noteBottomMargin : 0
         cell.configure(with: viewModel.viewings[indexPath.row], addToCalendarButtonTitle: viewModel.addToCalendarButtonTitle, topEdgeInset: topMargin)
         cell.selectionStyle = .none
         cell.delegate = self
