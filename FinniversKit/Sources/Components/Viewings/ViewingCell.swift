@@ -13,6 +13,12 @@ class ViewingCell: UITableViewCell {
 
     // MARK: - Private properties
 
+    private lazy var contentStackView: UIStackView = {
+        let stackView = UIStackView(withAutoLayout: true)
+        stackView.axis = .vertical
+        return stackView
+    }()
+
     private lazy var viewingStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .horizontal
@@ -67,9 +73,9 @@ class ViewingCell: UITableViewCell {
         return label
     }()
 
+    private let noteBottomPadding: CGFloat = .spacingM
     static let dateViewWidth: CGFloat = 48.0
     static let viewingStackViewHeight: CGFloat = 60.0
-    static let noteBottomPadding: CGFloat = .spacingM
     static let contentSpacing: CGFloat = .spacingS
 
     // MARK: - Init
@@ -87,10 +93,13 @@ class ViewingCell: UITableViewCell {
     // MARK: - Setup
 
     private func setup() {
-        contentView.addSubview(viewingStackView)
-        contentView.addSubview(noteLabel)
+        contentView.addSubview(contentStackView)
+        contentStackView.fillInSuperview()
 
-        backgroundColor = .bgPrimary
+        backgroundColor = .bgPrimary // is this needed?
+
+        contentStackView.addArrangedSubview(viewingStackView)
+        contentStackView.addArrangedSubview(noteLabel)
 
         viewingStackView.addArrangedSubview(dateStackView)
         viewingStackView.addArrangedSubview(weekdayTimeStackView)
@@ -103,41 +112,51 @@ class ViewingCell: UITableViewCell {
         weekdayTimeStackView.addArrangedSubview(timeLabel)
 
         NSLayoutConstraint.activate([
-            viewingStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            viewingStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            viewingStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             viewingStackView.heightAnchor.constraint(equalToConstant: ViewingCell.viewingStackViewHeight),
-
-            noteLabel.topAnchor.constraint(equalTo: viewingStackView.bottomAnchor),
-            noteLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: ViewingCell.dateViewWidth + ViewingCell.contentSpacing),
-            noteLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            noteLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -ViewingCell.noteBottomPadding), // what happen when no note?
-
+            viewingStackView.leadingAnchor.constraint(equalTo: contentStackView.leadingAnchor),
+            noteLabel.leadingAnchor.constraint(equalTo: contentStackView.leadingAnchor, constant: ViewingCell.dateViewWidth + ViewingCell.contentSpacing),
             dateStackView.widthAnchor.constraint(equalToConstant: ViewingCell.dateViewWidth),
         ])
     }
 
     // MARK: - Public methods
 
-    public func configure(with viewModel: ViewingCellViewModel, addToCalendarButtonTitle: String) {
+    public func configure(with viewModel: ViewingCellViewModel, addToCalendarButtonTitle: String, topEdgeInset: CGFloat = 0) {
+        weekdayLabel.text = viewModel.weekday
+        monthLabel.text = viewModel.month
+        dayLabel.text = viewModel.day
+        addToCalendarButton.setTitle(addToCalendarButtonTitle, for: .normal)
+
         if let timeInterval = viewModel.timeInterval {
             timeLabel.text = timeInterval
         } else {
             timeLabel.isHidden = true
         }
-        weekdayLabel.text = viewModel.weekday
-        monthLabel.text = viewModel.month
-        dayLabel.text = viewModel.day
-        noteLabel.text = viewModel.note
-        addToCalendarButton.setTitle(addToCalendarButtonTitle, for: .normal)
+
+        var bottomMargin: CGFloat = 0
+        if let note = viewModel.note {
+            noteLabel.text = note
+            bottomMargin = noteBottomPadding
+        } else {
+            noteLabel.isHidden = true
+        }
+
+        if bottomMargin > 0 || topEdgeInset > 0 {
+            contentStackView.layoutMargins = UIEdgeInsets(top: topEdgeInset, bottom: bottomMargin)
+            contentStackView.isLayoutMarginsRelativeArrangement = true
+        }
     }
 
     // MARK: - Internal methods
 
     func heightNeeded(for width: CGFloat, note: String?) -> CGFloat {
-        noteLabel.text = note
-        let noteHeight = noteLabel.sizeThatFits(CGSize(width: width - ViewingCell.dateViewWidth - ViewingCell.contentSpacing, height: CGFloat.greatestFiniteMagnitude)).height
-        return ViewingCell.viewingStackViewHeight + noteHeight + ViewingCell.noteBottomPadding
+        var noteHeight: CGFloat = 0
+        if let note = note {
+            noteLabel.text = note
+            noteHeight = noteLabel.sizeThatFits(CGSize(width: width - ViewingCell.dateViewWidth - ViewingCell.contentSpacing, height: CGFloat.greatestFiniteMagnitude)).height
+            noteHeight += noteBottomPadding
+        }
+        return ViewingCell.viewingStackViewHeight + noteHeight
     }
 
     // MARK: - Private methods
