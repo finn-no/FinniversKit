@@ -28,6 +28,12 @@ class SaveSearchViewDemoViewController: BaseDemoViewController<UIView> {
         saveSearchView.fillInSuperview()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        saveSearchView.becomeFirstResponder()
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
