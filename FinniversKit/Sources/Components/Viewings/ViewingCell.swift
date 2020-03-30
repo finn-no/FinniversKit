@@ -16,6 +16,8 @@ class ViewingCell: UITableViewCell {
     private lazy var contentStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
+        stackView.alignment = .trailing
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
@@ -96,7 +98,7 @@ class ViewingCell: UITableViewCell {
         contentView.addSubview(contentStackView)
         contentStackView.fillInSuperview()
 
-        backgroundColor = .bgPrimary // is this needed?
+        backgroundColor = .bgPrimary
 
         contentStackView.addArrangedSubview(viewingStackView)
         contentStackView.addArrangedSubview(noteLabel)
@@ -112,7 +114,7 @@ class ViewingCell: UITableViewCell {
         weekdayTimeStackView.addArrangedSubview(timeLabel)
 
         NSLayoutConstraint.activate([
-            viewingStackView.heightAnchor.constraint(equalToConstant: ViewingCell.viewingStackViewHeight),
+            viewingStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: ViewingCell.viewingStackViewHeight),
             viewingStackView.leadingAnchor.constraint(equalTo: contentStackView.leadingAnchor),
             noteLabel.leadingAnchor.constraint(equalTo: contentStackView.leadingAnchor, constant: ViewingCell.dateViewWidth + ViewingCell.contentSpacing),
             dateStackView.widthAnchor.constraint(equalToConstant: ViewingCell.dateViewWidth),
@@ -143,7 +145,6 @@ class ViewingCell: UITableViewCell {
 
         if bottomMargin > 0 || topEdgeInset > 0 {
             contentStackView.layoutMargins = UIEdgeInsets(top: topEdgeInset, bottom: bottomMargin)
-            contentStackView.isLayoutMarginsRelativeArrangement = true
         }
     }
 
