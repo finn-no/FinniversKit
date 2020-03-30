@@ -75,7 +75,7 @@ class ViewingCell: UITableViewCell {
         return label
     }()
 
-    private let noteBottomPadding: CGFloat = .spacingM
+    private let noteBottomMargin: CGFloat = .spacingM
     static let dateViewWidth: CGFloat = 48.0
     static let viewingStackViewHeight: CGFloat = 60.0
     static let contentSpacing: CGFloat = .spacingS
@@ -138,7 +138,7 @@ class ViewingCell: UITableViewCell {
         var bottomMargin: CGFloat = 0
         if let note = viewModel.note {
             noteLabel.text = note
-            bottomMargin = noteBottomPadding
+            bottomMargin = noteBottomMargin
         } else {
             noteLabel.isHidden = true
         }
@@ -153,7 +153,7 @@ class ViewingCell: UITableViewCell {
         if let note = note {
             noteLabel.text = note
             noteHeight = noteLabel.sizeThatFits(CGSize(width: width - ViewingCell.dateViewWidth - ViewingCell.contentSpacing, height: CGFloat.greatestFiniteMagnitude)).height
-            noteHeight += noteBottomPadding
+            noteHeight += noteBottomMargin
         }
         return ViewingCell.viewingStackViewHeight + noteHeight
     }
