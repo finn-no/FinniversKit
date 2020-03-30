@@ -32,8 +32,8 @@ public class ViewingsView: UIView {
         let tableView = UITableView(withAutoLayout: true)
         tableView.register(ViewingCell.self)
         tableView.dataSource = self
-        tableView.rowHeight = ViewingCell.cellHeight
-        tableView.estimatedRowHeight = ViewingCell.cellHeight
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = ViewingCell.viewingStackViewHeight
         tableView.isScrollEnabled = false
         tableView.separatorColor = .tableViewSeparator
         tableView.separatorInset = UIEdgeInsets(leading: ViewingCell.dateViewWidth + ViewingCell.contentSpacing)
@@ -89,9 +89,14 @@ public class ViewingsView: UIView {
     }
 
     public func heightNeeded(forWidth width: CGFloat) -> CGFloat {
+        guard let viewModel = viewModel else { return 0 }
+        var tableHeight: CGFloat = 0
+        for viewing in viewModel.viewings {
+            let measureView = ViewingCell()
+            tableHeight += measureView.heightNeeded(for: width, note: viewing.note)
+        }
         let noteHeight = noteLabel.sizeThatFits(CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)).height
-        let cellsHeight: CGFloat = ViewingCell.cellHeight * CGFloat(viewModel?.viewings.count ?? 0)
-        return titleHeight + noteTopMargin + noteHeight + cellsHeight
+        return titleHeight + noteTopMargin + noteHeight + tableHeight
     }
 
     // MARK: - Private methods
