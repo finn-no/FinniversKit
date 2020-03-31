@@ -11,18 +11,27 @@ extension XCTestCase {
         matching viewController: UIViewController,
         includeDarkMode: Bool = true,
         includeIPad: Bool = false,
+        delay: TimeInterval? = nil,
         file: StaticString = #file,
         testName: String = #function,
         line: UInt = #line
     ) {
+        var snapshotting: Snapshotting = .image(on: .iPhoneX)
+        if let delay = delay {
+            snapshotting = .wait(for: delay, on: snapshotting)
+        }
         assertSnapshot(
-            matching: viewController, as: .image(on: .iPhoneX), named: "iPhone",
+            matching: viewController, as: snapshotting, named: "iPhone",
             file: file, testName: testName, line: line
         )
 
         if includeIPad {
+            var snapshotting: Snapshotting = .image(on: .iPadPro11)
+            if let delay = delay {
+                snapshotting = .wait(for: delay, on: snapshotting)
+            }
             assertSnapshot(
-                matching: viewController, as: .image(on: .iPadPro11), named: "iPad",
+                matching: viewController, as: snapshotting, named: "iPad",
                 file: file, testName: testName, line: line
             )
         }
