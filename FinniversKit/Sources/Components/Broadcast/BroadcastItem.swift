@@ -8,10 +8,10 @@ protocol BroadcastItemDelegate: AnyObject {
     func broadcastItem(_ broadcastItem: BroadcastItem, didTapURL url: URL)
 }
 
-/// Broadcast messages appears without any action from the user.
-/// They are used when it´s important to inform the user about something that has affected the whole system and many users.
-/// Especially if it has a consequence for how he or she uses the service.
-/// https://schibsted.frontify.com/d/oCLrx0cypXJM/design-system#/components/broadcast
+// Broadcast messages appears without any action from the user.
+// They are used when it´s important to inform the user about something that has affected the whole system and many users.
+// Especially if it has a consequence for how he or she uses the service.
+// https://schibsted.frontify.com/d/oCLrx0cypXJM/design-system#/components/broadcast
 
 // MARK: - Public
 
