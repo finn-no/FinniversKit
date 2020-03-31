@@ -131,6 +131,7 @@ class ViewingCell: UITableViewCell {
 
         if let timeInterval = viewModel.timeInterval {
             timeLabel.text = timeInterval
+            timeLabel.isHidden = false
         } else {
             timeLabel.isHidden = true
         }
@@ -138,6 +139,7 @@ class ViewingCell: UITableViewCell {
         var bottomMargin: CGFloat = 0
         if let note = viewModel.note {
             noteLabel.text = note
+            noteLabel.isHidden = false
             bottomMargin = noteBottomMargin
         } else {
             noteLabel.isHidden = true
