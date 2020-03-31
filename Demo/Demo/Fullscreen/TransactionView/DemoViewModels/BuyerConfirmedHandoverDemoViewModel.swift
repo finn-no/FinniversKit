@@ -25,7 +25,7 @@ extension TransactionDemoViewDefaultData {
                 state: .completed,
                 main: TransactionStepContentModel(
                     title: "Annonsen er lagt ut",
-                    primaryButton: TransactionStepActionButtonModel(
+                    primaryButton: TransactionStepContentActionButtonModel(
                         text: "Se annonsen",
                         style: "flat",
                         action: "see_ad",
@@ -36,7 +36,7 @@ extension TransactionDemoViewDefaultData {
                 main: TransactionStepContentModel(
                     title: "Kontrakt",
                     body: NSAttributedString(string: "Begge har signert kontrakten."),
-                    primaryButton: TransactionStepActionButtonModel(
+                    primaryButton: TransactionStepContentActionButtonModel(
                         text: "Gå til kontrakt",
                         style: "flat",
                         url: "https://www.google.com/search?q=contract+signed"))),
@@ -54,11 +54,11 @@ extension TransactionDemoViewDefaultData {
                 main: TransactionStepContentModel(
                     title: "Overlevering",
                     body: NSAttributedString(string: "<p>Kjøper har bekreftet.</p><p>Dere må bekrefte før:<br/><strong>8. februar 2020.</strong></p><ol><li>Ved oppmøte registrerer dere først eierskiftet digitalt hos Statens vegvesen.</li><li>Deretter må <strong>begge</strong> bekrefte at overleveringen har skjedd, og at pengene kan utbetales.</li></ol>"),
-                    nativeButton: TransactionStepActionButtonModel(
+                    nativeButton: TransactionStepContentActionButtonModel(
                         text: "Registrer eierskifte",
                         style: "default",
                         url: "https://www.vegvesen.no/"),
-                    primaryButton: TransactionStepActionButtonModel(
+                    primaryButton: TransactionStepContentActionButtonModel(
                         text: "Bekreft overlevering",
                         style: "call_to_action",
                         action: "url",

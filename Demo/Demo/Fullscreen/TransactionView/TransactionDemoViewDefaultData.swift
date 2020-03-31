@@ -34,11 +34,11 @@ public struct TransactionStepModel: TransactionStepViewModel {
 public struct TransactionStepContentModel: TransactionStepContentViewModel {
     public var title: String?
     public var body: NSAttributedString?
-    public var nativeButton: TransactionStepActionButtonViewModel?
-    public var primaryButton: TransactionStepActionButtonViewModel?
+    public var nativeButton: TransactionStepContentActionButtonViewModel?
+    public var primaryButton: TransactionStepContentActionButtonViewModel?
 }
 
-public struct TransactionStepActionButtonModel: TransactionStepActionButtonViewModel {
+public struct TransactionStepContentActionButtonModel: TransactionStepContentActionButtonViewModel {
     public var text: String
     public var style: String
     public var action: String?
