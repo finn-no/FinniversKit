@@ -11,8 +11,8 @@ class ViewingsDemoView: UIView {
     private let viewModel = ViewingsViewModel(
         title: "Visninger",
         addToCalendarButtonTitle: "Legg til i kalender",
-        viewings: [ViewingCellViewModel(weekday: "Søndag", month: "JAN", day: "19", timeInterval: "Kl. 12.00 - 13.00"),
-                   ViewingCellViewModel(weekday: "Mandag", month: "JAN", day: "20", timeInterval: "Kl. 18.30 - 19.30")
+        viewings: [ViewingCellViewModel(weekday: "Søndag", month: "JAN", day: "19", timeInterval: "Kl. 12.00 - 13.00", note: "Visningen streames"),
+                   ViewingCellViewModel(weekday: "Mandag", month: "JAN", day: "20", timeInterval: "Kl. 18.30 - 19.30", note: nil)
         ],
         note: "Velkommen til visning!"
     )

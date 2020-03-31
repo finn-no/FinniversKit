@@ -16,7 +16,8 @@ public class ViewingsView: UIView {
     private var viewModel: ViewingsViewModel?
 
     private let titleHeight: CGFloat = 27
-    private let noteTopMargin: CGFloat = .spacingS
+    private let titleBottomMargin: CGFloat = .spacingS
+    private let noteBottomMargin: CGFloat = .spacingS
 
     private lazy var titleLabel: Label = Label(style: .title3, withAutoLayout: true)
 
@@ -32,8 +33,8 @@ public class ViewingsView: UIView {
         let tableView = UITableView(withAutoLayout: true)
         tableView.register(ViewingCell.self)
         tableView.dataSource = self
-        tableView.rowHeight = ViewingCell.cellHeight
-        tableView.estimatedRowHeight = ViewingCell.cellHeight
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = ViewingCell.viewingStackViewHeight
         tableView.isScrollEnabled = false
         tableView.separatorColor = .tableViewSeparator
         tableView.separatorInset = UIEdgeInsets(leading: ViewingCell.dateViewWidth + ViewingCell.contentSpacing)
@@ -65,7 +66,7 @@ public class ViewingsView: UIView {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            noteLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: noteTopMargin),
+            noteLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: titleBottomMargin),
             noteLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             noteLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
@@ -85,13 +86,25 @@ public class ViewingsView: UIView {
             noteLabel.attributedText = attributedNoteString(with: note)
             noteLabel.isHidden = false
         }
-        tableView.reloadData()
+        if viewModel.viewings.count > 0 {
+            tableView.reloadData()
+        } else {
+            tableView.isHidden = true
+        }
     }
 
     public func heightNeeded(forWidth width: CGFloat) -> CGFloat {
-        let noteHeight = noteLabel.sizeThatFits(CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)).height
-        let cellsHeight: CGFloat = ViewingCell.cellHeight * CGFloat(viewModel?.viewings.count ?? 0)
-        return titleHeight + noteTopMargin + noteHeight + cellsHeight
+        guard let viewModel = viewModel else { return 0 }
+        var tableHeight: CGFloat = 0
+        for viewing in viewModel.viewings {
+            let measureView = ViewingCell()
+            tableHeight += measureView.heightNeeded(for: width, note: viewing.note)
+        }
+        var noteHeight: CGFloat = 0
+        if viewModel.note != nil {
+            noteHeight = noteLabel.sizeThatFits(CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)).height + noteBottomMargin
+        }
+        return titleHeight + titleBottomMargin + noteHeight + tableHeight
     }
 
     // MARK: - Private methods
@@ -118,10 +131,10 @@ extension ViewingsView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(ViewingCell.self, for: indexPath)
         guard let viewModel = viewModel else { return cell }
-        cell.configure(with: viewModel.viewings[indexPath.row], addToCalendarButtonTitle: viewModel.addToCalendarButtonTitle)
 
+        let topMargin = viewModel.note != nil && indexPath.row == 0 ? noteBottomMargin : 0
+        cell.configure(with: viewModel.viewings[indexPath.row], addToCalendarButtonTitle: viewModel.addToCalendarButtonTitle, topEdgeInset: topMargin)
         cell.selectionStyle = .none
-
         cell.delegate = self
         return cell
     }
