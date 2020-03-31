@@ -14,11 +14,9 @@ public protocol FavoriteButtonViewDelegate: AnyObject {
     func favoriteButtonDidSelect(_ favoriteButtonView: FavoriteButtonView, button: Button, viewModel: FavoriteButtonViewModel)
 }
 
+// This view is set up to support two kinds of favorite button layouts, that will be AB tested in different releases.
+// Excess code will be removed when the test results are ready.
 public class FavoriteButtonView: UIView {
-    /**
-     This view is set up to support two kinds of favorite button layouts, that will be AB tested in different releases.
-     Excess code will be removed when the test results are ready.
-     */
 
     // MARK: - Public properties
 

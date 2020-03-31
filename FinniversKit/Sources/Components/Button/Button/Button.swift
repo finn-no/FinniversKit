@@ -89,8 +89,8 @@ public class Button: UIButton {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        /// Border color is set in a lifecycle method to ensure it is dark mode compatible.
-        /// Changing border color for a `Button` must be done with the `overrideStyle` method.
+        // Border color is set in a lifecycle method to ensure it is dark mode compatible.
+        // Changing border color for a `Button` must be done with the `overrideStyle` method.
         layer.borderColor = style.borderColor(forState: state)
     }
 

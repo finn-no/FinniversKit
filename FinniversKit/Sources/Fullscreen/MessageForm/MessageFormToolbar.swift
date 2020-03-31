@@ -91,8 +91,8 @@ class MessageFormToolbar: UIView {
     // MARK: - Internal methods
 
     func offsetForToolbar(withKeyboardVisible keyboardVisible: Bool) -> CGFloat {
-        /// The Toolbar view wants to hide its' bottom padding when the keyboard is visible,
-        /// as this padding is "embedded" in the top of the stock keyboard itself.
+        // The Toolbar view wants to hide its' bottom padding when the keyboard is visible,
+        // as this padding is "embedded" in the top of the stock keyboard itself.
         if keyboardVisible {
             return safeAreaHeight - toolbarBottomPadding
         } else {
