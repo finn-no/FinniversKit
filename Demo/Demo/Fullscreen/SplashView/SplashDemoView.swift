@@ -2,7 +2,7 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import FinniversKit
+import FinnUI
 
 public class SplashDemoView: UIView {
     private lazy var view = SplashView(withAutoLayout: true)

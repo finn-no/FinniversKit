@@ -7,8 +7,8 @@ import XCTest
 import Demo
 
 class TableViewCellsViewTests: XCTestCase {
-    private func snapshot(_ component: CellsDemoViews, includeIPad: Bool = false, testName: String = #function) {
-        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, testName: testName)
+    private func snapshot(_ component: CellsDemoViews, includeIPad: Bool = false, delay: TimeInterval? = nil, testName: String = #function) {
+        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, delay: delay, testName: testName)
     }
 
     // MARK: - Tests
