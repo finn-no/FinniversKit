@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46AE6FB1242BAB97007BB005 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AE6FB0242BAB97007BB005 /* SplashView.swift */; };
+		46AE6FB4242BAC5F007BB005 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AE6FB3242BAC5F007BB005 /* FinniversKit.framework */; };
+		46AE6FB5242BAC5F007BB005 /* FinniversKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 46AE6FB3242BAC5F007BB005 /* FinniversKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		46DE7D5D242B9BCB00DB1707 /* FinnUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46DE7D53242B9BCB00DB1707 /* FinnUI.framework */; };
 		46DE7D64242B9BCB00DB1707 /* FinnUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 46DE7D56242B9BCB00DB1707 /* FinnUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -21,7 +24,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		46AE6FB6242BAC5F007BB005 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				46AE6FB5242BAC5F007BB005 /* FinniversKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		46AE6FB0242BAB97007BB005 /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		46AE6FB3242BAC5F007BB005 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46DE7D53242B9BCB00DB1707 /* FinnUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinnUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46DE7D56242B9BCB00DB1707 /* FinnUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinnUI.h; sourceTree = "<group>"; };
 		46DE7D57242B9BCB00DB1707 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -34,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46AE6FB4242BAC5F007BB005 /* FinniversKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,12 +68,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46AE6FAE242BAAAE007BB005 /* Fullscreen */ = {
+			isa = PBXGroup;
+			children = (
+				46AE6FAF242BAB97007BB005 /* SplashView */,
+			);
+			path = Fullscreen;
+			sourceTree = "<group>";
+		};
+		46AE6FAF242BAB97007BB005 /* SplashView */ = {
+			isa = PBXGroup;
+			children = (
+				46AE6FB0242BAB97007BB005 /* SplashView.swift */,
+			);
+			path = SplashView;
+			sourceTree = "<group>";
+		};
+		46AE6FB2242BAC5F007BB005 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				46AE6FB3242BAC5F007BB005 /* FinniversKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		46DE7D49242B9BCB00DB1707 = {
 			isa = PBXGroup;
 			children = (
 				46DE7D55242B9BCB00DB1707 /* Sources */,
 				46DE7D60242B9BCB00DB1707 /* UnitTests */,
 				46DE7D54242B9BCB00DB1707 /* Products */,
+				46AE6FB2242BAC5F007BB005 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,6 +114,7 @@
 		46DE7D55242B9BCB00DB1707 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				46AE6FAE242BAAAE007BB005 /* Fullscreen */,
 				46DE7D56242B9BCB00DB1707 /* FinnUI.h */,
 				46DE7D57242B9BCB00DB1707 /* Info.plist */,
 			);
@@ -105,6 +151,8 @@
 				46DE7D4F242B9BCB00DB1707 /* Sources */,
 				46DE7D50242B9BCB00DB1707 /* Frameworks */,
 				46DE7D51242B9BCB00DB1707 /* Resources */,
+				46AE6FB6242BAC5F007BB005 /* Embed Frameworks */,
+				46F73A262431F457005D730A /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -187,11 +235,33 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		46F73A262431F457005D730A /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint --config \"${SRCROOT}/../.swiftlint.yml\"\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint or brew install swiftlint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		46DE7D4F242B9BCB00DB1707 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46AE6FB1242BAB97007BB005 /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,9 +458,10 @@
 		46DE7D6B242B9BCB00DB1707 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D34XZHQLE3;
-				INFOPLIST_FILE = FinnUITests/Info.plist;
+				INFOPLIST_FILE = UnitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -406,9 +477,10 @@
 		46DE7D6C242B9BCB00DB1707 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D34XZHQLE3;
-				INFOPLIST_FILE = FinnUITests/Info.plist;
+				INFOPLIST_FILE = UnitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

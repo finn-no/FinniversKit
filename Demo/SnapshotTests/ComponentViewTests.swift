@@ -2,13 +2,13 @@
 //  Copyright © 2018 FINN AS. All rights reserved.
 //
 
-import Demo
 import XCTest
 import FinniversKit
+import Demo
 
 class ComponentViewTests: XCTestCase {
-    private func snapshot(_ component: ComponentDemoViews, includeIPad: Bool = false, testName: String = #function) {
-        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, testName: testName)
+    private func snapshot(_ component: ComponentDemoViews, includeIPad: Bool = false, delay: TimeInterval? = nil, testName: String = #function) {
+        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, delay: delay, testName: testName)
     }
 
     // MARK: - Tests
