@@ -210,7 +210,7 @@ private extension TransactionStepContentView {
             trailingAnchorConstant = -24
         } else {
             leadingTitleInset = button.titleEdgeInsets.leading + imageWidth - .spacingM
-            trailingAnchorConstant = -16
+            trailingAnchorConstant = -20
         }
 
         button.titleEdgeInsets = UIEdgeInsets(
