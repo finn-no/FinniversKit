@@ -142,14 +142,15 @@ private extension TransactionStepContentView {
             verticalStackView.addArrangedSubview(titleView)
         }
 
-        setupOptionalBodyView(model.nativeBody, model.body)
-        setupOptionalButton(model.nativeButton, tag: ButtonTag.native.rawValue)
-        setupOptionalButton(model.primaryButton, tag: ButtonTag.primary.rawValue)
+        setupBodyView(model.nativeBody, model.body)
+        // NativeButton should always precede primaryButton
+        setupButton(model.nativeButton, tag: ButtonTag.native)
+        setupButton(model.primaryButton, tag: ButtonTag.primary)
 
         bottomAnchorConstraint?.isActive = true
     }
 
-    func setupOptionalBodyView(_ nativeBody: NSAttributedString?, _ body: NSAttributedString?) {
+    private func setupBodyView(_ nativeBody: NSAttributedString?, _ body: NSAttributedString?) {
         let text = nativeBody != nil ? nativeBody : body
         guard text != nil else { return }
 
@@ -158,7 +159,7 @@ private extension TransactionStepContentView {
         bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor)
     }
 
-    func setupOptionalButton(_ buttonModel: TransactionStepContentActionButtonViewModel?, tag: Int) {
+    private func setupButton(_ buttonModel: TransactionStepContentActionButtonViewModel?, tag: ButtonTag) {
         if let buttonModel = buttonModel {
             let buttonText = buttonModel.text
             let buttonStyle = TransactionStepContentView.ActionButton(rawValue: buttonModel.style).style
@@ -167,7 +168,7 @@ private extension TransactionStepContentView {
             let button = Button(style: buttonStyle, withAutoLayout: true)
             button.setTitle(buttonText, for: .normal)
             button.titleLabel?.adjustsFontSizeToFitWidth = true
-            button.tag = tag
+            button.tag = tag.rawValue
             button.addTarget(self, action: #selector(handleButtonTap(_:)), for: .touchUpInside)
             button.setContentHuggingPriority(.required, for: .vertical)
 
@@ -184,11 +185,16 @@ private extension TransactionStepContentView {
                 addWebViewIconToButton(button)
             }
 
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: .spacingM)
+            switch tag {
+            case .native:
+                bottomAnchorConstraint = bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: .spacingS)
+            case .primary:
+                bottomAnchorConstraint = bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: .spacingM)
+            }
         }
     }
 
-    func addWebViewIconToButton(_ button: Button) {
+    private func addWebViewIconToButton(_ button: Button) {
         let image = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
         let imageView = UIImageView(image: image)
         imageView.tintColor = button.titleLabel?.textColor ?? .bgPrimary
