@@ -209,7 +209,7 @@ private extension TransactionStepContentView {
             leadingTitleInset = -8
             trailingAnchorConstant = -24
         } else {
-            leadingTitleInset = button.titleEdgeInsets.leading + imageWidth - .spacingM
+            leadingTitleInset = button.titleEdgeInsets.leading + imageWidth - 20
             trailingAnchorConstant = -20
         }
 
