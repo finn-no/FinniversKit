@@ -46,7 +46,6 @@ public class TransactionStepContentView: UIView {
         view.axis = .vertical
         view.distribution = .fill
         view.alignment = .leading
-        view.isLayoutMarginsRelativeArrangement = true
         return view
     }()
 
