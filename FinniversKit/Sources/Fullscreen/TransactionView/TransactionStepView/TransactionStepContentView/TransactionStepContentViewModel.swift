@@ -6,11 +6,14 @@ import Foundation
 
 public protocol TransactionStepContentViewModel {
     var title: String? { get }
-    var body: NSAttributedString? { get }
     /*
-     For certain steps the attributed string assigned to body will contain a href element.
-     The host app will remove the <a href> element and the nativeButton will be rendered above the primaryButton.
-     */
+     If body contains a link (<a href>), the backend will assign the same content to nativeBody, but without the (<a href>) link.
+     Instead the nativeButton will also be present in the payload with the action and link as an replacement.
+
+     This is to avoid having the client render both a link and a nativeButton.
+    */
+    var body: NSAttributedString? { get }
+    var nativeBody: NSAttributedString? { get }
     var nativeButton: TransactionStepContentActionButtonViewModel? { get }
     var primaryButton: TransactionStepContentActionButtonViewModel? { get }
 }

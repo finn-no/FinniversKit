@@ -57,7 +57,8 @@ extension TransactionDemoViewDefaultData {
                 state: .active,
                 main: TransactionStepContentModel(
                     title: "Gratulerer med salget!",
-                    body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «<a href=\"/minekjoretoy\">Eide før</a>».")),
+                    body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «<a href=\"/minekjoretoy\">Eide før</a>»."),
+                    nativeBody: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under Eide før.")),
                 detail: TransactionStepContentModel(
                     body: NSAttributedString(string: "Det kan ta noen dager før pengene dukker opp på kontoen din."),
                     nativeButton: TransactionStepContentActionButtonModel(

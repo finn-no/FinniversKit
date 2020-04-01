@@ -33,7 +33,16 @@ public struct TransactionStepModel: TransactionStepViewModel {
 
 public struct TransactionStepContentModel: TransactionStepContentViewModel {
     public var title: String?
+    /*
+     If body contains a link (<a href>), the backend will assign the same content to nativeBody, but without the (<a href>) link.
+     Instead the nativeButton will also be present in the payload with the action and link as an replacement.
+
+     This is to avoid having the client render both a link and a nativeButton.
+
+     See line 56-66 in BothPartiesConfirmedHandoverDemoViewModel.swift as an example
+    */
     public var body: NSAttributedString?
+    public var nativeBody: NSAttributedString?
     public var nativeButton: TransactionStepContentActionButtonViewModel?
     public var primaryButton: TransactionStepContentActionButtonViewModel?
 }
