@@ -96,7 +96,7 @@ public class TransactionStepView: UIView {
                 state: model.state,
                 model: mainContent,
                 withFontForTitle: .title3Strong,
-                withColorForTitle: style.titleTextColor,
+                withColorForTitle: style.mainTextColor,
                 withAutoLayout: true
             )
 

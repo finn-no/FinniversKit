@@ -37,11 +37,11 @@ public extension TransactionStepView {
             }
         }
 
-        public var bodyTextColor: UIColor {
+        public var mainTextColor: UIColor {
             switch self {
             case .notStarted:
                 return .textSecondary
-            case .active, .completed:
+            default:
                 return .textPrimary
             }
         }
@@ -50,7 +50,7 @@ public extension TransactionStepView {
             switch self {
             case .notStarted:
                 return .textSecondary
-            case .active, .completed:
+            default:
                 return .textPrimary
             }
         }
