@@ -143,17 +143,20 @@ private extension TransactionStepContentView {
             verticalStackView.addArrangedSubview(titleView)
         }
 
-        if let bodyText = model.body {
-            bodyView.attributedText = bodyText
-            verticalStackView.addArrangedSubview(bodyView)
-
-            bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor)
-        }
-
+        setupOptionalBodyView(model.nativeBody, model.body)
         setupOptionalButton(model.nativeButton, tag: ButtonTag.native.rawValue)
         setupOptionalButton(model.primaryButton, tag: ButtonTag.primary.rawValue)
 
         bottomAnchorConstraint?.isActive = true
+    }
+
+    func setupOptionalBodyView(_ nativeBody: NSAttributedString?, _ body: NSAttributedString?) {
+        let text = nativeBody != nil ? nativeBody : body
+        guard text != nil else { return }
+
+        bodyView.attributedText = text
+        verticalStackView.addArrangedSubview(bodyView)
+        bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor)
     }
 
     func setupOptionalButton(_ buttonModel: TransactionStepContentActionButtonViewModel?, tag: Int) {
