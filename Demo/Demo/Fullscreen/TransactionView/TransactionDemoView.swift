@@ -42,7 +42,7 @@ extension TransactionDemoView: TransactionViewDelegate {
 
     func transactionViewDidTapActionButton(_ view: TransactionView,
                                            inTransactionStep step: Int,
-                                           withAction action: TransactionStepView.ActionButton.Action,
+                                           withAction action: TransactionStepContentView.ActionButton.Action,
                                            withUrl urlString: String?,
                                            withFallbackUrl fallbackUrlString: String?) {
 
@@ -77,10 +77,7 @@ extension TransactionDemoView: TransactionViewDataSource {
     }
 
     func transactionViewCurrentStep(_ view: TransactionView) -> Int {
-        let isTransactionCompleted = model.steps.filter({ $0.state != .completed }).count == 0
-        let currentStep = model.steps.firstIndex(where: { $0.state == .active }) ?? 0
-        let lastStep = model.steps.count
-        return isTransactionCompleted ? lastStep : currentStep
+        return model.steps.firstIndex(where: { $0.state == .active }) ?? 0
     }
 
     func transactionViewModelForIndex(_ view: TransactionView, forStep step: Int) -> TransactionStepViewModel {

@@ -28,26 +28,12 @@ public extension TransactionStepView {
             }
         }
 
-        public var titleFont: UIFont {
-            switch self {
-            default:
-                return .title3Strong
-            }
-        }
-
         public var titleTextColor: UIColor {
             switch self {
             case .notStarted:
                 return .textSecondary
             default:
                 return .textPrimary
-            }
-        }
-
-        public var bodyFont: UIFont {
-            switch self {
-            default:
-                return .body
             }
         }
 
@@ -60,35 +46,12 @@ public extension TransactionStepView {
             }
         }
 
-        public var detailFont: UIFont {
-            switch self {
-            default:
-                return .caption
-            }
-        }
-
         public var detailTextColor: UIColor {
             switch self {
             case .notStarted:
                 return .textSecondary
             case .active, .completed:
                 return .textPrimary
-            }
-        }
-    }
-}
-
-extension TransactionStepView {
-    public enum CustomStyle: String {
-        case warning
-        case error
-
-        public var backgroundColor: UIColor {
-            switch self {
-            case .error:
-                return .bgCritical
-            case .warning:
-                return .bgAlert
             }
         }
     }

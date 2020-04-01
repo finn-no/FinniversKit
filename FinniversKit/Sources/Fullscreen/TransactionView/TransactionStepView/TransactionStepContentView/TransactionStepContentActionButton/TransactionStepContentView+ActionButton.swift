@@ -2,7 +2,7 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
-public extension TransactionStepView {
+public extension TransactionStepContentView {
     enum ActionButton: String {
         case `default` = "default"
         case flat = "flat"
@@ -37,7 +37,7 @@ public extension TransactionStepView {
     }
 }
 
-public extension TransactionStepView.ActionButton {
+public extension TransactionStepContentView.ActionButton {
     enum Action: String {
         // Native actions
         case seeAd = "see_ad"

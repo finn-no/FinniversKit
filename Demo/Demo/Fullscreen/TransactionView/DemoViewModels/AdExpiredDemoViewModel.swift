@@ -21,7 +21,7 @@ extension TransactionDemoViewDefaultData {
                 main: TransactionStepContentModel(
                     title: "Annonsen er utløpt",
                     body: NSAttributedString(string: "Legg ut annonsen på nytt, sånn at kjøpere kan ta kontakt med deg."),
-                    primaryButton: TransactionStepActionButtonModel(
+                    primaryButton: TransactionStepContentActionButtonModel(
                         text: "Legg ut på nytt",
                         style: "call_to_action",
                         action: "republish_ad",
@@ -29,7 +29,7 @@ extension TransactionDemoViewDefaultData {
                 detail: TransactionStepContentModel(
                     title: "Ønsker du hjelp med salget?",
                     body: NSAttributedString(string: "Nettbil hjelper deg kostnadsfritt med å selge bilen til forhandlere gjennom en budrunde. De trenger bare levere deg bilen, så ordner Nettbil resten."),
-                    primaryButton: TransactionStepActionButtonModel(
+                    primaryButton: TransactionStepContentActionButtonModel(
                         text: "Mer om Nettbil",
                         style: "default",
                         fallbackUrl: "https://www.finn.no/nettbil/velkommen"))),
@@ -39,7 +39,7 @@ extension TransactionDemoViewDefaultData {
                 main: TransactionStepContentModel(
                     title: "Kontrakt",
                     body: NSAttributedString(string: "Når du har funnet en kjøper er det neste steget å skrive en kontrakt."),
-                    primaryButton: TransactionStepActionButtonModel(
+                    primaryButton: TransactionStepContentActionButtonModel(
                         text: "Opprett digital kontrakt",
                         style: "flat",
                         fallbackUrl: "https://www.google.com/search?q=contract+signed"))),

@@ -6,10 +6,13 @@ import Foundation
 
 public protocol TransactionViewDelegate: AnyObject {
     func transactionViewDidBeginRefreshing(_ refreshControl: RefreshControl)
-
-    func transactionViewDidTapActionButton(_ view: TransactionView, inTransactionStep step: Int,
-                                           withAction action: TransactionStepView.ActionButton.Action, withUrl urlString: String?,
-                                           withFallbackUrl fallbackUrlString: String?)
+    func transactionViewDidTapActionButton(
+        _ view: TransactionView,
+        inTransactionStep step: Int,
+        withAction action: TransactionStepContentView.ActionButton.Action,
+        withUrl urlString: String?,
+        withFallbackUrl fallbackUrlString: String?
+    )
 }
 
 public protocol TransactionViewDataSource: AnyObject {
@@ -217,13 +220,13 @@ private extension TransactionView {
     func setupVerticalStackViewContraints() {
         guard
             let firstStepDot = stepDots.first,
-            let lastTransactionStepView = verticalStackView.arrangedSubviews.last
+            let lastStepView = verticalStackView.arrangedSubviews.last
         else { return }
 
         verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(
             equalTo: firstStepDot.trailingAnchor, constant: .spacingS)
 
-        verticalStackViewBottomAnchor = verticalStackView.bottomAnchor.constraint(equalTo: lastTransactionStepView.bottomAnchor)
+        verticalStackViewBottomAnchor = verticalStackView.bottomAnchor.constraint(equalTo: lastStepView.bottomAnchor)
 
         guard let leadingAnchor = verticalStackViewLeadingAnchor,
               let topAnchor = verticalStackViewTopAnchor,
@@ -249,21 +252,30 @@ private extension TransactionView {
             connectors[safe: index]?.highlighted = true
         }
 
-        stepDots[safe: currentStep]?.setState(.inProgress)
-        stepDots[safe: currentStep]?.setState(.inProgress)
+        if step == numberOfSteps - 1 {
+            stepDots[safe: currentStep]?.setState(.completed)
+        } else {
+            stepDots[safe: currentStep]?.setState(.inProgress)
+        }
     }
 }
 
 // MARK: - TransactionStepViewDelegate
 
 extension TransactionView: TransactionStepViewDelegate {
-    public func transactionStepViewDidTapActionButton(_ view: TransactionStepView, inTransactionStep step: Int, withAction action: TransactionStepView.ActionButton.Action, withUrl urlString: String?, withFallbackUrl fallbackUrlString: String?) {
-
-        delegate?.transactionViewDidTapActionButton(self,
-                                                    inTransactionStep: step,
-                                                    withAction: action,
-                                                    withUrl: urlString,
-                                                    withFallbackUrl: fallbackUrlString)
+    public func transactionStepViewDidTapActionButton(
+        _ view: TransactionStepView,
+        inTransactionStep step: Int,
+        withAction action: TransactionStepContentView.ActionButton.Action,
+        withUrl urlString: String?,
+        withFallbackUrl fallbackUrlString: String?
+    ) {
+        delegate?.transactionViewDidTapActionButton(
+            self,
+            inTransactionStep: step,
+            withAction: action,
+            withUrl: urlString,
+            withFallbackUrl: fallbackUrlString)
     }
 }
 

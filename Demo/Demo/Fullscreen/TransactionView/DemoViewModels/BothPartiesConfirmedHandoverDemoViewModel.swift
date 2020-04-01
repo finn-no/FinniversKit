@@ -25,7 +25,7 @@ extension TransactionDemoViewDefaultData {
                 state: .completed,
                 main: TransactionStepContentModel(
                     title: "Annonsen er lagt ut",
-                    primaryButton: TransactionStepActionButtonModel(
+                    primaryButton: TransactionStepContentActionButtonModel(
                         text: "Se annonsen",
                         style: "flat",
                         action: "see_ad",
@@ -36,7 +36,7 @@ extension TransactionDemoViewDefaultData {
                 main: TransactionStepContentModel(
                     title: "Kontrakt",
                     body: NSAttributedString(string: "Begge har signert kontrakten."),
-                    primaryButton: TransactionStepActionButtonModel(
+                    primaryButton: TransactionStepContentActionButtonModel(
                         text: "Gå til kontrakt",
                         style: "flat",
                         url: "https://www.google.com/search?q=contract+signed"))),
@@ -60,7 +60,7 @@ extension TransactionDemoViewDefaultData {
                     body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «<a href=\"/minekjoretoy\">Eide før</a>».")),
                 detail: TransactionStepContentModel(
                     body: NSAttributedString(string: "Det kan ta noen dager før pengene dukker opp på kontoen din."),
-                    nativeButton: TransactionStepActionButtonModel(
+                    nativeButton: TransactionStepContentActionButtonModel(
                         text: "Gå til Mine kjøretøy",
                         style: "flat",
                         url: "/minekjoretoy"))),
