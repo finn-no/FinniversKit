@@ -223,6 +223,8 @@
 		46E77598242D6890008A5E93 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 46E77597242D6890008A5E93 /* SnapshotTesting */; };
 		46E7759D242D6A8A008A5E93 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E77561242CFFA5008A5E93 /* FinniversKit.framework */; };
 		46E7759E242D6A8A008A5E93 /* FinnUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E77562242CFFA5008A5E93 /* FinnUI.framework */; };
+		9BA6C49F24336B51009D417B /* CoronaHelpDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C49E24336B51009D417B /* CoronaHelpDemoView.swift */; };
+		9BA6C4A224336B9A009D417B /* DemoWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -466,6 +468,8 @@
 		46E7757B242D476B008A5E93 /* FullscreenViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenViewTests.swift; sourceTree = "<group>"; };
 		46E77582242D478D008A5E93 /* XCTestCastExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCastExtensions.swift; sourceTree = "<group>"; };
 		46E77584242D4805008A5E93 /* TestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConfig.swift; sourceTree = "<group>"; };
+		9BA6C49E24336B51009D417B /* CoronaHelpDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaHelpDemoView.swift; sourceTree = "<group>"; };
+		9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoWrapperView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -560,6 +564,7 @@
 		46E77266242CEF09008A5E93 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9BA6C4A024336B81009D417B /* SwiftUI */,
 				46E77267242CEF09008A5E93 /* UIKit */,
 				46E77269242CEF09008A5E93 /* TestCheck.swift */,
 			);
@@ -944,6 +949,7 @@
 				46E77316242CEF09008A5E93 /* ColumnListsView */,
 				46E77326242CEF09008A5E93 /* Consent */,
 				46E77345242CEF09008A5E93 /* ContractActionView */,
+				9BA6C49C24336AFF009D417B /* CoronaHelp */,
 				46E7730F242CEF09008A5E93 /* Dialogue */,
 				46E772DE242CEF09008A5E93 /* Disclaimer */,
 				46E7730C242CEF09008A5E93 /* EarthHour */,
@@ -1800,6 +1806,22 @@
 			path = SnapshotTests;
 			sourceTree = "<group>";
 		};
+		9BA6C49C24336AFF009D417B /* CoronaHelp */ = {
+			isa = PBXGroup;
+			children = (
+				9BA6C49E24336B51009D417B /* CoronaHelpDemoView.swift */,
+			);
+			path = CoronaHelp;
+			sourceTree = "<group>";
+		};
+		9BA6C4A024336B81009D417B /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1969,6 +1991,7 @@
 				46E7741F242CEF0A008A5E93 /* ButtonDemoView.swift in Sources */,
 				46E773E1242CEF0A008A5E93 /* BuyerInvitedDemoViewModel.swift in Sources */,
 				46E773D3242CEF0A008A5E93 /* EmptyViewDemoView.swift in Sources */,
+				9BA6C49F24336B51009D417B /* CoronaHelpDemoView.swift in Sources */,
 				46E773B8242CEF0A008A5E93 /* NewYearsDemoView.swift in Sources */,
 				46E773CB242CEF0A008A5E93 /* SearchResultMapViewDemoViewController.swift in Sources */,
 				46E773BC242CEF0A008A5E93 /* MinFinnDemoView.swift in Sources */,
@@ -2117,6 +2140,7 @@
 				46E773A6242CEF0A008A5E93 /* FullscreenDemoViews.swift in Sources */,
 				46E773EE242CEF0A008A5E93 /* VerificationActionSheetDemoDelegate.swift in Sources */,
 				46E773B6242CEF0A008A5E93 /* DrumMachineDemoView.swift in Sources */,
+				9BA6C4A224336B9A009D417B /* DemoWrapperView.swift in Sources */,
 				46E773A9242CEF0A008A5E93 /* RecyclingDemoViews.swift in Sources */,
 				46E77448242CEF0A008A5E93 /* UserAdCellDemoView.swift in Sources */,
 				46E77468242CEF0A008A5E93 /* FavoriteFoldersListDemoView.swift in Sources */,

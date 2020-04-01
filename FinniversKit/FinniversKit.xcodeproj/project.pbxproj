@@ -221,6 +221,8 @@
 		9B2D17D223E02B2900EF3B50 /* KeyValuePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D17D123E02B2900EF3B50 /* KeyValuePair.swift */; };
 		9B2D17D623E02B6900EF3B50 /* KeyValueGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D17D523E02B6900EF3B50 /* KeyValueGridView.swift */; };
 		9B93F210230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */; };
+		9BA6C49A24336AEC009D417B /* CoronaHelpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C49824336AEC009D417B /* CoronaHelpViewModel.swift */; };
+		9BA6C49B24336AEC009D417B /* CoronaHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C49924336AEC009D417B /* CoronaHelpView.swift */; };
 		9BA8248623859B4400163F24 /* MapZoomRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA8248523859B4400163F24 /* MapZoomRange.swift */; };
 		9BAB37DC230BEA5700E861D4 /* SaveSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAB37D9230BE87500E861D4 /* SaveSearchView.swift */; };
 		9BAB37E0230C070400E861D4 /* SaveSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAB37DF230C070400E861D4 /* SaveSearchViewModel.swift */; };
@@ -671,6 +673,8 @@
 		9B2D17D123E02B2900EF3B50 /* KeyValuePair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValuePair.swift; sourceTree = "<group>"; };
 		9B2D17D523E02B6900EF3B50 /* KeyValueGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueGridView.swift; sourceTree = "<group>"; };
 		9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDirectionalEdgeInsetsExtensions.swift; sourceTree = "<group>"; };
+		9BA6C49824336AEC009D417B /* CoronaHelpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoronaHelpViewModel.swift; sourceTree = "<group>"; };
+		9BA6C49924336AEC009D417B /* CoronaHelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoronaHelpView.swift; sourceTree = "<group>"; };
 		9BA8248523859B4400163F24 /* MapZoomRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoomRange.swift; sourceTree = "<group>"; };
 		9BAB37D9230BE87500E861D4 /* SaveSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchView.swift; sourceTree = "<group>"; };
 		9BAB37DF230C070400E861D4 /* SaveSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchViewModel.swift; sourceTree = "<group>"; };
@@ -1315,10 +1319,13 @@
 				9BCD171323CCBB590045BD61 /* CollapsibleContentView */,
 				9B1B12C423D5ACCB00282F3E /* ColumnListsView */,
 				45B2E06B207E181C00C68B92 /* Consent */,
+				9A37D05E50689037A6F118B1 /* ContractActionView */,
 				F2BE212E22819ED8004640F3 /* Control */,
+				9BA6C49324336AC2009D417B /* CoronaHelp */,
 				AA7A854C22255A5700AF5F42 /* Dialogue */,
 				0884C6C722B7B4360015474D /* Disclaimer */,
 				CF7C45FD22257A8A001FB92C /* EarthHour */,
+				68AE0C83EEDB0010A3AF0F5C /* FavoriteButton */,
 				9A37D8C01205DC426B502C5F /* Feedback */,
 				CFCC3D2F23686BEF002DD4CF /* FooterButtonView */,
 				08F0D3F222259AB800968256 /* HappinessRating */,
@@ -1333,6 +1340,7 @@
 				9BEB2875231D23F500D28BAD /* LoanCalculator */,
 				89A7A63A2253376D0053D33B /* NativeAdvert */,
 				9A37D31426D9544712EBB534 /* ObjectPagePriceView */,
+				9A37DAE827DC33BADB4C9AAC /* ObjectPageTitleView */,
 				F26CABEF23AC9B2E00CACF71 /* OrderTotalSumView */,
 				F26CABF323AC9B2E00CACF71 /* OrderViewSummary */,
 				9B28DE7E23266C2500D69C15 /* Panel */,
@@ -1354,16 +1362,13 @@
 				8951758E2248CF53008003FB /* StepIndicator */,
 				CF45AF03231D24A500BE8B39 /* StepSlider */,
 				45D7C569204949B7000E788F /* Switch */,
-				F28D78F02428B59000E77414 /* TransactionProcessSummaryView */,
 				4447F6A31FDB2B110033DBC1 /* TextField */,
 				081F51BB222932C900026C84 /* TextView */,
 				4447F6A81FDB2B110033DBC1 /* Toast */,
+				F28D78F02428B59000E77414 /* TransactionProcessSummaryView */,
 				F2597C73231D1A0B00BE74EC /* VerificationView */,
 				494047FA23CDBA7600ECBCFD /* Viewings */,
 				08E9F54E2341FBC300943E5D /* VisibilityDrivenTitleView */,
-				9A37D05E50689037A6F118B1 /* ContractActionView */,
-				9A37DAE827DC33BADB4C9AAC /* ObjectPageTitleView */,
-				68AE0C83EEDB0010A3AF0F5C /* FavoriteButton */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2077,6 +2082,15 @@
 				9BCE6A3D23C7272200F37F6D /* BetaFeatureView.swift */,
 			);
 			path = BetaFeatureView;
+			sourceTree = "<group>";
+		};
+		9BA6C49324336AC2009D417B /* CoronaHelp */ = {
+			isa = PBXGroup;
+			children = (
+				9BA6C49924336AEC009D417B /* CoronaHelpView.swift */,
+				9BA6C49824336AEC009D417B /* CoronaHelpViewModel.swift */,
+			);
+			path = CoronaHelp;
 			sourceTree = "<group>";
 		};
 		9BAB37D8230BE85F00E861D4 /* SaveSearchView */ = {
@@ -3440,6 +3454,7 @@
 				CF4A053D21FB2ACB000BB7DA /* PianoKeyboardView.swift in Sources */,
 				918C8AC423A7A82900B566DE /* NativeAdvertListView.swift in Sources */,
 				CF5CA71922F9B818007C4124 /* NeighborhoodProfileButtonViewCell.swift in Sources */,
+				9BA6C49A24336AEC009D417B /* CoronaHelpViewModel.swift in Sources */,
 				CF7C460822257A8A001FB92C /* EarthHourView.swift in Sources */,
 				14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */,
 				CFB61374229ACA6900DE283D /* IconCollectionView.swift in Sources */,
@@ -3447,6 +3462,7 @@
 				DAD6EB322369BCFD00968497 /* SettingDetailsView.swift in Sources */,
 				DAB7FAAB21B690DD00BF8CC6 /* BottomSheetInteractionController.swift in Sources */,
 				F2BE6C03236864320085A05A /* AdConfirmationObjectViewModel.swift in Sources */,
+				9BA6C49B24336AEC009D417B /* CoronaHelpView.swift in Sources */,
 				CF7C460722257A8A001FB92C /* EarthHourTagView.swift in Sources */,
 				45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */,
 				62AAB23A23278087007766E6 /* RadioButtonTableViewCell.swift in Sources */,
