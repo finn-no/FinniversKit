@@ -7,13 +7,16 @@
 
 import UIKit
 
+private class BundleHelper {
+}
+
 public extension UIImage {
     convenience init(named imageAsset: FinniversImageAsset) {
-        self.init(named: imageAsset.rawValue, in: FinniversKit.bundle, compatibleWith: nil)!
+        self.init(named: imageAsset.rawValue, in: Bundle(for: BundleHelper.self), compatibleWith: nil)!
     }
 
     @objc class func assetNamed(_ assetName: String) -> UIImage {
-        return UIImage(named: assetName, in: FinniversKit.bundle, compatibleWith: nil)!
+        return UIImage(named: assetName, in: Bundle(for: BundleHelper.self), compatibleWith: nil)!
     }
 }
 

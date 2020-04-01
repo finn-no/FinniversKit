@@ -5,18 +5,18 @@ require "fileutils"
 require "digest/md5"
 
 if ARGV.length < 2
-  puts "Too few arguments, usage: generate_image_assets_sympols input_path output_filename [public]"
+  puts "Too few arguments, usage: generate_image_assets_sympols path output_filename [public]"
   exit
 end
 
-input_path = ARGV[0]
+path = ARGV[0]
 output_filename = ARGV[1]
 assets_access_modifier_arg = ARGV[2] || ""
 access_modifier = assets_access_modifier_arg == "public" ? "public " : ""
 
-input = ["#{input_path}/Sources/Resources/Icons.xcassets", "#{input_path}/Sources/Resources/Assets.xcassets"]
+input = ["#{path}/Sources/Resources/Icons.xcassets", "#{path}/Sources/Resources/Assets.xcassets"]
 
-output_path = File.join(File.dirname(__FILE__), "..",  "Sources", "Resources")
+output_path = File.join(path,  "Sources", "Resources")
 
 temp_path = "/tmp/"
 
@@ -34,6 +34,10 @@ end
 
 names = names.sort
 
+if names.length < 1
+  exit
+end
+
 prelude = "//\n"
 prelude << "//  Copyright © FINN.no AS, Inc. All rights reserved.\n"
 prelude << "//\n"
@@ -48,13 +52,16 @@ File.open(File.join(temp_path, "#{output_filename}.swift"), "w") do |f|
   f.puts <<EOS
 import UIKit
 
+private class BundleHelper {
+}
+
 #{access_modifier}extension UIImage {
     convenience init(named imageAsset: #{output_filename}) {
-        self.init(named: imageAsset.rawValue, in: Bundle(for: type(of: #{output_filename})), compatibleWith: nil)!
+        self.init(named: imageAsset.rawValue, in: Bundle(for: BundleHelper.self), compatibleWith: nil)!
     }
 
     @objc class func assetNamed(_ assetName: String) -> UIImage {
-        return UIImage(named: assetName, in: Bundle(for: type(of: #{output_filename})), compatibleWith: nil)!
+        return UIImage(named: assetName, in: Bundle(for: BundleHelper.self), compatibleWith: nil)!
     }
 }
 
@@ -97,6 +104,4 @@ if swiftNewDigest.eql? swiftOldDigest and objcNewDigest.eql? objcOldDigest and o
   # No files replaced
 else
   FileUtils.cp_r(File.join(temp_path, "#{output_filename}.swift"), File.join(output_path, "#{output_filename}.swift"), { remove_destination: true })
-  FileUtils.cp_r(File.join(temp_path, "#{output_filename}.h"), File.join(output_path, "#{output_filename}.h"), { remove_destination: true })
-  FileUtils.cp_r(File.join(temp_path, "#{output_filename}.m"), File.join(output_path, "#{output_filename}.m"), { remove_destination: true })
 end
