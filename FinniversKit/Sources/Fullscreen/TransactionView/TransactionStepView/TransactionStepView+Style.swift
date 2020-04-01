@@ -75,13 +75,20 @@ public extension TransactionStepView {
                 return .textPrimary
             }
         }
+    }
+}
 
-        public var actionButtonEnabled: Bool {
+extension TransactionStepView {
+    public enum CustomStyle: String {
+        case warning
+        case error
+
+        public var backgroundColor: UIColor {
             switch self {
-            case .notStarted:
-                return false
-            case .active, .completed:
-                return true
+            case .error:
+                return .bgCritical
+            case .warning:
+                return .bgAlert
             }
         }
     }

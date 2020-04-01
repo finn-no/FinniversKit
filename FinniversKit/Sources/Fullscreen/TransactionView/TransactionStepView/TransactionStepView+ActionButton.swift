@@ -39,10 +39,13 @@ public extension TransactionStepView {
 
 public extension TransactionStepView.ActionButton {
     enum Action: String {
-        case url = "url"
+        // Native actions
         case seeAd = "see_ad"
         case republishAd = "republish_ad"
-        case unknown
+
+        // Navigate to web
+        case url = "url"
+        case none
 
         public init(rawValue: String) {
             switch rawValue {
@@ -53,7 +56,7 @@ public extension TransactionStepView.ActionButton {
             case "republish_ad":
                 self = .republishAd
             default:
-                self = .unknown
+                self = .none
             }
         }
     }

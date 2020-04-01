@@ -26,12 +26,16 @@ public struct TransactionAlertModel: TransactionAlertViewModel {
 
 public struct TransactionStepModel: TransactionStepViewModel {
     public var state: TransactionStepViewState
-    public var customBackground: TransactionStepViewCustomBackground?
-    public var title: String
+    public var style: TransactionStepView.CustomStyle?
+    public var main: TransactionStepContentViewModel?
+    public var detail: TransactionStepContentViewModel?
+}
+
+public struct TransactionStepContentModel: TransactionStepContentViewModel {
+    public var title: String?
     public var body: NSAttributedString?
+    public var nativeButton: TransactionStepActionButtonViewModel?
     public var primaryButton: TransactionStepActionButtonViewModel?
-    public var secondaryButton: TransactionStepActionButtonViewModel?
-    public var detail: String?
 }
 
 public struct TransactionStepActionButtonModel: TransactionStepActionButtonViewModel {

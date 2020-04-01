@@ -177,7 +177,7 @@ private extension TransactionView {
         let transactionStepView = TransactionStepView(
             step: step,
             model: model,
-            withCustomBackground: model.customBackground,
+            withCustomStyle: model.style,
             withAutoLayout: true
         )
         transactionStepView.delegate = self

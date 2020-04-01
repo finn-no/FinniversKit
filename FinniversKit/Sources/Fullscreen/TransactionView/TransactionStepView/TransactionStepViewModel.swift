@@ -6,12 +6,20 @@ import Foundation
 
 public protocol TransactionStepViewModel {
     var state: TransactionStepViewState { get }
-    var customBackground: TransactionStepViewCustomBackground? { get }
-    var title: String { get }
+    var style: TransactionStepView.CustomStyle? { get }
+    var main: TransactionStepContentViewModel? { get }
+    var detail: TransactionStepContentViewModel? { get }
+}
+
+public protocol TransactionStepContentViewModel {
+    var title: String? { get }
     var body: NSAttributedString? { get }
+    /*
+     For certain steps the attributed string assigned to body will contain a href element.
+     The host app will remove the <a href> element and the nativeButton will be rendered above the primaryButton.
+     */
+    var nativeButton: TransactionStepActionButtonViewModel? { get }
     var primaryButton: TransactionStepActionButtonViewModel? { get }
-    var secondaryButton: TransactionStepActionButtonViewModel? { get }
-    var detail: String? { get }
 }
 
 public protocol TransactionStepActionButtonViewModel {

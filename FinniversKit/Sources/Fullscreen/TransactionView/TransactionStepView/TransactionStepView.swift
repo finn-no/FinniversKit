@@ -44,20 +44,6 @@ public enum TransactionStepViewState: String {
     }
 }
 
-public enum TransactionStepViewCustomBackground: String {
-    case warning
-    case error
-
-    public var color: UIColor {
-        switch self {
-        case .error:
-            return .bgCritical
-        case .warning:
-            return .bgAlert
-        }
-    }
-}
-
 public class TransactionStepView: UIView {
     // MARK: - Public properties
 
@@ -66,16 +52,20 @@ public class TransactionStepView: UIView {
     // MARK: - Private properties
 
     private enum ButtonTag: Int {
-        case primary = 1
-        case secondary = 2
+        case native = 1
+        case primary = 2
     }
 
     private var step: Int
     private var model: TransactionStepViewModel
+    private var nativeButtonModel: TransactionStepActionButtonViewModel?
     private var primaryButtonModel: TransactionStepActionButtonViewModel?
-    private var secondaryButtonModel: TransactionStepActionButtonViewModel?
 
     private var style: TransactionStepView.Style
+
+    // Styling provided by the backend
+    private var customStyle: TransactionStepView.CustomStyle?
+
     private var activeStepColor: UIColor = .bgTertiary
 
     private var verticalStackViewLeadingAnchor: NSLayoutConstraint?
@@ -97,7 +87,6 @@ public class TransactionStepView: UIView {
         let view = UITextView(withAutoLayout: true)
         view.font = style.titleFont
         view.textColor = style.titleTextColor
-        view.backgroundColor = style.backgroundColor
         view.isScrollEnabled = false
         view.isEditable = false
         view.contentInset = .init(top: -.spacingS, leading: 0, bottom: 0, trailing: 0)
@@ -111,7 +100,6 @@ public class TransactionStepView: UIView {
         let view = UITextView(withAutoLayout: true)
         view.font = style.bodyFont
         view.textColor = style.bodyTextColor
-        view.backgroundColor = style.backgroundColor
         view.isScrollEnabled = false
         view.isEditable = false
         view.contentInset = .init(top: -.spacingS, leading: 0, bottom: 0, trailing: 0)
@@ -125,7 +113,6 @@ public class TransactionStepView: UIView {
         let view = UITextView(withAutoLayout: true)
         view.font = style.detailFont
         view.textColor = style.detailTextColor
-        view.backgroundColor = style.backgroundColor
         view.isScrollEnabled = false
         view.isEditable = false
         view.contentInset = .leadingInset(0)
@@ -140,19 +127,20 @@ public class TransactionStepView: UIView {
     public init(
         step: Int,
         model: TransactionStepViewModel,
-        withCustomBackground backgroundStyle: TransactionStepViewCustomBackground? = nil,
+        withCustomStyle customStyle: TransactionStepView.CustomStyle? = nil,
         withAutoLayout autoLayout: Bool = false
     ) {
         self.step = step
         self.model = model
-        self.primaryButtonModel = model.primaryButton ?? nil
-        self.secondaryButtonModel = model.secondaryButton ?? nil
+        self.nativeButtonModel = model.main?.nativeButton ?? nil
+        self.primaryButtonModel = model.main?.primaryButton ?? nil
         self.style = model.state.style
+        self.customStyle = customStyle
 
         super.init(frame: .zero)
 
         translatesAutoresizingMaskIntoConstraints = !autoLayout
-        setup(withCustomBackground: backgroundStyle)
+        setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -163,13 +151,14 @@ public class TransactionStepView: UIView {
 // MARK: - Private
 
 private extension TransactionStepView {
-    private func setup(withCustomBackground backgroundStyle: TransactionStepViewCustomBackground?) {
-        backgroundColor = backgroundStyle?.color ?? style.backgroundColor
+    private func setup() {
+        backgroundColor = customStyle?.backgroundColor ?? style.backgroundColor
         layer.cornerRadius = style.cornerRadius
 
         addSubview(verticalStackView)
 
-        titleView.text = model.title
+        titleView.backgroundColor = customStyle?.backgroundColor ?? style.backgroundColor
+        titleView.text = model.main?.title
         verticalStackView.addArrangedSubview(titleView)
 
         switch style {
@@ -200,18 +189,20 @@ private extension TransactionStepView {
     }
 
     private func setupOptionalViews() {
-        if let bodyText = model.body {
+        if let bodyText = model.main?.body {
+            bodyView.backgroundColor = customStyle?.backgroundColor ?? style.backgroundColor
             bodyView.attributedText = bodyText
 
             verticalStackView.addArrangedSubview(bodyView)
             bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: .spacingM)
         }
 
-        setupOptionalButton(model.secondaryButton, tag: ButtonTag.secondary.rawValue)
-        setupOptionalButton(model.primaryButton, tag: ButtonTag.primary.rawValue)
+        setupOptionalButton(model.main?.nativeButton, tag: ButtonTag.native.rawValue)
+        setupOptionalButton(model.main?.primaryButton, tag: ButtonTag.primary.rawValue)
 
-        if let detailText = model.detail {
-            detailView.text = detailText
+        if let detailText = model.detail?.body {
+            detailView.backgroundColor = customStyle?.backgroundColor ?? style.backgroundColor
+            detailView.attributedText = detailText
 
             verticalStackView.addArrangedSubview(detailView)
 
@@ -230,7 +221,6 @@ private extension TransactionStepView {
 
             let button = Button(style: buttonStyle, withAutoLayout: true)
             button.setTitle(buttonText, for: .normal)
-            button.isEnabled = style.actionButtonEnabled
             button.titleLabel?.adjustsFontSizeToFitWidth = true
             button.tag = tag
             button.addTarget(self, action: #selector(handleButtonTap(_:)), for: .touchUpInside)
@@ -242,7 +232,9 @@ private extension TransactionStepView {
             switch buttonAction {
             case .seeAd:
                 button.contentHorizontalAlignment = .leading
-                button.contentEdgeInsets = .leadingInset(.spacingS)
+                button.contentEdgeInsets = .leadingInset(.spacingXS)
+            case .republishAd:
+                break
             default:
                 addWebViewIconToButton(button)
             }
@@ -298,10 +290,10 @@ private extension TransactionStepView {
         var model: TransactionStepActionButtonViewModel?
 
         switch sender.tag {
+        case ButtonTag.native.rawValue:
+            model = nativeButtonModel
         case ButtonTag.primary.rawValue:
             model = primaryButtonModel
-        case ButtonTag.secondary.rawValue:
-            model = secondaryButtonModel
         default:
             model = nil
         }
