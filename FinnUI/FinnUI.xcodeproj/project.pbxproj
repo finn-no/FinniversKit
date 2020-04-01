@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		469894A02434DD6F00CC84E6 /* FinnUIImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4698949F2434DD6F00CC84E6 /* FinnUIImageAsset.swift */; };
 		46AE6FB1242BAB97007BB005 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AE6FB0242BAB97007BB005 /* SplashView.swift */; };
 		46AE6FB4242BAC5F007BB005 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AE6FB3242BAC5F007BB005 /* FinniversKit.framework */; };
 		46AE6FB5242BAC5F007BB005 /* FinniversKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 46AE6FB3242BAC5F007BB005 /* FinniversKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -39,6 +40,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4698949F2434DD6F00CC84E6 /* FinnUIImageAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinnUIImageAsset.swift; sourceTree = "<group>"; };
 		46AE6FB0242BAB97007BB005 /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		46AE6FB3242BAC5F007BB005 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46DE7D53242B9BCB00DB1707 /* FinnUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinnUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +70,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4698949E2434DD6F00CC84E6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4698949F2434DD6F00CC84E6 /* FinnUIImageAsset.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		46AE6FAE242BAAAE007BB005 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				46AE6FAE242BAAAE007BB005 /* Fullscreen */,
+				4698949E2434DD6F00CC84E6 /* Resources */,
 				46DE7D56242B9BCB00DB1707 /* FinnUI.h */,
 				46DE7D57242B9BCB00DB1707 /* Info.plist */,
 			);
@@ -152,6 +163,7 @@
 				46DE7D50242B9BCB00DB1707 /* Frameworks */,
 				46DE7D51242B9BCB00DB1707 /* Resources */,
 				46AE6FB6242BAC5F007BB005 /* Embed Frameworks */,
+				4698949D2434DB8900CC84E6 /* Generate constants for assets names */,
 				46F73A262431F457005D730A /* Swiftlint */,
 			);
 			buildRules = (
@@ -236,6 +248,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4698949D2434DB8900CC84E6 /* Generate constants for assets names */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate constants for assets names";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ruby \"${SRCROOT}/../Scripts/generate_image_assets_symbols\" \"${SRCROOT}\" FinnUIImageAsset\n";
+		};
 		46F73A262431F457005D730A /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -262,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46AE6FB1242BAB97007BB005 /* SplashView.swift in Sources */,
+				469894A02434DD6F00CC84E6 /* FinnUIImageAsset.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
