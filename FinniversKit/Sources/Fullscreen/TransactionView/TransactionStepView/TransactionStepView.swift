@@ -70,7 +70,6 @@ public class TransactionStepView: UIView {
     public init(
         step: Int,
         model: TransactionStepViewModel,
-        isLastStep: Bool = false,
         withCustomStyle customStyle: TransactionStepView.CustomStyle? = nil,
         withAutoLayout autoLayout: Bool = false
     ) {
