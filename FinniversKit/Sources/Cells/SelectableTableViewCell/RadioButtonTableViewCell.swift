@@ -42,7 +42,7 @@ open class RadioButtonTableViewCell: BasicTableViewCell {
         separatorInset = .leadingInset(56)
         radioButton.isHighlighted = viewModel.isSelected
     }
-    
+
     open override func prepareForReuse() {
         super.prepareForReuse()
         radioButton.isHighlighted = false

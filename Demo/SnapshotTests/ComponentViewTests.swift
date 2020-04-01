@@ -286,4 +286,8 @@ class ComponentViewTests: XCTestCase {
     func testTransactionProcessSummaryView() {
         snapshot(.transactionProcessSummaryView)
     }
+
+    func testCoronaHelpView() {
+        snapshot(.coronaHelpView)
+    }
 }
