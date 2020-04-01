@@ -178,7 +178,7 @@ private extension TransactionStepContentView {
             switch buttonAction {
             case .seeAd:
                 button.contentHorizontalAlignment = .leading
-                button.contentEdgeInsets = .leadingInset(.spacingXS)
+                button.contentEdgeInsets = .leadingInset(.spacingS)
             case .republishAd:
                 break
             default:
