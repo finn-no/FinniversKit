@@ -94,13 +94,7 @@ end
 swiftNewDigest = Digest::MD5.hexdigest(File.read(File.join(temp_path, "#{output_filename}.swift")))
 swiftOldDigest = Digest::MD5.hexdigest(File.read(File.join(output_path, "#{output_filename}.swift")))
 
-objcNewDigest = Digest::MD5.hexdigest(File.read(File.join(temp_path, "#{output_filename}.m")))
-objcOldDigest = Digest::MD5.hexdigest(File.read(File.join(output_path, "#{output_filename}.m")))
-
-objcHeaderNewDigest = Digest::MD5.hexdigest(File.read(File.join(temp_path, "#{output_filename}.h")))
-objcHeaderOldDigest = Digest::MD5.hexdigest(File.read(File.join(output_path, "#{output_filename}.h")))
-
-if swiftNewDigest.eql? swiftOldDigest and objcNewDigest.eql? objcOldDigest and objcHeaderNewDigest.eql? objcHeaderOldDigest
+if swiftNewDigest.eql? swiftOldDigest 
   # No files replaced
 else
   FileUtils.cp_r(File.join(temp_path, "#{output_filename}.swift"), File.join(output_path, "#{output_filename}.swift"), { remove_destination: true })

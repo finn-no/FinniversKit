@@ -28,8 +28,6 @@
 		08F0D3F92226966E00968256 /* HappinessRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F0D3F82226966E00968256 /* HappinessRating.swift */; };
 		1430D440216E4DA10038AC84 /* Spacing.h in Headers */ = {isa = PBXBuildFile; fileRef = 1430D43E216E4DA10038AC84 /* Spacing.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1430D441216E4DA10038AC84 /* Spacing.m in Sources */ = {isa = PBXBuildFile; fileRef = 1430D43F216E4DA10038AC84 /* Spacing.m */; };
-		144959DB2122C4400084549F /* FinniversImageAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = 144959D92122C4400084549F /* FinniversImageAsset.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		144959DC2122C4400084549F /* FinniversImageAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 144959DA2122C4400084549F /* FinniversImageAsset.m */; };
 		14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6F7CE212324C900A7230C /* FavoritesListViewCell.swift */; };
 		14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6F7D0212324C900A7230C /* FavoritesListView.swift */; };
 		14C6F7D5212324CA00A7230C /* FavoritesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6F7D2212324C900A7230C /* FavoritesListViewModel.swift */; };
@@ -475,8 +473,6 @@
 		08F0D3F82226966E00968256 /* HappinessRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessRating.swift; sourceTree = "<group>"; };
 		1430D43E216E4DA10038AC84 /* Spacing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Spacing.h; sourceTree = "<group>"; };
 		1430D43F216E4DA10038AC84 /* Spacing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Spacing.m; sourceTree = "<group>"; };
-		144959D92122C4400084549F /* FinniversImageAsset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinniversImageAsset.h; sourceTree = "<group>"; };
-		144959DA2122C4400084549F /* FinniversImageAsset.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinniversImageAsset.m; sourceTree = "<group>"; };
 		14C6F7CE212324C900A7230C /* FavoritesListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesListViewCell.swift; sourceTree = "<group>"; };
 		14C6F7D0212324C900A7230C /* FavoritesListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesListView.swift; sourceTree = "<group>"; };
 		14C6F7D2212324C900A7230C /* FavoritesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesListViewModel.swift; sourceTree = "<group>"; };
@@ -1432,8 +1428,6 @@
 				DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */,
 				DAA9A3AF2102157B0021F7DC /* RadiobuttonAnimation.xcassets */,
 				44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */,
-				144959D92122C4400084549F /* FinniversImageAsset.h */,
-				144959DA2122C4400084549F /* FinniversImageAsset.m */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -3014,7 +3008,6 @@
 				4447F7021FDB2B110033DBC1 /* FinniversKit.h in Headers */,
 				44C4E8DE1FFBA714000B014D /* FinniversKit.swift in Headers */,
 				1430D440216E4DA10038AC84 /* Spacing.h in Headers */,
-				144959DB2122C4400084549F /* FinniversImageAsset.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3483,7 +3476,6 @@
 				9198248023FAA786006861C8 /* UserAdDetailsView.swift in Sources */,
 				CF13D6CD2292D2300087DA37 /* PhaseListView.swift in Sources */,
 				CF5012432360905000138A36 /* PrimingTableViewCell.swift in Sources */,
-				144959DC2122C4400084549F /* FinniversImageAsset.m in Sources */,
 				087A5BB622A7D85500184640 /* KeyboardNotificationInfo.swift in Sources */,
 				441FE450209A2F2C00B04EF1 /* NotificationsListViewModel.swift in Sources */,
 				DAD0D492210737A30091DD4D /* TextView.swift in Sources */,
