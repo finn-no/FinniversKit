@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		469894A02434DD6F00CC84E6 /* FinnUIImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4698949F2434DD6F00CC84E6 /* FinnUIImageAsset.swift */; };
+		4698958E2436311B00CC84E6 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4698958D2436311B00CC84E6 /* Icons.xcassets */; };
 		46AE6FB1242BAB97007BB005 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AE6FB0242BAB97007BB005 /* SplashView.swift */; };
 		46AE6FB4242BAC5F007BB005 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AE6FB3242BAC5F007BB005 /* FinniversKit.framework */; };
 		46AE6FB5242BAC5F007BB005 /* FinniversKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 46AE6FB3242BAC5F007BB005 /* FinniversKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		4698949F2434DD6F00CC84E6 /* FinnUIImageAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinnUIImageAsset.swift; sourceTree = "<group>"; };
+		4698958D2436311B00CC84E6 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		46AE6FB0242BAB97007BB005 /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		46AE6FB3242BAC5F007BB005 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46DE7D53242B9BCB00DB1707 /* FinnUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinnUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +75,7 @@
 		4698949E2434DD6F00CC84E6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4698958D2436311B00CC84E6 /* Icons.xcassets */,
 				4698949F2434DD6F00CC84E6 /* FinnUIImageAsset.swift */,
 			);
 			path = Resources;
@@ -235,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4698958E2436311B00CC84E6 /* Icons.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,6 +20,7 @@ public extension UIImage {
     }
 }
 
+//swiftlint:disable superfluous_disable_command
 //swiftlint:disable type_body_length
 public enum FinniversImageAsset: String {
     case adManagementShare
@@ -168,11 +169,6 @@ public enum FinniversImageAsset: String {
     case spark
     case speechbubbleSmiley
     case spidLogo
-    case splashLetters1
-    case splashLetters2
-    case splashLetters3
-    case splashLetters4
-    case splashLogo
     case starOutline
     case statsEmpty
     case statsEnvelope
@@ -338,11 +334,6 @@ public enum FinniversImageAsset: String {
             .spark,
             .speechbubbleSmiley,
             .spidLogo,
-            .splashLetters1,
-            .splashLetters2,
-            .splashLetters3,
-            .splashLetters4,
-            .splashLogo,
             .starOutline,
             .statsEmpty,
             .statsEnvelope,

@@ -65,6 +65,7 @@ private class BundleHelper {
     }
 }
 
+//swiftlint:disable superfluous_disable_command
 //swiftlint:disable type_body_length
 #{access_modifier}enum #{output_filename}: String {
 EOS
@@ -94,7 +95,7 @@ end
 swiftNewDigest = Digest::MD5.hexdigest(File.read(File.join(temp_path, "#{output_filename}.swift")))
 swiftOldDigest = Digest::MD5.hexdigest(File.read(File.join(output_path, "#{output_filename}.swift")))
 
-if swiftNewDigest.eql? swiftOldDigest 
+if swiftNewDigest.eql? swiftOldDigest
   # No files replaced
 else
   FileUtils.cp_r(File.join(temp_path, "#{output_filename}.swift"), File.join(output_path, "#{output_filename}.swift"), { remove_destination: true })
