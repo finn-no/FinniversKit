@@ -3038,11 +3038,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CB3CF15D1F73E5870041EF20 /* Build configuration list for PBXNativeTarget "FinniversKit" */;
 			buildPhases = (
+				44C6CE42209CAA3300929269 /* Generate constants for assets names */,
 				CB3CF1511F73E5870041EF20 /* Sources */,
 				CB3CF1521F73E5870041EF20 /* Frameworks */,
 				CB3CF1531F73E5870041EF20 /* Headers */,
 				453D887E1F85191600FC63C7 /* Resources */,
-				44C6CE42209CAA3300929269 /* Generate constants for assets names */,
 				43D7BF5A216F560400EB7938 /* SwiftLint */,
 			);
 			buildRules = (

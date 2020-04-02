@@ -11,7 +11,7 @@ private class BundleHelper {
 }
 
 extension UIImage {
-    convenience init(named imageAsset: FinnUIImageAsset) {
+    convenience init(named imageAsset: ImageAsset) {
         self.init(named: imageAsset.rawValue, in: Bundle(for: BundleHelper.self), compatibleWith: nil)!
     }
 
@@ -22,14 +22,14 @@ extension UIImage {
 
 //swiftlint:disable superfluous_disable_command
 //swiftlint:disable type_body_length
-enum FinnUIImageAsset: String {
+enum ImageAsset: String {
     case splashLetters1
     case splashLetters2
     case splashLetters3
     case splashLetters4
     case splashLogo
 
-    static var imageNames: [FinnUIImageAsset] {
+    static var imageNames: [ImageAsset] {
         return [
             .splashLetters1,
             .splashLetters2,
