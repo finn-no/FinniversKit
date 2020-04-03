@@ -10,6 +10,13 @@ public extension UIView {
         translatesAutoresizingMaskIntoConstraints = !autoLayout
     }
 
+    func resetDropShadow() {
+        layer.shadowColor = nil
+        layer.shadowOpacity = 0
+        layer.shadowOffset = .zero
+        layer.shadowRadius = 0
+    }
+
     func dropShadow(color: UIColor, opacity: Float = 0.5, offset: CGSize = CGSize.zero, radius: CGFloat = 10.0) {
         layer.masksToBounds = false
         layer.shadowColor = color.cgColor
