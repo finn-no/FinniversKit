@@ -4,6 +4,10 @@
 
 import FinniversKit
 
+public protocol ChatAvailabilityViewDelegate: AnyObject {
+    func chatAvailabilityViewDidTapChatNowButton(_ view: ChatAvailabilityView)
+}
+
 public class ChatAvailabilityView: UIView {
     public enum Status: CaseIterable {
         case loading
@@ -11,6 +15,10 @@ public class ChatAvailabilityView: UIView {
         case offline
         case unknown
     }
+
+    // MARK: - Public properties
+
+    public weak var delegate: ChatAvailabilityViewDelegate?
 
     // MARK: - Private properties
 
@@ -72,7 +80,7 @@ public class ChatAvailabilityView: UIView {
     // MARK: - Private methods
 
     @objc private func handleButtonTap() {
-
+        delegate?.chatAvailabilityViewDidTapChatNowButton(self)
     }
 }
 
