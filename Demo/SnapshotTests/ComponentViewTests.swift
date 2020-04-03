@@ -290,4 +290,8 @@ class ComponentViewTests: XCTestCase {
     func testCoronaHelpView() {
         snapshot(.coronaHelpView)
     }
+
+    func testChatAvailabilityView() {
+        snapshot(.chatAvailabilityView)
+    }
 }
