@@ -28,6 +28,7 @@ enum ImageAsset: String {
     case splashLetters3
     case splashLetters4
     case splashLogo
+    case videoChat
 
     static var imageNames: [ImageAsset] {
         return [
@@ -36,6 +37,7 @@ enum ImageAsset: String {
             .splashLetters3,
             .splashLetters4,
             .splashLogo,
+            .videoChat,
     ]
   }
 }
