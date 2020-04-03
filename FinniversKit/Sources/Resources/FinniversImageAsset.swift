@@ -181,6 +181,7 @@ public enum FinniversImageAsset: String {
     case uncheckCircle
     case vehicles
     case verified
+    case videoChat
     case view
     case viewMode
     case webview
@@ -351,6 +352,7 @@ public enum FinniversImageAsset: String {
             .uncheckCircle,
             .vehicles,
             .verified,
+            .videoChat,
             .view,
             .viewMode,
             .webview,

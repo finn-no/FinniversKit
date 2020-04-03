@@ -169,6 +169,7 @@ extern NSString *const FinniversImageAssettravel;
 extern NSString *const FinniversImageAssetuncheckCircle;
 extern NSString *const FinniversImageAssetvehicles;
 extern NSString *const FinniversImageAssetverified;
+extern NSString *const FinniversImageAssetvideoChat;
 extern NSString *const FinniversImageAssetview;
 extern NSString *const FinniversImageAssetviewMode;
 extern NSString *const FinniversImageAssetwebview;
