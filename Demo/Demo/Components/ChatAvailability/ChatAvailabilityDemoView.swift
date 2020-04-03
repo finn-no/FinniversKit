@@ -3,16 +3,29 @@
 //
 
 import FinnUI
+import FinniversKit
 
 public class ChatAvailabilityDemoView: UIView {
 
-    let statuses = ChatAvailabilityView.Status.allCases
+    let statuses: [(status: ChatAvailabilityView.Status, statusTitle: String?)] = [
+        (status: .online, statusTitle: "Tilgjengelig nå"),
+        (status: .offline, statusTitle: "Ikke tilgjengelig"),
+        (status: .loading, statusTitle: "Laster tilgjengelighet"),
+        (status: .unknown, statusTitle: "Finner ikke tilgjengelighet"),
+    ]
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.spacing = .spacingS
+        stackView.spacing = .spacingM
         return stackView
+    }()
+
+    private lazy var randomizeStatusButton: Button = {
+        let button = Button(style: .flat, size: .small, withAutoLayout: true)
+        button.addTarget(self, action: #selector(randomizeStatuses), for: .touchUpInside)
+        button.setTitle("Randomize statuses", for: .normal)
+        return button
     }()
 
     // MARK: - Init
@@ -27,17 +40,30 @@ public class ChatAvailabilityDemoView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        statuses.forEach { status in
+        statuses.forEach {
             let view = ChatAvailabilityView(withAutoLayout: true)
-            view.configure(status: status)
+            view.configure(status: $0.status, statusTitle: $0.statusTitle)
             stackView.addArrangedSubview(view)
         }
 
+        stackView.addArrangedSubview(randomizeStatusButton)
+
         addSubview(stackView)
+
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
             stackView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
+    }
+
+    // MARK: - Private methods
+
+    @objc private func randomizeStatuses() {
+        let randomized = statuses.shuffled()
+        stackView.arrangedSubviews.enumerated().forEach { offset, view in
+            guard let view = view as? ChatAvailabilityView, let status = randomized[safe: offset] else { return }
+            view.configure(status: status.status, statusTitle: status.statusTitle)
+        }
     }
 }

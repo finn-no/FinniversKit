@@ -222,7 +222,7 @@ public enum ComponentDemoViews: String, CaseIterable {
         case .transactionProcessSummaryView:
             return DemoViewController<TransactionProcessSummaryDemoView>()
         case .chatAvailabilityButton:
-            return DemoViewController<ChatAvailabilityDemoView>()
+            return DemoViewController<ChatAvailabilityDemoView>(dismissType: .dismissButton)
         case .coronaHelpView:
             return DemoViewController<CoronaHelpDemoView>()
         }
