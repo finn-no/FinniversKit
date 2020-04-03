@@ -26,7 +26,6 @@ public class ChatAvailabilityView: UIView {
     private lazy var chatNowButton: Button = {
         let button = Button(style: .callToAction, size: .normal, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
-        button.setTitle("Chat med oss", for: .normal)
         button.titleEdgeInsets = UIEdgeInsets(leading: .spacingS)
         button.imageEdgeInsets = UIEdgeInsets(top: .spacingXS, leading: -.spacingS)
         let image = UIImage(named: .videoChat)
@@ -54,6 +53,10 @@ public class ChatAvailabilityView: UIView {
     }
 
     // MARK: - Public methods
+
+    public func configure(buttonTitle: String?) {
+        chatNowButton.setTitle(buttonTitle, for: .normal)
+    }
 
     public func configure(status: Status, statusTitle: String? = nil) {
         switch status {

@@ -42,6 +42,7 @@ public class ChatAvailabilityDemoView: UIView {
     private func setup() {
         statuses.forEach {
             let view = ChatAvailabilityView(withAutoLayout: true)
+            view.configure(buttonTitle: "Chat med oss")
             view.configure(status: $0.status, statusTitle: $0.statusTitle)
             stackView.addArrangedSubview(view)
         }
