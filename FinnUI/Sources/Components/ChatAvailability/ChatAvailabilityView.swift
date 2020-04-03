@@ -30,7 +30,7 @@ public class ChatAvailabilityView: UIView {
         button.titleEdgeInsets = UIEdgeInsets(leading: .spacingS)
         button.imageEdgeInsets = UIEdgeInsets(top: .spacingXS, leading: -.spacingS)
         let image = UIImage(named: .videoChat)
-        button.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.setImage(image.withRenderingMode(.alwaysTemplate))
         button.imageView?.tintColor = .milk
         return button
     }()
@@ -138,6 +138,15 @@ private class StatusView: UIView {
     }
 }
 
+// MARK: - Private extensions
+
 private extension UIColor {
     static var online = dynamicColorIfAvailable(defaultColor: UIColor(hex: "#32A24C"), darkModeColor: .pea)
+}
+
+private extension UIButton {
+    func setImage(_ image: UIImage?) {
+        let states: [UIControl.State] = [.normal, .highlighted, .disabled, .selected, .focused]
+        states.forEach { setImage(image, for: $0) }
+    }
 }
