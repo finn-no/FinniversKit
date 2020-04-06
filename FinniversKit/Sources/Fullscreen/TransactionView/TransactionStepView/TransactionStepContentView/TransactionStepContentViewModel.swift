@@ -14,6 +14,6 @@ public protocol TransactionStepContentViewModel {
     */
     var body: NSAttributedString? { get }
     var nativeBody: NSAttributedString? { get }
-    var nativeButton: TransactionStepContentActionButtonViewModel? { get }
-    var primaryButton: TransactionStepContentActionButtonViewModel? { get }
+    var nativeButton: TransactionActionButtonViewModel? { get }
+    var primaryButton: TransactionActionButtonViewModel? { get }
 }

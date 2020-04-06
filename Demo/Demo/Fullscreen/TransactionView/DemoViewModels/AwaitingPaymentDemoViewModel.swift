@@ -25,7 +25,7 @@ extension TransactionDemoViewDefaultData {
                 state: .completed,
                 main: TransactionStepContentModel(
                     title: "Annonsen er lagt ut",
-                    primaryButton: TransactionStepContentActionButtonModel(
+                    primaryButton: TransactionActionButtonModel(
                         text: "Se annonsen",
                         style: "flat",
                         action: "see_ad",
@@ -36,7 +36,7 @@ extension TransactionDemoViewDefaultData {
                 main: TransactionStepContentModel(
                     title: "Kontrakt",
                     body: NSAttributedString(string: "Begge har signert kontrakten."),
-                    primaryButton: TransactionStepContentActionButtonModel(
+                    primaryButton: TransactionActionButtonModel(
                         text: "Gå til kontrakt",
                         style: "flat",
                         url: "https://www.google.com/search?q=contract+signed"))),

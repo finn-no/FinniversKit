@@ -8,7 +8,7 @@ public protocol TransactionStepContentViewDelegate: AnyObject {
     func transactionStepContentViewDidTapActionButton(
         _ view: TransactionStepContentView,
         inTransactionStep step: Int,
-        withAction action: TransactionStepContentView.ActionButton.Action,
+        withAction action: TransactionActionButton.Action,
         withUrl urlString: String?,
         withFallbackUrl fallbackUrlString: String?
     )
@@ -31,8 +31,8 @@ public class TransactionStepContentView: UIView {
     private var state: TransactionStepViewState
     private var model: TransactionStepContentViewModel
 
-    private var nativeButtonModel: TransactionStepContentActionButtonViewModel?
-    private var primaryButtonModel: TransactionStepContentActionButtonViewModel?
+    private var nativeButtonModel: TransactionActionButtonViewModel?
+    private var primaryButtonModel: TransactionActionButtonViewModel?
 
     private var verticalStackViewLeadingAnchor: NSLayoutConstraint?
     private var verticalStackViewTrailingAnchor: NSLayoutConstraint?
@@ -159,11 +159,11 @@ private extension TransactionStepContentView {
         bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor)
     }
 
-    private func setupButton(_ buttonModel: TransactionStepContentActionButtonViewModel?, tag: ButtonTag) {
+    private func setupButton(_ buttonModel: TransactionActionButtonViewModel?, tag: ButtonTag) {
         if let buttonModel = buttonModel {
             let buttonText = buttonModel.text
-            let buttonStyle = TransactionStepContentView.ActionButton(rawValue: buttonModel.style).style
-            let buttonAction = TransactionStepContentView.ActionButton.Action(rawValue: buttonModel.action ?? "")
+            let buttonStyle = TransactionActionButton(rawValue: buttonModel.style).style
+            let buttonAction = TransactionActionButton.Action(rawValue: buttonModel.action ?? "")
 
             let button = Button(style: buttonStyle, withAutoLayout: true)
             button.setTitle(buttonText, for: .normal)
@@ -242,7 +242,7 @@ private extension TransactionStepContentView {
 
 private extension TransactionStepContentView {
     @objc func handleButtonTap(_ sender: Button) {
-        var model: TransactionStepContentActionButtonViewModel?
+        var model: TransactionActionButtonViewModel?
 
         switch sender.tag {
         case ButtonTag.native.rawValue:
@@ -253,7 +253,7 @@ private extension TransactionStepContentView {
             model = nil
         }
 
-        let action = ActionButton.Action(rawValue: model?.action ?? "unknown")
+        let action = TransactionActionButton.Action(rawValue: model?.action ?? "unknown")
         let urlString = model?.url
         let fallbackUrlString = model?.fallbackUrl
 

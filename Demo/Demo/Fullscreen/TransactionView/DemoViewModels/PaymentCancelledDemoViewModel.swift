@@ -25,7 +25,7 @@ extension TransactionDemoViewDefaultData {
                 state: .completed,
                 main: TransactionStepContentModel(
                     title: "Annonsen er lagt ut",
-                    primaryButton: TransactionStepContentActionButtonModel(
+                    primaryButton: TransactionActionButtonModel(
                         text: "Se annonsen",
                         style: "flat",
                         action: "see_ad",
@@ -36,7 +36,7 @@ extension TransactionDemoViewDefaultData {
                 main: TransactionStepContentModel(
                     title: "Kontrakt",
                     body: NSAttributedString(string: "Begge har signert kontrakten."),
-                    primaryButton: TransactionStepContentActionButtonModel(
+                    primaryButton: TransactionActionButtonModel(
                         text: "Gå til kontrakt",
                         style: "flat",
                         fallbackUrl: "https://www.google.com/search?q=contract+signed"))),
@@ -48,7 +48,7 @@ extension TransactionDemoViewDefaultData {
                     title: "Betaling",
                     body: NSAttributedString(string: "<p>Betalingen er kansellert.</p><p>Ta kontakt med <a href=\"https://swiftcourt.com/\">Swiftcourt</a> for å starte betalingen på nytt.</p"),
                     nativeBody: NSAttributedString(string: "<p>Betalingen er kansellert.</p><p>Ta kontakt med Swiftcourt for å starte betalingen på nytt.</p"),
-                    nativeButton: TransactionStepContentActionButtonModel(
+                    nativeButton: TransactionActionButtonModel(
                         text: "Gå til swiftcourt",
                         style: "flat",
                         url: "https://swiftcourt.com/"))),

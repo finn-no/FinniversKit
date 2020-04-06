@@ -9,7 +9,7 @@ public protocol TransactionViewDelegate: AnyObject {
     func transactionViewDidTapActionButton(
         _ view: TransactionView,
         inTransactionStep step: Int,
-        withAction action: TransactionStepContentView.ActionButton.Action,
+        withAction action: TransactionActionButton.Action,
         withUrl urlString: String?,
         withFallbackUrl fallbackUrlString: String?
     )
@@ -266,7 +266,7 @@ extension TransactionView: TransactionStepViewDelegate {
     public func transactionStepViewDidTapActionButton(
         _ view: TransactionStepView,
         inTransactionStep step: Int,
-        withAction action: TransactionStepContentView.ActionButton.Action,
+        withAction action: TransactionActionButton.Action,
         withUrl urlString: String?,
         withFallbackUrl fallbackUrlString: String?
     ) {

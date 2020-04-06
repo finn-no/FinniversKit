@@ -422,8 +422,8 @@
 		F28D78F22428B5AF00E77414 /* TransactionProcessSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28D78F12428B5AF00E77414 /* TransactionProcessSummaryView.swift */; };
 		F28D78F82428DB8C00E77414 /* TransactionProcessSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28D78F62428DA1D00E77414 /* TransactionProcessSummaryViewModel.swift */; };
 		F29C4F582434780200E25209 /* TransactionStepContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C4F522434780200E25209 /* TransactionStepContentViewModel.swift */; };
-		F29C4F592434780200E25209 /* TransactionStepContentView+ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C4F542434780200E25209 /* TransactionStepContentView+ActionButton.swift */; };
-		F29C4F5A2434780200E25209 /* TransactionStepContentActionButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C4F552434780200E25209 /* TransactionStepContentActionButtonViewModel.swift */; };
+		F29C4F592434780200E25209 /* TransactionActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C4F542434780200E25209 /* TransactionActionButton.swift */; };
+		F29C4F5A2434780200E25209 /* TransactionActionButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C4F552434780200E25209 /* TransactionActionButtonViewModel.swift */; };
 		F29C4F5B2434780200E25209 /* TransactionStepContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C4F562434780200E25209 /* TransactionStepContentView.swift */; };
 		F29C4F5C2434780200E25209 /* TransactionStepView+CustomStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C4F572434780200E25209 /* TransactionStepView+CustomStyle.swift */; };
 		F2A7B70E23BF2AA500651850 /* PaymentOptionsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A7B70D23BF2AA500651850 /* PaymentOptionsListViewCell.swift */; };
@@ -876,8 +876,8 @@
 		F28D78F12428B5AF00E77414 /* TransactionProcessSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionProcessSummaryView.swift; sourceTree = "<group>"; };
 		F28D78F62428DA1D00E77414 /* TransactionProcessSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionProcessSummaryViewModel.swift; sourceTree = "<group>"; };
 		F29C4F522434780200E25209 /* TransactionStepContentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionStepContentViewModel.swift; sourceTree = "<group>"; };
-		F29C4F542434780200E25209 /* TransactionStepContentView+ActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TransactionStepContentView+ActionButton.swift"; sourceTree = "<group>"; };
-		F29C4F552434780200E25209 /* TransactionStepContentActionButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionStepContentActionButtonViewModel.swift; sourceTree = "<group>"; };
+		F29C4F542434780200E25209 /* TransactionActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionActionButton.swift; sourceTree = "<group>"; };
+		F29C4F552434780200E25209 /* TransactionActionButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionActionButtonViewModel.swift; sourceTree = "<group>"; };
 		F29C4F562434780200E25209 /* TransactionStepContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionStepContentView.swift; sourceTree = "<group>"; };
 		F29C4F572434780200E25209 /* TransactionStepView+CustomStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TransactionStepView+CustomStyle.swift"; sourceTree = "<group>"; };
 		F2A7B70D23BF2AA500651850 /* PaymentOptionsListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOptionsListViewCell.swift; sourceTree = "<group>"; };
@@ -2799,6 +2799,7 @@
 				F2E48DEC2408175E009DEFBA /* TransactionHeaderView */,
 				F2E48DE52408135A009DEFBA /* TransactionAlertView */,
 				F20450C923EDB675001F7370 /* TransactionStepView */,
+				F29C4F532434780200E25209 /* TransactionActionButton */,
 				F2E48DE02407D224009DEFBA /* TransactionStepDot */,
 			);
 			path = TransactionView;
@@ -2893,18 +2894,17 @@
 			children = (
 				F29C4F522434780200E25209 /* TransactionStepContentViewModel.swift */,
 				F29C4F562434780200E25209 /* TransactionStepContentView.swift */,
-				F29C4F532434780200E25209 /* TransactionStepContentActionButton */,
 			);
 			path = TransactionStepContentView;
 			sourceTree = "<group>";
 		};
-		F29C4F532434780200E25209 /* TransactionStepContentActionButton */ = {
+		F29C4F532434780200E25209 /* TransactionActionButton */ = {
 			isa = PBXGroup;
 			children = (
-				F29C4F542434780200E25209 /* TransactionStepContentView+ActionButton.swift */,
-				F29C4F552434780200E25209 /* TransactionStepContentActionButtonViewModel.swift */,
+				F29C4F542434780200E25209 /* TransactionActionButton.swift */,
+				F29C4F552434780200E25209 /* TransactionActionButtonViewModel.swift */,
 			);
-			path = TransactionStepContentActionButton;
+			path = TransactionActionButton;
 			sourceTree = "<group>";
 		};
 		F2A7B70923BF2A3B00651850 /* PaymentOptions */ = {
@@ -3232,7 +3232,7 @@
 				CF164D15230FFB7400250822 /* FavoriteAdActionViewModel.swift in Sources */,
 				CF136ACD2203211100247B30 /* InfoboxView.swift in Sources */,
 				4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */,
-				F29C4F5A2434780200E25209 /* TransactionStepContentActionButtonViewModel.swift in Sources */,
+				F29C4F5A2434780200E25209 /* TransactionActionButtonViewModel.swift in Sources */,
 				9B057AA9235EEB1C007B1CF0 /* ContentView.swift in Sources */,
 				9B06097023F14BB4005CB592 /* HeaderView.swift in Sources */,
 				AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */,
@@ -3402,7 +3402,7 @@
 				91846C5A22E856D50001410F /* MapSettingsView.swift in Sources */,
 				CF3F85BF229C29B3003A6748 /* IconCollectionViewFlowLayout.swift in Sources */,
 				DA0F4E6B23953B85003E93A4 /* MinFinnCellModels.swift in Sources */,
-				F29C4F592434780200E25209 /* TransactionStepContentView+ActionButton.swift in Sources */,
+				F29C4F592434780200E25209 /* TransactionActionButton.swift in Sources */,
 				CFF9727121C3BA1D00C85238 /* BannerTransparencySectionView.swift in Sources */,
 				CF45AF89231D3A3000BE8B39 /* StepSlider.swift in Sources */,
 				899D0BF6222D4B3400794DEC /* ArrayExtensions.swift in Sources */,
