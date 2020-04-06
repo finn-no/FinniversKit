@@ -5,17 +5,8 @@
 import FinniversKit
 
 public class LoadingIndicatorViewDemoView: UIView {
-    private lazy var loadingIndicatorView: LoadingIndicatorView = {
-        let view = LoadingIndicatorView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
-    private lazy var delayedLoadingIndicatorView: LoadingIndicatorView = {
-        let view = LoadingIndicatorView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private lazy var loadingIndicatorView = LoadingIndicatorView(withAutoLayout: true)
+    private lazy var delayedLoadingIndicatorView = LoadingIndicatorView(withAutoLayout: true)
 
     override init(frame: CGRect) {
         super.init(frame: frame)

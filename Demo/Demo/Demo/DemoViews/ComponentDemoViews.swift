@@ -71,6 +71,7 @@ public enum ComponentDemoViews: String, CaseIterable {
     case objectPageTitleView
     case favoriteButton
     case transactionProcessSummaryView
+    case chatAvailabilityView
     case coronaHelpView
 
     public static var items: [ComponentDemoViews] {
@@ -220,6 +221,8 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<FavoriteButtonDemoView>(dismissType: .dismissButton)
         case .transactionProcessSummaryView:
             return DemoViewController<TransactionProcessSummaryDemoView>()
+        case .chatAvailabilityView:
+            return DemoViewController<ChatAvailabilityDemoView>(dismissType: .dismissButton)
         case .coronaHelpView:
             return DemoViewController<CoronaHelpDemoView>()
         }

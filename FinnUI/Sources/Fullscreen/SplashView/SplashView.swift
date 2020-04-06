@@ -30,7 +30,7 @@ public final class SplashView: UIView {
     }()
 
     private lazy var letterViews: [UIView] = {
-        let assets: [FinniversImageAsset] = [.splashLetters1, .splashLetters2, .splashLetters3, .splashLetters4]
+        let assets: [ImageAsset] = [.splashLetters1, .splashLetters2, .splashLetters3, .splashLetters4]
         return assets.map {
             let imageView = UIImageView(withAutoLayout: true)
             imageView.image = UIImage(named: $0)
