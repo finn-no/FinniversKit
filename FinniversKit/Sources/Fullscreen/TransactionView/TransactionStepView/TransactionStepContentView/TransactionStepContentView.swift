@@ -54,8 +54,8 @@ public class TransactionStepContentView: UIView {
         view.backgroundColor = .clear
         view.isScrollEnabled = false
         view.isEditable = false
-        view.contentInset = .init(top: -.spacingS, leading: 0, bottom: 0, trailing: 0)
         view.adjustsFontForContentSizeCategory = true
+        view.textContainerInset = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
         view.textContainer.widthTracksTextView = true
         view.textContainer.heightTracksTextView = true
         return view
@@ -66,8 +66,8 @@ public class TransactionStepContentView: UIView {
         view.backgroundColor = .clear
         view.isScrollEnabled = false
         view.isEditable = false
-        view.contentInset = .init(top: -.spacingS, leading: 0, bottom: 0, trailing: 0)
         view.adjustsFontForContentSizeCategory = true
+        view.textContainerInset = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
         view.textContainer.widthTracksTextView = true
         view.textContainer.heightTracksTextView = true
         return view
@@ -139,10 +139,14 @@ private extension TransactionStepContentView {
 
         if let titleText = model.title {
             titleView.text = titleText
+            titleView.heightAnchor.constraint(equalToConstant: 26).isActive = true
+
             verticalStackView.addArrangedSubview(titleView)
+            verticalStackView.setCustomSpacing(.spacingS, after: titleView)
         }
 
         setupBodyView(model.nativeBody, model.body)
+
         // NativeButton should always precede primaryButton
         setupButton(model.nativeButton, tag: ButtonTag.native)
         setupButton(model.primaryButton, tag: ButtonTag.primary)
@@ -155,8 +159,11 @@ private extension TransactionStepContentView {
         guard text != nil else { return }
 
         bodyView.attributedText = text
+
         verticalStackView.addArrangedSubview(bodyView)
-        bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor)
+        verticalStackView.setCustomSpacing(.spacingS, after: bodyView)
+
+        bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: .spacingM)
     }
 
     private func setupButton(_ buttonModel: TransactionActionButtonViewModel?, tag: ButtonTag) {
