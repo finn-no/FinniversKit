@@ -174,7 +174,6 @@ private extension TransactionStepContentView {
 
             let button = Button(style: buttonStyle, withAutoLayout: true)
             button.setTitle(buttonText, for: .normal)
-            button.titleLabel?.adjustsFontSizeToFitWidth = true
             button.tag = tag.rawValue
             button.addTarget(self, action: #selector(handleButtonTap(_:)), for: .touchUpInside)
             button.setContentHuggingPriority(.required, for: .vertical)
