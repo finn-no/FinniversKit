@@ -133,8 +133,8 @@ private extension TransactionView {
             scrollableContentView.addSubview(view)
 
             NSLayoutConstraint.activate([
-                view.leadingAnchor.constraint(equalTo: scrollableContentView.leadingAnchor, constant: .spacingL),
-                view.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor),
+                view.leadingAnchor.constraint(equalTo: scrollableContentView.leadingAnchor, constant: .spacingM),
+                view.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.spacingM),
                 view.topAnchor.constraint(equalTo: scrollableContentView.topAnchor, constant: .spacingS),
             ])
 
