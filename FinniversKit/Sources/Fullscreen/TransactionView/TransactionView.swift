@@ -111,6 +111,7 @@ private extension TransactionView {
         ])
 
         setupHeaderView()
+        setupAlertView()
 
         for index in 0..<numberOfSteps {
             guard let model = dataSource?.transactionViewModelForIndex(self, forStep: index) else { return }
@@ -141,8 +142,6 @@ private extension TransactionView {
                 equalTo: view.bottomAnchor,
                 constant: .spacingM)
         }
-
-        setupAlertView()
     }
 
     func setupAlertView() {
