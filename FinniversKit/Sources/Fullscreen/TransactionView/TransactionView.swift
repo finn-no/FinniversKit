@@ -120,6 +120,8 @@ private extension TransactionView {
         }
 
         setupVerticalStackViewContraints()
+
+        contentView.bottomAnchor.constraint(equalTo: verticalStackView.bottomAnchor, constant: .spacingS).isActive = true
     }
 
     func setupHeaderView() {
@@ -238,11 +240,6 @@ private extension TransactionView {
             stackViewTopAnchor,
             stackViewBottomAnchor,
         ])
-
-        if !UIDevice.isIPad() {
-            contentView.bottomAnchor.constraint(
-                equalTo: verticalStackView.bottomAnchor, constant: .spacingXL).isActive = true
-        }
     }
 
     func progressTo(_ step: Int) {
