@@ -40,7 +40,7 @@ public class IdentityView: UIView {
         /// Subtitle hidden, profile name black
         case anonymous
 
-        /// Subtitle hidden, profile name black
+        /// Subtitle hidden, profile name hidden, offlineButton visible 
         case offline
     }
 
