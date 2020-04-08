@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'FinniversKit'
-  s.version      = '37.3.1'
+  s.version      = '42.0.0'
   s.summary      = "FINN's iOS Components"
   s.author       = 'FINN.no'
   s.homepage     = 'https://schibsted.frontify.com/d/oCLrx0cypXJM/design-system'
@@ -29,16 +29,16 @@ Pod::Spec.new do |s|
   s.source        = { :git => "https://github.com/finn-no/FinniversKit.git", :tag => s.version }
   s.requires_arc  = true
 
-  s.source_files = 'Sources/*.{h,m,swift}', 'Sources/**/*.{h,m,swift}', 'Sources/**/**/*.{h,m,swift}'
-  s.resources    = 'Sources/Resources/Fonts/*.ttf', 'Sources/Resources/*.xcassets', 'Sources/Resources/Sounds/*.{mp3,wav,sf2}'
+  s.source_files = 'FinniversKit/Sources/*.{h,m,swift}', 'FinniversKit/Sources/**/*.{h,m,swift}', 'FinniversKit/Sources/**/**/*.{h,m,swift}'
+  s.resources    = 'FinniversKit/Sources/Resources/Fonts/*.ttf', 'FinniversKit/Sources/Resources/*.xcassets', 'FinniversKit/Sources/Resources/Sounds/*.{mp3,wav,sf2}'
   s.resource_bundles = {
-      'FinniversKit' => ['Sources/Resources/*.xcassets', 'Sources/Resources/Fonts/*.ttf', 'Sources/Resources/Sounds/*.{mp3,wav,sf2}']
+      'FinniversKit' => ['FinniversKit/Sources/Resources/*.xcassets', 'FinniversKit/Sources/Resources/Fonts/*.ttf', 'FinniversKit/Sources/Resources/Sounds/*.{mp3,wav,sf2}']
   }
   s.frameworks = 'Foundation', 'UIKit'
   s.subspec 'DNA' do |sp|
-    sp.source_files  = 'Sources/*.{h,m,swift}', 'Sources/DNA/*.{h,m,swift}', 'Sources/DNA/**/*.{h,m,swift}', 'Sources/DNA/**/**/*.{h,m,swift}', 'Sources/Resources/*.{h,m,swift}', 'Sources/Resources/**/*.{h,m,swift}', 'Sources/Resources/**/**/*.{h,m,swift}'
+    sp.source_files  = 'FinniversKit/Sources/*.{h,m,swift}', 'FinniversKit/Sources/DNA/*.{h,m,swift}', 'FinniversKit/Sources/DNA/**/*.{h,m,swift}', 'FinniversKit/Sources/DNA/**/**/*.{h,m,swift}', 'FinniversKit/Sources/Resources/*.{h,m,swift}', 'FinniversKit/Sources/Resources/**/*.{h,m,swift}', 'FinniversKit/Sources/Resources/**/**/*.{h,m,swift}'
     sp.resource_bundles = {
-        'FinniversKitDNA' => ['Sources/Resources/*.xcassets', 'Sources/Resources/Fonts/*.ttf']
+        'FinniversKitDNA' => ['FinniversKit/Sources/Resources/*.xcassets', 'FinniversKit/Sources/Resources/Fonts/*.ttf']
     }
     sp.requires_arc = true
     sp.frameworks = 'Foundation', 'UIKit'
