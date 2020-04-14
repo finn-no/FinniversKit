@@ -304,9 +304,7 @@ public extension Button.Style {
                     backgroundColor: nil,
                     borderColor: nil
                 ),
-            ],
-            smallFont: .detailStrong,
-            normalFont: .detailStrong
+            ]
         )
     }
 
