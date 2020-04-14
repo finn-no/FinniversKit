@@ -7,7 +7,9 @@ import FinniversKit
 final class TransactionDemoView: UIView {
     private lazy var dataSource = TransactionDemoViewDefaultData()
     private lazy var model: TransactionViewModel = dataSource.getState()
+
     private var transactionView: TransactionView?
+    private var layoutConstraints: [NSLayoutConstraint] = []
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,7 +29,32 @@ final class TransactionDemoView: UIView {
         transactionView = TransactionView(withAutoLayout: true, model: model, dataSource: self, delegate: self)
 
         addSubview(transactionView!)
-        transactionView!.fillInSuperview()
+        setupConstraints()
+    }
+
+    private func setupConstraints() {
+        guard let view = transactionView else { return }
+
+        switch traitCollection.horizontalSizeClass {
+        case .regular:
+            layoutConstraints = [
+                view.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+                view.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingXXL * 2),
+                view.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+                view.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.spacingXXL * 2),
+            ]
+        default:
+            layoutConstraints = view.fillInSuperview()
+        }
+
+        NSLayoutConstraint.activate(layoutConstraints)
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        guard previousTraitCollection != traitCollection else { return }
+        setupConstraints()
     }
 }
 
