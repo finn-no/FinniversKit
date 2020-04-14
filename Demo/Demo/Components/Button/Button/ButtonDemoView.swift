@@ -5,6 +5,19 @@
 import FinniversKit
 
 public class ButtonDemoView: UIView {
+    // Relevant Styles, States and Sizes to show for the demo
+    let styles: [Button.Style] = [
+        .callToAction,
+        .default,
+        .flat,
+        .link,
+        .destructive,
+        .destructiveFlat,
+        .utility,
+    ]
+    let states: [UIControl.State] = [.normal, .disabled]
+    let sizes: [Button.Size] = [.normal, .small]
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -14,148 +27,94 @@ public class ButtonDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        let normalButton = Button(style: .default)
-        let smallNormalButton = Button(style: .default, size: .small)
+        let scrollView = UIScrollView(withAutoLayout: true)
+        scrollView.contentInset = UIEdgeInsets(vertical: .spacingM, horizontal: .spacingL)
 
-        let utilityButton = Button(style: .utility, size: .small)
+        let verticalStack = self.verticalStack()
+        verticalStack.spacing = .spacingM
 
-        let callToActionButton = Button(style: .callToAction)
-        let destructiveButton = Button(style: .destructive)
-        let flatButton = Button(style: .flat)
-        let destructiveFlatButton = Button(style: .destructiveFlat)
-        let linkButton = Button(style: .link)
+        styles.forEach { style in
+            let buttonStyleStack = self.verticalStack()
+            buttonStyleStack.spacing = .spacingS
 
-        let button1 = Button(style: .callToAction)
-        let button2 = Button(style: .default)
+            let titleLabel = Label(style: .title3, withAutoLayout: true)
+            titleLabel.text = sectionTitle(for: style)
+            buttonStyleStack.addArrangedSubview(titleLabel)
 
-        let disabledNormalButton = Button(style: .default)
-        let disabledCallToActionButton = Button(style: .callToAction)
-        let disabledDestructiveButton = Button(style: .destructive)
-        let disabledFlatButton = Button(style: .flat)
-        let disabledLinkButton = Button(style: .link)
+            sizes.forEach { size in
+                let stateStack = UIStackView(withAutoLayout: true)
+                stateStack.axis = .horizontal
+                stateStack.spacing = .spacingS
+                stateStack.distribution = .fillEqually
 
-        normalButton.setTitle("Default button", for: .normal)
-        smallNormalButton.setTitle("Small default button", for: .normal)
+                states.forEach { state in
+                    let title = self.title(for: size, state: state)
 
-        utilityButton.setTitle("Utility button", for: .normal)
+                    let button = Button(style: style, size: size, withAutoLayout: true)
+                    button.setTitle(title, for: state)
+                    button.isEnabled = state != .disabled
 
-        callToActionButton.setTitle("Call to action button", for: .normal)
-        destructiveButton.setTitle("Destructive button", for: .normal)
+                    stateStack.addArrangedSubview(button)
+                }
 
-        flatButton.setTitle("Flat button", for: .normal)
-        destructiveFlatButton.setTitle("Destructive Flat button", for: .normal)
-        linkButton.setTitle("Link button", for: .normal)
+                buttonStyleStack.addArrangedSubview(stateStack)
+            }
 
-        button1.setTitle("Left button", for: .normal)
-        button2.setTitle("Right button", for: .normal)
+            verticalStack.addArrangedSubview(buttonStyleStack)
+        }
 
-        disabledNormalButton.setTitle("Disabled default button", for: .normal)
-        disabledCallToActionButton.setTitle("Disabled call to action button", for: .normal)
-        disabledDestructiveButton.setTitle("Disabled destructive button", for: .normal)
-        disabledFlatButton.setTitle("Disabled flat button", for: .normal)
-        disabledLinkButton.setTitle("Disabled link button", for: .normal)
+        scrollView.addSubview(verticalStack)
+        addSubview(scrollView)
 
-        disabledNormalButton.isEnabled = false
-        disabledCallToActionButton.isEnabled = false
-        disabledDestructiveButton.isEnabled = false
-        disabledFlatButton.isEnabled = false
-        disabledLinkButton.isEnabled = false
-
-        normalButton.translatesAutoresizingMaskIntoConstraints = false
-        smallNormalButton.translatesAutoresizingMaskIntoConstraints = false
-
-        utilityButton.translatesAutoresizingMaskIntoConstraints = false
-
-        callToActionButton.translatesAutoresizingMaskIntoConstraints = false
-        destructiveButton.translatesAutoresizingMaskIntoConstraints = false
-
-        flatButton.translatesAutoresizingMaskIntoConstraints = false
-        destructiveFlatButton.translatesAutoresizingMaskIntoConstraints = false
-        linkButton.translatesAutoresizingMaskIntoConstraints = false
-        button1.translatesAutoresizingMaskIntoConstraints = false
-        button2.translatesAutoresizingMaskIntoConstraints = false
-
-        disabledNormalButton.translatesAutoresizingMaskIntoConstraints = false
-        disabledCallToActionButton.translatesAutoresizingMaskIntoConstraints = false
-        disabledDestructiveButton.translatesAutoresizingMaskIntoConstraints = false
-        disabledFlatButton.translatesAutoresizingMaskIntoConstraints = false
-        disabledLinkButton.translatesAutoresizingMaskIntoConstraints = false
-
-        addSubview(normalButton)
-        addSubview(smallNormalButton)
-
-        addSubview(utilityButton)
-
-        addSubview(callToActionButton)
-        addSubview(destructiveButton)
-
-        addSubview(flatButton)
-        addSubview(destructiveFlatButton)
-        addSubview(linkButton)
-
-        addSubview(button1)
-        addSubview(button2)
-
-        addSubview(disabledNormalButton)
-        addSubview(disabledCallToActionButton)
-        addSubview(disabledDestructiveButton)
-        addSubview(disabledFlatButton)
-        addSubview(disabledLinkButton)
-
+        scrollView.fillInSuperview()
+        verticalStack.fillInSuperview()
         NSLayoutConstraint.activate([
-            normalButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
-            normalButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
-            normalButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
-
-            smallNormalButton.topAnchor.constraint(equalTo: normalButton.bottomAnchor, constant: .spacingM),
-            smallNormalButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
-            smallNormalButton.trailingAnchor.constraint(lessThanOrEqualTo: button2.leadingAnchor),
-
-            utilityButton.topAnchor.constraint(equalTo: normalButton.bottomAnchor, constant: .spacingM),
-            utilityButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
-
-            callToActionButton.topAnchor.constraint(equalTo: smallNormalButton.bottomAnchor, constant: .spacingM),
-            callToActionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
-            callToActionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
-
-            destructiveButton.topAnchor.constraint(equalTo: callToActionButton.bottomAnchor, constant: .spacingM),
-            destructiveButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
-            destructiveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
-
-            flatButton.topAnchor.constraint(equalTo: destructiveButton.bottomAnchor, constant: .spacingM),
-            flatButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
-            flatButton.trailingAnchor.constraint(lessThanOrEqualTo: button2.leadingAnchor),
-
-            destructiveFlatButton.topAnchor.constraint(equalTo: flatButton.topAnchor),
-            destructiveFlatButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
-
-            linkButton.topAnchor.constraint(equalTo: flatButton.bottomAnchor, constant: .spacingM),
-            linkButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-
-            button1.topAnchor.constraint(equalTo: linkButton.bottomAnchor, constant: .spacingM),
-            button1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
-            button1.trailingAnchor.constraint(lessThanOrEqualTo: button2.leadingAnchor),
-
-            button2.topAnchor.constraint(equalTo: button1.topAnchor),
-            button2.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
-
-            disabledNormalButton.topAnchor.constraint(equalTo: button1.bottomAnchor, constant: .spacingM),
-            disabledNormalButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
-            disabledNormalButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
-
-            disabledCallToActionButton.topAnchor.constraint(equalTo: disabledNormalButton.bottomAnchor, constant: .spacingM),
-            disabledCallToActionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
-            disabledCallToActionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
-
-            disabledDestructiveButton.topAnchor.constraint(equalTo: disabledCallToActionButton.bottomAnchor, constant: .spacingM),
-            disabledDestructiveButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
-            disabledDestructiveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
-
-            disabledFlatButton.topAnchor.constraint(equalTo: disabledDestructiveButton.bottomAnchor, constant: .spacingM),
-            disabledFlatButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-
-            disabledLinkButton.topAnchor.constraint(equalTo: disabledFlatButton.bottomAnchor, constant: .spacingS),
-            disabledLinkButton.centerXAnchor.constraint(equalTo: centerXAnchor)
+            verticalStack.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0, constant: -.spacingL * 2)
         ])
+    }
+
+    // MARK: - Private methods
+
+    private func verticalStack() -> UIStackView {
+        let stackView = UIStackView(withAutoLayout: true)
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+
+        return stackView
+    }
+
+    private func title(for size: Button.Size, state: UIControl.State) -> String {
+        stateName(state: state) + " " + sizeName(size: size)
+    }
+
+    private func sizeName(size: Button.Size) -> String {
+        switch size {
+        case .normal: return ""
+        case .small: return "Small"
+        }
+    }
+
+    private func stateName(state: UIControl.State) -> String {
+        switch state {
+        case .normal: return "Normal"
+        case .disabled: return "Disabled"
+        case .highlighted: return "Highlghted"
+        default: return "?"
+        }
+    }
+
+    private func sectionTitle(for style: Button.Style) -> String {
+        switch style {
+        case .callToAction: return "Call to Action"
+        case .default: return "Default"
+        case .flat: return "Flat"
+        case .link: return "Link"
+        case .destructive: return "Destructive"
+        case .destructiveFlat: return "Destructive Flat"
+        case .utility: return "Utility"
+        default:
+            return "Unknown"
+        }
     }
 }
