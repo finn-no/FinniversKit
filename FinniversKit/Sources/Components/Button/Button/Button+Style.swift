@@ -335,7 +335,7 @@ public extension Button.Style {
                 horizontal: 0
             ),
             smallFont: .detail,
-            normalFont: .caption
+            normalFont: .body
         )
     }
 }
