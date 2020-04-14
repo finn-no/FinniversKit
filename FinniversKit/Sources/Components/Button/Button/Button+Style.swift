@@ -177,7 +177,7 @@ public extension Button.Style {
                 .normal: Button.StateStyle(
                     textColor: .textAction,
                     backgroundColor: .bgPrimary,
-                    borderColor: .accentSecondaryBlue
+                    borderColor: .btnDisabled
                 ),
                 .highlighted: Button.StateStyle(
                     textColor: nil,
