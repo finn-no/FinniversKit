@@ -6,10 +6,13 @@ import Foundation
 
 public protocol TransactionViewDelegate: AnyObject {
     func transactionViewDidBeginRefreshing(_ refreshControl: RefreshControl)
-
-    func transactionViewDidTapActionButton(_ view: TransactionView, inTransactionStep step: Int,
-                                           withAction action: TransactionStepView.ActionButton.Action, withUrl urlString: String?,
-                                           withFallbackUrl fallbackUrlString: String?)
+    func transactionViewDidTapActionButton(
+        _ view: TransactionView,
+        inTransactionStep step: Int,
+        withAction action: TransactionActionButton.Action,
+        withUrl urlString: String?,
+        withFallbackUrl fallbackUrlString: String?
+    )
 }
 
 public protocol TransactionViewDataSource: AnyObject {
@@ -55,7 +58,7 @@ public class TransactionView: UIView {
         return scrollView
     }()
 
-    private lazy var scrollableContentView = UIView(withAutoLayout: true)
+    private(set) public lazy var contentView = UIView(withAutoLayout: true)
 
     private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
@@ -97,17 +100,18 @@ private extension TransactionView {
 
         addSubview(scrollView)
         scrollView.fillInSuperview()
-        scrollView.addSubview(scrollableContentView)
+        scrollView.addSubview(contentView)
 
-        scrollableContentView.fillInSuperview()
-        scrollableContentView.addSubview(verticalStackView)
+        contentView.fillInSuperview()
+        contentView.addSubview(verticalStackView)
 
         NSLayoutConstraint.activate([
-            scrollableContentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
-            scrollableContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
         ])
 
         setupHeaderView()
+        setupAlertView()
 
         for index in 0..<numberOfSteps {
             guard let model = dataSource?.transactionViewModelForIndex(self, forStep: index) else { return }
@@ -116,6 +120,7 @@ private extension TransactionView {
         }
 
         setupVerticalStackViewContraints()
+        contentView.bottomAnchor.constraint(greaterThanOrEqualTo: verticalStackView.bottomAnchor).isActive = true
     }
 
     func setupHeaderView() {
@@ -126,20 +131,18 @@ private extension TransactionView {
 
             guard let view = headerView else { return }
 
-            scrollableContentView.addSubview(view)
+            contentView.addSubview(view)
 
             NSLayoutConstraint.activate([
-                view.leadingAnchor.constraint(equalTo: scrollableContentView.leadingAnchor, constant: .spacingL),
-                view.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor),
-                view.topAnchor.constraint(equalTo: scrollableContentView.topAnchor, constant: .spacingS),
+                view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+                view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+                view.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
             ])
 
             verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(
                 equalTo: view.bottomAnchor,
                 constant: .spacingM)
         }
-
-        setupAlertView()
     }
 
     func setupAlertView() {
@@ -147,7 +150,7 @@ private extension TransactionView {
             alertView = TransactionAlertView(withAutoLayout: true, model: alertViewModel)
             guard let view = alertView else { return }
 
-            scrollableContentView.addSubview(view)
+            contentView.addSubview(view)
 
             if let header = headerView {
                 verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(
@@ -155,15 +158,15 @@ private extension TransactionView {
                     constant: .spacingM)
 
                 NSLayoutConstraint.activate([
-                    view.leadingAnchor.constraint(equalTo: scrollableContentView.leadingAnchor, constant: .spacingM),
-                    view.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.spacingM),
+                    view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+                    view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
                     view.topAnchor.constraint(equalTo: header.bottomAnchor, constant: .spacingM),
                 ])
             } else {
                 NSLayoutConstraint.activate([
-                    view.leadingAnchor.constraint(equalTo: scrollableContentView.leadingAnchor, constant: .spacingM),
-                    view.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.spacingM),
-                    view.topAnchor.constraint(equalTo: scrollableContentView.topAnchor, constant: .spacingM),
+                    view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+                    view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+                    view.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
                 ])
             }
 
@@ -177,7 +180,7 @@ private extension TransactionView {
         let transactionStepView = TransactionStepView(
             step: step,
             model: model,
-            withCustomBackground: model.customBackground,
+            withCustomStyle: model.style,
             withAutoLayout: true
         )
         transactionStepView.delegate = self
@@ -190,9 +193,9 @@ private extension TransactionView {
 
         guard let currentStepView = verticalStackView.arrangedSubviews[safe: step] as? TransactionStepView else { return }
 
-        scrollableContentView.addSubview(stepDot)
+        contentView.addSubview(stepDot)
         NSLayoutConstraint.activate([
-            stepDot.leadingAnchor.constraint(equalTo: scrollableContentView.leadingAnchor, constant: .spacingXL),
+            stepDot.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingXL),
             stepDot.topAnchor.constraint(equalTo: currentStepView.topAnchor),
         ])
 
@@ -204,7 +207,7 @@ private extension TransactionView {
         stackView.axis = .vertical
         stackView.addArrangedSubview(connector)
 
-        scrollableContentView.addSubview(stackView)
+        contentView.addSubview(stackView)
         NSLayoutConstraint.activate([
             stackView.centerXAnchor.constraint(equalTo: stepDot.centerXAnchor),
             stackView.topAnchor.constraint(equalTo: previousStepDot.bottomAnchor),
@@ -217,30 +220,25 @@ private extension TransactionView {
     func setupVerticalStackViewContraints() {
         guard
             let firstStepDot = stepDots.first,
-            let lastTransactionStepView = verticalStackView.arrangedSubviews.last
+            let lastStepView = verticalStackView.arrangedSubviews.last
         else { return }
 
         verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(
             equalTo: firstStepDot.trailingAnchor, constant: .spacingS)
 
-        verticalStackViewBottomAnchor = verticalStackView.bottomAnchor.constraint(equalTo: lastTransactionStepView.bottomAnchor)
+        verticalStackViewBottomAnchor = verticalStackView.bottomAnchor.constraint(equalTo: lastStepView.bottomAnchor)
 
-        guard let leadingAnchor = verticalStackViewLeadingAnchor,
-              let topAnchor = verticalStackViewTopAnchor,
-              let bottomAnchor = verticalStackViewBottomAnchor
+        guard let stackViewLeadingAnchor = verticalStackViewLeadingAnchor,
+              let stackViewTopAnchor = verticalStackViewTopAnchor,
+              let stackViewBottomAnchor = verticalStackViewBottomAnchor
         else { return }
 
         NSLayoutConstraint.activate([
-            leadingAnchor,
-            verticalStackView.trailingAnchor.constraint(equalTo: scrollableContentView.trailingAnchor, constant: -.spacingXL),
-            topAnchor,
-            bottomAnchor,
+            stackViewLeadingAnchor,
+            verticalStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingXL),
+            stackViewTopAnchor,
+            stackViewBottomAnchor,
         ])
-
-        if !UIDevice.isIPad() {
-            scrollableContentView.bottomAnchor.constraint(
-                equalTo: verticalStackView.bottomAnchor, constant: .spacingXL).isActive = true
-        }
     }
 
     func progressTo(_ step: Int) {
@@ -249,21 +247,30 @@ private extension TransactionView {
             connectors[safe: index]?.highlighted = true
         }
 
-        stepDots[safe: currentStep]?.setState(.inProgress)
-        stepDots[safe: currentStep]?.setState(.inProgress)
+        if step == numberOfSteps - 1 {
+            stepDots[safe: currentStep]?.setState(.completed)
+        } else {
+            stepDots[safe: currentStep]?.setState(.inProgress)
+        }
     }
 }
 
 // MARK: - TransactionStepViewDelegate
 
 extension TransactionView: TransactionStepViewDelegate {
-    public func transactionStepViewDidTapActionButton(_ view: TransactionStepView, inTransactionStep step: Int, withAction action: TransactionStepView.ActionButton.Action, withUrl urlString: String?, withFallbackUrl fallbackUrlString: String?) {
-
-        delegate?.transactionViewDidTapActionButton(self,
-                                                    inTransactionStep: step,
-                                                    withAction: action,
-                                                    withUrl: urlString,
-                                                    withFallbackUrl: fallbackUrlString)
+    public func transactionStepViewDidTapActionButton(
+        _ view: TransactionStepView,
+        inTransactionStep step: Int,
+        withAction action: TransactionActionButton.Action,
+        withUrl urlString: String?,
+        withFallbackUrl fallbackUrlString: String?
+    ) {
+        delegate?.transactionViewDidTapActionButton(
+            self,
+            inTransactionStep: step,
+            withAction: action,
+            withUrl: urlString,
+            withFallbackUrl: fallbackUrlString)
     }
 }
 

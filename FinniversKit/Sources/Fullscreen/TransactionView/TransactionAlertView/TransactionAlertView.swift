@@ -41,7 +41,7 @@ public class TransactionAlertView: UIView {
         view.font = style.font
         view.textColor = .textToast
         view.backgroundColor = .clear
-        view.contentInset = .leadingInset(0)
+        view.contentInset = .leadingInset(-.spacingXS)
         view.isScrollEnabled = false
         view.isEditable = false
         view.isUserInteractionEnabled = false
@@ -60,7 +60,7 @@ public class TransactionAlertView: UIView {
         return imageView
     }()
 
-    private static var iconImageSize: CGFloat = 128
+    private static var iconImageSize: CGFloat = 96
     private var loadingColor: UIColor = .accentToothpaste
 
     private var model: TransactionAlertViewModel
@@ -92,19 +92,19 @@ public class TransactionAlertView: UIView {
 
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM),
-            titleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: iconImageView.leadingAnchor),
             titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingM),
 
             messageView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             messageView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            messageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
+            messageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXXS),
 
-            iconImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: .spacingS),
+            iconImageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingM),
             iconImageView.widthAnchor.constraint(equalToConstant: TransactionAlertView.iconImageSize),
             iconImageView.topAnchor.constraint(equalTo: titleLabel.topAnchor),
             iconImageView.bottomAnchor.constraint(equalTo: messageView.bottomAnchor),
 
-            bottomAnchor.constraint(equalTo: messageView.bottomAnchor, constant: .spacingM),
+            bottomAnchor.constraint(equalTo: messageView.bottomAnchor, constant: .spacingS),
         ])
 
         titleLabel.setContentHuggingPriority(.required, for: .vertical)

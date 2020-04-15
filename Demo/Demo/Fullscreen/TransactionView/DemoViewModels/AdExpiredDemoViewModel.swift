@@ -17,38 +17,49 @@ extension TransactionDemoViewDefaultData {
         steps: [
             TransactionStepModel(
                 state: .active,
-                title: "Annonsen er lagt ut",
-                primaryButton: TransactionStepActionButtonModel(
-                    text: "Se annonsen",
-                    style: "flat",
-                    action: "see_ad",
-                    fallbackUrl: "www.finn.no/171529672")),
+                style: .warning,
+                main: TransactionStepContentModel(
+                    title: "Annonsen er utløpt",
+                    body: NSAttributedString(string: "Legg ut annonsen på nytt, sånn at kjøpere kan ta kontakt med deg."),
+                    primaryButton: TransactionActionButtonModel(
+                        text: "Legg ut på nytt",
+                        style: "call_to_action",
+                        action: "republish_ad",
+                        fallbackUrl: "/user/ads/admin.html?finnkode=171529672")),
+                detail: TransactionStepContentModel(
+                    title: "Ønsker du hjelp med salget?",
+                    body: NSAttributedString(string: "Nettbil hjelper deg kostnadsfritt med å selge bilen til forhandlere gjennom en budrunde. De trenger bare levere deg bilen, så ordner Nettbil resten."),
+                    primaryButton: TransactionActionButtonModel(
+                        text: "Mer om Nettbil",
+                        style: "default",
+                        fallbackUrl: "https://www.finn.no/nettbil/velkommen"))),
 
             TransactionStepModel(
-                state: .completed,
-                title: "Kontrakt",
-                body: NSAttributedString(string: "Begge har signert kontrakten."),
-                primaryButton: TransactionStepActionButtonModel(
-                    text: "Gå til kontrakt",
-                    style: "flat",
-                    url: "https://www.google.com/search?q=contract+signed"
-                )),
+                state: .notStarted,
+                main: TransactionStepContentModel(
+                    title: "Kontrakt",
+                    body: NSAttributedString(string: "Når du har funnet en kjøper er det neste steget å skrive en kontrakt."),
+                    primaryButton: TransactionActionButtonModel(
+                        text: "Opprett digital kontrakt",
+                        style: "flat",
+                        fallbackUrl: "https://www.google.com/search?q=contract+signed"))),
 
             TransactionStepModel(
-                state: .completed,
-                title: "Betaling",
-                body: NSAttributedString(string: "Kjøper betalte 1. februar 2020."),
-                detail: "Utbetalingen starter først når begge har bekreftet at overleveringen har skjedd."),
+                state: .notStarted,
+                main: TransactionStepContentModel(
+                    title: "Betaling",
+                    body: NSAttributedString(string: "Dere kan betale trygt gjennom FINN ved å velge det i kontrakten."))),
 
             TransactionStepModel(
-                state: .completed,
-                title: "Overlevering",
-                body: NSAttributedString(string: "Dere har bekreftet at overleveringen har skjedd.")),
+                state: .notStarted,
+                main: TransactionStepContentModel(
+                    title: "Overlevering",
+                    body: NSAttributedString(string: "<p>Velger dere å betale gjennom FINN, må overleveringen skje innen 7 dager etter kjøper har betalt.</p><p>Registrering av eierskiftet bør gjøres når dere møtes for overlevering.</p>"))),
 
             TransactionStepModel(
-                state: .completed,
-                title: "Gratulerer med salget!",
-                body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før»."),
-                detail: "Det kan ta noen dager før pengene dukker opp på kontoen din.")
+                state: .notStarted,
+                main: TransactionStepContentModel(
+                    title: "Gratulerer med salget!",
+                    body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før»."))),
     ])
 }

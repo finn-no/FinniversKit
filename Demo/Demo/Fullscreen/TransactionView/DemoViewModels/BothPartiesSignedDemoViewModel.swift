@@ -23,41 +23,44 @@ extension TransactionDemoViewDefaultData {
         steps: [
             TransactionStepModel(
                 state: .completed,
-                title: "Annonsen er lagt ut",
-                primaryButton: TransactionStepActionButtonModel(
-                    text: "Se annonsen",
-                    style: "flat",
-                    action: "see_ad",
-                    fallbackUrl: "www.finn.no/171529672")),
+                main: TransactionStepContentModel(
+                    title: "Annonsen er lagt ut",
+                    primaryButton: TransactionActionButtonModel(
+                        text: "Se annonsen",
+                        style: "flat",
+                        action: "see_ad",
+                        fallbackUrl: "/171529672"))),
 
             TransactionStepModel(
                 state: .completed,
-                title: "Kontrakt",
-                body: NSAttributedString(string: "Begge har signert kontrakten."),
-                primaryButton: TransactionStepActionButtonModel(
-                    text: "Gå til kontrakt",
-                    style: "flat",
-                    url: "https://www.google.com/search?q=contract+signed"
-                )),
+                main: TransactionStepContentModel(
+                    title: "Kontrakt",
+                    body: NSAttributedString(string: "Begge har signert kontrakten."),
+                    primaryButton: TransactionActionButtonModel(
+                        text: "Gå til kontrakt",
+                        style: "flat",
+                        url: "https://www.google.com/search?q=contract+signed"))),
 
             TransactionStepModel(
                 state: .active,
-                title: "Betaling",
-                body: NSAttributedString(string: "Før kjøper kan overføre pengene, må du forberede betalingen."),
-                primaryButton: TransactionStepActionButtonModel(
-                    text: "Forbered betaling",
-                    style: "call_to_action",
-                    url: "https://www.google.com/search?q=contract+signed"
-                )),
+                main: TransactionStepContentModel(
+                    title: "Betaling",
+                    body: NSAttributedString(string: "Før kjøper kan overføre pengene, må du forberede betalingen."),
+                    primaryButton: TransactionActionButtonModel(
+                        text: "Forbered betaling",
+                        style: "call_to_action",
+                        url: "https://www.google.com/search?q=contract+signed"))),
 
             TransactionStepModel(
                 state: .notStarted,
-                title: "Overlevering",
-                body: NSAttributedString(string: "<p>Dere må møtes og bekrefte overleveringen innen 7 dager etter kjøper har betalt.</p><ol><li>Ved oppmøte registrerer dere først eierskiftet digitalt hos Statens vegvesen.</li><li>Deretter må begge bekrefte at overleveringen har skjedd, og at pengene kan utbetales.</li></ol>")),
+                main: TransactionStepContentModel(
+                    title: "Overlevering",
+                    body: NSAttributedString(string: "<p>Dere må møtes og bekrefte overleveringen innen 7 dager etter kjøper har betalt.</p><ol><li>Ved oppmøte registrerer dere først eierskiftet digitalt hos Statens vegvesen.</li><li>Deretter må begge bekrefte at overleveringen har skjedd, og at pengene kan utbetales.</li></ol>"))),
 
             TransactionStepModel(
                 state: .notStarted,
-                title: "Gratulerer med salget!",
-                body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før»."))
+                main: TransactionStepContentModel(
+                    title: "Gratulerer med salget!",
+                    body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før»."))),
     ])
 }
