@@ -39,9 +39,9 @@ final class TransactionDemoView: UIView {
         case .regular:
             layoutConstraints = [
                 view.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-                view.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingXXL * 2),
+                view.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingXXL * 3),
                 view.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-                view.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.spacingXXL * 2),
+                view.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.spacingXXL),
             ]
         default:
             layoutConstraints = view.fillInSuperview()
