@@ -120,8 +120,7 @@ private extension TransactionView {
         }
 
         setupVerticalStackViewContraints()
-
-        contentView.bottomAnchor.constraint(equalTo: verticalStackView.bottomAnchor, constant: .spacingS).isActive = true
+        contentView.bottomAnchor.constraint(greaterThanOrEqualTo: verticalStackView.bottomAnchor).isActive = true
     }
 
     func setupHeaderView() {
