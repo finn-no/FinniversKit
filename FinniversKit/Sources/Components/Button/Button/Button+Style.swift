@@ -177,7 +177,7 @@ public extension Button.Style {
                 .normal: Button.StateStyle(
                     textColor: .textAction,
                     backgroundColor: .bgPrimary,
-                    borderColor: .accentSecondaryBlue
+                    borderColor: .btnDisabled
                 ),
                 .highlighted: Button.StateStyle(
                     textColor: nil,
@@ -304,9 +304,7 @@ public extension Button.Style {
                     backgroundColor: nil,
                     borderColor: nil
                 ),
-            ],
-            smallFont: .detailStrong,
-            normalFont: .detailStrong
+            ]
         )
     }
 
@@ -335,7 +333,7 @@ public extension Button.Style {
                 horizontal: 0
             ),
             smallFont: .detail,
-            normalFont: .caption
+            normalFont: .body
         )
     }
 }
