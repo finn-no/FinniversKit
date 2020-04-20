@@ -243,7 +243,7 @@
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 16;
+			dstSubfolderSpec = 10;
 			files = (
 				46E77564242CFFA5008A5E93 /* FinniversKit.framework in Embed Frameworks */,
 				46E77566242CFFA5008A5E93 /* FinnUI.framework in Embed Frameworks */,
