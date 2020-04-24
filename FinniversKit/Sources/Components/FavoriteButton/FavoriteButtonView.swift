@@ -29,7 +29,7 @@ public class FavoriteButtonView: UIView {
         case buttonWithCounter
     }
 
-    private final let activeTestVariant: ABTestVariant = .buttonOnly
+    private final let activeTestVariant: ABTestVariant = .buttonWithCounter
 
     private var viewModel: FavoriteButtonViewModel?
     private let buttonStyle = Button.Style.default.overrideStyle(borderColor: .btnDisabled)
