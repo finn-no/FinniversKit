@@ -143,6 +143,7 @@
 		6266C07222081EF600FB8004 /* StatisticsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6266C07122081EF600FB8004 /* StatisticsItemView.swift */; };
 		62AAB23A23278087007766E6 /* RadioButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AAB23923278087007766E6 /* RadioButtonTableViewCell.swift */; };
 		62E3EF4724568F47009107DF /* AdConfirmationLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E3EF4624568F47009107DF /* AdConfirmationLinkViewModel.swift */; };
+		62E3EF492456B7DE009107DF /* AdConfirmationLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E3EF482456B7DE009107DF /* AdConfirmationLinkView.swift */; };
 		68AE01E84A4CA1BC83B340EE /* FavoriteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AE0BC04985EF5EE34564D3 /* FavoriteButtonView.swift */; };
 		68AE0B39F77F665B42E71042 /* SearchListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974725C239A49480058D7B0 /* SearchListEmptyView.swift */; };
 		68AE0BE3E674E2F909CFF511 /* SearchListEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974725E239A49570058D7B0 /* SearchListEmptyViewModel.swift */; };
@@ -596,6 +597,7 @@
 		6266C07122081EF600FB8004 /* StatisticsItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsItemView.swift; sourceTree = "<group>"; };
 		62AAB23923278087007766E6 /* RadioButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonTableViewCell.swift; sourceTree = "<group>"; };
 		62E3EF4624568F47009107DF /* AdConfirmationLinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdConfirmationLinkViewModel.swift; sourceTree = "<group>"; };
+		62E3EF482456B7DE009107DF /* AdConfirmationLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdConfirmationLinkView.swift; sourceTree = "<group>"; };
 		68AE0BC04985EF5EE34564D3 /* FavoriteButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteButtonView.swift; sourceTree = "<group>"; };
 		8908E83522BD0CA100ED671C /* MessageInputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputTextView.swift; sourceTree = "<group>"; };
 		8908E84722C0C2F900ED671C /* MessageFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormViewController.swift; sourceTree = "<group>"; };
@@ -2957,6 +2959,7 @@
 			isa = PBXGroup;
 			children = (
 				F2BE6BEB23683E280085A05A /* AdConfirmationView.swift */,
+				62E3EF482456B7DE009107DF /* AdConfirmationLinkView.swift */,
 				F2BE6BF023683FF80085A05A /* Views */,
 				F2BE6BEF23683F8F0085A05A /* Models */,
 			);
@@ -3297,6 +3300,7 @@
 				DA708853211338650067519A /* ConfirmationView.swift in Sources */,
 				14C6F7D5212324CA00A7230C /* FavoritesListViewModel.swift in Sources */,
 				14DC126F21593B0000326DC3 /* HorizontalSlideController.swift in Sources */,
+				62E3EF492456B7DE009107DF /* AdConfirmationLinkView.swift in Sources */,
 				44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */,
 				91A5B23E23E2FC5400092ED6 /* UserAdTableViewCell.swift in Sources */,
 				DAD6EB2C2369916100968497 /* SettingsSectionFooterView.swift in Sources */,
