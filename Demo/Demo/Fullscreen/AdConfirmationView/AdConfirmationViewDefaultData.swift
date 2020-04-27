@@ -27,3 +27,10 @@ struct AdConfirmationSummaryViewModelDefaultData: AdConfirmationSummaryViewModel
     var priceValue: String = "100000"
     var receiptInfo: String? = "Kvittering er sendt til din e-post"
 }
+
+struct AdConfirmationLinkViewModelDefaultData: AdConfirmationLinkViewModel {
+    var title: String? = "Hvordan var det å legge ut annonsen?"
+    var description: String? = "Vi jobber med å gjøre denne tjenesten bedre, og setter stor pris på din tilbakemelding."
+    var linkTitle: String = "Gi tilbakemelding"
+    var url: URL = URL(fileURLWithPath: "This won't work but UTL can't really be optional")
+}
