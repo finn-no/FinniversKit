@@ -5,7 +5,8 @@
 import UIKit
 
 public protocol AdConfirmationViewDelegate: AnyObject {
-    func adConfirmationView( _ : AdConfirmationView, didTapActionButton button: UIButton)
+    func adConfirmationView(_ : AdConfirmationView, didTapActionButton button: UIButton)
+    func adConfirmationView(_ : AdConfirmationView, didTapLinkViewButton button: UIButton)
 }
 
 public class AdConfirmationView: UIView {
@@ -40,8 +41,7 @@ public class AdConfirmationView: UIView {
             confirmationObjectView.model = model?.objectViewModel
             completeButton.buttonTitle = model?.completeButtonText
             receiptInfoLabel.text = model?.summaryViewModel?.receiptInfo
-
-            setupSummaryView()
+            setupOptionalViews()
         }
     }
 
@@ -90,7 +90,9 @@ private extension AdConfirmationView {
         ])
     }
 
-    func setupSummaryView() {
+    func setupOptionalViews() {
+        var bottomView: UIView?
+
         if let summaryViewModel = model?.summaryViewModel, summaryViewModel.orderLines.count > 0 {
             let summaryView = AdConfirmationSummaryView(model: summaryViewModel, withAutoLayout: true)
             contentView.addSubview(summaryView)
@@ -112,8 +114,26 @@ private extension AdConfirmationView {
                 receiptInfoLabel.trailingAnchor.constraint(equalTo: summaryView.trailingAnchor),
 
                 confirmationObjectView.topAnchor.constraint(equalTo: contentView.topAnchor),
-                contentView.bottomAnchor.constraint(greaterThanOrEqualTo: receiptInfoLabel.bottomAnchor, constant: .spacingS),
             ])
+            bottomView = receiptInfoLabel
+        }
+
+        if let linkViewModel = model?.linkViewModel {
+            let linkView = AdConfirmationLinkView(model: linkViewModel, delegate: self)
+            let viewAboveLinkView = bottomView ?? confirmationObjectView
+            contentView.addSubview(linkView)
+
+            NSLayoutConstraint.activate([
+                linkView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+                linkView.topAnchor.constraint(equalTo: viewAboveLinkView.bottomAnchor, constant: .spacingM),
+                linkView.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: .spacingL)
+                // What about height?
+            ])
+            bottomView = linkView
+        }
+
+        if let bottomView = bottomView {
+            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: bottomView.bottomAnchor, constant: .spacingS).isActive = true
         } else {
             // Disable scrolling since we have no arbitrary sized view to show.
             scrollView.isScrollEnabled = false
@@ -125,5 +145,11 @@ private extension AdConfirmationView {
 extension AdConfirmationView: FooterButtonViewDelegate {
     public func footerButtonView(_ view: FooterButtonView, didSelectButton button: UIButton) {
         delegate?.adConfirmationView(self, didTapActionButton: button)
+    }
+}
+
+extension AdConfirmationView: AdConfirmationLinkViewDelegate {
+    public func adConfirmationLinkView(_ view: AdConfirmationLinkView, buttonWasTapped sender: UIButton) {
+        delegate?.adConfirmationView(self, didTapLinkViewButton: sender)
     }
 }
