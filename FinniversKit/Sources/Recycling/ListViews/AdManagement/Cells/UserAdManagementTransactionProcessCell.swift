@@ -2,15 +2,20 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
+public protocol UserAdManagementTransactionProcessCellDelegate: AnyObject {
+    func userAdManagementTransactionProcessCellDidTapSummary(_ view: UserAdManagementTransactionProcessCell)
+    func userAdManagementTransactionProcessCellDidTapExternalView(_ view: UserAdManagementTransactionProcessCell)
+}
 
 // swiftlint:disable:next type_name
 public class UserAdManagementTransactionProcessCell: UITableViewCell {
     // MARK: - Public
 
-    private var model: TransactionProcessSummaryViewModel?
+    public var delegate: UserAdManagementTransactionProcessCellDelegate?
 
     // MARK: - Private
 
+    private var model: TransactionProcessSummaryViewModel?
     private lazy var transactionProcessSummaryView = TransactionProcessSummaryView(withAutoLayout: true)
 
     // MARK: - Initalization
@@ -40,5 +45,16 @@ public class UserAdManagementTransactionProcessCell: UITableViewCell {
 
         addSubview(transactionProcessSummaryView)
         transactionProcessSummaryView.fillInSuperview()
+        transactionProcessSummaryView.delegate = self
+    }
+}
+
+extension UserAdManagementTransactionProcessCell: TransactionProcessSummaryViewDelegate {
+    public func transactionProcessSummaryViewWasTapped(_ view: TransactionProcessSummaryView) {
+        delegate?.userAdManagementTransactionProcessCellDidTapSummary(self)
+    }
+
+    public func transactionProcessExternalViewWasTapped(_ view: TransactionProcessSummaryView) {
+        delegate?.userAdManagementTransactionProcessCellDidTapExternalView(self)
     }
 }
