@@ -67,7 +67,9 @@ public class AdManagementDemoView: UIView {
     private let transactionProcessSummaryCellModel = TransactionProcessSummaryViewModel(
         title: "Salgsprosess",
         detail: "Overlevering",
-        description: "Kjøper har bekreftet. Dere må bekrefte før 8.februar 2020."
+        description: "Kjøper har bekreftet. Dere må bekrefte før 8.februar 2020.",
+        externalTitle: "Mine kjøretøy",
+        style: "ERROR"
     )
 
     override init(frame: CGRect) {

@@ -14,7 +14,9 @@ public class TransactionProcessSummaryDemoView: UIView {
     let model = TransactionProcessSummaryViewModel(
         title: "Salgsprosess",
         detail: "Kontrakt",
-        description: "Når du har funnet en kjøper er det neste steget å skrive en kontrakt"
+        description: "Når du har funnet en kjøper er det neste steget å skrive en kontrakt",
+        externalTitle: "Mine kjøretøy",
+        style: "ERROR"
     )
 
     override init(frame: CGRect) {
