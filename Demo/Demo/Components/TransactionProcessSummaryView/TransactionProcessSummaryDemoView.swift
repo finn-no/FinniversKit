@@ -42,6 +42,10 @@ private extension TransactionProcessSummaryDemoView {
 
 extension TransactionProcessSummaryDemoView: TransactionProcessSummaryViewDelegate {
     public func transactionProcessSummaryViewWasTapped(_ view: TransactionProcessSummaryView) {
-        print("Did tap view")
+        print("Did tap summary view")
+    }
+
+    public func transactionProcessExternalViewWasTapped(_ view: TransactionProcessSummaryView) {
+        print("Did tap external view")
     }
 }
