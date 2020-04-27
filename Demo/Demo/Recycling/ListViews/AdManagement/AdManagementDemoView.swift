@@ -15,7 +15,7 @@ public class AdManagementDemoView: UIView {
         tableView.register(UserAdManagementStatisticsEmptyViewCell.self)
         tableView.register(UserAdManagementButtonAndInformationCell.self)
         tableView.register(UserAdManagementUserActionCell.self)
-        tableView.register(UserAdManagementTransactionProcessSummaryCell.self)
+        tableView.register(UserAdManagementTransactionProcessCell.self)
         tableView.separatorStyle = .none
         tableView.backgroundColor = .bgSecondary
         tableView.estimatedRowHeight = estimatedRowHeight
@@ -127,7 +127,7 @@ extension AdManagementDemoView: UITableViewDataSource {
             }
 
         } else if indexPath.section == 1 {
-            let cell = tableView.dequeue(UserAdManagementTransactionProcessSummaryCell.self, for: indexPath)
+            let cell = tableView.dequeue(UserAdManagementTransactionProcessCell.self, for: indexPath)
             cell.configure(with: transactionProcessSummaryCellModel)
             return cell
         } else {

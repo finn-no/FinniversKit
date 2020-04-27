@@ -2,7 +2,9 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
-public class UserAdManagementTransactionProcessSummaryCell: UITableViewCell {
+
+// swiftlint:disable:next type_name
+public class UserAdManagementTransactionProcessCell: UITableViewCell {
     // MARK: - Public
 
     private var model: TransactionProcessSummaryViewModel?
