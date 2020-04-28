@@ -162,6 +162,4 @@ extension AdManagementDemoView: UserAdManagementTransactionProcessCellDelegate {
     public func userAdManagementTransactionProcessCellDidTapExternalView(_ view: UserAdManagementTransactionProcessCell) {
         print("Did tap external view in UserAdManagementTransactionProcessCell")
     }
-
-
 }
