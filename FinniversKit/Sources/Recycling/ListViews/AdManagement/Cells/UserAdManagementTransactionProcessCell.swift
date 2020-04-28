@@ -14,7 +14,6 @@ public class UserAdManagementTransactionProcessCell: UITableViewCell {
 
     // MARK: - Private
 
-    private var model: TransactionProcessSummaryViewModel?
     private lazy var transactionProcessSummaryView = TransactionProcessSummaryView(withAutoLayout: true)
 
     // MARK: - Initalization
@@ -31,9 +30,8 @@ public class UserAdManagementTransactionProcessCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    public func configure(with viewModel: TransactionProcessSummaryViewModel) {
-        model = viewModel
-        transactionProcessSummaryView.configure(with: viewModel)
+    public func configure(with viewModel: TransactionProcessSummaryViewModel, shouldShowExternalView shouldShow: Bool) {
+        transactionProcessSummaryView.configure(with: viewModel, shouldShowExternalView: shouldShow)
     }
 
     // MARK: - Private methods

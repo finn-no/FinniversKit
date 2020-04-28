@@ -32,6 +32,8 @@ public class TransactionProcessSummaryView: UIView {
     private var iconSize: CGFloat = .spacingL
     private var chevronSize: CGFloat = .spacingM
 
+    private var viewBottomAnchor: NSLayoutYAxisAnchor?
+
     // MARK: - contentView properties
 
     private lazy var iconImageView: UIImageView = {
@@ -64,7 +66,7 @@ public class TransactionProcessSummaryView: UIView {
 
     private lazy var errorImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = UIImage(named: .error)
+        imageView.image = UIImage(named: .exclamationMarkTriangleMini)
         return imageView
     }()
 
@@ -121,18 +123,25 @@ public class TransactionProcessSummaryView: UIView {
 
     // MARK: - Public
 
-    public func configure(with viewModel: TransactionProcessSummaryViewModel) {
+    public func configure(with viewModel: TransactionProcessSummaryViewModel, shouldShowExternalView showExternal: Bool) {
         titleLabel.text = viewModel.title
         detailLabel.text = viewModel.detail
         descriptionLabel.text = viewModel.description
 
-        if let externalTitle = viewModel.externalTitle {
-            externalTitleLabel.text = externalTitle
-        }
-
         if let style = viewModel.style {
             setupStyle(with: .init(rawValue: style))
         }
+
+        if showExternal {
+            setupExternalContentView()
+            externalTitleLabel.text = viewModel.externalTitle
+            viewBottomAnchor = externalContentView.bottomAnchor
+        } else {
+            externalContentView.removeFromSuperview()
+            viewBottomAnchor = contentView.bottomAnchor
+        }
+
+        bottomAnchor.constraint(equalTo: viewBottomAnchor!).isActive = true
     }
 }
 
@@ -141,14 +150,7 @@ public class TransactionProcessSummaryView: UIView {
 private extension TransactionProcessSummaryView {
     func setup() {
         backgroundColor = .bgPrimary
-
         setupContentView()
-        setupExternalContentView()
-
-        NSLayoutConstraint.activate([
-            topAnchor.constraint(equalTo: contentView.topAnchor),
-            bottomAnchor.constraint(equalTo: externalContentView.bottomAnchor)
-        ])
     }
 
     private func setupContentView() {
@@ -158,7 +160,6 @@ private extension TransactionProcessSummaryView {
         contentView.addSubview(detailLabel)
         contentView.addSubview(chevronView)
         contentView.addSubview(descriptionLabel)
-        contentView.addSubview(separatorView)
 
         contentView.addGestureRecognizer(contentViewTapRecognizer)
 
@@ -182,22 +183,21 @@ private extension TransactionProcessSummaryView {
             chevronView.widthAnchor.constraint(equalToConstant: chevronSize),
             chevronView.heightAnchor.constraint(equalToConstant: chevronSize),
 
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
             descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             descriptionLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: -.spacingM),
 
-            separatorView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: .spacingM),
-            separatorView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
-            separatorView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-
             contentView.topAnchor.constraint(equalTo: iconImageView.topAnchor, constant: -.spacingM),
-            contentView.bottomAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: .spacingS),
+            contentView.bottomAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: .spacingM),
+
+            topAnchor.constraint(equalTo: contentView.topAnchor)
         ])
     }
 
     private func setupExternalContentView() {
         addSubview(externalContentView)
+
+        externalContentView.addSubview(separatorView)
         externalContentView.addSubview(externalTitleLabel)
         externalContentView.addSubview(externalImageView)
 
@@ -207,13 +207,18 @@ private extension TransactionProcessSummaryView {
             externalContentView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             externalContentView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
 
-            externalTitleLabel.topAnchor.constraint(equalTo: externalContentView.topAnchor),
+            separatorView.topAnchor.constraint(equalTo: contentView.bottomAnchor),
+            separatorView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
+            separatorView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: externalContentView.trailingAnchor),
+
+            externalTitleLabel.topAnchor.constraint(equalTo: separatorView.topAnchor, constant: .spacingM),
             externalTitleLabel.leadingAnchor.constraint(equalTo: separatorView.leadingAnchor),
 
             externalImageView.centerYAnchor.constraint(equalTo: externalTitleLabel.centerYAnchor),
             externalImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingL),
 
-            externalContentView.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: .spacingS),
+            externalContentView.topAnchor.constraint(equalTo: contentView.bottomAnchor),
             externalContentView.bottomAnchor.constraint(equalTo: externalTitleLabel.bottomAnchor, constant: .spacingM)
         ])
     }

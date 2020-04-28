@@ -36,7 +36,7 @@ private extension TransactionProcessSummaryDemoView {
             transactionProcessSummaryView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
         ])
 
-        transactionProcessSummaryView.configure(with: model)
+        transactionProcessSummaryView.configure(with: model, shouldShowExternalView: true)
     }
 }
 

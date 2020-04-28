@@ -128,7 +128,8 @@ extension AdManagementDemoView: UITableViewDataSource {
 
         } else if indexPath.section == 1 {
             let cell = tableView.dequeue(UserAdManagementTransactionProcessCell.self, for: indexPath)
-            cell.configure(with: transactionProcessSummaryCellModel)
+            cell.delegate = self
+            cell.configure(with: transactionProcessSummaryCellModel, shouldShowExternalView: true)
             return cell
         } else {
             let cell = tableView.dequeue(UserAdManagementUserActionCell.self, for: indexPath)
