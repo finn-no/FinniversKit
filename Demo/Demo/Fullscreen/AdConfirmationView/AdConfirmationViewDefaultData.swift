@@ -31,6 +31,6 @@ struct AdConfirmationSummaryViewModelDefaultData: AdConfirmationSummaryViewModel
 
 struct AdConfirmationLinkViewModelDefaultData: AdConfirmationLinkViewModel {
     var title: String? = "Hvordan var det å legge ut annonsen?"
-    var descriptionText: String? = "Vi jobber med å gjøre denne tjenesten bedre, og setter stor pris på din tilbakemelding."
+    var body: String? = "Vi jobber med å gjøre denne tjenesten bedre, og setter stor pris på din tilbakemelding."
     var linkTitle: String = "Gi tilbakemelding"
 }
