@@ -7,7 +7,6 @@ public protocol UserAdManagementTransactionProcessCellDelegate: AnyObject {
     func userAdManagementTransactionProcessCellDidTapExternalView(_ view: UserAdManagementTransactionProcessCell)
 }
 
-// swiftlint:disable:next type_name
 public class UserAdManagementTransactionProcessCell: UITableViewCell {
     // MARK: - Public
 

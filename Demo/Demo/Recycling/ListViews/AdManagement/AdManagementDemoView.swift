@@ -153,3 +153,15 @@ extension AdManagementDemoView: UITableViewDelegate {
 extension AdManagementDemoView: UserAdManagementStatisticsCellDelegate {
     public func userAdManagementStatisticsCellDidSelectFullStatistics(_ cell: UserAdManagementStatisticsCell) {}
 }
+
+extension AdManagementDemoView: UserAdManagementTransactionProcessCellDelegate {
+    public func userAdManagementTransactionProcessCellDidTapSummary(_ view: UserAdManagementTransactionProcessCell) {
+        print("Did tap summary in UserAdManagementTransactionProcessCell")
+    }
+
+    public func userAdManagementTransactionProcessCellDidTapExternalView(_ view: UserAdManagementTransactionProcessCell) {
+        print("Did tap external view in UserAdManagementTransactionProcessCell")
+    }
+
+
+}
