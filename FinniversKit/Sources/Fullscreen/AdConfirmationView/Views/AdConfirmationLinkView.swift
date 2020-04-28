@@ -8,23 +8,21 @@ public protocol AdConfirmationLinkViewDelegate: AnyObject {
 
 public class AdConfirmationLinkView: UIView {
     private lazy var titleLabel: UILabel = {
-        let label = UILabel()
+        let label = UILabel(withAutoLayout: true)
         label.text = model.title
         label.font = .bodyStrong
         label.textColor = .textPrimary
         label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
     }()
 
     private lazy var descriptionLabel: UILabel = {
-        let label = UILabel()
+        let label = UILabel(withAutoLayout: true)
         label.font = .body
         label.text = model.descriptionText
         label.textColor = .textPrimary
         label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
     }()
@@ -45,7 +43,8 @@ public class AdConfirmationLinkView: UIView {
         self.delegate = delegate
 
         super.init(frame: .zero)
-         translatesAutoresizingMaskIntoConstraints = false
+        translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = .bgPrimary
         setup()
     }
 
@@ -81,7 +80,7 @@ public class AdConfirmationLinkView: UIView {
              ])
         }
 
-        // TitleLabels bottomAnchor & descriptionLabel's topAnchor depends on which views are present
+        // Some constraints need to consider which views that actually exist in the hiearchy
         if subviews.contains(titleLabel) && subviews.contains(descriptionLabel) {
             NSLayoutConstraint.activate([
                 titleLabel.topAnchor.constraint(equalTo: topAnchor),
