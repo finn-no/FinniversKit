@@ -73,7 +73,7 @@ public class ToastView: UIView {
         get {
             guard let image = imageView.image else {
                 switch style {
-                case .error, .errorButton: return UIImage(named: .minusCircleFilledMini)
+                case .error, .errorButton: return UIImage(named: .exclamationMarkTriangleMini)
                 case .sucesssWithImage: return UIImage(named: .noImage)
                 default: return UIImage(named: .checkCircleFilledMini)
                 }
