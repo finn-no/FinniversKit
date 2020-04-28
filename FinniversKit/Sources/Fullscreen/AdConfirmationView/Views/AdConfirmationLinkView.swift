@@ -9,18 +9,25 @@ public protocol AdConfirmationLinkViewDelegate: AnyObject {
 public class AdConfirmationLinkView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
+        label.text = model.title
+        label.font = .bodyStrong
+        label.textColor = .textPrimary
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
     }()
 
-    // Why won't this work ?!
-//    private lazy var descriptionLabel: UILabel = {
-//        let label = UILabel()
-//        label.numberOfLines = 2
-//        label.backgroundColor = .orange
-//        return UILabel()
-//    }()
-    private var descriptionLabel: UILabel = UILabel()
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = .body
+        label.text = model.descriptionText
+        label.textColor = .textPrimary
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        return label
+    }()
 
     private lazy var linkButton: Button = {
         let button = Button(style: .default)
@@ -38,8 +45,7 @@ public class AdConfirmationLinkView: UIView {
         self.delegate = delegate
 
         super.init(frame: .zero)
-
-        translatesAutoresizingMaskIntoConstraints = false
+         translatesAutoresizingMaskIntoConstraints = false
         setup()
     }
 
@@ -49,39 +55,29 @@ public class AdConfirmationLinkView: UIView {
 
     private func setup() {
         let maxWidth: CGFloat = 640 - .spacingXL
-        let minWidth: CGFloat = 280
 
         addSubview(linkButton)
         NSLayoutConstraint.activate([
             linkButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            linkButton.bottomAnchor.constraint(equalTo: bottomAnchor),
-            linkButton.heightAnchor.constraint(equalToConstant: 44)
+            linkButton.heightAnchor.constraint(equalToConstant: 44),
+            bottomAnchor.constraint(equalTo: linkButton.bottomAnchor)
         ])
 
-        if let title = model.title {
-            titleLabel.text = title
-            titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        if model.title != nil {
             addSubview(titleLabel)
                 NSLayoutConstraint.activate([
                     titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-                    titleLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, constant: .spacingXL),
+                    titleLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, constant: -.spacingXL),
                     titleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: maxWidth),
-                    titleLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: minWidth),
-//                    titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: .spacingXXL)
                 ])
         }
 
-        if let description = model.descriptionText {
-            descriptionLabel.text = description
-            descriptionLabel.numberOfLines = 0
-            descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        if model.descriptionText != nil {
             addSubview(descriptionLabel)
              NSLayoutConstraint.activate([
                  descriptionLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-                 descriptionLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, constant: -.spacingXXL),
-                 descriptionLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: minWidth),
+                 descriptionLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, constant: -.spacingXL),
                  descriptionLabel.widthAnchor.constraint(lessThanOrEqualToConstant: maxWidth),
-//                 descriptionLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: .spacingXXL)
              ])
         }
 
@@ -89,18 +85,18 @@ public class AdConfirmationLinkView: UIView {
         if subviews.contains(titleLabel) && subviews.contains(descriptionLabel) {
             NSLayoutConstraint.activate([
                 titleLabel.topAnchor.constraint(equalTo: topAnchor),
-                titleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: .spacingM),
-                linkButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: .spacingL)
+                descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXS),
+                linkButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: .spacingM)
             ])
         } else if subviews.contains(titleLabel) {
             NSLayoutConstraint.activate([
                 titleLabel.topAnchor.constraint(equalTo: topAnchor),
-                linkButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingL)
+                linkButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM)
             ])
         } else if subviews.contains(descriptionLabel) {
             NSLayoutConstraint.activate([
                 descriptionLabel.topAnchor.constraint(equalTo: topAnchor),
-                linkButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: .spacingL)
+                linkButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: .spacingM)
             ])
         }
     }
