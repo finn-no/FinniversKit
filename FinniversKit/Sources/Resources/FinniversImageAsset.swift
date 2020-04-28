@@ -66,6 +66,7 @@ public enum FinniversImageAsset: String {
     case edit
     case editBig
     case error
+    case exclamationMarkTriangleMini
     case eyeHide
     case favoriteActive
     case favoriteActiveSmall
@@ -119,7 +120,6 @@ public enum FinniversImageAsset: String {
     case mc
     case messages
     case minus
-    case minusCircleFilledMini
     case miscCross
     case miscLike
     case miscLiked
@@ -231,6 +231,7 @@ public enum FinniversImageAsset: String {
             .edit,
             .editBig,
             .error,
+            .exclamationMarkTriangleMini,
             .eyeHide,
             .favoriteActive,
             .favoriteActiveSmall,
@@ -284,7 +285,6 @@ public enum FinniversImageAsset: String {
             .mc,
             .messages,
             .minus,
-            .minusCircleFilledMini,
             .miscCross,
             .miscLike,
             .miscLiked,
