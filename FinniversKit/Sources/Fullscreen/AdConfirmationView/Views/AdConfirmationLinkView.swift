@@ -28,11 +28,17 @@ public class AdConfirmationLinkView: UIView {
     }()
 
     private lazy var linkButton: Button = {
-        let button = Button(style: .default)
+        let button = Button(style: .default, size: .small, withAutoLayout: true)
         button.setTitle(model.linkTitle, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(buttonWasTapped(_:)), for: .touchUpInside)
         return button
+    }()
+
+    private lazy var linkIcon: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.image = UIImage(named: .webview)
+        return imageView
     }()
 
     private var model: AdConfirmationLinkViewModel
@@ -53,20 +59,37 @@ public class AdConfirmationLinkView: UIView {
     }
 
     private func setup() {
-        let maxWidth: CGFloat = 640 - .spacingXL
+        let actionButtonIconWidth: CGFloat = 12
+        let margins = UIEdgeInsets(
+            top: .spacingS,
+            leading: .spacingM,
+            bottom: .spacingS,
+            trailing: .spacingM + actionButtonIconWidth
+        )
+
+        linkButton.style = linkButton.style.overrideStyle(margins: margins)
+        linkButton.addSubview(linkIcon)
+
+        NSLayoutConstraint.activate([
+            linkIcon.widthAnchor.constraint(equalToConstant: actionButtonIconWidth),
+            linkIcon.heightAnchor.constraint(equalToConstant: actionButtonIconWidth),
+            linkIcon.trailingAnchor.constraint(equalTo: linkButton.trailingAnchor, constant: -.spacingS - linkButton.style.borderWidth),
+            linkIcon.centerYAnchor.constraint(equalTo: linkButton.centerYAnchor)
+        ])
 
         addSubview(linkButton)
         NSLayoutConstraint.activate([
             linkButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            linkButton.heightAnchor.constraint(equalToConstant: 44),
             bottomAnchor.constraint(equalTo: linkButton.bottomAnchor)
         ])
+
+        let maxWidth: CGFloat = 640 - .spacingXL
 
         if model.title != nil {
             addSubview(titleLabel)
                 NSLayoutConstraint.activate([
                     titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-                    titleLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, constant: -.spacingXL),
+                    titleLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor),
                     titleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: maxWidth),
                 ])
         }
@@ -75,7 +98,7 @@ public class AdConfirmationLinkView: UIView {
             addSubview(descriptionLabel)
              NSLayoutConstraint.activate([
                  descriptionLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-                 descriptionLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, constant: -.spacingXL),
+                 descriptionLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor),
                  descriptionLabel.widthAnchor.constraint(lessThanOrEqualToConstant: maxWidth),
              ])
         }

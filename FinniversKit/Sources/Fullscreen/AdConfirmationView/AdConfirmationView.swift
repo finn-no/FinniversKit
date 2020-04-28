@@ -126,7 +126,7 @@ private extension AdConfirmationView {
             NSLayoutConstraint.activate([
                 linkView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
                 linkView.topAnchor.constraint(equalTo: viewAboveLinkView.bottomAnchor, constant: .spacingXL + .spacingM),
-                linkView.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: .spacingL),
+                linkView.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -.spacingL),
             ])
             bottomView = linkView
         }
