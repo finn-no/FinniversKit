@@ -152,7 +152,7 @@ private class StatusView: UIView {
 // MARK: - Private extensions
 
 private extension UIColor {
-    static var online = dynamicColorIfAvailable(defaultColor: UIColor(hex: "#32A24C"), darkModeColor: .pea)
+    static var online = dynamicColorIfAvailable(defaultColor: .lime, darkModeColor: .pea)
 }
 
 private extension UIButton {
