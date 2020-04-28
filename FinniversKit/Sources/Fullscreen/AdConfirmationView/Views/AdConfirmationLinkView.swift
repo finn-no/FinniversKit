@@ -59,20 +59,20 @@ public class AdConfirmationLinkView: UIView {
     }
 
     private func setup() {
-        let actionButtonIconWidth: CGFloat = 12
+        let iconSize: CGFloat = 12
         let margins = UIEdgeInsets(
             top: .spacingS,
             leading: .spacingM,
             bottom: .spacingS,
-            trailing: .spacingM + actionButtonIconWidth
+            trailing: .spacingM + iconSize
         )
 
         linkButton.style = linkButton.style.overrideStyle(margins: margins)
         linkButton.addSubview(linkIcon)
 
         NSLayoutConstraint.activate([
-            linkIcon.widthAnchor.constraint(equalToConstant: actionButtonIconWidth),
-            linkIcon.heightAnchor.constraint(equalToConstant: actionButtonIconWidth),
+            linkIcon.widthAnchor.constraint(equalToConstant: iconSize),
+            linkIcon.heightAnchor.constraint(equalToConstant: iconSize),
             linkIcon.trailingAnchor.constraint(equalTo: linkButton.trailingAnchor, constant: -.spacingS - linkButton.style.borderWidth),
             linkIcon.centerYAnchor.constraint(equalTo: linkButton.centerYAnchor)
         ])
