@@ -2959,7 +2959,6 @@
 			isa = PBXGroup;
 			children = (
 				F2BE6BEB23683E280085A05A /* AdConfirmationView.swift */,
-				62E3EF482456B7DE009107DF /* AdConfirmationLinkView.swift */,
 				F2BE6BF023683FF80085A05A /* Views */,
 				F2BE6BEF23683F8F0085A05A /* Models */,
 			);
@@ -2981,6 +2980,7 @@
 		F2BE6BF023683FF80085A05A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				62E3EF482456B7DE009107DF /* AdConfirmationLinkView.swift */,
 				F2BE6C00236863BC0085A05A /* AdConfirmationObjectView.swift */,
 				F2BE6BFB236849740085A05A /* AdConfirmationSummaryView.swift */,
 			);
