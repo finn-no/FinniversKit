@@ -200,6 +200,10 @@ import UIKit
     public class var darkIce: UIColor {
         return UIColor(hex: "#262633")
     }
+
+    public class var lime: UIColor {
+        return UIColor(hex: "#007200")
+    }
 }
 
 // MARK: - FINN CGColors
@@ -262,6 +266,10 @@ extension CGColor {
 
     public class var marble: CGColor {
         return UIColor.marble.cgColor
+    }
+
+    public class var lime: CGColor {
+        return UIColor.lime.cgColor
     }
 }
 
