@@ -33,6 +33,11 @@ lane :verify_ssh_to_github do
   )
 end
 
+desc "Verify environment variable setup"
+lane :verify_environment_variable do |options|
+  github_token
+end
+
 def make_release(project, tag_prefix, options)
   ## Verify and get GithHub token
   github_token = github_token
