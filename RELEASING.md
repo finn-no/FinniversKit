@@ -3,7 +3,7 @@
 ## Setup
 - Install dependencies listed in Gemfile with `bundle install` (dependencies will be installed in `./bundler`)
   - If you already prepared for a beta, just run `bundle exec fastlane appstore_setup`
-- Fastlane will use the GitHub API, so make sure to create a personal access token [here](https://github.schibsted.io/settings/tokens) and place it within an environment variable called **`FINNIVERSKIT_GITHUB_ACCCESS_TOKEN`**.
+- Fastlane will use the GitHub API, so make sure to create a personal access token [here](https://github.com/settings/tokens) and place it within an environment variable called **`FINNIVERSKIT_GITHUB_ACCCESS_TOKEN`**.
   - When creating a token, you only need to give access to the scope `repo`.
   - There are multiple ways to make an evironment variable, for example by using a `.env` file or adding it to `.bashrc`/`.bash_profile`). Don't forget to run `source .env` (for whichever file you set the environment variables in) if you don't want to restart your shell.
   - Run `bundle exec fastlane verify_environment_variable` to see if it is configured correctly.
