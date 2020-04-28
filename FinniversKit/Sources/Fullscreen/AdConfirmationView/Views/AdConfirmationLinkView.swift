@@ -83,14 +83,11 @@ public class AdConfirmationLinkView: UIView {
             bottomAnchor.constraint(equalTo: linkButton.bottomAnchor)
         ])
 
-        let maxWidth: CGFloat = 640 - .spacingXL
-
         if model.title != nil {
             addSubview(titleLabel)
                 NSLayoutConstraint.activate([
                     titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
                     titleLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor),
-                    titleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: maxWidth),
                 ])
         }
 
@@ -99,7 +96,6 @@ public class AdConfirmationLinkView: UIView {
              NSLayoutConstraint.activate([
                  bodyLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
                  bodyLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor),
-                 bodyLabel.widthAnchor.constraint(lessThanOrEqualToConstant: maxWidth),
              ])
         }
 
