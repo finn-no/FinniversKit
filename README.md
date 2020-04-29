@@ -24,6 +24,10 @@ Import the framework to access all the components.
 import FinniversKit
 ```
 
+## Create new releases
+
+You can find the instructions [here](https://github.com/finn-no/FinniversKit/blob/master/RELEASING.md).
+
 ## Interesting things
 
 ### Folder structure (sources, resources, demo and tests)
