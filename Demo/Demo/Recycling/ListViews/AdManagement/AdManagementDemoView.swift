@@ -15,7 +15,7 @@ public class AdManagementDemoView: UIView {
         tableView.register(UserAdManagementStatisticsEmptyViewCell.self)
         tableView.register(UserAdManagementButtonAndInformationCell.self)
         tableView.register(UserAdManagementUserActionCell.self)
-        tableView.register(UserAdManagementTransactionProcessSummaryCell.self)
+        tableView.register(UserAdManagementTransactionProcessCell.self)
         tableView.separatorStyle = .none
         tableView.backgroundColor = .bgSecondary
         tableView.estimatedRowHeight = estimatedRowHeight
@@ -67,7 +67,9 @@ public class AdManagementDemoView: UIView {
     private let transactionProcessSummaryCellModel = TransactionProcessSummaryViewModel(
         title: "Salgsprosess",
         detail: "Overlevering",
-        description: "Kjøper har bekreftet. Dere må bekrefte før 8.februar 2020."
+        description: "Kjøper har bekreftet. Dere må bekrefte før 8.februar 2020.",
+        externalTitle: "Mine kjøretøy",
+        style: "ERROR"
     )
 
     override init(frame: CGRect) {
@@ -125,8 +127,9 @@ extension AdManagementDemoView: UITableViewDataSource {
             }
 
         } else if indexPath.section == 1 {
-            let cell = tableView.dequeue(UserAdManagementTransactionProcessSummaryCell.self, for: indexPath)
-            cell.configure(with: transactionProcessSummaryCellModel)
+            let cell = tableView.dequeue(UserAdManagementTransactionProcessCell.self, for: indexPath)
+            cell.delegate = self
+            cell.configure(with: transactionProcessSummaryCellModel, shouldShowExternalView: true)
             return cell
         } else {
             let cell = tableView.dequeue(UserAdManagementUserActionCell.self, for: indexPath)
@@ -150,4 +153,14 @@ extension AdManagementDemoView: UITableViewDelegate {
 
 extension AdManagementDemoView: UserAdManagementStatisticsCellDelegate {
     public func userAdManagementStatisticsCellDidSelectFullStatistics(_ cell: UserAdManagementStatisticsCell) {}
+}
+
+extension AdManagementDemoView: UserAdManagementTransactionProcessCellDelegate {
+    public func userAdManagementTransactionProcessCellDidTapSummary(_ view: UserAdManagementTransactionProcessCell) {
+        print("Did tap summary in UserAdManagementTransactionProcessCell")
+    }
+
+    public func userAdManagementTransactionProcessCellDidTapExternalView(_ view: UserAdManagementTransactionProcessCell) {
+        print("Did tap external view in UserAdManagementTransactionProcessCell")
+    }
 }

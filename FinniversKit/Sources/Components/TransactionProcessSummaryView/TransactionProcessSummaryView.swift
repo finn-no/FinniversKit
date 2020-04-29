@@ -4,6 +4,7 @@
 
 public protocol TransactionProcessSummaryViewDelegate: AnyObject {
     func transactionProcessSummaryViewWasTapped(_ view: TransactionProcessSummaryView)
+    func transactionProcessExternalViewWasTapped(_ view: TransactionProcessSummaryView)
 }
 
 public class TransactionProcessSummaryView: UIView {
@@ -11,9 +12,29 @@ public class TransactionProcessSummaryView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTap))
+    private enum Style: String {
+        case `default`
+        case error = "ERROR"
+
+        init(rawValue: String) {
+            switch rawValue {
+            case "ERROR":
+                self = .error
+            default:
+                self = .default
+            }
+        }
+    }
+
+    private lazy var contentViewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapContentView))
+    private lazy var externalContentViewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapExternalContentView))
+
     private var iconSize: CGFloat = .spacingL
     private var chevronSize: CGFloat = .spacingM
+
+    private var viewBottomAnchor: NSLayoutYAxisAnchor?
+
+    // MARK: - contentView properties
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
@@ -43,11 +64,23 @@ public class TransactionProcessSummaryView: UIView {
         return imageView
     }()
 
+    private lazy var errorImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.image = UIImage(named: .exclamationMarkTriangleMini)
+        return imageView
+    }()
+
     private lazy var descriptionLabel: Label = {
         let label = Label(style: .caption, withAutoLayout: true)
         label.textColor = .licorice
         label.numberOfLines = 0
         return label
+    }()
+
+    private lazy var separatorView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .tableViewSeparator
+        return view
     }()
 
     private let contentView: UIView = {
@@ -56,37 +89,79 @@ public class TransactionProcessSummaryView: UIView {
         return view
     }()
 
+    // MARK: - externalContentView properties
+
+    private lazy var externalTitleLabel: Label = {
+        let label = Label(style: .bodyStrong, withAutoLayout: true)
+        label.textColor = .licorice
+        return label
+    }()
+
+    private lazy var externalImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.image = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .stone
+        return imageView
+    }()
+
+    private let externalContentView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .bgPrimary
+        return view
+    }()
+
+    // MARK: - Init
+
     public override init(frame: CGRect) {
         super.init(frame: .zero)
         setup()
     }
 
-    public func configure(with viewModel: TransactionProcessSummaryViewModel) {
-        titleLabel.text = viewModel.title
-        detailLabel.text = viewModel.detail
-        descriptionLabel.text = viewModel.description
-    }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Public
+
+    public func configure(with viewModel: TransactionProcessSummaryViewModel, shouldShowExternalView showExternal: Bool) {
+        titleLabel.text = viewModel.title
+        detailLabel.text = viewModel.detail
+        descriptionLabel.text = viewModel.description
+
+        if let style = viewModel.style {
+            setupStyle(with: .init(rawValue: style))
+        }
+
+        if showExternal {
+            setupExternalContentView()
+            externalTitleLabel.text = viewModel.externalTitle
+            viewBottomAnchor = externalContentView.bottomAnchor
+        } else {
+            externalContentView.removeFromSuperview()
+            viewBottomAnchor = contentView.bottomAnchor
+        }
+
+        bottomAnchor.constraint(equalTo: viewBottomAnchor!).isActive = true
+    }
 }
+
+// MARK: - Private
 
 private extension TransactionProcessSummaryView {
     func setup() {
-        contentView.addGestureRecognizer(tapRecognizer)
-
         backgroundColor = .bgPrimary
-        contentView.backgroundColor = .bgPrimary
+        setupContentView()
+    }
 
+    private func setupContentView() {
+        addSubview(contentView)
         contentView.addSubview(iconImageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(detailLabel)
         contentView.addSubview(chevronView)
         contentView.addSubview(descriptionLabel)
 
-        addSubview(contentView)
-        contentView.fillInSuperview()
+        contentView.addGestureRecognizer(contentViewTapRecognizer)
 
         NSLayoutConstraint.activate([
             contentView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
@@ -115,11 +190,56 @@ private extension TransactionProcessSummaryView {
             contentView.topAnchor.constraint(equalTo: iconImageView.topAnchor, constant: -.spacingM),
             contentView.bottomAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: .spacingM),
 
-            bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            topAnchor.constraint(equalTo: contentView.topAnchor)
         ])
     }
 
-    @objc private func onTap() {
+    private func setupExternalContentView() {
+        addSubview(externalContentView)
+
+        externalContentView.addSubview(separatorView)
+        externalContentView.addSubview(externalTitleLabel)
+        externalContentView.addSubview(externalImageView)
+
+        externalContentView.addGestureRecognizer(externalContentViewTapRecognizer)
+
+        NSLayoutConstraint.activate([
+            externalContentView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            externalContentView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+
+            separatorView.topAnchor.constraint(equalTo: contentView.bottomAnchor),
+            separatorView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
+            separatorView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: externalContentView.trailingAnchor),
+
+            externalTitleLabel.topAnchor.constraint(equalTo: separatorView.topAnchor, constant: .spacingM),
+            externalTitleLabel.leadingAnchor.constraint(equalTo: separatorView.leadingAnchor),
+
+            externalImageView.centerYAnchor.constraint(equalTo: externalTitleLabel.centerYAnchor),
+            externalImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingL),
+
+            externalContentView.topAnchor.constraint(equalTo: contentView.bottomAnchor),
+            externalContentView.bottomAnchor.constraint(equalTo: externalTitleLabel.bottomAnchor, constant: .spacingM)
+        ])
+    }
+
+    private func setupStyle(with style: Style) {
+        switch style {
+        case .error:
+            contentView.addSubview(errorImageView)
+            NSLayoutConstraint.activate([
+                errorImageView.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+                errorImageView.trailingAnchor.constraint(equalTo: detailLabel.leadingAnchor, constant: -.spacingS)
+            ])
+        case .default: return
+        }
+    }
+
+    @objc private func didTapContentView() {
         delegate?.transactionProcessSummaryViewWasTapped(self)
+    }
+
+    @objc private func didTapExternalContentView() {
+        delegate?.transactionProcessExternalViewWasTapped(self)
     }
 }
