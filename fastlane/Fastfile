@@ -33,7 +33,7 @@ lane :verify_ssh_to_github do
   )
 end
 
-desc "Verify environment variable setup"
+desc "Verify that environment variable exists"
 lane :verify_environment_variable do |options|
   github_token
 end
@@ -162,7 +162,7 @@ def create_github_release(title, tag, branch, github_token)
 end
 
 def github_token
-  return verify_env_var("FINNIVERSKIT_GITHUB_ACCCESS_TOKEN", "No GitHub token found! Go to https://github.com/settings/tokens to create a new token.")
+  return verify_env_var("FINNIVERSKIT_GITHUB_ACCESS_TOKEN", "No GitHub token found! Go to https://github.com/settings/tokens to create a new token.")
 end
 
 def verify_env_var(envVar, errorMessage)
