@@ -17,7 +17,7 @@ public struct BottomDividerModifier: ViewModifier {
                     Divider().padding(0)
                 }
             }
-        }
+        }.listRowInsets(EdgeInsets(top: 0, leading: .spacingM, bottom: 0, trailing: 0))
     }
 }
 
