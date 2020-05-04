@@ -18,7 +18,13 @@ import Foundation
     }
 
     public static var isDynamicTypeEnabled: Bool = true
-    public static var userInterfaceStyleSupport: UserInterfaceStyleSupport = .forceLight
+    public static var userInterfaceStyleSupport: UserInterfaceStyleSupport = {
+        if #available(iOS 13.0, *) {
+            return .dynamic
+        } else {
+            return .forceLight
+        }
+    }()
 }
 
 @objc public extension Bundle {
