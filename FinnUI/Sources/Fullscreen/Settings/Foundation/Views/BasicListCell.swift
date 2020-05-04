@@ -27,12 +27,14 @@ public struct BasicListCell: View {
     public var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: .spacingXXS) {
+                Spacer()
                 title
                 subtitle
+                Spacer()
             }
             .padding(.trailing, .spacingM)
             .padding(.vertical, .spacingXS)
-            
+
             Spacer()
 
             detailText
@@ -41,8 +43,7 @@ public struct BasicListCell: View {
                 chevron
             }
         }
-        .padding(.vertical, .spacingS)
-        .padding(.trailing, .spacingM)
+        .padding(.horizontal, .spacingM)
         .background(Color(.bgPrimary))
     }
 

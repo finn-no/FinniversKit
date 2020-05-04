@@ -116,6 +116,7 @@ private struct ToggleCell: View {
             BasicListCell(model: model)
         }
         .padding(.trailing, .spacingM)
+        .background(Color(.bgPrimary))
     }
 }
 
