@@ -221,6 +221,7 @@
 		9B2D17D223E02B2900EF3B50 /* KeyValuePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D17D123E02B2900EF3B50 /* KeyValuePair.swift */; };
 		9B2D17D623E02B6900EF3B50 /* KeyValueGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D17D523E02B6900EF3B50 /* KeyValueGridView.swift */; };
 		9B93F210230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */; };
+		9B9663CD24603AAE00D34BA1 /* Color+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9663CC24603AAE00D34BA1 /* Color+SwiftUI.swift */; };
 		9BA6C49A24336AEC009D417B /* CoronaHelpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C49824336AEC009D417B /* CoronaHelpViewModel.swift */; };
 		9BA6C49B24336AEC009D417B /* CoronaHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C49924336AEC009D417B /* CoronaHelpView.swift */; };
 		9BA8248623859B4400163F24 /* MapZoomRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA8248523859B4400163F24 /* MapZoomRange.swift */; };
@@ -673,6 +674,7 @@
 		9B2D17D123E02B2900EF3B50 /* KeyValuePair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValuePair.swift; sourceTree = "<group>"; };
 		9B2D17D523E02B6900EF3B50 /* KeyValueGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueGridView.swift; sourceTree = "<group>"; };
 		9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDirectionalEdgeInsetsExtensions.swift; sourceTree = "<group>"; };
+		9B9663CC24603AAE00D34BA1 /* Color+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+SwiftUI.swift"; sourceTree = "<group>"; };
 		9BA6C49824336AEC009D417B /* CoronaHelpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoronaHelpViewModel.swift; sourceTree = "<group>"; };
 		9BA6C49924336AEC009D417B /* CoronaHelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoronaHelpView.swift; sourceTree = "<group>"; };
 		9BA8248523859B4400163F24 /* MapZoomRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoomRange.swift; sourceTree = "<group>"; };
@@ -1102,6 +1104,7 @@
 			isa = PBXGroup;
 			children = (
 				4408A69E2027AC41008C0BD9 /* Color.swift */,
+				9B9663CC24603AAE00D34BA1 /* Color+SwiftUI.swift */,
 			);
 			path = Color;
 			sourceTree = "<group>";
@@ -3408,6 +3411,7 @@
 				899D0BF6222D4B3400794DEC /* ArrayExtensions.swift in Sources */,
 				0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */,
 				9B238F02225B95F600B0E0C2 /* InfoboxView+Style.swift in Sources */,
+				9B9663CD24603AAE00D34BA1 /* Color+SwiftUI.swift in Sources */,
 				43EA977F21941E5D003A548A /* SoldView.swift in Sources */,
 				44A557B422E72187001667AE /* SelectableTableViewCellViewModel.swift in Sources */,
 				625A220B221EB26500733101 /* AdManagementActionCellModel.swift in Sources */,
