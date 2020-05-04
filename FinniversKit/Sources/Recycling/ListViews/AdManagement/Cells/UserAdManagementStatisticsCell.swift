@@ -28,7 +28,7 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
     }()
 
     private lazy var fullStatisticsButton: FullStatisticsButton = {
-        let button = FullStatisticsButton(style: .link, withAutoLayout: true)
+        let button = FullStatisticsButton(style: .link, size: .small, withAutoLayout: true)
         button.addTarget(self, action: #selector(fullStatisticsButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -140,7 +140,7 @@ extension UserAdManagementStatisticsCell {
 
         private let iconSize: CGFloat = 10
 
-        override init(style: Style, size: Size = .normal, withAutoLayout: Bool = false) {
+        override init(style: Style, size: Size, withAutoLayout: Bool = false) {
             super.init(style: style, size: size, withAutoLayout: withAutoLayout)
             setup()
         }

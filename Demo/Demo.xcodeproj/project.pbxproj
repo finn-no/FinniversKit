@@ -243,7 +243,7 @@
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 16;
+			dstSubfolderSpec = 10;
 			files = (
 				46E77564242CFFA5008A5E93 /* FinniversKit.framework in Embed Frameworks */,
 				46E77566242CFFA5008A5E93 /* FinnUI.framework in Embed Frameworks */,
@@ -901,9 +901,9 @@
 		46E772B8242CEF09008A5E93 /* TransactionView */ = {
 			isa = PBXGroup;
 			children = (
-				46E772B9242CEF09008A5E93 /* DemoViewModels */,
-				46E772C7242CEF09008A5E93 /* TransactionDemoViewDefaultData.swift */,
 				46E772C8242CEF09008A5E93 /* TransactionDemoView.swift */,
+				46E772C7242CEF09008A5E93 /* TransactionDemoViewDefaultData.swift */,
+				46E772B9242CEF09008A5E93 /* DemoViewModels */,
 			);
 			path = TransactionView;
 			sourceTree = "<group>";
@@ -911,8 +911,6 @@
 		46E772B9242CEF09008A5E93 /* DemoViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				46E772BA242CEF09008A5E93 /* PaymentCancelledDemoViewModel.swift */,
-				46E772BB242CEF09008A5E93 /* AdExpiredDemoViewModel.swift */,
 				46E772BC242CEF09008A5E93 /* BuyerInvitedDemoViewModel.swift */,
 				46E772BD242CEF09008A5E93 /* AwaitingPaymentDemoViewModel.swift */,
 				46E772BE242CEF09008A5E93 /* SellerConfirmedHandoverDemoViewModel.swift */,
@@ -924,6 +922,8 @@
 				46E772C4242CEF09008A5E93 /* ContractCreatedDemoViewModel.swift */,
 				46E772C5242CEF09008A5E93 /* SellerOnlySignedDemoViewModel.swift */,
 				46E772C6242CEF09008A5E93 /* ContractNotCreatedDemoViewModel.swift */,
+				46E772BB242CEF09008A5E93 /* AdExpiredDemoViewModel.swift */,
+				46E772BA242CEF09008A5E93 /* PaymentCancelledDemoViewModel.swift */,
 			);
 			path = DemoViewModels;
 			sourceTree = "<group>";

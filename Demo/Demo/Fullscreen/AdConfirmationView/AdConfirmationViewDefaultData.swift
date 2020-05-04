@@ -10,6 +10,7 @@ struct AdConfirmationViewDefaultData: AdConfirmationViewModel {
     var summaryViewModel: AdConfirmationSummaryViewModel? = AdConfirmationSummaryViewModelDefaultData()
     var feedbackViewModel: AdConfirmationFeedbackViewModel?
     var completeButtonText = "Gå til mine annonser"
+    var linkViewModel: AdConfirmationLinkViewModel? = AdConfirmationLinkViewModelDefaultData()
     var receiptInfo: String?
 }
 
@@ -26,4 +27,10 @@ struct AdConfirmationSummaryViewModelDefaultData: AdConfirmationSummaryViewModel
     var priceLabel: String = "Totalsum"
     var priceValue: String = "100000"
     var receiptInfo: String? = "Kvittering er sendt til din e-post"
+}
+
+struct AdConfirmationLinkViewModelDefaultData: AdConfirmationLinkViewModel {
+    var title: String? = "Hvordan var det å legge ut annonsen?"
+    var body: String? = "Vi jobber med å gjøre denne tjenesten bedre, og setter stor pris på din tilbakemelding."
+    var linkTitle: String = "Gi tilbakemelding"
 }

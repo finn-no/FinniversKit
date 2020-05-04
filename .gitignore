@@ -46,3 +46,6 @@ FailureDiffs/
 # Bundler
 bin/
 bundler/
+
+# Fastlane
+fastlane/report.xml

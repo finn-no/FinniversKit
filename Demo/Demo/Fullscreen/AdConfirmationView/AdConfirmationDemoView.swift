@@ -29,4 +29,8 @@ extension AdConfirmationDemoView: AdConfirmationViewDelegate {
     func adConfirmationView( _ : AdConfirmationView, didTapActionButton button: UIButton) {
         print("Did tap action button:\(button)")
     }
+
+    func adConfirmationView(_: AdConfirmationView, didTapLinkViewButton button: UIButton) {
+        print("Did tap linkView button:\(button)")
+    }
 }

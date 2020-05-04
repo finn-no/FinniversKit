@@ -14,7 +14,9 @@ public class TransactionProcessSummaryDemoView: UIView {
     let model = TransactionProcessSummaryViewModel(
         title: "Salgsprosess",
         detail: "Kontrakt",
-        description: "Når du har funnet en kjøper er det neste steget å skrive en kontrakt"
+        description: "Når du har funnet en kjøper er det neste steget å skrive en kontrakt",
+        externalTitle: "Mine kjøretøy",
+        style: "ERROR"
     )
 
     override init(frame: CGRect) {
@@ -34,12 +36,16 @@ private extension TransactionProcessSummaryDemoView {
             transactionProcessSummaryView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
         ])
 
-        transactionProcessSummaryView.configure(with: model)
+        transactionProcessSummaryView.configure(with: model, shouldShowExternalView: true)
     }
 }
 
 extension TransactionProcessSummaryDemoView: TransactionProcessSummaryViewDelegate {
     public func transactionProcessSummaryViewWasTapped(_ view: TransactionProcessSummaryView) {
-        print("Did tap view")
+        print("Did tap summary view")
+    }
+
+    public func transactionProcessExternalViewWasTapped(_ view: TransactionProcessSummaryView) {
+        print("Did tap external view")
     }
 }

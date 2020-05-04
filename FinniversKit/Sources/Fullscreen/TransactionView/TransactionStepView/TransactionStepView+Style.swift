@@ -28,13 +28,6 @@ public extension TransactionStepView {
             }
         }
 
-        public var titleFont: UIFont {
-            switch self {
-            default:
-                return .title3Strong
-            }
-        }
-
         public var titleTextColor: UIColor {
             switch self {
             case .notStarted:
@@ -44,26 +37,12 @@ public extension TransactionStepView {
             }
         }
 
-        public var bodyFont: UIFont {
-            switch self {
-            default:
-                return .body
-            }
-        }
-
-        public var bodyTextColor: UIColor {
+        public var mainTextColor: UIColor {
             switch self {
             case .notStarted:
                 return .textSecondary
-            case .active, .completed:
-                return .textPrimary
-            }
-        }
-
-        public var detailFont: UIFont {
-            switch self {
             default:
-                return .caption
+                return .textPrimary
             }
         }
 
@@ -71,17 +50,8 @@ public extension TransactionStepView {
             switch self {
             case .notStarted:
                 return .textSecondary
-            case .active, .completed:
+            default:
                 return .textPrimary
-            }
-        }
-
-        public var actionButtonEnabled: Bool {
-            switch self {
-            case .notStarted:
-                return false
-            case .active, .completed:
-                return true
             }
         }
     }

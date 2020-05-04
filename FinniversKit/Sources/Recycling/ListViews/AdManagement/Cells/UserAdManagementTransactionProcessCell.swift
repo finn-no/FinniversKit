@@ -2,10 +2,15 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
-public class UserAdManagementTransactionProcessSummaryCell: UITableViewCell {
+public protocol UserAdManagementTransactionProcessCellDelegate: AnyObject {
+    func userAdManagementTransactionProcessCellDidTapSummary(_ view: UserAdManagementTransactionProcessCell)
+    func userAdManagementTransactionProcessCellDidTapExternalView(_ view: UserAdManagementTransactionProcessCell)
+}
+
+public class UserAdManagementTransactionProcessCell: UITableViewCell {
     // MARK: - Public
 
-    private var model: TransactionProcessSummaryViewModel?
+    public var delegate: UserAdManagementTransactionProcessCellDelegate?
 
     // MARK: - Private
 
@@ -25,9 +30,8 @@ public class UserAdManagementTransactionProcessSummaryCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    public func configure(with viewModel: TransactionProcessSummaryViewModel) {
-        model = viewModel
-        transactionProcessSummaryView.configure(with: viewModel)
+    public func configure(with viewModel: TransactionProcessSummaryViewModel, shouldShowExternalView shouldShow: Bool) {
+        transactionProcessSummaryView.configure(with: viewModel, shouldShowExternalView: shouldShow)
     }
 
     // MARK: - Private methods
@@ -38,5 +42,16 @@ public class UserAdManagementTransactionProcessSummaryCell: UITableViewCell {
 
         addSubview(transactionProcessSummaryView)
         transactionProcessSummaryView.fillInSuperview()
+        transactionProcessSummaryView.delegate = self
+    }
+}
+
+extension UserAdManagementTransactionProcessCell: TransactionProcessSummaryViewDelegate {
+    public func transactionProcessSummaryViewWasTapped(_ view: TransactionProcessSummaryView) {
+        delegate?.userAdManagementTransactionProcessCellDidTapSummary(self)
+    }
+
+    public func transactionProcessExternalViewWasTapped(_ view: TransactionProcessSummaryView) {
+        delegate?.userAdManagementTransactionProcessCellDidTapExternalView(self)
     }
 }
