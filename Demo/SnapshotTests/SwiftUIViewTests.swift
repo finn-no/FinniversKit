@@ -21,7 +21,7 @@ class SwiftUIViewTests: XCTestCase {
 
     // MARK: - Tests
 
-    func testsettingsView() {
+    func testSettingsPreview() {
         snapshot(SettingsView_Previews.self)
     }
 }

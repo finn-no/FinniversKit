@@ -29,7 +29,9 @@ public struct SettingsView: View {
                     Footer(text: self.sections[section].footerTitle!)
                 }
             }
-        }.listSeparatorStyleNone()
+        }
+        .listSeparatorStyleNone()
+        .edgesIgnoringSafeArea(.all)
     }
 
     private func cell(at row: Int, in section: Int) -> AnyView {

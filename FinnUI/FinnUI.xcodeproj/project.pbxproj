@@ -17,9 +17,9 @@
 		8D68078190A301C047AD77D7 /* ChatAvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D68005160E043018354D1D4 /* ChatAvailabilityView.swift */; };
 		DA0E186F2459C23600C0616E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E186E2459C23600C0616E /* SettingsView.swift */; };
 		DA0E18722459CB9400C0616E /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E18712459CB9400C0616E /* SettingsSection.swift */; };
-		DA3415F1245AE48400DC1B1C /* ListSeparatorStyleNoneModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3415F0245AE48400DC1B1C /* ListSeparatorStyleNoneModifier.swift */; };
 		DA3415F5245AEB5C00DC1B1C /* BottomDividerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3415F4245AEB5C00DC1B1C /* BottomDividerModifier.swift */; };
 		DA3415F9245AF80200DC1B1C /* BasicListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3415F8245AF80200DC1B1C /* BasicListCell.swift */; };
+		DA67DC22246076F300EA00A4 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA67DC21246076F300EA00A4 /* Appearance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,9 +59,9 @@
 		8D68005160E043018354D1D4 /* ChatAvailabilityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAvailabilityView.swift; sourceTree = "<group>"; };
 		DA0E186E2459C23600C0616E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DA0E18712459CB9400C0616E /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
-		DA3415F0245AE48400DC1B1C /* ListSeparatorStyleNoneModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSeparatorStyleNoneModifier.swift; sourceTree = "<group>"; };
 		DA3415F4245AEB5C00DC1B1C /* BottomDividerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDividerModifier.swift; sourceTree = "<group>"; };
 		DA3415F8245AF80200DC1B1C /* BasicListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicListCell.swift; sourceTree = "<group>"; };
+		DA67DC21246076F300EA00A4 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,7 +194,7 @@
 		DA3415EF245AE46E00DC1B1C /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
-				DA3415F0245AE48400DC1B1C /* ListSeparatorStyleNoneModifier.swift */,
+				DA67DC21246076F300EA00A4 /* Appearance.swift */,
 				DA3415F4245AEB5C00DC1B1C /* BottomDividerModifier.swift */,
 			);
 			path = Modifiers;
@@ -369,10 +369,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA3415F1245AE48400DC1B1C /* ListSeparatorStyleNoneModifier.swift in Sources */,
 				46AE6FB1242BAB97007BB005 /* SplashView.swift in Sources */,
 				DA0E186F2459C23600C0616E /* SettingsView.swift in Sources */,
 				8D68078190A301C047AD77D7 /* ChatAvailabilityView.swift in Sources */,
+				DA67DC22246076F300EA00A4 /* Appearance.swift in Sources */,
 				DA3415F9245AF80200DC1B1C /* BasicListCell.swift in Sources */,
 				DA3415F5245AEB5C00DC1B1C /* BottomDividerModifier.swift in Sources */,
 				DA0E18722459CB9400C0616E /* SettingsSection.swift in Sources */,
