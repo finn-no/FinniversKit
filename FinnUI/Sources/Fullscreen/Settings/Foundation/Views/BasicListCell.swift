@@ -44,7 +44,7 @@ public struct BasicListCell: View {
             }
         }
         .padding(.horizontal, .spacingM)
-        .background(Color(.bgPrimary))
+        .background(Color.bgPrimary)
     }
 
     private var chevron: some View {
@@ -59,14 +59,14 @@ public struct BasicListCell: View {
     public static func title(_ text: String) -> Text {
         Text(text)
             .font(Font(UIFont.body))
-            .foregroundColor(Color(.textPrimary))
+            .foregroundColor(.textPrimary)
     }
 
     public static func subtitle(_ text: String?) -> Text? {
         text.map({
             Text($0)
                 .font(Font(UIFont.caption))
-                .foregroundColor(Color(.textPrimary))
+                .foregroundColor(.textPrimary)
         })
     }
 
@@ -74,7 +74,7 @@ public struct BasicListCell: View {
         text.map({
             Text($0)
                 .font(Font(UIFont.detail))
-                .foregroundColor(Color(.textSecondary))
+                .foregroundColor(.textSecondary)
         })
     }
 }

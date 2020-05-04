@@ -58,14 +58,14 @@ private struct Header: View {
             HStack {
                 Text(text.uppercased())
                     .font(Font(UIFont.detailStrong))
-                    .foregroundColor(Color(.textSecondary))
+                    .foregroundColor(.textSecondary)
                     .padding(.horizontal, .spacingM)
                     .padding(.bottom, .spacingS)
                 Spacer()
             }
         }
         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-        .background(Color(.bgTertiary))
+        .background(Color.bgTertiary)
         .frame(height: 48)
     }
 }
@@ -78,12 +78,12 @@ private struct Footer: View {
         HStack {
             Text(text)
                 .font(Font(UIFont.caption))
-                .foregroundColor(Color(.textSecondary))
+                .foregroundColor(.textSecondary)
                 .padding(.horizontal, .spacingM)
                 .padding(.vertical, .spacingS)
             Spacer()
         }
-        .background(Color(.bgTertiary))
+        .background(Color.bgTertiary)
         .listRowInsets(EdgeInsets())
     }
 }
@@ -96,7 +96,7 @@ private struct ConsentCell: View {
         BasicListCell(model: model, detailText: { _ in
             Text(model.status)
                 .font(Font(UIFont.body))
-                .foregroundColor(Color(.textSecondary))
+                .foregroundColor(.textSecondary)
         })
     }
 }
@@ -116,7 +116,7 @@ private struct ToggleCell: View {
             BasicListCell(model: model)
         }
         .padding(.trailing, .spacingM)
-        .background(Color(.bgPrimary))
+        .background(Color.bgPrimary)
     }
 }
 
@@ -157,7 +157,7 @@ struct SettingsView_Previews: PreviewProvider {
 
     static var previews: some View {
         ZStack {
-            Color(.bgTertiary)
+            Color.bgTertiary
             SettingsView(sections: sections)
         }
     }
