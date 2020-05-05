@@ -15,6 +15,11 @@
 		46DE7D5D242B9BCB00DB1707 /* FinnUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46DE7D53242B9BCB00DB1707 /* FinnUI.framework */; };
 		46DE7D64242B9BCB00DB1707 /* FinnUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 46DE7D56242B9BCB00DB1707 /* FinnUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D68078190A301C047AD77D7 /* ChatAvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D68005160E043018354D1D4 /* ChatAvailabilityView.swift */; };
+		DA0E186F2459C23600C0616E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E186E2459C23600C0616E /* SettingsView.swift */; };
+		DA0E18722459CB9400C0616E /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E18712459CB9400C0616E /* SettingsSection.swift */; };
+		DA3415F5245AEB5C00DC1B1C /* BottomDividerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3415F4245AEB5C00DC1B1C /* BottomDividerModifier.swift */; };
+		DA3415F9245AF80200DC1B1C /* BasicListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3415F8245AF80200DC1B1C /* BasicListCell.swift */; };
+		DA67DC22246076F300EA00A4 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA67DC21246076F300EA00A4 /* Appearance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +57,11 @@
 		46DE7D5C242B9BCB00DB1707 /* FinnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinnUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46DE7D63242B9BCB00DB1707 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D68005160E043018354D1D4 /* ChatAvailabilityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAvailabilityView.swift; sourceTree = "<group>"; };
+		DA0E186E2459C23600C0616E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		DA0E18712459CB9400C0616E /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
+		DA3415F4245AEB5C00DC1B1C /* BottomDividerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDividerModifier.swift; sourceTree = "<group>"; };
+		DA3415F8245AF80200DC1B1C /* BasicListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicListCell.swift; sourceTree = "<group>"; };
+		DA67DC21246076F300EA00A4 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +96,7 @@
 		46AE6FAE242BAAAE007BB005 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
+				DA0E186D2459C21A00C0616E /* Settings */,
 				46AE6FAF242BAB97007BB005 /* SplashView */,
 			);
 			path = Fullscreen;
@@ -160,6 +171,50 @@
 				8D6802E2438E1A527CABD2CE /* ChatAvailability */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		DA0E186D2459C21A00C0616E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DA3415F6245AF7ED00DC1B1C /* Foundation */,
+				DA0E18702459CB8400C0616E /* Models */,
+				DA0E186E2459C23600C0616E /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		DA0E18702459CB8400C0616E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DA0E18712459CB9400C0616E /* SettingsSection.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DA3415EF245AE46E00DC1B1C /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				DA67DC21246076F300EA00A4 /* Appearance.swift */,
+				DA3415F4245AEB5C00DC1B1C /* BottomDividerModifier.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		DA3415F6245AF7ED00DC1B1C /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				DA3415F7245AF7F600DC1B1C /* Views */,
+				DA3415EF245AE46E00DC1B1C /* Modifiers */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		DA3415F7245AF7F600DC1B1C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DA3415F8245AF80200DC1B1C /* BasicListCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,7 +370,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				46AE6FB1242BAB97007BB005 /* SplashView.swift in Sources */,
+				DA0E186F2459C23600C0616E /* SettingsView.swift in Sources */,
 				8D68078190A301C047AD77D7 /* ChatAvailabilityView.swift in Sources */,
+				DA67DC22246076F300EA00A4 /* Appearance.swift in Sources */,
+				DA3415F9245AF80200DC1B1C /* BasicListCell.swift in Sources */,
+				DA3415F5245AEB5C00DC1B1C /* BottomDividerModifier.swift in Sources */,
+				DA0E18722459CB9400C0616E /* SettingsSection.swift in Sources */,
 				469894A02434DD6F00CC84E6 /* ImageAsset.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
