@@ -9,10 +9,19 @@ import FinniversKit
 public struct SettingsView: View {
     private let sections: [SettingsSection]
     private let versionText: String
+    private let onToggle: ((IndexPath, Bool) -> Void)?
+    private let onSelect: ((IndexPath) -> Void)?
 
-    public init(sections: [SettingsSection], versionText: String) {
+    public init(
+        sections: [SettingsSection],
+        versionText: String,
+        onToggle: ((IndexPath, Bool) -> Void)? = nil,
+        onSelect: ((IndexPath) -> Void)? = nil
+    ) {
         self.sections = sections
         self.versionText = versionText
+        self.onToggle = onToggle
+        self.onSelect = onSelect
     }
 
     public var body: some View {
