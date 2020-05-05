@@ -221,6 +221,8 @@
 		9B2D17D223E02B2900EF3B50 /* KeyValuePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D17D123E02B2900EF3B50 /* KeyValuePair.swift */; };
 		9B2D17D623E02B6900EF3B50 /* KeyValueGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D17D523E02B6900EF3B50 /* KeyValueGridView.swift */; };
 		9B93F210230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */; };
+		9B9663CD24603AAE00D34BA1 /* Color+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9663CC24603AAE00D34BA1 /* Color+SwiftUI.swift */; };
+		9B9663CB2460383900D34BA1 /* FinniversKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9663CA2460383900D34BA1 /* FinniversKitTests.swift */; };
 		9BA6C49A24336AEC009D417B /* CoronaHelpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C49824336AEC009D417B /* CoronaHelpViewModel.swift */; };
 		9BA6C49B24336AEC009D417B /* CoronaHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C49924336AEC009D417B /* CoronaHelpView.swift */; };
 		9BA8248623859B4400163F24 /* MapZoomRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA8248523859B4400163F24 /* MapZoomRange.swift */; };
@@ -673,6 +675,8 @@
 		9B2D17D123E02B2900EF3B50 /* KeyValuePair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValuePair.swift; sourceTree = "<group>"; };
 		9B2D17D523E02B6900EF3B50 /* KeyValueGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueGridView.swift; sourceTree = "<group>"; };
 		9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDirectionalEdgeInsetsExtensions.swift; sourceTree = "<group>"; };
+		9B9663CC24603AAE00D34BA1 /* Color+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+SwiftUI.swift"; sourceTree = "<group>"; };
+		9B9663CA2460383900D34BA1 /* FinniversKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinniversKitTests.swift; sourceTree = "<group>"; };
 		9BA6C49824336AEC009D417B /* CoronaHelpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoronaHelpViewModel.swift; sourceTree = "<group>"; };
 		9BA6C49924336AEC009D417B /* CoronaHelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoronaHelpView.swift; sourceTree = "<group>"; };
 		9BA8248523859B4400163F24 /* MapZoomRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoomRange.swift; sourceTree = "<group>"; };
@@ -1039,6 +1043,7 @@
 				CF3D5EFD215A759A006E4D08 /* EasterEggs */,
 				14F4F1BD1FD6CEA800E9CECA /* Info.plist */,
 				9F213D8A2542DC1D6D998B43 /* Util */,
+				9B9663CA2460383900D34BA1 /* FinniversKitTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -1102,6 +1107,7 @@
 			isa = PBXGroup;
 			children = (
 				4408A69E2027AC41008C0BD9 /* Color.swift */,
+				9B9663CC24603AAE00D34BA1 /* Color+SwiftUI.swift */,
 			);
 			path = Color;
 			sourceTree = "<group>";
@@ -3203,6 +3209,7 @@
 				CF3D5F00215A75BF006E4D08 /* InstrumentTests.swift in Sources */,
 				CF376C1B231D458200ED2B24 /* ArrayStepTests.swift in Sources */,
 				CF376C1D231D459900ED2B24 /* StepTests.swift in Sources */,
+				9B9663CB2460383900D34BA1 /* FinniversKitTests.swift in Sources */,
 				9F213830B2F4E5DFE596431F /* KeyboardNotificationInfoTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3408,6 +3415,7 @@
 				899D0BF6222D4B3400794DEC /* ArrayExtensions.swift in Sources */,
 				0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */,
 				9B238F02225B95F600B0E0C2 /* InfoboxView+Style.swift in Sources */,
+				9B9663CD24603AAE00D34BA1 /* Color+SwiftUI.swift in Sources */,
 				43EA977F21941E5D003A548A /* SoldView.swift in Sources */,
 				44A557B422E72187001667AE /* SelectableTableViewCellViewModel.swift in Sources */,
 				625A220B221EB26500733101 /* AdManagementActionCellModel.swift in Sources */,
