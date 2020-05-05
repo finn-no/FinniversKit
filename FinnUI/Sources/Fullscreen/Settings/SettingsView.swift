@@ -17,16 +17,7 @@ public struct SettingsView: View {
 
     public var body: some View {
         List {
-            ForEach(0..<sections.count) { section in
-                self.sections[section].title.map(Header.init)
-
-                ForEach(0..<self.sections[section].items.count) { row in
-                    self.cell(at: row, in: section)
-                        .bottomDivider(self.isLastRow(row, in: section))
-                }
-
-                self.sections[section].footerTitle.map(Footer.init)
-            }
+            rows
             VersionView(text: versionText)
         }
         .appearance { (view: UITableView) in
@@ -34,6 +25,19 @@ public struct SettingsView: View {
             view.backgroundColor = .bgTertiary
         }
         .edgesIgnoringSafeArea(.all)
+    }
+
+    private var rows: some View {
+        ForEach(0..<sections.count) { section in
+            self.sections[section].title.map(Header.init)
+
+            ForEach(0..<self.sections[section].items.count) { row in
+                self.cell(at: row, in: section)
+                    .bottomDivider(self.isLastRow(row, in: section))
+            }
+
+            self.sections[section].footerTitle.map(Footer.init)
+        }
     }
 
     private func cell(at row: Int, in section: Int) -> AnyView {
