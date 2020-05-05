@@ -8,9 +8,11 @@ import FinniversKit
 @available(iOS 13.0.0, *)
 public struct SettingsView: View {
     private let sections: [SettingsSection]
+    private let versionText: String
 
-    public init(sections: [SettingsSection]) {
+    public init(sections: [SettingsSection], versionText: String) {
         self.sections = sections
+        self.versionText = versionText
     }
 
     public var body: some View {
@@ -25,8 +27,12 @@ public struct SettingsView: View {
 
                 self.sections[section].footerTitle.map(Footer.init)
             }
+            VersionView(text: versionText)
         }
-        .listSeparatorStyleNone()
+        .appearance { (view: UITableView) in
+            view.separatorStyle = .none
+            view.backgroundColor = .bgTertiary
+        }
         .edgesIgnoringSafeArea(.all)
     }
 
@@ -122,6 +128,27 @@ private struct ToggleCell: View {
     }
 }
 
+@available(iOS 13.0.0, *)
+private struct VersionView: View {
+    let text: String
+
+    var body: some View {
+        HStack {
+            Spacer()
+            VStack(spacing: .spacingS) {
+                Image(.finnLogoSimple)
+                Text(text)
+                    .font(Font(UIFont.detail))
+                    .foregroundColor(.textPrimary)
+            }
+            .padding(EdgeInsets(top: 58, leading: .spacingM, bottom: .spacingS, trailing: .spacingM))
+            Spacer()
+        }
+        .listRowInsets(EdgeInsets())
+        .background(Color.bgTertiary)
+    }
+}
+
 // MARK: - Previews
 
 @available(iOS 13.0.0, *)
@@ -160,7 +187,7 @@ struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.bgTertiary
-            SettingsView(sections: sections)
+            SettingsView(sections: sections, versionText: "FinnUI Demo")
         }
     }
 }
