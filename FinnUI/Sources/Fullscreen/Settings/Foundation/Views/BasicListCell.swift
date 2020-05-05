@@ -7,8 +7,8 @@ import FinniversKit
 
 @available(iOS 13.0.0, *)
 public struct BasicListCell: View {
+    var action: (() -> Void)?
     private let model: BasicTableViewCellViewModel
-    private let action: (() -> Void)?
     private let title: Text
     private let subtitle: Text?
     private let detailText: Text?
@@ -28,7 +28,7 @@ public struct BasicListCell: View {
     }
 
     public var body: some View {
-        Button(action: {}) {
+        Button(action: { self.action?() }) {
             content
         }.buttonStyle(BasicButtonStyle())
     }
@@ -96,11 +96,13 @@ private struct BasicButtonStyle: ButtonStyle {
     }
 
     private var selectedColor: UIColor {
-        switch colorScheme {
-        case .dark:
-            return UIColor(hex: "2f3039")
-        default:
-            return UIColor.defaultCellSelectedBackgroundColor
+        UIColor { traitCollection -> UIColor in
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+               return UIColor(hex: "2f3039")
+            default:
+               return UIColor.defaultCellSelectedBackgroundColor
+            }
         }
     }
 }
