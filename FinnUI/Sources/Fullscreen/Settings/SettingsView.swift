@@ -16,18 +16,14 @@ public struct SettingsView: View {
     public var body: some View {
         List {
             ForEach(0..<sections.count) { section in
-                if self.sections[section].title != nil {
-                    Header(text: self.sections[section].title!)
-                }
+                self.sections[section].title.map(Header.init)
 
                 ForEach(0..<self.sections[section].items.count) { row in
                     self.cell(at: row, in: section)
-                        .bottomDivider(row != self.sections[section].items.count - 1)
+                        .bottomDivider(self.isLastRow(row, in: section))
                 }
 
-                if self.sections[section].footerTitle != nil {
-                    Footer(text: self.sections[section].footerTitle!)
-                }
+                self.sections[section].footerTitle.map(Footer.init)
             }
         }
         .listSeparatorStyleNone()
@@ -45,6 +41,10 @@ public struct SettingsView: View {
         default:
             return AnyView(BasicListCell(model: model))
         }
+    }
+
+    private func isLastRow(_ row: Int, in section: Int) -> Bool {
+        row != self.sections[section].items.count - 1
     }
 }
 
