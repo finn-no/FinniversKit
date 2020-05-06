@@ -28,9 +28,10 @@ public struct BasicListCell: View {
     }
 
     public var body: some View {
-        Button(action: { self.action?() }) {
-            content
-        }.buttonStyle(BasicButtonStyle())
+        Button(
+            action: { self.action?() },
+            label: { content }
+        ).buttonStyle(BasicButtonStyle())
     }
 
     private var content: some View {

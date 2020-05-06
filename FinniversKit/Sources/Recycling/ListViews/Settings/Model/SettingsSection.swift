@@ -2,8 +2,6 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import FinniversKit
-
 public struct SettingsSection {
     public let title: String?
     public let items: [SettingsViewCellModel]
