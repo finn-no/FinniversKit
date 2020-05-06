@@ -88,8 +88,6 @@ public struct BasicListCell: View {
 
 @available(iOS 13.0, *)
 private struct BasicButtonStyle: ButtonStyle {
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
-
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .background(configuration.isPressed ? Color(selectedColor) : Color.bgPrimary)
