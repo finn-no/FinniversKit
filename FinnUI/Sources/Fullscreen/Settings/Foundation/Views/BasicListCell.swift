@@ -7,6 +7,7 @@ import FinniversKit
 
 @available(iOS 13.0.0, *)
 public struct BasicListCell: View {
+    var action: (() -> Void)?
     private let model: BasicTableViewCellViewModel
     private let title: Text
     private let subtitle: Text?
@@ -14,17 +15,25 @@ public struct BasicListCell: View {
 
     public init(
         model: BasicTableViewCellViewModel,
+        action: (() -> Void)? = nil,
         @ViewBuilder title: (String) -> Text = title,
         @ViewBuilder subtitle: (String?) -> Text? = subtitle,
         @ViewBuilder detailText: (String?) -> Text? = detailText
     ) {
         self.model = model
+        self.action = action
         self.title = title(model.title)
         self.subtitle = subtitle(model.subtitle)
         self.detailText = detailText(model.detailText)
     }
 
     public var body: some View {
+        Button(action: { self.action?() }) {
+            content
+        }.buttonStyle(BasicButtonStyle())
+    }
+
+    private var content: some View {
         HStack {
             VStack(alignment: .leading, spacing: .spacingXXS) {
                 Spacer()
@@ -42,9 +51,7 @@ public struct BasicListCell: View {
             if model.hasChevron {
                 chevron
             }
-        }
-        .padding(.horizontal, .spacingM)
-        .background(Color.bgPrimary)
+        }.padding(.horizontal, .spacingM)
     }
 
     private var chevron: some View {
@@ -76,6 +83,25 @@ public struct BasicListCell: View {
                 .font(Font(UIFont.detail))
                 .foregroundColor(.textSecondary)
         })
+    }
+}
+
+@available(iOS 13.0, *)
+private struct BasicButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .background(configuration.isPressed ? Color(selectedColor) : Color.bgPrimary)
+    }
+
+    private var selectedColor: UIColor {
+        UIColor { traitCollection -> UIColor in
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+               return UIColor(hex: "2f3039")
+            default:
+               return UIColor.defaultCellSelectedBackgroundColor
+            }
+        }
     }
 }
 

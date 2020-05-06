@@ -19,6 +19,7 @@
 		DA0E18722459CB9400C0616E /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E18712459CB9400C0616E /* SettingsSection.swift */; };
 		DA3415F5245AEB5C00DC1B1C /* BottomDividerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3415F4245AEB5C00DC1B1C /* BottomDividerModifier.swift */; };
 		DA3415F9245AF80200DC1B1C /* BasicListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3415F8245AF80200DC1B1C /* BasicListCell.swift */; };
+		DA5A86A82462163700AC0DFE /* BasicListCellWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A86A72462163700AC0DFE /* BasicListCellWrapper.swift */; };
 		DA67DC22246076F300EA00A4 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA67DC21246076F300EA00A4 /* Appearance.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		DA0E18712459CB9400C0616E /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		DA3415F4245AEB5C00DC1B1C /* BottomDividerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDividerModifier.swift; sourceTree = "<group>"; };
 		DA3415F8245AF80200DC1B1C /* BasicListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicListCell.swift; sourceTree = "<group>"; };
+		DA5A86A72462163700AC0DFE /* BasicListCellWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicListCellWrapper.swift; sourceTree = "<group>"; };
 		DA67DC21246076F300EA00A4 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -213,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				DA3415F8245AF80200DC1B1C /* BasicListCell.swift */,
+				DA5A86A72462163700AC0DFE /* BasicListCellWrapper.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				DA3415F9245AF80200DC1B1C /* BasicListCell.swift in Sources */,
 				DA3415F5245AEB5C00DC1B1C /* BottomDividerModifier.swift in Sources */,
 				DA0E18722459CB9400C0616E /* SettingsSection.swift in Sources */,
+				DA5A86A82462163700AC0DFE /* BasicListCellWrapper.swift in Sources */,
 				469894A02434DD6F00CC84E6 /* ImageAsset.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -534,6 +538,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"-weak_framework",
+					SwiftUI,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.FinnUI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -559,6 +567,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-weak_framework",
+					SwiftUI,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.FinnUI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
