@@ -2,14 +2,26 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-public struct SettingsSection {
+public struct SettingsSection: Equatable, Hashable {
     public let title: String?
-    public var items: [SettingsViewCellModel]
+    public var rows: [SettingsRow]
     public let footerTitle: String?
 
-    public init(title: String?, items: [SettingsViewCellModel], footerTitle: String? = nil) {
+    public init(title: String?, rows: [SettingsRow], footerTitle: String? = nil) {
         self.title = title
-        self.items = items
+        self.rows = rows
         self.footerTitle = footerTitle
     }
+}
+
+public enum SettingsRow: SettingsRowConvertible, Equatable, Hashable {
+    case text(SettingsTextViewModel)
+    case consent(SettingsConsentViewModel)
+    case toggle(SettingsToggleViewModel)
+
+    public var row: SettingsRow { self }
+}
+
+public protocol SettingsRowConvertible {
+    var row: SettingsRow { get }
 }

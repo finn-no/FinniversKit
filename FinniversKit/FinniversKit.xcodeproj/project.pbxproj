@@ -395,9 +395,9 @@
 		DAD6EB242369916100968497 /* SettingsViewConsentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB192369916100968497 /* SettingsViewConsentCell.swift */; };
 		DAD6EB252369916100968497 /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB1A2369916100968497 /* SettingsViewCell.swift */; };
 		DAD6EB262369916100968497 /* SettingsViewToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB1B2369916100968497 /* SettingsViewToggleCell.swift */; };
-		DAD6EB272369916100968497 /* SettingsViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB1D2369916100968497 /* SettingsViewCellModel.swift */; };
-		DAD6EB282369916100968497 /* SettingsViewToggleCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB1E2369916100968497 /* SettingsViewToggleCellModel.swift */; };
-		DAD6EB292369916100968497 /* SettingsViewConsentCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB1F2369916100968497 /* SettingsViewConsentCellModel.swift */; };
+		DAD6EB272369916100968497 /* SettingsTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB1D2369916100968497 /* SettingsTextViewModel.swift */; };
+		DAD6EB282369916100968497 /* SettingsToggleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB1E2369916100968497 /* SettingsToggleViewModel.swift */; };
+		DAD6EB292369916100968497 /* SettingsConsentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB1F2369916100968497 /* SettingsConsentViewModel.swift */; };
 		DAD6EB2A2369916100968497 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB212369916100968497 /* SettingsView.swift */; };
 		DAD6EB2B2369916100968497 /* SettingsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB222369916100968497 /* SettingsSectionHeaderView.swift */; };
 		DAD6EB2C2369916100968497 /* SettingsSectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB232369916100968497 /* SettingsSectionFooterView.swift */; };
@@ -853,9 +853,9 @@
 		DAD6EB192369916100968497 /* SettingsViewConsentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewConsentCell.swift; sourceTree = "<group>"; };
 		DAD6EB1A2369916100968497 /* SettingsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
 		DAD6EB1B2369916100968497 /* SettingsViewToggleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewToggleCell.swift; sourceTree = "<group>"; };
-		DAD6EB1D2369916100968497 /* SettingsViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewCellModel.swift; sourceTree = "<group>"; };
-		DAD6EB1E2369916100968497 /* SettingsViewToggleCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewToggleCellModel.swift; sourceTree = "<group>"; };
-		DAD6EB1F2369916100968497 /* SettingsViewConsentCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewConsentCellModel.swift; sourceTree = "<group>"; };
+		DAD6EB1D2369916100968497 /* SettingsTextViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTextViewModel.swift; sourceTree = "<group>"; };
+		DAD6EB1E2369916100968497 /* SettingsToggleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsToggleViewModel.swift; sourceTree = "<group>"; };
+		DAD6EB1F2369916100968497 /* SettingsConsentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsConsentViewModel.swift; sourceTree = "<group>"; };
 		DAD6EB212369916100968497 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DAD6EB222369916100968497 /* SettingsSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSectionHeaderView.swift; sourceTree = "<group>"; };
 		DAD6EB232369916100968497 /* SettingsSectionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSectionFooterView.swift; sourceTree = "<group>"; };
@@ -2774,10 +2774,10 @@
 		DAD6EB1C2369916100968497 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DAD6EB1F2369916100968497 /* SettingsConsentViewModel.swift */,
 				DA083E7124630B9200B26235 /* SettingsSection.swift */,
-				DAD6EB1D2369916100968497 /* SettingsViewCellModel.swift */,
-				DAD6EB1F2369916100968497 /* SettingsViewConsentCellModel.swift */,
-				DAD6EB1E2369916100968497 /* SettingsViewToggleCellModel.swift */,
+				DAD6EB1D2369916100968497 /* SettingsTextViewModel.swift */,
+				DAD6EB1E2369916100968497 /* SettingsToggleViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3259,7 +3259,7 @@
 				8962DA6B22781A9900A1BC78 /* ImageMemoryCache.swift in Sources */,
 				F2BE6BEE23683E670085A05A /* AdConfirmationViewModel.swift in Sources */,
 				F2BE6BF2236840C30085A05A /* AdConfirmationSummaryViewModel.swift in Sources */,
-				DAD6EB282369916100968497 /* SettingsViewToggleCellModel.swift in Sources */,
+				DAD6EB282369916100968497 /* SettingsToggleViewModel.swift in Sources */,
 				CF4A053821FB2ACB000BB7DA /* PianoKeyView.swift in Sources */,
 				55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */,
 				CF87A857229C0C5700DA8243 /* ContactFormView.swift in Sources */,
@@ -3275,7 +3275,7 @@
 				CF4A053C21FB2ACB000BB7DA /* PianoEffectControl.swift in Sources */,
 				CF164CFB230EAD3700250822 /* FavoriteAdSortOptionCell.swift in Sources */,
 				441FE42E209A24E500B04EF1 /* MarketsGridViewModel.swift in Sources */,
-				DAD6EB272369916100968497 /* SettingsViewCellModel.swift in Sources */,
+				DAD6EB272369916100968497 /* SettingsTextViewModel.swift in Sources */,
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
 				DAA4F25223A2615C00FA529C /* NotificationCenterView.swift in Sources */,
 				F2C3E96022CB669A00CED7E0 /* QuestionnaireView+Style.swift in Sources */,
@@ -3418,7 +3418,7 @@
 				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,
 				446EE15C2345A6AA00010818 /* SelectorTitleView.swift in Sources */,
 				F2BE6C01236863BC0085A05A /* AdConfirmationObjectView.swift in Sources */,
-				DAD6EB292369916100968497 /* SettingsViewConsentCellModel.swift in Sources */,
+				DAD6EB292369916100968497 /* SettingsConsentViewModel.swift in Sources */,
 				F26CABFB23AC9B2E00CACF71 /* OrderSummaryView.swift in Sources */,
 				91846C5A22E856D50001410F /* MapSettingsView.swift in Sources */,
 				CF3F85BF229C29B3003A6748 /* IconCollectionViewFlowLayout.swift in Sources */,

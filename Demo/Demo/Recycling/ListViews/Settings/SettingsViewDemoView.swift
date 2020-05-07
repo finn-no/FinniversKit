@@ -4,47 +4,26 @@
 
 import FinniversKit
 
-// MARK: - Models
-private struct SettingsToggleItem: SettingsViewToggleCellModel {
-    let title: String
-    var isOn: Bool
-}
-
-private struct SettingsConsentItem: SettingsViewConsentCellModel {
-    let title: String
-    var status: String
-}
-
-private struct SettingsItem: SettingsViewCellModel {
-    let title: String
-}
-
-private struct SettingsSection {
-    let title: String
-    var items: [SettingsViewCellModel]
-    let footerTitle: String?
-}
-
 // MARK: - SettingsViewDemoView
 class SettingsViewDemoView: UIView {
 
      private var sections = [
         SettingsSection(
             title: "Varslinger",
-            items: [
-                SettingsToggleItem(title: "Prisnedgang på favoritter - Torget", isOn: true)
+            rows: [
+                .toggle(SettingsToggleViewModel(title: "Prisnedgang på favoritter - Torget", isOn: true))
             ],
             footerTitle: "FINN varsler deg når priser på en av dine favoritter på Torget blir satt ned i pris."
         ),
         SettingsSection(
             title: "Personvern",
-            items: [
-                SettingsConsentItem(title: "Få nyhetsbrev fra FINN", status: "Av"),
-                SettingsConsentItem(title: "Personlig tilpasset FINN", status: "På"),
-                SettingsConsentItem(title: "Motta viktig informasjon fra FINN", status: "På"),
-                SettingsItem(title: "Smart reklame"),
-                SettingsItem(title: "Last ned dine data"),
-                SettingsItem(title: "Slett meg som bruker")
+            rows: [
+                .consent(.init(title: "Få nyhetsbrev fra FINN", status: "Av")),
+                .consent(.init(title: "Personlig tilpasset FINN", status: "På")),
+                .consent(.init(title: "Motta viktig informasjon fra FINN", status: "På")),
+                .text(.init(title: "Smart reklame")),
+                .text(.init(title: "Last ned dine data")),
+                .text(.init(title: "Slett meg som bruker"))
             ],
             footerTitle: nil
         )
@@ -74,17 +53,17 @@ extension SettingsViewDemoView: SettingsViewDataSource {
     }
 
     func settingsView(_ settingsView: SettingsView, numberOfItemsInSection section: Int) -> Int {
-        return sections[section].items.count
+        return sections[section].rows.count
     }
 
-    func settingsView(_ settingsView: SettingsView, modelForItemAt indexPath: IndexPath) -> SettingsViewCellModel {
-        return sections[indexPath.section].items[indexPath.item]
+    func settingsView(_ settingsView: SettingsView, rowForCellAt indexPath: IndexPath) -> SettingsRow {
+        return sections[indexPath.section].rows[indexPath.item]
     }
 }
 
 extension SettingsViewDemoView: SettingsViewDelegate {
     func settingsView(_ settingsView: SettingsView, didSelectModelAt indexPath: IndexPath) {
-        let model = sections[indexPath.section].items[indexPath.item]
+        let model = sections[indexPath.section].rows[indexPath.item]
         print("Did selector model:\n\t- \(model)")
     }
 
@@ -92,14 +71,14 @@ extension SettingsViewDemoView: SettingsViewDelegate {
         let section = indexPath.section
         let item = indexPath.item
 
-        guard var model = sections[section].items[item] as? SettingsToggleItem else {
-            return
+        switch sections[section].rows[item] {
+        case .toggle(var model):
+            model.isOn = isOn
+            sections[section].rows[item] = .toggle(model)
+            print("Did toggle settings for model:\n\t- \(model)")
+        default:
+            break
         }
-
-        model.isOn = isOn
-        sections[section].items[item] = model
-
-        print("Did toggle settings for model:\n\t- \(model)")
     }
 
     func settingsView(_ settingsView: SettingsView, titleForHeaderInSection section: Int) -> String? {

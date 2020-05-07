@@ -8,7 +8,7 @@ import UIKit
 public protocol SettingsViewDataSource: AnyObject {
     func numberOfSections(in settingsView: SettingsView) -> Int
     func settingsView(_ settingsView: SettingsView, numberOfItemsInSection section: Int) -> Int
-    func settingsView(_ settingsView: SettingsView, modelForItemAt indexPath: IndexPath) -> SettingsViewCellModel
+    func settingsView(_ settingsView: SettingsView, rowForCellAt indexPath: IndexPath) -> SettingsRow
 }
 
 public protocol SettingsViewDelegate: AnyObject {
@@ -106,25 +106,25 @@ extension SettingsView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = dataSource?.settingsView(self, modelForItemAt: indexPath)
+        let model = dataSource?.settingsView(self, rowForCellAt: indexPath)
         let isLastItem = indexPath.item == tableView.numberOfRows(inSection: indexPath.section) - 1
 
         switch model {
-        case let toggleModel as SettingsViewToggleCellModel:
+        case .toggle(let model):
             let cell = tableView.dequeue(SettingsViewToggleCell.self, for: indexPath)
-            cell.configure(with: toggleModel, isLastItem: isLastItem)
+            cell.configure(with: model, isLastItem: isLastItem)
             cell.delegate = self
             return cell
-
-        case let consentModel as SettingsViewConsentCellModel:
+        case .consent(let model):
             let cell = tableView.dequeue(SettingsViewConsentCell.self, for: indexPath)
-            cell.configure(with: consentModel, isLastItem: isLastItem)
+            cell.configure(with: model, isLastItem: isLastItem)
             return cell
-
-        default:
+        case .text(let model):
             let cell = tableView.dequeue(SettingsViewCell.self, for: indexPath)
             cell.configure(with: model, isLastItem: isLastItem)
             return cell
+        default:
+            return tableView.dequeue(SettingsViewCell.self, for: indexPath)
         }
     }
 }

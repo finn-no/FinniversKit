@@ -45,7 +45,7 @@ class SettingsViewCell: BasicTableViewCell {
 }
 
 extension SettingsViewCell {
-    func configure(with model: SettingsViewCellModel?, isLastItem: Bool) {
+    func configure(with model: BasicTableViewCellViewModel?, isLastItem: Bool) {
         if let model = model {
             super.configure(with: model)
         }

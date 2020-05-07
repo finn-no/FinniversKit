@@ -48,7 +48,7 @@ public struct SettingsView<ViewModel: SettingsViewModel>: View {
         ForEach(0..<sections.count) { section in
             self.sections[section].title.map(Header.init)
 
-            ForEach(0..<self.sections[section].items.count) { row in
+            ForEach(0..<self.sections[section].rows.count) { row in
                 self.cell(at: row, in: section)
                     .bottomDivider(self.isLastRow(row, in: section))
             }
@@ -58,26 +58,26 @@ public struct SettingsView<ViewModel: SettingsViewModel>: View {
     }
 
     private func cell(at row: Int, in section: Int) -> AnyView {
-        let model = sections[section].items[row]
+        let model = sections[section].rows[row]
         let indexPath = IndexPath(row: row, section: section)
         let onSelect: (UIView?) -> Void = { view in
             self.onSelect?(indexPath, view)
         }
 
         switch model {
-        case let model as SettingsViewToggleCellModel:
+        case .toggle(let model):
             return AnyView(ToggleCell(model: model, onToggle: { value in
                 self.onToggle?(indexPath, value)
             }))
-        case let model as SettingsViewConsentCellModel:
+        case .consent(let model):
             return AnyView(BasicListCellWrapper(cell: BasicListCell(model: model), onSelect: onSelect))
-        default:
+        case .text(let model):
             return AnyView(BasicListCellWrapper(cell: BasicListCell(model: model), onSelect: onSelect))
         }
     }
 
     private func isLastRow(_ row: Int, in section: Int) -> Bool {
-        row != self.sections[section].items.count - 1
+        row != self.sections[section].rows.count - 1
     }
 }
 
@@ -127,11 +127,11 @@ private struct Footer: View {
 
 @available(iOS 13.0.0, *)
 private struct ToggleCell: View {
-    let model: SettingsViewToggleCellModel
+    let model: SettingsToggleViewModel
     let onToggle: (Bool) -> Void
     @SwiftUI.State private var isOn = true
 
-    init(model: SettingsViewToggleCellModel, onToggle: @escaping (Bool) -> Void) {
+    init(model: SettingsToggleViewModel, onToggle: @escaping (Bool) -> Void) {
         self.model = model
         self.onToggle = onToggle
         _isOn = State(initialValue: model.isOn)
@@ -158,7 +158,7 @@ private struct ToggleCell: View {
 
 @available(iOS 13.0.0, *)
 private extension BasicListCell {
-    init(model: SettingsViewConsentCellModel) {
+    init(model: SettingsConsentViewModel) {
         self.init(model: model, detailText: { _ in
             Text(model.status)
                 .font(Font(UIFont.body))
@@ -211,46 +211,27 @@ private final class PreviewViewModel: SettingsViewModel {
     @Published private(set) var sections = [
         SettingsSection(
             title: "Varslinger",
-            items: [
-                ToggleRow(
-                    id: "priceChange",
-                    title: "Prisnedgang på favoritter - Torget",
-                    isOn: false
-                ),
+            rows: [
+                .toggle(.init(title: "Prisnedgang på favoritter - Torget", isOn: false))
             ],
             footerTitle: "FINN varsler deg når prisen på en av dine favoritter på Torget blir satt ned."
         ),
         SettingsSection(
             title: "Meldinger",
-            items: [
-                ConsentRow(title: "Meldinger til e-post", status: "Av"),
+            rows: [
+                .consent(.init(title: "Meldinger til e-post", status: "Av")),
             ]
         ),
         SettingsSection(
             title: "Personvern",
-            items: [
-                ConsentRow(title: "Få nyhetsbrev fra FINN", status: "Av"),
-                ConsentRow(title: "Personlig tilpasset FINN", status: "På"),
-                ConsentRow(title: "Motta viktig informasjon fra FINN", status: "På"),
-                TextRow(title: "Smart reklame"),
-                TextRow(title: "Last ned dine data"),
-                TextRow(title: "Slett meg som bruker")
+            rows: [
+                .consent(.init(title: "Få nyhetsbrev fra FINN", status: "Av")),
+                .consent(.init(title: "Personlig tilpasset FINN", status: "På")),
+                .consent(.init(title: "Motta viktig informasjon fra FINN", status: "På")),
+                .text(.init(title: "Smart reklame")),
+                .text(.init(title: "Last ned dine data")),
+                .text(.init(title: "Slett meg som bruker"))
             ]
         )
     ]
-
-    private struct TextRow: SettingsViewCellModel {
-        let title: String
-    }
-
-    private struct ToggleRow: SettingsViewToggleCellModel {
-        let id: String
-        let title: String
-        let isOn: Bool
-    }
-
-    private struct ConsentRow: SettingsViewConsentCellModel {
-        let title: String
-        let status: String
-    }
 }

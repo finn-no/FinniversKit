@@ -54,7 +54,7 @@ class SettingsViewToggleCell: SettingsViewCell {
 }
 
 extension SettingsViewToggleCell {
-    func configure(with model: SettingsViewToggleCellModel?, isLastItem: Bool) {
+    func configure(with model: SettingsToggleViewModel?, isLastItem: Bool) {
         super.configure(with: model, isLastItem: isLastItem)
         uiswitch.isOn = model?.isOn ?? false
     }

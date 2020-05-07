@@ -10,13 +10,16 @@ struct BasicListCellWrapper: UIViewControllerRepresentable {
     let cell: BasicListCell
     let onSelect: (UIView?) -> Void
 
-    func makeUIViewController(context: Context) -> UIViewController {
+    func makeUIViewController(context: Context) -> UIHostingController<BasicListCell> {
         var cell = self.cell
         cell.action = { self.onSelect(context.coordinator.view) }
         return UIHostingController(rootView: cell)
     }
 
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+    func updateUIViewController(_ uiViewController: UIHostingController<BasicListCell>, context: Context) {
+        var cell = self.cell
+        cell.action = { self.onSelect(context.coordinator.view) }
+        uiViewController.rootView = cell
         context.coordinator.view = uiViewController.view
     }
 

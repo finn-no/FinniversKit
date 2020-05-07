@@ -38,7 +38,7 @@ class SettingsViewConsentCell: SettingsViewCell {
 }
 
 extension SettingsViewConsentCell {
-    func configure(with model: SettingsViewConsentCellModel?, isLastItem: Bool) {
+    func configure(with model: SettingsConsentViewModel?, isLastItem: Bool) {
         super.configure(with: model, isLastItem: isLastItem)
         statusLabel.text = model?.status
     }
