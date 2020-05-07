@@ -41,6 +41,7 @@ public struct SettingsView<ViewModel: SettingsViewModel>: View {
             view.separatorStyle = .none
             view.backgroundColor = .bgTertiary
         }
+        .id(UUID())
         .edgesIgnoringSafeArea(.all)
     }
 
