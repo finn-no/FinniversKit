@@ -8,38 +8,63 @@ import FinniversKit
 @available(iOS 13.0.0, *)
 public struct SettingsView: View {
     private let sections: [SettingsSection]
+    private let versionText: String
+    private let onToggle: ((IndexPath, Bool) -> Void)?
+    private let onSelect: ((IndexPath, UIView?) -> Void)?
 
-    public init(sections: [SettingsSection]) {
+    public init(
+        sections: [SettingsSection],
+        versionText: String,
+        onToggle: ((IndexPath, Bool) -> Void)? = nil,
+        onSelect: ((IndexPath, UIView?) -> Void)? = nil
+    ) {
         self.sections = sections
+        self.versionText = versionText
+        self.onToggle = onToggle
+        self.onSelect = onSelect
     }
 
     public var body: some View {
         List {
-            ForEach(0..<sections.count) { section in
-                self.sections[section].title.map(Header.init)
-
-                ForEach(0..<self.sections[section].items.count) { row in
-                    self.cell(at: row, in: section)
-                        .bottomDivider(self.isLastRow(row, in: section))
-                }
-
-                self.sections[section].footerTitle.map(Footer.init)
-            }
+            rows
+            VersionView(text: versionText)
         }
-        .listSeparatorStyleNone()
+        .appearance { (view: UITableView) in
+            view.separatorStyle = .none
+            view.backgroundColor = .bgTertiary
+        }
         .edgesIgnoringSafeArea(.all)
+    }
+
+    private var rows: some View {
+        ForEach(0..<sections.count) { section in
+            self.sections[section].title.map(Header.init)
+
+            ForEach(0..<self.sections[section].items.count) { row in
+                self.cell(at: row, in: section)
+                    .bottomDivider(self.isLastRow(row, in: section))
+            }
+
+            self.sections[section].footerTitle.map(Footer.init)
+        }
     }
 
     private func cell(at row: Int, in section: Int) -> AnyView {
         let model = sections[section].items[row]
+        let indexPath = IndexPath(row: row, section: section)
+        let onSelect: (UIView?) -> Void = { view in
+            self.onSelect?(indexPath, view)
+        }
 
         switch model {
         case let model as SettingsViewToggleCellModel:
-            return AnyView(ToggleCell(model: model))
+            return AnyView(ToggleCell(model: model, onToggle: { value in
+                self.onToggle?(indexPath, value)
+            }))
         case let model as SettingsViewConsentCellModel:
-            return AnyView(ConsentCell(model: model))
+            return AnyView(BasicListCellWrapper(cell: BasicListCell(model: model), onSelect: onSelect))
         default:
-            return AnyView(BasicListCell(model: model))
+            return AnyView(BasicListCellWrapper(cell: BasicListCell(model: model), onSelect: onSelect))
         }
     }
 
@@ -66,9 +91,8 @@ private struct Header: View {
                 Spacer()
             }
         }
-        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
         .background(Color.bgTertiary)
-        .frame(height: 48)
+        .listRowInsets(EdgeInsets())
     }
 }
 
@@ -77,12 +101,15 @@ private struct Footer: View {
     let text: String
 
     var body: some View {
-        HStack {
-            Text(text)
-                .font(Font(UIFont.caption))
-                .foregroundColor(.textSecondary)
-                .padding(.horizontal, .spacingM)
-                .padding(.vertical, .spacingS)
+        VStack {
+            Spacer()
+            HStack {
+                Text(text)
+                    .font(Font(UIFont.caption))
+                    .foregroundColor(.textSecondary)
+                    .padding(.horizontal, .spacingM)
+                Spacer()
+            }
             Spacer()
         }
         .background(Color.bgTertiary)
@@ -91,11 +118,40 @@ private struct Footer: View {
 }
 
 @available(iOS 13.0.0, *)
-private struct ConsentCell: View {
-    let model: SettingsViewConsentCellModel
+private struct ToggleCell: View {
+    let model: SettingsViewToggleCellModel
+    let onToggle: (Bool) -> Void
+    @SwiftUI.State private var isOn = true
+
+    init(model: SettingsViewToggleCellModel, onToggle: @escaping (Bool) -> Void) {
+        self.model = model
+        self.onToggle = onToggle
+        _isOn = State(initialValue: model.isOn)
+    }
 
     var body: some View {
-        BasicListCell(model: model, detailText: { _ in
+        Toggle(isOn: isOnBinding) {
+            BasicListCell(model: model).disabled(true)
+        }
+        .padding(.trailing, .spacingM)
+        .background(Color.bgPrimary)
+    }
+
+    private var isOnBinding: Binding<Bool> {
+        Binding(
+            get: { self.isOn },
+            set: {
+                self.onToggle($0)
+                self.isOn = $0
+            }
+        )
+    }
+}
+
+@available(iOS 13.0.0, *)
+private extension BasicListCell {
+    init(model: SettingsViewConsentCellModel) {
+        self.init(model: model, detailText: { _ in
             Text(model.status)
                 .font(Font(UIFont.body))
                 .foregroundColor(.textSecondary)
@@ -104,21 +160,23 @@ private struct ConsentCell: View {
 }
 
 @available(iOS 13.0.0, *)
-private struct ToggleCell: View {
-    let model: SettingsViewToggleCellModel
-    @SwiftUI.State private var isOn = true
-
-    init(model: SettingsViewToggleCellModel) {
-        self.model = model
-        _isOn = State(initialValue: model.isOn)
-    }
+private struct VersionView: View {
+    let text: String
 
     var body: some View {
-        Toggle(isOn: $isOn) {
-            BasicListCell(model: model)
+        HStack {
+            Spacer()
+            VStack(spacing: .spacingS) {
+                Image(.finnLogoSimple)
+                Text(text)
+                    .font(Font(UIFont.detail))
+                    .foregroundColor(.textPrimary)
+            }
+            .padding(EdgeInsets(top: 58, leading: .spacingM, bottom: .spacingS, trailing: .spacingM))
+            Spacer()
         }
-        .padding(.trailing, .spacingM)
-        .background(Color.bgPrimary)
+        .listRowInsets(EdgeInsets())
+        .background(Color.bgTertiary)
     }
 }
 
@@ -160,8 +218,10 @@ struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.bgTertiary
-            SettingsView(sections: sections)
-        }
+            SettingsView(sections: sections, versionText: "FinnUI Demo", onSelect: { indexPath, view in
+                print("Cell at \(indexPath) selected, frame: \(String(describing: view?.superview?.frame))")
+            })
+        }.environment(\.colorScheme, .dark)
     }
 }
 

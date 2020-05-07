@@ -16,6 +16,7 @@ enum Sections: String, CaseIterable {
     case cells
     case recycling
     case fullscreen
+    case swiftui
 
     static var items: [Sections] {
         return allCases
@@ -33,6 +34,8 @@ enum Sections: String, CaseIterable {
             return RecyclingDemoViews.items.count
         case .fullscreen:
             return FullscreenDemoViews.items.count
+        case .swiftui:
+            return SwiftUIDemoViews.items.count
         }
     }
 
@@ -56,6 +59,8 @@ enum Sections: String, CaseIterable {
             names = RecyclingDemoViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
         case .fullscreen:
             names = FullscreenDemoViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
+        case .swiftui:
+            names = SwiftUIDemoViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
         }
         return names
     }
@@ -78,6 +83,9 @@ enum Sections: String, CaseIterable {
             rawClassName = names[indexPath.row].rawValue
         case .fullscreen:
             let names = FullscreenDemoViews.items.sorted { $0.rawValue < $1.rawValue }
+            rawClassName = names[indexPath.row].rawValue
+        case .swiftui:
+            let names = SwiftUIDemoViews.items.sorted { $0.rawValue < $1.rawValue }
             rawClassName = names[indexPath.row].rawValue
         }
 
@@ -109,6 +117,9 @@ enum Sections: String, CaseIterable {
             viewController = selectedView?.viewController
         case .fullscreen:
             let selectedView = FullscreenDemoViews.items[safe: indexPath.row]
+            viewController = selectedView?.viewController
+        case .swiftui:
+            let selectedView = SwiftUIDemoViews.items[safe: indexPath.row]
             viewController = selectedView?.viewController
         }
 
@@ -160,12 +171,7 @@ enum Sections: String, CaseIterable {
     }
 
     var tabletDisplayMode: TabletDisplayMode {
-        switch self {
-        case .dna, .components, .fullscreen, .cells:
-            return .fullscreen
-        case .recycling:
-            return .fullscreen
-        }
+        return .fullscreen
     }
 }
 
