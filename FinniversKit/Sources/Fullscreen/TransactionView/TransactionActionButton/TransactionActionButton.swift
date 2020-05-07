@@ -43,6 +43,7 @@ extension TransactionActionButton {
 
         // Navigate to web
         case url = "URL"
+        case fallback
 
         public init(rawValue: String) {
             switch rawValue {
@@ -53,7 +54,7 @@ extension TransactionActionButton {
             case "REPUBLISH_AD":
                 self = .republishAd
             default:
-                fatalError("No supported action exists for rawValue: '\(rawValue)'")
+                self = .fallback
             }
         }
     }
