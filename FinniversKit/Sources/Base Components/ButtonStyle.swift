@@ -73,10 +73,10 @@ struct DefaultStyle: ButtonStyle {
 
 @available(iOS 13.0, *)
 struct CallToAction: ButtonStyle {
-    let background: UIColor
+    let background: Color
     let font: Font
 
-    init(size: Button.Size = .normal, background: UIColor = .btnPrimary) {
+    init(size: Button.Size = .normal, background: Color = .btnPrimary) {
         self.background = background
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
     }
@@ -96,10 +96,6 @@ struct CallToAction: ButtonStyle {
     }
 
     func dynamicBackground(_ configuration: Configuration) -> Color {
-        if configuration.isPressed {
-            return Color(background.withAlphaComponent(0.8))
-        } else {
-            return Color(background)
-        }
+        configuration.isPressed ? background.opacity(0.8) : background
     }
 }
