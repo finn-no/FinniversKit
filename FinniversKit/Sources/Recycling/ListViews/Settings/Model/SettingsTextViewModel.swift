@@ -6,11 +6,12 @@ import Foundation
 
 public struct SettingsTextViewModel: BasicTableViewCellViewModel, Equatable, Hashable {
     public let title: String
+    public let hasChevron: Bool
     public let subtitle: String? = nil
     public let detailText: String? = nil
-    public let hasChevron = true
 
-    public init(title: String) {
+    public init(title: String, hasChevron: Bool = true) {
         self.title = title
+        self.hasChevron = hasChevron
     }
 }

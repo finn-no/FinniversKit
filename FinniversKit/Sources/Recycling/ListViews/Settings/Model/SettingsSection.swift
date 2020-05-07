@@ -14,14 +14,8 @@ public struct SettingsSection: Equatable, Hashable {
     }
 }
 
-public enum SettingsRow: SettingsRowConvertible, Equatable, Hashable {
+public enum SettingsRow: Equatable, Hashable {
     case text(SettingsTextViewModel)
     case consent(SettingsConsentViewModel)
     case toggle(SettingsToggleViewModel)
-
-    public var row: SettingsRow { self }
-}
-
-public protocol SettingsRowConvertible {
-    var row: SettingsRow { get }
 }
