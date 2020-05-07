@@ -5,21 +5,29 @@
 import SwiftUI
 import FinniversKit
 
+// MARK: - View Model
+
+@available(iOS 13.0, *)
+public protocol SettingsViewModel: ObservableObject {
+    var sections: [SettingsSection] { get }
+    var versionText: String { get }
+}
+
+// MARK: - View
+
 @available(iOS 13.0.0, *)
-public struct SettingsView: View {
-    private let sections: [SettingsSection]
-    private let versionText: String
+public struct SettingsView<ViewModel: SettingsViewModel>: View {
+    @ObservedObject private var viewModel: ViewModel
     private let onToggle: ((IndexPath, Bool) -> Void)?
     private let onSelect: ((IndexPath, UIView?) -> Void)?
+    private var sections: [SettingsSection] { viewModel.sections }
 
     public init(
-        sections: [SettingsSection],
-        versionText: String,
+        viewModel: ViewModel,
         onToggle: ((IndexPath, Bool) -> Void)? = nil,
         onSelect: ((IndexPath, UIView?) -> Void)? = nil
     ) {
-        self.sections = sections
-        self.versionText = versionText
+        self.viewModel = viewModel
         self.onToggle = onToggle
         self.onSelect = onSelect
     }
@@ -27,7 +35,7 @@ public struct SettingsView: View {
     public var body: some View {
         List {
             rows
-            VersionView(text: versionText)
+            VersionView(text: viewModel.versionText)
         }
         .appearance { (view: UITableView) in
             view.separatorStyle = .none
@@ -184,7 +192,23 @@ private struct VersionView: View {
 
 @available(iOS 13.0.0, *)
 struct SettingsView_Previews: PreviewProvider {
-    private static let sections = [
+    private static let viewModel = PreviewViewModel()
+
+    static var previews: some View {
+        ZStack {
+            Color.bgTertiary
+            SettingsView(viewModel: viewModel, onSelect: { indexPath, view in
+                print("Cell at \(indexPath) selected, frame: \(String(describing: view?.superview?.frame))")
+            })
+        }.environment(\.colorScheme, .dark)
+    }
+}
+
+@available(iOS 13.0.0, *)
+private final class PreviewViewModel: SettingsViewModel {
+    @Published private(set) var versionText = "FinnUI Demo"
+
+    @Published private(set) var sections = [
         SettingsSection(
             title: "Varslinger",
             items: [
@@ -215,27 +239,18 @@ struct SettingsView_Previews: PreviewProvider {
         )
     ]
 
-    static var previews: some View {
-        ZStack {
-            Color.bgTertiary
-            SettingsView(sections: sections, versionText: "FinnUI Demo", onSelect: { indexPath, view in
-                print("Cell at \(indexPath) selected, frame: \(String(describing: view?.superview?.frame))")
-            })
-        }.environment(\.colorScheme, .dark)
+    private struct TextRow: SettingsViewCellModel {
+        let title: String
     }
-}
 
-private struct TextRow: SettingsViewCellModel {
-    let title: String
-}
+    private struct ToggleRow: SettingsViewToggleCellModel {
+        let id: String
+        let title: String
+        let isOn: Bool
+    }
 
-private struct ToggleRow: SettingsViewToggleCellModel {
-    let id: String
-    let title: String
-    let isOn: Bool
-}
-
-private struct ConsentRow: SettingsViewConsentCellModel {
-    let title: String
-    let status: String
+    private struct ConsentRow: SettingsViewConsentCellModel {
+        let title: String
+        let status: String
+    }
 }
