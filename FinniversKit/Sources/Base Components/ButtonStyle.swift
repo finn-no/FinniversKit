@@ -6,8 +6,8 @@ import SwiftUI
 
 @available(iOS 13.0, *)
 public struct InlineFlatStyle: ButtonStyle {
-    let font: Font
-    let textColor: Color
+    private let font: Font
+    private let textColor: Color
 
     public init(size: Button.Size = .normal, textColor: Color = .btnPrimary) {
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
@@ -23,16 +23,16 @@ public struct InlineFlatStyle: ButtonStyle {
 }
 
 @available(iOS 13.0, *)
-struct FlatStyle: ButtonStyle {
-    let font: Font
-    let textColor: Color
+public struct FlatStyle: ButtonStyle {
+    private let font: Font
+    private let textColor: Color
 
-    init(size: Button.Size = .normal, textColor: Color = .btnPrimary) {
+    public init(size: Button.Size = .normal, textColor: Color = .btnPrimary) {
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
         self.textColor = textColor
     }
 
-    func makeBody(configuration: Configuration) -> some View {
+    public func makeBody(configuration: Configuration) -> some View {
         HStack {
             Spacer()
             configuration
@@ -47,16 +47,16 @@ struct FlatStyle: ButtonStyle {
 }
 
 @available(iOS 13.0, *)
-struct DefaultStyle: ButtonStyle {
-    let font: Font
-    let textColor: Color
+public struct DefaultStyle: ButtonStyle {
+    private let font: Font
+    private let textColor: Color
 
-    init(size: Button.Size = .normal, textColor: Color = .btnPrimary) {
+    public init(size: Button.Size = .normal, textColor: Color = .btnPrimary) {
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
         self.textColor = textColor
     }
 
-    func makeBody(configuration: Configuration) -> some View {
+    public func makeBody(configuration: Configuration) -> some View {
         HStack {
             Spacer()
             configuration.label
@@ -72,16 +72,16 @@ struct DefaultStyle: ButtonStyle {
 }
 
 @available(iOS 13.0, *)
-struct CallToAction: ButtonStyle {
-    let background: Color
-    let font: Font
+public struct CallToAction: ButtonStyle {
+    private let background: Color
+    private let font: Font
 
-    init(size: Button.Size = .normal, background: Color = .btnPrimary) {
+    public init(size: Button.Size = .normal, background: Color = .btnPrimary) {
         self.background = background
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
     }
 
-    func makeBody(configuration: Configuration) -> some View {
+    public func makeBody(configuration: Configuration) -> some View {
         HStack {
             Spacer()
             configuration.label
@@ -95,7 +95,7 @@ struct CallToAction: ButtonStyle {
         .cornerRadius(.spacingS)
     }
 
-    func dynamicBackground(_ configuration: Configuration) -> Color {
+    private func dynamicBackground(_ configuration: Configuration) -> Color {
         configuration.isPressed ? background.opacity(0.8) : background
     }
 }
