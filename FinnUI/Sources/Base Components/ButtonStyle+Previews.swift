@@ -118,6 +118,5 @@ struct ButtonStyleUsageDemoView_Previews: PreviewProvider {
             ButtonStyleUsageDemoView()
         }
         .background(Color.bgPrimary)
-        .colorScheme(.dark)
     }
 }
