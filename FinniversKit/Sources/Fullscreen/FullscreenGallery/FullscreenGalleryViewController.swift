@@ -125,10 +125,9 @@ public class FullscreenGalleryViewController: UIPageViewController {
         overlayView.superviewWillTransition(to: size)
     }
 
-
     // MARK: - Overrides
 
-    public override func dismiss(animated: Bool, completion: (() -> ())? = nil) {
+    public override func dismiss(animated: Bool, completion: (() -> Void)? = nil) {
         guard
             !animated,
             let transitioningDelegate = transitioningDelegate as? FullscreenGalleryTransitioningController,
