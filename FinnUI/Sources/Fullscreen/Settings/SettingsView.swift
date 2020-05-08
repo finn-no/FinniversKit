@@ -18,9 +18,9 @@ public protocol SettingsViewModel: ObservableObject {
 @available(iOS 13.0.0, *)
 public struct SettingsView<ViewModel: SettingsViewModel>: View {
     @ObservedObject private var viewModel: ViewModel
+    private var sections: [SettingsSection] { viewModel.sections }
     private let onToggle: ((IndexPath, Bool) -> Void)?
     private let onSelect: ((IndexPath, UIView?) -> Void)?
-    private var sections: [SettingsSection] { viewModel.sections }
 
     public init(
         viewModel: ViewModel,
