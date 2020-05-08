@@ -26,6 +26,10 @@ class SwiftUIViewTests: XCTestCase {
         }
     }
 
+    func testButtons() {
+        snapshot(.buttons)
+    }
+
     func testSettings() {
         snapshot(.settings)
     }

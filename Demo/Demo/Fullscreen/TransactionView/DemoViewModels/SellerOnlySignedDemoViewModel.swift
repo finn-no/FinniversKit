@@ -16,8 +16,8 @@ extension TransactionDemoViewDefaultData {
 
         alert: TransactionAlertModel(
             title: "Du har opprettet flere kontrakter for denne bilen",
-            body: "En avtale er bindene når begge har signert. Prosessen under viser derfor prosessen for den første kontrakten begge signerte.",
-            imageIdentifier: "alert-multiple-contracts"
+            message: "En avtale er bindene når begge har signert. Prosessen under viser derfor prosessen for den første kontrakten begge signerte.",
+            imageIdentifier: "MULTIPLE-CONTRACTS"
         ),
 
         steps: [
@@ -27,8 +27,8 @@ extension TransactionDemoViewDefaultData {
                     title: "Annonsen er lagt ut",
                     primaryButton: TransactionActionButtonModel(
                         text: "Se annonsen",
-                        style: "flat",
-                        action: "see_ad",
+                        style: "FLAT",
+                        action: "SEE_AD",
                         fallbackUrl: "/171529672"))),
 
             TransactionStepModel(
@@ -38,7 +38,7 @@ extension TransactionDemoViewDefaultData {
                     body: NSAttributedString(string: "Venter på at kjøper skal signere."),
                     primaryButton: TransactionActionButtonModel(
                         text: "Gå til kontrakt",
-                        style: "default",
+                        style: "DEFAULT",
                         fallbackUrl: "https://www.google.com/search?q=contract+signed"))),
 
             TransactionStepModel(
