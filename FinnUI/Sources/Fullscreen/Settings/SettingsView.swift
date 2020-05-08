@@ -34,7 +34,7 @@ public struct SettingsView<ViewModel: SettingsViewModel>: View {
 
     public var body: some View {
         List {
-            Color.bgTertiary.listRowInsets(EdgeInsets())
+ //           Color.bgTertiary.listRowInsets(EdgeInsets())
             rows
             VersionView(text: viewModel.versionText)
         }
@@ -94,7 +94,7 @@ private struct Header: View {
             Spacer()
             HStack {
                 Text(text.uppercased())
-                    .font(Font(UIFont.detailStrong))
+                    .finnFont(.detailStrong)
                     .foregroundColor(.textSecondary)
                     .padding(.horizontal, .spacingM)
                     .padding(.bottom, .spacingS)
@@ -115,7 +115,7 @@ private struct Footer: View {
             Spacer()
             HStack {
                 Text(text)
-                    .font(Font(UIFont.caption))
+                    .finnFont(.caption)
                     .foregroundColor(.textSecondary)
                     .padding(.horizontal, .spacingM)
                 Spacer()
@@ -164,7 +164,7 @@ private extension BasicListCell {
     init(model: SettingsViewConsentCellModel) {
         self.init(model: model, detailText: { _ in
             Text(model.status)
-                .font(Font(UIFont.body))
+                .finnFont(.body)
                 .foregroundColor(.textSecondary)
         })
     }
@@ -180,7 +180,7 @@ private struct VersionView: View {
             VStack(spacing: .spacingS) {
                 Image(.finnLogoSimple)
                 Text(text)
-                    .font(Font(UIFont.detail))
+                    .finnFont(.detail)
                     .foregroundColor(.textPrimary)
             }
             .padding(EdgeInsets(top: 58, leading: .spacingM, bottom: .spacingS, trailing: .spacingM))

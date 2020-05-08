@@ -66,14 +66,14 @@ public struct BasicListCell: View {
 
     public static func title(_ text: String) -> Text {
         Text(text)
-            .font(Font(UIFont.body))
+            .finnFont(.body)
             .foregroundColor(.textPrimary)
     }
 
     public static func subtitle(_ text: String?) -> Text? {
         text.map({
             Text($0)
-                .font(Font(UIFont.caption))
+                .finnFont(.caption)
                 .foregroundColor(.textPrimary)
         })
     }
@@ -81,7 +81,7 @@ public struct BasicListCell: View {
     public static func detailText(_ text: String?) -> Text? {
         text.map({
             Text($0)
-                .font(Font(UIFont.detail))
+                .finnFont(.detail)
                 .foregroundColor(.textSecondary)
         })
     }
