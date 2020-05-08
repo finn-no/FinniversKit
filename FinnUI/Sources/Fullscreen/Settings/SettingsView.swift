@@ -136,6 +136,7 @@ private struct ToggleCell: View {
         self.model = model
         self.onToggle = onToggle
         _isOn = State(initialValue: model.isOn)
+        UISwitch.appearance().onTintColor = .primaryBlue
     }
 
     var body: some View {
