@@ -207,7 +207,7 @@ struct SettingsView_Previews: PreviewProvider {
 
 @available(iOS 13.0.0, *)
 private final class PreviewViewModel: SettingsViewModel {
-    @Published private(set) var versionText = "FinnUI Demo"
+    let versionText = "FinnUI Demo"
 
     @Published private(set) var sections = [
         SettingsSection(
