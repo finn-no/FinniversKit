@@ -36,4 +36,5 @@ Pod::Spec.new do |s|
   }
   s.dependency "FinniversKit"
   s.frameworks = 'Foundation', 'UIKit', 'FinniversKit'
+  s.weak_frameworks = 'SwiftUI'
 end
