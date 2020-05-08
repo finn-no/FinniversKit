@@ -9,7 +9,6 @@ extension TransactionStepView {
     public enum CustomStyle: String {
         case warning = "WARNING"
         case error = "ERROR"
-        case `default` = "DEFAULT"
 
         public init(rawValue: String) {
             switch rawValue {
@@ -18,7 +17,7 @@ extension TransactionStepView {
             case "ERROR":
                 self = .error
             default:
-                self = .default
+                fatalError("No supported custom style exists for rawValue: '\(rawValue)'")
             }
         }
 
@@ -28,8 +27,6 @@ extension TransactionStepView {
                 return .bgCritical
             case .warning:
                 return .bgAlert
-            case .default:
-                return .bgPrimary
             }
         }
     }
