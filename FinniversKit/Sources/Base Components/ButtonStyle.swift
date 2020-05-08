@@ -18,7 +18,7 @@ public struct InlineFlatStyle: ButtonStyle {
         configuration
             .label
             .font(font)
-            .foregroundColor(textColor)
+            .foregroundColor(configuration.isPressed ? textColor.opacity(0.8) : textColor)
     }
 }
 
@@ -59,10 +59,23 @@ public struct DefaultStyle: ButtonStyle {
     }
 
     public func makeBody(configuration: Configuration) -> some View {
-        FlatStyle(size: size, textColor: textColor)
-            .makeBody(configuration: configuration)
-            .background(Color.bgPrimary)
-            .roundedBorder(radius: .spacingS, color: .btnDisabled)
+        HStack {
+            Spacer()
+            configuration
+                .label
+                .font(font)
+                .foregroundColor(textColor)
+            Spacer()
+        }
+        .padding(.vertical, .spacingS)
+        .padding(.horizontal, .spacingM)
+        .background(
+            configuration.isPressed ? Color(.defaultButtonHighlightedBodyColor) : Color.bgPrimary
+        )
+        .roundedBorder(
+            radius: .spacingS,
+            color: configuration.isPressed ? .btnPrimary : .btnDisabled
+        )
     }
 }
 
