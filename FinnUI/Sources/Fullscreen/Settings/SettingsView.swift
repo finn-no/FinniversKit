@@ -183,6 +183,7 @@ private struct VersionView: View {
 // MARK: - Previews
 
 @available(iOS 13.0.0, *)
+// swiftlint:disable:next superfluous_disable_command type_name
 struct SettingsView_Previews: PreviewProvider {
     private static let sections = [
         SettingsSection(

@@ -108,6 +108,7 @@ private struct BasicButtonStyle: ButtonStyle {
 // MARK: - Previews
 
 @available(iOS 13.0, *)
+// swiftlint:disable:next superfluous_disable_command type_name
 struct BasicListCell_Previews: PreviewProvider {
     private static let viewModels = [
         ViewModel(title: "Hagemøbler", subtitle: nil, detailText: nil, hasChevron: false),
