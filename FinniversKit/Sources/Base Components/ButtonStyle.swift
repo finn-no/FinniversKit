@@ -24,10 +24,12 @@ public struct InlineFlatStyle: ButtonStyle {
 
 @available(iOS 13.0, *)
 public struct FlatStyle: ButtonStyle {
+    private let size: Button.Size
     private let font: Font
     private let textColor: Color
 
     public init(size: Button.Size = .normal, textColor: Color = .btnPrimary) {
+        self.size = size
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
         self.textColor = textColor
     }
@@ -35,10 +37,8 @@ public struct FlatStyle: ButtonStyle {
     public func makeBody(configuration: Configuration) -> some View {
         HStack {
             Spacer()
-            configuration
-                .label
-                .font(font)
-                .foregroundColor(textColor)
+            InlineFlatStyle(size: size, textColor: textColor)
+                .makeBody(configuration: configuration)
             Spacer()
         }
         .padding(.vertical, .spacingS)
@@ -48,26 +48,21 @@ public struct FlatStyle: ButtonStyle {
 
 @available(iOS 13.0, *)
 public struct DefaultStyle: ButtonStyle {
+    private let size: Button.Size
     private let font: Font
     private let textColor: Color
 
     public init(size: Button.Size = .normal, textColor: Color = .btnPrimary) {
+        self.size = size
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
         self.textColor = textColor
     }
 
     public func makeBody(configuration: Configuration) -> some View {
-        HStack {
-            Spacer()
-            configuration.label
-                .font(font)
-                .foregroundColor(textColor)
-            Spacer()
-        }
-        .padding(.vertical, .spacingS)
-        .padding(.horizontal, .spacingM)
-        .background(Color.bgPrimary)
-        .roundedBorder(radius: .spacingS, color: .btnDisabled)
+        FlatStyle(size: size, textColor: textColor)
+            .makeBody(configuration: configuration)
+            .background(Color.bgPrimary)
+            .roundedBorder(radius: .spacingS, color: .btnDisabled)
     }
 }
 
