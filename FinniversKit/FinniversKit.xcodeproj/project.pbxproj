@@ -368,6 +368,7 @@
 		DA2E815223ABB42300A18264 /* NotificationCenterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E815023ABB2DF00A18264 /* NotificationCenterCell.swift */; };
 		DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */; };
 		DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E438521104EB8000DDEC3 /* AdReporterView.swift */; };
+		DA5A858C24617DF000AC0DFE /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A858B24617DF000AC0DFE /* ImageExtensions.swift */; };
 		DA6DC2BB238404B80094C42C /* VersionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8F32B3238295F900EF645F /* VersionInfoView.swift */; };
 		DA708853211338650067519A /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA708852211338650067519A /* ConfirmationView.swift */; };
 		DA7EF33623E9639E00BEA8EA /* ActivityIndicatorSectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7EF33523E9639E00BEA8EA /* ActivityIndicatorSectionFooterView.swift */; };
@@ -826,6 +827,7 @@
 		DA2E815023ABB2DF00A18264 /* NotificationCenterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterCell.swift; sourceTree = "<group>"; };
 		DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterViewModel.swift; sourceTree = "<group>"; };
 		DA4E438521104EB8000DDEC3 /* AdReporterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdReporterView.swift; sourceTree = "<group>"; };
+		DA5A858B24617DF000AC0DFE /* ImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
 		DA708852211338650067519A /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
 		DA7EF33523E9639E00BEA8EA /* ActivityIndicatorSectionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorSectionFooterView.swift; sourceTree = "<group>"; };
 		DA891F52239E509D00FA0688 /* MinFinnVerifyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinFinnVerifyCell.swift; sourceTree = "<group>"; };
@@ -1507,6 +1509,7 @@
 		44898D591FE5B9C200F6017B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DA5A858A24617DE200AC0DFE /* SwiftUI */,
 				44F8831020551D59003E3171 /* Foundation */,
 				9135BF8822F2C2EC00C8E1F5 /* MapKit */,
 				9BB680302462F791001ADACF /* SwiftUI */,
@@ -2678,6 +2681,14 @@
 			path = MinFinn;
 			sourceTree = "<group>";
 		};
+		DA5A858A24617DE200AC0DFE /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				DA5A858B24617DF000AC0DFE /* ImageExtensions.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
 		DAA4F25023A2614800FA529C /* NotificationCenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -3479,6 +3490,7 @@
 				8908E84922C0C3C600ED671C /* MessageFormViewController.swift in Sources */,
 				44A5579E22E71FEB001667AE /* BasicTableViewCellViewModel.swift in Sources */,
 				DA0F4E63239504F3003E93A4 /* MinFinnView.swift in Sources */,
+				DA5A858C24617DF000AC0DFE /* ImageExtensions.swift in Sources */,
 				DAB7FAA821B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift in Sources */,
 				620AEE34221175970087C150 /* UserAdManagementButtonAndInformationCell.swift in Sources */,
 				DAB7FAA621B690DD00BF8CC6 /* BottomSheet.swift in Sources */,
