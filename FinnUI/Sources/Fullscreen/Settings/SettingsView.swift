@@ -34,6 +34,7 @@ public struct SettingsView<ViewModel: SettingsViewModel>: View {
 
     public var body: some View {
         List {
+            Color.bgTertiary.listRowInsets(EdgeInsets())
             rows
             VersionView(text: viewModel.versionText)
         }
