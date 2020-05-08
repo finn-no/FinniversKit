@@ -5,21 +5,29 @@
 import SwiftUI
 import FinniversKit
 
+// MARK: - View Model
+
+@available(iOS 13.0, *)
+public protocol SettingsViewModel: ObservableObject {
+    var sections: [SettingsSection] { get }
+    var versionText: String { get }
+}
+
+// MARK: - View
+
 @available(iOS 13.0.0, *)
-public struct SettingsView: View {
-    private let sections: [SettingsSection]
-    private let versionText: String
+public struct SettingsView<ViewModel: SettingsViewModel>: View {
+    @ObservedObject private var viewModel: ViewModel
+    private var sections: [SettingsSection] { viewModel.sections }
     private let onToggle: ((IndexPath, Bool) -> Void)?
     private let onSelect: ((IndexPath, UIView?) -> Void)?
 
     public init(
-        sections: [SettingsSection],
-        versionText: String,
+        viewModel: ViewModel,
         onToggle: ((IndexPath, Bool) -> Void)? = nil,
         onSelect: ((IndexPath, UIView?) -> Void)? = nil
     ) {
-        self.sections = sections
-        self.versionText = versionText
+        self.viewModel = viewModel
         self.onToggle = onToggle
         self.onSelect = onSelect
     }
@@ -27,12 +35,13 @@ public struct SettingsView: View {
     public var body: some View {
         List {
             rows
-            VersionView(text: versionText)
+            VersionView(text: viewModel.versionText)
         }
         .appearance { (view: UITableView) in
             view.separatorStyle = .none
             view.backgroundColor = .bgTertiary
         }
+        .id(UUID())
         .edgesIgnoringSafeArea(.all)
     }
 
@@ -43,6 +52,7 @@ public struct SettingsView: View {
             ForEach(0..<self.sections[section].items.count) { row in
                 self.cell(at: row, in: section)
                     .bottomDivider(self.isLastRow(row, in: section))
+                    .frame(height: 48)
             }
 
             self.sections[section].footerTitle.map(Footer.init)
@@ -84,7 +94,7 @@ private struct Header: View {
             Spacer()
             HStack {
                 Text(text.uppercased())
-                    .font(Font(UIFont.detailStrong))
+                    .finnFont(.detailStrong)
                     .foregroundColor(.textSecondary)
                     .padding(.horizontal, .spacingM)
                     .padding(.bottom, .spacingS)
@@ -105,7 +115,7 @@ private struct Footer: View {
             Spacer()
             HStack {
                 Text(text)
-                    .font(Font(UIFont.caption))
+                    .finnFont(.caption)
                     .foregroundColor(.textSecondary)
                     .padding(.horizontal, .spacingM)
                 Spacer()
@@ -127,6 +137,7 @@ private struct ToggleCell: View {
         self.model = model
         self.onToggle = onToggle
         _isOn = State(initialValue: model.isOn)
+        UISwitch.appearance().onTintColor = .primaryBlue
     }
 
     var body: some View {
@@ -153,7 +164,7 @@ private extension BasicListCell {
     init(model: SettingsViewConsentCellModel) {
         self.init(model: model, detailText: { _ in
             Text(model.status)
-                .font(Font(UIFont.body))
+                .finnFont(.body)
                 .foregroundColor(.textSecondary)
         })
     }
@@ -169,7 +180,7 @@ private struct VersionView: View {
             VStack(spacing: .spacingS) {
                 Image(.finnLogoSimple)
                 Text(text)
-                    .font(Font(UIFont.detail))
+                    .finnFont(.detail)
                     .foregroundColor(.textPrimary)
             }
             .padding(EdgeInsets(top: 58, leading: .spacingM, bottom: .spacingS, trailing: .spacingM))
@@ -185,7 +196,23 @@ private struct VersionView: View {
 @available(iOS 13.0.0, *)
 // swiftlint:disable:next superfluous_disable_command type_name
 struct SettingsView_Previews: PreviewProvider {
-    private static let sections = [
+    private static let viewModel = PreviewViewModel()
+
+    static var previews: some View {
+        ZStack {
+            Color.bgTertiary
+            SettingsView(viewModel: viewModel, onSelect: { indexPath, view in
+                print("Cell at \(indexPath) selected, frame: \(String(describing: view?.superview?.frame))")
+            })
+        }.environment(\.colorScheme, .dark)
+    }
+}
+
+@available(iOS 13.0.0, *)
+private final class PreviewViewModel: SettingsViewModel {
+    let versionText = "FinnUI Demo"
+
+    @Published private(set) var sections = [
         SettingsSection(
             title: "Varslinger",
             items: [
@@ -216,27 +243,18 @@ struct SettingsView_Previews: PreviewProvider {
         )
     ]
 
-    static var previews: some View {
-        ZStack {
-            Color.bgTertiary
-            SettingsView(sections: sections, versionText: "FinnUI Demo", onSelect: { indexPath, view in
-                print("Cell at \(indexPath) selected, frame: \(String(describing: view?.superview?.frame))")
-            })
-        }.environment(\.colorScheme, .dark)
+    private struct TextRow: SettingsViewCellModel {
+        let title: String
     }
-}
 
-private struct TextRow: SettingsViewCellModel {
-    let title: String
-}
+    private struct ToggleRow: SettingsViewToggleCellModel {
+        let id: String
+        let title: String
+        let isOn: Bool
+    }
 
-private struct ToggleRow: SettingsViewToggleCellModel {
-    let id: String
-    let title: String
-    let isOn: Bool
-}
-
-private struct ConsentRow: SettingsViewConsentCellModel {
-    let title: String
-    let status: String
+    private struct ConsentRow: SettingsViewConsentCellModel {
+        let title: String
+        let status: String
+    }
 }
