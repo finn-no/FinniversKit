@@ -95,14 +95,10 @@ private struct BasicButtonStyle: ButtonStyle {
     }
 
     private var selectedColor: UIColor {
-        UIColor { traitCollection -> UIColor in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-               return UIColor(hex: "2f3039")
-            default:
-               return UIColor.defaultCellSelectedBackgroundColor
-            }
-        }
+        return UIColor.dynamicColorIfAvailable(
+            defaultColor: UIColor(r: 230, g: 235, b: 242),
+            darkModeColor: UIColor(hex: "2f3039")
+        )
     }
 }
 

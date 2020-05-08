@@ -34,7 +34,6 @@ public struct SettingsView<ViewModel: SettingsViewModel>: View {
 
     public var body: some View {
         List {
- //           Color.bgTertiary.listRowInsets(EdgeInsets())
             rows
             VersionView(text: viewModel.versionText)
         }
@@ -53,6 +52,7 @@ public struct SettingsView<ViewModel: SettingsViewModel>: View {
             ForEach(0..<self.sections[section].items.count) { row in
                 self.cell(at: row, in: section)
                     .bottomDivider(self.isLastRow(row, in: section))
+                    .frame(height: 48)
             }
 
             self.sections[section].footerTitle.map(Footer.init)
