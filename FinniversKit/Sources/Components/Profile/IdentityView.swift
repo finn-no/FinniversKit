@@ -40,7 +40,7 @@ public class IdentityView: UIView {
         /// Subtitle hidden, profile name black
         case anonymous
 
-        /// Subtitle hidden, profile name hidden, offlineButton visible 
+        /// Subtitle hidden, profile name hidden, offlineButton visible
         case offline
     }
 
@@ -141,6 +141,7 @@ public class IdentityView: UIView {
         let button = Button(style: .utility, size: .small)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(offlineButtonTapped), for: .touchUpInside)
+        button.isHidden = true
         return button
     }()
 
@@ -179,6 +180,8 @@ public class IdentityView: UIView {
         addSubview(profileImageView)
         addSubview(descriptionLabel)
 
+        addSubview(offlineButton)
+
         stackView.addArrangedSubview(profileNameWrapperView)
         stackView.addArrangedSubview(subtitleLabel)
 
@@ -194,16 +197,10 @@ public class IdentityView: UIView {
             stackView.bottomAnchor.constraint(greaterThanOrEqualTo: profileImageView.bottomAnchor),
             stackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingM),
             stackView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.spacingS),
+
+            offlineButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            offlineButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
         ])
-
-        if viewModel?.displayMode == .offline {
-            addSubview(offlineButton)
-
-            NSLayoutConstraint.activate([
-                offlineButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
-                offlineButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
-            ])
-        }
     }
 
     private func addTapListener() {
@@ -246,6 +243,8 @@ public class IdentityView: UIView {
 
         descriptionLabel.isHidden = true
         descriptionLabelConstraints.forEach { $0.isActive = false }
+
+        offlineButton.isHidden = true
     }
 
     private func populateViews(with viewModel: IdentityViewModel) {
@@ -254,14 +253,15 @@ public class IdentityView: UIView {
 
         verifiedBadge.isHidden = (!viewModel.isVerified || viewModel.displayMode == .offline)
 
-        if viewModel.displayMode == .anonymous {
+        if viewModel.displayMode == .offline {
+            offlineButton.isHidden = false
+            offlineButton.setTitle(viewModel.offlineButtonTitle, for: .normal)
+        } else if viewModel.displayMode == .anonymous {
             subtitleLabel.isHidden = true
         } else {
             subtitleLabel.isHidden = false
             subtitleLabel.text = viewModel.subtitle
         }
-
-        offlineButton.setTitle(viewModel.offlineButtonTitle, for: .normal)
 
         let showDescription = viewModel.description != nil && !hideDescription
         descriptionLabel.isHidden = !showDescription
