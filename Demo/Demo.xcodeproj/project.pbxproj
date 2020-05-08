@@ -224,7 +224,6 @@
 		46E7759D242D6A8A008A5E93 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E77561242CFFA5008A5E93 /* FinniversKit.framework */; };
 		46E7759E242D6A8A008A5E93 /* FinnUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E77562242CFFA5008A5E93 /* FinnUI.framework */; };
 		8D680753832283BAA1FD13E7 /* ChatAvailabilityDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680197B160A999652BC551 /* ChatAvailabilityDemoView.swift */; };
-		9B6137BF24654C4400D453CD /* ButtonStyle+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6137BE24654C4300D453CD /* ButtonStyle+Previews.swift */; };
 		9BA6C49F24336B51009D417B /* CoronaHelpDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C49E24336B51009D417B /* CoronaHelpDemoView.swift */; };
 		9BA6C4A224336B9A009D417B /* DemoWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */; };
 		DA083C2E2462BCA800B26235 /* SwiftUIDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */; };
@@ -473,7 +472,6 @@
 		46E77582242D478D008A5E93 /* XCTestCastExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCastExtensions.swift; sourceTree = "<group>"; };
 		46E77584242D4805008A5E93 /* TestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConfig.swift; sourceTree = "<group>"; };
 		8D680197B160A999652BC551 /* ChatAvailabilityDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAvailabilityDemoView.swift; sourceTree = "<group>"; };
-		9B6137BE24654C4300D453CD /* ButtonStyle+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ButtonStyle+Previews.swift"; sourceTree = "<group>"; };
 		9BA6C49E24336B51009D417B /* CoronaHelpDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaHelpDemoView.swift; sourceTree = "<group>"; };
 		9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoWrapperView.swift; sourceTree = "<group>"; };
 		DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDemoViews.swift; sourceTree = "<group>"; };
@@ -525,7 +523,6 @@
 		46AE6FC2242BADC9007BB005 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				9B6137BD24654C3A00D453CD /* Base Components */,
 				46E77364242CEF09008A5E93 /* Cells */,
 				46E772CB242CEF09008A5E93 /* Components */,
 				46E77257242CEF09008A5E93 /* Demo */,
@@ -1826,14 +1823,6 @@
 			path = ChatAvailability;
 			sourceTree = "<group>";
 		};
-		9B6137BD24654C3A00D453CD /* Base Components */ = {
-			isa = PBXGroup;
-			children = (
-				9B6137BE24654C4300D453CD /* ButtonStyle+Previews.swift */,
-			);
-			path = "Base Components";
-			sourceTree = "<group>";
-		};
 		9BA6C49C24336AFF009D417B /* CoronaHelp */ = {
 			isa = PBXGroup;
 			children = (
@@ -2171,7 +2160,6 @@
 				46E773B6242CEF0A008A5E93 /* DrumMachineDemoView.swift in Sources */,
 				9BA6C4A224336B9A009D417B /* DemoWrapperView.swift in Sources */,
 				46E773A9242CEF0A008A5E93 /* RecyclingDemoViews.swift in Sources */,
-				9B6137BF24654C4400D453CD /* ButtonStyle+Previews.swift in Sources */,
 				46E77448242CEF0A008A5E93 /* UserAdCellDemoView.swift in Sources */,
 				46E77468242CEF0A008A5E93 /* FavoriteFoldersListDemoView.swift in Sources */,
 				46E77405242CEF0A008A5E93 /* HorizontalSlideDemoViewController.swift in Sources */,

@@ -20,6 +20,7 @@ struct ButtonStyleUsageDemoView: View {
                         .buttonStyle(CallToAction())
 
                         SwiftUI.Button("Disabled") {}
+                        .disabled(true)
                         .buttonStyle(CallToAction(background: .btnDisabled))
                     }
 
@@ -28,6 +29,7 @@ struct ButtonStyleUsageDemoView: View {
                         .buttonStyle(CallToAction(size: .small))
 
                         SwiftUI.Button("Disabled") {}
+                        .disabled(true)
                         .buttonStyle(CallToAction(size: .small, background: .btnDisabled))
                     }
                 }
@@ -101,6 +103,7 @@ struct ButtonStyleUsageDemoView: View {
                 Spacer()
             }
         }
+        .background(Color.bgPrimary)
         .padding()
     }
 }
@@ -108,6 +111,13 @@ struct ButtonStyleUsageDemoView: View {
 @available(iOS 13.0.0, *)
 struct ButtonStyleUsageDemoView_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonStyleUsageDemoView()
+        ZStack {
+            Rectangle()
+                .foregroundColor(.bgPrimary)
+                .edgesIgnoringSafeArea(.all)
+            ButtonStyleUsageDemoView()
+        }
+        .background(Color.bgPrimary)
+        .colorScheme(.dark)
     }
 }
