@@ -6,12 +6,12 @@ import UIKit
 
 public class TransactionAlertView: UIView {
     enum Icon: String {
-        case multipleContracts = "alert-multiple-contracts"
+        case multipleContracts = "MULTIPLE-CONTRACTS"
         case `default` = "noImage"
 
         init(rawValue: String) {
             switch rawValue {
-            case "alert-multiple-contracts":
+            case "MULTIPLE-CONTRACTS":
                 self = .multipleContracts
             default:
                 self = .default
@@ -84,7 +84,7 @@ public class TransactionAlertView: UIView {
         layer.cornerRadius = .spacingS
 
         titleLabel.text = model.title
-        messageView.text = model.body
+        messageView.text = model.message
 
         addSubview(titleLabel)
         addSubview(messageView)

@@ -20,7 +20,7 @@ public struct TransactionHeaderModel: TransactionHeaderViewModel {
 
 public struct TransactionAlertModel: TransactionAlertViewModel {
     public var title: String
-    public var body: String
+    public var message: String
     public var imageIdentifier: String
 }
 
