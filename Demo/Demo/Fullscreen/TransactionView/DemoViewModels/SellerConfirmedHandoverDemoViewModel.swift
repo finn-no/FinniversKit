@@ -16,8 +16,8 @@ extension TransactionDemoViewDefaultData {
 
         alert: TransactionAlertModel(
             title: "Du har opprettet flere kontrakter for denne bilen",
-            body: "En avtale er bindene når begge har signert. Prosessen under viser derfor prosessen for den første kontrakten begge signerte.",
-            imageIdentifier: "alert-multiple-contracts"
+            message: "En avtale er bindene når begge har signert. Prosessen under viser derfor prosessen for den første kontrakten begge signerte.",
+            imageIdentifier: "MULTIPLE-CONTRACTS"
         ),
 
         steps: [
@@ -27,8 +27,8 @@ extension TransactionDemoViewDefaultData {
                     title: "Annonsen er lagt ut",
                     primaryButton: TransactionActionButtonModel(
                         text: "Se annonsen",
-                        style: "flat",
-                        action: "see_ad",
+                        style: "FLAT",
+                        action: "SEE_AD",
                         fallbackUrl: "/171529672"))),
 
             TransactionStepModel(
@@ -38,7 +38,7 @@ extension TransactionDemoViewDefaultData {
                     body: NSAttributedString(string: "Begge har signert kontrakten."),
                     primaryButton: TransactionActionButtonModel(
                         text: "Gå til kontrakt",
-                        style: "flat",
+                        style: "FLAT",
                         url: "https://www.google.com/search?q=contract+signed"))),
 
             TransactionStepModel(
@@ -56,12 +56,12 @@ extension TransactionDemoViewDefaultData {
                     body: NSAttributedString(string: "<p>Du har bekreftet overleveringen.<br/>Venter på kjøper.</p><p>Dere må bekrefte før:<br/><strong>8. februar 2020.</strong></p><ol><li>Ved oppmøte registrerer dere først eierskiftet digitalt hos Statens vegvesen.</li><li>Deretter må <strong>begge</strong> bekrefte at overleveringen har skjedd, og at pengene kan utbetales.</li></ol>"),
                     nativeButton: TransactionActionButtonModel(
                         text: "Registrer eierskifte",
-                        style: "default",
+                        style: "DEFAULT",
                         url: "https://www.vegvesen.no/"),
                     primaryButton: TransactionActionButtonModel(
                         text: "Bekreft overlevering",
-                        style: "call_to_action",
-                        action: "url",
+                        style: "CALL_TO_ACTION",
+                        action: "URL",
                         url: "https://www.google.com/search?q=contract+signed")),
                 detail: TransactionStepContentModel(
                     body: NSAttributedString(string: "Hvis fristen går ut før dere har bekreftet, ta kontakt med Swiftcourt for å få pengene ut av hvelvet."))),

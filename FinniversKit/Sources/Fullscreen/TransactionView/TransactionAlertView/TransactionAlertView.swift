@@ -84,7 +84,7 @@ public class TransactionAlertView: UIView {
         layer.cornerRadius = .spacingS
 
         titleLabel.text = model.title
-        messageView.text = model.body
+        messageView.text = model.message
 
         addSubview(titleLabel)
         addSubview(messageView)

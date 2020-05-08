@@ -43,7 +43,7 @@ extension TransactionActionButton {
 
         // Navigate to web
         case url = "URL"
-        case fallback
+        case fallback = "FALLBACK"
 
         public init(rawValue: String) {
             switch rawValue {
