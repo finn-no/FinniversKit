@@ -226,6 +226,8 @@
 		8D680753832283BAA1FD13E7 /* ChatAvailabilityDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680197B160A999652BC551 /* ChatAvailabilityDemoView.swift */; };
 		9BA6C49F24336B51009D417B /* CoronaHelpDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C49E24336B51009D417B /* CoronaHelpDemoView.swift */; };
 		9BA6C4A224336B9A009D417B /* DemoWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */; };
+		DA083C2E2462BCA800B26235 /* SwiftUIDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */; };
+		DAE9CA8724602CB000C7552F /* SwiftUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -472,6 +474,8 @@
 		8D680197B160A999652BC551 /* ChatAvailabilityDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAvailabilityDemoView.swift; sourceTree = "<group>"; };
 		9BA6C49E24336B51009D417B /* CoronaHelpDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaHelpDemoView.swift; sourceTree = "<group>"; };
 		9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoWrapperView.swift; sourceTree = "<group>"; };
+		DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDemoViews.swift; sourceTree = "<group>"; };
+		DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -554,11 +558,12 @@
 		46E77259242CEF09008A5E93 /* DemoViews */ = {
 			isa = PBXGroup;
 			children = (
-				46E7725A242CEF09008A5E93 /* DnaDemoViews.swift */,
-				46E7725B242CEF09008A5E93 /* FullscreenDemoViews.swift */,
 				46E7725C242CEF09008A5E93 /* CellsDemoViews.swift */,
 				46E7725D242CEF09008A5E93 /* ComponentDemoViews.swift */,
+				46E7725A242CEF09008A5E93 /* DnaDemoViews.swift */,
+				46E7725B242CEF09008A5E93 /* FullscreenDemoViews.swift */,
 				46E7725E242CEF09008A5E93 /* RecyclingDemoViews.swift */,
+				DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */,
 			);
 			path = DemoViews;
 			sourceTree = "<group>";
@@ -1796,12 +1801,13 @@
 		46E7756D242D4736008A5E93 /* SnapshotTests */ = {
 			isa = PBXGroup;
 			children = (
+				46E77570242D4736008A5E93 /* Info.plist */,
 				46E77577242D476B008A5E93 /* BroadcastMessageTests.swift */,
 				46E77578242D476B008A5E93 /* ComponentViewTests.swift */,
 				46E77576242D476B008A5E93 /* DnaViewTests.swift */,
 				46E7757B242D476B008A5E93 /* FullscreenViewTests.swift */,
-				46E77570242D4736008A5E93 /* Info.plist */,
 				46E77579242D476B008A5E93 /* RecyclingViewTests.swift */,
+				DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */,
 				46E7757A242D476B008A5E93 /* TableViewCellViewsTests.swift */,
 				46E77584242D4805008A5E93 /* TestConfig.swift */,
 				46E77582242D478D008A5E93 /* XCTestCastExtensions.swift */,
@@ -1997,6 +2003,7 @@
 				46E773BA242CEF0A008A5E93 /* PopupViewDefaultData.swift in Sources */,
 				46E773F0242CEF0A008A5E93 /* IntegerNumberSuffixFormatter.swift in Sources */,
 				46E77466242CEF0A008A5E93 /* SavedSearchesListViewDemoView.swift in Sources */,
+				DA083C2E2462BCA800B26235 /* SwiftUIDemoViews.swift in Sources */,
 				46E77469242CEF0A008A5E93 /* FavoriteFoldersListViewDemoViewHelpers.swift in Sources */,
 				46E773E7242CEF0A008A5E93 /* PaymentCompletedDemoViewModel.swift in Sources */,
 				46E7741F242CEF0A008A5E93 /* ButtonDemoView.swift in Sources */,
@@ -2176,6 +2183,7 @@
 				46E7757E242D476B008A5E93 /* ComponentViewTests.swift in Sources */,
 				46E77580242D476B008A5E93 /* RecyclingViewTests.swift in Sources */,
 				46E77585242D4805008A5E93 /* TestConfig.swift in Sources */,
+				DAE9CA8724602CB000C7552F /* SwiftUIViewTests.swift in Sources */,
 				46E77581242D476B008A5E93 /* FullscreenViewTests.swift in Sources */,
 				46E77583242D478D008A5E93 /* XCTestCastExtensions.swift in Sources */,
 				46E7757C242D476B008A5E93 /* DnaViewTests.swift in Sources */,
