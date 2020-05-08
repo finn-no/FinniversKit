@@ -3,20 +3,20 @@
 //
 
 public enum TransactionActionButton: String {
-    case `default` = "default"
-    case flat = "flat"
-    case callToAction = "call_to_action"
-    case republishAd = "republish_ad"
+    case `default` = "DEFAULT"
+    case flat = "FLAT"
+    case callToAction = "CALL_TO_ACTION"
+    case republishAd = "REPUBLISH_AD"
 
     public init(rawValue: String) {
         switch rawValue {
-        case "default":
+        case "DEFAULT":
             self = .default
-        case "flat":
+        case "FLAT":
             self = .flat
-        case "call_to_action":
+        case "CALL_TO_ACTION":
             self = .callToAction
-        case "republish_ad":
+        case "REPUBLISH_AD":
             self = .republishAd
         default:
             self = .default
@@ -38,23 +38,23 @@ public enum TransactionActionButton: String {
 extension TransactionActionButton {
     public enum Action: String {
         // Native actions
-        case seeAd = "see_ad"
-        case republishAd = "republish_ad"
+        case seeAd = "SEE_AD"
+        case republishAd = "REPUBLISH_AD"
 
         // Navigate to web
-        case url = "url"
-        case none
+        case url = "URL"
+        case fallback = "FALLBACK"
 
         public init(rawValue: String) {
             switch rawValue {
-            case "url":
+            case "URL":
                 self = .url
-            case "see_ad":
+            case "SEE_AD":
                 self = .seeAd
-            case "republish_ad":
+            case "REPUBLISH_AD":
                 self = .republishAd
             default:
-                self = .none
+                self = .fallback
             }
         }
     }

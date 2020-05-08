@@ -21,8 +21,8 @@ extension TransactionDemoViewDefaultData {
                     title: "Annonsen er lagt ut",
                     primaryButton: TransactionActionButtonModel(
                         text: "Se annonsen",
-                        style: "flat",
-                        action: "see_ad",
+                        style: "FLAT",
+                        action: "SEE_AD",
                         fallbackUrl: "/171529672"))),
 
             TransactionStepModel(
@@ -32,7 +32,7 @@ extension TransactionDemoViewDefaultData {
                     body: NSAttributedString(string: "Når du har funnet en kjøper er det neste steget å skrive en kontrakt."),
                     primaryButton: TransactionActionButtonModel(
                         text: "Opprett digital kontrakt",
-                        style: "call_to_action",
+                        style: "CALL_TO_ACTION",
                         fallbackUrl: "https://www.google.com/search?q=contract+signed"))),
 
             TransactionStepModel(
