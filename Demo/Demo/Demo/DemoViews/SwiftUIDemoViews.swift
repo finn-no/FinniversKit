@@ -6,6 +6,7 @@ import SwiftUI
 @testable import FinnUI
 
 public enum SwiftUIDemoViews: String, CaseIterable {
+    case buttons
     case settings
     case basicCellVariations
 
@@ -27,11 +28,18 @@ public enum SwiftUIDemoViews: String, CaseIterable {
 
     @available(iOS 13.0, *)
     private var hostingController: UIViewController {
+        UIHostingController(rootView: previews)
+    }
+
+    @available(iOS 13.0, *)
+    private var previews: AnyView {
         switch self {
+        case .buttons:
+            return AnyView(ButtonStyleUsageDemoView_Previews.previews)
         case .settings:
-            return UIHostingController(rootView: SettingsView_Previews.previews)
+            return AnyView(SettingsView_Previews.previews)
         case .basicCellVariations:
-            return UIHostingController(rootView: BasicListCell_Previews.previews)
+            return AnyView(BasicListCell_Previews.previews)
         }
     }
 }
