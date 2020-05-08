@@ -125,6 +125,24 @@ public class FullscreenGalleryViewController: UIPageViewController {
         overlayView.superviewWillTransition(to: size)
     }
 
+    // MARK: - Overrides
+
+    public override func dismiss(animated: Bool, completion: (() -> Void)? = nil) {
+        guard
+            !animated,
+            let transitioningDelegate = transitioningDelegate as? FullscreenGalleryTransitioningController,
+            let presenterDelegate = transitioningDelegate.presenterDelegate,
+            let presenterView = presenterDelegate.viewForFullscreenGalleryTransitionOut()
+        else {
+            super.dismiss(animated: animated, completion: completion)
+            return
+        }
+
+        presenterView.isHidden = false
+        presenterDelegate.fullscreenGalleryTransitionOutCompleted()
+        super.dismiss(animated: false, completion: completion)
+    }
+
     // MARK: - View interactions
 
     @objc private func onSingleTap() {

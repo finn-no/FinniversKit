@@ -14,13 +14,13 @@ final class PrimingTableViewCell: UITableViewCell {
     }()
 
     private lazy var titleLabel: UILabel = {
-        let label = Label(style: .captionStrong, withAutoLayout: true)
+        let label = Label(style: .bodyStrong, withAutoLayout: true)
         label.textColor = .textPrimary
         return label
     }()
 
     private lazy var detailLabel: UILabel = {
-        let label = Label(style: .caption, withAutoLayout: true)
+        let label = Label(style: .body, withAutoLayout: true)
         label.textColor = .textSecondary
         label.numberOfLines = 0
         return label
@@ -42,8 +42,8 @@ final class PrimingTableViewCell: UITableViewCell {
 
     func configure(withIcon icon: UIImage, title: String, detailText: String) {
         iconImageView.image = icon.withRenderingMode(.alwaysTemplate)
-        titleLabel.text = title
-        detailLabel.text = detailText
+        titleLabel.attributedText = title.attributedStringWithLineSpacing(.spacingXXS)
+        detailLabel.attributedText = detailText.attributedStringWithLineSpacing(.spacingXXS)
     }
 
     private func setup() {
@@ -57,13 +57,13 @@ final class PrimingTableViewCell: UITableViewCell {
             iconImageView.widthAnchor.constraint(equalToConstant: 56),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 22),
-            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
 
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
             titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .spacingM),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
 
-            detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXXS),
             detailLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             detailLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM)

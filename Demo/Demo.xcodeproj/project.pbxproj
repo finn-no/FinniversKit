@@ -226,6 +226,7 @@
 		8D680753832283BAA1FD13E7 /* ChatAvailabilityDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680197B160A999652BC551 /* ChatAvailabilityDemoView.swift */; };
 		9BA6C49F24336B51009D417B /* CoronaHelpDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C49E24336B51009D417B /* CoronaHelpDemoView.swift */; };
 		9BA6C4A224336B9A009D417B /* DemoWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */; };
+		DA083C2E2462BCA800B26235 /* SwiftUIDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */; };
 		DAE9CA8724602CB000C7552F /* SwiftUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -473,6 +474,7 @@
 		8D680197B160A999652BC551 /* ChatAvailabilityDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAvailabilityDemoView.swift; sourceTree = "<group>"; };
 		9BA6C49E24336B51009D417B /* CoronaHelpDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaHelpDemoView.swift; sourceTree = "<group>"; };
 		9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoWrapperView.swift; sourceTree = "<group>"; };
+		DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDemoViews.swift; sourceTree = "<group>"; };
 		DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -556,11 +558,12 @@
 		46E77259242CEF09008A5E93 /* DemoViews */ = {
 			isa = PBXGroup;
 			children = (
-				46E7725A242CEF09008A5E93 /* DnaDemoViews.swift */,
-				46E7725B242CEF09008A5E93 /* FullscreenDemoViews.swift */,
 				46E7725C242CEF09008A5E93 /* CellsDemoViews.swift */,
 				46E7725D242CEF09008A5E93 /* ComponentDemoViews.swift */,
+				46E7725A242CEF09008A5E93 /* DnaDemoViews.swift */,
+				46E7725B242CEF09008A5E93 /* FullscreenDemoViews.swift */,
 				46E7725E242CEF09008A5E93 /* RecyclingDemoViews.swift */,
+				DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */,
 			);
 			path = DemoViews;
 			sourceTree = "<group>";
@@ -2000,6 +2003,7 @@
 				46E773BA242CEF0A008A5E93 /* PopupViewDefaultData.swift in Sources */,
 				46E773F0242CEF0A008A5E93 /* IntegerNumberSuffixFormatter.swift in Sources */,
 				46E77466242CEF0A008A5E93 /* SavedSearchesListViewDemoView.swift in Sources */,
+				DA083C2E2462BCA800B26235 /* SwiftUIDemoViews.swift in Sources */,
 				46E77469242CEF0A008A5E93 /* FavoriteFoldersListViewDemoViewHelpers.swift in Sources */,
 				46E773E7242CEF0A008A5E93 /* PaymentCompletedDemoViewModel.swift in Sources */,
 				46E7741F242CEF0A008A5E93 /* ButtonDemoView.swift in Sources */,

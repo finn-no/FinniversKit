@@ -15,20 +15,20 @@ public protocol TransactionStepViewDelegate: AnyObject {
 }
 
 public enum TransactionStepViewState: String {
-    case notStarted = "not_started"
-    case active = "active"
-    case completed = "completed"
+    case notStarted = "NOT_STARTED"
+    case active = "ACTIVE"
+    case completed = "COMPLETED"
 
     public init(rawValue: String) {
         switch rawValue {
-        case "not_started":
+        case "NOT_STARTED":
             self = .notStarted
-        case "active":
+        case "ACTIVE":
             self = .active
-        case "completed":
+        case "COMPLETED":
             self = .completed
         default:
-            fatalError("No state exists for rawValue: '\(rawValue)'")
+            fatalError("No supported state exists for rawValue: '\(rawValue)'")
         }
     }
 

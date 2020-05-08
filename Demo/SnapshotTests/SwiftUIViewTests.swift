@@ -9,19 +9,32 @@ import SwiftUI
 
 @available(iOS 13.0, *)
 class SwiftUIViewTests: XCTestCase {
-    private func snapshot<T: PreviewProvider>(
-        _ provider: T.Type,
+    private func snapshot(
+        _ component: SwiftUIDemoViews,
         includeIPad: Bool = false,
         delay: TimeInterval? = nil,
         testName: String = #function
     ) {
-        let controller = UIHostingController(rootView: T.previews)
-        assertSnapshots(matching: controller, includeDarkMode: true, includeIPad: includeIPad, delay: delay, testName: testName)
+        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, delay: delay, testName: testName)
     }
 
     // MARK: - Tests
 
-    func testSettingsPreview() {
-        snapshot(SettingsView_Previews.self)
+    func testMissingSnapshotTests() {
+        for element in elementWithoutTests(for: SwiftUIDemoViews.self) {
+            XCTFail("Not all elements were implemented, missing: \(element.rawValue)")
+        }
+    }
+
+    func testButtons() {
+        snapshot(.buttons)
+    }
+
+    func testSettings() {
+        snapshot(.settings)
+    }
+
+    func testBasicCellVariations() {
+        snapshot(.basicCellVariations)
     }
 }
