@@ -4,6 +4,8 @@
 
 import SwiftUI
 
+// swiftlint:disable opening_brace
+
 @available(iOS 13.0, *)
 extension Color {
     // MARK: - Background
