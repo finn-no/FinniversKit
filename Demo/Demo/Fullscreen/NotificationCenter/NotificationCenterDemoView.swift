@@ -1,147 +1,100 @@
 //
-//  Copyright © 2019 FINN AS. All rights reserved.
+//  Copyright © 2020 FINN.no AS. All rights reserved.
 //
 
 import FinniversKit
+import FinnUI
 
-private struct NotificationModel: NotificationCenterCellModel {
-    let imagePath: String?
-    let title: String
-    let priceText: String? = "3000 kr"
-    var read: Bool
-    let ribbonViewModel: RibbonViewModel?
-}
-
-private struct Section: NotificationCenterSectionHeaderViewModel {
-    let title: String?
-    let details: NotificationCenterSectionDetails?
-    var items: [NotificationModel]
-}
-
-class NotificationCenterDemoView: UIView {
-
-    private var data = [
-        Section(
-            title: "I dag",
-            details: .link(text: "2 nye treff:", title: "Hus som jeg må kjøpe før jeg fyller 40 år", showSearchIcon: true),
-            items: [
-            NotificationModel(
-                imagePath: "https://jwproperty.com/files/wp-content/uploads/2015/01/Smart_House-Valley_Hua_Hin0131.jpg",
-                title: "Dette er en tittel",
-                read: false,
-                ribbonViewModel: RibbonViewModel(style: .warning, title: "Solgt")),
-            NotificationModel(
-                imagePath: "http://i3.au.reastatic.net/home-ideas/raw/a96671bab306bcb39783bc703ac67f0278ffd7de0854d04b7449b2c3ae7f7659/facades.jpg",
-                title: "Dette er også en tittel",
-                read: false,
-                ribbonViewModel: nil),
-        ]),
-        Section(
-            title: "Tidligere",
-            details: .link(text: "3 nye treff:", title: "Husstander", showSearchIcon: true),
-            items: [
-            NotificationModel(
-                imagePath: nil,
-                title: "Dette er en tittel som er veeeeeldig lang",
-                read: true,
-                ribbonViewModel: RibbonViewModel(style: .success, title: "Ny pris")),
-            NotificationModel(
-                imagePath: "http://jonvilma.com/images/house-6.jpg",
-                title: "Tittel",
-                read: false,
-                ribbonViewModel: RibbonViewModel(style: .disabled, title: "Inaktiv")),
-            NotificationModel(
-                imagePath: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
-                title: "Dette er en tittel",
-                read: true,
-                ribbonViewModel: nil),
-        ]),
-        Section(
-            title: nil,
-            details: .static(text: "2 nye treff:", value: "Andre husstander"),
-            items: [
-            NotificationModel(
-                imagePath: "https://i.pinimg.com/736x/bf/6d/73/bf6d73ab0234f3ba1a615b22d2dc7e74--home-exterior-design-contemporary-houses.jpg",
-                title: "Dette er en tittel",
-                read: true,
-                ribbonViewModel: nil),
-            NotificationModel(
-                imagePath: "https://www.tumbleweedhouses.com/wp-content/uploads/tumbleweed-tiny-house-cypress-black-roof-hp.jpg",
-                title: "Dette er en tittel",
-                read: true,
-                ribbonViewModel: nil)
-        ])
+final class NotificationCenterDemoView: UIView {
+    
+    private lazy var segments = [
+        personalSegment,
+        savedSearchSegment
     ]
-
-    private lazy var notificationCenterView: NotificationCenterView = {
-        let view = NotificationCenterView(withAutoLayout: true)
-        view.delegate = self
-        view.dataSource = self
-        view.imageViewDataSource = self
-        return view
+    
+    private lazy var notificationsCenterView: NotificationCenterView = {
+        let notificationCenterView = NotificationCenterView(withAutoLayout: true)
+        notificationCenterView.selectedSegment = 1
+        notificationCenterView.dataSource = self
+        notificationCenterView.delegate = self
+        notificationCenterView.remoteImageViewDataSource = self
+        return notificationCenterView
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(notificationCenterView)
-        notificationCenterView.fillInSuperview()
+        addSubview(notificationsCenterView)
+        notificationsCenterView.fillInSuperview()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 
 extension NotificationCenterDemoView: NotificationCenterViewDataSource {
-    func numberOfSections(in view: NotificationCenterView) -> Int {
-        data.count
+    func numberOfSegments(in view: NotificationCenterView) -> Int {
+        segments.count
     }
-
-    func notificationCenterView(_ view: NotificationCenterView, numberOfRowsIn section: Int) -> Int {
-        data[section].items.count
+    
+    func notificationCenterView(_ view: NotificationCenterView, titleInSegment segment: Int) -> String {
+        segments[segment].title
     }
-
-    func notificationCenterView(_ view: NotificationCenterView, modelForSection section: Int) -> NotificationCenterSectionHeaderViewModel {
-        data[section]
+    
+    func notificationCenterView(_ view: NotificationCenterView, numberOfSectionsInSegment segment: Int) -> Int {
+        segments[segment].sections.count
     }
-
-    func notificationCenterView(_ view: NotificationCenterView, modelForRowAt indexPath: IndexPath) -> NotificationCenterCellModel {
-        data[indexPath.section].items[indexPath.row]
+    
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, numberOfRowsInSection section: Int) -> Int {
+        segments[segment].sections[section].items.count
     }
-
-    func notificationCenterView(_ view: NotificationCenterView, timestampForModelAt indexPath: IndexPath) -> String? {
-        "15 minutter siden"
+    
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, modelForCellAt indexPath: IndexPath) -> NotificationCenterCellType {
+        segments[segment].sections[indexPath.section].items[indexPath.row]
+    }
+    
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, timestampForCellAt indexPath: IndexPath) -> String {
+        "3 min siden"
+    }
+    
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, modelForHeaderInSection section: Int) -> NotificationCenterHeaderViewModel {
+        segments[segment].sections[section]
+    }
+    
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, overflowInSection section: Int) -> Bool {
+        guard let count = segments[segment].sections[section].count else { return false }
+        return count > segments[segment].sections[section].items.count
+    }
+    
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, titleForFooterInSection section: Int) -> String {
+        "Vis flere treff"
     }
 }
 
 extension NotificationCenterDemoView: NotificationCenterViewDelegate {
-    func notificationCenterView(_ view: NotificationCenterView, didSelectModelAt indexPath: IndexPath) {
-        data[indexPath.section].items[indexPath.row].read = true
-        notificationCenterView.reloadRows(at: [indexPath])
-    }
-
-    func notificationCenterView(_ view: NotificationCenterView, didSelectNotificationDetailsIn section: Int) {
-        print("Did select saved search at: \(section)")
-    }
-
-    func notificationCenterView(_ view: NotificationCenterView, didPullToRefreshWith refreshControl: UIRefreshControl) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            view.reloadData()
-            refreshControl.endRefreshing()
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectModelAt indexPath: IndexPath) {
+        let cellType = segments[segment].sections[indexPath.section].items[indexPath.row]
+        
+        switch cellType {
+        case let .notificationCell(model):
+            if var item = model as? NotificationCenterItem {
+                item.isRead = true
+                segments[segment].sections[indexPath.section].items[indexPath.row] = .notificationCell(item)
+                view.reloadRows(at: [indexPath], inSegment: segment)
+            }
+        default:
+            break
         }
     }
+    
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectSavedSearchButtonIn section: Int) {}
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectFooterButtonInSection section: Int) {}
+}
 
-    func notificationCenterViewWillReachEndOfContent(_ view: NotificationCenterView) {
-        print("Will reach end of content")
-    }
-
-    func notificationCenterView(_ view: NotificationCenterView, didReachEndOfContentWith loadingIndicatorView: LoadingIndicatorView) {
-        print("Did reach end of content")
-        loadingIndicatorView.startAnimating()
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            loadingIndicatorView.stopAnimating()
-        }
+extension NotificationCenterDemoView: FeedbackViewDelegate {
+    func feedbackView(_ feedbackView: FeedbackView, didSelectButtonOfType buttonType: FeedbackView.ButtonType, forState state: FeedbackView.State) {
+        print("Did select button type: \(buttonType)")
     }
 }
 

@@ -52,7 +52,6 @@
 		46E773CD242CEF0A008A5E93 /* FavoriteAdCommentInputDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7729C242CEF09008A5E93 /* FavoriteAdCommentInputDemoView.swift */; };
 		46E773CE242CEF0A008A5E93 /* RegisterViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7729E242CEF09008A5E93 /* RegisterViewDefaultData.swift */; };
 		46E773CF242CEF0A008A5E93 /* RegisterViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7729F242CEF09008A5E93 /* RegisterViewDemoView.swift */; };
-		46E773D0242CEF0A008A5E93 /* NotificationCenterDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772A1242CEF09008A5E93 /* NotificationCenterDemoView.swift */; };
 		46E773D1242CEF0A008A5E93 /* MessageFormDemoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772A3242CEF09008A5E93 /* MessageFormDemoPresenter.swift */; };
 		46E773D2242CEF0A008A5E93 /* MessageFormDemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772A4242CEF09008A5E93 /* MessageFormDemoViewModel.swift */; };
 		46E773D3242CEF0A008A5E93 /* EmptyViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772A6242CEF09008A5E93 /* EmptyViewDemoView.swift */; };
@@ -228,6 +227,8 @@
 		9BA6C4A224336B9A009D417B /* DemoWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */; };
 		DA083C2E2462BCA800B26235 /* SwiftUIDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */; };
 		DAE9CA8724602CB000C7552F /* SwiftUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */; };
+		DED0A091246871A40016176A /* NotificationCenterDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A090246871A40016176A /* NotificationCenterDemoView.swift */; };
+		DED0A09524687E010016176A /* NotificationCenterDemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A09424687E010016176A /* NotificationCenterDemoData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -303,7 +304,6 @@
 		46E7729C242CEF09008A5E93 /* FavoriteAdCommentInputDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdCommentInputDemoView.swift; sourceTree = "<group>"; };
 		46E7729E242CEF09008A5E93 /* RegisterViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewDefaultData.swift; sourceTree = "<group>"; };
 		46E7729F242CEF09008A5E93 /* RegisterViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewDemoView.swift; sourceTree = "<group>"; };
-		46E772A1242CEF09008A5E93 /* NotificationCenterDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterDemoView.swift; sourceTree = "<group>"; };
 		46E772A3242CEF09008A5E93 /* MessageFormDemoPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageFormDemoPresenter.swift; sourceTree = "<group>"; };
 		46E772A4242CEF09008A5E93 /* MessageFormDemoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageFormDemoViewModel.swift; sourceTree = "<group>"; };
 		46E772A6242CEF09008A5E93 /* EmptyViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewDemoView.swift; sourceTree = "<group>"; };
@@ -476,6 +476,8 @@
 		9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoWrapperView.swift; sourceTree = "<group>"; };
 		DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDemoViews.swift; sourceTree = "<group>"; };
 		DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewTests.swift; sourceTree = "<group>"; };
+		DED0A090246871A40016176A /* NotificationCenterDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterDemoView.swift; sourceTree = "<group>"; };
+		DED0A09424687E010016176A /* NotificationCenterDemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterDemoData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -828,7 +830,8 @@
 		46E772A0242CEF09008A5E93 /* NotificationCenter */ = {
 			isa = PBXGroup;
 			children = (
-				46E772A1242CEF09008A5E93 /* NotificationCenterDemoView.swift */,
+				DED0A090246871A40016176A /* NotificationCenterDemoView.swift */,
+				DED0A09424687E010016176A /* NotificationCenterDemoData.swift */,
 			);
 			path = NotificationCenter;
 			sourceTree = "<group>";
@@ -2014,13 +2017,13 @@
 				46E773CB242CEF0A008A5E93 /* SearchResultMapViewDemoViewController.swift in Sources */,
 				46E773BC242CEF0A008A5E93 /* MinFinnDemoView.swift in Sources */,
 				46E77459242CEF0A008A5E93 /* AdsGridViewDemoViewHelpers.swift in Sources */,
+				DED0A09524687E010016176A /* NotificationCenterDemoData.swift in Sources */,
 				46E77400242CEF0A008A5E93 /* SaveSearchViewDemoViewController.swift in Sources */,
 				46E77442242CEF0A008A5E93 /* AssetsDemoView.swift in Sources */,
 				46E773C0242CEF0A008A5E93 /* LoginEntryDemoPageViewController.swift in Sources */,
 				46E773F2242CEF0A008A5E93 /* NativeAdvertDefaultData.swift in Sources */,
 				46E77422242CEF0A008A5E93 /* BannerTransparencyInfoDefaultData.swift in Sources */,
 				46E77444242CEF0A008A5E93 /* FavoriteAdCellDemoView.swift in Sources */,
-				46E773D0242CEF0A008A5E93 /* NotificationCenterDemoView.swift in Sources */,
 				46E7745B242CEF0A008A5E93 /* BannerAdDemoCell.swift in Sources */,
 				46E773E3242CEF0A008A5E93 /* SellerConfirmedHandoverDemoViewModel.swift in Sources */,
 				46E77452242CEF0A008A5E93 /* ScrollViewController.swift in Sources */,
@@ -2119,6 +2122,7 @@
 				46E7746C242CEF0A008A5E93 /* NotificationsListViewDemoViewHelpers.swift in Sources */,
 				46E7741D242CEF0A008A5E93 /* FloatingButtonDemoView.swift in Sources */,
 				46E7743D242CEF0A008A5E93 /* VerificationViewDefaultData.swift in Sources */,
+				DED0A091246871A40016176A /* NotificationCenterDemoView.swift in Sources */,
 				46E773CD242CEF0A008A5E93 /* FavoriteAdCommentInputDemoView.swift in Sources */,
 				46E77407242CEF0A008A5E93 /* LabelDemoView.swift in Sources */,
 				46E7742B242CEF0A008A5E93 /* KlimabroletDemoViewController.swift in Sources */,
