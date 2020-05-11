@@ -155,6 +155,7 @@ public enum FinniversImageAsset: String {
     case ratings
     case realestate
     case remove
+    case reorder
     case republish
     case search
     case searchBig
@@ -320,6 +321,7 @@ public enum FinniversImageAsset: String {
             .ratings,
             .realestate,
             .remove,
+            .reorder,
             .republish,
             .search,
             .searchBig,
