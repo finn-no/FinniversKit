@@ -143,7 +143,7 @@ public class IdentityView: UIView {
     }()
 
     private lazy var offlineButton: UIButton = {
-        let button = Button(style: .utility, size: .small)
+        let button = Button(style: .default, size: .small)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setContentCompressionResistancePriority(.required, for: .horizontal)
         button.addTarget(self, action: #selector(offlineButtonTapped), for: .touchUpInside)
@@ -268,7 +268,7 @@ public class IdentityView: UIView {
             subtitleLabel.text = viewModel.subtitle
         }
 
-        let showDescription = viewModel.description != nil && !hideDescription
+        let showDescription = ((viewModel.description != nil && !hideDescription) && viewModel.displayMode != .offline)
         descriptionLabel.isHidden = !showDescription
         descriptionLabel.text = viewModel.description
         descriptionLabelConstraints.forEach { $0.isActive = showDescription }

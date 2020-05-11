@@ -52,6 +52,18 @@ class IdentityDemoView: UIView, Tweakable {
                     $0.1.displayMode = .anonymous
                     $0.0.viewModel = $0.1
                 }
+            }),
+            TweakingOption(title: "DisplayMode.offline", action: {
+                self.identityViews.forEach {
+                    $0.1.displayMode = .offline
+                    $0.0.viewModel = $0.1
+                }
+            }),
+            TweakingOption(title: "DisplayMode.online", action: {
+                self.identityViews.forEach {
+                    $0.1.displayMode = .interactible
+                    $0.0.viewModel = $0.1
+                }
             })
         ]
         return options
