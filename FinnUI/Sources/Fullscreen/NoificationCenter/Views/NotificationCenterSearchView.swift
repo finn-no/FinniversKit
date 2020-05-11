@@ -54,6 +54,15 @@ public final class NotificationCenterSearchView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    public func reloadData() {
+        tableView.reloadData()
+    }
+    
+    public func reloadSelectedRow() {
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
 }
 
 extension NotificationCenterSearchView: UITableViewDataSource {
