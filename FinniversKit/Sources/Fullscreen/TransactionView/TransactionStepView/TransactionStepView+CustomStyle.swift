@@ -9,6 +9,7 @@ extension TransactionStepView {
     public enum CustomStyle: String {
         case warning = "WARNING"
         case error = "ERROR"
+        case `default` = "DEFAULT"
 
         public init(rawValue: String) {
             switch rawValue {
@@ -17,16 +18,19 @@ extension TransactionStepView {
             case "ERROR":
                 self = .error
             default:
-                fatalError("No supported custom style exists for rawValue: '\(rawValue)'")
+                self = .default
             }
         }
 
-        public var backgroundColor: UIColor {
+        /// Use custom style provided by the backend or fallback to the style defined locally
+        public func backgroundColor(style: TransactionStepView.Style) -> UIColor {
             switch self {
             case .error:
                 return .bgCritical
             case .warning:
                 return .bgAlert
+            case .default:
+                return style.backgroundColor
             }
         }
     }

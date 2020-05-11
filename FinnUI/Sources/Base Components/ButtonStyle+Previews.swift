@@ -109,6 +109,7 @@ struct ButtonStyleUsageDemoView: View {
 }
 
 @available(iOS 13.0.0, *)
+// swiftlint:disable:next superfluous_disable_command type_name
 struct ButtonStyleUsageDemoView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {

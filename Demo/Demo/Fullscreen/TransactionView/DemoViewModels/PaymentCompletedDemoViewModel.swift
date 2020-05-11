@@ -43,6 +43,7 @@ extension TransactionDemoViewDefaultData {
 
             TransactionStepModel(
                 state: .completed,
+                style: .default,
                 main: TransactionStepContentModel(
                     title: "Betaling",
                     body: NSAttributedString(string: "Kjøper betalte 1. februar 2020.")),
@@ -51,6 +52,7 @@ extension TransactionDemoViewDefaultData {
 
             TransactionStepModel(
                 state: .active,
+                style: .default,
                 main: TransactionStepContentModel(
                     title: "Overlevering",
                     body: NSAttributedString(string: "<p>Dere må bekrefte før:<br/><strong>8. februar 2020.</strong></p><ol><li>Ved oppmøte registrerer dere først eierskiftet digitalt hos Statens vegvesen.</li><li>Deretter må <strong>begge</strong> bekrefte at overleveringen har skjedd, og at pengene kan utbetales.</li></ol>"),
@@ -68,6 +70,7 @@ extension TransactionDemoViewDefaultData {
 
             TransactionStepModel(
                 state: .notStarted,
+                style: .default,
                 main: TransactionStepContentModel(
                     title: "Gratulerer med salget!",
                     body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før».")),

@@ -58,7 +58,7 @@ public class TransactionStepView: UIView {
 
     private lazy var verticalStackView: UIStackView = {
         let view = UIStackView(withAutoLayout: true)
-        view.backgroundColor = customStyle?.backgroundColor ?? style.backgroundColor
+        view.backgroundColor = customStyle?.backgroundColor(style: style) ?? style.backgroundColor
         view.axis = .vertical
         view.distribution = .fill
         view.alignment = .leading
@@ -85,7 +85,7 @@ public class TransactionStepView: UIView {
     }
 
     private func setup() {
-        backgroundColor = customStyle?.backgroundColor ?? style.backgroundColor
+        backgroundColor = customStyle?.backgroundColor(style: style) ?? style.backgroundColor
         layer.cornerRadius = style.cornerRadius
 
         if let mainContent = model.main {
