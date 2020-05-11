@@ -24,6 +24,7 @@ final class NotificationCenterHeaderView: UITableViewHeaderFooterView {
     
     private lazy var savedSearchButton: SavedSearchHeaderButton = {
         let button = SavedSearchHeaderButton(withAutoLayout: true)
+        button.addTarget(self, action: #selector(handleSavedSearchButtonSelected), for: .touchUpInside)
         return button
     }()
     
