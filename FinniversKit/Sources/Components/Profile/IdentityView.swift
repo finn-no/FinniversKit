@@ -99,9 +99,11 @@ public class IdentityView: UIView {
 
         wrapperView.addSubview(profileNameLabel)
         wrapperView.addSubview(verifiedBadge)
+        wrapperView.addSubview(offlineButton)
 
         NSLayoutConstraint.activate([
             profileNameLabel.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
+            profileNameLabel.trailingAnchor.constraint(lessThanOrEqualTo: offlineButton.leadingAnchor, constant: -.spacingM),
             profileNameLabel.topAnchor.constraint(equalTo: wrapperView.topAnchor),
             profileNameLabel.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor),
 
@@ -109,7 +111,10 @@ public class IdentityView: UIView {
             verifiedBadge.centerYAnchor.constraint(equalTo: profileNameLabel.centerYAnchor),
             verifiedBadge.trailingAnchor.constraint(lessThanOrEqualTo: wrapperView.trailingAnchor),
             verifiedBadge.widthAnchor.constraint(equalToConstant: 18),
-            verifiedBadge.heightAnchor.constraint(equalToConstant: 18)
+            verifiedBadge.heightAnchor.constraint(equalToConstant: 18),
+
+            offlineButton.topAnchor.constraint(equalTo: wrapperView.topAnchor),
+            offlineButton.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor)
         ])
 
         return wrapperView
@@ -122,7 +127,7 @@ public class IdentityView: UIView {
         return label
     }()
 
-    private lazy var stackView: UIStackView = {
+    private lazy var profileStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.spacing = .spacingXXS
         stackView.axis = .vertical
@@ -140,6 +145,7 @@ public class IdentityView: UIView {
     private lazy var offlineButton: UIButton = {
         let button = Button(style: .utility, size: .small)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setContentCompressionResistancePriority(.required, for: .horizontal)
         button.addTarget(self, action: #selector(offlineButtonTapped), for: .touchUpInside)
         button.isHidden = true
         return button
@@ -148,7 +154,7 @@ public class IdentityView: UIView {
     private lazy var descriptionLabelConstraints: [NSLayoutConstraint] = [
         descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
         descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: profileImageView.bottomAnchor, constant: .spacingM),
-        descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: stackView.bottomAnchor, constant: .spacingM),
+        descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: profileStackView.bottomAnchor, constant: .spacingM),
         descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
         descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM)
     ]
@@ -176,14 +182,12 @@ public class IdentityView: UIView {
         layer.cornerRadius = 8
         backgroundColor = .bgSecondary
 
-        addSubview(stackView)
+        addSubview(profileStackView)
         addSubview(profileImageView)
         addSubview(descriptionLabel)
 
-        addSubview(offlineButton)
-
-        stackView.addArrangedSubview(profileNameWrapperView)
-        stackView.addArrangedSubview(subtitleLabel)
+        profileStackView.addArrangedSubview(profileNameWrapperView)
+        profileStackView.addArrangedSubview(subtitleLabel)
 
         NSLayoutConstraint.activate([
             profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
@@ -192,14 +196,11 @@ public class IdentityView: UIView {
             profileImageView.widthAnchor.constraint(equalToConstant: IdentityView.profileImageSize),
             profileImageView.heightAnchor.constraint(equalToConstant: IdentityView.profileImageSize),
 
-            stackView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: .spacingS),
-            stackView.topAnchor.constraint(equalTo: profileImageView.topAnchor),
-            stackView.bottomAnchor.constraint(greaterThanOrEqualTo: profileImageView.bottomAnchor),
-            stackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingM),
-            stackView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.spacingS),
-
-            offlineButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
-            offlineButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
+            profileStackView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: .spacingS),
+            profileStackView.topAnchor.constraint(equalTo: profileImageView.topAnchor),
+            profileStackView.bottomAnchor.constraint(greaterThanOrEqualTo: profileImageView.bottomAnchor),
+            profileStackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingM),
+            profileStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
         ])
     }
 
