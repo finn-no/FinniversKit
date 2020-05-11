@@ -18,7 +18,8 @@ public class MarketsGridViewCell: UICollectionViewCell {
 
     private lazy var externalLinkImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: .webview)
+        imageView.image = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .externalLinkColor
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
@@ -91,5 +92,11 @@ public class MarketsGridViewCell: UICollectionViewCell {
             let showExternalLinkIcon = model?.showExternalLinkIcon ?? false
             externalLinkImageView.isHidden = !showExternalLinkIcon
         }
+    }
+}
+
+private extension UIColor {
+    class var externalLinkColor: UIColor {
+        dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
 }
