@@ -10,7 +10,7 @@ public protocol NotificationCenterViewDataSource: AnyObject {
     func notificationCenterView(_ view: NotificationCenterView, numberOfSectionsInSegment segment: Int) -> Int
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, numberOfRowsInSection section: Int) -> Int
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, modelForCellAt indexPath: IndexPath) -> NotificationCenterCellType
-    func notificationCenterView(_ view: NotificationCenterView, segment: Int, timestampForCellAt indexPath: IndexPath) -> String
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, timestampForCellAt indexPath: IndexPath) -> String?
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, modelForHeaderInSection section: Int) -> NotificationCenterHeaderViewModel
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, overflowInSection section: Int) -> Bool
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, titleForFooterInSection section: Int) -> String
@@ -57,7 +57,6 @@ final public class NotificationCenterView: UIView {
     
     public override func layoutSubviews() {
         if segmentContainers == nil {
-            segmentContainers = []
             setupSegmentedControl()
         }
         
@@ -69,7 +68,7 @@ final public class NotificationCenterView: UIView {
 public extension NotificationCenterView {
     func reloadData() {
         segmentedControl.removeAllSegments()
-        segmentContainers?.reset()
+        segmentContainers?.forEach { $0.tableView.removeFromSuperview() }
         setupSegmentedControl()
     }
     
@@ -174,6 +173,8 @@ private extension NotificationCenterView {
     }
     
     func setupSegmentedControl() {
+        segmentContainers = []
+        
         guard let dataSource = dataSource else {
             return
         }
@@ -262,17 +263,6 @@ private class SegmentContainer {
         self.title = title
         self.tableView = tableView
         self.leadingConstraint = leadingConstraint
-    }
-}
-
-// MARK: - Array
-private extension Array where Element == SegmentContainer {
-    mutating func reset() {
-        forEach { segmentContainer in
-            segmentContainer.tableView.removeFromSuperview()
-        }
-        
-        self = []
     }
 }
 

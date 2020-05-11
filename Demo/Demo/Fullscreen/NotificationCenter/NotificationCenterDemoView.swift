@@ -54,7 +54,7 @@ extension NotificationCenterDemoView: NotificationCenterViewDataSource {
         segments[segment].sections[indexPath.section].items[indexPath.row]
     }
     
-    func notificationCenterView(_ view: NotificationCenterView, segment: Int, timestampForCellAt indexPath: IndexPath) -> String {
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, timestampForCellAt indexPath: IndexPath) -> String? {
         "3 min siden"
     }
     
