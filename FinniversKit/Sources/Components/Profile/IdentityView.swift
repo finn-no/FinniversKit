@@ -256,6 +256,10 @@ public class IdentityView: UIView {
         if viewModel.displayMode == .offline {
             offlineButton.isHidden = false
             offlineButton.setTitle(viewModel.offlineButtonTitle, for: .normal)
+
+            subtitleLabel.isHidden = false
+            subtitleLabel.text = viewModel.subtitle
+
         } else if viewModel.displayMode == .anonymous {
             subtitleLabel.isHidden = true
         } else {
