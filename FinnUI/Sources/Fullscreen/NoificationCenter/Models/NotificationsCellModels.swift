@@ -12,14 +12,15 @@ public protocol NotificationCellModel {
 public protocol NotificationCellContent {
     var imagePath: String? { get }
     var title: String { get }
-    var subtitle: String { get }
-    var price: String { get }
+    var priceText: String? { get }
 }
 
 public protocol PersonalNotificationCellContent: NotificationCellContent {
+    var description: String { get }
     var icon: PersonalNotificationIconView.Kind { get }
 }
 
 public protocol SavedSearchNotificationCellContent: NotificationCellContent {
+    var locationText: String { get }
     var ribbonViewModel: RibbonViewModel? { get }
 }

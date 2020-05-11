@@ -6,17 +6,17 @@ import FinniversKit
 
 struct SavedSearchAdData: SavedSearchNotificationCellContent {
     let imagePath: String?
+    var locationText: String
     let title: String
-    var subtitle: String
-    var price: String
+    var priceText: String?
     let ribbonViewModel: RibbonViewModel?
 }
 
 struct PersonalAdData: PersonalNotificationCellContent {
     let imagePath: String?
+    let description: String
     let title: String
-    let subtitle: String
-    let price: String
+    let priceText: String?
     let icon: PersonalNotificationIconView.Kind
 }
 
@@ -64,9 +64,9 @@ extension NotificationCenterDemoView {
                             isRead: false,
                             content: SavedSearchAdData(
                                 imagePath: "https://jwproperty.com/files/wp-content/uploads/2015/01/Smart_House-Valley_Hua_Hin0131.jpg",
-                                title: "Iladalen",
-                                subtitle: "Meget lekker 2-roms med solrik balkong, optimal planløsning og heis. Flytt rett inn. Ingen forkjøp. Ingen dok. avgift.",
-                                price: "2 950 000 kr",
+                                locationText: "Iladalen",
+                                title: "Meget lekker 2-roms med solrik balkong, optimal planløsning og heis. Flytt rett inn. Ingen forkjøp. Ingen dok. avgift.",
+                                priceText: "2 950 000 kr",
                                 ribbonViewModel: nil
                             )
                         )),
@@ -74,9 +74,9 @@ extension NotificationCenterDemoView {
                             isRead: true,
                             content: SavedSearchAdData(
                                 imagePath: "http://i3.au.reastatic.net/home-ideas/raw/a96671bab306bcb39783bc703ac67f0278ffd7de0854d04b7449b2c3ae7f7659/facades.jpg",
-                                title: "Kragskogen/Holmenkollen",
-                                subtitle: "Lekker og innholdsrik endeleilighet med solrik sydvendt terrasse, garasje og god standard fra 2013/2014.",
-                                price: "3 450 000 kr",
+                                locationText: "Kragskogen/Holmenkollen",
+                                title: "Lekker og innholdsrik endeleilighet med solrik sydvendt terrasse, garasje og god standard fra 2013/2014.",
+                                priceText: "3 450 000 kr",
                                 ribbonViewModel: .init(style: .warning, title: "Solgt")
                             )
                         ))
@@ -91,9 +91,9 @@ extension NotificationCenterDemoView {
                             isRead: true,
                             content: SavedSearchAdData(
                                 imagePath: "https://i.pinimg.com/originals/2d/ee/a2/2deea203ebc1da505db5676821ca88fb.jpg",
-                                title: "Lyngdal",
-                                subtitle: "Opel Kadett KADETT 1.2 1200",
-                                price: "45 000 kr",
+                                locationText: "Lyngdal",
+                                title: "Opel Kadett KADETT 1.2 1200",
+                                priceText: "45 000 kr",
                                 ribbonViewModel: .init(style: .warning, title: "Solgt")
                             )
                         )),
@@ -101,9 +101,9 @@ extension NotificationCenterDemoView {
                             isRead: true,
                             content: SavedSearchAdData(
                                 imagePath: "https://i.pinimg.com/originals/1a/f9/23/1af923256d67b122f1c21fd41e19aa66.jpg",
-                                title: "Kristiansand S",
-                                subtitle: "Opel Kadett KADETT C 1.2-0",
-                                price: "23 000 kr",
+                                locationText: "Kristiansand S",
+                                title: "Opel Kadett KADETT C 1.2-0",
+                                priceText: "23 000 kr",
                                 ribbonViewModel: nil
                             )
                         )),
@@ -122,9 +122,9 @@ extension NotificationCenterDemoView {
                             isRead: true,
                             content: SavedSearchAdData(
                                 imagePath: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
+                                locationText: "Oslo",
                                 title: "Oslo",
-                                subtitle: "Oslo",
-                                price: "2 950 000 kr",
+                                priceText: "2 950 000 kr",
                                 ribbonViewModel: nil
                             )
                         )),
@@ -132,9 +132,9 @@ extension NotificationCenterDemoView {
                             isRead: true,
                             content: SavedSearchAdData(
                                 imagePath: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
+                                locationText: "Oslo",
                                 title: "Oslo",
-                                subtitle: "Oslo",
-                                price: "2 950 000 kr",
+                                priceText: "2 950 000 kr",
                                 ribbonViewModel: nil
                             )
                         )),
@@ -142,9 +142,9 @@ extension NotificationCenterDemoView {
                             isRead: true,
                             content: SavedSearchAdData(
                                 imagePath: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
+                                locationText: "Oslo",
                                 title: "Oslo",
-                                subtitle: "Oslo",
-                                price: "2 950 000 kr",
+                                priceText: "2 950 000 kr",
                                 ribbonViewModel: nil
                             )
                         )),
@@ -152,9 +152,9 @@ extension NotificationCenterDemoView {
                             isRead: true,
                             content: SavedSearchAdData(
                                 imagePath: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
+                                locationText: "Oslo",
                                 title: "Oslo",
-                                subtitle: "Oslo",
-                                price: "2 950 000 kr",
+                                priceText: "2 950 000 kr",
                                 ribbonViewModel: nil
                             )
                         )),
@@ -162,9 +162,9 @@ extension NotificationCenterDemoView {
                             isRead: true,
                             content: SavedSearchAdData(
                                 imagePath: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
+                                locationText: "Oslo",
                                 title: "Oslo",
-                                subtitle: "Oslo",
-                                price: "2 950 000 kr",
+                                priceText: "2 950 000 kr",
                                 ribbonViewModel: nil
                             )
                         )),
@@ -187,9 +187,9 @@ extension NotificationCenterDemoView {
                             isRead: false,
                             content: PersonalAdData(
                                 imagePath: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
-                                title: "Din favoritt er satt ned!",
-                                subtitle: "Flott enebolig i rolig strøk",
-                                price: "3000 kr",
+                                description: "Din favoritt er satt ned!",
+                                title: "Flott enebolig i rolig strøk",
+                                priceText: "3000 kr",
                                 icon: .favorite
                             )
                         ))
@@ -204,9 +204,9 @@ extension NotificationCenterDemoView {
                             isRead: true,
                             content: PersonalAdData(
                                 imagePath: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
-                                title: "Din favoritt er satt ned!",
-                                subtitle: "Flott enebolig i rolig strøk",
-                                price: "3000 kr",
+                                description: "Din favoritt er satt ned!",
+                                title: "Flott enebolig i rolig strøk",
+                                priceText: "3000 kr",
                                 icon: .favorite
                             )
                         ))

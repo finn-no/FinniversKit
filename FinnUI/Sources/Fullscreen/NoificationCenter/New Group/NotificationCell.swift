@@ -108,22 +108,27 @@ final class NotificationCell: UITableViewCell {
     
     func configure(with model: NotificationCellModel?, timestamp: String?, hideSeparator: Bool, showGradient: Bool) {
         backgroundColor = model?.isRead == true ? .bgPrimary : .bgSecondary
-        titleLabel.text = model?.content.title
-        subtitleLabel.text = model?.content.subtitle
-        priceLabel.text = model?.content.price
+    
         timestampLabel.text = timestamp
         separatorView.isHidden = hideSeparator
         gradientLayer.isHidden = !showGradient
         
+        priceLabel.text = model?.content.priceText
+        priceLabel.isHidden = model?.content.priceText == nil
+        
         switch model?.content {
         case let content as PersonalNotificationCellContent:
             titleLabel.font = .body
+            titleLabel.text = content.description
             subtitleLabel.font = .bodyStrong
+            subtitleLabel.text = content.title
             iconView.configure(with: content.icon)
             iconView.isHidden = false
         case let content as SavedSearchNotificationCellContent:
             titleLabel.font = .detail
+            titleLabel.text = content.locationText
             subtitleLabel.font = model?.isRead == true ? .body : .bodyStrong
+            subtitleLabel.text = content.title
             
             if let ribbonViewModel = content.ribbonViewModel {
                 ribbonView.configure(with: ribbonViewModel)
