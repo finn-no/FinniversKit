@@ -23,6 +23,7 @@ extension TransactionDemoViewDefaultData {
         steps: [
             TransactionStepModel(
                 state: .completed,
+                style: .default,
                 main: TransactionStepContentModel(
                     title: "Annonsen er lagt ut",
                     primaryButton: TransactionActionButtonModel(
@@ -61,6 +62,7 @@ extension TransactionDemoViewDefaultData {
 
              TransactionStepModel(
                 state: .notStarted,
+                style: .default,
                 main: TransactionStepContentModel(
                     title: "Gratulerer med salget!",
                     body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før»."))),
