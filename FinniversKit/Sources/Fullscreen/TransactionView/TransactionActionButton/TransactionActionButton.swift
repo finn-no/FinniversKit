@@ -3,15 +3,13 @@
 //
 
 public enum TransactionActionButton: String {
-    case `default` = "DEFAULT"
     case flat = "FLAT"
     case callToAction = "CALL_TO_ACTION"
     case republishAd = "REPUBLISH_AD"
+    case `default` = "DEFAULT"
 
     public init(rawValue: String) {
         switch rawValue {
-        case "DEFAULT":
-            self = .default
         case "FLAT":
             self = .flat
         case "CALL_TO_ACTION":

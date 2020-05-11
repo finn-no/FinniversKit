@@ -27,6 +27,7 @@ extension TransactionDemoViewDefaultData {
 
             TransactionStepModel(
                 state: .active,
+                style: .default,
                 main: TransactionStepContentModel(
                     title: "Kontrakt",
                     body: NSAttributedString(string: "Du har opprettet kontrakt."),
@@ -49,6 +50,7 @@ extension TransactionDemoViewDefaultData {
 
             TransactionStepModel(
                 state: .notStarted,
+                style: .default,
                 main: TransactionStepContentModel(
                     title: "Gratulerer med salget!",
                     body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før»."))),

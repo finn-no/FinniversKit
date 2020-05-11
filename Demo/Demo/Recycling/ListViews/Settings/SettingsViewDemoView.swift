@@ -19,12 +19,6 @@ private struct SettingsItem: SettingsViewCellModel {
     let title: String
 }
 
-private struct SettingsSection {
-    let title: String
-    var items: [SettingsViewCellModel]
-    let footerTitle: String?
-}
-
 // MARK: - SettingsViewDemoView
 class SettingsViewDemoView: UIView {
 

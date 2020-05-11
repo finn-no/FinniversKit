@@ -32,11 +32,12 @@ private struct Appearance<Content: View, UIViewType: UIView>: UIViewControllerRe
         self.customize = customize
     }
 
-    func makeUIViewController(context: Context) -> UIViewController {
+    func makeUIViewController(context: Context) -> UIHostingController<Content> {
         return UIHostingController(rootView: content)
     }
 
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+    func updateUIViewController(_ uiViewController: UIHostingController<Content>, context: Context) {
+        uiViewController.rootView = content
         customize(UIViewType.appearance(whenContainedInInstancesOf: [UIHostingController<Content>.self]))
     }
 }

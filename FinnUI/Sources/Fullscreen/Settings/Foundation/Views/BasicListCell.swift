@@ -28,9 +28,10 @@ public struct BasicListCell: View {
     }
 
     public var body: some View {
-        Button(action: { self.action?() }) {
-            content
-        }.buttonStyle(BasicButtonStyle())
+        Button(
+            action: { self.action?() },
+            label: { content }
+        ).buttonStyle(BasicButtonStyle())
     }
 
     private var content: some View {
@@ -65,14 +66,14 @@ public struct BasicListCell: View {
 
     public static func title(_ text: String) -> Text {
         Text(text)
-            .font(Font(UIFont.body))
+            .finnFont(.body)
             .foregroundColor(.textPrimary)
     }
 
     public static func subtitle(_ text: String?) -> Text? {
         text.map({
             Text($0)
-                .font(Font(UIFont.caption))
+                .finnFont(.caption)
                 .foregroundColor(.textPrimary)
         })
     }
@@ -80,7 +81,7 @@ public struct BasicListCell: View {
     public static func detailText(_ text: String?) -> Text? {
         text.map({
             Text($0)
-                .font(Font(UIFont.detail))
+                .finnFont(.detail)
                 .foregroundColor(.textSecondary)
         })
     }
@@ -94,14 +95,10 @@ private struct BasicButtonStyle: ButtonStyle {
     }
 
     private var selectedColor: UIColor {
-        UIColor { traitCollection -> UIColor in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-               return UIColor(hex: "2f3039")
-            default:
-               return UIColor.defaultCellSelectedBackgroundColor
-            }
-        }
+        return UIColor.dynamicColorIfAvailable(
+            defaultColor: UIColor(r: 230, g: 235, b: 242),
+            darkModeColor: UIColor(hex: "2f3039")
+        )
     }
 }
 

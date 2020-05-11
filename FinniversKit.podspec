@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'FinniversKit'
-  s.version      = '44.1.0'
+  s.version      = '45.1.0'
   s.summary      = "FINN's iOS Components"
   s.author       = 'FINN.no'
   s.homepage     = 'https://schibsted.frontify.com/d/oCLrx0cypXJM/design-system'
@@ -35,6 +35,7 @@ Pod::Spec.new do |s|
       'FinniversKit' => ['FinniversKit/Sources/Resources/*.xcassets', 'FinniversKit/Sources/Resources/Fonts/*.ttf', 'FinniversKit/Sources/Resources/Sounds/*.{mp3,wav,sf2}']
   }
   s.frameworks = 'Foundation', 'UIKit'
+  s.weak_frameworks = 'SwiftUI'
   s.subspec 'DNA' do |sp|
     sp.source_files  = 'FinniversKit/Sources/*.{h,m,swift}', 'FinniversKit/Sources/DNA/*.{h,m,swift}', 'FinniversKit/Sources/DNA/**/*.{h,m,swift}', 'FinniversKit/Sources/DNA/**/**/*.{h,m,swift}', 'FinniversKit/Sources/Resources/*.{h,m,swift}', 'FinniversKit/Sources/Resources/**/*.{h,m,swift}', 'FinniversKit/Sources/Resources/**/**/*.{h,m,swift}'
     sp.resource_bundles = {
