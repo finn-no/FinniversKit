@@ -229,6 +229,7 @@
 		DAE9CA8724602CB000C7552F /* SwiftUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */; };
 		DED0A091246871A40016176A /* NotificationCenterDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A090246871A40016176A /* NotificationCenterDemoView.swift */; };
 		DED0A09524687E010016176A /* NotificationCenterDemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A09424687E010016176A /* NotificationCenterDemoData.swift */; };
+		DED0A3D9246984E30016176A /* NotificationCenterSearchDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A3D8246984E30016176A /* NotificationCenterSearchDemoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -478,6 +479,7 @@
 		DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewTests.swift; sourceTree = "<group>"; };
 		DED0A090246871A40016176A /* NotificationCenterDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterDemoView.swift; sourceTree = "<group>"; };
 		DED0A09424687E010016176A /* NotificationCenterDemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterDemoData.swift; sourceTree = "<group>"; };
+		DED0A3D8246984E30016176A /* NotificationCenterSearchDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterSearchDemoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -832,6 +834,7 @@
 			children = (
 				DED0A090246871A40016176A /* NotificationCenterDemoView.swift */,
 				DED0A09424687E010016176A /* NotificationCenterDemoData.swift */,
+				DED0A3D8246984E30016176A /* NotificationCenterSearchDemoView.swift */,
 			);
 			path = NotificationCenter;
 			sourceTree = "<group>";
@@ -1974,6 +1977,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46E773A4242CEF0A008A5E93 /* DemoHelpers.swift in Sources */,
+				DED0A3D9246984E30016176A /* NotificationCenterSearchDemoView.swift in Sources */,
 				46E77425242CEF0A008A5E93 /* ConsentTransparencyInfoDemoView.swift in Sources */,
 				46E77463242CEF0A008A5E93 /* PaymentOptionsListDemoView.swift in Sources */,
 				46E7744C242CEF0A008A5E93 /* HeartSubtitleCellDemoView.swift in Sources */,

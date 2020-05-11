@@ -39,10 +39,6 @@ struct NotificationCenterSection: NotificationCenterHeaderViewModel {
             highlightedRange: NSRange(location: text.count, length: searchName.count)
         )
     }
-    
-    var overflow: Bool? {
-        count ?? 0 > 5
-    }
 }
 
 struct NotificationCenterSegment {

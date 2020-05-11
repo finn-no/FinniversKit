@@ -92,7 +92,9 @@ extension NotificationCenterDemoView: NotificationCenterViewDelegate {
         print("Saved search button selected")
     }
     
-    func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectFooterButtonInSection section: Int) {}
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectFooterButtonInSection section: Int) {
+        
+    }
 }
 
 extension NotificationCenterDemoView: FeedbackViewDelegate {
