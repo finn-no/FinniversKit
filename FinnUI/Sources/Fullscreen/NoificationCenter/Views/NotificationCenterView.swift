@@ -122,8 +122,8 @@ extension NotificationCenterView: UITableViewDataSource {
             cell.delegate = delegate
             cell.configure(for: state, with: model)
             return cell
-        default:
-            fatalError("Cell type not supported")
+        case .none:
+            fatalError("Cell type not specified")
         }
     }
 }
