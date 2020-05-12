@@ -211,48 +211,4 @@ extension NotificationCenterDemoView {
             ]
         )
     }
-    
-//    static var emptyPersonalSegment: NotificationCenterSegment {
-//        NotificationCenterSegment(
-//            title: "Tips til deg",
-//            sections: [
-//                NotificationCenterSection(
-//                    title: nil,
-//                    count: nil,
-//                    searchName: nil,
-//                    items: [
-//                        NotificationCenterItem(
-//                            isRead: true,
-//                            content: EmptyPersonalNotificationCellContent(
-//                                title: "Velkommen til varslinger, Solfrid!",
-//                                message: "Her vil du få varslinger om dine annonser, favoritter og nytt fra FINN."
-//                            )
-//                        )
-//                    ]
-//                )
-//            ]
-//        )
-//    }
-//
-//    static var emptySavedSearchSegment: NotificationCenterSegment {
-//        NotificationCenterSegment(
-//            title: "Lagrede søk",
-//            sections: [
-//                NotificationCenterSection(
-//                    title: nil,
-//                    count: nil,
-//                    searchName: nil,
-//                    items: [
-//                        NotificationCenterItem(
-//                            isRead: true,
-//                            cellContent: EmptySavedSearchNotificationCellContent(
-//                                title: "La oss si fra om nye annonser!",
-//                                message: "Søk etter noe du har lyst på og trykk «Lagre søk». Du får varslinger om nye annonser her."
-//                            )
-//                        )
-//                    ]
-//                )
-//            ]
-//        )
-//    }
 }
