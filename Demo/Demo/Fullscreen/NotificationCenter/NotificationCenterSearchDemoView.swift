@@ -29,6 +29,7 @@ class NotificationCenterSearchDemoView: UIView {
 extension NotificationCenterSearchDemoView: NotificationCenterSearchViewDelegate {
     func notificationCenterSearchView(_ view: NotificationCenterSearchView, didSelectModelAt indexPath: IndexPath) {
         print("Did select model")
+        view.reloadSelectedRow()
     }
     
     func notificationCenterSearchViewDidSelectShowEntireSearch(_ view: NotificationCenterSearchView) {

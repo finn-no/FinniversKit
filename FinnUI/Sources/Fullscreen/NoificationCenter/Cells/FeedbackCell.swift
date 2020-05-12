@@ -18,6 +18,7 @@ class FeedbackCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
+        backgroundColor = .bgPrimary
         contentView.addSubview(feedbackView)
         feedbackView.fillInSuperview(margin: .spacingM)
         feedbackView.heightAnchor.constraint(equalToConstant: 100).isActive = true

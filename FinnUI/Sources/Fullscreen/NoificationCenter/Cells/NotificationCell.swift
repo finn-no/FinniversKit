@@ -154,6 +154,7 @@ private extension NotificationCell {
         
         contentView.addSubview(remoteImageView)
         contentView.addSubview(iconView)
+        contentView.addSubview(ribbonView)
         contentView.addSubview(stackView)
         contentView.addSubview(separatorView)
         contentView.layer.addSublayer(gradientLayer)
@@ -168,6 +169,9 @@ private extension NotificationCell {
             iconView.centerYAnchor.constraint(equalTo: remoteImageView.bottomAnchor, constant: -.spacingS),
             iconView.widthAnchor.constraint(equalToConstant: 24),
             iconView.heightAnchor.constraint(equalToConstant: 24),
+            
+            ribbonView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
+            ribbonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingS),
             
             stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .spacingM),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),

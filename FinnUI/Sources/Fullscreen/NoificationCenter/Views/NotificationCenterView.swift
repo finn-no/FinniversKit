@@ -24,6 +24,8 @@ public protocol NotificationCenterViewDelegate: AnyObject {
 
 final public class NotificationCenterView: UIView {
     
+    // MARK: - Public properties
+    
     public weak var dataSource: NotificationCenterViewDataSource?
     public weak var delegate: NotificationCenterViewDelegate?
     public weak var remoteImageViewDataSource: RemoteImageViewDataSource?
@@ -31,6 +33,8 @@ final public class NotificationCenterView: UIView {
     public var selectedSegment: Int = 0 {
         didSet { segmentedControl.selectedSegmentIndex = selectedSegment }
     }
+    
+    // MARK:: - Private properties
     
     private lazy var segmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(withAutoLayout: true)
@@ -45,6 +49,8 @@ final public class NotificationCenterView: UIView {
     }()
     
     private var segmentContainers: [SegmentContainer]?
+    
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,7 +70,7 @@ final public class NotificationCenterView: UIView {
     }
 }
 
-// MARK: - Public extension
+// MARK: - Public Methods
 public extension NotificationCenterView {
     func reloadData() {
         segmentedControl.removeAllSegments()
@@ -122,6 +128,7 @@ extension NotificationCenterView: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension NotificationCenterView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.notificationCenterView(self, segment: selectedSegment, didSelectModelAt: indexPath)
@@ -165,7 +172,7 @@ extension NotificationCenterView: NotificationCenterFooterViewDelegate {
     }
 }
 
-// MARK: - Private extension
+// MARK: - Private Methods
 private extension NotificationCenterView {
     func setup() {
         addSubview(segmentedControl)
@@ -291,8 +298,6 @@ private extension UITableView {
         tableView.register(FeedbackCell.self)
         tableView.register(NotificationCenterHeaderView.self)
         tableView.register(NotificationCenterFooterView.self)
-    //        tableView.refreshControl = refreshControl
-    //        tableView.panGestureRecognizer.addTarget(self, action: #selector(handleTableViewPan(gesture:)))
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }
