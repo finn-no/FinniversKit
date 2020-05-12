@@ -79,19 +79,17 @@ public extension NotificationCenterView {
     }
     
     func reloadRows(at indexPaths: [IndexPath], inSegment segment: Int) {
-        guard let segmentContainers = segmentContainers, segmentContainers.indices ~= segment else {
-            return
-        }
-        
+        guard let segmentContainers = segmentContainers, segmentContainers.indices ~= segment else { return }
         segmentContainers[segment].tableView.reloadRows(at: indexPaths, with: .automatic)
     }
     
     func indexPathForSelectedRow(inSegment segment: Int) -> IndexPath? {
-        guard let segmentContainers = segmentContainers, segmentContainers.indices ~= segment else {
-            return nil
-        }
-        
+        guard let segmentContainers = segmentContainers, segmentContainers.indices ~= segment else { return nil }
         return segmentContainers[segment].tableView.indexPathForSelectedRow
+    }
+    
+    func resetContentOffset() {
+        segmentContainers?[selectedSegment].tableView.setContentOffset(CGPoint(x: 0, y: -.spacingM), animated: true)
     }
 }
 
