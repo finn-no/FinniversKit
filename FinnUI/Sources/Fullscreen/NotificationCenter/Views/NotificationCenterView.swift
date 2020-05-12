@@ -233,6 +233,7 @@ private extension NotificationCenterView {
             let deltaIndex = CGFloat(to - from)
             offset = deltaIndex / abs(deltaIndex) * 64
             currentSegmentContainer = segmentContainers[from]
+            currentSegmentContainer?.tableView.stopScrolling()
         } else {
             offset = 0
             currentSegmentContainer = nil
