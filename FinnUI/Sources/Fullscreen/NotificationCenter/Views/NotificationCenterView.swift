@@ -199,7 +199,7 @@ private extension NotificationCenterView {
         
         for segment in 0 ..< dataSource.numberOfSegments(in: self) {
             let title = dataSource.notificationCenterView(self, titleInSegment: segment)
-            let tableView = UITableView.notificationCenterTableView()
+            let tableView = UITableView.createNotificationCenterTableView()
             tableView.dataSource = self
             tableView.delegate = self
             
@@ -287,7 +287,7 @@ private class SegmentContainer {
 
 // MARK: - UITableView
 private extension UITableView {
-    static func notificationCenterTableView() -> UITableView {
+    static func createNotificationCenterTableView() -> UITableView {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .bgPrimary
         tableView.estimatedRowHeight = 150
