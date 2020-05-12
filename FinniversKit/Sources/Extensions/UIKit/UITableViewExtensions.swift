@@ -30,4 +30,8 @@ public extension UITableView {
         // swiftlint:disable:next force_cast
         return dequeueReusableHeaderFooterView(withIdentifier: headerFooterClass.reuseIdentifier) as! T
     }
+    
+    func stopScrolling() {
+        setContentOffset(contentOffset, animated: false)
+    }
 }

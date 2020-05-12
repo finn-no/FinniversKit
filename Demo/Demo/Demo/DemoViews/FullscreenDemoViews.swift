@@ -30,6 +30,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case settingDetails
     case adConfirmationView
     case notificationCenterView
+    case notificationCenterSearchView
     case minFinnView
     case favoriteAdActionView
     case favoriteAdCommentInputView
@@ -117,6 +118,8 @@ public enum FullscreenDemoViews: String, CaseIterable {
             return DemoViewController<AdConfirmationDemoView>()
         case .notificationCenterView:
             return DemoViewController<NotificationCenterDemoView>(dismissType: .dismissButton)
+        case .notificationCenterSearchView:
+            return DemoViewController<NotificationCenterSearchDemoView>(dismissType: .dismissButton)
         case .minFinnView:
             return DemoViewController<MinFinnDemoView>()
         case .favoriteAdActionView:

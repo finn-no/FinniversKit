@@ -23,20 +23,24 @@ extension UIImage {
 //swiftlint:disable superfluous_disable_command
 //swiftlint:disable type_body_length
 enum ImageAsset: String {
+    case heartMini
     case splashLetters1
     case splashLetters2
     case splashLetters3
     case splashLetters4
     case splashLogo
+    case tagMini
     case videoChat
 
     static var imageNames: [ImageAsset] {
         return [
+            .heartMini,
             .splashLetters1,
             .splashLetters2,
             .splashLetters3,
             .splashLetters4,
             .splashLogo,
+            .tagMini,
             .videoChat,
     ]
   }
