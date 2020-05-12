@@ -118,7 +118,7 @@
 		46AE6FAE242BAAAE007BB005 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
-				DED0A07E24685F120016176A /* NoificationCenter */,
+				DED0A07E24685F120016176A /* NotificationCenter */,
 				DA0E186D2459C21A00C0616E /* Settings */,
 				46AE6FAF242BAB97007BB005 /* SplashView */,
 			);
@@ -241,14 +241,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		DED0A07E24685F120016176A /* NoificationCenter */ = {
+		DED0A07E24685F120016176A /* NotificationCenter */ = {
 			isa = PBXGroup;
 			children = (
 				DED0A087246865C20016176A /* Models */,
 				DED0A2D3246933650016176A /* Cells */,
 				DED0A2C82469333C0016176A /* Views */,
 			);
-			path = NoificationCenter;
+			path = NotificationCenter;
 			sourceTree = "<group>";
 		};
 		DED0A087246865C20016176A /* Models */ = {
