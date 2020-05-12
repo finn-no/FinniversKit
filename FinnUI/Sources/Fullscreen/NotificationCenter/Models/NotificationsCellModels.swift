@@ -6,7 +6,7 @@ import FinniversKit
 
 public protocol NotificationCellModel {
     var isRead: Bool { get }
-    var content: NotificationCellContent { get }
+    var content: NotificationCellContent? { get }
 }
 
 public protocol NotificationCellContent {

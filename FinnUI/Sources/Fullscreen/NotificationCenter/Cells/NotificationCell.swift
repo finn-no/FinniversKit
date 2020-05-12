@@ -113,8 +113,8 @@ final class NotificationCell: UITableViewCell {
         separatorView.isHidden = hideSeparator
         gradientLayer.isHidden = !showGradient
         
-        priceLabel.text = model?.content.priceText
-        priceLabel.isHidden = model?.content.priceText == nil
+        priceLabel.text = model?.content?.priceText
+        priceLabel.isHidden = model?.content?.priceText == nil
         
         switch model?.content {
         case let content as PersonalNotificationCellContent:
@@ -138,7 +138,7 @@ final class NotificationCell: UITableViewCell {
             break
         }
         
-        guard let imagePath = model?.content.imagePath else {
+        guard let imagePath = model?.content?.imagePath else {
             remoteImageView.setImage(fallbackImage, animated: false)
             return
         }

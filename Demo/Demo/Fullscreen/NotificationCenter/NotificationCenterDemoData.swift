@@ -22,7 +22,7 @@ struct PersonalAdData: PersonalNotificationCellContent {
 
 struct NotificationCenterItem: NotificationCellModel {
     var isRead: Bool
-    var content: NotificationCellContent
+    var content: NotificationCellContent?
 }
 
 struct NotificationCenterSection: NotificationCenterHeaderViewModel {
