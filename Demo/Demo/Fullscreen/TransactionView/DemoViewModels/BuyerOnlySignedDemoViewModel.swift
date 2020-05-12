@@ -23,6 +23,7 @@ extension TransactionDemoViewDefaultData {
         steps: [
             TransactionStepModel(
                 state: .completed,
+                style: .default,
                 main: TransactionStepContentModel(
                     title: "Annonsen er lagt ut",
                     primaryButton: TransactionActionButtonModel(
@@ -33,6 +34,7 @@ extension TransactionDemoViewDefaultData {
 
             TransactionStepModel(
                 state: .active,
+                style: .default,
                 main: TransactionStepContentModel(
                     title: "Kontrakt",
                     body: NSAttributedString(string: "Kjøper har signert, nå mangler bare din signatur."),
@@ -43,12 +45,14 @@ extension TransactionDemoViewDefaultData {
 
             TransactionStepModel(
                 state: .notStarted,
+                style: .default,
                 main: TransactionStepContentModel(
                     title: "Betaling",
                     body: NSAttributedString(string: "Dere kan betale trygt gjennom FINN ved å velge det i kontrakten."))),
 
             TransactionStepModel(
                 state: .notStarted,
+                style: .default,
                 main: TransactionStepContentModel(
                     title: "Overlevering",
                     body: NSAttributedString(string: "<p>Velger dere å betale gjennom FINN, må overleveringen skje innen 7 dager etter kjøper har betalt.</p><p>Registrering av eierskiftet bør gjøres når dere møtes for overlevering.</p>"))),

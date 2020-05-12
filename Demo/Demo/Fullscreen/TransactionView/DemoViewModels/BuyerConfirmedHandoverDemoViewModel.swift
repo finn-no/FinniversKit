@@ -23,6 +23,7 @@ extension TransactionDemoViewDefaultData {
         steps: [
             TransactionStepModel(
                 state: .completed,
+                style: .default,
                 main: TransactionStepContentModel(
                     title: "Annonsen er lagt ut",
                     primaryButton: TransactionActionButtonModel(
@@ -33,6 +34,7 @@ extension TransactionDemoViewDefaultData {
 
             TransactionStepModel(
                 state: .completed,
+                style: .default,
                 main: TransactionStepContentModel(
                     title: "Kontrakt",
                     body: NSAttributedString(string: "Begge har signert kontrakten."),
@@ -51,6 +53,7 @@ extension TransactionDemoViewDefaultData {
 
             TransactionStepModel(
                 state: .active,
+                style: .default,
                 main: TransactionStepContentModel(
                     title: "Overlevering",
                     body: NSAttributedString(string: "<p>Kjøper har bekreftet.</p><p>Dere må bekrefte før:<br/><strong>8. februar 2020.</strong></p><ol><li>Ved oppmøte registrerer dere først eierskiftet digitalt hos Statens vegvesen.</li><li>Deretter må <strong>begge</strong> bekrefte at overleveringen har skjedd, og at pengene kan utbetales.</li></ol>"),
@@ -68,6 +71,7 @@ extension TransactionDemoViewDefaultData {
 
             TransactionStepModel(
                 state: .notStarted,
+                style: .default,
                 main: TransactionStepContentModel(
                     title: "Gratulerer med salget!",
                     body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før».")),
