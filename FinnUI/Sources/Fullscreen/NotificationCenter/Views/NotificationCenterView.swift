@@ -20,6 +20,7 @@ public protocol NotificationCenterViewDelegate: AnyObject {
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectModelAt indexPath: IndexPath)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectSavedSearchButtonIn section: Int)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectFooterButtonInSection section: Int)
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, didPullToRefreshUsing refreshControl: UIRefreshControl)
 }
 
 final public class NotificationCenterView: UIView {
@@ -170,6 +171,13 @@ extension NotificationCenterView: NotificationCenterFooterViewDelegate {
     }
 }
 
+// MARK: - RefreshControlDelegate
+extension NotificationCenterView: RefreshControlDelegate {
+    public func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl) {
+        delegate?.notificationCenterView(self, segment: selectedSegment, didPullToRefreshUsing: refreshControl)
+    }
+}
+
 // MARK: - Private Methods
 private extension NotificationCenterView {
     func setup() {
@@ -198,6 +206,7 @@ private extension NotificationCenterView {
         for segment in 0 ..< dataSource.numberOfSegments(in: self) {
             let title = dataSource.notificationCenterView(self, titleInSegment: segment)
             let tableView = UITableView.createNotificationCenterTableView()
+            tableView.refreshControl = RefreshControl(delegate: self)
             tableView.dataSource = self
             tableView.delegate = self
             
@@ -276,7 +285,11 @@ private class SegmentContainer {
     let tableView: UITableView
     let leadingConstraint: NSLayoutConstraint
     
-    init(title: String, tableView: UITableView, leadingConstraint: NSLayoutConstraint) {
+    init(
+        title: String,
+        tableView: UITableView,
+        leadingConstraint: NSLayoutConstraint
+    ) {
         self.title = title
         self.tableView = tableView
         self.leadingConstraint = leadingConstraint
@@ -299,5 +312,13 @@ private extension UITableView {
         tableView.register(NotificationCenterFooterView.self)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
+    }
+}
+
+// MARK: - RefreshControl
+private extension RefreshControl {
+    convenience init(delegate: RefreshControlDelegate) {
+        self.init(frame: .zero)
+        self.delegate = delegate
     }
 }

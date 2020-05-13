@@ -95,6 +95,12 @@ extension NotificationCenterDemoView: NotificationCenterViewDelegate {
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectFooterButtonInSection section: Int) {
         
     }
+    
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, didPullToRefreshUsing refreshControl: UIRefreshControl) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            refreshControl.endRefreshing()
+        }
+    }
 }
 
 extension NotificationCenterDemoView: FeedbackViewDelegate {
