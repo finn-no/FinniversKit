@@ -34,8 +34,6 @@ public class TransactionProcessSummaryView: UIView {
 
     private var viewBottomAnchor: NSLayoutYAxisAnchor?
 
-    private var externalUrl: String?
-
     // MARK: - contentView properties
 
     private lazy var iconImageView: UIImageView = {
@@ -137,7 +135,6 @@ public class TransactionProcessSummaryView: UIView {
         if showExternal {
             setupExternalContentView()
             externalTitleLabel.text = viewModel.externalView?.text
-            externalUrl = viewModel.externalView?.url
             viewBottomAnchor = externalContentView.bottomAnchor
         } else {
             externalContentView.removeFromSuperview()
