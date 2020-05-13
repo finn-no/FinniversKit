@@ -15,7 +15,7 @@ public class TransactionProcessSummaryDemoView: UIView {
         title: "Salgsprosess",
         detail: "Kontrakt",
         description: "Når du har funnet en kjøper er det neste steget å skrive en kontrakt",
-        externalTitle: "Mine kjøretøy",
+        externalView: .init(url: "https://www.finn.no/minekjoretoy", text: "Mine kjøretøy"),
         style: "ERROR"
     )
 
