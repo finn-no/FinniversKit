@@ -21,6 +21,16 @@
 		DA3415F9245AF80200DC1B1C /* BasicListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3415F8245AF80200DC1B1C /* BasicListCell.swift */; };
 		DA5A86A82462163700AC0DFE /* BasicListCellWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A86A72462163700AC0DFE /* BasicListCellWrapper.swift */; };
 		DA67DC22246076F300EA00A4 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA67DC21246076F300EA00A4 /* Appearance.swift */; };
+		DED0A08B246865E70016176A /* NotificationsCellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A08A246865E70016176A /* NotificationsCellModels.swift */; };
+		DED0A099246898940016176A /* NotificationCenterCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A098246898940016176A /* NotificationCenterCellType.swift */; };
+		DED0A2CE246933600016176A /* PersonalNotificationIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A2C9246933600016176A /* PersonalNotificationIconView.swift */; };
+		DED0A2CF246933600016176A /* SavedSearchHeaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A2CA246933600016176A /* SavedSearchHeaderButton.swift */; };
+		DED0A2D0246933600016176A /* NotificationCenterHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A2CB246933600016176A /* NotificationCenterHeaderView.swift */; };
+		DED0A2D1246933600016176A /* NotificationCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A2CC246933600016176A /* NotificationCenterView.swift */; };
+		DED0A2D2246933600016176A /* NotificationCenterFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A2CD246933600016176A /* NotificationCenterFooterView.swift */; };
+		DED0A2D62469337B0016176A /* FeedbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A2D42469337B0016176A /* FeedbackCell.swift */; };
+		DED0A2D72469337B0016176A /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A2D52469337B0016176A /* NotificationCell.swift */; };
+		DED0A3D724697F210016176A /* NotificationCenterSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A3D624697F210016176A /* NotificationCenterSearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +74,16 @@
 		DA3415F8245AF80200DC1B1C /* BasicListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicListCell.swift; sourceTree = "<group>"; };
 		DA5A86A72462163700AC0DFE /* BasicListCellWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicListCellWrapper.swift; sourceTree = "<group>"; };
 		DA67DC21246076F300EA00A4 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		DED0A08A246865E70016176A /* NotificationsCellModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCellModels.swift; sourceTree = "<group>"; };
+		DED0A098246898940016176A /* NotificationCenterCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterCellType.swift; sourceTree = "<group>"; };
+		DED0A2C9246933600016176A /* PersonalNotificationIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalNotificationIconView.swift; sourceTree = "<group>"; };
+		DED0A2CA246933600016176A /* SavedSearchHeaderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchHeaderButton.swift; sourceTree = "<group>"; };
+		DED0A2CB246933600016176A /* NotificationCenterHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterHeaderView.swift; sourceTree = "<group>"; };
+		DED0A2CC246933600016176A /* NotificationCenterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterView.swift; sourceTree = "<group>"; };
+		DED0A2CD246933600016176A /* NotificationCenterFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterFooterView.swift; sourceTree = "<group>"; };
+		DED0A2D42469337B0016176A /* FeedbackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackCell.swift; sourceTree = "<group>"; };
+		DED0A2D52469337B0016176A /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		DED0A3D624697F210016176A /* NotificationCenterSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +118,7 @@
 		46AE6FAE242BAAAE007BB005 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
+				DED0A07E24685F120016176A /* NotificationCenter */,
 				DA0E186D2459C21A00C0616E /* Settings */,
 				46AE6FAF242BAB97007BB005 /* SplashView */,
 			);
@@ -218,6 +239,47 @@
 				DA5A86A72462163700AC0DFE /* BasicListCellWrapper.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		DED0A07E24685F120016176A /* NotificationCenter */ = {
+			isa = PBXGroup;
+			children = (
+				DED0A087246865C20016176A /* Models */,
+				DED0A2D3246933650016176A /* Cells */,
+				DED0A2C82469333C0016176A /* Views */,
+			);
+			path = NotificationCenter;
+			sourceTree = "<group>";
+		};
+		DED0A087246865C20016176A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DED0A098246898940016176A /* NotificationCenterCellType.swift */,
+				DED0A08A246865E70016176A /* NotificationsCellModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DED0A2C82469333C0016176A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DED0A2CC246933600016176A /* NotificationCenterView.swift */,
+				DED0A3D624697F210016176A /* NotificationCenterSearchView.swift */,
+				DED0A2CD246933600016176A /* NotificationCenterFooterView.swift */,
+				DED0A2CB246933600016176A /* NotificationCenterHeaderView.swift */,
+				DED0A2C9246933600016176A /* PersonalNotificationIconView.swift */,
+				DED0A2CA246933600016176A /* SavedSearchHeaderButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DED0A2D3246933650016176A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DED0A2D42469337B0016176A /* FeedbackCell.swift */,
+				DED0A2D52469337B0016176A /* NotificationCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,14 +434,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DED0A2D1246933600016176A /* NotificationCenterView.swift in Sources */,
+				DED0A099246898940016176A /* NotificationCenterCellType.swift in Sources */,
+				DED0A2D0246933600016176A /* NotificationCenterHeaderView.swift in Sources */,
 				46AE6FB1242BAB97007BB005 /* SplashView.swift in Sources */,
 				DA0E186F2459C23600C0616E /* SettingsView.swift in Sources */,
+				DED0A3D724697F210016176A /* NotificationCenterSearchView.swift in Sources */,
 				8D68078190A301C047AD77D7 /* ChatAvailabilityView.swift in Sources */,
 				DA67DC22246076F300EA00A4 /* Appearance.swift in Sources */,
 				DA3415F9245AF80200DC1B1C /* BasicListCell.swift in Sources */,
+				DED0A2CF246933600016176A /* SavedSearchHeaderButton.swift in Sources */,
 				DA3415F5245AEB5C00DC1B1C /* BottomDividerModifier.swift in Sources */,
+				DED0A2D72469337B0016176A /* NotificationCell.swift in Sources */,
 				DA5A86A82462163700AC0DFE /* BasicListCellWrapper.swift in Sources */,
+				DED0A2D2246933600016176A /* NotificationCenterFooterView.swift in Sources */,
+				DED0A2CE246933600016176A /* PersonalNotificationIconView.swift in Sources */,
 				9B58C0F6246550440029FAF5 /* ButtonStyle+Previews.swift in Sources */,
+				DED0A2D62469337B0016176A /* FeedbackCell.swift in Sources */,
+				DED0A08B246865E70016176A /* NotificationsCellModels.swift in Sources */,
 				469894A02434DD6F00CC84E6 /* ImageAsset.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
