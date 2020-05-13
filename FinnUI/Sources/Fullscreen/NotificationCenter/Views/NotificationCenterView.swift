@@ -178,13 +178,6 @@ extension NotificationCenterView: NotificationCenterFooterViewDelegate {
     }
 }
 
-// MARK: - RefreshControlDelegate
-extension NotificationCenterView: RefreshControlDelegate {
-    public func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl) {
-        reloadOnEndDragging = true
-    }
-}
-
 // MARK: - Private Methods
 private extension NotificationCenterView {
     func setup() {
@@ -203,6 +196,10 @@ private extension NotificationCenterView {
         ])
     }
     
+    @objc func handleRefreshBegan() {
+        reloadOnEndDragging = true
+    }
+    
     func setupSegmentedControl() {
         segmentContainers = []
         
@@ -213,7 +210,9 @@ private extension NotificationCenterView {
         for segment in 0 ..< dataSource.numberOfSegments(in: self) {
             let title = dataSource.notificationCenterView(self, titleInSegment: segment)
             let tableView = UITableView.createNotificationCenterTableView()
-            tableView.refreshControl = RefreshControl(delegate: self)
+            let refreshControl = UIRefreshControl(frame: .zero)
+            refreshControl.addTarget(self, action: #selector(handleRefreshBegan), for: .valueChanged)
+            tableView.refreshControl = refreshControl
             tableView.dataSource = self
             tableView.delegate = self
             
