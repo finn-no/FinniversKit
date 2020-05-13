@@ -20,11 +20,11 @@ public struct TransactionProcessSummaryViewModel {
 
 // swiftlint:disable:next superfluous_disable_command type_name
 public struct TransactionProcessSummaryExternalViewModel {
-    public let url: String
     public let text: String
+    public let url: String
 
-    public init(url: String, text: String) {
-        self.url = url
+    public init(text: String, url: String) {
         self.text = text
+        self.url = url
     }
 }

@@ -68,7 +68,7 @@ public class AdManagementDemoView: UIView {
         title: "Salgsprosess",
         detail: "Overlevering",
         description: "Kjøper har bekreftet. Dere må bekrefte før 8.februar 2020.",
-        externalView: .init(url: "https://www.finn.no/minekjoretoy", text: "Mine kjøretøy"),
+        externalView: .init(text: "Mine kjøretøy", url: "https://www.finn.no/minekjoretoy"),
         style: "ERROR"
     )
 
