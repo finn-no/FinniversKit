@@ -6,12 +6,12 @@ import UIKit
 
 public class TransactionAlertView: UIView {
     enum Icon: String {
-        case multipleContracts = "MULTIPLE-CONTRACTS"
+        case multipleContracts = "MULTIPLE_CONTRACTS"
         case `default` = "noImage"
 
         init(rawValue: String) {
             switch rawValue {
-            case "MULTIPLE-CONTRACTS":
+            case "MULTIPLE_CONTRACTS":
                 self = .multipleContracts
             default:
                 self = .default
