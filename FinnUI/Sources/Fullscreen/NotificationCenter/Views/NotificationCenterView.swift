@@ -159,6 +159,7 @@ extension NotificationCenterView: UITableViewDelegate {
     
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         guard reloadOnEndDragging, let refreshControl = scrollView.refreshControl else { return }
+        reloadOnEndDragging = false
         delegate?.notificationCenterView(self, segment: selectedSegment, didPullToRefreshUsing: refreshControl)
     }
 }
