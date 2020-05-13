@@ -50,6 +50,7 @@ final public class NotificationCenterView: UIView {
     }()
     
     private var segmentContainers: [SegmentContainer]?
+    private var reloadOnEndDragging = false
     
     // MARK: - Init
     
@@ -155,6 +156,11 @@ extension NotificationCenterView: UITableViewDelegate {
         footerView.configure(with: title, inSection: section)
         return footerView
     }
+    
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        guard reloadOnEndDragging, let refreshControl = scrollView.refreshControl else { return }
+        delegate?.notificationCenterView(self, segment: selectedSegment, didPullToRefreshUsing: refreshControl)
+    }
 }
 
 // MARK: - NotificationCenterHeaderViewDelegate
@@ -174,7 +180,7 @@ extension NotificationCenterView: NotificationCenterFooterViewDelegate {
 // MARK: - RefreshControlDelegate
 extension NotificationCenterView: RefreshControlDelegate {
     public func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl) {
-        delegate?.notificationCenterView(self, segment: selectedSegment, didPullToRefreshUsing: refreshControl)
+        reloadOnEndDragging = true
     }
 }
 
