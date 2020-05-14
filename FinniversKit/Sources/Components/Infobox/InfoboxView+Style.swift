@@ -28,7 +28,7 @@ public extension InfoboxView {
             case .normal:
                 return .caption
             case .warning:
-                return .caption
+                return .body
             }
         }
 
@@ -84,6 +84,17 @@ public extension InfoboxView {
                 return backgroundColor
             case .warning:
                 return .banana
+            }
+        }
+
+        var textColor: UIColor {
+            switch self {
+            case .small:
+                return .textPrimary
+            case .normal:
+                return .textPrimary
+            case .warning:
+                return UIColor(hex: "#1B1B24")
             }
         }
 

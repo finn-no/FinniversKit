@@ -34,7 +34,7 @@ public final class InfoboxView: UIView {
         let label = Label(style: style.titleStyle)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.textColor = .textPrimary
+        label.textColor = style.textColor
         return label
     }()
 
@@ -42,7 +42,7 @@ public final class InfoboxView: UIView {
         let label = Label(style: style.detailStyle)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.textColor = .textPrimary
+        label.textColor = style.textColor
         label.numberOfLines = 0
         return label
     }()
