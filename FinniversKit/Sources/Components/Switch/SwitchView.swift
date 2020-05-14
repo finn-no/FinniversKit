@@ -7,33 +7,33 @@ public protocol SwitchViewDelegate: AnyObject {
 }
 
 public class SwitchView: UIView {
+
     // MARK: - Public properties
 
     public weak var delegate: SwitchViewDelegate?
 
     public var isOn: Bool {
-        get {
-            return uiSwitch.isOn
-        }
-        set {
-            uiSwitch.isOn = newValue
-        }
+        get { uiSwitch.isOn }
+        set { uiSwitch.isOn = newValue }
     }
 
     // MARK: - Private properties
+
+    private let style: SwitchViewStyle
+
     private lazy var titleLabel: Label = {
-        let label = Label(style: .bodyStrong)
+        let label = Label(style: style.titleLabelStyle)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .textSecondary
+        label.textColor = style.titleLabelTextColor
         return label
     }()
 
     private lazy var detailLabel: Label = {
-        let label = Label(style: .detail)
+        let label = Label(style: style.detailLabelStyle)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .textSecondary
+        label.textColor = style.detailLabelTextColor
         return label
     }()
 
@@ -45,12 +45,22 @@ public class SwitchView: UIView {
     }()
 
     // MARK: - Initializers
+
+    public init(style: SwitchViewStyle = .default, withAutoLayout: Bool = false) {
+        self.style = style
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
+        setup()
+    }
+
     public override init(frame: CGRect) {
+        self.style = .default
         super.init(frame: frame)
         setup()
     }
 
     public required init?(coder aDecoder: NSCoder) {
+        self.style = .default
         super.init(coder: aDecoder)
         setup()
     }
@@ -64,6 +74,7 @@ public class SwitchView: UIView {
     }
 
     // MARK: - Private methods
+
     private func setup() {
         addSubview(titleLabel)
         addSubview(detailLabel)
