@@ -17,7 +17,12 @@ public final class InfoboxView: UIView {
             titleLabel.text = model?.title
             detailLabel.text = model?.detail
             primaryButton.setTitle(model?.primaryButtonTitle, for: .normal)
-            secondaryButton.setTitle(model?.secondaryButtonTitle, for: .normal)
+            if let secondaryButtonTitle = model?.secondaryButtonTitle,
+                !secondaryButtonTitle.isEmpty {
+                secondaryButton.setTitle(secondaryButtonTitle, for: .normal)
+            } else {
+                secondaryButton.isHidden = true
+            }
         }
     }
 
@@ -59,7 +64,7 @@ public final class InfoboxView: UIView {
     }()
 
     private lazy var secondaryButton: UIButton = {
-        let button = Button(style: style.secondaryButtonStyle, size: style.secondaryButtonSize)
+        let button = Button(style: style.secondaryButtonStyle ?? .default, size: style.secondaryButtonSize ?? .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(handleSecondaryButtonTap), for: .touchUpInside)
         return button

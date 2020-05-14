@@ -8,6 +8,7 @@ public extension InfoboxView {
     enum Style {
         case small(backgroundColor: UIColor)
         case normal(backgroundColor: UIColor, primaryButtonIcon: UIImage?)
+        case warning
 
         var titleStyle: Label.Style {
             switch self {
@@ -15,6 +16,8 @@ public extension InfoboxView {
                 return .bodyStrong
             case .normal:
                 return .title3
+            case .warning:
+                return .bodyStrong
             }
         }
 
@@ -23,6 +26,8 @@ public extension InfoboxView {
             case .small:
                 return .caption
             case .normal:
+                return .caption
+            case .warning:
                 return .caption
             }
         }
@@ -33,6 +38,8 @@ public extension InfoboxView {
                 return .default
             case .normal:
                 return .callToAction
+            case .warning:
+                return .flat
             }
         }
 
@@ -42,24 +49,30 @@ public extension InfoboxView {
                 return .small
             case .normal:
                 return .normal
+            case .warning:
+                return .normal
             }
         }
 
-        var secondaryButtonStyle: Button.Style {
+        var secondaryButtonStyle: Button.Style? {
             switch self {
             case .small:
                 return .flat
             case .normal:
                 return .link
+            default:
+                return nil
             }
         }
 
-        var secondaryButtonSize: Button.Size {
+        var secondaryButtonSize: Button.Size? {
             switch self {
             case .small:
                 return .small
             case .normal:
                 return .normal
+            default:
+                return nil
             }
         }
 
@@ -69,6 +82,8 @@ public extension InfoboxView {
                 return backgroundColor
             case .normal(let backgroundColor, _):
                 return backgroundColor
+            case .warning:
+                return .banana
             }
         }
 
@@ -78,6 +93,8 @@ public extension InfoboxView {
                 return nil
             case .normal(_, let image):
                 return image
+            case .warning:
+                return nil
             }
         }
     }

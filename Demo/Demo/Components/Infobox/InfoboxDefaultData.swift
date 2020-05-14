@@ -17,3 +17,10 @@ public struct InfoboxOpenBrowserData: InfoboxViewModel {
     public let primaryButtonTitle = "Åpne i nettleser"
     public let secondaryButtonTitle = "Gå tilbake til søket"
 }
+
+public struct InfoboxWarningData: InfoboxViewModel {
+    public let title = "Ops! Vi klarte ikke laste inn flere annonser"
+    public let detail = "Snevre inn søket for å bla gjennom flere annonser på Torget."
+    public let primaryButtonTitle = "Endre søket"
+    public let secondaryButtonTitle = ""
+}

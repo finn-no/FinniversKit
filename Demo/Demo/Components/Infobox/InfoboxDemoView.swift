@@ -25,6 +25,8 @@ public class InfoboxDemoView: UIView {
     }()
     private lazy var normalInfoboxView = InfoboxView(style: .normal(backgroundColor: .bgPrimary, primaryButtonIcon: UIImage(named: .webview)))
 
+    private lazy var warningInfoboxView = InfoboxView(style: .warning)
+
     // MARK: - Init
 
     override init(frame: CGRect) {
@@ -45,6 +47,10 @@ public class InfoboxDemoView: UIView {
         addSubview(normalInfoboxView)
         normalInfoboxView.model = InfoboxOpenBrowserData()
 
+        warningInfoboxView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(warningInfoboxView)
+        warningInfoboxView.model = InfoboxWarningData()
+
         addSubview(smallInfoboxLabel)
         addSubview(normalInfoboxLabel)
 
@@ -64,6 +70,10 @@ public class InfoboxDemoView: UIView {
             normalInfoboxView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
             normalInfoboxView.centerXAnchor.constraint(equalTo: centerXAnchor),
             normalInfoboxView.topAnchor.constraint(equalTo: normalInfoboxLabel.bottomAnchor, constant: .spacingXS),
+
+            warningInfoboxView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
+            warningInfoboxView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            warningInfoboxView.topAnchor.constraint(equalTo: normalInfoboxView.bottomAnchor, constant: .spacingXS),
         ])
     }
 }
