@@ -24,7 +24,15 @@ public class InfoboxDemoView: UIView {
         return label
     }()
     private lazy var normalInfoboxView = InfoboxView(style: .normal(backgroundColor: .bgPrimary, primaryButtonIcon: UIImage(named: .webview)))
-
+    private lazy var warningInfoboxLabel: Label = {
+        let label = Label(style: .caption)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.text = "Style: .warning"
+        label.numberOfLines = 1
+        label.textColor = .textSecondary
+        return label
+    }()
     private lazy var warningInfoboxView = InfoboxView(style: .warning)
 
     // MARK: - Init
@@ -53,6 +61,7 @@ public class InfoboxDemoView: UIView {
 
         addSubview(smallInfoboxLabel)
         addSubview(normalInfoboxLabel)
+        addSubview(warningInfoboxLabel)
 
         NSLayoutConstraint.activate([
             smallInfoboxLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -65,15 +74,19 @@ public class InfoboxDemoView: UIView {
 
             normalInfoboxLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             normalInfoboxLabel.widthAnchor.constraint(equalTo: widthAnchor),
-            normalInfoboxLabel.topAnchor.constraint(equalTo: smallInfoboxView.bottomAnchor, constant: .spacingXXL),
+            normalInfoboxLabel.topAnchor.constraint(equalTo: smallInfoboxView.bottomAnchor, constant: .spacingXL),
 
             normalInfoboxView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
             normalInfoboxView.centerXAnchor.constraint(equalTo: centerXAnchor),
             normalInfoboxView.topAnchor.constraint(equalTo: normalInfoboxLabel.bottomAnchor, constant: .spacingXS),
 
+            warningInfoboxLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            warningInfoboxLabel.widthAnchor.constraint(equalTo: widthAnchor),
+            warningInfoboxLabel.topAnchor.constraint(equalTo: normalInfoboxView.bottomAnchor, constant: .spacingXL),
+
             warningInfoboxView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
             warningInfoboxView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            warningInfoboxView.topAnchor.constraint(equalTo: normalInfoboxView.bottomAnchor, constant: .spacingXS),
+            warningInfoboxView.topAnchor.constraint(equalTo: warningInfoboxLabel.bottomAnchor, constant: .spacingXS),
         ])
     }
 }
