@@ -64,7 +64,7 @@ public final class InfoboxView: UIView {
     }()
 
     private lazy var secondaryButton: UIButton = {
-        let button = Button(style: style.secondaryButtonStyle ?? .default, size: style.secondaryButtonSize ?? .normal)
+        let button = Button(style: style.secondaryButtonStyle, size: style.secondaryButtonSize)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(handleSecondaryButtonTap), for: .touchUpInside)
         return button

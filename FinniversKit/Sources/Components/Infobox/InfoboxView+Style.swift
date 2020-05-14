@@ -54,25 +54,25 @@ public extension InfoboxView {
             }
         }
 
-        var secondaryButtonStyle: Button.Style? {
+        var secondaryButtonStyle: Button.Style {
             switch self {
             case .small:
                 return .flat
             case .normal:
                 return .link
             default:
-                return nil
+                return .default
             }
         }
 
-        var secondaryButtonSize: Button.Size? {
+        var secondaryButtonSize: Button.Size {
             switch self {
             case .small:
                 return .small
             case .normal:
                 return .normal
             default:
-                return nil
+                return .normal
             }
         }
 
