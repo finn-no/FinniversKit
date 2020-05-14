@@ -134,7 +134,7 @@ public class TransactionProcessSummaryView: UIView {
 
         if showExternal {
             setupExternalContentView()
-            externalTitleLabel.text = viewModel.externalTitle
+            externalTitleLabel.text = viewModel.externalView?.text
             viewBottomAnchor = externalContentView.bottomAnchor
         } else {
             externalContentView.removeFromSuperview()
