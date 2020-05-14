@@ -60,8 +60,6 @@
 		46E773D6242CEF0A008A5E93 /* FavoriteAdsListDemoViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772AB242CEF09008A5E93 /* FavoriteAdsListDemoViewHelper.swift */; };
 		46E773D7242CEF0A008A5E93 /* FavoriteAdsListDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772AC242CEF09008A5E93 /* FavoriteAdsListDemoViewController.swift */; };
 		46E773D8242CEF0A008A5E93 /* FavoriteAdsDemoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772AD242CEF09008A5E93 /* FavoriteAdsDemoDataSource.swift */; };
-		46E773D9242CEF0A008A5E93 /* AdConfirmationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772AF242CEF09008A5E93 /* AdConfirmationDemoView.swift */; };
-		46E773DA242CEF0A008A5E93 /* AdConfirmationViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772B0242CEF09008A5E93 /* AdConfirmationViewDefaultData.swift */; };
 		46E773DB242CEF0A008A5E93 /* AdReporterDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772B2242CEF09008A5E93 /* AdReporterDemoView.swift */; };
 		46E773DC242CEF0A008A5E93 /* LoginViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772B4242CEF09008A5E93 /* LoginViewDefaultData.swift */; };
 		46E773DD242CEF0A008A5E93 /* LoginViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772B5242CEF09008A5E93 /* LoginViewDemoView.swift */; };
@@ -313,8 +311,6 @@
 		46E772AB242CEF09008A5E93 /* FavoriteAdsListDemoViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListDemoViewHelper.swift; sourceTree = "<group>"; };
 		46E772AC242CEF09008A5E93 /* FavoriteAdsListDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListDemoViewController.swift; sourceTree = "<group>"; };
 		46E772AD242CEF09008A5E93 /* FavoriteAdsDemoDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsDemoDataSource.swift; sourceTree = "<group>"; };
-		46E772AF242CEF09008A5E93 /* AdConfirmationDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdConfirmationDemoView.swift; sourceTree = "<group>"; };
-		46E772B0242CEF09008A5E93 /* AdConfirmationViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdConfirmationViewDefaultData.swift; sourceTree = "<group>"; };
 		46E772B2242CEF09008A5E93 /* AdReporterDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdReporterDemoView.swift; sourceTree = "<group>"; };
 		46E772B4242CEF09008A5E93 /* LoginViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDefaultData.swift; sourceTree = "<group>"; };
 		46E772B5242CEF09008A5E93 /* LoginViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDemoView.swift; sourceTree = "<group>"; };
@@ -593,7 +589,6 @@
 		46E7726A242CEF09008A5E93 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
-				46E772AE242CEF09008A5E93 /* AdConfirmationView */,
 				46E77278242CEF09008A5E93 /* AddressMapView */,
 				46E772B1242CEF09008A5E93 /* AdReporter */,
 				46E772B6242CEF09008A5E93 /* BetaFeatureView */,
@@ -873,15 +868,6 @@
 				46E772AD242CEF09008A5E93 /* FavoriteAdsDemoDataSource.swift */,
 			);
 			path = FavoriteAdsListView;
-			sourceTree = "<group>";
-		};
-		46E772AE242CEF09008A5E93 /* AdConfirmationView */ = {
-			isa = PBXGroup;
-			children = (
-				46E772AF242CEF09008A5E93 /* AdConfirmationDemoView.swift */,
-				46E772B0242CEF09008A5E93 /* AdConfirmationViewDefaultData.swift */,
-			);
-			path = AdConfirmationView;
 			sourceTree = "<group>";
 		};
 		46E772B1242CEF09008A5E93 /* AdReporter */ = {
@@ -2094,7 +2080,6 @@
 				46E773EB242CEF0A008A5E93 /* ContractNotCreatedDemoViewModel.swift in Sources */,
 				46E773CE242CEF0A008A5E93 /* RegisterViewDefaultData.swift in Sources */,
 				46E77418242CEF0A008A5E93 /* ColumnListsDemoView.swift in Sources */,
-				46E773D9242CEF0A008A5E93 /* AdConfirmationDemoView.swift in Sources */,
 				46E773E0242CEF0A008A5E93 /* AdExpiredDemoViewModel.swift in Sources */,
 				46E773CA242CEF0A008A5E93 /* ConfirmationViewDemoView.swift in Sources */,
 				46E77416242CEF0A008A5E93 /* StepSliderDemoView.swift in Sources */,
@@ -2121,7 +2106,6 @@
 				46E773C6242CEF0A008A5E93 /* FavoriteAdSortingDemoView.swift in Sources */,
 				46E77435242CEF0A008A5E93 /* PhaseListViewDemo.swift in Sources */,
 				46E773DD242CEF0A008A5E93 /* LoginViewDemoView.swift in Sources */,
-				46E773DA242CEF0A008A5E93 /* AdConfirmationViewDefaultData.swift in Sources */,
 				46E773BF242CEF0A008A5E93 /* LoginEntryViewDemoViewController.swift in Sources */,
 				46E7746C242CEF0A008A5E93 /* NotificationsListViewDemoViewHelpers.swift in Sources */,
 				46E7741D242CEF0A008A5E93 /* FloatingButtonDemoView.swift in Sources */,
