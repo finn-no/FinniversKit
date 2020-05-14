@@ -320,11 +320,3 @@ private extension UITableView {
         return tableView
     }
 }
-
-// MARK: - RefreshControl
-private extension RefreshControl {
-    convenience init(delegate: RefreshControlDelegate) {
-        self.init(frame: .zero)
-        self.delegate = delegate
-    }
-}
