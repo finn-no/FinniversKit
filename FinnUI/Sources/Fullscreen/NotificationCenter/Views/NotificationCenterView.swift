@@ -20,6 +20,7 @@ public protocol NotificationCenterViewDelegate: AnyObject {
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectModelAt indexPath: IndexPath)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectSavedSearchButtonIn section: Int)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectFooterButtonInSection section: Int)
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, didPullToRefreshUsing refreshControl: UIRefreshControl)
 }
 
 final public class NotificationCenterView: UIView {
@@ -49,6 +50,7 @@ final public class NotificationCenterView: UIView {
     }()
     
     private var segmentContainers: [SegmentContainer]?
+    private var reloadOnEndDragging = false
     
     // MARK: - Init
     
@@ -154,6 +156,12 @@ extension NotificationCenterView: UITableViewDelegate {
         footerView.configure(with: title, inSection: section)
         return footerView
     }
+    
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        guard reloadOnEndDragging, let refreshControl = scrollView.refreshControl else { return }
+        reloadOnEndDragging = false
+        delegate?.notificationCenterView(self, segment: selectedSegment, didPullToRefreshUsing: refreshControl)
+    }
 }
 
 // MARK: - NotificationCenterHeaderViewDelegate
@@ -188,6 +196,10 @@ private extension NotificationCenterView {
         ])
     }
     
+    @objc func handleRefreshBegan() {
+        reloadOnEndDragging = true
+    }
+    
     func setupSegmentedControl() {
         segmentContainers = []
         
@@ -198,6 +210,9 @@ private extension NotificationCenterView {
         for segment in 0 ..< dataSource.numberOfSegments(in: self) {
             let title = dataSource.notificationCenterView(self, titleInSegment: segment)
             let tableView = UITableView.createNotificationCenterTableView()
+            let refreshControl = UIRefreshControl(frame: .zero)
+            refreshControl.addTarget(self, action: #selector(handleRefreshBegan), for: .valueChanged)
+            tableView.refreshControl = refreshControl
             tableView.dataSource = self
             tableView.delegate = self
             
@@ -276,7 +291,11 @@ private class SegmentContainer {
     let tableView: UITableView
     let leadingConstraint: NSLayoutConstraint
     
-    init(title: String, tableView: UITableView, leadingConstraint: NSLayoutConstraint) {
+    init(
+        title: String,
+        tableView: UITableView,
+        leadingConstraint: NSLayoutConstraint
+    ) {
         self.title = title
         self.tableView = tableView
         self.leadingConstraint = leadingConstraint
