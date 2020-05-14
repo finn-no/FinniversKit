@@ -28,7 +28,7 @@ public enum TransactionStepViewState: String {
         case "COMPLETED":
             self = .completed
         default:
-            fatalError("No supported state exists for rawValue: '\(rawValue)'")
+            self = .notStarted
         }
     }
 
