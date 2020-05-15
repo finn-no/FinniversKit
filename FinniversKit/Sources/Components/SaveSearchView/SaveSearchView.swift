@@ -17,6 +17,14 @@ public class SaveSearchView: UIView {
 
     public weak var delegate: SaveSearchViewDelegate?
 
+    public var isNotificationCenterOn: Bool {
+        get { notificationCenterSwitchView.isOn }
+        set {
+            notificationCenterSwitchView.isOn = newValue
+            delegate?.saveSearchView(self, didUpdateIsNotificationCenterOn: newValue)
+        }
+    }
+
     public var isPushOn: Bool {
         get { pushSwitchView.isOn }
         set {
