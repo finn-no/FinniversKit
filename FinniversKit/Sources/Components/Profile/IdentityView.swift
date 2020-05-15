@@ -94,7 +94,7 @@ public class IdentityView: UIView {
         return imageView
     }()
 
-    private lazy var profileNameWrapperView: UIView = {
+    private lazy var profileWrapperView: UIView = {
         let wrapperView = UIView(withAutoLayout: true)
 
         wrapperView.addSubview(profileNameLabel)
@@ -152,8 +152,7 @@ public class IdentityView: UIView {
     }()
 
     private lazy var descriptionLabelConstraints: [NSLayoutConstraint] = [
-        descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-        descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: profileImageView.bottomAnchor, constant: .spacingM),
+        descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
         descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: profileStackView.bottomAnchor, constant: .spacingM),
         descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
         descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM)
@@ -186,19 +185,18 @@ public class IdentityView: UIView {
         addSubview(profileImageView)
         addSubview(descriptionLabel)
 
-        profileStackView.addArrangedSubview(profileNameWrapperView)
+        profileStackView.addArrangedSubview(profileWrapperView)
         profileStackView.addArrangedSubview(subtitleLabel)
 
         NSLayoutConstraint.activate([
-            profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
             profileImageView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
             profileImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingM),
             profileImageView.widthAnchor.constraint(equalToConstant: IdentityView.profileImageSize),
             profileImageView.heightAnchor.constraint(equalToConstant: IdentityView.profileImageSize),
 
             profileStackView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: .spacingS),
-            profileStackView.topAnchor.constraint(equalTo: profileImageView.topAnchor),
-            profileStackView.bottomAnchor.constraint(greaterThanOrEqualTo: profileImageView.bottomAnchor),
+            profileStackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
             profileStackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingM),
             profileStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
         ])

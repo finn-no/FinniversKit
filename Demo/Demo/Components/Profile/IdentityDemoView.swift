@@ -147,7 +147,7 @@ private class ViewModel: IdentityViewModel {
     let isVerified: Bool
     var displayMode: IdentityView.DisplayMode
 
-    let offlineDescription: String? = "Du må være logget inn for å se profilen"
+    let offlineDescription: String? = "Du må være logget inn for å se profilen. Hvis du ikke logger inn kan du ikke se profilen i det hele tatt."
     let offlineButtonTitle: String? = "Logg inn"
 
     init(description: String?, isTappable: Bool, isVerified: Bool, displayMode: IdentityView.DisplayMode = .interactible) {
