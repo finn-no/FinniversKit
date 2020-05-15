@@ -55,18 +55,10 @@ public class SaveSearchView: UIView {
         return textField
     }()
 
-    private lazy var hairline: UIView = {
-        let line = UIView(frame: .zero)
-        line.translatesAutoresizingMaskIntoConstraints = false
-        line.backgroundColor = .textDisabled
-        return line
-    }()
-
-    private lazy var hairline2: UIView = {
-        let line = UIView(frame: .zero)
-        line.translatesAutoresizingMaskIntoConstraints = false
-        line.backgroundColor = .textDisabled
-        return line
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(withAutoLayout: true)
+        stackView.axis = .vertical
+        return stackView
     }()
 
     private lazy var scrollView: UIScrollView = {
@@ -129,13 +121,21 @@ public class SaveSearchView: UIView {
         contentView.addSubview(searchNameContainer)
         searchNameContainer.addSubview(searchNameTextField)
 
-        contentView.addSubview(notificationCenterSwitchView)
-        contentView.addSubview(pushSwitchView)
-        contentView.addSubview(hairline)
-        contentView.addSubview(hairline2)
-        contentView.addSubview(emailSwitchView)
+        contentView.addSubview(stackView)
 
         scrollView.fillInSuperview()
+
+        stackView.insertArrangedSubviews([
+            notificationCenterSwitchView,
+            HairlineView(),
+            pushSwitchView,
+            HairlineView(),
+            emailSwitchView
+        ])
+
+        stackView.arrangedSubviews.filter { $0 is HairlineView }.forEach {
+            $0.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale).isActive = true
+        }
 
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: widthAnchor),
@@ -149,28 +149,10 @@ public class SaveSearchView: UIView {
             searchNameTextField.trailingAnchor.constraint(equalTo: searchNameContainer.trailingAnchor, constant: -.spacingM),
             searchNameTextField.centerYAnchor.constraint(equalTo: searchNameContainer.centerYAnchor),
 
-            notificationCenterSwitchView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            notificationCenterSwitchView.topAnchor.constraint(equalTo: searchNameContainer.bottomAnchor, constant: .spacingM),
-            notificationCenterSwitchView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-
-            hairline.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-            hairline.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            hairline.topAnchor.constraint(equalTo: notificationCenterSwitchView.bottomAnchor),
-            hairline.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
-
-            pushSwitchView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            pushSwitchView.topAnchor.constraint(equalTo: notificationCenterSwitchView.bottomAnchor, constant: .spacingM),
-            pushSwitchView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-
-            hairline2.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-            hairline2.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            hairline2.topAnchor.constraint(equalTo: pushSwitchView.bottomAnchor),
-            hairline2.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
-
-            emailSwitchView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            emailSwitchView.topAnchor.constraint(equalTo: hairline2.bottomAnchor),
-            emailSwitchView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            emailSwitchView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            stackView.topAnchor.constraint(equalTo: searchNameTextField.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
 
         let notificationCenter = NotificationCenter.default
@@ -230,5 +212,24 @@ extension SaveSearchView: SwitchViewDelegate {
         if switchView == emailSwitchView {
             delegate?.saveSearchView(self, didUpdateIsEmailOn: isEmailOn)
         }
+    }
+}
+
+// MARK: - Private types
+
+private class HairlineView: UIView {
+    init() {
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = false
+        setup()
+    }
+
+    public required init?(coder aDecoder: NSCoder) { fatalError() }
+
+    private func setup() {
+        let line = UIView(withAutoLayout: true)
+        line.backgroundColor = .textDisabled
+        addSubview(line)
+        line.fillInSuperview(insets: UIEdgeInsets(leading: .spacingM))
     }
 }
