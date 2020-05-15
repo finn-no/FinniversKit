@@ -9,6 +9,7 @@ public protocol SaveSearchViewDelegate: AnyObject {
     func saveSearchView(_ saveSearchView: SaveSearchView, didUpdateIsNotificationCenterOn: Bool)
     func saveSearchView(_ saveSearchView: SaveSearchView, didUpdateIsPushOn: Bool)
     func saveSearchView(_ saveSearchView: SaveSearchView, didUpdateIsEmailOn: Bool)
+    func saveSearchViewDidSelectDeleteSearchButton(_ saveSearchView: SaveSearchView)
 }
 
 public class SaveSearchView: UIView {
@@ -67,6 +68,13 @@ public class SaveSearchView: UIView {
         return scrollView
     }()
 
+    private lazy var deleteSavedSearchButton: Button = {
+        let button = Button(style: .destructive, withAutoLayout: true)
+        button.addTarget(self, action: #selector(handleDeleteButtonTap), for: .touchUpInside)
+        button.isHidden = true
+        return button
+    }()
+
 
     // MARK: - Initializers
 
@@ -100,6 +108,13 @@ public class SaveSearchView: UIView {
         notificationCenterSwitchView.configure(with: viewModel.notificationCenterSwitchViewModel)
         pushSwitchView.configure(with: viewModel.pushSwitchViewModel)
         emailSwitchView.configure(with: viewModel.emailSwitchViewModel)
+
+        if let deleteSearchButtonTitle = viewModel.deleteSearchButtonTitle {
+            deleteSavedSearchButton.isHidden = false
+            deleteSavedSearchButton.setTitle(deleteSearchButtonTitle, for: .normal)
+        } else {
+            deleteSavedSearchButton.isHidden = true
+        }
     }
 
     @discardableResult public override func becomeFirstResponder() -> Bool {
@@ -117,13 +132,13 @@ public class SaveSearchView: UIView {
 
         scrollView.addSubview(contentView)
         addSubview(scrollView)
+        scrollView.fillInSuperview()
 
-        contentView.addSubview(searchNameContainer)
         searchNameContainer.addSubview(searchNameTextField)
 
+        contentView.addSubview(searchNameContainer)
         contentView.addSubview(stackView)
-
-        scrollView.fillInSuperview()
+        contentView.addSubview(deleteSavedSearchButton)
 
         stackView.insertArrangedSubviews([
             notificationCenterSwitchView,
@@ -152,7 +167,11 @@ public class SaveSearchView: UIView {
             stackView.topAnchor.constraint(equalTo: searchNameTextField.bottomAnchor),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+
+            deleteSavedSearchButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .spacingL + .spacingM),
+            deleteSavedSearchButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            deleteSavedSearchButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            deleteSavedSearchButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
 
         let notificationCenter = NotificationCenter.default
@@ -189,6 +208,10 @@ public class SaveSearchView: UIView {
         }
 
         scrollView.scrollIndicatorInsets = scrollView.contentInset
+    }
+
+    @objc private func handleDeleteButtonTap() {
+        delegate?.saveSearchViewDidSelectDeleteSearchButton(self)
     }
 }
 
