@@ -16,9 +16,7 @@ public class SaveSearchView: UIView {
     public weak var delegate: SaveSearchViewDelegate?
 
     public var isPushOn: Bool {
-        get {
-            return pushSwitchView.isOn
-        }
+        get { pushSwitchView.isOn }
         set {
             pushSwitchView.isOn = newValue
             delegate?.saveSearchView(self, didUpdateIsPushOn: newValue)
@@ -26,9 +24,7 @@ public class SaveSearchView: UIView {
     }
 
     public var isEmailOn: Bool {
-        get {
-            return emailSwitchView.isOn
-        }
+        get { emailSwitchView.isOn }
         set {
             emailSwitchView.isOn = newValue
             delegate?.saveSearchView(self, didUpdateIsEmailOn: newValue)
@@ -36,17 +32,15 @@ public class SaveSearchView: UIView {
     }
 
     public var searchNameText: String? {
-        get {
-            return searchNameTextField.text
-        }
-        set {
-            searchNameTextField.textField.text = newValue
-        }
+        get { searchNameTextField.text }
+        set { searchNameTextField.textField.text = newValue }
     }
 
     // MARK: - Private properties
 
     private lazy var searchNameContainer: UIView = UIView(withAutoLayout: true)
+    private lazy var contentView = UIView(withAutoLayout: true)
+    private var heightConstraint: NSLayoutConstraint!
     private let switchStyle: SwitchViewStyle
 
     private lazy var searchNameTextField: TextField = {
@@ -76,15 +70,12 @@ public class SaveSearchView: UIView {
         return line
     }()
 
-    private lazy var contentView = UIView(withAutoLayout: true)
-
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
         scrollView.contentInsetAdjustmentBehavior = .always
         return scrollView
     }()
 
-    private var heightConstraint: NSLayoutConstraint!
 
     // MARK: - Initializers
 
@@ -120,11 +111,11 @@ public class SaveSearchView: UIView {
     }
 
     @discardableResult public override func becomeFirstResponder() -> Bool {
-        return searchNameTextField.textField.becomeFirstResponder()
+        searchNameTextField.textField.becomeFirstResponder()
     }
 
     @discardableResult public override func resignFirstResponder() -> Bool {
-        return searchNameTextField.textField.resignFirstResponder()
+        searchNameTextField.textField.resignFirstResponder()
     }
 
     // MARK: - Private methods
