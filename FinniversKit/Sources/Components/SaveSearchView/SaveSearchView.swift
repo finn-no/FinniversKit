@@ -197,6 +197,8 @@ public class SaveSearchView: UIView {
         )
     }
 
+    // MARK: - Actions
+
     @objc private func adjustForKeyboard(notification: Notification) {
         guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
 
@@ -217,12 +219,16 @@ public class SaveSearchView: UIView {
     }
 }
 
+// MARK: - TextFieldDelegate
+
 extension SaveSearchView: TextFieldDelegate {
     public func textFieldShouldReturn(_ textField: TextField) -> Bool {
         delegate?.saveSearchViewTextFieldWillReturn(self)
         return true
     }
 }
+
+// MARK: - SwitchViewDelegate
 
 extension SaveSearchView: SwitchViewDelegate {
     public func switchView(_ switchView: SwitchView, didChangeValueFor switch: UISwitch) {
