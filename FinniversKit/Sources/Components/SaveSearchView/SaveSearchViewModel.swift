@@ -7,6 +7,6 @@ public protocol SaveSearchViewModel {
     var searchPlaceholderText: String { get }
 
     var notificationCenterSwitchViewModel: SwitchViewModel { get }
-    var pushNotificationSwitchViewModel: SwitchViewModel { get }
-    var emailNotificationSwitchViewModel: SwitchViewModel { get }
+    var pushSwitchViewModel: SwitchViewModel { get }
+    var emailSwitchViewModel: SwitchViewModel { get }
 }
