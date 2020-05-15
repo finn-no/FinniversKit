@@ -3,31 +3,10 @@
 //
 
 public protocol SaveSearchViewModel {
+    var searchTitle: String? { get }
     var searchPlaceholderText: String { get }
 
-    var pushTitle: String { get }
-    var pushDetail: String { get }
-    var pushIsOn: Bool { get }
-
-    var emailTitle: String { get }
-    var emailDetail: String { get }
-    var emailIsOn: Bool { get }
-}
-
-extension SaveSearchViewModel {
-    var pushSwitchViewModel: SwitchViewModel {
-        return SwitchViewDefaultModel(
-            title: pushTitle,
-            detail: pushDetail,
-            initialSwitchValue: pushIsOn
-        )
-    }
-
-    var emailSwitchViewModel: SwitchViewModel {
-        return SwitchViewDefaultModel(
-            title: emailTitle,
-            detail: emailDetail,
-            initialSwitchValue: emailIsOn
-        )
-    }
+    var notificationCenterSwitchViewModel: SwitchViewModel { get }
+    var pushNotificationSwitchViewModel: SwitchViewModel { get }
+    var emailNotificationSwitchViewModel: SwitchViewModel { get }
 }
