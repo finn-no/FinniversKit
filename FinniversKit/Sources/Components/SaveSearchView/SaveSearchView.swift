@@ -54,7 +54,13 @@ public class SaveSearchView: UIView {
     private lazy var pushSwitchView = createSwitchView()
     private lazy var emailSwitchView = createSwitchView()
     private var heightConstraint: NSLayoutConstraint!
-    private let switchStyle: SwitchViewStyle
+
+    private let switchStyle = SwitchViewStyle(
+        titleLabelStyle: .bodyStrong,
+        titleLabelTextColor: .textPrimary,
+        detailLabelStyle: .caption,
+        detailLabelTextColor: .textPrimary
+    )
 
     private lazy var searchNameTextField: TextField = {
         let textField = TextField(inputType: .normal)
@@ -86,21 +92,12 @@ public class SaveSearchView: UIView {
 
     // MARK: - Initializers
 
-    public init(switchStyle: SwitchViewStyle = .default, withAutoLayout: Bool = false) {
-        self.switchStyle = switchStyle
-        super.init(frame: .zero)
-        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
-        setup()
-    }
-
     public override init(frame: CGRect) {
-        self.switchStyle = .default
         super.init(frame: frame)
         setup()
     }
 
     public required init?(coder aDecoder: NSCoder) {
-        self.switchStyle = .default
         super.init(coder: aDecoder)
         setup()
     }

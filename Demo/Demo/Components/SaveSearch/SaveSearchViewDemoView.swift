@@ -10,15 +10,7 @@ class SaveSearchViewDemoView: UIView, Tweakable {
         TweakingOption(title: "Editing an existing search") { self.saveSearchView.configure(with: SampleExistinSavedSearchViewModel()) }
     ]
 
-    private lazy var saveSearchView = SaveSearchView(
-        switchStyle: SwitchViewStyle(
-            titleLabelStyle: .bodyStrong,
-            titleLabelTextColor: .textPrimary,
-            detailLabelStyle: .caption,
-            detailLabelTextColor: .textPrimary
-        ),
-        withAutoLayout: true
-    )
+    private lazy var saveSearchView = SaveSearchView(withAutoLayout: true)
 
     // MARK: - Init
 
