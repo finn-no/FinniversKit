@@ -11,7 +11,7 @@ extension TransactionDemoViewDefaultData {
         alert: TransactionAlertModel(
             title: "Du har opprettet flere kontrakter for denne bilen",
             message: "En avtale er bindene når begge har signert. Prosessen under viser derfor prosessen for den første kontrakten begge signerte.",
-            imageIdentifier: "MULTIPLE-CONTRACTS"
+            imageIdentifier: "MULTIPLE_CONTRACTS"
         ),
 
         steps: [

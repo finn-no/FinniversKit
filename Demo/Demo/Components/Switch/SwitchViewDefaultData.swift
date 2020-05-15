@@ -4,18 +4,22 @@
 
 import FinniversKit
 
-public struct SwitchDefaultData1: SwitchViewModel {
-    public let title = "Anbefalinger"
-    public let detail = "Vi gir deg relevante tips på forsiden"
-    public let initialSwitchValue = true
+extension SwitchViewDefaultModel {
+    static var demoViewModel1 = SwitchViewDefaultModel(
+        title: "Anbefalinger",
+        detail: "Vi gir deg relevante tips på forsiden",
+        initialSwitchValue: true
+    )
 
-    public init() {}
-}
+    static var demoViewModel2 = SwitchViewDefaultModel(
+        title: "Smart reklame",
+        detail: "Vi leter for deg når du gjør andre ting",
+        initialSwitchValue: false
+    )
 
-public struct SwitchDefaultData2: SwitchViewModel {
-    public let title = "Smart reklame"
-    public let detail = "Vi leter for deg når du gjør andre ting"
-    public let initialSwitchValue = false
-
-    public init() {}
+    static var demoViewModel3 = SwitchViewDefaultModel(
+        title: "Annen styling",
+        detail: "Denne her har en annen styling enn de to andre over",
+        initialSwitchValue: true
+    )
 }
