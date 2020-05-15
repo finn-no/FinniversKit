@@ -6,7 +6,7 @@ import FinniversKit
 import FinnUI
 
 class NotificationCenterSearchDemoView: UIView {
-    
+
     private lazy var searchView: NotificationCenterSearchView = {
         let searchView = NotificationCenterSearchView(withAutoLayout: true)
         searchView.dataSource = self
@@ -14,13 +14,13 @@ class NotificationCenterSearchDemoView: UIView {
         searchView.remoteImageViewDataSource = self
         return searchView
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(searchView)
         searchView.fillInSuperview()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -31,7 +31,7 @@ extension NotificationCenterSearchDemoView: NotificationCenterSearchViewDelegate
         print("Did select model")
         view.reloadSelectedRow()
     }
-    
+
     func notificationCenterSearchViewDidSelectShowEntireSearch(_ view: NotificationCenterSearchView) {
         print("Show search")
     }
@@ -41,7 +41,7 @@ extension NotificationCenterSearchDemoView: NotificationCenterSearchViewDataSour
     func notificationCenterSearchView(_ view: NotificationCenterSearchView, numberOfRowsInSection section: Int) -> Int {
         15
     }
-    
+
     func notificationCenterSearchView(_ view: NotificationCenterSearchView, modelForCellAt indexPath: IndexPath) -> NotificationCellModel {
         NotificationCenterItem(
             isRead: true,
@@ -54,11 +54,11 @@ extension NotificationCenterSearchDemoView: NotificationCenterSearchViewDataSour
             )
         )
     }
-    
+
     func notificationCenterSearchView(_ view: NotificationCenterSearchView, timestampForCellAt indexPath: IndexPath) -> String? {
         "3 min siden"
     }
-    
+
     func notificationCenterSearchView(_ view: NotificationCenterSearchView, modelForHeaderInSection section: Int) -> NotificationCenterSearchViewModel {
         NotificationCenterSearchViewModel(title: "\"Drømmebilen\"", rowCountText: "15 annonser", searchButtonTitle: "Gå til søket")
     }
