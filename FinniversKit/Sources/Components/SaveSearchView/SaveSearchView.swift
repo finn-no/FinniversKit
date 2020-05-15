@@ -238,12 +238,15 @@ extension SaveSearchView: TextFieldDelegate {
 
 extension SaveSearchView: SwitchViewDelegate {
     public func switchView(_ switchView: SwitchView, didChangeValueFor switch: UISwitch) {
-        if switchView == pushSwitchView {
-            delegate?.saveSearchView(self, didUpdateIsPushOn: isPushOn)
-        }
-
-        if switchView == emailSwitchView {
-            delegate?.saveSearchView(self, didUpdateIsEmailOn: isEmailOn)
+        switch switchView {
+        case notificationCenterSwitchView:
+            delegate?.saveSearchView(self, didUpdateIsNotificationCenterOn: switchView.isOn)
+        case pushSwitchView:
+            delegate?.saveSearchView(self, didUpdateIsPushOn: switchView.isOn)
+        case emailSwitchView:
+            delegate?.saveSearchView(self, didUpdateIsEmailOn: switchView.isOn)
+        default:
+            break
         }
     }
 }
