@@ -6,7 +6,7 @@ import FinniversKit
 public struct SavedSearchHeaderButtonModel {
     let text: String
     let highlightedRange: NSRange
-    
+
     public init(text: String, highlightedRange: NSRange) {
         self.text = text
         self.highlightedRange = highlightedRange
@@ -14,9 +14,9 @@ public struct SavedSearchHeaderButtonModel {
 }
 
 class SavedSearchHeaderButton: UIControl {
-    
+
     // MARK: - Internal properties
-    
+
     var centerTextAnchor: NSLayoutYAxisAnchor {
         textLabel.centerYAnchor
     }
@@ -37,7 +37,7 @@ class SavedSearchHeaderButton: UIControl {
         label.numberOfLines = 1
         return label
     }()
-    
+
     private lazy var arrowImageView: UIImageView = {
         let image = UIImage(named: .arrowRight).withRenderingMode(.alwaysTemplate)
         let imageView = UIImageView(image: image)
@@ -87,7 +87,7 @@ class SavedSearchHeaderButton: UIControl {
             self.highlightedRange = nil
             return
         }
-        
+
         let textAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.captionStrong,
             .foregroundColor: UIColor.textPrimary
@@ -120,7 +120,7 @@ class SavedSearchHeaderButton: UIControl {
             textLabel.leadingAnchor.constraint(equalTo: magnifyingIconView.trailingAnchor, constant: .spacingXXS),
             textLabel.topAnchor.constraint(greaterThanOrEqualTo: topAnchor),
             textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
-            
+
             arrowImageView.leadingAnchor.constraint(equalTo: textLabel.trailingAnchor, constant: .spacingXS),
             arrowImageView.centerYAnchor.constraint(equalTo: textLabel.centerYAnchor),
             arrowImageView.widthAnchor.constraint(equalToConstant: 5),
