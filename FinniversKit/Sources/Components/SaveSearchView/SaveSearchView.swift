@@ -124,6 +124,18 @@ public class SaveSearchView: UIView {
         }
     }
 
+    public func setNotificationCenterOn(_ isOn: Bool, animated: Bool) {
+        notificationCenterSwitchView.setOn(isOn, animated: animated)
+    }
+
+    public func setPushOn(_ isOn: Bool, animated: Bool) {
+        pushSwitchView.setOn(isOn, animated: animated)
+    }
+
+    public func setEmailOn(_ isOn: Bool, animated: Bool) {
+        emailSwitchView.setOn(isOn, animated: animated)
+    }
+
     @discardableResult public override func becomeFirstResponder() -> Bool {
         searchNameTextField.textField.becomeFirstResponder()
     }
