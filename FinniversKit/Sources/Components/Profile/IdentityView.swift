@@ -150,7 +150,7 @@ public class IdentityView: UIView {
     }()
 
     private lazy var descriptionLabelConstraints: [NSLayoutConstraint] = [
-        descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+        descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
         descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: profileStackView.bottomAnchor, constant: .spacingM),
         descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
         descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM)
@@ -191,7 +191,7 @@ public class IdentityView: UIView {
         profileStackView.addArrangedSubview(subtitleLabel)
 
         NSLayoutConstraint.activate([
-            profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             profileImageView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
             profileImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingM),
             profileImageView.widthAnchor.constraint(equalToConstant: IdentityView.profileImageSize),
