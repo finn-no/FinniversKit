@@ -174,7 +174,7 @@ public class SaveSearchView: UIView {
             searchNameTextField.trailingAnchor.constraint(equalTo: searchNameContainer.trailingAnchor, constant: -.spacingM),
             searchNameTextField.centerYAnchor.constraint(equalTo: searchNameContainer.centerYAnchor),
 
-            stackView.topAnchor.constraint(equalTo: searchNameTextField.bottomAnchor),
+            stackView.topAnchor.constraint(equalTo: searchNameTextField.bottomAnchor, constant: .spacingM),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
