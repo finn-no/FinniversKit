@@ -104,7 +104,9 @@ public class SaveSearchView: UIView {
     // MARK: - Public methods
 
     public func configure(with viewModel: SaveSearchViewModel) {
+        searchNameTextField.textField.text = viewModel.searchTitle
         searchNameTextField.placeholderText = viewModel.searchPlaceholderText
+
         notificationCenterSwitchView.configure(with: viewModel.notificationCenterSwitchViewModel)
         pushSwitchView.configure(with: viewModel.pushSwitchViewModel)
         emailSwitchView.configure(with: viewModel.emailSwitchViewModel)
