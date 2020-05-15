@@ -67,6 +67,10 @@ public class SwitchView: UIView {
 
     // MARK: - Public methods
 
+    public func setOn(_ isOn: Bool, animated: Bool) {
+        uiSwitch.setOn(isOn, animated: animated)
+    }
+
     public func configure(with model: SwitchViewModel) {
         titleLabel.text = model.title
         detailLabel.text = model.detail
