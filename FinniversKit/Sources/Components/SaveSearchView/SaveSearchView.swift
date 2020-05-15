@@ -41,6 +41,9 @@ public class SaveSearchView: UIView {
 
     private lazy var searchNameContainer: UIView = UIView(withAutoLayout: true)
     private lazy var contentView = UIView(withAutoLayout: true)
+    private lazy var notificationCenterSwitchView = createSwitchView()
+    private lazy var pushSwitchView = createSwitchView()
+    private lazy var emailSwitchView = createSwitchView()
     private var heightConstraint: NSLayoutConstraint!
     private let switchStyle: SwitchViewStyle
 
@@ -50,24 +53,6 @@ public class SaveSearchView: UIView {
         textField.textField.returnKeyType = .go
         textField.delegate = self
         return textField
-    }()
-
-    private lazy var notificationCenterSwitchView: SwitchView = {
-        let view = SwitchView(style: switchStyle, withAutoLayout: true)
-        view.delegate = self
-        return view
-    }()
-
-    private lazy var pushSwitchView: SwitchView = {
-        let view = SwitchView(style: switchStyle, withAutoLayout: true)
-        view.delegate = self
-        return view
-    }()
-
-    private lazy var emailSwitchView: SwitchView = {
-        let view = SwitchView(style: switchStyle, withAutoLayout: true)
-        view.delegate = self
-        return view
     }()
 
     private lazy var hairline: UIView = {
@@ -195,6 +180,12 @@ public class SaveSearchView: UIView {
         notificationCenter.addObserver(
             self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil
         )
+    }
+
+    private func createSwitchView() -> SwitchView {
+        let view = SwitchView(style: switchStyle, withAutoLayout: true)
+        view.delegate = self
+        return view
     }
 
     // MARK: - Actions
