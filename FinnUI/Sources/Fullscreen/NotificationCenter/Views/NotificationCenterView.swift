@@ -141,7 +141,7 @@ extension NotificationCenterView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard
             let headerViewModel = dataSource?.notificationCenterView(self, segment: selectedSegment, modelForHeaderInSection: section),
-            headerViewModel.title != nil || headerViewModel.savedSearchButtonModel != nil
+            headerViewModel.title == nil && headerViewModel.savedSearchButtonModel == nil
         else { return nil }
 
         let headerView = tableView.dequeue(NotificationCenterHeaderView.self)
