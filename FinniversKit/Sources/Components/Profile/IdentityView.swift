@@ -105,9 +105,6 @@ public class IdentityView: UIView {
             profileNameOrOfflineDescriptionLabel.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
             profileNameOrOfflineDescriptionLabel.topAnchor.constraint(equalTo: wrapperView.topAnchor),
             profileNameOrOfflineDescriptionLabel.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor),
-
-            offlineButton.topAnchor.constraint(equalTo: wrapperView.topAnchor),
-            offlineButton.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor)
         ])
 
         return wrapperView
@@ -152,6 +149,8 @@ public class IdentityView: UIView {
     ]
 
     private lazy var offlineDescriptionLabelConstraint: [NSLayoutConstraint] = [
+        offlineButton.topAnchor.constraint(equalTo: profileWrapperView.topAnchor),
+        offlineButton.trailingAnchor.constraint(equalTo: profileWrapperView.trailingAnchor),
         profileNameOrOfflineDescriptionLabel.trailingAnchor.constraint(lessThanOrEqualTo: offlineButton.leadingAnchor, constant: -.spacingM),
     ]
 
