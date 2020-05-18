@@ -106,11 +106,6 @@ public class IdentityView: UIView {
             profileNameOrOfflineDescriptionLabel.topAnchor.constraint(equalTo: wrapperView.topAnchor),
             profileNameOrOfflineDescriptionLabel.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor),
 
-            verifiedBadge.leadingAnchor.constraint(equalTo: profileNameOrOfflineDescriptionLabel.trailingAnchor, constant: .spacingXS),
-            verifiedBadge.centerYAnchor.constraint(equalTo: profileNameOrOfflineDescriptionLabel.centerYAnchor),
-            verifiedBadge.widthAnchor.constraint(equalToConstant: 18),
-            verifiedBadge.heightAnchor.constraint(equalToConstant: 18),
-
             offlineButton.topAnchor.constraint(equalTo: wrapperView.topAnchor),
             offlineButton.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor)
         ])
@@ -158,6 +153,13 @@ public class IdentityView: UIView {
 
     private lazy var offlineDescriptionLabelConstraint: [NSLayoutConstraint] = [
         profileNameOrOfflineDescriptionLabel.trailingAnchor.constraint(lessThanOrEqualTo: offlineButton.leadingAnchor, constant: -.spacingM),
+    ]
+
+    private lazy var verifiedBadgeConstraint: [NSLayoutConstraint] = [
+        verifiedBadge.leadingAnchor.constraint(equalTo: profileNameOrOfflineDescriptionLabel.trailingAnchor, constant: .spacingXS),
+        verifiedBadge.centerYAnchor.constraint(equalTo: profileNameOrOfflineDescriptionLabel.centerYAnchor),
+        verifiedBadge.widthAnchor.constraint(equalToConstant: 18),
+        verifiedBadge.heightAnchor.constraint(equalToConstant: 18),
     ]
 
     // MARK: - Setup
@@ -238,6 +240,7 @@ public class IdentityView: UIView {
         profileImageView.image = nil
         profileNameOrOfflineDescriptionLabel.text = nil
         verifiedBadge.isHidden = true
+        verifiedBadgeConstraint.forEach { $0.isActive = false }
 
         subtitleLabel.text = nil
         subtitleLabel.isHidden = true
@@ -253,7 +256,9 @@ public class IdentityView: UIView {
         profileNameOrOfflineDescriptionLabel.text = viewModel.displayMode == .offline ? viewModel.offlineDescription : viewModel.displayName
         profileNameOrOfflineDescriptionLabel.textColor = .textPrimary
 
-        verifiedBadge.isHidden = (!viewModel.isVerified || viewModel.displayMode == .offline)
+        let hideVerifiedBadge = (!viewModel.isVerified || viewModel.displayMode == .offline)
+        verifiedBadge.isHidden = hideVerifiedBadge
+        verifiedBadgeConstraint.forEach { $0.isActive = !hideVerifiedBadge }
 
         if viewModel.displayMode == .offline {
             offlineButton.isHidden = false
