@@ -25,6 +25,7 @@ final class NotificationCenterDemoView: UIView {
         super.init(frame: frame)
         addSubview(notificationsCenterView)
         notificationsCenterView.fillInSuperview()
+        notificationsCenterView.reloadData()
     }
 
     required init?(coder: NSCoder) {
