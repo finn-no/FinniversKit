@@ -159,7 +159,7 @@ public class SaveSearchView: UIView {
         contentView.addSubview(stackView)
         contentView.addSubview(deleteSavedSearchButton)
 
-        stackView.insertArrangedSubviews([
+        stackView.addArrangedSubviews([
             notificationCenterSwitchView,
             HairlineView(),
             pushSwitchView,
