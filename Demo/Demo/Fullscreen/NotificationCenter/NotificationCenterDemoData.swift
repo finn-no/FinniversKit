@@ -30,7 +30,7 @@ struct NotificationCenterSection: NotificationCenterHeaderViewModel {
     let count: Int?
     let searchName: String?
     var items: [NotificationCenterCellType]
-    
+
     var savedSearchButtonModel: SavedSearchHeaderButtonModel? {
         guard let searchName = searchName, let count = count else { return nil }
         let text = "\(count) nye treff "
@@ -169,7 +169,7 @@ extension NotificationCenterDemoView {
             ]
         )
     }
-    
+
     var personalSegment: NotificationCenterSegment {
         NotificationCenterSegment(
             title: "Tips til deg",
