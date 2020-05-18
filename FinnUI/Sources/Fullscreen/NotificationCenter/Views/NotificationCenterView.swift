@@ -247,6 +247,7 @@ private extension NotificationCenterView {
         }
 
         let nextSegmentContainer = segmentContainers[to]
+        nextSegmentContainer.tableView.reloadData()
         nextSegmentContainer.tableView.alpha = 0
         nextSegmentContainer.leadingConstraint.constant = offset
         addSubview(nextSegmentContainer.tableView)
