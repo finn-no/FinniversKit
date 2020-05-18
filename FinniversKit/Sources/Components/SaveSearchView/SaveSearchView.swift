@@ -6,8 +6,10 @@ import UIKit
 
 public protocol SaveSearchViewDelegate: AnyObject {
     func saveSearchViewTextFieldWillReturn(_ saveSearchView: SaveSearchView)
+    func saveSearchView(_ saveSearchView: SaveSearchView, didUpdateIsNotificationCenterOn: Bool)
     func saveSearchView(_ saveSearchView: SaveSearchView, didUpdateIsPushOn: Bool)
     func saveSearchView(_ saveSearchView: SaveSearchView, didUpdateIsEmailOn: Bool)
+    func saveSearchViewDidSelectDeleteSearchButton(_ saveSearchView: SaveSearchView)
 }
 
 public class SaveSearchView: UIView {
@@ -15,10 +17,16 @@ public class SaveSearchView: UIView {
 
     public weak var delegate: SaveSearchViewDelegate?
 
-    public var isPushOn: Bool {
-        get {
-            return pushSwitchView.isOn
+    public var isNotificationCenterOn: Bool {
+        get { notificationCenterSwitchView.isOn }
+        set {
+            notificationCenterSwitchView.isOn = newValue
+            delegate?.saveSearchView(self, didUpdateIsNotificationCenterOn: newValue)
         }
+    }
+
+    public var isPushOn: Bool {
+        get { pushSwitchView.isOn }
         set {
             pushSwitchView.isOn = newValue
             delegate?.saveSearchView(self, didUpdateIsPushOn: newValue)
@@ -26,9 +34,7 @@ public class SaveSearchView: UIView {
     }
 
     public var isEmailOn: Bool {
-        get {
-            return emailSwitchView.isOn
-        }
+        get { emailSwitchView.isOn }
         set {
             emailSwitchView.isOn = newValue
             delegate?.saveSearchView(self, didUpdateIsEmailOn: newValue)
@@ -36,17 +42,25 @@ public class SaveSearchView: UIView {
     }
 
     public var searchNameText: String? {
-        get {
-            return searchNameTextField.text
-        }
-        set {
-            searchNameTextField.textField.text = newValue
-        }
+        get { searchNameTextField.text }
+        set { searchNameTextField.textField.text = newValue }
     }
 
     // MARK: - Private properties
 
     private lazy var searchNameContainer: UIView = UIView(withAutoLayout: true)
+    private lazy var contentView = UIView(withAutoLayout: true)
+    private lazy var notificationCenterSwitchView = createSwitchView()
+    private lazy var pushSwitchView = createSwitchView()
+    private lazy var emailSwitchView = createSwitchView()
+    private var heightConstraint: NSLayoutConstraint!
+
+    private let switchStyle = SwitchViewStyle(
+        titleLabelStyle: .bodyStrong,
+        titleLabelTextColor: .textPrimary,
+        detailLabelStyle: .caption,
+        detailLabelTextColor: .textPrimary
+    )
 
     private lazy var searchNameTextField: TextField = {
         let textField = TextField(inputType: .normal)
@@ -56,26 +70,11 @@ public class SaveSearchView: UIView {
         return textField
     }()
 
-    private lazy var pushSwitchView: SwitchView = {
-        let view = SwitchView(withAutoLayout: true)
-        view.delegate = self
-        return view
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(withAutoLayout: true)
+        stackView.axis = .vertical
+        return stackView
     }()
-
-    private lazy var emailSwitchView: SwitchView = {
-        let view = SwitchView(withAutoLayout: true)
-        view.delegate = self
-        return view
-    }()
-
-    private lazy var hairline: UIView = {
-        let line = UIView(frame: .zero)
-        line.translatesAutoresizingMaskIntoConstraints = false
-        line.backgroundColor = .textDisabled
-        return line
-    }()
-
-    private lazy var contentView = UIView(withAutoLayout: true)
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
@@ -83,7 +82,13 @@ public class SaveSearchView: UIView {
         return scrollView
     }()
 
-    private var heightConstraint: NSLayoutConstraint!
+    private lazy var deleteSavedSearchButton: Button = {
+        let button = Button(style: .destructive, withAutoLayout: true)
+        button.addTarget(self, action: #selector(handleDeleteButtonTap), for: .touchUpInside)
+        button.isHidden = true
+        return button
+    }()
+
 
     // MARK: - Initializers
 
@@ -104,17 +109,39 @@ public class SaveSearchView: UIView {
     // MARK: - Public methods
 
     public func configure(with viewModel: SaveSearchViewModel) {
+        searchNameTextField.textField.text = viewModel.searchTitle
         searchNameTextField.placeholderText = viewModel.searchPlaceholderText
+
+        notificationCenterSwitchView.configure(with: viewModel.notificationCenterSwitchViewModel)
         pushSwitchView.configure(with: viewModel.pushSwitchViewModel)
         emailSwitchView.configure(with: viewModel.emailSwitchViewModel)
+
+        if let deleteSearchButtonTitle = viewModel.deleteSearchButtonTitle {
+            deleteSavedSearchButton.isHidden = false
+            deleteSavedSearchButton.setTitle(deleteSearchButtonTitle, for: .normal)
+        } else {
+            deleteSavedSearchButton.isHidden = true
+        }
+    }
+
+    public func setNotificationCenterOn(_ isOn: Bool, animated: Bool) {
+        notificationCenterSwitchView.setOn(isOn, animated: animated)
+    }
+
+    public func setPushOn(_ isOn: Bool, animated: Bool) {
+        pushSwitchView.setOn(isOn, animated: animated)
+    }
+
+    public func setEmailOn(_ isOn: Bool, animated: Bool) {
+        emailSwitchView.setOn(isOn, animated: animated)
     }
 
     @discardableResult public override func becomeFirstResponder() -> Bool {
-        return searchNameTextField.textField.becomeFirstResponder()
+        searchNameTextField.textField.becomeFirstResponder()
     }
 
     @discardableResult public override func resignFirstResponder() -> Bool {
-        return searchNameTextField.textField.resignFirstResponder()
+        searchNameTextField.textField.resignFirstResponder()
     }
 
     // MARK: - Private methods
@@ -124,15 +151,25 @@ public class SaveSearchView: UIView {
 
         scrollView.addSubview(contentView)
         addSubview(scrollView)
+        scrollView.fillInSuperview()
 
-        contentView.addSubview(searchNameContainer)
         searchNameContainer.addSubview(searchNameTextField)
 
-        contentView.addSubview(pushSwitchView)
-        contentView.addSubview(hairline)
-        contentView.addSubview(emailSwitchView)
+        contentView.addSubview(searchNameContainer)
+        contentView.addSubview(stackView)
+        contentView.addSubview(deleteSavedSearchButton)
 
-        scrollView.fillInSuperview()
+        stackView.addArrangedSubviews([
+            notificationCenterSwitchView,
+            HairlineView(),
+            pushSwitchView,
+            HairlineView(),
+            emailSwitchView
+        ])
+
+        stackView.arrangedSubviews.filter { $0 is HairlineView }.forEach {
+            $0.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale).isActive = true
+        }
 
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: widthAnchor),
@@ -146,19 +183,14 @@ public class SaveSearchView: UIView {
             searchNameTextField.trailingAnchor.constraint(equalTo: searchNameContainer.trailingAnchor, constant: -.spacingM),
             searchNameTextField.centerYAnchor.constraint(equalTo: searchNameContainer.centerYAnchor),
 
-            pushSwitchView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            pushSwitchView.topAnchor.constraint(equalTo: searchNameContainer.bottomAnchor, constant: .spacingM),
-            pushSwitchView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            stackView.topAnchor.constraint(equalTo: searchNameTextField.bottomAnchor, constant: .spacingM),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            hairline.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-            hairline.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            hairline.topAnchor.constraint(equalTo: pushSwitchView.bottomAnchor),
-            hairline.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
-
-            emailSwitchView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            emailSwitchView.topAnchor.constraint(equalTo: hairline.bottomAnchor),
-            emailSwitchView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            emailSwitchView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            deleteSavedSearchButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .spacingL + .spacingM),
+            deleteSavedSearchButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            deleteSavedSearchButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            deleteSavedSearchButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
 
         let notificationCenter = NotificationCenter.default
@@ -169,6 +201,14 @@ public class SaveSearchView: UIView {
             self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil
         )
     }
+
+    private func createSwitchView() -> SwitchView {
+        let view = SwitchView(style: switchStyle, withAutoLayout: true)
+        view.delegate = self
+        return view
+    }
+
+    // MARK: - Actions
 
     @objc private func adjustForKeyboard(notification: Notification) {
         guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
@@ -188,7 +228,13 @@ public class SaveSearchView: UIView {
 
         scrollView.scrollIndicatorInsets = scrollView.contentInset
     }
+
+    @objc private func handleDeleteButtonTap() {
+        delegate?.saveSearchViewDidSelectDeleteSearchButton(self)
+    }
 }
+
+// MARK: - TextFieldDelegate
 
 extension SaveSearchView: TextFieldDelegate {
     public func textFieldShouldReturn(_ textField: TextField) -> Bool {
@@ -197,14 +243,38 @@ extension SaveSearchView: TextFieldDelegate {
     }
 }
 
+// MARK: - SwitchViewDelegate
+
 extension SaveSearchView: SwitchViewDelegate {
     public func switchView(_ switchView: SwitchView, didChangeValueFor switch: UISwitch) {
-        if switchView == pushSwitchView {
-            delegate?.saveSearchView(self, didUpdateIsPushOn: isPushOn)
+        switch switchView {
+        case notificationCenterSwitchView:
+            delegate?.saveSearchView(self, didUpdateIsNotificationCenterOn: switchView.isOn)
+        case pushSwitchView:
+            delegate?.saveSearchView(self, didUpdateIsPushOn: switchView.isOn)
+        case emailSwitchView:
+            delegate?.saveSearchView(self, didUpdateIsEmailOn: switchView.isOn)
+        default:
+            break
         }
+    }
+}
 
-        if switchView == emailSwitchView {
-            delegate?.saveSearchView(self, didUpdateIsEmailOn: isEmailOn)
-        }
+// MARK: - Private types
+
+private class HairlineView: UIView {
+    init() {
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = false
+        setup()
+    }
+
+    public required init?(coder aDecoder: NSCoder) { fatalError() }
+
+    private func setup() {
+        let line = UIView(withAutoLayout: true)
+        line.backgroundColor = .textDisabled
+        addSubview(line)
+        line.fillInSuperview(insets: UIEdgeInsets(leading: .spacingM))
     }
 }
