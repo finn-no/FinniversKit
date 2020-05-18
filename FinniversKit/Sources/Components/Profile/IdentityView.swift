@@ -100,11 +100,15 @@ public class IdentityView: UIView {
         wrapperView.addSubview(profileNameOrOfflineDescriptionLabel)
         wrapperView.addSubview(verifiedBadge)
         wrapperView.addSubview(offlineButton)
+        wrapperView.addSubview(subtitleLabel)
 
         NSLayoutConstraint.activate([
             profileNameOrOfflineDescriptionLabel.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
             profileNameOrOfflineDescriptionLabel.topAnchor.constraint(equalTo: wrapperView.topAnchor),
-            profileNameOrOfflineDescriptionLabel.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor),
+            //profileNameOrOfflineDescriptionLabel.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor)
+
+            subtitleLabel.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
+            subtitleLabel.topAnchor.constraint(equalTo: profileNameOrOfflineDescriptionLabel.bottomAnchor)
         ])
 
         return wrapperView
@@ -143,7 +147,7 @@ public class IdentityView: UIView {
 
     private lazy var descriptionLabelConstraints: [NSLayoutConstraint] = [
         descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-        descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: profileStackView.bottomAnchor, constant: .spacingM),
+        descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: profileStackView.bottomAnchor, constant: .spacingXXL),
         descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
         descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM)
     ]
@@ -151,14 +155,14 @@ public class IdentityView: UIView {
     private lazy var offlineDescriptionLabelConstraint: [NSLayoutConstraint] = [
         offlineButton.topAnchor.constraint(equalTo: profileWrapperView.topAnchor),
         offlineButton.trailingAnchor.constraint(equalTo: profileWrapperView.trailingAnchor),
-        profileNameOrOfflineDescriptionLabel.trailingAnchor.constraint(lessThanOrEqualTo: offlineButton.leadingAnchor, constant: -.spacingM),
+        profileNameOrOfflineDescriptionLabel.trailingAnchor.constraint(lessThanOrEqualTo: offlineButton.leadingAnchor, constant: -.spacingS)
     ]
 
     private lazy var verifiedBadgeConstraint: [NSLayoutConstraint] = [
         verifiedBadge.leadingAnchor.constraint(equalTo: profileNameOrOfflineDescriptionLabel.trailingAnchor, constant: .spacingXS),
         verifiedBadge.centerYAnchor.constraint(equalTo: profileNameOrOfflineDescriptionLabel.centerYAnchor),
         verifiedBadge.widthAnchor.constraint(equalToConstant: 18),
-        verifiedBadge.heightAnchor.constraint(equalToConstant: 18),
+        verifiedBadge.heightAnchor.constraint(equalToConstant: 18)
     ]
 
     // MARK: - Setup
@@ -189,7 +193,6 @@ public class IdentityView: UIView {
         addSubview(descriptionLabel)
 
         profileStackView.addArrangedSubview(profileWrapperView)
-        profileStackView.addArrangedSubview(subtitleLabel)
 
         NSLayoutConstraint.activate([
             profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
