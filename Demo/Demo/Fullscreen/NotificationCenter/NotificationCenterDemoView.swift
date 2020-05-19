@@ -36,6 +36,7 @@ final class NotificationCenterDemoView: UIView, Tweakable {
         super.init(frame: frame)
         addSubview(notificationsCenterView)
         notificationsCenterView.fillInSuperview()
+        notificationsCenterView.reloadData()
     }
 
     required init?(coder: NSCoder) {

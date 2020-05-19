@@ -62,22 +62,16 @@ final public class NotificationCenterView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    public override func layoutSubviews() {
-        if segmentContainers == nil {
-            setupSegmentedControl()
-        }
-
-        super.layoutSubviews()
-    }
 }
 
 // MARK: - Public Methods
 public extension NotificationCenterView {
     func reloadData() {
-        segmentedControl.removeAllSegments()
-        segmentContainers?.forEach { $0.tableView.removeFromSuperview() }
-        setupSegmentedControl()
+        if let segmentContainers = segmentContainers {
+            segmentContainers.forEach { $0.tableView.reloadData() }
+        } else {
+            setupSegmentedControl()
+        }
     }
 
     func reloadRows(at indexPaths: [IndexPath], inSegment segment: Int) {
@@ -206,11 +200,11 @@ private extension NotificationCenterView {
     }
 
     func setupSegmentedControl() {
-        segmentContainers = []
-
         guard let dataSource = dataSource else {
             return
         }
+
+        segmentContainers = []
 
         for segment in 0 ..< dataSource.numberOfSegments(in: self) {
             let title = dataSource.notificationCenterView(self, titleInSegment: segment)
@@ -258,6 +252,7 @@ private extension NotificationCenterView {
         }
 
         let nextSegmentContainer = segmentContainers[to]
+        nextSegmentContainer.tableView.reloadData()
         nextSegmentContainer.tableView.alpha = 0
         nextSegmentContainer.leadingConstraint.constant = offset
         addSubview(nextSegmentContainer.tableView)
