@@ -17,6 +17,8 @@
 		8D68078190A301C047AD77D7 /* ChatAvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D68005160E043018354D1D4 /* ChatAvailabilityView.swift */; };
 		9B58C0F6246550440029FAF5 /* ButtonStyle+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B58C0F4246550010029FAF5 /* ButtonStyle+Previews.swift */; };
 		DA0E186F2459C23600C0616E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E186E2459C23600C0616E /* SettingsView.swift */; };
+		DA1755292472ACD0005EB339 /* EmptyNotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1755282472ACD0005EB339 /* EmptyNotificationsCell.swift */; };
+		DA17552B2472AD1F005EB339 /* EmptyNotificationsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17552A2472AD1F005EB339 /* EmptyNotificationsCellModel.swift */; };
 		DA3415F5245AEB5C00DC1B1C /* BottomDividerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3415F4245AEB5C00DC1B1C /* BottomDividerModifier.swift */; };
 		DA3415F9245AF80200DC1B1C /* BasicListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3415F8245AF80200DC1B1C /* BasicListCell.swift */; };
 		DA5A86A82462163700AC0DFE /* BasicListCellWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A86A72462163700AC0DFE /* BasicListCellWrapper.swift */; };
@@ -70,6 +72,8 @@
 		8D68005160E043018354D1D4 /* ChatAvailabilityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAvailabilityView.swift; sourceTree = "<group>"; };
 		9B58C0F4246550010029FAF5 /* ButtonStyle+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ButtonStyle+Previews.swift"; sourceTree = "<group>"; };
 		DA0E186E2459C23600C0616E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		DA1755282472ACD0005EB339 /* EmptyNotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyNotificationsCell.swift; sourceTree = "<group>"; };
+		DA17552A2472AD1F005EB339 /* EmptyNotificationsCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyNotificationsCellModel.swift; sourceTree = "<group>"; };
 		DA3415F4245AEB5C00DC1B1C /* BottomDividerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDividerModifier.swift; sourceTree = "<group>"; };
 		DA3415F8245AF80200DC1B1C /* BasicListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicListCell.swift; sourceTree = "<group>"; };
 		DA5A86A72462163700AC0DFE /* BasicListCellWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicListCellWrapper.swift; sourceTree = "<group>"; };
@@ -256,6 +260,7 @@
 			children = (
 				DED0A098246898940016176A /* NotificationCenterCellType.swift */,
 				DED0A08A246865E70016176A /* NotificationsCellModels.swift */,
+				DA17552A2472AD1F005EB339 /* EmptyNotificationsCellModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				DED0A2D42469337B0016176A /* FeedbackCell.swift */,
+				DA1755282472ACD0005EB339 /* EmptyNotificationsCell.swift */,
 				DED0A2D52469337B0016176A /* NotificationCell.swift */,
 			);
 			path = Cells;
@@ -435,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DED0A2D1246933600016176A /* NotificationCenterView.swift in Sources */,
+				DA17552B2472AD1F005EB339 /* EmptyNotificationsCellModel.swift in Sources */,
 				DED0A099246898940016176A /* NotificationCenterCellType.swift in Sources */,
 				DED0A2D0246933600016176A /* NotificationCenterHeaderView.swift in Sources */,
 				46AE6FB1242BAB97007BB005 /* SplashView.swift in Sources */,
@@ -450,6 +457,7 @@
 				DED0A2D2246933600016176A /* NotificationCenterFooterView.swift in Sources */,
 				DED0A2CE246933600016176A /* PersonalNotificationIconView.swift in Sources */,
 				9B58C0F6246550440029FAF5 /* ButtonStyle+Previews.swift in Sources */,
+				DA1755292472ACD0005EB339 /* EmptyNotificationsCell.swift in Sources */,
 				DED0A2D62469337B0016176A /* FeedbackCell.swift in Sources */,
 				DED0A08B246865E70016176A /* NotificationsCellModels.swift in Sources */,
 				469894A02434DD6F00CC84E6 /* ImageAsset.swift in Sources */,

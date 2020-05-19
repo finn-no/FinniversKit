@@ -117,6 +117,10 @@ extension NotificationCenterView: UITableViewDataSource {
             cell.remoteImageViewDataSource = remoteImageViewDataSource
             cell.configure(with: model, timestamp: timestamp, hideSeparator: isLast, showGradient: isLast && overflow)
             return cell
+        case let .emptyCell(model):
+            let cell = tableView.dequeue(EmptyNotificationsCell.self, for: indexPath)
+            cell.configure(with: model)
+            return cell
         case let .feedbackCell(delegate, state, model):
             let cell = tableView.dequeue(FeedbackCell.self, for: indexPath)
             cell.delegate = delegate
@@ -135,9 +139,10 @@ extension NotificationCenterView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let headerViewModel = dataSource?.notificationCenterView(self, segment: selectedSegment, modelForHeaderInSection: section) else {
-            return nil
-        }
+        guard
+            let headerViewModel = dataSource?.notificationCenterView(self, segment: selectedSegment, modelForHeaderInSection: section),
+            headerViewModel.title != nil || headerViewModel.savedSearchButtonModel != nil
+        else { return nil }
 
         let headerView = tableView.dequeue(NotificationCenterHeaderView.self)
         headerView.delegate = self
@@ -313,6 +318,7 @@ private extension UITableView {
         tableView.contentInset = UIEdgeInsets(top: .spacingM, leading: 0, bottom: 0, trailing: 0)
         tableView.contentOffset = CGPoint(x: 0, y: -.spacingM)
         tableView.register(NotificationCell.self)
+        tableView.register(EmptyNotificationsCell.self)
         tableView.register(FeedbackCell.self)
         tableView.register(NotificationCenterHeaderView.self)
         tableView.register(NotificationCenterFooterView.self)
