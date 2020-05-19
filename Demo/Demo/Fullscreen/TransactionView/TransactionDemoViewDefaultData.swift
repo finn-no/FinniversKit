@@ -47,14 +47,6 @@ public struct TransactionStepContentModel: TransactionStepContentViewModel {
     public var primaryButton: TransactionActionButtonViewModel?
 }
 
-public struct TransactionActionButtonModel: TransactionActionButtonViewModel {
-    public var text: String
-    public var style: String
-    public var action: String?
-    public var url: String?
-    public var fallbackUrl: String?
-}
-
 public struct TransactionDemoViewDefaultData {
     private var currentState = -1
 

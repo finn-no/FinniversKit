@@ -169,7 +169,7 @@ private extension TransactionStepContentView {
     private func setupButton(_ buttonModel: TransactionActionButtonViewModel?, tag: ButtonTag) {
         if let buttonModel = buttonModel {
             let buttonText = buttonModel.text
-            let buttonStyle = TransactionActionButton(rawValue: buttonModel.style).style
+            let buttonStyle = TransactionActionButton(rawValue: buttonModel.style ?? "").style
             let buttonAction = TransactionActionButton.Action(rawValue: buttonModel.action ?? "")
 
             let button = Button(style: buttonStyle, withAutoLayout: true)
