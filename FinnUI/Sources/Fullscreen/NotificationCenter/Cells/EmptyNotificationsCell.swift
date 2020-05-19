@@ -90,7 +90,7 @@ class EmptyNotificationsCell: UITableViewCell {
             NSLayoutConstraint.activate(emptySavedSearchConstraints)
         case .none:
             NSLayoutConstraint.deactivate(emptyPersonalConstraints)
-            NSLayoutConstraint.activate(emptySavedSearchConstraints)
+            NSLayoutConstraint.deactivate(emptySavedSearchConstraints)
         }
     }
 }
