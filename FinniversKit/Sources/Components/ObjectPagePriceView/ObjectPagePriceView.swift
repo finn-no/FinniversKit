@@ -73,12 +73,12 @@ public class ObjectPagePriceView: UIView {
             pricesStackView.addArrangedSubview(secondaryPriceView)
         }
 
-        linkButtonListView.configure(with: viewModel.links)
-
-        linkButtonListView.isHidden = viewModel.links.isEmpty
-        pricesStackView.isHidden = pricesStackView.arrangedSubviews.isEmpty
-
         wrapperStackView.addArrangedSubviews([pricesStackView, linkButtonListView])
+
+        linkButtonListView.configure(with: viewModel.links)
+        linkButtonListView.isHidden = viewModel.links.isEmpty
+
+        pricesStackView.isHidden = pricesStackView.arrangedSubviews.isEmpty
     }
 }
 
