@@ -132,4 +132,8 @@ public class FavoriteSoldView: UIView {
         adsGridView.reloadData()
     }
 
+    public func updateItem(at index: Int, isFavorite: Bool) {
+        adsGridView.updateItem(at: index, isFavorite: isFavorite)
+    }
+
 }
