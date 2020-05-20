@@ -131,15 +131,18 @@ public extension ObjectPagePriceView {
         let titleStyle: Label.Style
         let priceStyle: Label.Style
         let subtitleStyle: Label.Style
+        let adTypeStyle: Label.Style
 
         public init(
             titleStyle: Label.Style = .body,
             priceStyle: Label.Style = .title3Strong,
-            subtitleStyle: Label.Style = .caption
+            subtitleStyle: Label.Style = .caption,
+            adTypeStyle: Label.Style = .bodyStrong
         ) {
             self.titleStyle = titleStyle
             self.priceStyle = priceStyle
             self.subtitleStyle = subtitleStyle
+            self.adTypeStyle = adTypeStyle
         }
     }
 }
