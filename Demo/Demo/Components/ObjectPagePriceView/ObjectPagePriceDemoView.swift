@@ -38,6 +38,10 @@ class ObjectPagePriceDemoView: UIView, Tweakable {
 
             TweakingOption(title: "BAP wanted", action: { [weak self] in
                 self?.priceView.configure(with: .bapWantedAd)
+            }),
+
+            TweakingOption(title: "BAP wanted w/ max price", action: { [weak self] in
+                self?.priceView.configure(with: .bapWantedWithMaxPriceAd)
             })
         ]
     }()
@@ -172,6 +176,12 @@ extension ObjectPagePriceViewModel {
     }()
 
     static var bapWantedAd: ObjectPagePriceViewModel = {
+        ObjectPagePriceViewModel(
+            adTypeText: "Ønskes kjøpt"
+        )
+    }()
+
+    static var bapWantedWithMaxPriceAd: ObjectPagePriceViewModel = {
         ObjectPagePriceViewModel(
             title: "Makspris",
             totalPrice: "5 500 kr",
