@@ -8,6 +8,7 @@ public extension InfoboxView {
     enum Style {
         case small(backgroundColor: UIColor)
         case normal(backgroundColor: UIColor, primaryButtonIcon: UIImage?)
+        case warning
 
         var titleStyle: Label.Style {
             switch self {
@@ -15,6 +16,8 @@ public extension InfoboxView {
                 return .bodyStrong
             case .normal:
                 return .title3
+            case .warning:
+                return .bodyStrong
             }
         }
 
@@ -24,6 +27,8 @@ public extension InfoboxView {
                 return .caption
             case .normal:
                 return .caption
+            case .warning:
+                return .body
             }
         }
 
@@ -33,6 +38,8 @@ public extension InfoboxView {
                 return .default
             case .normal:
                 return .callToAction
+            case .warning:
+                return .flat
             }
         }
 
@@ -41,6 +48,8 @@ public extension InfoboxView {
             case .small:
                 return .small
             case .normal:
+                return .normal
+            case .warning:
                 return .normal
             }
         }
@@ -51,6 +60,8 @@ public extension InfoboxView {
                 return .flat
             case .normal:
                 return .link
+            default:
+                return .default
             }
         }
 
@@ -59,6 +70,8 @@ public extension InfoboxView {
             case .small:
                 return .small
             case .normal:
+                return .normal
+            default:
                 return .normal
             }
         }
@@ -69,6 +82,19 @@ public extension InfoboxView {
                 return backgroundColor
             case .normal(let backgroundColor, _):
                 return backgroundColor
+            case .warning:
+                return .banana
+            }
+        }
+
+        var textColor: UIColor {
+            switch self {
+            case .small:
+                return .textPrimary
+            case .normal:
+                return .textPrimary
+            case .warning:
+                return UIColor(hex: "#1B1B24")
             }
         }
 
@@ -78,6 +104,8 @@ public extension InfoboxView {
                 return nil
             case .normal(_, let image):
                 return image
+            case .warning:
+                return nil
             }
         }
     }
