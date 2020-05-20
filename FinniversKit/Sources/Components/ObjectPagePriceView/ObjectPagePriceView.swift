@@ -63,8 +63,10 @@ public class ObjectPagePriceView: UIView {
             wrapperStackView.setCustomSpacing(.spacingXS, after: adTypeLabel)
         }
 
-        let mainPriceView = PriceView(viewModel: viewModel.mainPriceModel, style: style, withAutoLayout: true)
-        pricesStackView.addArrangedSubview(mainPriceView)
+        if let mainPriceModel = viewModel.mainPriceModel {
+            let mainPriceView = PriceView(viewModel: mainPriceModel, style: style, withAutoLayout: true)
+            pricesStackView.addArrangedSubview(mainPriceView)
+        }
 
         if let secondaryPriceModel = viewModel.secondaryPriceModel {
             let secondaryPriceView = PriceView(viewModel: secondaryPriceModel, style: style, withAutoLayout: true)
