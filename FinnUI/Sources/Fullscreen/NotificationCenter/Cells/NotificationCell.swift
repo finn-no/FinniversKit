@@ -5,16 +5,16 @@
 import FinniversKit
 
 final class NotificationCell: UITableViewCell {
-    
+
     // MARK: - Internal properties
-    
+
     var remoteImageViewDataSource: RemoteImageViewDataSource? {
         get { remoteImageView.dataSource }
         set { remoteImageView.dataSource = newValue }
     }
-    
+
     // MARK: - Private properties
-    
+
     private lazy var remoteImageView: RemoteImageView = {
        let imageView = RemoteImageView(withAutoLayout: true)
        imageView.contentMode = .scaleAspectFill
@@ -22,37 +22,37 @@ final class NotificationCell: UITableViewCell {
        imageView.layer.masksToBounds = true
        return imageView
     }()
-    
+
     private lazy var iconView = PersonalNotificationIconView(
         withAutoLayout: true
     )
-    
+
     private lazy var ribbonView = RibbonView(
         withAutoLayout: true
     )
-    
+
     private lazy var titleLabel: Label = {
         let label = Label(style: .caption, withAutoLayout: true)
         label.numberOfLines = 2
         return label
     }()
-    
+
     private lazy var subtitleLabel: Label = {
         let label = Label(style: .body, withAutoLayout: true)
         label.numberOfLines = 2
         return label
     }()
-    
+
     private lazy var priceLabel = Label(
         style: .bodyStrong,
         withAutoLayout: true
     )
-    
+
     private lazy var timestampLabel = Label(
         style: .detail,
         withAutoLayout: true
     )
-    
+
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel, priceLabel, timestampLabel])
         stackView.axis = .vertical
@@ -60,13 +60,13 @@ final class NotificationCell: UITableViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
+
     private lazy var separatorView: UIView = {
         let separatorView = UIView(withAutoLayout: true)
         separatorView.backgroundColor = .tableViewSeparator
         return separatorView
     }()
-    
+
     private lazy var gradientLayer: CAGradientLayer = {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [
@@ -75,29 +75,29 @@ final class NotificationCell: UITableViewCell {
         ]
         return gradientLayer
     }()
-    
+
     private let imageWidth: CGFloat = 80
     private let fallbackImage = UIImage(named: .noImage)
-    
+
     // MARK: - Init
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
         prepareForReuse()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - Methods
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientLayer.frame = contentView.bounds
     }
-    
+
     override func prepareForReuse() {
         remoteImageView.cancelLoading()
         remoteImageView.setImage(nil, animated: false)
@@ -105,17 +105,17 @@ final class NotificationCell: UITableViewCell {
         ribbonView.isHidden = true
         configure(with: nil, timestamp: nil, hideSeparator: false, showGradient: false)
     }
-    
+
     func configure(with model: NotificationCellModel?, timestamp: String?, hideSeparator: Bool, showGradient: Bool) {
         backgroundColor = model?.isRead == true ? .bgPrimary : .bgSecondary
-    
+
         timestampLabel.text = timestamp
         separatorView.isHidden = hideSeparator
         gradientLayer.isHidden = !showGradient
-        
+
         priceLabel.text = model?.content?.priceText
         priceLabel.isHidden = model?.content?.priceText == nil
-        
+
         switch model?.content {
         case let content as PersonalNotificationCellContent:
             titleLabel.font = .body
@@ -129,7 +129,7 @@ final class NotificationCell: UITableViewCell {
             titleLabel.text = content.locationText
             subtitleLabel.font = model?.isRead == true ? .body : .bodyStrong
             subtitleLabel.text = content.title
-            
+
             if let ribbonViewModel = content.ribbonViewModel {
                 ribbonView.configure(with: ribbonViewModel)
                 ribbonView.isHidden = false
@@ -137,12 +137,12 @@ final class NotificationCell: UITableViewCell {
         default:
             break
         }
-        
+
         guard let imagePath = model?.content?.imagePath else {
             remoteImageView.setImage(fallbackImage, animated: false)
             return
         }
-        
+
         remoteImageView.loadImage(for: imagePath, imageWidth: imageWidth, loadingColor: nil, fallbackImage: fallbackImage)
     }
 }
@@ -151,37 +151,37 @@ final class NotificationCell: UITableViewCell {
 private extension NotificationCell {
     func setup() {
         setDefaultSelectedBackgound()
-        
+
         contentView.addSubview(remoteImageView)
         contentView.addSubview(iconView)
         contentView.addSubview(ribbonView)
         contentView.addSubview(stackView)
         contentView.addSubview(separatorView)
         contentView.layer.addSublayer(gradientLayer)
-        
+
         NSLayoutConstraint.activate([
             remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             remoteImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
             remoteImageView.widthAnchor.constraint(equalToConstant: imageWidth),
             remoteImageView.heightAnchor.constraint(equalToConstant: imageWidth),
-            
+
             iconView.centerXAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: -.spacingS),
             iconView.centerYAnchor.constraint(equalTo: remoteImageView.bottomAnchor, constant: -.spacingS),
             iconView.widthAnchor.constraint(equalToConstant: 24),
             iconView.heightAnchor.constraint(equalToConstant: 24),
-            
+
             ribbonView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
             ribbonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingS),
-            
+
             stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .spacingM),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
-            
+
             separatorView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             separatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             separatorView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
-            
+
             contentView.bottomAnchor.constraint(greaterThanOrEqualTo: stackView.bottomAnchor, constant: .spacingM),
             contentView.bottomAnchor.constraint(greaterThanOrEqualTo: remoteImageView.bottomAnchor, constant: .spacingM)
         ])

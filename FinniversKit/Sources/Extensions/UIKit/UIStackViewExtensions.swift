@@ -11,4 +11,8 @@ public extension UIStackView {
             oldSubview.removeFromSuperview()
         }
     }
+
+    func addArrangedSubviews(_ subviews: [UIView]) {
+        subviews.forEach(addArrangedSubview)
+    }
 }
