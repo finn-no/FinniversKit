@@ -12,6 +12,7 @@ class ObjectPagePriceDemoView: UIView, Tweakable {
             TweakingOption(title: "With links", action: { [weak self] in
                 self?.priceView.configure(with: .withLinks)
             }),
+
             TweakingOption(title: "Without links", action: { [weak self] in
                 self?.priceView.configure(with: .withoutLinks)
             }),
@@ -29,6 +30,14 @@ class ObjectPagePriceDemoView: UIView, Tweakable {
 
             TweakingOption(title: "Main price only", action: { [weak self] in
                 self?.priceView.configure(with: .mainPriceOnly, style: .init(priceStyle: .title1))
+            }),
+
+            TweakingOption(title: "BAP for sale", action: { [weak self] in
+                self?.priceView.configure(with: .bapSaleAd)
+            }),
+
+            TweakingOption(title: "BAP wanted", action: { [weak self] in
+                self?.priceView.configure(with: .bapWantedAd)
             })
         ]
     }()
@@ -153,6 +162,21 @@ extension ObjectPagePriceViewModel {
 
     static var mainPriceOnly: ObjectPagePriceViewModel = {
         ObjectPagePriceViewModel(totalPrice: "1 389 588 kr")
+    }()
+
+    static var bapSaleAd: ObjectPagePriceViewModel = {
+        ObjectPagePriceViewModel(
+            totalPrice: "1 500 kr",
+            adTypeText: "Til salgs"
+        )
+    }()
+
+    static var bapWantedAd: ObjectPagePriceViewModel = {
+        ObjectPagePriceViewModel(
+            title: "Makspris",
+            totalPrice: "5 500 kr",
+            adTypeText: "Ønskes kjøpt"
+        )
     }()
 }
 
