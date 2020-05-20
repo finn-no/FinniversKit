@@ -22,7 +22,7 @@ public class ObjectPagePriceView: UIView {
     }()
 
     private lazy var wrapperStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [pricesStackView, linkButtonListView])
+        let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
         stackView.spacing = .spacingM
         return stackView
@@ -53,7 +53,15 @@ public class ObjectPagePriceView: UIView {
     // MARK: - Public methods
 
     public func configure(with viewModel: ObjectPagePriceViewModel, style: Style = .init()) {
+        wrapperStackView.removeArrangedSubviews()
         pricesStackView.removeArrangedSubviews()
+
+        if let adTypeText = viewModel.adTypeText {
+            let adTypeLabel = Label(style: style.adTypeStyle, withAutoLayout: true)
+            adTypeLabel.text = adTypeText
+            wrapperStackView.addArrangedSubview(adTypeLabel)
+            wrapperStackView.setCustomSpacing(.spacingXS, after: adTypeLabel)
+        }
 
         let mainPriceView = PriceView(viewModel: viewModel.mainPriceModel, style: style, withAutoLayout: true)
         pricesStackView.addArrangedSubview(mainPriceView)
@@ -65,6 +73,8 @@ public class ObjectPagePriceView: UIView {
 
         linkButtonListView.configure(with: viewModel.links)
         linkButtonListView.isHidden = viewModel.links.isEmpty
+
+        wrapperStackView.addArrangedSubviews([pricesStackView, linkButtonListView])
     }
 }
 
