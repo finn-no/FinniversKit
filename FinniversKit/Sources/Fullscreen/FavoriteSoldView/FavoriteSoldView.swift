@@ -15,12 +15,15 @@ public protocol FavoriteSoldViewModel {
 public class FavoriteSoldView: UIView {
     public var model: FavoriteSoldViewModel? {
         didSet {
-            guard let model = model else { return }
-            titleLabel.text = model.adTitle
-            bodyLabel.text = model.adBody
-            ribbonView.title = model.ribbonTitle
-            similarAdsTitleLabel.text = model.similarAdsTitle
-            setupFrames()
+            if let model = model {
+                self.configure(with: model)
+            }
+        }
+    }
+
+    public weak var remoteImageViewDataSource: RemoteImageViewDataSource? {
+        didSet {
+            imageView.dataSource = remoteImageViewDataSource
         }
     }
 
@@ -51,7 +54,6 @@ public class FavoriteSoldView: UIView {
         let view = UIView(withAutoLayout: true)
         view.layer.cornerRadius = FavoriteSoldView.imageCornerRadius
         view.layer.masksToBounds = true
-        view.backgroundColor = .red
         return view
     }()
 
@@ -59,7 +61,6 @@ public class FavoriteSoldView: UIView {
         let imageView = RemoteImageView(withAutoLayout: true)
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = .red
         return imageView
     }()
 
@@ -92,6 +93,8 @@ public class FavoriteSoldView: UIView {
     private let adsGridView: AdsGridView
 
     private lazy var headerView = UIView()
+
+    private let fallbackImage = UIImage(named: .noImage)
 
     // MARK: - Init
 
@@ -131,6 +134,9 @@ public class FavoriteSoldView: UIView {
         headerView.addSubview(stackView)
         headerView.addSubview(imageContentView)
         headerView.addSubview(similarAdsTitleLabel)
+
+        imageContentView.addSubview(imageView)
+        imageView.fillInSuperview()
 
         stackView.addArrangedSubview(ribbonView)
         stackView.addArrangedSubview(titleLabel)
@@ -183,6 +189,27 @@ public class FavoriteSoldView: UIView {
         headerView.frame.size.height = height
         boundsForCurrentSubviewSetup = bounds
         adsGridView.invalidateLayout()
+    }
+
+    // MARK: - Private methods
+
+    private func configure(with model: FavoriteSoldViewModel) {
+        titleLabel.text = model.adTitle
+        bodyLabel.text = model.adBody
+        ribbonView.title = model.ribbonTitle
+        similarAdsTitleLabel.text = model.similarAdsTitle
+
+        if let imageUrl = model.imageUrl {
+            imageView.loadImage(for: imageUrl,
+                                imageWidth: FavoriteSoldView.imageWidth,
+                                loadingColor: .toothPaste,
+                                fallbackImage: fallbackImage
+            )
+        } else {
+            imageView.image = fallbackImage
+        }
+
+        setupFrames()
     }
 
     // MARK: - Public methods
