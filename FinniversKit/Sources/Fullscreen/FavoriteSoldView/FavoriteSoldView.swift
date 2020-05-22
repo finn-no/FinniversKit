@@ -7,40 +7,80 @@ import Foundation
 public protocol FavoriteSoldViewModel {
     var adTitle: String { get }
     var adBody: String { get }
+    var ribbonTitle: String { get }
     var similarAdsTitle: String { get }
+    var imageUrl: String? { get }
 }
 
 public class FavoriteSoldView: UIView {
     public var model: FavoriteSoldViewModel? {
         didSet {
-            adTitleLabel.text = model?.adTitle
-            adBodyLabel.text = model?.adBody
-            similarAdsTitleLabel.text = model?.similarAdsTitle
+            guard let model = model else { return }
+            titleLabel.text = model.adTitle
+            bodyLabel.text = model.adBody
+            ribbonView.title = model.ribbonTitle
+            similarAdsTitleLabel.text = model.similarAdsTitle
+            setupFrames()
         }
     }
 
     // MARK: - Private properties
 
     private static let margins: CGFloat = .spacingM
-    private static let adTitleTopSpacing: CGFloat = .spacingXL
-    private static let adBodyTopSpacing: CGFloat = .spacingS
-    private static let similarAdsTitleTopSpacing: CGFloat = .spacingXXL
-    private static let adsGridTopSpacing: CGFloat = .spacingXL
+    private static let titleTopSpacing: CGFloat = .spacingS
+    private static let bodyTopSpacing: CGFloat = .spacingXS
+    private static let similarAdsTitleTopSpacing: CGFloat = .spacingXL + .spacingS
+    private static let adsGridTopSpacing: CGFloat = .spacingM
+    private static let imageCornerRadius: CGFloat = 8.0
+    private static let imageWidth: CGFloat = 120
 
     private var didSetupView = false
     private var boundsForCurrentSubviewSetup = CGRect.zero
 
     // MARK: - Subviews
 
-    private lazy var adTitleLabel: Label = {
-        let label = Label(style: .title2, withAutoLayout: true)
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(withAutoLayout: true)
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.distribution = .fill
+        return stackView
+    }()
+
+    private lazy var imageContentView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.layer.cornerRadius = FavoriteSoldView.imageCornerRadius
+        view.layer.masksToBounds = true
+        view.backgroundColor = .red
+        return view
+    }()
+
+    private lazy var imageView: RemoteImageView = {
+        let imageView = RemoteImageView(withAutoLayout: true)
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = .red
+        return imageView
+    }()
+
+    private lazy var ribbonView: RibbonView = {
+        let view = RibbonView(withAutoLayout: true)
+        view.style = .warning
+        view.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        return view
+    }()
+
+    private lazy var titleLabel: Label = {
+        let label = Label(style: .title3Strong, withAutoLayout: true)
         label.numberOfLines = 0
+        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
     }()
 
-    private lazy var adBodyLabel: Label = {
-        let label = Label(style: .body, withAutoLayout: true)
+    private lazy var bodyLabel: Label = {
+        let label = Label(style: .detail, withAutoLayout: true)
         label.numberOfLines = 0
+        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
     }()
 
@@ -88,20 +128,33 @@ public class FavoriteSoldView: UIView {
     private func setup() {
         addSubview(adsGridView)
 
-        headerView.addSubview(adTitleLabel)
-        headerView.addSubview(adBodyLabel)
+        headerView.addSubview(stackView)
+        headerView.addSubview(imageContentView)
         headerView.addSubview(similarAdsTitleLabel)
 
+        stackView.addArrangedSubview(ribbonView)
+        stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(bodyLabel)
+
+        let spaceFiller = UIView(withAutoLayout: true)
+        spaceFiller.setContentHuggingPriority(.defaultLow, for: .vertical)
+        stackView.addArrangedSubview(spaceFiller)
+
+        stackView.setCustomSpacing(FavoriteSoldView.titleTopSpacing, after: ribbonView)
+        stackView.setCustomSpacing(FavoriteSoldView.bodyTopSpacing, after: titleLabel)
+
         NSLayoutConstraint.activate([
-            adTitleLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: FavoriteSoldView.adTitleTopSpacing),
-            adTitleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: FavoriteSoldView.margins),
-            adTitleLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -FavoriteSoldView.margins),
+            imageContentView.topAnchor.constraint(equalTo: headerView.topAnchor),
+            imageContentView.heightAnchor.constraint(equalToConstant: FavoriteSoldView.imageWidth),
+            imageContentView.widthAnchor.constraint(equalTo: imageContentView.heightAnchor),
+            imageContentView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: FavoriteSoldView.margins),
 
-            adBodyLabel.topAnchor.constraint(equalTo: adTitleLabel.bottomAnchor, constant: FavoriteSoldView.adBodyTopSpacing),
-            adBodyLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: FavoriteSoldView.margins),
-            adBodyLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -FavoriteSoldView.margins),
+            stackView.leadingAnchor.constraint(equalTo: imageContentView.trailingAnchor, constant: FavoriteSoldView.margins),
+            stackView.topAnchor.constraint(equalTo: headerView.topAnchor),
+            stackView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -FavoriteSoldView.margins),
+            stackView.bottomAnchor.constraint(greaterThanOrEqualTo: imageContentView.bottomAnchor),
 
-            similarAdsTitleLabel.topAnchor.constraint(equalTo: adBodyLabel.bottomAnchor, constant: FavoriteSoldView.similarAdsTitleTopSpacing),
+            similarAdsTitleLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: FavoriteSoldView.similarAdsTitleTopSpacing),
             similarAdsTitleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: FavoriteSoldView.margins),
             similarAdsTitleLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -FavoriteSoldView.margins),
         ])
@@ -112,12 +165,18 @@ public class FavoriteSoldView: UIView {
     }
 
     private func setupFrames() {
-        let adTitleLabelHeight = adTitleLabel.intrinsicContentSize.height
-        let adBodyLabelHeight = adBodyLabel.intrinsicContentSize.height
+        let stackViewWidth = frame.size.width - FavoriteSoldView.imageWidth - 3 * FavoriteSoldView.margins
+
+        let ribbonHeight: CGFloat = 19
+        let adTitleLabelHeight = titleLabel.sizeThatFits(CGSize(width: stackViewWidth, height: CGFloat.greatestFiniteMagnitude)).height
+        let adBodyLabelHeight = bodyLabel.sizeThatFits(CGSize(width: stackViewWidth, height: CGFloat.greatestFiniteMagnitude)).height
         let similarAdsTitleHeight = similarAdsTitleLabel.intrinsicContentSize.height
 
-        let height = FavoriteSoldView.adTitleTopSpacing + adTitleLabelHeight +
-            FavoriteSoldView.adBodyTopSpacing + adBodyLabelHeight +
+        let adInfoHeight = max(FavoriteSoldView.imageWidth, ribbonHeight +
+            FavoriteSoldView.titleTopSpacing + adTitleLabelHeight +
+            FavoriteSoldView.bodyTopSpacing + adBodyLabelHeight)
+
+        let height = adInfoHeight +
             FavoriteSoldView.similarAdsTitleTopSpacing + similarAdsTitleHeight +
             FavoriteSoldView.adsGridTopSpacing
 
