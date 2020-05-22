@@ -12,6 +12,10 @@ public protocol FavoriteSoldViewModel {
     var imageUrl: String? { get }
 }
 
+public protocol FavoriteSoldViewDelegate: AnyObject {
+    func favoriteSoldViewDidTapSoldFavorite(_ favoriteSoldView: FavoriteSoldView)
+}
+
 public class FavoriteSoldView: UIView {
     public var model: FavoriteSoldViewModel? {
         didSet {
@@ -26,6 +30,8 @@ public class FavoriteSoldView: UIView {
             imageView.dataSource = remoteImageViewDataSource
         }
     }
+
+    public weak var delegate: FavoriteSoldViewDelegate?
 
     // MARK: - Private properties
 
@@ -47,6 +53,7 @@ public class FavoriteSoldView: UIView {
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.distribution = .fill
+        stackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(soldFavoriteTapped)))
         return stackView
     }()
 
@@ -54,6 +61,7 @@ public class FavoriteSoldView: UIView {
         let view = UIView(withAutoLayout: true)
         view.layer.cornerRadius = FavoriteSoldView.imageCornerRadius
         view.layer.masksToBounds = true
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(soldFavoriteTapped)))
         return view
     }()
 
@@ -98,13 +106,14 @@ public class FavoriteSoldView: UIView {
 
     // MARK: - Init
 
-    public convenience init(delegate: AdsGridViewDelegate & AdsGridViewDataSource) {
-        self.init(adsGridViewDelegate: delegate, adsGridViewDataSource: delegate)
+    public convenience init(delegate: FavoriteSoldViewDelegate & AdsGridViewDelegate & AdsGridViewDataSource) {
+        self.init(delegate: delegate, adsGridViewDelegate: delegate, adsGridViewDataSource: delegate)
     }
 
-    init(adsGridViewDelegate: AdsGridViewDelegate, adsGridViewDataSource: AdsGridViewDataSource) {
+    init(delegate: FavoriteSoldViewDelegate, adsGridViewDelegate: AdsGridViewDelegate, adsGridViewDataSource: AdsGridViewDataSource) {
         adsGridView = AdsGridView(delegate: adsGridViewDelegate, dataSource: adsGridViewDataSource)
         adsGridView.translatesAutoresizingMaskIntoConstraints = false
+        self.delegate = delegate
         super.init(frame: .zero)
         setup()
     }
@@ -210,6 +219,10 @@ public class FavoriteSoldView: UIView {
         }
 
         setupFrames()
+    }
+
+    @objc private func soldFavoriteTapped() {
+        delegate?.favoriteSoldViewDidTapSoldFavorite(self)
     }
 
     // MARK: - Public methods
