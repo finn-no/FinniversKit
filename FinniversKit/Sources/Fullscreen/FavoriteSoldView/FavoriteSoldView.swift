@@ -83,14 +83,16 @@ public class FavoriteSoldView: UIView {
     }()
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .title3Strong, withAutoLayout: true)
+        let style: Label.Style = traitCollection.horizontalSizeClass == .compact ? .title3Strong : .title2
+        let label = Label(style: style, withAutoLayout: true)
         label.numberOfLines = 0
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
     }()
 
     private lazy var bodyLabel: Label = {
-        let label = Label(style: .detail, withAutoLayout: true)
+        let style: Label.Style = traitCollection.horizontalSizeClass == .compact ? .detail : .body
+        let label = Label(style: style, withAutoLayout: true)
         label.numberOfLines = 0
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
