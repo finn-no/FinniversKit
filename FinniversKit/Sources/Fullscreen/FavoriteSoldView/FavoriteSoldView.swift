@@ -107,8 +107,8 @@ public class FavoriteSoldView: UIView {
 
     private let fallbackImage = UIImage(named: .noImage)
 
-    private lazy var adsRetryView: FrontPageRetryView = {
-        let view = FrontPageRetryView()
+    private lazy var adsRetryView: LoadingRetryView = {
+        let view = LoadingRetryView()
         view.delegate = self
         view.state = .hidden
         return view
@@ -261,8 +261,8 @@ public class FavoriteSoldView: UIView {
     }
 }
 
-extension FavoriteSoldView: FrontPageRetryViewDelegate {
-    func frontPageRetryViewDidSelectButton(_ view: FrontPageRetryView) {
+extension FavoriteSoldView: LoadingRetryViewDelegate {
+    func loadingRetryViewDidSelectButton(_ view: LoadingRetryView) {
         adsRetryView.state = .loading
         delegate?.favoriteSoldViewDidTapRetryButton(self)
     }

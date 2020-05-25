@@ -356,7 +356,7 @@
 		CFCED8E122CF3A690049A3A0 /* AddFavoriteFolderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCED8E022CF3A690049A3A0 /* AddFavoriteFolderViewCell.swift */; };
 		CFCED8E322CF428B0049A3A0 /* FavoriteFoldersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCED8E222CF428B0049A3A0 /* FavoriteFoldersListViewModel.swift */; };
 		CFCED8E522CF71AC0049A3A0 /* FavoriteFoldersFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCED8E422CF71AC0049A3A0 /* FavoriteFoldersFooterView.swift */; };
-		CFE43E52219B1B2900D3D5F7 /* FrontPageRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E51219B1B2900D3D5F7 /* FrontPageRetryView.swift */; };
+		CFE43E52219B1B2900D3D5F7 /* LoadingRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E51219B1B2900D3D5F7 /* LoadingRetryView.swift */; };
 		CFEB220F232B96550039421C /* UIBarButtonItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB220E232B96550039421C /* UIBarButtonItemExtensions.swift */; };
 		CFEB22252330D1420039421C /* FavoriteAdsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB22242330D1420039421C /* FavoriteAdsListViewModel.swift */; };
 		CFF54E2E234E192A008E18BE /* FavoriteAdsSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF54E2D234E192A008E18BE /* FavoriteAdsSubtitleView.swift */; };
@@ -813,7 +813,7 @@
 		CFCED8E022CF3A690049A3A0 /* AddFavoriteFolderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavoriteFolderViewCell.swift; sourceTree = "<group>"; };
 		CFCED8E222CF428B0049A3A0 /* FavoriteFoldersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersListViewModel.swift; sourceTree = "<group>"; };
 		CFCED8E422CF71AC0049A3A0 /* FavoriteFoldersFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersFooterView.swift; sourceTree = "<group>"; };
-		CFE43E51219B1B2900D3D5F7 /* FrontPageRetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageRetryView.swift; sourceTree = "<group>"; };
+		CFE43E51219B1B2900D3D5F7 /* LoadingRetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingRetryView.swift; sourceTree = "<group>"; };
 		CFEB220E232B96550039421C /* UIBarButtonItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtensions.swift; sourceTree = "<group>"; };
 		CFEB22242330D1420039421C /* FavoriteAdsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListViewModel.swift; sourceTree = "<group>"; };
 		CFF54E2D234E192A008E18BE /* FavoriteAdsSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdsSubtitleView.swift; sourceTree = "<group>"; };
@@ -1496,7 +1496,7 @@
 		447AFC0E20984B63000F793E /* FrontPage */ = {
 			isa = PBXGroup;
 			children = (
-				CFE43E51219B1B2900D3D5F7 /* FrontPageRetryView.swift */,
+				CFE43E51219B1B2900D3D5F7 /* LoadingRetryView.swift */,
 				CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */,
 			);
 			path = FrontPage;
@@ -3416,7 +3416,7 @@
 				89A7A645225352380053D33B /* NativeAdvertDelegates.swift in Sources */,
 				DA9A223F21BA8D8C001452F0 /* BottomSheetStateController.swift in Sources */,
 				441FE42C209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift in Sources */,
-				CFE43E52219B1B2900D3D5F7 /* FrontPageRetryView.swift in Sources */,
+				CFE43E52219B1B2900D3D5F7 /* LoadingRetryView.swift in Sources */,
 				DAB7FAA721B690DD00BF8CC6 /* BottomSheetPresentationController.swift in Sources */,
 				44D912602077AC8A00486848 /* AttachableView.swift in Sources */,
 				494047FC23CDBA8D00ECBCFD /* ViewingsViewModel.swift in Sources */,

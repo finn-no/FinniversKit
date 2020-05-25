@@ -62,8 +62,8 @@ public final class FrontPageView: UIView {
         return headerLabel
     }()
 
-    private lazy var adsRetryView: FrontPageRetryView = {
-        let view = FrontPageRetryView()
+    private lazy var adsRetryView: LoadingRetryView = {
+        let view = LoadingRetryView()
         view.delegate = self
         return view
     }()
@@ -245,10 +245,10 @@ public final class FrontPageView: UIView {
     }
 }
 
-// MARK: - FrontpageRetryViewDelegate
+// MARK: - LoadingRetryViewDelegate
 
-extension FrontPageView: FrontPageRetryViewDelegate {
-    func frontPageRetryViewDidSelectButton(_ view: FrontPageRetryView) {
+extension FrontPageView: LoadingRetryViewDelegate {
+    func loadingRetryViewDidSelectButton(_ view: LoadingRetryView) {
         adsRetryView.state = .loading
         delegate?.frontPageViewDidSelectRetryButton(self)
     }
