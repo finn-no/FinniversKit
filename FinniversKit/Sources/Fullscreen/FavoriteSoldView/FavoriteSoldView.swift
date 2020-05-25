@@ -5,13 +5,13 @@
 import Foundation
 
 public protocol FavoriteSoldViewModel {
-    var adTitle: String { get }
+    var adTitle: String? { get }
+    var imageUrl: String? { get }
     var adBody: String { get }
     var ribbonTitle: String { get }
     var similarAdsTitle: String { get }
-    var imageUrl: String? { get }
     var retryButtonTitle: String { get }
-    var noRecommendationsText: String { get }
+    var noRecommendationsTitle: String { get }
 }
 
 public protocol FavoriteSoldViewDelegate: AnyObject {
@@ -171,13 +171,13 @@ public class FavoriteSoldView: UIView {
         stackView.setCustomSpacing(FavoriteSoldView.bodyTopSpacing, after: titleLabel)
 
         NSLayoutConstraint.activate([
-            imageContentView.topAnchor.constraint(equalTo: headerView.topAnchor),
+            imageContentView.topAnchor.constraint(equalTo: headerView.topAnchor, constant: FavoriteSoldView.margins),
             imageContentView.heightAnchor.constraint(equalToConstant: FavoriteSoldView.imageWidth),
             imageContentView.widthAnchor.constraint(equalTo: imageContentView.heightAnchor),
             imageContentView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: FavoriteSoldView.margins),
 
             stackView.leadingAnchor.constraint(equalTo: imageContentView.trailingAnchor, constant: FavoriteSoldView.margins),
-            stackView.topAnchor.constraint(equalTo: headerView.topAnchor),
+            stackView.topAnchor.constraint(equalTo: imageContentView.topAnchor),
             stackView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -FavoriteSoldView.margins),
             stackView.bottomAnchor.constraint(greaterThanOrEqualTo: imageContentView.bottomAnchor),
 
@@ -203,7 +203,7 @@ public class FavoriteSoldView: UIView {
             FavoriteSoldView.titleTopSpacing + adTitleLabelHeight +
             FavoriteSoldView.bodyTopSpacing + adBodyLabelHeight)
 
-        let height = adInfoHeight +
+        let height = FavoriteSoldView.margins + adInfoHeight +
             FavoriteSoldView.similarAdsTitleTopSpacing + similarAdsTitleHeight +
             FavoriteSoldView.adsGridTopSpacing
 
@@ -223,7 +223,7 @@ public class FavoriteSoldView: UIView {
         bodyLabel.text = model.adBody
         ribbonView.title = model.ribbonTitle
         similarAdsTitleLabel.text = model.similarAdsTitle
-        adsRetryView.set(labelText: model.noRecommendationsText, buttonText: model.retryButtonTitle)
+        adsRetryView.set(labelText: model.noRecommendationsTitle, buttonText: model.retryButtonTitle)
 
         if let imageUrl = model.imageUrl {
             imageView.loadImage(for: imageUrl,
