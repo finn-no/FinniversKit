@@ -69,6 +69,8 @@ public class FavoriteSoldDemoView: UIView {
 }
 
 extension FavoriteSoldDemoView: FavoriteSoldViewDelegate {
+    public func favoriteSoldViewDidTapRetryButton(_ favoriteSoldView: FavoriteSoldView) {}
+
     public func favoriteSoldViewDidTapSoldFavorite(_ favoriteSoldView: FavoriteSoldView) {}
 }
 
@@ -150,4 +152,6 @@ private struct FavoriteSoldDefaultData: FavoriteSoldViewModel {
     public let ribbonTitle = "Solgt"
     public let similarAdsTitle = "Lignende annonser"
     public let imageUrl: String? = "https://images.finncdn.no/dynamic/default/2020/4/vertical-0/24/1/176/773/561_868051191.jpg"
+    public let retryButtonTitle = ""
+    public let noRecommendationsText = ""
 }

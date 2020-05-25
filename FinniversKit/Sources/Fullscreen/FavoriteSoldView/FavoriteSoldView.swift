@@ -10,10 +10,13 @@ public protocol FavoriteSoldViewModel {
     var ribbonTitle: String { get }
     var similarAdsTitle: String { get }
     var imageUrl: String? { get }
+    var retryButtonTitle: String { get }
+    var noRecommendationsText: String { get }
 }
 
 public protocol FavoriteSoldViewDelegate: AnyObject {
     func favoriteSoldViewDidTapSoldFavorite(_ favoriteSoldView: FavoriteSoldView)
+    func favoriteSoldViewDidTapRetryButton(_ favoriteSoldView: FavoriteSoldView)
 }
 
 public class FavoriteSoldView: UIView {
@@ -104,6 +107,13 @@ public class FavoriteSoldView: UIView {
 
     private let fallbackImage = UIImage(named: .noImage)
 
+    private lazy var adsRetryView: FrontPageRetryView = {
+        let view = FrontPageRetryView()
+        view.delegate = self
+        view.state = .hidden
+        return view
+    }()
+
     // MARK: - Init
 
     public convenience init(delegate: FavoriteSoldViewDelegate & AdsGridViewDelegate & AdsGridViewDataSource) {
@@ -139,6 +149,8 @@ public class FavoriteSoldView: UIView {
 
     private func setup() {
         addSubview(adsGridView)
+
+        adsGridView.collectionView.addSubview(adsRetryView)
 
         headerView.addSubview(stackView)
         headerView.addSubview(imageContentView)
@@ -197,6 +209,10 @@ public class FavoriteSoldView: UIView {
 
         headerView.frame.size.height = height
         boundsForCurrentSubviewSetup = bounds
+
+        adsRetryView.frame.origin = CGPoint(x: 0, y: headerView.frame.height + .spacingXXL)
+        adsRetryView.frame.size = CGSize(width: bounds.width, height: 200)
+
         adsGridView.invalidateLayout()
     }
 
@@ -207,6 +223,7 @@ public class FavoriteSoldView: UIView {
         bodyLabel.text = model.adBody
         ribbonView.title = model.ribbonTitle
         similarAdsTitleLabel.text = model.similarAdsTitle
+        adsRetryView.set(labelText: model.noRecommendationsText, buttonText: model.retryButtonTitle)
 
         if let imageUrl = model.imageUrl {
             imageView.loadImage(for: imageUrl,
@@ -235,4 +252,18 @@ public class FavoriteSoldView: UIView {
         adsGridView.updateItem(at: index, isFavorite: isFavorite)
     }
 
+    public func hideAdsRetryButton() {
+        adsRetryView.state = .hidden
+    }
+
+    public func showAdsRetryButton() {
+        adsRetryView.state = .labelAndButton
+    }
+}
+
+extension FavoriteSoldView: FrontPageRetryViewDelegate {
+    func frontPageRetryViewDidSelectButton(_ view: FrontPageRetryView) {
+        adsRetryView.state = .loading
+        delegate?.favoriteSoldViewDidTapRetryButton(self)
+    }
 }
