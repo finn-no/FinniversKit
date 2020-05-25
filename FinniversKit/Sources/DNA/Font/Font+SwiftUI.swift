@@ -17,3 +17,10 @@ extension Font {
         Font(style.font)
     }
 }
+
+@available(iOS 13.0, *)
+extension View {
+    public func finnFont(_ style: Label.Style) -> some View {
+        font(.finnFont(style))
+    }
+}
