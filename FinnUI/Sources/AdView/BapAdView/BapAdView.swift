@@ -229,37 +229,7 @@ extension BapAdView {
 @available(iOS 13.0.0, *)
 struct BapAdView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            NavigationView {
-                BapAdView(
-                    viewModel: .sampleData,
-                    galleryImageProvider: SampleCollectionImageDownloader(
-                        urls: BapAdViewModel.sampleData.imageUrls
-                    ),
-                    authorAvatarImageProvider: SampleSingleImageProvider(
-                        url: URL(string: AuthorViewModel.sampleData.profilePicture)
-                    )
-                )
-            }
-                .colorScheme(.light)
-                .previewLayout(.fixed(width: 375, height: 1800))
-
-            ZStack {
-                Rectangle()
-                    .foregroundColor(Color.bgPrimary)
-                BapAdView(
-                    viewModel: .sampleData,
-                    galleryImageProvider: SampleCollectionImageDownloader(
-                        urls: BapAdViewModel.sampleData.imageUrls
-                    ),
-                    authorAvatarImageProvider: SampleSingleImageProvider(
-                        url: URL(string: AuthorViewModel.sampleData.profilePicture)
-                    )
-                )
-            }
-                .colorScheme(.dark)
-                .previewLayout(.fixed(width: 375, height: 1900))
-
+        NavigationView {
             BapAdView(
                 viewModel: .sampleData,
                 galleryImageProvider: SampleCollectionImageDownloader(
@@ -269,7 +239,8 @@ struct BapAdView_Previews: PreviewProvider {
                     url: URL(string: AuthorViewModel.sampleData.profilePicture)
                 )
             )
-                .previewDevice("iPad Pro (11-inch) (2nd generation)")
         }
+        .colorScheme(.light)
+        .previewLayout(.fixed(width: 375, height: 1800))
     }
 }
