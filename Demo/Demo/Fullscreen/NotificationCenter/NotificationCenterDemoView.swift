@@ -5,7 +5,18 @@
 import FinniversKit
 import FinnUI
 
-final class NotificationCenterDemoView: UIView {
+final class NotificationCenterDemoView: UIView, Tweakable {
+
+    lazy var tweakingOptions: [TweakingOption] = [
+        TweakingOption(title: "Empty states", action: {
+            self.segments = [self.emptyPersonalNotificationsSegment, self.emptySavedSearchNotificationsSegment]
+            self.notificationsCenterView.reloadData()
+        }),
+        TweakingOption(title: "Populated states", action: {
+            self.segments = [self.personalSegment, self.savedSearchSegment]
+            self.notificationsCenterView.reloadData()
+        })
+    ]
 
     private lazy var segments = [
         personalSegment,
@@ -25,6 +36,7 @@ final class NotificationCenterDemoView: UIView {
         super.init(frame: frame)
         addSubview(notificationsCenterView)
         notificationsCenterView.fillInSuperview()
+        notificationsCenterView.reloadData()
     }
 
     required init?(coder: NSCoder) {
