@@ -118,8 +118,8 @@ public class FavoriteSoldView: UIView {
 
     // MARK: - Init
 
-    public convenience init(delegate: FavoriteSoldViewDelegate & AdsGridViewDelegate & AdsGridViewDataSource) {
-        self.init(delegate: delegate, adsGridViewDelegate: delegate, adsGridViewDataSource: delegate)
+    public convenience init(delegate: FavoriteSoldViewDelegate & AdsGridViewDelegate, adsGridViewDataSource: AdsGridViewDataSource) {
+        self.init(delegate: delegate, adsGridViewDelegate: delegate, adsGridViewDataSource: adsGridViewDataSource)
     }
 
     init(delegate: FavoriteSoldViewDelegate, adsGridViewDelegate: AdsGridViewDelegate, adsGridViewDataSource: AdsGridViewDataSource) {
@@ -262,6 +262,8 @@ public class FavoriteSoldView: UIView {
         adsRetryView.state = .labelAndButton
     }
 }
+
+// MARK: - LoadingRetryViewDelegate
 
 extension FavoriteSoldView: LoadingRetryViewDelegate {
     func loadingRetryViewDidSelectButton(_ view: LoadingRetryView) {
