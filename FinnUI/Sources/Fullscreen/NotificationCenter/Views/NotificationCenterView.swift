@@ -149,7 +149,8 @@ extension NotificationCenterView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard
-            let headerViewModel = dataSource?.notificationCenterView(self, segment: selectedSegment, modelForHeaderInSection: section),
+            let index = tableViews?.firstIndex(of: tableView),
+            let headerViewModel = dataSource?.notificationCenterView(self, segment: index, modelForHeaderInSection: section),
             headerViewModel.title != nil || headerViewModel.savedSearchButtonModel != nil
         else { return nil }
 
@@ -281,7 +282,6 @@ private extension NotificationCenterView {
     @objc func handleSegmentChange() {
         selectedSegment = segmentedControl.selectedSegmentIndex
         scrollToTableView(atIndex: selectedSegment, animated: true)
-        print("Scroll view bounds: \(scrollView.bounds)")
     }
 
     func scrollToTableView(atIndex index: Int, animated: Bool) {
