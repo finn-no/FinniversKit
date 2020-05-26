@@ -13,7 +13,6 @@ public protocol SingleImageProvider: ObservableObject {
     func fetchImage()
 }
 
-
 /// Simple implementation for the SingleImageProvider protocol for in-project previews
 @available(iOS 13.0, *)
 class SampleSingleImageProvider: ObservableObject, SingleImageProvider {

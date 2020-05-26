@@ -62,7 +62,12 @@ extension AuthorView {
 struct AuthorView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            AuthorView(author: .sampleData)
+            AuthorView(
+                author: .sampleData,
+                imageProvider: SampleSingleImageProvider(
+                    url: URL(string: AuthorViewModel.sampleData.profilePicture)
+                )
+            )
         }.previewLayout(.sizeThatFits)
     }
 }
