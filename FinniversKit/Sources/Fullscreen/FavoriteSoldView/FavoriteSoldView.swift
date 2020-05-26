@@ -28,15 +28,9 @@ public class FavoriteSoldView: UIView {
         }
     }
 
-    public weak var remoteImageViewDataSource: RemoteImageViewDataSource? {
-        didSet {
-            imageView.dataSource = remoteImageViewDataSource
-        }
-    }
-
-    public weak var delegate: FavoriteSoldViewDelegate?
-
     // MARK: - Private properties
+
+    private weak var delegate: FavoriteSoldViewDelegate?
 
     private static let margins: CGFloat = .spacingM
     private static let titleTopSpacing: CGFloat = .spacingS
@@ -118,15 +112,26 @@ public class FavoriteSoldView: UIView {
 
     // MARK: - Init
 
-    public convenience init(delegate: FavoriteSoldViewDelegate & AdsGridViewDelegate, adsGridViewDataSource: AdsGridViewDataSource) {
-        self.init(delegate: delegate, adsGridViewDelegate: delegate, adsGridViewDataSource: adsGridViewDataSource)
+    public convenience init(delegate: FavoriteSoldViewDelegate & AdsGridViewDelegate,
+                            adsGridViewDataSource: AdsGridViewDataSource,
+                            remoteImageViewDataSource: RemoteImageViewDataSource) {
+        self.init(favoriteSoldViewDelegate: delegate,
+                  adsGridViewDelegate: delegate,
+                  adsGridViewDataSource: adsGridViewDataSource,
+                  remoteImageViewDataSource: remoteImageViewDataSource
+        )
     }
 
-    init(delegate: FavoriteSoldViewDelegate, adsGridViewDelegate: AdsGridViewDelegate, adsGridViewDataSource: AdsGridViewDataSource) {
+    init(favoriteSoldViewDelegate: FavoriteSoldViewDelegate,
+         adsGridViewDelegate: AdsGridViewDelegate,
+         adsGridViewDataSource: AdsGridViewDataSource,
+         remoteImageViewDataSource: RemoteImageViewDataSource) {
+
         adsGridView = AdsGridView(delegate: adsGridViewDelegate, dataSource: adsGridViewDataSource)
         adsGridView.translatesAutoresizingMaskIntoConstraints = false
-        self.delegate = delegate
         super.init(frame: .zero)
+        delegate = favoriteSoldViewDelegate
+        imageView.dataSource = remoteImageViewDataSource
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -173,8 +178,8 @@ public class FavoriteSoldView: UIView {
 
         NSLayoutConstraint.activate([
             imageContentView.topAnchor.constraint(equalTo: headerView.topAnchor, constant: FavoriteSoldView.margins),
-            imageContentView.heightAnchor.constraint(equalToConstant: FavoriteSoldView.imageWidth),
-            imageContentView.widthAnchor.constraint(equalTo: imageContentView.heightAnchor),
+            imageContentView.widthAnchor.constraint(equalToConstant: FavoriteSoldView.imageWidth),
+            imageContentView.heightAnchor.constraint(equalTo: imageContentView.widthAnchor),
             imageContentView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: FavoriteSoldView.margins),
 
             stackView.leadingAnchor.constraint(equalTo: imageContentView.trailingAnchor, constant: FavoriteSoldView.margins),
@@ -196,8 +201,10 @@ public class FavoriteSoldView: UIView {
         let stackViewWidth = frame.size.width - FavoriteSoldView.imageWidth - 3 * FavoriteSoldView.margins
 
         let ribbonHeight: CGFloat = 19
-        let adTitleLabelHeight = titleLabel.sizeThatFits(CGSize(width: stackViewWidth, height: CGFloat.greatestFiniteMagnitude)).height
-        let adBodyLabelHeight = bodyLabel.sizeThatFits(CGSize(width: stackViewWidth, height: CGFloat.greatestFiniteMagnitude)).height
+        let adTitleLabelHeight = titleLabel.sizeThatFits(
+            CGSize(width: stackViewWidth, height: CGFloat.greatestFiniteMagnitude)).height
+        let adBodyLabelHeight = bodyLabel.sizeThatFits(
+            CGSize(width: stackViewWidth, height: CGFloat.greatestFiniteMagnitude)).height
         let similarAdsTitleHeight = similarAdsTitleLabel.intrinsicContentSize.height
 
         let adInfoHeight = max(FavoriteSoldView.imageWidth, ribbonHeight +
