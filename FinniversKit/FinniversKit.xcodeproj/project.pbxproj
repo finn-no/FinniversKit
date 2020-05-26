@@ -1624,7 +1624,6 @@
 			isa = PBXGroup;
 			children = (
 				496F8C122473DCC600AE0735 /* FavoriteSoldView */,
-				F2BE6BEA23683DA90085A05A /* AdConfirmationView */,
 				4441F9F022CCF75D00DCFD2F /* AddressMapView */,
 				DAD0D48621072EDD0091DD4D /* AdReporter */,
 				9B8CB0A623A3D37A00A79A9E /* BetaFeatureView */,
