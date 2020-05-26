@@ -127,7 +127,6 @@ public class FavoriteSoldView: UIView {
         adsGridView.translatesAutoresizingMaskIntoConstraints = false
         self.delegate = delegate
         super.init(frame: .zero)
-        setup()
     }
 
     required init?(coder aDecoder: NSCoder) {

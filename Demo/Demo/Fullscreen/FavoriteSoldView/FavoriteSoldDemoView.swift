@@ -11,7 +11,7 @@ public class FavoriteSoldDemoView: UIView {
     private var didSetupView = false
 
     private lazy var favoriteSoldView: FavoriteSoldView = {
-        let view = FavoriteSoldView(delegate: self)
+        let view = FavoriteSoldView(delegate: self, adsGridViewDataSource: self)
         view.remoteImageViewDataSource = self
         view.model = FavoriteSoldDefaultData()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -147,11 +147,11 @@ extension FavoriteSoldDemoView: RemoteImageViewDataSource {
 }
 
 private struct FavoriteSoldDefaultData: FavoriteSoldViewModel {
-    public let adTitle = "Ubrukt ByTiMo skjørt"
+    public let adTitle: String? = "Ubrukt ByTiMo skjørt"
     public let adBody = "Din favoritt er solgt, men vi har flere annonser vi tror du vil like."
     public let ribbonTitle = "Solgt"
     public let similarAdsTitle = "Lignende annonser"
     public let imageUrl: String? = "https://images.finncdn.no/dynamic/default/2020/4/vertical-0/24/1/176/773/561_868051191.jpg"
     public let retryButtonTitle = ""
-    public let noRecommendationsText = ""
+    public let noRecommendationsTitle = ""
 }
