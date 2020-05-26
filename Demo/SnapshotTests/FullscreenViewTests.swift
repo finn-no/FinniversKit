@@ -113,10 +113,6 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.newYearsView)
     }
 
-    func testAdConfirmationView() {
-        snapshot(.adConfirmationView)
-    }
-
     func testFavoriteAdActionView() {
         snapshot(.favoriteAdActionView)
     }
