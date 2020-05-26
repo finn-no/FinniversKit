@@ -159,7 +159,7 @@ public enum ComponentDemoViews: String, CaseIterable {
         case .tweakable:
             return DemoViewController<TweakableDemoView>()
         case .saveSearchView:
-            return SaveSearchViewDemoViewController(containmentOptions: [.bottomSheet, .navigationController])
+            return DemoViewController<SaveSearchViewDemoView>(dismissType: .dismissButton)
         case .saveSearchPromptView:
             return DemoViewController<SaveSearchPromptViewDemoView>()
         case .searchListEmptyView:

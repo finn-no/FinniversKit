@@ -26,7 +26,7 @@ extension TransactionDemoViewDefaultData {
                 style: .default,
                 main: TransactionStepContentModel(
                     title: "Annonsen er lagt ut",
-                    primaryButton: TransactionActionButtonModel(
+                    primaryButton: .init(
                         text: "Se annonsen",
                         style: "FLAT",
                         action: "SEE_AD",
@@ -37,7 +37,7 @@ extension TransactionDemoViewDefaultData {
                 main: TransactionStepContentModel(
                     title: "Kontrakt",
                     body: NSAttributedString(string: "Begge har signert kontrakten."),
-                    primaryButton: TransactionActionButtonModel(
+                    primaryButton: .init(
                         text: "Gå til kontrakt",
                         style: "FLAT",
                         url: "https://www.google.com/search?q=contract+signed"))),
@@ -56,11 +56,11 @@ extension TransactionDemoViewDefaultData {
                 main: TransactionStepContentModel(
                     title: "Overlevering",
                     body: NSAttributedString(string: "<p>Du har bekreftet overleveringen.<br/>Venter på kjøper.</p><p>Dere må bekrefte før:<br/><strong>8. februar 2020.</strong></p><ol><li>Ved oppmøte registrerer dere først eierskiftet digitalt hos Statens vegvesen.</li><li>Deretter må <strong>begge</strong> bekrefte at overleveringen har skjedd, og at pengene kan utbetales.</li></ol>"),
-                    nativeButton: TransactionActionButtonModel(
+                    nativeButton: .init(
                         text: "Registrer eierskifte",
                         style: "DEFAULT",
                         url: "https://www.vegvesen.no/"),
-                    primaryButton: TransactionActionButtonModel(
+                    primaryButton: .init(
                         text: "Bekreft overlevering",
                         style: "CALL_TO_ACTION",
                         action: "URL",

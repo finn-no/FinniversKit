@@ -97,7 +97,7 @@
 		46E773FD242CEF0A008A5E93 /* FavoriteButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772E5242CEF09008A5E93 /* FavoriteButtonDemoView.swift */; };
 		46E773FE242CEF0A008A5E93 /* FooterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772E7242CEF09008A5E93 /* FooterButtonView.swift */; };
 		46E773FF242CEF0A008A5E93 /* SelfDeclarationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772E9242CEF09008A5E93 /* SelfDeclarationDemoView.swift */; };
-		46E77400242CEF0A008A5E93 /* SaveSearchViewDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772EB242CEF09008A5E93 /* SaveSearchViewDemoViewController.swift */; };
+		46E77400242CEF0A008A5E93 /* SaveSearchViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772EB242CEF09008A5E93 /* SaveSearchViewDemoView.swift */; };
 		46E77401242CEF0A008A5E93 /* SaveSearchPromptViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772EC242CEF09008A5E93 /* SaveSearchPromptViewDemoView.swift */; };
 		46E77402242CEF0A008A5E93 /* SearchListEmptyDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772ED242CEF09008A5E93 /* SearchListEmptyDemoView.swift */; };
 		46E77403242CEF0A008A5E93 /* RefreshControlDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772EF242CEF09008A5E93 /* RefreshControlDemo.swift */; };
@@ -348,7 +348,7 @@
 		46E772E5242CEF09008A5E93 /* FavoriteButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteButtonDemoView.swift; sourceTree = "<group>"; };
 		46E772E7242CEF09008A5E93 /* FooterButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterButtonView.swift; sourceTree = "<group>"; };
 		46E772E9242CEF09008A5E93 /* SelfDeclarationDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfDeclarationDemoView.swift; sourceTree = "<group>"; };
-		46E772EB242CEF09008A5E93 /* SaveSearchViewDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveSearchViewDemoViewController.swift; sourceTree = "<group>"; };
+		46E772EB242CEF09008A5E93 /* SaveSearchViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveSearchViewDemoView.swift; sourceTree = "<group>"; };
 		46E772EC242CEF09008A5E93 /* SaveSearchPromptViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveSearchPromptViewDemoView.swift; sourceTree = "<group>"; };
 		46E772ED242CEF09008A5E93 /* SearchListEmptyDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchListEmptyDemoView.swift; sourceTree = "<group>"; };
 		46E772EF242CEF09008A5E93 /* RefreshControlDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshControlDemo.swift; sourceTree = "<group>"; };
@@ -1110,7 +1110,7 @@
 		46E772EA242CEF09008A5E93 /* SaveSearch */ = {
 			isa = PBXGroup;
 			children = (
-				46E772EB242CEF09008A5E93 /* SaveSearchViewDemoViewController.swift */,
+				46E772EB242CEF09008A5E93 /* SaveSearchViewDemoView.swift */,
 				46E772EC242CEF09008A5E93 /* SaveSearchPromptViewDemoView.swift */,
 				46E772ED242CEF09008A5E93 /* SearchListEmptyDemoView.swift */,
 			);
@@ -2008,7 +2008,7 @@
 				46E773BC242CEF0A008A5E93 /* MinFinnDemoView.swift in Sources */,
 				46E77459242CEF0A008A5E93 /* AdsGridViewDemoViewHelpers.swift in Sources */,
 				DED0A09524687E010016176A /* NotificationCenterDemoData.swift in Sources */,
-				46E77400242CEF0A008A5E93 /* SaveSearchViewDemoViewController.swift in Sources */,
+				46E77400242CEF0A008A5E93 /* SaveSearchViewDemoView.swift in Sources */,
 				46E77442242CEF0A008A5E93 /* AssetsDemoView.swift in Sources */,
 				46E773C0242CEF0A008A5E93 /* LoginEntryDemoPageViewController.swift in Sources */,
 				46E773F2242CEF0A008A5E93 /* NativeAdvertDefaultData.swift in Sources */,

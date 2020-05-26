@@ -17,7 +17,12 @@ public final class InfoboxView: UIView {
             titleLabel.text = model?.title
             detailLabel.text = model?.detail
             primaryButton.setTitle(model?.primaryButtonTitle, for: .normal)
-            secondaryButton.setTitle(model?.secondaryButtonTitle, for: .normal)
+            if let secondaryButtonTitle = model?.secondaryButtonTitle,
+                !secondaryButtonTitle.isEmpty {
+                secondaryButton.setTitle(secondaryButtonTitle, for: .normal)
+            } else {
+                secondaryButton.isHidden = true
+            }
         }
     }
 
@@ -29,7 +34,7 @@ public final class InfoboxView: UIView {
         let label = Label(style: style.titleStyle)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.textColor = .textPrimary
+        label.textColor = style.textColor
         return label
     }()
 
@@ -37,7 +42,7 @@ public final class InfoboxView: UIView {
         let label = Label(style: style.detailStyle)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.textColor = .textPrimary
+        label.textColor = style.textColor
         label.numberOfLines = 0
         return label
     }()

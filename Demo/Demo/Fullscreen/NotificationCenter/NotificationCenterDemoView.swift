@@ -5,13 +5,24 @@
 import FinniversKit
 import FinnUI
 
-final class NotificationCenterDemoView: UIView {
-    
+final class NotificationCenterDemoView: UIView, Tweakable {
+
+    lazy var tweakingOptions: [TweakingOption] = [
+        TweakingOption(title: "Empty states", action: {
+            self.segments = [self.emptyPersonalNotificationsSegment, self.emptySavedSearchNotificationsSegment]
+            self.notificationsCenterView.reloadData()
+        }),
+        TweakingOption(title: "Populated states", action: {
+            self.segments = [self.personalSegment, self.savedSearchSegment]
+            self.notificationsCenterView.reloadData()
+        })
+    ]
+
     private lazy var segments = [
         personalSegment,
         savedSearchSegment
     ]
-    
+
     private lazy var notificationsCenterView: NotificationCenterView = {
         let notificationCenterView = NotificationCenterView(withAutoLayout: true)
         notificationCenterView.selectedSegment = 1
@@ -20,53 +31,54 @@ final class NotificationCenterDemoView: UIView {
         notificationCenterView.remoteImageViewDataSource = self
         return notificationCenterView
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(notificationsCenterView)
         notificationsCenterView.fillInSuperview()
+        notificationsCenterView.reloadData()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
 }
 
 extension NotificationCenterDemoView: NotificationCenterViewDataSource {
     func numberOfSegments(in view: NotificationCenterView) -> Int {
         segments.count
     }
-    
+
     func notificationCenterView(_ view: NotificationCenterView, titleInSegment segment: Int) -> String {
         segments[segment].title
     }
-    
+
     func notificationCenterView(_ view: NotificationCenterView, numberOfSectionsInSegment segment: Int) -> Int {
         segments[segment].sections.count
     }
-    
+
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, numberOfRowsInSection section: Int) -> Int {
         segments[segment].sections[section].items.count
     }
-    
+
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, modelForCellAt indexPath: IndexPath) -> NotificationCenterCellType {
         segments[segment].sections[indexPath.section].items[indexPath.row]
     }
-    
+
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, timestampForCellAt indexPath: IndexPath) -> String? {
         "3 min siden"
     }
-    
+
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, modelForHeaderInSection section: Int) -> NotificationCenterHeaderViewModel {
         segments[segment].sections[section]
     }
-    
+
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, overflowInSection section: Int) -> Bool {
         guard let count = segments[segment].sections[section].count else { return false }
         return count > segments[segment].sections[section].items.count
     }
-    
+
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, titleForFooterInSection section: Int) -> String {
         "Vis flere treff"
     }
@@ -75,7 +87,7 @@ extension NotificationCenterDemoView: NotificationCenterViewDataSource {
 extension NotificationCenterDemoView: NotificationCenterViewDelegate {
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectModelAt indexPath: IndexPath) {
         let cellType = segments[segment].sections[indexPath.section].items[indexPath.row]
-        
+
         switch cellType {
         case let .notificationCell(model):
             if var item = model as? NotificationCenterItem {
@@ -87,13 +99,19 @@ extension NotificationCenterDemoView: NotificationCenterViewDelegate {
             break
         }
     }
-    
+
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectSavedSearchButtonIn section: Int) {
         print("Saved search button selected")
     }
-    
+
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectFooterButtonInSection section: Int) {
-        
+
+    }
+
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, didPullToRefreshUsing refreshControl: UIRefreshControl) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            refreshControl.endRefreshing()
+        }
     }
 }
 

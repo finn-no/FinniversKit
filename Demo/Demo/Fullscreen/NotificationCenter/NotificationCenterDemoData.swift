@@ -30,7 +30,7 @@ struct NotificationCenterSection: NotificationCenterHeaderViewModel {
     let count: Int?
     let searchName: String?
     var items: [NotificationCenterCellType]
-    
+
     var savedSearchButtonModel: SavedSearchHeaderButtonModel? {
         guard let searchName = searchName, let count = count else { return nil }
         let text = "\(count) nye treff "
@@ -169,7 +169,7 @@ extension NotificationCenterDemoView {
             ]
         )
     }
-    
+
     var personalSegment: NotificationCenterSegment {
         NotificationCenterSegment(
             title: "Tips til deg",
@@ -205,6 +205,46 @@ extension NotificationCenterDemoView {
                                 priceText: "3000 kr",
                                 icon: .favorite
                             )
+                        ))
+                    ]
+                )
+            ]
+        )
+    }
+
+    var emptyPersonalNotificationsSegment: NotificationCenterSegment {
+        NotificationCenterSegment(
+            title: "Tips til deg",
+            sections: [
+                NotificationCenterSection(
+                    title: nil,
+                    count: nil,
+                    searchName: nil,
+                    items: [
+                        .emptyCell(EmptyNotificationsCellModel(
+                            kind: .personal,
+                            title: "Velkommen til varslinger!",
+                            body: "Her vil du få varslinger om dine annonser, favoritter og nytt fra FINN."
+                        ))
+                    ]
+                )
+            ]
+        )
+    }
+
+    var emptySavedSearchNotificationsSegment: NotificationCenterSegment {
+        NotificationCenterSegment(
+            title: "Lagrede søk",
+            sections: [
+                NotificationCenterSection(
+                    title: nil,
+                    count: nil,
+                    searchName: nil,
+                    items: [
+                        .emptyCell(EmptyNotificationsCellModel(
+                            kind: .savedSearch,
+                            title: "La oss si ifra om nye annonser!",
+                            body: "Søk etter noe du har lyst på og trykk \"Lagre søk\". Du får varslinger om nye annonser her."
                         ))
                     ]
                 )
