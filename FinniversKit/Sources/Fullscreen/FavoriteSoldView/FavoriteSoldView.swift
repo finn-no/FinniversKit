@@ -72,7 +72,6 @@ public class FavoriteSoldView: UIView {
     private lazy var ribbonView: RibbonView = {
         let view = RibbonView(withAutoLayout: true)
         view.style = .warning
-        view.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return view
     }()
 
@@ -80,7 +79,6 @@ public class FavoriteSoldView: UIView {
         let style: Label.Style = traitCollection.horizontalSizeClass == .compact ? .title3Strong : .title2
         let label = Label(style: style, withAutoLayout: true)
         label.numberOfLines = 0
-        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
     }()
 
@@ -88,7 +86,6 @@ public class FavoriteSoldView: UIView {
         let style: Label.Style = traitCollection.horizontalSizeClass == .compact ? .detail : .body
         let label = Label(style: style, withAutoLayout: true)
         label.numberOfLines = 0
-        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
     }()
 
@@ -155,7 +152,6 @@ public class FavoriteSoldView: UIView {
 
     private func setup() {
         addSubview(adsGridView)
-
         adsGridView.collectionView.addSubview(adsRetryView)
 
         headerView.addSubview(stackView)
@@ -169,6 +165,9 @@ public class FavoriteSoldView: UIView {
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(bodyLabel)
 
+        for subview in stackView.arrangedSubviews {
+            subview.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        }
         let spaceFiller = UIView(withAutoLayout: true)
         spaceFiller.setContentHuggingPriority(.defaultLow, for: .vertical)
         stackView.addArrangedSubview(spaceFiller)
