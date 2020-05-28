@@ -5,9 +5,9 @@
 import Foundation
 
 public protocol FavoriteSoldViewModel {
-    var adTitle: String? { get }
+    var title: String? { get }
     var imageUrl: String? { get }
-    var adBody: String { get }
+    var bodyText: String { get }
     var ribbonTitle: String { get }
     var similarAdsTitle: String { get }
     var retryButtonTitle: String { get }
@@ -89,16 +89,7 @@ public class FavoriteSoldView: UIView {
         return label
     }()
 
-    private lazy var similarAdsTitleLabel: Label = {
-        let label = Label(style: .title3, withAutoLayout: true)
-        return label
-    }()
-
-    private let adsGridView: AdsGridView
-
-    private lazy var headerView = UIView()
-
-    private let fallbackImage = UIImage(named: .noImage)
+    private lazy var similarAdsTitleLabel = Label(style: .title3, withAutoLayout: true)
 
     private lazy var adsRetryView: LoadingRetryView = {
         let view = LoadingRetryView()
@@ -107,19 +98,15 @@ public class FavoriteSoldView: UIView {
         return view
     }()
 
+    private let adsGridView: AdsGridView
+
+    private lazy var headerView = UIView()
+
+    private let fallbackImage = UIImage(named: .noImage)
+
     // MARK: - Init
 
-    public convenience init(delegate: FavoriteSoldViewDelegate & AdsGridViewDelegate,
-                            adsGridViewDataSource: AdsGridViewDataSource,
-                            remoteImageViewDataSource: RemoteImageViewDataSource) {
-        self.init(favoriteSoldViewDelegate: delegate,
-                  adsGridViewDelegate: delegate,
-                  adsGridViewDataSource: adsGridViewDataSource,
-                  remoteImageViewDataSource: remoteImageViewDataSource
-        )
-    }
-
-    init(favoriteSoldViewDelegate: FavoriteSoldViewDelegate,
+    public init(favoriteSoldViewDelegate: FavoriteSoldViewDelegate,
          adsGridViewDelegate: AdsGridViewDelegate,
          adsGridViewDataSource: AdsGridViewDataSource,
          remoteImageViewDataSource: RemoteImageViewDataSource) {
@@ -226,8 +213,8 @@ public class FavoriteSoldView: UIView {
     // MARK: - Private methods
 
     private func configure(with model: FavoriteSoldViewModel) {
-        titleLabel.text = model.adTitle
-        bodyLabel.text = model.adBody
+        titleLabel.text = model.title
+        bodyLabel.text = model.bodyText
         ribbonView.title = model.ribbonTitle
         similarAdsTitleLabel.text = model.similarAdsTitle
         adsRetryView.set(labelText: model.noRecommendationsTitle, buttonText: model.retryButtonTitle)
