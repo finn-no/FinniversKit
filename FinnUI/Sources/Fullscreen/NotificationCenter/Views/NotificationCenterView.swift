@@ -109,7 +109,7 @@ extension NotificationCenterView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let index = tableViews?.firstIndex(of: tableView) else { return 0 }
-       return dataSource?.notificationCenterView(self, segment: index, numberOfRowsInSection: section) ?? 0
+        return dataSource?.notificationCenterView(self, segment: index, numberOfRowsInSection: section) ?? 0
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
