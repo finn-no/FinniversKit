@@ -22,7 +22,7 @@ public class ObjectPagePriceView: UIView {
     }()
 
     private lazy var wrapperStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [pricesStackView, linkButtonListView])
+        let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
         stackView.spacing = .spacingM
         return stackView
@@ -53,18 +53,32 @@ public class ObjectPagePriceView: UIView {
     // MARK: - Public methods
 
     public func configure(with viewModel: ObjectPagePriceViewModel, style: Style = .init()) {
+        wrapperStackView.removeArrangedSubviews()
         pricesStackView.removeArrangedSubviews()
 
-        let mainPriceView = PriceView(viewModel: viewModel.mainPriceModel, style: style, withAutoLayout: true)
-        pricesStackView.addArrangedSubview(mainPriceView)
+        if let adTypeText = viewModel.adTypeText {
+            let adTypeLabel = Label(style: style.adTypeStyle, withAutoLayout: true)
+            adTypeLabel.text = adTypeText
+            wrapperStackView.addArrangedSubview(adTypeLabel)
+            wrapperStackView.setCustomSpacing(.spacingXS, after: adTypeLabel)
+        }
+
+        if let mainPriceModel = viewModel.mainPriceModel {
+            let mainPriceView = PriceView(viewModel: mainPriceModel, style: style, withAutoLayout: true)
+            pricesStackView.addArrangedSubview(mainPriceView)
+        }
 
         if let secondaryPriceModel = viewModel.secondaryPriceModel {
             let secondaryPriceView = PriceView(viewModel: secondaryPriceModel, style: style, withAutoLayout: true)
             pricesStackView.addArrangedSubview(secondaryPriceView)
         }
 
+        wrapperStackView.addArrangedSubviews([pricesStackView, linkButtonListView])
+
         linkButtonListView.configure(with: viewModel.links)
         linkButtonListView.isHidden = viewModel.links.isEmpty
+
+        pricesStackView.isHidden = pricesStackView.arrangedSubviews.isEmpty
     }
 }
 
@@ -131,15 +145,18 @@ public extension ObjectPagePriceView {
         let titleStyle: Label.Style
         let priceStyle: Label.Style
         let subtitleStyle: Label.Style
+        let adTypeStyle: Label.Style
 
         public init(
             titleStyle: Label.Style = .body,
             priceStyle: Label.Style = .title3Strong,
-            subtitleStyle: Label.Style = .caption
+            subtitleStyle: Label.Style = .caption,
+            adTypeStyle: Label.Style = .bodyStrong
         ) {
             self.titleStyle = titleStyle
             self.priceStyle = priceStyle
             self.subtitleStyle = subtitleStyle
+            self.adTypeStyle = adTypeStyle
         }
     }
 }
