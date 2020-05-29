@@ -29,7 +29,7 @@ public class FavoriteSoldView: UIView {
     private static let titleTopSpacing: CGFloat = .spacingS
     private static let bodyTopSpacing: CGFloat = .spacingXS
     private static let similarAdsTitleTopSpacing: CGFloat = .spacingXL + .spacingS
-    private static let adsGridTopSpacing: CGFloat = .spacingM
+    private static let adsGridTopSpacing: CGFloat = .spacingS
     private static let imageCornerRadius: CGFloat = 8.0
     private static let imageWidth: CGFloat = 120
 
@@ -166,6 +166,7 @@ public class FavoriteSoldView: UIView {
             similarAdsTitleLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: FavoriteSoldView.similarAdsTitleTopSpacing),
             similarAdsTitleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: FavoriteSoldView.margins),
             similarAdsTitleLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -FavoriteSoldView.margins),
+            similarAdsTitleLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -FavoriteSoldView.adsGridTopSpacing),
         ])
 
         adsGridView.fillInSuperview()
@@ -174,24 +175,13 @@ public class FavoriteSoldView: UIView {
     }
 
     private func setupFrames() {
-        let stackViewWidth = frame.size.width - FavoriteSoldView.imageWidth - 3 * FavoriteSoldView.margins
-
-        let ribbonHeight: CGFloat = 19
-        let adTitleLabelHeight = titleLabel.sizeThatFits(
-            CGSize(width: stackViewWidth, height: CGFloat.greatestFiniteMagnitude)).height
-        let adBodyLabelHeight = bodyLabel.sizeThatFits(
-            CGSize(width: stackViewWidth, height: CGFloat.greatestFiniteMagnitude)).height
-        let similarAdsTitleHeight = similarAdsTitleLabel.intrinsicContentSize.height
-
-        let adInfoHeight = max(FavoriteSoldView.imageWidth, ribbonHeight +
-            FavoriteSoldView.titleTopSpacing + adTitleLabelHeight +
-            FavoriteSoldView.bodyTopSpacing + adBodyLabelHeight)
-
-        let height = FavoriteSoldView.margins + adInfoHeight +
-            FavoriteSoldView.similarAdsTitleTopSpacing + similarAdsTitleHeight +
-            FavoriteSoldView.adsGridTopSpacing
-
-        headerView.frame.size.height = height
+        let targetSize = CGSize(width: frame.width, height: 0)
+        let size = headerView.systemLayoutSizeFitting(
+            targetSize,
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .defaultLow
+        )
+        headerView.frame.size = size
         boundsForCurrentSubviewSetup = bounds
 
         adsRetryView.frame.origin = CGPoint(x: 0, y: headerView.frame.height + .spacingXXL)
