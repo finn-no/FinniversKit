@@ -15,10 +15,10 @@ public class FavoriteSoldDemoView: UIView {
                                     adsGridViewDelegate: self,
                                     adsGridViewDataSource: self,
                                     remoteImageViewDataSource: self)
-        view.model = FavoriteSoldDefaultData()
+        view.configure(with: FavoriteSoldDefaultData())
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
-    }()
+    }() 
 
     // MARK: - Init
 

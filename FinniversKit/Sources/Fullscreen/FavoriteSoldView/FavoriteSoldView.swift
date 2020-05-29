@@ -20,13 +20,6 @@ public protocol FavoriteSoldViewDelegate: AnyObject {
 }
 
 public class FavoriteSoldView: UIView {
-    public var model: FavoriteSoldViewModel? {
-        didSet {
-            if let model = model {
-                self.configure(with: model)
-            }
-        }
-    }
 
     // MARK: - Private properties
 
@@ -106,10 +99,7 @@ public class FavoriteSoldView: UIView {
 
     // MARK: - Init
 
-    public init(favoriteSoldViewDelegate: FavoriteSoldViewDelegate,
-         adsGridViewDelegate: AdsGridViewDelegate,
-         adsGridViewDataSource: AdsGridViewDataSource,
-         remoteImageViewDataSource: RemoteImageViewDataSource) {
+    public init(favoriteSoldViewDelegate: FavoriteSoldViewDelegate, adsGridViewDelegate: AdsGridViewDelegate, adsGridViewDataSource: AdsGridViewDataSource, remoteImageViewDataSource: RemoteImageViewDataSource) {
 
         adsGridView = AdsGridView(delegate: adsGridViewDelegate, dataSource: adsGridViewDataSource)
         adsGridView.translatesAutoresizingMaskIntoConstraints = false
@@ -210,9 +200,9 @@ public class FavoriteSoldView: UIView {
         adsGridView.invalidateLayout()
     }
 
-    // MARK: - Private methods
+    // MARK: - Public methods
 
-    private func configure(with model: FavoriteSoldViewModel) {
+    public func configure(with model: FavoriteSoldViewModel) {
         titleLabel.text = model.title
         bodyLabel.text = model.bodyText
         ribbonView.title = model.ribbonTitle
@@ -231,6 +221,8 @@ public class FavoriteSoldView: UIView {
 
         setupFrames()
     }
+
+    // MARK: - Private methods
 
     @objc private func soldFavoriteTapped() {
         delegate?.favoriteSoldViewDidTapSoldFavorite(self)
