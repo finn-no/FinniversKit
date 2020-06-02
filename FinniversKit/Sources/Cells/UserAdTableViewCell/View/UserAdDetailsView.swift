@@ -69,12 +69,14 @@ final class UserAdDetailsView: UIView {
     private lazy var defaultConstraints = [
         descriptionStack.topAnchor.constraint(equalTo: ribbonView.bottomAnchor, constant: .spacingXXS),
         descriptionStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+        descriptionStack.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingXL),
         ribbonView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
     ]
 
     private lazy var compressedConstraints = [
         descriptionStack.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
         descriptionStack.trailingAnchor.constraint(equalTo: ribbonView.leadingAnchor, constant: -.spacingS),
+        descriptionStack.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingM),
         ribbonView.centerYAnchor.constraint(equalTo: centerYAnchor),
     ]
 
@@ -106,14 +108,13 @@ final class UserAdDetailsView: UIView {
 
         let constraints = defaultConstraints + [
             descriptionStack.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .spacingM),
-            descriptionStack.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingM),
 
             ribbonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
 
             adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             adImageView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: .spacingS),
             adImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingS),
-            adImageView.centerYAnchor.constraint(equalTo: descriptionStack.centerYAnchor),
+            adImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             adImageHeightConstraint,
             adImageWidthConstraint,
         ]
