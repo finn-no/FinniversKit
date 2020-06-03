@@ -2,6 +2,8 @@
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
 
+import FinniversKit
+
 public protocol SaveSearchViewModel {
     var searchTitle: String? { get }
     var searchPlaceholderText: String { get }

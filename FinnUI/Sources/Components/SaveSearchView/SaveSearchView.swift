@@ -2,7 +2,7 @@
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
 
-import UIKit
+import FinniversKit
 
 public protocol SaveSearchViewDelegate: AnyObject {
     func saveSearchViewTextFieldWillReturn(_ saveSearchView: SaveSearchView)
@@ -88,7 +88,6 @@ public class SaveSearchView: UIView {
         button.isHidden = true
         return button
     }()
-
 
     // MARK: - Initializers
 
