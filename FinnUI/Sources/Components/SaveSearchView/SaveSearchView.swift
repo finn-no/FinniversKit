@@ -9,6 +9,7 @@ public protocol SaveSearchViewDelegate: AnyObject {
     func saveSearchView(_ saveSearchView: SaveSearchView, didUpdateIsNotificationCenterOn: Bool)
     func saveSearchView(_ saveSearchView: SaveSearchView, didUpdateIsPushOn: Bool)
     func saveSearchView(_ saveSearchView: SaveSearchView, didUpdateIsEmailOn: Bool)
+    func saveSearchViewDidSelectEditSearchNameButton(_ saveSearchView: SaveSearchView)
     func saveSearchViewDidSelectDeleteSearchButton(_ saveSearchView: SaveSearchView)
 }
 
@@ -74,7 +75,7 @@ public class SaveSearchView: UIView {
 
     private lazy var editSearchNameButton: Button = {
         let button = Button(style: .flat, size: .small, withAutoLayout: true)
-        button.addTarget(self, action: #selector(editSearchNameButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleEditSearchNameButtonTap), for: .touchUpInside)
         return button
     }()
 
@@ -212,7 +213,8 @@ public class SaveSearchView: UIView {
         delegate?.saveSearchViewDidSelectDeleteSearchButton(self)
     }
 
-    @objc private func editSearchNameButtonTapped() {
+    @objc private func handleEditSearchNameButtonTap() {
+        delegate?.saveSearchViewDidSelectEditSearchNameButton(self)
     }
 }
 
