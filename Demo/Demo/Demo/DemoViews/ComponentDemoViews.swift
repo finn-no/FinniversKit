@@ -159,7 +159,13 @@ public enum ComponentDemoViews: String, CaseIterable {
         case .tweakable:
             return DemoViewController<TweakableDemoView>()
         case .saveSearchView:
-            return DemoViewController<SaveSearchViewDemoView>()
+            let demoViewController = DemoViewController<SaveSearchViewDemoView>()
+            demoViewController.title = "SaveSearchView"
+
+            let navigationController = UINavigationController(rootViewController: demoViewController)
+            navigationController.navigationBar.isTranslucent = false
+
+            return BottomSheet(rootViewController: navigationController, draggableArea: .navigationBar)
         case .saveSearchPromptView:
             return DemoViewController<SaveSearchPromptViewDemoView>()
         case .searchListEmptyView:
