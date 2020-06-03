@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import FinnUI
 
 class SaveSearchViewDemoView: UIView, Tweakable {
     lazy var tweakingOptions: [TweakingOption] = [
