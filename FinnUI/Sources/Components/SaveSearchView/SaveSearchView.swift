@@ -57,6 +57,25 @@ public class SaveSearchView: UIView {
         detailLabelTextColor: .textPrimary
     )
 
+    private lazy var iconImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.image = UIImage(named: .emptySavedSearchNotificationsIcon)
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+
+    private lazy var searchNameLabel: Label = {
+        let label = Label(style: .title3Strong, withAutoLayout: true)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
+
+    private lazy var editSearchNameButton: Button = {
+        let button = Button(style: .flat, size: .small, withAutoLayout: true)
+        button.addTarget(self, action: #selector(editSearchNameButtonTapped), for: .touchUpInside)
+        return button
     }()
 
     private lazy var stackView: UIStackView = {
@@ -199,6 +218,7 @@ public class SaveSearchView: UIView {
         delegate?.saveSearchViewDidSelectDeleteSearchButton(self)
     }
 
+    @objc private func editSearchNameButtonTapped() {
     }
 }
 
