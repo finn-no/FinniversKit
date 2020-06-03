@@ -28,7 +28,6 @@ class SaveSearchViewDemoView: UIView, Tweakable {
         addSubview(saveSearchView)
         saveSearchView.fillInSuperview()
         tweakingOptions.first?.action?()
-        saveSearchView.becomeFirstResponder()
     }
 }
 
@@ -62,7 +61,8 @@ private extension SwitchViewDefaultModel {
 
 private struct SampleSaveSearchViewModel: SaveSearchViewModel {
     let searchTitle: String? = nil
-    let searchPlaceholderText = "Navn på søk"
+    let emptyTitlePlaceholder = "Navn på søk"
+    let editNameButtonTitle = "Endre navn på søket"
     let deleteSearchButtonTitle: String? = nil
 
     let notificationCenterSwitchViewModel = SwitchViewDefaultModel.notificationCenterViewModel(isOn: true)
@@ -72,7 +72,8 @@ private struct SampleSaveSearchViewModel: SaveSearchViewModel {
 
 private struct SampleExistinSavedSearchViewModel: SaveSearchViewModel {
     let searchTitle: String? = "Båtmotor, Torget, 1000-12000"
-    let searchPlaceholderText = "Navn på søk"
+    let emptyTitlePlaceholder = "Navn på søk"
+    let editNameButtonTitle = "Endre navn på søket"
     let deleteSearchButtonTitle: String? = "Slett lagret søk"
 
     let notificationCenterSwitchViewModel = SwitchViewDefaultModel.notificationCenterViewModel(isOn: true)
