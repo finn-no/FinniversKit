@@ -7,6 +7,8 @@ import FinniversKit
 public protocol SaveSearchViewModel {
     var searchTitle: String? { get }
     var searchPlaceholderText: String { get }
+    var emptyTitlePlaceholder: String { get }
+    var editNameButtonTitle: String { get }
     var deleteSearchButtonTitle: String? { get }
 
     var notificationCenterSwitchViewModel: SwitchViewModel { get }
