@@ -159,6 +159,9 @@ public class SaveSearchView: UIView {
         addSubview(scrollView)
         scrollView.fillInSuperview()
 
+        contentView.addSubview(iconImageView)
+        contentView.addSubview(searchNameLabel)
+        contentView.addSubview(editSearchNameButton)
         contentView.addSubview(stackView)
         contentView.addSubview(deleteSavedSearchButton)
 
@@ -177,7 +180,20 @@ public class SaveSearchView: UIView {
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: widthAnchor),
 
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
+            iconImageView.heightAnchor.constraint(equalToConstant: 48),
+            iconImageView.widthAnchor.constraint(equalToConstant: 48),
+            iconImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
+
+            searchNameLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: .spacingM),
+            searchNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            searchNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+
+            editSearchNameButton.topAnchor.constraint(equalTo: searchNameLabel.bottomAnchor, constant: .spacingXS),
+            editSearchNameButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            editSearchNameButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+
+            stackView.topAnchor.constraint(equalTo: editSearchNameButton.bottomAnchor, constant: .spacingM),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
