@@ -120,7 +120,7 @@ public class SaveSearchView: UIView {
             searchNameLabel.text = searchName
             searchNameLabel.textColor = .textPrimary
         } else {
-            searchNameLabel.text = viewModel.searchPlaceholderText
+            searchNameLabel.text = viewModel.emptyTitlePlaceholder
             searchNameLabel.textColor = .textSecondary
         }
 
