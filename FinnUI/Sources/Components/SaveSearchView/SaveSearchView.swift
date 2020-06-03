@@ -109,10 +109,6 @@ public class SaveSearchView: UIView {
         setup()
     }
 
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-
     // MARK: - Public methods
 
     public func configure(with viewModel: SaveSearchViewModel) {
@@ -202,14 +198,6 @@ public class SaveSearchView: UIView {
             deleteSavedSearchButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
             deleteSavedSearchButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
-
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(
-            self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil
-        )
-        notificationCenter.addObserver(
-            self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil
-        )
     }
 
     private func createSwitchView() -> SwitchView {
@@ -219,25 +207,6 @@ public class SaveSearchView: UIView {
     }
 
     // MARK: - Actions
-
-    @objc private func adjustForKeyboard(notification: Notification) {
-        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-
-        let keyboardScreenEndFrame = keyboardValue.cgRectValue
-        let keyboardViewEndFrame = scrollView.convert(keyboardScreenEndFrame, from: window)
-
-        let contentSize = contentView.frame.size
-        if notification.name == UIResponder.keyboardWillHideNotification {
-            scrollView.contentSize = contentSize
-        } else {
-            scrollView.contentSize = CGSize(
-                width: contentSize.width,
-                height: contentSize.height + keyboardViewEndFrame.height
-            )
-        }
-
-        scrollView.scrollIndicatorInsets = scrollView.contentInset
-    }
 
     @objc private func handleDeleteButtonTap() {
         delegate?.saveSearchViewDidSelectDeleteSearchButton(self)
