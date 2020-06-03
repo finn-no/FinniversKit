@@ -13,6 +13,7 @@ public protocol SaveSearchViewDelegate: AnyObject {
 }
 
 public class SaveSearchView: UIView {
+
     // MARK: - Public properties
 
     public weak var delegate: SaveSearchViewDelegate?
@@ -41,14 +42,8 @@ public class SaveSearchView: UIView {
         }
     }
 
-    public var searchNameText: String? {
-        get { searchNameTextField.text }
-        set { searchNameTextField.textField.text = newValue }
-    }
-
     // MARK: - Private properties
 
-    private lazy var searchNameContainer: UIView = UIView(withAutoLayout: true)
     private lazy var contentView = UIView(withAutoLayout: true)
     private lazy var notificationCenterSwitchView = createSwitchView()
     private lazy var pushSwitchView = createSwitchView()
@@ -62,12 +57,6 @@ public class SaveSearchView: UIView {
         detailLabelTextColor: .textPrimary
     )
 
-    private lazy var searchNameTextField: TextField = {
-        let textField = TextField(inputType: .normal)
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.textField.returnKeyType = .go
-        textField.delegate = self
-        return textField
     }()
 
     private lazy var stackView: UIStackView = {
@@ -108,8 +97,6 @@ public class SaveSearchView: UIView {
     // MARK: - Public methods
 
     public func configure(with viewModel: SaveSearchViewModel) {
-        searchNameTextField.textField.text = viewModel.searchTitle
-        searchNameTextField.placeholderText = viewModel.searchPlaceholderText
 
         notificationCenterSwitchView.configure(with: viewModel.notificationCenterSwitchViewModel)
         pushSwitchView.configure(with: viewModel.pushSwitchViewModel)
@@ -135,14 +122,6 @@ public class SaveSearchView: UIView {
         emailSwitchView.setOn(isOn, animated: animated)
     }
 
-    @discardableResult public override func becomeFirstResponder() -> Bool {
-        searchNameTextField.textField.becomeFirstResponder()
-    }
-
-    @discardableResult public override func resignFirstResponder() -> Bool {
-        searchNameTextField.textField.resignFirstResponder()
-    }
-
     // MARK: - Private methods
 
     private func setup() {
@@ -152,9 +131,6 @@ public class SaveSearchView: UIView {
         addSubview(scrollView)
         scrollView.fillInSuperview()
 
-        searchNameContainer.addSubview(searchNameTextField)
-
-        contentView.addSubview(searchNameContainer)
         contentView.addSubview(stackView)
         contentView.addSubview(deleteSavedSearchButton)
 
@@ -173,16 +149,7 @@ public class SaveSearchView: UIView {
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: widthAnchor),
 
-            searchNameContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
-            searchNameContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            searchNameContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            searchNameContainer.heightAnchor.constraint(equalToConstant: 65.0),
-
-            searchNameTextField.leadingAnchor.constraint(equalTo: searchNameContainer.leadingAnchor, constant: .spacingM),
-            searchNameTextField.trailingAnchor.constraint(equalTo: searchNameContainer.trailingAnchor, constant: -.spacingM),
-            searchNameTextField.centerYAnchor.constraint(equalTo: searchNameContainer.centerYAnchor),
-
-            stackView.topAnchor.constraint(equalTo: searchNameTextField.bottomAnchor, constant: .spacingM),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
@@ -231,14 +198,7 @@ public class SaveSearchView: UIView {
     @objc private func handleDeleteButtonTap() {
         delegate?.saveSearchViewDidSelectDeleteSearchButton(self)
     }
-}
 
-// MARK: - TextFieldDelegate
-
-extension SaveSearchView: TextFieldDelegate {
-    public func textFieldShouldReturn(_ textField: TextField) -> Bool {
-        delegate?.saveSearchViewTextFieldWillReturn(self)
-        return true
     }
 }
 
