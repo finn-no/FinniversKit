@@ -128,6 +128,10 @@ public class SaveSearchView: UIView {
         }
     }
 
+    public func configure(searchName: String?) {
+        searchNameLabel.text = searchName
+    }
+
     public func setNotificationCenterOn(_ isOn: Bool, animated: Bool) {
         notificationCenterSwitchView.setOn(isOn, animated: animated)
     }
