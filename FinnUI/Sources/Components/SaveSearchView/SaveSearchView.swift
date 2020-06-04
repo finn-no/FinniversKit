@@ -113,14 +113,7 @@ public class SaveSearchView: UIView {
     // MARK: - Public methods
 
     public func configure(with viewModel: SaveSearchViewModel) {
-        if let searchName = viewModel.searchTitle {
-            searchNameLabel.text = searchName
-            searchNameLabel.textColor = .textPrimary
-        } else {
-            searchNameLabel.text = viewModel.emptyTitlePlaceholder
-            searchNameLabel.textColor = .textSecondary
-        }
-
+        searchNameLabel.text = viewModel.searchTitle
         editSearchNameButton.setTitle(viewModel.editNameButtonTitle, for: .normal)
 
         notificationCenterSwitchView.configure(with: viewModel.notificationCenterSwitchViewModel)

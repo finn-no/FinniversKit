@@ -61,7 +61,6 @@ private extension SwitchViewDefaultModel {
 
 private struct SampleSaveSearchViewModel: SaveSearchViewModel {
     let searchTitle: String? = nil
-    let emptyTitlePlaceholder = "Navn på søk"
     let editNameButtonTitle = "Endre navn på søket"
     let deleteSearchButtonTitle: String? = nil
 
@@ -72,7 +71,6 @@ private struct SampleSaveSearchViewModel: SaveSearchViewModel {
 
 private struct SampleExistinSavedSearchViewModel: SaveSearchViewModel {
     let searchTitle: String? = "Båtmotor, Torget, 1000-12000"
-    let emptyTitlePlaceholder = "Navn på søk"
     let editNameButtonTitle = "Endre navn på søket"
     let deleteSearchButtonTitle: String? = "Slett lagret søk"
 
