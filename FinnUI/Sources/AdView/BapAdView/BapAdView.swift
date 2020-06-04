@@ -99,7 +99,7 @@ extension BapAdView {
             .buttonStyle(CallToAction())
     }
 
-    private var phoneNumber: PhoneNumberView? {
+    private var phoneNumber: some View {
         viewModel.phoneNumber.map {
             PhoneNumberView(viewModel: $0, contact: self.presentContactOptions)
         }
