@@ -8,7 +8,7 @@ import FinnUI
 class SaveSearchViewDemoView: UIView, Tweakable {
     lazy var tweakingOptions: [TweakingOption] = [
         TweakingOption(title: "Creating a new search") { self.saveSearchView.configure(with: SampleSaveSearchViewModel()) },
-        TweakingOption(title: "Editing an existing search") { self.saveSearchView.configure(with: SampleExistinSavedSearchViewModel()) }
+        TweakingOption(title: "Editing an existing search") { self.saveSearchView.configure(with: SampleExistingSavedSearchViewModel()) },
     ]
 
     private lazy var saveSearchView = SaveSearchView(withAutoLayout: true)
@@ -60,7 +60,7 @@ private extension SwitchViewDefaultModel {
 }
 
 private struct SampleSaveSearchViewModel: SaveSearchViewModel {
-    let searchTitle: String? = nil
+    let searchTitle: String? = "Grå sofa, Oslo"
     let editNameButtonTitle = "Endre navn på søket"
     let deleteSearchButtonTitle: String? = nil
 
@@ -69,7 +69,7 @@ private struct SampleSaveSearchViewModel: SaveSearchViewModel {
     let emailSwitchViewModel = SwitchViewDefaultModel.emailViewModel(isOn: true)
 }
 
-private struct SampleExistinSavedSearchViewModel: SaveSearchViewModel {
+private struct SampleExistingSavedSearchViewModel: SaveSearchViewModel {
     let searchTitle: String? = "Båtmotor, Torget, 1000-12000"
     let editNameButtonTitle = "Endre navn på søket"
     let deleteSearchButtonTitle: String? = "Slett lagret søk"
