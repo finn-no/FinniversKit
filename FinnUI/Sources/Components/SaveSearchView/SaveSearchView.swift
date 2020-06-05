@@ -112,14 +112,17 @@ public class SaveSearchView: UIView {
 
     public func setNotificationCenterOn(_ isOn: Bool, animated: Bool) {
         notificationCenterSwitchView.setOn(isOn, animated: animated)
+        delegate?.saveSearchView(self, didUpdateIsNotificationCenterOn: isOn)
     }
 
     public func setPushOn(_ isOn: Bool, animated: Bool) {
         pushSwitchView.setOn(isOn, animated: animated)
+        delegate?.saveSearchView(self, didUpdateIsPushOn: isOn)
     }
 
     public func setEmailOn(_ isOn: Bool, animated: Bool) {
         emailSwitchView.setOn(isOn, animated: animated)
+        delegate?.saveSearchView(self, didUpdateIsEmailOn: isOn)
     }
 
     // MARK: - Private methods
