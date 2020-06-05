@@ -2,10 +2,10 @@ import Foundation
 
 public protocol SearchResultsViewDataSource: AnyObject {
     func numberOfSegments(in view: SearchResultsView) -> Int
-    func searchResultsView(_ view: SearchResultsView, titleForSegment: Int) -> String
-    func searchResultsView(_ view: SearchResultsView, iconForSegment: Int) -> UIImage
-    func searchResultsView(_ view: SearchResultsView, numberOfRowsInSegment: Int) -> Int
-    func searchResultsView(_ view: SearchResultsView, segment: Int, textForRow: Int) -> String
+    func searchResultsView(_ view: SearchResultsView, titleForSegment segment: Int) -> String
+    func searchResultsView(_ view: SearchResultsView, iconForSegment segment: Int) -> UIImage
+    func searchResultsView(_ view: SearchResultsView, numberOfRowsInSegment segment: Int) -> Int
+    func searchResultsView(_ view: SearchResultsView, segment: Int, textForRow row: Int) -> String
 }
 
 public class SearchResultsView: UIView {
@@ -32,7 +32,8 @@ public class SearchResultsView: UIView {
 
     private lazy var containerView = UIView(withAutoLayout: true)
 
-    private let segments = [SearchResultsListView]()
+    private var segmentViews = [SearchResultsListView]()
+    private var segmentTitles: [String]?
 
     private lazy var recentSearchesList: SearchResultsListView = {
         let view = SearchResultsListView(title: "Siste søk")
@@ -56,6 +57,14 @@ public class SearchResultsView: UIView {
         setup()
     }
 
+    // MARK: - Public methods
+
+    public func reloadData() {
+        if segmentViews.isEmpty {
+            setupSegmentedControl()
+        }
+    }
+
     private func setup() {
         addSubview(segmentedControl)
         addSubview(separatorLine)
@@ -76,6 +85,43 @@ public class SearchResultsView: UIView {
             containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .spacingM),
             containerView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+
+    func setupSegmentedControl() {
+        guard let dataSource = dataSource else {
+            return
+        }
+
+        segmentTitles = []
+
+        var insertAnchor = containerView.leadingAnchor
+
+        for segment in 0 ..< dataSource.numberOfSegments(in: self) {
+            let title = dataSource.searchResultsView(self, titleForSegment: segment)
+            segmentedControl.insertSegment(withTitle: title, at: segment, animated: false)
+            segmentTitles?.append(title)
+
+            let view = SearchResultsListView(title: "xx")
+            view.translatesAutoresizingMaskIntoConstraints = false
+            segmentViews.append(view)
+            containerView.addSubview(view)
+            view.backgroundColor = segment == 0 ? .red : .blue
+
+            NSLayoutConstraint.activate([
+                view.leadingAnchor.constraint(equalTo: insertAnchor),
+                view.topAnchor.constraint(equalTo: containerView.topAnchor),
+                view.widthAnchor.constraint(equalTo: widthAnchor),
+                view.heightAnchor.constraint(equalTo: containerView.heightAnchor),
+                view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            ])
+
+            insertAnchor = view.trailingAnchor
+        }
+
+        containerView.trailingAnchor.constraint(equalTo: insertAnchor).isActive = true
+        segmentedControl.selectedSegmentIndex = selectedSegment
+
+        containerView.layoutIfNeeded()
     }
 
     @objc func handleSegmentChange() {
