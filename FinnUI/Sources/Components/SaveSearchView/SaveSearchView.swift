@@ -5,7 +5,6 @@
 import FinniversKit
 
 public protocol SaveSearchViewDelegate: AnyObject {
-    func saveSearchViewTextFieldWillReturn(_ saveSearchView: SaveSearchView)
     func saveSearchView(_ saveSearchView: SaveSearchView, didUpdateIsNotificationCenterOn: Bool)
     func saveSearchView(_ saveSearchView: SaveSearchView, didUpdateIsPushOn: Bool)
     func saveSearchView(_ saveSearchView: SaveSearchView, didUpdateIsEmailOn: Bool)
