@@ -39,7 +39,7 @@ public final class SplashView: UIView {
         }
     }()
 
-    private lazy var logoContainer: UIView = UIView(withAutoLayout: true)
+    private lazy var logoContainer = UIView(withAutoLayout: true)
 
     private lazy var footerView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
