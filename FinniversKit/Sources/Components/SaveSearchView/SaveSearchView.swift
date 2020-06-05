@@ -89,7 +89,6 @@ public class SaveSearchView: UIView {
         return button
     }()
 
-
     // MARK: - Initializers
 
     public override init(frame: CGRect) {
