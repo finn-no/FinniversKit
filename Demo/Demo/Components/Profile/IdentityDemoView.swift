@@ -83,10 +83,11 @@ class IdentityDemoView: UIView, Tweakable {
     private func setup() {
         let viewModels = [
             ViewModel(description: "Er bare på FINN når jeg ikke finner det jeg vil ha på Letgo. Så jeg er her mye.\n\n#🔥", isTappable: true, isVerified: true),
+            ViewModel(description: "Hei på deg!", isTappable: false, isVerified: true),
             ViewModel(description: nil, isTappable: true, isVerified: false),
-            ViewModel(description: nil, isTappable: false, isVerified: true),
             ViewModel(description: "Hei sveis!", isTappable: false, isVerified: false),
-            ViewModel(description: nil, isTappable: false, isVerified: true, displayMode: .offline),
+            ViewModel(description: "Jeg skal være usynlig", isTappable: false, isVerified: true, displayMode: .offline),
+            ViewModel(description: "Jeg er usynlig", isTappable: false, isVerified: true, displayMode: .anonymous),
         ]
 
         identityViews = viewModels.map { model in
