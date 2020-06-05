@@ -17,30 +17,9 @@ public class SaveSearchView: UIView {
     // MARK: - Public properties
 
     public weak var delegate: SaveSearchViewDelegate?
-
-    public var isNotificationCenterOn: Bool {
-        get { notificationCenterSwitchView.isOn }
-        set {
-            notificationCenterSwitchView.isOn = newValue
-            delegate?.saveSearchView(self, didUpdateIsNotificationCenterOn: newValue)
-        }
-    }
-
-    public var isPushOn: Bool {
-        get { pushSwitchView.isOn }
-        set {
-            pushSwitchView.isOn = newValue
-            delegate?.saveSearchView(self, didUpdateIsPushOn: newValue)
-        }
-    }
-
-    public var isEmailOn: Bool {
-        get { emailSwitchView.isOn }
-        set {
-            emailSwitchView.isOn = newValue
-            delegate?.saveSearchView(self, didUpdateIsEmailOn: newValue)
-        }
-    }
+    public var isNotificationCenterOn: Bool { notificationCenterSwitchView.isOn }
+    public var isPushOn: Bool { pushSwitchView.isOn }
+    public var isEmailOn: Bool { emailSwitchView.isOn }
 
     // MARK: - Private properties
 
