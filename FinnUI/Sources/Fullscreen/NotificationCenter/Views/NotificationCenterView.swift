@@ -49,8 +49,19 @@ final public class NotificationCenterView: UIView {
         return view
     }()
 
-    private var segmentContainers: [SegmentContainer]?
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView(withAutoLayout: true)
+        scrollView.isPagingEnabled = true
+        scrollView.clipsToBounds = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.delegate = self
+        return scrollView
+    }()
+
+    private var segmentTitles: [String]?
+    private var tableViews: [UITableView]?
     private var reloadOnEndDragging = false
+    private let segmentSpacing: CGFloat = .spacingS
 
     // MARK: - Init
 
@@ -67,42 +78,46 @@ final public class NotificationCenterView: UIView {
 // MARK: - Public Methods
 public extension NotificationCenterView {
     func reloadData() {
-        if let segmentContainers = segmentContainers {
-            segmentContainers.forEach { $0.tableView.reloadData() }
+        if let tableViews = tableViews {
+            tableViews.forEach { $0.reloadData() }
         } else {
             setupSegmentedControl()
         }
     }
 
     func reloadRows(at indexPaths: [IndexPath], inSegment segment: Int) {
-        guard let segmentContainers = segmentContainers, segmentContainers.indices ~= segment else { return }
-        segmentContainers[segment].tableView.reloadRows(at: indexPaths, with: .automatic)
+        guard let tableViews = tableViews, tableViews.indices ~= segment else { return }
+        tableViews[segment].reloadRows(at: indexPaths, with: .automatic)
     }
 
     func indexPathForSelectedRow(inSegment segment: Int) -> IndexPath? {
-        guard let segmentContainers = segmentContainers, segmentContainers.indices ~= segment else { return nil }
-        return segmentContainers[segment].tableView.indexPathForSelectedRow
+        guard let tableViews = tableViews, tableViews.indices ~= segment else { return nil }
+        return tableViews[segment].indexPathForSelectedRow
     }
 
     func resetContentOffset() {
-        segmentContainers?[selectedSegment].tableView.setContentOffset(CGPoint(x: 0, y: -.spacingM), animated: true)
+        tableViews?[selectedSegment].setContentOffset(CGPoint(x: 0, y: -.spacingM), animated: true)
     }
 }
 
 // MARK: - UITableViewDataSource
 extension NotificationCenterView: UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
-        dataSource?.notificationCenterView(self, numberOfSectionsInSegment: selectedSegment) ?? 0
+        guard let index = tableViews?.firstIndex(of: tableView) else { return 0 }
+        return dataSource?.notificationCenterView(self, numberOfSectionsInSegment: index) ?? 0
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        dataSource?.notificationCenterView(self, segment: selectedSegment, numberOfRowsInSection: section) ?? 0
+        guard let index = tableViews?.firstIndex(of: tableView) else { return 0 }
+        return dataSource?.notificationCenterView(self, segment: index, numberOfRowsInSection: section) ?? 0
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellType = dataSource?.notificationCenterView(self, segment: selectedSegment, modelForCellAt: indexPath)
-        let timestamp = dataSource?.notificationCenterView(self, segment: selectedSegment, timestampForCellAt: indexPath)
-        let overflow = dataSource?.notificationCenterView(self, segment: selectedSegment, overflowInSection: indexPath.section) ?? false
+        guard let index = tableViews?.firstIndex(of: tableView) else { fatalError("Missing tableView") }
+
+        let cellType = dataSource?.notificationCenterView(self, segment: index, modelForCellAt: indexPath)
+        let timestamp = dataSource?.notificationCenterView(self, segment: index, timestampForCellAt: indexPath)
+        let overflow = dataSource?.notificationCenterView(self, segment: index, overflowInSection: indexPath.section) ?? false
         let isLast = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
 
         switch cellType {
@@ -134,7 +149,8 @@ extension NotificationCenterView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard
-            let headerViewModel = dataSource?.notificationCenterView(self, segment: selectedSegment, modelForHeaderInSection: section),
+            let index = tableViews?.firstIndex(of: tableView),
+            let headerViewModel = dataSource?.notificationCenterView(self, segment: index, modelForHeaderInSection: section),
             headerViewModel.title != nil || headerViewModel.savedSearchButtonModel != nil
         else { return nil }
 
@@ -145,21 +161,34 @@ extension NotificationCenterView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard dataSource?.notificationCenterView(self, segment: selectedSegment, overflowInSection: section) == true else {
-            return nil
-        }
+        guard
+            let index = tableViews?.firstIndex(of: tableView),
+            dataSource?.notificationCenterView(self, segment: index, overflowInSection: section) == true
+        else { return nil }
 
-        let title = dataSource?.notificationCenterView(self, segment: selectedSegment, titleForFooterInSection: section)
+        let title = dataSource?.notificationCenterView(self, segment: index, titleForFooterInSection: section)
         let footerView = tableView.dequeue(NotificationCenterFooterView.self)
         footerView.delegate = self
         footerView.configure(with: title, inSection: section)
         return footerView
     }
+}
+
+extension NotificationCenterView: UIScrollViewDelegate {
+    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        guard scrollView == self.scrollView else { return }
+        selectedSegment = Int(targetContentOffset.pointee.x / scrollView.bounds.width)
+    }
 
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        guard reloadOnEndDragging, let refreshControl = scrollView.refreshControl else { return }
-        reloadOnEndDragging = false
-        delegate?.notificationCenterView(self, segment: selectedSegment, didPullToRefreshUsing: refreshControl)
+       guard
+            scrollView != self.scrollView,
+            reloadOnEndDragging,
+            let refreshControl = scrollView.refreshControl
+       else { return }
+
+       reloadOnEndDragging = false
+       delegate?.notificationCenterView(self, segment: selectedSegment, didPullToRefreshUsing: refreshControl)
     }
 }
 
@@ -182,6 +211,7 @@ private extension NotificationCenterView {
     func setup() {
         addSubview(segmentedControl)
         addSubview(separatorLine)
+        addSubview(scrollView)
 
         NSLayoutConstraint.activate([
             segmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
@@ -191,7 +221,12 @@ private extension NotificationCenterView {
             separatorLine.leadingAnchor.constraint(equalTo: leadingAnchor),
             separatorLine.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: .spacingM),
             separatorLine.trailingAnchor.constraint(equalTo: trailingAnchor),
-            separatorLine.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale)
+            separatorLine.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
+
+            scrollView.topAnchor.constraint(equalTo: separatorLine.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: segmentSpacing),
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 
@@ -204,101 +239,54 @@ private extension NotificationCenterView {
             return
         }
 
-        segmentContainers = []
+        segmentTitles = []
+        tableViews = []
+
+        var spacings: [CGFloat] = [0, segmentSpacing].reversed()
+        var insertAnchor = scrollView.leadingAnchor
 
         for segment in 0 ..< dataSource.numberOfSegments(in: self) {
             let title = dataSource.notificationCenterView(self, titleInSegment: segment)
-            let tableView = UITableView.createNotificationCenterTableView()
+            segmentedControl.insertSegment(withTitle: title, at: segment, animated: false)
+            segmentTitles?.append(title)
+
             let refreshControl = UIRefreshControl(frame: .zero)
             refreshControl.addTarget(self, action: #selector(handleRefreshBegan), for: .valueChanged)
+
+            let tableView = UITableView.createNotificationCenterTableView()
             tableView.refreshControl = refreshControl
             tableView.dataSource = self
             tableView.delegate = self
 
-            let container = SegmentContainer(
-                title: title,
-                tableView: tableView,
-                leadingConstraint: tableView.leadingAnchor.constraint(equalTo: leadingAnchor)
-            )
+            tableViews?.append(tableView)
+            scrollView.addSubview(tableView)
 
-            segmentContainers?.append(container)
-            segmentedControl.insertSegment(withTitle: title, at: segment, animated: false)
+            NSLayoutConstraint.activate([
+                tableView.leadingAnchor.constraint(equalTo: insertAnchor, constant: spacings.popLast() ?? 0),
+                tableView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+                tableView.widthAnchor.constraint(equalTo: widthAnchor),
+                tableView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
+                tableView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            ])
+
+            insertAnchor = tableView.trailingAnchor
         }
 
+        scrollView.trailingAnchor.constraint(equalTo: insertAnchor, constant: segmentSpacing).isActive = true
         segmentedControl.selectedSegmentIndex = selectedSegment
-        transitionBetweenSegments(from: nil, to: selectedSegment, animated: false)
+
+        scrollView.layoutIfNeeded()
+        scrollToTableView(atIndex: selectedSegment, animated: false)
     }
 
     @objc func handleSegmentChange() {
-        let previousSegmentIndex = selectedSegment
         selectedSegment = segmentedControl.selectedSegmentIndex
-        transitionBetweenSegments(from: previousSegmentIndex, to: segmentedControl.selectedSegmentIndex)
+        scrollToTableView(atIndex: selectedSegment, animated: true)
     }
 
-    func transitionBetweenSegments(from: Int?, to: Int, animated: Bool = true) {
-        guard let segmentContainers = segmentContainers else { return }
-
-        let offset: CGFloat
-        let currentSegmentContainer: SegmentContainer?
-
-        if let from = from {
-            let deltaIndex = CGFloat(to - from)
-            offset = deltaIndex / abs(deltaIndex) * 64
-            currentSegmentContainer = segmentContainers[from]
-            currentSegmentContainer?.tableView.stopScrolling()
-        } else {
-            offset = 0
-            currentSegmentContainer = nil
-        }
-
-        let nextSegmentContainer = segmentContainers[to]
-        nextSegmentContainer.tableView.reloadData()
-        nextSegmentContainer.tableView.alpha = 0
-        nextSegmentContainer.leadingConstraint.constant = offset
-        addSubview(nextSegmentContainer.tableView)
-
-        NSLayoutConstraint.activate([
-            nextSegmentContainer.leadingConstraint,
-            nextSegmentContainer.tableView.topAnchor.constraint(equalTo: separatorLine.bottomAnchor),
-            nextSegmentContainer.tableView.widthAnchor.constraint(equalTo: widthAnchor),
-            nextSegmentContainer.tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
-
-        layoutIfNeeded()
-
-        nextSegmentContainer.leadingConstraint.constant = 0
-        currentSegmentContainer?.leadingConstraint.constant = -offset
-
-        UIViewPropertyAnimator.runningPropertyAnimator(
-            withDuration: animated ? 0.15 : 0,
-            delay: 0,
-            options: .curveEaseInOut,
-            animations: {
-                currentSegmentContainer?.tableView.alpha = 0
-                nextSegmentContainer.tableView.alpha = 1
-                self.layoutIfNeeded()
-            },
-            completion: { _ in
-                currentSegmentContainer?.tableView.removeFromSuperview()
-            }
-        )
-    }
-}
-
-// MARK: - Private class
-private class SegmentContainer {
-    let title: String
-    let tableView: UITableView
-    let leadingConstraint: NSLayoutConstraint
-
-    init(
-        title: String,
-        tableView: UITableView,
-        leadingConstraint: NSLayoutConstraint
-    ) {
-        self.title = title
-        self.tableView = tableView
-        self.leadingConstraint = leadingConstraint
+    func scrollToTableView(atIndex index: Int, animated: Bool) {
+        guard let tableView = tableViews?[index] else { return }
+        scrollView.setContentOffset(tableView.frame.origin, animated: animated)
     }
 }
 
