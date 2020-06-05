@@ -87,7 +87,7 @@ class IdentityDemoView: UIView, Tweakable {
             ViewModel(description: nil, isTappable: true, isVerified: false),
             ViewModel(description: "Hei sveis!", isTappable: false, isVerified: false),
             ViewModel(description: "Jeg skal være usynlig", isTappable: false, isVerified: true, displayMode: .offline),
-            ViewModel(description: "Jeg er usynlig", isTappable: false, isVerified: true, displayMode: .anonymous),
+            ViewModel(displayName: "FINN-Bruker", description: "Jeg er usynlig", isTappable: false, isVerified: true, displayMode: .anonymous),
         ]
 
         identityViews = viewModels.map { model in
@@ -151,7 +151,7 @@ private class ViewModel: IdentityViewModel {
     let offlineDescription: String? = "Du må være logget inn for å se profilen."
     let offlineButtonTitle: String? = "Logg inn"
 
-    init(description: String?, isTappable: Bool, isVerified: Bool, displayMode: IdentityView.DisplayMode = .interactible) {
+    init(displayName: String = "Finn Nordmann", description: String?, isTappable: Bool, isVerified: Bool, displayMode: IdentityView.DisplayMode = .interactible) {
         self.description = description
         self.isVerified = isVerified
         self.displayMode = displayMode
