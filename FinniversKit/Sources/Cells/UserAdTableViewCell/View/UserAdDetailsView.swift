@@ -35,7 +35,7 @@ final class UserAdDetailsView: UIView {
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong)
         label.backgroundColor = .clear
-        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
     }()
 
@@ -43,7 +43,7 @@ final class UserAdDetailsView: UIView {
         let label = Label(style: .caption)
         label.isHidden = true
         label.backgroundColor = .clear
-        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        label.setContentHuggingPriority(.defaultLow, for: .vertical)
         return label
     }()
 
@@ -51,42 +51,34 @@ final class UserAdDetailsView: UIView {
         let label = Label(style: .detail)
         label.isHidden = true
         label.backgroundColor = .clear
-        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        label.setContentHuggingPriority(.defaultLow, for: .vertical)
         return label
     }()
 
-    private lazy var contentStack: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .horizontal
-        stackView.alignment = .top
-        stackView.spacing = .spacingM
-        return stackView
-    }()
-
     private lazy var descriptionStack: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: false)
+        let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.spacing = 0
         return stackView
     }()
 
-    private lazy var contentStackTopAnchor = contentStack.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM)
-    private lazy var contentStackBottomAnchor = contentStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM)
     private lazy var adImageWidthConstraint = adImageView.widthAnchor.constraint(equalToConstant: UserAdTableViewCell.Style.default.imageSize)
     private lazy var adImageHeightConstraint = adImageView.heightAnchor.constraint(equalToConstant: UserAdTableViewCell.Style.default.imageSize)
 
-    private lazy var ribbonViewTopAnchor: NSLayoutConstraint = {
-        let constraint = ribbonView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS)
-        constraint.isActive = false
-        return constraint
-    }()
+    private lazy var defaultConstraints = [
+        descriptionStack.topAnchor.constraint(equalTo: ribbonView.bottomAnchor, constant: .spacingXXS),
+        descriptionStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+        descriptionStack.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingXL),
+        ribbonView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+    ]
 
-    private lazy var ribbonViewCenterYAnchor: NSLayoutConstraint = {
-        let constraint = ribbonView.centerYAnchor.constraint(equalTo: centerYAnchor)
-        constraint.isActive = false
-        return constraint
-    }()
+    private lazy var compressedConstraints = [
+        descriptionStack.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+        descriptionStack.trailingAnchor.constraint(equalTo: ribbonView.leadingAnchor, constant: -.spacingS),
+        descriptionStack.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingM),
+        ribbonView.centerYAnchor.constraint(equalTo: centerYAnchor),
+    ]
 
     // MARK: - Init
 
@@ -102,11 +94,10 @@ final class UserAdDetailsView: UIView {
     // MARK: - Private methods
 
     private func setup() {
-        addSubview(contentStack)
-        addSubview(ribbonView)
+        addSubview(adImageView)
 
-        contentStack.addArrangedSubview(adImageView)
-        contentStack.addArrangedSubview(descriptionStack)
+        addSubview(descriptionStack)
+        addSubview(ribbonView)
 
         descriptionStack.addArrangedSubview(titleLabel)
         descriptionStack.addArrangedSubview(subtitleLabel)
@@ -115,19 +106,20 @@ final class UserAdDetailsView: UIView {
         descriptionStack.setCustomSpacing(.spacingXXS, after: titleLabel)
         descriptionStack.setCustomSpacing(.spacingS, after: subtitleLabel)
 
-        NSLayoutConstraint.activate([
-            contentStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            contentStack.trailingAnchor.constraint(equalTo: ribbonView.leadingAnchor, constant: -.spacingS),
-            contentStackTopAnchor,
-            contentStackBottomAnchor,
+        let constraints = defaultConstraints + [
+            descriptionStack.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .spacingM),
 
             ribbonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
-            ribbonViewTopAnchor,
 
+            adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            adImageView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: .spacingS),
+            adImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingS),
+            adImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             adImageHeightConstraint,
             adImageWidthConstraint,
+        ]
 
-        ])
+        NSLayoutConstraint.activate(constraints)
     }
 
     // MARK: - Public methods
@@ -135,15 +127,11 @@ final class UserAdDetailsView: UIView {
     func configure(with style: UserAdTableViewCell.Style, model: UserAdTableViewCellViewModel) {
         self.model = model
 
-        contentStack.alignment = style == .compressed ? .center : .top
-
         titleLabel.text = model.titleText
         titleLabel.numberOfLines = style == .compressed ? 1 : 2
 
-        if let subtitle = model.subtitleText {
-            subtitleLabel.text = subtitle
-            subtitleLabel.isHidden = false
-        }
+        subtitleLabel.text = model.subtitleText ?? " "
+        subtitleLabel.isHidden = false
 
         if let detail = model.detailText {
             detailLabel.text = detail
@@ -152,12 +140,11 @@ final class UserAdDetailsView: UIView {
 
         ribbonView.configure(with: model.ribbonViewModel)
 
-        contentStackTopAnchor.constant = style == .compressed ? .spacingS : .spacingM
-        contentStackBottomAnchor.constant = style == .compressed ? -.spacingS : -.spacingM
-        ribbonViewTopAnchor.isActive = style == .default
-        ribbonViewCenterYAnchor.isActive = style == .compressed
         adImageHeightConstraint.constant = style.imageSize
         adImageWidthConstraint.constant = style.imageSize
+
+        NSLayoutConstraint.deactivate(style == .compressed ? defaultConstraints : compressedConstraints)
+        NSLayoutConstraint.activate(style == .compressed ? compressedConstraints : defaultConstraints)
     }
 
     func loadImage() {
