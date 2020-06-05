@@ -17,6 +17,7 @@ public protocol NotificationCenterViewDataSource: AnyObject {
 }
 
 public protocol NotificationCenterViewDelegate: AnyObject {
+    func notificationCenterView(_ view: NotificationCenterView, didChangeToSegment segment: Int)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectModelAt indexPath: IndexPath)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectSavedSearchButtonIn section: Int)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectFooterButtonInSection section: Int)
@@ -176,8 +177,18 @@ extension NotificationCenterView: UITableViewDelegate {
 
 extension NotificationCenterView: UIScrollViewDelegate {
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        guard scrollView == self.scrollView else { return }
-        selectedSegment = Int(targetContentOffset.pointee.x / scrollView.bounds.width)
+        guard scrollView == self.scrollView else {
+            return
+        }
+
+        let targetSegment = Int(targetContentOffset.pointee.x / scrollView.bounds.width)
+
+        guard targetSegment != selectedSegment else {
+            return
+        }
+
+        selectedSegment = targetSegment
+        delegate?.notificationCenterView(self, didChangeToSegment: selectedSegment)
     }
 
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -282,6 +293,7 @@ private extension NotificationCenterView {
     @objc func handleSegmentChange() {
         selectedSegment = segmentedControl.selectedSegmentIndex
         scrollToTableView(atIndex: selectedSegment, animated: true)
+        delegate?.notificationCenterView(self, didChangeToSegment: selectedSegment)
     }
 
     func scrollToTableView(atIndex index: Int, animated: Bool) {
