@@ -6,6 +6,8 @@ import FinnUI
 
 class ConfettiDemoView: UIView {
 
+    private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView))
+
     private lazy var confettiView: ConfettiView = {
         let view = ConfettiView(withAutoLayout: true)
         return view
@@ -23,6 +25,16 @@ class ConfettiDemoView: UIView {
     private func setup() {
         addSubview(confettiView)
         confettiView.fillInSuperview()
+
+        addGestureRecognizer(tapGestureRecognizer)
+    }
+
+    @objc private func didTapView() {
+        confettiView.start()
+
+//        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: { [weak self] in
+//            self?.confettiView.stop()
+//        })
     }
 
 }
