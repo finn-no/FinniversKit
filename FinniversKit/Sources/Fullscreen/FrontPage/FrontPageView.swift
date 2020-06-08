@@ -62,8 +62,8 @@ public final class FrontPageView: UIView {
         return headerLabel
     }()
 
-    private lazy var adsRetryView: FrontPageRetryView = {
-        let view = FrontPageRetryView()
+    private lazy var adsRetryView: LoadingRetryView = {
+        let view = LoadingRetryView()
         view.delegate = self
         return view
     }()
@@ -76,8 +76,8 @@ public final class FrontPageView: UIView {
 
     // MARK: - Init
 
-    public convenience init(delegate: FrontPageViewDelegate & MarketsGridViewDelegate & MarketsGridViewDataSource & AdsGridViewDelegate & AdsGridViewDataSource & DialogueViewDelegate) {
-        self.init(delegate: delegate, marketsGridViewDelegate: delegate, marketsGridViewDataSource: delegate, adsGridViewDelegate: delegate, adsGridViewDataSource: delegate, inlineConsentDialogueViewDelegate: delegate)
+    public convenience init(delegate: FrontPageViewDelegate & MarketsGridViewDelegate & MarketsGridViewDataSource & AdsGridViewDelegate & DialogueViewDelegate, adsGridViewDataSource: AdsGridViewDataSource) {
+        self.init(delegate: delegate, marketsGridViewDelegate: delegate, marketsGridViewDataSource: delegate, adsGridViewDelegate: delegate, adsGridViewDataSource: adsGridViewDataSource, inlineConsentDialogueViewDelegate: delegate)
     }
 
     public init(delegate: FrontPageViewDelegate, marketsGridViewDelegate: MarketsGridViewDelegate, marketsGridViewDataSource: MarketsGridViewDataSource, adsGridViewDelegate: AdsGridViewDelegate, adsGridViewDataSource: AdsGridViewDataSource, inlineConsentDialogueViewDelegate: DialogueViewDelegate) {
@@ -245,10 +245,10 @@ public final class FrontPageView: UIView {
     }
 }
 
-// MARK: - FrontpageRetryViewDelegate
+// MARK: - LoadingRetryViewDelegate
 
-extension FrontPageView: FrontPageRetryViewDelegate {
-    func frontPageRetryViewDidSelectButton(_ view: FrontPageRetryView) {
+extension FrontPageView: LoadingRetryViewDelegate {
+    func loadingRetryViewDidSelectButton(_ view: LoadingRetryView) {
         adsRetryView.state = .loading
         delegate?.frontPageViewDidSelectRetryButton(self)
     }

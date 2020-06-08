@@ -16,7 +16,7 @@ public class FrontpageViewDemoView: UIView {
     }()
 
     private lazy var frontPageView: FrontPageView = {
-        let view = FrontPageView(delegate: self)
+        let view = FrontPageView(delegate: self, adsGridViewDataSource: self)
         view.model = FrontpageViewDefaultData()
         view.isRefreshEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
