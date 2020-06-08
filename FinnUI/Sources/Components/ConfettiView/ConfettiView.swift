@@ -18,16 +18,6 @@ public class ConfettiView: UIView {
         .watermelon
     ]
 
-    private lazy var emitterLayer: CAEmitterLayer = {
-        let layer = CAEmitterLayer()
-        layer.emitterShape = .line
-        layer.emitterCells = (0...8).map {
-            let color = confettiColors[$0 % confettiColors.count]
-            return getConfettiEmitterCell(withColor: color)
-        }
-        return layer
-    }()
-
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -37,30 +27,28 @@ public class ConfettiView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-
+    public func start(withDuration duration: TimeInterval = 0.75, completion: (() -> Void)? = nil) {
+        let emitterLayer = CAEmitterLayer()
         emitterLayer.emitterSize = CGSize(width: bounds.size.width, height: 1)
         emitterLayer.emitterPosition = CGPoint(x: bounds.size.width / 2, y: -50)
-    }
+        emitterLayer.emitterShape = .line
 
-    public func start() {
-        emitterLayer.lifetime = 1
-        emitterLayer.birthRate = 0.5
-        emitterLayer.beginTime = CACurrentMediaTime()
+        let beginTime = CACurrentMediaTime()
+
+        emitterLayer.emitterCells = (0...8).map {
+            let color = confettiColors[$0 % confettiColors.count]
+            return getConfettiEmitterCell(beginTime: beginTime, color: color)
+        }
 
         layer.addSublayer(emitterLayer)
-    }
 
-    public func stop() {
-        emitterLayer.lifetime = 0
-
-        UIView.animate(withDuration: 2, animations: {
-            self.alpha = 0
-        }, completion: { [weak self] _ in
-            self?.emitterLayer.removeFromSuperlayer()
-            self?.alpha = 1
-        })
+        DispatchQueue.main.asyncAfter(
+            deadline: .now() + duration,
+            execute: {
+                emitterLayer.lifetime = 0
+                completion?()
+            }
+        )
     }
 
     private func setup() {
@@ -68,30 +56,26 @@ public class ConfettiView: UIView {
         isUserInteractionEnabled = false
     }
 
-    private func getConfettiEmitterCell(withColor color: UIColor) -> CAEmitterCell {
+    private func getConfettiEmitterCell(beginTime: CFTimeInterval, color: UIColor) -> CAEmitterCell {
         let cell = CAEmitterCell()
 
-        cell.birthRate = 5
-        cell.lifetime = 10
-        cell.lifetimeRange = 2
+        cell.beginTime = beginTime
+        cell.birthRate = 10
+        cell.lifetime = 5
 
         cell.contents = confettiImages.randomElement()?.cgImage
         cell.color = color.cgColor
 
         cell.emissionLongitude = CGFloat.pi
-        cell.emissionRange = CGFloat.pi / 4
+        cell.emissionRange = CGFloat.pi / 8
 
-        cell.velocity = CGFloat.random(in: 50...100)
-
-        cell.yAcceleration = CGFloat.random(in: 15...45)
-        cell.xAcceleration = CGFloat.random(in: -4...4)
+        cell.velocity = 450
+        cell.velocityRange = 50
 
         cell.scale = 0.2
-        cell.scaleRange = 0.05
 
-        let spin: CGFloat = Float.random(in: 0...1) > 0.5 ? .pi : -.pi
-        cell.spin = spin / 2
-        cell.spinRange = 1
+        cell.spin = Float.random(in: 0...1) > 0.5 ? 8 : -8
+        cell.spinRange = 2
 
         return cell
     }
