@@ -27,18 +27,13 @@ public class ConfettiView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    private func setup() {
+        backgroundColor = .clear
+        isUserInteractionEnabled = false
+    }
+
     public func start(withDuration duration: TimeInterval = 0.75, completion: (() -> Void)? = nil) {
-        let emitterLayer = CAEmitterLayer()
-        emitterLayer.emitterSize = CGSize(width: bounds.size.width, height: 1)
-        emitterLayer.emitterPosition = CGPoint(x: bounds.size.width / 2, y: -50)
-        emitterLayer.emitterShape = .line
-
-        let beginTime = CACurrentMediaTime()
-
-        emitterLayer.emitterCells = (0...8).map {
-            let color = confettiColors[$0 % confettiColors.count]
-            return getConfettiEmitterCell(beginTime: beginTime, color: color)
-        }
+        let emitterLayer = createConfettiEmitterLayer()
 
         layer.addSublayer(emitterLayer)
 
@@ -51,12 +46,23 @@ public class ConfettiView: UIView {
         )
     }
 
-    private func setup() {
-        backgroundColor = .clear
-        isUserInteractionEnabled = false
+    private func createConfettiEmitterLayer() -> CAEmitterLayer {
+        let emitterLayer = CAEmitterLayer()
+        emitterLayer.emitterSize = CGSize(width: bounds.size.width, height: 1)
+        emitterLayer.emitterPosition = CGPoint(x: bounds.size.width / 2, y: -50)
+        emitterLayer.emitterShape = .line
+
+        let beginTime = CACurrentMediaTime()
+
+        emitterLayer.emitterCells = (0...8).map {
+            let color = confettiColors[$0 % confettiColors.count]
+            return createConfettiEmitterCell(beginTime: beginTime, color: color)
+        }
+
+        return emitterLayer
     }
 
-    private func getConfettiEmitterCell(beginTime: CFTimeInterval, color: UIColor) -> CAEmitterCell {
+    private func createConfettiEmitterCell(beginTime: CFTimeInterval, color: UIColor) -> CAEmitterCell {
         let cell = CAEmitterCell()
 
         cell.beginTime = beginTime
