@@ -9,11 +9,18 @@ public struct PrimingViewModel {
         public let icon: UIImage
         public let title: String
         public let detailText: String
+        public let iconRenderingMode: UIImage.RenderingMode
 
-        public init(icon: UIImage, title: String, detailText: String) {
+        public init(
+            icon: UIImage,
+            title: String,
+            detailText: String,
+            iconRenderingMode: UIImage.RenderingMode = .alwaysTemplate
+        ) {
             self.icon = icon
             self.title = title
             self.detailText = detailText
+            self.iconRenderingMode = iconRenderingMode
         }
     }
 
