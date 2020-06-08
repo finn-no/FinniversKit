@@ -113,7 +113,12 @@ extension PrimingView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(PrimingTableViewCell.self, for: indexPath)
         let row = rows[indexPath.row]
-        cell.configure(withIcon: row.icon, title: row.title, detailText: row.detailText)
+        cell.configure(
+            withIcon: row.icon,
+            title: row.title,
+            detailText: row.detailText,
+            iconRenderingMode: row.iconRenderingMode
+        )
         return cell
     }
 }
