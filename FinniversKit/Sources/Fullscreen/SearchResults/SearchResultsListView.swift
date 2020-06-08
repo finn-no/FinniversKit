@@ -42,6 +42,7 @@ class SearchResultsListView: UIView {
     }
 
     func configure(with rows: [String]) {
+        stackView.removeArrangedSubviews()
         for row in rows {
             let rowView = SearchResultsRowView(icon: icon)
             rowView.delegate = self

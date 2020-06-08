@@ -10,6 +10,7 @@ public protocol SearchResultsViewDataSource: AnyObject {
 
 public protocol SearchResultsViewDelegate: AnyObject {
     func searchResultsView(_ view: SearchResultsView, segment: Int, didSelectSearchAt index: Int)
+    func searchResultsView(_ view: SearchResultsView, didSelectSegment segment: Int)
 }
 
 public class SearchResultsView: UIView {
@@ -32,6 +33,7 @@ public class SearchResultsView: UIView {
     private lazy var separatorLine: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .tableViewSeparator
+        view.alpha = 0
         return view
     }()
 
@@ -123,6 +125,7 @@ public class SearchResultsView: UIView {
             view.delegate = self
             segmentViews.append(view)
             scrollView.addSubview(view)
+            loadData(for: segment)
 
             NSLayoutConstraint.activate([
                 view.leadingAnchor.constraint(equalTo: insertAnchor, constant: spacings.popLast() ?? 0),
@@ -144,6 +147,7 @@ public class SearchResultsView: UIView {
     @objc func handleSegmentChange() {
         selectedSegment = segmentedControl.selectedSegmentIndex
         scrollToView(at: selectedSegment)
+        delegate?.searchResultsView(self, didSelectSegment: selectedSegment)
     }
 
     func scrollToView(at index: Int) {
