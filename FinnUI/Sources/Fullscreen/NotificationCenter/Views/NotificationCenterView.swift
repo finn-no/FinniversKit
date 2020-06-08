@@ -261,7 +261,7 @@ private extension NotificationCenterView {
             tableViews?.append(tableView)
             scrollView.addSubview(tableView)
 
-            NSLayoutConstraint.activate([
+            NSLayoutConstraint.activate([//
                 tableView.leadingAnchor.constraint(equalTo: insertAnchor, constant: spacings.popLast() ?? 0),
                 tableView.topAnchor.constraint(equalTo: scrollView.topAnchor),
                 tableView.widthAnchor.constraint(equalTo: widthAnchor),

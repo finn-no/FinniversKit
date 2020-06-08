@@ -23,6 +23,8 @@ class SearchResultsListView: UIView {
     }
 
     private func setup() {
+        translatesAutoresizingMaskIntoConstraints = false
+
         addSubview(stackView)
 
         NSLayoutConstraint.activate([

@@ -18,11 +18,12 @@ final class SearchResultsDemoView: UIView {
     }
 
     func setup() {
+        searchResultsView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(searchResultsView)
         searchResultsView.fillInSuperview()
         searchResultsView.reloadData()
+        searchResultsView.loadData(for: 0)
         searchResultsView.loadData(for: 1)
-
     }
 
     let lastSearches = [
@@ -53,7 +54,7 @@ extension SearchResultsDemoView: SearchResultsViewDataSource {
     }
 
     func searchResultsView(_ view: SearchResultsView, iconForSegment segment: Int) -> UIImage {
-        return segment == 0 ? UIImage(named: .search) : UIImage(named: .magnifyingGlass)
+        return segment == 0 ? UIImage(named: .republish) : UIImage(named: .magnifyingGlass)
     }
 
     func searchResultsView(_ view: SearchResultsView, numberOfRowsInSegment segment: Int) -> Int {
