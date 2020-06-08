@@ -75,10 +75,10 @@ public class ConfettiView: UIView {
         cell.emissionLongitude = CGFloat.pi
         cell.emissionRange = CGFloat.pi / 8
 
-        cell.velocity = 400
+        cell.velocity = UIDevice.current.userInterfaceIdiom == .pad ? 600 : 500
         cell.velocityRange = 50
 
-        cell.scale = 0.2
+        cell.scale = UIDevice.current.userInterfaceIdiom == .pad ? 0.3 : 0.2
 
         cell.spin = Float.random(in: 0...1) > 0.5 ? 8 : -8
         cell.spinRange = 2
