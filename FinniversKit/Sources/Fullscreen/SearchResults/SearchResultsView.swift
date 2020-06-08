@@ -8,11 +8,16 @@ public protocol SearchResultsViewDataSource: AnyObject {
     func searchResultsView(_ view: SearchResultsView, segment: Int, textForRow row: Int) -> String
 }
 
+public protocol SearchResultsViewDelegate: AnyObject {
+    func searchResultsView(_ view: SearchResultsView, segment: Int, didSelectSearchAt index: Int)
+}
+
 public class SearchResultsView: UIView {
 
     // MARK: - Public properties
 
     public weak var dataSource: SearchResultsViewDataSource?
+    public weak var delegate: SearchResultsViewDelegate?
 
     public var selectedSegment: Int = 0 {
         didSet { segmentedControl.selectedSegmentIndex = selectedSegment }
@@ -115,6 +120,7 @@ public class SearchResultsView: UIView {
             segmentTitles?.append(title)
 
             let view = SearchResultsListView(icon: icon)
+            view.delegate = self
             segmentViews.append(view)
             scrollView.addSubview(view)
 
@@ -151,5 +157,12 @@ extension SearchResultsView: UIScrollViewDelegate {
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         guard scrollView == self.scrollView else { return }
         selectedSegment = Int(targetContentOffset.pointee.x / scrollView.bounds.width)
+    }
+}
+
+extension SearchResultsView: SearchResultsListViewDelegate {
+    func searchResultsListView(_ searchResultsListView: SearchResultsListView, didSelectSearchAt index: Int) {
+        guard let segment = segmentViews.firstIndex(of: searchResultsListView) else { return }
+        delegate?.searchResultsView(self, segment: segment, didSelectSearchAt: index)
     }
 }

@@ -1,5 +1,9 @@
 import Foundation
 
+protocol SearchResultsRowViewDelegate: AnyObject {
+    func searchResultsRowViewDidSelectButton(_ searchResultsRowView: SearchResultsRowView)
+}
+
 class SearchResultsRowView: UIView {
 
     private lazy var stackView: UIStackView = {
@@ -19,10 +23,13 @@ class SearchResultsRowView: UIView {
 
     private lazy var button: Button = {
         let button = Button(style: .flat, withAutoLayout: true)
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return button
     }()
 
     private var icon: UIImage
+
+    weak var delegate: SearchResultsRowViewDelegate?
 
     init(icon: UIImage) {
         self.icon = icon
@@ -52,6 +59,10 @@ class SearchResultsRowView: UIView {
 
     func configure(with title: String) {
         button.setTitle(title, for: .normal)
+    }
+
+    @objc func buttonTapped() {
+        delegate?.searchResultsRowViewDidSelectButton(self)
     }
 }
 

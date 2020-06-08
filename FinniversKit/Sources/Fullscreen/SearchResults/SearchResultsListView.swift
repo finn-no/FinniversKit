@@ -1,5 +1,9 @@
 import Foundation
 
+protocol SearchResultsListViewDelegate: AnyObject {
+    func searchResultsListView(_ searchResultsListView: SearchResultsListView, didSelectSearchAt index: Int)
+}
+
 class SearchResultsListView: UIView {
 
     private lazy var stackView: UIStackView = {
@@ -9,6 +13,8 @@ class SearchResultsListView: UIView {
         stackView.alignment = .leading
         return stackView
     }()
+
+    weak var delegate: SearchResultsListViewDelegate?
 
     let icon: UIImage
 
@@ -38,8 +44,16 @@ class SearchResultsListView: UIView {
     func configure(with rows: [String]) {
         for row in rows {
             let rowView = SearchResultsRowView(icon: icon)
+            rowView.delegate = self
             rowView.configure(with: row)
             stackView.addArrangedSubview(rowView)
         }
+    }
+}
+
+extension SearchResultsListView: SearchResultsRowViewDelegate {
+    func searchResultsRowViewDidSelectButton(_ searchResultsRowView: SearchResultsRowView) {
+        guard let index = stackView.arrangedSubviews.firstIndex(of: searchResultsRowView) else { return }
+        delegate?.searchResultsListView(self, didSelectSearchAt: index)
     }
 }
