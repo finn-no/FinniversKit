@@ -10,10 +10,10 @@ class SearchResultsRowView: UIView {
         return stackView
     }()
 
-    private var icon: UIImage
-
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
+        imageView.image = icon.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .iconColor
         return imageView
     }()
 
@@ -21,6 +21,8 @@ class SearchResultsRowView: UIView {
         let button = Button(style: .flat, withAutoLayout: true)
         return button
     }()
+
+    private var icon: UIImage
 
     init(icon: UIImage) {
         self.icon = icon
@@ -42,8 +44,6 @@ class SearchResultsRowView: UIView {
         stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(button)
 
-        imageView.image = icon
-        
         NSLayoutConstraint.activate([
             imageView.heightAnchor.constraint(equalToConstant: 24),
             imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor),
@@ -52,5 +52,11 @@ class SearchResultsRowView: UIView {
 
     func configure(with title: String) {
         button.setTitle(title, for: .normal)
+    }
+}
+
+private extension UIColor {
+    class var iconColor: UIColor {
+        dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
 }
