@@ -9,6 +9,8 @@ private struct ProfileItem: MinFinnProfileCellModel {
     let profileImageUrl: URL?
     let displayName: String
     let subtitle: String
+    let offlineDescription: String?
+    let offlineButtonTitle: String?
     let isVerified: Bool
     weak var delegate: MinFinnProfileCellDelegate?
 }
@@ -39,7 +41,7 @@ class MinFinnDemoView: UIView {
 
     private lazy var sections = [
         Section(items: [
-            ProfileItem(profileImage: nil, profileImageUrl: nil, displayName: "Ola Nordmann", subtitle: "ola.nordmann@finn.no", isVerified: false, delegate: self),
+            ProfileItem(profileImage: nil, profileImageUrl: nil, displayName: "Ola Nordmann", subtitle: "ola.nordmann@finn.no", offlineDescription: nil, offlineButtonTitle: nil, isVerified: false, delegate: self),
             VerifyItem(title: "Vis andre at du er trygg", text: "Hvis du godkjenner profilen din med BankID oppleves du som en tryggere person å handle med.", primaryButtonTitle: "Kom i gang", secondaryButtonTitle: "Les mer om godkjenning", delegate: self)
         ]),
         Section(items: [
