@@ -33,16 +33,6 @@ public class SearchResultsView: UIView {
     private var segmentViews = [SearchResultsListView]()
     private var segmentTitles: [String]?
 
-    private lazy var recentSearchesList: SearchResultsListView = {
-        let view = SearchResultsListView(title: "Siste søk")
-        return view
-    }()
-
-    private lazy var savedSearchesList: SearchResultsListView = {
-        let view = SearchResultsListView(title: "Lagrede søk")
-        return view
-    }()
-
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
         scrollView.isPagingEnabled = true
@@ -51,6 +41,8 @@ public class SearchResultsView: UIView {
 //        scrollView.delegate = self
         return scrollView
     }()
+
+    private lazy var listView = SearchResultsListView(icon: UIImage(named: .magnifyingGlass))
 
     // MARK: - Init
 
@@ -68,30 +60,44 @@ public class SearchResultsView: UIView {
 
     public func reloadData() {
         if segmentViews.isEmpty {
-            setupSegmentedControl()
+//            setupSegmentedControl()
         }
     }
 
+    public func loadData(for segment: Int) {
+        guard let dataSource = dataSource else { return }
+        var rows = [String]()
+        for row in 0 ..< dataSource.searchResultsView(self, numberOfRowsInSegment: segment) {
+            rows.append(dataSource.searchResultsView(self, segment: segment, textForRow: row))
+        }
+        listView.configure(with: rows)
+        layoutIfNeeded()
+    }
+
     private func setup() {
-        addSubview(segmentedControl)
-        addSubview(separatorLine)
-        addSubview(scrollView)
+//        addSubview(segmentedControl)
+//        addSubview(separatorLine)
+//        addSubview(scrollView)
+//
+//        NSLayoutConstraint.activate([
+//            segmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+//            segmentedControl.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+//            segmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+//
+//            separatorLine.leadingAnchor.constraint(equalTo: leadingAnchor),
+//            separatorLine.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: .spacingM),
+//            separatorLine.trailingAnchor.constraint(equalTo: trailingAnchor),
+//            separatorLine.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
+//
+//            scrollView.topAnchor.constraint(equalTo: separatorLine.bottomAnchor),
+//            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+//            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .spacingM),
+//            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor)
+//        ])
+        listView.translatesAutoresizingMaskIntoConstraints = false
 
-        NSLayoutConstraint.activate([
-            segmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            segmentedControl.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
-            segmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-
-            separatorLine.leadingAnchor.constraint(equalTo: leadingAnchor),
-            separatorLine.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: .spacingM),
-            separatorLine.trailingAnchor.constraint(equalTo: trailingAnchor),
-            separatorLine.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
-
-            scrollView.topAnchor.constraint(equalTo: separatorLine.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .spacingM),
-            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+        addSubview(listView)
+        listView.fillInSuperview()
     }
 
     func setupSegmentedControl() {
@@ -105,11 +111,11 @@ public class SearchResultsView: UIView {
 
         for segment in 0 ..< dataSource.numberOfSegments(in: self) {
             let title = dataSource.searchResultsView(self, titleForSegment: segment)
+            let icon = dataSource.searchResultsView(self, iconForSegment: segment)
             segmentedControl.insertSegment(withTitle: title, at: segment, animated: false)
             segmentTitles?.append(title)
 
-            let view = SearchResultsListView(title: "xx")
-            view.translatesAutoresizingMaskIntoConstraints = false
+            let view = SearchResultsListView(icon: icon)
             segmentViews.append(view)
             scrollView.addSubview(view)
             view.backgroundColor = segment == 0 ? .red : .blue

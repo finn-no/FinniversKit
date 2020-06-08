@@ -10,13 +10,19 @@ final class SearchResultsDemoView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(searchResultsView)
-        searchResultsView.fillInSuperview()
-        searchResultsView.reloadData()
+        setup()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func setup() {
+        addSubview(searchResultsView)
+        searchResultsView.fillInSuperview()
+        searchResultsView.reloadData()
+        searchResultsView.loadData(for: 1)
+
     }
 
     let lastSearches = [
