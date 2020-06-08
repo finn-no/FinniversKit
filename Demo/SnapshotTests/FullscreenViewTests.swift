@@ -152,4 +152,8 @@ class FullscreenViewTests: XCTestCase {
     func testErrorView() {
         snapshot(.errorView)
     }
+
+    func testConfettiView() {
+        snapshot(.confettiView)
+    }
 }
