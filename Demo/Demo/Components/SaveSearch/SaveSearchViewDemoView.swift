@@ -7,8 +7,8 @@ import FinnUI
 
 class SaveSearchViewDemoView: UIView, Tweakable {
     lazy var tweakingOptions: [TweakingOption] = [
-        TweakingOption(title: "Creating a new search") { self.saveSearchView.configure(with: SampleSaveSearchViewModel()) },
-        TweakingOption(title: "Editing an existing search") { self.saveSearchView.configure(with: SampleExistingSavedSearchViewModel()) },
+        TweakingOption(title: "Creating a new search") { self.saveSearchView.configure(with: .createSavedSearch) },
+        TweakingOption(title: "Editing an existing search") { self.saveSearchView.configure(with: .existingSavedSearch) },
     ]
 
     private lazy var saveSearchView = SaveSearchView(withAutoLayout: true)
@@ -59,22 +59,24 @@ private extension SwitchViewDefaultModel {
     }
 }
 
-private struct SampleSaveSearchViewModel: SaveSearchViewModel {
-    let searchTitle: String? = "Grå sofa, Oslo"
-    let editNameButtonTitle = "Endre navn på søket"
-    let deleteSearchButtonTitle: String? = nil
+private extension SaveSearchViewModel {
+    static var createSavedSearch = SaveSearchViewModel(
+        searchTitle: "Grå sofa, Oslo",
+        editNameButtonTitle: "Endre navn på søket",
+        deleteSearchButtonTitle: nil,
 
-    let notificationCenterSwitchViewModel = SwitchViewDefaultModel.notificationCenterViewModel(isOn: true)
-    let pushSwitchViewModel = SwitchViewDefaultModel.pushViewModel(isOn: true)
-    let emailSwitchViewModel = SwitchViewDefaultModel.emailViewModel(isOn: true)
-}
+        notificationCenterSwitchViewModel: SwitchViewDefaultModel.notificationCenterViewModel(isOn: true),
+        pushSwitchViewModel: SwitchViewDefaultModel.pushViewModel(isOn: true),
+        emailSwitchViewModel: SwitchViewDefaultModel.emailViewModel(isOn: true)
+    )
 
-private struct SampleExistingSavedSearchViewModel: SaveSearchViewModel {
-    let searchTitle: String? = "Båtmotor, Torget, 1000-12000"
-    let editNameButtonTitle = "Endre navn på søket"
-    let deleteSearchButtonTitle: String? = "Slett lagret søk"
+    static var existingSavedSearch = SaveSearchViewModel(
+        searchTitle: "Båtmotor, Torget, 1000-12000",
+        editNameButtonTitle: "Endre navn på søket",
+        deleteSearchButtonTitle: "Slett lagret søk",
 
-    let notificationCenterSwitchViewModel = SwitchViewDefaultModel.notificationCenterViewModel(isOn: true)
-    let pushSwitchViewModel = SwitchViewDefaultModel.pushViewModel(isOn: true)
-    let emailSwitchViewModel = SwitchViewDefaultModel.emailViewModel(isOn: true)
+        notificationCenterSwitchViewModel: SwitchViewDefaultModel.notificationCenterViewModel(isOn: true),
+        pushSwitchViewModel: SwitchViewDefaultModel.pushViewModel(isOn: true),
+        emailSwitchViewModel: SwitchViewDefaultModel.emailViewModel(isOn: true)
+    )
 }

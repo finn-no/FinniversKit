@@ -4,12 +4,28 @@
 
 import FinniversKit
 
-public protocol SaveSearchViewModel {
-    var searchTitle: String? { get }
-    var editNameButtonTitle: String { get }
-    var deleteSearchButtonTitle: String? { get }
+public struct SaveSearchViewModel {
+    public let searchTitle: String?
+    public let editNameButtonTitle: String
+    public let deleteSearchButtonTitle: String?
 
-    var notificationCenterSwitchViewModel: SwitchViewModel { get }
-    var pushSwitchViewModel: SwitchViewModel { get }
-    var emailSwitchViewModel: SwitchViewModel { get }
+    public let notificationCenterSwitchViewModel: SwitchViewModel
+    public let pushSwitchViewModel: SwitchViewModel
+    public let emailSwitchViewModel: SwitchViewModel
+
+    public init(
+        searchTitle: String?,
+        editNameButtonTitle: String,
+        deleteSearchButtonTitle: String?,
+        notificationCenterSwitchViewModel: SwitchViewModel,
+        pushSwitchViewModel: SwitchViewModel,
+        emailSwitchViewModel: SwitchViewModel
+    ) {
+        self.searchTitle = searchTitle
+        self.editNameButtonTitle = editNameButtonTitle
+        self.deleteSearchButtonTitle = deleteSearchButtonTitle
+        self.notificationCenterSwitchViewModel = notificationCenterSwitchViewModel
+        self.pushSwitchViewModel = pushSwitchViewModel
+        self.emailSwitchViewModel = emailSwitchViewModel
+    }
 }
