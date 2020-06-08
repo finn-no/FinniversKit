@@ -33,7 +33,7 @@ public struct UserAdsFactory {
         var ads = titles.enumerated().map {
             UserAdCellViewModel(
                 titleText: $1,
-                subtitleText: "Torget",
+                subtitleText: $0 == 3 ? nil : "Torget",
                 detailText: details[$0],
                 imagePath: imagePaths[$0],
                 ribbonViewModel: ribbons[$0]
@@ -82,7 +82,7 @@ public struct UserAdsFactory {
     private static var titles: [String] {
         return [
             "George Condo - My twisted fantasy is an incredibly sick fantasy",
-            "Macbook Air",
+            "Macbook Air - denne er så tynn at japanske kniver blir misunnelige",
             "Fender Jaguar Blå",
             "Nixon Kamera",
             "Retro sko",
@@ -125,12 +125,12 @@ public struct UserAdsFactory {
 
     private static var ribbons: [RibbonViewModel] {
         return [
+            RibbonViewModel(style: .success, title: "Avventer kontroll"),
             RibbonViewModel(style: .success, title: "Aktiv"),
-            RibbonViewModel(style: .success, title: "Aktiv"),
-            RibbonViewModel(style: .disabled, title: "Solgt"),
+            RibbonViewModel(style: .sponsored, title: "Solgt"),
             RibbonViewModel(style: .warning, title: "Påbegynt"),
             RibbonViewModel(style: .disabled, title: "Inaktiv"),
-            RibbonViewModel(style: .disabled, title: "Inaktiv"),
+            RibbonViewModel(style: .success, title: "Avvist"),
         ]
     }
 }

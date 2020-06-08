@@ -40,8 +40,8 @@ final class PrimingTableViewCell: UITableViewCell {
 
     // MARK: - Setup
 
-    func configure(withIcon icon: UIImage, title: String, detailText: String) {
-        iconImageView.image = icon.withRenderingMode(.alwaysTemplate)
+    func configure(withIcon icon: UIImage, title: String, detailText: String, iconRenderingMode: UIImage.RenderingMode) {
+        iconImageView.image = icon.withRenderingMode(iconRenderingMode)
         titleLabel.attributedText = title.attributedStringWithLineSpacing(.spacingXXS)
         detailLabel.attributedText = detailText.attributedStringWithLineSpacing(.spacingXXS)
     }
