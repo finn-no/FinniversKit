@@ -6,30 +6,25 @@ import FinniversKit
 
 public class ConfettiView: UIView {
 
-    private lazy var confettiImages: [UIImage] = [
+    private let confettiImages: [UIImage] = [
         .init(named: .confetti1),
         .init(named: .confetti2)
     ]
 
-    private lazy var confettiColors: [UIColor] = [
+    private let confettiColors: [UIColor] = [
         .primaryBlue,
         .secondaryBlue,
         .pea,
         .watermelon
     ]
 
-    private let numberOfCells = 10
-
     private lazy var emitterLayer: CAEmitterLayer = {
         let layer = CAEmitterLayer()
         layer.emitterShape = .line
-        layer.lifetime = 1
-
-        layer.emitterCells = (0..<16).map {
+        layer.emitterCells = (0...8).map {
             let color = confettiColors[$0 % confettiColors.count]
             return getConfettiEmitterCell(withColor: color)
         }
-
         return layer
     }()
 
@@ -51,6 +46,7 @@ public class ConfettiView: UIView {
 
     public func start() {
         emitterLayer.lifetime = 1
+        emitterLayer.birthRate = 0.5
         emitterLayer.beginTime = CACurrentMediaTime()
 
         layer.addSublayer(emitterLayer)
@@ -75,7 +71,7 @@ public class ConfettiView: UIView {
     private func getConfettiEmitterCell(withColor color: UIColor) -> CAEmitterCell {
         let cell = CAEmitterCell()
 
-        cell.birthRate = 2.5
+        cell.birthRate = 5
         cell.lifetime = 10
         cell.lifetimeRange = 2
 
@@ -83,17 +79,19 @@ public class ConfettiView: UIView {
         cell.color = color.cgColor
 
         cell.emissionLongitude = CGFloat.pi
+        cell.emissionRange = CGFloat.pi / 4
 
-        cell.velocity = CGFloat.random(in: 2...5)
+        cell.velocity = CGFloat.random(in: 50...100)
 
-        cell.yAcceleration = CGFloat.random(in: 40...60)
-        cell.xAcceleration = CGFloat.random(in: -10...10)
+        cell.yAcceleration = CGFloat.random(in: 15...45)
+        cell.xAcceleration = CGFloat.random(in: -4...4)
 
         cell.scale = 0.2
-        cell.scaleRange = 0.1
+        cell.scaleRange = 0.05
 
-        cell.spin = CGFloat.pi
-        cell.spinRange = 0.5
+        let spin: CGFloat = Float.random(in: 0...1) > 0.5 ? .pi : -.pi
+        cell.spin = spin / 2
+        cell.spinRange = 1
 
         return cell
     }
