@@ -75,7 +75,7 @@ public class ConfettiView: UIView {
         cell.emissionLongitude = CGFloat.pi
         cell.emissionRange = CGFloat.pi / 8
 
-        cell.velocity = 450
+        cell.velocity = 400
         cell.velocityRange = 50
 
         cell.scale = 0.2
