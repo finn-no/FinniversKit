@@ -221,6 +221,7 @@
 		46E7759D242D6A8A008A5E93 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E77561242CFFA5008A5E93 /* FinniversKit.framework */; };
 		46E7759E242D6A8A008A5E93 /* FinnUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E77562242CFFA5008A5E93 /* FinnUI.framework */; };
 		4D644438248A733400B80827 /* SearchResultsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D644437248A733400B80827 /* SearchResultsDemoView.swift */; };
+		4D644628248F782600B80827 /* SearchResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D644627248F782600B80827 /* SearchResultsData.swift */; };
 		8D680753832283BAA1FD13E7 /* ChatAvailabilityDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680197B160A999652BC551 /* ChatAvailabilityDemoView.swift */; };
 		9BA6C49F24336B51009D417B /* CoronaHelpDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C49E24336B51009D417B /* CoronaHelpDemoView.swift */; };
 		9BA6C4A224336B9A009D417B /* DemoWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */; };
@@ -470,6 +471,7 @@
 		46E77582242D478D008A5E93 /* XCTestCastExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCastExtensions.swift; sourceTree = "<group>"; };
 		46E77584242D4805008A5E93 /* TestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConfig.swift; sourceTree = "<group>"; };
 		4D644437248A733400B80827 /* SearchResultsDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsDemoView.swift; sourceTree = "<group>"; };
+		4D644627248F782600B80827 /* SearchResultsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsData.swift; sourceTree = "<group>"; };
 		8D680197B160A999652BC551 /* ChatAvailabilityDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAvailabilityDemoView.swift; sourceTree = "<group>"; };
 		9BA6C49E24336B51009D417B /* CoronaHelpDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaHelpDemoView.swift; sourceTree = "<group>"; };
 		9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoWrapperView.swift; sourceTree = "<group>"; };
@@ -1814,6 +1816,7 @@
 			isa = PBXGroup;
 			children = (
 				4D644437248A733400B80827 /* SearchResultsDemoView.swift */,
+				4D644627248F782600B80827 /* SearchResultsData.swift */,
 			);
 			path = SearchResults;
 			sourceTree = "<group>";
@@ -2174,6 +2177,7 @@
 				46E773FC242CEF0A008A5E93 /* FavoriteButtonData.swift in Sources */,
 				46E773A5242CEF0A008A5E93 /* DnaDemoViews.swift in Sources */,
 				46E773D4242CEF0A008A5E93 /* FrontPageViewDefaultData.swift in Sources */,
+				4D644628248F782600B80827 /* SearchResultsData.swift in Sources */,
 				46E77462242CEF0A008A5E93 /* FavoritesListViewDemoViewHelpers.swift in Sources */,
 				46E7743F242CEF0A008A5E93 /* ColorDemoView.swift in Sources */,
 				8D680753832283BAA1FD13E7 /* ChatAvailabilityDemoView.swift in Sources */,

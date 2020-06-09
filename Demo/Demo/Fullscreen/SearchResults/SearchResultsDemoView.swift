@@ -17,7 +17,7 @@ final class SearchResultsDemoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setup() {
+    private func setup() {
         searchResultsView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(searchResultsView)
         searchResultsView.fillInSuperview()
@@ -26,7 +26,7 @@ final class SearchResultsDemoView: UIView {
         searchResultsView.loadData(for: 1)
     }
 
-    let lastSearches = [
+    private let lastSearches = [
         "Adidas sneakers",
         "Fjellräven sekk",
         "Studentbolig",
@@ -34,7 +34,7 @@ final class SearchResultsDemoView: UIView {
         "Munnbind",
     ]
 
-    let savedSearches = [
+    private let savedSearches = [
         "90-talls klær, Oslo",
         "Studentbolig, Bergen",
         "Fila klær, Oslo",
@@ -49,14 +49,6 @@ extension SearchResultsDemoView: SearchResultsViewDataSource {
         2
     }
 
-    func searchResultsView(_ view: SearchResultsView, titleForSegment segment: Int) -> String {
-        segment == 0 ? "Siste søk" : "Lagrede søk"
-    }
-
-    func searchResultsView(_ view: SearchResultsView, iconForSegment segment: Int) -> UIImage {
-        segment == 0 ? UIImage(named: .republish) : UIImage(named: .magnifyingGlass)
-    }
-
     func searchResultsView(_ view: SearchResultsView, numberOfRowsInSegment segment: Int) -> Int {
         segment == 0 ? lastSearches.count : savedSearches.count
     }
@@ -65,7 +57,7 @@ extension SearchResultsDemoView: SearchResultsViewDataSource {
         segment == 0 ? lastSearches[row] : savedSearches[row]
     }
 
-    func searchResultsViewCanDeleteRows(_ view: SearchResultsView, for segment: Int) -> Bool {
-        segment == 0
+    func searchResultsView(_ view: SearchResultsView, viewModelFor segment: Int) -> SearchResultsViewModel {
+        segment == 0 ? RecentSearchData() : SavedSearchData()
     }
 }

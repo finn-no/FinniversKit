@@ -2,17 +2,22 @@ import Foundation
 
 public protocol SearchResultsViewDataSource: AnyObject {
     func numberOfSegments(in view: SearchResultsView) -> Int
-    func searchResultsView(_ view: SearchResultsView, titleForSegment segment: Int) -> String
-    func searchResultsView(_ view: SearchResultsView, iconForSegment segment: Int) -> UIImage
     func searchResultsView(_ view: SearchResultsView, numberOfRowsInSegment segment: Int) -> Int
     func searchResultsView(_ view: SearchResultsView, segment: Int, textForRow row: Int) -> String
-    func searchResultsViewCanDeleteRows(_ view: SearchResultsView, for segment: Int) -> Bool
+    func searchResultsView(_ view: SearchResultsView, viewModelFor segment: Int) -> SearchResultsViewModel
 }
 
 public protocol SearchResultsViewDelegate: AnyObject {
     func searchResultsView(_ view: SearchResultsView, segment: Int, didSelectSearchAt index: Int)
     func searchResultsView(_ view: SearchResultsView, segment: Int, didDeleteSearchAt index: Int)
     func searchResultsView(_ view: SearchResultsView, didSelectSegment segment: Int)
+}
+
+public protocol SearchResultsViewModel {
+    var title: String { get }
+    var icon: UIImage { get }
+    var showDeleteRowIcons: Bool { get }
+    var buttonTitle: String? { get }
 }
 
 public class SearchResultsView: UIView {
@@ -116,13 +121,11 @@ public class SearchResultsView: UIView {
         var insertAnchor = scrollView.leadingAnchor
 
         for segment in 0 ..< dataSource.numberOfSegments(in: self) {
-            let title = dataSource.searchResultsView(self, titleForSegment: segment)
-            let icon = dataSource.searchResultsView(self, iconForSegment: segment)
-            let showDeleteRowIcons = dataSource.searchResultsViewCanDeleteRows(self, for: segment)
-            segmentedControl.insertSegment(withTitle: title, at: segment, animated: false)
-            segmentTitles?.append(title)
+            let viewModel = dataSource.searchResultsView(self, viewModelFor: segment)
+            segmentedControl.insertSegment(withTitle: viewModel.title, at: segment, animated: false)
+            segmentTitles?.append(viewModel.title)
 
-            let view = SearchResultsListView(icon: icon, showDeleteRowIcons: showDeleteRowIcons)
+            let view = SearchResultsListView(icon: viewModel.icon, showDeleteRowIcons: viewModel.showDeleteRowIcons)
             view.delegate = self
             segmentViews.append(view)
             scrollView.addSubview(view)
