@@ -38,6 +38,12 @@ public class ConfettiView: UIView {
 
     // MARK: - Public methods
 
+    /// Start the creation of confetti
+    ///
+    /// Call this method to start the creation of confetti
+    /// - Warning: `completion` is called when the confetti creation is completed, not when the last confetti is off screen
+    /// - Parameter duration: how long confetti will be added/created, in seconds
+    /// - Parameter completion: called when the confetti creation is completed.
     public func start(withDuration duration: TimeInterval = 0.75, completion: (() -> Void)? = nil) {
         let emitterLayer = createConfettiEmitterLayer()
 
