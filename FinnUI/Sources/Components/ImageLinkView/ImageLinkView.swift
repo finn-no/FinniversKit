@@ -4,18 +4,6 @@
 
 import FinniversKit
 
-public struct ImageLinkViewModel {
-    public let description: String
-    public let image: UIImage
-    public let overlayKind: ImageLinkView.OverlayKind?
-
-    public init(description: String, image: UIImage, overlayKind: ImageLinkView.OverlayKind? = nil) {
-        self.description = description
-        self.image = image
-        self.overlayKind = overlayKind
-    }
-}
-
 public class ImageLinkView: UIView {
     public enum OverlayKind {
         case video
