@@ -41,6 +41,7 @@ public class MinFinnProfileCell: UITableViewCell {
 }
 
 extension MinFinnProfileCell: IdentityViewDelegate {
+
     public func identityViewWasTapped(_ identityView: IdentityView) {}
 
     public func identityView(_ identityView: IdentityView, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void) {
@@ -53,6 +54,8 @@ extension MinFinnProfileCell: IdentityViewDelegate {
 
         delegate?.minFinnProfileCell(self, loadImageAt: url, with: size, completionHandler: completionHandler)
     }
+
+    public func identityViewDidTapOfflineButton() {}
 }
 
 private extension MinFinnProfileCell {

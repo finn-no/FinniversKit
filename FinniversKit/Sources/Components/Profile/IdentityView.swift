@@ -18,11 +18,15 @@ public protocol IdentityViewModel {
 
     var isVerified: Bool { get }
     var displayMode: IdentityView.DisplayMode { get }
+    var offlineDescription: String? { get }
+    var offlineButtonTitle: String? { get }
+
 }
 
 public protocol IdentityViewDelegate: AnyObject {
     func identityViewWasTapped(_ identityView: IdentityView)
     func identityView(_ identityView: IdentityView, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void)
+    func identityViewDidTapOfflineButton()
 }
 
 public class IdentityView: UIView {
@@ -35,6 +39,9 @@ public class IdentityView: UIView {
 
         /// Subtitle hidden, profile name black
         case anonymous
+
+        /// Subtitle hidden, profile name hidden, offlineButton visible
+        case offline
     }
 
     private var lastLoadedImageUrl: URL?
@@ -74,8 +81,9 @@ public class IdentityView: UIView {
         return imageView
     }()
 
-    private lazy var profileNameLabel: Label = {
+    private lazy var profileNameOrOfflineDescriptionLabel: Label = {
         let label = Label(style: .body)
+        label.textColor = .textPrimary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
@@ -87,23 +95,12 @@ public class IdentityView: UIView {
         return imageView
     }()
 
-    private lazy var profileNameWrapperView: UIView = {
+    private lazy var profileWrapperView: UIView = {
         let wrapperView = UIView(withAutoLayout: true)
 
-        wrapperView.addSubview(profileNameLabel)
+        wrapperView.addSubview(profileNameOrOfflineDescriptionLabel)
         wrapperView.addSubview(verifiedBadge)
-
-        NSLayoutConstraint.activate([
-            profileNameLabel.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
-            profileNameLabel.topAnchor.constraint(equalTo: wrapperView.topAnchor),
-            profileNameLabel.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor),
-
-            verifiedBadge.leadingAnchor.constraint(equalTo: profileNameLabel.trailingAnchor, constant: .spacingXS),
-            verifiedBadge.centerYAnchor.constraint(equalTo: profileNameLabel.centerYAnchor),
-            verifiedBadge.trailingAnchor.constraint(lessThanOrEqualTo: wrapperView.trailingAnchor),
-            verifiedBadge.widthAnchor.constraint(equalToConstant: 18),
-            verifiedBadge.heightAnchor.constraint(equalToConstant: 18)
-        ])
+        wrapperView.addSubview(offlineButton)
 
         return wrapperView
     }()
@@ -115,7 +112,7 @@ public class IdentityView: UIView {
         return label
     }()
 
-    private lazy var stackView: UIStackView = {
+    private lazy var profileStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.spacing = .spacingXXS
         stackView.axis = .vertical
@@ -130,12 +127,43 @@ public class IdentityView: UIView {
         return label
     }()
 
+    private lazy var offlineButton: UIButton = {
+        let button = Button(style: .default, size: .small)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setContentCompressionResistancePriority(.required, for: .horizontal)
+        button.addTarget(self, action: #selector(offlineButtonTapped), for: .touchUpInside)
+        button.isHidden = true
+        return button
+    }()
+
+    private lazy var nameLabelConstraints: [NSLayoutConstraint] = [
+        profileNameOrOfflineDescriptionLabel.leadingAnchor.constraint(equalTo: profileWrapperView.leadingAnchor),
+        profileNameOrOfflineDescriptionLabel.topAnchor.constraint(equalTo: profileWrapperView.topAnchor),
+        profileNameOrOfflineDescriptionLabel.bottomAnchor.constraint(equalTo: profileWrapperView.bottomAnchor)
+    ]
+
+    private lazy var anonymousNameLabelConstraints: [NSLayoutConstraint] = [
+        profileNameOrOfflineDescriptionLabel.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor),
+    ]
+
     private lazy var descriptionLabelConstraints: [NSLayoutConstraint] = [
         descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-        descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: profileImageView.bottomAnchor, constant: .spacingM),
-        descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: stackView.bottomAnchor, constant: .spacingM),
+        descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: profileStackView.bottomAnchor, constant: .spacingM),
         descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
         descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM)
+    ]
+
+    private lazy var offlineDescriptionLabelConstraint: [NSLayoutConstraint] = [
+        offlineButton.topAnchor.constraint(equalTo: profileWrapperView.topAnchor),
+        offlineButton.trailingAnchor.constraint(equalTo: profileWrapperView.trailingAnchor),
+        profileNameOrOfflineDescriptionLabel.trailingAnchor.constraint(lessThanOrEqualTo: offlineButton.leadingAnchor, constant: -.spacingXL)
+    ]
+
+    private lazy var verifiedBadgeConstraint: [NSLayoutConstraint] = [
+        verifiedBadge.leadingAnchor.constraint(equalTo: profileNameOrOfflineDescriptionLabel.trailingAnchor, constant: .spacingXS),
+        verifiedBadge.centerYAnchor.constraint(equalTo: profileNameOrOfflineDescriptionLabel.centerYAnchor),
+        verifiedBadge.widthAnchor.constraint(equalToConstant: 18),
+        verifiedBadge.heightAnchor.constraint(equalToConstant: 18)
     ]
 
     // MARK: - Setup
@@ -161,12 +189,12 @@ public class IdentityView: UIView {
         layer.cornerRadius = 8
         backgroundColor = .bgSecondary
 
-        addSubview(stackView)
+        addSubview(profileStackView)
         addSubview(profileImageView)
         addSubview(descriptionLabel)
 
-        stackView.addArrangedSubview(profileNameWrapperView)
-        stackView.addArrangedSubview(subtitleLabel)
+        profileStackView.addArrangedSubview(profileWrapperView)
+        profileStackView.addArrangedSubview(subtitleLabel)
 
         NSLayoutConstraint.activate([
             profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
@@ -175,11 +203,10 @@ public class IdentityView: UIView {
             profileImageView.widthAnchor.constraint(equalToConstant: IdentityView.profileImageSize),
             profileImageView.heightAnchor.constraint(equalToConstant: IdentityView.profileImageSize),
 
-            stackView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: .spacingS),
-            stackView.topAnchor.constraint(equalTo: profileImageView.topAnchor),
-            stackView.bottomAnchor.constraint(greaterThanOrEqualTo: profileImageView.bottomAnchor),
-            stackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingM),
-            stackView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.spacingS),
+            profileStackView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: .spacingS),
+            profileStackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            profileStackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingM),
+            profileStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
         ])
     }
 
@@ -215,36 +242,64 @@ public class IdentityView: UIView {
 
     private func resetViews() {
         profileImageView.image = nil
-        profileNameLabel.text = nil
+
+        profileNameOrOfflineDescriptionLabel.text = nil
+        nameLabelConstraints.forEach { $0.isActive = false }
+        anonymousNameLabelConstraints.forEach { $0.isActive = false }
+
         verifiedBadge.isHidden = true
+        verifiedBadgeConstraint.forEach { $0.isActive = false }
 
         subtitleLabel.text = nil
         subtitleLabel.isHidden = true
 
         descriptionLabel.isHidden = true
         descriptionLabelConstraints.forEach { $0.isActive = false }
+
+        offlineButton.isHidden = true
+        offlineDescriptionLabelConstraint.forEach { $0.isActive = false }
     }
 
     private func populateViews(with viewModel: IdentityViewModel) {
-        profileNameLabel.text = viewModel.displayName
-        profileNameLabel.textColor = viewModel.displayMode == .interactible ? .textAction : .textPrimary
+        let displayMode = viewModel.displayMode
 
-        verifiedBadge.isHidden = !viewModel.isVerified
+        if displayMode == .offline {
+            profileNameOrOfflineDescriptionLabel.text = viewModel.offlineDescription
+            nameLabelConstraints.forEach { $0.isActive = true }
 
-        if viewModel.displayMode == .anonymous {
-            subtitleLabel.isHidden = true
-        } else {
+            offlineButton.isHidden = false
+            offlineButton.setTitle(viewModel.offlineButtonTitle, for: .normal)
+
             subtitleLabel.isHidden = false
             subtitleLabel.text = viewModel.subtitle
+
+            offlineDescriptionLabelConstraint.forEach { $0.isActive = true }
+        } else if displayMode == .anonymous {
+            profileNameOrOfflineDescriptionLabel.text = viewModel.displayName
+            anonymousNameLabelConstraints.forEach { $0.isActive = true }
+
+            subtitleLabel.isHidden = true
+        } else {
+            // For all other display modes: interactible and nonInteractible
+            profileNameOrOfflineDescriptionLabel.text = viewModel.displayName
+            nameLabelConstraints.forEach { $0.isActive = true }
+
+
+            // Hide the badge icon if profile is not verified
+            let hideVerifiedBadge = !viewModel.isVerified
+
+            verifiedBadge.isHidden = hideVerifiedBadge
+            verifiedBadgeConstraint.forEach { $0.isActive = !hideVerifiedBadge }
+
+            subtitleLabel.isHidden = false
+            subtitleLabel.text = viewModel.subtitle
+
+            let showDescription = (viewModel.description != nil && !hideDescription)
+            descriptionLabel.isHidden = !showDescription
+            descriptionLabel.text = viewModel.description
+            descriptionLabelConstraints.forEach { $0.isActive = showDescription }
         }
-
-        let showDescription = viewModel.description != nil && !hideDescription
-        descriptionLabel.isHidden = !showDescription
-        descriptionLabel.text = viewModel.description
-        descriptionLabelConstraints.forEach { $0.isActive = showDescription }
     }
-
-    // MARK: - Private methods
 
     private func loadProfileImage() {
         if let profileImage = viewModel?.profileImage {
@@ -276,7 +331,13 @@ public class IdentityView: UIView {
         })
     }
 
+    // MARK: - Actions
+
     @objc private func viewWasTapped() {
         delegate?.identityViewWasTapped(self)
+    }
+
+    @objc private func offlineButtonTapped() {
+        delegate?.identityViewDidTapOfflineButton()
     }
 }

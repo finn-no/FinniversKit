@@ -28,6 +28,7 @@ enum ImageAsset: String {
     case emptyPersonalNotificationsIcon
     case emptySavedSearchNotificationsIcon
     case heartMini
+    case schibstedFooter
     case splashLetters1
     case splashLetters2
     case splashLetters3
@@ -43,6 +44,7 @@ enum ImageAsset: String {
             .emptyPersonalNotificationsIcon,
             .emptySavedSearchNotificationsIcon,
             .heartMini,
+            .schibstedFooter,
             .splashLetters1,
             .splashLetters2,
             .splashLetters3,
