@@ -6,6 +6,8 @@ import FinniversKit
 
 public class ConfettiView: UIView {
 
+    // MARK: - Private properties
+
     private let confettiImages: [UIImage] = [
         .init(named: .confetti1),
         .init(named: .confetti2)
@@ -17,6 +19,8 @@ public class ConfettiView: UIView {
         .pea,
         .watermelon
     ]
+
+    // MARK: - Init
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,6 +36,8 @@ public class ConfettiView: UIView {
         isUserInteractionEnabled = false
     }
 
+    // MARK: - Public methods
+
     public func start(withDuration duration: TimeInterval = 0.75, completion: (() -> Void)? = nil) {
         let emitterLayer = createConfettiEmitterLayer()
 
@@ -45,6 +51,8 @@ public class ConfettiView: UIView {
             }
         )
     }
+
+    // MARK: - Private methods
 
     private func createConfettiEmitterLayer() -> CAEmitterLayer {
         let emitterLayer = CAEmitterLayer()
