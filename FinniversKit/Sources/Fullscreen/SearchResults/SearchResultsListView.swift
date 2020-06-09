@@ -3,6 +3,7 @@ import Foundation
 protocol SearchResultsListViewDelegate: AnyObject {
     func searchResultsListView(_ searchResultsListView: SearchResultsListView, didSelectSearchAt index: Int)
     func searchResultsListView(_ searchResultsListView: SearchResultsListView, didDeleteRowAt index: Int)
+    func searchResultsListViewDidTapButton(_ searchResultsListView: SearchResultsListView)
 }
 
 public protocol SearchResultsListViewModel {
@@ -20,6 +21,12 @@ class SearchResultsListView: UIView {
         stackView.distribution = .fill
         stackView.alignment = .fill
         return stackView
+    }()
+
+    private lazy var button: Button = {
+        let button = Button(style: .flat, withAutoLayout: true)
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        return button
     }()
 
     weak var delegate: SearchResultsListViewDelegate?
@@ -40,12 +47,22 @@ class SearchResultsListView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(stackView)
+        addSubview(button)
+
+        if let buttonTitle = viewModel.buttonTitle {
+            button.setTitle(buttonTitle, for: .normal)
+        } else {
+            button.isHidden = true
+        }
 
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXS),
             stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
+
+            button.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .spacingM),
+            button.centerXAnchor.constraint(equalTo: centerXAnchor),
+            button.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
         ])
     }
 
@@ -57,6 +74,10 @@ class SearchResultsListView: UIView {
             rowView.configure(with: row)
             stackView.addArrangedSubview(rowView)
         }
+    }
+
+    @objc func buttonTapped() {
+        delegate?.searchResultsListViewDidTapButton(self)
     }
 }
 

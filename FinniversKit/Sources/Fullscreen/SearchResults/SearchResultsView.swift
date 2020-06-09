@@ -10,6 +10,7 @@ public protocol SearchResultsViewDataSource: AnyObject {
 public protocol SearchResultsViewDelegate: AnyObject {
     func searchResultsView(_ view: SearchResultsView, segment: Int, didSelectSearchAt index: Int)
     func searchResultsView(_ view: SearchResultsView, segment: Int, didDeleteSearchAt index: Int)
+    func searchResultsView(_ view: SearchResultsView, didTapButtonForSegment segment: Int)
     func searchResultsView(_ view: SearchResultsView, didSelectSegment segment: Int)
 }
 
@@ -158,5 +159,10 @@ extension SearchResultsView: SearchResultsListViewDelegate {
     func searchResultsListView(_ searchResultsListView: SearchResultsListView, didDeleteRowAt index: Int) {
         guard let segment = segmentViews.firstIndex(of: searchResultsListView) else { return }
         delegate?.searchResultsView(self, segment: segment, didDeleteSearchAt: index)
+    }
+
+    func searchResultsListViewDidTapButton(_ searchResultsListView: SearchResultsListView) {
+        guard let segment = segmentViews.firstIndex(of: searchResultsListView) else { return }
+        delegate?.searchResultsView(self, didTapButtonForSegment: segment)
     }
 }
