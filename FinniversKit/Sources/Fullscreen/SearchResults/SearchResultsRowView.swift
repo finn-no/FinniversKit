@@ -24,7 +24,8 @@ class SearchResultsRowView: UIView {
     }()
 
     private lazy var button: Button = {
-        let button = Button(style: .flat, withAutoLayout: true)
+        let style = Button.Style.flat.overrideStyle(textColor: .textPrimary)
+        let button = Button(style: style, withAutoLayout: true)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         button.setContentHuggingPriority(.defaultLow, for: .horizontal)
         button.contentHorizontalAlignment = .leading
