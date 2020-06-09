@@ -17,7 +17,7 @@ class SearchResultsRowView: UIView {
 
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = icon.withRenderingMode(.alwaysTemplate)
+        imageView.image = viewModel.icon.withRenderingMode(.alwaysTemplate)
         imageView.tintColor = .iconColor
         imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         return imageView
@@ -49,14 +49,12 @@ class SearchResultsRowView: UIView {
         return imageView
     }()
 
-    private var icon: UIImage
-    private let showDeleteRowIcon: Bool
+    private let viewModel: SearchResultsListViewModel
 
     weak var delegate: SearchResultsRowViewDelegate?
 
-    init(icon: UIImage, showDeleteRowIcon: Bool) {
-        self.icon = icon
-        self.showDeleteRowIcon = showDeleteRowIcon
+    init(viewModel: SearchResultsListViewModel) {
+        self.viewModel = viewModel
         super.init(frame: .zero)
         setup()
     }
@@ -75,7 +73,7 @@ class SearchResultsRowView: UIView {
         stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(button)
 
-        if showDeleteRowIcon {
+        if viewModel.showDeleteRowIcons {
             stackView.addArrangedSubview(deleteIconImageView)
         }
 

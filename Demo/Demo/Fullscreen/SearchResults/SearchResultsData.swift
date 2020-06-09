@@ -1,13 +1,13 @@
 import FinniversKit
 
-class RecentSearchData: SearchResultsViewModel {
+class RecentSearchData: SearchResultsListViewModel {
     public let title = "Siste søk"
     public let icon = UIImage(named: .republish)
     public let showDeleteRowIcons = true
     public let buttonTitle: String? = "Fjern all søkehistorikk"
 }
 
-class SavedSearchData: SearchResultsViewModel {
+class SavedSearchData: SearchResultsListViewModel {
     public let title = "Lagrede søk"
     public let icon = UIImage(named: .magnifyingGlass)
     public let showDeleteRowIcons = false

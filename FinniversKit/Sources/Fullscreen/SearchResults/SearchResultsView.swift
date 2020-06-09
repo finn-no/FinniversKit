@@ -4,20 +4,13 @@ public protocol SearchResultsViewDataSource: AnyObject {
     func numberOfSegments(in view: SearchResultsView) -> Int
     func searchResultsView(_ view: SearchResultsView, numberOfRowsInSegment segment: Int) -> Int
     func searchResultsView(_ view: SearchResultsView, segment: Int, textForRow row: Int) -> String
-    func searchResultsView(_ view: SearchResultsView, viewModelFor segment: Int) -> SearchResultsViewModel
+    func searchResultsView(_ view: SearchResultsView, viewModelFor segment: Int) -> SearchResultsListViewModel
 }
 
 public protocol SearchResultsViewDelegate: AnyObject {
     func searchResultsView(_ view: SearchResultsView, segment: Int, didSelectSearchAt index: Int)
     func searchResultsView(_ view: SearchResultsView, segment: Int, didDeleteSearchAt index: Int)
     func searchResultsView(_ view: SearchResultsView, didSelectSegment segment: Int)
-}
-
-public protocol SearchResultsViewModel {
-    var title: String { get }
-    var icon: UIImage { get }
-    var showDeleteRowIcons: Bool { get }
-    var buttonTitle: String? { get }
 }
 
 public class SearchResultsView: UIView {
@@ -35,13 +28,6 @@ public class SearchResultsView: UIView {
         let segmentedControl = UISegmentedControl(withAutoLayout: true)
         segmentedControl.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
         return segmentedControl
-    }()
-
-    private lazy var separatorLine: UIView = {
-        let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .tableViewSeparator
-        view.alpha = 0
-        return view
     }()
 
     private var segmentViews = [SearchResultsListView]()
@@ -90,7 +76,6 @@ public class SearchResultsView: UIView {
 
     private func setup() {
         addSubview(segmentedControl)
-        addSubview(separatorLine)
         addSubview(scrollView)
 
         NSLayoutConstraint.activate([
@@ -98,12 +83,7 @@ public class SearchResultsView: UIView {
             segmentedControl.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
             segmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
-            separatorLine.leadingAnchor.constraint(equalTo: leadingAnchor),
-            separatorLine.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: .spacingM),
-            separatorLine.trailingAnchor.constraint(equalTo: trailingAnchor),
-            separatorLine.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
-
-            scrollView.topAnchor.constraint(equalTo: separatorLine.bottomAnchor),
+            scrollView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: .spacingM),
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: segmentSpacing),
             scrollView.bottomAnchor.constraint(equalTo: bottomAnchor)
@@ -125,7 +105,8 @@ public class SearchResultsView: UIView {
             segmentedControl.insertSegment(withTitle: viewModel.title, at: segment, animated: false)
             segmentTitles?.append(viewModel.title)
 
-            let view = SearchResultsListView(icon: viewModel.icon, showDeleteRowIcons: viewModel.showDeleteRowIcons)
+            let view = SearchResultsListView(viewModel: viewModel)
+
             view.delegate = self
             segmentViews.append(view)
             scrollView.addSubview(view)

@@ -57,7 +57,7 @@ extension SearchResultsDemoView: SearchResultsViewDataSource {
         segment == 0 ? lastSearches[row] : savedSearches[row]
     }
 
-    func searchResultsView(_ view: SearchResultsView, viewModelFor segment: Int) -> SearchResultsViewModel {
+    func searchResultsView(_ view: SearchResultsView, viewModelFor segment: Int) -> SearchResultsListViewModel {
         segment == 0 ? RecentSearchData() : SavedSearchData()
     }
 }

@@ -5,6 +5,13 @@ protocol SearchResultsListViewDelegate: AnyObject {
     func searchResultsListView(_ searchResultsListView: SearchResultsListView, didDeleteRowAt index: Int)
 }
 
+public protocol SearchResultsListViewModel {
+    var title: String { get }
+    var icon: UIImage { get }
+    var showDeleteRowIcons: Bool { get }
+    var buttonTitle: String? { get }
+}
+
 class SearchResultsListView: UIView {
 
     private lazy var stackView: UIStackView = {
@@ -17,12 +24,10 @@ class SearchResultsListView: UIView {
 
     weak var delegate: SearchResultsListViewDelegate?
 
-    let icon: UIImage
-    let showDeleteRowIcons: Bool
+    let viewModel: SearchResultsListViewModel
 
-    init(icon: UIImage, showDeleteRowIcons: Bool) {
-        self.icon = icon
-        self.showDeleteRowIcons = showDeleteRowIcons
+    init(viewModel: SearchResultsListViewModel) {
+        self.viewModel = viewModel
         super.init(frame: .zero)
         setup()
     }
@@ -47,7 +52,7 @@ class SearchResultsListView: UIView {
     func configure(with rows: [String]) {
         stackView.removeArrangedSubviews()
         for row in rows {
-            let rowView = SearchResultsRowView(icon: icon, showDeleteRowIcon: showDeleteRowIcons)
+            let rowView = SearchResultsRowView(viewModel: viewModel)
             rowView.delegate = self
             rowView.configure(with: row)
             stackView.addArrangedSubview(rowView)
