@@ -6,10 +6,12 @@ public protocol SearchResultsViewDataSource: AnyObject {
     func searchResultsView(_ view: SearchResultsView, iconForSegment segment: Int) -> UIImage
     func searchResultsView(_ view: SearchResultsView, numberOfRowsInSegment segment: Int) -> Int
     func searchResultsView(_ view: SearchResultsView, segment: Int, textForRow row: Int) -> String
+    func searchResultsViewCanDeleteRows(_ view: SearchResultsView, for segment: Int) -> Bool
 }
 
 public protocol SearchResultsViewDelegate: AnyObject {
     func searchResultsView(_ view: SearchResultsView, segment: Int, didSelectSearchAt index: Int)
+    func searchResultsView(_ view: SearchResultsView, segment: Int, didDeleteSearchAt index: Int)
     func searchResultsView(_ view: SearchResultsView, didSelectSegment segment: Int)
 }
 
@@ -48,8 +50,6 @@ public class SearchResultsView: UIView {
         scrollView.delegate = self
         return scrollView
     }()
-
-    private lazy var listView = SearchResultsListView(icon: UIImage(named: .magnifyingGlass))
 
     private let segmentSpacing: CGFloat = .spacingS
 
@@ -118,10 +118,11 @@ public class SearchResultsView: UIView {
         for segment in 0 ..< dataSource.numberOfSegments(in: self) {
             let title = dataSource.searchResultsView(self, titleForSegment: segment)
             let icon = dataSource.searchResultsView(self, iconForSegment: segment)
+            let showDeleteRowIcons = dataSource.searchResultsViewCanDeleteRows(self, for: segment)
             segmentedControl.insertSegment(withTitle: title, at: segment, animated: false)
             segmentTitles?.append(title)
 
-            let view = SearchResultsListView(icon: icon)
+            let view = SearchResultsListView(icon: icon, showDeleteRowIcons: showDeleteRowIcons)
             view.delegate = self
             segmentViews.append(view)
             scrollView.addSubview(view)
@@ -168,5 +169,10 @@ extension SearchResultsView: SearchResultsListViewDelegate {
     func searchResultsListView(_ searchResultsListView: SearchResultsListView, didSelectSearchAt index: Int) {
         guard let segment = segmentViews.firstIndex(of: searchResultsListView) else { return }
         delegate?.searchResultsView(self, segment: segment, didSelectSearchAt: index)
+    }
+
+    func searchResultsListView(_ searchResultsListView: SearchResultsListView, didDeleteRowAt index: Int) {
+        guard let segment = segmentViews.firstIndex(of: searchResultsListView) else { return }
+        delegate?.searchResultsView(self, segment: segment, didDeleteSearchAt: index)
     }
 }

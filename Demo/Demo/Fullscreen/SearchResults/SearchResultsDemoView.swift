@@ -50,18 +50,22 @@ extension SearchResultsDemoView: SearchResultsViewDataSource {
     }
 
     func searchResultsView(_ view: SearchResultsView, titleForSegment segment: Int) -> String {
-        return segment == 0 ? "Siste søk" : "Lagrede søk"
+        segment == 0 ? "Siste søk" : "Lagrede søk"
     }
 
     func searchResultsView(_ view: SearchResultsView, iconForSegment segment: Int) -> UIImage {
-        return segment == 0 ? UIImage(named: .republish) : UIImage(named: .magnifyingGlass)
+        segment == 0 ? UIImage(named: .republish) : UIImage(named: .magnifyingGlass)
     }
 
     func searchResultsView(_ view: SearchResultsView, numberOfRowsInSegment segment: Int) -> Int {
-        return segment == 0 ? lastSearches.count : savedSearches.count
+        segment == 0 ? lastSearches.count : savedSearches.count
     }
 
     func searchResultsView(_ view: SearchResultsView, segment: Int, textForRow row: Int) -> String {
-        return segment == 0 ? lastSearches[row] : savedSearches[row]
+        segment == 0 ? lastSearches[row] : savedSearches[row]
+    }
+
+    func searchResultsViewCanDeleteRows(_ view: SearchResultsView, for segment: Int) -> Bool {
+        segment == 0
     }
 }
