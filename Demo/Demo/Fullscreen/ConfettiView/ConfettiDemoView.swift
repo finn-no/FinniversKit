@@ -7,18 +7,33 @@ import FinniversKit
 
 class ConfettiDemoView: UIView {
 
-    private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView))
+    // MARK: - Private properties
 
-    private lazy var label: Label = {
-        let label = Label(style: .bodyRegular, withAutoLayout: true)
-        label.text = "Tap to start confetti animation"
-        return label
+    private var animationDuration: Float! {
+        didSet {
+            let buttonTitle = String(format: "Let it rain for %.2fs! 🎉", animationDuration)
+            button.setTitle(buttonTitle, for: .normal)
+        }
+    }
+
+    private lazy var confettiView = ConfettiView(withAutoLayout: true)
+
+    private lazy var button: Button = {
+        let button = Button(style: .default, withAutoLayout: true)
+        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        return button
     }()
 
-    private lazy var confettiView: ConfettiView = {
-        let view = ConfettiView(withAutoLayout: true)
-        return view
+    private lazy var slider: UISlider = {
+        let slider = UISlider(withAutoLayout: true)
+        slider.addTarget(self, action: #selector(didUpdateAnimationDuration), for: .valueChanged)
+        slider.setValue(animationDuration, animated: false)
+        slider.minimumValue = 0.5
+        slider.maximumValue = 10
+        return slider
     }()
+
+    // MARK: - Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,23 +45,38 @@ class ConfettiDemoView: UIView {
     }
 
     private func setup() {
-        addSubview(label)
+        animationDuration = 0.75
+
+        addSubview(slider)
+        addSubview(button)
         addSubview(confettiView)
-        addGestureRecognizer(tapGestureRecognizer)
 
         confettiView.fillInSuperview()
 
+        let buttonWidthConstraint = button.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.75)
+        buttonWidthConstraint.priority = .init(999)
+
         NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: centerYAnchor)
+            slider.widthAnchor.constraint(equalTo: button.widthAnchor),
+            slider.centerXAnchor.constraint(equalTo: centerXAnchor),
+
+            button.topAnchor.constraint(equalTo: slider.bottomAnchor, constant: .spacingM),
+            buttonWidthConstraint,
+            button.widthAnchor.constraint(lessThanOrEqualToConstant: 300),
+            button.centerXAnchor.constraint(equalTo: centerXAnchor),
+            button.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 
-    @objc private func didTapView() {
-        label.text = "Look at all the confetti 🎉"
+    // MARK: - Private methods
 
-        confettiView.start(withDuration: 0.75, completion: { [weak self] in
-            self?.label.text = "Done with animation, tap to show again"
+    @objc private func didTapButton() {
+        confettiView.start(withDuration: TimeInterval(animationDuration), completion: {
+            print("Confetti rain completed")
         })
+    }
+
+    @objc private func didUpdateAnimationDuration(_ sender: UISlider) {
+        animationDuration = sender.value
     }
 }
