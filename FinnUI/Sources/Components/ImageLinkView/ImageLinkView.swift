@@ -10,6 +10,13 @@ public class ImageLinkView: UIView {
         case virtualViewing
     }
 
+    // MARK: - Public properties
+
+    public var remoteImageViewDataSource: RemoteImageViewDataSource? {
+        get { imageView.dataSource }
+        set { imageView.dataSource = newValue }
+    }
+
     // MARK: - Private properties
 
     private lazy var overlayView = OverlayView(withAutoLayout: true)
@@ -20,8 +27,8 @@ public class ImageLinkView: UIView {
         return label
     }()
 
-    private lazy var imageView: UIImageView = {
-        let imageView = UIImageView(withAutoLayout: true)
+    private lazy var imageView: RemoteImageView = {
+        let imageView = RemoteImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = .spacingS
@@ -67,7 +74,7 @@ public class ImageLinkView: UIView {
 
     public func configure(with viewModel: ImageLinkViewModel) {
         descriptionLabel.text = viewModel.description
-        imageView.image = viewModel.image
+        imageView.loadImage(for: viewModel.imageUrl, imageWidth: imageView.frame.width, loadingColor: viewModel.loadingColor, fallbackImage: viewModel.fallbackImage)
 
         switch viewModel.overlayKind {
         case .video?:
