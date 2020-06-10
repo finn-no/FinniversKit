@@ -110,7 +110,7 @@ private class OverlayView: UIView {
 
     private func setup() {
         layer.cornerRadius = .spacingS
-        backgroundColor = UIColor.licorice.withAlphaComponent(0.8)
+        backgroundColor = UIColor.black.withAlphaComponent(0.8)
         addSubview(iconImageView)
         iconImageView.fillInSuperview(margin: .spacingS)
 
