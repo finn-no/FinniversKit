@@ -68,7 +68,7 @@ extension UserAdEmphasizedActionCellDemoView: UITableViewDataSource {
         let cell = tableView.dequeue(UserAdEmphasizedActionTableViewCell.self, for: indexPath)
         cell.delegate = self
         cell.configure(with: viewModels[indexPath.row])
-        cell.remoteImageViewDataSource = self
+        cell.remoteImageViewDataSource = DemoRemoteImageViewDataSource.shared
         cell.loadingColor = .toothPaste
         cell.shouldShowAction = !shouldCollapseAction
         return cell
@@ -134,35 +134,4 @@ extension UserAdEmphasizedActionCellDemoView: UserAdEmphasizedActionTableViewCel
             }
         }
     }
-}
-
-// MARK: - RemoteImageViewDataSource
-
-extension UserAdEmphasizedActionCellDemoView: RemoteImageViewDataSource {
-    func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
-        return nil
-    }
-
-    func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
-        guard let url = URL(string: imagePath) else {
-            completion(nil)
-            return
-        }
-
-        // Demo code only.
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
-            usleep(50_000)
-            DispatchQueue.main.async {
-                if let data = data, let image = UIImage(data: data) {
-                    completion(image)
-                } else {
-                    completion(nil)
-                }
-            }
-        }
-
-        task.resume()
-    }
-
-    func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }

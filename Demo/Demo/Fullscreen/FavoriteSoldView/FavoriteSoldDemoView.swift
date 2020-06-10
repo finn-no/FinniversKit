@@ -14,11 +14,11 @@ public class FavoriteSoldDemoView: UIView {
         let view = FavoriteSoldView(favoriteSoldViewDelegate: self,
                                     adsGridViewDelegate: self,
                                     adsGridViewDataSource: self,
-                                    remoteImageViewDataSource: self)
+                                    remoteImageViewDataSource: DemoRemoteImageViewDataSource.shared)
         view.configure(with: FavoriteSoldDefaultData())
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
-    }() 
+    }()
 
     // MARK: - Init
 
@@ -127,25 +127,6 @@ extension FavoriteSoldDemoView: AdsGridViewDataSource {
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
-}
-
-// MARK: - RemoteImageViewDataSource
-
-extension FavoriteSoldDemoView: RemoteImageViewDataSource {
-    public func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
-        return nil
-    }
-
-    public func remoteImageView(
-        _ view: RemoteImageView,
-        loadImageWithPath imagePath: String,
-        imageWidth: CGFloat,
-        completion: @escaping ((UIImage?) -> Void)
-    ) {
-        return loadImageWithPath(imagePath, imageWidth: imageWidth, completion: completion)
-    }
-
-    public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
 
 private struct FavoriteSoldDefaultData: FavoriteSoldViewModel {

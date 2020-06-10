@@ -11,7 +11,7 @@ class NotificationCenterSearchDemoView: UIView {
         let searchView = NotificationCenterSearchView(withAutoLayout: true)
         searchView.dataSource = self
         searchView.delegate = self
-        searchView.remoteImageViewDataSource = self
+        searchView.remoteImageViewDataSource = DemoRemoteImageViewDataSource.shared
         return searchView
     }()
 
@@ -61,35 +61,5 @@ extension NotificationCenterSearchDemoView: NotificationCenterSearchViewDataSour
 
     func notificationCenterSearchView(_ view: NotificationCenterSearchView, modelForHeaderInSection section: Int) -> NotificationCenterSearchViewModel {
         NotificationCenterSearchViewModel(title: "\"Drømmebilen\"", rowCountText: "15 annonser", searchButtonTitle: "Gå til søket")
-    }
-}
-
-extension NotificationCenterSearchDemoView: RemoteImageViewDataSource {
-    func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
-        nil
-    }
-
-    func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
-        guard let url = URL(string: imagePath) else {
-            completion(nil)
-            return
-        }
-
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
-            usleep(50_000)
-            DispatchQueue.main.async {
-                if let data = data, let image = UIImage(data: data) {
-                    completion(image)
-                } else {
-                    completion(nil)
-                }
-            }
-        }
-
-        task.resume()
-    }
-
-    func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {
-
     }
 }

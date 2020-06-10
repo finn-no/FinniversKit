@@ -28,7 +28,7 @@ final class NotificationCenterDemoView: UIView, Tweakable {
         notificationCenterView.selectedSegment = 1
         notificationCenterView.dataSource = self
         notificationCenterView.delegate = self
-        notificationCenterView.remoteImageViewDataSource = self
+        notificationCenterView.remoteImageViewDataSource = DemoRemoteImageViewDataSource.shared
         return notificationCenterView
     }()
 
@@ -122,35 +122,5 @@ extension NotificationCenterDemoView: NotificationCenterViewDelegate {
 extension NotificationCenterDemoView: FeedbackViewDelegate {
     func feedbackView(_ feedbackView: FeedbackView, didSelectButtonOfType buttonType: FeedbackView.ButtonType, forState state: FeedbackView.State) {
         print("Did select button type: \(buttonType)")
-    }
-}
-
-extension NotificationCenterDemoView: RemoteImageViewDataSource {
-    func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
-        nil
-    }
-
-    func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
-        guard let url = URL(string: imagePath) else {
-            completion(nil)
-            return
-        }
-
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
-            usleep(50_000)
-            DispatchQueue.main.async {
-                if let data = data, let image = UIImage(data: data) {
-                    completion(image)
-                } else {
-                    completion(nil)
-                }
-            }
-        }
-
-        task.resume()
-    }
-
-    func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {
-
     }
 }

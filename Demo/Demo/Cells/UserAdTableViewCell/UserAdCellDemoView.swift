@@ -63,7 +63,7 @@ extension UserAdCellDemoView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(UserAdTableViewCell.self, for: indexPath)
         cell.configure(with: style, model: viewModels[indexPath.row])
-        cell.remoteImageViewDataSource = self
+        cell.remoteImageViewDataSource = DemoRemoteImageViewDataSource.shared
         cell.loadingColor = .toothPaste
         cell.accessoryType = indexPath.row == viewModels.count - 1 ? .disclosureIndicator : .none
 
@@ -75,34 +75,4 @@ extension UserAdCellDemoView: UITableViewDataSource {
             cell.loadImage()
         }
     }
-}
-
-extension UserAdCellDemoView: RemoteImageViewDataSource {
-    func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
-        return nil
-    }
-
-    func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
-        guard let url = URL(string: imagePath) else {
-            completion(nil)
-            return
-        }
-
-        // Demo code only.
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
-            usleep(50_000)
-            DispatchQueue.main.async {
-                if let data = data, let image = UIImage(data: data) {
-                    completion(image)
-                } else {
-                    completion(nil)
-                }
-            }
-        }
-
-        task.resume()
-    }
-
-    func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
-
 }

@@ -9,7 +9,7 @@ final class FavoriteAdCommentInputDemoView: UIView {
         let view = FavoriteAdCommentInputView(
             commentViewModel: .default,
             adViewModel: FavoriteAdsFactory.create().last!,
-            remoteImageViewDataSource: self,
+            remoteImageViewDataSource: DemoRemoteImageViewDataSource.shared,
             delegate: self
         )
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -43,42 +43,6 @@ extension FavoriteAdCommentInputDemoView: FavoriteAdCommentInputViewDelegate {
     func favoriteAdCommentInputView(_ view: FavoriteAdCommentInputView, didScroll scrollView: UIScrollView) {
         print("Did scroll")
     }
-}
-
-// MARK: - RemoteImageViewDataSource
-
-extension FavoriteAdCommentInputDemoView: RemoteImageViewDataSource {
-    func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
-        return nil
-    }
-
-    func remoteImageView(
-        _ view: RemoteImageView,
-        loadImageWithPath imagePath: String,
-        imageWidth: CGFloat,
-        completion: @escaping ((UIImage?) -> Void)
-    ) {
-        guard let url = URL(string: imagePath) else {
-            completion(nil)
-            return
-        }
-
-        // Demo code only.
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
-            usleep(50_000)
-            DispatchQueue.main.async {
-                if let data = data, let image = UIImage(data: data) {
-                    completion(image)
-                } else {
-                    completion(nil)
-                }
-            }
-        }
-
-        task.resume()
-    }
-
-    func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
 
 // MARK: - Private extensions
