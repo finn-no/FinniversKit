@@ -25,9 +25,14 @@ public class ImageLinkView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var overlayView = OverlayView(withAutoLayout: true)
     private var viewModel: ImageLinkViewModel?
 
+    private lazy var overlayView: OverlayView = {
+        let view = OverlayView(withAutoLayout: true)
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+        return view
+    }()
 
     private lazy var descriptionLabel: Label = {
         let label = Label(style: .caption, withAutoLayout: true)
@@ -40,6 +45,8 @@ public class ImageLinkView: UIView {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = .spacingS
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
         return imageView
     }()
 
@@ -95,6 +102,13 @@ public class ImageLinkView: UIView {
         default:
             overlayView.isHidden = true
         }
+    }
+
+    // MARK: - Actions
+
+    @objc private func handleTap() {
+        guard let url = viewModel?.url else { return }
+        delegate?.imageLinkViewWasSelected(self, url: url)
     }
 }
 
