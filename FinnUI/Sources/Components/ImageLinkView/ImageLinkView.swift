@@ -26,6 +26,8 @@ public class ImageLinkView: UIView {
     // MARK: - Private properties
 
     private lazy var overlayView = OverlayView(withAutoLayout: true)
+    private var viewModel: ImageLinkViewModel?
+
 
     private lazy var descriptionLabel: Label = {
         let label = Label(style: .caption, withAutoLayout: true)
@@ -79,6 +81,7 @@ public class ImageLinkView: UIView {
     // MARK: - Public methods
 
     public func configure(with viewModel: ImageLinkViewModel) {
+        self.viewModel = viewModel
         descriptionLabel.text = viewModel.description
         imageView.loadImage(for: viewModel.imageUrl, imageWidth: imageView.frame.width, loadingColor: viewModel.loadingColor, fallbackImage: viewModel.fallbackImage)
 
