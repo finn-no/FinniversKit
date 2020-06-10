@@ -4,6 +4,10 @@
 
 import FinniversKit
 
+public protocol ImageLinkViewDelegate: AnyObject {
+    func imageLinkViewWasSelected(_ view: ImageLinkView, url: String)
+}
+
 public class ImageLinkView: UIView {
     public enum OverlayKind {
         case video
@@ -11,6 +15,8 @@ public class ImageLinkView: UIView {
     }
 
     // MARK: - Public properties
+
+    public weak var delegate: ImageLinkViewDelegate?
 
     public var remoteImageViewDataSource: RemoteImageViewDataSource? {
         get { imageView.dataSource }
