@@ -30,7 +30,7 @@ public class ImageLinkViewDemo: UIView {
     private func setup() {
         let views = viewModels.map { viewModel -> ImageLinkView in
             let view = ImageLinkView(withAutoLayout: true)
-            view.remoteImageViewDataSource = self
+            view.remoteImageViewDataSource = DemoRemoteImageViewDataSource.shared
             view.configure(with: viewModel)
             return view
         }
@@ -43,37 +43,6 @@ public class ImageLinkViewDemo: UIView {
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
         ])
-    }
-}
-
-// MARK: - RemoteImageTableViewCellDataSource
-
-extension ImageLinkViewDemo: RemoteImageViewDataSource {
-    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping (UIImage?) -> Void) {
-        guard let url = URL(string: imagePath) else {
-            completion(nil)
-            return
-        }
-
-        // Demo code only.
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
-            usleep(50_000)
-            DispatchQueue.main.async {
-                if let data = data, let image = UIImage(data: data) {
-                    completion(image)
-                } else {
-                    completion(nil)
-                }
-            }
-        }
-
-        task.resume()
-    }
-
-    public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
-
-    public func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
-        nil
     }
 }
 
