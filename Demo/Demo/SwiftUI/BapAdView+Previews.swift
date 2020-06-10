@@ -5,6 +5,7 @@
 import SwiftUI
 @testable import FinnUI
 
+// swiftlint:disable superfluous_disable_command type_name
 @available(iOS 13.0.0, *)
 struct NewBapAdView_Previews: PreviewProvider {
     static var previews: some View {
