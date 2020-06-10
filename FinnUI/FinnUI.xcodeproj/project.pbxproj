@@ -15,6 +15,8 @@
 		46DE7D5D242B9BCB00DB1707 /* FinnUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46DE7D53242B9BCB00DB1707 /* FinnUI.framework */; };
 		46DE7D64242B9BCB00DB1707 /* FinnUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 46DE7D56242B9BCB00DB1707 /* FinnUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D68078190A301C047AD77D7 /* ChatAvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D68005160E043018354D1D4 /* ChatAvailabilityView.swift */; };
+		8D6809470298B377E3ECB40D /* SaveSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680AB1F0F6BADB041131C2 /* SaveSearchView.swift */; };
+		8D6809ACFE4FFDA0D520F6A5 /* SaveSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680EE8C572248BEA776A69 /* SaveSearchViewModel.swift */; };
 		91D637D72488F68D0066D4D0 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D637D62488F68D0066D4D0 /* ConfettiView.swift */; };
 		9B58C0F6246550440029FAF5 /* ButtonStyle+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B58C0F4246550010029FAF5 /* ButtonStyle+Previews.swift */; };
 		DA0E186F2459C23600C0616E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E186E2459C23600C0616E /* SettingsView.swift */; };
@@ -71,6 +73,8 @@
 		46DE7D5C242B9BCB00DB1707 /* FinnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinnUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46DE7D63242B9BCB00DB1707 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D68005160E043018354D1D4 /* ChatAvailabilityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAvailabilityView.swift; sourceTree = "<group>"; };
+		8D680AB1F0F6BADB041131C2 /* SaveSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveSearchView.swift; sourceTree = "<group>"; };
+		8D680EE8C572248BEA776A69 /* SaveSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveSearchViewModel.swift; sourceTree = "<group>"; };
 		91D637D62488F68D0066D4D0 /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 		9B58C0F4246550010029FAF5 /* ButtonStyle+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ButtonStyle+Previews.swift"; sourceTree = "<group>"; };
 		DA0E186E2459C23600C0616E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -195,11 +199,21 @@
 			path = ChatAvailability;
 			sourceTree = "<group>";
 		};
+		8D68046F9EAC6A4768E7E8A1 /* SaveSearchView */ = {
+			isa = PBXGroup;
+			children = (
+				8D680AB1F0F6BADB041131C2 /* SaveSearchView.swift */,
+				8D680EE8C572248BEA776A69 /* SaveSearchViewModel.swift */,
+			);
+			path = SaveSearchView;
+			sourceTree = "<group>";
+		};
 		8D680C65FDB2814B12D5A4EC /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				91D637D52488F6790066D4D0 /* ConfettiView */,
 				8D6802E2438E1A527CABD2CE /* ChatAvailability */,
+				8D68046F9EAC6A4768E7E8A1 /* SaveSearchView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -473,6 +487,8 @@
 				DED0A2D62469337B0016176A /* FeedbackCell.swift in Sources */,
 				DED0A08B246865E70016176A /* NotificationsCellModels.swift in Sources */,
 				469894A02434DD6F00CC84E6 /* ImageAsset.swift in Sources */,
+				8D6809470298B377E3ECB40D /* SaveSearchView.swift in Sources */,
+				8D6809ACFE4FFDA0D520F6A5 /* SaveSearchViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
