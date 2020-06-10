@@ -222,6 +222,7 @@
 		496F8C172473E7EA00AE0735 /* FavoriteSoldDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F8C162473E7EA00AE0735 /* FavoriteSoldDemoView.swift */; };
 		8D68050D50D92C1B9DEF5569 /* ImageLinkViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D68013497C884E8A020525B /* ImageLinkViewDemo.swift */; };
 		8D680753832283BAA1FD13E7 /* ChatAvailabilityDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680197B160A999652BC551 /* ChatAvailabilityDemoView.swift */; };
+		8D68077F8DD65E1EAA06CED3 /* DemoRemoteImageViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680D4E86C76225E62439BD /* DemoRemoteImageViewDataSource.swift */; };
 		9BA6C49F24336B51009D417B /* CoronaHelpDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C49E24336B51009D417B /* CoronaHelpDemoView.swift */; };
 		9BA6C4A224336B9A009D417B /* DemoWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */; };
 		DA083C2E2462BCA800B26235 /* SwiftUIDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */; };
@@ -472,6 +473,7 @@
 		496F8C162473E7EA00AE0735 /* FavoriteSoldDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSoldDemoView.swift; sourceTree = "<group>"; };
 		8D68013497C884E8A020525B /* ImageLinkViewDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLinkViewDemo.swift; sourceTree = "<group>"; };
 		8D680197B160A999652BC551 /* ChatAvailabilityDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAvailabilityDemoView.swift; sourceTree = "<group>"; };
+		8D680D4E86C76225E62439BD /* DemoRemoteImageViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoRemoteImageViewDataSource.swift; sourceTree = "<group>"; };
 		9BA6C49E24336B51009D417B /* CoronaHelpDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaHelpDemoView.swift; sourceTree = "<group>"; };
 		9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoWrapperView.swift; sourceTree = "<group>"; };
 		DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDemoViews.swift; sourceTree = "<group>"; };
@@ -553,6 +555,7 @@
 				46E7725F242CEF09008A5E93 /* MiniToastView.swift */,
 				46E77265242CEF09008A5E93 /* NavigationController.swift */,
 				46E77260242CEF09008A5E93 /* SplitViewController.swift */,
+				8D680F91D39492933509B2FB /* Utils */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1835,6 +1838,14 @@
 			path = ChatAvailability;
 			sourceTree = "<group>";
 		};
+		8D680F91D39492933509B2FB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8D680D4E86C76225E62439BD /* DemoRemoteImageViewDataSource.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		9BA6C49C24336AFF009D417B /* CoronaHelp */ = {
 			isa = PBXGroup;
 			children = (
@@ -2187,6 +2198,7 @@
 				46E7743F242CEF0A008A5E93 /* ColorDemoView.swift in Sources */,
 				8D680753832283BAA1FD13E7 /* ChatAvailabilityDemoView.swift in Sources */,
 				8D68050D50D92C1B9DEF5569 /* ImageLinkViewDemo.swift in Sources */,
+				8D68077F8DD65E1EAA06CED3 /* DemoRemoteImageViewDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
