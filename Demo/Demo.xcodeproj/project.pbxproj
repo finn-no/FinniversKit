@@ -222,6 +222,7 @@
 		46E7759E242D6A8A008A5E93 /* FinnUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E77562242CFFA5008A5E93 /* FinnUI.framework */; };
 		496F8C172473E7EA00AE0735 /* FavoriteSoldDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F8C162473E7EA00AE0735 /* FavoriteSoldDemoView.swift */; };
 		8D680753832283BAA1FD13E7 /* ChatAvailabilityDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680197B160A999652BC551 /* ChatAvailabilityDemoView.swift */; };
+		91D637DA2488F70A0066D4D0 /* ConfettiDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D637D92488F70A0066D4D0 /* ConfettiDemoView.swift */; };
 		9BA6C49F24336B51009D417B /* CoronaHelpDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C49E24336B51009D417B /* CoronaHelpDemoView.swift */; };
 		9BA6C4A224336B9A009D417B /* DemoWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */; };
 		DA083C2E2462BCA800B26235 /* SwiftUIDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */; };
@@ -471,6 +472,7 @@
 		46E77584242D4805008A5E93 /* TestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConfig.swift; sourceTree = "<group>"; };
 		496F8C162473E7EA00AE0735 /* FavoriteSoldDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSoldDemoView.swift; sourceTree = "<group>"; };
 		8D680197B160A999652BC551 /* ChatAvailabilityDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAvailabilityDemoView.swift; sourceTree = "<group>"; };
+		91D637D92488F70A0066D4D0 /* ConfettiDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiDemoView.swift; sourceTree = "<group>"; };
 		9BA6C49E24336B51009D417B /* CoronaHelpDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaHelpDemoView.swift; sourceTree = "<group>"; };
 		9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoWrapperView.swift; sourceTree = "<group>"; };
 		DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDemoViews.swift; sourceTree = "<group>"; };
@@ -596,6 +598,7 @@
 				46E772B1242CEF09008A5E93 /* AdReporter */,
 				46E772B6242CEF09008A5E93 /* BetaFeatureView */,
 				46E77289242CEF09008A5E93 /* BuyerPicker */,
+				91D637D82488F6E10066D4D0 /* ConfettiView */,
 				46E77296242CEF09008A5E93 /* ConfirmationView */,
 				46E77285242CEF09008A5E93 /* ContactForm */,
 				46E7726F242CEF09008A5E93 /* EasterEggs */,
@@ -1826,6 +1829,14 @@
 			path = ChatAvailability;
 			sourceTree = "<group>";
 		};
+		91D637D82488F6E10066D4D0 /* ConfettiView */ = {
+			isa = PBXGroup;
+			children = (
+				91D637D92488F70A0066D4D0 /* ConfettiDemoView.swift */,
+			);
+			path = ConfettiView;
+			sourceTree = "<group>";
+		};
 		9BA6C49C24336AFF009D417B /* CoronaHelp */ = {
 			isa = PBXGroup;
 			children = (
@@ -2034,6 +2045,7 @@
 				46E7742F242CEF0A008A5E93 /* SwitchViewDemoView.swift in Sources */,
 				46E773D5242CEF0A008A5E93 /* FrontPageViewDemoView.swift in Sources */,
 				46E7742C242CEF0A008A5E93 /* BottomSheetMechanicsDemoViewController.swift in Sources */,
+				91D637DA2488F70A0066D4D0 /* ConfettiDemoView.swift in Sources */,
 				46E77449242CEF0A008A5E93 /* UserAdCellDemoViewHelpers.swift in Sources */,
 				46E773DB242CEF0A008A5E93 /* AdReporterDemoView.swift in Sources */,
 				46E7745F242CEF0A008A5E93 /* SettingsViewDemoView.swift in Sources */,
