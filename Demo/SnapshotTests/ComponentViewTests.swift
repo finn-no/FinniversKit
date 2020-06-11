@@ -294,4 +294,8 @@ class ComponentViewTests: XCTestCase {
     func testChatAvailabilityView() {
         snapshot(.chatAvailabilityView)
     }
+
+    func testImageLinkListView() {
+        snapshot(.imageLinkListView)
+    }
 }
