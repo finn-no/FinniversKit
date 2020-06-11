@@ -217,6 +217,7 @@
 		46E77581242D476B008A5E93 /* FullscreenViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7757B242D476B008A5E93 /* FullscreenViewTests.swift */; };
 		46E77583242D478D008A5E93 /* XCTestCastExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77582242D478D008A5E93 /* XCTestCastExtensions.swift */; };
 		46E77585242D4805008A5E93 /* TestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77584242D4805008A5E93 /* TestConfig.swift */; };
+		46E77598242D6890008A5E93 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 46E77597242D6890008A5E93 /* SnapshotTesting */; };
 		46E7759D242D6A8A008A5E93 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E77561242CFFA5008A5E93 /* FinniversKit.framework */; };
 		46E7759E242D6A8A008A5E93 /* FinnUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E77562242CFFA5008A5E93 /* FinnUI.framework */; };
 		496F8C172473E7EA00AE0735 /* FavoriteSoldDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F8C162473E7EA00AE0735 /* FavoriteSoldDemoView.swift */; };
@@ -500,6 +501,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46E7759D242D6A8A008A5E93 /* FinniversKit.framework in Frameworks */,
+				46E77598242D6890008A5E93 /* SnapshotTesting in Frameworks */,
 				46E7759E242D6A8A008A5E93 /* FinnUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1912,7 +1914,7 @@
 			);
 			name = SnapshotTests;
 			packageProductDependencies = (
-				46E77597242D6890008A5E93 /* XCSwiftPackageProductDependency */,
+				46E77597242D6890008A5E93 /* SnapshotTesting */,
 			);
 			productName = SnapshotTests;
 			productReference = 46E7756C242D4736008A5E93 /* SnapshotTests.xctest */;
@@ -1947,7 +1949,7 @@
 			);
 			mainGroup = 46AE6FB7242BADC9007BB005;
 			packageReferences = (
-				46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference */,
+				46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 46AE6FC1242BADC9007BB005 /* Products */;
 			projectDirPath = "";
@@ -2476,7 +2478,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference */ = {
+		46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
 			requirement = {
@@ -2487,9 +2489,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		46E77597242D6890008A5E93 /* XCSwiftPackageProductDependency */ = {
+		46E77597242D6890008A5E93 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference */;
+			package = 46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */
