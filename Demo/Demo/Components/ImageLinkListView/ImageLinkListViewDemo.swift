@@ -1,18 +1,31 @@
 import FinniversKit
 import FinnUI
 
-public class ImageLinkViewDemo: UIView {
+public class ImageLinkListViewDemo: UIView, Tweakable {
+
+    lazy var tweakingOptions: [TweakingOption] = {
+        [
+            TweakingOption(title: "2 items, grouped horizontally") {
+                self.imageLinkListView.configure(with: self.viewModels, groupAxis: .horizontal)
+            },
+            TweakingOption(title: "3 items, horizontally") {
+                self.imageLinkListView.configure(with: self.viewModels + [.virtualViewing], groupAxis: .horizontal)
+            },
+            TweakingOption(title: "2 items, vertically") {
+                self.imageLinkListView.configure(with: self.viewModels, groupAxis: .vertical)
+            }
+        ]
+    }()
 
     // MARK: - Private properties
 
     private let viewModels: [ImageLinkViewModel] = [.videoLink, .virtualViewing]
 
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.spacing = .spacingM
-        stackView.axis = .vertical
-        return stackView
-    }()
+    private lazy var imageLinkListView = ImageLinkListView(
+        delegate: self,
+        remoteImageViewDataSource: DemoRemoteImageViewDataSource.shared,
+        withAutoLayout: true
+    )
 
     // MARK: - Init
 
@@ -28,26 +41,18 @@ public class ImageLinkViewDemo: UIView {
     // MARK: - Setup
 
     private func setup() {
-        let views = viewModels.map { viewModel -> ImageLinkView in
-            let view = ImageLinkView(withAutoLayout: true)
-            view.remoteImageViewDataSource = DemoRemoteImageViewDataSource.shared
-            view.delegate = self
-            view.configure(with: viewModel)
-            return view
-        }
-
-        addSubview(stackView)
-        stackView.addArrangedSubviews(views)
+        addSubview(imageLinkListView)
+        tweakingOptions.first?.action?()
 
         NSLayoutConstraint.activate([
-            stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            imageLinkListView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            imageLinkListView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            imageLinkListView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
         ])
     }
 }
 
-extension ImageLinkViewDemo: ImageLinkViewDelegate {
+extension ImageLinkListViewDemo: ImageLinkViewDelegate {
     public func imageLinkViewWasSelected(_ view: ImageLinkView, url: String) {
         print("🔥🔥🔥🔥 ImageLinkView tapped with url: \(url)")
     }

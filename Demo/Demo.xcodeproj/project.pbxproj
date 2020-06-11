@@ -220,7 +220,7 @@
 		46E7759D242D6A8A008A5E93 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E77561242CFFA5008A5E93 /* FinniversKit.framework */; };
 		46E7759E242D6A8A008A5E93 /* FinnUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E77562242CFFA5008A5E93 /* FinnUI.framework */; };
 		496F8C172473E7EA00AE0735 /* FavoriteSoldDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F8C162473E7EA00AE0735 /* FavoriteSoldDemoView.swift */; };
-		8D68050D50D92C1B9DEF5569 /* ImageLinkViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D68013497C884E8A020525B /* ImageLinkViewDemo.swift */; };
+		8D68050D50D92C1B9DEF5569 /* ImageLinkListViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D68013497C884E8A020525B /* ImageLinkListViewDemo.swift */; };
 		8D680753832283BAA1FD13E7 /* ChatAvailabilityDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680197B160A999652BC551 /* ChatAvailabilityDemoView.swift */; };
 		8D68077F8DD65E1EAA06CED3 /* DemoRemoteImageViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680D4E86C76225E62439BD /* DemoRemoteImageViewDataSource.swift */; };
 		91D637DA2488F70A0066D4D0 /* ConfettiDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D637D92488F70A0066D4D0 /* ConfettiDemoView.swift */; };
@@ -472,7 +472,7 @@
 		46E77582242D478D008A5E93 /* XCTestCastExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCastExtensions.swift; sourceTree = "<group>"; };
 		46E77584242D4805008A5E93 /* TestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConfig.swift; sourceTree = "<group>"; };
 		496F8C162473E7EA00AE0735 /* FavoriteSoldDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSoldDemoView.swift; sourceTree = "<group>"; };
-		8D68013497C884E8A020525B /* ImageLinkViewDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLinkViewDemo.swift; sourceTree = "<group>"; };
+		8D68013497C884E8A020525B /* ImageLinkListViewDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLinkListViewDemo.swift; sourceTree = "<group>"; };
 		8D680197B160A999652BC551 /* ChatAvailabilityDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAvailabilityDemoView.swift; sourceTree = "<group>"; };
 		8D680D4E86C76225E62439BD /* DemoRemoteImageViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoRemoteImageViewDataSource.swift; sourceTree = "<group>"; };
 		91D637D92488F70A0066D4D0 /* ConfettiDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiDemoView.swift; sourceTree = "<group>"; };
@@ -1004,7 +1004,7 @@
 				46E7730A242CEF09008A5E93 /* Viewings */,
 				46E772F4242CEF09008A5E93 /* VisibilityDrivenTitleView */,
 				8D680B67DAB7BFCB028C94EE /* ChatAvailability */,
-				8D6800E99FB039FE4984C703 /* ImageLinkView */,
+				8D6800E99FB039FE4984C703 /* ImageLinkListView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1825,12 +1825,12 @@
 			path = FavoriteSoldView;
 			sourceTree = "<group>";
 		};
-		8D6800E99FB039FE4984C703 /* ImageLinkView */ = {
+		8D6800E99FB039FE4984C703 /* ImageLinkListView */ = {
 			isa = PBXGroup;
 			children = (
-				8D68013497C884E8A020525B /* ImageLinkViewDemo.swift */,
+				8D68013497C884E8A020525B /* ImageLinkListViewDemo.swift */,
 			);
-			path = ImageLinkView;
+			path = ImageLinkListView;
 			sourceTree = "<group>";
 		};
 		8D680B67DAB7BFCB028C94EE /* ChatAvailability */ = {
@@ -2209,7 +2209,7 @@
 				46E77462242CEF0A008A5E93 /* FavoritesListViewDemoViewHelpers.swift in Sources */,
 				46E7743F242CEF0A008A5E93 /* ColorDemoView.swift in Sources */,
 				8D680753832283BAA1FD13E7 /* ChatAvailabilityDemoView.swift in Sources */,
-				8D68050D50D92C1B9DEF5569 /* ImageLinkViewDemo.swift in Sources */,
+				8D68050D50D92C1B9DEF5569 /* ImageLinkListViewDemo.swift in Sources */,
 				8D68077F8DD65E1EAA06CED3 /* DemoRemoteImageViewDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
