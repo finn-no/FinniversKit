@@ -146,7 +146,11 @@ extension SearchResultsView: UIScrollViewDelegate {
 
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         guard scrollView == self.scrollView else { return }
+        let previousSegment = selectedSegment
         selectedSegment = Int(targetContentOffset.pointee.x / scrollView.bounds.width)
+        if previousSegment != selectedSegment {
+            delegate?.searchResultsView(self, didSelectSegment: selectedSegment)
+        }
     }
 }
 
