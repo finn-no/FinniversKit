@@ -72,6 +72,8 @@ class EmptyNotificationsCell: UITableViewCell {
         iconImageView.image = model?.icon
         titleLabel.text = model?.title
         bodyLabel.text = model?.body
+        contentView.backgroundColor = .clear
+        backgroundColor = .clear
 
         switch model?.kind {
         case .personal:
