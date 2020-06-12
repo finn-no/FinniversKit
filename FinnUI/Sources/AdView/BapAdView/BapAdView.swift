@@ -75,9 +75,11 @@ extension BapAdView {
     }
 
     private var price: some View {
-        Text(viewModel.price)
-            .finnFont(.title1)
-            .padding(.horizontal, .spacingS)
+        viewModel.price.map {
+            Text($0)
+                .finnFont(.title1)
+                .padding(.horizontal, .spacingS)
+        }
     }
 
     private var favoriteButton: some View {

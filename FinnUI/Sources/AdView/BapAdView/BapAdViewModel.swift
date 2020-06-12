@@ -7,7 +7,7 @@ import Foundation
 public struct BapAdViewModel {
     public let id: String
     public let title: String
-    public let price: String
+    public let price: String?
     public let author: AuthorViewModel
     public let description: DescriptionViewModel?
     public let extras: [ExtraViewModel]
@@ -32,7 +32,7 @@ public struct BapAdViewModel {
     public init(
         id: String,
         title: String,
-        price: String,
+        price: String?,
         author: AuthorViewModel,
         description: DescriptionViewModel?,
         extras: [ExtraViewModel],
