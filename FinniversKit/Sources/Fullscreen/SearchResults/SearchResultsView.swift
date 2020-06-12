@@ -39,6 +39,8 @@ public class SearchResultsView: UIView {
         scrollView.isPagingEnabled = true
         scrollView.clipsToBounds = false
         scrollView.showsHorizontalScrollIndicator = false
+        scrollView.alwaysBounceVertical = true
+        scrollView.isDirectionalLockEnabled = true
         scrollView.delegate = self
         return scrollView
     }()
@@ -78,6 +80,8 @@ public class SearchResultsView: UIView {
     private func setup() {
         addSubview(segmentedControl)
         addSubview(scrollView)
+        bringSubviewToFront(segmentedControl)
+        segmentedControl.backgroundColor = .bgPrimary
 
         NSLayoutConstraint.activate([
             segmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
