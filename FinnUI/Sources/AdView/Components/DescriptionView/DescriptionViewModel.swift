@@ -8,6 +8,16 @@ public struct DescriptionViewModel {
     let content: String
     let expandButtonTitle: String
     let collapseButtonTitle: String
+
+    public init(
+        content: String,
+        expandButtonTitle: String,
+        collapseButtonTitle: String
+    ) {
+        self.content = content
+        self.expandButtonTitle = expandButtonTitle
+        self.collapseButtonTitle = collapseButtonTitle
+    }
 }
 
 // Sample data destined for previews
