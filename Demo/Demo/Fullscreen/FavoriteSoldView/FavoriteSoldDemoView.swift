@@ -18,7 +18,7 @@ public class FavoriteSoldDemoView: UIView {
         view.configure(with: FavoriteSoldDefaultData())
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
-    }() 
+    }()
 
     // MARK: - Init
 
