@@ -2,7 +2,6 @@
 //  Copyright © 2020 FINN.no AS. All rights reserved.
 //
 
-import FinnUI
 import FinniversKit
 
 class ConfettiDemoView: UIView {
