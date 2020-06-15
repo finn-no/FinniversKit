@@ -94,10 +94,10 @@ public class ImageLinkView: UIView {
 
         switch viewModel.overlayKind {
         case .video?:
-            overlayView.configure(withImage: UIImage(named: .speechbubbleSmiley))
+            overlayView.configure(withImage: UIImage(named: .overlayVideo))
             overlayView.isHidden = false
         case .virtualViewing?:
-            overlayView.configure(withImage: UIImage(named: .handshake))
+            overlayView.configure(withImage: UIImage(named: .overlayVirtualViewing))
             overlayView.isHidden = false
         default:
             overlayView.isHidden = true
