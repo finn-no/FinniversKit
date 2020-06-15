@@ -142,11 +142,11 @@ private class OverlayView: UIView {
         layer.cornerRadius = .spacingS
         backgroundColor = UIColor.black.withAlphaComponent(0.8)
         addSubview(iconImageView)
-        iconImageView.fillInSuperview(margin: .spacingS)
+        iconImageView.fillInSuperview()
 
         NSLayoutConstraint.activate([
-            iconImageView.widthAnchor.constraint(equalToConstant: .spacingXL),
-            iconImageView.heightAnchor.constraint(equalToConstant: .spacingXL)
+            iconImageView.widthAnchor.constraint(equalToConstant: 48),
+            iconImageView.heightAnchor.constraint(equalToConstant: 48)
         ])
     }
 
