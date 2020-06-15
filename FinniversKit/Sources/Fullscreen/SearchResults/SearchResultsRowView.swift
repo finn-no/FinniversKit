@@ -38,7 +38,7 @@ class SearchResultsRowView: UIView {
         imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         imageView.tintColor = .iconColor
 
-        let padding: CGFloat = 12
+        let padding: CGFloat = 10
         imageView.image = UIImage(named: .remove)
             .withRenderingMode(.alwaysTemplate)
             .withAlignmentRectInsets(UIEdgeInsets(top: -padding, left: -padding, bottom: -padding, right: -padding))
@@ -81,7 +81,7 @@ class SearchResultsRowView: UIView {
         NSLayoutConstraint.activate([
             imageView.heightAnchor.constraint(equalToConstant: 24),
             imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor),
-            deleteIconImageView.heightAnchor.constraint(equalToConstant: 48),
+            deleteIconImageView.heightAnchor.constraint(equalToConstant: 44),
             deleteIconImageView.widthAnchor.constraint(equalTo: deleteIconImageView.heightAnchor),
         ])
     }
