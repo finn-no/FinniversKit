@@ -42,6 +42,7 @@ public class SearchResultsView: UIView {
         scrollView.alwaysBounceVertical = true
         scrollView.isDirectionalLockEnabled = true
         scrollView.delegate = self
+        scrollView.keyboardDismissMode = .interactive
         return scrollView
     }()
 
