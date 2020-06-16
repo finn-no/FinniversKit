@@ -159,7 +159,9 @@ public enum ComponentDemoViews: String, CaseIterable {
         case .tweakable:
             return DemoViewController<TweakableDemoView>()
         case .saveSearchView:
-            return DemoViewController<SaveSearchViewDemoView>(dismissType: .dismissButton)
+            let demoViewController = DemoViewController<SaveSearchViewDemoView>()
+            demoViewController.view.backgroundColor = .bgPrimary
+            return BottomSheet(rootViewController: demoViewController)
         case .saveSearchPromptView:
             return DemoViewController<SaveSearchPromptViewDemoView>()
         case .searchListEmptyView:

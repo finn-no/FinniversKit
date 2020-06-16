@@ -2,53 +2,27 @@
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
 
-import UIKit
+import FinniversKit
 
 public protocol SaveSearchViewDelegate: AnyObject {
-    func saveSearchViewTextFieldWillReturn(_ saveSearchView: SaveSearchView)
     func saveSearchView(_ saveSearchView: SaveSearchView, didUpdateIsNotificationCenterOn: Bool)
     func saveSearchView(_ saveSearchView: SaveSearchView, didUpdateIsPushOn: Bool)
     func saveSearchView(_ saveSearchView: SaveSearchView, didUpdateIsEmailOn: Bool)
+    func saveSearchViewDidSelectEditSearchNameButton(_ saveSearchView: SaveSearchView)
     func saveSearchViewDidSelectDeleteSearchButton(_ saveSearchView: SaveSearchView)
 }
 
 public class SaveSearchView: UIView {
+
     // MARK: - Public properties
 
     public weak var delegate: SaveSearchViewDelegate?
-
-    public var isNotificationCenterOn: Bool {
-        get { notificationCenterSwitchView.isOn }
-        set {
-            notificationCenterSwitchView.isOn = newValue
-            delegate?.saveSearchView(self, didUpdateIsNotificationCenterOn: newValue)
-        }
-    }
-
-    public var isPushOn: Bool {
-        get { pushSwitchView.isOn }
-        set {
-            pushSwitchView.isOn = newValue
-            delegate?.saveSearchView(self, didUpdateIsPushOn: newValue)
-        }
-    }
-
-    public var isEmailOn: Bool {
-        get { emailSwitchView.isOn }
-        set {
-            emailSwitchView.isOn = newValue
-            delegate?.saveSearchView(self, didUpdateIsEmailOn: newValue)
-        }
-    }
-
-    public var searchNameText: String? {
-        get { searchNameTextField.text }
-        set { searchNameTextField.textField.text = newValue }
-    }
+    public var isNotificationCenterOn: Bool { notificationCenterSwitchView.isOn }
+    public var isPushOn: Bool { pushSwitchView.isOn }
+    public var isEmailOn: Bool { emailSwitchView.isOn }
 
     // MARK: - Private properties
 
-    private lazy var searchNameContainer: UIView = UIView(withAutoLayout: true)
     private lazy var contentView = UIView(withAutoLayout: true)
     private lazy var notificationCenterSwitchView = createSwitchView()
     private lazy var pushSwitchView = createSwitchView()
@@ -62,12 +36,25 @@ public class SaveSearchView: UIView {
         detailLabelTextColor: .textPrimary
     )
 
-    private lazy var searchNameTextField: TextField = {
-        let textField = TextField(inputType: .normal)
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.textField.returnKeyType = .go
-        textField.delegate = self
-        return textField
+    private lazy var iconImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.image = UIImage(named: .emptySavedSearchNotificationsIcon)
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+
+    private lazy var searchNameLabel: Label = {
+        let label = Label(style: .title3Strong, withAutoLayout: true)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
+
+    private lazy var editSearchNameButton: Button = {
+        let button = Button(style: .flat, size: .small, withAutoLayout: true)
+        button.addTarget(self, action: #selector(handleEditSearchNameButtonTap), for: .touchUpInside)
+        return button
     }()
 
     private lazy var stackView: UIStackView = {
@@ -101,15 +88,11 @@ public class SaveSearchView: UIView {
         setup()
     }
 
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-
     // MARK: - Public methods
 
     public func configure(with viewModel: SaveSearchViewModel) {
-        searchNameTextField.textField.text = viewModel.searchTitle
-        searchNameTextField.placeholderText = viewModel.searchPlaceholderText
+        searchNameLabel.text = viewModel.searchTitle
+        editSearchNameButton.setTitle(viewModel.editNameButtonTitle, for: .normal)
 
         notificationCenterSwitchView.configure(with: viewModel.notificationCenterSwitchViewModel)
         pushSwitchView.configure(with: viewModel.pushSwitchViewModel)
@@ -123,24 +106,23 @@ public class SaveSearchView: UIView {
         }
     }
 
+    public func configure(searchName: String?) {
+        searchNameLabel.text = searchName
+    }
+
     public func setNotificationCenterOn(_ isOn: Bool, animated: Bool) {
         notificationCenterSwitchView.setOn(isOn, animated: animated)
+        delegate?.saveSearchView(self, didUpdateIsNotificationCenterOn: isOn)
     }
 
     public func setPushOn(_ isOn: Bool, animated: Bool) {
         pushSwitchView.setOn(isOn, animated: animated)
+        delegate?.saveSearchView(self, didUpdateIsPushOn: isOn)
     }
 
     public func setEmailOn(_ isOn: Bool, animated: Bool) {
         emailSwitchView.setOn(isOn, animated: animated)
-    }
-
-    @discardableResult public override func becomeFirstResponder() -> Bool {
-        searchNameTextField.textField.becomeFirstResponder()
-    }
-
-    @discardableResult public override func resignFirstResponder() -> Bool {
-        searchNameTextField.textField.resignFirstResponder()
+        delegate?.saveSearchView(self, didUpdateIsEmailOn: isOn)
     }
 
     // MARK: - Private methods
@@ -152,9 +134,9 @@ public class SaveSearchView: UIView {
         addSubview(scrollView)
         scrollView.fillInSuperview()
 
-        searchNameContainer.addSubview(searchNameTextField)
-
-        contentView.addSubview(searchNameContainer)
+        contentView.addSubview(iconImageView)
+        contentView.addSubview(searchNameLabel)
+        contentView.addSubview(editSearchNameButton)
         contentView.addSubview(stackView)
         contentView.addSubview(deleteSavedSearchButton)
 
@@ -173,16 +155,20 @@ public class SaveSearchView: UIView {
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: widthAnchor),
 
-            searchNameContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
-            searchNameContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            searchNameContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            searchNameContainer.heightAnchor.constraint(equalToConstant: 65.0),
+            iconImageView.heightAnchor.constraint(equalToConstant: 48),
+            iconImageView.widthAnchor.constraint(equalToConstant: 48),
+            iconImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
 
-            searchNameTextField.leadingAnchor.constraint(equalTo: searchNameContainer.leadingAnchor, constant: .spacingM),
-            searchNameTextField.trailingAnchor.constraint(equalTo: searchNameContainer.trailingAnchor, constant: -.spacingM),
-            searchNameTextField.centerYAnchor.constraint(equalTo: searchNameContainer.centerYAnchor),
+            searchNameLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: .spacingM),
+            searchNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            searchNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
 
-            stackView.topAnchor.constraint(equalTo: searchNameTextField.bottomAnchor, constant: .spacingM),
+            editSearchNameButton.topAnchor.constraint(equalTo: searchNameLabel.bottomAnchor, constant: .spacingXS),
+            editSearchNameButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            editSearchNameButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+
+            stackView.topAnchor.constraint(equalTo: editSearchNameButton.bottomAnchor, constant: .spacingM),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
@@ -191,14 +177,6 @@ public class SaveSearchView: UIView {
             deleteSavedSearchButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
             deleteSavedSearchButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
-
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(
-            self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil
-        )
-        notificationCenter.addObserver(
-            self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil
-        )
     }
 
     private func createSwitchView() -> SwitchView {
@@ -209,36 +187,12 @@ public class SaveSearchView: UIView {
 
     // MARK: - Actions
 
-    @objc private func adjustForKeyboard(notification: Notification) {
-        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-
-        let keyboardScreenEndFrame = keyboardValue.cgRectValue
-        let keyboardViewEndFrame = scrollView.convert(keyboardScreenEndFrame, from: window)
-
-        let contentSize = contentView.frame.size
-        if notification.name == UIResponder.keyboardWillHideNotification {
-            scrollView.contentSize = contentSize
-        } else {
-            scrollView.contentSize = CGSize(
-                width: contentSize.width,
-                height: contentSize.height + keyboardViewEndFrame.height
-            )
-        }
-
-        scrollView.scrollIndicatorInsets = scrollView.contentInset
-    }
-
     @objc private func handleDeleteButtonTap() {
         delegate?.saveSearchViewDidSelectDeleteSearchButton(self)
     }
-}
 
-// MARK: - TextFieldDelegate
-
-extension SaveSearchView: TextFieldDelegate {
-    public func textFieldShouldReturn(_ textField: TextField) -> Bool {
-        delegate?.saveSearchViewTextFieldWillReturn(self)
-        return true
+    @objc private func handleEditSearchNameButtonTap() {
+        delegate?.saveSearchViewDidSelectEditSearchNameButton(self)
     }
 }
 

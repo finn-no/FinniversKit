@@ -85,6 +85,10 @@ extension NotificationCenterDemoView: NotificationCenterViewDataSource {
 }
 
 extension NotificationCenterDemoView: NotificationCenterViewDelegate {
+    func notificationCenterView(_ view: NotificationCenterView, didChangeToSegment segment: Int) {
+        print("Did change to segment: \(segment)")
+    }
+
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectModelAt indexPath: IndexPath) {
         let cellType = segments[segment].sections[indexPath.section].items[indexPath.row]
 

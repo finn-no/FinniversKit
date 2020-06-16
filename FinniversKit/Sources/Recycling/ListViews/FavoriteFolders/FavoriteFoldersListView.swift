@@ -442,7 +442,7 @@ extension FavoriteFoldersListView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if tableView.isEditing {
-            return Section(rawValue: indexPath.section) == .folders
+            return Section(rawValue: indexPath.section) == .folders && canEditRow(at: indexPath)
         } else {
             return canEditRow(at: indexPath)
         }

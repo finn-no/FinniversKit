@@ -52,6 +52,18 @@ class IdentityDemoView: UIView, Tweakable {
                     $0.1.displayMode = .anonymous
                     $0.0.viewModel = $0.1
                 }
+            }),
+            TweakingOption(title: "DisplayMode.offline", action: {
+                self.identityViews.forEach {
+                    $0.1.displayMode = .offline
+                    $0.0.viewModel = $0.1
+                }
+            }),
+            TweakingOption(title: "DisplayMode.online", action: {
+                self.identityViews.forEach {
+                    $0.1.displayMode = .interactible
+                    $0.0.viewModel = $0.1
+                }
             })
         ]
         return options
@@ -71,9 +83,11 @@ class IdentityDemoView: UIView, Tweakable {
     private func setup() {
         let viewModels = [
             ViewModel(description: "Er bare på FINN når jeg ikke finner det jeg vil ha på Letgo. Så jeg er her mye.\n\n#🔥", isTappable: true, isVerified: true),
+            ViewModel(description: "Hei på deg!", isTappable: false, isVerified: true),
             ViewModel(description: nil, isTappable: true, isVerified: false),
-            ViewModel(description: nil, isTappable: false, isVerified: true),
             ViewModel(description: "Hei sveis!", isTappable: false, isVerified: false),
+            ViewModel(description: "Jeg skal være usynlig", isTappable: false, isVerified: true, displayMode: .offline),
+            ViewModel(displayName: "FINN-Bruker", description: "Jeg er usynlig", isTappable: false, isVerified: true, displayMode: .anonymous),
         ]
 
         identityViews = viewModels.map { model in
@@ -117,6 +131,8 @@ extension IdentityDemoView: IdentityViewDelegate {
             task.resume()
         })
     }
+
+    public func identityViewDidTapOfflineButton() {}
 }
 
 // MARK: - View model
@@ -130,10 +146,14 @@ private class ViewModel: IdentityViewModel {
 
     let description: String?
     let isVerified: Bool
-    var displayMode: IdentityView.DisplayMode = .interactible
+    var displayMode: IdentityView.DisplayMode
 
-    init(description: String?, isTappable: Bool, isVerified: Bool) {
+    let offlineDescription: String? = "Du må være logget inn for å se profilen."
+    let offlineButtonTitle: String? = "Logg inn"
+
+    init(displayName: String = "Finn Nordmann", description: String?, isTappable: Bool, isVerified: Bool, displayMode: IdentityView.DisplayMode = .interactible) {
         self.description = description
         self.isVerified = isVerified
+        self.displayMode = displayMode
     }
 }
