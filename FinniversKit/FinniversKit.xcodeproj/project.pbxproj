@@ -412,11 +412,6 @@
 		F253C50E2313F9F5008175FD /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253C50D2313F9F5008175FD /* VerificationView.swift */; };
 		F253C5142314015C008175FD /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253C5122313FEFC008175FD /* VerificationViewModel.swift */; };
 		F253C51D2315601A008175FD /* VerificationActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253C51B23155587008175FD /* VerificationActionSheet.swift */; };
-		F26CABF823AC9B2E00CACF71 /* OrderTotalSumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26CABF023AC9B2E00CACF71 /* OrderTotalSumView.swift */; };
-		F26CABF923AC9B2E00CACF71 /* CollapseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26CABF223AC9B2E00CACF71 /* CollapseView.swift */; };
-		F26CABFA23AC9B2E00CACF71 /* OrderSummaryLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26CABF423AC9B2E00CACF71 /* OrderSummaryLineView.swift */; };
-		F26CABFB23AC9B2E00CACF71 /* OrderSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26CABF523AC9B2E00CACF71 /* OrderSummaryView.swift */; };
-		F26CABFC23AC9B2E00CACF71 /* OrderSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26CABF623AC9B2E00CACF71 /* OrderSummaryViewModel.swift */; };
 		F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2772F4322803B310002D21F /* ReviewButtonView.swift */; };
 		F288CB3E233CD53400C1EE8A /* UserAdsRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288CB3D233CD53400C1EE8A /* UserAdsRatingView.swift */; };
 		F28D78F22428B5AF00E77414 /* TransactionProcessSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28D78F12428B5AF00E77414 /* TransactionProcessSummaryView.swift */; };
@@ -426,9 +421,6 @@
 		F29C4F5A2434780200E25209 /* TransactionActionButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C4F552434780200E25209 /* TransactionActionButtonViewModel.swift */; };
 		F29C4F5B2434780200E25209 /* TransactionStepContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C4F562434780200E25209 /* TransactionStepContentView.swift */; };
 		F29C4F5C2434780200E25209 /* TransactionStepView+CustomStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C4F572434780200E25209 /* TransactionStepView+CustomStyle.swift */; };
-		F2A7B70E23BF2AA500651850 /* PaymentOptionsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A7B70D23BF2AA500651850 /* PaymentOptionsListViewCell.swift */; };
-		F2A7B71023BF2AB400651850 /* PaymentOptionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A7B70F23BF2AB400651850 /* PaymentOptionsListView.swift */; };
-		F2A7B71223BF2ACC00651850 /* PaymentOptionsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A7B71123BF2ACC00651850 /* PaymentOptionsListViewModel.swift */; };
 		F2BE213222819F7D004640F3 /* ReviewButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE212F22819EFA004640F3 /* ReviewButtonControl.swift */; };
 		F2BE6C09236AD24B0085A05A /* CheckmarkTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE6C08236AD24B0085A05A /* CheckmarkTitleView.swift */; };
 		F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95B22CB639200CED7E0 /* QuestionnaireView.swift */; };
@@ -859,11 +851,6 @@
 		F253C50D2313F9F5008175FD /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		F253C5122313FEFC008175FD /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
 		F253C51B23155587008175FD /* VerificationActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationActionSheet.swift; sourceTree = "<group>"; };
-		F26CABF023AC9B2E00CACF71 /* OrderTotalSumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTotalSumView.swift; sourceTree = "<group>"; };
-		F26CABF223AC9B2E00CACF71 /* CollapseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapseView.swift; sourceTree = "<group>"; };
-		F26CABF423AC9B2E00CACF71 /* OrderSummaryLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderSummaryLineView.swift; sourceTree = "<group>"; };
-		F26CABF523AC9B2E00CACF71 /* OrderSummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderSummaryView.swift; sourceTree = "<group>"; };
-		F26CABF623AC9B2E00CACF71 /* OrderSummaryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderSummaryViewModel.swift; sourceTree = "<group>"; };
 		F2772F4322803B310002D21F /* ReviewButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonView.swift; sourceTree = "<group>"; };
 		F288CB3D233CD53400C1EE8A /* UserAdsRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsRatingView.swift; sourceTree = "<group>"; };
 		F28D78F12428B5AF00E77414 /* TransactionProcessSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionProcessSummaryView.swift; sourceTree = "<group>"; };
@@ -873,9 +860,6 @@
 		F29C4F552434780200E25209 /* TransactionActionButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionActionButtonViewModel.swift; sourceTree = "<group>"; };
 		F29C4F562434780200E25209 /* TransactionStepContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionStepContentView.swift; sourceTree = "<group>"; };
 		F29C4F572434780200E25209 /* TransactionStepView+CustomStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TransactionStepView+CustomStyle.swift"; sourceTree = "<group>"; };
-		F2A7B70D23BF2AA500651850 /* PaymentOptionsListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOptionsListViewCell.swift; sourceTree = "<group>"; };
-		F2A7B70F23BF2AB400651850 /* PaymentOptionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOptionsListView.swift; sourceTree = "<group>"; };
-		F2A7B71123BF2ACC00651850 /* PaymentOptionsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOptionsListViewModel.swift; sourceTree = "<group>"; };
 		F2BE212F22819EFA004640F3 /* ReviewButtonControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonControl.swift; sourceTree = "<group>"; };
 		F2BE6C08236AD24B0085A05A /* CheckmarkTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkTitleView.swift; sourceTree = "<group>"; };
 		F2C3E95B22CB639200CED7E0 /* QuestionnaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireView.swift; sourceTree = "<group>"; };
@@ -1214,7 +1198,6 @@
 				444245FA2137D60400D42AB8 /* FavoriteFolders */,
 				14C6F7CC212324C900A7230C /* Favorites */,
 				441FE441209A2F2C00B04EF1 /* Notifications */,
-				F2A7B70923BF2A3B00651850 /* PaymentOptions */,
 				44A149E421377C7B0053D5F7 /* SavedSearches */,
 				DAD6EB172369916100968497 /* Settings */,
 			);
@@ -1305,7 +1288,6 @@
 				CFCDDA5A22730213005E1F4A /* Callout */,
 				F2BE6C0A236C29BA0085A05A /* CheckmarkTitleView */,
 				9BD8ABBE2359B1CE001078CA /* ChristmasWishListView */,
-				F26CABF123AC9B2E00CACF71 /* CollapseView */,
 				9BCD171323CCBB590045BD61 /* CollapsibleContentView */,
 				9B1B12C423D5ACCB00282F3E /* ColumnListsView */,
 				45B2E06B207E181C00C68B92 /* Consent */,
@@ -1331,8 +1313,6 @@
 				89A7A63A2253376D0053D33B /* NativeAdvert */,
 				9A37D31426D9544712EBB534 /* ObjectPagePriceView */,
 				9A37DAE827DC33BADB4C9AAC /* ObjectPageTitleView */,
-				F26CABEF23AC9B2E00CACF71 /* OrderTotalSumView */,
-				F26CABF323AC9B2E00CACF71 /* OrderViewSummary */,
 				9B28DE7E23266C2500D69C15 /* Panel */,
 				CF13D6CB2292D2100087DA37 /* Phases */,
 				CF0F6B902360682100CA62FD /* Priming */,
@@ -2863,32 +2843,6 @@
 			path = VerificationView;
 			sourceTree = "<group>";
 		};
-		F26CABEF23AC9B2E00CACF71 /* OrderTotalSumView */ = {
-			isa = PBXGroup;
-			children = (
-				F26CABF023AC9B2E00CACF71 /* OrderTotalSumView.swift */,
-			);
-			path = OrderTotalSumView;
-			sourceTree = "<group>";
-		};
-		F26CABF123AC9B2E00CACF71 /* CollapseView */ = {
-			isa = PBXGroup;
-			children = (
-				F26CABF223AC9B2E00CACF71 /* CollapseView.swift */,
-			);
-			path = CollapseView;
-			sourceTree = "<group>";
-		};
-		F26CABF323AC9B2E00CACF71 /* OrderViewSummary */ = {
-			isa = PBXGroup;
-			children = (
-				F26CABF423AC9B2E00CACF71 /* OrderSummaryLineView.swift */,
-				F26CABF523AC9B2E00CACF71 /* OrderSummaryView.swift */,
-				F26CABF623AC9B2E00CACF71 /* OrderSummaryViewModel.swift */,
-			);
-			path = OrderViewSummary;
-			sourceTree = "<group>";
-		};
 		F2772F3F2280397E0002D21F /* ReviewButtonView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2922,40 +2876,6 @@
 				F29C4F552434780200E25209 /* TransactionActionButtonViewModel.swift */,
 			);
 			path = TransactionActionButton;
-			sourceTree = "<group>";
-		};
-		F2A7B70923BF2A3B00651850 /* PaymentOptions */ = {
-			isa = PBXGroup;
-			children = (
-				F2A7B70A23BF2A5800651850 /* Cell */,
-				F2A7B70B23BF2A5F00651850 /* ListView */,
-				F2A7B70C23BF2A7000651850 /* Model */,
-			);
-			path = PaymentOptions;
-			sourceTree = "<group>";
-		};
-		F2A7B70A23BF2A5800651850 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				F2A7B70D23BF2AA500651850 /* PaymentOptionsListViewCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		F2A7B70B23BF2A5F00651850 /* ListView */ = {
-			isa = PBXGroup;
-			children = (
-				F2A7B70F23BF2AB400651850 /* PaymentOptionsListView.swift */,
-			);
-			path = ListView;
-			sourceTree = "<group>";
-		};
-		F2A7B70C23BF2A7000651850 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				F2A7B71123BF2ACC00651850 /* PaymentOptionsListViewModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		F2BE212E22819ED8004640F3 /* Control */ = {
@@ -3211,7 +3131,6 @@
 				F288CB3E233CD53400C1EE8A /* UserAdsRatingView.swift in Sources */,
 				45EDD62F20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift in Sources */,
 				CF164CFD230EB0F900250822 /* CheckmarkImageView.swift in Sources */,
-				F2A7B70E23BF2AA500651850 /* PaymentOptionsListViewCell.swift in Sources */,
 				F28D78F22428B5AF00E77414 /* TransactionProcessSummaryView.swift in Sources */,
 				9B06096823F14B0A005CB592 /* SafetyElementViewModel.swift in Sources */,
 				CF164D15230FFB7400250822 /* FavoriteAdActionViewModel.swift in Sources */,
@@ -3249,7 +3168,6 @@
 				9BCDFC7422E09DF700A80D7F /* KlimabroletActionsView.swift in Sources */,
 				DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */,
 				44A5579F22E71FEB001667AE /* BasicTableViewCell.swift in Sources */,
-				F2A7B71223BF2ACC00651850 /* PaymentOptionsListViewModel.swift in Sources */,
 				F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */,
 				4940480223CDC0F000ECBCFD /* ViewingCell.swift in Sources */,
 				44A149ED21377C7B0053D5F7 /* SavedSearchesListViewModel.swift in Sources */,
@@ -3257,7 +3175,6 @@
 				496F8C142473DCC600AE0735 /* FavoriteSoldView.swift in Sources */,
 				CF7496BF23BE26D700D60901 /* FavoriteFolderActionView.swift in Sources */,
 				CF164CF0230E7FF100250822 /* FavoriteFolderShareToggleView.swift in Sources */,
-				F26CABFC23AC9B2E00CACF71 /* OrderSummaryViewModel.swift in Sources */,
 				9B06097323F14BD6005CB592 /* ElementContentView.swift in Sources */,
 				F253C5142314015C008175FD /* VerificationViewModel.swift in Sources */,
 				CF16F73823292D34006566DE /* FavoriteAdCommentView.swift in Sources */,
@@ -3342,7 +3259,6 @@
 				DA0F4E652395091B003E93A4 /* MinFinnProfileCell.swift in Sources */,
 				9BCDFC7622E09E3C00A80D7F /* KlimabroletViewModel.swift in Sources */,
 				CF5012452360909200138A36 /* PrimingHeaderView.swift in Sources */,
-				F26CABFA23AC9B2E00CACF71 /* OrderSummaryLineView.swift in Sources */,
 				9BA8248623859B4400163F24 /* MapZoomRange.swift in Sources */,
 				CF136ACF220327F500247B30 /* InfoboxViewModel.swift in Sources */,
 				91341EDD23C46BE5005B65CF /* NativeAdvertRibbon.swift in Sources */,
@@ -3373,13 +3289,11 @@
 				14DC127121593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift in Sources */,
 				9B93F210230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift in Sources */,
 				F2BE213222819F7D004640F3 /* ReviewButtonControl.swift in Sources */,
-				F2A7B71023BF2AB400651850 /* PaymentOptionsListView.swift in Sources */,
 				44A557A722E720BB001667AE /* IconTitleTableViewCellViewModel.swift in Sources */,
 				DAD6EB2A2369916100968497 /* SettingsView.swift in Sources */,
 				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,
 				446EE15C2345A6AA00010818 /* SelectorTitleView.swift in Sources */,
 				DAD6EB292369916100968497 /* SettingsViewConsentCellModel.swift in Sources */,
-				F26CABFB23AC9B2E00CACF71 /* OrderSummaryView.swift in Sources */,
 				91846C5A22E856D50001410F /* MapSettingsView.swift in Sources */,
 				CF3F85BF229C29B3003A6748 /* IconCollectionViewFlowLayout.swift in Sources */,
 				DA0F4E6B23953B85003E93A4 /* MinFinnCellModels.swift in Sources */,
@@ -3479,7 +3393,6 @@
 				CF8F024521DE1013004C4042 /* RefreshControl.swift in Sources */,
 				DA6DC2BB238404B80094C42C /* VersionInfoView.swift in Sources */,
 				8908E85E22C21A2300ED671C /* MessageFormTemplateState.swift in Sources */,
-				F26CABF923AC9B2E00CACF71 /* CollapseView.swift in Sources */,
 				9B28DE842326732F00D69C15 /* PanelViewModel.swift in Sources */,
 				CF164CE8230D8D9700250822 /* FavoriteFolderAction.swift in Sources */,
 				DAD6EB2B2369916100968497 /* SettingsSectionHeaderView.swift in Sources */,
@@ -3522,7 +3435,6 @@
 				4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */,
 				9BB6802F2462F763001ADACF /* Font+SwiftUI.swift in Sources */,
 				CF3D5EE4215A65D7006E4D08 /* Instrument.swift in Sources */,
-				F26CABF823AC9B2E00CACF71 /* OrderTotalSumView.swift in Sources */,
 				4441F9F322CCF76300DCFD2F /* AddressMapView.swift in Sources */,
 				9BEB287D231D486100D28BAD /* LoanValuesView.swift in Sources */,
 				44587017213FA344009187BE /* LoginView.swift in Sources */,
