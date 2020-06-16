@@ -9,6 +9,7 @@ public protocol TransactionStepContentViewDelegate: AnyObject {
     //swiftlint:disable:next function_parameter_count
     func transactionStepContentViewDidTapActionButton(
         _ view: TransactionStepContentView,
+        inStep step: Int,
         inContentView kind: TransactionStepContentView.Kind,
         withButtonTag tag: TransactionActionButton.Tag,
         withAction action: TransactionActionButton.Action,
@@ -30,6 +31,7 @@ public class TransactionStepContentView: UIView {
 
     // MARK: - Private properties
 
+    private var step: Int
     private var kind: TransactionStepContentView.Kind
     private var state: TransactionStepViewState
     private var model: TransactionStepContentViewModel
@@ -79,6 +81,7 @@ public class TransactionStepContentView: UIView {
     // MARK: - Init
 
     public init(
+        step: Int,
         kind: TransactionStepContentView.Kind,
         state: TransactionStepViewState,
         model: TransactionStepContentViewModel,
@@ -86,6 +89,7 @@ public class TransactionStepContentView: UIView {
         withColorForTitle textColor: UIColor,
         withAutoLayout autoLayout: Bool = false
     ) {
+        self.step = step
         self.kind = kind
         self.state = state
         self.model = model
@@ -267,6 +271,7 @@ private extension TransactionStepContentView {
 
         delegate?.transactionStepContentViewDidTapActionButton(
             self,
+            inStep: step,
             inContentView: kind,
             withButtonTag: tag,
             withAction: action,

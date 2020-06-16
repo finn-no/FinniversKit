@@ -9,6 +9,7 @@ public protocol TransactionViewDelegate: AnyObject {
     //swiftlint:disable:next function_parameter_count
     func transactionViewDidTapActionButton(
         _ view: TransactionView,
+        inStep step: Int,
         inContentView kind: TransactionStepContentView.Kind,
         withButtonTag tag: TransactionActionButton.Tag,
         withAction action: TransactionActionButton.Action,
@@ -263,6 +264,7 @@ extension TransactionView: TransactionStepViewDelegate {
     //swiftlint:disable:next function_parameter_count
     public func transactionStepViewDidTapActionButton(
         _ view: TransactionStepView,
+        inStep step: Int,
         inContentView kind: TransactionStepContentView.Kind,
         withButtonTag tag: TransactionActionButton.Tag,
         withAction action: TransactionActionButton.Action,
@@ -271,6 +273,7 @@ extension TransactionView: TransactionStepViewDelegate {
     ) {
         delegate?.transactionViewDidTapActionButton(
             self,
+            inStep: step,
             inContentView: kind,
             withButtonTag: tag,
             withAction: action,

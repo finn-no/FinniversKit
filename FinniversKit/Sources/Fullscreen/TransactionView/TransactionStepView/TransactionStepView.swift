@@ -8,6 +8,7 @@ public protocol TransactionStepViewDelegate: AnyObject {
     //swiftlint:disable:next function_parameter_count
     func transactionStepViewDidTapActionButton(
         _ view: TransactionStepView,
+        inStep step: Int,
         inContentView kind: TransactionStepContentView.Kind,
         withButtonTag tag: TransactionActionButton.Tag,
         withAction action: TransactionActionButton.Action,
@@ -92,6 +93,7 @@ public class TransactionStepView: UIView {
 
         if let mainContent = model.main {
             let mainContentView = TransactionStepContentView(
+                step: step,
                 kind: .main,
                 state: model.state,
                 model: mainContent,
@@ -106,6 +108,7 @@ public class TransactionStepView: UIView {
 
         if let detailContent = model.detail {
             let detailContentView = TransactionStepContentView(
+                step: step,
                 kind: .detail,
                 state: model.state,
                 model: detailContent,
@@ -131,6 +134,7 @@ extension TransactionStepView: TransactionStepContentViewDelegate {
     //swiftlint:disable:next function_parameter_count
     public func transactionStepContentViewDidTapActionButton(
         _ view: TransactionStepContentView,
+        inStep step: Int,
         inContentView kind: TransactionStepContentView.Kind,
         withButtonTag tag: TransactionActionButton.Tag,
         withAction action: TransactionActionButton.Action,
@@ -139,6 +143,7 @@ extension TransactionStepView: TransactionStepContentViewDelegate {
     ) {
         delegate?.transactionStepViewDidTapActionButton(
             self,
+            inStep: step,
             inContentView: kind,
             withButtonTag: tag,
             withAction: action,
