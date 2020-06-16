@@ -5,8 +5,11 @@
 import UIKit
 
 public protocol TransactionStepViewDelegate: AnyObject {
+    //swiftlint:disable:next function_parameter_count
     func transactionStepViewDidTapActionButton(
         _ view: TransactionStepView,
+        inContentView kind: TransactionStepContentView.Kind,
+        withButtonTag tag: TransactionActionButton.Tag,
         withAction action: TransactionActionButton.Action,
         withUrl urlString: String?,
         withFallbackUrl fallbackUrlString: String?
@@ -89,6 +92,7 @@ public class TransactionStepView: UIView {
 
         if let mainContent = model.main {
             let mainContentView = TransactionStepContentView(
+                kind: .main,
                 state: model.state,
                 model: mainContent,
                 withFontForTitle: .title3Strong,
@@ -102,6 +106,7 @@ public class TransactionStepView: UIView {
 
         if let detailContent = model.detail {
             let detailContentView = TransactionStepContentView(
+                kind: .detail,
                 state: model.state,
                 model: detailContent,
                 withFontForTitle: .captionStrong,
@@ -123,14 +128,19 @@ public class TransactionStepView: UIView {
 }
 
 extension TransactionStepView: TransactionStepContentViewDelegate {
+    //swiftlint:disable:next function_parameter_count
     public func transactionStepContentViewDidTapActionButton(
         _ view: TransactionStepContentView,
+        inContentView kind: TransactionStepContentView.Kind,
+        withButtonTag tag: TransactionActionButton.Tag,
         withAction action: TransactionActionButton.Action,
         withUrl urlString: String?,
         withFallbackUrl fallbackUrlString: String?
     ) {
         delegate?.transactionStepViewDidTapActionButton(
             self,
+            inContentView: kind,
+            withButtonTag: tag,
             withAction: action,
             withUrl: urlString,
             withFallbackUrl: fallbackUrlString

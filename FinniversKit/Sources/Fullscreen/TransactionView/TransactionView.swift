@@ -6,8 +6,11 @@ import Foundation
 
 public protocol TransactionViewDelegate: AnyObject {
     func transactionViewDidBeginRefreshing(_ refreshControl: RefreshControl)
+    //swiftlint:disable:next function_parameter_count
     func transactionViewDidTapActionButton(
         _ view: TransactionView,
+        inContentView kind: TransactionStepContentView.Kind,
+        withButtonTag tag: TransactionActionButton.Tag,
         withAction action: TransactionActionButton.Action,
         withUrl urlString: String?,
         withFallbackUrl fallbackUrlString: String?
@@ -257,14 +260,19 @@ private extension TransactionView {
 // MARK: - TransactionStepViewDelegate
 
 extension TransactionView: TransactionStepViewDelegate {
+    //swiftlint:disable:next function_parameter_count
     public func transactionStepViewDidTapActionButton(
         _ view: TransactionStepView,
+        inContentView kind: TransactionStepContentView.Kind,
+        withButtonTag tag: TransactionActionButton.Tag,
         withAction action: TransactionActionButton.Action,
         withUrl urlString: String?,
         withFallbackUrl fallbackUrlString: String?
     ) {
         delegate?.transactionViewDidTapActionButton(
             self,
+            inContentView: kind,
+            withButtonTag: tag,
             withAction: action,
             withUrl: urlString,
             withFallbackUrl: fallbackUrlString)

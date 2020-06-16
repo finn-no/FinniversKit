@@ -67,12 +67,15 @@ extension TransactionDemoView: TransactionViewDelegate {
         refreshControl.endRefreshing()
     }
 
+    //swiftlint:disable:next function_parameter_count
     func transactionViewDidTapActionButton(_ view: TransactionView,
+                                           inContentView kind: TransactionStepContentView.Kind,
+                                           withButtonTag tag: TransactionActionButton.Tag,
                                            withAction action: TransactionActionButton.Action,
                                            withUrl urlString: String?,
                                            withFallbackUrl fallbackUrlString: String?) {
 
-        print("Did tap button in step: \(step), with action: \(action.rawValue), with urlString: \(urlString ?? ""), with fallbackUrl:\(fallbackUrlString ?? "")")
+        print("Did tap button with tag: \(tag) in contentView: \(kind), with action: \(action.rawValue), with urlString: \(urlString ?? ""), with fallbackUrl:\(fallbackUrlString ?? "")")
     }
 }
 
