@@ -22,7 +22,7 @@ public extension Array where Element == String {
     }
 }
 
-extension Array {
+public extension Array {
     func chunked(by size: Int) -> [[Element]] {
         guard !isEmpty else { return [[]] }
 
