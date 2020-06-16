@@ -1,4 +1,4 @@
-import FinniversKit
+import FinnUI
 
 class RecentSearchData: SearchResultsListViewModel {
     public let title = "Siste søk"

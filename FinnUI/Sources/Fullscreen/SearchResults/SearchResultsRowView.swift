@@ -1,4 +1,4 @@
-import Foundation
+import FinniversKit
 
 protocol SearchResultsRowViewDelegate: AnyObject {
     func searchResultsRowViewDidSelectButton(_ searchResultsRowView: SearchResultsRowView)

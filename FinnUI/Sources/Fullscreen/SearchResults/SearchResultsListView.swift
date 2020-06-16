@@ -1,4 +1,4 @@
-import Foundation
+import FinniversKit
 
 protocol SearchResultsListViewDelegate: AnyObject {
     func searchResultsListView(_ searchResultsListView: SearchResultsListView, didSelectSearchAt index: Int)

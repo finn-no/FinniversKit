@@ -131,9 +131,6 @@
 		494047FE23CDBBA100ECBCFD /* ViewingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494047FD23CDBBA100ECBCFD /* ViewingCellViewModel.swift */; };
 		4940480023CDBEC500ECBCFD /* ViewingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494047FF23CDBEC500ECBCFD /* ViewingsView.swift */; };
 		4940480223CDC0F000ECBCFD /* ViewingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940480123CDC0F000ECBCFD /* ViewingCell.swift */; };
-		4D644433248A6DD900B80827 /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D644432248A6DD900B80827 /* SearchResultsView.swift */; };
-		4D644435248A6EF700B80827 /* SearchResultsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D644434248A6EF700B80827 /* SearchResultsListView.swift */; };
-		4D64443A248A8A6600B80827 /* SearchResultsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D644439248A8A6600B80827 /* SearchResultsRowView.swift */; };
 		496F8C142473DCC600AE0735 /* FavoriteSoldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F8C132473DCC600AE0735 /* FavoriteSoldView.swift */; };
 		55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* Broadcast.swift */; };
 		55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B277203DB56A007D7277 /* BroadcastMessage.swift */; };
@@ -579,9 +576,6 @@
 		494047FD23CDBBA100ECBCFD /* ViewingCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingCellViewModel.swift; sourceTree = "<group>"; };
 		494047FF23CDBEC500ECBCFD /* ViewingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingsView.swift; sourceTree = "<group>"; };
 		4940480123CDC0F000ECBCFD /* ViewingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingCell.swift; sourceTree = "<group>"; };
-		4D644432248A6DD900B80827 /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
-		4D644434248A6EF700B80827 /* SearchResultsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsListView.swift; sourceTree = "<group>"; };
-		4D644439248A8A6600B80827 /* SearchResultsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsRowView.swift; sourceTree = "<group>"; };
 		496F8C132473DCC600AE0735 /* FavoriteSoldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteSoldView.swift; sourceTree = "<group>"; };
 		55C5B273203D8E20007D7277 /* Broadcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Broadcast.swift; sourceTree = "<group>"; };
 		55C5B277203DB56A007D7277 /* BroadcastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastMessage.swift; sourceTree = "<group>"; };
@@ -1626,7 +1620,6 @@
 		44D912492077AC8A00486848 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
-				4D644431248A6DB900B80827 /* SearchResults */,
 				496F8C122473DCC600AE0735 /* FavoriteSoldView */,
 				4441F9F022CCF75D00DCFD2F /* AddressMapView */,
 				DAD0D48621072EDD0091DD4D /* AdReporter */,
@@ -1746,16 +1739,6 @@
 				4940480123CDC0F000ECBCFD /* ViewingCell.swift */,
 			);
 			path = Viewings;
-			sourceTree = "<group>";
-		};
-		4D644431248A6DB900B80827 /* SearchResults */ = {
-			isa = PBXGroup;
-			children = (
-				4D644432248A6DD900B80827 /* SearchResultsView.swift */,
-				4D644434248A6EF700B80827 /* SearchResultsListView.swift */,
-				4D644439248A8A6600B80827 /* SearchResultsRowView.swift */,
-			);
-			path = SearchResults;
 			sourceTree = "<group>";
 		};
 		496F8C122473DCC600AE0735 /* FavoriteSoldView */ = {
@@ -3549,14 +3532,12 @@
 				DAE6A55C21CA524B00837BFA /* CGPoint.swift in Sources */,
 				43BACE6C21117D530052114C /* BuyerPickerViewModel.swift in Sources */,
 				F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */,
-				4D644433248A6DD900B80827 /* SearchResultsView.swift in Sources */,
 				895175952248D4D1008003FB /* StepDot.swift in Sources */,
 				F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */,
 				45B2E070207E181C00C68B92 /* InlineConsentView.swift in Sources */,
 				CF4A053921FB2ACB000BB7DA /* PianoEffectView.swift in Sources */,
 				CF164DDA2315776E00250822 /* FavoriteAdCommentViewModel.swift in Sources */,
 				44898D651FE5B9C200F6017B /* UITableViewExtensions.swift in Sources */,
-				4D644435248A6EF700B80827 /* SearchResultsListView.swift in Sources */,
 				B01D70BABC86CE9552C07C2A /* RoundedImageView.swift in Sources */,
 				08F0D3F122202DC900968256 /* FeedbackViewModel.swift in Sources */,
 				CF3D5EE2215A6525006E4D08 /* InstrumentSelectorView.swift in Sources */,
@@ -3587,7 +3568,6 @@
 				CF164D17230FFDEB00250822 /* FavoriteAdAction.swift in Sources */,
 				DA083E7324630BC400B26235 /* SettingsSection.swift in Sources */,
 				494047FE23CDBBA100ECBCFD /* ViewingCellViewModel.swift in Sources */,
-				4D64443A248A8A6600B80827 /* SearchResultsRowView.swift in Sources */,
 				CF05B7E023325968003A7F1C /* FavoriteFolderActionButton.swift in Sources */,
 				F253C50E2313F9F5008175FD /* VerificationView.swift in Sources */,
 				9A37DC6E6F0401357C564B93 /* RemoteImageView.swift in Sources */,

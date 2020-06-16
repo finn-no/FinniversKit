@@ -1,4 +1,4 @@
-import FinniversKit
+import FinnUI
 
 final class SearchResultsDemoView: UIView {
 

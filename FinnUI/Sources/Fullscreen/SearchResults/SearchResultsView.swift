@@ -140,7 +140,8 @@ public class SearchResultsView: UIView {
     }
 
     func scrollToView(at index: Int) {
-        guard let view = segmentViews[safe: index] else { return }
+        guard segmentViews.indices.contains(index) else { return }
+        let view = segmentViews[index]
         scrollView.setContentOffset(view.frame.origin, animated: true)
     }
 }
