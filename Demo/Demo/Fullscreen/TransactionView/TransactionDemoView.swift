@@ -68,7 +68,6 @@ extension TransactionDemoView: TransactionViewDelegate {
     }
 
     func transactionViewDidTapActionButton(_ view: TransactionView,
-                                           inTransactionStep step: Int,
                                            withAction action: TransactionActionButton.Action,
                                            withUrl urlString: String?,
                                            withFallbackUrl fallbackUrlString: String?) {

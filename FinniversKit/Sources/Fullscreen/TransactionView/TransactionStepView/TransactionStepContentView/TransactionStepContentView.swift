@@ -7,7 +7,6 @@ import UIKit
 public protocol TransactionStepContentViewDelegate: AnyObject {
     func transactionStepContentViewDidTapActionButton(
         _ view: TransactionStepContentView,
-        inTransactionStep step: Int,
         withAction action: TransactionActionButton.Action,
         withUrl urlString: String?,
         withFallbackUrl fallbackUrlString: String?
@@ -27,7 +26,6 @@ public class TransactionStepContentView: UIView {
 
     // MARK: - Private properties
 
-    private var step: Int
     private var state: TransactionStepViewState
     private var model: TransactionStepContentViewModel
 
@@ -76,14 +74,12 @@ public class TransactionStepContentView: UIView {
     // MARK: - Init
 
     public init(
-        step: Int,
         state: TransactionStepViewState,
         model: TransactionStepContentViewModel,
         withFontForTitle font: UIFont,
         withColorForTitle textColor: UIColor,
         withAutoLayout autoLayout: Bool = false
     ) {
-        self.step = step
         self.state = state
         self.model = model
 
@@ -264,7 +260,6 @@ private extension TransactionStepContentView {
 
         delegate?.transactionStepContentViewDidTapActionButton(
             self,
-            inTransactionStep: step,
             withAction: action,
             withUrl: urlString,
             withFallbackUrl: fallbackUrlString

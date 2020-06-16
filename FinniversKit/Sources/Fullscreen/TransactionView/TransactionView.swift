@@ -8,7 +8,6 @@ public protocol TransactionViewDelegate: AnyObject {
     func transactionViewDidBeginRefreshing(_ refreshControl: RefreshControl)
     func transactionViewDidTapActionButton(
         _ view: TransactionView,
-        inTransactionStep step: Int,
         withAction action: TransactionActionButton.Action,
         withUrl urlString: String?,
         withFallbackUrl fallbackUrlString: String?
@@ -260,14 +259,12 @@ private extension TransactionView {
 extension TransactionView: TransactionStepViewDelegate {
     public func transactionStepViewDidTapActionButton(
         _ view: TransactionStepView,
-        inTransactionStep step: Int,
         withAction action: TransactionActionButton.Action,
         withUrl urlString: String?,
         withFallbackUrl fallbackUrlString: String?
     ) {
         delegate?.transactionViewDidTapActionButton(
             self,
-            inTransactionStep: step,
             withAction: action,
             withUrl: urlString,
             withFallbackUrl: fallbackUrlString)
