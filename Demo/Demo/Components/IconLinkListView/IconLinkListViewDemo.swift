@@ -1,0 +1,66 @@
+import FinnUI
+import FinniversKit
+
+public class IconLinkListViewDemo: UIView, Tweakable {
+    lazy var tweakingOptions: [TweakingOption] = {
+        [
+            TweakingOption(title: "2 items") {
+                self.iconLinkListView.configure(with: self.viewModels)
+            },
+            TweakingOption(title: "3 items") {
+                self.iconLinkListView.configure(with: self.viewModels + [.virtualViewing])
+            }
+        ]
+    }()
+
+    // MARK: - Private properties
+
+    private lazy var iconLinkListView = IconLinkListView(delegate: self, withAutoLayout: true)
+    private let viewModels: [IconLinkViewModel] = [.videoLink, .virtualViewing]
+
+    // MARK: - Init
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError()
+    }
+
+    // MARK: - Setup
+
+    private func setup() {
+        addSubview(iconLinkListView)
+        tweakingOptions.first?.action?()
+
+        NSLayoutConstraint.activate([
+            iconLinkListView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            iconLinkListView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            iconLinkListView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+        ])
+    }
+}
+
+extension IconLinkListViewDemo: IconLinkViewDelegate {
+    public func iconLinkViewWasSelected(_ view: IconLinkView, url: String) {
+        print("🔥🔥🔥🔥 IconLinkView tapped with url: \(url)")
+    }
+}
+
+// MARK: - Private extensions
+
+private extension IconLinkViewModel {
+    static var videoLink = IconLinkViewModel(
+        icon: UIImage(named: .playVideo),
+        title: "Videovisning",
+        url: "https://www.finn.no"
+    )
+
+    static var virtualViewing = IconLinkViewModel(
+        icon: UIImage(named: .virtualViewing),
+        title: "360° visning",
+        url: "https://www.finn.no"
+    )
+}
