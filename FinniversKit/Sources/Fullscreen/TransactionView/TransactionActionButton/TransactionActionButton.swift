@@ -34,6 +34,16 @@ public enum TransactionActionButton: String {
 }
 
 extension TransactionActionButton {
+    public enum Tag: Int {
+        /// Native meaning that the button is just an inline link refering to some content on an external website.
+        case native = 1
+
+        /// Primary meaning that the button is part of the actual transaction flow
+        case primary = 2
+    }
+}
+
+extension TransactionActionButton {
     public enum Action: String {
         // Native actions
         case seeAd = "SEE_AD"

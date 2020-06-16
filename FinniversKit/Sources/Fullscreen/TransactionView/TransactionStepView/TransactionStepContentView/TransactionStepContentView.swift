@@ -20,12 +20,12 @@ public class TransactionStepContentView: UIView {
 
     public weak var delegate: TransactionStepContentViewDelegate?
 
-    // MARK: - Private properties
-
-    private enum ButtonTag: Int {
-        case native = 1
-        case primary = 2
+    public enum Kind {
+        case main
+        case detail
     }
+
+    // MARK: - Private properties
 
     private var step: Int
     private var state: TransactionStepViewState
@@ -148,8 +148,8 @@ private extension TransactionStepContentView {
         setupBodyView(model.nativeBody, model.body)
 
         // NativeButton should always precede primaryButton
-        setupButton(model.nativeButton, tag: ButtonTag.native)
-        setupButton(model.primaryButton, tag: ButtonTag.primary)
+        setupButton(model.nativeButton, tag: .native)
+        setupButton(model.primaryButton, tag: .primary)
 
         bottomAnchorConstraint?.isActive = true
     }
@@ -166,7 +166,7 @@ private extension TransactionStepContentView {
         bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: .spacingM)
     }
 
-    private func setupButton(_ buttonModel: TransactionActionButtonViewModel?, tag: ButtonTag) {
+    private func setupButton(_ buttonModel: TransactionActionButtonViewModel?, tag: TransactionActionButton.Tag) {
         if let buttonModel = buttonModel {
             let buttonText = buttonModel.text
             let buttonStyle = TransactionActionButton(rawValue: buttonModel.style ?? "").style
@@ -248,15 +248,14 @@ private extension TransactionStepContentView {
 
 private extension TransactionStepContentView {
     @objc func handleButtonTap(_ sender: Button) {
+        guard let tag = TransactionActionButton.Tag(rawValue: sender.tag) else { return }
         var model: TransactionActionButtonViewModel?
 
-        switch sender.tag {
-        case ButtonTag.native.rawValue:
+        switch tag {
+        case .native:
             model = nativeButtonModel
-        case ButtonTag.primary.rawValue:
+        case .primary:
             model = primaryButtonModel
-        default:
-            model = nil
         }
 
         let action = TransactionActionButton.Action(rawValue: model?.action ?? "unknown")
