@@ -51,7 +51,7 @@ public class IconLinkListView: UIView {
             let views = models.map { IconLinkView.create(from: $0, delegate: delegate) }
             nestedStackView.addArrangedSubviews(views)
 
-            if views.count == 1 {
+            if views.count == 1 && viewModels.count > 1 {
                 let emptyView = UIView(withAutoLayout: true)
                 nestedStackView.addArrangedSubview(emptyView)
             }
