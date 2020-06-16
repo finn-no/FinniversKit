@@ -9,6 +9,9 @@ public class IconLinkListViewDemo: UIView, Tweakable {
             },
             TweakingOption(title: "3 items") {
                 self.iconLinkListView.configure(with: self.viewModels + [.virtualViewing])
+            },
+            TweakingOption(title: "Single item") {
+                self.iconLinkListView.configure(with: [.carPresentation])
             }
         ]
     }()
@@ -61,6 +64,12 @@ private extension IconLinkViewModel {
     static var virtualViewing = IconLinkViewModel(
         icon: UIImage(named: .virtualViewing),
         title: "360° visning",
+        url: "https://www.finn.no"
+    )
+
+    static var carPresentation = IconLinkViewModel(
+        icon: UIImage(named: .playVideo),
+        title: "Se videopresentasjon av bilen",
         url: "https://www.finn.no"
     )
 }
