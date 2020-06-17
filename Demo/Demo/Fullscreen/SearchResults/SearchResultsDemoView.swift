@@ -3,7 +3,7 @@ import FinnUI
 final class SearchResultsDemoView: UIView {
 
     private lazy var searchResultsView: SearchResultsView = {
-        let view = SearchResultsView()
+        let view = SearchResultsView(withAutoLayout: true)
         view.dataSource = self
         return view
     }()
@@ -18,10 +18,8 @@ final class SearchResultsDemoView: UIView {
     }
 
     private func setup() {
-        searchResultsView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(searchResultsView)
         searchResultsView.fillInSuperview()
-        searchResultsView.reloadData()
         searchResultsView.loadData(for: 0)
         searchResultsView.loadData(for: 1)
     }

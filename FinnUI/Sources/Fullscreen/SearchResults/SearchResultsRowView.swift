@@ -17,7 +17,6 @@ class SearchResultsRowView: UIView {
 
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = viewModel.icon.withRenderingMode(.alwaysTemplate)
         imageView.tintColor = .iconColor
         imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         return imageView
@@ -50,24 +49,24 @@ class SearchResultsRowView: UIView {
         return imageView
     }()
 
-    private let viewModel: SearchResultsListViewModel
-
     weak var delegate: SearchResultsRowViewDelegate?
 
+    // MARK: - Init
+
     init(viewModel: SearchResultsListViewModel) {
-        self.viewModel = viewModel
         super.init(frame: .zero)
-        setup()
+        setup(with: viewModel)
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setup() {
+    // MARK: - Setup
+
+    private func setup(with viewModel: SearchResultsListViewModel) {
         translatesAutoresizingMaskIntoConstraints = false
 
-        fillInSuperview()
         addSubview(stackView)
         stackView.fillInSuperview()
 
@@ -77,6 +76,7 @@ class SearchResultsRowView: UIView {
         if viewModel.showDeleteRowIcons {
             stackView.addArrangedSubview(deleteIconImageView)
         }
+        imageView.image = viewModel.icon.withRenderingMode(.alwaysTemplate)
 
         NSLayoutConstraint.activate([
             imageView.heightAnchor.constraint(equalToConstant: 24),
@@ -86,9 +86,13 @@ class SearchResultsRowView: UIView {
         ])
     }
 
-    func configure(with title: String) {
-        button.setTitle(title, for: .normal)
+    // MARK: - Internal methods
+
+    func configure(with text: String) {
+        button.setTitle(text, for: .normal)
     }
+
+    // MARK: - Actions
 
     @objc func buttonTapped() {
         delegate?.searchResultsRowViewDidSelectButton(self)
@@ -98,6 +102,8 @@ class SearchResultsRowView: UIView {
         delegate?.searchResultsRowViewDidSelectDeleteButton(self)
     }
 }
+
+// MARK: - Private extensions
 
 private extension UIColor {
     class var iconColor: UIColor {

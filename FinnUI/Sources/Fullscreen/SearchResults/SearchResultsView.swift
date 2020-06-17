@@ -18,21 +18,24 @@ public class SearchResultsView: UIView {
 
     // MARK: - Public properties
 
-    public weak var dataSource: SearchResultsViewDataSource?
     public weak var delegate: SearchResultsViewDelegate?
+    public weak var dataSource: SearchResultsViewDataSource? {
+        didSet {
+            setupSegmentedControl()
+        }
+    }
 
     public var selectedSegment: Int = 0 {
         didSet { segmentedControl.selectedSegmentIndex = selectedSegment }
     }
+
+    // MARK: - Private properties
 
     private lazy var segmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(withAutoLayout: true)
         segmentedControl.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
         return segmentedControl
     }()
-
-    private var segmentViews = [SearchResultsListView]()
-    private var segmentTitles: [String]?
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
@@ -44,6 +47,7 @@ public class SearchResultsView: UIView {
         return scrollView
     }()
 
+    private var segmentViews = [SearchResultsListView]()
     private let segmentSpacing: CGFloat = .spacingS
 
     // MARK: - Init
@@ -58,23 +62,7 @@ public class SearchResultsView: UIView {
         setup()
     }
 
-    // MARK: - Public methods
-
-    public func reloadData() {
-        if segmentViews.isEmpty {
-            setupSegmentedControl()
-        }
-    }
-
-    public func loadData(for segment: Int) {
-        guard let dataSource = dataSource else { return }
-        var rows = [String]()
-        for row in 0 ..< dataSource.searchResultsView(self, numberOfRowsInSegment: segment) {
-            rows.append(dataSource.searchResultsView(self, segment: segment, textForRow: row))
-        }
-        segmentViews[segment].configure(with: rows)
-        layoutIfNeeded()
-    }
+    // MARK: - Setup
 
     private func setup() {
         addSubview(segmentedControl)
@@ -94,12 +82,9 @@ public class SearchResultsView: UIView {
         ])
     }
 
-    func setupSegmentedControl() {
-        guard let dataSource = dataSource else {
-            return
-        }
-
-        segmentTitles = []
+    private func setupSegmentedControl() {
+        guard let dataSource = dataSource else { return }
+        segmentViews.removeAll()
 
         var spacings: [CGFloat] = [0, segmentSpacing].reversed()
         var insertAnchor = scrollView.leadingAnchor
@@ -107,14 +92,11 @@ public class SearchResultsView: UIView {
         for segment in 0 ..< dataSource.numberOfSegments(in: self) {
             let viewModel = dataSource.searchResultsView(self, viewModelFor: segment)
             segmentedControl.insertSegment(withTitle: viewModel.title, at: segment, animated: false)
-            segmentTitles?.append(viewModel.title)
 
             let view = SearchResultsListView(viewModel: viewModel)
-
             view.delegate = self
             segmentViews.append(view)
             scrollView.addSubview(view)
-            loadData(for: segment)
 
             NSLayoutConstraint.activate([
                 view.leadingAnchor.constraint(equalTo: insertAnchor, constant: spacings.popLast() ?? 0),
@@ -133,18 +115,35 @@ public class SearchResultsView: UIView {
         scrollView.layoutIfNeeded()
     }
 
+    // MARK: - Public methods
+
+    public func loadData(for segment: Int) {
+        guard let dataSource = dataSource else { return }
+        var rows = [String]()
+        for row in 0 ..< dataSource.searchResultsView(self, numberOfRowsInSegment: segment) {
+            rows.append(dataSource.searchResultsView(self, segment: segment, textForRow: row))
+        }
+        segmentViews[segment].configure(with: rows)
+    }
+
+    // MARK: - Private methods
+
+    private func scrollToView(at index: Int) {
+        guard segmentViews.indices.contains(index) else { return }
+        let view = segmentViews[index]
+        scrollView.setContentOffset(view.frame.origin, animated: true)
+    }
+
+    // MARK: - Actions
+
     @objc func handleSegmentChange() {
         selectedSegment = segmentedControl.selectedSegmentIndex
         scrollToView(at: selectedSegment)
         delegate?.searchResultsView(self, didSelectSegment: selectedSegment)
     }
-
-    func scrollToView(at index: Int) {
-        guard segmentViews.indices.contains(index) else { return }
-        let view = segmentViews[index]
-        scrollView.setContentOffset(view.frame.origin, animated: true)
-    }
 }
+
+// MARK: - UIScrollViewDelegate
 
 extension SearchResultsView: UIScrollViewDelegate {
 
@@ -158,13 +157,15 @@ extension SearchResultsView: UIScrollViewDelegate {
     }
 }
 
+// MARK: - SearchResultsListViewDelegate
+
 extension SearchResultsView: SearchResultsListViewDelegate {
     func searchResultsListView(_ searchResultsListView: SearchResultsListView, didSelectSearchAt index: Int) {
         guard let segment = segmentViews.firstIndex(of: searchResultsListView) else { return }
         delegate?.searchResultsView(self, segment: segment, didSelectSearchAt: index)
     }
 
-    func searchResultsListView(_ searchResultsListView: SearchResultsListView, didDeleteRowAt index: Int) {
+    func searchResultsListView(_ searchResultsListView: SearchResultsListView, didDeleteSearchAt index: Int) {
         guard let segment = segmentViews.firstIndex(of: searchResultsListView) else { return }
         delegate?.searchResultsView(self, segment: segment, didDeleteSearchAt: index)
     }

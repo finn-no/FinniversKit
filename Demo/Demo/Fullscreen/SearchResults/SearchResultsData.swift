@@ -1,15 +1,15 @@
 import FinnUI
 
 class RecentSearchData: SearchResultsListViewModel {
-    public let title = "Siste søk"
-    public let icon = UIImage(named: .arrowCounterClockwise)
-    public let showDeleteRowIcons = true
-    public let buttonTitle: String? = "Fjern all søkehistorikk"
+    let title = "Siste søk"
+    let icon = UIImage(named: .arrowCounterClockwise)
+    let showDeleteRowIcons = true
+    let buttonTitle: String? = "Fjern all søkehistorikk"
 }
 
 class SavedSearchData: SearchResultsListViewModel {
-    public let title = "Lagrede søk"
-    public let icon = UIImage(named: .magnifyingGlass)
-    public let showDeleteRowIcons = false
-    public let buttonTitle: String? = "Se alle dine lagrede søk"
+    let title = "Lagrede søk"
+    let icon = UIImage(named: .magnifyingGlass)
+    let showDeleteRowIcons = false
+    let buttonTitle: String? = "Se alle dine lagrede søk"
 }

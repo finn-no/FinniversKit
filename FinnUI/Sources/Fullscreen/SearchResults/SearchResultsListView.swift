@@ -2,7 +2,7 @@ import FinniversKit
 
 protocol SearchResultsListViewDelegate: AnyObject {
     func searchResultsListView(_ searchResultsListView: SearchResultsListView, didSelectSearchAt index: Int)
-    func searchResultsListView(_ searchResultsListView: SearchResultsListView, didDeleteRowAt index: Int)
+    func searchResultsListView(_ searchResultsListView: SearchResultsListView, didDeleteSearchAt index: Int)
     func searchResultsListViewDidTapButton(_ searchResultsListView: SearchResultsListView)
 }
 
@@ -31,7 +31,9 @@ class SearchResultsListView: UIView {
 
     weak var delegate: SearchResultsListViewDelegate?
 
-    let viewModel: SearchResultsListViewModel
+    private let viewModel: SearchResultsListViewModel
+
+    // MARK: - Init
 
     init(viewModel: SearchResultsListViewModel) {
         self.viewModel = viewModel
@@ -42,6 +44,8 @@ class SearchResultsListView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Setup
 
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
@@ -66,6 +70,8 @@ class SearchResultsListView: UIView {
         ])
     }
 
+    // MARK: - Internal methods
+
     func configure(with rows: [String]) {
         stackView.removeArrangedSubviews()
         for row in rows {
@@ -76,10 +82,14 @@ class SearchResultsListView: UIView {
         }
     }
 
+    // MARK: - Actions
+
     @objc func buttonTapped() {
         delegate?.searchResultsListViewDidTapButton(self)
     }
 }
+
+// MARK: - SearchResultsRowViewDelegate
 
 extension SearchResultsListView: SearchResultsRowViewDelegate {
     func searchResultsRowViewDidSelectButton(_ searchResultsRowView: SearchResultsRowView) {
@@ -89,6 +99,6 @@ extension SearchResultsListView: SearchResultsRowViewDelegate {
 
     func searchResultsRowViewDidSelectDeleteButton(_ searchResultsRowView: SearchResultsRowView) {
         guard let index = stackView.arrangedSubviews.firstIndex(of: searchResultsRowView) else { return }
-        delegate?.searchResultsListView(self, didDeleteRowAt: index)
+        delegate?.searchResultsListView(self, didDeleteSearchAt: index)
     }
 }
