@@ -67,8 +67,6 @@ public class SearchResultsView: UIView {
     private func setup() {
         addSubview(segmentedControl)
         addSubview(scrollView)
-        bringSubviewToFront(segmentedControl)
-        segmentedControl.backgroundColor = .bgPrimary
 
         NSLayoutConstraint.activate([
             segmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
