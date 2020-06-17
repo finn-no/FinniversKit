@@ -67,14 +67,7 @@ final class NotificationCell: UITableViewCell {
         return separatorView
     }()
 
-    private lazy var gradientLayer: CAGradientLayer = {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [
-            UIColor.bgPrimary.withAlphaComponent(0).cgColor,
-            UIColor.bgPrimary.cgColor
-        ]
-        return gradientLayer
-    }()
+    private lazy var gradientLayer = CAGradientLayer()
 
     private let imageWidth: CGFloat = 80
     private let fallbackImage = UIImage(named: .noImage)
@@ -95,6 +88,12 @@ final class NotificationCell: UITableViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+
+        gradientLayer.colors = [
+            UIColor.bgPrimary.withAlphaComponent(0).cgColor,
+            UIColor.bgPrimary.cgColor
+        ]
+
         gradientLayer.frame = contentView.bounds
     }
 
