@@ -59,6 +59,7 @@ extension AuthorView {
 }
 
 @available(iOS 13.0, *)
+//swiftlint:disable:next type_name
 struct AuthorView_Previews: PreviewProvider {
     static var previews: some View {
         Group {

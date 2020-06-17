@@ -50,6 +50,7 @@ struct TryHeltHjemView: View {
 }
 
 @available(iOS 13.0, *)
+//swiftlint:disable:next type_name
 struct TryHeltHjemView_Previews: PreviewProvider {
     static var previews: some View {
         TryHeltHjemView(viewModel: .sampleData)

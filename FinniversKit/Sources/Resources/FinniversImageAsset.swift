@@ -52,6 +52,8 @@ public enum FinniversImageAsset: String {
     case christmasWishListBanner
     case classifieds
     case close
+    case confetti1
+    case confetti2
     case creditcard
     case cross
     case distance
@@ -219,6 +221,8 @@ public enum FinniversImageAsset: String {
             .christmasWishListBanner,
             .classifieds,
             .close,
+            .confetti1,
+            .confetti2,
             .creditcard,
             .cross,
             .distance,
