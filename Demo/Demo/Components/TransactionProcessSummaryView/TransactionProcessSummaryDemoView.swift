@@ -15,7 +15,7 @@ public class TransactionProcessSummaryDemoView: UIView {
         title: "Salgsprosess",
         detail: "Kontrakt",
         description: "Når du har funnet en kjøper er det neste steget å skrive en kontrakt",
-        externalView: TransactionButtonModel(text: "Mine kjøretøy", url: "https://www.finn.no/minekjoretoy"),
+        externalView: .init(text: "Mine kjøretøy", url: "https://www.finn.no/minekjoretoy"),
         style: "ERROR"
     )
 
