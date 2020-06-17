@@ -8,4 +8,6 @@ public protocol TransactionActionButtonViewModel {
     var action: String? { get set }
     var url: String? { get set }
     var fallbackUrl: String? { get set }
+
+    init(text: String, style: String?, action: String?, url: String?, fallbackUrl: String?)
 }
