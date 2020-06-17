@@ -2,18 +2,12 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
-public struct TransactionActionButtonViewModel {
-    public let text: String
-    public let style: String?
-    public let action: String?
-    public let url: String?
-    public let fallbackUrl: String?
+public protocol TransactionActionButtonViewModel {
+    var text: String { get set }
+    var style: String? { get set }
+    var action: String? { get set }
+    var url: String? { get set }
+    var fallbackUrl: String? { get set }
 
-    public init(text: String, style: String? = nil, action: String? = nil, url: String? = nil, fallbackUrl: String? = nil) {
-        self.text = text
-        self.style = style
-        self.action = action
-        self.url = url
-        self.fallbackUrl = fallbackUrl
-    }
+    init(text: String, style: String?, action: String?, url: String?, fallbackUrl: String?)
 }
