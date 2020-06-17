@@ -31,6 +31,22 @@ public struct TransactionStepModel: TransactionStepViewModel {
     public var detail: TransactionStepContentViewModel?
 }
 
+public struct TransactionButtonModel: TransactionActionButtonViewModel {
+    public var text: String
+    public var style: String?
+    public var action: String?
+    public var url: String?
+    public var fallbackUrl: String?
+
+    public init(text: String, style: String? = nil, action: String? = nil, url: String? = nil, fallbackUrl: String? = nil) {
+        self.text = text
+        self.style = style
+        self.action = action
+        self.url = url
+        self.fallbackUrl = fallbackUrl
+    }
+}
+
 public struct TransactionStepContentModel: TransactionStepContentViewModel {
     public var title: String?
     /*
