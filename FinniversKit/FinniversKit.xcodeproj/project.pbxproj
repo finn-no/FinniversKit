@@ -174,6 +174,7 @@
 		91A5B23E23E2FC5400092ED6 /* UserAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B23D23E2FC5400092ED6 /* UserAdTableViewCell.swift */; };
 		91A5B24423E45B6200092ED6 /* UserAdTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B24223E45AD200092ED6 /* UserAdTableViewCellViewModel.swift */; };
 		91D2A55422F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D2A55322F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift */; };
+		91D7F3B62497918400912BC3 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D7F3B52497918400912BC3 /* ConfettiView.swift */; };
 		9A37D015952CBD1FEF4F0E20 /* FavoriteAdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DA1C8FBA8E3FF6355FB5 /* FavoriteAdViewModel.swift */; };
 		9A37D06D45CCD48B76F0BAEF /* RibbonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DD391E57437520A777DB /* RibbonViewModel.swift */; };
 		9A37D0977C75034FE9603C2C /* FavoriteAdsListTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D87CCADB89179F11253B /* FavoriteAdsListTableHeader.swift */; };
@@ -611,6 +612,7 @@
 		91A5B23D23E2FC5400092ED6 /* UserAdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdTableViewCell.swift; sourceTree = "<group>"; };
 		91A5B24223E45AD200092ED6 /* UserAdTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		91D2A55322F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMapViewAnnotation.swift; sourceTree = "<group>"; };
+		91D7F3B52497918400912BC3 /* ConfettiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 		9A37D04C776B4BFF6C0415CC /* ObjectPagePriceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPagePriceView.swift; sourceTree = "<group>"; };
 		9A37D11E44763B741F5D6AC4 /* ContractActionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractActionViewModel.swift; sourceTree = "<group>"; };
 		9A37D1B3EF48EDFA677CEDE3 /* ObjectPageTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPageTitleView.swift; sourceTree = "<group>"; };
@@ -1605,6 +1607,7 @@
 				DAD0D48621072EDD0091DD4D /* AdReporter */,
 				9B8CB0A623A3D37A00A79A9E /* BetaFeatureView */,
 				CF87A851229C0C5700DA8243 /* ContactForm */,
+				91D7F3B42497916000912BC3 /* ConfettiView */,
 				CF15D9B0215B9453004F5F02 /* EasterEggs */,
 				44D912502077AC8A00486848 /* EmptyView */,
 				9BC5F4072411407B007D74AC /* ErrorView */,
@@ -1848,6 +1851,14 @@
 				91E3931523FBE3B30001D9E1 /* View */,
 			);
 			path = UserAdTableViewCell;
+			sourceTree = "<group>";
+		};
+		91D7F3B42497916000912BC3 /* ConfettiView */ = {
+			isa = PBXGroup;
+			children = (
+				91D7F3B52497918400912BC3 /* ConfettiView.swift */,
+			);
+			path = ConfettiView;
 			sourceTree = "<group>";
 		};
 		91E3931523FBE3B30001D9E1 /* View */ = {
@@ -3166,6 +3177,7 @@
 				CFF9727521C3E92700C85238 /* BannerTransparencyViewModel.swift in Sources */,
 				45EDD62A20A1CCDF008F4503 /* ConsentTransparencyInfoView.swift in Sources */,
 				9BCDFC7422E09DF700A80D7F /* KlimabroletActionsView.swift in Sources */,
+				91D7F3B62497918400912BC3 /* ConfettiView.swift in Sources */,
 				DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */,
 				44A5579F22E71FEB001667AE /* BasicTableViewCell.swift in Sources */,
 				F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */,
