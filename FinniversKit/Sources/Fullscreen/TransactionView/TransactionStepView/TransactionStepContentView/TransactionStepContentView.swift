@@ -5,9 +5,13 @@
 import UIKit
 
 public protocol TransactionStepContentViewDelegate: AnyObject {
+
+    //swiftlint:disable:next function_parameter_count
     func transactionStepContentViewDidTapActionButton(
         _ view: TransactionStepContentView,
-        inTransactionStep step: Int,
+        inStep step: Int,
+        inContentView kind: TransactionStepContentView.Kind,
+        withButtonTag tag: TransactionActionButton.Tag,
         withAction action: TransactionActionButton.Action,
         withUrl urlString: String?,
         withFallbackUrl fallbackUrlString: String?
@@ -20,14 +24,15 @@ public class TransactionStepContentView: UIView {
 
     public weak var delegate: TransactionStepContentViewDelegate?
 
-    // MARK: - Private properties
-
-    private enum ButtonTag: Int {
-        case native = 1
-        case primary = 2
+    public enum Kind {
+        case main
+        case detail
     }
 
+    // MARK: - Private properties
+
     private var step: Int
+    private var kind: TransactionStepContentView.Kind
     private var state: TransactionStepViewState
     private var model: TransactionStepContentViewModel
 
@@ -77,6 +82,7 @@ public class TransactionStepContentView: UIView {
 
     public init(
         step: Int,
+        kind: TransactionStepContentView.Kind,
         state: TransactionStepViewState,
         model: TransactionStepContentViewModel,
         withFontForTitle font: UIFont,
@@ -84,6 +90,7 @@ public class TransactionStepContentView: UIView {
         withAutoLayout autoLayout: Bool = false
     ) {
         self.step = step
+        self.kind = kind
         self.state = state
         self.model = model
 
@@ -148,8 +155,8 @@ private extension TransactionStepContentView {
         setupBodyView(model.nativeBody, model.body)
 
         // NativeButton should always precede primaryButton
-        setupButton(model.nativeButton, tag: ButtonTag.native)
-        setupButton(model.primaryButton, tag: ButtonTag.primary)
+        setupButton(model.nativeButton, tag: .native)
+        setupButton(model.primaryButton, tag: .primary)
 
         bottomAnchorConstraint?.isActive = true
     }
@@ -166,7 +173,7 @@ private extension TransactionStepContentView {
         bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: .spacingM)
     }
 
-    private func setupButton(_ buttonModel: TransactionActionButtonViewModel?, tag: ButtonTag) {
+    private func setupButton(_ buttonModel: TransactionActionButtonViewModel?, tag: TransactionActionButton.Tag) {
         if let buttonModel = buttonModel {
             let buttonText = buttonModel.text
             let buttonStyle = TransactionActionButton(rawValue: buttonModel.style ?? "").style
@@ -248,15 +255,14 @@ private extension TransactionStepContentView {
 
 private extension TransactionStepContentView {
     @objc func handleButtonTap(_ sender: Button) {
+        guard let tag = TransactionActionButton.Tag(rawValue: sender.tag) else { return }
         var model: TransactionActionButtonViewModel?
 
-        switch sender.tag {
-        case ButtonTag.native.rawValue:
+        switch tag {
+        case .native:
             model = nativeButtonModel
-        case ButtonTag.primary.rawValue:
+        case .primary:
             model = primaryButtonModel
-        default:
-            model = nil
         }
 
         let action = TransactionActionButton.Action(rawValue: model?.action ?? "unknown")
@@ -265,7 +271,9 @@ private extension TransactionStepContentView {
 
         delegate?.transactionStepContentViewDidTapActionButton(
             self,
-            inTransactionStep: step,
+            inStep: step,
+            inContentView: kind,
+            withButtonTag: tag,
             withAction: action,
             withUrl: urlString,
             withFallbackUrl: fallbackUrlString
