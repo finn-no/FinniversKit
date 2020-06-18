@@ -5,10 +5,10 @@ public class IconLinkListViewDemo: UIView, Tweakable {
     lazy var tweakingOptions: [TweakingOption] = {
         [
             TweakingOption(title: "2 items") {
-                self.iconLinkListView.configure(with: self.viewModels)
+                self.iconLinkListView.configure(with: [.videoLink, .virtualViewing])
             },
             TweakingOption(title: "3 items") {
-                self.iconLinkListView.configure(with: self.viewModels + [.virtualViewing])
+                self.iconLinkListView.configure(with: [.videoLink, .virtualViewing, .virtualViewing])
             },
             TweakingOption(title: "Single item") {
                 self.iconLinkListView.configure(with: [.carPresentation])
@@ -19,7 +19,6 @@ public class IconLinkListViewDemo: UIView, Tweakable {
     // MARK: - Private properties
 
     private lazy var iconLinkListView = IconLinkListView(delegate: self, withAutoLayout: true)
-    private let viewModels: [IconLinkViewModel] = [.videoLink, .virtualViewing]
 
     // MARK: - Init
 
@@ -70,6 +69,7 @@ private extension IconLinkViewModel {
     static var carPresentation = IconLinkViewModel(
         icon: UIImage(named: .playVideo),
         title: "Se videopresentasjon av bilen",
-        url: "https://www.finn.no"
+        url: "https://www.finn.no",
+        identifier: "video"
     )
 }
