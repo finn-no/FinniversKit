@@ -5,7 +5,7 @@
 import FinniversKit
 
 public protocol IconLinkViewDelegate: AnyObject {
-    func iconLinkViewWasSelected(_ view: IconLinkView, url: String)
+    func iconLinkViewWasSelected(_ view: IconLinkView, url: String, identifier: String?)
 }
 
 public class IconLinkView: UIView {
@@ -75,6 +75,6 @@ public class IconLinkView: UIView {
 
     @objc private func handleTap() {
         guard let url = viewModel?.url else { return }
-        delegate?.iconLinkViewWasSelected(self, url: url)
+        delegate?.iconLinkViewWasSelected(self, url: url, identifier: viewModel?.identifier)
     }
 }

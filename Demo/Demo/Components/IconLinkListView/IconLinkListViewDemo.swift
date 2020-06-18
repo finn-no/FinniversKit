@@ -46,8 +46,8 @@ public class IconLinkListViewDemo: UIView, Tweakable {
 }
 
 extension IconLinkListViewDemo: IconLinkViewDelegate {
-    public func iconLinkViewWasSelected(_ view: IconLinkView, url: String) {
-        print("🔥🔥🔥🔥 IconLinkView tapped with url: \(url)")
+    public func iconLinkViewWasSelected(_ view: IconLinkView, url: String, identifier: String?) {
+        print("🔥🔥🔥🔥 IconLinkView tapped with url: \(url), identifier: \(identifier)")
     }
 }
 
@@ -57,13 +57,15 @@ private extension IconLinkViewModel {
     static var videoLink = IconLinkViewModel(
         icon: UIImage(named: .playVideo),
         title: "Videovisning",
-        url: "https://www.finn.no"
+        url: "https://www.finn.no",
+        identifier: "video"
     )
 
     static var virtualViewing = IconLinkViewModel(
         icon: UIImage(named: .virtualViewing),
         title: "360° visning",
-        url: "https://www.finn.no"
+        url: "https://www.finn.no",
+        identifier: "virtual-viewing"
     )
 
     static var carPresentation = IconLinkViewModel(
