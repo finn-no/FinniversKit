@@ -284,7 +284,6 @@ public class IdentityView: UIView {
             profileNameOrOfflineDescriptionLabel.text = viewModel.displayName
             nameLabelConstraints.forEach { $0.isActive = true }
 
-
             // Hide the badge icon if profile is not verified
             let hideVerifiedBadge = !viewModel.isVerified
 
