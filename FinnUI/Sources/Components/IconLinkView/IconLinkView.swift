@@ -74,8 +74,6 @@ public class IconLinkView: UIView {
         iconImageView.image = viewModel.icon.withRenderingMode(.alwaysTemplate)
 
         NSLayoutConstraint.deactivate(iconImageViewSizeConstraints)
-        iconImageViewSizeConstraints.removeAll()
-
         iconImageViewSizeConstraints = [
             iconImageView.widthAnchor.constraint(equalToConstant: viewModel.icon.size.width),
             iconImageView.heightAnchor.constraint(equalToConstant: viewModel.icon.size.height)
