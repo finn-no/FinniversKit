@@ -14,7 +14,7 @@ public class UserAdManagementTransactionProcessCell: UITableViewCell {
 
     // MARK: - Private
 
-    private lazy var transactionProcessSummaryView = TransactionProcessSummaryView(withAutoLayout: true)
+    private lazy var transactionProcessSummaryView = TransactionProcessSummaryAdManagementView(withAutoLayout: true)
 
     // MARK: - Initalization
 
@@ -46,12 +46,12 @@ public class UserAdManagementTransactionProcessCell: UITableViewCell {
     }
 }
 
-extension UserAdManagementTransactionProcessCell: TransactionProcessSummaryViewDelegate {
-    public func transactionProcessSummaryViewWasTapped(_ view: TransactionProcessSummaryView) {
+extension UserAdManagementTransactionProcessCell: TransactionProcessSummaryAdManagementViewDelegate {
+    public func transactionProcessSummaryViewWasTapped(_ view: TransactionProcessSummaryAdManagementView) {
         delegate?.userAdManagementTransactionProcessCellDidTapSummary(self)
     }
 
-    public func transactionProcessExternalViewWasTapped(_ view: TransactionProcessSummaryView) {
+    public func transactionProcessExternalViewWasTapped(_ view: TransactionProcessSummaryAdManagementView) {
         delegate?.userAdManagementTransactionProcessCellDidTapExternalView(self)
     }
 }
