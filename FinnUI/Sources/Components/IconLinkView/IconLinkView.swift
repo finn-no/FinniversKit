@@ -17,6 +17,7 @@ public class IconLinkView: UIView {
     // MARK: - Private properties
 
     private var viewModel: IconLinkViewModel?
+    private var iconImageViewSizeConstraints = [NSLayoutConstraint]()
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .caption, withAutoLayout: true)
@@ -71,6 +72,15 @@ public class IconLinkView: UIView {
         self.viewModel = viewModel
         titleLabel.text = viewModel.title
         iconImageView.image = viewModel.icon.withRenderingMode(.alwaysTemplate)
+
+        NSLayoutConstraint.deactivate(iconImageViewSizeConstraints)
+        iconImageViewSizeConstraints.removeAll()
+
+        iconImageViewSizeConstraints = [
+            iconImageView.widthAnchor.constraint(equalToConstant: viewModel.icon.size.width),
+            iconImageView.heightAnchor.constraint(equalToConstant: viewModel.icon.size.height)
+        ]
+        NSLayoutConstraint.activate(iconImageViewSizeConstraints)
     }
 
     // MARK: - Actions
