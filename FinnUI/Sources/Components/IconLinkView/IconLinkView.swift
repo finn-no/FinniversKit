@@ -52,11 +52,9 @@ public class IconLinkView: UIView {
         addSubview(iconImageView)
 
         NSLayoutConstraint.activate([
-            iconImageView.topAnchor.constraint(equalTo: topAnchor),
+            iconImageView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
             iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            iconImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            iconImageView.heightAnchor.constraint(equalToConstant: .spacingXL),
-            iconImageView.widthAnchor.constraint(equalToConstant: .spacingXL),
+            iconImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
 
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .spacingS),
