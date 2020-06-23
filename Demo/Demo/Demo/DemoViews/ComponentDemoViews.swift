@@ -49,7 +49,6 @@ public enum ComponentDemoViews: String, CaseIterable {
     case loanCalculatorView
     case verificationView
     case panel
-    case reputationView
     case visibilityDrivenTitleView
     case selectorTitleView
     case priming
@@ -171,8 +170,6 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<LoanCalculatorDemoView>()
         case .panel:
             return DemoViewController<PanelDemoView>()
-        case .reputationView:
-            return DemoViewController<ReputationDemoView>()
         case .visibilityDrivenTitleView:
             return DemoViewController<VisibilityDrivenTitleDemoView>(dismissType: .dismissButton)
         case .broadcast:

@@ -131,7 +131,6 @@
 		46E77423242CEF0A008A5E93 /* BannerTransparencyDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7732C242CEF09008A5E93 /* BannerTransparencyDemoView.swift */; };
 		46E77424242CEF0A008A5E93 /* ConsentTransparencyInfoDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7732E242CEF09008A5E93 /* ConsentTransparencyInfoDefaultData.swift */; };
 		46E77425242CEF0A008A5E93 /* ConsentTransparencyInfoDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7732F242CEF09008A5E93 /* ConsentTransparencyInfoDemoView.swift */; };
-		46E77426242CEF0A008A5E93 /* ReputationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77331242CEF09008A5E93 /* ReputationDemoView.swift */; };
 		46E77428242CEF0A008A5E93 /* ReviewButtonViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77334242CEF09008A5E93 /* ReviewButtonViewDemoView.swift */; };
 		46E77429242CEF0A008A5E93 /* KlimabroletEventsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77336242CEF09008A5E93 /* KlimabroletEventsDemoViewController.swift */; };
 		46E7742A242CEF0A008A5E93 /* KlimabroletData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77337242CEF09008A5E93 /* KlimabroletData.swift */; };
@@ -378,7 +377,6 @@
 		46E7732C242CEF09008A5E93 /* BannerTransparencyDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerTransparencyDemoView.swift; sourceTree = "<group>"; };
 		46E7732E242CEF09008A5E93 /* ConsentTransparencyInfoDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentTransparencyInfoDefaultData.swift; sourceTree = "<group>"; };
 		46E7732F242CEF09008A5E93 /* ConsentTransparencyInfoDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentTransparencyInfoDemoView.swift; sourceTree = "<group>"; };
-		46E77331242CEF09008A5E93 /* ReputationDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReputationDemoView.swift; sourceTree = "<group>"; };
 		46E77334242CEF09008A5E93 /* ReviewButtonViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewButtonViewDemoView.swift; sourceTree = "<group>"; };
 		46E77336242CEF09008A5E93 /* KlimabroletEventsDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KlimabroletEventsDemoViewController.swift; sourceTree = "<group>"; };
 		46E77337242CEF09008A5E93 /* KlimabroletData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KlimabroletData.swift; sourceTree = "<group>"; };
@@ -956,7 +954,6 @@
 				46E772DC242CEF09008A5E93 /* Panel */,
 				46E77349242CEF09008A5E93 /* Phases */,
 				46E7733B242CEF09008A5E93 /* Priming */,
-				46E77330242CEF09008A5E93 /* Profile */,
 				46E7734B242CEF09008A5E93 /* QuestionnaireView */,
 				46E772EE242CEF09008A5E93 /* RefreshControl */,
 				46E77333242CEF09008A5E93 /* ReviewButtonView */,
@@ -1340,14 +1337,6 @@
 				46E7732F242CEF09008A5E93 /* ConsentTransparencyInfoDemoView.swift */,
 			);
 			path = ConsentTransparency;
-			sourceTree = "<group>";
-		};
-		46E77330242CEF09008A5E93 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				46E77331242CEF09008A5E93 /* ReputationDemoView.swift */,
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		46E77333242CEF09008A5E93 /* ReviewButtonView */ = {
@@ -1946,7 +1935,6 @@
 				DED0A3D9246984E30016176A /* NotificationCenterSearchDemoView.swift in Sources */,
 				46E77425242CEF0A008A5E93 /* ConsentTransparencyInfoDemoView.swift in Sources */,
 				46E7744C242CEF0A008A5E93 /* HeartSubtitleCellDemoView.swift in Sources */,
-				46E77426242CEF0A008A5E93 /* ReputationDemoView.swift in Sources */,
 				46E773BE242CEF0A008A5E93 /* LoginEntryDemoData.swift in Sources */,
 				46E77401242CEF0A008A5E93 /* SaveSearchPromptViewDemoView.swift in Sources */,
 				46E77440242CEF0A008A5E93 /* SpacingDemoView.swift in Sources */,

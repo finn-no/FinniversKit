@@ -191,10 +191,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.loanCalculatorView)
     }
 
-    func testReputationView() {
-        snapshot(.reputationView)
-    }
-
     func testVisibilityDrivenTitleView() {
         snapshot(.visibilityDrivenTitleView)
     }
