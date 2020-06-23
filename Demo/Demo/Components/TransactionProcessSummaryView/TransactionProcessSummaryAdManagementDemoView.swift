@@ -4,6 +4,7 @@
 
 import FinniversKit
 
+// swiftlint:disable:next type_name
 public class TransactionProcessSummaryAdManagementDemoView: UIView {
     lazy var transactionProcessSummaryView: TransactionProcessSummaryAdManagementView = {
         let view = TransactionProcessSummaryAdManagementView(withAutoLayout: true)
