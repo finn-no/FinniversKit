@@ -147,10 +147,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.iconCollection)
     }
 
-    func testIdentityView() {
-        snapshot(.identityView)
-    }
-
     func testDisclaimerView() {
         snapshot(.disclaimerView)
     }
