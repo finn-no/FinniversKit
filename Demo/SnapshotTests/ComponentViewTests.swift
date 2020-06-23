@@ -227,18 +227,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.checkmarkTitleView)
     }
 
-    func testOrderTotalSumView() {
-        snapshot(.orderTotalSumView)
-    }
-
-    func testOrderSummaryView() {
-        snapshot(.orderSummaryView)
-    }
-
-    func testCollapseView() {
-        snapshot(.collapseView)
-    }
-
     func testSelfDeclarationView() {
         snapshot(.selfDeclarationView)
     }
@@ -293,5 +281,9 @@ class ComponentViewTests: XCTestCase {
 
     func testChatAvailabilityView() {
         snapshot(.chatAvailabilityView)
+    }
+
+    func testIconLinkListView() {
+        snapshot(.iconLinkListView)
     }
 }

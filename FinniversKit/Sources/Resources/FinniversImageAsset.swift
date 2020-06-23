@@ -141,6 +141,7 @@ public enum FinniversImageAsset: String {
     case ornamentStar
     case pencilPaper
     case pin
+    case playVideo
     case plus
     case plusMini
     case primingFavoritesComments
@@ -185,6 +186,7 @@ public enum FinniversImageAsset: String {
     case verified
     case view
     case viewMode
+    case virtualViewing
     case webview
     case wrench
     case yourads
@@ -309,6 +311,7 @@ public enum FinniversImageAsset: String {
             .ornamentStar,
             .pencilPaper,
             .pin,
+            .playVideo,
             .plus,
             .plusMini,
             .primingFavoritesComments,
@@ -353,6 +356,7 @@ public enum FinniversImageAsset: String {
             .verified,
             .view,
             .viewMode,
+            .virtualViewing,
             .webview,
             .wrench,
             .yourads,

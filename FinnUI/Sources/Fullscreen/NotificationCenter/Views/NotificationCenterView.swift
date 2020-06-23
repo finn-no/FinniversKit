@@ -20,6 +20,7 @@ public protocol NotificationCenterViewDelegate: AnyObject {
     func notificationCenterView(_ view: NotificationCenterView, didChangeToSegment segment: Int)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectModelAt indexPath: IndexPath)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectSavedSearchButtonIn section: Int)
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectMarkAllAsReadButtonIn section: Int)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectFooterButtonInSection section: Int)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didPullToRefreshUsing refreshControl: UIRefreshControl)
 }
@@ -207,6 +208,10 @@ extension NotificationCenterView: UIScrollViewDelegate {
 extension NotificationCenterView: NotificationCenterHeaderViewDelegate {
     func notificationCenterHeaderView(_ view: NotificationCenterHeaderView, didSelectSavedSearchButtonInSection section: Int) {
         delegate?.notificationCenterView(self, segment: selectedSegment, didSelectSavedSearchButtonIn: section)
+    }
+
+    func notificationCenterHeaderView(_ view: NotificationCenterHeaderView, didSelectMarkAllAsReadButtonInSection section: Int) {
+        delegate?.notificationCenterView(self, segment: selectedSegment, didSelectMarkAllAsReadButtonIn: section)
     }
 }
 

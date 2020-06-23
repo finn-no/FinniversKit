@@ -27,6 +27,7 @@ struct NotificationCenterItem: NotificationCellModel {
 
 struct NotificationCenterSection: NotificationCenterHeaderViewModel {
     let title: String?
+    let markAllAsReadTitle: String?
     let count: Int?
     let searchName: String?
     var items: [NotificationCenterCellType]
@@ -53,6 +54,7 @@ extension NotificationCenterDemoView {
             sections: [
                 NotificationCenterSection(
                     title: "I dag",
+                    markAllAsReadTitle: "Marker alt som lest",
                     count: 2,
                     searchName: "Eiendom i Oslo",
                     items: [
@@ -80,6 +82,7 @@ extension NotificationCenterDemoView {
                 ),
                 NotificationCenterSection(
                     title: "I går",
+                    markAllAsReadTitle: nil,
                     count: 2,
                     searchName: "Drømmebilen",
                     items: [
@@ -111,6 +114,7 @@ extension NotificationCenterDemoView {
                 ),
                 NotificationCenterSection(
                     title: "Mandag 2. mars",
+                    markAllAsReadTitle: nil,
                     count: 10,
                     searchName: "Drømmeboliger",
                     items: [
@@ -176,6 +180,7 @@ extension NotificationCenterDemoView {
             sections: [
                 NotificationCenterSection(
                     title: "I dag",
+                    markAllAsReadTitle: "Marker alt som lest",
                     count: nil,
                     searchName: nil,
                     items: [
@@ -193,6 +198,7 @@ extension NotificationCenterDemoView {
                 ),
                 NotificationCenterSection(
                     title: "I går",
+                    markAllAsReadTitle: nil,
                     count: nil,
                     searchName: nil,
                     items: [
@@ -218,6 +224,7 @@ extension NotificationCenterDemoView {
             sections: [
                 NotificationCenterSection(
                     title: nil,
+                    markAllAsReadTitle: nil,
                     count: nil,
                     searchName: nil,
                     items: [
@@ -238,6 +245,7 @@ extension NotificationCenterDemoView {
             sections: [
                 NotificationCenterSection(
                     title: nil,
+                    markAllAsReadTitle: nil,
                     count: nil,
                     searchName: nil,
                     items: [

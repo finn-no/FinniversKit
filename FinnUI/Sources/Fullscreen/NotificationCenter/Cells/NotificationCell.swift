@@ -43,6 +43,13 @@ final class NotificationCell: UITableViewCell {
         return label
     }()
 
+    private lazy var detailLabel: Label = {
+        let label = Label(style: .captionStrong, withAutoLayout: true)
+        label.numberOfLines = 2
+        label.textColor = .textAction
+        return label
+    }()
+
     private lazy var priceLabel = Label(
         style: .bodyStrong,
         withAutoLayout: true
@@ -102,6 +109,8 @@ final class NotificationCell: UITableViewCell {
         remoteImageView.setImage(nil, animated: false)
         iconView.isHidden = true
         ribbonView.isHidden = true
+        detailLabel.isHidden = true
+        stackView.setCustomSpacing(0, after: priceLabel)
         configure(with: nil, timestamp: nil, hideSeparator: false, showGradient: false)
     }
 
@@ -135,6 +144,25 @@ final class NotificationCell: UITableViewCell {
             }
         default:
             break
+        }
+
+        if case let content as FavoriteSoldNotificationCellContent = model?.content {
+            titleLabel.font = .caption
+            subtitleLabel.font = .body
+
+            if let detail = content.detail,
+                let priceLabelIndex = stackView.arrangedSubviews.firstIndex(of: priceLabel) {
+                detailLabel.text = detail
+                detailLabel.isHidden = false
+                stackView.insertArrangedSubview(detailLabel, at: priceLabelIndex + 1)
+                stackView.setCustomSpacing(.spacingS, after: detailLabel)
+                stackView.setCustomSpacing(.spacingS, after: priceLabel)
+            }
+
+            if let ribbonViewModel = content.ribbonViewModel {
+                ribbonView.configure(with: ribbonViewModel)
+                ribbonView.isHidden = false
+            }
         }
 
         guard let imagePath = model?.content?.imagePath else {
