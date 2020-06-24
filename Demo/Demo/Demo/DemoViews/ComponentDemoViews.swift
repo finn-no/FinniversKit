@@ -45,12 +45,10 @@ public enum ComponentDemoViews: String, CaseIterable {
     case saveSearchView
     case saveSearchPromptView
     case searchListEmptyView
-    case identityView
     case stepSlider
     case loanCalculatorView
     case verificationView
     case panel
-    case reputationView
     case visibilityDrivenTitleView
     case selectorTitleView
     case priming
@@ -164,8 +162,6 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<SaveSearchPromptViewDemoView>()
         case .searchListEmptyView:
             return DemoViewController<SearchListEmptyDemoView>()
-        case .identityView:
-            return DemoViewController<IdentityDemoView>()
         case .stepSlider:
             return DemoViewController<StepSliderDemoView>()
         case .verificationView:
@@ -174,8 +170,6 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<LoanCalculatorDemoView>()
         case .panel:
             return DemoViewController<PanelDemoView>()
-        case .reputationView:
-            return DemoViewController<ReputationDemoView>()
         case .visibilityDrivenTitleView:
             return DemoViewController<VisibilityDrivenTitleDemoView>(dismissType: .dismissButton)
         case .broadcast:
