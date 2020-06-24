@@ -156,4 +156,8 @@ class FullscreenViewTests: XCTestCase {
     func testConfettiView() {
         snapshot(.confettiView)
     }
+
+    func testSearchResultsView() {
+        snapshot(.searchResultsView)
+    }
 }

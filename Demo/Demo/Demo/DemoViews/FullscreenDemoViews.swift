@@ -5,6 +5,7 @@ import FinniversKit
 
 public enum FullscreenDemoViews: String, CaseIterable {
     case searchResultMapView
+    case searchResultsView
     case frontPageView
     case popupView
     case emptyView
@@ -48,6 +49,8 @@ public enum FullscreenDemoViews: String, CaseIterable {
         switch self {
         case .searchResultMapView:
             return SearchResultMapViewDemoViewController()
+        case .searchResultsView:
+            return DemoViewController<SearchResultsDemoView>(dismissType: .dismissButton)
         case .frontPageView:
             return DemoViewController<FrontpageViewDemoView>()
         case .emptyView:
