@@ -14,7 +14,7 @@ public class TransactionProcessSummaryAdManagementDemoView: UIView {
 
     let model = TransactionProcessSummaryViewModel(
         title: "Salgsprosess",
-        detail: "Kontrakt",
+        detail: "Betaling og eierskifte",
         description: "Når du har funnet en kjøper er det neste steget å skrive en kontrakt",
         externalView: .init(text: "Mine kjøretøy", url: "https://www.finn.no/minekjoretoy"),
         style: "ERROR"
