@@ -2,13 +2,14 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
-public protocol TransactionProcessSummaryViewDelegate: AnyObject {
-    func transactionProcessSummaryViewWasTapped(_ view: TransactionProcessSummaryView)
-    func transactionProcessExternalViewWasTapped(_ view: TransactionProcessSummaryView)
+public protocol TransactionProcessSummaryAdManagementViewDelegate: AnyObject {
+    func transactionProcessSummaryViewWasTapped(_ view: TransactionProcessSummaryAdManagementView)
+    func transactionProcessExternalViewWasTapped(_ view: TransactionProcessSummaryAdManagementView)
 }
 
-public class TransactionProcessSummaryView: UIView {
-    public weak var delegate: TransactionProcessSummaryViewDelegate?
+// swiftlint:disable:next type_name
+public class TransactionProcessSummaryAdManagementView: UIView {
+    public weak var delegate: TransactionProcessSummaryAdManagementViewDelegate?
 
     // MARK: - Private properties
 
@@ -147,7 +148,7 @@ public class TransactionProcessSummaryView: UIView {
 
 // MARK: - Private
 
-private extension TransactionProcessSummaryView {
+private extension TransactionProcessSummaryAdManagementView {
     func setup() {
         backgroundColor = .bgPrimary
         setupContentView()
