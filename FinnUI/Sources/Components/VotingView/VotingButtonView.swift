@@ -68,6 +68,8 @@ class VotingButtonView: UIView {
         if let subtitle = viewModel.subtitle {
             subtitleLabel.text = subtitle
             stackView.addArrangedSubview(subtitleLabel)
+
+            stackView.setCustomSpacing(.spacingS, after: titleLabel)
         }
 
         if viewModel.isEnabled || (!viewModel.isEnabled && viewModel.isSelected) {
