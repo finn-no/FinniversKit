@@ -72,8 +72,10 @@ class VotingButtonView: UIView {
 
         if viewModel.isEnabled || (!viewModel.isEnabled && viewModel.isSelected) {
             iconImageView.tintColor = enabledTintColor
+            titleLabel.textColor = enabledTintColor
         } else {
             iconImageView.tintColor = disabledTintColor
+            titleLabel.textColor = disabledTintColor
         }
     }
 
