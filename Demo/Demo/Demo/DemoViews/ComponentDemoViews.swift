@@ -220,7 +220,7 @@ public enum ComponentDemoViews: String, CaseIterable {
         case .transactionProcessSummaryObjectPageView:
             return DemoViewController<TransactionProcessSummaryObjectPageDemoView>()
         case .votingView:
-            return DemoViewController<VotingDemoView>()
+            return DemoViewController<VotingDemoView>(dismissType: .dismissButton)
         }
     }
 }
