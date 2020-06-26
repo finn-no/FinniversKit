@@ -16,8 +16,18 @@ class VotingButtonView: UIView {
     private weak var delegate: VotingButtonViewDelegate?
     private let enabledTintColor = UIColor.btnPrimary
     private let disabledTintColor = UIColor.textDisabled
-    private lazy var titleLabel = Label(style: .captionStrong, withAutoLayout: true)
-    private lazy var subtitleLabel = Label(style: .detail, withAutoLayout: true)
+
+    private lazy var titleLabel: Label = {
+        let label = Label(style: .captionStrong, withAutoLayout: true)
+        label.textAlignment = .center
+        return label
+    }()
+
+    private lazy var subtitleLabel: Label = {
+        let label = Label(style: .detailStrong, withAutoLayout: true)
+        label.textAlignment = .center
+        return label
+    }()
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
