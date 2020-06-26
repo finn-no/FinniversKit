@@ -73,7 +73,7 @@ private extension VotingViewModel {
     static func viewModel(
         icon: FinniversImageAsset = .favoritesXmasFolder,
         title: String = "Her eksperimenterer vi",
-        description: String = "Burde vi prioritere å lage denne funksjonen?",
+        description: String = "Burde vi prioritere eller nedprioritere å lage denne funksjonen?",
         leftVotingButton: VotingButtonViewModel = .votingButton(votingButtonKind: .left),
         rightVotingButton: VotingButtonViewModel = .votingButton(votingButtonKind: .right)
     ) -> VotingViewModel {
