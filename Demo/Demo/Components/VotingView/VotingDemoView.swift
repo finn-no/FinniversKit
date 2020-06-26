@@ -3,9 +3,23 @@ import FinniversKit
 
 public class VotingDemoView: UIView, Tweakable {
     lazy var tweakingOptions: [TweakingOption] = [
-        TweakingOption(title: "2 items") {
+        TweakingOption(title: "Initial state") {
             self.votingView.configure(with: .viewModel())
-        }
+        },
+
+        TweakingOption(title: "Left button selected") {
+            self.votingView.configure(with: .viewModel(
+                leftVotingButton: .disabledVotingButton(votingButtonKind: .left, subtitle: "321 stemmer", isSelected: true),
+                rightVotingButton: .disabledVotingButton(votingButtonKind: .right, subtitle: "123 stemmer", isSelected: false)
+            ))
+        },
+
+        TweakingOption(title: "Right button selected") {
+            self.votingView.configure(with: .viewModel(
+                leftVotingButton: .disabledVotingButton(votingButtonKind: .left, subtitle: "321 stemmer", isSelected: false),
+                rightVotingButton: .disabledVotingButton(votingButtonKind: .right, subtitle: "123 stemmer", isSelected: true)
+            ))
+        },
     ]
 
     // MARK: - Private properties
