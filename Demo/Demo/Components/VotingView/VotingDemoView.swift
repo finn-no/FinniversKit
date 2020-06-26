@@ -45,7 +45,25 @@ public class VotingDemoView: UIView, Tweakable {
 
 extension VotingDemoView: VotingViewDelegate {
     public func votingView(_ view: VotingView, didSelectVotingButtonWithIdentifier identifier: String) {
-        print("🔥🔥🔥🔥 identifier = \(identifier)")
+        guard let selectedButtonKind = VotingButtonKind(rawValue: identifier) else { return }
+
+        let leftVotingButton: VotingButtonViewModel
+        let rightVotingButton: VotingButtonViewModel
+
+        switch selectedButtonKind {
+        case .left:
+            leftVotingButton = .disabledVotingButton(votingButtonKind: .left, subtitle: "321", isSelected: true)
+            rightVotingButton = .disabledVotingButton(votingButtonKind: .right, subtitle: "123", isSelected: false)
+        case .right:
+            leftVotingButton = .disabledVotingButton(votingButtonKind: .left, subtitle: "321", isSelected: false)
+            rightVotingButton = .disabledVotingButton(votingButtonKind: .right, subtitle: "123", isSelected: true)
+        }
+
+        let votingViewModel = VotingViewModel.viewModel(
+            leftVotingButton: leftVotingButton,
+            rightVotingButton: rightVotingButton
+        )
+        votingView.configure(with: votingViewModel)
     }
 }
 
@@ -71,17 +89,29 @@ private extension VotingViewModel {
 
 private extension VotingButtonViewModel {
     static func votingButton(
+        votingButtonKind: VotingButtonKind
+    ) -> VotingButtonViewModel {
+        VotingButtonViewModel(
+            identifier: votingButtonKind.identifier,
+            title: votingButtonKind.title,
+            subtitle: nil,
+            icon: UIImage(named: votingButtonKind.icon),
+            isEnabled: true,
+            isSelected: false
+        )
+    }
+
+    static func disabledVotingButton(
         votingButtonKind: VotingButtonKind,
         subtitle: String? = nil,
-        isEnabled: Bool = true,
-        isSelected: Bool = false
+        isSelected: Bool
     ) -> VotingButtonViewModel {
         VotingButtonViewModel(
             identifier: votingButtonKind.identifier,
             title: votingButtonKind.title,
             subtitle: subtitle,
             icon: UIImage(named: votingButtonKind.icon),
-            isEnabled: isEnabled,
+            isEnabled: false,
             isSelected: isSelected
         )
     }
