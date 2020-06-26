@@ -4,7 +4,15 @@
 
 import FinniversKit
 
+public protocol VotingViewDelegate: AnyObject {
+    func votingView(_ view: VotingView, didSelectVotingButtonWithIdentifier identifier: String)
+}
+
 public class VotingView: UIView {
+
+    // MARK: - Public properties
+
+    public weak var delegate: VotingViewDelegate?
 
     // MARK: - Private properties
 
@@ -89,8 +97,8 @@ public class VotingView: UIView {
         stackView.removeArrangedSubviews()
 
         let hairline = HairlineView()
-        let leftVotingButton = VotingButtonView(viewModel: viewModel.leftVotingButton)
-        let rightVotingButton = VotingButtonView(viewModel: viewModel.rightVotingButton)
+        let leftVotingButton = VotingButtonView(viewModel: viewModel.leftVotingButton, delegate: self)
+        let rightVotingButton = VotingButtonView(viewModel: viewModel.rightVotingButton, delegate: self)
 
         stackView.addArrangedSubviews([
             UIView(withAutoLayout: true),
@@ -101,6 +109,14 @@ public class VotingView: UIView {
         ])
 
         hairline.widthAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale).isActive = true
+    }
+}
+
+// MARK: - VotingButtonViewDelegate
+
+extension VotingView: VotingButtonViewDelegate {
+    func votingButtonWasSelected(_ votingButton: VotingButtonView, identifier: String) {
+        delegate?.votingView(self, didSelectVotingButtonWithIdentifier: identifier)
     }
 }
 

@@ -10,7 +10,11 @@ public class VotingDemoView: UIView, Tweakable {
 
     // MARK: - Private properties
 
-    private lazy var votingView = VotingView(withAutoLayout: true)
+    private lazy var votingView: VotingView = {
+        let view = VotingView(withAutoLayout: true)
+        view.delegate = self
+        return view
+    }()
 
     // MARK: - Init
 
@@ -34,6 +38,14 @@ public class VotingDemoView: UIView, Tweakable {
             votingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             votingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
         ])
+    }
+}
+
+// MARK: - VotingViewDelegate
+
+extension VotingDemoView: VotingViewDelegate {
+    public func votingView(_ view: VotingView, didSelectVotingButtonWithIdentifier identifier: String) {
+        print("🔥🔥🔥🔥 identifier = \(identifier)")
     }
 }
 
