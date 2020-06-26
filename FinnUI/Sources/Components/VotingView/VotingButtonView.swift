@@ -70,6 +70,7 @@ class VotingButtonView: UIView {
     // MARK: - Actions
 
     @objc private func handleTap() {
+        guard viewModel.isEnabled else { return }
         delegate?.votingButtonWasSelected(self, identifier: viewModel.identifier)
     }
 }
