@@ -52,11 +52,11 @@ extension VotingDemoView: VotingViewDelegate {
 
         switch selectedButtonKind {
         case .left:
-            leftVotingButton = .disabledVotingButton(votingButtonKind: .left, subtitle: "321", isSelected: true)
-            rightVotingButton = .disabledVotingButton(votingButtonKind: .right, subtitle: "123", isSelected: false)
+            leftVotingButton = .disabledVotingButton(votingButtonKind: .left, subtitle: "321 stemmer", isSelected: true)
+            rightVotingButton = .disabledVotingButton(votingButtonKind: .right, subtitle: "123 stemmer", isSelected: false)
         case .right:
-            leftVotingButton = .disabledVotingButton(votingButtonKind: .left, subtitle: "321", isSelected: false)
-            rightVotingButton = .disabledVotingButton(votingButtonKind: .right, subtitle: "123", isSelected: true)
+            leftVotingButton = .disabledVotingButton(votingButtonKind: .left, subtitle: "321 stemmer", isSelected: false)
+            rightVotingButton = .disabledVotingButton(votingButtonKind: .right, subtitle: "123 stemmer", isSelected: true)
         }
 
         let votingViewModel = VotingViewModel.viewModel(
