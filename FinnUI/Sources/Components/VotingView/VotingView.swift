@@ -75,7 +75,7 @@ public class VotingView: UIView {
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
-            stackView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: .spacingM),
+            stackView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: .spacingL),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
             stackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
