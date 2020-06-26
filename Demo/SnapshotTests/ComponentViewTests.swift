@@ -278,4 +278,8 @@ class ComponentViewTests: XCTestCase {
     func testIconLinkListView() {
         snapshot(.iconLinkListView)
     }
+
+    func testVotingView() {
+        snapshot(.votingView)
+    }
 }
