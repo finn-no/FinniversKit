@@ -47,7 +47,7 @@ public class SaveSearchView: UIView {
     private lazy var searchNameLabel: Label = {
         let label = Label(style: .title3Strong, withAutoLayout: true)
         label.textAlignment = .center
-        label.numberOfLines = 0
+        label.numberOfLines = 2
         return label
     }()
 
@@ -158,9 +158,9 @@ public class SaveSearchView: UIView {
             iconImageView.heightAnchor.constraint(equalToConstant: 48),
             iconImageView.widthAnchor.constraint(equalToConstant: 48),
             iconImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
+            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
 
-            searchNameLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: .spacingM),
+            searchNameLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: .spacingS),
             searchNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             searchNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
 
@@ -168,11 +168,11 @@ public class SaveSearchView: UIView {
             editSearchNameButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             editSearchNameButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
 
-            stackView.topAnchor.constraint(equalTo: editSearchNameButton.bottomAnchor, constant: .spacingM),
+            stackView.topAnchor.constraint(equalTo: editSearchNameButton.bottomAnchor, constant: .spacingS),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            deleteSavedSearchButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .spacingL + .spacingM),
+            deleteSavedSearchButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .spacingL),
             deleteSavedSearchButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             deleteSavedSearchButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
             deleteSavedSearchButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
