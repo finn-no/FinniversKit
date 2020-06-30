@@ -158,7 +158,7 @@ public class SaveSearchView: UIView {
             iconImageView.heightAnchor.constraint(equalToConstant: 48),
             iconImageView.widthAnchor.constraint(equalToConstant: 48),
             iconImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
 
             searchNameLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: .spacingS),
             searchNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
