@@ -47,7 +47,7 @@ public class SaveSearchView: UIView {
     private lazy var searchNameLabel: Label = {
         let label = Label(style: .title3Strong, withAutoLayout: true)
         label.textAlignment = .center
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         return label
     }()
 
