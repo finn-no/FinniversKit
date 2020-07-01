@@ -165,7 +165,7 @@ public class SaveSearchView: UIView {
             searchNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             searchNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
 
-            editSearchNameButton.topAnchor.constraint(equalTo: searchNameLabel.bottomAnchor, constant: .spacingXS),
+            editSearchNameButton.topAnchor.constraint(equalTo: searchNameLabel.bottomAnchor),
             editSearchNameButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             editSearchNameButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
 
