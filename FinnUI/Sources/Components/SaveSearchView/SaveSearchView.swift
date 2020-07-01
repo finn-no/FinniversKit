@@ -176,7 +176,7 @@ public class SaveSearchView: UIView {
             deleteSavedSearchButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .spacingL),
             deleteSavedSearchButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             deleteSavedSearchButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
-            deleteSavedSearchButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            deleteSavedSearchButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM)
         ])
     }
 
