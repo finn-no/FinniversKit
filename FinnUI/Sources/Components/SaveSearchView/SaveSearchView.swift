@@ -133,6 +133,7 @@ public class SaveSearchView: UIView {
         scrollView.addSubview(contentView)
         addSubview(scrollView)
         scrollView.fillInSuperview()
+        contentView.fillInSuperview()
 
         contentView.addSubview(iconImageView)
         contentView.addSubview(searchNameLabel)
