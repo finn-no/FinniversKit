@@ -161,7 +161,7 @@ public class SaveSearchView: UIView {
             iconImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
 
-            searchNameLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: .spacingS),
+            searchNameLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: .spacingM),
             searchNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             searchNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
 
@@ -169,11 +169,11 @@ public class SaveSearchView: UIView {
             editSearchNameButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             editSearchNameButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
 
-            stackView.topAnchor.constraint(equalTo: editSearchNameButton.bottomAnchor, constant: .spacingS),
+            stackView.topAnchor.constraint(equalTo: editSearchNameButton.bottomAnchor, constant: .spacingM),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            deleteSavedSearchButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .spacingL),
+            deleteSavedSearchButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .spacingL + .spacingM),
             deleteSavedSearchButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             deleteSavedSearchButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
             deleteSavedSearchButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM)
