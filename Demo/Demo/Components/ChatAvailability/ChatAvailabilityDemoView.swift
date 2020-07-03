@@ -42,7 +42,11 @@ public class ChatAvailabilityDemoView: UIView {
     private func setup() {
         statuses.forEach {
             let view = ChatAvailabilityView(withAutoLayout: true)
-            view.configure(buttonTitle: "Chat med oss")
+            view.configure(with: ChatAvailabilityViewModel(
+                title: "Live videovisning av bilen",
+                text: "Med live videovisning kan du se bilen på video mens du snakker med forhandleren.",
+                buttonTitle: "Be om videovisning")
+            )
             view.configure(status: $0.status, statusTitle: $0.statusTitle)
             stackView.addArrangedSubview(view)
         }

@@ -31,6 +31,18 @@ public class ChatAvailabilityView: UIView {
         return stackView
     }()
 
+    private lazy var titleLabel: Label = {
+        let label = Label(style: .title3Strong, withAutoLayout: true)
+        label.numberOfLines = 0
+        return label
+    }()
+
+    private lazy var textLabel: Label = {
+        let label = Label(style: .body, withAutoLayout: true)
+        label.numberOfLines = 0
+        return label
+    }()
+
     private lazy var chatNowButton: Button = {
         let button = Button(style: .callToAction, size: .normal, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
@@ -55,15 +67,28 @@ public class ChatAvailabilityView: UIView {
 
     private func setup() {
         addSubview(stackView)
+        stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(textLabel)
         stackView.addArrangedSubview(chatNowButton)
         stackView.addArrangedSubview(statusView)
+        stackView.setCustomSpacing(.spacingM, after: textLabel)
         stackView.fillInSuperview()
     }
 
     // MARK: - Public methods
 
-    public func configure(buttonTitle: String?) {
-        chatNowButton.setTitle(buttonTitle, for: .normal)
+    public func configure(with viewModel: ChatAvailabilityViewModel) {
+        if let title = viewModel.title {
+            titleLabel.text = title
+        } else {
+            titleLabel.isHidden = true
+        }
+        if let text = viewModel.text {
+            textLabel.text = text
+        } else {
+            textLabel.isHidden = true
+        }
+        chatNowButton.setTitle(viewModel.buttonTitle, for: .normal)
     }
 
     public func configure(status: Status, statusTitle: String? = nil) {
