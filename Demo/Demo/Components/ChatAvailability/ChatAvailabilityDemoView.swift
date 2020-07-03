@@ -8,7 +8,7 @@ import FinniversKit
 private struct ChatAvailabilityData: ChatAvailabilityViewModel {
     var title: String? = "Live videovisning av bilen"
     var text: String? = "Med live videovisning kan du se bilen på video mens du snakker med forhandleren."
-    var buttonTitle: String = "Be om videovisning"
+    var buttonTitle = "Be om videovisning"
 }
 
 public class ChatAvailabilityDemoView: UIView {
