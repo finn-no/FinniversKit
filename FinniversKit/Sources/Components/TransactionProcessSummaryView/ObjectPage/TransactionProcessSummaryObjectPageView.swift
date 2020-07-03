@@ -53,7 +53,7 @@ public class TransactionProcessSummaryObjectPageView: UIView {
         button.titleLabel?.transform = CGAffineTransform(scaleX: -1, y: 1)
         button.imageView?.transform = CGAffineTransform(scaleX: -1, y: 1)
         button.setImage(arrowRightImage, for: .normal)
-        button.tintColor = .bgPrimary
+        button.imageView?.tintColor = .iconTertiary
         button.imageEdgeInsets = UIEdgeInsets(
             top: button.imageEdgeInsets.top,
             leading: button.imageEdgeInsets.leading - .spacingL - .spacingM,
