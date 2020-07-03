@@ -16,7 +16,7 @@ public enum AdManagementActionType: String, Decodable {
     case upsale
     case unknown
     case review
-    case rentalApplications
+    case rentalApplications = "rental-applications"
     case externalFallback
 }
 
