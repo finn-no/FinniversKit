@@ -5,6 +5,12 @@
 import FinnUI
 import FinniversKit
 
+private struct ChatAvailabilityData: ChatAvailabilityViewModel {
+    var title: String? = "Live videovisning av bilen"
+    var text: String? = "Med live videovisning kan du se bilen på video mens du snakker med forhandleren."
+    var buttonTitle: String = "Be om videovisning"
+}
+
 public class ChatAvailabilityDemoView: UIView {
 
     let statuses: [(status: ChatAvailabilityView.Status, statusTitle: String?)] = [
@@ -42,11 +48,7 @@ public class ChatAvailabilityDemoView: UIView {
     private func setup() {
         statuses.forEach {
             let view = ChatAvailabilityView(withAutoLayout: true)
-            view.configure(with: ChatAvailabilityViewModel(
-                title: "Live videovisning av bilen",
-                text: "Med live videovisning kan du se bilen på video mens du snakker med forhandleren.",
-                buttonTitle: "Be om videovisning")
-            )
+            view.configure(with: ChatAvailabilityData())
             view.configure(status: $0.status, statusTitle: $0.statusTitle)
             stackView.addArrangedSubview(view)
         }
