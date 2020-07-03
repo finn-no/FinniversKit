@@ -38,7 +38,8 @@ public struct AdManagementActionCellModel {
                                                                  .republish: UIImage(named: .republish),
                                                                  .dispose: UIImage(named: .checkCircle),
                                                                  .undispose: UIImage(named: .uncheckCircle),
-                                                                 .review: UIImage(named: .rated)]
+                                                                 .review: UIImage(named: .rated),
+                                                                 .rentalApplications: UIImage(named: .stakeholder)]
         self.actionType = actionType
         self.title = title
         self.description = description
