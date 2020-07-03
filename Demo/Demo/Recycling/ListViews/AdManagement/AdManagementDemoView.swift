@@ -25,6 +25,9 @@ public class AdManagementDemoView: UIView {
 
     private var actionCellModels: [[AdManagementActionCellModel]] = [
         [
+            AdManagementActionCellModel(actionType: .rentalApplications, title: "Gå til enkel utleie dashboard", showExternalIcon: true)
+        ],
+        [
             AdManagementActionCellModel(actionType: .delete, title: "Slett annonsen"),
             AdManagementActionCellModel(actionType: .stop, title: "Skjul annonsen midlertidig", description: "Annonsen blir skjult fra FINNs søkeresultater")
         ],
