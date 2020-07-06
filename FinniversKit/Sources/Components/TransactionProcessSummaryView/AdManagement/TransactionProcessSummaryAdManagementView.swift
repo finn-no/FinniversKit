@@ -46,13 +46,13 @@ public class TransactionProcessSummaryAdManagementView: UIView {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         return label
     }()
 
     private lazy var detailLabel: Label = {
         let label = Label(style: .caption, withAutoLayout: true)
-        label.textColor = .stone
+        label.textColor = .textSecondary
         return label
     }()
 
@@ -61,7 +61,7 @@ public class TransactionProcessSummaryAdManagementView: UIView {
         var imageView = UIImageView(image: chevron)
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.tintColor = .stone
+        imageView.tintColor = .textSecondary
         return imageView
     }()
 
@@ -73,7 +73,7 @@ public class TransactionProcessSummaryAdManagementView: UIView {
 
     private lazy var descriptionLabel: Label = {
         let label = Label(style: .caption, withAutoLayout: true)
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.numberOfLines = 0
         return label
     }()
@@ -94,14 +94,14 @@ public class TransactionProcessSummaryAdManagementView: UIView {
 
     private lazy var externalTitleLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         return label
     }()
 
     private lazy var externalImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .stone
+        imageView.tintColor = .iconSecondary
         return imageView
     }()
 
