@@ -12,7 +12,7 @@ public protocol SaveSearchViewDelegate: AnyObject {
     func saveSearchViewDidSelectDeleteSearchButton(_ saveSearchView: SaveSearchView)
 }
 
-public class SaveSearchView: UIView {
+public class SaveSearchView: ShadowScrollView {
 
     // MARK: - Public properties
 
@@ -28,6 +28,7 @@ public class SaveSearchView: UIView {
     private lazy var pushSwitchView = createSwitchView()
     private lazy var emailSwitchView = createSwitchView()
     private var heightConstraint: NSLayoutConstraint!
+    private var usingShadowWhenScrolling: Bool = false
 
     private let switchStyle = SwitchViewStyle(
         titleLabelStyle: .bodyStrong,
@@ -66,6 +67,7 @@ public class SaveSearchView: UIView {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
         scrollView.contentInsetAdjustmentBehavior = .always
+        scrollView.delegate = self
         return scrollView
     }()
 
@@ -77,6 +79,12 @@ public class SaveSearchView: UIView {
     }()
 
     // MARK: - Initializers
+
+    public init(usingShadowWhenScrolling: Bool = false) {
+        super.init(frame: .zero)
+        self.usingShadowWhenScrolling = usingShadowWhenScrolling
+        setup()
+    }
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -130,9 +138,15 @@ public class SaveSearchView: UIView {
     private func setup() {
         backgroundColor = .bgPrimary
 
-        scrollView.addSubview(contentView)
-        addSubview(scrollView)
+        if usingShadowWhenScrolling {
+            insertSubview(scrollView, belowSubview: topShadowView)
+            topShadowView.bottomAnchor.constraint(equalTo: topAnchor).isActive = true
+        } else {
+            addSubview(scrollView)
+        }
         scrollView.fillInSuperview()
+
+        scrollView.addSubview(contentView)
         contentView.fillInSuperview()
 
         contentView.addSubview(iconImageView)
