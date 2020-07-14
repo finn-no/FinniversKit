@@ -285,7 +285,6 @@
 		CF164CF3230E8FB900250822 /* FavoriteAdSortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CF2230E8FB900250822 /* FavoriteAdSortOption.swift */; };
 		CF164CF5230E93AE00250822 /* FavoriteAdSortingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CF4230E93AE00250822 /* FavoriteAdSortingView.swift */; };
 		CF164CF8230E968000250822 /* FavoriteAdSortingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CF7230E968000250822 /* FavoriteAdSortingViewModel.swift */; };
-		CF164CFB230EAD3700250822 /* FavoriteAdSortOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CFA230EAD3700250822 /* FavoriteAdSortOptionCell.swift */; };
 		CF164CFD230EB0F900250822 /* CheckmarkImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CFC230EB0F900250822 /* CheckmarkImageView.swift */; };
 		CF164CFF230EB3D100250822 /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CFE230EB3D100250822 /* ContentSizedTableView.swift */; };
 		CF164D15230FFB7400250822 /* FavoriteAdActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D14230FFB7400250822 /* FavoriteAdActionViewModel.swift */; };
@@ -722,7 +721,6 @@
 		CF164CF2230E8FB900250822 /* FavoriteAdSortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdSortOption.swift; sourceTree = "<group>"; };
 		CF164CF4230E93AE00250822 /* FavoriteAdSortingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdSortingView.swift; sourceTree = "<group>"; };
 		CF164CF7230E968000250822 /* FavoriteAdSortingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdSortingViewModel.swift; sourceTree = "<group>"; };
-		CF164CFA230EAD3700250822 /* FavoriteAdSortOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdSortOptionCell.swift; sourceTree = "<group>"; };
 		CF164CFC230EB0F900250822 /* CheckmarkImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkImageView.swift; sourceTree = "<group>"; };
 		CF164CFE230EB3D100250822 /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
 		CF164D14230FFB7400250822 /* FavoriteAdActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdActionViewModel.swift; sourceTree = "<group>"; };
@@ -2319,7 +2317,6 @@
 			isa = PBXGroup;
 			children = (
 				CF164CF4230E93AE00250822 /* FavoriteAdSortingView.swift */,
-				CF164CF9230EAD2200250822 /* Cells */,
 				CF164CF6230E966400250822 /* ViewModels */,
 			);
 			path = FavoriteAdSorting;
@@ -2332,14 +2329,6 @@
 				CF164CF2230E8FB900250822 /* FavoriteAdSortOption.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		CF164CF9230EAD2200250822 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				CF164CFA230EAD3700250822 /* FavoriteAdSortOptionCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		CF164D1D2310026500250822 /* Cells */ = {
@@ -3184,7 +3173,6 @@
 				441FE44E209A2F2C00B04EF1 /* NotificationsListView.swift in Sources */,
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
 				CF4A053C21FB2ACB000BB7DA /* PianoEffectControl.swift in Sources */,
-				CF164CFB230EAD3700250822 /* FavoriteAdSortOptionCell.swift in Sources */,
 				441FE42E209A24E500B04EF1 /* MarketsGridViewModel.swift in Sources */,
 				DAD6EB272369916100968497 /* SettingsViewCellModel.swift in Sources */,
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
