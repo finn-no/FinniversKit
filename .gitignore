@@ -49,3 +49,4 @@ bundler/
 
 # Fastlane
 fastlane/report.xml
+.env
