@@ -38,7 +38,10 @@ public final class SortSelectionView: UIView {
 
     // MARK: - Init
 
-    public init(sortingOptions options: [SortSelectionOptionModel], selectedSortOptionIdentifier: String) {
+    public init(
+        sortingOptions options: [SortSelectionOptionModel],
+        selectedSortOptionIdentifier: String
+    ) {
         self.options = options
         self.selectedSortOptionIdentifier = selectedSortOptionIdentifier
         super.init(frame: .zero)

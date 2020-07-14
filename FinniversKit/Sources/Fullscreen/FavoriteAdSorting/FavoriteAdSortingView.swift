@@ -9,8 +9,7 @@ public protocol FavoriteAdSortingViewDelegate: AnyObject {
 }
 
 public final class FavoriteAdSortingView: UIView {
-    public static let rowHeight: CGFloat = 48.0
-    public static let totalHeight = rowHeight * CGFloat(FavoriteAdSortOption.allCases.count)
+    public static let totalHeight = SortSelectionView.rowHeight * CGFloat(FavoriteAdSortOption.allCases.count)
 
     // MARK: - Public properties
 
@@ -18,30 +17,20 @@ public final class FavoriteAdSortingView: UIView {
 
     // MARK: - Private properties
 
-    private let viewModel: FavoriteAdSortingViewModel
-    private let options = FavoriteAdSortOption.allCases
+    private let sortingOptions: [FavoriteAdSortOptionModel]
     private var selectedSortOption: FavoriteAdSortOption
 
-    private lazy var tableView: UITableView = {
-        let tableView = ContentSizedTableView(frame: .zero, style: .plain)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.backgroundColor = .bgPrimary
-        tableView.rowHeight = FavoriteAdSortingView.rowHeight
-        tableView.estimatedRowHeight = FavoriteAdSortingView.rowHeight
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        tableView.tableFooterView = UIView()
-        tableView.isScrollEnabled = false
-        tableView.separatorColor = .clear
-        tableView.register(FavoriteAdSortOptionCell.self)
-        return tableView
+    private lazy var sortingView: SortSelectionView = {
+        let view = SortSelectionView(sortingOptions: sortingOptions, selectedSortOptionIdentifier: selectedSortOption.rawValue)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.delegate = self
+        return view
     }()
 
     // MARK: - Init
 
     public init(viewModel: FavoriteAdSortingViewModel, selectedSortOption: FavoriteAdSortOption) {
-        self.viewModel = viewModel
+        self.sortingOptions = viewModel.toSortingOptions
         self.selectedSortOption = selectedSortOption
         super.init(frame: .zero)
         setup()
@@ -54,47 +43,56 @@ public final class FavoriteAdSortingView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        addSubview(tableView)
-        tableView.fillInSuperview()
+        addSubview(sortingView)
+        sortingView.fillInSuperview()
     }
 }
 
-// MARK: - UITableViewDataSource
+// MARK: - SortSelectionViewDelegate
 
-extension FavoriteAdSortingView: UITableViewDataSource {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return options.count
+extension FavoriteAdSortingView: SortSelectionViewDelegate {
+    public func sortSelectionView(_ view: SortSelectionView, didSelectSortOptionWithIdentifier selectedIdentifier: String) {
+        guard let sortOption = FavoriteAdSortOption(rawValue: selectedIdentifier) else { return }
+        delegate?.favoriteAdSortingView(self, didSelectSortOption: sortOption)
     }
+}
 
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let option = options[indexPath.row]
-        let cell = tableView.dequeue(FavoriteAdSortOptionCell.self, for: indexPath)
+// MARK: - Private extensions / types
 
-        switch option {
+private extension FavoriteAdSortingViewModel {
+    var toSortingOptions: [FavoriteAdSortOptionModel] {
+        [
+            FavoriteAdSortOptionModel(title: lastAddedText, favoriteSortOption: .lastAdded),
+            FavoriteAdSortOptionModel(title: statusText, favoriteSortOption: .status),
+            FavoriteAdSortOptionModel(title: lastUpdatedText, favoriteSortOption: .lastUpdated),
+            FavoriteAdSortOptionModel(title: distanceText, favoriteSortOption: .distance)
+        ]
+    }
+}
+
+private extension FavoriteAdSortOption {
+    var icon: FinniversImageAsset {
+        switch self {
         case .lastAdded:
-            cell.configure(withTitle: viewModel.lastAddedText, icon: .favoritesSortLastAdded)
+            return .favoritesSortLastAdded
         case .status:
-            cell.configure(withTitle: viewModel.statusText, icon: .favoritesSortAdStatus)
+            return .favoritesSortAdStatus
         case .lastUpdated:
-            cell.configure(withTitle: viewModel.lastUpdatedText, icon: .republish)
+            return .republish
         case .distance:
-            cell.configure(withTitle: viewModel.distanceText, icon: .favoritesSortDistance)
+            return .favoritesSortDistance
         }
-
-        cell.isCheckmarkHidden = option != selectedSortOption
-
-        return cell
     }
 }
 
-// MARK: - UITableViewDelegate
+private struct FavoriteAdSortOptionModel: SortSelectionOptionModel {
+    let title: String
+    let favoriteSortOption: FavoriteAdSortOption
+    var identifier: String { favoriteSortOption.rawValue }
+    var icon: UIImage { UIImage(named: favoriteSortOption.icon) }
 
-extension FavoriteAdSortingView: UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedSortOption = options[indexPath.row]
-
-        tableView.deselectRow(at: indexPath, animated: true)
-        tableView.reloadData()
-        delegate?.favoriteAdSortingView(self, didSelectSortOption: selectedSortOption)
+    init(title: String, favoriteSortOption: FavoriteAdSortOption) {
+        self.title = title
+        self.favoriteSortOption = favoriteSortOption
     }
 }
