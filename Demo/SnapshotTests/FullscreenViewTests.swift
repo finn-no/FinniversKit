@@ -160,4 +160,8 @@ class FullscreenViewTests: XCTestCase {
     func testSearchResultsView() {
         snapshot(.searchResultsView)
     }
+
+    func testSavedSearchSortingView() {
+        snapshot(.savedSearchSortingView)
+    }
 }
