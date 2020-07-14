@@ -158,6 +158,7 @@
 		89A7A63D225337B50053D33B /* NativeAdvertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A63C225337B50053D33B /* NativeAdvertViewModel.swift */; };
 		89A7A645225352380053D33B /* NativeAdvertDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A643225352180053D33B /* NativeAdvertDelegates.swift */; };
 		89A7A648225352A30053D33B /* NativeAdvertContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A6462253524E0053D33B /* NativeAdvertContentView.swift */; };
+		8D68002D5056813B49BC1902 /* SavedSearchSortingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680B1214D260A2C43C6C21 /* SavedSearchSortingViewModel.swift */; };
 		8D68020C8D99FFCA2D0E4544 /* SaveSearchPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680E44C486FC51C7F9B871 /* SaveSearchPromptView.swift */; };
 		8D68049F4E30F91924B67CD3 /* SortSelectionOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680CAAFFF9E2F39CC9E68A /* SortSelectionOptionCell.swift */; };
 		8D68065886C619697E164BA3 /* SavedSearchSortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680D9CBAB427CE85F11FA5 /* SavedSearchSortOption.swift */; };
@@ -1831,6 +1832,7 @@
 		8D680AB2057FE09F64CCA1C9 /* SavedSearchSorting */ = {
 			isa = PBXGroup;
 			children = (
+				8D680011C5206E6A2A786EE7 /* SavedSearchSortingView.swift */,
 				8D680E67195E6AA0992CB9EA /* ViewModels */,
 			);
 			path = SavedSearchSorting;
@@ -3556,6 +3558,7 @@
 				8D68049F4E30F91924B67CD3 /* SortSelectionOptionCell.swift in Sources */,
 				8D680C60027F241553ECB6C5 /* SortSelectionOptionModel.swift in Sources */,
 				8D68065886C619697E164BA3 /* SavedSearchSortOption.swift in Sources */,
+				8D68002D5056813B49BC1902 /* SavedSearchSortingViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
