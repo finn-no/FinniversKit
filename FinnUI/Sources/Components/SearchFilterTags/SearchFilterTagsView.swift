@@ -15,7 +15,7 @@ public protocol SearchFilterTagsViewModel {
     public weak var delegate: SearchFilterTagsViewDelegate?
     public static let height = 2 * SearchFilterTagsView.verticalMargin + SearchFilterTagCell.height
 
-    private var searchFilterTags = [SearchFilterTagCellViewModel]()
+    // MARK: - Private properties
 
     private static let verticalMargin = .spacingS + .spacingXXS
     private static let horizontalMargin: CGFloat = .spacingS
@@ -31,7 +31,6 @@ public protocol SearchFilterTagsViewModel {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
-        collectionView.isScrollEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -40,9 +39,7 @@ public protocol SearchFilterTagsViewModel {
         collectionView.register(SearchFilterFilterCell.self)
 
         collectionView.contentInset = UIEdgeInsets(
-            top: 0,
             leading: SearchFilterTagsView.horizontalMargin,
-            bottom: 0,
             trailing: SearchFilterTagsView.horizontalMargin
         )
 
@@ -56,8 +53,10 @@ public protocol SearchFilterTagsViewModel {
     }()
 
     private let viewModel: SearchFilterTagsViewModel
+    private var searchFilterTags = [SearchFilterTagCellViewModel]()
 
     // MARK: - Init
+
     public init(viewModel: SearchFilterTagsViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
@@ -68,6 +67,8 @@ public protocol SearchFilterTagsViewModel {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Setup
+
     private func setup() {
         backgroundColor = .bgPrimary
 
@@ -77,9 +78,8 @@ public protocol SearchFilterTagsViewModel {
         collectionView.fillInSuperview(
             insets: UIEdgeInsets(
                 top: SearchFilterTagsView.verticalMargin,
-                leading: 0,
-                bottom: -SearchFilterTagsView.verticalMargin,
-                trailing: 0)
+                bottom: -SearchFilterTagsView.verticalMargin
+            )
         )
 
         NSLayoutConstraint.activate([
@@ -88,9 +88,11 @@ public protocol SearchFilterTagsViewModel {
             separatorView.bottomAnchor.constraint(equalTo: bottomAnchor),
             separatorView.leadingAnchor.constraint(equalTo: leadingAnchor),
             separatorView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            separatorView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale)
+            separatorView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
         ])
     }
+
+    // MARK: - Public methods
 
     public func configure(with searchFilterTags: [SearchFilterTagCellViewModel]) {
         self.searchFilterTags = searchFilterTags
@@ -98,6 +100,8 @@ public protocol SearchFilterTagsViewModel {
         collectionView.reloadData()
         collectionView.layoutIfNeeded()
     }
+
+    // MARK: - Private methods
 
     private func title(at indexPath: IndexPath) -> String {
         return searchFilterTags[indexPath.item].title
@@ -126,7 +130,6 @@ extension SearchFilterTagsView: UICollectionViewDataSource {
         }
 
         let cell = collectionView.dequeue(SearchFilterTagCell.self, for: indexPath)
-
         cell.configure(with: searchFilterTags[indexPath.item], icon: viewModel.removeTagIcon)
         cell.delegate = self
 
@@ -164,12 +167,14 @@ extension SearchFilterTagsView: SearchFilterTagCellDelegate {
 
 extension SearchFilterTagsView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+                               layout collectionViewLayout: UICollectionViewLayout,
+                               sizeForItemAt indexPath: IndexPath) -> CGSize {
+
         if indexPath.section == 0 {
             return CGSize(
                 width: SearchFilterFilterCell.width(for: viewModel.filterButtonTitle),
-                height: SearchFilterFilterCell.height)
+                height: SearchFilterFilterCell.height
+            )
         }
 
         var cellWidth = SearchFilterTagCell.width(for: title(at: indexPath))
@@ -179,8 +184,8 @@ extension SearchFilterTagsView: UICollectionViewDelegateFlowLayout {
     }
 
     public func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
+                               layout collectionViewLayout: UICollectionViewLayout,
+                               insetForSectionAt section: Int) -> UIEdgeInsets {
         section == 0 ? UIEdgeInsets(trailing: .spacingS) : .zero
     }
 }

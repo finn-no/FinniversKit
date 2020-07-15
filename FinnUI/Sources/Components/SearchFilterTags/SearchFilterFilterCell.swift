@@ -57,7 +57,7 @@ final class SearchFilterFilterCell: UICollectionViewCell {
             filterIcon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
             filterIcon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             filterIcon.widthAnchor.constraint(equalToConstant: iconWidth),
-            filterIcon.heightAnchor.constraint(equalToConstant: iconWidth),
+            filterIcon.heightAnchor.constraint(equalTo: filterIcon.widthAnchor),
 
             titleLabel.leadingAnchor.constraint(equalTo: filterIcon.trailingAnchor, constant: padding),
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),

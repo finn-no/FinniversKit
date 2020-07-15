@@ -12,14 +12,14 @@ class SearchFilterTagsDemoView: UIView {
         return view
     }()
 
-    var searchFilterTags: [SearchFilterTagCellViewModel] = {
+    private var searchFilterTags: [SearchFilterTagCellViewModel] = {
         return [
-            SearchFilterTagCell(title: "'rålekker'", accessibilityLabel: "", isValid: true),
-            SearchFilterTagCell(title: "Oslo", accessibilityLabel: "", isValid: true),
-            SearchFilterTagCell(title: "70 - 40m²", accessibilityLabel: "", isValid: false),
-            SearchFilterTagCell(title: "Leilighet", accessibilityLabel: "", isValid: true),
-            SearchFilterTagCell(title: "Balkong/Terasse", accessibilityLabel: "", isValid: true),
-            SearchFilterTagCell(title: "Ikke 1. etasje", accessibilityLabel: "", isValid: true)
+            SearchFilterTagCell(title: "'rålekker'", isValid: true),
+            SearchFilterTagCell(title: "Oslo", isValid: true),
+            SearchFilterTagCell(title: "70 - 40m²", isValid: false),
+            SearchFilterTagCell(title: "Leilighet", isValid: true),
+            SearchFilterTagCell(title: "Balkong/Terasse", isValid: true),
+            SearchFilterTagCell(title: "Ikke 1. etasje", isValid: true)
         ]
     }()
 
@@ -48,6 +48,8 @@ class SearchFilterTagsDemoView: UIView {
     }
 }
 
+// MARK: - SearchFilterTagsViewDelegate
+
 extension SearchFilterTagsDemoView: SearchFilterTagsViewDelegate {
     func searchFilterTagsViewDidSelectFilter(_ view: SearchFilterTagsView) {
         print("Present charcoal filter!")
@@ -59,14 +61,23 @@ extension SearchFilterTagsDemoView: SearchFilterTagsViewDelegate {
     }
 }
 
+// MARK: - Demo data
+
 private class SearchFilterTagCell: SearchFilterTagCellViewModel {
     let title: String
-    let accessibilityLabel: String
+    let titleAccessibilityLabel: String
+    let removeButtonAccessibilityLabel: String
     let isValid: Bool
 
-    init(title: String, accessibilityLabel: String, isValid: Bool) {
+    init(
+        title: String,
+        titleAccessibilityLabel: String = "",
+        removeButtonAccessibilityLabel: String = "",
+        isValid: Bool
+    ) {
         self.title = title
-        self.accessibilityLabel = accessibilityLabel
+        self.titleAccessibilityLabel = titleAccessibilityLabel
+        self.removeButtonAccessibilityLabel = removeButtonAccessibilityLabel
         self.isValid = isValid
     }
 }

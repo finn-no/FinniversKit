@@ -6,7 +6,8 @@ protocol SearchFilterTagCellDelegate: AnyObject {
 
 public protocol SearchFilterTagCellViewModel {
     var title: String { get }
-    var accessibilityLabel: String { get }
+    var titleAccessibilityLabel: String { get }
+    var removeButtonAccessibilityLabel: String { get }
     var isValid: Bool { get }
 }
 
@@ -56,15 +57,6 @@ final class SearchFilterTagCell: UICollectionViewCell {
 
     // MARK: - Setup
 
-    func configure(with viewModel: SearchFilterTagCellViewModel, icon: UIImage) {
-        backgroundColor = viewModel.isValid ? .btnPrimary : .btnCritical
-
-        titleLabel.text = viewModel.title
-        titleLabel.accessibilityLabel = viewModel.accessibilityLabel
-        removeButton.accessibilityLabel = viewModel.accessibilityLabel
-        removeButton.setImage(icon, for: .normal)
-    }
-
     private func setup() {
         layer.cornerRadius = 4
         backgroundColor = .btnPrimary
@@ -84,6 +76,17 @@ final class SearchFilterTagCell: UICollectionViewCell {
             removeButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             removeButton.widthAnchor.constraint(equalToConstant: buttonWidth),
         ])
+    }
+
+    // MARK: - Internal methods
+
+    func configure(with viewModel: SearchFilterTagCellViewModel, icon: UIImage) {
+        backgroundColor = viewModel.isValid ? .btnPrimary : .btnCritical
+
+        titleLabel.text = viewModel.title
+        titleLabel.accessibilityLabel = viewModel.titleAccessibilityLabel
+        removeButton.accessibilityLabel = viewModel.removeButtonAccessibilityLabel
+        removeButton.setImage(icon, for: .normal)
     }
 
     // MARK: - Actions
