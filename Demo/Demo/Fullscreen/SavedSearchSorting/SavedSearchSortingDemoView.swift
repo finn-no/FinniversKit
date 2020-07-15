@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import FinnUI
 
 final class SavedSearchSortingDemoView: UIView {
     private(set) lazy var view: SavedSearchSortingView = {

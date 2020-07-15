@@ -2,7 +2,7 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import UIKit
+import FinniversKit
 
 public protocol SavedSearchSortingViewDelegate: AnyObject {
     func savedSearchSortingView(_ view: SavedSearchSortingView, didSelectSortOption option: SavedSearchSortOption)
