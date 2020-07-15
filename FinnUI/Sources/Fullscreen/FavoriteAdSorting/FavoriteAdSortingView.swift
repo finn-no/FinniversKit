@@ -2,7 +2,7 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import UIKit
+import FinniversKit
 
 public protocol FavoriteAdSortingViewDelegate: AnyObject {
     func favoriteAdSortingView(_ view: FavoriteAdSortingView, didSelectSortOption option: FavoriteAdSortOption)
