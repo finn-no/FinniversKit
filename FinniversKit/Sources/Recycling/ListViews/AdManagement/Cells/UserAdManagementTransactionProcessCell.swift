@@ -2,19 +2,19 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
-public protocol UserAdManagementTransactionProcessCellDelegate: AnyObject {
-    func userAdManagementTransactionProcessCellDidTapSummary(_ view: UserAdManagementTransactionProcessCell)
-    func userAdManagementTransactionProcessCellDidTapExternalView(_ view: UserAdManagementTransactionProcessCell)
+public protocol UserAdManagementMotorTransactionCellDelegate: AnyObject {
+    func userAdManagementMotorTransactionCellDidTapSummary(_ view: UserAdManagementMotorTransactionCell)
+    func userAdManagementMotorTransactionCellDidTapExternalView(_ view: UserAdManagementMotorTransactionCell)
 }
 
-public class UserAdManagementTransactionProcessCell: UITableViewCell {
+public class UserAdManagementMotorTransactionCell: UITableViewCell {
     // MARK: - Public
 
-    public var delegate: UserAdManagementTransactionProcessCellDelegate?
+    public var delegate: UserAdManagementMotorTransactionCellDelegate?
 
     // MARK: - Private
 
-    private lazy var transactionProcessSummaryView = TransactionProcessSummaryAdManagementView(withAutoLayout: true)
+    private lazy var transactionSummaryView = MotorTransactionSummaryAdManagementView(withAutoLayout: true)
 
     // MARK: - Initalization
 
@@ -30,8 +30,8 @@ public class UserAdManagementTransactionProcessCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    public func configure(with viewModel: TransactionProcessSummaryViewModel, shouldShowExternalView shouldShow: Bool) {
-        transactionProcessSummaryView.configure(with: viewModel, shouldShowExternalView: shouldShow)
+    public func configure(with viewModel: MotorTransactionSummaryViewModel, shouldShowExternalView shouldShow: Bool) {
+        transactionSummaryView.configure(with: viewModel, shouldShowExternalView: shouldShow)
     }
 
     // MARK: - Private methods
@@ -40,18 +40,18 @@ public class UserAdManagementTransactionProcessCell: UITableViewCell {
         backgroundColor = .bgPrimary
         selectionStyle = .none
 
-        addSubview(transactionProcessSummaryView)
-        transactionProcessSummaryView.fillInSuperview()
-        transactionProcessSummaryView.delegate = self
+        addSubview(transactionSummaryView)
+        transactionSummaryView.fillInSuperview()
+        transactionSummaryView.delegate = self
     }
 }
 
-extension UserAdManagementTransactionProcessCell: TransactionProcessSummaryAdManagementViewDelegate {
-    public func transactionProcessSummaryViewWasTapped(_ view: TransactionProcessSummaryAdManagementView) {
-        delegate?.userAdManagementTransactionProcessCellDidTapSummary(self)
+extension UserAdManagementMotorTransactionCell: MotorTransactionSummaryAdManagementViewDelegate {
+    public func motorTransactionSummaryViewWasTapped(_ view: MotorTransactionSummaryAdManagementView) {
+        delegate?.userAdManagementMotorTransactionCellDidTapSummary(self)
     }
 
-    public func transactionProcessExternalViewWasTapped(_ view: TransactionProcessSummaryAdManagementView) {
-        delegate?.userAdManagementTransactionProcessCellDidTapExternalView(self)
+    public func motorTransactionSummaryExternalViewWasTapped(_ view: MotorTransactionSummaryAdManagementView) {
+        delegate?.userAdManagementMotorTransactionCellDidTapExternalView(self)
     }
 }

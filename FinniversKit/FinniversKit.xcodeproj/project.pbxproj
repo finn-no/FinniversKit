@@ -394,39 +394,39 @@
 		DAD6EB2C2369916100968497 /* SettingsSectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB232369916100968497 /* SettingsSectionFooterView.swift */; };
 		DAD6EB322369BCFD00968497 /* SettingDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB312369BCFD00968497 /* SettingDetailsView.swift */; };
 		DAE6A55C21CA524B00837BFA /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE6A55B21CA524B00837BFA /* CGPoint.swift */; };
-		F20450B923EC0E86001F7370 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450B523EC0D48001F7370 /* TransactionView.swift */; };
-		F20450BE23EDA3A4001F7370 /* TransactionStepDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450BD23EDA3A4001F7370 /* TransactionStepDot.swift */; };
-		F20450C223EDA844001F7370 /* TransactionStepDotConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450C123EDA844001F7370 /* TransactionStepDotConnector.swift */; };
-		F20450C623EDB4EF001F7370 /* TransactionStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450C523EDB4EF001F7370 /* TransactionStepView.swift */; };
-		F20450C823EDB663001F7370 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450C723EDB663001F7370 /* TransactionViewModel.swift */; };
-		F20450CB23EDB7AE001F7370 /* TransactionStepView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450CA23EDB7AE001F7370 /* TransactionStepView+Style.swift */; };
+		F20450B923EC0E86001F7370 /* MotorTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450B523EC0D48001F7370 /* MotorTransactionView.swift */; };
+		F20450BE23EDA3A4001F7370 /* MotorTransactionStepDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450BD23EDA3A4001F7370 /* MotorTransactionStepDot.swift */; };
+		F20450C223EDA844001F7370 /* MotorTransactionStepDotConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450C123EDA844001F7370 /* MotorTransactionStepDotConnector.swift */; };
+		F20450C623EDB4EF001F7370 /* MotorTransactionStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450C523EDB4EF001F7370 /* MotorTransactionStepView.swift */; };
+		F20450C823EDB663001F7370 /* MotorTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450C723EDB663001F7370 /* MotorTransactionViewModel.swift */; };
+		F20450CB23EDB7AE001F7370 /* MotorTransactionStepView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20450CA23EDB7AE001F7370 /* MotorTransactionStepView+Style.swift */; };
 		F21B2E552424AC6200A9B5D6 /* UserAdManagementTransactionProcessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21B2E542424AC6200A9B5D6 /* UserAdManagementTransactionProcessCell.swift */; };
 		F22612D822572D9400472D22 /* StatisticsItemEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */; };
 		F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */; };
 		F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */; };
-		F240E82724A082500025C412 /* TransactionProcessSummaryObjectPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F240E82624A082500025C412 /* TransactionProcessSummaryObjectPageView.swift */; };
+		F240E82724A082500025C412 /* MotorTransactionSummaryObjectPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F240E82624A082500025C412 /* MotorTransactionSummaryObjectPageView.swift */; };
 		F253C50E2313F9F5008175FD /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253C50D2313F9F5008175FD /* VerificationView.swift */; };
 		F253C5142314015C008175FD /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253C5122313FEFC008175FD /* VerificationViewModel.swift */; };
 		F253C51D2315601A008175FD /* VerificationActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253C51B23155587008175FD /* VerificationActionSheet.swift */; };
 		F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2772F4322803B310002D21F /* ReviewButtonView.swift */; };
 		F288CB3E233CD53400C1EE8A /* UserAdsRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288CB3D233CD53400C1EE8A /* UserAdsRatingView.swift */; };
-		F28D78F22428B5AF00E77414 /* TransactionProcessSummaryAdManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28D78F12428B5AF00E77414 /* TransactionProcessSummaryAdManagementView.swift */; };
-		F28D78F82428DB8C00E77414 /* TransactionProcessSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28D78F62428DA1D00E77414 /* TransactionProcessSummaryViewModel.swift */; };
-		F29C4F582434780200E25209 /* TransactionStepContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C4F522434780200E25209 /* TransactionStepContentViewModel.swift */; };
-		F29C4F592434780200E25209 /* TransactionActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C4F542434780200E25209 /* TransactionActionButton.swift */; };
-		F29C4F5A2434780200E25209 /* TransactionActionButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C4F552434780200E25209 /* TransactionActionButtonViewModel.swift */; };
-		F29C4F5B2434780200E25209 /* TransactionStepContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C4F562434780200E25209 /* TransactionStepContentView.swift */; };
-		F29C4F5C2434780200E25209 /* TransactionStepView+CustomStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C4F572434780200E25209 /* TransactionStepView+CustomStyle.swift */; };
+		F28D78F22428B5AF00E77414 /* MotorTransactionSummaryAdManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28D78F12428B5AF00E77414 /* MotorTransactionSummaryAdManagementView.swift */; };
+		F28D78F82428DB8C00E77414 /* MotorTransactionSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28D78F62428DA1D00E77414 /* MotorTransactionSummaryViewModel.swift */; };
+		F29C4F582434780200E25209 /* MotorTransactionStepContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C4F522434780200E25209 /* MotorTransactionStepContentViewModel.swift */; };
+		F29C4F592434780200E25209 /* MotorTransactionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C4F542434780200E25209 /* MotorTransactionButton.swift */; };
+		F29C4F5A2434780200E25209 /* MotorTransactionButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C4F552434780200E25209 /* MotorTransactionButtonViewModel.swift */; };
+		F29C4F5B2434780200E25209 /* MotorTransactionStepContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C4F562434780200E25209 /* MotorTransactionStepContentView.swift */; };
+		F29C4F5C2434780200E25209 /* MotorTransactionStepView+CustomStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C4F572434780200E25209 /* MotorTransactionStepView+CustomStyle.swift */; };
 		F2BE213222819F7D004640F3 /* ReviewButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE212F22819EFA004640F3 /* ReviewButtonControl.swift */; };
 		F2BE6C09236AD24B0085A05A /* CheckmarkTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE6C08236AD24B0085A05A /* CheckmarkTitleView.swift */; };
 		F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95B22CB639200CED7E0 /* QuestionnaireView.swift */; };
 		F2C3E95E22CB63A200CED7E0 /* QuestionnaireViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95D22CB63A200CED7E0 /* QuestionnaireViewModel.swift */; };
 		F2C3E96022CB669A00CED7E0 /* QuestionnaireView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95F22CB669A00CED7E0 /* QuestionnaireView+Style.swift */; };
-		F2E48DE4240812AB009DEFBA /* TransactionAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E48DE3240812AB009DEFBA /* TransactionAlertView.swift */; };
-		F2E48DE724081383009DEFBA /* TransactionAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E48DE624081383009DEFBA /* TransactionAlertViewModel.swift */; };
-		F2E48DE92408141C009DEFBA /* TransactionStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E48DE82408141C009DEFBA /* TransactionStepViewModel.swift */; };
-		F2E48DEB2408174B009DEFBA /* TransactionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E48DEA2408174B009DEFBA /* TransactionHeaderView.swift */; };
-		F2E48DEE240817BD009DEFBA /* TransactionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E48DED240817BD009DEFBA /* TransactionHeaderViewModel.swift */; };
+		F2E48DE4240812AB009DEFBA /* MotorTransactionAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E48DE3240812AB009DEFBA /* MotorTransactionAlertView.swift */; };
+		F2E48DE724081383009DEFBA /* MotorTransactionAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E48DE624081383009DEFBA /* MotorTransactionAlertViewModel.swift */; };
+		F2E48DE92408141C009DEFBA /* MotorTransactionStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E48DE82408141C009DEFBA /* MotorTransactionStepViewModel.swift */; };
+		F2E48DEB2408174B009DEFBA /* MotorTransactionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E48DEA2408174B009DEFBA /* MotorTransactionHeaderView.swift */; };
+		F2E48DEE240817BD009DEFBA /* MotorTransactionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E48DED240817BD009DEFBA /* MotorTransactionHeaderViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -829,39 +829,39 @@
 		DAD6EB232369916100968497 /* SettingsSectionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSectionFooterView.swift; sourceTree = "<group>"; };
 		DAD6EB312369BCFD00968497 /* SettingDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDetailsView.swift; sourceTree = "<group>"; };
 		DAE6A55B21CA524B00837BFA /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
-		F20450B523EC0D48001F7370 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
-		F20450BD23EDA3A4001F7370 /* TransactionStepDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepDot.swift; sourceTree = "<group>"; };
-		F20450C123EDA844001F7370 /* TransactionStepDotConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepDotConnector.swift; sourceTree = "<group>"; };
-		F20450C523EDB4EF001F7370 /* TransactionStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepView.swift; sourceTree = "<group>"; };
-		F20450C723EDB663001F7370 /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
-		F20450CA23EDB7AE001F7370 /* TransactionStepView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionStepView+Style.swift"; sourceTree = "<group>"; };
+		F20450B523EC0D48001F7370 /* MotorTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionView.swift; sourceTree = "<group>"; };
+		F20450BD23EDA3A4001F7370 /* MotorTransactionStepDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionStepDot.swift; sourceTree = "<group>"; };
+		F20450C123EDA844001F7370 /* MotorTransactionStepDotConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionStepDotConnector.swift; sourceTree = "<group>"; };
+		F20450C523EDB4EF001F7370 /* MotorTransactionStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionStepView.swift; sourceTree = "<group>"; };
+		F20450C723EDB663001F7370 /* MotorTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionViewModel.swift; sourceTree = "<group>"; };
+		F20450CA23EDB7AE001F7370 /* MotorTransactionStepView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MotorTransactionStepView+Style.swift"; sourceTree = "<group>"; };
 		F21B2E542424AC6200A9B5D6 /* UserAdManagementTransactionProcessCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdManagementTransactionProcessCell.swift; sourceTree = "<group>"; };
 		F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyView.swift; sourceTree = "<group>"; };
 		F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyViewModel.swift; sourceTree = "<group>"; };
 		F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdManagementStatisticsEmptyViewCell.swift; sourceTree = "<group>"; };
-		F240E82624A082500025C412 /* TransactionProcessSummaryObjectPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionProcessSummaryObjectPageView.swift; sourceTree = "<group>"; };
+		F240E82624A082500025C412 /* MotorTransactionSummaryObjectPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionSummaryObjectPageView.swift; sourceTree = "<group>"; };
 		F253C50D2313F9F5008175FD /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		F253C5122313FEFC008175FD /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
 		F253C51B23155587008175FD /* VerificationActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationActionSheet.swift; sourceTree = "<group>"; };
 		F2772F4322803B310002D21F /* ReviewButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonView.swift; sourceTree = "<group>"; };
 		F288CB3D233CD53400C1EE8A /* UserAdsRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsRatingView.swift; sourceTree = "<group>"; };
-		F28D78F12428B5AF00E77414 /* TransactionProcessSummaryAdManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionProcessSummaryAdManagementView.swift; sourceTree = "<group>"; };
-		F28D78F62428DA1D00E77414 /* TransactionProcessSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionProcessSummaryViewModel.swift; sourceTree = "<group>"; };
-		F29C4F522434780200E25209 /* TransactionStepContentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionStepContentViewModel.swift; sourceTree = "<group>"; };
-		F29C4F542434780200E25209 /* TransactionActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionActionButton.swift; sourceTree = "<group>"; };
-		F29C4F552434780200E25209 /* TransactionActionButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionActionButtonViewModel.swift; sourceTree = "<group>"; };
-		F29C4F562434780200E25209 /* TransactionStepContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionStepContentView.swift; sourceTree = "<group>"; };
-		F29C4F572434780200E25209 /* TransactionStepView+CustomStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TransactionStepView+CustomStyle.swift"; sourceTree = "<group>"; };
+		F28D78F12428B5AF00E77414 /* MotorTransactionSummaryAdManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionSummaryAdManagementView.swift; sourceTree = "<group>"; };
+		F28D78F62428DA1D00E77414 /* MotorTransactionSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionSummaryViewModel.swift; sourceTree = "<group>"; };
+		F29C4F522434780200E25209 /* MotorTransactionStepContentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotorTransactionStepContentViewModel.swift; sourceTree = "<group>"; };
+		F29C4F542434780200E25209 /* MotorTransactionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotorTransactionButton.swift; sourceTree = "<group>"; };
+		F29C4F552434780200E25209 /* MotorTransactionButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotorTransactionButtonViewModel.swift; sourceTree = "<group>"; };
+		F29C4F562434780200E25209 /* MotorTransactionStepContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotorTransactionStepContentView.swift; sourceTree = "<group>"; };
+		F29C4F572434780200E25209 /* MotorTransactionStepView+CustomStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MotorTransactionStepView+CustomStyle.swift"; sourceTree = "<group>"; };
 		F2BE212F22819EFA004640F3 /* ReviewButtonControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonControl.swift; sourceTree = "<group>"; };
 		F2BE6C08236AD24B0085A05A /* CheckmarkTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkTitleView.swift; sourceTree = "<group>"; };
 		F2C3E95B22CB639200CED7E0 /* QuestionnaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireView.swift; sourceTree = "<group>"; };
 		F2C3E95D22CB63A200CED7E0 /* QuestionnaireViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireViewModel.swift; sourceTree = "<group>"; };
 		F2C3E95F22CB669A00CED7E0 /* QuestionnaireView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionnaireView+Style.swift"; sourceTree = "<group>"; };
-		F2E48DE3240812AB009DEFBA /* TransactionAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAlertView.swift; sourceTree = "<group>"; };
-		F2E48DE624081383009DEFBA /* TransactionAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAlertViewModel.swift; sourceTree = "<group>"; };
-		F2E48DE82408141C009DEFBA /* TransactionStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepViewModel.swift; sourceTree = "<group>"; };
-		F2E48DEA2408174B009DEFBA /* TransactionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHeaderView.swift; sourceTree = "<group>"; };
-		F2E48DED240817BD009DEFBA /* TransactionHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHeaderViewModel.swift; sourceTree = "<group>"; };
+		F2E48DE3240812AB009DEFBA /* MotorTransactionAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionAlertView.swift; sourceTree = "<group>"; };
+		F2E48DE624081383009DEFBA /* MotorTransactionAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionAlertViewModel.swift; sourceTree = "<group>"; };
+		F2E48DE82408141C009DEFBA /* MotorTransactionStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionStepViewModel.swift; sourceTree = "<group>"; };
+		F2E48DEA2408174B009DEFBA /* MotorTransactionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionHeaderView.swift; sourceTree = "<group>"; };
+		F2E48DED240817BD009DEFBA /* MotorTransactionHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionHeaderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1325,7 +1325,7 @@
 				4447F6A31FDB2B110033DBC1 /* TextField */,
 				081F51BB222932C900026C84 /* TextView */,
 				4447F6A81FDB2B110033DBC1 /* Toast */,
-				F28D78F02428B59000E77414 /* TransactionProcessSummaryView */,
+				F28D78F02428B59000E77414 /* MotorTransactionSummaryView */,
 				F2597C73231D1A0B00BE74EC /* VerificationView */,
 				494047FA23CDBA7600ECBCFD /* Viewings */,
 				08E9F54E2341FBC300943E5D /* VisibilityDrivenTitleView */,
@@ -1617,7 +1617,7 @@
 				91846C4822E735B60001410F /* SearchResultMapView */,
 				DAD6EB302369BCFC00968497 /* SettingDetailsView */,
 				43EA978021941E63003A548A /* SoldView */,
-				F20450B223EC0CB5001F7370 /* TransactionView */,
+				F20450B223EC0CB5001F7370 /* MotorTransactionView */,
 				F2597C72231D19B900BE74EC /* VerificationActionSheet */,
 			);
 			path = Fullscreen;
@@ -2767,30 +2767,30 @@
 			path = "Core Graphics";
 			sourceTree = "<group>";
 		};
-		F20450B223EC0CB5001F7370 /* TransactionView */ = {
+		F20450B223EC0CB5001F7370 /* MotorTransactionView */ = {
 			isa = PBXGroup;
 			children = (
-				F20450B523EC0D48001F7370 /* TransactionView.swift */,
-				F20450C723EDB663001F7370 /* TransactionViewModel.swift */,
-				F2E48DEC2408175E009DEFBA /* TransactionHeaderView */,
-				F2E48DE52408135A009DEFBA /* TransactionAlertView */,
-				F20450C923EDB675001F7370 /* TransactionStepView */,
-				F29C4F532434780200E25209 /* TransactionActionButton */,
-				F2E48DE02407D224009DEFBA /* TransactionStepDot */,
+				F20450B523EC0D48001F7370 /* MotorTransactionView.swift */,
+				F20450C723EDB663001F7370 /* MotorTransactionViewModel.swift */,
+				F2E48DEC2408175E009DEFBA /* MotorTransactionHeaderView */,
+				F2E48DE52408135A009DEFBA /* MotorTransactionAlertView */,
+				F20450C923EDB675001F7370 /* MotorTransactionStepView */,
+				F29C4F532434780200E25209 /* MotorTransactionButton */,
+				F2E48DE02407D224009DEFBA /* MotorTransactionStepDot */,
 			);
-			path = TransactionView;
+			path = MotorTransactionView;
 			sourceTree = "<group>";
 		};
-		F20450C923EDB675001F7370 /* TransactionStepView */ = {
+		F20450C923EDB675001F7370 /* MotorTransactionStepView */ = {
 			isa = PBXGroup;
 			children = (
-				F20450C523EDB4EF001F7370 /* TransactionStepView.swift */,
-				F2E48DE82408141C009DEFBA /* TransactionStepViewModel.swift */,
-				F20450CA23EDB7AE001F7370 /* TransactionStepView+Style.swift */,
-				F29C4F572434780200E25209 /* TransactionStepView+CustomStyle.swift */,
-				F29C4F512434780200E25209 /* TransactionStepContentView */,
+				F20450C523EDB4EF001F7370 /* MotorTransactionStepView.swift */,
+				F2E48DE82408141C009DEFBA /* MotorTransactionStepViewModel.swift */,
+				F20450CA23EDB7AE001F7370 /* MotorTransactionStepView+Style.swift */,
+				F29C4F572434780200E25209 /* MotorTransactionStepView+CustomStyle.swift */,
+				F29C4F512434780200E25209 /* MotorTransactionStepContentView */,
 			);
-			path = TransactionStepView;
+			path = MotorTransactionStepView;
 			sourceTree = "<group>";
 		};
 		F22612D6225631FD00472D22 /* StatisticsView */ = {
@@ -2808,7 +2808,7 @@
 		F240E82824A084B30025C412 /* AdManagement */ = {
 			isa = PBXGroup;
 			children = (
-				F28D78F12428B5AF00E77414 /* TransactionProcessSummaryAdManagementView.swift */,
+				F28D78F12428B5AF00E77414 /* MotorTransactionSummaryAdManagementView.swift */,
 			);
 			path = AdManagement;
 			sourceTree = "<group>";
@@ -2816,7 +2816,7 @@
 		F240E82924A084CC0025C412 /* ObjectPage */ = {
 			isa = PBXGroup;
 			children = (
-				F240E82624A082500025C412 /* TransactionProcessSummaryObjectPageView.swift */,
+				F240E82624A082500025C412 /* MotorTransactionSummaryObjectPageView.swift */,
 			);
 			path = ObjectPage;
 			sourceTree = "<group>";
@@ -2846,32 +2846,32 @@
 			path = ReviewButtonView;
 			sourceTree = "<group>";
 		};
-		F28D78F02428B59000E77414 /* TransactionProcessSummaryView */ = {
+		F28D78F02428B59000E77414 /* MotorTransactionSummaryView */ = {
 			isa = PBXGroup;
 			children = (
 				F240E82924A084CC0025C412 /* ObjectPage */,
 				F240E82824A084B30025C412 /* AdManagement */,
-				F28D78F62428DA1D00E77414 /* TransactionProcessSummaryViewModel.swift */,
+				F28D78F62428DA1D00E77414 /* MotorTransactionSummaryViewModel.swift */,
 			);
-			path = TransactionProcessSummaryView;
+			path = MotorTransactionSummaryView;
 			sourceTree = "<group>";
 		};
-		F29C4F512434780200E25209 /* TransactionStepContentView */ = {
+		F29C4F512434780200E25209 /* MotorTransactionStepContentView */ = {
 			isa = PBXGroup;
 			children = (
-				F29C4F522434780200E25209 /* TransactionStepContentViewModel.swift */,
-				F29C4F562434780200E25209 /* TransactionStepContentView.swift */,
+				F29C4F522434780200E25209 /* MotorTransactionStepContentViewModel.swift */,
+				F29C4F562434780200E25209 /* MotorTransactionStepContentView.swift */,
 			);
-			path = TransactionStepContentView;
+			path = MotorTransactionStepContentView;
 			sourceTree = "<group>";
 		};
-		F29C4F532434780200E25209 /* TransactionActionButton */ = {
+		F29C4F532434780200E25209 /* MotorTransactionButton */ = {
 			isa = PBXGroup;
 			children = (
-				F29C4F542434780200E25209 /* TransactionActionButton.swift */,
-				F29C4F552434780200E25209 /* TransactionActionButtonViewModel.swift */,
+				F29C4F542434780200E25209 /* MotorTransactionButton.swift */,
+				F29C4F552434780200E25209 /* MotorTransactionButtonViewModel.swift */,
 			);
-			path = TransactionActionButton;
+			path = MotorTransactionButton;
 			sourceTree = "<group>";
 		};
 		F2BE212E22819ED8004640F3 /* Control */ = {
@@ -2908,31 +2908,31 @@
 			path = QuestionnaireView;
 			sourceTree = "<group>";
 		};
-		F2E48DE02407D224009DEFBA /* TransactionStepDot */ = {
+		F2E48DE02407D224009DEFBA /* MotorTransactionStepDot */ = {
 			isa = PBXGroup;
 			children = (
-				F20450BD23EDA3A4001F7370 /* TransactionStepDot.swift */,
-				F20450C123EDA844001F7370 /* TransactionStepDotConnector.swift */,
+				F20450BD23EDA3A4001F7370 /* MotorTransactionStepDot.swift */,
+				F20450C123EDA844001F7370 /* MotorTransactionStepDotConnector.swift */,
 			);
-			path = TransactionStepDot;
+			path = MotorTransactionStepDot;
 			sourceTree = "<group>";
 		};
-		F2E48DE52408135A009DEFBA /* TransactionAlertView */ = {
+		F2E48DE52408135A009DEFBA /* MotorTransactionAlertView */ = {
 			isa = PBXGroup;
 			children = (
-				F2E48DE3240812AB009DEFBA /* TransactionAlertView.swift */,
-				F2E48DE624081383009DEFBA /* TransactionAlertViewModel.swift */,
+				F2E48DE3240812AB009DEFBA /* MotorTransactionAlertView.swift */,
+				F2E48DE624081383009DEFBA /* MotorTransactionAlertViewModel.swift */,
 			);
-			path = TransactionAlertView;
+			path = MotorTransactionAlertView;
 			sourceTree = "<group>";
 		};
-		F2E48DEC2408175E009DEFBA /* TransactionHeaderView */ = {
+		F2E48DEC2408175E009DEFBA /* MotorTransactionHeaderView */ = {
 			isa = PBXGroup;
 			children = (
-				F2E48DEA2408174B009DEFBA /* TransactionHeaderView.swift */,
-				F2E48DED240817BD009DEFBA /* TransactionHeaderViewModel.swift */,
+				F2E48DEA2408174B009DEFBA /* MotorTransactionHeaderView.swift */,
+				F2E48DED240817BD009DEFBA /* MotorTransactionHeaderViewModel.swift */,
 			);
-			path = TransactionHeaderView;
+			path = MotorTransactionHeaderView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3117,7 +3117,7 @@
 			files = (
 				6266C07222081EF600FB8004 /* StatisticsItemView.swift in Sources */,
 				895175902248CF79008003FB /* StepIndicator.swift in Sources */,
-				F20450BE23EDA3A4001F7370 /* TransactionStepDot.swift in Sources */,
+				F20450BE23EDA3A4001F7370 /* MotorTransactionStepDot.swift in Sources */,
 				441FE433209A24E500B04EF1 /* AdsGridViewLayout.swift in Sources */,
 				441FE42B209A24E500B04EF1 /* MarketsGridViewCell.swift in Sources */,
 				08F0D3F422259AD100968256 /* HappinessRatingView.swift in Sources */,
@@ -3127,12 +3127,12 @@
 				F288CB3E233CD53400C1EE8A /* UserAdsRatingView.swift in Sources */,
 				45EDD62F20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift in Sources */,
 				CF164CFD230EB0F900250822 /* CheckmarkImageView.swift in Sources */,
-				F28D78F22428B5AF00E77414 /* TransactionProcessSummaryAdManagementView.swift in Sources */,
+				F28D78F22428B5AF00E77414 /* MotorTransactionSummaryAdManagementView.swift in Sources */,
 				9B06096823F14B0A005CB592 /* SafetyElementViewModel.swift in Sources */,
 				CF164D15230FFB7400250822 /* FavoriteAdActionViewModel.swift in Sources */,
 				CF136ACD2203211100247B30 /* InfoboxView.swift in Sources */,
 				4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */,
-				F29C4F5A2434780200E25209 /* TransactionActionButtonViewModel.swift in Sources */,
+				F29C4F5A2434780200E25209 /* MotorTransactionButtonViewModel.swift in Sources */,
 				9B057AA9235EEB1C007B1CF0 /* ContentView.swift in Sources */,
 				9B06097023F14BB4005CB592 /* HeaderView.swift in Sources */,
 				AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */,
@@ -3220,16 +3220,16 @@
 				6266C07022081EEA00FB8004 /* StatisticsItemModel.swift in Sources */,
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
 				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
-				F20450C623EDB4EF001F7370 /* TransactionStepView.swift in Sources */,
+				F20450C623EDB4EF001F7370 /* MotorTransactionStepView.swift in Sources */,
 				CFB775F22359D8360097C0ED /* FloatingButton+Favorites.swift in Sources */,
 				441FE44B209A2F2C00B04EF1 /* NotificationsListViewCell.swift in Sources */,
 				CF0F6B992360784C00CA62FD /* PrimingViewModel.swift in Sources */,
 				082D80D521C15C9200831BDE /* CandyCaneView.swift in Sources */,
 				9BCE6A3E23C7272200F37F6D /* BetaFeatureView.swift in Sources */,
 				45EDD63E20A9CA22008F4503 /* PopupView.swift in Sources */,
-				F29C4F5C2434780200E25209 /* TransactionStepView+CustomStyle.swift in Sources */,
+				F29C4F5C2434780200E25209 /* MotorTransactionStepView+CustomStyle.swift in Sources */,
 				44587016213FA344009187BE /* LoginViewModel.swift in Sources */,
-				F20450CB23EDB7AE001F7370 /* TransactionStepView+Style.swift in Sources */,
+				F20450CB23EDB7AE001F7370 /* MotorTransactionStepView+Style.swift in Sources */,
 				DAD6EB242369916100968497 /* SettingsViewConsentCell.swift in Sources */,
 				DAC1EC4E21C1297500F4FEC4 /* BalloonView.swift in Sources */,
 				44AFCE49215839F7005984DB /* LoadingIndicatorView.swift in Sources */,
@@ -3247,7 +3247,7 @@
 				443A641E209A503A006BFB38 /* NotificationsListHeaderView.swift in Sources */,
 				DAD0D494210739500091DD4D /* DescriptionView.swift in Sources */,
 				89A7A648225352A30053D33B /* NativeAdvertContentView.swift in Sources */,
-				F20450C823EDB663001F7370 /* TransactionViewModel.swift in Sources */,
+				F20450C823EDB663001F7370 /* MotorTransactionViewModel.swift in Sources */,
 				4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */,
 				44F8831220551D59003E3171 /* NSAttributedStringExtensions.swift in Sources */,
 				9135BF8A22F2C31300C8E1F5 /* MKMapViewExtensions.swift in Sources */,
@@ -3268,7 +3268,7 @@
 				CF5CA71722F87AED007C4124 /* NeighborhoodProfileInfoViewCell.swift in Sources */,
 				DAB7FAAA21B690DD00BF8CC6 /* BottomSheetGestureController.swift in Sources */,
 				DAB7FAAE21B6924E00BF8CC6 /* SpringAnimator.swift in Sources */,
-				F2E48DE724081383009DEFBA /* TransactionAlertViewModel.swift in Sources */,
+				F2E48DE724081383009DEFBA /* MotorTransactionAlertViewModel.swift in Sources */,
 				9B06097523F14C05005CB592 /* RegularView.swift in Sources */,
 				0884C6C922B7B4580015474D /* DisclaimerView.swift in Sources */,
 				9B2D17D623E02B6900EF3B50 /* KeyValueGridView.swift in Sources */,
@@ -3292,7 +3292,7 @@
 				DAD6EB292369916100968497 /* SettingsViewConsentCellModel.swift in Sources */,
 				91846C5A22E856D50001410F /* MapSettingsView.swift in Sources */,
 				CF3F85BF229C29B3003A6748 /* IconCollectionViewFlowLayout.swift in Sources */,
-				F29C4F592434780200E25209 /* TransactionActionButton.swift in Sources */,
+				F29C4F592434780200E25209 /* MotorTransactionButton.swift in Sources */,
 				CFF9727121C3BA1D00C85238 /* BannerTransparencySectionView.swift in Sources */,
 				CF45AF89231D3A3000BE8B39 /* StepSlider.swift in Sources */,
 				899D0BF6222D4B3400794DEC /* ArrayExtensions.swift in Sources */,
@@ -3312,31 +3312,31 @@
 				44D912622077AC8A00486848 /* CircleView.swift in Sources */,
 				8908E85722C0E49900ED671C /* MessageFormViewModel.swift in Sources */,
 				55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */,
-				F28D78F82428DB8C00E77414 /* TransactionProcessSummaryViewModel.swift in Sources */,
+				F28D78F82428DB8C00E77414 /* MotorTransactionSummaryViewModel.swift in Sources */,
 				44D912612077AC8A00486848 /* RoundedRectangleView.swift in Sources */,
 				432CE09D2112DBC500F01EC5 /* BuyerPickerTextHeader.swift in Sources */,
 				4447F6EC1FDB2B110033DBC1 /* TextField+InputType.swift in Sources */,
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
-				F2E48DEE240817BD009DEFBA /* TransactionHeaderViewModel.swift in Sources */,
+				F2E48DEE240817BD009DEFBA /* MotorTransactionHeaderViewModel.swift in Sources */,
 				AA7A854E22255AB200AF5F42 /* DialogueView.swift in Sources */,
 				CF5CA71422F87729007C4124 /* NeighborhoodProfileViewModel.swift in Sources */,
 				082D80D121C1411700831BDE /* StarView.swift in Sources */,
 				CF2E46F22319685C0085A591 /* FavoriteAdActionView.swift in Sources */,
 				9B2D17D223E02B2900EF3B50 /* KeyValuePair.swift in Sources */,
 				62432106231FE97F0027E142 /* UserAdEmphasizedActionTableViewCell.swift in Sources */,
-				F2E48DEB2408174B009DEFBA /* TransactionHeaderView.swift in Sources */,
+				F2E48DEB2408174B009DEFBA /* MotorTransactionHeaderView.swift in Sources */,
 				F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */,
 				8908E85322C0D79600ED671C /* MessageFormBottomSheet.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				1430D441216E4DA10038AC84 /* Spacing.m in Sources */,
-				F29C4F582434780200E25209 /* TransactionStepContentViewModel.swift in Sources */,
+				F29C4F582434780200E25209 /* MotorTransactionStepContentViewModel.swift in Sources */,
 				8908E84922C0C3C600ED671C /* MessageFormViewController.swift in Sources */,
 				44A5579E22E71FEB001667AE /* BasicTableViewCellViewModel.swift in Sources */,
 				DA5A858C24617DF000AC0DFE /* ImageExtensions.swift in Sources */,
 				DAB7FAA821B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift in Sources */,
 				620AEE34221175970087C150 /* UserAdManagementButtonAndInformationCell.swift in Sources */,
 				DAB7FAA621B690DD00BF8CC6 /* BottomSheet.swift in Sources */,
-				F29C4F5B2434780200E25209 /* TransactionStepContentView.swift in Sources */,
+				F29C4F5B2434780200E25209 /* MotorTransactionStepContentView.swift in Sources */,
 				F2C3E95E22CB63A200CED7E0 /* QuestionnaireViewModel.swift in Sources */,
 				9B28DE8223266CD100D69C15 /* Panel+Style.swift in Sources */,
 				CF4A053D21FB2ACB000BB7DA /* PianoKeyboardView.swift in Sources */,
@@ -3363,7 +3363,7 @@
 				44587019213FA344009187BE /* RegisterViewModel.swift in Sources */,
 				9BEB287F231D488000D28BAD /* TitleValueSliderView.swift in Sources */,
 				CF7C460422257A8A001FB92C /* EarthHourContentView.swift in Sources */,
-				F20450B923EC0E86001F7370 /* TransactionView.swift in Sources */,
+				F20450B923EC0E86001F7370 /* MotorTransactionView.swift in Sources */,
 				CF5CA71222F85A94007C4124 /* NeighborhoodProfileHeaderView.swift in Sources */,
 				441FE435209A24E500B04EF1 /* AdsGridViewModel.swift in Sources */,
 				F253C51D2315601A008175FD /* VerificationActionSheet.swift in Sources */,
@@ -3411,7 +3411,7 @@
 				44A557A522E720A3001667AE /* IconTitleTableViewCell.swift in Sources */,
 				9BEB2881231D489F00D28BAD /* LoanApplyView.swift in Sources */,
 				CF7C460522257A8A001FB92C /* EarthHourSignUpView.swift in Sources */,
-				F2E48DE4240812AB009DEFBA /* TransactionAlertView.swift in Sources */,
+				F2E48DE4240812AB009DEFBA /* MotorTransactionAlertView.swift in Sources */,
 				441FE42D209A24E500B04EF1 /* MarketsGridView.swift in Sources */,
 				45EDD63F20A9CA22008F4503 /* PopupViewModel.swift in Sources */,
 				444246022137D60400D42AB8 /* FavoriteFoldersListView.swift in Sources */,
@@ -3431,7 +3431,7 @@
 				4441F9F322CCF76300DCFD2F /* AddressMapView.swift in Sources */,
 				9BEB287D231D486100D28BAD /* LoanValuesView.swift in Sources */,
 				44587017213FA344009187BE /* LoginView.swift in Sources */,
-				F2E48DE92408141C009DEFBA /* TransactionStepViewModel.swift in Sources */,
+				F2E48DE92408141C009DEFBA /* MotorTransactionStepViewModel.swift in Sources */,
 				9BB680322462F7AC001ADACF /* View+Extensions.swift in Sources */,
 				9B057AAC235EEBAA007B1CF0 /* ChristmasButton.swift in Sources */,
 				DAE6A55C21CA524B00837BFA /* CGPoint.swift in Sources */,
@@ -3455,7 +3455,7 @@
 				CFB6137C229AD43400DE283D /* VerticalIconCollectionViewCell.swift in Sources */,
 				9F2133BEBE174152BD809417 /* GalleryPreviewView.swift in Sources */,
 				9F213ABAE416284A53AC6BA5 /* GalleryPreviewCell.swift in Sources */,
-				F20450C223EDA844001F7370 /* TransactionStepDotConnector.swift in Sources */,
+				F20450C223EDA844001F7370 /* MotorTransactionStepDotConnector.swift in Sources */,
 				9F213EA8026933194D7483E0 /* FullscreenImageView.swift in Sources */,
 				9F213036DE161042F54529B0 /* FullscreenGalleryTransitioningController.swift in Sources */,
 				CF13D6CF2292D40F0087DA37 /* PhaseViewModel.swift in Sources */,
@@ -3485,7 +3485,7 @@
 				9A37DFD7CA27F4F25F613DE2 /* FavoriteAdsListView.swift in Sources */,
 				9BEB2878231D26C100D28BAD /* LoanCalculatorView.swift in Sources */,
 				9A37D0977C75034FE9603C2C /* FavoriteAdsListTableHeader.swift in Sources */,
-				F240E82724A082500025C412 /* TransactionProcessSummaryObjectPageView.swift in Sources */,
+				F240E82724A082500025C412 /* MotorTransactionSummaryObjectPageView.swift in Sources */,
 				F21B2E552424AC6200A9B5D6 /* UserAdManagementTransactionProcessCell.swift in Sources */,
 				9A37D91577C7406D942AF82E /* FavoriteAdsSortingView.swift in Sources */,
 				9A37DB2BD626D2CA592D303E /* FavoriteAdsSectionHeaderView.swift in Sources */,

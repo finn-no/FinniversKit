@@ -263,8 +263,8 @@ class ComponentViewTests: XCTestCase {
         snapshot(.favoriteButton)
     }
 
-    func testTransactionProcessSummaryAdManagementView() {
-        snapshot(.transactionProcessSummaryAdManagementView)
+    func testMotorTransactionSummaryAdManagementView() {
+        snapshot(.motorTransactionSummaryAdManagementView)
     }
 
     func testCoronaHelpView() {
@@ -279,7 +279,7 @@ class ComponentViewTests: XCTestCase {
         snapshot(.iconLinkListView)
     }
 
-    func testTransactionProcessSummaryObjectPageView() {
-        snapshot(.transactionProcessSummaryObjectPageView)
+    func testMotorTransactionSummaryObjectPageView() {
+        snapshot(.motorTransactionSummaryObjectPageView)
     }
 }
