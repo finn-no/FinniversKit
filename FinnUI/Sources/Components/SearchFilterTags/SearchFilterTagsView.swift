@@ -99,10 +99,14 @@ public protocol SearchFilterTagsViewModel {
     // MARK: - Public methods
 
     public func configure(with searchFilterTags: [SearchFilterTagCellViewModel]) {
+        let searchFilterTagsDidChange = !searchFilterTagsAreEqual(self.searchFilterTags, searchFilterTags)
         self.searchFilterTags = searchFilterTags
 
-        collectionView.reloadData()
-        collectionView.layoutIfNeeded()
+        guard searchFilterTagsDidChange else { return }
+
+        UIView.performWithoutAnimation {
+            collectionView.reloadSections([1])
+        }
     }
 
     // MARK: - Private methods
@@ -191,5 +195,22 @@ extension SearchFilterTagsView: UICollectionViewDelegateFlowLayout {
                                layout collectionViewLayout: UICollectionViewLayout,
                                insetForSectionAt section: Int) -> UIEdgeInsets {
         section == 0 ? UIEdgeInsets(trailing: .spacingS) : .zero
+    }
+}
+
+// MARK: - Private extensions
+
+private extension SearchFilterTagsView {
+    private func searchFilterTagsAreEqual(_ lhs: [SearchFilterTagCellViewModel], _ rhs: [SearchFilterTagCellViewModel]) -> Bool {
+        guard lhs.count == rhs.count else { return false }
+        for (index, tag) in lhs.enumerated() {
+            guard
+                tag.title == rhs[index].title,
+                tag.titleAccessibilityLabel == rhs[index].titleAccessibilityLabel,
+                tag.removeButtonAccessibilityLabel == rhs[index].removeButtonAccessibilityLabel,
+                tag.isValid == rhs[index].isValid
+            else { return false }
+        }
+        return true
     }
 }
