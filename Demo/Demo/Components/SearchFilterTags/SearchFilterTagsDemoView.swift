@@ -44,7 +44,8 @@ class SearchFilterTagsDemoView: UIView {
             view.heightAnchor.constraint(equalToConstant: 50)
         ])
 
-        view.configure(with: searchFilterTags)
+        view.configure(with: searchFilterTags, reloadSection: false)
+        view.reloadData()
     }
 }
 

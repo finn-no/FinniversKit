@@ -98,11 +98,21 @@ public protocol SearchFilterTagsViewModel {
 
     // MARK: - Public methods
 
-    public func configure(with searchFilterTags: [SearchFilterTagCellViewModel]) {
+    public func reloadData() {
+        collectionView.reloadData()
+    }
+
+    public func configure(
+        with searchFilterTags: [SearchFilterTagCellViewModel],
+        reloadSection: Bool = true
+    ) {
         let searchFilterTagsDidChange = !searchFilterTagsAreEqual(self.searchFilterTags, searchFilterTags)
         self.searchFilterTags = searchFilterTags
 
-        guard searchFilterTagsDidChange else { return }
+        guard
+            searchFilterTagsDidChange,
+            reloadSection
+        else { return }
 
         UIView.performWithoutAnimation {
             collectionView.reloadSections([1])
@@ -203,12 +213,13 @@ extension SearchFilterTagsView: UICollectionViewDelegateFlowLayout {
 private extension SearchFilterTagsView {
     private func searchFilterTagsAreEqual(_ lhs: [SearchFilterTagCellViewModel], _ rhs: [SearchFilterTagCellViewModel]) -> Bool {
         guard lhs.count == rhs.count else { return false }
-        for (index, tag) in lhs.enumerated() {
+        for (index, lhsTag) in lhs.enumerated() {
+            let rhsTag = rhs[index]
             guard
-                tag.title == rhs[index].title,
-                tag.titleAccessibilityLabel == rhs[index].titleAccessibilityLabel,
-                tag.removeButtonAccessibilityLabel == rhs[index].removeButtonAccessibilityLabel,
-                tag.isValid == rhs[index].isValid
+                lhsTag.title == rhsTag.title,
+                lhsTag.titleAccessibilityLabel == rhsTag.titleAccessibilityLabel,
+                lhsTag.removeButtonAccessibilityLabel == rhsTag.removeButtonAccessibilityLabel,
+                lhsTag.isValid == rhsTag.isValid
             else { return false }
         }
         return true
