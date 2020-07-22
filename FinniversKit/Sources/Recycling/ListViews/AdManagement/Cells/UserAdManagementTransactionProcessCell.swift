@@ -14,7 +14,7 @@ public class UserAdManagementMotorTransactionCell: UITableViewCell {
 
     // MARK: - Private
 
-    private lazy var transactionSummaryView = MotorTransactionSummaryAdManagementView(withAutoLayout: true)
+    private lazy var transactionView = MotorTransactionEntryAdManagementView(withAutoLayout: true)
 
     // MARK: - Initalization
 
@@ -30,8 +30,8 @@ public class UserAdManagementMotorTransactionCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    public func configure(with viewModel: MotorTransactionSummaryViewModel, shouldShowExternalView shouldShow: Bool) {
-        transactionSummaryView.configure(with: viewModel, shouldShowExternalView: shouldShow)
+    public func configure(with viewModel: MotorTransactionEntryViewModel, shouldShowExternalView shouldShow: Bool) {
+        transactionView.configure(with: viewModel, shouldShowExternalView: shouldShow)
     }
 
     // MARK: - Private methods
@@ -40,18 +40,18 @@ public class UserAdManagementMotorTransactionCell: UITableViewCell {
         backgroundColor = .bgPrimary
         selectionStyle = .none
 
-        addSubview(transactionSummaryView)
-        transactionSummaryView.fillInSuperview()
-        transactionSummaryView.delegate = self
+        addSubview(transactionView)
+        transactionView.fillInSuperview()
+        transactionView.delegate = self
     }
 }
 
-extension UserAdManagementMotorTransactionCell: MotorTransactionSummaryAdManagementViewDelegate {
-    public func motorTransactionSummaryViewWasTapped(_ view: MotorTransactionSummaryAdManagementView) {
+extension UserAdManagementMotorTransactionCell: MotorTransactionEntryAdManagementViewDelegate {
+    public func motorTransactionEntryViewWasTapped(_ view: MotorTransactionEntryAdManagementView) {
         delegate?.userAdManagementMotorTransactionCellDidTapSummary(self)
     }
 
-    public func motorTransactionSummaryExternalViewWasTapped(_ view: MotorTransactionSummaryAdManagementView) {
+    public func motorTransactionEntryExternalViewWasTapped(_ view: MotorTransactionEntryAdManagementView) {
         delegate?.userAdManagementMotorTransactionCellDidTapExternalView(self)
     }
 }

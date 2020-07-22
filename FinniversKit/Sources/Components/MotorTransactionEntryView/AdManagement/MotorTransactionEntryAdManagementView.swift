@@ -2,13 +2,13 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
-public protocol MotorTransactionSummaryAdManagementViewDelegate: AnyObject {
-    func motorTransactionSummaryViewWasTapped(_ view: MotorTransactionSummaryAdManagementView)
-    func motorTransactionSummaryExternalViewWasTapped(_ view: MotorTransactionSummaryAdManagementView)
+public protocol MotorTransactionEntryAdManagementViewDelegate: AnyObject {
+    func motorTransactionEntryViewWasTapped(_ view: MotorTransactionEntryAdManagementView)
+    func motorTransactionEntryExternalViewWasTapped(_ view: MotorTransactionEntryAdManagementView)
 }
 
-public class MotorTransactionSummaryAdManagementView: UIView {
-    public weak var delegate: MotorTransactionSummaryAdManagementViewDelegate?
+public class MotorTransactionEntryAdManagementView: UIView {
+    public weak var delegate: MotorTransactionEntryAdManagementViewDelegate?
 
     // MARK: - Private properties
 
@@ -123,7 +123,7 @@ public class MotorTransactionSummaryAdManagementView: UIView {
 
     // MARK: - Public
 
-    public func configure(with viewModel: MotorTransactionSummaryViewModel, shouldShowExternalView showExternal: Bool) {
+    public func configure(with viewModel: MotorTransactionEntryViewModel, shouldShowExternalView showExternal: Bool) {
         titleLabel.text = viewModel.title
         detailLabel.text = viewModel.detail
         descriptionLabel.text = viewModel.description
@@ -147,7 +147,7 @@ public class MotorTransactionSummaryAdManagementView: UIView {
 
 // MARK: - Private
 
-private extension MotorTransactionSummaryAdManagementView {
+private extension MotorTransactionEntryAdManagementView {
     func setup() {
         backgroundColor = .bgPrimary
         setupContentView()
@@ -236,10 +236,10 @@ private extension MotorTransactionSummaryAdManagementView {
     }
 
     @objc private func didTapContentView() {
-        delegate?.motorTransactionSummaryViewWasTapped(self)
+        delegate?.motorTransactionEntryViewWasTapped(self)
     }
 
     @objc private func didTapExternalContentView() {
-        delegate?.motorTransactionSummaryExternalViewWasTapped(self)
+        delegate?.motorTransactionEntryExternalViewWasTapped(self)
     }
 }

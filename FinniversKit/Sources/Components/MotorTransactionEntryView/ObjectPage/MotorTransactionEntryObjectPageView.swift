@@ -2,12 +2,12 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
-public protocol MotorTransactionSummaryObjectPageViewDelegate: AnyObject {
-    func motorTransactionSummaryObjectPageViewButtonWasTapped(_ view: MotorTransactionSummaryObjectPageView)
+public protocol MotorTransactionEntryObjectPageViewDelegate: AnyObject {
+    func motorTransactionEntryObjectPageViewButtonWasTapped(_ view: MotorTransactionEntryObjectPageView)
 }
 
-public class MotorTransactionSummaryObjectPageView: UIView {
-    public weak var delegate: MotorTransactionSummaryObjectPageViewDelegate?
+public class MotorTransactionEntryObjectPageView: UIView {
+    public weak var delegate: MotorTransactionEntryObjectPageViewDelegate?
 
     // MARK: - Private properties
 
@@ -83,7 +83,7 @@ public class MotorTransactionSummaryObjectPageView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(with viewModel: MotorTransactionSummaryViewModel) {
+    public func configure(with viewModel: MotorTransactionEntryViewModel) {
         titleLabel.text = viewModel.title
         descriptionLabel.text = viewModel.description
         actionButton.setTitle(viewModel.detail, for: .normal)
@@ -96,7 +96,7 @@ public class MotorTransactionSummaryObjectPageView: UIView {
 
 // MARK: - Private methods
 
-extension MotorTransactionSummaryObjectPageView {
+extension MotorTransactionEntryObjectPageView {
     private func setup() {
         backgroundColor = .clear
 
@@ -151,6 +151,6 @@ extension MotorTransactionSummaryObjectPageView {
     }
 
     @objc private func didTapActionButton(_ sender: Button) {
-        delegate?.motorTransactionSummaryObjectPageViewButtonWasTapped(self)
+        delegate?.motorTransactionEntryObjectPageViewButtonWasTapped(self)
     }
 }

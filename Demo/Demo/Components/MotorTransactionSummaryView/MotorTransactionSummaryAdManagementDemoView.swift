@@ -5,14 +5,14 @@
 import FinniversKit
 
 // swiftlint:disable:next type_name
-public class MotorTransactionSummaryAdManagementDemoView: UIView {
-    lazy var transactionProcessSummaryView: MotorTransactionSummaryAdManagementView = {
-        let view = MotorTransactionSummaryAdManagementView(withAutoLayout: true)
+public class MotorTransactionEntryAdManagementDemoView: UIView {
+    lazy var transactionView: MotorTransactionEntryAdManagementView = {
+        let view = MotorTransactionEntryAdManagementView(withAutoLayout: true)
         view.delegate = self
         return view
     }()
 
-    let model = MotorTransactionSummaryViewModel(
+    let model = MotorTransactionEntryViewModel(
         title: "Salgsprosess",
         detail: "Betaling og eierskifte",
         description: "Når du har funnet en kjøper er det neste steget å skrive en kontrakt",
@@ -28,25 +28,25 @@ public class MotorTransactionSummaryAdManagementDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 }
 
-private extension MotorTransactionSummaryAdManagementDemoView {
+private extension MotorTransactionEntryAdManagementDemoView {
     func setup() {
-        addSubview(transactionProcessSummaryView)
+        addSubview(transactionView)
 
         NSLayoutConstraint.activate([
-            transactionProcessSummaryView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            transactionProcessSummaryView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            transactionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            transactionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
         ])
 
-        transactionProcessSummaryView.configure(with: model, shouldShowExternalView: true)
+        transactionView.configure(with: model, shouldShowExternalView: true)
     }
 }
 
-extension MotorTransactionSummaryAdManagementDemoView: MotorTransactionSummaryAdManagementViewDelegate {
-    public func motorTransactionSummaryViewWasTapped(_ view: MotorTransactionSummaryAdManagementView) {
+extension MotorTransactionEntryAdManagementDemoView: MotorTransactionEntryAdManagementViewDelegate {
+    public func motorTransactionEntryViewWasTapped(_ view: MotorTransactionEntryAdManagementView) {
         print("Did tap summary view")
     }
 
-    public func motorTransactionSummaryExternalViewWasTapped(_ view: MotorTransactionSummaryAdManagementView) {
+    public func motorTransactionEntryExternalViewWasTapped(_ view: MotorTransactionEntryAdManagementView) {
         print("Did tap external view")
     }
 }

@@ -64,7 +64,7 @@ public class AdManagementDemoView: UIView {
                                             description: "Etter at du har publisert annonsen din kan du se statistikk for hvor mange som har sett annonsen din, favorisert den og som har fått tips om den.")
     }()
 
-    private let transactionProcessSummaryCellModel = MotorTransactionSummaryViewModel(
+    private let transactionProcessSummaryCellModel = MotorTransactionEntryViewModel(
         title: "Salgsprosess",
         detail: "Overlevering",
         description: "Kjøper har bekreftet. Dere må bekrefte før 8.februar 2020.",

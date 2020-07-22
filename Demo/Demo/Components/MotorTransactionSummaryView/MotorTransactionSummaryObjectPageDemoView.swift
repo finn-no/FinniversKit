@@ -5,14 +5,14 @@
 import FinniversKit
 
 // swiftlint:disable:next type_name
-public class MotorTransactionSummaryObjectPageDemoView: UIView {
-    lazy var transactionProcessSummaryView: MotorTransactionSummaryObjectPageView = {
-        let view = MotorTransactionSummaryObjectPageView(withAutoLayout: true)
+public class MotorTransactionEntryObjectPageDemoView: UIView {
+    lazy var transactionView: MotorTransactionEntryObjectPageView = {
+        let view = MotorTransactionEntryObjectPageView(withAutoLayout: true)
         view.delegate = self
         return view
     }()
 
-    let model = MotorTransactionSummaryViewModel(
+    let model = MotorTransactionEntryViewModel(
         title: "Salgsprosess",
         detail: "Betaling og eierskifte",
         description: "Kjøper har bekreftet. Dere må bekrefte før 8.februar 2020.",
@@ -28,21 +28,21 @@ public class MotorTransactionSummaryObjectPageDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 }
 
-private extension MotorTransactionSummaryObjectPageDemoView {
+private extension MotorTransactionEntryObjectPageDemoView {
     func setup() {
-        addSubview(transactionProcessSummaryView)
+        addSubview(transactionView)
 
         NSLayoutConstraint.activate([
-            transactionProcessSummaryView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM),
-            transactionProcessSummaryView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingM),
+            transactionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM),
+            transactionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingM),
         ])
 
-        transactionProcessSummaryView.configure(with: model)
+        transactionView.configure(with: model)
     }
 }
 
-extension MotorTransactionSummaryObjectPageDemoView: MotorTransactionSummaryObjectPageViewDelegate {
-    public func motorTransactionSummaryObjectPageViewButtonWasTapped(_ view: MotorTransactionSummaryObjectPageView) {
+extension MotorTransactionEntryObjectPageDemoView: MotorTransactionEntryObjectPageViewDelegate {
+    public func motorTransactionEntryObjectPageViewButtonWasTapped(_ view: MotorTransactionEntryObjectPageView) {
         print("Did tap button in MotorTransactionSummaryObjectPageDemoView")
     }
 }
