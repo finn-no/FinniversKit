@@ -4,7 +4,6 @@
 
 import FinniversKit
 
-// swiftlint:disable:next type_name
 public class MotorTransactionEntryObjectPageDemoView: UIView {
     lazy var transactionView: MotorTransactionEntryObjectPageView = {
         let view = MotorTransactionEntryObjectPageView(withAutoLayout: true)
