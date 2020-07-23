@@ -4,11 +4,11 @@
 
 import FinniversKit
 
-final class TransactionDemoView: UIView {
+final class MotorTransactionDemoView: UIView {
     private lazy var dataSource = TransactionDemoViewDefaultData()
-    private lazy var model: TransactionViewModel = dataSource.getState()
+    private lazy var model: MotorTransactionViewModel = dataSource.getState()
 
-    private var transactionView: TransactionView?
+    private var transactionView: MotorTransactionView?
     private var layoutConstraints: [NSLayoutConstraint] = []
 
     public override init(frame: CGRect) {
@@ -26,7 +26,7 @@ final class TransactionDemoView: UIView {
         }
 
         model = dataSource.getState()
-        transactionView = TransactionView(withAutoLayout: true, model: model, dataSource: self, delegate: self)
+        transactionView = MotorTransactionView(withAutoLayout: true, model: model, dataSource: self, delegate: self)
 
         addSubview(transactionView!)
         setupConstraints()
@@ -58,32 +58,33 @@ final class TransactionDemoView: UIView {
     }
 }
 
-// MARK: TransactionViewDelegate
+// MARK: MotorTransactionViewDelegate
 
-extension TransactionDemoView: TransactionViewDelegate {
-    func transactionViewDidBeginRefreshing(_ refreshControl: RefreshControl) {
+extension MotorTransactionDemoView: MotorTransactionViewDelegate {
+    func motorTransactionViewDidBeginRefreshing(_ refreshControl: RefreshControl) {
         print("Did pull to refresh will update with new state")
         configure()
         refreshControl.endRefreshing()
     }
 
     //swiftlint:disable:next function_parameter_count
-    func transactionViewDidTapActionButton(_ view: TransactionView,
-                                           inStep step: Int,
-                                           inContentView kind: TransactionStepContentView.Kind,
-                                           withButtonTag tag: TransactionActionButton.Tag,
-                                           withAction action: TransactionActionButton.Action,
-                                           withUrl urlString: String?,
-                                           withFallbackUrl fallbackUrlString: String?) {
-
+    func motorTransactionViewDidTapButton(
+        _ view: MotorTransactionView,
+        inStep step: Int,
+        inContentView kind: MotorTransactionStepContentView.Kind,
+        withButtonTag tag: MotorTransactionButton.Tag,
+        withAction action: MotorTransactionButton.Action,
+        withUrl urlString: String?,
+        withFallbackUrl fallbackUrlString: String?
+    ) {
         print("Did tap button with tag: \(tag) in step: \(step) in view: \(kind), with action: \(action.rawValue), with urlString: \(urlString ?? ""), with fallbackUrl:\(fallbackUrlString ?? "")")
     }
 }
 
-// MARK: TransactionViewDataSource
+// MARK: MotorTransactionViewDataSource
 
-extension TransactionDemoView: TransactionViewDataSource {
-    func transactionView(_ view: TransactionView, loadImageWithUrl url: URL, completion: @escaping ((UIImage?) -> Void)) {
+extension MotorTransactionDemoView: MotorTransactionViewDataSource {
+    func motorTransactionView(_ view: MotorTransactionView, loadImageWithUrl url: URL, completion: @escaping ((UIImage?) -> Void)) {
 
         // Demo code only.
         let task = URLSession.shared.dataTask(with: url) { data, _, _ in
@@ -100,17 +101,17 @@ extension TransactionDemoView: TransactionViewDataSource {
         task.resume()
     }
 
-    func transactionView(_ view: TransactionView, cancelLoadingImageWithUrl url: URL) {}
+    func motorTransactionView(_ view: MotorTransactionView, cancelLoadingImageWithUrl url: URL) {}
 
-    func transactionViewNumberOfSteps(_ view: TransactionView) -> Int {
+    func motorTransactionViewNumberOfSteps(_ view: MotorTransactionView) -> Int {
         return model.steps.count
     }
 
-    func transactionViewCurrentStep(_ view: TransactionView) -> Int {
+    func motorTransactionViewCurrentStep(_ view: MotorTransactionView) -> Int {
         return model.steps.firstIndex(where: { $0.state == .active }) ?? 0
     }
 
-    func transactionViewModelForIndex(_ view: TransactionView, forStep step: Int) -> TransactionStepViewModel {
+    func motorTransactionViewModelForIndex(_ view: MotorTransactionView, forStep step: Int) -> MotorTransactionStepViewModel {
         return model.steps[step]
     }
 }
