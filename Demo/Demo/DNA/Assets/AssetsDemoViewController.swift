@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-public class AssetsDemoView: BaseDemoViewController<UIView> {
+public class AssetsDemoViewController: BaseDemoViewController<UIView> {
     private var images = FinniversImageAsset.imageNames {
         didSet {
             tableView.reloadData()
@@ -41,7 +41,7 @@ public class AssetsDemoView: BaseDemoViewController<UIView> {
     }
 }
 
-extension AssetsDemoView: UITableViewDataSource {
+extension AssetsDemoViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return images.count
     }
@@ -56,7 +56,7 @@ extension AssetsDemoView: UITableViewDataSource {
     }
 }
 
-extension AssetsDemoView: UISearchResultsUpdating {
+extension AssetsDemoViewController: UISearchResultsUpdating {
     public func updateSearchResults(for searchController: UISearchController) {
         guard let query = searchController.searchBar.text else {
             return

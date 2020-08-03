@@ -19,7 +19,7 @@ public enum DnaDemoViews: String, CaseIterable {
         case .spacing:
             return DemoViewController<SpacingDemoView>()
         case .assets:
-            return UINavigationController(rootViewController: AssetsDemoView())
+            return UINavigationController(rootViewController: AssetsDemoViewController())
         }
     }
 }
