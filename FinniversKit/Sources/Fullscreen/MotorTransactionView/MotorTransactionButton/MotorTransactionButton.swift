@@ -6,6 +6,7 @@ public enum MotorTransactionButton: String {
     case flat = "FLAT"
     case callToAction = "CALL_TO_ACTION"
     case republishAd = "REPUBLISH_AD"
+	case confirmInsurance = "CONFIRM_INSURANCE"
     case `default` = "DEFAULT"
 
     public init(rawValue: String) {
@@ -16,6 +17,8 @@ public enum MotorTransactionButton: String {
             self = .callToAction
         case "REPUBLISH_AD":
             self = .republishAd
+        case "CONFIRM_INSURANCE":
+            self = .confirmInsurance
         default:
             self = .default
         }
@@ -25,7 +28,7 @@ public enum MotorTransactionButton: String {
         switch self {
         case .default:
             return .default
-        case .callToAction, .republishAd:
+        case .callToAction, .republishAd, .confirmInsurance:
             return .callToAction
         case .flat:
             return .flat
@@ -48,6 +51,7 @@ extension MotorTransactionButton {
         // Native actions
         case seeAd = "SEE_AD"
         case republishAd = "REPUBLISH_AD"
+		case confirmInsurance = "CONFIRM_INSURANCE"
 
         // Navigate to web
         case url = "URL"
@@ -61,6 +65,8 @@ extension MotorTransactionButton {
                 self = .seeAd
             case "REPUBLISH_AD":
                 self = .republishAd
+            case "CONFIRM_INSURANCE":
+                self = .confirmInsurance
             default:
                 self = .fallback
             }
