@@ -4,34 +4,34 @@
 
 import FinniversKit
 
-public struct TransactionModel: TransactionViewModel {
+public struct MotorTransactionModel: MotorTransactionViewModel {
     public var title: String
-    public var header: TransactionHeaderViewModel?
-    public var alert: TransactionAlertViewModel?
-    public var steps: [TransactionStepViewModel]
+    public var header: MotorTransactionHeaderViewModel?
+    public var alert: MotorTransactionAlertViewModel?
+    public var steps: [MotorTransactionStepViewModel]
 }
 
-public struct TransactionHeaderModel: TransactionHeaderViewModel {
+public struct MotorTransactionHeaderModel: MotorTransactionHeaderViewModel {
     public var adId: String
     public var title: String?
     public var registrationNumber: String?
     public var imagePath: String?
 }
 
-public struct TransactionAlertModel: TransactionAlertViewModel {
+public struct MotorTransactionAlertModel: MotorTransactionAlertViewModel {
     public var title: String
     public var message: String
     public var imageIdentifier: String
 }
 
-public struct TransactionStepModel: TransactionStepViewModel {
-    public var state: TransactionStepViewState
-    public var style: TransactionStepView.CustomStyle?
-    public var main: TransactionStepContentViewModel?
-    public var detail: TransactionStepContentViewModel?
+public struct MotorTransactionStepModel: MotorTransactionStepViewModel {
+    public var state: MotorTransactionStepViewState
+    public var style: MotorTransactionStepView.CustomStyle?
+    public var main: MotorTransactionStepContentViewModel?
+    public var detail: MotorTransactionStepContentViewModel?
 }
 
-public struct TransactionButtonModel: TransactionActionButtonViewModel {
+public struct MotorTransactionButtonModel: MotorTransactionButtonViewModel {
     public var text: String
     public var style: String?
     public var action: String?
@@ -47,7 +47,7 @@ public struct TransactionButtonModel: TransactionActionButtonViewModel {
     }
 }
 
-public struct TransactionStepContentModel: TransactionStepContentViewModel {
+public struct MotorTransactionStepContentModel: MotorTransactionStepContentViewModel {
     public var title: String?
     /*
      If body contains a link (<a href>), the backend will assign the same content to nativeBody, but without the (<a href>) link.
@@ -59,15 +59,15 @@ public struct TransactionStepContentModel: TransactionStepContentViewModel {
     */
     public var body: NSAttributedString?
     public var nativeBody: NSAttributedString?
-    public var nativeButton: TransactionActionButtonViewModel?
-    public var primaryButton: TransactionActionButtonViewModel?
+    public var nativeButton: MotorTransactionButtonViewModel?
+    public var primaryButton: MotorTransactionButtonViewModel?
 }
 
 public struct TransactionDemoViewDefaultData {
     private var currentState = -1
 
     // swiftlint:disable cyclomatic_complexity
-    mutating func getState() -> TransactionViewModel {
+    mutating func getState() -> MotorTransactionViewModel {
         if currentState == 12 {
             self.currentState = -1
         }

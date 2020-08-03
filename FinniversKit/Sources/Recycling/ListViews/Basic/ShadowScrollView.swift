@@ -5,7 +5,7 @@
 import UIKit
 
 open class ShadowScrollView: UIView, UIScrollViewDelegate {
-    private(set) lazy var topShadowView = ShadowView()
+    private(set) public lazy var topShadowView = ShadowView()
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
