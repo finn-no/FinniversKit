@@ -6,7 +6,7 @@ import Foundation.NSString
 
 extension TransactionDemoViewDefaultData {
     static var BuyerConfirmedHandoverDemoViewModel = MotorTransactionModel(
-        title: "Salgsprosess",
+        title: "Kjøpsprosess",
 
         header: MotorTransactionHeaderModel(
             adId: "171529672",

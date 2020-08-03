@@ -899,19 +899,8 @@
 		46E772B9242CEF09008A5E93 /* DemoViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				46E772BC242CEF09008A5E93 /* BuyerInvitedDemoViewModel.swift */,
-				46E772BD242CEF09008A5E93 /* AwaitingPaymentDemoViewModel.swift */,
-				46E772BE242CEF09008A5E93 /* SellerConfirmedHandoverDemoViewModel.swift */,
-				46E772BF242CEF09008A5E93 /* BuyerConfirmedHandoverDemoViewModel.swift */,
-				46E772C0242CEF09008A5E93 /* BothPartiesSignedDemoViewModel.swift */,
-				46E772C1242CEF09008A5E93 /* BothPartiesConfirmedHandoverDemoViewModel.swift */,
-				46E772C2242CEF09008A5E93 /* PaymentCompletedDemoViewModel.swift */,
-				46E772C3242CEF09008A5E93 /* BuyerOnlySignedDemoViewModel.swift */,
-				46E772C4242CEF09008A5E93 /* ContractCreatedDemoViewModel.swift */,
-				46E772C5242CEF09008A5E93 /* SellerOnlySignedDemoViewModel.swift */,
-				46E772C6242CEF09008A5E93 /* ContractNotCreatedDemoViewModel.swift */,
-				46E772BB242CEF09008A5E93 /* AdExpiredDemoViewModel.swift */,
-				46E772BA242CEF09008A5E93 /* PaymentCancelledDemoViewModel.swift */,
+				7197A19F24D8334A00D425EB /* BuyerProcess */,
+				7197A19E24D8333D00D425EB /* SalesProcess */,
 			);
 			path = DemoViewModels;
 			sourceTree = "<group>";
@@ -1767,6 +1756,35 @@
 				4D644627248F782600B80827 /* SearchResultsData.swift */,
 			);
 			path = SearchResults;
+			sourceTree = "<group>";
+		};
+		7197A19E24D8333D00D425EB /* SalesProcess */ = {
+			isa = PBXGroup;
+			children = (
+				46E772BC242CEF09008A5E93 /* BuyerInvitedDemoViewModel.swift */,
+				46E772BD242CEF09008A5E93 /* AwaitingPaymentDemoViewModel.swift */,
+				46E772BE242CEF09008A5E93 /* SellerConfirmedHandoverDemoViewModel.swift */,
+				46E772BF242CEF09008A5E93 /* BuyerConfirmedHandoverDemoViewModel.swift */,
+				46E772C0242CEF09008A5E93 /* BothPartiesSignedDemoViewModel.swift */,
+				46E772C1242CEF09008A5E93 /* BothPartiesConfirmedHandoverDemoViewModel.swift */,
+				46E772C2242CEF09008A5E93 /* PaymentCompletedDemoViewModel.swift */,
+				46E772C3242CEF09008A5E93 /* BuyerOnlySignedDemoViewModel.swift */,
+				46E772C4242CEF09008A5E93 /* ContractCreatedDemoViewModel.swift */,
+				46E772C5242CEF09008A5E93 /* SellerOnlySignedDemoViewModel.swift */,
+				46E772C6242CEF09008A5E93 /* ContractNotCreatedDemoViewModel.swift */,
+				46E772BB242CEF09008A5E93 /* AdExpiredDemoViewModel.swift */,
+				46E772BA242CEF09008A5E93 /* PaymentCancelledDemoViewModel.swift */,
+			);
+			path = SalesProcess;
+			sourceTree = "<group>";
+		};
+		7197A19F24D8334A00D425EB /* BuyerProcess */ = {
+			isa = PBXGroup;
+			children = (
+				7197A19A24D8316B00D425EB /* WithoutInsuranceConfirmationDemoViewModel.swift */,
+				7197A19C24D8317D00D425EB /* WithInsuranceConfirmationDemoViewModel.swift */,
+			);
+			path = BuyerProcess;
 			sourceTree = "<group>";
 		};
 		8D680186E91B4FA9052BF60C /* IconLinkListView */ = {
