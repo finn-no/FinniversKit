@@ -4,18 +4,26 @@
 
 import FinniversKit
 
-public class AssetsDemoView: UIView {
-    let images = FinniversImageAsset.imageNames
+public class AssetsDemoView: BaseDemoViewController<UIView> {
+    private var images = FinniversImageAsset.imageNames {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
+    public override func viewDidLoad() {
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    private lazy var searchController: UISearchController = {
+        let controller = UISearchController(searchResultsController: nil)
+        controller.searchResultsUpdater = self
+        controller.searchBar.placeholder = "Få orden på rotet 🧹"
+        controller.dimsBackgroundDuringPresentation = false
+        return controller
+    }()
 
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .bgPrimary
@@ -23,7 +31,10 @@ public class AssetsDemoView: UIView {
     }()
 
     private func setup() {
-        addSubview(tableView)
+        title = "Assets"
+        navigationItem.searchController = searchController
+
+        view.addSubview(tableView)
         tableView.fillInSuperview()
         tableView.dataSource = self
         tableView.register(UITableViewCell.self)
@@ -42,5 +53,19 @@ extension AssetsDemoView: UITableViewDataSource {
         cell.textLabel?.text = image.rawValue
         cell.textLabel?.font = .body
         return cell
+    }
+}
+
+extension AssetsDemoView: UISearchResultsUpdating {
+    public func updateSearchResults(for searchController: UISearchController) {
+        guard let query = searchController.searchBar.text else {
+            return
+        }
+
+        let lowercasedQuery = query.lowercased()
+
+        images = !lowercasedQuery.isEmpty
+            ? FinniversImageAsset.imageNames.filter { $0.rawValue.lowercased().contains(lowercasedQuery) }
+            : FinniversImageAsset.imageNames
     }
 }
