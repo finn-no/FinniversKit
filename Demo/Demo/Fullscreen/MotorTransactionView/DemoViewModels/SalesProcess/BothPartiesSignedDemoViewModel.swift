@@ -1,11 +1,11 @@
 //
-//  Copyright © 2020 FINN AS. All rights reserved.
+//  Created by Saleh-Jan, Robin on 28/02/2020.
 //
 
 import Foundation.NSString
 
-extension TransactionDemoViewDefaultData {
-    static var WithoutInsuranceConfirmationDemoViwMode = MotorTransactionModel(
+extension MotorTransactionDefaultData {
+    static var BothPartiesSignedDemoViewModel = MotorTransactionModel(
         title: "Salgsprosess",
 
         header: MotorTransactionHeaderModel(
@@ -23,8 +23,9 @@ extension TransactionDemoViewDefaultData {
         steps: [
             MotorTransactionStepModel(
                 state: .completed,
+                style: .default,
                 main: MotorTransactionStepContentModel(
-                    title: "Du har funnet en bil",
+                    title: "Annonsen er lagt ut",
                     primaryButton: MotorTransactionButtonModel(
                         text: "Se annonsen",
                         style: "FLAT",
@@ -33,47 +34,34 @@ extension TransactionDemoViewDefaultData {
 
             MotorTransactionStepModel(
                 state: .completed,
-                style: .default,
                 main: MotorTransactionStepContentModel(
                     title: "Kontrakt",
-                    body: NSAttributedString(string: "Begge har signert kontrakten"),
+                    body: NSAttributedString(string: "Begge har signert kontrakten."),
                     primaryButton: MotorTransactionButtonModel(
                         text: "Gå til kontrakt",
                         style: "FLAT",
-                        fallbackUrl: "https://www.google.com/search?q=contract+signed"))),
+                        url: "https://www.google.com/search?q=contract+signed"))),
 
             MotorTransactionStepModel(
                 state: .active,
                 style: .default,
                 main: MotorTransactionStepContentModel(
-                    title: "Forsikring",
-                    body: NSAttributedString(string: "Du må ha forsikring på bilen for å bli registrert som ny eier."),
-                    nativeButton: MotorTransactionButtonModel(
-                        text: "Se bilforsikringer",
-                        style: "FLAT",
-                        url: "https://www.vegvesen.no/"),
+                    title: "Betaling",
+                    body: NSAttributedString(string: "Før kjøper kan overføre pengene, må du forberede betalingen."),
                     primaryButton: MotorTransactionButtonModel(
-                        text: "Jeg har forsikret denne bilen",
+                        text: "Forbered betaling",
                         style: "CALL_TO_ACTION",
-                        action: "CONFIRM_INSURANCE",
                         url: "https://www.google.com/search?q=contract+signed"))),
-
 
             MotorTransactionStepModel(
                 state: .notStarted,
                 main: MotorTransactionStepContentModel(
-                    title: "Betaling",
-                    body: NSAttributedString(string: "Etter at du har forsikret bilen kan du starte betalingen"))),
+                    title: "Overlevering",
+                    body: NSAttributedString(string: "<p>Dere må møtes og bekrefte overleveringen innen 7 dager etter kjøper har betalt.</p><ol><li>Ved oppmøte registrerer dere først eierskiftet digitalt hos Statens vegvesen.</li><li>Deretter må begge bekrefte at overleveringen har skjedd, og at pengene kan utbetales.</li></ol>"))),
 
             MotorTransactionStepModel(
                 state: .notStarted,
                 style: .default,
-                main: MotorTransactionStepContentModel(
-                    title: "Overlevering",
-                    body: NSAttributedString(string: "<p>Velger dere å betale gjennom FINN, må overleveringen skje innen 7 dager etter kjøper har betalt.</p><p>Registrering av eierskiftet bør gjøres når dere møtes for overlevering.</p>"))),
-
-            MotorTransactionStepModel(
-                state: .notStarted,
                 main: MotorTransactionStepContentModel(
                     title: "Gratulerer med salget!",
                     body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før»."))),

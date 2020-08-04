@@ -4,21 +4,15 @@
 
 import Foundation.NSString
 
-extension TransactionDemoViewDefaultData {
-    static var WithInsuranceConfirmationDemoViewModel = MotorTransactionModel(
-        title: "Salgsprosess",
+extension MotorTransactionDefaultData {
+    static var WithoutInsuranceConfirmationDemoViewModel = MotorTransactionModel(
+        title: "Kjøpsprosess",
 
         header: MotorTransactionHeaderModel(
             adId: "171529672",
             title: "BMW i3",
             registrationNumber: "CF40150",
             imagePath: "2020/2/vertical-0/26/2/171/529/672_525135443.jpg"),
-
-        alert: MotorTransactionAlertModel(
-            title: "Du har opprettet flere kontrakter for denne bilen",
-            message: "En avtale er bindene når begge har signert. Prosessen under viser derfor prosessen for den første kontrakten begge signerte.",
-            imageIdentifier: "MULTIPLE_CONTRACTS"
-        ),
 
         steps: [
             MotorTransactionStepModel(
@@ -43,22 +37,23 @@ extension TransactionDemoViewDefaultData {
                         fallbackUrl: "https://www.google.com/search?q=contract+signed"))),
 
             MotorTransactionStepModel(
-                state: .completed,
+                state: .active,
                 style: .default,
                 main: MotorTransactionStepContentModel(
                     title: "Forsikring",
-                    body: NSAttributedString(string: "Du har oppgitt at du har forsikret denne bilen.")),
-                detail: MotorTransactionStepContentModel(
-                    title: nil,
-                    body: NSAttributedString(string: "Om du vil bytte forsikring, kan du finne en ny som passer deg på våre sider."),
-                    primaryButton: MotorTransactionButtonModel(
+                    body: NSAttributedString(string: "Du må ha forsikring på bilen for å bli registrert som ny eier."),
+                    nativeButton: MotorTransactionButtonModel(
                         text: "Se bilforsikringer",
                         style: "FLAT",
-                        action: "URL",
+                        url: "https://www.vegvesen.no/"),
+                    primaryButton: MotorTransactionButtonModel(
+                        text: "Jeg har forsikret denne bilen",
+                        style: "CALL_TO_ACTION",
+                        action: "CONFIRM_INSURANCE",
                         url: "https://www.google.com/search?q=contract+signed"))),
 
             MotorTransactionStepModel(
-                state: .active,
+                state: .notStarted,
                 main: MotorTransactionStepContentModel(
                     title: "Betaling",
                     body: NSAttributedString(string: "Etter at du har forsikret bilen kan du starte betalingen"))),

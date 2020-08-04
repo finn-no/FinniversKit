@@ -4,8 +4,8 @@
 
 import Foundation.NSString
 
-extension TransactionDemoViewDefaultData {
-    static var AwaitingPaymentDemoViewModel = MotorTransactionModel(
+extension MotorTransactionDefaultData {
+    static var BothPartiesConfirmedHandoverDemoViewModel = MotorTransactionModel(
         title: "Salgsprosess",
 
         header: MotorTransactionHeaderModel(
@@ -34,7 +34,6 @@ extension TransactionDemoViewDefaultData {
 
             MotorTransactionStepModel(
                 state: .completed,
-                style: .default,
                 main: MotorTransactionStepContentModel(
                     title: "Kontrakt",
                     body: NSAttributedString(string: "Begge har signert kontrakten."),
@@ -44,22 +43,29 @@ extension TransactionDemoViewDefaultData {
                         url: "https://www.google.com/search?q=contract+signed"))),
 
             MotorTransactionStepModel(
-                state: .active,
+                state: .completed,
                 main: MotorTransactionStepContentModel(
                     title: "Betaling",
-                    body: NSAttributedString(string: "Venter på at kjøper skal betale."))),
+                    body: NSAttributedString(string: "Kjøper betalte 1. februar 2020."))),
 
             MotorTransactionStepModel(
-                state: .notStarted,
+                state: .completed,
                 main: MotorTransactionStepContentModel(
                     title: "Overlevering",
-                    body: NSAttributedString(string: "<p>Dere må møtes og bekrefte overleveringen innen 7 dager etter kjøper har betalt.</p><ol><li>Ved oppmøte registrerer dere først eierskiftet digitalt hos Statens vegvesen.</li><li>Deretter må begge bekrefte at overleveringen har skjedd, og at pengene kan utbetales.</li></ol>"))),
+                    body: NSAttributedString(string: "Dere har bekreftet at overleveringen har skjedd."))),
 
             MotorTransactionStepModel(
-                state: .notStarted,
+                state: .active,
                 style: .default,
                 main: MotorTransactionStepContentModel(
                     title: "Gratulerer med salget!",
-                    body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «Eide før»."))),
+                    body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «<a href=\"/minekjoretoy\">Eide før</a>»."),
+                    nativeBody: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under Eide før.")),
+                detail: MotorTransactionStepContentModel(
+                    body: NSAttributedString(string: "Det kan ta noen dager før pengene dukker opp på kontoen din."),
+                    nativeButton: MotorTransactionButtonModel(
+                        text: "Gå til Mine kjøretøy",
+                        style: "FLAT",
+                        url: "/minekjoretoy"))),
     ])
 }

@@ -1,11 +1,11 @@
 //
-//  Copyright © 2020 FINN AS. All rights reserved.
+//  Created by Saleh-Jan, Robin on 28/02/2020.
 //
 
 import Foundation.NSString
 
-extension TransactionDemoViewDefaultData {
-    static var PaymentCancelledDemoViewModel = MotorTransactionModel(
+extension MotorTransactionDefaultData {
+    static var AwaitingPaymentDemoViewModel = MotorTransactionModel(
         title: "Salgsprosess",
 
         header: MotorTransactionHeaderModel(
@@ -32,35 +32,30 @@ extension TransactionDemoViewDefaultData {
                         action: "SEE_AD",
                         fallbackUrl: "/171529672"))),
 
-             MotorTransactionStepModel(
+            MotorTransactionStepModel(
                 state: .completed,
+                style: .default,
                 main: MotorTransactionStepContentModel(
                     title: "Kontrakt",
                     body: NSAttributedString(string: "Begge har signert kontrakten."),
                     primaryButton: MotorTransactionButtonModel(
                         text: "Gå til kontrakt",
                         style: "FLAT",
-                        fallbackUrl: "https://www.google.com/search?q=contract+signed"))),
+                        url: "https://www.google.com/search?q=contract+signed"))),
 
-             MotorTransactionStepModel(
+            MotorTransactionStepModel(
                 state: .active,
-                style: .error,
                 main: MotorTransactionStepContentModel(
                     title: "Betaling",
-                    body: NSAttributedString(string: "<p>Betalingen er kansellert.</p><p>Ta kontakt med <a href=\"https://swiftcourt.com/\">Swiftcourt</a> for å starte betalingen på nytt.</p"),
-                    nativeBody: NSAttributedString(string: "<p>Betalingen er kansellert.</p><p>Ta kontakt med Swiftcourt for å starte betalingen på nytt.</p"),
-                    nativeButton: MotorTransactionButtonModel(
-                        text: "Gå til swiftcourt",
-                        style: "FLAT",
-                        url: "https://swiftcourt.com/"))),
+                    body: NSAttributedString(string: "Venter på at kjøper skal betale."))),
 
-             MotorTransactionStepModel(
+            MotorTransactionStepModel(
                 state: .notStarted,
                 main: MotorTransactionStepContentModel(
                     title: "Overlevering",
                     body: NSAttributedString(string: "<p>Dere må møtes og bekrefte overleveringen innen 7 dager etter kjøper har betalt.</p><ol><li>Ved oppmøte registrerer dere først eierskiftet digitalt hos Statens vegvesen.</li><li>Deretter må begge bekrefte at overleveringen har skjedd, og at pengene kan utbetales.</li></ol>"))),
 
-             MotorTransactionStepModel(
+            MotorTransactionStepModel(
                 state: .notStarted,
                 style: .default,
                 main: MotorTransactionStepContentModel(

@@ -4,19 +4,20 @@
 
 import Foundation.NSString
 
-extension TransactionDemoViewDefaultData {
-    static var ContractCreatedDemoViewModel = MotorTransactionModel(
+extension MotorTransactionDefaultData {
+    static var ContractNotCreatedDemoViewModel = MotorTransactionModel(
         title: "Salgsprosess",
 
-        alert: MotorTransactionAlertModel(
-            title: "Du har opprettet flere kontrakter for denne bilen",
-            message: "En avtale er bindene når begge har signert. Prosessen under viser derfor prosessen for den første kontrakten begge signerte.",
-            imageIdentifier: "MULTIPLE_CONTRACTS"
-        ),
+        header: MotorTransactionHeaderModel(
+            adId: "171529672",
+            title: "BMW i3",
+            registrationNumber: "CF40150",
+            imagePath: "2020/2/vertical-0/26/2/171/529/672_525135443.jpg"),
 
         steps: [
             MotorTransactionStepModel(
                 state: .completed,
+                style: .default,
                 main: MotorTransactionStepContentModel(
                     title: "Annonsen er lagt ut",
                     primaryButton: MotorTransactionButtonModel(
@@ -30,9 +31,9 @@ extension TransactionDemoViewDefaultData {
                 style: .default,
                 main: MotorTransactionStepContentModel(
                     title: "Kontrakt",
-                    body: NSAttributedString(string: "Du har opprettet kontrakt."),
+                    body: NSAttributedString(string: "Når du har funnet en kjøper er det neste steget å skrive en kontrakt."),
                     primaryButton: MotorTransactionButtonModel(
-                        text: "Inviter kjøper",
+                        text: "Opprett digital kontrakt",
                         style: "CALL_TO_ACTION",
                         fallbackUrl: "https://www.google.com/search?q=contract+signed"))),
 
