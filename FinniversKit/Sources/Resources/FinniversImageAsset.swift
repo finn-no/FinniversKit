@@ -173,6 +173,7 @@ public enum FinniversImageAsset: String {
     case spark
     case speechbubbleSmiley
     case spidLogo
+    case stakeholder
     case starOutline
     case statsEmpty
     case statsEnvelope
@@ -343,6 +344,7 @@ public enum FinniversImageAsset: String {
             .spark,
             .speechbubbleSmiley,
             .spidLogo,
+            .stakeholder,
             .starOutline,
             .statsEmpty,
             .statsEnvelope,
