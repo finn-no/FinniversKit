@@ -68,13 +68,7 @@ public struct MotorTransactionDefaultData {
     private var currentBuyerProcessState = 0
 
     // swiftlint:disable cyclomatic_complexity
-    mutating func getSellerProcessState() -> MotorTransactionViewModel {
-        if currentSellerProcessState == 12 {
-            self.currentSellerProcessState = -1
-        }
-
-        currentSellerProcessState += 1
-
+    func sellerProcessState() -> MotorTransactionViewModel {
         switch currentSellerProcessState {
         case 0:
             print("Seller process state: contract not created")
@@ -120,13 +114,15 @@ public struct MotorTransactionDefaultData {
         }
     }
 
-    mutating func getBuyerProcessState() -> MotorTransactionViewModel {
-        if currentBuyerProcessState == 1 {
-            self.currentBuyerProcessState = -1
+    mutating func getNextSellerProcessState() -> MotorTransactionViewModel {
+        if currentSellerProcessState == 12 {
+            self.currentSellerProcessState = -1
         }
+        currentSellerProcessState += 1
+        return sellerProcessState()
+    }
 
-        currentBuyerProcessState += 1
-
+    func buyerProcessState() -> MotorTransactionViewModel {
         switch currentBuyerProcessState {
         case 0:
             print("Buyer process state: without insurance confirmation")
@@ -137,5 +133,13 @@ public struct MotorTransactionDefaultData {
         default:
             fatalError("No model exists for step \(currentBuyerProcessState)")
         }
+    }
+
+    mutating func getNextBuyerProcessState() -> MotorTransactionViewModel {
+        if currentBuyerProcessState == 1 {
+            self.currentBuyerProcessState = -1
+        }
+        currentBuyerProcessState += 1
+        return buyerProcessState()
     }
 }

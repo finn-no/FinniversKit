@@ -8,12 +8,7 @@ final class MotorTransactionDemoView: UIView {
     private var selectedSegment: Int = 0 {
         didSet {
             segmentedControl.selectedSegmentIndex = selectedSegment
-            if selectedSegment == 0 {
-                model = dataSource.getSellerProcessState()
-            } else {
-                model = dataSource.getBuyerProcessState()
-            }
-            configure()
+            updateModel()
         }
     }
 
@@ -36,8 +31,8 @@ final class MotorTransactionDemoView: UIView {
     private var transactionView: MotorTransactionView?
     private var layoutConstraints: [NSLayoutConstraint] = []
 
-    private lazy var dataSource = TransactionDemoViewDefaultData()
-    private lazy var model: MotorTransactionViewModel = dataSource.getSellerProcessState()
+    private lazy var dataSource = MotorTransactionDefaultData()
+    private lazy var model: MotorTransactionViewModel = dataSource.sellerProcessState()
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -75,14 +70,38 @@ final class MotorTransactionDemoView: UIView {
             layoutConstraints.append(contentsOf: [
                 view.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
                 view.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingXXL * 3),
-                view.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: .spacingL),
+                view.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
                 view.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.spacingXXL),
             ])
         default:
-            layoutConstraints.append(contentsOf: view.fillInSuperview())
+            layoutConstraints.append(contentsOf: [
+                view.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+                view.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+                view.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
+                view.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            ])
         }
 
         NSLayoutConstraint.activate(layoutConstraints)
+    }
+
+    private func changeModel() {
+        if selectedSegment == 0 {
+            model = dataSource.sellerProcessState()
+        } else {
+            model = dataSource.buyerProcessState()
+        }
+        configure()
+    }
+
+    private func updateModel() {
+        if selectedSegment == 0 {
+            model = dataSource.getNextSellerProcessState()
+        } else {
+            model = dataSource.getNextBuyerProcessState()
+        }
+
+        configure()
     }
 
     @objc func handleSegmentChange() {
@@ -101,8 +120,8 @@ final class MotorTransactionDemoView: UIView {
 
 extension MotorTransactionDemoView: MotorTransactionViewDelegate {
     func motorTransactionViewDidBeginRefreshing(_ refreshControl: RefreshControl) {
-        print("Did pull to refresh will update with new state")
-        configure()
+        print("Did pull to refresh")
+        updateModel()
         refreshControl.endRefreshing()
     }
 
