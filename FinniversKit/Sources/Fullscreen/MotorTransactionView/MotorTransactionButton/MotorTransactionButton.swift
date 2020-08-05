@@ -6,7 +6,7 @@ public enum MotorTransactionButton: String {
     case flat = "FLAT"
     case callToAction = "CALL_TO_ACTION"
     case republishAd = "REPUBLISH_AD"
-	case confirmInsurance = "CONFIRM_INSURANCE"
+    case confirmInsurance = "CONFIRM_INSURANCE"
     case `default` = "DEFAULT"
 
     public init(rawValue: String) {
@@ -51,7 +51,7 @@ extension MotorTransactionButton {
         // Native actions
         case seeAd = "SEE_AD"
         case republishAd = "REPUBLISH_AD"
-		case confirmInsurance = "CONFIRM_INSURANCE"
+        case confirmInsurance = "CONFIRM_INSURANCE"
 
         // Navigate to web
         case url = "URL"
