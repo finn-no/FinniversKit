@@ -4,8 +4,8 @@
 
 import Foundation.NSString
 
-extension TransactionDemoViewDefaultData {
-    static var BuyerOnlySignedDemoViewModel = MotorTransactionModel(
+extension MotorTransactionDefaultData {
+    static var SellerOnlySignedDemoViewModel = MotorTransactionModel(
         title: "Salgsprosess",
 
         header: MotorTransactionHeaderModel(
@@ -37,15 +37,14 @@ extension TransactionDemoViewDefaultData {
                 style: .default,
                 main: MotorTransactionStepContentModel(
                     title: "Kontrakt",
-                    body: NSAttributedString(string: "Kjøper har signert, nå mangler bare din signatur."),
+                    body: NSAttributedString(string: "Venter på at kjøper skal signere."),
                     primaryButton: MotorTransactionButtonModel(
-                    text: "Signer kontrakt",
-                    style: "CALL_TO_ACTION",
-                    fallbackUrl: "https://www.google.com/search?q=contract+signed"))),
+                        text: "Gå til kontrakt",
+                        style: "DEFAULT",
+                        fallbackUrl: "https://www.google.com/search?q=contract+signed"))),
 
             MotorTransactionStepModel(
                 state: .notStarted,
-                style: .default,
                 main: MotorTransactionStepContentModel(
                     title: "Betaling",
                     body: NSAttributedString(string: "Dere kan betale trygt gjennom FINN ved å velge det i kontrakten."))),

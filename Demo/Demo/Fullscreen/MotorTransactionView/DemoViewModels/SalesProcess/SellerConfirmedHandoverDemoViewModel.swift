@@ -4,7 +4,7 @@
 
 import Foundation.NSString
 
-extension TransactionDemoViewDefaultData {
+extension MotorTransactionDefaultData {
     static var SellerConfirmedHandoverDemoViewModel = MotorTransactionModel(
         title: "Salgsprosess",
 

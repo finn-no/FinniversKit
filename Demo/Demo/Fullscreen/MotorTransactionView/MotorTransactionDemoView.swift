@@ -5,11 +5,34 @@
 import FinniversKit
 
 final class MotorTransactionDemoView: UIView {
-    private lazy var dataSource = TransactionDemoViewDefaultData()
-    private lazy var model: MotorTransactionViewModel = dataSource.getState()
+    private var selectedSegment: Int = 0 {
+        didSet {
+            segmentedControl.selectedSegmentIndex = selectedSegment
+            updateModel()
+        }
+    }
+
+    private lazy var segmentedControl: UISegmentedControl = {
+        let control = UISegmentedControl(withAutoLayout: true)
+        control.insertSegment(withTitle: "Seller", at: 0, animated: false)
+        control.insertSegment(withTitle: "Buyer", at: 1, animated: false)
+        control.selectedSegmentIndex = 0
+        control.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
+
+        if #available(iOS 13.0, *) {
+            control.selectedSegmentTintColor = .bgTertiary
+            control.backgroundColor = .bgSecondary
+        } else {
+            control.tintColor = .white
+        }
+        return control
+    }()
 
     private var transactionView: MotorTransactionView?
     private var layoutConstraints: [NSLayoutConstraint] = []
+
+    private lazy var dataSource = MotorTransactionDefaultData()
+    private lazy var model: MotorTransactionViewModel = dataSource.sellerProcessState()
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,31 +46,66 @@ final class MotorTransactionDemoView: UIView {
     private func configure() {
         if transactionView != nil {
             transactionView?.removeFromSuperview()
+            layoutConstraints.removeAll()
         }
 
-        model = dataSource.getState()
         transactionView = MotorTransactionView(withAutoLayout: true, model: model, dataSource: self, delegate: self)
 
         addSubview(transactionView!)
+        addSubview(segmentedControl)
+
         setupConstraints()
     }
 
     private func setupConstraints() {
         guard let view = transactionView else { return }
 
+        layoutConstraints.append(contentsOf: [
+            segmentedControl.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            segmentedControl.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
+        ])
+
         switch traitCollection.horizontalSizeClass {
         case .regular:
-            layoutConstraints = [
+            layoutConstraints.append(contentsOf: [
                 view.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
                 view.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingXXL * 3),
-                view.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+                view.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
                 view.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.spacingXXL),
-            ]
+            ])
         default:
-            layoutConstraints = view.fillInSuperview()
+            layoutConstraints.append(contentsOf: [
+                view.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+                view.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+                view.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
+                view.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            ])
         }
 
         NSLayoutConstraint.activate(layoutConstraints)
+    }
+
+    private func changeModel() {
+        if selectedSegment == 0 {
+            model = dataSource.sellerProcessState()
+        } else {
+            model = dataSource.buyerProcessState()
+        }
+        configure()
+    }
+
+    private func updateModel() {
+        if selectedSegment == 0 {
+            model = dataSource.getNextSellerProcessState()
+        } else {
+            model = dataSource.getNextBuyerProcessState()
+        }
+
+        configure()
+    }
+
+    @objc func handleSegmentChange() {
+        selectedSegment = segmentedControl.selectedSegmentIndex
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -62,8 +120,8 @@ final class MotorTransactionDemoView: UIView {
 
 extension MotorTransactionDemoView: MotorTransactionViewDelegate {
     func motorTransactionViewDidBeginRefreshing(_ refreshControl: RefreshControl) {
-        print("Did pull to refresh will update with new state")
-        configure()
+        print("Did pull to refresh")
+        updateModel()
         refreshControl.endRefreshing()
     }
 
