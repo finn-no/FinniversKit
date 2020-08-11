@@ -51,6 +51,7 @@ public enum FinniversImageAsset: String {
     case checkmarkBig
     case christmasWishListBanner
     case classifieds
+    case clock
     case close
     case confetti1
     case confetti2
@@ -225,6 +226,7 @@ public enum FinniversImageAsset: String {
             .checkmarkBig,
             .christmasWishListBanner,
             .classifieds,
+            .clock,
             .close,
             .confetti1,
             .confetti2,
