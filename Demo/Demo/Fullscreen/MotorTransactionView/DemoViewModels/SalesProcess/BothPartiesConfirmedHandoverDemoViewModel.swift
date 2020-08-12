@@ -56,7 +56,7 @@ extension MotorTransactionDefaultData {
 
             MotorTransactionStepModel(
                 state: .active,
-                style: .default,
+                style: .focus,
                 main: MotorTransactionStepContentModel(
                     title: "Gratulerer med salget!",
                     body: NSAttributedString(string: "Du kan finne igjen bilen i Mine kjøretøy under «<a href=\"/minekjoretoy\">Eide før</a>»."),
