@@ -195,7 +195,13 @@ extension SearchFilterTagsView: UICollectionViewDelegate {
             filterButtonWidthConstraint.constant = minFilterButtonWidth
         } else {
             filterButtonWidthConstraint.constant = newWidth
+            scrollView.contentOffset.x = 0
         }
+
+        let sizeRange = maxFilterButtonWidth - minFilterButtonWidth
+        let visibleRatio = (filterButtonWidthConstraint.constant - minFilterButtonWidth) / sizeRange
+        let newAlpha: CGFloat = visibleRatio > 0.2 ? visibleRatio : 0
+        filterButtonView.updateLabel(withAlpha: newAlpha)
     }
 }
 

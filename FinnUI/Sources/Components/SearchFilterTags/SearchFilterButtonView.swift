@@ -84,6 +84,12 @@ final class SearchFilterButtonView: UIView {
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
     }
+
+    // MARK: - Internal methods
+
+    func updateLabel(withAlpha alpha: CGFloat) {
+        titleLabel.alpha = alpha
+    }
 }
 
 // MARK: - Size calculations
