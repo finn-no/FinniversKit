@@ -23,16 +23,31 @@ final class SearchFilterButtonView: UIView {
         return imageView
     }()
 
+    var contentWidth: CGFloat {
+        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: SearchFilterTagsView.height)
+        let boundingBox = title.boundingRect(
+            with: constraintRect,
+            options: .usesLineFragmentOrigin,
+            attributes: [.font: SearchFilterButtonView.titleFont],
+            context: nil
+        )
+        return ceil(boundingBox.width) + 3 * SearchFilterButtonView.padding + SearchFilterButtonView.iconWidth
+    }
+
+    private let title: String
+
     // MARK: - Init
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(title: String, icon: UIImage) {
+        self.title = title
+        super.init(frame: .zero)
+        titleLabel.text = title
+        filterIcon.image = icon
         setup()
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - Lifecycle
@@ -68,31 +83,13 @@ final class SearchFilterButtonView: UIView {
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
         ])
     }
-
-    // MARK: - Internal methods
-
-    func configure(with title: String, icon: UIImage) {
-        titleLabel.text = title
-        filterIcon.image = icon
-    }
 }
 
 // MARK: - Size calculations
 
 extension SearchFilterButtonView {
     static let height: CGFloat = 30
-
-    static func width(for title: String) -> CGFloat {
-        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
-        let boundingBox = title.boundingRect(
-            with: constraintRect,
-            options: .usesLineFragmentOrigin,
-            attributes: [.font: titleFont],
-            context: nil
-        )
-
-        return ceil(boundingBox.width) + 3 * padding + iconWidth
-    }
+    static let minWidth: CGFloat = iconWidth + 3 * padding
 
     private static let titleFont = UIFont.detailStrong
     private static let padding: CGFloat = .spacingS

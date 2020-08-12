@@ -25,6 +25,8 @@ public protocol SearchFilterTagsViewModel {
     private static let horizontalMargin: CGFloat = .spacingS
     private static let cellSpacing: CGFloat = .spacingXS
 
+    private var filterButtonWidthConstraint: NSLayoutConstraint!
+
     private lazy var collectionViewLayout: UICollectionViewLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -51,9 +53,9 @@ public protocol SearchFilterTagsViewModel {
         return collectionView
     }()
 
-    private lazy var filterButtonView: UIView = {
-        let button = SearchFilterButtonView(withAutoLayout: true)
-        button.configure(with: viewModel.filterButtonTitle, icon: viewModel.filterIcon)
+    private lazy var filterButtonView: SearchFilterButtonView = {
+        let button = SearchFilterButtonView(title: viewModel.filterButtonTitle, icon: viewModel.filterIcon)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
@@ -65,6 +67,14 @@ public protocol SearchFilterTagsViewModel {
 
     private let viewModel: SearchFilterTagsViewModel
     private var searchFilterTags = [SearchFilterTagCellViewModel]()
+
+    var maxFilterButtonWidth: CGFloat {
+        filterButtonView.contentWidth
+    }
+
+    var minFilterButtonWidth: CGFloat {
+        SearchFilterButtonView.minWidth
+    }
 
     // MARK: - Init
 
@@ -87,10 +97,13 @@ public protocol SearchFilterTagsViewModel {
         addSubview(collectionView)
         addSubview(separatorView)
 
+        filterButtonWidthConstraint = filterButtonView.widthAnchor.constraint(equalToConstant: maxFilterButtonWidth)
+
         NSLayoutConstraint.activate([
             filterButtonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: SearchFilterTagsView.horizontalMargin),
             filterButtonView.topAnchor.constraint(equalTo: topAnchor, constant: SearchFilterTagsView.verticalMargin),
             filterButtonView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -SearchFilterTagsView.verticalMargin),
+            filterButtonWidthConstraint,
 
             collectionView.leadingAnchor.constraint(equalTo: filterButtonView.trailingAnchor, constant: SearchFilterTagsView.cellSpacing),
             collectionView.topAnchor.constraint(equalTo: topAnchor, constant: SearchFilterTagsView.verticalMargin),
@@ -170,6 +183,19 @@ extension SearchFilterTagsView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard indexPath.section == 0 else { return }
         delegate?.searchFilterTagsViewDidSelectFilter(self)
+    }
+
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset.x
+        let newWidth = filterButtonWidthConstraint.constant - offset
+
+        if newWidth > maxFilterButtonWidth {
+            filterButtonWidthConstraint.constant = maxFilterButtonWidth
+        } else if newWidth < minFilterButtonWidth {
+            filterButtonWidthConstraint.constant = minFilterButtonWidth
+        } else {
+            filterButtonWidthConstraint.constant = newWidth
+        }
     }
 }
 
