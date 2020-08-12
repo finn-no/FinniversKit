@@ -8,26 +8,13 @@ final class SearchFilterButtonView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var labelStackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .horizontal
-
-        let fillingView = UIView(withAutoLayout: true)
-        fillingView.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        fillingView.widthAnchor.constraint(equalToConstant: .spacingXS).isActive = true
-
-        stackView.addArrangedSubviews([titleLabel, fillingView])
-        return stackView
-    }()
-
     private lazy var titleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
+        let label = InsetLabel(withAutoLayout: true)
         label.font = SearchFilterButtonView.titleFont
         label.adjustsFontForContentSizeCategory = true
         label.textColor = .textPrimary
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.lineBreakMode = .byClipping
-        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
@@ -45,7 +32,7 @@ final class SearchFilterButtonView: UIView {
             attributes: [.font: SearchFilterButtonView.titleFont],
             context: nil
         )
-        return ceil(boundingBox.width) + 2 * SearchFilterButtonView.padding + SearchFilterButtonView.iconWidth
+        return ceil(boundingBox.width) + 3 * SearchFilterButtonView.padding + SearchFilterButtonView.iconWidth
     }
 
     private let title: String
@@ -106,7 +93,7 @@ extension SearchFilterButtonView {
     static let minWidth: CGFloat = iconWidth + 2 * padding
 
     private static let titleFont = UIFont.detailStrong
-    private static let padding: CGFloat = .spacingS
+    static let padding: CGFloat = .spacingS
     private static var iconWidth: CGFloat = 10
 }
 
@@ -115,5 +102,22 @@ extension SearchFilterButtonView {
 private extension CGColor {
     class var borderColor: CGColor {
         UIColor.dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine).cgColor
+    }
+}
+
+// MARK: - Private classes
+
+private class InsetLabel: UILabel {
+    let trailingInset: CGFloat = SearchFilterButtonView.padding
+
+    override func drawText(in rect: CGRect) {
+        let insets = UIEdgeInsets(trailing: trailingInset)
+        super.drawText(in: rect.inset(by: insets))
+    }
+
+    override var intrinsicContentSize: CGSize {
+        let size = super.intrinsicContentSize
+        return CGSize(width: size.width + trailingInset,
+                      height: size.height)
     }
 }
