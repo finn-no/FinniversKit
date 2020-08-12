@@ -45,11 +45,16 @@ public protocol SearchFilterTagsViewModel {
         collectionView.register(SearchFilterFilterCell.self)
 
         collectionView.contentInset = UIEdgeInsets(
-            leading: SearchFilterTagsView.horizontalMargin,
             trailing: SearchFilterTagsView.horizontalMargin
         )
 
         return collectionView
+    }()
+
+    private lazy var filterButtonView: UIView = {
+        let button = SearchFilterButtonView(withAutoLayout: true)
+        button.configure(with: viewModel.filterButtonTitle, icon: viewModel.filterIcon)
+        return button
     }()
 
     private lazy var separatorView: UIView = {
@@ -78,17 +83,19 @@ public protocol SearchFilterTagsViewModel {
     private func setup() {
         backgroundColor = .bgPrimary
 
+        addSubview(filterButtonView)
         addSubview(collectionView)
         addSubview(separatorView)
 
-        collectionView.fillInSuperview(
-            insets: UIEdgeInsets(
-                top: SearchFilterTagsView.verticalMargin,
-                bottom: -SearchFilterTagsView.verticalMargin
-            )
-        )
-
         NSLayoutConstraint.activate([
+            filterButtonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: SearchFilterTagsView.horizontalMargin),
+            filterButtonView.topAnchor.constraint(equalTo: topAnchor, constant: SearchFilterTagsView.verticalMargin),
+            filterButtonView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -SearchFilterTagsView.verticalMargin),
+
+            collectionView.leadingAnchor.constraint(equalTo: filterButtonView.trailingAnchor, constant: SearchFilterTagsView.cellSpacing),
+            collectionView.topAnchor.constraint(equalTo: topAnchor, constant: SearchFilterTagsView.verticalMargin),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -SearchFilterTagsView.verticalMargin),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: SearchFilterTagCell.height),
 
             separatorView.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -137,7 +144,7 @@ extension SearchFilterTagsView: UICollectionViewDataSource {
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 1
+            return 0
         }
         return searchFilterTags.count
     }
@@ -206,7 +213,7 @@ extension SearchFilterTagsView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView,
                                layout collectionViewLayout: UICollectionViewLayout,
                                insetForSectionAt section: Int) -> UIEdgeInsets {
-        section == 0 ? UIEdgeInsets(trailing: SearchFilterTagsView.cellSpacing) : .zero
+        .zero
     }
 }
 
