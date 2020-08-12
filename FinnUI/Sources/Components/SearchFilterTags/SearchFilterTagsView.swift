@@ -23,11 +23,13 @@ public protocol SearchFilterTagsViewModel {
 
     private static let verticalMargin = .spacingS + .spacingXXS
     private static let horizontalMargin: CGFloat = .spacingS
+    private static let cellSpacing: CGFloat = .spacingXS
 
     private lazy var collectionViewLayout: UICollectionViewLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = .spacingS
+        layout.minimumInteritemSpacing = SearchFilterTagsView.cellSpacing
         return layout
     }()
 
@@ -204,7 +206,7 @@ extension SearchFilterTagsView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView,
                                layout collectionViewLayout: UICollectionViewLayout,
                                insetForSectionAt section: Int) -> UIEdgeInsets {
-        section == 0 ? UIEdgeInsets(trailing: .spacingS) : .zero
+        section == 0 ? UIEdgeInsets(trailing: SearchFilterTagsView.cellSpacing) : .zero
     }
 }
 
