@@ -8,12 +8,26 @@ final class SearchFilterButtonView: UIView {
 
     // MARK: - Private properties
 
+    private lazy var labelStackView: UIStackView = {
+        let stackView = UIStackView(withAutoLayout: true)
+        stackView.axis = .horizontal
+
+        let fillingView = UIView(withAutoLayout: true)
+        fillingView.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        fillingView.widthAnchor.constraint(equalToConstant: .spacingXS).isActive = true
+
+        stackView.addArrangedSubviews([titleLabel, fillingView])
+        return stackView
+    }()
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = SearchFilterButtonView.titleFont
         label.adjustsFontForContentSizeCategory = true
         label.textColor = .textPrimary
         label.textAlignment = .center
+        label.lineBreakMode = .byClipping
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
@@ -31,7 +45,7 @@ final class SearchFilterButtonView: UIView {
             attributes: [.font: SearchFilterButtonView.titleFont],
             context: nil
         )
-        return ceil(boundingBox.width) + 3 * SearchFilterButtonView.padding + SearchFilterButtonView.iconWidth
+        return ceil(boundingBox.width) + 2 * SearchFilterButtonView.padding + SearchFilterButtonView.iconWidth
     }
 
     private let title: String
@@ -80,7 +94,7 @@ final class SearchFilterButtonView: UIView {
 
             titleLabel.leadingAnchor.constraint(equalTo: filterIcon.trailingAnchor, constant: padding),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
     }
 }
@@ -89,7 +103,7 @@ final class SearchFilterButtonView: UIView {
 
 extension SearchFilterButtonView {
     static let height: CGFloat = 30
-    static let minWidth: CGFloat = iconWidth + 3 * padding
+    static let minWidth: CGFloat = iconWidth + 2 * padding
 
     private static let titleFont = UIFont.detailStrong
     private static let padding: CGFloat = .spacingS
