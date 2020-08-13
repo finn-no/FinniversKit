@@ -140,7 +140,7 @@ public protocol SearchFilterTagsViewModel {
         else { return }
 
         UIView.performWithoutAnimation {
-            collectionView.reloadSections([1])
+            collectionView.reloadSections([0])
         }
     }
 

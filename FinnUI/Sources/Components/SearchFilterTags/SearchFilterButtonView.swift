@@ -49,7 +49,7 @@ final class SearchFilterButtonView: UIView {
         self.title = title
         super.init(frame: .zero)
         titleLabel.text = title
-        filterIcon.image = icon
+        filterIcon.image = icon.withRenderingMode(.alwaysTemplate)
         setup()
     }
 
