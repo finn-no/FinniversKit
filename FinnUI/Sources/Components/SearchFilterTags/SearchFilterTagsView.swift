@@ -55,6 +55,7 @@ public protocol SearchFilterTagsViewModel {
     private lazy var filterButtonView: SearchFilterButtonView = {
         let button = SearchFilterButtonView(title: viewModel.filterButtonTitle, icon: viewModel.filterIcon)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.delegate = self
         return button
     }()
 
@@ -186,6 +187,14 @@ extension SearchFilterTagsView: UICollectionViewDelegate {
         let visibleRatio = (filterButtonWidthConstraint.constant - minFilterButtonWidth) / sizeRange
         let newAlpha: CGFloat = visibleRatio > 0.2 ? visibleRatio : 0
         filterButtonView.updateLabel(withAlpha: newAlpha)
+    }
+}
+
+// MARK: - SearchFilterButtonViewDelegate
+
+extension SearchFilterTagsView: SearchFilterButtonViewDelegate {
+    func searchFilterButtonViewDidSelectFilter(_ searchFilterButtonView: SearchFilterButtonView) {
+        delegate?.searchFilterTagsViewDidSelectFilter(self)
     }
 }
 

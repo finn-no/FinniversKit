@@ -4,6 +4,10 @@
 
 import UIKit
 
+protocol SearchFilterButtonViewDelegate: AnyObject {
+    func searchFilterButtonViewDidSelectFilter(_ searchFilterButtonView: SearchFilterButtonView)
+}
+
 final class SearchFilterButtonView: UIView {
 
     // MARK: - Private properties
@@ -37,6 +41,8 @@ final class SearchFilterButtonView: UIView {
 
     private let title: String
 
+    weak var delegate: SearchFilterButtonViewDelegate?
+
     // MARK: - Init
 
     init(title: String, icon: UIImage) {
@@ -61,6 +67,9 @@ final class SearchFilterButtonView: UIView {
     // MARK: - Setup
 
     private func setup() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(filterButtonTapped))
+        addGestureRecognizer(tapGestureRecognizer)
+
         backgroundColor = .bgPrimary
 
         layer.cornerRadius = 4
@@ -89,6 +98,12 @@ final class SearchFilterButtonView: UIView {
 
     func updateLabel(withAlpha alpha: CGFloat) {
         titleLabel.alpha = alpha
+    }
+
+    // MARK: - Actions
+
+    @objc private func filterButtonTapped() {
+        delegate?.searchFilterButtonViewDidSelectFilter(self)
     }
 }
 
