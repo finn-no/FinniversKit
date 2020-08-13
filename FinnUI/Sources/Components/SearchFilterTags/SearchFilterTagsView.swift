@@ -44,7 +44,6 @@ public protocol SearchFilterTagsViewModel {
         collectionView.delegate = self
         collectionView.alwaysBounceHorizontal = true
         collectionView.register(SearchFilterTagCell.self)
-        collectionView.register(SearchFilterFilterCell.self)
 
         collectionView.contentInset = UIEdgeInsets(
             trailing: SearchFilterTagsView.horizontalMargin
@@ -156,23 +155,13 @@ extension SearchFilterTagsView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
-            return 0
-        }
-        return searchFilterTags.count
+        searchFilterTags.count
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == 0 {
-            let cell = collectionView.dequeue(SearchFilterFilterCell.self, for: indexPath)
-            cell.configure(with: viewModel.filterButtonTitle, icon: viewModel.filterIcon)
-            return cell
-        }
-
         let cell = collectionView.dequeue(SearchFilterTagCell.self, for: indexPath)
         cell.configure(with: searchFilterTags[indexPath.item], icon: viewModel.removeTagIcon)
         cell.delegate = self
-
         return cell
     }
 }
@@ -180,11 +169,6 @@ extension SearchFilterTagsView: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension SearchFilterTagsView: UICollectionViewDelegate {
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard indexPath.section == 0 else { return }
-        delegate?.searchFilterTagsViewDidSelectFilter(self)
-    }
-
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.x
         let newWidth = filterButtonWidthConstraint.constant - offset
@@ -229,23 +213,10 @@ extension SearchFilterTagsView: UICollectionViewDelegateFlowLayout {
                                layout collectionViewLayout: UICollectionViewLayout,
                                sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        if indexPath.section == 0 {
-            return CGSize(
-                width: SearchFilterFilterCell.width(for: viewModel.filterButtonTitle),
-                height: SearchFilterFilterCell.height
-            )
-        }
-
         var cellWidth = SearchFilterTagCell.width(for: title(at: indexPath))
         cellWidth = min(collectionView.bounds.width, cellWidth)
         cellWidth = max(cellWidth, SearchFilterTagCell.minWidth)
         return CGSize(width: cellWidth, height: SearchFilterTagCell.height)
-    }
-
-    public func collectionView(_ collectionView: UICollectionView,
-                               layout collectionViewLayout: UICollectionViewLayout,
-                               insetForSectionAt section: Int) -> UIEdgeInsets {
-        .zero
     }
 }
 
