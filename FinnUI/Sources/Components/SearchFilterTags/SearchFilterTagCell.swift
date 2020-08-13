@@ -22,7 +22,7 @@ final class SearchFilterTagCell: UICollectionViewCell {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
-        label.font = SearchFilterTagCell.titleFont
+        label.font = SearchFilterTagsView.font
         label.adjustsFontForContentSizeCategory = true
         label.textColor = .textTertiary
         label.textAlignment = .center
@@ -62,7 +62,7 @@ final class SearchFilterTagCell: UICollectionViewCell {
     // MARK: - Setup
 
     private func setup() {
-        layer.cornerRadius = 4
+        layer.cornerRadius = 8
         backgroundColor = .btnPrimary
 
         contentView.addSubview(titleLabel)
@@ -103,7 +103,7 @@ final class SearchFilterTagCell: UICollectionViewCell {
 // MARK: - Size calculations
 
 extension SearchFilterTagCell {
-    static let height: CGFloat = 30
+    static let height: CGFloat = 32
     static let minWidth: CGFloat = 56
 
     static func width(for title: String) -> CGFloat {
@@ -111,14 +111,13 @@ extension SearchFilterTagCell {
         let boundingBox = title.boundingRect(
             with: constraintRect,
             options: .usesLineFragmentOrigin,
-            attributes: [.font: titleFont],
+            attributes: [.font: SearchFilterTagsView.font],
             context: nil
         )
 
         return ceil(boundingBox.width) + titleLeading + removeButtonWidth
     }
 
-    private static let titleFont = UIFont.detailStrong
     private static let titleLeading: CGFloat = .spacingS
     private static let removeButtonEdgeInsets = UIEdgeInsets(leading: .spacingS, trailing: .spacingS)
 

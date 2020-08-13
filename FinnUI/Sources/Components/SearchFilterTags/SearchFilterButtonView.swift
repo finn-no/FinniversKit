@@ -14,7 +14,7 @@ final class SearchFilterButtonView: UIView {
 
     private lazy var titleLabel: UILabel = {
         let label = InsetLabel(withAutoLayout: true)
-        label.font = SearchFilterButtonView.titleFont
+        label.font = SearchFilterTagsView.font
         label.adjustsFontForContentSizeCategory = true
         label.textColor = .textPrimary
         label.textAlignment = .left
@@ -33,10 +33,10 @@ final class SearchFilterButtonView: UIView {
         let boundingBox = title.boundingRect(
             with: constraintRect,
             options: .usesLineFragmentOrigin,
-            attributes: [.font: SearchFilterButtonView.titleFont],
+            attributes: [.font: SearchFilterTagsView.font],
             context: nil
         )
-        return ceil(boundingBox.width) + 3 * SearchFilterButtonView.padding + SearchFilterButtonView.iconWidth
+        return ceil(boundingBox.width) + 2 * SearchFilterButtonView.padding + SearchFilterButtonView.iconWidth + InsetLabel.trailingInset
     }
 
     private let title: String
@@ -72,7 +72,7 @@ final class SearchFilterButtonView: UIView {
 
         backgroundColor = .bgPrimary
 
-        layer.cornerRadius = 4
+        layer.cornerRadius = 8
         layer.borderColor = .borderColor
         layer.borderWidth = 1
 
@@ -110,12 +110,11 @@ final class SearchFilterButtonView: UIView {
 // MARK: - Size calculations
 
 extension SearchFilterButtonView {
-    static let height: CGFloat = 30
+    static let height: CGFloat = 32
     static let minWidth: CGFloat = iconWidth + 2 * padding
+    static let padding: CGFloat = .spacingXS
 
-    private static let titleFont = UIFont.detailStrong
-    static let padding: CGFloat = .spacingS
-    private static var iconWidth: CGFloat = 10
+    private static var iconWidth: CGFloat = 25
 }
 
 // MARK: - Private extensions
@@ -129,16 +128,16 @@ private extension CGColor {
 // MARK: - Private classes
 
 private class InsetLabel: UILabel {
-    let trailingInset: CGFloat = SearchFilterButtonView.padding
+    static let trailingInset: CGFloat = SearchFilterButtonView.padding + .spacingXS
 
     override func drawText(in rect: CGRect) {
-        let insets = UIEdgeInsets(trailing: trailingInset)
+        let insets = UIEdgeInsets(trailing: InsetLabel.trailingInset)
         super.drawText(in: rect.inset(by: insets))
     }
 
     override var intrinsicContentSize: CGSize {
         let size = super.intrinsicContentSize
-        return CGSize(width: size.width + trailingInset,
+        return CGSize(width: size.width + InsetLabel.trailingInset,
                       height: size.height)
     }
 }

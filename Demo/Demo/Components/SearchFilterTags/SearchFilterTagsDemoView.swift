@@ -41,7 +41,7 @@ class SearchFilterTagsDemoView: UIView {
             view.leadingAnchor.constraint(equalTo: leadingAnchor),
             view.trailingAnchor.constraint(equalTo: trailingAnchor),
             view.centerYAnchor.constraint(equalTo: centerYAnchor),
-            view.heightAnchor.constraint(equalToConstant: 50)
+            view.heightAnchor.constraint(lessThanOrEqualToConstant: 60)
         ])
 
         view.configure(with: searchFilterTags, reloadSection: false)

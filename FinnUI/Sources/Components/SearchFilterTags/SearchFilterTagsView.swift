@@ -19,6 +19,9 @@ public protocol SearchFilterTagsViewModel {
     public weak var delegate: SearchFilterTagsViewDelegate?
     public static let height = 2 * SearchFilterTagsView.verticalMargin + SearchFilterTagCell.height
 
+    // MARK: - Internal properties
+    static let font = UIFont.captionStrong
+
     // MARK: - Private properties
 
     private static let verticalMargin = .spacingS + .spacingXXS
@@ -152,7 +155,7 @@ public protocol SearchFilterTagsViewModel {
 
 extension SearchFilterTagsView: UICollectionViewDataSource {
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 1
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -185,7 +188,7 @@ extension SearchFilterTagsView: UICollectionViewDelegate {
 
         let sizeRange = maxFilterButtonWidth - minFilterButtonWidth
         let visibleRatio = (filterButtonWidthConstraint.constant - minFilterButtonWidth) / sizeRange
-        let newAlpha: CGFloat = visibleRatio > 0.2 ? visibleRatio : 0
+        let newAlpha: CGFloat = visibleRatio > 0.25 ? visibleRatio : 0
         filterButtonView.updateLabel(withAlpha: newAlpha)
     }
 }
