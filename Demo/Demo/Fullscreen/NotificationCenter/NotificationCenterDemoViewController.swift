@@ -37,12 +37,8 @@ final class NotificationCenterDemoViewController: BaseDemoViewController<UIView>
     ]
 
     private lazy var notificationsCenterView: NotificationCenterView = {
-        let notificationCenterView = NotificationCenterView(
-            viewModel: .init(
-                groupSelectionTitle: "GRUPPER PER DAG",
-                markAllAsReadButtonTitle: "Marker alt som lest"
-            )
-        )
+        let notificationCenterView = NotificationCenterView(markAllAsReadButtonTitle: "Marker alt som lest")
+        notificationCenterView.savedSearchGroupTitle = "GRUPPER PER SØK"
         notificationCenterView.translatesAutoresizingMaskIntoConstraints = false
         notificationCenterView.selectedSegment = 1
         notificationCenterView.dataSource = self
@@ -114,6 +110,30 @@ extension NotificationCenterDemoViewController: NotificationCenterViewDelegate {
     }
     
     func notificationCenterView(_ view: NotificationCenterView, didSelectShowGroupOptions segment: Int) {
+        let view = NotificationGroupOptionsView(
+            viewModel: .init(
+                bySearchTitle: "Gruppering per søk",
+                byDayTitle: "Gruppering per dag",
+                flatTitle: "Vis i kronologisk rekkefølge"
+            ), selectedSortOption: .byDay
+        )
+        
+        view.delegate = self
+        
+        let optionsSize = view.systemLayoutSizeFitting(
+            self.view.frame.size,
+            withHorizontalFittingPriority: .defaultHigh,
+            verticalFittingPriority: .fittingSizeLevel
+        )
+        let bottomSheet = BottomSheet(
+            view: view,
+            height: .init(
+                compact: optionsSize.height + 50,
+                expanded: optionsSize.height + 50
+            )
+        )
+        present(bottomSheet, animated: true, completion: nil)
+        self.bottomSheet = bottomSheet
     }
 
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectModelAt indexPath: IndexPath) {
@@ -179,5 +199,20 @@ extension NotificationCenterDemoViewController: RemoteImageViewDataSource {
 
     func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {
 
+    }
+}
+
+extension NotificationCenterDemoViewController: NotificationGroupOptionsViewDelegate {
+    func notificationGroupOptionsView(_ view: NotificationGroupOptionsView, didSelect option: CustomSavedSearchSortOption) {
+        bottomSheet?.dismiss(animated: true, completion: { [weak self] in
+            switch option {
+            case .byDay:
+                self?.tweakingOptions[2].action?()
+            case .bySearch:
+                self?.tweakingOptions[1].action?()
+            case .flat:
+                self?.tweakingOptions[3].action?()
+            }
+        })
     }
 }
