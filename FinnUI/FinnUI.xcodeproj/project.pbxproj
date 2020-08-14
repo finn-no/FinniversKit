@@ -15,6 +15,7 @@
 		46DE7D5D242B9BCB00DB1707 /* FinnUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46DE7D53242B9BCB00DB1707 /* FinnUI.framework */; };
 		46DE7D64242B9BCB00DB1707 /* FinnUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 46DE7D56242B9BCB00DB1707 /* FinnUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4D07057E24AF2A07008282D0 /* ChatAvailabilityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D07057D24AF2A07008282D0 /* ChatAvailabilityViewModel.swift */; };
+		4D30692824E6792D00735B20 /* SearchDisplayMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D30692724E6792D00735B20 /* SearchDisplayMenuView.swift */; };
 		4D7A6ED22498DBAF00AB2EBE /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A6ECF2498DBAF00AB2EBE /* SearchResultsView.swift */; };
 		4D7A6ED32498DBAF00AB2EBE /* SearchResultsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A6ED02498DBAF00AB2EBE /* SearchResultsListView.swift */; };
 		4D7A6ED42498DBAF00AB2EBE /* SearchResultsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A6ED12498DBAF00AB2EBE /* SearchResultsRowView.swift */; };
@@ -97,6 +98,7 @@
 		46DE7D5C242B9BCB00DB1707 /* FinnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinnUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46DE7D63242B9BCB00DB1707 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D07057D24AF2A07008282D0 /* ChatAvailabilityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAvailabilityViewModel.swift; sourceTree = "<group>"; };
+		4D30692724E6792D00735B20 /* SearchDisplayMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDisplayMenuView.swift; sourceTree = "<group>"; };
 		4D7A6ECF2498DBAF00AB2EBE /* SearchResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		4D7A6ED02498DBAF00AB2EBE /* SearchResultsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsListView.swift; sourceTree = "<group>"; };
 		4D7A6ED12498DBAF00AB2EBE /* SearchResultsRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsRowView.swift; sourceTree = "<group>"; };
@@ -241,6 +243,14 @@
 			path = UnitTests;
 			sourceTree = "<group>";
 		};
+		4D30692624E6790F00735B20 /* SearchDisplayMenu */ = {
+			isa = PBXGroup;
+			children = (
+				4D30692724E6792D00735B20 /* SearchDisplayMenuView.swift */,
+			);
+			path = SearchDisplayMenu;
+			sourceTree = "<group>";
+		};
 		4D7A6ECE2498DB5B00AB2EBE /* SearchResults */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +302,7 @@
 		8D680C65FDB2814B12D5A4EC /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				4D30692624E6790F00735B20 /* SearchDisplayMenu */,
 				4DC738B424BDD7B4009BE466 /* SearchFilterTags */,
 				8D6802E2438E1A527CABD2CE /* ChatAvailability */,
 				8D68046F9EAC6A4768E7E8A1 /* SaveSearchView */,
@@ -628,6 +639,7 @@
 				46AE6FB1242BAB97007BB005 /* SplashView.swift in Sources */,
 				DA0E186F2459C23600C0616E /* SettingsView.swift in Sources */,
 				4D7A6ED32498DBAF00AB2EBE /* SearchResultsListView.swift in Sources */,
+				4D30692824E6792D00735B20 /* SearchDisplayMenuView.swift in Sources */,
 				DED0A3D724697F210016176A /* NotificationCenterSearchView.swift in Sources */,
 				9B2A6999249797AC00E671B5 /* BapAdViewModel.swift in Sources */,
 				8D68078190A301C047AD77D7 /* ChatAvailabilityView.swift in Sources */,
