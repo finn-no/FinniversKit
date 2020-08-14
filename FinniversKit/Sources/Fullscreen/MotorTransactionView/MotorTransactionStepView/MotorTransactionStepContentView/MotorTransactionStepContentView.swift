@@ -32,6 +32,7 @@ public class MotorTransactionStepContentView: UIView {
     // MARK: - Private properties
 
     private var step: Int
+	private var currentStep: Int
     private var kind: MotorTransactionStepContentView.Kind
     private var state: MotorTransactionStepViewState
     private var model: MotorTransactionStepContentViewModel
@@ -82,6 +83,7 @@ public class MotorTransactionStepContentView: UIView {
 
     public init(
         step: Int,
+		currentStep: Int,
         kind: MotorTransactionStepContentView.Kind,
         state: MotorTransactionStepViewState,
         model: MotorTransactionStepContentViewModel,
@@ -90,6 +92,7 @@ public class MotorTransactionStepContentView: UIView {
         withAutoLayout autoLayout: Bool = false
     ) {
         self.step = step
+		self.currentStep = currentStep
         self.kind = kind
         self.state = state
         self.model = model
