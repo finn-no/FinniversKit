@@ -7,6 +7,7 @@ import FinniversKit
 public protocol NotificationCenterViewDataSource: AnyObject {
     func numberOfSegments(in view: NotificationCenterView) -> Int
     func notificationCenterView(_ view: NotificationCenterView, titleInSegment segment: Int) -> String
+    func notificationCenterView(_ view: NotificationCenterView, includeHeaderIn segment: Int) -> Bool
     func notificationCenterView(_ view: NotificationCenterView, numberOfSectionsInSegment segment: Int) -> Int
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, numberOfRowsInSection section: Int) -> Int
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, modelForCellAt indexPath: IndexPath) -> NotificationCenterCellType
@@ -18,6 +19,8 @@ public protocol NotificationCenterViewDataSource: AnyObject {
 
 public protocol NotificationCenterViewDelegate: AnyObject {
     func notificationCenterView(_ view: NotificationCenterView, didChangeToSegment segment: Int)
+    func notificationCenterView(_ view: NotificationCenterView, didSelectMarkAllAsReadButtonIn segment: Int)
+    func notificationCenterView(_ view: NotificationCenterView, didSelectShowGroupOptions segment: Int)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectModelAt indexPath: IndexPath)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectSavedSearchButtonIn section: Int)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectFooterButtonInSection section: Int)
@@ -34,6 +37,15 @@ final public class NotificationCenterView: UIView {
 
     public var selectedSegment: Int = 0 {
         didSet { segmentedControl.selectedSegmentIndex = selectedSegment }
+    }
+    
+    public var savedSearchGroupTitle: String? {
+        get { savedSearchesHeaderView.groupSelectionTitle }
+        set {
+            if let newValue = newValue {
+                savedSearchesHeaderView.groupSelectionTitle = newValue
+            }
+        }
     }
 
     // MARK: - Private properties
@@ -58,16 +70,31 @@ final public class NotificationCenterView: UIView {
         scrollView.delegate = self
         return scrollView
     }()
+    
+    private lazy var savedSearchesHeaderView: SavedSearchesHeaderView = {
+        let tableHeader = SavedSearchesHeaderView(withAutoLayout: true)
+        tableHeader.configure(
+            with: .init(
+                groupSelectionTitle: "",
+                markAllAsReadButtonTitle: markAllAsReadButtonTitle
+            )
+        )
+        
+        tableHeader.delegate = self
+        return tableHeader
+    }()
 
     private var segmentTitles: [String]?
     private var tableViews: [UITableView]?
     private var reloadOnEndDragging = false
     private let segmentSpacing: CGFloat = .spacingS
+    private let markAllAsReadButtonTitle: String
 
     // MARK: - Init
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(markAllAsReadButtonTitle: String) {
+        self.markAllAsReadButtonTitle = markAllAsReadButtonTitle
+        super.init(frame: .zero)
         setup()
     }
 
@@ -217,6 +244,17 @@ extension NotificationCenterView: NotificationCenterFooterViewDelegate {
     }
 }
 
+// MARK: - NotificationCenterTableHeaderViewDelegate
+extension NotificationCenterView: NotificationCenterTableHeaderViewDelegate {
+    func savedSearchesHeaderViewDidSelectMarkAllAsRead(_ view: SavedSearchesHeaderView) {
+        delegate?.notificationCenterView(self, didSelectMarkAllAsReadButtonIn: selectedSegment)
+    }
+    
+    func savedSearchesHeaderViewDidSelectGroupSelectionButton(_ view: SavedSearchesHeaderView) {
+        delegate?.notificationCenterView(self, didSelectShowGroupOptions: selectedSegment)
+    }
+}
+
 // MARK: - Private Methods
 private extension NotificationCenterView {
     func setup() {
@@ -281,6 +319,8 @@ private extension NotificationCenterView {
             ])
 
             insertAnchor = tableView.trailingAnchor
+            
+            setUpTableHeaderIfNeeded(for: segment, in: tableView)
         }
 
         scrollView.trailingAnchor.constraint(equalTo: insertAnchor, constant: segmentSpacing).isActive = true
@@ -299,6 +339,23 @@ private extension NotificationCenterView {
     func scrollToTableView(atIndex index: Int, animated: Bool) {
         guard let tableView = tableViews?[index] else { return }
         scrollView.setContentOffset(tableView.frame.origin, animated: animated)
+    }
+    
+    /// Currently, only the saved searches section needs the table header
+    func setUpTableHeaderIfNeeded(for segment: Int, in tableView: UITableView) {
+        guard
+            dataSource?.notificationCenterView(self, includeHeaderIn: segment) ?? false
+        else { return }
+
+        tableView.tableHeaderView = savedSearchesHeaderView
+        NSLayoutConstraint.activate([
+            savedSearchesHeaderView.widthAnchor.constraint(equalTo: tableView.widthAnchor),
+            savedSearchesHeaderView.topAnchor.constraint(equalTo: tableView.topAnchor),
+            savedSearchesHeaderView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+            savedSearchesHeaderView.heightAnchor.constraint(greaterThanOrEqualToConstant: 30),
+        ])
+        
+        savedSearchesHeaderView.layoutIfNeeded()
     }
 }
 
