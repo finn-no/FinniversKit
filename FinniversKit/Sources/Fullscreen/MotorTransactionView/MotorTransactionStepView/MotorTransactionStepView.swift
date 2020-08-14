@@ -72,11 +72,11 @@ public class MotorTransactionStepView: UIView {
     // MARK: - Init
 
     public init(
-        step: Int,
+		step: Int,
 		currentStep: Int,
-        model: MotorTransactionStepViewModel,
-        withCustomStyle customStyle: MotorTransactionStepView.CustomStyle? = nil,
-        withAutoLayout autoLayout: Bool = false
+		model: MotorTransactionStepViewModel,
+		withCustomStyle customStyle: MotorTransactionStepView.CustomStyle? = nil,
+		withAutoLayout autoLayout: Bool = false
     ) {
         self.step = step
 		self.currentStep = currentStep

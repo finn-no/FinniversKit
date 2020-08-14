@@ -83,14 +83,14 @@ public class MotorTransactionStepContentView: UIView {
     // MARK: - Init
 
     public init(
-        step: Int,
+		step: Int,
 		currentStep: Int,
-        kind: MotorTransactionStepContentView.Kind,
-        state: MotorTransactionStepViewState,
-        model: MotorTransactionStepContentViewModel,
-        withFontForTitle font: UIFont,
-        withColorForTitle textColor: UIColor,
-        withAutoLayout autoLayout: Bool = false
+		kind: MotorTransactionStepContentView.Kind,
+		state: MotorTransactionStepViewState,
+		model: MotorTransactionStepContentViewModel,
+		withFontForTitle font: UIFont,
+		withColorForTitle textColor: UIColor,
+		withAutoLayout autoLayout: Bool = false
     ) {
         self.step = step
 		self.currentStep = currentStep
@@ -159,7 +159,6 @@ private extension MotorTransactionStepContentView {
             verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(
 				equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingM)
 		case .completed:
-			// If the last step is completed it should have the .active constraints
 			if step == currentStep {
 				verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(
 					equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM)
