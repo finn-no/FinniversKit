@@ -32,7 +32,7 @@ public class MotorTransactionStepContentView: UIView {
     // MARK: - Private properties
 
     private var step: Int
-	private var currentStep: Int
+    private var currentStep: Int
     private var kind: MotorTransactionStepContentView.Kind
     private var state: MotorTransactionStepViewState
     private var model: MotorTransactionStepContentViewModel
@@ -45,7 +45,6 @@ public class MotorTransactionStepContentView: UIView {
     private var verticalStackViewTopAnchor: NSLayoutConstraint?
 
     private var bottomAnchorConstraint: NSLayoutConstraint?
-	private lazy var isLastStep = step == currentStep
 
     private lazy var verticalStackView: UIStackView = {
         let view = UIStackView(withAutoLayout: true)
@@ -83,17 +82,17 @@ public class MotorTransactionStepContentView: UIView {
     // MARK: - Init
 
     public init(
-		step: Int,
-		currentStep: Int,
-		kind: MotorTransactionStepContentView.Kind,
-		state: MotorTransactionStepViewState,
-		model: MotorTransactionStepContentViewModel,
-		withFontForTitle font: UIFont,
-		withColorForTitle textColor: UIColor,
-		withAutoLayout autoLayout: Bool = false
+        step: Int,
+        currentStep: Int,
+        kind: MotorTransactionStepContentView.Kind,
+        state: MotorTransactionStepViewState,
+        model: MotorTransactionStepContentViewModel,
+        withFontForTitle font: UIFont,
+        withColorForTitle textColor: UIColor,
+        withAutoLayout autoLayout: Bool = false
     ) {
         self.step = step
-		self.currentStep = currentStep
+        self.currentStep = currentStep
         self.kind = kind
         self.state = state
         self.model = model
@@ -123,7 +122,7 @@ private extension MotorTransactionStepContentView {
         backgroundColor = .clear
 
         addSubview(verticalStackView)
-		setupStackViewConstraints()
+        setupStackViewConstraints()
 
         if let titleText = model.title {
             titleView.text = titleText
@@ -142,45 +141,45 @@ private extension MotorTransactionStepContentView {
         bottomAnchorConstraint?.isActive = true
     }
 
-	private func setupStackViewConstraints() {
-		switch state {
-		case .notStarted:
+    private func setupStackViewConstraints() {
+        switch state {
+        case .notStarted:
             verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(
-				equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingXS)
+                equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingXS)
             verticalStackViewTrailingAnchor = verticalStackView.trailingAnchor.constraint(
-				equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS)
+                equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS)
             verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(
-				equalTo: safeAreaLayoutGuide.topAnchor)
-		case .active:
+                equalTo: safeAreaLayoutGuide.topAnchor)
+        case .active:
             verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(
-				equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM)
+                equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM)
             verticalStackViewTrailingAnchor = verticalStackView.trailingAnchor.constraint(
-				equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS)
+                equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS)
             verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(
-				equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingM)
-		case .completed:
-			if step == currentStep {
-				verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(
-					equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM)
-				verticalStackViewTrailingAnchor = verticalStackView.trailingAnchor.constraint(
-					equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS)
-				verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(
-					equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingM)
-			} else {
-				verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(
-					equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingXS)
-				verticalStackViewTrailingAnchor = verticalStackView.trailingAnchor.constraint(
-					equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS)
-				verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(
-					equalTo: safeAreaLayoutGuide.topAnchor)
-			}
+                equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingM)
+        case .completed:
+            if step == currentStep {
+                verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(
+                    equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM)
+                verticalStackViewTrailingAnchor = verticalStackView.trailingAnchor.constraint(
+                    equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS)
+                verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(
+                    equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingM)
+            } else {
+                verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(
+                    equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingXS)
+                verticalStackViewTrailingAnchor = verticalStackView.trailingAnchor.constraint(
+                    equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS)
+                verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(
+                    equalTo: safeAreaLayoutGuide.topAnchor)
+            }
         }
 
-		NSLayoutConstraint.activate([
-			verticalStackViewLeadingAnchor!,
-			verticalStackViewTrailingAnchor!,
-			verticalStackViewTopAnchor!,
-		])
+        NSLayoutConstraint.activate([
+            verticalStackViewLeadingAnchor!,
+            verticalStackViewTrailingAnchor!,
+            verticalStackViewTopAnchor!,
+        ])
 	}
 
     private func setupBodyView(_ nativeBody: NSAttributedString?, _ body: NSAttributedString?) {

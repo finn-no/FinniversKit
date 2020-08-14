@@ -55,7 +55,7 @@ public class MotorTransactionStepView: UIView {
     // MARK: - Private properties
 
     private var step: Int
-	private var currentStep: Int
+    private var currentStep: Int
     private var model: MotorTransactionStepViewModel
     private var style: MotorTransactionStepView.Style
     private var customStyle: MotorTransactionStepView.CustomStyle? // Styling provided by the backend
@@ -72,14 +72,14 @@ public class MotorTransactionStepView: UIView {
     // MARK: - Init
 
     public init(
-		step: Int,
-		currentStep: Int,
-		model: MotorTransactionStepViewModel,
-		withCustomStyle customStyle: MotorTransactionStepView.CustomStyle? = nil,
-		withAutoLayout autoLayout: Bool = false
+        step: Int,
+        currentStep: Int,
+        model: MotorTransactionStepViewModel,
+        withCustomStyle customStyle: MotorTransactionStepView.CustomStyle? = nil,
+        withAutoLayout autoLayout: Bool = false
     ) {
         self.step = step
-		self.currentStep = currentStep
+        self.currentStep = currentStep
         self.model = model
         self.style = model.state.style
         self.customStyle = customStyle
@@ -97,7 +97,7 @@ public class MotorTransactionStepView: UIView {
         if let mainContent = model.main {
             let mainContentView = MotorTransactionStepContentView(
                 step: step,
-				currentStep: currentStep,
+                currentStep: currentStep,
                 kind: .main,
                 state: model.state,
                 model: mainContent,
@@ -113,7 +113,7 @@ public class MotorTransactionStepView: UIView {
         if let detailContent = model.detail {
             let detailContentView = MotorTransactionStepContentView(
                 step: step,
-				currentStep: currentStep,
+                currentStep: currentStep,
                 kind: .detail,
                 state: model.state,
                 model: detailContent,
