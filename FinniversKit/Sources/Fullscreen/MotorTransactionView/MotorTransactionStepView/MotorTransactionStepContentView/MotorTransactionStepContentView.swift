@@ -45,6 +45,7 @@ public class MotorTransactionStepContentView: UIView {
     private var verticalStackViewTopAnchor: NSLayoutConstraint?
 
     private var bottomAnchorConstraint: NSLayoutConstraint?
+	private lazy var isLastStep = step == currentStep
 
     private lazy var verticalStackView: UIStackView = {
         let view = UIStackView(withAutoLayout: true)
@@ -122,30 +123,7 @@ private extension MotorTransactionStepContentView {
         backgroundColor = .clear
 
         addSubview(verticalStackView)
-
-        switch state {
-        case .notStarted, .completed:
-            verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingXS)
-            verticalStackViewTrailingAnchor = verticalStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS)
-            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
-
-            NSLayoutConstraint.activate([
-                verticalStackViewLeadingAnchor!,
-                verticalStackViewTrailingAnchor!,
-                verticalStackViewTopAnchor!,
-            ])
-
-        case .active:
-            verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM)
-            verticalStackViewTrailingAnchor = verticalStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS)
-            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingM)
-
-            NSLayoutConstraint.activate([
-                verticalStackViewLeadingAnchor!,
-                verticalStackViewTrailingAnchor!,
-                verticalStackViewTopAnchor!,
-            ])
-        }
+		setupStackViewConstraints()
 
         if let titleText = model.title {
             titleView.text = titleText
@@ -163,6 +141,48 @@ private extension MotorTransactionStepContentView {
 
         bottomAnchorConstraint?.isActive = true
     }
+
+	private func setupStackViewConstraints() {
+		switch state {
+		case .notStarted:
+            verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(
+				equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingXS)
+            verticalStackViewTrailingAnchor = verticalStackView.trailingAnchor.constraint(
+				equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS)
+            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(
+				equalTo: safeAreaLayoutGuide.topAnchor)
+		case .active:
+            verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(
+				equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM)
+            verticalStackViewTrailingAnchor = verticalStackView.trailingAnchor.constraint(
+				equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS)
+            verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(
+				equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingM)
+		case .completed:
+			// If the last step is completed it should have the .active constraints
+			if step == currentStep {
+				verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(
+					equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingM)
+				verticalStackViewTrailingAnchor = verticalStackView.trailingAnchor.constraint(
+					equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS)
+				verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(
+					equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingM)
+			} else {
+				verticalStackViewLeadingAnchor = verticalStackView.leadingAnchor.constraint(
+					equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingXS)
+				verticalStackViewTrailingAnchor = verticalStackView.trailingAnchor.constraint(
+					equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS)
+				verticalStackViewTopAnchor = verticalStackView.topAnchor.constraint(
+					equalTo: safeAreaLayoutGuide.topAnchor)
+			}
+        }
+
+		NSLayoutConstraint.activate([
+			verticalStackViewLeadingAnchor!,
+			verticalStackViewTrailingAnchor!,
+			verticalStackViewTopAnchor!,
+		])
+	}
 
     private func setupBodyView(_ nativeBody: NSAttributedString?, _ body: NSAttributedString?) {
         let text = nativeBody != nil ? nativeBody : body
