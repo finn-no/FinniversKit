@@ -21,9 +21,9 @@ public class SearchDisplayMenuView: UIView {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .iconPrimary
-        imageView.addGestureRecognizer(
-            UIGestureRecognizer(target: self, action: #selector(sortButtonTapped))
-        )
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sortButtonTapped))
+        imageView.addGestureRecognizer(tapGestureRecognizer)
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
 
@@ -31,9 +31,9 @@ public class SearchDisplayMenuView: UIView {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .iconPrimary
-        imageView.addGestureRecognizer(
-            UIGestureRecognizer(target: self, action: #selector(changeDisplayButtonTapped))
-        )
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(changeDisplayButtonTapped))
+        imageView.addGestureRecognizer(tapGestureRecognizer)
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
 
