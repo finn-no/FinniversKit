@@ -4,7 +4,7 @@
 
 import UIKit
 
-extension UIImageView {
+public extension UIImageView {
     static var checkmarkImageView: UIImageView {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.layer.cornerRadius = 8
