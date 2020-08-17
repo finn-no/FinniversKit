@@ -80,6 +80,8 @@ extension SelectionView: UITableViewDataSource {
 
         cell.configure(with: viewModel)
         cell.isCheckmarkHidden = index != selectedIndex
+        cell.accessibilityLabel = viewModel.accessibilityLabel
+        cell.accessibilityHint = viewModel.accessibilityHint
 
         return cell
     }
