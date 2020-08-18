@@ -4,10 +4,18 @@
 
 import FinniversKit
 
-public enum CustomSavedSearchSortOption: String, CaseIterable {
+public enum NotificationCenterSearchGroupOption: String, CaseIterable {
     case byDay
     case bySearch
     case flat
+
+    var icon: UIImage {
+        switch self {
+        case .byDay: return UIImage(named: .favoritesSortLastAdded)
+        case .bySearch: return UIImage(named: .magnifyingGlass)
+        case .flat: return UIImage(named: .clock)
+        }
+    }
 }
 
 public struct NotificationGroupOptionsViewModel {
@@ -23,7 +31,7 @@ public struct NotificationGroupOptionsViewModel {
 }
 
 public protocol NotificationGroupOptionsViewDelegate: AnyObject {
-    func notificationGroupOptionsView(_ view: NotificationGroupOptionsView, didSelect option: CustomSavedSearchSortOption)
+    func notificationGroupOptionsView(_ view: NotificationGroupOptionsView, didSelect option: NotificationCenterSearchGroupOption)
 }
 
 public class NotificationGroupOptionsView: UIView {
@@ -31,11 +39,11 @@ public class NotificationGroupOptionsView: UIView {
     
     public weak var delegate: NotificationGroupOptionsViewDelegate?
     
-    private let selectedSortOption: CustomSavedSearchSortOption
+    private let selectedOption: NotificationCenterSearchGroupOption
     
-    public init(viewModel: NotificationGroupOptionsViewModel, selectedSortOption: CustomSavedSearchSortOption) {
+    public init(viewModel: NotificationGroupOptionsViewModel, selectedOption: NotificationCenterSearchGroupOption) {
         self.viewModel = viewModel
-        self.selectedSortOption = selectedSortOption
+        self.selectedOption = selectedOption
         super.init(frame: .zero)
         setup()
     }
@@ -44,29 +52,16 @@ public class NotificationGroupOptionsView: UIView {
         fatalError("not implemented")
     }
 
-    private lazy var optionsView: SortingOptionsView<CustomSavedSearchSortOption> = {
-        let view = SortingOptionsView<CustomSavedSearchSortOption>(
-            selectedSortOption: selectedSortOption,
-            cellConfiguration: { [weak self] option -> SortOptionCellViewModel in
-                switch option {
-                case .byDay:
-                    return .init(
-                        title: self?.viewModel.byDayTitle ?? "",
-                        icon: UIImage(named: .favoritesSortLastAdded)
-                    )
-                case .bySearch:
-                    return .init(
-                        title: self?.viewModel.bySearchTitle ?? "",
-                        icon: UIImage(named: .magnifyingGlass)
-                    )
-                case .flat:
-                    return .init(
-                        title: self?.viewModel.flatTitle ?? "",
-                        icon: UIImage(named: .clock)
-                    )
-                }
-            }
+    private lazy var optionsView: SortSelectionView = {
+        let view = SortSelectionView(
+            sortingOptions: [
+                SortOption(groupOption: .byDay, title: viewModel.byDayTitle),
+                SortOption(groupOption: .bySearch, title: viewModel.bySearchTitle),
+                SortOption(groupOption: .flat, title: viewModel.flatTitle),
+            ],
+            selectedSortOptionIdentifier: selectedOption.rawValue
         )
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         return view
     }()
@@ -77,13 +72,26 @@ public class NotificationGroupOptionsView: UIView {
     }
 }
 
-extension NotificationGroupOptionsView: SortingOptionsViewDelegate {
-    public func sortingOptionsView<SortOption>(
-        _ view: SortingOptionsView<SortOption>,
-        didSelectSortOption option: SortOption
-    ) where SortOption : CaseIterable, SortOption : Equatable {
-        guard let savedOption = option as? CustomSavedSearchSortOption else { return }
+// MARK: - Sort Option nested model
+private extension NotificationGroupOptionsView {
+    struct SortOption: SortSelectionOptionModel {
+        let groupOption: NotificationCenterSearchGroupOption
+        let title: String
 
-        delegate?.notificationGroupOptionsView(self, didSelect: savedOption)
+        var identifier: String { groupOption.rawValue }
+        var icon: UIImage { groupOption.icon }
+
+        init(groupOption: NotificationCenterSearchGroupOption, title: String) {
+            self.groupOption = groupOption
+            self.title = title
+        }
+    }
+}
+
+// MARK: - SortSelectionViewDelegate
+extension NotificationGroupOptionsView: SortSelectionViewDelegate {
+    public func sortSelectionView(_ view: SortSelectionView, didSelectSortOptionWithIdentifier selectedIdentifier: String) {
+        guard let option = NotificationCenterSearchGroupOption(rawValue: selectedIdentifier) else { return }
+        delegate?.notificationGroupOptionsView(self, didSelect: option)
     }
 }

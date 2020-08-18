@@ -115,7 +115,8 @@ extension NotificationCenterDemoViewController: NotificationCenterViewDelegate {
                 bySearchTitle: "Gruppering per søk",
                 byDayTitle: "Gruppering per dag",
                 flatTitle: "Vis i kronologisk rekkefølge"
-            ), selectedSortOption: .byDay
+            ),
+            selectedOption: .byDay
         )
         
         view.delegate = self
@@ -203,7 +204,7 @@ extension NotificationCenterDemoViewController: RemoteImageViewDataSource {
 }
 
 extension NotificationCenterDemoViewController: NotificationGroupOptionsViewDelegate {
-    func notificationGroupOptionsView(_ view: NotificationGroupOptionsView, didSelect option: CustomSavedSearchSortOption) {
+    func notificationGroupOptionsView(_ view: NotificationGroupOptionsView, didSelect option: NotificationCenterSearchGroupOption) {
         bottomSheet?.dismiss(animated: true, completion: { [weak self] in
             switch option {
             case .byDay:
