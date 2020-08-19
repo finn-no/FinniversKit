@@ -38,6 +38,7 @@ public class SearchDisplayMenuView: UIView {
     }()
 
     public weak var delegate: SearchDisplayMenuViewDelegate?
+    public static let height: CGFloat = 44
 
     // MARK: - Init
 
@@ -55,7 +56,6 @@ public class SearchDisplayMenuView: UIView {
     private func setup() {
         backgroundColor = .bgPrimary
         layer.cornerRadius = 22
-        layer.borderColor = .bgSecondary
         layer.borderWidth = 1
 
         addSubview(separatorLine)
@@ -67,7 +67,7 @@ public class SearchDisplayMenuView: UIView {
 
         NSLayoutConstraint.activate([
             widthAnchor.constraint(equalToConstant: 128),
-            heightAnchor.constraint(equalToConstant: 44),
+            heightAnchor.constraint(equalToConstant: SearchDisplayMenuView.height),
 
             sortImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             sortImageView.topAnchor.constraint(equalTo: topAnchor),
@@ -84,6 +84,13 @@ public class SearchDisplayMenuView: UIView {
             separatorLine.bottomAnchor.constraint(equalTo: bottomAnchor),
             separatorLine.widthAnchor.constraint(equalToConstant: 1.0/UIScreen.main.scale),
         ])
+    }
+
+    // MARK: - Lifecycle
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.borderColor = .bgSecondary
     }
 
     // MARK: - Public methods
