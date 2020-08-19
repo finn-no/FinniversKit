@@ -56,14 +56,14 @@ public class SearchDisplayMenuView: UIView {
     private func setup() {
         backgroundColor = .bgPrimary
         layer.cornerRadius = 22
-        layer.borderWidth = 1
+        layer.borderWidth = 0.5
 
         addSubview(separatorLine)
         addSubview(sortImageView)
         addSubview(changeDisplayImageView)
 
 //        dropShadow(color: .black, opacity: 0.12, offset: CGSize(width: 0, height: 1), radius: 4) // add a second shadow
-        dropShadow(color: .black, opacity: 0.20, offset: CGSize(width: 0, height: 4.5), radius: 13)
+        dropShadow(color: .textPrimary, opacity: 0.20, offset: CGSize(width: 0, height: 4.5), radius: 13)
 
         NSLayoutConstraint.activate([
             widthAnchor.constraint(equalToConstant: 128),
@@ -90,7 +90,7 @@ public class SearchDisplayMenuView: UIView {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        layer.borderColor = .bgSecondary
+        layer.borderColor = .borderColor
     }
 
     // MARK: - Public methods
@@ -123,5 +123,11 @@ private extension UIImageView {
                 top: -UIImageView.verticalIconPadding,
                 bottom: -UIImageView.verticalIconPadding))
             .withRenderingMode(.alwaysTemplate)
+    }
+}
+
+private extension CGColor {
+    class var borderColor: CGColor {
+        UIColor.dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine).cgColor
     }
 }
