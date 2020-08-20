@@ -20,7 +20,7 @@ public protocol NotificationCenterViewDataSource: AnyObject {
 public protocol NotificationCenterViewDelegate: AnyObject {
     func notificationCenterView(_ view: NotificationCenterView, didChangeToSegment segment: Int)
     func notificationCenterView(_ view: NotificationCenterView, didSelectMarkAllAsReadButtonIn segment: Int)
-    func notificationCenterView(_ view: NotificationCenterView, didSelectShowGroupOptions segment: Int)
+    func notificationCenterView(_ view: NotificationCenterView, didSelectShowGroupOptions segment: Int, sortingView: UIView)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectModelAt indexPath: IndexPath)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectSavedSearchButtonIn section: Int)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectFooterButtonInSection section: Int)
@@ -250,8 +250,8 @@ extension NotificationCenterView: NotificationCenterTableHeaderViewDelegate {
         delegate?.notificationCenterView(self, didSelectMarkAllAsReadButtonIn: selectedSegment)
     }
     
-    func savedSearchesHeaderViewDidSelectGroupSelectionButton(_ view: SavedSearchesHeaderView) {
-        delegate?.notificationCenterView(self, didSelectShowGroupOptions: selectedSegment)
+    func savedSearchesHeaderViewDidSelectGroupSelectionButton(_ view: SavedSearchesHeaderView, sortingView: UIView) {
+        delegate?.notificationCenterView(self, didSelectShowGroupOptions: selectedSegment, sortingView: sortingView)
     }
 }
 
@@ -275,7 +275,7 @@ private extension NotificationCenterView {
             scrollView.topAnchor.constraint(equalTo: separatorLine.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: segmentSpacing),
-            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
 
