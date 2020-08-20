@@ -6,7 +6,10 @@ import FinniversKit
 
 protocol NotificationCenterTableHeaderViewDelegate: AnyObject {
     func savedSearchesHeaderViewDidSelectMarkAllAsRead(_ view: NotificationCenterView.SavedSearchesHeaderView)
-    func savedSearchesHeaderViewDidSelectGroupSelectionButton(_ view: NotificationCenterView.SavedSearchesHeaderView)
+    func savedSearchesHeaderViewDidSelectGroupSelectionButton(
+        _ view: NotificationCenterView.SavedSearchesHeaderView,
+        sortingView: UIView
+    )
 }
 
 extension NotificationCenterView {
@@ -83,7 +86,7 @@ extension NotificationCenterView {
         }
         
         @objc func groupSelectionButtonTapped() {
-            delegate?.savedSearchesHeaderViewDidSelectGroupSelectionButton(self)
+            delegate?.savedSearchesHeaderViewDidSelectGroupSelectionButton(self, sortingView: groupSelectionView)
         }
     }
 }
