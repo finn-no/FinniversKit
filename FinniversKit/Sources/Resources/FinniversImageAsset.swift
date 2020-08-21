@@ -123,6 +123,8 @@ public enum FinniversImageAsset: String {
     case messages
     case minus
     case miscCross
+    case miscDislike
+    case miscDisliked
     case miscLike
     case miscLiked
     case miscMoney
@@ -294,6 +296,8 @@ public enum FinniversImageAsset: String {
             .messages,
             .minus,
             .miscCross,
+            .miscDislike,
+            .miscDisliked,
             .miscLike,
             .miscLiked,
             .miscMoney,
