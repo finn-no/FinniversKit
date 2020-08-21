@@ -6,6 +6,7 @@ import UIKit
 
 protocol SearchFilterTagCellDelegate: AnyObject {
     func searchFilterTagCellDidSelectRemove(_ cell: SearchFilterTagCell)
+    func searchFilterTagCellWasSelected(_ cell: SearchFilterTagCell)
 }
 
 public protocol SearchFilterTagCellViewModel {
@@ -26,6 +27,11 @@ final class SearchFilterTagCell: UICollectionViewCell {
         label.adjustsFontForContentSizeCategory = true
         label.textColor = .textTertiary
         label.textAlignment = .center
+
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleFilterLabelTap))
+        label.addGestureRecognizer(tapGestureRecognizer)
+        label.isUserInteractionEnabled = true
+
         return label
     }()
 
@@ -97,6 +103,10 @@ final class SearchFilterTagCell: UICollectionViewCell {
 
     @objc private func handleRemoveButtonTap() {
         delegate?.searchFilterTagCellDidSelectRemove(self)
+    }
+
+    @objc private func handleFilterLabelTap() {
+        delegate?.searchFilterTagCellWasSelected(self)
     }
 }
 

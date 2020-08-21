@@ -7,6 +7,7 @@ import Foundation
 public protocol SearchFilterTagsViewDelegate: AnyObject {
     func searchFilterTagsViewDidSelectFilter(_ view: SearchFilterTagsView)
     func searchFilterTagsView(_ view: SearchFilterTagsView, didRemoveTagAt index: Int)
+    func searchFilterTagsView(_ view: SearchFilterTagsView, didTapSearchFilterTagAt index: Int)
 }
 
 public protocol SearchFilterTagsViewModel {
@@ -147,7 +148,7 @@ public protocol SearchFilterTagsViewModel {
     // MARK: - Private methods
 
     private func title(at indexPath: IndexPath) -> String {
-        return searchFilterTags[indexPath.item].title
+        searchFilterTags[indexPath.item].title
     }
 }
 
@@ -155,7 +156,7 @@ public protocol SearchFilterTagsViewModel {
 
 extension SearchFilterTagsView: UICollectionViewDataSource {
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        1
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -215,6 +216,13 @@ extension SearchFilterTagsView: SearchFilterTagCellDelegate {
         collectionView.deleteItems(at: [indexPath])
 
         delegate?.searchFilterTagsView(self, didRemoveTagAt: indexPath.item)
+    }
+
+    func searchFilterTagCellWasSelected(_ cell: SearchFilterTagCell) {
+        guard let indexPath = collectionView.indexPath(for: cell) else {
+            return
+        }
+        delegate?.searchFilterTagsView(self, didTapSearchFilterTagAt: indexPath.item)
     }
 }
 
