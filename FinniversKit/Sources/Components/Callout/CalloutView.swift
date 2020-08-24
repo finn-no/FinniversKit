@@ -9,6 +9,8 @@ public final class CalloutView: UIView {
     public enum Direction: CaseIterable {
         case up
         case down
+//        case left
+//        case right
     }
 
     public enum ArrowAlignment {
@@ -26,6 +28,10 @@ public final class CalloutView: UIView {
             return .identity
         case .down:
             return CGAffineTransform(rotationAngle: CGFloat.pi)
+//        case .left:
+//            return CGAffineTransform(rotationAngle: CGFloat.pi * 3/4)
+//        case .right:
+//            return CGAffineTransform(rotationAngle: CGFloat.pi * -3/4)
         }
     }
 
@@ -86,10 +92,17 @@ public final class CalloutView: UIView {
         }
     }
 
-    public func hide(duration: TimeInterval = 0.3) {
-        UIView.animate(withDuration: duration) { [weak self] in
-            self?.alpha = 0
-        }
+    public func hide(duration: TimeInterval = 0.3, onCompletion: ((Bool) -> Void)? = nil) {
+//        UIView.animate(withDuration: duration) { [weak self] in
+//            self?.alpha = 0
+//        }
+        UIView.animate(
+            withDuration: duration,
+            animations: { [weak self] in
+                self?.alpha = 0
+            }, completion:
+            onCompletion
+        )
     }
 
     // MARK: - Setup
@@ -144,6 +157,22 @@ public final class CalloutView: UIView {
                 boxView.leadingAnchor.constraint(equalTo: leadingAnchor),
                 boxView.trailingAnchor.constraint(equalTo: trailingAnchor),
             ]
+//        case .left:
+//            return [
+//                arrowView.trailingAnchor.constraint(equalTo: leadingAnchor),
+//                boxView.topAnchor.constraint(equalTo: topAnchor),
+//                boxView.bottomAnchor.constraint(equalTo: bottomAnchor),
+//                boxView.leadingAnchor.constraint(equalTo: arrowView.trailingAnchor, constant: boxView.layer.borderWidth + 1),
+//                boxView.trailingAnchor.constraint(equalTo: trailingAnchor),
+//            ]
+//        case .right:
+//            return [
+//                arrowView.trailingAnchor.constraint(equalTo: trailingAnchor),
+//                boxView.topAnchor.constraint(equalTo: topAnchor),
+//                boxView.bottomAnchor.constraint(equalTo: bottomAnchor),
+//                boxView.leadingAnchor.constraint(equalTo: leadingAnchor),
+//                boxView.trailingAnchor.constraint(equalTo: arrowView.leadingAnchor, constant: -(boxView.layer.borderWidth + 1)),
+//            ]
         }
     }
 

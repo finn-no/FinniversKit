@@ -28,17 +28,18 @@ extension NotificationCenterView {
         
         // MARK: - Private subviews
         
-        private lazy var groupSelectionView: NotificationCenterView.SortView = {
+        private(set) lazy var groupSelectionView: NotificationCenterView.SortView = {
             let view = NotificationCenterView.SortView(withAutoLayout: true)
             view.isUserInteractionEnabled = true
             let tapGestureRecognizer = UITapGestureRecognizer(
                 target: self, action: #selector(groupSelectionButtonTapped)
             )
+            view.setContentHuggingPriority(.defaultHigh, for: .horizontal)
             view.addGestureRecognizer(tapGestureRecognizer)
             return view
         }()
         
-        private lazy var markAllAsReadButton: Button = {
+        private(set) lazy var markAllAsReadButton: Button = {
             let button = Button(style: .default, size: .small, withAutoLayout: true)
             button.addTarget(self, action: #selector(markAllAsReadButtonTapped), for: .touchUpInside)
             button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
