@@ -109,7 +109,7 @@ extension NotificationCenterDemoViewController: NotificationCenterViewDelegate {
         
     }
     
-    func notificationCenterView(_ view: NotificationCenterView, didSelectShowGroupOptions segment: Int) {
+    func notificationCenterView(_ view: NotificationCenterView, didSelectShowGroupOptions segment: Int, sortingView: UIView) {
         let view = NotificationGroupOptionsView(
             viewModel: .init(
                 bySearchTitle: "Gruppering per søk",
