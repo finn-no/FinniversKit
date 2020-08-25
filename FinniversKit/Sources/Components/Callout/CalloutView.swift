@@ -9,8 +9,6 @@ public final class CalloutView: UIView {
     public enum Direction: CaseIterable {
         case up
         case down
-//        case left
-//        case right
     }
 
     public enum ArrowAlignment {
@@ -28,10 +26,6 @@ public final class CalloutView: UIView {
             return .identity
         case .down:
             return CGAffineTransform(rotationAngle: CGFloat.pi)
-//        case .left:
-//            return CGAffineTransform(rotationAngle: CGFloat.pi * 3/4)
-//        case .right:
-//            return CGAffineTransform(rotationAngle: CGFloat.pi * -3/4)
         }
     }
 
@@ -80,28 +74,40 @@ public final class CalloutView: UIView {
 
     // MARK: - Public
 
-    public func show(withText text: String, duration: TimeInterval = 0.3) {
+    /// Presents the callout by fading it into the screen with a given text
+    ///
+    /// **Note**: you need to make sure the `alpha` property of the callout is 0 before calling this method
+    /// - Parameters:
+    ///   - text: content of the callout
+    ///   - duration: animation duration
+    ///   - completion: optional callback for when the animation completes
+    public func show(withText text: String, duration: TimeInterval = 0.3, completion: ((Bool) -> Void)? = nil) {
         let paragraph = NSMutableParagraphStyle()
         paragraph.lineSpacing = 2
         paragraph.alignment = .center
 
         textLabel.attributedText = NSAttributedString(string: text, attributes: [.paragraphStyle: paragraph])
 
-        UIView.animate(withDuration: duration) { [weak self] in
-            self?.alpha = 1
-        }
+        UIView.animate(
+            withDuration: duration,
+            animations: { [weak self] in
+                self?.alpha = 1
+            },
+            completion: completion
+        )
     }
 
-    public func hide(duration: TimeInterval = 0.3, onCompletion: ((Bool) -> Void)? = nil) {
-//        UIView.animate(withDuration: duration) { [weak self] in
-//            self?.alpha = 0
-//        }
+    /// Fades out the presented callout
+    /// - Parameters:
+    ///   - duration: animation duration
+    ///   - completion: optional callback for when the animation completes
+    public func hide(duration: TimeInterval = 0.3, completion: ((Bool) -> Void)? = nil) {
         UIView.animate(
             withDuration: duration,
             animations: { [weak self] in
                 self?.alpha = 0
-            }, completion:
-            onCompletion
+            },
+            completion: completion
         )
     }
 
@@ -157,22 +163,6 @@ public final class CalloutView: UIView {
                 boxView.leadingAnchor.constraint(equalTo: leadingAnchor),
                 boxView.trailingAnchor.constraint(equalTo: trailingAnchor),
             ]
-//        case .left:
-//            return [
-//                arrowView.trailingAnchor.constraint(equalTo: leadingAnchor),
-//                boxView.topAnchor.constraint(equalTo: topAnchor),
-//                boxView.bottomAnchor.constraint(equalTo: bottomAnchor),
-//                boxView.leadingAnchor.constraint(equalTo: arrowView.trailingAnchor, constant: boxView.layer.borderWidth + 1),
-//                boxView.trailingAnchor.constraint(equalTo: trailingAnchor),
-//            ]
-//        case .right:
-//            return [
-//                arrowView.trailingAnchor.constraint(equalTo: trailingAnchor),
-//                boxView.topAnchor.constraint(equalTo: topAnchor),
-//                boxView.bottomAnchor.constraint(equalTo: bottomAnchor),
-//                boxView.leadingAnchor.constraint(equalTo: leadingAnchor),
-//                boxView.trailingAnchor.constraint(equalTo: arrowView.leadingAnchor, constant: -(boxView.layer.borderWidth + 1)),
-//            ]
         }
     }
 
