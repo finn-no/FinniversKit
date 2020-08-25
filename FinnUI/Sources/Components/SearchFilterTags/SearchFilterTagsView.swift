@@ -28,6 +28,7 @@ public protocol SearchFilterTagsViewModel {
     private static let verticalMargin = .spacingS + .spacingXXS
     private static let horizontalMargin: CGFloat = .spacingS
     private static let cellSpacing: CGFloat = .spacingXS
+    private static let filterButtonTrailingMargin: CGFloat = .spacingS
 
     private var filterButtonWidthConstraint: NSLayoutConstraint!
 
@@ -109,7 +110,7 @@ public protocol SearchFilterTagsViewModel {
             filterButtonView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -SearchFilterTagsView.verticalMargin),
             filterButtonWidthConstraint,
 
-            collectionView.leadingAnchor.constraint(equalTo: filterButtonView.trailingAnchor, constant: SearchFilterTagsView.cellSpacing),
+            collectionView.leadingAnchor.constraint(equalTo: filterButtonView.trailingAnchor, constant: SearchFilterTagsView.filterButtonTrailingMargin),
             collectionView.topAnchor.constraint(equalTo: topAnchor, constant: SearchFilterTagsView.verticalMargin),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -SearchFilterTagsView.verticalMargin),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
