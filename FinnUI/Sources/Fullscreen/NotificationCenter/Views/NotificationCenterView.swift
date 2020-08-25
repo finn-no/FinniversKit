@@ -48,6 +48,12 @@ final public class NotificationCenterView: UIView {
         }
     }
 
+    public var savedSearchesAllRead: Bool = false {
+        didSet {
+            savedSearchesHeaderView.markAllAsReadButton.alpha = savedSearchesAllRead ? 0 : 1
+        }
+    }
+
     // MARK: - Private properties
 
     private lazy var segmentedControl: UISegmentedControl = {
