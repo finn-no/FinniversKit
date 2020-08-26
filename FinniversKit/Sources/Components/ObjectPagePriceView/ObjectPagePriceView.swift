@@ -28,8 +28,8 @@ public class ObjectPagePriceView: UIView {
         return stackView
     }()
 
-    private lazy var linkButtonListView: LinkButtonListView = {
-        let view = LinkButtonListView(withAutoLayout: true)
+    private lazy var linkButtonListView: PriceLinkButtonListView = {
+        let view = PriceLinkButtonListView(withAutoLayout: true)
         view.delegate = self
         return view
     }()
@@ -82,10 +82,10 @@ public class ObjectPagePriceView: UIView {
     }
 }
 
-// MARK: - LinkButtonListViewDelegate
+// MARK: - PriceLinkButtonListViewDelegate
 
-extension ObjectPagePriceView: LinkButtonListViewDelegate {
-    public func linksListView(_ view: LinkButtonListView, didTapButtonWithIdentifier identifier: String?, url: URL) {
+extension ObjectPagePriceView: PriceLinkButtonListViewDelegate {
+    public func priceLinksListView(_ view: PriceLinkButtonListView, didTapButtonWithIdentifier identifier: String?, url: URL) {
         delegate?.priceView(self, didTapLinkButtonWithIdentifier: identifier, url: url)
     }
 }
