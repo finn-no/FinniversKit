@@ -63,7 +63,7 @@ class PriceLinkButtonView: UIView {
 
     private lazy var subtitleLabel: Label = {
         let label = Label(style: .detail, withAutoLayout: true)
-        label.textColor = .stone
+        label.textColor = .textSecondary
         label.numberOfLines = 0
         return label
     }()
