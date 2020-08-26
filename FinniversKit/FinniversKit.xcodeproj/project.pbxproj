@@ -162,7 +162,7 @@
 		8D68020C8D99FFCA2D0E4544 /* SaveSearchPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680E44C486FC51C7F9B871 /* SaveSearchPromptView.swift */; };
 		8D68071A775A6BD8DDE777A3 /* SwitchViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D68098752937463FDA8FF6E /* SwitchViewStyle.swift */; };
 		8D6807D559D2EF0160721C32 /* SearchListEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680B5270EEEDE60EC40E4B /* SearchListEmptyViewModel.swift */; };
-		8D6808DF0714CB32FD27AD37 /* PriceLinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6804597448C36BE9CDE257 /* PriceLinkButton.swift */; };
+		8D6808DF0714CB32FD27AD37 /* PriceLinkButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6804597448C36BE9CDE257 /* PriceLinkButtonView.swift */; };
 		8D680B3932E934A7BD81FA3C /* PriceLinkButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680C9447EAEBFE62F093D1 /* PriceLinkButtonViewModel.swift */; };
 		8D680EAA171AAD536A2E0FDC /* SearchListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6807A1A5494CABB1DC58D6 /* SearchListEmptyView.swift */; };
 		91341EDB23C38288005B65CF /* NativeAdvertRecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91341EDA23C38288005B65CF /* NativeAdvertRecommendationView.swift */; };
@@ -594,7 +594,7 @@
 		89A7A63C225337B50053D33B /* NativeAdvertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertViewModel.swift; sourceTree = "<group>"; };
 		89A7A643225352180053D33B /* NativeAdvertDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertDelegates.swift; sourceTree = "<group>"; };
 		89A7A6462253524E0053D33B /* NativeAdvertContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertContentView.swift; sourceTree = "<group>"; };
-		8D6804597448C36BE9CDE257 /* PriceLinkButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceLinkButton.swift; sourceTree = "<group>"; };
+		8D6804597448C36BE9CDE257 /* PriceLinkButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceLinkButtonView.swift; sourceTree = "<group>"; };
 		8D6807A1A5494CABB1DC58D6 /* SearchListEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchListEmptyView.swift; sourceTree = "<group>"; };
 		8D680981DC797D9DAADF1012 /* PriceLinkButtonListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceLinkButtonListView.swift; sourceTree = "<group>"; };
 		8D68098752937463FDA8FF6E /* SwitchViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchViewStyle.swift; sourceTree = "<group>"; };
@@ -1813,7 +1813,7 @@
 		8D68061CED13A2E89E46438D /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				8D6804597448C36BE9CDE257 /* PriceLinkButton.swift */,
+				8D6804597448C36BE9CDE257 /* PriceLinkButtonView.swift */,
 				8D680981DC797D9DAADF1012 /* PriceLinkButtonListView.swift */,
 			);
 			path = Subviews;
@@ -3529,7 +3529,7 @@
 				8D68020C8D99FFCA2D0E4544 /* SaveSearchPromptView.swift in Sources */,
 				8D6807D559D2EF0160721C32 /* SearchListEmptyViewModel.swift in Sources */,
 				8D680EAA171AAD536A2E0FDC /* SearchListEmptyView.swift in Sources */,
-				8D6808DF0714CB32FD27AD37 /* PriceLinkButton.swift in Sources */,
+				8D6808DF0714CB32FD27AD37 /* PriceLinkButtonView.swift in Sources */,
 				8D680B3932E934A7BD81FA3C /* PriceLinkButtonViewModel.swift in Sources */,
 				8D68020AA0FD06F96F366667 /* PriceLinkButtonListView.swift in Sources */,
 			);
