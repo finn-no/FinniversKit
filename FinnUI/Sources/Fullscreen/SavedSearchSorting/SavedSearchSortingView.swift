@@ -73,11 +73,11 @@ private extension SavedSearchSortOption {
     var icon: FinniversImageAsset {
         switch self {
         case .lastChanged:
-            return .favoritesSortLastAdded
-        case .lastCreated:
-            return .favoritesSortAdStatus
-        case .alphabetical:
             return .republish
+        case .lastCreated:
+            return .favoritesSortLastAdded
+        case .alphabetical:
+            return .alphabeticalSortingAscending
         }
     }
 }
