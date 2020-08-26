@@ -22,7 +22,7 @@ final class SearchFilterTagCell: UICollectionViewCell {
     // MARK: - Private properties
 
     private lazy var titleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
+        let label = InsetLabel(withAutoLayout: true)
         label.font = SearchFilterTagsView.font
         label.adjustsFontForContentSizeCategory = true
         label.textColor = .textTertiary
@@ -154,5 +154,20 @@ private final class RemoveButton: UIButton {
 
     private func updateAlpha(opaque: Bool) {
         alpha = opaque ? 1 : 0.7
+    }
+}
+
+private class InsetLabel: UILabel {
+    static let verticalInset: CGFloat = .spacingS
+
+    override func drawText(in rect: CGRect) {
+        let insets = UIEdgeInsets(vertical: InsetLabel.verticalInset, horizontal: 0)
+        super.drawText(in: rect.inset(by: insets))
+    }
+
+    override var intrinsicContentSize: CGSize {
+        let size = super.intrinsicContentSize
+        return CGSize(width: size.width,
+                      height: size.height + 2 * InsetLabel.verticalInset)
     }
 }
