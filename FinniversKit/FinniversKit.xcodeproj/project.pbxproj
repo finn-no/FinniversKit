@@ -161,6 +161,7 @@
 		8D68020C8D99FFCA2D0E4544 /* SaveSearchPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680E44C486FC51C7F9B871 /* SaveSearchPromptView.swift */; };
 		8D68071A775A6BD8DDE777A3 /* SwitchViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D68098752937463FDA8FF6E /* SwitchViewStyle.swift */; };
 		8D6807D559D2EF0160721C32 /* SearchListEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680B5270EEEDE60EC40E4B /* SearchListEmptyViewModel.swift */; };
+		8D680B3932E934A7BD81FA3C /* PriceLinkButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680C9447EAEBFE62F093D1 /* PriceLinkButtonViewModel.swift */; };
 		8D680EAA171AAD536A2E0FDC /* SearchListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6807A1A5494CABB1DC58D6 /* SearchListEmptyView.swift */; };
 		91341EDB23C38288005B65CF /* NativeAdvertRecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91341EDA23C38288005B65CF /* NativeAdvertRecommendationView.swift */; };
 		91341EDD23C46BE5005B65CF /* NativeAdvertRibbon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91341EDC23C46BE5005B65CF /* NativeAdvertRibbon.swift */; };
@@ -594,6 +595,7 @@
 		8D6807A1A5494CABB1DC58D6 /* SearchListEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchListEmptyView.swift; sourceTree = "<group>"; };
 		8D68098752937463FDA8FF6E /* SwitchViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchViewStyle.swift; sourceTree = "<group>"; };
 		8D680B5270EEEDE60EC40E4B /* SearchListEmptyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchListEmptyViewModel.swift; sourceTree = "<group>"; };
+		8D680C9447EAEBFE62F093D1 /* PriceLinkButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceLinkButtonViewModel.swift; sourceTree = "<group>"; };
 		8D680E44C486FC51C7F9B871 /* SaveSearchPromptView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveSearchPromptView.swift; sourceTree = "<group>"; };
 		91341EDA23C38288005B65CF /* NativeAdvertRecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertRecommendationView.swift; sourceTree = "<group>"; };
 		91341EDC23C46BE5005B65CF /* NativeAdvertRibbon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertRibbon.swift; sourceTree = "<group>"; };
@@ -1887,6 +1889,7 @@
 			isa = PBXGroup;
 			children = (
 				9A37D727744D523F43794CF0 /* ObjectPagePriceViewModel.swift */,
+				8D680C9447EAEBFE62F093D1 /* PriceLinkButtonViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3512,6 +3515,7 @@
 				8D68020C8D99FFCA2D0E4544 /* SaveSearchPromptView.swift in Sources */,
 				8D6807D559D2EF0160721C32 /* SearchListEmptyViewModel.swift in Sources */,
 				8D680EAA171AAD536A2E0FDC /* SearchListEmptyView.swift in Sources */,
+				8D680B3932E934A7BD81FA3C /* PriceLinkButtonViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
