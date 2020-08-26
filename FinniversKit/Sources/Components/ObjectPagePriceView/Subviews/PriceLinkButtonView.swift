@@ -2,33 +2,31 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-protocol LinkButtonViewDelegate: AnyObject {
-    func linkButton(withIdentifier identifier: String?, wasTappedWithUrl url: URL)
+protocol PriceLinkButtonViewDelegate: AnyObject {
+    func priceLinkButton(withIdentifier identifier: String?, wasTappedWithUrl url: URL)
 }
 
-class LinkButtonView: UIView {
+class PriceLinkButtonView: UIView {
 
     // MARK: - Internal properties
 
-    weak var delegate: LinkButtonViewDelegate?
+    weak var delegate: PriceLinkButtonViewDelegate?
 
     // MARK: - Private properties
 
-    private let buttonIdentifier: String?
-    private let linkUrl: URL
+    private let viewModel: PriceLinkButtonViewModel
     private let linkButtonStyle = Button.Style.link.overrideStyle(smallFont: .body)
     private lazy var fillerView = UIView(withAutoLayout: true)
     private lazy var externalImage = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [topRowStackView, subtitleLabel])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
         stackView.alignment = .top
         return stackView
     }()
 
-    private lazy var topRowStackView: UIStackView = {
+    private lazy var buttonStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [linkButton, fillerView, externalImageView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.alignment = .center
@@ -49,6 +47,20 @@ class LinkButtonView: UIView {
         return imageView
     }()
 
+    private lazy var headingLabel: Label = {
+        let label = Label(style: .body, withAutoLayout: true)
+        label.textColor = .textPrimary
+        label.numberOfLines = 0
+        return label
+    }()
+
+    private lazy var subheadingLabel: Label = {
+        let label = Label(style: .bodyStrong, withAutoLayout: true)
+        label.textColor = .textPrimary
+        label.numberOfLines = 0
+        return label
+    }()
+
     private lazy var subtitleLabel: Label = {
         let label = Label(style: .detail, withAutoLayout: true)
         label.textColor = .textSecondary
@@ -58,19 +70,9 @@ class LinkButtonView: UIView {
 
     // MARK: - Init
 
-    convenience init(viewModel: LinkButtonViewModel) {
-        self.init(buttonIdentifier: viewModel.buttonIdentifier, buttonTitle: viewModel.buttonTitle, subtitle: viewModel.subtitle, linkUrl: viewModel.linkUrl, isExternal: viewModel.isExternal)
-    }
-
-    init(buttonIdentifier: String?, buttonTitle: String, subtitle: String?, linkUrl: URL, isExternal: Bool) {
-        self.buttonIdentifier = buttonIdentifier
-        self.linkUrl = linkUrl
+    init(viewModel: PriceLinkButtonViewModel) {
+        self.viewModel = viewModel
         super.init(frame: .zero)
-
-        externalImageView.isHidden = !isExternal
-        linkButton.setTitle(buttonTitle, for: .normal)
-        subtitleLabel.text = subtitle
-        subtitleLabel.isHidden = subtitle?.isEmpty ?? true
         setup()
     }
 
@@ -82,15 +84,30 @@ class LinkButtonView: UIView {
         addSubview(stackView)
         stackView.fillInSuperview()
 
+        if let heading = viewModel.heading, let subheading = viewModel.subheading {
+            headingLabel.text = heading
+            subheadingLabel.text = subheading
+            stackView.addArrangedSubviews([headingLabel, subheadingLabel, subtitleLabel, buttonStackView])
+            stackView.setCustomSpacing(.spacingXS, after: subheadingLabel)
+        } else {
+            stackView.addArrangedSubviews([buttonStackView, subtitleLabel])
+        }
+
+        externalImageView.isHidden = !viewModel.isExternal
+        linkButton.setTitle(viewModel.buttonTitle, for: .normal)
+
+        subtitleLabel.text = viewModel.subtitle
+        subtitleLabel.isHidden = viewModel.subtitle?.isEmpty ?? true
+
         NSLayoutConstraint.activate([
-            topRowStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor)
+            buttonStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor)
         ])
     }
 
     // MARK: - Private methods
 
     @objc private func handleTap() {
-        delegate?.linkButton(withIdentifier: buttonIdentifier, wasTappedWithUrl: linkUrl)
+        delegate?.priceLinkButton(withIdentifier: viewModel.buttonIdentifier, wasTappedWithUrl: viewModel.linkUrl)
     }
 }
 

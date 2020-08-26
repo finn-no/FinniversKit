@@ -5,10 +5,10 @@
 public struct ObjectPagePriceViewModel {
     let mainPriceModel: Price?
     let secondaryPriceModel: Price?
-    let links: [LinkButtonViewModel]
+    let links: [PriceLinkButtonViewModel]
     let adTypeText: String?
 
-    public init(title: String? = nil, totalPrice: String? = nil, subtitle: String? = nil, accessibilityLabel: String? = nil, links: [LinkButtonViewModel] = [], adTypeText: String? = nil) {
+    public init(title: String? = nil, totalPrice: String? = nil, subtitle: String? = nil, accessibilityLabel: String? = nil, links: [PriceLinkButtonViewModel] = [], adTypeText: String? = nil) {
         var mainPriceModel: Price?
         if let totalPrice = totalPrice {
             mainPriceModel = Price(title: title, totalPrice: totalPrice, subtitle: subtitle, accessibilityLabel: accessibilityLabel)
@@ -16,7 +16,7 @@ public struct ObjectPagePriceViewModel {
         self.init(mainPriceModel: mainPriceModel, links: links, adTypeText: adTypeText)
     }
 
-    public init(mainPriceModel: Price?, secondaryPriceModel: Price? = nil, links: [LinkButtonViewModel], adTypeText: String? = nil) {
+    public init(mainPriceModel: Price?, secondaryPriceModel: Price? = nil, links: [PriceLinkButtonViewModel], adTypeText: String? = nil) {
         self.mainPriceModel = mainPriceModel
         self.secondaryPriceModel = secondaryPriceModel
         self.links = links
