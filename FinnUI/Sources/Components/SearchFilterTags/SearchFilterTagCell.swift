@@ -85,6 +85,7 @@ final class SearchFilterTagCell: UICollectionViewCell {
             removeButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             removeButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             removeButton.widthAnchor.constraint(equalToConstant: buttonWidth),
+            removeButton.heightAnchor.constraint(equalTo: removeButton.widthAnchor),
         ])
     }
 
@@ -129,10 +130,10 @@ extension SearchFilterTagCell {
     }
 
     private static let titleLeading: CGFloat = .spacingS
-    private static let removeButtonEdgeInsets = UIEdgeInsets(leading: .spacingS, trailing: .spacingS)
+    private static let removeButtonEdgeInsets = UIEdgeInsets(vertical: 0, horizontal: .spacingS)
 
     private static var removeButtonWidth: CGFloat {
-        return 14 + removeButtonEdgeInsets.leading + removeButtonEdgeInsets.trailing
+        return 16 + removeButtonEdgeInsets.leading + removeButtonEdgeInsets.trailing
     }
 }
 
