@@ -22,7 +22,7 @@ public struct NotificationGroupOptionsViewModel {
     let bySearchTitle: String
     let byDayTitle: String
     let flatTitle: String
-    
+
     public init(bySearchTitle: String, byDayTitle: String, flatTitle: String) {
         self.bySearchTitle = bySearchTitle
         self.byDayTitle = byDayTitle
@@ -36,11 +36,11 @@ public protocol NotificationGroupOptionsViewDelegate: AnyObject {
 
 public class NotificationGroupOptionsView: UIView {
     let viewModel: NotificationGroupOptionsViewModel
-    
+
     public weak var delegate: NotificationGroupOptionsViewDelegate?
-    
+
     private let selectedOption: NotificationCenterSearchGroupOption
-    
+
     public init(viewModel: NotificationGroupOptionsViewModel, selectedOption: NotificationCenterSearchGroupOption) {
         self.viewModel = viewModel
         self.selectedOption = selectedOption

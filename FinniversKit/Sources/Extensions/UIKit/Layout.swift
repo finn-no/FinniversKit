@@ -55,7 +55,7 @@ public extension UIView {
 
         return constraints
     }
-    
+
     @discardableResult
     func fillInSuperviewSafeArea() -> [NSLayoutConstraint] {
         guard let superview = superview else {

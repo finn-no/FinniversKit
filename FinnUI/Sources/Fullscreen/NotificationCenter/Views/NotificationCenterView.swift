@@ -85,7 +85,7 @@ final public class NotificationCenterView: UIView {
                 markAllAsReadButtonTitle: markAllAsReadButtonTitle
             )
         )
-        
+
         tableHeader.delegate = self
         return tableHeader
     }()
@@ -266,7 +266,7 @@ extension NotificationCenterView: NotificationCenterTableHeaderViewDelegate {
     func savedSearchesHeaderViewDidSelectMarkAllAsRead(_ view: SavedSearchesHeaderView) {
         delegate?.notificationCenterView(self, didSelectMarkAllAsReadButtonIn: selectedSegment)
     }
-    
+
     func savedSearchesHeaderViewDidSelectGroupSelectionButton(_ view: SavedSearchesHeaderView, sortingView: UIView) {
         delegate?.notificationCenterView(self, didSelectShowGroupOptions: selectedSegment, sortingView: sortingView)
     }
@@ -340,7 +340,7 @@ private extension NotificationCenterView {
             ])
 
             insertAnchor = tableView.trailingAnchor
-            
+
             setUpTableHeaderIfNeeded(for: segment, in: tableView)
         }
 
@@ -361,7 +361,7 @@ private extension NotificationCenterView {
         guard let tableView = tableViews?[index] else { return }
         scrollView.setContentOffset(tableView.frame.origin, animated: animated)
     }
-    
+
     /// Currently, only the saved searches section needs the table header
     func setUpTableHeaderIfNeeded(for segment: Int, in tableView: UITableView) {
         guard
@@ -375,7 +375,7 @@ private extension NotificationCenterView {
             savedSearchesHeaderView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
             savedSearchesHeaderView.heightAnchor.constraint(greaterThanOrEqualToConstant: 30),
         ])
-        
+
         savedSearchesHeaderView.layoutIfNeeded()
 
         setupCalloutViewForGrouping(in: tableView)
