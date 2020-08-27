@@ -4,12 +4,12 @@
 
 import Foundation
 
-public final class ContentSizedTableView: UITableView {
-    public override var intrinsicContentSize: CGSize {
+final class ContentSizedTableView: UITableView {
+    override var intrinsicContentSize: CGSize {
         return contentSize
     }
 
-    public override func layoutSubviews() {
+    override func layoutSubviews() {
         super.layoutSubviews()
 
         if bounds.size != intrinsicContentSize {
