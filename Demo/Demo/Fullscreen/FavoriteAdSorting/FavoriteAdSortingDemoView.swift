@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import FinnUI
 
 final class FavoriteAdSortingDemoView: UIView {
     private(set) lazy var view: FavoriteAdSortingView = {
