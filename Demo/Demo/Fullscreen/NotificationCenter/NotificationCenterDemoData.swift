@@ -174,7 +174,7 @@ extension NotificationCenterDemoViewController {
             ]
         )
     }
-    
+
     var savedSearchSegmentGroupedPerSearch: NotificationCenterSegment {
         NotificationCenterSegment(
             title: "Lagrede søk",
@@ -297,7 +297,7 @@ extension NotificationCenterDemoViewController {
             ]
         )
     }
-    
+
     var savedSearchSegmentFlat: NotificationCenterSegment {
         NotificationCenterSegment(
             title: "Lagrede søk",

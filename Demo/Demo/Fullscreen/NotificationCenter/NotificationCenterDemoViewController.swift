@@ -31,7 +31,7 @@ final class NotificationCenterDemoViewController: BaseDemoViewController<UIView>
             self.notificationsCenterView.reloadData()
         })
     ]
-    
+
     var bottomSheet: BottomSheet?
 
     private lazy var segments = [
@@ -49,13 +49,13 @@ final class NotificationCenterDemoViewController: BaseDemoViewController<UIView>
         notificationCenterView.remoteImageViewDataSource = self
         return notificationCenterView
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+
         view.addSubview(notificationsCenterView)
         notificationsCenterView.fillInSuperviewSafeArea()
-        
+
         tweakingOptions[2].action?()
     }
 }
@@ -68,7 +68,7 @@ extension NotificationCenterDemoViewController: NotificationCenterViewDataSource
     func notificationCenterView(_ view: NotificationCenterView, titleInSegment segment: Int) -> String {
         segments[segment].title
     }
-    
+
     func notificationCenterView(_ view: NotificationCenterView, includeHeaderIn segment: Int) -> Bool {
         segments[segment].title == "Lagrede søk"
     }
@@ -107,11 +107,11 @@ extension NotificationCenterDemoViewController: NotificationCenterViewDelegate {
     func notificationCenterView(_ view: NotificationCenterView, didChangeToSegment segment: Int) {
         print("Did change to segment: \(segment)")
     }
-    
+
     func notificationCenterView(_ view: NotificationCenterView, didSelectMarkAllAsReadButtonIn segment: Int) {
-        
+
     }
-    
+
     func notificationCenterView(_ view: NotificationCenterView, didSelectShowGroupOptions segment: Int, sortingView: UIView) {
         let view = NotificationGroupOptionsView(
             viewModel: .init(
@@ -121,9 +121,9 @@ extension NotificationCenterDemoViewController: NotificationCenterViewDelegate {
             ),
             selectedOption: .byDay
         )
-        
+
         view.delegate = self
-        
+
         let optionsSize = view.systemLayoutSizeFitting(
             self.view.frame.size,
             withHorizontalFittingPriority: .defaultHigh,

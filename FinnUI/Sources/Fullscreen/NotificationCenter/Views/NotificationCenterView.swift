@@ -38,7 +38,7 @@ final public class NotificationCenterView: UIView {
     public var selectedSegment: Int = 0 {
         didSet { segmentedControl.selectedSegmentIndex = selectedSegment }
     }
-    
+
     public var savedSearchGroupTitle: String? {
         get { savedSearchesHeaderView.groupSelectionTitle }
         set {
@@ -76,7 +76,7 @@ final public class NotificationCenterView: UIView {
         scrollView.delegate = self
         return scrollView
     }()
-    
+
     private lazy var savedSearchesHeaderView: SavedSearchesHeaderView = {
         let tableHeader = SavedSearchesHeaderView(withAutoLayout: true)
         tableHeader.configure(
