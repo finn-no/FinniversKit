@@ -48,6 +48,12 @@ final public class NotificationCenterView: UIView {
         }
     }
 
+    public var savedSearchesAllRead: Bool = false {
+        didSet {
+            savedSearchesHeaderView.markAllAsReadButton.alpha = savedSearchesAllRead ? 0 : 1
+        }
+    }
+
     // MARK: - Private properties
 
     private lazy var segmentedControl: UISegmentedControl = {
@@ -82,6 +88,13 @@ final public class NotificationCenterView: UIView {
         
         tableHeader.delegate = self
         return tableHeader
+    }()
+
+    private lazy var groupingCalloutView: CalloutView = {
+        let view = CalloutView(direction: .up, arrowAlignment: .left(20))
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.alpha = 0
+        return view
     }()
 
     private var segmentTitles: [String]?
@@ -125,6 +138,10 @@ public extension NotificationCenterView {
 
     func resetContentOffset() {
         tableViews?[selectedSegment].setContentOffset(CGPoint(x: 0, y: -.spacingM), animated: true)
+    }
+
+    func showGroupingCallout(with text: String) {
+        groupingCalloutView.show(withText: text)
     }
 }
 
@@ -258,6 +275,10 @@ extension NotificationCenterView: NotificationCenterTableHeaderViewDelegate {
 // MARK: - Private Methods
 private extension NotificationCenterView {
     func setup() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: nil)
+        tapGestureRecognizer.delegate = self
+        addGestureRecognizer(tapGestureRecognizer)
+
         addSubview(segmentedControl)
         addSubview(separatorLine)
         addSubview(scrollView)
@@ -356,6 +377,32 @@ private extension NotificationCenterView {
         ])
         
         savedSearchesHeaderView.layoutIfNeeded()
+
+        setupCalloutViewForGrouping(in: tableView)
+    }
+
+    func setupCalloutViewForGrouping(in tableView: UITableView) {
+        tableView.addSubview(groupingCalloutView)
+
+        NSLayoutConstraint.activate([
+            groupingCalloutView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            groupingCalloutView.widthAnchor.constraint(equalToConstant: 240),
+            groupingCalloutView.topAnchor.constraint(
+                equalTo: savedSearchesHeaderView.groupSelectionView.bottomAnchor, constant: .spacingXS
+            ),
+        ])
+    }
+}
+
+extension NotificationCenterView: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if !groupingCalloutView.isHidden && groupingCalloutView.alpha == 1 {
+            groupingCalloutView.hide { [weak self] _ in
+                self?.groupingCalloutView.isHidden = true
+            }
+        }
+
+        return false
     }
 }
 

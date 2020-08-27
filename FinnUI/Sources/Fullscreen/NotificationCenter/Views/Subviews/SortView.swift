@@ -16,6 +16,7 @@ extension NotificationCenterView {
             let label = UILabel(withAutoLayout: true)
             label.font = .detailStrong
             label.textColor = .textPrimary
+            label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
             return label
         }()
         
