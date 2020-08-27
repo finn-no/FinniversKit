@@ -166,7 +166,10 @@ extension MotorTransactionDemoView: MotorTransactionViewDataSource {
     }
 
     func motorTransactionViewCurrentStep(_ view: MotorTransactionView) -> Int {
-        return model.steps.firstIndex(where: { $0.state == .active }) ?? 0
+        let hasCompletedAllSteps = model.steps.allSatisfy({ $0.state == .completed })
+        let activeStep = model.steps.firstIndex(where: { $0.state == .active }) ?? 0
+        let lastStep = model.steps.count
+        return hasCompletedAllSteps ? lastStep : activeStep
     }
 
     func motorTransactionViewModelForIndex(_ view: MotorTransactionView, forStep step: Int) -> MotorTransactionStepViewModel {
