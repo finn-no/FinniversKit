@@ -21,14 +21,14 @@ final class NotificationCenterDemoViewController: BaseDemoViewController<UIView>
             self.segments = [self.personalSegment, self.savedSearchSegment]
             self.notificationsCenterView.savedSearchGroupTitle = "GRUPPER PER DAG"
             self.notificationsCenterView.reloadData()
-            self.notificationsCenterView.showGroupingCallout(
-                with: "Vil du endre hvordan varslingene grupperes?\nEndre her"
-            )
         }),
         TweakingOption(title: "Populated states (flat)", action: {
             self.segments = [self.personalSegment, self.savedSearchSegmentFlat]
             self.notificationsCenterView.savedSearchGroupTitle = "KRONOLOGISK"
             self.notificationsCenterView.reloadData()
+            self.notificationsCenterView.showGroupingCallout(
+                with: "Vil du endre hvordan varslingene grupperes?\nEndre her"
+            )
         })
     ]
 
