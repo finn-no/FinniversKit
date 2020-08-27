@@ -10,7 +10,7 @@ extension MotorTransactionStepView {
         case warning = "WARNING"
         case error = "ERROR"
         case focus = "FOCUS"
-        /// will use the styling that is defined localy
+        /// Fallback to use styling that is defined in the MotorTransactionStepView.Style enum
         case `default` = "DEFAULT"
 
         public init(rawValue: String) {
@@ -26,8 +26,6 @@ extension MotorTransactionStepView {
             }
         }
 
-        /// Use the custom style provided by the backend
-        /// if the style does not exist, it will fallback  to the default styling defined locally
         public func backgroundColor(style: MotorTransactionStepView.Style) -> UIColor {
             switch self {
             case .error:
