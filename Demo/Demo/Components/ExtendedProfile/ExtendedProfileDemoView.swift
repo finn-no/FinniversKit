@@ -33,13 +33,7 @@ final class ExtendedProfileDemoView: UIView {
 
     private func setup() {
         addSubview(view)
-
+        view.fillInSuperview()
         view.configue(with: viewModel)
-
-        NSLayoutConstraint.activate([
-            view.leadingAnchor.constraint(equalTo: leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: trailingAnchor),
-            view.centerYAnchor.constraint(equalTo: centerYAnchor)
-        ])
     }
 }

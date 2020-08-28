@@ -220,7 +220,7 @@ public enum ComponentDemoViews: String, CaseIterable {
         case .motorTransactionEntryObjectPageView:
             return DemoViewController<MotorTransactionEntryObjectPageDemoView>()
         case .extendedProfileView:
-            return DemoViewController<ExtendedProfileDemoView>()
+            return DemoViewController<ExtendedProfileDemoView>(dismissType: .dismissButton)
         }
     }
 }
