@@ -182,6 +182,7 @@ private extension MotorTransactionView {
     func setupTransactionStepView(_ step: Int, _ model: MotorTransactionStepViewModel) {
         let transactionStepView = MotorTransactionStepView(
             step: step,
+            currentStep: currentStep,
             model: model,
             withCustomStyle: model.style,
             withAutoLayout: true
