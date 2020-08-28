@@ -6,31 +6,36 @@ import Foundation
 
 public struct ExtendedProfileViewModel {
     public let headerImage: UIImage
-    public let headerBackgroundColor: UIColor
 
     public let sloganText: String
+    public let linkTitles: [String]
+    public let actionButtonTitle: String
+
+    public let headerBackgroundColor: UIColor
     public let sloganBackgroundColor: UIColor
     public let sloganTextColor: UIColor
-
-    public let expandableViewBackgroundColor: UIColor
-
-    public let actionButtonTitle: String
+    public let mainBackgroundColor: UIColor
+    public let mainTextColor: UIColor
 
     public init(
         headerImage: UIImage,
-        headerBackgroundColor: UIColor,
         sloganText: String,
-        sloganBackgroundColor: UIColor,
+        linkTitles: [String],
+        actionButtonTitle: String,
+        headerBackgroundColor: UIColor,
         sloganTextColor: UIColor,
-        expandableViewBackgroundColor: UIColor,
-        actionButtonTitle: String
+        sloganBackgroundColor: UIColor,
+        mainBackgroundColor: UIColor,
+        mainTextColor: UIColor
     ) {
         self.headerImage = headerImage
-        self.headerBackgroundColor = headerBackgroundColor
         self.sloganText = sloganText
-        self.sloganBackgroundColor = sloganBackgroundColor
-        self.sloganTextColor = sloganTextColor
-        self.expandableViewBackgroundColor = expandableViewBackgroundColor
+        self.linkTitles = linkTitles
         self.actionButtonTitle = actionButtonTitle
+        self.headerBackgroundColor = headerBackgroundColor
+        self.sloganTextColor = sloganTextColor
+        self.sloganBackgroundColor = sloganBackgroundColor
+        self.mainBackgroundColor = mainBackgroundColor
+        self.mainTextColor = mainTextColor
     }
 }

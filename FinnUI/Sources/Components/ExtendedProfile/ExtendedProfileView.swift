@@ -4,6 +4,11 @@
 
 import FinniversKit
 
+public protocol ExtendedProfileViewDelegate: AnyObject {
+    func extendedProfileViewDidSelectLink(atIndex: Int)
+    func extendedProfileViewDidSelectActionButton()
+}
+
 public class ExtendedProfileView: UIView {
 
     private enum State {
@@ -55,6 +60,13 @@ public class ExtendedProfileView: UIView {
         return view
     }()
 
+    private lazy var linksStackView: UIStackView = {
+        let stackView = UIStackView(withAutoLayout: true)
+        stackView.alignment = .fill
+        stackView.axis = .vertical
+        return stackView
+    }()
+
     private lazy var actionButton: Button = {
         let button = Button(style: .callToAction, size: .normal, withAutoLayout: true)
         button.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
@@ -64,6 +76,8 @@ public class ExtendedProfileView: UIView {
     private static let toggleButtonSize: CGFloat = 30
 
     private var state: State = .contracted
+
+    public weak var delegate: ExtendedProfileViewDelegate?
 
     // MARK: - Init
 
@@ -86,6 +100,7 @@ public class ExtendedProfileView: UIView {
         sloganBoxView.addSubview(sloganLabel)
         sloganBoxView.addSubview(toggleButton)
 
+        expandableView.addSubview(linksStackView)
         expandableView.addSubview(actionButton)
 
         NSLayoutConstraint.activate([
@@ -111,8 +126,12 @@ public class ExtendedProfileView: UIView {
             expandableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             expandableView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
+            linksStackView.leadingAnchor.constraint(equalTo: expandableView.leadingAnchor, constant: .spacingS),
+            linksStackView.topAnchor.constraint(equalTo: expandableView.topAnchor, constant: .spacingM),
+            linksStackView.trailingAnchor.constraint(equalTo: expandableView.trailingAnchor, constant: -.spacingS),
+
             actionButton.leadingAnchor.constraint(equalTo: expandableView.leadingAnchor, constant: .spacingS),
-            actionButton.topAnchor.constraint(equalTo: expandableView.topAnchor, constant: .spacingS),
+            actionButton.topAnchor.constraint(equalTo: linksStackView.bottomAnchor, constant: .spacingM),
             actionButton.trailingAnchor.constraint(equalTo: expandableView.trailingAnchor, constant: -.spacingS),
             actionButton.bottomAnchor.constraint(equalTo: expandableView.bottomAnchor),
         ])
@@ -131,12 +150,39 @@ public class ExtendedProfileView: UIView {
         toggleButton.tintColor = viewModel.sloganBackgroundColor.contrastingColor()
         updateToggleButtonState()
 
-        expandableView.backgroundColor = viewModel.expandableViewBackgroundColor
+        expandableView.backgroundColor = viewModel.mainBackgroundColor
+
+        for linkTitle in viewModel.linkTitles {
+            addButton(withTitle: linkTitle, textColor: viewModel.mainTextColor, to: linksStackView)
+
+            if linkTitle != viewModel.linkTitles.last {
+                addSeparatorLine(withColor: viewModel.mainTextColor, to: linksStackView)
+            }
+        }
 
         actionButton.setTitle(viewModel.actionButtonTitle, for: .normal)
     }
 
     // MARK: - Private methods
+
+    private func addButton(withTitle title: String, textColor: UIColor, to stackView: UIStackView) {
+        let style = Button.Style.link.overrideStyle(
+            textColor: textColor,
+            highlightedTextColor: textColor.withAlphaComponent(0.6)
+        )
+        let button = Button(style: style, withAutoLayout: true)
+        button.setTitle(title, for: .normal)
+        button.addTarget(self, action: #selector(linkTapped(_:)), for: .touchUpInside)
+
+        stackView.addArrangedSubview(button)
+    }
+
+    private func addSeparatorLine(withColor color: UIColor, to stackView: UIStackView) {
+        let separator = UIView(withAutoLayout: true)
+        separator.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale).isActive = true
+        separator.backgroundColor = color.withAlphaComponent(0.5)
+        stackView.addArrangedSubview(separator)
+    }
 
     private func updateToggleButtonState() {
         guard state != .notExpandable else { return }
@@ -152,7 +198,15 @@ public class ExtendedProfileView: UIView {
         updateToggleButtonState()
     }
 
+    @objc private func linkTapped(_ sender: Button) {
+        guard let index = linksStackView.arrangedSubviews.filter({ $0 is Button }).firstIndex(of: sender) else {
+            return
+        }
+        delegate?.extendedProfileViewDidSelectLink(atIndex: index)
+    }
+
     @objc private func actionButtonTapped() {
+        delegate?.extendedProfileViewDidSelectActionButton()
     }
 }
 

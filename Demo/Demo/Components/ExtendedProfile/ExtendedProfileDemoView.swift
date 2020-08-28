@@ -12,12 +12,14 @@ final class ExtendedProfileDemoView: UIView {
 
     private let viewModel = ExtendedProfileViewModel(
         headerImage: UIImage(named: "finn")!,
-        headerBackgroundColor: .white,
         sloganText: "Nysgjerrig på jobb hos oss?",
-        sloganBackgroundColor: UIColor(r: 0, g: 100, b: 248),
+        linkTitles: ["Flere stillinger", "Karrieremuligheter", "Hjemmesiden vår"],
+        actionButtonTitle: "Les bloggen vår her",
+        headerBackgroundColor: .white,
         sloganTextColor: .white,
-        expandableViewBackgroundColor: .toothPaste,
-        actionButtonTitle: "Les bloggen vår her"
+        sloganBackgroundColor: UIColor(r: 0, g: 100, b: 248),
+        mainBackgroundColor: .toothPaste,
+        mainTextColor: UIColor(r: 0, g: 100, b: 248)
     )
 
     // MARK: - Init
