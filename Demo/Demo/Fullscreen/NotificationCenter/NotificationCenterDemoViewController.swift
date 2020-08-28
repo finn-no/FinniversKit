@@ -5,7 +5,7 @@
 import FinniversKit
 import FinnUI
 
-final class NotificationCenterDemoViewController: BaseDemoViewController<UIView>, Tweakable {
+final class NotificationCenterDemoViewController: DemoViewController<UIView>, Tweakable {
     lazy var tweakingOptions: [TweakingOption] = [
         TweakingOption(title: "Empty states", action: {
             self.segments = [self.emptyPersonalNotificationsSegment, self.emptySavedSearchNotificationsSegment]
@@ -40,7 +40,9 @@ final class NotificationCenterDemoViewController: BaseDemoViewController<UIView>
     ]
 
     private lazy var notificationsCenterView: NotificationCenterView = {
-        let notificationCenterView = NotificationCenterView(markAllAsReadButtonTitle: "Marker alt som lest")
+        let notificationCenterView = NotificationCenterView(
+            markAllAsReadButtonTitle: "Marker alt som lest"
+        )
         notificationCenterView.savedSearchGroupTitle = "GRUPPER PER SØK"
         notificationCenterView.translatesAutoresizingMaskIntoConstraints = false
         notificationCenterView.selectedSegment = 1
@@ -53,7 +55,7 @@ final class NotificationCenterDemoViewController: BaseDemoViewController<UIView>
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.addSubview(notificationsCenterView)
+        childViewController?.view.addSubview(notificationsCenterView)
         notificationsCenterView.fillInSuperviewSafeArea()
 
         tweakingOptions[2].action?()
