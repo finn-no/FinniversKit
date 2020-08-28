@@ -6,9 +6,17 @@ import FinnUI
 
 final class ExtendedProfileDemoView: UIView {
     private lazy var view: ExtendedProfileView = {
-        let view = ExtendedProfileView()
+        let view = ExtendedProfileView(withAutoLayout: true)
         return view
     }()
+
+    private let viewModel = ExtendedProfileViewModel(
+        headerImage: UIImage(named: "finn")!,
+        headerBackgroundColor: .white,
+        sloganText: "Nysgjerrig på jobb hos oss?",
+        sloganBackgroundColor: UIColor(r: 0, g: 100, b: 248),
+        sloganTextColor: .white
+    )
 
     // MARK: - Init
 
@@ -25,6 +33,8 @@ final class ExtendedProfileDemoView: UIView {
 
     private func setup() {
         addSubview(view)
+
+        view.configue(with: viewModel)
 
         NSLayoutConstraint.activate([
             view.leadingAnchor.constraint(equalTo: leadingAnchor),
