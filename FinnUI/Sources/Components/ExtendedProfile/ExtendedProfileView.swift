@@ -84,6 +84,10 @@ public class ExtendedProfileView: UIView {
 
     private var state: State = .contracted
 
+    private lazy var actionButtonTopAnchorConstraint = {
+        actionButton.topAnchor.constraint(equalTo: linksStackView.bottomAnchor, constant: .spacingM)
+    }()
+
     public weak var delegate: ExtendedProfileViewDelegate?
 
     // MARK: - Init
@@ -139,7 +143,7 @@ public class ExtendedProfileView: UIView {
             linksStackView.trailingAnchor.constraint(equalTo: bodyView.trailingAnchor, constant: -.spacingS),
 
             actionButton.leadingAnchor.constraint(equalTo: bodyView.leadingAnchor, constant: .spacingS),
-            actionButton.topAnchor.constraint(equalTo: linksStackView.bottomAnchor, constant: .spacingM),
+            actionButtonTopAnchorConstraint,
             actionButton.trailingAnchor.constraint(equalTo: bodyView.trailingAnchor, constant: -.spacingS),
 
             footerImageView.leadingAnchor.constraint(equalTo: bodyView.leadingAnchor, constant: .spacingL),
@@ -188,7 +192,11 @@ public class ExtendedProfileView: UIView {
             }
         }
 
-        actionButton.setTitle(viewModel.actionButtonTitle, for: .normal)
+        if let actionButtonTitle = viewModel.actionButtonTitle {
+            actionButton.setTitle(actionButtonTitle, for: .normal)
+        } else {
+            actionButtonTopAnchorConstraint.constant = 0
+        }
 
         if let footerImage = viewModel.footerImage {
             footerImageView.image = footerImage

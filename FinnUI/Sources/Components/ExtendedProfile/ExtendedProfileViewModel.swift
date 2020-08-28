@@ -10,7 +10,7 @@ public struct ExtendedProfileViewModel {
 
     public let sloganText: String
     public let linkTitles: [String]
-    public let actionButtonTitle: String
+    public let actionButtonTitle: String?
 
     public let headerBackgroundColor: UIColor
     public let sloganBackgroundColor: UIColor
@@ -23,7 +23,7 @@ public struct ExtendedProfileViewModel {
         footerImage: UIImage?,
         sloganText: String,
         linkTitles: [String],
-        actionButtonTitle: String,
+        actionButtonTitle: String?,
         headerBackgroundColor: UIColor,
         sloganTextColor: UIColor,
         sloganBackgroundColor: UIColor,
