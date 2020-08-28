@@ -15,7 +15,9 @@ final class ExtendedProfileDemoView: UIView {
         headerBackgroundColor: .white,
         sloganText: "Nysgjerrig på jobb hos oss?",
         sloganBackgroundColor: UIColor(r: 0, g: 100, b: 248),
-        sloganTextColor: .white
+        sloganTextColor: .white,
+        expandableViewBackgroundColor: .toothPaste,
+        actionButtonTitle: "Les bloggen vår her"
     )
 
     // MARK: - Init

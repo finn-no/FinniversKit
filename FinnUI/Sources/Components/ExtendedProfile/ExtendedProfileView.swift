@@ -49,6 +49,12 @@ public class ExtendedProfileView: UIView {
         return button
     }()
 
+    private lazy var expandableView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.isHidden = true
+        return view
+    }()
+
     private lazy var actionButton: Button = {
         let button = Button(style: .callToAction, size: .normal, withAutoLayout: true)
         button.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
@@ -75,10 +81,12 @@ public class ExtendedProfileView: UIView {
     private func setup() {
         addSubview(headerImageView)
         addSubview(sloganBoxView)
-        addSubview(actionButton)
+        addSubview(expandableView)
 
         sloganBoxView.addSubview(sloganLabel)
         sloganBoxView.addSubview(toggleButton)
+
+        expandableView.addSubview(actionButton)
 
         NSLayoutConstraint.activate([
             headerImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -99,9 +107,14 @@ public class ExtendedProfileView: UIView {
             toggleButton.widthAnchor.constraint(equalToConstant: ExtendedProfileView.toggleButtonSize),
             toggleButton.trailingAnchor.constraint(equalTo: sloganBoxView.trailingAnchor, constant: -.spacingS),
 
-            actionButton.topAnchor.constraint(equalTo: sloganBoxView.bottomAnchor, constant: .spacingS),
-            actionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
-            actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            expandableView.topAnchor.constraint(equalTo: sloganBoxView.bottomAnchor),
+            expandableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            expandableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+
+            actionButton.leadingAnchor.constraint(equalTo: expandableView.leadingAnchor, constant: .spacingS),
+            actionButton.topAnchor.constraint(equalTo: expandableView.topAnchor, constant: .spacingS),
+            actionButton.trailingAnchor.constraint(equalTo: expandableView.trailingAnchor, constant: -.spacingS),
+            actionButton.bottomAnchor.constraint(equalTo: expandableView.bottomAnchor),
         ])
     }
 
@@ -118,13 +131,18 @@ public class ExtendedProfileView: UIView {
         toggleButton.tintColor = viewModel.sloganBackgroundColor.contrastingColor()
         updateToggleButtonState()
 
-        actionButton.setTitle("FINN", for: .normal)
+        expandableView.backgroundColor = viewModel.expandableViewBackgroundColor
+
+        actionButton.setTitle(viewModel.actionButtonTitle, for: .normal)
     }
 
     // MARK: - Private methods
 
     private func updateToggleButtonState() {
+        guard state != .notExpandable else { return }
+
         toggleButton.setExpanded(state == .expanded, animated: true)
+        expandableView.isHidden = state != .expanded
     }
 
     // MARK: - Actions
