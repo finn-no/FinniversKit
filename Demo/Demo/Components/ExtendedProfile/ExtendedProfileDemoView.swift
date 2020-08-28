@@ -38,6 +38,10 @@ final class ExtendedProfileDemoView: UIView {
     private func setup() {
         addSubview(view)
         view.fillInSuperview()
-        view.configue(with: viewModel)
+        view.configue(
+            with: viewModel,
+            showHeaderImage: true,
+            isExpandable: true
+        )
     }
 }

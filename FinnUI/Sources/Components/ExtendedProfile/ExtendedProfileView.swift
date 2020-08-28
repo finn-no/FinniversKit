@@ -17,6 +17,11 @@ public class ExtendedProfileView: UIView {
         case contracted
     }
 
+    private enum Placement {
+        case top
+        case bottom
+    }
+
     private lazy var headerImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFill
@@ -54,7 +59,7 @@ public class ExtendedProfileView: UIView {
         return button
     }()
 
-    private lazy var expandableView: UIView = {
+    private lazy var bodyView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.isHidden = true
         return view
@@ -95,13 +100,13 @@ public class ExtendedProfileView: UIView {
     private func setup() {
         addSubview(headerImageView)
         addSubview(sloganBoxView)
-        addSubview(expandableView)
+        addSubview(bodyView)
 
         sloganBoxView.addSubview(sloganLabel)
         sloganBoxView.addSubview(toggleButton)
 
-        expandableView.addSubview(linksStackView)
-        expandableView.addSubview(actionButton)
+        bodyView.addSubview(linksStackView)
+        bodyView.addSubview(actionButton)
 
         NSLayoutConstraint.activate([
             headerImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -122,35 +127,50 @@ public class ExtendedProfileView: UIView {
             toggleButton.widthAnchor.constraint(equalToConstant: ExtendedProfileView.toggleButtonSize),
             toggleButton.trailingAnchor.constraint(equalTo: sloganBoxView.trailingAnchor, constant: -.spacingS),
 
-            expandableView.topAnchor.constraint(equalTo: sloganBoxView.bottomAnchor),
-            expandableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            expandableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            bodyView.topAnchor.constraint(equalTo: sloganBoxView.bottomAnchor),
+            bodyView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            bodyView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            linksStackView.leadingAnchor.constraint(equalTo: expandableView.leadingAnchor, constant: .spacingS),
-            linksStackView.topAnchor.constraint(equalTo: expandableView.topAnchor, constant: .spacingM),
-            linksStackView.trailingAnchor.constraint(equalTo: expandableView.trailingAnchor, constant: -.spacingS),
+            linksStackView.leadingAnchor.constraint(equalTo: bodyView.leadingAnchor, constant: .spacingS),
+            linksStackView.topAnchor.constraint(equalTo: bodyView.topAnchor, constant: .spacingM),
+            linksStackView.trailingAnchor.constraint(equalTo: bodyView.trailingAnchor, constant: -.spacingS),
 
-            actionButton.leadingAnchor.constraint(equalTo: expandableView.leadingAnchor, constant: .spacingS),
+            actionButton.leadingAnchor.constraint(equalTo: bodyView.leadingAnchor, constant: .spacingS),
             actionButton.topAnchor.constraint(equalTo: linksStackView.bottomAnchor, constant: .spacingM),
-            actionButton.trailingAnchor.constraint(equalTo: expandableView.trailingAnchor, constant: -.spacingS),
-            actionButton.bottomAnchor.constraint(equalTo: expandableView.bottomAnchor),
+            actionButton.trailingAnchor.constraint(equalTo: bodyView.trailingAnchor, constant: -.spacingS),
+            actionButton.bottomAnchor.constraint(equalTo: bodyView.bottomAnchor),
         ])
     }
 
     // MARK: - Public methods
 
-    public func configue(with viewModel: ExtendedProfileViewModel) {
-        headerImageView.image = viewModel.headerImage
-        headerImageView.backgroundColor = viewModel.headerBackgroundColor
+    public func configue(
+        with viewModel: ExtendedProfileViewModel,
+        showHeaderImage: Bool,
+        isExpandable: Bool
+    ) {
+        if showHeaderImage {
+            headerImageView.image = viewModel.headerImage
+            headerImageView.backgroundColor = viewModel.headerBackgroundColor
+        } else {
+            headerImageView.isHidden = true
+        }
+
+        if isExpandable {
+            toggleButton.tintColor = viewModel.sloganBackgroundColor.contrastingColor()
+            updateToggleButtonState()
+        } else {
+            state = .notExpandable
+            toggleButton.isHidden = true
+            bodyView.isHidden = false
+            sloganBoxView.isUserInteractionEnabled = false
+        }
 
         sloganLabel.text = viewModel.sloganText
         sloganBoxView.backgroundColor = viewModel.sloganBackgroundColor
         sloganLabel.textColor = viewModel.sloganTextColor
 
-        toggleButton.tintColor = viewModel.sloganBackgroundColor.contrastingColor()
-        updateToggleButtonState()
-
-        expandableView.backgroundColor = viewModel.mainBackgroundColor
+        bodyView.backgroundColor = viewModel.mainBackgroundColor
 
         for linkTitle in viewModel.linkTitles {
             addButton(withTitle: linkTitle, textColor: viewModel.mainTextColor, to: linksStackView)
@@ -188,12 +208,13 @@ public class ExtendedProfileView: UIView {
         guard state != .notExpandable else { return }
 
         toggleButton.setExpanded(state == .expanded, animated: true)
-        expandableView.isHidden = state != .expanded
+        bodyView.isHidden = state != .expanded
     }
 
     // MARK: - Actions
 
     @objc private func updateExpandState() {
+        guard state != .notExpandable else { return }
         state = state == .expanded ? .contracted : .expanded
         updateToggleButtonState()
     }
