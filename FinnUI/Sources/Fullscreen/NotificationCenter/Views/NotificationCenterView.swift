@@ -141,6 +141,8 @@ public extension NotificationCenterView {
     }
 
     func showGroupingCallout(with text: String) {
+        groupingCalloutView.alpha = 0
+        groupingCalloutView.isHidden = false
         groupingCalloutView.show(withText: text)
     }
 }
