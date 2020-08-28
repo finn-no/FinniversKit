@@ -17,11 +17,6 @@ public class ExtendedProfileView: UIView {
         case contracted
     }
 
-    private enum Placement {
-        case top
-        case bottom
-    }
-
     private lazy var headerImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFill
@@ -78,6 +73,13 @@ public class ExtendedProfileView: UIView {
         return button
     }()
 
+    private lazy var footerImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+
     private static let toggleButtonSize: CGFloat = 30
 
     private var state: State = .contracted
@@ -107,6 +109,7 @@ public class ExtendedProfileView: UIView {
 
         bodyView.addSubview(linksStackView)
         bodyView.addSubview(actionButton)
+        bodyView.addSubview(footerImageView)
 
         NSLayoutConstraint.activate([
             headerImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -138,7 +141,12 @@ public class ExtendedProfileView: UIView {
             actionButton.leadingAnchor.constraint(equalTo: bodyView.leadingAnchor, constant: .spacingS),
             actionButton.topAnchor.constraint(equalTo: linksStackView.bottomAnchor, constant: .spacingM),
             actionButton.trailingAnchor.constraint(equalTo: bodyView.trailingAnchor, constant: -.spacingS),
-            actionButton.bottomAnchor.constraint(equalTo: bodyView.bottomAnchor),
+
+            footerImageView.leadingAnchor.constraint(equalTo: bodyView.leadingAnchor, constant: .spacingL),
+            footerImageView.topAnchor.constraint(equalTo: actionButton.bottomAnchor, constant: .spacingL),
+            footerImageView.trailingAnchor.constraint(equalTo: bodyView.trailingAnchor, constant: -.spacingL),
+            footerImageView.heightAnchor.constraint(equalToConstant: 200),
+            footerImageView.bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: -.spacingL),
         ])
     }
 
@@ -181,6 +189,12 @@ public class ExtendedProfileView: UIView {
         }
 
         actionButton.setTitle(viewModel.actionButtonTitle, for: .normal)
+
+        if let footerImage = viewModel.footerImage {
+            footerImageView.image = footerImage
+        } else {
+            footerImageView.isHidden = true
+        }
     }
 
     // MARK: - Private methods

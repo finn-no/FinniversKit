@@ -6,6 +6,7 @@ import Foundation
 
 public struct ExtendedProfileViewModel {
     public let headerImage: UIImage
+    public let footerImage: UIImage?
 
     public let sloganText: String
     public let linkTitles: [String]
@@ -19,6 +20,7 @@ public struct ExtendedProfileViewModel {
 
     public init(
         headerImage: UIImage,
+        footerImage: UIImage?,
         sloganText: String,
         linkTitles: [String],
         actionButtonTitle: String,
@@ -29,6 +31,7 @@ public struct ExtendedProfileViewModel {
         mainTextColor: UIColor
     ) {
         self.headerImage = headerImage
+        self.footerImage = footerImage
         self.sloganText = sloganText
         self.linkTitles = linkTitles
         self.actionButtonTitle = actionButtonTitle

@@ -12,6 +12,7 @@ final class ExtendedProfileDemoView: UIView {
 
     private let viewModel = ExtendedProfileViewModel(
         headerImage: UIImage(named: "finn")!,
+        footerImage: UIImage(named: "finnPromo")!,
         sloganText: "Nysgjerrig på jobb hos oss?",
         linkTitles: ["Flere stillinger", "Karrieremuligheter", "Hjemmesiden vår"],
         actionButtonTitle: "Les bloggen vår her",
