@@ -5,7 +5,7 @@
 import Foundation
 
 public struct ExtendedProfileViewModel {
-    public let headerImage: UIImage
+    public let headerImage: UIImage?
     public let footerImage: UIImage?
 
     public let sloganText: String
@@ -19,7 +19,7 @@ public struct ExtendedProfileViewModel {
     public let mainTextColor: UIColor
 
     public init(
-        headerImage: UIImage,
+        headerImage: UIImage?,
         footerImage: UIImage?,
         sloganText: String,
         linkTitles: [String],

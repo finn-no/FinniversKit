@@ -88,6 +88,14 @@ public class ExtendedProfileView: UIView {
         actionButton.topAnchor.constraint(equalTo: linksStackView.bottomAnchor, constant: .spacingM)
     }()
 
+    private lazy var headerImageHeightConstraint = {
+        headerImageView.heightAnchor.constraint(equalToConstant: 150)
+    }()
+
+    private lazy var footerImageHeightConstraint = {
+        footerImageView.heightAnchor.constraint(equalToConstant: 200)
+    }()
+
     public weak var delegate: ExtendedProfileViewDelegate?
 
     // MARK: - Init
@@ -119,7 +127,7 @@ public class ExtendedProfileView: UIView {
             headerImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerImageView.topAnchor.constraint(equalTo: topAnchor),
             headerImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headerImageView.heightAnchor.constraint(equalToConstant: 150),
+            headerImageHeightConstraint,
 
             sloganBoxView.leadingAnchor.constraint(equalTo: leadingAnchor),
             sloganBoxView.topAnchor.constraint(equalTo: headerImageView.bottomAnchor),
@@ -149,7 +157,7 @@ public class ExtendedProfileView: UIView {
             footerImageView.leadingAnchor.constraint(equalTo: bodyView.leadingAnchor, constant: .spacingL),
             footerImageView.topAnchor.constraint(equalTo: actionButton.bottomAnchor, constant: .spacingL),
             footerImageView.trailingAnchor.constraint(equalTo: bodyView.trailingAnchor, constant: -.spacingL),
-            footerImageView.heightAnchor.constraint(equalToConstant: 200),
+            footerImageHeightConstraint,
             footerImageView.bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: -.spacingL),
         ])
     }
@@ -161,11 +169,13 @@ public class ExtendedProfileView: UIView {
         showHeaderImage: Bool,
         isExpandable: Bool
     ) {
-        if showHeaderImage {
-            headerImageView.image = viewModel.headerImage
+        if showHeaderImage,
+            let headerImage = viewModel.headerImage {
+            headerImageView.image = headerImage
             headerImageView.backgroundColor = viewModel.headerBackgroundColor
         } else {
             headerImageView.isHidden = true
+            headerImageHeightConstraint.constant = 0
         }
 
         if isExpandable {
@@ -202,6 +212,7 @@ public class ExtendedProfileView: UIView {
             footerImageView.image = footerImage
         } else {
             footerImageView.isHidden = true
+            footerImageHeightConstraint.constant = 0
         }
     }
 
