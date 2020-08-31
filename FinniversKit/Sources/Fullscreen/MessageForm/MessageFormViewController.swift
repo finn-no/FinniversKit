@@ -217,7 +217,7 @@ extension MessageFormViewController: MessageFormToolbarDelegate {
             messageInputTextView.text = template.text
             lastUsedTemplate = template
         } else {
-            let alertStyle: UIAlertController.Style = UIDevice.isIPad() ? .alert : .actionSheet
+            let alertStyle: UIAlertController.Style = isHorizontalSizeClassRegular ? .alert : .actionSheet
             let alertController = UIAlertController(title: viewModel.replaceAlertTitle,
                                                     message: viewModel.replaceAlertMessage,
                                                     preferredStyle: alertStyle)

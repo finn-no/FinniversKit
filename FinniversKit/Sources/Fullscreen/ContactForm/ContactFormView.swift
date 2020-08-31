@@ -291,7 +291,7 @@ public final class ContactFormView: UIView {
             }, completion: { _ in
                 // If iPad, compensate and recalculate intersection for potential changes to
                 // presentation thanks to `UIModalPresentationStyle.formSheet`.
-                if UIDevice.isIPad() {
+                if UITraitCollection.isHorizontalSizeClassRegular {
                     UIView.animate(withDuration: 0.1, animations: { [weak self] in
                         guard let self = self else { return }
                         let correctedKeyboardHeight = keyboardInfo.keyboardFrameEndIntersectHeight(inView: self)

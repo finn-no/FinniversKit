@@ -21,7 +21,7 @@ public class HorizontalSlideTransition: NSObject, UIViewControllerTransitioningD
         }
 
         public static var `default`: ContainerSize {
-            if UIDevice.isIPad() {
+            if UITraitCollection.isHorizontalSizeClassRegular {
                 return ContainerSize(portrait: 0.60)
             } else {
                 return ContainerSize(portrait: 0.85)

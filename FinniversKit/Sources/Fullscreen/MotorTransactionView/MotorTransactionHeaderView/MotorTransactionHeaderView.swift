@@ -31,7 +31,7 @@ public class MotorTransactionHeaderView: UIView {
      }()
 
     private static var imageUrl = "https://images.finncdn.no/dynamic/default"
-    private static var defaultImageSize: CGFloat = UIDevice.isIPad() ? 200 : 128
+    private static var defaultImageSize: CGFloat = UITraitCollection.isHorizontalSizeClassRegular ? 200 : 128
 
     private var loadingColor: UIColor? = .bgSecondary
     private var fallbackImage = UIImage(named: .noImage)
