@@ -17,8 +17,8 @@ public class ExtendedProfileView: UIView {
         case contracted
     }
 
-    private lazy var headerImageView: UIImageView = {
-        let imageView = UIImageView(withAutoLayout: true)
+    private lazy var headerImageView: RemoteImageView = {
+        let imageView = RemoteImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
@@ -73,12 +73,14 @@ public class ExtendedProfileView: UIView {
         return button
     }()
 
-    private lazy var footerImageView: UIImageView = {
-        let imageView = UIImageView(withAutoLayout: true)
+    private lazy var footerImageView: RemoteImageView = {
+        let imageView = RemoteImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
     }()
+
+    private let fallbackImage = UIImage(named: .noImage)
 
     private static let toggleButtonSize: CGFloat = 30
 
@@ -145,6 +147,7 @@ public class ExtendedProfileView: UIView {
             bodyView.topAnchor.constraint(equalTo: sloganBoxView.bottomAnchor),
             bodyView.leadingAnchor.constraint(equalTo: leadingAnchor),
             bodyView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            bodyView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             linksStackView.leadingAnchor.constraint(equalTo: bodyView.leadingAnchor, constant: .spacingS),
             linksStackView.topAnchor.constraint(equalTo: bodyView.topAnchor, constant: .spacingM),
@@ -166,13 +169,17 @@ public class ExtendedProfileView: UIView {
 
     public func configue(
         with viewModel: ExtendedProfileViewModel,
+        forWidth width: CGFloat,
         showHeaderImage: Bool,
         isExpandable: Bool
     ) {
         if showHeaderImage,
-            let headerImage = viewModel.headerImage {
-            headerImageView.image = headerImage
-            headerImageView.backgroundColor = viewModel.headerBackgroundColor
+            let headerImageUrl = viewModel.headerImageUrl {
+            headerImageView.loadImage(for: headerImageUrl,
+                                imageWidth: width,
+                                loadingColor: viewModel.headerBackgroundColor,
+                                fallbackImage: fallbackImage
+            )
         } else {
             headerImageView.isHidden = true
             headerImageHeightConstraint.constant = 0
@@ -208,8 +215,13 @@ public class ExtendedProfileView: UIView {
             actionButtonTopAnchorConstraint.constant = 0
         }
 
-        if let footerImage = viewModel.footerImage {
-            footerImageView.image = footerImage
+        if let footerImageUrl = viewModel.footerImageUrl {
+            footerImageView.loadImage(
+                for: footerImageUrl,
+                imageWidth: width - 2 * .spacingL,
+                loadingColor: viewModel.mainBackgroundColor,
+                fallbackImage: fallbackImage
+            )
         } else {
             footerImageView.isHidden = true
             footerImageHeightConstraint.constant = 0

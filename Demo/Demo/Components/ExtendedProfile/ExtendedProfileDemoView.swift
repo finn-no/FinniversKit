@@ -11,8 +11,8 @@ final class ExtendedProfileDemoView: UIView {
     }()
 
     private let viewModel = ExtendedProfileViewModel(
-        headerImage: UIImage(named: "finn")!,
-        footerImage: UIImage(named: "finnPromo")!,
+        headerImageUrl: "finn",
+        footerImageUrl: "finnPromo",
         sloganText: "Nysgjerrig på jobb hos oss?",
         linkTitles: ["Flere stillinger", "Karrieremuligheter", "Hjemmesiden vår"],
         actionButtonTitle: "Les bloggen vår her",
@@ -38,9 +38,17 @@ final class ExtendedProfileDemoView: UIView {
 
     private func setup() {
         addSubview(view)
-        view.fillInSuperview()
+
+        NSLayoutConstraint.activate([
+            view.leadingAnchor.constraint(equalTo: leadingAnchor),
+            view.topAnchor.constraint(equalTo: topAnchor),
+            view.trailingAnchor.constraint(equalTo: trailingAnchor),
+            view.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
+        ])
+
         view.configue(
             with: viewModel,
+            forWidth: frame.width,
             showHeaderImage: true,
             isExpandable: true
         )
