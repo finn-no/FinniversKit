@@ -7,11 +7,12 @@ import FinniversKit
 public protocol ExtendedProfileViewDelegate: AnyObject {
     func extendedProfileViewDidSelectLink(atIndex: Int)
     func extendedProfileViewDidSelectActionButton()
+    func extendedProfileView(_ extendedProfileView: ExtendedProfileView, didChangeStateTo newState: ExtendedProfileView.State)
 }
 
 public class ExtendedProfileView: UIView {
 
-    private enum State {
+    public enum State {
         case notExpandable
         case expanded
         case contracted
@@ -54,9 +55,10 @@ public class ExtendedProfileView: UIView {
         return button
     }()
 
-    private lazy var bodyView: UIView = {
-        let view = UIView(withAutoLayout: true)
-        view.isHidden = true
+    private lazy var expandableView: UIStackView = {
+        let view = UIStackView(withAutoLayout: true)
+        view.axis = .vertical
+        view.spacing = .spacingM
         return view
     }()
 
@@ -98,13 +100,22 @@ public class ExtendedProfileView: UIView {
         footerImageView.heightAnchor.constraint(equalToConstant: 200)
     }()
 
+    private lazy var expendableViewVerticalLayoutConstraints = [
+        expandableView.topAnchor.constraint(equalTo: sloganBoxView.bottomAnchor, constant: .spacingM),
+        expandableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingL)
+    ]
+
     public weak var delegate: ExtendedProfileViewDelegate?
 
     // MARK: - Init
 
-    public init(remoteImageViewDataSource: RemoteImageViewDataSource) {
+    public init(
+        withAutoLayout: Bool,
+        remoteImageViewDataSource: RemoteImageViewDataSource
+    ) {
         super.init(frame: .zero)
         setup()
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         headerImageView.dataSource = remoteImageViewDataSource
         footerImageView.dataSource = remoteImageViewDataSource
     }
@@ -118,14 +129,15 @@ public class ExtendedProfileView: UIView {
     private func setup() {
         addSubview(headerImageView)
         addSubview(sloganBoxView)
-        addSubview(bodyView)
+        addSubview(expandableView)
 
         sloganBoxView.addSubview(sloganLabel)
         sloganBoxView.addSubview(toggleButton)
 
-        bodyView.addSubview(linksStackView)
-        bodyView.addSubview(actionButton)
-        bodyView.addSubview(footerImageView)
+        expandableView.addArrangedSubview(linksStackView)
+        expandableView.addArrangedSubview(actionButton)
+        expandableView.addArrangedSubview(footerImageView)
+        expandableView.setCustomSpacing(.spacingL, after: footerImageView)
 
         NSLayoutConstraint.activate([
             headerImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -146,35 +158,33 @@ public class ExtendedProfileView: UIView {
             toggleButton.widthAnchor.constraint(equalToConstant: ExtendedProfileView.toggleButtonSize),
             toggleButton.trailingAnchor.constraint(equalTo: sloganBoxView.trailingAnchor, constant: -.spacingS),
 
-            bodyView.topAnchor.constraint(equalTo: sloganBoxView.bottomAnchor),
-            bodyView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            bodyView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            bodyView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            expandableView.topAnchor.constraint(equalTo: sloganBoxView.bottomAnchor, constant: .spacingM),
+            expandableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            expandableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            expandableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingL),
 
-            linksStackView.leadingAnchor.constraint(equalTo: bodyView.leadingAnchor, constant: .spacingS),
-            linksStackView.topAnchor.constraint(equalTo: bodyView.topAnchor, constant: .spacingM),
-            linksStackView.trailingAnchor.constraint(equalTo: bodyView.trailingAnchor, constant: -.spacingS),
+            linksStackView.leadingAnchor.constraint(equalTo: expandableView.leadingAnchor, constant: .spacingS),
+            linksStackView.trailingAnchor.constraint(equalTo: expandableView.trailingAnchor, constant: -.spacingS),
 
-            actionButton.leadingAnchor.constraint(equalTo: bodyView.leadingAnchor, constant: .spacingS),
-            actionButtonTopAnchorConstraint,
-            actionButton.trailingAnchor.constraint(equalTo: bodyView.trailingAnchor, constant: -.spacingS),
+            actionButton.leadingAnchor.constraint(equalTo: expandableView.leadingAnchor, constant: .spacingS),
+            actionButton.trailingAnchor.constraint(equalTo: expandableView.trailingAnchor, constant: -.spacingS),
 
-            footerImageView.leadingAnchor.constraint(equalTo: bodyView.leadingAnchor, constant: .spacingL),
-            footerImageView.topAnchor.constraint(equalTo: actionButton.bottomAnchor, constant: .spacingL),
-            footerImageView.trailingAnchor.constraint(equalTo: bodyView.trailingAnchor, constant: -.spacingL),
+            footerImageView.leadingAnchor.constraint(equalTo: expandableView.leadingAnchor, constant: .spacingL),
+            footerImageView.trailingAnchor.constraint(equalTo: expandableView.trailingAnchor, constant: -.spacingL),
             footerImageHeightConstraint,
-            footerImageView.bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: -.spacingL),
         ])
     }
 
     // MARK: - Public methods
 
     public func configue(
+        forState state: State,
         with viewModel: ExtendedProfileViewModel,
         forWidth width: CGFloat,
-        showHeaderImage: Bool,
-        isExpandable: Bool
+        showHeaderImage: Bool
     ) {
+        self.state = state
+
         if showHeaderImage,
             let headerImageUrl = viewModel.headerImageUrl {
             headerImageView.loadImage(for: headerImageUrl,
@@ -187,13 +197,13 @@ public class ExtendedProfileView: UIView {
             headerImageHeightConstraint.constant = 0
         }
 
-        if isExpandable {
+        switch state {
+        case .contracted, .expanded:
             toggleButton.tintColor = viewModel.sloganBackgroundColor.contrastingColor()
             updateToggleButtonState()
-        } else {
-            state = .notExpandable
+        case .notExpandable:
             toggleButton.isHidden = true
-            bodyView.isHidden = false
+            expandableView.removeArrangedSubviews()
             sloganBoxView.isUserInteractionEnabled = false
         }
 
@@ -201,7 +211,7 @@ public class ExtendedProfileView: UIView {
         sloganBoxView.backgroundColor = viewModel.sloganBackgroundColor
         sloganLabel.textColor = viewModel.sloganTextColor
 
-        bodyView.backgroundColor = viewModel.mainBackgroundColor
+        expandableView.backgroundColor = viewModel.mainBackgroundColor
 
         for linkTitle in viewModel.linkTitles {
             addButton(withTitle: linkTitle, textColor: viewModel.mainTextColor, to: linksStackView)
@@ -228,6 +238,13 @@ public class ExtendedProfileView: UIView {
             footerImageView.isHidden = true
             footerImageHeightConstraint.constant = 0
         }
+
+        if state == .contracted {
+            expandableView.removeArrangedSubviews()
+        }
+
+        let size = systemLayoutSizeFitting(CGSize(width: width, height: 0), withHorizontalFittingPriority: UILayoutPriority.required, verticalFittingPriority: UILayoutPriority.fittingSizeLevel)
+        print(size.height)
     }
 
     // MARK: - Private methods
@@ -253,9 +270,7 @@ public class ExtendedProfileView: UIView {
 
     private func updateToggleButtonState() {
         guard state != .notExpandable else { return }
-
         toggleButton.setExpanded(state == .expanded, animated: true)
-        bodyView.isHidden = state != .expanded
     }
 
     // MARK: - Actions
@@ -263,7 +278,7 @@ public class ExtendedProfileView: UIView {
     @objc private func updateExpandState() {
         guard state != .notExpandable else { return }
         state = state == .expanded ? .contracted : .expanded
-        updateToggleButtonState()
+        delegate?.extendedProfileView(self, didChangeStateTo: state)
     }
 
     @objc private func linkTapped(_ sender: Button) {

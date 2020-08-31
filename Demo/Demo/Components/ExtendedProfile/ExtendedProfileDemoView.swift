@@ -7,7 +7,7 @@ import FinniversKit
 
 final class ExtendedProfileDemoView: UIView {
     private lazy var view: ExtendedProfileView = {
-        let view = ExtendedProfileView(remoteImageViewDataSource: self)
+        let view = ExtendedProfileView(withAutoLayout: true, remoteImageViewDataSource: self)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -49,10 +49,10 @@ final class ExtendedProfileDemoView: UIView {
         ])
 
         view.configue(
+            forState: .contracted,
             with: viewModel,
             forWidth: frame.width,
-            showHeaderImage: true,
-            isExpandable: true
+            showHeaderImage: true
         )
     }
 }
