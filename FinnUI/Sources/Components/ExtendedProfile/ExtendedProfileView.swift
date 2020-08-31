@@ -102,9 +102,11 @@ public class ExtendedProfileView: UIView {
 
     // MARK: - Init
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(remoteImageViewDataSource: RemoteImageViewDataSource) {
+        super.init(frame: .zero)
         setup()
+        headerImageView.dataSource = remoteImageViewDataSource
+        footerImageView.dataSource = remoteImageViewDataSource
     }
 
     required init?(coder: NSCoder) {
