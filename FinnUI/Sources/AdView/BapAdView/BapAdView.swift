@@ -229,7 +229,7 @@ extension BapAdView {
 }
 
 @available(iOS 13.0.0, *)
-//swiftlint:disable:next type_name
+//swiftlint:disable:next type_name superfluous_disable_command
 struct BapAdView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {

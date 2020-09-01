@@ -15,11 +15,11 @@ public extension TextViewDelegate {
     func textViewDidChange(_ textView: TextView) {
         // Default empty implementation.
     }
-    
+
     func textViewShouldBeginEditing(_ textView: TextView) -> Bool {
         true
     }
-    
+
     func textViewDidBeginEditing(_ textView: TextView) {
         // Default empty implementation.
     }
@@ -152,11 +152,11 @@ public class TextView: UIView {
 // MARK: - UITextViewDelegate
 
 extension TextView: UITextViewDelegate {
-    
+
     public func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         delegate?.textViewShouldBeginEditing(self) ?? true
     }
-    
+
     public func textViewDidBeginEditing(_ textView: UITextView) {
         delegate?.textViewDidBeginEditing(self)
     }
