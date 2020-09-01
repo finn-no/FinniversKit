@@ -215,29 +215,22 @@ public class ExtendedProfileView: UIView {
         if let actionButtonTitle = viewModel.actionButtonTitle {
             actionButton.setTitle(actionButtonTitle, for: .normal)
 
+            let backgroundColor = viewModel.actionButtonBackgroundColor
+            actionButton.style = Button.Style.callToAction.overrideStyle(
+                bodyColor: backgroundColor,
+                textColor: viewModel.actionButtonTextColor,
+                highlightedBodyColor: backgroundColor.withAlphaComponent(0.8)
+            )
             bodyStackView.addArrangedSubview(actionButton)
             bodyStackView.setCustomSpacing(.spacingL, after: actionButton)
         }
 
         if let footerImageUrl = viewModel.footerImageUrl {
-            let extraSpacing: CGFloat = .spacingM
-
-            footerImageView.loadImage(
-                for: footerImageUrl,
-                imageWidth: width - 2 * (extraSpacing + ExtendedProfileView.bodyViewDefaultSpacing),
-                loadingColor: viewModel.mainBackgroundColor,
-                fallbackImage: fallbackImage
+            setupFooterImage(
+                imageUrl: footerImageUrl,
+                width: width,
+                loadingColor: viewModel.mainBackgroundColor
             )
-
-            bodyStackView.addArrangedSubview(footerImageContainer)
-            footerImageContainer.addSubview(footerImageView)
-
-            NSLayoutConstraint.activate([
-                footerImageView.leadingAnchor.constraint(equalTo: footerImageContainer.leadingAnchor, constant: extraSpacing),
-                footerImageView.topAnchor.constraint(equalTo: footerImageContainer.topAnchor),
-                footerImageView.trailingAnchor.constraint(equalTo: footerImageContainer.trailingAnchor, constant: -extraSpacing),
-                footerImageView.bottomAnchor.constraint(equalTo: footerImageContainer.bottomAnchor),
-            ])
         }
     }
 
@@ -252,6 +245,27 @@ public class ExtendedProfileView: UIView {
                 addSeparatorLine(withColor: textColor, to: linksStackView)
             }
         }
+    }
+
+    private func setupFooterImage(imageUrl: String, width: CGFloat, loadingColor: UIColor) {
+        let extraSpacing: CGFloat = .spacingM
+
+        footerImageView.loadImage(
+            for: imageUrl,
+            imageWidth: width - 2 * (extraSpacing + ExtendedProfileView.bodyViewDefaultSpacing),
+            loadingColor: loadingColor,
+            fallbackImage: fallbackImage
+        )
+
+        bodyStackView.addArrangedSubview(footerImageContainer)
+        footerImageContainer.addSubview(footerImageView)
+
+        NSLayoutConstraint.activate([
+            footerImageView.leadingAnchor.constraint(equalTo: footerImageContainer.leadingAnchor, constant: extraSpacing),
+            footerImageView.topAnchor.constraint(equalTo: footerImageContainer.topAnchor),
+            footerImageView.trailingAnchor.constraint(equalTo: footerImageContainer.trailingAnchor, constant: -extraSpacing),
+            footerImageView.bottomAnchor.constraint(equalTo: footerImageContainer.bottomAnchor),
+        ])
     }
 
     // MARK: - Private methods
