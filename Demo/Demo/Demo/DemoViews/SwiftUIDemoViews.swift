@@ -10,6 +10,7 @@ public enum SwiftUIDemoViews: String, CaseIterable {
     case settings
     case basicCellVariations
     case bapAdView
+    case myVehicleListView
 
     public static var items: [SwiftUIDemoViews] {
         if #available(iOS 13.0.0, *) {
@@ -43,6 +44,8 @@ public enum SwiftUIDemoViews: String, CaseIterable {
             return AnyView(BasicListCell_Previews.previews)
         case .bapAdView:
             return AnyView(BapAdView_Previews.previews)
+        case .myVehicleListView:
+            return AnyView(MyVehicleListView_Previews.previews)
         }
     }
 }
