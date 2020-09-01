@@ -42,6 +42,7 @@ struct MyVehicleListView: View {
             }
             .navigationBarTitle("\(viewModel.title)", displayMode: .inline)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
