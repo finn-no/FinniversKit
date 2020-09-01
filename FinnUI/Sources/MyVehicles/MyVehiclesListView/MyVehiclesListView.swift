@@ -55,7 +55,6 @@ private extension MyVehiclesListView {
                 .frame(width: .spacingL, height: .spacingL)
                 .foregroundColor(.btnPrimary)
                 .padding(.leading, .spacingM)
-
             VStack(alignment: .leading) {
                 HStack(alignment: .center) {
                     Text(viewModel.addNewVehicleTitle)
@@ -66,7 +65,7 @@ private extension MyVehiclesListView {
                         .renderingMode(.template)
                         .resizable()
                         .frame(width: .spacingM, height: .spacingM)
-                        .foregroundColor(.iconPrimary)
+                        .foregroundColor(.btnPrimary)
                 }.padding(.top, 12)
                 divider.padding([.leading, .trailing], 12)
             }
