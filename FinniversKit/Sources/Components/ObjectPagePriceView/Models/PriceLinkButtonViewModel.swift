@@ -4,6 +4,12 @@
 
 import Foundation
 
+public enum PriceLinkButtonKind: String {
+    case regular
+    case variantCompact = "variant-compact"
+    case variantFull = "variant-full"
+}
+
 public struct PriceLinkButtonViewModel {
     let buttonIdentifier: String?
     let buttonTitle: String
@@ -12,6 +18,7 @@ public struct PriceLinkButtonViewModel {
     let subheading: String?
     let linkUrl: URL
     let isExternal: Bool
+    let kind: PriceLinkButtonKind
 
     public init(
         buttonIdentifier: String?,
@@ -20,7 +27,8 @@ public struct PriceLinkButtonViewModel {
         heading: String? = nil,
         subheading: String? = nil,
         linkUrl: URL,
-        isExternal: Bool
+        isExternal: Bool,
+        kind: PriceLinkButtonKind = .regular
     ) {
         self.buttonIdentifier = buttonIdentifier
         self.buttonTitle = buttonTitle
@@ -29,5 +37,6 @@ public struct PriceLinkButtonViewModel {
         self.subheading = subheading
         self.linkUrl = linkUrl
         self.isExternal = isExternal
+        self.kind = kind
     }
 }
