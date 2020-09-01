@@ -6,23 +6,22 @@ struct MyVehiclesListView: View {
     // MARK: - Private
 
     @State var navigateToPreviouslyOwnedVehicles = false
-    private let imageUrl = "https://images.finncdn.no/dynamic/default/"
 
     // MARK: - Public
 
     var viewModel: MyVehiclesListViewModel
-    var onTapAddNewVehicle: (() -> Void) = {}
+    var handleAddNewVehicle: (() -> Void) = {}
 
     var body: some View {
         NavigationView {
             List {
                 addNewVehicle
-                ForEach(viewModel.vehicles, id: \.self) { viewModel in
+                ForEach(viewModel.vehicles) { viewModel in
                     NavigationLink(destination: EmptyView()) {
                         MyVehicleCell(
                             viewModel: viewModel,
                             imageProvider: SampleSingleImageProvider(
-                                url: self.constructURL(imagePath: viewModel.imagePath))
+                                url: viewModel.constructImageURL())
                         )
                     }
                 }
@@ -71,9 +70,7 @@ private extension MyVehiclesListView {
                 }.padding(.top, 12)
                 divider.padding([.leading, .trailing], 12)
             }
-        }.onTapGesture {
-            self.onTapAddNewVehicle()
-        }
+        }.onTapGesture(perform: handleAddNewVehicle)
     }
 
     var seePreviouslyOwnedVehicles: some View {
@@ -93,25 +90,13 @@ private extension MyVehiclesListView {
 }
 
 @available(iOS 13.0.0, *)
-private extension MyVehiclesListView {
-    func constructURL(imagePath path: String?) -> URL? {
-        guard
-            let path = path,
-            let url = URL(string: "\(self.imageUrl)\(path)") else
-        { return nil }
-
-        return url
-    }
-}
-
-@available(iOS 13.0.0, *)
 struct MyVehiclesListView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.bgPrimary
             MyVehiclesListView(
                 viewModel: MyVehiclesListViewModel.sampleDataCurrentlyOwnedVehicles,
-                onTapAddNewVehicle: { print("Did tap add new vehicle") })
+                handleAddNewVehicle: { print("Did tap add new vehicle") })
         }
         .environment(\.colorScheme, .light)
     }
