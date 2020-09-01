@@ -84,30 +84,62 @@ class PriceLinkButtonView: UIView {
         addSubview(stackView)
         stackView.fillInSuperview()
 
-        if let heading = viewModel.heading, let subheading = viewModel.subheading {
-            headingLabel.text = heading
-            subheadingLabel.text = subheading
-            stackView.addArrangedSubviews([headingLabel, subheadingLabel, subtitleLabel, buttonStackView])
-            stackView.setCustomSpacing(.spacingXS, after: subheadingLabel)
-        } else {
-            stackView.addArrangedSubviews([buttonStackView, subtitleLabel])
-        }
-
         externalImageView.isHidden = !viewModel.isExternal
         linkButton.setTitle(viewModel.buttonTitle, for: .normal)
 
         subtitleLabel.text = viewModel.subtitle
         subtitleLabel.isHidden = viewModel.subtitle?.isEmpty ?? true
 
-        NSLayoutConstraint.activate([
-            buttonStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor)
-        ])
+        switch viewModel.kind {
+        case .regular:
+            configureForRegular()
+        case .variantCompact:
+            configureForVariantCompact()
+        case .variantFull:
+            configureForVariantFull()
+        }
     }
 
     // MARK: - Private methods
 
     @objc private func handleTap() {
         delegate?.priceLinkButton(withIdentifier: viewModel.buttonIdentifier, wasTappedWithUrl: viewModel.linkUrl)
+    }
+
+    // MARK: - View configuration
+
+    private func configureForRegular() {
+        stackView.addArrangedSubviews([buttonStackView, subtitleLabel])
+
+        NSLayoutConstraint.activate([
+            buttonStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor)
+        ])
+    }
+
+    private func configureForVariantCompact() {
+        subheadingLabel.text = viewModel.subheading
+        subheadingLabel.setContentHuggingPriority(.required, for: .horizontal)
+
+        let horizontalStackView = UIStackView(withAutoLayout: true)
+        horizontalStackView.addArrangedSubviews([subheadingLabel, buttonStackView])
+        horizontalStackView.spacing = .spacingS
+
+        stackView.addArrangedSubviews([horizontalStackView, subtitleLabel])
+
+        NSLayoutConstraint.activate([
+            horizontalStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor)
+        ])
+    }
+
+    private func configureForVariantFull() {
+        headingLabel.text = viewModel.heading
+        subheadingLabel.text = viewModel.subheading
+        stackView.addArrangedSubviews([headingLabel, subheadingLabel, subtitleLabel, buttonStackView])
+        stackView.setCustomSpacing(.spacingXS, after: subheadingLabel)
+
+        NSLayoutConstraint.activate([
+            buttonStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor)
+        ])
     }
 }
 
