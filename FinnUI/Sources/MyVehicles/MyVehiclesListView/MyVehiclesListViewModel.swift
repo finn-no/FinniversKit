@@ -1,7 +1,7 @@
 import Foundation
 
 @available(iOS 13.0.0, *)
-public struct MyVehicleListViewModel {
+public struct MyVehiclesListViewModel {
     public let title: String
     public let vehicles: [MyVehicleCellModel]
 
@@ -24,8 +24,8 @@ public struct MyVehicleListViewModel {
 }
 
 @available(iOS 13.0.0, *)
-extension MyVehicleListViewModel {
-    static let sampleDataCurrentlyOwnedVehicles: MyVehicleListViewModel = MyVehicleListViewModel(
+extension MyVehiclesListViewModel {
+    static let sampleDataCurrentlyOwnedVehicles: MyVehiclesListViewModel = MyVehiclesListViewModel(
         title: "Mine kjøretøy",
         vehicles: [
             MyVehicleCellModel(
@@ -54,7 +54,7 @@ extension MyVehicleListViewModel {
         previouslyOwnedVehiclesTitle: "Se tidligere eide kjøretøy"
     )
 
-    static let sampleDataPreviouslyOwnedVehicles: MyVehicleListViewModel = MyVehicleListViewModel(
+    static let sampleDataPreviouslyOwnedVehicles: MyVehiclesListViewModel = MyVehiclesListViewModel(
         title: "Mine kjøretøy",
         vehicles: [
             MyVehicleCellModel(

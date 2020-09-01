@@ -1,7 +1,7 @@
 import SwiftUI
 
 @available(iOS 13.0.0, *)
-struct MyVehicleListView: View {
+struct MyVehiclesListView: View {
 
     // MARK: - Private
 
@@ -10,7 +10,7 @@ struct MyVehicleListView: View {
 
     // MARK: - Public
 
-    var viewModel: MyVehicleListViewModel
+    var viewModel: MyVehiclesListViewModel
     var onTapAddNewVehicle: (() -> Void) = {}
 
     var body: some View {
@@ -47,7 +47,7 @@ struct MyVehicleListView: View {
 }
 
 @available(iOS 13.0.0, *)
-private extension MyVehicleListView {
+private extension MyVehiclesListView {
     var addNewVehicle: some View {
         HStack {
             Image(.plus)
@@ -93,7 +93,7 @@ private extension MyVehicleListView {
 }
 
 @available(iOS 13.0.0, *)
-private extension MyVehicleListView {
+private extension MyVehiclesListView {
     func constructURL(imagePath path: String?) -> URL? {
         guard
             let path = path,
@@ -105,12 +105,12 @@ private extension MyVehicleListView {
 }
 
 @available(iOS 13.0.0, *)
-struct MyVehicleListView_Previews: PreviewProvider {
+struct MyVehiclesListView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.bgPrimary
-            MyVehicleListView(
-                viewModel: MyVehicleListViewModel.sampleDataCurrentlyOwnedVehicles,
+            MyVehiclesListView(
+                viewModel: MyVehiclesListViewModel.sampleDataCurrentlyOwnedVehicles,
                 onTapAddNewVehicle: { print("Did tap add new vehicle") })
         }
         .environment(\.colorScheme, .light)
