@@ -13,7 +13,7 @@ public protocol ExtendedProfileViewDelegate: AnyObject {
 public class ExtendedProfileView: UIView {
 
     public enum State {
-        case notExpandable
+        case alwaysExpanded
         case expanded
         case contracted
     }
@@ -55,7 +55,7 @@ public class ExtendedProfileView: UIView {
         return button
     }()
 
-    private lazy var expandableView: UIStackView = {
+    private lazy var bodyStackView: UIStackView = {
         let view = UIStackView(withAutoLayout: true)
         view.axis = .vertical
         view.spacing = .spacingM
@@ -75,6 +75,8 @@ public class ExtendedProfileView: UIView {
         return button
     }()
 
+    private lazy var footerImageContainer = UIView(withAutoLayout: true)
+
     private lazy var footerImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFill
@@ -85,25 +87,23 @@ public class ExtendedProfileView: UIView {
     private let fallbackImage = UIImage(named: .noImage)
 
     private static let toggleButtonSize: CGFloat = 30
+    private static let bodyViewDefaultSpacing: CGFloat = .spacingS
+    private static let bodyViewTopMargin: CGFloat = .spacingM
+    private static let bodyViewBottomMargin: CGFloat = .spacingL
 
     private var state: State = .contracted
-
-    private lazy var actionButtonTopAnchorConstraint = {
-        actionButton.topAnchor.constraint(equalTo: linksStackView.bottomAnchor, constant: .spacingM)
-    }()
 
     private lazy var headerImageHeightConstraint = {
         headerImageView.heightAnchor.constraint(equalToConstant: 150)
     }()
 
-    private lazy var footerImageHeightConstraint = {
-        footerImageView.heightAnchor.constraint(equalToConstant: 200)
+    private lazy var bodyViewTopAnchorConstraint = {
+        bodyStackView.topAnchor.constraint(equalTo: sloganBoxView.bottomAnchor)
     }()
 
-    private lazy var expendableViewVerticalLayoutConstraints = [
-        expandableView.topAnchor.constraint(equalTo: sloganBoxView.bottomAnchor, constant: .spacingM),
-        expandableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingL)
-    ]
+    private lazy var bodyViewBottomAnchorConstraint = {
+        bodyStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
+    }()
 
     public weak var delegate: ExtendedProfileViewDelegate?
 
@@ -129,15 +129,10 @@ public class ExtendedProfileView: UIView {
     private func setup() {
         addSubview(headerImageView)
         addSubview(sloganBoxView)
-        addSubview(expandableView)
+        addSubview(bodyStackView)
 
         sloganBoxView.addSubview(sloganLabel)
         sloganBoxView.addSubview(toggleButton)
-
-        expandableView.addArrangedSubview(linksStackView)
-        expandableView.addArrangedSubview(actionButton)
-        expandableView.addArrangedSubview(footerImageView)
-        expandableView.setCustomSpacing(.spacingL, after: footerImageView)
 
         NSLayoutConstraint.activate([
             headerImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -158,26 +153,18 @@ public class ExtendedProfileView: UIView {
             toggleButton.widthAnchor.constraint(equalToConstant: ExtendedProfileView.toggleButtonSize),
             toggleButton.trailingAnchor.constraint(equalTo: sloganBoxView.trailingAnchor, constant: -.spacingS),
 
-            expandableView.topAnchor.constraint(equalTo: sloganBoxView.bottomAnchor, constant: .spacingM),
-            expandableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            expandableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            expandableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingL),
+            bodyViewTopAnchorConstraint,
+            bodyStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: ExtendedProfileView.bodyViewDefaultSpacing),
+            bodyStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -ExtendedProfileView.bodyViewDefaultSpacing),
+            bodyViewBottomAnchorConstraint,
 
-            linksStackView.leadingAnchor.constraint(equalTo: expandableView.leadingAnchor, constant: .spacingS),
-            linksStackView.trailingAnchor.constraint(equalTo: expandableView.trailingAnchor, constant: -.spacingS),
-
-            actionButton.leadingAnchor.constraint(equalTo: expandableView.leadingAnchor, constant: .spacingS),
-            actionButton.trailingAnchor.constraint(equalTo: expandableView.trailingAnchor, constant: -.spacingS),
-
-            footerImageView.leadingAnchor.constraint(equalTo: expandableView.leadingAnchor, constant: .spacingL),
-            footerImageView.trailingAnchor.constraint(equalTo: expandableView.trailingAnchor, constant: -.spacingL),
-            footerImageHeightConstraint,
+            footerImageView.heightAnchor.constraint(equalToConstant: 200),
         ])
     }
 
     // MARK: - Public methods
 
-    public func configue(
+    public func configure(
         forState state: State,
         with viewModel: ExtendedProfileViewModel,
         forWidth width: CGFloat,
@@ -197,54 +184,74 @@ public class ExtendedProfileView: UIView {
             headerImageHeightConstraint.constant = 0
         }
 
-        switch state {
-        case .contracted, .expanded:
-            toggleButton.tintColor = viewModel.sloganBackgroundColor.contrastingColor()
-            updateToggleButtonState()
-        case .notExpandable:
-            toggleButton.isHidden = true
-            expandableView.removeArrangedSubviews()
-            sloganBoxView.isUserInteractionEnabled = false
-        }
-
         sloganLabel.text = viewModel.sloganText
         sloganBoxView.backgroundColor = viewModel.sloganBackgroundColor
         sloganLabel.textColor = viewModel.sloganTextColor
 
-        expandableView.backgroundColor = viewModel.mainBackgroundColor
+        switch state {
+        case .contracted, .expanded:
+            toggleButton.tintColor = viewModel.sloganBackgroundColor.contrastingColor()
+            updateToggleButtonState()
+        case .alwaysExpanded:
+            toggleButton.isHidden = true
+            sloganBoxView.isUserInteractionEnabled = false
+        }
 
-        for linkTitle in viewModel.linkTitles {
-            addButton(withTitle: linkTitle, textColor: viewModel.mainTextColor, to: linksStackView)
+        if state == .contracted {
+            bodyViewTopAnchorConstraint.constant = 0
+            bodyViewBottomAnchorConstraint.constant = 0
+            bodyStackView.removeArrangedSubviews()
+            return
+        }
 
-            if linkTitle != viewModel.linkTitles.last {
-                addSeparatorLine(withColor: viewModel.mainTextColor, to: linksStackView)
-            }
+        bodyStackView.backgroundColor = viewModel.mainBackgroundColor
+        bodyViewTopAnchorConstraint.constant = ExtendedProfileView.bodyViewTopMargin
+        bodyViewBottomAnchorConstraint.constant = -ExtendedProfileView.bodyViewBottomMargin
+
+        if !viewModel.linkTitles.isEmpty {
+            setupLinks(with: viewModel.linkTitles, withTextColor: viewModel.mainTextColor)
         }
 
         if let actionButtonTitle = viewModel.actionButtonTitle {
             actionButton.setTitle(actionButtonTitle, for: .normal)
-        } else {
-            actionButtonTopAnchorConstraint.constant = 0
+
+            bodyStackView.addArrangedSubview(actionButton)
+            bodyStackView.setCustomSpacing(.spacingL, after: actionButton)
         }
 
         if let footerImageUrl = viewModel.footerImageUrl {
+            let extraSpacing: CGFloat = .spacingM
+
             footerImageView.loadImage(
                 for: footerImageUrl,
-                imageWidth: width - 2 * .spacingL,
+                imageWidth: width - 2 * (extraSpacing + ExtendedProfileView.bodyViewDefaultSpacing),
                 loadingColor: viewModel.mainBackgroundColor,
                 fallbackImage: fallbackImage
             )
-        } else {
-            footerImageView.isHidden = true
-            footerImageHeightConstraint.constant = 0
-        }
 
-        if state == .contracted {
-            expandableView.removeArrangedSubviews()
-        }
+            bodyStackView.addArrangedSubview(footerImageContainer)
+            footerImageContainer.addSubview(footerImageView)
 
-        let size = systemLayoutSizeFitting(CGSize(width: width, height: 0), withHorizontalFittingPriority: UILayoutPriority.required, verticalFittingPriority: UILayoutPriority.fittingSizeLevel)
-        print(size.height)
+            NSLayoutConstraint.activate([
+                footerImageView.leadingAnchor.constraint(equalTo: footerImageContainer.leadingAnchor, constant: extraSpacing),
+                footerImageView.topAnchor.constraint(equalTo: footerImageContainer.topAnchor),
+                footerImageView.trailingAnchor.constraint(equalTo: footerImageContainer.trailingAnchor, constant: -extraSpacing),
+                footerImageView.bottomAnchor.constraint(equalTo: footerImageContainer.bottomAnchor),
+            ])
+        }
+    }
+
+    private func setupLinks(with titles: [String], withTextColor textColor: UIColor) {
+        linksStackView.removeArrangedSubviews()
+        bodyStackView.addArrangedSubview(linksStackView)
+
+        for title in titles {
+            addButton(withTitle: title, textColor: textColor, to: linksStackView)
+
+            if title != titles.last {
+                addSeparatorLine(withColor: textColor, to: linksStackView)
+            }
+        }
     }
 
     // MARK: - Private methods
@@ -269,14 +276,14 @@ public class ExtendedProfileView: UIView {
     }
 
     private func updateToggleButtonState() {
-        guard state != .notExpandable else { return }
+        guard state != .alwaysExpanded else { return }
         toggleButton.setExpanded(state == .expanded, animated: true)
     }
 
     // MARK: - Actions
 
     @objc private func updateExpandState() {
-        guard state != .notExpandable else { return }
+        guard state != .alwaysExpanded else { return }
         state = state == .expanded ? .contracted : .expanded
         delegate?.extendedProfileView(self, didChangeStateTo: state)
     }

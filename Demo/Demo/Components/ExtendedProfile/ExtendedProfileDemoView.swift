@@ -8,6 +8,7 @@ import FinniversKit
 final class ExtendedProfileDemoView: UIView {
     private lazy var view: ExtendedProfileView = {
         let view = ExtendedProfileView(withAutoLayout: true, remoteImageViewDataSource: self)
+        view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -48,13 +49,28 @@ final class ExtendedProfileDemoView: UIView {
             view.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
         ])
 
-        view.configue(
+        view.configure(
             forState: .contracted,
             with: viewModel,
             forWidth: frame.width,
             showHeaderImage: true
         )
     }
+}
+
+extension ExtendedProfileDemoView: ExtendedProfileViewDelegate {
+    func extendedProfileView(_ extendedProfileView: ExtendedProfileView, didChangeStateTo newState: ExtendedProfileView.State) {
+        view.configure(
+            forState: newState,
+            with: viewModel,
+            forWidth: frame.width,
+            showHeaderImage: true
+        )
+    }
+
+    func extendedProfileViewDidSelectLink(atIndex: Int) {}
+
+    func extendedProfileViewDidSelectActionButton() {}
 }
 
 extension ExtendedProfileDemoView: RemoteImageViewDataSource {
