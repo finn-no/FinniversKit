@@ -22,7 +22,7 @@ struct MyVehicleListView: View {
                         MyVehicleCell(
                             viewModel: viewModel,
                             imageProvider: SampleSingleImageProvider(
-                                url: URL(string: "\(self.imageUrl)\(String(describing: MyVehicleCellModel.sampleData.imagePath ?? nil))"))
+                                url: self.constructURL(imagePath: viewModel.imagePath))
                         )
                     }
                 }
@@ -88,6 +88,18 @@ private extension MyVehicleListView {
     var divider: some View {
         Divider()
             .foregroundColor(.bgPrimary)
+    }
+}
+
+@available(iOS 13.0.0, *)
+private extension MyVehicleListView {
+    func constructURL(imagePath path: String?) -> URL? {
+        guard
+            let path = path,
+            let url = URL(string: "\(self.imageUrl)\(path)") else
+        { return nil }
+
+        return url
     }
 }
 
