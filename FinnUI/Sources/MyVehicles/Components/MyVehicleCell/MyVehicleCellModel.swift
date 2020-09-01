@@ -1,0 +1,16 @@
+public struct MyVehicleCellModel: Identifiable, Hashable {
+    public var id: String
+    public var imagePath: String?
+    public var title: String
+    public var subtitle: String
+    public var detail: String
+}
+
+extension MyVehicleCellModel {
+    static var sampleData = MyVehicleCellModel(
+        id: "\(228920)",
+        imagePath: "2020/8/my_vehicles/20/1/228/921_745856010.jpg",
+        title: "VOLKSWAGEN",
+        subtitle: "DP70498",
+        detail: "Frist for EU-godkjenning: 16.05.2021")
+}
