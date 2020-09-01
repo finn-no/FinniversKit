@@ -25,7 +25,7 @@ public struct MyVehiclesListViewModel {
 
 @available(iOS 13.0.0, *)
 extension MyVehiclesListViewModel {
-    static let sampleDataCurrentlyOwnedVehicles: MyVehiclesListViewModel = MyVehiclesListViewModel(
+    static let sampleDataCurrentlyOwnedVehicles = MyVehiclesListViewModel(
         title: "Mine kjøretøy",
         vehicles: [
             MyVehicleCellModel(
@@ -54,7 +54,7 @@ extension MyVehiclesListViewModel {
         previouslyOwnedVehiclesTitle: "Se tidligere eide kjøretøy"
     )
 
-    static let sampleDataPreviouslyOwnedVehicles: MyVehiclesListViewModel = MyVehiclesListViewModel(
+    static let sampleDataPreviouslyOwnedVehicles = MyVehiclesListViewModel(
         title: "Mine kjøretøy",
         vehicles: [
             MyVehicleCellModel(
