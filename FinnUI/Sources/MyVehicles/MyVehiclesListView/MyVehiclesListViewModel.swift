@@ -30,6 +30,7 @@ extension MyVehiclesListViewModel {
         vehicles: [
             MyVehicleCellModel(
                 id: "\(228920)",
+                imageUrl: "https://images.finncdn.no/dynamic/default/",
                 imagePath: "2020/8/my_vehicles/20/1/228/921_745856010.jpg",
                 title: "BMW X5",
                 subtitle: "BT72617",
@@ -37,6 +38,7 @@ extension MyVehiclesListViewModel {
             ),
             MyVehicleCellModel(
                 id: "\(228921)",
+                imageUrl: "https://images.finncdn.no/dynamic/default/",
                 imagePath: nil,
                 title: "BMW 5-SERIE",
                 subtitle: "DP78813",
@@ -44,6 +46,7 @@ extension MyVehiclesListViewModel {
             ),
             MyVehicleCellModel(
                 id: "\(228261)",
+                imageUrl: "https://images.finncdn.no/dynamic/default/",
                 imagePath: "2020/8/my_vehicles/20/0/228/920_1067617845.jpg",
                 title: "BMW 5-SERIE",
                 subtitle: "DP78810",
@@ -59,6 +62,7 @@ extension MyVehiclesListViewModel {
         vehicles: [
             MyVehicleCellModel(
                 id: "\(228920)",
+                imageUrl: "",
                 imagePath: "2020/8/my_vehicles/20/1/228/921_745856010.jpg",
                 title: "BMW X5",
                 subtitle: "BT72617",
