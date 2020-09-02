@@ -16,12 +16,12 @@ struct MyVehiclesListView: View {
         NavigationView {
             List {
                 addNewVehicle
-                ForEach(viewModel.vehicles) { viewModel in
+                ForEach(viewModel.vehicles) { vehicle in
                     NavigationLink(destination: EmptyView()) {
                         MyVehicleCell(
-                            viewModel: viewModel,
+                            viewModel: vehicle,
                             imageProvider: SampleSingleImageProvider(
-                                url: viewModel.constructImageURL())
+                                url: vehicle.constructImageURL())
                         )
                     }
                 }
