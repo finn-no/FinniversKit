@@ -18,6 +18,10 @@
 		4D7A6ED22498DBAF00AB2EBE /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A6ECF2498DBAF00AB2EBE /* SearchResultsView.swift */; };
 		4D7A6ED32498DBAF00AB2EBE /* SearchResultsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A6ED02498DBAF00AB2EBE /* SearchResultsListView.swift */; };
 		4D7A6ED42498DBAF00AB2EBE /* SearchResultsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A6ED12498DBAF00AB2EBE /* SearchResultsRowView.swift */; };
+		7149DB6D24FE58C900268976 /* MyVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149DB6824FE58C800268976 /* MyVehicleCell.swift */; };
+		7149DB6E24FE58C900268976 /* MyVehicleCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149DB6924FE58C800268976 /* MyVehicleCellModel.swift */; };
+		7149DB7324FE592400268976 /* MyVehiclesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149DB7124FE592400268976 /* MyVehiclesListViewModel.swift */; };
+		7149DB7424FE592400268976 /* MyVehiclesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149DB7224FE592400268976 /* MyVehiclesListView.swift */; };
 		8D6801A7AE3E6776BE760D22 /* FavoriteAdSortingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6806448AEEC216BA813792 /* FavoriteAdSortingView.swift */; };
 		8D68028865D4FC05656F98EC /* SavedSearchSortingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D68017CB043EFCC348A9160 /* SavedSearchSortingView.swift */; };
 		8D68078190A301C047AD77D7 /* ChatAvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D68005160E043018354D1D4 /* ChatAvailabilityView.swift */; };
@@ -106,6 +110,10 @@
 		4D7A6ECF2498DBAF00AB2EBE /* SearchResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		4D7A6ED02498DBAF00AB2EBE /* SearchResultsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsListView.swift; sourceTree = "<group>"; };
 		4D7A6ED12498DBAF00AB2EBE /* SearchResultsRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsRowView.swift; sourceTree = "<group>"; };
+		7149DB6824FE58C800268976 /* MyVehicleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVehicleCell.swift; sourceTree = "<group>"; };
+		7149DB6924FE58C800268976 /* MyVehicleCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVehicleCellModel.swift; sourceTree = "<group>"; };
+		7149DB7124FE592400268976 /* MyVehiclesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVehiclesListViewModel.swift; sourceTree = "<group>"; };
+		7149DB7224FE592400268976 /* MyVehiclesListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVehiclesListView.swift; sourceTree = "<group>"; };
 		8D6800020C0B60C3391DED10 /* IconLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLinkView.swift; sourceTree = "<group>"; };
 		8D68005160E043018354D1D4 /* ChatAvailabilityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAvailabilityView.swift; sourceTree = "<group>"; };
 		8D68017CB043EFCC348A9160 /* SavedSearchSortingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchSortingView.swift; sourceTree = "<group>"; };
@@ -239,6 +247,7 @@
 				46DE7D56242B9BCB00DB1707 /* FinnUI.h */,
 				46DE7D57242B9BCB00DB1707 /* Info.plist */,
 				9B2A6976249797AC00E671B5 /* AdView */,
+				7149DB6524FE58C800268976 /* MyVehicles */,
 				9B58C0F5246550010029FAF5 /* Base Components */,
 				8D680C65FDB2814B12D5A4EC /* Components */,
 				46AE6FAE242BAAAE007BB005 /* Fullscreen */,
@@ -264,6 +273,41 @@
 				4D7A6ECF2498DBAF00AB2EBE /* SearchResultsView.swift */,
 			);
 			path = SearchResults;
+			sourceTree = "<group>";
+		};
+		7149DB6524FE58C800268976 /* MyVehicles */ = {
+			isa = PBXGroup;
+			children = (
+				7149DB6624FE58C800268976 /* Components */,
+				7149DB6A24FE58C800268976 /* MyVehiclesListView */,
+			);
+			path = MyVehicles;
+			sourceTree = "<group>";
+		};
+		7149DB6624FE58C800268976 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				7149DB6724FE58C800268976 /* MyVehicleCell */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		7149DB6724FE58C800268976 /* MyVehicleCell */ = {
+			isa = PBXGroup;
+			children = (
+				7149DB6824FE58C800268976 /* MyVehicleCell.swift */,
+				7149DB6924FE58C800268976 /* MyVehicleCellModel.swift */,
+			);
+			path = MyVehicleCell;
+			sourceTree = "<group>";
+		};
+		7149DB6A24FE58C800268976 /* MyVehiclesListView */ = {
+			isa = PBXGroup;
+			children = (
+				7149DB7224FE592400268976 /* MyVehiclesListView.swift */,
+				7149DB7124FE592400268976 /* MyVehiclesListViewModel.swift */,
+			);
+			path = MyVehiclesListView;
 			sourceTree = "<group>";
 		};
 		8D6800E900F0D0CA97B50A06 /* FavoriteAdSorting */ = {
@@ -693,6 +737,7 @@
 				9B2A6993249797AC00E671B5 /* DescriptionView.swift in Sources */,
 				DA3415F9245AF80200DC1B1C /* BasicListCell.swift in Sources */,
 				DED0A2CF246933600016176A /* SavedSearchHeaderButton.swift in Sources */,
+				7149DB7424FE592400268976 /* MyVehiclesListView.swift in Sources */,
 				9B2A6998249797AC00E671B5 /* PagerView.swift in Sources */,
 				9B2A6995249797AC00E671B5 /* ImageGalleryView.swift in Sources */,
 				4D7A6ED42498DBAF00AB2EBE /* SearchResultsRowView.swift in Sources */,
@@ -703,17 +748,20 @@
 				9B2A6992249797AC00E671B5 /* DescriptionViewModel.swift in Sources */,
 				DA5A86A82462163700AC0DFE /* BasicListCellWrapper.swift in Sources */,
 				9B2A699B249797AC00E671B5 /* BapAdView.swift in Sources */,
+				7149DB7324FE592400268976 /* MyVehiclesListViewModel.swift in Sources */,
 				DED0A2D2246933600016176A /* NotificationCenterFooterView.swift in Sources */,
 				9B2A6996249797AC00E671B5 /* TryHeltHjemViewModel.swift in Sources */,
 				9B2A698F249797AC00E671B5 /* AuthorView.swift in Sources */,
 				DED0A2CE246933600016176A /* PersonalNotificationIconView.swift in Sources */,
 				9BCFBBC424DD63EA00D9F9C6 /* NotificationGroupOptionsView.swift in Sources */,
 				9B2A699A249797AC00E671B5 /* BapAdViewActions.swift in Sources */,
+				7149DB6E24FE58C900268976 /* MyVehicleCellModel.swift in Sources */,
 				9B2A2F5024DC48EF00D373A6 /* SavedSearchesHeaderView.swift in Sources */,
 				9B2A6991249797AC00E671B5 /* PhoneNumberView.swift in Sources */,
 				9B58C0F6246550440029FAF5 /* ButtonStyle+Previews.swift in Sources */,
 				DA1755292472ACD0005EB339 /* EmptyNotificationsCell.swift in Sources */,
 				DED0A2D62469337B0016176A /* FeedbackCell.swift in Sources */,
+				7149DB6D24FE58C900268976 /* MyVehicleCell.swift in Sources */,
 				DED0A08B246865E70016176A /* NotificationsCellModels.swift in Sources */,
 				469894A02434DD6F00CC84E6 /* ImageAsset.swift in Sources */,
 				4D7A6ED22498DBAF00AB2EBE /* SearchResultsView.swift in Sources */,
