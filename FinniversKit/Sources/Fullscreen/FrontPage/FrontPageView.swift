@@ -216,7 +216,7 @@ public final class FrontPageView: UIView {
             heightPercentage = 0.5
         }
 
-        if UIDevice.isIPad() {
+        if isHorizontalSizeClassRegular {
             widthPercentage = 0.5
             heightPercentage = 0.22
 
