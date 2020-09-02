@@ -187,6 +187,7 @@ public class ExtendedProfileView: UIView {
         sloganLabel.text = viewModel.sloganText
         sloganBoxView.backgroundColor = viewModel.sloganBackgroundColor
         sloganLabel.textColor = viewModel.sloganTextColor
+        backgroundColor = viewModel.mainBackgroundColor
 
         switch state {
         case .contracted, .expanded:
@@ -204,7 +205,6 @@ public class ExtendedProfileView: UIView {
             return
         }
 
-        bodyStackView.backgroundColor = viewModel.mainBackgroundColor
         bodyViewTopAnchorConstraint.constant = ExtendedProfileView.bodyViewTopMargin
         bodyViewBottomAnchorConstraint.constant = -ExtendedProfileView.bodyViewBottomMargin
 
@@ -219,7 +219,7 @@ public class ExtendedProfileView: UIView {
             actionButton.style = Button.Style.callToAction.overrideStyle(
                 bodyColor: backgroundColor,
                 textColor: viewModel.actionButtonTextColor,
-                highlightedBodyColor: backgroundColor.withAlphaComponent(0.8)
+                highlightedBodyColor: backgroundColor?.withAlphaComponent(0.8)
             )
             bodyStackView.addArrangedSubview(actionButton)
             bodyStackView.setCustomSpacing(.spacingL, after: actionButton)

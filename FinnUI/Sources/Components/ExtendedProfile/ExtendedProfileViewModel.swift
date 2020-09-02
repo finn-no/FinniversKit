@@ -8,7 +8,7 @@ public struct ExtendedProfileViewModel {
     public let headerImageUrl: String?
     public let footerImageUrl: String?
 
-    public let sloganText: String
+    public let sloganText: String?
     public let linkTitles: [String]
     public let actionButtonTitle: String?
 
@@ -17,13 +17,13 @@ public struct ExtendedProfileViewModel {
     public let sloganTextColor: UIColor
     public let mainBackgroundColor: UIColor
     public let mainTextColor: UIColor
-    public let actionButtonTextColor: UIColor
-    public let actionButtonBackgroundColor: UIColor
+    public let actionButtonTextColor: UIColor?
+    public let actionButtonBackgroundColor: UIColor?
 
     public init(
         headerImageUrl: String?,
         footerImageUrl: String?,
-        sloganText: String,
+        sloganText: String?,
         linkTitles: [String],
         actionButtonTitle: String?,
         headerBackgroundColor: UIColor,
@@ -31,8 +31,8 @@ public struct ExtendedProfileViewModel {
         sloganBackgroundColor: UIColor,
         mainBackgroundColor: UIColor,
         mainTextColor: UIColor,
-        actionButtonTextColor: UIColor,
-        actionButtonBackgroundColor: UIColor
+        actionButtonTextColor: UIColor?,
+        actionButtonBackgroundColor: UIColor?
     ) {
         self.headerImageUrl = headerImageUrl
         self.footerImageUrl = footerImageUrl
