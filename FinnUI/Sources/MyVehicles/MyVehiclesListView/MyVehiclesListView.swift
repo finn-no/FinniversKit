@@ -1,18 +1,18 @@
 import SwiftUI
 
 @available(iOS 13.0.0, *)
-struct MyVehiclesListView: View {
+public struct MyVehiclesListView: View {
+
+    // MARK: - Init
+
+    let viewModel: MyVehiclesListViewModel
+    var handleAddNewVehicle: (() -> Void) = {}
 
     // MARK: - Private
 
-    @State var navigateToPreviouslyOwnedVehicles = false
+    @State private var navigateToPreviouslyOwnedVehicles = false
 
-    // MARK: - Public
-
-    var viewModel: MyVehiclesListViewModel
-    var handleAddNewVehicle: (() -> Void) = {}
-
-    var body: some View {
+    public var body: some View {
         NavigationView {
             List {
                 addNewVehicle

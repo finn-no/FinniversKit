@@ -1,16 +1,18 @@
 import SwiftUI
 
 @available(iOS 13.0.0, *)
-struct MyVehicleCell<ImageProvider: SingleImageProvider>: View {
+public struct MyVehicleCell<ImageProvider: SingleImageProvider>: View {
 
-    // MARK: - Public
+    // MARK: - Init
 
-    var viewModel: MyVehicleCellModel
+    let viewModel: MyVehicleCellModel
     @ObservedObject var imageProvider: ImageProvider
+
+    // MARK: - Private
 
     private let imageSize = CGFloat(48)
 
-    var body: some View {
+    public var body: some View {
         HStack {
             vehicleImage
                 .padding(.bottom, .spacingXS)

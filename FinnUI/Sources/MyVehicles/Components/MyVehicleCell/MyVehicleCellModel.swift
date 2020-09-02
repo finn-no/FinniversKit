@@ -6,7 +6,7 @@ public struct MyVehicleCellModel: Identifiable, Hashable {
     public var subtitle: String
     public var detail: String
 
-    func constructImageURL() -> URL? {
+    public func constructImageURL() -> URL? {
         guard
             let path = imagePath,
             let url = URL(string: "\(self.imageUrl)\(path)") else
