@@ -41,4 +41,8 @@ class SwiftUIViewTests: XCTestCase {
     func testBapAdView() {
         snapshot(.bapAdView)
     }
+
+    func testMyVehiclesListView() {
+        snapshot(.myVehiclesListView)
+    }
 }
