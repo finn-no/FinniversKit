@@ -34,6 +34,12 @@ public class ObjectPagePriceView: UIView {
         return view
     }()
 
+    private lazy var priceDetailsView: KeyValueGridView = {
+        let view = KeyValueGridView(withAutoLayout: true)
+        view.numberOfColumns = 2
+        return view
+    }()
+
     // MARK: - Init
 
     public override init(frame: CGRect) {
@@ -73,7 +79,14 @@ public class ObjectPagePriceView: UIView {
             pricesStackView.addArrangedSubview(secondaryPriceView)
         }
 
-        wrapperStackView.addArrangedSubviews([pricesStackView, linkButtonListView])
+        wrapperStackView.addArrangedSubview(pricesStackView)
+
+        if !viewModel.priceDetails.isEmpty {
+            priceDetailsView.configure(with: viewModel.priceDetails)
+            wrapperStackView.addArrangedSubview(priceDetailsView)
+        }
+
+        wrapperStackView.addArrangedSubview(linkButtonListView)
 
         linkButtonListView.configure(with: viewModel.links)
         linkButtonListView.isHidden = viewModel.links.isEmpty
