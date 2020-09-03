@@ -54,6 +54,12 @@ final public class NotificationCenterView: UIView {
         }
     }
 
+    public var isSavedSearchGroupingEnabled: Bool = true {
+        didSet {
+            savedSearchesHeaderView.groupSelectionView.alpha = isSavedSearchGroupingEnabled ? 1 : 0
+        }
+    }
+
     // MARK: - Private properties
 
     private lazy var segmentedControl: UISegmentedControl = {
