@@ -33,14 +33,14 @@ class EmptyNotificationsCell: UITableViewCell {
     }()
 
     private lazy var emptyPersonalConstraints = [
-        iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+        iconImageView.leadingAnchor.constraint(equalTo: contentView.readableContentGuide.leadingAnchor),
         iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
         iconImageView.widthAnchor.constraint(equalToConstant: 80),
         iconImageView.heightAnchor.constraint(equalToConstant: 80),
 
         stackView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .spacingM),
         stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
-        stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+        stackView.trailingAnchor.constraint(equalTo: contentView.readableContentGuide.trailingAnchor),
 
         contentView.bottomAnchor.constraint(greaterThanOrEqualTo: iconImageView.bottomAnchor, constant: .spacingM),
         contentView.bottomAnchor.constraint(greaterThanOrEqualTo: stackView.bottomAnchor, constant: .spacingM),
@@ -52,9 +52,9 @@ class EmptyNotificationsCell: UITableViewCell {
         iconImageView.widthAnchor.constraint(equalToConstant: 48),
         iconImageView.heightAnchor.constraint(equalToConstant: 48),
 
-        stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingXL),
+        stackView.leadingAnchor.constraint(equalTo: contentView.readableContentGuide.leadingAnchor, constant: .spacingL),
         stackView.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: .spacingM),
-        stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingXL),
+        stackView.trailingAnchor.constraint(equalTo: contentView.readableContentGuide.trailingAnchor, constant: -.spacingL),
 
         contentView.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .spacingM),
     ]

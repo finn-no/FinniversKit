@@ -20,7 +20,7 @@ class FeedbackCell: UITableViewCell {
         selectionStyle = .none
         backgroundColor = .bgPrimary
         contentView.addSubview(feedbackView)
-        feedbackView.fillInSuperview(margin: .spacingM)
+        feedbackView.fillInSuperviewReadableArea()
         feedbackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
 
