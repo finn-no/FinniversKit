@@ -5,8 +5,8 @@
 import FinniversKit
 
 public protocol ExtendedProfileViewDelegate: AnyObject {
-    func extendedProfileViewDidSelectLink(atIndex: Int)
-    func extendedProfileViewDidSelectActionButton()
+    func extendedProfileView(_  extendedProfileView: ExtendedProfileView, didSelectLinkAtIndex index: Int)
+    func extendedProfileViewDidSelectActionButton(_ extendedProfileView: ExtendedProfileView)
     func extendedProfileView(_ extendedProfileView: ExtendedProfileView, didChangeStateTo newState: ExtendedProfileView.State)
 }
 
@@ -15,7 +15,7 @@ public class ExtendedProfileView: UIView {
     public enum State {
         case alwaysExpanded
         case expanded
-        case contracted
+        case collapsed
     }
 
     private lazy var headerImageView: RemoteImageView = {
@@ -30,7 +30,7 @@ public class ExtendedProfileView: UIView {
         view.isUserInteractionEnabled = true
         let tapGestureRecognizer = UITapGestureRecognizer(
             target: self,
-            action: #selector(updateExpandState)
+            action: #selector(toggleExpandState)
         )
         view.addGestureRecognizer(tapGestureRecognizer)
         return view
@@ -51,7 +51,7 @@ public class ExtendedProfileView: UIView {
         )
         button.translatesAutoresizingMaskIntoConstraints = false
         button.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
-        button.addTarget(self, action: #selector(updateExpandState), for: .touchUpInside)
+        button.addTarget(self, action: #selector(toggleExpandState), for: .touchUpInside)
         return button
     }()
 
@@ -91,7 +91,7 @@ public class ExtendedProfileView: UIView {
     private static let bodyViewTopMargin: CGFloat = .spacingM
     private static let bodyViewBottomMargin: CGFloat = .spacingL
 
-    private var state: State = .contracted
+    private var state: State = .collapsed
 
     private lazy var headerImageHeightConstraint = {
         headerImageView.heightAnchor.constraint(equalToConstant: 150)
@@ -190,7 +190,7 @@ public class ExtendedProfileView: UIView {
         backgroundColor = viewModel.mainBackgroundColor
 
         switch state {
-        case .contracted, .expanded:
+        case .collapsed, .expanded:
             toggleButton.tintColor = viewModel.sloganBackgroundColor.contrastingColor()
             updateToggleButtonState()
         case .alwaysExpanded:
@@ -198,7 +198,7 @@ public class ExtendedProfileView: UIView {
             sloganBoxView.isUserInteractionEnabled = false
         }
 
-        if state == .contracted {
+        if state == .collapsed {
             bodyViewTopAnchorConstraint.constant = 0
             bodyViewBottomAnchorConstraint.constant = 0
             bodyStackView.removeArrangedSubviews()
@@ -296,9 +296,9 @@ public class ExtendedProfileView: UIView {
 
     // MARK: - Actions
 
-    @objc private func updateExpandState() {
+    @objc private func toggleExpandState() {
         guard state != .alwaysExpanded else { return }
-        state = state == .expanded ? .contracted : .expanded
+        state = state == .expanded ? .collapsed : .expanded
         delegate?.extendedProfileView(self, didChangeStateTo: state)
     }
 
@@ -306,11 +306,11 @@ public class ExtendedProfileView: UIView {
         guard let index = linksStackView.arrangedSubviews.filter({ $0 is Button }).firstIndex(of: sender) else {
             return
         }
-        delegate?.extendedProfileViewDidSelectLink(atIndex: index)
+        delegate?.extendedProfileView(self, didSelectLinkAtIndex: index)
     }
 
     @objc private func actionButtonTapped() {
-        delegate?.extendedProfileViewDidSelectActionButton()
+        delegate?.extendedProfileViewDidSelectActionButton(self)
     }
 }
 

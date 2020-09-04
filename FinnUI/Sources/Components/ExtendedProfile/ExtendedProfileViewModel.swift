@@ -13,10 +13,10 @@ public struct ExtendedProfileViewModel {
     public let actionButtonTitle: String?
 
     public let headerBackgroundColor: UIColor
-    public let sloganBackgroundColor: UIColor
     public let sloganTextColor: UIColor
-    public let mainBackgroundColor: UIColor
+    public let sloganBackgroundColor: UIColor
     public let mainTextColor: UIColor
+    public let mainBackgroundColor: UIColor
     public let actionButtonTextColor: UIColor?
     public let actionButtonBackgroundColor: UIColor?
 
@@ -29,8 +29,8 @@ public struct ExtendedProfileViewModel {
         headerBackgroundColor: UIColor,
         sloganTextColor: UIColor,
         sloganBackgroundColor: UIColor,
-        mainBackgroundColor: UIColor,
         mainTextColor: UIColor,
+        mainBackgroundColor: UIColor,
         actionButtonTextColor: UIColor?,
         actionButtonBackgroundColor: UIColor?
     ) {
@@ -42,8 +42,8 @@ public struct ExtendedProfileViewModel {
         self.headerBackgroundColor = headerBackgroundColor
         self.sloganTextColor = sloganTextColor
         self.sloganBackgroundColor = sloganBackgroundColor
-        self.mainBackgroundColor = mainBackgroundColor
         self.mainTextColor = mainTextColor
+        self.mainBackgroundColor = mainBackgroundColor
         self.actionButtonTextColor = actionButtonTextColor
         self.actionButtonBackgroundColor = actionButtonBackgroundColor
     }
