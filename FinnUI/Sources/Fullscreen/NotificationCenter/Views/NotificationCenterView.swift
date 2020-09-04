@@ -292,9 +292,9 @@ private extension NotificationCenterView {
         addSubview(scrollView)
 
         NSLayoutConstraint.activate([
-            segmentedControl.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor),
+            segmentedControl.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor, constant: .spacingS),
             segmentedControl.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
-            segmentedControl.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor),
+            segmentedControl.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor, constant: -.spacingS),
 
             separatorLine.leadingAnchor.constraint(equalTo: leadingAnchor),
             separatorLine.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: .spacingM),

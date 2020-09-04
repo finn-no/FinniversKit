@@ -205,7 +205,7 @@ private extension NotificationCell {
             stackView.trailingAnchor.constraint(equalTo: contentView.readableContentGuide.trailingAnchor),
 
             separatorView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-            separatorView.trailingAnchor.constraint(equalTo: contentView.readableContentGuide.trailingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             separatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             separatorView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
 
