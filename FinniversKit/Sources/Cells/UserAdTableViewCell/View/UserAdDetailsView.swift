@@ -68,16 +68,16 @@ final class UserAdDetailsView: UIView {
 
     private lazy var defaultConstraints = [
         descriptionStack.topAnchor.constraint(equalTo: ribbonView.bottomAnchor, constant: .spacingXXS),
-        descriptionStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-        descriptionStack.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingXL),
-        ribbonView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+        descriptionStack.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+        descriptionStack.bottomAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.bottomAnchor, constant: -.spacingXL),
+        ribbonView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
     ]
 
     private lazy var compressedConstraints = [
-        descriptionStack.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+        descriptionStack.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: .spacingM),
         descriptionStack.trailingAnchor.constraint(equalTo: ribbonView.leadingAnchor, constant: -.spacingS),
-        descriptionStack.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingM),
-        ribbonView.centerYAnchor.constraint(equalTo: centerYAnchor),
+        descriptionStack.bottomAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.bottomAnchor, constant: -.spacingM),
+        ribbonView.centerYAnchor.constraint(equalTo: layoutMarginsGuide.centerYAnchor),
     ]
 
     // MARK: - Init
@@ -109,12 +109,12 @@ final class UserAdDetailsView: UIView {
         let constraints = defaultConstraints + [
             descriptionStack.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .spacingM),
 
-            ribbonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            ribbonView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
 
-            adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            adImageView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: .spacingS),
-            adImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingS),
-            adImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            adImageView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            adImageView.topAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.topAnchor),
+            adImageView.bottomAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.bottomAnchor),
+            adImageView.centerYAnchor.constraint(equalTo: layoutMarginsGuide.centerYAnchor),
             adImageHeightConstraint,
             adImageWidthConstraint,
         ]
