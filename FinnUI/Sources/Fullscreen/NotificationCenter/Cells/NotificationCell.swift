@@ -187,7 +187,7 @@ private extension NotificationCell {
         contentView.layer.addSublayer(gradientLayer)
 
         NSLayoutConstraint.activate([
-            remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            remoteImageView.leadingAnchor.constraint(equalTo: contentView.readableContentGuide.leadingAnchor),
             remoteImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
             remoteImageView.widthAnchor.constraint(equalToConstant: imageWidth),
             remoteImageView.heightAnchor.constraint(equalToConstant: imageWidth),
@@ -198,11 +198,11 @@ private extension NotificationCell {
             iconView.heightAnchor.constraint(equalToConstant: 24),
 
             ribbonView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
-            ribbonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingS),
+            ribbonView.trailingAnchor.constraint(equalTo: contentView.readableContentGuide.trailingAnchor),
 
             stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .spacingM),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            stackView.trailingAnchor.constraint(equalTo: contentView.readableContentGuide.trailingAnchor),
 
             separatorView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),

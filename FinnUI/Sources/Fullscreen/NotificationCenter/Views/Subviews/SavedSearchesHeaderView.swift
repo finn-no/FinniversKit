@@ -79,7 +79,7 @@ extension NotificationCenterView {
             addSubview(stackView)
             stackView.addArrangedSubview(groupSelectionView)
             stackView.addArrangedSubview(markAllAsReadButton)
-            stackView.fillInSuperviewLayoutMargins()
+            stackView.fillInSuperviewReadableArea()
         }
 
         @objc func markAllAsReadButtonTapped() {
