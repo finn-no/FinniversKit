@@ -112,6 +112,9 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         backgroundColor = .bgPrimary
         
         let hairLineSize = 1.0 / UIScreen.main.scale
+        
+        let buttonHeightConstraint = button.heightAnchor.constraint(equalToConstant: buttonHeight)
+        buttonHeightConstraint.priority = .init(999)
 
         NSLayoutConstraint.activate([
             separatorView.heightAnchor.constraint(equalToConstant: hairLineSize),
@@ -124,7 +127,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
             containerStack.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
             containerStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM),
             
-            button.heightAnchor.constraint(equalToConstant: buttonHeight),
+            buttonHeightConstraint,
             buttonWidthConstraint
         ])
     }
