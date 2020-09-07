@@ -4,7 +4,13 @@
 
 import FinniversKit
 
-public class AdManagementDemoView: UIView {
+public class AdManagementDemoView: UIView, Tweakable {
+    
+    lazy var tweakingOptions: [TweakingOption] = [
+        TweakingOption(title: "Empty statistics") { self.statisticsCellModels = [] },
+        TweakingOption(title: "With statistics") { self.statisticsCellModels = self.exampleStatisticsCellModels },
+    ]
+    
     private let estimatedRowHeight: CGFloat = 200
 
     private lazy var tableView: UITableView = {
@@ -20,6 +26,7 @@ public class AdManagementDemoView: UIView {
         tableView.backgroundColor = .bgSecondary
         tableView.estimatedRowHeight = estimatedRowHeight
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.cellLayoutMarginsFollowReadableWidth = true
         return tableView
     }()
 
@@ -55,12 +62,18 @@ public class AdManagementDemoView: UIView {
         )
         return StatisticsModel(header: header, statisticItems: statisticsCellModels)
     }()
-
-    private var statisticsCellModels: [StatisticsItemModel] = [
-        StatisticsItemModel(type: .seen, value: 968, text: "har sett annonsen"),
-        StatisticsItemModel(type: .favourited, value: 16, text: "har lagret annonsen"),
-        StatisticsItemModel(type: .email, value: 1337, text: "har fått e-post om annonsen")
+    
+    private var exampleStatisticsCellModels: [StatisticsItemModel] = [
+        .init(type: .seen, value: 968, text: "har sett annonsen"),
+        .init(type: .favourited, value: 16, text: "har lagret annonsen"),
+        .init(type: .email, value: 1337, text: "har fått e-post om annonsen")
     ]
+
+    private lazy var statisticsCellModels: [StatisticsItemModel] = exampleStatisticsCellModels {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
     private var statisticsEmptyViewCellModel: StatisticsItemEmptyViewModel = {
         return StatisticsItemEmptyViewModel(title: "Følg med på effekten",
