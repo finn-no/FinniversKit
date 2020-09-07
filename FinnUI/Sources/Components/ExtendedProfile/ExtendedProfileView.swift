@@ -106,6 +106,7 @@ public class ExtendedProfileView: UIView {
     }()
 
     public weak var delegate: ExtendedProfileViewDelegate?
+    public private(set) var viewModel: ExtendedProfileViewModel? = nil
 
     // MARK: - Init
 
@@ -170,6 +171,7 @@ public class ExtendedProfileView: UIView {
         forWidth width: CGFloat,
         showHeaderImage: Bool
     ) {
+        self.viewModel = viewModel
         self.state = state
 
         if showHeaderImage,

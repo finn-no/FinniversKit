@@ -5,6 +5,14 @@
 import Foundation
 
 public struct ExtendedProfileViewModel {
+
+    public enum Placement {
+        case top
+        case bottom
+    }
+
+    public let placement: Placement
+
     public let headerImageUrl: String?
     public let footerImageUrl: String?
 
@@ -21,6 +29,7 @@ public struct ExtendedProfileViewModel {
     public let actionButtonBackgroundColor: UIColor?
 
     public init(
+        placement: Placement,
         headerImageUrl: String?,
         footerImageUrl: String?,
         sloganText: String?,
@@ -34,6 +43,7 @@ public struct ExtendedProfileViewModel {
         actionButtonTextColor: UIColor?,
         actionButtonBackgroundColor: UIColor?
     ) {
+        self.placement = placement
         self.headerImageUrl = headerImageUrl
         self.footerImageUrl = footerImageUrl
         self.sloganText = sloganText
