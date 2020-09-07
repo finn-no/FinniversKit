@@ -112,18 +112,18 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
         NSLayoutConstraint.activate([
             separatorView.heightAnchor.constraint(equalToConstant: hairLineSize),
             separatorView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            separatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            separatorView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
 
             headerStackView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: .spacingS),
-            headerStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-            headerStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            headerStackView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor, constant: .spacingM),
+            headerStackView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor, constant: -.spacingM),
             headerStackView.bottomAnchor.constraint(equalTo: stackView.topAnchor),
 
             stackView.topAnchor.constraint(equalTo: headerStackView.bottomAnchor),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            stackView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
         ])
     }
 }
