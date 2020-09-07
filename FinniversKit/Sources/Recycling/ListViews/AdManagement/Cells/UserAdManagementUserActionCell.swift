@@ -153,7 +153,7 @@ public class UserAdManagementUserActionCell: UITableViewCell {
             separator.topAnchor.constraint(equalTo: contentView.topAnchor),
             separator.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             separator.heightAnchor.constraint(equalToConstant: hairLineSize),
-            iconView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            iconView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             iconView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconView.widthAnchor.constraint(equalToConstant: missingMagicNumberSpacing),
             iconView.heightAnchor.constraint(equalToConstant: missingMagicNumberSpacing),
@@ -165,18 +165,18 @@ public class UserAdManagementUserActionCell: UITableViewCell {
         // The chevron is smaller than elsewhere, but this is by design. I guess we'll disuss this
         // while iterating, prior to release, ¯\_(ツ)_/¯
         let chevronSize: CGFloat = 16
-        chevronConstraints = [ chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+        chevronConstraints = [ chevronView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
                                chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                                chevronView.widthAnchor.constraint(equalToConstant: chevronSize),
                                chevronView.heightAnchor.constraint(equalToConstant: chevronSize),
                                titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: -.spacingS)
         ]
-        toggleControlConstraints = [ toggle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+        toggleControlConstraints = [ toggle.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
                               toggle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                               titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: toggle.leadingAnchor, constant: -.spacingS)
         ]
         let externalSize: CGFloat = 16
-        externalActionConstraints = [ externalActionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+        externalActionConstraints = [ externalActionView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor, constant: -24),
                                       externalActionView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                                       externalActionView.widthAnchor.constraint(equalToConstant: externalSize),
                                       externalActionView.heightAnchor.constraint(equalToConstant: externalSize),
