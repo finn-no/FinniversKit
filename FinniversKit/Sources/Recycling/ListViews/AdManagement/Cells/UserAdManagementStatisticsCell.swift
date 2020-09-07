@@ -116,8 +116,8 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
             separatorView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
 
             headerStackView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: .spacingS),
-            headerStackView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor, constant: .spacingM),
-            headerStackView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor, constant: -.spacingM),
+            headerStackView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+            headerStackView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
             headerStackView.bottomAnchor.constraint(equalTo: stackView.topAnchor),
 
             stackView.topAnchor.constraint(equalTo: headerStackView.bottomAnchor),
