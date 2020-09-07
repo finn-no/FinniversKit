@@ -168,11 +168,12 @@ public class ExtendedProfileView: UIView {
     public func configure(
         forState state: State,
         with viewModel: ExtendedProfileViewModel,
-        forWidth width: CGFloat,
-        showHeaderImage: Bool
+        forWidth width: CGFloat
     ) {
         self.viewModel = viewModel
         self.state = state
+
+        let showHeaderImage = viewModel.placement == .top
 
         if showHeaderImage,
             let headerImageUrl = viewModel.headerImageUrl {
