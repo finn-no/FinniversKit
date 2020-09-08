@@ -22,7 +22,11 @@ final class UserAdDetailsView: UIView {
 
     private lazy var fallbackImage = UIImage(named: .noImage)
 
-    private lazy var ribbonView = RibbonView(withAutoLayout: true)
+    private lazy var ribbonView: RibbonView = {
+        let view = RibbonView(withAutoLayout: true)
+        view.setContentHuggingPriority(.required, for: .vertical)
+        return view
+    }()
 
     private lazy var adImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
@@ -65,18 +69,31 @@ final class UserAdDetailsView: UIView {
 
     private lazy var adImageWidthConstraint = adImageView.widthAnchor.constraint(equalToConstant: UserAdTableViewCell.Style.default.imageSize)
     private lazy var adImageHeightConstraint = adImageView.heightAnchor.constraint(equalToConstant: UserAdTableViewCell.Style.default.imageSize)
+        
+    private lazy var topSpacer = UILayoutGuide()
+    private lazy var bottomSpacer = UILayoutGuide()
 
     private lazy var defaultConstraints = [
-        descriptionStack.topAnchor.constraint(equalTo: ribbonView.bottomAnchor, constant: .spacingXXS),
+        bottomSpacer.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
+
+        descriptionStack.topAnchor.constraint(greaterThanOrEqualTo: ribbonView.bottomAnchor, constant: .spacingXXS),
         descriptionStack.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-        descriptionStack.bottomAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.bottomAnchor, constant: -.spacingXL),
+        descriptionStack.bottomAnchor.constraint(equalTo: bottomSpacer.topAnchor),
+        descriptionStack.centerYAnchor.constraint(equalTo: adImageView.centerYAnchor),
+        
         ribbonView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
     ]
 
     private lazy var compressedConstraints = [
-        descriptionStack.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: .spacingM),
+        topSpacer.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+        
+        bottomSpacer.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
+        bottomSpacer.heightAnchor.constraint(equalTo: topSpacer.heightAnchor),
+
+        descriptionStack.topAnchor.constraint(equalTo: topSpacer.bottomAnchor),
         descriptionStack.trailingAnchor.constraint(equalTo: ribbonView.leadingAnchor, constant: -.spacingS),
-        descriptionStack.bottomAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.bottomAnchor, constant: -.spacingM),
+        descriptionStack.bottomAnchor.constraint(equalTo: bottomSpacer.topAnchor),
+
         ribbonView.centerYAnchor.constraint(equalTo: layoutMarginsGuide.centerYAnchor),
     ]
 
@@ -98,6 +115,9 @@ final class UserAdDetailsView: UIView {
 
         addSubview(descriptionStack)
         addSubview(ribbonView)
+        
+        addLayoutGuide(topSpacer)
+        addLayoutGuide(bottomSpacer)
 
         descriptionStack.addArrangedSubview(titleLabel)
         descriptionStack.addArrangedSubview(subtitleLabel)
