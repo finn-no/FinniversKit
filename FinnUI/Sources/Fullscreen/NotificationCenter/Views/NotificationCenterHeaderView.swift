@@ -73,9 +73,9 @@ private extension NotificationCenterHeaderView {
         contentView.addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: contentView.readableContentGuide.leadingAnchor),
+            stackView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.readableContentGuide.trailingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
             stackViewBottomConstraint
         ])
     }

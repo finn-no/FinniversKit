@@ -431,6 +431,7 @@ private extension UITableView {
         tableView.register(NotificationCenterHeaderView.self)
         tableView.register(NotificationCenterFooterView.self)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.cellLayoutMarginsFollowReadableWidth = true
         return tableView
     }
 }
