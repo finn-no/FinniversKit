@@ -41,7 +41,7 @@ public class UserAdTableViewCell: UITableViewCell {
 
     private lazy var userAdDetailsView: UserAdDetailsView = {
         let view = UserAdDetailsView(withAutoLayout: true)
-        view.directionalLayoutMargins = .init(vertical: .spacingS, horizontal: .zero)
+        view.directionalLayoutMargins = .zero
         return view
     }()
 
