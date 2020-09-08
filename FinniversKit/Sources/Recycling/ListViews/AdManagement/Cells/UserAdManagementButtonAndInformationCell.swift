@@ -12,10 +12,8 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
     
     public var buttonText: String? {
         didSet {
-            let attributedText = NSMutableAttributedString(string: buttonText ?? "")
-            button.setAttributedTitle(attributedText, for: .normal)
+            button.setTitle(buttonText, for: .normal)
             button.accessibilityLabel = buttonText
-            updateButtonConstraints()
         }
     }
     public var informationText: String? {
@@ -23,10 +21,6 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
             informationLabel.attributedText = NSAttributedString(string: informationText ?? "")
         }
     }
-
-    private let buttonHeight: CGFloat = 32 // This is too small for comfort (Re. Apple's HIG), won't handle this now as the whole design is still subject to change
-
-    private lazy var buttonWidthConstraint = button.widthAnchor.constraint(equalToConstant: 0)
     
     private lazy var containerStack: UIStackView = {
         let view = UIStackView(withAutoLayout: true)
@@ -44,17 +38,12 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         label.textColor = .textPrimary
         label.textAlignment = .left
         label.setContentHuggingPriority(.defaultLow, for: .horizontal)
-        label.setContentCompressionResistancePriority(.required, for: .horizontal)
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
     private lazy var button: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.titleLabel?.font = .detailStrong
-        button.titleLabel?.textColor = .textTertiary
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .btnPrimary
-        button.layer.cornerRadius = 8
+        let button = Button(style: .callToAction, size: .small)
         button.setContentCompressionResistancePriority(.required, for: .horizontal)
         button.setContentHuggingPriority(.required, for: .horizontal)
         button.addTarget(self, action: #selector(handleButtonTouchUpInside(_:)), for: .touchUpInside)
@@ -94,15 +83,6 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         sender.backgroundColor = .callToActionButtonHighlightedBodyColor
     }
 
-    // MARK: - Constraint updates
-
-    private func updateButtonConstraints() {
-        guard let buttonText = buttonText else { return }
-
-        let buttonWidth = 20 + buttonText.width(withConstrainedHeight: buttonHeight, font: .detailStrong)
-        buttonWidthConstraint.constant = buttonWidth
-    }
-
     // MARK: - Setup
 
     private func setup() {
@@ -113,9 +93,6 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         
         let hairLineSize = 1.0 / UIScreen.main.scale
         
-        let buttonHeightConstraint = button.heightAnchor.constraint(equalToConstant: buttonHeight)
-        buttonHeightConstraint.priority = .init(999)
-
         NSLayoutConstraint.activate([
             separatorView.heightAnchor.constraint(equalToConstant: hairLineSize),
             separatorView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -125,10 +102,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
             containerStack.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: .spacingM),
             containerStack.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             containerStack.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
-            containerStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM),
-            
-            buttonHeightConstraint,
-            buttonWidthConstraint
+            containerStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM),            
         ])
     }
 }
