@@ -45,8 +45,8 @@ public class UserAdTableViewCell: UITableViewCell {
         return view
     }()
 
-    private lazy var userAdDetailsViewTopAnchor = userAdDetailsView.topAnchor.constraint(equalTo: contentView.topAnchor)
-    private lazy var userAdDetailsViewBottomAnchor = userAdDetailsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0, priority: .init(999))
+    private lazy var userAdDetailsViewTopAnchor = userAdDetailsView.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor)
+    private lazy var userAdDetailsViewBottomAnchor = userAdDetailsView.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor, constant: 0, priority: .init(999))
 
     // MARK: - Init
 
