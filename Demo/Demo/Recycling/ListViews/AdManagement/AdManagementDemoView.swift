@@ -8,7 +8,7 @@ public class AdManagementDemoView: UIView, Tweakable {
     
     lazy var tweakingOptions: [TweakingOption] = [
         TweakingOption(title: "Empty statistics") { self.statisticsCellModels = [] },
-        TweakingOption(title: "With statistics") { self.statisticsCellModels = self.exampleStatisticsCellModels },
+        TweakingOption(title: "With statistics") { self.statisticsCellModels = AdManagementDemoView.exampleStatisticsCellModels },
     ]
     
     private let estimatedRowHeight: CGFloat = 200
@@ -63,13 +63,13 @@ public class AdManagementDemoView: UIView, Tweakable {
         return StatisticsModel(header: header, statisticItems: statisticsCellModels)
     }()
     
-    private var exampleStatisticsCellModels: [StatisticsItemModel] = [
+    private static var exampleStatisticsCellModels: [StatisticsItemModel] = [
         .init(type: .seen, value: 968, text: "har sett annonsen"),
         .init(type: .favourited, value: 16, text: "har lagret annonsen"),
         .init(type: .email, value: 1337, text: "har fått e-post om annonsen")
     ]
 
-    private lazy var statisticsCellModels: [StatisticsItemModel] = exampleStatisticsCellModels {
+    private var statisticsCellModels: [StatisticsItemModel] = exampleStatisticsCellModels {
         didSet {
             tableView.reloadData()
         }
