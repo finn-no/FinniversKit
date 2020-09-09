@@ -39,10 +39,14 @@ public class UserAdTableViewCell: UITableViewCell {
 
     // MARK: - Private properties
 
-    private lazy var userAdDetailsView: UserAdDetailsView = UserAdDetailsView(withAutoLayout: true)
+    private lazy var userAdDetailsView: UserAdDetailsView = {
+        let view = UserAdDetailsView(withAutoLayout: true)
+        view.directionalLayoutMargins = .zero
+        return view
+    }()
 
-    private lazy var userAdDetailsViewTopAnchor = userAdDetailsView.topAnchor.constraint(equalTo: contentView.topAnchor)
-    private lazy var userAdDetailsViewBottomAnchor = userAdDetailsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0, priority: .init(999))
+    private lazy var userAdDetailsViewTopAnchor = userAdDetailsView.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor)
+    private lazy var userAdDetailsViewBottomAnchor = userAdDetailsView.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor, constant: 0, priority: .init(999))
 
     // MARK: - Init
 
@@ -65,8 +69,8 @@ public class UserAdTableViewCell: UITableViewCell {
         contentView.addSubview(userAdDetailsView)
 
         NSLayoutConstraint.activate([
-            userAdDetailsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            userAdDetailsView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            userAdDetailsView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+            userAdDetailsView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
             userAdDetailsViewTopAnchor,
             userAdDetailsViewBottomAnchor,
         ])

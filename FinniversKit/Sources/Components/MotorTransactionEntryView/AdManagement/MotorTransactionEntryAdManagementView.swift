@@ -164,10 +164,10 @@ private extension MotorTransactionEntryAdManagementView {
         contentView.addGestureRecognizer(contentViewTapRecognizer)
 
         NSLayoutConstraint.activate([
-            contentView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             iconImageView.widthAnchor.constraint(equalToConstant: iconSize),
             iconImageView.heightAnchor.constraint(equalToConstant: iconSize),
 
@@ -204,8 +204,8 @@ private extension MotorTransactionEntryAdManagementView {
         externalContentView.addGestureRecognizer(externalContentViewTapRecognizer)
 
         NSLayoutConstraint.activate([
-            externalContentView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            externalContentView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            externalContentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            externalContentView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             separatorView.topAnchor.constraint(equalTo: contentView.bottomAnchor),
             separatorView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),

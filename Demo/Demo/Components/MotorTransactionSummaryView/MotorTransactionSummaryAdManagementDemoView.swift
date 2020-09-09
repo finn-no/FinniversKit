@@ -33,8 +33,8 @@ private extension MotorTransactionEntryAdManagementDemoView {
         addSubview(transactionView)
 
         NSLayoutConstraint.activate([
-            transactionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            transactionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            transactionView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            transactionView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
         ])
 
         transactionView.configure(with: model, shouldShowExternalView: true)

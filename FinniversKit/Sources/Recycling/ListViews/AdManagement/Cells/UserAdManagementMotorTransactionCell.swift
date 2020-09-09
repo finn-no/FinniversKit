@@ -14,7 +14,11 @@ public class UserAdManagementMotorTransactionCell: UITableViewCell {
 
     // MARK: - Private
 
-    private lazy var transactionView = MotorTransactionEntryAdManagementView(withAutoLayout: true)
+    private lazy var transactionView: MotorTransactionEntryAdManagementView = {
+        let view = MotorTransactionEntryAdManagementView(withAutoLayout: true)
+        view.delegate = self
+        return view
+    }()
 
     // MARK: - Initalization
 
@@ -39,10 +43,16 @@ public class UserAdManagementMotorTransactionCell: UITableViewCell {
     private func setup() {
         backgroundColor = .bgPrimary
         selectionStyle = .none
-
-        addSubview(transactionView)
-        transactionView.fillInSuperview()
-        transactionView.delegate = self
+        
+        contentView.addSubview(transactionView)
+        
+        NSLayoutConstraint.activate([
+            transactionView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            transactionView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+            transactionView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
+            transactionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+        ])
     }
 }
 
