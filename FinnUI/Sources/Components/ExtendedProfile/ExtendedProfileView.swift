@@ -52,7 +52,10 @@ public class ExtendedProfileView: UIView {
     }()
 
     private lazy var toggleButton: ToggleButton = {
-        let button = ToggleButton(frame: CGRect(x: 0, y: 0,
+        let button = ToggleButton(
+            frame: CGRect(
+                x: 0,
+                y: 0,
                 width: ExtendedProfileView.toggleButtonSize,
                 height: ExtendedProfileView.toggleButtonSize
             )
@@ -97,18 +100,17 @@ public class ExtendedProfileView: UIView {
     // MARK: - Private properties
 
     private static let toggleButtonSize: CGFloat = 30
-    private static let bodyViewDefaultSpacing: CGFloat = .spacingS
-    private static let bodyViewTopMargin: CGFloat = .spacingM
+    private static let bodyViewHorizontalSpacing: CGFloat = .spacingS
 
     private lazy var headerImageHeightConstraint = {
         headerImageView.heightAnchor.constraint(equalToConstant: 150)
     }()
 
-    private lazy var bodyViewTopAnchorConstraint = {
+    private lazy var bodyStackViewTopAnchorConstraint = {
         bodyStackView.topAnchor.constraint(equalTo: sloganBoxView.bottomAnchor)
     }()
 
-    private lazy var bodyViewBottomAnchorConstraint = {
+    private lazy var bodyStackViewBottomAnchorConstraint = {
         bodyStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
     }()
 
@@ -149,7 +151,7 @@ public class ExtendedProfileView: UIView {
         sloganBoxView.addSubview(toggleButton)
 
         let bodyStackViewSpacing: CGFloat =
-            traitCollection.horizontalSizeClass == .compact ? ExtendedProfileView.bodyViewDefaultSpacing : 0
+            traitCollection.horizontalSizeClass == .compact ? ExtendedProfileView.bodyViewHorizontalSpacing : 0
 
         NSLayoutConstraint.activate([
             headerImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -170,10 +172,10 @@ public class ExtendedProfileView: UIView {
             toggleButton.widthAnchor.constraint(equalToConstant: ExtendedProfileView.toggleButtonSize),
             toggleButton.trailingAnchor.constraint(equalTo: sloganBoxView.trailingAnchor, constant: -.spacingS),
 
-            bodyViewTopAnchorConstraint,
+            bodyStackViewTopAnchorConstraint,
             bodyStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: bodyStackViewSpacing),
             bodyStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -bodyStackViewSpacing),
-            bodyViewBottomAnchorConstraint,
+            bodyStackViewBottomAnchorConstraint,
 
             footerImageView.heightAnchor.constraint(equalToConstant: 200),
         ])
@@ -192,20 +194,21 @@ public class ExtendedProfileView: UIView {
 
         if showHeaderImage,
             let headerImageUrl = viewModel.headerImageUrl {
-            headerImageView.loadImage(for: headerImageUrl,
-                                imageWidth: width,
-                                loadingColor: viewModel.headerBackgroundColor,
-                                fallbackImage: fallbackImage
+            headerImageView.loadImage(
+                for: headerImageUrl,
+                imageWidth: width,
+                loadingColor: viewModel.headerBackgroundColor,
+                fallbackImage: fallbackImage
             )
         } else {
             headerImageView.isHidden = true
             headerImageHeightConstraint.constant = 0
         }
 
-        sloganLabel.text = viewModel.sloganText
-        sloganBoxView.backgroundColor = viewModel.sloganBackgroundColor
-        sloganLabel.textColor = viewModel.sloganTextColor
         backgroundColor = viewModel.mainBackgroundColor
+        sloganLabel.text = viewModel.sloganText
+        sloganLabel.textColor = viewModel.sloganTextColor
+        sloganBoxView.backgroundColor = viewModel.sloganBackgroundColor
 
         switch state {
         case .collapsed, .expanded:
@@ -217,14 +220,15 @@ public class ExtendedProfileView: UIView {
         }
 
         if state == .collapsed {
-            bodyViewTopAnchorConstraint.constant = 0
-            bodyViewBottomAnchorConstraint.constant = 0
+            bodyStackViewTopAnchorConstraint.constant = 0
+            bodyStackViewBottomAnchorConstraint.constant = 0
             bodyStackView.removeArrangedSubviews()
             return
         }
 
-        bodyViewTopAnchorConstraint.constant = ExtendedProfileView.bodyViewTopMargin
-        bodyViewBottomAnchorConstraint.constant = placement == .sidebar ? -.spacingM : -2 * .spacingL
+        bodyStackView.removeArrangedSubviews()
+        bodyStackViewTopAnchorConstraint.constant = .spacingM
+        bodyStackViewBottomAnchorConstraint.constant = placement == .sidebar ? -.spacingM : -2 * .spacingL
 
         if !viewModel.linkTitles.isEmpty {
             setupLinks(with: viewModel.linkTitles, withTextColor: viewModel.mainTextColor)
@@ -253,25 +257,27 @@ public class ExtendedProfileView: UIView {
         }
     }
 
+    // MARK: - Private methods
+
     private func setupLinks(with titles: [String], withTextColor textColor: UIColor) {
         linksStackView.removeArrangedSubviews()
         bodyStackView.addArrangedSubview(linksStackView)
 
         for title in titles {
-            addButton(withTitle: title, textColor: textColor, to: linksStackView)
+            addLinkButton(with: title, withTextColor: textColor)
 
             if title != titles.last {
-                addSeparatorLine(withColor: textColor, to: linksStackView)
+                addLinkButtonSeparatorLine(withColor: textColor)
             }
         }
     }
 
     private func setupFooterImage(imageUrl: String, width: CGFloat, loadingColor: UIColor) {
-        let extraSpacing: CGFloat = .spacingM
+        let extraInsets: CGFloat = .spacingM
 
         footerImageView.loadImage(
             for: imageUrl,
-            imageWidth: width - 2 * (extraSpacing + ExtendedProfileView.bodyViewDefaultSpacing),
+            imageWidth: width - 2 * (extraInsets + ExtendedProfileView.bodyViewHorizontalSpacing),
             loadingColor: loadingColor,
             fallbackImage: fallbackImage
         )
@@ -280,16 +286,14 @@ public class ExtendedProfileView: UIView {
         footerImageContainer.addSubview(footerImageView)
 
         NSLayoutConstraint.activate([
-            footerImageView.leadingAnchor.constraint(equalTo: footerImageContainer.leadingAnchor, constant: extraSpacing),
+            footerImageView.leadingAnchor.constraint(equalTo: footerImageContainer.leadingAnchor, constant: extraInsets),
             footerImageView.topAnchor.constraint(equalTo: footerImageContainer.topAnchor),
-            footerImageView.trailingAnchor.constraint(equalTo: footerImageContainer.trailingAnchor, constant: -extraSpacing),
+            footerImageView.trailingAnchor.constraint(equalTo: footerImageContainer.trailingAnchor, constant: -extraInsets),
             footerImageView.bottomAnchor.constraint(equalTo: footerImageContainer.bottomAnchor),
         ])
     }
 
-    // MARK: - Private methods
-
-    private func addButton(withTitle title: String, textColor: UIColor, to stackView: UIStackView) {
+    private func addLinkButton(with title: String, withTextColor textColor: UIColor) {
         let style = Button.Style.link.overrideStyle(
             textColor: textColor,
             highlightedTextColor: textColor.withAlphaComponent(0.6)
@@ -298,14 +302,14 @@ public class ExtendedProfileView: UIView {
         button.setTitle(title, for: .normal)
         button.addTarget(self, action: #selector(linkTapped(_:)), for: .touchUpInside)
 
-        stackView.addArrangedSubview(button)
+        linksStackView.addArrangedSubview(button)
     }
 
-    private func addSeparatorLine(withColor color: UIColor, to stackView: UIStackView) {
+    private func addLinkButtonSeparatorLine(withColor color: UIColor) {
         let separator = UIView(withAutoLayout: true)
         separator.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale).isActive = true
         separator.backgroundColor = color.withAlphaComponent(0.5)
-        stackView.addArrangedSubview(separator)
+        linksStackView.addArrangedSubview(separator)
     }
 
     private func updateToggleButtonState() {
@@ -354,6 +358,8 @@ private class ToggleButton: UIButton {
 
     private let iconView: UIView
 
+    // MARK: - Init
+
     override init(frame: CGRect) {
         iconView = UIView(frame: frame)
         shapeLayer = CAShapeLayer()
@@ -376,6 +382,8 @@ private class ToggleButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Lifecycle
+
     override func layoutSubviews() {
         super.layoutSubviews()
         iconView.frame.origin = CGPoint(x: bounds.width - iconView.frame.width, y: 0)
@@ -385,6 +393,8 @@ private class ToggleButton: UIButton {
         super.tintColorDidChange()
         shapeLayer.strokeColor = tintColor.cgColor
     }
+
+    // MARK: - Internal methods
 
     func setExpanded(_ expanded: Bool, animated: Bool) {
         if animated {
@@ -397,6 +407,8 @@ private class ToggleButton: UIButton {
         }
         self.expanded = expanded
     }
+
+    // MARK: - Private methods
 
     private func expandPath() -> CGPath {
         let path = circlePath()
@@ -443,6 +455,7 @@ private class ToggleButton: UIButton {
 // MARK: - Private extensions
 
 private extension UIColor {
+
     var luminance: CGFloat {
         var red: CGFloat = 0
         var green: CGFloat = 0
