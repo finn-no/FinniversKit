@@ -27,7 +27,6 @@ final class ExtendedProfileDemoView: UIView, Tweakable {
         sloganText: "Nysgjerrig på jobb hos oss?",
         linkTitles: ["Flere stillinger", "Karrieremuligheter", "Hjemmesiden vår"],
         actionButtonTitle: "Les bloggen vår her",
-        headerBackgroundColor: .toothPaste,
         sloganTextColor: .white,
         sloganBackgroundColor: UIColor(r: 0, g: 100, b: 248),
         mainTextColor: UIColor(r: 0, g: 100, b: 248),

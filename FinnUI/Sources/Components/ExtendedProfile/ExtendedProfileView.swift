@@ -150,6 +150,7 @@ public class ExtendedProfileView: UIView {
         sloganBoxView.addSubview(sloganLabel)
         sloganBoxView.addSubview(toggleButton)
 
+        let toggleButtonSpacing: CGFloat = .spacingS
         let bodyStackViewSpacing: CGFloat =
             traitCollection.horizontalSizeClass == .compact ? ExtendedProfileView.bodyViewHorizontalSpacing : 0
 
@@ -164,13 +165,15 @@ public class ExtendedProfileView: UIView {
             sloganBoxView.trailingAnchor.constraint(equalTo: trailingAnchor),
             sloganBoxView.heightAnchor.constraint(equalToConstant: 50),
 
-            sloganLabel.centerXAnchor.constraint(equalTo: sloganBoxView.centerXAnchor),
+            sloganLabel.leadingAnchor.constraint(equalTo: sloganBoxView.leadingAnchor,
+                                                 constant: ExtendedProfileView.toggleButtonSize + toggleButtonSpacing),
+            sloganLabel.trailingAnchor.constraint(equalTo: toggleButton.leadingAnchor),
             sloganLabel.centerYAnchor.constraint(equalTo: sloganBoxView.centerYAnchor),
 
             toggleButton.centerYAnchor.constraint(equalTo: sloganBoxView.centerYAnchor),
             toggleButton.heightAnchor.constraint(equalToConstant: ExtendedProfileView.toggleButtonSize),
             toggleButton.widthAnchor.constraint(equalToConstant: ExtendedProfileView.toggleButtonSize),
-            toggleButton.trailingAnchor.constraint(equalTo: sloganBoxView.trailingAnchor, constant: -.spacingS),
+            toggleButton.trailingAnchor.constraint(equalTo: sloganBoxView.trailingAnchor, constant: -toggleButtonSpacing),
 
             bodyStackViewTopAnchorConstraint,
             bodyStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: bodyStackViewSpacing),
@@ -197,7 +200,7 @@ public class ExtendedProfileView: UIView {
             headerImageView.loadImage(
                 for: headerImageUrl,
                 imageWidth: width,
-                loadingColor: viewModel.headerBackgroundColor,
+                loadingColor: viewModel.mainBackgroundColor,
                 fallbackImage: fallbackImage
             )
         } else {
