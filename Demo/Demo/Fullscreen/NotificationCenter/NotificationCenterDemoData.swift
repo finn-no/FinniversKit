@@ -27,14 +27,18 @@ struct NotificationCenterItem: NotificationCellModel {
 
 struct NotificationCenterSection: NotificationCenterHeaderViewModel {
     let title: String?
-    let markAllAsReadTitle: String?
     let count: Int?
     let searchName: String?
     var items: [NotificationCenterCellType]
 
     var savedSearchButtonModel: SavedSearchHeaderButtonModel? {
-        guard let searchName = searchName, let count = count else { return nil }
-        let text = "\(count) nye treff "
+        guard let searchName = searchName else { return nil }
+        let text: String
+        if let count = count {
+            text = "\(count) nye treff "
+        } else {
+            text = "Nytt treff i "
+        }
         return SavedSearchHeaderButtonModel(
             text: text + searchName,
             highlightedRange: NSRange(location: text.count, length: searchName.count)
@@ -47,14 +51,13 @@ struct NotificationCenterSegment {
     var sections: [NotificationCenterSection]
 }
 
-extension NotificationCenterDemoView {
+extension NotificationCenterDemoViewController {
     var savedSearchSegment: NotificationCenterSegment {
         NotificationCenterSegment(
             title: "Lagrede søk",
             sections: [
                 NotificationCenterSection(
                     title: "I dag",
-                    markAllAsReadTitle: "Marker alt som lest",
                     count: 2,
                     searchName: "Eiendom i Oslo",
                     items: [
@@ -82,7 +85,6 @@ extension NotificationCenterDemoView {
                 ),
                 NotificationCenterSection(
                     title: "I går",
-                    markAllAsReadTitle: nil,
                     count: 2,
                     searchName: "Drømmebilen",
                     items: [
@@ -114,7 +116,6 @@ extension NotificationCenterDemoView {
                 ),
                 NotificationCenterSection(
                     title: "Mandag 2. mars",
-                    markAllAsReadTitle: nil,
                     count: 10,
                     searchName: "Drømmeboliger",
                     items: [
@@ -174,13 +175,228 @@ extension NotificationCenterDemoView {
         )
     }
 
+    var savedSearchSegmentGroupedPerSearch: NotificationCenterSegment {
+        NotificationCenterSegment(
+            title: "Lagrede søk",
+            sections: [
+                NotificationCenterSection(
+                    title: nil,
+                    count: 2,
+                    searchName: "Eiendom i Oslo",
+                    items: [
+                        .notificationCell(NotificationCenterItem(
+                            isRead: false,
+                            content: SavedSearchAdData(
+                                imagePath: "https://jwproperty.com/files/wp-content/uploads/2015/01/Smart_House-Valley_Hua_Hin0131.jpg",
+                                locationText: "Iladalen",
+                                title: "Meget lekker 2-roms med solrik balkong, optimal planløsning og heis. Flytt rett inn. Ingen forkjøp. Ingen dok. avgift.",
+                                priceText: "2 950 000 kr",
+                                ribbonViewModel: nil
+                            )
+                        )),
+                        .notificationCell(NotificationCenterItem(
+                            isRead: true,
+                            content: SavedSearchAdData(
+                                imagePath: "http://i3.au.reastatic.net/home-ideas/raw/a96671bab306bcb39783bc703ac67f0278ffd7de0854d04b7449b2c3ae7f7659/facades.jpg",
+                                locationText: "Kragskogen/Holmenkollen",
+                                title: "Lekker og innholdsrik endeleilighet med solrik sydvendt terrasse, garasje og god standard fra 2013/2014.",
+                                priceText: "3 450 000 kr",
+                                ribbonViewModel: .init(style: .warning, title: "Solgt")
+                            )
+                        ))
+                    ]
+                ),
+                NotificationCenterSection(
+                    title: nil,
+                    count: 2,
+                    searchName: "Drømmebilen",
+                    items: [
+                        .notificationCell(NotificationCenterItem(
+                            isRead: true,
+                            content: SavedSearchAdData(
+                                imagePath: "https://i.pinimg.com/originals/2d/ee/a2/2deea203ebc1da505db5676821ca88fb.jpg",
+                                locationText: "Lyngdal",
+                                title: "Opel Kadett KADETT 1.2 1200",
+                                priceText: "45 000 kr",
+                                ribbonViewModel: .init(style: .warning, title: "Solgt")
+                            )
+                        )),
+                        .notificationCell(NotificationCenterItem(
+                            isRead: true,
+                            content: SavedSearchAdData(
+                                imagePath: "https://i.pinimg.com/originals/1a/f9/23/1af923256d67b122f1c21fd41e19aa66.jpg",
+                                locationText: "Kristiansand S",
+                                title: "Opel Kadett KADETT C 1.2-0",
+                                priceText: "23 000 kr",
+                                ribbonViewModel: nil
+                            )
+                        )),
+                        .feedbackCell(self, .initial, FeedbackViewModel(
+                            title: "Heisann! Hvordan var det å bruke den nye lista med varslinger?",
+                            positiveButtonTitle: "Gi rask tilbakemelding"
+                        ))
+                    ]
+                ),
+                NotificationCenterSection(
+                    title: nil,
+                    count: 10,
+                    searchName: "Drømmeboliger",
+                    items: [
+                        .notificationCell(NotificationCenterItem(
+                            isRead: true,
+                            content: SavedSearchAdData(
+                                imagePath: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
+                                locationText: "Oslo",
+                                title: "Oslo",
+                                priceText: "2 950 000 kr",
+                                ribbonViewModel: nil
+                            )
+                        )),
+                        .notificationCell(NotificationCenterItem(
+                            isRead: true,
+                            content: SavedSearchAdData(
+                                imagePath: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
+                                locationText: "Oslo",
+                                title: "Oslo",
+                                priceText: "2 950 000 kr",
+                                ribbonViewModel: nil
+                            )
+                        )),
+                        .notificationCell(NotificationCenterItem(
+                            isRead: true,
+                            content: SavedSearchAdData(
+                                imagePath: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
+                                locationText: "Oslo",
+                                title: "Oslo",
+                                priceText: "2 950 000 kr",
+                                ribbonViewModel: nil
+                            )
+                        )),
+                        .notificationCell(NotificationCenterItem(
+                            isRead: true,
+                            content: SavedSearchAdData(
+                                imagePath: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
+                                locationText: "Oslo",
+                                title: "Oslo",
+                                priceText: "2 950 000 kr",
+                                ribbonViewModel: nil
+                            )
+                        )),
+                        .notificationCell(NotificationCenterItem(
+                            isRead: true,
+                            content: SavedSearchAdData(
+                                imagePath: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
+                                locationText: "Oslo",
+                                title: "Oslo",
+                                priceText: "2 950 000 kr",
+                                ribbonViewModel: nil
+                            )
+                        )),
+                    ]
+                )
+            ]
+        )
+    }
+
+    var savedSearchSegmentFlat: NotificationCenterSegment {
+        NotificationCenterSegment(
+            title: "Lagrede søk",
+            sections: [
+                NotificationCenterSection(
+                    title: nil,
+                    count: nil,
+                    searchName: "Eiendom i Oslo",
+                    items: [
+                        .notificationCell(NotificationCenterItem(
+                            isRead: false,
+                            content: SavedSearchAdData(
+                                imagePath: "https://jwproperty.com/files/wp-content/uploads/2015/01/Smart_House-Valley_Hua_Hin0131.jpg",
+                                locationText: "Iladalen",
+                                title: "Meget lekker 2-roms med solrik balkong, optimal planløsning og heis. Flytt rett inn. Ingen forkjøp. Ingen dok. avgift.",
+                                priceText: "2 950 000 kr",
+                                ribbonViewModel: nil
+                            )
+                        ))
+                    ]
+                ),
+                NotificationCenterSection(
+                    title: nil,
+                    count: nil,
+                    searchName: "Eiendom i Oslo",
+                    items: [
+                        .notificationCell(NotificationCenterItem(
+                            isRead: true,
+                            content: SavedSearchAdData(
+                                imagePath: "http://i3.au.reastatic.net/home-ideas/raw/a96671bab306bcb39783bc703ac67f0278ffd7de0854d04b7449b2c3ae7f7659/facades.jpg",
+                                locationText: "Kragskogen/Holmenkollen",
+                                title: "Lekker og innholdsrik endeleilighet med solrik sydvendt terrasse, garasje og god standard fra 2013/2014.",
+                                priceText: "3 450 000 kr",
+                                ribbonViewModel: .init(style: .warning, title: "Solgt")
+                            )
+                        ))
+                    ]
+                ),
+                NotificationCenterSection(
+                    title: nil,
+                    count: nil,
+                    searchName: "Drømmebilen",
+                    items: [
+                        .notificationCell(NotificationCenterItem(
+                            isRead: true,
+                            content: SavedSearchAdData(
+                                imagePath: "https://i.pinimg.com/originals/2d/ee/a2/2deea203ebc1da505db5676821ca88fb.jpg",
+                                locationText: "Lyngdal",
+                                title: "Opel Kadett KADETT 1.2 1200",
+                                priceText: "45 000 kr",
+                                ribbonViewModel: .init(style: .warning, title: "Solgt")
+                            )
+                        )),
+                    ]
+                ),
+                NotificationCenterSection(
+                    title: nil,
+                    count: nil,
+                    searchName: "Drømmebilen",
+                    items: [
+                        .notificationCell(NotificationCenterItem(
+                            isRead: true,
+                            content: SavedSearchAdData(
+                                imagePath: "https://i.pinimg.com/originals/1a/f9/23/1af923256d67b122f1c21fd41e19aa66.jpg",
+                                locationText: "Kristiansand S",
+                                title: "Opel Kadett KADETT C 1.2-0",
+                                priceText: "23 000 kr",
+                                ribbonViewModel: nil
+                            )
+                        )),
+                    ]
+                ),
+                NotificationCenterSection(
+                    title: nil,
+                    count: nil,
+                    searchName: "Drømmeboliger",
+                    items: [
+                        .notificationCell(NotificationCenterItem(
+                            isRead: true,
+                            content: SavedSearchAdData(
+                                imagePath: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
+                                locationText: "Oslo",
+                                title: "Oslo",
+                                priceText: "2 950 000 kr",
+                                ribbonViewModel: nil
+                            )
+                        )),
+                    ]
+                )
+            ]
+        )
+    }
+
     var personalSegment: NotificationCenterSegment {
         NotificationCenterSegment(
             title: "Tips til deg",
             sections: [
                 NotificationCenterSection(
                     title: "I dag",
-                    markAllAsReadTitle: "Marker alt som lest",
                     count: nil,
                     searchName: nil,
                     items: [
@@ -198,7 +414,6 @@ extension NotificationCenterDemoView {
                 ),
                 NotificationCenterSection(
                     title: "I går",
-                    markAllAsReadTitle: nil,
                     count: nil,
                     searchName: nil,
                     items: [
@@ -224,7 +439,6 @@ extension NotificationCenterDemoView {
             sections: [
                 NotificationCenterSection(
                     title: nil,
-                    markAllAsReadTitle: nil,
                     count: nil,
                     searchName: nil,
                     items: [
@@ -245,7 +459,6 @@ extension NotificationCenterDemoView {
             sections: [
                 NotificationCenterSection(
                     title: nil,
-                    markAllAsReadTitle: nil,
                     count: nil,
                     searchName: nil,
                     items: [

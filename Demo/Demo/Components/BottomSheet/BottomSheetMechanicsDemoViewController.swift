@@ -267,7 +267,7 @@ extension BottomSheetMechanicsDemoViewController: BottomSheetDelegate {
     }
 
     func bottomSheetDidCancelDismiss(_ bottomSheet: BottomSheet) {
-        let alertStyle: UIAlertController.Style = UIDevice.isIPad() ? .alert : .actionSheet
+        let alertStyle: UIAlertController.Style = UITraitCollection.isHorizontalSizeClassRegular ? .alert : .actionSheet
 
         let alertController = UIAlertController(title: "Dismiss?",
                                                 message: "Confirmation required",

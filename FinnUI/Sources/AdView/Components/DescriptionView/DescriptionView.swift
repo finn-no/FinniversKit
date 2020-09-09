@@ -48,7 +48,7 @@ struct DescriptionView: View {
 }
 
 @available(iOS 13.0, *)
-//swiftlint:disable:next type_name
+//swiftlint:disable:next type_name superfluous_disable_command
 struct DescriptionView_Previews: PreviewProvider {
     static let ad = BapAdViewModel.sampleData
 

@@ -150,7 +150,7 @@ extension IconCollectionView: UICollectionViewDelegateFlowLayout {
     }
 
     private func cellWidth(forWidth width: CGFloat, viewModel: IconCollectionViewModel) -> CGFloat {
-        let width = UIDevice.isIPad()
+        let width = isHorizontalSizeClassRegular
             ? max(width / CGFloat(viewModels.count), viewModel.image.size.width * 2)
             : width / 2
         return width
