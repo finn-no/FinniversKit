@@ -5,26 +5,46 @@
 import FinniversKit
 import FinnUI
 
-final class NotificationCenterDemoView: UIView, Tweakable {
-
+final class NotificationCenterDemoViewController: DemoViewController<UIView>, Tweakable {
     lazy var tweakingOptions: [TweakingOption] = [
         TweakingOption(title: "Empty states", action: {
             self.segments = [self.emptyPersonalNotificationsSegment, self.emptySavedSearchNotificationsSegment]
+            self.notificationsCenterView.savedSearchGroupTitle = "GRUPPER PER DAG"
             self.notificationsCenterView.reloadData()
         }),
-        TweakingOption(title: "Populated states", action: {
-            self.segments = [self.personalSegment, self.savedSearchSegment]
+        TweakingOption(title: "Populated states (grouped by search)", action: {
+            self.segments = [self.personalSegment, self.savedSearchSegmentGroupedPerSearch]
+            self.notificationsCenterView.savedSearchGroupTitle = "GRUPPER PER SØK"
             self.notificationsCenterView.reloadData()
+        }),
+        TweakingOption(title: "Populated states (grouped by day)", action: {
+            self.segments = [self.personalSegment, self.savedSearchSegment]
+            self.notificationsCenterView.savedSearchGroupTitle = "GRUPPER PER DAG"
+            self.notificationsCenterView.reloadData()
+        }),
+        TweakingOption(title: "Populated states (flat)", action: {
+            self.segments = [self.personalSegment, self.savedSearchSegmentFlat]
+            self.notificationsCenterView.savedSearchGroupTitle = "KRONOLOGISK"
+            self.notificationsCenterView.reloadData()
+            self.notificationsCenterView.showGroupingCallout(
+                with: "Vil du endre hvordan varslingene grupperes?\nEndre her"
+            )
         })
     ]
 
+    var bottomSheet: BottomSheet?
+
     private lazy var segments = [
         personalSegment,
-        savedSearchSegment
+        savedSearchSegmentGroupedPerSearch
     ]
 
     private lazy var notificationsCenterView: NotificationCenterView = {
-        let notificationCenterView = NotificationCenterView(withAutoLayout: true)
+        let notificationCenterView = NotificationCenterView(
+            markAllAsReadButtonTitle: "Marker alt som lest"
+        )
+        notificationCenterView.savedSearchGroupTitle = "GRUPPER PER SØK"
+        notificationCenterView.translatesAutoresizingMaskIntoConstraints = false
         notificationCenterView.selectedSegment = 1
         notificationCenterView.dataSource = self
         notificationCenterView.delegate = self
@@ -32,26 +52,27 @@ final class NotificationCenterDemoView: UIView, Tweakable {
         return notificationCenterView
     }()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addSubview(notificationsCenterView)
-        notificationsCenterView.fillInSuperview()
-        notificationsCenterView.reloadData()
-    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+        childViewController?.view.addSubview(notificationsCenterView)
+        notificationsCenterView.fillInSuperviewSafeArea()
 
+        tweakingOptions[2].action?()
+    }
 }
 
-extension NotificationCenterDemoView: NotificationCenterViewDataSource {
+extension NotificationCenterDemoViewController: NotificationCenterViewDataSource {
     func numberOfSegments(in view: NotificationCenterView) -> Int {
         segments.count
     }
 
     func notificationCenterView(_ view: NotificationCenterView, titleInSegment segment: Int) -> String {
         segments[segment].title
+    }
+
+    func notificationCenterView(_ view: NotificationCenterView, includeHeaderIn segment: Int) -> Bool {
+        segments[segment].title == "Lagrede søk"
     }
 
     func notificationCenterView(_ view: NotificationCenterView, numberOfSectionsInSegment segment: Int) -> Int {
@@ -84,9 +105,41 @@ extension NotificationCenterDemoView: NotificationCenterViewDataSource {
     }
 }
 
-extension NotificationCenterDemoView: NotificationCenterViewDelegate {
+extension NotificationCenterDemoViewController: NotificationCenterViewDelegate {
     func notificationCenterView(_ view: NotificationCenterView, didChangeToSegment segment: Int) {
         print("Did change to segment: \(segment)")
+    }
+
+    func notificationCenterView(_ view: NotificationCenterView, didSelectMarkAllAsReadButtonIn segment: Int) {
+
+    }
+
+    func notificationCenterView(_ view: NotificationCenterView, didSelectShowGroupOptions segment: Int, sortingView: UIView) {
+        let view = NotificationGroupOptionsView(
+            viewModel: .init(
+                bySearchTitle: "Gruppering per søk",
+                byDayTitle: "Gruppering per dag",
+                flatTitle: "Vis i kronologisk rekkefølge"
+            ),
+            selectedOption: .byDay
+        )
+
+        view.delegate = self
+
+        let optionsSize = view.systemLayoutSizeFitting(
+            self.view.frame.size,
+            withHorizontalFittingPriority: .defaultHigh,
+            verticalFittingPriority: .fittingSizeLevel
+        )
+        let bottomSheet = BottomSheet(
+            view: view,
+            height: .init(
+                compact: optionsSize.height + 50,
+                expanded: optionsSize.height + 50
+            )
+        )
+        present(bottomSheet, animated: true, completion: nil)
+        self.bottomSheet = bottomSheet
     }
 
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectModelAt indexPath: IndexPath) {
@@ -112,10 +165,6 @@ extension NotificationCenterDemoView: NotificationCenterViewDelegate {
 
     }
 
-    func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectMarkAllAsReadButtonIn section: Int) {
-
-    }
-
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didPullToRefreshUsing refreshControl: UIRefreshControl) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             refreshControl.endRefreshing()
@@ -123,13 +172,13 @@ extension NotificationCenterDemoView: NotificationCenterViewDelegate {
     }
 }
 
-extension NotificationCenterDemoView: FeedbackViewDelegate {
+extension NotificationCenterDemoViewController: FeedbackViewDelegate {
     func feedbackView(_ feedbackView: FeedbackView, didSelectButtonOfType buttonType: FeedbackView.ButtonType, forState state: FeedbackView.State) {
         print("Did select button type: \(buttonType)")
     }
 }
 
-extension NotificationCenterDemoView: RemoteImageViewDataSource {
+extension NotificationCenterDemoViewController: RemoteImageViewDataSource {
     func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
         nil
     }
@@ -156,5 +205,20 @@ extension NotificationCenterDemoView: RemoteImageViewDataSource {
 
     func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {
 
+    }
+}
+
+extension NotificationCenterDemoViewController: NotificationGroupOptionsViewDelegate {
+    func notificationGroupOptionsView(_ view: NotificationGroupOptionsView, didSelect option: NotificationCenterSearchGroupOption) {
+        bottomSheet?.dismiss(animated: true, completion: { [weak self] in
+            switch option {
+            case .byDay:
+                self?.tweakingOptions[2].action?()
+            case .bySearch:
+                self?.tweakingOptions[1].action?()
+            case .flat:
+                self?.tweakingOptions[3].action?()
+            }
+        })
     }
 }

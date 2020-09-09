@@ -71,7 +71,7 @@ public class MessageFormBottomSheet: BottomSheet {
     }
 
     private func dismissWithConfirmation() {
-        let alertStyle: UIAlertController.Style = UIDevice.isIPad() ? .alert : .actionSheet
+        let alertStyle: UIAlertController.Style = isHorizontalSizeClassRegular ? .alert : .actionSheet
 
         let alertController = UIAlertController(title: viewModel.cancelFormAlertTitle,
                                                 message: viewModel.cancelFormAlertMessage,

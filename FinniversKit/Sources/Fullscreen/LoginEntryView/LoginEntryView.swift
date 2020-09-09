@@ -108,7 +108,7 @@ public class LoginEntryView: UIView {
         ])
 
         let dialogueConstraints: [NSLayoutConstraint]
-        if UIDevice.isIPad() {
+        if isHorizontalSizeClassRegular {
             dialogueConstraints = [
                 loginDialogue.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
                 loginDialogue.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),

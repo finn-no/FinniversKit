@@ -47,7 +47,7 @@ public class IconLinkListViewDemo: UIView, Tweakable {
 
 extension IconLinkListViewDemo: IconLinkViewDelegate {
     public func iconLinkViewWasSelected(_ view: IconLinkView, url: String, identifier: String?) {
-        print("🔥🔥🔥🔥 IconLinkView tapped with url: \(url), identifier: \(identifier)")
+        print("🔥🔥🔥🔥 IconLinkView tapped with url: \(url), identifier: \(identifier ?? "")")
     }
 }
 

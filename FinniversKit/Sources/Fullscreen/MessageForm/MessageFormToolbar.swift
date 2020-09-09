@@ -52,7 +52,7 @@ class MessageFormToolbar: UIView {
     private let toolbarBottomPadding: CGFloat = .spacingS
     private var toolbarCellHeight: CGFloat { return toolbarHeight - toolbarTopPadding - toolbarBottomPadding }
     private var toolbarCellMaxWidth: CGFloat {
-        if UIDevice.isIPad() {
+        if isHorizontalSizeClassRegular {
             return 200
         } else {
             return 130

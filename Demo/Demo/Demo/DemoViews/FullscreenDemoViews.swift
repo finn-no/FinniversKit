@@ -119,7 +119,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
             viewController.bottomSheet = bottomSheet
             return bottomSheet
         case .notificationCenterView:
-            return DemoViewController<NotificationCenterDemoView>(dismissType: .dismissButton)
+            return NotificationCenterDemoViewController(dismissType: .dismissButton)
         case .notificationCenterSearchView:
             return DemoViewController<NotificationCenterSearchDemoView>(dismissType: .dismissButton)
         case .favoriteAdActionView:
