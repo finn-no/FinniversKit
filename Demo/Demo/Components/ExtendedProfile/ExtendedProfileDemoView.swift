@@ -14,6 +14,7 @@ final class ExtendedProfileDemoView: UIView {
     }()
 
     private let viewModel = ExtendedProfileViewModel(
+        placement: .top,
         headerImageUrl: "https://images.finncdn.no/dynamic/1280w/2019/7/vertical-5/03/c/af6/e1c/a0-/9d7/e-1/1e9/-bb/ae-/25f/82a/737/90c_934677987.jpg",
         footerImageUrl: "https://images.finncdn.no/dynamic/1280w/2017/11/vertical-5/20/c/2c4/002/50-/cdd/5-1/1e7/-a3/4b-/ad8/ee3/1f4/_982215365.jpg",
         sloganText: "Nysgjerrig på jobb hos oss?",
@@ -22,8 +23,10 @@ final class ExtendedProfileDemoView: UIView {
         headerBackgroundColor: .toothPaste,
         sloganTextColor: .white,
         sloganBackgroundColor: UIColor(r: 0, g: 100, b: 248),
+        mainTextColor: UIColor(r: 0, g: 100, b: 248),
         mainBackgroundColor: .toothPaste,
-        mainTextColor: UIColor(r: 0, g: 100, b: 248)
+        actionButtonTextColor: .ice,
+        actionButtonBackgroundColor: .btnAction
     )
 
     // MARK: - Init
@@ -50,27 +53,25 @@ final class ExtendedProfileDemoView: UIView {
         ])
 
         view.configure(
-            forState: .contracted,
+            forState: .collapsed,
             with: viewModel,
-            forWidth: frame.width,
-            showHeaderImage: true
+            forWidth: frame.width
         )
     }
 }
 
 extension ExtendedProfileDemoView: ExtendedProfileViewDelegate {
+    func extendedProfileView(_ extendedProfileView: ExtendedProfileView, didSelectLinkAtIndex index: Int) {}
+
+    func extendedProfileViewDidSelectActionButton(_ extendedProfileView: ExtendedProfileView) {}
+
     func extendedProfileView(_ extendedProfileView: ExtendedProfileView, didChangeStateTo newState: ExtendedProfileView.State) {
         view.configure(
             forState: newState,
             with: viewModel,
-            forWidth: frame.width,
-            showHeaderImage: true
+            forWidth: frame.width
         )
     }
-
-    func extendedProfileViewDidSelectLink(atIndex: Int) {}
-
-    func extendedProfileViewDidSelectActionButton() {}
 }
 
 extension ExtendedProfileDemoView: RemoteImageViewDataSource {

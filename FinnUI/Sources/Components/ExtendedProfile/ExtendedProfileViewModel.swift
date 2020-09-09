@@ -8,6 +8,7 @@ public struct ExtendedProfileViewModel {
 
     public enum Placement {
         case top
+        case sidebar
         case bottom
     }
 

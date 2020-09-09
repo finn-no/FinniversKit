@@ -135,6 +135,9 @@ public class ExtendedProfileView: UIView {
         sloganBoxView.addSubview(sloganLabel)
         sloganBoxView.addSubview(toggleButton)
 
+        let bodyStackViewSpacing: CGFloat =
+            traitCollection.horizontalSizeClass == .compact ? ExtendedProfileView.bodyViewDefaultSpacing : 0
+
         NSLayoutConstraint.activate([
             headerImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerImageView.topAnchor.constraint(equalTo: topAnchor),
@@ -155,8 +158,8 @@ public class ExtendedProfileView: UIView {
             toggleButton.trailingAnchor.constraint(equalTo: sloganBoxView.trailingAnchor, constant: -.spacingS),
 
             bodyViewTopAnchorConstraint,
-            bodyStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: ExtendedProfileView.bodyViewDefaultSpacing),
-            bodyStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -ExtendedProfileView.bodyViewDefaultSpacing),
+            bodyStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: bodyStackViewSpacing),
+            bodyStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -bodyStackViewSpacing),
             bodyViewBottomAnchorConstraint,
 
             footerImageView.heightAnchor.constraint(equalToConstant: 200),
@@ -228,7 +231,8 @@ public class ExtendedProfileView: UIView {
             bodyStackView.setCustomSpacing(.spacingL, after: actionButton)
         }
 
-        if let footerImageUrl = viewModel.footerImageUrl {
+        if viewModel.placement != .sidebar,
+            let footerImageUrl = viewModel.footerImageUrl {
             setupFooterImage(
                 imageUrl: footerImageUrl,
                 width: width,
