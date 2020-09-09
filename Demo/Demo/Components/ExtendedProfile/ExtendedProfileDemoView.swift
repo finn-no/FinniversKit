@@ -5,35 +5,35 @@
 import FinnUI
 import FinniversKit
 
-final class ExtendedProfileDemoView: UIView {
-    private lazy var view: ExtendedProfileView = {
-        let view = ExtendedProfileView(withAutoLayout: true, remoteImageViewDataSource: self)
-        view.delegate = self
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+final class ExtendedProfileDemoView: UIView, Tweakable {
+
+    lazy var tweakingOptions: [TweakingOption] = {
+        return [
+            TweakingOption(title: "Top") {
+                self.placement = .top
+            },
+            TweakingOption(title: "Sidebar") {
+                self.placement = .sidebar
+            },
+            TweakingOption(title: "Bottom") {
+                self.placement = .bottom
+            }
+        ]
     }()
 
-    private let viewModel = ExtendedProfileViewModel(
-        placement: .top,
-        headerImageUrl: "https://images.finncdn.no/dynamic/1280w/2019/7/vertical-5/03/c/af6/e1c/a0-/9d7/e-1/1e9/-bb/ae-/25f/82a/737/90c_934677987.jpg",
-        footerImageUrl: "https://images.finncdn.no/dynamic/1280w/2017/11/vertical-5/20/c/2c4/002/50-/cdd/5-1/1e7/-a3/4b-/ad8/ee3/1f4/_982215365.jpg",
-        sloganText: "Nysgjerrig på jobb hos oss?",
-        linkTitles: ["Flere stillinger", "Karrieremuligheter", "Hjemmesiden vår"],
-        actionButtonTitle: "Les bloggen vår her",
-        headerBackgroundColor: .toothPaste,
-        sloganTextColor: .white,
-        sloganBackgroundColor: UIColor(r: 0, g: 100, b: 248),
-        mainTextColor: UIColor(r: 0, g: 100, b: 248),
-        mainBackgroundColor: .toothPaste,
-        actionButtonTextColor: .ice,
-        actionButtonBackgroundColor: .btnAction
-    )
+    private var extendedProfileView: ExtendedProfileView?
+
+    private var placement: ExtendedProfileViewModel.Placement = .top {
+        didSet {
+            setupExtendedProfileView(withPlacement: placement)
+        }
+    }
 
     // MARK: - Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        setupExtendedProfileView(withPlacement: placement)
     }
 
     required init?(coder: NSCoder) {
@@ -42,23 +42,50 @@ final class ExtendedProfileDemoView: UIView {
 
     // MARK: - Setup
 
-    private func setup() {
-        addSubview(view)
+    private func setupExtendedProfileView(withPlacement placement: ExtendedProfileViewModel.Placement) {
+        extendedProfileView?.removeFromSuperview()
+
+        let extendedProfileView = ExtendedProfileView(withAutoLayout: true, remoteImageViewDataSource: self)
+        extendedProfileView.delegate = self
+
+        addSubview(extendedProfileView)
 
         NSLayoutConstraint.activate([
-            view.leadingAnchor.constraint(equalTo: leadingAnchor),
-            view.topAnchor.constraint(equalTo: topAnchor),
-            view.trailingAnchor.constraint(equalTo: trailingAnchor),
-            view.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
+            extendedProfileView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            extendedProfileView.topAnchor.constraint(equalTo: topAnchor),
+            extendedProfileView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            extendedProfileView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
         ])
 
-        view.configure(
-            forState: .collapsed,
-            with: viewModel,
-            forWidth: frame.width
+        let initialState: ExtendedProfileView.State = placement == .top ? .collapsed : .alwaysExpanded
+        let extendedProfileViewModel = viewModel(withPlacement: placement)
+
+        extendedProfileView.configure(forState: initialState, with: extendedProfileViewModel, forWidth: frame.width)
+        self.extendedProfileView = extendedProfileView
+    }
+
+    // MARK: - Private methods
+
+    private func viewModel(withPlacement placement: ExtendedProfileViewModel.Placement) -> ExtendedProfileViewModel {
+        ExtendedProfileViewModel(
+            placement: placement,
+            headerImageUrl: "https://images.finncdn.no/dynamic/1280w/2019/7/vertical-5/03/c/af6/e1c/a0-/9d7/e-1/1e9/-bb/ae-/25f/82a/737/90c_934677987.jpg",
+            footerImageUrl: "https://images.finncdn.no/dynamic/1280w/2017/11/vertical-5/20/c/2c4/002/50-/cdd/5-1/1e7/-a3/4b-/ad8/ee3/1f4/_982215365.jpg",
+            sloganText: "Nysgjerrig på jobb hos oss?",
+            linkTitles: ["Flere stillinger", "Karrieremuligheter", "Hjemmesiden vår"],
+            actionButtonTitle: "Les bloggen vår her",
+            headerBackgroundColor: .toothPaste,
+            sloganTextColor: .white,
+            sloganBackgroundColor: UIColor(r: 0, g: 100, b: 248),
+            mainTextColor: UIColor(r: 0, g: 100, b: 248),
+            mainBackgroundColor: .toothPaste,
+            actionButtonTextColor: .ice,
+            actionButtonBackgroundColor: .btnAction
         )
     }
 }
+
+// MARK: - ExtendedProfileViewDelegate
 
 extension ExtendedProfileDemoView: ExtendedProfileViewDelegate {
     func extendedProfileView(_ extendedProfileView: ExtendedProfileView, didSelectLinkAtIndex index: Int) {}
@@ -66,13 +93,15 @@ extension ExtendedProfileDemoView: ExtendedProfileViewDelegate {
     func extendedProfileViewDidSelectActionButton(_ extendedProfileView: ExtendedProfileView) {}
 
     func extendedProfileView(_ extendedProfileView: ExtendedProfileView, didChangeStateTo newState: ExtendedProfileView.State) {
-        view.configure(
+        extendedProfileView.configure(
             forState: newState,
-            with: viewModel,
+            with: viewModel(withPlacement: placement),
             forWidth: frame.width
         )
     }
 }
+
+// MARK: - RemoteImageViewDataSource
 
 extension ExtendedProfileDemoView: RemoteImageViewDataSource {
     func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {

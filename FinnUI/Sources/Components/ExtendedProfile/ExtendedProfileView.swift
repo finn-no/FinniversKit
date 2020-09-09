@@ -106,7 +106,7 @@ public class ExtendedProfileView: UIView {
     }()
 
     public weak var delegate: ExtendedProfileViewDelegate?
-    public private(set) var viewModel: ExtendedProfileViewModel? = nil
+    public private(set) var viewModel: ExtendedProfileViewModel?
 
     // MARK: - Init
 
