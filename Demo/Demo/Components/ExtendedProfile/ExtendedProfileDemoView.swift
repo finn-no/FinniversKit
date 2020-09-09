@@ -90,8 +90,7 @@ extension ExtendedProfileDemoView: ExtendedProfileViewDelegate {
 
     func extendedProfileViewDidSelectActionButton(_ extendedProfileView: ExtendedProfileView) {}
 
-    func extendedProfileView(_ extendedProfileView: ExtendedProfileView,
-                             didChangeStateTo newState: ExtendedProfileView.State) {
+    func extendedProfileView(_ extendedProfileView: ExtendedProfileView, didChangeStateTo newState: ExtendedProfileView.State) {
         extendedProfileView.configure(
             forState: newState,
             with: viewModel,

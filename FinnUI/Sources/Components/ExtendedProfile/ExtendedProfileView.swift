@@ -24,6 +24,8 @@ public class ExtendedProfileView: UIView {
         case bottom
     }
 
+    // MARK: - Subviews
+
     private lazy var headerImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFill
@@ -92,12 +94,11 @@ public class ExtendedProfileView: UIView {
 
     private let fallbackImage = UIImage(named: .noImage)
 
+    // MARK: - Private properties
+
     private static let toggleButtonSize: CGFloat = 30
     private static let bodyViewDefaultSpacing: CGFloat = .spacingS
     private static let bodyViewTopMargin: CGFloat = .spacingM
-    private static let bodyViewBottomMargin: CGFloat = 2 * .spacingL
-
-    private var state: State = .collapsed
 
     private lazy var headerImageHeightConstraint = {
         headerImageView.heightAnchor.constraint(equalToConstant: 150)
@@ -110,6 +111,10 @@ public class ExtendedProfileView: UIView {
     private lazy var bodyViewBottomAnchorConstraint = {
         bodyStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
     }()
+
+    private var state: State = .collapsed
+
+    // MARK: - Public properties
 
     public weak var delegate: ExtendedProfileViewDelegate?
     public let placement: Placement
@@ -219,7 +224,7 @@ public class ExtendedProfileView: UIView {
         }
 
         bodyViewTopAnchorConstraint.constant = ExtendedProfileView.bodyViewTopMargin
-        bodyViewBottomAnchorConstraint.constant = -ExtendedProfileView.bodyViewBottomMargin
+        bodyViewBottomAnchorConstraint.constant = placement == .sidebar ? -.spacingM : -2 * .spacingL
 
         if !viewModel.linkTitles.isEmpty {
             setupLinks(with: viewModel.linkTitles, withTextColor: viewModel.mainTextColor)
