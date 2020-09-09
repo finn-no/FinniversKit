@@ -89,7 +89,7 @@ public class ExtendedProfileView: UIView {
     private static let toggleButtonSize: CGFloat = 30
     private static let bodyViewDefaultSpacing: CGFloat = .spacingS
     private static let bodyViewTopMargin: CGFloat = .spacingM
-    private static let bodyViewBottomMargin: CGFloat = .spacingL
+    private static let bodyViewBottomMargin: CGFloat = 2 * .spacingL
 
     private var state: State = .collapsed
 
