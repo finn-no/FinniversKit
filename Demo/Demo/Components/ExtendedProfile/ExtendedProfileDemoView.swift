@@ -21,9 +21,24 @@ final class ExtendedProfileDemoView: UIView, Tweakable {
         ]
     }()
 
+    private let viewModel = ExtendedProfileViewModel(
+        headerImageUrl: "https://images.finncdn.no/dynamic/1280w/2019/7/vertical-5/03/c/af6/e1c/a0-/9d7/e-1/1e9/-bb/ae-/25f/82a/737/90c_934677987.jpg",
+        footerImageUrl: "https://images.finncdn.no/dynamic/1280w/2017/11/vertical-5/20/c/2c4/002/50-/cdd/5-1/1e7/-a3/4b-/ad8/ee3/1f4/_982215365.jpg",
+        sloganText: "Nysgjerrig på jobb hos oss?",
+        linkTitles: ["Flere stillinger", "Karrieremuligheter", "Hjemmesiden vår"],
+        actionButtonTitle: "Les bloggen vår her",
+        headerBackgroundColor: .toothPaste,
+        sloganTextColor: .white,
+        sloganBackgroundColor: UIColor(r: 0, g: 100, b: 248),
+        mainTextColor: UIColor(r: 0, g: 100, b: 248),
+        mainBackgroundColor: .toothPaste,
+        actionButtonTextColor: .ice,
+        actionButtonBackgroundColor: .btnAction
+    )
+
     private var extendedProfileView: ExtendedProfileView?
 
-    private var placement: ExtendedProfileViewModel.Placement = .top {
+    private var placement: ExtendedProfileView.Placement = .top {
         didSet {
             setupExtendedProfileView(withPlacement: placement)
         }
@@ -42,10 +57,14 @@ final class ExtendedProfileDemoView: UIView, Tweakable {
 
     // MARK: - Setup
 
-    private func setupExtendedProfileView(withPlacement placement: ExtendedProfileViewModel.Placement) {
+    private func setupExtendedProfileView(withPlacement placement: ExtendedProfileView.Placement) {
         extendedProfileView?.removeFromSuperview()
 
-        let extendedProfileView = ExtendedProfileView(withAutoLayout: true, remoteImageViewDataSource: self)
+        let extendedProfileView = ExtendedProfileView(
+            placement: placement,
+            withAutoLayout: true,
+            remoteImageViewDataSource: self
+        )
         extendedProfileView.delegate = self
 
         addSubview(extendedProfileView)
@@ -58,30 +77,9 @@ final class ExtendedProfileDemoView: UIView, Tweakable {
         ])
 
         let initialState: ExtendedProfileView.State = placement == .top ? .collapsed : .alwaysExpanded
-        let extendedProfileViewModel = viewModel(withPlacement: placement)
 
-        extendedProfileView.configure(forState: initialState, with: extendedProfileViewModel, forWidth: frame.width)
+        extendedProfileView.configure(forState: initialState, with: viewModel, width: frame.width)
         self.extendedProfileView = extendedProfileView
-    }
-
-    // MARK: - Private methods
-
-    private func viewModel(withPlacement placement: ExtendedProfileViewModel.Placement) -> ExtendedProfileViewModel {
-        ExtendedProfileViewModel(
-            placement: placement,
-            headerImageUrl: "https://images.finncdn.no/dynamic/1280w/2019/7/vertical-5/03/c/af6/e1c/a0-/9d7/e-1/1e9/-bb/ae-/25f/82a/737/90c_934677987.jpg",
-            footerImageUrl: "https://images.finncdn.no/dynamic/1280w/2017/11/vertical-5/20/c/2c4/002/50-/cdd/5-1/1e7/-a3/4b-/ad8/ee3/1f4/_982215365.jpg",
-            sloganText: "Nysgjerrig på jobb hos oss?",
-            linkTitles: ["Flere stillinger", "Karrieremuligheter", "Hjemmesiden vår"],
-            actionButtonTitle: "Les bloggen vår her",
-            headerBackgroundColor: .toothPaste,
-            sloganTextColor: .white,
-            sloganBackgroundColor: UIColor(r: 0, g: 100, b: 248),
-            mainTextColor: UIColor(r: 0, g: 100, b: 248),
-            mainBackgroundColor: .toothPaste,
-            actionButtonTextColor: .ice,
-            actionButtonBackgroundColor: .btnAction
-        )
     }
 }
 
@@ -92,11 +90,12 @@ extension ExtendedProfileDemoView: ExtendedProfileViewDelegate {
 
     func extendedProfileViewDidSelectActionButton(_ extendedProfileView: ExtendedProfileView) {}
 
-    func extendedProfileView(_ extendedProfileView: ExtendedProfileView, didChangeStateTo newState: ExtendedProfileView.State) {
+    func extendedProfileView(_ extendedProfileView: ExtendedProfileView,
+                             didChangeStateTo newState: ExtendedProfileView.State) {
         extendedProfileView.configure(
             forState: newState,
-            with: viewModel(withPlacement: placement),
-            forWidth: frame.width
+            with: viewModel,
+            width: frame.width
         )
     }
 }

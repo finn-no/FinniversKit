@@ -18,6 +18,12 @@ public class ExtendedProfileView: UIView {
         case collapsed
     }
 
+    public enum Placement {
+        case top
+        case sidebar
+        case bottom
+    }
+
     private lazy var headerImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFill
@@ -106,14 +112,16 @@ public class ExtendedProfileView: UIView {
     }()
 
     public weak var delegate: ExtendedProfileViewDelegate?
-    public private(set) var viewModel: ExtendedProfileViewModel?
+    public let placement: Placement
 
     // MARK: - Init
 
     public init(
+        placement: Placement,
         withAutoLayout: Bool,
         remoteImageViewDataSource: RemoteImageViewDataSource
     ) {
+        self.placement = placement
         super.init(frame: .zero)
         setup()
         translatesAutoresizingMaskIntoConstraints = !withAutoLayout
@@ -171,12 +179,11 @@ public class ExtendedProfileView: UIView {
     public func configure(
         forState state: State,
         with viewModel: ExtendedProfileViewModel,
-        forWidth width: CGFloat
+        width: CGFloat
     ) {
-        self.viewModel = viewModel
         self.state = state
 
-        let showHeaderImage = viewModel.placement == .top
+        let showHeaderImage = placement == .top
 
         if showHeaderImage,
             let headerImageUrl = viewModel.headerImageUrl {
@@ -231,7 +238,7 @@ public class ExtendedProfileView: UIView {
             bodyStackView.setCustomSpacing(.spacingL, after: actionButton)
         }
 
-        if viewModel.placement != .sidebar,
+        if placement != .sidebar,
             let footerImageUrl = viewModel.footerImageUrl {
             setupFooterImage(
                 imageUrl: footerImageUrl,
