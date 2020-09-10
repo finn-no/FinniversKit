@@ -282,4 +282,8 @@ class ComponentViewTests: XCTestCase {
     func testMotorTransactionEntryObjectPageView() {
         snapshot(.motorTransactionEntryObjectPageView)
     }
+
+    func testExtendedProfileView() {
+        snapshot(.extendedProfileView)
+    }
 }

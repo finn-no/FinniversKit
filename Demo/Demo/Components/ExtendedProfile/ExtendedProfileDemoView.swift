@@ -75,7 +75,7 @@ final class ExtendedProfileDemoView: UIView, Tweakable {
             extendedProfileView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
         ])
 
-        let initialState: ExtendedProfileView.State = placement == .top ? .collapsed : .alwaysExpanded
+        let initialState: ExtendedProfileView.State = placement == .top ? .expanded : .alwaysExpanded
 
         extendedProfileView.configure(forState: initialState, with: viewModel, width: frame.width)
         self.extendedProfileView = extendedProfileView
