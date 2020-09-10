@@ -18,6 +18,7 @@
 		4D7A6ED22498DBAF00AB2EBE /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A6ECF2498DBAF00AB2EBE /* SearchResultsView.swift */; };
 		4D7A6ED32498DBAF00AB2EBE /* SearchResultsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A6ED02498DBAF00AB2EBE /* SearchResultsListView.swift */; };
 		4D7A6ED42498DBAF00AB2EBE /* SearchResultsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A6ED12498DBAF00AB2EBE /* SearchResultsRowView.swift */; };
+		4DBC0398250A48DF004E8044 /* ExpandCollapseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBC0397250A48DF004E8044 /* ExpandCollapseButton.swift */; };
 		4DDC3E532509219B0023AEE7 /* ExtendedProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDC3E512509219B0023AEE7 /* ExtendedProfileViewModel.swift */; };
 		4DDC3E542509219B0023AEE7 /* ExtendedProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDC3E522509219B0023AEE7 /* ExtendedProfileView.swift */; };
 		7149DB6D24FE58C900268976 /* MyVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149DB6824FE58C800268976 /* MyVehicleCell.swift */; };
@@ -112,6 +113,7 @@
 		4D7A6ECF2498DBAF00AB2EBE /* SearchResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		4D7A6ED02498DBAF00AB2EBE /* SearchResultsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsListView.swift; sourceTree = "<group>"; };
 		4D7A6ED12498DBAF00AB2EBE /* SearchResultsRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsRowView.swift; sourceTree = "<group>"; };
+		4DBC0397250A48DF004E8044 /* ExpandCollapseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandCollapseButton.swift; sourceTree = "<group>"; };
 		4DDC3E512509219B0023AEE7 /* ExtendedProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedProfileViewModel.swift; sourceTree = "<group>"; };
 		4DDC3E522509219B0023AEE7 /* ExtendedProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedProfileView.swift; sourceTree = "<group>"; };
 		7149DB6824FE58C800268976 /* MyVehicleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVehicleCell.swift; sourceTree = "<group>"; };
@@ -279,6 +281,14 @@
 			path = SearchResults;
 			sourceTree = "<group>";
 		};
+		4DBC0396250A48BE004E8044 /* ExpandCollapseButton */ = {
+			isa = PBXGroup;
+			children = (
+				4DBC0397250A48DF004E8044 /* ExpandCollapseButton.swift */,
+			);
+			path = ExpandCollapseButton;
+			sourceTree = "<group>";
+		};
 		4DDC3E502509219B0023AEE7 /* ExtendedProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,6 +400,7 @@
 		8D680C65FDB2814B12D5A4EC /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				4DBC0396250A48BE004E8044 /* ExpandCollapseButton */,
 				4DDC3E502509219B0023AEE7 /* ExtendedProfile */,
 				8D6802E2438E1A527CABD2CE /* ChatAvailability */,
 				8D68046F9EAC6A4768E7E8A1 /* SaveSearchView */,
@@ -758,6 +769,7 @@
 				9B2A6995249797AC00E671B5 /* ImageGalleryView.swift in Sources */,
 				4D7A6ED42498DBAF00AB2EBE /* SearchResultsRowView.swift in Sources */,
 				9B2A698D249797AC00E671B5 /* SingleImageProvider.swift in Sources */,
+				4DBC0398250A48DF004E8044 /* ExpandCollapseButton.swift in Sources */,
 				DA3415F5245AEB5C00DC1B1C /* BottomDividerModifier.swift in Sources */,
 				DED0A2D72469337B0016176A /* NotificationCell.swift in Sources */,
 				9B2A6994249797AC00E671B5 /* CollectionImageProvider.swift in Sources */,
