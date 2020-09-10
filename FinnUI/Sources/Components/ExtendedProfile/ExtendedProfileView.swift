@@ -151,8 +151,7 @@ public class ExtendedProfileView: UIView {
         sloganBoxView.addSubview(toggleButton)
 
         let toggleButtonSpacing: CGFloat = .spacingS
-        let bodyStackViewSpacing: CGFloat =
-            traitCollection.horizontalSizeClass == .compact ? ExtendedProfileView.bodyViewHorizontalSpacing : 0
+        let bodyStackViewSpacing: CGFloat = placement == .sidebar ? 0 : ExtendedProfileView.bodyViewHorizontalSpacing
 
         NSLayoutConstraint.activate([
             headerImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
