@@ -41,28 +41,41 @@ class CornerAnchoringView: UIView {
 
     func setup() {
         let topLeftView = addAnchorAreaView()
-        topLeftView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM).isActive = true
-        topLeftView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingM).isActive = true
+        topLeftView.accessibilityIdentifier = "CornerAnchoringView-topLeftView"
 
         let topRightView = addAnchorAreaView()
-        topRightView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM).isActive = true
-        topRightView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingM).isActive = true
+        topRightView.accessibilityIdentifier = "CornerAnchoringView-topRightView"
 
         let bottomLeftView = addAnchorAreaView()
-        bottomLeftView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM).isActive = true
-        bottomLeftView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.spacingM).isActive = true
+        bottomLeftView.accessibilityIdentifier = "CornerAnchoringView-bottomLeftView"
 
         let bottomRightView = addAnchorAreaView()
-        bottomRightView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM).isActive = true
-        bottomRightView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.spacingM).isActive = true
+        bottomRightView.accessibilityIdentifier = "CornerAnchoringView-bottomRightView"
 
         addSubview(anchoredView)
-        anchoredView.widthAnchor.constraint(equalToConstant: .spacingXXL).isActive = true
-        anchoredView.heightAnchor.constraint(equalToConstant: .spacingXXL).isActive = true
+
+        let buttonSize = CGFloat.spacingXXL
+        let halfButtonSize = buttonSize / 2.0
+
+        NSLayoutConstraint.activate([
+            topLeftView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM + halfButtonSize),
+            topLeftView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingM + halfButtonSize),
+
+            topRightView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM - halfButtonSize),
+            topRightView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingM + halfButtonSize),
+
+            bottomLeftView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM + halfButtonSize),
+            bottomLeftView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.spacingM - halfButtonSize),
+
+            bottomRightView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM - halfButtonSize),
+            bottomRightView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.spacingM - halfButtonSize),
+
+            anchoredView.widthAnchor.constraint(equalToConstant: buttonSize),
+            anchoredView.heightAnchor.constraint(equalToConstant: buttonSize)
+        ])
 
         panRecognizer.addTarget(self, action: #selector(anchoredViewPanned(recognizer:)))
         anchoredView.addGestureRecognizer(panRecognizer)
-
     }
 
     override func layoutSubviews() {
@@ -79,8 +92,11 @@ class CornerAnchoringView: UIView {
         let view = UIView(withAutoLayout: true)
         addSubview(view)
         anchorAreaViews.append(view)
-        view.widthAnchor.constraint(equalToConstant: .spacingXXL).isActive = true
-        view.heightAnchor.constraint(equalToConstant: .spacingXXL).isActive = true
+        NSLayoutConstraint.activate([
+            view.widthAnchor.constraint(equalToConstant: 0),
+            view.heightAnchor.constraint(equalToConstant: 0)
+        ])
+        view.isUserInteractionEnabled = false
         return view
     }
 
