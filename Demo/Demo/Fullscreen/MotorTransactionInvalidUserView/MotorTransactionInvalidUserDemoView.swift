@@ -5,7 +5,7 @@
 import FinniversKit
 
 public class MotorTransactionInvalidUserDemoView: UIView {
-    private lazy var motorTransactionInvalidUserDemoView: MotorTransactionInvalidUserView = {
+    private lazy var motorTransactionInvalidUserView: MotorTransactionInvalidUserView = {
         let view = MotorTransactionInvalidUserView()
         view.delegate = self
         view.configure(MotorTransactionInvalidUserViewModel.defaultData)
@@ -22,8 +22,8 @@ public class MotorTransactionInvalidUserDemoView: UIView {
     }
 
     private func setup() {
-        addSubview(motorTransactionInvalidUserDemoView)
-        motorTransactionInvalidUserDemoView.fillInSuperview()
+        addSubview(motorTransactionInvalidUserView)
+        motorTransactionInvalidUserView.fillInSuperview()
     }
 }
 
