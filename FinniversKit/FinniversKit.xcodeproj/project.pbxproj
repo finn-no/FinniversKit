@@ -143,6 +143,8 @@
 		6266C07222081EF600FB8004 /* StatisticsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6266C07122081EF600FB8004 /* StatisticsItemView.swift */; };
 		62AAB23A23278087007766E6 /* RadioButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AAB23923278087007766E6 /* RadioButtonTableViewCell.swift */; };
 		68AE01E84A4CA1BC83B340EE /* FavoriteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AE0BC04985EF5EE34564D3 /* FavoriteButtonView.swift */; };
+		712C228F250B74E400E09653 /* MotorTransactionInvalidUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C228E250B74E400E09653 /* MotorTransactionInvalidUserView.swift */; };
+		712C2291250B7A9B00E09653 /* MotorTransactionInvalidUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C2290250B7A9B00E09653 /* MotorTransactionInvalidUserViewModel.swift */; };
 		8908E83622BD0CA100ED671C /* MessageInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E83522BD0CA100ED671C /* MessageInputTextView.swift */; };
 		8908E84922C0C3C600ED671C /* MessageFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84722C0C2F900ED671C /* MessageFormViewController.swift */; };
 		8908E84D22C0D11400ED671C /* MessageFormToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84B22C0D10B00ED671C /* MessageFormToolbar.swift */; };
@@ -580,6 +582,8 @@
 		6266C07122081EF600FB8004 /* StatisticsItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsItemView.swift; sourceTree = "<group>"; };
 		62AAB23923278087007766E6 /* RadioButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonTableViewCell.swift; sourceTree = "<group>"; };
 		68AE0BC04985EF5EE34564D3 /* FavoriteButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteButtonView.swift; sourceTree = "<group>"; };
+		712C228E250B74E400E09653 /* MotorTransactionInvalidUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInvalidUserView.swift; sourceTree = "<group>"; };
+		712C2290250B7A9B00E09653 /* MotorTransactionInvalidUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInvalidUserViewModel.swift; sourceTree = "<group>"; };
 		8908E83522BD0CA100ED671C /* MessageInputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputTextView.swift; sourceTree = "<group>"; };
 		8908E84722C0C2F900ED671C /* MessageFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormViewController.swift; sourceTree = "<group>"; };
 		8908E84B22C0D10B00ED671C /* MessageFormToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormToolbar.swift; sourceTree = "<group>"; };
@@ -1628,6 +1632,7 @@
 				DAD6EB302369BCFC00968497 /* SettingDetailsView */,
 				43EA978021941E63003A548A /* SoldView */,
 				F20450B223EC0CB5001F7370 /* MotorTransactionView */,
+				712C228D250B747900E09653 /* MotorTransactionInvalidUserView */,
 				F2597C72231D19B900BE74EC /* VerificationActionSheet */,
 			);
 			path = Fullscreen;
@@ -1765,6 +1770,15 @@
 				68AE0BC04985EF5EE34564D3 /* FavoriteButtonView.swift */,
 			);
 			path = FavoriteButton;
+			sourceTree = "<group>";
+		};
+		712C228D250B747900E09653 /* MotorTransactionInvalidUserView */ = {
+			isa = PBXGroup;
+			children = (
+				712C228E250B74E400E09653 /* MotorTransactionInvalidUserView.swift */,
+				712C2290250B7A9B00E09653 /* MotorTransactionInvalidUserViewModel.swift */,
+			);
+			path = MotorTransactionInvalidUserView;
 			sourceTree = "<group>";
 		};
 		8908E83422BD0C8700ED671C /* MessageForm */ = {
@@ -3203,6 +3217,7 @@
 				CF7C460622257A8A001FB92C /* EarthHourHeaderView.swift in Sources */,
 				91846C4A22E735D80001410F /* SearchResultMapView.swift in Sources */,
 				CF7C460922257A8A001FB92C /* EarthHourViewModel.swift in Sources */,
+				712C2291250B7A9B00E09653 /* MotorTransactionInvalidUserViewModel.swift in Sources */,
 				CFEB22252330D1420039421C /* FavoriteAdsListViewModel.swift in Sources */,
 				08796D8821CB89400023A441 /* AnimatedHeartView.swift in Sources */,
 				DAD6EB252369916100968497 /* SettingsViewCell.swift in Sources */,
@@ -3428,6 +3443,7 @@
 				44A557A522E720A3001667AE /* IconTitleTableViewCell.swift in Sources */,
 				9BEB2881231D489F00D28BAD /* LoanApplyView.swift in Sources */,
 				CF7C460522257A8A001FB92C /* EarthHourSignUpView.swift in Sources */,
+				712C228F250B74E400E09653 /* MotorTransactionInvalidUserView.swift in Sources */,
 				F2E48DE4240812AB009DEFBA /* MotorTransactionAlertView.swift in Sources */,
 				441FE42D209A24E500B04EF1 /* MarketsGridView.swift in Sources */,
 				45EDD63F20A9CA22008F4503 /* PopupViewModel.swift in Sources */,
