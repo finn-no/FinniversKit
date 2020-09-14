@@ -4,7 +4,7 @@
 
 import UIKit
 
-final class OptionCell: UITableViewCell {
+final class FavoriteAdSortOptionCell: UITableViewCell {
     static let iconSize: CGFloat = 24
 
     var isCheckmarkHidden = true {
@@ -58,9 +58,9 @@ final class OptionCell: UITableViewCell {
 
     // MARK: - Public
 
-    func configure(with viewModel: OptionCellViewModel) {
-        titleLabel.text = viewModel.title
-        iconImageView.image = viewModel.icon.withRenderingMode(.alwaysTemplate)
+    func configure(withTitle title: String, icon: FinniversImageAsset) {
+        titleLabel.text = title
+        iconImageView.image = UIImage(named: icon).withRenderingMode(.alwaysTemplate)
     }
 
     // MARK: - Private methods
@@ -78,7 +78,7 @@ final class OptionCell: UITableViewCell {
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-            iconImageView.widthAnchor.constraint(equalToConstant: OptionCell.iconSize),
+            iconImageView.widthAnchor.constraint(equalToConstant: FavoriteAdSortOptionCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
