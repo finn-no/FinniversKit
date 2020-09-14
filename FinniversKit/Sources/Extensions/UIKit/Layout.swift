@@ -57,6 +57,42 @@ public extension UIView {
     }
 
     @discardableResult
+    func fillInSuperviewReadableArea() -> [NSLayoutConstraint] {
+        guard let superview = superview else {
+            return []
+        }
+
+        let constraints: [NSLayoutConstraint] = [
+            topAnchor.constraint(equalTo: superview.layoutMarginsGuide.topAnchor),
+            leadingAnchor.constraint(equalTo: superview.readableContentGuide.leadingAnchor),
+            trailingAnchor.constraint(equalTo: superview.readableContentGuide.trailingAnchor),
+            bottomAnchor.constraint(equalTo: superview.layoutMarginsGuide.bottomAnchor),
+        ]
+
+        NSLayoutConstraint.activate(constraints)
+
+        return constraints
+    }
+
+    @discardableResult
+    func fillInSuperviewSafeArea() -> [NSLayoutConstraint] {
+        guard let superview = superview else {
+            return []
+        }
+
+        let constraints: [NSLayoutConstraint] = [
+            topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor),
+            leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor),
+            trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor),
+            bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor),
+        ]
+
+        NSLayoutConstraint.activate(constraints)
+
+        return constraints
+    }
+
+    @discardableResult
     func centerInSuperview() -> [NSLayoutConstraint] {
         guard let superview = superview else {
             return []

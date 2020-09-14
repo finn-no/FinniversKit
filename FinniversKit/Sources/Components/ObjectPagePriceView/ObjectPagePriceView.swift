@@ -28,9 +28,15 @@ public class ObjectPagePriceView: UIView {
         return stackView
     }()
 
-    private lazy var linkButtonListView: LinkButtonListView = {
-        let view = LinkButtonListView(withAutoLayout: true)
+    private lazy var linkButtonListView: PriceLinkButtonListView = {
+        let view = PriceLinkButtonListView(withAutoLayout: true)
         view.delegate = self
+        return view
+    }()
+
+    private lazy var priceDetailsView: KeyValueGridView = {
+        let view = KeyValueGridView(withAutoLayout: true)
+        view.numberOfColumns = 2
         return view
     }()
 
@@ -73,7 +79,14 @@ public class ObjectPagePriceView: UIView {
             pricesStackView.addArrangedSubview(secondaryPriceView)
         }
 
-        wrapperStackView.addArrangedSubviews([pricesStackView, linkButtonListView])
+        wrapperStackView.addArrangedSubview(pricesStackView)
+
+        if !viewModel.priceDetails.isEmpty {
+            priceDetailsView.configure(with: viewModel.priceDetails)
+            wrapperStackView.addArrangedSubview(priceDetailsView)
+        }
+
+        wrapperStackView.addArrangedSubview(linkButtonListView)
 
         linkButtonListView.configure(with: viewModel.links)
         linkButtonListView.isHidden = viewModel.links.isEmpty
@@ -82,10 +95,10 @@ public class ObjectPagePriceView: UIView {
     }
 }
 
-// MARK: - LinkButtonListViewDelegate
+// MARK: - PriceLinkButtonListViewDelegate
 
-extension ObjectPagePriceView: LinkButtonListViewDelegate {
-    public func linksListView(_ view: LinkButtonListView, didTapButtonWithIdentifier identifier: String?, url: URL) {
+extension ObjectPagePriceView: PriceLinkButtonListViewDelegate {
+    public func priceLinksListView(_ view: PriceLinkButtonListView, didTapButtonWithIdentifier identifier: String?, url: URL) {
         delegate?.priceView(self, didTapLinkButtonWithIdentifier: identifier, url: url)
     }
 }

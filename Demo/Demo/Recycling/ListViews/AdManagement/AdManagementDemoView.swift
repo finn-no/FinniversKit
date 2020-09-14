@@ -4,7 +4,13 @@
 
 import FinniversKit
 
-public class AdManagementDemoView: UIView {
+public class AdManagementDemoView: UIView, Tweakable {
+    
+    lazy var tweakingOptions: [TweakingOption] = [
+        TweakingOption(title: "Empty statistics") { self.statisticsCellModels = [] },
+        TweakingOption(title: "With statistics") { self.statisticsCellModels = AdManagementDemoView.exampleStatisticsCellModels },
+    ]
+    
     private let estimatedRowHeight: CGFloat = 200
 
     private lazy var tableView: UITableView = {
@@ -15,15 +21,19 @@ public class AdManagementDemoView: UIView {
         tableView.register(UserAdManagementStatisticsEmptyViewCell.self)
         tableView.register(UserAdManagementButtonAndInformationCell.self)
         tableView.register(UserAdManagementUserActionCell.self)
-        tableView.register(UserAdManagementTransactionProcessCell.self)
+        tableView.register(UserAdManagementMotorTransactionCell.self)
         tableView.separatorStyle = .none
         tableView.backgroundColor = .bgSecondary
         tableView.estimatedRowHeight = estimatedRowHeight
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.cellLayoutMarginsFollowReadableWidth = true
         return tableView
     }()
 
     private var actionCellModels: [[AdManagementActionCellModel]] = [
+        [
+            AdManagementActionCellModel(actionType: .rentalApplications, title: "Gå til enkel utleie dashboard", showExternalIcon: true)
+        ],
         [
             AdManagementActionCellModel(actionType: .delete, title: "Slett annonsen"),
             AdManagementActionCellModel(actionType: .stop, title: "Skjul annonsen midlertidig", description: "Annonsen blir skjult fra FINNs søkeresultater")
@@ -52,19 +62,25 @@ public class AdManagementDemoView: UIView {
         )
         return StatisticsModel(header: header, statisticItems: statisticsCellModels)
     }()
-
-    private var statisticsCellModels: [StatisticsItemModel] = [
-        StatisticsItemModel(type: .seen, value: 968, text: "har sett annonsen"),
-        StatisticsItemModel(type: .favourited, value: 16, text: "har lagret annonsen"),
-        StatisticsItemModel(type: .email, value: 1337, text: "har fått e-post om annonsen")
+    
+    private static var exampleStatisticsCellModels: [StatisticsItemModel] = [
+        .init(type: .seen, value: 968, text: "har sett annonsen"),
+        .init(type: .favourited, value: 16, text: "har lagret annonsen"),
+        .init(type: .email, value: 1337, text: "har fått e-post om annonsen")
     ]
+
+    private var statisticsCellModels: [StatisticsItemModel] = exampleStatisticsCellModels {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
     private var statisticsEmptyViewCellModel: StatisticsItemEmptyViewModel = {
         return StatisticsItemEmptyViewModel(title: "Følg med på effekten",
                                             description: "Etter at du har publisert annonsen din kan du se statistikk for hvor mange som har sett annonsen din, favorisert den og som har fått tips om den.")
     }()
 
-    private let transactionProcessSummaryCellModel = TransactionProcessSummaryViewModel(
+    private let transactionProcessSummaryCellModel = MotorTransactionEntryViewModel(
         title: "Salgsprosess",
         detail: "Overlevering",
         description: "Kjøper har bekreftet. Dere må bekrefte før 8.februar 2020.",
@@ -127,7 +143,7 @@ extension AdManagementDemoView: UITableViewDataSource {
             }
 
         } else if indexPath.section == 1 {
-            let cell = tableView.dequeue(UserAdManagementTransactionProcessCell.self, for: indexPath)
+            let cell = tableView.dequeue(UserAdManagementMotorTransactionCell.self, for: indexPath)
             cell.delegate = self
             cell.configure(with: transactionProcessSummaryCellModel, shouldShowExternalView: true)
             return cell
@@ -155,12 +171,12 @@ extension AdManagementDemoView: UserAdManagementStatisticsCellDelegate {
     public func userAdManagementStatisticsCellDidSelectFullStatistics(_ cell: UserAdManagementStatisticsCell) {}
 }
 
-extension AdManagementDemoView: UserAdManagementTransactionProcessCellDelegate {
-    public func userAdManagementTransactionProcessCellDidTapSummary(_ view: UserAdManagementTransactionProcessCell) {
+extension AdManagementDemoView: UserAdManagementMotorTransactionCellDelegate {
+    public func userAdManagementMotorTransactionCellDidTapSummary(_ view: UserAdManagementMotorTransactionCell) {
         print("Did tap summary in UserAdManagementTransactionProcessCell")
     }
 
-    public func userAdManagementTransactionProcessCellDidTapExternalView(_ view: UserAdManagementTransactionProcessCell) {
+    public func userAdManagementMotorTransactionCellDidTapExternalView(_ view: UserAdManagementMotorTransactionCell) {
         print("Did tap external view in UserAdManagementTransactionProcessCell")
     }
 }

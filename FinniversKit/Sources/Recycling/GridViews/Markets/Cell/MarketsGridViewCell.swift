@@ -28,7 +28,7 @@ public class MarketsGridViewCell: UICollectionViewCell {
 
     private lazy var titleLabel: Label = {
         let label: Label
-        if UIDevice.isIPad() {
+        if isHorizontalSizeClassRegular {
             label = Label(style: .caption)
         } else {
             label = Label(style: .detail)

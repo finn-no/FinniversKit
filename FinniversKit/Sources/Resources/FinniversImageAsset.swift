@@ -25,6 +25,7 @@ public extension UIImage {
 public enum FinniversImageAsset: String {
     case adManagementShare
     case adManagementTrashcan
+    case alphabeticalSortingAscending
     case arrowDown
     case arrowDownSmall
     case arrowRight
@@ -50,6 +51,7 @@ public enum FinniversImageAsset: String {
     case checkmarkBig
     case christmasWishListBanner
     case classifieds
+    case clock
     case close
     case confetti1
     case confetti2
@@ -123,6 +125,8 @@ public enum FinniversImageAsset: String {
     case messages
     case minus
     case miscCross
+    case miscDislike
+    case miscDisliked
     case miscLike
     case miscLiked
     case miscMoney
@@ -130,6 +134,7 @@ public enum FinniversImageAsset: String {
     case more
     case moreImg
     case moteplassen
+    case motorTransaction
     case multipleContracts
     case navigation
     case noImage
@@ -173,6 +178,7 @@ public enum FinniversImageAsset: String {
     case spark
     case speechbubbleSmiley
     case spidLogo
+    case stakeholder
     case starOutline
     case statsEmpty
     case statsEnvelope
@@ -195,6 +201,7 @@ public enum FinniversImageAsset: String {
         return [
             .adManagementShare,
             .adManagementTrashcan,
+            .alphabeticalSortingAscending,
             .arrowDown,
             .arrowDownSmall,
             .arrowRight,
@@ -220,6 +227,7 @@ public enum FinniversImageAsset: String {
             .checkmarkBig,
             .christmasWishListBanner,
             .classifieds,
+            .clock,
             .close,
             .confetti1,
             .confetti2,
@@ -293,6 +301,8 @@ public enum FinniversImageAsset: String {
             .messages,
             .minus,
             .miscCross,
+            .miscDislike,
+            .miscDisliked,
             .miscLike,
             .miscLiked,
             .miscMoney,
@@ -300,6 +310,7 @@ public enum FinniversImageAsset: String {
             .more,
             .moreImg,
             .moteplassen,
+            .motorTransaction,
             .multipleContracts,
             .navigation,
             .noImage,
@@ -343,6 +354,7 @@ public enum FinniversImageAsset: String {
             .spark,
             .speechbubbleSmiley,
             .spidLogo,
+            .stakeholder,
             .starOutline,
             .statsEmpty,
             .statsEnvelope,

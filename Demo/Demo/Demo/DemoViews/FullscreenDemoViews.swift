@@ -37,9 +37,11 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case favoriteFolderActionView
     case favoriteSold
     case betaFeatureView
-    case transactionView
+    case motorTransactionView
     case errorView
     case confettiView
+    case savedSearchSortingView
+    case motorTransactionInvalidUserView
 
     public static var items: [FullscreenDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -118,7 +120,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
             viewController.bottomSheet = bottomSheet
             return bottomSheet
         case .notificationCenterView:
-            return DemoViewController<NotificationCenterDemoView>(dismissType: .dismissButton)
+            return NotificationCenterDemoViewController(dismissType: .dismissButton)
         case .notificationCenterSearchView:
             return DemoViewController<NotificationCenterSearchDemoView>(dismissType: .dismissButton)
         case .favoriteAdActionView:
@@ -133,12 +135,16 @@ public enum FullscreenDemoViews: String, CaseIterable {
             return DemoViewController<FavoriteSoldDemoView>()
         case .betaFeatureView:
             return DemoViewController<BetaFeatureDemoView>()
-        case .transactionView:
-            return DemoViewController<TransactionDemoView>()
+        case .motorTransactionView:
+            return DemoViewController<MotorTransactionDemoView>()
         case .errorView:
             return DemoViewController<ErrorDemoView>()
         case .confettiView:
             return DemoViewController<ConfettiDemoView>()
+        case .savedSearchSortingView:
+            return DemoViewController<SavedSearchSortingDemoView>()
+        case .motorTransactionInvalidUserView:
+            return DemoViewController<MotorTransactionInvalidUserDemoView>()
         }
     }
 }

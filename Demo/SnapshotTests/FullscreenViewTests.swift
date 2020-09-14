@@ -141,8 +141,12 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.notificationCenterSearchView)
     }
 
-    func testTransactionView() {
-        snapshot(.transactionView)
+    func testMotorTransactionView() {
+        snapshot(.motorTransactionView)
+    }
+
+    func testMotorTransactionInvalidUserView() {
+        snapshot(.motorTransactionInvalidUserView)
     }
 
     func testErrorView() {
@@ -159,5 +163,9 @@ class FullscreenViewTests: XCTestCase {
 
     func testSearchResultsView() {
         snapshot(.searchResultsView)
+    }
+
+    func testSavedSearchSortingView() {
+        snapshot(.savedSearchSortingView)
     }
 }

@@ -35,12 +35,12 @@ end
 
 desc "Verify that environment variable exists"
 lane :verify_environment_variable do |options|
-  github_token
+  verify_and_get_github_token
 end
 
 def make_release(project, tag_prefix, options)
   ## Verify and get GithHub token
-  github_token = github_token
+  github_token = verify_and_get_github_token
 
   ## Verify the branch.
   branch = verify_branch("master")
@@ -161,7 +161,7 @@ def create_github_release(title, tag, branch, github_token)
   )
 end
 
-def github_token
+def verify_and_get_github_token
   return verify_env_var("FINNIVERSKIT_GITHUB_ACCESS_TOKEN", "No GitHub token found! Go to https://github.com/settings/tokens to create a new token.")
 end
 
