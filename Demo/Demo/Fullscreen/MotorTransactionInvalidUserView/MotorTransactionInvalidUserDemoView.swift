@@ -41,7 +41,7 @@ public extension MotorTransactionInvalidUserViewModel {
     static var defaultData = MotorTransactionInvalidUserViewModel(
         title: "Du er logget inn med en annen konto enn den du har opprettet kontrakten med.",
         detail: NSAttributedString(string: "Logg inn med selger@mail.no for å invitere en kjøper til kontrakten."),
-        continueButton: "Fortsett",
-        cancelButton: "Avbryt"
+        continueButtonText: "Fortsett",
+        cancelButtonText: "Avbryt"
     )
 }

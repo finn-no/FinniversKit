@@ -5,13 +5,13 @@
 public struct MotorTransactionInvalidUserViewModel {
     public var title: String
     public var detail: NSAttributedString
-    public var continueButton: String
-    public var cancelButton: String
+    public var continueButtonText: String
+    public var cancelButtonText: String
 
-    public init(title: String, detail: NSAttributedString, continueButton: String, cancelButton: String) {
+    public init(title: String, detail: NSAttributedString, continueButtonText: String, cancelButtonText: String) {
         self.title = title
         self.detail = detail
-        self.continueButton = continueButton
-        self.cancelButton = cancelButton
+        self.continueButtonText = continueButtonText
+        self.cancelButtonText = cancelButtonText
     }
 }

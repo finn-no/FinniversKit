@@ -52,8 +52,8 @@ public class MotorTransactionInvalidUserView: UIView {
     public func configure(_ viewModel: MotorTransactionInvalidUserViewModel) {
         titleLabel.text = viewModel.title
         detailLabel.attributedText = viewModel.detail
-        continueButton.setTitle(viewModel.continueButton, for: .normal)
-        cancelButton.setTitle(viewModel.cancelButton, for: .normal)
+        continueButton.setTitle(viewModel.continueButtonText, for: .normal)
+        cancelButton.setTitle(viewModel.cancelButtonText, for: .normal)
     }
 
     required init?(coder: NSCoder) {
