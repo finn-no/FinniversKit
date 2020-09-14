@@ -4,13 +4,13 @@
 import FinniversKit
 
 public class BroadcastDemoView: UIView {
-    private let items = ["Select", "any", "row", "and", "the", "broadcasts", "will", "reappear"]
+    private let items = ["Select", "any", "row", "and", "the", "broadcasts", "will", "reappear", "unless", "it", "is", "already", "visible"]
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.register(UITableViewCell.self)
         tableView.separatorStyle = .none
-        tableView.rowHeight = 100
+        tableView.rowHeight = 60
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -18,10 +18,8 @@ public class BroadcastDemoView: UIView {
     }()
 
     private var broadcastMessages: Set<BroadcastMessage> = [
-        BroadcastMessage(id: 1, text: "Their containers should have the colour \"Banana\" and associated text. An exclamation mark icon is used if it is very important that the user gets this info. They appear under the banners and pushes the other content down. It scrolls with the content.\\n\nBroadcasts can also contain <a href=\"http://www.finn.no\">HTML links</a>.")
+        BroadcastMessage(id: 999, text: "Their containers should have the colour \"Banana\" and associated text. They appear under the banners, pushes the other content down and scrolls with the content. But that actually depends on implementation in the view they are used.\\n\nBroadcasts can also contain <a href=\"http://www.finn.no\">HTML links</a>.")
     ]
-
-    private var dismissedMessages: Set<BroadcastMessage> = []
 
     private lazy var broadcast: Broadcast = {
         let container = Broadcast(frame: .zero)
@@ -56,8 +54,11 @@ public class BroadcastDemoView: UIView {
 
 extension BroadcastDemoView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        broadcast.presentMessages(dismissedMessages, in: tableView)
-        dismissedMessages.removeAll()
+        let newMessage = BroadcastMessage(id: indexPath.row, text: "You tapped row \(indexPath.row).\\n\nBroadcasts can also contain <a href=\"http://www.finn.no\">HTML links</a>.")
+        broadcast.presentMessages([newMessage], in: tableView)
+        DispatchQueue.main.async {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -75,7 +76,7 @@ extension BroadcastDemoView: UITableViewDataSource {
 
         cell.textLabel?.text = items[indexPath.row]
         cell.textLabel?.textAlignment = .center
-        cell.selectionStyle = .none
+        cell.selectionStyle = .default
 
         return cell
     }
@@ -84,7 +85,6 @@ extension BroadcastDemoView: UITableViewDataSource {
 extension BroadcastDemoView: BroadcastDelegate {
     public func broadcast(_ broadcast: Broadcast, didDismiss message: BroadcastMessage) {
         print("Did dismiss message id:", message.id)
-        dismissedMessages.insert(message)
     }
 
     public func broadcast(_ broadcast: Broadcast, didTapURL url: URL, inItemAtIndex index: Int) {
