@@ -60,6 +60,10 @@ extension SearchFilterTagsDemoView: SearchFilterTagsViewDelegate {
         searchFilterTags.remove(at: index)
         view.configure(with: searchFilterTags)
     }
+
+    func searchFilterTagsView(_ view: SearchFilterTagsView, didTapSearchFilterTagAt index: Int) {
+        print("Tapped filter tag with index \(index)")
+    }
 }
 
 // MARK: - Demo data
