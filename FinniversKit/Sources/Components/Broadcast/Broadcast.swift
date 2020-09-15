@@ -41,8 +41,9 @@ public final class Broadcast: UIStackView {
 
     public func presentMessages(_ messages: Set<BroadcastMessage>, in view: UIView? = nil, animated: Bool = true) {
         guard superview == nil else {
+            let newMessages = messages.subtracting(self.messages)
             self.messages.formUnion(messages)
-            add(messages, animated: animated)
+            add(newMessages, animated: animated)
             return
         }
 
