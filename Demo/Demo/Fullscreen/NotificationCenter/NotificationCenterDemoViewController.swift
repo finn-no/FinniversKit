@@ -161,6 +161,10 @@ extension NotificationCenterDemoViewController: NotificationCenterViewDelegate {
         print("Saved search button selected")
     }
 
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectMoreButtonIn section: Int) {
+        print("More button selected")
+    }
+
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectFooterButtonInSection section: Int) {
 
     }

@@ -44,6 +44,8 @@ struct NotificationCenterSection: NotificationCenterHeaderViewModel {
             highlightedRange: NSRange(location: text.count, length: searchName.count)
         )
     }
+
+    var includeMoreButton: Bool { searchName != nil }
 }
 
 struct NotificationCenterSegment {
