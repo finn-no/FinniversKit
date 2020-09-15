@@ -286,4 +286,8 @@ class ComponentViewTests: XCTestCase {
     func testSearchFilterTags() {
         snapshot(.searchFilterTags)
     }
+
+    func testSearchDisplayMenuView() {
+        snapshot(.searchDisplayMenuView)
+    }
 }

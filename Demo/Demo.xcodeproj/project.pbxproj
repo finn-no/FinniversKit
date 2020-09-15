@@ -217,6 +217,7 @@
 		4DDD45AF250FA7E1007DBDD5 /* SearchDisplayMenuDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD45AB250FA7E1007DBDD5 /* SearchDisplayMenuDemoView.swift */; };
 		4DDD45B0250FA7E1007DBDD5 /* SearchFilterTagsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD45AD250FA7E1007DBDD5 /* SearchFilterTagsData.swift */; };
 		4DDD45B1250FA7E1007DBDD5 /* SearchFilterTagsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD45AE250FA7E1007DBDD5 /* SearchFilterTagsDemoView.swift */; };
+		4DDD45BF25109706007DBDD5 /* SearchDisplayTypeSelectionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD45BE25109706007DBDD5 /* SearchDisplayTypeSelectionDemoView.swift */; };
 		712C2294250B918B00E09653 /* MotorTransactionInvalidUserDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C2293250B918B00E09653 /* MotorTransactionInvalidUserDemoView.swift */; };
 		7197A19B24D8316B00D425EB /* WithoutInsuranceConfirmationDemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197A19A24D8316B00D425EB /* WithoutInsuranceConfirmationDemoViewModel.swift */; };
 		7197A19D24D8317D00D425EB /* WithInsuranceConfirmationDemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197A19C24D8317D00D425EB /* WithInsuranceConfirmationDemoViewModel.swift */; };
@@ -471,6 +472,7 @@
 		4DDD45AB250FA7E1007DBDD5 /* SearchDisplayMenuDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDisplayMenuDemoView.swift; sourceTree = "<group>"; };
 		4DDD45AD250FA7E1007DBDD5 /* SearchFilterTagsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFilterTagsData.swift; sourceTree = "<group>"; };
 		4DDD45AE250FA7E1007DBDD5 /* SearchFilterTagsDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFilterTagsDemoView.swift; sourceTree = "<group>"; };
+		4DDD45BE25109706007DBDD5 /* SearchDisplayTypeSelectionDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDisplayTypeSelectionDemoView.swift; sourceTree = "<group>"; };
 		712C2293250B918B00E09653 /* MotorTransactionInvalidUserDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInvalidUserDemoView.swift; sourceTree = "<group>"; };
 		7197A19A24D8316B00D425EB /* WithoutInsuranceConfirmationDemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithoutInsuranceConfirmationDemoViewModel.swift; sourceTree = "<group>"; };
 		7197A19C24D8317D00D425EB /* WithInsuranceConfirmationDemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithInsuranceConfirmationDemoViewModel.swift; sourceTree = "<group>"; };
@@ -603,6 +605,7 @@
 		46E7726A242CEF09008A5E93 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
+				4DDD45BD251096E5007DBDD5 /* SearchDisplayTypeSelection */,
 				4D644436248A731300B80827 /* SearchResults */,
 				496F8C152473E7CA00AE0735 /* FavoriteSoldView */,
 				46E77278242CEF09008A5E93 /* AddressMapView */,
@@ -1796,6 +1799,15 @@
 			path = SearchFilterTags;
 			sourceTree = "<group>";
 		};
+		4DDD45BD251096E5007DBDD5 /* SearchDisplayTypeSelection */ = {
+			isa = PBXGroup;
+			children = (
+				4DDD45BE25109706007DBDD5 /* SearchDisplayTypeSelectionDemoView.swift */,
+			);
+			name = SearchDisplayTypeSelection;
+			path = ../Extensions/SearchDisplayTypeSelection;
+			sourceTree = "<group>";
+		};
 		712C2292250B917000E09653 /* MotorTransactionInvalidUserView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2183,6 +2195,7 @@
 				46E773F9242CEF0A008A5E93 /* DisclaimerDemoView.swift in Sources */,
 				46E773B1242CEF0A008A5E93 /* UIDevice.swift in Sources */,
 				46E77424242CEF0A008A5E93 /* ConsentTransparencyInfoDefaultData.swift in Sources */,
+				4DDD45BF25109706007DBDD5 /* SearchDisplayTypeSelectionDemoView.swift in Sources */,
 				46E77447242CEF0A008A5E93 /* UserAdEmphasizedActionCellDemoView.swift in Sources */,
 				9BE474C924979816009620A5 /* BapAdView+Previews.swift in Sources */,
 				46E773EC242CEF0A008A5E93 /* MotorTransactionDefaultData.swift in Sources */,
