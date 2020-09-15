@@ -12,6 +12,7 @@ extension XCTestCase {
         includeDarkMode: Bool = true,
         includeIPad: Bool = false,
         delay: TimeInterval? = nil,
+        record recording: Bool = false,
         file: StaticString = #file,
         testName: String = #function,
         line: UInt = #line
@@ -22,7 +23,7 @@ extension XCTestCase {
         }
         assertSnapshot(
             matching: viewController, as: snapshotting, named: "iPhone",
-            file: file, testName: testName, line: line
+            record: recording, file: file, testName: testName, line: line
         )
 
         if includeIPad {
@@ -32,7 +33,7 @@ extension XCTestCase {
             }
             assertSnapshot(
                 matching: viewController, as: snapshotting, named: "iPad",
-                file: file, testName: testName, line: line
+                record: recording, file: file, testName: testName, line: line
             )
         }
     }

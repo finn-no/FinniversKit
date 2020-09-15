@@ -72,9 +72,17 @@ public class SaveSearchView: ShadowScrollView {
     }()
 
     private lazy var deleteSavedSearchButton: Button = {
-        let button = Button(style: .destructive, withAutoLayout: true)
+        let button = Button(style: .destructiveFlat, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleDeleteButtonTap), for: .touchUpInside)
+        button.setImage(UIImage(named: .trashcan).withRenderingMode(.alwaysTemplate), for: .normal)
         button.isHidden = true
+        button.contentHorizontalAlignment = .leading
+        button.contentEdgeInsets = UIEdgeInsets(vertical: .spacingS, horizontal: 0)
+        // This is a hack to align the image correctly to the leading edge, since the trashcan asset has
+        // some internal padding, if the frame of the image would be aligned with the rest of the content
+        // visually the image would not be aligned
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, leading: -6, bottom: 0, trailing: 0)
+        button.tintColor = .textCritical
         return button
     }()
 

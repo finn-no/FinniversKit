@@ -145,6 +145,10 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.motorTransactionView)
     }
 
+    func testMotorTransactionInvalidUserView() {
+        snapshot(.motorTransactionInvalidUserView)
+    }
+
     func testErrorView() {
         snapshot(.errorView)
     }
