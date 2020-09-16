@@ -5,7 +5,6 @@
 import UIKit
 
 protocol BuyerPickerCellDelegate: AnyObject {
-    func buyerPickerCellDefaultPlaceholderImage(_ cell: BuyerPickerProfileCell) -> UIImage?
     func buyerPickerCell(_ cell: BuyerPickerProfileCell, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func buyerPickerCell(_ cell: BuyerPickerProfileCell, cancelLoadingImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat)
 }

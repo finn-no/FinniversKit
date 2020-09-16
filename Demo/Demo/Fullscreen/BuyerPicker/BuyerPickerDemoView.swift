@@ -38,13 +38,10 @@ extension BuyerPickerDemoView: BuyerPickerViewDelegate {
         })
     }
 
-    public func buyerPickerViewDefaultPlaceholderImage(_ buyerPickerView: BuyerPickerView) -> UIImage? {
-        return UIImage(named: "consentTransparencyImage")
-    }
-
     public func buyerPickerView(_ buyerPickerView: BuyerPickerView, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let url = model.image else {
-            completion(nil)
+            let placeholderImage = UIImage(named: "consentTransparencyImage")
+            completion(placeholderImage)
             return
         }
 

@@ -5,7 +5,6 @@
 import UIKit
 
 public protocol BuyerPickerViewDelegate: AnyObject {
-    func buyerPickerViewDefaultPlaceholderImage(_ buyerPickerView: BuyerPickerView) -> UIImage?
     func buyerPickerView(_ buyerPickerView: BuyerPickerView, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func buyerPickerView(_ buyerPickerView: BuyerPickerView, cancelLoadingImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat)
     func buyerPickerView(_ buyerPickerView: BuyerPickerView, didSelect profile: BuyerPickerProfileModel)
@@ -111,10 +110,6 @@ extension BuyerPickerView: UITableViewDelegate {
 // MARK: - ReviewProfileCellDelegate
 
 extension BuyerPickerView: BuyerPickerCellDelegate {
-    func buyerPickerCellDefaultPlaceholderImage(_ cell: BuyerPickerProfileCell) -> UIImage? {
-        return delegate?.buyerPickerViewDefaultPlaceholderImage(self)
-    }
-
     func buyerPickerCell(_ reviewProfileCell: BuyerPickerProfileCell, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         delegate?.buyerPickerView(self, loadImageForModel: model, imageWidth: imageWidth, completion: completion)
     }
