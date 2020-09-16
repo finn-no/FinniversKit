@@ -8,10 +8,12 @@ import FinniversKit
 public class BuyerPickerDemoUser: BuyerPickerProfileModel {
     public let name: String
     public let image: URL?
+    public let chevronText: String?
 
-    init(name: String, image: URL? = nil) {
+    init(name: String, image: URL? = nil, chevronText: String? = nil) {
         self.name = name
         self.image = image
+        self.chevronText = chevronText
     }
 }
 
@@ -20,9 +22,8 @@ public struct BuyerPickerDemoData: BuyerPickerViewModel {
     public let profiles: [BuyerPickerProfileModel] = [
         BuyerPickerDemoUser(name: "Ola Nordmann", image: URL(string: "http://via.placeholder.com/44x44/111111/111111")),
         BuyerPickerDemoUser(name: "Per Johansen", image: URL(string: "http://via.placeholder.com/44x44/ff00ff/ff00ff")),
-        BuyerPickerDemoUser(name: "Per"),
-        BuyerPickerDemoUser(name: "FINN Bruker"),
-        BuyerPickerDemoUser(name: "Test testesen", image: URL(string: "http://via.placeholder.com/44x44/ffff00/ffff00"))
+        BuyerPickerDemoUser(name: "Test testesen", image: URL(string: "http://via.placeholder.com/44x44/ffff00/ffff00")),
+        BuyerPickerDemoUser(name: "Inviter til FINN med e-post eller mobilnummer", chevronText: "Velg"),
     ]
     public let selectTitle = "Velg"
     public let confirmationTitle = "Du kan ikke endre valget ditt senere"

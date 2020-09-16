@@ -31,9 +31,12 @@ class BuyerPickerProfileCell: UITableViewCell {
         return view
     }()
 
+    lazy var chevronLabel = Label(style: .detail, withAutoLayout: true)
+
     var model: BuyerPickerProfileModel? {
         didSet {
             name.text = model?.name ?? ""
+            chevronLabel.text = model?.chevronText ?? ""
         }
     }
 
@@ -53,6 +56,7 @@ class BuyerPickerProfileCell: UITableViewCell {
         profileStack.translatesAutoresizingMaskIntoConstraints = false
 
         contentView.addSubview(profileStack)
+        contentView.addSubview(chevronLabel)
         contentView.addSubview(hairlineView)
 
         NSLayoutConstraint.activate([
@@ -63,6 +67,9 @@ class BuyerPickerProfileCell: UITableViewCell {
 
             profileImage.heightAnchor.constraint(equalToConstant: BuyerPickerProfileCell.profileImageSize),
             profileImage.widthAnchor.constraint(equalToConstant: BuyerPickerProfileCell.profileImageSize),
+
+            chevronLabel.centerYAnchor.constraint(equalTo: profileStack.centerYAnchor),
+            chevronLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingS),
 
             hairlineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             hairlineView.leadingAnchor.constraint(equalTo: profileImage.leadingAnchor, constant: .spacingS),
@@ -84,7 +91,6 @@ class BuyerPickerProfileCell: UITableViewCell {
     }
 
     func loadImage() {
-        profileImage.image = delegate?.buyerPickerCellDefaultPlaceholderImage(self)
         guard let model = model else { return }
         delegate?.buyerPickerCell(self, loadImageForModel: model, imageWidth: BuyerPickerProfileCell.profileImageSize, completion: { [weak self] image in
             if let image = image {
