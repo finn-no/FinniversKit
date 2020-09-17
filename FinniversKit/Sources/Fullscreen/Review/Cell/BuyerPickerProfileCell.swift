@@ -47,6 +47,20 @@ class BuyerPickerProfileCell: UITableViewCell {
         setup()
     }
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        profileImage.image = nil
+        name.text = ""
+
+        if let model = model {
+            delegate?.buyerPickerCell(self, cancelLoadingImageForModel: model, imageWidth: BuyerPickerProfileCell.profileImageSize)
+        }
+    }
+
     private func setup() {
         accessoryType = .disclosureIndicator
         selectionStyle = .none
@@ -79,16 +93,6 @@ class BuyerPickerProfileCell: UITableViewCell {
         ])
     }
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        profileImage.image = nil
-        name.text = ""
-
-        if let model = model {
-            delegate?.buyerPickerCell(self, cancelLoadingImageForModel: model, imageWidth: BuyerPickerProfileCell.profileImageSize)
-        }
-    }
-
     func loadImage() {
         guard let model = model else { return }
         delegate?.buyerPickerCell(self, loadImageForModel: model, imageWidth: BuyerPickerProfileCell.profileImageSize, completion: { [weak self] image in
@@ -96,9 +100,5 @@ class BuyerPickerProfileCell: UITableViewCell {
                 self?.profileImage.image = image
             }
         })
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
