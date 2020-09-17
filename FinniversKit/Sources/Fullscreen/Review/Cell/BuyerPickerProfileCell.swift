@@ -49,6 +49,7 @@ class BuyerPickerProfileCell: UITableViewCell {
 
     private func setup() {
         accessoryType = .disclosureIndicator
+        selectionStyle = .none
 
         let profileStack = UIStackView(arrangedSubviews: [profileImage, name])
         profileStack.alignment = .center
@@ -76,8 +77,6 @@ class BuyerPickerProfileCell: UITableViewCell {
             hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: .spacingXL),
             hairlineView.heightAnchor.constraint(equalToConstant: 0.5)
         ])
-
-        selectionStyle = .none
     }
 
     override func prepareForReuse() {
