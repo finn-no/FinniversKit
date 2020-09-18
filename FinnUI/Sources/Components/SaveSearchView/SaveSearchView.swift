@@ -28,7 +28,6 @@ public class SaveSearchView: ShadowScrollView {
     private lazy var pushSwitchView = createSwitchView()
     private lazy var emailSwitchView = createSwitchView()
     private var heightConstraint: NSLayoutConstraint!
-    private var usingShadowWhenScrolling: Bool = false
 
     private let switchStyle = SwitchViewStyle(
         titleLabelStyle: .bodyStrong,
@@ -88,12 +87,6 @@ public class SaveSearchView: ShadowScrollView {
 
     // MARK: - Initializers
 
-    public init(usingShadowWhenScrolling: Bool = false) {
-        super.init(frame: .zero)
-        self.usingShadowWhenScrolling = usingShadowWhenScrolling
-        setup()
-    }
-
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -146,12 +139,7 @@ public class SaveSearchView: ShadowScrollView {
     private func setup() {
         backgroundColor = .bgPrimary
 
-        if usingShadowWhenScrolling {
-            insertSubview(scrollView, belowSubview: topShadowView)
-            topShadowView.bottomAnchor.constraint(equalTo: topAnchor).isActive = true
-        } else {
-            addSubview(scrollView)
-        }
+        insertSubview(scrollView, belowSubview: topShadowView)
         scrollView.fillInSuperview()
 
         scrollView.addSubview(contentView)
@@ -198,7 +186,9 @@ public class SaveSearchView: ShadowScrollView {
             deleteSavedSearchButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .spacingL + .spacingM),
             deleteSavedSearchButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             deleteSavedSearchButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
-            deleteSavedSearchButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM)
+            deleteSavedSearchButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM),
+
+            topShadowView.bottomAnchor.constraint(equalTo: topAnchor),
         ])
     }
 

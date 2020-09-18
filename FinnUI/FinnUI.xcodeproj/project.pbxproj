@@ -18,6 +18,9 @@
 		4D7A6ED22498DBAF00AB2EBE /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A6ECF2498DBAF00AB2EBE /* SearchResultsView.swift */; };
 		4D7A6ED32498DBAF00AB2EBE /* SearchResultsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A6ED02498DBAF00AB2EBE /* SearchResultsListView.swift */; };
 		4D7A6ED42498DBAF00AB2EBE /* SearchResultsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A6ED12498DBAF00AB2EBE /* SearchResultsRowView.swift */; };
+		4DBC0398250A48DF004E8044 /* ExpandCollapseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBC0397250A48DF004E8044 /* ExpandCollapseButton.swift */; };
+		4DDC3E532509219B0023AEE7 /* ExtendedProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDC3E512509219B0023AEE7 /* ExtendedProfileViewModel.swift */; };
+		4DDC3E542509219B0023AEE7 /* ExtendedProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDC3E522509219B0023AEE7 /* ExtendedProfileView.swift */; };
 		7149DB6D24FE58C900268976 /* MyVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149DB6824FE58C800268976 /* MyVehicleCell.swift */; };
 		7149DB6E24FE58C900268976 /* MyVehicleCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149DB6924FE58C800268976 /* MyVehicleCellModel.swift */; };
 		7149DB7324FE592400268976 /* MyVehiclesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149DB7124FE592400268976 /* MyVehiclesListViewModel.swift */; };
@@ -110,6 +113,9 @@
 		4D7A6ECF2498DBAF00AB2EBE /* SearchResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		4D7A6ED02498DBAF00AB2EBE /* SearchResultsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsListView.swift; sourceTree = "<group>"; };
 		4D7A6ED12498DBAF00AB2EBE /* SearchResultsRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsRowView.swift; sourceTree = "<group>"; };
+		4DBC0397250A48DF004E8044 /* ExpandCollapseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandCollapseButton.swift; sourceTree = "<group>"; };
+		4DDC3E512509219B0023AEE7 /* ExtendedProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedProfileViewModel.swift; sourceTree = "<group>"; };
+		4DDC3E522509219B0023AEE7 /* ExtendedProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedProfileView.swift; sourceTree = "<group>"; };
 		7149DB6824FE58C800268976 /* MyVehicleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVehicleCell.swift; sourceTree = "<group>"; };
 		7149DB6924FE58C800268976 /* MyVehicleCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVehicleCellModel.swift; sourceTree = "<group>"; };
 		7149DB7124FE592400268976 /* MyVehiclesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVehiclesListViewModel.swift; sourceTree = "<group>"; };
@@ -275,6 +281,23 @@
 			path = SearchResults;
 			sourceTree = "<group>";
 		};
+		4DBC0396250A48BE004E8044 /* ExpandCollapseButton */ = {
+			isa = PBXGroup;
+			children = (
+				4DBC0397250A48DF004E8044 /* ExpandCollapseButton.swift */,
+			);
+			path = ExpandCollapseButton;
+			sourceTree = "<group>";
+		};
+		4DDC3E502509219B0023AEE7 /* ExtendedProfile */ = {
+			isa = PBXGroup;
+			children = (
+				4DDC3E512509219B0023AEE7 /* ExtendedProfileViewModel.swift */,
+				4DDC3E522509219B0023AEE7 /* ExtendedProfileView.swift */,
+			);
+			path = ExtendedProfile;
+			sourceTree = "<group>";
+		};
 		7149DB6524FE58C800268976 /* MyVehicles */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,6 +400,8 @@
 		8D680C65FDB2814B12D5A4EC /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				4DBC0396250A48BE004E8044 /* ExpandCollapseButton */,
+				4DDC3E502509219B0023AEE7 /* ExtendedProfile */,
 				8D6802E2438E1A527CABD2CE /* ChatAvailability */,
 				8D68046F9EAC6A4768E7E8A1 /* SaveSearchView */,
 				8D68054F9CE41B8FB232572A /* IconLinkView */,
@@ -724,11 +749,13 @@
 				DA17552B2472AD1F005EB339 /* EmptyNotificationsCellModel.swift in Sources */,
 				9B2A698E249797AC00E671B5 /* AuthorViewModel.swift in Sources */,
 				9B2A6990249797AC00E671B5 /* PhoneNumberViewModel.swift in Sources */,
+				4DDC3E542509219B0023AEE7 /* ExtendedProfileView.swift in Sources */,
 				DED0A099246898940016176A /* NotificationCenterCellType.swift in Sources */,
 				DED0A2D0246933600016176A /* NotificationCenterHeaderView.swift in Sources */,
 				46AE6FB1242BAB97007BB005 /* SplashView.swift in Sources */,
 				DA0E186F2459C23600C0616E /* SettingsView.swift in Sources */,
 				4D7A6ED32498DBAF00AB2EBE /* SearchResultsListView.swift in Sources */,
+				4DDC3E532509219B0023AEE7 /* ExtendedProfileViewModel.swift in Sources */,
 				DED0A3D724697F210016176A /* NotificationCenterSearchView.swift in Sources */,
 				9B2A6999249797AC00E671B5 /* BapAdViewModel.swift in Sources */,
 				9BA4520924E130CD00A6A6A6 /* SortView.swift in Sources */,
@@ -742,6 +769,7 @@
 				9B2A6995249797AC00E671B5 /* ImageGalleryView.swift in Sources */,
 				4D7A6ED42498DBAF00AB2EBE /* SearchResultsRowView.swift in Sources */,
 				9B2A698D249797AC00E671B5 /* SingleImageProvider.swift in Sources */,
+				4DBC0398250A48DF004E8044 /* ExpandCollapseButton.swift in Sources */,
 				DA3415F5245AEB5C00DC1B1C /* BottomDividerModifier.swift in Sources */,
 				DED0A2D72469337B0016176A /* NotificationCell.swift in Sources */,
 				9B2A6994249797AC00E671B5 /* CollectionImageProvider.swift in Sources */,

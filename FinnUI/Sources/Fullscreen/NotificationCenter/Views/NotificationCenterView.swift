@@ -23,6 +23,7 @@ public protocol NotificationCenterViewDelegate: AnyObject {
     func notificationCenterView(_ view: NotificationCenterView, didSelectShowGroupOptions segment: Int, sortingView: UIView)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectModelAt indexPath: IndexPath)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectSavedSearchButtonIn section: Int)
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectMoreButtonIn section: Int)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectFooterButtonInSection section: Int)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didPullToRefreshUsing refreshControl: UIRefreshControl)
 }
@@ -260,6 +261,10 @@ extension NotificationCenterView: NotificationCenterHeaderViewDelegate {
     func notificationCenterHeaderView(_ view: NotificationCenterHeaderView, didSelectSavedSearchButtonInSection section: Int) {
         delegate?.notificationCenterView(self, segment: selectedSegment, didSelectSavedSearchButtonIn: section)
     }
+
+    func notificationCenterHeaderView(_ view: NotificationCenterHeaderView, didSelectMoreButtonInSection section: Int) {
+        delegate?.notificationCenterView(self, segment: selectedSegment, didSelectMoreButtonIn: section)
+    }
 }
 
 // MARK: - NotificationCenterFooterViewDelegate
@@ -431,6 +436,7 @@ private extension UITableView {
         tableView.register(NotificationCenterHeaderView.self)
         tableView.register(NotificationCenterFooterView.self)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.cellLayoutMarginsFollowReadableWidth = true
         return tableView
     }
 }
