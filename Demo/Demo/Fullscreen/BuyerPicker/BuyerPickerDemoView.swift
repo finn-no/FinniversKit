@@ -30,7 +30,7 @@ public class BuyerPickerDemoView: UIView {
 }
 
 extension BuyerPickerDemoView: BuyerPickerViewDelegate {
-    public func buyerPickerView(_ buyerPickerView: BuyerPickerView, didSelect profile: BuyerPickerProfileModel) {
+    public func buyerPickerView(_ buyerPickerView: BuyerPickerView, didSelect profile: BuyerPickerProfileModel, forRowAt indexPath: IndexPath) {
         LoadingView.show(afterDelay: 0)
         print("Did select: \(profile.name) for review")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
