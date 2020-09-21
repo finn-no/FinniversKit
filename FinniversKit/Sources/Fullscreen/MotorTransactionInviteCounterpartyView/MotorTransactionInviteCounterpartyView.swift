@@ -83,8 +83,8 @@ extension MotorTransactionInviteCounterpartyView: BuyerPickerViewDelegate {
         _ buyerPickerView: BuyerPickerView,
         didSelect profile: BuyerPickerProfileModel
     ) {
-        guard let counterpartyProfile = profile as? MotorTransactionInviteCounterpartyProfileViewModel else { return }
-        delegate?.motorTransactionInviteCounterpartyView(self, didSelect: counterpartyProfile)
+        let counterPartyProfile = MotorTransactionInviteCounterpartyProfileViewModel(name: profile.name, image: profile.image)
+        delegate?.motorTransactionInviteCounterpartyView(self, didSelect: counterPartyProfile)
     }
 
     public func buyerPickerViewDefaultPlaceholderImage(_ buyerPickerView: BuyerPickerView) -> UIImage? {
@@ -97,10 +97,10 @@ extension MotorTransactionInviteCounterpartyView: BuyerPickerViewDelegate {
         imageWidth: CGFloat,
         completion: @escaping ((UIImage?) -> Void)
     ) {
-        guard let counterpartyProfile = model as? MotorTransactionInviteCounterpartyProfileViewModel else { return }
+        let counterPartyProfile = MotorTransactionInviteCounterpartyProfileViewModel(name: model.name, image: model.image)
         delegate?.motorTransactionInviteCounterpartyView(
             self,
-            loadImageForModel: counterpartyProfile,
+            loadImageForModel: counterPartyProfile,
             imageWidth: imageWidth,
             completion: completion
         )
@@ -111,10 +111,10 @@ extension MotorTransactionInviteCounterpartyView: BuyerPickerViewDelegate {
         cancelLoadingImageForModel model: BuyerPickerProfileModel,
         imageWidth: CGFloat
     ) {
-        guard let counterpartyProfile = model as? MotorTransactionInviteCounterpartyProfileViewModel else { return }
+        let counterPartyProfile = MotorTransactionInviteCounterpartyProfileViewModel(name: model.name, image: model.image)
         delegate?.motorTransactionInviteCounterpartyView(
             self,
-            cancelLoadingImageForModel: counterpartyProfile,
+            cancelLoadingImageForModel: counterPartyProfile,
             imageWidth: imageWidth
         )
     }
