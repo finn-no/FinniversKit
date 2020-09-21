@@ -85,17 +85,16 @@ extension MotorTransactionInviteCounterpartyDemoView: MotorTransactionInviteCoun
 public extension MotorTransactionInviteCounterpartyViewModel {
     static var defaultData: MotorTransactionInviteCounterpartyViewModel {
         return MotorTransactionInviteCounterpartyViewModel(
-            title: "Velg den du gjorde handelen med:",
+            title: "Velg kjøperen du vil invitere til kontrakten",
             profiles: [
-                BuyerPickerDemoUser(name: "Ola Nordmann", image: URL(string: "http://via.placeholder.com/44x44/111111/111111")),
-                BuyerPickerDemoUser(name: "Per Johansen", image: URL(string: "http://via.placeholder.com/44x44/ff00ff/ff00ff")),
-                BuyerPickerDemoUser(name: "Per"),
-                BuyerPickerDemoUser(name: "FINN Bruker"),
-                BuyerPickerDemoUser(name: "Test testesen", image: URL(string: "http://via.placeholder.com/44x44/ffff00/ffff00")),
+                BuyerPickerDemoUser(name: "Harry", image: URL(string: "http://via.placeholder.com/44x44/111111/111111")),
+                BuyerPickerDemoUser(name: "Ron", image: URL(string: "http://via.placeholder.com/44x44/ff00ff/ff00ff")),
+                BuyerPickerDemoUser(name: "Hermine", image: URL(string: "http://via.placeholder.com/44x44/ff00ff/ff00ff")),
                 BuyerPickerDemoUser(name: "E-post eller mobilnummer")
             ],
             selectTitle: "Velg",
-            confirmationTitle: "Du kan ikke endre valget ditt senere"
+            confirmationTitle: "Du kan ikke endre valget ditt senere",
+            selectLaterButtonText: "Inviter senere"
         )
     }
 }
