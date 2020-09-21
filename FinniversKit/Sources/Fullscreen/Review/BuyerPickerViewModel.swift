@@ -14,4 +14,5 @@ public protocol BuyerPickerViewModel {
 public protocol BuyerPickerProfileModel {
     var name: String { get }
     var image: URL? { get }
+    var chevronText: String? { get }
 }
