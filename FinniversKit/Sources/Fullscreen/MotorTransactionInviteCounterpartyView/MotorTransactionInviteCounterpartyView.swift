@@ -24,6 +24,10 @@ public protocol MotorTransactionInviteCounterpartyViewDelegate: AnyObject {
         cancelLoadingImageForModel model: MotorTransactionInviteCounterpartyProfileViewModel,
         imageWidth: CGFloat
     )
+
+    func motorTransactionInviteCounterpartyViewDidTapPickLaterButton(
+        _ motorTransactionInviteCounterpartyView: MotorTransactionInviteCounterpartyView
+    )
 }
 
 // swiftlint:disable: type_name
@@ -32,6 +36,12 @@ public class MotorTransactionInviteCounterpartyView: UIView {
         let view = BuyerPickerView(withAutoLayout: true)
         view.delegate = self
         return view
+    }()
+
+    private lazy var pickLaterButton: Button = {
+        let button = Button(style: .flat, size: .normal, withAutoLayout: true)
+        button.addTarget(self, action: #selector(didTapPickLaterButton), for: .touchUpInside)
+        return button
     }()
 
     public weak var delegate: MotorTransactionInviteCounterpartyViewDelegate?
@@ -47,11 +57,28 @@ public class MotorTransactionInviteCounterpartyView: UIView {
 
     public func configure(_ viewModel: MotorTransactionInviteCounterpartyViewModel) {
         pickABuyerView.model = viewModel
+        pickLaterButton.setTitle(viewModel.selectLaterButtonText, for: .normal)
     }
 
     private func setup() {
         addSubview(pickABuyerView)
-        pickABuyerView.fillInSuperview()
+        addSubview(pickLaterButton)
+
+        NSLayoutConstraint.activate([
+            pickABuyerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            pickABuyerView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            pickABuyerView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            pickABuyerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: .spacingXXL),
+
+            pickLaterButton.topAnchor.constraint(equalTo: pickABuyerView.bottomAnchor),
+            pickLaterButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingL),
+            pickLaterButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingL),
+        ])
+
+    }
+
+    @objc private func didTapPickLaterButton() {
+        delegate?.motorTransactionInviteCounterpartyViewDidTapPickLaterButton(self)
     }
 }
 

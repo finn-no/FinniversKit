@@ -6,7 +6,7 @@ import FinniversKit
 
 // swiftlint:disable:next type_name
 public class MotorTransactionInviteCounterpartyDemoView: UIView {
-    private lazy var motorTransactionInviteCounterpartyView: MotorTransactionInviteCounterpartyView = {
+    private lazy var inviteCounterpartyView: MotorTransactionInviteCounterpartyView = {
         let view = MotorTransactionInviteCounterpartyView(withAutoLayout: true)
         view.delegate = self
         view.configure(MotorTransactionInviteCounterpartyViewModel.defaultData)
@@ -23,8 +23,8 @@ public class MotorTransactionInviteCounterpartyDemoView: UIView {
     }
 
     private func setup() {
-        addSubview(motorTransactionInviteCounterpartyView)
-        motorTransactionInviteCounterpartyView.fillInSuperview()
+        addSubview(inviteCounterpartyView)
+        inviteCounterpartyView.fillInSuperview()
     }
 }
 
@@ -76,6 +76,10 @@ extension MotorTransactionInviteCounterpartyDemoView: MotorTransactionInviteCoun
         cancelLoadingImageForModel model: MotorTransactionInviteCounterpartyProfileViewModel,
         imageWidth: CGFloat
     ) {}
+
+    public func motorTransactionInviteCounterpartyViewDidTapPickLaterButton(_ motorTransactionInviteCounterpartyView: MotorTransactionInviteCounterpartyView) {
+        print("Did tap pick later button")
+    }
 }
 
 public extension MotorTransactionInviteCounterpartyViewModel {

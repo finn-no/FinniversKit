@@ -10,12 +10,14 @@ public struct MotorTransactionInviteCounterpartyViewModel: BuyerPickerViewModel 
     public var profiles: [BuyerPickerProfileModel]
     public var selectTitle: String
     public var confirmationTitle: String
+    public var selectLaterButtonText: String
 
-    public init(title: String, profiles: [BuyerPickerProfileModel], selectTitle: String, confirmationTitle: String) {
+    public init(title: String, profiles: [BuyerPickerProfileModel], selectTitle: String, confirmationTitle: String, selectLaterButtonText: String) {
         self.title = title
         self.profiles = profiles
         self.selectTitle = selectTitle
         self.confirmationTitle = confirmationTitle
+        self.selectLaterButtonText = selectLaterButtonText
     }
 }
 
