@@ -8,10 +8,6 @@ public protocol MotorTransactionInviteCounterpartyViewDelegate: AnyObject {
         didSelect profile: MotorTransactionInviteCounterpartyProfileViewModel
     )
 
-    func motorTransactionInviteCounterpartyViewPlaceholderImage(
-        _ motorTransactionInviteCounterpartyView: MotorTransactionInviteCounterpartyView
-    ) -> UIImage?
-
     func motorTransactionInviteCounterpartyView(
         _ motorTransactionInviteCounterpartyView: MotorTransactionInviteCounterpartyView,
         loadImageForModel model: MotorTransactionInviteCounterpartyProfileViewModel,
