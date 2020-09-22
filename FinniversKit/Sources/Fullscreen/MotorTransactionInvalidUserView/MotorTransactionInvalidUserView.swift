@@ -23,6 +23,13 @@ public class MotorTransactionInvalidUserView: UIView {
         return label
     }()
 
+    private lazy var emailLabel: Label = {
+        let label = Label(style: .bodyStrong, withAutoLayout: true)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
+
     private lazy var detailLabel: Label = {
         let label = Label(style: .body, withAutoLayout: true)
         label.textAlignment = .center
@@ -42,15 +49,19 @@ public class MotorTransactionInvalidUserView: UIView {
         return button
     }()
 
+    private var viewModel: MotorTransactionInvalidUserViewModel
+
     public weak var delegate: MotorTransactionInvalidUserViewDelegate?
 
-    public override init(frame: CGRect = .zero) {
-        super.init(frame: frame)
-        setup()
-    }
+    public init(_ viewModel: MotorTransactionInvalidUserViewModel) {
+        self.viewModel = viewModel
 
-    public func configure(_ viewModel: MotorTransactionInvalidUserViewModel) {
+        super.init(frame: .zero)
+
+        setup()
+
         titleLabel.text = viewModel.title
+        emailLabel.text = viewModel.email
         detailLabel.attributedText = viewModel.detail
         continueButton.setTitle(viewModel.continueButtonText, for: .normal)
         cancelButton.setTitle(viewModel.cancelButtonText, for: .normal)
@@ -61,34 +72,65 @@ public class MotorTransactionInvalidUserView: UIView {
     }
 
     private func setup() {
-        addSubview(imageView)
-        addSubview(titleLabel)
-        addSubview(detailLabel)
-        addSubview(continueButton)
-        addSubview(cancelButton)
+        var subviews = [UIView]()
+        var layoutConstraints = [NSLayoutConstraint()]
 
-        NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingXL),
-            imageView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: 144),
+        if viewModel.email != nil {
+            subviews = [imageView, emailLabel, titleLabel, detailLabel, continueButton, cancelButton]
+            layoutConstraints = [
+                imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingXL),
+                imageView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+                imageView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+                imageView.heightAnchor.constraint(equalToConstant: 144),
 
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 40),
-            titleLabel.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor, constant: .spacingXL),
-            titleLabel.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor, constant: -.spacingXL),
+                titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 40),
+                titleLabel.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor, constant: .spacingXL),
+                titleLabel.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor, constant: -.spacingXL),
 
-            detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
-            detailLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            detailLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+                emailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
+                emailLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+                emailLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
 
-            continueButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .spacingXL),
-            continueButton.leadingAnchor.constraint(equalTo: detailLabel.leadingAnchor),
-            continueButton.trailingAnchor.constraint(equalTo: detailLabel.trailingAnchor),
+                detailLabel.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: .spacingL),
+                detailLabel.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor),
+                detailLabel.trailingAnchor.constraint(equalTo: emailLabel.trailingAnchor),
 
-            cancelButton.topAnchor.constraint(equalTo: continueButton.bottomAnchor, constant: .spacingL),
-            cancelButton.leadingAnchor.constraint(equalTo: continueButton.leadingAnchor),
-            cancelButton.trailingAnchor.constraint(equalTo: continueButton.trailingAnchor),
-        ])
+                continueButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .spacingXL),
+                continueButton.leadingAnchor.constraint(equalTo: detailLabel.leadingAnchor),
+                continueButton.trailingAnchor.constraint(equalTo: detailLabel.trailingAnchor),
+
+                cancelButton.topAnchor.constraint(equalTo: continueButton.bottomAnchor, constant: .spacingL),
+                cancelButton.leadingAnchor.constraint(equalTo: continueButton.leadingAnchor),
+                cancelButton.trailingAnchor.constraint(equalTo: continueButton.trailingAnchor),
+            ]
+        } else {
+            subviews = [imageView, titleLabel, detailLabel, continueButton, cancelButton]
+            layoutConstraints = [
+                imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingXL),
+                imageView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+                imageView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+                imageView.heightAnchor.constraint(equalToConstant: 144),
+
+                titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 40),
+                titleLabel.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor, constant: .spacingXL),
+                titleLabel.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor, constant: -.spacingXL),
+
+                detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
+                detailLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+                detailLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+
+                continueButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .spacingXL),
+                continueButton.leadingAnchor.constraint(equalTo: detailLabel.leadingAnchor),
+                continueButton.trailingAnchor.constraint(equalTo: detailLabel.trailingAnchor),
+
+                cancelButton.topAnchor.constraint(equalTo: continueButton.bottomAnchor, constant: .spacingL),
+                cancelButton.leadingAnchor.constraint(equalTo: continueButton.leadingAnchor),
+                cancelButton.trailingAnchor.constraint(equalTo: continueButton.trailingAnchor),
+            ]
+        }
+
+        subviews.forEach { addSubview($0) }
+        NSLayoutConstraint.activate(layoutConstraints)
     }
 }
 

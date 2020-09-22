@@ -5,10 +5,9 @@
 import FinniversKit
 
 public class MotorTransactionInvalidUserDemoView: UIView {
-    private lazy var motorTransactionInvalidUserDemoView: MotorTransactionInvalidUserView = {
-        let view = MotorTransactionInvalidUserView()
+    private lazy var motorTransactionInvalidUserView: MotorTransactionInvalidUserView = {
+        let view = MotorTransactionInvalidUserView(MotorTransactionInvalidUserViewModel.defaultDataRegisteredUser)
         view.delegate = self
-        view.configure(MotorTransactionInvalidUserViewModel.defaultData)
         return view
     }()
 
@@ -22,8 +21,8 @@ public class MotorTransactionInvalidUserDemoView: UIView {
     }
 
     private func setup() {
-        addSubview(motorTransactionInvalidUserDemoView)
-        motorTransactionInvalidUserDemoView.fillInSuperview()
+        addSubview(motorTransactionInvalidUserView)
+        motorTransactionInvalidUserView.fillInSuperview()
     }
 }
 
@@ -38,10 +37,18 @@ extension MotorTransactionInvalidUserDemoView: MotorTransactionInvalidUserViewDe
 }
 
 public extension MotorTransactionInvalidUserViewModel {
-    static var defaultData = MotorTransactionInvalidUserViewModel(
+    static var defaultDataRegisteredUser = MotorTransactionInvalidUserViewModel(
         title: "Du er logget inn med en annen konto enn den du har opprettet kontrakten med.",
         detail: NSAttributedString(string: "Logg inn med selger@mail.no for å invitere en kjøper til kontrakten."),
         continueButtonText: "Fortsett",
+        cancelButtonText: "Avbryt"
+    )
+
+    static var defaultDataNonRegisteredUser = MotorTransactionInvalidUserViewModel(
+        title: "Invitasjon til kjøpekontrakt",
+        email: "potter@harry.com",
+        detail: NSAttributedString(string: "Vi finner ingen bruker med denne e-posten på FINN. Opprett en bruker for å få tilgang til kontrakten"),
+        continueButtonText: "Opprett bruker",
         cancelButtonText: "Avbryt"
     )
 }
