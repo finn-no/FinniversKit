@@ -81,14 +81,11 @@ public class MotorTransactionInviteCounterpartyView: UIView {
 extension MotorTransactionInviteCounterpartyView: BuyerPickerViewDelegate {
     public func buyerPickerView(
         _ buyerPickerView: BuyerPickerView,
-        didSelect profile: BuyerPickerProfileModel
+        didSelect profile: BuyerPickerProfileModel,
+        forRowAt indexPath: IndexPath
     ) {
         let counterPartyProfile = MotorTransactionInviteCounterpartyProfileViewModel(name: profile.name, image: profile.image)
         delegate?.motorTransactionInviteCounterpartyView(self, didSelect: counterPartyProfile)
-    }
-
-    public func buyerPickerViewDefaultPlaceholderImage(_ buyerPickerView: BuyerPickerView) -> UIImage? {
-        return delegate?.motorTransactionInviteCounterpartyViewPlaceholderImage(self)
     }
 
     public func buyerPickerView(

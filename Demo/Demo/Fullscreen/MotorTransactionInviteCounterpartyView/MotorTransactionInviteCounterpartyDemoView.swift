@@ -42,12 +42,6 @@ extension MotorTransactionInviteCounterpartyDemoView: MotorTransactionInviteCoun
         })
     }
 
-    public func motorTransactionInviteCounterpartyViewPlaceholderImage(
-        _ motorTransactionInviteCounterpartyView: MotorTransactionInviteCounterpartyView
-    ) -> UIImage? {
-        return nil
-    }
-
     public func motorTransactionInviteCounterpartyView(
         _ motorTransactionInviteCounterpartyView: MotorTransactionInviteCounterpartyView,
         loadImageForModel model: MotorTransactionInviteCounterpartyProfileViewModel,
