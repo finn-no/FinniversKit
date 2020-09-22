@@ -49,11 +49,11 @@ extension MotorTransactionInviteCounterpartyDemoView: MotorTransactionInviteCoun
         completion: @escaping ((UIImage?) -> Void)
     ) {
         guard let url = model.image else {
-            completion(nil)
+            let defaultImage = UIImage(named: "consentTransparencyImage")
+            completion(defaultImage)
             return
         }
 
-        // Demo code only.
         let task = URLSession.shared.dataTask(with: url) { data, _, _ in
             DispatchQueue.main.async {
                 if let data = data, let image = UIImage(data: data) {
