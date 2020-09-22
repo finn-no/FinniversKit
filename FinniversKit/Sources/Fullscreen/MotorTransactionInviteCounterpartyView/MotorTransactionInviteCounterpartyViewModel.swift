@@ -2,8 +2,6 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
-import Foundation
-
 // swiftlint:disable:next type_name
 public struct MotorTransactionInviteCounterpartyViewModel: BuyerPickerViewModel {
     public var title: String
