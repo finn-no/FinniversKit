@@ -61,10 +61,10 @@ public class MotorTransactionInviteCounterpartyView: UIView {
         addSubview(pickLaterButton)
 
         NSLayoutConstraint.activate([
-            pickABuyerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            pickABuyerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingL),
             pickABuyerView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             pickABuyerView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            pickABuyerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: .spacingXXL),
+            pickABuyerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: .spacingXL * 2),
 
             pickLaterButton.topAnchor.constraint(equalTo: pickABuyerView.bottomAnchor),
             pickLaterButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingL),
