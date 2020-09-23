@@ -26,9 +26,14 @@ class BuyerPickerTextHeader: UITableViewHeaderFooterView {
         title.fillInSuperview(insets: inset, isActive: true)
     }
 
+    public func centerTitle() {
+        title.textAlignment = .center
+    }
+
     public override func prepareForReuse() {
         super.prepareForReuse()
         title.text = ""
+        title.textAlignment = .natural
     }
 
     required init?(coder aDecoder: NSCoder) {
