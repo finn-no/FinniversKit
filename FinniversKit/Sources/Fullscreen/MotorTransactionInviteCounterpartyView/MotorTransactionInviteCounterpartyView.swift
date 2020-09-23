@@ -115,4 +115,8 @@ extension MotorTransactionInviteCounterpartyView: BuyerPickerViewDelegate {
             imageWidth: imageWidth
         )
     }
+
+    public func buyerPickerViewCenterTitleInHeaderView(_ buyerPickerView: BuyerPickerView, viewForHeaderInSection section: Int) -> Bool {
+        return true
+    }
 }
