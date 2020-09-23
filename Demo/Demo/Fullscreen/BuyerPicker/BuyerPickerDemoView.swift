@@ -58,4 +58,8 @@ extension BuyerPickerDemoView: BuyerPickerViewDelegate {
     }
 
     public func buyerPickerView(_ buyerPickerView: BuyerPickerView, cancelLoadingImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat) {}
+
+    public func buyerPickerViewCenterTitleInHeaderView(_ buyerPickerView: BuyerPickerView, viewForHeaderInSection section: Int) -> Bool {
+        return false
+    }
 }

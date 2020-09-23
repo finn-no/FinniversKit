@@ -8,6 +8,7 @@ public protocol BuyerPickerViewDelegate: AnyObject {
     func buyerPickerView(_ buyerPickerView: BuyerPickerView, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func buyerPickerView(_ buyerPickerView: BuyerPickerView, cancelLoadingImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat)
     func buyerPickerView(_ buyerPickerView: BuyerPickerView, didSelect profile: BuyerPickerProfileModel, forRowAt indexPath: IndexPath)
+    func buyerPickerViewCenterTitleInHeaderView(_ buyerPickerView: BuyerPickerView, viewForHeaderInSection section: Int) -> Bool
 }
 
 public class BuyerPickerView: UIView {
@@ -98,6 +99,9 @@ extension BuyerPickerView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeue(BuyerPickerTextHeader.self)
         header.title.text = model?.title
+        if delegate?.buyerPickerViewCenterTitleInHeaderView(self, viewForHeaderInSection: section) == true {
+            header.centerTitle()
+        }
         return header
     }
 
