@@ -87,11 +87,29 @@ public extension MotorTransactionInviteCounterpartyViewModel {
                     chevronText: "Se samtale"
                 ),
                 BuyerPickerDemoUser(
-                    name: "Ron",
+                    name: "Voldemort",
+                    image: URL(string: "http://via.placeholder.com/44x44/111111/111111"),
+                    chevronText: "Se samtale"
+                ),
+                BuyerPickerDemoUser(
+                    name: "Draco",
+                    image: URL(string: "http://via.placeholder.com/44x44/111111/111111"),
+                    chevronText: "Se samtale"
+                ),
+                BuyerPickerDemoUser(
+                    name: "Ginny",
                     image: URL(string: "http://via.placeholder.com/44x44/ff00ff/ff00ff")
                 ),
                 BuyerPickerDemoUser(
                     name: "Hermine",
+                    image: URL(string: "http://via.placeholder.com/44x44/ff00ff/ff00ff")
+                ),
+                BuyerPickerDemoUser(
+                    name: "Herp",
+                    image: URL(string: "http://via.placeholder.com/44x44/ff00ff/ff00ff")
+                ),
+                BuyerPickerDemoUser(
+                    name: "Derp",
                     image: URL(string: "http://via.placeholder.com/44x44/ff00ff/ff00ff")
                 ),
                 BuyerPickerDemoUser(
