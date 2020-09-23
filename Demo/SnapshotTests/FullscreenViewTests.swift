@@ -149,6 +149,10 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.motorTransactionInvalidUserView)
     }
 
+    func testMotorTransactionInviteCounterpartyView() {
+        snapshot(.motorTransactionInviteCounterpartyView)
+    }
+
     func testErrorView() {
         snapshot(.errorView)
     }
