@@ -5,10 +5,10 @@
 import UIKit
 
 public protocol BuyerPickerViewDelegate: AnyObject {
-    func buyerPickerViewDefaultPlaceholderImage(_ buyerPickerView: BuyerPickerView) -> UIImage?
     func buyerPickerView(_ buyerPickerView: BuyerPickerView, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func buyerPickerView(_ buyerPickerView: BuyerPickerView, cancelLoadingImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat)
-    func buyerPickerView(_ buyerPickerView: BuyerPickerView, didSelect profile: BuyerPickerProfileModel)
+    func buyerPickerView(_ buyerPickerView: BuyerPickerView, didSelect profile: BuyerPickerProfileModel, forRowAt indexPath: IndexPath)
+    func buyerPickerViewCenterTitleInHeaderView(_ buyerPickerView: BuyerPickerView, viewForHeaderInSection section: Int) -> Bool
 }
 
 public class BuyerPickerView: UIView {
@@ -65,7 +65,7 @@ public class BuyerPickerView: UIView {
                 return
         }
 
-        delegate?.buyerPickerView(self, didSelect: selectedProfile)
+        delegate?.buyerPickerView(self, didSelect: selectedProfile, forRowAt: indexPath)
     }
 }
 
@@ -99,22 +99,21 @@ extension BuyerPickerView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeue(BuyerPickerTextHeader.self)
         header.title.text = model?.title
+        if delegate?.buyerPickerViewCenterTitleInHeaderView(self, viewForHeaderInSection: section) == true {
+            header.centerTitle()
+        }
         return header
     }
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedUser = model?.profiles[indexPath.row] else { return }
-        delegate?.buyerPickerView(self, didSelect: selectedUser)
+        delegate?.buyerPickerView(self, didSelect: selectedUser, forRowAt: indexPath)
     }
 }
 
 // MARK: - ReviewProfileCellDelegate
 
 extension BuyerPickerView: BuyerPickerCellDelegate {
-    func buyerPickerCellDefaultPlaceholderImage(_ cell: BuyerPickerProfileCell) -> UIImage? {
-        return delegate?.buyerPickerViewDefaultPlaceholderImage(self)
-    }
-
     func buyerPickerCell(_ reviewProfileCell: BuyerPickerProfileCell, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         delegate?.buyerPickerView(self, loadImageForModel: model, imageWidth: imageWidth, completion: completion)
     }

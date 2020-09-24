@@ -30,7 +30,7 @@ public class BuyerPickerDemoView: UIView {
 }
 
 extension BuyerPickerDemoView: BuyerPickerViewDelegate {
-    public func buyerPickerView(_ buyerPickerView: BuyerPickerView, didSelect profile: BuyerPickerProfileModel) {
+    public func buyerPickerView(_ buyerPickerView: BuyerPickerView, didSelect profile: BuyerPickerProfileModel, forRowAt indexPath: IndexPath) {
         LoadingView.show(afterDelay: 0)
         print("Did select: \(profile.name) for review")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
@@ -38,13 +38,10 @@ extension BuyerPickerDemoView: BuyerPickerViewDelegate {
         })
     }
 
-    public func buyerPickerViewDefaultPlaceholderImage(_ buyerPickerView: BuyerPickerView) -> UIImage? {
-        return UIImage(named: "consentTransparencyImage")
-    }
-
     public func buyerPickerView(_ buyerPickerView: BuyerPickerView, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let url = model.image else {
-            completion(nil)
+            let placeholderImage = UIImage(named: "consentTransparencyImage")
+            completion(placeholderImage)
             return
         }
 
@@ -61,4 +58,8 @@ extension BuyerPickerDemoView: BuyerPickerViewDelegate {
     }
 
     public func buyerPickerView(_ buyerPickerView: BuyerPickerView, cancelLoadingImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat) {}
+
+    public func buyerPickerViewCenterTitleInHeaderView(_ buyerPickerView: BuyerPickerView, viewForHeaderInSection section: Int) -> Bool {
+        return false
+    }
 }

@@ -7,8 +7,8 @@ import FinniversKit
 import Demo
 
 class ComponentViewTests: XCTestCase {
-    private func snapshot(_ component: ComponentDemoViews, includeIPad: Bool = false, delay: TimeInterval? = nil, testName: String = #function) {
-        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, delay: delay, testName: testName)
+    private func snapshot(_ component: ComponentDemoViews, includeIPad: Bool = false, delay: TimeInterval? = nil, record recording: Bool = false, testName: String = #function) {
+        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, delay: delay, record: recording, testName: testName)
     }
 
     // MARK: - Tests
@@ -289,5 +289,13 @@ class ComponentViewTests: XCTestCase {
 
     func testSearchDisplayMenuView() {
         snapshot(.searchDisplayMenuView)
+    }
+
+    func testExtendedProfileView() {
+        snapshot(.extendedProfileView)
+    }
+
+    func testExpandCollapseButton() {
+        snapshot(.expandCollapseButton)
     }
 }

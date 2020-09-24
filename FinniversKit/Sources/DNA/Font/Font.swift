@@ -17,7 +17,7 @@ enum FontType: String {
     /// - It should only be used one T1 and it should be the first text element that catches the users attention.
     /// - It shall give the user an overview of which page he or she is located.
     /// - This always has the weight Medium.
-    static var title1: UIFont {
+    class var title1: UIFont {
         registerCustomFonts()
 
         let font = UIFont(name: FontType.medium.rawValue, size: 34.0)!
@@ -30,7 +30,7 @@ enum FontType: String {
     /// - A page can contain multiple T2 to divide content into several sections.
     /// - There should be a lot of space between sections to create a clear distinction on the content.
     /// - This always has the weight Light.
-    static var title2: UIFont {
+    class var title2: UIFont {
         registerCustomFonts()
 
         let font = UIFont(name: FontType.light.rawValue, size: 28.0)!
@@ -42,7 +42,7 @@ enum FontType: String {
     /// ## Usage:
     /// - If a T2 have more sublevels, you can use T3.
     /// - This always has the weight Medium.
-    static var title3Strong: UIFont {
+    class var title3Strong: UIFont {
         registerCustomFonts()
 
         let font = UIFont(name: FontType.medium.rawValue, size: 22)!
@@ -54,7 +54,7 @@ enum FontType: String {
     /// ## Usage:
     /// - If a T2 have more sublevels, you can use T3.
     /// - This always has the weight Light.
-    static var title3: UIFont {
+    class var title3: UIFont {
         registerCustomFonts()
 
         let font = UIFont(name: FontType.light.rawValue, size: 22)!
@@ -65,7 +65,7 @@ enum FontType: String {
     ///
     /// ## Usage:
     /// - This have the same size as the body text, but is always bolded (Medium) to differenciate them.
-    static var bodyStrong: UIFont {
+    class var bodyStrong: UIFont {
         registerCustomFonts()
 
         let font = UIFont(name: FontType.medium.rawValue, size: 16.0)!
@@ -76,7 +76,7 @@ enum FontType: String {
     ///
     /// ## Usage:
     /// - This have the same size as the body text, but is always semibolded (Regular) to differenciate them.
-    static var bodyRegular: UIFont {
+    class var bodyRegular: UIFont {
         registerCustomFonts()
 
         let font = UIFont(name: FontType.regular.rawValue, size: 16.0)!
@@ -87,7 +87,7 @@ enum FontType: String {
     ///
     /// ## Usage:
     /// - Regular text below titles is called body text and is weighted Medium.
-    static var body: UIFont {
+    class var body: UIFont {
         registerCustomFonts()
 
         let font = UIFont(name: FontType.light.rawValue, size: 16.0)!
@@ -99,7 +99,7 @@ enum FontType: String {
     /// ## Usage:
     /// - Used for short amount of text if neither the Body or Detail is appropriate.
     /// - This is slightly smaller than body text. Weighted Light.
-    static var caption: UIFont {
+    class var caption: UIFont {
         registerCustomFonts()
 
         let font = UIFont(name: FontType.light.rawValue, size: 14.0)!
@@ -112,7 +112,7 @@ enum FontType: String {
     /// - Used for short amount of text if neither the Body or Detail is appropriate.
     /// - Bold version of Caption
     /// - This is slightly smaller than body text. Weighted Medium.
-    static var captionStrong: UIFont {
+    class var captionStrong: UIFont {
         registerCustomFonts()
 
         let font = UIFont(name: FontType.medium.rawValue, size: 14.0)!
@@ -123,7 +123,7 @@ enum FontType: String {
     ///
     /// ## Usage:
     /// - Used for small, bold headlines.
-    static var detailStrong: UIFont {
+    class var detailStrong: UIFont {
         registerCustomFonts()
 
         let font = UIFont(name: FontType.bold.rawValue, size: 12.0)!
@@ -137,7 +137,7 @@ enum FontType: String {
     /// - This is slightly smaller than body text. Weighted Regular.
     /// - The color Stone is prefered in most cases with white background.
     /// - For colored background such as ribbons, the color should be Licorice.
-    static var detail: UIFont {
+    class var detail: UIFont {
         registerCustomFonts()
 
         let font = UIFont(name: FontType.regular.rawValue, size: 12.0)!
@@ -158,17 +158,17 @@ enum FontType: String {
 
 extension UIFont {
     @available(*, deprecated, message: "Use bodyStrong instead.")
-    public static var title4: UIFont {
+    public class var title4: UIFont {
         return bodyStrong
     }
 
     @available(*, deprecated, message: "Use detailStrong instead.")
-    public static var title5: UIFont {
+    public class var title5: UIFont {
         return detailStrong
     }
 
     @available(*, deprecated, message: "Use captionStrong instead.")
-    public static var captionHeavy: UIFont {
+    public class var captionHeavy: UIFont {
         return captionStrong
     }
 }

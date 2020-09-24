@@ -5,7 +5,6 @@
 import UIKit
 
 protocol BuyerPickerCellDelegate: AnyObject {
-    func buyerPickerCellDefaultPlaceholderImage(_ cell: BuyerPickerProfileCell) -> UIImage?
     func buyerPickerCell(_ cell: BuyerPickerProfileCell, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func buyerPickerCell(_ cell: BuyerPickerProfileCell, cancelLoadingImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat)
 }
@@ -32,9 +31,12 @@ class BuyerPickerProfileCell: UITableViewCell {
         return view
     }()
 
+    lazy var chevronLabel = Label(style: .detail, withAutoLayout: true)
+
     var model: BuyerPickerProfileModel? {
         didSet {
             name.text = model?.name ?? ""
+            chevronLabel.text = model?.chevronText ?? ""
         }
     }
 
@@ -45,33 +47,8 @@ class BuyerPickerProfileCell: UITableViewCell {
         setup()
     }
 
-    private func setup() {
-        accessoryType = .disclosureIndicator
-
-        let profileStack = UIStackView(arrangedSubviews: [profileImage, name])
-        profileStack.alignment = .center
-        profileStack.spacing = .spacingS
-        profileStack.translatesAutoresizingMaskIntoConstraints = false
-
-        contentView.addSubview(profileStack)
-        contentView.addSubview(hairlineView)
-
-        NSLayoutConstraint.activate([
-            profileStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
-            profileStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-            profileStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
-            profileStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingS),
-
-            profileImage.heightAnchor.constraint(equalToConstant: BuyerPickerProfileCell.profileImageSize),
-            profileImage.widthAnchor.constraint(equalToConstant: BuyerPickerProfileCell.profileImageSize),
-
-            hairlineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            hairlineView.leadingAnchor.constraint(equalTo: profileImage.leadingAnchor, constant: .spacingS),
-            hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: .spacingXL),
-            hairlineView.heightAnchor.constraint(equalToConstant: 0.5)
-        ])
-
-        selectionStyle = .none
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func prepareForReuse() {
@@ -84,17 +61,44 @@ class BuyerPickerProfileCell: UITableViewCell {
         }
     }
 
+    private func setup() {
+        accessoryType = .disclosureIndicator
+        selectionStyle = .none
+
+        let profileStack = UIStackView(arrangedSubviews: [profileImage, name])
+        profileStack.alignment = .center
+        profileStack.spacing = .spacingS
+        profileStack.translatesAutoresizingMaskIntoConstraints = false
+
+        contentView.addSubview(profileStack)
+        contentView.addSubview(chevronLabel)
+        contentView.addSubview(hairlineView)
+
+        NSLayoutConstraint.activate([
+            profileStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
+            profileStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            profileStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            profileStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingS),
+
+            profileImage.heightAnchor.constraint(equalToConstant: BuyerPickerProfileCell.profileImageSize),
+            profileImage.widthAnchor.constraint(equalToConstant: BuyerPickerProfileCell.profileImageSize),
+
+            chevronLabel.centerYAnchor.constraint(equalTo: profileStack.centerYAnchor),
+            chevronLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingS),
+
+            hairlineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            hairlineView.leadingAnchor.constraint(equalTo: profileImage.leadingAnchor, constant: .spacingS),
+            hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: .spacingXL),
+            hairlineView.heightAnchor.constraint(equalToConstant: 0.5)
+        ])
+    }
+
     func loadImage() {
-        profileImage.image = delegate?.buyerPickerCellDefaultPlaceholderImage(self)
         guard let model = model else { return }
         delegate?.buyerPickerCell(self, loadImageForModel: model, imageWidth: BuyerPickerProfileCell.profileImageSize, completion: { [weak self] image in
             if let image = image {
                 self?.profileImage.image = image
             }
         })
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
