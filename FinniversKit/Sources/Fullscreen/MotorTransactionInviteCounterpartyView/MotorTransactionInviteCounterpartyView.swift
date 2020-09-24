@@ -117,7 +117,10 @@ extension MotorTransactionInviteCounterpartyView: BuyerPickerViewDelegate {
         )
     }
 
-    public func buyerPickerViewCenterTitleInHeaderView(_ buyerPickerView: BuyerPickerView, viewForHeaderInSection section: Int) -> Bool {
+    public func buyerPickerViewCenterTitleInHeaderView(
+        _ buyerPickerView: BuyerPickerView,
+        viewForHeaderInSection section: Int
+    ) -> Bool {
         return true
     }
 }
