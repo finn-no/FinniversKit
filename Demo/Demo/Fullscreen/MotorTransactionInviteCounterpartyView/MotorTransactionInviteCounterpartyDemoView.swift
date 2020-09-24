@@ -31,7 +31,8 @@ public class MotorTransactionInviteCounterpartyDemoView: UIView {
 extension MotorTransactionInviteCounterpartyDemoView: MotorTransactionInviteCounterpartyViewDelegate {
     public func motorTransactionInviteCounterpartyView(
         _ motorTransactionInviteCounterpartyView: MotorTransactionInviteCounterpartyView,
-        didSelect profile: MotorTransactionInviteCounterpartyProfileViewModel
+        didSelect profile: MotorTransactionInviteCounterpartyProfileViewModel,
+        forRowAt indexPath: IndexPath
     ) {
         LoadingView.show(afterDelay: 0)
 

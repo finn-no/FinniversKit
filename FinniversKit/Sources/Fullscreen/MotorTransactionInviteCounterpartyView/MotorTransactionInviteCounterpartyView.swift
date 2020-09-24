@@ -5,7 +5,8 @@
 public protocol MotorTransactionInviteCounterpartyViewDelegate: AnyObject {
     func motorTransactionInviteCounterpartyView(
         _ motorTransactionInviteCounterpartyView: MotorTransactionInviteCounterpartyView,
-        didSelect profile: MotorTransactionInviteCounterpartyProfileViewModel
+        didSelect profile: MotorTransactionInviteCounterpartyProfileViewModel,
+        forRowAt indexPath: IndexPath
     )
 
     func motorTransactionInviteCounterpartyView(
@@ -85,7 +86,7 @@ extension MotorTransactionInviteCounterpartyView: BuyerPickerViewDelegate {
         forRowAt indexPath: IndexPath
     ) {
         let counterPartyProfile = MotorTransactionInviteCounterpartyProfileViewModel(name: profile.name, image: profile.image)
-        delegate?.motorTransactionInviteCounterpartyView(self, didSelect: counterPartyProfile)
+        delegate?.motorTransactionInviteCounterpartyView(self, didSelect: counterPartyProfile, forRowAt: indexPath)
     }
 
     public func buyerPickerView(
@@ -116,7 +117,10 @@ extension MotorTransactionInviteCounterpartyView: BuyerPickerViewDelegate {
         )
     }
 
-    public func buyerPickerViewCenterTitleInHeaderView(_ buyerPickerView: BuyerPickerView, viewForHeaderInSection section: Int) -> Bool {
+    public func buyerPickerViewCenterTitleInHeaderView(
+        _ buyerPickerView: BuyerPickerView,
+        viewForHeaderInSection section: Int
+    ) -> Bool {
         return true
     }
 }
