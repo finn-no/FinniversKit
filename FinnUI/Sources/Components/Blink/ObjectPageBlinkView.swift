@@ -12,10 +12,30 @@ public class ObjectPageBlinkView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var iconImageView = UIImageView(withAutoLayout: true)
-    private lazy var contentStackView = UIStackView(axis: .vertical, spacing: .spacingXS, withAutoLayout: true)
-    private lazy var readMoreButtonStackView = UIStackView(axis: .horizontal, withAutoLayout: true)
-    private lazy var iconTitleStackView = UIStackView(axis: .horizontal, spacing: .spacingS, withAutoLayout: true)
+    private lazy var contentStackView: UIStackView = {
+        let stackView = UIStackView(axis: .vertical, spacing: .spacingXS, withAutoLayout: true)
+        stackView.addArrangedSubviews([iconTitleStackView, increasedClickLabel, readMoreButtonStackView])
+        stackView.setCustomSpacing(.spacingS, after: iconTitleStackView)
+        return stackView
+    }()
+
+    private lazy var readMoreButtonStackView: UIStackView = {
+        let stackView = UIStackView(axis: .horizontal, withAutoLayout: true)
+        stackView.addArrangedSubviews([readMoreButton, UIView()])
+        return stackView
+    }()
+
+    private lazy var iconTitleStackView: UIStackView = {
+        let stackView = UIStackView(axis: .horizontal, spacing: .spacingS, withAutoLayout: true)
+        stackView.addArrangedSubviews([iconImageView, titleLabel])
+        return stackView
+    }()
+
+    private lazy var iconImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.image = UIImage(named: .blinkRocket)
+        return imageView
+    }()
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .body, withAutoLayout: true)
@@ -48,12 +68,6 @@ public class ObjectPageBlinkView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        iconImageView.image = UIImage(named: .blinkRocket)
-
-        iconTitleStackView.addArrangedSubviews([iconImageView, titleLabel])
-        readMoreButtonStackView.addArrangedSubviews([readMoreButton, UIView()])
-        contentStackView.addArrangedSubviews([iconTitleStackView, increasedClickLabel, readMoreButtonStackView])
-
         addSubview(contentStackView)
         contentStackView.fillInSuperview()
 
