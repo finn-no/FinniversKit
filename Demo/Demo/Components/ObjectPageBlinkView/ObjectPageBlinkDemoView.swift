@@ -14,6 +14,10 @@ class ObjectPageBlinkDemoView: UIView, Tweakable {
             TweakingOption(title: "Default", action: { [weak self] in
                 self?.blinkView.configure(with: .default)
             }),
+
+            TweakingOption(title: "Without increased click percentage", action: { [weak self] in
+                self?.blinkView.configure(with: .withoutIncreasedClickPercentage)
+            }),
         ]
     }()
 
@@ -52,6 +56,16 @@ extension ObjectPageBlinkViewModel {
             icon: UIImage(named: .arrowDown),
             title: "Denne annonsen har fått ekstra effekt fra BLINK",
             increasedClickPercentage: 73,
+            increasedClickDescription: "flere klikk enn vanlig",
+            readMoreButtonTitle: "Få flere klikk på din boligannonse"
+        )
+    }()
+
+    static var withoutIncreasedClickPercentage: ObjectPageBlinkViewModel = {
+        ObjectPageBlinkViewModel(
+            icon: UIImage(named: .arrowDown),
+            title: "Denne annonsen har fått ekstra effekt fra BLINK",
+            increasedClickPercentage: nil,
             increasedClickDescription: "flere klikk enn vanlig",
             readMoreButtonTitle: "Få flere klikk på din boligannonse"
         )
