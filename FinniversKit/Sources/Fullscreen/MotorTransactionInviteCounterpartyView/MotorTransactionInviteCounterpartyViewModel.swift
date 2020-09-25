@@ -2,6 +2,8 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
+import Foundation
+
 // swiftlint:disable:next type_name
 public struct MotorTransactionInviteCounterpartyViewModel: BuyerPickerViewModel {
     public let title: String
@@ -26,7 +28,7 @@ public struct MotorTransactionInviteCounterpartyViewModel: BuyerPickerViewModel 
 }
 
 // swiftlint:disable:next type_name
-public struct MotorTransactionInviteCounterpartyProfileViewModel: BuyerPickerProfileModel {
+public struct MotorTransactionInviteCounterpartyProfileViewModel: BuyerPickerProfileModel, Hashable {
     public let id: UUID
     public let name: String
     public let image: URL?
@@ -41,5 +43,13 @@ public struct MotorTransactionInviteCounterpartyProfileViewModel: BuyerPickerPro
         self.name = name
         self.image = image
         self.chevronText = chevronText
+    }
+
+    public static func == (
+        lhs: MotorTransactionInviteCounterpartyProfileViewModel,
+        rhs: MotorTransactionInviteCounterpartyProfileViewModel
+    ) -> Bool {
+        guard lhs.id.uuidString.isEqual(rhs.id.uuidString) else { return false }
+        return true
     }
 }
