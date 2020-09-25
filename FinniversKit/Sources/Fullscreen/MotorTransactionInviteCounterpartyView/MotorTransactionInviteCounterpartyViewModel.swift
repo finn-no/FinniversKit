@@ -27,9 +27,19 @@ public struct MotorTransactionInviteCounterpartyViewModel: BuyerPickerViewModel 
 
 // swiftlint:disable:next type_name
 public struct MotorTransactionInviteCounterpartyProfileViewModel: BuyerPickerProfileModel {
-    public var name: String
-    public var image: URL?
-    public var chevronText: String?
     public let id: UUID
+    public let name: String
+    public let image: URL?
+    public let chevronText: String?
+
+    public init(
+        name: String,
+        image: URL?,
+        chevronText: String? = nil
+    ) {
         self.id = UUID()
+        self.name = name
+        self.image = image
+        self.chevronText = chevronText
+    }
 }
