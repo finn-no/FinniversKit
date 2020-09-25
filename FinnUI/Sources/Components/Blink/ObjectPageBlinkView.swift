@@ -48,6 +48,8 @@ public class ObjectPageBlinkView: UIView {
     // MARK: - Setup
 
     private func setup() {
+        iconImageView.image = UIImage(named: .blinkRocket)
+
         iconTitleStackView.addArrangedSubviews([iconImageView, titleLabel])
         readMoreButtonStackView.addArrangedSubviews([readMoreButton, UIView()])
         contentStackView.addArrangedSubviews([iconTitleStackView, increasedClickLabel, readMoreButtonStackView])
