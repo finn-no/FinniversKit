@@ -28,4 +28,8 @@ public extension String {
 
         return attrString
     }
+
+    func asAttributedString(attributes: [NSAttributedString.Key: Any]? = nil) -> NSAttributedString {
+        NSAttributedString(string: self, attributes: attributes)
+    }
 }
