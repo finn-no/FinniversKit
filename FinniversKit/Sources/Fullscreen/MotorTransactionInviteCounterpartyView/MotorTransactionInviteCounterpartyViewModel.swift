@@ -4,11 +4,11 @@
 
 // swiftlint:disable:next type_name
 public struct MotorTransactionInviteCounterpartyViewModel: BuyerPickerViewModel {
-    public var title: String
-    public var profiles: [BuyerPickerProfileModel]
-    public var selectTitle: String
-    public var confirmationTitle: String
-    public var selectLaterButtonText: String
+    public let title: String
+    public let profiles: [BuyerPickerProfileModel]
+    public let selectTitle: String
+    public let confirmationTitle: String
+    public let selectLaterButtonText: String
 
     public init(
         title: String,
