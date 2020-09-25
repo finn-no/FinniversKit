@@ -30,4 +30,6 @@ public struct MotorTransactionInviteCounterpartyProfileViewModel: BuyerPickerPro
     public var name: String
     public var image: URL?
     public var chevronText: String?
+    public let id: UUID
+        self.id = UUID()
 }
