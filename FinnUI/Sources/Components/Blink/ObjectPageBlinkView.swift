@@ -66,7 +66,6 @@ public class ObjectPageBlinkView: UIView {
     // MARK: - Public methods
 
     public func configure(with viewModel: ObjectPageBlinkViewModel) {
-        iconImageView.image = viewModel.icon
         titleLabel.text = viewModel.title
 
         if let increasedClickPercentage = viewModel.increasedClickPercentage {

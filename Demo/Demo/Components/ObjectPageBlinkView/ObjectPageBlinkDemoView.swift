@@ -53,7 +53,6 @@ extension ObjectPageBlinkDemoView: ObjectPageBlinkViewDelegate {
 extension ObjectPageBlinkViewModel {
     static var `default`: ObjectPageBlinkViewModel = {
         ObjectPageBlinkViewModel(
-            icon: UIImage(named: .arrowDown),
             title: "Denne annonsen har fått ekstra effekt fra BLINK",
             increasedClickPercentage: 73,
             increasedClickDescription: "flere klikk enn vanlig",
@@ -63,7 +62,6 @@ extension ObjectPageBlinkViewModel {
 
     static var withoutIncreasedClickPercentage: ObjectPageBlinkViewModel = {
         ObjectPageBlinkViewModel(
-            icon: UIImage(named: .arrowDown),
             title: "Denne annonsen har fått ekstra effekt fra BLINK",
             increasedClickPercentage: nil,
             increasedClickDescription: "flere klikk enn vanlig",
