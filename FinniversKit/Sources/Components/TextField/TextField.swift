@@ -137,6 +137,7 @@ public class TextField: UIView {
 
     public let inputType: InputType
     public var phoneNumberRegEx = "^(?:\\s*\\d){8,11}$"
+    public var emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 
     public var placeholderText: String = "" {
         didSet {
@@ -318,7 +319,7 @@ public class TextField: UIView {
     }
 
     private func isValidEmail(_ emailAdress: String) -> Bool {
-        return evaluate("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}", with: emailAdress)
+        return evaluate(emailRegEx, with: emailAdress)
     }
 
     private func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
