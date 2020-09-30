@@ -230,6 +230,7 @@
 		9BE474C924979816009620A5 /* BapAdView+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE474C824979816009620A5 /* BapAdView+Previews.swift */; };
 		DA083C2E2462BCA800B26235 /* SwiftUIDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */; };
 		DAE9CA8724602CB000C7552F /* SwiftUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */; };
+		DAFA2460252486A400D3D468 /* NotificationCenterSegmentDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA245F252486A400D3D468 /* NotificationCenterSegmentDemoView.swift */; };
 		DED0A091246871A40016176A /* NotificationCenterDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A090246871A40016176A /* NotificationCenterDemoViewController.swift */; };
 		DED0A09524687E010016176A /* NotificationCenterDemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A09424687E010016176A /* NotificationCenterDemoData.swift */; };
 		DED0A3D9246984E30016176A /* NotificationCenterSearchDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A3D8246984E30016176A /* NotificationCenterSearchDemoView.swift */; };
@@ -484,6 +485,7 @@
 		9BE474C824979816009620A5 /* BapAdView+Previews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BapAdView+Previews.swift"; sourceTree = "<group>"; };
 		DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDemoViews.swift; sourceTree = "<group>"; };
 		DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewTests.swift; sourceTree = "<group>"; };
+		DAFA245F252486A400D3D468 /* NotificationCenterSegmentDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterSegmentDemoView.swift; sourceTree = "<group>"; };
 		DED0A090246871A40016176A /* NotificationCenterDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterDemoViewController.swift; sourceTree = "<group>"; };
 		DED0A09424687E010016176A /* NotificationCenterDemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterDemoData.swift; sourceTree = "<group>"; };
 		DED0A3D8246984E30016176A /* NotificationCenterSearchDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterSearchDemoView.swift; sourceTree = "<group>"; };
@@ -841,6 +843,7 @@
 				DED0A090246871A40016176A /* NotificationCenterDemoViewController.swift */,
 				DED0A09424687E010016176A /* NotificationCenterDemoData.swift */,
 				DED0A3D8246984E30016176A /* NotificationCenterSearchDemoView.swift */,
+				DAFA245F252486A400D3D468 /* NotificationCenterSegmentDemoView.swift */,
 			);
 			path = NotificationCenter;
 			sourceTree = "<group>";
@@ -2117,6 +2120,7 @@
 				46E773E4242CEF0A008A5E93 /* BuyerConfirmedHandoverDemoViewModel.swift in Sources */,
 				46E773A8242CEF0A008A5E93 /* ComponentDemoViews.swift in Sources */,
 				46E77419242CEF0A008A5E93 /* InfoboxDemoView.swift in Sources */,
+				DAFA2460252486A400D3D468 /* NotificationCenterSegmentDemoView.swift in Sources */,
 				46E77445242CEF0A008A5E93 /* BasicCellDemoView.swift in Sources */,
 				46E773E6242CEF0A008A5E93 /* BothPartiesConfirmedHandoverDemoViewModel.swift in Sources */,
 				46E773FF242CEF0A008A5E93 /* SelfDeclarationDemoView.swift in Sources */,
