@@ -8,12 +8,8 @@ public class IconRibbonView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var iconImageView: UIImageView = {
-        let imageView = UIImageView(withAutoLayout: true)
-        return imageView
-    }()
-
-    public var style: RibbonView.Style = .default
+    private lazy var iconImageView = UIImageView(withAutoLayout: true)
+    private var style: RibbonView.Style = .default
     private let horisontalMargin: CGFloat = .spacingM
     private let verticalMargin: CGFloat = 3
     private let cornerRadius: CGFloat = 8
