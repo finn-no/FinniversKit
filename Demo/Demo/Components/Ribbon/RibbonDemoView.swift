@@ -13,7 +13,8 @@ public class RibbonDemoView: UIView {
         RibbonView(style: .warning, with: "Warning"),
         RibbonView(style: .default, with: "Default"),
         RibbonView(style: .disabled, with: "Disabled"),
-        RibbonView(style: .sponsored, with: "Sponsored")
+        RibbonView(style: .sponsored, with: "Sponsored"),
+        IconRibbonView(style: .success, with: UIImage(named: .blinkRocketMini))
     ]
 
     override init(frame: CGRect) {
