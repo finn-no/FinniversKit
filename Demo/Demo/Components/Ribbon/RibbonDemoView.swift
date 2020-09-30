@@ -5,12 +5,7 @@
 import FinniversKit
 
 public class RibbonDemoView: UIView {
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .vertical
-        stackView.spacing = .spacingS
-        return stackView
-    }()
+    private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
 
     private let ribbonViews: [UIView] = [
         RibbonView(style: .success, with: "Success"),
@@ -33,8 +28,7 @@ public class RibbonDemoView: UIView {
             ribbonView.translatesAutoresizingMaskIntoConstraints = false
             ribbonView.setContentHuggingPriority(.required, for: .horizontal)
 
-            let rowStackView = UIStackView(withAutoLayout: true)
-            rowStackView.axis = .horizontal
+            let rowStackView = UIStackView(axis: .horizontal, withAutoLayout: true)
             rowStackView.addArrangedSubviews([ribbonView, UIView(withAutoLayout: true)])
             return rowStackView
         }
