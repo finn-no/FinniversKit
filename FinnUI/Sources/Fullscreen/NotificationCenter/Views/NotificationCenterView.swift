@@ -264,9 +264,9 @@ extension NotificationCenterView: UIScrollViewDelegate {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
 
-        let hasScrolledEnough = offsetY > contentHeight - scrollView.frame.height * 4
+        let willReachEndOfContent = offsetY > contentHeight - scrollView.frame.height * 4
 
-        if hasScrolledEnough && !isFetchingNextPageForSavedSearches {
+        if willReachEndOfContent && !isFetchingNextPageForSavedSearches {
             dataSource?.notificationCenterView(self, fetchNextPageFor: selectedSegment)
             isFetchingNextPageForSavedSearches = true
         }
