@@ -7,10 +7,10 @@ import Foundation
 public struct SearchListEmptyViewModel {
 
     let title: String
-    let body: String
+    let body: String?
     let buttonTitle: String?
 
-    public init(title: String, body: String, buttonTitle: String? = nil) {
+    public init(title: String, body: String?, buttonTitle: String? = nil) {
         self.title = title
         self.body = body
         self.buttonTitle = buttonTitle

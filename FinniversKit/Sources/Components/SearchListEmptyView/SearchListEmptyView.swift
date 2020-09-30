@@ -18,6 +18,7 @@ public protocol SearchListEmptyViewDelegate: AnyObject {
         case initial
         case searchSaved
         case searchSavedNoPush
+        case saveSearchDisabled
     }
 
     public weak var delegate: SearchListEmptyViewDelegate?
