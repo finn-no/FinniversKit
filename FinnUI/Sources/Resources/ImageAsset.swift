@@ -23,6 +23,7 @@ extension UIImage {
 //swiftlint:disable superfluous_disable_command
 //swiftlint:disable type_body_length
 enum ImageAsset: String {
+    case blinkRocket
     case emptyPersonalNotificationsIcon
     case emptySavedSearchNotificationsIcon
     case heartMini
@@ -37,6 +38,7 @@ enum ImageAsset: String {
 
     static var imageNames: [ImageAsset] {
         return [
+            .blinkRocket,
             .emptyPersonalNotificationsIcon,
             .emptySavedSearchNotificationsIcon,
             .heartMini,
