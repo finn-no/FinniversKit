@@ -25,22 +25,13 @@ public class RibbonDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        let arrangedStackViews = ribbonViews.map { ribbonView -> UIStackView in
-            ribbonView.translatesAutoresizingMaskIntoConstraints = false
-            ribbonView.setContentHuggingPriority(.required, for: .horizontal)
-
-            let rowStackView = UIStackView(axis: .horizontal, withAutoLayout: true)
-            rowStackView.addArrangedSubviews([ribbonView, UIView(withAutoLayout: true)])
-            return rowStackView
-        }
-
-        stackView.addArrangedSubviews(arrangedStackViews)
+        stackView.alignment = .leading
+        stackView.addArrangedSubviews(ribbonViews)
         addSubview(stackView)
 
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS)
         ])
     }
 }
