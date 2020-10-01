@@ -103,6 +103,8 @@ extension NotificationCenterDemoViewController: NotificationCenterViewDataSource
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, titleForFooterInSection section: Int) -> String {
         "Vis flere treff"
     }
+
+    func notificationCenterView(_ view: NotificationCenterView, fetchNextPageFor segment: Int) {}
 }
 
 extension NotificationCenterDemoViewController: NotificationCenterViewDelegate {
