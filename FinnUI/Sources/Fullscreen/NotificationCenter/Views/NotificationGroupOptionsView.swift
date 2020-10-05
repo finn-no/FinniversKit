@@ -52,14 +52,14 @@ public class NotificationGroupOptionsView: UIView {
         fatalError("not implemented")
     }
 
-    private lazy var optionsView: SortSelectionView = {
-        let view = SortSelectionView(
-            sortingOptions: [
+    private lazy var optionsView: SelectionView = {
+        let view = SelectionView(
+            options: [
                 SortOption(groupOption: .byDay, title: viewModel.byDayTitle),
                 SortOption(groupOption: .bySearch, title: viewModel.bySearchTitle),
                 SortOption(groupOption: .flat, title: viewModel.flatTitle),
             ],
-            selectedSortOptionIdentifier: selectedOption.rawValue
+            selectedOptionIdentifier: selectedOption.rawValue
         )
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
@@ -74,7 +74,7 @@ public class NotificationGroupOptionsView: UIView {
 
 // MARK: - Sort Option nested model
 private extension NotificationGroupOptionsView {
-    struct SortOption: SortSelectionOptionModel {
+    struct SortOption: SelectionOptionModel {
         let groupOption: NotificationCenterSearchGroupOption
         let title: String
 
@@ -88,9 +88,9 @@ private extension NotificationGroupOptionsView {
     }
 }
 
-// MARK: - SortSelectionViewDelegate
-extension NotificationGroupOptionsView: SortSelectionViewDelegate {
-    public func sortSelectionView(_ view: SortSelectionView, didSelectSortOptionWithIdentifier selectedIdentifier: String) {
+// MARK: - SelectionViewDelegate
+extension NotificationGroupOptionsView: SelectionViewDelegate {
+    public func selectionView(_ view: SelectionView, didSelectOptionWithIdentifier selectedIdentifier: String) {
         guard let option = NotificationCenterSearchGroupOption(rawValue: selectedIdentifier) else { return }
         delegate?.notificationGroupOptionsView(self, didSelect: option)
     }

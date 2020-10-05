@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol SortSelectionOptionModel {
+public protocol SelectionOptionModel {
     var identifier: String { get }
     var title: String { get }
     var icon: UIImage { get }

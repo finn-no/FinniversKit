@@ -13,7 +13,7 @@ public final class SearchDisplayTypeSelectionView: UIView {
     // MARK: - Public properties
 
     public var totalHeight: CGFloat {
-        SortSelectionView.rowHeight * CGFloat(displayTypeOptions.count)
+        SelectionView.rowHeight * CGFloat(displayTypeOptions.count)
     }
 
     public weak var delegate: SearchDisplayTypeSelectionViewDelegate?
@@ -23,8 +23,8 @@ public final class SearchDisplayTypeSelectionView: UIView {
     private let displayTypeOptions: [SearchDisplayTypeOptionModel]
     private var selectedDisplayTypeOption: SearchDisplayTypeOption
 
-    private lazy var selectionView: SortSelectionView = {
-        let view = SortSelectionView(sortingOptions: displayTypeOptions, selectedSortOptionIdentifier: selectedDisplayTypeOption.rawValue)
+    private lazy var selectionView: SelectionView = {
+        let view = SelectionView(options: displayTypeOptions, selectedOptionIdentifier: selectedDisplayTypeOption.rawValue)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         return view
@@ -55,10 +55,10 @@ public final class SearchDisplayTypeSelectionView: UIView {
     }
 }
 
-// MARK: - SortSelectionViewDelegate
+// MARK: - SelectionViewDelegate
 
-extension SearchDisplayTypeSelectionView: SortSelectionViewDelegate {
-    public func sortSelectionView(_ view: SortSelectionView, didSelectSortOptionWithIdentifier selectedIdentifier: String) {
+extension SearchDisplayTypeSelectionView: SelectionViewDelegate {
+    public func selectionView(_ view: SelectionView, didSelectOptionWithIdentifier selectedIdentifier: String) {
         guard let displayTypeOption = SearchDisplayTypeOption(rawValue: selectedIdentifier) else { return }
         delegate?.searchDisplayTypeSelectionView(self, didSelectOption: displayTypeOption)
     }
@@ -79,7 +79,7 @@ private extension SearchDisplayTypeSelectionViewModel {
     }
 }
 
-private struct SearchDisplayTypeOptionModel: SortSelectionOptionModel {
+private struct SearchDisplayTypeOptionModel: SelectionOptionModel {
     let title: String
     let icon: UIImage
     let searchDisplayTypeOption: SearchDisplayTypeOption
