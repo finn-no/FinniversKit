@@ -182,6 +182,7 @@ extension NotificationCenterView: UITableViewDataSource {
         case let .notificationCell(model):
             let cell = tableView.dequeue(NotificationCell.self, for: indexPath)
             cell.remoteImageViewDataSource = remoteImageViewDataSource
+            cell.delegate = self
             cell.configure(with: model, timestamp: timestamp, hideSeparator: isLast, showGradient: isLast && overflow)
             return cell
         case let .emptyCell(model):
@@ -299,6 +300,12 @@ extension NotificationCenterView: NotificationCenterTableHeaderViewDelegate {
 
     func savedSearchesHeaderViewDidSelectGroupSelectionButton(_ view: SavedSearchesHeaderView, sortingView: UIView) {
         delegate?.notificationCenterView(self, didSelectShowGroupOptions: selectedSegment, sortingView: sortingView)
+    }
+}
+
+// MARK: - NotificationCellDelegate
+extension NotificationCenterView: NotificationCellDelegate {
+    func notificationCell(_ cell: NotificationCell, didSelectFavoriteButton button: UIButton) {
     }
 }
 
