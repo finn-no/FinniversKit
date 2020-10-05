@@ -12,6 +12,7 @@ final class NotificationCell: UITableViewCell {
 
     // MARK: - Internal properties
 
+    var indexPath: IndexPath?
 
     weak var delegate: NotificationCellDelegate?
 
@@ -141,6 +142,7 @@ final class NotificationCell: UITableViewCell {
         detailLabel.isHidden = true
         favoriteButton.isHidden = true
         stackView.setCustomSpacing(0, after: priceLabel)
+        indexPath = nil
         configure(with: nil, timestamp: nil, hideSeparator: false, showGradient: false)
     }
 
