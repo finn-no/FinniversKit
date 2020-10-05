@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol SelectionViewDelegate: AnyObject {
+public protocol SelectionViewDelegate: AnyObject {//
     func selectionView(_ view: SelectionView, didSelectOptionWithIdentifier selectedIdentifier: String)
 }
 
