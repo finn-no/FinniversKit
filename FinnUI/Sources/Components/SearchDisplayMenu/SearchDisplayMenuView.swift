@@ -6,38 +6,23 @@ import Foundation
 
 public protocol SearchDisplayMenuViewDelegate: AnyObject {
     func searchDisplayMenuViewDidSelectSort()
-    func searchDisplayMenuViewDidSelectChangeDisplay()
+    func searchDisplayMenuViewDidSelectChangeDisplayType()
 }
 
 public class SearchDisplayMenuView: UIView {
-
     private lazy var separatorLine: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .tableViewSeparator
         return view
     }()
 
-    private lazy var sortImageView: UIImageView = {
-        let imageView = UIImageView(withAutoLayout: true)
-        imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .iconPrimary
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sortButtonTapped))
-        imageView.addGestureRecognizer(tapGestureRecognizer)
-        imageView.isUserInteractionEnabled = true
-        imageView.insertImageWithPaddings(UIImage(named: .sort))
-        return imageView
-    }()
+    private lazy var sortImageView: UIImageView =
+        createTappableImageView(with: UIImage(named: .sort), action: #selector(sortButtonTapped))
 
-    private lazy var changeDisplayImageView: UIImageView = {
-        let imageView = UIImageView(withAutoLayout: true)
-        imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .iconPrimary
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(changeDisplayButtonTapped))
-        imageView.addGestureRecognizer(tapGestureRecognizer)
-        imageView.isUserInteractionEnabled = true
-        imageView.insertImageWithPaddings(UIImage(named: .pin))
-        return imageView
-    }()
+    private lazy var changeDisplayTypeImageView: UIImageView =
+        createTappableImageView(with: UIImage(named: .pin), action: #selector(changeDisplayTypeButtonTapped))
+
+    // MARK: - Public properties
 
     public weak var delegate: SearchDisplayMenuViewDelegate?
     public static let height: CGFloat = 44
@@ -62,7 +47,7 @@ public class SearchDisplayMenuView: UIView {
 
         addSubview(separatorLine)
         addSubview(sortImageView)
-        addSubview(changeDisplayImageView)
+        addSubview(changeDisplayTypeImageView)
 
         dropShadow(color: .textPrimary, opacity: 0.20, offset: CGSize(width: 0, height: 4.5), radius: 13)
 
@@ -80,11 +65,22 @@ public class SearchDisplayMenuView: UIView {
             separatorLine.bottomAnchor.constraint(equalTo: bottomAnchor),
             separatorLine.widthAnchor.constraint(equalToConstant: 1.0/UIScreen.main.scale),
 
-            changeDisplayImageView.leadingAnchor.constraint(equalTo: separatorLine.trailingAnchor),
-            changeDisplayImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXXS),
-            changeDisplayImageView.topAnchor.constraint(equalTo: topAnchor),
-            changeDisplayImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            changeDisplayTypeImageView.leadingAnchor.constraint(equalTo: separatorLine.trailingAnchor),
+            changeDisplayTypeImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXXS),
+            changeDisplayTypeImageView.topAnchor.constraint(equalTo: topAnchor),
+            changeDisplayTypeImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
+    }
+
+    private func createTappableImageView(with image: UIImage, action: Selector) -> UIImageView {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.insertImageWithPaddings(image)
+        imageView.contentMode = .scaleAspectFit
+        imageView.tintColor = .iconPrimary
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: action)
+        imageView.addGestureRecognizer(tapGestureRecognizer)
+        imageView.isUserInteractionEnabled = true
+        return imageView
     }
 
     // MARK: - Lifecycle
@@ -100,8 +96,8 @@ public class SearchDisplayMenuView: UIView {
         delegate?.searchDisplayMenuViewDidSelectSort()
     }
 
-    @objc private func changeDisplayButtonTapped() {
-        delegate?.searchDisplayMenuViewDidSelectChangeDisplay()
+    @objc private func changeDisplayTypeButtonTapped() {
+        delegate?.searchDisplayMenuViewDidSelectChangeDisplayType()
     }
 }
 

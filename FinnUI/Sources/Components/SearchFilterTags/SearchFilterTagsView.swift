@@ -30,8 +30,6 @@ public protocol SearchFilterTagsViewModel {
     private static let cellSpacing: CGFloat = .spacingXS
     private static let filterButtonTrailingMargin: CGFloat = .spacingS
 
-    private var filterButtonWidthConstraint: NSLayoutConstraint!
-
     private lazy var collectionViewLayout: UICollectionViewLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -49,11 +47,9 @@ public protocol SearchFilterTagsViewModel {
         collectionView.delegate = self
         collectionView.alwaysBounceHorizontal = true
         collectionView.register(SearchFilterTagCell.self)
-
         collectionView.contentInset = UIEdgeInsets(
             trailing: SearchFilterTagsView.horizontalMargin
         )
-
         return collectionView
     }()
 
@@ -73,13 +69,15 @@ public protocol SearchFilterTagsViewModel {
     private let viewModel: SearchFilterTagsViewModel
     private var searchFilterTags = [SearchFilterTagCellViewModel]()
 
-    var maxFilterButtonWidth: CGFloat {
+    private var maxFilterButtonWidth: CGFloat {
         filterButtonView.contentWidth
     }
 
-    var minFilterButtonWidth: CGFloat {
+    private var minFilterButtonWidth: CGFloat {
         SearchFilterButtonView.minWidth
     }
+
+    private var filterButtonWidthConstraint: NSLayoutConstraint!
 
     // MARK: - Init
 
@@ -129,7 +127,7 @@ public protocol SearchFilterTagsViewModel {
         collectionView.reloadData()
     }
 
-    public func configure(with searchFilterTags: [SearchFilterTagCellViewModel], reloadSection: Bool = false) {
+    public func configure(with searchFilterTags: [SearchFilterTagCellViewModel], reloadSection: Bool = true) {
         let searchFilterTagsDidChange = !searchFilterTagsAreEqual(self.searchFilterTags, searchFilterTags)
         self.searchFilterTags = searchFilterTags
 

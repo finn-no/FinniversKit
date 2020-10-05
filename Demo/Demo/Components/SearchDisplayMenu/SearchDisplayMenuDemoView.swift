@@ -8,6 +8,7 @@ class SearchDisplayMenuDemoView: UIView {
     private lazy var view: SearchDisplayMenuView = {
         let view = SearchDisplayMenuView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.delegate = self
         return view
     }()
 
@@ -29,5 +30,17 @@ class SearchDisplayMenuDemoView: UIView {
             view.centerYAnchor.constraint(equalTo: centerYAnchor),
             view.centerXAnchor.constraint(equalTo: centerXAnchor),
         ])
+    }
+}
+
+// MARK: - SearchDisplayMenuViewDelegate
+
+extension SearchDisplayMenuDemoView: SearchDisplayMenuViewDelegate {
+    func searchDisplayMenuViewDidSelectSort() {
+        print("Sort tapped!")
+    }
+
+    func searchDisplayMenuViewDidSelectChangeDisplayType() {
+        print("Change dislay tapped!")
     }
 }

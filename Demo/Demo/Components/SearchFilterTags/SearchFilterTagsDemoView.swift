@@ -40,11 +40,10 @@ class SearchFilterTagsDemoView: UIView {
         NSLayoutConstraint.activate([
             view.leadingAnchor.constraint(equalTo: leadingAnchor),
             view.trailingAnchor.constraint(equalTo: trailingAnchor),
-            view.centerYAnchor.constraint(equalTo: centerYAnchor),
-            view.heightAnchor.constraint(lessThanOrEqualToConstant: 60)
+            view.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
 
-        view.configure(with: searchFilterTags)
+        view.configure(with: searchFilterTags, reloadSection: false)
         view.reloadData()
     }
 }
@@ -53,7 +52,7 @@ class SearchFilterTagsDemoView: UIView {
 
 extension SearchFilterTagsDemoView: SearchFilterTagsViewDelegate {
     func searchFilterTagsViewDidSelectFilter(_ view: SearchFilterTagsView) {
-        print("Present charcoal filter!")
+        print("Present filter!")
     }
 
     func searchFilterTagsView(_ view: SearchFilterTagsView, didRemoveTagAt index: Int) {

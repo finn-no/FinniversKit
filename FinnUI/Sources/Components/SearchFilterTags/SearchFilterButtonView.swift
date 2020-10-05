@@ -28,6 +28,15 @@ final class SearchFilterButtonView: UIView {
         return imageView
     }()
 
+    private let title: String
+
+    private static let iconWidth: CGFloat = 25
+    fileprivate static let padding: CGFloat = .spacingXS
+
+    // MARK: - Internal properties
+
+    static let minWidth: CGFloat = iconWidth + 2 * padding
+
     var contentWidth: CGFloat {
         let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: SearchFilterTagsView.height)
         let boundingBox = title.boundingRect(
@@ -38,8 +47,6 @@ final class SearchFilterButtonView: UIView {
         )
         return ceil(boundingBox.width) + 2 * SearchFilterButtonView.padding + SearchFilterButtonView.iconWidth + InsetLabel.trailingInset
     }
-
-    private let title: String
 
     weak var delegate: SearchFilterButtonViewDelegate?
 
@@ -80,12 +87,11 @@ final class SearchFilterButtonView: UIView {
         addSubview(titleLabel)
 
         let padding = SearchFilterButtonView.padding
-        let iconWidth = SearchFilterButtonView.iconWidth
 
         NSLayoutConstraint.activate([
             filterIcon.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
             filterIcon.centerYAnchor.constraint(equalTo: centerYAnchor),
-            filterIcon.widthAnchor.constraint(equalToConstant: iconWidth),
+            filterIcon.widthAnchor.constraint(equalToConstant: SearchFilterButtonView.iconWidth),
             filterIcon.heightAnchor.constraint(equalTo: filterIcon.widthAnchor),
 
             titleLabel.leadingAnchor.constraint(equalTo: filterIcon.trailingAnchor, constant: padding),
@@ -105,16 +111,6 @@ final class SearchFilterButtonView: UIView {
     @objc private func filterButtonTapped() {
         delegate?.searchFilterButtonViewDidSelectFilter(self)
     }
-}
-
-// MARK: - Size calculations
-
-extension SearchFilterButtonView {
-    static let height: CGFloat = 32
-    static let minWidth: CGFloat = iconWidth + 2 * padding
-    static let padding: CGFloat = .spacingXS
-
-    private static var iconWidth: CGFloat = 25
 }
 
 // MARK: - Private extensions
@@ -137,7 +133,9 @@ private class InsetLabel: UILabel {
 
     override var intrinsicContentSize: CGSize {
         let size = super.intrinsicContentSize
-        return CGSize(width: size.width + InsetLabel.trailingInset,
-                      height: size.height)
+        return CGSize(
+            width: size.width + InsetLabel.trailingInset,
+            height: size.height
+        )
     }
 }

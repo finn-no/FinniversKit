@@ -74,17 +74,14 @@ final class SearchFilterTagCell: UICollectionViewCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(removeButton)
 
-        let leading = SearchFilterTagCell.titleLeading
-        let buttonWidth = SearchFilterTagCell.removeButtonWidth
-
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: leading),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: SearchFilterTagCell.titleLeading),
             titleLabel.trailingAnchor.constraint(equalTo: removeButton.leadingAnchor),
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
             removeButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             removeButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            removeButton.widthAnchor.constraint(equalToConstant: buttonWidth),
+            removeButton.widthAnchor.constraint(equalToConstant: SearchFilterTagCell.removeButtonWidth),
             removeButton.heightAnchor.constraint(equalTo: removeButton.widthAnchor),
         ])
     }
@@ -157,8 +154,10 @@ private final class RemoveButton: UIButton {
     }
 }
 
+// MARK: - Private classes
+
 private class InsetLabel: UILabel {
-    static let verticalInset: CGFloat = .spacingS
+    private static let verticalInset: CGFloat = .spacingS
 
     override func drawText(in rect: CGRect) {
         let insets = UIEdgeInsets(vertical: InsetLabel.verticalInset, horizontal: 0)
@@ -167,7 +166,9 @@ private class InsetLabel: UILabel {
 
     override var intrinsicContentSize: CGSize {
         let size = super.intrinsicContentSize
-        return CGSize(width: size.width,
-                      height: size.height + 2 * InsetLabel.verticalInset)
+        return CGSize(
+            width: size.width,
+            height: size.height + 2 * InsetLabel.verticalInset
+        )
     }
 }

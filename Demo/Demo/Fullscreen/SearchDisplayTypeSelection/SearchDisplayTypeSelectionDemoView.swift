@@ -6,8 +6,12 @@ import FinniversKit
 import FinnUI
 
 final class SearchDisplayTypeSelectionDemoView: UIView {
-    private(set) lazy var view: SearchDisplayTypeSelectionView = {
-        let view = SearchDisplayTypeSelectionView(viewModel: .default, selectedDisplayTypeOption: .list, supportedDisplayTypeOptions: [.list, .grid, .map])
+    private lazy var view: SearchDisplayTypeSelectionView = {
+        let view = SearchDisplayTypeSelectionView(
+            viewModel: .default,
+            selectedDisplayTypeOption: .list,
+            supportedDisplayTypeOptions: [.list, .grid, .map]
+        )
         view.delegate = self
         return view
     }()
