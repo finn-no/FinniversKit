@@ -7,9 +7,9 @@ public protocol UserAdManagementButtonAndInformationCellDelegate: AnyObject {
 }
 
 public class UserAdManagementButtonAndInformationCell: UITableViewCell {
-    
+
     weak public var delegate: UserAdManagementButtonAndInformationCellDelegate?
-    
+
     public var buttonText: String? {
         didSet {
             button.setTitle(buttonText, for: .normal)
@@ -21,7 +21,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
             informationLabel.attributedText = NSAttributedString(string: informationText ?? "")
         }
     }
-    
+
     private lazy var containerStack: UIStackView = {
         let view = UIStackView(withAutoLayout: true)
         view.addArrangedSubviews([informationLabel, button])
@@ -29,7 +29,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         view.spacing = .spacingS
         return view
     }()
-    
+
     private lazy var informationLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -90,19 +90,19 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         contentView.addSubview(containerStack)
 
         backgroundColor = .bgPrimary
-        
+
         let hairLineSize = 1.0 / UIScreen.main.scale
-        
+
         NSLayoutConstraint.activate([
             separatorView.heightAnchor.constraint(equalToConstant: hairLineSize),
             separatorView.topAnchor.constraint(equalTo: contentView.topAnchor),
             separatorView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             separatorView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
-                        
+
             containerStack.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: .spacingM),
             containerStack.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             containerStack.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
-            containerStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM),            
+            containerStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM),
         ])
     }
 }

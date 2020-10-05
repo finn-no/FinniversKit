@@ -69,7 +69,7 @@ final class UserAdDetailsView: UIView {
 
     private lazy var adImageWidthConstraint = adImageView.widthAnchor.constraint(equalToConstant: UserAdTableViewCell.Style.default.imageSize)
     private lazy var adImageHeightConstraint = adImageView.heightAnchor.constraint(equalToConstant: UserAdTableViewCell.Style.default.imageSize)
-        
+
     private lazy var topSpacer = UILayoutGuide()
     private lazy var bottomSpacer = UILayoutGuide()
 
@@ -80,13 +80,13 @@ final class UserAdDetailsView: UIView {
         descriptionStack.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
         descriptionStack.bottomAnchor.constraint(equalTo: bottomSpacer.topAnchor),
         descriptionStack.centerYAnchor.constraint(equalTo: adImageView.centerYAnchor),
-        
-        ribbonView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+
+        ribbonView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor)
     ]
 
     private lazy var compressedConstraints = [
         topSpacer.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
-        
+
         bottomSpacer.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
         bottomSpacer.heightAnchor.constraint(equalTo: topSpacer.heightAnchor),
 
@@ -94,7 +94,7 @@ final class UserAdDetailsView: UIView {
         descriptionStack.trailingAnchor.constraint(equalTo: ribbonView.leadingAnchor, constant: -.spacingS),
         descriptionStack.bottomAnchor.constraint(equalTo: bottomSpacer.topAnchor),
 
-        ribbonView.centerYAnchor.constraint(equalTo: layoutMarginsGuide.centerYAnchor),
+        ribbonView.centerYAnchor.constraint(equalTo: layoutMarginsGuide.centerYAnchor)
     ]
 
     // MARK: - Init
@@ -115,7 +115,7 @@ final class UserAdDetailsView: UIView {
 
         addSubview(descriptionStack)
         addSubview(ribbonView)
-        
+
         addLayoutGuide(topSpacer)
         addLayoutGuide(bottomSpacer)
 
