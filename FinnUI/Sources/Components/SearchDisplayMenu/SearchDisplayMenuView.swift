@@ -24,6 +24,7 @@ public class SearchDisplayMenuView: UIView {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sortButtonTapped))
         imageView.addGestureRecognizer(tapGestureRecognizer)
         imageView.isUserInteractionEnabled = true
+        imageView.insertImageWithPaddings(UIImage(named: .sort))
         return imageView
     }()
 
@@ -34,6 +35,7 @@ public class SearchDisplayMenuView: UIView {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(changeDisplayButtonTapped))
         imageView.addGestureRecognizer(tapGestureRecognizer)
         imageView.isUserInteractionEnabled = true
+        imageView.insertImageWithPaddings(UIImage(named: .pin))
         return imageView
     }()
 
@@ -62,27 +64,26 @@ public class SearchDisplayMenuView: UIView {
         addSubview(sortImageView)
         addSubview(changeDisplayImageView)
 
-//        dropShadow(color: .black, opacity: 0.12, offset: CGSize(width: 0, height: 1), radius: 4) // add a second shadow
         dropShadow(color: .textPrimary, opacity: 0.20, offset: CGSize(width: 0, height: 4.5), radius: 13)
 
         NSLayoutConstraint.activate([
             widthAnchor.constraint(equalToConstant: 128),
             heightAnchor.constraint(equalToConstant: SearchDisplayMenuView.height),
 
-            sortImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            sortImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXXS),
+            sortImageView.trailingAnchor.constraint(equalTo: separatorLine.leadingAnchor),
             sortImageView.topAnchor.constraint(equalTo: topAnchor),
             sortImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            sortImageView.widthAnchor.constraint(equalToConstant: 64),
-
-            changeDisplayImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            changeDisplayImageView.topAnchor.constraint(equalTo: topAnchor),
-            changeDisplayImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            changeDisplayImageView.widthAnchor.constraint(equalToConstant: 64),
 
             separatorLine.centerXAnchor.constraint(equalTo: centerXAnchor),
             separatorLine.topAnchor.constraint(equalTo: topAnchor),
             separatorLine.bottomAnchor.constraint(equalTo: bottomAnchor),
             separatorLine.widthAnchor.constraint(equalToConstant: 1.0/UIScreen.main.scale),
+
+            changeDisplayImageView.leadingAnchor.constraint(equalTo: separatorLine.trailingAnchor),
+            changeDisplayImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXXS),
+            changeDisplayImageView.topAnchor.constraint(equalTo: topAnchor),
+            changeDisplayImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
 
@@ -91,13 +92,6 @@ public class SearchDisplayMenuView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         layer.borderColor = .borderColor
-    }
-
-    // MARK: - Public methods
-
-    public func configure(sortIcon: UIImage, changeDisplayIcon: UIImage) {
-        sortImageView.insertImageWithPaddings(sortIcon)
-        changeDisplayImageView.insertImageWithPaddings(changeDisplayIcon)
     }
 
     // MARK: - Actions

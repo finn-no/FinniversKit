@@ -129,17 +129,11 @@ public protocol SearchFilterTagsViewModel {
         collectionView.reloadData()
     }
 
-    public func configure(
-        with searchFilterTags: [SearchFilterTagCellViewModel],
-        reloadSection: Bool = true
-    ) {
+    public func configure(with searchFilterTags: [SearchFilterTagCellViewModel]) {
         let searchFilterTagsDidChange = !searchFilterTagsAreEqual(self.searchFilterTags, searchFilterTags)
         self.searchFilterTags = searchFilterTags
 
-        guard
-            searchFilterTagsDidChange,
-            reloadSection
-        else { return }
+        guard searchFilterTagsDidChange else { return }
 
         UIView.performWithoutAnimation {
             collectionView.reloadSections([0])

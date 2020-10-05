@@ -27,6 +27,7 @@ enum ImageAsset: String {
     case emptySavedSearchNotificationsIcon
     case heartMini
     case schibstedFooter
+    case sort
     case splashLetters1
     case splashLetters2
     case splashLetters3
@@ -41,6 +42,7 @@ enum ImageAsset: String {
             .emptySavedSearchNotificationsIcon,
             .heartMini,
             .schibstedFooter,
+            .sort,
             .splashLetters1,
             .splashLetters2,
             .splashLetters3,

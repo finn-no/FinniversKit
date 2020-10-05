@@ -29,10 +29,5 @@ class SearchDisplayMenuDemoView: UIView {
             view.centerYAnchor.constraint(equalTo: centerYAnchor),
             view.centerXAnchor.constraint(equalTo: centerXAnchor),
         ])
-
-        view.configure(
-            sortIcon: UIImage(named: "sort")!,
-            changeDisplayIcon: UIImage(named: .favoritesEdit)
-        )
     }
 }
