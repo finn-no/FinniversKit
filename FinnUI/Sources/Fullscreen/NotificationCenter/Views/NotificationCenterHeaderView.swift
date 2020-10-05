@@ -32,10 +32,11 @@ final class NotificationCenterHeaderView: UITableViewHeaderFooterView {
 
     private lazy var moreButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
-        button.setImage(UIImage(named: .more), for: .normal)
+        button.setImage(UIImage(named: .more).withRenderingMode(.alwaysTemplate), for: .normal)
         button.addTarget(self, action: #selector(handleMoreButtonSelected), for: .touchUpInside)
         // increate the tapable area as the button is not too big to begin with
         button.contentEdgeInsets = UIEdgeInsets(leading: .spacingL)
+        button.tintColor = .textSecondary
         return button
     }()
 
