@@ -24,11 +24,11 @@ final class NotificationCell: UITableViewCell {
     // MARK: - Private properties
 
     private lazy var remoteImageView: RemoteImageView = {
-       let imageView = RemoteImageView(withAutoLayout: true)
-       imageView.contentMode = .scaleAspectFill
-       imageView.layer.cornerRadius = 8
-       imageView.layer.masksToBounds = true
-       return imageView
+        let imageView = RemoteImageView(withAutoLayout: true)
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 8
+        imageView.layer.masksToBounds = true
+        return imageView
     }()
 
     private lazy var iconView = PersonalNotificationIconView(
@@ -37,7 +37,7 @@ final class NotificationCell: UITableViewCell {
 
     private lazy var ribbonView: RibbonView = {
         let view = RibbonView(withAutoLayout: true)
-        view.setContentHuggingPriority(.required, for: .horizontal)
+        view.titleLabel.setContentHuggingPriority(.required, for: .horizontal)
         return view
     }()
 
@@ -79,18 +79,33 @@ final class NotificationCell: UITableViewCell {
         return button
     }()
 
+    /// To avoid crashing the title label with the favorite button
+    private lazy var spacerView = UIView(withAutoLayout: true)
+
     private lazy var titleStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [ribbonView, titleLabel])
+        let stackView = UIStackView(
+            arrangedSubviews: [
+                ribbonView,
+                titleLabel,
+                spacerView
+            ]
+        )
         stackView.axis = .horizontal
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.spacing = .spacingS
-        stackView.alignment = .firstBaseline
-        stackView.distribution = .fill
+        stackView.alignment = .center
         return stackView
     }()
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleStackView, subtitleLabel, priceLabel, timestampLabel])
+        let stackView = UIStackView(
+            arrangedSubviews: [
+                titleStackView,
+                subtitleLabel,
+                priceLabel,
+                timestampLabel,
+            ]
+        )
         stackView.axis = .vertical
         stackView.setCustomSpacing(.spacingS, after: titleStackView)
         stackView.setCustomSpacing(.spacingS, after: subtitleLabel)
@@ -239,6 +254,8 @@ private extension NotificationCell {
 
             favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
             favoriteButton.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
+            favoriteButton.widthAnchor.constraint(equalToConstant: .spacingL),
+            favoriteButton.heightAnchor.constraint(equalToConstant: .spacingL),
 
             stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .spacingM),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
@@ -250,7 +267,9 @@ private extension NotificationCell {
             separatorView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
 
             contentView.bottomAnchor.constraint(greaterThanOrEqualTo: stackView.bottomAnchor, constant: .spacingM),
-            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: remoteImageView.bottomAnchor, constant: .spacingM)
+            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: remoteImageView.bottomAnchor, constant: .spacingM),
+
+            spacerView.widthAnchor.constraint(equalTo: favoriteButton.widthAnchor),
         ])
     }
 
