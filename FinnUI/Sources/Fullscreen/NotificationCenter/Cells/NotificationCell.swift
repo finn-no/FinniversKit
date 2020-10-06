@@ -156,6 +156,7 @@ final class NotificationCell: UITableViewCell {
         ribbonView.isHidden = true
         detailLabel.isHidden = true
         favoriteButton.isHidden = true
+        spacerView.isHidden = true
         stackView.setCustomSpacing(0, after: priceLabel)
         indexPath = nil
         configure(with: nil, timestamp: nil, hideSeparator: false, showGradient: false)
@@ -190,13 +191,10 @@ final class NotificationCell: UITableViewCell {
                 ribbonView.isHidden = false
             }
 
-            if content.isFavorite {
-                favoriteButton.setImage(UIImage(named: .favoriteActive), for: .normal)
-                favoriteButton.isHidden = false
-            } else {
-                favoriteButton.setImage(UIImage(named: .favoriteDefault).withRenderingMode(.alwaysTemplate), for: .normal)
-                favoriteButton.isHidden = false
-            }
+            let favoriteImage = content.isFavorite ? UIImage(named: .favoriteActive) : UIImage(named: .favoriteDefault).withRenderingMode(.alwaysTemplate)
+            favoriteButton.setImage(favoriteImage, for: .normal)
+            spacerView.isHidden = false
+            favoriteButton.isHidden = false
         default:
             break
         }
