@@ -74,6 +74,7 @@ public enum ComponentDemoViews: String, CaseIterable {
     case motorTransactionEntryObjectPageView
     case extendedProfileView
     case expandCollapseButton
+    case objectPageBlinkView
 
     public static var items: [ComponentDemoViews] {
         allCases.sorted { $0.rawValue < $1.rawValue }
@@ -230,6 +231,8 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<ExtendedProfileDemoView>(dismissType: .dismissButton)
         case .expandCollapseButton:
             return DemoViewController<ExpandCollapseButtonDemoView>()
+        case .objectPageBlinkView:
+            return DemoViewController<ObjectPageBlinkDemoView>()
         }
     }
 }

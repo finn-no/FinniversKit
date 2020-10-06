@@ -298,4 +298,8 @@ class ComponentViewTests: XCTestCase {
     func testExpandCollapseButton() {
         snapshot(.expandCollapseButton)
     }
+
+    func testObjectPageBlinkView() {
+        snapshot(.objectPageBlinkView)
+    }
 }

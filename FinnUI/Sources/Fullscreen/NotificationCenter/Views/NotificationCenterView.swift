@@ -15,6 +15,7 @@ public protocol NotificationCenterViewDataSource: AnyObject {
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, modelForHeaderInSection section: Int) -> NotificationCenterHeaderViewModel
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, overflowInSection section: Int) -> Bool
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, titleForFooterInSection section: Int) -> String
+    func notificationCenterView(_ view: NotificationCenterView, fetchNextPageFor segment: Int)
 }
 
 public protocol NotificationCenterViewDelegate: AnyObject {
@@ -35,6 +36,8 @@ final public class NotificationCenterView: UIView {
     public weak var dataSource: NotificationCenterViewDataSource?
     public weak var delegate: NotificationCenterViewDelegate?
     public weak var remoteImageViewDataSource: RemoteImageViewDataSource?
+    /// Only for saved searches notifications when presenting them in a chronological fashion
+    public var isFetchingNextPageForSavedSearches: Bool = false
 
     public var selectedSegment: Int = 0 {
         didSet { segmentedControl.selectedSegmentIndex = selectedSegment }
@@ -131,6 +134,7 @@ public extension NotificationCenterView {
         } else {
             setupSegmentedControl()
         }
+        isFetchingNextPageForSavedSearches = false
     }
 
     func reloadRows(at indexPaths: [IndexPath], inSegment segment: Int) {
@@ -228,6 +232,7 @@ extension NotificationCenterView: UITableViewDelegate {
     }
 }
 
+// MARK: - UIScrollViewDelegate
 extension NotificationCenterView: UIScrollViewDelegate {
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         guard scrollView == self.scrollView else {
@@ -253,6 +258,18 @@ extension NotificationCenterView: UIScrollViewDelegate {
 
        reloadOnEndDragging = false
        delegate?.notificationCenterView(self, segment: selectedSegment, didPullToRefreshUsing: refreshControl)
+    }
+
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+
+        let willReachEndOfContent = offsetY > contentHeight - scrollView.frame.height * 4
+
+        if willReachEndOfContent && !isFetchingNextPageForSavedSearches {
+            dataSource?.notificationCenterView(self, fetchNextPageFor: selectedSegment)
+            isFetchingNextPageForSavedSearches = true
+        }
     }
 }
 
