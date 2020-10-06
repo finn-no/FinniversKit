@@ -41,6 +41,6 @@ extension SearchDisplayMenuDemoView: SearchDisplayMenuViewDelegate {
     }
 
     func searchDisplayMenuViewDidSelectChangeDisplayType() {
-        print("Change dislay tapped!")
+        print("Change display tapped!")
     }
 }
