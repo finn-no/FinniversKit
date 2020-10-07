@@ -43,15 +43,14 @@ public class UserAdManagementMotorTransactionCell: UITableViewCell {
     private func setup() {
         backgroundColor = .bgPrimary
         selectionStyle = .none
-        
+
         contentView.addSubview(transactionView)
-        
+
         NSLayoutConstraint.activate([
             transactionView.topAnchor.constraint(equalTo: contentView.topAnchor),
             transactionView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             transactionView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
             transactionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            
         ])
     }
 }

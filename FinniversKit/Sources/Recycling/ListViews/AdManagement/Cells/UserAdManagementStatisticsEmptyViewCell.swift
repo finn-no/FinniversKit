@@ -38,7 +38,7 @@ public class UserAdManagementStatisticsEmptyViewCell: UITableViewCell {
         backgroundColor = .bgPrimary
         selectionStyle = .none
         addSubview(emptyView)
-        
+
         NSLayoutConstraint.activate([
             emptyView.topAnchor.constraint(equalTo: topAnchor),
             emptyView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),

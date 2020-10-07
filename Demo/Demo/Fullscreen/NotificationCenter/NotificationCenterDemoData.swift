@@ -10,6 +10,7 @@ struct SavedSearchAdData: SavedSearchNotificationCellContent {
     let title: String
     var priceText: String?
     let ribbonViewModel: RibbonViewModel?
+    var isFavorite: Bool = false
 }
 
 struct PersonalAdData: PersonalNotificationCellContent {

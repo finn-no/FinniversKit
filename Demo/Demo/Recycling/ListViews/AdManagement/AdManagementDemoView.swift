@@ -5,12 +5,12 @@
 import FinniversKit
 
 public class AdManagementDemoView: UIView, Tweakable {
-    
+
     lazy var tweakingOptions: [TweakingOption] = [
         TweakingOption(title: "Empty statistics") { self.statisticsCellModels = [] },
         TweakingOption(title: "With statistics") { self.statisticsCellModels = AdManagementDemoView.exampleStatisticsCellModels },
     ]
-    
+
     private let estimatedRowHeight: CGFloat = 200
 
     private lazy var tableView: UITableView = {
@@ -62,7 +62,7 @@ public class AdManagementDemoView: UIView, Tweakable {
         )
         return StatisticsModel(header: header, statisticItems: statisticsCellModels)
     }()
-    
+
     private static var exampleStatisticsCellModels: [StatisticsItemModel] = [
         .init(type: .seen, value: 968, text: "har sett annonsen"),
         .init(type: .favourited, value: 16, text: "har lagret annonsen"),
