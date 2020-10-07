@@ -128,7 +128,7 @@ public protocol SearchFilterTagsViewModel {
     }
 
     public func configure(with searchFilterTags: [SearchFilterTagCellViewModel], reloadSection: Bool = true) {
-        let searchFilterTagsDidChange = !searchFilterTagsAreEqual(self.searchFilterTags, searchFilterTags)
+        let searchFilterTagsDidChange = self.searchFilterTags != searchFilterTags
         self.searchFilterTags = searchFilterTags
 
         guard
@@ -225,31 +225,14 @@ extension SearchFilterTagsView: SearchFilterTagCellDelegate {
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension SearchFilterTagsView: UICollectionViewDelegateFlowLayout {
-    public func collectionView(_ collectionView: UICollectionView,
-                               layout collectionViewLayout: UICollectionViewLayout,
-                               sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+    public func collectionView(
+            _ collectionView: UICollectionView,
+           layout collectionViewLayout: UICollectionViewLayout,
+           sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         var cellWidth = SearchFilterTagCell.width(for: title(at: indexPath))
         cellWidth = min(collectionView.bounds.width, cellWidth)
         cellWidth = max(cellWidth, SearchFilterTagCell.minWidth)
         return CGSize(width: cellWidth, height: SearchFilterTagCell.height)
-    }
-}
-
-// MARK: - Private extensions
-
-private extension SearchFilterTagsView {
-    private func searchFilterTagsAreEqual(_ lhs: [SearchFilterTagCellViewModel], _ rhs: [SearchFilterTagCellViewModel]) -> Bool {
-        guard lhs.count == rhs.count else { return false }
-        for (index, lhsTag) in lhs.enumerated() {
-            let rhsTag = rhs[index]
-            guard
-                lhsTag.title == rhsTag.title,
-                lhsTag.titleAccessibilityLabel == rhsTag.titleAccessibilityLabel,
-                lhsTag.removeButtonAccessibilityLabel == rhsTag.removeButtonAccessibilityLabel,
-                lhsTag.isValid == rhsTag.isValid
-            else { return false }
-        }
-        return true
     }
 }

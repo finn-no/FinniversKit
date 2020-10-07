@@ -9,13 +9,6 @@ protocol SearchFilterTagCellDelegate: AnyObject {
     func searchFilterTagCellWasSelected(_ cell: SearchFilterTagCell)
 }
 
-public protocol SearchFilterTagCellViewModel {
-    var title: String { get }
-    var titleAccessibilityLabel: String { get }
-    var removeButtonAccessibilityLabel: String { get }
-    var isValid: Bool { get }
-}
-
 final class SearchFilterTagCell: UICollectionViewCell {
     weak var delegate: SearchFilterTagCellDelegate?
 

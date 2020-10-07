@@ -14,12 +14,12 @@ class SearchFilterTagsDemoView: UIView {
 
     private var searchFilterTags: [SearchFilterTagCellViewModel] = {
         return [
-            SearchFilterTagCell(title: "'rålekker'", isValid: true),
-            SearchFilterTagCell(title: "Oslo", isValid: true),
-            SearchFilterTagCell(title: "70 - 40m²", isValid: false),
-            SearchFilterTagCell(title: "Leilighet", isValid: true),
-            SearchFilterTagCell(title: "Balkong/Terasse", isValid: true),
-            SearchFilterTagCell(title: "Ikke 1. etasje", isValid: true)
+            SearchFilterTagCellViewModel(title: "'rålekker'", isValid: true),
+            SearchFilterTagCellViewModel(title: "Oslo", isValid: true),
+            SearchFilterTagCellViewModel(title: "70 - 40m²", isValid: false),
+            SearchFilterTagCellViewModel(title: "Leilighet", isValid: true),
+            SearchFilterTagCellViewModel(title: "Balkong/Terasse", isValid: true),
+            SearchFilterTagCellViewModel(title: "Ikke 1. etasje", isValid: true)
         ]
     }()
 
@@ -67,21 +67,13 @@ extension SearchFilterTagsDemoView: SearchFilterTagsViewDelegate {
 
 // MARK: - Demo data
 
-private class SearchFilterTagCell: SearchFilterTagCellViewModel {
-    let title: String
-    let titleAccessibilityLabel: String
-    let removeButtonAccessibilityLabel: String
-    let isValid: Bool
-
-    init(
-        title: String,
-        titleAccessibilityLabel: String = "",
-        removeButtonAccessibilityLabel: String = "",
-        isValid: Bool
-    ) {
-        self.title = title
-        self.titleAccessibilityLabel = titleAccessibilityLabel
-        self.removeButtonAccessibilityLabel = removeButtonAccessibilityLabel
-        self.isValid = isValid
+private extension SearchFilterTagCellViewModel {
+    init(title: String, isValid: Bool) {
+        self.init(
+            title: title,
+            titleAccessibilityLabel: "",
+            removeButtonAccessibilityLabel: "",
+            isValid: isValid
+        )
     }
 }
