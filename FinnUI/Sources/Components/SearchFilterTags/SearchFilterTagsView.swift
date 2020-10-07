@@ -66,6 +66,8 @@ public protocol SearchFilterTagsViewModel {
         return view
     }()
 
+    private lazy var filterButtonWidthConstraint = filterButtonView.widthAnchor.constraint(equalToConstant: maxFilterButtonWidth)
+
     private let viewModel: SearchFilterTagsViewModel
     private var searchFilterTags = [SearchFilterTagCellViewModel]()
 
@@ -76,8 +78,6 @@ public protocol SearchFilterTagsViewModel {
     private var minFilterButtonWidth: CGFloat {
         SearchFilterButtonView.minWidth
     }
-
-    private var filterButtonWidthConstraint: NSLayoutConstraint!
 
     // MARK: - Init
 
@@ -99,8 +99,6 @@ public protocol SearchFilterTagsViewModel {
         addSubview(filterButtonView)
         addSubview(collectionView)
         addSubview(separatorView)
-
-        filterButtonWidthConstraint = filterButtonView.widthAnchor.constraint(equalToConstant: maxFilterButtonWidth)
 
         NSLayoutConstraint.activate([
             filterButtonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: SearchFilterTagsView.horizontalMargin),
