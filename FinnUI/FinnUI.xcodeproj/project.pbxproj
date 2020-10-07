@@ -56,6 +56,7 @@
 		9B2A699A249797AC00E671B5 /* BapAdViewActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A698B249797AC00E671B5 /* BapAdViewActions.swift */; };
 		9B2A699B249797AC00E671B5 /* BapAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A698C249797AC00E671B5 /* BapAdView.swift */; };
 		9B58C0F6246550440029FAF5 /* ButtonStyle+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B58C0F4246550010029FAF5 /* ButtonStyle+Previews.swift */; };
+		9B62ED23252DB3F000B1632D /* NotificationCenterHeaderViewPreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B62ED22252DB3F000B1632D /* NotificationCenterHeaderViewPreviews.swift */; };
 		9BA4520924E130CD00A6A6A6 /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA4520824E130CD00A6A6A6 /* SortView.swift */; };
 		9BAACE0C251A183500886D4C /* NotificationCellPreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAACE0B251A183500886D4C /* NotificationCellPreviews.swift */; };
 		9BCFBBC424DD63EA00D9F9C6 /* NotificationGroupOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCFBBC324DD63EA00D9F9C6 /* NotificationGroupOptionsView.swift */; };
@@ -154,6 +155,7 @@
 		9B2A698B249797AC00E671B5 /* BapAdViewActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BapAdViewActions.swift; sourceTree = "<group>"; };
 		9B2A698C249797AC00E671B5 /* BapAdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BapAdView.swift; sourceTree = "<group>"; };
 		9B58C0F4246550010029FAF5 /* ButtonStyle+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ButtonStyle+Previews.swift"; sourceTree = "<group>"; };
+		9B62ED22252DB3F000B1632D /* NotificationCenterHeaderViewPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterHeaderViewPreviews.swift; sourceTree = "<group>"; };
 		9BA4520824E130CD00A6A6A6 /* SortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
 		9BAACE0B251A183500886D4C /* NotificationCellPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCellPreviews.swift; sourceTree = "<group>"; };
 		9BCFBBC324DD63EA00D9F9C6 /* NotificationGroupOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationGroupOptionsView.swift; sourceTree = "<group>"; };
@@ -515,6 +517,7 @@
 			isa = PBXGroup;
 			children = (
 				9BAACE0B251A183500886D4C /* NotificationCellPreviews.swift */,
+				9B62ED22252DB3F000B1632D /* NotificationCenterHeaderViewPreviews.swift */,
 			);
 			path = Previews;
 			sourceTree = "<group>";
@@ -806,6 +809,7 @@
 				DED0A2D2246933600016176A /* NotificationCenterFooterView.swift in Sources */,
 				9B2A6996249797AC00E671B5 /* TryHeltHjemViewModel.swift in Sources */,
 				9B2A698F249797AC00E671B5 /* AuthorView.swift in Sources */,
+				9B62ED23252DB3F000B1632D /* NotificationCenterHeaderViewPreviews.swift in Sources */,
 				DED0A2CE246933600016176A /* PersonalNotificationIconView.swift in Sources */,
 				9BCFBBC424DD63EA00D9F9C6 /* NotificationGroupOptionsView.swift in Sources */,
 				9B2A699A249797AC00E671B5 /* BapAdViewActions.swift in Sources */,
