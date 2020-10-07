@@ -43,7 +43,7 @@
 		43EA977F21941E5D003A548A /* SoldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA977E21941E5D003A548A /* SoldView.swift */; };
 		4408A6A32027AC41008C0BD9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A69E2027AC41008C0BD9 /* Color.swift */; };
 		4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A6A02027AC41008C0BD9 /* Spacing.swift */; };
-		4408A6A52027AC41008C0BD9 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A6A22027AC41008C0BD9 /* Font.swift */; };
+		4408A6A52027AC41008C0BD9 /* UIFont+FinniversKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A6A22027AC41008C0BD9 /* UIFont+FinniversKit.swift */; };
 		441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D69981FEA947500CD919A /* UIViewExtensions.swift */; };
 		441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D69991FEA947500CD919A /* LayoutHelpers.swift */; };
 		441D699D1FEA947600CD919A /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D699A1FEA947600CD919A /* Layout.swift */; };
@@ -375,6 +375,7 @@
 		DA5A858C24617DF000AC0DFE /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A858B24617DF000AC0DFE /* ImageExtensions.swift */; };
 		DA6DC2BB238404B80094C42C /* VersionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8F32B3238295F900EF645F /* VersionInfoView.swift */; };
 		DA708853211338650067519A /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA708852211338650067519A /* ConfirmationView.swift */; };
+		DA84E8E9252DC96900E4E3B3 /* FontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA84E8E8252DC96900E4E3B3 /* FontProvider.swift */; };
 		DA93EFA821C2BA4F00207239 /* NewYearsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1EC5021C1322900F4FEC4 /* NewYearsView.swift */; };
 		DA9A223F21BA8D8C001452F0 /* BottomSheetStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */; };
 		DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A32102153F0021F7DC /* Selectionbox.swift */; };
@@ -486,7 +487,7 @@
 		43EA977E21941E5D003A548A /* SoldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldView.swift; sourceTree = "<group>"; };
 		4408A69E2027AC41008C0BD9 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		4408A6A02027AC41008C0BD9 /* Spacing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
-		4408A6A22027AC41008C0BD9 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		4408A6A22027AC41008C0BD9 /* UIFont+FinniversKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+FinniversKit.swift"; sourceTree = "<group>"; };
 		441D69981FEA947500CD919A /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		441D69991FEA947500CD919A /* LayoutHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutHelpers.swift; sourceTree = "<group>"; };
 		441D699A1FEA947600CD919A /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
@@ -817,6 +818,7 @@
 		DA4E438521104EB8000DDEC3 /* AdReporterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdReporterView.swift; sourceTree = "<group>"; };
 		DA5A858B24617DF000AC0DFE /* ImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
 		DA708852211338650067519A /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
+		DA84E8E8252DC96900E4E3B3 /* FontProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontProvider.swift; sourceTree = "<group>"; };
 		DA8F32B3238295F900EF645F /* VersionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfoView.swift; sourceTree = "<group>"; };
 		DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetStateController.swift; sourceTree = "<group>"; };
 		DAA9A3A32102153F0021F7DC /* Selectionbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectionbox.swift; sourceTree = "<group>"; };
@@ -1102,8 +1104,9 @@
 		4408A6A12027AC41008C0BD9 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				4408A6A22027AC41008C0BD9 /* Font.swift */,
 				9BB6802E2462F763001ADACF /* Font+SwiftUI.swift */,
+				DA84E8E8252DC96900E4E3B3 /* FontProvider.swift */,
+				4408A6A22027AC41008C0BD9 /* UIFont+FinniversKit.swift */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -3254,6 +3257,7 @@
 				9BB734C42462EA0500E05435 /* ButtonStyle.swift in Sources */,
 				441FE430209A24E500B04EF1 /* AdsGridViewCell.swift in Sources */,
 				DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */,
+				DA84E8E9252DC96900E4E3B3 /* FontProvider.swift in Sources */,
 				71FE6C4C250F6AEF007814F2 /* MotorTransactionInviteCounterpartyView.swift in Sources */,
 				CF4A053721FB2ACB000BB7DA /* PianoView.swift in Sources */,
 				DA708853211338650067519A /* ConfirmationView.swift in Sources */,
@@ -3449,7 +3453,7 @@
 				9B28DE842326732F00D69C15 /* PanelViewModel.swift in Sources */,
 				CF164CE8230D8D9700250822 /* FavoriteFolderAction.swift in Sources */,
 				DAD6EB2B2369916100968497 /* SettingsSectionHeaderView.swift in Sources */,
-				4408A6A52027AC41008C0BD9 /* Font.swift in Sources */,
+				4408A6A52027AC41008C0BD9 /* UIFont+FinniversKit.swift in Sources */,
 				4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */,
 				CFFDF89722F311F600FE68EA /* NeighborhoodProfileView.swift in Sources */,
 				CF0647FC2368834B00863D07 /* TopShadowView.swift in Sources */,
