@@ -14,6 +14,7 @@ public enum UserInterfaceStyleSupport {
 public struct Config {
     public static var bundle: Bundle { Bundle.finniversKit }
     public static var fontProvider: FontProvider = DefaultFontProvider()
+    public static var colorProvider: ColorProvider = DefaultColorProvider()
     public static var isDynamicTypeEnabled: Bool = true
     public static var userInterfaceStyleSupport: UserInterfaceStyleSupport = {
         if #available(iOS 13.0, *) {

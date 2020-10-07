@@ -8,16 +8,12 @@ import FinniversKit
 class ConfigTests: XCTestCase {
     @available(iOS 13.0, *)
     func testDefaultValueForInterfaceStyle() {
-        let defaultValue: Config.UserInterfaceStyleSupport = .dynamic
-        XCTAssertEqual(Config.userInterfaceStyleSupport, defaultValue)
+        XCTAssertEqual(Config.userInterfaceStyleSupport, .dynamic)
     }
 
     func testOverridingValueForInterfaceStyle() {
         Config.userInterfaceStyleSupport = .forceDark
-        XCTAssertEqual(
-            Config.userInterfaceStyleSupport,
-            Config.UserInterfaceStyleSupport.forceDark
-        )
+        XCTAssertEqual(Config.userInterfaceStyleSupport, .forceDark)
     }
 
     func testDynamicTypeEnabled() {

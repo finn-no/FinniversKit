@@ -26,7 +26,7 @@ public protocol FontProvider {
     func font(ofSize size: CGFloat, weight: FontWeight) -> UIFont
 }
 
-// MARK: - Default fonts
+// MARK: - Default FINN fonts
 
 public struct DefaultFontProvider: FontProvider {
     /// FINNTypeWebStrippet-Medium with a size of 34 scaled for UIFontTextStyle.title1

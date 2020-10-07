@@ -41,7 +41,7 @@
 		43BACE6A21117D430052114C /* BuyerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BACE6921117D430052114C /* BuyerPickerView.swift */; };
 		43BACE6C21117D530052114C /* BuyerPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BACE6B21117D530052114C /* BuyerPickerViewModel.swift */; };
 		43EA977F21941E5D003A548A /* SoldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA977E21941E5D003A548A /* SoldView.swift */; };
-		4408A6A32027AC41008C0BD9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A69E2027AC41008C0BD9 /* Color.swift */; };
+		4408A6A32027AC41008C0BD9 /* UIColor+FinniversKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A69E2027AC41008C0BD9 /* UIColor+FinniversKit.swift */; };
 		4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A6A02027AC41008C0BD9 /* Spacing.swift */; };
 		4408A6A52027AC41008C0BD9 /* UIFont+FinniversKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A6A22027AC41008C0BD9 /* UIFont+FinniversKit.swift */; };
 		441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D69981FEA947500CD919A /* UIViewExtensions.swift */; };
@@ -376,6 +376,7 @@
 		DA6DC2BB238404B80094C42C /* VersionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8F32B3238295F900EF645F /* VersionInfoView.swift */; };
 		DA708853211338650067519A /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA708852211338650067519A /* ConfirmationView.swift */; };
 		DA84E8E9252DC96900E4E3B3 /* FontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA84E8E8252DC96900E4E3B3 /* FontProvider.swift */; };
+		DA84E8EF252DD4A100E4E3B3 /* ColorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA84E8EE252DD4A100E4E3B3 /* ColorProvider.swift */; };
 		DA93EFA821C2BA4F00207239 /* NewYearsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1EC5021C1322900F4FEC4 /* NewYearsView.swift */; };
 		DA9A223F21BA8D8C001452F0 /* BottomSheetStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */; };
 		DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A32102153F0021F7DC /* Selectionbox.swift */; };
@@ -485,7 +486,7 @@
 		43BACE6921117D430052114C /* BuyerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerView.swift; sourceTree = "<group>"; };
 		43BACE6B21117D530052114C /* BuyerPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerViewModel.swift; sourceTree = "<group>"; };
 		43EA977E21941E5D003A548A /* SoldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldView.swift; sourceTree = "<group>"; };
-		4408A69E2027AC41008C0BD9 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		4408A69E2027AC41008C0BD9 /* UIColor+FinniversKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+FinniversKit.swift"; sourceTree = "<group>"; };
 		4408A6A02027AC41008C0BD9 /* Spacing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 		4408A6A22027AC41008C0BD9 /* UIFont+FinniversKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+FinniversKit.swift"; sourceTree = "<group>"; };
 		441D69981FEA947500CD919A /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
@@ -819,6 +820,7 @@
 		DA5A858B24617DF000AC0DFE /* ImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
 		DA708852211338650067519A /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
 		DA84E8E8252DC96900E4E3B3 /* FontProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontProvider.swift; sourceTree = "<group>"; };
+		DA84E8EE252DD4A100E4E3B3 /* ColorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorProvider.swift; sourceTree = "<group>"; };
 		DA8F32B3238295F900EF645F /* VersionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfoView.swift; sourceTree = "<group>"; };
 		DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetStateController.swift; sourceTree = "<group>"; };
 		DAA9A3A32102153F0021F7DC /* Selectionbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectionbox.swift; sourceTree = "<group>"; };
@@ -1085,8 +1087,9 @@
 		4408A69D2027AC41008C0BD9 /* Color */ = {
 			isa = PBXGroup;
 			children = (
-				4408A69E2027AC41008C0BD9 /* Color.swift */,
 				9B9663CC24603AAE00D34BA1 /* Color+SwiftUI.swift */,
+				DA84E8EE252DD4A100E4E3B3 /* ColorProvider.swift */,
+				4408A69E2027AC41008C0BD9 /* UIColor+FinniversKit.swift */,
 			);
 			path = Color;
 			sourceTree = "<group>";
@@ -3352,7 +3355,7 @@
 				F2BE213222819F7D004640F3 /* ReviewButtonControl.swift in Sources */,
 				44A557A722E720BB001667AE /* IconTitleTableViewCellViewModel.swift in Sources */,
 				DAD6EB2A2369916100968497 /* SettingsView.swift in Sources */,
-				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,
+				4408A6A32027AC41008C0BD9 /* UIColor+FinniversKit.swift in Sources */,
 				446EE15C2345A6AA00010818 /* SelectorTitleView.swift in Sources */,
 				DAD6EB292369916100968497 /* SettingsViewConsentCellModel.swift in Sources */,
 				91846C5A22E856D50001410F /* MapSettingsView.swift in Sources */,
@@ -3404,6 +3407,7 @@
 				F2C3E95E22CB63A200CED7E0 /* QuestionnaireViewModel.swift in Sources */,
 				9B28DE8223266CD100D69C15 /* Panel+Style.swift in Sources */,
 				CF4A053D21FB2ACB000BB7DA /* PianoKeyboardView.swift in Sources */,
+				DA84E8EF252DD4A100E4E3B3 /* ColorProvider.swift in Sources */,
 				918C8AC423A7A82900B566DE /* NativeAdvertListView.swift in Sources */,
 				CF5CA71922F9B818007C4124 /* NeighborhoodProfileButtonViewCell.swift in Sources */,
 				9BA6C49A24336AEC009D417B /* CoronaHelpViewModel.swift in Sources */,
