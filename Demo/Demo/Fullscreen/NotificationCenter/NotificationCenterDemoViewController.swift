@@ -159,6 +159,26 @@ extension NotificationCenterDemoViewController: NotificationCenterViewDelegate {
         }
     }
 
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectFavoriteButton button: UIButton, forNotificationAt indexPath: IndexPath) {
+        let cellType = segments[segment].sections[indexPath.section].items[indexPath.row]
+
+        switch cellType {
+        case let .notificationCell(model):
+            if let item = model as? NotificationCenterItem, var content = item.content as? SavedSearchAdData {
+                content.isFavorite.toggle()
+                let newItem = NotificationCenterItem(
+                    isRead: item.isRead,
+                    content: content
+                )
+
+                segments[segment].sections[indexPath.section].items[indexPath.row] = .notificationCell(newItem)
+                view.reloadRows(at: [indexPath], inSegment: segment)
+            }
+        default:
+            break
+        }
+    }
+
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectSavedSearchButtonIn section: Int) {
         print("Saved search button selected")
     }

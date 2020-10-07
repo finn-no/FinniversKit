@@ -21,14 +21,14 @@ public class RibbonView: UIView {
         }
     }
 
-    // MARK: - Internal properties
-
-    private lazy var titleLabel: Label = {
+    public private(set) lazy var titleLabel: Label = {
         let label = Label(style: .detail)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         return label
     }()
+
+    // MARK: - Internal properties
 
     private let horisontalMargin: CGFloat = 8
     private let verticalMargin: CGFloat = 2

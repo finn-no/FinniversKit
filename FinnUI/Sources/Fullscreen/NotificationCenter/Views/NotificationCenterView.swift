@@ -23,6 +23,7 @@ public protocol NotificationCenterViewDelegate: AnyObject {
     func notificationCenterView(_ view: NotificationCenterView, didSelectMarkAllAsReadButtonIn segment: Int)
     func notificationCenterView(_ view: NotificationCenterView, didSelectShowGroupOptions segment: Int, sortingView: UIView)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectModelAt indexPath: IndexPath)
+    func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectFavoriteButton button: UIButton, forNotificationAt indexPath: IndexPath)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectSavedSearchButtonIn section: Int)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectMoreButtonIn section: Int)
     func notificationCenterView(_ view: NotificationCenterView, segment: Int, didSelectFooterButtonInSection section: Int)
@@ -182,6 +183,8 @@ extension NotificationCenterView: UITableViewDataSource {
         case let .notificationCell(model):
             let cell = tableView.dequeue(NotificationCell.self, for: indexPath)
             cell.remoteImageViewDataSource = remoteImageViewDataSource
+            cell.delegate = self
+            cell.indexPath = indexPath
             cell.configure(with: model, timestamp: timestamp, hideSeparator: isLast, showGradient: isLast && overflow)
             return cell
         case let .emptyCell(model):
@@ -299,6 +302,14 @@ extension NotificationCenterView: NotificationCenterTableHeaderViewDelegate {
 
     func savedSearchesHeaderViewDidSelectGroupSelectionButton(_ view: SavedSearchesHeaderView, sortingView: UIView) {
         delegate?.notificationCenterView(self, didSelectShowGroupOptions: selectedSegment, sortingView: sortingView)
+    }
+}
+
+// MARK: - NotificationCellDelegate
+extension NotificationCenterView: NotificationCellDelegate {
+    func notificationCell(_ cell: NotificationCell, didSelectFavoriteButton button: UIButton) {
+        guard let indexPath = cell.indexPath else { return }
+        delegate?.notificationCenterView(self, segment: selectedSegment, didSelectFavoriteButton: button, forNotificationAt: indexPath)
     }
 }
 

@@ -63,13 +63,13 @@ public class MotorTransactionInviteCounterpartyView: UIView {
 
         NSLayoutConstraint.activate([
             pickABuyerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingXL),
-            pickABuyerView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            pickABuyerView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            pickABuyerView.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor),
+            pickABuyerView.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor),
             pickABuyerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: 96),
 
             pickLaterButton.topAnchor.constraint(equalTo: pickABuyerView.bottomAnchor, constant: .spacingL),
-            pickLaterButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingL),
-            pickLaterButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingL),
+            pickLaterButton.leadingAnchor.constraint(equalTo: pickABuyerView.leadingAnchor),
+            pickLaterButton.trailingAnchor.constraint(equalTo: pickABuyerView.trailingAnchor),
         ])
 
     }

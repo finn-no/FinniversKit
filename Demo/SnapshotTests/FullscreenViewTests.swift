@@ -9,8 +9,8 @@ import FinniversKit
 class FullscreenViewTests: XCTestCase {
     private let excludedComponents: [FullscreenDemoViews] = [.pianoView]
 
-    private func snapshot(_ component: FullscreenDemoViews, includeIPad: Bool = false, delay: TimeInterval? = nil, testName: String = #function) {
-        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, delay: delay, testName: testName)
+    private func snapshot(_ component: FullscreenDemoViews, includeIPad: Bool = false, delay: TimeInterval? = nil, record: Bool = false, testName: String = #function) {
+        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, delay: delay, record: record, testName: testName)
     }
 
     // MARK: - Tests
