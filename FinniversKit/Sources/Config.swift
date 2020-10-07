@@ -4,8 +4,7 @@
 
 import Foundation
 
-/// Class for referencing the framework bundle
-@objc public class Config: NSObject {
+public struct Config {
     public enum UserInterfaceStyleSupport {
         @available(iOS 13.0, *)
         case dynamic
@@ -26,6 +25,6 @@ import Foundation
 
 @objc public extension Bundle {
     static var finniversKit: Bundle {
-        Bundle(for: Config.self)
+        Bundle(for: BasicTableViewCell.self)
     }
 }
