@@ -23,6 +23,7 @@ public protocol PersonalNotificationCellContent: NotificationCellContent {
 public protocol SavedSearchNotificationCellContent: NotificationCellContent {
     var locationText: String { get }
     var ribbonViewModel: RibbonViewModel? { get }
+    var isFavorite: Bool { get }
 }
 
 public protocol FavoriteSoldNotificationCellContent: PersonalNotificationCellContent {
