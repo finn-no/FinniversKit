@@ -515,7 +515,7 @@ public extension UIColor {
     ///   - defaultColor: light mode version of the color
     ///   - darkModeColor: dark mode version of the color
     class func dynamicColorIfAvailable(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
-        switch FinniversKit.userInterfaceStyleSupport {
+        switch Config.userInterfaceStyleSupport {
         case .forceDark:
             return darkModeColor
         case .forceLight:

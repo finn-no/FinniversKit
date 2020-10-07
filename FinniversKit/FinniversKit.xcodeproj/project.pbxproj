@@ -84,7 +84,7 @@
 		4447F6FC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf */; };
 		4447F6FD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BE1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf */; };
 		4447F7021FDB2B110033DBC1 /* FinniversKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C51FDB2B110033DBC1 /* FinniversKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */; };
+		4447F7031FDB2B110033DBC1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* Config.swift */; };
 		44587016213FA344009187BE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44587011213FA344009187BE /* LoginViewModel.swift */; };
 		44587017213FA344009187BE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44587012213FA344009187BE /* LoginView.swift */; };
 		44587018213FA344009187BE /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44587014213FA344009187BE /* RegisterView.swift */; };
@@ -109,7 +109,7 @@
 		44A557B522E72187001667AE /* HeartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A557B222E72187001667AE /* HeartTableViewCell.swift */; };
 		44A557B622E72187001667AE /* CheckboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A557B322E72187001667AE /* CheckboxTableViewCell.swift */; };
 		44AFCE49215839F7005984DB /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFCE47215839F6005984DB /* LoadingIndicatorView.swift */; };
-		44C4E8DE1FFBA714000B014D /* FinniversKit.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		44C4E8DE1FFBA714000B014D /* Config.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* Config.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C6CE44209CABFE00929269 /* FinniversImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */; };
 		44D9125F2077AC8A00486848 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912512077AC8A00486848 /* EmptyView.swift */; };
 		44D912602077AC8A00486848 /* AttachableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912532077AC8A00486848 /* AttachableView.swift */; };
@@ -162,7 +162,7 @@
 		89A7A63D225337B50053D33B /* NativeAdvertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A63C225337B50053D33B /* NativeAdvertViewModel.swift */; };
 		89A7A645225352380053D33B /* NativeAdvertDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A643225352180053D33B /* NativeAdvertDelegates.swift */; };
 		89A7A648225352A30053D33B /* NativeAdvertContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A6462253524E0053D33B /* NativeAdvertContentView.swift */; };
-		8D68002D5056813B49BC1902 /* SavedSearchSortingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680B1214D260A2C43C6C21 /* SavedSearchSortingViewModel.swift */; };
+		8D68002D5056813B49BC1902 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		8D68020AA0FD06F96F366667 /* PriceLinkButtonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680981DC797D9DAADF1012 /* PriceLinkButtonListView.swift */; };
 		8D68020C8D99FFCA2D0E4544 /* SaveSearchPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680E44C486FC51C7F9B871 /* SaveSearchPromptView.swift */; };
 		8D68049F4E30F91924B67CD3 /* SortSelectionOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680CAAFFF9E2F39CC9E68A /* SortSelectionOptionCell.swift */; };
@@ -528,7 +528,7 @@
 		4447F6BD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Medium.ttf"; sourceTree = "<group>"; };
 		4447F6BE1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Regular.ttf"; sourceTree = "<group>"; };
 		4447F6C51FDB2B110033DBC1 /* FinniversKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinniversKit.h; sourceTree = "<group>"; };
-		4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinniversKit.swift; sourceTree = "<group>"; };
+		4447F6C61FDB2B110033DBC1 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		44587011213FA344009187BE /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		44587012213FA344009187BE /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		44587014213FA344009187BE /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -617,8 +617,6 @@
 		8D680B5270EEEDE60EC40E4B /* SearchListEmptyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchListEmptyViewModel.swift; sourceTree = "<group>"; };
 		8D680C9447EAEBFE62F093D1 /* PriceLinkButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceLinkButtonViewModel.swift; sourceTree = "<group>"; };
 		8D680CAAFFF9E2F39CC9E68A /* SortSelectionOptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortSelectionOptionCell.swift; sourceTree = "<group>"; };
-		8D680C9447EAEBFE62F093D1 /* PriceLinkButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceLinkButtonViewModel.swift; sourceTree = "<group>"; };
-		8D680D9CBAB427CE85F11FA5 /* SavedSearchSortOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchSortOption.swift; sourceTree = "<group>"; };
 		8D680E44C486FC51C7F9B871 /* SaveSearchPromptView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveSearchPromptView.swift; sourceTree = "<group>"; };
 		91341EDA23C38288005B65CF /* NativeAdvertRecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertRecommendationView.swift; sourceTree = "<group>"; };
 		91341EDC23C46BE5005B65CF /* NativeAdvertRibbon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertRibbon.swift; sourceTree = "<group>"; };
@@ -652,7 +650,6 @@
 		9A37DAD39379A11C6213043C /* VisibilityDrivenTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisibilityDrivenTitleView.swift; sourceTree = "<group>"; };
 		9A37DB4994CC79F661EA013F /* LinkButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkButtonViewModel.swift; sourceTree = "<group>"; };
 		9A37DC5E8BBDBC5DBF3E100B /* SelfDeclarationItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfDeclarationItemViewModel.swift; sourceTree = "<group>"; };
-		9A37DD391E57437520A777DB /* RibbonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonViewModel.swift; sourceTree = "<group>"; };
 		9A37DD4DA48E4BA2D5C25B1D /* FavoriteAdsListEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListEmptyView.swift; sourceTree = "<group>"; };
 		9A37DD5C29C02298C78257C1 /* SelfDeclarationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfDeclarationViewModel.swift; sourceTree = "<group>"; };
 		9A37DD79F67FC522D64A127E /* FavoriteAdsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListView.swift; sourceTree = "<group>"; };
@@ -1277,7 +1274,7 @@
 			children = (
 				4447F6C51FDB2B110033DBC1 /* FinniversKit.h */,
 				4447F6B51FDB2B110033DBC1 /* Info.plist */,
-				4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */,
+				4447F6C61FDB2B110033DBC1 /* Config.swift */,
 				9BB734C22462E9C000E05435 /* Base Components */,
 				44A5579A22E71FEB001667AE /* Cells */,
 				4447F6641FDB2B110033DBC1 /* Components */,
@@ -3006,7 +3003,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4447F7021FDB2B110033DBC1 /* FinniversKit.h in Headers */,
-				44C4E8DE1FFBA714000B014D /* FinniversKit.swift in Headers */,
+				44C4E8DE1FFBA714000B014D /* Config.swift in Headers */,
 				1430D440216E4DA10038AC84 /* Spacing.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3237,7 +3234,7 @@
 				F253C5142314015C008175FD /* VerificationViewModel.swift in Sources */,
 				CF16F73823292D34006566DE /* FavoriteAdCommentView.swift in Sources */,
 				DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */,
-				4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */,
+				4447F7031FDB2B110033DBC1 /* Config.swift in Sources */,
 				DAA9A3AC210215400021F7DC /* AnimatedSelectionView.swift in Sources */,
 				9BD8ABC02359B1EE001078CA /* ChristmasWishListView.swift in Sources */,
 				CF0F6B972360781E00CA62FD /* PrimingView.swift in Sources */,
@@ -3581,9 +3578,7 @@
 				8D6808DF0714CB32FD27AD37 /* PriceLinkButtonView.swift in Sources */,
 				8D680B3932E934A7BD81FA3C /* PriceLinkButtonViewModel.swift in Sources */,
 				8D68020AA0FD06F96F366667 /* PriceLinkButtonListView.swift in Sources */,
-				8D68074DD02FE83B45AF33B3 /* SavedSearchSortingView.swift in Sources */,
-				8D68065886C619697E164BA3 /* SavedSearchSortOption.swift in Sources */,
-				8D68002D5056813B49BC1902 /* SavedSearchSortingViewModel.swift in Sources */,
+				8D68002D5056813B49BC1902 /* (null) in Sources */,
 				8D68095830EEFACD7AF7E50E /* RibbonViewModel.swift in Sources */,
 				8D680D43020F07BDF6D39262 /* IconRibbonViewModel.swift in Sources */,
 				8D680AB3EF002CCBA3CC222B /* IconRibbonView.swift in Sources */,

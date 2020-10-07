@@ -145,7 +145,7 @@ enum FontType: String {
     }
 
     func scaledFont(forTextStyle textStyle: UIFont.TextStyle) -> UIFont {
-        if FinniversKit.isDynamicTypeEnabled {
+        if Config.isDynamicTypeEnabled {
             let fontMetrics = UIFontMetrics(forTextStyle: textStyle)
             return fontMetrics.scaledFont(for: self)
         } else {
@@ -175,14 +175,14 @@ extension UIFont {
 
 extension UIFont {
     static func registerFont(with filenameString: String) {
-        if let bundleURL = Bundle(for: FinniversKit.self).url(forResource: "FinniversKit", withExtension: "bundle") {
+        if let bundleURL = Bundle.finniversKit.url(forResource: "FinniversKit", withExtension: "bundle") {
             if let bundle = Bundle(url: bundleURL) {
                 registerFontFor(bundle: bundle, forResource: filenameString)
                 return
             }
         }
 
-        if let bundleIdentifier = Bundle(for: FinniversKit.self).bundleIdentifier {
+        if let bundleIdentifier = Bundle.finniversKit.bundleIdentifier {
             if let bundle = Bundle(identifier: bundleIdentifier) {
                 registerFontFor(bundle: bundle, forResource: filenameString)
             }

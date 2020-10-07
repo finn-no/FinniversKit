@@ -5,7 +5,7 @@
 import Foundation
 
 /// Class for referencing the framework bundle
-@objc public class FinniversKit: NSObject {
+@objc public class Config: NSObject {
     public enum UserInterfaceStyleSupport {
         @available(iOS 13.0, *)
         case dynamic
@@ -13,10 +13,7 @@ import Foundation
         case forceDark
     }
 
-    static var bundle: Bundle {
-        return Bundle(for: FinniversKit.self)
-    }
-
+    public static var bundle: Bundle { Bundle.finniversKit }
     public static var isDynamicTypeEnabled: Bool = true
     public static var userInterfaceStyleSupport: UserInterfaceStyleSupport = {
         if #available(iOS 13.0, *) {
@@ -29,6 +26,6 @@ import Foundation
 
 @objc public extension Bundle {
     static var finniversKit: Bundle {
-        return FinniversKit.bundle
+        Bundle(for: Config.self)
     }
 }
