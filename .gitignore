@@ -50,3 +50,6 @@ bundler/
 # Fastlane
 fastlane/report.xml
 .env
+
+# SPM
+.swiftpm
