@@ -237,8 +237,6 @@
 		9B93F210230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */; };
 		9B9663CB2460383900D34BA1 /* ConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9663CA2460383900D34BA1 /* ConfigTests.swift */; };
 		9B9663CD24603AAE00D34BA1 /* Color+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9663CC24603AAE00D34BA1 /* Color+SwiftUI.swift */; };
-		9BA6C49A24336AEC009D417B /* CoronaHelpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C49824336AEC009D417B /* CoronaHelpViewModel.swift */; };
-		9BA6C49B24336AEC009D417B /* CoronaHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C49924336AEC009D417B /* CoronaHelpView.swift */; };
 		9BA8248623859B4400163F24 /* MapZoomRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA8248523859B4400163F24 /* MapZoomRange.swift */; };
 		9BB12AC2238289F100A04F61 /* StatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB12AC1238289F100A04F61 /* StatisticsModel.swift */; };
 		9BB6802F2462F763001ADACF /* Font+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB6802E2462F763001ADACF /* Font+SwiftUI.swift */; };
@@ -681,8 +679,6 @@
 		9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDirectionalEdgeInsetsExtensions.swift; sourceTree = "<group>"; };
 		9B9663CA2460383900D34BA1 /* ConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigTests.swift; sourceTree = "<group>"; };
 		9B9663CC24603AAE00D34BA1 /* Color+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+SwiftUI.swift"; sourceTree = "<group>"; };
-		9BA6C49824336AEC009D417B /* CoronaHelpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoronaHelpViewModel.swift; sourceTree = "<group>"; };
-		9BA6C49924336AEC009D417B /* CoronaHelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoronaHelpView.swift; sourceTree = "<group>"; };
 		9BA8248523859B4400163F24 /* MapZoomRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoomRange.swift; sourceTree = "<group>"; };
 		9BB12AC1238289F100A04F61 /* StatisticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsModel.swift; sourceTree = "<group>"; };
 		9BB6802E2462F763001ADACF /* Font+SwiftUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Font+SwiftUI.swift"; sourceTree = "<group>"; };
@@ -1310,7 +1306,6 @@
 				45B2E06B207E181C00C68B92 /* Consent */,
 				9A37D05E50689037A6F118B1 /* ContractActionView */,
 				F2BE212E22819ED8004640F3 /* Control */,
-				9BA6C49324336AC2009D417B /* CoronaHelp */,
 				AA7A854C22255A5700AF5F42 /* Dialogue */,
 				0884C6C722B7B4360015474D /* Disclaimer */,
 				CF7C45FD22257A8A001FB92C /* EarthHour */,
@@ -2170,15 +2165,6 @@
 				9BCE6A3D23C7272200F37F6D /* BetaFeatureView.swift */,
 			);
 			path = BetaFeatureView;
-			sourceTree = "<group>";
-		};
-		9BA6C49324336AC2009D417B /* CoronaHelp */ = {
-			isa = PBXGroup;
-			children = (
-				9BA6C49924336AEC009D417B /* CoronaHelpView.swift */,
-				9BA6C49824336AEC009D417B /* CoronaHelpViewModel.swift */,
-			);
-			path = CoronaHelp;
 			sourceTree = "<group>";
 		};
 		9BB680302462F791001ADACF /* SwiftUI */ = {
@@ -3410,14 +3396,12 @@
 				DA84E8EF252DD4A100E4E3B3 /* ColorProvider.swift in Sources */,
 				918C8AC423A7A82900B566DE /* NativeAdvertListView.swift in Sources */,
 				CF5CA71922F9B818007C4124 /* NeighborhoodProfileButtonViewCell.swift in Sources */,
-				9BA6C49A24336AEC009D417B /* CoronaHelpViewModel.swift in Sources */,
 				CF7C460822257A8A001FB92C /* EarthHourView.swift in Sources */,
 				14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */,
 				CFB61374229ACA6900DE283D /* IconCollectionView.swift in Sources */,
 				CF848C2C21C7E0860086530E /* CogWheelButton.swift in Sources */,
 				DAD6EB322369BCFD00968497 /* SettingDetailsView.swift in Sources */,
 				DAB7FAAB21B690DD00BF8CC6 /* BottomSheetInteractionController.swift in Sources */,
-				9BA6C49B24336AEC009D417B /* CoronaHelpView.swift in Sources */,
 				CF7C460722257A8A001FB92C /* EarthHourTagView.swift in Sources */,
 				45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */,
 				62AAB23A23278087007766E6 /* RadioButtonTableViewCell.swift in Sources */,
