@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 public protocol SearchResultsViewDataSource: AnyObject {
     func numberOfSegments(in view: SearchResultsView) -> Int

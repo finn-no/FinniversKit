@@ -1,6 +1,7 @@
 //
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
+import UIKit
 
 public struct IconLinkViewModel {
     public let icon: UIImage

@@ -1,3 +1,5 @@
+import Foundation
+
 public struct MyVehicleCellModel: Identifiable, Hashable {
     public var id: String
     public var imageUrl: String

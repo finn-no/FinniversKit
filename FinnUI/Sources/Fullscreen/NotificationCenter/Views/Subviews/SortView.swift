@@ -1,6 +1,7 @@
 //
 //  Copyright © 2020 FINN.no AS. All rights reserved.
 //
+import UIKit
 
 extension NotificationCenterView {
     class SortView: UIView {
