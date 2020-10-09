@@ -32,10 +32,7 @@ let package = Package(
             dependencies: [
                 "FinniversKit",
             ],
-            path: "FinnUI/Sources",
-            resources: [
-                .copy("Resources"),
-            ]
+            path: "FinnUI/Sources"
         ),
     ]
 )
