@@ -23,8 +23,8 @@ let package = Package(
             name: "FinniversKit",
             path: "FinniversKit/Sources",
             resources: [
-                .copy("Resources/Fonts"),
-                .copy("Resources/Sounds"),
+                .copy("Assets/Fonts"),
+                .copy("Assets/Sounds"),
             ]
         ),
         .target(
