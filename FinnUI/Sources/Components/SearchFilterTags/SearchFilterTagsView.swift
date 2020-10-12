@@ -20,6 +20,10 @@ public protocol SearchFilterTagsViewModel {
     public weak var delegate: SearchFilterTagsViewDelegate?
     public static let height = 2 * SearchFilterTagsView.verticalMargin + SearchFilterTagCell.height
 
+    public var maxFilterButtonWidth: CGFloat {
+        filterButtonView.contentWidth
+    }
+
     // MARK: - Internal properties
     static let font = UIFont.captionStrong
 
@@ -70,10 +74,6 @@ public protocol SearchFilterTagsViewModel {
 
     private let viewModel: SearchFilterTagsViewModel
     private var searchFilterTags = [SearchFilterTagCellViewModel]()
-
-    private var maxFilterButtonWidth: CGFloat {
-        filterButtonView.contentWidth
-    }
 
     private var minFilterButtonWidth: CGFloat {
         SearchFilterButtonView.minWidth
@@ -225,8 +225,8 @@ extension SearchFilterTagsView: SearchFilterTagCellDelegate {
 extension SearchFilterTagsView: UICollectionViewDelegateFlowLayout {
     public func collectionView(
             _ collectionView: UICollectionView,
-           layout collectionViewLayout: UICollectionViewLayout,
-           sizeForItemAt indexPath: IndexPath
+            layout collectionViewLayout: UICollectionViewLayout,
+            sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         var cellWidth = SearchFilterTagCell.width(for: title(at: indexPath))
         cellWidth = min(collectionView.bounds.width, cellWidth)
