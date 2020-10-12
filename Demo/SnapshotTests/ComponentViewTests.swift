@@ -267,10 +267,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.motorTransactionEntryAdManagementView)
     }
 
-    func testCoronaHelpView() {
-        snapshot(.coronaHelpView)
-    }
-
     func testChatAvailabilityView() {
         snapshot(.chatAvailabilityView)
     }

@@ -129,7 +129,7 @@ public final class EarthHourView: UIView {
 
         let attributes: [NSAttributedString.Key: Any] = [
             .paragraphStyle: paragraphStyle,
-            .font: UIFont(name: FontType.regular.rawValue, size: 16)!
+            .font: UIFont.bodyRegular
         ]
 
         return NSAttributedString(string: text, attributes: attributes)

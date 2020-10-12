@@ -7,115 +7,115 @@ import UIKit
 // MARK: - Semantic colors, dark mode compatible
 @objc extension UIColor {
     public class var bgPrimary: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .milk, darkModeColor: UIColor(hex: "#1B1B24"))
+        Config.colorProvider.bgPrimary
     }
 
     public class var bgSecondary: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .ice, darkModeColor: .darkIce)
+        Config.colorProvider.bgSecondary
     }
 
     public class var bgTertiary: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .marble, darkModeColor: UIColor(hex: "#13131A"))
+        Config.colorProvider.bgTertiary
     }
 
     public class var bgBottomSheet: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .milk, darkModeColor: .darkIce)
+        Config.colorProvider.bgBottomSheet
     }
 
     public class var bgAlert: UIColor {
-        return .banana
+        Config.colorProvider.bgAlert
     }
 
     public class var bgSuccess: UIColor {
-        return .mint
+        Config.colorProvider.bgSuccess
     }
 
     public class var bgCritical: UIColor {
-        return .salmon
+        Config.colorProvider.bgCritical
     }
 
     public class var btnPrimary: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .primaryBlue, darkModeColor: UIColor(hex: "#006DFB"))
+        Config.colorProvider.btnPrimary
     }
 
     public class var btnDisabled: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
+        Config.colorProvider.btnDisabled
     }
 
     public class var btnCritical: UIColor {
-        return .cherry
+        Config.colorProvider.btnCritical
     }
 
     public class var btnAction: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .primaryBlue, darkModeColor: UIColor(hex: "#3F8BFF"))
+        Config.colorProvider.btnAction
     }
 
     public class var textPrimary: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .licorice, darkModeColor: .milk)
+        Config.colorProvider.textPrimary
     }
 
     public class var textSecondary: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .stone, darkModeColor: UIColor(hex: "#828699"))
+        Config.colorProvider.textSecondary
     }
 
     public class var textTertiary: UIColor {
-        return .milk
+        Config.colorProvider.textTertiary
     }
 
     public class var textAction: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .primaryBlue, darkModeColor: UIColor(hex: "#3F8BFF"))
+        Config.colorProvider.textAction
     }
 
     public class var textDisabled: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
+        Config.colorProvider.textDisabled
     }
 
     public class var textCritical: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .cherry, darkModeColor: .watermelon)
+        Config.colorProvider.textCritical
     }
 
     public class var accentSecondaryBlue: UIColor {
-        return .secondaryBlue
+        Config.colorProvider.accentSecondaryBlue
     }
 
     public class var accentPea: UIColor {
-        return .pea
+        Config.colorProvider.accentPea
     }
 
     public class var accentToothpaste: UIColor {
-        return .toothPaste
+        Config.colorProvider.accentToothpaste
     }
 
     public class var textCTADisabled: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .licorice, darkModeColor: UIColor(hex: "#828699"))
+        Config.colorProvider.textCTADisabled
     }
 
     public class var textToast: UIColor {
-        return .licorice
+        Config.colorProvider.textToast
     }
 
     public class var tableViewSeparator: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
+        Config.colorProvider.tableViewSeparator
     }
 
     public class var imageBorder: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .marble, darkModeColor: UIColor(hex: "#13131A"))
+        Config.colorProvider.imageBorder
     }
 
     public class var decorationSubtle: UIColor {
-        return .btnDisabled
+        Config.colorProvider.decorationSubtle
     }
 
     public class var iconPrimary: UIColor {
-        return .textPrimary
+        Config.colorProvider.iconPrimary
     }
 
     public class var iconSecondary: UIColor {
-        return .textSecondary
+        Config.colorProvider.iconSecondary
     }
 
     public class var iconTertiary: UIColor {
-        return .textTertiary
+        Config.colorProvider.iconTertiary
     }
 }
 
@@ -515,7 +515,7 @@ public extension UIColor {
     ///   - defaultColor: light mode version of the color
     ///   - darkModeColor: dark mode version of the color
     class func dynamicColorIfAvailable(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
-        switch FinniversKit.userInterfaceStyleSupport {
+        switch Config.userInterfaceStyleSupport {
         case .forceDark:
             return darkModeColor
         case .forceLight:

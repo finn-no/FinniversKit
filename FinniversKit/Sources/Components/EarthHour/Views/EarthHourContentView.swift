@@ -7,7 +7,7 @@ import UIKit
 class EarthHourContentView: UIView {
     private(set) lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
-        label.font = UIFont(name: FontType.bold.rawValue, size: 22)
+        label.font = UIFont.font(ofSize: 22, weight: .bold, textStyle: .title2)
         label.textAlignment = .center
         label.textColor = .textPrimary
         return label
@@ -25,7 +25,7 @@ class EarthHourContentView: UIView {
         button.setTitleColor(.btnPrimary, for: .normal)
         button.setTitleColor(.flatButtonHighlightedTextColor, for: .highlighted)
         button.setTitleColor(.flatButtonHighlightedTextColor, for: .selected)
-        button.titleLabel?.font = UIFont(name: FontType.regular.rawValue, size: 14)
+        button.titleLabel?.font = UIFont.font(ofSize: 14, weight: .regular, textStyle: .footnote)
         return button
     }()
 

@@ -7,7 +7,7 @@ import UIKit
 final class EarthHourTagView: UIView {
     private(set) lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
-        label.font = UIFont(name: FontType.regular.rawValue, size: 14.0)
+        label.font = UIFont.font(ofSize: 14.0, weight: .regular, textStyle: .footnote)
         label.textColor = .black
         return label
     }()
