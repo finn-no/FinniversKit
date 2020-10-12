@@ -172,8 +172,8 @@ public final class StepSlider: UISlider {
         trackView.isHidden = !showTrackViews
         activeRangeTrackView.isHidden = true
 
-        addSubview(trackView)
-        addSubview(activeRangeTrackView)
+        insertSubview(trackView, at: 0)
+        insertSubview(activeRangeTrackView, aboveSubview: trackView)
 
         NSLayoutConstraint.activate([
             trackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXXS),
