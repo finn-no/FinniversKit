@@ -124,7 +124,8 @@ class SavedSearchHeaderButton: UIControl {
             arrowImageView.leadingAnchor.constraint(equalTo: textLabel.trailingAnchor, constant: .spacingXS),
             arrowImageView.centerYAnchor.constraint(equalTo: textLabel.centerYAnchor),
             arrowImageView.widthAnchor.constraint(equalToConstant: 5),
-            arrowImageView.heightAnchor.constraint(equalToConstant: 8)
+            arrowImageView.heightAnchor.constraint(equalToConstant: 8),
+            arrowImageView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
         ])
     }
 }

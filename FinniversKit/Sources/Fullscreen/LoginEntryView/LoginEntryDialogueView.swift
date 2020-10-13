@@ -22,9 +22,7 @@ class LoginEntryDialogueView: UIView {
     private lazy var titleLabel: UILabel = {
         // overriding the font to get the title2 strong without affecting
         // the design system itself for now
-        let title2StrongFont = UIFont(name: FontType.medium.rawValue, size: 28.0)!
-            .scaledFont(forTextStyle: .title2)
-
+        let title2StrongFont = UIFont.font(ofSize: 28.0, weight: .medium, textStyle: .title2)
         let label = Label(style: .title2)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = title2StrongFont

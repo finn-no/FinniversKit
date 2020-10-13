@@ -14,8 +14,6 @@ public protocol FavoriteButtonViewDelegate: AnyObject {
     func favoriteButtonDidSelect(_ favoriteButtonView: FavoriteButtonView, button: Button, viewModel: FavoriteButtonViewModel)
 }
 
-// This view is set up to support two kinds of favorite button layouts, that will be AB tested in different releases.
-// Excess code will be removed when the test results are ready.
 public class FavoriteButtonView: UIView {
 
     // MARK: - Public properties
@@ -24,27 +22,10 @@ public class FavoriteButtonView: UIView {
 
     // MARK: - Private properties
 
-    private enum ABTestVariant {
-        case buttonOnly
-        case buttonWithCounter
-    }
-
-    private final let activeTestVariant: ABTestVariant = .buttonWithCounter
-
     private var viewModel: FavoriteButtonViewModel?
-    private let buttonStyle = Button.Style.default.overrideStyle(borderColor: .btnDisabled)
     private let flatButtonStyle = Button.Style.flat.overrideStyle(margins: UIEdgeInsets.zero)
 
     private lazy var button: Button = {
-        let button = Button(style: buttonStyle, size: .normal, withAutoLayout: true)
-        button.titleEdgeInsets = UIEdgeInsets(leading: -.spacingXS)
-        button.imageEdgeInsets = UIEdgeInsets(leading: -.spacingS)
-        button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
-        button.adjustsImageWhenHighlighted = false
-        return button
-    }()
-
-    private lazy var flatButton: Button = {
         let button = Button(style: flatButtonStyle, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
         button.titleEdgeInsets = UIEdgeInsets(leading: .spacingS)
@@ -56,7 +37,7 @@ public class FavoriteButtonView: UIView {
     }()
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [flatButton, subtitleLabel])
+        let stackView = UIStackView(arrangedSubviews: [button, subtitleLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.alignment = .center
@@ -83,14 +64,8 @@ public class FavoriteButtonView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        switch activeTestVariant {
-        case .buttonOnly:
-            addSubview(button)
-            button.fillInSuperview()
-        case .buttonWithCounter:
-            addSubview(stackView)
-            stackView.fillInSuperview()
-        }
+        addSubview(stackView)
+        stackView.fillInSuperview()
     }
 
     // MARK: - Public methods
@@ -98,20 +73,11 @@ public class FavoriteButtonView: UIView {
     public func configure(with viewModel: FavoriteButtonViewModel) {
         self.viewModel = viewModel
 
-        switch activeTestVariant {
-        case .buttonOnly:
-            button.setTitle(viewModel.title, for: .normal)
-            let image = viewModel.isFavorite ? UIImage(named: .favoriteActiveSmall) : UIImage(named: .favoriteDefaultSmall)
-            button.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
-            button.imageView?.tintColor = .btnAction
-
-        case .buttonWithCounter:
-            flatButton.setTitle(viewModel.title, for: .normal)
-            subtitleLabel.text = viewModel.subtitle
-            let image = viewModel.isFavorite ? UIImage(named: .favoriteActive) : UIImage(named: .favoriteDefault)
-            flatButton.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
-            flatButton.imageView?.tintColor = .btnAction
-        }
+        button.setTitle(viewModel.title, for: .normal)
+        subtitleLabel.text = viewModel.subtitle
+        let image = viewModel.isFavorite ? UIImage(named: .favoriteActive) : UIImage(named: .favoriteDefault)
+        button.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.imageView?.tintColor = .btnAction
     }
 
     // MARK: - Private methods

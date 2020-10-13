@@ -74,10 +74,8 @@ public enum FinniversImageAsset: String {
     case exclamationMarkTriangleMini
     case eyeHide
     case favoriteActive
-    case favoriteActiveSmall
     case favoriteAdd
     case favoriteDefault
-    case favoriteDefaultSmall
     case favoritesComment
     case favoritesDelete
     case favoritesEdit
@@ -251,10 +249,8 @@ public enum FinniversImageAsset: String {
             .exclamationMarkTriangleMini,
             .eyeHide,
             .favoriteActive,
-            .favoriteActiveSmall,
             .favoriteAdd,
             .favoriteDefault,
-            .favoriteDefaultSmall,
             .favoritesComment,
             .favoritesDelete,
             .favoritesEdit,
