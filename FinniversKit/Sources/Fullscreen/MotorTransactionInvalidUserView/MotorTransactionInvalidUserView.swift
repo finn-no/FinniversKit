@@ -49,14 +49,12 @@ public class MotorTransactionInvalidUserView: UIView {
         return button
     }()
 
-    private var viewModel: MotorTransactionInvalidUserViewModel
+    private var viewModel: MotorTransactionInvalidUserViewModel?
 
     public weak var delegate: MotorTransactionInvalidUserViewDelegate?
 
-    public init(_ viewModel: MotorTransactionInvalidUserViewModel) {
+    public func configure(_ viewModel: MotorTransactionInvalidUserViewModel) {
         self.viewModel = viewModel
-
-        super.init(frame: .zero)
 
         setup()
 
@@ -67,15 +65,15 @@ public class MotorTransactionInvalidUserView: UIView {
         cancelButton.setTitle(viewModel.cancelButtonText, for: .normal)
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     private func setup() {
+        if subviews.count > 0 {
+            subviews.forEach({ $0.removeFromSuperview() })
+        }
+
         var subviews = [UIView]()
         var layoutConstraints = [NSLayoutConstraint()]
 
-        if viewModel.email != nil {
+        if viewModel?.email != nil {
             subviews = [imageView, emailLabel, titleLabel, detailLabel, continueButton, cancelButton]
             layoutConstraints = [
                 imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingXL),

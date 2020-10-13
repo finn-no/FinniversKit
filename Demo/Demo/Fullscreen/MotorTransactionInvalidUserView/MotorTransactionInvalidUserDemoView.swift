@@ -6,7 +6,8 @@ import FinniversKit
 
 public class MotorTransactionInvalidUserDemoView: UIView {
     private lazy var motorTransactionInvalidUserView: MotorTransactionInvalidUserView = {
-        let view = MotorTransactionInvalidUserView(MotorTransactionInvalidUserViewModel.defaultDataRegisteredUser)
+        let view = MotorTransactionInvalidUserView(withAutoLayout: true)
+        view.configure(MotorTransactionInvalidUserViewModel.defaultDataRegisteredUser)
         view.delegate = self
         return view
     }()
