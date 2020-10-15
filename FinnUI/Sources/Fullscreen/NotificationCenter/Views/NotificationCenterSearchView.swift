@@ -14,6 +14,7 @@ public protocol NotificationCenterSearchViewDataSource: AnyObject {
 public protocol NotificationCenterSearchViewDelegate: AnyObject {
     func notificationCenterSearchViewDidSelectShowEntireSearch(_ view: NotificationCenterSearchView)
     func notificationCenterSearchView(_ view: NotificationCenterSearchView, didSelectModelAt indexPath: IndexPath)
+    func notificationCenterSearchView(_ view: NotificationCenterSearchView, didSelectFavoriteButton: UIButton, forNotificationAt indexPath: IndexPath)
 }
 
 public struct NotificationCenterSearchViewModel {
@@ -78,6 +79,8 @@ extension NotificationCenterSearchView: UITableViewDataSource {
         let cell = tableView.dequeue(NotificationCell.self, for: indexPath)
         cell.remoteImageViewDataSource = remoteImageViewDataSource
         cell.configure(with: model, timestamp: timestamp, hideSeparator: isLast, showGradient: false)
+        cell.delegate = self
+        cell.indexPath = indexPath
         return cell
     }
 }
@@ -160,5 +163,12 @@ private class TableViewHeaderView: UITableViewHeaderFooterView {
         titleLabel.text = model?.title
         rowCountLabel.text = model?.rowCountText
         showSearchButton.setTitle(model?.searchButtonTitle, for: .normal)
+    }
+}
+
+extension NotificationCenterSearchView: NotificationCellDelegate {
+    func notificationCell(_ cell: NotificationCell, didSelectFavoriteButton button: UIButton) {
+        guard let indexPath = cell.indexPath else { return }
+        delegate?.notificationCenterSearchView(self, didSelectFavoriteButton: button, forNotificationAt: indexPath)
     }
 }
