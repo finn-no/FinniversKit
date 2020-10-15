@@ -19,7 +19,7 @@ public class ViewingsView: UIView {
     private let titleBottomMargin: CGFloat = .spacingS
     private let noteBottomMargin: CGFloat = .spacingS
 
-    private lazy var titleLabel: Label = Label(style: .title3, withAutoLayout: true)
+    private lazy var titleLabel: Label = Label(style: titleStyle, withAutoLayout: true)
 
     private lazy var noteLabel: Label = {
         let label = Label(withAutoLayout: true)
@@ -43,10 +43,13 @@ public class ViewingsView: UIView {
         return tableView
     }()
 
+    private let titleStyle: Label.Style
+
     // MARK: - Init
 
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(titleStyle: Label.Style = .title3) {
+        self.titleStyle = titleStyle
+        super.init(frame: .zero)
         setup()
     }
 
