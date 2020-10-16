@@ -3,9 +3,9 @@
 //
 
 public protocol SendInviteViewDelegate: AnyObject {
-    func loadImage(_ view: SendInviteView, loadImageWithUrl url: URL, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
-    func didTapSendInviteButton(_ button: Button)
-    func didTapSendInviteLaterButton(_ button: Button)
+    func sendInviteViewLoadImage(_ view: SendInviteView, loadImageWithUrl url: URL, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func sendInviteViewDidTapSendInviteButton(_ button: Button)
+    func sendInviteViewDidTapSendInviteLaterButton(_ button: Button)
 }
 
 public class SendInviteView: UIView {
@@ -88,7 +88,7 @@ public class SendInviteView: UIView {
     }
 
     public func loadImage(_ url: URL) {
-        delegate?.loadImage(self, loadImageWithUrl: url, imageWidth: SendInviteView.profileImageSize, completion: { [weak self] image in
+        delegate?.sendInviteViewLoadImage(self, loadImageWithUrl: url, imageWidth: SendInviteView.profileImageSize, completion: { [weak self] image in
             guard
                 let self = self,
                 let image = image
@@ -103,10 +103,10 @@ public class SendInviteView: UIView {
 
 private extension SendInviteView {
     @objc func handleSendInviteButtonTap(_ sender: Button) {
-        delegate?.didTapSendInviteButton(sender)
+        delegate?.sendInviteViewDidTapSendInviteButton(sender)
     }
 
     @objc func handleSendInviteLaterButtonTap(_ sender: Button) {
-        delegate?.didTapSendInviteLaterButton(sender)
+        delegate?.sendInviteViewDidTapSendInviteLaterButton(sender)
     }
 }
