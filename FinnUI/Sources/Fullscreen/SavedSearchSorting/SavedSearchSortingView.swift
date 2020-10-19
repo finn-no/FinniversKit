@@ -9,7 +9,7 @@ public protocol SavedSearchSortingViewDelegate: AnyObject {
 }
 
 public final class SavedSearchSortingView: UIView {
-    public static let totalHeight = SortSelectionView.rowHeight * CGFloat(SavedSearchSortOption.allCases.count)
+    public static let totalHeight = SelectionView.rowHeight * CGFloat(SavedSearchSortOption.allCases.count)
 
     // MARK: - Public properties
 
@@ -20,8 +20,8 @@ public final class SavedSearchSortingView: UIView {
     private let sortingOptions: [SavedSearchSortOptionModel]
     private var selectedSortOption: SavedSearchSortOption
 
-    private lazy var sortingView: SortSelectionView = {
-        let view = SortSelectionView(sortingOptions: sortingOptions, selectedSortOptionIdentifier: selectedSortOption.rawValue)
+    private lazy var sortingView: SelectionView = {
+        let view = SelectionView(options: sortingOptions, selectedOptionIdentifier: selectedSortOption.rawValue)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         return view
@@ -48,10 +48,10 @@ public final class SavedSearchSortingView: UIView {
     }
 }
 
-// MARK: - SortSelectionViewDelegate
+// MARK: - SelectionViewDelegate
 
-extension SavedSearchSortingView: SortSelectionViewDelegate {
-    public func sortSelectionView(_ view: SortSelectionView, didSelectSortOptionWithIdentifier selectedIdentifier: String) {
+extension SavedSearchSortingView: SelectionViewDelegate {
+    public func selectionView(_ view: SelectionView, didSelectOptionWithIdentifier selectedIdentifier: String) {
         guard let sortOption = SavedSearchSortOption(rawValue: selectedIdentifier) else { return }
         delegate?.savedSearchSortingView(self, didSelectSortOption: sortOption)
     }
@@ -82,7 +82,7 @@ private extension SavedSearchSortOption {
     }
 }
 
-private struct SavedSearchSortOptionModel: SortSelectionOptionModel {
+private struct SavedSearchSortOptionModel: SelectionOptionModel {
     let title: String
     let savedSearchSortOption: SavedSearchSortOption
     var identifier: String { savedSearchSortOption.rawValue }

@@ -43,6 +43,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case errorView
     case confettiView
     case savedSearchSortingView
+    case searchDisplayTypeSelectionView
 
     public static var items: [FullscreenDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -148,6 +149,8 @@ public enum FullscreenDemoViews: String, CaseIterable {
             return DemoViewController<ConfettiDemoView>()
         case .savedSearchSortingView:
             return DemoViewController<SavedSearchSortingDemoView>()
+        case .searchDisplayTypeSelectionView:
+            return DemoViewController<SearchDisplayTypeSelectionDemoView>()
         }
     }
 }

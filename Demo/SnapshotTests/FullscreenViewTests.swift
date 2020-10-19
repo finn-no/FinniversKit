@@ -172,4 +172,8 @@ class FullscreenViewTests: XCTestCase {
     func testSavedSearchSortingView() {
         snapshot(.savedSearchSortingView)
     }
+
+    func testSearchDisplayTypeSelectionView() {
+        snapshot(.searchDisplayTypeSelectionView)
+    }
 }

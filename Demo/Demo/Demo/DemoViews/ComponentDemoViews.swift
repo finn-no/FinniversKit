@@ -44,6 +44,8 @@ public enum ComponentDemoViews: String, CaseIterable {
     case tweakable
     case saveSearchView
     case saveSearchPromptView
+    case searchDisplayMenuView
+    case searchFilterTags
     case searchListEmptyView
     case stepSlider
     case loanCalculatorView
@@ -162,8 +164,12 @@ public enum ComponentDemoViews: String, CaseIterable {
             let demoViewController = DemoViewController<SaveSearchViewDemoView>()
             demoViewController.view.backgroundColor = .bgPrimary
             return BottomSheet(rootViewController: demoViewController)
+        case .searchDisplayMenuView:
+            return DemoViewController<SearchDisplayMenuDemoView>()
         case .saveSearchPromptView:
             return DemoViewController<SaveSearchPromptViewDemoView>()
+        case .searchFilterTags:
+            return DemoViewController<SearchFilterTagsDemoView>()
         case .searchListEmptyView:
             return DemoViewController<SearchListEmptyDemoView>()
         case .stepSlider:
