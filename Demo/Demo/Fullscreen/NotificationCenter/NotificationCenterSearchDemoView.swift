@@ -35,6 +35,8 @@ extension NotificationCenterSearchDemoView: NotificationCenterSearchViewDelegate
     func notificationCenterSearchViewDidSelectShowEntireSearch(_ view: NotificationCenterSearchView) {
         print("Show search")
     }
+
+    func notificationCenterSearchView(_ view: NotificationCenterSearchView, didSelectFavoriteButton: UIButton, forNotificationAt indexPath: IndexPath) {}
 }
 
 extension NotificationCenterSearchDemoView: NotificationCenterSearchViewDataSource {

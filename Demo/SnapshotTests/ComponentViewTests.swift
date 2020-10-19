@@ -298,4 +298,8 @@ class ComponentViewTests: XCTestCase {
     func testObjectPageBlinkView() {
         snapshot(.objectPageBlinkView)
     }
+
+    func testSendInviteView() {
+        snapshot(.sendInviteView)
+    }
 }

@@ -221,6 +221,7 @@
 		4DDD45B0250FA7E1007DBDD5 /* SearchFilterTagsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD45AD250FA7E1007DBDD5 /* SearchFilterTagsData.swift */; };
 		4DDD45B1250FA7E1007DBDD5 /* SearchFilterTagsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD45AE250FA7E1007DBDD5 /* SearchFilterTagsDemoView.swift */; };
 		712C2294250B918B00E09653 /* MotorTransactionInvalidUserDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C2293250B918B00E09653 /* MotorTransactionInvalidUserDemoView.swift */; };
+		714B9357253736AD00801C99 /* SendInviteDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B9356253736AD00801C99 /* SendInviteDemoView.swift */; };
 		7197A19B24D8316B00D425EB /* WithoutInsuranceConfirmationDemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197A19A24D8316B00D425EB /* WithoutInsuranceConfirmationDemoViewModel.swift */; };
 		7197A19D24D8317D00D425EB /* WithInsuranceConfirmationDemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197A19C24D8317D00D425EB /* WithInsuranceConfirmationDemoViewModel.swift */; };
 		71FE6C49250F6A9E007814F2 /* MotorTransactionInviteCounterpartyDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE6C48250F6A9E007814F2 /* MotorTransactionInviteCounterpartyDemoView.swift */; };
@@ -479,6 +480,7 @@
 		4DDD45AD250FA7E1007DBDD5 /* SearchFilterTagsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFilterTagsData.swift; sourceTree = "<group>"; };
 		4DDD45AE250FA7E1007DBDD5 /* SearchFilterTagsDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFilterTagsDemoView.swift; sourceTree = "<group>"; };
 		712C2293250B918B00E09653 /* MotorTransactionInvalidUserDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInvalidUserDemoView.swift; sourceTree = "<group>"; };
+		714B9356253736AD00801C99 /* SendInviteDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendInviteDemoView.swift; sourceTree = "<group>"; };
 		7197A19A24D8316B00D425EB /* WithoutInsuranceConfirmationDemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithoutInsuranceConfirmationDemoViewModel.swift; sourceTree = "<group>"; };
 		7197A19C24D8317D00D425EB /* WithInsuranceConfirmationDemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithInsuranceConfirmationDemoViewModel.swift; sourceTree = "<group>"; };
 		71FE6C48250F6A9E007814F2 /* MotorTransactionInviteCounterpartyDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInviteCounterpartyDemoView.swift; sourceTree = "<group>"; };
@@ -991,6 +993,7 @@
 				46E77340242CEF09008A5E93 /* SelectionBoxes */,
 				46E772D6242CEF09008A5E93 /* SelectorTitleView */,
 				46E772E8242CEF09008A5E93 /* SelfDeclaration */,
+				714B935325372D8500801C99 /* SendInviteView */,
 				46E772FE242CEF09008A5E93 /* StepIndicator */,
 				46E77312242CEF09008A5E93 /* StepSlider */,
 				46E7733D242CEF09008A5E93 /* Switch */,
@@ -1840,6 +1843,14 @@
 			path = MotorTransactionInvalidUserView;
 			sourceTree = "<group>";
 		};
+		714B935325372D8500801C99 /* SendInviteView */ = {
+			isa = PBXGroup;
+			children = (
+				714B9356253736AD00801C99 /* SendInviteDemoView.swift */,
+			);
+			path = SendInviteView;
+			sourceTree = "<group>";
+		};
 		7197A19E24D8333D00D425EB /* SalesProcess */ = {
 			isa = PBXGroup;
 			children = (
@@ -2160,6 +2171,7 @@
 				46E773AF242CEF0A008A5E93 /* DemoViewController.swift in Sources */,
 				46E77467242CEF0A008A5E93 /* SavedSearchesListViewDemoViewHelpers.swift in Sources */,
 				46E77438242CEF0A008A5E93 /* BroadcastDemoView.swift in Sources */,
+				714B9357253736AD00801C99 /* SendInviteDemoView.swift in Sources */,
 				71FE6C49250F6A9E007814F2 /* MotorTransactionInviteCounterpartyDemoView.swift in Sources */,
 				7197A19D24D8317D00D425EB /* WithInsuranceConfirmationDemoViewModel.swift in Sources */,
 				46E77453242CEF0A008A5E93 /* CornerAnchoringViewController.swift in Sources */,
