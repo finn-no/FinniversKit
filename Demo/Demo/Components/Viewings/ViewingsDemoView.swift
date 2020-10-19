@@ -6,7 +6,7 @@ import FinniversKit
 
 class ViewingsDemoView: UIView {
 
-    private lazy var viewingsView = ViewingsView(withAutoLayout: true)
+    private lazy var viewingsView = ViewingsView()
 
     private let viewModel = ViewingsViewModel(
         title: "Visninger",
