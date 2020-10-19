@@ -17,15 +17,11 @@ public class ColumnListsView: UIView {
         }
     }
 
-    public var font: UIFont = .caption {
-        didSet {
-            reconfigureColumns()
-        }
-    }
-
     // MARK: - Private properties
 
     private var textItems: [String] = []
+
+    private var style: Label.Style = .caption
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
@@ -49,9 +45,10 @@ public class ColumnListsView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(with textItems: [String], numberOfColumns: Int) {
+    public func configure(with textItems: [String], numberOfColumns: Int, style: Label.Style) {
         self.textItems = textItems
         self.numberOfColumns = numberOfColumns
+        self.style = style
         reconfigureColumns()
     }
 
@@ -92,7 +89,7 @@ public class ColumnListsView: UIView {
     }
 
     private func createLabel(with text: String) -> Label {
-        let label = Label(style: .caption, withAutoLayout: true)
+        let label = Label(style: style, withAutoLayout: true)
         label.text = text
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
