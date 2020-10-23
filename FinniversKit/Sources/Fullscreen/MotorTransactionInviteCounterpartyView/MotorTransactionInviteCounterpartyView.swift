@@ -5,20 +5,20 @@
 public protocol MotorTransactionInviteCounterpartyViewDelegate: AnyObject {
     func motorTransactionInviteCounterpartyView(
         _ motorTransactionInviteCounterpartyView: MotorTransactionInviteCounterpartyView,
-        didSelect profile: MotorTransactionInviteCounterpartyProfileViewModel,
+        didSelect profile: BuyerPickerProfileModel,
         forRowAt indexPath: IndexPath
     )
 
     func motorTransactionInviteCounterpartyView(
         _ motorTransactionInviteCounterpartyView: MotorTransactionInviteCounterpartyView,
-        loadImageForModel model: MotorTransactionInviteCounterpartyProfileViewModel,
+        loadImageForModel model: BuyerPickerProfileModel,
         imageWidth: CGFloat,
         completion: @escaping ((UIImage?) -> Void)
     )
 
     func motorTransactionInviteCounterpartyView(
         _ motorTransactionInviteCounterpartyView: MotorTransactionInviteCounterpartyView,
-        cancelLoadingImageForModel model: MotorTransactionInviteCounterpartyProfileViewModel,
+        cancelLoadingImageForModel model: BuyerPickerProfileModel,
         imageWidth: CGFloat
     )
 
@@ -52,9 +52,9 @@ public class MotorTransactionInviteCounterpartyView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func configure(_ viewModel: MotorTransactionInviteCounterpartyViewModel) {
+    public func configure(_ viewModel: BuyerPickerViewModel, selectLaterButtonText: String) {
         pickABuyerView.model = viewModel
-        pickLaterButton.setTitle(viewModel.selectLaterButtonText, for: .normal)
+        pickLaterButton.setTitle(selectLaterButtonText, for: .normal)
     }
 
     private func setup() {
@@ -85,8 +85,7 @@ extension MotorTransactionInviteCounterpartyView: BuyerPickerViewDelegate {
         didSelect profile: BuyerPickerProfileModel,
         forRowAt indexPath: IndexPath
     ) {
-        let counterPartyProfile = MotorTransactionInviteCounterpartyProfileViewModel(name: profile.name, image: profile.image)
-        delegate?.motorTransactionInviteCounterpartyView(self, didSelect: counterPartyProfile, forRowAt: indexPath)
+        delegate?.motorTransactionInviteCounterpartyView(self, didSelect: profile, forRowAt: indexPath)
     }
 
     public func buyerPickerView(
@@ -95,10 +94,9 @@ extension MotorTransactionInviteCounterpartyView: BuyerPickerViewDelegate {
         imageWidth: CGFloat,
         completion: @escaping ((UIImage?) -> Void)
     ) {
-        let counterPartyProfile = MotorTransactionInviteCounterpartyProfileViewModel(name: model.name, image: model.image)
         delegate?.motorTransactionInviteCounterpartyView(
             self,
-            loadImageForModel: counterPartyProfile,
+            loadImageForModel: model,
             imageWidth: imageWidth,
             completion: completion
         )
@@ -109,10 +107,9 @@ extension MotorTransactionInviteCounterpartyView: BuyerPickerViewDelegate {
         cancelLoadingImageForModel model: BuyerPickerProfileModel,
         imageWidth: CGFloat
     ) {
-        let counterPartyProfile = MotorTransactionInviteCounterpartyProfileViewModel(name: model.name, image: model.image)
         delegate?.motorTransactionInviteCounterpartyView(
             self,
-            cancelLoadingImageForModel: counterPartyProfile,
+            cancelLoadingImageForModel: model,
             imageWidth: imageWidth
         )
     }

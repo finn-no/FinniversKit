@@ -148,7 +148,6 @@
 		714B9352253728EC00801C99 /* SendInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B9351253728EC00801C99 /* SendInviteView.swift */; };
 		714B9355253730D900801C99 /* SendInviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B9354253730D900801C99 /* SendInviteViewModel.swift */; };
 		71FE6C4C250F6AEF007814F2 /* MotorTransactionInviteCounterpartyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE6C4B250F6AEF007814F2 /* MotorTransactionInviteCounterpartyView.swift */; };
-		71FE6C4E250F6DEC007814F2 /* MotorTransactionInviteCounterpartyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE6C4D250F6DEC007814F2 /* MotorTransactionInviteCounterpartyViewModel.swift */; };
 		8908E83622BD0CA100ED671C /* MessageInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E83522BD0CA100ED671C /* MessageInputTextView.swift */; };
 		8908E84922C0C3C600ED671C /* MessageFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84722C0C2F900ED671C /* MessageFormViewController.swift */; };
 		8908E84D22C0D11400ED671C /* MessageFormToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84B22C0D10B00ED671C /* MessageFormToolbar.swift */; };
@@ -592,7 +591,6 @@
 		714B9351253728EC00801C99 /* SendInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendInviteView.swift; sourceTree = "<group>"; };
 		714B9354253730D900801C99 /* SendInviteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendInviteViewModel.swift; sourceTree = "<group>"; };
 		71FE6C4B250F6AEF007814F2 /* MotorTransactionInviteCounterpartyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInviteCounterpartyView.swift; sourceTree = "<group>"; };
-		71FE6C4D250F6DEC007814F2 /* MotorTransactionInviteCounterpartyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInviteCounterpartyViewModel.swift; sourceTree = "<group>"; };
 		8908E83522BD0CA100ED671C /* MessageInputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputTextView.swift; sourceTree = "<group>"; };
 		8908E84722C0C2F900ED671C /* MessageFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormViewController.swift; sourceTree = "<group>"; };
 		8908E84B22C0D10B00ED671C /* MessageFormToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormToolbar.swift; sourceTree = "<group>"; };
@@ -1807,7 +1805,6 @@
 			isa = PBXGroup;
 			children = (
 				71FE6C4B250F6AEF007814F2 /* MotorTransactionInviteCounterpartyView.swift */,
-				71FE6C4D250F6DEC007814F2 /* MotorTransactionInviteCounterpartyViewModel.swift */,
 			);
 			path = MotorTransactionInviteCounterpartyView;
 			sourceTree = "<group>";
@@ -3301,7 +3298,6 @@
 				44AFCE49215839F7005984DB /* LoadingIndicatorView.swift in Sources */,
 				6266C06E22081ED900FB8004 /* UserAdManagementStatisticsCell.swift in Sources */,
 				08F0D3F92226966E00968256 /* HappinessRating.swift in Sources */,
-				71FE6C4E250F6DEC007814F2 /* MotorTransactionInviteCounterpartyViewModel.swift in Sources */,
 				4447F6F81FDB2B110033DBC1 /* Identifiable.swift in Sources */,
 				CFCED8E122CF3A690049A3A0 /* AddFavoriteFolderViewCell.swift in Sources */,
 				CFF9727221C3BA1D00C85238 /* BannerTransparencyView.swift in Sources */,
