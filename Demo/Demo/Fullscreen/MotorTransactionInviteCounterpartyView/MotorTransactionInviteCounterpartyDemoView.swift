@@ -9,7 +9,7 @@ public class MotorTransactionInviteCounterpartyDemoView: UIView {
     private lazy var inviteCounterpartyView: MotorTransactionInviteCounterpartyView = {
         let view = MotorTransactionInviteCounterpartyView(withAutoLayout: true)
         view.delegate = self
-        view.configure(MotorTransactionInviteCounterpartyViewModel.defaultData)
+        view.configure(BuyerPickerDemoData(), selectLaterButtonText: "Inviter senere")
         return view
     }()
 
@@ -31,7 +31,7 @@ public class MotorTransactionInviteCounterpartyDemoView: UIView {
 extension MotorTransactionInviteCounterpartyDemoView: MotorTransactionInviteCounterpartyViewDelegate {
     public func motorTransactionInviteCounterpartyView(
         _ motorTransactionInviteCounterpartyView: MotorTransactionInviteCounterpartyView,
-        didSelect profile: MotorTransactionInviteCounterpartyProfileViewModel,
+        didSelect profile: BuyerPickerProfileModel,
         forRowAt indexPath: IndexPath
     ) {
         LoadingView.show(afterDelay: 0)
@@ -45,7 +45,7 @@ extension MotorTransactionInviteCounterpartyDemoView: MotorTransactionInviteCoun
 
     public func motorTransactionInviteCounterpartyView(
         _ motorTransactionInviteCounterpartyView: MotorTransactionInviteCounterpartyView,
-        loadImageForModel model: MotorTransactionInviteCounterpartyProfileViewModel,
+        loadImageForModel model: BuyerPickerProfileModel,
         imageWidth: CGFloat,
         completion: @escaping ((UIImage?) -> Void)
     ) {
@@ -68,59 +68,11 @@ extension MotorTransactionInviteCounterpartyDemoView: MotorTransactionInviteCoun
 
     public func motorTransactionInviteCounterpartyView(
         _ motorTransactionInviteCounterpartyView: MotorTransactionInviteCounterpartyView,
-        cancelLoadingImageForModel model: MotorTransactionInviteCounterpartyProfileViewModel,
+        cancelLoadingImageForModel model: BuyerPickerProfileModel,
         imageWidth: CGFloat
     ) {}
 
     public func motorTransactionInviteCounterpartyViewDidTapPickLaterButton(_ motorTransactionInviteCounterpartyView: MotorTransactionInviteCounterpartyView) {
         print("Did tap pick later button")
-    }
-}
-
-public extension MotorTransactionInviteCounterpartyViewModel {
-    static var defaultData: MotorTransactionInviteCounterpartyViewModel {
-        return MotorTransactionInviteCounterpartyViewModel(
-            title: "Velg kjøperen du vil invitere til kontrakten",
-            profiles: [
-                BuyerPickerDemoUser(
-                    name: "Harry",
-                    image: URL(string: "http://via.placeholder.com/44x44/111111/111111"),
-                    chevronText: "Se samtale"
-                ),
-                BuyerPickerDemoUser(
-                    name: "Voldemort",
-                    image: URL(string: "http://via.placeholder.com/44x44/111111/111111"),
-                    chevronText: "Se samtale"
-                ),
-                BuyerPickerDemoUser(
-                    name: "Draco",
-                    image: URL(string: "http://via.placeholder.com/44x44/111111/111111"),
-                    chevronText: "Se samtale"
-                ),
-                BuyerPickerDemoUser(
-                    name: "Ginny",
-                    image: URL(string: "http://via.placeholder.com/44x44/ff00ff/ff00ff")
-                ),
-                BuyerPickerDemoUser(
-                    name: "Hermine",
-                    image: URL(string: "http://via.placeholder.com/44x44/ff00ff/ff00ff")
-                ),
-                BuyerPickerDemoUser(
-                    name: "Herp",
-                    image: URL(string: "http://via.placeholder.com/44x44/ff00ff/ff00ff")
-                ),
-                BuyerPickerDemoUser(
-                    name: "Derp",
-                    image: URL(string: "http://via.placeholder.com/44x44/ff00ff/ff00ff")
-                ),
-                BuyerPickerDemoUser(
-                    name: "E-post eller mobilnummer",
-                    chevronText: "Se samtale"
-                )
-            ],
-            selectTitle: "Velg",
-            confirmationTitle: "Du kan ikke endre valget ditt senere",
-            selectLaterButtonText: "Inviter senere"
-        )
     }
 }
