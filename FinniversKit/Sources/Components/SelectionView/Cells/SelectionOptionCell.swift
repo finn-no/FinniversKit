@@ -4,7 +4,7 @@
 
 import UIKit
 
-final class SortSelectionOptionCell: UITableViewCell {
+final class SelectionOptionCell: UITableViewCell {
     static let iconSize: CGFloat = 24
 
     var isCheckmarkHidden = true {
@@ -78,7 +78,7 @@ final class SortSelectionOptionCell: UITableViewCell {
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-            iconImageView.widthAnchor.constraint(equalToConstant: SortSelectionOptionCell.iconSize),
+            iconImageView.widthAnchor.constraint(equalToConstant: SelectionOptionCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),

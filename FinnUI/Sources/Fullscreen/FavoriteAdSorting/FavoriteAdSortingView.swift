@@ -9,7 +9,7 @@ public protocol FavoriteAdSortingViewDelegate: AnyObject {
 }
 
 public final class FavoriteAdSortingView: UIView {
-    public static let totalHeight = SortSelectionView.rowHeight * CGFloat(FavoriteAdSortOption.allCases.count)
+    public static let totalHeight = SelectionView.rowHeight * CGFloat(FavoriteAdSortOption.allCases.count)
 
     // MARK: - Public properties
 
@@ -20,8 +20,8 @@ public final class FavoriteAdSortingView: UIView {
     private let sortingOptions: [FavoriteAdSortOptionModel]
     private var selectedSortOption: FavoriteAdSortOption
 
-    private lazy var sortingView: SortSelectionView = {
-        let view = SortSelectionView(sortingOptions: sortingOptions, selectedSortOptionIdentifier: selectedSortOption.rawValue)
+    private lazy var sortingView: SelectionView = {
+        let view = SelectionView(options: sortingOptions, selectedOptionIdentifier: selectedSortOption.rawValue)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         return view
@@ -48,10 +48,10 @@ public final class FavoriteAdSortingView: UIView {
     }
 }
 
-// MARK: - SortSelectionViewDelegate
+// MARK: - SelectionViewDelegate
 
-extension FavoriteAdSortingView: SortSelectionViewDelegate {
-    public func sortSelectionView(_ view: SortSelectionView, didSelectSortOptionWithIdentifier selectedIdentifier: String) {
+extension FavoriteAdSortingView: SelectionViewDelegate {
+    public func selectionView(_ view: SelectionView, didSelectOptionWithIdentifier selectedIdentifier: String) {
         guard let sortOption = FavoriteAdSortOption(rawValue: selectedIdentifier) else { return }
         delegate?.favoriteAdSortingView(self, didSelectSortOption: sortOption)
     }
@@ -85,7 +85,7 @@ private extension FavoriteAdSortOption {
     }
 }
 
-private struct FavoriteAdSortOptionModel: SortSelectionOptionModel {
+private struct FavoriteAdSortOptionModel: SelectionOptionModel {
     let title: String
     let favoriteSortOption: FavoriteAdSortOption
     var identifier: String { favoriteSortOption.rawValue }

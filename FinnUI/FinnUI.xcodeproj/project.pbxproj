@@ -15,12 +15,20 @@
 		46DE7D5D242B9BCB00DB1707 /* FinnUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46DE7D53242B9BCB00DB1707 /* FinnUI.framework */; };
 		46DE7D64242B9BCB00DB1707 /* FinnUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 46DE7D56242B9BCB00DB1707 /* FinnUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4D07057E24AF2A07008282D0 /* ChatAvailabilityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D07057D24AF2A07008282D0 /* ChatAvailabilityViewModel.swift */; };
+		4D1E5533252E02BF00A4ED5C /* SearchFilterTagCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E5532252E02BF00A4ED5C /* SearchFilterTagCellViewModel.swift */; };
 		4D7A6ED22498DBAF00AB2EBE /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A6ECF2498DBAF00AB2EBE /* SearchResultsView.swift */; };
 		4D7A6ED32498DBAF00AB2EBE /* SearchResultsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A6ED02498DBAF00AB2EBE /* SearchResultsListView.swift */; };
 		4D7A6ED42498DBAF00AB2EBE /* SearchResultsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A6ED12498DBAF00AB2EBE /* SearchResultsRowView.swift */; };
 		4DBC0398250A48DF004E8044 /* ExpandCollapseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBC0397250A48DF004E8044 /* ExpandCollapseButton.swift */; };
 		4DDC3E532509219B0023AEE7 /* ExtendedProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDC3E512509219B0023AEE7 /* ExtendedProfileViewModel.swift */; };
 		4DDC3E542509219B0023AEE7 /* ExtendedProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDC3E522509219B0023AEE7 /* ExtendedProfileView.swift */; };
+		4DDD45A6250FA7BD007DBDD5 /* SearchDisplayMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD45A1250FA7BD007DBDD5 /* SearchDisplayMenuView.swift */; };
+		4DDD45A7250FA7BD007DBDD5 /* SearchFilterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD45A3250FA7BD007DBDD5 /* SearchFilterButtonView.swift */; };
+		4DDD45A8250FA7BD007DBDD5 /* SearchFilterTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD45A4250FA7BD007DBDD5 /* SearchFilterTagCell.swift */; };
+		4DDD45A9250FA7BD007DBDD5 /* SearchFilterTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD45A5250FA7BD007DBDD5 /* SearchFilterTagsView.swift */; };
+		4DDD45B4250FAA68007DBDD5 /* SearchDisplayTypeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD45B3250FAA68007DBDD5 /* SearchDisplayTypeSelectionView.swift */; };
+		4DDD45B8250FAA8E007DBDD5 /* SearchDisplayTypeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD45B7250FAA8E007DBDD5 /* SearchDisplayTypeOption.swift */; };
+		4DDD45BA250FAB8B007DBDD5 /* SearchDisplayTypeSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD45B9250FAB8B007DBDD5 /* SearchDisplayTypeSelectionViewModel.swift */; };
 		7149DB6D24FE58C900268976 /* MyVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149DB6824FE58C800268976 /* MyVehicleCell.swift */; };
 		7149DB6E24FE58C900268976 /* MyVehicleCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149DB6924FE58C800268976 /* MyVehicleCellModel.swift */; };
 		7149DB7324FE592400268976 /* MyVehiclesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149DB7124FE592400268976 /* MyVehiclesListViewModel.swift */; };
@@ -114,12 +122,20 @@
 		46DE7D5C242B9BCB00DB1707 /* FinnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinnUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46DE7D63242B9BCB00DB1707 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D07057D24AF2A07008282D0 /* ChatAvailabilityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAvailabilityViewModel.swift; sourceTree = "<group>"; };
+		4D1E5532252E02BF00A4ED5C /* SearchFilterTagCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterTagCellViewModel.swift; sourceTree = "<group>"; };
 		4D7A6ECF2498DBAF00AB2EBE /* SearchResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		4D7A6ED02498DBAF00AB2EBE /* SearchResultsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsListView.swift; sourceTree = "<group>"; };
 		4D7A6ED12498DBAF00AB2EBE /* SearchResultsRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsRowView.swift; sourceTree = "<group>"; };
 		4DBC0397250A48DF004E8044 /* ExpandCollapseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandCollapseButton.swift; sourceTree = "<group>"; };
 		4DDC3E512509219B0023AEE7 /* ExtendedProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedProfileViewModel.swift; sourceTree = "<group>"; };
 		4DDC3E522509219B0023AEE7 /* ExtendedProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedProfileView.swift; sourceTree = "<group>"; };
+		4DDD45A1250FA7BD007DBDD5 /* SearchDisplayMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDisplayMenuView.swift; sourceTree = "<group>"; };
+		4DDD45A3250FA7BD007DBDD5 /* SearchFilterButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFilterButtonView.swift; sourceTree = "<group>"; };
+		4DDD45A4250FA7BD007DBDD5 /* SearchFilterTagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFilterTagCell.swift; sourceTree = "<group>"; };
+		4DDD45A5250FA7BD007DBDD5 /* SearchFilterTagsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFilterTagsView.swift; sourceTree = "<group>"; };
+		4DDD45B3250FAA68007DBDD5 /* SearchDisplayTypeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDisplayTypeSelectionView.swift; sourceTree = "<group>"; };
+		4DDD45B7250FAA8E007DBDD5 /* SearchDisplayTypeOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDisplayTypeOption.swift; sourceTree = "<group>"; };
+		4DDD45B9250FAB8B007DBDD5 /* SearchDisplayTypeSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDisplayTypeSelectionViewModel.swift; sourceTree = "<group>"; };
 		7149DB6824FE58C800268976 /* MyVehicleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVehicleCell.swift; sourceTree = "<group>"; };
 		7149DB6924FE58C800268976 /* MyVehicleCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVehicleCellModel.swift; sourceTree = "<group>"; };
 		7149DB7124FE592400268976 /* MyVehiclesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVehiclesListViewModel.swift; sourceTree = "<group>"; };
@@ -210,6 +226,7 @@
 		46AE6FAE242BAAAE007BB005 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
+				4DDD45B2250FAA25007DBDD5 /* SearchDisplayTypeSelection */,
 				DED0A07E24685F120016176A /* NotificationCenter */,
 				4D7A6ECE2498DB5B00AB2EBE /* SearchResults */,
 				DA0E186D2459C21A00C0616E /* Settings */,
@@ -304,6 +321,43 @@
 				4DDC3E522509219B0023AEE7 /* ExtendedProfileView.swift */,
 			);
 			path = ExtendedProfile;
+			sourceTree = "<group>";
+		};
+		4DDD45A0250FA7BD007DBDD5 /* SearchDisplayMenu */ = {
+			isa = PBXGroup;
+			children = (
+				4DDD45A1250FA7BD007DBDD5 /* SearchDisplayMenuView.swift */,
+			);
+			path = SearchDisplayMenu;
+			sourceTree = "<group>";
+		};
+		4DDD45A2250FA7BD007DBDD5 /* SearchFilterTags */ = {
+			isa = PBXGroup;
+			children = (
+				4DDD45A3250FA7BD007DBDD5 /* SearchFilterButtonView.swift */,
+				4DDD45A4250FA7BD007DBDD5 /* SearchFilterTagCell.swift */,
+				4DDD45A5250FA7BD007DBDD5 /* SearchFilterTagsView.swift */,
+				4D1E5532252E02BF00A4ED5C /* SearchFilterTagCellViewModel.swift */,
+			);
+			path = SearchFilterTags;
+			sourceTree = "<group>";
+		};
+		4DDD45B2250FAA25007DBDD5 /* SearchDisplayTypeSelection */ = {
+			isa = PBXGroup;
+			children = (
+				4DDD45B5250FAA7B007DBDD5 /* ViewModels */,
+				4DDD45B3250FAA68007DBDD5 /* SearchDisplayTypeSelectionView.swift */,
+			);
+			path = SearchDisplayTypeSelection;
+			sourceTree = "<group>";
+		};
+		4DDD45B5250FAA7B007DBDD5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4DDD45B7250FAA8E007DBDD5 /* SearchDisplayTypeOption.swift */,
+				4DDD45B9250FAB8B007DBDD5 /* SearchDisplayTypeSelectionViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		7149DB6524FE58C800268976 /* MyVehicles */ = {
@@ -417,6 +471,8 @@
 		8D680C65FDB2814B12D5A4EC /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				4DDD45A0250FA7BD007DBDD5 /* SearchDisplayMenu */,
+				4DDD45A2250FA7BD007DBDD5 /* SearchFilterTags */,
 				4DBC0396250A48BE004E8044 /* ExpandCollapseButton */,
 				4DDC3E502509219B0023AEE7 /* ExtendedProfile */,
 				8D6802E2438E1A527CABD2CE /* ChatAvailability */,
@@ -780,6 +836,7 @@
 				4DDC3E542509219B0023AEE7 /* ExtendedProfileView.swift in Sources */,
 				DED0A099246898940016176A /* NotificationCenterCellType.swift in Sources */,
 				DED0A2D0246933600016176A /* NotificationCenterHeaderView.swift in Sources */,
+				4DDD45A9250FA7BD007DBDD5 /* SearchFilterTagsView.swift in Sources */,
 				46AE6FB1242BAB97007BB005 /* SplashView.swift in Sources */,
 				DA0E186F2459C23600C0616E /* SettingsView.swift in Sources */,
 				4D7A6ED32498DBAF00AB2EBE /* SearchResultsListView.swift in Sources */,
@@ -787,6 +844,7 @@
 				DED0A3D724697F210016176A /* NotificationCenterSearchView.swift in Sources */,
 				9B2A6999249797AC00E671B5 /* BapAdViewModel.swift in Sources */,
 				9BA4520924E130CD00A6A6A6 /* SortView.swift in Sources */,
+				4DDD45A8250FA7BD007DBDD5 /* SearchFilterTagCell.swift in Sources */,
 				8D68078190A301C047AD77D7 /* ChatAvailabilityView.swift in Sources */,
 				DA67DC22246076F300EA00A4 /* Appearance.swift in Sources */,
 				9B2A6993249797AC00E671B5 /* DescriptionView.swift in Sources */,
@@ -796,6 +854,7 @@
 				9B2A6998249797AC00E671B5 /* PagerView.swift in Sources */,
 				9B2A6995249797AC00E671B5 /* ImageGalleryView.swift in Sources */,
 				4D7A6ED42498DBAF00AB2EBE /* SearchResultsRowView.swift in Sources */,
+				4DDD45A7250FA7BD007DBDD5 /* SearchFilterButtonView.swift in Sources */,
 				9B2A698D249797AC00E671B5 /* SingleImageProvider.swift in Sources */,
 				4DBC0398250A48DF004E8044 /* ExpandCollapseButton.swift in Sources */,
 				DA3415F5245AEB5C00DC1B1C /* BottomDividerModifier.swift in Sources */,
@@ -803,6 +862,7 @@
 				9B2A6994249797AC00E671B5 /* CollectionImageProvider.swift in Sources */,
 				9B2A6992249797AC00E671B5 /* DescriptionViewModel.swift in Sources */,
 				DA5A86A82462163700AC0DFE /* BasicListCellWrapper.swift in Sources */,
+				4D1E5533252E02BF00A4ED5C /* SearchFilterTagCellViewModel.swift in Sources */,
 				9BAACE0C251A183500886D4C /* NotificationCellPreviews.swift in Sources */,
 				9B2A699B249797AC00E671B5 /* BapAdView.swift in Sources */,
 				7149DB7324FE592400268976 /* MyVehiclesListViewModel.swift in Sources */,
@@ -813,6 +873,7 @@
 				DED0A2CE246933600016176A /* PersonalNotificationIconView.swift in Sources */,
 				9BCFBBC424DD63EA00D9F9C6 /* NotificationGroupOptionsView.swift in Sources */,
 				9B2A699A249797AC00E671B5 /* BapAdViewActions.swift in Sources */,
+				4DDD45B4250FAA68007DBDD5 /* SearchDisplayTypeSelectionView.swift in Sources */,
 				7149DB6E24FE58C900268976 /* MyVehicleCellModel.swift in Sources */,
 				9B2A2F5024DC48EF00D373A6 /* SavedSearchesHeaderView.swift in Sources */,
 				9B2A6991249797AC00E671B5 /* PhoneNumberView.swift in Sources */,
@@ -823,11 +884,13 @@
 				DED0A08B246865E70016176A /* NotificationsCellModels.swift in Sources */,
 				469894A02434DD6F00CC84E6 /* ImageAsset.swift in Sources */,
 				4D7A6ED22498DBAF00AB2EBE /* SearchResultsView.swift in Sources */,
+				4DDD45BA250FAB8B007DBDD5 /* SearchDisplayTypeSelectionViewModel.swift in Sources */,
 				8D6809470298B377E3ECB40D /* SaveSearchView.swift in Sources */,
 				4D07057E24AF2A07008282D0 /* ChatAvailabilityViewModel.swift in Sources */,
 				8D6809ACFE4FFDA0D520F6A5 /* SaveSearchViewModel.swift in Sources */,
 				8D680BA15E0D7DDD24F2B6F4 /* IconLinkView.swift in Sources */,
 				8D680F46D4A91C53631293F6 /* IconLinkViewModel.swift in Sources */,
+				4DDD45A6250FA7BD007DBDD5 /* SearchDisplayMenuView.swift in Sources */,
 				8D680A0E533C08A3917CB5A6 /* IconLinkListView.swift in Sources */,
 				8D6801A7AE3E6776BE760D22 /* FavoriteAdSortingView.swift in Sources */,
 				8D680C35321A5306E544B3E2 /* FavoriteAdSortingViewModel.swift in Sources */,
@@ -835,6 +898,7 @@
 				8D68028865D4FC05656F98EC /* SavedSearchSortingView.swift in Sources */,
 				8D680D01754F4737D67DCDF5 /* SavedSearchSortOption.swift in Sources */,
 				8D680ADE566448D48F333407 /* SavedSearchSortingViewModel.swift in Sources */,
+				4DDD45B8250FAA8E007DBDD5 /* SearchDisplayTypeOption.swift in Sources */,
 				8D6807E7BB1272FE1AA2925C /* ObjectPageBlinkView.swift in Sources */,
 				8D6802F0B68079856E4702CD /* ObjectPageBlinkViewModel.swift in Sources */,
 			);

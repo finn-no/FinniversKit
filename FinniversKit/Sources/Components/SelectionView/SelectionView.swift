@@ -4,21 +4,21 @@
 
 import UIKit
 
-public protocol SortSelectionViewDelegate: AnyObject {
-    func sortSelectionView(_ view: SortSelectionView, didSelectSortOptionWithIdentifier selectedIdentifier: String)
+public protocol SelectionViewDelegate: AnyObject {
+    func selectionView(_ view: SelectionView, didSelectOptionWithIdentifier selectedIdentifier: String)
 }
 
-public final class SortSelectionView: UIView {
+public final class SelectionView: UIView {
     public static let rowHeight: CGFloat = 48.0
 
     // MARK: - Public properties
 
-    public weak var delegate: SortSelectionViewDelegate?
+    public weak var delegate: SelectionViewDelegate?
 
     // MARK: - Private properties
 
-    private let options: [SortSelectionOptionModel]
-    private var selectedSortOptionIdentifier: String
+    private let options: [SelectionOptionModel]
+    private var selectedOptionIdentifier: String
 
     private lazy var tableView: UITableView = {
         let tableView = ContentSizedTableView(frame: .zero, style: .plain)
@@ -26,24 +26,24 @@ public final class SortSelectionView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .bgPrimary
-        tableView.rowHeight = SortSelectionView.rowHeight
-        tableView.estimatedRowHeight = SortSelectionView.rowHeight
+        tableView.rowHeight = SelectionView.rowHeight
+        tableView.estimatedRowHeight = SelectionView.rowHeight
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.tableFooterView = UIView()
         tableView.isScrollEnabled = false
         tableView.separatorColor = .clear
-        tableView.register(SortSelectionOptionCell.self)
+        tableView.register(SelectionOptionCell.self)
         return tableView
     }()
 
     // MARK: - Init
 
     public init(
-        sortingOptions options: [SortSelectionOptionModel],
-        selectedSortOptionIdentifier: String
+        options: [SelectionOptionModel],
+        selectedOptionIdentifier: String
     ) {
         self.options = options
-        self.selectedSortOptionIdentifier = selectedSortOptionIdentifier
+        self.selectedOptionIdentifier = selectedOptionIdentifier
         super.init(frame: .zero)
         setup()
     }
@@ -62,18 +62,18 @@ public final class SortSelectionView: UIView {
 
 // MARK: - UITableViewDataSource
 
-extension SortSelectionView: UITableViewDataSource {
+extension SelectionView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         options.count
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let option = options[indexPath.row]
-        let cell = tableView.dequeue(SortSelectionOptionCell.self, for: indexPath)
+        let cell = tableView.dequeue(SelectionOptionCell.self, for: indexPath)
 
         cell.configure(withTitle: option.title, icon: option.icon)
 
-        cell.isCheckmarkHidden = option.identifier != selectedSortOptionIdentifier
+        cell.isCheckmarkHidden = option.identifier != selectedOptionIdentifier
 
         return cell
     }
@@ -81,12 +81,12 @@ extension SortSelectionView: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 
-extension SortSelectionView: UITableViewDelegate {
+extension SelectionView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedSortOptionIdentifier = options[indexPath.row].identifier
+        selectedOptionIdentifier = options[indexPath.row].identifier
 
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
-        delegate?.sortSelectionView(self, didSelectSortOptionWithIdentifier: selectedSortOptionIdentifier)
+        delegate?.selectionView(self, didSelectOptionWithIdentifier: selectedOptionIdentifier)
     }
 }

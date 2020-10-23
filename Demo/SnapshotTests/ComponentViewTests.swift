@@ -279,6 +279,14 @@ class ComponentViewTests: XCTestCase {
         snapshot(.motorTransactionEntryObjectPageView)
     }
 
+    func testSearchFilterTags() {
+        snapshot(.searchFilterTags)
+    }
+
+    func testSearchDisplayMenuView() {
+        snapshot(.searchDisplayMenuView)
+    }
+
     func testExtendedProfileView() {
         snapshot(.extendedProfileView)
     }
