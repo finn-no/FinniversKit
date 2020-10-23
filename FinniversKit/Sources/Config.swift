@@ -2,7 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import Foundation
+@_exported import Foundation
+@_exported import UIKit
 
 public enum UserInterfaceStyleSupport {
     @available(iOS 13.0, *)
