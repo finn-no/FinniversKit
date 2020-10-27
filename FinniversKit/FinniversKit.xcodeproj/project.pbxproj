@@ -144,6 +144,7 @@
 		62AAB23A23278087007766E6 /* RadioButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AAB23923278087007766E6 /* RadioButtonTableViewCell.swift */; };
 		68AE01E84A4CA1BC83B340EE /* FavoriteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AE0BC04985EF5EE34564D3 /* FavoriteButtonView.swift */; };
 		712B0812254ADB1F00791C6B /* MessageUserRequiredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712B0811254ADB1F00791C6B /* MessageUserRequiredView.swift */; };
+		712B0846254AEBC100791C6B /* BuyerPickerFallbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712B0845254AEBC100791C6B /* BuyerPickerFallbackCell.swift */; };
 		712C228F250B74E400E09653 /* MotorTransactionInvalidUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C228E250B74E400E09653 /* MotorTransactionInvalidUserView.swift */; };
 		712C2291250B7A9B00E09653 /* MotorTransactionInvalidUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C2290250B7A9B00E09653 /* MotorTransactionInvalidUserViewModel.swift */; };
 		714B9352253728EC00801C99 /* SendInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B9351253728EC00801C99 /* SendInviteView.swift */; };
@@ -589,6 +590,7 @@
 		62AAB23923278087007766E6 /* RadioButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonTableViewCell.swift; sourceTree = "<group>"; };
 		68AE0BC04985EF5EE34564D3 /* FavoriteButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteButtonView.swift; sourceTree = "<group>"; };
 		712B0811254ADB1F00791C6B /* MessageUserRequiredView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageUserRequiredView.swift; sourceTree = "<group>"; };
+		712B0845254AEBC100791C6B /* BuyerPickerFallbackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyerPickerFallbackCell.swift; sourceTree = "<group>"; };
 		712C228E250B74E400E09653 /* MotorTransactionInvalidUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInvalidUserView.swift; sourceTree = "<group>"; };
 		712C2290250B7A9B00E09653 /* MotorTransactionInvalidUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInvalidUserViewModel.swift; sourceTree = "<group>"; };
 		714B9351253728EC00801C99 /* SendInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendInviteView.swift; sourceTree = "<group>"; };
@@ -1052,6 +1054,7 @@
 			isa = PBXGroup;
 			children = (
 				431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */,
+				712B0845254AEBC100791C6B /* BuyerPickerFallbackCell.swift */,
 				432CE09C2112DBC500F01EC5 /* BuyerPickerTextHeader.swift */,
 			);
 			path = Cell;
@@ -3394,6 +3397,7 @@
 				4447F6EC1FDB2B110033DBC1 /* TextField+InputType.swift in Sources */,
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
 				F2E48DEE240817BD009DEFBA /* MotorTransactionHeaderViewModel.swift in Sources */,
+				712B0846254AEBC100791C6B /* BuyerPickerFallbackCell.swift in Sources */,
 				AA7A854E22255AB200AF5F42 /* DialogueView.swift in Sources */,
 				CF5CA71422F87729007C4124 /* NeighborhoodProfileViewModel.swift in Sources */,
 				082D80D121C1411700831BDE /* StarView.swift in Sources */,

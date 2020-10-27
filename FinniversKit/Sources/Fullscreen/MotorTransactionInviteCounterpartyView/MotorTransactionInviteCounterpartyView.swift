@@ -9,6 +9,10 @@ public protocol MotorTransactionInviteCounterpartyViewDelegate: AnyObject {
         forRowAt indexPath: IndexPath
     )
 
+    func motorTransactionInviteCounterpartyViewDidSelectFallbackCell(
+        _ motorTransactionInviteCounterpartyView: MotorTransactionInviteCounterpartyView
+    )
+
     func motorTransactionInviteCounterpartyView(
         _ motorTransactionInviteCounterpartyView: MotorTransactionInviteCounterpartyView,
         loadImageForModel model: BuyerPickerProfileModel,
@@ -86,6 +90,12 @@ extension MotorTransactionInviteCounterpartyView: BuyerPickerViewDelegate {
         forRowAt indexPath: IndexPath
     ) {
         delegate?.motorTransactionInviteCounterpartyView(self, didSelect: profile, forRowAt: indexPath)
+    }
+
+    public func buyerPickerViewDidSelectFallbackCell(
+        _ buyerPickerView: BuyerPickerView
+    ) {
+        delegate?.motorTransactionInviteCounterpartyViewDidSelectFallbackCell(self)
     }
 
     public func buyerPickerView(

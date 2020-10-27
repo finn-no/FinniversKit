@@ -43,6 +43,10 @@ extension MotorTransactionInviteCounterpartyDemoView: MotorTransactionInviteCoun
         })
     }
 
+    public func motorTransactionInviteCounterpartyViewDidSelectFallbackCell(
+        _ motorTransactionInviteCounterpartyView: MotorTransactionInviteCounterpartyView
+    ) {}
+
     public func motorTransactionInviteCounterpartyView(
         _ motorTransactionInviteCounterpartyView: MotorTransactionInviteCounterpartyView,
         loadImageForModel model: BuyerPickerProfileModel,

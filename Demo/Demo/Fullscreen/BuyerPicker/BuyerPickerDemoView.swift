@@ -30,6 +30,8 @@ public class BuyerPickerDemoView: UIView {
 }
 
 extension BuyerPickerDemoView: BuyerPickerViewDelegate {
+    public func buyerPickerViewDidSelectFallbackCell(_ buyerPickerView: BuyerPickerView) {}
+
     public func buyerPickerView(_ buyerPickerView: BuyerPickerView, didSelect profile: BuyerPickerProfileModel, forRowAt indexPath: IndexPath) {
         LoadingView.show(afterDelay: 0)
         print("Did select: \(profile.name) for review")
