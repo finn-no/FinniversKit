@@ -24,7 +24,7 @@ public struct BuyerPickerDemoData: BuyerPickerViewModel {
         BuyerPickerDemoUser(name: "Per Johansen", image: URL(string: "http://via.placeholder.com/44x44/ff00ff/ff00ff")),
         BuyerPickerDemoUser(name: "Test testesen", image: URL(string: "http://via.placeholder.com/44x44/ffff00/ffff00")),
     ]
-    public var fallbackCell: BuyerPickerProfileModel = BuyerPickerDemoUser(name: "Ingen av disse?")
+    public let fallbackCell: BuyerPickerProfileModel = BuyerPickerDemoUser(name: "Ingen av disse?")
     public let selectTitle = "Velg"
     public let confirmationTitle = "Du kan ikke endre valget ditt senere"
 

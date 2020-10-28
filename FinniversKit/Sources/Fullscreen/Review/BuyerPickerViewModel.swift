@@ -7,7 +7,7 @@ import Foundation
 public protocol BuyerPickerViewModel {
     var title: String { get }
     var profiles: [BuyerPickerProfileModel] { get }
-    var fallbackCell: BuyerPickerProfileModel { get set }
+    var fallbackCell: BuyerPickerProfileModel { get }
     var selectTitle: String { get }
     var confirmationTitle: String { get }
 }

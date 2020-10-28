@@ -7,26 +7,26 @@ import UIKit
 class BuyerPickerFallbackCell: UITableViewCell {
     static let cellhHeight: CGFloat = 60
 
-    lazy var titleLabel: Label = {
+    private lazy var titleLabel: Label = {
         let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
         return label
     }()
 
-    lazy var hairlineView: UIView = {
+    private lazy var hairlineView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .tableViewSeparator
         return view
     }()
 
-    lazy var chevronLabel = Label(style: .detail, withAutoLayout: true)
+    private lazy var chevronLabel = Label(style: .detail, withAutoLayout: true)
 
     var model: BuyerPickerProfileModel? {
         didSet {
-            titleLabel.text = model?.name ?? ""
-            chevronLabel.text = model?.chevronText ?? ""
+            titleLabel.text = model?.name
+            chevronLabel.text = model?.chevronText
         }
     }
 
@@ -41,7 +41,7 @@ class BuyerPickerFallbackCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        titleLabel.text = ""
+        titleLabel.text = nil
     }
 
     private func setup() {
