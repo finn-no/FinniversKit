@@ -1,6 +1,11 @@
 import Foundation
 import FinniversKit
 
+public protocol ProjectUnitsViewDelegate: AnyObject {
+    func projectUnitsView(_ projectUnitsView: ProjectUnitsView, didTapFavoriteForIndex index: Int)
+    func projectUnitsView(_ projectUnitsView: ProjectUnitsView, didSelectUnitAtIndex index: Int)
+}
+
 public class ProjectUnitsView: UIView {
 
     private lazy var collectionView: UICollectionView = {
@@ -47,6 +52,7 @@ public class ProjectUnitsView: UIView {
     private let titleStyle: Label.Style
     private let projectUnits: [ProjectUnitViewModel]
 
+    public weak var delegate: ProjectUnitsViewDelegate?
     public weak var remoteImageViewDataSource: RemoteImageViewDataSource?
 
     public init(title: String?, projectUnits: [ProjectUnitViewModel], titleStyle: Label.Style = .title3Strong) {
@@ -127,10 +133,17 @@ extension ProjectUnitsView: UICollectionViewDelegate {
             pageControl.currentPage = indexPath.row
         }
     }
+
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.projectUnitsView(self, didSelectUnitAtIndex: indexPath.row)
+    }
 }
 
 extension ProjectUnitsView: ProjectUnitCellDelegate {
-    
+    func projectUnitCellDidTapFavoriteButton(_ projectUnitCell: ProjectUnitCell) {
+        guard let indexPath = collectionView.indexPath(for: projectUnitCell) else { return }
+        delegate?.projectUnitsView(self, didTapFavoriteForIndex: indexPath.row)
+    }
 }
 
 // MARK: - UICollectionViewFlowLayout

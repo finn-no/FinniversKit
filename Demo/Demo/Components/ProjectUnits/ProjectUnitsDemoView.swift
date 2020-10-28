@@ -10,6 +10,7 @@ final class ProjectUnitsDemoView: UIView {
         let view = ProjectUnitsView(title: "Utvalgte boliger i prosjektet", projectUnits: projectUnits)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.remoteImageViewDataSource = self
+        view.delegate = self
         return view
     }()
 
@@ -42,6 +43,16 @@ final class ProjectUnitsDemoView: UIView {
         ])
 
         view.reloadData()
+    }
+}
+
+extension ProjectUnitsDemoView: ProjectUnitsViewDelegate {
+    func projectUnitsView(_ projectUnitsView: ProjectUnitsView, didTapFavoriteForIndex index: Int) {
+        print("Did tap favorite for index \(index)")
+    }
+
+    func projectUnitsView(_ projectUnitsView: ProjectUnitsView, didSelectUnitAtIndex index: Int) {
+        print("Did select unit at index \(index)")
     }
 }
 

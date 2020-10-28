@@ -2,7 +2,7 @@ import Foundation
 import FinniversKit
 
 protocol ProjectUnitCellDelegate: AnyObject {
-    
+    func projectUnitCellDidTapFavoriteButton(_ projectUnitCell: ProjectUnitCell)
 }
 
 class ProjectUnitCell: UICollectionViewCell {
@@ -14,7 +14,7 @@ class ProjectUnitCell: UICollectionViewCell {
         stackView.distribution = .equalSpacing
         return stackView
     }()
-    
+
     private lazy var remoteImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFill
@@ -122,6 +122,6 @@ class ProjectUnitCell: UICollectionViewCell {
     }
 
     @objc func handleFavoriteButtonTap() {
-        
+        delegate?.projectUnitCellDidTapFavoriteButton(self)
     }
 }
