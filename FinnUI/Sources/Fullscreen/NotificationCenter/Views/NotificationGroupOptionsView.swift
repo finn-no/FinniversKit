@@ -19,11 +19,11 @@ public enum NotificationCenterSearchGroupOption: String, CaseIterable {
 }
 
 public struct NotificationGroupOptionsViewModel {
-    let bySearchTitle: String
-    let byDayTitle: String
-    let flatTitle: String
+    let bySearchTitle: String?
+    let byDayTitle: String?
+    let flatTitle: String?
 
-    public init(bySearchTitle: String, byDayTitle: String, flatTitle: String) {
+    public init(bySearchTitle: String?, byDayTitle: String?, flatTitle: String?) {
         self.bySearchTitle = bySearchTitle
         self.byDayTitle = byDayTitle
         self.flatTitle = flatTitle
@@ -53,12 +53,14 @@ public class NotificationGroupOptionsView: UIView {
     }
 
     private lazy var optionsView: SelectionView = {
+        var sortOptions: [SortOption] = [
+            viewModel.byDayTitle.map { SortOption(groupOption: .byDay, title: $0) },
+            viewModel.bySearchTitle.map { SortOption(groupOption: .bySearch, title: $0) },
+            viewModel.flatTitle.map { SortOption(groupOption: .flat, title: $0) },
+        ].compactMap({ $0 })
+
         let view = SelectionView(
-            options: [
-                SortOption(groupOption: .byDay, title: viewModel.byDayTitle),
-                SortOption(groupOption: .bySearch, title: viewModel.bySearchTitle),
-                SortOption(groupOption: .flat, title: viewModel.flatTitle),
-            ],
+            options: sortOptions,
             selectedOptionIdentifier: selectedOption.rawValue
         )
         view.translatesAutoresizingMaskIntoConstraints = false
