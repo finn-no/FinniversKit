@@ -937,6 +937,7 @@
 			children = (
 				4DDD45AA250FA7E1007DBDD5 /* SearchDisplayMenu */,
 				4DDD45AC250FA7E1007DBDD5 /* SearchFilterTags */,
+				4DD84280254828840058D6BB /* ProjectUnits */,
 				4D8DE0FA24F8F8F600EA1B0C /* ExtendedProfile */,
 				46E772FA242CEF09008A5E93 /* AddressCardView */,
 				46E77339242CEF09008A5E93 /* BottomSheet */,
