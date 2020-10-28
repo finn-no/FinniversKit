@@ -38,7 +38,7 @@ final class ProjectUnitsDemoView: UIView {
             view.leadingAnchor.constraint(equalTo: leadingAnchor),
             view.trailingAnchor.constraint(equalTo: trailingAnchor),
             view.centerYAnchor.constraint(equalTo: centerYAnchor),
-            view.heightAnchor.constraint(equalToConstant: 350)
+            view.heightAnchor.constraint(equalToConstant: 360)
         ])
 
         view.reloadData()

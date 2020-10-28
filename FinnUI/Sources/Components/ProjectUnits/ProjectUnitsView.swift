@@ -10,7 +10,7 @@ public class ProjectUnitsView: UIView {
         collectionView.contentInset = UIEdgeInsets(
             top: .spacingS,
             left: .spacingM,
-            bottom: .spacingS,
+            bottom: 0,
             right: .spacingM
         )
         collectionView.showsHorizontalScrollIndicator = false
@@ -31,6 +31,14 @@ public class ProjectUnitsView: UIView {
             height: 270
         )
         return layout
+    }()
+
+    private lazy var pageControl: UIPageControl = {
+        let pageControl = UIPageControl(withAutoLayout: true)
+        pageControl.pageIndicatorTintColor = UIColor.pagingColor.withAlphaComponent(0.2)
+        pageControl.currentPageIndicatorTintColor = .pagingColor
+        pageControl.addTarget(self, action: #selector(handlePageControlValueChange), for: .valueChanged)
+        return pageControl
     }()
 
     private lazy var titleLabel: Label = Label(style: titleStyle, withAutoLayout: true)
@@ -54,28 +62,40 @@ public class ProjectUnitsView: UIView {
     }
 
     private func setup() {
-        addSubview(collectionView)
-
-        guard let title = title else {
-            collectionView.fillInSuperview()
-            return
-        }
         titleLabel.text = title
+
+        addSubview(collectionView)
         addSubview(titleLabel)
+        addSubview(pageControl)
 
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+
+            pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
+            pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
+            pageControl.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS)
         ])
     }
 
     public func reloadData() {
         collectionView.reloadData()
+        resetPageControl()
+    }
+
+    private func resetPageControl() {
+        pageControl.numberOfPages = projectUnits.count
+        pageControl.currentPage = 0
+    }
+
+    @objc func handlePageControlValueChange() {
+        let indexPath = IndexPath(item: pageControl.currentPage, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 }
 
@@ -95,7 +115,18 @@ extension ProjectUnitsView: UICollectionViewDataSource {
 }
 
 extension ProjectUnitsView: UICollectionViewDelegate {
-    
+    public func scrollViewWillEndDragging(
+        _ scrollView: UIScrollView,
+        withVelocity velocity: CGPoint,
+        targetContentOffset: UnsafeMutablePointer<CGPoint>
+    ) {
+        let targetOffsetX = targetContentOffset.pointee.x
+        let center = CGPoint(x: targetOffsetX + scrollView.frame.midX, y: scrollView.frame.midY)
+
+        if let indexPath = collectionView.indexPathForItem(at: center) {
+            pageControl.currentPage = indexPath.row
+        }
+    }
 }
 
 extension ProjectUnitsView: ProjectUnitCellDelegate {
@@ -130,5 +161,11 @@ private final class PagingCollectionViewLayout: UICollectionViewFlowLayout {
         targetContentOffset.x -= halfWidth
 
         return targetContentOffset
+    }
+}
+
+private extension UIColor {
+    static var pagingColor: UIColor {
+        .dynamicColorIfAvailable(defaultColor: .stone, darkModeColor: UIColor(hex: "#828699"))
     }
 }
