@@ -121,6 +121,7 @@ public enum FinniversImageAsset: String {
     case mapDrawarea
     case mapMyposition
     case mc
+    case messageUserRequired
     case messages
     case minus
     case miscCross
@@ -296,6 +297,7 @@ public enum FinniversImageAsset: String {
             .mapDrawarea,
             .mapMyposition,
             .mc,
+            .messageUserRequired,
             .messages,
             .minus,
             .miscCross,
