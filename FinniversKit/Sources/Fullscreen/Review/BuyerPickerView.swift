@@ -8,6 +8,7 @@ public protocol BuyerPickerViewDelegate: AnyObject {
     func buyerPickerView(_ buyerPickerView: BuyerPickerView, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func buyerPickerView(_ buyerPickerView: BuyerPickerView, cancelLoadingImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat)
     func buyerPickerView(_ buyerPickerView: BuyerPickerView, didSelect profile: BuyerPickerProfileModel, forRowAt indexPath: IndexPath)
+    func buyerPickerViewDidSelectFallbackCell(_ buyerPickerView: BuyerPickerView)
     func buyerPickerViewCenterTitleInHeaderView(_ buyerPickerView: BuyerPickerView, viewForHeaderInSection section: Int) -> Bool
 }
 
@@ -23,6 +24,11 @@ public class BuyerPickerView: UIView {
     private static let defaultRowHeight: CGFloat = 40
     private static let defaultHeaderHeight: CGFloat = 60
 
+    private lazy var fallbackCellIndex: Int = {
+        guard let model = model else { return 1 }
+        return model.profiles.count
+    }()
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .bgPrimary
@@ -30,6 +36,7 @@ public class BuyerPickerView: UIView {
         tableView.separatorStyle = .none
         tableView.register(BuyerPickerTextHeader.self)
         tableView.register(BuyerPickerProfileCell.self)
+        tableView.register(BuyerPickerFallbackCell.self)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension
@@ -77,19 +84,25 @@ extension BuyerPickerView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model?.profiles.count ?? 0
+        guard let model = model else { return 1 }
+        let numberOfRowsIncludingFallbackCell = model.profiles.count + 1
+        return numberOfRowsIncludingFallbackCell
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let model = model?.profiles[indexPath.row] else {
-            return UITableViewCell()
+        switch indexPath.row {
+        case fallbackCellIndex:
+            let cell = tableView.dequeue(BuyerPickerFallbackCell.self, for: indexPath)
+            cell.model = model?.fallbackCell
+            return cell
+        default:
+            guard let viewModel = model?.profiles[safe: indexPath.row] else { return UITableViewCell() }
+            let cell = tableView.dequeue(BuyerPickerProfileCell.self, for: indexPath)
+            cell.model = viewModel
+            cell.delegate = self
+            cell.loadImage()
+            return cell
         }
-
-        let cell = tableView.dequeue(BuyerPickerProfileCell.self, for: indexPath)
-        cell.model = model
-        cell.delegate = self
-        cell.loadImage()
-        return cell
     }
 }
 
@@ -106,8 +119,13 @@ extension BuyerPickerView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let selectedUser = model?.profiles[indexPath.row] else { return }
-        delegate?.buyerPickerView(self, didSelect: selectedUser, forRowAt: indexPath)
+        switch indexPath.row {
+        case fallbackCellIndex:
+            delegate?.buyerPickerViewDidSelectFallbackCell(self)
+        default:
+            guard let selectedUser = model?.profiles[safe: indexPath.row] else { return }
+            delegate?.buyerPickerView(self, didSelect: selectedUser, forRowAt: indexPath)
+        }
     }
 }
 
