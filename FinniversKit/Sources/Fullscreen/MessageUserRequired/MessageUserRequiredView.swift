@@ -47,8 +47,8 @@ public class MessageUserRequiredView: UIView {
             imageView.widthAnchor.constraint(equalToConstant: 64),
 
             messageView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .spacingM),
-            messageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            messageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            messageView.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor, constant: .spacingS),
+            messageView.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor, constant: -.spacingS),
             messageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: .spacingS)
         ])
     }
