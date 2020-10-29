@@ -176,4 +176,8 @@ class FullscreenViewTests: XCTestCase {
     func testSearchDisplayTypeSelectionView() {
         snapshot(.searchDisplayTypeSelectionView)
     }
+
+    func testMessageUserRequiredSheet() {
+        snapshot(.messageUserRequiredSheet)
+    }
 }
