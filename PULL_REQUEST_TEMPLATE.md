@@ -6,7 +6,11 @@ _A short description on what's the reasoning was behind these changes._
 
 _A summary of what has changed and if there's anything in special that you would like feedback on._
 
-# Show me
+# Version Change
+
+_Is this a minor? patch? breaking change?. Is it for FinnUI or FinniversKit?_
+
+# UI Changes
 
 _If the change concerns UI, a transition or an animation, providing an image, a gif, or a video is encouraged to help us reviewing your PR._
 
