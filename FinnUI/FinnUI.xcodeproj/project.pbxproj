@@ -47,7 +47,6 @@
 		8D680C35321A5306E544B3E2 /* FavoriteAdSortingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680C0580494BA6632A5F26 /* FavoriteAdSortingViewModel.swift */; };
 		8D680D01754F4737D67DCDF5 /* SavedSearchSortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680540483EA36A66BA71A3 /* SavedSearchSortOption.swift */; };
 		8D680F46D4A91C53631293F6 /* IconLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D68074598751CD26E9D7306 /* IconLinkViewModel.swift */; };
-		9B2A2F5024DC48EF00D373A6 /* SavedSearchesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A2F4F24DC48EF00D373A6 /* SavedSearchesHeaderView.swift */; };
 		9B2A698D249797AC00E671B5 /* SingleImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A6979249797AC00E671B5 /* SingleImageProvider.swift */; };
 		9B2A698E249797AC00E671B5 /* AuthorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A697A249797AC00E671B5 /* AuthorViewModel.swift */; };
 		9B2A698F249797AC00E671B5 /* AuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A697B249797AC00E671B5 /* AuthorView.swift */; };
@@ -64,27 +63,11 @@
 		9B2A699A249797AC00E671B5 /* BapAdViewActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A698B249797AC00E671B5 /* BapAdViewActions.swift */; };
 		9B2A699B249797AC00E671B5 /* BapAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A698C249797AC00E671B5 /* BapAdView.swift */; };
 		9B58C0F6246550440029FAF5 /* ButtonStyle+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B58C0F4246550010029FAF5 /* ButtonStyle+Previews.swift */; };
-		9B62ED23252DB3F000B1632D /* NotificationCenterHeaderViewPreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B62ED22252DB3F000B1632D /* NotificationCenterHeaderViewPreviews.swift */; };
-		9BA4520924E130CD00A6A6A6 /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA4520824E130CD00A6A6A6 /* SortView.swift */; };
-		9BAACE0C251A183500886D4C /* NotificationCellPreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAACE0B251A183500886D4C /* NotificationCellPreviews.swift */; };
-		9BCFBBC424DD63EA00D9F9C6 /* NotificationGroupOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCFBBC324DD63EA00D9F9C6 /* NotificationGroupOptionsView.swift */; };
 		DA0E186F2459C23600C0616E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E186E2459C23600C0616E /* SettingsView.swift */; };
-		DA1755292472ACD0005EB339 /* EmptyNotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1755282472ACD0005EB339 /* EmptyNotificationsCell.swift */; };
-		DA17552B2472AD1F005EB339 /* EmptyNotificationsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17552A2472AD1F005EB339 /* EmptyNotificationsCellModel.swift */; };
 		DA3415F5245AEB5C00DC1B1C /* BottomDividerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3415F4245AEB5C00DC1B1C /* BottomDividerModifier.swift */; };
 		DA3415F9245AF80200DC1B1C /* BasicListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3415F8245AF80200DC1B1C /* BasicListCell.swift */; };
 		DA5A86A82462163700AC0DFE /* BasicListCellWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A86A72462163700AC0DFE /* BasicListCellWrapper.swift */; };
 		DA67DC22246076F300EA00A4 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA67DC21246076F300EA00A4 /* Appearance.swift */; };
-		DED0A08B246865E70016176A /* NotificationsCellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A08A246865E70016176A /* NotificationsCellModels.swift */; };
-		DED0A099246898940016176A /* NotificationCenterCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A098246898940016176A /* NotificationCenterCellType.swift */; };
-		DED0A2CE246933600016176A /* PersonalNotificationIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A2C9246933600016176A /* PersonalNotificationIconView.swift */; };
-		DED0A2CF246933600016176A /* SavedSearchHeaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A2CA246933600016176A /* SavedSearchHeaderButton.swift */; };
-		DED0A2D0246933600016176A /* NotificationCenterHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A2CB246933600016176A /* NotificationCenterHeaderView.swift */; };
-		DED0A2D1246933600016176A /* NotificationCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A2CC246933600016176A /* NotificationCenterView.swift */; };
-		DED0A2D2246933600016176A /* NotificationCenterFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A2CD246933600016176A /* NotificationCenterFooterView.swift */; };
-		DED0A2D62469337B0016176A /* FeedbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A2D42469337B0016176A /* FeedbackCell.swift */; };
-		DED0A2D72469337B0016176A /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A2D52469337B0016176A /* NotificationCell.swift */; };
-		DED0A3D724697F210016176A /* NotificationCenterSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A3D624697F210016176A /* NotificationCenterSearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,7 +137,6 @@
 		8D680D865909668FD6B2D8B6 /* SavedSearchSortingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchSortingViewModel.swift; sourceTree = "<group>"; };
 		8D680EE8C572248BEA776A69 /* SaveSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveSearchViewModel.swift; sourceTree = "<group>"; };
 		8D680FCB0DE4014513873C83 /* ObjectPageBlinkViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPageBlinkViewModel.swift; sourceTree = "<group>"; };
-		9B2A2F4F24DC48EF00D373A6 /* SavedSearchesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedSearchesHeaderView.swift; sourceTree = "<group>"; };
 		9B2A6979249797AC00E671B5 /* SingleImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleImageProvider.swift; sourceTree = "<group>"; };
 		9B2A697A249797AC00E671B5 /* AuthorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorViewModel.swift; sourceTree = "<group>"; };
 		9B2A697B249797AC00E671B5 /* AuthorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorView.swift; sourceTree = "<group>"; };
@@ -171,27 +153,11 @@
 		9B2A698B249797AC00E671B5 /* BapAdViewActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BapAdViewActions.swift; sourceTree = "<group>"; };
 		9B2A698C249797AC00E671B5 /* BapAdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BapAdView.swift; sourceTree = "<group>"; };
 		9B58C0F4246550010029FAF5 /* ButtonStyle+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ButtonStyle+Previews.swift"; sourceTree = "<group>"; };
-		9B62ED22252DB3F000B1632D /* NotificationCenterHeaderViewPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterHeaderViewPreviews.swift; sourceTree = "<group>"; };
-		9BA4520824E130CD00A6A6A6 /* SortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
-		9BAACE0B251A183500886D4C /* NotificationCellPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCellPreviews.swift; sourceTree = "<group>"; };
-		9BCFBBC324DD63EA00D9F9C6 /* NotificationGroupOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationGroupOptionsView.swift; sourceTree = "<group>"; };
 		DA0E186E2459C23600C0616E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		DA1755282472ACD0005EB339 /* EmptyNotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyNotificationsCell.swift; sourceTree = "<group>"; };
-		DA17552A2472AD1F005EB339 /* EmptyNotificationsCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyNotificationsCellModel.swift; sourceTree = "<group>"; };
 		DA3415F4245AEB5C00DC1B1C /* BottomDividerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDividerModifier.swift; sourceTree = "<group>"; };
 		DA3415F8245AF80200DC1B1C /* BasicListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicListCell.swift; sourceTree = "<group>"; };
 		DA5A86A72462163700AC0DFE /* BasicListCellWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicListCellWrapper.swift; sourceTree = "<group>"; };
 		DA67DC21246076F300EA00A4 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
-		DED0A08A246865E70016176A /* NotificationsCellModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCellModels.swift; sourceTree = "<group>"; };
-		DED0A098246898940016176A /* NotificationCenterCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterCellType.swift; sourceTree = "<group>"; };
-		DED0A2C9246933600016176A /* PersonalNotificationIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalNotificationIconView.swift; sourceTree = "<group>"; };
-		DED0A2CA246933600016176A /* SavedSearchHeaderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchHeaderButton.swift; sourceTree = "<group>"; };
-		DED0A2CB246933600016176A /* NotificationCenterHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterHeaderView.swift; sourceTree = "<group>"; };
-		DED0A2CC246933600016176A /* NotificationCenterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterView.swift; sourceTree = "<group>"; };
-		DED0A2CD246933600016176A /* NotificationCenterFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterFooterView.swift; sourceTree = "<group>"; };
-		DED0A2D42469337B0016176A /* FeedbackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackCell.swift; sourceTree = "<group>"; };
-		DED0A2D52469337B0016176A /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
-		DED0A3D624697F210016176A /* NotificationCenterSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,7 +193,6 @@
 			isa = PBXGroup;
 			children = (
 				4DDD45B2250FAA25007DBDD5 /* SearchDisplayTypeSelection */,
-				DED0A07E24685F120016176A /* NotificationCenter */,
 				4D7A6ECE2498DB5B00AB2EBE /* SearchResults */,
 				DA0E186D2459C21A00C0616E /* Settings */,
 				46AE6FAF242BAB97007BB005 /* SplashView */,
@@ -569,29 +534,11 @@
 			path = "Base Components";
 			sourceTree = "<group>";
 		};
-		9BAACE0A251A133600886D4C /* Previews */ = {
-			isa = PBXGroup;
-			children = (
-				9BAACE0B251A183500886D4C /* NotificationCellPreviews.swift */,
-				9B62ED22252DB3F000B1632D /* NotificationCenterHeaderViewPreviews.swift */,
-			);
-			path = Previews;
-			sourceTree = "<group>";
-		};
 		9BB72DEF24E1685200E30FC4 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = "New Group";
-			sourceTree = "<group>";
-		};
-		9BFA40F424E2BFB300B83845 /* Subviews */ = {
-			isa = PBXGroup;
-			children = (
-				9B2A2F4F24DC48EF00D373A6 /* SavedSearchesHeaderView.swift */,
-				9BA4520824E130CD00A6A6A6 /* SortView.swift */,
-			);
-			path = Subviews;
 			sourceTree = "<group>";
 		};
 		DA0E186D2459C21A00C0616E /* Settings */ = {
@@ -628,52 +575,6 @@
 				DA5A86A72462163700AC0DFE /* BasicListCellWrapper.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		DED0A07E24685F120016176A /* NotificationCenter */ = {
-			isa = PBXGroup;
-			children = (
-				9BAACE0A251A133600886D4C /* Previews */,
-				DED0A087246865C20016176A /* Models */,
-				DED0A2D3246933650016176A /* Cells */,
-				DED0A2C82469333C0016176A /* Views */,
-			);
-			path = NotificationCenter;
-			sourceTree = "<group>";
-		};
-		DED0A087246865C20016176A /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				DED0A098246898940016176A /* NotificationCenterCellType.swift */,
-				DED0A08A246865E70016176A /* NotificationsCellModels.swift */,
-				DA17552A2472AD1F005EB339 /* EmptyNotificationsCellModel.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		DED0A2C82469333C0016176A /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				9BFA40F424E2BFB300B83845 /* Subviews */,
-				DED0A2CC246933600016176A /* NotificationCenterView.swift */,
-				DED0A3D624697F210016176A /* NotificationCenterSearchView.swift */,
-				DED0A2CD246933600016176A /* NotificationCenterFooterView.swift */,
-				DED0A2CB246933600016176A /* NotificationCenterHeaderView.swift */,
-				DED0A2C9246933600016176A /* PersonalNotificationIconView.swift */,
-				9BCFBBC324DD63EA00D9F9C6 /* NotificationGroupOptionsView.swift */,
-				DED0A2CA246933600016176A /* SavedSearchHeaderButton.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		DED0A2D3246933650016176A /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				DED0A2D42469337B0016176A /* FeedbackCell.swift */,
-				DA1755282472ACD0005EB339 /* EmptyNotificationsCell.swift */,
-				DED0A2D52469337B0016176A /* NotificationCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -829,27 +730,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B2A6997249797AC00E671B5 /* TryHeltHjemView.swift in Sources */,
-				DED0A2D1246933600016176A /* NotificationCenterView.swift in Sources */,
-				DA17552B2472AD1F005EB339 /* EmptyNotificationsCellModel.swift in Sources */,
 				9B2A698E249797AC00E671B5 /* AuthorViewModel.swift in Sources */,
 				9B2A6990249797AC00E671B5 /* PhoneNumberViewModel.swift in Sources */,
 				4DDC3E542509219B0023AEE7 /* ExtendedProfileView.swift in Sources */,
-				DED0A099246898940016176A /* NotificationCenterCellType.swift in Sources */,
-				DED0A2D0246933600016176A /* NotificationCenterHeaderView.swift in Sources */,
 				4DDD45A9250FA7BD007DBDD5 /* SearchFilterTagsView.swift in Sources */,
 				46AE6FB1242BAB97007BB005 /* SplashView.swift in Sources */,
 				DA0E186F2459C23600C0616E /* SettingsView.swift in Sources */,
 				4D7A6ED32498DBAF00AB2EBE /* SearchResultsListView.swift in Sources */,
 				4DDC3E532509219B0023AEE7 /* ExtendedProfileViewModel.swift in Sources */,
-				DED0A3D724697F210016176A /* NotificationCenterSearchView.swift in Sources */,
 				9B2A6999249797AC00E671B5 /* BapAdViewModel.swift in Sources */,
-				9BA4520924E130CD00A6A6A6 /* SortView.swift in Sources */,
 				4DDD45A8250FA7BD007DBDD5 /* SearchFilterTagCell.swift in Sources */,
 				8D68078190A301C047AD77D7 /* ChatAvailabilityView.swift in Sources */,
 				DA67DC22246076F300EA00A4 /* Appearance.swift in Sources */,
 				9B2A6993249797AC00E671B5 /* DescriptionView.swift in Sources */,
 				DA3415F9245AF80200DC1B1C /* BasicListCell.swift in Sources */,
-				DED0A2CF246933600016176A /* SavedSearchHeaderButton.swift in Sources */,
 				7149DB7424FE592400268976 /* MyVehiclesListView.swift in Sources */,
 				9B2A6998249797AC00E671B5 /* PagerView.swift in Sources */,
 				9B2A6995249797AC00E671B5 /* ImageGalleryView.swift in Sources */,
@@ -858,30 +752,20 @@
 				9B2A698D249797AC00E671B5 /* SingleImageProvider.swift in Sources */,
 				4DBC0398250A48DF004E8044 /* ExpandCollapseButton.swift in Sources */,
 				DA3415F5245AEB5C00DC1B1C /* BottomDividerModifier.swift in Sources */,
-				DED0A2D72469337B0016176A /* NotificationCell.swift in Sources */,
 				9B2A6994249797AC00E671B5 /* CollectionImageProvider.swift in Sources */,
 				9B2A6992249797AC00E671B5 /* DescriptionViewModel.swift in Sources */,
 				DA5A86A82462163700AC0DFE /* BasicListCellWrapper.swift in Sources */,
 				4D1E5533252E02BF00A4ED5C /* SearchFilterTagCellViewModel.swift in Sources */,
-				9BAACE0C251A183500886D4C /* NotificationCellPreviews.swift in Sources */,
 				9B2A699B249797AC00E671B5 /* BapAdView.swift in Sources */,
 				7149DB7324FE592400268976 /* MyVehiclesListViewModel.swift in Sources */,
-				DED0A2D2246933600016176A /* NotificationCenterFooterView.swift in Sources */,
 				9B2A6996249797AC00E671B5 /* TryHeltHjemViewModel.swift in Sources */,
 				9B2A698F249797AC00E671B5 /* AuthorView.swift in Sources */,
-				9B62ED23252DB3F000B1632D /* NotificationCenterHeaderViewPreviews.swift in Sources */,
-				DED0A2CE246933600016176A /* PersonalNotificationIconView.swift in Sources */,
-				9BCFBBC424DD63EA00D9F9C6 /* NotificationGroupOptionsView.swift in Sources */,
 				9B2A699A249797AC00E671B5 /* BapAdViewActions.swift in Sources */,
 				4DDD45B4250FAA68007DBDD5 /* SearchDisplayTypeSelectionView.swift in Sources */,
 				7149DB6E24FE58C900268976 /* MyVehicleCellModel.swift in Sources */,
-				9B2A2F5024DC48EF00D373A6 /* SavedSearchesHeaderView.swift in Sources */,
 				9B2A6991249797AC00E671B5 /* PhoneNumberView.swift in Sources */,
 				9B58C0F6246550440029FAF5 /* ButtonStyle+Previews.swift in Sources */,
-				DA1755292472ACD0005EB339 /* EmptyNotificationsCell.swift in Sources */,
-				DED0A2D62469337B0016176A /* FeedbackCell.swift in Sources */,
 				7149DB6D24FE58C900268976 /* MyVehicleCell.swift in Sources */,
-				DED0A08B246865E70016176A /* NotificationsCellModels.swift in Sources */,
 				469894A02434DD6F00CC84E6 /* ImageAsset.swift in Sources */,
 				4D7A6ED22498DBAF00AB2EBE /* SearchResultsView.swift in Sources */,
 				4DDD45BA250FAB8B007DBDD5 /* SearchDisplayTypeSelectionViewModel.swift in Sources */,
