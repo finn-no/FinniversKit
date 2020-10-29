@@ -224,6 +224,7 @@
 		714B9357253736AD00801C99 /* SendInviteDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B9356253736AD00801C99 /* SendInviteDemoView.swift */; };
 		7197A19B24D8316B00D425EB /* WithoutInsuranceConfirmationDemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197A19A24D8316B00D425EB /* WithoutInsuranceConfirmationDemoViewModel.swift */; };
 		7197A19D24D8317D00D425EB /* WithInsuranceConfirmationDemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197A19C24D8317D00D425EB /* WithInsuranceConfirmationDemoViewModel.swift */; };
+		71C6AA992549D28800D78269 /* MessageUserRequiredData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C6AA982549D28800D78269 /* MessageUserRequiredData.swift */; };
 		71FE6C49250F6A9E007814F2 /* MotorTransactionInviteCounterpartyDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE6C48250F6A9E007814F2 /* MotorTransactionInviteCounterpartyDemoView.swift */; };
 		8D680330552CED06106C74C2 /* SavedSearchSortingDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D68001FA0046522DC369E44 /* SavedSearchSortingDemoView.swift */; };
 		8D680753832283BAA1FD13E7 /* ChatAvailabilityDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680197B160A999652BC551 /* ChatAvailabilityDemoView.swift */; };
@@ -483,6 +484,7 @@
 		714B9356253736AD00801C99 /* SendInviteDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendInviteDemoView.swift; sourceTree = "<group>"; };
 		7197A19A24D8316B00D425EB /* WithoutInsuranceConfirmationDemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithoutInsuranceConfirmationDemoViewModel.swift; sourceTree = "<group>"; };
 		7197A19C24D8317D00D425EB /* WithInsuranceConfirmationDemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithInsuranceConfirmationDemoViewModel.swift; sourceTree = "<group>"; };
+		71C6AA982549D28800D78269 /* MessageUserRequiredData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageUserRequiredData.swift; sourceTree = "<group>"; };
 		71FE6C48250F6A9E007814F2 /* MotorTransactionInviteCounterpartyDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInviteCounterpartyDemoView.swift; sourceTree = "<group>"; };
 		8D68001FA0046522DC369E44 /* SavedSearchSortingDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchSortingDemoView.swift; sourceTree = "<group>"; };
 		8D6800F29F72B6957F2BE564 /* IconLinkListViewDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLinkListViewDemo.swift; sourceTree = "<group>"; };
@@ -644,6 +646,7 @@
 				46E77287242CEF09008A5E93 /* SettingDetailsView */,
 				46E7727F242CEF09008A5E93 /* SoldView */,
 				46E77290242CEF09008A5E93 /* SplashView */,
+				71C6AA972549D27000D78269 /* MessageUserRequired */,
 				46E772B8242CEF09008A5E93 /* MotorTransactionView */,
 				71FE6C47250F6A51007814F2 /* MotorTransactionInviteCounterpartyView */,
 				712C2292250B917000E09653 /* MotorTransactionInvalidUserView */,
@@ -1880,6 +1883,14 @@
 			path = BuyerProcess;
 			sourceTree = "<group>";
 		};
+		71C6AA972549D27000D78269 /* MessageUserRequired */ = {
+			isa = PBXGroup;
+			children = (
+				71C6AA982549D28800D78269 /* MessageUserRequiredData.swift */,
+			);
+			path = MessageUserRequired;
+			sourceTree = "<group>";
+		};
 		71FE6C47250F6A51007814F2 /* MotorTransactionInviteCounterpartyView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2077,6 +2088,7 @@
 			files = (
 				46E773A4242CEF0A008A5E93 /* DemoHelpers.swift in Sources */,
 				DED0A3D9246984E30016176A /* NotificationCenterSearchDemoView.swift in Sources */,
+				71C6AA992549D28800D78269 /* MessageUserRequiredData.swift in Sources */,
 				46E77425242CEF0A008A5E93 /* ConsentTransparencyInfoDemoView.swift in Sources */,
 				46E7744C242CEF0A008A5E93 /* HeartSubtitleCellDemoView.swift in Sources */,
 				46E773BE242CEF0A008A5E93 /* LoginEntryDemoData.swift in Sources */,

@@ -143,6 +143,7 @@
 		6266C07222081EF600FB8004 /* StatisticsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6266C07122081EF600FB8004 /* StatisticsItemView.swift */; };
 		62AAB23A23278087007766E6 /* RadioButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AAB23923278087007766E6 /* RadioButtonTableViewCell.swift */; };
 		68AE01E84A4CA1BC83B340EE /* FavoriteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AE0BC04985EF5EE34564D3 /* FavoriteButtonView.swift */; };
+		712B080B254ADAC700791C6B /* MessageUserRequiredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712B080A254ADAC700791C6B /* MessageUserRequiredView.swift */; };
 		712C228F250B74E400E09653 /* MotorTransactionInvalidUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C228E250B74E400E09653 /* MotorTransactionInvalidUserView.swift */; };
 		712C2291250B7A9B00E09653 /* MotorTransactionInvalidUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C2290250B7A9B00E09653 /* MotorTransactionInvalidUserViewModel.swift */; };
 		714B9352253728EC00801C99 /* SendInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B9351253728EC00801C99 /* SendInviteView.swift */; };
@@ -586,6 +587,7 @@
 		6266C07122081EF600FB8004 /* StatisticsItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsItemView.swift; sourceTree = "<group>"; };
 		62AAB23923278087007766E6 /* RadioButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonTableViewCell.swift; sourceTree = "<group>"; };
 		68AE0BC04985EF5EE34564D3 /* FavoriteButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteButtonView.swift; sourceTree = "<group>"; };
+		712B080A254ADAC700791C6B /* MessageUserRequiredView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageUserRequiredView.swift; sourceTree = "<group>"; };
 		712C228E250B74E400E09653 /* MotorTransactionInvalidUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInvalidUserView.swift; sourceTree = "<group>"; };
 		712C2290250B7A9B00E09653 /* MotorTransactionInvalidUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInvalidUserViewModel.swift; sourceTree = "<group>"; };
 		714B9351253728EC00801C99 /* SendInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendInviteView.swift; sourceTree = "<group>"; };
@@ -1641,6 +1643,7 @@
 				91846C4822E735B60001410F /* SearchResultMapView */,
 				DAD6EB302369BCFC00968497 /* SettingDetailsView */,
 				43EA978021941E63003A548A /* SoldView */,
+				71C6AA7625499CDD00D78269 /* MessageUserRequired */,
 				F20450B223EC0CB5001F7370 /* MotorTransactionView */,
 				71FE6C4A250F6ABB007814F2 /* MotorTransactionInviteCounterpartyView */,
 				712C228D250B747900E09653 /* MotorTransactionInvalidUserView */,
@@ -1799,6 +1802,14 @@
 				714B9354253730D900801C99 /* SendInviteViewModel.swift */,
 			);
 			path = SendInviteView;
+			sourceTree = "<group>";
+		};
+		71C6AA7625499CDD00D78269 /* MessageUserRequired */ = {
+			isa = PBXGroup;
+			children = (
+				712B080A254ADAC700791C6B /* MessageUserRequiredView.swift */,
+			);
+			path = MessageUserRequired;
 			sourceTree = "<group>";
 		};
 		71FE6C4A250F6ABB007814F2 /* MotorTransactionInviteCounterpartyView */ = {
@@ -3465,6 +3476,7 @@
 				CF5012432360905000138A36 /* PrimingTableViewCell.swift in Sources */,
 				087A5BB622A7D85500184640 /* KeyboardNotificationInfo.swift in Sources */,
 				441FE450209A2F2C00B04EF1 /* NotificationsListViewModel.swift in Sources */,
+				712B080B254ADAC700791C6B /* MessageUserRequiredView.swift in Sources */,
 				DAD0D492210737A30091DD4D /* TextView.swift in Sources */,
 				CF9AC8B621BEBFEF005A0D2F /* SnowGlobeView.swift in Sources */,
 				AADED71C223FE25500647C50 /* UIDevice.swift in Sources */,
@@ -3581,7 +3593,6 @@
 				8D6808DF0714CB32FD27AD37 /* PriceLinkButtonView.swift in Sources */,
 				8D680B3932E934A7BD81FA3C /* PriceLinkButtonViewModel.swift in Sources */,
 				8D68020AA0FD06F96F366667 /* PriceLinkButtonListView.swift in Sources */,
-				8D68002D5056813B49BC1902 /* (null) in Sources */,
 				8D68095830EEFACD7AF7E50E /* RibbonViewModel.swift in Sources */,
 				8D680D43020F07BDF6D39262 /* IconRibbonViewModel.swift in Sources */,
 				8D680AB3EF002CCBA3CC222B /* IconRibbonView.swift in Sources */,
