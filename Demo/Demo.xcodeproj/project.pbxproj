@@ -236,9 +236,6 @@
 		9BE474C924979816009620A5 /* BapAdView+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE474C824979816009620A5 /* BapAdView+Previews.swift */; };
 		DA083C2E2462BCA800B26235 /* SwiftUIDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */; };
 		DAE9CA8724602CB000C7552F /* SwiftUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */; };
-		DED0A091246871A40016176A /* NotificationCenterDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A090246871A40016176A /* NotificationCenterDemoViewController.swift */; };
-		DED0A09524687E010016176A /* NotificationCenterDemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A09424687E010016176A /* NotificationCenterDemoData.swift */; };
-		DED0A3D9246984E30016176A /* NotificationCenterSearchDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0A3D8246984E30016176A /* NotificationCenterSearchDemoView.swift */; };
 		F240E92324A0ED9C0025C412 /* MotorTransactionSummaryObjectPageDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F240E92224A0ED9C0025C412 /* MotorTransactionSummaryObjectPageDemoView.swift */; };
 /* End PBXBuildFile section */
 
@@ -496,9 +493,6 @@
 		9BE474C824979816009620A5 /* BapAdView+Previews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BapAdView+Previews.swift"; sourceTree = "<group>"; };
 		DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDemoViews.swift; sourceTree = "<group>"; };
 		DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewTests.swift; sourceTree = "<group>"; };
-		DED0A090246871A40016176A /* NotificationCenterDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterDemoViewController.swift; sourceTree = "<group>"; };
-		DED0A09424687E010016176A /* NotificationCenterDemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterDemoData.swift; sourceTree = "<group>"; };
-		DED0A3D8246984E30016176A /* NotificationCenterSearchDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterSearchDemoView.swift; sourceTree = "<group>"; };
 		F240E92224A0ED9C0025C412 /* MotorTransactionSummaryObjectPageDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionSummaryObjectPageDemoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -639,7 +633,6 @@
 				46E772B3242CEF09008A5E93 /* Login */,
 				46E77281242CEF09008A5E93 /* LoginEntry */,
 				46E772A2242CEF09008A5E93 /* MessageForm */,
-				46E772A0242CEF09008A5E93 /* NotificationCenter */,
 				46E7727A242CEF09008A5E93 /* Popup */,
 				46E7729D242CEF09008A5E93 /* Register */,
 				46E77298242CEF09008A5E93 /* SearchResultMapView */,
@@ -847,16 +840,6 @@
 				46E7729F242CEF09008A5E93 /* RegisterViewDemoView.swift */,
 			);
 			path = Register;
-			sourceTree = "<group>";
-		};
-		46E772A0242CEF09008A5E93 /* NotificationCenter */ = {
-			isa = PBXGroup;
-			children = (
-				DED0A090246871A40016176A /* NotificationCenterDemoViewController.swift */,
-				DED0A09424687E010016176A /* NotificationCenterDemoData.swift */,
-				DED0A3D8246984E30016176A /* NotificationCenterSearchDemoView.swift */,
-			);
-			path = NotificationCenter;
 			sourceTree = "<group>";
 		};
 		46E772A2242CEF09008A5E93 /* MessageForm */ = {
@@ -2087,7 +2070,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				46E773A4242CEF0A008A5E93 /* DemoHelpers.swift in Sources */,
-				DED0A3D9246984E30016176A /* NotificationCenterSearchDemoView.swift in Sources */,
 				71C6AA992549D28800D78269 /* MessageUserRequiredData.swift in Sources */,
 				46E77425242CEF0A008A5E93 /* ConsentTransparencyInfoDemoView.swift in Sources */,
 				46E7744C242CEF0A008A5E93 /* HeartSubtitleCellDemoView.swift in Sources */,
@@ -2131,7 +2113,6 @@
 				46E773B8242CEF0A008A5E93 /* NewYearsDemoView.swift in Sources */,
 				46E773CB242CEF0A008A5E93 /* SearchResultMapViewDemoViewController.swift in Sources */,
 				46E77459242CEF0A008A5E93 /* AdsGridViewDemoViewHelpers.swift in Sources */,
-				DED0A09524687E010016176A /* NotificationCenterDemoData.swift in Sources */,
 				46E77400242CEF0A008A5E93 /* SaveSearchViewDemoView.swift in Sources */,
 				46E77442242CEF0A008A5E93 /* AssetsDemoViewController.swift in Sources */,
 				46E773C0242CEF0A008A5E93 /* LoginEntryDemoPageViewController.swift in Sources */,
@@ -2238,7 +2219,6 @@
 				46E7741D242CEF0A008A5E93 /* FloatingButtonDemoView.swift in Sources */,
 				4DDD45AF250FA7E1007DBDD5 /* SearchDisplayMenuDemoView.swift in Sources */,
 				46E7743D242CEF0A008A5E93 /* VerificationViewDefaultData.swift in Sources */,
-				DED0A091246871A40016176A /* NotificationCenterDemoViewController.swift in Sources */,
 				46E773CD242CEF0A008A5E93 /* FavoriteAdCommentInputDemoView.swift in Sources */,
 				46E77407242CEF0A008A5E93 /* LabelDemoView.swift in Sources */,
 				46E7742B242CEF0A008A5E93 /* KlimabroletDemoViewController.swift in Sources */,

@@ -29,8 +29,6 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case verificationActionSheet
     case splashView
     case settingDetails
-    case notificationCenterView
-    case notificationCenterSearchView
     case favoriteAdActionView
     case favoriteAdCommentInputView
     case favoriteAdSortingView
@@ -122,10 +120,6 @@ public enum FullscreenDemoViews: String, CaseIterable {
 
             viewController.bottomSheet = bottomSheet
             return bottomSheet
-        case .notificationCenterView:
-            return NotificationCenterDemoViewController(dismissType: .dismissButton)
-        case .notificationCenterSearchView:
-            return DemoViewController<NotificationCenterSearchDemoView>(dismissType: .dismissButton)
         case .favoriteAdActionView:
             return DemoViewController<FavoriteAdActionDemoView>()
         case .favoriteAdCommentInputView:
