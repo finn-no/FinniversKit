@@ -61,13 +61,6 @@ public class SendInviteView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func configure(_ viewModel: SendInviteViewModel) {
-        titleLabel.text = viewModel.title
-        profileNameLabel.text = viewModel.profileName
-        sendInviteButton.setTitle(viewModel.sendInviteButtonText, for: .normal)
-        sendInviteLaterButton.setTitle(viewModel.sendInviteLaterButtonText, for: .normal)
-    }
-
     private func setup() {
         [titleLabel, profileStackView, buttonStackView].forEach { addSubview($0) }
         NSLayoutConstraint.activate([
@@ -87,8 +80,20 @@ public class SendInviteView: UIView {
         ])
     }
 
-    public func loadImage(_ url: URL) {
-        delegate?.sendInviteViewLoadImage(self, loadImageWithUrl: url, imageWidth: SendInviteView.profileImageSize, completion: { [weak self] image in
+    public func configure(_ viewModel: SendInviteViewModel) {
+        titleLabel.text = viewModel.title
+        profileNameLabel.text = viewModel.profileName
+        sendInviteButton.setTitle(viewModel.sendInviteButtonText, for: .normal)
+        sendInviteLaterButton.setTitle(viewModel.sendInviteLaterButtonText, for: .normal)
+    }
+
+    public func loadImage(_ url: URL?, fallbackImage: UIImage = .init(named: .avatar)) {
+        guard let imageUrl = url else {
+            self.profileImage.image = fallbackImage
+            return
+        }
+
+        delegate?.sendInviteViewLoadImage(self, loadImageWithUrl: imageUrl, imageWidth: SendInviteView.profileImageSize, completion: { [weak self] image in
             guard
                 let self = self,
                 let image = image

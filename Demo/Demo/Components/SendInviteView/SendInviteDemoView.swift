@@ -24,7 +24,7 @@ public class SendInviteDemoView: UIView {
         addSubview(sendInviteView)
         sendInviteView.fillInSuperview()
         sendInviteView.configure(SendInviteViewModel.defaultData)
-        sendInviteView.loadImage(SendInviteViewModel.defaultData.profileImage)
+        sendInviteView.loadImage(nil)
     }
 }
 
@@ -56,7 +56,6 @@ extension SendInviteDemoView: SendInviteViewDelegate {
 public extension SendInviteViewModel {
     static var defaultData: SendInviteViewModel = .init(
         title: "Vil du invitere selgeren av bilen til kontrakten?",
-        profileImage: URL(string: "http://via.placeholder.com/44x44/ff00ff/ff00ff")!,
         profileName: "Hermine",
         sendInviteButtonText: "Inviter til kontrakten",
         sendInviteLaterButtonText: "Inviter senere"
