@@ -41,8 +41,6 @@ final class ProjectUnitsDemoView: UIView {
             view.centerYAnchor.constraint(equalTo: centerYAnchor),
             view.heightAnchor.constraint(equalToConstant: 360)
         ])
-
-        view.reloadData()
     }
 }
 

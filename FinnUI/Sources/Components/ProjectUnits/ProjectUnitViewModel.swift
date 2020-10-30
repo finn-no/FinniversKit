@@ -2,19 +2,19 @@ import Foundation
 
 public struct ProjectUnitViewModel {
     let imageUrl: String?
-    let topDetailText: String
-    let title: String
-    let price: String
-    let area: String
-    let bottomDetailText: String
+    let topDetailText: String?
+    let title: String?
+    let price: String?
+    let area: String?
+    let bottomDetailText: String?
 
     public init(
         imageUrl: String?,
-        topDetailText: String = "",
-        title: String,
-        price: String,
-        area: String,
-        bottomDetailText: String = ""
+        topDetailText: String?,
+        title: String?,
+        price: String?,
+        area: String?,
+        bottomDetailText: String?
     ) {
         self.imageUrl = imageUrl
         self.topDetailText = topDetailText

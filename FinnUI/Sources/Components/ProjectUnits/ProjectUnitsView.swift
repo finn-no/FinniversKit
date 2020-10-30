@@ -87,16 +87,23 @@ public class ProjectUnitsView: UIView {
             pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
             pageControl.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS)
         ])
-    }
 
-    public func reloadData() {
         collectionView.reloadData()
-        resetPageControl()
-    }
-
-    private func resetPageControl() {
         pageControl.numberOfPages = projectUnits.count
         pageControl.currentPage = 0
+    }
+
+    public override func systemLayoutSizeFitting(
+        _ targetSize: CGSize,
+        withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
+        verticalFittingPriority: UILayoutPriority
+    ) -> CGSize {
+        // do some calculations
+
+        return CGSize(
+            width: targetSize.width,
+            height: 350
+        )
     }
 
     @objc func handlePageControlValueChange() {
@@ -115,7 +122,6 @@ extension ProjectUnitsView: UICollectionViewDataSource {
         cell.remoteImageViewDataSource = remoteImageViewDataSource
         cell.delegate = self
         cell.configure(with: projectUnits[indexPath.item])
-        print("Cell \(indexPath.item)")
         return cell
     }
 }

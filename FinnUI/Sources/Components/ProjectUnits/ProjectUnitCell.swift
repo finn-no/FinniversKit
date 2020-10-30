@@ -26,6 +26,7 @@ class ProjectUnitCell: UICollectionViewCell {
 
     private lazy var topDetailLabel: Label = {
         let label = Label(style: .detail, withAutoLayout: true)
+        label.numberOfLines = 1
         return label
     }()
 
@@ -37,16 +38,19 @@ class ProjectUnitCell: UICollectionViewCell {
 
     private lazy var priceLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
+        label.numberOfLines = 1
         return label
     }()
 
-    private lazy var sizeLabel: Label = {
+    private lazy var areaLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
+        label.numberOfLines = 1
         return label
     }()
 
     private lazy var bottomDetailLabel: Label = {
         let label = Label(style: .detail, withAutoLayout: true)
+        label.numberOfLines = 1
         return label
     }()
 
@@ -81,23 +85,21 @@ class ProjectUnitCell: UICollectionViewCell {
         setup()
     }
 
-    private func horizontalStackView(with subviews: [UIView]) -> UIStackView {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .horizontal
-        stackView.distribution = .equalCentering
-        stackView.addArrangedSubviews(subviews)
-        return stackView
-    }
-
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(stackView)
         stackView.fillInSuperview()
 
+        let topStackView = UIStackView(axis: .horizontal, distribution: .equalCentering, withAutoLayout: true)
+        topStackView.addArrangedSubviews([topDetailLabel, favoriteButton])
+
+        let bottomStackView = UIStackView(axis: .horizontal, distribution: .equalCentering, withAutoLayout: true)
+        bottomStackView.addArrangedSubviews([priceLabel, areaLabel])
+
         stackView.addArrangedSubview(remoteImageView)
-        stackView.addArrangedSubview(horizontalStackView(with: [topDetailLabel, favoriteButton]))
+        stackView.addArrangedSubview(topStackView)
         stackView.addArrangedSubview(titleLabel)
-        stackView.addArrangedSubview(horizontalStackView(with: [priceLabel, sizeLabel]))
+        stackView.addArrangedSubview(bottomStackView)
         stackView.addArrangedSubview(bottomDetailLabel)
 
         NSLayoutConstraint.activate([
@@ -110,8 +112,8 @@ class ProjectUnitCell: UICollectionViewCell {
         topDetailLabel.text = viewModel.topDetailText
         titleLabel.text = viewModel.title
         priceLabel.text = viewModel.price
-        sizeLabel.text = viewModel.area
-        bottomDetailLabel.text = viewModel.bottomDetailText // " ● "
+        areaLabel.text = viewModel.area
+        bottomDetailLabel.text = viewModel.bottomDetailText
 
         let fallbackImage = UIImage(named: .noImage)
         if let imageUrl = viewModel.imageUrl {
