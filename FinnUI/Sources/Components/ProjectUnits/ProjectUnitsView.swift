@@ -56,7 +56,7 @@ public class ProjectUnitsView: UIView {
         self.title = title
         self.titleStyle = titleStyle
         self.projectUnits = projectUnits
-        super.init(frame: .zero)
+        super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         setup()
     }
 
