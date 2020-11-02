@@ -12,12 +12,7 @@ public class ProjectUnitsView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .bgPrimary
-        collectionView.contentInset = UIEdgeInsets(
-            top: .spacingS,
-            left: .spacingM,
-            bottom: 0,
-            right: .spacingM
-        )
+        collectionView.contentInset = UIEdgeInsets(vertical: 0, horizontal: .spacingM)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.decelerationRate = .fast
         collectionView.dataSource = self
@@ -33,7 +28,7 @@ public class ProjectUnitsView: UIView {
         layout.minimumLineSpacing = 25
         layout.itemSize = CGSize(
             width: ProjectUnitCell.width,
-            height: 270
+            height: ProjectUnitCell.height
         )
         return layout
     }()
@@ -51,6 +46,8 @@ public class ProjectUnitsView: UIView {
     private let title: String?
     private let titleStyle: Label.Style
     private let projectUnits: [ProjectUnitViewModel]
+    private static let titleVerticalSpacing: CGFloat = .spacingS
+    private static let bottomSpacing: CGFloat = .spacingS
 
     public weak var delegate: ProjectUnitsViewDelegate?
     public weak var remoteImageViewDataSource: RemoteImageViewDataSource?
@@ -75,17 +72,17 @@ public class ProjectUnitsView: UIView {
         addSubview(pageControl)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: ProjectUnitsView.titleVerticalSpacing),
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: -ProjectUnitsView.titleVerticalSpacing),
 
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
             pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
-            pageControl.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS)
+            pageControl.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -ProjectUnitsView.bottomSpacing)
         ])
 
         collectionView.reloadData()
@@ -98,11 +95,15 @@ public class ProjectUnitsView: UIView {
         withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
         verticalFittingPriority: UILayoutPriority
     ) -> CGSize {
-        // do some calculations
+        let titleSize = titleLabel.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: horizontalFittingPriority, verticalFittingPriority: verticalFittingPriority)
+        let pageControlSize = pageControl.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: horizontalFittingPriority, verticalFittingPriority: verticalFittingPriority)
+
+        let totalHeight = titleSize.height + 2 * ProjectUnitsView.titleVerticalSpacing + ProjectUnitCell.height
+            + pageControlSize.height + ProjectUnitsView.bottomSpacing
 
         return CGSize(
             width: targetSize.width,
-            height: 350
+            height: totalHeight
         )
     }
 

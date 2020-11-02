@@ -72,6 +72,7 @@ class ProjectUnitCell: UICollectionViewCell {
     }
 
     static let width: CGFloat = 280
+    static let height: CGFloat = 270
 
     // MARK: - Init
 
