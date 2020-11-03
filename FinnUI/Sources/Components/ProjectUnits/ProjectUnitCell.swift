@@ -2,7 +2,7 @@ import Foundation
 import FinniversKit
 
 protocol ProjectUnitCellDelegate: AnyObject {
-    func projectUnitCellDidTapFavoriteButton(_ projectUnitCell: ProjectUnitCell)
+    func projectUnitCell(_ projectUnitCell: ProjectUnitCell, didTapFavoriteButton button: UIButton)
 }
 
 class ProjectUnitCell: UICollectionViewCell {
@@ -63,6 +63,17 @@ class ProjectUnitCell: UICollectionViewCell {
         return button
     }()
 
+    // MARK: - Internal properties
+
+    static let width: CGFloat = 280
+    static let height: CGFloat = 270
+
+    var isFavorite: Bool = false {
+        didSet {
+            updateFavoriteButton(isFavorite: isFavorite)
+        }
+    }
+
     weak var delegate: ProjectUnitCellDelegate?
 
     weak var remoteImageViewDataSource: RemoteImageViewDataSource? {
@@ -70,9 +81,6 @@ class ProjectUnitCell: UICollectionViewCell {
             remoteImageView.dataSource = remoteImageViewDataSource
         }
     }
-
-    static let width: CGFloat = 280
-    static let height: CGFloat = 270
 
     // MARK: - Init
 
@@ -85,6 +93,8 @@ class ProjectUnitCell: UICollectionViewCell {
         super.init(coder: aDecoder)
         setup()
     }
+
+    // MARK: - Setup
 
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
@@ -109,6 +119,8 @@ class ProjectUnitCell: UICollectionViewCell {
         ])
     }
 
+    // MARK: - Internal methods
+
     func configure(with viewModel: ProjectUnitViewModel) {
         topDetailLabel.text = viewModel.topDetailText
         titleLabel.text = viewModel.title
@@ -124,7 +136,14 @@ class ProjectUnitCell: UICollectionViewCell {
         }
     }
 
-    @objc func handleFavoriteButtonTap() {
-        delegate?.projectUnitCellDidTapFavoriteButton(self)
+    // MARK: - Private methods
+
+    private func updateFavoriteButton(isFavorite: Bool) {
+        let favoriteImage = isFavorite ? UIImage(named: .favoriteActive) : UIImage(named: .favoriteDefault).withRenderingMode(.alwaysTemplate) // add demo for fave button?
+        favoriteButton.setImage(favoriteImage, for: .normal)
+    }
+
+    @objc private func handleFavoriteButtonTap() {
+        delegate?.projectUnitCell(self, didTapFavoriteButton: favoriteButton)
     }
 }

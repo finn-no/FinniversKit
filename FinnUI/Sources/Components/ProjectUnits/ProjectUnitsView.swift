@@ -2,8 +2,14 @@ import Foundation
 import FinniversKit
 
 public protocol ProjectUnitsViewDelegate: AnyObject {
-    func projectUnitsView(_ projectUnitsView: ProjectUnitsView, didTapFavoriteForIndex index: Int)
+    func projectUnitsView(_ projectUnitsView: ProjectUnitsView, didTapFavoriteButton button: UIButton, forIndex index: Int)
     func projectUnitsView(_ projectUnitsView: ProjectUnitsView, didSelectUnitAtIndex index: Int)
+}
+
+public protocol ProjectUnitsDataSource: AnyObject {
+    func numberOfItems(inProjectUnitsView view: ProjectUnitsView) -> Int
+    func projectUnitsView(_ projectUnitsView: ProjectUnitsView, modelAtIndex index: Int) -> ProjectUnitViewModel?
+    func projectUnitsView(_ projectUnitsView: ProjectUnitsView, unitAtIndexIsFavorite index: Int) -> Bool
 }
 
 public class ProjectUnitsView: UIView {
@@ -38,6 +44,8 @@ public class ProjectUnitsView: UIView {
         pageControl.pageIndicatorTintColor = UIColor.pagingColor.withAlphaComponent(0.2)
         pageControl.currentPageIndicatorTintColor = .pagingColor
         pageControl.addTarget(self, action: #selector(handlePageControlValueChange), for: .valueChanged)
+        pageControl.currentPage = 0
+        pageControl.numberOfPages = 1
         return pageControl
     }()
 
@@ -45,17 +53,20 @@ public class ProjectUnitsView: UIView {
 
     private let title: String?
     private let titleStyle: Label.Style
-    private let projectUnits: [ProjectUnitViewModel]
     private static let titleVerticalSpacing: CGFloat = .spacingS
     private static let bottomSpacing: CGFloat = .spacingS
 
+    // MARK: - Public properties
+
     public weak var delegate: ProjectUnitsViewDelegate?
+    public weak var dataSource: ProjectUnitsDataSource?
     public weak var remoteImageViewDataSource: RemoteImageViewDataSource?
 
-    public init(title: String?, projectUnits: [ProjectUnitViewModel], titleStyle: Label.Style = .title3Strong) {
+    // MARK: - Init
+
+    public init(title: String?, titleStyle: Label.Style = .title3Strong) {
         self.title = title
         self.titleStyle = titleStyle
-        self.projectUnits = projectUnits
         super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         setup()
     }
@@ -63,6 +74,8 @@ public class ProjectUnitsView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Setup
 
     private func setup() {
         titleLabel.text = title
@@ -86,8 +99,21 @@ public class ProjectUnitsView: UIView {
         ])
 
         collectionView.reloadData()
-        pageControl.numberOfPages = projectUnits.count
-        pageControl.currentPage = 0
+    }
+
+    // MARK: - Public methods
+
+    public func updateFavoriteButtonStates() {
+        guard
+            let dataSource = dataSource,
+            let visibleCells = collectionView.visibleCells as? [ProjectUnitCell]
+        else { return }
+
+        for cell in visibleCells {
+            if let cellIndex = collectionView.indexPath(for: cell) {
+                cell.isFavorite = dataSource.projectUnitsView(self, unitAtIndexIsFavorite: cellIndex.row)
+            }
+        }
     }
 
     public override func systemLayoutSizeFitting(
@@ -107,25 +133,44 @@ public class ProjectUnitsView: UIView {
         )
     }
 
-    @objc func handlePageControlValueChange() {
+    // MARK: - Private methods
+
+    @objc private func handlePageControlValueChange() {
         let indexPath = IndexPath(item: pageControl.currentPage, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
+
+    private func configurePageControl(withNumberOfPages numberOfPages: Int) {
+        pageControl.numberOfPages = numberOfPages
+        pageControl.currentPage = 0
+    }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension ProjectUnitsView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        projectUnits.count
+        let numberOfItems = dataSource?.numberOfItems(inProjectUnitsView: self) ?? 0
+        configurePageControl(withNumberOfPages: numberOfItems)
+        return numberOfItems
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(ProjectUnitCell.self, for: indexPath)
+        guard let dataSource = dataSource else { return cell }
+
         cell.remoteImageViewDataSource = remoteImageViewDataSource
         cell.delegate = self
-        cell.configure(with: projectUnits[indexPath.item])
+
+        if let viewModel = dataSource.projectUnitsView(self, modelAtIndex: indexPath.row) {
+            cell.configure(with: viewModel)
+        }
+        cell.isFavorite = dataSource.projectUnitsView(self, unitAtIndexIsFavorite: indexPath.row)
         return cell
     }
 }
+
+// MARK: - UICollectionViewDelegate
 
 extension ProjectUnitsView: UICollectionViewDelegate {
     public func scrollViewWillEndDragging(
@@ -146,10 +191,12 @@ extension ProjectUnitsView: UICollectionViewDelegate {
     }
 }
 
+// MARK: - ProjectUnitCellDelegate
+
 extension ProjectUnitsView: ProjectUnitCellDelegate {
-    func projectUnitCellDidTapFavoriteButton(_ projectUnitCell: ProjectUnitCell) {
+    func projectUnitCell(_ projectUnitCell: ProjectUnitCell, didTapFavoriteButton button: UIButton) {
         guard let indexPath = collectionView.indexPath(for: projectUnitCell) else { return }
-        delegate?.projectUnitsView(self, didTapFavoriteForIndex: indexPath.row)
+        delegate?.projectUnitsView(self, didTapFavoriteButton: button, forIndex: indexPath.row)
     }
 }
 
@@ -183,6 +230,8 @@ private final class PagingCollectionViewLayout: UICollectionViewFlowLayout {
         return targetContentOffset
     }
 }
+
+// MARK: - Private extensions
 
 private extension UIColor {
     static var pagingColor: UIColor {

@@ -7,10 +7,11 @@ import FinnUI
 
 final class ProjectUnitsDemoView: UIView {
     private lazy var view: ProjectUnitsView = {
-        let view = ProjectUnitsView(title: "Utvalgte boliger i prosjektet", projectUnits: projectUnits)
+        let view = ProjectUnitsView(title: "Utvalgte boliger i prosjektet")
         view.translatesAutoresizingMaskIntoConstraints = false
         view.remoteImageViewDataSource = self
         view.delegate = self
+        view.dataSource = self
         return view
     }()
 
@@ -44,8 +45,22 @@ final class ProjectUnitsDemoView: UIView {
     }
 }
 
+extension ProjectUnitsDemoView: ProjectUnitsDataSource {
+    func numberOfItems(inProjectUnitsView view: ProjectUnitsView) -> Int {
+        projectUnits.count
+    }
+
+    func projectUnitsView(_ projectUnitsView: ProjectUnitsView, modelAtIndex index: Int) -> ProjectUnitViewModel? {
+        projectUnits[index]
+    }
+
+    func projectUnitsView(_ projectUnitsView: ProjectUnitsView, unitAtIndexIsFavorite index: Int) -> Bool {
+        index == 1
+    }
+}
+
 extension ProjectUnitsDemoView: ProjectUnitsViewDelegate {
-    func projectUnitsView(_ projectUnitsView: ProjectUnitsView, didTapFavoriteForIndex index: Int) {
+    func projectUnitsView(_ projectUnitsView: ProjectUnitsView, didTapFavoriteButton button: UIButton, forIndex index: Int) {
         print("Did tap favorite for index \(index)")
     }
 
