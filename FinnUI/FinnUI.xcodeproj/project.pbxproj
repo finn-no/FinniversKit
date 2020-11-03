@@ -485,7 +485,6 @@
 			children = (
 				4DDD45A0250FA7BD007DBDD5 /* SearchDisplayMenu */,
 				4DDD45A2250FA7BD007DBDD5 /* SearchFilterTags */,
-				4DD8427525481AC00058D6BB /* ProjectUnits */,
 				4DBC0396250A48BE004E8044 /* ExpandCollapseButton */,
 				4DDC3E502509219B0023AEE7 /* ExtendedProfile */,
 				8D6802E2438E1A527CABD2CE /* ChatAvailability */,
