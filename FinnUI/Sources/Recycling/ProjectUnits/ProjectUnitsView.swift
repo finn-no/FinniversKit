@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 import Foundation
 import FinniversKit
 
@@ -6,7 +10,7 @@ public protocol ProjectUnitsViewDelegate: AnyObject {
     func projectUnitsView(_ projectUnitsView: ProjectUnitsView, didSelectUnitAtIndex index: Int)
 }
 
-public protocol ProjectUnitsDataSource: AnyObject {
+public protocol ProjectUnitsViewDataSource: AnyObject {
     func numberOfItems(inProjectUnitsView view: ProjectUnitsView) -> Int
     func projectUnitsView(_ projectUnitsView: ProjectUnitsView, modelAtIndex index: Int) -> ProjectUnitViewModel?
     func projectUnitsView(_ projectUnitsView: ProjectUnitsView, unitAtIndexIsFavorite index: Int) -> Bool
@@ -49,15 +53,19 @@ public class ProjectUnitsView: UIView {
         return pageControl
     }()
 
+    private lazy var titleLabel: Label = {
+        let label = Label(style: titleStyle, withAutoLayout: true)
+        label.text = title
+        return label
+    }()
+
     private var isPagingEnabled: Bool {
-        UIDevice.isIPhone()
+        !isHorizontalSizeClassRegular
     }
 
     private var horizontalSpacing: CGFloat {
         isPagingEnabled ? .spacingS : 0
     }
-
-    private lazy var titleLabel: Label = Label(style: titleStyle, withAutoLayout: true)
 
     private let title: String?
     private let titleStyle: Label.Style
@@ -67,8 +75,14 @@ public class ProjectUnitsView: UIView {
     // MARK: - Public properties
 
     public weak var delegate: ProjectUnitsViewDelegate?
-    public weak var dataSource: ProjectUnitsDataSource?
     public weak var remoteImageViewDataSource: RemoteImageViewDataSource?
+    public weak var dataSource: ProjectUnitsViewDataSource? {
+        didSet {
+            if let dataSource = dataSource, isPagingEnabled {
+                configurePageControl(withNumberOfPages: dataSource.numberOfItems(inProjectUnitsView: self))
+            }
+        }
+    }
 
     // MARK: - Init
 
@@ -86,8 +100,6 @@ public class ProjectUnitsView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        titleLabel.text = title
-
         addSubview(collectionView)
         addSubview(titleLabel)
 
@@ -118,10 +130,13 @@ public class ProjectUnitsView: UIView {
         }
 
         NSLayoutConstraint.activate(constraints)
-        collectionView.reloadData()
     }
 
     // MARK: - Public methods
+
+    public func reloadData() {
+        collectionView.reloadData()
+    }
 
     public func updateFavoriteButtonStates() {
         guard
@@ -169,9 +184,7 @@ public class ProjectUnitsView: UIView {
 
 extension ProjectUnitsView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let numberOfItems = dataSource?.numberOfItems(inProjectUnitsView: self) ?? 0
-        configurePageControl(withNumberOfPages: numberOfItems)
-        return numberOfItems
+        dataSource?.numberOfItems(inProjectUnitsView: self) ?? 0
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

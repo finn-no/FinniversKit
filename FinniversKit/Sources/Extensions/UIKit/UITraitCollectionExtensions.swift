@@ -1,7 +1,7 @@
 import UIKit
 
 extension UIView {
-    var isHorizontalSizeClassRegular: Bool { traitCollection.horizontalSizeClass == .regular }
+    public var isHorizontalSizeClassRegular: Bool { traitCollection.horizontalSizeClass == .regular }
 }
 
 extension UIViewController {

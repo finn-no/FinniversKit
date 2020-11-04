@@ -5,7 +5,6 @@
 import UIKit
 
 public extension UIStackView {
-
     convenience init(axis: NSLayoutConstraint.Axis, spacing: CGFloat? = nil, withAutoLayout: Bool = false) {
         self.init(axis: axis, spacing: spacing, distribution: nil, withAutoLayout: withAutoLayout)
     }

@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 import Foundation
 import FinniversKit
 
@@ -24,40 +28,19 @@ class ProjectUnitCell: UICollectionViewCell {
         return imageView
     }()
 
-    private lazy var topDetailLabel: Label = {
-        let label = Label(style: .detail, withAutoLayout: true)
-        label.numberOfLines = 1
-        return label
-    }()
+    private lazy var topDetailLabel = Label(style: .detail, withAutoLayout: true)
 
-    private lazy var titleLabel: Label = {
-        let label = Label(style: .bodyRegular, withAutoLayout: true)
-        label.numberOfLines = 1
-        return label
-    }()
+    private lazy var titleLabel = Label(style: .bodyRegular, withAutoLayout: true)
 
-    private lazy var priceLabel: Label = {
-        let label = Label(style: .bodyStrong, withAutoLayout: true)
-        label.numberOfLines = 1
-        return label
-    }()
+    private lazy var priceLabel = Label(style: .bodyStrong, withAutoLayout: true)
 
-    private lazy var areaLabel: Label = {
-        let label = Label(style: .bodyStrong, withAutoLayout: true)
-        label.numberOfLines = 1
-        return label
-    }()
+    private lazy var areaLabel = Label(style: .bodyStrong, withAutoLayout: true)
 
-    private lazy var bottomDetailLabel: Label = {
-        let label = Label(style: .detail, withAutoLayout: true)
-        label.numberOfLines = 1
-        return label
-    }()
+    private lazy var bottomDetailLabel = Label(style: .detail, withAutoLayout: true)
 
     private lazy var favoriteButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
         button.isUserInteractionEnabled = true
-        button.setImage(UIImage(named: .favoriteDefault).withRenderingMode(.alwaysTemplate), for: .normal)
         button.addTarget(self, action: #selector(handleFavoriteButtonTap), for: .touchUpInside)
         button.tintColor = .stone
         return button
@@ -101,10 +84,10 @@ class ProjectUnitCell: UICollectionViewCell {
         contentView.addSubview(stackView)
         stackView.fillInSuperview()
 
-        let topStackView = UIStackView(axis: .horizontal, distribution: .equalCentering, withAutoLayout: true)
+        let topStackView = UIStackView(axis: .horizontal, distribution: .equalSpacing, withAutoLayout: true)
         topStackView.addArrangedSubviews([topDetailLabel, favoriteButton])
 
-        let bottomStackView = UIStackView(axis: .horizontal, distribution: .equalCentering, withAutoLayout: true)
+        let bottomStackView = UIStackView(axis: .horizontal, distribution: .equalSpacing, withAutoLayout: true)
         bottomStackView.addArrangedSubviews([priceLabel, areaLabel])
 
         stackView.addArrangedSubview(remoteImageView)
@@ -130,7 +113,7 @@ class ProjectUnitCell: UICollectionViewCell {
 
         let fallbackImage = UIImage(named: .noImage)
         if let imageUrl = viewModel.imageUrl {
-            remoteImageView.loadImage(for: imageUrl, imageWidth: ProjectUnitCell.width, loadingColor: .bgSecondary, fallbackImage: UIImage(named: .noImage))
+            remoteImageView.loadImage(for: imageUrl, imageWidth: ProjectUnitCell.width, loadingColor: .bgSecondary, fallbackImage: fallbackImage)
         } else {
             remoteImageView.setImage(fallbackImage, animated: false)
         }
@@ -139,7 +122,7 @@ class ProjectUnitCell: UICollectionViewCell {
     // MARK: - Private methods
 
     private func updateFavoriteButton(isFavorite: Bool) {
-        let favoriteImage = isFavorite ? UIImage(named: .favoriteActive) : UIImage(named: .favoriteDefault).withRenderingMode(.alwaysTemplate) // add demo for fave button?
+        let favoriteImage = isFavorite ? UIImage(named: .favoriteActive) : UIImage(named: .favoriteDefault).withRenderingMode(.alwaysTemplate)
         favoriteButton.setImage(favoriteImage, for: .normal)
     }
 
