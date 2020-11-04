@@ -6,7 +6,7 @@ import UIKit.UIDevice
 
 // MARK: - UIDevice
 
-extension UIDevice {
+public extension UIDevice {
 
     class func isIPad() -> Bool {
         return current.userInterfaceIdiom == .pad
