@@ -76,13 +76,7 @@ public class ProjectUnitsView: UIView {
 
     public weak var delegate: ProjectUnitsViewDelegate?
     public weak var remoteImageViewDataSource: RemoteImageViewDataSource?
-    public weak var dataSource: ProjectUnitsViewDataSource? {
-        didSet {
-            if let dataSource = dataSource, isPagingEnabled {
-                configurePageControl(withNumberOfPages: dataSource.numberOfItems(inProjectUnitsView: self))
-            }
-        }
-    }
+    public weak var dataSource: ProjectUnitsViewDataSource?
 
     // MARK: - Init
 
@@ -184,7 +178,9 @@ public class ProjectUnitsView: UIView {
 
 extension ProjectUnitsView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        dataSource?.numberOfItems(inProjectUnitsView: self) ?? 0
+        let numberOfItems = dataSource?.numberOfItems(inProjectUnitsView: self) ?? 0
+        configurePageControl(withNumberOfPages: numberOfItems)
+        return numberOfItems
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

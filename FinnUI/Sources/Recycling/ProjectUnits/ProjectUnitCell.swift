@@ -29,13 +29,9 @@ class ProjectUnitCell: UICollectionViewCell {
     }()
 
     private lazy var topDetailLabel = Label(style: .detail, withAutoLayout: true)
-
     private lazy var titleLabel = Label(style: .bodyRegular, withAutoLayout: true)
-
     private lazy var priceLabel = Label(style: .bodyStrong, withAutoLayout: true)
-
     private lazy var areaLabel = Label(style: .bodyStrong, withAutoLayout: true)
-
     private lazy var bottomDetailLabel = Label(style: .detail, withAutoLayout: true)
 
     private lazy var favoriteButton: UIButton = {
@@ -84,11 +80,8 @@ class ProjectUnitCell: UICollectionViewCell {
         contentView.addSubview(stackView)
         stackView.fillInSuperview()
 
-        let topStackView = UIStackView(axis: .horizontal, distribution: .equalSpacing, withAutoLayout: true)
-        topStackView.addArrangedSubviews([topDetailLabel, favoriteButton])
-
-        let bottomStackView = UIStackView(axis: .horizontal, distribution: .equalSpacing, withAutoLayout: true)
-        bottomStackView.addArrangedSubviews([priceLabel, areaLabel])
+        let topStackView = createStackView(withLeftColumn: topDetailLabel, rightColumn: favoriteButton)
+        let bottomStackView = createStackView(withLeftColumn: priceLabel, rightColumn: areaLabel)
 
         stackView.addArrangedSubview(remoteImageView)
         stackView.addArrangedSubview(topStackView)
@@ -100,6 +93,13 @@ class ProjectUnitCell: UICollectionViewCell {
             remoteImageView.heightAnchor.constraint(equalToConstant: 190),
             favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.widthAnchor)
         ])
+    }
+
+    private func createStackView(withLeftColumn leftColumn: UIView, rightColumn: UIView) -> UIStackView {
+        let stackView = UIStackView(axis: .horizontal, withAutoLayout: true)
+        stackView.distribution = .equalSpacing
+        stackView.addArrangedSubviews([leftColumn, rightColumn])
+        return stackView
     }
 
     // MARK: - Internal methods
