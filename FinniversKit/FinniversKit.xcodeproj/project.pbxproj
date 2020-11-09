@@ -1293,7 +1293,7 @@
 				44D912492077AC8A00486848 /* Fullscreen */,
 				4447F6B61FDB2B110033DBC1 /* Protocols */,
 				441FE414209A24E500B04EF1 /* Recycling */,
-				4447F6B81FDB2B110033DBC1 /* Resources */,
+				4447F6B81FDB2B110033DBC1 /* Assets */,
 				087A5BB422A7D84600184640 /* Util */,
 			);
 			path = Sources;
@@ -1423,7 +1423,7 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		4447F6B81FDB2B110033DBC1 /* Resources */ = {
+		4447F6B81FDB2B110033DBC1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
 				4447F6BA1FDB2B110033DBC1 /* Fonts */,
@@ -1434,7 +1434,7 @@
 				DAA9A3AF2102157B0021F7DC /* RadiobuttonAnimation.xcassets */,
 				44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */,
 			);
-			path = Resources;
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		4447F6BA1FDB2B110033DBC1 /* Fonts */ = {
