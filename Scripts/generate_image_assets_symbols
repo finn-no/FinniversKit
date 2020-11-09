@@ -14,9 +14,9 @@ output_filename = ARGV[1]
 assets_access_modifier_arg = ARGV[2] || ""
 access_modifier = assets_access_modifier_arg == "public" ? "public " : ""
 
-input = ["#{path}/Sources/Resources/Icons.xcassets", "#{path}/Sources/Resources/Assets.xcassets"]
+input = ["#{path}/Sources/Assets/Icons.xcassets", "#{path}/Sources/Assets/Assets.xcassets"]
 
-output_path = File.join(path,  "Sources", "Resources")
+output_path = File.join(path, "Sources", "Assets")
 
 temp_path = "/tmp/"
 
