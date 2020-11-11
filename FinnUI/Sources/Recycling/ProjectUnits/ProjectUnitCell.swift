@@ -24,7 +24,6 @@ class ProjectUnitCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = .spacingS
         imageView.layer.masksToBounds = true
-        imageView.backgroundColor = .bgSecondary
         return imageView
     }()
 
@@ -116,6 +115,7 @@ class ProjectUnitCell: UICollectionViewCell {
             remoteImageView.loadImage(for: imageUrl, imageWidth: ProjectUnitCell.width, loadingColor: .bgSecondary, fallbackImage: fallbackImage)
         } else {
             remoteImageView.setImage(fallbackImage, animated: false)
+            remoteImageView.backgroundColor = .bgSecondary
         }
     }
 
