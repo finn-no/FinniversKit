@@ -16,6 +16,9 @@ struct Device {
         // swiftlint:disable:next identifier_name
         case phone6_1inch = "iPhone 12 Pro (6.1-inch)"
 
+        // swiftlint:disable:next identifier_name
+        case phone6_7inch = "iPhone 12 Pro Max (6.7-inch)"
+
         case padPortraitOneThird = "iPad Portrait 1/3"
 
         case padPortraitTwoThirds = "iPad Portrait 2/3"
@@ -40,7 +43,7 @@ struct Device {
     }
     var isEnabled: Bool {
         switch kind {
-        case .phone4inch, .phone4_7inch, .phone5_5inch, .phone5_8inch, .phone6_1inch:
+        case .phone4inch, .phone4_7inch, .phone5_5inch, .phone5_8inch, .phone6_1inch, .phone6_7inch:
             let currentSize = UIScreen.main.bounds.size
             return frame.width <= currentSize.width && frame.height <= currentSize.height
         case .padLandscapeOneThird, .padLandscapeOneHalf, .padPortraitOneThird, .padPortraitTwoThirds, .padPortraitFull, .padLandscapeFull, .padLandscapeTwoThirds:
@@ -67,6 +70,8 @@ struct Device {
             size = .init(width: 375, height: 812)
         case .phone6_1inch:
             size = .init(width: 390, height: 844)
+        case .phone6_7inch:
+            size = .init(width: 428, height: 926)
         case .padPortraitOneThird:
             size = .init(width: 320, height: UIScreen.main.bounds.height)
         case .padPortraitTwoThirds:
@@ -89,7 +94,7 @@ struct Device {
         let y: CGFloat = (UIScreen.main.bounds.height - size.height) / 2
 
         switch kind {
-        case .phone4inch, .phone4_7inch, .phone5_5inch, .phone5_8inch, .phone6_1inch:
+        case .phone4inch, .phone4_7inch, .phone5_5inch, .phone5_8inch, .phone6_1inch, .phone6_7inch:
             horizontalSizeClass = .compact
             userInterfaceIdiom = .phone
             autoresizingMask = [.flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin, .flexibleBottomMargin]
@@ -123,7 +128,8 @@ struct Device {
             Device(kind: .phone4_7inch),
             Device(kind: .phone5_5inch),
             Device(kind: .phone5_8inch),
-            Device(kind: .phone6_1inch)
+            Device(kind: .phone6_1inch),
+            Device(kind: .phone6_7inch),
         ]
 
         let isPortrait = UIDevice.current.userInterfaceIdiom == .pad && UIScreen.main.bounds.size.height > UIScreen.main.bounds.size.width
