@@ -28,6 +28,10 @@ public struct Config {
 
 @objc public extension Bundle {
     static var finniversKit: Bundle {
-        Bundle(for: BasicTableViewCell.self)
+        #if SWIFT_PACKAGE
+        return Bundle.module
+        #else
+        return Bundle(for: BasicTableViewCell.self)
+        #endif
     }
 }
