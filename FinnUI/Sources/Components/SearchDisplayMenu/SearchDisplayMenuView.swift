@@ -46,7 +46,7 @@ public class SearchDisplayMenuView: UIView {
         self.sortAccessibilityLabel = sortAccessibilityLabel
         self.changeDisplayTypeAccessibilityLabel = changeDisplayTypeAccessibilityLabel
         super.init(frame: .zero)
-        self.translatesAutoresizingMaskIntoConstraints = !withAutoLayout
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setup()
     }
 
@@ -117,19 +117,6 @@ public class SearchDisplayMenuView: UIView {
 }
 
 // MARK: - Private extensions
-
-private extension UIImageView {
-
-    private static let verticalIconPadding: CGFloat = .spacingS + .spacingXXS
-
-    func insertImageWithPaddings(_ image: UIImage) {
-        self.image = image
-            .withAlignmentRectInsets(UIEdgeInsets(
-                top: -UIImageView.verticalIconPadding,
-                bottom: -UIImageView.verticalIconPadding))
-            .withRenderingMode(.alwaysTemplate)
-    }
-}
 
 private extension CGColor {
     class var borderColor: CGColor {
