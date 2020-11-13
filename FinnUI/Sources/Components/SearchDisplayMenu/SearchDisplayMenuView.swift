@@ -17,10 +17,13 @@ public class SearchDisplayMenuView: UIView {
     }()
 
     private lazy var sortImageView: UIImageView =
-        createTappableImageView(with: UIImage(named: .sort), action: #selector(sortButtonTapped))
+        createTappableImageView(with: UIImage(named: .sort), accessibilityLabel: sortAccessibilityLabel, action: #selector(sortButtonTapped))
 
     private lazy var changeDisplayTypeImageView: UIImageView =
-        createTappableImageView(with: UIImage(named: .pin), action: #selector(changeDisplayTypeButtonTapped))
+        createTappableImageView(with: UIImage(named: .pin), accessibilityLabel: changeDisplayTypeAccessibilityLabel, action: #selector(changeDisplayTypeButtonTapped))
+
+    private let sortAccessibilityLabel: String
+    private let changeDisplayTypeAccessibilityLabel: String
 
     // MARK: - Public properties
 
@@ -29,8 +32,15 @@ public class SearchDisplayMenuView: UIView {
 
     // MARK: - Init
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(
+        sortAccessibilityLabel: String,
+        changeDisplayTypeAccessibilityLabel: String,
+        withAutoLayout: Bool = false
+    ) {
+        self.sortAccessibilityLabel = sortAccessibilityLabel
+        self.changeDisplayTypeAccessibilityLabel = changeDisplayTypeAccessibilityLabel
+        super.init(frame: .zero)
+        self.translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setup()
     }
 
@@ -72,7 +82,7 @@ public class SearchDisplayMenuView: UIView {
         ])
     }
 
-    private func createTappableImageView(with image: UIImage, action: Selector) -> UIImageView {
+    private func createTappableImageView(with image: UIImage, accessibilityLabel: String, action: Selector) -> UIImageView {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.insertImageWithPaddings(image)
         imageView.contentMode = .scaleAspectFit
@@ -80,6 +90,8 @@ public class SearchDisplayMenuView: UIView {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: action)
         imageView.addGestureRecognizer(tapGestureRecognizer)
         imageView.isUserInteractionEnabled = true
+        imageView.isAccessibilityElement = true
+        imageView.accessibilityLabel = accessibilityLabel
         return imageView
     }
 
