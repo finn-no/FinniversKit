@@ -15,24 +15,23 @@ public protocol SearchResultMapViewDelegate: AnyObject {
 
 public final class SearchResultMapView: UIView {
 
-    private enum AnnotationIdentifier: String {
-        case cluster = "clusterPOI"
-        case poi = "POI"
-    }
+    // MARK: - Public properties
 
     public weak var delegate: SearchResultMapViewDelegate?
 
     public var zoomLevel: Double {
-        return mapView.zoomLevel
+        mapView.zoomLevel
     }
 
     public var centerCoordinate: CLLocationCoordinate2D {
-        return mapView.centerCoordinate
+        mapView.centerCoordinate
     }
 
     public var visibleMapRect: MKMapRect {
-        return mapView.visibleMapRect
+        mapView.visibleMapRect
     }
+
+    // MARK: - Private properties
 
     private lazy var mapView: MKMapView = {
         let view = MKMapView()
@@ -61,7 +60,7 @@ public final class SearchResultMapView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Public
+    // MARK: - Public methods
 
     public func configure(withInitialRegion region: MKCoordinateRegion, andShowingUserLocation showingUserLocation: Bool) {
         setRegion(region, animated: false)
@@ -143,23 +142,22 @@ public final class SearchResultMapView: UIView {
         NSLayoutConstraint.activate([
             mapSettingsButton.topAnchor.constraint(equalTo: mapView.topAnchor, constant: .spacingS),
             mapSettingsButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -.spacingS)
-            ])
+        ])
     }
 
 }
 
-// MARK: - Extensions
+// MARK: - MapSettingsViewDelegate
 
 extension SearchResultMapView: MapSettingsViewDelegate {
-
     public func mapSettingsView(_ view: MapSettingsView, didSelect action: MapSettingsView.Action) {
         delegate?.searchResultMapView(self, didSelect: action, in: view)
     }
-
 }
 
-extension SearchResultMapView: MKMapViewDelegate {
+// MARK: - MKMapViewDelegate
 
+extension SearchResultMapView: MKMapViewDelegate {
     public func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if let overlay = overlay as? MKTileOverlay {
             return MKTileOverlayRenderer(tileOverlay: overlay)
@@ -210,5 +208,4 @@ extension SearchResultMapView: MKMapViewDelegate {
     public func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         delegate?.searchResultMapView(self, didUpdate: userLocation)
     }
-
 }
