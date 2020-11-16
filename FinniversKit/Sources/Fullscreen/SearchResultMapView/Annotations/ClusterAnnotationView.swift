@@ -29,8 +29,8 @@ class ClusterAnnotationView: MKAnnotationView {
         addSubview(annotationView)
 
         NSLayoutConstraint.activate([
-            annotationView.widthAnchor.constraint(equalToConstant: 40),
-            annotationView.heightAnchor.constraint(equalToConstant: 40),
+            annotationView.widthAnchor.constraint(equalToConstant: 32),
+            annotationView.heightAnchor.constraint(equalToConstant: 32),
             annotationView.centerXAnchor.constraint(equalTo: centerXAnchor),
             annotationView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
