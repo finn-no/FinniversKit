@@ -25,7 +25,7 @@ public extension Label {
         @available(*, deprecated, message: "Use captionStrong instead.")
         case captionHeavy
 
-        var font: UIFont {
+        public var font: UIFont {
             switch self {
             case .title1: return UIFont.title1
             case .title2: return UIFont.title2

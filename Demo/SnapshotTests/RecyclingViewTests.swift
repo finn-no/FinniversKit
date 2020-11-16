@@ -7,8 +7,8 @@ import XCTest
 import FinniversKit
 
 class RecyclingViewTests: XCTestCase {
-    private func snapshot(_ component: RecyclingDemoViews, includeIPad: Bool = false, delay: TimeInterval? = nil, testName: String = #function) {
-        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, delay: delay, testName: testName)
+    private func snapshot(_ component: RecyclingDemoViews, includeIPad: Bool = false, delay: TimeInterval? = nil, record recording: Bool = false, testName: String = #function) {
+        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, delay: delay, record: recording, testName: testName)
     }
 
     // MARK: - Tests
@@ -57,5 +57,9 @@ class RecyclingViewTests: XCTestCase {
 
     func testBasicTableView() {
         snapshot(.basicTableView)
+    }
+
+    func testProjectUnitsView() {
+        snapshot(.projectUnitsView)
     }
 }
