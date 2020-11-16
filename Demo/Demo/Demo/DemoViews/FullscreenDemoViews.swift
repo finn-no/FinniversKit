@@ -148,7 +148,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
             return DemoViewController<SearchDisplayTypeSelectionDemoView>()
         case .messageUserRequiredSheet:
             let sheet = MessageUserRequiredSheet()
-            sheet.configure(MessageUserRequiredData.labelText)
+            sheet.configure(MessageUserRequiredData.labelText, buttonText: MessageUserRequiredData.buttonText)
             return sheet
         }
     }
