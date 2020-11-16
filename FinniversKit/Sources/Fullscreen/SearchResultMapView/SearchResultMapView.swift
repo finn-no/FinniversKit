@@ -169,16 +169,20 @@ extension SearchResultMapView: MKMapViewDelegate {
     }
 
     public func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard !(annotation is MKUserLocation) else { return nil }
+        guard
+            !(annotation is MKUserLocation),
+            let annotation = annotation as? SearchResultMapViewAnnotation
+        else { return nil }
 
-        if let annotation = annotation as? SearchResultMapViewAnnotation {
-            let marker = MKAnnotationView(annotation: annotation, reuseIdentifier: annotation.isCluster ? AnnotationIdentifier.cluster.rawValue : AnnotationIdentifier.poi.rawValue)
-            marker.image = annotation.image
-            marker.centerOffset = CGPoint(x: 0.5, y: 1.0)
-            return marker
+        let annotationView: MKAnnotationView
+        if annotation.hits == 1 {
+            annotationView = mapView.dequeue(PinAnnotationView.self, for: annotation)
+        } else {
+            annotationView = mapView.dequeue(ClusterAnnotationView.self, for: annotation)
         }
 
-        return nil
+        annotationView.centerOffset = CGPoint(x: 0.5, y: 1.0)
+        return annotationView
     }
 
     public func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
