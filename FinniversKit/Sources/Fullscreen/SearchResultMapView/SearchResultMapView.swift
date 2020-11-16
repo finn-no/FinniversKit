@@ -39,6 +39,8 @@ public final class SearchResultMapView: UIView {
         view.delegate = self
         view.isRotateEnabled = false
         view.isPitchEnabled = false
+        view.register(PinAnnotationView.self)
+        view.register(ClusterAnnotationView.self)
         return view
     }()
 
