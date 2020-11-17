@@ -2,6 +2,10 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
+public protocol MessageUserRequiredViewDelegate: AnyObject {
+    func didTapActionButton(_ sender: Button)
+}
+
 public class MessageUserRequiredView: UIView {
     private lazy var imageView: UIImageView = {
         let image = UIImage(named: .messageUserRequired).withRenderingMode(.alwaysTemplate)
@@ -30,18 +34,31 @@ public class MessageUserRequiredView: UIView {
         return view
     }()
 
+    private lazy var actionButton: Button = {
+        let button = Button(style: .default, size: .normal, withAutoLayout: true)
+        button.addTarget(self, action: #selector(handleActionButtonTap), for: .touchUpInside)
+        return button
+    }()
+
+    public weak var delegate: MessageUserRequiredViewDelegate?
+
     public override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         setup()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     private func setup() {
         backgroundColor = .bgPrimary
         addSubview(imageView)
         addSubview(messageView)
+        addSubview(actionButton)
 
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             imageView.heightAnchor.constraint(equalToConstant: 64),
             imageView.widthAnchor.constraint(equalToConstant: 64),
@@ -49,15 +66,19 @@ public class MessageUserRequiredView: UIView {
             messageView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .spacingM),
             messageView.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor, constant: .spacingS),
             messageView.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor, constant: -.spacingS),
-            messageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: .spacingS)
+
+            actionButton.topAnchor.constraint(equalTo: messageView.bottomAnchor, constant: .spacingL),
+            actionButton.leadingAnchor.constraint(equalTo: messageView.leadingAnchor, constant: .spacingM),
+            actionButton.trailingAnchor.constraint(equalTo: messageView.trailingAnchor, constant: -.spacingM),
         ])
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    @objc private func handleActionButtonTap(_ sender: Button) {
+        delegate?.didTapActionButton(sender)
     }
 
-    public func configure(_ message: String) {
+    public func configure(_ message: String, buttonText text: String) {
         messageView.text = message
+        actionButton.setTitle(text, for: .normal)
     }
 }
