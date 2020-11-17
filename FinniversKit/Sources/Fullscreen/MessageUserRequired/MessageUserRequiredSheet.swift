@@ -9,7 +9,7 @@ public protocol MessageUserRequiredSheetDelegate: AnyObject {
 public class MessageUserRequiredSheet: BottomSheet {
     private let sheetHeight: CGFloat = 280
 
-    weak var messageUserRequiredViewDelegate: MessageUserRequiredViewDelegate?
+    public weak var messageUserRequiredViewDelegate: MessageUserRequiredViewDelegate?
     weak var viewController: MessageUserRequiredSheetViewController?
 
     // MARK: - Initalization
