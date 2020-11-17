@@ -82,7 +82,7 @@ private class AnnotationView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        layer.cornerRadius = max(bounds.width, bounds.height) / 2
+        layer.cornerRadius = min(bounds.width, bounds.height) / 2
         layer.backgroundColor = UIColor.licorice.cgColor
     }
 }
