@@ -47,9 +47,10 @@ public class ViewingsView: UIView {
 
     // MARK: - Init
 
-    public init(titleStyle: Label.Style = .title3) {
+    public init(titleStyle: Label.Style = .title3, withAutoLayout: Bool = false) {
         self.titleStyle = titleStyle
         super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setup()
     }
 
