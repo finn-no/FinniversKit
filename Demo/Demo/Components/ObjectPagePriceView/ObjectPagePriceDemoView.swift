@@ -57,7 +57,7 @@ class ObjectPagePriceDemoView: UIView, Tweakable {
                 self?.priceView.configure(with: .bapWantedWithMaxPriceAd)
             }),
 
-            TweakingOption(title: "New construction", action: { [weak self] in
+            TweakingOption(title: "Realestate: New construction", action: { [weak self] in
                 self?.priceView.configure(with: .newConstruction)
             })
         ]
