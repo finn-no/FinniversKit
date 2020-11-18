@@ -110,6 +110,14 @@ public class ViewingsView: UIView {
         return titleHeight + titleBottomMargin + noteHeight + tableHeight
     }
 
+    public override func systemLayoutSizeFitting(
+        _ targetSize: CGSize,
+        withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
+        verticalFittingPriority: UILayoutPriority
+    ) -> CGSize {
+        CGSize(width: targetSize.width, height: heightNeeded(forWidth: targetSize.width))
+    }
+
     // MARK: - Private methods
 
     private func attributedNoteString(with text: String) -> NSAttributedString {
