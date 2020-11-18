@@ -25,6 +25,7 @@ class ViewingsDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
+        viewingsView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(viewingsView)
         viewingsView.configure(with: viewModel)
 
