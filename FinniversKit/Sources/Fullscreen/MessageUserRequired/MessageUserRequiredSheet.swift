@@ -9,7 +9,7 @@ public protocol MessageUserRequiredSheetDelegate: AnyObject {
 public class MessageUserRequiredSheet: BottomSheet {
     private let sheetHeight: CGFloat = 280
 
-    weak var messageUserRequiredViewDelegate: MessageUserRequiredViewDelegate?
+    public weak var messageUserRequiredSheetDelegate: MessageUserRequiredSheetDelegate?
     weak var viewController: MessageUserRequiredSheetViewController?
 
     // MARK: - Initalization
@@ -37,7 +37,7 @@ public class MessageUserRequiredSheet: BottomSheet {
 
 extension MessageUserRequiredSheet: MessageUserRequiredViewDelegate {
     public func didTapActionButton(_ sender: Button) {
-        messageUserRequiredViewDelegate?.didTapActionButton(sender)
+        messageUserRequiredSheetDelegate?.didTapActionButton(sender)
     }
 }
 
