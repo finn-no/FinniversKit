@@ -70,7 +70,7 @@ public struct DefaultStyle: ButtonStyle {
         .padding(.vertical, .spacingS)
         .padding(.horizontal, .spacingM)
         .background(
-            configuration.isPressed ? Color(.defaultButtonHighlightedBodyColor) : Color.bgPrimary
+            configuration.isPressed ? Color(UIColor.defaultButtonHighlightedBodyColor) : Color.bgPrimary
         )
         .roundedBorder(
             radius: .spacingS,

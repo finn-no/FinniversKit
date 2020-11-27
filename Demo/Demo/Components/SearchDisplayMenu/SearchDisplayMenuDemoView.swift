@@ -6,7 +6,11 @@ import FinnUI
 
 class SearchDisplayMenuDemoView: UIView {
     private lazy var view: SearchDisplayMenuView = {
-        let view = SearchDisplayMenuView(frame: .zero)
+        let view = SearchDisplayMenuView(
+            sortAccessibilityLabel: "Sorter",
+            changeDisplayTypeAccessibilityLabel: "Endre visningstype",
+            withAutoLayout: true
+        )
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         return view

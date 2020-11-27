@@ -16,11 +16,20 @@ public class SearchDisplayMenuView: UIView {
         return view
     }()
 
-    private lazy var sortImageView: UIImageView =
-        createTappableImageView(with: UIImage(named: .sort), action: #selector(sortButtonTapped))
+    private lazy var sortButton: UIButton = createButton(
+        with: UIImage(named: .sort),
+        accessibilityLabel: sortAccessibilityLabel,
+        action: #selector(sortButtonTapped)
+    )
 
-    private lazy var changeDisplayTypeImageView: UIImageView =
-        createTappableImageView(with: UIImage(named: .pin), action: #selector(changeDisplayTypeButtonTapped))
+    private lazy var changeDisplayTypeButton: UIButton = createButton(
+        with: UIImage(named: .pin),
+        accessibilityLabel: changeDisplayTypeAccessibilityLabel,
+        action: #selector(changeDisplayTypeButtonTapped)
+    )
+
+    private let sortAccessibilityLabel: String
+    private let changeDisplayTypeAccessibilityLabel: String
 
     // MARK: - Public properties
 
@@ -29,8 +38,15 @@ public class SearchDisplayMenuView: UIView {
 
     // MARK: - Init
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(
+        sortAccessibilityLabel: String,
+        changeDisplayTypeAccessibilityLabel: String,
+        withAutoLayout: Bool = false
+    ) {
+        self.sortAccessibilityLabel = sortAccessibilityLabel
+        self.changeDisplayTypeAccessibilityLabel = changeDisplayTypeAccessibilityLabel
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setup()
     }
 
@@ -46,8 +62,8 @@ public class SearchDisplayMenuView: UIView {
         layer.borderWidth = 0.5
 
         addSubview(separatorLine)
-        addSubview(sortImageView)
-        addSubview(changeDisplayTypeImageView)
+        addSubview(sortButton)
+        addSubview(changeDisplayTypeButton)
 
         dropShadow(color: .textPrimary, opacity: 0.20, offset: CGSize(width: 0, height: 4.5), radius: 13)
 
@@ -55,32 +71,31 @@ public class SearchDisplayMenuView: UIView {
             widthAnchor.constraint(equalToConstant: 128),
             heightAnchor.constraint(equalToConstant: SearchDisplayMenuView.height),
 
-            sortImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXXS),
-            sortImageView.trailingAnchor.constraint(equalTo: separatorLine.leadingAnchor),
-            sortImageView.topAnchor.constraint(equalTo: topAnchor),
-            sortImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            sortButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXXS),
+            sortButton.trailingAnchor.constraint(equalTo: separatorLine.leadingAnchor),
+            sortButton.topAnchor.constraint(equalTo: topAnchor),
+            sortButton.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             separatorLine.centerXAnchor.constraint(equalTo: centerXAnchor),
             separatorLine.topAnchor.constraint(equalTo: topAnchor),
             separatorLine.bottomAnchor.constraint(equalTo: bottomAnchor),
             separatorLine.widthAnchor.constraint(equalToConstant: 1.0/UIScreen.main.scale),
 
-            changeDisplayTypeImageView.leadingAnchor.constraint(equalTo: separatorLine.trailingAnchor),
-            changeDisplayTypeImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXXS),
-            changeDisplayTypeImageView.topAnchor.constraint(equalTo: topAnchor),
-            changeDisplayTypeImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            changeDisplayTypeButton.leadingAnchor.constraint(equalTo: separatorLine.trailingAnchor),
+            changeDisplayTypeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXXS),
+            changeDisplayTypeButton.topAnchor.constraint(equalTo: topAnchor),
+            changeDisplayTypeButton.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
 
-    private func createTappableImageView(with image: UIImage, action: Selector) -> UIImageView {
-        let imageView = UIImageView(withAutoLayout: true)
-        imageView.insertImageWithPaddings(image)
-        imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .iconPrimary
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: action)
-        imageView.addGestureRecognizer(tapGestureRecognizer)
-        imageView.isUserInteractionEnabled = true
-        return imageView
+    private func createButton(with image: UIImage, accessibilityLabel: String, action: Selector) -> UIButton {
+        let button = UIButton(withAutoLayout: true)
+        button.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = .iconPrimary
+        button.addTarget(self, action: action, for: .touchUpInside)
+        button.isAccessibilityElement = true
+        button.accessibilityLabel = accessibilityLabel
+        return button
     }
 
     // MARK: - Lifecycle
@@ -102,19 +117,6 @@ public class SearchDisplayMenuView: UIView {
 }
 
 // MARK: - Private extensions
-
-private extension UIImageView {
-
-    private static let verticalIconPadding: CGFloat = .spacingS + .spacingXXS
-
-    func insertImageWithPaddings(_ image: UIImage) {
-        self.image = image
-            .withAlignmentRectInsets(UIEdgeInsets(
-                top: -UIImageView.verticalIconPadding,
-                bottom: -UIImageView.verticalIconPadding))
-            .withRenderingMode(.alwaysTemplate)
-    }
-}
 
 private extension CGColor {
     class var borderColor: CGColor {

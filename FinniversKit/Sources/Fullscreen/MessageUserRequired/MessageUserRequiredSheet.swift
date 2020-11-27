@@ -2,8 +2,14 @@
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
 
+public protocol MessageUserRequiredSheetDelegate: AnyObject {
+    func didTapActionButton(_ sender: Button)
+}
+
 public class MessageUserRequiredSheet: BottomSheet {
-    private let sheetHeight: CGFloat = 240
+    private let sheetHeight: CGFloat = 280
+
+    public weak var messageUserRequiredSheetDelegate: MessageUserRequiredSheetDelegate?
     weak var viewController: MessageUserRequiredSheetViewController?
 
     // MARK: - Initalization
@@ -17,14 +23,21 @@ public class MessageUserRequiredSheet: BottomSheet {
         super.init(rootViewController: viewController, height: bottomSheetHeight)
 
         self.viewController = viewController
+        viewController.messageUserRequiredView.delegate = self
     }
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
 
-    public func configure(_ message: String) {
-        viewController?.messageUserRequiredView.configure(message)
+    public func configure(_ message: String, buttonText text: String) {
+        viewController?.messageUserRequiredView.configure(message, buttonText: text)
+    }
+}
+
+extension MessageUserRequiredSheet: MessageUserRequiredViewDelegate {
+    public func didTapActionButton(_ sender: Button) {
+        messageUserRequiredSheetDelegate?.didTapActionButton(sender)
     }
 }
 
