@@ -30,16 +30,16 @@ Pod::Spec.new do |s|
   s.requires_arc  = true
 
   s.source_files = 'FinniversKit/Sources/*.{h,m,swift}', 'FinniversKit/Sources/**/*.{h,m,swift}', 'FinniversKit/Sources/**/**/*.{h,m,swift}'
-  s.resources    = 'FinniversKit/Sources/Resources/Fonts/*.ttf', 'FinniversKit/Sources/Resources/*.xcassets', 'FinniversKit/Sources/Resources/Sounds/*.{mp3,wav,sf2}'
+  s.resources    = 'FinniversKit/Sources/Assets/Fonts/*.ttf', 'FinniversKit/Sources/Assets/*.xcassets', 'FinniversKit/Sources/Assets/Sounds/*.{mp3,wav,sf2}'
   s.resource_bundles = {
-      'FinniversKit' => ['FinniversKit/Sources/Resources/*.xcassets', 'FinniversKit/Sources/Resources/Fonts/*.ttf', 'FinniversKit/Sources/Resources/Sounds/*.{mp3,wav,sf2}']
+      'FinniversKit' => ['FinniversKit/Sources/Assets/*.xcassets', 'FinniversKit/Sources/Assets/Fonts/*.ttf', 'FinniversKit/Sources/Assets/Sounds/*.{mp3,wav,sf2}']
   }
   s.frameworks = 'Foundation', 'UIKit'
   s.weak_frameworks = 'SwiftUI'
   s.subspec 'DNA' do |sp|
-    sp.source_files  = 'FinniversKit/Sources/*.{h,m,swift}', 'FinniversKit/Sources/DNA/*.{h,m,swift}', 'FinniversKit/Sources/DNA/**/*.{h,m,swift}', 'FinniversKit/Sources/DNA/**/**/*.{h,m,swift}', 'FinniversKit/Sources/Resources/*.{h,m,swift}', 'FinniversKit/Sources/Resources/**/*.{h,m,swift}', 'FinniversKit/Sources/Resources/**/**/*.{h,m,swift}'
+    sp.source_files  = 'FinniversKit/Sources/*.{h,m,swift}', 'FinniversKit/Sources/DNA/*.{h,m,swift}', 'FinniversKit/Sources/DNA/**/*.{h,m,swift}', 'FinniversKit/Sources/DNA/**/**/*.{h,m,swift}', 'FinniversKit/Sources/Assets/*.{h,m,swift}', 'FinniversKit/Sources/Assets/**/*.{h,m,swift}', 'FinniversKit/Sources/Assets/**/**/*.{h,m,swift}'
     sp.resource_bundles = {
-        'FinniversKitDNA' => ['FinniversKit/Sources/Resources/*.xcassets', 'FinniversKit/Sources/Resources/Fonts/*.ttf']
+        'FinniversKitDNA' => ['FinniversKit/Sources/Assets/*.xcassets', 'FinniversKit/Sources/Assets/Fonts/*.ttf']
     }
     sp.requires_arc = true
     sp.frameworks = 'Foundation', 'UIKit'
