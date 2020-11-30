@@ -55,6 +55,10 @@ class ObjectPagePriceDemoView: UIView, Tweakable {
 
             TweakingOption(title: "BAP wanted w/ max price", action: { [weak self] in
                 self?.priceView.configure(with: .bapWantedWithMaxPriceAd)
+            }),
+
+            TweakingOption(title: "Realestate: New construction", action: { [weak self] in
+                self?.priceView.configure(with: .newConstruction)
             })
         ]
     }()
@@ -296,6 +300,17 @@ extension ObjectPagePriceViewModel {
             title: "Makspris",
             totalPrice: "5 500 kr",
             adTypeText: "Ønskes kjøpt"
+        )
+    }()
+
+    static var newConstruction: ObjectPagePriceViewModel = {
+        ObjectPagePriceViewModel(
+            title: "Pris",
+            totalPrice: "4 800 000 - 5 919 000 kr",
+            priceDetails: [
+                KeyValuePair(title: "Totalpris", value: "5 000 000 - 6 120 000 kr")
+            ],
+            priceDetailsNumberOfColumns: 1
         )
     }()
 }

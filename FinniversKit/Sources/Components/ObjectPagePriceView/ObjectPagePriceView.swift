@@ -36,7 +36,6 @@ public class ObjectPagePriceView: UIView {
 
     private lazy var priceDetailsView: KeyValueGridView = {
         let view = KeyValueGridView(withAutoLayout: true)
-        view.numberOfColumns = 2
         return view
     }()
 
@@ -84,6 +83,7 @@ public class ObjectPagePriceView: UIView {
         if !viewModel.priceDetails.isEmpty {
             priceDetailsView.configure(with: viewModel.priceDetails)
             wrapperStackView.addArrangedSubview(priceDetailsView)
+            priceDetailsView.numberOfColumns = viewModel.priceDetailsNumberOfColumns
         }
 
         wrapperStackView.addArrangedSubview(linkButtonListView)

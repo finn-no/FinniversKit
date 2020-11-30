@@ -24,6 +24,9 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
             },
             TweakingOption(title: "Torget giveaway") { [weak self] in
                 self?.configureTitleView(title: "Sofa med sjeselong", subtitle: "Gis bort", subtitleStyle: .title3, spacingAfterTitle: .spacingS)
+            },
+            TweakingOption(title: "Realestate new construction market") { [weak self] in
+                self?.configureTitleView(title: "Hareveien 11", titleStyle: .body, subtitle: "7 lekre selveierleiligheter uten gjenboere", subtitleStyle: .title2)
             }
         ]
     }()

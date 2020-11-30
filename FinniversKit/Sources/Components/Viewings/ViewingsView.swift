@@ -19,7 +19,7 @@ public class ViewingsView: UIView {
     private let titleBottomMargin: CGFloat = .spacingS
     private let noteBottomMargin: CGFloat = .spacingS
 
-    private lazy var titleLabel: Label = Label(style: .title3, withAutoLayout: true)
+    private lazy var titleLabel: Label = Label(style: titleStyle, withAutoLayout: true)
 
     private lazy var noteLabel: Label = {
         let label = Label(withAutoLayout: true)
@@ -43,10 +43,14 @@ public class ViewingsView: UIView {
         return tableView
     }()
 
+    private let titleStyle: Label.Style
+
     // MARK: - Init
 
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(titleStyle: Label.Style = .title3, withAutoLayout: Bool = false) {
+        self.titleStyle = titleStyle
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setup()
     }
 
@@ -105,6 +109,14 @@ public class ViewingsView: UIView {
             noteHeight = noteLabel.sizeThatFits(CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)).height + noteBottomMargin
         }
         return titleHeight + titleBottomMargin + noteHeight + tableHeight
+    }
+
+    public override func systemLayoutSizeFitting(
+        _ targetSize: CGSize,
+        withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
+        verticalFittingPriority: UILayoutPriority
+    ) -> CGSize {
+        CGSize(width: targetSize.width, height: heightNeeded(forWidth: targetSize.width))
     }
 
     // MARK: - Private methods
