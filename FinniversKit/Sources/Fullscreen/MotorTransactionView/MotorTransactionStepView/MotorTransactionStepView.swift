@@ -87,6 +87,8 @@ public class MotorTransactionStepView: UIView {
         super.init(frame: .zero)
 
         translatesAutoresizingMaskIntoConstraints = !autoLayout
+        layer.masksToBounds = true
+
         setup()
     }
 
