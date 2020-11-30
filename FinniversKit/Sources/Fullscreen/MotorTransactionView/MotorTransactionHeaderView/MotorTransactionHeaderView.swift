@@ -25,16 +25,14 @@ public class MotorTransactionHeaderView: UIView {
         let imageView = RemoteImageView(withAutoLayout: true)
         imageView.backgroundColor = .clear
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.masksToBounds = true
-        imageView.layer.cornerRadius = (MotorTransactionHeaderView.defaultImageSize / 2)
         return imageView
      }()
 
     private static var imageUrl = "https://images.finncdn.no/dynamic/default"
-    private static var defaultImageSize: CGFloat = UITraitCollection.isHorizontalSizeClassRegular ? 200 : 128
+    private static var defaultImageSize: CGFloat = 64
 
     private var loadingColor: UIColor? = .bgSecondary
-    private var fallbackImage = UIImage(named: .noImage)
+    private var fallbackImage = UIImage(named: .car)
 
     private var model: MotorTransactionHeaderViewModel
 
@@ -81,17 +79,30 @@ public class MotorTransactionHeaderView: UIView {
         stackView.addArrangedSubview(detailLabel)
         addSubview(stackView)
 
+        let roundedContainerView = UIView(withAutoLayout: true)
+        roundedContainerView.backgroundColor = .bgSecondary
+        roundedContainerView.layer.masksToBounds = true
+        roundedContainerView.layer.cornerRadius = (128 / 2)
+        roundedContainerView.layer.borderWidth = 0.2
+        roundedContainerView.addSubview(imageView)
+        addSubview(roundedContainerView)
+
         NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            imageView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
+            roundedContainerView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            roundedContainerView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
+            roundedContainerView.heightAnchor.constraint(equalToConstant: 128),
+            roundedContainerView.widthAnchor.constraint(equalToConstant: 128),
+
+            imageView.centerYAnchor.constraint(equalTo: roundedContainerView.centerYAnchor),
+            imageView.centerXAnchor.constraint(equalTo: roundedContainerView.centerXAnchor),
             imageView.heightAnchor.constraint(equalToConstant: MotorTransactionHeaderView.defaultImageSize),
             imageView.widthAnchor.constraint(equalToConstant: MotorTransactionHeaderView.defaultImageSize),
 
-            stackView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingM),
-            stackView.topAnchor.constraint(equalTo: imageView.centerYAnchor, constant: -.spacingS),
+            stackView.leadingAnchor.constraint(equalTo: roundedContainerView.trailingAnchor, constant: .spacingM),
+            stackView.topAnchor.constraint(equalTo: roundedContainerView.centerYAnchor, constant: -.spacingS),
             stackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingL),
 
-            bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .spacingS),
+            bottomAnchor.constraint(equalTo: roundedContainerView.bottomAnchor, constant: .spacingS),
          ])
      }
 }
