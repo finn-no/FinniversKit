@@ -154,17 +154,17 @@ public class AdsGridViewCell: UICollectionViewCell {
     private func setup() {
         isAccessibilityElement = true
 
-        addSubview(imageContentView)
+        contentView.addSubview(imageContentView)
         imageContentView.addSubview(imageView)
         imageContentView.addSubview(imageDescriptionView)
         imageView.fillInSuperview()
 
-        addSubview(ribbonView)
-        addSubview(logoImageView)
-        addSubview(subtitleLabel)
-        addSubview(titleLabel)
-        addSubview(favoriteButton)
-        addSubview(accessoryLabel)
+        contentView.addSubview(ribbonView)
+        contentView.addSubview(logoImageView)
+        contentView.addSubview(subtitleLabel)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(favoriteButton)
+        contentView.addSubview(accessoryLabel)
 
         imageDescriptionView.addSubview(iconImageView)
         imageDescriptionView.addSubview(imageTextLabel)
@@ -172,34 +172,34 @@ public class AdsGridViewCell: UICollectionViewCell {
         backgroundColor = .bgPrimary
 
         NSLayoutConstraint.activate([
-            imageContentView.topAnchor.constraint(equalTo: topAnchor),
-            imageContentView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageContentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageContentView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            imageContentView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            imageContentView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageContentView.heightAnchor.constraint(greaterThanOrEqualTo: imageContentView.widthAnchor, multiplier: AdsGridViewCell.minImageAspectRatio),
             imageContentView.heightAnchor.constraint(lessThanOrEqualTo: imageContentView.widthAnchor, multiplier: AdsGridViewCell.maxImageAspectRatio),
 
             ribbonView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: AdsGridViewCell.ribbonTopMargin),
-            ribbonView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
 
             logoImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: .spacingS),
-            logoImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            logoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             logoImageView.widthAnchor.constraint(equalToConstant: 50),
             logoImageView.heightAnchor.constraint(equalToConstant: 30),
 
             subtitleToImageConstraint,
-            subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             subtitleLabel.heightAnchor.constraint(equalToConstant: AdsGridViewCell.subtitleHeight),
 
             titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: AdsGridViewCell.titleTopMargin),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: AdsGridViewCell.titleHeight),
 
             accessoryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            accessoryLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            accessoryLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            accessoryLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -AdsGridViewCell.bottomMargin),
+            accessoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            accessoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            accessoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -AdsGridViewCell.bottomMargin),
 
             iconImageView.leadingAnchor.constraint(equalTo: imageDescriptionView.leadingAnchor, constant: AdsGridViewCell.margin),
             iconImageView.heightAnchor.constraint(equalToConstant: AdsGridViewCell.iconSize),
@@ -209,14 +209,14 @@ public class AdsGridViewCell: UICollectionViewCell {
             imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: AdsGridViewCell.margin),
             imageTextLabel.centerYAnchor.constraint(equalTo: imageDescriptionView.centerYAnchor),
 
-            imageDescriptionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageDescriptionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageDescriptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: AdsGridViewCell.margin),
-            imageDescriptionView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
+            imageDescriptionView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor),
             imageDescriptionView.heightAnchor.constraint(equalToConstant: AdsGridViewCell.imageDescriptionHeight),
             imageDescriptionView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor),
 
-            favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXS),
-            favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXS),
+            favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXS),
+            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingXS),
             favoriteButton.widthAnchor.constraint(equalToConstant: 34),
             favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.heightAnchor)
         ])
