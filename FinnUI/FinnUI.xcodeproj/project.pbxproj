@@ -15,6 +15,8 @@
 		46DE7D5D242B9BCB00DB1707 /* FinnUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46DE7D53242B9BCB00DB1707 /* FinnUI.framework */; };
 		46DE7D64242B9BCB00DB1707 /* FinnUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 46DE7D56242B9BCB00DB1707 /* FinnUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4D07057E24AF2A07008282D0 /* ChatAvailabilityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D07057D24AF2A07008282D0 /* ChatAvailabilityViewModel.swift */; };
+		4D152F7B2578CF9700282244 /* MotorTransactionInsurancePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D152F7A2578CF9700282244 /* MotorTransactionInsurancePickerView.swift */; };
+		4D152F892578F80100282244 /* MotorTransactionInsuranceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D152F882578F80100282244 /* MotorTransactionInsuranceView.swift */; };
 		4D1E5533252E02BF00A4ED5C /* SearchFilterTagCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E5532252E02BF00A4ED5C /* SearchFilterTagCellViewModel.swift */; };
 		4D72623A2562667600B75FAB /* UITraitCollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7262392562667600B75FAB /* UITraitCollectionExtensions.swift */; };
 		4D72623D256266A100B75FAB /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72623C256266A100B75FAB /* UIDevice.swift */; };
@@ -110,6 +112,8 @@
 		46DE7D5C242B9BCB00DB1707 /* FinnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinnUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46DE7D63242B9BCB00DB1707 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D07057D24AF2A07008282D0 /* ChatAvailabilityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAvailabilityViewModel.swift; sourceTree = "<group>"; };
+		4D152F7A2578CF9700282244 /* MotorTransactionInsurancePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInsurancePickerView.swift; sourceTree = "<group>"; };
+		4D152F882578F80100282244 /* MotorTransactionInsuranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInsuranceView.swift; sourceTree = "<group>"; };
 		4D1E5532252E02BF00A4ED5C /* SearchFilterTagCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterTagCellViewModel.swift; sourceTree = "<group>"; };
 		4D7262392562667600B75FAB /* UITraitCollectionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITraitCollectionExtensions.swift; sourceTree = "<group>"; };
 		4D72623C256266A100B75FAB /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 		46AE6FAE242BAAAE007BB005 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
+				4D152F792578CF7800282244 /* MotorTransactionInsurancePickerView */,
 				4DDD45B2250FAA25007DBDD5 /* SearchDisplayTypeSelection */,
 				4D7A6ECE2498DB5B00AB2EBE /* SearchResults */,
 				DA0E186D2459C21A00C0616E /* Settings */,
@@ -270,6 +275,15 @@
 				46DE7D63242B9BCB00DB1707 /* Info.plist */,
 			);
 			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		4D152F792578CF7800282244 /* MotorTransactionInsurancePickerView */ = {
+			isa = PBXGroup;
+			children = (
+				4D152F7A2578CF9700282244 /* MotorTransactionInsurancePickerView.swift */,
+				4D152F882578F80100282244 /* MotorTransactionInsuranceView.swift */,
+			);
+			path = MotorTransactionInsurancePickerView;
 			sourceTree = "<group>";
 		};
 		4D7262372562663900B75FAB /* Extensions */ = {
@@ -793,6 +807,7 @@
 				DA3415F9245AF80200DC1B1C /* BasicListCell.swift in Sources */,
 				7149DB7424FE592400268976 /* MyVehiclesListView.swift in Sources */,
 				9B2A6998249797AC00E671B5 /* PagerView.swift in Sources */,
+				4D152F892578F80100282244 /* MotorTransactionInsuranceView.swift in Sources */,
 				9B2A6995249797AC00E671B5 /* ImageGalleryView.swift in Sources */,
 				4D7A6ED42498DBAF00AB2EBE /* SearchResultsRowView.swift in Sources */,
 				4DDD45A7250FA7BD007DBDD5 /* SearchFilterButtonView.swift in Sources */,
@@ -812,6 +827,7 @@
 				9B2A699A249797AC00E671B5 /* BapAdViewActions.swift in Sources */,
 				4DDD45B4250FAA68007DBDD5 /* SearchDisplayTypeSelectionView.swift in Sources */,
 				7149DB6E24FE58C900268976 /* MyVehicleCellModel.swift in Sources */,
+				4D152F7B2578CF9700282244 /* MotorTransactionInsurancePickerView.swift in Sources */,
 				9B2A6991249797AC00E671B5 /* PhoneNumberView.swift in Sources */,
 				9B58C0F6246550440029FAF5 /* ButtonStyle+Previews.swift in Sources */,
 				7149DB6D24FE58C900268976 /* MyVehicleCell.swift in Sources */,
