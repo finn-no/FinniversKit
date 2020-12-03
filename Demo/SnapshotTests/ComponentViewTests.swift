@@ -302,4 +302,8 @@ class ComponentViewTests: XCTestCase {
     func testSendInviteView() {
         snapshot(.sendInviteView)
     }
+
+    func testSelectableView() {
+        snapshot(.selectableView)
+    }
 }
