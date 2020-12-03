@@ -59,28 +59,15 @@ public class MotorTransactionInsurancePickerView: ShadowScrollView {
         scrollView.addSubview(contentView)
         contentView.fillInSuperview()
 
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(bodyLabel)
         contentView.addSubview(stackView)
+        stackView.fillInSuperview(margin: .spacingM)
 
-        let padding: CGFloat = .spacingM
+        stackView.addArrangedSubviews([titleLabel, bodyLabel])
+        stackView.setCustomSpacing(.spacingS, after: titleLabel)
+        stackView.setCustomSpacing(.spacingXL, after: bodyLabel)
 
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: widthAnchor),
-
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
-
-            bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
-            bodyLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-            bodyLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
-
-            stackView.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: .spacingXL),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
-            stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
-
             topShadowView.bottomAnchor.constraint(equalTo: topAnchor),
         ])
     }
@@ -101,7 +88,12 @@ public class MotorTransactionInsurancePickerView: ShadowScrollView {
 
 extension MotorTransactionInsurancePickerView: MotorTransactionInsuranceViewDelegate {
     func motorTransactionInsuranceViewWasSelected(_ view: MotorTransactionInsuranceView) {
-        guard let index = stackView.arrangedSubviews.firstIndex(of: view) else { return }
+        guard let index = stackView
+            .arrangedSubviews
+            .filter({ $0 is MotorTransactionInsuranceView })
+            .firstIndex(of: view)
+        else { return }
+
         delegate?.motorTransactionInsurancePickerView(self, didSelectInsuranceAtIndex: index)
     }
 }
