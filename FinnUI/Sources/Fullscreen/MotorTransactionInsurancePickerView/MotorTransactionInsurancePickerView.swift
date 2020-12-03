@@ -10,7 +10,7 @@ public protocol MotorTransactionInsurancePickerViewDelegate: AnyObject {
     func motorTransactionInsurancePickerView(_ view: MotorTransactionInsurancePickerView, didSelectInsuranceAtIndex index: Int)
 }
 
-public class MotorTransactionInsurancePickerView: UIView {
+public class MotorTransactionInsurancePickerView: ShadowScrollView {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
@@ -25,6 +25,13 @@ public class MotorTransactionInsurancePickerView: UIView {
     }()
 
     private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
+
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView(withAutoLayout: true)
+        scrollView.contentInsetAdjustmentBehavior = .always
+        scrollView.delegate = self
+        return scrollView
+    }()
 
     public weak var delegate: MotorTransactionInsurancePickerViewDelegate?
 
@@ -45,25 +52,36 @@ public class MotorTransactionInsurancePickerView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        addSubview(titleLabel)
-        addSubview(bodyLabel)
-        addSubview(stackView)
+        insertSubview(scrollView, belowSubview: topShadowView)
+        scrollView.fillInSuperview()
+
+        let contentView = UIView(withAutoLayout: true)
+        scrollView.addSubview(contentView)
+        contentView.fillInSuperview()
+
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(bodyLabel)
+        contentView.addSubview(stackView)
 
         let padding: CGFloat = .spacingM
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: padding),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+            contentView.widthAnchor.constraint(equalTo: widthAnchor),
+
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
 
             bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
-            bodyLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
-            bodyLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+            bodyLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            bodyLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
 
             stackView.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: .spacingXL),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
-            stackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
+            stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
+
+            topShadowView.bottomAnchor.constraint(equalTo: topAnchor),
         ])
     }
 
