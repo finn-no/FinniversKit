@@ -35,6 +35,8 @@ public class MotorTransactionInsurancePickerView: ShadowScrollView {
 
     public weak var delegate: MotorTransactionInsurancePickerViewDelegate?
 
+    // MARK: - Init
+
     public init(
         viewModel: MotorTransactionInsurancePickerViewModel,
         withAutoLayout: Bool = false

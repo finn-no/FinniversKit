@@ -61,18 +61,12 @@ class MotorTransactionInsuranceView: UIView {
             stackView.addArrangedSubview(label)
         }
     }
-
-    // MARK: - Actions
-
-    @objc func handleTap() {
-        delegate?.motorTransactionInsuranceViewWasSelected(self)
-    }
 }
 
 // MARK: - SelectableViewDelegate
 
 extension MotorTransactionInsuranceView: SelectableViewDelegate {
     func selectableViewWasTapped(_ selectableView: SelectableView) {
-        handleTap()
+        delegate?.motorTransactionInsuranceViewWasSelected(self)
     }
 }
