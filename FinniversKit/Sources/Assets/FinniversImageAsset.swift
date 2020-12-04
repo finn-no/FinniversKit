@@ -43,10 +43,6 @@ public enum FinniversImageAsset: String {
     case arrowUpSmall
     case attachment
     case avatar
-    case balloon0
-    case balloon1
-    case balloon2
-    case balloon2Red
     case bankID
     case betaPill
     case blinkRocketMini
@@ -183,7 +179,6 @@ public enum FinniversImageAsset: String {
     case shopping
     case sliderThumb
     case sliderThumbActive
-    case snowflake
     case sold
     case spark
     case speechbubbleSmiley
@@ -219,10 +214,6 @@ public enum FinniversImageAsset: String {
             .arrowUpSmall,
             .attachment,
             .avatar,
-            .balloon0,
-            .balloon1,
-            .balloon2,
-            .balloon2Red,
             .bankID,
             .betaPill,
             .blinkRocketMini,
@@ -359,7 +350,6 @@ public enum FinniversImageAsset: String {
             .shopping,
             .sliderThumb,
             .sliderThumbActive,
-            .snowflake,
             .sold,
             .spark,
             .speechbubbleSmiley,

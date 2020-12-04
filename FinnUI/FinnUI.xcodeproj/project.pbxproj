@@ -198,13 +198,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4698949E2434DD6F00CC84E6 /* Resources */ = {
+		4698949E2434DD6F00CC84E6 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
 				4698958D2436311B00CC84E6 /* Icons.xcassets */,
 				4698949F2434DD6F00CC84E6 /* ImageAsset.swift */,
 			);
-			path = Resources;
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		46AE6FAE242BAAAE007BB005 /* Fullscreen */ = {
@@ -268,7 +268,7 @@
 				9B58C0F5246550010029FAF5 /* Base Components */,
 				8D680C65FDB2814B12D5A4EC /* Components */,
 				46AE6FAE242BAAAE007BB005 /* Fullscreen */,
-				4698949E2434DD6F00CC84E6 /* Resources */,
+				4698949E2434DD6F00CC84E6 /* Assets */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
