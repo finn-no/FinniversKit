@@ -4,6 +4,7 @@ public protocol MotorTransactionInsuranceConfirmationViewModel {
     var logoImageUrl: String? { get }
     var companyName: String { get }
     var bodyText: String { get }
+    var confirmationDetails: [KeyValuePair] { get }
 }
 
 // swiftlint:disable: type_name
@@ -24,6 +25,21 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
         let label = Label(style: .body, withAutoLayout: true)
         label.numberOfLines = 0
         return label
+    }()
+
+    private lazy var keyValueGridContainer: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .bgSecondary
+        view.layer.cornerRadius = .spacingS
+        return view
+    }()
+
+    private lazy var keyValueGrid: KeyValueGridView = {
+        let view = KeyValueGridView(withAutoLayout: true)
+        view.numberOfColumns = isHorizontalSizeClassRegular ? 2 : 1
+        view.backgroundColor = .bgSecondary
+        view.layer.cornerRadius = .spacingS
+        return view
     }()
 
     private lazy var scrollView: UIScrollView = {
@@ -63,8 +79,13 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
 
         let companyStackView = UIStackView(axis: .horizontal, spacing: .spacingS, withAutoLayout: true)
         companyStackView.addArrangedSubviews([logoImageView, companyNameLabel])
+
         contentView.addSubview(companyStackView)
         contentView.addSubview(bodyLabel)
+        contentView.addSubview(keyValueGridContainer)
+
+        keyValueGridContainer.addSubview(keyValueGrid)
+        keyValueGrid.fillInSuperview(margin: .spacingM)
 
         let margin: CGFloat = .spacingM
 
@@ -80,6 +101,10 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
             bodyLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: margin),
             bodyLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -margin),
 
+            keyValueGridContainer.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: .spacingM),
+            keyValueGridContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: margin),
+            keyValueGridContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -margin),
+
             logoImageView.widthAnchor.constraint(equalToConstant: logoImageWidth),
             logoImageView.heightAnchor.constraint(equalTo: logoImageView.widthAnchor),
 
@@ -89,6 +114,7 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
     private func configure(with viewModel: MotorTransactionInsuranceConfirmationViewModel) {
         companyNameLabel.text = viewModel.companyName
         bodyLabel.text = viewModel.bodyText
+        keyValueGrid.configure(with: viewModel.confirmationDetails, titleStyle: .bodyStrong, valueStyle: .body)
 
         let fallbackImage: UIImage = UIImage(named: .noImage)
         if let logoImageUrl = viewModel.logoImageUrl {

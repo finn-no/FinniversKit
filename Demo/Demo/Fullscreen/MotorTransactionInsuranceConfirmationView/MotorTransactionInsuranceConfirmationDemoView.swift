@@ -57,4 +57,12 @@ private struct InsuranceConfirmationViewModel: MotorTransactionInsuranceConfirma
     let logoImageUrl: String? = "https://ocast-media-image.s3.amazonaws.com/6VGiGiXU7ODcMC1Z_400x400.jpg"
     let companyName = "Forsikring AS"
     let bodyText = "Ved å aktivere forsikringen, samtykker du til at vi sender vi infoen under til forsikringselskapet, og at de gjør en kredittsjekk av deg."
+
+    let confirmationDetails: [KeyValuePair] = [
+        KeyValuePair(title: "Navn", value: "Harry Potter"),
+        KeyValuePair(title: "Telefonnummer", value: "123 45 678"),
+        KeyValuePair(title: "E-post", value: "potter@harry.com"),
+        KeyValuePair(title: "Adresse", value: "Veien 4, 0012 Svalbard"),
+        KeyValuePair(title: "Personnummer", value: "123456 *****")
+    ]
 }
