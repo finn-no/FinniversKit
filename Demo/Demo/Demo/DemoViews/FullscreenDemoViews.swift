@@ -43,6 +43,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case savedSearchSortingView
     case searchDisplayTypeSelectionView
     case messageUserRequiredSheet
+    case motorTransactionInsurancePickerView
 
     public static var items: [FullscreenDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -150,6 +151,8 @@ public enum FullscreenDemoViews: String, CaseIterable {
             let sheet = MessageUserRequiredSheet()
             sheet.configure(MessageUserRequiredData.labelText, buttonText: MessageUserRequiredData.buttonText)
             return sheet
+        case .motorTransactionInsurancePickerView:
+            return DemoViewController<MotorTransactionInsurancePickerDemoView>()
         }
     }
 }
