@@ -172,4 +172,8 @@ class FullscreenViewTests: XCTestCase {
     func testMessageUserRequiredSheet() {
         snapshot(.messageUserRequiredSheet)
     }
+
+    func testMotorTransactionInsurancePickerView() {
+        snapshot(.motorTransactionInsurancePickerView)
+    }
 }
