@@ -131,7 +131,7 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var imageBorder: UIColor {
-        .dynamicColorIfAvailable(defaultColor: .marble, darkModeColor: UIColor(hex: "#13131A"))
+        .dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
 
     public var decorationSubtle: UIColor {

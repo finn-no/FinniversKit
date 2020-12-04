@@ -94,6 +94,7 @@ extension AdsGridViewDemoView: AdsGridViewDataSource {
             cell.dataSource = adsGridView
             cell.delegate = adsGridView
             cell.configure(with: model, atIndex: indexPath.item)
+            cell.showImageDescriptionView = model.scaleImageToFillView
             return cell
         }
     }
