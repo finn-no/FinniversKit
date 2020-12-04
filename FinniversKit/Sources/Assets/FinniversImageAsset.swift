@@ -44,9 +44,9 @@ public enum FinniversImageAsset: String {
     case attachment
     case avatar
     case balloon0
-    case balloon00
+    case balloon1
     case balloon2
-    case balloon22
+    case balloon2Red
     case bankID
     case betaPill
     case blinkRocketMini
@@ -220,9 +220,9 @@ public enum FinniversImageAsset: String {
             .attachment,
             .avatar,
             .balloon0,
-            .balloon00,
+            .balloon1,
             .balloon2,
-            .balloon22,
+            .balloon2Red,
             .bankID,
             .betaPill,
             .blinkRocketMini,

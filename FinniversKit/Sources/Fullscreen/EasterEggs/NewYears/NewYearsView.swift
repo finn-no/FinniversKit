@@ -8,7 +8,7 @@ public class NewYearsView: UIView {
 
     public var isAnimating = false
 
-    private let assets: [FinniversImageAsset] = [.balloon2, .balloon0, .balloon22, .balloon00]
+    private let assets: [FinniversImageAsset] = [.balloon2, .balloon0, .balloon2Red, .balloon1]
     private lazy var balloonView = BalloonView(frame: .zero)
     private lazy var fireworksView = FireworksView(frame: .zero)
 
