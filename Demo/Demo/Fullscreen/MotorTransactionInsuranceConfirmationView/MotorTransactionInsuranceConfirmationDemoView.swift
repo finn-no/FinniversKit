@@ -6,7 +6,8 @@ class MotorTransactionInsuranceConfirmationDemoView: UIView {
 
     private lazy var view = MotorTransactionInsuranceConfirmationView(
         viewModel: InsuranceConfirmationViewModel(),
-        remoteImageViewDataSource: self
+        remoteImageViewDataSource: self,
+        delegate: self
     )
 
     public override init(frame: CGRect) {
@@ -21,6 +22,12 @@ class MotorTransactionInsuranceConfirmationDemoView: UIView {
     private func setup() {
         addSubview(view)
         view.fillInSuperview()
+    }
+}
+
+extension MotorTransactionInsuranceConfirmationDemoView: MotorTransactionInsuranceConfirmationViewDelegate {
+    func motorTransactionInsuranceConfirmationViewDidTapButton(_ view: MotorTransactionInsuranceConfirmationView) {
+        print("Button tapped!")
     }
 }
 

@@ -9,6 +9,10 @@ public protocol MotorTransactionInsuranceConfirmationViewModel {
     var buttonTitle: String { get }
 }
 
+public protocol MotorTransactionInsuranceConfirmationViewDelegate: AnyObject {
+    func motorTransactionInsuranceConfirmationViewDidTapButton(_ view: MotorTransactionInsuranceConfirmationView)
+}
+
 // swiftlint:disable:next type_name
 public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
 
@@ -52,6 +56,7 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
 
     private lazy var confirmationButton: Button = {
         let button = Button(style: .callToAction, size: .normal, withAutoLayout: true)
+        button.addTarget(self, action: #selector(handleActionButtonTap), for: .touchUpInside)
         return button
     }()
 
@@ -63,14 +68,17 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
     }()
 
     private weak var remoteImageViewDataSource: RemoteImageViewDataSource?
+    private weak var delegate: MotorTransactionInsuranceConfirmationViewDelegate?
 
     // MARK: - Init
 
     public init(
         viewModel: MotorTransactionInsuranceConfirmationViewModel,
-        remoteImageViewDataSource: RemoteImageViewDataSource
+        remoteImageViewDataSource: RemoteImageViewDataSource,
+        delegate: MotorTransactionInsuranceConfirmationViewDelegate
     ) {
         self.remoteImageViewDataSource = remoteImageViewDataSource
+        self.delegate = delegate
         super.init(frame: .zero)
         setup()
         configure(with: viewModel)
@@ -149,5 +157,11 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
         } else {
             logoImageView.setImage(fallbackImage, animated: false)
         }
+    }
+
+    // MARK: - Actions
+
+    @objc private func handleActionButtonTap() {
+        delegate?.motorTransactionInsuranceConfirmationViewDidTapButton(self)
     }
 }
