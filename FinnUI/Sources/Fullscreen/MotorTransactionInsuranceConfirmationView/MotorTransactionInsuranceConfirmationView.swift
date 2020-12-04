@@ -6,9 +6,10 @@ public protocol MotorTransactionInsuranceConfirmationViewModel {
     var bodyText: String { get }
     var confirmationDetails: [KeyValuePair] { get }
     var caption: String { get }
+    var buttonTitle: String { get }
 }
 
-// swiftlint:disable: type_name
+// swiftlint:disable:next type_name
 public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
 
     private lazy var companyNameLabel = Label(style: .bodyStrong, withAutoLayout: true)
@@ -47,6 +48,11 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
         view.backgroundColor = .bgSecondary
         view.layer.cornerRadius = .spacingS
         return view
+    }()
+
+    private lazy var confirmationButton: Button = {
+        let button = Button(style: .callToAction, size: .normal, withAutoLayout: true)
+        return button
     }()
 
     private lazy var scrollView: UIScrollView = {
@@ -91,6 +97,7 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
         contentView.addSubview(bodyLabel)
         contentView.addSubview(keyValueGridContainer)
         contentView.addSubview(captionLabel)
+        contentView.addSubview(confirmationButton)
 
         keyValueGridContainer.addSubview(keyValueGrid)
         keyValueGrid.fillInSuperview(margin: .spacingM)
@@ -117,6 +124,11 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
             captionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: margin),
             captionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -margin),
 
+            confirmationButton.topAnchor.constraint(equalTo: captionLabel.bottomAnchor, constant: .spacingM),
+            confirmationButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: margin),
+            confirmationButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -margin),
+            confirmationButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -margin),
+
             logoImageView.widthAnchor.constraint(equalToConstant: logoImageWidth),
             logoImageView.heightAnchor.constraint(equalTo: logoImageView.widthAnchor),
 
@@ -129,6 +141,7 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
         captionLabel.text = viewModel.caption
 
         keyValueGrid.configure(with: viewModel.confirmationDetails, titleStyle: .bodyStrong, valueStyle: .body)
+        confirmationButton.setTitle(viewModel.buttonTitle, for: .normal)
 
         let fallbackImage: UIImage = UIImage(named: .noImage)
         if let logoImageUrl = viewModel.logoImageUrl {

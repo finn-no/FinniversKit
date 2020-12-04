@@ -58,6 +58,7 @@ private struct InsuranceConfirmationViewModel: MotorTransactionInsuranceConfirma
     let companyName = "Forsikring AS"
     let bodyText = "Ved å aktivere forsikringen, samtykker du til at vi sender vi infoen under til forsikringselskapet, og at de gjør en kredittsjekk av deg."
     let caption = "Kredittsjekken skjer i det du klikker på knappen. Blir den godkjent, vil du få en bekreftelse på at bilen er forsikret når du går videre."
+    let buttonTitle = "Aktiver forsikring"
 
     let confirmationDetails: [KeyValuePair] = [
         KeyValuePair(title: "Navn", value: "Harry Potter"),
