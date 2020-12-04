@@ -63,7 +63,7 @@ extension MotorTransactionInsuranceConfirmationDemoView: RemoteImageViewDataSour
 private struct InsuranceConfirmationViewModel: MotorTransactionInsuranceConfirmationViewModel {
     let logoImageUrl: String? = "https://ocast-media-image.s3.amazonaws.com/6VGiGiXU7ODcMC1Z_400x400.jpg"
     let companyName = "Forsikring AS"
-    let bodyText = "Ved å aktivere forsikringen, samtykker du til at vi sender vi infoen under til forsikringselskapet, og at de gjør en kredittsjekk av deg."
+    let bodyText = "Ved å aktivere forsikringen, samtykker du til at vi sender infoen under til forsikringselskapet, og at de gjør en kredittsjekk av deg."
     let caption = "Kredittsjekken skjer i det du klikker på knappen. Blir den godkjent, vil du få en bekreftelse på at bilen er forsikret når du går videre."
     let buttonTitle = "Aktiver forsikring"
 
