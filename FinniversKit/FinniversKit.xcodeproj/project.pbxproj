@@ -1295,7 +1295,7 @@
 		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				4D152E722577D7C400282244 /* SelectableView */,
+				4D152E722577D7C400282244 /* NavigationLinkView */,
 				CFDF39CB2385419E00D3B966 /* AddressCardView */,
 				DAB7FAAC21B690E900BF8CC6 /* BottomSheet */,
 				AF91BB95202C7487003E6366 /* Broadcast */,
@@ -1748,12 +1748,12 @@
 			path = FavoriteSoldView;
 			sourceTree = "<group>";
 		};
-		4D152E722577D7C400282244 /* SelectableView */ = {
+		4D152E722577D7C400282244 /* NavigationLinkView */ = {
 			isa = PBXGroup;
 			children = (
 				4D152E732577D7D300282244 /* NavigationLinkView.swift */,
 			);
-			path = SelectableView;
+			path = NavigationLinkView;
 			sourceTree = "<group>";
 		};
 		6266C06A22081B9200FB8004 /* AdManagement */ = {

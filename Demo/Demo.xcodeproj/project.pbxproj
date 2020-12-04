@@ -940,7 +940,7 @@
 		46E772CB242CEF09008A5E93 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				4D152E792577DB0400282244 /* SelectableView */,
+				4D152E792577DB0400282244 /* NavigationLinkView */,
 				4DDD45AA250FA7E1007DBDD5 /* SearchDisplayMenu */,
 				4DDD45AC250FA7E1007DBDD5 /* SearchFilterTags */,
 				4D8DE0FA24F8F8F600EA1B0C /* ExtendedProfile */,
@@ -1780,12 +1780,12 @@
 			path = FavoriteSoldView;
 			sourceTree = "<group>";
 		};
-		4D152E792577DB0400282244 /* SelectableView */ = {
+		4D152E792577DB0400282244 /* NavigationLinkView */ = {
 			isa = PBXGroup;
 			children = (
 				4D152E7A2577DB1300282244 /* NavigationLinkViewDemoView.swift */,
 			);
-			path = SelectableView;
+			path = NavigationLinkView;
 			sourceTree = "<group>";
 		};
 		4D152F812578DA8700282244 /* MotorTransactionInsurancePickerView */ = {
