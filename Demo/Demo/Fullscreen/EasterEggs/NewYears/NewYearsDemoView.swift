@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import FinnUI
 
 class NewYearsDemoView: UIView {
     private lazy var label: Label = {
