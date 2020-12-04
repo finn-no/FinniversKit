@@ -5,6 +5,7 @@ public protocol MotorTransactionInsuranceConfirmationViewModel {
     var companyName: String { get }
     var bodyText: String { get }
     var confirmationDetails: [KeyValuePair] { get }
+    var caption: String { get }
 }
 
 // swiftlint:disable: type_name
@@ -23,6 +24,12 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
 
     private lazy var bodyLabel: Label = {
         let label = Label(style: .body, withAutoLayout: true)
+        label.numberOfLines = 0
+        return label
+    }()
+
+    private lazy var captionLabel: Label = {
+        let label = Label(style: .caption, withAutoLayout: true)
         label.numberOfLines = 0
         return label
     }()
@@ -83,6 +90,7 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
         contentView.addSubview(companyStackView)
         contentView.addSubview(bodyLabel)
         contentView.addSubview(keyValueGridContainer)
+        contentView.addSubview(captionLabel)
 
         keyValueGridContainer.addSubview(keyValueGrid)
         keyValueGrid.fillInSuperview(margin: .spacingM)
@@ -105,6 +113,10 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
             keyValueGridContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: margin),
             keyValueGridContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -margin),
 
+            captionLabel.topAnchor.constraint(equalTo: keyValueGridContainer.bottomAnchor, constant: .spacingM),
+            captionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: margin),
+            captionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -margin),
+
             logoImageView.widthAnchor.constraint(equalToConstant: logoImageWidth),
             logoImageView.heightAnchor.constraint(equalTo: logoImageView.widthAnchor),
 
@@ -114,6 +126,8 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
     private func configure(with viewModel: MotorTransactionInsuranceConfirmationViewModel) {
         companyNameLabel.text = viewModel.companyName
         bodyLabel.text = viewModel.bodyText
+        captionLabel.text = viewModel.caption
+
         keyValueGrid.configure(with: viewModel.confirmationDetails, titleStyle: .bodyStrong, valueStyle: .body)
 
         let fallbackImage: UIImage = UIImage(named: .noImage)
