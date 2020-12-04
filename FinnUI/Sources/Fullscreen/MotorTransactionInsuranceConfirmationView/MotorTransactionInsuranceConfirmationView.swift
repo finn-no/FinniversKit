@@ -17,7 +17,6 @@ public protocol MotorTransactionInsuranceConfirmationViewDelegate: AnyObject {
 public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
 
     private lazy var companyNameLabel = Label(style: .bodyStrong, withAutoLayout: true)
-    private let logoImageWidth: CGFloat = 30
 
     private lazy var logoImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
@@ -56,7 +55,7 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
 
     private lazy var confirmationButton: Button = {
         let button = Button(style: .callToAction, size: .normal, withAutoLayout: true)
-        button.addTarget(self, action: #selector(handleActionButtonTap), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleConfirmationButtonTap), for: .touchUpInside)
         return button
     }()
 
@@ -66,6 +65,8 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
         scrollView.delegate = self
         return scrollView
     }()
+
+    private let logoImageWidth: CGFloat = 30
 
     private weak var remoteImageViewDataSource: RemoteImageViewDataSource?
     private weak var delegate: MotorTransactionInsuranceConfirmationViewDelegate?
@@ -98,14 +99,14 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
         scrollView.addSubview(contentView)
         contentView.fillInSuperview()
 
-        let margins: CGFloat = .spacingM
+        let margin: CGFloat = .spacingM
 
         let companyStackView = UIStackView(axis: .horizontal, spacing: .spacingS, withAutoLayout: true)
         companyStackView.addArrangedSubviews([logoImageView, companyNameLabel])
 
-        let contentStackView = UIStackView(axis: .vertical, spacing: margins, withAutoLayout: true)
+        let contentStackView = UIStackView(axis: .vertical, spacing: margin, withAutoLayout: true)
         contentView.addSubview(contentStackView)
-        contentStackView.fillInSuperview(margin: margins)
+        contentStackView.fillInSuperview(margin: margin)
 
         contentStackView.addArrangedSubviews([
             companyStackView,
@@ -116,7 +117,7 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
         ])
 
         keyValueGridContainer.addSubview(keyValueGrid)
-        keyValueGrid.fillInSuperview(margin: margins)
+        keyValueGrid.fillInSuperview(margin: margin)
 
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: widthAnchor),
@@ -124,7 +125,6 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
 
             logoImageView.widthAnchor.constraint(equalToConstant: logoImageWidth),
             logoImageView.heightAnchor.constraint(equalTo: logoImageView.widthAnchor),
-
         ])
     }
 
@@ -146,7 +146,7 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
 
     // MARK: - Actions
 
-    @objc private func handleActionButtonTap() {
+    @objc private func handleConfirmationButtonTap() {
         delegate?.motorTransactionInsuranceConfirmationViewDidTapButton(self)
     }
 }
