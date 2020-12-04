@@ -6,7 +6,7 @@ import UIKit
 
 public class BalloonView: UIView {
     public var imagePositions: [CGFloat] = []
-    public var imageAssets: [FinniversImageAsset] = [] {
+    public var imageAssets: [FinnUIImageAsset] = [] {
         didSet { loadImages(assets: imageAssets) }
     }
 
