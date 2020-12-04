@@ -241,6 +241,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         imageView.cancelLoading()
         logoImageView.cancelLoading()
         logoImageView.image = nil
+        showImageDescriptionView = true
     }
 
     public override func layoutSubviews() {
@@ -286,6 +287,12 @@ public class AdsGridViewCell: UICollectionViewCell {
     public var isFavorite = false {
         didSet {
             favoriteButton.isFavorite = isFavorite
+        }
+    }
+
+    public var showImageDescriptionView = true {
+        didSet {
+            imageDescriptionView.isHidden = !showImageDescriptionView
         }
     }
 
