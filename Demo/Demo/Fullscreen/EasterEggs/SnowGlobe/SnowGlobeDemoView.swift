@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import FinnUI
 
 public class SnowGlobeDemoView: UIView {
     private lazy var label: UILabel = {

@@ -12,22 +12,37 @@ private class BundleHelper {
 
 extension UIImage {
     convenience init(named imageAsset: ImageAsset) {
-        self.init(named: imageAsset.rawValue, in: Bundle(for: BundleHelper.self), compatibleWith: nil)!
+        #if SWIFT_PACKAGE
+        let bundle = Bundle.module
+        #else
+        let bundle = Bundle(for: BundleHelper.self)
+        #endif
+        self.init(named: imageAsset.rawValue, in: bundle, compatibleWith: nil)!
     }
 
     @objc class func assetNamed(_ assetName: String) -> UIImage {
-        return UIImage(named: assetName, in: Bundle(for: BundleHelper.self), compatibleWith: nil)!
+        #if SWIFT_PACKAGE
+        let bundle = Bundle.module
+        #else
+        let bundle = Bundle(for: BundleHelper.self)
+        #endif
+        return UIImage(named: assetName, in: bundle, compatibleWith: nil)!
     }
 }
 
 //swiftlint:disable superfluous_disable_command
 //swiftlint:disable type_body_length
 enum ImageAsset: String {
+    case balloon0
+    case balloon1
+    case balloon2
+    case balloon2Red
     case blinkRocket
     case emptyPersonalNotificationsIcon
     case emptySavedSearchNotificationsIcon
     case heartMini
     case schibstedFooter
+    case snowflake
     case sort
     case splashLetters1
     case splashLetters2
@@ -39,11 +54,16 @@ enum ImageAsset: String {
 
     static var imageNames: [ImageAsset] {
         return [
+            .balloon0,
+            .balloon1,
+            .balloon2,
+            .balloon2Red,
             .blinkRocket,
             .emptyPersonalNotificationsIcon,
             .emptySavedSearchNotificationsIcon,
             .heartMini,
             .schibstedFooter,
+            .snowflake,
             .sort,
             .splashLetters1,
             .splashLetters2,

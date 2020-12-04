@@ -30,9 +30,9 @@ Pod::Spec.new do |s|
   s.requires_arc  = true
 
   s.source_files = 'FinnUI/Sources/*.{h,m,swift}', 'FinnUI/Sources/**/*.{h,m,swift}', 'FinnUI/Sources/**/**/*.{h,m,swift}'
-  s.resources    = 'FinnUI/Sources/Resources/Fonts/*.ttf', 'FinnUI/Sources/Resources/*.xcassets', 'FinnUI/Sources/Resources/Sounds/*.{mp3,wav,sf2}'
+  s.resources    = 'FinnUI/Sources/Assets/Fonts/*.ttf', 'FinnUI/Sources/Assets/*.xcassets', 'FinnUI/Sources/Assets/Sounds/*.{mp3,wav,sf2}'
   s.resource_bundles = {
-      'FinnUI' => ['FinnUI/Sources/Resources/*.xcassets', 'FinnUI/Sources/Resources/Fonts/*.ttf', 'FinnUI/Sources/Resources/Sounds/*.{mp3,wav,sf2}']
+      'FinnUI' => ['FinnUI/Sources/Assets/*.xcassets', 'FinnUI/Sources/Assets/Fonts/*.ttf', 'FinnUI/Sources/Assets/Sounds/*.{mp3,wav,sf2}']
   }
   s.dependency "FinniversKit"
   s.frameworks = 'Foundation', 'UIKit', 'FinniversKit'
