@@ -33,14 +33,19 @@ public class MotorTransactionInsurancePickerView: ShadowScrollView {
         return scrollView
     }()
 
-    public weak var delegate: MotorTransactionInsurancePickerViewDelegate?
+    private weak var delegate: MotorTransactionInsurancePickerViewDelegate?
+    private weak var remoteImageViewDataSource: RemoteImageViewDataSource?
 
     // MARK: - Init
 
     public init(
         viewModel: MotorTransactionInsurancePickerViewModel,
+        remoteImageViewDataSource: RemoteImageViewDataSource,
+        delegate: MotorTransactionInsurancePickerViewDelegate,
         withAutoLayout: Bool = false
     ) {
+        self.remoteImageViewDataSource = remoteImageViewDataSource
+        self.delegate = delegate
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setup()
@@ -79,8 +84,12 @@ public class MotorTransactionInsurancePickerView: ShadowScrollView {
         bodyLabel.text = viewModel.bodyText
 
         for insurance in viewModel.insurances {
-            let view = MotorTransactionInsuranceView(viewModel: insurance, withAutoLayout: true)
-            view.delegate = self
+            let view = MotorTransactionInsuranceView(
+                viewModel: insurance,
+                remoteImageViewDataSource: remoteImageViewDataSource,
+                delegate: self,
+                withAutoLayout: true
+            )
             stackView.addArrangedSubview(view)
         }
     }
