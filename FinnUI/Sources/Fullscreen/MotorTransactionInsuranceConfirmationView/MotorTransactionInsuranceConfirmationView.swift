@@ -98,44 +98,29 @@ public class MotorTransactionInsuranceConfirmationView: ShadowScrollView {
         scrollView.addSubview(contentView)
         contentView.fillInSuperview()
 
+        let margins: CGFloat = .spacingM
+
         let companyStackView = UIStackView(axis: .horizontal, spacing: .spacingS, withAutoLayout: true)
         companyStackView.addArrangedSubviews([logoImageView, companyNameLabel])
 
-        contentView.addSubview(companyStackView)
-        contentView.addSubview(bodyLabel)
-        contentView.addSubview(keyValueGridContainer)
-        contentView.addSubview(captionLabel)
-        contentView.addSubview(confirmationButton)
+        let contentStackView = UIStackView(axis: .vertical, spacing: margins, withAutoLayout: true)
+        contentView.addSubview(contentStackView)
+        contentStackView.fillInSuperview(margin: margins)
+
+        contentStackView.addArrangedSubviews([
+            companyStackView,
+            bodyLabel,
+            keyValueGridContainer,
+            captionLabel,
+            confirmationButton
+        ])
 
         keyValueGridContainer.addSubview(keyValueGrid)
-        keyValueGrid.fillInSuperview(margin: .spacingM)
-
-        let margin: CGFloat = .spacingM
+        keyValueGrid.fillInSuperview(margin: margins)
 
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: widthAnchor),
             topShadowView.bottomAnchor.constraint(equalTo: topAnchor),
-
-            companyStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: margin),
-            companyStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: margin),
-            companyStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -margin),
-
-            bodyLabel.topAnchor.constraint(equalTo: companyStackView.bottomAnchor, constant: .spacingM),
-            bodyLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: margin),
-            bodyLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -margin),
-
-            keyValueGridContainer.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: .spacingM),
-            keyValueGridContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: margin),
-            keyValueGridContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -margin),
-
-            captionLabel.topAnchor.constraint(equalTo: keyValueGridContainer.bottomAnchor, constant: .spacingM),
-            captionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: margin),
-            captionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -margin),
-
-            confirmationButton.topAnchor.constraint(equalTo: captionLabel.bottomAnchor, constant: .spacingM),
-            confirmationButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: margin),
-            confirmationButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -margin),
-            confirmationButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -margin),
 
             logoImageView.widthAnchor.constraint(equalToConstant: logoImageWidth),
             logoImageView.heightAnchor.constraint(equalTo: logoImageView.widthAnchor),
