@@ -129,7 +129,7 @@
 		4940480023CDBEC500ECBCFD /* ViewingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494047FF23CDBEC500ECBCFD /* ViewingsView.swift */; };
 		4940480223CDC0F000ECBCFD /* ViewingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940480123CDC0F000ECBCFD /* ViewingCell.swift */; };
 		496F8C142473DCC600AE0735 /* FavoriteSoldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F8C132473DCC600AE0735 /* FavoriteSoldView.swift */; };
-		4D152E742577D7D300282244 /* SelectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D152E732577D7D300282244 /* SelectableView.swift */; };
+		4D152E742577D7D300282244 /* NavigationLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D152E732577D7D300282244 /* NavigationLinkView.swift */; };
 		55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* Broadcast.swift */; };
 		55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B277203DB56A007D7277 /* BroadcastMessage.swift */; };
 		620AEE34221175970087C150 /* UserAdManagementButtonAndInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620AEE33221175970087C150 /* UserAdManagementButtonAndInformationCell.swift */; };
@@ -573,7 +573,7 @@
 		494047FF23CDBEC500ECBCFD /* ViewingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingsView.swift; sourceTree = "<group>"; };
 		4940480123CDC0F000ECBCFD /* ViewingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingCell.swift; sourceTree = "<group>"; };
 		496F8C132473DCC600AE0735 /* FavoriteSoldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteSoldView.swift; sourceTree = "<group>"; };
-		4D152E732577D7D300282244 /* SelectableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableView.swift; sourceTree = "<group>"; };
+		4D152E732577D7D300282244 /* NavigationLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkView.swift; sourceTree = "<group>"; };
 		55C5B273203D8E20007D7277 /* Broadcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Broadcast.swift; sourceTree = "<group>"; };
 		55C5B277203DB56A007D7277 /* BroadcastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastMessage.swift; sourceTree = "<group>"; };
 		620AEE33221175970087C150 /* UserAdManagementButtonAndInformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdManagementButtonAndInformationCell.swift; sourceTree = "<group>"; };
@@ -1751,7 +1751,7 @@
 		4D152E722577D7C400282244 /* SelectableView */ = {
 			isa = PBXGroup;
 			children = (
-				4D152E732577D7D300282244 /* SelectableView.swift */,
+				4D152E732577D7D300282244 /* NavigationLinkView.swift */,
 			);
 			path = SelectableView;
 			sourceTree = "<group>";
@@ -3258,7 +3258,7 @@
 				9BD8ABC02359B1EE001078CA /* ChristmasWishListView.swift in Sources */,
 				CF0F6B972360781E00CA62FD /* PrimingView.swift in Sources */,
 				082D80CD21C13D5300831BDE /* TriangleGiftView.swift in Sources */,
-				4D152E742577D7D300282244 /* SelectableView.swift in Sources */,
+				4D152E742577D7D300282244 /* NavigationLinkView.swift in Sources */,
 				4441F9F722CCF8C500DCFD2F /* AddressCardViewModel.swift in Sources */,
 				CF7C460622257A8A001FB92C /* EarthHourHeaderView.swift in Sources */,
 				91846C4A22E735D80001410F /* SearchResultMapView.swift in Sources */,

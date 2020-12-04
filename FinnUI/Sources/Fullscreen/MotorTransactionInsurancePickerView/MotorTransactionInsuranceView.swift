@@ -12,7 +12,7 @@ protocol MotorTransactionInsuranceViewDelegate: AnyObject {
 }
 
 class MotorTransactionInsuranceView: UIView {
-    private lazy var containerView = SelectableView(withSubview: stackView, withAutoLayout: true)
+    private lazy var containerView = NavigationLinkView(withSubview: stackView, withAutoLayout: true)
     private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
     private lazy var logoImageView = RoundedImageView(withAutoLayout: true)
     private lazy var companyNameLabel = Label(style: .bodyStrong, withAutoLayout: true)
@@ -63,10 +63,10 @@ class MotorTransactionInsuranceView: UIView {
     }
 }
 
-// MARK: - SelectableViewDelegate
+// MARK: - NavigationLinkViewDelegate
 
-extension MotorTransactionInsuranceView: SelectableViewDelegate {
-    func selectableViewWasTapped(_ selectableView: SelectableView) {
+extension MotorTransactionInsuranceView: NavigationLinkViewDelegate {
+    func navigationLinkViewWasTapped(_ navigationLinkView: NavigationLinkView) {
         delegate?.motorTransactionInsuranceViewWasSelected(self)
     }
 }

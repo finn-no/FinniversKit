@@ -1,7 +1,7 @@
 import UIKit
 
-public protocol SelectableViewDelegate: AnyObject {
-    func selectableViewWasTapped(_ selectableView: NavigationLinkView)
+public protocol NavigationLinkViewDelegate: AnyObject {
+    func navigationLinkViewWasTapped(_ navigationLinkView: NavigationLinkView)
 }
 
 public class NavigationLinkView: UIView {
@@ -14,7 +14,7 @@ public class NavigationLinkView: UIView {
         return imageView
     }()
 
-    public weak var delegate: SelectableViewDelegate?
+    public weak var delegate: NavigationLinkViewDelegate?
 
     // MARK: - Init
 
@@ -65,6 +65,6 @@ public class NavigationLinkView: UIView {
     // MARK: - Actions
 
     @objc private func handleTap() {
-        delegate?.selectableViewWasTapped(self)
+        delegate?.navigationLinkViewWasTapped(self)
     }
 }

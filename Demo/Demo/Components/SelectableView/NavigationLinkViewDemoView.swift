@@ -1,21 +1,21 @@
 import FinniversKit
 
-class SelectableViewDemoView: UIView {
+class NavigationLinkViewDemoView: UIView {
 
-    private lazy var view: SelectableView = {
+    private lazy var view: NavigationLinkView = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
         label.text = "This view can be configured to contain whatever view you'd like."
         label.numberOfLines = 0
-        let view = SelectableView(withSubview: label, withAutoLayout: true)
+        let view = NavigationLinkView(withSubview: label, withAutoLayout: true)
         return view
     }()
 
-    private lazy var secondView: SelectableView = {
+    private lazy var secondView: NavigationLinkView = {
         let label = Label(style: .title3, withAutoLayout: true)
         label.text = "For example, you can insert a yellow view like this."
         label.backgroundColor = .yellow
         label.numberOfLines = 0
-        let view = SelectableView(withSubview: label, withAutoLayout: true)
+        let view = NavigationLinkView(withSubview: label, withAutoLayout: true)
         return view
     }()
 

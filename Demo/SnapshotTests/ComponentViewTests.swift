@@ -303,7 +303,7 @@ class ComponentViewTests: XCTestCase {
         snapshot(.sendInviteView)
     }
 
-    func testSelectableView() {
-        snapshot(.selectableView)
+    func testNavigationLinkView() {
+        snapshot(.navigationLinkView)
     }
 }
