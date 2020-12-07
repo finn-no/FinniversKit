@@ -6,7 +6,7 @@ import UIKit
 
 public class BalloonView: UIView {
     public var imagePositions: [CGFloat] = []
-    public var imageAssets: [FinniversImageAsset] = [] {
+    var imageAssets: [ImageAsset] = [] {
         didSet { loadImages(assets: imageAssets) }
     }
 
@@ -44,7 +44,7 @@ public class BalloonView: UIView {
 }
 
 private extension BalloonView {
-    func loadImages(assets: [FinniversImageAsset]) {
+    func loadImages(assets: [ImageAsset]) {
         if !imageViews.isEmpty {
             imageViews.forEach { $0.removeFromSuperview() }
         }
