@@ -27,6 +27,30 @@ class ErrorDemoView: UIView, Tweakable {
                 title: "Du mangler nettforbindelse"
             )
         }),
+        TweakingOption(title: "Success", description: "", action: {
+            self.errorView.configure(
+                title: "Hurra!",
+                description: "En bekreftelse sendes til navn@mail.no.",
+                icon: UIImage(named: .checkCircleFilled),
+                backgroundColor: .bgPrimary,
+                iconTintColor: nil,
+                iconBottomSpacing: .spacingL,
+                titleBottomSpacing: .spacingM,
+                iconHeight: 64
+            )
+        }),
+        TweakingOption(title: "Error", description: "", action: {
+            self.errorView.configure(
+                title: "Usjda!",
+                description: "Noe gikk galt.",
+                icon: UIImage(named: .ratingFaceDissatisfied),
+                backgroundColor: .bgPrimary,
+                iconTintColor: .textCritical,
+                iconBottomSpacing: .spacingL,
+                titleBottomSpacing: .spacingM,
+                iconHeight: 64
+            )
+        }),
     ]
 
     private lazy var errorView = ErrorView(withAutoLayout: true)

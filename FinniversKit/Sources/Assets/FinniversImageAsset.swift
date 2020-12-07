@@ -54,6 +54,7 @@ public enum FinniversImageAsset: String {
     case car
     case check
     case checkCircle
+    case checkCircleFilled
     case checkCircleFilledMini
     case checkmarkBig
     case christmasWishListBanner
@@ -225,6 +226,7 @@ public enum FinniversImageAsset: String {
             .car,
             .check,
             .checkCircle,
+            .checkCircleFilled,
             .checkCircleFilledMini,
             .checkmarkBig,
             .christmasWishListBanner,
