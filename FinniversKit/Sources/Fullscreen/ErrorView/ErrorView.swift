@@ -71,7 +71,6 @@ public class ErrorView: UIView {
         stackView.setCustomSpacing(iconBottomSpacing, after: iconImageView)
         stackView.setCustomSpacing(titleBottomSpacing, after: titleLabel)
         iconHeightConstraint.constant = iconHeight
-        stackView.centerAndConstraintInSuperview()
     }
 
     // MARK: - Private methods
