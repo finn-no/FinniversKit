@@ -23,6 +23,9 @@ public class KeyValueGridView: UIView {
         return stackView
     }()
 
+    private var titleStyle: Label.Style = .body
+    private var valueStyle: Label.Style = .bodyStrong
+
     // MARK: - Initializers
 
     public override init(frame: CGRect) {
@@ -37,8 +40,14 @@ public class KeyValueGridView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(with data: [KeyValuePair]) {
+    public func configure(
+        with data: [KeyValuePair],
+        titleStyle: Label.Style = .body,
+        valueStyle: Label.Style = .bodyStrong
+    ) {
         self.data = data
+        self.titleStyle = titleStyle
+        self.valueStyle = valueStyle
         updateLayout()
     }
 
@@ -84,11 +93,11 @@ public class KeyValueGridView: UIView {
         stackView.distribution = .equalSpacing
         stackView.spacing = .spacingXXS
 
-        let titleLabel = Label(style: .body, withAutoLayout: true)
+        let titleLabel = Label(style: titleStyle, withAutoLayout: true)
         titleLabel.numberOfLines = 2
         titleLabel.lineBreakMode = .byCharWrapping
 
-        let valueLabel = Label(style: .bodyStrong, withAutoLayout: true)
+        let valueLabel = Label(style: valueStyle, withAutoLayout: true)
         valueLabel.numberOfLines = 2
         valueLabel.lineBreakMode = .byCharWrapping
         valueLabel.setTextCopyable(true)

@@ -44,6 +44,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case searchDisplayTypeSelectionView
     case messageUserRequiredSheet
     case motorTransactionInsurancePickerView
+    case motorTransactionInsuranceConfirmationView
 
     public static var items: [FullscreenDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -153,6 +154,8 @@ public enum FullscreenDemoViews: String, CaseIterable {
             return sheet
         case .motorTransactionInsurancePickerView:
             return DemoViewController<MotorTransactionInsurancePickerDemoView>()
+        case .motorTransactionInsuranceConfirmationView:
+            return DemoViewController<MotorTransactionInsuranceConfirmationDemoView>()
         }
     }
 }
