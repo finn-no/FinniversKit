@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class ErrorView: UIView {
+public class ResultView: UIView {
     // MARK: - Private variables
     private lazy var titleLabel: Label = {
         let label = Label(style: .title3Strong, withAutoLayout: true)

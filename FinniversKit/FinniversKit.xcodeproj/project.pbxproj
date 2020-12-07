@@ -247,7 +247,7 @@
 		9BBC903E24FD24D20003D2D8 /* UITraitCollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC903D24FD24D20003D2D8 /* UITraitCollectionExtensions.swift */; };
 		9BC33DE922D72293007CCD65 /* LoginEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DE722D721E6007CCD65 /* LoginEntryView.swift */; };
 		9BC33DEB22D76405007CCD65 /* LoginEntryDialogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DEA22D76405007CCD65 /* LoginEntryDialogueView.swift */; };
-		9BC5F40924114085007D74AC /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC5F40824114085007D74AC /* ErrorView.swift */; };
+		9BC5F40924114085007D74AC /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC5F40824114085007D74AC /* ResultView.swift */; };
 		9BCD171523CCBB680045BD61 /* CollapsibleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD171423CCBB680045BD61 /* CollapsibleContentView.swift */; };
 		9BCDFC7422E09DF700A80D7F /* KlimabroletActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCDFC7322E09DF700A80D7F /* KlimabroletActionsView.swift */; };
 		9BCDFC7622E09E3C00A80D7F /* KlimabroletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCDFC7522E09E3C00A80D7F /* KlimabroletViewModel.swift */; };
@@ -687,7 +687,7 @@
 		9BBC903D24FD24D20003D2D8 /* UITraitCollectionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITraitCollectionExtensions.swift; sourceTree = "<group>"; };
 		9BC33DE722D721E6007CCD65 /* LoginEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryView.swift; sourceTree = "<group>"; };
 		9BC33DEA22D76405007CCD65 /* LoginEntryDialogueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryDialogueView.swift; sourceTree = "<group>"; };
-		9BC5F40824114085007D74AC /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		9BC5F40824114085007D74AC /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		9BCD171423CCBB680045BD61 /* CollapsibleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleContentView.swift; sourceTree = "<group>"; };
 		9BCDFC7322E09DF700A80D7F /* KlimabroletActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletActionsView.swift; sourceTree = "<group>"; };
 		9BCDFC7522E09E3C00A80D7F /* KlimabroletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletViewModel.swift; sourceTree = "<group>"; };
@@ -1617,7 +1617,7 @@
 				91D7F3B42497916000912BC3 /* ConfettiView */,
 				CF15D9B0215B9453004F5F02 /* EasterEggs */,
 				44D912502077AC8A00486848 /* EmptyView */,
-				9BC5F4072411407B007D74AC /* ErrorView */,
+				9BC5F4072411407B007D74AC /* ResultView */,
 				CF2E46F0231968320085A591 /* FavoriteAdActions */,
 				CF164DD4231573F100250822 /* FavoriteAdCommentInput */,
 				9A37D4A128C47173977AAE19 /* FavoriteAdsList */,
@@ -2223,12 +2223,12 @@
 			path = LoginEntryView;
 			sourceTree = "<group>";
 		};
-		9BC5F4072411407B007D74AC /* ErrorView */ = {
+		9BC5F4072411407B007D74AC /* ResultView */ = {
 			isa = PBXGroup;
 			children = (
-				9BC5F40824114085007D74AC /* ErrorView.swift */,
+				9BC5F40824114085007D74AC /* ResultView.swift */,
 			);
-			path = ErrorView;
+			path = ResultView;
 			sourceTree = "<group>";
 		};
 		9BCD171323CCBB590045BD61 /* CollapsibleContentView */ = {
@@ -3406,7 +3406,7 @@
 				441FE434209A24E500B04EF1 /* AdsGridView.swift in Sources */,
 				468F59F2220B20EA001CC0C5 /* MarketsGridViewFlowLayout.swift in Sources */,
 				9B06096D23F14B80005CB592 /* CompactView.swift in Sources */,
-				9BC5F40924114085007D74AC /* ErrorView.swift in Sources */,
+				9BC5F40924114085007D74AC /* ResultView.swift in Sources */,
 				CFCED8E522CF71AC0049A3A0 /* FavoriteFoldersFooterView.swift in Sources */,
 				44C6CE44209CABFE00929269 /* FinniversImageAsset.swift in Sources */,
 				44587019213FA344009187BE /* RegisterViewModel.swift in Sources */,

@@ -4,31 +4,31 @@
 
 import FinniversKit
 
-class ErrorDemoView: UIView, Tweakable {
+class ResultDemoView: UIView, Tweakable {
     lazy var tweakingOptions: [TweakingOption] = [
         TweakingOption(title: "All elements", description: "", action: {
-            self.errorView.configure(
+            self.resultView.configure(
                 title: "Klarte ikke å finne annonsen",
                 description: "Det kan se ut som at annonsen du\nkikker etter er blitt slettet.",
                 icon: UIImage(named: .magnifyingGlass).withRenderingMode(.alwaysTemplate)
             )
         }),
         TweakingOption(title: "Colored title", description: "", action: {
-            self.errorView.configure(title: "Prøv igjen", titleColor: .textAction)
+            self.resultView.configure(title: "Prøv igjen", titleColor: .textAction)
         }),
         TweakingOption(title: "Colored title multiple lines", description: "", action: {
-            self.errorView.configure(
+            self.resultView.configure(
                 title: "Denne annonsetypen støttesikke i appen, trykk for å åpne i Safari",
                 titleColor: .textAction
             )
         }),
         TweakingOption(title: "Just title", description: "", action: {
-            self.errorView.configure(
+            self.resultView.configure(
                 title: "Du mangler nettforbindelse"
             )
         }),
         TweakingOption(title: "Success", description: "", action: {
-            self.errorView.configure(
+            self.resultView.configure(
                 title: "Hurra!",
                 description: "En bekreftelse sendes til navn@mail.no.",
                 icon: UIImage(named: .checkCircleFilled),
@@ -40,7 +40,7 @@ class ErrorDemoView: UIView, Tweakable {
             )
         }),
         TweakingOption(title: "Error", description: "", action: {
-            self.errorView.configure(
+            self.resultView.configure(
                 title: "Usjda!",
                 description: "Noe gikk galt.",
                 icon: UIImage(named: .ratingFaceDissatisfied),
@@ -53,7 +53,7 @@ class ErrorDemoView: UIView, Tweakable {
         }),
     ]
 
-    private lazy var errorView = ErrorView(withAutoLayout: true)
+    private lazy var resultView = ResultView(withAutoLayout: true)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,7 +64,7 @@ class ErrorDemoView: UIView, Tweakable {
 
     private func setup() {
         tweakingOptions.first?.action?()
-        addSubview(errorView)
-        errorView.fillInSuperview()
+        addSubview(resultView)
+        resultView.fillInSuperview()
     }
 }
