@@ -19,7 +19,7 @@ public class AssetsDemoViewController: BaseDemoViewController<UIView> {
         let controller = UISearchController(searchResultsController: nil)
         controller.searchResultsUpdater = self
         controller.searchBar.placeholder = "Få orden på rotet 🧹"
-        controller.dimsBackgroundDuringPresentation = false
+        controller.obscuresBackgroundDuringPresentation = false
         return controller
     }()
 
