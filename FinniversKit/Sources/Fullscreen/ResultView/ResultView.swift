@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class ErrorView: UIView {
+public class ResultView: UIView {
     // MARK: - Private variables
     private lazy var titleLabel: Label = {
         let label = Label(style: .title3Strong, withAutoLayout: true)
@@ -22,7 +22,6 @@ public class ErrorView: UIView {
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.tintColor = .iconSecondary
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -32,6 +31,8 @@ public class ErrorView: UIView {
         stackView.axis = .vertical
         return stackView
     }()
+
+    private lazy var iconHeightConstraint: NSLayoutConstraint = iconImageView.heightAnchor.constraint(equalToConstant: 40)
 
     // MARK: - Initializers
     public override init(frame: CGRect) {
@@ -50,7 +51,12 @@ public class ErrorView: UIView {
         title: String,
         titleColor: UIColor = .textPrimary,
         description: String? = nil,
-        icon: UIImage? = nil
+        icon: UIImage? = nil,
+        backgroundColor: UIColor = .bgTertiary,
+        iconTintColor: UIColor? = .iconSecondary,
+        iconBottomSpacing: CGFloat = .spacingM,
+        titleBottomSpacing: CGFloat = 0,
+        iconHeight: CGFloat = 40
     ) {
         titleLabel.text = title
         titleLabel.textColor = titleColor
@@ -58,22 +64,26 @@ public class ErrorView: UIView {
         descriptionLabel.isHidden = description == nil
         iconImageView.image = icon
         iconImageView.isHidden = icon == nil
+
+        self.backgroundColor = backgroundColor
+        iconImageView.tintColor = iconTintColor
+
+        stackView.setCustomSpacing(iconBottomSpacing, after: iconImageView)
+        stackView.setCustomSpacing(titleBottomSpacing, after: titleLabel)
+        iconHeightConstraint.constant = iconHeight
     }
 
     // MARK: - Private methods
 
     private func setup() {
-        backgroundColor = .bgTertiary
-
         stackView.addArrangedSubview(iconImageView)
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(descriptionLabel)
-        stackView.setCustomSpacing(.spacingM, after: iconImageView)
 
         addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            iconImageView.heightAnchor.constraint(equalToConstant: 40),
+            iconHeightConstraint,
         ])
 
         stackView.centerAndConstraintInSuperview()
