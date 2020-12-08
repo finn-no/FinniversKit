@@ -38,7 +38,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case motorTransactionView
     case motorTransactionInvalidUserView
     case motorTransactionInviteCounterpartyView
-    case errorView
+    case resultView
     case confettiView
     case savedSearchSortingView
     case searchDisplayTypeSelectionView
@@ -140,8 +140,8 @@ public enum FullscreenDemoViews: String, CaseIterable {
             return DemoViewController<MotorTransactionInvalidUserDemoView>()
         case .motorTransactionInviteCounterpartyView:
             return DemoViewController<MotorTransactionInviteCounterpartyDemoView>()
-        case .errorView:
-            return DemoViewController<ErrorDemoView>()
+        case .resultView:
+            return DemoViewController<ResultDemoView>()
         case .confettiView:
             return DemoViewController<ConfettiDemoView>()
         case .savedSearchSortingView:

@@ -44,7 +44,7 @@
 		46E773C6242CEF0A008A5E93 /* FavoriteAdSortingDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7728F242CEF09008A5E93 /* FavoriteAdSortingDemoView.swift */; };
 		46E773C7242CEF0A008A5E93 /* SplashDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77291242CEF09008A5E93 /* SplashDemoView.swift */; };
 		46E773C8242CEF0A008A5E93 /* FullscreenGalleryDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77293242CEF09008A5E93 /* FullscreenGalleryDemoViewController.swift */; };
-		46E773C9242CEF0A008A5E93 /* ErrorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77295242CEF09008A5E93 /* ErrorDemoView.swift */; };
+		46E773C9242CEF0A008A5E93 /* ResultDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77295242CEF09008A5E93 /* ResultDemoView.swift */; };
 		46E773CA242CEF0A008A5E93 /* ConfirmationViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77297242CEF09008A5E93 /* ConfirmationViewDemoView.swift */; };
 		46E773CB242CEF0A008A5E93 /* SearchResultMapViewDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77299242CEF09008A5E93 /* SearchResultMapViewDemoViewController.swift */; };
 		46E773CC242CEF0A008A5E93 /* SearchResultMapViewDemoViewControllerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7729A242CEF09008A5E93 /* SearchResultMapViewDemoViewControllerHelpers.swift */; };
@@ -308,7 +308,7 @@
 		46E7728F242CEF09008A5E93 /* FavoriteAdSortingDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdSortingDemoView.swift; sourceTree = "<group>"; };
 		46E77291242CEF09008A5E93 /* SplashDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashDemoView.swift; sourceTree = "<group>"; };
 		46E77293242CEF09008A5E93 /* FullscreenGalleryDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenGalleryDemoViewController.swift; sourceTree = "<group>"; };
-		46E77295242CEF09008A5E93 /* ErrorDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorDemoView.swift; sourceTree = "<group>"; };
+		46E77295242CEF09008A5E93 /* ResultDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultDemoView.swift; sourceTree = "<group>"; };
 		46E77297242CEF09008A5E93 /* ConfirmationViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationViewDemoView.swift; sourceTree = "<group>"; };
 		46E77299242CEF09008A5E93 /* SearchResultMapViewDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultMapViewDemoViewController.swift; sourceTree = "<group>"; };
 		46E7729A242CEF09008A5E93 /* SearchResultMapViewDemoViewControllerHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultMapViewDemoViewControllerHelpers.swift; sourceTree = "<group>"; };
@@ -631,7 +631,7 @@
 				46E77285242CEF09008A5E93 /* ContactForm */,
 				46E7726F242CEF09008A5E93 /* EasterEggs */,
 				46E772A5242CEF09008A5E93 /* EmptyView */,
-				46E77294242CEF09008A5E93 /* ErrorView */,
+				46E77294242CEF09008A5E93 /* ResultView */,
 				46E7728C242CEF09008A5E93 /* FavoriteAdActions */,
 				46E7729B242CEF09008A5E93 /* FavoriteAdCommentInput */,
 				46E772AA242CEF09008A5E93 /* FavoriteAdsListView */,
@@ -810,12 +810,12 @@
 			path = FullscreenGallery;
 			sourceTree = "<group>";
 		};
-		46E77294242CEF09008A5E93 /* ErrorView */ = {
+		46E77294242CEF09008A5E93 /* ResultView */ = {
 			isa = PBXGroup;
 			children = (
-				46E77295242CEF09008A5E93 /* ErrorDemoView.swift */,
+				46E77295242CEF09008A5E93 /* ResultDemoView.swift */,
 			);
-			path = ErrorView;
+			path = ResultView;
 			sourceTree = "<group>";
 		};
 		46E77296242CEF09008A5E93 /* ConfirmationView */ = {
@@ -2230,7 +2230,7 @@
 				46E77446242CEF0A008A5E93 /* BasicCellVariationsDemoView.swift in Sources */,
 				46E77411242CEF0A008A5E93 /* ViewingsDemoView.swift in Sources */,
 				46E773F8242CEF0A008A5E93 /* PanelDemoView.swift in Sources */,
-				46E773C9242CEF0A008A5E93 /* ErrorDemoView.swift in Sources */,
+				46E773C9242CEF0A008A5E93 /* ResultDemoView.swift in Sources */,
 				46E773EB242CEF0A008A5E93 /* ContractNotCreatedDemoViewModel.swift in Sources */,
 				46E773CE242CEF0A008A5E93 /* RegisterViewDefaultData.swift in Sources */,
 				46E77418242CEF0A008A5E93 /* ColumnListsDemoView.swift in Sources */,
