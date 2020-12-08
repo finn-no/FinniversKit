@@ -3,7 +3,7 @@
 //
 
 extension Panel {
-    public enum Style {
+    public enum Style: String {
         case plain
         case info
         case tips
