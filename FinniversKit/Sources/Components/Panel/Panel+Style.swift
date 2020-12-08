@@ -7,7 +7,7 @@ extension Panel {
         case plain
         case info
         case tips
-        case newFunctionality
+        case newFunctionality = "new-functionality"
         case success
         case warning
         case error
