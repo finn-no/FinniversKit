@@ -217,7 +217,6 @@
 		4D644438248A733400B80827 /* SearchResultsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D644437248A733400B80827 /* SearchResultsDemoView.swift */; };
 		4D644628248F782600B80827 /* SearchResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D644627248F782600B80827 /* SearchResultsData.swift */; };
 		4D6FCA39257A693300C078F1 /* MotorTransactionInsuranceConfirmationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6FCA38257A693300C078F1 /* MotorTransactionInsuranceConfirmationDemoView.swift */; };
-		4D8DE0FC24F8F90700EA1B0C /* ExtendedProfileDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8DE0FB24F8F90700EA1B0C /* ExtendedProfileDemoView.swift */; };
 		4DBC039B250A4A38004E8044 /* ExpandCollapseButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBC039A250A4A38004E8044 /* ExpandCollapseButtonDemoView.swift */; };
 		4DCC6BAB252B312900F69B30 /* SearchDisplayTypeSelectionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC6BAA252B312900F69B30 /* SearchDisplayTypeSelectionDemoView.swift */; };
 		4DD84282254828910058D6BB /* ProjectUnitsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD84281254828910058D6BB /* ProjectUnitsDemoView.swift */; };
@@ -478,7 +477,6 @@
 		4D644437248A733400B80827 /* SearchResultsDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsDemoView.swift; sourceTree = "<group>"; };
 		4D644627248F782600B80827 /* SearchResultsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsData.swift; sourceTree = "<group>"; };
 		4D6FCA38257A693300C078F1 /* MotorTransactionInsuranceConfirmationDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInsuranceConfirmationDemoView.swift; sourceTree = "<group>"; };
-		4D8DE0FB24F8F90700EA1B0C /* ExtendedProfileDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedProfileDemoView.swift; sourceTree = "<group>"; };
 		4DBC039A250A4A38004E8044 /* ExpandCollapseButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandCollapseButtonDemoView.swift; sourceTree = "<group>"; };
 		4DCC6BAA252B312900F69B30 /* SearchDisplayTypeSelectionDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDisplayTypeSelectionDemoView.swift; sourceTree = "<group>"; };
 		4DD84281254828910058D6BB /* ProjectUnitsDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectUnitsDemoView.swift; sourceTree = "<group>"; };
@@ -946,7 +944,6 @@
 				4D152E792577DB0400282244 /* NavigationLinkView */,
 				4DDD45AA250FA7E1007DBDD5 /* SearchDisplayMenu */,
 				4DDD45AC250FA7E1007DBDD5 /* SearchFilterTags */,
-				4D8DE0FA24F8F8F600EA1B0C /* ExtendedProfile */,
 				46E772FA242CEF09008A5E93 /* AddressCardView */,
 				46E77339242CEF09008A5E93 /* BottomSheet */,
 				46E7734E242CEF09008A5E93 /* Broadcast */,
@@ -1816,14 +1813,6 @@
 			path = MotorTransactionInsuranceConfirmationView;
 			sourceTree = "<group>";
 		};
-		4D8DE0FA24F8F8F600EA1B0C /* ExtendedProfile */ = {
-			isa = PBXGroup;
-			children = (
-				4D8DE0FB24F8F90700EA1B0C /* ExtendedProfileDemoView.swift */,
-			);
-			path = ExtendedProfile;
-			sourceTree = "<group>";
-		};
 		4DBC0399250A495D004E8044 /* ExpandCollapseButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -2153,7 +2142,6 @@
 				46E773E1242CEF0A008A5E93 /* BuyerInvitedDemoViewModel.swift in Sources */,
 				4D6FCA39257A693300C078F1 /* MotorTransactionInsuranceConfirmationDemoView.swift in Sources */,
 				46E773D3242CEF0A008A5E93 /* EmptyViewDemoView.swift in Sources */,
-				4D8DE0FC24F8F90700EA1B0C /* ExtendedProfileDemoView.swift in Sources */,
 				712C2294250B918B00E09653 /* MotorTransactionInvalidUserDemoView.swift in Sources */,
 				46E773B8242CEF0A008A5E93 /* NewYearsDemoView.swift in Sources */,
 				46E773CB242CEF0A008A5E93 /* SearchResultMapViewDemoViewController.swift in Sources */,

@@ -71,7 +71,6 @@ public enum ComponentDemoViews: String, CaseIterable {
     case chatAvailabilityView
     case iconLinkListView
     case motorTransactionEntryObjectPageView
-    case extendedProfileView
     case expandCollapseButton
     case objectPageBlinkView
     case sendInviteView
@@ -226,8 +225,6 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<IconLinkListViewDemo>()
         case .motorTransactionEntryObjectPageView:
             return DemoViewController<MotorTransactionEntryObjectPageDemoView>()
-        case .extendedProfileView:
-            return DemoViewController<ExtendedProfileDemoView>(dismissType: .dismissButton)
         case .expandCollapseButton:
             return DemoViewController<ExpandCollapseButtonDemoView>()
         case .objectPageBlinkView:
