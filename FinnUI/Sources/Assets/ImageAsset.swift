@@ -43,6 +43,7 @@ enum ImageAsset: String {
     case favoriteActive
     case favoriteDefault
     case heartMini
+    case noImage
     case pin
     case schibstedFooter
     case snowflake
@@ -67,6 +68,7 @@ enum ImageAsset: String {
             .favoriteActive,
             .favoriteDefault,
             .heartMini,
+            .noImage,
             .pin,
             .schibstedFooter,
             .snowflake,
