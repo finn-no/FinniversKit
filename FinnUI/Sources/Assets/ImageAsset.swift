@@ -56,6 +56,7 @@ enum ImageAsset: String {
     case schibstedFooter
     case snowflake
     case sort
+    case spark
     case splashLetters1
     case splashLetters2
     case splashLetters3
@@ -92,6 +93,7 @@ enum ImageAsset: String {
             .schibstedFooter,
             .snowflake,
             .sort,
+            .spark,
             .splashLetters1,
             .splashLetters2,
             .splashLetters3,

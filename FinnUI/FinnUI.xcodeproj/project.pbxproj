@@ -18,6 +18,7 @@
 		4D152F7B2578CF9700282244 /* MotorTransactionInsurancePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D152F7A2578CF9700282244 /* MotorTransactionInsurancePickerView.swift */; };
 		4D152F892578F80100282244 /* MotorTransactionInsuranceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D152F882578F80100282244 /* MotorTransactionInsuranceView.swift */; };
 		4D1E5533252E02BF00A4ED5C /* SearchFilterTagCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E5532252E02BF00A4ED5C /* SearchFilterTagCellViewModel.swift */; };
+		4D529E0A25827AA2007AE5B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D529E0925827AA2007AE5B6 /* Assets.xcassets */; };
 		4D6FCA35257A66C500C078F1 /* MotorTransactionInsuranceConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6FCA34257A66C500C078F1 /* MotorTransactionInsuranceConfirmationView.swift */; };
 		4D72623A2562667600B75FAB /* UITraitCollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7262392562667600B75FAB /* UITraitCollectionExtensions.swift */; };
 		4D72623D256266A100B75FAB /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72623C256266A100B75FAB /* UIDevice.swift */; };
@@ -119,6 +120,7 @@
 		4D152F7A2578CF9700282244 /* MotorTransactionInsurancePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInsurancePickerView.swift; sourceTree = "<group>"; };
 		4D152F882578F80100282244 /* MotorTransactionInsuranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInsuranceView.swift; sourceTree = "<group>"; };
 		4D1E5532252E02BF00A4ED5C /* SearchFilterTagCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterTagCellViewModel.swift; sourceTree = "<group>"; };
+		4D529E0925827AA2007AE5B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D6FCA34257A66C500C078F1 /* MotorTransactionInsuranceConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInsuranceConfirmationView.swift; sourceTree = "<group>"; };
 		4D7262392562667600B75FAB /* UITraitCollectionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITraitCollectionExtensions.swift; sourceTree = "<group>"; };
 		4D72623C256266A100B75FAB /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 		4698949E2434DD6F00CC84E6 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				4D529E0925827AA2007AE5B6 /* Assets.xcassets */,
 				4698958D2436311B00CC84E6 /* Icons.xcassets */,
 				4698949F2434DD6F00CC84E6 /* ImageAsset.swift */,
 			);
@@ -777,6 +780,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D529E0A25827AA2007AE5B6 /* Assets.xcassets in Resources */,
 				4698958E2436311B00CC84E6 /* Icons.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
