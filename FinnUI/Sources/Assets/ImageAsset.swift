@@ -42,6 +42,9 @@ enum ImageAsset: String {
     case emptySavedSearchNotificationsIcon
     case favoriteActive
     case favoriteDefault
+    case favoritesSortAdStatus
+    case favoritesSortDistance
+    case favoritesSortLastAdded
     case heartMini
     case noImage
     case pin
@@ -70,6 +73,9 @@ enum ImageAsset: String {
             .emptySavedSearchNotificationsIcon,
             .favoriteActive,
             .favoriteDefault,
+            .favoritesSortAdStatus,
+            .favoritesSortDistance,
+            .favoritesSortLastAdded,
             .heartMini,
             .noImage,
             .pin,

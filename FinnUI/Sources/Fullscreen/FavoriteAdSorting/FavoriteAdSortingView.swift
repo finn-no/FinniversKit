@@ -71,7 +71,7 @@ private extension FavoriteAdSortingViewModel {
 }
 
 private extension FavoriteAdSortOption {
-    var icon: FinniversImageAsset {
+    var icon: ImageAsset {
         switch self {
         case .lastAdded:
             return .favoritesSortLastAdded
