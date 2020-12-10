@@ -33,6 +33,7 @@ extension UIImage {
 //swiftlint:disable superfluous_disable_command
 //swiftlint:disable type_body_length
 enum ImageAsset: String {
+    case alphabeticalSortingAscending
     case balloon0
     case balloon1
     case balloon2
@@ -68,6 +69,7 @@ enum ImageAsset: String {
 
     static var imageNames: [ImageAsset] {
         return [
+            .alphabeticalSortingAscending,
             .balloon0,
             .balloon1,
             .balloon2,

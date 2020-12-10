@@ -35,7 +35,6 @@ extension UIImage {
 enum FinniversImageAsset: String {
     case adManagementShare
     case adManagementTrashcan
-    case alphabeticalSortingAscending
     case arrowDown
     case arrowDownSmall
     case arrowRight
@@ -203,7 +202,6 @@ enum FinniversImageAsset: String {
         return [
             .adManagementShare,
             .adManagementTrashcan,
-            .alphabeticalSortingAscending,
             .arrowDown,
             .arrowDownSmall,
             .arrowRight,
