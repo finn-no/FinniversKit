@@ -49,16 +49,26 @@ public struct MotorTransactionButtonModel: MotorTransactionButtonViewModel {
 
 public struct MotorTransactionStepContentModel: MotorTransactionStepContentViewModel {
     public var title: String?
-    /*
-     If body contains a link (<a href>), the backend will assign the same content to nativeBody, but without the (<a href>) link.
-     Instead the nativeButton will also be present in the payload with the action and link as an replacement.
 
-     This is to avoid having the client render both a link and a nativeButton.
+    /// Font and text color is specified at call site in the host app
+    public var titleFont: UIFont? = .title3Strong
+    public var titleTextColor: UIColor? = .textPrimary
+
+    /// How to parse the HTML content, font and text color is specified at call site in the host app
+    /*
+     The native client is expected to use the same service as the web client.
+     This means that the host app should be able to parse HTML along with specifiyng the font and text color (hence the use of NSAttributedString)
+
+     The body property might contain hyperlinks and if it does;
+        1. The body property will be nil on the native client.
+        2. The nativeBody property will contain the same content as the body property, but without any hyperlinks
+        3. Instead of a hyperlink, the nativeButton property will be present to replace the hyperlink.
 
      See line 56-66 in BothPartiesConfirmedHandoverDemoViewModel.swift as an example
     */
     public var body: NSAttributedString?
     public var nativeBody: NSAttributedString?
+
     public var nativeButton: MotorTransactionButtonViewModel?
     public var primaryButton: MotorTransactionButtonViewModel?
 }
