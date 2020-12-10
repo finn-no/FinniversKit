@@ -154,7 +154,6 @@ enum FinniversImageAsset: String {
     case pencilPaper
     case pin
     case playVideo
-    case plus
     case plusMini
     case primingFavoritesComments
     case primingFavoritesSearch
@@ -323,7 +322,6 @@ enum FinniversImageAsset: String {
             .pencilPaper,
             .pin,
             .playVideo,
-            .plus,
             .plusMini,
             .primingFavoritesComments,
             .primingFavoritesSearch,

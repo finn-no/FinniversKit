@@ -48,6 +48,7 @@ enum ImageAsset: String {
     case heartMini
     case noImage
     case pin
+    case plus
     case profile
     case remove
     case republish
@@ -81,6 +82,7 @@ enum ImageAsset: String {
             .heartMini,
             .noImage,
             .pin,
+            .plus,
             .profile,
             .remove,
             .republish,
