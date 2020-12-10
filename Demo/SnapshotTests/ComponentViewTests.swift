@@ -287,10 +287,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.searchDisplayMenuView)
     }
 
-    func testExtendedProfileView() {
-        snapshot(.extendedProfileView)
-    }
-
     func testExpandCollapseButton() {
         snapshot(.expandCollapseButton)
     }
