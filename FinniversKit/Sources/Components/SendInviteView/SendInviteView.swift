@@ -87,9 +87,9 @@ public class SendInviteView: UIView {
         sendInviteLaterButton.setTitle(viewModel.sendInviteLaterButtonText, for: .normal)
     }
 
-    public func loadImage(_ url: URL?, fallbackImage: UIImage = .init(named: .avatar)) {
+    public func loadImage(_ url: URL?, fallbackImage: UIImage?) {
         guard let imageUrl = url else {
-            self.profileImage.image = fallbackImage
+            self.profileImage.image = fallbackImage ?? UIImage(named: .avatar)
             return
         }
 
