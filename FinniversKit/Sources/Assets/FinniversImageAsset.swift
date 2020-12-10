@@ -10,7 +10,7 @@ import UIKit
 private class BundleHelper {
 }
 
-public extension UIImage {
+extension UIImage {
     convenience init(named imageAsset: FinniversImageAsset) {
         #if SWIFT_PACKAGE
         let bundle = Bundle.module
@@ -32,7 +32,7 @@ public extension UIImage {
 
 //swiftlint:disable superfluous_disable_command
 //swiftlint:disable type_body_length
-public enum FinniversImageAsset: String {
+enum FinniversImageAsset: String {
     case adManagementShare
     case adManagementTrashcan
     case alphabeticalSortingAscending
@@ -203,7 +203,7 @@ public enum FinniversImageAsset: String {
     case wrench
     case yourads
 
-    public static var imageNames: [FinniversImageAsset] {
+    static var imageNames: [FinniversImageAsset] {
         return [
             .adManagementShare,
             .adManagementTrashcan,

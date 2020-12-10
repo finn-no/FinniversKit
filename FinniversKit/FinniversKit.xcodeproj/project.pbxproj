@@ -3145,7 +3145,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "ruby \"${SRCROOT}/../Scripts/generate_image_assets_symbols\" \"${SRCROOT}\" FinniversImageAsset public\n";
+			shellScript = "ruby \"${SRCROOT}/../Scripts/generate_image_assets_symbols\" \"${SRCROOT}\" FinniversImageAsset\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

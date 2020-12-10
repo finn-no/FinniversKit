@@ -5,7 +5,7 @@
 import SwiftUI
 
 @available(iOS 13.0, *)
-public extension Image {
+extension Image {
     init(_ assetName: FinniversImageAsset) {
         self.init(assetName.rawValue, bundle: .finniversKit)
     }

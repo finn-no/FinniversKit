@@ -5,14 +5,12 @@ require "fileutils"
 require "digest/md5"
 
 if ARGV.length < 2
-  puts "Too few arguments, usage: generate_image_assets_sympols path output_filename [public]"
+  puts "Too few arguments, usage: generate_image_assets_sympols path output_filename"
   exit
 end
 
 path = ARGV[0]
 output_filename = ARGV[1]
-assets_access_modifier_arg = ARGV[2] || ""
-access_modifier = assets_access_modifier_arg == "public" ? "public " : ""
 
 input = ["#{path}/Sources/Assets/Icons.xcassets", "#{path}/Sources/Assets/Assets.xcassets"]
 
@@ -55,7 +53,7 @@ import UIKit
 private class BundleHelper {
 }
 
-#{access_modifier}extension UIImage {
+extension UIImage {
     convenience init(named imageAsset: #{output_filename}) {
         \#if SWIFT_PACKAGE
         let bundle = Bundle.module
@@ -77,7 +75,7 @@ private class BundleHelper {
 
 //swiftlint:disable superfluous_disable_command
 //swiftlint:disable type_body_length
-#{access_modifier}enum #{output_filename}: String {
+enum #{output_filename}: String {
 EOS
   names.each do |name|
     casename = name.dup
@@ -89,7 +87,7 @@ EOS
     end
   end
 
-  f.puts "\n    #{access_modifier}static var imageNames: [#{output_filename}] {\n"
+  f.puts "\n    static var imageNames: [#{output_filename}] {\n"
   f.puts "        return [\n"
   names.each do |name|
     casename = name.dup
