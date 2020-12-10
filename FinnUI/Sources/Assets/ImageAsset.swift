@@ -50,6 +50,7 @@ enum ImageAsset: String {
     case pin
     case profile
     case remove
+    case republish
     case schibstedFooter
     case snowflake
     case sort
@@ -81,6 +82,7 @@ enum ImageAsset: String {
             .pin,
             .profile,
             .remove,
+            .republish,
             .schibstedFooter,
             .snowflake,
             .sort,

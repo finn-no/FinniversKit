@@ -70,7 +70,7 @@ private extension SavedSearchSortingViewModel {
 }
 
 private extension SavedSearchSortOption {
-    var icon: FinniversImageAsset {
+    var icon: ImageAsset {
         switch self {
         case .lastChanged:
             return .republish
