@@ -103,8 +103,6 @@ public class MotorTransactionStepView: UIView {
                 kind: .main,
                 state: model.state,
                 model: mainContent,
-                withFontForTitle: .title3Strong,
-                withColorForTitle: style.mainTextColor,
                 withAutoLayout: true
             )
 
@@ -119,8 +117,6 @@ public class MotorTransactionStepView: UIView {
                 kind: .detail,
                 state: model.state,
                 model: detailContent,
-                withFontForTitle: .captionStrong,
-                withColorForTitle: style.detailTextColor,
                 withAutoLayout: true
             )
 

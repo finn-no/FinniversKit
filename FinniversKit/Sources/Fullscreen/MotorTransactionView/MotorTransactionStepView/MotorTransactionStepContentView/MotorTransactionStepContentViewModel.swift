@@ -6,6 +6,8 @@ import Foundation
 
 public protocol MotorTransactionStepContentViewModel {
     var title: String? { get }
+    var titleFont: UIFont? { get }
+    var titleTextColor: UIColor? { get }
     /*
      If body contains a link (<a href>), the backend will assign the same content to nativeBody, but without the (<a href>) link.
      Instead the nativeButton will also be present in the payload with the action and link as an replacement.

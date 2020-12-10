@@ -87,8 +87,6 @@ public class MotorTransactionStepContentView: UIView {
         kind: MotorTransactionStepContentView.Kind,
         state: MotorTransactionStepViewState,
         model: MotorTransactionStepContentViewModel,
-        withFontForTitle font: UIFont,
-        withColorForTitle textColor: UIColor,
         withAutoLayout autoLayout: Bool = false
     ) {
         self.step = step
@@ -104,8 +102,8 @@ public class MotorTransactionStepContentView: UIView {
 
         translatesAutoresizingMaskIntoConstraints = !autoLayout
 
-        titleView.font = font
-        titleView.textColor = textColor
+        titleView.font = model.titleFont
+        titleView.textColor = model.titleTextColor
 
         setup()
     }
