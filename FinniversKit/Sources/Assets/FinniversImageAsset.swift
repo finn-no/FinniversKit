@@ -193,7 +193,6 @@ enum FinniversImageAsset: String {
     case travel
     case uncheckCircle
     case vehicles
-    case verified
     case view
     case viewMode
     case virtualViewing
@@ -363,7 +362,6 @@ enum FinniversImageAsset: String {
             .travel,
             .uncheckCircle,
             .vehicles,
-            .verified,
             .view,
             .viewMode,
             .virtualViewing,
