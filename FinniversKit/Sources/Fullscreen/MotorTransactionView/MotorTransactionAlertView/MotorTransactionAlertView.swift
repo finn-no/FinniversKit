@@ -30,7 +30,7 @@ public class MotorTransactionAlertView: UIView {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
-        label.textColor = .licorice
+        label.textColor = .textToast
         label.numberOfLines = 0
         return label
     }()
@@ -39,7 +39,7 @@ public class MotorTransactionAlertView: UIView {
         let view = UITextView(withAutoLayout: true)
         let style = Label.Style.caption
         view.font = style.font
-        view.textColor = .licorice
+        view.textColor = .textToast
         view.backgroundColor = .clear
         view.contentInset = .leadingInset(-.spacingXS)
         view.isScrollEnabled = false
