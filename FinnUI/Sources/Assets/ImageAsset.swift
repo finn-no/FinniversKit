@@ -45,6 +45,8 @@ enum ImageAsset: String {
     case heartMini
     case noImage
     case pin
+    case profile
+    case remove
     case schibstedFooter
     case snowflake
     case sort
@@ -71,6 +73,8 @@ enum ImageAsset: String {
             .heartMini,
             .noImage,
             .pin,
+            .profile,
+            .remove,
             .schibstedFooter,
             .snowflake,
             .sort,

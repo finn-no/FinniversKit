@@ -159,7 +159,6 @@ enum FinniversImageAsset: String {
     case primingFavoritesComments
     case primingFavoritesSearch
     case primingFavoritesSharing
-    case profile
     case rate
     case rated
     case ratingCat
@@ -330,7 +329,6 @@ enum FinniversImageAsset: String {
             .primingFavoritesComments,
             .primingFavoritesSearch,
             .primingFavoritesSharing,
-            .profile,
             .rate,
             .rated,
             .ratingCat,
