@@ -50,6 +50,6 @@ private extension SearchDisplayTypeSelectionViewModel {
         gridText: "Rutenett",
         gridIcon: UIImage(named: "displayTypeGrid")!,
         mapText: "Åpne i kart",
-        mapIcon: UIImage(named: .pin)
+        mapIcon: UIImage(named: "pin")!
     )
 }
