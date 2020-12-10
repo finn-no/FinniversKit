@@ -191,7 +191,6 @@ enum FinniversImageAsset: String {
     case statsEye
     case statsHeart
     case success
-    case trashcan
     case travel
     case uncheckCircle
     case vehicles
@@ -363,7 +362,6 @@ enum FinniversImageAsset: String {
             .statsEye,
             .statsHeart,
             .success,
-            .trashcan,
             .travel,
             .uncheckCircle,
             .vehicles,

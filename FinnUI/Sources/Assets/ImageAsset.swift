@@ -54,6 +54,7 @@ enum ImageAsset: String {
     case splashLetters4
     case splashLogo
     case tagMini
+    case trashcan
     case videoChat
 
     static var imageNames: [ImageAsset] {
@@ -79,6 +80,7 @@ enum ImageAsset: String {
             .splashLetters4,
             .splashLogo,
             .tagMini,
+            .trashcan,
             .videoChat,
     ]
   }
