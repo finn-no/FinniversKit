@@ -79,6 +79,9 @@ enum ImageAsset: String {
     case okonomi
     case pin
     case playVideo
+    case primingFavoritesComments
+    case primingFavoritesSearch
+    case primingFavoritesSharing
     case profile
     case ratings
     case realestate
@@ -142,6 +145,9 @@ enum ImageAsset: String {
             .okonomi,
             .pin,
             .playVideo,
+            .primingFavoritesComments,
+            .primingFavoritesSearch,
+            .primingFavoritesSharing,
             .profile,
             .ratings,
             .realestate,
