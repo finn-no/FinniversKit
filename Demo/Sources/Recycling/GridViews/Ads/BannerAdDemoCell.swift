@@ -7,7 +7,7 @@ import FinniversKit
 class BannerAdDemoCell: UICollectionViewCell {
 
     private lazy var imageView: UIImageView = {
-        let image = UIImage(named: "adsense-demo")
+        let image = UIImage(named: "adsenseDemo")
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
         return imageView

@@ -6,7 +6,7 @@ import FinniversKit
 
 private struct DemoViewModel: SettingDetailsViewModel {
     var icon: UIImage {
-        return UIImage(named: "nyhetsbrev-fra-finn")!
+        return UIImage(named: "nyhetsbrevFraFinn")!
     }
 
     var title: String {
