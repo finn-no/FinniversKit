@@ -160,7 +160,6 @@ enum FinniversImageAsset: String {
     case share
     case sliderThumb
     case sliderThumbActive
-    case sold
     case speechbubbleSmiley
     case spidLogo
     case stakeholder
@@ -305,7 +304,6 @@ enum FinniversImageAsset: String {
             .share,
             .sliderThumb,
             .sliderThumbActive,
-            .sold,
             .speechbubbleSmiley,
             .spidLogo,
             .stakeholder,
