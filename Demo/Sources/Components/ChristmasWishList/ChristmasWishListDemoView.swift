@@ -49,7 +49,7 @@ extension ChristmasWishListViewModel {
                 title: "Ønsk deg brukte gaver til jul!",
                 text: "Gjør det enkelt for dine nærmeste ved å dele ønskelisten din!",
                 accessoryButtonTitle: "Les mer om brukte julegaver",
-                actionButtonIcon: UIImage(named: FinniversImageAsset.gift),
+                actionButtonIcon: UIImage(named: .gift),
                 actionButtonTitle: "Lag ønskeliste"
             ),
             secondPage: Page(
