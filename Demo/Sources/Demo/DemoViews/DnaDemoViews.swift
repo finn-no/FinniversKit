@@ -4,7 +4,6 @@ public enum DnaDemoViews: String, CaseIterable {
     case color
     case font
     case spacing
-    case assets
 
     public static var items: [DnaDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -18,8 +17,6 @@ public enum DnaDemoViews: String, CaseIterable {
             return DemoViewController<FontDemoView>()
         case .spacing:
             return DemoViewController<SpacingDemoView>()
-        case .assets:
-            return UINavigationController(rootViewController: AssetsDemoViewController())
         }
     }
 }
