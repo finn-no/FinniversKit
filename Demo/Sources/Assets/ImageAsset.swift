@@ -78,6 +78,7 @@ enum ImageAsset: String {
     case okonomi
     case pin
     case playVideo
+    case profile
     case ratings
     case realestate
     case remove
@@ -139,6 +140,7 @@ enum ImageAsset: String {
             .okonomi,
             .pin,
             .playVideo,
+            .profile,
             .ratings,
             .realestate,
             .remove,
