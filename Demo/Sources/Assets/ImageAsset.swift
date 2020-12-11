@@ -50,10 +50,12 @@ enum ImageAsset: String {
     case distance
     case emptyMoon
     case emptyStateSaveSearch
+    case favoriteActive
     case favorites
     case favouriteAdded
     case filledMoon
     case filter
+    case finnLogoSimple
     case gift
     case heartEmpty
     case home
@@ -85,6 +87,7 @@ enum ImageAsset: String {
     case okonomi
     case pin
     case playVideo
+    case plus
     case primingFavoritesComments
     case primingFavoritesSearch
     case primingFavoritesSharing
@@ -125,10 +128,12 @@ enum ImageAsset: String {
             .distance,
             .emptyMoon,
             .emptyStateSaveSearch,
+            .favoriteActive,
             .favorites,
             .favouriteAdded,
             .filledMoon,
             .filter,
+            .finnLogoSimple,
             .gift,
             .heartEmpty,
             .home,
@@ -160,6 +165,7 @@ enum ImageAsset: String {
             .okonomi,
             .pin,
             .playVideo,
+            .plus,
             .primingFavoritesComments,
             .primingFavoritesSearch,
             .primingFavoritesSharing,
