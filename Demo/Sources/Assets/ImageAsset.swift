@@ -38,10 +38,12 @@ enum ImageAsset: String {
     case betaImageSearch
     case boat
     case car
+    case checkCircleFilled
     case classifieds
     case consentTransparencyImage
     case displayTypeGrid
     case displayTypeList
+    case dissatisfiedFace
     case emptyMoon
     case emptyStateSaveSearch
     case favorites
@@ -89,10 +91,12 @@ enum ImageAsset: String {
             .betaImageSearch,
             .boat,
             .car,
+            .checkCircleFilled,
             .classifieds,
             .consentTransparencyImage,
             .displayTypeGrid,
             .displayTypeList,
+            .dissatisfiedFace,
             .emptyMoon,
             .emptyStateSaveSearch,
             .favorites,
