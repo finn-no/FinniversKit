@@ -49,6 +49,7 @@ enum ImageAsset: String {
     case emptyMoon
     case emptyStateSaveSearch
     case favorites
+    case favouriteAdded
     case filledMoon
     case filter
     case gift
@@ -118,6 +119,7 @@ enum ImageAsset: String {
             .emptyMoon,
             .emptyStateSaveSearch,
             .favorites,
+            .favouriteAdded,
             .filledMoon,
             .filter,
             .gift,
