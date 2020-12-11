@@ -44,6 +44,10 @@ enum ImageAsset: String {
     case favorites
     case filledMoon
     case filter
+    case iconRealestateApartments
+    case iconRealestateBedrooms
+    case iconRealestateOwner
+    case iconRealestatePrice
     case illustrasjonMedFarge
     case illustrasjonUtenFarge
     case magnifyingGlass
@@ -80,6 +84,10 @@ enum ImageAsset: String {
             .favorites,
             .filledMoon,
             .filter,
+            .iconRealestateApartments,
+            .iconRealestateBedrooms,
+            .iconRealestateOwner,
+            .iconRealestatePrice,
             .illustrasjonMedFarge,
             .illustrasjonUtenFarge,
             .magnifyingGlass,
