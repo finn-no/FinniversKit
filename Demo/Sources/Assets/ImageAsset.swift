@@ -41,6 +41,7 @@ enum ImageAsset: String {
     case checkCircleFilled
     case classifieds
     case consentTransparencyImage
+    case cross
     case displayTypeGrid
     case displayTypeList
     case dissatisfiedFace
@@ -107,6 +108,7 @@ enum ImageAsset: String {
             .checkCircleFilled,
             .classifieds,
             .consentTransparencyImage,
+            .cross,
             .displayTypeGrid,
             .displayTypeList,
             .dissatisfiedFace,
