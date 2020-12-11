@@ -45,6 +45,7 @@ enum ImageAsset: String {
     case displayTypeGrid
     case displayTypeList
     case dissatisfiedFace
+    case distance
     case emptyMoon
     case emptyStateSaveSearch
     case favorites
@@ -96,6 +97,7 @@ enum ImageAsset: String {
     case vehicles
     case virtualViewing
     case warranty
+    case webview
     case yourads
 
     static var imageNames: [ImageAsset] {
@@ -112,6 +114,7 @@ enum ImageAsset: String {
             .displayTypeGrid,
             .displayTypeList,
             .dissatisfiedFace,
+            .distance,
             .emptyMoon,
             .emptyStateSaveSearch,
             .favorites,
@@ -163,6 +166,7 @@ enum ImageAsset: String {
             .vehicles,
             .virtualViewing,
             .warranty,
+            .webview,
             .yourads,
     ]
   }

@@ -62,7 +62,6 @@ enum FinniversImageAsset: String {
     case confetti2
     case creditcard
     case cross
-    case distance
     case distanceOutlined
     case document
     case download
@@ -203,7 +202,6 @@ enum FinniversImageAsset: String {
             .confetti2,
             .creditcard,
             .cross,
-            .distance,
             .distanceOutlined,
             .document,
             .download,
