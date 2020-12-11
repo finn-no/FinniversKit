@@ -49,6 +49,7 @@ enum ImageAsset: String {
     case favorites
     case filledMoon
     case filter
+    case home
     case iconRealestateApartments
     case iconRealestateBedrooms
     case iconRealestateOwner
@@ -58,8 +59,11 @@ enum ImageAsset: String {
     case jobs
     case magnifyingGlass
     case mc
+    case messages
     case mittanbud
     case moteplassen
+    case notifications
+    case notificationsBell
     case npCompare
     case npDrive
     case npHouseWeather
@@ -73,6 +77,7 @@ enum ImageAsset: String {
     case nyhetsbrevFraFinn
     case okonomi
     case pin
+    case playVideo
     case ratings
     case realestate
     case remove
@@ -82,7 +87,9 @@ enum ImageAsset: String {
     case shopping
     case travel
     case vehicles
+    case virtualViewing
     case warranty
+    case yourads
 
     static var imageNames: [ImageAsset] {
         return [
@@ -102,6 +109,7 @@ enum ImageAsset: String {
             .favorites,
             .filledMoon,
             .filter,
+            .home,
             .iconRealestateApartments,
             .iconRealestateBedrooms,
             .iconRealestateOwner,
@@ -111,8 +119,11 @@ enum ImageAsset: String {
             .jobs,
             .magnifyingGlass,
             .mc,
+            .messages,
             .mittanbud,
             .moteplassen,
+            .notifications,
+            .notificationsBell,
             .npCompare,
             .npDrive,
             .npHouseWeather,
@@ -126,6 +137,7 @@ enum ImageAsset: String {
             .nyhetsbrevFraFinn,
             .okonomi,
             .pin,
+            .playVideo,
             .ratings,
             .realestate,
             .remove,
@@ -135,7 +147,9 @@ enum ImageAsset: String {
             .shopping,
             .travel,
             .vehicles,
+            .virtualViewing,
             .warranty,
+            .yourads,
     ]
   }
 }

@@ -25,7 +25,7 @@ extension LoginEntryDemoData {
         case messages
         case settings
 
-        var asset: FinniversImageAsset {
+        var asset: ImageAsset {
             switch self {
             case .notifications: return .notifications
             case .ads: return .yourads

@@ -110,7 +110,6 @@ enum FinniversImageAsset: String {
     case heartEmptyDashed
     case help
     case hide
-    case home
     case important
     case info
     case klimaboletBanner
@@ -120,7 +119,6 @@ enum FinniversImageAsset: String {
     case mapDrawarea
     case mapMyposition
     case messageUserRequired
-    case messages
     case minus
     case miscCross
     case miscDislike
@@ -135,13 +133,11 @@ enum FinniversImageAsset: String {
     case navigation
     case noImage
     case notifications
-    case notificationsBell
     case ornamentCircleBlue
     case ornamentCircleRed
     case ornamentStar
     case pencilPaper
     case pin
-    case playVideo
     case plusMini
     case primingFavoritesComments
     case primingFavoritesSearch
@@ -177,10 +173,8 @@ enum FinniversImageAsset: String {
     case uncheckCircle
     case view
     case viewMode
-    case virtualViewing
     case webview
     case wrench
-    case yourads
 
     static var imageNames: [FinniversImageAsset] {
         return [
@@ -261,7 +255,6 @@ enum FinniversImageAsset: String {
             .heartEmptyDashed,
             .help,
             .hide,
-            .home,
             .important,
             .info,
             .klimaboletBanner,
@@ -271,7 +264,6 @@ enum FinniversImageAsset: String {
             .mapDrawarea,
             .mapMyposition,
             .messageUserRequired,
-            .messages,
             .minus,
             .miscCross,
             .miscDislike,
@@ -286,13 +278,11 @@ enum FinniversImageAsset: String {
             .navigation,
             .noImage,
             .notifications,
-            .notificationsBell,
             .ornamentCircleBlue,
             .ornamentCircleRed,
             .ornamentStar,
             .pencilPaper,
             .pin,
-            .playVideo,
             .plusMini,
             .primingFavoritesComments,
             .primingFavoritesSearch,
@@ -328,10 +318,8 @@ enum FinniversImageAsset: String {
             .uncheckCircle,
             .view,
             .viewMode,
-            .virtualViewing,
             .webview,
             .wrench,
-            .yourads,
     ]
   }
 }
