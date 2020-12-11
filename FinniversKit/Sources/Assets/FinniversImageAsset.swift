@@ -46,7 +46,6 @@ enum FinniversImageAsset: String {
     case betaPill
     case blinkRocketMini
     case blockUser
-    case boat
     case calendar
     case camera
     case candyCane
@@ -57,7 +56,6 @@ enum FinniversImageAsset: String {
     case checkCircleFilledMini
     case checkmarkBig
     case christmasWishListBanner
-    case classifieds
     case clock
     case close
     case confetti1
@@ -115,14 +113,12 @@ enum FinniversImageAsset: String {
     case home
     case important
     case info
-    case jobs
     case klimaboletBanner
     case listView
     case magnifyingGlass
     case mapDirections
     case mapDrawarea
     case mapMyposition
-    case mc
     case messageUserRequired
     case messages
     case minus
@@ -132,17 +128,14 @@ enum FinniversImageAsset: String {
     case miscLike
     case miscLiked
     case miscMoney
-    case mittanbud
     case more
     case moreImg
-    case moteplassen
     case motorTransaction
     case multipleContracts
     case navigation
     case noImage
     case notifications
     case notificationsBell
-    case okonomi
     case ornamentCircleBlue
     case ornamentCircleRed
     case ornamentStar
@@ -169,7 +162,6 @@ enum FinniversImageAsset: String {
     case send
     case settings
     case share
-    case shopping
     case sliderThumb
     case sliderThumbActive
     case sold
@@ -182,9 +174,7 @@ enum FinniversImageAsset: String {
     case statsEye
     case statsHeart
     case success
-    case travel
     case uncheckCircle
-    case vehicles
     case view
     case viewMode
     case virtualViewing
@@ -207,7 +197,6 @@ enum FinniversImageAsset: String {
             .betaPill,
             .blinkRocketMini,
             .blockUser,
-            .boat,
             .calendar,
             .camera,
             .candyCane,
@@ -218,7 +207,6 @@ enum FinniversImageAsset: String {
             .checkCircleFilledMini,
             .checkmarkBig,
             .christmasWishListBanner,
-            .classifieds,
             .clock,
             .close,
             .confetti1,
@@ -276,14 +264,12 @@ enum FinniversImageAsset: String {
             .home,
             .important,
             .info,
-            .jobs,
             .klimaboletBanner,
             .listView,
             .magnifyingGlass,
             .mapDirections,
             .mapDrawarea,
             .mapMyposition,
-            .mc,
             .messageUserRequired,
             .messages,
             .minus,
@@ -293,17 +279,14 @@ enum FinniversImageAsset: String {
             .miscLike,
             .miscLiked,
             .miscMoney,
-            .mittanbud,
             .more,
             .moreImg,
-            .moteplassen,
             .motorTransaction,
             .multipleContracts,
             .navigation,
             .noImage,
             .notifications,
             .notificationsBell,
-            .okonomi,
             .ornamentCircleBlue,
             .ornamentCircleRed,
             .ornamentStar,
@@ -330,7 +313,6 @@ enum FinniversImageAsset: String {
             .send,
             .settings,
             .share,
-            .shopping,
             .sliderThumb,
             .sliderThumbActive,
             .sold,
@@ -343,9 +325,7 @@ enum FinniversImageAsset: String {
             .statsEye,
             .statsHeart,
             .success,
-            .travel,
             .uncheckCircle,
-            .vehicles,
             .view,
             .viewMode,
             .virtualViewing,

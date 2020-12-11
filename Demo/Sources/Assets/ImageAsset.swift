@@ -36,6 +36,9 @@ enum ImageAsset: String {
     case adsenseDemo
     case arrowCounterClockwise
     case betaImageSearch
+    case boat
+    case car
+    case classifieds
     case consentTransparencyImage
     case displayTypeGrid
     case displayTypeList
@@ -50,7 +53,11 @@ enum ImageAsset: String {
     case iconRealestatePrice
     case illustrasjonMedFarge
     case illustrasjonUtenFarge
+    case jobs
     case magnifyingGlass
+    case mc
+    case mittanbud
+    case moteplassen
     case npCompare
     case npDrive
     case npHouseWeather
@@ -62,6 +69,7 @@ enum ImageAsset: String {
     case npStore
     case npWalk
     case nyhetsbrevFraFinn
+    case okonomi
     case pin
     case ratings
     case realestate
@@ -69,6 +77,9 @@ enum ImageAsset: String {
     case removeFilterTag
     case savedSearches
     case service
+    case shopping
+    case travel
+    case vehicles
     case warranty
 
     static var imageNames: [ImageAsset] {
@@ -76,6 +87,9 @@ enum ImageAsset: String {
             .adsenseDemo,
             .arrowCounterClockwise,
             .betaImageSearch,
+            .boat,
+            .car,
+            .classifieds,
             .consentTransparencyImage,
             .displayTypeGrid,
             .displayTypeList,
@@ -90,7 +104,11 @@ enum ImageAsset: String {
             .iconRealestatePrice,
             .illustrasjonMedFarge,
             .illustrasjonUtenFarge,
+            .jobs,
             .magnifyingGlass,
+            .mc,
+            .mittanbud,
+            .moteplassen,
             .npCompare,
             .npDrive,
             .npHouseWeather,
@@ -102,6 +120,7 @@ enum ImageAsset: String {
             .npStore,
             .npWalk,
             .nyhetsbrevFraFinn,
+            .okonomi,
             .pin,
             .ratings,
             .realestate,
@@ -109,6 +128,9 @@ enum ImageAsset: String {
             .removeFilterTag,
             .savedSearches,
             .service,
+            .shopping,
+            .travel,
+            .vehicles,
             .warranty,
     ]
   }
