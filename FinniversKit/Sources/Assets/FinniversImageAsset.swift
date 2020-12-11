@@ -44,7 +44,6 @@ enum FinniversImageAsset: String {
     case avatar
     case bankID
     case betaPill
-    case blinkRocketMini
     case blockUser
     case calendar
     case camera
@@ -105,7 +104,6 @@ enum FinniversImageAsset: String {
     case giftTriangleGreen
     case gridView
     case handshake
-    case heartEmpty
     case heartEmptyDashed
     case help
     case hide
@@ -169,7 +167,6 @@ enum FinniversImageAsset: String {
     case view
     case viewMode
     case webview
-    case wrench
 
     static var imageNames: [FinniversImageAsset] {
         return [
@@ -184,7 +181,6 @@ enum FinniversImageAsset: String {
             .avatar,
             .bankID,
             .betaPill,
-            .blinkRocketMini,
             .blockUser,
             .calendar,
             .camera,
@@ -245,7 +241,6 @@ enum FinniversImageAsset: String {
             .giftTriangleGreen,
             .gridView,
             .handshake,
-            .heartEmpty,
             .heartEmptyDashed,
             .help,
             .hide,
@@ -309,7 +304,6 @@ enum FinniversImageAsset: String {
             .view,
             .viewMode,
             .webview,
-            .wrench,
     ]
   }
 }

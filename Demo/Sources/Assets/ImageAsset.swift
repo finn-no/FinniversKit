@@ -35,7 +35,9 @@ extension UIImage {
 enum ImageAsset: String {
     case adsenseDemo
     case arrowCounterClockwise
+    case avatar
     case betaImageSearch
+    case blinkRocketMini
     case boat
     case car
     case checkCircleFilled
@@ -53,6 +55,7 @@ enum ImageAsset: String {
     case filledMoon
     case filter
     case gift
+    case heartEmpty
     case home
     case iconRealestateApartments
     case iconRealestateBedrooms
@@ -91,6 +94,7 @@ enum ImageAsset: String {
     case remove
     case removeFilterTag
     case savedSearches
+    case search
     case service
     case shopping
     case sold
@@ -99,13 +103,16 @@ enum ImageAsset: String {
     case virtualViewing
     case warranty
     case webview
+    case wrench
     case yourads
 
     static var imageNames: [ImageAsset] {
         return [
             .adsenseDemo,
             .arrowCounterClockwise,
+            .avatar,
             .betaImageSearch,
+            .blinkRocketMini,
             .boat,
             .car,
             .checkCircleFilled,
@@ -123,6 +130,7 @@ enum ImageAsset: String {
             .filledMoon,
             .filter,
             .gift,
+            .heartEmpty,
             .home,
             .iconRealestateApartments,
             .iconRealestateBedrooms,
@@ -161,6 +169,7 @@ enum ImageAsset: String {
             .remove,
             .removeFilterTag,
             .savedSearches,
+            .search,
             .service,
             .shopping,
             .sold,
@@ -169,6 +178,7 @@ enum ImageAsset: String {
             .virtualViewing,
             .warranty,
             .webview,
+            .wrench,
             .yourads,
     ]
   }
