@@ -60,6 +60,7 @@ enum ImageAsset: String {
     case nyhetsbrevFraFinn
     case pin
     case ratings
+    case realestate
     case remove
     case removeFilterTag
     case savedSearches
@@ -95,6 +96,7 @@ enum ImageAsset: String {
             .nyhetsbrevFraFinn,
             .pin,
             .ratings,
+            .realestate,
             .remove,
             .removeFilterTag,
             .savedSearches,

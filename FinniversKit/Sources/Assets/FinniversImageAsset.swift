@@ -166,7 +166,6 @@ enum FinniversImageAsset: String {
     case ratingFaceLove
     case ratingFaceNeutral
     case ratings
-    case realestate
     case remove
     case republish
     case search
@@ -332,7 +331,6 @@ enum FinniversImageAsset: String {
             .ratingFaceLove,
             .ratingFaceNeutral,
             .ratings,
-            .realestate,
             .remove,
             .republish,
             .search,
