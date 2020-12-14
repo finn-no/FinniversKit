@@ -21,6 +21,8 @@ class MotorTransactionInsuranceView: UIView {
         let imageView = RemoteImageView(withAutoLayout: true)
         imageView.dataSource = remoteImageViewDataSource
         imageView.layer.cornerRadius = logoImageWidth/2
+        imageView.layer.borderColor = .logoImageBorderColor
+        imageView.layer.borderWidth = 1
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -83,6 +85,11 @@ class MotorTransactionInsuranceView: UIView {
             logoImageView.setImage(fallbackImage, animated: false)
         }
     }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        logoImageView.layer.borderColor = .logoImageBorderColor
+    }
 }
 
 // MARK: - NavigationLinkViewDelegate
@@ -90,5 +97,13 @@ class MotorTransactionInsuranceView: UIView {
 extension MotorTransactionInsuranceView: NavigationLinkViewDelegate {
     func navigationLinkViewWasTapped(_ navigationLinkView: NavigationLinkView) {
         delegate?.motorTransactionInsuranceViewWasSelected(self)
+    }
+}
+
+// MARK: - Private extensions
+
+private extension CGColor {
+    static var logoImageBorderColor: CGColor {
+        UIColor.dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine).cgColor
     }
 }
