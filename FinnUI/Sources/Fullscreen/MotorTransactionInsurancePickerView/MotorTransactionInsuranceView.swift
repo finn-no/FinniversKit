@@ -21,7 +21,7 @@ class MotorTransactionInsuranceView: UIView {
         let imageView = RemoteImageView(withAutoLayout: true)
         imageView.dataSource = remoteImageViewDataSource
         imageView.layer.cornerRadius = logoImageWidth/2
-        imageView.layer.borderColor = .logoImageBorderColor
+        imageView.layer.borderColor = .imageBorder
         imageView.layer.borderWidth = 1
         imageView.clipsToBounds = true
         return imageView
