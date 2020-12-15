@@ -88,7 +88,7 @@ class MotorTransactionInsuranceView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        logoImageView.layer.borderColor = .logoImageBorderColor
+        logoImageView.layer.borderColor = .imageBorder
     }
 }
 
@@ -97,13 +97,5 @@ class MotorTransactionInsuranceView: UIView {
 extension MotorTransactionInsuranceView: NavigationLinkViewDelegate {
     func navigationLinkViewWasTapped(_ navigationLinkView: NavigationLinkView) {
         delegate?.motorTransactionInsuranceViewWasSelected(self)
-    }
-}
-
-// MARK: - Private extensions
-
-private extension CGColor {
-    static var logoImageBorderColor: CGColor {
-        UIColor.dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine).cgColor
     }
 }
