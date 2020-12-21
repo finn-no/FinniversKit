@@ -7,6 +7,7 @@ import SwiftUI
 
 public enum SwiftUIDemoViews: String, CaseIterable {
     case buttons
+    case easyApply
     case settings
     case basicCellVariations
     case bapAdView
@@ -38,6 +39,12 @@ public enum SwiftUIDemoViews: String, CaseIterable {
         switch self {
         case .buttons:
             return AnyView(ButtonStyleUsageDemoView_Previews.previews)
+        case .easyApply:
+            if #available(iOS 14.0, *) {
+                return AnyView(EasyApplyView_Previews.previews)
+            }
+
+            return AnyView(EmptyView())
         case .settings:
             return AnyView(SettingsView_Previews.previews)
         case .basicCellVariations:

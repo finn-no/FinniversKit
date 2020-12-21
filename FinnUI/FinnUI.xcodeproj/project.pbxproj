@@ -35,6 +35,7 @@
 		4DDD45B4250FAA68007DBDD5 /* SearchDisplayTypeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD45B3250FAA68007DBDD5 /* SearchDisplayTypeSelectionView.swift */; };
 		4DDD45B8250FAA8E007DBDD5 /* SearchDisplayTypeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD45B7250FAA8E007DBDD5 /* SearchDisplayTypeOption.swift */; };
 		4DDD45BA250FAB8B007DBDD5 /* SearchDisplayTypeSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD45B9250FAB8B007DBDD5 /* SearchDisplayTypeSelectionViewModel.swift */; };
+		5DAF7DC72590C31D009DB23A /* EasyApplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF7DC62590C31D009DB23A /* EasyApplyView.swift */; };
 		7149DB6D24FE58C900268976 /* MyVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149DB6824FE58C800268976 /* MyVehicleCell.swift */; };
 		7149DB6E24FE58C900268976 /* MyVehicleCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149DB6924FE58C800268976 /* MyVehicleCellModel.swift */; };
 		7149DB7324FE592400268976 /* MyVehiclesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149DB7124FE592400268976 /* MyVehiclesListViewModel.swift */; };
@@ -135,6 +136,7 @@
 		4DDD45B3250FAA68007DBDD5 /* SearchDisplayTypeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDisplayTypeSelectionView.swift; sourceTree = "<group>"; };
 		4DDD45B7250FAA8E007DBDD5 /* SearchDisplayTypeOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDisplayTypeOption.swift; sourceTree = "<group>"; };
 		4DDD45B9250FAB8B007DBDD5 /* SearchDisplayTypeSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDisplayTypeSelectionViewModel.swift; sourceTree = "<group>"; };
+		5DAF7DC62590C31D009DB23A /* EasyApplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApplyView.swift; sourceTree = "<group>"; };
 		7149DB6824FE58C800268976 /* MyVehicleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVehicleCell.swift; sourceTree = "<group>"; };
 		7149DB6924FE58C800268976 /* MyVehicleCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVehicleCellModel.swift; sourceTree = "<group>"; };
 		7149DB7124FE592400268976 /* MyVehiclesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVehiclesListViewModel.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 		46AE6FAE242BAAAE007BB005 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
+				5DAF7DC52590C2FA009DB23A /* EasyApply */,
 				4D6FCA33257A645A00C078F1 /* MotorTransactionInsuranceConfirmationView */,
 				D6C0BD7C257A2D5600D51440 /* EasterEggs */,
 				4D152F792578CF7800282244 /* MotorTransactionInsurancePickerView */,
@@ -391,6 +394,14 @@
 				4DDD45B9250FAB8B007DBDD5 /* SearchDisplayTypeSelectionViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5DAF7DC52590C2FA009DB23A /* EasyApply */ = {
+			isa = PBXGroup;
+			children = (
+				5DAF7DC62590C31D009DB23A /* EasyApplyView.swift */,
+			);
+			path = EasyApply;
 			sourceTree = "<group>";
 		};
 		7149DB6524FE58C800268976 /* MyVehicles */ = {
@@ -826,6 +837,7 @@
 				9B2A6997249797AC00E671B5 /* TryHeltHjemView.swift in Sources */,
 				9B2A698E249797AC00E671B5 /* AuthorViewModel.swift in Sources */,
 				9B2A6990249797AC00E671B5 /* PhoneNumberViewModel.swift in Sources */,
+				5DAF7DC72590C31D009DB23A /* EasyApplyView.swift in Sources */,
 				4DDD45A9250FA7BD007DBDD5 /* SearchFilterTagsView.swift in Sources */,
 				46AE6FB1242BAB97007BB005 /* SplashView.swift in Sources */,
 				DA0E186F2459C23600C0616E /* SettingsView.swift in Sources */,
