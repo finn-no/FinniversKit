@@ -54,7 +54,7 @@ extension MotorTransactionInviteCounterpartyDemoView: MotorTransactionInviteCoun
         completion: @escaping ((UIImage?) -> Void)
     ) {
         guard let url = model.image else {
-            let defaultImage = UIImage(named: "consentTransparencyImage")
+            let defaultImage = UIImage(named: .consentTransparencyImage)
             completion(defaultImage)
             return
         }

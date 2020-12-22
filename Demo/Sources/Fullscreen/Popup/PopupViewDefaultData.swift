@@ -29,7 +29,7 @@ struct PopupConsentViewDefaultData: PopupViewModel {
     public var descriptionTitle = "Få personlige anbefalinger"
     public var descriptionText: String? = "Vi kan vise deg relevante FINN-annonser du ikke har sett. Da trenger vi å lagre dine søkevalg."
     public var attributedDescriptionText: NSAttributedString?
-    public var image: UIImage = UIImage(named: "illustrasjonMedFarge")!
+    public var image: UIImage = UIImage(named: .illustrasjonMedFarge)
 
     public init() {}
 }
@@ -42,7 +42,7 @@ struct PopupConsentViewDefaultDataRejected: PopupViewModel {
     public var descriptionTitle = "Personlige anbefalinger er slått av"
     public var descriptionText: String? = "Vi vil ikke lenger tipse deg om relevante annonser du ikke sett."
     public var attributedDescriptionText: NSAttributedString?
-    public var image: UIImage = UIImage(named: "illustrasjonUtenFarge")!
+    public var image: UIImage = UIImage(named: .illustrasjonUtenFarge)
 
     public init() {}
 }
@@ -54,7 +54,7 @@ struct PopupConsentViewTransparency: PopupViewModel {
     public var linkButtonTitle: String?
     public var descriptionTitle = "Dine data, dine valg"
     public var descriptionText: String?
-    public var image: UIImage = UIImage(named: "consentTransparencyImage")!
+    public var image: UIImage = UIImage(named: .consentTransparencyImage)
 
     public var attributedDescriptionText: NSAttributedString? {
         let mutableAttributedString = NSMutableAttributedString()

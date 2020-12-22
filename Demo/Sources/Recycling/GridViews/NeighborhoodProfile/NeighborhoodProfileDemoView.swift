@@ -60,18 +60,18 @@ private extension NeighborhoodProfileViewModel {
                     content: Content(
                         title: "Gangavstand til offentlig transport",
                         link: Link(title: "Mer om transport", url: nil),
-                        icon: UIImage(named: "npPublicTransport")
+                        icon: UIImage(named: .npPublicTransport)
                     ),
                     rows: [
-                        Row(title: "Buss", detailText: "9 min", icon: UIImage(named: "npWalk")),
-                        Row(title: "Jernbanestasjon", detailText: "8 min", icon: UIImage(named: "npDrive"))
+                        Row(title: "Buss", detailText: "9 min", icon: UIImage(named: .npWalk)),
+                        Row(title: "Jernbanestasjon", detailText: "8 min", icon: UIImage(named: .npDrive))
                     ]
                 ),
                 Card.info(
                     content: Content(
                         title: "Nabolaget er spesielt anbefalt for",
                         link: Link(title: "Hva mer mener de lokalkjente?", url: nil),
-                        icon: UIImage(named: "npRecommended")
+                        icon: UIImage(named: .npRecommended)
                     ),
                     rows: [
                         Row(title: "Familier med barn"),
@@ -84,7 +84,7 @@ private extension NeighborhoodProfileViewModel {
                     content: Content(
                         title: "Hva er beste transportalternativ til jobben min?",
                         link: Link(title: "Finn reisetider", url: nil),
-                        icon: UIImage(named: "npStopwatch")
+                        icon: UIImage(named: .npStopwatch)
                     ),
                     rows: []
                 ),
@@ -92,18 +92,18 @@ private extension NeighborhoodProfileViewModel {
                     content: Content(
                         title: "Gangavstand til skole",
                         link: Link(title: "Mer om skoler", url: nil),
-                        icon: UIImage(named: "npSchool")
+                        icon: UIImage(named: .npSchool)
                     ),
                     rows: [
-                        Row(title: "Ungdomsskole", detailText: "20 min", icon: UIImage(named: "npWalk")),
-                        Row(title: "Barneskole", detailText: "21 min", icon: UIImage(named: "npWalk"))
+                        Row(title: "Ungdomsskole", detailText: "20 min", icon: UIImage(named: .npWalk)),
+                        Row(title: "Barneskole", detailText: "21 min", icon: UIImage(named: .npWalk))
                     ]
                 ),
                 Card.info(
                     content: Content(
                         title: "Nabolaget oppleves som veldig trygt",
                         link: Link(title: "Hva mer mener de lokalkjente?", url: nil),
-                        icon: UIImage(named: "npSafeNeighborhood")
+                        icon: UIImage(named: .npSafeNeighborhood)
                     ),
                     rows: []
                 ),
@@ -111,18 +111,18 @@ private extension NeighborhoodProfileViewModel {
                     content: Content(
                         title: "Kort gangavstand til butikk",
                         link: Link(title: "Mer om handel", url: nil),
-                        icon: UIImage(named: "npStore")
+                        icon: UIImage(named: .npStore)
                     ),
                     rows: [
-                        Row(title: "Dagligvare", detailText: "9 min", icon: UIImage(named: "npWalk")),
-                        Row(title: "Kjøpesenter", detailText: "7 min", icon: UIImage(named: "npDrive"))
+                        Row(title: "Dagligvare", detailText: "9 min", icon: UIImage(named: .npWalk)),
+                        Row(title: "Kjøpesenter", detailText: "7 min", icon: UIImage(named: .npDrive))
                     ]
                 ),
                 Card.info(
                     content: Content(
                         title: "Sammenlign nabolaget med der du bor i dag?",
                         link: Link(title: "Gå til sammenligning", url: nil),
-                        icon: UIImage(named: "npCompare")
+                        icon: UIImage(named: .npCompare)
                     ),
                     rows: []
                 ),
@@ -130,7 +130,7 @@ private extension NeighborhoodProfileViewModel {
                     content: Content(
                         title: "Vil du se hele oversikten?",
                         link: Link(title: "Utforsk nabolaget", url: nil),
-                        icon: UIImage(named: "npHouseWeather")
+                        icon: UIImage(named: .npHouseWeather)
                     )
                 ),
             ]

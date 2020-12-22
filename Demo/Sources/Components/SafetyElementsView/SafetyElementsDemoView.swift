@@ -40,13 +40,13 @@ class SafetyElementsDemoView: UIView, Tweakable {
     let sampleData: [SafetyElementViewModel] = [
         SafetyElementViewModel(
             title: "Service",
-            icon: UIImage(named: "service")!,
+            icon: UIImage(named: .service),
             body: "Selger garanterer at bilen har blitt vedlikeholdt i tråd med fabrikkens anbefalinger for service-intervall og øvrig vedlikehold.",
             bottomLink: nil
         ),
         SafetyElementViewModel(
             title: "Garanti",
-            icon: UIImage(named: "warranty")!,
+            icon: UIImage(named: .warranty),
             body: "Denne bilen selges med garanti. Nybilgaranti fra 1. gang reg. (60 mnd / 100 000 km)",
             bottomLink: LinkButtonViewModel(
                 buttonIdentifier: nil,
@@ -57,13 +57,13 @@ class SafetyElementsDemoView: UIView, Tweakable {
         ),
         SafetyElementViewModel(
             title: "Bytterett",
-            icon: UIImage(named: "warranty")!,
+            icon: UIImage(named: .warranty),
             body: "Denne bilen selges med bytterett fra forhandler. Det betyr at du som kjøper har mulighet til å bytte den mot en annen bil, i henhold til forhandlerens vilkår. Dette kan du gjøre dersom bilen du har kjøpt av en eller annen grunn ikke tilfredsstiller dine forventninger eller behov. Produktet tilbys for at du som kjøper skal føle deg helt trygg på at du ender opp med riktig bil for ditt behov.",
             bottomLink: nil
         ),
         SafetyElementViewModel(
             title: "Medlem",
-            icon: UIImage(named: "warranty")!,
+            icon: UIImage(named: .warranty),
             body: "Når du kjøper bil av en forhandler som er medlem av NBF, handler du av en forhandler som har forpliktet seg til å følge NBF etiske retningslinjer. Dette gir deg som kjøper en ekstra trygghet.",
             bottomLink: LinkButtonViewModel(
                 buttonIdentifier: nil,

@@ -2,7 +2,7 @@ import FinnUI
 
 class RecentSearchData: SearchResultsListViewModel {
     let title = "Siste søk"
-    let icon = UIImage(named: "arrowCounterClockwise")!
+    let icon = UIImage(named: .arrowCounterClockwise)
     let showDeleteRowIcons = true
     let buttonTitle: String? = "Fjern all søkehistorikk"
 }

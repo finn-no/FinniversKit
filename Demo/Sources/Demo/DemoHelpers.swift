@@ -193,9 +193,9 @@ extension Foundation.Notification.Name {
     var image: UIImage {
         switch self {
         case .light:
-            return UIImage(named: "emptyMoon")!
+            return UIImage(named: .emptyMoon)
         case .dark:
-            return UIImage(named: "filledMoon")!
+            return UIImage(named: .filledMoon)
         }
     }
 }

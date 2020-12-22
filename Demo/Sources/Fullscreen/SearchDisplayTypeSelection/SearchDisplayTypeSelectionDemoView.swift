@@ -46,10 +46,10 @@ extension SearchDisplayTypeSelectionDemoView: SearchDisplayTypeSelectionViewDele
 private extension SearchDisplayTypeSelectionViewModel {
     static let `default` = SearchDisplayTypeSelectionViewModel(
         listText: "Liste",
-        listIcon: UIImage(named: "displayTypeList")!,
+        listIcon: UIImage(named: .displayTypeList),
         gridText: "Rutenett",
-        gridIcon: UIImage(named: "displayTypeGrid")!,
+        gridIcon: UIImage(named: .displayTypeGrid),
         mapText: "Åpne i kart",
-        mapIcon: UIImage(named: "pin")!
+        mapIcon: UIImage(named: .pin)
     )
 }

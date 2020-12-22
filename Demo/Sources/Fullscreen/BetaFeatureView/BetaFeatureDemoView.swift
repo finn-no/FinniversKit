@@ -12,7 +12,7 @@ final class BetaFeatureDemoView: UIView {
     }()
 
     let viewModel = BetaFeatureViewModel(
-        iconImage: UIImage(named: "betaImageSearch"),
+        iconImage: UIImage(named: .betaImageSearch),
         title: "Bildesøk på Torget",
         description: "Test ut bildesøket vårt og finn lignende ting på Torget",
         firstButtonTitle: "Ta nytt bilde",
