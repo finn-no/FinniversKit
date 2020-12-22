@@ -36,7 +36,7 @@ import UIKit
     @objc lazy var settingsButton: UIButton = {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: FinniversImageAsset.settings), for: .normal)
+        button.setImage(UIImage(named: .settings), for: .normal)
         button.addTarget(self, action: #selector(showSettings(button:)), for: .touchUpInside)
         button.isAccessibilityElement = true
 
@@ -47,7 +47,7 @@ import UIKit
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .center
-        view.image = UIImage(named: FinniversImageAsset.arrowRight)
+        view.image = UIImage(named: .arrowRight)
 
         return view
     }()

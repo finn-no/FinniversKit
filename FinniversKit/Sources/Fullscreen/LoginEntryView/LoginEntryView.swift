@@ -43,7 +43,7 @@ public class LoginEntryView: UIView {
 
     private lazy var settingsButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
-        button.setImage(UIImage(named: FinniversImageAsset.settings).withRenderingMode(.alwaysTemplate), for: .normal)
+        button.setImage(UIImage(named: .settings).withRenderingMode(.alwaysTemplate), for: .normal)
         button.tintColor = .stone
         button.isHidden = true
         button.addTarget(self, action: #selector(handleTapOnSettingsButton), for: .touchUpInside)

@@ -11,7 +11,7 @@ private class BundleHelper {
 }
 
 extension UIImage {
-    convenience init(named imageAsset: FinniversImageAsset) {
+    convenience init(named imageAsset: ImageAsset) {
         #if SWIFT_PACKAGE
         let bundle = Bundle.module
         #else
@@ -32,7 +32,7 @@ extension UIImage {
 
 //swiftlint:disable superfluous_disable_command
 //swiftlint:disable type_body_length
-enum FinniversImageAsset: String {
+enum ImageAsset: String {
     case adManagementShare
     case adManagementTrashcan
     case arrowDown
@@ -168,7 +168,7 @@ enum FinniversImageAsset: String {
     case viewMode
     case webview
 
-    static var imageNames: [FinniversImageAsset] {
+    static var imageNames: [ImageAsset] {
         return [
             .adManagementShare,
             .adManagementTrashcan,

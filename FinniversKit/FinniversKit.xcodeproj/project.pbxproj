@@ -107,7 +107,7 @@
 		44A557B622E72187001667AE /* CheckboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A557B322E72187001667AE /* CheckboxTableViewCell.swift */; };
 		44AFCE49215839F7005984DB /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFCE47215839F6005984DB /* LoadingIndicatorView.swift */; };
 		44C4E8DE1FFBA714000B014D /* Config.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* Config.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C6CE44209CABFE00929269 /* FinniversImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */; };
+		44C6CE44209CABFE00929269 /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6CE43209CABFE00929269 /* ImageAsset.swift */; };
 		44D9125F2077AC8A00486848 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912512077AC8A00486848 /* EmptyView.swift */; };
 		44D912602077AC8A00486848 /* AttachableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912532077AC8A00486848 /* AttachableView.swift */; };
 		44D912612077AC8A00486848 /* RoundedRectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912542077AC8A00486848 /* RoundedRectangleView.swift */; };
@@ -547,7 +547,7 @@
 		44A557B222E72187001667AE /* HeartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartTableViewCell.swift; sourceTree = "<group>"; };
 		44A557B322E72187001667AE /* CheckboxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxTableViewCell.swift; sourceTree = "<group>"; };
 		44AFCE47215839F6005984DB /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
-		44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinniversImageAsset.swift; sourceTree = "<group>"; };
+		44C6CE43209CABFE00929269 /* ImageAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
 		44D912512077AC8A00486848 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		44D912532077AC8A00486848 /* AttachableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachableView.swift; sourceTree = "<group>"; };
 		44D912542077AC8A00486848 /* RoundedRectangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedRectangleView.swift; sourceTree = "<group>"; };
@@ -1418,7 +1418,7 @@
 				4447F6B91FDB2B110033DBC1 /* Assets.xcassets */,
 				DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */,
 				DAA9A3AF2102157B0021F7DC /* RadiobuttonAnimation.xcassets */,
-				44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */,
+				44C6CE43209CABFE00929269 /* ImageAsset.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -3145,7 +3145,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "ruby \"${SRCROOT}/../Scripts/generate_image_assets_symbols\" \"${SRCROOT}\" FinniversImageAsset\n";
+			shellScript = "ruby \"${SRCROOT}/../Scripts/generate_image_assets_symbols\" \"${SRCROOT}\" ImageAsset\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -3408,7 +3408,7 @@
 				9B06096D23F14B80005CB592 /* CompactView.swift in Sources */,
 				9BC5F40924114085007D74AC /* ResultView.swift in Sources */,
 				CFCED8E522CF71AC0049A3A0 /* FavoriteFoldersFooterView.swift in Sources */,
-				44C6CE44209CABFE00929269 /* FinniversImageAsset.swift in Sources */,
+				44C6CE44209CABFE00929269 /* ImageAsset.swift in Sources */,
 				44587019213FA344009187BE /* RegisterViewModel.swift in Sources */,
 				9BEB287F231D488000D28BAD /* TitleValueSliderView.swift in Sources */,
 				CF7C460422257A8A001FB92C /* EarthHourContentView.swift in Sources */,
