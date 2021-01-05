@@ -46,11 +46,6 @@ public class ChatAvailabilityView: UIView {
     private lazy var chatNowButton: Button = {
         let button = Button(style: .callToAction, size: .normal, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
-        button.titleEdgeInsets = UIEdgeInsets(leading: .spacingS)
-        button.imageEdgeInsets = UIEdgeInsets(top: .spacingXS, leading: -.spacingS)
-        let image = UIImage(named: .videoChat)
-        button.setImage(image.withRenderingMode(.alwaysTemplate))
-        button.imageView?.tintColor = .milk
         return button
     }()
 
