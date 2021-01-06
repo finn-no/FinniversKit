@@ -72,7 +72,7 @@ public class ChatAvailabilityView: UIView {
     private func setup() {
         addSubview(stackView)
         bookingStackView.addArrangedSubviews([bookingTitleLabel, bookingButton])
-        stackView.addArrangedSubviews([titleLabel, textLabel, chatNowButton, statusView])
+        stackView.addArrangedSubviews([titleLabel, textLabel, chatNowButton, statusView, bookingStackView])
 
         stackView.setCustomSpacing(.spacingM, after: textLabel)
         stackView.fillInSuperview()
@@ -91,15 +91,21 @@ public class ChatAvailabilityView: UIView {
         } else {
             textLabel.isHidden = true
         }
+
         chatNowButton.setTitle(viewModel.chatNowButtonTitle, for: .normal)
+
+        bookingTitleLabel.text = viewModel.bookingTitle
+        bookingButton.setTitle(viewModel.bookingButtonTitle, for: .normal)
     }
 
     public func configure(status: Status, statusTitle: String? = nil) {
         switch status {
         case .online, .unknown:
             chatNowButton.isEnabled = true
+            bookingStackView.isHidden = false
         case .loading, .offline:
             chatNowButton.isEnabled = false
+            bookingStackView.isHidden = true
         }
 
         statusView.configure(status: status, statusTitle: statusTitle)
