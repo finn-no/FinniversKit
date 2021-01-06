@@ -5,34 +5,15 @@
 import FinnUI
 import FinniversKit
 
-private struct ChatAvailabilityData: ChatAvailabilityViewModel {
-    var title: String? = "Live videovisning av bilen"
-    var text: String? = "Med live videovisning kan du se bilen på video mens du snakker med forhandleren."
-    var buttonTitle = "Be om videovisning"
-}
+public class ChatAvailabilityDemoView: UIView, Tweakable {
 
-public class ChatAvailabilityDemoView: UIView {
+    lazy var tweakingOptions: [TweakingOption] = ChatStatus.allCases.map { status in
+        TweakingOption(title: "Status: \(status.rawValue)", action: { [weak self] in
+            self?.chatAvailabilityView.configure(with: ChatAvailabilityData(chatStatus: status), isActionButtonEnabled: status != .loading)
+        })
+    }
 
-    let statuses: [(status: ChatAvailabilityView.Status, statusTitle: String?)] = [
-        (status: .online, statusTitle: "Tilgjengelig nå"),
-        (status: .offline, statusTitle: "Ikke tilgjengelig"),
-        (status: .loading, statusTitle: "Laster tilgjengelighet"),
-        (status: .unknown, statusTitle: "Finner ikke tilgjengelighet"),
-    ]
-
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .vertical
-        stackView.spacing = .spacingM
-        return stackView
-    }()
-
-    private lazy var randomizeStatusButton: Button = {
-        let button = Button(style: .flat, size: .small, withAutoLayout: true)
-        button.addTarget(self, action: #selector(randomizeStatuses), for: .touchUpInside)
-        button.setTitle("Randomize statuses", for: .normal)
-        return button
-    }()
+    private lazy var chatAvailabilityView = ChatAvailabilityView(withAutoLayout: true)
 
     // MARK: - Init
 
@@ -46,31 +27,72 @@ public class ChatAvailabilityDemoView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        statuses.forEach {
-            let view = ChatAvailabilityView(withAutoLayout: true)
-            view.configure(with: ChatAvailabilityData())
-            view.configure(status: $0.status, statusTitle: $0.statusTitle)
-            stackView.addArrangedSubview(view)
-        }
-
-        stackView.addArrangedSubview(randomizeStatusButton)
-
-        addSubview(stackView)
+        tweakingOptions.first?.action?()
+        addSubview(chatAvailabilityView)
 
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-            stackView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            chatAvailabilityView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            chatAvailabilityView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            chatAvailabilityView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
+}
 
-    // MARK: - Private methods
+private enum ChatStatus: String, CaseIterable {
+    case online
+    case offline
+    case loading
+}
 
-    @objc private func randomizeStatuses() {
-        let randomized = statuses.shuffled()
-        stackView.arrangedSubviews.enumerated().forEach { offset, view in
-            guard let view = view as? ChatAvailabilityView, let status = randomized[safe: offset] else { return }
-            view.configure(status: status.status, statusTitle: status.statusTitle)
+private struct ChatAvailabilityData: ChatAvailabilityViewModel {
+    var title: String = "Live videovisning av bilen"
+    var text: String = "Med live videovisning kan du se bilen på video mens du snakker med forhandleren."
+    var actionButtonTitle: String
+    var isLoading: Bool
+    var statusTitle: String?
+    var bookTimeTitle: String?
+    var bookTimeButtonTitle: String?
+
+    init(chatStatus: ChatStatus) {
+        switch chatStatus {
+        case .online:
+            self.init(
+                actionButtonTitle: "Be om videovisning",
+                isLoading: false,
+                statusTitle: "Tilgjengelig nå",
+                bookTimeTitle: "Passer det ikke akkurat nå?",
+                bookTimeButtonTitle: "Foreslå tid for videovisning"
+            )
+        case .offline:
+            self.init(
+                actionButtonTitle: "Foreslå tid for videovisning",
+                isLoading: false,
+                statusTitle: nil,
+                bookTimeTitle: nil,
+                bookTimeButtonTitle: nil
+            )
+        case .loading:
+            self.init(
+                actionButtonTitle: "Be om videovisning",
+                isLoading: true,
+                statusTitle: "Laster tilgjengelighet",
+                bookTimeTitle: nil,
+                bookTimeButtonTitle: nil
+            )
         }
+    }
+
+    init(
+        actionButtonTitle: String,
+        isLoading: Bool,
+        statusTitle: String?,
+        bookTimeTitle: String?,
+        bookTimeButtonTitle: String?
+    ) {
+        self.actionButtonTitle = actionButtonTitle
+        self.isLoading = isLoading
+        self.statusTitle = statusTitle
+        self.bookTimeTitle = bookTimeTitle
+        self.bookTimeButtonTitle = bookTimeButtonTitle
     }
 }
