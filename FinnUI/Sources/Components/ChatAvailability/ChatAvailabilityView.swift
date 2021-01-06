@@ -24,12 +24,7 @@ public class ChatAvailabilityView: UIView {
 
     private lazy var statusView = StatusView(withAutoLayout: true)
 
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .vertical
-        stackView.spacing = .spacingS
-        return stackView
-    }()
+    private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .title3Strong, withAutoLayout: true)
@@ -45,7 +40,7 @@ public class ChatAvailabilityView: UIView {
 
     private lazy var chatNowButton: Button = {
         let button = Button(style: .callToAction, size: .normal, withAutoLayout: true)
-        button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleChatNowButtonTap), for: .touchUpInside)
         return button
     }()
 
@@ -62,10 +57,7 @@ public class ChatAvailabilityView: UIView {
 
     private func setup() {
         addSubview(stackView)
-        stackView.addArrangedSubview(titleLabel)
-        stackView.addArrangedSubview(textLabel)
-        stackView.addArrangedSubview(chatNowButton)
-        stackView.addArrangedSubview(statusView)
+        stackView.addArrangedSubviews([titleLabel, textLabel, chatNowButton, statusView])
         stackView.setCustomSpacing(.spacingM, after: textLabel)
         stackView.fillInSuperview()
     }
@@ -97,9 +89,9 @@ public class ChatAvailabilityView: UIView {
         statusView.configure(status: status, statusTitle: statusTitle)
     }
 
-    // MARK: - Private methods
+    // MARK: - Actions
 
-    @objc private func handleButtonTap() {
+    @objc private func handleChatNowButtonTap() {
         delegate?.chatAvailabilityViewDidTapChatNowButton(self)
     }
 }
@@ -112,12 +104,7 @@ private class StatusView: UIView {
 
     private lazy var statusLabel = Label(style: .detail, withAutoLayout: true)
     private lazy var loadingIndicator = LoadingIndicatorView(withAutoLayout: true)
-
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.spacing = .spacingS
-        return stackView
-    }()
+    private lazy var stackView = UIStackView(axis: .horizontal, spacing: .spacingS, withAutoLayout: true)
 
     // MARK: - Init
 
@@ -131,9 +118,7 @@ private class StatusView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        stackView.addArrangedSubview(loadingIndicator)
-        stackView.addArrangedSubview(statusLabel)
-
+        stackView.addArrangedSubviews([loadingIndicator, statusLabel])
         addSubview(stackView)
         stackView.fillInSuperview()
 
@@ -173,11 +158,4 @@ private class StatusView: UIView {
 
 private extension UIColor {
     static var online = dynamicColorIfAvailable(defaultColor: .lime, darkModeColor: .pea)
-}
-
-private extension UIButton {
-    func setImage(_ image: UIImage?) {
-        let states: [UIControl.State] = [.normal, .highlighted, .disabled, .selected, .focused]
-        states.forEach { setImage(image, for: $0) }
-    }
 }
