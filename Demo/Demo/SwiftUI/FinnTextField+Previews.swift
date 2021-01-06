@@ -19,6 +19,8 @@ struct FinnTextFieldDemoView: View {
             FinnTextField(placeholder: "Default", text: $text)
             FinnTextField(input: .email, placeholder: "Email", helpText: "Help text", text: $text)
             FinnTextField(input: .secure, placeholder: "Secure", helpText: "Help text", text: $text)
+            FinnTextField(input: .phone, placeholder: "Phone", text: $text)
+            FinnTextField(input: .number, placeholder: "Number", text: $text)
 
             Spacer()
         }

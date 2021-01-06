@@ -41,7 +41,7 @@ public struct FinnTextField: View {
             return !text.isEmpty
         case .email:
             return false
-        case .default:
+        default:
             return true
         }
     }
@@ -133,6 +133,7 @@ struct TextFieldComponent: UIViewRepresentable {
         field.keyboardType = input.keyboardType
         field.returnKeyType = input.returnKeyType
         field.textContentType = input.textContentType
+        field.autocapitalizationType = input == .email ? .none : .sentences
         return field
     }
 
@@ -185,6 +186,8 @@ struct FinnTextField_Previews: PreviewProvider {
             FinnTextField(placeholder: "Default", text: $text)
             FinnTextField(input: .email, placeholder: "Email", helpText: "Help text", text: $text)
             FinnTextField(input: .secure, placeholder: "Secure", helpText: "Help text", text: $text)
+            FinnTextField(input: .phone, placeholder: "Phone", text: $text)
+            FinnTextField(input: .number, placeholder: "Number", text: $text)
         }
         .previewLayout(.sizeThatFits)
     }
