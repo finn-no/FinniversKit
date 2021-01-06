@@ -5,17 +5,11 @@
 import FinniversKit
 
 public protocol ChatAvailabilityViewDelegate: AnyObject {
-    func chatAvailabilityViewDidTapChatNowButton(_ view: ChatAvailabilityView)
-    func chatAvailabilityViewDidTapBookingButton(_ view: ChatAvailabilityView)
+    func chatAvailabilityViewDidTapCallToActionButton(_ view: ChatAvailabilityView)
+    func chatAvailabilityViewDidTapBookTimeButton(_ view: ChatAvailabilityView)
 }
 
 public class ChatAvailabilityView: UIView {
-    public enum Status: CaseIterable {
-        case loading
-        case online
-        case offline
-        case unknown
-    }
 
     // MARK: - Public properties
 
@@ -24,7 +18,6 @@ public class ChatAvailabilityView: UIView {
     // MARK: - Private properties
 
     private lazy var statusView = StatusView(withAutoLayout: true)
-
     private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
     private lazy var bookingStackView = UIStackView(axis: .vertical, spacing: .spacingXS, withAutoLayout: true)
 
@@ -40,19 +33,19 @@ public class ChatAvailabilityView: UIView {
         return label
     }()
 
-    private lazy var chatNowButton: Button = {
+    private lazy var callToActionButton: Button = {
         let button = Button(style: .callToAction, size: .normal, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleChatNowButtonTap), for: .touchUpInside)
         return button
     }()
 
-    private lazy var bookingTitleLabel: Label = {
+    private lazy var bookTimeTitleLabel: Label = {
         let label = Label(style: .body, withAutoLayout: true)
         label.numberOfLines = 0
         return label
     }()
 
-    private lazy var bookingButton: Button = {
+    private lazy var bookTimeButton: Button = {
         let buttonStyle = Button.Style.flat.overrideStyle(margins: UIEdgeInsets.zero)
         let button = Button(style: buttonStyle, size: .normal, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleBookingButtonTap), for: .touchUpInside)
@@ -73,8 +66,8 @@ public class ChatAvailabilityView: UIView {
 
     private func setup() {
         addSubview(stackView)
-        bookingStackView.addArrangedSubviews([bookingTitleLabel, bookingButton])
-        stackView.addArrangedSubviews([titleLabel, textLabel, chatNowButton, statusView, bookingStackView])
+        bookingStackView.addArrangedSubviews([bookTimeTitleLabel, bookTimeButton])
+        stackView.addArrangedSubviews([titleLabel, textLabel, callToActionButton, statusView, bookingStackView])
 
         stackView.setCustomSpacing(.spacingM, after: textLabel)
         stackView.setCustomSpacing(.spacingM, after: statusView)
@@ -83,45 +76,30 @@ public class ChatAvailabilityView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(with viewModel: ChatAvailabilityViewModel) {
-        if let title = viewModel.title {
-            titleLabel.text = title
-        } else {
-            titleLabel.isHidden = true
-        }
-        if let text = viewModel.text {
-            textLabel.text = text
-        } else {
-            textLabel.isHidden = true
-        }
+    public func configure(with viewModel: ChatAvailabilityViewModel, isActionButtonEnabled: Bool) {
+        titleLabel.text = viewModel.title
+        textLabel.text = viewModel.text
+        callToActionButton.setTitle(viewModel.actionButtonTitle, for: .normal)
+        callToActionButton.isEnabled = isActionButtonEnabled
+        statusView.configure(isLoading: viewModel.isLoading, statusTitle: viewModel.statusTitle)
 
-        chatNowButton.setTitle(viewModel.chatNowButtonTitle, for: .normal)
-
-        bookingTitleLabel.text = viewModel.bookingTitle
-        bookingButton.setTitle(viewModel.bookingButtonTitle, for: .normal)
-    }
-
-    public func configure(status: Status, statusTitle: String? = nil) {
-        switch status {
-        case .online, .unknown:
-            chatNowButton.isEnabled = true
+        if let bookTimeTitle = viewModel.bookTimeTitle, let bookTimeButtonTitle = viewModel.bookTimeButtonTitle {
+            bookTimeTitleLabel.text = bookTimeTitle
+            bookTimeButton.setTitle(bookTimeButtonTitle, for: .normal)
             bookingStackView.isHidden = false
-        case .loading, .offline:
-            chatNowButton.isEnabled = false
+        } else {
             bookingStackView.isHidden = true
         }
-
-        statusView.configure(status: status, statusTitle: statusTitle)
     }
 
     // MARK: - Actions
 
     @objc private func handleChatNowButtonTap() {
-        delegate?.chatAvailabilityViewDidTapChatNowButton(self)
+        delegate?.chatAvailabilityViewDidTapCallToActionButton(self)
     }
 
     @objc private func handleBookingButtonTap() {
-        delegate?.chatAvailabilityViewDidTapBookingButton(self)
+        delegate?.chatAvailabilityViewDidTapBookTimeButton(self)
     }
 }
 
@@ -159,26 +137,17 @@ private class StatusView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(status: ChatAvailabilityView.Status, statusTitle: String? = nil) {
+    public func configure(isLoading: Bool, statusTitle: String? = nil) {
+        statusLabel.textColor = isLoading ? .textSecondary : .online
         statusLabel.text = statusTitle
         statusLabel.isHidden = statusTitle?.isEmpty ?? true
 
-        switch status {
-        case .loading:
+        if isLoading {
             loadingIndicator.isHidden = false
             loadingIndicator.startAnimating()
-        default:
+        } else {
             loadingIndicator.isHidden = true
             loadingIndicator.stopAnimating()
-        }
-
-        switch status {
-        case .online:
-            statusLabel.textColor = .online
-        case .offline, .unknown:
-            statusLabel.textColor = .textCritical
-        case .loading:
-            statusLabel.textColor = .textSecondary
         }
     }
 }
