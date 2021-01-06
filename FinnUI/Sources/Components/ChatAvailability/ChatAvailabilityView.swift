@@ -76,11 +76,11 @@ public class ChatAvailabilityView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(with viewModel: ChatAvailabilityViewModel, isActionButtonEnabled: Bool) {
+    public func configure(with viewModel: ChatAvailabilityViewModel) {
         titleLabel.text = viewModel.title
         textLabel.text = viewModel.text
         callToActionButton.setTitle(viewModel.actionButtonTitle, for: .normal)
-        callToActionButton.isEnabled = isActionButtonEnabled
+        callToActionButton.isEnabled = viewModel.isActionButtonEnabled
         statusView.configure(isLoading: viewModel.isLoading, statusTitle: viewModel.statusTitle)
 
         if let bookTimeTitle = viewModel.bookTimeTitle, let bookTimeButtonTitle = viewModel.bookTimeButtonTitle {
