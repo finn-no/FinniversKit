@@ -26,7 +26,7 @@ public class ChatAvailabilityView: UIView {
     private lazy var statusView = StatusView(withAutoLayout: true)
 
     private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
-    private lazy var bookingStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+    private lazy var bookingStackView = UIStackView(axis: .vertical, spacing: .spacingXS, withAutoLayout: true)
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .title3Strong, withAutoLayout: true)
@@ -53,8 +53,10 @@ public class ChatAvailabilityView: UIView {
     }()
 
     private lazy var bookingButton: Button = {
-        let button = Button(style: .link, size: .normal, withAutoLayout: true)
+        let buttonStyle = Button.Style.flat.overrideStyle(margins: UIEdgeInsets.zero)
+        let button = Button(style: buttonStyle, size: .normal, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleBookingButtonTap), for: .touchUpInside)
+        button.contentHorizontalAlignment = .leading
         return button
     }()
 
@@ -75,6 +77,7 @@ public class ChatAvailabilityView: UIView {
         stackView.addArrangedSubviews([titleLabel, textLabel, chatNowButton, statusView, bookingStackView])
 
         stackView.setCustomSpacing(.spacingM, after: textLabel)
+        stackView.setCustomSpacing(.spacingM, after: statusView)
         stackView.fillInSuperview()
     }
 
