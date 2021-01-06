@@ -6,6 +6,7 @@ import FinniversKit
 
 public protocol ChatAvailabilityViewDelegate: AnyObject {
     func chatAvailabilityViewDidTapChatNowButton(_ view: ChatAvailabilityView)
+    func chatAvailabilityViewDidTapBookingButton(_ view: ChatAvailabilityView)
 }
 
 public class ChatAvailabilityView: UIView {
@@ -25,6 +26,7 @@ public class ChatAvailabilityView: UIView {
     private lazy var statusView = StatusView(withAutoLayout: true)
 
     private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+    private lazy var bookingStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .title3Strong, withAutoLayout: true)
@@ -44,6 +46,18 @@ public class ChatAvailabilityView: UIView {
         return button
     }()
 
+    private lazy var bookingTitleLabel: Label = {
+        let label = Label(style: .body, withAutoLayout: true)
+        label.numberOfLines = 0
+        return label
+    }()
+
+    private lazy var bookingButton: Button = {
+        let button = Button(style: .link, size: .normal, withAutoLayout: true)
+        button.addTarget(self, action: #selector(handleBookingButtonTap), for: .touchUpInside)
+        return button
+    }()
+
     // MARK: - Init
 
     public override init(frame: CGRect) {
@@ -57,7 +71,9 @@ public class ChatAvailabilityView: UIView {
 
     private func setup() {
         addSubview(stackView)
+        bookingStackView.addArrangedSubviews([bookingTitleLabel, bookingButton])
         stackView.addArrangedSubviews([titleLabel, textLabel, chatNowButton, statusView])
+
         stackView.setCustomSpacing(.spacingM, after: textLabel)
         stackView.fillInSuperview()
     }
@@ -93,6 +109,10 @@ public class ChatAvailabilityView: UIView {
 
     @objc private func handleChatNowButtonTap() {
         delegate?.chatAvailabilityViewDidTapChatNowButton(self)
+    }
+
+    @objc private func handleBookingButtonTap() {
+        delegate?.chatAvailabilityViewDidTapBookingButton(self)
     }
 }
 
