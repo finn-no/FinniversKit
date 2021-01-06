@@ -4,11 +4,13 @@
 
 import SwiftUI
 @testable import FinnUI
+@testable import FinniversKit
 
 public enum SwiftUIDemoViews: String, CaseIterable {
     case buttons
     case easyApply
     case settings
+    case textFields
     case basicCellVariations
     case bapAdView
     case myVehiclesListView
@@ -47,6 +49,8 @@ public enum SwiftUIDemoViews: String, CaseIterable {
             return AnyView(EmptyView())
         case .settings:
             return AnyView(SettingsView_Previews.previews)
+        case .textFields:
+            return AnyView(FinnTextField_Previews.previews)
         case .basicCellVariations:
             return AnyView(BasicListCell_Previews.previews)
         case .bapAdView:
