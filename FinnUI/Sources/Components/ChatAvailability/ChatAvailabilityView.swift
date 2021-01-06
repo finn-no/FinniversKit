@@ -91,7 +91,7 @@ public class ChatAvailabilityView: UIView {
         } else {
             textLabel.isHidden = true
         }
-        chatNowButton.setTitle(viewModel.buttonTitle, for: .normal)
+        chatNowButton.setTitle(viewModel.chatNowButtonTitle, for: .normal)
     }
 
     public func configure(status: Status, statusTitle: String? = nil) {

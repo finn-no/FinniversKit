@@ -7,5 +7,8 @@ import Foundation
 public protocol ChatAvailabilityViewModel {
     var title: String? { get }
     var text: String? { get }
-    var buttonTitle: String { get }
+    var chatNowButtonTitle: String { get }
+
+    var bookingTitle: String? { get }
+    var bookingButtonTitle: String? { get }
 }
