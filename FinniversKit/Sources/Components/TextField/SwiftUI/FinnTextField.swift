@@ -11,8 +11,9 @@ public struct FinnTextField: View {
     let placeholder: String
     let helpText: String?
 
-    @State var style: Style = .default
     @Binding var text: String
+
+    @State var style: Style = .default
 
     public init(input: Input = .default, placeholder: String, helpText: String? = nil, text: Binding<String>) {
         self.input = input
@@ -21,28 +22,9 @@ public struct FinnTextField: View {
         self._text = text
     }
 
-    private func evaluateTextState() {
-        if !isValid {
-            updateStyle(.error)
-        } else {
-            updateStyle(.default)
-        }
-    }
-
     private func updateStyle(_ style: Style) {
         withAnimation(.easeInOut(duration: 0.25)) {
             self.style = style
-        }
-    }
-
-    private var isValid: Bool {
-        switch input {
-        case .secure:
-            return !text.isEmpty
-        case .email:
-            return false
-        default:
-            return true
         }
     }
 
@@ -111,6 +93,53 @@ public struct FinnTextField: View {
         }
     }
 }
+
+@available(iOS 13.0, *)
+extension FinnTextField {
+
+    private static let emailRegex: String = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+    private static let phoneRegex: String = "^(?:\\s*\\d){8,11}$"
+
+    private var isValidInput: Bool {
+        switch input {
+        case .secure:
+            return isValidPassword(text)
+        case .email:
+            return isValidEmail(text)
+        case .phone:
+            return isValidPhoneNumber(text)
+        default:
+            return true
+        }
+    }
+
+    private func evaluateTextState() {
+        if !isValidInput {
+            updateStyle(.error)
+        } else {
+            updateStyle(.default)
+        }
+    }
+
+    private func evaluate(_ regEx: String, with string: String) -> Bool {
+        let regExTest = NSPredicate(format: "SELF MATCHES %@", regEx)
+        return regExTest.evaluate(with: string)
+    }
+
+    private func isValidEmail(_ emailAdress: String) -> Bool {
+        return evaluate(FinnTextField.emailRegex, with: emailAdress)
+    }
+
+    private func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
+        return evaluate(FinnTextField.phoneRegex, with: phoneNumber)
+    }
+
+    private func isValidPassword(_ password: String) -> Bool {
+        return !password.isEmpty
+    }
+
+}
+
 
 // No `onEditingChanged` in SecureField, so need custom view
 @available(iOS 13.0, *)
