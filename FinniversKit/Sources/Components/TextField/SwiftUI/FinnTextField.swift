@@ -36,6 +36,34 @@ public struct FinnTextField: View {
         return true
     }
 
+    public var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text(placeholder)
+                .finnFont(.captionStrong)
+                .padding(.bottom, .spacingXS)
+
+            TextFieldComponent(
+                input: input,
+                placeholder: placeholder,
+                text: $text,
+                onEditingChanged: { editing in
+                    updateStyle(editing ? .focused : .default)
+                },
+                onCommit: {
+                    evaluateTextState()
+                }
+            )
+            .fixedSize(horizontal: false, vertical: true)
+            .padding(.vertical, .spacingS + .spacingXS)
+            .padding(.horizontal, .spacingS)
+            .background(Color.bgSecondary)
+            .overlay(underline, alignment: .bottom)
+            .overlay(clearButton, alignment: .trailing)
+
+            helpTextLabel
+        }
+    }
+
     private var underline: some View {
         Rectangle()
             .frame(height: style.underlineHeight)
@@ -65,33 +93,6 @@ public struct FinnTextField: View {
         }
     }
 
-    public var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text(placeholder)
-                .finnFont(.captionStrong)
-                .padding(.bottom, .spacingXS)
-
-            TextFieldComponent(
-                input: input,
-                placeholder: placeholder,
-                text: $text,
-                onEditingChanged: { editing in
-                    updateStyle(editing ? .focused : .default)
-                },
-                onCommit: {
-                    evaluateTextState()
-                }
-            )
-            .fixedSize(horizontal: false, vertical: true)
-            .padding(.vertical, .spacingS + .spacingXS)
-            .padding(.horizontal, .spacingS)
-            .background(Color.bgSecondary)
-            .overlay(underline, alignment: .bottom)
-            .overlay(clearButton, alignment: .trailing)
-
-            helpTextLabel
-        }
-    }
 }
 
 @available(iOS 13.0, *)
@@ -139,7 +140,6 @@ extension FinnTextField {
     }
 
 }
-
 
 // No `onEditingChanged` in SecureField, so need custom view
 @available(iOS 13.0, *)
