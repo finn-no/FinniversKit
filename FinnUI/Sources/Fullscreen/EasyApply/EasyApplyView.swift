@@ -42,7 +42,7 @@ struct EasyApplyView: View {
     var textfields: some View {
         VStack(alignment: .leading) {
             ForEach(form.textfields) {
-                FinnTextField(placeholder: $0.placeholder, text: binding(for: $0).value)
+                FinnTextField(input: $0.type, placeholder: $0.placeholder, helpText: $0.helpText, text: binding(for: $0).value)
             }
         }
     }
