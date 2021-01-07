@@ -25,9 +25,7 @@ struct FinnTextFieldDemoView: View {
             Spacer()
         }
     }
-
 }
-
 
 @available(iOS 13.0, *)
 // swiftlint:disable:next superfluous_disable_command type_name
