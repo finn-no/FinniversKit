@@ -10,7 +10,8 @@ public enum SwiftUIDemoViews: String, CaseIterable {
     case buttons
     case easyApply
     case settings
-    case textFields
+    case textField
+    case textView
     case basicCellVariations
     case bapAdView
     case myVehiclesListView
@@ -49,8 +50,10 @@ public enum SwiftUIDemoViews: String, CaseIterable {
             return AnyView(EmptyView())
         case .settings:
             return AnyView(SettingsView_Previews.previews)
-        case .textFields:
+        case .textField:
             return AnyView(FinnTextField_Previews.previews)
+        case .textView:
+            return AnyView(FinnTextView_Previews.previews)
         case .basicCellVariations:
             return AnyView(BasicListCell_Previews.previews)
         case .bapAdView:
