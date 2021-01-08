@@ -16,7 +16,7 @@ public enum PopupConsentDefaultData {
         case .reccomendationsRejected:
             return PopupConsentViewDefaultDataRejected()
         case .transparency:
-            return PopupConsentViewTransparency()
+            return ConsentTransparencyViewModel()
         }
     }
 }
@@ -43,30 +43,6 @@ struct PopupConsentViewDefaultDataRejected: PopupViewModel {
     public var descriptionText: String? = "Vi vil ikke lenger tipse deg om relevante annonser du ikke sett."
     public var attributedDescriptionText: NSAttributedString?
     public var image: UIImage = UIImage(named: "illustrasjonUtenFarge")!
-
-    public init() {}
-}
-
-struct PopupConsentViewTransparency: PopupViewModel {
-    public var callToActionButtonTitle = "Jeg forstår"
-    public var alternativeActionButtonTitle = "Les mer"
-    public var dismissButtonTitle: String?
-    public var linkButtonTitle: String?
-    public var descriptionTitle = "Dine data, dine valg"
-    public var descriptionText: String?
-    public var image: UIImage = UIImage(named: "consentTransparencyImage")!
-
-    public var attributedDescriptionText: NSAttributedString? {
-        let mutableAttributedString = NSMutableAttributedString()
-        let firstParagraph = NSAttributedString(string: "Hei! For å gjøre FINN bedre samler vi inn informasjon fra alle dere som besøker oss. Vi bruker personlig informasjon og data for å:\n\n")
-        let bulletPointArray: [String] = ["Kunne gi deg relevante anbefalinger og tips", "Sørge for at tjenesten FINN fungerer så bra som mulig", "Sikre at FINN er trygg plass å handle på"]
-        let secondParagraph = bulletPointArray.bulletPoints(withFont: .caption)
-        let thirdParagraph = NSAttributedString(string: "\n\nNår du bruker FINN er Schibsted Norge (eieren vår) behandlingsansvarlig for påloggingsløsning og reklame, mens FINN er behandlingsansvarlig for det øvrige innholdet. Både FINN og Schibsted Norge behandler data om deg.")
-        mutableAttributedString.append(firstParagraph)
-        mutableAttributedString.append(secondParagraph)
-        mutableAttributedString.append(thirdParagraph)
-        return mutableAttributedString
-    }
 
     public init() {}
 }
