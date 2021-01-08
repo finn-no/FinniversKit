@@ -120,15 +120,6 @@ public final class FrontPageView: UIView {
         adsRetryView.state = .labelAndButton
     }
 
-    public func showInlineConsent(detail: String? = nil) {
-        adsGridView.endRefreshing()
-        setupFrames()
-    }
-
-    public func hideInlineConsent() {
-        adsGridView.endRefreshing()
-    }
-
     public func scrollToTop() {
         adsGridView.scrollToTop()
     }
