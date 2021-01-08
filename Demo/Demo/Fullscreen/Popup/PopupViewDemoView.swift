@@ -49,16 +49,16 @@ public class PopupViewDemoView: UIView {
 
 // MARK: - Private types
 
-struct ConsentTransparencyViewModel: PopupViewModel {
-    public var callToActionButtonTitle = "Jeg forstår"
-    public var alternativeActionButtonTitle = "Les mer"
-    public var dismissButtonTitle: String?
-    public var linkButtonTitle: String?
-    public var descriptionTitle = "Dine data, dine valg"
-    public var descriptionText: String?
-    public var image: UIImage = UIImage(named: "consentTransparencyImage")!
+private struct ConsentTransparencyViewModel: PopupViewModel {
+    let callToActionButtonTitle = "Jeg forstår"
+    let alternativeActionButtonTitle = "Les mer"
+    let dismissButtonTitle: String? = nil
+    let linkButtonTitle: String? = nil
+    let descriptionTitle = "Dine data, dine valg"
+    let descriptionText: String? = nil
+    let image = UIImage(named: "consentTransparencyImage")!
 
-    public var attributedDescriptionText: NSAttributedString? {
+    var attributedDescriptionText: NSAttributedString? {
         let mutableAttributedString = NSMutableAttributedString()
         let firstParagraph = NSAttributedString(string: "Hei! For å gjøre FINN bedre samler vi inn informasjon fra alle dere som besøker oss. Vi bruker personlig informasjon og data for å:\n\n")
         let bulletPointArray: [String] = ["Kunne gi deg relevante anbefalinger og tips", "Sørge for at tjenesten FINN fungerer så bra som mulig", "Sikre at FINN er trygg plass å handle på"]
@@ -69,6 +69,4 @@ struct ConsentTransparencyViewModel: PopupViewModel {
         mutableAttributedString.append(thirdParagraph)
         return mutableAttributedString
     }
-
-    public init() {}
 }
