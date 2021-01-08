@@ -116,7 +116,6 @@
 		44D912642077AC8A00486848 /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912572077AC8A00486848 /* RectangleView.swift */; };
 		44F8831220551D59003E3171 /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F8831120551D59003E3171 /* NSAttributedStringExtensions.swift */; };
 		45B2E06A207CF5C100C68B92 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B2E069207CF5C100C68B92 /* StringExtensions.swift */; };
-		45B2E070207E181C00C68B92 /* InlineConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B2E06E207E181C00C68B92 /* InlineConsentView.swift */; };
 		45D7C56B204949E2000E788F /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C56A204949E2000E788F /* SwitchView.swift */; };
 		45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C56C20494C7A000E788F /* SwitchViewModel.swift */; };
 		45EDD62A20A1CCDF008F4503 /* ConsentTransparencyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD62820A1CC0D008F4503 /* ConsentTransparencyInfoView.swift */; };
@@ -555,7 +554,6 @@
 		44D912572077AC8A00486848 /* RectangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
 		44F8831120551D59003E3171 /* NSAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtensions.swift; sourceTree = "<group>"; };
 		45B2E069207CF5C100C68B92 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
-		45B2E06E207E181C00C68B92 /* InlineConsentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InlineConsentView.swift; sourceTree = "<group>"; };
 		45D7C56A204949E2000E788F /* SwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
 		45D7C56C20494C7A000E788F /* SwitchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewModel.swift; sourceTree = "<group>"; };
 		45EDD62820A1CC0D008F4503 /* ConsentTransparencyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTransparencyInfoView.swift; sourceTree = "<group>"; };
@@ -1686,7 +1684,6 @@
 			children = (
 				CFF9726B21C3BA1D00C85238 /* BannerTransparency */,
 				45EDD61E20A1A7C5008F4503 /* ConsentTransparency */,
-				45EDD61D20A1A795008F4503 /* InlineConsent */,
 			);
 			path = Consent;
 			sourceTree = "<group>";
@@ -1699,14 +1696,6 @@
 				8D68098752937463FDA8FF6E /* SwitchViewStyle.swift */,
 			);
 			path = Switch;
-			sourceTree = "<group>";
-		};
-		45EDD61D20A1A795008F4503 /* InlineConsent */ = {
-			isa = PBXGroup;
-			children = (
-				45B2E06E207E181C00C68B92 /* InlineConsentView.swift */,
-			);
-			path = InlineConsent;
 			sourceTree = "<group>";
 		};
 		45EDD61E20A1A7C5008F4503 /* ConsentTransparency */ = {
@@ -3478,7 +3467,6 @@
 				F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */,
 				895175952248D4D1008003FB /* StepDot.swift in Sources */,
 				F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */,
-				45B2E070207E181C00C68B92 /* InlineConsentView.swift in Sources */,
 				CF4A053921FB2ACB000BB7DA /* PianoEffectView.swift in Sources */,
 				CF164DDA2315776E00250822 /* FavoriteAdCommentViewModel.swift in Sources */,
 				44898D651FE5B9C200F6017B /* UITableViewExtensions.swift in Sources */,
