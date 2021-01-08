@@ -114,8 +114,6 @@
 		46E77411242CEF0A008A5E93 /* ViewingsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7730B242CEF09008A5E93 /* ViewingsDemoView.swift */; };
 		46E77412242CEF0A008A5E93 /* EarthHourDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7730D242CEF09008A5E93 /* EarthHourDefaultData.swift */; };
 		46E77413242CEF0A008A5E93 /* EarthHourDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7730E242CEF09008A5E93 /* EarthHourDemoView.swift */; };
-		46E77414242CEF0A008A5E93 /* DialogueDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77310242CEF09008A5E93 /* DialogueDemoView.swift */; };
-		46E77415242CEF0A008A5E93 /* DialogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77311242CEF09008A5E93 /* DialogueViewController.swift */; };
 		46E77416242CEF0A008A5E93 /* StepSliderDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77313242CEF09008A5E93 /* StepSliderDemoView.swift */; };
 		46E77417242CEF0A008A5E93 /* ObjectPagePriceDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77315242CEF09008A5E93 /* ObjectPagePriceDemoView.swift */; };
 		46E77418242CEF0A008A5E93 /* ColumnListsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77317242CEF09008A5E93 /* ColumnListsDemoView.swift */; };
@@ -125,8 +123,6 @@
 		46E7741D242CEF0A008A5E93 /* FloatingButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77321242CEF09008A5E93 /* FloatingButtonDemoView.swift */; };
 		46E7741E242CEF0A008A5E93 /* CogWheelButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77323242CEF09008A5E93 /* CogWheelButtonDemoView.swift */; };
 		46E7741F242CEF0A008A5E93 /* ButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77325242CEF09008A5E93 /* ButtonDemoView.swift */; };
-		46E77420242CEF0A008A5E93 /* InlineConsentDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77328242CEF09008A5E93 /* InlineConsentDemoView.swift */; };
-		46E77421242CEF0A008A5E93 /* InlineConsentDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77329242CEF09008A5E93 /* InlineConsentDemoViewController.swift */; };
 		46E77422242CEF0A008A5E93 /* BannerTransparencyInfoDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7732B242CEF09008A5E93 /* BannerTransparencyInfoDefaultData.swift */; };
 		46E77423242CEF0A008A5E93 /* BannerTransparencyDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7732C242CEF09008A5E93 /* BannerTransparencyDemoView.swift */; };
 		46E77424242CEF0A008A5E93 /* ConsentTransparencyInfoDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7732E242CEF09008A5E93 /* ConsentTransparencyInfoDefaultData.swift */; };
@@ -208,7 +204,6 @@
 		46E77581242D476B008A5E93 /* FullscreenViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7757B242D476B008A5E93 /* FullscreenViewTests.swift */; };
 		46E77583242D478D008A5E93 /* XCTestCastExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77582242D478D008A5E93 /* XCTestCastExtensions.swift */; };
 		46E77585242D4805008A5E93 /* TestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77584242D4805008A5E93 /* TestConfig.swift */; };
-		46E77598242D6890008A5E93 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 46E77597242D6890008A5E93 /* SnapshotTesting */; };
 		46E7759D242D6A8A008A5E93 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E77561242CFFA5008A5E93 /* FinniversKit.framework */; };
 		46E7759E242D6A8A008A5E93 /* FinnUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E77562242CFFA5008A5E93 /* FinnUI.framework */; };
 		496F8C172473E7EA00AE0735 /* FavoriteSoldDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F8C162473E7EA00AE0735 /* FavoriteSoldDemoView.swift */; };
@@ -377,8 +372,6 @@
 		46E7730B242CEF09008A5E93 /* ViewingsDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewingsDemoView.swift; sourceTree = "<group>"; };
 		46E7730D242CEF09008A5E93 /* EarthHourDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourDefaultData.swift; sourceTree = "<group>"; };
 		46E7730E242CEF09008A5E93 /* EarthHourDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourDemoView.swift; sourceTree = "<group>"; };
-		46E77310242CEF09008A5E93 /* DialogueDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogueDemoView.swift; sourceTree = "<group>"; };
-		46E77311242CEF09008A5E93 /* DialogueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogueViewController.swift; sourceTree = "<group>"; };
 		46E77313242CEF09008A5E93 /* StepSliderDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepSliderDemoView.swift; sourceTree = "<group>"; };
 		46E77315242CEF09008A5E93 /* ObjectPagePriceDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPagePriceDemoView.swift; sourceTree = "<group>"; };
 		46E77317242CEF09008A5E93 /* ColumnListsDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnListsDemoView.swift; sourceTree = "<group>"; };
@@ -388,8 +381,6 @@
 		46E77321242CEF09008A5E93 /* FloatingButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingButtonDemoView.swift; sourceTree = "<group>"; };
 		46E77323242CEF09008A5E93 /* CogWheelButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CogWheelButtonDemoView.swift; sourceTree = "<group>"; };
 		46E77325242CEF09008A5E93 /* ButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonDemoView.swift; sourceTree = "<group>"; };
-		46E77328242CEF09008A5E93 /* InlineConsentDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InlineConsentDemoView.swift; sourceTree = "<group>"; };
-		46E77329242CEF09008A5E93 /* InlineConsentDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InlineConsentDemoViewController.swift; sourceTree = "<group>"; };
 		46E7732B242CEF09008A5E93 /* BannerTransparencyInfoDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerTransparencyInfoDefaultData.swift; sourceTree = "<group>"; };
 		46E7732C242CEF09008A5E93 /* BannerTransparencyDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerTransparencyDemoView.swift; sourceTree = "<group>"; };
 		46E7732E242CEF09008A5E93 /* ConsentTransparencyInfoDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentTransparencyInfoDefaultData.swift; sourceTree = "<group>"; };
@@ -517,7 +508,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				46E7759D242D6A8A008A5E93 /* FinniversKit.framework in Frameworks */,
-				46E77598242D6890008A5E93 /* SnapshotTesting in Frameworks */,
 				46E7759E242D6A8A008A5E93 /* FinnUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -955,7 +945,6 @@
 				46E77316242CEF09008A5E93 /* ColumnListsView */,
 				46E77326242CEF09008A5E93 /* Consent */,
 				46E77345242CEF09008A5E93 /* ContractActionView */,
-				46E7730F242CEF09008A5E93 /* Dialogue */,
 				46E772DE242CEF09008A5E93 /* Disclaimer */,
 				46E7730C242CEF09008A5E93 /* EarthHour */,
 				46E772E3242CEF09008A5E93 /* FavoriteButton */,
@@ -1243,15 +1232,6 @@
 			path = EarthHour;
 			sourceTree = "<group>";
 		};
-		46E7730F242CEF09008A5E93 /* Dialogue */ = {
-			isa = PBXGroup;
-			children = (
-				46E77310242CEF09008A5E93 /* DialogueDemoView.swift */,
-				46E77311242CEF09008A5E93 /* DialogueViewController.swift */,
-			);
-			path = Dialogue;
-			sourceTree = "<group>";
-		};
 		46E77312242CEF09008A5E93 /* StepSlider */ = {
 			isa = PBXGroup;
 			children = (
@@ -1331,20 +1311,10 @@
 		46E77326242CEF09008A5E93 /* Consent */ = {
 			isa = PBXGroup;
 			children = (
-				46E77327242CEF09008A5E93 /* InlineConsent */,
 				46E7732A242CEF09008A5E93 /* BannerTransparency */,
 				46E7732D242CEF09008A5E93 /* ConsentTransparency */,
 			);
 			path = Consent;
-			sourceTree = "<group>";
-		};
-		46E77327242CEF09008A5E93 /* InlineConsent */ = {
-			isa = PBXGroup;
-			children = (
-				46E77328242CEF09008A5E93 /* InlineConsentDemoView.swift */,
-				46E77329242CEF09008A5E93 /* InlineConsentDemoViewController.swift */,
-			);
-			path = InlineConsent;
 			sourceTree = "<group>";
 		};
 		46E7732A242CEF09008A5E93 /* BannerTransparency */ = {
@@ -2010,7 +1980,7 @@
 			);
 			name = SnapshotTests;
 			packageProductDependencies = (
-				46E77597242D6890008A5E93 /* SnapshotTesting */,
+				46E77597242D6890008A5E93,
 			);
 			productName = SnapshotTests;
 			productReference = 46E7756C242D4736008A5E93 /* SnapshotTests.xctest */;
@@ -2045,7 +2015,7 @@
 			);
 			mainGroup = 46AE6FB7242BADC9007BB005;
 			packageReferences = (
-				46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				46E77596242D6890008A5E93,
 			);
 			productRefGroup = 46AE6FC1242BADC9007BB005 /* Products */;
 			projectDirPath = "";
@@ -2118,7 +2088,6 @@
 				46E773D1242CEF0A008A5E93 /* MessageFormDemoPresenter.swift in Sources */,
 				46E77465242CEF0A008A5E93 /* BasicTableViewDemoView.swift in Sources */,
 				46E773CC242CEF0A008A5E93 /* SearchResultMapViewDemoViewControllerHelpers.swift in Sources */,
-				46E77421242CEF0A008A5E93 /* InlineConsentDemoViewController.swift in Sources */,
 				46E7745C242CEF0A008A5E93 /* NeighborhoodProfileDemoView.swift in Sources */,
 				46E77403242CEF0A008A5E93 /* RefreshControlDemo.swift in Sources */,
 				46E773DF242CEF0A008A5E93 /* PaymentCancelledDemoViewModel.swift in Sources */,
@@ -2126,7 +2095,6 @@
 				46E773B7242CEF0A008A5E93 /* SnowGlobeDemoView.swift in Sources */,
 				46E773E8242CEF0A008A5E93 /* BuyerOnlySignedDemoViewModel.swift in Sources */,
 				46E773AA242CEF0A008A5E93 /* MiniToastView.swift in Sources */,
-				46E77420242CEF0A008A5E93 /* InlineConsentDemoView.swift in Sources */,
 				46E773F1242CEF0A008A5E93 /* IconCollectionViewDemo.swift in Sources */,
 				46E7743A242CEF0A008A5E93 /* MotorTransactionSummaryAdManagementDemoView.swift in Sources */,
 				9BBC904024FD252B0003D2D8 /* UITraitCollection+Extensions.swift in Sources */,
@@ -2193,7 +2161,6 @@
 				46E77445242CEF0A008A5E93 /* BasicCellDemoView.swift in Sources */,
 				46E773E6242CEF0A008A5E93 /* BothPartiesConfirmedHandoverDemoViewModel.swift in Sources */,
 				46E773FF242CEF0A008A5E93 /* SelfDeclarationDemoView.swift in Sources */,
-				46E77414242CEF0A008A5E93 /* DialogueDemoView.swift in Sources */,
 				496F8C172473E7EA00AE0735 /* FavoriteSoldDemoView.swift in Sources */,
 				46E773AF242CEF0A008A5E93 /* DemoViewController.swift in Sources */,
 				46E77467242CEF0A008A5E93 /* SavedSearchesListViewDemoViewHelpers.swift in Sources */,
@@ -2283,7 +2250,6 @@
 				46E773C1242CEF0A008A5E93 /* ContactFormDemoView.swift in Sources */,
 				46E7740A242CEF0A008A5E93 /* RoundedImageViewDemoView.swift in Sources */,
 				4D152E7B2577DB1300282244 /* NavigationLinkViewDemoView.swift in Sources */,
-				46E77415242CEF0A008A5E93 /* DialogueViewController.swift in Sources */,
 				46E773E5242CEF0A008A5E93 /* BothPartiesSignedDemoViewModel.swift in Sources */,
 				4D152F832578DA9F00282244 /* MotorTransactionInsurancePickerDemoView.swift in Sources */,
 				46E7742A242CEF0A008A5E93 /* KlimabroletData.swift in Sources */,
@@ -2582,7 +2548,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+		46E77596242D6890008A5E93 = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
 			requirement = {
@@ -2593,9 +2559,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		46E77597242D6890008A5E93 /* SnapshotTesting */ = {
+		46E77597242D6890008A5E93 = {
 			isa = XCSwiftPackageProductDependency;
-			package = 46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			package = 46E77596242D6890008A5E93;
 			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */
