@@ -6,7 +6,6 @@ public protocol FrontPageViewModel {
     var adsGridViewHeaderTitle: String { get }
     var retryButtonTitle: String { get }
     var noRecommendationsText: String { get }
-    var inlineConsentDialogueViewModel: DialogueViewModel { get }
 }
 
 public protocol FrontPageViewDelegate: AnyObject {
@@ -18,7 +17,6 @@ public final class FrontPageView: UIView {
         didSet {
             headerLabel.text = model?.adsGridViewHeaderTitle
             adsRetryView.set(labelText: model?.noRecommendationsText, buttonText: model?.retryButtonTitle)
-            inlineConsentDialogue.model = model?.inlineConsentDialogueViewModel
         }
     }
 
@@ -47,7 +45,7 @@ public final class FrontPageView: UIView {
         return dialogueView
     }()
 
-    //Use this do disable all ads :D 
+    //Use this do disable all ads :D
     private lazy var inlineConsentLockView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
