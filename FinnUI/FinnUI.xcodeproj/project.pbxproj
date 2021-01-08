@@ -39,6 +39,7 @@
 		5DA190DC25A73814002305A8 /* EasyApplyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190DB25A73814002305A8 /* EasyApplyTextField.swift */; };
 		5DA190DF25A73857002305A8 /* EasyApplyQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190DE25A73857002305A8 /* EasyApplyQuestion.swift */; };
 		5DA190E325A738A8002305A8 /* EasyApplyQuestionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190E225A738A8002305A8 /* EasyApplyQuestionPicker.swift */; };
+		5DA190EC25A8477E002305A8 /* EasyApplyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190EB25A8477E002305A8 /* EasyApplyTextView.swift */; };
 		5DAF7DC72590C31D009DB23A /* EasyApplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF7DC62590C31D009DB23A /* EasyApplyView.swift */; };
 		7149DB6D24FE58C900268976 /* MyVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149DB6824FE58C800268976 /* MyVehicleCell.swift */; };
 		7149DB6E24FE58C900268976 /* MyVehicleCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149DB6924FE58C800268976 /* MyVehicleCellModel.swift */; };
@@ -144,6 +145,7 @@
 		5DA190DB25A73814002305A8 /* EasyApplyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApplyTextField.swift; sourceTree = "<group>"; };
 		5DA190DE25A73857002305A8 /* EasyApplyQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApplyQuestion.swift; sourceTree = "<group>"; };
 		5DA190E225A738A8002305A8 /* EasyApplyQuestionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApplyQuestionPicker.swift; sourceTree = "<group>"; };
+		5DA190EB25A8477E002305A8 /* EasyApplyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApplyTextView.swift; sourceTree = "<group>"; };
 		5DAF7DC62590C31D009DB23A /* EasyApplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApplyView.swift; sourceTree = "<group>"; };
 		7149DB6824FE58C800268976 /* MyVehicleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVehicleCell.swift; sourceTree = "<group>"; };
 		7149DB6924FE58C800268976 /* MyVehicleCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVehicleCellModel.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 			children = (
 				5DA190D825A737EC002305A8 /* EasyApplyFormModel.swift */,
 				5DA190DB25A73814002305A8 /* EasyApplyTextField.swift */,
+				5DA190EB25A8477E002305A8 /* EasyApplyTextView.swift */,
 				5DA190DE25A73857002305A8 /* EasyApplyQuestion.swift */,
 			);
 			path = Model;
@@ -870,6 +873,7 @@
 				5DA190E325A738A8002305A8 /* EasyApplyQuestionPicker.swift in Sources */,
 				46AE6FB1242BAB97007BB005 /* SplashView.swift in Sources */,
 				DA0E186F2459C23600C0616E /* SettingsView.swift in Sources */,
+				5DA190EC25A8477E002305A8 /* EasyApplyTextView.swift in Sources */,
 				4D7A6ED32498DBAF00AB2EBE /* SearchResultsListView.swift in Sources */,
 				9B2A6999249797AC00E671B5 /* BapAdViewModel.swift in Sources */,
 				D6C0BD81257A2D5600D51440 /* BalloonView.swift in Sources */,

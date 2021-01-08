@@ -17,6 +17,7 @@ struct EasyApplyView: View {
                     header.padding(.bottom, .spacingS)
                     textfields
                     selects
+                    textviews
                 }
                 .padding(.top, .spacingS)
 
@@ -42,7 +43,12 @@ struct EasyApplyView: View {
     var textfields: some View {
         VStack(alignment: .leading) {
             ForEach(form.textfields) {
-                FinnTextField(input: $0.type, placeholder: $0.placeholder, helpText: $0.helpText, text: binding(for: $0).value)
+                FinnTextField(
+                    input: $0.type,
+                    placeholder: $0.placeholder,
+                    helpText: $0.helpText,
+                    text: binding(for: $0, in: \.textfields).value
+                )
             }
         }
     }
@@ -50,9 +56,21 @@ struct EasyApplyView: View {
     var selects: some View {
         VStack(alignment: .leading) {
             ForEach(form.questions) {
-                EasyApplyQuestionPicker(select: binding(for: $0))
+                EasyApplyQuestionPicker(select: binding(for: $0, in: \.questions))
             }
         }.pickerStyle(SegmentedPickerStyle())
+    }
+
+    var textviews: some View {
+        VStack(alignment: .leading) {
+            ForEach(form.textviews) {
+                FinnTextView(
+                    placeholder: $0.placeholder,
+                    text: binding(for: $0, in: \.textviews).value
+                )
+                .frame(minHeight: 150)
+            }
+        }
     }
 
     var applyButton: some View {
@@ -65,20 +83,12 @@ struct EasyApplyView: View {
         .buttonStyle(CallToAction())
     }
 
-    private func binding(for textfield: EasyApplyTextField) -> Binding<EasyApplyTextField> {
-        guard let index = form.textfields.firstIndex(where: { $0.id == textfield.id }) else {
-            fatalError("Can't find textfield in array")
+    private func binding<Item: Swift.Identifiable>(for item: Item, in list: KeyPath<ObservedObject<EasyApplyFormModel>.Wrapper, Binding<[Item]>>) -> Binding<Item> {
+        guard let index = $form[keyPath: list].wrappedValue.firstIndex(where: { $0.id == item.id }) else {
+            fatalError("Can't find item in list")
         }
 
-        return $form.textfields[index]
-    }
-
-    private func binding(for select: EasyApplyQuestion) -> Binding<EasyApplyQuestion> {
-        guard let index = form.questions.firstIndex(where: { $0.id == select.id }) else {
-            fatalError("Can't find select in array")
-        }
-
-        return $form.questions[index]
+        return $form[keyPath: list][index]
     }
 
 }
@@ -98,6 +108,9 @@ struct EasyApplyView_Previews: PreviewProvider {
                 selects: [
                     EasyApplyQuestion(question: "Er du student eller nyutdannet?"),
                     EasyApplyQuestion(question: "Har du erfaring med programvareutvikling?"),
+                ],
+                textviews: [
+                    EasyApplyTextView(placeholder: "Søknadsbrev")
                 ]
             )
         )
