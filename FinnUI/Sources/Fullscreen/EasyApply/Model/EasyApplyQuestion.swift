@@ -15,7 +15,7 @@ struct EasyApplyQuestion: Identifiable {
         var displayValue: String {
             switch self {
             case .yes: return "Ja"
-            case .no: return "No"
+            case .no: return "Nei"
             }
         }
     }
@@ -29,4 +29,3 @@ struct EasyApplyQuestion: Identifiable {
     }
 
 }
-
