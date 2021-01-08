@@ -38,15 +38,6 @@ public final class FrontPageView: UIView {
     private let adsGridView: AdsGridView
     private lazy var headerView = UIView()
 
-    //Use this do disable all ads :D
-    private lazy var inlineConsentLockView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.alpha = 0.5
-        view.isHidden = true
-        return view
-    }()
-
     private lazy var headerLabel: Label = {
         var headerLabel = Label(style: .title3)
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -130,13 +121,11 @@ public final class FrontPageView: UIView {
     }
 
     public func showInlineConsent(detail: String? = nil) {
-        inlineConsentLockView.isHidden = false
         adsGridView.endRefreshing()
         setupFrames()
     }
 
     public func hideInlineConsent() {
-        inlineConsentLockView.isHidden = true
         adsGridView.endRefreshing()
     }
 
@@ -152,7 +141,6 @@ public final class FrontPageView: UIView {
         addSubview(adsGridView)
 
         adsGridView.collectionView.addSubview(adsRetryView)
-        adsGridView.collectionView.addSubview(inlineConsentLockView)
 
         headerView.addSubview(marketsGridView)
         headerView.addSubview(headerLabel)
@@ -187,33 +175,6 @@ public final class FrontPageView: UIView {
         adsRetryView.frame.size = CGSize(width: bounds.width, height: 200)
         boundsForCurrentSubviewSetup = bounds
         adsGridView.invalidateLayout()
-        setupFrameForDialogue(yPosition: height)
-    }
-
-    func setupFrameForDialogue(yPosition: CGFloat) {
-        var widthPercentage: CGFloat = 0.8
-        var heightPercentage: CGFloat = 0.3
-
-        if UIDevice.isSmallScreen() {
-            widthPercentage = 0.9
-            heightPercentage = 0.5
-        }
-
-        if isHorizontalSizeClassRegular {
-            widthPercentage = 0.5
-            heightPercentage = 0.22
-
-            if UIDevice.isLargeScreen() {
-                heightPercentage = 0.16
-            }
-        }
-
-        inlineConsentLockView.frame = CGRect(
-            x: 0,
-            y: yPosition,
-            width: bounds.width,
-            height: bounds.height * 2)
-        //we really dont know what the height of lock view should be since some ads are longer then other.
     }
 }
 
