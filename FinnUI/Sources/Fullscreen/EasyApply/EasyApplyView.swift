@@ -108,18 +108,18 @@ struct EasyApplyView_Previews: PreviewProvider {
                 name: "Test Testesen",
                 position: "Systemutvikler i FINN.no AS",
                 textfields: [
-                    EasyApplyTextField(type: .default, placeholder: "Navn", value: "Test Testesen"),
-                    EasyApplyTextField(type: .email, placeholder: "Epost", helpText: "Epost-adressen er ikke gyldig"),
-                    EasyApplyTextField(type: .phone, placeholder: "Telefon"),
+                    EasyApplyFormModel.TextField(type: .default, placeholder: "Navn", value: "Test Testesen"),
+                    EasyApplyFormModel.TextField(type: .email, placeholder: "Epost", helpText: "Epost-adressen er ikke gyldig"),
+                    EasyApplyFormModel.TextField(type: .phone, placeholder: "Telefon"),
                 ],
                 questions: [
-                    EasyApplyQuestion(question: "Er du student eller nyutdannet?"),
-                    EasyApplyQuestion(question: "Har du erfaring med programvareutvikling?"),
+                    EasyApplyFormModel.Question(question: "Er du student eller nyutdannet?"),
+                    EasyApplyFormModel.Question(question: "Har du erfaring med programvareutvikling?"),
                 ],
                 textviews: [
-                    EasyApplyTextView(placeholder: "Søknadsbrev")
+                    EasyApplyFormModel.TextView(placeholder: "Søknadsbrev")
                 ],
-                educations: EasyApplyEducations()
+                educations: EasyApplyFormModel.Educations()
             )
         )
         .colorScheme(.light)

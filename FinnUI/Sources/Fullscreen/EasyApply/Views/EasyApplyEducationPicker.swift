@@ -7,7 +7,7 @@ import SwiftUI
 @available(iOS 13.0, *)
 struct EasyApplyEducationPicker: View {
 
-    @Binding var educations: EasyApplyEducations
+    @Binding var educations: EasyApplyFormModel.Educations
     @State private var isShowingPicker: Bool = false
 
     var selectedEducationLabel: some View {
@@ -44,7 +44,7 @@ struct EasyApplyEducationPicker: View {
             if isShowingPicker {
                 Picker(selection: $educations.selectedEducation, label: Text("Utdanning")) {
                     ForEach(educations.educations) {
-                        Text($0.name).tag($0 as EasyApplyEducations.Education)
+                        Text($0.name).tag($0 as EasyApplyFormModel.Educations.Education)
                     }
                 }
                 .pickerStyle(DefaultPickerStyle())

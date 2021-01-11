@@ -9,12 +9,12 @@ import FinniversKit
 class EasyApplyFormModel: ObservableObject {
     let name: String
     let position: String
-    @Published var textfields: [EasyApplyTextField]
-    @Published var questions: [EasyApplyQuestion]
-    @Published var textviews: [EasyApplyTextView]
-    @Published var educations: EasyApplyEducations
+    @Published var textfields: [TextField]
+    @Published var questions: [Question]
+    @Published var textviews: [TextView]
+    @Published var educations: Educations
 
-    init(name: String, position: String, textfields: [EasyApplyTextField], questions: [EasyApplyQuestion], textviews: [EasyApplyTextView], educations: EasyApplyEducations) {
+    init(name: String, position: String, textfields: [TextField], questions: [Question], textviews: [TextView], educations: Educations) {
         self.name = name
         self.position = position
         self.textfields = textfields
@@ -23,4 +23,3 @@ class EasyApplyFormModel: ObservableObject {
         self.educations = educations
     }
 }
-

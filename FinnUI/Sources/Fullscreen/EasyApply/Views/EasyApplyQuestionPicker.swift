@@ -7,7 +7,7 @@ import FinniversKit
 
 @available(iOS 13.0, *)
 struct EasyApplyQuestionPicker: View {
-    @Binding var select: EasyApplyQuestion
+    @Binding var select: EasyApplyFormModel.Question
 
     var body: some View {
         Text(select.question)
@@ -15,8 +15,8 @@ struct EasyApplyQuestionPicker: View {
             .foregroundColor(Color.textPrimary)
 
         Picker(selection: $select.selectedOption, label: Text(select.question)) {
-            ForEach(EasyApplyQuestion.Option.allCases) { option in
-                Text(option.displayValue).tag(option as EasyApplyQuestion.Option?)
+            ForEach(EasyApplyFormModel.Question.Option.allCases) { option in
+                Text(option.displayValue).tag(option as EasyApplyFormModel.Question.Option?)
             }
         }
         .foregroundColor(Color.textPrimary)

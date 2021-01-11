@@ -36,11 +36,11 @@
 		4DDD45B8250FAA8E007DBDD5 /* SearchDisplayTypeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD45B7250FAA8E007DBDD5 /* SearchDisplayTypeOption.swift */; };
 		4DDD45BA250FAB8B007DBDD5 /* SearchDisplayTypeSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD45B9250FAB8B007DBDD5 /* SearchDisplayTypeSelectionViewModel.swift */; };
 		5DA190D925A737EC002305A8 /* EasyApplyFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190D825A737EC002305A8 /* EasyApplyFormModel.swift */; };
-		5DA190DC25A73814002305A8 /* EasyApplyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190DB25A73814002305A8 /* EasyApplyTextField.swift */; };
-		5DA190DF25A73857002305A8 /* EasyApplyQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190DE25A73857002305A8 /* EasyApplyQuestion.swift */; };
+		5DA190DC25A73814002305A8 /* EasyApplyFormModel+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190DB25A73814002305A8 /* EasyApplyFormModel+TextField.swift */; };
+		5DA190DF25A73857002305A8 /* EasyApplyFormModel+Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190DE25A73857002305A8 /* EasyApplyFormModel+Question.swift */; };
 		5DA190E325A738A8002305A8 /* EasyApplyQuestionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190E225A738A8002305A8 /* EasyApplyQuestionPicker.swift */; };
-		5DA190EC25A8477E002305A8 /* EasyApplyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190EB25A8477E002305A8 /* EasyApplyTextView.swift */; };
-		5DA190F425AC3C3F002305A8 /* EasyApplyEducation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190F325AC3C3F002305A8 /* EasyApplyEducation.swift */; };
+		5DA190EC25A8477E002305A8 /* EasyApplyFormModel+TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190EB25A8477E002305A8 /* EasyApplyFormModel+TextView.swift */; };
+		5DA190F425AC3C3F002305A8 /* EasyApplyFormModel+Education.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190F325AC3C3F002305A8 /* EasyApplyFormModel+Education.swift */; };
 		5DA190FB25AC4B42002305A8 /* EasyApplyEducationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190FA25AC4B42002305A8 /* EasyApplyEducationPicker.swift */; };
 		5DAF7DC72590C31D009DB23A /* EasyApplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF7DC62590C31D009DB23A /* EasyApplyView.swift */; };
 		7149DB6D24FE58C900268976 /* MyVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149DB6824FE58C800268976 /* MyVehicleCell.swift */; };
@@ -144,11 +144,11 @@
 		4DDD45B7250FAA8E007DBDD5 /* SearchDisplayTypeOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDisplayTypeOption.swift; sourceTree = "<group>"; };
 		4DDD45B9250FAB8B007DBDD5 /* SearchDisplayTypeSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDisplayTypeSelectionViewModel.swift; sourceTree = "<group>"; };
 		5DA190D825A737EC002305A8 /* EasyApplyFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApplyFormModel.swift; sourceTree = "<group>"; };
-		5DA190DB25A73814002305A8 /* EasyApplyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApplyTextField.swift; sourceTree = "<group>"; };
-		5DA190DE25A73857002305A8 /* EasyApplyQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApplyQuestion.swift; sourceTree = "<group>"; };
+		5DA190DB25A73814002305A8 /* EasyApplyFormModel+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EasyApplyFormModel+TextField.swift"; sourceTree = "<group>"; };
+		5DA190DE25A73857002305A8 /* EasyApplyFormModel+Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EasyApplyFormModel+Question.swift"; sourceTree = "<group>"; };
 		5DA190E225A738A8002305A8 /* EasyApplyQuestionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApplyQuestionPicker.swift; sourceTree = "<group>"; };
-		5DA190EB25A8477E002305A8 /* EasyApplyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApplyTextView.swift; sourceTree = "<group>"; };
-		5DA190F325AC3C3F002305A8 /* EasyApplyEducation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApplyEducation.swift; sourceTree = "<group>"; };
+		5DA190EB25A8477E002305A8 /* EasyApplyFormModel+TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EasyApplyFormModel+TextView.swift"; sourceTree = "<group>"; };
+		5DA190F325AC3C3F002305A8 /* EasyApplyFormModel+Education.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EasyApplyFormModel+Education.swift"; sourceTree = "<group>"; };
 		5DA190FA25AC4B42002305A8 /* EasyApplyEducationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApplyEducationPicker.swift; sourceTree = "<group>"; };
 		5DAF7DC62590C31D009DB23A /* EasyApplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApplyView.swift; sourceTree = "<group>"; };
 		7149DB6824FE58C800268976 /* MyVehicleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVehicleCell.swift; sourceTree = "<group>"; };
@@ -414,10 +414,10 @@
 			isa = PBXGroup;
 			children = (
 				5DA190D825A737EC002305A8 /* EasyApplyFormModel.swift */,
-				5DA190DB25A73814002305A8 /* EasyApplyTextField.swift */,
-				5DA190EB25A8477E002305A8 /* EasyApplyTextView.swift */,
-				5DA190DE25A73857002305A8 /* EasyApplyQuestion.swift */,
-				5DA190F325AC3C3F002305A8 /* EasyApplyEducation.swift */,
+				5DA190DB25A73814002305A8 /* EasyApplyFormModel+TextField.swift */,
+				5DA190EB25A8477E002305A8 /* EasyApplyFormModel+TextView.swift */,
+				5DA190DE25A73857002305A8 /* EasyApplyFormModel+Question.swift */,
+				5DA190F325AC3C3F002305A8 /* EasyApplyFormModel+Education.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -879,7 +879,7 @@
 				5DA190E325A738A8002305A8 /* EasyApplyQuestionPicker.swift in Sources */,
 				46AE6FB1242BAB97007BB005 /* SplashView.swift in Sources */,
 				DA0E186F2459C23600C0616E /* SettingsView.swift in Sources */,
-				5DA190EC25A8477E002305A8 /* EasyApplyTextView.swift in Sources */,
+				5DA190EC25A8477E002305A8 /* EasyApplyFormModel+TextView.swift in Sources */,
 				4D7A6ED32498DBAF00AB2EBE /* SearchResultsListView.swift in Sources */,
 				9B2A6999249797AC00E671B5 /* BapAdViewModel.swift in Sources */,
 				D6C0BD81257A2D5600D51440 /* BalloonView.swift in Sources */,
@@ -899,7 +899,7 @@
 				4DDD45A7250FA7BD007DBDD5 /* SearchFilterButtonView.swift in Sources */,
 				9B2A698D249797AC00E671B5 /* SingleImageProvider.swift in Sources */,
 				4DBC0398250A48DF004E8044 /* ExpandCollapseButton.swift in Sources */,
-				5DA190DF25A73857002305A8 /* EasyApplyQuestion.swift in Sources */,
+				5DA190DF25A73857002305A8 /* EasyApplyFormModel+Question.swift in Sources */,
 				DA3415F5245AEB5C00DC1B1C /* BottomDividerModifier.swift in Sources */,
 				9B2A6994249797AC00E671B5 /* CollectionImageProvider.swift in Sources */,
 				9B2A6992249797AC00E671B5 /* DescriptionViewModel.swift in Sources */,
@@ -919,14 +919,14 @@
 				9B2A6991249797AC00E671B5 /* PhoneNumberView.swift in Sources */,
 				9B58C0F6246550440029FAF5 /* ButtonStyle+Previews.swift in Sources */,
 				7149DB6D24FE58C900268976 /* MyVehicleCell.swift in Sources */,
-				5DA190DC25A73814002305A8 /* EasyApplyTextField.swift in Sources */,
+				5DA190DC25A73814002305A8 /* EasyApplyFormModel+TextField.swift in Sources */,
 				469894A02434DD6F00CC84E6 /* ImageAsset.swift in Sources */,
 				4D7A6ED22498DBAF00AB2EBE /* SearchResultsView.swift in Sources */,
 				4DDD45BA250FAB8B007DBDD5 /* SearchDisplayTypeSelectionViewModel.swift in Sources */,
 				8D6809470298B377E3ECB40D /* SaveSearchView.swift in Sources */,
 				4D07057E24AF2A07008282D0 /* ChatAvailabilityViewModel.swift in Sources */,
 				4DD8427E25481F910058D6BB /* ProjectUnitCell.swift in Sources */,
-				5DA190F425AC3C3F002305A8 /* EasyApplyEducation.swift in Sources */,
+				5DA190F425AC3C3F002305A8 /* EasyApplyFormModel+Education.swift in Sources */,
 				8D6809ACFE4FFDA0D520F6A5 /* SaveSearchViewModel.swift in Sources */,
 				4D72623D256266A100B75FAB /* UIDevice.swift in Sources */,
 				8D680BA15E0D7DDD24F2B6F4 /* IconLinkView.swift in Sources */,
