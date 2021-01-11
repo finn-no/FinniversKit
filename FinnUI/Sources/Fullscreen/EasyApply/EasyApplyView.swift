@@ -31,13 +31,19 @@ struct EasyApplyView: View {
 
     var header: some View {
         VStack(alignment: .leading) {
-            Text("Søk stilling som:").finnFont(.detail)
-            Text(form.position).finnFont(.bodyStrong)
+            Text("Søk stilling som:")
+                .finnFont(.detail)
+
+            Text(form.position)
+                .finnFont(.bodyStrong)
                 .padding(.bottom, .spacingXS)
 
-            Text("Du er logget inn som:").finnFont(.caption)
-            Text(form.name).finnFont(.bodyRegular)
-        }
+            Text("Du er logget inn som:")
+                .finnFont(.caption)
+
+            Text(form.name)
+                .finnFont(.bodyRegular)
+        }.foregroundColor(Color.textPrimary)
     }
 
     var textfields: some View {

@@ -10,13 +10,16 @@ struct EasyApplyQuestionPicker: View {
     @Binding var select: EasyApplyQuestion
 
     var body: some View {
-        Text(select.question).finnFont(.bodyStrong)
+        Text(select.question)
+            .finnFont(.bodyStrong)
+            .foregroundColor(Color.textPrimary)
 
         Picker(selection: $select.selectedOption, label: Text(select.question)) {
             ForEach(EasyApplyQuestion.Option.allCases) { option in
                 Text(option.displayValue).tag(option as EasyApplyQuestion.Option?)
             }
         }
+        .foregroundColor(Color.textPrimary)
     }
 }
 
