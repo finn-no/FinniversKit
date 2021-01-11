@@ -157,13 +157,3 @@ extension FrontpageViewDemoView: MarketsGridViewDataSource {
         return markets[index]
     }
 }
-
-// MARK: - DialogueViewDelegate
-
-extension FrontpageViewDemoView: DialogueViewDelegate {
-    public func dialogueViewDidSelectLink() {}
-    public func dialogueViewDidSelectPrimaryButton() {
-        frontPageView.hideInlineConsent()
-        frontPageView.reloadAds()
-    }
-}

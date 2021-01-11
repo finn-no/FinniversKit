@@ -6,7 +6,6 @@ import FinniversKit
 public enum ComponentDemoViews: String, CaseIterable {
     case addressCardView
     case button
-    case dialogue
     case floatingButton
     case cogWheelButton
     case label
@@ -16,8 +15,6 @@ public enum ComponentDemoViews: String, CaseIterable {
     case toast
     case switchView
     case infobox
-    case inlineConsent
-    case inlineConsentV2
     case consentTransparencyInfo
     case bannerTransparencyView
     case checkbox
@@ -86,8 +83,6 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<AddressCardDemoView>()
         case .button:
             return DemoViewController<ButtonDemoView>()
-        case .dialogue:
-            return DemoViewController<DialogueDemoView>()
         case .floatingButton:
             return DemoViewController<FloatingButtonDemoView>()
         case .reviewButtonView:
@@ -108,10 +103,6 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<SwitchViewDemoView>()
         case .infobox:
             return DemoViewController<InfoboxDemoView>()
-        case .inlineConsent:
-            return DemoViewController<InlineConsentDemoView>()
-        case .inlineConsentV2:
-            return InlineConsentDemoViewController()
         case .consentTransparencyInfo:
             return DemoViewController<ConsentTransparencyInfoDemoView>()
         case .bannerTransparencyView:
