@@ -2475,6 +2475,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 71.0.0;
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					SwiftUI,
@@ -2498,6 +2499,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 71.0.0;
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					SwiftUI,
