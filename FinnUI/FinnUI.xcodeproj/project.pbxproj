@@ -40,6 +40,8 @@
 		5DA190DF25A73857002305A8 /* EasyApplyQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190DE25A73857002305A8 /* EasyApplyQuestion.swift */; };
 		5DA190E325A738A8002305A8 /* EasyApplyQuestionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190E225A738A8002305A8 /* EasyApplyQuestionPicker.swift */; };
 		5DA190EC25A8477E002305A8 /* EasyApplyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190EB25A8477E002305A8 /* EasyApplyTextView.swift */; };
+		5DA190F425AC3C3F002305A8 /* EasyApplyEducation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190F325AC3C3F002305A8 /* EasyApplyEducation.swift */; };
+		5DA190FB25AC4B42002305A8 /* EasyApplyEducationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190FA25AC4B42002305A8 /* EasyApplyEducationPicker.swift */; };
 		5DAF7DC72590C31D009DB23A /* EasyApplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF7DC62590C31D009DB23A /* EasyApplyView.swift */; };
 		7149DB6D24FE58C900268976 /* MyVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149DB6824FE58C800268976 /* MyVehicleCell.swift */; };
 		7149DB6E24FE58C900268976 /* MyVehicleCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149DB6924FE58C800268976 /* MyVehicleCellModel.swift */; };
@@ -146,6 +148,8 @@
 		5DA190DE25A73857002305A8 /* EasyApplyQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApplyQuestion.swift; sourceTree = "<group>"; };
 		5DA190E225A738A8002305A8 /* EasyApplyQuestionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApplyQuestionPicker.swift; sourceTree = "<group>"; };
 		5DA190EB25A8477E002305A8 /* EasyApplyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApplyTextView.swift; sourceTree = "<group>"; };
+		5DA190F325AC3C3F002305A8 /* EasyApplyEducation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApplyEducation.swift; sourceTree = "<group>"; };
+		5DA190FA25AC4B42002305A8 /* EasyApplyEducationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApplyEducationPicker.swift; sourceTree = "<group>"; };
 		5DAF7DC62590C31D009DB23A /* EasyApplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyApplyView.swift; sourceTree = "<group>"; };
 		7149DB6824FE58C800268976 /* MyVehicleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVehicleCell.swift; sourceTree = "<group>"; };
 		7149DB6924FE58C800268976 /* MyVehicleCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVehicleCellModel.swift; sourceTree = "<group>"; };
@@ -413,6 +417,7 @@
 				5DA190DB25A73814002305A8 /* EasyApplyTextField.swift */,
 				5DA190EB25A8477E002305A8 /* EasyApplyTextView.swift */,
 				5DA190DE25A73857002305A8 /* EasyApplyQuestion.swift */,
+				5DA190F325AC3C3F002305A8 /* EasyApplyEducation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -421,6 +426,7 @@
 			isa = PBXGroup;
 			children = (
 				5DA190E225A738A8002305A8 /* EasyApplyQuestionPicker.swift */,
+				5DA190FA25AC4B42002305A8 /* EasyApplyEducationPicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -920,6 +926,7 @@
 				8D6809470298B377E3ECB40D /* SaveSearchView.swift in Sources */,
 				4D07057E24AF2A07008282D0 /* ChatAvailabilityViewModel.swift in Sources */,
 				4DD8427E25481F910058D6BB /* ProjectUnitCell.swift in Sources */,
+				5DA190F425AC3C3F002305A8 /* EasyApplyEducation.swift in Sources */,
 				8D6809ACFE4FFDA0D520F6A5 /* SaveSearchViewModel.swift in Sources */,
 				4D72623D256266A100B75FAB /* UIDevice.swift in Sources */,
 				8D680BA15E0D7DDD24F2B6F4 /* IconLinkView.swift in Sources */,
@@ -927,6 +934,7 @@
 				4DDD45A6250FA7BD007DBDD5 /* SearchDisplayMenuView.swift in Sources */,
 				8D680A0E533C08A3917CB5A6 /* IconLinkListView.swift in Sources */,
 				4D72623A2562667600B75FAB /* UITraitCollectionExtensions.swift in Sources */,
+				5DA190FB25AC4B42002305A8 /* EasyApplyEducationPicker.swift in Sources */,
 				D6C0BD83257A2D5700D51440 /* NewYearsView.swift in Sources */,
 				8D6801A7AE3E6776BE760D22 /* FavoriteAdSortingView.swift in Sources */,
 				8D680C35321A5306E544B3E2 /* FavoriteAdSortingViewModel.swift in Sources */,

@@ -12,13 +12,15 @@ class EasyApplyFormModel: ObservableObject {
     @Published var textfields: [EasyApplyTextField]
     @Published var questions: [EasyApplyQuestion]
     @Published var textviews: [EasyApplyTextView]
+    @Published var educations: EasyApplyEducations
 
-    init(name: String, position: String, textfields: [EasyApplyTextField], selects: [EasyApplyQuestion], textviews: [EasyApplyTextView]) {
+    init(name: String, position: String, textfields: [EasyApplyTextField], questions: [EasyApplyQuestion], textviews: [EasyApplyTextView], educations: EasyApplyEducations) {
         self.name = name
         self.position = position
         self.textfields = textfields
-        self.questions = selects
+        self.questions = questions
         self.textviews = textviews
+        self.educations = educations
     }
 }
 

@@ -16,6 +16,7 @@ struct EasyApplyView: View {
                 VStack(alignment: .leading, spacing: .spacingM) {
                     header.padding(.bottom, .spacingS)
                     textfields
+                    EasyApplyEducationPicker(educations: $form.educations)
                     selects
                     textviews
                 }
@@ -111,13 +112,14 @@ struct EasyApplyView_Previews: PreviewProvider {
                     EasyApplyTextField(type: .email, placeholder: "Epost", helpText: "Epost-adressen er ikke gyldig"),
                     EasyApplyTextField(type: .phone, placeholder: "Telefon"),
                 ],
-                selects: [
+                questions: [
                     EasyApplyQuestion(question: "Er du student eller nyutdannet?"),
                     EasyApplyQuestion(question: "Har du erfaring med programvareutvikling?"),
                 ],
                 textviews: [
                     EasyApplyTextView(placeholder: "Søknadsbrev")
-                ]
+                ],
+                educations: EasyApplyEducations()
             )
         )
         .colorScheme(.light)
