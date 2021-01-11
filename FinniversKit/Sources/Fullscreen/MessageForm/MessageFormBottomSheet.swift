@@ -117,9 +117,9 @@ extension MessageFormBottomSheet: BottomSheetDelegate {
     }
 }
 
-// MARK: - Private extensions
+// MARK: - Public extensions
 
-private extension BottomSheet.Height {
+public extension BottomSheet.Height {
     static var messageFormHeight: BottomSheet.Height {
         let screenSize = UIScreen.main.bounds.size
         let height = screenSize.height - 64
