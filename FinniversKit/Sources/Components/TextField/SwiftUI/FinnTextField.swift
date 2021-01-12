@@ -37,11 +37,10 @@ public struct FinnTextField: View {
     }
 
     public var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .leading) {
             Text(placeholder)
                 .finnFont(.captionStrong)
                 .foregroundColor(Color.textPrimary)
-                .padding(.bottom, .spacingXS)
 
             TextFieldComponent(
                 input: input,
@@ -61,7 +60,14 @@ public struct FinnTextField: View {
             .overlay(underline, alignment: .bottom)
             .overlay(clearButton, alignment: .trailing)
 
-            helpTextLabel
+            helpTextLabel {
+                Text(helpText ?? "")
+                    .finnFont(.detail)
+                    .foregroundColor(style.helpTextColor)
+                    .transition(.asymmetricSlide)
+                    .padding(.top, 0)
+                    .padding(.bottom, 1)
+            }
         }
     }
 
@@ -71,13 +77,11 @@ public struct FinnTextField: View {
             .foregroundColor(style.underlineColor)
     }
 
-    @ViewBuilder private var helpTextLabel: some View {
-        if let helpText = helpText, shouldShowHelpText {
-            Text(helpText)
-                .finnFont(.detail)
-                .foregroundColor(style.helpTextColor)
-                .padding(.top, .spacingXS)
-                .transition(.asymmetricSlide)
+    @ViewBuilder private func helpTextLabel<Label: View>(_ label: () -> Label) -> some View {
+        if shouldShowHelpText {
+            label()
+        } else {
+            label().hidden()
         }
     }
 
