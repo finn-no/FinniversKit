@@ -14,11 +14,11 @@ extension EasyApplyFormModel {
         let helpText: String?
         var value: String
 
-        init(type: FinnTextField.Input, placeholder: String, helpText: String? = nil, value: String = "") {
+        init(type: FinnTextField.Input, placeholder: String, helpText: String? = nil, value: String? = nil) {
             self.type = type
             self.placeholder = placeholder
             self.helpText = helpText
-            self.value = value
+            self.value = value ?? ""
         }
     }
 }

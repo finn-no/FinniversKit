@@ -13,7 +13,7 @@ struct EasyApplyView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                VStack(alignment: .leading, spacing: .spacingM) {
+                VStack(alignment: .leading, spacing: .spacingM + .spacingS) {
                     header.padding(.bottom, .spacingS)
                     textfields
                     EasyApplyEducationPicker(educations: $form.educations)
@@ -30,6 +30,16 @@ struct EasyApplyView: View {
         }
     }
 
+    @ViewBuilder var loggedInUser: some View {
+        if let name = form.profileData.name {
+            Text("Du er logget inn som:")
+                .finnFont(.caption)
+
+            Text(name)
+                .finnFont(.bodyRegular)
+        }
+    }
+
     var header: some View {
         VStack(alignment: .leading) {
             Text("Søk stilling som:")
@@ -39,11 +49,8 @@ struct EasyApplyView: View {
                 .finnFont(.bodyStrong)
                 .padding(.bottom, .spacingXS)
 
-            Text("Du er logget inn som:")
-                .finnFont(.caption)
+            loggedInUser
 
-            Text(form.name)
-                .finnFont(.bodyRegular)
         }.foregroundColor(Color.textPrimary)
     }
 
@@ -70,6 +77,10 @@ struct EasyApplyView: View {
 
     var textviews: some View {
         VStack(alignment: .leading) {
+            Text("Søkertekst")
+                .finnFont(.captionStrong)
+                .foregroundColor(Color.textPrimary)
+
             ForEach(form.textviews) {
                 FinnTextView(
                     placeholder: $0.placeholder,
@@ -82,8 +93,7 @@ struct EasyApplyView: View {
 
     var applyButton: some View {
         Button(action: {
-            form.textfields.forEach { print($0.value) }
-            form.questions.forEach { print($0.selectedOption) }
+            print(form)
         }, label: {
             Text("Søk på stilling")
         })
@@ -105,19 +115,11 @@ struct EasyApplyView_Previews: PreviewProvider {
     static var previews: some View {
         EasyApplyView(
             form: EasyApplyFormModel(
-                name: "Test Testesen",
-                position: "Systemutvikler i FINN.no AS",
-                textfields: [
-                    EasyApplyFormModel.TextField(type: .default, placeholder: "Navn", value: "Test Testesen"),
-                    EasyApplyFormModel.TextField(type: .email, placeholder: "Epost", helpText: "Epost-adressen er ikke gyldig"),
-                    EasyApplyFormModel.TextField(type: .phone, placeholder: "Telefon"),
-                ],
+                position: "Utvikler (arkitekt)",
+                profileData: EasyApplyFormModel.ProfileData(name: "Test Testesen", postalCode: "0485"),
                 questions: [
                     EasyApplyFormModel.Question(question: "Er du student eller nyutdannet?"),
                     EasyApplyFormModel.Question(question: "Har du erfaring med programvareutvikling?"),
-                ],
-                textviews: [
-                    EasyApplyFormModel.TextView(placeholder: "Søknadsbrev")
                 ],
                 educations: EasyApplyFormModel.Educations()
             )

@@ -15,8 +15,11 @@ extension EasyApplyFormModel {
         let educations: [Education] = [
             .init(name: ""),
             .init(name: "Grunnskole"),
+            .init(name: "Videregående/Yrkesskole"),
             .init(name: "Fagskole"),
-            .init(name: "Høyere utdanning, 1-4 år")
+            .init(name: "Høyere utdanning, 1-4 år"),
+            .init(name: "Høyere utdanning, 4+ år"),
+            .init(name: "PhD"),
         ]
 
         var selectedEducation: Education
