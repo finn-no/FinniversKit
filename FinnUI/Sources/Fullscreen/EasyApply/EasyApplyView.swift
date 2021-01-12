@@ -16,9 +16,9 @@ struct EasyApplyView: View {
                 VStack(alignment: .leading, spacing: .spacingM + .spacingS) {
                     header.padding(.bottom, .spacingS)
                     textfields
-                    EasyApplyEducationPicker(educations: $form.educations)
-                    selects
-                    textviews
+                    educationPicker
+                    questions
+                    applicationLetter
                 }
                 .padding(.top, .spacingS)
 
@@ -67,7 +67,11 @@ struct EasyApplyView: View {
         }
     }
 
-    var selects: some View {
+    var educationPicker: some View {
+        EasyApplyEducationPicker(educations: $form.educations)
+    }
+
+    var questions: some View {
         VStack(alignment: .leading) {
             ForEach(form.questions) {
                 EasyApplyQuestionPicker(select: binding(for: $0, in: \.questions))
@@ -75,19 +79,17 @@ struct EasyApplyView: View {
         }.pickerStyle(SegmentedPickerStyle())
     }
 
-    var textviews: some View {
+    var applicationLetter: some View {
         VStack(alignment: .leading) {
             Text("Søkertekst")
                 .finnFont(.captionStrong)
                 .foregroundColor(Color.textPrimary)
 
-            ForEach(form.textviews) {
-                FinnTextView(
-                    placeholder: $0.placeholder,
-                    text: binding(for: $0, in: \.textviews).value
-                )
-                .frame(minHeight: 150)
-            }
+            FinnTextView(
+                placeholder: form.applicationLetter.placeholder,
+                text: $form.applicationLetter.value
+            )
+            .frame(minHeight: 150)
         }
     }
 
