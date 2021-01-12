@@ -11,7 +11,7 @@ struct FinnTextFieldDemoView: View {
     @SwiftUI.State var text: String = ""
 
     var body: some View {
-        VStack {
+        ScrollView {
             Text("Textfields")
                 .finnFont(.title1)
                 .padding(.bottom, .spacingM)
@@ -21,6 +21,14 @@ struct FinnTextFieldDemoView: View {
             FinnTextField(input: .secure, placeholder: "Secure", helpText: "Help text", text: $text)
             FinnTextField(input: .phone, placeholder: "Phone", text: $text)
             FinnTextField(input: .number, placeholder: "Number", text: $text)
+            FinnTextField(
+                placeholder: "Enter the text \"il tempo gigante\"",
+                helpText: "Felgens svar på italienske Ferrari",
+                text: $text,
+                validator: { text in
+                    text.lowercased() == "il tempo gigante"
+                }
+            )
 
             Spacer()
         }

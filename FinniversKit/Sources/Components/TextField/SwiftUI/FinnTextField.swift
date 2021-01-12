@@ -7,19 +7,29 @@ import SwiftUI
 @available(iOS 13.0, *)
 public struct FinnTextField: View {
 
+    public typealias CustomValidator = (String) -> Bool
+
     let input: Input
     let placeholder: String
     let helpText: String?
 
     @Binding var text: String
-
     @State var style: Style = .default
 
-    public init(input: Input = .default, placeholder: String, helpText: String? = nil, text: Binding<String>) {
+    let validator: CustomValidator?
+
+    public init(
+        input: Input = .default,
+        placeholder: String,
+        helpText: String? = nil,
+        text: Binding<String>,
+        validator: CustomValidator? = nil
+    ) {
         self.input = input
         self.placeholder = placeholder
         self.helpText = helpText
         self._text = text
+        self.validator = validator
     }
 
     private func updateStyle(_ style: Style) {
@@ -33,7 +43,7 @@ public struct FinnTextField: View {
             return style == .error
         }
 
-        return true
+        return validator != nil
     }
 
     public var body: some View {
@@ -97,7 +107,6 @@ public struct FinnTextField: View {
             })
         }
     }
-
 }
 
 @available(iOS 13.0, *)
@@ -107,16 +116,24 @@ extension FinnTextField {
     private static let phoneRegex: String = "^(?:\\s*\\d){8,11}$"
 
     private var isValidInput: Bool {
+        let isValid: Bool
+
         switch input {
         case .secure:
-            return isValidPassword(text)
+            isValid = isValidPassword(text)
         case .email:
-            return isValidEmail(text)
+            isValid = isValidEmail(text)
         case .phone:
-            return isValidPhoneNumber(text)
+            isValid = isValidPhoneNumber(text)
         default:
-            return true
+            isValid = true
         }
+
+        if isValid, let validator = validator {
+            return validator(text)
+        }
+
+        return isValid
     }
 
     private func evaluateTextState() {
