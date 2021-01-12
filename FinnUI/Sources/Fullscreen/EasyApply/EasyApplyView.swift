@@ -5,6 +5,7 @@
 import SwiftUI
 import FinniversKit
 
+// This is not production ready. This is stored as the result of an experiment, and hence not public.
 @available(iOS 13.0, *)
 struct EasyApplyView: View {
 
