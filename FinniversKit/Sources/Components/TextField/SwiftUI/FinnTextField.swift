@@ -29,7 +29,7 @@ public struct FinnTextField: View {
     }
 
     private var shouldShowHelpText: Bool {
-        if input == .email {
+        if input == .email || input == .phone {
             return style == .error
         }
 
