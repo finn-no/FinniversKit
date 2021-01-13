@@ -6,13 +6,11 @@ import SwiftUI
 
 @available(iOS 13.0, *)
 public struct FinnTextField: View {
-
     public typealias CustomValidator = (String) -> Bool
 
     let input: Input
     let placeholder: String
     let helpText: String?
-
     @Binding var text: String
     @State var style: Style = .default
 
@@ -67,6 +65,9 @@ public struct FinnTextField: View {
             .overlay(clearButton, alignment: .trailing)
 
             makeHelpTextLabel()
+                .transition(.asymmetricSlide)
+                .padding(.top, 0)
+                .padding(.bottom, 1)
         }
     }
 
@@ -81,9 +82,6 @@ public struct FinnTextField: View {
         let label = Text(helpText ?? "")
             .finnFont(.detail)
             .foregroundColor(style.helpTextColor)
-            .transition(.asymmetricSlide)
-            .padding(.top, 0)
-            .padding(.bottom, 1)
 
         if shouldShowHelpText {
             label
