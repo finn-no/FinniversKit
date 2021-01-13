@@ -21,7 +21,8 @@ public struct FinnTextView: View {
             .overlay(underline, alignment: .bottom)
     }
 
-    @ViewBuilder var placeholder: some View {
+    @ViewBuilder
+    private var placeholder: some View {
         if text.isEmpty {
             Text(placeholderText)
                 .foregroundColor(Color.textDisabled)
@@ -32,7 +33,7 @@ public struct FinnTextView: View {
         }
     }
 
-    var underline: some View {
+    private var underline: some View {
         Rectangle()
             .frame(height: 2)
             .foregroundColor(Color.accentSecondaryBlue)
@@ -66,7 +67,7 @@ struct TextViewComponent: UIViewRepresentable {
 
     class Coordinator: NSObject, UITextViewDelegate {
 
-        let parent: TextViewComponent
+        private let parent: TextViewComponent
 
         init(_ parent: TextViewComponent) {
             self.parent = parent

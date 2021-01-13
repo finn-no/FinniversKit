@@ -56,12 +56,8 @@ public struct FinnTextField: View {
                 input: input,
                 placeholder: placeholder,
                 text: $text,
-                onEditingChanged: { editing in
-                    updateStyle(editing ? .focused : .default)
-                },
-                onCommit: {
-                    evaluateTextState()
-                }
+                onEditingChanged: { editing in updateStyle(editing ? .focused : .default) },
+                onCommit: { evaluateTextState() }
             )
             .fixedSize(horizontal: false, vertical: true)
             .padding(.vertical, .spacingS + .spacingXS)
@@ -87,7 +83,8 @@ public struct FinnTextField: View {
             .foregroundColor(style.underlineColor)
     }
 
-    @ViewBuilder private func helpTextLabel<Label: View>(_ label: () -> Label) -> some View {
+    @ViewBuilder
+    private func helpTextLabel<Label: View>(_ label: () -> Label) -> some View {
         if shouldShowHelpText {
             label()
         } else {
@@ -95,7 +92,8 @@ public struct FinnTextField: View {
         }
     }
 
-    @ViewBuilder private var clearButton: some View {
+    @ViewBuilder
+    private var clearButton: some View {
         if input == .default && style == .focused {
             SwiftUI.Button(action: {
                 text = ""
@@ -200,11 +198,12 @@ struct TextFieldComponent: UIViewRepresentable {
 
     class Coordinator: NSObject, UITextFieldDelegate {
 
-        let parent: TextFieldComponent
+        private let parent: TextFieldComponent
 
         init(_ parent: TextFieldComponent) {
             self.parent = parent
         }
+        
         func textFieldDidBeginEditing(_ textField: UITextField) {
             parent.onEditingChanged(true)
         }
