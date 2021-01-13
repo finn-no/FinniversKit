@@ -66,14 +66,7 @@ public struct FinnTextField: View {
             .overlay(underline, alignment: .bottom)
             .overlay(clearButton, alignment: .trailing)
 
-            helpTextLabel {
-                Text(helpText ?? "")
-                    .finnFont(.detail)
-                    .foregroundColor(style.helpTextColor)
-                    .transition(.asymmetricSlide)
-                    .padding(.top, 0)
-                    .padding(.bottom, 1)
-            }
+            makeHelpTextLabel()
         }
     }
 
@@ -84,11 +77,18 @@ public struct FinnTextField: View {
     }
 
     @ViewBuilder
-    private func helpTextLabel<Label: View>(_ label: () -> Label) -> some View {
+    private func makeHelpTextLabel() -> some View {
+        let label = Text(helpText ?? "")
+            .finnFont(.detail)
+            .foregroundColor(style.helpTextColor)
+            .transition(.asymmetricSlide)
+            .padding(.top, 0)
+            .padding(.bottom, 1)
+
         if shouldShowHelpText {
-            label()
+            label
         } else {
-            label().hidden()
+            label.hidden()
         }
     }
 
