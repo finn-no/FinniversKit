@@ -6,6 +6,7 @@ import SwiftUI
 @testable import FinnUI
 @testable import FinniversKit
 
+@available(iOS 13.0, *)
 public enum SwiftUIDemoViews: String, CaseIterable {
     case buttons
     case easyApply
@@ -17,49 +18,35 @@ public enum SwiftUIDemoViews: String, CaseIterable {
     case myVehiclesListView
 
     public static var items: [SwiftUIDemoViews] {
-        if #available(iOS 13.0.0, *) {
-            return allCases.sorted { $0.rawValue < $1.rawValue }
-        } else {
-            return []
-        }
+        allCases.sorted { $0.rawValue < $1.rawValue }
     }
 
     public var viewController: UIViewController {
-        if #available(iOS 13.0.0, *) {
-            return PreviewController(hostingController: hostingController)
-        } else {
-            return DemoViewController<UIView>()
-        }
+        PreviewController(hostingController: hostingController)
     }
 
-    @available(iOS 13.0, *)
     private var hostingController: UIViewController {
         UIHostingController(rootView: previews)
     }
 
-    @available(iOS 13.0, *)
-    private var previews: AnyView {
+    @ViewBuilder private var previews: some View {
         switch self {
         case .buttons:
-            return AnyView(ButtonStyleUsageDemoView_Previews.previews)
+            ButtonStyleUsageDemoView_Previews.previews
         case .easyApply:
-            if #available(iOS 14.0, *) {
-                return AnyView(EasyApplyView_Previews.previews)
-            }
-
-            return AnyView(EmptyView())
+            EasyApplyView_Previews.previews
         case .settings:
-            return AnyView(SettingsView_Previews.previews)
+            SettingsView_Previews.previews
         case .textField:
-            return AnyView(FinnTextField_Previews.previews)
+            FinnTextField_Previews.previews
         case .textView:
-            return AnyView(FinnTextView_Previews.previews)
+            FinnTextView_Previews.previews
         case .basicCellVariations:
-            return AnyView(BasicListCell_Previews.previews)
+            BasicListCell_Previews.previews
         case .bapAdView:
-            return AnyView(BapAdView_Previews.previews)
+            BapAdView_Previews.previews
         case .myVehiclesListView:
-            return AnyView(MyVehiclesListView_Previews.previews)
+            MyVehiclesListView_Previews.previews
         }
     }
 }

@@ -16,7 +16,17 @@ enum Sections: String, CaseIterable {
     case cells
     case recycling
     case fullscreen
-    case swiftui
+    @available(iOS 13.0, *) case swiftui
+
+    static var allCases: [Sections] {
+        var cases: [Sections] = [.dna, .components, .cells, .recycling, .fullscreen]
+
+        if #available(iOS 13.0, *) {
+            cases.append(.swiftui)
+        }
+
+        return cases
+    }
 
     static var items: [Sections] {
         return allCases
@@ -35,7 +45,10 @@ enum Sections: String, CaseIterable {
         case .fullscreen:
             return FullscreenDemoViews.items.count
         case .swiftui:
-            return SwiftUIDemoViews.items.count
+            if #available(iOS 13.0, *) {
+                return SwiftUIDemoViews.items.count
+            }
+            return 0
         }
     }
 
@@ -60,10 +73,15 @@ enum Sections: String, CaseIterable {
         case .fullscreen:
             names = FullscreenDemoViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
         case .swiftui:
-            names = SwiftUIDemoViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
+            if #available(iOS 13.0, *) {
+                names = SwiftUIDemoViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
+            } else {
+                names = []
+            }
         }
         return names
     }
+
 
     static func formattedName(for indexPath: IndexPath) -> String {
         let section = Sections.items[indexPath.section]
@@ -85,8 +103,12 @@ enum Sections: String, CaseIterable {
             let names = FullscreenDemoViews.items.sorted { $0.rawValue < $1.rawValue }
             rawClassName = names[indexPath.row].rawValue
         case .swiftui:
-            let names = SwiftUIDemoViews.items.sorted { $0.rawValue < $1.rawValue }
-            rawClassName = names[indexPath.row].rawValue
+            if #available(iOS 13.0, *) {
+                let names = SwiftUIDemoViews.items.sorted { $0.rawValue < $1.rawValue }
+                rawClassName = names[indexPath.row].rawValue
+            } else {
+                rawClassName = ""
+            }
         }
 
         return rawClassName.capitalizingFirstLetter
@@ -119,8 +141,10 @@ enum Sections: String, CaseIterable {
             let selectedView = FullscreenDemoViews.items[safe: indexPath.row]
             viewController = selectedView?.viewController
         case .swiftui:
-            let selectedView = SwiftUIDemoViews.items[safe: indexPath.row]
-            viewController = selectedView?.viewController
+            if #available(iOS 13.0, *) {
+                let selectedView = SwiftUIDemoViews.items[safe: indexPath.row]
+                viewController = selectedView?.viewController
+            }
         }
 
         let sectionType = Sections.for(indexPath)
@@ -180,6 +204,7 @@ extension Array {
     subscript(safe index: Int) -> Element? {
         return indices.contains(index) ? self[index] : .none
     }
+
 }
 
 extension Foundation.Notification.Name {
