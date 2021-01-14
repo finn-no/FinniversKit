@@ -3,7 +3,7 @@
 //
 import FinniversKit
 
-public enum FullscreenDemoViews: String, CaseIterable {
+public enum FullscreenDemoViews: String, DemoViews {
     case searchResultMapView
     case searchResultsView
     case frontPageView
@@ -45,10 +45,6 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case messageUserRequiredSheet
     case motorTransactionInsurancePickerView
     case motorTransactionInsuranceConfirmationView
-
-    public static var items: [FullscreenDemoViews] {
-        return allCases.sorted { $0.rawValue < $1.rawValue }
-    }
 
     public var viewController: UIViewController {
         switch self {

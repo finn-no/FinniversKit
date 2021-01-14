@@ -3,7 +3,7 @@
 //
 import FinniversKit
 
-public enum RecyclingDemoViews: String, CaseIterable {
+public enum RecyclingDemoViews: String, DemoViews {
     case basicTableView
     case notificationsListView
     case favoriteFoldersListView
@@ -15,10 +15,6 @@ public enum RecyclingDemoViews: String, CaseIterable {
     case adManagementView
     case neighborhoodProfileView
     case projectUnitsView
-
-    public static var items: [RecyclingDemoViews] {
-        return allCases.sorted { $0.rawValue < $1.rawValue }
-    }
 
     public var viewController: UIViewController {
         switch self {

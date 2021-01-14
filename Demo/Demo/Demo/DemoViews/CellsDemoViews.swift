@@ -3,7 +3,7 @@
 //
 import FinniversKit
 
-public enum CellsDemoViews: String, CaseIterable {
+public enum CellsDemoViews: String, DemoViews {
     case basicCell
     case basicCellVariations
     case checkboxCell
@@ -15,10 +15,6 @@ public enum CellsDemoViews: String, CaseIterable {
     case favoriteAdCell
     case userAdCell
     case userAdEmphasizedActionCell
-
-    public static var items: [CellsDemoViews] {
-        return allCases.sorted { $0.rawValue < $1.rawValue }
-    }
 
     public var viewController: UIViewController {
         switch self {

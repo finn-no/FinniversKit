@@ -1,14 +1,10 @@
 import FinniversKit
 
-public enum DnaDemoViews: String, CaseIterable {
+public enum DnaDemoViews: String, DemoViews {
     case color
     case font
     case spacing
     case assets
-
-    public static var items: [DnaDemoViews] {
-        return allCases.sorted { $0.rawValue < $1.rawValue }
-    }
 
     public var viewController: UIViewController {
         switch self {

@@ -7,7 +7,7 @@ import SwiftUI
 @testable import FinniversKit
 
 @available(iOS 13.0, *)
-public enum SwiftUIDemoViews: String, CaseIterable {
+public enum SwiftUIDemoViews: String, DemoViews {
     case buttons
     case easyApply
     case settings
@@ -16,10 +16,6 @@ public enum SwiftUIDemoViews: String, CaseIterable {
     case basicCellVariations
     case bapAdView
     case myVehiclesListView
-
-    public static var items: [SwiftUIDemoViews] {
-        allCases.sorted { $0.rawValue < $1.rawValue }
-    }
 
     public var viewController: UIViewController {
         PreviewController(hostingController: hostingController)
