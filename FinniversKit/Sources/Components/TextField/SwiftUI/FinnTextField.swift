@@ -13,6 +13,7 @@ public struct FinnTextField: View {
     let helpText: String?
     @Binding var text: String
     @State var style: Style = .default
+    @State var disclosePassword: Bool = false
 
     let validator: CustomValidator?
 
@@ -54,6 +55,7 @@ public struct FinnTextField: View {
                 input: input,
                 placeholder: placeholder,
                 text: $text,
+                disclosePassword: $disclosePassword,
                 onEditingChanged: { editing in updateStyle(editing ? .focused : .default) },
                 onCommit: { evaluateTextState() }
             )
@@ -62,7 +64,7 @@ public struct FinnTextField: View {
             .padding(.horizontal, .spacingS)
             .background(Color.bgSecondary)
             .overlay(underline, alignment: .bottom)
-            .overlay(clearButton, alignment: .trailing)
+            .overlay(textfieldTrailingButton.padding(.trailing, .spacingXS), alignment: .trailing)
 
             makeHelpTextLabel()
                 .transition(.asymmetricSlide)
@@ -90,18 +92,37 @@ public struct FinnTextField: View {
         }
     }
 
-    @ViewBuilder
-    private var clearButton: some View {
-        if input == .default && style == .focused {
-            SwiftUI.Button(action: {
-                text = ""
-            }, label: {
-                Image(.remove)
-                    .renderingMode(.template)
-                    .foregroundColor(Color.iconPrimary)
-                    .padding(.trailing, .spacingXS)
-            })
+    @ViewBuilder var textfieldTrailingButton: some View {
+        switch input {
+        case .default:
+            if style == .focused {
+                clearButton
+            }
+        case .secure:
+            disclosePasswordButton
+        default:
+            SwiftUI.EmptyView()
         }
+    }
+
+    private var clearButton: some View {
+        SwiftUI.Button(action: {
+            text = ""
+        }, label: {
+            Image(.remove)
+                .renderingMode(.template)
+                .foregroundColor(Color.iconPrimary)
+        })
+    }
+
+    private var disclosePasswordButton: some View {
+        SwiftUI.Button(action: {
+            disclosePassword.toggle()
+        }, label: {
+            Image(.view)
+                .renderingMode(.template)
+                .foregroundColor(disclosePassword ? Color.accentSecondaryBlue : Color.iconPrimary)
+        })
     }
 }
 
@@ -166,6 +187,7 @@ struct TextFieldComponent: UIViewRepresentable {
     let input: FinnTextField.Input
     let placeholder: String
     @Binding var text: String
+    @Binding var disclosePassword: Bool
 
     let onEditingChanged: (Bool) -> Void
     let onCommit: () -> Void
@@ -177,7 +199,6 @@ struct TextFieldComponent: UIViewRepresentable {
         field.delegate = context.coordinator
         field.font = .body
         field.textColor = .textPrimary
-        field.isSecureTextEntry = input == .secure
         field.keyboardType = input.keyboardType
         field.returnKeyType = input.returnKeyType
         field.textContentType = input.textContentType
@@ -188,6 +209,7 @@ struct TextFieldComponent: UIViewRepresentable {
     func updateUIView(_ view: UITextField, context: Context) {
         view.text = text
         view.placeholder = placeholder
+        view.isSecureTextEntry = input == .secure && !disclosePassword
     }
 
     func makeCoordinator() -> Coordinator {
