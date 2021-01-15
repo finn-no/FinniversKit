@@ -134,6 +134,7 @@
 		5D0ED35125A49FA7007750D0 /* FinnTextField+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0ED35025A49FA7007750D0 /* FinnTextField+Style.swift */; };
 		5D0ED35725A49FC9007750D0 /* FinnTextField+Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0ED35625A49FC9007750D0 /* FinnTextField+Input.swift */; };
 		5DA190C725A4A7E0002305A8 /* Transition+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190C625A4A7E0002305A8 /* Transition+Extensions.swift */; };
+		5DA190E825A84673002305A8 /* FinnTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190E725A84673002305A8 /* FinnTextView.swift */; };
 		5DB39C8F25932DC700204B23 /* FinnTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB39C8E25932DC700204B23 /* FinnTextField.swift */; };
 		620AEE34221175970087C150 /* UserAdManagementButtonAndInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620AEE33221175970087C150 /* UserAdManagementButtonAndInformationCell.swift */; };
 		62432106231FE97F0027E142 /* UserAdEmphasizedActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62432105231FE97F0027E142 /* UserAdEmphasizedActionTableViewCell.swift */; };
@@ -576,6 +577,7 @@
 		5D0ED35025A49FA7007750D0 /* FinnTextField+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextField+Style.swift"; sourceTree = "<group>"; };
 		5D0ED35625A49FC9007750D0 /* FinnTextField+Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextField+Input.swift"; sourceTree = "<group>"; };
 		5DA190C625A4A7E0002305A8 /* Transition+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Extensions.swift"; sourceTree = "<group>"; };
+		5DA190E725A84673002305A8 /* FinnTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinnTextView.swift; sourceTree = "<group>"; };
 		5DB39C8E25932DC700204B23 /* FinnTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinnTextField.swift; sourceTree = "<group>"; };
 		620AEE33221175970087C150 /* UserAdManagementButtonAndInformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdManagementButtonAndInformationCell.swift; sourceTree = "<group>"; };
 		62432105231FE97F0027E142 /* UserAdEmphasizedActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdEmphasizedActionTableViewCell.swift; sourceTree = "<group>"; };
@@ -904,6 +906,7 @@
 		081F51BB222932C900026C84 /* TextView */ = {
 			isa = PBXGroup;
 			children = (
+				5DA190E625A84665002305A8 /* SwiftUI */,
 				DAD0D491210737A30091DD4D /* TextView.swift */,
 			);
 			path = TextView;
@@ -1749,6 +1752,14 @@
 				5DB39C8E25932DC700204B23 /* FinnTextField.swift */,
 				5D0ED35025A49FA7007750D0 /* FinnTextField+Style.swift */,
 				5D0ED35625A49FC9007750D0 /* FinnTextField+Input.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		5DA190E625A84665002305A8 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				5DA190E725A84673002305A8 /* FinnTextView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -3194,6 +3205,7 @@
 				441FE432209A24E500B04EF1 /* AdsGridViewLayoutConfiguration.swift in Sources */,
 				CFCC3D3123686C0D002DD4CF /* FooterButtonView.swift in Sources */,
 				431875C1211180F100D71723 /* BuyerPickerProfileCell.swift in Sources */,
+				5DA190E825A84673002305A8 /* FinnTextView.swift in Sources */,
 				9BBC8AE122DF50E5003453B6 /* KlimabroletView.swift in Sources */,
 				082D80CB21C13C7B00831BDE /* RoundedRectangleGiftView.swift in Sources */,
 				443A6420209A5044006BFB38 /* NotificationsListFooterView.swift in Sources */,
