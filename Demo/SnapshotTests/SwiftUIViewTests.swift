@@ -13,9 +13,10 @@ class SwiftUIViewTests: XCTestCase {
         _ component: SwiftUIDemoViews,
         includeIPad: Bool = false,
         delay: TimeInterval? = nil,
+        record: Bool = false,
         testName: String = #function
     ) {
-        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, delay: delay, testName: testName)
+        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, delay: delay, record: record, testName: testName)
     }
 
     // MARK: - Tests

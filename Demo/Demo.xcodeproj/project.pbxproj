@@ -151,7 +151,6 @@
 		46E7743F242CEF0A008A5E93 /* ColorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7735D242CEF09008A5E93 /* ColorDemoView.swift */; };
 		46E77440242CEF0A008A5E93 /* SpacingDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7735F242CEF09008A5E93 /* SpacingDemoView.swift */; };
 		46E77441242CEF0A008A5E93 /* FontDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77361242CEF09008A5E93 /* FontDemoView.swift */; };
-		46E77442242CEF0A008A5E93 /* AssetsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77363242CEF09008A5E93 /* AssetsDemoViewController.swift */; };
 		46E77443242CEF0A008A5E93 /* RemoteImageCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77366242CEF09008A5E93 /* RemoteImageCellDemoView.swift */; };
 		46E77444242CEF0A008A5E93 /* FavoriteAdCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77368242CEF09008A5E93 /* FavoriteAdCellDemoView.swift */; };
 		46E77445242CEF0A008A5E93 /* BasicCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7736A242CEF09008A5E93 /* BasicCellDemoView.swift */; };
@@ -208,6 +207,8 @@
 		496F8C172473E7EA00AE0735 /* FavoriteSoldDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F8C162473E7EA00AE0735 /* FavoriteSoldDemoView.swift */; };
 		4D152E7B2577DB1300282244 /* NavigationLinkViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D152E7A2577DB1300282244 /* NavigationLinkViewDemoView.swift */; };
 		4D152F832578DA9F00282244 /* MotorTransactionInsurancePickerDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D152F822578DA9F00282244 /* MotorTransactionInsurancePickerDemoView.swift */; };
+		4D529E13258357D0007AE5B6 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D529E12258357D0007AE5B6 /* Icons.xcassets */; };
+		4D529E2125837087007AE5B6 /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D529E2025837087007AE5B6 /* ImageAsset.swift */; };
 		4D644438248A733400B80827 /* SearchResultsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D644437248A733400B80827 /* SearchResultsDemoView.swift */; };
 		4D644628248F782600B80827 /* SearchResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D644627248F782600B80827 /* SearchResultsData.swift */; };
 		4D6FCA39257A693300C078F1 /* MotorTransactionInsuranceConfirmationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6FCA38257A693300C078F1 /* MotorTransactionInsuranceConfirmationDemoView.swift */; };
@@ -408,7 +409,6 @@
 		46E7735D242CEF09008A5E93 /* ColorDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorDemoView.swift; sourceTree = "<group>"; };
 		46E7735F242CEF09008A5E93 /* SpacingDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpacingDemoView.swift; sourceTree = "<group>"; };
 		46E77361242CEF09008A5E93 /* FontDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontDemoView.swift; sourceTree = "<group>"; };
-		46E77363242CEF09008A5E93 /* AssetsDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetsDemoViewController.swift; sourceTree = "<group>"; };
 		46E77366242CEF09008A5E93 /* RemoteImageCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImageCellDemoView.swift; sourceTree = "<group>"; };
 		46E77368242CEF09008A5E93 /* FavoriteAdCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdCellDemoView.swift; sourceTree = "<group>"; };
 		46E7736A242CEF09008A5E93 /* BasicCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCellDemoView.swift; sourceTree = "<group>"; };
@@ -463,6 +463,8 @@
 		496F8C162473E7EA00AE0735 /* FavoriteSoldDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSoldDemoView.swift; sourceTree = "<group>"; };
 		4D152E7A2577DB1300282244 /* NavigationLinkViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkViewDemoView.swift; sourceTree = "<group>"; };
 		4D152F822578DA9F00282244 /* MotorTransactionInsurancePickerDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInsurancePickerDemoView.swift; sourceTree = "<group>"; };
+		4D529E12258357D0007AE5B6 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
+		4D529E2025837087007AE5B6 /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
 		4D644437248A733400B80827 /* SearchResultsDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsDemoView.swift; sourceTree = "<group>"; };
 		4D644627248F782600B80827 /* SearchResultsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsData.swift; sourceTree = "<group>"; };
 		4D6FCA38257A693300C078F1 /* MotorTransactionInsuranceConfirmationDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInsuranceConfirmationDemoView.swift; sourceTree = "<group>"; };
@@ -516,7 +518,7 @@
 		46AE6FB7242BADC9007BB005 = {
 			isa = PBXGroup;
 			children = (
-				46AE6FC2242BADC9007BB005 /* Demo */,
+				46AE6FC2242BADC9007BB005 /* Sources */,
 				46E7756D242D4736008A5E93 /* SnapshotTests */,
 				46AE6FC1242BADC9007BB005 /* Products */,
 				46E77560242CFFA5008A5E93 /* Frameworks */,
@@ -532,9 +534,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		46AE6FC2242BADC9007BB005 /* Demo */ = {
+		46AE6FC2242BADC9007BB005 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				4D529E1625835A23007AE5B6 /* Assets */,
 				46E77364242CEF09008A5E93 /* Cells */,
 				46E772CB242CEF09008A5E93 /* Components */,
 				46E77257242CEF09008A5E93 /* Demo */,
@@ -545,11 +548,10 @@
 				9BE474C724979816009620A5 /* SwiftUI */,
 				46E77379242CEF09008A5E93 /* Tweakable */,
 				46AE6FC3242BADC9007BB005 /* AppDelegate.swift */,
-				46E77378242CEF09008A5E93 /* Assets.xcassets */,
 				46AE6FD1242BADCD007BB005 /* Info.plist */,
 				46E77377242CEF09008A5E93 /* LaunchScreen.storyboard */,
 			);
-			path = Demo;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		46E77257242CEF09008A5E93 /* Demo */ = {
@@ -1470,7 +1472,6 @@
 		46E7735B242CEF09008A5E93 /* DNA */ = {
 			isa = PBXGroup;
 			children = (
-				46E77362242CEF09008A5E93 /* Assets */,
 				46E7735C242CEF09008A5E93 /* Color */,
 				46E77360242CEF09008A5E93 /* Font */,
 				46E7735E242CEF09008A5E93 /* Spacing */,
@@ -1500,14 +1501,6 @@
 				46E77361242CEF09008A5E93 /* FontDemoView.swift */,
 			);
 			path = Font;
-			sourceTree = "<group>";
-		};
-		46E77362242CEF09008A5E93 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				46E77363242CEF09008A5E93 /* AssetsDemoViewController.swift */,
-			);
-			path = Assets;
 			sourceTree = "<group>";
 		};
 		46E77364242CEF09008A5E93 /* Cells */ = {
@@ -1763,6 +1756,16 @@
 			path = MotorTransactionInsurancePickerView;
 			sourceTree = "<group>";
 		};
+		4D529E1625835A23007AE5B6 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				4D529E12258357D0007AE5B6 /* Icons.xcassets */,
+				46E77378242CEF09008A5E93 /* Assets.xcassets */,
+				4D529E2025837087007AE5B6 /* ImageAsset.swift */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		4D644436248A731300B80827 /* SearchResults */ = {
 			isa = PBXGroup;
 			children = (
@@ -1945,6 +1948,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 46AE6FD4242BADCD007BB005 /* Build configuration list for PBXNativeTarget "Demo" */;
 			buildPhases = (
+				4D529E0C25835570007AE5B6 /* Generate constants for assets names */,
 				46AE6FBC242BADC9007BB005 /* Sources */,
 				46AE6FBD242BADC9007BB005 /* Frameworks */,
 				46AE6FBE242BADC9007BB005 /* Resources */,
@@ -2030,6 +2034,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46E7744F242CEF0A008A5E93 /* LaunchScreen.storyboard in Resources */,
+				4D529E13258357D0007AE5B6 /* Icons.xcassets in Resources */,
 				46E77450242CEF0A008A5E93 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2062,6 +2067,24 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint --config \"${SRCROOT}/../.swiftlint.yml\"\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint or brew install swiftlint\"\nfi\n";
 		};
+		4D529E0C25835570007AE5B6 /* Generate constants for assets names */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate constants for assets names";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ruby \"${SRCROOT}/../Scripts/generate_image_assets_symbols\" \"${SRCROOT}\" ImageAsset\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2075,6 +2098,7 @@
 				46E7744C242CEF0A008A5E93 /* HeartSubtitleCellDemoView.swift in Sources */,
 				46E773BE242CEF0A008A5E93 /* LoginEntryDemoData.swift in Sources */,
 				46E77401242CEF0A008A5E93 /* SaveSearchPromptViewDemoView.swift in Sources */,
+				4D529E2125837087007AE5B6 /* ImageAsset.swift in Sources */,
 				46E77440242CEF0A008A5E93 /* SpacingDemoView.swift in Sources */,
 				46E77460242CEF0A008A5E93 /* AdManagementDemoView.swift in Sources */,
 				46E7740E242CEF0A008A5E93 /* ChristmasWishListDemoView.swift in Sources */,
@@ -2111,7 +2135,6 @@
 				46E773CB242CEF0A008A5E93 /* SearchResultMapViewDemoViewController.swift in Sources */,
 				46E77459242CEF0A008A5E93 /* AdsGridViewDemoViewHelpers.swift in Sources */,
 				46E77400242CEF0A008A5E93 /* SaveSearchViewDemoView.swift in Sources */,
-				46E77442242CEF0A008A5E93 /* AssetsDemoViewController.swift in Sources */,
 				46E773C0242CEF0A008A5E93 /* LoginEntryDemoPageViewController.swift in Sources */,
 				46E773F2242CEF0A008A5E93 /* NativeAdvertDefaultData.swift in Sources */,
 				46E77422242CEF0A008A5E93 /* BannerTransparencyInfoDefaultData.swift in Sources */,
@@ -2432,7 +2455,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D34XZHQLE3;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Demo/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2456,7 +2479,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D34XZHQLE3;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Demo/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

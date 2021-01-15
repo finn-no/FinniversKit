@@ -28,13 +28,8 @@ public class AnimatedHeartView: AnimatedSelectionView {
     }
 
     private func setImages() {
-        if let selectedImage = UIImage(named: FinniversImageAsset.favouriteAdded.rawValue, in: .finniversKit, compatibleWith: nil) {
-            self.selectedImage = selectedImage
-        }
-
-        if let unselectedImage = UIImage(named: FinniversImageAsset.favoriteAdd.rawValue, in: .finniversKit, compatibleWith: nil) {
-            self.unselectedImage = unselectedImage
-        }
+        self.selectedImage = UIImage(named: .favouriteAdded)
+        self.unselectedImage = UIImage(named: .favoriteAdd)
 
         image = self.unselectedImage
         highlightedImage = self.selectedImage

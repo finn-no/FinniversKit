@@ -30,8 +30,4 @@ class DnaViewTests: XCTestCase {
     func testDnaViewsSpacing() {
         snapshot(.spacing)
     }
-
-    func testDnaViewsAssets() {
-        snapshot(.assets)
-    }
 }

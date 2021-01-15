@@ -7,11 +7,11 @@ import UIKit
 class RectangleGiftView: UIImageView, AttachableView {
     var attach: UIAttachmentBehavior?
     private let cornerRadius: CGFloat = 4.0
-    private let imageAsset: FinniversImageAsset
+    private let imageAsset: ImageAsset
 
     // MARK: - Init
 
-    init(frame: CGRect, image: FinniversImageAsset) {
+    init(frame: CGRect, image: ImageAsset) {
         self.imageAsset = image
         super.init(frame: frame)
         setup()
