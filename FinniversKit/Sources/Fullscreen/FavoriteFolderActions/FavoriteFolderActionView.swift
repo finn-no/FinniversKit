@@ -134,7 +134,7 @@ public final class FavoriteFolderActionView: UIView {
     private func makeButton(
         withAction action: FavoriteFolderAction,
         title: String,
-        icon: FinniversImageAsset,
+        icon: ImageAsset,
         tintColor: UIColor = .textPrimary
     ) -> FavoriteFolderActionButton {
         let button = FavoriteFolderActionButton(action: action, title: title, icon: icon, tintColor: tintColor)

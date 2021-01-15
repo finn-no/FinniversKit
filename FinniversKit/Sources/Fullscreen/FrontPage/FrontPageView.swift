@@ -6,7 +6,6 @@ public protocol FrontPageViewModel {
     var adsGridViewHeaderTitle: String { get }
     var retryButtonTitle: String { get }
     var noRecommendationsText: String { get }
-    var inlineConsentDialogueViewModel: DialogueViewModel { get }
 }
 
 public protocol FrontPageViewDelegate: AnyObject {
@@ -18,7 +17,6 @@ public final class FrontPageView: UIView {
         didSet {
             headerLabel.text = model?.adsGridViewHeaderTitle
             adsRetryView.set(labelText: model?.noRecommendationsText, buttonText: model?.retryButtonTitle)
-            inlineConsentDialogue.model = model?.inlineConsentDialogueViewModel
         }
     }
 
@@ -40,22 +38,6 @@ public final class FrontPageView: UIView {
     private let adsGridView: AdsGridView
     private lazy var headerView = UIView()
 
-    private lazy var inlineConsentDialogue: DialogueView = {
-        let dialogueView = DialogueView()
-        dialogueView.dropShadow(color: .iconPrimary)
-        dialogueView.isHidden = true
-        return dialogueView
-    }()
-
-    //Use this do disable all ads :D 
-    private lazy var inlineConsentLockView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.alpha = 0.5
-        view.isHidden = true
-        return view
-    }()
-
     private lazy var headerLabel: Label = {
         var headerLabel = Label(style: .title3)
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -76,11 +58,11 @@ public final class FrontPageView: UIView {
 
     // MARK: - Init
 
-    public convenience init(delegate: FrontPageViewDelegate & MarketsGridViewDelegate & MarketsGridViewDataSource & AdsGridViewDelegate & DialogueViewDelegate, adsGridViewDataSource: AdsGridViewDataSource) {
-        self.init(delegate: delegate, marketsGridViewDelegate: delegate, marketsGridViewDataSource: delegate, adsGridViewDelegate: delegate, adsGridViewDataSource: adsGridViewDataSource, inlineConsentDialogueViewDelegate: delegate)
+    public convenience init(delegate: FrontPageViewDelegate & MarketsGridViewDelegate & MarketsGridViewDataSource & AdsGridViewDelegate, adsGridViewDataSource: AdsGridViewDataSource) {
+        self.init(delegate: delegate, marketsGridViewDelegate: delegate, marketsGridViewDataSource: delegate, adsGridViewDelegate: delegate, adsGridViewDataSource: adsGridViewDataSource)
     }
 
-    public init(delegate: FrontPageViewDelegate, marketsGridViewDelegate: MarketsGridViewDelegate, marketsGridViewDataSource: MarketsGridViewDataSource, adsGridViewDelegate: AdsGridViewDelegate, adsGridViewDataSource: AdsGridViewDataSource, inlineConsentDialogueViewDelegate: DialogueViewDelegate) {
+    public init(delegate: FrontPageViewDelegate, marketsGridViewDelegate: MarketsGridViewDelegate, marketsGridViewDataSource: MarketsGridViewDataSource, adsGridViewDelegate: AdsGridViewDelegate, adsGridViewDataSource: AdsGridViewDataSource) {
         marketsGridView = MarketsGridView(delegate: marketsGridViewDelegate, dataSource: marketsGridViewDataSource)
         marketsGridView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -89,7 +71,6 @@ public final class FrontPageView: UIView {
 
         super.init(frame: .zero)
         self.delegate = delegate
-        inlineConsentDialogue.delegate = inlineConsentDialogueViewDelegate
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -139,23 +120,6 @@ public final class FrontPageView: UIView {
         adsRetryView.state = .labelAndButton
     }
 
-    public func showInlineConsent(detail: String? = nil) {
-        if let detail = detail {
-            inlineConsentDialogue.model?.detail = detail
-        }
-
-        inlineConsentDialogue.isHidden = false
-        inlineConsentLockView.isHidden = false
-        adsGridView.endRefreshing()
-        setupFrames()
-    }
-
-    public func hideInlineConsent() {
-        inlineConsentDialogue.isHidden = true
-        inlineConsentLockView.isHidden = true
-        adsGridView.endRefreshing()
-    }
-
     public func scrollToTop() {
         adsGridView.scrollToTop()
     }
@@ -168,8 +132,6 @@ public final class FrontPageView: UIView {
         addSubview(adsGridView)
 
         adsGridView.collectionView.addSubview(adsRetryView)
-        adsGridView.collectionView.addSubview(inlineConsentLockView)
-        adsGridView.collectionView.addSubview(inlineConsentDialogue)
 
         headerView.addSubview(marketsGridView)
         headerView.addSubview(headerLabel)
@@ -204,44 +166,6 @@ public final class FrontPageView: UIView {
         adsRetryView.frame.size = CGSize(width: bounds.width, height: 200)
         boundsForCurrentSubviewSetup = bounds
         adsGridView.invalidateLayout()
-        setupFrameForDialogue(yPosition: height)
-    }
-
-    func setupFrameForDialogue(yPosition: CGFloat) {
-        var widthPercentage: CGFloat = 0.8
-        var heightPercentage: CGFloat = 0.3
-
-        if UIDevice.isSmallScreen() {
-            widthPercentage = 0.9
-            heightPercentage = 0.5
-        }
-
-        if isHorizontalSizeClassRegular {
-            widthPercentage = 0.5
-            heightPercentage = 0.22
-
-            if UIDevice.isLargeScreen() {
-                heightPercentage = 0.16
-            }
-        }
-
-        let dialogueWidth = bounds.width * widthPercentage
-        let dialogueHeight = (bounds.height * heightPercentage) +
-            inlineConsentDialogue.heightWithConstrained(width: dialogueWidth)
-        let inlineConsentDialogueY = yPosition + 25
-
-        inlineConsentDialogue.frame = CGRect(
-            x: (bounds.width - dialogueWidth) / 2,
-            y: inlineConsentDialogueY,
-            width: dialogueWidth,
-            height: dialogueHeight)
-
-        inlineConsentLockView.frame = CGRect(
-            x: 0,
-            y: yPosition,
-            width: bounds.width,
-            height: bounds.height * 2)
-        //we really dont know what the height of lock view should be since some ads are longer then other.
     }
 }
 

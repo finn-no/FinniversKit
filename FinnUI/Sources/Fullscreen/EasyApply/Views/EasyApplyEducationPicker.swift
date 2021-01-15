@@ -16,7 +16,7 @@ struct EasyApplyEducationPicker: View {
     }
 
     var expandIcon: some View {
-        Image(.arrowDown)
+        Image(.plus)
             .rotationEffect(.degrees(isShowingPicker ? 180 : 0))
     }
 
