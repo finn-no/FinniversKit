@@ -4,48 +4,42 @@
 
 import SwiftUI
 @testable import FinnUI
+@testable import FinniversKit
 
-public enum SwiftUIDemoViews: String, CaseIterable {
+@available(iOS 13.0, *)
+public enum SwiftUIDemoViews: String, DemoViews {
     case buttons
     case settings
+    case textField
+    case textView
     case basicCellVariations
     case bapAdView
     case myVehiclesListView
 
-    public static var items: [SwiftUIDemoViews] {
-        if #available(iOS 13.0.0, *) {
-            return allCases.sorted { $0.rawValue < $1.rawValue }
-        } else {
-            return []
-        }
-    }
-
     public var viewController: UIViewController {
-        if #available(iOS 13.0.0, *) {
-            return PreviewController(hostingController: hostingController)
-        } else {
-            return DemoViewController<UIView>()
-        }
+        PreviewController(hostingController: hostingController)
     }
 
-    @available(iOS 13.0, *)
     private var hostingController: UIViewController {
         UIHostingController(rootView: previews)
     }
 
-    @available(iOS 13.0, *)
-    private var previews: AnyView {
+    @ViewBuilder private var previews: some View {
         switch self {
         case .buttons:
-            return AnyView(ButtonStyleUsageDemoView_Previews.previews)
+            ButtonStyleUsageDemoView_Previews.previews
         case .settings:
-            return AnyView(SettingsView_Previews.previews)
+            SettingsView_Previews.previews
+        case .textField:
+            FinnTextField_Previews.previews
+        case .textView:
+            FinnTextView_Previews.previews
         case .basicCellVariations:
-            return AnyView(BasicListCell_Previews.previews)
+            BasicListCell_Previews.previews
         case .bapAdView:
-            return AnyView(BapAdView_Previews.previews)
+            BapAdView_Previews.previews
         case .myVehiclesListView:
-            return AnyView(MyVehiclesListView_Previews.previews)
+            MyVehiclesListView_Previews.previews
         }
     }
 }
