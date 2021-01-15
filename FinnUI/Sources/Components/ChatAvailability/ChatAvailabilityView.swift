@@ -5,16 +5,11 @@
 import FinniversKit
 
 public protocol ChatAvailabilityViewDelegate: AnyObject {
-    func chatAvailabilityViewDidTapChatNowButton(_ view: ChatAvailabilityView)
+    func chatAvailabilityViewDidTapCallToActionButton(_ view: ChatAvailabilityView)
+    func chatAvailabilityViewDidTapBookTimeButton(_ view: ChatAvailabilityView)
 }
 
 public class ChatAvailabilityView: UIView {
-    public enum Status: CaseIterable {
-        case loading
-        case online
-        case offline
-        case unknown
-    }
 
     // MARK: - Public properties
 
@@ -23,13 +18,8 @@ public class ChatAvailabilityView: UIView {
     // MARK: - Private properties
 
     private lazy var statusView = StatusView(withAutoLayout: true)
-
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .vertical
-        stackView.spacing = .spacingS
-        return stackView
-    }()
+    private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+    private lazy var bookingStackView = UIStackView(axis: .vertical, spacing: .spacingXS, withAutoLayout: true)
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .title3Strong, withAutoLayout: true)
@@ -43,14 +33,23 @@ public class ChatAvailabilityView: UIView {
         return label
     }()
 
-    private lazy var chatNowButton: Button = {
+    private lazy var callToActionButton: Button = {
         let button = Button(style: .callToAction, size: .normal, withAutoLayout: true)
-        button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
-        button.titleEdgeInsets = UIEdgeInsets(leading: .spacingS)
-        button.imageEdgeInsets = UIEdgeInsets(top: .spacingXS, leading: -.spacingS)
-        let image = UIImage(named: .videoChat)
-        button.setImage(image.withRenderingMode(.alwaysTemplate))
-        button.imageView?.tintColor = .milk
+        button.addTarget(self, action: #selector(handleChatNowButtonTap), for: .touchUpInside)
+        return button
+    }()
+
+    private lazy var bookTimeTitleLabel: Label = {
+        let label = Label(style: .body, withAutoLayout: true)
+        label.numberOfLines = 0
+        return label
+    }()
+
+    private lazy var bookTimeButton: Button = {
+        let buttonStyle = Button.Style.flat.overrideStyle(margins: UIEdgeInsets.zero)
+        let button = Button(style: buttonStyle, size: .normal, withAutoLayout: true)
+        button.addTarget(self, action: #selector(handleBookingButtonTap), for: .touchUpInside)
+        button.contentHorizontalAlignment = .leading
         return button
     }()
 
@@ -67,45 +66,40 @@ public class ChatAvailabilityView: UIView {
 
     private func setup() {
         addSubview(stackView)
-        stackView.addArrangedSubview(titleLabel)
-        stackView.addArrangedSubview(textLabel)
-        stackView.addArrangedSubview(chatNowButton)
-        stackView.addArrangedSubview(statusView)
+        bookingStackView.addArrangedSubviews([bookTimeTitleLabel, bookTimeButton])
+        stackView.addArrangedSubviews([titleLabel, textLabel, callToActionButton, statusView, bookingStackView])
+
         stackView.setCustomSpacing(.spacingM, after: textLabel)
+        stackView.setCustomSpacing(.spacingM, after: statusView)
         stackView.fillInSuperview()
     }
 
     // MARK: - Public methods
 
     public func configure(with viewModel: ChatAvailabilityViewModel) {
-        if let title = viewModel.title {
-            titleLabel.text = title
+        titleLabel.text = viewModel.title
+        textLabel.text = viewModel.text
+        callToActionButton.setTitle(viewModel.actionButtonTitle, for: .normal)
+        callToActionButton.isEnabled = viewModel.isActionButtonEnabled
+        statusView.configure(isLoading: viewModel.isLoading, statusTitle: viewModel.statusTitle)
+
+        if let bookTimeTitle = viewModel.bookTimeTitle, let bookTimeButtonTitle = viewModel.bookTimeButtonTitle {
+            bookTimeTitleLabel.text = bookTimeTitle
+            bookTimeButton.setTitle(bookTimeButtonTitle, for: .normal)
+            bookingStackView.isHidden = false
         } else {
-            titleLabel.isHidden = true
+            bookingStackView.isHidden = true
         }
-        if let text = viewModel.text {
-            textLabel.text = text
-        } else {
-            textLabel.isHidden = true
-        }
-        chatNowButton.setTitle(viewModel.buttonTitle, for: .normal)
     }
 
-    public func configure(status: Status, statusTitle: String? = nil) {
-        switch status {
-        case .online, .unknown:
-            chatNowButton.isEnabled = true
-        case .loading, .offline:
-            chatNowButton.isEnabled = false
-        }
+    // MARK: - Actions
 
-        statusView.configure(status: status, statusTitle: statusTitle)
+    @objc private func handleChatNowButtonTap() {
+        delegate?.chatAvailabilityViewDidTapCallToActionButton(self)
     }
 
-    // MARK: - Private methods
-
-    @objc private func handleButtonTap() {
-        delegate?.chatAvailabilityViewDidTapChatNowButton(self)
+    @objc private func handleBookingButtonTap() {
+        delegate?.chatAvailabilityViewDidTapBookTimeButton(self)
     }
 }
 
@@ -117,12 +111,7 @@ private class StatusView: UIView {
 
     private lazy var statusLabel = Label(style: .detail, withAutoLayout: true)
     private lazy var loadingIndicator = LoadingIndicatorView(withAutoLayout: true)
-
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.spacing = .spacingS
-        return stackView
-    }()
+    private lazy var stackView = UIStackView(axis: .horizontal, spacing: .spacingS, withAutoLayout: true)
 
     // MARK: - Init
 
@@ -136,9 +125,7 @@ private class StatusView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        stackView.addArrangedSubview(loadingIndicator)
-        stackView.addArrangedSubview(statusLabel)
-
+        stackView.addArrangedSubviews([loadingIndicator, statusLabel])
         addSubview(stackView)
         stackView.fillInSuperview()
 
@@ -150,26 +137,17 @@ private class StatusView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(status: ChatAvailabilityView.Status, statusTitle: String? = nil) {
+    public func configure(isLoading: Bool, statusTitle: String? = nil) {
+        statusLabel.textColor = isLoading ? .textSecondary : .online
         statusLabel.text = statusTitle
         statusLabel.isHidden = statusTitle?.isEmpty ?? true
 
-        switch status {
-        case .loading:
+        if isLoading {
             loadingIndicator.isHidden = false
             loadingIndicator.startAnimating()
-        default:
+        } else {
             loadingIndicator.isHidden = true
             loadingIndicator.stopAnimating()
-        }
-
-        switch status {
-        case .online:
-            statusLabel.textColor = .online
-        case .offline, .unknown:
-            statusLabel.textColor = .textCritical
-        case .loading:
-            statusLabel.textColor = .textSecondary
         }
     }
 }
@@ -178,11 +156,4 @@ private class StatusView: UIView {
 
 private extension UIColor {
     static var online = dynamicColorIfAvailable(defaultColor: .lime, darkModeColor: .pea)
-}
-
-private extension UIButton {
-    func setImage(_ image: UIImage?) {
-        let states: [UIControl.State] = [.normal, .highlighted, .disabled, .selected, .focused]
-        states.forEach { setImage(image, for: $0) }
-    }
 }

@@ -27,10 +27,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.button)
     }
 
-    func testDialogue() {
-        snapshot(.dialogue)
-    }
-
     func testFloatingButton() {
         snapshot(.floatingButton)
     }
@@ -61,14 +57,6 @@ class ComponentViewTests: XCTestCase {
 
     func testSwitchView() {
         snapshot(.switchView)
-    }
-
-    func testInlineConsent() {
-        snapshot(.inlineConsent)
-    }
-
-    func testInlineConsentV2() {
-        snapshot(.inlineConsentV2)
     }
 
     func testConsentTransparencyInfo() {
