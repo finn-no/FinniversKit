@@ -63,8 +63,6 @@ enum ImageAsset: String {
     case iconRealestateBedrooms
     case iconRealestateOwner
     case iconRealestatePrice
-    case illustrasjonMedFarge
-    case illustrasjonUtenFarge
     case jobs
     case magnifyingGlass
     case mc
@@ -141,8 +139,6 @@ enum ImageAsset: String {
             .iconRealestateBedrooms,
             .iconRealestateOwner,
             .iconRealestatePrice,
-            .illustrasjonMedFarge,
-            .illustrasjonUtenFarge,
             .jobs,
             .magnifyingGlass,
             .mc,
