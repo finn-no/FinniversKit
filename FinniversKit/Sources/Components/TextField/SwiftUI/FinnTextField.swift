@@ -92,7 +92,8 @@ public struct FinnTextField: View {
         }
     }
 
-    @ViewBuilder var textfieldTrailingButton: some View {
+    @ViewBuilder
+    var textfieldTrailingButton: some View {
         switch input {
         case .default:
             if style == .focused {
