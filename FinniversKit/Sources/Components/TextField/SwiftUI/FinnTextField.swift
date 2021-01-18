@@ -172,7 +172,7 @@ extension FinnTextField {
     }
 
     private func isValidPassword(_ password: String) -> Bool {
-        return !password.isEmpty
+        return !password.trimmingCharacters(in: .whitespaces).isEmpty
     }
 
 }
