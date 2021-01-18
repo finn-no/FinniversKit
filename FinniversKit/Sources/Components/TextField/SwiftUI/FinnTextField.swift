@@ -155,11 +155,7 @@ extension FinnTextField {
     }
 
     private func evaluateTextState() {
-        if !isValidInput {
-            updateStyle(.error)
-        } else {
-            updateStyle(.default)
-        }
+        updateStyle(!isValidInput ? .error : .default)
     }
 
     private func evaluate(_ regEx: String, with string: String) -> Bool {
