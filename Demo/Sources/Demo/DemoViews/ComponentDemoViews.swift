@@ -3,7 +3,7 @@
 //
 import FinniversKit
 
-public enum ComponentDemoViews: String, CaseIterable {
+public enum ComponentDemoViews: String, DemoViews {
     case addressCardView
     case button
     case floatingButton
@@ -72,10 +72,6 @@ public enum ComponentDemoViews: String, CaseIterable {
     case objectPageBlinkView
     case sendInviteView
     case navigationLinkView
-
-    public static var items: [ComponentDemoViews] {
-        allCases.sorted { $0.rawValue < $1.rawValue }
-    }
 
     public var viewController: UIViewController {
         switch self {

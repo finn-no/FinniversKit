@@ -131,6 +131,11 @@
 		4D152E742577D7D300282244 /* NavigationLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D152E732577D7D300282244 /* NavigationLinkView.swift */; };
 		55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* Broadcast.swift */; };
 		55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B277203DB56A007D7277 /* BroadcastMessage.swift */; };
+		5D0ED35125A49FA7007750D0 /* FinnTextField+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0ED35025A49FA7007750D0 /* FinnTextField+Style.swift */; };
+		5D0ED35725A49FC9007750D0 /* FinnTextField+Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0ED35625A49FC9007750D0 /* FinnTextField+Input.swift */; };
+		5DA190C725A4A7E0002305A8 /* Transition+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190C625A4A7E0002305A8 /* Transition+Extensions.swift */; };
+		5DA190E825A84673002305A8 /* FinnTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190E725A84673002305A8 /* FinnTextView.swift */; };
+		5DB39C8F25932DC700204B23 /* FinnTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB39C8E25932DC700204B23 /* FinnTextField.swift */; };
 		620AEE34221175970087C150 /* UserAdManagementButtonAndInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620AEE33221175970087C150 /* UserAdManagementButtonAndInformationCell.swift */; };
 		62432106231FE97F0027E142 /* UserAdEmphasizedActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62432105231FE97F0027E142 /* UserAdEmphasizedActionTableViewCell.swift */; };
 		625A220B221EB26500733101 /* AdManagementActionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625A220A221EB26500733101 /* AdManagementActionCellModel.swift */; };
@@ -569,6 +574,11 @@
 		4D152E732577D7D300282244 /* NavigationLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkView.swift; sourceTree = "<group>"; };
 		55C5B273203D8E20007D7277 /* Broadcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Broadcast.swift; sourceTree = "<group>"; };
 		55C5B277203DB56A007D7277 /* BroadcastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastMessage.swift; sourceTree = "<group>"; };
+		5D0ED35025A49FA7007750D0 /* FinnTextField+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextField+Style.swift"; sourceTree = "<group>"; };
+		5D0ED35625A49FC9007750D0 /* FinnTextField+Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextField+Input.swift"; sourceTree = "<group>"; };
+		5DA190C625A4A7E0002305A8 /* Transition+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Extensions.swift"; sourceTree = "<group>"; };
+		5DA190E725A84673002305A8 /* FinnTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinnTextView.swift; sourceTree = "<group>"; };
+		5DB39C8E25932DC700204B23 /* FinnTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinnTextField.swift; sourceTree = "<group>"; };
 		620AEE33221175970087C150 /* UserAdManagementButtonAndInformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdManagementButtonAndInformationCell.swift; sourceTree = "<group>"; };
 		62432105231FE97F0027E142 /* UserAdEmphasizedActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdEmphasizedActionTableViewCell.swift; sourceTree = "<group>"; };
 		625A220A221EB26500733101 /* AdManagementActionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdManagementActionCellModel.swift; sourceTree = "<group>"; };
@@ -896,6 +906,7 @@
 		081F51BB222932C900026C84 /* TextView */ = {
 			isa = PBXGroup;
 			children = (
+				5DA190E625A84665002305A8 /* SwiftUI */,
 				DAD0D491210737A30091DD4D /* TextView.swift */,
 			);
 			path = TextView;
@@ -1379,6 +1390,7 @@
 		4447F6A31FDB2B110033DBC1 /* TextField */ = {
 			isa = PBXGroup;
 			children = (
+				5D0ED34F25A49F81007750D0 /* SwiftUI */,
 				4447F6A61FDB2B110033DBC1 /* TextField+InputType.swift */,
 				CBD2F08C20615990002AA385 /* TextField+State.swift */,
 				4447F6A71FDB2B110033DBC1 /* TextField.swift */,
@@ -1732,6 +1744,24 @@
 				4D152E732577D7D300282244 /* NavigationLinkView.swift */,
 			);
 			path = NavigationLinkView;
+			sourceTree = "<group>";
+		};
+		5D0ED34F25A49F81007750D0 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				5DB39C8E25932DC700204B23 /* FinnTextField.swift */,
+				5D0ED35025A49FA7007750D0 /* FinnTextField+Style.swift */,
+				5D0ED35625A49FC9007750D0 /* FinnTextField+Input.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		5DA190E625A84665002305A8 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				5DA190E725A84673002305A8 /* FinnTextView.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 		6266C06A22081B9200FB8004 /* AdManagement */ = {
@@ -2178,6 +2208,7 @@
 			isa = PBXGroup;
 			children = (
 				9BB680312462F7AC001ADACF /* View+Extensions.swift */,
+				5DA190C625A4A7E0002305A8 /* Transition+Extensions.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -3170,9 +3201,11 @@
 				CF4A053821FB2ACB000BB7DA /* PianoKeyView.swift in Sources */,
 				55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */,
 				CF87A857229C0C5700DA8243 /* ContactFormView.swift in Sources */,
+				5DB39C8F25932DC700204B23 /* FinnTextField.swift in Sources */,
 				441FE432209A24E500B04EF1 /* AdsGridViewLayoutConfiguration.swift in Sources */,
 				CFCC3D3123686C0D002DD4CF /* FooterButtonView.swift in Sources */,
 				431875C1211180F100D71723 /* BuyerPickerProfileCell.swift in Sources */,
+				5DA190E825A84673002305A8 /* FinnTextView.swift in Sources */,
 				9BBC8AE122DF50E5003453B6 /* KlimabroletView.swift in Sources */,
 				082D80CB21C13C7B00831BDE /* RoundedRectangleGiftView.swift in Sources */,
 				443A6420209A5044006BFB38 /* NotificationsListFooterView.swift in Sources */,
@@ -3437,6 +3470,7 @@
 				9BC33DE922D72293007CCD65 /* LoginEntryView.swift in Sources */,
 				44D912642077AC8A00486848 /* RectangleView.swift in Sources */,
 				44A557A522E720A3001667AE /* IconTitleTableViewCell.swift in Sources */,
+				5D0ED35725A49FC9007750D0 /* FinnTextField+Input.swift in Sources */,
 				9BEB2881231D489F00D28BAD /* LoanApplyView.swift in Sources */,
 				CF7C460522257A8A001FB92C /* EarthHourSignUpView.swift in Sources */,
 				712C228F250B74E400E09653 /* MotorTransactionInvalidUserView.swift in Sources */,
@@ -3466,6 +3500,7 @@
 				43BACE6C21117D530052114C /* BuyerPickerViewModel.swift in Sources */,
 				F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */,
 				895175952248D4D1008003FB /* StepDot.swift in Sources */,
+				5D0ED35125A49FA7007750D0 /* FinnTextField+Style.swift in Sources */,
 				F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */,
 				CF4A053921FB2ACB000BB7DA /* PianoEffectView.swift in Sources */,
 				CF164DDA2315776E00250822 /* FavoriteAdCommentViewModel.swift in Sources */,
@@ -3473,6 +3508,7 @@
 				B01D70BABC86CE9552C07C2A /* RoundedImageView.swift in Sources */,
 				08F0D3F122202DC900968256 /* FeedbackViewModel.swift in Sources */,
 				CF3D5EE2215A6525006E4D08 /* InstrumentSelectorView.swift in Sources */,
+				5DA190C725A4A7E0002305A8 /* Transition+Extensions.swift in Sources */,
 				9A37D9EDC4E78EC664D528FE /* FeedbackView.swift in Sources */,
 				9F213438F5413991D1B3D7CD /* FullscreenGalleryViewModel.swift in Sources */,
 				9F2138937E903BEA8F7A8C7C /* FullscreenGalleryViewController.swift in Sources */,
