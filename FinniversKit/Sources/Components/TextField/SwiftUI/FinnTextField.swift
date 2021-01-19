@@ -92,7 +92,8 @@ public struct FinnTextField: View {
         }
     }
 
-    @ViewBuilder var textfieldTrailingButton: some View {
+    @ViewBuilder
+    var textfieldTrailingButton: some View {
         switch input {
         case .default:
             if style == .focused {
@@ -154,11 +155,7 @@ extension FinnTextField {
     }
 
     private func evaluateTextState() {
-        if !isValidInput {
-            updateStyle(.error)
-        } else {
-            updateStyle(.default)
-        }
+        updateStyle(!isValidInput ? .error : .default)
     }
 
     private func evaluate(_ regEx: String, with string: String) -> Bool {
@@ -175,7 +172,7 @@ extension FinnTextField {
     }
 
     private func isValidPassword(_ password: String) -> Bool {
-        return !password.isEmpty
+        return !password.trimmingCharacters(in: .whitespaces).isEmpty
     }
 
 }
