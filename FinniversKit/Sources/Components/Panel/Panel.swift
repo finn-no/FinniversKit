@@ -31,6 +31,7 @@ public class Panel: UIView {
     public func configure(with viewModel: PanelViewModel) {
         layer.cornerRadius = viewModel.cornerRadius
         textLabel.text = viewModel.text
+        accessibilityLabel = viewModel.text
         setNeedsLayout()
     }
 
