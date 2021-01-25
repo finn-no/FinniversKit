@@ -211,7 +211,7 @@ private extension MotorTransactionStepContentView {
             case .seeAd:
                 button.contentHorizontalAlignment = .leading
                 button.contentEdgeInsets = .leadingInset(.spacingS)
-            case .republishAd:
+            case .republishAd, .purchaseInsurance:
                 break
             default:
                 addWebViewIconToButton(button)
