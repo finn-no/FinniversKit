@@ -14,6 +14,7 @@ public protocol AdsGridViewDelegate: AnyObject {
 
 public protocol AdsGridViewDataSource: AnyObject {
     func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int
+    func numberOfColumns(inAdsGridView adsGridView: AdsGridView) -> AdsGridView.ColumnConfiguration
     func adsGridView(_ adsGridView: AdsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type]
     func adsGridView(_ adsGridView: AdsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat
     func adsGridView(_ adsGridView: AdsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
@@ -22,7 +23,7 @@ public protocol AdsGridViewDataSource: AnyObject {
 }
 
 public class AdsGridView: UIView {
-    public enum Width {
+    public enum ColumnConfiguration {
         case fullWidth
         case columns(Int)
     }
@@ -219,11 +220,10 @@ extension AdsGridView: AdsGridViewCellDelegate {
 
 extension AdsGridView: AdsGridViewLayoutDelegate {
     func adsGridViewLayoutNumberOfColumns(_ adsGridViewLayout: AdsGridViewLayout) -> Int {
-        let width: Width = .fullWidth
-
-        switch width {
+        switch dataSource?.numberOfColumns(inAdsGridView: self) ?? .columns(2) {
         case .fullWidth: return 1
-        case .columns(let columns) where columns > 1: return columns
+        case .columns(let columns) where columns > 1 && columns <= 3:
+            return columns
         default:
             return 2
         }

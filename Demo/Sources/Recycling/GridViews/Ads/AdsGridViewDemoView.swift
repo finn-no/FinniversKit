@@ -14,9 +14,26 @@ public class AdDataSource: NSObject {
     }()
 }
 
-public class AdsGridViewDemoView: UIView {
-    lazy var dataSource: AdDataSource = {
-        return AdDataSource()
+public class AdsGridViewDemoView: UIView, Tweakable {
+
+    lazy var tweakingOptions: [TweakingOption] = [
+        TweakingOption(title: "Full width", action: { self.numberOfColumns = .fullWidth }),
+        TweakingOption(title: "Two columns", action: { self.numberOfColumns = .columns(2) }),
+        TweakingOption(title: "Three columns", action: { self.numberOfColumns = .columns(3) })
+    ]
+
+    private var numberOfColumns: AdsGridView.ColumnConfiguration = .columns(2) {
+        didSet {
+            adsGridView.collectionView.collectionViewLayout.invalidateLayout()
+        }
+    }
+
+    private lazy var dataSource: AdDataSource = AdDataSource()
+
+    private lazy var adsGridView: AdsGridView = {
+        let view = AdsGridView(delegate: self, dataSource: self)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     override init(frame: CGRect) {
@@ -28,10 +45,8 @@ public class AdsGridViewDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        let view = AdsGridView(delegate: self, dataSource: self)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        view.fillInSuperview()
+        addSubview(adsGridView)
+        adsGridView.fillInSuperview()
     }
 }
 
@@ -52,6 +67,10 @@ extension AdsGridViewDemoView: AdsGridViewDelegate {
 }
 
 extension AdsGridViewDemoView: AdsGridViewDataSource {
+    public func numberOfColumns(inAdsGridView adsGridView: AdsGridView) -> AdsGridView.ColumnConfiguration {
+        numberOfColumns
+    }
+
     public func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int {
         return dataSource.models.count
     }
