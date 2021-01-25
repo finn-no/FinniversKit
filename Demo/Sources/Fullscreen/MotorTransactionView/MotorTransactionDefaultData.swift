@@ -141,10 +141,10 @@ public struct MotorTransactionDefaultData {
             print("Buyer process state: with insurance confirmation")
             return MotorTransactionDefaultData.WithInsuranceConfirmationDemoViewModel
         case 2:
-            print("Buyer process state: with insurance confirmation")
+            print("Buyer process state: with insurance purchase status available")
             return MotorTransactionDefaultData.InsurancePurchaseStatusAvailableDemoViewModel
         case 3:
-            print("Buyer process state: with insurance confirmation")
+            print("Buyer process state: with waiting for buyer to pay with insurance")
             return MotorTransactionDefaultData.WaitingForBuyerToPayWithInsurance
         default:
             fatalError("No model exists for step \(currentBuyerProcessState)")
