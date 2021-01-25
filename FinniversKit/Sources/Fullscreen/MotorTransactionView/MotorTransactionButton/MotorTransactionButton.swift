@@ -59,14 +59,14 @@ extension MotorTransactionButton {
 
         public init(rawValue: String) {
             switch rawValue {
-            case "URL":
-                self = .url
             case "SEE_AD":
                 self = .seeAd
             case "REPUBLISH_AD":
                 self = .republishAd
             case "CONFIRM_INSURANCE":
                 self = .confirmInsurance
+            case "URL":
+                self = .url
             default:
                 self = .fallback
             }
