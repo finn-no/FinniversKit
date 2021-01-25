@@ -59,6 +59,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .body)
+        label.setContentHuggingPriority(.required, for: .vertical)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
@@ -66,6 +67,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     private lazy var subtitleLabel: Label = {
         let label = Label(style: .detail)
+        label.setContentHuggingPriority(.required, for: .vertical)
         label.textColor = .textSecondary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
@@ -74,6 +76,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     private lazy var accessoryLabel: Label = {
         let label = Label(style: .detailStrong)
+        label.setContentHuggingPriority(.required, for: .vertical)
         label.textColor = .textPrimary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
@@ -171,12 +174,17 @@ public class AdsGridViewCell: UICollectionViewCell {
 
         backgroundColor = .bgPrimary
 
+        let imageHeightMinimumConstraint = imageContentView.heightAnchor.constraint(equalTo: imageContentView.widthAnchor, multiplier: AdsGridViewCell.minImageAspectRatio)
+        let imageHeightMaximumConstraint = imageContentView.heightAnchor.constraint(lessThanOrEqualTo: imageContentView.widthAnchor, multiplier: AdsGridViewCell.maxImageAspectRatio)
+
+        imageHeightMinimumConstraint.priority = .defaultHigh
+
         NSLayoutConstraint.activate([
             imageContentView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageContentView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageContentView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageContentView.heightAnchor.constraint(greaterThanOrEqualTo: imageContentView.widthAnchor, multiplier: AdsGridViewCell.minImageAspectRatio),
-            imageContentView.heightAnchor.constraint(lessThanOrEqualTo: imageContentView.widthAnchor, multiplier: AdsGridViewCell.maxImageAspectRatio),
+            imageContentView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            imageContentView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            imageHeightMinimumConstraint,
+            imageHeightMaximumConstraint,
 
             ribbonView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: AdsGridViewCell.ribbonTopMargin),
             ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
