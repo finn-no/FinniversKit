@@ -48,12 +48,15 @@ extension MotorTransactionButton {
 
 extension MotorTransactionButton {
     public enum Action: String {
-        // Native actions
+        // Native
         case seeAd = "SEE_AD"
         case republishAd = "REPUBLISH_AD"
-        case confirmInsurance = "CONFIRM_INSURANCE"
 
-        // Navigate to web
+        // Insurance
+        case confirmInsurance = "CONFIRM_INSURANCE"
+        case purchaseInsurance = "PURCHASE_INSURANCE"
+
+        // Web
         case url = "URL"
         case fallback = "FALLBACK"
 
@@ -65,6 +68,8 @@ extension MotorTransactionButton {
                 self = .republishAd
             case "CONFIRM_INSURANCE":
                 self = .confirmInsurance
+            case "PURCHASE_INSURANCE":
+                self = .purchaseInsurance
             case "URL":
                 self = .url
             default:
