@@ -48,12 +48,4 @@ enum AdsGridViewLayoutConfiguration {
         case .large: return 12.0
         }
     }
-
-    var numberOfColumns: Int {
-        switch self {
-        case .large:
-            return 3
-        default: return 2
-        }
-    }
 }

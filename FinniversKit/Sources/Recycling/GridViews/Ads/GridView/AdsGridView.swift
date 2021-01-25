@@ -22,10 +22,17 @@ public protocol AdsGridViewDataSource: AnyObject {
 }
 
 public class AdsGridView: UIView {
+    public enum Width {
+        case fullWidth
+        case columns(Int)
+    }
+
     // MARK: - Internal properties
 
     private lazy var collectionViewLayout: AdsGridViewLayout = {
-        return AdsGridViewLayout(delegate: self)
+        let layout = AdsGridViewLayout()
+        layout.delegate = self
+        return layout
     }()
 
     // Have the collection view be private so nobody messes with it.
@@ -211,6 +218,17 @@ extension AdsGridView: AdsGridViewCellDelegate {
 // MARK: - AdsGridViewLayoutDelegate
 
 extension AdsGridView: AdsGridViewLayoutDelegate {
+    func adsGridViewLayoutNumberOfColumns(_ adsGridViewLayout: AdsGridViewLayout) -> Int {
+        let width: Width = .fullWidth
+
+        switch width {
+        case .fullWidth: return 1
+        case .columns(let columns) where columns > 1: return columns
+        default:
+            return 2
+        }
+    }
+
     func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, heightForHeaderViewInCollectionView collectionView: UICollectionView) -> CGFloat? {
         return headerView?.frame.size.height
     }
