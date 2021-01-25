@@ -5,7 +5,6 @@
 public enum MotorTransactionButton: String {
     case flat = "FLAT"
     case callToAction = "CALL_TO_ACTION"
-    case republishAd = "REPUBLISH_AD"
     case `default` = "DEFAULT"
 
     public init(rawValue: String) {
@@ -14,8 +13,6 @@ public enum MotorTransactionButton: String {
             self = .flat
         case "CALL_TO_ACTION":
             self = .callToAction
-        case "REPUBLISH_AD":
-            self = .republishAd
         default:
             self = .default
         }
@@ -25,7 +22,7 @@ public enum MotorTransactionButton: String {
         switch self {
         case .default:
             return .default
-        case .callToAction, .republishAd:
+        case .callToAction:
             return .callToAction
         case .flat:
             return .flat
