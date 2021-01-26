@@ -1,4 +1,4 @@
-# Creating a new release of either FinniversKit or FinnUI
+# Creating a new release of either FinniversKit
 
 ## Setup
 - Install dependencies listed in Gemfile with `bundle install` (dependencies will be installed in `./bundler`)

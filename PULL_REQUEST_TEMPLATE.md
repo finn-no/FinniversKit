@@ -8,7 +8,7 @@ _A summary of what has changed and if there's anything in special that you would
 
 # Version Change
 
-_Is this a minor? patch? breaking change?. Is it for FinnUI or FinniversKit?_
+_Is this a minor? patch? breaking change?_
 
 # UI Changes
 
