@@ -82,7 +82,6 @@ enum Sections: String, CaseIterable {
         return names
     }
 
-
     static func formattedName(for indexPath: IndexPath) -> String {
         let section = Sections.items[indexPath.section]
         var rawClassName: String

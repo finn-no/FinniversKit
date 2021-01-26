@@ -5,7 +5,6 @@
 import Demo
 import XCTest
 import SwiftUI
-@testable import FinnUI
 
 @available(iOS 13.0, *)
 class SwiftUIViewTests: XCTestCase {
@@ -37,10 +36,6 @@ class SwiftUIViewTests: XCTestCase {
 
     func testBasicCellVariations() {
         snapshot(.basicCellVariations)
-    }
-
-    func testBapAdView() {
-        snapshot(.bapAdView)
     }
 
     func testMyVehiclesListView() {
