@@ -15,6 +15,7 @@ public protocol MotorTransactionStepContentViewModel {
      This is to avoid having the client render both a link and a nativeButton.
     */
     var body: NSAttributedString? { get }
+    var imageUrl: URL? { get }
     var nativeBody: NSAttributedString? { get }
     var nativeButton: MotorTransactionButtonViewModel? { get }
     var primaryButton: MotorTransactionButtonViewModel? { get }
