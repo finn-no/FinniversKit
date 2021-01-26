@@ -44,7 +44,8 @@ extension MotorTransactionDefaultData {
                     body: NSAttributedString(string: "Du har bestilt forsikring:")
                 ),
                 detail: MotorTransactionStepContentModel(
-                    body: NSAttributedString(string: "<p>IF</p><p>Fri start Kasko • 30 dager til 0 kr • Egenandel: 4 000</p>"),
+                    title: "IF",
+                    body: NSAttributedString(string: "Fri start Kasko • 30 dager til 0 kr • Egenandel: 4 000"),
                     imageUrl: URL(string: "https://www.finn.no/pf-logos/disc/if")
                 )),
 

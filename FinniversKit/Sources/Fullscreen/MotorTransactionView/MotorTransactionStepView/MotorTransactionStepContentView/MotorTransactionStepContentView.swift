@@ -132,16 +132,15 @@ private extension MotorTransactionStepContentView {
         addSubview(verticalStackView)
         setupStackViewConstraints()
 
-        if let titleText = model.title {
-            titleView.text = titleText
-            titleView.heightAnchor.constraint(equalToConstant: 26).isActive = true
+        if let imageUrl = model.imageUrl {
+            setupContentViewWithImage(model.title, model.nativeBody, model.body, imageUrl)
+        } else if let title = model.title {
+            titleView.text = title
 
             verticalStackView.addArrangedSubview(titleView)
             verticalStackView.setCustomSpacing(.spacingS, after: titleView)
-        }
 
-        if let imageUrl = model.imageUrl {
-            setupBodyViewWithImage(imageUrl, model.nativeBody, model.body)
+            setupBodyView(model.nativeBody, model.body)
         } else {
             setupBodyView(model.nativeBody, model.body)
         }
@@ -194,6 +193,50 @@ private extension MotorTransactionStepContentView {
         ])
 	}
 
+    private func setupContentViewWithImage(_ title: String?, _ nativeBody: NSAttributedString?, _ body: NSAttributedString?, _ imageUrl: URL) {
+        let horizontalStackView = UIStackView(withAutoLayout: true)
+        horizontalStackView.axis = .horizontal
+        horizontalStackView.distribution = .fill
+        horizontalStackView.alignment = .top
+        horizontalStackView.backgroundColor = .clear
+
+        let contentStackView = UIStackView(withAutoLayout: true)
+        contentStackView.axis = .vertical
+        contentStackView.distribution = .fill
+        contentStackView.alignment = .leading
+        contentStackView.backgroundColor = .clear
+
+        if let title = title {
+            titleView.text = title
+            contentStackView.addArrangedSubview(titleView)
+        }
+
+        let body = nativeBody != nil ? nativeBody : body
+        if let body = body {
+            bodyView.attributedText = body
+            contentStackView.addArrangedSubview(bodyView)
+        }
+
+        remoteImageView.loadImage(
+            for: imageUrl.absoluteString,
+            imageWidth: MotorTransactionStepContentView.defaultImageSize,
+            loadingColor: .iconSecondary,
+            fallbackImage: UIImage(named: .noImage)
+        )
+
+        horizontalStackView.addArrangedSubviews([remoteImageView, contentStackView])
+
+        verticalStackView.addArrangedSubview(horizontalStackView)
+        verticalStackView.setCustomSpacing(.spacingS, after: horizontalStackView)
+
+        NSLayoutConstraint.activate([
+            remoteImageView.heightAnchor.constraint(equalToConstant: MotorTransactionStepContentView.defaultImageSize),
+            remoteImageView.widthAnchor.constraint(equalToConstant: MotorTransactionStepContentView.defaultImageSize)
+        ])
+
+        bottomAnchorConstraint = bottomAnchor.constraint(equalTo: horizontalStackView.bottomAnchor, constant: .spacingM)
+    }
+
     private func setupBodyView(_ nativeBody: NSAttributedString?, _ body: NSAttributedString?) {
         let text = nativeBody != nil ? nativeBody : body
         guard text != nil else { return }
@@ -204,43 +247,6 @@ private extension MotorTransactionStepContentView {
         verticalStackView.setCustomSpacing(.spacingS, after: bodyView)
 
         bottomAnchorConstraint = bottomAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: .spacingM)
-    }
-
-    private func setupBodyViewWithImage(_ imageUrl: URL, _ nativeBody: NSAttributedString?, _ body: NSAttributedString?) {
-        let text = nativeBody != nil ? nativeBody : body
-        guard text != nil else { return }
-
-        bodyView.attributedText = text
-
-        remoteImageView.loadImage(
-            for: imageUrl.absoluteString,
-            imageWidth: MotorTransactionStepContentView.defaultImageSize,
-            loadingColor: .iconSecondary,
-            fallbackImage: UIImage(named: .noImage)
-        )
-
-        let horizontalStackView = UIStackView(withAutoLayout: true)
-        horizontalStackView.axis = .horizontal
-        horizontalStackView.distribution = .fill
-        horizontalStackView.alignment = .center
-        horizontalStackView.backgroundColor = .clear
-        horizontalStackView.addArrangedSubviews([remoteImageView, bodyView])
-
-        verticalStackView.addArrangedSubview(horizontalStackView)
-        verticalStackView.setCustomSpacing(.spacingS, after: horizontalStackView)
-
-        NSLayoutConstraint.activate([
-            remoteImageView.heightAnchor.constraint(equalToConstant: MotorTransactionStepContentView.defaultImageSize),
-            remoteImageView.widthAnchor.constraint(equalToConstant: MotorTransactionStepContentView.defaultImageSize)
-        ])
-
-        bodyView.setContentCompressionResistancePriority(.required, for: .horizontal)
-        bodyView.setContentCompressionResistancePriority(.required, for: .vertical)
-
-        remoteImageView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        remoteImageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
-
-        bottomAnchorConstraint = bottomAnchor.constraint(equalTo: horizontalStackView.bottomAnchor, constant: .spacingM)
     }
 
     private func setupButton(_ buttonModel: MotorTransactionButtonViewModel?, tag: MotorTransactionButton.Tag) {

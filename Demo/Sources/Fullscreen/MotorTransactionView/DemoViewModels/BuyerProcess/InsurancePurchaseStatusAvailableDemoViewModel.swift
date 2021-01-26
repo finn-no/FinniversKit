@@ -45,7 +45,8 @@ extension MotorTransactionDefaultData {
                     primaryButton: MotorTransactionButtonModel(
                         text: "Velg bilforsikring",
                         style: "CALL_TO_ACTION",
-                        action: "PURCHASE_INSURANCE")
+                        action: "PURCHASE_INSURANCE",
+                        fallbackUrl: "https://www.google.com/search?q=contract+signed")
                 ),
                 detail: MotorTransactionStepContentModel(
                     body: NSAttributedString(string: "Hvis du ordner forsikring et annet sted, eller ikke skal omregistrere bilen, kan du hoppe over og gå til neste steg."),
