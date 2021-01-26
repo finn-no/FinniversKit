@@ -206,6 +206,8 @@
 		714B9357253736AD00801C99 /* SendInviteDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B9356253736AD00801C99 /* SendInviteDemoView.swift */; };
 		7197A19B24D8316B00D425EB /* WithoutInsuranceConfirmationDemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197A19A24D8316B00D425EB /* WithoutInsuranceConfirmationDemoViewModel.swift */; };
 		7197A19D24D8317D00D425EB /* WithInsuranceConfirmationDemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197A19C24D8317D00D425EB /* WithInsuranceConfirmationDemoViewModel.swift */; };
+		71B66EF125BAD55200FCDBD7 /* InsurancePurchaseStatusAvailableDemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B66EF025BAD55200FCDBD7 /* InsurancePurchaseStatusAvailableDemoViewModel.swift */; };
+		71B66EF425BAD57300FCDBD7 /* WaitingForBuyerToPayWithInsurance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B66EF325BAD57300FCDBD7 /* WaitingForBuyerToPayWithInsurance.swift */; };
 		71C6AA992549D28800D78269 /* MessageUserRequiredData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C6AA982549D28800D78269 /* MessageUserRequiredData.swift */; };
 		71FE6C49250F6A9E007814F2 /* MotorTransactionInviteCounterpartyDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE6C48250F6A9E007814F2 /* MotorTransactionInviteCounterpartyDemoView.swift */; };
 		91D637DA2488F70A0066D4D0 /* ConfettiDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D637D92488F70A0066D4D0 /* ConfettiDemoView.swift */; };
@@ -443,6 +445,8 @@
 		714B9356253736AD00801C99 /* SendInviteDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendInviteDemoView.swift; sourceTree = "<group>"; };
 		7197A19A24D8316B00D425EB /* WithoutInsuranceConfirmationDemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithoutInsuranceConfirmationDemoViewModel.swift; sourceTree = "<group>"; };
 		7197A19C24D8317D00D425EB /* WithInsuranceConfirmationDemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithInsuranceConfirmationDemoViewModel.swift; sourceTree = "<group>"; };
+		71B66EF025BAD55200FCDBD7 /* InsurancePurchaseStatusAvailableDemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsurancePurchaseStatusAvailableDemoViewModel.swift; sourceTree = "<group>"; };
+		71B66EF325BAD57300FCDBD7 /* WaitingForBuyerToPayWithInsurance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForBuyerToPayWithInsurance.swift; sourceTree = "<group>"; };
 		71C6AA982549D28800D78269 /* MessageUserRequiredData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageUserRequiredData.swift; sourceTree = "<group>"; };
 		71FE6C48250F6A9E007814F2 /* MotorTransactionInviteCounterpartyDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInviteCounterpartyDemoView.swift; sourceTree = "<group>"; };
 		91D637D92488F70A0066D4D0 /* ConfettiDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiDemoView.swift; sourceTree = "<group>"; };
@@ -1701,6 +1705,8 @@
 			children = (
 				7197A19C24D8317D00D425EB /* WithInsuranceConfirmationDemoViewModel.swift */,
 				7197A19A24D8316B00D425EB /* WithoutInsuranceConfirmationDemoViewModel.swift */,
+				71B66EF025BAD55200FCDBD7 /* InsurancePurchaseStatusAvailableDemoViewModel.swift */,
+				71B66EF325BAD57300FCDBD7 /* WaitingForBuyerToPayWithInsurance.swift */,
 			);
 			path = BuyerProcess;
 			sourceTree = "<group>";
@@ -1908,6 +1914,7 @@
 				46E7740E242CEF0A008A5E93 /* ChristmasWishListDemoView.swift in Sources */,
 				46E7742D242CEF0A008A5E93 /* PrimingDemoView.swift in Sources */,
 				46E77436242CEF0A008A5E93 /* QuestionnaireDefaultData.swift in Sources */,
+				71B66EF425BAD57300FCDBD7 /* WaitingForBuyerToPayWithInsurance.swift in Sources */,
 				46E77428242CEF0A008A5E93 /* ReviewButtonViewDemoView.swift in Sources */,
 				46E773D8242CEF0A008A5E93 /* FavoriteAdsDemoDataSource.swift in Sources */,
 				46E773D1242CEF0A008A5E93 /* MessageFormDemoPresenter.swift in Sources */,
@@ -1999,6 +2006,7 @@
 				46E77457242CEF0A008A5E93 /* Device.swift in Sources */,
 				46E77443242CEF0A008A5E93 /* RemoteImageCellDemoView.swift in Sources */,
 				46E773C8242CEF0A008A5E93 /* FullscreenGalleryDemoViewController.swift in Sources */,
+				71B66EF125BAD55200FCDBD7 /* InsurancePurchaseStatusAvailableDemoViewModel.swift in Sources */,
 				46E77412242CEF0A008A5E93 /* EarthHourDefaultData.swift in Sources */,
 				46E773E2242CEF0A008A5E93 /* AwaitingPaymentDemoViewModel.swift in Sources */,
 				46E77446242CEF0A008A5E93 /* BasicCellVariationsDemoView.swift in Sources */,

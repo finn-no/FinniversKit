@@ -125,7 +125,7 @@ extension MotorTransactionDemoView: MotorTransactionViewDelegate {
         refreshControl.endRefreshing()
     }
 
-    //swiftlint:disable:next function_parameter_count
+    // swiftlint:disable:next function_parameter_count
     func motorTransactionViewDidTapButton(
         _ view: MotorTransactionView,
         inStep step: Int,

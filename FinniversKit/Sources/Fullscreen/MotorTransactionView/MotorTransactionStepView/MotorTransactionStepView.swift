@@ -5,6 +5,7 @@
 import UIKit
 
 public protocol MotorTransactionStepViewDelegate: AnyObject {
+
     //swiftlint:disable:next function_parameter_count
     func motorTransactionStepViewDidTapButton(
         _ view: MotorTransactionStepView,
@@ -134,6 +135,7 @@ public class MotorTransactionStepView: UIView {
 }
 
 extension MotorTransactionStepView: MotorTransactionStepContentViewDelegate {
+
     //swiftlint:disable:next function_parameter_count
     public func motorTransactionStepContentViewDidTapButton(
         _ view: MotorTransactionStepContentView,
