@@ -101,8 +101,9 @@ public class AdsGridViewCell: UICollectionViewCell {
         return label
     }()
 
-    private lazy var favoriteButton: FavoriteButton = {
-        let button = FavoriteButton(withAutoLayout: true)
+    private lazy var favoriteButton: IconButton = {
+        let button = IconButton(style: .favorite)
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(handleFavoriteButtonTap(_:)), for: .touchUpInside)
         return button
     }()
@@ -294,7 +295,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     public var isFavorite = false {
         didSet {
-            favoriteButton.isFavorite = isFavorite
+            favoriteButton.isToggled = isFavorite
         }
     }
 
@@ -381,31 +382,5 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     @objc private func handleFavoriteButtonTap(_ button: UIButton) {
         delegate?.adsGridViewCell(self, didSelectFavoriteButton: button)
-    }
-}
-
-// MARK: - Private types
-
-private final class FavoriteButton: UIButton {
-    var isFavorite = false {
-        didSet {
-            let image = isFavorite ? UIImage(named: .favouriteAddedImg) : UIImage(named: .favouriteAddImg)
-            setImage(image, for: .normal)
-        }
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        adjustsImageWhenHighlighted = false
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override var isHighlighted: Bool {
-        didSet {
-            alpha = isHighlighted ? 0.8 : 1
-        }
     }
 }
