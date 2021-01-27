@@ -6,7 +6,7 @@ import FinniversKit
 
 /// For use with AdsGridView.
 public class AdDataSource: NSObject {
-    let models: [Ad] = {
+    var models: [Ad] = {
         var ads = AdFactory.create(numberOfModels: 9)
         ads.insert(AdFactory.googleDemoAd, at: 4)
         ads.insert(AdFactory.nativeDemoAd, at: 8)
@@ -63,7 +63,13 @@ extension AdsGridViewDemoView: AdsGridViewDelegate {
 
     public func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView) {}
 
-    public func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdsGridViewCell, at index: Int) {}
+    public func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdsGridViewCell, at index: Int) {
+        dataSource.models[index].isFavorite.toggle()
+
+        DispatchQueue.main.async {
+            adsGridView.updateItem(at: index, isFavorite: self.dataSource.models[index].isFavorite)
+        }
+    }
 }
 
 extension AdsGridViewDemoView: AdsGridViewDataSource {
