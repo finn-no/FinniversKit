@@ -259,7 +259,6 @@ private extension MotorTransactionStepContentView {
             button.setTitle(buttonText, for: .normal)
             button.tag = tag.rawValue
             button.addTarget(self, action: #selector(handleButtonTap(_:)), for: .touchUpInside)
-            button.setContentHuggingPriority(.required, for: .vertical)
 
             verticalStackView.addArrangedSubview(button)
             verticalStackView.setCustomSpacing(.spacingM, after: button)
