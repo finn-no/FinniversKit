@@ -60,4 +60,3 @@ public class IconButtonDemoView: UIView {
         sender.isToggled.toggle()
     }
 }
-
