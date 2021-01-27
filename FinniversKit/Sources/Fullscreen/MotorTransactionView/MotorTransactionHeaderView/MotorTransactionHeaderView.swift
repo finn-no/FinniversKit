@@ -21,18 +21,30 @@ public class MotorTransactionHeaderView: UIView {
         return label
     }()
 
-     private lazy var imageView: RemoteImageView = {
-        let imageView = RemoteImageView(withAutoLayout: true)
-        imageView.backgroundColor = .clear
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-     }()
+    private lazy var imageView: RemoteImageView = {
+       let imageView = RemoteImageView(withAutoLayout: true)
+       imageView.backgroundColor = .clear
+       imageView.clipsToBounds = true
+       imageView.contentMode = .scaleAspectFill
+       return imageView
+    }()
+
+    private lazy var roundedContainerImageView: UIView = {
+        let roundedContainerView = UIView(withAutoLayout: true)
+        roundedContainerView.backgroundColor = .bgSecondary
+        roundedContainerView.contentMode = .center
+        roundedContainerView.layer.masksToBounds = true
+        roundedContainerView.layer.cornerRadius = (imageWidth / 2)
+        roundedContainerView.layer.borderWidth = 0.2
+        roundedContainerView.addSubview(imageView)
+        return roundedContainerView
+    }()
 
     private static var imageUrl = "https://images.finncdn.no/dynamic/default"
-    private static var defaultImageSize: CGFloat = 64
 
-    private var loadingColor: UIColor? = .bgSecondary
-    private var fallbackImage = UIImage(named: .car)
+    private let imageWidth = CGFloat(128)
+    private let loadingColor: UIColor? = .bgSecondary
+    private let fallbackImage = UIImage(named: .car)
 
     private var model: MotorTransactionHeaderViewModel
 
@@ -44,7 +56,8 @@ public class MotorTransactionHeaderView: UIView {
     }
 
     public func loadImage() {
-        guard let imagePath = model.imagePath else {
+        guard let imagePath = model.imagePath, imagePath != "" else {
+            imageView.contentMode = .scaleAspectFit
             imageView.image = fallbackImage
             return
         }
@@ -52,7 +65,7 @@ public class MotorTransactionHeaderView: UIView {
         let url = "\(MotorTransactionHeaderView.imageUrl)/\(imagePath)"
         imageView.loadImage(
             for: url,
-            imageWidth: MotorTransactionHeaderView.defaultImageSize,
+            imageWidth: imageWidth,
             loadingColor: loadingColor,
             fallbackImage: fallbackImage
         )
@@ -68,41 +81,32 @@ public class MotorTransactionHeaderView: UIView {
         titleLabel.text = model.title
         detailLabel.text = model.registrationNumber
 
-        addSubview(imageView)
-
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.distribution = .fillProportionally
         stackView.spacing = .spacingS
-        stackView.addArrangedSubview(titleLabel)
-        stackView.addArrangedSubview(detailLabel)
-        addSubview(stackView)
+        stackView.addArrangedSubviews([titleLabel, detailLabel])
 
-        let roundedContainerView = UIView(withAutoLayout: true)
-        roundedContainerView.backgroundColor = .bgSecondary
-        roundedContainerView.layer.masksToBounds = true
-        roundedContainerView.layer.cornerRadius = (128 / 2)
-        roundedContainerView.layer.borderWidth = 0.2
-        roundedContainerView.addSubview(imageView)
-        addSubview(roundedContainerView)
+        addSubview(stackView)
+        addSubview(roundedContainerImageView)
 
         NSLayoutConstraint.activate([
-            roundedContainerView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            roundedContainerView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
-            roundedContainerView.heightAnchor.constraint(equalToConstant: 128),
-            roundedContainerView.widthAnchor.constraint(equalToConstant: 128),
+            roundedContainerImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            roundedContainerImageView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
+            roundedContainerImageView.heightAnchor.constraint(equalToConstant: imageWidth),
+            roundedContainerImageView.widthAnchor.constraint(equalToConstant: imageWidth),
 
-            imageView.centerYAnchor.constraint(equalTo: roundedContainerView.centerYAnchor),
-            imageView.centerXAnchor.constraint(equalTo: roundedContainerView.centerXAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: MotorTransactionHeaderView.defaultImageSize),
-            imageView.widthAnchor.constraint(equalToConstant: MotorTransactionHeaderView.defaultImageSize),
+            imageView.centerYAnchor.constraint(equalTo: roundedContainerImageView.centerYAnchor),
+            imageView.centerXAnchor.constraint(equalTo: roundedContainerImageView.centerXAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: imageWidth),
+            imageView.widthAnchor.constraint(equalToConstant: imageWidth),
 
-            stackView.leadingAnchor.constraint(equalTo: roundedContainerView.trailingAnchor, constant: .spacingM),
-            stackView.topAnchor.constraint(equalTo: roundedContainerView.centerYAnchor, constant: -.spacingS),
+            stackView.leadingAnchor.constraint(equalTo: roundedContainerImageView.trailingAnchor, constant: .spacingM),
+            stackView.topAnchor.constraint(equalTo: roundedContainerImageView.centerYAnchor, constant: -.spacingS),
             stackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingL),
 
-            bottomAnchor.constraint(equalTo: roundedContainerView.bottomAnchor, constant: .spacingS),
+            bottomAnchor.constraint(equalTo: roundedContainerImageView.bottomAnchor, constant: .spacingS),
          ])
      }
 }

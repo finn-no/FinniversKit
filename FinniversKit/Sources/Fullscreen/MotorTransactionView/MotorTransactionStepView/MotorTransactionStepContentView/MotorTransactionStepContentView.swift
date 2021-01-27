@@ -83,6 +83,7 @@ public class MotorTransactionStepContentView: UIView {
 
     private lazy var remoteImageView: RemoteImageView = {
         let remoteImageView = RemoteImageView(withAutoLayout: true)
+        remoteImageView.backgroundColor = .clear
         remoteImageView.layer.cornerRadius = MotorTransactionStepContentView.defaultImageSize / 2
         remoteImageView.clipsToBounds = true
         remoteImageView.contentMode = .scaleAspectFit
