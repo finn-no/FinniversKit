@@ -9,11 +9,6 @@ lane :make_finniverkit_version do |options|
   make_release("FinniversKit", "", options)
 end
 
-desc "Create a new FinnUI version"
-lane :make_finnui_version do |options|
-  make_release("FinnUI", "finnui-", options)
-end
-
 desc "Attempt to connect to github.com with ssh"
 lane :verify_ssh_to_github do
   githuburl = "github.com"

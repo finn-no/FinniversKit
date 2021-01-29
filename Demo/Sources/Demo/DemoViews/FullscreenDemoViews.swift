@@ -5,7 +5,6 @@ import FinniversKit
 
 public enum FullscreenDemoViews: String, DemoViews {
     case searchResultMapView
-    case searchResultsView
     case frontPageView
     case popupView
     case emptyView
@@ -17,8 +16,6 @@ public enum FullscreenDemoViews: String, DemoViews {
     case loadingView
     case drumMachineView
     case pianoView
-    case snowGlobeView
-    case newYearsView
     case soldView
     case confirmationView
     case fullscreenGallery
@@ -27,11 +24,9 @@ public enum FullscreenDemoViews: String, DemoViews {
     case messageFormView
     case favoriteAdsList
     case verificationActionSheet
-    case splashView
     case settingDetails
     case favoriteAdActionView
     case favoriteAdCommentInputView
-    case favoriteAdSortingView
     case favoriteFolderActionView
     case favoriteSold
     case betaFeatureView
@@ -40,18 +35,12 @@ public enum FullscreenDemoViews: String, DemoViews {
     case motorTransactionInviteCounterpartyView
     case resultView
     case confettiView
-    case savedSearchSortingView
-    case searchDisplayTypeSelectionView
     case messageUserRequiredSheet
-    case motorTransactionInsurancePickerView
-    case motorTransactionInsuranceConfirmationView
 
     public var viewController: UIViewController {
         switch self {
         case .searchResultMapView:
             return SearchResultMapViewDemoViewController()
-        case .searchResultsView:
-            return DemoViewController<SearchResultsDemoView>(dismissType: .dismissButton)
         case .frontPageView:
             return DemoViewController<FrontpageViewDemoView>()
         case .emptyView:
@@ -74,10 +63,6 @@ public enum FullscreenDemoViews: String, DemoViews {
             return DemoViewController<DrumMachineDemoView>()
         case .pianoView:
             return DemoViewController<PianoDemoView>(supportedInterfaceOrientations: .landscape)
-        case .snowGlobeView:
-            return DemoViewController<SnowGlobeDemoView>()
-        case .newYearsView:
-            return DemoViewController<NewYearsDemoView>()
         case .soldView:
             return DemoViewController<SoldViewDemoView>()
         case .confirmationView:
@@ -101,8 +86,6 @@ public enum FullscreenDemoViews: String, DemoViews {
             let bottomSheet = VerificationActionSheet(viewModel: VerificationViewDefaultData())
             bottomSheet.actionDelegate = VerificationActionSheetDemoDelegate.shared
             return bottomSheet
-        case .splashView:
-            return DemoViewController<SplashDemoView>(constrainToTopSafeArea: false, constrainToBottomSafeArea: false)
         case .settingDetails:
             let viewController = SettingDetailsDemoViewController()
             viewController.view.layoutIfNeeded()
@@ -122,8 +105,6 @@ public enum FullscreenDemoViews: String, DemoViews {
             return DemoViewController<FavoriteAdActionDemoView>()
         case .favoriteAdCommentInputView:
             return DemoViewController<FavoriteAdCommentInputDemoView>()
-        case .favoriteAdSortingView:
-            return DemoViewController<FavoriteAdSortingDemoView>()
         case .favoriteFolderActionView:
             return DemoViewController<FavoriteFolderActionDemoView>()
         case .favoriteSold:
@@ -140,18 +121,10 @@ public enum FullscreenDemoViews: String, DemoViews {
             return DemoViewController<ResultDemoView>()
         case .confettiView:
             return DemoViewController<ConfettiDemoView>()
-        case .savedSearchSortingView:
-            return DemoViewController<SavedSearchSortingDemoView>()
-        case .searchDisplayTypeSelectionView:
-            return DemoViewController<SearchDisplayTypeSelectionDemoView>()
         case .messageUserRequiredSheet:
             let sheet = MessageUserRequiredSheet()
             sheet.configure(MessageUserRequiredData.labelText, buttonText: MessageUserRequiredData.buttonText)
             return sheet
-        case .motorTransactionInsurancePickerView:
-            return DemoViewController<MotorTransactionInsurancePickerDemoView>()
-        case .motorTransactionInsuranceConfirmationView:
-            return DemoViewController<MotorTransactionInsuranceConfirmationDemoView>()
         }
     }
 }

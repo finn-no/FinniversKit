@@ -7,7 +7,4 @@
    <FileRef
       location = "group:FinniversKit/FinniversKit.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:FinnUI/FinnUI.xcodeproj">
-   </FileRef>
 </Workspace>

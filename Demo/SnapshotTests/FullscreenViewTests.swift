@@ -53,10 +53,6 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.drumMachineView)
     }
 
-    func testSnowGlobeView() {
-        snapshot(.snowGlobeView)
-    }
-
     func testLoadingView() {
         snapshot(.loadingView)
     }
@@ -97,10 +93,6 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.searchResultMapView)
     }
 
-    func testSplashView() {
-        snapshot(.splashView)
-    }
-
     func testVerificationActionSheet() {
         snapshot(.verificationActionSheet)
     }
@@ -109,20 +101,12 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.settingDetails)
     }
 
-    func testNewYearsView() {
-        snapshot(.newYearsView)
-    }
-
     func testFavoriteAdActionView() {
         snapshot(.favoriteAdActionView)
     }
 
     func testFavoriteAdCommentInputView() {
         snapshot(.favoriteAdCommentInputView)
-    }
-
-    func testFavoriteAdSortingView() {
-        snapshot(.favoriteAdSortingView)
     }
 
     func testFavoriteFolderActionView() {
@@ -157,27 +141,7 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.confettiView)
     }
 
-    func testSearchResultsView() {
-        snapshot(.searchResultsView)
-    }
-
-    func testSavedSearchSortingView() {
-        snapshot(.savedSearchSortingView)
-    }
-
-    func testSearchDisplayTypeSelectionView() {
-        snapshot(.searchDisplayTypeSelectionView)
-    }
-
     func testMessageUserRequiredSheet() {
         snapshot(.messageUserRequiredSheet)
-    }
-
-    func testMotorTransactionInsurancePickerView() {
-        snapshot(.motorTransactionInsurancePickerView)
-    }
-
-    func testMotorTransactionInsuranceConfirmationView() {
-        snapshot(.motorTransactionInsuranceConfirmationView)
     }
 }

@@ -33,4 +33,3 @@ struct FinnTextView_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
     }
 }
-
