@@ -4,11 +4,8 @@
 
 import UIKit
 
-public protocol AdsGridViewCellDelegate: AnyObject {
-    func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, didSelectFavoriteButton button: UIButton)
-}
+public class AdsGridViewCell: UICollectionViewCell, AdRecommendationConfigurable {
 
-public class AdsGridViewCell: UICollectionViewCell {
     // MARK: - Internal properties
 
     private static let titleHeight: CGFloat = 20.0
@@ -130,15 +127,15 @@ public class AdsGridViewCell: UICollectionViewCell {
     }
 
     /// A data source for the loading of the image
-    public weak var dataSource: RemoteImageViewDataSource? {
+    public weak var imageDataSource: RemoteImageViewDataSource? {
         didSet {
-            imageView.dataSource = dataSource
-            logoImageView.dataSource = dataSource
+            imageView.dataSource = imageDataSource
+            logoImageView.dataSource = imageDataSource
         }
     }
 
     /// A delegate for actions triggered from the cell
-    public weak var delegate: AdsGridViewCellDelegate?
+    public weak var delegate: AdRecommendationCellDelegate?
 
     /// Optional index of the cell
     public var index: Int?
@@ -381,6 +378,6 @@ public class AdsGridViewCell: UICollectionViewCell {
     }
 
     @objc private func handleFavoriteButtonTap(_ button: UIButton) {
-        delegate?.adsGridViewCell(self, didSelectFavoriteButton: button)
+        delegate?.adRecommendationCell(self, didTapFavoriteButton: button)
     }
 }

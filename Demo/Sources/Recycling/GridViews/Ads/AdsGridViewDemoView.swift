@@ -63,7 +63,7 @@ extension AdsGridViewDemoView: AdsGridViewDelegate {
 
     public func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView) {}
 
-    public func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdsGridViewCell, at index: Int) {
+    public func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at index: Int) {
         dataSource.models[index].isFavorite.toggle()
 
         DispatchQueue.main.async {
@@ -116,7 +116,7 @@ extension AdsGridViewDemoView: AdsGridViewDataSource {
 
         default:
             let cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
-            cell.dataSource = adsGridView
+            cell.imageDataSource = adsGridView
             cell.delegate = adsGridView
             cell.configure(with: model, atIndex: indexPath.item)
             cell.showImageDescriptionView = model.scaleImageToFillView

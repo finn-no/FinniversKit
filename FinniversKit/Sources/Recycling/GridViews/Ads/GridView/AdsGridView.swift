@@ -9,7 +9,7 @@ public protocol AdsGridViewDelegate: AnyObject {
     func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int)
     func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int)
     func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView)
-    func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdsGridViewCell, at index: Int)
+    func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at index: Int)
 }
 
 public protocol AdsGridViewDataSource: AnyObject {
@@ -124,7 +124,7 @@ public class AdsGridView: UIView {
 
     public func updateItem(at index: Int, isFavorite: Bool) {
         let indexPath = IndexPath(row: index, section: 0)
-        if let cell = collectionView.cellForItem(at: indexPath) as? AdsGridViewCell {
+        if let cell = collectionView.cellForItem(at: indexPath) as? AdRecommendationCell {
             cell.isFavorite = isFavorite
         }
     }
@@ -166,7 +166,7 @@ extension AdsGridView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let cell = cell as? AdsGridViewCell {
+        if let cell = cell as? ImageLoadable {
             cell.loadImage()
         }
 
@@ -209,10 +209,10 @@ extension AdsGridView: RemoteImageViewDataSource {
 
 // MARK: - AdsGridViewDelegate
 
-extension AdsGridView: AdsGridViewCellDelegate {
-    public func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, didSelectFavoriteButton button: UIButton) {
-        guard let index = adsGridViewCell.index else { return }
-        delegate?.adsGridView(self, didSelectFavoriteButton: button, on: adsGridViewCell, at: index)
+extension AdsGridView: AdRecommendationCellDelegate {
+    public func adRecommendationCell(_ cell: AdRecommendationCell, didTapFavoriteButton button: UIButton) {
+        guard let index = cell.index else { return }
+        delegate?.adsGridView(self, didSelectFavoriteButton: button, on: cell, at: index)
     }
 }
 

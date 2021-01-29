@@ -67,7 +67,7 @@ extension FrontpageViewDemoView: AdsGridViewDelegate {
         frontPageView.reloadData()
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdsGridViewCell, at index: Int) {
+    public func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at index: Int) {
         adsGridView.updateItem(at: index, isFavorite: !cell.isFavorite)
     }
 }
@@ -113,7 +113,7 @@ extension FrontpageViewDemoView: AdsGridViewDataSource {
 
         default:
             let cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
-            cell.dataSource = adsGridView
+            cell.imageDataSource = adsGridView
             cell.delegate = adsGridView
             cell.configure(with: model, atIndex: indexPath.item)
             return cell
