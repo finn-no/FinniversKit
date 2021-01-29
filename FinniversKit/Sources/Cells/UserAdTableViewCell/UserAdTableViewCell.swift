@@ -5,10 +5,6 @@
 import Foundation
 import UIKit
 
-public protocol ImageLoading {
-    func loadImage()
-}
-
 public class UserAdTableViewCell: UITableViewCell {
 
     public enum Style {
@@ -25,9 +21,9 @@ public class UserAdTableViewCell: UITableViewCell {
 
     // MARK: - Public properties
 
-    public var remoteImageViewDataSource: RemoteImageViewDataSource? {
+    public var imageDataSource: RemoteImageViewDataSource? {
         didSet {
-            userAdDetailsView.adImageViewDataSource = remoteImageViewDataSource
+            userAdDetailsView.adImageViewDataSource = imageDataSource
         }
     }
 
@@ -96,7 +92,7 @@ public class UserAdTableViewCell: UITableViewCell {
 
 // MARK: - ImageLoading
 
-extension UserAdTableViewCell: ImageLoading {
+extension UserAdTableViewCell: ImageLoadable {
     public func loadImage() {
         userAdDetailsView.loadImage()
     }
