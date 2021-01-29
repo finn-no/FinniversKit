@@ -83,6 +83,7 @@ public class MotorTransactionStepContentView: UIView {
 
     private lazy var remoteImageView: RemoteImageView = {
         let remoteImageView = RemoteImageView(withAutoLayout: true)
+        remoteImageView.backgroundColor = .clear
         remoteImageView.layer.cornerRadius = MotorTransactionStepContentView.defaultImageSize / 2
         remoteImageView.clipsToBounds = true
         remoteImageView.contentMode = .scaleAspectFit
@@ -259,7 +260,6 @@ private extension MotorTransactionStepContentView {
             button.setTitle(buttonText, for: .normal)
             button.tag = tag.rawValue
             button.addTarget(self, action: #selector(handleButtonTap(_:)), for: .touchUpInside)
-            button.setContentHuggingPriority(.required, for: .vertical)
 
             verticalStackView.addArrangedSubview(button)
             verticalStackView.setCustomSpacing(.spacingM, after: button)
