@@ -135,6 +135,7 @@
 		5D0ED35725A49FC9007750D0 /* FinnTextField+Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0ED35625A49FC9007750D0 /* FinnTextField+Input.swift */; };
 		5DA190C725A4A7E0002305A8 /* Transition+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190C625A4A7E0002305A8 /* Transition+Extensions.swift */; };
 		5DA190E825A84673002305A8 /* FinnTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190E725A84673002305A8 /* FinnTextView.swift */; };
+		5DA385C925B991E9006F8C34 /* JobRecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA385C825B991E9006F8C34 /* JobRecommendationCell.swift */; };
 		5DB39C8F25932DC700204B23 /* FinnTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB39C8E25932DC700204B23 /* FinnTextField.swift */; };
 		5DEAC3B825C15893003376AD /* AdRecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEAC3B725C15893003376AD /* AdRecommendationCell.swift */; };
 		5DEAC3BF25C16314003376AD /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEAC3BE25C16314003376AD /* IconButton.swift */; };
@@ -581,6 +582,7 @@
 		5D0ED35625A49FC9007750D0 /* FinnTextField+Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextField+Input.swift"; sourceTree = "<group>"; };
 		5DA190C625A4A7E0002305A8 /* Transition+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Extensions.swift"; sourceTree = "<group>"; };
 		5DA190E725A84673002305A8 /* FinnTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinnTextView.swift; sourceTree = "<group>"; };
+		5DA385C825B991E9006F8C34 /* JobRecommendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRecommendationCell.swift; sourceTree = "<group>"; };
 		5DB39C8E25932DC700204B23 /* FinnTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinnTextField.swift; sourceTree = "<group>"; };
 		5DEAC3B725C15893003376AD /* AdRecommendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdRecommendationCell.swift; sourceTree = "<group>"; };
 		5DEAC3BE25C16314003376AD /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
@@ -1187,6 +1189,7 @@
 			children = (
 				5DEAC3B725C15893003376AD /* AdRecommendationCell.swift */,
 				441FE422209A24E500B04EF1 /* AdsGridViewCell.swift */,
+				5DA385C825B991E9006F8C34 /* JobRecommendationCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -3569,6 +3572,7 @@
 				9A37DFD7CA27F4F25F613DE2 /* FavoriteAdsListView.swift in Sources */,
 				9BEB2878231D26C100D28BAD /* LoanCalculatorView.swift in Sources */,
 				9A37D0977C75034FE9603C2C /* FavoriteAdsListTableHeader.swift in Sources */,
+				5DA385C925B991E9006F8C34 /* JobRecommendationCell.swift in Sources */,
 				F240E82724A082500025C412 /* MotorTransactionEntryObjectPageView.swift in Sources */,
 				F21B2E552424AC6200A9B5D6 /* UserAdManagementMotorTransactionCell.swift in Sources */,
 				9A37D91577C7406D942AF82E /* FavoriteAdsSortingView.swift in Sources */,
