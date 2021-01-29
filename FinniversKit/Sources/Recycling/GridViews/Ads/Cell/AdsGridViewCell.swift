@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class AdsGridViewCell: UICollectionViewCell, AdRecommendationConfigurable {
+public class AdsGridViewCell: UICollectionViewCell, AdRecommendationCell, AdRecommendationConfigurable {
 
     // MARK: - Internal properties
 
