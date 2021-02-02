@@ -5,11 +5,12 @@
 import FinniversKit
 
 /// For use with AdsGridView.
-public class AdDataSource: NSObject {
-    var models: [Ad] = {
-        var ads = AdFactory.create(numberOfModels: 9)
-        ads.insert(AdFactory.googleDemoAd, at: 4)
-        ads.insert(AdFactory.nativeDemoAd, at: 8)
+public struct AdDataSource {
+    let models: [AdRecommendation] = {
+        var ads: [AdRecommendation] = AdFactory.create(numberOfModels: 9).map { .ad($0) }
+        ads.insert(contentsOf: JobAdFactory.create(numberOfModels: 2).map { .job($0) }, at: 1)
+        ads.insert(.ad(AdFactory.googleDemoAd), at: 4)
+        ads.insert(.ad(AdFactory.nativeDemoAd), at: 8)
         return ads
     }()
 }
@@ -84,6 +85,7 @@ extension AdsGridViewDemoView: AdsGridViewDataSource {
     public func adsGridView(_ adsGridView: AdsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
         return [
             AdsGridViewCell.self,
+            JobRecommendationCell.self,
             BannerAdDemoCell.self,
             NativeAdvertRecommendationDemoCell.self,
         ]
@@ -92,34 +94,44 @@ extension AdsGridViewDemoView: AdsGridViewDataSource {
     public func adsGridView(_ adsGridView: AdsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
         let model = dataSource.models[indexPath.item]
 
-        switch model.adType {
-        case .native:
-            return NativeAdvertRecommendationDemoCell.height(for: width)
-        case .google:
-            return 300
-        default:
-            return AdsGridViewCell.height(
-                for: model,
-                width: width
-            )
+        switch model {
+        case .ad(let ad):
+            switch ad.adType {
+            case .native:
+                return NativeAdvertRecommendationDemoCell.height(for: width)
+            case .google:
+                return 300
+            default:
+                return AdsGridViewCell.height(for: ad, width: width)
+            }
+        case .job(let ad):
+            return JobRecommendationCell.height(for: ad, width: width)
         }
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let model = dataSource.models[indexPath.item]
 
-        switch model.adType {
-        case .native:
-            return collectionView.dequeue(NativeAdvertRecommendationDemoCell.self, for: indexPath)
-        case .google:
-            return collectionView.dequeue(BannerAdDemoCell.self, for: indexPath)
-
-        default:
-            let cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
+        switch model {
+        case .ad(let ad):
+            switch ad.adType {
+            case .native:
+                return collectionView.dequeue(NativeAdvertRecommendationDemoCell.self, for: indexPath)
+            case .google:
+                return collectionView.dequeue(BannerAdDemoCell.self, for: indexPath)
+            default:
+                let cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
+                cell.imageDataSource = adsGridView
+                cell.delegate = adsGridView
+                cell.configure(with: ad, atIndex: indexPath.item)
+                cell.showImageDescriptionView = ad.scaleImageToFillView
+                return cell
+            }
+        case .job(let ad):
+            let cell = collectionView.dequeue(JobRecommendationCell.self, for: indexPath)
             cell.imageDataSource = adsGridView
             cell.delegate = adsGridView
-            cell.configure(with: model, atIndex: indexPath.item)
-            cell.showImageDescriptionView = model.scaleImageToFillView
+            cell.configure(with: ad, atIndex: indexPath.item)
             return cell
         }
     }
