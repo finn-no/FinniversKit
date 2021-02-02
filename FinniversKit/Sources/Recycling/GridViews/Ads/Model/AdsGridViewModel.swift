@@ -4,19 +4,6 @@
 
 import Foundation
 
-public protocol AdRecommendationVariant {
-    var title: String { get }
-    var imagePath: String? { get }
-    var isFavorite: Bool { get }
-    var accessibilityLabel: String { get }
-}
-
-public protocol JobRecommendationModel: AdRecommendationVariant {
-    var company: String { get }
-    var location: String { get }
-    var relativeTime: String? { get }
-}
-
 public protocol AdsGridViewModel: AdRecommendationVariant {
     var subtitle: String? { get }
     var imageSize: CGSize { get }
@@ -51,21 +38,5 @@ public extension AdsGridViewModel {
         }
 
         return message
-    }
-}
-
-public extension JobRecommendationModel {
-    var accessibilityLabel: String {
-        title // TODO: Improve
-    }
-
-    var locationAndTimeText: String {
-        var text = location
-
-        if let time = relativeTime {
-            text = text.trimmingCharacters(in: .whitespaces) + " • \(time)"
-        }
-
-        return text
     }
 }
