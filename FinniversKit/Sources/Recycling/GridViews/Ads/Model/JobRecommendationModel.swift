@@ -13,7 +13,7 @@ public protocol JobRecommendationModel: AdRecommendationVariant {
 
 public extension JobRecommendationModel {
     var accessibilityLabel: String {
-        title // TODO: Improve
+        "\(title), \(company), \(locationAndPublishedRelative)"
     }
 
     var locationAndPublishedRelative: String {
