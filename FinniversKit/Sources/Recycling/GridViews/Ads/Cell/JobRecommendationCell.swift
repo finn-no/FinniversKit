@@ -6,7 +6,7 @@ import UIKit
 
 public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
 
-    public var model: Model?
+    public var model: JobRecommendationModel?
 
     public weak var delegate: AdRecommendationCellDelegate?
 
@@ -32,7 +32,8 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
     }()
 
     private lazy var ribbonView: RibbonView = {
-        let view = RibbonView(style: .success, with: "Enkel søknad")
+        let view = RibbonView(withAutoLayout: true)
+        view.isHidden = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -56,11 +57,15 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
         return view
     }()
 
-    private lazy var companyLabel: Label = Label(style: .detail, withAutoLayout: false)
+    private lazy var companyLabel: Label = {
+        let view = Label(style: .detail, withAutoLayout: false)
+        view.numberOfLines = 0
+        return view
+    }()
 
     private lazy var locationAndTimeLabel: Label = {
         let view = Label(style: .detail, withAutoLayout: false)
-        view.numberOfLines = 2
+        view.numberOfLines = 0
         view.textAlignment = .right
         return view
     }()
@@ -80,6 +85,13 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+        ribbonView.isHidden = true
+        isFavorite = false
+        logoView.image = nil
     }
 
     private func setup() {
@@ -160,24 +172,35 @@ extension JobRecommendationCell: AdRecommendationConfigurable {
 
         titleLabel.text = model?.title
         companyLabel.text = model?.company
-        locationAndTimeLabel.text = model?.locationAndTimeText
+        locationAndTimeLabel.text = model?.locationAndPublishedRelative
         isFavorite = model?.isFavorite ?? false
+
+        if let ribbonViewModel = model?.ribbonOverlayModel {
+            ribbonView.configure(with: ribbonViewModel)
+            ribbonView.isHidden = false
+        }
     }
 }
 
 public extension JobRecommendationCell {
     static func height(for model: JobRecommendationModel, width: CGFloat) -> CGFloat {
-        let imageHeight = (width / 2) * 0.85
+        let imageHeight = (width * 0.5) * 0.85
 
-        let label = Label(style: .body)
-        label.text = model.title
-        label.numberOfLines = 2
+        let titleLabel = Label(style: .body)
+        titleLabel.numberOfLines = 2
+        titleLabel.text = model.title
+
+        let detailLabel = Label(style: .detail)
+        detailLabel.numberOfLines = 0
+        detailLabel.text = model.company.count >= model.locationAndPublishedRelative.count
+            ? model.company
+            : model.locationAndPublishedRelative
 
         var height: CGFloat = .spacingS * 2
         height += imageHeight
-        height += label.sizeThatFits(CGSize(width: width - .spacingS * 2, height: CGFloat.greatestFiniteMagnitude)).height
+        height += titleLabel.sizeThatFits(CGSize(width: width - .spacingS * 2, height: CGFloat.greatestFiniteMagnitude)).height
         height += .spacingS
-        height += UIFont.detail.lineHeight * 2
+        height += detailLabel.sizeThatFits(CGSize(width: (width / 2) - .spacingS * 2, height: CGFloat.greatestFiniteMagnitude)).height
 
         return ceil(height)
     }
