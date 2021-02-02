@@ -65,11 +65,7 @@ extension AdsGridViewDemoView: AdsGridViewDelegate {
     public func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView) {}
 
     public func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at index: Int) {
-        dataSource.models[index].isFavorite.toggle()
-
-        DispatchQueue.main.async {
-            adsGridView.updateItem(at: index, isFavorite: self.dataSource.models[index].isFavorite)
-        }
+        adsGridView.updateItem(at: index, isFavorite: !cell.isFavorite)
     }
 }
 
