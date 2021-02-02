@@ -9,4 +9,5 @@ public protocol AdRecommendationVariant {
     var imagePath: String? { get }
     var isFavorite: Bool { get }
     var accessibilityLabel: String { get }
+    var favoriteButtonAccessibilityLabel: String { get }
 }

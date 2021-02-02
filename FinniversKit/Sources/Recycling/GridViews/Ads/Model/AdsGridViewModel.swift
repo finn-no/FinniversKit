@@ -12,7 +12,6 @@ public protocol AdsGridViewModel: AdRecommendationVariant {
     var imageText: String? { get }
     var scaleImageToFillView: Bool { get }
     var sponsoredAdData: SponsoredAdData? { get }
-    var favoriteButtonAccessibilityLabel: String { get }
 }
 
 public struct SponsoredAdData {

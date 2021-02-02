@@ -169,6 +169,7 @@ extension JobRecommendationCell: AdRecommendationConfigurable {
         self.index = index
 
         accessibilityLabel = model?.accessibilityLabel
+        favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityLabel
 
         titleLabel.text = model?.title
         companyLabel.text = model?.company

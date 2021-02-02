@@ -56,8 +56,7 @@ struct JobAd: JobRecommendationModel {
     var ribbonOverlayModel: RibbonViewModel?
     var imagePath: String?
     var isFavorite: Bool = false
-
-
+    var favoriteButtonAccessibilityLabel = "Sett annonsen som favoritt"
 }
 
 /// Creates Ads
