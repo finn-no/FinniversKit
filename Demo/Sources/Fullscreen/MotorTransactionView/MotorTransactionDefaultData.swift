@@ -68,9 +68,9 @@ public struct MotorTransactionStepContentModel: MotorTransactionStepContentViewM
     */
     public var body: NSAttributedString?
     public var nativeBody: NSAttributedString?
-
     public var nativeButton: MotorTransactionButtonViewModel?
     public var primaryButton: MotorTransactionButtonViewModel?
+    public var imageUrl: URL?
 }
 
 public struct MotorTransactionDefaultData {
@@ -140,13 +140,19 @@ public struct MotorTransactionDefaultData {
         case 1:
             print("Buyer process state: with insurance confirmation")
             return MotorTransactionDefaultData.WithInsuranceConfirmationDemoViewModel
+        case 2:
+            print("Buyer process state: with insurance purchase status available")
+            return MotorTransactionDefaultData.InsurancePurchaseStatusAvailableDemoViewModel
+        case 3:
+            print("Buyer process state: with waiting for buyer to pay with insurance")
+            return MotorTransactionDefaultData.WaitingForBuyerToPayWithInsurance
         default:
             fatalError("No model exists for step \(currentBuyerProcessState)")
         }
     }
 
     mutating func getNextBuyerProcessState() -> MotorTransactionViewModel {
-        if currentBuyerProcessState == 1 {
+        if currentBuyerProcessState == 3 {
             self.currentBuyerProcessState = -1
         }
         currentBuyerProcessState += 1

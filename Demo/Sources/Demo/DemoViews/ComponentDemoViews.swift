@@ -40,11 +40,6 @@ public enum ComponentDemoViews: String, DemoViews {
     case disclaimerView
     case questionnaireView
     case tweakable
-    case saveSearchView
-    case saveSearchPromptView
-    case searchDisplayMenuView
-    case searchFilterTags
-    case searchListEmptyView
     case stepSlider
     case loanCalculatorView
     case verificationView
@@ -66,11 +61,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case objectPageTitleView
     case favoriteButton
     case motorTransactionEntryAdManagementView
-    case chatAvailabilityView
-    case iconLinkListView
     case motorTransactionEntryObjectPageView
-    case expandCollapseButton
-    case objectPageBlinkView
     case sendInviteView
     case navigationLinkView
 
@@ -150,18 +141,6 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<QuestionnaireDemoView>()
         case .tweakable:
             return DemoViewController<TweakableDemoView>()
-        case .saveSearchView:
-            let demoViewController = DemoViewController<SaveSearchViewDemoView>()
-            demoViewController.view.backgroundColor = .bgPrimary
-            return BottomSheet(rootViewController: demoViewController)
-        case .searchDisplayMenuView:
-            return DemoViewController<SearchDisplayMenuDemoView>()
-        case .saveSearchPromptView:
-            return DemoViewController<SaveSearchPromptViewDemoView>()
-        case .searchFilterTags:
-            return DemoViewController<SearchFilterTagsDemoView>()
-        case .searchListEmptyView:
-            return DemoViewController<SearchListEmptyDemoView>()
         case .stepSlider:
             return DemoViewController<StepSliderDemoView>()
         case .verificationView:
@@ -209,16 +188,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<FavoriteButtonDemoView>(dismissType: .dismissButton)
         case .motorTransactionEntryAdManagementView:
             return DemoViewController<MotorTransactionEntryAdManagementDemoView>()
-        case .chatAvailabilityView:
-            return DemoViewController<ChatAvailabilityDemoView>(dismissType: .dismissButton)
-        case .iconLinkListView:
-            return DemoViewController<IconLinkListViewDemo>()
         case .motorTransactionEntryObjectPageView:
             return DemoViewController<MotorTransactionEntryObjectPageDemoView>()
-        case .expandCollapseButton:
-            return DemoViewController<ExpandCollapseButtonDemoView>()
-        case .objectPageBlinkView:
-            return DemoViewController<ObjectPageBlinkDemoView>()
         case .sendInviteView:
             return DemoViewController<SendInviteDemoView>(containmentOptions: .bottomSheet)
         case .navigationLinkView:

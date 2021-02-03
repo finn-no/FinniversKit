@@ -10,6 +10,18 @@ In order to develop our components in an isolated way, we have structured them s
 
 ## Installation
 
+### CocoaPods
+
+Add to your Podfile:
+```
+pod "FinniversKit", git: "https://github.com/finn-no/FinniversKit"
+```
+
+### Swift Package Manager
+
+You can also add FinniversKit using SPM.
+
+
 ### Carthage
 
 ```
@@ -26,26 +38,36 @@ import FinniversKit
 
 ## Create new releases
 
-You can find the instructions [here](https://github.com/finn-no/FinniversKit/blob/master/RELEASING.md).
+### Setup
+- Install dependencies listed in Gemfile with `bundle install` (dependencies will be installed in `./bundler`)
+- Fastlane will use the GitHub API, so make sure to create a personal access token [here](https://github.com/settings/tokens) and place it within an environment variable called **`FINNIVERSKIT_GITHUB_ACCESS_TOKEN`**.
+  - When creating a token, you only need to give access to the scope `repo`.
+  - There are multiple ways to make an environment variable, for example by using a `.env` file or adding it to `.bashrc`/`.bash_profile`). Don't forget to run `source .env` (for whichever file you set the environment variables in) if you don't want to restart your shell.
+  - Run `bundle exec fastlane verify_environment_variable` to see if it is configured correctly.
+- Run `bundle exec fastlane verify_ssh_to_github` to see if ssh to GitHub is working.
+
+### Make release
+- Run `bundle exec fastlane` and choose appropriate lane. Follow instructions, you will be asked for confirmation before all remote changes.
+- After the release has been created you can edit the description on GitHub by using the printed link.
 
 ## Interesting things
 
 ### Folder structure (sources, resources, demo and tests)
 
 - `Sources` folder contains Swift and Objective C files, grouped by relevant category/feature if needed
-- `Resources` folder contains fonts, images, sounds, generated constants and other resources used in the framework
+- `Assets` folder contains fonts, images, sounds, generated constants and other resources used in the framework
 - `UnitTests` folder is used for snapshot tests and other files related to testing
-- `Demo` folder is a place for files that belong to `Demo` target. It is good practise to have corresponding demo view for every component, fullscreen or recycling view.
+- `Demo` folder is a place for files that belong to `Demo` target. It is good practice to have corresponding demo view for every component, fullscreen or recycling view.
 
 ### Delegates and data sources (instead blocks and injection)
 
-In order to maintain consistency we have opted for using data sources for giving data to our recyclabe views and using delegates to interact for actions inside views.
+In order to maintain consistency we have opted for using data sources for giving data to our recyclable views and using delegates to interact for actions inside views.
 
 If the view isn't recyclable then we use ViewModels. There are tradeoffs when you choose to be consistent instead of pragmatic but we hope that by having a clear pattern it reduces the discussion points and let's us focus on improving the UI and adding value to our users.
 
 ### Why not playgrounds?
 
-Our Demo project has been setup in a way that every component is isolated, we initally started by using Xcode's playgrounds but we quickly outgrew it's capacitiy, reloading times weren't quicker than making the change and running the project again, also it wasn't possible to debug and set breakpoint on things and we couldn't use many of Xcode's useful utilities such as View herarchy inspector. Finally, the fact that we had to rebuild the project after making any change in the framework meant that we weren't as efficient as using plain Xcode projects (where rebuilding isn't necesary after making a change).
+Our Demo project has been setup in a way that every component is isolated, we initially started by using Xcode's playgrounds but we quickly outgrew it's capacity, reloading times weren't quicker than making the change and running the project again, also it wasn't possible to debug and set breakpoint on things and we couldn't use many of Xcode's useful utilities such as View hierarchy inspector. Finally, the fact that we had to rebuild the project after making any change in the framework meant that we weren't as efficient as using plain Xcode projects (where rebuilding isn't necessary after making a change).
 
 ### Changelogs
 

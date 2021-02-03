@@ -151,18 +151,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.klimabroletView)
     }
 
-    func testSaveSearchPromptView() {
-        snapshot(.saveSearchPromptView)
-    }
-
-    func testSaveSearchView() {
-        snapshot(.saveSearchView)
-    }
-
-    func testSearchListEmptyView() {
-        snapshot(.searchListEmptyView)
-    }
-
     func testStepSlider() {
         snapshot(.stepSlider)
     }
@@ -255,32 +243,8 @@ class ComponentViewTests: XCTestCase {
         snapshot(.motorTransactionEntryAdManagementView)
     }
 
-    func testChatAvailabilityView() {
-        snapshot(.chatAvailabilityView)
-    }
-
-    func testIconLinkListView() {
-        snapshot(.iconLinkListView)
-    }
-
     func testMotorTransactionEntryObjectPageView() {
         snapshot(.motorTransactionEntryObjectPageView)
-    }
-
-    func testSearchFilterTags() {
-        snapshot(.searchFilterTags)
-    }
-
-    func testSearchDisplayMenuView() {
-        snapshot(.searchDisplayMenuView)
-    }
-
-    func testExpandCollapseButton() {
-        snapshot(.expandCollapseButton)
-    }
-
-    func testObjectPageBlinkView() {
-        snapshot(.objectPageBlinkView)
     }
 
     func testSendInviteView() {

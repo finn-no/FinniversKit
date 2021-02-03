@@ -5,7 +5,6 @@
 import Demo
 import XCTest
 import SwiftUI
-@testable import FinnUI
 
 @available(iOS 13.0, *)
 class SwiftUIViewTests: XCTestCase {
@@ -25,26 +24,6 @@ class SwiftUIViewTests: XCTestCase {
         for element in elementWithoutTests(for: SwiftUIDemoViews.self) {
             XCTFail("Not all elements were implemented, missing: \(element.rawValue)")
         }
-    }
-
-    func testButtons() {
-        snapshot(.buttons)
-    }
-
-    func testSettings() {
-        snapshot(.settings)
-    }
-
-    func testBasicCellVariations() {
-        snapshot(.basicCellVariations)
-    }
-
-    func testBapAdView() {
-        snapshot(.bapAdView)
-    }
-
-    func testMyVehiclesListView() {
-        snapshot(.myVehiclesListView)
     }
 
     func testTextField() {

@@ -6,7 +6,9 @@ import Foundation
 
 public protocol MotorTransactionViewDelegate: AnyObject {
     func motorTransactionViewDidBeginRefreshing(_ refreshControl: RefreshControl)
+
     //swiftlint:disable:next function_parameter_count
+
     func motorTransactionViewDidTapButton(
         _ view: MotorTransactionView,
         inStep step: Int,
@@ -262,7 +264,9 @@ private extension MotorTransactionView {
 // MARK: - TransactionStepViewDelegate
 
 extension MotorTransactionView: MotorTransactionStepViewDelegate {
+
     //swiftlint:disable:next function_parameter_count
+
     public func motorTransactionStepViewDidTapButton(
         _ view: MotorTransactionStepView,
         inStep step: Int,
