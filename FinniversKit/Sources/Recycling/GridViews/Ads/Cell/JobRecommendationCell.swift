@@ -119,7 +119,7 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
 
         NSLayoutConstraint.activate([
             logoView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            logoView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            logoView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
             logoView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.50),
             logoView.heightAnchor.constraint(equalTo: logoView.widthAnchor, multiplier: 0.85),
 
@@ -131,7 +131,7 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
             ribbonView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
             ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingS),
 
-            metadataContainer.topAnchor.constraint(equalTo: logoView.bottomAnchor),
+            metadataContainer.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: .spacingS),
             metadataContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             metadataContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             metadataContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
@@ -185,7 +185,8 @@ extension JobRecommendationCell: AdRecommendationConfigurable {
 
 public extension JobRecommendationCell {
     static func height(for model: JobRecommendationModel, width: CGFloat) -> CGFloat {
-        let imageHeight = (width * 0.5) * 0.85
+        var imageHeight = (width * 0.5) * 0.85
+        imageHeight += .spacingS * 2
 
         let titleLabel = Label(style: .body)
         titleLabel.numberOfLines = 2
