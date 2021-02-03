@@ -24,7 +24,7 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
         }
     }
 
-    private let loadingColors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
+    private let loadingColors: [UIColor] = [.banana, .salmon, .watermelon]
 
     private var loadingColor: UIColor = .clear {
         didSet {
