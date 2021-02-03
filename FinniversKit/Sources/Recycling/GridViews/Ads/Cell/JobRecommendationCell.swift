@@ -122,8 +122,8 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
 
         imageViewContainer.addSubview(imageView)
 
-        let layoutGuide = UILayoutGuide()
-        metadataContainer.addLayoutGuide(layoutGuide)
+        let metadataContainerLayoutGuide = UILayoutGuide()
+        metadataContainer.addLayoutGuide(metadataContainerLayoutGuide)
         metadataContainer.addSubview(titleLabel)
         metadataContainer.addSubview(stackView)
 
@@ -156,19 +156,19 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
             metadataContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             metadataContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            layoutGuide.topAnchor.constraint(equalTo: metadataContainer.topAnchor, constant: .spacingS),
-            layoutGuide.leadingAnchor.constraint(equalTo: metadataContainer.leadingAnchor, constant: .spacingS),
-            layoutGuide.trailingAnchor.constraint(equalTo: metadataContainer.trailingAnchor, constant: -.spacingS),
-            layoutGuide.bottomAnchor.constraint(equalTo: metadataContainer.bottomAnchor, constant: -.spacingS),
+            metadataContainerLayoutGuide.topAnchor.constraint(equalTo: metadataContainer.topAnchor, constant: .spacingS),
+            metadataContainerLayoutGuide.leadingAnchor.constraint(equalTo: metadataContainer.leadingAnchor, constant: .spacingS),
+            metadataContainerLayoutGuide.trailingAnchor.constraint(equalTo: metadataContainer.trailingAnchor, constant: -.spacingS),
+            metadataContainerLayoutGuide.bottomAnchor.constraint(equalTo: metadataContainer.bottomAnchor, constant: -.spacingS),
 
-            titleLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor),
-            titleLabel.topAnchor.constraint(equalTo: layoutGuide.topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: metadataContainerLayoutGuide.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: metadataContainerLayoutGuide.trailingAnchor),
+            titleLabel.topAnchor.constraint(equalTo: metadataContainerLayoutGuide.topAnchor),
 
             stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
-            stackView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: metadataContainerLayoutGuide.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: metadataContainerLayoutGuide.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: metadataContainerLayoutGuide.bottomAnchor),
         ])
     }
 
