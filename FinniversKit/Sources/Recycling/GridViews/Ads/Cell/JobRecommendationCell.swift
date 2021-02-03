@@ -60,7 +60,7 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
 
     private lazy var metadataContainer: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .marble
+        view.backgroundColor = .bgTertiary
         return view
     }()
 
@@ -113,7 +113,6 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
 
         contentView.layer.cornerRadius = .spacingS
         contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = .imageBorder
 
         contentView.addSubview(imageViewContainer)
         contentView.addSubview(metadataContainer)
@@ -170,6 +169,12 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
             stackView.trailingAnchor.constraint(equalTo: metadataContainerLayoutGuide.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: metadataContainerLayoutGuide.bottomAnchor),
         ])
+    }
+
+    public override func layoutSubviews() {
+        contentView.layer.borderColor = .imageBorder
+        
+        super.layoutSubviews()
     }
 
     public func loadImage() {
