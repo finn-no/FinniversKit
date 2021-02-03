@@ -12,7 +12,7 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
 
     public weak var imageDataSource: RemoteImageViewDataSource? {
         didSet {
-            logoView.dataSource = imageDataSource
+            imageView.dataSource = imageDataSource
         }
     }
 
@@ -24,8 +24,21 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
         }
     }
 
-    private lazy var logoView: RemoteImageView = {
+    private let loadingColors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
+
+    private var loadingColor: UIColor = .clear {
+        didSet {
+            imageViewContainer.backgroundColor = loadingColor
+        }
+    }
+
+    private lazy var defaultImage: UIImage = UIImage(named: .noImage)
+
+    private lazy var imageViewContainer = UIView(withAutoLayout: true)
+
+    private lazy var imageView: RemoteImageView = {
         let view = RemoteImageView(withAutoLayout: true)
+        view.delegate = self
         view.clipsToBounds = true
         view.contentMode = .scaleAspectFit
         return view
@@ -91,23 +104,24 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
         super.prepareForReuse()
         ribbonView.isHidden = true
         isFavorite = false
-        logoView.image = nil
+        imageView.image = nil
     }
 
     private func setup() {
         isAccessibilityElement = true
 
-        let layoutGuide = UILayoutGuide()
-
         contentView.layer.cornerRadius = .spacingS
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = .imageBorder
 
-        contentView.addSubview(logoView)
+        contentView.addSubview(imageViewContainer)
         contentView.addSubview(metadataContainer)
         contentView.addSubview(ribbonView)
         contentView.addSubview(favoriteButton)
 
+        imageViewContainer.addSubview(imageView)
+
+        let layoutGuide = UILayoutGuide()
         metadataContainer.addLayoutGuide(layoutGuide)
         metadataContainer.addSubview(titleLabel)
         metadataContainer.addSubview(stackView)
@@ -118,10 +132,16 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
         ])
 
         NSLayoutConstraint.activate([
-            logoView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            logoView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
-            logoView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.50),
-            logoView.heightAnchor.constraint(equalTo: logoView.widthAnchor, multiplier: 0.85),
+            imageViewContainer.topAnchor.constraint(equalTo: contentView.topAnchor),
+            imageViewContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageViewContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            imageViewContainer.bottomAnchor.constraint(equalTo: metadataContainer.topAnchor),
+
+            imageView.centerXAnchor.constraint(equalTo: imageViewContainer.centerXAnchor),
+            imageView.topAnchor.constraint(equalTo: imageViewContainer.topAnchor, constant: .spacingS),
+            imageView.bottomAnchor.constraint(equalTo: imageViewContainer.bottomAnchor, constant: -.spacingS, priority: .required - 1),
+            imageView.widthAnchor.constraint(equalTo: imageViewContainer.widthAnchor, multiplier: 0.50),
+            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 0.85),
 
             favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXS),
             favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingXS),
@@ -131,7 +151,6 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
             ribbonView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
             ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingS),
 
-            metadataContainer.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: .spacingS),
             metadataContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             metadataContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             metadataContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
@@ -154,7 +173,9 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
 
     public func loadImage() {
         if let imagePath = model?.imagePath {
-            logoView.loadImage(for: imagePath, imageWidth: frame.size.width)
+            imageView.loadImage(for: imagePath, imageWidth: frame.size.width, loadingColor: loadingColor, fallbackImage: defaultImage)
+        } else {
+            imageView.image = defaultImage
         }
     }
 
@@ -163,10 +184,13 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
     }
 }
 
+//  MARK: - AdRecommendationConfigurable
 extension JobRecommendationCell: AdRecommendationConfigurable {
     public func configure(with model: JobRecommendationModel?, atIndex index: Int) {
         self.model = model
         self.index = index
+
+        loadingColor = loadingColors[index % loadingColors.count]
 
         accessibilityLabel = model?.accessibilityLabel
         favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityLabel
@@ -183,6 +207,8 @@ extension JobRecommendationCell: AdRecommendationConfigurable {
     }
 }
 
+
+// MARK: - Static methods
 public extension JobRecommendationCell {
     static func height(for model: JobRecommendationModel, width: CGFloat) -> CGFloat {
         var imageHeight = (width * 0.5) * 0.85
@@ -205,5 +231,12 @@ public extension JobRecommendationCell {
         height += detailLabel.sizeThatFits(CGSize(width: (width / 2) - .spacingS * 2, height: CGFloat.greatestFiniteMagnitude)).height
 
         return ceil(height)
+    }
+}
+
+// MARK: - RemoteImageViewDelegate
+extension JobRecommendationCell: RemoteImageViewDelegate {
+    public func remoteImageViewDidSetImage(_ view: RemoteImageView) {
+        imageViewContainer.backgroundColor = .clear
     }
 }
