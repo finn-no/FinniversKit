@@ -141,8 +141,8 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
             imageView.centerXAnchor.constraint(equalTo: imageViewContainer.centerXAnchor),
             imageView.topAnchor.constraint(equalTo: imageViewContainer.topAnchor, constant: .spacingS),
             imageView.bottomAnchor.constraint(equalTo: imageViewContainer.bottomAnchor, constant: -.spacingS, priority: .required - 1),
-            imageView.widthAnchor.constraint(equalTo: imageViewContainer.widthAnchor, multiplier: 0.50),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 0.85),
+            imageView.widthAnchor.constraint(equalTo: imageViewContainer.widthAnchor, multiplier: JobRecommendationCell.imageWidthMultiplier),
+            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: JobRecommendationCell.imageHeightMultiplier),
 
             favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXS),
             favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingXS),
@@ -185,7 +185,7 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
     }
 }
 
-//  MARK: - AdRecommendationConfigurable
+// MARK: - AdRecommendationConfigurable
 extension JobRecommendationCell: AdRecommendationConfigurable {
     public func configure(with model: JobRecommendationModel?, atIndex index: Int) {
         self.model = model
@@ -208,13 +208,12 @@ extension JobRecommendationCell: AdRecommendationConfigurable {
     }
 }
 
-
 // MARK: - Static methods
 public extension JobRecommendationCell {
-    static func height(for model: JobRecommendationModel, width: CGFloat) -> CGFloat {
-        var imageHeight = (width * 0.5) * 0.85
-        imageHeight += .spacingS * 2
+    static let imageWidthMultiplier: CGFloat = 0.5
+    static let imageHeightMultiplier: CGFloat = 0.85
 
+    static func height(for model: JobRecommendationModel, width: CGFloat) -> CGFloat {
         let titleLabel = Label(style: .body)
         titleLabel.numberOfLines = 2
         titleLabel.text = model.title
@@ -225,11 +224,16 @@ public extension JobRecommendationCell {
             ? model.company
             : model.locationAndPublishedRelative
 
-        var height: CGFloat = .spacingS * 2
+        var imageHeight = (width * imageWidthMultiplier) * imageHeightMultiplier
+        imageHeight += .spacingS * 2 // Vertical padding of image
+
+        let horizontalContainerPadding = .spacingS * 2
+
+        var height: CGFloat = .spacingS * 2 // Vertical padding of container
         height += imageHeight
-        height += titleLabel.sizeThatFits(CGSize(width: width - .spacingS * 2, height: CGFloat.greatestFiniteMagnitude)).height
-        height += .spacingS
-        height += detailLabel.sizeThatFits(CGSize(width: (width / 2) - .spacingS * 2, height: CGFloat.greatestFiniteMagnitude)).height
+        height += titleLabel.sizeThatFits(CGSize(width: width - horizontalContainerPadding, height: CGFloat.greatestFiniteMagnitude)).height
+        height += .spacingS // Vertical padding between labels
+        height += detailLabel.sizeThatFits(CGSize(width: (width - horizontalContainerPadding) / 2, height: CGFloat.greatestFiniteMagnitude)).height
 
         return ceil(height)
     }
