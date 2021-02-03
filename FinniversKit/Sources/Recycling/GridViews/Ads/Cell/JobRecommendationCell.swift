@@ -102,9 +102,17 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
 
     public override func prepareForReuse() {
         super.prepareForReuse()
+
         ribbonView.isHidden = true
+        ribbonView.title = ""
         isFavorite = false
         imageView.image = nil
+        titleLabel.text = nil
+        companyLabel.text = nil
+        locationAndTimeLabel.text = nil
+
+        contentView.accessibilityLabel = nil
+        favoriteButton.accessibilityLabel = nil
     }
 
     private func setup() {
@@ -173,7 +181,7 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
 
     public override func layoutSubviews() {
         contentView.layer.borderColor = .imageBorder
-        
+
         super.layoutSubviews()
     }
 
