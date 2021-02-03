@@ -99,8 +99,8 @@ extension FavoriteSoldDemoView: AdsGridViewDelegate {
 // MARK: - AdsGridViewDataSource
 
 extension FavoriteSoldDemoView: AdsGridViewDataSource {
-    public func numberOfColumns(inAdsGridView adsGridView: AdsGridView) -> AdsGridView.ColumnConfiguration {
-        .columns(2)
+    public func numberOfColumns(inAdsGridView adsGridView: AdsGridView) -> AdsGridView.ColumnConfiguration? {
+        return nil
     }
 
     public func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int {

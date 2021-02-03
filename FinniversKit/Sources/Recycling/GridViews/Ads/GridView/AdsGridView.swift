@@ -14,7 +14,7 @@ public protocol AdsGridViewDelegate: AnyObject {
 
 public protocol AdsGridViewDataSource: AnyObject {
     func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int
-    func numberOfColumns(inAdsGridView adsGridView: AdsGridView) -> AdsGridView.ColumnConfiguration
+    func numberOfColumns(inAdsGridView adsGridView: AdsGridView) -> AdsGridView.ColumnConfiguration?
     func adsGridView(_ adsGridView: AdsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type]
     func adsGridView(_ adsGridView: AdsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat
     func adsGridView(_ adsGridView: AdsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
@@ -220,12 +220,12 @@ extension AdsGridView: AdRecommendationCellDelegate {
 
 extension AdsGridView: AdsGridViewLayoutDelegate {
     func adsGridViewLayoutNumberOfColumns(_ adsGridViewLayout: AdsGridViewLayout) -> Int {
-        switch dataSource?.numberOfColumns(inAdsGridView: self) ?? .columns(2) {
+        switch dataSource?.numberOfColumns(inAdsGridView: self) {
         case .fullWidth: return 1
         case .columns(let columns) where columns > 1 && columns <= 3:
             return columns
         default:
-            return 2
+            return traitCollection.horizontalSizeClass == .regular ? 3 : 2
         }
     }
 

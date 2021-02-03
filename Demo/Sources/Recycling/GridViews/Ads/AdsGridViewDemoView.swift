@@ -70,7 +70,7 @@ extension AdsGridViewDemoView: AdsGridViewDelegate {
 }
 
 extension AdsGridViewDemoView: AdsGridViewDataSource {
-    public func numberOfColumns(inAdsGridView adsGridView: AdsGridView) -> AdsGridView.ColumnConfiguration {
+    public func numberOfColumns(inAdsGridView adsGridView: AdsGridView) -> AdsGridView.ColumnConfiguration? {
         numberOfColumns
     }
 
