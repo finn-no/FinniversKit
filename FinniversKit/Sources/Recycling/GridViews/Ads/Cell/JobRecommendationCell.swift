@@ -108,7 +108,8 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
     }
 
     private func setup() {
-        isAccessibilityElement = true
+        contentView.isAccessibilityElement = true
+        accessibilityElements = [contentView, favoriteButton]
 
         contentView.layer.cornerRadius = .spacingS
         contentView.layer.borderWidth = 1
@@ -192,7 +193,7 @@ extension JobRecommendationCell: AdRecommendationConfigurable {
 
         loadingColor = loadingColors[index % loadingColors.count]
 
-        accessibilityLabel = model?.accessibilityLabel
+        contentView.accessibilityLabel = model?.accessibilityLabel
         favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityLabel
 
         titleLabel.text = model?.title
