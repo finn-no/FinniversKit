@@ -66,7 +66,7 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
 
     private lazy var titleLabel: Label = {
         let view = Label(style: .body, withAutoLayout: true)
-        view.numberOfLines = 2
+        view.numberOfLines = 0
         return view
     }()
 
@@ -228,7 +228,7 @@ public extension JobRecommendationCell {
 
     static func height(for model: JobRecommendationModel, width: CGFloat) -> CGFloat {
         let titleLabel = Label(style: .body)
-        titleLabel.numberOfLines = 2
+        titleLabel.numberOfLines = 0
         titleLabel.text = model.title
 
         let detailLabel = Label(style: .detail)
