@@ -18,7 +18,7 @@ public protocol JobAdRecommendationViewModel {
 
 public extension JobAdRecommendationViewModel {
     var accessibilityLabel: String {
-        "\(title), \(company), \(locationAndPublishedRelative)"
+        "\(title), \(company), \(location), \(publishedRelative ?? "")"
     }
 
     var locationAndPublishedRelative: String {
