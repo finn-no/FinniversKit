@@ -4,11 +4,16 @@
 
 import Foundation
 
-public protocol JobAdRecommendationViewModel: AdRecommendationVariant {
+public protocol JobAdRecommendationViewModel {
+    var title: String { get }
     var company: String { get }
     var location: String { get }
     var publishedRelative: String? { get }
     var ribbonOverlayModel: RibbonViewModel? { get }
+    var imagePath: String? { get }
+    var isFavorite: Bool { get }
+    var accessibilityLabel: String { get }
+    var favoriteButtonAccessibilityLabel: String { get }
 }
 
 public extension JobAdRecommendationViewModel {
