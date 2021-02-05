@@ -85,7 +85,7 @@ extension FrontpageViewDemoView: AdsGridViewDataSource {
 
     public func adsGridView(_ adsGridView: AdsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
         return [
-            AdsGridViewCell.self,
+            StandardAdRecommendationCell.self,
             BannerAdDemoCell.self
         ]
     }
@@ -97,7 +97,7 @@ extension FrontpageViewDemoView: AdsGridViewDataSource {
         case .google:
             return 300
         default:
-            return AdsGridViewCell.height(
+            return StandardAdRecommendationCell.height(
                 for: model,
                 width: width
             )
@@ -112,7 +112,7 @@ extension FrontpageViewDemoView: AdsGridViewDataSource {
             return collectionView.dequeue(BannerAdDemoCell.self, for: indexPath)
 
         default:
-            let cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
+            let cell = collectionView.dequeue(StandardAdRecommendationCell.self, for: indexPath)
             cell.imageDataSource = adsGridView
             cell.delegate = adsGridView
             cell.configure(with: model, atIndex: indexPath.item)

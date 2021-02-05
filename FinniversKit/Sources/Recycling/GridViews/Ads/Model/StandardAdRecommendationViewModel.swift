@@ -4,7 +4,7 @@
 
 import Foundation
 
-public protocol AdsGridViewModel: AdRecommendationVariant {
+public protocol StandardAdRecommendationViewModel: AdRecommendationVariant {
     var subtitle: String? { get }
     var imageSize: CGSize { get }
     var iconImage: UIImage? { get }
@@ -24,7 +24,7 @@ public struct SponsoredAdData {
     }
 }
 
-public extension AdsGridViewModel {
+public extension StandardAdRecommendationViewModel {
     var accessibilityLabel: String {
         var message = title
 

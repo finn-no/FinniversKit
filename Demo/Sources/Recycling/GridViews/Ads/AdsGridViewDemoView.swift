@@ -80,8 +80,8 @@ extension AdsGridViewDemoView: AdsGridViewDataSource {
 
     public func adsGridView(_ adsGridView: AdsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
         return [
-            AdsGridViewCell.self,
-            JobRecommendationCell.self,
+            StandardAdRecommendationCell.self,
+            JobAdRecommendationCell.self,
             BannerAdDemoCell.self,
             NativeAdvertRecommendationDemoCell.self,
         ]
@@ -98,10 +98,10 @@ extension AdsGridViewDemoView: AdsGridViewDataSource {
             case .google:
                 return 300
             default:
-                return AdsGridViewCell.height(for: ad, width: width)
+                return StandardAdRecommendationCell.height(for: ad, width: width)
             }
         case .job(let ad):
-            return JobRecommendationCell.height(for: ad, width: width)
+            return JobAdRecommendationCell.height(for: ad, width: width)
         }
     }
 
@@ -116,7 +116,7 @@ extension AdsGridViewDemoView: AdsGridViewDataSource {
             case .google:
                 return collectionView.dequeue(BannerAdDemoCell.self, for: indexPath)
             default:
-                let cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
+                let cell = collectionView.dequeue(StandardAdRecommendationCell.self, for: indexPath)
                 cell.imageDataSource = adsGridView
                 cell.delegate = adsGridView
                 cell.configure(with: ad, atIndex: indexPath.item)
@@ -124,7 +124,7 @@ extension AdsGridViewDemoView: AdsGridViewDataSource {
                 return cell
             }
         case .job(let ad):
-            let cell = collectionView.dequeue(JobRecommendationCell.self, for: indexPath)
+            let cell = collectionView.dequeue(JobAdRecommendationCell.self, for: indexPath)
             cell.imageDataSource = adsGridView
             cell.delegate = adsGridView
             cell.configure(with: ad, atIndex: indexPath.item)

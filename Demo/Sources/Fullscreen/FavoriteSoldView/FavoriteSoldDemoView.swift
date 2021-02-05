@@ -108,18 +108,18 @@ extension FavoriteSoldDemoView: AdsGridViewDataSource {
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
-        return [AdsGridViewCell.self]
+        return [StandardAdRecommendationCell.self]
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
         let model = ads[indexPath.item]
-        return AdsGridViewCell.height(for: model, width: width)
+        return StandardAdRecommendationCell.height(for: model, width: width)
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let model = ads[indexPath.item]
 
-        let cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
+        let cell = collectionView.dequeue(StandardAdRecommendationCell.self, for: indexPath)
         cell.imageDataSource = adsGridView
         cell.delegate = adsGridView
         cell.configure(with: model, atIndex: indexPath.item)

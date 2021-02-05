@@ -10,8 +10,8 @@ enum AdRecommendation {
     case job(JobAd)
 }
 
-/// A model confirming to the AdsGridViewModel protocol for showcasing AdsGridViewCell in playground.
-public struct Ad: AdsGridViewModel {
+/// A model confirming to the StandardAdRecommendationViewModel protocol for showcasing StandardAdRecommendationCell in playground.
+public struct Ad: StandardAdRecommendationViewModel {
     public enum AdType {
         case native
         case google
@@ -47,8 +47,8 @@ public struct Ad: AdsGridViewModel {
     public var favoriteButtonAccessibilityLabel = "Sett annonsen som favoritt"
 }
 
-/// A model confirming to the JobRecommendationModel protocol for showcasing JobRecommendationCell in playground.
-struct JobAd: JobRecommendationModel {
+/// A model confirming to the JobAdRecommendationViewModel protocol for showcasing JobAdRecommendationCell in playground.
+struct JobAd: JobAdRecommendationViewModel {
     var title: String
     var company: String
     var location: String

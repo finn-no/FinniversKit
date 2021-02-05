@@ -4,14 +4,14 @@
 
 import Foundation
 
-public protocol JobRecommendationModel: AdRecommendationVariant {
+public protocol JobAdRecommendationViewModel: AdRecommendationVariant {
     var company: String { get }
     var location: String { get }
     var publishedRelative: String? { get }
     var ribbonOverlayModel: RibbonViewModel? { get }
 }
 
-public extension JobRecommendationModel {
+public extension JobAdRecommendationViewModel {
     var accessibilityLabel: String {
         "\(title), \(company), \(locationAndPublishedRelative)"
     }

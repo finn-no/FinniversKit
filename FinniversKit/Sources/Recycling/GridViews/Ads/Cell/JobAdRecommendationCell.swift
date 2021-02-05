@@ -4,9 +4,9 @@
 
 import UIKit
 
-public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
+public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell {
 
-    public var model: JobRecommendationModel?
+    public var model: JobAdRecommendationViewModel?
 
     public weak var delegate: AdRecommendationCellDelegate?
 
@@ -148,8 +148,8 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
             imageView.centerXAnchor.constraint(equalTo: imageViewContainer.centerXAnchor),
             imageView.topAnchor.constraint(equalTo: imageViewContainer.topAnchor, constant: .spacingS),
             imageView.bottomAnchor.constraint(equalTo: imageViewContainer.bottomAnchor, constant: -.spacingS, priority: .required - 1),
-            imageView.widthAnchor.constraint(equalTo: imageViewContainer.widthAnchor, multiplier: JobRecommendationCell.imageWidthMultiplier),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: JobRecommendationCell.imageHeightMultiplier),
+            imageView.widthAnchor.constraint(equalTo: imageViewContainer.widthAnchor, multiplier: JobAdRecommendationCell.imageWidthMultiplier),
+            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: JobAdRecommendationCell.imageHeightMultiplier),
 
             favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXS),
             favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingXS),
@@ -199,8 +199,8 @@ public class JobRecommendationCell: UICollectionViewCell, AdRecommendationCell {
 }
 
 // MARK: - AdRecommendationConfigurable
-extension JobRecommendationCell: AdRecommendationConfigurable {
-    public func configure(with model: JobRecommendationModel?, atIndex index: Int) {
+extension JobAdRecommendationCell: AdRecommendationConfigurable {
+    public func configure(with model: JobAdRecommendationViewModel?, atIndex index: Int) {
         self.model = model
         self.index = index
 
@@ -222,11 +222,11 @@ extension JobRecommendationCell: AdRecommendationConfigurable {
 }
 
 // MARK: - Static methods
-public extension JobRecommendationCell {
+public extension JobAdRecommendationCell {
     static let imageWidthMultiplier: CGFloat = 0.5
     static let imageHeightMultiplier: CGFloat = 0.85
 
-    static func height(for model: JobRecommendationModel, width: CGFloat) -> CGFloat {
+    static func height(for model: JobAdRecommendationViewModel, width: CGFloat) -> CGFloat {
         let titleLabel = Label(style: .body)
         titleLabel.numberOfLines = 0
         titleLabel.text = model.title
@@ -253,7 +253,7 @@ public extension JobRecommendationCell {
 }
 
 // MARK: - RemoteImageViewDelegate
-extension JobRecommendationCell: RemoteImageViewDelegate {
+extension JobAdRecommendationCell: RemoteImageViewDelegate {
     public func remoteImageViewDidSetImage(_ view: RemoteImageView) {
         imageViewContainer.backgroundColor = .clear
     }

@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class AdsGridViewCell: UICollectionViewCell, AdRecommendationCell, AdRecommendationConfigurable {
+public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendationCell, AdRecommendationConfigurable {
 
     // MARK: - Internal properties
 
@@ -26,7 +26,7 @@ public class AdsGridViewCell: UICollectionViewCell, AdRecommendationCell, AdReco
     private lazy var imageContentView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.layer.borderWidth = 1
-        view.layer.cornerRadius = AdsGridViewCell.cornerRadius
+        view.layer.cornerRadius = StandardAdRecommendationCell.cornerRadius
         view.layer.masksToBounds = true
         return view
     }()
@@ -84,7 +84,7 @@ public class AdsGridViewCell: UICollectionViewCell, AdRecommendationCell, AdReco
         let view = UILabel(withAutoLayout: true)
         view.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
         view.alpha = 1.0
-        view.layer.cornerRadius = AdsGridViewCell.cornerRadius
+        view.layer.cornerRadius = StandardAdRecommendationCell.cornerRadius
         view.layer.masksToBounds = true
         view.layer.maskedCorners = [.layerMaxXMinYCorner]
         return view
@@ -107,15 +107,15 @@ public class AdsGridViewCell: UICollectionViewCell, AdRecommendationCell, AdReco
 
     private lazy var subtitleToImageConstraint = subtitleLabel.topAnchor.constraint(
         equalTo: imageContentView.bottomAnchor,
-        constant: AdsGridViewCell.subtitleTopMargin
+        constant: StandardAdRecommendationCell.subtitleTopMargin
     )
 
     private lazy var subtitleToRibbonConstraint = subtitleLabel.topAnchor.constraint(
         equalTo: ribbonView.bottomAnchor,
-        constant: AdsGridViewCell.subtitleTopMargin
+        constant: StandardAdRecommendationCell.subtitleTopMargin
     )
 
-    private var model: AdsGridViewModel?
+    private var model: StandardAdRecommendationViewModel?
 
     // MARK: - External properties
 
@@ -172,8 +172,8 @@ public class AdsGridViewCell: UICollectionViewCell, AdRecommendationCell, AdReco
 
         backgroundColor = .bgPrimary
 
-        let imageHeightMinimumConstraint = imageContentView.heightAnchor.constraint(equalTo: imageContentView.widthAnchor, multiplier: AdsGridViewCell.minImageAspectRatio)
-        let imageHeightMaximumConstraint = imageContentView.heightAnchor.constraint(lessThanOrEqualTo: imageContentView.widthAnchor, multiplier: AdsGridViewCell.maxImageAspectRatio)
+        let imageHeightMinimumConstraint = imageContentView.heightAnchor.constraint(equalTo: imageContentView.widthAnchor, multiplier: StandardAdRecommendationCell.minImageAspectRatio)
+        let imageHeightMaximumConstraint = imageContentView.heightAnchor.constraint(lessThanOrEqualTo: imageContentView.widthAnchor, multiplier: StandardAdRecommendationCell.maxImageAspectRatio)
 
         imageHeightMinimumConstraint.priority = .defaultHigh
 
@@ -184,7 +184,7 @@ public class AdsGridViewCell: UICollectionViewCell, AdRecommendationCell, AdReco
             imageHeightMinimumConstraint,
             imageHeightMaximumConstraint,
 
-            ribbonView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: AdsGridViewCell.ribbonTopMargin),
+            ribbonView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: StandardAdRecommendationCell.ribbonTopMargin),
             ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
 
             logoImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: .spacingS),
@@ -195,30 +195,30 @@ public class AdsGridViewCell: UICollectionViewCell, AdRecommendationCell, AdReco
             subtitleToImageConstraint,
             subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            subtitleLabel.heightAnchor.constraint(equalToConstant: AdsGridViewCell.subtitleHeight),
+            subtitleLabel.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.subtitleHeight),
 
-            titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: AdsGridViewCell.titleTopMargin),
+            titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: StandardAdRecommendationCell.titleTopMargin),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: AdsGridViewCell.titleHeight),
+            titleLabel.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.titleHeight),
 
             accessoryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             accessoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             accessoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            accessoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -AdsGridViewCell.bottomMargin),
+            accessoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -StandardAdRecommendationCell.bottomMargin),
 
-            iconImageView.leadingAnchor.constraint(equalTo: imageDescriptionView.leadingAnchor, constant: AdsGridViewCell.margin),
-            iconImageView.heightAnchor.constraint(equalToConstant: AdsGridViewCell.iconSize),
-            iconImageView.widthAnchor.constraint(equalToConstant: AdsGridViewCell.iconSize),
+            iconImageView.leadingAnchor.constraint(equalTo: imageDescriptionView.leadingAnchor, constant: StandardAdRecommendationCell.margin),
+            iconImageView.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.iconSize),
+            iconImageView.widthAnchor.constraint(equalToConstant: StandardAdRecommendationCell.iconSize),
             iconImageView.centerYAnchor.constraint(equalTo: imageDescriptionView.centerYAnchor),
 
-            imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: AdsGridViewCell.margin),
+            imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: StandardAdRecommendationCell.margin),
             imageTextLabel.centerYAnchor.constraint(equalTo: imageDescriptionView.centerYAnchor),
 
             imageDescriptionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageDescriptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: AdsGridViewCell.margin),
+            imageDescriptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: StandardAdRecommendationCell.margin),
             imageDescriptionView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor),
-            imageDescriptionView.heightAnchor.constraint(equalToConstant: AdsGridViewCell.imageDescriptionHeight),
+            imageDescriptionView.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.imageDescriptionHeight),
             imageDescriptionView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor),
 
             favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXS),
@@ -257,7 +257,7 @@ public class AdsGridViewCell: UICollectionViewCell, AdRecommendationCell, AdReco
 
     // MARK: - Dependency injection
 
-    public func configure(with model: AdsGridViewModel?, atIndex index: Int) {
+    public func configure(with model: StandardAdRecommendationViewModel?, atIndex index: Int) {
         self.model = model
         self.index = index
 
@@ -314,9 +314,9 @@ public class AdsGridViewCell: UICollectionViewCell, AdRecommendationCell, AdReco
         return subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + accessoryHeight + bottomMargin
     }
 
-    public static func height(for model: AdsGridViewModel, width: CGFloat) -> CGFloat {
+    public static func height(for model: StandardAdRecommendationViewModel, width: CGFloat) -> CGFloat {
         let imageRatio = model.imageSize.height / model.imageSize.width
-        let clippedImageRatio = min(max(imageRatio, AdsGridViewCell.minImageAspectRatio), AdsGridViewCell.maxImageAspectRatio)
+        let clippedImageRatio = min(max(imageRatio, StandardAdRecommendationCell.minImageAspectRatio), StandardAdRecommendationCell.maxImageAspectRatio)
         let imageHeight = width * clippedImageRatio
         var contentHeight = subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + bottomMargin
 
