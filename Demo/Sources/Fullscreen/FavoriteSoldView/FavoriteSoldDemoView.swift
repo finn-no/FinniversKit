@@ -12,8 +12,8 @@ public class FavoriteSoldDemoView: UIView {
 
     private lazy var favoriteSoldView: FavoriteSoldView = {
         let view = FavoriteSoldView(favoriteSoldViewDelegate: self,
-                                    adsGridViewDelegate: self,
-                                    adsGridViewDataSource: self,
+                                    adRecommendationsGridViewDelegate: self,
+                                    adRecommendationsGridViewDataSource: self,
                                     remoteImageViewDataSource: self)
         view.configure(with: FavoriteSoldDefaultData())
         view.translatesAutoresizingMaskIntoConstraints = false

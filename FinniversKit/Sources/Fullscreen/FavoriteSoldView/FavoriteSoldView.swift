@@ -91,7 +91,7 @@ public class FavoriteSoldView: UIView {
         return view
     }()
 
-    private let adsGridView: AdRecommendationsGridView
+    private let adRecommendationsGridView: AdRecommendationsGridView
 
     private lazy var headerView = UIView()
 
@@ -99,10 +99,10 @@ public class FavoriteSoldView: UIView {
 
     // MARK: - Init
 
-    public init(favoriteSoldViewDelegate: FavoriteSoldViewDelegate, adsGridViewDelegate: AdsGridViewDelegate, adsGridViewDataSource: AdsGridViewDataSource, remoteImageViewDataSource: RemoteImageViewDataSource) {
+    public init(favoriteSoldViewDelegate: FavoriteSoldViewDelegate, adRecommendationsGridViewDelegate: AdsGridViewDelegate, adRecommendationsGridViewDataSource: AdsGridViewDataSource, remoteImageViewDataSource: RemoteImageViewDataSource) {
 
-        adsGridView = AdRecommendationsGridView(delegate: adsGridViewDelegate, dataSource: adsGridViewDataSource)
-        adsGridView.translatesAutoresizingMaskIntoConstraints = false
+        adRecommendationsGridView = AdRecommendationsGridView(delegate: adRecommendationsGridViewDelegate, dataSource: adRecommendationsGridViewDataSource)
+        adRecommendationsGridView.translatesAutoresizingMaskIntoConstraints = false
         super.init(frame: .zero)
         delegate = favoriteSoldViewDelegate
         imageView.dataSource = remoteImageViewDataSource
@@ -128,8 +128,8 @@ public class FavoriteSoldView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        addSubview(adsGridView)
-        adsGridView.collectionView.addSubview(adsRetryView)
+        addSubview(adRecommendationsGridView)
+        adRecommendationsGridView.collectionView.addSubview(adsRetryView)
 
         headerView.addSubview(stackView)
         headerView.addSubview(imageContentView)
@@ -169,8 +169,8 @@ public class FavoriteSoldView: UIView {
             similarAdsTitleLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -FavoriteSoldView.adsGridTopSpacing),
         ])
 
-        adsGridView.fillInSuperview()
-        adsGridView.headerView = headerView
+        adRecommendationsGridView.fillInSuperview()
+        adRecommendationsGridView.headerView = headerView
         setupFrames()
     }
 
@@ -187,7 +187,7 @@ public class FavoriteSoldView: UIView {
         adsRetryView.frame.origin = CGPoint(x: 0, y: headerView.frame.height + .spacingXXL)
         adsRetryView.frame.size = CGSize(width: bounds.width, height: 200)
 
-        adsGridView.invalidateLayout()
+        adRecommendationsGridView.invalidateLayout()
     }
 
     // MARK: - Public methods
@@ -221,11 +221,11 @@ public class FavoriteSoldView: UIView {
     // MARK: - Public methods
 
     public func reloadAds() {
-        adsGridView.reloadData()
+        adRecommendationsGridView.reloadData()
     }
 
     public func updateItem(at index: Int, isFavorite: Bool) {
-        adsGridView.updateItem(at: index, isFavorite: isFavorite)
+        adRecommendationsGridView.updateItem(at: index, isFavorite: isFavorite)
     }
 
     public func hideAdsRetryButton() {
