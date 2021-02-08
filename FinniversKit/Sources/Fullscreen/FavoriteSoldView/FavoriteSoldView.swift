@@ -91,7 +91,7 @@ public class FavoriteSoldView: UIView {
         return view
     }()
 
-    private let adsGridView: AdsGridView
+    private let adsGridView: AdRecommendationsGridView
 
     private lazy var headerView = UIView()
 
@@ -101,7 +101,7 @@ public class FavoriteSoldView: UIView {
 
     public init(favoriteSoldViewDelegate: FavoriteSoldViewDelegate, adsGridViewDelegate: AdsGridViewDelegate, adsGridViewDataSource: AdsGridViewDataSource, remoteImageViewDataSource: RemoteImageViewDataSource) {
 
-        adsGridView = AdsGridView(delegate: adsGridViewDelegate, dataSource: adsGridViewDataSource)
+        adsGridView = AdRecommendationsGridView(delegate: adsGridViewDelegate, dataSource: adsGridViewDataSource)
         adsGridView.translatesAutoresizingMaskIntoConstraints = false
         super.init(frame: .zero)
         delegate = favoriteSoldViewDelegate

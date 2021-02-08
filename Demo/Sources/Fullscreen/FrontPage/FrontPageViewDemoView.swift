@@ -50,7 +50,7 @@ extension FrontpageViewDemoView: FrontPageViewDelegate {
 }
 
 extension FrontpageViewDemoView: AdsGridViewDelegate {
-    public func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int) {
+    public func adsGridView(_ adsGridView: AdRecommendationsGridView, willDisplayItemAtIndex index: Int) {
         if index >= visibleItems - 10 {
             visibleItems += 10
 
@@ -60,14 +60,14 @@ extension FrontpageViewDemoView: AdsGridViewDelegate {
         }
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView) {}
-    public func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int) {}
+    public func adsGridView(_ adsGridView: AdRecommendationsGridView, didScrollInScrollView scrollView: UIScrollView) {}
+    public func adsGridView(_ adsGridView: AdRecommendationsGridView, didSelectItemAtIndex index: Int) {}
 
-    public func adsGridViewDidStartRefreshing(_ adsGridView: AdsGridView) {
+    public func adsGridViewDidStartRefreshing(_ adsGridView: AdRecommendationsGridView) {
         frontPageView.reloadData()
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at index: Int) {
+    public func adsGridView(_ adsGridView: AdRecommendationsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at index: Int) {
         adsGridView.updateItem(at: index, isFavorite: !cell.isFavorite)
     }
 }
@@ -75,22 +75,22 @@ extension FrontpageViewDemoView: AdsGridViewDelegate {
 // MARK: - AdsGridViewDataSource
 
 extension FrontpageViewDemoView: AdsGridViewDataSource {
-    public func numberOfColumns(inAdsGridView adsGridView: AdsGridView) -> AdsGridView.ColumnConfiguration? {
+    public func numberOfColumns(inAdsGridView adsGridView: AdRecommendationsGridView) -> AdRecommendationsGridView.ColumnConfiguration? {
         return nil
     }
 
-    public func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int {
+    public func numberOfItems(inAdsGridView adsGridView: AdRecommendationsGridView) -> Int {
         return min(ads.count, visibleItems)
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
+    public func adsGridView(_ adsGridView: AdRecommendationsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
         return [
             StandardAdRecommendationCell.self,
             BannerAdDemoCell.self
         ]
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
+    public func adsGridView(_ adsGridView: AdRecommendationsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
         let model = ads[indexPath.item]
 
         switch model.adType {
@@ -104,7 +104,7 @@ extension FrontpageViewDemoView: AdsGridViewDataSource {
         }
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func adsGridView(_ adsGridView: AdRecommendationsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let model = ads[indexPath.item]
 
         switch model.adType {
@@ -120,7 +120,7 @@ extension FrontpageViewDemoView: AdsGridViewDataSource {
         }
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    public func adsGridView(_ adsGridView: AdRecommendationsGridView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let url = URL(string: imagePath) else {
             completion(nil)
             return
@@ -141,7 +141,7 @@ extension FrontpageViewDemoView: AdsGridViewDataSource {
         task.resume()
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
+    public func adsGridView(_ adsGridView: AdRecommendationsGridView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
 
 // MARK: - MarketsGridViewDelegate

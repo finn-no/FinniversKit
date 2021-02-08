@@ -165,7 +165,7 @@
 		46E77455242CEF0A008A5E93 /* TweakingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7737E242CEF09008A5E93 /* TweakingOption.swift */; };
 		46E77456242CEF0A008A5E93 /* TweakableDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7737F242CEF09008A5E93 /* TweakableDemoView.swift */; };
 		46E77457242CEF0A008A5E93 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77380242CEF09008A5E93 /* Device.swift */; };
-		46E77458242CEF0A008A5E93 /* AdsGridViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77384242CEF09008A5E93 /* AdsGridViewDemoView.swift */; };
+		46E77458242CEF0A008A5E93 /* AdRecommendationsGridViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77384242CEF09008A5E93 /* AdRecommendationsGridViewDemoView.swift */; };
 		46E77459242CEF0A008A5E93 /* AdsGridViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77385242CEF0A008A5E93 /* AdsGridViewDemoViewHelpers.swift */; };
 		46E7745A242CEF0A008A5E93 /* NativeAdvertRecommendationDemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77386242CEF0A008A5E93 /* NativeAdvertRecommendationDemoCell.swift */; };
 		46E7745B242CEF0A008A5E93 /* BannerAdDemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77387242CEF0A008A5E93 /* BannerAdDemoCell.swift */; };
@@ -404,7 +404,7 @@
 		46E7737E242CEF09008A5E93 /* TweakingOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakingOption.swift; sourceTree = "<group>"; };
 		46E7737F242CEF09008A5E93 /* TweakableDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakableDemoView.swift; sourceTree = "<group>"; };
 		46E77380242CEF09008A5E93 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		46E77384242CEF09008A5E93 /* AdsGridViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdsGridViewDemoView.swift; sourceTree = "<group>"; };
+		46E77384242CEF09008A5E93 /* AdRecommendationsGridViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdRecommendationsGridViewDemoView.swift; sourceTree = "<group>"; };
 		46E77385242CEF0A008A5E93 /* AdsGridViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdsGridViewDemoViewHelpers.swift; sourceTree = "<group>"; };
 		46E77386242CEF0A008A5E93 /* NativeAdvertRecommendationDemoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAdvertRecommendationDemoCell.swift; sourceTree = "<group>"; };
 		46E77387242CEF0A008A5E93 /* BannerAdDemoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerAdDemoCell.swift; sourceTree = "<group>"; };
@@ -1514,7 +1514,7 @@
 		46E77383242CEF09008A5E93 /* Ads */ = {
 			isa = PBXGroup;
 			children = (
-				46E77384242CEF09008A5E93 /* AdsGridViewDemoView.swift */,
+				46E77384242CEF09008A5E93 /* AdRecommendationsGridViewDemoView.swift */,
 				46E77385242CEF0A008A5E93 /* AdsGridViewDemoViewHelpers.swift */,
 				46E77386242CEF0A008A5E93 /* NativeAdvertRecommendationDemoCell.swift */,
 				46E77387242CEF0A008A5E93 /* BannerAdDemoCell.swift */,
@@ -2060,7 +2060,7 @@
 				46E77441242CEF0A008A5E93 /* FontDemoView.swift in Sources */,
 				46E77429242CEF0A008A5E93 /* KlimabroletEventsDemoViewController.swift in Sources */,
 				46E773AE242CEF0A008A5E93 /* Helpers.swift in Sources */,
-				46E77458242CEF0A008A5E93 /* AdsGridViewDemoView.swift in Sources */,
+				46E77458242CEF0A008A5E93 /* AdRecommendationsGridViewDemoView.swift in Sources */,
 				46E773F6242CEF0A008A5E93 /* ObjectPageTitleDemoView.swift in Sources */,
 				46E77430242CEF0A008A5E93 /* RadioButtonDemoView.swift in Sources */,
 				46E773B3242CEF0A008A5E93 /* FavoriteFolderActionDemoView.swift in Sources */,

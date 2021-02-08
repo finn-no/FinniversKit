@@ -1133,7 +1133,7 @@
 		441FE415209A24E500B04EF1 /* GridViews */ = {
 			isa = PBXGroup;
 			children = (
-				441FE41F209A24E500B04EF1 /* Ads */,
+				441FE41F209A24E500B04EF1 /* AdRecommendations */,
 				441FE416209A24E500B04EF1 /* Markets */,
 				CFFDF89522F311E300FE68EA /* NeighborhoodProfile */,
 			);
@@ -1176,14 +1176,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		441FE41F209A24E500B04EF1 /* Ads */ = {
+		441FE41F209A24E500B04EF1 /* AdRecommendations */ = {
 			isa = PBXGroup;
 			children = (
 				441FE420209A24E500B04EF1 /* Cell */,
 				441FE423209A24E500B04EF1 /* GridView */,
 				441FE428209A24E500B04EF1 /* Model */,
 			);
-			path = Ads;
+			path = AdRecommendations;
 			sourceTree = "<group>";
 		};
 		441FE420209A24E500B04EF1 /* Cell */ = {

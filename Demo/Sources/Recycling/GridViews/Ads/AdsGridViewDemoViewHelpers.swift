@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-/// A wrapper enum to have multiple types of view models in the AdsGridViewDemoView data source
+/// A wrapper enum to have multiple types of view models in the AdRecommendationsGridViewDemoView data source
 enum AdRecommendation {
     case ad(Ad)
     case job(JobAd)

@@ -35,7 +35,7 @@ public final class FrontPageView: UIView {
     // MARK: - Subviews
 
     private let marketsGridView: MarketsGridView
-    private let adsGridView: AdsGridView
+    private let adsGridView: AdRecommendationsGridView
     private lazy var headerView = UIView()
 
     private lazy var headerLabel: Label = {
@@ -66,7 +66,7 @@ public final class FrontPageView: UIView {
         marketsGridView = MarketsGridView(delegate: marketsGridViewDelegate, dataSource: marketsGridViewDataSource)
         marketsGridView.translatesAutoresizingMaskIntoConstraints = false
 
-        adsGridView = AdsGridView(delegate: adsGridViewDelegate, dataSource: adsGridViewDataSource)
+        adsGridView = AdRecommendationsGridView(delegate: adsGridViewDelegate, dataSource: adsGridViewDataSource)
         adsGridView.translatesAutoresizingMaskIntoConstraints = false
 
         super.init(frame: .zero)
