@@ -30,8 +30,8 @@ public class AdRecommendationsGridView: UIView {
 
     // MARK: - Internal properties
 
-    private lazy var collectionViewLayout: AdsGridViewLayout = {
-        let layout = AdsGridViewLayout()
+    private lazy var collectionViewLayout: AdRecommendationsGridViewLayout = {
+        let layout = AdRecommendationsGridViewLayout()
         layout.delegate = self
         return layout
     }()
@@ -218,8 +218,8 @@ extension AdRecommendationsGridView: AdRecommendationCellDelegate {
 
 // MARK: - AdsGridViewLayoutDelegate
 
-extension AdRecommendationsGridView: AdsGridViewLayoutDelegate {
-    func adsGridViewLayoutNumberOfColumns(_ adsGridViewLayout: AdsGridViewLayout) -> Int {
+extension AdRecommendationsGridView: AdRecommendationsGridViewLayoutDelegate {
+    func adRecommendationsGridViewLayoutNumberOfColumns(_ layout: AdRecommendationsGridViewLayout) -> Int {
         switch dataSource?.numberOfColumns(inAdsGridView: self) {
         case .fullWidth: return 1
         case .columns(let columns) where columns > 1 && columns <= 3:
@@ -229,11 +229,11 @@ extension AdRecommendationsGridView: AdsGridViewLayoutDelegate {
         }
     }
 
-    func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, heightForHeaderViewInCollectionView collectionView: UICollectionView) -> CGFloat? {
+    func adRecommendationsGridViewLayout(_ layout: AdRecommendationsGridViewLayout, heightForHeaderViewInCollectionView collectionView: UICollectionView) -> CGFloat? {
         return headerView?.frame.size.height
     }
 
-    func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
+    func adRecommendationsGridViewLayout(_ layout: AdRecommendationsGridViewLayout, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
         return dataSource?.adsGridView(self, heightForItemWithWidth: width, at: indexPath) ?? 0
     }
 }

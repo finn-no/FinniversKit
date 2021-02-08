@@ -4,14 +4,14 @@
 
 import UIKit
 
-protocol AdsGridViewLayoutDelegate: AnyObject {
-    func adsGridViewLayoutNumberOfColumns(_ adsGridViewLayout: AdsGridViewLayout) -> Int
-    func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, heightForHeaderViewInCollectionView collectionView: UICollectionView) -> CGFloat?
-    func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat
+protocol AdRecommendationsGridViewLayoutDelegate: AnyObject {
+    func adRecommendationsGridViewLayoutNumberOfColumns(_ layout: AdRecommendationsGridViewLayout) -> Int
+    func adRecommendationsGridViewLayout(_ layout: AdRecommendationsGridViewLayout, heightForHeaderViewInCollectionView collectionView: UICollectionView) -> CGFloat?
+    func adRecommendationsGridViewLayout(_ layout: AdRecommendationsGridViewLayout, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat
 }
 
-class AdsGridViewLayout: UICollectionViewLayout {
-    weak var delegate: AdsGridViewLayoutDelegate?
+class AdRecommendationsGridViewLayout: UICollectionViewLayout {
+    weak var delegate: AdRecommendationsGridViewLayoutDelegate?
 
     private var itemAttributes = [UICollectionViewLayoutAttributes]()
 
@@ -40,7 +40,7 @@ class AdsGridViewLayout: UICollectionViewLayout {
     }
 
     private var numberOfColumns: Int {
-        delegate?.adsGridViewLayoutNumberOfColumns(self) ?? 2
+        delegate?.adRecommendationsGridViewLayoutNumberOfColumns(self) ?? 2
     }
 
     private var numberOfItems: Int {
@@ -87,7 +87,7 @@ class AdsGridViewLayout: UICollectionViewLayout {
         var attributesCollection = [UICollectionViewLayoutAttributes]()
         var yOffset = configuration.topOffset
 
-        if let height = delegate?.adsGridViewLayout(self, heightForHeaderViewInCollectionView: collectionView) {
+        if let height = delegate?.adRecommendationsGridViewLayout(self, heightForHeaderViewInCollectionView: collectionView) {
             let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, with: IndexPath(item: 0, section: 0))
             attributes.frame = CGRect(x: 0, y: 0, width: collectionView.frame.size.width, height: height)
             attributesCollection.append(attributes)
@@ -103,7 +103,7 @@ class AdsGridViewLayout: UICollectionViewLayout {
             let verticalOffset = CGFloat(columns[columnIndex]) + topPadding
 
             let indexPath = IndexPath(item: index, section: 0)
-            let itemHeight = delegate?.adsGridViewLayout(self, heightForItemWithWidth: itemWidth, at: indexPath) ?? 0
+            let itemHeight = delegate?.adRecommendationsGridViewLayout(self, heightForItemWithWidth: itemWidth, at: indexPath) ?? 0
 
             columns[columnIndex] = Int(verticalOffset + itemHeight + configuration.columnSpacing)
 
@@ -131,7 +131,7 @@ class AdsGridViewLayout: UICollectionViewLayout {
         }
 
         guard collectionView.numberOfItems(inSection: 0) > 0 else {
-            if let height = delegate?.adsGridViewLayout(self, heightForHeaderViewInCollectionView: collectionView) {
+            if let height = delegate?.adRecommendationsGridViewLayout(self, heightForHeaderViewInCollectionView: collectionView) {
                 return CGSize(width: collectionView.frame.size.width, height: height)
             } else {
                 return collectionView.bounds.size
