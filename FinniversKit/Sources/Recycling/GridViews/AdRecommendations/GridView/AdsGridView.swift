@@ -12,7 +12,7 @@ public protocol AdRecommendationsGridViewDelegate: AnyObject {
     func adsGridView(_ adsGridView: AdRecommendationsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at index: Int)
 }
 
-public protocol AdsGridViewDataSource: AnyObject {
+public protocol AdRecommendationsGridViewDataSource: AnyObject {
     func numberOfItems(inAdsGridView adsGridView: AdRecommendationsGridView) -> Int
     func numberOfColumns(inAdsGridView adsGridView: AdRecommendationsGridView) -> AdRecommendationsGridView.ColumnConfiguration?
     func adsGridView(_ adsGridView: AdRecommendationsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type]
@@ -53,7 +53,7 @@ public class AdRecommendationsGridView: UIView {
     }()
 
     private weak var delegate: AdRecommendationsGridViewDelegate?
-    private weak var dataSource: AdsGridViewDataSource?
+    private weak var dataSource: AdRecommendationsGridViewDataSource?
     private let imageCache = ImageMemoryCache()
 
     // MARK: - External properties
@@ -72,7 +72,7 @@ public class AdRecommendationsGridView: UIView {
 
     // MARK: - Setup
 
-    public init(delegate: AdRecommendationsGridViewDelegate, dataSource: AdsGridViewDataSource) {
+    public init(delegate: AdRecommendationsGridViewDelegate, dataSource: AdRecommendationsGridViewDataSource) {
         super.init(frame: .zero)
 
         self.delegate = delegate

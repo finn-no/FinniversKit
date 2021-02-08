@@ -96,9 +96,9 @@ extension FavoriteSoldDemoView: AdRecommendationsGridViewDelegate {
     }
 }
 
-// MARK: - AdsGridViewDataSource
+// MARK: - AdRecommendationsGridViewDataSource
 
-extension FavoriteSoldDemoView: AdsGridViewDataSource {
+extension FavoriteSoldDemoView: AdRecommendationsGridViewDataSource {
     public func numberOfColumns(inAdsGridView adsGridView: AdRecommendationsGridView) -> AdRecommendationsGridView.ColumnConfiguration? {
         return nil
     }

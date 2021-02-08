@@ -72,9 +72,9 @@ extension FrontpageViewDemoView: AdRecommendationsGridViewDelegate {
     }
 }
 
-// MARK: - AdsGridViewDataSource
+// MARK: - AdRecommendationsGridViewDataSource
 
-extension FrontpageViewDemoView: AdsGridViewDataSource {
+extension FrontpageViewDemoView: AdRecommendationsGridViewDataSource {
     public func numberOfColumns(inAdsGridView adsGridView: AdRecommendationsGridView) -> AdRecommendationsGridView.ColumnConfiguration? {
         return nil
     }

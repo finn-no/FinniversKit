@@ -69,7 +69,7 @@ extension AdRecommendationsGridViewDemoView: AdRecommendationsGridViewDelegate {
     }
 }
 
-extension AdRecommendationsGridViewDemoView: AdsGridViewDataSource {
+extension AdRecommendationsGridViewDemoView: AdRecommendationsGridViewDataSource {
     public func numberOfColumns(inAdsGridView adsGridView: AdRecommendationsGridView) -> AdRecommendationsGridView.ColumnConfiguration? {
         numberOfColumns
     }
