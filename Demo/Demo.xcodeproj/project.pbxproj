@@ -1504,14 +1504,14 @@
 		46E77382242CEF09008A5E93 /* GridViews */ = {
 			isa = PBXGroup;
 			children = (
-				46E77383242CEF09008A5E93 /* AdRecommedations */,
+				46E77383242CEF09008A5E93 /* AdRecommendations */,
 				46E77388242CEF0A008A5E93 /* NeighborhoodProfile */,
 				46E7738A242CEF0A008A5E93 /* Markets */,
 			);
 			path = GridViews;
 			sourceTree = "<group>";
 		};
-		46E77383242CEF09008A5E93 /* AdRecommedations */ = {
+		46E77383242CEF09008A5E93 /* AdRecommendations */ = {
 			isa = PBXGroup;
 			children = (
 				46E77384242CEF09008A5E93 /* AdRecommendationsGridViewDemoView.swift */,
@@ -1519,7 +1519,7 @@
 				46E77386242CEF0A008A5E93 /* NativeAdvertRecommendationDemoCell.swift */,
 				46E77387242CEF0A008A5E93 /* BannerAdDemoCell.swift */,
 			);
-			path = AdRecommedations;
+			path = AdRecommendations;
 			sourceTree = "<group>";
 		};
 		46E77388242CEF0A008A5E93 /* NeighborhoodProfile */ = {
