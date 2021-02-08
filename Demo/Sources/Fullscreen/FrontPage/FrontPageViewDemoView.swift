@@ -41,7 +41,7 @@ public class FrontpageViewDemoView: UIView {
     }
 }
 
-// MARK: - AdsGridViewDelegate
+// MARK: - AdRecommendationsGridViewDelegate
 
 extension FrontpageViewDemoView: FrontPageViewDelegate {
     public func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView) {
@@ -49,7 +49,7 @@ extension FrontpageViewDemoView: FrontPageViewDelegate {
     }
 }
 
-extension FrontpageViewDemoView: AdsGridViewDelegate {
+extension FrontpageViewDemoView: AdRecommendationsGridViewDelegate {
     public func adsGridView(_ adsGridView: AdRecommendationsGridView, willDisplayItemAtIndex index: Int) {
         if index >= visibleItems - 10 {
             visibleItems += 10

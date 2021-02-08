@@ -51,7 +51,7 @@ public class AdRecommendationsGridViewDemoView: UIView, Tweakable {
     }
 }
 
-extension AdRecommendationsGridViewDemoView: AdsGridViewDelegate {
+extension AdRecommendationsGridViewDemoView: AdRecommendationsGridViewDelegate {
     public func adsGridViewDidStartRefreshing(_ adsGridView: AdRecommendationsGridView) {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) { [weak adsGridView] in
             adsGridView?.reloadData()

@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol AdsGridViewDelegate: AnyObject {
+public protocol AdRecommendationsGridViewDelegate: AnyObject {
     func adsGridViewDidStartRefreshing(_ adsGridView: AdRecommendationsGridView)
     func adsGridView(_ adsGridView: AdRecommendationsGridView, didSelectItemAtIndex index: Int)
     func adsGridView(_ adsGridView: AdRecommendationsGridView, willDisplayItemAtIndex index: Int)
@@ -52,7 +52,7 @@ public class AdRecommendationsGridView: UIView {
         return refreshControl
     }()
 
-    private weak var delegate: AdsGridViewDelegate?
+    private weak var delegate: AdRecommendationsGridViewDelegate?
     private weak var dataSource: AdsGridViewDataSource?
     private let imageCache = ImageMemoryCache()
 
@@ -72,7 +72,7 @@ public class AdRecommendationsGridView: UIView {
 
     // MARK: - Setup
 
-    public init(delegate: AdsGridViewDelegate, dataSource: AdsGridViewDataSource) {
+    public init(delegate: AdRecommendationsGridViewDelegate, dataSource: AdsGridViewDataSource) {
         super.init(frame: .zero)
 
         self.delegate = delegate
@@ -207,7 +207,7 @@ extension AdRecommendationsGridView: RemoteImageViewDataSource {
     }
 }
 
-// MARK: - AdsGridViewDelegate
+// MARK: - AdRecommendationsCellDelegate
 
 extension AdRecommendationsGridView: AdRecommendationCellDelegate {
     public func adRecommendationCell(_ cell: AdRecommendationCell, didTapFavoriteButton button: UIButton) {

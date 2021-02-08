@@ -99,7 +99,7 @@ public class FavoriteSoldView: UIView {
 
     // MARK: - Init
 
-    public init(favoriteSoldViewDelegate: FavoriteSoldViewDelegate, adRecommendationsGridViewDelegate: AdsGridViewDelegate, adRecommendationsGridViewDataSource: AdsGridViewDataSource, remoteImageViewDataSource: RemoteImageViewDataSource) {
+    public init(favoriteSoldViewDelegate: FavoriteSoldViewDelegate, adRecommendationsGridViewDelegate: AdRecommendationsGridViewDelegate, adRecommendationsGridViewDataSource: AdsGridViewDataSource, remoteImageViewDataSource: RemoteImageViewDataSource) {
 
         adRecommendationsGridView = AdRecommendationsGridView(delegate: adRecommendationsGridViewDelegate, dataSource: adRecommendationsGridViewDataSource)
         adRecommendationsGridView.translatesAutoresizingMaskIntoConstraints = false

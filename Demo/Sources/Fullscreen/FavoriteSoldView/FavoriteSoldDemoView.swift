@@ -76,7 +76,7 @@ extension FavoriteSoldDemoView: FavoriteSoldViewDelegate {
     public func favoriteSoldViewDidTapSoldFavorite(_ favoriteSoldView: FavoriteSoldView) {}
 }
 
-extension FavoriteSoldDemoView: AdsGridViewDelegate {
+extension FavoriteSoldDemoView: AdRecommendationsGridViewDelegate {
     public func adsGridView(_ adsGridView: AdRecommendationsGridView, willDisplayItemAtIndex index: Int) {
         if index >= visibleItems - 10 {
             visibleItems += 10
