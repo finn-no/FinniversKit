@@ -197,7 +197,7 @@ struct JobAdFactory {
                 title: title[dataIndex],
                 company: company[dataIndex],
                 location: location[dataIndex],
-                publishedRelative: time[dataIndex].isEmpty ? nil : "\(Int.random(in: 2...5)) \(time[dataIndex])",
+                publishedRelative: time[dataIndex].isEmpty ? nil : "3 \(time[dataIndex])",
                 ribbonOverlayModel: dataIndex % 2 == 0 ? RibbonViewModel(style: .success, title: "Enkel søknad") : nil,
                 imagePath: "https://static.schibsted.com/wp-content/uploads/2018/05/11085129/Schibsted_Logotype_L1_Dust-black_RGB-300x54.png",
                 isFavorite: false
@@ -230,6 +230,6 @@ struct JobAdFactory {
         "minutter siden",
         "",
         "uker siden",
-        "måned siden"
+        "måneder siden"
     ]
 }
