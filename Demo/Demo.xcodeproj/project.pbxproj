@@ -201,6 +201,7 @@
 		5D62FD7025B03B4800EB882D /* DemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D62FD6F25B03B4800EB882D /* DemoViews.swift */; };
 		5DA190D525A5BC5B002305A8 /* FinnTextField+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190D425A5BC5B002305A8 /* FinnTextField+Previews.swift */; };
 		5DA190F025A87EAB002305A8 /* FinnTextView+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190EF25A87EAB002305A8 /* FinnTextView+Previews.swift */; };
+		5DEAC3C425C164D9003376AD /* IconButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEAC3C325C164D9003376AD /* IconButtonDemoView.swift */; };
 		712C2294250B918B00E09653 /* MotorTransactionInvalidUserDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C2293250B918B00E09653 /* MotorTransactionInvalidUserDemoView.swift */; };
 		714B9357253736AD00801C99 /* SendInviteDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B9356253736AD00801C99 /* SendInviteDemoView.swift */; };
 		7197A19B24D8316B00D425EB /* WithoutInsuranceConfirmationDemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197A19A24D8316B00D425EB /* WithoutInsuranceConfirmationDemoViewModel.swift */; };
@@ -440,6 +441,7 @@
 		5D62FD6F25B03B4800EB882D /* DemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViews.swift; sourceTree = "<group>"; };
 		5DA190D425A5BC5B002305A8 /* FinnTextField+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextField+Previews.swift"; sourceTree = "<group>"; };
 		5DA190EF25A87EAB002305A8 /* FinnTextView+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextView+Previews.swift"; sourceTree = "<group>"; };
+		5DEAC3C325C164D9003376AD /* IconButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButtonDemoView.swift; sourceTree = "<group>"; };
 		712C2293250B918B00E09653 /* MotorTransactionInvalidUserDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorTransactionInvalidUserDemoView.swift; sourceTree = "<group>"; };
 		714B9356253736AD00801C99 /* SendInviteDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendInviteDemoView.swift; sourceTree = "<group>"; };
 		7197A19A24D8316B00D425EB /* WithoutInsuranceConfirmationDemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithoutInsuranceConfirmationDemoViewModel.swift; sourceTree = "<group>"; };
@@ -1181,6 +1183,7 @@
 		46E7731F242CEF09008A5E93 /* Button */ = {
 			isa = PBXGroup;
 			children = (
+				5DEAC3C225C164AB003376AD /* IconButton */,
 				46E77320242CEF09008A5E93 /* FloatingButton */,
 				46E77322242CEF09008A5E93 /* CogWheel */,
 				46E77324242CEF09008A5E93 /* Button */,
@@ -1662,6 +1665,14 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		5DEAC3C225C164AB003376AD /* IconButton */ = {
+			isa = PBXGroup;
+			children = (
+				5DEAC3C325C164D9003376AD /* IconButtonDemoView.swift */,
+			);
+			path = IconButton;
+			sourceTree = "<group>";
+		};
 		712C2292250B917000E09653 /* MotorTransactionInvalidUserView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1908,6 +1919,7 @@
 				46E773BE242CEF0A008A5E93 /* LoginEntryDemoData.swift in Sources */,
 				4D529E2125837087007AE5B6 /* ImageAsset.swift in Sources */,
 				46E77440242CEF0A008A5E93 /* SpacingDemoView.swift in Sources */,
+				5DEAC3C425C164D9003376AD /* IconButtonDemoView.swift in Sources */,
 				46E77460242CEF0A008A5E93 /* AdManagementDemoView.swift in Sources */,
 				46E7740E242CEF0A008A5E93 /* ChristmasWishListDemoView.swift in Sources */,
 				46E7742D242CEF0A008A5E93 /* PrimingDemoView.swift in Sources */,

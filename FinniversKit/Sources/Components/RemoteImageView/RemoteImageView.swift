@@ -10,11 +10,16 @@ public protocol RemoteImageViewDataSource: AnyObject {
     func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat)
 }
 
+public protocol RemoteImageViewDelegate: AnyObject {
+    func remoteImageViewDidSetImage(_ view: RemoteImageView)
+}
+
 public class RemoteImageView: UIImageView {
 
     // MARK: - Public properties
 
     public weak var dataSource: RemoteImageViewDataSource?
+    public weak var delegate: RemoteImageViewDelegate?
 
     // MARK: - Private properties
 
@@ -48,10 +53,13 @@ public class RemoteImageView: UIImageView {
     }
 
     public func setImage(_ image: UIImage?, animated: Bool) {
-        self.image = image
         let performViewChanges = { [weak self] in
-            self?.alpha = 1.0
-            self?.backgroundColor = .clear
+            guard let self = self else { return }
+
+            self.image = image
+            self.alpha = 1.0
+            self.backgroundColor = .clear
+            self.delegate?.remoteImageViewDidSetImage(self)
         }
 
         if animated {

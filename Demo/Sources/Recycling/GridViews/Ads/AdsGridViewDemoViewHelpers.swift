@@ -4,8 +4,14 @@
 
 import FinniversKit
 
-/// A model confirming to the AdsGridViewModel protocol for showcasing AdsGridViewCell in playground.
-public struct Ad: AdsGridViewModel {
+/// A wrapper enum to have multiple types of view models in the AdsGridViewDemoView data source
+enum AdRecommendation {
+    case ad(Ad)
+    case job(JobAd)
+}
+
+/// A model confirming to the StandardAdRecommendationViewModel protocol for showcasing StandardAdRecommendationCell in playground.
+public struct Ad: StandardAdRecommendationViewModel {
     public enum AdType {
         case native
         case google
@@ -41,8 +47,20 @@ public struct Ad: AdsGridViewModel {
     public var favoriteButtonAccessibilityLabel = "Sett annonsen som favoritt"
 }
 
+/// A model confirming to the JobAdRecommendationViewModel protocol for showcasing JobAdRecommendationCell in playground.
+struct JobAd: JobAdRecommendationViewModel {
+    var title: String
+    var company: String
+    var location: String
+    var publishedRelative: String?
+    var ribbonOverlayModel: RibbonViewModel?
+    var imagePath: String?
+    var isFavorite: Bool = false
+    var favoriteButtonAccessibilityLabel = "Sett annonsen som favoritt"
+}
+
 /// Creates Ads
-public struct AdFactory {
+struct AdFactory {
     private struct ImageSource {
         let path: String
         let size: CGSize
@@ -50,35 +68,10 @@ public struct AdFactory {
 
     private static var minimumDataItemsCount = { return min(titles.count, min(imageSources.count, min(prices.count, subtitles.count))) }()
 
-    public static let googleDemoAd = Ad(
-        imagePath: nil,
-        imageSize: .zero,
-        iconImage: nil,
-        title: "Google Ad",
-        subtitle: nil,
-        accessory: nil,
-        imageText: nil,
-        isFavorite: false,
-        adType: .google,
-        sponsoredAdData: nil,
-        favoriteButtonAccessibilityLabel: ""
-    )
+    static var googleDemoAd = Ad(imagePath: nil, imageSize: .zero, title: "Google Ad", subtitle: nil, imageText: nil, adType: .google)
+    static var nativeDemoAd = Ad(imagePath: nil, imageSize: .zero, title: "Native Ad", subtitle: nil, imageText: nil, adType: .native)
 
-    public static let nativeDemoAd = Ad(
-        imagePath: nil,
-        imageSize: .zero,
-        iconImage: nil,
-        title: "Native Ad",
-        subtitle: nil,
-        accessory: nil,
-        imageText: nil,
-        isFavorite: false,
-        adType: .native,
-        sponsoredAdData: nil,
-        favoriteButtonAccessibilityLabel: ""
-    )
-
-    public static func create(numberOfModels: Int) -> [Ad] {
+    static func create(numberOfModels: Int) -> [Ad] {
         let sponsoredAdData = SponsoredAdData(
             ribbonTitle: "Betalt plassering",
             logoImagePath: "https://static.finncdn.no/_c/pf-logos/dnbnor_logo.png"
@@ -92,6 +85,7 @@ public struct AdFactory {
             let icon = iconImages[dataIndex]
             let price = prices[dataIndex]
             let scaleImageToFillView = scaleImagesToFillView[dataIndex]
+
             return Ad(
                 imagePath: imageSource.path,
                 imageSize: imageSource.size,
@@ -192,4 +186,50 @@ public struct AdFactory {
             ImageSource(path: "https://www.younghouselove.com/wp-content/uploads//2017/04/Beach-House-Update-Three-Houses-One-Pink.jpg", size: CGSize(width: 1500, height: 1125))
         ]
     }
+}
+
+struct JobAdFactory {
+    static func create(numberOfModels: Int) -> [JobAd] {
+        return (0 ..< numberOfModels).map { index in
+            let dataIndex = index % title.count
+
+            return JobAd(
+                title: title[dataIndex],
+                company: company[dataIndex],
+                location: location[dataIndex],
+                publishedRelative: time[dataIndex].isEmpty ? nil : "3 \(time[dataIndex])",
+                ribbonOverlayModel: dataIndex % 2 == 0 ? RibbonViewModel(style: .success, title: "Enkel søknad") : nil,
+                imagePath: "https://static.schibsted.com/wp-content/uploads/2018/05/11085129/Schibsted_Logotype_L1_Dust-black_RGB-300x54.png",
+                isFavorite: false
+            )
+        }
+    }
+
+    private static let title: [String] = [
+        "Vi søker deg som er virkelig brenner for faget og har store ambisjoner!",
+        "Fullstack utvikler med muligheter for lederrolle",
+        "Rancho Cuccamonga søker mederbeider til renholdsavdelingen i 60% stilling",
+        "Reodor Felgen søker mekaniker til å fikse superretometerfordeler"
+    ]
+
+    private static let company: [String] = [
+        "FINN.no AS",
+        "Selskap med veldig langt navn",
+        "Rancho Cuccamonga AS",
+        "Reodors sykkelverksted",
+    ]
+
+    private static let location: [String] = [
+        "Oslo",
+        "Kristiansand",
+        "Neverland",
+        "Flåklypa"
+    ]
+
+    private static let time: [String] = [
+        "minutter siden",
+        "",
+        "uker siden",
+        "måneder siden"
+    ]
 }

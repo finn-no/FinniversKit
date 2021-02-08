@@ -63,7 +63,7 @@ extension UserAdCellDemoView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(UserAdTableViewCell.self, for: indexPath)
         cell.configure(with: style, model: viewModels[indexPath.row])
-        cell.remoteImageViewDataSource = self
+        cell.imageDataSource = self
         cell.loadingColor = .toothPaste
         cell.accessoryType = indexPath.row == viewModels.count - 1 ? .disclosureIndicator : .none
 
@@ -71,7 +71,7 @@ extension UserAdCellDemoView: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let cell = cell as? ImageLoading {
+        if let cell = cell as? ImageLoadable {
             cell.loadImage()
         }
     }

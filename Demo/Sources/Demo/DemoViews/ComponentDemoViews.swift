@@ -8,6 +8,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case button
     case floatingButton
     case cogWheelButton
+    case iconButton
     case label
     case ribbon
     case textField
@@ -76,6 +77,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<ReviewButtonViewDemoView>()
         case .cogWheelButton:
             return DemoViewController<CogWheelButtonDemoView>()
+        case .iconButton:
+            return DemoViewController<IconButtonDemoView>()
         case .label:
             return DemoViewController<LabelDemoView>()
         case .ribbon:

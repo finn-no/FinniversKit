@@ -28,9 +28,9 @@ public class UserAdEmphasizedActionTableViewCell: UITableViewCell {
     public weak var delegate: UserAdEmphasizedActionTableViewCellDelegate?
 
     /// A data source for the loading of the image
-    public weak var remoteImageViewDataSource: RemoteImageViewDataSource? {
+    public weak var imageDataSource: RemoteImageViewDataSource? {
         didSet {
-            userAdDetailsView.adImageViewDataSource = remoteImageViewDataSource
+            userAdDetailsView.adImageViewDataSource = imageDataSource
         }
     }
 
@@ -300,7 +300,7 @@ public class UserAdEmphasizedActionTableViewCell: UITableViewCell {
 
 // MARK: - ImageLoading
 
-extension UserAdEmphasizedActionTableViewCell: ImageLoading {
+extension UserAdEmphasizedActionTableViewCell: ImageLoadable {
     public func loadImage() {
         userAdDetailsView.loadImage()
     }

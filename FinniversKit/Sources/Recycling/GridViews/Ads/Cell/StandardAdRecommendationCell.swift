@@ -4,11 +4,8 @@
 
 import UIKit
 
-public protocol AdsGridViewCellDelegate: AnyObject {
-    func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, didSelectFavoriteButton button: UIButton)
-}
+public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendationCell, AdRecommendationConfigurable {
 
-public class AdsGridViewCell: UICollectionViewCell {
     // MARK: - Internal properties
 
     private static let titleHeight: CGFloat = 20.0
@@ -29,7 +26,7 @@ public class AdsGridViewCell: UICollectionViewCell {
     private lazy var imageContentView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.layer.borderWidth = 1
-        view.layer.cornerRadius = AdsGridViewCell.cornerRadius
+        view.layer.cornerRadius = StandardAdRecommendationCell.cornerRadius
         view.layer.masksToBounds = true
         return view
     }()
@@ -59,6 +56,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .body)
+        label.setContentHuggingPriority(.required, for: .vertical)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
@@ -66,6 +64,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     private lazy var subtitleLabel: Label = {
         let label = Label(style: .detail)
+        label.setContentHuggingPriority(.required, for: .vertical)
         label.textColor = .textSecondary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
@@ -74,6 +73,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     private lazy var accessoryLabel: Label = {
         let label = Label(style: .detailStrong)
+        label.setContentHuggingPriority(.required, for: .vertical)
         label.textColor = .textPrimary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
@@ -84,7 +84,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         let view = UILabel(withAutoLayout: true)
         view.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
         view.alpha = 1.0
-        view.layer.cornerRadius = AdsGridViewCell.cornerRadius
+        view.layer.cornerRadius = StandardAdRecommendationCell.cornerRadius
         view.layer.masksToBounds = true
         view.layer.maskedCorners = [.layerMaxXMinYCorner]
         return view
@@ -98,23 +98,24 @@ public class AdsGridViewCell: UICollectionViewCell {
         return label
     }()
 
-    private lazy var favoriteButton: FavoriteButton = {
-        let button = FavoriteButton(withAutoLayout: true)
+    private lazy var favoriteButton: IconButton = {
+        let button = IconButton(style: .favorite)
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(handleFavoriteButtonTap(_:)), for: .touchUpInside)
         return button
     }()
 
     private lazy var subtitleToImageConstraint = subtitleLabel.topAnchor.constraint(
         equalTo: imageContentView.bottomAnchor,
-        constant: AdsGridViewCell.subtitleTopMargin
+        constant: StandardAdRecommendationCell.subtitleTopMargin
     )
 
     private lazy var subtitleToRibbonConstraint = subtitleLabel.topAnchor.constraint(
         equalTo: ribbonView.bottomAnchor,
-        constant: AdsGridViewCell.subtitleTopMargin
+        constant: StandardAdRecommendationCell.subtitleTopMargin
     )
 
-    private var model: AdsGridViewModel?
+    private var model: StandardAdRecommendationViewModel?
 
     // MARK: - External properties
 
@@ -126,15 +127,15 @@ public class AdsGridViewCell: UICollectionViewCell {
     }
 
     /// A data source for the loading of the image
-    public weak var dataSource: RemoteImageViewDataSource? {
+    public weak var imageDataSource: RemoteImageViewDataSource? {
         didSet {
-            imageView.dataSource = dataSource
-            logoImageView.dataSource = dataSource
+            imageView.dataSource = imageDataSource
+            logoImageView.dataSource = imageDataSource
         }
     }
 
     /// A delegate for actions triggered from the cell
-    public weak var delegate: AdsGridViewCellDelegate?
+    public weak var delegate: AdRecommendationCellDelegate?
 
     /// Optional index of the cell
     public var index: Int?
@@ -171,14 +172,19 @@ public class AdsGridViewCell: UICollectionViewCell {
 
         backgroundColor = .bgPrimary
 
+        let imageHeightMinimumConstraint = imageContentView.heightAnchor.constraint(equalTo: imageContentView.widthAnchor, multiplier: StandardAdRecommendationCell.minImageAspectRatio)
+        let imageHeightMaximumConstraint = imageContentView.heightAnchor.constraint(lessThanOrEqualTo: imageContentView.widthAnchor, multiplier: StandardAdRecommendationCell.maxImageAspectRatio)
+
+        imageHeightMinimumConstraint.priority = .defaultHigh
+
         NSLayoutConstraint.activate([
             imageContentView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageContentView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageContentView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageContentView.heightAnchor.constraint(greaterThanOrEqualTo: imageContentView.widthAnchor, multiplier: AdsGridViewCell.minImageAspectRatio),
-            imageContentView.heightAnchor.constraint(lessThanOrEqualTo: imageContentView.widthAnchor, multiplier: AdsGridViewCell.maxImageAspectRatio),
+            imageContentView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            imageContentView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            imageHeightMinimumConstraint,
+            imageHeightMaximumConstraint,
 
-            ribbonView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: AdsGridViewCell.ribbonTopMargin),
+            ribbonView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: StandardAdRecommendationCell.ribbonTopMargin),
             ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
 
             logoImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: .spacingS),
@@ -189,30 +195,30 @@ public class AdsGridViewCell: UICollectionViewCell {
             subtitleToImageConstraint,
             subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            subtitleLabel.heightAnchor.constraint(equalToConstant: AdsGridViewCell.subtitleHeight),
+            subtitleLabel.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.subtitleHeight),
 
-            titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: AdsGridViewCell.titleTopMargin),
+            titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: StandardAdRecommendationCell.titleTopMargin),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: AdsGridViewCell.titleHeight),
+            titleLabel.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.titleHeight),
 
             accessoryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             accessoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             accessoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            accessoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -AdsGridViewCell.bottomMargin),
+            accessoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -StandardAdRecommendationCell.bottomMargin),
 
-            iconImageView.leadingAnchor.constraint(equalTo: imageDescriptionView.leadingAnchor, constant: AdsGridViewCell.margin),
-            iconImageView.heightAnchor.constraint(equalToConstant: AdsGridViewCell.iconSize),
-            iconImageView.widthAnchor.constraint(equalToConstant: AdsGridViewCell.iconSize),
+            iconImageView.leadingAnchor.constraint(equalTo: imageDescriptionView.leadingAnchor, constant: StandardAdRecommendationCell.margin),
+            iconImageView.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.iconSize),
+            iconImageView.widthAnchor.constraint(equalToConstant: StandardAdRecommendationCell.iconSize),
             iconImageView.centerYAnchor.constraint(equalTo: imageDescriptionView.centerYAnchor),
 
-            imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: AdsGridViewCell.margin),
+            imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: StandardAdRecommendationCell.margin),
             imageTextLabel.centerYAnchor.constraint(equalTo: imageDescriptionView.centerYAnchor),
 
             imageDescriptionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageDescriptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: AdsGridViewCell.margin),
+            imageDescriptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: StandardAdRecommendationCell.margin),
             imageDescriptionView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor),
-            imageDescriptionView.heightAnchor.constraint(equalToConstant: AdsGridViewCell.imageDescriptionHeight),
+            imageDescriptionView.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.imageDescriptionHeight),
             imageDescriptionView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor),
 
             favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXS),
@@ -251,7 +257,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     // MARK: - Dependency injection
 
-    public func configure(with model: AdsGridViewModel?, atIndex index: Int) {
+    public func configure(with model: StandardAdRecommendationViewModel?, atIndex index: Int) {
         self.model = model
         self.index = index
 
@@ -286,7 +292,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     public var isFavorite = false {
         didSet {
-            favoriteButton.isFavorite = isFavorite
+            favoriteButton.isToggled = isFavorite
         }
     }
 
@@ -308,9 +314,9 @@ public class AdsGridViewCell: UICollectionViewCell {
         return subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + accessoryHeight + bottomMargin
     }
 
-    public static func height(for model: AdsGridViewModel, width: CGFloat) -> CGFloat {
+    public static func height(for model: StandardAdRecommendationViewModel, width: CGFloat) -> CGFloat {
         let imageRatio = model.imageSize.height / model.imageSize.width
-        let clippedImageRatio = min(max(imageRatio, AdsGridViewCell.minImageAspectRatio), AdsGridViewCell.maxImageAspectRatio)
+        let clippedImageRatio = min(max(imageRatio, StandardAdRecommendationCell.minImageAspectRatio), StandardAdRecommendationCell.maxImageAspectRatio)
         let imageHeight = width * clippedImageRatio
         var contentHeight = subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + bottomMargin
 
@@ -372,32 +378,6 @@ public class AdsGridViewCell: UICollectionViewCell {
     }
 
     @objc private func handleFavoriteButtonTap(_ button: UIButton) {
-        delegate?.adsGridViewCell(self, didSelectFavoriteButton: button)
-    }
-}
-
-// MARK: - Private types
-
-private final class FavoriteButton: UIButton {
-    var isFavorite = false {
-        didSet {
-            let image = isFavorite ? UIImage(named: .favouriteAddedImg) : UIImage(named: .favouriteAddImg)
-            setImage(image, for: .normal)
-        }
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        adjustsImageWhenHighlighted = false
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override var isHighlighted: Bool {
-        didSet {
-            alpha = isHighlighted ? 0.8 : 1
-        }
+        delegate?.adRecommendationCell(self, didTapFavoriteButton: button)
     }
 }

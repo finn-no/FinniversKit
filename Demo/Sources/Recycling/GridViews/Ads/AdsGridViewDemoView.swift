@@ -5,18 +5,36 @@
 import FinniversKit
 
 /// For use with AdsGridView.
-public class AdDataSource: NSObject {
-    let models: [Ad] = {
-        var ads = AdFactory.create(numberOfModels: 9)
-        ads.insert(AdFactory.googleDemoAd, at: 4)
-        ads.insert(AdFactory.nativeDemoAd, at: 8)
+public struct AdDataSource {
+    let models: [AdRecommendation] = {
+        var ads: [AdRecommendation] = AdFactory.create(numberOfModels: 9).map { .ad($0) }
+        ads.insert(contentsOf: JobAdFactory.create(numberOfModels: 2).map { .job($0) }, at: 1)
+        ads.insert(.ad(AdFactory.googleDemoAd), at: 4)
+        ads.insert(.ad(AdFactory.nativeDemoAd), at: 8)
         return ads
     }()
 }
 
-public class AdsGridViewDemoView: UIView {
-    lazy var dataSource: AdDataSource = {
-        return AdDataSource()
+public class AdsGridViewDemoView: UIView, Tweakable {
+
+    lazy var tweakingOptions: [TweakingOption] = [
+        TweakingOption(title: "Full width", action: { self.numberOfColumns = .fullWidth }),
+        TweakingOption(title: "Two columns", action: { self.numberOfColumns = .columns(2) }),
+        TweakingOption(title: "Three columns", action: { self.numberOfColumns = .columns(3) })
+    ]
+
+    private var numberOfColumns: AdsGridView.ColumnConfiguration = .columns(2) {
+        didSet {
+            adsGridView.collectionView.collectionViewLayout.invalidateLayout()
+        }
+    }
+
+    private lazy var dataSource: AdDataSource = AdDataSource()
+
+    private lazy var adsGridView: AdsGridView = {
+        let view = AdsGridView(delegate: self, dataSource: self)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     override init(frame: CGRect) {
@@ -28,10 +46,8 @@ public class AdsGridViewDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        let view = AdsGridView(delegate: self, dataSource: self)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        view.fillInSuperview()
+        addSubview(adsGridView)
+        adsGridView.fillInSuperview()
     }
 }
 
@@ -48,17 +64,24 @@ extension AdsGridViewDemoView: AdsGridViewDelegate {
 
     public func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView) {}
 
-    public func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdsGridViewCell, at index: Int) {}
+    public func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at index: Int) {
+        adsGridView.updateItem(at: index, isFavorite: !cell.isFavorite)
+    }
 }
 
 extension AdsGridViewDemoView: AdsGridViewDataSource {
+    public func numberOfColumns(inAdsGridView adsGridView: AdsGridView) -> AdsGridView.ColumnConfiguration? {
+        numberOfColumns
+    }
+
     public func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int {
         return dataSource.models.count
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
         return [
-            AdsGridViewCell.self,
+            StandardAdRecommendationCell.self,
+            JobAdRecommendationCell.self,
             BannerAdDemoCell.self,
             NativeAdvertRecommendationDemoCell.self,
         ]
@@ -67,34 +90,44 @@ extension AdsGridViewDemoView: AdsGridViewDataSource {
     public func adsGridView(_ adsGridView: AdsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
         let model = dataSource.models[indexPath.item]
 
-        switch model.adType {
-        case .native:
-            return NativeAdvertRecommendationDemoCell.height(for: width)
-        case .google:
-            return 300
-        default:
-            return AdsGridViewCell.height(
-                for: model,
-                width: width
-            )
+        switch model {
+        case .ad(let ad):
+            switch ad.adType {
+            case .native:
+                return NativeAdvertRecommendationDemoCell.height(for: width)
+            case .google:
+                return 300
+            default:
+                return StandardAdRecommendationCell.height(for: ad, width: width)
+            }
+        case .job(let ad):
+            return JobAdRecommendationCell.height(for: ad, width: width)
         }
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let model = dataSource.models[indexPath.item]
 
-        switch model.adType {
-        case .native:
-            return collectionView.dequeue(NativeAdvertRecommendationDemoCell.self, for: indexPath)
-        case .google:
-            return collectionView.dequeue(BannerAdDemoCell.self, for: indexPath)
-
-        default:
-            let cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
-            cell.dataSource = adsGridView
+        switch model {
+        case .ad(let ad):
+            switch ad.adType {
+            case .native:
+                return collectionView.dequeue(NativeAdvertRecommendationDemoCell.self, for: indexPath)
+            case .google:
+                return collectionView.dequeue(BannerAdDemoCell.self, for: indexPath)
+            default:
+                let cell = collectionView.dequeue(StandardAdRecommendationCell.self, for: indexPath)
+                cell.imageDataSource = adsGridView
+                cell.delegate = adsGridView
+                cell.configure(with: ad, atIndex: indexPath.item)
+                cell.showImageDescriptionView = ad.scaleImageToFillView
+                return cell
+            }
+        case .job(let ad):
+            let cell = collectionView.dequeue(JobAdRecommendationCell.self, for: indexPath)
+            cell.imageDataSource = adsGridView
             cell.delegate = adsGridView
-            cell.configure(with: model, atIndex: indexPath.item)
-            cell.showImageDescriptionView = model.scaleImageToFillView
+            cell.configure(with: ad, atIndex: indexPath.item)
             return cell
         }
     }

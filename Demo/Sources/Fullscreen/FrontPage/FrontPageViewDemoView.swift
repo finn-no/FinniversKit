@@ -67,7 +67,7 @@ extension FrontpageViewDemoView: AdsGridViewDelegate {
         frontPageView.reloadData()
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdsGridViewCell, at index: Int) {
+    public func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at index: Int) {
         adsGridView.updateItem(at: index, isFavorite: !cell.isFavorite)
     }
 }
@@ -75,13 +75,17 @@ extension FrontpageViewDemoView: AdsGridViewDelegate {
 // MARK: - AdsGridViewDataSource
 
 extension FrontpageViewDemoView: AdsGridViewDataSource {
+    public func numberOfColumns(inAdsGridView adsGridView: AdsGridView) -> AdsGridView.ColumnConfiguration? {
+        return nil
+    }
+
     public func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int {
         return min(ads.count, visibleItems)
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
         return [
-            AdsGridViewCell.self,
+            StandardAdRecommendationCell.self,
             BannerAdDemoCell.self
         ]
     }
@@ -93,7 +97,7 @@ extension FrontpageViewDemoView: AdsGridViewDataSource {
         case .google:
             return 300
         default:
-            return AdsGridViewCell.height(
+            return StandardAdRecommendationCell.height(
                 for: model,
                 width: width
             )
@@ -108,8 +112,8 @@ extension FrontpageViewDemoView: AdsGridViewDataSource {
             return collectionView.dequeue(BannerAdDemoCell.self, for: indexPath)
 
         default:
-            let cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
-            cell.dataSource = adsGridView
+            let cell = collectionView.dequeue(StandardAdRecommendationCell.self, for: indexPath)
+            cell.imageDataSource = adsGridView
             cell.delegate = adsGridView
             cell.configure(with: model, atIndex: indexPath.item)
             return cell

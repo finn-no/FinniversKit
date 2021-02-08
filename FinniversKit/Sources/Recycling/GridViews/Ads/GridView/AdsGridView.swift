@@ -9,11 +9,12 @@ public protocol AdsGridViewDelegate: AnyObject {
     func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int)
     func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int)
     func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView)
-    func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdsGridViewCell, at index: Int)
+    func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at index: Int)
 }
 
 public protocol AdsGridViewDataSource: AnyObject {
     func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int
+    func numberOfColumns(inAdsGridView adsGridView: AdsGridView) -> AdsGridView.ColumnConfiguration?
     func adsGridView(_ adsGridView: AdsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type]
     func adsGridView(_ adsGridView: AdsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat
     func adsGridView(_ adsGridView: AdsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
@@ -22,10 +23,17 @@ public protocol AdsGridViewDataSource: AnyObject {
 }
 
 public class AdsGridView: UIView {
+    public enum ColumnConfiguration {
+        case fullWidth
+        case columns(Int)
+    }
+
     // MARK: - Internal properties
 
     private lazy var collectionViewLayout: AdsGridViewLayout = {
-        return AdsGridViewLayout(delegate: self)
+        let layout = AdsGridViewLayout()
+        layout.delegate = self
+        return layout
     }()
 
     // Have the collection view be private so nobody messes with it.
@@ -116,7 +124,7 @@ public class AdsGridView: UIView {
 
     public func updateItem(at index: Int, isFavorite: Bool) {
         let indexPath = IndexPath(row: index, section: 0)
-        if let cell = collectionView.cellForItem(at: indexPath) as? AdsGridViewCell {
+        if let cell = collectionView.cellForItem(at: indexPath) as? AdRecommendationCell {
             cell.isFavorite = isFavorite
         }
     }
@@ -158,7 +166,7 @@ extension AdsGridView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let cell = cell as? AdsGridViewCell {
+        if let cell = cell as? ImageLoadable {
             cell.loadImage()
         }
 
@@ -201,16 +209,26 @@ extension AdsGridView: RemoteImageViewDataSource {
 
 // MARK: - AdsGridViewDelegate
 
-extension AdsGridView: AdsGridViewCellDelegate {
-    public func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, didSelectFavoriteButton button: UIButton) {
-        guard let index = adsGridViewCell.index else { return }
-        delegate?.adsGridView(self, didSelectFavoriteButton: button, on: adsGridViewCell, at: index)
+extension AdsGridView: AdRecommendationCellDelegate {
+    public func adRecommendationCell(_ cell: AdRecommendationCell, didTapFavoriteButton button: UIButton) {
+        guard let index = cell.index else { return }
+        delegate?.adsGridView(self, didSelectFavoriteButton: button, on: cell, at: index)
     }
 }
 
 // MARK: - AdsGridViewLayoutDelegate
 
 extension AdsGridView: AdsGridViewLayoutDelegate {
+    func adsGridViewLayoutNumberOfColumns(_ adsGridViewLayout: AdsGridViewLayout) -> Int {
+        switch dataSource?.numberOfColumns(inAdsGridView: self) {
+        case .fullWidth: return 1
+        case .columns(let columns) where columns > 1 && columns <= 3:
+            return columns
+        default:
+            return traitCollection.horizontalSizeClass == .regular ? 3 : 2
+        }
+    }
+
     func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, heightForHeaderViewInCollectionView collectionView: UICollectionView) -> CGFloat? {
         return headerView?.frame.size.height
     }

@@ -5,12 +5,14 @@
 import UIKit
 
 protocol AdsGridViewLayoutDelegate: AnyObject {
+    func adsGridViewLayoutNumberOfColumns(_ adsGridViewLayout: AdsGridViewLayout) -> Int
     func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, heightForHeaderViewInCollectionView collectionView: UICollectionView) -> CGFloat?
     func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat
 }
 
 class AdsGridViewLayout: UICollectionViewLayout {
-    private let delegate: AdsGridViewLayoutDelegate
+    weak var delegate: AdsGridViewLayoutDelegate?
+
     private var itemAttributes = [UICollectionViewLayoutAttributes]()
 
     private var configuration: AdsGridViewLayoutConfiguration {
@@ -21,33 +23,28 @@ class AdsGridViewLayout: UICollectionViewLayout {
         return AdsGridViewLayoutConfiguration(width: collectionView.frame.size.width)
     }
 
-    init(delegate: AdsGridViewLayoutDelegate) {
-        self.delegate = delegate
-        super.init()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     private var itemWidth: CGFloat {
         guard let collectionView = collectionView else {
             return 50.0
         }
 
-        let columnPadding = configuration.columnSpacing * CGFloat(configuration.numberOfColumns - 1)
+        let columnPadding = configuration.columnSpacing * CGFloat(numberOfColumns - 1)
         let sidePadding = configuration.sidePadding * 2
 
         let totalPadding = columnPadding + sidePadding
         let columnsWidth = collectionView.frame.size.width - totalPadding
 
-        let columnWidth = columnsWidth / CGFloat(configuration.numberOfColumns)
+        let columnWidth = columnsWidth / CGFloat(numberOfColumns)
 
         return columnWidth
     }
 
+    private var numberOfColumns: Int {
+        delegate?.adsGridViewLayoutNumberOfColumns(self) ?? 2
+    }
+
     private var numberOfItems: Int {
-        return collectionView?.numberOfItems(inSection: 0) ?? 0
+        collectionView?.numberOfItems(inSection: 0) ?? 0
     }
 
     private func maxY(forItemAttributes attributes: [UICollectionViewLayoutAttributes]) -> CGFloat {
@@ -84,13 +81,13 @@ class AdsGridViewLayout: UICollectionViewLayout {
             return
         }
 
-        let columnsRange = 0 ..< configuration.numberOfColumns
+        let columnsRange = 0 ..< numberOfColumns
 
         var columns = columnsRange.map { _ in 0 }
         var attributesCollection = [UICollectionViewLayoutAttributes]()
         var yOffset = configuration.topOffset
 
-        if let height = delegate.adsGridViewLayout(self, heightForHeaderViewInCollectionView: collectionView) {
+        if let height = delegate?.adsGridViewLayout(self, heightForHeaderViewInCollectionView: collectionView) {
             let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, with: IndexPath(item: 0, section: 0))
             attributes.frame = CGRect(x: 0, y: 0, width: collectionView.frame.size.width, height: height)
             attributesCollection.append(attributes)
@@ -102,11 +99,11 @@ class AdsGridViewLayout: UICollectionViewLayout {
             let columnIndex = indexOfLowestValue(in: columns)
 
             let xOffset = xOffsetForItemInColumn(itemWidth: itemWidth, columnIndex: columnIndex)
-            let topPadding = configuration.numberOfColumns > index ? yOffset : 0.0
+            let topPadding = numberOfColumns > index ? yOffset : 0.0
             let verticalOffset = CGFloat(columns[columnIndex]) + topPadding
 
             let indexPath = IndexPath(item: index, section: 0)
-            let itemHeight = delegate.adsGridViewLayout(self, heightForItemWithWidth: itemWidth, at: indexPath)
+            let itemHeight = delegate?.adsGridViewLayout(self, heightForItemWithWidth: itemWidth, at: indexPath) ?? 0
 
             columns[columnIndex] = Int(verticalOffset + itemHeight + configuration.columnSpacing)
 
@@ -134,7 +131,7 @@ class AdsGridViewLayout: UICollectionViewLayout {
         }
 
         guard collectionView.numberOfItems(inSection: 0) > 0 else {
-            if let height = delegate.adsGridViewLayout(self, heightForHeaderViewInCollectionView: collectionView) {
+            if let height = delegate?.adsGridViewLayout(self, heightForHeaderViewInCollectionView: collectionView) {
                 return CGSize(width: collectionView.frame.size.width, height: height)
             } else {
                 return collectionView.bounds.size

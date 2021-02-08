@@ -4,7 +4,7 @@
 
 import Foundation
 
-public protocol AdsGridViewModel {
+public protocol StandardAdRecommendationViewModel {
     var imagePath: String? { get }
     var imageSize: CGSize { get }
     var iconImage: UIImage? { get }
@@ -12,10 +12,10 @@ public protocol AdsGridViewModel {
     var subtitle: String? { get }
     var accessory: String? { get }
     var imageText: String? { get }
-    var accessibilityLabel: String { get }
     var isFavorite: Bool { get }
     var scaleImageToFillView: Bool { get }
     var sponsoredAdData: SponsoredAdData? { get }
+    var accessibilityLabel: String { get }
     var favoriteButtonAccessibilityLabel: String { get }
 }
 
@@ -29,7 +29,7 @@ public struct SponsoredAdData {
     }
 }
 
-public extension AdsGridViewModel {
+public extension StandardAdRecommendationViewModel {
     var accessibilityLabel: String {
         var message = title
 
