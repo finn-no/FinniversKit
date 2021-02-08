@@ -185,7 +185,7 @@ extension AdRecommendationsGridView: UICollectionViewDataSource {
     }
 }
 
-// MARK: - AdsGridViewCellDataSource
+// MARK: - RemoteImageViewDataSource
 
 extension AdRecommendationsGridView: RemoteImageViewDataSource {
     public func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
@@ -216,7 +216,7 @@ extension AdRecommendationsGridView: AdRecommendationCellDelegate {
     }
 }
 
-// MARK: - AdsGridViewLayoutDelegate
+// MARK: - AdRecommendationsGridViewLayoutDelegate
 
 extension AdRecommendationsGridView: AdRecommendationsGridViewLayoutDelegate {
     func adRecommendationsGridViewLayoutNumberOfColumns(_ layout: AdRecommendationsGridViewLayout) -> Int {
