@@ -15,12 +15,12 @@ class AdRecommendationsGridViewLayout: UICollectionViewLayout {
 
     private var itemAttributes = [UICollectionViewLayoutAttributes]()
 
-    private var configuration: AdsGridViewLayoutConfiguration {
+    private var configuration: AdRecommendationsGridViewLayoutConfiguration {
         guard let collectionView = collectionView else {
             fatalError("Layout unusable without collection view!")
         }
 
-        return AdsGridViewLayoutConfiguration(width: collectionView.frame.size.width)
+        return AdRecommendationsGridViewLayoutConfiguration(width: collectionView.frame.size.width)
     }
 
     private var itemWidth: CGFloat {

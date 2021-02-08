@@ -98,7 +98,7 @@ public class AdRecommendationsGridView: UIView {
             collectionView.register(cellClass)
         }
 
-        collectionView.register(AdsGridHeaderView.self, ofKind: UICollectionView.elementKindSectionHeader)
+        collectionView.register(AdRecommendationsGridHeaderView.self, ofKind: UICollectionView.elementKindSectionHeader)
         addSubview(collectionView)
         collectionView.fillInSuperview()
     }
@@ -178,7 +178,7 @@ extension AdRecommendationsGridView: UICollectionViewDataSource {
             fatalError("Suplementary view of kind '\(kind)' not supported.")
         }
 
-        let header = collectionView.dequeue(AdsGridHeaderView.self, for: indexPath, ofKind: UICollectionView.elementKindSectionHeader)
+        let header = collectionView.dequeue(AdRecommendationsGridHeaderView.self, for: indexPath, ofKind: UICollectionView.elementKindSectionHeader)
         header.contentView = headerView
 
         return header
