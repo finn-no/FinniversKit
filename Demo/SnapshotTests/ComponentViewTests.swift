@@ -35,6 +35,10 @@ class ComponentViewTests: XCTestCase {
         snapshot(.cogWheelButton)
     }
 
+    func testIconButton() {
+        snapshot(.iconButton)
+    }
+
     func testLabel() {
         snapshot(.label)
     }
