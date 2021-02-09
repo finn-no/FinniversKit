@@ -4,7 +4,7 @@
 
 import Foundation
 
-class AdsGridHeaderView: UICollectionReusableView {
+class AdRecommendationsGridHeaderView: UICollectionReusableView {
     var contentView: UIView? {
         willSet {
             contentView?.removeFromSuperview()

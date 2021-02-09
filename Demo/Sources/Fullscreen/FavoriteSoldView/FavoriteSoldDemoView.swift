@@ -12,8 +12,8 @@ public class FavoriteSoldDemoView: UIView {
 
     private lazy var favoriteSoldView: FavoriteSoldView = {
         let view = FavoriteSoldView(favoriteSoldViewDelegate: self,
-                                    adsGridViewDelegate: self,
-                                    adsGridViewDataSource: self,
+                                    adRecommendationsGridViewDelegate: self,
+                                    adRecommendationsGridViewDataSource: self,
                                     remoteImageViewDataSource: self)
         view.configure(with: FavoriteSoldDefaultData())
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -76,8 +76,8 @@ extension FavoriteSoldDemoView: FavoriteSoldViewDelegate {
     public func favoriteSoldViewDidTapSoldFavorite(_ favoriteSoldView: FavoriteSoldView) {}
 }
 
-extension FavoriteSoldDemoView: AdsGridViewDelegate {
-    public func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int) {
+extension FavoriteSoldDemoView: AdRecommendationsGridViewDelegate {
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, willDisplayItemAtIndex index: Int) {
         if index >= visibleItems - 10 {
             visibleItems += 10
 
@@ -87,50 +87,50 @@ extension FavoriteSoldDemoView: AdsGridViewDelegate {
         }
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView) {}
-    public func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int) {}
-    public func adsGridViewDidStartRefreshing(_ adsGridView: AdsGridView) {}
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didScrollInScrollView scrollView: UIScrollView) {}
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didSelectItemAtIndex index: Int) {}
+    public func adRecommendationsGridViewDidStartRefreshing(_ adRecommendationsGridView: AdRecommendationsGridView) {}
 
-    public func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at index: Int) {
-        adsGridView.updateItem(at: index, isFavorite: !cell.isFavorite)
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at index: Int) {
+        adRecommendationsGridView.updateItem(at: index, isFavorite: !cell.isFavorite)
     }
 }
 
-// MARK: - AdsGridViewDataSource
+// MARK: - AdRecommendationsGridViewDataSource
 
-extension FavoriteSoldDemoView: AdsGridViewDataSource {
-    public func numberOfColumns(inAdsGridView adsGridView: AdsGridView) -> AdsGridView.ColumnConfiguration? {
+extension FavoriteSoldDemoView: AdRecommendationsGridViewDataSource {
+    public func numberOfColumns(inAdRecommendationsGridView adRecommendationsGridView: AdRecommendationsGridView) -> AdRecommendationsGridView.ColumnConfiguration? {
         return nil
     }
 
-    public func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int {
+    public func numberOfItems(inAdRecommendationsGridView adRecommendationsGridView: AdRecommendationsGridView) -> Int {
         return min(ads.count, visibleItems)
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
         return [StandardAdRecommendationCell.self]
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
         let model = ads[indexPath.item]
         return StandardAdRecommendationCell.height(for: model, width: width)
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let model = ads[indexPath.item]
 
         let cell = collectionView.dequeue(StandardAdRecommendationCell.self, for: indexPath)
-        cell.imageDataSource = adsGridView
-        cell.delegate = adsGridView
+        cell.imageDataSource = adRecommendationsGridView
+        cell.delegate = adRecommendationsGridView
         cell.configure(with: model, atIndex: indexPath.item)
         return cell
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         return loadImageWithPath(imagePath, imageWidth: imageWidth, completion: completion)
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
 
 // MARK: - RemoteImageViewDataSource

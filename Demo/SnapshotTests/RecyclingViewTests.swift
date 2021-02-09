@@ -27,8 +27,8 @@ class RecyclingViewTests: XCTestCase {
         snapshot(.marketsGridView)
     }
 
-    func testAdsGridView() {
-        snapshot(.adsGridView)
+    func testAdRecommendationsGridView() {
+        snapshot(.adRecommendationsGridView)
     }
 
     func testFavoritesListView() {

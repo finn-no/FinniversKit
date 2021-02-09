@@ -10,7 +10,7 @@ public enum RecyclingDemoViews: String, DemoViews {
     case favoritesListView
     case savedSearchesListView
     case marketsGridView
-    case adsGridView
+    case adRecommendationsGridView
     case settingsView
     case adManagementView
     case neighborhoodProfileView
@@ -36,8 +36,8 @@ public enum RecyclingDemoViews: String, DemoViews {
             return DemoViewController<SavedSearchesListViewDemoView>()
         case .marketsGridView:
             return DemoViewController<MarketsGridViewDemoView>()
-        case .adsGridView:
-            return DemoViewController<AdsGridViewDemoView>()
+        case .adRecommendationsGridView:
+            return DemoViewController<AdRecommendationsGridViewDemoView>()
         case .settingsView:
             return DemoViewController<SettingsViewDemoView>()
         case .adManagementView:

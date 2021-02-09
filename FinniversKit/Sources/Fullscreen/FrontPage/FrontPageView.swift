@@ -3,7 +3,7 @@
 //
 
 public protocol FrontPageViewModel {
-    var adsGridViewHeaderTitle: String { get }
+    var adRecommedationsGridViewHeaderTitle: String { get }
     var retryButtonTitle: String { get }
     var noRecommendationsText: String { get }
 }
@@ -15,17 +15,17 @@ public protocol FrontPageViewDelegate: AnyObject {
 public final class FrontPageView: UIView {
     public var model: FrontPageViewModel? {
         didSet {
-            headerLabel.text = model?.adsGridViewHeaderTitle
+            headerLabel.text = model?.adRecommedationsGridViewHeaderTitle
             adsRetryView.set(labelText: model?.noRecommendationsText, buttonText: model?.retryButtonTitle)
         }
     }
 
     public var isRefreshEnabled: Bool {
         get {
-            return adsGridView.isRefreshEnabled
+            return adRecommendationsGridView.isRefreshEnabled
         }
         set {
-            adsGridView.isRefreshEnabled = newValue
+            adRecommendationsGridView.isRefreshEnabled = newValue
         }
     }
 
@@ -35,7 +35,7 @@ public final class FrontPageView: UIView {
     // MARK: - Subviews
 
     private let marketsGridView: MarketsGridView
-    private let adsGridView: AdsGridView
+    private let adRecommendationsGridView: AdRecommendationsGridView
     private lazy var headerView = UIView()
 
     private lazy var headerLabel: Label = {
@@ -58,16 +58,16 @@ public final class FrontPageView: UIView {
 
     // MARK: - Init
 
-    public convenience init(delegate: FrontPageViewDelegate & MarketsGridViewDelegate & MarketsGridViewDataSource & AdsGridViewDelegate, adsGridViewDataSource: AdsGridViewDataSource) {
-        self.init(delegate: delegate, marketsGridViewDelegate: delegate, marketsGridViewDataSource: delegate, adsGridViewDelegate: delegate, adsGridViewDataSource: adsGridViewDataSource)
+    public convenience init(delegate: FrontPageViewDelegate & MarketsGridViewDelegate & MarketsGridViewDataSource & AdRecommendationsGridViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource) {
+        self.init(delegate: delegate, marketsGridViewDelegate: delegate, marketsGridViewDataSource: delegate, adRecommendationsGridViewDelegate: delegate, adRecommendationsGridViewDataSource: adRecommendationsGridViewDataSource)
     }
 
-    public init(delegate: FrontPageViewDelegate, marketsGridViewDelegate: MarketsGridViewDelegate, marketsGridViewDataSource: MarketsGridViewDataSource, adsGridViewDelegate: AdsGridViewDelegate, adsGridViewDataSource: AdsGridViewDataSource) {
+    public init(delegate: FrontPageViewDelegate, marketsGridViewDelegate: MarketsGridViewDelegate, marketsGridViewDataSource: MarketsGridViewDataSource, adRecommendationsGridViewDelegate: AdRecommendationsGridViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource) {
         marketsGridView = MarketsGridView(delegate: marketsGridViewDelegate, dataSource: marketsGridViewDataSource)
         marketsGridView.translatesAutoresizingMaskIntoConstraints = false
 
-        adsGridView = AdsGridView(delegate: adsGridViewDelegate, dataSource: adsGridViewDataSource)
-        adsGridView.translatesAutoresizingMaskIntoConstraints = false
+        adRecommendationsGridView = AdRecommendationsGridView(delegate: adRecommendationsGridViewDelegate, dataSource: adRecommendationsGridViewDataSource)
+        adRecommendationsGridView.translatesAutoresizingMaskIntoConstraints = false
 
         super.init(frame: .zero)
         self.delegate = delegate
@@ -103,25 +103,25 @@ public final class FrontPageView: UIView {
     public func reloadMarkets() {
         marketsGridView.reloadData()
         setupFrames()
-        adsGridView.reloadData()
+        adRecommendationsGridView.reloadData()
     }
 
     public func reloadAds() {
         adsRetryView.state = .hidden
-        adsGridView.reloadData()
+        adRecommendationsGridView.reloadData()
     }
 
     public func updateAd(at index: Int, isFavorite: Bool) {
-        adsGridView.updateItem(at: index, isFavorite: isFavorite)
+        adRecommendationsGridView.updateItem(at: index, isFavorite: isFavorite)
     }
 
     public func showAdsRetryButton() {
-        adsGridView.endRefreshing()
+        adRecommendationsGridView.endRefreshing()
         adsRetryView.state = .labelAndButton
     }
 
     public func scrollToTop() {
-        adsGridView.scrollToTop()
+        adRecommendationsGridView.scrollToTop()
     }
 
     // MARK: - Setup
@@ -129,9 +129,9 @@ public final class FrontPageView: UIView {
     private func setup() {
         backgroundColor = .bgPrimary
 
-        addSubview(adsGridView)
+        addSubview(adRecommendationsGridView)
 
-        adsGridView.collectionView.addSubview(adsRetryView)
+        adRecommendationsGridView.collectionView.addSubview(adsRetryView)
 
         headerView.addSubview(marketsGridView)
         headerView.addSubview(headerLabel)
@@ -147,8 +147,8 @@ public final class FrontPageView: UIView {
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
         ])
 
-        adsGridView.fillInSuperview()
-        adsGridView.headerView = headerView
+        adRecommendationsGridView.fillInSuperview()
+        adRecommendationsGridView.headerView = headerView
 
         setupFrames()
     }
@@ -165,7 +165,7 @@ public final class FrontPageView: UIView {
         adsRetryView.frame.origin = CGPoint(x: 0, y: headerView.frame.height + .spacingXXL)
         adsRetryView.frame.size = CGSize(width: bounds.width, height: 200)
         boundsForCurrentSubviewSetup = bounds
-        adsGridView.invalidateLayout()
+        adRecommendationsGridView.invalidateLayout()
     }
 }
 

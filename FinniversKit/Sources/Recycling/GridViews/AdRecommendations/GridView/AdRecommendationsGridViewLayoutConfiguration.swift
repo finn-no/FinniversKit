@@ -4,7 +4,7 @@
 
 import Foundation
 
-enum AdsGridViewLayoutConfiguration {
+enum AdRecommendationsGridViewLayoutConfiguration {
     case small
     case medium
     case large
@@ -13,8 +13,8 @@ enum AdsGridViewLayoutConfiguration {
 
     init(width: CGFloat) {
         switch width {
-        case let width where width > AdsGridViewLayoutConfiguration.mediumRange.upperBound: self = .large
-        case let width where width < AdsGridViewLayoutConfiguration.mediumRange.lowerBound: self = .small
+        case let width where width > AdRecommendationsGridViewLayoutConfiguration.mediumRange.upperBound: self = .large
+        case let width where width < AdRecommendationsGridViewLayoutConfiguration.mediumRange.lowerBound: self = .small
         default: self = .medium
         }
     }

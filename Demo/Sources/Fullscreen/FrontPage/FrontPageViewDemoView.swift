@@ -16,7 +16,7 @@ public class FrontpageViewDemoView: UIView {
     }()
 
     private lazy var frontPageView: FrontPageView = {
-        let view = FrontPageView(delegate: self, adsGridViewDataSource: self)
+        let view = FrontPageView(delegate: self, adRecommendationsGridViewDataSource: self)
         view.model = FrontpageViewDefaultData()
         view.isRefreshEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +41,7 @@ public class FrontpageViewDemoView: UIView {
     }
 }
 
-// MARK: - AdsGridViewDelegate
+// MARK: - AdRecommendationsGridViewDelegate
 
 extension FrontpageViewDemoView: FrontPageViewDelegate {
     public func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView) {
@@ -49,8 +49,8 @@ extension FrontpageViewDemoView: FrontPageViewDelegate {
     }
 }
 
-extension FrontpageViewDemoView: AdsGridViewDelegate {
-    public func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int) {
+extension FrontpageViewDemoView: AdRecommendationsGridViewDelegate {
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, willDisplayItemAtIndex index: Int) {
         if index >= visibleItems - 10 {
             visibleItems += 10
 
@@ -60,37 +60,37 @@ extension FrontpageViewDemoView: AdsGridViewDelegate {
         }
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView) {}
-    public func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int) {}
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didScrollInScrollView scrollView: UIScrollView) {}
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didSelectItemAtIndex index: Int) {}
 
-    public func adsGridViewDidStartRefreshing(_ adsGridView: AdsGridView) {
+    public func adRecommendationsGridViewDidStartRefreshing(_ adRecommendationsGridView: AdRecommendationsGridView) {
         frontPageView.reloadData()
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at index: Int) {
-        adsGridView.updateItem(at: index, isFavorite: !cell.isFavorite)
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at index: Int) {
+        adRecommendationsGridView.updateItem(at: index, isFavorite: !cell.isFavorite)
     }
 }
 
-// MARK: - AdsGridViewDataSource
+// MARK: - AdRecommendationsGridViewDataSource
 
-extension FrontpageViewDemoView: AdsGridViewDataSource {
-    public func numberOfColumns(inAdsGridView adsGridView: AdsGridView) -> AdsGridView.ColumnConfiguration? {
+extension FrontpageViewDemoView: AdRecommendationsGridViewDataSource {
+    public func numberOfColumns(inAdRecommendationsGridView adRecommendationsGridView: AdRecommendationsGridView) -> AdRecommendationsGridView.ColumnConfiguration? {
         return nil
     }
 
-    public func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int {
+    public func numberOfItems(inAdRecommendationsGridView adRecommendationsGridView: AdRecommendationsGridView) -> Int {
         return min(ads.count, visibleItems)
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
         return [
             StandardAdRecommendationCell.self,
             BannerAdDemoCell.self
         ]
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
         let model = ads[indexPath.item]
 
         switch model.adType {
@@ -104,7 +104,7 @@ extension FrontpageViewDemoView: AdsGridViewDataSource {
         }
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let model = ads[indexPath.item]
 
         switch model.adType {
@@ -113,14 +113,14 @@ extension FrontpageViewDemoView: AdsGridViewDataSource {
 
         default:
             let cell = collectionView.dequeue(StandardAdRecommendationCell.self, for: indexPath)
-            cell.imageDataSource = adsGridView
-            cell.delegate = adsGridView
+            cell.imageDataSource = adRecommendationsGridView
+            cell.delegate = adRecommendationsGridView
             cell.configure(with: model, atIndex: indexPath.item)
             return cell
         }
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let url = URL(string: imagePath) else {
             completion(nil)
             return
@@ -141,7 +141,7 @@ extension FrontpageViewDemoView: AdsGridViewDataSource {
         task.resume()
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
 
 // MARK: - MarketsGridViewDelegate
