@@ -117,18 +117,6 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.betaFeatureView)
     }
 
-    func testMotorTransactionView() {
-        snapshot(.motorTransactionView)
-    }
-
-    func testMotorTransactionInvalidUserView() {
-        snapshot(.motorTransactionInvalidUserView)
-    }
-
-    func testMotorTransactionInviteCounterpartyView() {
-        snapshot(.motorTransactionInviteCounterpartyView)
-    }
-
     func testResultView() {
         snapshot(.resultView)
     }
