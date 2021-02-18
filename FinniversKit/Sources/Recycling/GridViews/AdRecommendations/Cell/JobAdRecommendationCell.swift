@@ -107,6 +107,8 @@ public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell
         ribbonView.title = ""
         isFavorite = false
         imageView.image = nil
+        imageView.alpha = 0.0
+        imageViewContainer.alpha = 0.0
         titleLabel.text = nil
         companyLabel.text = nil
         locationAndTimeLabel.text = nil
@@ -190,6 +192,8 @@ public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell
             imageView.loadImage(for: imagePath, imageWidth: frame.size.width, loadingColor: loadingColor, fallbackImage: defaultImage)
         } else {
             imageView.image = defaultImage
+            imageView.alpha = 1
+            imageViewContainer.alpha = 1
         }
     }
 
@@ -256,5 +260,6 @@ public extension JobAdRecommendationCell {
 extension JobAdRecommendationCell: RemoteImageViewDelegate {
     public func remoteImageViewDidSetImage(_ view: RemoteImageView) {
         imageViewContainer.backgroundColor = .clear
+        imageViewContainer.alpha = 1.0
     }
 }
