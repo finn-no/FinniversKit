@@ -12,7 +12,7 @@ public struct FavoriteAdViewModel {
     public let descriptionSecondaryText: String?
     public let descriptionTertiaryText: String?
     public let imagePath: String?
-    public let ribbonViewModel: RibbonViewModel
+    public let ribbonViewModel: RibbonViewModel?
     public let sortingDetailText: String?
     public let addedToFolderDate: Date
     public let lastUpdated: Date?
@@ -25,7 +25,7 @@ public struct FavoriteAdViewModel {
                 descriptionSecondaryText: String?,
                 descriptionTertiaryText: String?,
                 imagePath: String?,
-                ribbonViewModel: RibbonViewModel,
+                ribbonViewModel: RibbonViewModel?,
                 sortingDetailText: String?,
                 addedToFolderDate: Date,
                 lastUpdated: Date?,

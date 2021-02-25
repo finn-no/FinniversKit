@@ -113,7 +113,12 @@ final class FavoriteAdView: UIView {
 
         configureCommentView()
 
-        statusRibbon.configure(with: viewModel.ribbonViewModel)
+        if let ribbonViewModel = viewModel.ribbonViewModel {
+            statusRibbon.isHidden = false
+            statusRibbon.configure(with: ribbonViewModel)
+        } else {
+            statusRibbon.isHidden = true
+        }
 
         addressLabel.text = viewModel.addressText ?? " "
 
