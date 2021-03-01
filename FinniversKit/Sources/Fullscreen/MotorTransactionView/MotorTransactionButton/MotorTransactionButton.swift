@@ -50,6 +50,9 @@ extension MotorTransactionButton {
         case confirmInsurance = "CONFIRM_INSURANCE"
         case purchaseInsurance = "PURCHASE_INSURANCE"
 
+        // Re-register
+        case reregister = "REREGISTER"
+
         // Web
         case url = "URL"
         case fallback = "FALLBACK"
@@ -64,6 +67,8 @@ extension MotorTransactionButton {
                 self = .confirmInsurance
             case "PURCHASE_INSURANCE":
                 self = .purchaseInsurance
+            case "REREGISTER":
+                self = .reregister
             case "URL":
                 self = .url
             default:
