@@ -5,6 +5,7 @@
 import Foundation
 
 public protocol MotorTransactionStepContentViewModel {
+    var type: MotorTransactionStepContentViewType? { get }
     var title: String? { get }
     var titleFont: UIFont? { get }
     var titleTextColor: UIColor? { get }
@@ -19,4 +20,10 @@ public protocol MotorTransactionStepContentViewModel {
     var nativeBody: NSAttributedString? { get }
     var nativeButton: MotorTransactionButtonViewModel? { get }
     var primaryButton: MotorTransactionButtonViewModel? { get }
+}
+
+public enum MotorTransactionStepContentViewType: String {
+    case `default` = "DEFAULT"
+    case collapsed = "COLLAPSED"
+    case expanded = "EXPANDED"
 }
