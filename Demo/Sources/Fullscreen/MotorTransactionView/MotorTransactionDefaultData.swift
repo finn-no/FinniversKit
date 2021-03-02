@@ -48,6 +48,7 @@ public struct MotorTransactionButtonModel: MotorTransactionButtonViewModel {
 }
 
 public struct MotorTransactionStepContentModel: MotorTransactionStepContentViewModel {
+    public var type: MotorTransactionStepContentViewType?
     public var title: String?
 
     /// Font and text color is specified at call site in the host app
