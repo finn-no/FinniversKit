@@ -52,6 +52,7 @@ extension MotorTransactionButton {
 
         // Re-register
         case reregister = "REREGISTER"
+        case resetOwnershipTransfer = "RESET_OWNERSHIP_TRANSFER"
 
         // Web
         case url = "URL"
@@ -69,6 +70,8 @@ extension MotorTransactionButton {
                 self = .purchaseInsurance
             case "REREGISTER":
                 self = .reregister
+            case "RESET_OWNERSHIP_TRANSFER":
+                self = .resetOwnershipTransfer
             case "URL":
                 self = .url
             default:
