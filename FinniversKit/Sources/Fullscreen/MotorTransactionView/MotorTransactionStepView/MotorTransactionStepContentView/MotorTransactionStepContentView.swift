@@ -253,11 +253,14 @@ private extension MotorTransactionStepContentView {
     private func setupButton(_ buttonModel: MotorTransactionButtonViewModel?, tag: MotorTransactionButton.Tag) {
         if let buttonModel = buttonModel {
             let buttonText = buttonModel.text
-            let buttonStyle = MotorTransactionButton(rawValue: buttonModel.style ?? "").style
-            let buttonAction = MotorTransactionButton.Action(rawValue: buttonModel.action ?? "")
+
+            let buttonStyle = MotorTransactionButton(rawValue: buttonModel.style ?? "DEFAULT").style
+            let buttonAction = MotorTransactionButton.Action(rawValue: buttonModel.action ?? "FALLBACK")
+            let isEnabled = buttonModel.disabled == nil
 
             let button = Button(style: buttonStyle, withAutoLayout: true)
             button.setTitle(buttonText, for: .normal)
+            button.isEnabled = isEnabled
             button.tag = tag.rawValue
             button.addTarget(self, action: #selector(handleButtonTap(_:)), for: .touchUpInside)
 
