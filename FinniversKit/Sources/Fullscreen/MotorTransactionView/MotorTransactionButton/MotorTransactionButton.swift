@@ -5,7 +5,6 @@
 public enum MotorTransactionButton: String {
     case flat = "FLAT"
     case callToAction = "CALL_TO_ACTION"
-    case disabled = "DISABLED"
     case `default` = "DEFAULT"
 
     public init(rawValue: String) {
@@ -14,8 +13,6 @@ public enum MotorTransactionButton: String {
             self = .flat
         case "CALL_TO_ACTION":
             self = .callToAction
-        case "DISABLED":
-            self = .disabled
         default:
             self = .default
         }
@@ -23,22 +20,13 @@ public enum MotorTransactionButton: String {
 
     var style: Button.Style {
         switch self {
-        case .flat:
-            return .flat
-        case .callToAction:
-            return .callToAction
-        case .disabled:
-            return .callToAction
         case .default:
             return .default
+        case .callToAction:
+            return .callToAction
+        case .flat:
+            return .flat
         }
-    }
-
-    var isEnabled: Bool {
-        if self == .disabled {
-            return false
-        }
-        return true
     }
 }
 
