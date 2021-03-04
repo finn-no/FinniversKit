@@ -34,13 +34,22 @@ public struct MotorTransactionStepModel: MotorTransactionStepViewModel {
 public struct MotorTransactionButtonModel: MotorTransactionButtonViewModel {
     public var text: String
     public var style: String?
+    public var disabled: Bool?
     public var action: String?
     public var url: String?
     public var fallbackUrl: String?
 
-    public init(text: String, style: String? = nil, action: String? = nil, url: String? = nil, fallbackUrl: String? = nil) {
+    public init(
+        text: String,
+        style: String? = nil,
+        disabled: Bool? = nil,
+        action: String? = nil,
+        url: String? = nil,
+        fallbackUrl: String? = nil
+    ) {
         self.text = text
         self.style = style
+        self.disabled = disabled
         self.action = action
         self.url = url
         self.fallbackUrl = fallbackUrl
