@@ -99,17 +99,15 @@ public class AdManagementDemoView: UIView, Tweakable {
 extension AdManagementDemoView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 2
-        } else if section == 1 {
             return 1
         }
 
-        return actionCellModels[section - 2].count
+        return actionCellModels[section - 1].count
 
     }
 
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return actionCellModels.count + 2
+        return actionCellModels.count + 1
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -134,7 +132,7 @@ extension AdManagementDemoView: UITableViewDataSource {
             }
         } else {
             let cell = tableView.dequeue(UserAdManagementUserActionCell.self, for: indexPath)
-            cell.setupWithModel(actionCellModels[indexPath.section - 2][indexPath.row])
+            cell.setupWithModel(actionCellModels[indexPath.section - 1][indexPath.row])
             cell.showSeparator(indexPath.row != 0)
             return cell
         }
