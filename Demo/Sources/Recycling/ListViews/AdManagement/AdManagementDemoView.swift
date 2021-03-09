@@ -21,7 +21,6 @@ public class AdManagementDemoView: UIView, Tweakable {
         tableView.register(UserAdManagementStatisticsEmptyViewCell.self)
         tableView.register(UserAdManagementButtonAndInformationCell.self)
         tableView.register(UserAdManagementUserActionCell.self)
-        tableView.register(UserAdManagementMotorTransactionCell.self)
         tableView.separatorStyle = .none
         tableView.backgroundColor = .bgSecondary
         tableView.estimatedRowHeight = estimatedRowHeight
@@ -80,14 +79,6 @@ public class AdManagementDemoView: UIView, Tweakable {
                                             description: "Etter at du har publisert annonsen din kan du se statistikk for hvor mange som har sett annonsen din, favorisert den og som har fått tips om den.")
     }()
 
-    private let transactionProcessSummaryCellModel = MotorTransactionEntryViewModel(
-        title: "Salgsprosess",
-        detail: "Overlevering",
-        description: "Kjøper har bekreftet. Dere må bekrefte før 8.februar 2020.",
-        externalView: .init(text: "Mine kjøretøy", url: "https://www.finn.no/minekjoretoy"),
-        style: "ERROR"
-    )
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -108,17 +99,15 @@ public class AdManagementDemoView: UIView, Tweakable {
 extension AdManagementDemoView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 2
-        } else if section == 1 {
             return 1
         }
 
-        return actionCellModels[section - 2].count
+        return actionCellModels[section - 1].count
 
     }
 
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return actionCellModels.count + 2
+        return actionCellModels.count + 1
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -141,15 +130,9 @@ extension AdManagementDemoView: UITableViewDataSource {
                 cell.buttonText = "Kjøp mer synlighet"
                 return cell
             }
-
-        } else if indexPath.section == 1 {
-            let cell = tableView.dequeue(UserAdManagementMotorTransactionCell.self, for: indexPath)
-            cell.delegate = self
-            cell.configure(with: transactionProcessSummaryCellModel, shouldShowExternalView: true)
-            return cell
         } else {
             let cell = tableView.dequeue(UserAdManagementUserActionCell.self, for: indexPath)
-            cell.setupWithModel(actionCellModels[indexPath.section - 2][indexPath.row])
+            cell.setupWithModel(actionCellModels[indexPath.section - 1][indexPath.row])
             cell.showSeparator(indexPath.row != 0)
             return cell
         }
@@ -169,14 +152,4 @@ extension AdManagementDemoView: UITableViewDelegate {
 
 extension AdManagementDemoView: UserAdManagementStatisticsCellDelegate {
     public func userAdManagementStatisticsCellDidSelectFullStatistics(_ cell: UserAdManagementStatisticsCell) {}
-}
-
-extension AdManagementDemoView: UserAdManagementMotorTransactionCellDelegate {
-    public func userAdManagementMotorTransactionCellDidTapSummary(_ view: UserAdManagementMotorTransactionCell) {
-        print("Did tap summary in UserAdManagementTransactionProcessCell")
-    }
-
-    public func userAdManagementMotorTransactionCellDidTapExternalView(_ view: UserAdManagementMotorTransactionCell) {
-        print("Did tap external view in UserAdManagementTransactionProcessCell")
-    }
 }

@@ -125,8 +125,6 @@ enum ImageAsset: String {
     case miscMoney
     case more
     case moreImg
-    case motorTransaction
-    case multipleContracts
     case navigation
     case noImage
     case notifications
@@ -262,8 +260,6 @@ enum ImageAsset: String {
             .miscMoney,
             .more,
             .moreImg,
-            .motorTransaction,
-            .multipleContracts,
             .navigation,
             .noImage,
             .notifications,

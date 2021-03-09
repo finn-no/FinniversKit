@@ -30,9 +30,6 @@ public enum FullscreenDemoViews: String, DemoViews {
     case favoriteFolderActionView
     case favoriteSold
     case betaFeatureView
-    case motorTransactionView
-    case motorTransactionInvalidUserView
-    case motorTransactionInviteCounterpartyView
     case resultView
     case confettiView
     case messageUserRequiredSheet
@@ -111,12 +108,6 @@ public enum FullscreenDemoViews: String, DemoViews {
             return DemoViewController<FavoriteSoldDemoView>()
         case .betaFeatureView:
             return DemoViewController<BetaFeatureDemoView>()
-        case .motorTransactionView:
-            return DemoViewController<MotorTransactionDemoView>()
-        case .motorTransactionInvalidUserView:
-            return DemoViewController<MotorTransactionInvalidUserDemoView>()
-        case .motorTransactionInviteCounterpartyView:
-            return DemoViewController<MotorTransactionInviteCounterpartyDemoView>()
         case .resultView:
             return DemoViewController<ResultDemoView>()
         case .confettiView:
