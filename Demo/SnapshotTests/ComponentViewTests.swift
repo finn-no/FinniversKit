@@ -243,14 +243,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.favoriteButton)
     }
 
-    func testMotorTransactionEntryAdManagementView() {
-        snapshot(.motorTransactionEntryAdManagementView)
-    }
-
-    func testMotorTransactionEntryObjectPageView() {
-        snapshot(.motorTransactionEntryObjectPageView)
-    }
-
     func testSendInviteView() {
         snapshot(.sendInviteView)
     }
