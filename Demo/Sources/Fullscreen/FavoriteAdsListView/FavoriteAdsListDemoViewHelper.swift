@@ -5,7 +5,7 @@
 import FinniversKit
 
 extension FavoriteAdViewModel {
-    static func deletedAd(addedToFolderDate: Date, ribbonViewModel: RibbonViewModel) -> FavoriteAdViewModel {
+    static func deletedAd(addedToFolderDate: Date, ribbonViewModel: RibbonViewModel?) -> FavoriteAdViewModel {
         self.init(
             addressText: nil,
             titleText: "Annonsen er slettet",
@@ -58,6 +58,7 @@ struct FavoriteAdsFactory {
             nil,
             nil,
             nil,
+            nil,
             nil
         ]
     }
@@ -71,7 +72,8 @@ struct FavoriteAdsFactory {
             "Røros",
             "Fredrikstad",
             "Sentrum, Navn Navnesens vei 42A, 0001 Oslo",
-            "Østkanten, Helsfyrsveien 10A, 1010 Oslo"
+            "Sentrum, Navn Navnesens vei 42A, 0001 Oslo",
+            "Østkanten, Helsfyrsveien 10A, 1010 Oslo",
         ]
     }
 
@@ -84,7 +86,8 @@ struct FavoriteAdsFactory {
             "Worcestershire bøll terrier valper. Leveringsklare fra 21. August 2019",
             "Nesten ny bil / Panorama - Se utstyr! Innbytte mulig 2014, 69 700 km, kr 999 500,-",
             "BUD INNKOMMET! Lekker tomannsbolig med 70 soverom. Nydelige uteplasser! Garasje med innredet hems.",
-            "Nordvendt og lekkert rekkehus med mulighet for 2 soverom nær flotte t-baner og skoler."
+            "BUD INNKOMMET! Lekker tomannsbolig med 70 soverom. Nydelige uteplasser! Garasje med innredet hems.",
+            "Nordvendt og lekkert rekkehus med mulighet for 2 soverom nær flotte t-baner og skoler.",
         ]
     }
 
@@ -97,7 +100,8 @@ struct FavoriteAdsFactory {
             "17 000,-",
             "2014 • 69 700 km • 999 500,-",
             "128m² • 2 565 000,-",
-            "123m² • 2 750 000,-"
+            "128m² • 2 565 000,-",
+            "123m² • 2 750 000,-",
         ]
     }
 
@@ -110,7 +114,8 @@ struct FavoriteAdsFactory {
             "Torget",
             "Bruktbil・Bil・Bensin",
             "Bolig til salgs・Eier (Selveier)・Tomannsbolig",
-            "Bolig til salgs・1 989,- pr mnd・Eier (Selveier)・Andre・1 soverom"
+            "Bolig til salgs・Eier (Selveier)・Tomannsbolig",
+            "Bolig til salgs・1 989,- pr mnd・Eier (Selveier)・Andre・1 soverom",
         ]
     }
 
@@ -122,6 +127,7 @@ struct FavoriteAdsFactory {
             nil,
             nil,
             nil,
+            "Visning mandag 9. september kl. 14:00-16:00",
             "Visning mandag 9. september kl. 14:00-16:00",
             "Visning mandag 9. september kl. 14:00-16:00",
         ]
@@ -136,7 +142,8 @@ struct FavoriteAdsFactory {
             "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
             "https://i.pinimg.com/736x/bf/6d/73/bf6d73ab0234f3ba1a615b22d2dc7e74--home-exterior-design-contemporary-houses.jpg",
             "https://www.tumbleweedhouses.com/wp-content/uploads/tumbleweed-tiny-house-cypress-black-roof-hp.jpg",
-            "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg"
+            "https://www.tumbleweedhouses.com/wp-content/uploads/tumbleweed-tiny-house-cypress-black-roof-hp.jpg",
+            "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg",
         ]
     }
 
@@ -149,11 +156,12 @@ struct FavoriteAdsFactory {
             nil,
             nil,
             "Kjekk villa som kunne ha imponert venner og bekjente. Fantastisk hage for grillfester og sammenkomster. Trekker litt ned for gamle soilrør. Oppgradert i 1965.",
-            nil
+            "Kjekk villa som kunne ha imponert venner og bekjente. Fantastisk hage for grillfester og sammenkomster. Trekker litt ned for gamle soilrør. Oppgradert i 1965.",
+            nil,
         ]
     }
 
-    private static var ribbonViewModels: [RibbonViewModel] {
+    private static var ribbonViewModels: [RibbonViewModel?] {
         [
             RibbonViewModel(style: .success, title: "Aktiv"),
             RibbonViewModel(style: .error, title: "Slettet"),
@@ -162,7 +170,8 @@ struct FavoriteAdsFactory {
             RibbonViewModel(style: .disabled, title: "Frist utløpt"),
             RibbonViewModel(style: .success, title: "Aktiv"),
             RibbonViewModel(style: .disabled, title: "Deaktivert"),
-            RibbonViewModel(style: .warning, title: "Solgt")
+            nil,
+            RibbonViewModel(style: .warning, title: "Solgt"),
         ]
     }
 
@@ -179,7 +188,8 @@ struct FavoriteAdsFactory {
             referenceDate.addingTimeInterval(-(oneWeek * 26)),
             referenceDate.addingTimeInterval(-(oneYear)),
             referenceDate.addingTimeInterval(-(oneYear + oneWeek * 4)),
-            referenceDate.addingTimeInterval(-(oneYear + oneWeek * 4))
+            referenceDate.addingTimeInterval(-(oneYear + oneWeek * 4)),
+            referenceDate.addingTimeInterval(-(oneYear + oneWeek * 4)),
         ]
     }
 }
