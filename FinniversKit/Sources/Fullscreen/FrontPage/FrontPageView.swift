@@ -36,6 +36,10 @@ public final class FrontPageView: UIView {
 
     private let marketsGridView: MarketsGridView
     private let adRecommendationsGridView: AdRecommendationsGridView
+
+    private let promoContainer = UIView(withAutoLayout: true)
+    private let promoLinkView: PromoLinkView?
+
     private lazy var headerView = UIView()
 
     private lazy var headerLabel: Label = {
@@ -58,16 +62,32 @@ public final class FrontPageView: UIView {
 
     // MARK: - Init
 
-    public convenience init(delegate: FrontPageViewDelegate & MarketsGridViewDelegate & MarketsGridViewDataSource & AdRecommendationsGridViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource) {
-        self.init(delegate: delegate, marketsGridViewDelegate: delegate, marketsGridViewDataSource: delegate, adRecommendationsGridViewDelegate: delegate, adRecommendationsGridViewDataSource: adRecommendationsGridViewDataSource)
+    public convenience init(delegate: FrontPageViewDelegate & MarketsGridViewDelegate & MarketsGridViewDataSource & AdRecommendationsGridViewDelegate & PromoLinkViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource, promoLinkViewModel: PromoLinkViewModel?) {
+        self.init(delegate: delegate, marketsGridViewDelegate: delegate, marketsGridViewDataSource: delegate, adRecommendationsGridViewDelegate: delegate, adRecommendationsGridViewDataSource: adRecommendationsGridViewDataSource, promoLinkViewDelegate: delegate, promoLinkViewModel: promoLinkViewModel)
     }
 
-    public init(delegate: FrontPageViewDelegate, marketsGridViewDelegate: MarketsGridViewDelegate, marketsGridViewDataSource: MarketsGridViewDataSource, adRecommendationsGridViewDelegate: AdRecommendationsGridViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource) {
+    public init(
+        delegate: FrontPageViewDelegate,
+        marketsGridViewDelegate: MarketsGridViewDelegate,
+        marketsGridViewDataSource: MarketsGridViewDataSource,
+        adRecommendationsGridViewDelegate: AdRecommendationsGridViewDelegate,
+        adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource,
+        promoLinkViewDelegate: PromoLinkViewDelegate,
+        promoLinkViewModel: PromoLinkViewModel?
+    ) {
         marketsGridView = MarketsGridView(delegate: marketsGridViewDelegate, dataSource: marketsGridViewDataSource)
         marketsGridView.translatesAutoresizingMaskIntoConstraints = false
 
         adRecommendationsGridView = AdRecommendationsGridView(delegate: adRecommendationsGridViewDelegate, dataSource: adRecommendationsGridViewDataSource)
         adRecommendationsGridView.translatesAutoresizingMaskIntoConstraints = false
+
+        if let promoLinkViewModel = promoLinkViewModel {
+            promoLinkView = PromoLinkView(delegate: promoLinkViewDelegate)
+            promoLinkView?.translatesAutoresizingMaskIntoConstraints = false
+            promoLinkView?.configure(with: promoLinkViewModel)
+        } else {
+            promoLinkView = nil
+        }
 
         super.init(frame: .zero)
         self.delegate = delegate
@@ -134,6 +154,7 @@ public final class FrontPageView: UIView {
         adRecommendationsGridView.collectionView.addSubview(adsRetryView)
 
         headerView.addSubview(marketsGridView)
+        headerView.addSubview(promoContainer)
         headerView.addSubview(headerLabel)
 
         NSLayoutConstraint.activate([
@@ -142,10 +163,16 @@ public final class FrontPageView: UIView {
             marketsGridView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             marketsGridViewHeight,
 
-            headerLabel.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor, constant: .spacingM),
+            promoContainer.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor),
+            promoContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            promoContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+
+            headerLabel.topAnchor.constraint(equalTo: promoContainer.bottomAnchor, constant: .spacingM),
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
         ])
+
+        setupPromoView()
 
         adRecommendationsGridView.fillInSuperview()
         adRecommendationsGridView.headerView = headerView
@@ -153,12 +180,32 @@ public final class FrontPageView: UIView {
         setupFrames()
     }
 
+    private func setupPromoView() {
+        guard let promoLinkView = promoLinkView else { return }
+
+        promoContainer.addSubview(promoLinkView)
+
+        NSLayoutConstraint.activate([
+            promoLinkView.topAnchor.constraint(equalTo: promoContainer.topAnchor, constant: .spacingM),
+            promoLinkView.leadingAnchor.constraint(equalTo: promoContainer.leadingAnchor, constant: .spacingM),
+            promoLinkView.trailingAnchor.constraint(equalTo: promoContainer.trailingAnchor, constant: -.spacingM),
+            promoLinkView.bottomAnchor.constraint(equalTo: promoContainer.bottomAnchor)
+        ])
+    }
+
     private func setupFrames() {
         let headerTopSpacing: CGFloat = .spacingM
         let headerBottomSpacing: CGFloat = .spacingS
         let labelHeight = headerLabel.intrinsicContentSize.height + .spacingM
+        let promoContainerHeight = promoContainer
+            .systemLayoutSizeFitting(
+                CGSize(width: bounds.size.width, height: 0),
+                withHorizontalFittingPriority: .required,
+                verticalFittingPriority: .fittingSizeLevel)
+            .height
+        print("PROMO CONTAINER HEIGHT \(promoContainerHeight)")
         let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: bounds.size.width).height + .spacingXS
-        let height = headerTopSpacing + labelHeight + marketGridViewHeight + headerBottomSpacing
+        let height = headerTopSpacing + labelHeight + marketGridViewHeight + promoContainerHeight + headerBottomSpacing
 
         marketsGridViewHeight.constant = marketGridViewHeight
         headerView.frame.size.height = height
