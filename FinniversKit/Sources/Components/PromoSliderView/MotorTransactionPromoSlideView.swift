@@ -43,9 +43,9 @@ public class MotorTransactionPromoSlideView: UIView {
     }
 
     private func setup() {
+        addSubview(imageView)
         addSubview(titleLabel)
         addSubview(button)
-        addSubview(imageView)
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor),

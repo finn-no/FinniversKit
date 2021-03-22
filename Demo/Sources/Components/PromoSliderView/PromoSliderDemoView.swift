@@ -45,11 +45,11 @@ class PromoSliderDemoView: UIView {
         motorTransactionPromoSlide2.delegate = self
 
         promoSliderView.configure(withSlides: [motorTransactionPromoSlide, motorTransactionPromoSlide2])
+        promoSliderView.reloadData()
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        promoSliderView.reloadData()
     }
 }
 
