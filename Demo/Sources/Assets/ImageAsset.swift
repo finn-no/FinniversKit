@@ -40,6 +40,7 @@ enum ImageAsset: String {
     case blinkRocketMini
     case boat
     case car
+    case carPromo
     case checkCircleFilled
     case classifieds
     case consentTransparencyImage
@@ -117,6 +118,7 @@ enum ImageAsset: String {
             .blinkRocketMini,
             .boat,
             .car,
+            .carPromo,
             .checkCircleFilled,
             .classifieds,
             .consentTransparencyImage,
