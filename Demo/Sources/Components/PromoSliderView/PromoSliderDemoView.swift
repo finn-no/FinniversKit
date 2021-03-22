@@ -34,6 +34,7 @@ class PromoSliderDemoView: UIView {
             buttonTitle: "Se hvordan det virker",
             image: UIImage(named: .carPromo)
         )
+        motorTransactionPromoSlide.delegate = self
 
         let motorTransactionPromoSlide2 = MotorTransactionPromoSlideView()
         motorTransactionPromoSlide2.configure(
@@ -41,6 +42,7 @@ class PromoSliderDemoView: UIView {
             buttonTitle: "Try",
             image: UIImage(named: .carPromo)
         )
+        motorTransactionPromoSlide2.delegate = self
 
         promoSliderView.configure(withSlides: [motorTransactionPromoSlide, motorTransactionPromoSlide2])
     }
@@ -48,5 +50,11 @@ class PromoSliderDemoView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         promoSliderView.reloadData()
+    }
+}
+
+extension PromoSliderDemoView: MotorTransactionPromoSlideViewDelegate {
+    func motorTransactionPromoSlideViewDidTapButton(_ motorTransactionPromoSlideView: MotorTransactionPromoSlideView) {
+        print("Did tap button!")
     }
 }

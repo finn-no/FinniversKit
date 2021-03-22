@@ -1,6 +1,10 @@
 import Foundation
 import UIKit
 
+public protocol MotorTransactionPromoSlideViewDelegate: AnyObject {
+    func motorTransactionPromoSlideViewDidTapButton(_ motorTransactionPromoSlideView: MotorTransactionPromoSlideView)
+}
+
 public class MotorTransactionPromoSlideView: UIView {
     private lazy var titleLabel: Label = {
         let label = Label(style: .title3Strong, withAutoLayout: true)
@@ -18,6 +22,7 @@ public class MotorTransactionPromoSlideView: UIView {
             highlightedBorderColor: .white
         )
         let button = Button(style: style, size: .small, withAutoLayout: true)
+        button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
         return button
     }()
 
@@ -25,6 +30,8 @@ public class MotorTransactionPromoSlideView: UIView {
         let imageView = UIImageView(withAutoLayout: true)
         return imageView
     }()
+
+    public weak var delegate: MotorTransactionPromoSlideViewDelegate?
 
     public init() {
         super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
@@ -58,5 +65,9 @@ public class MotorTransactionPromoSlideView: UIView {
         titleLabel.text = text
         button.setTitle(buttonTitle, for: .normal)
         imageView.image = image
+    }
+
+    @objc private func handleButtonTap() {
+        delegate?.motorTransactionPromoSlideViewDidTapButton(self)
     }
 }
