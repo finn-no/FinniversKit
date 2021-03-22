@@ -146,18 +146,18 @@ extension FrontpageViewDemoView: AdRecommendationsGridViewDataSource {
 
 // MARK: - MarketsGridViewDelegate
 
-extension FrontpageViewDemoView: MarketsGridViewDelegate {
-    public func marketsGridView(_ marketsGridView: MarketsGridView, didSelectItemAtIndex index: Int) {}
+extension FrontpageViewDemoView: MarketsViewDelegate {
+    public func marketsView(_ marketsGridView: MarketsView, didSelectItemAtIndex index: Int) {}
 }
 
 // MARK: - MarketsGridViewDataSource
 
-extension FrontpageViewDemoView: MarketsGridViewDataSource {
-    public func numberOfItems(inMarketsGridView marketsGridView: MarketsGridView) -> Int {
+extension FrontpageViewDemoView: MarketsViewDataSource {
+    public func numberOfItems(inMarketsView marketsView: MarketsView) -> Int {
         return markets.count
     }
 
-    public func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel {
+    public func marketsView(_ marketsView: MarketsView, modelAtIndex index: Int) -> MarketsGridViewModel {
         return markets[index]
     }
 }
