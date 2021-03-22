@@ -7,7 +7,7 @@ public class PromoSliderView: UIView {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.decelerationRate = .fast
         collectionView.dataSource = self
-        collectionView.backgroundColor = .primaryBlue
+        collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.register(SlideCell.self)
         return collectionView
@@ -31,6 +31,16 @@ public class PromoSliderView: UIView {
         return pageControl
     }()
 
+    private lazy var backgroundCircleView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .black
+        view.alpha = 0.2
+        view.layer.cornerRadius = circleSize/2
+        view.clipsToBounds = true
+        return view
+    }()
+
+    private let circleSize: CGFloat = 400
     private var slides: [UIView] = []
     private lazy var collectionViewHeightAnchor = collectionView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200)
 
@@ -45,17 +55,24 @@ public class PromoSliderView: UIView {
 
     private func setup() {
         backgroundColor = .primaryBlue
+        clipsToBounds = true
 
+        addSubview(backgroundCircleView)
         addSubview(collectionView)
         addSubview(pageControl)
 
         NSLayoutConstraint.activate([
+            backgroundCircleView.topAnchor.constraint(equalTo: topAnchor),
+            backgroundCircleView.centerXAnchor.constraint(equalTo: trailingAnchor, constant: 40),
+            backgroundCircleView.heightAnchor.constraint(equalToConstant: circleSize),
+            backgroundCircleView.widthAnchor.constraint(equalToConstant: circleSize),
+
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.topAnchor.constraint(equalTo: topAnchor),
+            collectionView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionViewHeightAnchor,
 
-            pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
+            pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingS),
             pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
             pageControl.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
