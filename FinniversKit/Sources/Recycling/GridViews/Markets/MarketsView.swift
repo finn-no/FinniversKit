@@ -11,5 +11,5 @@ public protocol MarketsViewDelegate: AnyObject {
 
 public protocol MarketsViewDataSource: AnyObject {
     func numberOfItems(inMarketsView marketsView: MarketsView) -> Int
-    func marketsView(_ marketsView: MarketsView, modelAtIndex index: Int) -> MarketsGridViewModel
+    func marketsView(_ marketsView: MarketsView, modelAtIndex index: Int) -> MarketsViewModel
 }

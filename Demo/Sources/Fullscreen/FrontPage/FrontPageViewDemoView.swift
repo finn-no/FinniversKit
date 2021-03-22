@@ -157,7 +157,7 @@ extension FrontpageViewDemoView: MarketsViewDataSource {
         return markets.count
     }
 
-    public func marketsView(_ marketsView: MarketsView, modelAtIndex index: Int) -> MarketsGridViewModel {
+    public func marketsView(_ marketsView: MarketsView, modelAtIndex index: Int) -> MarketsViewModel {
         return markets[index]
     }
 }

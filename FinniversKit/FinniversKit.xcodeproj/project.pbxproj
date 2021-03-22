@@ -48,7 +48,7 @@
 		441FE42B209A24E500B04EF1 /* MarketsGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE419209A24E500B04EF1 /* MarketsGridViewCell.swift */; };
 		441FE42C209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE41B209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift */; };
 		441FE42D209A24E500B04EF1 /* MarketsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE41C209A24E500B04EF1 /* MarketsGridView.swift */; };
-		441FE42E209A24E500B04EF1 /* MarketsGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE41E209A24E500B04EF1 /* MarketsGridViewModel.swift */; };
+		441FE42E209A24E500B04EF1 /* MarketsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE41E209A24E500B04EF1 /* MarketsViewModel.swift */; };
 		441FE430209A24E500B04EF1 /* StandardAdRecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE422209A24E500B04EF1 /* StandardAdRecommendationCell.swift */; };
 		441FE431209A24E500B04EF1 /* AdRecommendationsGridHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE424209A24E500B04EF1 /* AdRecommendationsGridHeaderView.swift */; };
 		441FE432209A24E500B04EF1 /* AdRecommendationsGridViewLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE425209A24E500B04EF1 /* AdRecommendationsGridViewLayoutConfiguration.swift */; };
@@ -474,7 +474,7 @@
 		441FE419209A24E500B04EF1 /* MarketsGridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsGridViewCell.swift; sourceTree = "<group>"; };
 		441FE41B209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsGridViewLayoutConfiguration.swift; sourceTree = "<group>"; };
 		441FE41C209A24E500B04EF1 /* MarketsGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsGridView.swift; sourceTree = "<group>"; };
-		441FE41E209A24E500B04EF1 /* MarketsGridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsGridViewModel.swift; sourceTree = "<group>"; };
+		441FE41E209A24E500B04EF1 /* MarketsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsViewModel.swift; sourceTree = "<group>"; };
 		441FE422209A24E500B04EF1 /* StandardAdRecommendationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardAdRecommendationCell.swift; sourceTree = "<group>"; };
 		441FE424209A24E500B04EF1 /* AdRecommendationsGridHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdRecommendationsGridHeaderView.swift; sourceTree = "<group>"; };
 		441FE425209A24E500B04EF1 /* AdRecommendationsGridViewLayoutConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdRecommendationsGridViewLayoutConfiguration.swift; sourceTree = "<group>"; };
@@ -1128,7 +1128,7 @@
 		441FE41D209A24E500B04EF1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				441FE41E209A24E500B04EF1 /* MarketsGridViewModel.swift */,
+				441FE41E209A24E500B04EF1 /* MarketsViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3072,7 +3072,7 @@
 				441FE44E209A2F2C00B04EF1 /* NotificationsListView.swift in Sources */,
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
 				CF4A053C21FB2ACB000BB7DA /* PianoEffectControl.swift in Sources */,
-				441FE42E209A24E500B04EF1 /* MarketsGridViewModel.swift in Sources */,
+				441FE42E209A24E500B04EF1 /* MarketsViewModel.swift in Sources */,
 				DAD6EB272369916100968497 /* SettingsViewCellModel.swift in Sources */,
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
 				F2C3E96022CB669A00CED7E0 /* QuestionnaireView+Style.swift in Sources */,

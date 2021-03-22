@@ -83,7 +83,7 @@ public class MarketsGridViewCell: UICollectionViewCell {
 
     // MARK: - Dependency injection
 
-    public var model: MarketsGridViewModel? {
+    public var model: MarketsViewModel? {
         didSet {
             iconImageView.image = model?.iconImage
             titleLabel.text = model?.title
