@@ -43,6 +43,7 @@ public class PromoSliderView: UIView {
     private let circleSize: CGFloat = 400
     private var slides: [UIView] = []
     private lazy var collectionViewHeightAnchor = collectionView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200)
+    private lazy var pageControlTopAnchor = pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingS)
 
     public init() {
         super.init(frame: .zero)
@@ -72,7 +73,7 @@ public class PromoSliderView: UIView {
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionViewHeightAnchor,
 
-            pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingS),
+            pageControlTopAnchor,
             pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
             pageControl.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
@@ -92,6 +93,11 @@ public class PromoSliderView: UIView {
 
     public func configure(withSlides slides: [UIView]) {
         self.slides = slides
+
+        if slides.count == 1 {
+            pageControl.isHidden = true
+            pageControlTopAnchor.constant = 0
+        }
 
         pageControl.numberOfPages = slides.count
         pageControl.currentPage = 0
