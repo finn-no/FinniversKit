@@ -35,6 +35,18 @@ class PromoSliderDemoView: UIView {
             image: UIImage(named: .carPromo)
         )
 
-        promoSliderView.configure(withSlides: [motorTransactionPromoSlide])
+        let motorTransactionPromoSlide2 = MotorTransactionPromoSlideView()
+        motorTransactionPromoSlide2.configure(
+            with: "Try this too!",
+            buttonTitle: "Try",
+            image: UIImage(named: .carPromo)
+        )
+
+        promoSliderView.configure(withSlides: [motorTransactionPromoSlide, motorTransactionPromoSlide2])
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        promoSliderView.reloadData()
     }
 }

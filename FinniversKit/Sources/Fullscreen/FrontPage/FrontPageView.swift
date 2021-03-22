@@ -203,7 +203,7 @@ public final class FrontPageView: UIView {
                 withHorizontalFittingPriority: .required,
                 verticalFittingPriority: .fittingSizeLevel)
             .height
-        print("PROMO CONTAINER HEIGHT \(promoContainerHeight)")
+
         let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: bounds.size.width).height + .spacingXS
         let height = headerTopSpacing + labelHeight + marketGridViewHeight + promoContainerHeight + headerBottomSpacing
 
