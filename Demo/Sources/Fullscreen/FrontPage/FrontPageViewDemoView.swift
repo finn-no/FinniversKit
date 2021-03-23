@@ -19,6 +19,15 @@ public class FrontpageViewDemoView: UIView {
         let view = FrontPageView(delegate: self, adRecommendationsGridViewDataSource: self, promoLinkViewModel: PromoViewModel())
         view.model = FrontpageViewDefaultData()
         view.isRefreshEnabled = true
+
+        let motorTransactionPromoSlide = MotorTransactionPromoSlideView()
+        motorTransactionPromoSlide.configure(
+            with: "Smidig bilhandel? Prøv\nFINNs nye prosess!",
+            buttonTitle: "Se hvordan det virker",
+            image: UIImage(named: .carPromo)
+        )
+        view.configure(with: [motorTransactionPromoSlide])
+
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

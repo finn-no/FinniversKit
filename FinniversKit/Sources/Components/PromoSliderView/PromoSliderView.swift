@@ -45,6 +45,8 @@ public class PromoSliderView: UIView {
     private lazy var collectionViewHeightAnchor = collectionView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200)
     private lazy var pageControlTopAnchor = pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingS)
 
+    private var boundsForCurrentSubviewSetup = CGRect.zero
+
     public init() {
         super.init(frame: .zero)
         setup()
@@ -82,8 +84,18 @@ public class PromoSliderView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        let targetSize = CGSize(width: bounds.size.width, height: 0)
-        guard let maxHeight = slides.map({ $0.systemLayoutSizeFitting(targetSize).height }).max() else { return }
+        updateFramesIfNecessary()
+    }
+
+    public func updateFramesIfNecessary() {
+        guard
+            !boundsForCurrentSubviewSetup.equalTo(bounds),
+            bounds.size.width > 0,
+            let maxHeight = slides.map({ $0.systemLayoutSizeFitting(CGSize(width: bounds.size.width, height: 0)).height }).max(),
+            maxHeight > 0
+        else { return }
+
+        boundsForCurrentSubviewSetup = bounds
 
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.itemSize = CGSize(width: frame.size.width, height: maxHeight)
