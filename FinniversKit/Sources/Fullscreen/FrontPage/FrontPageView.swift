@@ -66,7 +66,7 @@ public final class FrontPageView: UIView {
 
     private var boundsForCurrentSubviewSetup = CGRect.zero
 
-    private let useExperimentalDesign: Bool = true
+    private let useExperimentalDesign: Bool = false
 
     // MARK: - Init
 

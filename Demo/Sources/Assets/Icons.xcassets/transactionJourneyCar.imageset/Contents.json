@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "Symbol.png",
+      "filename" : "transactionJourneyCar.pdf",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Symbol@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Symbol@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

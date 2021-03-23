@@ -11,8 +11,10 @@ public protocol PromoLinkViewModel: AnyObject {
 
 public class PromoLinkView: UIView {
 
+    private lazy var stackView = UIStackView(axis: .horizontal, spacing: .spacingM, withAutoLayout: true)
+
     private lazy var titleLabel: Label = {
-        let label = Label(style: .bodyStrong, withAutoLayout: true)
+        let label = Label(style: .detailStrong, withAutoLayout: true)
         label.numberOfLines = 0
         return label
     }()
@@ -23,14 +25,11 @@ public class PromoLinkView: UIView {
         return imageView
     }()
 
-    private lazy var arrowIconImageView: UIImageView = {
-        let imageView = UIImageView(withAutoLayout: true)
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: .arrowRight)
-        return imageView
+    private lazy var navigationLinkView: NavigationLinkView = {
+        let view = NavigationLinkView(withSubview: stackView, padding: .spacingS, backgroundColor: .bgTertiary)
+        view.delegate = self
+        return view
     }()
-
-    private let verticalSpacing: CGFloat = .spacingL
 
     private weak var delegate: PromoLinkViewDelegate?
 
@@ -52,29 +51,14 @@ public class PromoLinkView: UIView {
         backgroundColor = .bgSecondary
         layer.cornerRadius = .spacingS
 
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        addGestureRecognizer(tapGesture)
+        addSubview(navigationLinkView)
+        navigationLinkView.fillInSuperview()
 
-        isAccessibilityElement = true
-        accessibilityTraits = .button
-
-        addSubview(imageView)
-        addSubview(titleLabel)
-        addSubview(arrowIconImageView)
+        stackView.addArrangedSubviews([imageView, titleLabel])
 
         NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             imageView.heightAnchor.constraint(equalToConstant: 36),
-            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor),
-            imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-
-            titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingL),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: verticalSpacing),
-            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: arrowIconImageView.leadingAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -verticalSpacing),
-
-            arrowIconImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-            arrowIconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor)
         ])
     }
 
@@ -83,12 +67,12 @@ public class PromoLinkView: UIView {
     public func configure(with viewModel: PromoLinkViewModel) {
         titleLabel.text = viewModel.title
         imageView.image = viewModel.image
-        accessibilityLabel = viewModel.title
+        navigationLinkView.setAccessibilityLabel(viewModel.title)
     }
+}
 
-    // MARK: - Actions
-
-    @objc func handleTap() {
+extension PromoLinkView: NavigationLinkViewDelegate {
+    public func navigationLinkViewWasTapped(_ navigationLinkView: NavigationLinkView) {
         delegate?.promoLinkViewWasTapped(self)
     }
 }
