@@ -19,17 +19,15 @@ public class MotorTransactionPromoSlideView: UIView {
             borderColor: .white,
             textColor: .white,
             highlightedBodyColor: .primaryBlue,
-            highlightedBorderColor: .white
+            highlightedBorderColor: UIColor.white.withAlphaComponent(0.8),
+            highlightedTextColor: UIColor.white.withAlphaComponent(0.8)
         )
         let button = Button(style: style, size: .small, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
         return button
     }()
 
-    private lazy var imageView: UIImageView = {
-        let imageView = UIImageView(withAutoLayout: true)
-        return imageView
-    }()
+    private lazy var imageView = UIImageView(withAutoLayout: true)
 
     public weak var delegate: MotorTransactionPromoSlideViewDelegate?
 
@@ -51,11 +49,11 @@ public class MotorTransactionPromoSlideView: UIView {
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
 
-            button.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
+            button.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS + .spacingXS),
             button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             button.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
 
-            imageView.topAnchor.constraint(equalTo: topAnchor),
+            imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             imageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
         ])
