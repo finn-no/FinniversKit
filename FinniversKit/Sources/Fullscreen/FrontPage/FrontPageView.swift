@@ -8,6 +8,12 @@ public protocol FrontPageViewModel {
     var noRecommendationsText: String { get }
 }
 
+public protocol ABTestViewModel {
+    var activeTestVariant: FrontPageView.ABTestVariant { get }
+    var slides: [UIView] { get }
+    var promoLinkViewModel: PromoLinkViewModel { get }
+}
+
 public protocol FrontPageViewDelegate: AnyObject {
     func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView)
 }
@@ -38,7 +44,8 @@ public final class FrontPageView: UIView {
     private let adRecommendationsGridView: AdRecommendationsGridView
 
     private let promoContainer = UIView(withAutoLayout: true)
-    private let promoLinkView: PromoLinkView?
+    private var promoLinkView: PromoLinkView?
+    private weak var promoLinkViewDelegate: PromoLinkViewDelegate?
 
     private lazy var promoSliderView: PromoSliderView = {
         let view = PromoSliderView()
@@ -66,22 +73,30 @@ public final class FrontPageView: UIView {
 
     private var boundsForCurrentSubviewSetup = CGRect.zero
 
-    private let useExperimentalDesign: Bool = false
+    private let abTestViewModel: ABTestViewModel
+
+    public enum ABTestVariant {
+        case traditional
+        case simplePromo
+        case redesign
+    }
+
+    private let abTestVariant: ABTestVariant
 
     // MARK: - Init
 
-    public convenience init(delegate: FrontPageViewDelegate & MarketsGridViewDelegate & MarketsGridViewDataSource & AdRecommendationsGridViewDelegate & PromoLinkViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource, promoLinkViewModel: PromoLinkViewModel?) {
-        self.init(delegate: delegate, marketsGridViewDelegate: delegate, marketsGridViewDataSource: delegate, adRecommendationsGridViewDelegate: delegate, adRecommendationsGridViewDataSource: adRecommendationsGridViewDataSource, promoLinkViewDelegate: delegate, promoLinkViewModel: promoLinkViewModel)
+    public convenience init(abTestViewModel: ABTestViewModel, delegate: FrontPageViewDelegate & MarketsGridViewDelegate & MarketsGridViewDataSource & AdRecommendationsGridViewDelegate & PromoLinkViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource) {
+        self.init(abTestViewModel: abTestViewModel, delegate: delegate, marketsGridViewDelegate: delegate, marketsGridViewDataSource: delegate, adRecommendationsGridViewDelegate: delegate, adRecommendationsGridViewDataSource: adRecommendationsGridViewDataSource, promoLinkViewDelegate: delegate)
     }
 
     public init(
+        abTestViewModel: ABTestViewModel,
         delegate: FrontPageViewDelegate,
         marketsGridViewDelegate: MarketsGridViewDelegate,
         marketsGridViewDataSource: MarketsGridViewDataSource,
         adRecommendationsGridViewDelegate: AdRecommendationsGridViewDelegate,
         adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource,
-        promoLinkViewDelegate: PromoLinkViewDelegate,
-        promoLinkViewModel: PromoLinkViewModel?
+        promoLinkViewDelegate: PromoLinkViewDelegate
     ) {
         marketsGridView = MarketsGridView(delegate: marketsGridViewDelegate, dataSource: marketsGridViewDataSource)
         marketsGridView.translatesAutoresizingMaskIntoConstraints = false
@@ -89,16 +104,12 @@ public final class FrontPageView: UIView {
         adRecommendationsGridView = AdRecommendationsGridView(delegate: adRecommendationsGridViewDelegate, dataSource: adRecommendationsGridViewDataSource)
         adRecommendationsGridView.translatesAutoresizingMaskIntoConstraints = false
 
-        if let promoLinkViewModel = promoLinkViewModel {
-            promoLinkView = PromoLinkView(delegate: promoLinkViewDelegate)
-            promoLinkView?.translatesAutoresizingMaskIntoConstraints = false
-            promoLinkView?.configure(with: promoLinkViewModel)
-        } else {
-            promoLinkView = nil
-        }
+        self.abTestViewModel = abTestViewModel
+        abTestVariant = abTestViewModel.activeTestVariant
 
         super.init(frame: .zero)
         self.delegate = delegate
+        self.promoLinkViewDelegate = promoLinkViewDelegate
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -152,12 +163,6 @@ public final class FrontPageView: UIView {
         adRecommendationsGridView.scrollToTop()
     }
 
-    public func configure(with slides: [UIView]) {
-        guard useExperimentalDesign else { return }
-        promoSliderView.configure(withSlides: slides)
-        promoSliderView.reloadData()
-    }
-
     // MARK: - Setup
 
     private func setup() {
@@ -167,8 +172,8 @@ public final class FrontPageView: UIView {
 
         adRecommendationsGridView.collectionView.addSubview(adsRetryView)
 
-        guard !useExperimentalDesign else {
-            setupExperimentalDesign()
+        if abTestVariant == .redesign {
+            setupRedesign()
             return
         }
 
@@ -191,7 +196,9 @@ public final class FrontPageView: UIView {
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
         ])
 
-        setupPromoView()
+        if abTestVariant == .simplePromo {
+            setupSimplePromo()
+        }
 
         adRecommendationsGridView.fillInSuperview()
         adRecommendationsGridView.headerView = headerView
@@ -199,7 +206,12 @@ public final class FrontPageView: UIView {
         setupFrames()
     }
 
-    private func setupExperimentalDesign() {
+    private func setupRedesign() {
+        guard abTestVariant == .redesign else { return }
+
+        promoSliderView.configure(withSlides: abTestViewModel.slides)
+        promoSliderView.reloadData()
+
         headerView.addSubview(promoSliderView)
         headerView.addSubview(headerLabel)
         headerView.translatesAutoresizingMaskIntoConstraints = false
@@ -219,11 +231,18 @@ public final class FrontPageView: UIView {
         adRecommendationsGridView.fillInSuperview()
         adRecommendationsGridView.headerView = headerView
 
-        setupFramesForExperimentalDesign()
+        setupFramesForRedesign()
     }
 
-    private func setupPromoView() {
+    private func setupSimplePromo() {
+        guard abTestVariant == .simplePromo else { return }
+
+        promoLinkView = PromoLinkView(delegate: promoLinkViewDelegate)
+
         guard let promoLinkView = promoLinkView else { return }
+
+        promoLinkView.translatesAutoresizingMaskIntoConstraints = false
+        promoLinkView.configure(with: abTestViewModel.promoLinkViewModel)
 
         promoContainer.addSubview(promoLinkView)
 
@@ -236,8 +255,8 @@ public final class FrontPageView: UIView {
     }
 
     private func setupFrames() {
-        guard !useExperimentalDesign else {
-            setupFramesForExperimentalDesign()
+        if abTestVariant == .redesign {
+            setupFramesForRedesign()
             return
         }
 
@@ -262,7 +281,9 @@ public final class FrontPageView: UIView {
         adRecommendationsGridView.invalidateLayout()
     }
 
-    private func setupFramesForExperimentalDesign() {
+    private func setupFramesForRedesign() {
+        guard abTestVariant == .redesign else { return }
+
         promoSliderView.updateFramesIfNecessary()
 
         let promoHeight = promoSliderView

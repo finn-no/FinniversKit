@@ -35,7 +35,7 @@ public class PromoLinkView: UIView {
 
     // MARK: - Init
 
-    public init(delegate: PromoLinkViewDelegate) {
+    public init(delegate: PromoLinkViewDelegate?) {
         self.delegate = delegate
         super.init(frame: .zero)
         setup()
