@@ -18,6 +18,10 @@ public enum Market: MarketsViewModel {
     case moteplassen
     case mittAnbud
 
+    case bilOgNaering
+    case leiebil
+    case nettbil
+
     public var title: String {
         switch self {
         case .eiendom: return "Eiendom"
@@ -31,7 +35,10 @@ public enum Market: MarketsViewModel {
         case .shopping: return "Shopping"
         case .economy: return "Økonomi"
         case .moteplassen: return "Møteplassen"
-        case .mittAnbud: return "Oppdrag"
+        case .mittAnbud: return "Mitt anbud"
+        case .bilOgNaering: return "Bil og næring"
+        case .leiebil: return "Leiebil"
+        case .nettbil: return "Nettbil"
         }
     }
 
@@ -49,6 +56,9 @@ public enum Market: MarketsViewModel {
         case .economy: return UIImage(named: .okonomi)
         case .moteplassen: return UIImage(named: .moteplassen)
         case .mittAnbud: return UIImage(named: .mittanbud)
+        case .bilOgNaering: return UIImage(named: .car)
+        case .leiebil: return UIImage(named: .car) // Change this one when new icon arrives
+        case .nettbil: return UIImage(named: .car) // Change this one when new icon arrives
         }
     }
 
@@ -66,6 +76,9 @@ public enum Market: MarketsViewModel {
         case .economy: return true
         case .moteplassen: return true
         case .mittAnbud: return true
+        case .bilOgNaering: return false
+        case .leiebil: return false
+        case .nettbil: return false
         }
     }
 
@@ -78,4 +91,5 @@ public enum Market: MarketsViewModel {
     }
 
     public static var allMarkets: [Market] = [.eiendom, .bil, .torget, .jobb, .mc, .boat, .nytte, .economy, .reise, .mittAnbud, .shopping, .moteplassen]
+    public static var compactMarkets: [Market] = [.eiendom, .bilOgNaering, .torget, .jobb, .reise, .mc, .boat, .economy, .leiebil, .nettbil, .moteplassen, .mittAnbud]
 }
