@@ -52,14 +52,7 @@ extension PromotionFrontpageViewDemoView: PromotionFrontPageViewDelegate {
         _ frontPageView: PromotionFrontPageView,
         promoViewHiddenPercentage percentage: CGFloat
     ) {
-        switch percentage {
-        case 1:
-            print("👀❓ Where is PromoView?")
-        case 0:
-            print("👀✅ PromoView is fully visible")
-        default:
-            print(String(format: "👀 PromoView is %.0f%% hidden", percentage * 100))
-        }
+
     }
 }
 
