@@ -205,13 +205,19 @@ extension PromotionFrontPageView: AdRecommendationsGridViewDelegate {
         let offset = scrollView.contentOffset.y + scrollView.contentInset.top
         let maxOffset = promoViewHeight
 
+        let promoViewPercentageHidden: CGFloat
         if offset <= 0 {
             promoViewTopConstraint.constant = 0
+            promoViewPercentageHidden = 0
         } else if offset >= maxOffset {
             promoViewTopConstraint.constant = -maxOffset
+            promoViewPercentageHidden = 1
         } else {
             promoViewTopConstraint.constant = -offset
+            promoViewPercentageHidden = offset / maxOffset
         }
+
+        promoView.alpha = 1 - promoViewPercentageHidden
 
         adRecommendationsGridViewDelegate?.adRecommendationsGridView(adRecommendationsGridView, didScrollInScrollView: scrollView)
     }
