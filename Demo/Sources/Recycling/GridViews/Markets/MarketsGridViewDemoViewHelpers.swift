@@ -16,7 +16,9 @@ public enum Market: MarketsViewModel {
     case shopping
     case economy
     case moteplassen
+    case moteplassenAlternate
     case mittAnbud
+    case mittAnbudAlternate
 
     case bilOgNaering
     case leiebil
@@ -35,7 +37,9 @@ public enum Market: MarketsViewModel {
         case .shopping: return "Shopping"
         case .economy: return "Økonomi"
         case .moteplassen: return "Møteplassen"
+        case .moteplassenAlternate: return "Møteplassen"
         case .mittAnbud: return "Mitt anbud"
+        case .mittAnbudAlternate: return "Mitt anbud"
         case .bilOgNaering: return "Bil og næring"
         case .leiebil: return "Leiebil"
         case .nettbil: return "Nettbil"
@@ -55,10 +59,12 @@ public enum Market: MarketsViewModel {
         case .shopping: return UIImage(named: .shopping)
         case .economy: return UIImage(named: .okonomi)
         case .moteplassen: return UIImage(named: .moteplassen)
+        case .moteplassenAlternate: return UIImage(named: .moteplassenAlternate)
         case .mittAnbud: return UIImage(named: .mittanbud)
+        case .mittAnbudAlternate: return UIImage(named: .mittanbudAlternate)
         case .bilOgNaering: return UIImage(named: .car)
-        case .leiebil: return UIImage(named: .car) // Change this one when new icon arrives
-        case .nettbil: return UIImage(named: .car) // Change this one when new icon arrives
+        case .leiebil: return UIImage(named: .leiebil)
+        case .nettbil: return UIImage(named: .nettbil)
         }
     }
 
@@ -75,7 +81,9 @@ public enum Market: MarketsViewModel {
         case .shopping: return true
         case .economy: return true
         case .moteplassen: return true
+        case .moteplassenAlternate: return true
         case .mittAnbud: return true
+        case .mittAnbudAlternate: return true
         case .bilOgNaering: return false
         case .leiebil: return false
         case .nettbil: return false
@@ -91,5 +99,5 @@ public enum Market: MarketsViewModel {
     }
 
     public static var allMarkets: [Market] = [.eiendom, .bil, .torget, .jobb, .mc, .boat, .nytte, .economy, .reise, .mittAnbud, .shopping, .moteplassen]
-    public static var compactMarkets: [Market] = [.eiendom, .bilOgNaering, .torget, .jobb, .reise, .mc, .boat, .economy, .leiebil, .nettbil, .moteplassen, .mittAnbud]
+    public static var compactMarkets: [Market] = [.eiendom, .bilOgNaering, .torget, .jobb, .reise, .mc, .boat, .economy, .leiebil, .nettbil, .moteplassenAlternate, .mittAnbudAlternate]
 }
