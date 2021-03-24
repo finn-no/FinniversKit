@@ -6,6 +6,7 @@ import UIKit
 
 public protocol PromotionFrontPageViewDelegate: AnyObject {
     func promotionFrontPageViewDidSelectRetryButton(_ frontPageView: PromotionFrontPageView)
+    func promotionFrontPageView(_ frontPageView: PromotionFrontPageView, promoViewHiddenPercentage percentage: CGFloat)
 }
 
 public final class PromotionFrontPageView: UIView {
@@ -218,6 +219,7 @@ extension PromotionFrontPageView: AdRecommendationsGridViewDelegate {
         }
 
         promoView.alpha = 1 - promoViewPercentageHidden
+        delegate?.promotionFrontPageView(self, promoViewHiddenPercentage: promoViewPercentageHidden)
 
         adRecommendationsGridViewDelegate?.adRecommendationsGridView(adRecommendationsGridView, didScrollInScrollView: scrollView)
     }

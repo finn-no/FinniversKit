@@ -41,13 +41,29 @@ public class PromotionFrontpageViewDemoView: UIView {
     }
 }
 
-// MARK: - AdRecommendationsGridViewDelegate
+// MARK: - PromotionFrontPageViewDelegate
 
 extension PromotionFrontpageViewDemoView: PromotionFrontPageViewDelegate {
     public func promotionFrontPageViewDidSelectRetryButton(_ frontPageView: PromotionFrontPageView) {
         frontPageView.reloadData()
     }
+
+    public func promotionFrontPageView(
+        _ frontPageView: PromotionFrontPageView,
+        promoViewHiddenPercentage percentage: CGFloat
+    ) {
+        switch percentage {
+        case 1:
+            print("👀❓ Where is PromoView?")
+        case 0:
+            print("👀✅ PromoView is fully visible")
+        default:
+            print(String(format: "👀 PromoView is %.0f%% hidden", percentage * 100))
+        }
+    }
 }
+
+// MARK: - AdRecommendationsGridViewDelegate
 
 extension PromotionFrontpageViewDemoView: AdRecommendationsGridViewDelegate {
     public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, willDisplayItemAtIndex index: Int) {
