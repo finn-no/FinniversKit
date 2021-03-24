@@ -64,11 +64,15 @@ enum ImageAsset: String {
     case iconRealestateOwner
     case iconRealestatePrice
     case jobs
+    case leiebil
     case magnifyingGlass
     case mc
     case messages
     case mittanbud
+    case mittanbudAlternate
     case moteplassen
+    case moteplassenAlternate
+    case nettbil
     case notifications
     case notificationsBell
     case npCompare
@@ -140,11 +144,15 @@ enum ImageAsset: String {
             .iconRealestateOwner,
             .iconRealestatePrice,
             .jobs,
+            .leiebil,
             .magnifyingGlass,
             .mc,
             .messages,
             .mittanbud,
+            .mittanbudAlternate,
             .moteplassen,
+            .moteplassenAlternate,
+            .nettbil,
             .notifications,
             .notificationsBell,
             .npCompare,
