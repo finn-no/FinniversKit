@@ -31,6 +31,8 @@ public class BasicPromoSlideView: UIView {
 
     public weak var delegate: BasicPromoSlideViewDelegate?
 
+    // MARK: - Init
+
     public init() {
         super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         setup()
@@ -39,6 +41,8 @@ public class BasicPromoSlideView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Setup
 
     private func setup() {
         addSubview(imageView)
@@ -59,11 +63,15 @@ public class BasicPromoSlideView: UIView {
         ])
     }
 
+    // MARK: - Public methods
+
     public func configure(with text: String, buttonTitle: String, image: UIImage) {
         titleLabel.text = text
         button.setTitle(buttonTitle, for: .normal)
         imageView.image = image
     }
+
+    // MARK: - Actions
 
     @objc private func handleButtonTap() {
         delegate?.basicPromoSlideViewDidTapButton(self)

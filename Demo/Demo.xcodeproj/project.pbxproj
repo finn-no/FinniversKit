@@ -790,7 +790,7 @@
 		46E772CB242CEF09008A5E93 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				4DC8CF342608A71600496DF1 /* PromoSliderView */,
+				4DC8CF342608A71600496DF1 /* PromoSlidesView */,
 				4DC8CEDD2604B62900496DF1 /* PromoLinkView */,
 				4D152E792577DB0400282244 /* NavigationLinkView */,
 				46E772FA242CEF09008A5E93 /* AddressCardView */,
@@ -1601,12 +1601,12 @@
 			path = PromoLinkView;
 			sourceTree = "<group>";
 		};
-		4DC8CF342608A71600496DF1 /* PromoSliderView */ = {
+		4DC8CF342608A71600496DF1 /* PromoSlidesView */ = {
 			isa = PBXGroup;
 			children = (
 				4DC8CF352608A72300496DF1 /* PromoSlidesDemoView.swift */,
 			);
-			path = PromoSliderView;
+			path = PromoSlidesView;
 			sourceTree = "<group>";
 		};
 		5DEAC3C225C164AB003376AD /* IconButton */ = {

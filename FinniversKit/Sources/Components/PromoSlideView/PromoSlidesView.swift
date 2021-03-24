@@ -17,14 +17,13 @@ public class PromoSlidesView: UIView {
         let layout = PagingCollectionViewLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = .zero
-        layout.estimatedItemSize = .zero
         return layout
     }()
 
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl(withAutoLayout: true)
-        pageControl.pageIndicatorTintColor = UIColor.white.withAlphaComponent(0.2)
         pageControl.currentPageIndicatorTintColor = .white
+        pageControl.pageIndicatorTintColor = UIColor.white.withAlphaComponent(0.2)
         pageControl.addTarget(self, action: #selector(handlePageControlValueChange), for: .valueChanged)
         pageControl.currentPage = 0
         pageControl.numberOfPages = 1
@@ -41,8 +40,11 @@ public class PromoSlidesView: UIView {
 
     private let circleSize: CGFloat = 400
     private var slides: [UIView] = []
+
     private lazy var collectionViewHeightAnchor = collectionView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200)
     private lazy var pageControlTopAnchor = pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingS)
+
+    // MARK: - Init
 
     public init() {
         super.init(frame: .zero)
@@ -52,6 +54,8 @@ public class PromoSlidesView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Setup
 
     private func setup() {
         backgroundColor = .primaryBlue
@@ -78,6 +82,8 @@ public class PromoSlidesView: UIView {
         ])
     }
 
+    // MARK: - Lifecycle
+
     public override func layoutSubviews() {
         super.layoutSubviews()
 
@@ -89,6 +95,8 @@ public class PromoSlidesView: UIView {
         }
         collectionViewHeightAnchor.constant = maxHeight
     }
+
+    // MARK: - Public method
 
     public func configure(withSlides slides: [UIView]) {
         self.slides = slides
@@ -111,6 +119,8 @@ public class PromoSlidesView: UIView {
     }
 }
 
+// MARK: - UICollectionViewDataSource
+
 extension PromoSlidesView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         slides.count
@@ -122,6 +132,8 @@ extension PromoSlidesView: UICollectionViewDataSource {
         return cell
     }
 }
+
+// MARK: - UICollectionViewDelegate
 
 extension PromoSlidesView: UICollectionViewDelegate {
     public func scrollViewWillEndDragging(
@@ -137,6 +149,8 @@ extension PromoSlidesView: UICollectionViewDelegate {
         }
     }
 }
+
+// MARK: - Private
 
 private final class PagingCollectionViewLayout: UICollectionViewFlowLayout {
     /// Returns the centered content offset to use after an animated layout update or change.
@@ -168,8 +182,6 @@ private final class PagingCollectionViewLayout: UICollectionViewFlowLayout {
 }
 
 private class SlideCell: UICollectionViewCell {
-    // MARK: - Init
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()

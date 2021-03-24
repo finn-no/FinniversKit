@@ -38,6 +38,6 @@ extension PromoLinkDemoView: PromoLinkViewDelegate {
 }
 
 private class PromoViewModel: PromoLinkViewModel {
-    var title: String = "Smidig bilhandel? Prøv FINNs nye prosess!"
-    var image: UIImage = UIImage(named: .transactionJourneyCar)
+    var title = "Smidig bilhandel? Prøv FINNs nye prosess!"
+    var image = UIImage(named: .transactionJourneyCar)
 }

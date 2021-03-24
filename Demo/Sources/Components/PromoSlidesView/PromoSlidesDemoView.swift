@@ -46,10 +46,6 @@ class PromoSlidesDemoView: UIView {
 
         promoSlidesView.configure(withSlides: [promoSlide, promoSlide2])
     }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
 }
 
 extension PromoSlidesDemoView: BasicPromoSlideViewDelegate {
