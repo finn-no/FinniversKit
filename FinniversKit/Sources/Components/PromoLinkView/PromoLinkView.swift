@@ -68,6 +68,8 @@ public class PromoLinkView: UIView {
     }
 }
 
+// MARK: - NavigationLinkViewDelegate
+
 extension PromoLinkView: NavigationLinkViewDelegate {
     public func navigationLinkViewWasTapped(_ navigationLinkView: NavigationLinkView) {
         delegate?.promoLinkViewWasTapped(self)

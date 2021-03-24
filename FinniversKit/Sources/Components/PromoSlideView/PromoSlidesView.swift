@@ -88,7 +88,13 @@ public class PromoSlidesView: UIView {
         super.layoutSubviews()
 
         let targetSize = CGSize(width: bounds.size.width, height: 0)
-        guard let maxHeight = slides.map({ $0.systemLayoutSizeFitting(targetSize).height }).max() else { return }
+        guard let maxHeight = slides
+                .map({ $0.systemLayoutSizeFitting(
+                        targetSize,
+                        withHorizontalFittingPriority: .required,
+                        verticalFittingPriority: .fittingSizeLevel).height })
+                .max()
+        else { return }
 
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.itemSize = CGSize(width: frame.size.width, height: maxHeight)
@@ -96,7 +102,7 @@ public class PromoSlidesView: UIView {
         collectionViewHeightAnchor.constant = maxHeight
     }
 
-    // MARK: - Public method
+    // MARK: - Public methods
 
     public func configure(withSlides slides: [UIView]) {
         self.slides = slides
@@ -115,7 +121,11 @@ public class PromoSlidesView: UIView {
     // MARK: - Actions
 
     @objc private func handlePageControlValueChange() {
-        collectionView.scrollToItem(at: IndexPath(row: pageControl.currentPage, section: 0), at: .centeredHorizontally, animated: true)
+        collectionView.scrollToItem(
+            at: IndexPath(row: pageControl.currentPage, section: 0),
+            at: .centeredHorizontally,
+            animated: true
+        )
     }
 }
 
