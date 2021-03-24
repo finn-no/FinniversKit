@@ -48,9 +48,6 @@ public class PromoLinkView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgSecondary
-        layer.cornerRadius = .spacingS
-
         addSubview(navigationLinkView)
         navigationLinkView.fillInSuperview()
 
