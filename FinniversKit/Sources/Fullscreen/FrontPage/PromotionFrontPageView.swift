@@ -27,6 +27,7 @@ public final class PromotionFrontPageView: UIView {
     // MARK: - Private properties
 
     private weak var delegate: PromotionFrontPageViewDelegate?
+    private weak var adRecommendationsGridViewDelegate: AdRecommendationsGridViewDelegate?
     private var didSetupView = false
     private var promoViewHeight: CGFloat = 150 // Should be gettable from the promo view itself.
 
@@ -71,8 +72,14 @@ public final class PromotionFrontPageView: UIView {
         marketsView = CompactMarketsView(delegate: marketsGridViewDelegate, dataSource: marketsGridViewDataSource)
         marketsView.translatesAutoresizingMaskIntoConstraints = false
 
+        adRecommendationsGridView = AdRecommendationsGridView(withAutoLayout: true)
+        self.adRecommendationsGridViewDelegate = adRecommendationsGridViewDelegate
+
         super.init(frame: .zero)
         self.delegate = delegate
+        adRecommendationsGridView.dataSource = adRecommendationsGridViewDataSource
+        adRecommendationsGridView.delegate = self
+        adRecommendationsGridView.setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -177,3 +184,45 @@ extension PromotionFrontPageView: LoadingRetryViewDelegate {
     }
 }
 
+// MARK: - AdRecommendationsGridViewDelegate proxy
+
+extension PromotionFrontPageView: AdRecommendationsGridViewDelegate {
+    public func adRecommendationsGridViewDidStartRefreshing(_ adRecommendationsGridView: AdRecommendationsGridView) {
+        adRecommendationsGridViewDelegate?.adRecommendationsGridViewDidStartRefreshing(adRecommendationsGridView)
+    }
+
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didSelectItemAtIndex index: Int) {
+        adRecommendationsGridViewDelegate?.adRecommendationsGridView(adRecommendationsGridView, didSelectItemAtIndex: index)
+    }
+
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, willDisplayItemAtIndex index: Int) {
+        adRecommendationsGridViewDelegate?.adRecommendationsGridView(adRecommendationsGridView, willDisplayItemAtIndex: index)
+    }
+
+    public func adRecommendationsGridView(
+        _ adRecommendationsGridView: AdRecommendationsGridView,
+        didScrollInScrollView scrollView: UIScrollView
+    ) {
+        let offset = scrollView.contentOffset.y
+        let maxOffset = promoViewHeight
+
+        if offset <= 0 {
+            promoViewTopConstraint.constant = 0
+        } else if offset >= maxOffset {
+            promoViewTopConstraint.constant = -maxOffset
+        } else {
+            promoViewTopConstraint.constant = -offset
+        }
+
+        adRecommendationsGridViewDelegate?.adRecommendationsGridView(adRecommendationsGridView, didScrollInScrollView: scrollView)
+    }
+
+    public func adRecommendationsGridView(
+        _ adRecommendationsGridView: AdRecommendationsGridView,
+        didSelectFavoriteButton button: UIButton,
+        on cell: AdRecommendationCell,
+        at index: Int
+    ) {
+        adRecommendationsGridViewDelegate?.adRecommendationsGridView(adRecommendationsGridView, didSelectFavoriteButton: button, on: cell, at: index)
+    }
+}
