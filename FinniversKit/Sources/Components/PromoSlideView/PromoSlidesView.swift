@@ -1,6 +1,6 @@
 import Foundation
 
-public class PromoSliderView: UIView {
+public class PromoSlidesView: UIView {
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +36,6 @@ public class PromoSliderView: UIView {
         view.backgroundColor = .black
         view.alpha = 0.2
         view.layer.cornerRadius = circleSize/2
-        view.clipsToBounds = true
         return view
     }()
 
@@ -44,8 +43,6 @@ public class PromoSliderView: UIView {
     private var slides: [UIView] = []
     private lazy var collectionViewHeightAnchor = collectionView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200)
     private lazy var pageControlTopAnchor = pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingS)
-
-    private var boundsForCurrentSubviewSetup = CGRect.zero
 
     public init() {
         super.init(frame: .zero)
@@ -84,18 +81,8 @@ public class PromoSliderView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        updateFramesIfNecessary()
-    }
-
-    public func updateFramesIfNecessary() {
-        guard
-            !boundsForCurrentSubviewSetup.equalTo(bounds),
-            bounds.size.width > 0,
-            let maxHeight = slides.map({ $0.systemLayoutSizeFitting(CGSize(width: bounds.size.width, height: 0)).height }).max(),
-            maxHeight > 0
-        else { return }
-
-        boundsForCurrentSubviewSetup = bounds
+        let targetSize = CGSize(width: bounds.size.width, height: 0)
+        guard let maxHeight = slides.map({ $0.systemLayoutSizeFitting(targetSize).height }).max() else { return }
 
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.itemSize = CGSize(width: frame.size.width, height: maxHeight)
@@ -113,9 +100,7 @@ public class PromoSliderView: UIView {
 
         pageControl.numberOfPages = slides.count
         pageControl.currentPage = 0
-    }
 
-    public func reloadData() {
         collectionView.reloadData()
     }
 
@@ -126,7 +111,7 @@ public class PromoSliderView: UIView {
     }
 }
 
-extension PromoSliderView: UICollectionViewDataSource {
+extension PromoSlidesView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         slides.count
     }
@@ -138,7 +123,7 @@ extension PromoSliderView: UICollectionViewDataSource {
     }
 }
 
-extension PromoSliderView: UICollectionViewDelegate {
+extension PromoSlidesView: UICollectionViewDelegate {
     public func scrollViewWillEndDragging(
         _ scrollView: UIScrollView,
         withVelocity velocity: CGPoint,

@@ -16,7 +16,7 @@ public class FrontpageViewDemoView: UIView {
     }()
 
     private lazy var frontPageView: FrontPageView = {
-        let view = FrontPageView(abTestViewModel: ABTestDemoViewModel(activeTestVariant: .redesign), delegate: self, adRecommendationsGridViewDataSource: self)
+        let view = FrontPageView(delegate: self, adRecommendationsGridViewDataSource: self, promoLinkViewModel: PromoViewModel())
         view.model = FrontpageViewDefaultData()
         view.isRefreshEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -165,24 +165,6 @@ extension FrontpageViewDemoView: MarketsGridViewDataSource {
 extension FrontpageViewDemoView: PromoLinkViewDelegate {
     public func promoLinkViewWasTapped(_ promoLinkView: PromoLinkView) {
         print("Tapped promo link!")
-    }
-}
-
-private class ABTestDemoViewModel: ABTestViewModel {
-    var activeTestVariant: FrontPageView.ABTestVariant
-    var slides: [UIView]
-    var promoLinkViewModel: PromoLinkViewModel = PromoViewModel()
-
-    init(activeTestVariant: FrontPageView.ABTestVariant) {
-        self.activeTestVariant = activeTestVariant
-
-        let motorTransactionPromoSlide = MotorTransactionPromoSlideView()
-        motorTransactionPromoSlide.configure(
-            with: "Smidig bilhandel? Prøv\nFINNs nye prosess!",
-            buttonTitle: "Se hvordan det virker",
-            image: UIImage(named: .carPromo)
-        )
-        slides = [motorTransactionPromoSlide]
     }
 }
 

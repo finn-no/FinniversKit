@@ -1,11 +1,11 @@
 import Foundation
 import UIKit
 
-public protocol MotorTransactionPromoSlideViewDelegate: AnyObject {
-    func motorTransactionPromoSlideViewDidTapButton(_ motorTransactionPromoSlideView: MotorTransactionPromoSlideView)
+public protocol BasicPromoSlideViewDelegate: AnyObject {
+    func basicPromoSlideViewDidTapButton(_ basicPromoSlideView: BasicPromoSlideView)
 }
 
-public class MotorTransactionPromoSlideView: UIView {
+public class BasicPromoSlideView: UIView {
     private lazy var titleLabel: Label = {
         let label = Label(style: .title3Strong, withAutoLayout: true)
         label.textColor = .white
@@ -29,7 +29,7 @@ public class MotorTransactionPromoSlideView: UIView {
 
     private lazy var imageView = UIImageView(withAutoLayout: true)
 
-    public weak var delegate: MotorTransactionPromoSlideViewDelegate?
+    public weak var delegate: BasicPromoSlideViewDelegate?
 
     public init() {
         super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
@@ -66,6 +66,6 @@ public class MotorTransactionPromoSlideView: UIView {
     }
 
     @objc private func handleButtonTap() {
-        delegate?.motorTransactionPromoSlideViewDidTapButton(self)
+        delegate?.basicPromoSlideViewDidTapButton(self)
     }
 }

@@ -8,12 +8,6 @@ public protocol FrontPageViewModel {
     var noRecommendationsText: String { get }
 }
 
-public protocol ABTestViewModel {
-    var activeTestVariant: FrontPageView.ABTestVariant { get }
-    var slides: [UIView] { get }
-    var promoLinkViewModel: PromoLinkViewModel { get }
-}
-
 public protocol FrontPageViewDelegate: AnyObject {
     func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView)
 }
@@ -45,13 +39,6 @@ public final class FrontPageView: UIView {
 
     private let promoContainer = UIView(withAutoLayout: true)
     private var promoLinkView: PromoLinkView?
-    private weak var promoLinkViewDelegate: PromoLinkViewDelegate?
-
-    private lazy var promoSliderView: PromoSliderView = {
-        let view = PromoSliderView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
 
     private lazy var headerView = UIView()
 
@@ -73,30 +60,20 @@ public final class FrontPageView: UIView {
 
     private var boundsForCurrentSubviewSetup = CGRect.zero
 
-    private let abTestViewModel: ABTestViewModel
-
-    public enum ABTestVariant {
-        case traditional
-        case simplePromo
-        case redesign
-    }
-
-    private let abTestVariant: ABTestVariant
-
     // MARK: - Init
 
-    public convenience init(abTestViewModel: ABTestViewModel, delegate: FrontPageViewDelegate & MarketsGridViewDelegate & MarketsGridViewDataSource & AdRecommendationsGridViewDelegate & PromoLinkViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource) {
-        self.init(abTestViewModel: abTestViewModel, delegate: delegate, marketsGridViewDelegate: delegate, marketsGridViewDataSource: delegate, adRecommendationsGridViewDelegate: delegate, adRecommendationsGridViewDataSource: adRecommendationsGridViewDataSource, promoLinkViewDelegate: delegate)
+    public convenience init(delegate: FrontPageViewDelegate & MarketsGridViewDelegate & MarketsGridViewDataSource & AdRecommendationsGridViewDelegate & PromoLinkViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource, promoLinkViewModel: PromoLinkViewModel?) {
+        self.init(delegate: delegate, marketsGridViewDelegate: delegate, marketsGridViewDataSource: delegate, adRecommendationsGridViewDelegate: delegate, adRecommendationsGridViewDataSource: adRecommendationsGridViewDataSource, promoLinkViewDelegate: delegate, promoLinkViewModel: promoLinkViewModel)
     }
 
     public init(
-        abTestViewModel: ABTestViewModel,
         delegate: FrontPageViewDelegate,
         marketsGridViewDelegate: MarketsGridViewDelegate,
         marketsGridViewDataSource: MarketsGridViewDataSource,
         adRecommendationsGridViewDelegate: AdRecommendationsGridViewDelegate,
         adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource,
-        promoLinkViewDelegate: PromoLinkViewDelegate
+        promoLinkViewDelegate: PromoLinkViewDelegate,
+        promoLinkViewModel: PromoLinkViewModel?
     ) {
         marketsGridView = MarketsGridView(delegate: marketsGridViewDelegate, dataSource: marketsGridViewDataSource)
         marketsGridView.translatesAutoresizingMaskIntoConstraints = false
@@ -104,12 +81,16 @@ public final class FrontPageView: UIView {
         adRecommendationsGridView = AdRecommendationsGridView(delegate: adRecommendationsGridViewDelegate, dataSource: adRecommendationsGridViewDataSource)
         adRecommendationsGridView.translatesAutoresizingMaskIntoConstraints = false
 
-        self.abTestViewModel = abTestViewModel
-        abTestVariant = abTestViewModel.activeTestVariant
+        if let promoLinkViewModel = promoLinkViewModel {
+            promoLinkView = PromoLinkView(delegate: promoLinkViewDelegate)
+            promoLinkView?.translatesAutoresizingMaskIntoConstraints = false
+            promoLinkView?.configure(with: promoLinkViewModel)
+        } else {
+            promoLinkView = nil
+        }
 
         super.init(frame: .zero)
         self.delegate = delegate
-        self.promoLinkViewDelegate = promoLinkViewDelegate
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -172,11 +153,6 @@ public final class FrontPageView: UIView {
 
         adRecommendationsGridView.collectionView.addSubview(adsRetryView)
 
-        if abTestVariant == .redesign {
-            setupRedesign()
-            return
-        }
-
         headerView.addSubview(marketsGridView)
         headerView.addSubview(promoContainer)
         headerView.addSubview(headerLabel)
@@ -196,9 +172,7 @@ public final class FrontPageView: UIView {
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
         ])
 
-        if abTestVariant == .simplePromo {
-            setupSimplePromo()
-        }
+        setupPromoView()
 
         adRecommendationsGridView.fillInSuperview()
         adRecommendationsGridView.headerView = headerView
@@ -206,43 +180,8 @@ public final class FrontPageView: UIView {
         setupFrames()
     }
 
-    private func setupRedesign() {
-        guard abTestVariant == .redesign else { return }
-
-        promoSliderView.configure(withSlides: abTestViewModel.slides)
-        promoSliderView.reloadData()
-
-        headerView.addSubview(promoSliderView)
-        headerView.addSubview(headerLabel)
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-        promoSliderView.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            promoSliderView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
-            promoSliderView.topAnchor.constraint(equalTo: headerView.topAnchor),
-            promoSliderView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
-
-            headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
-            headerLabel.topAnchor.constraint(equalTo: promoSliderView.bottomAnchor),
-            headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
-            headerLabel.bottomAnchor.constraint(equalTo: headerLabel.bottomAnchor)
-        ])
-
-        adRecommendationsGridView.fillInSuperview()
-        adRecommendationsGridView.headerView = headerView
-
-        setupFramesForRedesign()
-    }
-
-    private func setupSimplePromo() {
-        guard abTestVariant == .simplePromo else { return }
-
-        promoLinkView = PromoLinkView(delegate: promoLinkViewDelegate)
-
+    public func setupPromoView() {
         guard let promoLinkView = promoLinkView else { return }
-
-        promoLinkView.translatesAutoresizingMaskIntoConstraints = false
-        promoLinkView.configure(with: abTestViewModel.promoLinkViewModel)
 
         promoContainer.addSubview(promoLinkView)
 
@@ -255,11 +194,6 @@ public final class FrontPageView: UIView {
     }
 
     private func setupFrames() {
-        if abTestVariant == .redesign {
-            setupFramesForRedesign()
-            return
-        }
-
         let headerTopSpacing: CGFloat = .spacingM
         let headerBottomSpacing: CGFloat = .spacingS
         let labelHeight = headerLabel.intrinsicContentSize.height + .spacingM
@@ -277,28 +211,6 @@ public final class FrontPageView: UIView {
         headerView.frame.size.height = height
         adsRetryView.frame.origin = CGPoint(x: 0, y: headerView.frame.height + .spacingXXL)
         adsRetryView.frame.size = CGSize(width: bounds.width, height: 200)
-        boundsForCurrentSubviewSetup = bounds
-        adRecommendationsGridView.invalidateLayout()
-    }
-
-    private func setupFramesForRedesign() {
-        guard abTestVariant == .redesign else { return }
-
-        promoSliderView.updateFramesIfNecessary()
-
-        let promoHeight = promoSliderView
-            .systemLayoutSizeFitting(
-                CGSize(width: bounds.size.width, height: 0),
-                withHorizontalFittingPriority: .required,
-                verticalFittingPriority: .fittingSizeLevel)
-            .height
-
-        let labelHeight = headerLabel.intrinsicContentSize.height + .spacingM
-
-        let height = promoHeight + labelHeight
-
-        headerView.frame.size.height = height
-        adsRetryView.frame.origin = CGPoint(x: 0, y: headerView.frame.height + .spacingXXL)
         boundsForCurrentSubviewSetup = bounds
         adRecommendationsGridView.invalidateLayout()
     }
