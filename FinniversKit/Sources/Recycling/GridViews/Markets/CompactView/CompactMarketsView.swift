@@ -29,6 +29,12 @@ public class CompactMarketsView: UIView, MarketsView {
         return collectionView
     }()
 
+    private lazy var hairlineView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .tableViewSeparator
+        return view
+    }()
+
     // MARK: - Init
 
     public init(
@@ -57,9 +63,20 @@ public class CompactMarketsView: UIView, MarketsView {
     // MARK: - Setup
 
     private func setup() {
-
         addSubview(collectionView)
-        collectionView.fillInSuperview()
+        addSubview(hairlineView)
+
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+
+            hairlineView.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
+            hairlineView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            hairlineView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            hairlineView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            hairlineView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale)
+        ])
     }
 
     // MARK: - Public methods
