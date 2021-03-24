@@ -55,7 +55,7 @@ public final class PromotionFrontPageView: UIView {
         return view
     }()
 
-    private lazy var promoViewTopConstraint = promoView.topAnchor.constraint(equalTo: topAnchor)
+    private lazy var promoViewTopConstraint = promoView.topAnchor.constraint(equalTo: adRecommendationsGridView.topAnchor)
     private lazy var marketsViewHeightConstraint = marketsView.heightAnchor.constraint(equalToConstant: 0)
 
     private var keyValueObservation: NSKeyValueObservation?
@@ -71,6 +71,7 @@ public final class PromotionFrontPageView: UIView {
     public init(delegate: PromotionFrontPageViewDelegate, marketsGridViewDelegate: MarketsViewDelegate, marketsGridViewDataSource: MarketsViewDataSource, adRecommendationsGridViewDelegate: AdRecommendationsGridViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource) {
         marketsView = CompactMarketsView(delegate: marketsGridViewDelegate, dataSource: marketsGridViewDataSource)
         marketsView.translatesAutoresizingMaskIntoConstraints = false
+        marketsView.backgroundColor = .bgPrimary
 
         adRecommendationsGridView = AdRecommendationsGridView(withAutoLayout: true)
         self.adRecommendationsGridViewDelegate = adRecommendationsGridViewDelegate
@@ -138,40 +139,38 @@ public final class PromotionFrontPageView: UIView {
     private func setup() {
         backgroundColor = .bgPrimary
 
-        addSubview(promoView)
-        addSubview(marketsView)
         addSubview(adRecommendationsGridView)
-
+        adRecommendationsGridView.fillInSuperview()
         adRecommendationsGridView.collectionView.addSubview(adsRetryView)
+        adRecommendationsGridView.collectionView.addSubview(promoView)
+        adRecommendationsGridView.collectionView.addSubview(marketsView)
+
+        adRecommendationsGridView.collectionView.bringSubviewToFront(promoView)
+        adRecommendationsGridView.collectionView.bringSubviewToFront(marketsView)
 
         NSLayoutConstraint.activate([
             promoViewTopConstraint,
-            promoView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            promoView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            promoView.leadingAnchor.constraint(equalTo: adRecommendationsGridView.leadingAnchor),
+            promoView.trailingAnchor.constraint(equalTo: adRecommendationsGridView.trailingAnchor),
             promoView.heightAnchor.constraint(equalToConstant: promoViewHeight),
 
             marketsView.topAnchor.constraint(equalTo: promoView.bottomAnchor),
-            marketsView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            marketsView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            marketsView.leadingAnchor.constraint(equalTo: adRecommendationsGridView.leadingAnchor),
+            marketsView.trailingAnchor.constraint(equalTo: adRecommendationsGridView.trailingAnchor),
             marketsViewHeightConstraint,
-
-            adRecommendationsGridView.topAnchor.constraint(equalTo: marketsView.bottomAnchor),
-            adRecommendationsGridView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            adRecommendationsGridView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            adRecommendationsGridView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
 
         setupFrames()
     }
 
     private func setupFrames() {
-        let marketGridViewHeight = marketsView.calculateSize(constrainedTo: bounds.size.width).height + .spacingXS
-
-        marketsViewHeightConstraint.constant = marketGridViewHeight
+        let marketsViewHeight = marketsView.calculateSize(constrainedTo: bounds.size.width).height
+        marketsViewHeightConstraint.constant = marketsViewHeight
         adsRetryView.frame.origin = .zero
         adsRetryView.frame.size = CGSize(width: bounds.width, height: 200)
         boundsForCurrentSubviewSetup = bounds
         adRecommendationsGridView.invalidateLayout()
+        adRecommendationsGridView.collectionView.contentInset.top = marketsViewHeight + promoViewHeight
     }
 }
 
@@ -203,7 +202,7 @@ extension PromotionFrontPageView: AdRecommendationsGridViewDelegate {
         _ adRecommendationsGridView: AdRecommendationsGridView,
         didScrollInScrollView scrollView: UIScrollView
     ) {
-        let offset = scrollView.contentOffset.y
+        let offset = scrollView.contentOffset.y + scrollView.contentInset.top
         let maxOffset = promoViewHeight
 
         if offset <= 0 {
