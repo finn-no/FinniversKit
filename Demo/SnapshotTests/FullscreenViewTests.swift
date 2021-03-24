@@ -132,4 +132,8 @@ class FullscreenViewTests: XCTestCase {
     func testMessageUserRequiredSheet() {
         snapshot(.messageUserRequiredSheet)
     }
+
+    func testPromotionFrontPageView() {
+        snapshot(.promotionFrontPageView)
+    }
 }
