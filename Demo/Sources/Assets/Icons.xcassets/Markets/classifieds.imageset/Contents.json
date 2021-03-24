@@ -1,13 +1,13 @@
 {
   "images" : [
     {
-      "filename" : "classifieds.pdf",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "classifieds.pdf"
     }
   ],
   "info" : {
-    "author" : "xcode",
-    "version" : 1
+    "version" : 1,
+    "author" : "xcode"
   },
   "properties" : {
     "preserves-vector-representation" : true

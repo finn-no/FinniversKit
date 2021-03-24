@@ -5,7 +5,7 @@
 import FinniversKit
 
 public class PromotionFrontpageViewDemoView: UIView {
-    private let markets = Market.compactMarkets
+    private let markets = Market.newMarkets
     private var didSetupView = false
     private var visibleItems = 20
 
