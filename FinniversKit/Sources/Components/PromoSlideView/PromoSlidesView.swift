@@ -32,8 +32,7 @@ public class PromoSlidesView: UIView {
 
     private lazy var backgroundCircleView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .black
-        view.alpha = 0.2
+        view.backgroundColor = .backgroundCircleColor
         view.layer.cornerRadius = circleSize/2
         return view
     }()
@@ -209,5 +208,11 @@ private class SlideCell: UICollectionViewCell {
     func configure(with view: UIView) {
         contentView.addSubview(view)
         view.fillInSuperview()
+    }
+}
+
+private extension UIColor {
+    class var backgroundCircleColor: UIColor {
+        return UIColor(r: 29, g: 78, b: 216)
     }
 }
