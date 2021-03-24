@@ -70,7 +70,7 @@ public class CompactMarketsView: UIView, MarketsView {
 
     public func calculateSize(constrainedTo width: CGFloat) -> CGSize {
         // Is this needed?
-        CGSize(width: width, height: 50)
+        CGSize(width: width, height: 76)
     }
 }
 
