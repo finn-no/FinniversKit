@@ -58,9 +58,6 @@ public final class PromotionFrontPageView: UIView {
 
     private lazy var promoViewTopConstraint = promoView.topAnchor.constraint(equalTo: adRecommendationsGridView.topAnchor)
     private lazy var marketsViewHeightConstraint = marketsView.heightAnchor.constraint(equalToConstant: 0)
-
-    private var keyValueObservation: NSKeyValueObservation?
-
     private var boundsForCurrentSubviewSetup = CGRect.zero
 
     // MARK: - Init
@@ -86,10 +83,6 @@ public final class PromotionFrontPageView: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    deinit {
-        keyValueObservation?.invalidate()
     }
 
     // MARK: - Public
