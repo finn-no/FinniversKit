@@ -40,7 +40,7 @@ public class PromoSlidesView: UIView {
     private let circleSize: CGFloat = 400
     private var slides: [UIView] = []
 
-    private lazy var collectionViewHeightAnchor = collectionView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200)
+    private lazy var collectionViewHeightAnchor = collectionView.heightAnchor.constraint(lessThanOrEqualToConstant: 200)
     private lazy var pageControlTopAnchor = pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingS)
 
     // MARK: - Init
