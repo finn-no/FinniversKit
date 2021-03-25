@@ -63,11 +63,17 @@ public final class PromotionFrontPageView: UIView {
     // MARK: - Init
 
     public convenience init(delegate: PromotionFrontPageViewDelegate & MarketsViewDelegate & MarketsViewDataSource & AdRecommendationsGridViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource) {
-        self.init(delegate: delegate, marketsGridViewDelegate: delegate, marketsGridViewDataSource: delegate, adRecommendationsGridViewDelegate: delegate, adRecommendationsGridViewDataSource: adRecommendationsGridViewDataSource)
+        self.init(delegate: delegate, marketsViewDelegate: delegate, marketsViewDataSource: delegate, adRecommendationsGridViewDelegate: delegate, adRecommendationsGridViewDataSource: adRecommendationsGridViewDataSource)
     }
 
-    public init(delegate: PromotionFrontPageViewDelegate, marketsGridViewDelegate: MarketsViewDelegate, marketsGridViewDataSource: MarketsViewDataSource, adRecommendationsGridViewDelegate: AdRecommendationsGridViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource) {
-        marketsView = CompactMarketsView(delegate: marketsGridViewDelegate, dataSource: marketsGridViewDataSource)
+    public init(
+        delegate: PromotionFrontPageViewDelegate,
+        marketsViewDelegate: MarketsViewDelegate,
+        marketsViewDataSource: MarketsViewDataSource,
+        adRecommendationsGridViewDelegate: AdRecommendationsGridViewDelegate,
+        adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource
+    ) {
+        marketsView = CompactMarketsView(delegate: marketsViewDelegate, dataSource: marketsViewDataSource)
         marketsView.translatesAutoresizingMaskIntoConstraints = false
         marketsView.backgroundColor = .bgPrimary
 

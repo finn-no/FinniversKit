@@ -63,7 +63,7 @@ public final class FrontPageView: UIView {
     // MARK: - Init
 
     public convenience init(delegate: FrontPageViewDelegate & MarketsViewDelegate & MarketsViewDataSource & AdRecommendationsGridViewDelegate & PromoLinkViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource, promoLinkViewModel: PromoLinkViewModel?) {
-        self.init(delegate: delegate, marketsGridViewDelegate: delegate, marketsGridViewDataSource: delegate, adRecommendationsGridViewDelegate: delegate, adRecommendationsGridViewDataSource: adRecommendationsGridViewDataSource, promoLinkViewDelegate: delegate, promoLinkViewModel: promoLinkViewModel)
+        self.init(delegate: delegate, marketsViewDelegate: delegate, marketsViewDataSource: delegate, adRecommendationsGridViewDelegate: delegate, adRecommendationsGridViewDataSource: adRecommendationsGridViewDataSource, promoLinkViewDelegate: delegate, promoLinkViewModel: promoLinkViewModel)
     }
 
     public init(
@@ -75,7 +75,7 @@ public final class FrontPageView: UIView {
         promoLinkViewDelegate: PromoLinkViewDelegate,
         promoLinkViewModel: PromoLinkViewModel?
     ) {
-        marketsGridView = MarketsGridView(delegate: marketsGridViewDelegate, dataSource: marketsGridViewDataSource)
+        marketsGridView = MarketsGridView(delegate: marketsViewDelegate, dataSource: marketsViewDataSource)
         marketsGridView.translatesAutoresizingMaskIntoConstraints = false
 
         adRecommendationsGridView = AdRecommendationsGridView(delegate: adRecommendationsGridViewDelegate, dataSource: adRecommendationsGridViewDataSource)
