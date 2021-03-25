@@ -1,9 +1,10 @@
 import UIKit
 
-public class CompactMarketsViewCell: UICollectionViewCell {
-    // MARK: - Public properties
+class CompactMarketsViewCell: UICollectionViewCell {
 
-    public var model: MarketsViewModel? {
+    // MARK: - Internal properties
+
+    var model: MarketsViewModel? {
         didSet {
             iconImageView.image = model?.iconImage
             titleLabel.text = model?.title
@@ -46,12 +47,12 @@ public class CompactMarketsViewCell: UICollectionViewCell {
 
     // MARK: - Init
 
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
@@ -75,14 +76,14 @@ public class CompactMarketsViewCell: UICollectionViewCell {
 
     // MARK: - Superclass Overrides
 
-    public override func prepareForReuse() {
+    override func prepareForReuse() {
         super.prepareForReuse()
         iconImageView.image = nil
         titleLabel.text = ""
         accessibilityLabel = ""
     }
 
-    public override func layoutSubviews() {
+    override func layoutSubviews() {
         super.layoutSubviews()
 
         layer.cornerRadius = frame.height / 2

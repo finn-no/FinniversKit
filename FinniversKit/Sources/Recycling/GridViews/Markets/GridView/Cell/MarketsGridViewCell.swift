@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class MarketsGridViewCell: UICollectionViewCell {
+class MarketsGridViewCell: UICollectionViewCell {
     // MARK: - Internal properties
 
     private lazy var iconImageView: UIImageView = {
@@ -40,12 +40,12 @@ public class MarketsGridViewCell: UICollectionViewCell {
 
     // MARK: - Setup
 
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
@@ -74,7 +74,7 @@ public class MarketsGridViewCell: UICollectionViewCell {
 
     // MARK: - Superclass Overrides
 
-    public override func prepareForReuse() {
+    override func prepareForReuse() {
         super.prepareForReuse()
         iconImageView.image = nil
         titleLabel.text = ""
@@ -83,7 +83,7 @@ public class MarketsGridViewCell: UICollectionViewCell {
 
     // MARK: - Dependency injection
 
-    public var model: MarketsViewModel? {
+    var model: MarketsViewModel? {
         didSet {
             iconImageView.image = model?.iconImage
             titleLabel.text = model?.title
