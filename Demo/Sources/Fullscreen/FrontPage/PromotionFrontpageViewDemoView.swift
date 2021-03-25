@@ -4,8 +4,8 @@
 
 import FinniversKit
 
-public class FrontpageViewDemoView: UIView {
-    private let markets = Market.allMarkets
+public class PromotionFrontpageViewDemoView: UIView {
+    private let markets = Market.newMarkets
     private var didSetupView = false
     private var visibleItems = 20
 
@@ -15,8 +15,8 @@ public class FrontpageViewDemoView: UIView {
         return ads
     }()
 
-    private lazy var frontPageView: FrontPageView = {
-        let view = FrontPageView(delegate: self, adRecommendationsGridViewDataSource: self, promoLinkViewModel: PromoViewModel())
+    private lazy var frontPageView: PromotionFrontPageView = {
+        let view = PromotionFrontPageView(delegate: self, adRecommendationsGridViewDataSource: self)
         view.model = FrontpageViewDefaultData()
         view.isRefreshEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -41,15 +41,24 @@ public class FrontpageViewDemoView: UIView {
     }
 }
 
-// MARK: - AdRecommendationsGridViewDelegate
+// MARK: - PromotionFrontPageViewDelegate
 
-extension FrontpageViewDemoView: FrontPageViewDelegate {
-    public func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView) {
+extension PromotionFrontpageViewDemoView: PromotionFrontPageViewDelegate {
+    public func promotionFrontPageViewDidSelectRetryButton(_ frontPageView: PromotionFrontPageView) {
         frontPageView.reloadData()
+    }
+
+    public func promotionFrontPageView(
+        _ frontPageView: PromotionFrontPageView,
+        promoViewHiddenPercentage percentage: CGFloat
+    ) {
+
     }
 }
 
-extension FrontpageViewDemoView: AdRecommendationsGridViewDelegate {
+// MARK: - AdRecommendationsGridViewDelegate
+
+extension PromotionFrontpageViewDemoView: AdRecommendationsGridViewDelegate {
     public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, willDisplayItemAtIndex index: Int) {
         if index >= visibleItems - 10 {
             visibleItems += 10
@@ -74,17 +83,17 @@ extension FrontpageViewDemoView: AdRecommendationsGridViewDelegate {
 
 // MARK: - AdRecommendationsGridViewDataSource
 
-extension FrontpageViewDemoView: AdRecommendationsGridViewDataSource {
+extension PromotionFrontpageViewDemoView: AdRecommendationsGridViewDataSource {
     public func numberOfColumns(inAdRecommendationsGridView adRecommendationsGridView: AdRecommendationsGridView) -> AdRecommendationsGridView.ColumnConfiguration? {
-        return nil
+        nil
     }
 
     public func numberOfItems(inAdRecommendationsGridView adRecommendationsGridView: AdRecommendationsGridView) -> Int {
-        return min(ads.count, visibleItems)
+        min(ads.count, visibleItems)
     }
 
     public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
-        return [
+        [
             StandardAdRecommendationCell.self,
             BannerAdDemoCell.self
         ]
@@ -146,29 +155,18 @@ extension FrontpageViewDemoView: AdRecommendationsGridViewDataSource {
 
 // MARK: - MarketsGridViewDelegate
 
-extension FrontpageViewDemoView: MarketsViewDelegate {
+extension PromotionFrontpageViewDemoView: MarketsViewDelegate {
     public func marketsView(_ marketsGridView: MarketsView, didSelectItemAtIndex index: Int) {}
 }
 
 // MARK: - MarketsGridViewDataSource
 
-extension FrontpageViewDemoView: MarketsViewDataSource {
+extension PromotionFrontpageViewDemoView: MarketsViewDataSource {
     public func numberOfItems(inMarketsView marketsView: MarketsView) -> Int {
-        return markets.count
+        markets.count
     }
 
     public func marketsView(_ marketsView: MarketsView, modelAtIndex index: Int) -> MarketsViewModel {
-        return markets[index]
+        markets[index]
     }
-}
-
-extension FrontpageViewDemoView: PromoLinkViewDelegate {
-    public func promoLinkViewWasTapped(_ promoLinkView: PromoLinkView) {
-        print("Tapped promo link!")
-    }
-}
-
-private class PromoViewModel: PromoLinkViewModel {
-    var title = "Smidig bilhandel? Prøv FINNs nye prosess!"
-    var image = UIImage(named: .transactionJourneyCar)
 }

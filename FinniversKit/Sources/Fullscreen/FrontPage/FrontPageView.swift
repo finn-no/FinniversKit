@@ -62,20 +62,20 @@ public final class FrontPageView: UIView {
 
     // MARK: - Init
 
-    public convenience init(delegate: FrontPageViewDelegate & MarketsGridViewDelegate & MarketsGridViewDataSource & AdRecommendationsGridViewDelegate & PromoLinkViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource, promoLinkViewModel: PromoLinkViewModel?) {
-        self.init(delegate: delegate, marketsGridViewDelegate: delegate, marketsGridViewDataSource: delegate, adRecommendationsGridViewDelegate: delegate, adRecommendationsGridViewDataSource: adRecommendationsGridViewDataSource, promoLinkViewDelegate: delegate, promoLinkViewModel: promoLinkViewModel)
+    public convenience init(delegate: FrontPageViewDelegate & MarketsViewDelegate & MarketsViewDataSource & AdRecommendationsGridViewDelegate & PromoLinkViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource, promoLinkViewModel: PromoLinkViewModel?) {
+        self.init(delegate: delegate, marketsViewDelegate: delegate, marketsViewDataSource: delegate, adRecommendationsGridViewDelegate: delegate, adRecommendationsGridViewDataSource: adRecommendationsGridViewDataSource, promoLinkViewDelegate: delegate, promoLinkViewModel: promoLinkViewModel)
     }
 
     public init(
         delegate: FrontPageViewDelegate,
-        marketsGridViewDelegate: MarketsGridViewDelegate,
-        marketsGridViewDataSource: MarketsGridViewDataSource,
+        marketsViewDelegate: MarketsViewDelegate,
+        marketsViewDataSource: MarketsViewDataSource,
         adRecommendationsGridViewDelegate: AdRecommendationsGridViewDelegate,
         adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource,
         promoLinkViewDelegate: PromoLinkViewDelegate,
         promoLinkViewModel: PromoLinkViewModel?
     ) {
-        marketsGridView = MarketsGridView(delegate: marketsGridViewDelegate, dataSource: marketsGridViewDataSource)
+        marketsGridView = MarketsGridView(delegate: marketsViewDelegate, dataSource: marketsViewDataSource)
         marketsGridView.translatesAutoresizingMaskIntoConstraints = false
 
         adRecommendationsGridView = AdRecommendationsGridView(delegate: adRecommendationsGridViewDelegate, dataSource: adRecommendationsGridViewDataSource)

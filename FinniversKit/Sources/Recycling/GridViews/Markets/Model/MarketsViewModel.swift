@@ -4,14 +4,14 @@
 
 import Foundation
 
-public protocol MarketsGridViewModel {
+public protocol MarketsViewModel {
     var iconImage: UIImage? { get }
     var showExternalLinkIcon: Bool { get }
     var title: String { get }
     var accessibilityLabel: String { get }
 }
 
-public extension MarketsGridViewModel {
+public extension MarketsViewModel {
     var accessibilityLabel: String {
         return title
     }

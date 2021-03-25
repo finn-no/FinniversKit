@@ -4,15 +4,7 @@
 
 import FinniversKit
 
-class MarketDataSource: NSObject {
-    var models = Market.allMarkets
-}
-
-public class MarketsGridViewDemoView: UIView {
-    lazy var dataSource: MarketDataSource = {
-        return MarketDataSource()
-    }()
-
+public class CompactMarketsDemoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -22,23 +14,28 @@ public class MarketsGridViewDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        let collectionView = MarketsGridView(delegate: self, dataSource: self)
+        let collectionView = CompactMarketsView(delegate: self, dataSource: self)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(collectionView)
-        collectionView.fillInSuperview()
+        NSLayoutConstraint.activate([
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            collectionView.heightAnchor.constraint(equalToConstant: 80)
+        ])
     }
 }
 
-extension MarketsGridViewDemoView: MarketsViewDataSource {
+extension CompactMarketsDemoView: MarketsViewDataSource {
     public func numberOfItems(inMarketsView marketsView: MarketsView) -> Int {
-        return dataSource.models.count
+        Market.newMarkets.count
     }
 
     public func marketsView(_ marketsView: MarketsView, modelAtIndex index: Int) -> MarketsViewModel {
-        return dataSource.models[index]
+        Market.newMarkets[index]
     }
 }
 
-extension MarketsGridViewDemoView: MarketsViewDelegate {
+extension CompactMarketsDemoView: MarketsViewDelegate {
     public func marketsView(_ marketsGridView: MarketsView, didSelectItemAtIndex index: Int) {}
 }
