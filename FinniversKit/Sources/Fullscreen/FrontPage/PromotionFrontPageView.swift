@@ -38,9 +38,9 @@ public final class PromotionFrontPageView: UIView {
     private lazy var headerView = UIView()
     private let adRecommendationsGridView: AdRecommendationsGridView
 
-    private lazy var promoView: UIView = {
-        let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .red
+    private lazy var promoSlidesView: PromoSlidesView = {
+        let view = PromoSlidesView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
@@ -56,7 +56,7 @@ public final class PromotionFrontPageView: UIView {
         return view
     }()
 
-    private lazy var promoViewTopConstraint = promoView.topAnchor.constraint(equalTo: adRecommendationsGridView.topAnchor)
+    private lazy var promoViewTopConstraint = promoSlidesView.topAnchor.constraint(equalTo: adRecommendationsGridView.topAnchor)
     private lazy var marketsViewHeightConstraint = marketsView.heightAnchor.constraint(equalToConstant: 0)
     private var boundsForCurrentSubviewSetup = CGRect.zero
 
@@ -142,19 +142,19 @@ public final class PromotionFrontPageView: UIView {
         addSubview(adRecommendationsGridView)
         adRecommendationsGridView.fillInSuperview()
         adRecommendationsGridView.collectionView.addSubview(adsRetryView)
-        adRecommendationsGridView.collectionView.addSubview(promoView)
+        adRecommendationsGridView.collectionView.addSubview(promoSlidesView)
         adRecommendationsGridView.collectionView.addSubview(marketsView)
 
-        adRecommendationsGridView.collectionView.bringSubviewToFront(promoView)
+        adRecommendationsGridView.collectionView.bringSubviewToFront(promoSlidesView)
         adRecommendationsGridView.collectionView.bringSubviewToFront(marketsView)
 
         NSLayoutConstraint.activate([
             promoViewTopConstraint,
-            promoView.leadingAnchor.constraint(equalTo: adRecommendationsGridView.leadingAnchor),
-            promoView.trailingAnchor.constraint(equalTo: adRecommendationsGridView.trailingAnchor),
-            promoView.heightAnchor.constraint(equalToConstant: promoViewHeight),
+            promoSlidesView.leadingAnchor.constraint(equalTo: adRecommendationsGridView.leadingAnchor),
+            promoSlidesView.trailingAnchor.constraint(equalTo: adRecommendationsGridView.trailingAnchor),
+            promoSlidesView.heightAnchor.constraint(equalToConstant: promoViewHeight),
 
-            marketsView.topAnchor.constraint(equalTo: promoView.bottomAnchor),
+            marketsView.topAnchor.constraint(equalTo: promoSlidesView.bottomAnchor),
             marketsView.leadingAnchor.constraint(equalTo: adRecommendationsGridView.leadingAnchor),
             marketsView.trailingAnchor.constraint(equalTo: adRecommendationsGridView.trailingAnchor),
             marketsViewHeightConstraint,
@@ -217,7 +217,7 @@ extension PromotionFrontPageView: AdRecommendationsGridViewDelegate {
             promoViewPercentageHidden = offset / maxOffset
         }
 
-        promoView.alpha = 1 - promoViewPercentageHidden
+        promoSlidesView.alpha = 1 - promoViewPercentageHidden
         delegate?.promotionFrontPageView(self, promoViewHiddenPercentage: promoViewPercentageHidden)
 
         adRecommendationsGridViewDelegate?.adRecommendationsGridView(adRecommendationsGridView, didScrollInScrollView: scrollView)
