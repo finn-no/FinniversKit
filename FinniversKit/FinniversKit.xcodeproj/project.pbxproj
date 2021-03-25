@@ -129,6 +129,9 @@
 		4940480223CDC0F000ECBCFD /* ViewingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940480123CDC0F000ECBCFD /* ViewingCell.swift */; };
 		496F8C142473DCC600AE0735 /* FavoriteSoldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F8C132473DCC600AE0735 /* FavoriteSoldView.swift */; };
 		4D152E742577D7D300282244 /* NavigationLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D152E732577D7D300282244 /* NavigationLinkView.swift */; };
+		4DC8CEDA2604B59700496DF1 /* PromoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8CED92604B59700496DF1 /* PromoLinkView.swift */; };
+		4DC8CF312608A3F300496DF1 /* PromoSlidesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8CF302608A3F300496DF1 /* PromoSlidesView.swift */; };
+		4DC8CF392608B2E200496DF1 /* BasicPromoSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8CF382608B2E200496DF1 /* BasicPromoSlideView.swift */; };
 		55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* Broadcast.swift */; };
 		55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B277203DB56A007D7277 /* BroadcastMessage.swift */; };
 		5D0ED35125A49FA7007750D0 /* FinnTextField+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0ED35025A49FA7007750D0 /* FinnTextField+Style.swift */; };
@@ -554,6 +557,9 @@
 		4940480123CDC0F000ECBCFD /* ViewingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingCell.swift; sourceTree = "<group>"; };
 		496F8C132473DCC600AE0735 /* FavoriteSoldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteSoldView.swift; sourceTree = "<group>"; };
 		4D152E732577D7D300282244 /* NavigationLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkView.swift; sourceTree = "<group>"; };
+		4DC8CED92604B59700496DF1 /* PromoLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromoLinkView.swift; sourceTree = "<group>"; };
+		4DC8CF302608A3F300496DF1 /* PromoSlidesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoSlidesView.swift; sourceTree = "<group>"; };
+		4DC8CF382608B2E200496DF1 /* BasicPromoSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPromoSlideView.swift; sourceTree = "<group>"; };
 		55C5B273203D8E20007D7277 /* Broadcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Broadcast.swift; sourceTree = "<group>"; };
 		55C5B277203DB56A007D7277 /* BroadcastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastMessage.swift; sourceTree = "<group>"; };
 		5D0ED35025A49FA7007750D0 /* FinnTextField+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextField+Style.swift"; sourceTree = "<group>"; };
@@ -1261,6 +1267,8 @@
 		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				4DC8CF2F2608A3E600496DF1 /* PromoSlideView */,
+				4DC8CED82604B59700496DF1 /* PromoLinkView */,
 				4D152E722577D7C400282244 /* NavigationLinkView */,
 				CFDF39CB2385419E00D3B966 /* AddressCardView */,
 				DAB7FAAC21B690E900BF8CC6 /* BottomSheet */,
@@ -1709,6 +1717,23 @@
 				4D152E732577D7D300282244 /* NavigationLinkView.swift */,
 			);
 			path = NavigationLinkView;
+			sourceTree = "<group>";
+		};
+		4DC8CED82604B59700496DF1 /* PromoLinkView */ = {
+			isa = PBXGroup;
+			children = (
+				4DC8CED92604B59700496DF1 /* PromoLinkView.swift */,
+			);
+			path = PromoLinkView;
+			sourceTree = "<group>";
+		};
+		4DC8CF2F2608A3E600496DF1 /* PromoSlideView */ = {
+			isa = PBXGroup;
+			children = (
+				4DC8CF302608A3F300496DF1 /* PromoSlidesView.swift */,
+				4DC8CF382608B2E200496DF1 /* BasicPromoSlideView.swift */,
+			);
+			path = PromoSlideView;
 			sourceTree = "<group>";
 		};
 		5D0ED34F25A49F81007750D0 /* SwiftUI */ = {
@@ -3035,7 +3060,6 @@
 			files = (
 				6266C07222081EF600FB8004 /* StatisticsItemView.swift in Sources */,
 				895175902248CF79008003FB /* StepIndicator.swift in Sources */,
-				F20450BE23EDA3A4001F7370 /* MotorTransactionStepDot.swift in Sources */,
 				441FE433209A24E500B04EF1 /* AdRecommendationsGridViewLayout.swift in Sources */,
 				441FE42B209A24E500B04EF1 /* MarketsGridViewCell.swift in Sources */,
 				08F0D3F422259AD100968256 /* HappinessRatingView.swift in Sources */,
@@ -3071,6 +3095,7 @@
 				CF4A053C21FB2ACB000BB7DA /* PianoEffectControl.swift in Sources */,
 				441FE42E209A24E500B04EF1 /* MarketsGridViewModel.swift in Sources */,
 				DAD6EB272369916100968497 /* SettingsViewCellModel.swift in Sources */,
+				4DC8CF312608A3F300496DF1 /* PromoSlidesView.swift in Sources */,
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
 				F2C3E96022CB669A00CED7E0 /* QuestionnaireView+Style.swift in Sources */,
 				4441F9F922CF81F700DCFD2F /* AddressCardView.swift in Sources */,
@@ -3187,6 +3212,7 @@
 				0884C6C922B7B4580015474D /* DisclaimerView.swift in Sources */,
 				9B2D17D623E02B6900EF3B50 /* KeyValueGridView.swift in Sources */,
 				89A7A645225352380053D33B /* NativeAdvertDelegates.swift in Sources */,
+				4DC8CF392608B2E200496DF1 /* BasicPromoSlideView.swift in Sources */,
 				DA9A223F21BA8D8C001452F0 /* BottomSheetStateController.swift in Sources */,
 				441FE42C209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift in Sources */,
 				CFE43E52219B1B2900D3D5F7 /* LoadingRetryView.swift in Sources */,
@@ -3294,6 +3320,7 @@
 				8908E85E22C21A2300ED671C /* MessageFormTemplateState.swift in Sources */,
 				9B28DE842326732F00D69C15 /* PanelViewModel.swift in Sources */,
 				CF164CE8230D8D9700250822 /* FavoriteFolderAction.swift in Sources */,
+				4DC8CEDA2604B59700496DF1 /* PromoLinkView.swift in Sources */,
 				DAD6EB2B2369916100968497 /* SettingsSectionHeaderView.swift in Sources */,
 				4408A6A52027AC41008C0BD9 /* UIFont+FinniversKit.swift in Sources */,
 				4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */,
@@ -3392,8 +3419,6 @@
 				9BEB2878231D26C100D28BAD /* LoanCalculatorView.swift in Sources */,
 				9A37D0977C75034FE9603C2C /* FavoriteAdsListTableHeader.swift in Sources */,
 				5DA385C925B991E9006F8C34 /* JobAdRecommendationCell.swift in Sources */,
-				F240E82724A082500025C412 /* MotorTransactionEntryObjectPageView.swift in Sources */,
-				F21B2E552424AC6200A9B5D6 /* UserAdManagementMotorTransactionCell.swift in Sources */,
 				9A37D91577C7406D942AF82E /* FavoriteAdsSortingView.swift in Sources */,
 				9A37DB2BD626D2CA592D303E /* FavoriteAdsSectionHeaderView.swift in Sources */,
 				9A37DCEF8B61CDA7813AFB16 /* VisibilityDrivenTitleView.swift in Sources */,

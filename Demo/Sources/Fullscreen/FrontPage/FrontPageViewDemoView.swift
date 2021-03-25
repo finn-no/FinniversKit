@@ -16,7 +16,7 @@ public class FrontpageViewDemoView: UIView {
     }()
 
     private lazy var frontPageView: FrontPageView = {
-        let view = FrontPageView(delegate: self, adRecommendationsGridViewDataSource: self)
+        let view = FrontPageView(delegate: self, adRecommendationsGridViewDataSource: self, promoLinkViewModel: PromoViewModel())
         view.model = FrontpageViewDefaultData()
         view.isRefreshEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -160,4 +160,15 @@ extension FrontpageViewDemoView: MarketsGridViewDataSource {
     public func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel {
         return markets[index]
     }
+}
+
+extension FrontpageViewDemoView: PromoLinkViewDelegate {
+    public func promoLinkViewWasTapped(_ promoLinkView: PromoLinkView) {
+        print("Tapped promo link!")
+    }
+}
+
+private class PromoViewModel: PromoLinkViewModel {
+    var title = "Smidig bilhandel? Prøv FINNs nye prosess!"
+    var image = UIImage(named: .transactionJourneyCar)
 }
