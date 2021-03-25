@@ -30,7 +30,6 @@ public final class PromotionFrontPageView: UIView {
     private weak var delegate: PromotionFrontPageViewDelegate?
     private weak var adRecommendationsGridViewDelegate: AdRecommendationsGridViewDelegate?
     private var didSetupView = false
-    private var promoViewHeight: CGFloat = 150 // Should be gettable from the promo view itself.
 
     // MARK: - Subviews
 
@@ -57,6 +56,7 @@ public final class PromotionFrontPageView: UIView {
     }()
 
     private lazy var promoViewTopConstraint = promoSlidesView.topAnchor.constraint(equalTo: adRecommendationsGridView.topAnchor)
+    private lazy var promoViewHeightConstraint = promoSlidesView.heightAnchor.constraint(equalToConstant: 148)
     private lazy var marketsViewHeightConstraint = marketsView.heightAnchor.constraint(equalToConstant: 0)
     private var boundsForCurrentSubviewSetup = CGRect.zero
 
@@ -134,6 +134,12 @@ public final class PromotionFrontPageView: UIView {
         adRecommendationsGridView.scrollToTop()
     }
 
+    public func configure(withPromoSlides promoSlides: [UIView]) {
+        promoSlidesView.configure(withSlides: promoSlides)
+        promoViewHeightConstraint.constant = promoSlides.count == 1 ? 140 : 148
+        setupFrames()
+    }
+
     // MARK: - Setup
 
     private func setup() {
@@ -152,7 +158,7 @@ public final class PromotionFrontPageView: UIView {
             promoViewTopConstraint,
             promoSlidesView.leadingAnchor.constraint(equalTo: adRecommendationsGridView.leadingAnchor),
             promoSlidesView.trailingAnchor.constraint(equalTo: adRecommendationsGridView.trailingAnchor),
-            promoSlidesView.heightAnchor.constraint(equalToConstant: promoViewHeight),
+            promoViewHeightConstraint,
 
             marketsView.topAnchor.constraint(equalTo: promoSlidesView.bottomAnchor),
             marketsView.leadingAnchor.constraint(equalTo: adRecommendationsGridView.leadingAnchor),
@@ -170,7 +176,7 @@ public final class PromotionFrontPageView: UIView {
         adsRetryView.frame.size = CGSize(width: bounds.width, height: 200)
         boundsForCurrentSubviewSetup = bounds
         adRecommendationsGridView.invalidateLayout()
-        adRecommendationsGridView.collectionView.contentInset.top = marketsViewHeight + promoViewHeight
+        adRecommendationsGridView.collectionView.contentInset.top = marketsViewHeight + promoViewHeightConstraint.constant
     }
 }
 
@@ -203,7 +209,7 @@ extension PromotionFrontPageView: AdRecommendationsGridViewDelegate {
         didScrollInScrollView scrollView: UIScrollView
     ) {
         let offset = scrollView.contentOffset.y + scrollView.contentInset.top
-        let maxOffset = promoViewHeight
+        let maxOffset = promoViewHeightConstraint.constant
 
         let promoViewPercentageHidden: CGFloat
         if offset <= 0 {
