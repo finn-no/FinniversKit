@@ -127,6 +127,7 @@
 		4940480023CDBEC500ECBCFD /* ViewingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494047FF23CDBEC500ECBCFD /* ViewingsView.swift */; };
 		4940480223CDC0F000ECBCFD /* ViewingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940480123CDC0F000ECBCFD /* ViewingCell.swift */; };
 		496F8C142473DCC600AE0735 /* FavoriteSoldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F8C132473DCC600AE0735 /* FavoriteSoldView.swift */; };
+		4D1051CA260CD4400073D1F4 /* BasicFrontPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1051C9260CD4400073D1F4 /* BasicFrontPageView.swift */; };
 		4D152E742577D7D300282244 /* NavigationLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D152E732577D7D300282244 /* NavigationLinkView.swift */; };
 		4DC8CEDA2604B59700496DF1 /* PromoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8CED92604B59700496DF1 /* PromoLinkView.swift */; };
 		4DC8CF312608A3F300496DF1 /* PromoSlidesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8CF302608A3F300496DF1 /* PromoSlidesView.swift */; };
@@ -559,6 +560,7 @@
 		494047FF23CDBEC500ECBCFD /* ViewingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingsView.swift; sourceTree = "<group>"; };
 		4940480123CDC0F000ECBCFD /* ViewingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingCell.swift; sourceTree = "<group>"; };
 		496F8C132473DCC600AE0735 /* FavoriteSoldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteSoldView.swift; sourceTree = "<group>"; };
+		4D1051C9260CD4400073D1F4 /* BasicFrontPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFrontPageView.swift; sourceTree = "<group>"; };
 		4D152E732577D7D300282244 /* NavigationLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkView.swift; sourceTree = "<group>"; };
 		4DC8CED92604B59700496DF1 /* PromoLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromoLinkView.swift; sourceTree = "<group>"; };
 		4DC8CF302608A3F300496DF1 /* PromoSlidesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoSlidesView.swift; sourceTree = "<group>"; };
@@ -1451,6 +1453,7 @@
 				CFE43E51219B1B2900D3D5F7 /* LoadingRetryView.swift */,
 				CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */,
 				8D68025D897874AE8DAB4E46 /* PromotionFrontPageView.swift */,
+				4D1051C9260CD4400073D1F4 /* BasicFrontPageView.swift */,
 			);
 			path = FrontPage;
 			sourceTree = "<group>";
@@ -3329,6 +3332,7 @@
 				9B057AAE235EEBE9007B1CF0 /* MissionPopupView.swift in Sources */,
 				0884C6CE22B7BE360015474D /* DisclaimerViewModel.swift in Sources */,
 				F2BE6C09236AD24B0085A05A /* CheckmarkTitleView.swift in Sources */,
+				4D1051CA260CD4400073D1F4 /* BasicFrontPageView.swift in Sources */,
 				CF3DEDB4219465F300DB3E5A /* FrontPageView.swift in Sources */,
 				CF4A053A21FB2ACB000BB7DA /* PianoEffectIndicatorsView.swift in Sources */,
 				45D7C56B204949E2000E788F /* SwitchView.swift in Sources */,

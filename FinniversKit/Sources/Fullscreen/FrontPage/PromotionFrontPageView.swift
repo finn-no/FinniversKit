@@ -9,7 +9,7 @@ public protocol PromotionFrontPageViewDelegate: AnyObject {
     func promotionFrontPageView(_ frontPageView: PromotionFrontPageView, promoViewHiddenPercentage percentage: CGFloat)
 }
 
-public final class PromotionFrontPageView: UIView {
+public final class PromotionFrontPageView: UIView, BasicFrontPageView {
 
     // MARK: - Public properties
 

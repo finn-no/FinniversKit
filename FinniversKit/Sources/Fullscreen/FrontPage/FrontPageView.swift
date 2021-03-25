@@ -12,7 +12,7 @@ public protocol FrontPageViewDelegate: AnyObject {
     func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView)
 }
 
-public final class FrontPageView: UIView {
+public final class FrontPageView: UIView, BasicFrontPageView {
     public var model: FrontPageViewModel? {
         didSet {
             headerLabel.text = model?.adRecommedationsGridViewHeaderTitle
