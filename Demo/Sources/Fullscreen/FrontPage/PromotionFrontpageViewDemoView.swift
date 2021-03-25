@@ -38,6 +38,24 @@ public class PromotionFrontpageViewDemoView: UIView {
         addSubview(frontPageView)
         frontPageView.fillInSuperview()
         frontPageView.reloadData()
+
+        let promoSlide = BasicPromoSlideView()
+        promoSlide.configure(
+            with: "Smidig bilhandel? Prøv\nFINNs nye prosess!",
+            buttonTitle: "Se hvordan det virker",
+            image: UIImage(named: .carPromo)
+        )
+
+        let promoSlide2 = BasicPromoSlideView()
+        promoSlide2.configure(
+            with: "Some other promo!",
+            buttonTitle: "Try",
+            image: UIImage(named: .carPromo)
+        )
+
+        let slides = [promoSlide, promoSlide2]
+        slides.forEach { $0.delegate = self }
+        frontPageView.configure(withPromoSlides: slides)
     }
 }
 
@@ -168,5 +186,12 @@ extension PromotionFrontpageViewDemoView: MarketsViewDataSource {
 
     public func marketsView(_ marketsView: MarketsView, modelAtIndex index: Int) -> MarketsViewModel {
         markets[index]
+    }
+}
+
+// MARK: - BasicPromoSlideViewDelegate
+
+extension PromotionFrontpageViewDemoView: BasicPromoSlideViewDelegate {
+    public func basicPromoSlideViewDidTapButton(_ basicPromoSlideView: BasicPromoSlideView) {
     }
 }
