@@ -250,4 +250,12 @@ class ComponentViewTests: XCTestCase {
     func testNavigationLinkView() {
         snapshot(.navigationLinkView)
     }
+
+    func testPromoLinkView() {
+        snapshot(.promoLinkView)
+    }
+
+    func testPromoSlidesView() {
+        snapshot(.promoSlidesView)
+    }
 }

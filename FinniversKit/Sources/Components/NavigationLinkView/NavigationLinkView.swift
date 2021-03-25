@@ -14,13 +14,22 @@ public class NavigationLinkView: UIView {
         return imageView
     }()
 
+    private let padding: CGFloat
+
     public weak var delegate: NavigationLinkViewDelegate?
 
     // MARK: - Init
 
-    public init(withSubview view: UIView, withAutoLayout: Bool = false) {
+    public init(
+        withSubview view: UIView,
+        withAutoLayout: Bool = false,
+        padding: CGFloat = .spacingM,
+        backgroundColor: UIColor = .bgSecondary
+    ) {
+        self.padding = padding
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = !withAutoLayout
+        self.backgroundColor = backgroundColor
         setup(withSubview: view)
     }
 
@@ -31,7 +40,6 @@ public class NavigationLinkView: UIView {
     // MARK: - Setup
 
     private func setup(withSubview view: UIView) {
-        backgroundColor = .bgSecondary
         layer.cornerRadius = .spacingS
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
@@ -39,8 +47,6 @@ public class NavigationLinkView: UIView {
 
         addSubview(arrowImageView)
         addSubview(view)
-
-        let padding: CGFloat = .spacingM
 
         NSLayoutConstraint.activate([
             view.topAnchor.constraint(equalTo: topAnchor, constant: padding),

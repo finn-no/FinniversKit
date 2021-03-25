@@ -42,6 +42,7 @@ enum ImageAsset: String {
     case boatNew
     case car
     case carNew
+    case carPromo
     case checkCircleFilled
     case classifieds
     case classifiedsNew
@@ -110,6 +111,7 @@ enum ImageAsset: String {
     case service
     case shopping
     case sold
+    case transactionJourneyCar
     case travel
     case travelNew
     case vehicles
@@ -130,6 +132,7 @@ enum ImageAsset: String {
             .boatNew,
             .car,
             .carNew,
+            .carPromo,
             .checkCircleFilled,
             .classifieds,
             .classifiedsNew,
@@ -198,6 +201,7 @@ enum ImageAsset: String {
             .service,
             .shopping,
             .sold,
+            .transactionJourneyCar,
             .travel,
             .travelNew,
             .vehicles,

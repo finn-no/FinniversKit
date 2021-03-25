@@ -1,5 +1,6 @@
 <p align="center"><img width=100% src="https://raw.githubusercontent.com/finn-no/FinniversKit/master/GitHub/cover-v5.jpg"></p>
 
+
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![](https://img.shields.io/badge/platform-iOS-lightgrey.svg) ![](https://img.shields.io/badge/License-GPL%20v3-blue.svg)
 
 **FinniversKit** holds all the UI elements of the FINN iOS app, the main reference for our components is our design system. This framework is composed of small components that are meant to be used as building blocks of the FINN iOS app.
