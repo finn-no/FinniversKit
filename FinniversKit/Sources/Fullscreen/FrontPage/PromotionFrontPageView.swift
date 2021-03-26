@@ -25,6 +25,10 @@ public final class PromotionFrontPageView: UIView, BasicFrontPageView {
         set { adRecommendationsGridView.isRefreshEnabled = newValue }
     }
 
+    public var marketsViewCalloutYAxisAnchor: NSLayoutAnchor<NSLayoutYAxisAnchor>? {
+        marketsView.bottomAnchor
+    }
+
     // MARK: - Private properties
 
     private weak var delegate: PromotionFrontPageViewDelegate?
