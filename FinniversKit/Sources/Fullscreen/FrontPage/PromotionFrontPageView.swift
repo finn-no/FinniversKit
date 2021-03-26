@@ -56,7 +56,7 @@ public final class PromotionFrontPageView: UIView, BasicFrontPageView {
     }()
 
     private lazy var promoViewTopConstraint = promoSlidesView.topAnchor.constraint(equalTo: adRecommendationsGridView.topAnchor)
-    private lazy var promoViewHeightConstraint = promoSlidesView.heightAnchor.constraint(equalToConstant: 148)
+    private lazy var promoViewHeightConstraint = promoSlidesView.heightAnchor.constraint(equalToConstant: 156)
     private lazy var marketsViewHeightConstraint = marketsView.heightAnchor.constraint(equalToConstant: 0)
     private var boundsForCurrentSubviewSetup = CGRect.zero
 
@@ -136,7 +136,7 @@ public final class PromotionFrontPageView: UIView, BasicFrontPageView {
 
     public func configure(withPromoSlides promoSlides: [UIView]) {
         promoSlidesView.configure(withSlides: promoSlides)
-        promoViewHeightConstraint.constant = promoSlides.count == 1 ? 140 : 148
+        promoViewHeightConstraint.constant = promoSlides.count == 1 ? 148 : 156
         setupFrames()
     }
 
