@@ -44,7 +44,7 @@ public final class PromotionFrontPageView: UIView, BasicFrontPageView {
     }()
 
     private lazy var headerLabel: Label = {
-        var headerLabel = Label(style: .title3)
+        var headerLabel = Label(style: .title3Strong)
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
         return headerLabel
     }()
@@ -145,6 +145,8 @@ public final class PromotionFrontPageView: UIView, BasicFrontPageView {
     private func setup() {
         backgroundColor = .bgPrimary
 
+        headerView.addSubview(headerLabel)
+
         addSubview(adRecommendationsGridView)
         adRecommendationsGridView.fillInSuperview()
         adRecommendationsGridView.collectionView.addSubview(adsRetryView)
@@ -164,7 +166,14 @@ public final class PromotionFrontPageView: UIView, BasicFrontPageView {
             marketsView.leadingAnchor.constraint(equalTo: adRecommendationsGridView.leadingAnchor),
             marketsView.trailingAnchor.constraint(equalTo: adRecommendationsGridView.trailingAnchor),
             marketsViewHeightConstraint,
+
+            headerLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: .spacingM),
+            headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
+            headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+            headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -.spacingS),
         ])
+
+        adRecommendationsGridView.headerView = headerView
 
         setupFrames()
     }
@@ -177,6 +186,9 @@ public final class PromotionFrontPageView: UIView, BasicFrontPageView {
         boundsForCurrentSubviewSetup = bounds
         adRecommendationsGridView.invalidateLayout()
         adRecommendationsGridView.collectionView.contentInset.top = marketsViewHeight + promoViewHeightConstraint.constant
+
+        let labelHeight = headerLabel.intrinsicContentSize.height + .spacingM + .spacingS
+        headerView.frame.size.height = labelHeight
     }
 }
 
