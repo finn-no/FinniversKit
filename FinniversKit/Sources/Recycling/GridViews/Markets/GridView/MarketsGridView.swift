@@ -4,16 +4,7 @@
 
 import UIKit
 
-public protocol MarketsGridViewDelegate: AnyObject {
-    func marketsGridView(_ marketsGridView: MarketsGridView, didSelectItemAtIndex index: Int)
-}
-
-public protocol MarketsGridViewDataSource: AnyObject {
-    func numberOfItems(inMarketsGridView marketsGridView: MarketsGridView) -> Int
-    func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel
-}
-
-public class MarketsGridView: UIView {
+public class MarketsGridView: UIView, MarketsView {
     // MARK: - Internal properties
 
     @objc private lazy var collectionView: UICollectionView = {
@@ -25,12 +16,12 @@ public class MarketsGridView: UIView {
         return collectionView
     }()
 
-    private weak var delegate: MarketsGridViewDelegate?
-    private weak var dataSource: MarketsGridViewDataSource?
+    private weak var delegate: MarketsViewDelegate?
+    private weak var dataSource: MarketsViewDataSource?
 
     // MARK: - Setup
 
-    public init(frame: CGRect = .zero, delegate: MarketsGridViewDelegate, dataSource: MarketsGridViewDataSource) {
+    public init(frame: CGRect = .zero, delegate: MarketsViewDelegate, dataSource: MarketsViewDataSource) {
         super.init(frame: frame)
 
         self.delegate = delegate
@@ -81,7 +72,7 @@ public class MarketsGridView: UIView {
     // MARK: - Private
 
     private func numberOfRows(for viewWidth: CGFloat) -> Int {
-        guard let modelsCount = dataSource?.numberOfItems(inMarketsGridView: self) else {
+        guard let modelsCount = dataSource?.numberOfItems(inMarketsView: self) else {
             return 0
         }
 
@@ -134,13 +125,13 @@ extension MarketsGridView: UICollectionViewDelegateFlowLayout {
 
 extension MarketsGridView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource?.numberOfItems(inMarketsGridView: self) ?? 0
+        return dataSource?.numberOfItems(inMarketsView: self) ?? 0
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(MarketsGridViewCell.self, for: indexPath)
 
-        if let model = dataSource?.marketsGridView(self, modelAtIndex: indexPath.row) {
+        if let model = dataSource?.marketsView(self, modelAtIndex: indexPath.row) {
             cell.model = model
         }
 
@@ -152,6 +143,6 @@ extension MarketsGridView: UICollectionViewDataSource {
 
 extension MarketsGridView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.marketsGridView(self, didSelectItemAtIndex: indexPath.row)
+        delegate?.marketsView(self, didSelectItemAtIndex: indexPath.row)
     }
 }

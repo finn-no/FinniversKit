@@ -58,4 +58,8 @@ class RecyclingViewTests: XCTestCase {
     func testBasicTableView() {
         snapshot(.basicTableView)
     }
+
+    func testCompactMarketsView() {
+        snapshot(.compactMarketsView)
+    }
 }

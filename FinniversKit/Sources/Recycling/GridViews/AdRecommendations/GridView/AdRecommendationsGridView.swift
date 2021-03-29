@@ -28,7 +28,28 @@ public class AdRecommendationsGridView: UIView {
         case columns(Int)
     }
 
+    // MARK: - Public properties
+
+    public var headerView: UIView? {
+        willSet {
+            headerView?.removeFromSuperview()
+        }
+    }
+
+    public var isRefreshEnabled = false {
+        didSet {
+            setupRefreshControl()
+        }
+    }
+
     // MARK: - Internal properties
+
+    weak var delegate: AdRecommendationsGridViewDelegate?
+    weak var dataSource: AdRecommendationsGridViewDataSource?
+
+    // MARK: - Private properties
+
+    private let imageCache = ImageMemoryCache()
 
     private lazy var collectionViewLayout: AdRecommendationsGridViewLayout = {
         let layout = AdRecommendationsGridViewLayout()
@@ -52,25 +73,7 @@ public class AdRecommendationsGridView: UIView {
         return refreshControl
     }()
 
-    private weak var delegate: AdRecommendationsGridViewDelegate?
-    private weak var dataSource: AdRecommendationsGridViewDataSource?
-    private let imageCache = ImageMemoryCache()
-
-    // MARK: - External properties
-
-    public var headerView: UIView? {
-        willSet {
-            headerView?.removeFromSuperview()
-        }
-    }
-
-    public var isRefreshEnabled = false {
-        didSet {
-            setupRefreshControl()
-        }
-    }
-
-    // MARK: - Setup
+    // MARK: - Init
 
     public init(delegate: AdRecommendationsGridViewDelegate, dataSource: AdRecommendationsGridViewDataSource) {
         super.init(frame: .zero)
@@ -83,15 +86,15 @@ public class AdRecommendationsGridView: UIView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setup()
     }
 
-    private func setup() {
+    // MARK: - Setup
+
+    func setup() {
         let cellClasses = dataSource?.adRecommendationsGridView(self, cellClassesIn: collectionView) ?? []
 
         cellClasses.forEach { cellClass in
@@ -103,6 +106,8 @@ public class AdRecommendationsGridView: UIView {
         collectionView.fillInSuperview()
     }
 
+    // MARK: - Private methods
+
     private func setupRefreshControl() {
         collectionView.refreshControl = isRefreshEnabled ? refreshControl : nil
     }
@@ -111,7 +116,7 @@ public class AdRecommendationsGridView: UIView {
         collectionView.collectionViewLayout.invalidateLayout()
     }
 
-    // MARK: - Public
+    // MARK: - Public methods
 
     public func reloadData() {
         endRefreshing()

@@ -10,6 +10,7 @@ final class PrimingTableViewCell: UITableViewCell {
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.tintColor = .btnPrimary
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 

@@ -29,16 +29,16 @@ public class MarketsGridViewDemoView: UIView {
     }
 }
 
-extension MarketsGridViewDemoView: MarketsGridViewDataSource {
-    public func numberOfItems(inMarketsGridView marketsGridView: MarketsGridView) -> Int {
+extension MarketsGridViewDemoView: MarketsViewDataSource {
+    public func numberOfItems(inMarketsView marketsView: MarketsView) -> Int {
         return dataSource.models.count
     }
 
-    public func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel {
+    public func marketsView(_ marketsView: MarketsView, modelAtIndex index: Int) -> MarketsViewModel {
         return dataSource.models[index]
     }
 }
 
-extension MarketsGridViewDemoView: MarketsGridViewDelegate {
-    public func marketsGridView(_ marketsGridView: MarketsGridView, didSelectItemAtIndex index: Int) {}
+extension MarketsGridViewDemoView: MarketsViewDelegate {
+    public func marketsView(_ marketsGridView: MarketsView, didSelectItemAtIndex index: Int) {}
 }
