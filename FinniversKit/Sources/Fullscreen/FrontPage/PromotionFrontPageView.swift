@@ -140,7 +140,7 @@ public final class PromotionFrontPageView: UIView, BasicFrontPageView {
 
     public func configure(withPromoSlides promoSlides: [UIView]) {
         promoSlidesView.configure(withSlides: promoSlides)
-        if #available(iOS 13.0, *) {
+        if #available(iOS 14.0, *) {
             promoViewHeightConstraint.constant = promoSlides.count == 1 ? 148 : 156
         } else {
             promoViewHeightConstraint.constant = 170
