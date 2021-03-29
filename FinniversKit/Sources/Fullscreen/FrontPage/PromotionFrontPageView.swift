@@ -178,7 +178,7 @@ public final class PromotionFrontPageView: UIView, BasicFrontPageView {
             headerLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: .spacingM),
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
-            headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -.spacingS),
+            headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -.spacingS)
         ])
 
         adRecommendationsGridView.headerView = headerView
