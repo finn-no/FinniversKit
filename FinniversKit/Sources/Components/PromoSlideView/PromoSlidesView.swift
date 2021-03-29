@@ -42,6 +42,7 @@ public class PromoSlidesView: UIView {
 
     private lazy var collectionViewHeightAnchor = collectionView.heightAnchor.constraint(lessThanOrEqualToConstant: 200)
     private lazy var pageControlTopAnchor = pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingS)
+    private let topSpacing: CGFloat = .spacingS
 
     // MARK: - Init
 
@@ -65,13 +66,13 @@ public class PromoSlidesView: UIView {
         addSubview(pageControl)
 
         NSLayoutConstraint.activate([
-            backgroundCircleView.topAnchor.constraint(equalTo: topAnchor),
+            backgroundCircleView.topAnchor.constraint(equalTo: topAnchor, constant: topSpacing),
             backgroundCircleView.centerXAnchor.constraint(equalTo: trailingAnchor, constant: 40),
             backgroundCircleView.heightAnchor.constraint(equalToConstant: circleSize),
             backgroundCircleView.widthAnchor.constraint(equalToConstant: circleSize),
 
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            collectionView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM + topSpacing),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionViewHeightAnchor,
 

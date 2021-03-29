@@ -9,7 +9,7 @@ public protocol PromotionFrontPageViewDelegate: AnyObject {
     func promotionFrontPageView(_ frontPageView: PromotionFrontPageView, promoViewHiddenPercentage percentage: CGFloat)
 }
 
-public final class PromotionFrontPageView: UIView {
+public final class PromotionFrontPageView: UIView, BasicFrontPageView {
 
     // MARK: - Public properties
 
@@ -23,6 +23,10 @@ public final class PromotionFrontPageView: UIView {
     public var isRefreshEnabled: Bool {
         get { adRecommendationsGridView.isRefreshEnabled }
         set { adRecommendationsGridView.isRefreshEnabled = newValue }
+    }
+
+    public var marketsViewCalloutYAxisAnchor: NSLayoutAnchor<NSLayoutYAxisAnchor>? {
+        marketsView.bottomAnchor
     }
 
     // MARK: - Private properties
@@ -44,7 +48,7 @@ public final class PromotionFrontPageView: UIView {
     }()
 
     private lazy var headerLabel: Label = {
-        var headerLabel = Label(style: .title3)
+        var headerLabel = Label(style: .title3Strong)
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
         return headerLabel
     }()
@@ -56,7 +60,7 @@ public final class PromotionFrontPageView: UIView {
     }()
 
     private lazy var promoViewTopConstraint = promoSlidesView.topAnchor.constraint(equalTo: adRecommendationsGridView.topAnchor)
-    private lazy var promoViewHeightConstraint = promoSlidesView.heightAnchor.constraint(equalToConstant: 148)
+    private lazy var promoViewHeightConstraint = promoSlidesView.heightAnchor.constraint(equalToConstant: 156)
     private lazy var marketsViewHeightConstraint = marketsView.heightAnchor.constraint(equalToConstant: 0)
     private var boundsForCurrentSubviewSetup = CGRect.zero
 
@@ -136,7 +140,11 @@ public final class PromotionFrontPageView: UIView {
 
     public func configure(withPromoSlides promoSlides: [UIView]) {
         promoSlidesView.configure(withSlides: promoSlides)
-        promoViewHeightConstraint.constant = promoSlides.count == 1 ? 140 : 148
+        if #available(iOS 14.0, *) {
+            promoViewHeightConstraint.constant = promoSlides.count == 1 ? 148 : 156
+        } else {
+            promoViewHeightConstraint.constant = 170
+        }
         setupFrames()
     }
 
@@ -144,6 +152,8 @@ public final class PromotionFrontPageView: UIView {
 
     private func setup() {
         backgroundColor = .bgPrimary
+
+        headerView.addSubview(headerLabel)
 
         addSubview(adRecommendationsGridView)
         adRecommendationsGridView.fillInSuperview()
@@ -164,7 +174,14 @@ public final class PromotionFrontPageView: UIView {
             marketsView.leadingAnchor.constraint(equalTo: adRecommendationsGridView.leadingAnchor),
             marketsView.trailingAnchor.constraint(equalTo: adRecommendationsGridView.trailingAnchor),
             marketsViewHeightConstraint,
+
+            headerLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: .spacingM),
+            headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
+            headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+            headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -.spacingS)
         ])
+
+        adRecommendationsGridView.headerView = headerView
 
         setupFrames()
     }
@@ -177,6 +194,9 @@ public final class PromotionFrontPageView: UIView {
         boundsForCurrentSubviewSetup = bounds
         adRecommendationsGridView.invalidateLayout()
         adRecommendationsGridView.collectionView.contentInset.top = marketsViewHeight + promoViewHeightConstraint.constant
+
+        let labelHeight = headerLabel.intrinsicContentSize.height + .spacingM + .spacingS
+        headerView.frame.size.height = labelHeight
     }
 }
 
