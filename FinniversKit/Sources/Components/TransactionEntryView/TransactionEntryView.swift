@@ -19,11 +19,17 @@ public class TransactionEntryView: UIView {
 
     private lazy var imageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
-        imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .bgSecondary
         imageView.layer.cornerRadius = .spacingS
         imageView.layer.masksToBounds = true
         imageView.delegate = self
+        imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
+        return imageView
+    }()
+
+    private lazy var warningIconImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.image = UIImage(named: .warning)
         return imageView
     }()
 
@@ -36,6 +42,7 @@ public class TransactionEntryView: UIView {
     private lazy var titleLabel: Label = {
         let label = Label(style: .captionStrong, withAutoLayout: true)
         label.numberOfLines = 0
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
@@ -77,6 +84,7 @@ public class TransactionEntryView: UIView {
 
         textContainer.addSubview(titleLabel)
         textContainer.addSubview(textLabel)
+        textContainer.addSubview(warningIconImageView)
 
         NSLayoutConstraint.activate([
             imageView.widthAnchor.constraint(equalToConstant: imageWidth),
@@ -97,7 +105,10 @@ public class TransactionEntryView: UIView {
 
             titleLabel.leadingAnchor.constraint(equalTo: textContainer.leadingAnchor),
             titleLabel.topAnchor.constraint(equalTo: textContainer.topAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: textContainer.trailingAnchor),
+
+            warningIconImageView.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: .spacingS),
+            warningIconImageView.topAnchor.constraint(equalTo: textContainer.topAnchor),
+            warningIconImageView.trailingAnchor.constraint(lessThanOrEqualTo: textContainer.trailingAnchor),
 
             textLabel.leadingAnchor.constraint(equalTo: textContainer.leadingAnchor),
             textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXS),
@@ -111,7 +122,10 @@ public class TransactionEntryView: UIView {
         textLabel.text = viewModel.text
         self.fallbackImage = viewModel.fallbackImage
 
+        warningIconImageView.isHidden = !viewModel.showWarningIcon
+
         if let imageUrl = viewModel.imageUrl {
+            imageView.contentMode = .scaleAspectFill
             imageView.loadImage(for: imageUrl, imageWidth: imageWidth, loadingColor: .bgSecondary)
         } else {
             setFallbackImage()

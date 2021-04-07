@@ -1,11 +1,22 @@
 import FinniversKit
 
-class TransactionEntryDemoView: UIView {
+class TransactionEntryDemoView: UIView, Tweakable {
 
     private lazy var transactionEntryView: TransactionEntryView = {
         let view = TransactionEntryView(delegate: self, remoteImageViewDataSource: self)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
+    }()
+
+    lazy var tweakingOptions: [TweakingOption] = {
+        [
+            TweakingOption(title: "Regular", action: { [weak self] in
+                self?.configure(with: RegularViewModel())
+            }),
+            TweakingOption(title: "With warning", action: { [weak self] in
+                self?.configure(with: ViewModelWithWarning())
+            })
+        ]
     }()
 
     // MARK: - Init
@@ -28,7 +39,11 @@ class TransactionEntryDemoView: UIView {
             transactionEntryView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
 
-        transactionEntryView.configure(with: ViewModel())
+        transactionEntryView.configure(with: RegularViewModel())
+    }
+
+    func configure(with viewModel: TransactionEntryViewModel) {
+        transactionEntryView.configure(with: viewModel)
     }
 }
 
@@ -65,10 +80,18 @@ extension TransactionEntryDemoView: RemoteImageViewDataSource {
     func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
 
-private class ViewModel: TransactionEntryViewModel {
+private class RegularViewModel: TransactionEntryViewModel {
     var title: String = "Kontrakt"
     var text: String = "Kjøper har signert, nå mangler bare din signatur."
     var imageUrl: String? = "https://finn-content-hub.imgix.net/bilder/Motor/Toma%CC%8Aterbil_Toppbilde.jpg?auto=compress&crop=focalpoint&domain=finn-content-hub.imgix.net&fit=crop&fm=jpg&fp-x=0.5&fp-y=0.5&h=900&ixlib=php-3.3.0&w=1600"
+    var showWarningIcon: Bool = false
+    var fallbackImage: UIImage = UIImage(named: .transactionJourneyCar)
+}
+
+private class ViewModelWithWarning: TransactionEntryViewModel {
+    var title: String = "Betaling"
+    var text: String = "Betalingen gikk ikke gjennom. Åpne salgsprosessen for å prøve på nytt."
+    var imageUrl: String?
     var showWarningIcon: Bool = true
     var fallbackImage: UIImage = UIImage(named: .transactionJourneyCar)
 }
