@@ -5,7 +5,12 @@ public protocol TransactionEntrySlideViewDelegate: AnyObject {
 }
 
 public class TransactionEntrySlideView: UIView {
-    private lazy var transactionEntryView = TransactionEntryView(delegate: self, remoteImageViewDataSource: remoteImageViewDataSource, withAutoLayout: true)
+    private lazy var transactionEntryView = TransactionEntryView(
+        backgroundColor: .white,
+        delegate: self,
+        remoteImageViewDataSource: remoteImageViewDataSource,
+        withAutoLayout: true
+    )
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .title3Strong, withAutoLayout: true)

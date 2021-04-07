@@ -56,13 +56,19 @@ public class TransactionEntryView: UIView {
         withSubview: contentView,
         withAutoLayout: true,
         padding: .spacingXS + .spacingS,
-        backgroundColor: .bgTertiary
+        backgroundColor: navigationLinkBackgroundColor
     )
 
     private let imageWidth: CGFloat = 32
     private var fallbackImage: UIImage?
+    private let navigationLinkBackgroundColor: UIColor
 
-    public init(delegate: TransactionEntryViewDelegate?, remoteImageViewDataSource: RemoteImageViewDataSource?, withAutoLayout: Bool = false) {
+    public init(
+        backgroundColor: UIColor = .bgTertiary,
+        delegate: TransactionEntryViewDelegate?,
+        remoteImageViewDataSource: RemoteImageViewDataSource?,
+        withAutoLayout: Bool = false) {
+        self.navigationLinkBackgroundColor = backgroundColor
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         imageView.dataSource = remoteImageViewDataSource
