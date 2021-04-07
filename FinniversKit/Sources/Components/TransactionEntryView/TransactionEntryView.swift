@@ -17,11 +17,13 @@ public class TransactionEntryView: UIView {
 
     private lazy var contentView = UIView(withAutoLayout: true)
 
-    private lazy var imageView: UIImageView = {
-        let imageView = UIImageView(withAutoLayout: true)
+    private lazy var imageView: RemoteImageView = {
+        let imageView = RemoteImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .bgSecondary
         imageView.layer.cornerRadius = .spacingS
+        imageView.layer.masksToBounds = true
+        imageView.delegate = self
         return imageView
     }()
 
@@ -49,10 +51,12 @@ public class TransactionEntryView: UIView {
     }()
 
     private let spacing: CGFloat = .spacingXS + .spacingS
+    private let imageWidth: CGFloat = 32
     private var fallbackImage: UIImage?
 
-    public init(delegate: TransactionEntryViewDelegate?) {
+    public init(delegate: TransactionEntryViewDelegate?, remoteImageViewDataSource: RemoteImageViewDataSource?) {
         super.init(frame: .zero)
+        imageView.dataSource = remoteImageViewDataSource
         setup()
     }
 
@@ -74,7 +78,7 @@ public class TransactionEntryView: UIView {
         textContainer.addSubview(textLabel)
 
         NSLayoutConstraint.activate([
-            imageView.widthAnchor.constraint(equalToConstant: 32),
+            imageView.widthAnchor.constraint(equalToConstant: imageWidth),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
 
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -104,13 +108,27 @@ public class TransactionEntryView: UIView {
     public func configure(with viewModel: TransactionEntryViewModel) {
         titleLabel.text = viewModel.title
         textLabel.text = viewModel.text
-
         self.fallbackImage = viewModel.fallbackImage
-        useFallbackImage()
+
+        if let imageUrl = viewModel.imageUrl {
+            imageView.loadImage(for: imageUrl, imageWidth: imageWidth, loadingColor: .bgSecondary)
+        } else {
+            setFallbackImage()
+        }
     }
 
-    private func useFallbackImage() {
+    private func setFallbackImage() {
         imageView.image = fallbackImage
         imageView.contentMode = .scaleAspectFit
+    }
+}
+
+// MARK: - RemoteImageViewDelegate
+
+extension TransactionEntryView: RemoteImageViewDelegate {
+    public func remoteImageViewDidSetImage(_ view: RemoteImageView) {
+        if imageView.image == nil {
+            setFallbackImage()
+        }
     }
 }
