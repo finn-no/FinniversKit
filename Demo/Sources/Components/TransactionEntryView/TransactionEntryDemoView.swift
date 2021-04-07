@@ -3,8 +3,8 @@ import FinniversKit
 class TransactionEntryDemoView: UIView, Tweakable {
 
     private lazy var transactionEntryView: TransactionEntryView = {
-        let view = TransactionEntryView(delegate: self, remoteImageViewDataSource: self)
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = TransactionEntryView(delegate: self, withAutoLayout: true)
+        view.remoteImageViewDataSource = self
         return view
     }()
 

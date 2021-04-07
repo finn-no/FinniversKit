@@ -8,7 +8,6 @@ public class TransactionEntrySlideView: UIView {
     private lazy var transactionEntryView = TransactionEntryView(
         backgroundColor: .white,
         delegate: self,
-        remoteImageViewDataSource: remoteImageViewDataSource,
         withAutoLayout: true
     )
 
@@ -21,7 +20,6 @@ public class TransactionEntrySlideView: UIView {
     }()
 
     private weak var transactionEntryViewDelegate: TransactionEntryViewDelegate?
-    private weak var remoteImageViewDataSource: RemoteImageViewDataSource?
 
     public init(
         title: String,
@@ -30,9 +28,8 @@ public class TransactionEntrySlideView: UIView {
         remoteImageViewDataSource: RemoteImageViewDataSource?
     ) {
         super.init(frame: .zero)
-        self.remoteImageViewDataSource = remoteImageViewDataSource
-
         titleLabel.text = title
+        transactionEntryView.remoteImageViewDataSource = remoteImageViewDataSource
         transactionEntryView.configure(with: transactionEntryViewModel)
 
         setup()

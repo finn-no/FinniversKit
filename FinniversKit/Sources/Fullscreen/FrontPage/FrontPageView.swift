@@ -153,9 +153,9 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     public func setupTransactionEntry(with viewModel: TransactionEntryViewModel) {
         let transactionEntryView = TransactionEntryView(
             delegate: transactionEntryViewDelegate,
-            remoteImageViewDataSource: remoteImageViewDataSource,
             withAutoLayout: true
         )
+        transactionEntryView.remoteImageViewDataSource = remoteImageViewDataSource
         transactionEntryView.configure(with: viewModel)
 
         addSubviewToPromoContainer(transactionEntryView)

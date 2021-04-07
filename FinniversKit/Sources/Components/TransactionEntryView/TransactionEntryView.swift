@@ -63,11 +63,17 @@ public class TransactionEntryView: UIView {
     private var fallbackImage: UIImage?
     private let navigationLinkBackgroundColor: UIColor
 
+    public weak var remoteImageViewDataSource: RemoteImageViewDataSource? {
+        didSet {
+            imageView.dataSource = remoteImageViewDataSource
+        }
+    }
+
     public init(
         backgroundColor: UIColor = .bgTertiary,
         delegate: TransactionEntryViewDelegate?,
-        remoteImageViewDataSource: RemoteImageViewDataSource?,
-        withAutoLayout: Bool = false) {
+        withAutoLayout: Bool = false
+    ) {
         self.navigationLinkBackgroundColor = backgroundColor
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = !withAutoLayout
