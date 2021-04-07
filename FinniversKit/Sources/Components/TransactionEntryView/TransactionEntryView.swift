@@ -62,8 +62,9 @@ public class TransactionEntryView: UIView {
     private let imageWidth: CGFloat = 32
     private var fallbackImage: UIImage?
 
-    public init(delegate: TransactionEntryViewDelegate?, remoteImageViewDataSource: RemoteImageViewDataSource?) {
+    public init(delegate: TransactionEntryViewDelegate?, remoteImageViewDataSource: RemoteImageViewDataSource?, withAutoLayout: Bool = false) {
         super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         imageView.dataSource = remoteImageViewDataSource
         setup()
     }
