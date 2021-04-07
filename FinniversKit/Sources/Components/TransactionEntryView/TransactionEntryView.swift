@@ -34,7 +34,7 @@ public class TransactionEntryView: UIView {
     }()
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .bodyStrong, withAutoLayout: true)
+        let label = Label(style: .captionStrong, withAutoLayout: true)
         label.numberOfLines = 0
         return label
     }()
@@ -45,12 +45,13 @@ public class TransactionEntryView: UIView {
         return label
     }()
 
-    private lazy var navigationLinkView: NavigationLinkView = {
-        let view = NavigationLinkView(withSubview: contentView, withAutoLayout: true, padding: .spacingM, backgroundColor: .bgTertiary)
-        return view
-    }()
+    private lazy var navigationLinkView = NavigationLinkView(
+        withSubview: contentView,
+        withAutoLayout: true,
+        padding: .spacingXS + .spacingS,
+        backgroundColor: .bgTertiary
+    )
 
-    private let spacing: CGFloat = .spacingXS + .spacingS
     private let imageWidth: CGFloat = 32
     private var fallbackImage: UIImage?
 
@@ -85,11 +86,11 @@ public class TransactionEntryView: UIView {
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
 
-            processIllustrationView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 3),
-            processIllustrationView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: spacing),
+            processIllustrationView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXXS),
+            processIllustrationView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingXS + .spacingS),
             processIllustrationView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            textContainer.leadingAnchor.constraint(equalTo: processIllustrationView.trailingAnchor, constant: spacing),
+            textContainer.leadingAnchor.constraint(equalTo: processIllustrationView.trailingAnchor, constant: .spacingS),
             textContainer.topAnchor.constraint(equalTo: contentView.topAnchor),
             textContainer.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
             textContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -99,7 +100,7 @@ public class TransactionEntryView: UIView {
             titleLabel.trailingAnchor.constraint(equalTo: textContainer.trailingAnchor),
 
             textLabel.leadingAnchor.constraint(equalTo: textContainer.leadingAnchor),
-            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXS),
             textLabel.trailingAnchor.constraint(equalTo: textContainer.trailingAnchor),
             textLabel.bottomAnchor.constraint(equalTo: textContainer.bottomAnchor),
         ])
