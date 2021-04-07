@@ -140,11 +140,6 @@ public final class PromotionFrontPageView: UIView, BasicFrontPageView {
 
     public func configure(withPromoSlides promoSlides: [UIView]) {
         promoSlidesView.configure(withSlides: promoSlides)
-        if #available(iOS 14.0, *) {
-            promoViewHeightConstraint.constant = promoSlides.count == 1 ? 148 : 156
-        } else {
-            promoViewHeightConstraint.constant = 170
-        }
         setupFrames()
     }
 
@@ -193,7 +188,9 @@ public final class PromotionFrontPageView: UIView, BasicFrontPageView {
         adsRetryView.frame.size = CGSize(width: bounds.width, height: 200)
         boundsForCurrentSubviewSetup = bounds
         adRecommendationsGridView.invalidateLayout()
-        adRecommendationsGridView.collectionView.contentInset.top = marketsViewHeight + promoViewHeightConstraint.constant
+        let promoViewHeight = promoSlidesView.calculateHeight(constrainedTo: bounds.size.width)
+        promoViewHeightConstraint.constant = promoViewHeight
+        adRecommendationsGridView.collectionView.contentInset.top = marketsViewHeight + promoViewHeight
 
         let labelHeight = headerLabel.intrinsicContentSize.height + .spacingM + .spacingS
         headerView.frame.size.height = labelHeight

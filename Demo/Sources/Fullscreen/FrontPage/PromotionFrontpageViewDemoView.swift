@@ -39,23 +39,31 @@ public class PromotionFrontpageViewDemoView: UIView {
         frontPageView.fillInSuperview()
         frontPageView.reloadData()
 
-        let promoSlide = BasicPromoSlideView()
-        promoSlide.configure(
-            with: "Smidig bilhandel? Prøv\nFINNs nye prosess!",
-            buttonTitle: "Se hvordan det virker",
-            image: UIImage(named: .carPromo)
+        let promoSlide = TransactionEntrySlideView(
+            title: "Du har en oppdatering i den siste salgsprosessen",
+            transactionEntryViewModel: MotorTransactionEntryViewModel(),
+            delegate: self,
+            remoteImageViewDataSource: self
         )
 
         let promoSlide2 = BasicPromoSlideView()
         promoSlide2.configure(
-            with: "Some other promo!",
-            buttonTitle: "Try",
+            with: "Smidig bilhandel? Prøv\nFINNs nye prosess!",
+            buttonTitle: "Se hvordan det virker",
             image: UIImage(named: .carPromo)
         )
+        promoSlide2.delegate = self
 
         let slides = [promoSlide, promoSlide2]
-        slides.forEach { $0.delegate = self }
         frontPageView.configure(withPromoSlides: slides)
+    }
+}
+
+// MARK: - TransactionEntrySlideView
+
+extension PromotionFrontpageViewDemoView: TransactionEntrySlideViewDelegate {
+    public func transactionEntrySlideViewDidTapButton(_ transactionEntrySlideView: TransactionEntrySlideView) {
+        print("Did tap transaction entry!")
     }
 }
 
@@ -148,6 +156,26 @@ extension PromotionFrontpageViewDemoView: AdRecommendationsGridViewDataSource {
     }
 
     public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        loadImage(imagePath: imagePath, completion: completion)
+    }
+
+    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
+}
+
+// MARK: - RemoteImageViewDataSource
+
+extension PromotionFrontpageViewDemoView: RemoteImageViewDataSource {
+    public func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
+        nil
+    }
+
+    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        loadImage(imagePath: imagePath, completion: completion)
+    }
+
+    public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
+
+    private func loadImage(imagePath: String, completion: @escaping ((UIImage?) -> Void)) {
         guard let url = URL(string: imagePath) else {
             completion(nil)
             return
@@ -167,8 +195,6 @@ extension PromotionFrontpageViewDemoView: AdRecommendationsGridViewDataSource {
 
         task.resume()
     }
-
-    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
 
 // MARK: - MarketsGridViewDelegate
@@ -194,4 +220,14 @@ extension PromotionFrontpageViewDemoView: MarketsViewDataSource {
 extension PromotionFrontpageViewDemoView: BasicPromoSlideViewDelegate {
     public func basicPromoSlideViewDidTapButton(_ basicPromoSlideView: BasicPromoSlideView) {
     }
+}
+
+// MARK: - Private classes
+
+private class MotorTransactionEntryViewModel: TransactionEntryViewModel {
+    var title: String = "Kontrakt"
+    var text: String = "Kjøper har signert, nå mangler bare din signatur."
+    var imageUrl: String? = "https://finn-content-hub.imgix.net/bilder/Motor/Toma%CC%8Aterbil_Toppbilde.jpg?auto=compress&crop=focalpoint&domain=finn-content-hub.imgix.net&fit=crop&fm=jpg&fp-x=0.5&fp-y=0.5&h=900&ixlib=php-3.3.0&w=1600"
+    var showWarningIcon: Bool = false
+    var fallbackImage: UIImage = UIImage(named: .transactionJourneyCar)
 }

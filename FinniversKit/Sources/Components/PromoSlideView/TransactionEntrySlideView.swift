@@ -24,7 +24,7 @@ public class TransactionEntrySlideView: UIView {
     public init(
         title: String,
         transactionEntryViewModel: TransactionEntryViewModel,
-        transactionEntryViewDelegate: TransactionEntryViewDelegate?,
+        delegate: TransactionEntrySlideViewDelegate?,
         remoteImageViewDataSource: RemoteImageViewDataSource?
     ) {
         super.init(frame: .zero)

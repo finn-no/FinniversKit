@@ -42,7 +42,8 @@ public class PromoSlidesView: UIView {
 
     private lazy var collectionViewHeightAnchor = collectionView.heightAnchor.constraint(lessThanOrEqualToConstant: 200)
     private lazy var pageControlTopAnchor = pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingS)
-    private let topSpacing: CGFloat = .spacingS
+    private static let topSpacing: CGFloat = .spacingS
+    private let collectionViewTopSpacing: CGFloat = .spacingM + topSpacing
 
     // MARK: - Init
 
@@ -66,13 +67,13 @@ public class PromoSlidesView: UIView {
         addSubview(pageControl)
 
         NSLayoutConstraint.activate([
-            backgroundCircleView.topAnchor.constraint(equalTo: topAnchor, constant: topSpacing),
+            backgroundCircleView.topAnchor.constraint(equalTo: topAnchor, constant: Self.topSpacing),
             backgroundCircleView.centerXAnchor.constraint(equalTo: trailingAnchor, constant: 40),
             backgroundCircleView.heightAnchor.constraint(equalToConstant: circleSize),
             backgroundCircleView.widthAnchor.constraint(equalToConstant: circleSize),
 
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM + topSpacing),
+            collectionView.topAnchor.constraint(equalTo: topAnchor, constant: collectionViewTopSpacing),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionViewHeightAnchor,
 
@@ -116,6 +117,27 @@ public class PromoSlidesView: UIView {
         pageControl.currentPage = 0
 
         collectionView.reloadData()
+    }
+
+    public func calculateHeight(constrainedTo width: CGFloat) -> CGFloat {
+        guard width > 0 else { return 100 }
+
+        let targetSize = CGSize(width: width, height: 0)
+        let maxHeight = slides // func for it
+                .map({ $0.systemLayoutSizeFitting(
+                        targetSize,
+                        withHorizontalFittingPriority: .required,
+                        verticalFittingPriority: .fittingSizeLevel).height })
+                .max()
+
+        let pageControlHeight = pageControl
+            .systemLayoutSizeFitting(
+                targetSize,
+                withHorizontalFittingPriority: .required,
+                verticalFittingPriority: .fittingSizeLevel)
+            .height
+
+        return (maxHeight ?? 0) + collectionViewTopSpacing + pageControlHeight + pageControlTopAnchor.constant
     }
 
     // MARK: - Actions

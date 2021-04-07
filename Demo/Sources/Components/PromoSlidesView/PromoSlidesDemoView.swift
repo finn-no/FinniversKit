@@ -31,7 +31,7 @@ class PromoSlidesDemoView: UIView {
         let promoSlide = TransactionEntrySlideView(
             title: "Du har en oppdatering i den\nsiste salgsprosessen",
             transactionEntryViewModel: MotorTransactionEntryViewModel(),
-            transactionEntryViewDelegate: self,
+            delegate: self,
             remoteImageViewDataSource: self
         )
 
@@ -53,7 +53,7 @@ extension PromoSlidesDemoView: BasicPromoSlideViewDelegate {
     }
 }
 
-extension PromoSlidesDemoView: TransactionEntryViewDelegate {
+extension PromoSlidesDemoView: TransactionEntrySlideViewDelegate {
     func transactionEntrySlideViewDidTapButton(_ transactionEntrySlideView: TransactionEntrySlideView) {
         print("Tapped transaction entry!")
     }
