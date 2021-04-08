@@ -41,7 +41,6 @@ public class CollapsibleContentView: UIView {
     private lazy var headerView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .horizontal
-        stackView.layoutMargins = .init(vertical: .spacingS, horizontal: 0)
         stackView.distribution = .equalSpacing
         stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
@@ -219,9 +218,9 @@ extension CollapsibleContentView {
         public static let plain = Style(
             backgroundColor: .bgPrimary,
             cornerRadius: .zero,
-            contentInsets: .zero,
+            contentInsets: .init(vertical: .spacingS, horizontal: 0),
             titleStyle: .title3Strong,
-            titleContentSpacing: 0
+            titleContentSpacing: .spacingS
         )
 
         public static let card = Style(
