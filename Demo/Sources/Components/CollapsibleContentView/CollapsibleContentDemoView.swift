@@ -38,10 +38,11 @@ class CollapsibleContentDemoView: UIView, Tweakable {
         }),
         TweakingOption(title: "Pet buying tips", action: { [weak self] in
             guard let self = self else { return }
+            let style = CollapsibleContentView.Style.card.withOverride(headerContentSpacing: .spacingS)
             let numberedListView = NumberedListView(withAutoLayout: true)
             numberedListView.configure(with: NumberedListItem.demoItems)
             self.configureCollapsibleContentView(
-                style: .card,
+                style: style,
                 title: "6 tips når du skal kjøpe husdyr",
                 contentView: numberedListView
             )
