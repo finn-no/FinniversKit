@@ -187,3 +187,27 @@ public class CollapsibleContentView: UIView {
         collapseIndicatorImageView.image = indicatorImage
     }
 }
+
+extension CollapsibleContentView {
+    public struct Style {
+        public let backgroundColor: UIColor
+        public let cornerRadius: CGFloat
+        public let contentInsets: UIEdgeInsets
+        public let titleStyle: Label.Style
+        public let titleContentSpacing: CGFloat
+
+        public init(
+            backgroundColor: UIColor,
+            cornerRadius: CGFloat,
+            contentInsets: UIEdgeInsets,
+            titleStyle: Label.Style,
+            titleContentSpacing: CGFloat
+        ) {
+            self.backgroundColor = backgroundColor
+            self.cornerRadius = cornerRadius
+            self.contentInsets = contentInsets
+            self.titleStyle = titleStyle
+            self.titleContentSpacing = titleContentSpacing
+        }
+    }
+}
