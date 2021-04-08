@@ -4,54 +4,67 @@
 
 import FinniversKit
 
-class CollapsibleContentDemoView: UIView {
-    private lazy var collapsibleContentView: CollapsibleContentView = {
-        let view = CollapsibleContentView(withAutoLayout: true)
-        view.backgroundColor = .bgTertiary
-        view.layoutMargins = UIEdgeInsets(all: .spacingM)
-        view.configure(with: "Spesifikasjoner", contentView: contentView)
-        return view
-    }()
+class CollapsibleContentDemoView: UIView, Tweakable {
+    // MARK: - Private properties
 
-    private lazy var contentView: UIView = {
-        let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .bgSecondary
-        return view
-    }()
+    private lazy var contentView = UIView(withAutoLayout: true)
+
+    private var collapsibleContentView: CollapsibleContentView?
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.spacing = .spacingM
-        return stackView
-    }()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
-
-    private func setup() {
         (1...20).forEach({ index in
             let label = Label(style: .body, withAutoLayout: true)
             label.text = "Item \(index)"
             stackView.addArrangedSubview(label)
         })
+        return stackView
+    }()
 
+    lazy var tweakingOptions: [TweakingOption] = [
+        TweakingOption(title: "Plain style", action: { [weak self] in
+            self?.configureCollapsibleContentView(style: .plain, title: "Spesifikasjoner")
+        }),
+        TweakingOption(title: "Card style", action: { [weak self] in
+            self?.configureCollapsibleContentView(style: .card, title: "6 tips når du skal kjøpe husdyr")
+        }),
+    ]
+
+    // MARK: - Init
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        tweakingOptions.first?.action?()
+        setup()
+    }
+
+    public required init?(coder aDecoder: NSCoder) { fatalError() }
+
+    // MARK: - Setup
+
+    private func setup() {
         contentView.addSubview(stackView)
         stackView.fillInSuperview()
+    }
 
-        addSubview(collapsibleContentView)
+    private func configureCollapsibleContentView(style: CollapsibleContentView.Style, title: String) {
+        collapsibleContentView?.removeFromSuperview()
+
+        let newDemoView = CollapsibleContentView(style: style, withAutoLayout: true)
+        newDemoView.configure(with: title, contentView: contentView)
+        addSubview(newDemoView)
 
         NSLayoutConstraint.activate([
             // one of the areas of the floating button in demo view was eating the touches where the collapisble
             // view was overlaping one of the window corners, then i added some constant to avoid that.
-            collapsibleContentView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 100),
-            collapsibleContentView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            collapsibleContentView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            newDemoView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 100),
+            newDemoView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            newDemoView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
         ])
+
+        collapsibleContentView = newDemoView
     }
 }
