@@ -32,6 +32,9 @@ class CollapsibleContentDemoView: UIView, Tweakable {
         TweakingOption(title: "Card style", action: { [weak self] in
             self?.configureCollapsibleContentView(style: .card, title: "6 tips når du skal kjøpe husdyr")
         }),
+        TweakingOption(title: "Card style", description: "Long title", action: { [weak self] in
+            self?.configureCollapsibleContentView(style: .card, title: "6 tips til deg som skal kjøpe katt, hund eller annet husdyr")
+        }),
     ]
 
     // MARK: - Init
