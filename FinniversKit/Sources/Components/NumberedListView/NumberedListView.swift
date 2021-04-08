@@ -3,6 +3,7 @@ import UIKit
 public class NumberedListView: UIView {
     // MARK: - Private properties
 
+    private let numberLabelStyle = Label.Style.bodyStrong
 
     private lazy var contentStackView: UIStackView = {
         let stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
@@ -33,21 +34,35 @@ public class NumberedListView: UIView {
     public func configure(with items: [NumberedListItem]) {
         contentStackView.removeArrangedSubviews()
 
+        let largestLabel = findLargestLabelWidth(itemCount: items.count)
+
         for (index, item) in items.enumerated() {
             let numberView = createNumberLabel(number: index + 1)
             let itemView = ListItemView(item: item)
 
-            let lineStackView = UIStackView(axis: .horizontal, spacing: .spacingXS, withAutoLayout: true)
+            let lineStackView = UIStackView(axis: .horizontal, spacing: .spacingS, withAutoLayout: true)
             lineStackView.alignment = .top
             lineStackView.addArrangedSubviews([numberView, itemView])
 
-            numberView.widthAnchor.constraint(equalToConstant: .spacingXL).isActive = true
-
+            numberView.widthAnchor.constraint(equalToConstant: largestLabel).isActive = true
             contentStackView.addArrangedSubview(lineStackView)
         }
     }
 
     // MARK: - Private methods
+
+    private func findLargestLabelWidth(itemCount: Int) -> CGFloat {
+        var largestLabel = CGFloat.zero
+
+        for number in (1...itemCount) {
+            let labelWidth = "\(number)".width(withConstrainedHeight: .infinity, font: numberLabelStyle.font)
+            if labelWidth > largestLabel {
+                largestLabel = labelWidth
+            }
+        }
+
+        return largestLabel
+    }
 
     private func createNumberLabel(number: Int) -> Label {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
