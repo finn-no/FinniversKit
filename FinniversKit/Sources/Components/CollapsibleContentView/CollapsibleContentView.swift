@@ -35,6 +35,7 @@ public class CollapsibleContentView: UIView {
 
     // MARK: - Private properties
 
+    private let style: Style
     private lazy var innerContainerView: UIView = UIView(withAutoLayout: true)
 
     private lazy var headerView: UIStackView = {
@@ -47,7 +48,7 @@ public class CollapsibleContentView: UIView {
     }()
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .title3Strong, withAutoLayout: true)
+        let label = Label(style: style.titleStyle, withAutoLayout: true)
         label.numberOfLines = 0
         return label
     }()
@@ -76,7 +77,7 @@ public class CollapsibleContentView: UIView {
     }
 
     private lazy var compactHeightConstraint: NSLayoutConstraint = {
-        let constraint = heightAnchor.constraint(equalTo: headerView.heightAnchor)
+        let constraint = heightAnchor.constraint(equalTo: headerView.heightAnchor, constant: style.contentInsets.top + style.titleContentSpacing)
         constraint.priority = .defaultLow
         return constraint
     }()
@@ -85,15 +86,14 @@ public class CollapsibleContentView: UIView {
 
     // MARK: - Initializers
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(style: Style = .plain, withAutoLayout: Bool) {
+        self.style = style
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
+    public required init?(coder: NSCoder) { fatalError() }
 
     // MARK: - UIView overrides
 
@@ -118,17 +118,21 @@ public class CollapsibleContentView: UIView {
     private func setup() {
         clipsToBounds = true
 
+        backgroundColor = style.backgroundColor
+        layer.cornerRadius = style.cornerRadius
+
         headerView.addArrangedSubview(titleLabel)
         headerView.addArrangedSubview(collapseIndicatorImageView)
 
         innerContainerView.addSubview(headerView)
         addSubview(innerContainerView)
 
+        let contentInsets = style.contentInsets
         NSLayoutConstraint.activate([
-            innerContainerView.topAnchor.constraint(equalTo: topAnchor),
-            innerContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            innerContainerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            innerContainerView.bottomAnchor.constraint(greaterThanOrEqualTo: bottomAnchor),
+            innerContainerView.topAnchor.constraint(equalTo: topAnchor, constant: contentInsets.top),
+            innerContainerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: contentInsets.leading),
+            innerContainerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -contentInsets.trailing),
+            innerContainerView.bottomAnchor.constraint(greaterThanOrEqualTo: bottomAnchor, constant: -contentInsets.bottom),
 
             headerView.topAnchor.constraint(equalTo: innerContainerView.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: innerContainerView.leadingAnchor),
@@ -142,7 +146,7 @@ public class CollapsibleContentView: UIView {
     private func addContentView(_ contentView: UIView) {
         innerContainerView.addSubview(contentView)
 
-        let contentTopConstraint = contentView.topAnchor.constraint(equalTo: headerView.bottomAnchor)
+        let contentTopConstraint = contentView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: style.titleContentSpacing)
         NSLayoutConstraint.activate([
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 10),
             contentTopConstraint,
