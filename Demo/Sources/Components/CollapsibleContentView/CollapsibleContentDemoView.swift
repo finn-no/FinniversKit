@@ -8,8 +8,9 @@ class CollapsibleContentDemoView: UIView, Tweakable {
 
     // MARK: - Private properties
 
-    private lazy var contentView = UIView(withAutoLayout: true)
     private var collapsibleContentView: CollapsibleContentView?
+    private lazy var contentView = UIView(withAutoLayout: true)
+    private lazy var scrollView = UIScrollView(withAutoLayout: true)
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
@@ -62,6 +63,10 @@ class CollapsibleContentDemoView: UIView, Tweakable {
     private func setup() {
         contentView.addSubview(stackView)
         stackView.fillInSuperview()
+
+        addSubview(scrollView)
+        scrollView.fillInSuperview()
+        scrollView.alwaysBounceVertical = true
     }
 
     private func configureCollapsibleContentView(
@@ -71,19 +76,14 @@ class CollapsibleContentDemoView: UIView, Tweakable {
     ) {
         collapsibleContentView?.removeFromSuperview()
 
-        let newDemoView = CollapsibleContentView(style: style, withAutoLayout: true)
-        newDemoView.configure(with: title, contentView: contentView ?? self.contentView)
-        addSubview(newDemoView)
+        let collapsibleContentView = CollapsibleContentView(style: style, withAutoLayout: true)
+        collapsibleContentView.configure(with: title, contentView: contentView ?? self.contentView)
 
-        NSLayoutConstraint.activate([
-            // one of the areas of the floating button in demo view was eating the touches where the collapisble
-            // view was overlaping one of the window corners, then i added some constant to avoid that.
-            newDemoView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 100),
-            newDemoView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            newDemoView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-        ])
+        scrollView.addSubview(collapsibleContentView)
+        collapsibleContentView.fillInSuperview(margin: .spacingM)
+        collapsibleContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.spacingXL).isActive = true
 
-        collapsibleContentView = newDemoView
+        self.collapsibleContentView = collapsibleContentView
     }
 }
 
