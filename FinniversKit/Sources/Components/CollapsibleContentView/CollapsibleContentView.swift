@@ -209,5 +209,23 @@ extension CollapsibleContentView {
             self.titleStyle = titleStyle
             self.titleContentSpacing = titleContentSpacing
         }
+
+        // MARK: - Defined styles
+
+        public static let plain = Style(
+            backgroundColor: .bgPrimary,
+            cornerRadius: .zero,
+            contentInsets: .zero,
+            titleStyle: .title3Strong,
+            titleContentSpacing: 0
+        )
+
+        public static let card = Style(
+            backgroundColor: .bgTertiary,
+            cornerRadius: 8,
+            contentInsets: .init(all: .spacingS),
+            titleStyle: .title3Strong,
+            titleContentSpacing: .spacingS
+        )
     }
 }
