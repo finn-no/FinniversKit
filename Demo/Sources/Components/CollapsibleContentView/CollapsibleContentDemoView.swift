@@ -26,7 +26,8 @@ class CollapsibleContentDemoView: UIView, Tweakable {
 
     lazy var tweakingOptions: [TweakingOption] = [
         TweakingOption(title: "Plain style", action: { [weak self] in
-            self?.configureCollapsibleContentView(style: .plain, title: "Spesifikasjoner")
+            let overriddenPlainStyle = CollapsibleContentView.Style.plain.withOverride(backgroundColor: .bgTertiary)
+            self?.configureCollapsibleContentView(style: overriddenPlainStyle, title: "Spesifikasjoner")
         }),
         TweakingOption(title: "Card style", action: { [weak self] in
             self?.configureCollapsibleContentView(style: .card, title: "6 tips når du skal kjøpe husdyr")

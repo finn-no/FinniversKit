@@ -230,5 +230,23 @@ extension CollapsibleContentView {
             titleStyle: .title3Strong,
             titleContentSpacing: .spacingS
         )
+
+        // MARK: - Public methods
+
+        public func withOverride(
+            backgroundColor: UIColor? = nil,
+            cornerRadius: CGFloat? = nil,
+            contentInsets: UIEdgeInsets? = nil,
+            titleStyle: Label.Style? = nil,
+            titleContentSpacing: CGFloat? = nil
+        ) -> CollapsibleContentView.Style {
+            CollapsibleContentView.Style(
+                backgroundColor: backgroundColor ?? self.backgroundColor,
+                cornerRadius: cornerRadius ?? self.cornerRadius,
+                contentInsets: contentInsets ?? self.contentInsets,
+                titleStyle: titleStyle ?? self.titleStyle,
+                titleContentSpacing: titleContentSpacing ?? self.titleContentSpacing
+            )
+        }
     }
 }
