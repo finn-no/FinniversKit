@@ -70,7 +70,7 @@ public class CollapsibleContentView: UIView {
     }
 
     private lazy var compactHeightConstraint: NSLayoutConstraint = {
-        let constraint = heightAnchor.constraint(equalTo: headerView.heightAnchor, constant: style.contentInsets.top + style.titleContentSpacing)
+        let constraint = heightAnchor.constraint(equalTo: headerView.heightAnchor, constant: style.contentInsets.top * 2)
         constraint.priority = .defaultLow
         return constraint
     }()
@@ -148,7 +148,8 @@ public class CollapsibleContentView: UIView {
     private func addContentView(_ contentView: UIView) {
         innerContainerView.addSubview(contentView)
 
-        let contentTopConstraint = contentView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: style.titleContentSpacing)
+        let offsetFromHeader = style.headerContentSpacing + style.contentInsets.top
+        let contentTopConstraint = contentView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: offsetFromHeader)
         NSLayoutConstraint.activate([
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 10),
             contentTopConstraint,
@@ -200,20 +201,20 @@ extension CollapsibleContentView {
         public let cornerRadius: CGFloat
         public let contentInsets: UIEdgeInsets
         public let titleStyle: Label.Style
-        public let titleContentSpacing: CGFloat
+        public let headerContentSpacing: CGFloat
 
         public init(
             backgroundColor: UIColor,
             cornerRadius: CGFloat,
             contentInsets: UIEdgeInsets,
             titleStyle: Label.Style,
-            titleContentSpacing: CGFloat
+            headerContentSpacing: CGFloat
         ) {
             self.backgroundColor = backgroundColor
             self.cornerRadius = cornerRadius
             self.contentInsets = contentInsets
             self.titleStyle = titleStyle
-            self.titleContentSpacing = titleContentSpacing
+            self.headerContentSpacing = headerContentSpacing
         }
 
         // MARK: - Defined styles
@@ -223,7 +224,7 @@ extension CollapsibleContentView {
             cornerRadius: .zero,
             contentInsets: .init(vertical: .spacingS, horizontal: 0),
             titleStyle: .title3Strong,
-            titleContentSpacing: .spacingS
+            headerContentSpacing: 0
         )
 
         public static let card = Style(
@@ -231,7 +232,7 @@ extension CollapsibleContentView {
             cornerRadius: 8,
             contentInsets: .init(all: .spacingS),
             titleStyle: .title3Strong,
-            titleContentSpacing: .spacingS
+            headerContentSpacing: 0
         )
 
         // MARK: - Public methods
@@ -241,14 +242,14 @@ extension CollapsibleContentView {
             cornerRadius: CGFloat? = nil,
             contentInsets: UIEdgeInsets? = nil,
             titleStyle: Label.Style? = nil,
-            titleContentSpacing: CGFloat? = nil
+            headerContentSpacing: CGFloat? = nil
         ) -> CollapsibleContentView.Style {
             CollapsibleContentView.Style(
                 backgroundColor: backgroundColor ?? self.backgroundColor,
                 cornerRadius: cornerRadius ?? self.cornerRadius,
                 contentInsets: contentInsets ?? self.contentInsets,
                 titleStyle: titleStyle ?? self.titleStyle,
-                titleContentSpacing: titleContentSpacing ?? self.titleContentSpacing
+                headerContentSpacing: headerContentSpacing ?? self.headerContentSpacing
             )
         }
     }
