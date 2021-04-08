@@ -88,19 +88,12 @@ public class PromoSlidesView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        let targetSize = CGSize(width: bounds.size.width, height: 0)
-        guard let maxHeight = slides
-                .map({ $0.systemLayoutSizeFitting(
-                        targetSize,
-                        withHorizontalFittingPriority: .required,
-                        verticalFittingPriority: .fittingSizeLevel).height })
-                .max()
-        else { return }
+        guard let maxSlideHeight = calculateMaxSlideHeight(constrainedTo: bounds.size.width) else { return }
 
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.itemSize = CGSize(width: frame.size.width, height: maxHeight)
+            layout.itemSize = CGSize(width: frame.size.width, height: maxSlideHeight)
         }
-        collectionViewHeightAnchor.constant = maxHeight
+        collectionViewHeightAnchor.constant = maxSlideHeight
     }
 
     // MARK: - Public methods
@@ -122,22 +115,16 @@ public class PromoSlidesView: UIView {
     public func calculateHeight(constrainedTo width: CGFloat) -> CGFloat {
         guard width > 0 else { return 100 }
 
-        let targetSize = CGSize(width: width, height: 0)
-        let maxHeight = slides // func for it
-                .map({ $0.systemLayoutSizeFitting(
-                        targetSize,
-                        withHorizontalFittingPriority: .required,
-                        verticalFittingPriority: .fittingSizeLevel).height })
-                .max()
+        let maxSlideHeight = calculateMaxSlideHeight(constrainedTo: width)
 
         let pageControlHeight = pageControl
             .systemLayoutSizeFitting(
-                targetSize,
+                CGSize(width: width, height: 0),
                 withHorizontalFittingPriority: .required,
                 verticalFittingPriority: .fittingSizeLevel)
             .height
 
-        return (maxHeight ?? 0) + collectionViewTopSpacing + pageControlHeight + pageControlTopAnchor.constant
+        return (maxSlideHeight ?? 0) + collectionViewTopSpacing + pageControlHeight + pageControlTopAnchor.constant
     }
 
     // MARK: - Actions
@@ -148,6 +135,17 @@ public class PromoSlidesView: UIView {
             at: .centeredHorizontally,
             animated: true
         )
+    }
+
+    // MARK: - Private methods
+
+    private func calculateMaxSlideHeight(constrainedTo width: CGFloat) -> CGFloat? {
+        slides
+            .map({ $0.systemLayoutSizeFitting(
+                    CGSize(width: width, height: 0),
+                    withHorizontalFittingPriority: .required,
+                    verticalFittingPriority: .fittingSizeLevel).height })
+            .max()
     }
 }
 
