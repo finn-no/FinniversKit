@@ -1,15 +1,11 @@
 import UIKit
 
 public class NumberedListView: UIView {
+
     // MARK: - Private properties
 
     private let numberLabelStyle = Label.Style.bodyStrong
-
-    private lazy var contentStackView: UIStackView = {
-        let stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
-        stackView.alignment = .top
-        return stackView
-    }()
+    private lazy var contentStackView = UIStackView(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
 
     // MARK: - Init
 
@@ -76,7 +72,7 @@ public class NumberedListView: UIView {
 
 private class ListItemView: UIView {
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(axis: .vertical, spacing: 0, withAutoLayout: true)
+        let stackView = UIStackView(axis: .vertical, spacing: .spacingXS, withAutoLayout: true)
         stackView.addArrangedSubviews([titleLabel, bodyLabel])
         return stackView
     }()
