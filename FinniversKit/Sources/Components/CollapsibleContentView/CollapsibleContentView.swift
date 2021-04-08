@@ -57,7 +57,8 @@ public class CollapsibleContentView: UIView {
     }()
 
     private lazy var fullHeightConstraint: NSLayoutConstraint = {
-        let constraint = heightAnchor.constraint(equalTo: innerContainerView.heightAnchor)
+        let sumOfInsets = style.contentInsets.top + style.contentInsets.bottom
+        let constraint = heightAnchor.constraint(equalTo: innerContainerView.heightAnchor, constant: sumOfInsets)
         constraint.priority = .defaultHigh
         return constraint
     }()
