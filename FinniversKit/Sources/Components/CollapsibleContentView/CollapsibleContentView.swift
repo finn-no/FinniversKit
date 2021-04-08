@@ -36,15 +36,8 @@ public class CollapsibleContentView: UIView {
     // MARK: - Private properties
 
     private let style: Style
-    private lazy var innerContainerView: UIView = UIView(withAutoLayout: true)
-
-    private lazy var headerView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .horizontal
-        stackView.distribution = .equalSpacing
-        stackView.isLayoutMarginsRelativeArrangement = true
-        return stackView
-    }()
+    private lazy var innerContainerView = UIView(withAutoLayout: true)
+    private lazy var headerView = UIView(withAutoLayout: true)
 
     private lazy var titleLabel: Label = {
         let label = Label(style: style.titleStyle, withAutoLayout: true)
@@ -58,7 +51,8 @@ public class CollapsibleContentView: UIView {
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .iconSecondary
         imageView.isUserInteractionEnabled = true
-        imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        imageView.setContentHuggingPriority(.required, for: .horizontal)
+        imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
         return imageView
     }()
 
@@ -120,8 +114,8 @@ public class CollapsibleContentView: UIView {
         backgroundColor = style.backgroundColor
         layer.cornerRadius = style.cornerRadius
 
-        headerView.addArrangedSubview(titleLabel)
-        headerView.addArrangedSubview(collapseIndicatorImageView)
+        headerView.addSubview(titleLabel)
+        headerView.addSubview(collapseIndicatorImageView)
 
         innerContainerView.addSubview(headerView)
         addSubview(innerContainerView)
@@ -136,6 +130,15 @@ public class CollapsibleContentView: UIView {
             headerView.topAnchor.constraint(equalTo: innerContainerView.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: innerContainerView.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: innerContainerView.trailingAnchor),
+
+            titleLabel.topAnchor.constraint(equalTo: headerView.topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
+
+            collapseIndicatorImageView.topAnchor.constraint(equalTo: headerView.topAnchor),
+            collapseIndicatorImageView.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: .spacingS),
+            collapseIndicatorImageView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+            collapseIndicatorImageView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
             compactHeightConstraint,
         ])
 
