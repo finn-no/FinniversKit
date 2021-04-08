@@ -6,12 +6,7 @@ class NumberedListDemoView: UIView, Tweakable {
 
     private let items = NumberedListItem.demoItems
     private lazy var numberedListView = NumberedListView(withAutoLayout: true)
-
-    private lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView(withAutoLayout: true)
-
-        return scrollView
-    }()
+    private lazy var scrollView = UIScrollView(withAutoLayout: true)
 
     lazy var tweakingOptions: [TweakingOption] = [
         TweakingOption(title: "Items with title and body", action: { [weak self] in
@@ -42,14 +37,11 @@ class NumberedListDemoView: UIView, Tweakable {
 
         addSubview(scrollView)
         scrollView.fillInSuperviewLayoutMargins()
+        scrollView.alwaysBounceVertical = true
 
         scrollView.addSubview(numberedListView)
-
-        NSLayoutConstraint.activate([
-            numberedListView.topAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.topAnchor),
-            numberedListView.leadingAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.leadingAnchor),
-            numberedListView.trailingAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.trailingAnchor),
-        ])
+        numberedListView.fillInSuperview(margin: .spacingM)
+        numberedListView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.spacingXL).isActive = true
     }
 }
 
