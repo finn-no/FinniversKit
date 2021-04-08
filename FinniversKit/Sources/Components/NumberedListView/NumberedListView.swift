@@ -1,19 +1,12 @@
 import UIKit
 
 public class NumberedListView: UIView {
+    // MARK: - Private properties
+
+
     private lazy var contentStackView: UIStackView = {
         let stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
         stackView.alignment = .top
-        return stackView
-    }()
-
-    private lazy var numberStackView: UIStackView = {
-        let stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
-        return stackView
-    }()
-
-    private lazy var itemsStackView: UIStackView = {
-        let stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
         return stackView
     }()
 
@@ -39,8 +32,6 @@ public class NumberedListView: UIView {
 
     public func configure(with items: [NumberedListItem]) {
         contentStackView.removeArrangedSubviews()
-        numberStackView.removeArrangedSubviews()
-        itemsStackView.removeArrangedSubviews()
 
         for (index, item) in items.enumerated() {
             let numberView = createNumberLabel(number: index + 1)
