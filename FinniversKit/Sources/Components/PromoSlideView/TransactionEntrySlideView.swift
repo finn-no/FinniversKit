@@ -6,7 +6,7 @@ public protocol TransactionEntrySlideViewDelegate: AnyObject {
 
 public class TransactionEntrySlideView: UIView {
     private lazy var transactionEntryView = TransactionEntryView(
-        backgroundColor: .white,
+        backgroundColor: .bgPrimary,
         delegate: self,
         withAutoLayout: true
     )
@@ -44,6 +44,17 @@ public class TransactionEntrySlideView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    private lazy var regularConstraints: [NSLayoutConstraint] = [
+        transactionEntryView.widthAnchor.constraint(greaterThanOrEqualTo: widthAnchor, multiplier: 0.5),
+        transactionEntryView.widthAnchor.constraint(greaterThanOrEqualToConstant: 200),
+        transactionEntryView.centerXAnchor.constraint(equalTo: centerXAnchor)
+    ]
+
+    private lazy var compactConstraints: [NSLayoutConstraint] = [
+        transactionEntryView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+        transactionEntryView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+    ]
+
     private func setup() {
         addSubview(titleLabel)
         addSubview(transactionEntryView)
@@ -53,11 +64,30 @@ public class TransactionEntrySlideView: UIView {
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
-            transactionEntryView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             transactionEntryView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
-            transactionEntryView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
             transactionEntryView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+
+        setSizeClassConstraints()
+    }
+
+    private func setSizeClassConstraints() {
+        if isHorizontalSizeClassRegular {
+            NSLayoutConstraint.deactivate(compactConstraints)
+            NSLayoutConstraint.activate(regularConstraints)
+        } else {
+            NSLayoutConstraint.deactivate(regularConstraints)
+            NSLayoutConstraint.activate(compactConstraints)
+        }
+    }
+
+    // MARK: - Overrides
+
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if previousTraitCollection?.horizontalSizeClass != traitCollection.horizontalSizeClass {
+            setSizeClassConstraints()
+        }
     }
 }
 
