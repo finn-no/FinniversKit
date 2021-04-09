@@ -61,7 +61,7 @@ public class NumberedListView: UIView {
     }
 
     private func createNumberLabel(number: Int) -> Label {
-        let label = Label(style: .bodyStrong, withAutoLayout: true)
+        let label = Label(style: numberLabelStyle, withAutoLayout: true)
         label.textColor = .primaryBlue
         label.text = "\(number)"
         return label
