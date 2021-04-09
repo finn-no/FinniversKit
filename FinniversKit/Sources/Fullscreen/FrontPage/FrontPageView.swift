@@ -89,6 +89,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         self.delegate = delegate
         self.promoLinkViewDelegate = promoLinkViewDelegate
         self.remoteImageViewDataSource = remoteImageViewDataSource
+        self.transactionEntryViewDelegate = transactionEntryViewDelegate
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -152,9 +153,9 @@ public final class FrontPageView: UIView, BasicFrontPageView {
 
     public func setupTransactionEntry(with viewModel: TransactionEntryViewModel) {
         let transactionEntryView = TransactionEntryView(
-            delegate: transactionEntryViewDelegate,
             withAutoLayout: true
         )
+        transactionEntryView.delegate = transactionEntryViewDelegate
         transactionEntryView.remoteImageViewDataSource = remoteImageViewDataSource
         transactionEntryView.configure(with: viewModel)
 

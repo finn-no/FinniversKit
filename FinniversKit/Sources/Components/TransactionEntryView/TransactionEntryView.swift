@@ -10,7 +10,7 @@ public protocol TransactionEntryViewModel {
 }
 
 public protocol TransactionEntryViewDelegate: AnyObject {
-    
+    func transactionEntryViewWasTapped(_ transactionEntryView: TransactionEntryView)
 }
 
 public class TransactionEntryView: UIView {
@@ -52,12 +52,16 @@ public class TransactionEntryView: UIView {
         return label
     }()
 
-    private lazy var navigationLinkView = NavigationLinkView(
-        withSubview: contentView,
-        withAutoLayout: true,
-        padding: .spacingXS + .spacingS,
-        backgroundColor: navigationLinkBackgroundColor
-    )
+    private lazy var navigationLinkView: NavigationLinkView = {
+        let view = NavigationLinkView(
+            withSubview: contentView,
+            withAutoLayout: true,
+            padding: .spacingXS + .spacingS,
+            backgroundColor: navigationLinkBackgroundColor
+        )
+        view.delegate = self
+        return view
+    }()
 
     private let imageWidth: CGFloat = 32
     private var fallbackImage: UIImage?
@@ -69,9 +73,10 @@ public class TransactionEntryView: UIView {
         }
     }
 
+    public weak var delegate: TransactionEntryViewDelegate?
+
     public init(
         backgroundColor: UIColor = .bgTertiary,
-        delegate: TransactionEntryViewDelegate?,
         withAutoLayout: Bool = false
     ) {
         self.navigationLinkBackgroundColor = backgroundColor
@@ -148,6 +153,14 @@ public class TransactionEntryView: UIView {
     private func setFallbackImage() {
         imageView.image = fallbackImage
         imageView.contentMode = .scaleAspectFit
+    }
+}
+
+// MARK: - NavigationLinkViewDelegate
+
+extension TransactionEntryView: NavigationLinkViewDelegate {
+    public func navigationLinkViewWasTapped(_ navigationLinkView: NavigationLinkView) {
+        delegate?.transactionEntryViewWasTapped(self)
     }
 }
 

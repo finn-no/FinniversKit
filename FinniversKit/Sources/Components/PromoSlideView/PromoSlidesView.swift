@@ -226,9 +226,19 @@ private class SlideCell: UICollectionViewCell {
         translatesAutoresizingMaskIntoConstraints = false
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        contentView.subviews.forEach({ $0.removeFromSuperview() })
+    }
+
     func configure(with view: UIView) {
+        view.alpha = 0
         contentView.addSubview(view)
         view.fillInSuperview()
+
+        UIView.animate(withDuration: 0.3, animations: {
+            view.alpha = 1
+        })
     }
 }
 

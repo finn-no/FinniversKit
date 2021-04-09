@@ -7,7 +7,6 @@ public protocol TransactionEntrySlideViewDelegate: AnyObject {
 public class TransactionEntrySlideView: UIView {
     private lazy var transactionEntryView = TransactionEntryView(
         backgroundColor: .bgPrimary,
-        delegate: self,
         withAutoLayout: true
     )
 
@@ -19,19 +18,17 @@ public class TransactionEntrySlideView: UIView {
         return label
     }()
 
-    private weak var transactionEntryViewDelegate: TransactionEntryViewDelegate?
-
     public init(
         title: String,
         transactionEntryViewModel: TransactionEntryViewModel,
-        delegate: TransactionEntrySlideViewDelegate?,
+        transactionEntryViewDelegate: TransactionEntryViewDelegate?,
         remoteImageViewDataSource: RemoteImageViewDataSource?
     ) {
         super.init(frame: .zero)
         titleLabel.text = title
         transactionEntryView.remoteImageViewDataSource = remoteImageViewDataSource
         transactionEntryView.configure(with: transactionEntryViewModel)
-
+        transactionEntryView.delegate = transactionEntryViewDelegate
         setup()
     }
 
@@ -89,8 +86,4 @@ public class TransactionEntrySlideView: UIView {
             setSizeClassConstraints()
         }
     }
-}
-
-extension TransactionEntrySlideView: TransactionEntryViewDelegate {
-
 }
