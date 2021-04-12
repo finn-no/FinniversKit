@@ -143,6 +143,7 @@ public final class PromotionFrontPageView: UIView, BasicFrontPageView {
         setupFrames()
 
         UIView.animate(withDuration: animated ? 0.33 : 0) {
+            self.promoSlidesView.setNeedsLayout()
             self.adRecommendationsGridView.invalidateLayout()
             self.adRecommendationsGridView.scrollToTop(animated: false)
         }
