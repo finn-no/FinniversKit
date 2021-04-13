@@ -3,8 +3,9 @@ import FinniversKit
 class TransactionEntryDemoView: UIView, Tweakable {
 
     private lazy var transactionEntryView: TransactionEntryView = {
-        let view = TransactionEntryView(delegate: self, withAutoLayout: true)
+        let view = TransactionEntryView(withAutoLayout: true)
         view.remoteImageViewDataSource = self
+        view.delegate = self
         return view
     }()
 
@@ -48,7 +49,9 @@ class TransactionEntryDemoView: UIView, Tweakable {
 }
 
 extension TransactionEntryDemoView: TransactionEntryViewDelegate {
-    
+    func transactionEntryViewWasTapped(_ transactionEntryView: TransactionEntryView) {
+        print("Tapped transaction entry!")
+    }
 }
 
 extension TransactionEntryDemoView: RemoteImageViewDataSource {

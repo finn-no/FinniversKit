@@ -42,7 +42,7 @@ public class PromotionFrontpageViewDemoView: UIView {
         let promoSlide = TransactionEntrySlideView(
             title: "Du har en oppdatering i den siste salgsprosessen",
             transactionEntryViewModel: MotorTransactionEntryViewModel(),
-            delegate: self,
+            transactionEntryViewDelegate: self,
             remoteImageViewDataSource: self
         )
 
@@ -61,8 +61,8 @@ public class PromotionFrontpageViewDemoView: UIView {
 
 // MARK: - TransactionEntrySlideView
 
-extension PromotionFrontpageViewDemoView: TransactionEntrySlideViewDelegate {
-    public func transactionEntrySlideViewDidTapButton(_ transactionEntrySlideView: TransactionEntrySlideView) {
+extension PromotionFrontpageViewDemoView: TransactionEntryViewDelegate {
+    public func transactionEntryViewWasTapped(_ transactionEntryView: TransactionEntryView) {
         print("Did tap transaction entry!")
     }
 }

@@ -11,9 +11,9 @@ public class TransactionEntrySlideView: UIView {
     )
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .title3Strong, withAutoLayout: true)
+        let label = Label(style: .bodyStrong, withAutoLayout: true)
         label.textColor = .white
-        label.numberOfLines = 0
+        label.numberOfLines = 2
         label.textAlignment = .center
         return label
     }()
@@ -57,12 +57,14 @@ public class TransactionEntrySlideView: UIView {
         addSubview(transactionEntryView)
 
         NSLayoutConstraint.activate([
+            heightAnchor.constraint(equalToConstant: PromoSlidesView.slideHeight),
+
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
 
             transactionEntryView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
-            transactionEntryView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            transactionEntryView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
         ])
 
         setSizeClassConstraints()

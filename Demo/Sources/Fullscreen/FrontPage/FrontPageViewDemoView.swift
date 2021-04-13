@@ -185,7 +185,9 @@ extension FrontpageViewDemoView: PromoLinkViewDelegate {
 }
 
 extension FrontpageViewDemoView: TransactionEntryViewDelegate {
-
+    public func transactionEntryViewWasTapped(_ transactionEntryView: TransactionEntryView) {
+        print("Tapped transaction entry!")
+    }
 }
 
 extension FrontpageViewDemoView: RemoteImageViewDataSource {

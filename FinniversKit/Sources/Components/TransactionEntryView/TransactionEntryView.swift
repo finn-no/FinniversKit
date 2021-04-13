@@ -41,14 +41,14 @@ public class TransactionEntryView: UIView {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .captionStrong, withAutoLayout: true)
-        label.numberOfLines = 0
+        label.numberOfLines = 1
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
     private lazy var textLabel: Label = {
         let label = Label(style: .detail, withAutoLayout: true)
-        label.numberOfLines = 0
+        label.numberOfLines = 2
         return label
     }()
 
