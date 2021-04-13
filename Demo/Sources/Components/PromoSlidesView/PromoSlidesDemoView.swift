@@ -43,7 +43,14 @@ class PromoSlidesDemoView: UIView {
         )
         promoSlide2.delegate = self
 
-        promoSlidesView.configure(withSlides: [promoSlide, promoSlide2])
+        let promoSlide3 = BasicPromoSlideView()
+        promoSlide3.configure(
+            with: "Ønsker du å fortsette søket i Fritid, hobby og underholdning?",
+            buttonTitle: "Fortsett søket",
+            image: UIImage(named: .primingFavoritesSharing)
+        )
+
+        promoSlidesView.configure(withSlides: [promoSlide, promoSlide2, promoSlide3])
     }
 }
 
