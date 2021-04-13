@@ -18,6 +18,8 @@ public class TransactionEntrySlideView: UIView {
         return label
     }()
 
+    private lazy var containerView = UIView(withAutoLayout: true)
+
     public init(
         title: String,
         transactionEntryViewModel: TransactionEntryViewModel,
@@ -42,29 +44,33 @@ public class TransactionEntrySlideView: UIView {
     }
 
     private lazy var regularConstraints: [NSLayoutConstraint] = [
-        transactionEntryView.widthAnchor.constraint(greaterThanOrEqualTo: widthAnchor, multiplier: 0.5),
+        transactionEntryView.widthAnchor.constraint(greaterThanOrEqualTo: containerView.widthAnchor, multiplier: 0.5),
         transactionEntryView.widthAnchor.constraint(greaterThanOrEqualToConstant: 200),
-        transactionEntryView.centerXAnchor.constraint(equalTo: centerXAnchor)
+        transactionEntryView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor)
     ]
 
     private lazy var compactConstraints: [NSLayoutConstraint] = [
-        transactionEntryView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-        transactionEntryView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+        transactionEntryView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: .spacingM),
+        transactionEntryView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -.spacingM),
     ]
 
     private func setup() {
-        addSubview(titleLabel)
-        addSubview(transactionEntryView)
+        addSubview(containerView)
+
+        containerView.addSubview(titleLabel)
+        containerView.addSubview(transactionEntryView)
 
         NSLayoutConstraint.activate([
-            heightAnchor.constraint(equalToConstant: PromoSlidesView.slideHeight),
+            containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            containerView.centerYAnchor.constraint(equalTo: centerYAnchor),
 
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: .spacingM),
+            titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -.spacingM),
 
             transactionEntryView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
-            transactionEntryView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
+            transactionEntryView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
 
         setSizeClassConstraints()
