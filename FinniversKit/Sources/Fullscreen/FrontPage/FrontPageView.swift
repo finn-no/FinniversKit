@@ -30,9 +30,6 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     }
 
     private weak var delegate: FrontPageViewDelegate?
-    private weak var promoLinkViewDelegate: PromoLinkViewDelegate?
-    private weak var remoteImageViewDataSource: RemoteImageViewDataSource?
-    private weak var transactionEntryViewDelegate: TransactionEntryViewDelegate?
 
     private var didSetupView = false
 
@@ -65,8 +62,8 @@ public final class FrontPageView: UIView, BasicFrontPageView {
 
     // MARK: - Init
 
-    public convenience init(delegate: FrontPageViewDelegate & MarketsViewDelegate & MarketsViewDataSource & AdRecommendationsGridViewDelegate & PromoLinkViewDelegate & TransactionEntryViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource, remoteImageViewDataSource: RemoteImageViewDataSource) {
-        self.init(delegate: delegate, marketsViewDelegate: delegate, marketsViewDataSource: delegate, adRecommendationsGridViewDelegate: delegate, promoLinkViewDelegate: delegate, transactionEntryViewDelegate: delegate, adRecommendationsGridViewDataSource: adRecommendationsGridViewDataSource, remoteImageViewDataSource: remoteImageViewDataSource)
+    public convenience init(delegate: FrontPageViewDelegate & MarketsViewDelegate & MarketsViewDataSource & AdRecommendationsGridViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource) {
+        self.init(delegate: delegate, marketsViewDelegate: delegate, marketsViewDataSource: delegate, adRecommendationsGridViewDelegate: delegate, adRecommendationsGridViewDataSource: adRecommendationsGridViewDataSource)
     }
 
     public init(
@@ -74,10 +71,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         marketsViewDelegate: MarketsViewDelegate,
         marketsViewDataSource: MarketsViewDataSource,
         adRecommendationsGridViewDelegate: AdRecommendationsGridViewDelegate,
-        promoLinkViewDelegate: PromoLinkViewDelegate,
-        transactionEntryViewDelegate: TransactionEntryViewDelegate,
-        adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource,
-        remoteImageViewDataSource: RemoteImageViewDataSource
+        adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource
     ) {
         marketsGridView = MarketsGridView(delegate: marketsViewDelegate, dataSource: marketsViewDataSource)
         marketsGridView.translatesAutoresizingMaskIntoConstraints = false
@@ -87,9 +81,6 @@ public final class FrontPageView: UIView, BasicFrontPageView {
 
         super.init(frame: .zero)
         self.delegate = delegate
-        self.promoLinkViewDelegate = promoLinkViewDelegate
-        self.remoteImageViewDataSource = remoteImageViewDataSource
-        self.transactionEntryViewDelegate = transactionEntryViewDelegate
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -143,23 +134,8 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         adRecommendationsGridView.scrollToTop()
     }
 
-    public func setupPromoLinkView(with viewModel: PromoLinkViewModel) {
-        let promoLinkView = PromoLinkView(delegate: promoLinkViewDelegate)
-        promoLinkView.translatesAutoresizingMaskIntoConstraints = false
-        promoLinkView.configure(with: viewModel)
-
-        addSubviewToPromoContainer(promoLinkView)
-    }
-
-    public func setupTransactionEntry(with viewModel: TransactionEntryViewModel) {
-        let transactionEntryView = TransactionEntryView(
-            withAutoLayout: true
-        )
-        transactionEntryView.delegate = transactionEntryViewDelegate
-        transactionEntryView.remoteImageViewDataSource = remoteImageViewDataSource
-        transactionEntryView.configure(with: viewModel)
-
-        addSubviewToPromoContainer(transactionEntryView)
+    public func insertPromoView(_ view: UIView?) {
+        addSubviewToPromoContainer(view)
     }
 
     // MARK: - Setup
@@ -220,8 +196,14 @@ public final class FrontPageView: UIView, BasicFrontPageView {
 
     // MARK: - Private methods
 
-    private func addSubviewToPromoContainer(_ view: UIView) {
+    private func addSubviewToPromoContainer(_ view: UIView?) {
         promoContainer.subviews.forEach({ $0.removeFromSuperview() })
+
+        guard let view = view else {
+            setupFrames()
+            return
+        }
+
         promoContainer.addSubview(view)
 
         NSLayoutConstraint.activate([

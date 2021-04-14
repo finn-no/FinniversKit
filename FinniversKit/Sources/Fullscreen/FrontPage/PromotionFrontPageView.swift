@@ -141,12 +141,6 @@ public final class PromotionFrontPageView: UIView, BasicFrontPageView {
     public func configure(withPromoSlides promoSlides: [UIView], animated: Bool = false) {
         promoSlidesView.configure(withSlides: promoSlides)
         setupFrames()
-
-        UIView.animate(withDuration: animated ? 0.33 : 0) {
-            self.promoSlidesView.setNeedsLayout()
-            self.adRecommendationsGridView.invalidateLayout()
-            self.adRecommendationsGridView.scrollToTop(animated: false)
-        }
     }
 
     // MARK: - Setup
