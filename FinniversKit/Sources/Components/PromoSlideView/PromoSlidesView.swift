@@ -41,8 +41,8 @@ public class PromoSlidesView: UIView {
     private var slides: [UIView] = []
 
     internal static let slideHeight: CGFloat = 130
-    private lazy var pageControlTopAnchor = pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingS)
     private static let topSpacing: CGFloat = .spacingS
+    private let pageControlTopSpacing: CGFloat = .spacingS
     private let collectionViewTopSpacing: CGFloat = .spacingM + topSpacing
 
     // MARK: - Init
@@ -77,7 +77,7 @@ public class PromoSlidesView: UIView {
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: Self.slideHeight),
 
-            pageControlTopAnchor,
+            pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: pageControlTopSpacing),
             pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
             pageControl.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
@@ -98,11 +98,7 @@ public class PromoSlidesView: UIView {
     public func configure(withSlides slides: [UIView]) {
         self.slides = slides
 
-        if slides.count == 1 {
-            pageControl.isHidden = true
-            pageControlTopAnchor.constant = 0
-        }
-
+        pageControl.isHidden = slides.count == 1
         pageControl.numberOfPages = slides.count
         pageControl.currentPage = 0
 
@@ -119,7 +115,7 @@ public class PromoSlidesView: UIView {
                 verticalFittingPriority: .fittingSizeLevel)
             .height
 
-        return Self.slideHeight + collectionViewTopSpacing + pageControlHeight + pageControlTopAnchor.constant
+        return Self.slideHeight + collectionViewTopSpacing + pageControlHeight + pageControlTopSpacing
     }
 
     // MARK: - Actions
