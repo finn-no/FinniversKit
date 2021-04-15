@@ -29,6 +29,8 @@ public class BasicPromoSlideView: UIView {
 
     private lazy var imageView = UIImageView(withAutoLayout: true)
 
+    private lazy var imageViewTrailingAnchorContraint = imageView.trailingAnchor.constraint(equalTo: trailingAnchor)
+
     public weak var delegate: BasicPromoSlideViewDelegate?
 
     // MARK: - Init
@@ -58,16 +60,25 @@ public class BasicPromoSlideView: UIView {
             stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
 
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageViewTrailingAnchorContraint,
         ])
     }
 
     // MARK: - Public methods
 
-    public func configure(with text: String, buttonTitle: String, image: UIImage) {
+    public func configure(with text: String, buttonTitle: String, image: UIImage, scaleImageToFit: Bool = false) {
         titleLabel.text = text
         button.setTitle(buttonTitle, for: .normal)
         imageView.image = image
+
+        if scaleImageToFit {
+            NSLayoutConstraint.activate([
+                imageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.9),
+                imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor)
+            ])
+            imageView.contentMode = .scaleAspectFill
+            imageViewTrailingAnchorContraint.constant = -.spacingS
+        }
     }
 
     // MARK: - Actions

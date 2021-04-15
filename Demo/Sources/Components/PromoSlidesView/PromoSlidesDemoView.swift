@@ -47,7 +47,8 @@ class PromoSlidesDemoView: UIView {
         promoSlide3.configure(
             with: "Ønsker du å fortsette søket i Fritid, hobby og underholdning?",
             buttonTitle: "Fortsett søket",
-            image: UIImage(named: .primingFavoritesSharing)
+            image: UIImage(named: .hobbyIllustration),
+            scaleImageToFit: true
         )
 
         promoSlidesView.configure(withSlides: [promoSlide, promoSlide2, promoSlide3])
