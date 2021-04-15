@@ -18,7 +18,7 @@ public class TransactionEntrySlideView: UIView {
         return label
     }()
 
-    private lazy var containerView = UIView(withAutoLayout: true)
+    private lazy var stackView: UIStackView = UIStackView(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
 
     public init(
         title: String,
@@ -44,33 +44,26 @@ public class TransactionEntrySlideView: UIView {
     }
 
     private lazy var regularConstraints: [NSLayoutConstraint] = [
-        transactionEntryView.widthAnchor.constraint(greaterThanOrEqualTo: containerView.widthAnchor, multiplier: 0.5),
-        transactionEntryView.widthAnchor.constraint(greaterThanOrEqualToConstant: 200),
-        transactionEntryView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor)
+        stackView.widthAnchor.constraint(greaterThanOrEqualTo: widthAnchor, multiplier: 0.5),
+        stackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 200),
+        stackView.centerXAnchor.constraint(equalTo: centerXAnchor)
     ]
 
     private lazy var compactConstraints: [NSLayoutConstraint] = [
-        transactionEntryView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: .spacingM),
-        transactionEntryView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -.spacingM),
+        stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+        stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
     ]
 
     private func setup() {
-        addSubview(containerView)
+        titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        transactionEntryView.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
 
-        containerView.addSubview(titleLabel)
-        containerView.addSubview(transactionEntryView)
+        addSubview(stackView)
+        stackView.distribution = .equalCentering
+        stackView.addArrangedSubviews([titleLabel, transactionEntryView])
 
         NSLayoutConstraint.activate([
-            containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            containerView.centerYAnchor.constraint(equalTo: centerYAnchor),
-
-            titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: .spacingM),
-            titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -.spacingM),
-
-            transactionEntryView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
-            transactionEntryView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+            stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
 
         setSizeClassConstraints()

@@ -9,14 +9,28 @@ public class FrontpageViewDemoView: UIView, Tweakable {
     private var didSetupView = false
     private var visibleItems = 20
 
+    private lazy var promoLinkView: PromoLinkView = {
+        let view = PromoLinkView(delegate: self)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.configure(with: PromoViewModel())
+        return view
+    }()
+
+    private lazy var transactionEntryView: TransactionEntryView = {
+        let view = TransactionEntryView(withAutoLayout: true)
+        view.configure(with: MotorTransactionEntryViewModel())
+        view.remoteImageViewDataSource = self
+        return view
+    }()
+
     lazy var tweakingOptions: [TweakingOption] = {
         [
             TweakingOption(title: "No promo"),
             TweakingOption(title: "Promo link", action: {
-                self.frontPageView.setupPromoLinkView(with: PromoViewModel())
+                self.frontPageView.insertPromoView(self.promoLinkView)
             }),
             TweakingOption(title: "Motor transaction entry", action: {
-                self.frontPageView.setupTransactionEntry(with: MotorTransactionEntryViewModel())
+                self.frontPageView.insertPromoView(self.transactionEntryView)
             })
         ]
     }()
@@ -28,7 +42,7 @@ public class FrontpageViewDemoView: UIView, Tweakable {
     }()
 
     private lazy var frontPageView: FrontPageView = {
-        let view = FrontPageView(delegate: self, adRecommendationsGridViewDataSource: self, remoteImageViewDataSource: self)
+        let view = FrontPageView(delegate: self, adRecommendationsGridViewDataSource: self)
         view.model = FrontpageViewDefaultData()
         view.isRefreshEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false

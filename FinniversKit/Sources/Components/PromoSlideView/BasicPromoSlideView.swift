@@ -45,32 +45,20 @@ public class BasicPromoSlideView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        let containerView = UIView(withAutoLayout: true)
-        addSubview(containerView)
+        let stackView = UIStackView(axis: .vertical, spacing: .spacingS + .spacingXS, withAutoLayout: true)
+        stackView.addArrangedSubviews([titleLabel, button])
+        stackView.alignment = .leading
 
-        containerView.addSubview(imageView)
-        containerView.addSubview(titleLabel)
-        containerView.addSubview(button)
-
-        imageView.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        addSubview(imageView)
+        addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            containerView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            stackView.trailingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
 
-            titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: .spacingM),
-            titleLabel.trailingAnchor.constraint(equalTo: imageView.leadingAnchor),
-
-            button.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS + .spacingXS),
-            button.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: .spacingM),
-            button.bottomAnchor.constraint(lessThanOrEqualTo: containerView.bottomAnchor),
-
-            imageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
-            imageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            imageView.bottomAnchor.constraint(lessThanOrEqualTo: containerView.bottomAnchor)
+            imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
     }
 
