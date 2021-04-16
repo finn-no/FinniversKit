@@ -1,9 +1,5 @@
 import Foundation
 
-public protocol TransactionEntrySlideViewDelegate: AnyObject {
-    func transactionEntrySlideViewDidTapButton(_ transactionEntrySlideView: TransactionEntrySlideView)
-}
-
 public class TransactionEntrySlideView: UIView {
     private lazy var transactionEntryView = TransactionEntryView(
         backgroundColor: .bgPrimary,
@@ -45,8 +41,8 @@ public class TransactionEntrySlideView: UIView {
     ) {
         super.init(frame: .zero)
         titleLabel.text = title
-        transactionEntryView.remoteImageViewDataSource = remoteImageViewDataSource
         transactionEntryView.configure(with: transactionEntryViewModel)
+        transactionEntryView.remoteImageViewDataSource = remoteImageViewDataSource
         transactionEntryView.delegate = transactionEntryViewDelegate
         setup()
     }

@@ -127,7 +127,7 @@
 		4940480023CDBEC500ECBCFD /* ViewingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494047FF23CDBEC500ECBCFD /* ViewingsView.swift */; };
 		4940480223CDC0F000ECBCFD /* ViewingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940480123CDC0F000ECBCFD /* ViewingCell.swift */; };
 		496F8C142473DCC600AE0735 /* FavoriteSoldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F8C132473DCC600AE0735 /* FavoriteSoldView.swift */; };
-		4D01FD5C261C9A5C008B9913 /* TransactionStepIlustrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01FD5B261C9A5C008B9913 /* TransactionStepIlustrationView.swift */; };
+		4D01FD5C261C9A5C008B9913 /* TransactionStepIllustrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01FD5B261C9A5C008B9913 /* TransactionStepIllustrationView.swift */; };
 		4D01FD60261DC61C008B9913 /* TransactionEntrySlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01FD5F261DC61C008B9913 /* TransactionEntrySlideView.swift */; };
 		4D0CF28D261C467B0008CC43 /* TransactionEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0CF28C261C467B0008CC43 /* TransactionEntryView.swift */; };
 		4D1051CA260CD4400073D1F4 /* BasicFrontPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1051C9260CD4400073D1F4 /* BasicFrontPageView.swift */; };
@@ -563,7 +563,7 @@
 		494047FF23CDBEC500ECBCFD /* ViewingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingsView.swift; sourceTree = "<group>"; };
 		4940480123CDC0F000ECBCFD /* ViewingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingCell.swift; sourceTree = "<group>"; };
 		496F8C132473DCC600AE0735 /* FavoriteSoldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteSoldView.swift; sourceTree = "<group>"; };
-		4D01FD5B261C9A5C008B9913 /* TransactionStepIlustrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepIlustrationView.swift; sourceTree = "<group>"; };
+		4D01FD5B261C9A5C008B9913 /* TransactionStepIllustrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepIllustrationView.swift; sourceTree = "<group>"; };
 		4D01FD5F261DC61C008B9913 /* TransactionEntrySlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionEntrySlideView.swift; sourceTree = "<group>"; };
 		4D0CF28C261C467B0008CC43 /* TransactionEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionEntryView.swift; sourceTree = "<group>"; };
 		4D1051C9260CD4400073D1F4 /* BasicFrontPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFrontPageView.swift; sourceTree = "<group>"; };
@@ -1728,7 +1728,7 @@
 			isa = PBXGroup;
 			children = (
 				4D0CF28C261C467B0008CC43 /* TransactionEntryView.swift */,
-				4D01FD5B261C9A5C008B9913 /* TransactionStepIlustrationView.swift */,
+				4D01FD5B261C9A5C008B9913 /* TransactionStepIllustrationView.swift */,
 			);
 			path = TransactionEntryView;
 			sourceTree = "<group>";
@@ -3106,7 +3106,7 @@
 				44A557B622E72187001667AE /* CheckboxTableViewCell.swift in Sources */,
 				CF376C18231D452100ED2B24 /* Array+Step.swift in Sources */,
 				F288CB3E233CD53400C1EE8A /* UserAdsRatingView.swift in Sources */,
-				4D01FD5C261C9A5C008B9913 /* TransactionStepIlustrationView.swift in Sources */,
+				4D01FD5C261C9A5C008B9913 /* TransactionStepIllustrationView.swift in Sources */,
 				45EDD62F20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift in Sources */,
 				CF164CFD230EB0F900250822 /* CheckmarkImageView.swift in Sources */,
 				9B06096823F14B0A005CB592 /* SafetyElementViewModel.swift in Sources */,

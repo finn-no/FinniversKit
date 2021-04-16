@@ -24,7 +24,9 @@ public class FrontpageViewDemoView: UIView, Tweakable {
 
     lazy var tweakingOptions: [TweakingOption] = {
         [
-            TweakingOption(title: "No promo"),
+            TweakingOption(title: "No promo", action: {
+                self.frontPageView.insertPromoView(nil)
+            }),
             TweakingOption(title: "Promo link", action: {
                 self.frontPageView.insertPromoView(self.promoLinkView)
             }),
@@ -191,17 +193,23 @@ extension FrontpageViewDemoView: MarketsViewDataSource {
     }
 }
 
+// MARK: - PromoLinkViewDelegate
+
 extension FrontpageViewDemoView: PromoLinkViewDelegate {
     public func promoLinkViewWasTapped(_ promoLinkView: PromoLinkView) {
         print("Tapped promo link!")
     }
 }
 
+// MARK: - TransactionEntryViewDelegate
+
 extension FrontpageViewDemoView: TransactionEntryViewDelegate {
     public func transactionEntryViewWasTapped(_ transactionEntryView: TransactionEntryView) {
         print("Tapped transaction entry!")
     }
 }
+
+// MARK: - RemoteImageViewDataSource
 
 extension FrontpageViewDemoView: RemoteImageViewDataSource {
     public func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
@@ -214,6 +222,8 @@ extension FrontpageViewDemoView: RemoteImageViewDataSource {
 
     public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
+
+// MARK: - Private classes
 
 private class PromoViewModel: PromoLinkViewModel {
     var title = "Smidig bilhandel? Prøv FINNs nye prosess!"
