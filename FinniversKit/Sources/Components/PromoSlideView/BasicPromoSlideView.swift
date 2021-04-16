@@ -27,11 +27,20 @@ public class BasicPromoSlideView: UIView {
         return button
     }()
 
-    private lazy var imageView = UIImageView(withAutoLayout: true)
+    private lazy var imageView: RemoteImageView = {
+        let imageView = RemoteImageView(withAutoLayout: true)
+        imageView.clipsToBounds = true
+        return imageView
+    }()
 
     private lazy var imageViewTrailingAnchorContraint = imageView.trailingAnchor.constraint(equalTo: trailingAnchor)
 
     public weak var delegate: BasicPromoSlideViewDelegate?
+    public weak var remoteImageViewDataSource: RemoteImageViewDataSource? {
+        didSet {
+            imageView.dataSource = remoteImageViewDataSource
+        }
+    }
 
     // MARK: - Init
 
@@ -66,15 +75,27 @@ public class BasicPromoSlideView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(with text: String, buttonTitle: String, image: UIImage, scaleImageToFit: Bool = false) {
+    public func configure(
+        with text: String,
+        buttonTitle: String,
+        image: UIImage?,
+        imageUrl: String? = nil,
+        scaleImageToFit: Bool = false
+    ) {
         titleLabel.text = text
         button.setTitle(buttonTitle, for: .normal)
         imageView.image = image
 
+        let imageSize: CGFloat = 100
+
+        if let imageUrl = imageUrl {
+            imageView.loadImage(for: imageUrl, imageWidth: imageSize)
+        }
+
         if scaleImageToFit {
             NSLayoutConstraint.activate([
-                imageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.9),
-                imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor)
+                imageView.heightAnchor.constraint(equalToConstant: imageSize),
+                imageView.widthAnchor.constraint(equalToConstant: imageSize)
             ])
             imageView.contentMode = .scaleAspectFill
             imageViewTrailingAnchorContraint.constant = -.spacingS
