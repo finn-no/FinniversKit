@@ -40,10 +40,9 @@ public class PromoSlidesView: UIView {
     private let circleSize: CGFloat = 400
     private var slides: [UIView] = []
 
-    internal static let slideHeight: CGFloat = 130
-    private static let topSpacing: CGFloat = .spacingS
+    private let slideHeight: CGFloat = 130
     private let pageControlTopSpacing: CGFloat = .spacingS
-    private let collectionViewTopSpacing: CGFloat = .spacingM + topSpacing
+    private let collectionViewTopSpacing: CGFloat = .spacingM + .spacingS
 
     // MARK: - Init
 
@@ -67,7 +66,7 @@ public class PromoSlidesView: UIView {
         addSubview(pageControl)
 
         NSLayoutConstraint.activate([
-            backgroundCircleView.topAnchor.constraint(equalTo: topAnchor, constant: Self.topSpacing),
+            backgroundCircleView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
             backgroundCircleView.centerXAnchor.constraint(equalTo: trailingAnchor, constant: 40),
             backgroundCircleView.heightAnchor.constraint(equalToConstant: circleSize),
             backgroundCircleView.widthAnchor.constraint(equalToConstant: circleSize),
@@ -75,7 +74,7 @@ public class PromoSlidesView: UIView {
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.topAnchor.constraint(equalTo: topAnchor, constant: collectionViewTopSpacing),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: Self.slideHeight),
+            collectionView.heightAnchor.constraint(equalToConstant: slideHeight),
 
             pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: pageControlTopSpacing),
             pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -89,7 +88,7 @@ public class PromoSlidesView: UIView {
         super.layoutSubviews()
 
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.itemSize = CGSize(width: frame.size.width, height: Self.slideHeight)
+            layout.itemSize = CGSize(width: frame.size.width, height: slideHeight)
         }
     }
 
@@ -115,7 +114,7 @@ public class PromoSlidesView: UIView {
                 verticalFittingPriority: .fittingSizeLevel)
             .height
 
-        return Self.slideHeight + collectionViewTopSpacing + pageControlHeight + pageControlTopSpacing
+        return slideHeight + collectionViewTopSpacing + pageControlHeight + pageControlTopSpacing
     }
 
     // MARK: - Actions

@@ -1,18 +1,15 @@
 import Foundation
 
-class ProcessIllustrationView: UIView {
+class TransactionStepIllustrationView: UIView {
 
     private lazy var circleView: UIView = {
         let circle = UIView(withAutoLayout: true)
-        circle.layer.cornerRadius = circleWidth/2
+        circle.layer.cornerRadius = circleSize/2
         circle.layer.borderWidth = 2
         return circle
     }()
 
-    private lazy var line: UIView = {
-        let line = UIView(withAutoLayout: true)
-        return line
-    }()
+    private lazy var line = UIView(withAutoLayout: true)
 
     private lazy var gradientLayer: CALayer = {
         let gradientLayer = CAGradientLayer()
@@ -22,7 +19,7 @@ class ProcessIllustrationView: UIView {
         return gradientLayer
     }()
 
-    private let circleWidth: CGFloat = .spacingS + .spacingXS
+    private let circleSize: CGFloat = .spacingS + .spacingXS
 
     // MARK: - Init
 
@@ -53,8 +50,8 @@ class ProcessIllustrationView: UIView {
             line.widthAnchor.constraint(equalToConstant: 2),
             line.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            circleView.widthAnchor.constraint(equalToConstant: circleWidth),
-            circleView.heightAnchor.constraint(equalToConstant: circleWidth),
+            circleView.widthAnchor.constraint(equalToConstant: circleSize),
+            circleView.heightAnchor.constraint(equalToConstant: circleSize),
         ])
     }
 

@@ -57,6 +57,27 @@ public class PromotionFrontpageViewDemoView: UIView {
         let slides = [promoSlide, promoSlide2]
         frontPageView.configure(withPromoSlides: slides)
     }
+
+    private func loadImage(imagePath: String, completion: @escaping ((UIImage?) -> Void)) {
+        guard let url = URL(string: imagePath) else {
+            completion(nil)
+            return
+        }
+
+        // Demo code only.
+        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+            usleep(50_000)
+            DispatchQueue.main.async {
+                if let data = data, let image = UIImage(data: data) {
+                    completion(image)
+                } else {
+                    completion(nil)
+                }
+            }
+        }
+
+        task.resume()
+    }
 }
 
 // MARK: - TransactionEntrySlideView
@@ -174,27 +195,6 @@ extension PromotionFrontpageViewDemoView: RemoteImageViewDataSource {
     }
 
     public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
-
-    private func loadImage(imagePath: String, completion: @escaping ((UIImage?) -> Void)) {
-        guard let url = URL(string: imagePath) else {
-            completion(nil)
-            return
-        }
-
-        // Demo code only.
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
-            usleep(50_000)
-            DispatchQueue.main.async {
-                if let data = data, let image = UIImage(data: data) {
-                    completion(image)
-                } else {
-                    completion(nil)
-                }
-            }
-        }
-
-        task.resume()
-    }
 }
 
 // MARK: - MarketsGridViewDelegate
@@ -220,14 +220,4 @@ extension PromotionFrontpageViewDemoView: MarketsViewDataSource {
 extension PromotionFrontpageViewDemoView: BasicPromoSlideViewDelegate {
     public func basicPromoSlideViewDidTapButton(_ basicPromoSlideView: BasicPromoSlideView) {
     }
-}
-
-// MARK: - Private classes
-
-private class MotorTransactionEntryViewModel: TransactionEntryViewModel {
-    var title: String = "Kontrakt"
-    var text: String = "Kjøper har signert, nå mangler bare din signatur."
-    var imageUrl: String? = "https://finn-content-hub.imgix.net/bilder/Motor/Toma%CC%8Aterbil_Toppbilde.jpg?auto=compress&crop=focalpoint&domain=finn-content-hub.imgix.net&fit=crop&fm=jpg&fp-x=0.5&fp-y=0.5&h=900&ixlib=php-3.3.0&w=1600"
-    var showWarningIcon: Bool = false
-    var fallbackImage: UIImage = UIImage(named: .transactionJourneyCar)
 }

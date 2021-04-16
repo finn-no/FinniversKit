@@ -18,7 +18,24 @@ public class TransactionEntrySlideView: UIView {
         return label
     }()
 
-    private lazy var stackView: UIStackView = UIStackView(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
+        stackView.distribution = .equalCentering
+        return stackView
+    }()
+
+    private lazy var regularConstraints: [NSLayoutConstraint] = [
+        stackView.widthAnchor.constraint(greaterThanOrEqualTo: widthAnchor, multiplier: 0.5),
+        stackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 200),
+        stackView.centerXAnchor.constraint(equalTo: centerXAnchor)
+    ]
+
+    private lazy var compactConstraints: [NSLayoutConstraint] = [
+        stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+        stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+    ]
+
+    // MARK: - Init
 
     public init(
         title: String,
@@ -34,32 +51,14 @@ public class TransactionEntrySlideView: UIView {
         setup()
     }
 
-    public init() {
-        super.init(frame: .zero)
-        setup()
-    }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private lazy var regularConstraints: [NSLayoutConstraint] = [
-        stackView.widthAnchor.constraint(greaterThanOrEqualTo: widthAnchor, multiplier: 0.5),
-        stackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 200),
-        stackView.centerXAnchor.constraint(equalTo: centerXAnchor)
-    ]
-
-    private lazy var compactConstraints: [NSLayoutConstraint] = [
-        stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-        stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-    ]
+    // MARK: - Setup
 
     private func setup() {
-        titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
-        transactionEntryView.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
-
         addSubview(stackView)
-        stackView.distribution = .equalCentering
         stackView.addArrangedSubviews([titleLabel, transactionEntryView])
 
         NSLayoutConstraint.activate([
@@ -67,6 +66,9 @@ public class TransactionEntrySlideView: UIView {
         ])
 
         setSizeClassConstraints()
+
+        titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        transactionEntryView.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
     }
 
     private func setSizeClassConstraints() {

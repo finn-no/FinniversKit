@@ -138,7 +138,7 @@ public final class PromotionFrontPageView: UIView, BasicFrontPageView {
         adRecommendationsGridView.scrollToTop()
     }
 
-    public func configure(withPromoSlides promoSlides: [UIView], animated: Bool = false) {
+    public func configure(withPromoSlides promoSlides: [UIView]) {
         promoSlidesView.configure(withSlides: promoSlides)
         setupFrames()
     }

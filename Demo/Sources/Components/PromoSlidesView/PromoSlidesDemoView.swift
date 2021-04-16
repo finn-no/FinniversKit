@@ -50,6 +50,7 @@ class PromoSlidesDemoView: UIView {
             image: UIImage(named: .hobbyIllustration),
             scaleImageToFit: true
         )
+        promoSlide3.delegate = self
 
         promoSlidesView.configure(withSlides: [promoSlide, promoSlide2, promoSlide3])
     }
@@ -57,7 +58,7 @@ class PromoSlidesDemoView: UIView {
 
 extension PromoSlidesDemoView: BasicPromoSlideViewDelegate {
     func basicPromoSlideViewDidTapButton(_ basicPromoSlideView: BasicPromoSlideView) {
-        print("Did tap promo button!")
+        print("Did tap button!")
     }
 }
 
@@ -94,12 +95,4 @@ extension PromoSlidesDemoView: RemoteImageViewDataSource {
     }
 
     func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
-}
-
-private class MotorTransactionEntryViewModel: TransactionEntryViewModel {
-    var title: String = "Kontrakt"
-    var text: String = "Kjøper har signert, nå mangler bare din signatur."
-    var imageUrl: String? = "https://finn-content-hub.imgix.net/bilder/Motor/Toma%CC%8Aterbil_Toppbilde.jpg?auto=compress&crop=focalpoint&domain=finn-content-hub.imgix.net&fit=crop&fm=jpg&fp-x=0.5&fp-y=0.5&h=900&ixlib=php-3.3.0&w=1600"
-    var showWarningIcon: Bool = false
-    var fallbackImage: UIImage = UIImage(named: .transactionJourneyCar)
 }

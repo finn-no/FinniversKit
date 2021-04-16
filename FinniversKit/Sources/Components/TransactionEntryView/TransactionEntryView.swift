@@ -34,7 +34,7 @@ public class TransactionEntryView: UIView {
     }()
 
     private lazy var processIllustrationView: UIView = {
-        let view = ProcessIllustrationView(color: .btnPrimary)
+        let view = TransactionStepIllustrationView(color: .btnPrimary)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -63,7 +63,7 @@ public class TransactionEntryView: UIView {
         return view
     }()
 
-    private let imageWidth: CGFloat = 32
+    private let imageSize: CGFloat = 32
     private var fallbackImage: UIImage?
     private let navigationLinkBackgroundColor: UIColor
 
@@ -75,6 +75,8 @@ public class TransactionEntryView: UIView {
 
     public weak var delegate: TransactionEntryViewDelegate?
 
+    // MARK: - Init
+
     public init(
         backgroundColor: UIColor = .bgTertiary,
         withAutoLayout: Bool = false
@@ -82,13 +84,14 @@ public class TransactionEntryView: UIView {
         self.navigationLinkBackgroundColor = backgroundColor
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = !withAutoLayout
-        imageView.dataSource = remoteImageViewDataSource
         setup()
     }
 
     public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Setup
 
     private func setup() {
         addSubview(navigationLinkView)
@@ -105,8 +108,8 @@ public class TransactionEntryView: UIView {
         textContainer.addSubview(warningIconImageView)
 
         NSLayoutConstraint.activate([
-            imageView.widthAnchor.constraint(equalToConstant: imageWidth),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: imageSize),
+            imageView.heightAnchor.constraint(equalToConstant: imageSize),
 
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -135,6 +138,8 @@ public class TransactionEntryView: UIView {
         ])
     }
 
+    // MARK: - Public methods
+
     public func configure(with viewModel: TransactionEntryViewModel) {
         titleLabel.text = viewModel.title
         textLabel.text = viewModel.text
@@ -144,11 +149,13 @@ public class TransactionEntryView: UIView {
 
         if let imageUrl = viewModel.imageUrl {
             imageView.contentMode = .scaleAspectFill
-            imageView.loadImage(for: imageUrl, imageWidth: imageWidth, loadingColor: .bgSecondary)
+            imageView.loadImage(for: imageUrl, imageWidth: imageSize, loadingColor: .bgSecondary)
         } else {
             setFallbackImage()
         }
     }
+
+    // MARK: - Private methods
 
     private func setFallbackImage() {
         imageView.image = fallbackImage
