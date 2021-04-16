@@ -7,6 +7,7 @@ public protocol TransactionEntryViewModel {
     var imageUrl: String? { get }
     var showWarningIcon: Bool { get }
     var fallbackImage: UIImage { get }
+    var accessibilityLabel: String { get }
 }
 
 public protocol TransactionEntryViewDelegate: AnyObject {
@@ -144,6 +145,7 @@ public class TransactionEntryView: UIView {
         titleLabel.text = viewModel.title
         textLabel.text = viewModel.text
         self.fallbackImage = viewModel.fallbackImage
+        navigationLinkView.setAccessibilityLabel(viewModel.accessibilityLabel)
 
         warningIconImageView.isHidden = !viewModel.showWarningIcon
 

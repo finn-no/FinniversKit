@@ -89,6 +89,9 @@ class MotorTransactionEntryViewModel: TransactionEntryViewModel {
     var imageUrl: String? = "https://finn-content-hub.imgix.net/bilder/Motor/Toma%CC%8Aterbil_Toppbilde.jpg?auto=compress&crop=focalpoint&domain=finn-content-hub.imgix.net&fit=crop&fm=jpg&fp-x=0.5&fp-y=0.5&h=900&ixlib=php-3.3.0&w=1600"
     var showWarningIcon: Bool = false
     var fallbackImage: UIImage = UIImage(named: .transactionJourneyCar)
+    var accessibilityLabel: String {
+        "\(title). \(text). Åpne salgsprosessen."
+    }
 }
 
 private class TransactionEntryWithWarning: TransactionEntryViewModel {
@@ -97,4 +100,7 @@ private class TransactionEntryWithWarning: TransactionEntryViewModel {
     var imageUrl: String?
     var showWarningIcon: Bool = true
     var fallbackImage: UIImage = UIImage(named: .transactionJourneyCar)
+    var accessibilityLabel: String {
+        "\(title). \(text). Åpne salgsprosessen."
+    }
 }
