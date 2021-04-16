@@ -28,20 +28,20 @@ class PromoSlidesDemoView: UIView {
             promoSlidesView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
 
-        let promoSlide = TransactionEntrySlideView(
+        let promoSlide = BasicPromoSlideView()
+        promoSlide.configure(
+            with: "Smidig bilhandel? Prøv\nFINNs nye prosess!",
+            buttonTitle: "Se hvordan det virker",
+            image: UIImage(named: .carPromo)
+        )
+        promoSlide.delegate = self
+
+        let promoSlide2 = TransactionEntrySlideView(
             title: "Du har en oppdatering i den\nsiste salgsprosessen",
             transactionEntryViewModel: MotorTransactionEntryViewModel(),
             transactionEntryViewDelegate: self,
             remoteImageViewDataSource: self
         )
-
-        let promoSlide2 = BasicPromoSlideView()
-        promoSlide2.configure(
-            with: "Smidig bilhandel? Prøv\nFINNs nye prosess!",
-            buttonTitle: "Se hvordan det virker",
-            image: UIImage(named: .carPromo)
-        )
-        promoSlide2.delegate = self
 
         let promoSlide3 = BasicPromoSlideView()
         promoSlide3.configure(
