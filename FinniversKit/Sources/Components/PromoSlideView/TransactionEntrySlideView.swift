@@ -41,9 +41,9 @@ public class TransactionEntrySlideView: UIView {
     ) {
         super.init(frame: .zero)
         titleLabel.text = title
-        transactionEntryView.configure(with: transactionEntryViewModel)
         transactionEntryView.remoteImageViewDataSource = remoteImageViewDataSource
         transactionEntryView.delegate = transactionEntryViewDelegate
+        transactionEntryView.configure(with: transactionEntryViewModel)
         setup()
     }
 
