@@ -2,12 +2,12 @@ import Foundation
 import UIKit
 
 public protocol BasicPromoSlideViewDelegate: AnyObject {
-    func basicPromoSlideViewDidTapButton(_ basicPromoSlideView: BasicPromoSlideView)
+    func basicPromoSlideViewDidTapButton(_ basicPromoSlideView: BasicPromoSlideView, promoIdentifier: String)
 }
 
 public class BasicPromoSlideView: UIView {
     private lazy var titleLabel: Label = {
-        let label = Label(style: .title3Strong, withAutoLayout: true)
+        let label = Label(style: titleStyle, withAutoLayout: true)
         label.textColor = .white
         label.numberOfLines = 3
         return label
@@ -35,6 +35,9 @@ public class BasicPromoSlideView: UIView {
 
     private lazy var imageViewTrailingAnchorContraint = imageView.trailingAnchor.constraint(equalTo: trailingAnchor)
 
+    private let promoIdentifier: String
+    private let titleStyle: Label.Style
+
     public weak var delegate: BasicPromoSlideViewDelegate?
     public weak var remoteImageViewDataSource: RemoteImageViewDataSource? {
         didSet {
@@ -44,7 +47,9 @@ public class BasicPromoSlideView: UIView {
 
     // MARK: - Init
 
-    public init() {
+    public init(titleStyle: Label.Style = .title3Strong, promoIdentifier: String) {
+        self.titleStyle = titleStyle
+        self.promoIdentifier = promoIdentifier
         super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         setup()
     }
@@ -77,6 +82,7 @@ public class BasicPromoSlideView: UIView {
 
     public func configure(
         with text: String,
+        textStyle: Label.Style = .title3Strong,
         buttonTitle: String,
         image: UIImage?,
         imageUrl: String? = nil,
@@ -86,7 +92,7 @@ public class BasicPromoSlideView: UIView {
         button.setTitle(buttonTitle, for: .normal)
         imageView.image = image
 
-        let imageSize: CGFloat = 100
+        let imageSize: CGFloat = 130
 
         if let imageUrl = imageUrl {
             imageView.loadImage(for: imageUrl, imageWidth: imageSize)
@@ -94,17 +100,17 @@ public class BasicPromoSlideView: UIView {
 
         if scaleImageToFit {
             NSLayoutConstraint.activate([
-                imageView.heightAnchor.constraint(equalToConstant: imageSize),
-                imageView.widthAnchor.constraint(equalToConstant: imageSize)
+                imageView.heightAnchor.constraint(equalTo: heightAnchor),
+                imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor)
             ])
             imageView.contentMode = .scaleAspectFill
-            imageViewTrailingAnchorContraint.constant = -.spacingS
+            imageViewTrailingAnchorContraint.constant = -.spacingM
         }
     }
 
     // MARK: - Actions
 
     @objc private func handleButtonTap() {
-        delegate?.basicPromoSlideViewDidTapButton(self)
+        delegate?.basicPromoSlideViewDidTapButton(self, promoIdentifier: promoIdentifier)
     }
 }

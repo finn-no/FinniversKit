@@ -100,7 +100,7 @@ public class PromoSlidesView: UIView {
         pageControl.isHidden = slides.count == 1
         pageControl.numberOfPages = slides.count
         pageControl.currentPage = 0
-
+        collectionView.setContentOffset(.zero, animated: true)
         collectionView.reloadData()
     }
 
@@ -211,13 +211,8 @@ private class SlideCell: UICollectionViewCell {
     }
 
     func configure(with view: UIView) {
-        view.alpha = 0
         contentView.addSubview(view)
         view.fillInSuperview()
-
-        UIView.animate(withDuration: 0.3, animations: {
-            view.alpha = 1
-        })
     }
 }
 

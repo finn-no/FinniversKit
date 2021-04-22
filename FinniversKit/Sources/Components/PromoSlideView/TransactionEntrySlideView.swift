@@ -34,13 +34,13 @@ public class TransactionEntrySlideView: UIView {
     // MARK: - Init
 
     public init(
-        title: String,
+        title: NSAttributedString,
         transactionEntryViewModel: TransactionEntryViewModel,
         transactionEntryViewDelegate: TransactionEntryViewDelegate?,
         remoteImageViewDataSource: RemoteImageViewDataSource?
     ) {
         super.init(frame: .zero)
-        titleLabel.text = title
+        titleLabel.attributedText = title
         transactionEntryView.remoteImageViewDataSource = remoteImageViewDataSource
         transactionEntryView.delegate = transactionEntryViewDelegate
         transactionEntryView.configure(with: transactionEntryViewModel)
