@@ -12,10 +12,10 @@ class TransactionEntryDemoView: UIView, Tweakable {
     lazy var tweakingOptions: [TweakingOption] = {
         [
             TweakingOption(title: "Regular", action: { [weak self] in
-                self?.configure(with: MotorTransactionEntryViewModel())
+                self?.configure(with: TransactionEntryViewModel())
             }),
             TweakingOption(title: "With warning", action: { [weak self] in
-                self?.configure(with: TransactionEntryWithWarning())
+                self?.configure(with: TransactionEntryViewModel(showWarning: true))
             })
         ]
     }()
@@ -40,7 +40,7 @@ class TransactionEntryDemoView: UIView, Tweakable {
             transactionEntryView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
 
-        transactionEntryView.configure(with: MotorTransactionEntryViewModel())
+        transactionEntryView.configure(with: TransactionEntryViewModel())
     }
 
     func configure(with viewModel: TransactionEntryViewModel) {
@@ -83,24 +83,17 @@ extension TransactionEntryDemoView: RemoteImageViewDataSource {
     func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
 
-class MotorTransactionEntryViewModel: TransactionEntryViewModel {
-    var title: String = "Kontrakt"
-    var text: String = "Kjøper har signert, nå mangler bare din signatur."
-    var imageUrl: String? = "https://finn-content-hub.imgix.net/bilder/Motor/Toma%CC%8Aterbil_Toppbilde.jpg?auto=compress&crop=focalpoint&domain=finn-content-hub.imgix.net&fit=crop&fm=jpg&fp-x=0.5&fp-y=0.5&h=900&ixlib=php-3.3.0&w=1600"
-    var showWarningIcon: Bool = false
-    var fallbackImage: UIImage = UIImage(named: .transactionJourneyCar)
-    var accessibilityLabel: String {
-        "\(title). \(text). Åpne salgsprosessen."
-    }
-}
+// MARK: - Demo data
 
-private class TransactionEntryWithWarning: TransactionEntryViewModel {
-    var title: String = "Betaling"
-    var text: String = "Betalingen gikk ikke gjennom. Åpne salgsprosessen for å prøve på nytt."
-    var imageUrl: String?
-    var showWarningIcon: Bool = true
-    var fallbackImage: UIImage = UIImage(named: .transactionJourneyCar)
-    var accessibilityLabel: String {
-        "\(title). \(text). Åpne salgsprosessen."
+extension TransactionEntryViewModel {
+    init(showWarning: Bool = false) {
+        self.init(
+            title: "Kontrakt",
+            text: "Kjøper har signert, nå mangler bare din signatur.",
+            imageUrl: "https://finn-content-hub.imgix.net/bilder/Motor/Toma%CC%8Aterbil_Toppbilde.jpg?auto=compress&crop=focalpoint&domain=finn-content-hub.imgix.net&fit=crop&fm=jpg&fp-x=0.5&fp-y=0.5&h=900&ixlib=php-3.3.0&w=1600",
+            showWarningIcon: showWarning,
+            fallbackImage: UIImage(named: .transactionJourneyCar),
+            accessibilityLabel: "Åpne salgsprosessen."
+        )
     }
 }

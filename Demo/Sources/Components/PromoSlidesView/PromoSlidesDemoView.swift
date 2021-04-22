@@ -28,7 +28,7 @@ class PromoSlidesDemoView: UIView {
             promoSlidesView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
 
-        let promoSlide = BasicPromoSlideView()
+        let promoSlide = BasicPromoSlideView(promoIdentifier: "")
         promoSlide.configure(
             with: "Smidig bilhandel? Prøv\nFINNs nye prosess!",
             buttonTitle: "Se hvordan det virker",
@@ -36,14 +36,16 @@ class PromoSlidesDemoView: UIView {
         )
         promoSlide.delegate = self
 
+        let boldAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.bodyStrong, .foregroundColor: UIColor.white]
+
         let promoSlide2 = TransactionEntrySlideView(
-            title: "Du har en oppdatering i den\nsiste salgsprosessen",
-            transactionEntryViewModel: MotorTransactionEntryViewModel(),
+            title: NSAttributedString(string: "Du har en oppdatering i den\nsiste salgsprosessen", attributes: boldAttributes),
+            transactionEntryViewModel: TransactionEntryViewModel(),
             transactionEntryViewDelegate: self,
             remoteImageViewDataSource: self
         )
 
-        let promoSlide3 = BasicPromoSlideView()
+        let promoSlide3 = BasicPromoSlideView(promoIdentifier: "")
         promoSlide3.configure(
             with: "Ønsker du å fortsette søket i Fritid, hobby og underholdning?",
             buttonTitle: "Fortsett søket",
@@ -57,7 +59,7 @@ class PromoSlidesDemoView: UIView {
 }
 
 extension PromoSlidesDemoView: BasicPromoSlideViewDelegate {
-    func basicPromoSlideViewDidTapButton(_ basicPromoSlideView: BasicPromoSlideView) {
+    func basicPromoSlideViewDidTapButton(_ basicPromoSlideView: BasicPromoSlideView, promoIdentifier: String) {
         print("Did tap button!")
     }
 }

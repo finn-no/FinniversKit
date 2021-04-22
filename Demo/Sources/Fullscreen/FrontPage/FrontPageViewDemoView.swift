@@ -17,7 +17,7 @@ public class FrontpageViewDemoView: UIView, Tweakable {
 
     private lazy var transactionEntryView: TransactionEntryView = {
         let view = TransactionEntryView(withAutoLayout: true)
-        view.configure(with: MotorTransactionEntryViewModel())
+        view.configure(with: TransactionEntryViewModel())
         view.remoteImageViewDataSource = self
         return view
     }()

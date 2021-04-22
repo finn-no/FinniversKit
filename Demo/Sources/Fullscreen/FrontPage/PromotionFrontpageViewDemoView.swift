@@ -39,14 +39,16 @@ public class PromotionFrontpageViewDemoView: UIView {
         frontPageView.fillInSuperview()
         frontPageView.reloadData()
 
+        let boldAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.bodyStrong, .foregroundColor: UIColor.white]
+
         let promoSlide = TransactionEntrySlideView(
-            title: "Du har en oppdatering i den siste salgsprosessen",
-            transactionEntryViewModel: MotorTransactionEntryViewModel(),
+            title: NSAttributedString(string: "Du har en oppdatering i den siste salgsprosessen", attributes: boldAttributes),
+            transactionEntryViewModel: TransactionEntryViewModel(),
             transactionEntryViewDelegate: self,
             remoteImageViewDataSource: self
         )
 
-        let promoSlide2 = BasicPromoSlideView()
+        let promoSlide2 = BasicPromoSlideView(promoIdentifier: "")
         promoSlide2.configure(
             with: "Smidig bilhandel? Prøv\nFINNs nye prosess!",
             buttonTitle: "Se hvordan det virker",
@@ -218,6 +220,6 @@ extension PromotionFrontpageViewDemoView: MarketsViewDataSource {
 // MARK: - BasicPromoSlideViewDelegate
 
 extension PromotionFrontpageViewDemoView: BasicPromoSlideViewDelegate {
-    public func basicPromoSlideViewDidTapButton(_ basicPromoSlideView: BasicPromoSlideView) {
+    public func basicPromoSlideViewDidTapButton(_ basicPromoSlideView: BasicPromoSlideView, promoIdentifier: String) {
     }
 }
