@@ -2,11 +2,7 @@ import FinniversKit
 
 class PromoLinkDemoView: UIView {
 
-    private lazy var promoLinkView: PromoLinkView = {
-        let view = PromoLinkView(delegate: self)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private lazy var promoLinkView = PromoLinkView(delegate: self, withAutoLayout: true)
 
     // MARK: - Init
 

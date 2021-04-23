@@ -4,10 +4,37 @@
 
 import FinniversKit
 
-public class FrontpageViewDemoView: UIView {
+public class FrontpageViewDemoView: UIView, Tweakable {
     private let markets = Market.allMarkets
     private var didSetupView = false
     private var visibleItems = 20
+
+    private lazy var promoLinkView: PromoLinkView = {
+        let view = PromoLinkView(delegate: self, withAutoLayout: true)
+        view.configure(with: PromoViewModel())
+        return view
+    }()
+
+    private lazy var transactionEntryView: TransactionEntryView = {
+        let view = TransactionEntryView(withAutoLayout: true)
+        view.configure(with: TransactionEntryViewModel())
+        view.remoteImageViewDataSource = self
+        return view
+    }()
+
+    lazy var tweakingOptions: [TweakingOption] = {
+        [
+            TweakingOption(title: "No promo", action: {
+                self.frontPageView.insertPromoView(nil)
+            }),
+            TweakingOption(title: "Promo link", action: {
+                self.frontPageView.insertPromoView(self.promoLinkView)
+            }),
+            TweakingOption(title: "Motor transaction entry", action: {
+                self.frontPageView.insertPromoView(self.transactionEntryView)
+            })
+        ]
+    }()
 
     private let ads: [Ad] = {
         var ads = AdFactory.create(numberOfModels: 120)
@@ -16,7 +43,7 @@ public class FrontpageViewDemoView: UIView {
     }()
 
     private lazy var frontPageView: FrontPageView = {
-        let view = FrontPageView(delegate: self, adRecommendationsGridViewDataSource: self, promoLinkViewModel: PromoViewModel())
+        let view = FrontPageView(delegate: self, adRecommendationsGridViewDataSource: self)
         view.model = FrontpageViewDefaultData()
         view.isRefreshEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -38,6 +65,27 @@ public class FrontpageViewDemoView: UIView {
         addSubview(frontPageView)
         frontPageView.fillInSuperview()
         frontPageView.reloadData()
+    }
+
+    private func loadImage(imagePath: String, completion: @escaping ((UIImage?) -> Void)) {
+        guard let url = URL(string: imagePath) else {
+            completion(nil)
+            return
+        }
+
+        // Demo code only.
+        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+            usleep(50_000)
+            DispatchQueue.main.async {
+                if let data = data, let image = UIImage(data: data) {
+                    completion(image)
+                } else {
+                    completion(nil)
+                }
+            }
+        }
+
+        task.resume()
     }
 }
 
@@ -121,24 +169,7 @@ extension FrontpageViewDemoView: AdRecommendationsGridViewDataSource {
     }
 
     public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
-        guard let url = URL(string: imagePath) else {
-            completion(nil)
-            return
-        }
-
-        // Demo code only.
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
-            usleep(50_000)
-            DispatchQueue.main.async {
-                if let data = data, let image = UIImage(data: data) {
-                    completion(image)
-                } else {
-                    completion(nil)
-                }
-            }
-        }
-
-        task.resume()
+        loadImage(imagePath: imagePath, completion: completion)
     }
 
     public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
@@ -162,11 +193,37 @@ extension FrontpageViewDemoView: MarketsViewDataSource {
     }
 }
 
+// MARK: - PromoLinkViewDelegate
+
 extension FrontpageViewDemoView: PromoLinkViewDelegate {
     public func promoLinkViewWasTapped(_ promoLinkView: PromoLinkView) {
         print("Tapped promo link!")
     }
 }
+
+// MARK: - TransactionEntryViewDelegate
+
+extension FrontpageViewDemoView: TransactionEntryViewDelegate {
+    public func transactionEntryViewWasTapped(_ transactionEntryView: TransactionEntryView) {
+        print("Tapped transaction entry!")
+    }
+}
+
+// MARK: - RemoteImageViewDataSource
+
+extension FrontpageViewDemoView: RemoteImageViewDataSource {
+    public func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
+        nil
+    }
+
+    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        loadImage(imagePath: imagePath, completion: completion)
+    }
+
+    public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
+}
+
+// MARK: - Private classes
 
 private class PromoViewModel: PromoLinkViewModel {
     var title = "Smidig bilhandel? Prøv FINNs nye prosess!"

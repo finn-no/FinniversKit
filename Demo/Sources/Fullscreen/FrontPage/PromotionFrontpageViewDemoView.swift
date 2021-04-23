@@ -39,23 +39,54 @@ public class PromotionFrontpageViewDemoView: UIView {
         frontPageView.fillInSuperview()
         frontPageView.reloadData()
 
-        let promoSlide = BasicPromoSlideView()
-        promoSlide.configure(
+        let boldAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.bodyStrong, .foregroundColor: UIColor.white]
+
+        let promoSlide = TransactionEntrySlideView(
+            title: NSAttributedString(string: "Du har en oppdatering i den siste salgsprosessen", attributes: boldAttributes),
+            transactionEntryViewModel: TransactionEntryViewModel(),
+            transactionEntryViewDelegate: self,
+            remoteImageViewDataSource: self
+        )
+
+        let promoSlide2 = BasicPromoSlideView(promoIdentifier: "")
+        promoSlide2.configure(
             with: "Smidig bilhandel? Prøv\nFINNs nye prosess!",
             buttonTitle: "Se hvordan det virker",
             image: UIImage(named: .carPromo)
         )
-
-        let promoSlide2 = BasicPromoSlideView()
-        promoSlide2.configure(
-            with: "Some other promo!",
-            buttonTitle: "Try",
-            image: UIImage(named: .carPromo)
-        )
+        promoSlide2.delegate = self
 
         let slides = [promoSlide, promoSlide2]
-        slides.forEach { $0.delegate = self }
         frontPageView.configure(withPromoSlides: slides)
+    }
+
+    private func loadImage(imagePath: String, completion: @escaping ((UIImage?) -> Void)) {
+        guard let url = URL(string: imagePath) else {
+            completion(nil)
+            return
+        }
+
+        // Demo code only.
+        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+            usleep(50_000)
+            DispatchQueue.main.async {
+                if let data = data, let image = UIImage(data: data) {
+                    completion(image)
+                } else {
+                    completion(nil)
+                }
+            }
+        }
+
+        task.resume()
+    }
+}
+
+// MARK: - TransactionEntrySlideView
+
+extension PromotionFrontpageViewDemoView: TransactionEntryViewDelegate {
+    public func transactionEntryViewWasTapped(_ transactionEntryView: TransactionEntryView) {
+        print("Did tap transaction entry!")
     }
 }
 
@@ -148,27 +179,24 @@ extension PromotionFrontpageViewDemoView: AdRecommendationsGridViewDataSource {
     }
 
     public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
-        guard let url = URL(string: imagePath) else {
-            completion(nil)
-            return
-        }
-
-        // Demo code only.
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
-            usleep(50_000)
-            DispatchQueue.main.async {
-                if let data = data, let image = UIImage(data: data) {
-                    completion(image)
-                } else {
-                    completion(nil)
-                }
-            }
-        }
-
-        task.resume()
+        loadImage(imagePath: imagePath, completion: completion)
     }
 
     public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
+}
+
+// MARK: - RemoteImageViewDataSource
+
+extension PromotionFrontpageViewDemoView: RemoteImageViewDataSource {
+    public func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
+        nil
+    }
+
+    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        loadImage(imagePath: imagePath, completion: completion)
+    }
+
+    public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
 
 // MARK: - MarketsGridViewDelegate
@@ -192,6 +220,6 @@ extension PromotionFrontpageViewDemoView: MarketsViewDataSource {
 // MARK: - BasicPromoSlideViewDelegate
 
 extension PromotionFrontpageViewDemoView: BasicPromoSlideViewDelegate {
-    public func basicPromoSlideViewDidTapButton(_ basicPromoSlideView: BasicPromoSlideView) {
+    public func basicPromoSlideViewDidTapButton(_ basicPromoSlideView: BasicPromoSlideView, promoIdentifier: String) {
     }
 }

@@ -164,6 +164,7 @@ enum ImageAsset: String {
     case uncheckCircle
     case view
     case viewMode
+    case warning
     case webview
 
     static var imageNames: [ImageAsset] {
@@ -299,6 +300,7 @@ enum ImageAsset: String {
             .uncheckCircle,
             .view,
             .viewMode,
+            .warning,
             .webview,
     ]
   }

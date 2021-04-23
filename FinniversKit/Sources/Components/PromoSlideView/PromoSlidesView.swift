@@ -40,9 +40,9 @@ public class PromoSlidesView: UIView {
     private let circleSize: CGFloat = 400
     private var slides: [UIView] = []
 
-    private lazy var collectionViewHeightAnchor = collectionView.heightAnchor.constraint(lessThanOrEqualToConstant: 200)
-    private lazy var pageControlTopAnchor = pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingS)
-    private let topSpacing: CGFloat = .spacingS
+    private let slideHeight: CGFloat = 130
+    private let pageControlTopSpacing: CGFloat = .spacingS
+    private let collectionViewTopSpacing: CGFloat = .spacingM + .spacingS
 
     // MARK: - Init
 
@@ -66,17 +66,17 @@ public class PromoSlidesView: UIView {
         addSubview(pageControl)
 
         NSLayoutConstraint.activate([
-            backgroundCircleView.topAnchor.constraint(equalTo: topAnchor, constant: topSpacing),
+            backgroundCircleView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
             backgroundCircleView.centerXAnchor.constraint(equalTo: trailingAnchor, constant: 40),
             backgroundCircleView.heightAnchor.constraint(equalToConstant: circleSize),
             backgroundCircleView.widthAnchor.constraint(equalToConstant: circleSize),
 
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM + topSpacing),
+            collectionView.topAnchor.constraint(equalTo: topAnchor, constant: collectionViewTopSpacing),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionViewHeightAnchor,
+            collectionView.heightAnchor.constraint(equalToConstant: slideHeight),
 
-            pageControlTopAnchor,
+            pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: pageControlTopSpacing),
             pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
             pageControl.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
@@ -87,19 +87,9 @@ public class PromoSlidesView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        let targetSize = CGSize(width: bounds.size.width, height: 0)
-        guard let maxHeight = slides
-                .map({ $0.systemLayoutSizeFitting(
-                        targetSize,
-                        withHorizontalFittingPriority: .required,
-                        verticalFittingPriority: .fittingSizeLevel).height })
-                .max()
-        else { return }
-
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.itemSize = CGSize(width: frame.size.width, height: maxHeight)
+            layout.itemSize = CGSize(width: frame.size.width, height: slideHeight)
         }
-        collectionViewHeightAnchor.constant = maxHeight
     }
 
     // MARK: - Public methods
@@ -107,15 +97,24 @@ public class PromoSlidesView: UIView {
     public func configure(withSlides slides: [UIView]) {
         self.slides = slides
 
-        if slides.count == 1 {
-            pageControl.isHidden = true
-            pageControlTopAnchor.constant = 0
-        }
-
+        pageControl.isHidden = slides.count == 1
         pageControl.numberOfPages = slides.count
         pageControl.currentPage = 0
-
+        collectionView.setContentOffset(.zero, animated: true)
         collectionView.reloadData()
+    }
+
+    public func calculateHeight(constrainedTo width: CGFloat) -> CGFloat {
+        guard width > 0 else { return 200 }
+
+        let pageControlHeight = pageControl
+            .systemLayoutSizeFitting(
+                CGSize(width: width, height: 0),
+                withHorizontalFittingPriority: .required,
+                verticalFittingPriority: .fittingSizeLevel)
+            .height
+
+        return slideHeight + collectionViewTopSpacing + pageControlHeight + pageControlTopSpacing
     }
 
     // MARK: - Actions
@@ -204,6 +203,11 @@ private class SlideCell: UICollectionViewCell {
 
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        contentView.subviews.forEach({ $0.removeFromSuperview() })
     }
 
     func configure(with view: UIView) {
