@@ -82,7 +82,6 @@ public class BasicPromoSlideView: UIView {
 
     public func configure(
         with text: String,
-        textStyle: Label.Style = .title3Strong,
         buttonTitle: String,
         image: UIImage?,
         imageUrl: String? = nil,
