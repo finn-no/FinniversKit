@@ -84,7 +84,7 @@ public class TransactionEntryView: UIView {
             transactionStepView.topAnchor.constraint(equalTo: contentView.topAnchor),
             transactionStepView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingXS + .spacingS),
             transactionStepView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            transactionStepView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            transactionStepView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor)
         ])
     }
 
