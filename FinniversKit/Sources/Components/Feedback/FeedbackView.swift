@@ -118,6 +118,10 @@ public class FeedbackView: UIView {
         configure(withViewModel: viewModel)
     }
 
+    public func setImage(_ image: UIImage) {
+        imageView.image = image
+    }
+
     // MARK: - Private methods
 
     private func configure(withViewModel viewModel: FeedbackViewModel) {
