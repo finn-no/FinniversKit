@@ -132,6 +132,8 @@
 		4D0CF28D261C467B0008CC43 /* TransactionEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0CF28C261C467B0008CC43 /* TransactionEntryView.swift */; };
 		4D1051CA260CD4400073D1F4 /* BasicFrontPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1051C9260CD4400073D1F4 /* BasicFrontPageView.swift */; };
 		4D152E742577D7D300282244 /* NavigationLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D152E732577D7D300282244 /* NavigationLinkView.swift */; };
+		4D3D48EA26394C1E006A0181 /* TransactionStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D48E926394C1E006A0181 /* TransactionStepView.swift */; };
+		4D3D48EE26394C3E006A0181 /* TransactionEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D48ED26394C3E006A0181 /* TransactionEntryViewModel.swift */; };
 		4DC8CEDA2604B59700496DF1 /* PromoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8CED92604B59700496DF1 /* PromoLinkView.swift */; };
 		4DC8CF312608A3F300496DF1 /* PromoSlidesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8CF302608A3F300496DF1 /* PromoSlidesView.swift */; };
 		4DC8CF392608B2E200496DF1 /* BasicPromoSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8CF382608B2E200496DF1 /* BasicPromoSlideView.swift */; };
@@ -568,6 +570,8 @@
 		4D0CF28C261C467B0008CC43 /* TransactionEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionEntryView.swift; sourceTree = "<group>"; };
 		4D1051C9260CD4400073D1F4 /* BasicFrontPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFrontPageView.swift; sourceTree = "<group>"; };
 		4D152E732577D7D300282244 /* NavigationLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkView.swift; sourceTree = "<group>"; };
+		4D3D48E926394C1E006A0181 /* TransactionStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepView.swift; sourceTree = "<group>"; };
+		4D3D48ED26394C3E006A0181 /* TransactionEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionEntryViewModel.swift; sourceTree = "<group>"; };
 		4DC8CED92604B59700496DF1 /* PromoLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromoLinkView.swift; sourceTree = "<group>"; };
 		4DC8CF302608A3F300496DF1 /* PromoSlidesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoSlidesView.swift; sourceTree = "<group>"; };
 		4DC8CF382608B2E200496DF1 /* BasicPromoSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPromoSlideView.swift; sourceTree = "<group>"; };
@@ -1729,6 +1733,8 @@
 			children = (
 				4D0CF28C261C467B0008CC43 /* TransactionEntryView.swift */,
 				4D01FD5B261C9A5C008B9913 /* TransactionStepIllustrationView.swift */,
+				4D3D48E926394C1E006A0181 /* TransactionStepView.swift */,
+				4D3D48ED26394C3E006A0181 /* TransactionEntryViewModel.swift */,
 			);
 			path = TransactionEntryView;
 			sourceTree = "<group>";
@@ -3156,6 +3162,7 @@
 				CF7496BF23BE26D700D60901 /* FavoriteFolderActionView.swift in Sources */,
 				CF164CF0230E7FF100250822 /* FavoriteFolderShareToggleView.swift in Sources */,
 				9B06097323F14BD6005CB592 /* ElementContentView.swift in Sources */,
+				4D3D48EE26394C3E006A0181 /* TransactionEntryViewModel.swift in Sources */,
 				F253C5142314015C008175FD /* VerificationViewModel.swift in Sources */,
 				CF16F73823292D34006566DE /* FavoriteAdCommentView.swift in Sources */,
 				DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */,
@@ -3238,6 +3245,7 @@
 				9BA8248623859B4400163F24 /* MapZoomRange.swift in Sources */,
 				CF136ACF220327F500247B30 /* InfoboxViewModel.swift in Sources */,
 				91341EDD23C46BE5005B65CF /* NativeAdvertRibbon.swift in Sources */,
+				4D3D48EA26394C1E006A0181 /* TransactionStepView.swift in Sources */,
 				CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */,
 				CF13D6D12292D50C0087DA37 /* PhaseView.swift in Sources */,
 				14EBA258215A633800613E5A /* LoadingView.swift in Sources */,
