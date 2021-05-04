@@ -6,6 +6,7 @@ import UIKit
 
 public protocol ContractActionViewDelegate: AnyObject {
     func contractActionView(_ view: ContractActionView, didSelectActionButtonWithUrl url: URL)
+    func contractActionView(_ view: ContractActionView, didSelectVideoWithUrl url: URL)
 }
 
 public class ContractActionView: UIView {
@@ -15,6 +16,7 @@ public class ContractActionView: UIView {
     public weak var delegate: ContractActionViewDelegate?
     private(set) var identifier: String?
     private(set) var buttonUrl: URL?
+    private(set) var videoUrl: URL?
 
     // MARK: - Private properties
 
@@ -82,6 +84,7 @@ public class ContractActionView: UIView {
     public func configure(with viewModel: ContractActionViewModel, remoteImageViewDataSource: RemoteImageViewDataSource? = nil) {
         identifier = viewModel.identifier
         buttonUrl = viewModel.buttonUrl
+        videoUrl = viewModel.videoLink?.videoUrl
 
         bulletListLabel.attributedText = viewModel.strings.bulletPoints(withFont: .body)
         actionButton.setTitle(viewModel.buttonTitle, for: .normal)
@@ -113,5 +116,7 @@ public class ContractActionView: UIView {
 
 extension ContractActionView: ContractVideoLinkViewDelegate {
     func didSelectVideo() {
+        guard let videoUrl = videoUrl else { return }
+        delegate?.contractActionView(self, didSelectVideoWithUrl: videoUrl)
     }
 }
