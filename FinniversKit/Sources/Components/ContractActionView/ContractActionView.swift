@@ -21,11 +21,17 @@ public class ContractActionView: UIView {
     private let buttonStyle = Button.Style.default.overrideStyle(borderColor: .btnDisabled)
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [bulletListLabel, actionButton])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, bulletListLabel, actionButton, videoLinkView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.spacing = .spacingL
         stackView.axis = .vertical
         return stackView
+    }()
+
+    private lazy var titleLabel: Label = {
+        let label = Label(style: .title3Strong, withAutoLayout: true)
+        label.numberOfLines = 0
+        return label
     }()
 
     private lazy var bulletListLabel: Label = {
@@ -38,6 +44,12 @@ public class ContractActionView: UIView {
         let button = Button(style: buttonStyle, size: .normal, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleActionButtonTap), for: .touchUpInside)
         return button
+    }()
+
+    private lazy var videoLinkView: ContractVideoLinkView = {
+        let view = ContractVideoLinkView(withAutoLayout: true)
+        view.delegate = self
+        return view
     }()
 
     // MARK: - Init
@@ -67,12 +79,26 @@ public class ContractActionView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(with viewModel: ContractActionViewModel) {
-        self.identifier = viewModel.identifier
-        self.buttonUrl = viewModel.buttonUrl
+    public func configure(with viewModel: ContractActionViewModel, remoteImageViewDataSource: RemoteImageViewDataSource? = nil) {
+        identifier = viewModel.identifier
+        buttonUrl = viewModel.buttonUrl
 
         bulletListLabel.attributedText = viewModel.strings.bulletPoints(withFont: .body)
         actionButton.setTitle(viewModel.buttonTitle, for: .normal)
+
+        if let title = viewModel.title {
+            titleLabel.text = title
+            titleLabel.isHidden = false
+        } else {
+            titleLabel.isHidden = true
+        }
+
+        if let remoteImageViewDataSource = remoteImageViewDataSource, let videoLink = viewModel.videoLink {
+            videoLinkView.configure(with: videoLink, remoteImageViewDataSource: remoteImageViewDataSource)
+            videoLinkView.isHidden = false
+        } else {
+            videoLinkView.isHidden = true
+        }
     }
 
     // MARK: - Private methods
@@ -80,5 +106,12 @@ public class ContractActionView: UIView {
     @objc private func handleActionButtonTap() {
         guard let buttonUrl = buttonUrl else { return }
         delegate?.contractActionView(self, didSelectActionButtonWithUrl: buttonUrl)
+    }
+}
+
+// MARK: - ContractVideoLinkViewDelegate
+
+extension ContractActionView: ContractVideoLinkViewDelegate {
+    func didSelectVideo() {
     }
 }
