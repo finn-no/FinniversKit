@@ -17,7 +17,7 @@ public class TransactionStepView: UIView {
 
     private lazy var textLabel: Label = {
         let label = Label(style: .detail, withAutoLayout: true)
-        label.numberOfLines = 5
+        label.numberOfLines = 2
         return label
     }()
 
@@ -67,9 +67,10 @@ public class TransactionStepView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(withTitle title: String?, text: String?, showWarningIcon: Bool) {
+    public func configure(withTitle title: String?, text: String?, showWarningIcon: Bool, numberOfTextLines: Int = 2) {
         titleLabel.text = title
         textLabel.text = text
+        textLabel.numberOfLines = numberOfTextLines
         warningIconImageView.isHidden = !showWarningIcon
     }
 }
