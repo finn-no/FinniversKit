@@ -17,7 +17,7 @@ public class TransactionStepView: UIView {
 
     private lazy var textLabel: Label = {
         let label = Label(style: .detail, withAutoLayout: true)
-        label.numberOfLines = 2
+        label.numberOfLines = 5
         return label
     }()
 
