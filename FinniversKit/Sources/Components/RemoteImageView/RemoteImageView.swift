@@ -28,7 +28,13 @@ public class RemoteImageView: UIImageView {
 
     // MARK: - Public methods
 
-    public func loadImage(for imagePath: String, imageWidth: CGFloat, loadingColor: UIColor? = nil, fallbackImage: UIImage? = nil) {
+    public func loadImage(
+        for imagePath: String,
+        imageWidth: CGFloat,
+        loadingColor: UIColor? = nil,
+        fallbackImage: UIImage? = nil,
+        modify: ((UIImage?) -> UIImage?)? = nil
+    ) {
         cancelLoading()
         self.imagePath = imagePath
         self.imageWidth = imageWidth
@@ -42,7 +48,8 @@ public class RemoteImageView: UIImageView {
         } else {
             backgroundColor = loadingColor
             dataSource.remoteImageView(self, loadImageWithPath: imagePath, imageWidth: imageWidth, completion: { [weak self] fetchedImage in
-                self?.setImage(fetchedImage ?? fallbackImage, animated: false)
+                let image = modify?(fetchedImage) ?? fetchedImage
+                self?.setImage(image ?? fallbackImage, animated: false)
             })
         }
     }
