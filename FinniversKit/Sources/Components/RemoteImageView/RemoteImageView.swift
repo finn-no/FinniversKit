@@ -44,7 +44,7 @@ public class RemoteImageView: UIImageView {
         }
 
         if let cachedImage = dataSource.remoteImageView(self, cachedImageWithPath: imagePath, imageWidth: imageWidth) {
-            setImage(cachedImage, animated: false)
+            setImage(modify?(cachedImage) ?? cachedImage, animated: false)
         } else {
             backgroundColor = loadingColor
             dataSource.remoteImageView(self, loadImageWithPath: imagePath, imageWidth: imageWidth, completion: { [weak self] fetchedImage in
