@@ -200,7 +200,7 @@ public final class PromotionFrontPageView: UIView, BasicFrontPageView {
 // MARK: - LoadingRetryViewDelegate
 
 extension PromotionFrontPageView: LoadingRetryViewDelegate {
-    func loadingRetryViewDidSelectButton(_ view: LoadingRetryView) {
+    public func loadingRetryViewDidSelectButton(_ view: LoadingRetryView) {
         adsRetryView.state = .loading
         delegate?.promotionFrontPageViewDidSelectRetryButton(self)
     }

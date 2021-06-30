@@ -198,6 +198,7 @@
 		9BBC904024FD252B0003D2D8 /* UITraitCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC903F24FD252B0003D2D8 /* UITraitCollection+Extensions.swift */; };
 		D6D43CD625BF239E00234AC2 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 46E77597242D6890008A5E93 /* SnapshotTesting */; };
 		DA083C2E2462BCA800B26235 /* SwiftUIDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */; };
+		DA82B1ED268B62D2005F67C3 /* LoadingRetryDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA82B1EC268B62D2005F67C3 /* LoadingRetryDemoView.swift */; };
 		DAE9CA8724602CB000C7552F /* SwiftUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -419,6 +420,7 @@
 		9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoWrapperView.swift; sourceTree = "<group>"; };
 		9BBC903F24FD252B0003D2D8 /* UITraitCollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITraitCollection+Extensions.swift"; sourceTree = "<group>"; };
 		DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDemoViews.swift; sourceTree = "<group>"; };
+		DA82B1EC268B62D2005F67C3 /* LoadingRetryDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingRetryDemoView.swift; sourceTree = "<group>"; };
 		DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -797,6 +799,7 @@
 		46E772CB242CEF09008A5E93 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DA82B1EB268B62B7005F67C3 /* LoadingRetryView */,
 				4D01FC94261C48E1008B9913 /* TransactionEntryView */,
 				4DC8CF342608A71600496DF1 /* PromoSlidesView */,
 				4DC8CEDD2604B62900496DF1 /* PromoLinkView */,
@@ -1683,6 +1686,14 @@
 			path = SwiftUI;
 			sourceTree = "<group>";
 		};
+		DA82B1EB268B62B7005F67C3 /* LoadingRetryView */ = {
+			isa = PBXGroup;
+			children = (
+				DA82B1EC268B62D2005F67C3 /* LoadingRetryDemoView.swift */,
+			);
+			path = LoadingRetryView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1957,6 +1968,7 @@
 				46E7741D242CEF0A008A5E93 /* FloatingButtonDemoView.swift in Sources */,
 				46E7743D242CEF0A008A5E93 /* VerificationViewDefaultData.swift in Sources */,
 				46E773CD242CEF0A008A5E93 /* FavoriteAdCommentInputDemoView.swift in Sources */,
+				DA82B1ED268B62D2005F67C3 /* LoadingRetryDemoView.swift in Sources */,
 				46E77407242CEF0A008A5E93 /* LabelDemoView.swift in Sources */,
 				46E7742B242CEF0A008A5E93 /* KlimabroletDemoViewController.swift in Sources */,
 				46E7742E242CEF0A008A5E93 /* SwitchViewDefaultData.swift in Sources */,

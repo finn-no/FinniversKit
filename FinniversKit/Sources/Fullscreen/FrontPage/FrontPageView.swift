@@ -220,7 +220,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
 // MARK: - LoadingRetryViewDelegate
 
 extension FrontPageView: LoadingRetryViewDelegate {
-    func loadingRetryViewDidSelectButton(_ view: LoadingRetryView) {
+    public func loadingRetryViewDidSelectButton(_ view: LoadingRetryView) {
         adsRetryView.state = .loading
         delegate?.frontPageViewDidSelectRetryButton(self)
     }

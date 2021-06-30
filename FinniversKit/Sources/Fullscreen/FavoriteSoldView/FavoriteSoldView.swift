@@ -240,7 +240,7 @@ public class FavoriteSoldView: UIView {
 // MARK: - LoadingRetryViewDelegate
 
 extension FavoriteSoldView: LoadingRetryViewDelegate {
-    func loadingRetryViewDidSelectButton(_ view: LoadingRetryView) {
+    public func loadingRetryViewDidSelectButton(_ view: LoadingRetryView) {
         adsRetryView.state = .loading
         delegate?.favoriteSoldViewDidTapRetryButton(self)
     }
