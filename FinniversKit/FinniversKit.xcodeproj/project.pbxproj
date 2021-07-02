@@ -1286,6 +1286,7 @@
 			isa = PBXGroup;
 			children = (
 				AA189E80268479B100FD3A41 /* BlockUserView */,
+				DA82B1EA268B61AA005F67C3 /* LoadingRetryView */,
 				4D0CF28B261C46670008CC43 /* TransactionEntryView */,
 				4DC8CF2F2608A3E600496DF1 /* PromoSlideView */,
 				4DC8CED82604B59700496DF1 /* PromoLinkView */,
@@ -1466,7 +1467,6 @@
 		447AFC0E20984B63000F793E /* FrontPage */ = {
 			isa = PBXGroup;
 			children = (
-				CFE43E51219B1B2900D3D5F7 /* LoadingRetryView.swift */,
 				CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */,
 				8D68025D897874AE8DAB4E46 /* PromotionFrontPageView.swift */,
 				4D1051C9260CD4400073D1F4 /* BasicFrontPageView.swift */,
@@ -2746,6 +2746,14 @@
 				DA5A858B24617DF000AC0DFE /* ImageExtensions.swift */,
 			);
 			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		DA82B1EA268B61AA005F67C3 /* LoadingRetryView */ = {
+			isa = PBXGroup;
+			children = (
+				CFE43E51219B1B2900D3D5F7 /* LoadingRetryView.swift */,
+			);
+			path = LoadingRetryView;
 			sourceTree = "<group>";
 		};
 		DAA9A3A2210214B80021F7DC /* SelectionBoxes */ = {

@@ -4,24 +4,24 @@
 
 import UIKit
 
-protocol LoadingRetryViewDelegate: AnyObject {
+public protocol LoadingRetryViewDelegate: AnyObject {
     func loadingRetryViewDidSelectButton(_ view: LoadingRetryView)
 }
 
-final class LoadingRetryView: UIView {
-    enum State {
+public final class LoadingRetryView: UIView {
+    public enum State {
         case hidden, labelAndButton, loading
     }
 
-    weak var delegate: LoadingRetryViewDelegate?
+    public weak var delegate: LoadingRetryViewDelegate?
 
-    var state: State = .hidden {
+    public var state: State = .hidden {
         didSet {
             configure(for: state)
         }
     }
 
-    override var intrinsicContentSize: CGSize {
+    public override var intrinsicContentSize: CGSize {
         return CGSize(width: bounds.width, height: button.frame.maxY)
     }
 
@@ -50,19 +50,19 @@ final class LoadingRetryView: UIView {
 
     // MARK: - Init
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
         configure(for: state)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - Setup
 
-    func set(labelText: String?, buttonText: String?) {
+    public func set(labelText: String?, buttonText: String?) {
         label.text = labelText
         button.setTitle(buttonText, for: .normal)
     }
