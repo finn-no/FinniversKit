@@ -65,6 +65,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case promoLinkView
     case promoSlidesView
     case transactionEntryView
+    case blockUserView
 
     public var viewController: UIViewController {
         switch self {
@@ -197,6 +198,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<PromoSlidesDemoView>()
         case .transactionEntryView:
             return DemoViewController<TransactionEntryDemoView>()
+        case .blockUserView:
+            return DemoViewController<BlockUserDemoView>()
         }
     }
 }

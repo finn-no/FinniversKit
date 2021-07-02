@@ -262,4 +262,8 @@ class ComponentViewTests: XCTestCase {
     func testTransactionEntryView() {
         snapshot(.transactionEntryView)
     }
+
+    func testBlockUserView() {
+        snapshot(.blockUserView)
+    }
 }
