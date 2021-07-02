@@ -266,4 +266,8 @@ class ComponentViewTests: XCTestCase {
     func testLoadingRetryView() {
         snapshot(.loadingRetryView)
     }
+
+    func testBlockUserView() {
+        snapshot(.blockUserView)
+    }
 }
