@@ -45,6 +45,7 @@ public class ResultView: UIView {
 
     private lazy var iconHeightConstraint: NSLayoutConstraint = iconImageView.heightAnchor.constraint(equalToConstant: 40)
 
+    // MARK: Public variables
     public weak var delegate: ResultViewDelegate?
 
     // MARK: - Initializers
