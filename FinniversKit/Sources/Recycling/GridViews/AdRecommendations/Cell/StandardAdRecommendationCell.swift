@@ -80,18 +80,22 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         return label
     }()
 
-    private lazy var imageDescriptionView: UIView = {
-        let view = UILabel(withAutoLayout: true)
-        view.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
+    private lazy var imageDescriptionView: UIVisualEffectView = {
+        let view = UIVisualEffectView(withAutoLayout: true)
+        if #available(iOS 13.0, *) {
+            view.effect = UIBlurEffect(style: .systemUltraThinMaterialDark)
+        } else {
+            view.effect = nil
+            view.backgroundColor = UIColor(hex: "#262626").withAlphaComponent(0.8)
+        }
         view.alpha = 1.0
-        view.layer.cornerRadius = StandardAdRecommendationCell.cornerRadius
-        view.layer.masksToBounds = true
-        view.layer.maskedCorners = [.layerMaxXMinYCorner]
+        view.layer.cornerRadius = StandardAdRecommendationCell.imageDescriptionHeight / 2
+        view.clipsToBounds = true
         return view
     }()
 
     private lazy var imageTextLabel: Label = {
-        let label = Label(style: .bodyStrong)
+        let label = Label(style: .captionStrong)
         label.textColor = .textTertiary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
@@ -167,8 +171,8 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         contentView.addSubview(favoriteButton)
         contentView.addSubview(accessoryLabel)
 
-        imageDescriptionView.addSubview(iconImageView)
-        imageDescriptionView.addSubview(imageTextLabel)
+        imageDescriptionView.contentView.addSubview(iconImageView)
+        imageDescriptionView.contentView.addSubview(imageTextLabel)
 
         backgroundColor = .bgPrimary
 
@@ -215,11 +219,11 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
             imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: StandardAdRecommendationCell.margin),
             imageTextLabel.centerYAnchor.constraint(equalTo: imageDescriptionView.centerYAnchor),
 
-            imageDescriptionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageDescriptionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             imageDescriptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: StandardAdRecommendationCell.margin),
             imageDescriptionView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor),
             imageDescriptionView.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.imageDescriptionHeight),
-            imageDescriptionView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor),
+            imageDescriptionView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: -8),
 
             favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXS),
             favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingXS),
