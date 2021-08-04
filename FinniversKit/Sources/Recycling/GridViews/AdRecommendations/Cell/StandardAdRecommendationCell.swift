@@ -83,7 +83,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     private lazy var imageDescriptionView: UIVisualEffectView = {
         let view = UIVisualEffectView(withAutoLayout: true)
         if #available(iOS 13.0, *) {
-            view.effect = UIBlurEffect(style: .systemUltraThinMaterialDark)
+            view.effect = UIBlurEffect(style: .systemThinMaterialDark)
         } else {
             view.effect = nil
             view.backgroundColor = UIColor(hex: "#262626").withAlphaComponent(0.8)
