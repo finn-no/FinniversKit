@@ -15,9 +15,10 @@ extension XCTestCase {
         record recording: Bool = false,
         file: StaticString = #file,
         testName: String = #function,
-        line: UInt = #line
+        line: UInt = #line,
+        drawHierarchyInKeyWindow: Bool = false
     ) {
-        var snapshotting: Snapshotting = .image(on: .iPhoneX)
+        var snapshotting: Snapshotting = drawHierarchyInKeyWindow ? .image(drawHierarchyInKeyWindow: true) : .image(on: .iPhoneX)
         if let delay = delay {
             snapshotting = .wait(for: delay, on: snapshotting)
         }
