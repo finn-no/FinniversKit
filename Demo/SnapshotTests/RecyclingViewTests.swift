@@ -28,7 +28,7 @@ class RecyclingViewTests: XCTestCase {
     }
 
     func testAdRecommendationsGridView() {
-        snapshot(.adRecommendationsGridView, drawHierarchyInKeyWindow: true)
+        snapshot(.adRecommendationsGridView)
     }
 
     func testFavoritesListView() {

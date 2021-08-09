@@ -122,7 +122,7 @@ class FullscreenViewTests: XCTestCase {
     }
 
     func testFavoriteSold() {
-        snapshot(.favoriteSold, drawHierarchyInKeyWindow: true)
+        snapshot(.favoriteSold)
     }
 
     func testConfettiView() {
@@ -134,6 +134,6 @@ class FullscreenViewTests: XCTestCase {
     }
 
     func testPromotionFrontPageView() {
-        snapshot(.promotionFrontPageView, drawHierarchyInKeyWindow: true)
+        snapshot(.promotionFrontPageView)
     }
 }
