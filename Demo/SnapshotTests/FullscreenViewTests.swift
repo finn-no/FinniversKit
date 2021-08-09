@@ -9,8 +9,8 @@ import FinniversKit
 class FullscreenViewTests: XCTestCase {
     private let excludedComponents: [FullscreenDemoViews] = [.pianoView]
 
-    private func snapshot(_ component: FullscreenDemoViews, includeIPad: Bool = false, delay: TimeInterval? = nil, record: Bool = false, testName: String = #function) {
-        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, delay: delay, record: record, testName: testName)
+    private func snapshot(_ component: FullscreenDemoViews, includeIPad: Bool = false, delay: TimeInterval? = nil, record: Bool = false, testName: String = #function, drawHierarchyInKeyWindow: Bool = false) {
+        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, delay: delay, record: record, testName: testName, drawHierarchyInKeyWindow: drawHierarchyInKeyWindow)
     }
 
     // MARK: - Tests
@@ -22,7 +22,7 @@ class FullscreenViewTests: XCTestCase {
     }
 
     func testFrontpageView() {
-        snapshot(.frontPageView)
+        snapshot(.frontPageView, drawHierarchyInKeyWindow: true)
     }
 
     func testPopupView() {
@@ -122,7 +122,7 @@ class FullscreenViewTests: XCTestCase {
     }
 
     func testFavoriteSold() {
-        snapshot(.favoriteSold)
+        snapshot(.favoriteSold, drawHierarchyInKeyWindow: true)
     }
 
     func testConfettiView() {
@@ -134,6 +134,6 @@ class FullscreenViewTests: XCTestCase {
     }
 
     func testPromotionFrontPageView() {
-        snapshot(.promotionFrontPageView)
+        snapshot(.promotionFrontPageView, drawHierarchyInKeyWindow: true)
     }
 }
