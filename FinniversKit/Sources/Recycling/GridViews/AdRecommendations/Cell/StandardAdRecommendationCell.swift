@@ -118,6 +118,9 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         equalTo: ribbonView.bottomAnchor,
         constant: StandardAdRecommendationCell.subtitleTopMargin
     )
+    
+    private var iconImageLeadingConstraint: NSLayoutConstraint?
+    private var iconCenterXConstraint: NSLayoutConstraint?
 
     private var model: StandardAdRecommendationViewModel?
 
@@ -211,7 +214,6 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
             accessoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             accessoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -StandardAdRecommendationCell.bottomMargin),
 
-            iconImageView.leadingAnchor.constraint(equalTo: imageDescriptionView.leadingAnchor, constant: StandardAdRecommendationCell.margin),
             iconImageView.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.iconSize),
             iconImageView.widthAnchor.constraint(equalToConstant: StandardAdRecommendationCell.iconSize),
             iconImageView.centerYAnchor.constraint(equalTo: imageDescriptionView.centerYAnchor),
@@ -219,18 +221,27 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
             imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: StandardAdRecommendationCell.margin),
             imageTextLabel.centerYAnchor.constraint(equalTo: imageDescriptionView.centerYAnchor),
 
-            imageDescriptionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            imageDescriptionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingS),
             imageDescriptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: StandardAdRecommendationCell.margin),
             imageDescriptionView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor),
             imageDescriptionView.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.imageDescriptionHeight),
-            imageDescriptionView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: -8),
+            imageDescriptionView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: -.spacingS),
 
             favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXS),
             favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingXS),
             favoriteButton.widthAnchor.constraint(equalToConstant: 34),
             favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.heightAnchor)
         ])
+        
+        // Storing a reference to the leading and centerX constraint for the iconImage so that we can update the icon alignment when needed
+        self.iconImageLeadingConstraint = iconImageView.leadingAnchor.constraint(equalTo: imageDescriptionView.leadingAnchor, constant: StandardAdRecommendationCell.margin, priority: .defaultHigh)
+        self.iconCenterXConstraint = iconImageView.centerXAnchor.constraint(equalTo: imageDescriptionView.contentView.centerXAnchor, constant: 0, priority: .defaultLow)
+        
+        self.iconImageLeadingConstraint?.isActive = true
+        self.iconCenterXConstraint?.isActive = true
     }
+    
+    
 
     // MARK: - Superclass Overrides
 
@@ -291,6 +302,13 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
                 imageView.contentMode = .scaleAspectFit
                 imageContentView.backgroundColor = .white
             }
+        }
+        
+        // update imageDescriptionView visibility
+        if let imageText = model?.imageText {
+            centerIconInContainer(imageText.trimmingCharacters(in: .whitespaces).isEmpty)
+        } else {
+            centerIconInContainer(true)
         }
     }
 
@@ -375,6 +393,15 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         } else {
             performViewChanges()
         }
+    }
+    
+    private func centerIconInContainer(_ shouldCenter: Bool) {
+        guard let leadingConstraint = self.iconImageLeadingConstraint,
+              let centerXConstraint = self.iconCenterXConstraint else {
+            return
+        }
+        leadingConstraint.priority = shouldCenter ? .defaultLow : .defaultHigh
+        centerXConstraint.priority = shouldCenter ? .defaultHigh : .defaultLow
     }
 
     private var defaultImage: UIImage? {
