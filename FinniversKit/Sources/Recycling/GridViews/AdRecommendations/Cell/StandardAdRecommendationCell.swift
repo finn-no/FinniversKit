@@ -233,8 +233,8 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         ])
         
         // Storing a reference to the trailing constraint for the imageDescriotionView so that we can update the icon alignment when needed
-        self.imageDescriptionViewTrailingConstraint = imageDescriptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: StandardAdRecommendationCell.margin)
-        self.imageDescriptionViewTrailingConstraint?.isActive = true
+        imageDescriptionViewTrailingConstraint = imageDescriptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: StandardAdRecommendationCell.margin)
+        imageDescriptionViewTrailingConstraint?.isActive = true
     }
     
     
