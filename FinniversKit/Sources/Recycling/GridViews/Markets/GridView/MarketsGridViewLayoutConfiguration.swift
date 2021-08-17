@@ -26,60 +26,51 @@ enum MarketsGridViewLayoutConfiguration {
     var interimSpacing: CGFloat {
         switch self {
         case .large:
-            return 0
+            return .spacingS
         default:
-            return 0
+            return .spacingS
         }
     }
 
     var sideMargins: CGFloat {
         switch self {
         case .large:
-            return 20
+            return .spacingM
         default:
-            return 16
+            return .spacingM
         }
     }
 
     var edgeInsets: UIEdgeInsets {
         switch self {
         case .large:
-            return UIEdgeInsets(top: 16, left: sideMargins, bottom: 0, right: sideMargins)
+            return UIEdgeInsets(top: 0, left: sideMargins, bottom: 0, right: sideMargins)
         default:
-            return UIEdgeInsets(top: 8, left: sideMargins, bottom: 0, right: sideMargins)
+            return UIEdgeInsets(top: 0, left: sideMargins, bottom: 0, right: sideMargins)
         }
     }
 
     var lineSpacing: CGFloat {
         switch self {
         case .large:
-            return 30
+            return .spacingS
         default:
-            return 16
+            return .spacingS
         }
     }
 
     var itemsPerRow: CGFloat {
+        return 2
+    }
+    
+    var columns: CGFloat {
         switch self {
-        case .large:
-            if UIScreen.main.bounds.width > MarketsGridViewLayoutConfiguration.portraitModeScreenWidth {
-                return 6
-            } else {
-                return 5
-            }
-        case .medium:
-            return 4
-        case .small:
-            return 3
+        case .large: return 6
+        default: return 4
         }
     }
 
     var itemHeight: CGFloat {
-        switch self {
-        case .large:
-            return 80
-        default:
-            return 60
-        }
+        return 72
     }
 }
