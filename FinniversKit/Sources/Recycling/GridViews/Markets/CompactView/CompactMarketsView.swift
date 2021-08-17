@@ -29,9 +29,25 @@ public class CompactMarketsView: UIView, MarketsView {
         return collectionView
     }()
 
-    private lazy var hairlineView: UIView = {
+    private lazy var smallShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .tableViewSeparator
+        view.backgroundColor = Config.colorProvider.bgPrimary
+        view.layer.masksToBounds = false
+        view.layer.shadowColor = Config.colorProvider.tileShadow.cgColor
+        view.layer.shadowOpacity = 0.24
+        view.layer.shadowOffset = CGSize(width: 0, height: 1)
+        view.layer.shadowRadius = 1
+        return view
+    }()
+    
+    private lazy var bigShadowView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = Config.colorProvider.bgPrimary
+        view.layer.masksToBounds = false
+        view.layer.shadowColor = Config.colorProvider.tileShadow.cgColor
+        view.layer.shadowOpacity = 0.16
+        view.layer.shadowOffset = CGSize(width: 0, height: 1 )
+        view.layer.shadowRadius = 5
         return view
     }()
 
@@ -63,20 +79,22 @@ public class CompactMarketsView: UIView, MarketsView {
     // MARK: - Setup
 
     private func setup() {
+        backgroundColor = Config.colorProvider.bgPrimary
+        clipsToBounds = false
+        
+        addSubview(bigShadowView)
+        addSubview(smallShadowView)
         addSubview(collectionView)
-        addSubview(hairlineView)
+        
 
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            hairlineView.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
-            hairlineView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            hairlineView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            hairlineView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            hairlineView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale)
-        ])
+        smallShadowView.fillInSuperview()
+        bigShadowView.fillInSuperview()
+        collectionView.fillInSuperview()
+    }
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        styleShadowAfterLayout()
     }
 
     // MARK: - Public methods
@@ -129,5 +147,20 @@ extension CompactMarketsView: UICollectionViewDataSource {
 extension CompactMarketsView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.marketsView(self, didSelectItemAtIndex: indexPath.row)
+    }
+}
+
+// MARK: - Private functions
+private extension CompactMarketsView {
+    func styleShadowAfterLayout() {
+        self.bigShadowView.layer.shadowPath = UIBezierPath(rect: CGRect(x: 0,
+                                                                        y: bigShadowView.bounds.maxY - bigShadowView.layer.shadowRadius,
+                                                                        width: bigShadowView.bounds.width,
+                                                                        height: bigShadowView.layer.shadowRadius)).cgPath
+        self.smallShadowView.layer.shadowPath = UIBezierPath(rect: CGRect(x: 0,
+                                                                        y: smallShadowView.bounds.maxY - smallShadowView.layer.shadowRadius,
+                                                                        width: smallShadowView.bounds.width,
+                                                                        height: smallShadowView.layer.shadowRadius)).cgPath
+        
     }
 }
