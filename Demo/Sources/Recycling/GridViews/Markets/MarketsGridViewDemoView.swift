@@ -5,7 +5,7 @@
 import FinniversKit
 
 class MarketDataSource: NSObject {
-    var models = Market.allMarkets
+    var models = Market.newMarkets
 }
 
 public class MarketsGridViewDemoView: UIView {
@@ -25,7 +25,12 @@ public class MarketsGridViewDemoView: UIView {
         let collectionView = MarketsGridView(delegate: self, dataSource: self)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(collectionView)
-        collectionView.fillInSuperview()
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.heightAnchor.constraint(equalToConstant: collectionView.calculateSize(constrainedTo: self.frame.width).height)
+        ])
     }
 }
 
