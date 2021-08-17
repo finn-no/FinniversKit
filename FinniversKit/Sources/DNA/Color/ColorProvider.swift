@@ -33,6 +33,8 @@ public protocol ColorProvider {
     var iconPrimary: UIColor { get }
     var iconSecondary: UIColor { get }
     var iconTertiary: UIColor { get }
+    var tileShadow: UIColor { get }
+    var tileBackgroundColor: UIColor { get }
 }
 
 // MARK: - Default FINN colors
@@ -148,5 +150,15 @@ public struct DefaultColorProvider: ColorProvider {
 
     public var iconTertiary: UIColor {
         return .textTertiary
+    }
+    
+    // MARK: - Temp Markets Color
+    
+    public var tileShadow: UIColor {
+        return .blueGray600
+    }
+    
+    public var tileBackgroundColor: UIColor {
+        return .dynamicColorIfAvailable(defaultColor: .coolGray100, darkModeColor: .blueGray700)
     }
 }

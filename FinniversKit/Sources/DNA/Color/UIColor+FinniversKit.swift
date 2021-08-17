@@ -206,6 +206,21 @@ import UIKit
     }
 }
 
+// MARK: - Temp Markets colors
+extension UIColor {
+    public class var blueGray600: UIColor {
+        return UIColor(hex: "#475569")
+    }
+
+    public class var coolGray100: UIColor {
+        return UIColor(hex: "#F3F4F6")
+    }
+    
+    public class var blueGray700: UIColor {
+        return UIColor(hex: "#323241")
+    }
+}
+
 // MARK: - FINN CGColors
 extension CGColor {
     public class var ice: CGColor {
