@@ -21,7 +21,7 @@ public class CompactMarketsDemoView: UIView {
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 80)
+            collectionView.heightAnchor.constraint(equalToConstant: collectionView.calculateSize(constrainedTo: bounds.width).height)
         ])
     }
 }
