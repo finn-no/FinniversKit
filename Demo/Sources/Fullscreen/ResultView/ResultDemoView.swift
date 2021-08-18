@@ -43,6 +43,7 @@ class ResultDemoView: UIView, Tweakable {
             self.resultView.configure(
                 title: "Usjda!",
                 description: "Noe gikk galt.",
+                actionButtonTitle: "Prøv igjen",
                 icon: UIImage(named: .dissatisfiedFace),
                 backgroundColor: .bgPrimary,
                 iconTintColor: .textCritical,

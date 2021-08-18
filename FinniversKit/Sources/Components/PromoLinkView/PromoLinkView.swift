@@ -35,9 +35,10 @@ public class PromoLinkView: UIView {
 
     // MARK: - Init
 
-    public init(delegate: PromoLinkViewDelegate?) {
+    public init(delegate: PromoLinkViewDelegate?, withAutoLayout: Bool = false) {
         self.delegate = delegate
         super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setup()
     }
 

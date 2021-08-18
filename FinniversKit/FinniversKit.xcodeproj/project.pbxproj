@@ -127,8 +127,13 @@
 		4940480023CDBEC500ECBCFD /* ViewingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494047FF23CDBEC500ECBCFD /* ViewingsView.swift */; };
 		4940480223CDC0F000ECBCFD /* ViewingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940480123CDC0F000ECBCFD /* ViewingCell.swift */; };
 		496F8C142473DCC600AE0735 /* FavoriteSoldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F8C132473DCC600AE0735 /* FavoriteSoldView.swift */; };
+		4D01FD5C261C9A5C008B9913 /* TransactionStepIllustrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01FD5B261C9A5C008B9913 /* TransactionStepIllustrationView.swift */; };
+		4D01FD60261DC61C008B9913 /* TransactionEntrySlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01FD5F261DC61C008B9913 /* TransactionEntrySlideView.swift */; };
+		4D0CF28D261C467B0008CC43 /* TransactionEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0CF28C261C467B0008CC43 /* TransactionEntryView.swift */; };
 		4D1051CA260CD4400073D1F4 /* BasicFrontPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1051C9260CD4400073D1F4 /* BasicFrontPageView.swift */; };
 		4D152E742577D7D300282244 /* NavigationLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D152E732577D7D300282244 /* NavigationLinkView.swift */; };
+		4D3D48EA26394C1E006A0181 /* TransactionStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D48E926394C1E006A0181 /* TransactionStepView.swift */; };
+		4D3D48EE26394C3E006A0181 /* TransactionEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D48ED26394C3E006A0181 /* TransactionEntryViewModel.swift */; };
 		4DC8CEDA2604B59700496DF1 /* PromoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8CED92604B59700496DF1 /* PromoLinkView.swift */; };
 		4DC8CF312608A3F300496DF1 /* PromoSlidesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8CF302608A3F300496DF1 /* PromoSlidesView.swift */; };
 		4DC8CF392608B2E200496DF1 /* BasicPromoSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8CF382608B2E200496DF1 /* BasicPromoSlideView.swift */; };
@@ -287,6 +292,8 @@
 		9F213D4043DC51660E6EF81B /* FullscreenGalleryTransitionAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21354AF1CEB17C6CD55DCE /* FullscreenGalleryTransitionAware.swift */; };
 		9F213D5FD69FD3EAE67A4D2D /* FullscreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21379B5A6F7C76368BD8AF /* FullscreenImageViewController.swift */; };
 		9F213EA8026933194D7483E0 /* FullscreenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F213568D13E929BBB70CF2F /* FullscreenImageView.swift */; };
+		AA189E82268479DB00FD3A41 /* BlockUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA189E81268479DB00FD3A41 /* BlockUserView.swift */; };
+		AA189E8B26847FA900FD3A41 /* BlockUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA189E8A26847FA900FD3A41 /* BlockUserViewModel.swift */; };
 		AADED71C223FE25500647C50 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADED71B223FE25500647C50 /* UIDevice.swift */; };
 		AF91BB97202C74D0003E6366 /* BroadcastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BB96202C74D0003E6366 /* BroadcastItem.swift */; };
 		AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BBA0202C8B72003E6366 /* Broadcast+Style.swift */; };
@@ -562,8 +569,13 @@
 		494047FF23CDBEC500ECBCFD /* ViewingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingsView.swift; sourceTree = "<group>"; };
 		4940480123CDC0F000ECBCFD /* ViewingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingCell.swift; sourceTree = "<group>"; };
 		496F8C132473DCC600AE0735 /* FavoriteSoldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteSoldView.swift; sourceTree = "<group>"; };
+		4D01FD5B261C9A5C008B9913 /* TransactionStepIllustrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepIllustrationView.swift; sourceTree = "<group>"; };
+		4D01FD5F261DC61C008B9913 /* TransactionEntrySlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionEntrySlideView.swift; sourceTree = "<group>"; };
+		4D0CF28C261C467B0008CC43 /* TransactionEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionEntryView.swift; sourceTree = "<group>"; };
 		4D1051C9260CD4400073D1F4 /* BasicFrontPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicFrontPageView.swift; sourceTree = "<group>"; };
 		4D152E732577D7D300282244 /* NavigationLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkView.swift; sourceTree = "<group>"; };
+		4D3D48E926394C1E006A0181 /* TransactionStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepView.swift; sourceTree = "<group>"; };
+		4D3D48ED26394C3E006A0181 /* TransactionEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionEntryViewModel.swift; sourceTree = "<group>"; };
 		4DC8CED92604B59700496DF1 /* PromoLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromoLinkView.swift; sourceTree = "<group>"; };
 		4DC8CF302608A3F300496DF1 /* PromoSlidesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoSlidesView.swift; sourceTree = "<group>"; };
 		4DC8CF382608B2E200496DF1 /* BasicPromoSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPromoSlideView.swift; sourceTree = "<group>"; };
@@ -722,6 +734,8 @@
 		9F213B88B6D6E66371A88079 /* FullscreenGalleryTransitionPresenterDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenGalleryTransitionPresenterDelegate.swift; sourceTree = "<group>"; };
 		9F213CB3556A74594DB59E93 /* KeyboardNotificationInfoTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationInfoTest.swift; sourceTree = "<group>"; };
 		9F213F9DEE0BF048DD9B29FB /* GalleryPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryPreviewView.swift; sourceTree = "<group>"; };
+		AA189E81268479DB00FD3A41 /* BlockUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUserView.swift; sourceTree = "<group>"; };
+		AA189E8A26847FA900FD3A41 /* BlockUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUserViewModel.swift; sourceTree = "<group>"; };
 		AADED71B223FE25500647C50 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		AF91BB96202C74D0003E6366 /* BroadcastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastItem.swift; sourceTree = "<group>"; };
 		AF91BBA0202C8B72003E6366 /* Broadcast+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Broadcast+Style.swift"; sourceTree = "<group>"; };
@@ -1275,6 +1289,9 @@
 		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				AA189E80268479B100FD3A41 /* BlockUserView */,
+				DA82B1EA268B61AA005F67C3 /* LoadingRetryView */,
+				4D0CF28B261C46670008CC43 /* TransactionEntryView */,
 				4DC8CF2F2608A3E600496DF1 /* PromoSlideView */,
 				4DC8CED82604B59700496DF1 /* PromoLinkView */,
 				4D152E722577D7C400282244 /* NavigationLinkView */,
@@ -1455,7 +1472,6 @@
 		447AFC0E20984B63000F793E /* FrontPage */ = {
 			isa = PBXGroup;
 			children = (
-				CFE43E51219B1B2900D3D5F7 /* LoadingRetryView.swift */,
 				CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */,
 				8D68025D897874AE8DAB4E46 /* PromotionFrontPageView.swift */,
 				4D1051C9260CD4400073D1F4 /* BasicFrontPageView.swift */,
@@ -1722,6 +1738,17 @@
 			path = FavoriteSoldView;
 			sourceTree = "<group>";
 		};
+		4D0CF28B261C46670008CC43 /* TransactionEntryView */ = {
+			isa = PBXGroup;
+			children = (
+				4D0CF28C261C467B0008CC43 /* TransactionEntryView.swift */,
+				4D01FD5B261C9A5C008B9913 /* TransactionStepIllustrationView.swift */,
+				4D3D48E926394C1E006A0181 /* TransactionStepView.swift */,
+				4D3D48ED26394C3E006A0181 /* TransactionEntryViewModel.swift */,
+			);
+			path = TransactionEntryView;
+			sourceTree = "<group>";
+		};
 		4D152E722577D7C400282244 /* NavigationLinkView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1743,6 +1770,7 @@
 			children = (
 				4DC8CF302608A3F300496DF1 /* PromoSlidesView.swift */,
 				4DC8CF382608B2E200496DF1 /* BasicPromoSlideView.swift */,
+				4D01FD5F261DC61C008B9913 /* TransactionEntrySlideView.swift */,
 			);
 			path = PromoSlideView;
 			sourceTree = "<group>";
@@ -2339,6 +2367,15 @@
 			path = FullscreenGallery;
 			sourceTree = "<group>";
 		};
+		AA189E80268479B100FD3A41 /* BlockUserView */ = {
+			isa = PBXGroup;
+			children = (
+				AA189E81268479DB00FD3A41 /* BlockUserView.swift */,
+				AA189E8A26847FA900FD3A41 /* BlockUserViewModel.swift */,
+			);
+			path = BlockUserView;
+			sourceTree = "<group>";
+		};
 		AF91BB95202C7487003E6366 /* Broadcast */ = {
 			isa = PBXGroup;
 			children = (
@@ -2733,6 +2770,14 @@
 			path = SwiftUI;
 			sourceTree = "<group>";
 		};
+		DA82B1EA268B61AA005F67C3 /* LoadingRetryView */ = {
+			isa = PBXGroup;
+			children = (
+				CFE43E51219B1B2900D3D5F7 /* LoadingRetryView.swift */,
+			);
+			path = LoadingRetryView;
+			sourceTree = "<group>";
+		};
 		DAA9A3A2210214B80021F7DC /* SelectionBoxes */ = {
 			isa = PBXGroup;
 			children = (
@@ -3111,6 +3156,7 @@
 				44A557B622E72187001667AE /* CheckboxTableViewCell.swift in Sources */,
 				CF376C18231D452100ED2B24 /* Array+Step.swift in Sources */,
 				F288CB3E233CD53400C1EE8A /* UserAdsRatingView.swift in Sources */,
+				4D01FD5C261C9A5C008B9913 /* TransactionStepIllustrationView.swift in Sources */,
 				45EDD62F20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift in Sources */,
 				CF164CFD230EB0F900250822 /* CheckmarkImageView.swift in Sources */,
 				9B06096823F14B0A005CB592 /* SafetyElementViewModel.swift in Sources */,
@@ -3157,9 +3203,11 @@
 				44A149ED21377C7B0053D5F7 /* SavedSearchesListViewModel.swift in Sources */,
 				9BEB287B231D484B00D28BAD /* LoanHeaderView.swift in Sources */,
 				496F8C142473DCC600AE0735 /* FavoriteSoldView.swift in Sources */,
+				AA189E8B26847FA900FD3A41 /* BlockUserViewModel.swift in Sources */,
 				CF7496BF23BE26D700D60901 /* FavoriteFolderActionView.swift in Sources */,
 				CF164CF0230E7FF100250822 /* FavoriteFolderShareToggleView.swift in Sources */,
 				9B06097323F14BD6005CB592 /* ElementContentView.swift in Sources */,
+				4D3D48EE26394C3E006A0181 /* TransactionEntryViewModel.swift in Sources */,
 				F253C5142314015C008175FD /* VerificationViewModel.swift in Sources */,
 				CF16F73823292D34006566DE /* FavoriteAdCommentView.swift in Sources */,
 				DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */,
@@ -3242,6 +3290,7 @@
 				9BA8248623859B4400163F24 /* MapZoomRange.swift in Sources */,
 				CF136ACF220327F500247B30 /* InfoboxViewModel.swift in Sources */,
 				91341EDD23C46BE5005B65CF /* NativeAdvertRibbon.swift in Sources */,
+				4D3D48EA26394C1E006A0181 /* TransactionStepView.swift in Sources */,
 				CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */,
 				CF13D6D12292D50C0087DA37 /* PhaseView.swift in Sources */,
 				14EBA258215A633800613E5A /* LoadingView.swift in Sources */,
@@ -3367,6 +3416,7 @@
 				CF164CE8230D8D9700250822 /* FavoriteFolderAction.swift in Sources */,
 				4DC8CEDA2604B59700496DF1 /* PromoLinkView.swift in Sources */,
 				DAD6EB2B2369916100968497 /* SettingsSectionHeaderView.swift in Sources */,
+				4D0CF28D261C467B0008CC43 /* TransactionEntryView.swift in Sources */,
 				4408A6A52027AC41008C0BD9 /* UIFont+FinniversKit.swift in Sources */,
 				4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */,
 				CFFDF89722F311F600FE68EA /* NeighborhoodProfileView.swift in Sources */,
@@ -3403,6 +3453,7 @@
 				449C60B4234DD85C00C51A63 /* ShadowScrollView.swift in Sources */,
 				CF164D212310138900250822 /* FavoriteAdActionHeaderView.swift in Sources */,
 				45B2E06A207CF5C100C68B92 /* StringExtensions.swift in Sources */,
+				AA189E82268479DB00FD3A41 /* BlockUserView.swift in Sources */,
 				4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */,
 				9BB6802F2462F763001ADACF /* Font+SwiftUI.swift in Sources */,
 				CF3D5EE4215A65D7006E4D08 /* Instrument.swift in Sources */,
@@ -3435,6 +3486,7 @@
 				9F2133BEBE174152BD809417 /* GalleryPreviewView.swift in Sources */,
 				9F213ABAE416284A53AC6BA5 /* GalleryPreviewCell.swift in Sources */,
 				9F213EA8026933194D7483E0 /* FullscreenImageView.swift in Sources */,
+				4D01FD60261DC61C008B9913 /* TransactionEntrySlideView.swift in Sources */,
 				9F213036DE161042F54529B0 /* FullscreenGalleryTransitioningController.swift in Sources */,
 				CF13D6CF2292D40F0087DA37 /* PhaseViewModel.swift in Sources */,
 				918C8A4223A3853400B566DE /* NativeAdvertGridView.swift in Sources */,

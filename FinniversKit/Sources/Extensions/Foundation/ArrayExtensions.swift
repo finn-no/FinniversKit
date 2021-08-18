@@ -17,8 +17,8 @@ extension Array {
 }
 
 public extension Array where Element == String {
-    func bulletPoints(withFont font: UIFont) -> NSAttributedString {
-        return NSAttributedString.bulletPoints(from: self, font: font)
+    func bulletPoints(withFont font: UIFont, paragraphSpacing: CGFloat = 6) -> NSAttributedString {
+        return NSAttributedString.bulletPoints(from: self, font: font, paragraphSpacing: paragraphSpacing)
     }
 }
 

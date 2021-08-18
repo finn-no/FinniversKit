@@ -9,7 +9,6 @@ public protocol ContractActionViewDelegate: AnyObject {
 }
 
 public class ContractActionView: UIView {
-
     // MARK: - Public properties
 
     public weak var delegate: ContractActionViewDelegate?
@@ -18,12 +17,24 @@ public class ContractActionView: UIView {
 
     // MARK: - Private properties
 
-    private let buttonStyle = Button.Style.default.overrideStyle(borderColor: .btnDisabled)
+    private lazy var imageView: UIImageView = UIImageView(withAutoLayout: true)
 
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [bulletListLabel, actionButton])
+    private lazy var titleLabel: Label = {
+        let label = Label(style: .title3Strong, withAutoLayout: true)
+        label.numberOfLines = 0
+        return label
+    }()
+
+    private lazy var subtitleLabel: Label = {
+        let label = Label(style: .bodyStrong, withAutoLayout: true)
+        label.numberOfLines = 0
+        return label
+    }()
+
+    private lazy var titleSubtitleStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = .spacingL
+        stackView.spacing = .spacingXS
         stackView.axis = .vertical
         return stackView
     }()
@@ -34,10 +45,18 @@ public class ContractActionView: UIView {
         return label
     }()
 
+    private let buttonStyle = Button.Style.default.overrideStyle(borderColor: .btnDisabled)
+
     private lazy var actionButton: Button = {
         let button = Button(style: buttonStyle, size: .normal, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleActionButtonTap), for: .touchUpInside)
         return button
+    }()
+
+    private lazy var contentStackView: UIStackView = {
+        let stackView = UIStackView(axis: .vertical, spacing: .spacingL, withAutoLayout: true)
+        stackView.addArrangedSubviews([titleSubtitleStackView, bulletListLabel, actionButton])
+        return stackView
     }()
 
     // MARK: - Init
@@ -61,18 +80,50 @@ public class ContractActionView: UIView {
             trailing: .spacingM
         )
 
-        addSubview(stackView)
-        stackView.fillInSuperviewLayoutMargins()
+        addSubview(contentStackView)
+        contentStackView.fillInSuperviewLayoutMargins()
     }
 
     // MARK: - Public methods
 
-    public func configure(with viewModel: ContractActionViewModel) {
+    public func configure(
+        with viewModel: ContractActionViewModel,
+        trailingImage: UIImage? = nil,
+        paragraphSpacing: CGFloat = 6
+    ) {
+        if let title = viewModel.title, !title.isEmpty {
+            titleLabel.text = title
+            titleLabel.isHidden = false
+        } else {
+            titleLabel.isHidden = true
+        }
+
+        if let subtitle = viewModel.subtitle, !subtitle.isEmpty {
+            subtitleLabel.text = subtitle
+            subtitleLabel.isHidden = false
+        } else {
+            subtitleLabel.isHidden = true
+        }
+
         self.identifier = viewModel.identifier
         self.buttonUrl = viewModel.buttonUrl
 
-        bulletListLabel.attributedText = viewModel.strings.bulletPoints(withFont: .body)
+        bulletListLabel.attributedText = viewModel.strings.bulletPoints(withFont: .body, paragraphSpacing: paragraphSpacing)
         actionButton.setTitle(viewModel.buttonTitle, for: .normal)
+
+        guard let image = trailingImage else {
+            imageView.removeFromSuperview()
+            return
+        }
+
+        imageView.image = image
+        contentStackView.addSubview(imageView)
+        contentStackView.sendSubviewToBack(imageView)
+
+        NSLayoutConstraint.activate([
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageView.topAnchor.constraint(equalTo: topAnchor)
+        ])
     }
 
     // MARK: - Private methods

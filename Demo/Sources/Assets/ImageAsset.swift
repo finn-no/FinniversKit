@@ -41,8 +41,10 @@ enum ImageAsset: String {
     case boat
     case boatNew
     case car
+    case carIllustration
     case carNew
     case carPromo
+    case carsCircleIllustration
     case checkCircleFilled
     case classifieds
     case classifiedsNew
@@ -62,6 +64,7 @@ enum ImageAsset: String {
     case finnLogoSimple
     case gift
     case heartEmpty
+    case hobbyIllustration
     case home
     case iconRealestateApartments
     case iconRealestateBedrooms
@@ -131,8 +134,10 @@ enum ImageAsset: String {
             .boat,
             .boatNew,
             .car,
+            .carIllustration,
             .carNew,
             .carPromo,
+            .carsCircleIllustration,
             .checkCircleFilled,
             .classifieds,
             .classifiedsNew,
@@ -152,6 +157,7 @@ enum ImageAsset: String {
             .finnLogoSimple,
             .gift,
             .heartEmpty,
+            .hobbyIllustration,
             .home,
             .iconRealestateApartments,
             .iconRealestateBedrooms,

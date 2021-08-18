@@ -30,6 +30,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     }
 
     private weak var delegate: FrontPageViewDelegate?
+
     private var didSetupView = false
 
     // MARK: - Subviews
@@ -38,7 +39,6 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     private let adRecommendationsGridView: AdRecommendationsGridView
 
     private let promoContainer = UIView(withAutoLayout: true)
-    private var promoLinkView: PromoLinkView?
 
     private lazy var headerView = UIView()
 
@@ -62,8 +62,8 @@ public final class FrontPageView: UIView, BasicFrontPageView {
 
     // MARK: - Init
 
-    public convenience init(delegate: FrontPageViewDelegate & MarketsViewDelegate & MarketsViewDataSource & AdRecommendationsGridViewDelegate & PromoLinkViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource, promoLinkViewModel: PromoLinkViewModel?) {
-        self.init(delegate: delegate, marketsViewDelegate: delegate, marketsViewDataSource: delegate, adRecommendationsGridViewDelegate: delegate, adRecommendationsGridViewDataSource: adRecommendationsGridViewDataSource, promoLinkViewDelegate: delegate, promoLinkViewModel: promoLinkViewModel)
+    public convenience init(delegate: FrontPageViewDelegate & MarketsViewDelegate & MarketsViewDataSource & AdRecommendationsGridViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource) {
+        self.init(delegate: delegate, marketsViewDelegate: delegate, marketsViewDataSource: delegate, adRecommendationsGridViewDelegate: delegate, adRecommendationsGridViewDataSource: adRecommendationsGridViewDataSource)
     }
 
     public init(
@@ -71,23 +71,13 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         marketsViewDelegate: MarketsViewDelegate,
         marketsViewDataSource: MarketsViewDataSource,
         adRecommendationsGridViewDelegate: AdRecommendationsGridViewDelegate,
-        adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource,
-        promoLinkViewDelegate: PromoLinkViewDelegate,
-        promoLinkViewModel: PromoLinkViewModel?
+        adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource
     ) {
         marketsGridView = MarketsGridView(delegate: marketsViewDelegate, dataSource: marketsViewDataSource)
         marketsGridView.translatesAutoresizingMaskIntoConstraints = false
 
         adRecommendationsGridView = AdRecommendationsGridView(delegate: adRecommendationsGridViewDelegate, dataSource: adRecommendationsGridViewDataSource)
         adRecommendationsGridView.translatesAutoresizingMaskIntoConstraints = false
-
-        if let promoLinkViewModel = promoLinkViewModel {
-            promoLinkView = PromoLinkView(delegate: promoLinkViewDelegate)
-            promoLinkView?.translatesAutoresizingMaskIntoConstraints = false
-            promoLinkView?.configure(with: promoLinkViewModel)
-        } else {
-            promoLinkView = nil
-        }
 
         super.init(frame: .zero)
         self.delegate = delegate
@@ -144,6 +134,10 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         adRecommendationsGridView.scrollToTop()
     }
 
+    public func insertPromoView(_ view: UIView?) {
+        addSubviewToPromoContainer(view)
+    }
+
     // MARK: - Setup
 
     private func setup() {
@@ -172,25 +166,10 @@ public final class FrontPageView: UIView, BasicFrontPageView {
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
         ])
 
-        setupPromoView()
-
         adRecommendationsGridView.fillInSuperview()
         adRecommendationsGridView.headerView = headerView
 
         setupFrames()
-    }
-
-    public func setupPromoView() {
-        guard let promoLinkView = promoLinkView else { return }
-
-        promoContainer.addSubview(promoLinkView)
-
-        NSLayoutConstraint.activate([
-            promoLinkView.topAnchor.constraint(equalTo: promoContainer.topAnchor, constant: .spacingM),
-            promoLinkView.leadingAnchor.constraint(equalTo: promoContainer.leadingAnchor, constant: .spacingM),
-            promoLinkView.trailingAnchor.constraint(equalTo: promoContainer.trailingAnchor, constant: -.spacingM),
-            promoLinkView.bottomAnchor.constraint(equalTo: promoContainer.bottomAnchor)
-        ])
     }
 
     private func setupFrames() {
@@ -214,12 +193,34 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         boundsForCurrentSubviewSetup = bounds
         adRecommendationsGridView.invalidateLayout()
     }
+
+    // MARK: - Private methods
+
+    private func addSubviewToPromoContainer(_ view: UIView?) {
+        promoContainer.subviews.forEach({ $0.removeFromSuperview() })
+
+        guard let view = view else {
+            setupFrames()
+            return
+        }
+
+        promoContainer.addSubview(view)
+
+        NSLayoutConstraint.activate([
+            view.topAnchor.constraint(equalTo: promoContainer.topAnchor, constant: .spacingM),
+            view.leadingAnchor.constraint(equalTo: promoContainer.leadingAnchor, constant: .spacingM),
+            view.trailingAnchor.constraint(equalTo: promoContainer.trailingAnchor, constant: -.spacingM),
+            view.bottomAnchor.constraint(equalTo: promoContainer.bottomAnchor)
+        ])
+
+        setupFrames()
+    }
 }
 
 // MARK: - LoadingRetryViewDelegate
 
 extension FrontPageView: LoadingRetryViewDelegate {
-    func loadingRetryViewDidSelectButton(_ view: LoadingRetryView) {
+    public func loadingRetryViewDidSelectButton(_ view: LoadingRetryView) {
         adsRetryView.state = .loading
         delegate?.frontPageViewDidSelectRetryButton(self)
     }

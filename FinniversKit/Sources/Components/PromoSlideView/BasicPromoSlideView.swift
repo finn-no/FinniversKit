@@ -2,14 +2,14 @@ import Foundation
 import UIKit
 
 public protocol BasicPromoSlideViewDelegate: AnyObject {
-    func basicPromoSlideViewDidTapButton(_ basicPromoSlideView: BasicPromoSlideView)
+    func basicPromoSlideViewDidTapButton(_ basicPromoSlideView: BasicPromoSlideView, promoIdentifier: String)
 }
 
 public class BasicPromoSlideView: UIView {
     private lazy var titleLabel: Label = {
-        let label = Label(style: .title3Strong, withAutoLayout: true)
+        let label = Label(style: titleStyle, withAutoLayout: true)
         label.textColor = .white
-        label.numberOfLines = 2
+        label.numberOfLines = 3
         return label
     }()
 
@@ -27,13 +27,29 @@ public class BasicPromoSlideView: UIView {
         return button
     }()
 
-    private lazy var imageView = UIImageView(withAutoLayout: true)
+    private lazy var imageView: RemoteImageView = {
+        let imageView = RemoteImageView(withAutoLayout: true)
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+
+    private lazy var imageViewTrailingAnchorContraint = imageView.trailingAnchor.constraint(equalTo: trailingAnchor)
+
+    private let promoIdentifier: String
+    private let titleStyle: Label.Style
 
     public weak var delegate: BasicPromoSlideViewDelegate?
+    public weak var remoteImageViewDataSource: RemoteImageViewDataSource? {
+        didSet {
+            imageView.dataSource = remoteImageViewDataSource
+        }
+    }
 
     // MARK: - Init
 
-    public init() {
+    public init(titleStyle: Label.Style = .title3Strong, promoIdentifier: String) {
+        self.titleStyle = titleStyle
+        self.promoIdentifier = promoIdentifier
         super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         setup()
     }
@@ -45,35 +61,55 @@ public class BasicPromoSlideView: UIView {
     // MARK: - Setup
 
     private func setup() {
+        let stackView = UIStackView(axis: .vertical, spacing: .spacingS + .spacingXS, withAutoLayout: true)
+        stackView.addArrangedSubviews([titleLabel, button])
+        stackView.alignment = .leading
+
         addSubview(imageView)
-        addSubview(titleLabel)
-        addSubview(button)
+        addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-
-            button.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS + .spacingXS),
-            button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            button.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            stackView.trailingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
 
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
+            imageViewTrailingAnchorContraint,
         ])
     }
 
     // MARK: - Public methods
 
-    public func configure(with text: String, buttonTitle: String, image: UIImage) {
+    public func configure(
+        with text: String,
+        buttonTitle: String,
+        image: UIImage?,
+        imageUrl: String? = nil,
+        scaleImageToFit: Bool = false
+    ) {
         titleLabel.text = text
         button.setTitle(buttonTitle, for: .normal)
         imageView.image = image
+
+        let imageSize: CGFloat = 130
+
+        if let imageUrl = imageUrl {
+            imageView.loadImage(for: imageUrl, imageWidth: imageSize)
+        }
+
+        if scaleImageToFit {
+            NSLayoutConstraint.activate([
+                imageView.heightAnchor.constraint(equalTo: heightAnchor),
+                imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor)
+            ])
+            imageView.contentMode = .scaleAspectFill
+            imageViewTrailingAnchorContraint.constant = -.spacingM
+        }
     }
 
     // MARK: - Actions
 
     @objc private func handleButtonTap() {
-        delegate?.basicPromoSlideViewDidTapButton(self)
+        delegate?.basicPromoSlideViewDidTapButton(self, promoIdentifier: promoIdentifier)
     }
 }
