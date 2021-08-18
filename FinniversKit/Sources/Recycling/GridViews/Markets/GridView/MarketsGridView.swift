@@ -8,15 +8,11 @@ public class MarketsGridView: UIView, MarketsView {
     // MARK: - Internal properties
 
     @objc private lazy var collectionView: UICollectionView = {
-        let layout = MarketsGridViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: MarketsGridViewFlowLayout())
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
-        collectionView.clipsToBounds = false
-        collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
 
@@ -45,7 +41,6 @@ public class MarketsGridView: UIView, MarketsView {
     }
 
     private func setup() {
-        clipsToBounds = false
         collectionView.register(MarketsGridViewCell.self)
         addSubview(collectionView)
 
@@ -76,16 +71,17 @@ public class MarketsGridView: UIView, MarketsView {
 
     // MARK: - Private
 
-    private func numberOfRows(for viewWidth: CGFloat) -> CGFloat {
-        return MarketsGridViewLayoutConfiguration(width: viewWidth).itemsPerRow
+    private func numberOfRows(for viewWidth: CGFloat) -> Int {
+        guard let modelsCount = dataSource?.numberOfItems(inMarketsView: self) else {
+            return 0
+        }
+
+        return Int(ceil(Double(modelsCount) / Double(MarketsGridViewLayoutConfiguration(width: viewWidth).itemsPerRow)))
     }
 
     private func itemSize(for viewWidth: CGFloat) -> CGSize {
         let screenWidth = MarketsGridViewLayoutConfiguration(width: viewWidth)
-        let numberOfSpacesBetweenOnScreenItems = screenWidth.columns - 1
-        let spaceBetweenItems = screenWidth.interimSpacing * numberOfSpacesBetweenOnScreenItems
-        let margins = screenWidth.sideMargins * 2
-        let itemSize = CGSize(width: (viewWidth - spaceBetweenItems - margins) / screenWidth.columns, height: screenWidth.itemHeight)
+        let itemSize = CGSize(width: viewWidth / screenWidth.itemsPerRow - screenWidth.sideMargins - screenWidth.interimSpacing, height: screenWidth.itemHeight)
         return itemSize
     }
 

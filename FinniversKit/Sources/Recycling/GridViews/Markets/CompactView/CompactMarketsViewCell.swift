@@ -6,12 +6,38 @@ class CompactMarketsViewCell: UICollectionViewCell {
 
     var model: MarketsViewModel? {
         didSet {
+            iconImageView.image = model?.iconImage
             titleLabel.text = model?.title
             accessibilityLabel = model?.accessibilityLabel
+
+            let showExternalLinkIcon = model?.showExternalLinkIcon ?? false
+            externalLinkImageView.isHidden = !showExternalLinkIcon
         }
     }
 
     // MARK: - Private properties
+
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(axis: .horizontal, spacing: .spacingS, withAutoLayout: true)
+        stackView.addArrangedSubviews([iconImageView, titleLabel, externalLinkImageView])
+        stackView.alignment = .center
+        return stackView
+    }()
+
+    private lazy var iconImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+
+    private lazy var externalLinkImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.image = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .externalLinkColor
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
 
     private lazy var titleLabel: Label = {
         let label = Label(style: Self.titleLabelStyle, withAutoLayout: true)
@@ -35,24 +61,34 @@ class CompactMarketsViewCell: UICollectionViewCell {
 
     private func setup() {
         isAccessibilityElement = true
-        backgroundColor = Config.colorProvider.tileBackgroundColor
+        backgroundColor = .clear
 
-        contentView.addSubview(titleLabel)
-        
-        titleLabel.fillInSuperview(insets: Self.contentInsets.forLayoutConstraints)
+        contentView.addSubview(stackView)
+        stackView.fillInSuperview(insets: Self.contentInsets.forLayoutConstraints)
+
+        NSLayoutConstraint.activate([
+            iconImageView.widthAnchor.constraint(equalToConstant: Self.iconImageSize.width),
+            iconImageView.heightAnchor.constraint(equalToConstant: Self.iconImageSize.height),
+            externalLinkImageView.widthAnchor.constraint(equalToConstant: Self.externalLinkImageSize.width),
+            externalLinkImageView.heightAnchor.constraint(equalToConstant: Self.externalLinkImageSize.height),
+        ])
     }
 
     // MARK: - Superclass Overrides
 
     override func prepareForReuse() {
         super.prepareForReuse()
+        iconImageView.image = nil
         titleLabel.text = ""
         accessibilityLabel = ""
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
+
         layer.cornerRadius = frame.height / 2
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.externalLinkColor.cgColor
     }
 }
 
@@ -61,22 +97,33 @@ class CompactMarketsViewCell: UICollectionViewCell {
 extension CompactMarketsViewCell {
     static let borderWidth: CGFloat = 1
     static let contentInsets = UIEdgeInsets(vertical: 10, horizontal: .spacingM)
-    static let titleLabelStyle = Label.Style.captionStrong
-    static let cellHeight: CGFloat = 34
+    static let titleLabelStyle = Label.Style.caption
+    static let cellHeight: CGFloat = 44
     static let itemSpacing = CGFloat.spacingS
+    static let iconImageSize = CGSize(width: 24, height: 24)
+    static let externalLinkImageSize = CGSize(width: 16, height: 16)
 
     static func size(for model: MarketsViewModel) -> CGSize {
         var widths: [CGFloat] = [
             contentInsets.leading,
+            iconImageSize.width,
             itemSpacing,
             width(for: model.title)
         ]
+
+        if model.showExternalLinkIcon {
+            widths.append(contentsOf: [
+                itemSpacing,
+                externalLinkImageSize.width
+            ])
+        }
 
         widths.append(contentInsets.trailing)
 
         let heights: [CGFloat] = [
             borderWidth,
             contentInsets.top,
+            iconImageSize.height,
             contentInsets.bottom,
             borderWidth
         ]
@@ -98,6 +145,12 @@ extension CompactMarketsViewCell {
 }
 
 // MARK: - Private extensions
+
+private extension UIColor {
+    class var externalLinkColor: UIColor {
+        dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
+    }
+}
 
 private extension UIEdgeInsets {
     var forLayoutConstraints: UIEdgeInsets {
