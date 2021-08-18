@@ -63,7 +63,7 @@ public class CollapsibleContentView: UIView {
         return constraint
     }()
 
-    /// When expanding/collapsing the content, ensure the `fullHeightConstraint` is `active` or `inactive` before
+    /// When expanding/collapsing the content, ensure the `fullHeightConstraint` is `active` or `inactive` before
     /// getting this image
     private var indicatorImage: UIImage? {
         let assetName: ImageAsset = isExpanded ? .arrowUp : .arrowDown
