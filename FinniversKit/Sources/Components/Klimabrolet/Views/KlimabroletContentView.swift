@@ -13,7 +13,8 @@ class KlimabroletContentView: UIView {
 
     private lazy var bannerImageView: UIView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = UIImage(named: .klimaboletBanner)
+        imageView.image = UIImage(named: .klimabroletBanner)
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
 
@@ -84,6 +85,7 @@ class KlimabroletContentView: UIView {
             bannerImageView.topAnchor.constraint(equalTo: topAnchor),
             bannerImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             bannerImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            bannerImageView.heightAnchor.constraint(equalTo: bannerImageView.widthAnchor, multiplier: 0.6),
 
             titleLabel.topAnchor.constraint(equalTo: bannerImageView.bottomAnchor, constant: .spacingM),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
