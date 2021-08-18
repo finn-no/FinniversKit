@@ -5,18 +5,28 @@ class NumberedListDemoView: UIView, Tweakable {
     // MARK: - Private properties
 
     private let items = NumberedListItem.demoItems
-    private lazy var numberedListView = NumberedListView(withAutoLayout: true)
     private lazy var scrollView = UIScrollView(withAutoLayout: true)
 
+    private lazy var numberedListView: NumberedListView = {
+        let view = NumberedListView(withAutoLayout: true)
+        view.delegate = self
+        return view
+    }()
+
     lazy var tweakingOptions: [TweakingOption] = [
-        TweakingOption(title: "Items with title and body", action: { [weak self] in
+        TweakingOption(title: "Items with title, body and buttons", action: { [weak self] in
             guard let self = self else { return }
             self.numberedListView.configure(with: self.items)
         }),
+        TweakingOption(title: "Items with title and body", action: { [weak self] in
+            guard let self = self else { return }
+            let itemsWithoutButtons = self.items.map { NumberedListItem(title: $0.title, body: $0.body) }
+            self.numberedListView.configure(with: itemsWithoutButtons)
+        }),
         TweakingOption(title: "Items with only body", action: { [weak self] in
             guard let self = self else { return }
-            let itemsWithoutBody = self.items.map { NumberedListItem(body: $0.body) }
-            self.numberedListView.configure(with: itemsWithoutBody)
+            let itemsWithoutBodyOrButtons = self.items.map { NumberedListItem(body: $0.body) }
+            self.numberedListView.configure(with: itemsWithoutBodyOrButtons)
         })
     ]
 
@@ -45,6 +55,14 @@ class NumberedListDemoView: UIView, Tweakable {
     }
 }
 
+// MARK: - NumberedListViewDelegate
+
+extension NumberedListDemoView: NumberedListViewDelegate {
+    public func numberedListView(_ view: NumberedListView, didSelectActionButtonForItemAt itemIndex: Int) {
+        print("✅ Did select button at index: \(itemIndex)")
+    }
+}
+
 // MARK: - Private extensions
 
 private extension NumberedListItem {
@@ -52,7 +70,8 @@ private extension NumberedListItem {
         [
             NumberedListItem(
                 title: "Leverage agile frameworks",
-                body: "Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment."
+                body: "Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.",
+                actionButtonTitle: "Some action"
             ),
             NumberedListItem(
                 title: "Bring win-win survival strategies to the table",
@@ -60,7 +79,8 @@ private extension NumberedListItem {
             ),
             NumberedListItem(
                 title: "Capitalize on low hanging fruit",
-                body: "Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line."
+                body: "Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.",
+                actionButtonTitle: "Some other action"
             ),
             NumberedListItem(
                 title: "Use workflows to establish a framework",
@@ -68,7 +88,8 @@ private extension NumberedListItem {
             ),
             NumberedListItem(
                 title: "Collaboratively administrate empowered networks",
-                body: "Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI."
+                body: "Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.",
+                actionButtonTitle: "Yet another action"
             ),
             NumberedListItem(
                 title: "Efficiently unleash cross-media information",
