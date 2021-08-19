@@ -111,7 +111,7 @@ enum ImageAsset: String {
     case hide
     case important
     case info
-    case klimaboletBanner
+    case klimabroletBanner
     case listView
     case magnifyingGlass
     case mapDirections
@@ -249,7 +249,7 @@ enum ImageAsset: String {
             .hide,
             .important,
             .info,
-            .klimaboletBanner,
+            .klimabroletBanner,
             .listView,
             .magnifyingGlass,
             .mapDirections,
