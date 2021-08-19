@@ -421,6 +421,11 @@
 		DAD6EB2C2369916100968497 /* SettingsSectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB232369916100968497 /* SettingsSectionFooterView.swift */; };
 		DAD6EB322369BCFD00968497 /* SettingDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB312369BCFD00968497 /* SettingDetailsView.swift */; };
 		DAE6A55C21CA524B00837BFA /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE6A55B21CA524B00837BFA /* CGPoint.swift */; };
+		E4D163CD26CD2385007DDB22 /* NewMarketsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D163CC26CD2385007DDB22 /* NewMarketsGridView.swift */; };
+		E4D163CF26CD23CA007DDB22 /* NewMarketsGridLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D163CE26CD23CA007DDB22 /* NewMarketsGridLayoutConfiguration.swift */; };
+		E4D163D126CD23EE007DDB22 /* NewCompactMarketsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D163D026CD23EE007DDB22 /* NewCompactMarketsViewCell.swift */; };
+		E4D163D326CD240D007DDB22 /* NewCompactMarketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D163D226CD240D007DDB22 /* NewCompactMarketsView.swift */; };
+		E4D163D626CD254F007DDB22 /* NewMarketsGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D163D526CD254F007DDB22 /* NewMarketsGridViewCell.swift */; };
 		F22612D822572D9400472D22 /* StatisticsItemEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */; };
 		F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */; };
 		F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */; };
@@ -863,6 +868,11 @@
 		DAD6EB232369916100968497 /* SettingsSectionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSectionFooterView.swift; sourceTree = "<group>"; };
 		DAD6EB312369BCFD00968497 /* SettingDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDetailsView.swift; sourceTree = "<group>"; };
 		DAE6A55B21CA524B00837BFA /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
+		E4D163CC26CD2385007DDB22 /* NewMarketsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMarketsGridView.swift; sourceTree = "<group>"; };
+		E4D163CE26CD23CA007DDB22 /* NewMarketsGridLayoutConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMarketsGridLayoutConfiguration.swift; sourceTree = "<group>"; };
+		E4D163D026CD23EE007DDB22 /* NewCompactMarketsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCompactMarketsViewCell.swift; sourceTree = "<group>"; };
+		E4D163D226CD240D007DDB22 /* NewCompactMarketsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCompactMarketsView.swift; sourceTree = "<group>"; };
+		E4D163D526CD254F007DDB22 /* NewMarketsGridViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMarketsGridViewCell.swift; sourceTree = "<group>"; };
 		F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyView.swift; sourceTree = "<group>"; };
 		F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyViewModel.swift; sourceTree = "<group>"; };
 		F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdManagementStatisticsEmptyViewCell.swift; sourceTree = "<group>"; };
@@ -1119,6 +1129,7 @@
 			children = (
 				441FE41F209A24E500B04EF1 /* AdRecommendations */,
 				441FE416209A24E500B04EF1 /* Markets */,
+				E4D163C926CD22D4007DDB22 /* NewMarkets */,
 				CFFDF89522F311E300FE68EA /* NeighborhoodProfile */,
 			);
 			path = GridViews;
@@ -2877,6 +2888,42 @@
 			path = "Core Graphics";
 			sourceTree = "<group>";
 		};
+		E4D163C926CD22D4007DDB22 /* NewMarkets */ = {
+			isa = PBXGroup;
+			children = (
+				E4D163CA26CD22ED007DDB22 /* GridView */,
+				E4D163CB26CD234C007DDB22 /* CompactView */,
+			);
+			path = NewMarkets;
+			sourceTree = "<group>";
+		};
+		E4D163CA26CD22ED007DDB22 /* GridView */ = {
+			isa = PBXGroup;
+			children = (
+				E4D163CC26CD2385007DDB22 /* NewMarketsGridView.swift */,
+				E4D163CE26CD23CA007DDB22 /* NewMarketsGridLayoutConfiguration.swift */,
+				E4D163D426CD2530007DDB22 /* Cell */,
+			);
+			path = GridView;
+			sourceTree = "<group>";
+		};
+		E4D163CB26CD234C007DDB22 /* CompactView */ = {
+			isa = PBXGroup;
+			children = (
+				E4D163D226CD240D007DDB22 /* NewCompactMarketsView.swift */,
+				E4D163D026CD23EE007DDB22 /* NewCompactMarketsViewCell.swift */,
+			);
+			path = CompactView;
+			sourceTree = "<group>";
+		};
+		E4D163D426CD2530007DDB22 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E4D163D526CD254F007DDB22 /* NewMarketsGridViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		F22612D6225631FD00472D22 /* StatisticsView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3355,6 +3402,7 @@
 				CF7C460722257A8A001FB92C /* EarthHourTagView.swift in Sources */,
 				45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */,
 				62AAB23A23278087007766E6 /* RadioButtonTableViewCell.swift in Sources */,
+				E4D163CD26CD2385007DDB22 /* NewMarketsGridView.swift in Sources */,
 				AF91BB97202C74D0003E6366 /* BroadcastItem.swift in Sources */,
 				441FE434209A24E500B04EF1 /* AdRecommendationsGridView.swift in Sources */,
 				468F59F2220B20EA001CC0C5 /* MarketsGridViewFlowLayout.swift in Sources */,
@@ -3372,6 +3420,7 @@
 				CFEB220F232B96550039421C /* UIBarButtonItemExtensions.swift in Sources */,
 				44A149EC21377C7B0053D5F7 /* SavedSearchesListView.swift in Sources */,
 				91D2A55422F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift in Sources */,
+				E4D163CF26CD23CA007DDB22 /* NewMarketsGridLayoutConfiguration.swift in Sources */,
 				14DC127021593B0000326DC3 /* HorizontalSlideTransition.swift in Sources */,
 				CFA6DC2B23BF5E1B0016E118 /* FavoriteAdCommentInputView.swift in Sources */,
 				4447F6E91FDB2B110033DBC1 /* Ribbon+Style.swift in Sources */,
@@ -3409,6 +3458,7 @@
 				CF13D6CD2292D2300087DA37 /* PhaseListView.swift in Sources */,
 				CF5012432360905000138A36 /* PrimingTableViewCell.swift in Sources */,
 				087A5BB622A7D85500184640 /* KeyboardNotificationInfo.swift in Sources */,
+				E4D163D326CD240D007DDB22 /* NewCompactMarketsView.swift in Sources */,
 				441FE450209A2F2C00B04EF1 /* NotificationsListViewModel.swift in Sources */,
 				DAD0D492210737A30091DD4D /* TextView.swift in Sources */,
 				AADED71C223FE25500647C50 /* UIDevice.swift in Sources */,
@@ -3457,6 +3507,7 @@
 				9F213438F5413991D1B3D7CD /* FullscreenGalleryViewModel.swift in Sources */,
 				9F2138937E903BEA8F7A8C7C /* FullscreenGalleryViewController.swift in Sources */,
 				CFF54E2E234E192A008E18BE /* FavoriteAdsSubtitleView.swift in Sources */,
+				E4D163D126CD23EE007DDB22 /* NewCompactMarketsViewCell.swift in Sources */,
 				9F213D5FD69FD3EAE67A4D2D /* FullscreenImageViewController.swift in Sources */,
 				CF164CFF230EB3D100250822 /* ContentSizedTableView.swift in Sources */,
 				CFB6137C229AD43400DE283D /* VerticalIconCollectionViewCell.swift in Sources */,
@@ -3469,6 +3520,7 @@
 				CF13D6CF2292D40F0087DA37 /* PhaseViewModel.swift in Sources */,
 				918C8A4223A3853400B566DE /* NativeAdvertGridView.swift in Sources */,
 				CF0B10982316AC0D001E7A57 /* BottomShadowView.swift in Sources */,
+				E4D163D626CD254F007DDB22 /* NewMarketsGridViewCell.swift in Sources */,
 				8908E84D22C0D11400ED671C /* MessageFormToolbar.swift in Sources */,
 				CF0B101823167EA9001E7A57 /* FavoriteAdView.swift in Sources */,
 				9F21339B987A96DE48740F7B /* FullscreenGalleryPresenterTransition.swift in Sources */,

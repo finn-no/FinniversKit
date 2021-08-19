@@ -5,6 +5,12 @@
 import FinniversKit
 
 public class CompactMarketsDemoView: UIView {
+    
+    lazy var demoStackView: UIStackView = {
+        let sv = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+        return sv
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -14,15 +20,29 @@ public class CompactMarketsDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        let collectionView = CompactMarketsView(delegate: self, dataSource: self)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(collectionView)
+        addSubview(demoStackView)
         NSLayoutConstraint.activate([
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: collectionView.calculateSize(constrainedTo: bounds.width).height)
+            demoStackView.topAnchor.constraint(equalTo: topAnchor),
+            demoStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            demoStackView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
+        
+        let oldTitle = Label(style: .title3)
+        let newTitle = Label(style: .title3)
+        oldTitle.textAlignment = .center
+        newTitle.textAlignment = .center
+        oldTitle.text = "Old design"
+        newTitle.text = "New design"
+        demoStackView.addArrangedSubview(oldTitle)
+        addCollectionView(newDesign: false)
+        demoStackView.addArrangedSubview(newTitle)
+        addCollectionView(newDesign: true)
+    }
+    
+    private func addCollectionView(newDesign: Bool) {
+        let collectionView: MarketsView = newDesign ? NewCompactMarketsView(delegate: self, dataSource: self) : CompactMarketsView(delegate: self, dataSource: self)
+        demoStackView.addArrangedSubview(collectionView)
+        collectionView.heightAnchor.constraint(equalToConstant: collectionView.calculateSize(constrainedTo: self.frame.width).height).isActive = true
     }
 }
 
