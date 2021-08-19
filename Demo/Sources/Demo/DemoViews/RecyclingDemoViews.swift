@@ -15,6 +15,7 @@ public enum RecyclingDemoViews: String, DemoViews {
     case settingsView
     case adManagementView
     case neighborhoodProfileView
+    case newlyFavoritedView
 
     public var viewController: UIViewController {
         switch self {
@@ -47,6 +48,8 @@ public enum RecyclingDemoViews: String, DemoViews {
             return DemoViewController<AdManagementDemoView>()
         case .neighborhoodProfileView:
             return DemoViewController<NeighborhoodProfileDemoView>()
+        case .newlyFavoritedView:
+            return DemoViewController<NewlyFavoritedDemoView>()
         }
     }
 }

@@ -525,3 +525,10 @@ public extension UIColor {
         }
     }
 }
+
+//MARK: - Newly added cell colors
+@objc extension UIColor {
+    public class var shadowSmall: UIColor {
+        return UIColor(hex: "#475569")
+    }
+}

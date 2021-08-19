@@ -66,3 +66,4 @@ extension FavoritesListViewDemoView: FavoritesListViewDataSource {
 
     public func favoritesListView(_ favoritesListView: FavoritesListView, cancelLoadingImageForModel model: FavoritesListViewModel, imageWidth: CGFloat) {}
 }
+
