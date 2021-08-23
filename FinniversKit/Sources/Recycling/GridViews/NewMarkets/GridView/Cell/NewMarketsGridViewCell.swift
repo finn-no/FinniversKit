@@ -64,6 +64,16 @@ class NewMarketsGridViewCell: UICollectionViewCell {
         label.textAlignment = .center
         return label
     }()
+    
+    private lazy var externalLinkImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .externalLinkColor
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
 
     // MARK: - Setup
 
@@ -84,6 +94,7 @@ class NewMarketsGridViewCell: UICollectionViewCell {
         addSubview(smallShadowView)
         addSubview(bigShadowView)
         addSubview(containerView)
+        containerView.addSubview(externalLinkImageView)
         containerView.addSubview(contentStackView)
         contentStackView.addArrangedSubviews([iconImageView, titleLabel])
         
@@ -97,7 +108,12 @@ class NewMarketsGridViewCell: UICollectionViewCell {
             
             contentStackView.widthAnchor.constraint(equalTo: widthAnchor),
             contentStackView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor),
-            contentStackView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            contentStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            
+            externalLinkImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            externalLinkImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            externalLinkImageView.widthAnchor.constraint(equalToConstant: 12),
+            externalLinkImageView.heightAnchor.constraint(equalToConstant: 12)
         ])
     }
 
@@ -122,6 +138,9 @@ class NewMarketsGridViewCell: UICollectionViewCell {
             iconImageView.image = model?.iconImage
             titleLabel.text = model?.title
             accessibilityLabel = model?.accessibilityLabel
+            
+            let showExternalLinkIcon = model?.showExternalLinkIcon ?? false
+            externalLinkImageView.isHidden = !showExternalLinkIcon
         }
     }
 }
@@ -165,5 +184,11 @@ private extension CALayer {
             self.shadowOffset = CGSize(width: 0, height: 4)
             self.shadowRadius = 14
         }
+    }
+}
+
+private extension UIColor {
+    class var externalLinkColor: UIColor {
+        dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
 }

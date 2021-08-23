@@ -8,15 +8,34 @@ class NewCompactMarketsViewCell: UICollectionViewCell {
         didSet {
             titleLabel.text = model?.title
             accessibilityLabel = model?.accessibilityLabel
+            
+            let showExternalLinkIcon = model?.showExternalLinkIcon ?? false
+            externalLinkImageView.isHidden = !showExternalLinkIcon
         }
     }
 
     // MARK: - Private properties
+    
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(axis: .horizontal, spacing: .spacingS, withAutoLayout: true)
+        stackView.addArrangedSubviews([titleLabel, externalLinkImageView])
+        stackView.alignment = .center
+        return stackView
+    }()
 
     private lazy var titleLabel: Label = {
         let label = Label(style: Self.titleLabelStyle, withAutoLayout: true)
         label.textAlignment = .left
         return label
+    }()
+    
+    private lazy var externalLinkImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.image = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .externalLinkColor
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
 
     // MARK: - Init
@@ -37,9 +56,15 @@ class NewCompactMarketsViewCell: UICollectionViewCell {
         isAccessibilityElement = true
         backgroundColor = Config.colorProvider.tileBackgroundColor
 
-        contentView.addSubview(titleLabel)
+        contentView.addSubview(stackView)
         
-        titleLabel.fillInSuperview(insets: Self.contentInsets.forLayoutConstraints)
+        
+        stackView.fillInSuperview(insets: Self.contentInsets.forLayoutConstraints)
+        
+        NSLayoutConstraint.activate([
+            externalLinkImageView.widthAnchor.constraint(equalToConstant: Self.externalLinkImageSize.width),
+            externalLinkImageView.heightAnchor.constraint(equalToConstant: Self.externalLinkImageSize.height)
+        ])
     }
 
     // MARK: - Superclass Overrides
@@ -64,6 +89,7 @@ extension NewCompactMarketsViewCell {
     static let titleLabelStyle = Label.Style.captionStrong
     static let cellHeight: CGFloat = 34
     static let itemSpacing = CGFloat.spacingS
+    static let externalLinkImageSize = CGSize(width: 12, height: 12)
 
     static func size(for model: MarketsViewModel) -> CGSize {
         var widths: [CGFloat] = [
@@ -98,6 +124,12 @@ extension NewCompactMarketsViewCell {
 }
 
 // MARK: - Private extensions
+
+private extension UIColor {
+    class var externalLinkColor: UIColor {
+        dynamicColorIfAvailable(defaultColor: UIColor(hex: "#7B8493"), darkModeColor: UIColor(hex: "#7B8493"))
+    }
+}
 
 private extension UIEdgeInsets {
     var forLayoutConstraints: UIEdgeInsets {
