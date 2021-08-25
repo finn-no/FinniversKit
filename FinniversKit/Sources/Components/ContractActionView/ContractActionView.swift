@@ -18,6 +18,8 @@ public class ContractActionView: UIView {
     // MARK: - Private properties
 
     private lazy var imageView: UIImageView = UIImageView(withAutoLayout: true)
+    private lazy var imageViewTopAnchor = NSLayoutConstraint()
+    private lazy var imageViewTrailingAnchor = NSLayoutConstraint()
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .title3Strong, withAutoLayout: true)
@@ -95,8 +97,12 @@ public class ContractActionView: UIView {
     public func configure(
         with viewModel: ContractActionViewModel,
         trailingImage: UIImage? = nil,
+        trailingImageTopConstant: CGFloat = 0,
+        trailingImageTrailingConstant: CGFloat = 0,
+        contentSpacing: CGFloat = .spacingL,
         paragraphSpacing: CGFloat = 6
     ) {
+
         if let title = viewModel.title, !title.isEmpty {
             titleLabel.text = title
             titleLabel.isHidden = false
@@ -117,6 +123,9 @@ public class ContractActionView: UIView {
         } else {
             descriptionLabel.isHidden = true
         }
+
+        contentStackView.spacing = contentSpacing
+
         self.identifier = viewModel.identifier
         self.buttonUrl = viewModel.buttonUrl
 
@@ -128,14 +137,7 @@ public class ContractActionView: UIView {
             return
         }
 
-        imageView.image = image
-        contentStackView.addSubview(imageView)
-        contentStackView.sendSubviewToBack(imageView)
-
-        NSLayoutConstraint.activate([
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageView.topAnchor.constraint(equalTo: topAnchor)
-        ])
+        addImage(image, trailingImageTopConstant, trailingImageTrailingConstant)
     }
 
     // MARK: - Private methods
@@ -143,5 +145,22 @@ public class ContractActionView: UIView {
     @objc private func handleActionButtonTap() {
         guard let buttonUrl = buttonUrl else { return }
         delegate?.contractActionView(self, didSelectActionButtonWithUrl: buttonUrl)
+    }
+
+    private func addImage(_ image: UIImage, _ topConstant: CGFloat, _ trailingConstant: CGFloat) {
+        imageView.image = image
+
+        contentStackView.addSubview(imageView)
+        contentStackView.sendSubviewToBack(imageView)
+
+        if imageViewTopAnchor.isActive || imageViewTrailingAnchor.isActive {
+            imageViewTopAnchor.constant = topConstant
+            imageViewTrailingAnchor.constant = trailingConstant
+        } else {
+            imageViewTopAnchor = imageView.topAnchor.constraint(equalTo: topAnchor, constant: topConstant)
+            imageViewTrailingAnchor = imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: trailingConstant)
+            NSLayoutConstraint.activate([imageViewTrailingAnchor, imageViewTopAnchor])
+        }
+
     }
 }
