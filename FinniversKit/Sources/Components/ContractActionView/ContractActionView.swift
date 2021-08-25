@@ -39,6 +39,12 @@ public class ContractActionView: UIView {
         return stackView
     }()
 
+    private lazy var descriptionLabel: Label = {
+        let label = Label(style: .body, withAutoLayout: true)
+        label.numberOfLines = 0
+        return label
+    }()
+
     private lazy var bulletListLabel: Label = {
         let label = Label(withAutoLayout: true)
         label.numberOfLines = 0
@@ -55,7 +61,7 @@ public class ContractActionView: UIView {
 
     private lazy var contentStackView: UIStackView = {
         let stackView = UIStackView(axis: .vertical, spacing: .spacingL, withAutoLayout: true)
-        stackView.addArrangedSubviews([titleSubtitleStackView, bulletListLabel, actionButton])
+        stackView.addArrangedSubviews([titleSubtitleStackView, descriptionLabel, bulletListLabel, actionButton])
         return stackView
     }()
 
@@ -105,6 +111,12 @@ public class ContractActionView: UIView {
             subtitleLabel.isHidden = true
         }
 
+        if let description = viewModel.description, !description.isEmpty {
+            descriptionLabel.text = description
+            descriptionLabel.isHidden = false
+        } else {
+            descriptionLabel.isHidden = true
+        }
         self.identifier = viewModel.identifier
         self.buttonUrl = viewModel.buttonUrl
 
