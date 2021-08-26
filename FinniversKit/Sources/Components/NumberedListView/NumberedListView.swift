@@ -120,7 +120,7 @@ private class ListItemView: UIView {
         addSubview(stackView)
         stackView.fillInSuperview()
 
-        if let title = item.title {
+        if let title = item.heading {
             titleLabel.text = title
             titleLabel.isHidden = false
         }

@@ -20,7 +20,7 @@ class NumberedListDemoView: UIView, Tweakable {
         }),
         TweakingOption(title: "Items with title and body", action: { [weak self] in
             guard let self = self else { return }
-            let itemsWithoutButtons = self.items.map { NumberedDemoListItem(title: $0.title, body: $0.body) }
+            let itemsWithoutButtons = self.items.map { NumberedDemoListItem(title: $0.heading, body: $0.body) }
             self.numberedListView.configure(with: itemsWithoutButtons)
         }),
         TweakingOption(title: "Items with only body", action: { [weak self] in
@@ -66,12 +66,12 @@ extension NumberedListDemoView: NumberedListViewDelegate {
 // MARK: - Private extensions
 
 private struct NumberedDemoListItem: NumberedListItem {
-    let title: String?
+    let heading: String?
     let body: String
     let actionButtonTitle: String?
 
     init(title: String? = nil, body: String, actionButtonTitle: String? = nil) {
-        self.title = title
+        self.heading = title
         self.body = body
         self.actionButtonTitle = actionButtonTitle
     }
