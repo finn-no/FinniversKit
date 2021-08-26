@@ -61,6 +61,7 @@ enum ImageAsset: String {
     case close
     case confetti1
     case confetti2
+    case contract
     case creditcard
     case cross
     case distanceOutlined
@@ -199,6 +200,7 @@ enum ImageAsset: String {
             .close,
             .confetti1,
             .confetti2,
+            .contract,
             .creditcard,
             .cross,
             .distanceOutlined,

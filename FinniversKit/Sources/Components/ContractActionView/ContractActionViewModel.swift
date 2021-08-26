@@ -5,6 +5,7 @@
 public struct ContractActionViewModel {
     public let title: String?
     public let subtitle: String?
+    public let description: String?
     public let identifier: String?
     public let strings: [String]
     public let buttonTitle: String
@@ -13,6 +14,7 @@ public struct ContractActionViewModel {
     public init(
         title: String? = nil,
         subtitle: String? = nil,
+        description: String? = nil,
         identifier: String?,
         strings: [String],
         buttonTitle: String,
@@ -20,6 +22,7 @@ public struct ContractActionViewModel {
     ) {
         self.title = title
         self.subtitle = subtitle
+        self.description = description
         self.identifier = identifier
         self.strings = strings
         self.buttonTitle = buttonTitle
