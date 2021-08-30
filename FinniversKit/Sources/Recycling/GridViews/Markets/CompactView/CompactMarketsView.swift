@@ -160,11 +160,11 @@ extension CompactMarketsView: UICollectionViewDelegate {
 // MARK: - Private functions
 private extension CompactMarketsView {
     func styleShadowAfterLayout() {
-        self.smoothShadowView.layer.shadowPath = UIBezierPath(rect: CGRect(x: 0,
+        smoothShadowView.layer.shadowPath = UIBezierPath(rect: CGRect(x: 0,
                                                                         y: smoothShadowView.bounds.maxY - smoothShadowView.layer.shadowRadius,
                                                                         width: smoothShadowView.bounds.width,
                                                                         height: smoothShadowView.layer.shadowRadius)).cgPath
-        self.sharpShadowView.layer.shadowPath = UIBezierPath(rect: CGRect(x: 0,
+        sharpShadowView.layer.shadowPath = UIBezierPath(rect: CGRect(x: 0,
                                                                         y: sharpShadowView.bounds.maxY - sharpShadowView.layer.shadowRadius,
                                                                         width: sharpShadowView.bounds.width,
                                                                         height: sharpShadowView.layer.shadowRadius)).cgPath
