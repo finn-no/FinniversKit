@@ -25,13 +25,33 @@ public class CompactMarketsView: UIView, MarketsView {
         collectionView.delegate = self
         collectionView.alwaysBounceHorizontal = true
         collectionView.register(CompactMarketsViewCell.self)
-        collectionView.contentInset = UIEdgeInsets(vertical: 0, horizontal: .spacingM)
+        collectionView.contentInset = UIEdgeInsets(vertical: 10, horizontal: .spacingM)
         return collectionView
     }()
 
-    private lazy var hairlineView: UIView = {
+    private lazy var sharpShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .tableViewSeparator
+        view.backgroundColor = Config.colorProvider.bgPrimary
+        view.layer.masksToBounds = false
+        view.layer.shadowColor = UIColor.shadowColor.cgColor
+        view.layer.shadowOpacity = 0.24
+        view.layer.shadowOffset = CGSize(width: 0, height: 1)
+        view.layer.shadowRadius = 1
+        view.layer.shouldRasterize = true
+        view.layer.rasterizationScale = UIScreen.main.scale
+        return view
+    }()
+    
+    private lazy var smoothShadowView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = Config.colorProvider.bgPrimary
+        view.layer.masksToBounds = false
+        view.layer.shadowColor = UIColor.shadowColor.cgColor
+        view.layer.shadowOpacity = 0.16
+        view.layer.shadowOffset = CGSize(width: 0, height: 1 )
+        view.layer.shadowRadius = 5
+        view.layer.shouldRasterize = true
+        view.layer.rasterizationScale = UIScreen.main.scale
         return view
     }()
 
@@ -63,20 +83,22 @@ public class CompactMarketsView: UIView, MarketsView {
     // MARK: - Setup
 
     private func setup() {
+        backgroundColor = Config.colorProvider.bgPrimary
+        clipsToBounds = false
+        
+        addSubview(smoothShadowView)
+        addSubview(sharpShadowView)
         addSubview(collectionView)
-        addSubview(hairlineView)
+        
 
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            hairlineView.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
-            hairlineView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            hairlineView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            hairlineView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            hairlineView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale)
-        ])
+        sharpShadowView.fillInSuperview()
+        smoothShadowView.fillInSuperview()
+        collectionView.fillInSuperview()
+    }
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        styleShadowAfterLayout()
     }
 
     // MARK: - Public methods
@@ -86,7 +108,10 @@ public class CompactMarketsView: UIView, MarketsView {
     }
 
     public func calculateSize(constrainedTo width: CGFloat) -> CGSize {
-        CGSize(width: width, height: 76)
+        let height = collectionView.contentInset.top +
+            CompactMarketsViewCell.cellHeight +
+            collectionView.contentInset.bottom
+        return CGSize(width: width, height: height)
     }
 }
 
@@ -131,3 +156,24 @@ extension CompactMarketsView: UICollectionViewDelegate {
         delegate?.marketsView(self, didSelectItemAtIndex: indexPath.row)
     }
 }
+
+// MARK: - Private functions
+private extension CompactMarketsView {
+    func styleShadowAfterLayout() {
+        self.smoothShadowView.layer.shadowPath = UIBezierPath(rect: CGRect(x: 0,
+                                                                        y: smoothShadowView.bounds.maxY - smoothShadowView.layer.shadowRadius,
+                                                                        width: smoothShadowView.bounds.width,
+                                                                        height: smoothShadowView.layer.shadowRadius)).cgPath
+        self.sharpShadowView.layer.shadowPath = UIBezierPath(rect: CGRect(x: 0,
+                                                                        y: sharpShadowView.bounds.maxY - sharpShadowView.layer.shadowRadius,
+                                                                        width: sharpShadowView.bounds.width,
+                                                                        height: sharpShadowView.layer.shadowRadius)).cgPath
+        
+    }
+}
+
+private extension UIColor {
+     class var shadowColor: UIColor {
+        return .blueGray800
+     }
+ }
