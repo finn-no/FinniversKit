@@ -114,9 +114,9 @@ private extension ContractActionViewModel {
     )
 
     static let carContract: ContractActionViewModel = ContractActionViewModel(
+        identifier: "demo-view",
         title: "Smidig bilhandel?",
         subtitle: "FINN guider deg hele veien.",
-        identifier: "demo-view",
         strings: [
             "Godkjent kontrakt av Forbrukerrådet",
             "Enkelt og trygt for begge parter",
@@ -128,10 +128,10 @@ private extension ContractActionViewModel {
     )
 
     static let requestAccessToContract: ContractActionViewModel = ContractActionViewModel(
+        identifier: "demo-view",
         title: "Smidig bilhandel",
         subtitle: "FINN guider deg hele veien.",
         description: "Selger har opprettet\nkjøpekontrakt for denne bilen",
-        identifier: "demo-view",
         strings: [
             "Godkjent kontrakt av Forbrukerrådet",
             "Enkelt og trygt for begge parter",

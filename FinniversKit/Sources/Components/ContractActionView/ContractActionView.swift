@@ -108,10 +108,11 @@ public class ContractActionView: UIView {
         trailingImageTopConstant: CGFloat = 0,
         trailingImageTrailingConstant: CGFloat = 0,
         contentSpacing: CGFloat = .spacingL,
-        paragraphSpacing: CGFloat = 6
+        paragraphSpacing: CGFloat = 6,
+        remoteImageViewDataSource: RemoteImageViewDataSource? = nil
     ) {
-        self.identifier = viewModel.identifier
-        self.buttonUrl = viewModel.buttonUrl
+        identifier = viewModel.identifier
+        buttonUrl = viewModel.buttonUrl
         videoUrl = viewModel.videoLink?.videoUrl
 
         if let title = viewModel.title, !title.isEmpty {
