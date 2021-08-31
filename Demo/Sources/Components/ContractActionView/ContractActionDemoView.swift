@@ -1,21 +1,38 @@
 import FinniversKit
 
 class ContractActionDemoView: UIView, Tweakable {
-    private lazy var contractActionView: ContractActionView = {
-        let view = ContractActionView(withAutoLayout: true)
-        view.delegate = self
-        return view
-    }()
-
-    lazy var tweakingOptions: [TweakingOption] = [
-        TweakingOption(title: "Plain contract") { [weak self] in
+    lazy var tweakingOptions: [TweakingOption]  = [
+        TweakingOption(title: "Basic", action: { [weak self] in
             self?.contractActionView.configure(with: .default)
-        },
+        }),
+        TweakingOption(title: "Car contract", action: { [weak self] in
+            self?.contractActionView.configure(
+                with: .carContract,
+                trailingImage: UIImage(named: .carsCircleIllustration),
+                paragraphSpacing: 12
+            )
+        }),
+        TweakingOption(title: "Request access to contract", action: { [weak self] in
+            self?.contractActionView.configure(
+                with: .requestAccessToContract,
+                trailingImage: UIImage(named: .contract),
+                trailingImageTopConstant: .spacingM,
+                trailingImageTrailingConstant: -.spacingM,
+                contentSpacing: .spacingM,
+                paragraphSpacing: 12
+            )
+        }),
         TweakingOption(title: "With video link") { [weak self] in
             guard let self = self else { return }
             self.contractActionView.configure(with: .withVideoLink, remoteImageViewDataSource: self)
         }
     ]
+
+    private lazy var contractActionView: ContractActionView = {
+        let view = ContractActionView(withAutoLayout: true)
+        view.delegate = self
+        return view
+    }()
 
     // MARK: - Init
 
@@ -87,11 +104,41 @@ private extension ContractActionViewModel {
     static let `default`: ContractActionViewModel = ContractActionViewModel(
         identifier: "demo-view",
         strings: [
-            "Digital signering",
-            "Ferdig utfylt kontrakt",
-            "1 mnd bilforsikring til kr 0,-"
+            "Godkjent kontrakt av Forbrukerrådet",
+            "Enkelt og trygt for begge parter",
+            "Oversikt over hele prosessen",
+            "Mulighet for gratis forsikring i 30 dager til 0 kr"
         ],
-        buttonTitle: "Opprett kjøpekontrakt",
+        buttonTitle: "Få ferdig utfylt kontrakt",
+        buttonUrl: URL(string: "https://www.finn.no/")!
+    )
+
+    static let carContract: ContractActionViewModel = ContractActionViewModel(
+        title: "Smidig bilhandel?",
+        subtitle: "FINN guider deg hele veien.",
+        identifier: "demo-view",
+        strings: [
+            "Godkjent kontrakt av Forbrukerrådet",
+            "Enkelt og trygt for begge parter",
+            "Oversikt over hele prosessen",
+            "Mulighet for gratis forsikring i 30 dager til 0 kr"
+        ],
+        buttonTitle: "Få ferdig utfylt kontrakt",
+        buttonUrl: URL(string: "https://www.finn.no/")!
+    )
+
+    static let requestAccessToContract: ContractActionViewModel = ContractActionViewModel(
+        title: "Smidig bilhandel",
+        subtitle: "FINN guider deg hele veien.",
+        description: "Selger har opprettet\nkjøpekontrakt for denne bilen",
+        identifier: "demo-view",
+        strings: [
+            "Godkjent kontrakt av Forbrukerrådet",
+            "Enkelt og trygt for begge parter",
+            "Oversikt over hele prosessen",
+            "Mulighet for gratis forsikring i 30 dager til 0 kr"
+        ],
+        buttonTitle: "Be selger om tilgang til kontrakten",
         buttonUrl: URL(string: "https://www.finn.no/")!
     )
 

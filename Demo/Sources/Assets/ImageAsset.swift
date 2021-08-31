@@ -41,12 +41,15 @@ enum ImageAsset: String {
     case boat
     case boatNew
     case car
+    case carIllustration
     case carNew
     case carPromo
+    case carsCircleIllustration
     case checkCircleFilled
     case classifieds
     case classifiedsNew
     case consentTransparencyImage
+    case contract
     case cross
     case displayTypeGrid
     case displayTypeList
@@ -132,12 +135,15 @@ enum ImageAsset: String {
             .boat,
             .boatNew,
             .car,
+            .carIllustration,
             .carNew,
             .carPromo,
+            .carsCircleIllustration,
             .checkCircleFilled,
             .classifieds,
             .classifiedsNew,
             .consentTransparencyImage,
+            .contract,
             .cross,
             .displayTypeGrid,
             .displayTypeList,

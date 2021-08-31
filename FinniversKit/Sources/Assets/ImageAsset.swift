@@ -49,6 +49,8 @@ enum ImageAsset: String {
     case camera
     case candyCane
     case car
+    case carsCircleIllustration
+    case carsIllustration
     case check
     case checkCircle
     case checkCircleFilled
@@ -59,6 +61,7 @@ enum ImageAsset: String {
     case close
     case confetti1
     case confetti2
+    case contract
     case creditcard
     case cross
     case distanceOutlined
@@ -109,7 +112,7 @@ enum ImageAsset: String {
     case hide
     case important
     case info
-    case klimaboletBanner
+    case klimabroletBanner
     case listView
     case magnifyingGlass
     case mapDirections
@@ -186,6 +189,8 @@ enum ImageAsset: String {
             .camera,
             .candyCane,
             .car,
+            .carsCircleIllustration,
+            .carsIllustration,
             .check,
             .checkCircle,
             .checkCircleFilled,
@@ -196,6 +201,7 @@ enum ImageAsset: String {
             .close,
             .confetti1,
             .confetti2,
+            .contract,
             .creditcard,
             .cross,
             .distanceOutlined,
@@ -246,7 +252,7 @@ enum ImageAsset: String {
             .hide,
             .important,
             .info,
-            .klimaboletBanner,
+            .klimabroletBanner,
             .listView,
             .magnifyingGlass,
             .mapDirections,

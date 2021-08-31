@@ -35,19 +35,12 @@ public class CollapsibleContentView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var innerContainerView: UIView = UIView(withAutoLayout: true)
-
-    private lazy var headerView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .horizontal
-        stackView.layoutMargins = .init(vertical: .spacingS, horizontal: 0)
-        stackView.distribution = .equalSpacing
-        stackView.isLayoutMarginsRelativeArrangement = true
-        return stackView
-    }()
+    private let style: Style
+    private lazy var innerContainerView = UIView(withAutoLayout: true)
+    private lazy var headerView = UIView(withAutoLayout: true)
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .title3Strong, withAutoLayout: true)
+        let label = Label(style: style.titleStyle, withAutoLayout: true)
         label.numberOfLines = 0
         return label
     }()
@@ -58,17 +51,19 @@ public class CollapsibleContentView: UIView {
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .iconSecondary
         imageView.isUserInteractionEnabled = true
-        imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        imageView.setContentHuggingPriority(.required, for: .horizontal)
+        imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
         return imageView
     }()
 
     private lazy var fullHeightConstraint: NSLayoutConstraint = {
-        let constraint = heightAnchor.constraint(equalTo: innerContainerView.heightAnchor)
+        let sumOfInsets = style.contentInsets.top + style.contentInsets.bottom
+        let constraint = heightAnchor.constraint(equalTo: innerContainerView.heightAnchor, constant: sumOfInsets)
         constraint.priority = .defaultHigh
         return constraint
     }()
 
-    /// When expanding/collapsing the content, ensure the `fullHeightConstraint` is `active` or `inactive` before
+    /// When expanding/collapsing the content, ensure the `fullHeightConstraint` is `active` or `inactive` before
     /// getting this image
     private var indicatorImage: UIImage? {
         let assetName: ImageAsset = isExpanded ? .arrowUp : .arrowDown
@@ -76,7 +71,7 @@ public class CollapsibleContentView: UIView {
     }
 
     private lazy var compactHeightConstraint: NSLayoutConstraint = {
-        let constraint = heightAnchor.constraint(equalTo: headerView.heightAnchor)
+        let constraint = heightAnchor.constraint(equalTo: headerView.heightAnchor, constant: style.contentInsets.top * 2)
         constraint.priority = .defaultLow
         return constraint
     }()
@@ -85,15 +80,14 @@ public class CollapsibleContentView: UIView {
 
     // MARK: - Initializers
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(style: Style = .plain, withAutoLayout: Bool) {
+        self.style = style
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
+    public required init?(coder: NSCoder) { fatalError() }
 
     // MARK: - UIView overrides
 
@@ -118,21 +112,34 @@ public class CollapsibleContentView: UIView {
     private func setup() {
         clipsToBounds = true
 
-        headerView.addArrangedSubview(titleLabel)
-        headerView.addArrangedSubview(collapseIndicatorImageView)
+        backgroundColor = style.backgroundColor
+        layer.cornerRadius = style.cornerRadius
+
+        headerView.addSubview(titleLabel)
+        headerView.addSubview(collapseIndicatorImageView)
 
         innerContainerView.addSubview(headerView)
         addSubview(innerContainerView)
 
+        let contentInsets = style.contentInsets
         NSLayoutConstraint.activate([
-            innerContainerView.topAnchor.constraint(equalTo: topAnchor),
-            innerContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            innerContainerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            innerContainerView.bottomAnchor.constraint(greaterThanOrEqualTo: bottomAnchor),
+            innerContainerView.topAnchor.constraint(equalTo: topAnchor, constant: contentInsets.top),
+            innerContainerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: contentInsets.leading),
+            innerContainerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -contentInsets.trailing),
+            innerContainerView.bottomAnchor.constraint(greaterThanOrEqualTo: bottomAnchor, constant: -contentInsets.bottom),
 
             headerView.topAnchor.constraint(equalTo: innerContainerView.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: innerContainerView.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: innerContainerView.trailingAnchor),
+
+            titleLabel.topAnchor.constraint(equalTo: headerView.topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
+
+            collapseIndicatorImageView.topAnchor.constraint(equalTo: headerView.topAnchor),
+            collapseIndicatorImageView.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: .spacingS),
+            collapseIndicatorImageView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+            collapseIndicatorImageView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
             compactHeightConstraint,
         ])
 
@@ -142,7 +149,8 @@ public class CollapsibleContentView: UIView {
     private func addContentView(_ contentView: UIView) {
         innerContainerView.addSubview(contentView)
 
-        let contentTopConstraint = contentView.topAnchor.constraint(equalTo: headerView.bottomAnchor)
+        let offsetFromHeader = style.headerContentSpacing + style.contentInsets.top
+        let contentTopConstraint = contentView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: offsetFromHeader)
         NSLayoutConstraint.activate([
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 10),
             contentTopConstraint,
