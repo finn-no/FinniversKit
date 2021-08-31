@@ -8,73 +8,11 @@
 
 import UIKit
 
-private extension UIView {
-    static func priceTagView(_ price: String, height: CGFloat) -> UIView {
-        let background = UIVisualEffectView(withAutoLayout: true)
-        if #available(iOS 13.0, *) {
-            background.effect = UIBlurEffect(style: .systemThinMaterialDark)
-        } else {
-            background.effect = nil
-            background.backgroundColor = UIColor(hex: "#262626").withAlphaComponent(0.8)
-        }
-        background.alpha = 1.0
-        background.layer.cornerRadius = height / 2
-        background.clipsToBounds = true
-        
-        let label = Label(style: .captionStrong)
-        label.textColor = .textTertiary
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .clear
-        label.text = price
-        label.textAlignment = .center
-        
-        
-        background.contentView.addSubview(label)
-        
-        NSLayoutConstraint.activate([
-            background.heightAnchor.constraint(equalToConstant: height),
-            label.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 8),
-            label.topAnchor.constraint(equalTo: background.topAnchor, constant: 4),
-            label.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -8)
-            
-        ])
-        
-        return background
-//
-//        let label = Label(style: .captionStrong)
-//        label.textColor = .textTertiary
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.backgroundColor = .clear
-//        label.text = price
-//
-//        let imageView = UIImageView(withAutoLayout: true)
-//        imageView.layer.masksToBounds = true
-//        imageView.contentMode = .scaleAspectFit
-//        imageView.tintColor = .iconTertiary
-//
-//        background.contentView.addSubview(imageView)
-//        background.contentView.addSubview(label)
-//
-//        NSLayoutConstraint.activate([
-//            imageView.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 8),
-//            imageView.heightAnchor.constraint(equalToConstant: 23),
-//            imageView.widthAnchor.constraint(equalToConstant: 23),
-//            imageView.centerYAnchor.constraint(equalTo: background.centerYAnchor),
-//
-//            label.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 8),
-//            label.centerYAnchor.constraint(equalTo: background.centerYAnchor),
-//            background.heightAnchor.constraint(equalToConstant: height)
-//        ])
-//        background.layoutIfNeeded()
-//        return background
-    }
-}
-
-class NewlyFavoritedItemCell: UICollectionViewCell {
+public class NewlyFavoritedItemCell: UICollectionViewCell {
     static let identifier = "NewlyFavoritedItemCell"
     private static let titleHeight: CGFloat = 8
-    private static let priceTagHeight: CGFloat = 35
-    
+    private static let priceTagHeight: CGFloat = 30
+    private var isHeightCalculated = false
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -88,9 +26,44 @@ class NewlyFavoritedItemCell: UICollectionViewCell {
         return imageView
     }()
     
-    private lazy var priceLabel: UIView = {
-        return UIView.priceTagView("500 000 000 kr", height: 26)
+    private lazy var priceLabel: UILabel = {
+        let label = Label(style: .captionStrong)
+        label.textColor = .textTertiary
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .clear
+        label.text = "500 kr"
+        label.textAlignment = .center
+        
+        return label
     }()
+    
+    private lazy var priceBackground: UIView = {
+        let background = UIVisualEffectView(withAutoLayout: true)
+        if #available(iOS 13.0, *) {
+            background.effect = UIBlurEffect(style: .systemThinMaterialDark)
+        } else {
+            background.effect = nil
+            background.backgroundColor = UIColor(hex: "#262626").withAlphaComponent(0.8)
+        }
+        background.alpha = 1.0
+        background.layer.cornerRadius = NewlyFavoritedItemCell.priceTagHeight / 2
+        background.clipsToBounds = true
+        
+        background.contentView.addSubview(priceLabel)
+        
+        NSLayoutConstraint.activate([
+            background.heightAnchor.constraint(equalToConstant: NewlyFavoritedItemCell.priceTagHeight),
+            priceLabel.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 8),
+            priceLabel.topAnchor.constraint(equalTo: background.topAnchor, constant: 4),
+            priceLabel.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -8),
+            priceLabel.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -4)
+            
+        ])
+        
+        return background
+    }()
+    
+    
     
     private let smallShadowView: UIView = {
         let view = UIView(withAutoLayout: false)
@@ -129,6 +102,8 @@ class NewlyFavoritedItemCell: UICollectionViewCell {
         return button
     }()
     
+    private lazy var ribbonView: RibbonView = RibbonView(withAutoLayout: true)
+    
     private lazy var titleLabel: Label = {
         let label = Label(style: .body)
         label.setContentHuggingPriority(.required, for: .vertical)
@@ -137,6 +112,8 @@ class NewlyFavoritedItemCell: UICollectionViewCell {
         label.text = random % 2 == 0 ? "LØREN - Nydelig, påkostet familebolig til salgs" : "Stol - Som NY!"
         label.numberOfLines = 2
         label.textAlignment = .left
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
+        label.setContentHuggingPriority(.required, for: .vertical)
         return label
     }()
     
@@ -148,15 +125,27 @@ class NewlyFavoritedItemCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
         label.textAlignment = .left
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
+        label.setContentHuggingPriority(.required, for: .vertical)
         return label
     }()
     
-    override func prepareForReuse() {
+    private lazy var verticalStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 8
+        
+        stackView.addArrangedSubviews([ribbonView, subtitleLabel, titleLabel])
+        stackView.setCustomSpacing(4, after: subtitleLabel)
+        return stackView
+    }()
+    
+    public override func prepareForReuse() {
         super.prepareForReuse()
-//        imageView.image = nil
-//        imageDescriptionLabel.text = nil
-//        titleLabel.text = nil
-//        subtitleLabel.text = nil
+        isHeightCalculated = false
     }
     
     override init(frame: CGRect) {
@@ -169,37 +158,36 @@ class NewlyFavoritedItemCell: UICollectionViewCell {
         setup()
     }
     
+    
     private func setup() {
+        ribbonView.style = .sponsored
+        ribbonView.title = "Betalt plassering"
+        ribbonView.setContentCompressionResistancePriority(.required, for: .vertical)
+        ribbonView.isHidden = Int.random(in: (1...3)) % 2 == 0
         contentView.addSubview(imageContainerView)
-        contentView.addSubview(subtitleLabel)
-        contentView.addSubview(titleLabel)
         contentView.addSubview(favoriteButton)
-        contentView.addSubview(priceLabel)
+        contentView.addSubview(priceBackground)
+        contentView.addSubview(verticalStack)
         
         imageContainerView.setContentCompressionResistancePriority(.required, for: .vertical)
-       // imageView.dropShadow(color: .shadowSmall, opacity: 0.24, offset: CGSize(width: 0, height: 1), radius: 1)
         NSLayoutConstraint.activate([
             imageContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 2),
             imageContainerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
             imageContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -2),
             imageContainerView.heightAnchor.constraint(equalToConstant: 128),
             
-            subtitleLabel.leadingAnchor.constraint(equalTo: imageContainerView.leadingAnchor),
-            subtitleLabel.topAnchor.constraint(equalTo: imageContainerView.bottomAnchor, constant: 8),
-            subtitleLabel.widthAnchor.constraint(equalTo: imageContainerView.widthAnchor),
-            
-            titleLabel.leadingAnchor.constraint(equalTo: imageContainerView.leadingAnchor),
-            titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 4),
+            verticalStack.leadingAnchor.constraint(equalTo: imageContainerView.leadingAnchor),
+            verticalStack.topAnchor.constraint(equalTo: imageContainerView.bottomAnchor, constant: 8),
+            verticalStack.widthAnchor.constraint(equalTo: imageContainerView.widthAnchor),
+            verticalStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
             titleLabel.widthAnchor.constraint(equalTo: imageContainerView.widthAnchor),
-            
-            priceLabel.leadingAnchor.constraint(equalTo: imageContainerView.leadingAnchor, constant: 8),
-            priceLabel.bottomAnchor.constraint(equalTo: imageContainerView.bottomAnchor, constant: -8),
             
             favoriteButton.topAnchor.constraint(equalTo: imageContainerView.topAnchor, constant: 8),
             favoriteButton.trailingAnchor.constraint(equalTo: imageContainerView.trailingAnchor, constant: -8),
-            priceLabel.leadingAnchor.constraint(equalTo: imageContainerView.leadingAnchor, constant: 8),
-            priceLabel.bottomAnchor.constraint(equalTo: imageContainerView.bottomAnchor, constant: -8),
-            priceLabel.trailingAnchor.constraint(lessThanOrEqualTo: imageContainerView.trailingAnchor, constant: -8)
+            priceBackground.leadingAnchor.constraint(equalTo: imageContainerView.leadingAnchor, constant: 8),
+            priceBackground.bottomAnchor.constraint(equalTo: imageContainerView.bottomAnchor, constant: -8),
+            priceBackground.trailingAnchor.constraint(lessThanOrEqualTo: imageContainerView.trailingAnchor, constant: -8),
+            ribbonView.heightAnchor.constraint(greaterThanOrEqualToConstant: 20)
         ])
         
         largeShadowView.fillInSuperview()
@@ -208,5 +196,29 @@ class NewlyFavoritedItemCell: UICollectionViewCell {
     
     @objc private func favoriteButtonPressed() {
         favoriteButton.isToggled.toggle()
+    }
+    
+    public override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        if !isHeightCalculated {
+            setNeedsLayout()
+            layoutIfNeeded()
+            let size = contentView.systemLayoutSizeFitting(layoutAttributes.size)
+            var newFrame = layoutAttributes.frame
+            newFrame.size.width = 128 + 4
+            newFrame.size.height = CGFloat(ceilf(Float(size.height)))
+            print(newFrame.size)
+            layoutAttributes.frame = newFrame
+            isHeightCalculated = true
+        }
+        
+        
+        return layoutAttributes
+    }
+}
+
+// MARK: - public functions
+public extension NewlyFavoritedItemCell {
+    func configure(with model: NewlyFavorited) {
+        
     }
 }

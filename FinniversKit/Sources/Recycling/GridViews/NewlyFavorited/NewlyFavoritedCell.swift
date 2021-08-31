@@ -7,18 +7,33 @@
 //
 
 import UIKit
+public struct NewlyFavorited: FavoritesListViewModel {
+    public var imagePath: String?
+    public var imageSize: CGSize
+    public var detail: String
+    public var title: String
+}
 
-class NewlyFavoritedCell: UICollectionViewCell {
+public class NewlyFavoritedFlowLayout: UICollectionViewFlowLayout {
+    public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        let attributes = super.layoutAttributesForElements(in: rect)
+        attributes?.forEach({ layoutAttribute in
+            layoutAttribute.frame.origin.y = 0
+        })
+        
+        return attributes
+    }
+}
+
+public class NewlyFavoritedCell: UICollectionViewCell {
     static let identifier = "NewlyFavoritedCell"
-
+    
     private lazy var collectionView: UICollectionView = {
-        let flow = UICollectionViewFlowLayout()
+        let flow = NewlyFavoritedFlowLayout()
         flow.scrollDirection = .horizontal
-        flow.itemSize = CGSize(width: 128 + 4, height: 200)
         flow.minimumInteritemSpacing = 8
-        flow.sectionInset = UIEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0)
-        
-        
+        flow.sectionInset = UIEdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 40)
+        flow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flow)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(NewlyFavoritedItemCell.self)
@@ -49,11 +64,11 @@ private extension NewlyFavoritedCell {
 }
 
 extension NewlyFavoritedCell: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(NewlyFavoritedItemCell.self, for: indexPath)
         return cell
     }

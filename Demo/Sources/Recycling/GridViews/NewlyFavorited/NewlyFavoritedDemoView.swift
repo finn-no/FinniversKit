@@ -6,9 +6,17 @@
 //  Copyright © 2021 FINN AS. All rights reserved.
 //
 
-import UIKit
+import FinniversKit
+
+public class NewlyFavoritedDataSource: NSObject {
+    let favorites = FavoriteFactory.create()
+}
 
 public class NewlyFavoritedDemoView: UIView {
+    
+    lazy var dataSource: NewlyFavoritedDataSource = {
+        return NewlyFavoritedDataSource()
+    }()
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -35,6 +43,10 @@ public class NewlyFavoritedDemoView: UIView {
         collectionView.backgroundColor = .bgTertiary
         backgroundColor = .bgTertiary
         backgroundColor = .bgTertiary
+    }
+    
+    private func convertToNewFavorited(_ favorite: Favorite) {
+        
     }
 }
 
