@@ -17,6 +17,10 @@ import UIKit
     public class var bgTertiary: UIColor {
         Config.colorProvider.bgTertiary
     }
+    
+    public class var bgQuaternary: UIColor {
+        Config.colorProvider.bgQuaternary
+    }
 
     public class var bgBottomSheet: UIColor {
         Config.colorProvider.bgBottomSheet
@@ -304,6 +308,10 @@ extension CGColor {
 
     public class var bgTertiary: CGColor {
         return UIColor.bgTertiary.cgColor
+    }
+    
+    public class var bgQuaternary: CGColor {
+        UIColor.bgQuaternary.cgColor
     }
 
     public class var bgAlert: CGColor {
