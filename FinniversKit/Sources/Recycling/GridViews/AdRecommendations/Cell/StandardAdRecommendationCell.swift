@@ -176,7 +176,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         imageDescriptionView.contentView.addSubview(iconImageView)
         imageDescriptionView.contentView.addSubview(imageTextLabel)
 
-        backgroundColor = .bgPrimary
+        backgroundColor = .clear
 
         let imageHeightMinimumConstraint = imageContentView.heightAnchor.constraint(equalTo: imageContentView.widthAnchor, multiplier: StandardAdRecommendationCell.minImageAspectRatio)
         let imageHeightMaximumConstraint = imageContentView.heightAnchor.constraint(lessThanOrEqualTo: imageContentView.widthAnchor, multiplier: StandardAdRecommendationCell.maxImageAspectRatio)
