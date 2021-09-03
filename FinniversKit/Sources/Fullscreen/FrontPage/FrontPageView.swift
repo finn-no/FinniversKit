@@ -13,6 +13,13 @@ public protocol FrontPageViewDelegate: AnyObject {
 }
 
 public final class FrontPageView: UIView, BasicFrontPageView {
+    
+    public enum CompactMarketsViewVisibilityStatus {
+        case hidden
+        case displaying(progress: CGFloat)
+        case displayed
+    }
+    
     public var model: FrontPageViewModel? {
         didSet {
             headerLabel.text = model?.adRecommedationsGridViewHeaderTitle
@@ -36,6 +43,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     // MARK: - Subviews
 
     private let marketsGridView: MarketsGridView
+    private let compactMarketsView: CompactMarketsView
     private let adRecommendationsGridView: AdRecommendationsGridView
 
     private let promoContainer = UIView(withAutoLayout: true)
@@ -55,6 +63,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     }()
 
     private lazy var marketsGridViewHeight = self.marketsGridView.heightAnchor.constraint(equalToConstant: 0)
+    private lazy var compactMarketsViewBottomConstraint = compactMarketsView.bottomAnchor.constraint(equalTo: topAnchor)
 
     private var keyValueObservation: NSKeyValueObservation?
 
@@ -75,7 +84,10 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     ) {
         marketsGridView = MarketsGridView(delegate: marketsViewDelegate, dataSource: marketsViewDataSource)
         marketsGridView.translatesAutoresizingMaskIntoConstraints = false
-
+        
+        compactMarketsView = CompactMarketsView(delegate: marketsViewDelegate, dataSource: marketsViewDataSource)
+        compactMarketsView.translatesAutoresizingMaskIntoConstraints = false
+        
         adRecommendationsGridView = AdRecommendationsGridView(delegate: adRecommendationsGridViewDelegate, dataSource: adRecommendationsGridViewDataSource)
         adRecommendationsGridView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -133,6 +145,20 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     public func scrollToTop() {
         adRecommendationsGridView.scrollToTop()
     }
+    
+    public func changeCompactMarketsViewVisibilityStatus(to status: CompactMarketsViewVisibilityStatus) {
+        switch status {
+        case .displaying(progress: let progress):
+            compactMarketsView.isHidden = false
+            let height = compactMarketsView.calculateSize(constrainedTo: frame.width).height
+            compactMarketsViewBottomConstraint.constant = height * progress
+            layoutIfNeeded()
+        case .displayed:
+            compactMarketsView.isHidden = false
+        case .hidden:
+            compactMarketsView.isHidden = true
+        }
+    }
 
     public func insertPromoView(_ view: UIView?) {
         addSubviewToPromoContainer(view)
@@ -150,6 +176,8 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         headerView.addSubview(marketsGridView)
         headerView.addSubview(promoContainer)
         headerView.addSubview(headerLabel)
+        
+        addSubview(compactMarketsView)
 
         NSLayoutConstraint.activate([
             marketsGridView.topAnchor.constraint(equalTo: headerView.topAnchor, constant: .spacingM),
@@ -164,10 +192,17 @@ public final class FrontPageView: UIView, BasicFrontPageView {
             headerLabel.topAnchor.constraint(equalTo: promoContainer.bottomAnchor, constant: .spacingM),
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
+            
+            compactMarketsView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            compactMarketsView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            compactMarketsViewBottomConstraint,
+            compactMarketsView.heightAnchor.constraint(equalToConstant: compactMarketsView.calculateSize(constrainedTo: frame.width).height)
         ])
 
         adRecommendationsGridView.fillInSuperview()
         adRecommendationsGridView.headerView = headerView
+        
+        changeCompactMarketsViewVisibilityStatus(to: .hidden)
 
         setupFrames()
     }
