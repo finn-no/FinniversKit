@@ -118,12 +118,14 @@ public final class FrontPageView: UIView, BasicFrontPageView {
 
     public func reloadData() {
         marketsGridView.reloadData()
+        compactMarketsView.reloadData()
         setupFrames()
         reloadAds()
     }
 
     public func reloadMarkets() {
         marketsGridView.reloadData()
+        compactMarketsView.reloadData()
         setupFrames()
         adRecommendationsGridView.reloadData()
     }
