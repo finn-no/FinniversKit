@@ -63,7 +63,7 @@ public class AdRecommendationsGridView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .bgQuaternary
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
 
