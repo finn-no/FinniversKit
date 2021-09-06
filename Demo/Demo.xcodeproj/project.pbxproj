@@ -199,6 +199,7 @@
 		AA189E8726847AE700FD3A41 /* BlockUserDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA189E8626847AE700FD3A41 /* BlockUserDemoView.swift */; };
 		D6D43CD625BF239E00234AC2 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 46E77597242D6890008A5E93 /* SnapshotTesting */; };
 		D74AFB0C26CFCE5B00600A1F /* NewlyFavoritedDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74AFB0B26CFCE5B00600A1F /* NewlyFavoritedDemoView.swift */; };
+		D7715E5E26E40FA100261CF3 /* NewlyFavoritedFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7715E5D26E40FA100261CF3 /* NewlyFavoritedFactory.swift */; };
 		DA083C2E2462BCA800B26235 /* SwiftUIDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */; };
 		DA82B1ED268B62D2005F67C3 /* LoadingRetryDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA82B1EC268B62D2005F67C3 /* LoadingRetryDemoView.swift */; };
 		DAE9CA8724602CB000C7552F /* SwiftUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */; };
@@ -423,6 +424,7 @@
 		9BBC903F24FD252B0003D2D8 /* UITraitCollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITraitCollection+Extensions.swift"; sourceTree = "<group>"; };
 		AA189E8626847AE700FD3A41 /* BlockUserDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUserDemoView.swift; sourceTree = "<group>"; };
 		D74AFB0B26CFCE5B00600A1F /* NewlyFavoritedDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewlyFavoritedDemoView.swift; sourceTree = "<group>"; };
+		D7715E5D26E40FA100261CF3 /* NewlyFavoritedFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewlyFavoritedFactory.swift; sourceTree = "<group>"; };
 		DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDemoViews.swift; sourceTree = "<group>"; };
 		DA82B1EC268B62D2005F67C3 /* LoadingRetryDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingRetryDemoView.swift; sourceTree = "<group>"; };
 		DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewTests.swift; sourceTree = "<group>"; };
@@ -1703,9 +1705,18 @@
 		D74AFB0A26CFCE4500600A1F /* NewlyFavorited */ = {
 			isa = PBXGroup;
 			children = (
+				D7715E5C26E40F8C00261CF3 /* Model */,
 				D74AFB0B26CFCE5B00600A1F /* NewlyFavoritedDemoView.swift */,
 			);
 			path = NewlyFavorited;
+			sourceTree = "<group>";
+		};
+		D7715E5C26E40F8C00261CF3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D7715E5D26E40FA100261CF3 /* NewlyFavoritedFactory.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		DA82B1EB268B62B7005F67C3 /* LoadingRetryView */ = {
@@ -1880,6 +1891,7 @@
 				46E7742D242CEF0A008A5E93 /* PrimingDemoView.swift in Sources */,
 				46E77436242CEF0A008A5E93 /* QuestionnaireDefaultData.swift in Sources */,
 				46E77428242CEF0A008A5E93 /* ReviewButtonViewDemoView.swift in Sources */,
+				D7715E5E26E40FA100261CF3 /* NewlyFavoritedFactory.swift in Sources */,
 				46E773D8242CEF0A008A5E93 /* FavoriteAdsDemoDataSource.swift in Sources */,
 				46E773D1242CEF0A008A5E93 /* MessageFormDemoPresenter.swift in Sources */,
 				46E77465242CEF0A008A5E93 /* BasicTableViewDemoView.swift in Sources */,

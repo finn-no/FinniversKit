@@ -9,7 +9,7 @@
 import FinniversKit
 
 public class NewlyFavoritedDataSource: NSObject {
-    let favorites = FavoriteFactory.create()
+    let favorites = NewlyFavoritedFactory.create()
 }
 
 public class NewlyFavoritedDemoView: UIView {
@@ -44,10 +44,6 @@ public class NewlyFavoritedDemoView: UIView {
         backgroundColor = .bgTertiary
         backgroundColor = .bgTertiary
     }
-    
-    private func convertToNewFavorited(_ favorite: Favorite) {
-        
-    }
 }
 
 extension NewlyFavoritedDemoView: UICollectionViewDataSource {
@@ -56,12 +52,45 @@ extension NewlyFavoritedDemoView: UICollectionViewDataSource {
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeue(NewlyFavoritedCell.self, for: indexPath)
+        let cell: NewlyFavoritedCell = collectionView.dequeue(NewlyFavoritedCell.self, for: indexPath)
+        cell.dataSource = self
+        
+        return cell
     }
 }
 
 extension NewlyFavoritedDemoView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.bounds.width, height: 250)
+    }
+}
+
+extension NewlyFavoritedDemoView: NewlyFavoritedListDataSource {
+    public func numberOfItems(_ inNewlyFavoritedListCell: NewlyFavoritedCell) -> Int {
+        return dataSource.favorites.count
+    }
+    
+    public func newlyFavoritedListCell(_ newlyFavoritedListCell: NewlyFavoritedCell, modelAtIndex index: Int) -> NewlyFavoritedViewModel {
+        return dataSource.favorites[index]
+    }
+    
+    public func newlyFavoritedListCell(_ newlyFavoritedListCell: NewlyFavoritedCell, loadImageForModel model: NewlyFavoritedViewModel, completion: @escaping (UIImage?) -> Void) {
+        guard let path = model.imagePath, let url = URL(string: path) else {
+            completion(nil)
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, _ , _ in
+            
+            DispatchQueue.main.async {
+                if let data = data, let image = UIImage(data: data) {
+                    completion(image)
+                } else {
+                    completion(nil)
+                }
+            }
+        }
+        
+        task.resume()
     }
 }

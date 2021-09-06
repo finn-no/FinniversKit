@@ -19,7 +19,6 @@ public class NewlyFavoritedItemCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
-        imageView.backgroundColor = .red
         imageView.widthAnchor.constraint(equalToConstant: 128).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 128).isActive = true
         imageView.layer.cornerRadius = 8
@@ -31,7 +30,6 @@ public class NewlyFavoritedItemCell: UICollectionViewCell {
         label.textColor = .textTertiary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
-        label.text = "500 kr"
         label.textAlignment = .center
         
         return label
@@ -62,8 +60,6 @@ public class NewlyFavoritedItemCell: UICollectionViewCell {
         
         return background
     }()
-    
-    
     
     private let smallShadowView: UIView = {
         let view = UIView(withAutoLayout: false)
@@ -108,8 +104,7 @@ public class NewlyFavoritedItemCell: UICollectionViewCell {
         let label = Label(style: .body)
         label.setContentHuggingPriority(.required, for: .vertical)
         label.translatesAutoresizingMaskIntoConstraints = false
-        let random = Int.random(in: 0...2)
-        label.text = random % 2 == 0 ? "LØREN - Nydelig, påkostet familebolig til salgs" : "Stol - Som NY!"
+       
         label.numberOfLines = 2
         label.textAlignment = .left
         label.setContentCompressionResistancePriority(.required, for: .vertical)
@@ -121,7 +116,6 @@ public class NewlyFavoritedItemCell: UICollectionViewCell {
         let label = Label(style: .detail)
         label.setContentHuggingPriority(.required, for: .vertical)
         label.textColor = .textSecondary
-        label.text = "Oslo"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -146,6 +140,9 @@ public class NewlyFavoritedItemCell: UICollectionViewCell {
     public override func prepareForReuse() {
         super.prepareForReuse()
         isHeightCalculated = false
+        imageView.image = defaultImage
+        titleLabel.text = ""
+        subtitleLabel.text = ""
     }
     
     override init(frame: CGRect) {
@@ -158,16 +155,64 @@ public class NewlyFavoritedItemCell: UICollectionViewCell {
         setup()
     }
     
+    public var model: NewlyFavoritedViewModel? {
+        didSet {
+            if let model = model {
+                subtitleLabel.text = model.subtitle
+                titleLabel.text = model.title
+                priceLabel.text = model.price
+            }
+        }
+    }
     
+    public var favoriteToggleAction: ((IconButton) -> ())?
+    
+    private var defaultImage: UIImage? {
+        return UIImage(named: .noImage)
+    }
+    
+    public override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        if !isHeightCalculated {
+            setNeedsLayout()
+            layoutIfNeeded()
+            let size = contentView.systemLayoutSizeFitting(layoutAttributes.size)
+            var newFrame = layoutAttributes.frame
+            newFrame.size.width = 128 + 4
+            newFrame.size.height = CGFloat(ceilf(Float(size.height)))
+            layoutAttributes.frame = newFrame
+            isHeightCalculated = true
+        }
+        
+        
+        return layoutAttributes
+    }
+}
+
+//MARK: - Public functions
+public extension NewlyFavoritedItemCell {
+    func setImage(_ image: UIImage?) {
+        if let image = image {
+            imageView.image = image
+        } else {
+            imageView.image = defaultImage
+        }
+    }
+}
+
+// MARK: - Private functions
+private extension NewlyFavoritedItemCell {
     private func setup() {
-        ribbonView.style = .sponsored
-        ribbonView.title = "Betalt plassering"
+        ribbonView.style = .disabled
+        ribbonView.title = "Solgt"
+        ribbonView.isHidden = true
         ribbonView.setContentCompressionResistancePriority(.required, for: .vertical)
-        ribbonView.isHidden = Int.random(in: (1...3)) % 2 == 0
+        
         contentView.addSubview(imageContainerView)
         contentView.addSubview(favoriteButton)
         contentView.addSubview(priceBackground)
         contentView.addSubview(verticalStack)
+        
+        imageView.image = defaultImage
         
         imageContainerView.setContentCompressionResistancePriority(.required, for: .vertical)
         NSLayoutConstraint.activate([
@@ -196,29 +241,8 @@ public class NewlyFavoritedItemCell: UICollectionViewCell {
     
     @objc private func favoriteButtonPressed() {
         favoriteButton.isToggled.toggle()
-    }
-    
-    public override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        if !isHeightCalculated {
-            setNeedsLayout()
-            layoutIfNeeded()
-            let size = contentView.systemLayoutSizeFitting(layoutAttributes.size)
-            var newFrame = layoutAttributes.frame
-            newFrame.size.width = 128 + 4
-            newFrame.size.height = CGFloat(ceilf(Float(size.height)))
-            print(newFrame.size)
-            layoutAttributes.frame = newFrame
-            isHeightCalculated = true
+        if let action = favoriteToggleAction {
+            action(favoriteButton)
         }
-        
-        
-        return layoutAttributes
-    }
-}
-
-// MARK: - public functions
-public extension NewlyFavoritedItemCell {
-    func configure(with model: NewlyFavorited) {
-        
     }
 }
