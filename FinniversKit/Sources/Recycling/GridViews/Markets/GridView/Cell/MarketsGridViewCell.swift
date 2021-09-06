@@ -171,17 +171,18 @@ private extension CALayer {
     
     func applyShadow(ofType type: ShadowType) {
         self.masksToBounds = false
-        self.shadowColor = UIColor.tileShadowColor.cgColor
         
         switch type {
         case .sharp:
-            self.shadowOpacity = 0.05
-            self.shadowOffset = CGSize(width: 0, height: -1)
+            self.shadowOpacity = 0.25
+            self.shadowOffset = CGSize(width: 0, height: 1)
+            self.shadowColor = UIColor.tileSharpShadowColor.cgColor
             self.shadowRadius = 1
         case .smooth:
-            self.shadowOpacity = 0.14
-            self.shadowOffset = CGSize(width: 0, height: 4)
-            self.shadowRadius = 14
+            self.shadowOpacity = 0.16
+            self.shadowOffset = CGSize(width: 0, height: 1)
+            self.shadowColor = UIColor.tileSmoothShadowColor.cgColor
+            self.shadowRadius = 5
         }
     }
 }
@@ -189,11 +190,15 @@ private extension CALayer {
 // TODO: - These colors should be added to the ColorProvider at some point
 private extension UIColor {
     class var externalLinkColor: UIColor {
+        return .blueGray400
+    }
+    
+    class var tileSharpShadowColor: UIColor {
         return .blueGray600
     }
     
-    class var tileShadowColor: UIColor {
-        return .blueGray800
+    class var tileSmoothShadowColor: UIColor {
+        return .blueGray600
     }
     
     class var tileBackgroundColor: UIColor {
