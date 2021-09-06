@@ -49,7 +49,7 @@ public enum RecyclingDemoViews: String, DemoViews {
         case .neighborhoodProfileView:
             return DemoViewController<NeighborhoodProfileDemoView>()
         case .newlyFavoritedView:
-            return DemoViewController<NewlyFavoritedDemoView>()
+            return DemoViewController<FavoritedShelfDemoView>()
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  NewlyFavoritedItemCell.swift
+//  FrontpageFavoritedShelfItemCell.swift
 //  FinniversKit
 //
 //  Created by Suthananth Arulanantham on 11/08/2021.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-public class NewlyFavoritedItemCell: UICollectionViewCell {
-    static let identifier = "NewlyFavoritedItemCell"
+public class FrontpageFavoritedShelfItemCell: UICollectionViewCell {
+    static let identifier = "FrontpageFavoritedShelfItemCell"
     private static let titleHeight: CGFloat = 8
     private static let priceTagHeight: CGFloat = 30
     private var isHeightCalculated = false
@@ -44,13 +44,13 @@ public class NewlyFavoritedItemCell: UICollectionViewCell {
             background.backgroundColor = UIColor(hex: "#262626").withAlphaComponent(0.8)
         }
         background.alpha = 1.0
-        background.layer.cornerRadius = NewlyFavoritedItemCell.priceTagHeight / 2
+        background.layer.cornerRadius = FrontpageFavoritedShelfItemCell.priceTagHeight / 2
         background.clipsToBounds = true
         
         background.contentView.addSubview(priceLabel)
         
         NSLayoutConstraint.activate([
-            background.heightAnchor.constraint(equalToConstant: NewlyFavoritedItemCell.priceTagHeight),
+            background.heightAnchor.constraint(equalToConstant: FrontpageFavoritedShelfItemCell.priceTagHeight),
             priceLabel.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 8),
             priceLabel.topAnchor.constraint(equalTo: background.topAnchor, constant: 4),
             priceLabel.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -8),
@@ -155,7 +155,7 @@ public class NewlyFavoritedItemCell: UICollectionViewCell {
         setup()
     }
     
-    public var model: NewlyFavoritedViewModel? {
+    public var model: FavoritedShelfViewModel? {
         didSet {
             if let model = model {
                 subtitleLabel.text = model.subtitle
@@ -189,7 +189,7 @@ public class NewlyFavoritedItemCell: UICollectionViewCell {
 }
 
 //MARK: - Public functions
-public extension NewlyFavoritedItemCell {
+public extension FrontpageFavoritedShelfItemCell {
     func setImage(_ image: UIImage?) {
         if let image = image {
             imageView.image = image
@@ -200,7 +200,7 @@ public extension NewlyFavoritedItemCell {
 }
 
 // MARK: - Private functions
-private extension NewlyFavoritedItemCell {
+private extension FrontpageFavoritedShelfItemCell {
     private func setup() {
         ribbonView.style = .disabled
         ribbonView.title = "Solgt"

@@ -1,5 +1,5 @@
 //
-//  NewlyFavoritedCell.swift
+//  FrontPageFavoritedShelfCell.swift
 //  FinniversKit
 //
 //  Created by Suthananth Arulanantham on 11/08/2021.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class NewlyFavoritedFlowLayout: UICollectionViewFlowLayout {
+public class FrontPageFavoritedShelfFlowLayout: UICollectionViewFlowLayout {
     public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let attributes = super.layoutAttributesForElements(in: rect)
         attributes?.forEach({ layoutAttribute in
@@ -19,22 +19,22 @@ public class NewlyFavoritedFlowLayout: UICollectionViewFlowLayout {
     }
 }
 
-public protocol NewlyFavoritedListDataSource: AnyObject {
-    func numberOfItems(_ inNewlyFavoritedListCell: NewlyFavoritedCell) -> Int
-    func newlyFavoritedListCell( _ newlyFavoritedListCell: NewlyFavoritedCell, modelAtIndex index: Int) -> NewlyFavoritedViewModel
-    func newlyFavoritedListCell(_ newlyFavoritedListCell: NewlyFavoritedCell, loadImageForModel model: NewlyFavoritedViewModel, completion: @escaping(UIImage?) -> Void)
+public protocol FrontpageFavoritedShelfDatasource: AnyObject {
+    func numberOfItems(_ favoritedShelf: FrontPageFavoritedShelfCell) -> Int
+    func favoritedShelf( _ favoritedShelf: FrontPageFavoritedShelfCell, modelAtIndex index: Int) -> FavoritedShelfViewModel
+    func favoritedShelf(_ favoritedShelf: FrontPageFavoritedShelfCell, loadImageForModel model: FavoritedShelfViewModel, completion: @escaping(UIImage?) -> Void)
 }
 
-public protocol NewlyFavoritedListDelegate: AnyObject {
-    func newlyFavoritedListCell(_ newlyFavoritedListCell: NewlyFavoritedCell, didToggleFavoritesButton button: IconButton, atIndex index: Int)
-    func newlyFavoritedListCell(_ newlyFavoritedListCell: NewlyFavoritedCell, didSelectItem item: NewlyFavoritedViewModel)
+public protocol FronpageFavoritedShelfDelegate: AnyObject {
+    func favoritedShelf(_ favoritedShelf: FrontPageFavoritedShelfCell, didToggleFavoritesButton button: IconButton, atIndex index: Int)
+    func favoritedShelf(_ favoritedShelf: FrontPageFavoritedShelfCell, didSelectItem item: FavoritedShelfViewModel)
 }
 
-public class NewlyFavoritedCell: UICollectionViewCell {
-    static let identifier = "NewlyFavoritedCell"
+public class FrontPageFavoritedShelfCell: UICollectionViewCell {
+    static let identifier = "FrontPageFavoritedShelfCell"
     
     private lazy var collectionView: UICollectionView = {
-        let flow = NewlyFavoritedFlowLayout()
+        let flow = FrontPageFavoritedShelfFlowLayout()
         flow.scrollDirection = .horizontal
         flow.minimumInteritemSpacing = 8
         flow.sectionInset = UIEdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 40)
@@ -42,7 +42,7 @@ public class NewlyFavoritedCell: UICollectionViewCell {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flow)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(NewlyFavoritedItemCell.self)
+        collectionView.register(FrontpageFavoritedShelfItemCell.self)
         collectionView.backgroundColor = .bgTertiary
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -50,7 +50,7 @@ public class NewlyFavoritedCell: UICollectionViewCell {
         return collectionView
     }()
     
-    public var dataSource: NewlyFavoritedListDataSource?
+    public var dataSource: FrontpageFavoritedShelfDatasource?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -63,26 +63,26 @@ public class NewlyFavoritedCell: UICollectionViewCell {
     }
 }
 
-private extension NewlyFavoritedCell {
+private extension FrontPageFavoritedShelfCell {
     private func setup() {
         contentView.addSubview(collectionView)
         collectionView.fillInSuperview()
     }
     
-    private func cell(cell: NewlyFavoritedItemCell, atIndex index: Int, didToggleFavoriteButton status: Bool) {
+    private func cell(cell: FrontpageFavoritedShelfItemCell, atIndex index: Int, didToggleFavoriteButton status: Bool) {
         print("user \(status ? "favorited" : "unfavorited") item at index \(index)")
     }
 }
 
-extension NewlyFavoritedCell: UICollectionViewDataSource {
+extension FrontPageFavoritedShelfCell: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource?.numberOfItems(self) ?? 0
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeue(NewlyFavoritedItemCell.self, for: indexPath)
+        let cell = collectionView.dequeue(FrontpageFavoritedShelfItemCell.self, for: indexPath)
         
-        if let model = dataSource?.newlyFavoritedListCell(self, modelAtIndex: indexPath.item) {
+        if let model = dataSource?.favoritedShelf(self, modelAtIndex: indexPath.item) {
             cell.model = model
         }
         
@@ -94,9 +94,9 @@ extension NewlyFavoritedCell: UICollectionViewDataSource {
     }
 }
 
-extension NewlyFavoritedCell: UICollectionViewDelegate {
+extension FrontPageFavoritedShelfCell: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let model = dataSource?.newlyFavoritedListCell(self, modelAtIndex: indexPath.item) else {
+        guard let model = dataSource?.favoritedShelf(self, modelAtIndex: indexPath.item) else {
             return
         }
         
@@ -104,14 +104,14 @@ extension NewlyFavoritedCell: UICollectionViewDelegate {
     }
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let cell = cell as? NewlyFavoritedItemCell,
+        guard let cell = cell as? FrontpageFavoritedShelfItemCell,
               let model = cell.model,
               let dataSource = dataSource
         else {
             return
         }
         
-        dataSource.newlyFavoritedListCell(self, loadImageForModel: model) { image in
+        dataSource.favoritedShelf(self, loadImageForModel: model) { image in
             cell.setImage(image)
         }
     }

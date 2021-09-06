@@ -1,5 +1,5 @@
 //
-//  NewlyFavoritedDemoView.swift
+//  FavoritedShelfDemoView.swift
 //  FinniversKit
 //
 //  Created by Suthananth Arulanantham on 16/08/2021.
@@ -8,20 +8,20 @@
 
 import FinniversKit
 
-public class NewlyFavoritedDataSource: NSObject {
-    let favorites = NewlyFavoritedFactory.create()
+public class FavoritedShelfDataSource: NSObject {
+    let favorites = FavoritedShelfFactory.create()
 }
 
-public class NewlyFavoritedDemoView: UIView {
+public class FavoritedShelfDemoView: UIView {
     
-    lazy var dataSource: NewlyFavoritedDataSource = {
-        return NewlyFavoritedDataSource()
+    lazy var dataSource: FavoritedShelfDataSource = {
+        return FavoritedShelfDataSource()
     }()
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(NewlyFavoritedCell.self)
+        collectionView.register(FrontPageFavoritedShelfCell.self)
         collectionView.dataSource = self
         collectionView.delegate = self
         return collectionView
@@ -46,35 +46,36 @@ public class NewlyFavoritedDemoView: UIView {
     }
 }
 
-extension NewlyFavoritedDemoView: UICollectionViewDataSource {
+extension FavoritedShelfDemoView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: NewlyFavoritedCell = collectionView.dequeue(NewlyFavoritedCell.self, for: indexPath)
+        let cell: FrontPageFavoritedShelfCell = collectionView.dequeue(FrontPageFavoritedShelfCell.self, for: indexPath)
         cell.dataSource = self
         
         return cell
     }
 }
 
-extension NewlyFavoritedDemoView: UICollectionViewDelegateFlowLayout {
+extension FavoritedShelfDemoView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.bounds.width, height: 250)
     }
 }
 
-extension NewlyFavoritedDemoView: NewlyFavoritedListDataSource {
-    public func numberOfItems(_ inNewlyFavoritedListCell: NewlyFavoritedCell) -> Int {
+extension FavoritedShelfDemoView: FrontpageFavoritedShelfDatasource {
+    
+    public func numberOfItems(_ favoritedShelf: FrontPageFavoritedShelfCell) -> Int {
         return dataSource.favorites.count
     }
     
-    public func newlyFavoritedListCell(_ newlyFavoritedListCell: NewlyFavoritedCell, modelAtIndex index: Int) -> NewlyFavoritedViewModel {
+    public func favoritedShelf(_ favoritedShelf: FrontPageFavoritedShelfCell, modelAtIndex index: Int) -> FavoritedShelfViewModel {
         return dataSource.favorites[index]
     }
     
-    public func newlyFavoritedListCell(_ newlyFavoritedListCell: NewlyFavoritedCell, loadImageForModel model: NewlyFavoritedViewModel, completion: @escaping (UIImage?) -> Void) {
+    public func favoritedShelf(_ favoritedShelf: FrontPageFavoritedShelfCell, loadImageForModel model: FavoritedShelfViewModel, completion: @escaping (UIImage?) -> Void) {
         guard let path = model.imagePath, let url = URL(string: path) else {
             completion(nil)
             return

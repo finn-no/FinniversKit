@@ -8,7 +8,7 @@
 
 import FinniversKit
 
-public struct NewlyFavorited: NewlyFavoritedViewModel {
+public struct NewlyFavorited: FavoritedShelfViewModel {
     public var adId: String
     public var imagePath: String?
     public var title: String
@@ -16,7 +16,7 @@ public struct NewlyFavorited: NewlyFavoritedViewModel {
     public var price: String
 }
 
-public struct NewlyFavoritedFactory {
+public struct FavoritedShelfFactory {
     private struct ImageSource {
         let path: String
         let size: CGSize

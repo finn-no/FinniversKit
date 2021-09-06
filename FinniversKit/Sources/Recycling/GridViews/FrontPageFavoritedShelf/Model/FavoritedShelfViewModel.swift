@@ -1,5 +1,5 @@
 //
-//  NewlyFavoritedViewModel.swift
+//  FavoritedShelfViewModel.swift
 //  FinniversKit
 //
 //  Created by Suthananth Arulanantham on 04/09/2021.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol NewlyFavoritedViewModel {
+public protocol FavoritedShelfViewModel {
     var adId: String { get }
     var imagePath: String? { get }
     var title: String { get }
