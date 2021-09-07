@@ -41,16 +41,32 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     }
 
     private let delegate: FrontPageViewDelegate
-
+    private var adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource
+    
     private var didSetupView = false
 
     // MARK: - Subviews
 
-    private var marketsGridView: MarketsGridView!
-    private var compactMarketsView: CompactMarketsView!
-    private var adRecommendationsGridView: AdRecommendationsGridView!
+    private lazy var marketsGridView: MarketsGridView = {
+        let view = MarketsGridView(delegate: self, dataSource: self)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var compactMarketsView: CompactMarketsView = {
+        let view = CompactMarketsView(delegate: self, dataSource: self)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var adRecommendationsGridView: AdRecommendationsGridView = {
+        let view = AdRecommendationsGridView(delegate: self, dataSource: adRecommendationsGridViewDataSource)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     private let promoContainer = UIView(withAutoLayout: true)
+    
 
     private lazy var headerView = UIView()
 
@@ -77,16 +93,8 @@ public final class FrontPageView: UIView, BasicFrontPageView {
 
     public init(delegate: FrontPageViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource) {
         self.delegate = delegate
+        self.adRecommendationsGridViewDataSource = adRecommendationsGridViewDataSource
         super.init(frame: .zero)
-        
-        marketsGridView = MarketsGridView(delegate: self, dataSource: self)
-        marketsGridView.translatesAutoresizingMaskIntoConstraints = false
-        
-        compactMarketsView = CompactMarketsView(delegate: self, dataSource: self)
-        compactMarketsView.translatesAutoresizingMaskIntoConstraints = false
-        
-        adRecommendationsGridView = AdRecommendationsGridView(delegate: self, dataSource: adRecommendationsGridViewDataSource)
-        adRecommendationsGridView.translatesAutoresizingMaskIntoConstraints = false
     }
 
     required init?(coder aDecoder: NSCoder) {
