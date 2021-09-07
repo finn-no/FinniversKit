@@ -46,7 +46,6 @@ public class AdRecommendationsGridView: UIView {
 
     weak var delegate: AdRecommendationsGridViewDelegate?
     weak var dataSource: AdRecommendationsGridViewDataSource?
-    weak var frontPageDelegate: CompactMarketsPresenter?
 
     // MARK: - Private properties
 
@@ -76,12 +75,11 @@ public class AdRecommendationsGridView: UIView {
 
     // MARK: - Init
 
-    public init(delegate: AdRecommendationsGridViewDelegate, dataSource: AdRecommendationsGridViewDataSource, frontPageDelegate: CompactMarketsPresenter? = nil) {
+    public init(delegate: AdRecommendationsGridViewDelegate, dataSource: AdRecommendationsGridViewDataSource) {
         super.init(frame: .zero)
 
         self.delegate = delegate
         self.dataSource = dataSource
-        self.frontPageDelegate = frontPageDelegate
 
         setup()
     }
@@ -150,7 +148,6 @@ extension AdRecommendationsGridView: UICollectionViewDelegate {
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         delegate?.adRecommendationsGridView(self, didScrollInScrollView: scrollView)
-        frontPageDelegate?.scrollViewDidScroll(scrollView)
     }
 }
 
