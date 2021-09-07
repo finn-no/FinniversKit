@@ -2,6 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+import UIKit
+
 public protocol FrontPageViewModel {
     var adRecommedationsGridViewHeaderTitle: String { get }
     var retryButtonTitle: String { get }
@@ -12,13 +14,11 @@ public protocol FrontPageViewDelegate: AnyObject {
     func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView)
 }
 
+public protocol CompactMarketsPresenter: AnyObject {
+    func scrollViewDidScroll(_ scrollView: UIScrollView)
+}
+
 public final class FrontPageView: UIView, BasicFrontPageView {
-    
-    public enum CompactMarketsViewVisibilityStatus {
-        case hidden
-        case displaying(progress: CGFloat)
-        case displayed
-    }
     
     public var model: FrontPageViewModel? {
         didSet {
@@ -35,6 +35,12 @@ public final class FrontPageView: UIView, BasicFrontPageView {
             adRecommendationsGridView.isRefreshEnabled = newValue
         }
     }
+    
+    private enum CompactMarketsViewVisibilityStatus {
+        case hidden
+        case displaying(progress: CGFloat)
+        case displayed
+    }
 
     private weak var delegate: FrontPageViewDelegate?
 
@@ -44,7 +50,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
 
     private let marketsGridView: MarketsGridView
     private let compactMarketsView: CompactMarketsView
-    private let adRecommendationsGridView: AdRecommendationsGridView
+    private var adRecommendationsGridView: AdRecommendationsGridView!
 
     private let promoContainer = UIView(withAutoLayout: true)
 
@@ -88,10 +94,11 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         compactMarketsView = CompactMarketsView(delegate: marketsViewDelegate, dataSource: marketsViewDataSource)
         compactMarketsView.translatesAutoresizingMaskIntoConstraints = false
         
-        adRecommendationsGridView = AdRecommendationsGridView(delegate: adRecommendationsGridViewDelegate, dataSource: adRecommendationsGridViewDataSource)
+        super.init(frame: .zero)
+        
+        adRecommendationsGridView = AdRecommendationsGridView(delegate: adRecommendationsGridViewDelegate, dataSource: adRecommendationsGridViewDataSource, frontPageDelegate: self)
         adRecommendationsGridView.translatesAutoresizingMaskIntoConstraints = false
 
-        super.init(frame: .zero)
         self.delegate = delegate
     }
 
@@ -146,20 +153,6 @@ public final class FrontPageView: UIView, BasicFrontPageView {
 
     public func scrollToTop() {
         adRecommendationsGridView.scrollToTop()
-    }
-    
-    public func changeCompactMarketsViewVisibilityStatus(to status: CompactMarketsViewVisibilityStatus) {
-        switch status {
-        case .displaying(progress: let progress):
-            compactMarketsView.isHidden = false
-            let height = compactMarketsView.calculateSize(constrainedTo: frame.width).height
-            compactMarketsViewBottomConstraint.constant = height * progress
-            layoutIfNeeded()
-        case .displayed:
-            compactMarketsView.isHidden = false
-        case .hidden:
-            compactMarketsView.isHidden = true
-        }
     }
 
     public func insertPromoView(_ view: UIView?) {
@@ -252,6 +245,20 @@ public final class FrontPageView: UIView, BasicFrontPageView {
 
         setupFrames()
     }
+    
+    private func changeCompactMarketsViewVisibilityStatus(to status: CompactMarketsViewVisibilityStatus) {
+        switch status {
+        case .displaying(progress: let progress):
+            compactMarketsView.isHidden = false
+            let height = compactMarketsView.calculateSize(constrainedTo: frame.width).height
+            compactMarketsViewBottomConstraint.constant = height * progress
+            layoutIfNeeded()
+        case .displayed:
+            compactMarketsView.isHidden = false
+        case .hidden:
+            compactMarketsView.isHidden = true
+        }
+    }
 }
 
 // MARK: - LoadingRetryViewDelegate
@@ -260,5 +267,25 @@ extension FrontPageView: LoadingRetryViewDelegate {
     public func loadingRetryViewDidSelectButton(_ view: LoadingRetryView) {
         adsRetryView.state = .loading
         delegate?.frontPageViewDidSelectRetryButton(self)
+    }
+}
+
+extension FrontPageView: CompactMarketsPresenter {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let verticalOffset = scrollView.contentOffset.y
+        let scrollingThreshold: CGFloat = 100
+        
+        // Update Compact Markets View visibility
+        let compactMarketsFullyDisplayedThreshold: CGFloat = 200
+        // Will begin displaying compact markets at scrollingThreshold (100) and finish at compactMarketsFullyDisplayedThreshold (200)
+        if verticalOffset >= scrollingThreshold {
+            let currentDistance = verticalOffset - scrollingThreshold
+            let endDistance = compactMarketsFullyDisplayedThreshold - scrollingThreshold
+            let progress = max(0, min(1, currentDistance / endDistance))
+            changeCompactMarketsViewVisibilityStatus(to: .displaying(progress: progress))
+        } else {
+            // When scrolling y offset is less than 100 hide the compact markets view
+            changeCompactMarketsViewVisibilityStatus(to: .hidden)
+        }
     }
 }
