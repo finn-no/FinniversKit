@@ -4,7 +4,6 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
 extension FinnTextField {
     enum Style {
         case `default`

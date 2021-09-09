@@ -46,13 +46,11 @@ class DemoViewsTableViewController: UITableViewController {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
-        if #available(iOS 13.0, *) {
-            #if swift(>=5.1)
-            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                userInterfaceStyleDidChange()
-            }
-            #endif
+        #if swift(>=5.1)
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            userInterfaceStyleDidChange()
         }
+        #endif
     }
 
     @objc private func userInterfaceStyleDidChange() {
@@ -83,17 +81,6 @@ class DemoViewsTableViewController: UITableViewController {
             State.setCurrentUserInterfaceStyle(State.currentUserInterfaceStyle(for: traitCollection) == .light ? .dark : .light, in: view.window)
         }
         NotificationCenter.default.post(name: .didChangeUserInterfaceStyle, object: nil)
-
-        if #available(iOS 13.0, *) {
-        } else {
-            //Need to shutdown the app to make this work before dynamic colors were available
-            let alertController = UIAlertController(title: "Restart", message: "This requires a restart of the app", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-                exit(0)
-            }))
-            alertController.addAction(UIAlertAction(title: "Later", style: .cancel, handler: nil))
-            present(alertController, animated: true)
-        }
     }
 
     private func updateColors(animated: Bool) {

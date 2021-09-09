@@ -83,7 +83,7 @@ public class NumberedListView: UIView {
 // MARK: - Private class
 
 private class ListItemView: UIView {
-    fileprivate typealias ButtonHandler = () -> ()
+    fileprivate typealias ButtonHandler = () -> Void
     private let actionButtonHandler: ButtonHandler?
 
     private lazy var stackView: UIStackView = {

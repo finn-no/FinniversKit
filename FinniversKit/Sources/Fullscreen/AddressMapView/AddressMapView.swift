@@ -116,7 +116,6 @@ public class AddressMapView: UIView {
         mapView.mapType = mapType
     }
 
-    @available(iOS 13.0, *)
     public func configureMapZoomRange(_ range: MapZoomRange) {
         mapView.setCameraZoomRange(range.toCameraZoomRange(), animated: false)
     }

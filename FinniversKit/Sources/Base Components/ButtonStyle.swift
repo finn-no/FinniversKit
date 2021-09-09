@@ -4,7 +4,6 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
 public struct InlineFlatStyle: ButtonStyle {
     private let font: Font
     private let textColor: Color
@@ -22,7 +21,6 @@ public struct InlineFlatStyle: ButtonStyle {
     }
 }
 
-@available(iOS 13.0, *)
 public struct FlatStyle: ButtonStyle {
     private let size: Button.Size
     private let font: Font
@@ -46,7 +44,6 @@ public struct FlatStyle: ButtonStyle {
     }
 }
 
-@available(iOS 13.0, *)
 public struct DefaultStyle: ButtonStyle {
     private let size: Button.Size
     private let font: Font
@@ -79,7 +76,6 @@ public struct DefaultStyle: ButtonStyle {
     }
 }
 
-@available(iOS 13.0, *)
 public struct CallToAction: ButtonStyle {
     private let background: Color
     private let font: Font

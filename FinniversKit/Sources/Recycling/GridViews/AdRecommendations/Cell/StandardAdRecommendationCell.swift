@@ -82,12 +82,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
     private lazy var imageDescriptionView: UIVisualEffectView = {
         let view = UIVisualEffectView(withAutoLayout: true)
-        if #available(iOS 13.0, *) {
-            view.effect = UIBlurEffect(style: .systemThinMaterialDark)
-        } else {
-            view.effect = nil
-            view.backgroundColor = UIColor(hex: "#262626").withAlphaComponent(0.8)
-        }
+        view.effect = UIBlurEffect(style: .systemThinMaterialDark)
         view.alpha = 1.0
         view.layer.cornerRadius = StandardAdRecommendationCell.imageDescriptionHeight / 2
         view.clipsToBounds = true
@@ -118,7 +113,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         equalTo: ribbonView.bottomAnchor,
         constant: StandardAdRecommendationCell.subtitleTopMargin
     )
-    
+
     private var imageDescriptionViewTrailingConstraint: NSLayoutConstraint?
 
     private var model: StandardAdRecommendationViewModel?
@@ -231,13 +226,11 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
             favoriteButton.widthAnchor.constraint(equalToConstant: 34),
             favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.heightAnchor)
         ])
-        
+
         // Storing a reference to the trailing constraint for the imageDescriotionView so that we can update the icon alignment when needed
         imageDescriptionViewTrailingConstraint = imageDescriptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: StandardAdRecommendationCell.margin)
         imageDescriptionViewTrailingConstraint?.isActive = true
     }
-    
-    
 
     // MARK: - Superclass Overrides
 
@@ -299,7 +292,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
                 imageContentView.backgroundColor = .white
             }
         }
-        
+
         // update imageDescriptionView visibility
         if let imageText = model?.imageText {
             centerIconInContainer(imageText.trimmingCharacters(in: .whitespaces).isEmpty)
@@ -390,7 +383,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
             performViewChanges()
         }
     }
-    
+
     private func centerIconInContainer(_ shouldCenter: Bool) {
         guard let trailingConstraint = self.imageDescriptionViewTrailingConstraint else { return }
         trailingConstraint.constant = shouldCenter ? 0 : StandardAdRecommendationCell.margin
