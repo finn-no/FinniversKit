@@ -154,6 +154,8 @@ enum ImageAsset: String {
     case send
     case settings
     case share
+    case shipWithHelthjem
+    case shipWithHelthjemDarkmode
     case sliderThumb
     case sliderThumbActive
     case speechbubbleSmiley
@@ -294,6 +296,8 @@ enum ImageAsset: String {
             .send,
             .settings,
             .share,
+            .shipWithHelthjem,
+            .shipWithHelthjemDarkmode,
             .sliderThumb,
             .sliderThumbActive,
             .speechbubbleSmiley,
