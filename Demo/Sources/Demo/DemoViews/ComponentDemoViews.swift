@@ -64,6 +64,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case navigationLinkView
     case promoLinkView
     case promoSlidesView
+    case numberedListView
     case transactionEntryView
     case blockUserView
     case loadingRetryView
@@ -197,6 +198,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<PromoLinkDemoView>()
         case .promoSlidesView:
             return DemoViewController<PromoSlidesDemoView>()
+        case .numberedListView:
+            return DemoViewController<NumberedListDemoView>()
         case .transactionEntryView:
             return DemoViewController<TransactionEntryDemoView>()
         case .blockUserView:
