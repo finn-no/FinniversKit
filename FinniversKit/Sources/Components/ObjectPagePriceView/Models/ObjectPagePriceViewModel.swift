@@ -9,6 +9,7 @@ public struct ObjectPagePriceViewModel {
     let priceDetails: [KeyValuePair]
     let priceDetailsNumberOfColumns: Int
     let adTypeText: String?
+    let captionText: NSAttributedString?
 
     public init(
         title: String? = nil,
@@ -18,13 +19,14 @@ public struct ObjectPagePriceViewModel {
         links: [PriceLinkButtonViewModel] = [],
         priceDetails: [KeyValuePair] = [],
         priceDetailsNumberOfColumns: Int = 2,
-        adTypeText: String? = nil
+        adTypeText: String? = nil,
+        captionText: NSAttributedString? = nil
     ) {
         var mainPriceModel: Price?
         if let totalPrice = totalPrice {
             mainPriceModel = Price(title: title, totalPrice: totalPrice, subtitle: subtitle, accessibilityLabel: accessibilityLabel)
         }
-        self.init(mainPriceModel: mainPriceModel, links: links, priceDetails: priceDetails, priceDetailsNumberOfColumns: priceDetailsNumberOfColumns, adTypeText: adTypeText)
+        self.init(mainPriceModel: mainPriceModel, links: links, priceDetails: priceDetails, priceDetailsNumberOfColumns: priceDetailsNumberOfColumns, adTypeText: adTypeText, captionText: captionText)
     }
 
     public init(
@@ -33,7 +35,8 @@ public struct ObjectPagePriceViewModel {
         links: [PriceLinkButtonViewModel],
         priceDetails: [KeyValuePair] = [],
         priceDetailsNumberOfColumns: Int = 2,
-        adTypeText: String? = nil
+        adTypeText: String? = nil,
+        captionText: NSAttributedString? = nil
     ) {
         self.mainPriceModel = mainPriceModel
         self.secondaryPriceModel = secondaryPriceModel
@@ -41,6 +44,7 @@ public struct ObjectPagePriceViewModel {
         self.priceDetails = priceDetails
         self.priceDetailsNumberOfColumns = priceDetailsNumberOfColumns
         self.adTypeText = adTypeText
+        self.captionText = captionText
     }
 
     public struct Price {

@@ -283,9 +283,15 @@ extension ObjectPagePriceViewModel {
     }()
 
     static var bapSaleAd: ObjectPagePriceViewModel = {
-        ObjectPagePriceViewModel(
+        let captionText = "Selger har sagt ja til å sende varen med Helthjem for 80kr"
+        let attributedCaptionText = NSMutableAttributedString(string: captionText)
+        let range = (captionText as NSString).range(of: "80kr")
+        attributedCaptionText.addAttribute(.font, value: UIFont.captionStrong, range: range)
+
+        return ObjectPagePriceViewModel(
             totalPrice: "1 500 kr",
-            adTypeText: "Til salgs"
+            adTypeText: "Til salgs",
+            captionText: attributedCaptionText
         )
     }()
 
