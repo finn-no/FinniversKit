@@ -4,7 +4,12 @@ public struct HelthjemViewModel {
     let primaryButtonTitle: String
     let secondaryButtonTitle: String?
 
-    public init(title: String, detail: String, primaryButtonTitle: String, secondaryButtonTitle: String? = nil) {
+    public init(
+        title: String,
+        detail: String,
+        primaryButtonTitle: String,
+        secondaryButtonTitle: String? = nil
+    ) {
         self.title = title
         self.detail = detail
         self.primaryButtonTitle = primaryButtonTitle
