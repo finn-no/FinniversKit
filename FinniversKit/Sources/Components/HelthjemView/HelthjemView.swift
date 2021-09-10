@@ -10,11 +10,31 @@ public final class HelthjemView: UIView {
 
     // MARK: - Subviews
 
+    private lazy var helthjemImage: UIImage = {
+        let lightImage = UIImage.init(named: .shipWithHelthjem)
+        let darkImage = UIImage.init(named: .shipWithHelthjemDarkmode)
+
+        if #available(iOS 13.0, *) {
+            switch Config.userInterfaceStyleSupport {
+            case .forceDark:
+                return darkImage
+            case .forceLight:
+                return lightImage
+            case .dynamic:
+                switch traitCollection.userInterfaceStyle {
+                case .dark:
+                    return darkImage
+                default:
+                    return lightImage
+                }
+            }
+        } else {
+            return lightImage
+        }
+    }()
+
     private lazy var imageView: UIImageView = {
-        let image = Config.userInterfaceStyleSupport == .forceLight ?
-            UIImage(named: .shipWithHelthjem) :
-            UIImage(named: .shipWithHelthjemDarkmode)
-        let imageView = UIImageView(image: image)
+        let imageView = UIImageView(image: helthjemImage)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
