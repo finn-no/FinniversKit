@@ -190,6 +190,7 @@
 		5DA190F025A87EAB002305A8 /* FinnTextView+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190EF25A87EAB002305A8 /* FinnTextView+Previews.swift */; };
 		5DEAC3C425C164D9003376AD /* IconButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEAC3C325C164D9003376AD /* IconButtonDemoView.swift */; };
 		714B9357253736AD00801C99 /* SendInviteDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B9356253736AD00801C99 /* SendInviteDemoView.swift */; };
+		71A94A6726EA69D80011E172 /* HelthjemDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A94A6626EA69D80011E172 /* HelthjemDemoView.swift */; };
 		71C6AA992549D28800D78269 /* MessageUserRequiredData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C6AA982549D28800D78269 /* MessageUserRequiredData.swift */; };
 		8D68030CF404D02BA5F8A618 /* NumberedListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D68050D2A01257562243914 /* NumberedListDemoView.swift */; };
 		8D6807650CCEB53349934D26 /* PromotionFrontpageViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680B19A0BD0C1AFD25A378 /* PromotionFrontpageViewDemoView.swift */; };
@@ -415,6 +416,7 @@
 		5DA190EF25A87EAB002305A8 /* FinnTextView+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextView+Previews.swift"; sourceTree = "<group>"; };
 		5DEAC3C325C164D9003376AD /* IconButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButtonDemoView.swift; sourceTree = "<group>"; };
 		714B9356253736AD00801C99 /* SendInviteDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendInviteDemoView.swift; sourceTree = "<group>"; };
+		71A94A6626EA69D80011E172 /* HelthjemDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelthjemDemoView.swift; sourceTree = "<group>"; };
 		71C6AA982549D28800D78269 /* MessageUserRequiredData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageUserRequiredData.swift; sourceTree = "<group>"; };
 		8D68050D2A01257562243914 /* NumberedListDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberedListDemoView.swift; sourceTree = "<group>"; };
 		8D680B19A0BD0C1AFD25A378 /* PromotionFrontpageViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromotionFrontpageViewDemoView.swift; sourceTree = "<group>"; };
@@ -826,6 +828,7 @@
 				46E77302242CEF09008A5E93 /* Feedback */,
 				46E772E6242CEF09008A5E93 /* FooterButtonView */,
 				46E77343242CEF09008A5E93 /* HappinessRating */,
+				71A94A6526EA69D80011E172 /* HelthjemView */,
 				46E772F2242CEF09008A5E93 /* HorizontalSlide */,
 				46E772CF242CEF09008A5E93 /* IconCollection */,
 				46E77318242CEF09008A5E93 /* Infobox */,
@@ -1651,6 +1654,14 @@
 			path = SendInviteView;
 			sourceTree = "<group>";
 		};
+		71A94A6526EA69D80011E172 /* HelthjemView */ = {
+			isa = PBXGroup;
+			children = (
+				71A94A6626EA69D80011E172 /* HelthjemDemoView.swift */,
+			);
+			path = HelthjemView;
+			sourceTree = "<group>";
+		};
 		71C6AA972549D27000D78269 /* MessageUserRequired */ = {
 			isa = PBXGroup;
 			children = (
@@ -1791,7 +1802,7 @@
 			);
 			mainGroup = 46AE6FB7242BADC9007BB005;
 			packageReferences = (
-				46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing.git" */,
+				46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 46AE6FC1242BADC9007BB005 /* Products */;
 			projectDirPath = "";
@@ -1885,6 +1896,7 @@
 				46E77465242CEF0A008A5E93 /* BasicTableViewDemoView.swift in Sources */,
 				46E773CC242CEF0A008A5E93 /* SearchResultMapViewDemoViewControllerHelpers.swift in Sources */,
 				46E7745C242CEF0A008A5E93 /* NeighborhoodProfileDemoView.swift in Sources */,
+				71A94A6726EA69D80011E172 /* HelthjemDemoView.swift in Sources */,
 				46E77403242CEF0A008A5E93 /* RefreshControlDemo.swift in Sources */,
 				46E773AA242CEF0A008A5E93 /* MiniToastView.swift in Sources */,
 				46E773F1242CEF0A008A5E93 /* IconCollectionViewDemo.swift in Sources */,
@@ -2313,7 +2325,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing.git" */ = {
+		46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
 			requirement = {
@@ -2326,7 +2338,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		46E77597242D6890008A5E93 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing.git" */;
+			package = 46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */

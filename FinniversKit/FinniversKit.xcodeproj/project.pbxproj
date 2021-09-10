@@ -163,6 +163,8 @@
 		714B9352253728EC00801C99 /* SendInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B9351253728EC00801C99 /* SendInviteView.swift */; };
 		714B9355253730D900801C99 /* SendInviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B9354253730D900801C99 /* SendInviteViewModel.swift */; };
 		71C6A9542549636A00D78269 /* MessageUserRequiredSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C6A9532549636A00D78269 /* MessageUserRequiredSheet.swift */; };
+		71E0651C26E92749009957D4 /* HelthjemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0651B26E92749009957D4 /* HelthjemView.swift */; };
+		71E0651E26E927CE009957D4 /* HelthjemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0651D26E927CE009957D4 /* HelthjemViewModel.swift */; };
 		8908E83622BD0CA100ED671C /* MessageInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E83522BD0CA100ED671C /* MessageInputTextView.swift */; };
 		8908E84922C0C3C600ED671C /* MessageFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84722C0C2F900ED671C /* MessageFormViewController.swift */; };
 		8908E84D22C0D11400ED671C /* MessageFormToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84B22C0D10B00ED671C /* MessageFormToolbar.swift */; };
@@ -607,6 +609,8 @@
 		714B9351253728EC00801C99 /* SendInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendInviteView.swift; sourceTree = "<group>"; };
 		714B9354253730D900801C99 /* SendInviteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendInviteViewModel.swift; sourceTree = "<group>"; };
 		71C6A9532549636A00D78269 /* MessageUserRequiredSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageUserRequiredSheet.swift; sourceTree = "<group>"; };
+		71E0651B26E92749009957D4 /* HelthjemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelthjemView.swift; sourceTree = "<group>"; };
+		71E0651D26E927CE009957D4 /* HelthjemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelthjemViewModel.swift; sourceTree = "<group>"; };
 		8908E83522BD0CA100ED671C /* MessageInputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputTextView.swift; sourceTree = "<group>"; };
 		8908E84722C0C2F900ED671C /* MessageFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormViewController.swift; sourceTree = "<group>"; };
 		8908E84B22C0D10B00ED671C /* MessageFormToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormToolbar.swift; sourceTree = "<group>"; };
@@ -1318,6 +1322,7 @@
 				CFCC3D2F23686BEF002DD4CF /* FooterButtonView */,
 				08F0D3F222259AB800968256 /* HappinessRating */,
 				14DC126821593B0000326DC3 /* HorizontalSlide */,
+				71E0651A26E926E9009957D4 /* HelthjemView */,
 				CFB61372229ACA5200DE283D /* IconCollection */,
 				CF136ACB220320DD00247B30 /* Infobox */,
 				9B2D17CA23E02AA200EF3B50 /* KeyValueGridView */,
@@ -1857,6 +1862,15 @@
 				71C6A9532549636A00D78269 /* MessageUserRequiredSheet.swift */,
 			);
 			path = MessageUserRequired;
+			sourceTree = "<group>";
+		};
+		71E0651A26E926E9009957D4 /* HelthjemView */ = {
+			isa = PBXGroup;
+			children = (
+				71E0651B26E92749009957D4 /* HelthjemView.swift */,
+				71E0651D26E927CE009957D4 /* HelthjemViewModel.swift */,
+			);
+			path = HelthjemView;
 			sourceTree = "<group>";
 		};
 		8908E83422BD0C8700ED671C /* MessageForm */ = {
@@ -3482,6 +3496,7 @@
 				895175952248D4D1008003FB /* StepDot.swift in Sources */,
 				5D0ED35125A49FA7007750D0 /* FinnTextField+Style.swift in Sources */,
 				F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */,
+				71E0651E26E927CE009957D4 /* HelthjemViewModel.swift in Sources */,
 				CF4A053921FB2ACB000BB7DA /* PianoEffectView.swift in Sources */,
 				CF164DDA2315776E00250822 /* FavoriteAdCommentViewModel.swift in Sources */,
 				44898D651FE5B9C200F6017B /* UITableViewExtensions.swift in Sources */,
@@ -3515,6 +3530,7 @@
 				CF87A856229C0C5700DA8243 /* ContactFormCheckbox.swift in Sources */,
 				9F213D4043DC51660E6EF81B /* FullscreenGalleryTransitionAware.swift in Sources */,
 				CF164D17230FFDEB00250822 /* FavoriteAdAction.swift in Sources */,
+				71E0651C26E92749009957D4 /* HelthjemView.swift in Sources */,
 				DA083E7324630BC400B26235 /* SettingsSection.swift in Sources */,
 				494047FE23CDBBA100ECBCFD /* ViewingCellViewModel.swift in Sources */,
 				CF05B7E023325968003A7F1C /* FavoriteFolderActionButton.swift in Sources */,
