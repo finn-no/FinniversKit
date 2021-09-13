@@ -80,6 +80,12 @@ public class ObjectPagePriceView: UIView {
 
         wrapperStackView.addArrangedSubview(pricesStackView)
 
+        if let captionText = viewModel.captionText {
+            let captionLabel = Label(style: style.captionStyle, withAutoLayout: true)
+            captionLabel.attributedText = captionText
+            wrapperStackView.addArrangedSubview(captionLabel)
+        }
+
         if !viewModel.priceDetails.isEmpty {
             priceDetailsView.configure(with: viewModel.priceDetails)
             wrapperStackView.addArrangedSubview(priceDetailsView)
@@ -159,17 +165,20 @@ public extension ObjectPagePriceView {
         let priceStyle: Label.Style
         let subtitleStyle: Label.Style
         let adTypeStyle: Label.Style
+        let captionStyle: Label.Style
 
         public init(
             titleStyle: Label.Style = .body,
             priceStyle: Label.Style = .title3Strong,
             subtitleStyle: Label.Style = .caption,
-            adTypeStyle: Label.Style = .bodyStrong
+            adTypeStyle: Label.Style = .bodyStrong,
+            captionStyle: Label.Style = .caption
         ) {
             self.titleStyle = titleStyle
             self.priceStyle = priceStyle
             self.subtitleStyle = subtitleStyle
             self.adTypeStyle = adTypeStyle
+            self.captionStyle = captionStyle
         }
     }
 }
