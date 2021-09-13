@@ -9,7 +9,7 @@
 import FinniversKit
 
 public class FavoritedShelfDataSource: NSObject {
-    let favorites = FavoritedShelfFactory.create()
+    var favorites = FavoritedShelfFactory.create()
 }
 
 public class FavoritedShelfDemoView: UIView {
@@ -54,7 +54,7 @@ extension FavoritedShelfDemoView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: FrontPageFavoritedShelfCell = collectionView.dequeue(FrontPageFavoritedShelfCell.self, for: indexPath)
         cell.dataSource = self
-        
+        cell.delegate = self
         return cell
     }
 }
@@ -93,5 +93,32 @@ extension FavoritedShelfDemoView: FrontpageFavoritedShelfDatasource {
         }
         
         task.resume()
+    }
+}
+
+extension FavoritedShelfDemoView: FrontpageFavoritedShelfDelegate {
+    public func favoritedShelf(_ favoritedShelf: FrontPageFavoritedShelfCell, didSelectItem item: FavoritedShelfViewModel) {
+        print("Selected Item: \(item)")
+    }
+    
+    public func favoritedShelf(_ favoritedShelf: FrontPageFavoritedShelfCell, didFavoriteItem item: FavoritedShelfViewModel, onCollectionView collectionView: UICollectionView) {
+        print("User did favorite item: \(item)")
+    }
+    
+    public func favoritedShelf(_ favoritedShelf: FrontPageFavoritedShelfCell, didUnfavoriteItem item: FavoritedShelfViewModel, onCollectionView collectionView: UICollectionView) {
+        print("User did unfavorite item: \(item)")
+        guard let index  = dataSource.favorites.firstIndex(where: {
+            $0.adId == item.adId
+        }) else {
+            return
+        }
+        
+        let indexPath = IndexPath(item: index, section: 0)
+        self.dataSource.favorites.remove(at: index)
+        collectionView.performBatchUpdates {
+            collectionView.deleteItems(at: [indexPath])
+        } completion: { completion in
+            print("Item deleted")
+        }
     }
 }

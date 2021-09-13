@@ -8,13 +8,13 @@
 
 import UIKit
 
-public class FrontPageFavoritedShelfFlowLayout: UICollectionViewFlowLayout {
+public class FrontPageShelfLayout: UICollectionViewFlowLayout {
     public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let attributes = super.layoutAttributesForElements(in: rect)
         attributes?.forEach({ layoutAttribute in
             layoutAttribute.frame.origin.y = 0
         })
-        
+
         return attributes
     }
 }
@@ -25,16 +25,17 @@ public protocol FrontpageFavoritedShelfDatasource: AnyObject {
     func favoritedShelf(_ favoritedShelf: FrontPageFavoritedShelfCell, loadImageForModel model: FavoritedShelfViewModel, completion: @escaping(UIImage?) -> Void)
 }
 
-public protocol FronpageFavoritedShelfDelegate: AnyObject {
-    func favoritedShelf(_ favoritedShelf: FrontPageFavoritedShelfCell, didToggleFavoritesButton button: IconButton, atIndex index: Int)
+public protocol FrontpageFavoritedShelfDelegate: AnyObject {
     func favoritedShelf(_ favoritedShelf: FrontPageFavoritedShelfCell, didSelectItem item: FavoritedShelfViewModel)
+    func favoritedShelf(_ favoritedShelf: FrontPageFavoritedShelfCell, didFavoriteItem item: FavoritedShelfViewModel, onCollectionView collectionView: UICollectionView)
+    func favoritedShelf(_ favoritedShelf: FrontPageFavoritedShelfCell, didUnfavoriteItem item: FavoritedShelfViewModel, onCollectionView collectionView: UICollectionView)
 }
 
 public class FrontPageFavoritedShelfCell: UICollectionViewCell {
     static let identifier = "FrontPageFavoritedShelfCell"
     
     private lazy var collectionView: UICollectionView = {
-        let flow = FrontPageFavoritedShelfFlowLayout()
+        let flow = FrontPageShelfLayout()
         flow.scrollDirection = .horizontal
         flow.minimumInteritemSpacing = 8
         flow.sectionInset = UIEdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 40)
@@ -51,6 +52,7 @@ public class FrontPageFavoritedShelfCell: UICollectionViewCell {
     }()
     
     public var dataSource: FrontpageFavoritedShelfDatasource?
+    public var delegate: FrontpageFavoritedShelfDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -70,7 +72,15 @@ private extension FrontPageFavoritedShelfCell {
     }
     
     private func cell(cell: FrontpageFavoritedShelfItemCell, atIndex index: Int, didToggleFavoriteButton status: Bool) {
-        print("user \(status ? "favorited" : "unfavorited") item at index \(index)")
+        guard let model = cell.model, let delegate = self.delegate else {
+            return
+        }
+        
+        if status {
+            delegate.favoritedShelf(self, didFavoriteItem: model, onCollectionView: self.collectionView)
+        } else {
+            delegate.favoritedShelf(self, didUnfavoriteItem: model, onCollectionView: self.collectionView)
+        }
     }
 }
 
@@ -89,7 +99,6 @@ extension FrontPageFavoritedShelfCell: UICollectionViewDataSource {
         cell.favoriteToggleAction = { [weak self] favoriteButton in
             self?.cell(cell: cell, atIndex: indexPath.item, didToggleFavoriteButton: favoriteButton.isToggled)
         }
-        
         return cell
     }
 }
@@ -100,10 +109,11 @@ extension FrontPageFavoritedShelfCell: UICollectionViewDelegate {
             return
         }
         
-        print(model)
+        delegate?.favoritedShelf(self, didSelectItem: model)
     }
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
         guard let cell = cell as? FrontpageFavoritedShelfItemCell,
               let model = cell.model,
               let dataSource = dataSource

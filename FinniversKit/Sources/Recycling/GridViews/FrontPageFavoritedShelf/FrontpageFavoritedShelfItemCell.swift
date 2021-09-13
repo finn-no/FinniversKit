@@ -104,7 +104,7 @@ public class FrontpageFavoritedShelfItemCell: UICollectionViewCell {
         let label = Label(style: .body)
         label.setContentHuggingPriority(.required, for: .vertical)
         label.translatesAutoresizingMaskIntoConstraints = false
-       
+        label.text = ""
         label.numberOfLines = 2
         label.textAlignment = .left
         label.setContentCompressionResistancePriority(.required, for: .vertical)
@@ -119,6 +119,7 @@ public class FrontpageFavoritedShelfItemCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
         label.textAlignment = .left
+        label.text = ""
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.required, for: .vertical)
         return label
@@ -183,7 +184,6 @@ public class FrontpageFavoritedShelfItemCell: UICollectionViewCell {
             isHeightCalculated = true
         }
         
-        
         return layoutAttributes
     }
 }
@@ -195,6 +195,10 @@ public extension FrontpageFavoritedShelfItemCell {
             imageView.image = image
         } else {
             imageView.image = defaultImage
+        }
+        DispatchQueue.main.async {
+            self.setNeedsLayout()
+            self.layoutIfNeeded()
         }
     }
 }
