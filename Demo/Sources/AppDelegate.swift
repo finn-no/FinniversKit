@@ -19,9 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Config.userInterfaceStyleSupport = State.defaultUserInterfaceStyleSupport
         }
         window = UIWindow(frame: UIScreen.main.bounds)
-        if #available(iOS 13.0, *) {
-            window?.setWindowUserInterfaceStyle(userInterfaceStyle)
-        }
+        window?.setWindowUserInterfaceStyle(userInterfaceStyle)
+
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
 

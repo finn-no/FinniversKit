@@ -25,12 +25,8 @@ final class InstrumentSelectorView: UIView {
         let control = UISegmentedControl(items: self.instruments.map({ $0.rawValue }))
         control.translatesAutoresizingMaskIntoConstraints = false
 
-        if #available(iOS 13.0, *) {
-            control.selectedSegmentTintColor = .bgTertiary
-            control.backgroundColor = .bgSecondary
-        } else {
-            control.tintColor = .white
-        }
+        control.selectedSegmentTintColor = .bgTertiary
+        control.backgroundColor = .bgSecondary
         return control
     }()
 

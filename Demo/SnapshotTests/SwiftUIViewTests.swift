@@ -6,7 +6,6 @@ import Demo
 import XCTest
 import SwiftUI
 
-@available(iOS 13.0, *)
 class SwiftUIViewTests: XCTestCase {
     private func snapshot(
         _ component: SwiftUIDemoViews,

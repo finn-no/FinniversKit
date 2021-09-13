@@ -477,8 +477,8 @@ public extension UIColor {
         let scanner = Scanner(string: noHashString)
         scanner.charactersToBeSkipped = CharacterSet.symbols
 
-        var hexInt: UInt32 = 0
-        if scanner.scanHexInt32(&hexInt) {
+        var hexInt: UInt64 = 0
+        if scanner.scanHexInt64(&hexInt) {
             let red = (hexInt >> 16) & 0xFF
             let green = (hexInt >> 8) & 0xFF
             let blue = (hexInt) & 0xFF
