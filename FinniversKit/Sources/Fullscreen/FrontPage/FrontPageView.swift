@@ -250,6 +250,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
             layoutIfNeeded()
         case .displayed:
             compactMarketsView.isHidden = false
+            
         case .hidden:
             compactMarketsView.isHidden = true
         }
@@ -294,6 +295,9 @@ extension FrontPageView: AdRecommendationsGridViewDelegate {
             let endDistance = compactMarketsFullyDisplayedThreshold - scrollingThreshold
             let progress = max(0, min(1, currentDistance / endDistance))
             changeCompactMarketsViewVisibilityStatus(to: .displaying(progress: progress))
+            if progress == 1 {
+                changeCompactMarketsViewVisibilityStatus(to: .displayed)
+            }
         } else {
             // When scrolling y offset is less than 100 hide the compact markets view
             changeCompactMarketsViewVisibilityStatus(to: .hidden)
