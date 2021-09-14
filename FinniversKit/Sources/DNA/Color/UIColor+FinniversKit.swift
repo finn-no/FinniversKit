@@ -212,8 +212,12 @@ import UIKit
 
 // MARK: - Temporary Markets Colors
 extension UIColor {
+    
+    public class var blueGray400: UIColor {
+        return UIColor(hex: "#94A3B8")
+    }
     public class var blueGray600: UIColor {
-        return UIColor(hex: "#7B8493")
+        return UIColor(hex: "#475569")
     }
     
     public class var blueGray700: UIColor {
