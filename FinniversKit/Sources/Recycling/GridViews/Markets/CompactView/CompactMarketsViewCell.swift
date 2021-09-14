@@ -214,7 +214,7 @@ private extension UIColor {
     }
     
     class var tileBackgroundColor: UIColor {
-        return .dynamicColorIfAvailable(defaultColor: .coolGray100, darkModeColor: .blueGray700)
+        return .dynamicColorIfAvailable(defaultColor: .milk, darkModeColor: .blueGray700)
     }
 }
 
