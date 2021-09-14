@@ -1,12 +1,19 @@
-# This is the minimum version number required.
-# Update this, if you use features of a newer version
+require "spaceship"
+
 fastlane_version "2.146.0"
 
 skip_docs
 
+@app_identifier = "no.finn.FinniversKit.Demo"
+
 desc "Create a new FinniversKit version"
 lane :make_finniverkit_version do |options|
   make_release("FinniversKit", "", options)
+end
+
+desc "Build and upload to Testflight"
+lane :release_to_testflight do
+  send_to_testflight("FinniversKit.xcworkspace", "Demo", "84.0.0", @app_identifier)
 end
 
 desc "Attempt to connect to github.com with ssh"
@@ -59,13 +66,18 @@ def make_release(project, tag_prefix, options)
     UI.user_error! "Version was not accepted by user."
   end
 
+  ## Update Xcode project version and podspec
+  increment_version_number(
+    version_number: new_version,
+    xcodeproj: "#{project}/#{project}.xcodeproj"
+  )
+  increment_version_number(
+    version_number: new_version,
+    xcodeproj: "Demo/Demo.xcodeproj"
+  )
   version_bump_podspec(path: "#{project}.podspec", version_number: new_version)
-
-  ## Update the version used when building
-  #todo: update_version_file("../#{project}/Version.h", new_version)
-
-  if UI.confirm "Will commit changes to files"
-    git_commit(path: "#{project}.podspec", message: "Bumped #{project} version to #{new_version}")
+  if UI.confirm "Will commit all changes"
+    git_commit(path: "*", message: "Bumped podspec and Info.plist(s) version to #{new_version}")
   end
 
   ## Push the branch
@@ -83,6 +95,30 @@ def make_release(project, tag_prefix, options)
 
   ## Pull the newly created tag.
   git_pull(only_tags: true)
+end
+
+def send_to_testflight(workspace, scheme, version, app_identifier)
+  ## Login to developer portal and App Store Connect
+  create_login_session_for_testflight
+
+  #previous_testflight_build_number = latest_testflight_build_number(version: version, app_identifier: app_identifier, username: apple_id_username, team_id: appstoreconnect_team_id)
+  #increment_build_number(
+  #  build_number: previous_testflight_build_number + 1,
+  #  xcodeproj: "Demo/Demo.xcodeproj"
+  #)
+
+  build_app(
+    scheme: scheme,
+    workspace: workspace,
+    include_bitcode: true
+  )
+
+  #upload_to_testflight(
+  #  changelog: "Version #{version}",
+  #  app_identifier: app_identifier,
+  #  username: apple_id_username,
+  #  team_id: appstoreconnect_team_id
+  #)
 end
 
 def lookup(options, key, allowed_values, default=nil)
@@ -166,4 +202,32 @@ def verify_env_var(envVar, errorMessage)
   else
     return ENV[envVar]
   end
+end
+
+def apple_id_username
+  return verify_env_var("FINN_FASTLANE_USERNAME", "No username found!")
+end
+
+def appstore_team_id
+  return verify_env_var("FINN_FASTLANE_APPSTORE_TEAM_ID", "No team id found!")
+end
+
+def appstoreconnect_team_id
+  return verify_env_var("FINN_FASTLANE_APPSTORE_CONNECT_TEAM_ID", "No AppStore Connect team id found!")
+end
+
+def create_login_session_for_testflight
+  UI.header "Initializing sessions to Developer Portal and AppStore Connect"
+  username = apple_id_username
+  teamid = appstore_team_id
+  appstore_connect_team_id = appstoreconnect_team_id
+
+  UI.message "Connecting to Developer Portal with user #{username}"
+  Spaceship::Portal::login(username)
+  UI.message "Setting developer portal team to #{teamid}"
+  Spaceship::Portal::client.team_id = teamid
+  UI.message "Connecting to AppStore Connect with user #{username}"
+  Spaceship::Tunes::login(username)
+  UI.message "Setting AppStore Connect team to #{appstore_connect_team_id}"
+  Spaceship::Tunes::client.team_id = appstore_connect_team_id
 end
