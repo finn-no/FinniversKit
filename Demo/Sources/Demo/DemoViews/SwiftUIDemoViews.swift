@@ -3,7 +3,7 @@
 //
 
 import SwiftUI
-@testable import FinniversKit
+import FinniversKit
 
 public enum SwiftUIDemoViews: String, DemoViews {
     case textField
