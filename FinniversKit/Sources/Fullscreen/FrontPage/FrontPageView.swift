@@ -12,10 +12,6 @@ public protocol FrontPageViewDelegate: MarketsViewDelegate, MarketsViewDataSourc
     func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView)
 }
 
-protocol CompactMarketsPresenter {
-    func scrollViewDidScroll(_ scrollView: UIScrollView)
-}
-
 public final class FrontPageView: UIView, BasicFrontPageView {
     
     public var model: FrontPageViewModel? {
