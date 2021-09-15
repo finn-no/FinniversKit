@@ -38,10 +38,7 @@ class MarketsGridViewCell: UICollectionViewCell {
         return view
     }()
     
-    private lazy var contentStackView: UIStackView = {
-        let sv = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
-        return sv
-    }()
+    private lazy var contentStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
     
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
