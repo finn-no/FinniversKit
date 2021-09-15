@@ -8,7 +8,7 @@ public protocol FrontPageViewModel {
     var noRecommendationsText: String { get }
 }
 
-public protocol FrontPageViewDelegate: MarketsViewDelegate, MarketsViewDataSource, AdRecommendationsGridViewDelegate {
+public protocol FrontPageViewDelegate: MarketsViewDelegate, AdRecommendationsGridViewDelegate {
     func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView)
 }
 
@@ -36,7 +36,8 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         case displayed
     }
 
-    private let delegate: FrontPageViewDelegate
+    private weak var delegate: FrontPageViewDelegate?
+    private var marketsViewDataSource: MarketsViewDataSource
     private var adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource
     
     private var didSetupView = false
@@ -44,13 +45,13 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     // MARK: - Subviews
 
     private lazy var marketsGridView: MarketsGridView = {
-        let view = MarketsGridView(delegate: self, dataSource: self)
+        let view = MarketsGridView(delegate: self, dataSource: marketsViewDataSource)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var compactMarketsView: CompactMarketsView = {
-        let view = CompactMarketsView(delegate: self, dataSource: self)
+        let view = CompactMarketsView(delegate: self, dataSource: marketsViewDataSource)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -87,9 +88,10 @@ public final class FrontPageView: UIView, BasicFrontPageView {
 
     // MARK: - Init
 
-    public init(delegate: FrontPageViewDelegate, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource) {
+    public init(delegate: FrontPageViewDelegate, marketsViewDataSource: MarketsViewDataSource, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource) {
         self.delegate = delegate
         self.adRecommendationsGridViewDataSource = adRecommendationsGridViewDataSource
+        self.marketsViewDataSource = marketsViewDataSource
         super.init(frame: .zero)
     }
 
@@ -258,7 +260,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
 extension FrontPageView: LoadingRetryViewDelegate {
     public func loadingRetryViewDidSelectButton(_ view: LoadingRetryView) {
         adsRetryView.state = .loading
-        delegate.frontPageViewDidSelectRetryButton(self)
+        delegate?.frontPageViewDidSelectRetryButton(self)
     }
 }
 
@@ -266,19 +268,19 @@ extension FrontPageView: LoadingRetryViewDelegate {
 
 extension FrontPageView: AdRecommendationsGridViewDelegate {
     public func adRecommendationsGridViewDidStartRefreshing(_ adRecommendationsGridView: AdRecommendationsGridView) {
-        delegate.adRecommendationsGridViewDidStartRefreshing(adRecommendationsGridView)
+        delegate?.adRecommendationsGridViewDidStartRefreshing(adRecommendationsGridView)
     }
 
     public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didSelectItemAtIndex index: Int) {
-        delegate.adRecommendationsGridView(adRecommendationsGridView, didSelectItemAtIndex: index)
+        delegate?.adRecommendationsGridView(adRecommendationsGridView, didSelectItemAtIndex: index)
     }
 
     public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, willDisplayItemAtIndex index: Int) {
-        delegate.adRecommendationsGridView(adRecommendationsGridView, willDisplayItemAtIndex: index)
+        delegate?.adRecommendationsGridView(adRecommendationsGridView, willDisplayItemAtIndex: index)
     }
 
     public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didScrollInScrollView scrollView: UIScrollView) {
-        delegate.adRecommendationsGridView(adRecommendationsGridView, didScrollInScrollView: scrollView)
+        delegate?.adRecommendationsGridView(adRecommendationsGridView, didScrollInScrollView: scrollView)
         
         let verticalOffset = scrollView.contentOffset.y
         
@@ -301,7 +303,7 @@ extension FrontPageView: AdRecommendationsGridViewDelegate {
     }
 
     public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at index: Int) {
-        delegate.adRecommendationsGridView(adRecommendationsGridView, didSelectFavoriteButton: button, on: cell, at: index)
+        delegate?.adRecommendationsGridView(adRecommendationsGridView, didSelectFavoriteButton: button, on: cell, at: index)
     }
 }
 
@@ -309,16 +311,6 @@ extension FrontPageView: AdRecommendationsGridViewDelegate {
 
 extension FrontPageView: MarketsViewDelegate {
     public func marketsView(_ marketsGridView: MarketsView, didSelectItemAtIndex index: Int) {
-        delegate.marketsView(marketsGridView, didSelectItemAtIndex: index)
-    }
-}
-
-extension FrontPageView: MarketsViewDataSource {
-    public func numberOfItems(inMarketsView marketsView: MarketsView) -> Int {
-        delegate.numberOfItems(inMarketsView: marketsView)
-    }
-
-    public func marketsView(_ marketsView: MarketsView, modelAtIndex index: Int) -> MarketsViewModel {
-        delegate.marketsView(marketsView, modelAtIndex: index)
+        delegate?.marketsView(marketsGridView, didSelectItemAtIndex: index)
     }
 }

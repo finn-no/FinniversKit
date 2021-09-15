@@ -166,7 +166,8 @@ private extension CompactMarketsView {
             width: smoothShadowView.bounds.width,
             height: smoothShadowView.layer.shadowRadius
         )
-        smoothShadowView.layer.shadowPath = UIBezierPath(rect: smoothShadowViewRect.cgPath)
+        
+        smoothShadowView.layer.shadowPath = UIBezierPath(rect: smoothShadowViewRect).cgPath
 
         let sharpShadowViewRect = CGRect(
             x: 0,
@@ -174,7 +175,7 @@ private extension CompactMarketsView {
             width: sharpShadowView.bounds.width,
             height: sharpShadowView.layer.shadowRadius
         )
-        sharpShadowView.layer.shadowPath = UIBezierPath(rect: sharpShadowViewRect.cgPath)
+        sharpShadowView.layer.shadowPath = UIBezierPath(rect: sharpShadowViewRect).cgPath
         
     }
 }
