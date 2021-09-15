@@ -10,8 +10,7 @@ class MarketsGridViewCell: UICollectionViewCell {
     private let cornerRadius: CGFloat = 16
     
     private lazy var sharpShadowView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = UIView(withAutoLayout: true)
         view.backgroundColor = .clear
         view.layer.cornerRadius = cornerRadius
         view.clipsToBounds = true
@@ -20,8 +19,7 @@ class MarketsGridViewCell: UICollectionViewCell {
     }()
     
     private lazy var smoothShadowView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = UIView(withAutoLayout: true)
         view.backgroundColor = .clear
         view.layer.cornerRadius = cornerRadius
         view.clipsToBounds = true
@@ -30,8 +28,7 @@ class MarketsGridViewCell: UICollectionViewCell {
     }()
     
     private lazy var containerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = UIView(withAutoLayout: true)
         view.backgroundColor = .tileBackgroundColor
         view.layer.cornerRadius = cornerRadius
         view.clipsToBounds = true
