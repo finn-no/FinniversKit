@@ -29,8 +29,7 @@ class CompactMarketsViewCell: UICollectionViewCell {
     }()
     
     private lazy var containerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = UIView(withAutoLayout: true)
         view.backgroundColor = .tileBackgroundColor
         view.layer.cornerRadius = 12
         view.clipsToBounds = true
