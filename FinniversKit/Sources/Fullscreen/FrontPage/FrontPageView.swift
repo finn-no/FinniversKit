@@ -64,7 +64,6 @@ public final class FrontPageView: UIView, BasicFrontPageView {
 
     private let promoContainer = UIView(withAutoLayout: true)
     
-
     private lazy var headerView = UIView()
 
     private lazy var headerLabel: Label = {
