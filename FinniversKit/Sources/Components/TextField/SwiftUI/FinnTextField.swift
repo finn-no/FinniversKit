@@ -4,7 +4,6 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
 public struct FinnTextField: View {
     public typealias CustomValidator = (String) -> Bool
 
@@ -127,7 +126,6 @@ public struct FinnTextField: View {
     }
 }
 
-@available(iOS 13.0, *)
 extension FinnTextField {
 
     private static let emailRegex: String = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
@@ -178,7 +176,6 @@ extension FinnTextField {
 }
 
 // No `onEditingChanged` in SecureField, so need custom view
-@available(iOS 13.0, *)
 struct TextFieldComponent: UIViewRepresentable {
 
     let input: FinnTextField.Input
@@ -220,7 +217,7 @@ struct TextFieldComponent: UIViewRepresentable {
         init(_ parent: TextFieldComponent) {
             self.parent = parent
         }
-        
+
         func textFieldDidBeginEditing(_ textField: UITextField) {
             parent.onEditingChanged(true)
         }
@@ -243,7 +240,6 @@ struct TextFieldComponent: UIViewRepresentable {
 
 }
 
-@available(iOS 13.0, *)
 // swiftlint:disable:next superfluous_disable_command type_name
 struct FinnTextField_Previews: PreviewProvider {
 

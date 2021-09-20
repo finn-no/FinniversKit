@@ -6,7 +6,6 @@ import XCTest
 import FinniversKit
 
 class ConfigTests: XCTestCase {
-    @available(iOS 13.0, *)
     func testDefaultValueForInterfaceStyle() {
         XCTAssertEqual(Config.userInterfaceStyleSupport, .dynamic)
     }
