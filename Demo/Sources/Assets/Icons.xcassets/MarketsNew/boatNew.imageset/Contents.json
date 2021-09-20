@@ -2,7 +2,18 @@
   "images" : [
     {
       "filename" : "Båt.svg",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Båt-1.svg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Båt-2.svg",
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
