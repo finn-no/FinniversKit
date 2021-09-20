@@ -248,7 +248,6 @@ public final class FrontPageView: UIView, BasicFrontPageView {
             layoutIfNeeded()
         case .displayed:
             compactMarketsView.isHidden = false
-            
         case .hidden:
             compactMarketsView.isHidden = true
         }
