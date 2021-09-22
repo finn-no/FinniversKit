@@ -5,7 +5,7 @@
 import FinniversKit
 
 public class FrontpageViewDemoView: UIView, Tweakable {
-    private let markets = Market.allMarkets
+    private let markets = Market.newMarkets
     private var didSetupView = false
     private var visibleItems = 20
 
@@ -43,7 +43,7 @@ public class FrontpageViewDemoView: UIView, Tweakable {
     }()
 
     private lazy var frontPageView: FrontPageView = {
-        let view = FrontPageView(delegate: self, adRecommendationsGridViewDataSource: self)
+        let view = FrontPageView(delegate: self, marketsViewDataSource: self, adRecommendationsGridViewDataSource: self)
         view.model = FrontpageViewDefaultData()
         view.isRefreshEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false

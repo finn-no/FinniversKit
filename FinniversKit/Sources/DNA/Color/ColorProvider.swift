@@ -8,6 +8,7 @@ public protocol ColorProvider {
     var bgPrimary: UIColor { get }
     var bgSecondary: UIColor { get }
     var bgTertiary: UIColor { get }
+    var bgQuaternary: UIColor { get }
     var bgBottomSheet: UIColor { get }
     var bgAlert: UIColor { get }
     var bgSuccess: UIColor { get }
@@ -48,6 +49,10 @@ public struct DefaultColorProvider: ColorProvider {
 
     public var bgTertiary: UIColor {
         .dynamicColorIfAvailable(defaultColor: .marble, darkModeColor: UIColor(hex: "#13131A"))
+    }
+    
+    public var bgQuaternary: UIColor {
+        .dynamicColorIfAvailable(defaultColor: .marble, darkModeColor: UIColor(hex: "#1B1B24"))
     }
 
     public var bgBottomSheet: UIColor {
