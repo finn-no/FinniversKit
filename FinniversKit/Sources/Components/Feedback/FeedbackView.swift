@@ -88,7 +88,6 @@ public class FeedbackView: UIView {
         backgroundColor = .bgSecondary
 
         layer.borderWidth = 1
-        layer.borderColor = .decorationSubtle
         layer.cornerRadius = 8
         layer.masksToBounds = true
 
@@ -178,6 +177,8 @@ public class FeedbackView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         hasBeenPresented = true
+
+        layer.borderColor = .decorationSubtle
 
         guard allowDynamicPresentation else { return }
 
