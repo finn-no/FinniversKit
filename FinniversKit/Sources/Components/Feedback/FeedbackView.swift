@@ -33,18 +33,14 @@ public class FeedbackView: UIView {
 
     private var hasBeenPresented = false
     private var state: State = .initial
-    private var presentation: FeedbackViewPresentation? {
-        didSet {
-            guard let presentation = presentation else { return }
-            titleView.configure(forPresentation: presentation)
-            buttonView.configure(forPresentation: presentation)
-        }
-    }
+    private var presentation: FeedbackViewPresentation?
+    private var allowDynamicPresentation: Bool = true
 
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = UIImage(named: .ratingCat)
         imageView.contentMode = .scaleAspectFit
+        imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         return imageView
     }()
 
@@ -113,6 +109,12 @@ public class FeedbackView: UIView {
 
     // MARK: - Public methods
 
+    public func configureWithFixedPresentation(isGrid: Bool) {
+        allowDynamicPresentation = false
+        let presentation: FeedbackViewPresentation = isGrid ? .grid : .list
+        configure(forPresentation: presentation)
+    }
+
     public func setState(_ state: State, withViewModel viewModel: FeedbackViewModel) {
         self.state = state
         configure(withViewModel: viewModel)
@@ -148,6 +150,19 @@ public class FeedbackView: UIView {
         buttonView.setButtonTitles(positive: viewModel.positiveButtonTitle, negative: viewModel.negativeButtonTitle)
     }
 
+    private func configure(forPresentation presentation: FeedbackViewPresentation) {
+        switch presentation {
+        case .list:
+            NSLayoutConstraint.deactivate(gridPresentationConstraints)
+            NSLayoutConstraint.activate(listPresentationConstraints)
+        case .grid:
+            NSLayoutConstraint.deactivate(listPresentationConstraints)
+            NSLayoutConstraint.activate(gridPresentationConstraints)
+        }
+        titleView.configure(forPresentation: presentation)
+        buttonView.configure(forPresentation: presentation)
+    }
+
     @objc private func positiveButtonTapped() {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
         delegate?.feedbackView(self, didSelectButtonOfType: .positive, forState: state)
@@ -162,20 +177,17 @@ public class FeedbackView: UIView {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
+        hasBeenPresented = true
+
+        guard allowDynamicPresentation else { return }
 
         let newPresentation: FeedbackViewPresentation = bounds.size.height >= bounds.size.width ? .grid : .list
-        guard newPresentation != presentation else { return }
-        if newPresentation == .grid {
-            NSLayoutConstraint.deactivate(listPresentationConstraints)
-            NSLayoutConstraint.activate(gridPresentationConstraints)
-        } else {
-            NSLayoutConstraint.deactivate(gridPresentationConstraints)
-            NSLayoutConstraint.activate(listPresentationConstraints)
-        }
 
+        guard newPresentation != presentation else { return }
         presentation = newPresentation
+
+        configure(forPresentation: newPresentation)
         setNeedsLayout()
-        hasBeenPresented = true
     }
 }
 
@@ -222,7 +234,8 @@ private class TitleView: UIView {
 
         NSLayoutConstraint.activate([
             titleLabelLeadingConstraint,
-            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
         ])
     }
@@ -295,13 +308,7 @@ private class ButtonView: UIView {
 
     private func setup() {
         addSubview(stackView)
-
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+        stackView.fillInSuperview()
     }
 
     // MARK: - Public methods
