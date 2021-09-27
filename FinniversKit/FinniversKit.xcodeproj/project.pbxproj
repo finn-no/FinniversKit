@@ -629,8 +629,8 @@
 		8D68039C958633F7F481BC9E /* MarketsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsView.swift; sourceTree = "<group>"; };
 		8D68045809E7DBB833984EC6 /* SelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
 		8D6804597448C36BE9CDE257 /* PriceLinkButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceLinkButtonView.swift; sourceTree = "<group>"; };
-		8D6806208D953258CE0ED22E /* ContractVideoLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractVideoLinkView.swift; sourceTree = "<group>"; };
 		8D6805190641E94E919DEA65 /* NumberedListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberedListItem.swift; sourceTree = "<group>"; };
+		8D6806208D953258CE0ED22E /* ContractVideoLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractVideoLinkView.swift; sourceTree = "<group>"; };
 		8D68079DFA6B62675F1C5CB5 /* SelectionOptionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionOptionModel.swift; sourceTree = "<group>"; };
 		8D6807A1A5494CABB1DC58D6 /* SearchListEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchListEmptyView.swift; sourceTree = "<group>"; };
 		8D6807BB9D8E109F5C7B3712 /* IconRibbonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconRibbonViewModel.swift; sourceTree = "<group>"; };
@@ -3704,7 +3704,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -3758,7 +3758,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

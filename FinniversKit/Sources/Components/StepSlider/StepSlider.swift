@@ -94,7 +94,6 @@ public final class StepSlider: UISlider {
         super.traitCollectionDidChange(previousTraitCollection)
 
         guard
-            #available(iOS 12.0, *),
             previousTraitCollection?.userInterfaceStyle != traitCollection.userInterfaceStyle
         else {
             return

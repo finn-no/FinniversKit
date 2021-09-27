@@ -4,7 +4,6 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
 public struct FinnTextView: View {
 
     let placeholderText: String
@@ -41,7 +40,6 @@ public struct FinnTextView: View {
 
 }
 
-@available(iOS 13.0, *)
 struct TextViewComponent: UIViewRepresentable {
 
     @Binding var text: String
@@ -103,7 +101,6 @@ struct TextViewComponent: UIViewRepresentable {
 
 }
 
-@available(iOS 13.0, *)
 // swiftlint:disable:next superfluous_disable_command type_name
 struct FinnTextView_Previews: PreviewProvider {
 

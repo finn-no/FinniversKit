@@ -5,7 +5,6 @@
 import SwiftUI
 @testable import FinniversKit
 
-@available(iOS 13.0, *)
 public enum SwiftUIDemoViews: String, DemoViews {
     case textField
     case textView

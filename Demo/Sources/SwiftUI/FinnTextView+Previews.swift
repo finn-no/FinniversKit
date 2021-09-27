@@ -5,7 +5,6 @@
 import SwiftUI
 import FinniversKit
 
-@available(iOS 13.0, *)
 struct FinnTextViewDemoView: View {
 
     @SwiftUI.State var text: String = ""
@@ -24,7 +23,6 @@ struct FinnTextViewDemoView: View {
     }
 }
 
-@available(iOS 13.0, *)
 // swiftlint:disable:next superfluous_disable_command type_name
 struct FinnTextView_Previews: PreviewProvider {
     static var previews: some View {

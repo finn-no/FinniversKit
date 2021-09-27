@@ -20,10 +20,7 @@ struct State {
     static let currentUserInterfaceStyleKey = "currentUserInterfaceStyleKey"
 
     static let defaultUserInterfaceStyleSupport: UserInterfaceStyleSupport = {
-        if #available(iOS 13.0, *) {
-            return .dynamic
-        }
-        return .forceLight
+        return .dynamic
     }()
 
     static var lastSelectedIndexPath: IndexPath? {
@@ -96,9 +93,8 @@ struct State {
 
     /// Needs to be called from main thread on iOS 13
     static func setCurrentUserInterfaceStyle(_ userInterfaceStyle: UserInterfaceStyle?, in window: UIWindow?) {
-        if #available(iOS 13.0, *) {
-            window?.setWindowUserInterfaceStyle(userInterfaceStyle)
-        }
+        window?.setWindowUserInterfaceStyle(userInterfaceStyle)
+
         if let userInterfaceStyle = userInterfaceStyle {
             UserDefaults.standard.set(userInterfaceStyle.rawValue, forKey: currentUserInterfaceStyleKey)
             Config.userInterfaceStyleSupport = userInterfaceStyle == .dark ? .forceDark : .forceLight
@@ -110,17 +106,11 @@ struct State {
     }
 
     static func currentUserInterfaceStyle(for traitCollection: UITraitCollection) -> UserInterfaceStyle {
-        if #available(iOS 13.0, *) {
-            return traitCollection.userInterfaceStyle == .dark ? .dark : .light
-        } else {
-            let styleRawValue = UserDefaults.standard.integer(forKey: currentUserInterfaceStyleKey)
-            return UserInterfaceStyle(rawValue: styleRawValue) ?? .light
-        }
+        return traitCollection.userInterfaceStyle == .dark ? .dark : .light
     }
 }
 
 extension UIWindow {
-    @available(iOS 13.0, *)
     func setWindowUserInterfaceStyle(_ userInterfaceStyle: UserInterfaceStyle?) {
         #if swift(>=5.1)
         let uiUserInterfaceStyle: UIUserInterfaceStyle

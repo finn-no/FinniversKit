@@ -6,7 +6,6 @@ class CompactMarketsViewCell: UICollectionViewCell {
 
     var model: MarketsViewModel? {
         didSet {
-            iconImageView.image = model?.iconImage
             titleLabel.text = model?.title
             accessibilityLabel = model?.accessibilityLabel
 
@@ -16,18 +15,32 @@ class CompactMarketsViewCell: UICollectionViewCell {
     }
 
     // MARK: - Private properties
-
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(axis: .horizontal, spacing: .spacingS, withAutoLayout: true)
-        stackView.addArrangedSubviews([iconImageView, titleLabel, externalLinkImageView])
-        stackView.alignment = .center
-        return stackView
+    
+    private lazy var sharpShadowView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+    
+    private lazy var smoothShadowView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+    
+    private lazy var containerView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .tileBackgroundColor
+        view.layer.cornerRadius = 12
+        view.clipsToBounds = true
+        return view
     }()
 
-    private lazy var iconImageView: UIImageView = {
-        let imageView = UIImageView(withAutoLayout: true)
-        imageView.contentMode = .scaleAspectFit
-        return imageView
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(axis: .horizontal, spacing: Self.itemSpacing, withAutoLayout: true)
+        stackView.addArrangedSubviews([titleLabel, externalLinkImageView])
+        stackView.alignment = .center
+        return stackView
     }()
 
     private lazy var externalLinkImageView: UIImageView = {
@@ -61,14 +74,17 @@ class CompactMarketsViewCell: UICollectionViewCell {
 
     private func setup() {
         isAccessibilityElement = true
-        backgroundColor = .clear
+        backgroundColor = .tileBackgroundColor
 
-        contentView.addSubview(stackView)
+        contentView.addSubview(sharpShadowView)
+        contentView.addSubview(smoothShadowView)
+        contentView.addSubview(containerView)
+        containerView.addSubview(stackView)
+        
+        containerView.fillInSuperview()
         stackView.fillInSuperview(insets: Self.contentInsets.forLayoutConstraints)
 
         NSLayoutConstraint.activate([
-            iconImageView.widthAnchor.constraint(equalToConstant: Self.iconImageSize.width),
-            iconImageView.heightAnchor.constraint(equalToConstant: Self.iconImageSize.height),
             externalLinkImageView.widthAnchor.constraint(equalToConstant: Self.externalLinkImageSize.width),
             externalLinkImageView.heightAnchor.constraint(equalToConstant: Self.externalLinkImageSize.height),
         ])
@@ -78,35 +94,45 @@ class CompactMarketsViewCell: UICollectionViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        iconImageView.image = nil
         titleLabel.text = ""
         accessibilityLabel = ""
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-
-        layer.cornerRadius = frame.height / 2
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.externalLinkColor.cgColor
+        let cornerRadius = frame.height / 2
+        layer.cornerRadius = cornerRadius
+        smoothShadowView.layer.cornerRadius = cornerRadius
+        sharpShadowView.layer.cornerRadius = cornerRadius
+        containerView.layer.cornerRadius = cornerRadius
+        sharpShadowView.frame = contentView.bounds
+        smoothShadowView.frame = contentView.bounds
+        applyShadow()
+    }
+    
+    func applyShadow() {
+        sharpShadowView.applyShadow(ofType: .sharp)
+        smoothShadowView.applyShadow(ofType: .smooth)
+    }
+    
+    func removeShadow() {
+        sharpShadowView.applyShadow(ofType: .none)
+        smoothShadowView.applyShadow(ofType: .none)
     }
 }
 
 // MARK: - Size calculations
 
 extension CompactMarketsViewCell {
-    static let borderWidth: CGFloat = 1
-    static let contentInsets = UIEdgeInsets(vertical: 10, horizontal: .spacingM)
-    static let titleLabelStyle = Label.Style.caption
-    static let cellHeight: CGFloat = 44
+    static let contentInsets = UIEdgeInsets(vertical: .spacingS, horizontal: 12)
+    static let titleLabelStyle = Label.Style.captionStrong
+    static let cellHeight: CGFloat = 34
     static let itemSpacing = CGFloat.spacingS
-    static let iconImageSize = CGSize(width: 24, height: 24)
-    static let externalLinkImageSize = CGSize(width: 16, height: 16)
+    static let externalLinkImageSize = CGSize(width: 12, height: 12)
 
     static func size(for model: MarketsViewModel) -> CGSize {
         var widths: [CGFloat] = [
             contentInsets.leading,
-            iconImageSize.width,
             itemSpacing,
             width(for: model.title)
         ]
@@ -120,15 +146,7 @@ extension CompactMarketsViewCell {
 
         widths.append(contentInsets.trailing)
 
-        let heights: [CGFloat] = [
-            borderWidth,
-            contentInsets.top,
-            iconImageSize.height,
-            contentInsets.bottom,
-            borderWidth
-        ]
-
-        return CGSize(width: widths.reduce(0, +), height: heights.reduce(0, +))
+        return CGSize(width: widths.reduce(0, +), height: cellHeight)
     }
 
     private static func width(for title: String) -> CGFloat {
@@ -146,9 +164,56 @@ extension CompactMarketsViewCell {
 
 // MARK: - Private extensions
 
+private extension UIView {
+    
+    enum ShadowType {
+        case sharp
+        case smooth
+        case none
+    }
+    
+    func applyShadow(ofType type: ShadowType) {
+        self.layer.masksToBounds = false
+        
+        switch type {
+        case .sharp:
+            self.layer.shadowOpacity = 0.25
+            self.layer.shadowOffset = CGSize(width: 0, height: 1)
+            self.layer.shadowColor = UIColor.tileSharpShadowColor.cgColor
+            self.layer.shadowRadius = 1
+            self.layer.shadowPath = UIBezierPath(roundedRect:self.bounds, cornerRadius:self.layer.cornerRadius).cgPath
+        case .smooth:
+            self.layer.shadowOpacity = 0.16
+            self.layer.shadowOffset = CGSize(width: 0, height: 1)
+            self.layer.shadowColor = UIColor.tileSmoothShadowColor.cgColor
+            self.layer.shadowRadius = 5
+            self.layer.shadowPath = UIBezierPath(roundedRect:self.bounds, cornerRadius:self.layer.cornerRadius).cgPath
+        case .none:
+            self.layer.shadowOpacity = 0.0
+            self.layer.shadowOffset = .zero
+            self.layer.shadowColor = nil
+            self.layer.shadowRadius = 0
+            self.layer.shadowPath = nil
+        }
+    }
+}
+
+// TODO: - These colors should be added to the ColorProvider at some point
 private extension UIColor {
     class var externalLinkColor: UIColor {
-        dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
+        return .blueGray400
+    }
+    
+    class var tileSharpShadowColor: UIColor {
+        return .blueGray600
+    }
+    
+    class var tileSmoothShadowColor: UIColor {
+        return .blueGray600
+    }
+    
+    class var tileBackgroundColor: UIColor {
+        return .dynamicColorIfAvailable(defaultColor: .milk, darkModeColor: .blueGray700)
     }
 }
 
