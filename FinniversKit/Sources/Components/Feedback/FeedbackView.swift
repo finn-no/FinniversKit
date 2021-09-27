@@ -56,7 +56,7 @@ public class FeedbackView: UIView {
     private lazy var gridPresentationConstraints: [NSLayoutConstraint] = [
         imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
         imageView.heightAnchor.constraint(equalToConstant: 130),
-        titleView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .spacingS),
+        titleView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: TitleView.verticalSpacing),
         titleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
         buttonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
         buttonView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM)
@@ -65,7 +65,7 @@ public class FeedbackView: UIView {
     private lazy var listPresentationConstraints: [NSLayoutConstraint] = [
         imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
         imageView.widthAnchor.constraint(equalToConstant: 130),
-        titleView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+        titleView.topAnchor.constraint(equalTo: topAnchor, constant: TitleView.verticalSpacing),
         titleView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingS),
         buttonView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingS),
         buttonView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS)
@@ -101,7 +101,7 @@ public class FeedbackView: UIView {
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
 
             titleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
-            titleView.bottomAnchor.constraint(equalTo: buttonView.topAnchor, constant: -.spacingS),
+            titleView.bottomAnchor.constraint(equalTo: buttonView.topAnchor, constant: -TitleView.verticalSpacing),
 
             buttonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
         ])
@@ -201,6 +201,7 @@ private enum FeedbackViewPresentation {
 // MARK: - TitleView
 
 private class TitleView: UIView {
+    static let verticalSpacing: CGFloat = .spacingS
 
     // MARK: - Private properties
 
@@ -211,6 +212,7 @@ private class TitleView: UIView {
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.8
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
 
@@ -234,9 +236,10 @@ private class TitleView: UIView {
 
         NSLayoutConstraint.activate([
             titleLabelLeadingConstraint,
-            titleLabel.topAnchor.constraint(equalTo: topAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
+            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+
+            heightAnchor.constraint(equalTo: titleLabel.heightAnchor, constant: 2 * TitleView.verticalSpacing, priority: .defaultLow)
         ])
     }
 
