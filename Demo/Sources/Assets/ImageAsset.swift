@@ -33,6 +33,7 @@ extension UIImage {
 //swiftlint:disable superfluous_disable_command
 //swiftlint:disable type_body_length
 enum ImageAsset: String {
+    case adManagementTrashcan
     case adsenseDemo
     case arrowCounterClockwise
     case avatar
@@ -46,6 +47,7 @@ enum ImageAsset: String {
     case carPromo
     case carsCircleIllustration
     case carsSubscription
+    case checkCircle
     case checkCircleFilled
     case classifieds
     case classifiedsNew
@@ -58,6 +60,7 @@ enum ImageAsset: String {
     case distance
     case emptyMoon
     case emptyStateSaveSearch
+    case eyeHide
     case favoriteActive
     case favorites
     case favouriteAdded
@@ -81,6 +84,7 @@ enum ImageAsset: String {
     case messages
     case mittanbud
     case mittanbudNew
+    case more
     case moteplassen
     case moteplassenNew
     case nettbilNew
@@ -99,6 +103,7 @@ enum ImageAsset: String {
     case nyhetsbrevFraFinn
     case okonomi
     case okonomiNew
+    case pencilPaper
     case pin
     case playVideo
     case plus
@@ -106,20 +111,25 @@ enum ImageAsset: String {
     case primingFavoritesSearch
     case primingFavoritesSharing
     case profile
+    case rated
     case ratings
     case realestate
     case realestateNew
     case remove
     case removeFilterTag
+    case republish
     case savedSearches
     case search
     case service
     case shopping
     case sold
+    case stakeholder
     case transactionJourneyCar
     case travel
     case travelNew
+    case uncheckCircle
     case vehicles
+    case view
     case virtualViewing
     case warranty
     case webview
@@ -128,6 +138,7 @@ enum ImageAsset: String {
 
     static var imageNames: [ImageAsset] {
         return [
+            .adManagementTrashcan,
             .adsenseDemo,
             .arrowCounterClockwise,
             .avatar,
@@ -141,6 +152,7 @@ enum ImageAsset: String {
             .carPromo,
             .carsCircleIllustration,
             .carsSubscription,
+            .checkCircle,
             .checkCircleFilled,
             .classifieds,
             .classifiedsNew,
@@ -153,6 +165,7 @@ enum ImageAsset: String {
             .distance,
             .emptyMoon,
             .emptyStateSaveSearch,
+            .eyeHide,
             .favoriteActive,
             .favorites,
             .favouriteAdded,
@@ -176,6 +189,7 @@ enum ImageAsset: String {
             .messages,
             .mittanbud,
             .mittanbudNew,
+            .more,
             .moteplassen,
             .moteplassenNew,
             .nettbilNew,
@@ -194,6 +208,7 @@ enum ImageAsset: String {
             .nyhetsbrevFraFinn,
             .okonomi,
             .okonomiNew,
+            .pencilPaper,
             .pin,
             .playVideo,
             .plus,
@@ -201,20 +216,25 @@ enum ImageAsset: String {
             .primingFavoritesSearch,
             .primingFavoritesSharing,
             .profile,
+            .rated,
             .ratings,
             .realestate,
             .realestateNew,
             .remove,
             .removeFilterTag,
+            .republish,
             .savedSearches,
             .search,
             .service,
             .shopping,
             .sold,
+            .stakeholder,
             .transactionJourneyCar,
             .travel,
             .travelNew,
+            .uncheckCircle,
             .vehicles,
+            .view,
             .virtualViewing,
             .warranty,
             .webview,
