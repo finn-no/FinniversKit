@@ -40,7 +40,6 @@ public class FeedbackView: UIView {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = UIImage(named: .ratingCat)
         imageView.contentMode = .scaleAspectFit
-        imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         return imageView
     }()
 
@@ -65,6 +64,7 @@ public class FeedbackView: UIView {
     private lazy var listPresentationConstraints: [NSLayoutConstraint] = [
         imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
         imageView.widthAnchor.constraint(equalToConstant: 130),
+        imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 100),
         titleView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
         titleView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingS),
         buttonView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingS),
@@ -237,7 +237,7 @@ private class TitleView: UIView {
             titleLabelLeadingConstraint,
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
-            heightAnchor.constraint(equalTo: titleLabel.heightAnchor, constant: 0, priority: .defaultHigh)
+            heightAnchor.constraint(greaterThanOrEqualTo: titleLabel.heightAnchor)
         ])
     }
 
