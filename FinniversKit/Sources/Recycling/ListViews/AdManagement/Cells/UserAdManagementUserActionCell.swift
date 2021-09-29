@@ -1,12 +1,22 @@
 //
 //  Copyright © FINN.no AS. All rights reserved.
 //
+import UIKit
+
+public protocol UserAdManagementActionCellDelegate: AnyObject {
+    func userAdManagementActionCell(_ cell: UserAdManagementUserActionCell, switchChangedState switchIsOn: Bool)
+}
 
 public class UserAdManagementUserActionCell: UITableViewCell {
-    public weak var delegate: UserAdManagementActionCellDelegate?
-    public private(set) var actionType: AdManagementActionType = .unknown
 
-    private var shouldShowExternalIcon: Bool = false
+    // MARK: - Public properties
+
+    public weak var delegate: UserAdManagementActionCellDelegate?
+
+    // MARK: - Private properties
+
+    private lazy var textStackView = UIStackView(axis: .vertical, spacing: 0, withAutoLayout: true)
+    private lazy var contentStackViewTrailingConstraint = contentStackView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor)
 
     private lazy var separator: UIView = {
         let view = UIView(withAutoLayout: true)
@@ -14,37 +24,40 @@ public class UserAdManagementUserActionCell: UITableViewCell {
         return view
     }()
 
-    private lazy var iconView: UIImageView = {
-        let imageView = UIImageView(frame: .zero)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var contentStackView: UIStackView = {
+        let stackView = UIStackView(axis: .horizontal, spacing: .spacingM, withAutoLayout: true)
+        stackView.alignment = .center
+        stackView.distribution = .fill
+        return stackView
+    }()
+
+    private lazy var iconImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
         imageView.tintColor = .iconPrimary
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
     private lazy var titleLabel: UILabel = {
-        let label = UILabel(frame: .zero)
+        let label = UILabel(withAutoLayout: true)
         label.numberOfLines = 0
-        label.font = UIFont.bodyStrong
+        label.font = .bodyStrong
         label.textColor = .textPrimary
-        label.lineBreakMode = NSLineBreakMode.byWordWrapping
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
     private lazy var descriptionLabel: UILabel = {
-        let label = UILabel(frame: .zero)
+        let label = UILabel(withAutoLayout: true)
         label.numberOfLines = 0
         label.font = UIFont.detail
         label.textColor = .textPrimary
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private lazy var chevronView: UIImageView = {
-        let chevron = UIImage(named: .arrowRight).withRenderingMode(.alwaysTemplate)
-        var imageView = UIImageView(image: chevron)
+    private lazy var trailingImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = .stone
         return imageView
     }()
@@ -56,29 +69,7 @@ public class UserAdManagementUserActionCell: UITableViewCell {
         return toggle
     }()
 
-    private lazy var externalActionView: UIImageView = {
-        let icon = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
-        var imageView = UIImageView(image: icon)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.tintColor = .stone
-        return imageView
-    }()
-
-    // MARK: - Constraint properties
-
-    private var chevronConstraints = [NSLayoutConstraint]()
-    private var toggleControlConstraints = [NSLayoutConstraint]()
-    private var externalActionConstraints = [NSLayoutConstraint]()
-    private var descriptionLabelConstraints = [NSLayoutConstraint]()
-    private var descriptionToChevronTrailingConstraint = NSLayoutConstraint()
-    private var descriptionToExternalTrailingConstraint = NSLayoutConstraint()
-    private var descriptionToContentTrailingConstraint = NSLayoutConstraint()
-    private var descriptionToToggleTrailingConstraint = NSLayoutConstraint()
-    private var titleLabelCenterYToContentViewConstraint = NSLayoutConstraint()
-    private var contentViewBottomToTitleConstraint = NSLayoutConstraint()
-    private var contentViewBottomToDescriptionConstraint = NSLayoutConstraint()
-
-    // MARK: - Public
+    // MARK: - Init
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -90,46 +81,68 @@ public class UserAdManagementUserActionCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func setupWithModel(_ model: AdManagementActionCellModel) {
+    // MARK: - Setup
+
+    private func setup() {
+        backgroundColor = .bgPrimary
+
+        textStackView.addArrangedSubviews([titleLabel, descriptionLabel])
+        contentStackView.addArrangedSubviews([iconImageView, textStackView, trailingImageView, toggle])
+
+        contentView.addSubview(separator)
+        contentView.addSubview(contentStackView)
+
+        descriptionLabel.isHidden = true
+        trailingImageView.isHidden = true
+        toggle.isHidden = true
+
+        let hairLineSize = 1.0 / UIScreen.main.scale
+        let iconImageWidthAndHeight: CGFloat = 24
+
+        NSLayoutConstraint.activate([
+            separator.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: (.spacingM * 2) + iconImageWidthAndHeight),
+            separator.topAnchor.constraint(equalTo: contentView.topAnchor),
+            separator.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
+            separator.heightAnchor.constraint(equalToConstant: hairLineSize),
+
+            contentStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
+            contentStackView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+            contentStackViewTrailingConstraint,
+            contentStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM),
+
+            iconImageView.widthAnchor.constraint(equalToConstant: iconImageWidthAndHeight),
+            iconImageView.heightAnchor.constraint(equalToConstant: iconImageWidthAndHeight),
+
+            trailingImageView.widthAnchor.constraint(equalToConstant: 16),
+            trailingImageView.heightAnchor.constraint(equalToConstant: 16)
+        ])
+    }
+
+    // MARK: - Public methods
+
+    public func configure(with model: AdManagementActionCellModel) {
         titleLabel.text = model.title
-        iconView.image = model.image
-        descriptionLabel.text = model.description
+        iconImageView.image = model.iconImage.withRenderingMode(.alwaysTemplate)
 
-        if model.actionType == actionType &&  model.shouldShowExternalIcon == shouldShowExternalIcon { return }
-        actionType = model.actionType
-        shouldShowExternalIcon = model.shouldShowExternalIcon
-        cleanup()
-
-        if model.shouldShowExternalIcon { // External icon overrides chevron, as host-app needs this functionality
-            contentView.addSubview(externalActionView)
-            NSLayoutConstraint.activate(externalActionConstraints)
-        } else if model.shouldShowChevron {
-            contentView.addSubview(chevronView)
-            NSLayoutConstraint.activate(chevronConstraints)
-        } else if model.shouldShowSwitch {
-            contentView.addSubview(toggle)
-            NSLayoutConstraint.activate(toggleControlConstraints)
+        if let descriptionText = model.description {
+            descriptionLabel.text = descriptionText
+            descriptionLabel.isHidden = false
         }
 
-        if model.description != nil {
-            contentView.addSubview(descriptionLabel)
-            NSLayoutConstraint.activate(descriptionLabelConstraints)
-
-            if model.shouldShowExternalIcon {
-                descriptionToExternalTrailingConstraint.isActive = true
-            } else if model.shouldShowChevron {
-                descriptionToChevronTrailingConstraint.isActive = true
-            } else if model.shouldShowSwitch {
-                descriptionToToggleTrailingConstraint.isActive = true
-            } else {
-                descriptionToContentTrailingConstraint.isActive = true
-            }
+        switch model.trailingItem {
+        case .none:
+            break
+        case .chevron:
+            trailingImageView.image = UIImage(named: .arrowRight).withRenderingMode(.alwaysTemplate)
+            trailingImageView.isHidden = false
+        case .external:
+            trailingImageView.image = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
+            trailingImageView.isHidden = false
+            contentStackViewTrailingConstraint.constant = -24
+        case .toggle:
+            toggle.isHidden = false
         }
 
-        let noDescription = model.description == nil
-        titleLabelCenterYToContentViewConstraint.isActive = noDescription
-        let contentBottomConstraint = noDescription ? contentViewBottomToTitleConstraint : contentViewBottomToDescriptionConstraint
-        contentBottomConstraint.isActive = true
         setNeedsUpdateConstraints()
     }
 
@@ -137,88 +150,20 @@ public class UserAdManagementUserActionCell: UITableViewCell {
         separator.isHidden = !show
     }
 
-    // MARK: - Private functions
+    // MARK: - Overrides
 
-    private func setup() {
-        backgroundColor = .bgPrimary
+    public override func prepareForReuse() {
+        super.prepareForReuse()
 
-        contentView.addSubview(separator)
-        contentView.addSubview(iconView)
-        contentView.addSubview(titleLabel)
-
-        let hairLineSize = 1.0 / UIScreen.main.scale
-        let missingMagicNumberSpacing: CGFloat = 24
-        NSLayoutConstraint.activate([
-            separator.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: .spacingM),
-            separator.topAnchor.constraint(equalTo: contentView.topAnchor),
-            separator.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
-            separator.heightAnchor.constraint(equalToConstant: hairLineSize),
-            iconView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
-            iconView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            iconView.widthAnchor.constraint(equalToConstant: missingMagicNumberSpacing),
-            iconView.heightAnchor.constraint(equalToConstant: missingMagicNumberSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: separator.leadingAnchor),
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
-            contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 48)
-            ])
-
-        // The chevron is smaller than elsewhere, but this is by design. I guess we'll disuss this
-        // while iterating, prior to release, ¯\_(ツ)_/¯
-        let chevronSize: CGFloat = 16
-        chevronConstraints = [ chevronView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
-                               chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                               chevronView.widthAnchor.constraint(equalToConstant: chevronSize),
-                               chevronView.heightAnchor.constraint(equalToConstant: chevronSize),
-                               titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: -.spacingS)
-        ]
-        toggleControlConstraints = [ toggle.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
-                              toggle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                              titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: toggle.leadingAnchor, constant: -.spacingS)
-        ]
-        let externalSize: CGFloat = 16
-        externalActionConstraints = [ externalActionView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor, constant: -24),
-                                      externalActionView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                                      externalActionView.widthAnchor.constraint(equalToConstant: externalSize),
-                                      externalActionView.heightAnchor.constraint(equalToConstant: externalSize),
-                                      titleLabel.trailingAnchor.constraint(equalTo: externalActionView.leadingAnchor, constant: -.spacingS)
-        ]
-        descriptionLabelConstraints = [ descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-                                        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
-        ]
-        descriptionToChevronTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: -.spacingS)
-        descriptionToExternalTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: externalActionView.leadingAnchor, constant: -.spacingS)
-        descriptionToContentTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM)
-        descriptionToToggleTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: toggle.leadingAnchor, constant: -.spacingS)
-        titleLabelCenterYToContentViewConstraint = titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-
-        contentViewBottomToTitleConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: .spacingM)
-        contentViewBottomToDescriptionConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.bottomAnchor, constant: .spacingM)
+        contentStackViewTrailingConstraint.constant = 0
+        descriptionLabel.isHidden = true
+        trailingImageView.isHidden = true
+        toggle.isHidden = true
     }
 
-    private func cleanup() {
-        toggle.removeFromSuperview()
-        descriptionLabel.removeFromSuperview()
-        chevronView.removeFromSuperview()
-        externalActionView.removeFromSuperview()
-
-        NSLayoutConstraint.deactivate(chevronConstraints)
-        NSLayoutConstraint.deactivate(toggleControlConstraints)
-        NSLayoutConstraint.deactivate(externalActionConstraints)
-        NSLayoutConstraint.deactivate(descriptionLabelConstraints)
-        descriptionToChevronTrailingConstraint.isActive = false
-        descriptionToExternalTrailingConstraint.isActive = false
-        descriptionToContentTrailingConstraint.isActive = false
-        descriptionToToggleTrailingConstraint.isActive = false
-        titleLabelCenterYToContentViewConstraint.isActive = false
-        contentViewBottomToDescriptionConstraint.isActive = false
-        contentViewBottomToTitleConstraint.isActive = false
-    }
+    // MARK: - Actions
 
     @objc private func toggleTapped(_ sender: UISwitch) {
         delegate?.userAdManagementActionCell(self, switchChangedState: sender.isOn)
     }
-}
-
-public protocol UserAdManagementActionCellDelegate: AnyObject {
-    func userAdManagementActionCell(_ cell: UserAdManagementUserActionCell, switchChangedState switchIsOn: Bool)
 }
