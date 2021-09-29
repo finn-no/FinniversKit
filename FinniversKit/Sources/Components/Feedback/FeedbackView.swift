@@ -34,7 +34,7 @@ public class FeedbackView: UIView {
     private var hasBeenPresented = false
     private var state: State = .initial
     private var presentation: FeedbackViewPresentation?
-    private var allowDynamicPresentation: Bool = true
+    private var allowAutomaticPresentationSwitch: Bool = true
 
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
@@ -109,7 +109,7 @@ public class FeedbackView: UIView {
     // MARK: - Public methods
 
     public func configureWithFixedPresentation(isGrid: Bool) {
-        allowDynamicPresentation = false
+        allowAutomaticPresentationSwitch = false
         let presentation: FeedbackViewPresentation = isGrid ? .grid : .list
         configure(forPresentation: presentation)
     }
@@ -180,7 +180,7 @@ public class FeedbackView: UIView {
 
         layer.borderColor = .decorationSubtle
 
-        guard allowDynamicPresentation else { return }
+        guard allowAutomaticPresentationSwitch else { return }
 
         let newPresentation: FeedbackViewPresentation = bounds.size.height >= bounds.size.width ? .grid : .list
 
@@ -213,7 +213,6 @@ private class TitleView: UIView {
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.8
-        label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
 
