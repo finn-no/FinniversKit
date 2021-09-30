@@ -11,7 +11,7 @@ class MessageFormDemoPresenter {
 extension MessageFormDemoPresenter: MessageFormBottomSheetDelegate {
     func messageFormBottomSheetDidDismiss(_ form: MessageFormBottomSheet) { }
 
-    func messageFormBottomSheet(_ form: MessageFormBottomSheet, didFinishWithText text: String, templateState: MessageFormTemplateState, template: MessageFormTemplate?) {
+    func messageFormBottomSheet(_ form: MessageFormBottomSheet, didFinishWithText text: String, telephone: String, templateState: MessageFormTemplateState, template: MessageFormTemplate?) {
         var templateString = ""
         if let template = template {
             let id = template.id ?? "<nil>"
