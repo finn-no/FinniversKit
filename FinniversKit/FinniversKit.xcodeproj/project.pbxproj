@@ -391,6 +391,8 @@
 		CFF9727221C3BA1D00C85238 /* BannerTransparencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9726F21C3BA1D00C85238 /* BannerTransparencyView.swift */; };
 		CFF9727521C3E92700C85238 /* BannerTransparencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9727421C3E92700C85238 /* BannerTransparencyViewModel.swift */; };
 		CFFDF89722F311F600FE68EA /* NeighborhoodProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFDF89622F311F600FE68EA /* NeighborhoodProfileView.swift */; };
+		D734CEE72703071B00985388 /* NewFrontPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D734CEE62703071B00985388 /* NewFrontPage.swift */; };
+		D734CEEA27046D6600985388 /* FrontPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D734CEE927046D6600985388 /* FrontPageHeaderView.swift */; };
 		D7715E5B26E3FEA400261CF3 /* FavoritedShelfViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7715E5A26E3FEA400261CF3 /* FavoritedShelfViewModel.swift */; };
 		D7C23F8326C3C31400BC6184 /* FrontPageFavoritedShelfCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C23F8226C3C31400BC6184 /* FrontPageFavoritedShelfCell.swift */; };
 		D7C23F8526C3C3DF00BC6184 /* FrontpageFavoritedShelfItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C23F8426C3C3DF00BC6184 /* FrontpageFavoritedShelfItemCell.swift */; };
@@ -839,6 +841,8 @@
 		CFF9726F21C3BA1D00C85238 /* BannerTransparencyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerTransparencyView.swift; sourceTree = "<group>"; };
 		CFF9727421C3E92700C85238 /* BannerTransparencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTransparencyViewModel.swift; sourceTree = "<group>"; };
 		CFFDF89622F311F600FE68EA /* NeighborhoodProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileView.swift; sourceTree = "<group>"; };
+		D734CEE62703071B00985388 /* NewFrontPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFrontPage.swift; sourceTree = "<group>"; };
+		D734CEE927046D6600985388 /* FrontPageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageHeaderView.swift; sourceTree = "<group>"; };
 		D7715E5A26E3FEA400261CF3 /* FavoritedShelfViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritedShelfViewModel.swift; sourceTree = "<group>"; };
 		D7C23F8226C3C31400BC6184 /* FrontPageFavoritedShelfCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageFavoritedShelfCell.swift; sourceTree = "<group>"; };
 		D7C23F8426C3C3DF00BC6184 /* FrontpageFavoritedShelfItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontpageFavoritedShelfItemCell.swift; sourceTree = "<group>"; };
@@ -1483,6 +1487,7 @@
 		447AFC0E20984B63000F793E /* FrontPage */ = {
 			isa = PBXGroup;
 			children = (
+				D734CEE52703061500985388 /* NewFrontPage */,
 				CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */,
 				8D68025D897874AE8DAB4E46 /* PromotionFrontPageView.swift */,
 				4D1051C9260CD4400073D1F4 /* BasicFrontPageView.swift */,
@@ -2783,6 +2788,23 @@
 			path = NeighborhoodProfile;
 			sourceTree = "<group>";
 		};
+		D734CEE52703061500985388 /* NewFrontPage */ = {
+			isa = PBXGroup;
+			children = (
+				D734CEE827046D0100985388 /* HeaderViews */,
+				D734CEE62703071B00985388 /* NewFrontPage.swift */,
+			);
+			path = NewFrontPage;
+			sourceTree = "<group>";
+		};
+		D734CEE827046D0100985388 /* HeaderViews */ = {
+			isa = PBXGroup;
+			children = (
+				D734CEE927046D6600985388 /* FrontPageHeaderView.swift */,
+			);
+			path = HeaderViews;
+			sourceTree = "<group>";
+		};
 		D7715E5926E3FE8A00261CF3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -3258,6 +3280,7 @@
 				4D152E742577D7D300282244 /* NavigationLinkView.swift in Sources */,
 				4441F9F722CCF8C500DCFD2F /* AddressCardViewModel.swift in Sources */,
 				CF7C460622257A8A001FB92C /* EarthHourHeaderView.swift in Sources */,
+				D734CEEA27046D6600985388 /* FrontPageHeaderView.swift in Sources */,
 				91846C4A22E735D80001410F /* SearchResultMapView.swift in Sources */,
 				CF7C460922257A8A001FB92C /* EarthHourViewModel.swift in Sources */,
 				CFEB22252330D1420039421C /* FavoriteAdsListViewModel.swift in Sources */,
@@ -3426,6 +3449,7 @@
 				CFCED8E522CF71AC0049A3A0 /* FavoriteFoldersFooterView.swift in Sources */,
 				44C6CE44209CABFE00929269 /* ImageAsset.swift in Sources */,
 				44587019213FA344009187BE /* RegisterViewModel.swift in Sources */,
+				D734CEE72703071B00985388 /* NewFrontPage.swift in Sources */,
 				9BEB287F231D488000D28BAD /* TitleValueSliderView.swift in Sources */,
 				CF7C460422257A8A001FB92C /* EarthHourContentView.swift in Sources */,
 				CF5CA71222F85A94007C4124 /* NeighborhoodProfileHeaderView.swift in Sources */,

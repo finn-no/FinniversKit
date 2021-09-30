@@ -2,9 +2,6 @@
 //  FavoritedShelfDemoView.swift
 //  FinniversKit
 //
-//  Created by Suthananth Arulanantham on 16/08/2021.
-//  Copyright © 2021 FINN AS. All rights reserved.
-//
 
 import FinniversKit
 

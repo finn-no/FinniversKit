@@ -201,6 +201,7 @@
 		D6D43CD625BF239E00234AC2 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 46E77597242D6890008A5E93 /* SnapshotTesting */; };
 		D74AFB0C26CFCE5B00600A1F /* FavoritedShelfDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74AFB0B26CFCE5B00600A1F /* FavoritedShelfDemoView.swift */; };
 		D7715E5E26E40FA100261CF3 /* FavoritedShelfFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7715E5D26E40FA100261CF3 /* FavoritedShelfFactory.swift */; };
+		D7F66F942701FF9A00FA199F /* NewFrontPageViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F66F932701FF9A00FA199F /* NewFrontPageViewDemoView.swift */; };
 		DA083C2E2462BCA800B26235 /* SwiftUIDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */; };
 		DA82B1ED268B62D2005F67C3 /* LoadingRetryDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA82B1EC268B62D2005F67C3 /* LoadingRetryDemoView.swift */; };
 		DAE9CA8724602CB000C7552F /* SwiftUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */; };
@@ -427,6 +428,7 @@
 		AA189E8626847AE700FD3A41 /* BlockUserDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUserDemoView.swift; sourceTree = "<group>"; };
 		D74AFB0B26CFCE5B00600A1F /* FavoritedShelfDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritedShelfDemoView.swift; sourceTree = "<group>"; };
 		D7715E5D26E40FA100261CF3 /* FavoritedShelfFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritedShelfFactory.swift; sourceTree = "<group>"; };
+		D7F66F932701FF9A00FA199F /* NewFrontPageViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFrontPageViewDemoView.swift; sourceTree = "<group>"; };
 		DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDemoViews.swift; sourceTree = "<group>"; };
 		DA82B1EC268B62D2005F67C3 /* LoadingRetryDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingRetryDemoView.swift; sourceTree = "<group>"; };
 		DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewTests.swift; sourceTree = "<group>"; };
@@ -754,6 +756,7 @@
 		46E772A7242CEF09008A5E93 /* FrontPage */ = {
 			isa = PBXGroup;
 			children = (
+				D7F66F922701FF5300FA199F /* UpdatedFrontPage */,
 				46E772A8242CEF09008A5E93 /* FrontPageViewDefaultData.swift */,
 				46E772A9242CEF09008A5E93 /* FrontPageViewDemoView.swift */,
 				8D680B19A0BD0C1AFD25A378 /* PromotionFrontpageViewDemoView.swift */,
@@ -1730,6 +1733,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		D7F66F922701FF5300FA199F /* UpdatedFrontPage */ = {
+			isa = PBXGroup;
+			children = (
+				D7F66F932701FF9A00FA199F /* NewFrontPageViewDemoView.swift */,
+			);
+			path = UpdatedFrontPage;
+			sourceTree = "<group>";
+		};
 		DA82B1EB268B62B7005F67C3 /* LoadingRetryView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1813,7 +1824,7 @@
 			);
 			mainGroup = 46AE6FB7242BADC9007BB005;
 			packageReferences = (
-				46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing.git" */,
+				46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 46AE6FC1242BADC9007BB005 /* Products */;
 			projectDirPath = "";
@@ -1891,6 +1902,7 @@
 			files = (
 				46E773A4242CEF0A008A5E93 /* DemoHelpers.swift in Sources */,
 				71C6AA992549D28800D78269 /* MessageUserRequiredData.swift in Sources */,
+				D7F66F942701FF9A00FA199F /* NewFrontPageViewDemoView.swift in Sources */,
 				46E77425242CEF0A008A5E93 /* ConsentTransparencyInfoDemoView.swift in Sources */,
 				46E7744C242CEF0A008A5E93 /* HeartSubtitleCellDemoView.swift in Sources */,
 				46E773BE242CEF0A008A5E93 /* LoginEntryDemoData.swift in Sources */,
@@ -2337,7 +2349,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing.git" */ = {
+		46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
 			requirement = {
@@ -2350,7 +2362,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		46E77597242D6890008A5E93 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing.git" */;
+			package = 46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */

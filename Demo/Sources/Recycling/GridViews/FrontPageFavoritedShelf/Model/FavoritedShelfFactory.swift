@@ -1,20 +1,8 @@
 //
 //  NewlyFavoritedFactory.swift
 //  Demo
-//
-//  Created by Suthananth Arulanantham on 04/09/2021.
-//  Copyright © 2021 FINN.no AS. All rights reserved.
-//
 
 import FinniversKit
-
-public struct NewlyFavorited: FavoritedShelfViewModel {
-    public var adId: String
-    public var imagePath: String?
-    public var title: String
-    public var subtitle: String
-    public var price: String
-}
 
 public struct FavoritedShelfFactory {
     private struct ImageSource {
@@ -63,18 +51,18 @@ public struct FavoritedShelfFactory {
         ]
     }
     
-    public static func create() -> [NewlyFavorited] {
+    public static func create() -> [FavoritedShelfViewModel] {
         return (0..<5).map { index in
             let imagePath = imageSources[index].path
             let subtitle = subtitles[index]
             let title = titles[index]
             let price = prices.randomElement() ?? "100 kr"
             
-            return NewlyFavorited( adId: UUID().uuidString,
+            return FavoritedShelfViewModel( adId: UUID().uuidString,
                                    imagePath: imagePath,
                                    title: title,
-                                   subtitle: subtitle,
-                                   price: price)
+                                    price: price,
+                                    subtitle: subtitle)
         }
     }
 }

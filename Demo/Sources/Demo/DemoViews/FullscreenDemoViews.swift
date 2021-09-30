@@ -34,6 +34,7 @@ public enum FullscreenDemoViews: String, DemoViews {
     case resultView
     case confettiView
     case messageUserRequiredSheet
+    case frontPageViewNew
 
     public var viewController: UIViewController {
         switch self {
@@ -41,6 +42,8 @@ public enum FullscreenDemoViews: String, DemoViews {
             return SearchResultMapViewDemoViewController()
         case .frontPageView:
             return DemoViewController<FrontpageViewDemoView>()
+        case .frontPageViewNew:
+            return DemoViewController<NewFrontPageDemoView>()
         case .promotionFrontPageView:
             return DemoViewController<PromotionFrontpageViewDemoView>()
         case .emptyView:

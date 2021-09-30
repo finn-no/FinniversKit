@@ -171,21 +171,6 @@ public class FrontpageFavoritedShelfItemCell: UICollectionViewCell {
     private var defaultImage: UIImage? {
         return UIImage(named: .noImage)
     }
-    
-    public override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        if !isHeightCalculated {
-            setNeedsLayout()
-            layoutIfNeeded()
-            let size = contentView.systemLayoutSizeFitting(layoutAttributes.size)
-            var newFrame = layoutAttributes.frame
-            newFrame.size.width = 128 + 4
-            newFrame.size.height = CGFloat(ceilf(Float(size.height)))
-            layoutAttributes.frame = newFrame
-            isHeightCalculated = true
-        }
-        
-        return layoutAttributes
-    }
 }
 
 //MARK: - Public functions
@@ -208,8 +193,10 @@ private extension FrontpageFavoritedShelfItemCell {
     private func setup() {
         ribbonView.style = .disabled
         ribbonView.title = "Solgt"
-        ribbonView.isHidden = true
+        ribbonView.isHidden = Int.random(in: 0...2) % 2 == 0
         ribbonView.setContentCompressionResistancePriority(.required, for: .vertical)
+        
+        favoriteButton.isToggled = true
         
         contentView.addSubview(imageContainerView)
         contentView.addSubview(favoriteButton)
