@@ -34,7 +34,7 @@ public class AdManagementDemoView: UIView, Tweakable {
         [
             AdManagementActionCellModel(title: "Slett annonsen", iconImage: .adManagementTrashcan),
             AdManagementActionCellModel(title: "Skjul annonsen midlertidig", description: "Annonsen blir skjult fra FINNs søkeresultater", iconImage: .eyeHide),
-            AdManagementActionCellModel(title: "Flott togle", iconImage: .checkCircle, trailingItem: .toggle),
+            AdManagementActionCellModel(title: "Flott toggle", iconImage: .checkCircle, trailingItem: .toggle),
         ],
         [
             AdManagementActionCellModel(title: "Rediger annonsen", description: "Sist redigert 13.12.2018", iconImage: .pencilPaper, trailingItem: .chevron),

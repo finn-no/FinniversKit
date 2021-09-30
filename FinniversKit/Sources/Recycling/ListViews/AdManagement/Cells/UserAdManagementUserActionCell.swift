@@ -138,7 +138,7 @@ public class UserAdManagementUserActionCell: UITableViewCell {
         case .external:
             trailingImageView.image = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
             trailingImageView.isHidden = false
-            contentStackViewTrailingConstraint.constant = -24
+            contentStackViewTrailingConstraint.constant = -.spacingL
         case .toggle:
             toggle.isHidden = false
         }
