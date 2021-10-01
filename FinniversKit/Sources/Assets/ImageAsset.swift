@@ -61,6 +61,7 @@ enum ImageAsset: String {
     case close
     case confetti1
     case confetti2
+    case contract
     case creditcard
     case cross
     case distanceOutlined
@@ -111,7 +112,7 @@ enum ImageAsset: String {
     case hide
     case important
     case info
-    case klimaboletBanner
+    case klimabroletBanner
     case listView
     case magnifyingGlass
     case mapDirections
@@ -135,6 +136,7 @@ enum ImageAsset: String {
     case ornamentStar
     case pencilPaper
     case pin
+    case playVideo
     case plusMini
     case rate
     case rated
@@ -199,6 +201,7 @@ enum ImageAsset: String {
             .close,
             .confetti1,
             .confetti2,
+            .contract,
             .creditcard,
             .cross,
             .distanceOutlined,
@@ -249,7 +252,7 @@ enum ImageAsset: String {
             .hide,
             .important,
             .info,
-            .klimaboletBanner,
+            .klimabroletBanner,
             .listView,
             .magnifyingGlass,
             .mapDirections,
@@ -273,6 +276,7 @@ enum ImageAsset: String {
             .ornamentStar,
             .pencilPaper,
             .pin,
+            .playVideo,
             .plusMini,
             .rate,
             .rated,

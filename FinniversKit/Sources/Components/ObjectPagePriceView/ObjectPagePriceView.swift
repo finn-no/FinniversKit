@@ -39,6 +39,8 @@ public class ObjectPagePriceView: UIView {
         return view
     }()
 
+    private lazy var captionLabel = Label(style: .caption, withAutoLayout: true)
+
     // MARK: - Init
 
     public override init(frame: CGRect) {
@@ -80,6 +82,11 @@ public class ObjectPagePriceView: UIView {
 
         wrapperStackView.addArrangedSubview(pricesStackView)
 
+        if let captionText = viewModel.captionText {
+            captionLabel.attributedText = captionText
+            wrapperStackView.addArrangedSubview(captionLabel)
+        }
+
         if !viewModel.priceDetails.isEmpty {
             priceDetailsView.configure(with: viewModel.priceDetails)
             wrapperStackView.addArrangedSubview(priceDetailsView)
@@ -92,6 +99,15 @@ public class ObjectPagePriceView: UIView {
         linkButtonListView.isHidden = viewModel.links.isEmpty
 
         pricesStackView.isHidden = pricesStackView.arrangedSubviews.isEmpty
+    }
+
+    public func showCaptionLabel(_ text: NSAttributedString) {
+        if wrapperStackView.subviews.contains(captionLabel) {
+            captionLabel.attributedText = text
+        } else {
+            captionLabel.attributedText = text
+            wrapperStackView.addArrangedSubview(captionLabel)
+        }
     }
 }
 

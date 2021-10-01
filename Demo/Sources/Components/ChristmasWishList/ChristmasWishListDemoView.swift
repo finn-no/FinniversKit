@@ -66,7 +66,6 @@ extension ChristmasWishListViewModel {
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
 
-@available(iOS 13.0, *)
 // swiftlint:disable:next superfluous_disable_command type_name
 struct ChristmasWishListDemoView_Previews: PreviewProvider {
     static var previews: some View {

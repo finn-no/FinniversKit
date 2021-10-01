@@ -4,7 +4,6 @@
 
 import MapKit
 
-@available(iOS 13.0, *)
 public struct MapZoomRange {
     public var minCenterCoordinateDistance: CLLocationDistance?
     public var maxCenterCoordinateDistance: CLLocationDistance?

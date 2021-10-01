@@ -28,6 +28,7 @@ DerivedData
 *.gcno
 *.gcda
 *.bcsymbolmap
+.build/
 
 # Appcode
 .idea/

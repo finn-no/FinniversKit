@@ -80,18 +80,17 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         return label
     }()
 
-    private lazy var imageDescriptionView: UIView = {
-        let view = UILabel(withAutoLayout: true)
-        view.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
+    private lazy var imageDescriptionView: UIVisualEffectView = {
+        let view = UIVisualEffectView(withAutoLayout: true)
+        view.effect = UIBlurEffect(style: .systemThinMaterialDark)
         view.alpha = 1.0
-        view.layer.cornerRadius = StandardAdRecommendationCell.cornerRadius
-        view.layer.masksToBounds = true
-        view.layer.maskedCorners = [.layerMaxXMinYCorner]
+        view.layer.cornerRadius = StandardAdRecommendationCell.imageDescriptionHeight / 2
+        view.clipsToBounds = true
         return view
     }()
 
     private lazy var imageTextLabel: Label = {
-        let label = Label(style: .bodyStrong)
+        let label = Label(style: .captionStrong)
         label.textColor = .textTertiary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
@@ -114,6 +113,8 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         equalTo: ribbonView.bottomAnchor,
         constant: StandardAdRecommendationCell.subtitleTopMargin
     )
+
+    private var imageDescriptionViewTrailingConstraint: NSLayoutConstraint?
 
     private var model: StandardAdRecommendationViewModel?
 
@@ -167,10 +168,10 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         contentView.addSubview(favoriteButton)
         contentView.addSubview(accessoryLabel)
 
-        imageDescriptionView.addSubview(iconImageView)
-        imageDescriptionView.addSubview(imageTextLabel)
+        imageDescriptionView.contentView.addSubview(iconImageView)
+        imageDescriptionView.contentView.addSubview(imageTextLabel)
 
-        backgroundColor = .bgPrimary
+        backgroundColor = .clear
 
         let imageHeightMinimumConstraint = imageContentView.heightAnchor.constraint(equalTo: imageContentView.widthAnchor, multiplier: StandardAdRecommendationCell.minImageAspectRatio)
         let imageHeightMaximumConstraint = imageContentView.heightAnchor.constraint(lessThanOrEqualTo: imageContentView.widthAnchor, multiplier: StandardAdRecommendationCell.maxImageAspectRatio)
@@ -215,17 +216,20 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
             imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: StandardAdRecommendationCell.margin),
             imageTextLabel.centerYAnchor.constraint(equalTo: imageDescriptionView.centerYAnchor),
 
-            imageDescriptionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageDescriptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: StandardAdRecommendationCell.margin),
+            imageDescriptionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingS),
             imageDescriptionView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor),
             imageDescriptionView.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.imageDescriptionHeight),
-            imageDescriptionView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor),
+            imageDescriptionView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: -.spacingS),
 
             favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXS),
             favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingXS),
             favoriteButton.widthAnchor.constraint(equalToConstant: 34),
             favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.heightAnchor)
         ])
+
+        // Storing a reference to the trailing constraint for the imageDescriotionView so that we can update the icon alignment when needed
+        imageDescriptionViewTrailingConstraint = imageDescriptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: StandardAdRecommendationCell.margin)
+        imageDescriptionViewTrailingConstraint?.isActive = true
     }
 
     // MARK: - Superclass Overrides
@@ -287,6 +291,13 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
                 imageView.contentMode = .scaleAspectFit
                 imageContentView.backgroundColor = .white
             }
+        }
+
+        // update imageDescriptionView visibility
+        if let imageText = model?.imageText {
+            centerIconInContainer(imageText.trimmingCharacters(in: .whitespaces).isEmpty)
+        } else {
+            centerIconInContainer(true)
         }
     }
 
@@ -371,6 +382,11 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         } else {
             performViewChanges()
         }
+    }
+
+    private func centerIconInContainer(_ shouldCenter: Bool) {
+        guard let trailingConstraint = self.imageDescriptionViewTrailingConstraint else { return }
+        trailingConstraint.constant = shouldCenter ? 0 : StandardAdRecommendationCell.margin
     }
 
     private var defaultImage: UIImage? {

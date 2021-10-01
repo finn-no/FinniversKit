@@ -47,6 +47,12 @@ class ObjectPagePriceDemoView: UIView, Tweakable {
 
             TweakingOption(title: "BAP for sale", action: { [weak self] in
                 self?.priceView.configure(with: .bapSaleAd)
+
+                let captionText = "Selger har sagt ja til å sende varen med Helthjem for 80kr"
+                let attributedCaptionText = NSMutableAttributedString(string: captionText)
+                let range = (captionText as NSString).range(of: "80kr")
+                attributedCaptionText.addAttribute(.font, value: UIFont.captionStrong, range: range)
+                self?.priceView.showCaptionLabel(attributedCaptionText)
             }),
 
             TweakingOption(title: "BAP wanted", action: { [weak self] in
@@ -283,7 +289,7 @@ extension ObjectPagePriceViewModel {
     }()
 
     static var bapSaleAd: ObjectPagePriceViewModel = {
-        ObjectPagePriceViewModel(
+        return ObjectPagePriceViewModel(
             totalPrice: "1 500 kr",
             adTypeText: "Til salgs"
         )
