@@ -8,6 +8,7 @@ protocol MessageFormViewControllerDelegate: AnyObject {
     func messageFormViewControllerDidCancel(_ viewController: MessageFormViewController)
     func messageFormViewController(_ viewController: MessageFormViewController,
                                    didFinishWithText text: String,
+                                   telephone: String,
                                    templateState: MessageFormTemplateState,
                                    template: MessageFormTemplate?)
 }
@@ -20,7 +21,7 @@ class MessageFormViewController: UIViewController {
     private lazy var wrapperBottomConstraint = wrapperView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 
     private lazy var messageInputTextView: MessageInputTextView = {
-        let view = MessageInputTextView(additionalInfoText: viewModel.transparencyText)
+        let view = MessageInputTextView(disclaimerText: viewModel.disclaimerText, additionalInfoText: viewModel.transparencyText, messageLabel: viewModel.messageText, messageHint: viewModel.messageHint, telephoneLabel: viewModel.telephoneText, telephoneHint: viewModel.telephoneHint)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         return view
@@ -153,6 +154,7 @@ class MessageFormViewController: UIViewController {
 
     @objc private func sendButtonTapped() {
         let messageText = messageInputTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        let telephoneText = messageInputTextView.telephone.trimmingCharacters(in: .whitespacesAndNewlines)
         let lastTemplateText = lastUsedTemplate?.text.trimmingCharacters(in: .whitespacesAndNewlines)
         let templateState: MessageFormTemplateState
         let usedTemplate: MessageFormTemplate?
@@ -174,7 +176,7 @@ class MessageFormViewController: UIViewController {
             }
         }
 
-        delegate?.messageFormViewController(self, didFinishWithText: messageText, templateState: templateState, template: usedTemplate)
+        delegate?.messageFormViewController(self, didFinishWithText: messageText, telephone: telephoneText, templateState: templateState, template: usedTemplate)
     }
 
     @objc func handleKeyboardNotification(_ notification: Notification) {
