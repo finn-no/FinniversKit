@@ -1,15 +1,10 @@
-//
-//  FrontpageFavoritedShelfItemCell.swift
-//  FinniversKit
-//
-//  Created by Suthananth Arulanantham on 11/08/2021.
 //  Copyright © 2021 FINN AS. All rights reserved.
 //
 
 import UIKit
 
-public class FrontpageFavoritedShelfItemCell: UICollectionViewCell {
-    static let identifier = "FrontpageFavoritedShelfItemCell"
+public class FrontpageFavoritedShelfItemCell: UICollectionViewCell, ReuseIdentifiable {
+    
     private static let titleHeight: CGFloat = 8
     private static let priceTagHeight: CGFloat = 30
     private var isHeightCalculated = false

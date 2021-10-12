@@ -1,8 +1,4 @@
-//
-//  FrontPageFavoritedShelfCell.swift
-//  FinniversKit
-//
-//  Created by Suthananth Arulanantham on 11/08/2021.
+
 //  Copyright © 2021 FINN AS. All rights reserved.
 //
 

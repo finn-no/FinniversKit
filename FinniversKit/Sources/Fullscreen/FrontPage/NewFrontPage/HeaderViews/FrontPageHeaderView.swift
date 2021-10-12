@@ -1,13 +1,23 @@
 //
-//  FrontPageHeaderView.swift
-//  FinniversKit
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
 
 import UIKit
 public typealias FrontPageHeaderViewButtonAction = (() -> Void)
 
-public class FrontPageHeaderView: UICollectionReusableView {
+public protocol ReuseIdentifiable {
+    static var identifier: String { get }
+}
+
+public extension ReuseIdentifiable {
+    static var identifier: String {
+        return String(describing: Self.self)
+    }
+}
+
+public class FrontPageHeaderView: UICollectionReusableView, ReuseIdentifiable{
     
-    static let identifier = "FrontPageHeaderView"
+   // static let identifier = "FrontPageHeaderView"
     
     private lazy var titleLabel: UILabel = {
         let label = Label(style: .title3Strong)

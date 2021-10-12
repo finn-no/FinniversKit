@@ -102,7 +102,6 @@ public class MarketsGridView: UIView, MarketsView {
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-
 extension MarketsGridView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return itemSize(for: bounds.width)
@@ -122,7 +121,6 @@ extension MarketsGridView: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: - UICollectionViewDataSource
-
 extension MarketsGridView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource?.numberOfItems(inMarketsView: self) ?? 0
@@ -139,8 +137,8 @@ extension MarketsGridView: UICollectionViewDataSource {
     }
 }
 
-// MARK: - UICollectionViewDelegate
 
+// MARK: - UICollectionViewDelegate
 extension MarketsGridView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.marketsView(self, didSelectItemAtIndex: indexPath.row)
