@@ -8,6 +8,7 @@ public protocol MessageFormBottomSheetDelegate: AnyObject {
     /// Called when the "send"-button was tapped
     func messageFormBottomSheet(_ form: MessageFormBottomSheet,
                                 didFinishWithText text: String,
+                                telephone: String,
                                 templateState: MessageFormTemplateState,
                                 template: MessageFormTemplate?)
 
@@ -94,8 +95,8 @@ extension MessageFormBottomSheet: MessageFormViewControllerDelegate {
         dismissWithConfirmationIfNeeded()
     }
 
-    func messageFormViewController(_ viewController: MessageFormViewController, didFinishWithText text: String, templateState: MessageFormTemplateState, template: MessageFormTemplate?) {
-        messageFormDelegate?.messageFormBottomSheet(self, didFinishWithText: text, templateState: templateState, template: template)
+    func messageFormViewController(_ viewController: MessageFormViewController, didFinishWithText text: String, telephone: String, templateState: MessageFormTemplateState, template: MessageFormTemplate?) {
+        messageFormDelegate?.messageFormBottomSheet(self, didFinishWithText: text, telephone: telephone, templateState: templateState, template: template)
     }
 }
 
@@ -122,7 +123,7 @@ extension MessageFormBottomSheet: BottomSheetDelegate {
 public extension BottomSheet.Height {
     static var messageFormHeight: BottomSheet.Height {
         let screenSize = UIScreen.main.bounds.size
-        let height = screenSize.height - 64
+        let height = screenSize.height / 2
         return BottomSheet.Height(compact: height, expanded: height)
     }
 }
