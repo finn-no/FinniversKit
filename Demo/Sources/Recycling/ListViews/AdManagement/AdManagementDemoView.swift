@@ -33,16 +33,16 @@ public class AdManagementDemoView: UIView, Tweakable {
         ],
         [
             AdManagementActionCellModel(title: "Slett annonsen", iconImage: .adManagementTrashcan),
-            AdManagementActionCellModel(title: "Skjul annonsen midlertidig", description: "Annonsen blir skjult fra FINNs søkeresultater", iconImage: .eyeHide),
+            AdManagementActionCellModel(title: "Skjul annonsen midlertidig", iconImage: .eyeHide),
             AdManagementActionCellModel(title: "Flott toggle", iconImage: .checkCircle, trailingItem: .toggle),
         ],
         [
-            AdManagementActionCellModel(title: "Rediger annonsen", description: "Sist redigert 13.12.2018", iconImage: .pencilPaper, trailingItem: .chevron),
+            AdManagementActionCellModel(title: "Rediger annonsen", iconImage: .pencilPaper, trailingItem: .chevron),
             AdManagementActionCellModel(title: "Legg ut annonsen på nytt", iconImage: .republish, trailingItem: .chevron)
         ],
         [
             AdManagementActionCellModel(title: "Marker annonsen som solgt", iconImage: .checkCircle),
-            AdManagementActionCellModel(title: "Eierskifteforsikring", description: "Se hvilke tilbud våre samarbeidspartnere kan by på", iconImage: .more, trailingItem: .chevron)
+            AdManagementActionCellModel(title: "Eierskifteforsikring", iconImage: .more, trailingItem: .chevron)
         ],
         [
             AdManagementActionCellModel(title: "Vis annonsen i søkeresultater", iconImage: .view),
@@ -173,7 +173,7 @@ extension AdManagementDemoView: UserAdManagementActionCellDelegate {
 // MARK: - Private extensions
 
 private extension AdManagementActionCellModel {
-    init(title: String, description: String? = nil, iconImage: ImageAsset, trailingItem: TrailingItem = .none) {
-        self.init(title: title, description: description, iconImage: UIImage(named: iconImage), trailingItem: trailingItem)
+    init(title: String, iconImage: ImageAsset, trailingItem: TrailingItem = .none) {
+        self.init(title: title, iconImage: UIImage(named: iconImage), trailingItem: trailingItem)
     }
 }
