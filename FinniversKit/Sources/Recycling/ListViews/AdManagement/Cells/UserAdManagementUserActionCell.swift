@@ -15,7 +15,6 @@ public class UserAdManagementUserActionCell: UITableViewCell {
 
     // MARK: - Private properties
 
-    private lazy var textStackView = UIStackView(axis: .vertical, spacing: 0, withAutoLayout: true)
     private lazy var contentStackViewTrailingConstraint = contentStackView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor)
 
     private lazy var separator: UIView = {
@@ -44,14 +43,6 @@ public class UserAdManagementUserActionCell: UITableViewCell {
         label.font = .bodyStrong
         label.textColor = .textPrimary
         label.lineBreakMode = .byWordWrapping
-        return label
-    }()
-
-    private lazy var descriptionLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.numberOfLines = 0
-        label.font = UIFont.detail
-        label.textColor = .textPrimary
         return label
     }()
 
@@ -86,13 +77,11 @@ public class UserAdManagementUserActionCell: UITableViewCell {
     private func setup() {
         backgroundColor = .bgPrimary
 
-        textStackView.addArrangedSubviews([titleLabel, descriptionLabel])
-        contentStackView.addArrangedSubviews([iconImageView, textStackView, trailingImageView, toggle])
+        contentStackView.addArrangedSubviews([iconImageView, titleLabel, trailingImageView, toggle])
 
         contentView.addSubview(separator)
         contentView.addSubview(contentStackView)
 
-        descriptionLabel.isHidden = true
         trailingImageView.isHidden = true
         toggle.isHidden = true
 
@@ -124,11 +113,6 @@ public class UserAdManagementUserActionCell: UITableViewCell {
         titleLabel.text = model.title
         iconImageView.image = model.iconImage.withRenderingMode(.alwaysTemplate)
 
-        if let descriptionText = model.description {
-            descriptionLabel.text = descriptionText
-            descriptionLabel.isHidden = false
-        }
-
         switch model.trailingItem {
         case .none:
             break
@@ -156,7 +140,6 @@ public class UserAdManagementUserActionCell: UITableViewCell {
         super.prepareForReuse()
 
         contentStackViewTrailingConstraint.constant = 0
-        descriptionLabel.isHidden = true
         trailingImageView.isHidden = true
         toggle.isHidden = true
     }
