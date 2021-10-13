@@ -13,13 +13,11 @@ public struct AdManagementActionCellModel {
     }
 
     public let title: String
-    public let description: String?
     public let iconImage: UIImage
     public let trailingItem: TrailingItem
 
-    public init(title: String, description: String? = nil, iconImage: UIImage, trailingItem: TrailingItem = .none) {
+    public init(title: String, iconImage: UIImage, trailingItem: TrailingItem = .none) {
         self.title = title
-        self.description = description
         self.iconImage = iconImage
         self.trailingItem = trailingItem
     }
