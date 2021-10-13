@@ -57,6 +57,7 @@ public class UserAdManagementUserActionCell: UITableViewCell {
         let toggle = UISwitch(withAutoLayout: true)
         toggle.onTintColor = .btnPrimary
         toggle.addTarget(self, action: #selector(toggleTapped(_:)), for: .touchUpInside)
+        toggle.setContentHuggingPriority(.required, for: .horizontal)
         return toggle
     }()
 
