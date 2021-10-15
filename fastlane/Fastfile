@@ -4,7 +4,7 @@ fastlane_version "2.146.0"
 
 skip_docs
 
-@app_identifier = "no.finn.FinniversKit.Demo"
+@app_identifier = "no.finn.FinniversKitDemo"
 
 desc "Create a new FinniversKit version"
 lane :make_finniverkit_version do |options|
