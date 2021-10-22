@@ -4,7 +4,7 @@
 
 import UIKit
 
-class RecentlySavedCell: UICollectionViewCell, ReuseIdentifiable {
+public class RecentlySavedCell: UICollectionViewCell, ReuseIdentifiable {
     lazy private var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false

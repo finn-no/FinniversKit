@@ -29,7 +29,6 @@ public struct Ad: StandardAdRecommendationViewModel {
     public var scaleImageToFillView = true
     public var adType: AdType
     public var sponsoredAdData: SponsoredAdData?
-
     public var accessibilityLabel: String {
         var message = title
 
@@ -45,6 +44,17 @@ public struct Ad: StandardAdRecommendationViewModel {
     }
 
     public var favoriteButtonAccessibilityLabel = "Sett annonsen som favoritt"
+    private let idString = UUID().uuidString
+}
+
+extension Ad: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(accessibilityLabel + idString)
+    }
+    
+    public static func ==(lhs: Ad, rhs: Ad) -> Bool {
+        return lhs.accessibilityLabel == rhs.accessibilityLabel
+    }
 }
 
 /// A model confirming to the JobAdRecommendationViewModel protocol for showcasing JobAdRecommendationCell in playground.

@@ -63,7 +63,7 @@ public class FrontPageHeaderView: UICollectionReusableView, ReuseIdentifiable{
         let horizontalStack = UIStackView()
         horizontalStack.translatesAutoresizingMaskIntoConstraints = false
         horizontalStack.axis = .horizontal
-        horizontalStack.distribution = .fillProportionally
+        horizontalStack.distribution = .fill
         horizontalStack.addArrangedSubviews([titleLabel, button])
         
         addSubview(horizontalStack)

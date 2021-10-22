@@ -17,7 +17,7 @@ public struct GridViewModel: Hashable {
     init(index: Int) {
         self.index = index
         
-        height = CGFloat.random(in: (144...400))
+        height = CGFloat.random(in: (144...700))
         backgroundColor = [.red, .blue, .green, .purple, .gray, .magenta].randomElement()!
         
     }

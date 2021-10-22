@@ -5,24 +5,20 @@
 import UIKit
 import SwiftUI
 
-public enum Section: CaseIterable {
-    case recentlySaved
-    case favorites
-    case grid
-}
-
-public typealias DataSource = UICollectionViewDiffableDataSource<Section, AnyHashable>
-
 public class NewFrontPageView: UIView {
-    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
+    public enum Section: CaseIterable {
+        case recentlySaved
+        case favorites
+        case grid
+    }
     
+    public typealias DataSource = UICollectionViewDiffableDataSource<Section, AnyHashable>
+    public typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
+        
     private lazy var collectionView: UICollectionView = {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: compositionalLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(FrontpageFavoritedShelfItemCell.self, forCellWithReuseIdentifier: FrontpageFavoritedShelfItemCell.identifier)
-        collectionView.register(RecentlySavedCell.self, forCellWithReuseIdentifier: RecentlySavedCell.identifier)
-        collectionView.register(GridCell.self, forCellWithReuseIdentifier: GridCell.identifier)
         collectionView.register(FrontPageHeaderView.self, forSupplementaryViewOfKind: FrontPageHeaderView.identifier, withReuseIdentifier: FrontPageHeaderView.identifier)
         
         return collectionView
@@ -55,7 +51,6 @@ public class NewFrontPageView: UIView {
         let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(140), heightDimension: .estimated(150))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
         group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading:0, bottom: 0, trailing: 8)
-        
         
         
         let section = NSCollectionLayoutSection(group: group)
@@ -94,28 +89,39 @@ public class NewFrontPageView: UIView {
         var leadinGroupHeight: CGFloat = 0
         var trailingGroupHeight: CGFloat = 0
         
-        let totalHeight = self.gridItems.reduce(0) { $0 + $1.height + 8 }
+        /*
+         totale høyden er løpe igjennom alle ads og kalkulere høyden basert på
+         bredden, bredden er (collectionView.frame.size / antall kolonner) - sidepadding * antall kolonner
+         */
+        let width = collectionView.frame.size.width / 2 - 16
+        let heights = datasource.getAllGridElementHeights(forWidth: width)
+        
+        let totalHeight = heights.reduce(0) { $0 + $1 + 8 }
+        
+        //self.gridItems.reduce(0) { $0 + $1.height + 8 }
+        
+        
         let columnHeight = CGFloat(totalHeight / 2.0)
         
         var leadingHeight = CGFloat(0)
         var trailingHeight = CGFloat(0)
         
-        for (index, gridItem) in gridItems.enumerated() {
+//        for (index, gridItem) in gridItems.enumerated() {
+        for height in heights {
             
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(gridItem.height))
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(height))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             item.contentInsets = NSDirectionalEdgeInsets(all: 4)
             let isLeading =  leadingHeight < trailingHeight || leadingHeight == 0
-            
-            print("index: \(index)", "Should be leading: \(index % 2 == 0)")
+    
             if isLeading {
                 leadingGroupItems.append(item)
-                leadinGroupHeight += gridItem.height + 8
-                leadingHeight += gridItem.height + 8
+                leadinGroupHeight += height + 8
+                leadingHeight += height + 8
             } else {
                 trailingGroupItems.append(item)
-                trailingGroupHeight += gridItem.height + 8
-                trailingHeight += gridItem.height + 8
+                trailingGroupHeight += height + 8
+                trailingHeight += height + 8
             }
         }
         
@@ -129,45 +135,17 @@ public class NewFrontPageView: UIView {
         let containerGroup = NSCollectionLayoutGroup.horizontal(layoutSize: containerSize, subitems: [leadingGroup, trailingGroup])
         
         let section = NSCollectionLayoutSection(group: containerGroup)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0)
         return section
     }()
     
     
+    private(set) var datasource: FrontPageRecommendationGridViewDatasource
+    private lazy var diffableDatasource = makeDataSource()
     
-    private lazy var dataSource = makeDataSource()
-    
-    public var items: [FavoritedShelfViewModel] = [] {
-        didSet {
-            self.applySnapshot()
-        }
-    }
-    
-    public var savedItems: [RecentlySavedViewModel] = {
-        [
-            RecentlySavedViewModel(id: "1", title: "Test"),
-            RecentlySavedViewModel(id: "2", title: "Test"),
-            RecentlySavedViewModel(id: "3", title: "Test"),
-            RecentlySavedViewModel(id: "4", title: "Test"),
-            RecentlySavedViewModel(id: "5", title: "Test"),
-            RecentlySavedViewModel(id: "6", title: "Test"),
-            RecentlySavedViewModel(id: "7", title: "Test"),
-            RecentlySavedViewModel(id: "8", title: "Test")
-        ]
-    }()
-    
-    public var gridItems: [GridViewModel] {
-        let source = (1...17).map { GridViewModel.init(index: $0) }
-        let pairs = source.enumerated().compactMap { index, element in
-            index % 2 == 0 ? element : nil
-        }
-        
-        let odds = source.filter { !pairs.contains($0) }
-        
-        return odds + pairs
-    }
-    
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(recommendationDatasource: FrontPageRecommendationGridViewDatasource) {
+        datasource = recommendationDatasource
+        super.init(frame: .zero)
         setup()
     }
     
@@ -176,36 +154,46 @@ public class NewFrontPageView: UIView {
     }
 }
 
-//MARK: - Layouts
-private extension NewFrontPageView {
-
-}
-
+//MARK: - Setups
 private extension NewFrontPageView {
     private func setup() {
-        addSubview(collectionView)
-        collectionView.fillInSuperview()
+        setupCollectionView()
         applySnapshot()
-        print("Hello")
     }
     
+    private func setupCollectionView() {
+        addSubview(collectionView)
+        collectionView.fillInSuperview()
+        
+        for cell in datasource.frontPageRecommendationGrid(cellClassesIn: collectionView) {
+            collectionView.register(cell.self, forCellWithReuseIdentifier: cell.reuseIdentifier)
+        }
+        
+        // custom header for frontView
+        collectionView.register(FrontPageHeaderView.self, forSupplementaryViewOfKind: FrontPageHeaderView.identifier, withReuseIdentifier: FrontPageHeaderView.identifier)
+    }
+}
+
+// MARK: CollectionView Datasource
+private extension NewFrontPageView {
     private func makeDataSource() -> DataSource {
         let dataSource = DataSource(collectionView: collectionView) { [weak self] (collectionView, indexPath, item) -> UICollectionViewCell? in
-            if let _ = item as? FavoritedShelfViewModel {
-                
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FrontpageFavoritedShelfItemCell.identifier, for: indexPath) as? FrontpageFavoritedShelfItemCell
-                let item = self?.items[indexPath.row]
-                cell?.model = item
-                return cell
-            } else if let _ = item as? RecentlySavedViewModel {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentlySavedCell.identifier, for: indexPath) as? RecentlySavedCell
-                return cell
-            } else if let _ = item as? GridViewModel, let model = self?.gridItems[indexPath.row] {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GridCell.identifier, for: indexPath) as? GridCell
-                cell?.configure(withModel: model)
-                return cell
-            }
-            return nil
+//            if let _ = item as? FavoritedShelfViewModel {
+//
+//                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FrontpageFavoritedShelfItemCell.identifier, for: indexPath) as? FrontpageFavoritedShelfItemCell
+//                let item = self?.items[indexPath.row]
+//                cell?.model = item
+//                return cell
+//            } else if let _ = item as? RecentlySavedViewModel {
+//                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentlySavedCell.identifier, for: indexPath) as? RecentlySavedCell
+//                return cell
+//            } else if let _ = item as? GridViewModel, let model = self?.gridItems[indexPath.row] {
+//                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GridCell.identifier, for: indexPath) as? GridCell
+//                cell?.configure(withModel: model)
+//                return cell
+//            }
+//            return nil
+            self?.datasource.frontPageRecommendationGrid(collectionView, cellForItemAt: indexPath, withItem: item)
         }
         
         dataSource.supplementaryViewProvider = { (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
@@ -224,16 +212,16 @@ private extension NewFrontPageView {
     }
     
     private func applySnapshot(animatingDifferences: Bool = true) {
-        var snapshot = Snapshot()
-        snapshot.appendSections([.recentlySaved])
-        snapshot.appendItems(savedItems)
-        
-        snapshot.appendSections([.favorites])
-        snapshot.appendItems(items)
-        
-        snapshot.appendSections([.grid])
-        snapshot.appendItems(gridItems)
-        
-        dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
+//        var snapshot = Snapshot()
+//        snapshot.appendSections([.recentlySaved])
+//        snapshot.appendItems(savedItems)
+//
+//        snapshot.appendSections([.favorites])
+//        snapshot.appendItems(items)
+//
+//        snapshot.appendSections([.grid])
+//        snapshot.appendItems(gridItems)
+        let snapshot = datasource.snapshotForDatasource()
+        diffableDatasource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
 }
