@@ -135,7 +135,7 @@ public class NewFrontPageView: UIView {
         let containerGroup = NSCollectionLayoutGroup.horizontal(layoutSize: containerSize, subitems: [leadingGroup, trailingGroup])
         
         let section = NSCollectionLayoutSection(group: containerGroup)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
         return section
     }()
     

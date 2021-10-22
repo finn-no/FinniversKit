@@ -43,8 +43,20 @@ public class NewFrontPageDemoView: UIView {
 }
 
 extension NewFrontPageDemoView: FrontPageRecommendationGridViewDatasource {
-    public func getAllGridElementHeights(forWidth: CGFloat) -> [CGFloat] {
-        ads.map { _ in 144 }
+    public func getAllGridElementHeights(forWidth width: CGFloat) -> [CGFloat] {
+       // ads.map { _ in 144 }
+        var heights = [CGFloat]()
+        for ad in ads {
+            switch ad.adType {
+            case .google:
+                heights.append(300)
+            default:
+                let height = StandardAdRecommendationCell.height(for: ad, width: width)
+                heights.append(height)
+            }
+        }
+        
+        return heights
     }
     
     public func frontPageRecommendationGrid(sectionFor sectionIndex: Int) -> NewFrontPageView.Section {
