@@ -199,6 +199,7 @@
 		9BBC904024FD252B0003D2D8 /* UITraitCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC903F24FD252B0003D2D8 /* UITraitCollection+Extensions.swift */; };
 		AA189E8726847AE700FD3A41 /* BlockUserDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA189E8626847AE700FD3A41 /* BlockUserDemoView.swift */; };
 		D6D43CD625BF239E00234AC2 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 46E77597242D6890008A5E93 /* SnapshotTesting */; };
+		D7E907EB2727D898009027E0 /* ChristmasPromotionCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E907EA2727D898009027E0 /* ChristmasPromotionCellDemoView.swift */; };
 		DA083C2E2462BCA800B26235 /* SwiftUIDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */; };
 		DA82B1ED268B62D2005F67C3 /* LoadingRetryDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA82B1EC268B62D2005F67C3 /* LoadingRetryDemoView.swift */; };
 		DAE9CA8724602CB000C7552F /* SwiftUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */; };
@@ -423,6 +424,7 @@
 		9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoWrapperView.swift; sourceTree = "<group>"; };
 		9BBC903F24FD252B0003D2D8 /* UITraitCollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITraitCollection+Extensions.swift"; sourceTree = "<group>"; };
 		AA189E8626847AE700FD3A41 /* BlockUserDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUserDemoView.swift; sourceTree = "<group>"; };
+		D7E907EA2727D898009027E0 /* ChristmasPromotionCellDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasPromotionCellDemoView.swift; sourceTree = "<group>"; };
 		DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDemoViews.swift; sourceTree = "<group>"; };
 		DA82B1EC268B62D2005F67C3 /* LoadingRetryDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingRetryDemoView.swift; sourceTree = "<group>"; };
 		DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewTests.swift; sourceTree = "<group>"; };
@@ -1359,6 +1361,7 @@
 		46E77364242CEF09008A5E93 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D7E907E92727D85A009027E0 /* ChristmasPromotionCell */,
 				46E77365242CEF09008A5E93 /* RemoteImageTableViewCell */,
 				46E77367242CEF09008A5E93 /* FavoriteAdTableViewCell */,
 				46E77369242CEF09008A5E93 /* BasicTableViewCell */,
@@ -1708,6 +1711,14 @@
 			path = BlockUserView;
 			sourceTree = "<group>";
 		};
+		D7E907E92727D85A009027E0 /* ChristmasPromotionCell */ = {
+			isa = PBXGroup;
+			children = (
+				D7E907EA2727D898009027E0 /* ChristmasPromotionCellDemoView.swift */,
+			);
+			path = ChristmasPromotionCell;
+			sourceTree = "<group>";
+		};
 		DA82B1EB268B62B7005F67C3 /* LoadingRetryView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1791,7 +1802,7 @@
 			);
 			mainGroup = 46AE6FB7242BADC9007BB005;
 			packageReferences = (
-				46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing.git" */,
+				46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 46AE6FC1242BADC9007BB005 /* Products */;
 			projectDirPath = "";
@@ -1907,6 +1918,7 @@
 				46E77452242CEF0A008A5E93 /* ScrollViewController.swift in Sources */,
 				46E7745D242CEF0A008A5E93 /* MarketsGridViewDemoView.swift in Sources */,
 				46AE6FC4242BADC9007BB005 /* AppDelegate.swift in Sources */,
+				D7E907EB2727D898009027E0 /* ChristmasPromotionCellDemoView.swift in Sources */,
 				46E773C2242CEF0A008A5E93 /* SettingDetailsDemoViewController.swift in Sources */,
 				46E7742F242CEF0A008A5E93 /* SwitchViewDemoView.swift in Sources */,
 				46E773D5242CEF0A008A5E93 /* FrontPageViewDemoView.swift in Sources */,
@@ -2313,7 +2325,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing.git" */ = {
+		46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
 			requirement = {
@@ -2326,7 +2338,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		46E77597242D6890008A5E93 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing.git" */;
+			package = 46E77596242D6890008A5E93 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */

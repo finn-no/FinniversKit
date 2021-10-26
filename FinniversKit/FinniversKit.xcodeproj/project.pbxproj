@@ -391,6 +391,7 @@
 		CFF9727221C3BA1D00C85238 /* BannerTransparencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9726F21C3BA1D00C85238 /* BannerTransparencyView.swift */; };
 		CFF9727521C3E92700C85238 /* BannerTransparencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9727421C3E92700C85238 /* BannerTransparencyViewModel.swift */; };
 		CFFDF89722F311F600FE68EA /* NeighborhoodProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFDF89622F311F600FE68EA /* NeighborhoodProfileView.swift */; };
+		D7E636E127272447006E5254 /* ChristmasPromotionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E636E027272447006E5254 /* ChristmasPromotionCell.swift */; };
 		DA083E7324630BC400B26235 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA083E7124630B9200B26235 /* SettingsSection.swift */; };
 		DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */; };
 		DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E438521104EB8000DDEC3 /* AdReporterView.swift */; };
@@ -836,6 +837,7 @@
 		CFF9726F21C3BA1D00C85238 /* BannerTransparencyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerTransparencyView.swift; sourceTree = "<group>"; };
 		CFF9727421C3E92700C85238 /* BannerTransparencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTransparencyViewModel.swift; sourceTree = "<group>"; };
 		CFFDF89622F311F600FE68EA /* NeighborhoodProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileView.swift; sourceTree = "<group>"; };
+		D7E636E027272447006E5254 /* ChristmasPromotionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasPromotionCell.swift; sourceTree = "<group>"; };
 		DA083E7124630B9200B26235 /* SettingsSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterViewModel.swift; sourceTree = "<group>"; };
 		DA4E438521104EB8000DDEC3 /* AdReporterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdReporterView.swift; sourceTree = "<group>"; };
@@ -1564,6 +1566,7 @@
 		44A5579A22E71FEB001667AE /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D7E636E22727442D006E5254 /* ChristmasPromotionCell */,
 				44A5579B22E71FEB001667AE /* BasicTableViewCell */,
 				9A37DACFD214880B29DEBFA9 /* FavoriteAdTableViewCell */,
 				44A557A322E720A3001667AE /* IconTitleTableViewCell */,
@@ -2776,6 +2779,14 @@
 			path = NeighborhoodProfile;
 			sourceTree = "<group>";
 		};
+		D7E636E22727442D006E5254 /* ChristmasPromotionCell */ = {
+			isa = PBXGroup;
+			children = (
+				D7E636E027272447006E5254 /* ChristmasPromotionCell.swift */,
+			);
+			path = ChristmasPromotionCell;
+			sourceTree = "<group>";
+		};
 		DA5A858A24617DE200AC0DFE /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -3214,6 +3225,7 @@
 				5DEAC3BF25C16314003376AD /* IconButton.swift in Sources */,
 				F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */,
 				4940480223CDC0F000ECBCFD /* ViewingCell.swift in Sources */,
+				D7E636E127272447006E5254 /* ChristmasPromotionCell.swift in Sources */,
 				44A149ED21377C7B0053D5F7 /* SavedSearchesListViewModel.swift in Sources */,
 				9BEB287B231D484B00D28BAD /* LoanHeaderView.swift in Sources */,
 				496F8C142473DCC600AE0735 /* FavoriteSoldView.swift in Sources */,
