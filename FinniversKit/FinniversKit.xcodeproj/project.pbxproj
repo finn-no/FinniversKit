@@ -391,6 +391,7 @@
 		CFF9727221C3BA1D00C85238 /* BannerTransparencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9726F21C3BA1D00C85238 /* BannerTransparencyView.swift */; };
 		CFF9727521C3E92700C85238 /* BannerTransparencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9727421C3E92700C85238 /* BannerTransparencyViewModel.swift */; };
 		CFFDF89722F311F600FE68EA /* NeighborhoodProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFDF89622F311F600FE68EA /* NeighborhoodProfileView.swift */; };
+		D7D514C427293F7A0065E2F6 /* ChristmasPromotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D514C327293F7A0065E2F6 /* ChristmasPromotionView.swift */; };
 		D7E636E127272447006E5254 /* ChristmasPromotionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E636E027272447006E5254 /* ChristmasPromotionCell.swift */; };
 		DA083E7324630BC400B26235 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA083E7124630B9200B26235 /* SettingsSection.swift */; };
 		DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */; };
@@ -837,6 +838,7 @@
 		CFF9726F21C3BA1D00C85238 /* BannerTransparencyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerTransparencyView.swift; sourceTree = "<group>"; };
 		CFF9727421C3E92700C85238 /* BannerTransparencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTransparencyViewModel.swift; sourceTree = "<group>"; };
 		CFFDF89622F311F600FE68EA /* NeighborhoodProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileView.swift; sourceTree = "<group>"; };
+		D7D514C327293F7A0065E2F6 /* ChristmasPromotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasPromotionView.swift; sourceTree = "<group>"; };
 		D7E636E027272447006E5254 /* ChristmasPromotionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasPromotionCell.swift; sourceTree = "<group>"; };
 		DA083E7124630B9200B26235 /* SettingsSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterViewModel.swift; sourceTree = "<group>"; };
@@ -1295,6 +1297,7 @@
 		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D7D514C227293F5D0065E2F6 /* ChristmasPromotionView */,
 				AA189E80268479B100FD3A41 /* BlockUserView */,
 				DA82B1EA268B61AA005F67C3 /* LoadingRetryView */,
 				4D0CF28B261C46670008CC43 /* TransactionEntryView */,
@@ -2779,6 +2782,14 @@
 			path = NeighborhoodProfile;
 			sourceTree = "<group>";
 		};
+		D7D514C227293F5D0065E2F6 /* ChristmasPromotionView */ = {
+			isa = PBXGroup;
+			children = (
+				D7D514C327293F7A0065E2F6 /* ChristmasPromotionView.swift */,
+			);
+			path = ChristmasPromotionView;
+			sourceTree = "<group>";
+		};
 		D7E636E22727442D006E5254 /* ChristmasPromotionCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -3184,6 +3195,7 @@
 				4D01FD5C261C9A5C008B9913 /* TransactionStepIllustrationView.swift in Sources */,
 				45EDD62F20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift in Sources */,
 				CF164CFD230EB0F900250822 /* CheckmarkImageView.swift in Sources */,
+				D7D514C427293F7A0065E2F6 /* ChristmasPromotionView.swift in Sources */,
 				9B06096823F14B0A005CB592 /* SafetyElementViewModel.swift in Sources */,
 				CF164D15230FFB7400250822 /* FavoriteAdActionViewModel.swift in Sources */,
 				CF136ACD2203211100247B30 /* InfoboxView.swift in Sources */,
