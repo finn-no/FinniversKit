@@ -14,6 +14,7 @@ public class ChristmasPromotionCellDemoView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(ChristmasPromotionCell.self, forCellWithReuseIdentifier: ChristmasPromotionCell.reuseIdentifier)
         collectionView.dataSource = self
+        collectionView.backgroundColor = .bgPrimary
         return collectionView
     }()
     

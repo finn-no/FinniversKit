@@ -207,7 +207,6 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<BlockUserDemoView>()
         case .loadingRetryView:
             return DemoViewController<LoadingRetryDemoView>()
-            
         case .promotionView:
             return DemoViewController<ChristmasPromotionDemoView>()
         }
