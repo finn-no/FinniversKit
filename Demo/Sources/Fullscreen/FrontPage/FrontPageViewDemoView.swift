@@ -47,6 +47,12 @@ public class FrontpageViewDemoView: UIView, Tweakable {
         view.model = FrontpageViewDefaultData()
         view.isRefreshEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Christmas promotion Data
+        let model = ChristmasPromotionViewModel(title: "Hjelp til jul hos FINN",
+                                                subtitle: "Julen skal være en fin tid for all...",
+                                                buttonTitle: "Be om eller tilby hjelp til jul")
+        view.showChristmasPromotion(withModel: model, andDelegate: self)
         return view
     }()
 
@@ -86,6 +92,13 @@ public class FrontpageViewDemoView: UIView, Tweakable {
         }
 
         task.resume()
+    }
+}
+
+// MARK: - PromotionViewDelegate
+extension FrontpageViewDemoView: PromotionViewDelegate {
+    public func didSelectPromotion(_ promotion: ChristmasPromotionView) {
+        print("Promotion selected")
     }
 }
 

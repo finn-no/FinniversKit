@@ -9,6 +9,18 @@ public protocol PromotionViewDelegate {
     func didSelectPromotion(_ promotion: ChristmasPromotionView)
 }
 
+public struct ChristmasPromotionViewModel {
+    let title: String
+    let subtitle: String
+    let buttonTitle: String
+    
+    public init(title: String, subtitle: String, buttonTitle: String) {
+        self.title = title
+        self.subtitle = subtitle
+        self.buttonTitle = buttonTitle
+    }
+}
+
 public class ChristmasPromotionView: UIView {
     static let height: CGFloat = 150
     
@@ -34,14 +46,14 @@ public class ChristmasPromotionView: UIView {
     
     private lazy var titleLabel: UILabel = {
         let label = Label(style: .title3Strong, withAutoLayout: true)
-        label.text = "Hjelp til jul hos Finn"
+     //   label.text = "Hjelp til jul hos Finn"
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
     
     private lazy var subtitleLabel: UILabel = {
         let label = Label(style: .caption, withAutoLayout: true)
-        label.text = "Julen skal være en fin tid for all…"
+     //   label.text = "Julen skal være en fin tid for all…"
         label.numberOfLines = 1
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
@@ -49,7 +61,7 @@ public class ChristmasPromotionView: UIView {
     
     private lazy var button: Button = {
         let button = Button(style: .default,size: .small, withAutoLayout: true)
-        button.setTitle("Be om eller tilby hjelp til jul", for: .normal)
+      //  button.setTitle("Be om eller tilby hjelp til jul", for: .normal)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return button
     }()
@@ -75,11 +87,20 @@ public class ChristmasPromotionView: UIView {
     }()
     
     public var delegate: PromotionViewDelegate?
+    public var model: ChristmasPromotionViewModel {
+        didSet {
+            self.titleLabel.text = model.title
+            self.subtitleLabel.text = model.subtitle
+            self.button.setTitle(model.title, for: .normal)
+        }
+    }
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init (model: ChristmasPromotionViewModel) {
+        self.model = model
+        super.init(frame: .zero)
         setup()
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -97,6 +118,12 @@ extension ChristmasPromotionView {
         backgroundView.fillInSuperview()
         backgroundView.addSubview(verticalStack)
         backgroundView.addSubview(image)
+        
+        titleLabel.text = model.title
+        subtitleLabel.text = model.subtitle
+        button.setTitle(model.title, for: .normal)
+        
+
         
         NSLayoutConstraint.activate([
             verticalStack.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),

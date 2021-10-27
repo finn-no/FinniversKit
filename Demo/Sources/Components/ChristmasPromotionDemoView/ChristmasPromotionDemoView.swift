@@ -8,7 +8,11 @@ import FinniversKit
 
 class ChristmasPromotionDemoView: UIView {
     private lazy var promotionView: ChristmasPromotionView = {
-        let view = ChristmasPromotionView(withAutoLayout: true)
+        let model = ChristmasPromotionViewModel(title: "Hjelp til jul hos FINN",
+                                                subtitle: "Julen skal være en fin tid for all...",
+                                                buttonTitle: "Be om eller tilby hjelp til jul")
+        let view = ChristmasPromotionView(model: model)
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         return view
     }()
