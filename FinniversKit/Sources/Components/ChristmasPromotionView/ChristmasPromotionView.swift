@@ -10,6 +10,8 @@ public protocol PromotionViewDelegate {
 }
 
 public class ChristmasPromotionView: UIView {
+    static let height: CGFloat = 150
+    
     private lazy var backgroundView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .bgPrimary
@@ -58,6 +60,7 @@ public class ChristmasPromotionView: UIView {
         imageView.image = image
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
+        imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
         return imageView
     }()
     
@@ -96,13 +99,14 @@ extension ChristmasPromotionView {
         backgroundView.addSubview(image)
         
         NSLayoutConstraint.activate([
-            verticalStack.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 16),
-            verticalStack.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 20),
-            verticalStack.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -20),
-            verticalStack.trailingAnchor.constraint(lessThanOrEqualTo: image.leadingAnchor, constant: 20),
+            verticalStack.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
+            verticalStack.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingL),
+            verticalStack.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingL),
+            verticalStack.trailingAnchor.constraint(lessThanOrEqualTo: image.leadingAnchor, constant: .spacingS),
             image.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
             image.topAnchor.constraint(equalTo: backgroundView.topAnchor),
             image.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
+            image.widthAnchor.constraint(equalToConstant: 130)
         ])
     }
     

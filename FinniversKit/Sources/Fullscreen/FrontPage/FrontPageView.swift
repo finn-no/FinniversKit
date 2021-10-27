@@ -40,6 +40,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     private var marketsViewDataSource: MarketsViewDataSource
     private var adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource
     
+    
     private var didSetupView = false
 
     // MARK: - Subviews
@@ -47,6 +48,11 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     private lazy var marketsGridView: MarketsGridView = {
         let view = MarketsGridView(delegate: self, dataSource: marketsViewDataSource)
         view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var christmasPromotionView: ChristmasPromotionView = {
+        let view = ChristmasPromotionView(withAutoLayout: true)
         return view
     }()
     
@@ -163,6 +169,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         headerView.addSubview(marketsGridView)
         headerView.addSubview(promoContainer)
         headerView.addSubview(headerLabel)
+        headerView.addSubview(christmasPromotionView)
         
         addSubview(compactMarketsView)
 
@@ -175,10 +182,16 @@ public final class FrontPageView: UIView, BasicFrontPageView {
             promoContainer.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor),
             promoContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
             promoContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+            
+            christmasPromotionView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
+            christmasPromotionView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
+            christmasPromotionView.heightAnchor.constraint(equalToConstant: ChristmasPromotionView.height),
+            christmasPromotionView.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor, constant: .spacingL),
 
-            headerLabel.topAnchor.constraint(equalTo: promoContainer.bottomAnchor, constant: .spacingM),
+            headerLabel.topAnchor.constraint(equalTo: christmasPromotionView.bottomAnchor, constant: .spacingM),
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
+            headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
             
             compactMarketsView.leadingAnchor.constraint(equalTo: leadingAnchor),
             compactMarketsView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -206,7 +219,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
             .height
 
         let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: bounds.size.width).height + .spacingXS
-        let height = headerTopSpacing + labelHeight + marketGridViewHeight + promoContainerHeight + headerBottomSpacing
+        let height = headerTopSpacing + labelHeight + marketGridViewHeight + promoContainerHeight + headerBottomSpacing + ChristmasPromotionView.height + .spacingL
 
         marketsGridViewHeight.constant = marketGridViewHeight
         headerView.frame.size.height = height
