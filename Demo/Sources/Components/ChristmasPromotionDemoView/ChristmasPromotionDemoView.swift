@@ -32,8 +32,8 @@ class ChristmasPromotionDemoView: UIView {
         NSLayoutConstraint.activate([
             promotionView.centerXAnchor.constraint(equalTo: centerXAnchor),
             promotionView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            promotionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            promotionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            promotionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            promotionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
             promotionView.heightAnchor.constraint(equalToConstant: 150)
         ])
     }

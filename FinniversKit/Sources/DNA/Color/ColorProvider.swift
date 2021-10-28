@@ -34,6 +34,7 @@ public protocol ColorProvider {
     var iconPrimary: UIColor { get }
     var iconSecondary: UIColor { get }
     var iconTertiary: UIColor { get }
+    var shadowColor: UIColor { get }
 }
 
 // MARK: - Default FINN colors
@@ -153,5 +154,9 @@ public struct DefaultColorProvider: ColorProvider {
 
     public var iconTertiary: UIColor {
         return .textTertiary
+    }
+    
+    public var shadowColor: UIColor {
+        return UIColor(hex: "475569")
     }
 }

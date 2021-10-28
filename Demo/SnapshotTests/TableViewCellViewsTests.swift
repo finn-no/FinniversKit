@@ -62,8 +62,4 @@ class TableViewCellsViewTests: XCTestCase {
     func testUserAdEmphasizedActionCell() {
         snapshot(.userAdEmphasizedActionCell)
     }
-    
-    func testChristmasPromotionCell() {
-        snapshot(.christmasPromotionCell)
-    }
 }

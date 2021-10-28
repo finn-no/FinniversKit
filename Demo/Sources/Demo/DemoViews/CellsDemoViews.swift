@@ -8,7 +8,6 @@ public enum CellsDemoViews: String, DemoViews {
     case basicCellVariations
     case checkboxCell
     case checkboxSubtitleCell
-    case christmasPromotionCell
     case radioButtonCell
     case heartSubtitleCell
     case iconTitleCell
@@ -27,8 +26,6 @@ public enum CellsDemoViews: String, DemoViews {
             return DemoViewController<CheckboxCellDemoView>(dismissType: .dismissButton)
         case .checkboxSubtitleCell:
             return DemoViewController<CheckboxSubtitleCellDemoView>(dismissType: .dismissButton)
-        case .christmasPromotionCell:
-            return DemoViewController<ChristmasPromotionCellDemoView>(dismissType: .dismissButton)
         case .radioButtonCell:
             return DemoViewController<RadioButtonCellDemoView>(dismissType: .dismissButton)
         case .heartSubtitleCell:

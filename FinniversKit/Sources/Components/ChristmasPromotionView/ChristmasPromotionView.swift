@@ -34,26 +34,31 @@ public class ChristmasPromotionView: UIView {
     
     private lazy var smallShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.dropShadow(color:UIColor(hex: "475569"), opacity: 0.24, offset: CGSize(width: 0, height: 1), radius: 1)
+        view.dropShadow(color:DefaultColorProvider().shadowColor,
+                        opacity: 0.24,
+                        offset: CGSize(width: 0, height: 1),
+                        radius: 1)
+       
         return view
     }()
     
     private lazy var largeShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.dropShadow(color: UIColor(hex: "475569"), opacity: 0.16, offset: CGSize(width: 0, height: 1), radius: 5)
+        view.dropShadow(color: DefaultColorProvider().shadowColor,
+                        opacity: 0.16,
+                        offset: CGSize(width: 0, height: 1),
+                        radius: 5)
         return view
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = Label(style: .title3Strong, withAutoLayout: true)
-     //   label.text = "Hjelp til jul hos Finn"
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
     
     private lazy var subtitleLabel: UILabel = {
         let label = Label(style: .caption, withAutoLayout: true)
-     //   label.text = "Julen skal være en fin tid for all…"
         label.numberOfLines = 1
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
@@ -61,7 +66,6 @@ public class ChristmasPromotionView: UIView {
     
     private lazy var button: Button = {
         let button = Button(style: .default,size: .small, withAutoLayout: true)
-      //  button.setTitle("Be om eller tilby hjelp til jul", for: .normal)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return button
     }()
