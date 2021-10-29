@@ -97,7 +97,7 @@ public class FrontpageViewDemoView: UIView, Tweakable {
 
 // MARK: - PromotionViewDelegate
 extension FrontpageViewDemoView: PromotionViewDelegate {
-    public func didSelectPromotion(_ promotion: ChristmasPromotionView) {
+    public func didSelectChristmasPromotion(_ promotion: ChristmasPromotionView) {
         print("Promotion selected")
     }
 }

@@ -1,8 +1,3 @@
-//
-//  ChristmasPromotionDemoView.swift
-//  Demo
-//
-
 import UIKit
 import FinniversKit
 
@@ -40,7 +35,7 @@ class ChristmasPromotionDemoView: UIView {
 }
 
 extension ChristmasPromotionDemoView: PromotionViewDelegate {
-    func didSelectPromotion(_ promotion: ChristmasPromotionView) {
+    func didSelectChristmasPromotion(_ promotion: ChristmasPromotionView) {
         print("Promotion selected")
     }
 }

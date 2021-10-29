@@ -1,12 +1,7 @@
-//
-//  ChristmasPromotionView.swift
-//  FinniversKit
-//
-
 import UIKit
 
-public protocol PromotionViewDelegate {
-    func didSelectPromotion(_ promotion: ChristmasPromotionView)
+public protocol PromotionViewDelegate: AnyObject {
+    func didSelectChristmasPromotion(_ promotion: ChristmasPromotionView)
 }
 
 public struct ChristmasPromotionViewModel {
@@ -34,7 +29,7 @@ public class ChristmasPromotionView: UIView {
     
     private lazy var smallShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.dropShadow(color:DefaultColorProvider().shadowColor,
+        view.dropShadow(color: .shadowColor,
                         opacity: 0.24,
                         offset: CGSize(width: 0, height: 1),
                         radius: 1)
@@ -44,7 +39,7 @@ public class ChristmasPromotionView: UIView {
     
     private lazy var largeShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.dropShadow(color: DefaultColorProvider().shadowColor,
+        view.dropShadow(color: .shadowColor,
                         opacity: 0.16,
                         offset: CGSize(width: 0, height: 1),
                         radius: 5)
@@ -90,7 +85,7 @@ public class ChristmasPromotionView: UIView {
         return stack
     }()
     
-    public var delegate: PromotionViewDelegate?
+    public weak var delegate: PromotionViewDelegate?
     public var model: ChristmasPromotionViewModel {
         didSet {
             self.titleLabel.text = model.title
@@ -127,8 +122,6 @@ extension ChristmasPromotionView {
         subtitleLabel.text = model.subtitle
         button.setTitle(model.title, for: .normal)
         
-
-        
         NSLayoutConstraint.activate([
             verticalStack.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
             verticalStack.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingL),
@@ -142,6 +135,13 @@ extension ChristmasPromotionView {
     }
     
     @objc private func buttonTapped() {
-        delegate?.didSelectPromotion(self)
+        delegate?.didSelectChristmasPromotion(self)
+    }
+}
+
+//MARK: - Shadow Color
+private extension UIColor {
+    static var shadowColor: UIColor {
+        return UIColor(hex: "475569")
     }
 }
