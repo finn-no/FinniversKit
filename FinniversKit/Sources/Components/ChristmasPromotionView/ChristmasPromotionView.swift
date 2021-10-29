@@ -90,7 +90,7 @@ public class ChristmasPromotionView: UIView {
         didSet {
             self.titleLabel.text = model.title
             self.subtitleLabel.text = model.subtitle
-            self.button.setTitle(model.title, for: .normal)
+            self.button.setTitle(model.buttonTitle, for: .normal)
         }
     }
     
@@ -120,7 +120,7 @@ extension ChristmasPromotionView {
         
         titleLabel.text = model.title
         subtitleLabel.text = model.subtitle
-        button.setTitle(model.title, for: .normal)
+        button.setTitle(model.buttonTitle, for: .normal)
         
         NSLayoutConstraint.activate([
             verticalStack.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
