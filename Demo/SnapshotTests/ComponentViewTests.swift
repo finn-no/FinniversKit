@@ -274,4 +274,8 @@ class ComponentViewTests: XCTestCase {
     func testBlockUserView() {
         snapshot(.blockUserView)
     }
+    
+    func testPromotionView() {
+        snapshot(.promotionView)
+    }
 }

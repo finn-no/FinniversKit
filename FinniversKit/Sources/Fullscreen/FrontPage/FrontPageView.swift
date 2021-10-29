@@ -2,6 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+import UIKit
+
 public protocol FrontPageViewModel {
     var adRecommedationsGridViewHeaderTitle: String { get }
     var retryButtonTitle: String { get }
@@ -40,7 +42,10 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     private var marketsViewDataSource: MarketsViewDataSource
     private var adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource
     
+    
     private var didSetupView = false
+    
+    private var isChristmasPromotionShowing = false
 
     // MARK: - Subviews
 
@@ -63,6 +68,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     }()
 
     private let promoContainer = UIView(withAutoLayout: true)
+    private let christmasPromotionContainer = UIView(withAutoLayout: true)
     
     private lazy var headerView = UIView()
 
@@ -150,6 +156,12 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     public func insertPromoView(_ view: UIView?) {
         addSubviewToPromoContainer(view)
     }
+    
+    public func showChristmasPromotion(withModel model: ChristmasPromotionViewModel, andDelegate delegate: PromotionViewDelegate) {
+        addChristmasPromotion(withModel: model, andDelegate: delegate)
+    }
+    
+    
 
     // MARK: - Setup
 
@@ -162,6 +174,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
 
         headerView.addSubview(marketsGridView)
         headerView.addSubview(promoContainer)
+        headerView.addSubview(christmasPromotionContainer)
         headerView.addSubview(headerLabel)
         
         addSubview(compactMarketsView)
@@ -175,10 +188,14 @@ public final class FrontPageView: UIView, BasicFrontPageView {
             promoContainer.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor),
             promoContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
             promoContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
-
-            headerLabel.topAnchor.constraint(equalTo: promoContainer.bottomAnchor, constant: .spacingM),
+            
+            christmasPromotionContainer.topAnchor.constraint(equalTo: promoContainer.bottomAnchor, constant: isChristmasPromotionShowing ? .spacingL : 0),
+            christmasPromotionContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
+            christmasPromotionContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
+            headerLabel.topAnchor.constraint(equalTo: christmasPromotionContainer.bottomAnchor, constant: .spacingM),
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
+            headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
             
             compactMarketsView.leadingAnchor.constraint(equalTo: leadingAnchor),
             compactMarketsView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -206,7 +223,8 @@ public final class FrontPageView: UIView, BasicFrontPageView {
             .height
 
         let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: bounds.size.width).height + .spacingXS
-        let height = headerTopSpacing + labelHeight + marketGridViewHeight + promoContainerHeight + headerBottomSpacing
+        var height = headerTopSpacing + labelHeight + marketGridViewHeight + promoContainerHeight + headerBottomSpacing
+        height += isChristmasPromotionShowing ? ChristmasPromotionView.height + .spacingL : 0
 
         marketsGridViewHeight.constant = marketGridViewHeight
         headerView.frame.size.height = height
@@ -236,6 +254,19 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         ])
 
         setupFrames()
+    }
+    
+    private func addChristmasPromotion(withModel model: ChristmasPromotionViewModel, andDelegate delegate: PromotionViewDelegate) {
+        let promotionView = ChristmasPromotionView(model: model)
+        promotionView.translatesAutoresizingMaskIntoConstraints = false
+        promotionView.delegate = delegate
+        
+        christmasPromotionContainer.addSubview(promotionView)
+        promotionView.fillInSuperview()
+        promotionView.heightAnchor.constraint(equalToConstant: ChristmasPromotionView.height).isActive = true
+        isChristmasPromotionShowing = true
+        setupFrames()
+        
     }
     
     private func changeCompactMarketsViewVisibilityStatus(to status: CompactMarketsViewVisibilityStatus) {
