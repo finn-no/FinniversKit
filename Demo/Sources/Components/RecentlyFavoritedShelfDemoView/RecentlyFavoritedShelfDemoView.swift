@@ -22,6 +22,9 @@ class RecentlyFavoritedShelfDemoView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: compositionalLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(RecentlyFavoritedShelfCell.self)
+        collectionView.register(FrontPageShelfHeaderView.self,
+                                forSupplementaryViewOfKind: FrontPageShelfHeaderView.reuseIdentifier,
+                                withReuseIdentifier: FrontPageShelfHeaderView.reuseIdentifier)
         collectionView.delegate = self
         return collectionView
     }()
@@ -58,11 +61,18 @@ private extension RecentlyFavoritedShelfDemoView {
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: .spacingL, bottom: 0, trailing: 0)
         section.orthogonalScrollingBehavior = .continuous
+        
+        
+        //Header
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(44))
+        let headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: FrontPageShelfHeaderView.reuseIdentifier, alignment: .top)
+        section.boundarySupplementaryItems = [headerElement]
+        
         return section
     }
     
     private func makeDatasource() -> DataSource {
-        return DataSource(collectionView: collectionView) { [weak self] (collectionView, indexPath, itemIdentifier) -> UICollectionViewCell? in
+        let datasource =  DataSource(collectionView: collectionView) { [weak self] (collectionView, indexPath, itemIdentifier) -> UICollectionViewCell? in
             guard let model = self?.items[indexPath.item] else {
                 return nil
             }
@@ -75,6 +85,20 @@ private extension RecentlyFavoritedShelfDemoView {
             }
             return cell
         }
+        
+        datasource.supplementaryViewProvider = { (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
+            if let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FrontPageShelfHeaderView.reuseIdentifier, for: indexPath) as? FrontPageShelfHeaderView {
+                
+                headerView.configureHeaderView(withTitle: "Nyeste Favoritter", buttonTitle: "se alle") {
+                    print("Header was pressed")
+                }
+                return headerView
+            } else {
+                fatalError("Cannot create new supplementary")
+            }
+        }
+        
+        return datasource
     }
     
     private func toggleAndRemove(favoriteModel model: RecentlyFavoritedViewmodel, isFavorited: Bool, atIndex index: IndexPath) {

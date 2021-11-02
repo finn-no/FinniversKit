@@ -227,10 +227,9 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
 private extension RecentlyFavoritedShelfCell {
     private func setup() {
         ribbonView.style = .disabled
-        ribbonView.title = "Solgt"
-        ribbonView.isHidden = Int.random(in: 0...2) % 2 == 0
         ribbonView.setContentCompressionResistancePriority(.required, for: .vertical)
         favoriteButton.isToggled = true
+        ribbonView.isHidden = true
         
         contentView.addSubview(imageContainerView)
         contentView.addSubview(favoriteButton)
