@@ -1,21 +1,32 @@
 import UIKit
 
 public class RecentlyFavoritedShelfCell: UICollectionViewCell {
+    public typealias ButtonAction = ((_ model: RecentlyFavoritedViewmodel, _ isFavorited: Bool) -> ())
+    
     private static let titleHeight: CGFloat = 8
     private static let priceTagHeight: CGFloat = 30
-    private var isHeightCalculated = false
-    
+    private let imageviewWidth: CGFloat = 128
     private var defaultImage: UIImage? {
         return UIImage(named: .noImage)
     }
+    
+    public var buttonAction: ButtonAction?
+    private var model: RecentlyFavoritedViewmodel?
+    private var isFavorited: Bool = true {
+        didSet {
+            favoriteButton.isToggled = isFavorited
+        }
+    }
+    
+    private var task: URLSessionDataTask?
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
-        imageView.widthAnchor.constraint(equalToConstant: 128).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 128).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: imageviewWidth).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: imageviewWidth).isActive = true
         imageView.layer.cornerRadius = 8
         return imageView
     }()
@@ -107,7 +118,7 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var subtitleLabel: Label = {
+    private lazy var locationLabel: Label = {
         let label = Label(style: .detail)
         label.setContentHuggingPriority(.required, for: .vertical)
         label.textColor = .textSecondary
@@ -128,17 +139,19 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
         stackView.distribution = .fillProportionally
         stackView.spacing = .spacingS
         
-        stackView.addArrangedSubviews([ribbonView, subtitleLabel, titleLabel])
-        stackView.setCustomSpacing(4, after: subtitleLabel)
+        stackView.addArrangedSubviews([ribbonView, locationLabel, titleLabel])
+        stackView.setCustomSpacing(4, after: locationLabel)
         return stackView
     }()
     
     public override func prepareForReuse() {
         super.prepareForReuse()
-        isHeightCalculated = false
         imageView.image = defaultImage
         titleLabel.text = ""
-        subtitleLabel.text = ""
+        locationLabel.text = ""
+        priceLabel.text = ""
+        favoriteButton.isToggled = true
+        model = nil
     }
     
     override init(frame: CGRect) {
@@ -151,6 +164,67 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
         setup()
     }
     
+    @objc private func favoriteButtonPressed() {
+        guard let model = model else {
+            return
+        }
+        buttonAction?(model, isFavorited)
+    }
+    
+    public func configure(withModel model: RecentlyFavoritedViewmodel) {
+        self.model = model
+        titleLabel.text = model.title
+        locationLabel.text = model.location
+        priceLabel.text = model.price
+        
+        if let price = model.price {
+            priceLabel.text = price
+            priceLabel.isHidden = price.isEmpty
+            priceBackground.isHidden = price.isEmpty
+        } else {
+            priceLabel.isHidden = true
+            priceBackground.isHidden = true
+        }
+    }
+    
+    func setImage(_ image: UIImage?) {
+        if let image = image {
+            imageView.image = image
+        } else {
+            imageView.image = defaultImage
+        }
+        DispatchQueue.main.async {
+            self.setNeedsLayout()
+            self.layoutIfNeeded()
+        }
+    }
+    
+    public func loadImage() {
+        guard let model = model, let path = model.imageUrl, let url = URL(string: path) else {
+            return
+        }
+        
+        task = URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
+            DispatchQueue.main.async {
+                if let data = data {
+                    self?.setImage(UIImage(data: data))
+                }
+            }
+        }
+
+        task?.resume()
+        
+    }
+    
+    public func cancelImageLoading() {
+        task?.cancel()
+        task = nil
+        imageView.image = defaultImage
+    }
+}
+
+//MARK: - Layout & Setups
+private extension RecentlyFavoritedShelfCell {
     private func setup() {
         ribbonView.style = .disabled
         ribbonView.title = "Solgt"
@@ -164,7 +238,6 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
         contentView.addSubview(verticalStack)
         
         imageView.image = defaultImage
-        priceLabel.text = "500 Kr"
         imageContainerView.setContentCompressionResistancePriority(.required, for: .vertical)
         NSLayoutConstraint.activate([
             imageContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 2),
@@ -189,26 +262,8 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
         largeShadowView.fillInSuperview()
         smallShadowView.fillInSuperview()
     }
-    
-    @objc private func favoriteButtonPressed() {
-//        favoriteButton.isToggled.toggle()
-//        if let action = favoriteToggleAction {
-//            action(favoriteButton)
-//        }
-    }
-    
-    func setImage(_ image: UIImage?) {
-        if let image = image {
-            imageView.image = image
-        } else {
-            imageView.image = defaultImage
-        }
-        DispatchQueue.main.async {
-            self.setNeedsLayout()
-            self.layoutIfNeeded()
-        }
-    }
 }
+
 
 private extension UIColor {
     static var shadowColor: UIColor {

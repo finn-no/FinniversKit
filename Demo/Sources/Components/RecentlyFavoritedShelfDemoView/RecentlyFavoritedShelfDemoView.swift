@@ -1,16 +1,16 @@
 import FinniversKit
-import UIKit
 
 class RecentlyFavoritedShelfDemoView: UIView {
     typealias DataSource = UICollectionViewDiffableDataSource<Section, AnyHashable>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
     
-    private let items = ["1", "2", "3", "4"]
+    private var items: [RecentlyFavoritedViewmodel] = []
     
     enum Section: CaseIterable {
         case recentlyFavorited
     }
-    private lazy var datasource = makeDatasource()
+    
+    private var datasource: DataSource!
     
     private lazy var compositionalLayout: UICollectionViewCompositionalLayout = {
         return UICollectionViewCompositionalLayout { _,_  in
@@ -22,6 +22,7 @@ class RecentlyFavoritedShelfDemoView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: compositionalLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(RecentlyFavoritedShelfCell.self)
+        collectionView.delegate = self
         return collectionView
     }()
     
@@ -37,6 +38,8 @@ class RecentlyFavoritedShelfDemoView: UIView {
     private func setup() {
         addSubview(collectionView)
         collectionView.fillInSuperview()
+        items = RecentlyFavoritedFactory.create(numberOfItems: 10)
+        datasource = makeDatasource()
         applySnapshot()
     }
 }
@@ -59,9 +62,27 @@ private extension RecentlyFavoritedShelfDemoView {
     }
     
     private func makeDatasource() -> DataSource {
-        return DataSource(collectionView: collectionView) { (collectionView, indexPath, itemIdentifier) -> UICollectionViewCell? in
-            return collectionView.dequeue(RecentlyFavoritedShelfCell.self, for: indexPath)
+        return DataSource(collectionView: collectionView) { [weak self] (collectionView, indexPath, itemIdentifier) -> UICollectionViewCell? in
+            guard let model = self?.items[indexPath.item] else {
+                return nil
+            }
+            
+            let cell = collectionView.dequeue(RecentlyFavoritedShelfCell.self, for: indexPath)
+            cell.configure(withModel: model)
+            
+            cell.buttonAction = { [weak self] model, isFavorited in
+                self?.toggleAndRemove(favoriteModel: model, isFavorited: isFavorited, atIndex: indexPath)
+            }
+            return cell
         }
+    }
+    
+    private func toggleAndRemove(favoriteModel model: RecentlyFavoritedViewmodel, isFavorited: Bool, atIndex index: IndexPath) {
+        guard let item = datasource.itemIdentifier(for: index) else { return }
+        var snapshot = datasource.snapshot()
+        snapshot.deleteItems([item])
+        items.remove(at: index.item)
+        datasource.apply(snapshot, animatingDifferences: true)
     }
     
     private func applySnapshot(animatingDifferences: Bool = true) {
@@ -70,5 +91,28 @@ private extension RecentlyFavoritedShelfDemoView {
         snapShot.appendItems(items, toSection: .recentlyFavorited)
         
         datasource.apply(snapShot, animatingDifferences: animatingDifferences)
+    }
+}
+
+//MARK: UICollectionViewDelegate
+extension RecentlyFavoritedShelfDemoView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard
+            let cell = cell as? RecentlyFavoritedShelfCell
+        else { return }
+        
+        cell.loadImage()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard
+            let cell = cell as? RecentlyFavoritedShelfCell
+        else { return }
+        
+        cell.cancelImageLoading()
     }
 }
