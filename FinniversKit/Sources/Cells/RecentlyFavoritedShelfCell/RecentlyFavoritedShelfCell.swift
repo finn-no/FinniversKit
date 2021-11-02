@@ -57,10 +57,10 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             background.heightAnchor.constraint(equalToConstant: RecentlyFavoritedShelfCell.priceTagHeight),
-            priceLabel.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 8),
-            priceLabel.topAnchor.constraint(equalTo: background.topAnchor, constant: 4),
-            priceLabel.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -8),
-            priceLabel.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -4)
+            priceLabel.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: .spacingS),
+            priceLabel.topAnchor.constraint(equalTo: background.topAnchor, constant: .spacingXS),
+            priceLabel.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -.spacingS),
+            priceLabel.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -.spacingXS)
             
         ])
         
