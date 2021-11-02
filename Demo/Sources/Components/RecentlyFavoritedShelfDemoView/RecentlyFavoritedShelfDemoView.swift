@@ -41,6 +41,7 @@ class RecentlyFavoritedShelfDemoView: UIView {
     private func setup() {
         addSubview(collectionView)
         collectionView.fillInSuperview()
+        collectionView.backgroundColor = .bgPrimary
         items = RecentlyFavoritedFactory.create(numberOfItems: 10)
         datasource = makeDatasource()
         applySnapshot()

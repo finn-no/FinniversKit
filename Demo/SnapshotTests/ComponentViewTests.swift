@@ -278,4 +278,8 @@ class ComponentViewTests: XCTestCase {
     func testPromotionView() {
         snapshot(.promotionView)
     }
+    
+    func testRecentlyFavorited() {
+        snapshot(.recentlyfavorited)
+    }
 }
