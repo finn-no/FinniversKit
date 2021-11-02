@@ -239,22 +239,22 @@ private extension RecentlyFavoritedShelfCell {
         imageView.image = defaultImage
         imageContainerView.setContentCompressionResistancePriority(.required, for: .vertical)
         NSLayoutConstraint.activate([
-            imageContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 2),
-            imageContainerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
-            imageContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -2),
+            imageContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingXXS),
+            imageContainerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXS),
+            imageContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingXXS),
             imageContainerView.heightAnchor.constraint(equalToConstant: 128),
             
             verticalStack.leadingAnchor.constraint(equalTo: imageContainerView.leadingAnchor),
-            verticalStack.topAnchor.constraint(equalTo: imageContainerView.bottomAnchor, constant: 8),
+            verticalStack.topAnchor.constraint(equalTo: imageContainerView.bottomAnchor, constant: .spacingS),
             verticalStack.widthAnchor.constraint(equalTo: imageContainerView.widthAnchor),
-            verticalStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
+            verticalStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingXS),
             titleLabel.widthAnchor.constraint(equalTo: imageContainerView.widthAnchor),
             
-            favoriteButton.topAnchor.constraint(equalTo: imageContainerView.topAnchor, constant: 8),
-            favoriteButton.trailingAnchor.constraint(equalTo: imageContainerView.trailingAnchor, constant: -8),
-            priceBackground.leadingAnchor.constraint(equalTo: imageContainerView.leadingAnchor, constant: 8),
-            priceBackground.bottomAnchor.constraint(equalTo: imageContainerView.bottomAnchor, constant: -8),
-            priceBackground.trailingAnchor.constraint(lessThanOrEqualTo: imageContainerView.trailingAnchor, constant: -8),
+            favoriteButton.topAnchor.constraint(equalTo: imageContainerView.topAnchor, constant: .spacingS),
+            favoriteButton.trailingAnchor.constraint(equalTo: imageContainerView.trailingAnchor, constant: -.spacingS),
+            priceBackground.leadingAnchor.constraint(equalTo: imageContainerView.leadingAnchor, constant: .spacingS),
+            priceBackground.bottomAnchor.constraint(equalTo: imageContainerView.bottomAnchor, constant: -.spacingS),
+            priceBackground.trailingAnchor.constraint(lessThanOrEqualTo: imageContainerView.trailingAnchor, constant: -.spacingS),
             ribbonView.heightAnchor.constraint(greaterThanOrEqualToConstant: 20)
         ])
         
