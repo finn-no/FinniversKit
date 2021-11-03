@@ -70,6 +70,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case loadingRetryView
     case promotionView
     case recentlyfavorited
+    case recentlySaved
 
     public var viewController: UIViewController {
         switch self {
@@ -212,6 +213,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<ChristmasPromotionDemoView>()
         case .recentlyfavorited:
             return DemoViewController<RecentlyFavoritedShelfDemoView>()
+        case .recentlySaved:
+            return DemoViewController<RecentlySavedShelfDemoView>()
         }
     }
 }

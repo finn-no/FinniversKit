@@ -394,6 +394,7 @@
 		D755239F273006E900C0C7DD /* RecentlyFavoritedShelfCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D755239E273006E900C0C7DD /* RecentlyFavoritedShelfCell.swift */; };
 		D75523A42730800F00C0C7DD /* RecentlyFavoritedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75523A32730800F00C0C7DD /* RecentlyFavoritedViewModel.swift */; };
 		D75523AA27315EA600C0C7DD /* FrontPageShelfHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75523A927315EA600C0C7DD /* FrontPageShelfHeaderView.swift */; };
+		D7C750352731C4EF002BDE98 /* RecentlySavedShelfCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C750342731C4EF002BDE98 /* RecentlySavedShelfCell.swift */; };
 		D7D514C427293F7A0065E2F6 /* ChristmasPromotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D514C327293F7A0065E2F6 /* ChristmasPromotionView.swift */; };
 		DA083E7324630BC400B26235 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA083E7124630B9200B26235 /* SettingsSection.swift */; };
 		DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */; };
@@ -843,6 +844,7 @@
 		D755239E273006E900C0C7DD /* RecentlyFavoritedShelfCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyFavoritedShelfCell.swift; sourceTree = "<group>"; };
 		D75523A32730800F00C0C7DD /* RecentlyFavoritedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyFavoritedViewModel.swift; sourceTree = "<group>"; };
 		D75523A927315EA600C0C7DD /* FrontPageShelfHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageShelfHeaderView.swift; sourceTree = "<group>"; };
+		D7C750342731C4EF002BDE98 /* RecentlySavedShelfCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlySavedShelfCell.swift; sourceTree = "<group>"; };
 		D7D514C327293F7A0065E2F6 /* ChristmasPromotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasPromotionView.swift; sourceTree = "<group>"; };
 		DA083E7124630B9200B26235 /* SettingsSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterViewModel.swift; sourceTree = "<group>"; };
@@ -1574,6 +1576,7 @@
 		44A5579A22E71FEB001667AE /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D7C750332731C3B3002BDE98 /* RecentlySavedShelfCell */,
 				D755239D273006CD00C0C7DD /* RecentlyFavoritedShelfCell */,
 				44A5579B22E71FEB001667AE /* BasicTableViewCell */,
 				9A37DACFD214880B29DEBFA9 /* FavoriteAdTableViewCell */,
@@ -2804,6 +2807,14 @@
 			path = FrontPageShelfHeaderView;
 			sourceTree = "<group>";
 		};
+		D7C750332731C3B3002BDE98 /* RecentlySavedShelfCell */ = {
+			isa = PBXGroup;
+			children = (
+				D7C750342731C4EF002BDE98 /* RecentlySavedShelfCell.swift */,
+			);
+			path = RecentlySavedShelfCell;
+			sourceTree = "<group>";
+		};
 		D7D514C227293F5D0065E2F6 /* ChristmasPromotionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3543,6 +3554,7 @@
 				4D01FD60261DC61C008B9913 /* TransactionEntrySlideView.swift in Sources */,
 				9F213036DE161042F54529B0 /* FullscreenGalleryTransitioningController.swift in Sources */,
 				CF13D6CF2292D40F0087DA37 /* PhaseViewModel.swift in Sources */,
+				D7C750352731C4EF002BDE98 /* RecentlySavedShelfCell.swift in Sources */,
 				918C8A4223A3853400B566DE /* NativeAdvertGridView.swift in Sources */,
 				CF0B10982316AC0D001E7A57 /* BottomShadowView.swift in Sources */,
 				8908E84D22C0D11400ED671C /* MessageFormToolbar.swift in Sources */,

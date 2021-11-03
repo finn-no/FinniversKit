@@ -3,7 +3,7 @@ import UIKit
 public class RecentlyFavoritedShelfCell: UICollectionViewCell {
     public typealias ButtonAction = ((_ model: RecentlyFavoritedViewmodel, _ isFavorited: Bool) -> ())
     
-    private static let titleHeight: CGFloat = 8
+    private static let titleHeight: CGFloat = .spacingS
     private static let priceTagHeight: CGFloat = 30
     private let imageviewWidth: CGFloat = 128
     private var defaultImage: UIImage? {
