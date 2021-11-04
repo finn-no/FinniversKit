@@ -3,7 +3,13 @@ import UIKit
 public class RecentlyFavoritedShelfCell: UICollectionViewCell {
     public typealias ButtonAction = ((_ model: RecentlyFavoritedViewmodel, _ isFavorited: Bool) -> ())
     
-    private static let titleHeight: CGFloat = .spacingS
+    public weak var datasource: RemoteImageViewDataSource? {
+        didSet {
+            remoteImageView.dataSource = datasource
+        }
+    }
+    
+    private static let titleHeight: CGFloat = 8
     private static let priceTagHeight: CGFloat = 30
     private let imageviewWidth: CGFloat = 128
     private var defaultImage: UIImage? {
@@ -18,10 +24,8 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
         }
     }
     
-    private var task: URLSessionDataTask?
-    
-    private lazy var imageView: UIImageView = {
-        let imageView = UIImageView()
+    private lazy var remoteImageView: RemoteImageView = {
+        let imageView = RemoteImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
@@ -43,27 +47,12 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
     
     private lazy var priceBackground: UIView = {
         let background = UIVisualEffectView(withAutoLayout: true)
-        if #available(iOS 13.0, *) {
-            background.effect = UIBlurEffect(style: .systemThinMaterialDark)
-        } else {
-            background.effect = nil
-            background.backgroundColor = UIColor.priceLabelBackgroundColor.withAlphaComponent(0.8)
-        }
+        background.effect = nil
+        background.backgroundColor = UIColor.priceLabelBackgroundColor.withAlphaComponent(0.8)
         background.alpha = 1.0
-        background.layer.cornerRadius = RecentlyFavoritedShelfCell.priceTagHeight / 2
         background.clipsToBounds = true
         
         background.contentView.addSubview(priceLabel)
-        
-        NSLayoutConstraint.activate([
-            background.heightAnchor.constraint(equalToConstant: RecentlyFavoritedShelfCell.priceTagHeight),
-            priceLabel.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: .spacingS),
-            priceLabel.topAnchor.constraint(equalTo: background.topAnchor, constant: .spacingXS),
-            priceLabel.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -.spacingS),
-            priceLabel.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -.spacingXS)
-            
-        ])
-        
         return background
     }()
     
@@ -91,7 +80,7 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(largeShadowView)
         view.addSubview(smallShadowView)
-        view.addSubview(imageView)
+        view.addSubview(remoteImageView)
         view.addSubview(priceLabel)
         
         return view
@@ -146,7 +135,7 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
     
     public override func prepareForReuse() {
         super.prepareForReuse()
-        imageView.image = defaultImage
+        remoteImageView.image = defaultImage
         titleLabel.text = ""
         locationLabel.text = ""
         priceLabel.text = ""
@@ -189,9 +178,9 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
     
     func setImage(_ image: UIImage?) {
         if let image = image {
-            imageView.image = image
+            remoteImageView.image = image
         } else {
-            imageView.image = defaultImage
+            remoteImageView.image = defaultImage
         }
         DispatchQueue.main.async {
             self.setNeedsLayout()
@@ -200,26 +189,13 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
     }
     
     public func loadImage() {
-        guard let model = model, let path = model.imageUrl, let url = URL(string: path) else {
+        guard let model = model, let path = model.imageUrl else {
+            remoteImageView.setImage(defaultImage, animated: false)
             return
         }
         
-        task = URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
-            DispatchQueue.main.async {
-                if let data = data {
-                    self?.setImage(UIImage(data: data))
-                }
-            }
-        }
-
-        task?.resume()
+        remoteImageView.loadImage(for: path, imageWidth: imageviewWidth, fallbackImage: defaultImage)
         
-    }
-    
-    public func cancelImageLoading() {
-        task?.cancel()
-        task = nil
-        imageView.image = defaultImage
     }
 }
 
@@ -236,8 +212,19 @@ private extension RecentlyFavoritedShelfCell {
         contentView.addSubview(priceBackground)
         contentView.addSubview(verticalStack)
         
-        imageView.image = defaultImage
+        remoteImageView.image = defaultImage
         imageContainerView.setContentCompressionResistancePriority(.required, for: .vertical)
+        priceBackground.layer.cornerRadius = RecentlyFavoritedShelfCell.priceTagHeight / 2
+        
+        NSLayoutConstraint.activate([
+            priceBackground.heightAnchor.constraint(equalToConstant: RecentlyFavoritedShelfCell.priceTagHeight),
+            priceLabel.leadingAnchor.constraint(equalTo: priceBackground.leadingAnchor, constant: .spacingS),
+            priceLabel.topAnchor.constraint(equalTo: priceBackground.topAnchor, constant: .spacingXS),
+            priceLabel.trailingAnchor.constraint(equalTo: priceBackground.trailingAnchor, constant: -.spacingS),
+            priceLabel.bottomAnchor.constraint(equalTo: priceBackground.bottomAnchor, constant: -.spacingXS)
+            
+        ])
+        
         NSLayoutConstraint.activate([
             imageContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingXXS),
             imageContainerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXS),

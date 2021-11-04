@@ -84,6 +84,9 @@ private extension RecentlyFavoritedShelfDemoView {
             cell.buttonAction = { [weak self] model, isFavorited in
                 self?.toggleAndRemove(favoriteModel: model, isFavorited: isFavorited, atIndex: indexPath)
             }
+            
+            cell.datasource = self
+            
             return cell
         }
         
@@ -131,13 +134,31 @@ extension RecentlyFavoritedShelfDemoView: UICollectionViewDelegate {
         else { return }
         
         cell.loadImage()
+        
+    }
+}
+
+extension RecentlyFavoritedShelfDemoView: RemoteImageViewDataSource {
+    func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
+        nil
     }
     
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard
-            let cell = cell as? RecentlyFavoritedShelfCell
-        else { return }
+    func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        guard let url = URL(string: imagePath) else {
+            completion(nil)
+            return
+        }
         
-        cell.cancelImageLoading()
+        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+            DispatchQueue.main.async {
+                if let data = data {
+                    completion(UIImage(data: data))
+                }
+            }
+        }
+        
+        task.resume()
     }
+    
+    func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
