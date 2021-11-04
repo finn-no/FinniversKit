@@ -7,6 +7,14 @@ public class SavedSearchShelfCell: UICollectionViewCell {
         UIImage(named: .noImage)
     }
     
+    public weak var imageDatasource: RemoteImageViewDataSource? {
+        didSet {
+            remoteImageView.dataSource = imageDatasource
+        }
+    }
+    
+    private var model: SavedSearchShelfViewModel?
+    
     private lazy var smallShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .white
@@ -86,6 +94,24 @@ public class SavedSearchShelfCell: UICollectionViewCell {
         stackView.fillInSuperview()
         
         imageContainerView.layer.cornerRadius = imageWidth / 2
+    }
+}
+
+// MARK: - public functions
+
+public extension SavedSearchShelfCell {
+    func loadImage() {
+        guard let model = model, let url = model.imageUrlString else {
+            remoteImageView.setImage(defaultImage, animated: false)
+            return
+        }
+        
+        remoteImageView.loadImage(for: url, imageWidth: imageWidth, fallbackImage: defaultImage)
+    }
+    
+    func configure(withModel model: SavedSearchShelfViewModel) {
+        self.model = model
+        self.titleLabel.text = model.title
     }
 }
 

@@ -282,4 +282,8 @@ class ComponentViewTests: XCTestCase {
     func testRecentlyFavorited() {
         snapshot(.recentlyfavorited)
     }
+    
+    func testSavedSearch() {
+        snapshot(.savedSearch)
+    }
 }
