@@ -1,12 +1,12 @@
 
 import FinniversKit
 
-class RecentlySavedShelfDemoView: UIView {
+class SavedSearchShelfDemoView: UIView {
     typealias Datasource = UICollectionViewDiffableDataSource<Section, AnyHashable>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
     
     enum Section: CaseIterable {
-        case recentlySaved
+        case savedSearch
     }
     
     private var items = [1,2,3,4,5,6,7,8]
@@ -21,7 +21,7 @@ class RecentlySavedShelfDemoView: UIView {
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: compositionalLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(RecentlySavedShelfCell.self)
+        collectionView.register(SavedSearchShelfCell.self)
         collectionView.register(FrontPageShelfHeaderView.self, forSupplementaryViewOfKind: FrontPageShelfHeaderView.reuseIdentifier, withReuseIdentifier: FrontPageShelfHeaderView.reuseIdentifier)
         return collectionView
     }()
@@ -37,7 +37,7 @@ class RecentlySavedShelfDemoView: UIView {
 }
 
 // MARK: - Setup
-private extension RecentlySavedShelfDemoView {
+private extension SavedSearchShelfDemoView {
     private func setup() {
         addSubview(collectionView)
         collectionView.fillInSuperview()
@@ -48,7 +48,7 @@ private extension RecentlySavedShelfDemoView {
 }
 
 //MARK: - Layout
-private extension RecentlySavedShelfDemoView {
+private extension SavedSearchShelfDemoView {
     
     private var recentlySavedLayout: NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(100))
@@ -73,10 +73,10 @@ private extension RecentlySavedShelfDemoView {
 }
 
 // MARK: - DataSource
-private extension RecentlySavedShelfDemoView {
+private extension SavedSearchShelfDemoView {
     private func makeDatasource() -> Datasource {
         let datasource = Datasource(collectionView: collectionView) { (collectionView, indexPath, item) in
-            return collectionView.dequeue(RecentlySavedShelfCell.self, for: indexPath)
+            return collectionView.dequeue(SavedSearchShelfCell.self, for: indexPath)
         }
         datasource.supplementaryViewProvider = { (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
             if let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FrontPageShelfHeaderView.reuseIdentifier, for: indexPath) as? FrontPageShelfHeaderView {
@@ -94,8 +94,8 @@ private extension RecentlySavedShelfDemoView {
     
     private func applySnapshot() {
         var snapshot = Snapshot()
-        snapshot.appendSections([.recentlySaved])
-        snapshot.appendItems(items, toSection: .recentlySaved)
+        snapshot.appendSections([.savedSearch])
+        snapshot.appendItems(items, toSection: .savedSearch)
         datasource.apply(snapshot, animatingDifferences: true)
     }
 }
