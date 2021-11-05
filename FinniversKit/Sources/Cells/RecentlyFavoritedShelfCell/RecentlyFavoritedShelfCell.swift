@@ -1,5 +1,4 @@
 import UIKit
-
 public class RecentlyFavoritedShelfCell: UICollectionViewCell {
     public typealias ButtonAction = ((_ model: RecentlyFavoritedViewmodel, _ isFavorited: Bool) -> ())
     
@@ -206,6 +205,7 @@ private extension RecentlyFavoritedShelfCell {
         ribbonView.setContentCompressionResistancePriority(.required, for: .vertical)
         favoriteButton.isToggled = true
         ribbonView.isHidden = true
+        priceBackground.isHidden = true
         
         contentView.addSubview(imageContainerView)
         contentView.addSubview(favoriteButton)

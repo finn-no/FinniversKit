@@ -71,6 +71,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case promotionView
     case recentlyfavorited
     case savedSearch
+    case frontPageShelf
 
     public var viewController: UIViewController {
         switch self {
@@ -215,6 +216,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<RecentlyFavoritedShelfDemoView>()
         case .savedSearch:
             return DemoViewController<SavedSearchShelfDemoView>()
+        case .frontPageShelf:
+            return DemoViewController<FrontPageShelfDemoView>()
         }
     }
 }
