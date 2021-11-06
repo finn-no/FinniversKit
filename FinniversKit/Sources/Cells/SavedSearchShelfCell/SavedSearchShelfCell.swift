@@ -39,6 +39,9 @@ public class SavedSearchShelfCell: UICollectionViewCell {
         imageView.layer.masksToBounds = true
         imageView.widthAnchor.constraint(equalToConstant: imageWidth).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: imageWidth).isActive = true
+        imageView.contentMode = .scaleToFill
+        imageView.layer.cornerRadius = imageWidth / 2
+        imageView.clipsToBounds = true
         
         return imageView
     }()
@@ -78,6 +81,12 @@ public class SavedSearchShelfCell: UICollectionViewCell {
         
         return view
     }()
+    
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+        remoteImageView.setImage(defaultImage, animated: false)
+        titleLabel.text = ""
+    }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)

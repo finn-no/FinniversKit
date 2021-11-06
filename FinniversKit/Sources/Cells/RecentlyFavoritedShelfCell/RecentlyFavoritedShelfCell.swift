@@ -40,18 +40,16 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         label.textAlignment = .center
-        
         return label
     }()
     
     private lazy var priceBackground: UIView = {
-        let background = UIVisualEffectView(withAutoLayout: true)
-        background.effect = nil
+        let background = UIView(withAutoLayout: true)
         background.backgroundColor = UIColor.priceLabelBackgroundColor.withAlphaComponent(0.8)
         background.alpha = 1.0
         background.clipsToBounds = true
         
-        background.contentView.addSubview(priceLabel)
+        background.addSubview(priceLabel)
         return background
     }()
     
@@ -80,7 +78,7 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
         view.addSubview(largeShadowView)
         view.addSubview(smallShadowView)
         view.addSubview(remoteImageView)
-        view.addSubview(priceLabel)
+        view.addSubview(priceBackground)
         
         return view
     }()
@@ -98,7 +96,6 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
         let label = Label(style: .body)
         label.setContentHuggingPriority(.required, for: .vertical)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Stol - Som NY!"
         label.numberOfLines = 2
         label.textAlignment = .left
         label.setContentCompressionResistancePriority(.required, for: .vertical)
@@ -113,7 +110,6 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.text = "Oslo"
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.required, for: .vertical)
         return label
@@ -209,7 +205,6 @@ private extension RecentlyFavoritedShelfCell {
         
         contentView.addSubview(imageContainerView)
         contentView.addSubview(favoriteButton)
-        contentView.addSubview(priceBackground)
         contentView.addSubview(verticalStack)
         
         remoteImageView.image = defaultImage

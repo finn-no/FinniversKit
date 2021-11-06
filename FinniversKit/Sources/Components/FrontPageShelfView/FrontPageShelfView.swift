@@ -1,23 +1,37 @@
 import UIKit
 
+public protocol FrontPageShelfViewDataSource {
+    func frontPageShelfView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, withItem item: AnyHashable) -> UICollectionViewCell?
+    func frontPageShelfView(cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type]
+    func datasource(forSection section: FrontPageShelfView.Section) -> [AnyHashable]
+}
+
+public protocol FrontPageShelfDelegate {
+    func frontPageShelfView(_ collectionView: UICollectionView)
+}
+
 public class FrontPageShelfView: UIView {
     typealias Datasource = UICollectionViewDiffableDataSource<Section, AnyHashable>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
     
-    enum Section: CaseIterable {
+    public enum Section: CaseIterable {
         case savedSearch
         case recentlyFavorited
     }
     
-    private var datasource: Datasource!
-    private var items = [1,2,3,4,5,6]
-    private var items2 = [7,8,9,10,11]
+    private var collectionViewDatasource: Datasource!
+    private var items: [Section: [AnyHashable]] = [:]
+    private var shelfDatasource: FrontPageShelfViewDataSource
     
     private var compositionalLayout: UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, environment in
             let section = Section.allCases[sectionIndex]
             switch section {
-            case .savedSearch: return self.savedSearchLayout
+            case .savedSearch:
+                if self.items[section, default: []].isEmpty {
+                    fallthrough
+                }
+                return self.savedSearchLayout
             case .recentlyFavorited: return self.favoriteLayout
             }
         }
@@ -31,16 +45,12 @@ public class FrontPageShelfView: UIView {
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: compositionalLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(SavedSearchShelfCell.self)
-        collectionView.register(RecentlyFavoritedShelfCell.self)
-        collectionView.register(FrontPageShelfHeaderView.self,
-                                forSupplementaryViewOfKind: FrontPageShelfHeaderView.reuseIdentifier,
-                                withReuseIdentifier: FrontPageShelfHeaderView.reuseIdentifier)
         return collectionView
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(withDatasource datasource: FrontPageShelfViewDataSource) {
+        self.shelfDatasource = datasource
+        super.init(frame: .zero)
         setup()
     }
     
@@ -48,24 +58,38 @@ public class FrontPageShelfView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setup() {
+
+    
+}
+
+// MARK: - Setup
+private extension FrontPageShelfView {
+    func setup() {
         addSubview(collectionView)
+        registerCollectionViewCells()
+        
         collectionView.backgroundColor = .bgPrimary
         collectionView.fillInSuperview()
-        datasource = makeDatasource()
+        collectionViewDatasource = makeDatasource()
         applySnapshot()
     }
     
+    func registerCollectionViewCells() {
+        shelfDatasource.frontPageShelfView(cellClassesIn: collectionView).forEach { cell in
+            self.collectionView.register(cell)
+        }
+        collectionView.register(FrontPageShelfHeaderView.self, ofKind: FrontPageShelfHeaderView.reuseIdentifier)
+    }
 }
 
 //MARK: - Layout
 private extension FrontPageShelfView {
     private var favoriteLayout: NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(150))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(180))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
         // Groups
-        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(140), heightDimension: .estimated(150))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(140), heightDimension: .estimated(180))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
         group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: .spacingS)
         
@@ -107,26 +131,20 @@ private extension FrontPageShelfView {
 //MARK: - Datasource
 private extension FrontPageShelfView {
     private func makeDatasource() -> Datasource {
-        let datasource = Datasource(collectionView: collectionView) { collectionView, indexPath, item in
-            print(indexPath.section)
-            let section = Section.allCases[indexPath.section]
-            print(section)
-            switch section {
-            case .recentlyFavorited:
-                return collectionView.dequeue(RecentlyFavoritedShelfCell.self, for: indexPath)
-            case .savedSearch:
-                return collectionView.dequeue(SavedSearchShelfCell.self, for: indexPath)
-            }
+        let datasource = Datasource(collectionView: collectionView) { [weak self] collectionView, indexPath, item in
+            self?.shelfDatasource.frontPageShelfView(collectionView, cellForItemAt: indexPath, withItem: item)
+            
         }
         
         datasource.supplementaryViewProvider = { (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
             let headerView = collectionView.dequeue(FrontPageShelfHeaderView.self, for: indexPath, ofKind: kind)
             let section = Section.allCases[indexPath.section]
             switch section {
+            case .savedSearch:
+                if self.items[section, default: []].isEmpty { fallthrough }
+                headerView.configureHeaderView(withTitle: "Lagrede søk", buttonTitle: "Se alle", buttonAction: { print("Se alle lagrede søk")})
             case .recentlyFavorited:
                 headerView.configureHeaderView(withTitle: "Nylige favoritter", buttonTitle: "Se alle", buttonAction: { print("Se alle favoritter" )})
-            case .savedSearch:
-                headerView.configureHeaderView(withTitle: "Lagrede søk", buttonTitle: "Se alle", buttonAction: { print("Se alle lagrede søk")})
             }
             return headerView
         }
@@ -136,11 +154,15 @@ private extension FrontPageShelfView {
     
     private func applySnapshot() {
         var snapshot = Snapshot()
-        snapshot.appendSections([.savedSearch])
-        snapshot.appendItems(items, toSection: .savedSearch)
+        for section in Section.allCases {
+            let datasource = shelfDatasource.datasource(forSection: section)
+            if datasource.isEmpty { continue }
+            items[section] = datasource
+            snapshot.appendSections([section])
+            snapshot.appendItems(datasource, toSection: section)
+        }
         
-        snapshot.appendSections([.recentlyFavorited])
-        snapshot.appendItems(items2, toSection: .recentlyFavorited)
-        datasource.apply(snapshot, animatingDifferences: true)
+        collectionViewDatasource.apply(snapshot, animatingDifferences: true)
     }
 }
+
