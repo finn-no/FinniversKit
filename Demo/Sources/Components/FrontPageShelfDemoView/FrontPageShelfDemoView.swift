@@ -4,6 +4,7 @@ class FrontPageShelfDemoView: UIView {
     private lazy var shelfView: FrontPageShelfView = {
         let view = FrontPageShelfView(withDatasource: self)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.shelfDelegate = self
         return view
     }()
     
@@ -40,6 +41,9 @@ extension FrontPageShelfDemoView: FrontPageShelfViewDataSource {
         } else if let model = item as? RecentlyFavoritedViewmodel {
             let cell = collectionView.dequeue(RecentlyFavoritedShelfCell.self, for: indexPath)
             cell.configure(withModel: model)
+            cell.buttonAction = { [weak self]  _, _ in
+                self?.unfavoriteItem(item, atIndexPath: indexPath)
+            }
             cell.datasource = self
             cell.loadImage()
             return cell
@@ -58,6 +62,11 @@ extension FrontPageShelfDemoView: FrontPageShelfViewDataSource {
         case .recentlyFavorited:
             return favoriteItems
         }
+    }
+    
+    private func unfavoriteItem(_ item: AnyHashable,  atIndexPath indexPath: IndexPath) {
+        favoriteItems.remove(at: indexPath.item)
+        shelfView.removeItem(item)
     }
 }
 
@@ -84,6 +93,12 @@ extension FrontPageShelfDemoView: RemoteImageViewDataSource {
     }
     
     func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {
+    }
+}
+
+extension FrontPageShelfDemoView: FrontPageShelfDelegate {
+    func frontPageShelfView(_ collectionView: UICollectionView, didSelectItem item: AnyHashable) {
+        print("did select item: \(item)")
     }
 }
 
