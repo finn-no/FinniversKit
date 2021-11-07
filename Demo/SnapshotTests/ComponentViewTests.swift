@@ -286,4 +286,8 @@ class ComponentViewTests: XCTestCase {
     func testSavedSearch() {
         snapshot(.savedSearch)
     }
+    
+    func testFrontPageShelf() {
+        snapshot(.frontPageShelf)
+    }
 }
