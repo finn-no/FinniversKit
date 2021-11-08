@@ -4,11 +4,13 @@ public struct SavedSearchShelfViewModel {
     public let title: String
     public let imageUrlString: String?
     public let id: String
+    public let adId: String
     
-    public init(title: String, imageUrlString: String?) {
+    public init(id: String = UUID().uuidString, title: String, imageUrlString: String?, adId: String = UUID().uuidString) {
         self.title = title
         self.imageUrlString = imageUrlString
-        id = UUID().uuidString
+        self.id = id
+        self.adId = adId
     }
 }
 
