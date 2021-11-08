@@ -68,6 +68,11 @@ public extension FrontPageShelfView {
         snapshot.deleteItems([item])
         collectionViewDatasource.apply(snapshot, animatingDifferences: true)
     }
+    
+    func reloadShelf() {
+        collectionViewDatasource = makeDatasource()
+        applySnapshot()
+    }
 }
 
 // MARK: - Setup
