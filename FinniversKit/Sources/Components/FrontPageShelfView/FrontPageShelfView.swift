@@ -7,7 +7,9 @@ public protocol FrontPageShelfViewDataSource {
 }
 
 public protocol FrontPageShelfDelegate: AnyObject {
-    func frontPageShelfView(_ collectionView: UICollectionView, didSelectItem item: AnyHashable)
+    func frontPageShelfView(_ view: FrontPageShelfView, didSelectFavoriteItem item: RecentlyFavoritedViewmodel)
+    func frontPageShelfView(_ view: FrontPageShelfView, didSelectSavedSearchItem item: SavedSearchShelfViewModel)
+    func frontPageShelfview(_ view: FrontPageShelfView, didSelectHeaderForSection section: FrontPageShelfView.Section)
 }
 
 public class FrontPageShelfView: UIView {
@@ -24,6 +26,7 @@ public class FrontPageShelfView: UIView {
     private var shelfDatasource: FrontPageShelfViewDataSource
     public weak var shelfDelegate: FrontPageShelfDelegate?
     
+    
     private var compositionalLayout: UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, environment in
             let section = Section.allCases[sectionIndex]
@@ -38,7 +41,7 @@ public class FrontPageShelfView: UIView {
         }
         
         let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.interSectionSpacing = 20
+        config.interSectionSpacing = 10
         layout.configuration = config
         return layout
     }
@@ -81,7 +84,7 @@ private extension FrontPageShelfView {
         addSubview(collectionView)
         registerCollectionViewCells()
         
-        collectionView.backgroundColor = .bgPrimary
+        collectionView.backgroundColor = .bgQuaternary
         collectionView.fillInSuperview()
         collectionViewDatasource = makeDatasource()
         applySnapshot()
@@ -155,9 +158,15 @@ private extension FrontPageShelfView {
             switch section {
             case .savedSearch:
                 if self.items[section, default: []].isEmpty { fallthrough }
-                headerView.configureHeaderView(withTitle: "Lagrede søk", buttonTitle: "Se alle", buttonAction: { print("Se alle lagrede søk")})
+                headerView.configureHeaderView(withTitle: "Lagrede søk", buttonTitle: "Se alle", buttonAction: {
+                    self.shelfDelegate?.frontPageShelfview(self, didSelectHeaderForSection: .savedSearch)
+                    
+                })
             case .recentlyFavorited:
-                headerView.configureHeaderView(withTitle: "Nylige favoritter", buttonTitle: "Se alle", buttonAction: { print("Se alle favoritter" )})
+                headerView.configureHeaderView(withTitle: "Nylige favoritter", buttonTitle: "Se alle", buttonAction: {
+                    self.shelfDelegate?.frontPageShelfview(self, didSelectHeaderForSection: .recentlyFavorited)
+                    
+                })
             }
             return headerView
         }
@@ -183,7 +192,12 @@ private extension FrontPageShelfView {
 extension FrontPageShelfView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = collectionViewDatasource.itemIdentifier(for: indexPath) else { return }
-        shelfDelegate?.frontPageShelfView(collectionView, didSelectItem: item)
+        if let item = item as? RecentlyFavoritedViewmodel {
+            shelfDelegate?.frontPageShelfView(self, didSelectFavoriteItem: item)
+        }
+        else if let item = item as? SavedSearchShelfViewModel {
+            shelfDelegate?.frontPageShelfView(self, didSelectSavedSearchItem: item)
+        }
     }
 }
 
