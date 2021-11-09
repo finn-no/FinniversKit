@@ -45,7 +45,7 @@ enum MarketsGridViewLayoutConfiguration {
     var itemsPerRow: CGFloat {
         2
     }
-    
+
     var columns: CGFloat {
         switch self {
         case .large: return 6

@@ -49,7 +49,7 @@ public class MarketsGridView: UIView, MarketsView {
         backgroundColor = .clear
         collectionView.register(MarketsGridViewCell.self)
         addSubview(collectionView)
-        
+
         collectionView.fillInSuperview()
     }
 
@@ -71,7 +71,7 @@ public class MarketsGridView: UIView, MarketsView {
     }
 
     // MARK: - Private
-    
+
     private func numberOfRows(for viewWidth: CGFloat) -> CGFloat {
         return MarketsGridViewLayoutConfiguration(width: viewWidth).itemsPerRow
     }

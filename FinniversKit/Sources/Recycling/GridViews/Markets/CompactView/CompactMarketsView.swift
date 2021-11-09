@@ -41,7 +41,7 @@ public class CompactMarketsView: UIView, MarketsView {
         view.layer.rasterizationScale = UIScreen.main.scale
         return view
     }()
-    
+
     private lazy var smoothShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .bgQuaternary
@@ -85,17 +85,16 @@ public class CompactMarketsView: UIView, MarketsView {
     private func setup() {
         backgroundColor = .bgQuaternary
         clipsToBounds = false
-        
+
         addSubview(smoothShadowView)
         addSubview(sharpShadowView)
         addSubview(collectionView)
-        
 
         sharpShadowView.fillInSuperview()
         smoothShadowView.fillInSuperview()
         collectionView.fillInSuperview()
     }
-    
+
     public override func layoutSubviews() {
         super.layoutSubviews()
         styleShadowAfterLayout()
@@ -166,7 +165,7 @@ private extension CompactMarketsView {
             width: smoothShadowView.bounds.width,
             height: smoothShadowView.layer.shadowRadius
         )
-        
+
         smoothShadowView.layer.shadowPath = UIBezierPath(rect: smoothShadowViewRect).cgPath
 
         let sharpShadowViewRect = CGRect(
@@ -176,7 +175,7 @@ private extension CompactMarketsView {
             height: sharpShadowView.layer.shadowRadius
         )
         sharpShadowView.layer.shadowPath = UIBezierPath(rect: sharpShadowViewRect).cgPath
-        
+
     }
 }
 
