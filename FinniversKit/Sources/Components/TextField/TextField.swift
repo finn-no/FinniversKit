@@ -149,7 +149,13 @@ public class TextField: UIView {
     }
 
     public var text: String? {
-        return textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        get {
+            textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        set {
+            textField.text = newValue
+            evaluateCurrentTextState()
+        }
     }
 
     public var helpText: String? {
