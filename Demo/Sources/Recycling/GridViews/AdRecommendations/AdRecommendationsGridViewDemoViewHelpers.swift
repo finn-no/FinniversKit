@@ -45,6 +45,19 @@ public struct Ad: StandardAdRecommendationViewModel {
     }
 
     public var favoriteButtonAccessibilityLabel = "Sett annonsen som favoritt"
+
+    public var hideImageOverlay: Bool {
+        imageText.isNilOrEmpty && iconImage == nil
+    }
+}
+
+extension Optional where Wrapped == String {
+    var isNilOrEmpty: Bool {
+        guard let value = self else {
+            return true
+        }
+        return value.isEmpty
+    }
 }
 
 /// A model confirming to the JobAdRecommendationViewModel protocol for showcasing JobAdRecommendationCell in playground.
@@ -92,7 +105,7 @@ struct AdFactory {
                 iconImage: icon,
                 title: title,
                 subtitle: subtitle,
-                accessory: index % 2 == 0 ? "Totalpris \(price)" : nil,
+                accessory: index % 2 == 0 ? "Totalpris \(price ?? "mangler")" : nil,
                 imageText: price,
                 isFavorite: false,
                 scaleImageToFillView: scaleImageToFillView,
@@ -102,17 +115,19 @@ struct AdFactory {
         }
     }
 
-    private static var iconImages: [UIImage] {
+    private static var iconImages: [UIImage?] {
         return [
             UIImage(named: .realestate),
             UIImage(named: .realestate),
             UIImage(named: .realestate),
-            UIImage(named: .jobs),
+            nil,
             UIImage(named: .realestate),
             UIImage(named: .realestate),
             UIImage(named: .realestate),
             UIImage(named: .realestate),
-            UIImage(named: .realestate)
+            UIImage(named: .realestate),
+            nil,
+            nil
         ]
     }
 
@@ -126,7 +141,9 @@ struct AdFactory {
             "Privat slott",
             "Pent brukt bolig",
             "Enebolig i rolig strøk",
-            "Hus til slags"
+            "Hus til slags",
+            "Hus uten ikon",
+            "Hus uten ikon og pris"
         ]
     }
 
@@ -141,34 +158,41 @@ struct AdFactory {
             "Langtvekkistan",
             "Elverum",
             "Brønnøysund",
-            "Bodø"
+            "Bodø",
+            "Langtvekkistan"
         ]
     }
 
-    private static var prices: [String] {
-        return ["845 000,-",
-                "164 000,-",
-                "355 000,-",
-                "",
-                "746 000,-",
-                "347 000,-",
-                "546 000,-",
-                "647 000,-",
-                "264 000,-"]
+    private static var prices: [String?] {
+        return [
+            "845 000,-",
+            "164 000,-",
+            "355 000,-",
+            "",
+            "746 000,-",
+            "347 000,-",
+            "546 000,-",
+            "647 000,-",
+            "264 000,-",
+            "123 456,-",
+            nil
+        ]
     }
 
     private static var scaleImagesToFillView: [Bool] {
-        return [true,
-                true,
-                true,
-                false,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true]
+        return [
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ]
     }
 
     private static var imageSources: [ImageSource] {

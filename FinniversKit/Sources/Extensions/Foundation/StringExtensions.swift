@@ -33,3 +33,12 @@ public extension String {
         NSAttributedString(string: self, attributes: attributes)
     }
 }
+
+extension Optional where Wrapped == String {
+    var isNilOrEmpty: Bool {
+        guard let value = self else {
+            return true
+        }
+        return value.isEmpty
+    }
+}

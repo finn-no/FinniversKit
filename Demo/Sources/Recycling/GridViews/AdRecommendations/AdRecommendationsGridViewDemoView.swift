@@ -7,7 +7,7 @@ import FinniversKit
 /// For use with AdRecommendationsGridView.
 public struct AdDataSource {
     let models: [AdRecommendation] = {
-        var ads: [AdRecommendation] = AdFactory.create(numberOfModels: 9).map { .ad($0) }
+        var ads: [AdRecommendation] = AdFactory.create(numberOfModels: 11).map { .ad($0) }
         ads.insert(contentsOf: JobAdFactory.create(numberOfModels: 2).map { .job($0) }, at: 1)
         ads.insert(.ad(AdFactory.googleDemoAd), at: 4)
         ads.insert(.ad(AdFactory.nativeDemoAd), at: 8)
@@ -120,7 +120,7 @@ extension AdRecommendationsGridViewDemoView: AdRecommendationsGridViewDataSource
                 cell.imageDataSource = adRecommendationsGridView
                 cell.delegate = adRecommendationsGridView
                 cell.configure(with: ad, atIndex: indexPath.item)
-                cell.showImageDescriptionView = ad.scaleImageToFillView
+                //cell.showImageDescriptionView = ad.scaleImageToFillView
                 return cell
             }
         case .job(let ad):
