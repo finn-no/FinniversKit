@@ -27,6 +27,21 @@ public class MarketsGridView: UIView, MarketsView {
     private let itemSpacing: CGFloat = .spacingS
     private let sideMargin: CGFloat = .spacingM
     private let rowSpacing: CGFloat = .spacingS
+    private var bothSidesGradientLayer: CAGradientLayer? {
+        willSet {
+            bothSidesGradientLayer?.removeFromSuperlayer()
+        }
+    }
+    private var leftSideGradientLayer: CAGradientLayer? {
+        willSet {
+            leftSideGradientLayer?.removeFromSuperlayer()
+        }
+    }
+    private var rightSideGradientLayer: CAGradientLayer? {
+        willSet {
+            rightSideGradientLayer?.removeFromSuperlayer()
+        }
+    }
 
     // MARK: - Setup
 
@@ -51,9 +66,7 @@ public class MarketsGridView: UIView, MarketsView {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        //if collectionView.bounds.width < collectionView.contentSize.width {
-            addGradientMask(to: self)
-        //}
+        updateGradient()
     }
 
     private func setup() {
@@ -63,12 +76,28 @@ public class MarketsGridView: UIView, MarketsView {
         addSubview(collectionView)
 
         collectionView.fillInSuperview()
+
+        DispatchQueue.main.async { [weak self] in
+            UIView.animate(withDuration: 0.2, animations: {
+                self?.layoutIfNeeded()
+            }, completion: { _ in
+                self?.updateGradient()
+            })
+        }
     }
 
     // MARK: - Functionality
 
     public func reloadData() {
         collectionView.reloadData()
+        
+        DispatchQueue.main.async { [weak self] in
+            UIView.animate(withDuration: 0.2, animations: {
+                self?.layoutIfNeeded()
+            }, completion: { _ in
+                self?.updateGradient()
+            })
+        }
     }
 
     public func calculateSize(constrainedTo width: CGFloat) -> CGSize {
@@ -92,7 +121,7 @@ public class MarketsGridView: UIView, MarketsView {
         let items = CGFloat(numberOfItems)
         let numberOfFittingItems = viewWidth / (itemSize.width + itemSpacing)
         let fitFactor = numberOfFittingItems / items
-        if fitFactor > 0.75 {
+        if fitFactor > 0.65 {
             return 1
         }
         return 2
@@ -113,16 +142,59 @@ public class MarketsGridView: UIView, MarketsView {
         return itemSpacing
     }
 
-    private func addGradientMask(to view: UIView) {
+    private func createGradientLayer(leftSide: Bool, rightSide: Bool) -> CAGradientLayer {
         let transparent = UIColor.white.withAlphaComponent(0.2).cgColor
         let opaque = UIColor.white.cgColor
         let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: -5, width: view.bounds.width, height: view.bounds.height + 10)
-        gradientLayer.colors = [opaque, transparent]
-        gradientLayer.locations = [0, 1]
-        gradientLayer.startPoint = CGPoint(x: 0.8, y: 0.5)
+        gradientLayer.frame = CGRect(x: 0, y: -5, width: bounds.width, height: bounds.height + 10)
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
-        view.layer.mask = gradientLayer
+
+        if leftSide && rightSide {
+            gradientLayer.colors = [transparent, opaque, opaque, transparent]
+            gradientLayer.locations = [0.0, 0.2, 0.8, 1.0]
+        } else if leftSide {
+            gradientLayer.colors = [transparent, opaque]
+            gradientLayer.locations = [0.0, 0.2]
+        } else if rightSide {
+            gradientLayer.colors = [opaque, transparent]
+            gradientLayer.locations = [0.8, 1.0]
+        }
+        return gradientLayer
+    }
+
+    private func updateGradient() {
+        guard collectionView.bounds.width < collectionView.contentSize.width else {
+            layer.mask?.removeFromSuperlayer()
+            layer.mask = nil
+            return
+        }
+        let halfItemWidth = itemSize.width / 2.0
+        let leftGradient = collectionView.contentOffset.x > halfItemWidth
+        let rightGradient = (collectionView.contentSize.width - collectionView.bounds.width - collectionView.contentOffset.x) > halfItemWidth
+
+        if leftGradient && rightGradient {
+            if bothSidesGradientLayer == nil {
+                bothSidesGradientLayer = createGradientLayer(leftSide: true, rightSide: true)
+            }
+            bothSidesGradientLayer?.frame = CGRect(x: 0, y: -5, width: bounds.width, height: bounds.height + 10)
+            layer.mask = bothSidesGradientLayer
+        } else if leftGradient {
+            if leftSideGradientLayer == nil {
+                leftSideGradientLayer = createGradientLayer(leftSide: true, rightSide: false)
+            }
+            leftSideGradientLayer?.frame = CGRect(x: 0, y: -5, width: bounds.width, height: bounds.height + 10)
+            layer.mask = leftSideGradientLayer
+        } else if rightGradient {
+            if rightSideGradientLayer == nil {
+                rightSideGradientLayer = createGradientLayer(leftSide: false, rightSide: true)
+            }
+            rightSideGradientLayer?.frame = CGRect(x: 0, y: -5, width: bounds.width, height: bounds.height + 10)
+            layer.mask = rightSideGradientLayer
+        } else {
+            layer.mask?.removeFromSuperlayer()
+            layer.mask = nil
+        }
     }
 }
 
@@ -134,27 +206,7 @@ extension MarketsGridView: UICollectionViewDelegateFlowLayout {
     }
 
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        //return insets(for: bounds.width)
-        guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else {
-            return insets(for: bounds.width)
-        }
-        let cellWidth: CGFloat = flowLayout.itemSize.width
-        let cellSpacing: CGFloat = flowLayout.minimumInteritemSpacing
-        var cellCount = CGFloat(collectionView.numberOfItems(inSection: section))
-        var collectionWidth = collectionView.frame.size.width
-        var totalWidth: CGFloat
-        collectionWidth -= collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right
-        repeat {
-            totalWidth = cellWidth * cellCount + cellSpacing * (cellCount - 1)
-            cellCount -= 1
-        } while totalWidth >= collectionWidth
-
-        if totalWidth > 0 {
-            let edgeInset = (collectionWidth - totalWidth) / 2
-            return UIEdgeInsets.init(top: flowLayout.sectionInset.top, left: edgeInset, bottom: flowLayout.sectionInset.bottom, right: edgeInset)
-        } else {
-            return flowLayout.sectionInset
-        }
+        return insets(for: bounds.width)
     }
 
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -189,5 +241,9 @@ extension MarketsGridView: UICollectionViewDataSource {
 extension MarketsGridView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.marketsView(self, didSelectItemAtIndex: indexPath.row)
+    }
+
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        updateGradient()
     }
 }
