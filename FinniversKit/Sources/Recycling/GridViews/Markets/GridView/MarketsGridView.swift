@@ -64,6 +64,11 @@ public class MarketsGridView: UIView, MarketsView {
         setup()
     }
 
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateGradient()
+    }
+
     public override func layoutSubviews() {
         super.layoutSubviews()
         updateGradient()
@@ -90,7 +95,7 @@ public class MarketsGridView: UIView, MarketsView {
 
     public func reloadData() {
         collectionView.reloadData()
-        
+
         DispatchQueue.main.async { [weak self] in
             UIView.animate(withDuration: 0.2, animations: {
                 self?.layoutIfNeeded()
