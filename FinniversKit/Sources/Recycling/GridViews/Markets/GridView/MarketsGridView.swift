@@ -123,10 +123,13 @@ public class MarketsGridView: UIView, MarketsView {
         else {
             return 1
         }
+        let widthOfContent = viewWidth - sideMargin * 2
         let items = CGFloat(numberOfItems)
-        let numberOfFittingItems = viewWidth / (itemSize.width + itemSpacing)
+        let numberOfFittingItems = widthOfContent / (itemSize.width + itemSpacing)
         let fitFactor = numberOfFittingItems / items
-        if fitFactor > 0.65 {
+
+        if fitFactor > 0.6 {
+            // More than 60 % of the tiles/markets (and spacing) fully fit in 1 row
             return 1
         }
         return 2
