@@ -64,11 +64,6 @@ public class MarketsGridView: UIView, MarketsView {
         setup()
     }
 
-    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        updateGradient()
-    }
-
     public override func layoutSubviews() {
         super.layoutSubviews()
         updateGradient()
