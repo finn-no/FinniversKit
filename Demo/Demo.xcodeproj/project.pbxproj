@@ -393,7 +393,6 @@
 		46E773A2242CEF0A008A5E93 /* NotificationsListViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListViewDemoView.swift; sourceTree = "<group>"; };
 		46E773A3242CEF0A008A5E93 /* NotificationsListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
 		46E77561242CFFA5008A5E93 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		46E77562242CFFA5008A5E93 /* FinnUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FinnUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46E7756C242D4736008A5E93 /* SnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46E77570242D4736008A5E93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46E77576242D476B008A5E93 /* DnaViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DnaViewTests.swift; sourceTree = "<group>"; };
@@ -1566,7 +1565,6 @@
 			isa = PBXGroup;
 			children = (
 				46E77561242CFFA5008A5E93 /* FinniversKit.framework */,
-				46E77562242CFFA5008A5E93 /* FinnUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

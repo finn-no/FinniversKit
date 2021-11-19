@@ -73,7 +73,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     private lazy var headerView = UIView()
 
     private lazy var headerLabel: Label = {
-        var headerLabel = Label(style: .title3)
+        var headerLabel = Label(style: .title3Strong)
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
         return headerLabel
     }()
@@ -192,7 +192,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
             christmasPromotionContainer.topAnchor.constraint(equalTo: promoContainer.bottomAnchor, constant: isChristmasPromotionShowing ? .spacingL : 0),
             christmasPromotionContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
             christmasPromotionContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
-            headerLabel.topAnchor.constraint(equalTo: christmasPromotionContainer.bottomAnchor, constant: .spacingM),
+            headerLabel.topAnchor.constraint(equalTo: christmasPromotionContainer.bottomAnchor, constant: .spacingL),
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
             headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
