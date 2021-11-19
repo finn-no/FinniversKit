@@ -3,13 +3,13 @@
 //
 
 public struct LinkButtonViewModel {
-    let buttonIdentifier: String?
-    let buttonTitle: String
-    let subtitle: String?
-    let linkUrl: URL
-    let isExternal: Bool
-    let buttonStyle: Button.Style?
-    let buttonSize: Button.Size
+    public let buttonIdentifier: String?
+    public let buttonTitle: String
+    public let subtitle: String?
+    public let linkUrl: URL
+    public let isExternal: Bool
+    public let buttonStyle: Button.Style?
+    public let buttonSize: Button.Size
 
     public init(
         buttonIdentifier: String?,
