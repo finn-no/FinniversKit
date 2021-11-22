@@ -41,5 +41,4 @@ class SavedSearchShelfFactory {
             "https://www.younghouselove.com/wp-content/uploads//2017/04/Beach-House-Update-Three-Houses-One-Pink.jpg"
         ]
     }
-    
 }

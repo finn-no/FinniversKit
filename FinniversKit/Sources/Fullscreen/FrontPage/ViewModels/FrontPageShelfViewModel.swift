@@ -7,7 +7,7 @@ public class FrontPageShelfViewModel {
     
     private let headerHeight: CGFloat = 44
     private let topPadding: CGFloat = 20
-    private let savedSearchHeight: CGFloat = 90
+    private let savedSearchHeight: CGFloat = 100
     private let favoriteHeight: CGFloat = 190
     
     public var heightForShelf: CGFloat {
