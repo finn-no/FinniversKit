@@ -28,7 +28,7 @@ public class FrontPageShelfView: UIView {
     public weak var shelfDelegate: FrontPageShelfDelegate?
 
     private var compositionalLayout: UICollectionViewCompositionalLayout {
-        let layout = UICollectionViewCompositionalLayout { sectionIndex, _ in
+        let layout = UICollectionViewCompositionalLayout { [weak self] sectionIndex, _ in
             let section = Section.allCases[sectionIndex]
             switch section {
             case .savedSearch:
