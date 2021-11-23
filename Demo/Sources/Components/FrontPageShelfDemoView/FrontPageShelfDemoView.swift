@@ -97,7 +97,7 @@ extension FrontPageShelfDemoView: RemoteImageViewDataSource {
 }
 
 extension FrontPageShelfDemoView: FrontPageShelfDelegate {
-    func frontPageShelfview(_ view: FrontPageShelfView, didSelectHeaderForSection section: FrontPageShelfView.Section) {
+    func frontPageShelfView(_ view: FrontPageShelfView, didSelectHeaderForSection section: FrontPageShelfView.Section) {
         print("Header for section \(section) pressed")
     }
     

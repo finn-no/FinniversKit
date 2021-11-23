@@ -9,7 +9,7 @@ public protocol FrontPageShelfViewDataSource {
 public protocol FrontPageShelfDelegate: AnyObject {
     func frontPageShelfView(_ view: FrontPageShelfView, didSelectFavoriteItem item: RecentlyFavoritedViewmodel)
     func frontPageShelfView(_ view: FrontPageShelfView, didSelectSavedSearchItem item: SavedSearchShelfViewModel)
-    func frontPageShelfview(_ view: FrontPageShelfView, didSelectHeaderForSection section: FrontPageShelfView.Section)
+    func frontPageShelfView(_ view: FrontPageShelfView, didSelectHeaderForSection section: FrontPageShelfView.Section)
 }
 
 public class FrontPageShelfView: UIView {
@@ -159,12 +159,12 @@ private extension FrontPageShelfView {
             case .savedSearch:
                 if self.items[section, default: []].isEmpty { fallthrough }
                 headerView.configureHeaderView(withTitle: "Lagrede søk", buttonTitle: "Se alle", buttonAction: {
-                    self.shelfDelegate?.frontPageShelfview(self, didSelectHeaderForSection: .savedSearch)
+                    self.shelfDelegate?.frontPageShelfView(self, didSelectHeaderForSection: .savedSearch)
                     
                 })
             case .recentlyFavorited:
                 headerView.configureHeaderView(withTitle: "Nylige favoritter", buttonTitle: "Se alle", buttonAction: {
-                    self.shelfDelegate?.frontPageShelfview(self, didSelectHeaderForSection: .recentlyFavorited)
+                    self.shelfDelegate?.frontPageShelfView(self, didSelectHeaderForSection: .recentlyFavorited)
                     
                 })
             }

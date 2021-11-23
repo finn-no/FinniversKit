@@ -12,6 +12,7 @@ public protocol FrontPageViewModel {
 
 public protocol FrontPageViewDelegate: MarketsViewDelegate, AdRecommendationsGridViewDelegate {
     func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView)
+    func frontPageView(_ frontPageView: FrontPageView, didUnfavoriteRecentlyFavorited item: RecentlyFavoritedViewmodel)
 }
 
 public final class FrontPageView: UIView, BasicFrontPageView {
@@ -216,7 +217,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
             shelfContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 0),
             shelfContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: 0),
             
-            headerLabel.topAnchor.constraint(equalTo: shelfContainer.bottomAnchor, constant: isShowingShelf ? .spacingM : 0),
+            headerLabel.topAnchor.constraint(equalTo: shelfContainer.bottomAnchor, constant: .spacingM),
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
             headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
@@ -299,6 +300,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     
     private func addFrontPageShelf() {
         guard shelfViewModel != nil else { return }
+        frontPageShelfView?.removeFromSuperview()
         let view = FrontPageShelfView(withDatasource: self)
         view.translatesAutoresizingMaskIntoConstraints = false
         frontPageShelfView = view
@@ -421,10 +423,13 @@ extension FrontPageView: FrontPageShelfViewDataSource {
     public func removeFavoritedItem(_ item: AnyHashable, atIndexPath indexPath: IndexPath) {
         guard
             let viewModel = shelfViewModel,
-            let shelfView = frontPageShelfView
+            let shelfView = frontPageShelfView,
+            let favoriteModel = item as? RecentlyFavoritedViewmodel
         else { return }
+        
         viewModel.removeFavoritedItem(atIndex: indexPath.item)
         shelfView.removeItem(item)
+        delegate?.frontPageView(self, didUnfavoriteRecentlyFavorited: favoriteModel)
     }
 }
 

@@ -113,6 +113,10 @@ extension FrontpageViewDemoView: FrontPageViewDelegate {
     public func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView) {
         frontPageView.reloadData()
     }
+    
+    public func frontPageView(_ frontPageView: FrontPageView, didUnfavoriteRecentlyFavorited item: RecentlyFavoritedViewmodel) {
+        print(item)
+    }
 }
 
 extension FrontpageViewDemoView: AdRecommendationsGridViewDelegate {
@@ -250,7 +254,7 @@ private class PromoViewModel: PromoLinkViewModel {
 
 // MARK: - FrontPageShelfDelegate
 extension FrontpageViewDemoView: FrontPageShelfDelegate {
-    public func frontPageShelfview(_ view: FrontPageShelfView, didSelectHeaderForSection section: FrontPageShelfView.Section) {
+    public func frontPageShelfView(_ view: FrontPageShelfView, didSelectHeaderForSection section: FrontPageShelfView.Section) {
         switch section {
         case .recentlyFavorited:
             print("Header for favorite item selected")
