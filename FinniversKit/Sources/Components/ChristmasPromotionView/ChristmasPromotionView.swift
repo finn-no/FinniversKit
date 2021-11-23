@@ -1,27 +1,32 @@
 import UIKit
 
 public protocol PromotionViewDelegate: AnyObject {
-    func didSelectChristmasPromotion(_ promotion: ChristmasPromotionView)
+    func christmasPromotionView(_ promotionView: ChristmasPromotionView, didSelect action: ChristmasPromotionView.Action)
 }
 
 public struct ChristmasPromotionViewModel {
-    let title: String
-    let subtitle: String
-    let buttonTitle: String
     
-    public init(title: String, subtitle: String, buttonTitle: String) {
+    let title: String
+    let helpButtonTitle: String
+    let adsButtonTitle: String
+    
+    public init(title: String, helpButtonTitle: String, adsButtonTitle: String) {
         self.title = title
-        self.subtitle = subtitle
-        self.buttonTitle = buttonTitle
+        self.helpButtonTitle = helpButtonTitle
+        self.adsButtonTitle = adsButtonTitle
     }
 }
 
 public class ChristmasPromotionView: UIView {
     static let height: CGFloat = 150
+    public enum Action {
+        case seeAds
+        case help
+    }
     
     private lazy var backgroundView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .bgPrimary
+        view.backgroundColor = .bgColor
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
         return view
@@ -47,21 +52,26 @@ public class ChristmasPromotionView: UIView {
     }()
     
     private lazy var titleLabel: UILabel = {
-        let label = Label(style: .title3Strong, withAutoLayout: true)
+        let label = Label(style: .bodyStrong, withAutoLayout: true)
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
     
-    private lazy var subtitleLabel: UILabel = {
-        let label = Label(style: .caption, withAutoLayout: true)
-        label.numberOfLines = 1
-        label.setContentCompressionResistancePriority(.required, for: .vertical)
-        return label
-    }()
-    
-    private lazy var button: Button = {
+    private lazy var helpButton: Button = {
         let button = Button(style: .default,size: .small, withAutoLayout: true)
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(seeHelpButtonTapped), for: .touchUpInside)
+        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        button.setContentCompressionResistancePriority(.required, for: .vertical)
+        button.backgroundColor = .bgColor
+        return button
+    }()
+    
+    private lazy var seeAdsButton: Button = {
+        let button = Button(style: .default, size: .small, withAutoLayout: true)
+        button.addTarget(self, action: #selector(seeAdsButtonTapped), for: .touchUpInside)
+        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        button.setContentCompressionResistancePriority(.required, for: .vertical)
+        button.backgroundColor = .bgColor
         return button
     }()
     
@@ -78,10 +88,10 @@ public class ChristmasPromotionView: UIView {
     private lazy var verticalStack: UIStackView = {
         let stack = UIStackView(withAutoLayout: true)
         stack.axis = .vertical
-        stack.spacing = 10
+        stack.spacing = 12
         stack.distribution = .fillProportionally
-        stack.addArrangedSubviews([titleLabel, subtitleLabel, button])
-        stack.setCustomSpacing(16, after: subtitleLabel)
+        stack.addArrangedSubviews([titleLabel, helpButton, seeAdsButton])
+        stack.setCustomSpacing(14, after: titleLabel)
         return stack
     }()
     
@@ -89,8 +99,8 @@ public class ChristmasPromotionView: UIView {
     public var model: ChristmasPromotionViewModel {
         didSet {
             self.titleLabel.text = model.title
-            self.subtitleLabel.text = model.subtitle
-            self.button.setTitle(model.buttonTitle, for: .normal)
+            self.helpButton.setTitle(model.helpButtonTitle, for: .normal)
+            self.seeAdsButton.setTitle(model.adsButtonTitle, for: .normal)
         }
     }
     
@@ -119,14 +129,14 @@ extension ChristmasPromotionView {
         backgroundView.addSubview(image)
         
         titleLabel.text = model.title
-        subtitleLabel.text = model.subtitle
-        button.setTitle(model.buttonTitle, for: .normal)
+        helpButton.setTitle(model.helpButtonTitle, for: .normal)
+        seeAdsButton.setTitle(model.adsButtonTitle, for: .normal)
         
         NSLayoutConstraint.activate([
             verticalStack.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
             verticalStack.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingL),
-            verticalStack.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingL),
-            verticalStack.trailingAnchor.constraint(lessThanOrEqualTo: image.leadingAnchor, constant: .spacingS),
+            verticalStack.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -(.spacingM + .spacingXXS)),
+            verticalStack.trailingAnchor.constraint(lessThanOrEqualTo: image.leadingAnchor, constant: .spacingXXL),
             image.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
             image.topAnchor.constraint(equalTo: backgroundView.topAnchor),
             image.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
@@ -134,8 +144,12 @@ extension ChristmasPromotionView {
         ])
     }
     
-    @objc private func buttonTapped() {
-        delegate?.didSelectChristmasPromotion(self)
+    @objc private func seeAdsButtonTapped() {
+        delegate?.christmasPromotionView(self, didSelect: .seeAds)
+    }
+    
+    @objc private func seeHelpButtonTapped() {
+        delegate?.christmasPromotionView(self, didSelect: .help)
     }
 }
 
@@ -143,5 +157,9 @@ extension ChristmasPromotionView {
 private extension UIColor {
     static var shadowColor: UIColor {
         return UIColor(hex: "475569")
+    }
+    
+    static var bgColor: UIColor {
+        return .dynamicColorIfAvailable(defaultColor: .milk, darkModeColor: .blueGray700)
     }
 }
