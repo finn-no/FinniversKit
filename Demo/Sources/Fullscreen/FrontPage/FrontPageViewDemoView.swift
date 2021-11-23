@@ -51,7 +51,7 @@ public class FrontpageViewDemoView: UIView, Tweakable {
         // Christmas promotion Data
         let model = ChristmasPromotionViewModel(title: "Hjelp til jul hos FINN",
                                                 helpButtonTitle: "Be om eller tilby hjelp",
-                                                adsButtonTitle: "Se anonnsene")
+                                                adsButtonTitle: "Se annonsene")
         view.showChristmasPromotion(withModel: model, andDelegate: self)
         return view
     }()

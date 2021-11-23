@@ -60,7 +60,7 @@ public class ChristmasPromotionView: UIView {
     private lazy var helpButton: Button = {
         let button = Button(style: .default,size: .small, withAutoLayout: true)
         button.addTarget(self, action: #selector(seeHelpButtonTapped), for: .touchUpInside)
-        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        button.heightAnchor.constraint(equalToConstant: .spacingXL).isActive = true
         button.setContentCompressionResistancePriority(.required, for: .vertical)
         button.backgroundColor = .bgColor
         return button
@@ -69,7 +69,7 @@ public class ChristmasPromotionView: UIView {
     private lazy var seeAdsButton: Button = {
         let button = Button(style: .default, size: .small, withAutoLayout: true)
         button.addTarget(self, action: #selector(seeAdsButtonTapped), for: .touchUpInside)
-        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        button.heightAnchor.constraint(equalToConstant: .spacingXL).isActive = true
         button.setContentCompressionResistancePriority(.required, for: .vertical)
         button.backgroundColor = .bgColor
         return button
@@ -81,17 +81,17 @@ public class ChristmasPromotionView: UIView {
         imageView.image = image
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
-        imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
         return imageView
     }()
     
     private lazy var verticalStack: UIStackView = {
         let stack = UIStackView(withAutoLayout: true)
         stack.axis = .vertical
-        stack.spacing = 12
+        stack.spacing = .spacingXS + .spacingS
         stack.distribution = .fillProportionally
         stack.addArrangedSubviews([titleLabel, helpButton, seeAdsButton])
-        stack.setCustomSpacing(14, after: titleLabel)
+        stack.setCustomSpacing(.spacingM, after: titleLabel)
+        stack.setContentCompressionResistancePriority(.required, for: .horizontal)
         return stack
     }()
     
@@ -130,17 +130,21 @@ extension ChristmasPromotionView {
         
         titleLabel.text = model.title
         helpButton.setTitle(model.helpButtonTitle, for: .normal)
+        helpButton.sizeToFit()
+        
         seeAdsButton.setTitle(model.adsButtonTitle, for: .normal)
+        seeAdsButton.sizeToFit()
         
         NSLayoutConstraint.activate([
-            verticalStack.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
-            verticalStack.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingL),
-            verticalStack.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -(.spacingM + .spacingXXS)),
-            verticalStack.trailingAnchor.constraint(lessThanOrEqualTo: image.leadingAnchor, constant: .spacingXXL),
             image.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
             image.topAnchor.constraint(equalTo: backgroundView.topAnchor),
             image.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
-            image.widthAnchor.constraint(equalToConstant: 130)
+            image.leadingAnchor.constraint(greaterThanOrEqualTo: verticalStack.trailingAnchor, constant: .spacingM),
+            image.widthAnchor.constraint(equalToConstant: 100),
+            verticalStack.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
+            verticalStack.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingL),
+            verticalStack.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -(.spacingM + .spacingXXS)),
+            verticalStack.widthAnchor.constraint(equalToConstant: 150),
         ])
     }
     

@@ -5,7 +5,7 @@ class ChristmasPromotionDemoView: UIView {
     private lazy var promotionView: ChristmasPromotionView = {
         let model = ChristmasPromotionViewModel(title: "Hjelp til jul hos FINN",
                                                 helpButtonTitle: "Be om eller tilby hjelp",
-                                                adsButtonTitle: "Se anonnsene")
+                                                adsButtonTitle: "Se annonsene")
         let view = ChristmasPromotionView(model: model)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
