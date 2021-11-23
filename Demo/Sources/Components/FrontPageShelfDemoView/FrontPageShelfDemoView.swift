@@ -97,8 +97,16 @@ extension FrontPageShelfDemoView: RemoteImageViewDataSource {
 }
 
 extension FrontPageShelfDemoView: FrontPageShelfDelegate {
-    func frontPageShelfView(_ collectionView: UICollectionView, didSelectItem item: AnyHashable) {
-        print("did select item: \(item)")
+    func frontPageShelfView(_ view: FrontPageShelfView, didSelectHeaderForSection section: FrontPageShelfView.Section) {
+        print("Header for section \(section) pressed")
+    }
+    
+    func frontPageShelfView(_ view: FrontPageShelfView, didSelectFavoriteItem item: RecentlyFavoritedViewmodel) {
+        print("selected favorited item")
+    }
+    
+    func frontPageShelfView(_ view: FrontPageShelfView, didSelectSavedSearchItem item: SavedSearchShelfViewModel) {
+        print("selected saved item")
     }
 }
 

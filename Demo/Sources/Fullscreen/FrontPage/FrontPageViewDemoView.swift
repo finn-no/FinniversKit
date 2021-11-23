@@ -53,6 +53,11 @@ public class FrontpageViewDemoView: UIView, Tweakable {
                                                 subtitle: "Julen skal være en fin tid for alle",
                                                 buttonTitle: "Be om eller tilby hjelp til jul")
         view.showChristmasPromotion(withModel: model, andDelegate: self)
+        
+        let shelfModel = FrontPageShelfViewModel(favoritedItems:RecentlyFavoritedFactory.create(numberOfItems: 10),
+                                                 savedSearchItems: SavedSearchShelfFactory.create(numberOfItems: 5))
+        view.shelfViewModel = shelfModel
+        view.frontPageShelfDelegate = self
         return view
     }()
 
@@ -107,6 +112,10 @@ extension FrontpageViewDemoView: PromotionViewDelegate {
 extension FrontpageViewDemoView: FrontPageViewDelegate {
     public func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView) {
         frontPageView.reloadData()
+    }
+    
+    public func frontPageView(_ frontPageView: FrontPageView, didUnfavoriteRecentlyFavorited item: RecentlyFavoritedViewmodel) {
+        print(item)
     }
 }
 
@@ -241,4 +250,24 @@ extension FrontpageViewDemoView: RemoteImageViewDataSource {
 private class PromoViewModel: PromoLinkViewModel {
     var title = "Smidig bilhandel? Prøv FINNs nye prosess!"
     var image = UIImage(named: .transactionJourneyCar)
+}
+
+// MARK: - FrontPageShelfDelegate
+extension FrontpageViewDemoView: FrontPageShelfDelegate {
+    public func frontPageShelfView(_ view: FrontPageShelfView, didSelectHeaderForSection section: FrontPageShelfView.Section) {
+        switch section {
+        case .recentlyFavorited:
+            print("Header for favorite item selected")
+        case .savedSearch:
+            print("Header for saved search item selected")
+        }
+    }
+    
+    public func frontPageShelfView(_ view: FrontPageShelfView, didSelectSavedSearchItem item: SavedSearchShelfViewModel) {
+        print("saved search item selected")
+    }
+    
+    public func frontPageShelfView(_ view: FrontPageShelfView, didSelectFavoriteItem item: RecentlyFavoritedViewmodel) {
+        print("favorited item selected")
+    }
 }

@@ -9,7 +9,8 @@ class SavedSearchShelfDemoView: UIView {
         case savedSearch
     }
     
-    private var items = [1,2,3,4,5,6,7,8]
+    private var items: [SavedSearchShelfViewModel] = []
+    
     private var datasource: Datasource!
     
     private lazy var compositionalLayout: UICollectionViewCompositionalLayout = {
@@ -28,6 +29,7 @@ class SavedSearchShelfDemoView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        items = SavedSearchShelfFactory.create(numberOfItems: 8)
         setup()
     }
     
@@ -76,8 +78,11 @@ private extension SavedSearchShelfDemoView {
 private extension SavedSearchShelfDemoView {
     private func makeDatasource() -> Datasource {
         let datasource = Datasource(collectionView: collectionView) { (collectionView, indexPath, item) in
-            return collectionView.dequeue(SavedSearchShelfCell.self, for: indexPath)
+            let cell =  collectionView.dequeue(SavedSearchShelfCell.self, for: indexPath)
+            cell.configure(withModel: self.items[indexPath.item])
+            return cell
         }
+        
         datasource.supplementaryViewProvider = { (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
             if let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FrontPageShelfHeaderView.reuseIdentifier, for: indexPath) as? FrontPageShelfHeaderView {
                 
