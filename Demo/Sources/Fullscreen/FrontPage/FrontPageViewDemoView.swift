@@ -56,7 +56,7 @@ public class FrontpageViewDemoView: UIView, Tweakable {
         
         let shelfModel = FrontPageShelfViewModel(favoritedItems:RecentlyFavoritedFactory.create(numberOfItems: 10),
                                                  savedSearchItems: SavedSearchShelfFactory.create(numberOfItems: 5))
-        view.shelfViewModel = shelfModel
+        view.configureFrontpageShelfsWith(shelfModel)
         view.frontPageShelfDelegate = self
         return view
     }()

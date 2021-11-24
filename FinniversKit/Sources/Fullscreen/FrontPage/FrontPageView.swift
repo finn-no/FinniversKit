@@ -33,11 +33,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         }
     }
     
-    public var shelfViewModel: FrontPageShelfViewModel? {
-        didSet {
-            addFrontPageShelf()
-        }
-    }
+    var shelfViewModel: FrontPageShelfViewModel?
     
     public var frontPageShelfDelegate: FrontPageShelfDelegate? {
         didSet {
@@ -227,7 +223,6 @@ public final class FrontPageView: UIView, BasicFrontPageView {
             compactMarketsViewBottomConstraint,
             compactMarketsView.heightAnchor.constraint(equalToConstant: compactMarketsView.calculateSize(constrainedTo: frame.width).height)
         ])
-        shelfContainer.backgroundColor = .red
 
         adRecommendationsGridView.fillInSuperview()
         adRecommendationsGridView.headerView = headerView
@@ -298,14 +293,18 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         
     }
     
-    private func addFrontPageShelf() {
-        guard shelfViewModel != nil else { return }
-        frontPageShelfView?.removeFromSuperview()
-        let view = FrontPageShelfView(withDatasource: self)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        frontPageShelfView = view
-        shelfContainer.addSubview(view)
-        view.fillInSuperview()
+    public func configureFrontpageShelfsWith(_ model: FrontPageShelfViewModel) {
+        self.shelfViewModel = model
+        if frontPageShelfView == nil {
+            let view = FrontPageShelfView(withDatasource: self)
+            view.translatesAutoresizingMaskIntoConstraints = false
+            frontPageShelfView = view
+            shelfContainer.addSubview(view)
+            view.fillInSuperview()
+        } else {
+            frontPageShelfView?.reloadShelf()
+        }
+
         
         setupFrames()
     }
