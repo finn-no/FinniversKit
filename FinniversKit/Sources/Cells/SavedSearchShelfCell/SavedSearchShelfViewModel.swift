@@ -4,16 +4,14 @@ public struct SavedSearchShelfViewModel {
     public let title: String
     public let imageUrlString: String?
     public let id: Int
-    public let adId: Int
     public let created: Date
     
     private let identifier = UUID()
     
-    public init(id: Int, title: String, imageUrlString: String?, adId: Int = Int.random(in: 0...100_000), created: Date = Date()) {
+    public init(id: Int, title: String, imageUrlString: String?, created: Date = Date()) {
         self.title = title
         self.imageUrlString = imageUrlString
         self.id = id
-        self.adId = adId
         self.created = created
     }
 }

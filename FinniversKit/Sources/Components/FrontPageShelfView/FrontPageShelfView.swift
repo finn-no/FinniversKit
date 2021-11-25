@@ -1,6 +1,6 @@
 import UIKit
 
-public protocol FrontPageShelfViewDataSource {
+public protocol FrontPageShelfViewDataSource: AnyObject {
     func frontPageShelfView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, withItem item: AnyHashable) -> UICollectionViewCell?
     func frontPageShelfView(cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type]
     func datasource(forSection section: FrontPageShelfView.Section) -> [AnyHashable]
@@ -24,7 +24,7 @@ public class FrontPageShelfView: UIView {
     
     private var collectionViewDatasource: Datasource!
     private var items: [Section: [AnyHashable]] = [:]
-    private var shelfDatasource: FrontPageShelfViewDataSource
+    private weak var shelfDatasource: FrontPageShelfViewDataSource?
     public weak var shelfDelegate: FrontPageShelfDelegate?
     
     
@@ -92,7 +92,7 @@ private extension FrontPageShelfView {
     }
     
     func registerCollectionViewCells() {
-        shelfDatasource.frontPageShelfView(cellClassesIn: collectionView).forEach { [weak self] cell in
+        shelfDatasource?.frontPageShelfView(cellClassesIn: collectionView).forEach { [weak self] cell in
             self?.collectionView.register(cell)
         }
         collectionView.register(FrontPageShelfHeaderView.self, ofKind: FrontPageShelfHeaderView.reuseIdentifier)
@@ -149,23 +149,27 @@ private extension FrontPageShelfView {
 private extension FrontPageShelfView {
     private func makeDatasource() -> Datasource {
         let datasource = Datasource(collectionView: collectionView) { [weak self] collectionView, indexPath, item in
-            self?.shelfDatasource.frontPageShelfView(collectionView, cellForItemAt: indexPath, withItem: item)
+            self?.shelfDatasource?.frontPageShelfView(collectionView, cellForItemAt: indexPath, withItem: item)
             
         }
         
         datasource.supplementaryViewProvider = { [weak self] (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
-            guard let self = self else { return nil }
+            guard
+                let self = self,
+                  let datasource = self.shelfDatasource
+            else { return nil }
+            
             let headerView = collectionView.dequeue(FrontPageShelfHeaderView.self, for: indexPath, ofKind: kind)
             let section = Section.allCases[indexPath.section]
             switch section {
             case .savedSearch:
                 if self.items[section, default: []].isEmpty { fallthrough }
-                headerView.configureHeaderView(withTitle: self.shelfDatasource.frontPageShelfView(self, titleForSectionAt: indexPath), buttonTitle: "Se alle", buttonAction: {
+                headerView.configureHeaderView(withTitle: datasource.frontPageShelfView(self, titleForSectionAt: indexPath), buttonTitle: "Se alle", buttonAction: {
                     self.shelfDelegate?.frontPageShelfView(self, didSelectHeaderForSection: .savedSearch)
                     
                 })
             case .recentlyFavorited:
-                headerView.configureHeaderView(withTitle: self.shelfDatasource.frontPageShelfView(self, titleForSectionAt: indexPath), buttonTitle: "Se alle", buttonAction: {
+                headerView.configureHeaderView(withTitle: datasource.frontPageShelfView(self, titleForSectionAt: indexPath), buttonTitle: "Se alle", buttonAction: {
                     self.shelfDelegate?.frontPageShelfView(self, didSelectHeaderForSection: .recentlyFavorited)
                     
                 })
@@ -177,9 +181,10 @@ private extension FrontPageShelfView {
     }
     
     private func applySnapshot() {
+        guard let datasource = shelfDatasource else { return }
         var snapshot = Snapshot()
         for section in Section.allCases {
-            let datasource = shelfDatasource.datasource(forSection: section)
+            let datasource = datasource.datasource(forSection: section)
             if datasource.isEmpty { continue }
             items[section] = datasource
             snapshot.appendSections([section])

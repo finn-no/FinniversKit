@@ -105,13 +105,15 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     private var keyValueObservation: NSKeyValueObservation?
 
     private var boundsForCurrentSubviewSetup = CGRect.zero
+    private var remoteImageDataSource: RemoteImageViewDataSource
 
     // MARK: - Init
 
-    public init(delegate: FrontPageViewDelegate, marketsViewDataSource: MarketsViewDataSource, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource) {
+    public init(delegate: FrontPageViewDelegate, marketsViewDataSource: MarketsViewDataSource, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource, remoteImageViewDataSource: RemoteImageViewDataSource) {
         self.delegate = delegate
         self.adRecommendationsGridViewDataSource = adRecommendationsGridViewDataSource
         self.marketsViewDataSource = marketsViewDataSource
+        self.remoteImageDataSource = remoteImageViewDataSource
         super.init(frame: .zero)
     }
 
@@ -397,14 +399,14 @@ extension FrontPageView: FrontPageShelfViewDataSource {
             cell.buttonAction = { [weak self] _, _ in
                 self?.removeFavoritedItem(item, atIndexPath: indexPath)
             }
-            cell.datasource = self
+            cell.datasource = remoteImageDataSource
             cell.loadImage()
             
             return cell
         } else if let item = item as? SavedSearchShelfViewModel {
             let cell = collectionView.dequeue(SavedSearchShelfCell.self, for: indexPath)
             cell.configure(withModel: item)
-            cell.imageDatasource = self
+            cell.imageDatasource = remoteImageDataSource
             cell.loadImage()
             return cell
         }
@@ -433,32 +435,5 @@ extension FrontPageView: FrontPageShelfViewDataSource {
         viewModel.removeFavoritedItem(atIndex: indexPath.item)
         shelfView.removeItem(item)
         delegate?.frontPageView(self, didUnfavoriteRecentlyFavorited: favoriteModel)
-    }
-}
-
-//MARK: - RemoteImageViewDataSource
-extension FrontPageView: RemoteImageViewDataSource {
-    public func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
-        return nil
-    }
-    
-    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
-        guard let url = URL(string: imagePath) else {
-            completion(nil)
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
-            DispatchQueue.main.async {
-                if let data = data {
-                    completion(UIImage(data: data))
-                }
-            }
-        }
-        
-        task.resume()
-    }
-    
-    public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {
     }
 }
