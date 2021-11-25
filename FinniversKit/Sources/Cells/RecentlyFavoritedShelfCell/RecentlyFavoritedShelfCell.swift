@@ -31,6 +31,7 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
         imageView.widthAnchor.constraint(equalToConstant: imageviewWidth).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: imageviewWidth).isActive = true
         imageView.layer.cornerRadius = 8
+        imageView.image = defaultImage
         return imageView
     }()
     
@@ -49,13 +50,13 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
         background.alpha = 1.0
         background.clipsToBounds = true
         
-        background.addSubview(priceLabel)
+        background.layer.cornerRadius = RecentlyFavoritedShelfCell.priceTagHeight / 2
         return background
     }()
     
     private let smallShadowView: UIView = {
         let view = UIView(withAutoLayout: false)
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = .white
         view.layer.masksToBounds = false
         view.layer.cornerRadius = 8
         view.dropShadow(color: .shadowColor, opacity: 0.24, offset: CGSize(width: 0, height: 1), radius: 1)
@@ -79,7 +80,7 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
         view.addSubview(smallShadowView)
         view.addSubview(remoteImageView)
         view.addSubview(priceBackground)
-        
+        view.setContentCompressionResistancePriority(.required, for: .vertical)
         return view
     }()
     
@@ -99,7 +100,6 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
         label.numberOfLines = 2
         label.textAlignment = .left
         label.setContentCompressionResistancePriority(.required, for: .vertical)
-        label.setContentHuggingPriority(.required, for: .vertical)
         return label
     }()
     
@@ -111,7 +111,6 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
         label.numberOfLines = 1
         label.textAlignment = .left
         label.setContentCompressionResistancePriority(.required, for: .vertical)
-        label.setContentHuggingPriority(.required, for: .vertical)
         return label
     }()
     
@@ -124,7 +123,7 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
         stackView.spacing = .spacingS
         
         stackView.addArrangedSubviews([ribbonView, locationLabel, titleLabel])
-        stackView.setCustomSpacing(4, after: locationLabel)
+        stackView.setCustomSpacing(.spacingXS, after: locationLabel)
         return stackView
     }()
     
@@ -155,7 +154,30 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
         buttonAction?(model, isFavorited)
     }
     
-    public func configure(withModel model: RecentlyFavoritedViewmodel) {
+
+    
+    func setImage(_ image: UIImage?) {
+        if let image = image {
+            remoteImageView.image = image
+        } else {
+            remoteImageView.image = defaultImage
+        }
+    }
+}
+
+// MARK: - Public functions
+public extension RecentlyFavoritedShelfCell {
+    func loadImage() {
+        guard let model = model, let path = model.imageUrl else {
+            remoteImageView.setImage(defaultImage, animated: false)
+            return
+        }
+        
+        remoteImageView.loadImage(for: path, imageWidth: imageviewWidth, fallbackImage: defaultImage)
+        
+    }
+    
+    func configure(withModel model: RecentlyFavoritedViewmodel) {
         self.model = model
         titleLabel.text = model.title
         locationLabel.text = model.location
@@ -170,28 +192,6 @@ public class RecentlyFavoritedShelfCell: UICollectionViewCell {
             priceBackground.isHidden = true
         }
     }
-    
-    func setImage(_ image: UIImage?) {
-        if let image = image {
-            remoteImageView.image = image
-        } else {
-            remoteImageView.image = defaultImage
-        }
-        DispatchQueue.main.async {
-            self.setNeedsLayout()
-            self.layoutIfNeeded()
-        }
-    }
-    
-    public func loadImage() {
-        guard let model = model, let path = model.imageUrl else {
-            remoteImageView.setImage(defaultImage, animated: false)
-            return
-        }
-        
-        remoteImageView.loadImage(for: path, imageWidth: imageviewWidth, fallbackImage: defaultImage)
-        
-    }
 }
 
 //MARK: - Layout & Setups
@@ -199,6 +199,7 @@ private extension RecentlyFavoritedShelfCell {
     private func setup() {
         ribbonView.style = .disabled
         ribbonView.setContentCompressionResistancePriority(.required, for: .vertical)
+        
         favoriteButton.isToggled = true
         ribbonView.isHidden = true
         priceBackground.isHidden = true
@@ -206,10 +207,10 @@ private extension RecentlyFavoritedShelfCell {
         contentView.addSubview(imageContainerView)
         contentView.addSubview(favoriteButton)
         contentView.addSubview(verticalStack)
+        priceBackground.addSubview(priceLabel)
         
-        remoteImageView.image = defaultImage
-        imageContainerView.setContentCompressionResistancePriority(.required, for: .vertical)
-        priceBackground.layer.cornerRadius = RecentlyFavoritedShelfCell.priceTagHeight / 2
+        
+        
         
         NSLayoutConstraint.activate([
             priceBackground.heightAnchor.constraint(equalToConstant: RecentlyFavoritedShelfCell.priceTagHeight),

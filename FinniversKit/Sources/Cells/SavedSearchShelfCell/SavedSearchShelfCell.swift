@@ -50,7 +50,6 @@ public class SavedSearchShelfCell: UICollectionViewCell {
         let label = Label(style: .detailStrong, withAutoLayout: true)
         label.numberOfLines = 1
         label.textAlignment = .center
-        label.text = "Møbler i nabolaget"
         return label
     }()
     

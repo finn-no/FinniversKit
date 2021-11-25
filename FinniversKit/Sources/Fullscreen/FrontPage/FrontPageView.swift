@@ -386,6 +386,10 @@ extension FrontPageView: MarketsViewDelegate {
 
 // MARK: - FrontPageShelfDatasource
 extension FrontPageView: FrontPageShelfViewDataSource {
+    public func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForSectionAt index: IndexPath) -> String {
+        shelfViewModel?.titleForSection(at: index) ?? ""
+    }
+    
     public func frontPageShelfView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, withItem item: AnyHashable) -> UICollectionViewCell? {
         if let item = item as? RecentlyFavoritedViewmodel {
             let cell = collectionView.dequeue(RecentlyFavoritedShelfCell.self, for: indexPath)

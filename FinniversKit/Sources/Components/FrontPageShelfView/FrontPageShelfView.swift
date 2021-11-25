@@ -4,6 +4,7 @@ public protocol FrontPageShelfViewDataSource {
     func frontPageShelfView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, withItem item: AnyHashable) -> UICollectionViewCell?
     func frontPageShelfView(cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type]
     func datasource(forSection section: FrontPageShelfView.Section) -> [AnyHashable]
+    func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForSectionAt index: IndexPath) -> String
 }
 
 public protocol FrontPageShelfDelegate: AnyObject {
@@ -28,15 +29,16 @@ public class FrontPageShelfView: UIView {
     
     
     private var compositionalLayout: UICollectionViewCompositionalLayout {
-        let layout = UICollectionViewCompositionalLayout { sectionIndex, environment in
+        let layout = UICollectionViewCompositionalLayout { [weak self] sectionIndex, environment in
+            
             let section = Section.allCases[sectionIndex]
             switch section {
             case .savedSearch:
-                if self.items[section, default: []].isEmpty {
+                if let items = self?.items[section, default: []], items.isEmpty {
                     fallthrough
                 }
-                return self.savedSearchLayout
-            case .recentlyFavorited: return self.favoriteLayout
+                return self?.savedSearchLayout
+            case .recentlyFavorited: return self?.favoriteLayout
             }
         }
         
@@ -73,7 +75,6 @@ public extension FrontPageShelfView {
     }
     
     func reloadShelf() {
-        collectionViewDatasource = makeDatasource()
         applySnapshot()
     }
 }
@@ -91,8 +92,8 @@ private extension FrontPageShelfView {
     }
     
     func registerCollectionViewCells() {
-        shelfDatasource.frontPageShelfView(cellClassesIn: collectionView).forEach { cell in
-            self.collectionView.register(cell)
+        shelfDatasource.frontPageShelfView(cellClassesIn: collectionView).forEach { [weak self] cell in
+            self?.collectionView.register(cell)
         }
         collectionView.register(FrontPageShelfHeaderView.self, ofKind: FrontPageShelfHeaderView.reuseIdentifier)
     }
@@ -128,7 +129,7 @@ private extension FrontPageShelfView {
         //Groups
         let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(80), heightDimension: .estimated(90))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
-        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading:0, bottom: 0, trailing: 16)
+        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading:0, bottom: 0, trailing: .spacingM)
         
         //Sections
         let section = NSCollectionLayoutSection(group: group)
@@ -152,18 +153,19 @@ private extension FrontPageShelfView {
             
         }
         
-        datasource.supplementaryViewProvider = { (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
+        datasource.supplementaryViewProvider = { [weak self] (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
+            guard let self = self else { return nil }
             let headerView = collectionView.dequeue(FrontPageShelfHeaderView.self, for: indexPath, ofKind: kind)
             let section = Section.allCases[indexPath.section]
             switch section {
             case .savedSearch:
                 if self.items[section, default: []].isEmpty { fallthrough }
-                headerView.configureHeaderView(withTitle: "Lagrede søk", buttonTitle: "Se alle", buttonAction: {
+                headerView.configureHeaderView(withTitle: self.shelfDatasource.frontPageShelfView(self, titleForSectionAt: indexPath), buttonTitle: "Se alle", buttonAction: {
                     self.shelfDelegate?.frontPageShelfView(self, didSelectHeaderForSection: .savedSearch)
                     
                 })
             case .recentlyFavorited:
-                headerView.configureHeaderView(withTitle: "Nylige favoritter", buttonTitle: "Se alle", buttonAction: {
+                headerView.configureHeaderView(withTitle: self.shelfDatasource.frontPageShelfView(self, titleForSectionAt: indexPath), buttonTitle: "Se alle", buttonAction: {
                     self.shelfDelegate?.frontPageShelfView(self, didSelectHeaderForSection: .recentlyFavorited)
                     
                 })

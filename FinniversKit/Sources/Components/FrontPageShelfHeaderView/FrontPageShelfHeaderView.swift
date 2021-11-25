@@ -25,18 +25,29 @@ public class FrontPageShelfHeaderView: UICollectionReusableView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        setup()
     }
     
-    private(set) var title: String = ""
-    private(set) var buttonTitle: String = ""
-    private(set) var buttonAction: ButtonAction?
+    private var title: String = "" {
+        didSet {
+            titleLabel.text = title
+        }
+    }
+    
+    private var buttonTitle: String = "" {
+        didSet {
+            button.setTitle(buttonTitle, for: .normal)
+        }
+    }
+    
+    private var buttonAction: ButtonAction?
     
     public func configureHeaderView(withTitle title: String, buttonTitle: String, buttonAction: @escaping ButtonAction) {
         self.title = title
         self.buttonTitle = buttonTitle
         self.buttonAction = buttonAction
         
-        setup()
+        
     }
     
     private func setup() {
