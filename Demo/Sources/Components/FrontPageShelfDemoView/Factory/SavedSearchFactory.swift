@@ -8,7 +8,7 @@ class SavedSearchShelfFactory {
             let dataIndex = index % minCount
             let title = titles[dataIndex]
             let imageUrl = imageUrls[dataIndex]
-            return SavedSearchShelfViewModel(title: title, imageUrlString: imageUrl)
+            return SavedSearchShelfViewModel(id: Int.random(in: 0...100_000),title: title, imageUrlString: imageUrl)
         }
     }
     

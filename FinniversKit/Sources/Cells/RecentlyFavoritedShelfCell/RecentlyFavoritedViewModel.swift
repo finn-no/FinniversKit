@@ -7,6 +7,7 @@ public struct RecentlyFavoritedViewmodel: Hashable{
     public let title: String?
     public let created: String
     public let price: String?
+    private let identifier = UUID()
     
     public init(id: Int, imageUrl: String?, location: String?, title: String?, created: String, price: String?) {
         self.id = id
@@ -18,6 +19,6 @@ public struct RecentlyFavoritedViewmodel: Hashable{
     }
     
     public func hash(into hasher: inout Hasher) {
-            hasher.combine("\(id)" + created)
+            hasher.combine(identifier)
     }
 }

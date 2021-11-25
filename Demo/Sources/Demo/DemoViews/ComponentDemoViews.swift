@@ -69,8 +69,8 @@ public enum ComponentDemoViews: String, DemoViews {
     case blockUserView
     case loadingRetryView
     case promotionView
-    case recentlyfavorited
-    case savedSearch
+    case recentlyfavoritedShelf
+    case savedSearchShelf
     case frontPageShelf
 
     public var viewController: UIViewController {
@@ -212,9 +212,9 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<LoadingRetryDemoView>()
         case .promotionView:
             return DemoViewController<ChristmasPromotionDemoView>()
-        case .recentlyfavorited:
+        case .recentlyfavoritedShelf:
             return DemoViewController<RecentlyFavoritedShelfDemoView>()
-        case .savedSearch:
+        case .savedSearchShelf:
             return DemoViewController<SavedSearchShelfDemoView>()
         case .frontPageShelf:
             return DemoViewController<FrontPageShelfDemoView>()

@@ -293,7 +293,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         
     }
     
-    public func configureFrontpageShelfsWith(_ model: FrontPageShelfViewModel) {
+    public func configureFrontPageShelves(_ model: FrontPageShelfViewModel) {
         self.shelfViewModel = model
         if frontPageShelfView == nil {
             let view = FrontPageShelfView(withDatasource: self)
