@@ -58,20 +58,18 @@ public class ChristmasPromotionView: UIView {
     }()
     
     private lazy var helpButton: Button = {
-        let button = Button(style: .default,size: .small, withAutoLayout: true)
+        let button = Button(style: .customStyle, size: .small, withAutoLayout: true)
         button.addTarget(self, action: #selector(seeHelpButtonTapped), for: .touchUpInside)
         button.heightAnchor.constraint(equalToConstant: .spacingXL).isActive = true
         button.setContentCompressionResistancePriority(.required, for: .vertical)
-        button.backgroundColor = .bgColor
         return button
     }()
     
     private lazy var seeAdsButton: Button = {
-        let button = Button(style: .default, size: .small, withAutoLayout: true)
+        let button = Button(style: .customStyle, size: .small, withAutoLayout: true)
         button.addTarget(self, action: #selector(seeAdsButtonTapped), for: .touchUpInside)
         button.heightAnchor.constraint(equalToConstant: .spacingXL).isActive = true
         button.setContentCompressionResistancePriority(.required, for: .vertical)
-        button.backgroundColor = .bgColor
         return button
     }()
     
@@ -166,4 +164,9 @@ private extension UIColor {
     static var bgColor: UIColor {
         return .dynamicColorIfAvailable(defaultColor: .milk, darkModeColor: .blueGray700)
     }
+}
+
+// MARK: - Button style
+private extension Button.Style {
+    static var customStyle = Button.Style.default.overrideStyle(bodyColor: .bgColor, highlightedBodyColor: .bgSecondary)
 }
