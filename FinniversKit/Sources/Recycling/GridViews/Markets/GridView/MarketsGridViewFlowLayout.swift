@@ -5,12 +5,11 @@
 import UIKit
 
 class MarketsGridViewFlowLayout: UICollectionViewFlowLayout {
-    override func invalidationContext(forBoundsChange newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
-        let context = super.invalidationContext(forBoundsChange: newBounds)
-        if let context = context as? UICollectionViewFlowLayoutInvalidationContext, let collectionView = collectionView, !context.invalidateFlowLayoutDelegateMetrics {
-            let hasChangedWidth = newBounds.width != collectionView.bounds.width
-            context.invalidateFlowLayoutDelegateMetrics = hasChangedWidth
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        guard let _ = collectionView else {
+            return false
         }
-        return context
+        // Always update layout on bounds change
+        return true
     }
 }

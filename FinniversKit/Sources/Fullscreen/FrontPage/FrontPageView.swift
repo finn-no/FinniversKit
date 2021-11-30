@@ -88,7 +88,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     private var frontPageShelfView: FrontPageShelfView?
     
     private lazy var headerLabel: Label = {
-        var headerLabel = Label(style: .title3)
+        var headerLabel = Label(style: .title3Strong)
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
         return headerLabel
     }()

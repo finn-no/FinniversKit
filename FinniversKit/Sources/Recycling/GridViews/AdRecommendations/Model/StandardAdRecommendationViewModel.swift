@@ -17,6 +17,7 @@ public protocol StandardAdRecommendationViewModel {
     var sponsoredAdData: SponsoredAdData? { get }
     var accessibilityLabel: String { get }
     var favoriteButtonAccessibilityLabel: String { get }
+    var hideImageOverlay: Bool { get }
 }
 
 public struct SponsoredAdData {
