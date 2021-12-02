@@ -34,7 +34,7 @@ public class FrontPageShelfViewModel {
     }
     
     public func titleForSection(at index: IndexPath) -> String {
-        guard index.row < sectionTitles.count else { return "" }
-        return sectionTitles[index.row]
+        guard index.section < sectionTitles.count else { return "" }
+        return sectionTitles[index.section]
     }
 }
