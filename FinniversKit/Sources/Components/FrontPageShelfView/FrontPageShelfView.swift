@@ -17,7 +17,7 @@ public class FrontPageShelfView: UIView {
     typealias Datasource = UICollectionViewDiffableDataSource<Section, AnyHashable>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
 
-    public enum Section: CaseIterable {
+    public enum Section: Int, CaseIterable {
         case savedSearch
         case recentlyFavorited
     }
@@ -26,6 +26,7 @@ public class FrontPageShelfView: UIView {
     private var items: [Section: [AnyHashable]] = [:]
     private weak var shelfDatasource: FrontPageShelfViewDataSource?
     public weak var shelfDelegate: FrontPageShelfDelegate?
+    private var scrollToSavedSearchIndexPath: IndexPath?
 
     private var compositionalLayout: UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { [weak self] sectionIndex, _ in
@@ -61,6 +62,14 @@ public class FrontPageShelfView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        if let indexPath = scrollToSavedSearchIndexPath {
+            collectionView.scrollToItem(at: indexPath, at: .left, animated: false)
+            self.scrollToSavedSearchIndexPath = nil
+        }
+    }
 }
 
 // MAKR: - Public method
@@ -70,9 +79,14 @@ public extension FrontPageShelfView {
         snapshot.deleteItems([item])
         collectionViewDatasource.apply(snapshot, animatingDifferences: true)
     }
-    
+
     func reloadShelf() {
         applySnapshot()
+    }
+
+    func scrollToSavedSearch(atIndex index: Int) {
+        scrollToSavedSearchIndexPath = IndexPath(item: index, section: Section.savedSearch.rawValue)
+        setNeedsLayout()
     }
 }
 
@@ -85,7 +99,6 @@ private extension FrontPageShelfView {
         collectionView.backgroundColor = .bgQuaternary
         collectionView.fillInSuperview()
         collectionViewDatasource = makeDatasource()
-        applySnapshot()
     }
 
     func registerCollectionViewCells() {

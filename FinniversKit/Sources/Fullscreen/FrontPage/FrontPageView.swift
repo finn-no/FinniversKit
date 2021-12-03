@@ -297,19 +297,23 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         
     }
     
-    public func configureFrontPageShelves(_ model: FrontPageShelfViewModel) {
+    public func configureFrontPageShelves(_ model: FrontPageShelfViewModel, firstVisibleSavedSearchIndex: Int?) {
         self.shelfViewModel = model
+
         if frontPageShelfView == nil {
             let view = FrontPageShelfView(withDatasource: self)
             view.translatesAutoresizingMaskIntoConstraints = false
             frontPageShelfView = view
             shelfContainer.addSubview(view)
             view.fillInSuperview()
-        } else {
-            frontPageShelfView?.reloadShelf()
         }
 
-        
+        frontPageShelfView?.reloadShelf()
+
+        if let firstVisibleSavedSearchIndex = firstVisibleSavedSearchIndex {
+            frontPageShelfView?.scrollToSavedSearch(atIndex: firstVisibleSavedSearchIndex)
+        }
+
         setupFrames()
     }
     
