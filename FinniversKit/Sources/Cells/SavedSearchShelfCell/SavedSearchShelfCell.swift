@@ -42,6 +42,13 @@ public class SavedSearchShelfCell: UICollectionViewCell {
         return stackView
     }()
 
+    private lazy var storyBorderView: StoryBorderView = {
+        let view = StoryBorderView(withAutoLayout: true)
+        view.layer.masksToBounds = true
+        view.layer.cornerRadius = Self.width / 2
+        return view
+    }()
+
     private lazy var imageContainerView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.layer.masksToBounds = false
@@ -65,6 +72,8 @@ public class SavedSearchShelfCell: UICollectionViewCell {
         stackView.addArrangedSubviews([imageContainerView, titleLabel])
 
         imageContainerView.addSubview(remoteImageView)
+        imageContainerView.addSubview(storyBorderView)
+        storyBorderView.fillInSuperview()
         remoteImageView.fillInSuperview(margin: borderInsets)
 
         NSLayoutConstraint.activate([
@@ -84,7 +93,6 @@ public class SavedSearchShelfCell: UICollectionViewCell {
     public override func layoutSubviews() {
         super.layoutSubviews()
         remoteImageView.layer.borderColor = FrontPageView.backgroundColor.cgColor
-        updateBorderColor()
     }
 }
 
@@ -103,18 +111,68 @@ public extension SavedSearchShelfCell {
     func configure(withModel model: SavedSearchShelfViewModel) {
         self.model = model
         self.titleLabel.text = model.title
-        imageContainerView.layer.borderWidth = model.isRead ? 1 : 2
         updateBorderColor()
     }
 
     private func updateBorderColor() {
         guard let isRead = model?.isRead else { return }
-        imageContainerView.layer.borderColor = isRead ? .btnDisabled : UIColor.storyBorderColor
+        storyBorderView.configure(isRead: isRead)
     }
 }
 
 private extension UIColor {
-    static var storyBorderColor: CGColor {
-        UIColor(hex: "#0391FB").cgColor
+    static var unreadStoryTopGradientColor: CGColor {
+        UIColor(hex: "#0063FB").cgColor
+    }
+
+    static var unreadStoryBottomGradientColor: CGColor {
+        UIColor(hex: "#06BEFB").cgColor
+    }
+}
+
+private class StoryBorderView: UIView {
+    private var borderSize: CGSize = .zero
+    private var isRead: Bool = true
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if frame.size != borderSize {
+            updateGradientBorder()
+        }
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            updateGradientBorder()
+        }
+    }
+
+    func configure(isRead: Bool) {
+        guard self.isRead != isRead else { return }
+        self.isRead = isRead
+        updateGradientBorder()
+    }
+
+    private func updateGradientBorder() {
+        borderSize = frame.size
+
+        layer.sublayers?.forEach({ $0.removeFromSuperlayer() })
+
+        let shape = CAShapeLayer()
+        shape.lineWidth = isRead ? 2 : 4
+        shape.path = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
+        shape.strokeColor = UIColor.black.cgColor
+        shape.fillColor = UIColor.clear.cgColor
+
+        let topColor = isRead ? .btnDisabled : UIColor.unreadStoryTopGradientColor
+        let bottomColor = isRead ? .btnDisabled : UIColor.unreadStoryBottomGradientColor
+
+        let gradient = CAGradientLayer()
+        gradient.frame =  CGRect(origin: .zero, size: frame.size)
+        gradient.colors = [topColor, bottomColor]
+        gradient.mask = shape
+
+        layer.addSublayer(gradient)
     }
 }
