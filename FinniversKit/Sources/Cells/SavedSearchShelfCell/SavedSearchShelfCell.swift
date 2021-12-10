@@ -2,7 +2,7 @@ import UIKit
 
 public class SavedSearchShelfCell: UICollectionViewCell {
     static let width: CGFloat = 74
-    private let borderInsets: CGFloat = 2
+    private let borderInsets: CGFloat = 5
 
     private var defaultImage: UIImage? {
         UIImage(named: .noImage)
@@ -19,14 +19,12 @@ public class SavedSearchShelfCell: UICollectionViewCell {
     private lazy  var remoteImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
         imageView.image = defaultImage
-        imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = (Self.width - 2 * borderInsets) / 2
         imageView.clipsToBounds = true
-        imageView.layer.borderWidth = 2
         return imageView
     }()
-    
+
     private lazy var titleLabel: Label = {
         let label = Label(style: .detailStrong, withAutoLayout: true)
         label.numberOfLines = 1
@@ -44,16 +42,8 @@ public class SavedSearchShelfCell: UICollectionViewCell {
 
     private lazy var storyBorderView: StoryBorderView = {
         let view = StoryBorderView(withAutoLayout: true)
-        view.layer.masksToBounds = true
         view.layer.cornerRadius = Self.width / 2
-        return view
-    }()
-
-    private lazy var imageContainerView: UIView = {
-        let view = UIView(withAutoLayout: true)
-        view.layer.masksToBounds = false
-        view.layer.cornerRadius = Self.width / 2
-        view.setContentCompressionResistancePriority(.required, for: .vertical)
+        view.clipsToBounds = true
         return view
     }()
 
@@ -69,12 +59,14 @@ public class SavedSearchShelfCell: UICollectionViewCell {
     private func setup() {
         contentView.addSubview(stackView)
         stackView.fillInSuperview()
-        stackView.addArrangedSubviews([imageContainerView, titleLabel])
 
+        let imageContainerView = UIView(withAutoLayout: true)
         imageContainerView.addSubview(remoteImageView)
+        remoteImageView.fillInSuperview(margin: borderInsets)
         imageContainerView.addSubview(storyBorderView)
         storyBorderView.fillInSuperview()
-        remoteImageView.fillInSuperview(margin: borderInsets)
+
+        stackView.addArrangedSubviews([imageContainerView, titleLabel])
 
         NSLayoutConstraint.activate([
             imageContainerView.heightAnchor.constraint(equalTo: imageContainerView.widthAnchor),
@@ -88,11 +80,6 @@ public class SavedSearchShelfCell: UICollectionViewCell {
         remoteImageView.setImage(defaultImage, animated: false)
         titleLabel.text = ""
         model = nil
-    }
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        remoteImageView.layer.borderColor = FrontPageView.backgroundColor.cgColor
     }
 }
 
@@ -111,24 +98,11 @@ public extension SavedSearchShelfCell {
     func configure(withModel model: SavedSearchShelfViewModel) {
         self.model = model
         self.titleLabel.text = model.title
-        updateBorderColor()
-    }
-
-    private func updateBorderColor() {
-        guard let isRead = model?.isRead else { return }
-        storyBorderView.configure(isRead: isRead)
+        storyBorderView.configure(isRead: model.isRead)
     }
 }
 
-private extension UIColor {
-    static var unreadStoryTopGradientColor: CGColor {
-        UIColor(hex: "#0063FB").cgColor
-    }
-
-    static var unreadStoryBottomGradientColor: CGColor {
-        UIColor(hex: "#06BEFB").cgColor
-    }
-}
+// MARK: - StoryBorderView
 
 private class StoryBorderView: UIView {
     private var borderSize: CGSize = .zero
@@ -174,5 +148,15 @@ private class StoryBorderView: UIView {
         gradient.mask = shape
 
         layer.addSublayer(gradient)
+    }
+}
+
+private extension UIColor {
+    static var unreadStoryTopGradientColor: CGColor {
+        UIColor(hex: "#0063FB").cgColor
+    }
+
+    static var unreadStoryBottomGradientColor: CGColor {
+        UIColor(hex: "#06BEFB").cgColor
     }
 }
