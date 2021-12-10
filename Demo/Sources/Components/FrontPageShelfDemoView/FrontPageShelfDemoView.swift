@@ -26,6 +26,7 @@ class FrontPageShelfDemoView: UIView {
         savedItems = SavedSearchShelfFactory.create(numberOfItems: 10)
         addSubview(shelfView)
         shelfView.fillInSuperview()
+        shelfView.reloadShelf()
     }
 }
 
