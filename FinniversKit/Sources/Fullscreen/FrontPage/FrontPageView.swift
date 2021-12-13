@@ -107,8 +107,6 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     private var boundsForCurrentSubviewSetup = CGRect.zero
     private var remoteImageDataSource: RemoteImageViewDataSource
 
-    static var backgroundColor: UIColor = .bgQuaternary
-
     // MARK: - Init
 
     public init(delegate: FrontPageViewDelegate, marketsViewDataSource: MarketsViewDataSource, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource, remoteImageViewDataSource: RemoteImageViewDataSource) {
@@ -185,7 +183,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = Self.backgroundColor
+        backgroundColor = .bgQuaternary
 
         addSubview(adRecommendationsGridView)
 
