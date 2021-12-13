@@ -35,7 +35,7 @@ public class SavedSearchShelfCell: UICollectionViewCell {
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.alignment = .center
+        stackView.alignment = .fill
         stackView.spacing = .spacingS
         return stackView
     }()
