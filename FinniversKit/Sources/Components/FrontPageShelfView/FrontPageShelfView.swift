@@ -66,7 +66,9 @@ public class FrontPageShelfView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         if let indexPath = scrollToSavedSearchIndexPath {
-            collectionView.scrollToItem(at: indexPath, at: .left, animated: false)
+            // Using centeredHorizontally for the first cell to preserve leading content inset for iOS 14 and below.
+            let scrollPosition: UICollectionView.ScrollPosition = indexPath.item == 0 ? .centeredHorizontally : .left
+            collectionView.scrollToItem(at: indexPath, at: scrollPosition, animated: false)
             self.scrollToSavedSearchIndexPath = nil
         }
     }
