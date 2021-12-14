@@ -308,7 +308,8 @@ public final class FrontPageView: UIView, BasicFrontPageView {
 
         frontPageShelfView?.reloadShelf()
 
-        if let firstVisibleSavedSearchIndex = firstVisibleSavedSearchIndex {
+        if let firstVisibleSavedSearchIndex = firstVisibleSavedSearchIndex,
+           model.savedSearchItems.indices.contains(firstVisibleSavedSearchIndex) {
             frontPageShelfView?.scrollToSavedSearch(atIndex: firstVisibleSavedSearchIndex)
         }
 
