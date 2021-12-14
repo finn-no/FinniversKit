@@ -76,6 +76,10 @@ public class TextView: UIView {
 
     // MARK: - Private properties
 
+    private var textViewHeightConstraint: NSLayoutConstraint!
+    private let defaultUnderLineHeight: CGFloat = 2
+    private lazy var underLineHeightConstraint = underLine.heightAnchor.constraint(equalToConstant: defaultUnderLineHeight)
+
     private lazy var textView: UITextView = {
         let view = UITextView(frame: .zero, textContainer: nil)
         view.font = .body
@@ -105,8 +109,6 @@ public class TextView: UIView {
         return label
     }()
 
-    private var textViewHeightConstraint: NSLayoutConstraint!
-
     // MARK: - Setup
 
     override init(frame: CGRect) {
@@ -117,6 +119,19 @@ public class TextView: UIView {
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Public methods
+
+    public func configure(textViewBackgroundColor: UIColor) {
+        textView.backgroundColor = textViewBackgroundColor
+    }
+
+    public func configure(shouldHideUnderLine: Bool) {
+        underLineHeightConstraint.constant = shouldHideUnderLine ? 0 : defaultUnderLineHeight
+        updateConstraintsIfNeeded()
+    }
+
+    // MARK: - Private methods
 
     private func setupSubviews() {
         textView.addSubview(placeholderLabel)
@@ -140,7 +155,7 @@ public class TextView: UIView {
             underLine.leadingAnchor.constraint(equalTo: leadingAnchor),
             underLine.topAnchor.constraint(equalTo: textView.bottomAnchor),
             underLine.trailingAnchor.constraint(equalTo: trailingAnchor),
-            underLine.heightAnchor.constraint(equalToConstant: 2),
+            underLineHeightConstraint,
 
             bottomAnchor.constraint(equalTo: underLine.bottomAnchor)
         ])
