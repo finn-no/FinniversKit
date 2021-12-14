@@ -35,6 +35,7 @@ public class TextViewDemoView: UIView {
     // MARK: - Setup
 
     private func setup() {
+        textView.delegate = self
         addSubview(textView)
         addSubview(scrollableTextView)
 
@@ -48,5 +49,25 @@ public class TextViewDemoView: UIView {
             scrollableTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
             scrollableTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS)
         ])
+    }
+
+// MARK: - TextViewDelegate
+
+extension TextViewDemoView: TextViewDelegate {
+    public func textViewDidChange(_ textView: TextView) {
+    }
+
+    public func textViewShouldBeginEditing(_ textView: TextView) -> Bool {
+        true
+    }
+
+    public func textViewDidBeginEditing(_ textView: TextView) {
+    }
+
+    public func textViewDidEndEditing(_ textView: TextView) {
+    }
+
+    public func textView(_ textView: TextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        true
     }
 }

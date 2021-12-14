@@ -9,6 +9,7 @@ public protocol TextViewDelegate: AnyObject {
     func textViewShouldBeginEditing(_ textView: TextView) -> Bool
     func textViewDidBeginEditing(_ textView: TextView)
     func textViewDidEndEditing(_ textView: TextView)
+    func textView(_ textView: TextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
 }
 
 public extension TextViewDelegate {
@@ -23,8 +24,13 @@ public extension TextViewDelegate {
     func textViewDidBeginEditing(_ textView: TextView) {
         // Default empty implementation.
     }
+
     func textViewDidEndEditing(_ textView: TextView) {
         // Default empty implementation.
+    }
+
+    func textView(_ textView: TextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        true
     }
 }
 
@@ -168,6 +174,10 @@ extension TextView: UITextViewDelegate {
 
     public func textViewDidEndEditing(_ textView: UITextView) {
         delegate?.textViewDidEndEditing(self)
+    }
+
+    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        delegate?.textView(self, shouldChangeTextIn: range, replacementText: text) ?? true
     }
 }
 
