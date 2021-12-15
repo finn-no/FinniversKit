@@ -9,6 +9,7 @@ public protocol TextViewDelegate: AnyObject {
     func textViewShouldBeginEditing(_ textView: TextView) -> Bool
     func textViewDidBeginEditing(_ textView: TextView)
     func textViewDidEndEditing(_ textView: TextView)
+    func textView(_ textView: TextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
 }
 
 public extension TextViewDelegate {
@@ -23,8 +24,13 @@ public extension TextViewDelegate {
     func textViewDidBeginEditing(_ textView: TextView) {
         // Default empty implementation.
     }
+
     func textViewDidEndEditing(_ textView: TextView) {
         // Default empty implementation.
+    }
+
+    func textView(_ textView: TextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        true
     }
 }
 
@@ -70,6 +76,10 @@ public class TextView: UIView {
 
     // MARK: - Private properties
 
+    private var textViewHeightConstraint: NSLayoutConstraint!
+    private let defaultUnderLineHeight: CGFloat = 2
+    private lazy var underLineHeightConstraint = underLine.heightAnchor.constraint(equalToConstant: defaultUnderLineHeight)
+
     private lazy var textView: UITextView = {
         let view = UITextView(frame: .zero, textContainer: nil)
         view.font = .body
@@ -99,8 +109,6 @@ public class TextView: UIView {
         return label
     }()
 
-    private var textViewHeightConstraint: NSLayoutConstraint!
-
     // MARK: - Setup
 
     override init(frame: CGRect) {
@@ -111,6 +119,19 @@ public class TextView: UIView {
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Public methods
+
+    public func configure(textViewBackgroundColor: UIColor) {
+        textView.backgroundColor = textViewBackgroundColor
+    }
+
+    public func configure(shouldHideUnderLine: Bool) {
+        underLineHeightConstraint.constant = shouldHideUnderLine ? 0 : defaultUnderLineHeight
+        updateConstraintsIfNeeded()
+    }
+
+    // MARK: - Private methods
 
     private func setupSubviews() {
         textView.addSubview(placeholderLabel)
@@ -134,7 +155,7 @@ public class TextView: UIView {
             underLine.leadingAnchor.constraint(equalTo: leadingAnchor),
             underLine.topAnchor.constraint(equalTo: textView.bottomAnchor),
             underLine.trailingAnchor.constraint(equalTo: trailingAnchor),
-            underLine.heightAnchor.constraint(equalToConstant: 2),
+            underLineHeightConstraint,
 
             bottomAnchor.constraint(equalTo: underLine.bottomAnchor)
         ])
@@ -168,6 +189,10 @@ extension TextView: UITextViewDelegate {
 
     public func textViewDidEndEditing(_ textView: UITextView) {
         delegate?.textViewDidEndEditing(self)
+    }
+
+    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        delegate?.textView(self, shouldChangeTextIn: range, replacementText: text) ?? true
     }
 }
 
