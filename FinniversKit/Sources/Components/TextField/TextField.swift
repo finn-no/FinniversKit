@@ -52,6 +52,7 @@ public class TextField: UIView {
     private let animationDuration: Double = 0.3
     private let errorIconWidth: CGFloat = 16
     private var textFieldBackgroundColorOverride: UIColor?
+    private var textFieldBorderColor: UIColor?
 
     private var underlineHeightConstraint: NSLayoutConstraint?
     private var helpTextLabelLeadingConstraint: NSLayoutConstraint?
@@ -249,8 +250,8 @@ public class TextField: UIView {
 
         addSubview(typeLabel)
         addSubview(textFieldBackgroundView)
+        textFieldBackgroundView.addSubview(underline)
         addSubview(textField)
-        addSubview(underline)
         addSubview(helpTextLabel)
         addSubview(errorIconImageView)
 
@@ -267,8 +268,8 @@ public class TextField: UIView {
             textField.trailingAnchor.constraint(equalTo: textFieldBackgroundView.trailingAnchor, constant: -.spacingS),
             textField.bottomAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: -.spacingS + -.spacingXS),
 
-            underline.leadingAnchor.constraint(equalTo: leadingAnchor),
-            underline.trailingAnchor.constraint(equalTo: trailingAnchor),
+            underline.leadingAnchor.constraint(equalTo: textFieldBackgroundView.leadingAnchor),
+            underline.trailingAnchor.constraint(equalTo: textFieldBackgroundView.trailingAnchor),
             underline.bottomAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor),
 
             errorIconImageView.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: .spacingXS),
@@ -286,11 +287,30 @@ public class TextField: UIView {
         underlineHeightConstraint?.isActive = true
     }
 
+    // MARK: - Overrides
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+
+        if let textFieldBorderColor = textFieldBorderColor {
+            textFieldBackgroundView.layer.borderColor = textFieldBorderColor.cgColor
+        }
+    }
+
     // MARK: - Public methods
 
     public func configure(textFieldBackgroundColor: UIColor) {
         textFieldBackgroundColorOverride = textFieldBackgroundColor
         transition(to: state)
+    }
+
+    public func configureBorder(radius: CGFloat, width: CGFloat, color: UIColor) {
+        textFieldBackgroundView.clipsToBounds = true
+        textFieldBorderColor = color
+        textFieldBackgroundView.layer.cornerRadius = radius
+        textFieldBackgroundView.layer.borderWidth = width
+        transition(to: state)
+        setNeedsLayout()
     }
 
     // MARK: - Actions
