@@ -2,9 +2,17 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+import UIKit
 import FinniversKit
 
 public class TextFieldDemoView: UIView {
+
+    // MARK: - Private properties
+
+    private lazy var stackView = UIStackView.init(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
+
+    // MARK: - Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -12,6 +20,8 @@ public class TextFieldDemoView: UIView {
     }
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
+
+    // MARK: - Setup
 
     private func setup() {
         let emailTextField = TextField(inputType: .email)
@@ -36,32 +46,26 @@ public class TextFieldDemoView: UIView {
         multilineTextField.translatesAutoresizingMaskIntoConstraints = false
         multilineTextField.placeholderText = "Multiline"
 
-        addSubview(emailTextField)
-        addSubview(passwordTextField)
-        addSubview(normalTextField)
-        addSubview(multilineTextField)
-        addSubview(normalWithHelpTextTextField)
+        let overrideBgColor = TextField(inputType: .normal)
+        overrideBgColor.translatesAutoresizingMaskIntoConstraints = false
+        overrideBgColor.placeholderText = "Overridden bgColor"
+        overrideBgColor.configure(textFieldBackgroundColor: .bgPrimary)
+        overrideBgColor.configureBorder(radius: 4, width: 1, color: .dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine))
+
+        stackView.addArrangedSubviews([
+            emailTextField,
+            passwordTextField,
+            normalTextField,
+            normalWithHelpTextTextField,
+            multilineTextField,
+            overrideBgColor,
+        ])
+        addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            emailTextField.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
-            emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: .spacingM),
-            passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-
-            normalTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: .spacingM),
-            normalTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            normalTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-
-            normalWithHelpTextTextField.topAnchor.constraint(equalTo: normalTextField.bottomAnchor, constant: .spacingM),
-            normalWithHelpTextTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            normalWithHelpTextTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-
-            multilineTextField.topAnchor.constraint(equalTo: normalWithHelpTextTextField.bottomAnchor, constant: .spacingM),
-            multilineTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            multilineTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
         ])
     }
 }
