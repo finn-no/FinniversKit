@@ -51,6 +51,7 @@ public class TextField: UIView {
     private let rightViewSize = CGSize(width: 40, height: 40)
     private let animationDuration: Double = 0.3
     private let errorIconWidth: CGFloat = 16
+    private var textFieldBackgroundColorOverride: UIColor?
 
     private var underlineHeightConstraint: NSLayoutConstraint?
     private var helpTextLabelLeadingConstraint: NSLayoutConstraint?
@@ -285,6 +286,13 @@ public class TextField: UIView {
         underlineHeightConstraint?.isActive = true
     }
 
+    // MARK: - Public methods
+
+    public func configure(textFieldBackgroundColor: UIColor) {
+        textFieldBackgroundColorOverride = textFieldBackgroundColor
+        transition(to: state)
+    }
+
     // MARK: - Actions
 
     @objc private func showHidePassword(sender: UIButton) {
@@ -382,7 +390,7 @@ public class TextField: UIView {
         UIView.animate(withDuration: animationDuration) {
             self.layoutIfNeeded()
             self.underline.backgroundColor = state.underlineColor
-            self.textFieldBackgroundView.backgroundColor = state.textFieldBackgroundColor
+            self.textFieldBackgroundView.backgroundColor = self.textFieldBackgroundColorOverride ?? state.textFieldBackgroundColor
             self.typeLabel.textColor = state.accessoryLabelTextColor
             self.helpTextLabel.textColor = state.accessoryLabelTextColor
 
