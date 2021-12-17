@@ -274,19 +274,19 @@ class ComponentViewTests: XCTestCase {
     func testBlockUserView() {
         snapshot(.blockUserView)
     }
-    
+
     func testPromotionView() {
         snapshot(.promotionView)
     }
-    
+
     func testRecentlyFavoritedShelf() {
         snapshot(.recentlyfavoritedShelf)
     }
-    
+
     func testSavedSearchShelf() {
         snapshot(.savedSearchShelf)
     }
-    
+
     func testFrontPageShelf() {
         snapshot(.frontPageShelf)
     }
