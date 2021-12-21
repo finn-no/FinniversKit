@@ -8,6 +8,7 @@ public struct LinkButtonViewModel {
     public let subtitle: String?
     public let linkUrl: URL
     public let isExternal: Bool
+    public let externalIconColor: UIColor?
     public let buttonStyle: Button.Style?
     public let buttonSize: Button.Size
 
@@ -17,6 +18,7 @@ public struct LinkButtonViewModel {
         subtitle: String? = nil,
         linkUrl: URL,
         isExternal: Bool,
+        externalIconColor: UIColor? = nil,
         buttonStyle: Button.Style? = nil,
         buttonSize: Button.Size = .small
     ) {
@@ -25,6 +27,7 @@ public struct LinkButtonViewModel {
         self.subtitle = subtitle
         self.linkUrl = linkUrl
         self.isExternal = isExternal
+        self.externalIconColor = externalIconColor
         self.buttonStyle = buttonStyle
         self.buttonSize = buttonSize
     }

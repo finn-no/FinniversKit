@@ -66,6 +66,7 @@ class LinkButtonView: UIView {
             subtitle: viewModel.subtitle,
             linkUrl: viewModel.linkUrl,
             isExternal: viewModel.isExternal,
+            externalIconColor: viewModel.externalIconColor,
             buttonStyle: viewModel.buttonStyle,
             buttonSize: viewModel.buttonSize
         )
@@ -77,6 +78,7 @@ class LinkButtonView: UIView {
         subtitle: String?,
         linkUrl: URL,
         isExternal: Bool,
+        externalIconColor: UIColor? = nil,
         buttonStyle: Button.Style? = nil,
         buttonSize: Button.Size = .small
     ) {
@@ -87,6 +89,7 @@ class LinkButtonView: UIView {
         super.init(frame: .zero)
 
         externalImageView.isHidden = !isExternal
+        externalImageView.tintColor = externalIconColor ?? .externalIconColor
         linkButton.setTitle(buttonTitle, for: .normal)
         subtitleLabel.text = subtitle
         subtitleLabel.isHidden = subtitle?.isEmpty ?? true
