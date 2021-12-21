@@ -33,8 +33,8 @@ public class FrontPageShelfViewModel {
         recentlyFavoritedItems.remove(at: index)
     }
     
-    public func titleForSection(at index: IndexPath) -> String {
-        guard index.section < sectionTitles.count else { return "" }
-        return sectionTitles[index.section]
+    public func titleForSection(at index: Int) -> String {
+        guard index < sectionTitles.count else { return "" }
+        return sectionTitles[index]
     }
 }
