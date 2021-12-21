@@ -388,7 +388,7 @@ extension FrontPageView: MarketsViewDelegate {
 
 // MARK: - FrontPageShelfDatasource
 extension FrontPageView: FrontPageShelfViewDataSource {
-    public func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForSectionAt index: IndexPath) -> String {
+    public func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForSectionAt index: Int) -> String {
         shelfViewModel?.titleForSection(at: index) ?? ""
     }
     
