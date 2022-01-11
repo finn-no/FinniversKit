@@ -10,9 +10,21 @@ public class FrontPageShelfViewModel {
     private let savedSearchHeight: CGFloat = 90
     private let favoriteHeight: CGFloat = 190
     
+    public var isFavoritedListEmpty: Bool {
+        recentlyFavoritedItems.isEmpty
+    }
+    
     public var heightForShelf: CGFloat {
-        return 0 + (!savedSearchItems.isEmpty ? (headerHeight + topPadding + savedSearchHeight) : 0) +
-        (!recentlyFavoritedItems.isEmpty ? (headerHeight + topPadding + favoriteHeight) : 0)
+        return 0 + (!savedSearchItems.isEmpty ? (savedSearchSectionHeight) : 0) +
+        (!recentlyFavoritedItems.isEmpty ? (recentlyFavoritedSectionHeight) : 0)
+    }
+    
+    public var savedSearchSectionHeight: CGFloat {
+        headerHeight + topPadding + savedSearchHeight
+    }
+    
+    public var recentlyFavoritedSectionHeight: CGFloat {
+        headerHeight + topPadding + favoriteHeight
     }
     
     public init(favoritedItems: [RecentlyFavoritedViewmodel], savedSearchItems: [SavedSearchShelfViewModel], sectionTitles: [String]) {
@@ -31,6 +43,11 @@ public class FrontPageShelfViewModel {
     
     public func removeFavoritedItem(atIndex index: Int) {
         recentlyFavoritedItems.remove(at: index)
+    }
+    
+    public func removeFavoritedItem(_ item: RecentlyFavoritedViewmodel) {
+        guard let index = recentlyFavoritedItems.firstIndex(of: item) else { return }
+        removeFavoritedItem(atIndex: index)
     }
     
     public func titleForSection(at index: Int) -> String {

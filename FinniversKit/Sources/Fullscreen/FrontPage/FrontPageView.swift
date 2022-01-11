@@ -273,6 +273,13 @@ public final class FrontPageView: UIView {
         setupFrames()
     }
     
+    public func removeFrontShelf() {
+        self.shelfViewModel = nil
+        frontPageShelfView?.removeFromSuperview()
+        frontPageShelfView = nil
+        setupFrames()
+    }
+    
     private func changeCompactMarketsViewVisibilityStatus(to status: CompactMarketsViewVisibilityStatus) {
         switch status {
         case .displaying(progress: let progress):
@@ -393,9 +400,12 @@ extension FrontPageView: FrontPageShelfViewDataSource {
             let shelfView = frontPageShelfView,
             let favoriteModel = item as? RecentlyFavoritedViewmodel
         else { return }
-        
-        viewModel.removeFavoritedItem(atIndex: indexPath.item)
+        viewModel.removeFavoritedItem(favoriteModel)
         shelfView.removeItem(item)
+        if viewModel.isFavoritedListEmpty {
+            removeFrontShelf()
+            configureFrontPageShelves(viewModel)
+        }
         delegate?.frontPageView(self, didUnfavoriteRecentlyFavorited: favoriteModel)
     }
 }

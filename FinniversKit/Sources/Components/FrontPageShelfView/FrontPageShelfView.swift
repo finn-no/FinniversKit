@@ -11,6 +11,7 @@ public protocol FrontPageShelfDelegate: AnyObject {
     func frontPageShelfView(_ view: FrontPageShelfView, didSelectFavoriteItem item: RecentlyFavoritedViewmodel)
     func frontPageShelfView(_ view: FrontPageShelfView, didSelectSavedSearchItem item: SavedSearchShelfViewModel)
     func frontPageShelfView(_ view: FrontPageShelfView, didSelectHeaderForSection section: FrontPageShelfView.Section)
+   
 }
 
 public class FrontPageShelfView: UIView {
@@ -71,6 +72,17 @@ public extension FrontPageShelfView {
     func removeItem(_ item: AnyHashable) {
         var snapshot = collectionViewDatasource.snapshot()
         snapshot.deleteItems([item])
+        var favoriteSearches =  items[.recentlyFavorited, default: []]
+        
+        if let index = favoriteSearches.firstIndex(of: item) {
+            favoriteSearches.remove(at: index)
+            items[.recentlyFavorited] = favoriteSearches
+        }
+        
+        if favoriteSearches.isEmpty {
+            snapshot.deleteSections([.recentlyFavorited])
+        }
+        
         collectionViewDatasource.apply(snapshot, animatingDifferences: true)
     }
     
