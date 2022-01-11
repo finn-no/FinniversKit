@@ -264,7 +264,7 @@ public final class FrontPageView: UIView {
             view.translatesAutoresizingMaskIntoConstraints = false
             frontPageShelfView = view
             shelfContainer.addSubview(view)
-            view.fillInSuperview()
+            view.fillInSuperview(insets: .init(top: .spacingL, leading: 0, bottom: 0, trailing: 0))
         } else {
             frontPageShelfView?.reloadShelf()
         }
