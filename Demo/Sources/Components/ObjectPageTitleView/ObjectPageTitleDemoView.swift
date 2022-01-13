@@ -27,6 +27,19 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
             },
             TweakingOption(title: "Realestate new construction market") { [weak self] in
                 self?.configureTitleView(title: "Hareveien 11", titleStyle: .body, subtitle: "7 lekre selveierleiligheter uten gjenboere", subtitleStyle: .title2)
+            },
+            TweakingOption(title: "Realestate") { [weak self] in
+                self?.configureTitleView(
+                    title: "Oslomoen",
+                    titleStyle: .body,
+                    subtitle: "SOLGT! Nydelig selveierleilighet uten utsikt og innlagt vann",
+                    subtitleStyle: .title3Strong,
+                    caption: "Veigatestien 25B, 0101 Oslo",
+                    captionStyle: .caption,
+                    ribbonViewModel: .sold,
+                    spacingAfterTitle: .spacingXS,
+                    spacingAfterSubtitle: .spacingS
+                )
             }
         ]
     }()
@@ -47,14 +60,17 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
         titleStyle: Label.Style = .title2,
         subtitle: String? = nil,
         subtitleStyle: Label.Style = .body,
+        caption: String? = nil,
+        captionStyle: Label.Style = .caption,
         ribbonViewModel: RibbonViewModel? = nil,
         spacingAfterTitle: CGFloat = .spacingXS,
+        spacingAfterSubtitle: CGFloat = .spacingXS,
         areLabelsCopyable: Bool = false
     ) {
         titleView?.removeFromSuperview()
         titleView = nil
 
-        let newTitleView = ObjectPageTitleView(titleStyle: titleStyle, subtitleStyle: subtitleStyle, withAutoLayout: true)
+        let newTitleView = ObjectPageTitleView(titleStyle: titleStyle, subtitleStyle: subtitleStyle, captionStyle: captionStyle, withAutoLayout: true)
         addSubview(newTitleView)
 
         NSLayoutConstraint.activate([
@@ -62,7 +78,14 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
             newTitleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
             newTitleView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
-        newTitleView.configure(withTitle: title, subtitle: subtitle, ribbonViewModel: ribbonViewModel, spacingAfterTitle: spacingAfterTitle)
+        newTitleView.configure(
+            withTitle: title,
+            subtitle: subtitle,
+            caption: caption,
+            ribbonViewModel: ribbonViewModel,
+            spacingAfterTitle: spacingAfterTitle,
+            spacingAfterSubtitle: spacingAfterSubtitle
+        )
         newTitleView.isTitleTextCopyable = areLabelsCopyable
         newTitleView.isSubtitleTextCopyable = areLabelsCopyable
 
