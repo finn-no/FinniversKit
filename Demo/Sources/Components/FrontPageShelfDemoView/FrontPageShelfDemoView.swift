@@ -34,6 +34,10 @@ extension FrontPageShelfDemoView: FrontPageShelfViewDataSource {
         ["Lagrede søk", "nylige favoritter"][index]
     }
     
+    func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForButtonForSectionAt index: Int) -> String {
+        "Se alle"
+    }
+    
     func frontPageShelfView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, withItem item: AnyHashable) -> UICollectionViewCell? {
         if let model = item as? SavedSearchShelfViewModel {
             let cell = collectionView.dequeue(SavedSearchShelfCell.self, for: indexPath)

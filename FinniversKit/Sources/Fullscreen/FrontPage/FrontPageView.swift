@@ -211,7 +211,7 @@ public final class FrontPageView: UIView, BasicFrontPageView {
             christmasPromotionContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
             christmasPromotionContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
             
-            shelfContainer.topAnchor.constraint(equalTo: christmasPromotionContainer.bottomAnchor, constant: isShowingShelf ? .spacingL : 0),
+            shelfContainer.topAnchor.constraint(equalTo: christmasPromotionContainer.bottomAnchor, constant: 0),
             shelfContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 0),
             shelfContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: 0),
             
@@ -397,6 +397,10 @@ extension FrontPageView: MarketsViewDelegate {
 extension FrontPageView: FrontPageShelfViewDataSource {
     public func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForSectionAt index: Int) -> String {
         shelfViewModel?.titleForSection(at: index) ?? ""
+    }
+    
+    public func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForButtonForSectionAt index: Int) -> String {
+        return "Se alle"
     }
     
     public func frontPageShelfView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, withItem item: AnyHashable) -> UICollectionViewCell? {

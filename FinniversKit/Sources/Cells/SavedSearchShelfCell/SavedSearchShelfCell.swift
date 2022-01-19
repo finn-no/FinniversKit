@@ -39,7 +39,7 @@ public class SavedSearchShelfCell: UICollectionViewCell {
         imageView.layer.masksToBounds = true
         imageView.widthAnchor.constraint(equalToConstant: imageWidth).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: imageWidth).isActive = true
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = imageWidth / 2
         imageView.clipsToBounds = true
         

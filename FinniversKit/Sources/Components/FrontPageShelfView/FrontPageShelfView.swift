@@ -5,6 +5,7 @@ public protocol FrontPageShelfViewDataSource: AnyObject {
     func frontPageShelfView(cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type]
     func datasource(forSection section: FrontPageShelfView.Section) -> [AnyHashable]
     func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForSectionAt index: Int) -> String
+    func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForButtonForSectionAt index: Int) -> String
 }
 
 public protocol FrontPageShelfDelegate: AnyObject {
@@ -72,14 +73,14 @@ public extension FrontPageShelfView {
     func removeItem(_ item: AnyHashable) {
         var snapshot = collectionViewDatasource.snapshot()
         snapshot.deleteItems([item])
-        var favoriteSearches =  items[.recentlyFavorited, default: []]
+        var favorites =  items[.recentlyFavorited, default: []]
         
-        if let index = favoriteSearches.firstIndex(of: item) {
-            favoriteSearches.remove(at: index)
-            items[.recentlyFavorited] = favoriteSearches
+        if let index = favorites.firstIndex(of: item) {
+            favorites.remove(at: index)
+            items[.recentlyFavorited] = favorites
         }
         
-        if favoriteSearches.isEmpty {
+        if favorites.isEmpty {
             snapshot.deleteSections([.recentlyFavorited])
         }
         
@@ -176,12 +177,17 @@ private extension FrontPageShelfView {
             switch section {
             case .savedSearch:
                 if self.items[section, default: []].isEmpty { fallthrough }
-                headerView.configureHeaderView(withTitle: datasource.frontPageShelfView(self, titleForSectionAt: Section.savedSearch.rawValue), buttonTitle: "Se alle", buttonAction: {
-                    self.shelfDelegate?.frontPageShelfView(self, didSelectHeaderForSection: .savedSearch)
+                headerView.configureHeaderView(withTitle: datasource.frontPageShelfView(self, titleForSectionAt: Section.savedSearch.rawValue),
+                                               buttonTitle: datasource.frontPageShelfView(self, titleForButtonForSectionAt: Section.savedSearch.rawValue),
+                                               buttonAction: {
                     
+                    self.shelfDelegate?.frontPageShelfView(self, didSelectHeaderForSection: .savedSearch)
                 })
+                
             case .recentlyFavorited:
-                headerView.configureHeaderView(withTitle: datasource.frontPageShelfView(self, titleForSectionAt: Section.recentlyFavorited.rawValue), buttonTitle: "Se alle", buttonAction: {
+                headerView.configureHeaderView(withTitle: datasource.frontPageShelfView(self, titleForSectionAt: Section.recentlyFavorited.rawValue),
+                                               buttonTitle: datasource.frontPageShelfView(self, titleForButtonForSectionAt: Section.recentlyFavorited.rawValue),
+                                               buttonAction: {
                     self.shelfDelegate?.frontPageShelfView(self, didSelectHeaderForSection: .recentlyFavorited)
                     
                 })
