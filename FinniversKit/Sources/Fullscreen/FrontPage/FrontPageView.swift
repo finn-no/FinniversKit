@@ -396,16 +396,16 @@ extension FrontPageView: FrontPageShelfViewDataSource {
     
     public func removeFavoritedItem(_ item: AnyHashable, atIndexPath indexPath: IndexPath) {
         guard
-            let viewModel = shelfViewModel,
-            let shelfView = frontPageShelfView,
+//            let viewModel = shelfViewModel,
+//            let shelfView = frontPageShelfView,
             let favoriteModel = item as? RecentlyFavoritedViewmodel
         else { return }
-        viewModel.removeFavoritedItem(favoriteModel)
-        shelfView.removeItem(item)
-        if viewModel.isFavoritedListEmpty {
-            removeFrontShelf()
-            configureFrontPageShelves(viewModel)
-        }
+//        viewModel.removeFavoritedItem(favoriteModel)
+//        shelfView.removeItem(item)
+//        if viewModel.isFavoritedListEmpty {
+//            removeFrontShelf()
+//            configureFrontPageShelves(viewModel)
+//        }
         delegate?.frontPageView(self, didUnfavoriteRecentlyFavorited: favoriteModel)
     }
 }
