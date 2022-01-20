@@ -2,21 +2,23 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+import UIKit
 import FinniversKit
 
 public class ButtonDemoView: UIView {
-    // Relevant Styles, States and Sizes to show for the demo
-    let styles: [Button.Style] = [
-        .callToAction,
-        .default,
-        .flat,
-        .link,
-        .destructive,
-        .destructiveFlat,
-        .utility,
-    ]
     let states: [UIControl.State] = [.normal, .disabled]
     let sizes: [Button.Size] = [.normal, .small]
+
+    // Relevant Styles, States and Sizes to show for the demo
+    let styles: [(style: Button.Style, title: String)] = [
+        (style: .callToAction, title: "Call to Action"),
+        (style: .default, title: "Default"),
+        (style: .flat, title: "Flat"),
+        (style: .link, title: "Link"),
+        (style: .destructive, title: "Destructive"),
+        (style: .destructiveFlat, title: "Destructive Flat"),
+        (style: .utility, title: "Utility"),
+    ]
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,15 +32,13 @@ public class ButtonDemoView: UIView {
         let scrollView = UIScrollView(withAutoLayout: true)
         scrollView.contentInset = UIEdgeInsets(vertical: .spacingM, horizontal: .spacingL)
 
-        let verticalStack = self.verticalStack()
-        verticalStack.spacing = .spacingM
+        let verticalStack = UIStackView(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
 
-        styles.forEach { style in
-            let buttonStyleStack = self.verticalStack()
-            buttonStyleStack.spacing = .spacingS
+        styles.forEach { styleTuple in
+            let buttonStyleStack = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
 
             let titleLabel = Label(style: .title3, withAutoLayout: true)
-            titleLabel.text = sectionTitle(for: style)
+            titleLabel.text = styleTuple.title
             buttonStyleStack.addArrangedSubview(titleLabel)
 
             sizes.forEach { size in
@@ -48,9 +48,9 @@ public class ButtonDemoView: UIView {
                 stateStack.distribution = .fillEqually
 
                 states.forEach { state in
-                    let title = self.title(for: size, state: state)
+                    let title = title(for: size, state: state)
 
-                    let button = Button(style: style, size: size, withAutoLayout: true)
+                    let button = Button(style: styleTuple.style, size: size, withAutoLayout: true)
                     button.setTitle(title, for: state)
                     button.isEnabled = state != .disabled
 
@@ -75,15 +75,6 @@ public class ButtonDemoView: UIView {
 
     // MARK: - Private methods
 
-    private func verticalStack() -> UIStackView {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.alignment = .fill
-
-        return stackView
-    }
-
     private func title(for size: Button.Size, state: UIControl.State) -> String {
         stateName(state: state) + " " + sizeName(size: size)
     }
@@ -101,20 +92,6 @@ public class ButtonDemoView: UIView {
         case .disabled: return "Disabled"
         case .highlighted: return "Highlghted"
         default: return "?"
-        }
-    }
-
-    private func sectionTitle(for style: Button.Style) -> String {
-        switch style {
-        case .callToAction: return "Call to Action"
-        case .default: return "Default"
-        case .flat: return "Flat"
-        case .link: return "Link"
-        case .destructive: return "Destructive"
-        case .destructiveFlat: return "Destructive Flat"
-        case .utility: return "Utility"
-        default:
-            return "Unknown"
         }
     }
 }
