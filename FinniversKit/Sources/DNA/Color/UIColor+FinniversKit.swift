@@ -535,4 +535,9 @@ public extension UIColor {
             }
         }
     }
+
+    @available(*, deprecated, message: "Use dynamicColor(defaultColor:darkModeColor:) instead.")
+    class func dynamicColorIfAvailable(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
+        dynamicColor(defaultColor: defaultColor, darkModeColor: darkModeColor)
+    }
 }
