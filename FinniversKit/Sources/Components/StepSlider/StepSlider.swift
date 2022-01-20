@@ -185,6 +185,8 @@ public final class StepSlider: UISlider {
             activeRangeTrackView.centerYAnchor.constraint(equalTo: centerYAnchor),
             activeRangeTrackView.heightAnchor.constraint(equalToConstant: 6)
         ])
+
+        updateThumbImageForAccentColor()
     }
 
     private func updateActiveTrackRange() {
