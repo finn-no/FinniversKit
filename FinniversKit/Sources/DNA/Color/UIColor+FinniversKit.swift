@@ -426,7 +426,7 @@ extension CGColor {
     }
 
     public class var defaultButtonHighlightedBodyColor: UIColor {
-        return dynamicColorIfAvailable(defaultColor: UIColor(r: 241, g: 249, b: 255), darkModeColor: UIColor(hex: "#13131A"))
+        return dynamicColor(defaultColor: UIColor(r: 241, g: 249, b: 255), darkModeColor: UIColor(hex: "#13131A"))
     }
 
     public class var linkButtonHighlightedTextColor: UIColor {
@@ -478,7 +478,7 @@ extension CGColor {
 @objc extension UIColor {
     public class var defaultCellSelectedBackgroundColor: UIColor {
         let lightSelectedColor = UIColor(r: 230, g: 235, b: 242)
-        return dynamicColorIfAvailable(defaultColor: lightSelectedColor, darkModeColor: lightSelectedColor.withAlphaComponent(0.1))
+        return dynamicColor(defaultColor: lightSelectedColor, darkModeColor: lightSelectedColor.withAlphaComponent(0.1))
     }
 }
 

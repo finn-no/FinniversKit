@@ -40,23 +40,23 @@ public protocol ColorProvider {
 
 public struct DefaultColorProvider: ColorProvider {
     public var bgPrimary: UIColor {
-        .dynamicColorIfAvailable(defaultColor: .milk, darkModeColor: UIColor(hex: "#1B1B24"))
+        .dynamicColor(defaultColor: .milk, darkModeColor: UIColor(hex: "#1B1B24"))
     }
 
     public var bgSecondary: UIColor {
-        .dynamicColorIfAvailable(defaultColor: .ice, darkModeColor: .darkIce)
+        .dynamicColor(defaultColor: .ice, darkModeColor: .darkIce)
     }
 
     public var bgTertiary: UIColor {
-        .dynamicColorIfAvailable(defaultColor: .marble, darkModeColor: UIColor(hex: "#13131A"))
+        .dynamicColor(defaultColor: .marble, darkModeColor: UIColor(hex: "#13131A"))
     }
 
     public var bgQuaternary: UIColor {
-        .dynamicColorIfAvailable(defaultColor: .marble, darkModeColor: UIColor(hex: "#1B1B24"))
+        .dynamicColor(defaultColor: .marble, darkModeColor: UIColor(hex: "#1B1B24"))
     }
 
     public var bgBottomSheet: UIColor {
-        .dynamicColorIfAvailable(defaultColor: .milk, darkModeColor: .darkIce)
+        .dynamicColor(defaultColor: .milk, darkModeColor: .darkIce)
     }
 
     public var bgAlert: UIColor {
@@ -72,11 +72,11 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var btnPrimary: UIColor {
-        .dynamicColorIfAvailable(defaultColor: .primaryBlue, darkModeColor: UIColor(hex: "#006DFB"))
+        .dynamicColor(defaultColor: .primaryBlue, darkModeColor: UIColor(hex: "#006DFB"))
     }
 
     public var btnDisabled: UIColor {
-        .dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
+        .dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
 
     public var btnCritical: UIColor {
@@ -84,15 +84,15 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var btnAction: UIColor {
-        .dynamicColorIfAvailable(defaultColor: .primaryBlue, darkModeColor: UIColor(hex: "#3F8BFF"))
+        .dynamicColor(defaultColor: .primaryBlue, darkModeColor: UIColor(hex: "#3F8BFF"))
     }
 
     public var textPrimary: UIColor {
-        .dynamicColorIfAvailable(defaultColor: .licorice, darkModeColor: .milk)
+        .dynamicColor(defaultColor: .licorice, darkModeColor: .milk)
     }
 
     public var textSecondary: UIColor {
-        .dynamicColorIfAvailable(defaultColor: .stone, darkModeColor: UIColor(hex: "#828699"))
+        .dynamicColor(defaultColor: .stone, darkModeColor: UIColor(hex: "#828699"))
     }
 
     public var textTertiary: UIColor {
@@ -100,15 +100,15 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var textAction: UIColor {
-        .dynamicColorIfAvailable(defaultColor: .primaryBlue, darkModeColor: UIColor(hex: "#3F8BFF"))
+        .dynamicColor(defaultColor: .primaryBlue, darkModeColor: UIColor(hex: "#3F8BFF"))
     }
 
     public var textDisabled: UIColor {
-        .dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
+        .dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
 
     public var textCritical: UIColor {
-        .dynamicColorIfAvailable(defaultColor: .cherry, darkModeColor: .watermelon)
+        .dynamicColor(defaultColor: .cherry, darkModeColor: .watermelon)
     }
 
     public var accentSecondaryBlue: UIColor {
@@ -124,7 +124,7 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var textCTADisabled: UIColor {
-        .dynamicColorIfAvailable(defaultColor: .licorice, darkModeColor: UIColor(hex: "#828699"))
+        .dynamicColor(defaultColor: .licorice, darkModeColor: UIColor(hex: "#828699"))
     }
 
     public var textToast: UIColor {
@@ -132,11 +132,11 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var tableViewSeparator: UIColor {
-        .dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
+        .dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
 
     public var imageBorder: UIColor {
-        .dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
+        .dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
 
     public var decorationSubtle: UIColor {
