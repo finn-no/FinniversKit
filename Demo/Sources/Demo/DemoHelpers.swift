@@ -181,10 +181,6 @@ extension Array {
 
 }
 
-extension Foundation.Notification.Name {
-    static let didChangeUserInterfaceStyle = Foundation.Notification.Name("didChangeUserInterfaceStyle")
-}
-
 @objc enum UserInterfaceStyle: Int {
     case light = 1
     case dark = 2
