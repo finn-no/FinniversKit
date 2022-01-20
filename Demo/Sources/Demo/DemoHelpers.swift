@@ -180,8 +180,3 @@ extension Array {
     }
 
 }
-
-@objc enum UserInterfaceStyle: Int {
-    case light = 1
-    case dark = 2
-}
