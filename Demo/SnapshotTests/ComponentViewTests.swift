@@ -290,4 +290,8 @@ class ComponentViewTests: XCTestCase {
     func testFrontPageShelf() {
         snapshot(.frontPageShelf)
     }
+
+    func testOverflowCollectionView() {
+        snapshot(.overFlowCollectionView, includeIPad: true)
+    }
 }
