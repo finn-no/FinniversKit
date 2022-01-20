@@ -17,7 +17,7 @@ import UIKit
     public class var bgTertiary: UIColor {
         Config.colorProvider.bgTertiary
     }
-    
+
     public class var bgQuaternary: UIColor {
         Config.colorProvider.bgQuaternary
     }
@@ -212,22 +212,22 @@ import UIKit
 
 // MARK: - Temporary Markets Colors
 extension UIColor {
-    
+
     public class var blueGray400: UIColor {
         return UIColor(hex: "#94A3B8")
     }
     public class var blueGray600: UIColor {
         return UIColor(hex: "#475569")
     }
-    
+
     public class var blueGray700: UIColor {
         return UIColor(hex: "#323241")
     }
-    
+
     public class var blueGray800: UIColor {
         return UIColor(hex: "#606A7A")
     }
-    
+
     public class var coolGray100: UIColor {
         return UIColor(hex: "#F3F4F6")
     }
@@ -313,7 +313,7 @@ extension CGColor {
     public class var bgTertiary: CGColor {
         return UIColor.bgTertiary.cgColor
     }
-    
+
     public class var bgQuaternary: CGColor {
         UIColor.bgQuaternary.cgColor
     }

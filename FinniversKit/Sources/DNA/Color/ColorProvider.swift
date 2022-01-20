@@ -50,7 +50,7 @@ public struct DefaultColorProvider: ColorProvider {
     public var bgTertiary: UIColor {
         .dynamicColorIfAvailable(defaultColor: .marble, darkModeColor: UIColor(hex: "#13131A"))
     }
-    
+
     public var bgQuaternary: UIColor {
         .dynamicColorIfAvailable(defaultColor: .marble, darkModeColor: UIColor(hex: "#1B1B24"))
     }

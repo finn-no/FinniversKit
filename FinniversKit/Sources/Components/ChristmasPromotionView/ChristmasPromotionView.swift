@@ -5,11 +5,11 @@ public protocol PromotionViewDelegate: AnyObject {
 }
 
 public struct ChristmasPromotionViewModel {
-    
+
     let title: String
     let helpButtonTitle: String
     let adsButtonTitle: String
-    
+
     public init(title: String, helpButtonTitle: String, adsButtonTitle: String) {
         self.title = title
         self.helpButtonTitle = helpButtonTitle
@@ -23,7 +23,7 @@ public class ChristmasPromotionView: UIView {
         case seeAds
         case help
     }
-    
+
     private lazy var backgroundView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .bgColor
@@ -31,17 +31,17 @@ public class ChristmasPromotionView: UIView {
         view.clipsToBounds = true
         return view
     }()
-    
+
     private lazy var smallShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.dropShadow(color: .shadowColor,
                         opacity: 0.24,
                         offset: CGSize(width: 0, height: 1),
                         radius: 1)
-       
+
         return view
     }()
-    
+
     private lazy var largeShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.dropShadow(color: .shadowColor,
@@ -50,13 +50,13 @@ public class ChristmasPromotionView: UIView {
                         radius: 5)
         return view
     }()
-    
+
     private lazy var titleLabel: UILabel = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
-    
+
     private lazy var helpButton: Button = {
         let button = Button(style: .customStyle, size: .small, withAutoLayout: true)
         button.addTarget(self, action: #selector(seeHelpButtonTapped), for: .touchUpInside)
@@ -64,7 +64,7 @@ public class ChristmasPromotionView: UIView {
         button.setContentCompressionResistancePriority(.required, for: .vertical)
         return button
     }()
-    
+
     private lazy var seeAdsButton: Button = {
         let button = Button(style: .customStyle, size: .small, withAutoLayout: true)
         button.addTarget(self, action: #selector(seeAdsButtonTapped), for: .touchUpInside)
@@ -72,7 +72,7 @@ public class ChristmasPromotionView: UIView {
         button.setContentCompressionResistancePriority(.required, for: .vertical)
         return button
     }()
-    
+
     private lazy var image: UIImageView = {
         let image = UIImage(named: .christmasPromotion)
         let imageView = UIImageView(withAutoLayout: true)
@@ -81,7 +81,7 @@ public class ChristmasPromotionView: UIView {
         imageView.layer.masksToBounds = true
         return imageView
     }()
-    
+
     private lazy var verticalStack: UIStackView = {
         let stack = UIStackView(withAutoLayout: true)
         stack.axis = .vertical
@@ -92,7 +92,7 @@ public class ChristmasPromotionView: UIView {
         stack.setContentCompressionResistancePriority(.required, for: .horizontal)
         return stack
     }()
-    
+
     public weak var delegate: PromotionViewDelegate?
     public var model: ChristmasPromotionViewModel {
         didSet {
@@ -101,14 +101,14 @@ public class ChristmasPromotionView: UIView {
             self.seeAdsButton.setTitle(model.adsButtonTitle, for: .normal)
         }
     }
-    
+
     public init (model: ChristmasPromotionViewModel) {
         self.model = model
         super.init(frame: .zero)
         setup()
     }
-    
-    
+
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -125,14 +125,14 @@ extension ChristmasPromotionView {
         backgroundView.fillInSuperview()
         backgroundView.addSubview(verticalStack)
         backgroundView.addSubview(image)
-        
+
         titleLabel.text = model.title
         helpButton.setTitle(model.helpButtonTitle, for: .normal)
         helpButton.sizeToFit()
-        
+
         seeAdsButton.setTitle(model.adsButtonTitle, for: .normal)
         seeAdsButton.sizeToFit()
-        
+
         NSLayoutConstraint.activate([
             image.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
             image.topAnchor.constraint(equalTo: backgroundView.topAnchor),
@@ -145,11 +145,11 @@ extension ChristmasPromotionView {
             verticalStack.widthAnchor.constraint(equalToConstant: 150),
         ])
     }
-    
+
     @objc private func seeAdsButtonTapped() {
         delegate?.christmasPromotionView(self, didSelect: .seeAds)
     }
-    
+
     @objc private func seeHelpButtonTapped() {
         delegate?.christmasPromotionView(self, didSelect: .help)
     }
@@ -160,7 +160,7 @@ private extension UIColor {
     static var shadowColor: UIColor {
         return UIColor(hex: "475569")
     }
-    
+
     static var bgColor: UIColor {
         return .dynamicColorIfAvailable(defaultColor: .milk, darkModeColor: .blueGray700)
     }
