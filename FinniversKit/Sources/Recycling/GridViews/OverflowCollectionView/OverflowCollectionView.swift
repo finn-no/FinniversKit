@@ -64,8 +64,7 @@ public class OverflowCollectionView<Cell: OverflowCollectionViewCell>: UIView, U
     public func configure(with models: [Cell.Model]) {
         self.models = models
         collectionView.reloadData()
-
-        layoutIfNeeded()
+        setNeedsLayout()
     }
 
     public override func layoutSubviews() {
