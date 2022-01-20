@@ -185,6 +185,7 @@
 		4D529E2125837087007AE5B6 /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D529E2025837087007AE5B6 /* ImageAsset.swift */; };
 		4DC8CEDF2604B62900496DF1 /* PromoLinkDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8CEDE2604B62900496DF1 /* PromoLinkDemoView.swift */; };
 		4DC8CF362608A72300496DF1 /* PromoSlidesDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8CF352608A72300496DF1 /* PromoSlidesDemoView.swift */; };
+		5B959A0F727EB51E56231370 /* OverflowCollectionViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959C33286B6BD7933C9BA9 /* OverflowCollectionViewDemo.swift */; };
 		5D62FD7025B03B4800EB882D /* DemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D62FD6F25B03B4800EB882D /* DemoViews.swift */; };
 		5DA190D525A5BC5B002305A8 /* FinnTextField+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190D425A5BC5B002305A8 /* FinnTextField+Previews.swift */; };
 		5DA190F025A87EAB002305A8 /* FinnTextView+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190EF25A87EAB002305A8 /* FinnTextView+Previews.swift */; };
@@ -415,6 +416,7 @@
 		4D529E2025837087007AE5B6 /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
 		4DC8CEDE2604B62900496DF1 /* PromoLinkDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromoLinkDemoView.swift; sourceTree = "<group>"; };
 		4DC8CF352608A72300496DF1 /* PromoSlidesDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoSlidesDemoView.swift; sourceTree = "<group>"; };
+		5B959C33286B6BD7933C9BA9 /* OverflowCollectionViewDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverflowCollectionViewDemo.swift; sourceTree = "<group>"; };
 		5D62FD6F25B03B4800EB882D /* DemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViews.swift; sourceTree = "<group>"; };
 		5DA190D425A5BC5B002305A8 /* FinnTextField+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextField+Previews.swift"; sourceTree = "<group>"; };
 		5DA190EF25A87EAB002305A8 /* FinnTextView+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextView+Previews.swift"; sourceTree = "<group>"; };
@@ -876,6 +878,7 @@
 				46E7730A242CEF09008A5E93 /* Viewings */,
 				46E772F4242CEF09008A5E93 /* VisibilityDrivenTitleView */,
 				8D680C5C0B76EA3807545F4D /* NumberedListView */,
+				5B959406F634CEBB6F0318BB /* OverflowCollectionView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1649,6 +1652,14 @@
 			path = PromoSlidesView;
 			sourceTree = "<group>";
 		};
+		5B959406F634CEBB6F0318BB /* OverflowCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				5B959C33286B6BD7933C9BA9 /* OverflowCollectionViewDemo.swift */,
+			);
+			path = OverflowCollectionView;
+			sourceTree = "<group>";
+		};
 		5DEAC3C225C164AB003376AD /* IconButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -2108,6 +2119,7 @@
 				8D680A0AEE158DE3250140C2 /* CompactMarketsDemoView.swift in Sources */,
 				8D6807650CCEB53349934D26 /* PromotionFrontpageViewDemoView.swift in Sources */,
 				8D68030CF404D02BA5F8A618 /* NumberedListDemoView.swift in Sources */,
+				5B959A0F727EB51E56231370 /* OverflowCollectionViewDemo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
