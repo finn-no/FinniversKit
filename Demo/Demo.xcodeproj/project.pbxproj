@@ -185,6 +185,8 @@
 		4D529E2125837087007AE5B6 /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D529E2025837087007AE5B6 /* ImageAsset.swift */; };
 		4DC8CEDF2604B62900496DF1 /* PromoLinkDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8CEDE2604B62900496DF1 /* PromoLinkDemoView.swift */; };
 		4DC8CF362608A72300496DF1 /* PromoSlidesDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8CF352608A72300496DF1 /* PromoSlidesDemoView.swift */; };
+		5B95941933E6E48B4DE53E1B /* IPadSnapshotWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959EE2A1978F8DE0BC95D7 /* IPadSnapshotWrapperViewController.swift */; };
+		5B959D71E45DF88C52F38B78 /* SnapshotWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95911723A1FB1DC9260B22 /* SnapshotWrapperViewController.swift */; };
 		5D62FD7025B03B4800EB882D /* DemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D62FD6F25B03B4800EB882D /* DemoViews.swift */; };
 		5DA190D525A5BC5B002305A8 /* FinnTextField+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190D425A5BC5B002305A8 /* FinnTextField+Previews.swift */; };
 		5DA190F025A87EAB002305A8 /* FinnTextView+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190EF25A87EAB002305A8 /* FinnTextView+Previews.swift */; };
@@ -415,6 +417,8 @@
 		4D529E2025837087007AE5B6 /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
 		4DC8CEDE2604B62900496DF1 /* PromoLinkDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromoLinkDemoView.swift; sourceTree = "<group>"; };
 		4DC8CF352608A72300496DF1 /* PromoSlidesDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoSlidesDemoView.swift; sourceTree = "<group>"; };
+		5B95911723A1FB1DC9260B22 /* SnapshotWrapperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotWrapperViewController.swift; sourceTree = "<group>"; };
+		5B959EE2A1978F8DE0BC95D7 /* IPadSnapshotWrapperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPadSnapshotWrapperViewController.swift; sourceTree = "<group>"; };
 		5D62FD6F25B03B4800EB882D /* DemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViews.swift; sourceTree = "<group>"; };
 		5DA190D425A5BC5B002305A8 /* FinnTextField+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextField+Previews.swift"; sourceTree = "<group>"; };
 		5DA190EF25A87EAB002305A8 /* FinnTextView+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextView+Previews.swift"; sourceTree = "<group>"; };
@@ -1595,6 +1599,7 @@
 				46E7757A242D476B008A5E93 /* TableViewCellViewsTests.swift */,
 				46E77584242D4805008A5E93 /* TestConfig.swift */,
 				46E77582242D478D008A5E93 /* XCTestCastExtensions.swift */,
+				5B95928DFEE6C3E699C06B61 /* Wrappers */,
 			);
 			path = SnapshotTests;
 			sourceTree = "<group>";
@@ -1647,6 +1652,15 @@
 				4DC8CF352608A72300496DF1 /* PromoSlidesDemoView.swift */,
 			);
 			path = PromoSlidesView;
+			sourceTree = "<group>";
+		};
+		5B95928DFEE6C3E699C06B61 /* Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				5B95911723A1FB1DC9260B22 /* SnapshotWrapperViewController.swift */,
+				5B959EE2A1978F8DE0BC95D7 /* IPadSnapshotWrapperViewController.swift */,
+			);
+			path = Wrappers;
 			sourceTree = "<group>";
 		};
 		5DEAC3C225C164AB003376AD /* IconButton */ = {
@@ -2124,6 +2138,8 @@
 				46E7757C242D476B008A5E93 /* DnaViewTests.swift in Sources */,
 				46E7757D242D476B008A5E93 /* BroadcastMessageTests.swift in Sources */,
 				46E7757F242D476B008A5E93 /* TableViewCellViewsTests.swift in Sources */,
+				5B959D71E45DF88C52F38B78 /* SnapshotWrapperViewController.swift in Sources */,
+				5B95941933E6E48B4DE53E1B /* IPadSnapshotWrapperViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
