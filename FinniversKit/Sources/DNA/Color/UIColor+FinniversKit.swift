@@ -526,19 +526,13 @@ public extension UIColor {
     ///   - defaultColor: light mode version of the color
     ///   - darkModeColor: dark mode version of the color
     class func dynamicColor(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
-        if #available(iOS 13.0, *) {
-            #if swift(>=5.1)
-            return UIColor { traitCollection -> UIColor in
-                switch traitCollection.userInterfaceStyle {
-                case .dark:
-                    return darkModeColor
-                default:
-                    return defaultColor
-                }
+        UIColor { traitCollection -> UIColor in
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+                return darkModeColor
+            default:
+                return defaultColor
             }
-            #endif
-        }
-        return defaultColor
         }
     }
 }
