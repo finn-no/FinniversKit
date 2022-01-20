@@ -17,15 +17,13 @@ class NavigationController: UINavigationController {
     }
 
     private func setup() {
-        navigationBar.isTranslucent = false
-        let separatorColor: UIColor = .textDisabled //DARK
-        let barTintColor: UIColor = .bgPrimary
-        let tintColor: UIColor = .textAction
+        setBottomBorderColor(navigationBar: navigationBar, color: .textDisabled, height: 0.5)
 
-        setBottomBorderColor(navigationBar: navigationBar, color: separatorColor, height: 0.5)
-        navigationBar.barTintColor = barTintColor
-        navigationBar.tintColor = tintColor
-        navigationBar.layoutIfNeeded()
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .bgPrimary
+        navigationBar.standardAppearance = appearance
+        navigationBar.scrollEdgeAppearance = appearance
     }
 
     private func setBottomBorderColor(navigationBar: UINavigationBar, color: UIColor, height: CGFloat) {
