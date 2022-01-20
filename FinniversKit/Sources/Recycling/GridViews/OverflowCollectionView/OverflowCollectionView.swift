@@ -33,7 +33,7 @@ public class OverflowCollectionView<Cell: OverflowCollectionViewCell>: UIView, U
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .bgPrimary
+        collectionView.backgroundColor = .clear
         collectionView.register(cellType)
         return collectionView
     }()
