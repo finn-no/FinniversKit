@@ -130,16 +130,25 @@ private extension OverflowCollectionView {
             }
 
             attributes.enumerated().forEach { index, attribute in
-                // Skip the first attribute, that one's already correctly placed.
-                guard index > 0 else { return }
+                /// The first item will in some cases have the origin set to something else than 0.
+                /// Make sure it always is 0.
+                if index == 0 {
+                    let attribute = attributes[index]
+                    attribute.frame.origin.x = 0
+                    return
+                }
 
-                let origin = attributes[index - 1].frame.maxX
+                let previousCellMaxX = attributes[index - 1].frame.maxX
 
                 // Make sure the new cell is not exceeding the width of the collectionView.
-                if origin + cellSpacing.horizontal + attribute.frame.size.width < collectionViewContentSize.width {
+                if previousCellMaxX + cellSpacing.horizontal + attribute.frame.size.width < collectionViewContentSize.width {
                     var newFrame = attribute.frame
-                    newFrame.origin.x = origin + cellSpacing.horizontal
+                    newFrame.origin.x = previousCellMaxX + cellSpacing.horizontal
                     attribute.frame = newFrame
+                } else {
+                    /// In cases where the first attribute doesn't have `origin.x` set to 0, the others won't either.
+                    /// Make sure elements on new rows are left aligned.
+                    attribute.frame.origin.x = 0
                 }
             }
 
