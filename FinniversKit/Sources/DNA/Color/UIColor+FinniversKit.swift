@@ -539,20 +539,6 @@ public extension UIColor {
             #endif
         }
         return defaultColor
-    }
-
-    /// Convenience mehtod to create dynamic colors **considering FinniversKit settings** and if the OS supports it
-    /// - Parameters:
-    ///   - defaultColor: light mode version of the color
-    ///   - darkModeColor: dark mode version of the color
-    class func dynamicColorIfAvailable(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
-        switch Config.userInterfaceStyleSupport {
-        case .forceDark:
-            return darkModeColor
-        case .forceLight:
-            return defaultColor
-        case .dynamic:
-            return dynamicColor(defaultColor: defaultColor, darkModeColor: darkModeColor)
         }
     }
 }
