@@ -188,13 +188,4 @@ extension Foundation.Notification.Name {
 @objc enum UserInterfaceStyle: Int {
     case light = 1
     case dark = 2
-
-    var image: UIImage {
-        switch self {
-        case .light:
-            return UIImage(named: .emptyMoon)
-        case .dark:
-            return UIImage(named: .filledMoon)
-        }
-    }
 }
