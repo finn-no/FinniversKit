@@ -264,13 +264,11 @@ public final class FrontPageView: UIView {
             view.translatesAutoresizingMaskIntoConstraints = false
             frontPageShelfView = view
             shelfContainer.addSubview(view)
+            setupFrames()
             view.fillInSuperview(insets: .init(top: .spacingL, leading: 0, bottom: 0, trailing: 0))
         } else {
             frontPageShelfView?.reloadShelf()
         }
-
-        
-        setupFrames()
     }
     
     public func removeFrontShelf() {
