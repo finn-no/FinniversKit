@@ -260,12 +260,15 @@ public final class FrontPageView: UIView {
     public func configureFrontPageShelves(_ model: FrontPageShelfViewModel) {
         self.shelfViewModel = model
         if frontPageShelfView == nil {
-            let view = FrontPageShelfView(withDatasource: self)
-            view.translatesAutoresizingMaskIntoConstraints = false
-            frontPageShelfView = view
-            shelfContainer.addSubview(view)
+            frontPageShelfView = FrontPageShelfView(withDatasource: self)
+            frontPageShelfView?.translatesAutoresizingMaskIntoConstraints = false
+            shelfContainer.addSubview(frontPageShelfView!)
+            frontPageShelfView?.reloadShelf()
+            frontPageShelfView?.fillInSuperview(insets: .init(top: .spacingL,
+                                                              leading: 0,
+                                                              bottom: 0,
+                                                              trailing: 0))
             setupFrames()
-            view.fillInSuperview(insets: .init(top: .spacingL, leading: 0, bottom: 0, trailing: 0))
         } else {
             frontPageShelfView?.reloadShelf()
         }

@@ -102,6 +102,12 @@ private extension FrontPageShelfView {
         collectionView.fillInSuperview()
         collectionViewDatasource = makeDatasource()
         applySnapshot()
+        NSLayoutConstraint.activate([
+            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            collectionView.topAnchor.constraint(equalTo: self.topAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
     }
     
     func registerCollectionViewCells() {
