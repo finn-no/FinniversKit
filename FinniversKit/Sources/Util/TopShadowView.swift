@@ -32,14 +32,17 @@ public class TopShadowView: UIView {
     // MARK: - Shadow
 
     public func updateShadow(using scrollView: UIScrollView) {
+        let scrollViewFrameInWindow = scrollView.convert(scrollView.bounds, to: nil)
+        let frameInWindow = convert(bounds, to: nil)
+
         let contentFrame = CGRect(
             x: -scrollView.contentOffset.x,
-            y: scrollView.frame.minY - scrollView.contentOffset.y - scrollView.contentInset.top,
+            y: scrollViewFrameInWindow.minY - scrollView.contentOffset.y - scrollView.contentInset.top,
             width: scrollView.contentSize.width,
             height: scrollView.contentSize.height + scrollView.contentInset.top
         )
 
-        let intersection = contentFrame.intersection(frame)
+        let intersection = contentFrame.intersection(frameInWindow)
         layer.shadowRadius = min(intersection.height * 0.2, TopShadowView.maxShadowRadius)
     }
 
