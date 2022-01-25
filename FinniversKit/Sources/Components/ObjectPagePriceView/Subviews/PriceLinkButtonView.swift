@@ -2,6 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+import UIKit
+
 protocol PriceLinkButtonViewDelegate: AnyObject {
     func priceLinkButton(withIdentifier identifier: String?, wasTappedWithUrl url: URL)
 }
@@ -27,8 +29,8 @@ class PriceLinkButtonView: UIView {
     }()
 
     private lazy var buttonStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [linkButton, fillerView, externalImageView])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        let stackView = UIStackView(axis: .horizontal, spacing: .spacingS, withAutoLayout: true)
+        stackView.addArrangedSubviews([linkButton, fillerView, externalImageView])
         stackView.alignment = .center
         return stackView
     }()
@@ -120,9 +122,8 @@ class PriceLinkButtonView: UIView {
         subheadingLabel.text = viewModel.subheading
         subheadingLabel.setContentHuggingPriority(.required, for: .horizontal)
 
-        let horizontalStackView = UIStackView(withAutoLayout: true)
+        let horizontalStackView = UIStackView(axis: .horizontal, spacing: .spacingS, withAutoLayout: true)
         horizontalStackView.addArrangedSubviews([subheadingLabel, buttonStackView])
-        horizontalStackView.spacing = .spacingS
 
         stackView.addArrangedSubviews([horizontalStackView, subtitleLabel])
 
