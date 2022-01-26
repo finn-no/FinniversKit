@@ -199,9 +199,9 @@ public final class FrontPageView: UIView {
             christmasPromotionContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
             christmasPromotionContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
             
-            shelfContainer.topAnchor.constraint(equalTo: christmasPromotionContainer.bottomAnchor, constant: 0),
-            shelfContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 0),
-            shelfContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: 0),
+            shelfContainer.topAnchor.constraint(equalTo: christmasPromotionContainer.bottomAnchor),
+            shelfContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            shelfContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             
             headerLabel.topAnchor.constraint(equalTo: shelfContainer.bottomAnchor, constant: .spacingM),
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
@@ -268,10 +268,10 @@ public final class FrontPageView: UIView {
                                                               leading: 0,
                                                               bottom: 0,
                                                               trailing: 0))
-            setupFrames()
         } else {
             frontPageShelfView?.reloadShelf()
         }
+        setupFrames()
     }
     
     public func removeFrontShelf() {
