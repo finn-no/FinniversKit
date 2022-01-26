@@ -264,17 +264,15 @@ public final class FrontPageView: UIView {
             frontPageShelfView?.translatesAutoresizingMaskIntoConstraints = false
             shelfContainer.addSubview(frontPageShelfView!)
 
+            frontPageShelfView?.fillInSuperview(
+                insets: .init(top: .spacingL, leading: 0, bottom: 0, trailing: 0)
+            )
+
             // Add a minimum height, since cells are never queried if the frame initially has height 0.
             frontPageShelfView?.heightAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
-
-            frontPageShelfView?.reloadShelf()
-            frontPageShelfView?.fillInSuperview(insets: .init(top: .spacingL,
-                                                              leading: 0,
-                                                              bottom: 0,
-                                                              trailing: 0))
-        } else {
-            frontPageShelfView?.reloadShelf()
         }
+
+        frontPageShelfView?.reloadShelf()
         setupFrames()
     }
     
