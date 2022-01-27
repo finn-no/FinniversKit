@@ -4,6 +4,7 @@ public class FrontPageShelfViewModel {
     private(set) var recentlyFavoritedItems: [RecentlyFavoritedViewmodel]
     private(set) var savedSearchItems: [SavedSearchShelfViewModel]
     private(set) var sectionTitles: [String]
+    private (set) var buttonTitles: [String]
     
     private let headerHeight: CGFloat = 44
     private let topPadding: CGFloat = 20
@@ -13,7 +14,6 @@ public class FrontPageShelfViewModel {
     var isFavoritedListEmpty: Bool {
         recentlyFavoritedItems.isEmpty
     }
-    
     
     var heightForShelf: CGFloat {
         return 0 + (!savedSearchItems.isEmpty ? (savedSearchSectionHeight) : 0) +
@@ -28,10 +28,11 @@ public class FrontPageShelfViewModel {
         headerHeight + topPadding + favoriteHeight
     }
     
-    public init(favoritedItems: [RecentlyFavoritedViewmodel], savedSearchItems: [SavedSearchShelfViewModel], sectionTitles: [String]) {
+    public init(favoritedItems: [RecentlyFavoritedViewmodel], savedSearchItems: [SavedSearchShelfViewModel], sectionTitles: [String], buttonTitles: [String]) {
         self.recentlyFavoritedItems = favoritedItems
         self.savedSearchItems = savedSearchItems
         self.sectionTitles = sectionTitles
+        self.buttonTitles = buttonTitles
     }
     
     func removeFavoritedItem(atIndex index: Int) {
@@ -46,5 +47,10 @@ public class FrontPageShelfViewModel {
     func titleForSection(at index: Int) -> String {
         guard index < sectionTitles.count else { return "" }
         return sectionTitles[index]
+    }
+    
+    func titleForButton(at index: Int) -> String {
+        guard index < buttonTitles.count else { return "" }
+        return buttonTitles[index]
     }
 }

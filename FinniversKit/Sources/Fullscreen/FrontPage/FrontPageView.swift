@@ -365,7 +365,7 @@ extension FrontPageView: FrontPageShelfViewDataSource {
     }
     
     public func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForButtonForSectionAt index: Int) -> String {
-        return "Se alle"
+        shelfViewModel?.titleForButton(at: index) ?? ""
     }
     
     public func frontPageShelfView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, withItem item: AnyHashable) -> UICollectionViewCell? {
