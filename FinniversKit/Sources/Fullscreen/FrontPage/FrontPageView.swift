@@ -199,9 +199,9 @@ public final class FrontPageView: UIView {
             christmasPromotionContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
             christmasPromotionContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
             
-            shelfContainer.topAnchor.constraint(equalTo: christmasPromotionContainer.bottomAnchor, constant: 0),
-            shelfContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 0),
-            shelfContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: 0),
+            shelfContainer.topAnchor.constraint(equalTo: christmasPromotionContainer.bottomAnchor),
+            shelfContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            shelfContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             
             headerLabel.topAnchor.constraint(equalTo: shelfContainer.bottomAnchor, constant: .spacingM),
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
@@ -263,15 +263,17 @@ public final class FrontPageView: UIView {
             frontPageShelfView = FrontPageShelfView(withDatasource: self)
             frontPageShelfView?.translatesAutoresizingMaskIntoConstraints = false
             shelfContainer.addSubview(frontPageShelfView!)
-            frontPageShelfView?.reloadShelf()
-            frontPageShelfView?.fillInSuperview(insets: .init(top: .spacingL,
-                                                              leading: 0,
-                                                              bottom: 0,
-                                                              trailing: 0))
-            setupFrames()
-        } else {
-            frontPageShelfView?.reloadShelf()
+
+            frontPageShelfView?.fillInSuperview(
+                insets: .init(top: .spacingL, leading: 0, bottom: 0, trailing: 0)
+            )
+
+            // Add a minimum height, since cells are never queried if the frame initially has height 0.
+            frontPageShelfView?.heightAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
         }
+
+        frontPageShelfView?.reloadShelf()
+        setupFrames()
     }
     
     public func removeFrontShelf() {
