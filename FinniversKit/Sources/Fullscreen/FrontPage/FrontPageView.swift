@@ -271,9 +271,9 @@ public final class FrontPageView: UIView {
             // Add a minimum height, since cells are never queried if the frame initially has height 0.
             frontPageShelfView?.heightAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
         }
-
         frontPageShelfView?.reloadShelf()
         setupFrames()
+        
     }
     
     public func removeFrontShelf() {
