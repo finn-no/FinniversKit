@@ -16,12 +16,7 @@ public class PriceLinkButtonListView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .vertical
-        stackView.spacing = .spacingS
-        return stackView
-    }()
+    private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
 
     // MARK: - Init
 
