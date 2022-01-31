@@ -15,7 +15,7 @@ public protocol FrontPageViewDelegate: MarketsViewDelegate, AdRecommendationsGri
     func frontPageView(_ frontPageView: FrontPageView, didUnfavoriteRecentlyFavorited item: RecentlyFavoritedViewmodel)
 }
 
-public final class FrontPageView: UIView, BasicFrontPageView {
+public final class FrontPageView: UIView {
     
     public var model: FrontPageViewModel? {
         didSet {
@@ -76,7 +76,6 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         return view
     }()
 
-    private let promoContainer = UIView(withAutoLayout: true)
     private let christmasPromotionContainer = UIView(withAutoLayout: true)
     private let shelfContainer = UIView(withAutoLayout: true)
     private var isShowingShelf: Bool {
@@ -170,15 +169,9 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         adRecommendationsGridView.scrollToTop()
     }
 
-    public func insertPromoView(_ view: UIView?) {
-        addSubviewToPromoContainer(view)
-    }
-    
     public func showChristmasPromotion(withModel model: ChristmasPromotionViewModel, andDelegate delegate: PromotionViewDelegate) {
         addChristmasPromotion(withModel: model, andDelegate: delegate)
     }
-    
-    
 
     // MARK: - Setup
 
@@ -190,11 +183,10 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         adRecommendationsGridView.collectionView.addSubview(adsRetryView)
 
         headerView.addSubview(marketsGridView)
-        headerView.addSubview(promoContainer)
         headerView.addSubview(christmasPromotionContainer)
         headerView.addSubview(shelfContainer)
         headerView.addSubview(headerLabel)
-        
+
         addSubview(compactMarketsView)
 
         NSLayoutConstraint.activate([
@@ -202,18 +194,14 @@ public final class FrontPageView: UIView, BasicFrontPageView {
             marketsGridView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
             marketsGridView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             marketsGridViewHeight,
-
-            promoContainer.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor),
-            promoContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
-            promoContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             
-            christmasPromotionContainer.topAnchor.constraint(equalTo: promoContainer.bottomAnchor, constant: isChristmasPromotionShowing ? .spacingL : 0),
+            christmasPromotionContainer.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor, constant: isChristmasPromotionShowing ? .spacingL : 0),
             christmasPromotionContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
             christmasPromotionContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
             
-            shelfContainer.topAnchor.constraint(equalTo: christmasPromotionContainer.bottomAnchor, constant: isShowingShelf ? .spacingL : 0),
-            shelfContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 0),
-            shelfContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: 0),
+            shelfContainer.topAnchor.constraint(equalTo: christmasPromotionContainer.bottomAnchor),
+            shelfContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            shelfContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             
             headerLabel.topAnchor.constraint(equalTo: shelfContainer.bottomAnchor, constant: .spacingM),
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
@@ -238,15 +226,9 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         let headerTopSpacing: CGFloat = .spacingM
         let headerBottomSpacing: CGFloat = .spacingS
         let labelHeight = headerLabel.intrinsicContentSize.height + .spacingM
-        let promoContainerHeight = promoContainer
-            .systemLayoutSizeFitting(
-                CGSize(width: bounds.size.width, height: 0),
-                withHorizontalFittingPriority: .required,
-                verticalFittingPriority: .fittingSizeLevel)
-            .height
 
         let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: bounds.size.width).height + .spacingXS
-        var height = headerTopSpacing + labelHeight + marketGridViewHeight + promoContainerHeight + headerBottomSpacing
+        var height = headerTopSpacing + labelHeight + marketGridViewHeight + headerBottomSpacing
         height += isChristmasPromotionShowing ? ChristmasPromotionView.height + .spacingL : 0
         
         let shelfContainerHeight = shelfViewModel?.heightForShelf ?? 0
@@ -261,26 +243,6 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     }
 
     // MARK: - Private methods
-
-    private func addSubviewToPromoContainer(_ view: UIView?) {
-        promoContainer.subviews.forEach({ $0.removeFromSuperview() })
-
-        guard let view = view else {
-            setupFrames()
-            return
-        }
-
-        promoContainer.addSubview(view)
-
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: promoContainer.topAnchor, constant: .spacingM),
-            view.leadingAnchor.constraint(equalTo: promoContainer.leadingAnchor, constant: .spacingM),
-            view.trailingAnchor.constraint(equalTo: promoContainer.trailingAnchor, constant: -.spacingM),
-            view.bottomAnchor.constraint(equalTo: promoContainer.bottomAnchor)
-        ])
-
-        setupFrames()
-    }
     
     private func addChristmasPromotion(withModel model: ChristmasPromotionViewModel, andDelegate delegate: PromotionViewDelegate) {
         let promotionView = ChristmasPromotionView(model: model)
@@ -299,11 +261,16 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         self.shelfViewModel = model
 
         if frontPageShelfView == nil {
-            let view = FrontPageShelfView(withDatasource: self)
-            view.translatesAutoresizingMaskIntoConstraints = false
-            frontPageShelfView = view
-            shelfContainer.addSubview(view)
-            view.fillInSuperview()
+            frontPageShelfView = FrontPageShelfView(withDatasource: self)
+            frontPageShelfView?.translatesAutoresizingMaskIntoConstraints = false
+            shelfContainer.addSubview(frontPageShelfView!)
+
+            frontPageShelfView?.fillInSuperview(
+                insets: .init(top: .spacingL, leading: 0, bottom: 0, trailing: 0)
+            )
+
+            // Add a minimum height, since cells are never queried if the frame initially has height 0.
+            frontPageShelfView?.heightAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
         }
 
         frontPageShelfView?.reloadShelf()
@@ -313,6 +280,14 @@ public final class FrontPageView: UIView, BasicFrontPageView {
             frontPageShelfView?.scrollToSavedSearch(atIndex: firstVisibleSavedSearchIndex)
         }
 
+        setupFrames()
+        
+    }
+    
+    public func removeFrontShelf() {
+        self.shelfViewModel = nil
+        frontPageShelfView?.removeFromSuperview()
+        frontPageShelfView = nil
         setupFrames()
     }
     
@@ -393,8 +368,12 @@ extension FrontPageView: MarketsViewDelegate {
 
 // MARK: - FrontPageShelfDatasource
 extension FrontPageView: FrontPageShelfViewDataSource {
-    public func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForSectionAt index: IndexPath) -> String {
+    public func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForSectionAt index: Int) -> String {
         shelfViewModel?.titleForSection(at: index) ?? ""
+    }
+    
+    public func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForButtonForSectionAt index: Int) -> String {
+        shelfViewModel?.titleForButton(at: index) ?? ""
     }
     
     public func frontPageShelfView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, withItem item: AnyHashable) -> UICollectionViewCell? {
@@ -432,13 +411,9 @@ extension FrontPageView: FrontPageShelfViewDataSource {
     
     public func removeFavoritedItem(_ item: AnyHashable, atIndexPath indexPath: IndexPath) {
         guard
-            let viewModel = shelfViewModel,
-            let shelfView = frontPageShelfView,
             let favoriteModel = item as? RecentlyFavoritedViewmodel
         else { return }
-        
-        viewModel.removeFavoritedItem(atIndex: indexPath.item)
-        shelfView.removeItem(item)
+
         delegate?.frontPageView(self, didUnfavoriteRecentlyFavorited: favoriteModel)
     }
 }

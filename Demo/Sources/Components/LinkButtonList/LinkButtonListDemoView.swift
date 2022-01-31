@@ -75,6 +75,13 @@ private extension Array where Element == LinkButtonViewModel {
                 isExternal: true
             ),
             LinkButtonViewModel(
+                buttonIdentifier: "loan",
+                buttonTitle: "External link w/ overridden icon color",
+                linkUrl: URL(string: "https://www.finn.no/")!,
+                isExternal: true,
+                externalIconColor: .red
+            ),
+            LinkButtonViewModel(
                 buttonIdentifier: "insurance",
                 buttonTitle: "In-app link",
                 linkUrl: URL(string: "https://www.finn.no/")!,
