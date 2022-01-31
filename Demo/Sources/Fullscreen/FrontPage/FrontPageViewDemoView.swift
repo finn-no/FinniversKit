@@ -29,7 +29,8 @@ public class FrontpageViewDemoView: UIView {
         
         let shelfModel = FrontPageShelfViewModel(favoritedItems:RecentlyFavoritedFactory.create(numberOfItems: 10),
                                                  savedSearchItems: SavedSearchShelfFactory.create(numberOfItems: 5),
-                                                 sectionTitles: ["Lagrede søk", "Nylige favoritter"])
+                                                 sectionTitles: ["Lagrede søk", "Nylige favoritter"],
+                                                 buttonTitles: ["Se alle", "Se alle"])
         view.configureFrontPageShelves(shelfModel)
         view.frontPageShelfDelegate = self
         return view
