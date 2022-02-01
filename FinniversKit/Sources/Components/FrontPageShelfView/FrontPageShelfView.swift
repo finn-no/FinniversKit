@@ -20,7 +20,7 @@ public class FrontPageShelfView: UIView {
     static let headerHeight: CGFloat = 44
     static let favoriteCellHeight: CGFloat = 200
     static let savedSearchCellHeight: CGFloat = 100
-    static let sectionSpacing: CGFloat = .spacingS
+    static let sectionSpacing: CGFloat = .spacingL
 
     typealias Datasource = UICollectionViewDiffableDataSource<Section, AnyHashable>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
