@@ -16,6 +16,12 @@ public protocol FrontPageShelfDelegate: AnyObject {
 }
 
 public class FrontPageShelfView: UIView {
+    static let topPadding: CGFloat = .spacingL
+    static let headerHeight: CGFloat = 44
+    static let favoriteCellHeight: CGFloat = 200
+    static let savedSearchCellHeight: CGFloat = 100
+    static let sectionSpacing: CGFloat = .spacingS
+
     typealias Datasource = UICollectionViewDiffableDataSource<Section, AnyHashable>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
     
@@ -44,6 +50,7 @@ public class FrontPageShelfView: UIView {
         }
 
         let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = Self.sectionSpacing
         layout.configuration = config
         return layout
     }
@@ -127,11 +134,11 @@ private extension FrontPageShelfView {
 // MARK: - Layout
 private extension FrontPageShelfView {
     private var favoriteLayout: NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(180))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(Self.favoriteCellHeight))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
         // Groups
-        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(140), heightDimension: .estimated(180))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(140), heightDimension: .estimated(Self.favoriteCellHeight))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
         group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: .spacingS)
 
@@ -140,7 +147,7 @@ private extension FrontPageShelfView {
         section.orthogonalScrollingBehavior = .continuous
 
         //Header
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(44))
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(Self.headerHeight))
         let headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: FrontPageShelfHeaderView.reuseIdentifier, alignment: .top)
         section.boundarySupplementaryItems = [headerElement]
 
@@ -148,11 +155,11 @@ private extension FrontPageShelfView {
     }
 
     private var savedSearchLayout: NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(100))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(Self.savedSearchCellHeight))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
         //Groups
-        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(SavedSearchShelfCell.width), heightDimension: .absolute(100))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(SavedSearchShelfCell.width), heightDimension: .absolute(Self.savedSearchCellHeight))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
 
         //Sections
@@ -162,7 +169,7 @@ private extension FrontPageShelfView {
         section.interGroupSpacing = .spacingS + .spacingXS
 
         // Header
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(44))
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(Self.headerHeight))
         let headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: FrontPageShelfHeaderView.reuseIdentifier, alignment: .top)
         section.boundarySupplementaryItems = [headerElement]
 
