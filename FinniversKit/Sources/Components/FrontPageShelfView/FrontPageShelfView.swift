@@ -12,7 +12,6 @@ public protocol FrontPageShelfDelegate: AnyObject {
     func frontPageShelfView(_ view: FrontPageShelfView, didSelectFavoriteItem item: RecentlyFavoritedViewmodel)
     func frontPageShelfView(_ view: FrontPageShelfView, didSelectSavedSearchItem item: SavedSearchShelfViewModel)
     func frontPageShelfView(_ view: FrontPageShelfView, didSelectHeaderForSection section: FrontPageShelfView.Section)
-   
 }
 
 public class FrontPageShelfView: UIView {
@@ -24,7 +23,7 @@ public class FrontPageShelfView: UIView {
 
     typealias Datasource = UICollectionViewDiffableDataSource<Section, AnyHashable>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
-    
+
     public enum Section: Int, CaseIterable {
         case savedSearch
         case recentlyFavorited
@@ -117,7 +116,7 @@ private extension FrontPageShelfView {
     func setup() {
         addSubview(collectionView)
         registerCollectionViewCells()
-        
+
         collectionView.backgroundColor = .bgQuaternary
         collectionView.fillInSuperview()
         collectionViewDatasource = makeDatasource()
@@ -184,7 +183,7 @@ private extension FrontPageShelfView {
             self?.shelfDatasource?.frontPageShelfView(collectionView, cellForItemAt: indexPath, withItem: item)
             
         }
-        
+
         datasource.supplementaryViewProvider = { [weak self] (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
             guard
                 let self = self,
@@ -202,7 +201,7 @@ private extension FrontPageShelfView {
                     
                     self.shelfDelegate?.frontPageShelfView(self, didSelectHeaderForSection: .savedSearch)
                 })
-                
+
             case .recentlyFavorited:
                 headerView.configureHeaderView(withTitle: datasource.frontPageShelfView(self, titleForSectionAt: Section.recentlyFavorited.rawValue),
                                                buttonTitle: datasource.frontPageShelfView(self, titleForButtonForSectionAt: Section.recentlyFavorited.rawValue),
@@ -238,10 +237,8 @@ extension FrontPageShelfView: UICollectionViewDelegate {
         guard let item = collectionViewDatasource.itemIdentifier(for: indexPath) else { return }
         if let item = item as? RecentlyFavoritedViewmodel {
             shelfDelegate?.frontPageShelfView(self, didSelectFavoriteItem: item)
-        }
-        else if let item = item as? SavedSearchShelfViewModel {
+        } else if let item = item as? SavedSearchShelfViewModel {
             shelfDelegate?.frontPageShelfView(self, didSelectSavedSearchItem: item)
         }
     }
 }
-

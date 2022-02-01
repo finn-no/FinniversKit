@@ -4,7 +4,7 @@ public class FrontPageShelfViewModel {
     private(set) var recentlyFavoritedItems: [RecentlyFavoritedViewmodel]
     private(set) var savedSearchItems: [SavedSearchShelfViewModel]
     private(set) var sectionTitles: [String]
-    private (set) var buttonTitles: [String]
+    private(set) var buttonTitles: [String]
 
     var heightForShelf: CGFloat {
         savedSearchSectionHeight + sectionSpacing + recentlyFavoritedSectionHeight
