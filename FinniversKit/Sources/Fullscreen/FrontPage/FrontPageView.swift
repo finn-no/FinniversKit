@@ -232,7 +232,7 @@ public final class FrontPageView: UIView {
         height += isChristmasPromotionShowing ? ChristmasPromotionView.height + .spacingL : 0
         
         let shelfContainerHeight = shelfViewModel?.heightForShelf ?? 0
-        height += shelfContainerHeight + (shelfContainerHeight > 0 ? .spacingL : 0)
+        height += shelfContainerHeight + (shelfContainerHeight > 0 ? FrontPageShelfView.topPadding : 0)
 
         marketsGridViewHeight.constant = marketGridViewHeight
         headerView.frame.size.height = height
@@ -266,7 +266,7 @@ public final class FrontPageView: UIView {
             shelfContainer.addSubview(frontPageShelfView!)
 
             frontPageShelfView?.fillInSuperview(
-                insets: .init(top: .spacingL, leading: 0, bottom: 0, trailing: 0)
+                insets: .init(top: FrontPageShelfView.topPadding, leading: 0, bottom: 0, trailing: 0)
             )
 
             // Add a minimum height, since cells are never queried if the frame initially has height 0.

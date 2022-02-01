@@ -4,30 +4,29 @@ public class FrontPageShelfViewModel {
     private(set) var recentlyFavoritedItems: [RecentlyFavoritedViewmodel]
     private(set) var savedSearchItems: [SavedSearchShelfViewModel]
     private(set) var sectionTitles: [String]
-    private (set) var buttonTitles: [String]
-    
-    private let headerHeight: CGFloat = 44
-    private let topPadding: CGFloat = 20
-    private let savedSearchHeight: CGFloat = 100
-    private let favoriteHeight: CGFloat = 190
-    
-    var isFavoritedListEmpty: Bool {
-        recentlyFavoritedItems.isEmpty
-    }
-    
+    private(set) var buttonTitles: [String]
+
     var heightForShelf: CGFloat {
-        return 0 + (!savedSearchItems.isEmpty ? (savedSearchSectionHeight) : 0) +
-        (!recentlyFavoritedItems.isEmpty ? (recentlyFavoritedSectionHeight) : 0)
+        savedSearchSectionHeight + sectionSpacing + recentlyFavoritedSectionHeight
     }
-    
-    var savedSearchSectionHeight: CGFloat {
-        headerHeight + topPadding + savedSearchHeight
+
+    private var savedSearchSectionHeight: CGFloat {
+        guard !savedSearchItems.isEmpty else { return 0 }
+        return FrontPageShelfView.headerHeight + FrontPageShelfView.savedSearchCellHeight
     }
-    
-    var recentlyFavoritedSectionHeight: CGFloat {
-        headerHeight + topPadding + favoriteHeight
+
+    private var sectionSpacing: CGFloat {
+        if !savedSearchItems.isEmpty && !recentlyFavoritedItems.isEmpty {
+            return FrontPageShelfView.sectionSpacing
+        }
+        return 0
     }
-    
+
+    private var recentlyFavoritedSectionHeight: CGFloat {
+        guard !recentlyFavoritedItems.isEmpty else { return 0 }
+        return FrontPageShelfView.headerHeight + FrontPageShelfView.favoriteCellHeight
+    }
+
     public init(favoritedItems: [RecentlyFavoritedViewmodel], savedSearchItems: [SavedSearchShelfViewModel], sectionTitles: [String], buttonTitles: [String]) {
         self.recentlyFavoritedItems = favoritedItems
         self.savedSearchItems = savedSearchItems

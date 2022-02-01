@@ -12,13 +12,18 @@ public protocol FrontPageShelfDelegate: AnyObject {
     func frontPageShelfView(_ view: FrontPageShelfView, didSelectFavoriteItem item: RecentlyFavoritedViewmodel)
     func frontPageShelfView(_ view: FrontPageShelfView, didSelectSavedSearchItem item: SavedSearchShelfViewModel)
     func frontPageShelfView(_ view: FrontPageShelfView, didSelectHeaderForSection section: FrontPageShelfView.Section)
-   
 }
 
 public class FrontPageShelfView: UIView {
+    static let topPadding: CGFloat = .spacingL
+    static let headerHeight: CGFloat = 44
+    static let favoriteCellHeight: CGFloat = 200
+    static let savedSearchCellHeight: CGFloat = 100
+    static let sectionSpacing: CGFloat = .spacingL
+
     typealias Datasource = UICollectionViewDiffableDataSource<Section, AnyHashable>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
-    
+
     public enum Section: Int, CaseIterable {
         case savedSearch
         case recentlyFavorited
@@ -44,6 +49,7 @@ public class FrontPageShelfView: UIView {
         }
 
         let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = Self.sectionSpacing
         layout.configuration = config
         return layout
     }
@@ -110,7 +116,7 @@ private extension FrontPageShelfView {
     func setup() {
         addSubview(collectionView)
         registerCollectionViewCells()
-        
+
         collectionView.backgroundColor = .bgQuaternary
         collectionView.fillInSuperview()
         collectionViewDatasource = makeDatasource()
@@ -127,11 +133,11 @@ private extension FrontPageShelfView {
 // MARK: - Layout
 private extension FrontPageShelfView {
     private var favoriteLayout: NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(180))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(Self.favoriteCellHeight))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
         // Groups
-        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(140), heightDimension: .estimated(180))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(140), heightDimension: .estimated(Self.favoriteCellHeight))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
         group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: .spacingS)
 
@@ -140,7 +146,7 @@ private extension FrontPageShelfView {
         section.orthogonalScrollingBehavior = .continuous
 
         //Header
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(44))
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(Self.headerHeight))
         let headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: FrontPageShelfHeaderView.reuseIdentifier, alignment: .top)
         section.boundarySupplementaryItems = [headerElement]
 
@@ -148,11 +154,11 @@ private extension FrontPageShelfView {
     }
 
     private var savedSearchLayout: NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(100))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(Self.savedSearchCellHeight))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
         //Groups
-        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(SavedSearchShelfCell.width), heightDimension: .absolute(100))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(SavedSearchShelfCell.width), heightDimension: .absolute(Self.savedSearchCellHeight))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
 
         //Sections
@@ -162,7 +168,7 @@ private extension FrontPageShelfView {
         section.interGroupSpacing = .spacingS + .spacingXS
 
         // Header
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(44))
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(Self.headerHeight))
         let headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: FrontPageShelfHeaderView.reuseIdentifier, alignment: .top)
         section.boundarySupplementaryItems = [headerElement]
 
@@ -177,7 +183,7 @@ private extension FrontPageShelfView {
             self?.shelfDatasource?.frontPageShelfView(collectionView, cellForItemAt: indexPath, withItem: item)
             
         }
-        
+
         datasource.supplementaryViewProvider = { [weak self] (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
             guard
                 let self = self,
@@ -195,7 +201,7 @@ private extension FrontPageShelfView {
                     
                     self.shelfDelegate?.frontPageShelfView(self, didSelectHeaderForSection: .savedSearch)
                 })
-                
+
             case .recentlyFavorited:
                 headerView.configureHeaderView(withTitle: datasource.frontPageShelfView(self, titleForSectionAt: Section.recentlyFavorited.rawValue),
                                                buttonTitle: datasource.frontPageShelfView(self, titleForButtonForSectionAt: Section.recentlyFavorited.rawValue),
@@ -231,10 +237,8 @@ extension FrontPageShelfView: UICollectionViewDelegate {
         guard let item = collectionViewDatasource.itemIdentifier(for: indexPath) else { return }
         if let item = item as? RecentlyFavoritedViewmodel {
             shelfDelegate?.frontPageShelfView(self, didSelectFavoriteItem: item)
-        }
-        else if let item = item as? SavedSearchShelfViewModel {
+        } else if let item = item as? SavedSearchShelfViewModel {
             shelfDelegate?.frontPageShelfView(self, didSelectSavedSearchItem: item)
         }
     }
 }
-
