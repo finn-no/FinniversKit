@@ -28,10 +28,10 @@ public class FrontpageViewDemoView: UIView {
         view.showChristmasPromotion(withModel: model, andDelegate: self)
         
         let shelfModel = FrontPageShelfViewModel(favoritedItems:RecentlyFavoritedFactory.create(numberOfItems: 10),
-                                                 savedSearchItems: SavedSearchShelfFactory.create(numberOfItems: 5),
+                                                 savedSearchItems: SavedSearchShelfFactory.create(numberOfItems: 10),
                                                  sectionTitles: ["Lagrede søk", "Nylige favoritter"],
                                                  buttonTitles: ["Se alle", "Se alle"])
-        view.configureFrontPageShelves(shelfModel)
+        view.configureFrontPageShelves(shelfModel, firstVisibleSavedSearchIndex: 1)
         view.frontPageShelfDelegate = self
         return view
     }()
