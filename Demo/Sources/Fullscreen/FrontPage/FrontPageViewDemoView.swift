@@ -4,37 +4,10 @@
 
 import FinniversKit
 
-public class FrontpageViewDemoView: UIView, Tweakable {
+public class FrontpageViewDemoView: UIView {
     private let markets = Market.newMarkets
     private var didSetupView = false
     private var visibleItems = 20
-
-    private lazy var promoLinkView: PromoLinkView = {
-        let view = PromoLinkView(delegate: self, withAutoLayout: true)
-        view.configure(with: PromoViewModel())
-        return view
-    }()
-
-    private lazy var transactionEntryView: TransactionEntryView = {
-        let view = TransactionEntryView(withAutoLayout: true)
-        view.configure(with: TransactionEntryViewModel())
-        view.remoteImageViewDataSource = self
-        return view
-    }()
-
-    lazy var tweakingOptions: [TweakingOption] = {
-        [
-            TweakingOption(title: "No promo", action: {
-                self.frontPageView.insertPromoView(nil)
-            }),
-            TweakingOption(title: "Promo link", action: {
-                self.frontPageView.insertPromoView(self.promoLinkView)
-            }),
-            TweakingOption(title: "Motor transaction entry", action: {
-                self.frontPageView.insertPromoView(self.transactionEntryView)
-            })
-        ]
-    }()
 
     private let ads: [Ad] = {
         var ads = AdFactory.create(numberOfModels: 120)
@@ -55,9 +28,10 @@ public class FrontpageViewDemoView: UIView, Tweakable {
         view.showChristmasPromotion(withModel: model, andDelegate: self)
         
         let shelfModel = FrontPageShelfViewModel(favoritedItems:RecentlyFavoritedFactory.create(numberOfItems: 10),
-                                                 savedSearchItems: SavedSearchShelfFactory.create(numberOfItems: 5),
-                                                 sectionTitles: ["Lagrede søk", "Nylige favoritter"])
-        view.configureFrontPageShelves(shelfModel)
+                                                 savedSearchItems: SavedSearchShelfFactory.create(numberOfItems: 10),
+                                                 sectionTitles: ["Lagrede søk", "Nylige favoritter"],
+                                                 buttonTitles: ["Se alle", "Se alle"])
+        view.configureFrontPageShelves(shelfModel, firstVisibleSavedSearchIndex: 1)
         view.frontPageShelfDelegate = self
         return view
     }()
@@ -216,22 +190,6 @@ extension FrontpageViewDemoView: MarketsViewDataSource {
     }
 }
 
-// MARK: - PromoLinkViewDelegate
-
-extension FrontpageViewDemoView: PromoLinkViewDelegate {
-    public func promoLinkViewWasTapped(_ promoLinkView: PromoLinkView) {
-        print("Tapped promo link!")
-    }
-}
-
-// MARK: - TransactionEntryViewDelegate
-
-extension FrontpageViewDemoView: TransactionEntryViewDelegate {
-    public func transactionEntryViewWasTapped(_ transactionEntryView: TransactionEntryView) {
-        print("Tapped transaction entry!")
-    }
-}
-
 // MARK: - RemoteImageViewDataSource
 
 extension FrontpageViewDemoView: RemoteImageViewDataSource {
@@ -244,13 +202,6 @@ extension FrontpageViewDemoView: RemoteImageViewDataSource {
     }
 
     public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
-}
-
-// MARK: - Private classes
-
-private class PromoViewModel: PromoLinkViewModel {
-    var title = "Smidig bilhandel? Prøv FINNs nye prosess!"
-    var image = UIImage(named: .transactionJourneyCar)
 }
 
 // MARK: - FrontPageShelfDelegate
