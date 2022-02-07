@@ -120,9 +120,11 @@ public class AdRecommendationsGridView: UIView {
 
     public func reloadData() {
         collectionView.reloadData()
-        collectionView.performBatchUpdates(nil, completion: { [weak self] _ in
-            self?.endRefreshing()
-        })
+        if refreshControl.isRefreshing {
+            collectionView.performBatchUpdates(nil, completion: { [weak self] _ in
+                self?.endRefreshing()
+            })
+        }
     }
 
     public func endRefreshing() {

@@ -27,7 +27,7 @@ public class FrontpageViewDemoView: UIView {
                                                 adsButtonTitle: "Se annonsene")
         view.showChristmasPromotion(withModel: model, andDelegate: self)
         
-        let shelfModel = FrontPageShelfViewModel(favoritedItems:RecentlyFavoritedFactory.create(numberOfItems: 10),
+        let shelfModel = FrontPageShelfViewModel(favoritedItems: RecentlyFavoritedFactory.create(numberOfItems: 10),
                                                  savedSearchItems: SavedSearchShelfFactory.create(numberOfItems: 10),
                                                  sectionTitles: ["Lagrede søk", "Nylige favoritter"],
                                                  buttonTitles: ["Se alle", "Se alle"])
