@@ -8,8 +8,6 @@ public class Button: UIButton {
     // MARK: - Internal properties
 
     private let cornerRadius: CGFloat = 8.0
-    private var titleHeight: CGFloat?
-    private var titleWidth: CGFloat?
 
     // MARK: - External properties
 
@@ -67,9 +65,6 @@ public class Button: UIButton {
         guard let title = title else {
             return
         }
-
-        titleHeight = title.height(withConstrainedWidth: bounds.width, font: style.font(forSize: size))
-        titleWidth = title.width(withConstrainedHeight: bounds.height, font: style.font(forSize: size))
 
         if style == .link {
             setAsLink(title: title)
