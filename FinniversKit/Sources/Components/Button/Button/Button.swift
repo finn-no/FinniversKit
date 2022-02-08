@@ -54,10 +54,11 @@ public class Button: UIButton {
 
         let paddings = style.paddings(forSize: size)
         let imageSize = imageView?.image?.size ?? .zero
+        let wizardry: CGFloat = size == .normal ? 2 : 3
 
         return CGSize(
-            width: ceil(titleSize.width + style.margins.left + style.margins.right + paddings.left + paddings.right + imageSize.width),
-            height: ceil(titleSize.height + style.margins.top + style.margins.bottom + paddings.top + paddings.bottom)
+            width: ceil(titleSize.width) + style.margins.left + style.margins.right + paddings.left + paddings.right + imageSize.width,
+            height: ceil(titleSize.height) + style.margins.top + style.margins.bottom + paddings.top + paddings.bottom + wizardry
         )
     }
 
