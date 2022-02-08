@@ -52,15 +52,14 @@ public class Button: UIButton {
     }
 
     public override var intrinsicContentSize: CGSize {
-        guard let titleWidth = titleWidth, let titleHeight = titleHeight else {
-            return CGSize.zero
-        }
+        guard let titleSize = titleLabel?.intrinsicContentSize else { return .zero }
+
         let paddings = style.paddings(forSize: size)
         let imageSize = imageView?.image?.size ?? .zero
 
         return CGSize(
-            width: titleWidth + imageSize.width + style.margins.left + style.margins.right,
-            height: titleHeight + style.margins.top + style.margins.bottom + paddings.top + paddings.bottom
+            width: ceil(titleSize.width + style.margins.left + style.margins.right + paddings.left + paddings.right + imageSize.width),
+            height: ceil(titleSize.height + style.margins.top + style.margins.bottom + paddings.top + paddings.bottom)
         )
     }
 
@@ -92,6 +91,7 @@ public class Button: UIButton {
         // Border color is set in a lifecycle method to ensure it is dark mode compatible.
         // Changing border color for a `Button` must be done with the `overrideStyle` method.
         layer.borderColor = style.borderColor(forState: state)
+        titleLabel?.preferredMaxLayoutWidth = titleLabel?.frame.size.width ?? 0
     }
 
     // MARK: - Private methods
@@ -103,6 +103,8 @@ public class Button: UIButton {
         contentEdgeInsets = style.margins
         titleLabel?.font = style.font(forSize: size)
         titleLabel?.adjustsFontForContentSizeCategory = true
+        titleLabel?.lineBreakMode = .byWordWrapping
+        titleLabel?.numberOfLines = 0
         layer.cornerRadius = cornerRadius
         layer.borderWidth = style.borderWidth
         layer.borderColor = style.borderColor?.cgColor
