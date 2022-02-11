@@ -204,7 +204,7 @@
 		DA083C2E2462BCA800B26235 /* SwiftUIDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */; };
 		DA82B1ED268B62D2005F67C3 /* LoadingRetryDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA82B1EC268B62D2005F67C3 /* LoadingRetryDemoView.swift */; };
 		DAE9CA8724602CB000C7552F /* SwiftUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */; };
-		F023EADF27B68B9300F6286B /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = F023EADE27B68B9300F6286B /* SnapshotTesting */; };
+		F023EAEB27B6951400F6286B /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = F023EAEA27B6951400F6286B /* SnapshotTesting */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -447,7 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46E7759D242D6A8A008A5E93 /* FinniversKit.framework in Frameworks */,
-				F023EADF27B68B9300F6286B /* SnapshotTesting in Frameworks */,
+				F023EAEB27B6951400F6286B /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1787,7 +1787,7 @@
 			);
 			name = SnapshotTests;
 			packageProductDependencies = (
-				F023EADE27B68B9300F6286B /* SnapshotTesting */,
+				F023EAEA27B6951400F6286B /* SnapshotTesting */,
 			);
 			productName = SnapshotTests;
 			productReference = 46E7756C242D4736008A5E93 /* SnapshotTests.xctest */;
@@ -1822,7 +1822,7 @@
 			);
 			mainGroup = 46AE6FB7242BADC9007BB005;
 			packageReferences = (
-				F023EADD27B68B9300F6286B /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				F023EAE927B6951400F6286B /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 46AE6FC1242BADC9007BB005 /* Products */;
 			projectDirPath = "";
@@ -2347,20 +2347,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F023EADD27B68B9300F6286B /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+		F023EAE927B6951400F6286B /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pimms/swift-snapshot-testing/";
+			repositoryURL = "https://github.com/pimms/swift-snapshot-testing.git";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = revision;
+				revision = abf827237242298a637c0c6c90db56c93f33de33;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F023EADE27B68B9300F6286B /* SnapshotTesting */ = {
+		F023EAEA27B6951400F6286B /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F023EADD27B68B9300F6286B /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			package = F023EAE927B6951400F6286B /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */
