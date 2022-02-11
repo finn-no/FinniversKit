@@ -9,6 +9,7 @@ public class DetailCalloutDemoView: UIView {
     private lazy var calloutViews: [DetailCalloutView] = {
         DetailCalloutView.Direction.allCases.map { (direction) -> DetailCalloutView in
             let view = DetailCalloutView(direction: direction)
+            view.configure(withText: "Nyhet!")
             view.translatesAutoresizingMaskIntoConstraints = false
             return view
         }
@@ -39,15 +40,6 @@ public class DetailCalloutDemoView: UIView {
 
     private func setup() {
         addSubview(stackView)
-
-        let text = "Nyhet!"
-
-        stackView.arrangedSubviews.forEach {
-            guard let calloutView = $0 as? DetailCalloutView else { return }
-
-            calloutView.hide()
-            calloutView.show(withText: text, duration: 0)
-        }
 
         NSLayoutConstraint.activate([
             stackView.centerXAnchor.constraint(equalTo: centerXAnchor),

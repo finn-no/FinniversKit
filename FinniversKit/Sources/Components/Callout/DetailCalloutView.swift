@@ -64,41 +64,8 @@ public final class DetailCalloutView: UIView {
 
     // MARK: - Public
 
-    /// Presents the callout by fading it into the screen with a given text
-    ///
-    /// **Note**: you need to make sure the `alpha` property of the callout is 0 before calling this method
-    /// - Parameters:
-    ///   - text: content of the callout
-    ///   - duration: animation duration
-    ///   - completion: optional callback for when the animation completes
-    public func show(withText text: String, duration: TimeInterval = 0.3, completion: ((Bool) -> Void)? = nil) {
-        let paragraph = NSMutableParagraphStyle()
-        paragraph.lineSpacing = 2
-        paragraph.alignment = .center
-
-        textLabel.attributedText = NSAttributedString(string: text, attributes: [.paragraphStyle: paragraph])
-
-        UIView.animate(
-            withDuration: duration,
-            animations: { [weak self] in
-                self?.alpha = 1
-            },
-            completion: completion
-        )
-    }
-
-    /// Fades out the presented callout
-    /// - Parameters:
-    ///   - duration: animation duration
-    ///   - completion: optional callback for when the animation completes
-    public func hide(duration: TimeInterval = 0.3, completion: ((Bool) -> Void)? = nil) {
-        UIView.animate(
-            withDuration: duration,
-            animations: { [weak self] in
-                self?.alpha = 0
-            },
-            completion: completion
-        )
+    public func configure(withText text: String) {
+        textLabel.text = text
     }
 
     // MARK: - Setup
