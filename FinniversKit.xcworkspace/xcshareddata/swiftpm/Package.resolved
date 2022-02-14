@@ -2,11 +2,11 @@
   "object": {
     "pins": [
       {
-        "package": "SnapshotTesting",
+        "package": "swift-snapshot-testing",
         "repositoryURL": "https://github.com/pimms/swift-snapshot-testing.git",
         "state": {
           "branch": null,
-          "revision": "abf827237242298a637c0c6c90db56c93f33de33",
+          "revision": "0efeef44df913fe60ea868f037f271ac927a8e8c",
           "version": null
         }
       }
