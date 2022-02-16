@@ -8,7 +8,7 @@ class SavedSearchShelfFactory {
             let dataIndex = index % minCount
             let title = titles[dataIndex]
             let imageUrl = imageUrls[dataIndex]
-            return SavedSearchShelfViewModel(id: Int.random(in: 0...100_000),title: title, imageUrlString: imageUrl)
+            return SavedSearchShelfViewModel(id: Int.random(in: 0...100_000), title: title, imageUrlString: imageUrl, isRead: index > 2)
         }
     }
     
@@ -41,5 +41,4 @@ class SavedSearchShelfFactory {
             "https://www.younghouselove.com/wp-content/uploads//2017/04/Beach-House-Update-Three-Houses-One-Pink.jpg"
         ]
     }
-    
 }

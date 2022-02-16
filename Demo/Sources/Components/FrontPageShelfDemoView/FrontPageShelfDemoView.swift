@@ -26,12 +26,17 @@ class FrontPageShelfDemoView: UIView {
         savedItems = SavedSearchShelfFactory.create(numberOfItems: 10)
         addSubview(shelfView)
         shelfView.fillInSuperview()
+        shelfView.reloadShelf()
     }
 }
 
 extension FrontPageShelfDemoView: FrontPageShelfViewDataSource {
-    func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForSectionAt index: IndexPath) -> String {
-        ["Lagrede søk", "nylige favoritter"][index.row]
+    func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForSectionAt index: Int) -> String {
+        ["Lagrede søk", "nylige favoritter"][index]
+    }
+    
+    func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForButtonForSectionAt index: Int) -> String {
+        "Se alle"
     }
     
     func frontPageShelfView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, withItem item: AnyHashable) -> UICollectionViewCell? {

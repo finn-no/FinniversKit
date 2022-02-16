@@ -251,14 +251,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.navigationLinkView)
     }
 
-    func testPromoLinkView() {
-        snapshot(.promoLinkView)
-    }
-
-    func testPromoSlidesView() {
-        snapshot(.promoSlidesView)
-    }
-
     func testNumberedListView() {
         snapshot(.numberedListView)
     }
@@ -293,5 +285,9 @@ class ComponentViewTests: XCTestCase {
 
     func testOverflowCollectionView() {
         snapshot(.overFlowCollectionView, includeIPad: true)
+    }
+
+    func testDetailCallout() {
+        snapshot(.detailCallout)
     }
 }

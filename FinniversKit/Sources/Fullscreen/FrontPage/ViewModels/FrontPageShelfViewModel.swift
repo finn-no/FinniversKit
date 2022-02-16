@@ -4,37 +4,52 @@ public class FrontPageShelfViewModel {
     private(set) var recentlyFavoritedItems: [RecentlyFavoritedViewmodel]
     private(set) var savedSearchItems: [SavedSearchShelfViewModel]
     private(set) var sectionTitles: [String]
-    
-    private let headerHeight: CGFloat = 44
-    private let topPadding: CGFloat = 20
-    private let savedSearchHeight: CGFloat = 90
-    private let favoriteHeight: CGFloat = 190
-    
-    public var heightForShelf: CGFloat {
-        return 0 + (!savedSearchItems.isEmpty ? (headerHeight + topPadding + savedSearchHeight) : 0) +
-        (!recentlyFavoritedItems.isEmpty ? (headerHeight + topPadding + favoriteHeight) : 0)
+    private(set) var buttonTitles: [String]
+
+    var heightForShelf: CGFloat {
+        savedSearchSectionHeight + sectionSpacing + recentlyFavoritedSectionHeight
     }
-    
-    public init(favoritedItems: [RecentlyFavoritedViewmodel], savedSearchItems: [SavedSearchShelfViewModel], sectionTitles: [String]) {
+
+    private var savedSearchSectionHeight: CGFloat {
+        guard !savedSearchItems.isEmpty else { return 0 }
+        return FrontPageShelfView.headerHeight + FrontPageShelfView.savedSearchCellHeight
+    }
+
+    private var sectionSpacing: CGFloat {
+        if !savedSearchItems.isEmpty && !recentlyFavoritedItems.isEmpty {
+            return FrontPageShelfView.sectionSpacing
+        }
+        return 0
+    }
+
+    private var recentlyFavoritedSectionHeight: CGFloat {
+        guard !recentlyFavoritedItems.isEmpty else { return 0 }
+        return FrontPageShelfView.headerHeight + FrontPageShelfView.favoriteCellHeight
+    }
+
+    public init(favoritedItems: [RecentlyFavoritedViewmodel], savedSearchItems: [SavedSearchShelfViewModel], sectionTitles: [String], buttonTitles: [String]) {
         self.recentlyFavoritedItems = favoritedItems
         self.savedSearchItems = savedSearchItems
         self.sectionTitles = sectionTitles
+        self.buttonTitles = buttonTitles
     }
     
-    public func replaceFavoriteItems(withItems items: [RecentlyFavoritedViewmodel]) {
-        self.recentlyFavoritedItems = items
-    }
-    
-    public func replaceSavedSearchItems(withItems items: [SavedSearchShelfViewModel]) {
-        self.savedSearchItems = items
-    }
-    
-    public func removeFavoritedItem(atIndex index: Int) {
+    func removeFavoritedItem(atIndex index: Int) {
         recentlyFavoritedItems.remove(at: index)
     }
     
-    public func titleForSection(at index: IndexPath) -> String {
-        guard index.section < sectionTitles.count else { return "" }
-        return sectionTitles[index.section]
+    func removeFavoritedItem(_ item: RecentlyFavoritedViewmodel) {
+        guard let index = recentlyFavoritedItems.firstIndex(of: item) else { return }
+        removeFavoritedItem(atIndex: index)
+    }
+    
+    func titleForSection(at index: Int) -> String {
+        guard index < sectionTitles.count else { return "" }
+        return sectionTitles[index]
+    }
+    
+    func titleForButton(at index: Int) -> String {
+        guard index < buttonTitles.count else { return "" }
+        return buttonTitles[index]
     }
 }

@@ -35,6 +35,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case stepIndicatorView
     case nativeAdvert
     case callout
+    case detailCallout
     case phaseList
     case iconCollection
     case disclaimerView
@@ -62,8 +63,6 @@ public enum ComponentDemoViews: String, DemoViews {
     case favoriteButton
     case sendInviteView
     case navigationLinkView
-    case promoLinkView
-    case promoSlidesView
     case numberedListView
     case transactionEntryView
     case blockUserView
@@ -140,6 +139,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<NativeAdvertDemoView>(dismissType: .dismissButton)
         case .callout:
             return DemoViewController<CalloutDemoView>()
+        case .detailCallout:
+            return DemoViewController<DetailCalloutDemoView>()
         case .phaseList:
             return DemoViewController<PhaseListDemoView>()
         case .iconCollection:
@@ -199,10 +200,6 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<SendInviteDemoView>(containmentOptions: .bottomSheet)
         case .navigationLinkView:
             return DemoViewController<NavigationLinkViewDemoView>()
-        case .promoLinkView:
-            return DemoViewController<PromoLinkDemoView>()
-        case .promoSlidesView:
-            return DemoViewController<PromoSlidesDemoView>()
         case .numberedListView:
             return DemoViewController<NumberedListDemoView>()
         case .transactionEntryView:
