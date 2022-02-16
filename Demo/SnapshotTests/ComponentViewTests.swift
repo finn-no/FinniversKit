@@ -282,4 +282,8 @@ class ComponentViewTests: XCTestCase {
     func testFrontPageShelf() {
         snapshot(.frontPageShelf)
     }
+
+    func testDetailCallout() {
+        snapshot(.detailCallout)
+    }
 }

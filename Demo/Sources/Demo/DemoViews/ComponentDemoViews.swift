@@ -35,6 +35,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case stepIndicatorView
     case nativeAdvert
     case callout
+    case detailCallout
     case phaseList
     case iconCollection
     case disclaimerView
@@ -137,6 +138,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<NativeAdvertDemoView>(dismissType: .dismissButton)
         case .callout:
             return DemoViewController<CalloutDemoView>()
+        case .detailCallout:
+            return DemoViewController<DetailCalloutDemoView>()
         case .phaseList:
             return DemoViewController<PhaseListDemoView>()
         case .iconCollection:
