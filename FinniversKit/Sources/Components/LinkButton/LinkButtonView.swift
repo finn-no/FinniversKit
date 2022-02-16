@@ -36,8 +36,8 @@ class LinkButtonView: UIView {
         return stackView
     }()
 
-    private lazy var linkButton: Button = {
-        let button = Button(style: buttonStyle, size: buttonSize, withAutoLayout: true)
+    private lazy var linkButton: MultilineButton = {
+        let button = MultilineButton(style: buttonStyle, size: buttonSize, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
         button.contentHorizontalAlignment = .leading
         return button
