@@ -12,7 +12,7 @@ public class MultilineButton: Button {
 
         return CGSize(
             width: ceil(titleSize.width) + style.margins.left + style.margins.right + paddings.left + paddings.right + imageSize.width,
-            height: ceil(titleSize.height) + style.margins.top + style.margins.bottom + paddings.top + paddings.bottom
+            height: ceil(titleSize.height) + style.margins.top + style.margins.bottom + paddings.top + paddings.bottom + 2
         )
     }
 
