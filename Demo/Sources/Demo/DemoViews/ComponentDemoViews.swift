@@ -6,6 +6,7 @@ import FinniversKit
 public enum ComponentDemoViews: String, DemoViews {
     case addressCardView
     case button
+    case multilineButton
     case floatingButton
     case cogWheelButton
     case iconButton
@@ -78,6 +79,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<AddressCardDemoView>()
         case .button:
             return DemoViewController<ButtonDemoView>()
+        case .multilineButton:
+            return DemoViewController<MultilineButtonDemoView>()
         case .floatingButton:
             return DemoViewController<FloatingButtonDemoView>()
         case .reviewButtonView:
