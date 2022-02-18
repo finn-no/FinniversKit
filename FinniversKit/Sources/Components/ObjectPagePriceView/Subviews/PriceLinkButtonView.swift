@@ -147,5 +147,5 @@ class PriceLinkButtonView: UIView {
 // MARK: - Private extensions
 
 private extension UIColor {
-    static var externalIconColor = dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
+    static var externalIconColor = dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
 }

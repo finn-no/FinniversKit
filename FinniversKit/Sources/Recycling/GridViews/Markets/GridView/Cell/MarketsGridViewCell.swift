@@ -6,9 +6,9 @@ import UIKit
 
 class MarketsGridViewCell: UICollectionViewCell {
     // MARK: - Internal properties
-    
+
     private let cornerRadius: CGFloat = 16
-    
+
     private lazy var sharpShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .clear
@@ -17,7 +17,7 @@ class MarketsGridViewCell: UICollectionViewCell {
         view.layer.applyShadow(ofType: .sharp)
         return view
     }()
-    
+
     private lazy var smoothShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .clear
@@ -26,7 +26,7 @@ class MarketsGridViewCell: UICollectionViewCell {
         view.layer.applyShadow(ofType: .smooth)
         return view
     }()
-    
+
     private lazy var containerView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .tileBackgroundColor
@@ -34,9 +34,9 @@ class MarketsGridViewCell: UICollectionViewCell {
         view.clipsToBounds = true
         return view
     }()
-    
+
     private lazy var contentStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
-    
+
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -83,26 +83,26 @@ class MarketsGridViewCell: UICollectionViewCell {
     private func setup() {
         isAccessibilityElement = true
         backgroundColor = .clear
-        
+
         addSubview(sharpShadowView)
         addSubview(smoothShadowView)
         addSubview(containerView)
         containerView.addSubview(externalLinkImageView)
         containerView.addSubview(contentStackView)
         contentStackView.addArrangedSubviews([iconImageView, titleLabel])
-        
+
         sharpShadowView.fillInSuperview()
         smoothShadowView.fillInSuperview()
         containerView.fillInSuperview()
-        
+
         NSLayoutConstraint.activate([
             iconImageView.heightAnchor.constraint(equalToConstant: 28),
             iconImageView.widthAnchor.constraint(equalToConstant: 42),
-            
+
             contentStackView.widthAnchor.constraint(equalTo: widthAnchor),
             contentStackView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor),
             contentStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            
+
             externalLinkImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             externalLinkImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             externalLinkImageView.widthAnchor.constraint(equalToConstant: 12),
@@ -111,12 +111,12 @@ class MarketsGridViewCell: UICollectionViewCell {
     }
 
     // MARK: - Superclass Overrides
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         styleShadowAfterLayout()
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
         iconImageView.image = nil
@@ -157,15 +157,15 @@ private extension MarketsGridViewCell {
 }
 
 private extension CALayer {
-    
+
     enum ShadowType {
         case sharp
         case smooth
     }
-    
+
     func applyShadow(ofType type: ShadowType) {
         self.masksToBounds = false
-        
+
         switch type {
         case .sharp:
             self.shadowOpacity = 0.25
@@ -186,16 +186,16 @@ private extension UIColor {
     class var externalLinkColor: UIColor {
         return .blueGray400
     }
-    
+
     class var tileSharpShadowColor: UIColor {
         return .blueGray600
     }
-    
+
     class var tileSmoothShadowColor: UIColor {
         return .blueGray600
     }
-    
+
     class var tileBackgroundColor: UIColor {
-        return .dynamicColorIfAvailable(defaultColor: .milk, darkModeColor: .blueGray700)
+        return .dynamicColor(defaultColor: .milk, darkModeColor: .blueGray700)
     }
 }

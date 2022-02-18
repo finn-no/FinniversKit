@@ -5,20 +5,11 @@
 import Foundation
 @_exported import UIKit
 
-public enum UserInterfaceStyleSupport {
-    case dynamic
-    case forceLight
-    case forceDark
-}
-
 public struct Config {
     public static var bundle: Bundle { Bundle.finniversKit }
     public static var fontProvider: FontProvider = DefaultFontProvider()
     public static var colorProvider: ColorProvider = DefaultColorProvider()
     public static var isDynamicTypeEnabled: Bool = true
-    public static var userInterfaceStyleSupport: UserInterfaceStyleSupport = {
-        return .dynamic
-    }()
 }
 
 @objc public extension Bundle {

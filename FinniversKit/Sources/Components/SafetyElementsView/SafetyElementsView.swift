@@ -71,6 +71,6 @@ extension UIColor {
     class var activeSafetyIconTint: UIColor { .btnPrimary }
 
     class var inactiveSafetyIconTint: UIColor {
-        dynamicColorIfAvailable(defaultColor: .stone, darkModeColor: .milk)
+        dynamicColor(defaultColor: .stone, darkModeColor: .milk)
     }
 }
