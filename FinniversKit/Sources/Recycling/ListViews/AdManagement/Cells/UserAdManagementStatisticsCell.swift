@@ -167,6 +167,6 @@ extension UserAdManagementStatisticsCell {
 
 extension UIColor {
     public class var fullstatisticIconTint: UIColor {
-        dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
+        dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
 }
