@@ -6,7 +6,6 @@ import FinniversKit
 public enum FullscreenDemoViews: String, DemoViews {
     case searchResultMapView
     case frontPageView
-    case promotionFrontPageView
     case popupView
     case emptyView
     case reportAdView
@@ -41,8 +40,6 @@ public enum FullscreenDemoViews: String, DemoViews {
             return SearchResultMapViewDemoViewController()
         case .frontPageView:
             return DemoViewController<FrontpageViewDemoView>()
-        case .promotionFrontPageView:
-            return DemoViewController<PromotionFrontpageViewDemoView>()
         case .emptyView:
             return DemoViewController<EmptyViewDemoView>()
         case .popupView:

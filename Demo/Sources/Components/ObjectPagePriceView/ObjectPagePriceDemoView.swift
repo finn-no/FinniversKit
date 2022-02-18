@@ -13,6 +13,10 @@ class ObjectPagePriceDemoView: UIView, Tweakable {
                 self?.priceView.configure(with: .withLinks)
             }),
 
+            TweakingOption(title: "With long link titles", action: { [weak self] in
+                self?.priceView.configure(with: .withLongLinkTitles)
+            }),
+
             TweakingOption(title: "Without links", action: { [weak self] in
                 self?.priceView.configure(with: .withoutLinks)
             }),
@@ -74,6 +78,7 @@ class ObjectPagePriceDemoView: UIView, Tweakable {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+        tweakingOptions.first?.action?()
     }
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
@@ -81,8 +86,6 @@ class ObjectPagePriceDemoView: UIView, Tweakable {
     // MARK: - Setup
 
     private func setup() {
-        priceView.configure(with: .withLinks)
-
         addSubview(priceView)
         NSLayoutConstraint.activate([
             priceView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
@@ -121,6 +124,35 @@ extension ObjectPagePriceViewModel {
                 PriceLinkButtonViewModel(
                     buttonIdentifier: "used-car-guarantee",
                     buttonTitle: "Bruktbilgaranti 272 kr",
+                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    isExternal: true
+                )
+            ]
+        )
+    }()
+
+    static var withLongLinkTitles: ObjectPagePriceViewModel = {
+        ObjectPagePriceViewModel(
+            title: "Totalpris",
+            totalPrice: "1 389 588 kr",
+            accessibilityLabel: "Totalpris: \(NumberFormatter.spokenFormatter.string(from: 1389588) ?? String(1389588)) kroner",
+            links: [
+                PriceLinkButtonViewModel(
+                    buttonIdentifier: "loan",
+                    buttonTitle: "Lån fra 16 581 kr",
+                    subtitle: "Eff.rente 3,89 %. 903 232 o/5 år. Kostnad: 91 628 kr. Totalt 994 860 kr.",
+                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    isExternal: true
+                ),
+                PriceLinkButtonViewModel(
+                    buttonIdentifier: "pulse",
+                    buttonTitle: "Se hva solgte boliger i området ble lagt ut for det siste året",
+                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    isExternal: true
+                ),
+                PriceLinkButtonViewModel(
+                    buttonIdentifier: "used-car-guarantee",
+                    buttonTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                     linkUrl: URL(string: "https://www.finn.no/")!,
                     isExternal: true
                 )
