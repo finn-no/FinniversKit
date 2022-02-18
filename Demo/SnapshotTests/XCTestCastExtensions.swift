@@ -17,7 +17,8 @@ extension XCTestCase {
         testName: String = #function,
         line: UInt = #line
     ) {
-        var snapshotting: Snapshotting = .image(on: .iPhoneX)
+        let subpixelThreshold: UInt8 = 5
+        var snapshotting: Snapshotting = .image(on: .iPhoneX, subpixelThreshold: subpixelThreshold)
         if let delay = delay {
             snapshotting = .wait(for: delay, on: snapshotting)
         }
@@ -29,7 +30,7 @@ extension XCTestCase {
         )
 
         if includeIPad {
-            var snapshotting: Snapshotting = .image(on: .iPadPro11)
+            var snapshotting: Snapshotting = .image(on: .iPadPro11, subpixelThreshold: subpixelThreshold)
             if let delay = delay {
                 snapshotting = .wait(for: delay, on: snapshotting)
             }
