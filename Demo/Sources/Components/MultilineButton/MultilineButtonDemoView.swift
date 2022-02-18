@@ -2,18 +2,19 @@ import UIKit
 import FinniversKit
 
 class MultilineButtonDemoView: UIView {
-    // Relevant Styles, States and Sizes to show for the demo
-    let styles: [Button.Style] = [
-        .callToAction,
-        .default,
-        .flat,
-        .link,
-        .destructive,
-        .destructiveFlat,
-        .utility,
-    ]
     let states: [UIControl.State] = [.normal, .disabled]
     let sizes: [Button.Size] = [.normal, .small]
+
+    // Relevant Styles, States and Sizes to show for the demo
+    let styles: [(style: Button.Style, title: String)] = [
+        (style: .callToAction, title: "Call to Action"),
+        (style: .default, title: "Default"),
+        (style: .flat, title: "Flat"),
+        (style: .link, title: "Link"),
+        (style: .destructive, title: "Destructive"),
+        (style: .destructiveFlat, title: "Destructive Flat"),
+        (style: .utility, title: "Utility"),
+    ]
 
     // MARK: - Init
 
@@ -32,11 +33,11 @@ class MultilineButtonDemoView: UIView {
 
         let verticalStack = UIStackView(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
 
-        styles.forEach { style in
+        styles.forEach { styleTuple in
             let buttonStyleStack = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
 
             let titleLabel = Label(style: .title3, withAutoLayout: true)
-            titleLabel.text = sectionTitle(for: style)
+            titleLabel.text = styleTuple.title
             buttonStyleStack.addArrangedSubview(titleLabel)
 
             sizes.forEach { size in
@@ -48,7 +49,7 @@ class MultilineButtonDemoView: UIView {
                 states.forEach { state in
                     let title = "Lorem ipsum\ndolor sit amet"
 
-                    let button = MultilineButton(style: style, size: size, withAutoLayout: true)
+                    let button = MultilineButton(style: styleTuple.style, size: size, withAutoLayout: true)
                     button.setTitle(title, for: state)
                     button.isEnabled = state != .disabled
 
