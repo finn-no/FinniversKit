@@ -27,6 +27,10 @@ class ComponentViewTests: XCTestCase {
         snapshot(.button)
     }
 
+    func testMultilineButton() {
+        snapshot(.multilineButton, includeIPad: true)
+    }
+
     func testFloatingButton() {
         snapshot(.floatingButton)
     }

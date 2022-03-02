@@ -17,6 +17,7 @@ class PriceLinkButtonView: UIView {
     // MARK: - Private properties
 
     private let viewModel: PriceLinkButtonViewModel
+    private let linkButtonStyle = Button.Style.link.overrideStyle(smallFont: .body)
     private lazy var fillerView = UIView(withAutoLayout: true)
     private lazy var externalImage = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
 
@@ -34,9 +35,10 @@ class PriceLinkButtonView: UIView {
         return stackView
     }()
 
-    private lazy var linkButton: UIButton = {
-        let button = PriceLinkButton(withAutoLayout: true)
+    private lazy var linkButton: MultilineButton = {
+        let button = MultilineButton(style: linkButtonStyle, size: .small, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
+        button.contentHorizontalAlignment = .leading
         return button
     }()
 
@@ -142,52 +144,8 @@ class PriceLinkButtonView: UIView {
     }
 }
 
-// MARK: - Private types/extensions
+// MARK: - Private extensions
 
 private extension UIColor {
     static var externalIconColor = dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
-}
-
-private class PriceLinkButton: UIButton {
-    override var intrinsicContentSize: CGSize {
-        /// We need to override this to get the correct height for button with multiple lines of text.
-        guard let titleSize = titleLabel?.intrinsicContentSize else { return .zero }
-
-        return CGSize(
-            width: titleSize.width,
-            height: titleSize.height + 10 // 2 * .spacingXS + 2 (aka. magic number).
-        )
-    }
-
-    // MARK: - Init
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-
-    required init?(coder: NSCoder) { fatalError() }
-
-    // MARK: - Setup
-
-    private func setup() {
-        titleLabel?.font = .body
-        titleLabel?.adjustsFontForContentSizeCategory = true
-        titleLabel?.numberOfLines = 0
-        titleLabel?.lineBreakMode = .byWordWrapping
-
-        titleEdgeInsets = .zero
-        contentEdgeInsets = UIEdgeInsets(vertical: .spacingXS, horizontal: 0)
-        contentHorizontalAlignment = .leading
-
-        setTitleColor(.textAction, for: .normal)
-        setTitleColor(.linkButtonHighlightedTextColor, for: .highlighted)
-        setTitleColor(.textDisabled, for: .disabled)
-    }
-
-    // MARK: - Overrides
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        titleLabel?.preferredMaxLayoutWidth = titleLabel?.frame.size.width ?? 0
-    }
 }
