@@ -140,7 +140,7 @@ public class TextField: UIView {
     public let inputType: InputType
     public let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 
-    public var phoneNumberRegEx = "^(?:\\s*\\d){8,11}$"
+    public var phoneNumberRegEx = "^((\\+|00)\\d{2}\\s?)?(?:\\s*\\d){8,11}$"
 
     public var placeholderText: String = "" {
         didSet {
