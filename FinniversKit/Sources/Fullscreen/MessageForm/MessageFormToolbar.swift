@@ -43,7 +43,7 @@ class MessageFormToolbar: UIView {
 
     // MARK: - Private properties
 
-    private static let backgroundColor = UIColor.dynamicColorIfAvailable(defaultColor: UIColor(r: 208, g: 212, b: 215), darkModeColor: UIColor(hex: "#1B1B24"))
+    private static let backgroundColor = UIColor.dynamicColor(defaultColor: UIColor(r: 208, g: 212, b: 215), darkModeColor: UIColor(hex: "#1B1B24"))
 
     private let viewModel: MessageFormViewModel
 

@@ -4,8 +4,8 @@ import FinniversKit
 class ChristmasPromotionDemoView: UIView {
     private lazy var promotionView: ChristmasPromotionView = {
         let model = ChristmasPromotionViewModel(title: "Hjelp til jul hos FINN",
-                                                subtitle: "Julen skal være en fin tid for all...",
-                                                buttonTitle: "Be om eller tilby hjelp til jul")
+                                                helpButtonTitle: "Be om eller tilby hjelp",
+                                                adsButtonTitle: "Se annonsene")
         let view = ChristmasPromotionView(model: model)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
@@ -35,7 +35,7 @@ class ChristmasPromotionDemoView: UIView {
 }
 
 extension ChristmasPromotionDemoView: PromotionViewDelegate {
-    func didSelectChristmasPromotion(_ promotion: ChristmasPromotionView) {
-        print("Promotion selected")
+    func christmasPromotionView(_ promotionView: ChristmasPromotionView, didSelect action: ChristmasPromotionView.Action) {
+        print("Selected : \(action)")
     }
 }

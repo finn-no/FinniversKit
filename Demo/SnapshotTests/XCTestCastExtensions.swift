@@ -17,22 +17,27 @@ extension XCTestCase {
         testName: String = #function,
         line: UInt = #line
     ) {
-        var snapshotting: Snapshotting = .image(on: .iPhoneX)
+        let subpixelThreshold: UInt8 = 5
+        var snapshotting: Snapshotting = .image(on: .iPhoneX, subpixelThreshold: subpixelThreshold)
         if let delay = delay {
             snapshotting = .wait(for: delay, on: snapshotting)
         }
+
+        let iPhoneSnapshotViewController = SnapshotWrapperViewController(demoViewController: viewController)
         assertSnapshot(
-            matching: viewController, as: snapshotting, named: "iPhone",
+            matching: iPhoneSnapshotViewController, as: snapshotting, named: "iPhone",
             record: recording, file: file, testName: testName, line: line
         )
 
         if includeIPad {
-            var snapshotting: Snapshotting = .image(on: .iPadPro11)
+            var snapshotting: Snapshotting = .image(on: .iPadPro11, subpixelThreshold: subpixelThreshold)
             if let delay = delay {
                 snapshotting = .wait(for: delay, on: snapshotting)
             }
+
+            let iPadSnapshotViewController = IPadSnapshotWrapperViewController(demoViewController: viewController)
             assertSnapshot(
-                matching: viewController, as: snapshotting, named: "iPad",
+                matching: iPadSnapshotViewController, as: snapshotting, named: "iPad",
                 record: recording, file: file, testName: testName, line: line
             )
         }

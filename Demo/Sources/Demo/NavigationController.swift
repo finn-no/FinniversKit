@@ -13,45 +13,17 @@ class NavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigationBar.isTranslucent = false
-        updateColors(animated: false)
-        NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange), name: .didChangeUserInterfaceStyle, object: nil)
+        setup()
     }
 
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
+    private func setup() {
+        setBottomBorderColor(navigationBar: navigationBar, color: .textDisabled, height: 0.5)
 
-        #if swift(>=5.1)
-        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-            updateColors(animated: true)
-        }
-        #endif
-    }
-
-    @objc private func userInterfaceStyleDidChange() {
-        updateColors(animated: true)
-    }
-
-    private func updateColors(animated: Bool) {
-        func setupColors() {
-            let separatorColor: UIColor = .textDisabled //DARK
-            let barTintColor: UIColor = .bgPrimary
-            let tintColor: UIColor = .textAction
-
-            setBottomBorderColor(navigationBar: navigationBar, color: separatorColor, height: 0.5)
-            navigationBar.barTintColor = barTintColor
-            navigationBar.tintColor = tintColor
-            navigationBar.layoutIfNeeded()
-        }
-
-        if animated {
-            UIView.animate(withDuration: 0.3) {
-                setupColors()
-            }
-        } else {
-            setupColors()
-        }
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .bgPrimary
+        navigationBar.standardAppearance = appearance
+        navigationBar.scrollEdgeAppearance = appearance
     }
 
     private func setBottomBorderColor(navigationBar: UINavigationBar, color: UIColor, height: CGFloat) {

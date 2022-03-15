@@ -4,7 +4,16 @@
 
 import UIKit
 
-final class IconCollectionViewFlowLayout: MarketsGridViewFlowLayout {
+final class IconCollectionViewFlowLayout: UICollectionViewFlowLayout {
+    override func invalidationContext(forBoundsChange newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
+        let context = super.invalidationContext(forBoundsChange: newBounds)
+        if let context = context as? UICollectionViewFlowLayoutInvalidationContext, let collectionView = collectionView, !context.invalidateFlowLayoutDelegateMetrics {
+            let hasChangedWidth = newBounds.width != collectionView.bounds.width
+            context.invalidateFlowLayoutDelegateMetrics = hasChangedWidth
+        }
+        return context
+    }
+
     /// Top-align collection view cells
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let layoutAttributes = super.layoutAttributesForElements(in: rect)?.map {

@@ -4,37 +4,10 @@
 
 import FinniversKit
 
-public class FrontpageViewDemoView: UIView, Tweakable {
+public class FrontpageViewDemoView: UIView {
     private let markets = Market.newMarkets
     private var didSetupView = false
     private var visibleItems = 20
-
-    private lazy var promoLinkView: PromoLinkView = {
-        let view = PromoLinkView(delegate: self, withAutoLayout: true)
-        view.configure(with: PromoViewModel())
-        return view
-    }()
-
-    private lazy var transactionEntryView: TransactionEntryView = {
-        let view = TransactionEntryView(withAutoLayout: true)
-        view.configure(with: TransactionEntryViewModel())
-        view.remoteImageViewDataSource = self
-        return view
-    }()
-
-    lazy var tweakingOptions: [TweakingOption] = {
-        [
-            TweakingOption(title: "No promo", action: {
-                self.frontPageView.insertPromoView(nil)
-            }),
-            TweakingOption(title: "Promo link", action: {
-                self.frontPageView.insertPromoView(self.promoLinkView)
-            }),
-            TweakingOption(title: "Motor transaction entry", action: {
-                self.frontPageView.insertPromoView(self.transactionEntryView)
-            })
-        ]
-    }()
 
     private let ads: [Ad] = {
         var ads = AdFactory.create(numberOfModels: 120)
@@ -43,16 +16,23 @@ public class FrontpageViewDemoView: UIView, Tweakable {
     }()
 
     private lazy var frontPageView: FrontPageView = {
-        let view = FrontPageView(delegate: self, marketsViewDataSource: self, adRecommendationsGridViewDataSource: self)
+        let view = FrontPageView(delegate: self, marketsViewDataSource: self, adRecommendationsGridViewDataSource: self, remoteImageViewDataSource: self)
         view.model = FrontpageViewDefaultData()
         view.isRefreshEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
         
         // Christmas promotion Data
         let model = ChristmasPromotionViewModel(title: "Hjelp til jul hos FINN",
-                                                subtitle: "Julen skal være en fin tid for alle",
-                                                buttonTitle: "Be om eller tilby hjelp til jul")
+                                                helpButtonTitle: "Be om eller tilby hjelp",
+                                                adsButtonTitle: "Se annonsene")
         view.showChristmasPromotion(withModel: model, andDelegate: self)
+        
+        let shelfModel = FrontPageShelfViewModel(favoritedItems: RecentlyFavoritedFactory.create(numberOfItems: 10),
+                                                 savedSearchItems: SavedSearchShelfFactory.create(numberOfItems: 10),
+                                                 sectionTitles: ["Lagrede søk", "Nylige favoritter"],
+                                                 buttonTitles: ["Se alle", "Se alle"])
+        view.configureFrontPageShelves(shelfModel, firstVisibleSavedSearchIndex: 1)
+        view.frontPageShelfDelegate = self
         return view
     }()
 
@@ -97,8 +77,8 @@ public class FrontpageViewDemoView: UIView, Tweakable {
 
 // MARK: - PromotionViewDelegate
 extension FrontpageViewDemoView: PromotionViewDelegate {
-    public func didSelectChristmasPromotion(_ promotion: ChristmasPromotionView) {
-        print("Promotion selected")
+    public func christmasPromotionView(_ promotionView: ChristmasPromotionView, didSelect action: ChristmasPromotionView.Action) {
+        print("Selected : \(action)")
     }
 }
 
@@ -107,6 +87,10 @@ extension FrontpageViewDemoView: PromotionViewDelegate {
 extension FrontpageViewDemoView: FrontPageViewDelegate {
     public func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView) {
         frontPageView.reloadData()
+    }
+    
+    public func frontPageView(_ frontPageView: FrontPageView, didUnfavoriteRecentlyFavorited item: RecentlyFavoritedViewmodel) {
+        print(item)
     }
 }
 
@@ -206,22 +190,6 @@ extension FrontpageViewDemoView: MarketsViewDataSource {
     }
 }
 
-// MARK: - PromoLinkViewDelegate
-
-extension FrontpageViewDemoView: PromoLinkViewDelegate {
-    public func promoLinkViewWasTapped(_ promoLinkView: PromoLinkView) {
-        print("Tapped promo link!")
-    }
-}
-
-// MARK: - TransactionEntryViewDelegate
-
-extension FrontpageViewDemoView: TransactionEntryViewDelegate {
-    public func transactionEntryViewWasTapped(_ transactionEntryView: TransactionEntryView) {
-        print("Tapped transaction entry!")
-    }
-}
-
 // MARK: - RemoteImageViewDataSource
 
 extension FrontpageViewDemoView: RemoteImageViewDataSource {
@@ -236,9 +204,22 @@ extension FrontpageViewDemoView: RemoteImageViewDataSource {
     public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
 
-// MARK: - Private classes
-
-private class PromoViewModel: PromoLinkViewModel {
-    var title = "Smidig bilhandel? Prøv FINNs nye prosess!"
-    var image = UIImage(named: .transactionJourneyCar)
+// MARK: - FrontPageShelfDelegate
+extension FrontpageViewDemoView: FrontPageShelfDelegate {
+    public func frontPageShelfView(_ view: FrontPageShelfView, didSelectHeaderForSection section: FrontPageShelfView.Section) {
+        switch section {
+        case .recentlyFavorited:
+            print("Header for favorite item selected")
+        case .savedSearch:
+            print("Header for saved search item selected")
+        }
+    }
+    
+    public func frontPageShelfView(_ view: FrontPageShelfView, didSelectSavedSearchItem item: SavedSearchShelfViewModel) {
+        print("saved search item selected")
+    }
+    
+    public func frontPageShelfView(_ view: FrontPageShelfView, didSelectFavoriteItem item: RecentlyFavoritedViewmodel) {
+        print("favorited item selected")
+    }
 }

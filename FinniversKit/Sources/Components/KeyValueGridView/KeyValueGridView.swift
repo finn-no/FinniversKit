@@ -95,11 +95,11 @@ public class KeyValueGridView: UIView {
 
         let titleLabel = Label(style: titleStyle, withAutoLayout: true)
         titleLabel.numberOfLines = 2
-        titleLabel.lineBreakMode = .byCharWrapping
+        titleLabel.lineBreakMode = .byWordWrapping
 
         let valueLabel = Label(style: valueStyle, withAutoLayout: true)
         valueLabel.numberOfLines = 2
-        valueLabel.lineBreakMode = .byCharWrapping
+        valueLabel.lineBreakMode = .byWordWrapping
         valueLabel.setTextCopyable(true)
 
         titleLabel.text = pair.title

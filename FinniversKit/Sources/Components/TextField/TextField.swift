@@ -51,6 +51,8 @@ public class TextField: UIView {
     private let rightViewSize = CGSize(width: 40, height: 40)
     private let animationDuration: Double = 0.3
     private let errorIconWidth: CGFloat = 16
+    private var textFieldBackgroundColorOverride: UIColor?
+    private var textFieldBorderColor: UIColor?
 
     private var underlineHeightConstraint: NSLayoutConstraint?
     private var helpTextLabelLeadingConstraint: NSLayoutConstraint?
@@ -138,7 +140,7 @@ public class TextField: UIView {
     public let inputType: InputType
     public let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 
-    public var phoneNumberRegEx = "^(?:\\s*\\d){8,11}$"
+    public var phoneNumberRegEx = "^((\\+|00)\\d{2}\\s?)?(?:\\s*\\d){8,11}$"
 
     public var placeholderText: String = "" {
         didSet {
@@ -149,7 +151,13 @@ public class TextField: UIView {
     }
 
     public var text: String? {
-        return textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        get {
+            textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        set {
+            textField.text = newValue
+            evaluateCurrentTextState()
+        }
     }
 
     public var helpText: String? {
@@ -242,8 +250,8 @@ public class TextField: UIView {
 
         addSubview(typeLabel)
         addSubview(textFieldBackgroundView)
+        textFieldBackgroundView.addSubview(underline)
         addSubview(textField)
-        addSubview(underline)
         addSubview(helpTextLabel)
         addSubview(errorIconImageView)
 
@@ -260,8 +268,8 @@ public class TextField: UIView {
             textField.trailingAnchor.constraint(equalTo: textFieldBackgroundView.trailingAnchor, constant: -.spacingS),
             textField.bottomAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: -.spacingS + -.spacingXS),
 
-            underline.leadingAnchor.constraint(equalTo: leadingAnchor),
-            underline.trailingAnchor.constraint(equalTo: trailingAnchor),
+            underline.leadingAnchor.constraint(equalTo: textFieldBackgroundView.leadingAnchor),
+            underline.trailingAnchor.constraint(equalTo: textFieldBackgroundView.trailingAnchor),
             underline.bottomAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor),
 
             errorIconImageView.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: .spacingXS),
@@ -277,6 +285,32 @@ public class TextField: UIView {
 
         underlineHeightConstraint = underline.heightAnchor.constraint(equalToConstant: State.normal.underlineHeight)
         underlineHeightConstraint?.isActive = true
+    }
+
+    // MARK: - Overrides
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+
+        if let textFieldBorderColor = textFieldBorderColor {
+            textFieldBackgroundView.layer.borderColor = textFieldBorderColor.cgColor
+        }
+    }
+
+    // MARK: - Public methods
+
+    public func configure(textFieldBackgroundColor: UIColor) {
+        textFieldBackgroundColorOverride = textFieldBackgroundColor
+        transition(to: state)
+    }
+
+    public func configureBorder(radius: CGFloat, width: CGFloat, color: UIColor) {
+        textFieldBackgroundView.clipsToBounds = true
+        textFieldBorderColor = color
+        textFieldBackgroundView.layer.cornerRadius = radius
+        textFieldBackgroundView.layer.borderWidth = width
+        transition(to: state)
+        setNeedsLayout()
     }
 
     // MARK: - Actions
@@ -376,7 +410,7 @@ public class TextField: UIView {
         UIView.animate(withDuration: animationDuration) {
             self.layoutIfNeeded()
             self.underline.backgroundColor = state.underlineColor
-            self.textFieldBackgroundView.backgroundColor = state.textFieldBackgroundColor
+            self.textFieldBackgroundView.backgroundColor = self.textFieldBackgroundColorOverride ?? state.textFieldBackgroundColor
             self.typeLabel.textColor = state.accessoryLabelTextColor
             self.helpTextLabel.textColor = state.accessoryLabelTextColor
 

@@ -16,7 +16,8 @@ class LinkButtonView: UIView {
 
     private let buttonIdentifier: String?
     private let linkUrl: URL
-    private let linkButtonStyle = Button.Style.link.overrideStyle(smallFont: .body)
+    private let buttonStyle: Button.Style
+    private let buttonSize: Button.Size
     private lazy var fillerView = UIView(withAutoLayout: true)
     private lazy var externalImage = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
 
@@ -35,8 +36,8 @@ class LinkButtonView: UIView {
         return stackView
     }()
 
-    private lazy var linkButton: Button = {
-        let button = Button(style: linkButtonStyle, size: .small, withAutoLayout: true)
+    private lazy var linkButton: MultilineButton = {
+        let button = MultilineButton(style: buttonStyle, size: buttonSize, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
         button.contentHorizontalAlignment = .leading
         return button
@@ -59,15 +60,36 @@ class LinkButtonView: UIView {
     // MARK: - Init
 
     convenience init(viewModel: LinkButtonViewModel) {
-        self.init(buttonIdentifier: viewModel.buttonIdentifier, buttonTitle: viewModel.buttonTitle, subtitle: viewModel.subtitle, linkUrl: viewModel.linkUrl, isExternal: viewModel.isExternal)
+        self.init(
+            buttonIdentifier: viewModel.buttonIdentifier,
+            buttonTitle: viewModel.buttonTitle,
+            subtitle: viewModel.subtitle,
+            linkUrl: viewModel.linkUrl,
+            isExternal: viewModel.isExternal,
+            externalIconColor: viewModel.externalIconColor,
+            buttonStyle: viewModel.buttonStyle,
+            buttonSize: viewModel.buttonSize
+        )
     }
 
-    init(buttonIdentifier: String?, buttonTitle: String, subtitle: String?, linkUrl: URL, isExternal: Bool) {
+    init(
+        buttonIdentifier: String?,
+        buttonTitle: String,
+        subtitle: String?,
+        linkUrl: URL,
+        isExternal: Bool,
+        externalIconColor: UIColor? = nil,
+        buttonStyle: Button.Style? = nil,
+        buttonSize: Button.Size = .small
+    ) {
         self.buttonIdentifier = buttonIdentifier
         self.linkUrl = linkUrl
+        self.buttonStyle = buttonStyle ?? .defaultButtonStyle
+        self.buttonSize = buttonSize
         super.init(frame: .zero)
 
         externalImageView.isHidden = !isExternal
+        externalImageView.tintColor = externalIconColor ?? .externalIconColor
         linkButton.setTitle(buttonTitle, for: .normal)
         subtitleLabel.text = subtitle
         subtitleLabel.isHidden = subtitle?.isEmpty ?? true
@@ -97,5 +119,9 @@ class LinkButtonView: UIView {
 // MARK: - Private extensions
 
 private extension UIColor {
-    static var externalIconColor = dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
+    static var externalIconColor = dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
+}
+
+private extension Button.Style {
+    static var defaultButtonStyle = Button.Style.link.overrideStyle(smallFont: .body)
 }
