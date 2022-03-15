@@ -11,10 +11,10 @@ public class IconCollectionDemoView: UIView, Tweakable {
     lazy var tweakingOptions: [TweakingOption] = {
         [
             .init(title: "Vertical alignment") { [weak self] in
-                self?.collectionViewAlignment = .vertical
+                self?.setupIconCollectionView(withAlignment: .vertical)
             },
             .init(title: "Horizontal alignment") { [weak self] in
-                self?.collectionViewAlignment = .horizontal
+                self?.setupIconCollectionView(withAlignment: .horizontal)
             }
         ]
     }()
@@ -22,12 +22,6 @@ public class IconCollectionDemoView: UIView, Tweakable {
     // MARK: - Private properties
 
     private var collectionView: IconCollectionView?
-
-    private var collectionViewAlignment = IconCollectionView.Alignment.vertical {
-        didSet {
-            setupIconCollectionView(withAlignment: collectionViewAlignment)
-        }
-    }
 
     // MARK: - Init
 
@@ -44,7 +38,7 @@ public class IconCollectionDemoView: UIView, Tweakable {
 
     private func setup() {
         backgroundColor = .bgPrimary
-        setupIconCollectionView(withAlignment: collectionViewAlignment)
+        tweakingOptions.first?.action?()
     }
 
     // MARK: - Private methods
