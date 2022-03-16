@@ -11,9 +11,11 @@ lane :make_finniverkit_version do |options|
   make_release("FinniversKit", "", options)
 end
 
-desc "Build and upload to Testflight"
+desc "Build archive for uploading Demo app to Testflight"
 lane :release_to_testflight do
-  send_to_testflight("FinniversKit.xcworkspace", "Demo", "84.0.0", @app_identifier)
+  build_archive_for_testflight("FinniversKit.xcworkspace", "Demo")
+
+  UI.message "To send demo app to Testflight open Xcode Organizer and locate the new FinniversKit Demo archive and select distribute. Use automatic signing."
 end
 
 desc "Attempt to connect to github.com with ssh"
@@ -97,28 +99,15 @@ def make_release(project, tag_prefix, options)
   git_pull(only_tags: true)
 end
 
-def send_to_testflight(workspace, scheme, version, app_identifier)
+def build_archive_for_testflight(workspace, scheme)
   ## Login to developer portal and App Store Connect
   create_login_session_for_testflight
-
-  #previous_testflight_build_number = latest_testflight_build_number(version: version, app_identifier: app_identifier, username: apple_id_username, team_id: appstoreconnect_team_id)
-  #increment_build_number(
-  #  build_number: previous_testflight_build_number + 1,
-  #  xcodeproj: "Demo/Demo.xcodeproj"
-  #)
 
   build_app(
     scheme: scheme,
     workspace: workspace,
     include_bitcode: true
   )
-
-  #upload_to_testflight(
-  #  changelog: "Version #{version}",
-  #  app_identifier: app_identifier,
-  #  username: apple_id_username,
-  #  team_id: appstoreconnect_team_id
-  #)
 end
 
 def lookup(options, key, allowed_values, default=nil)
