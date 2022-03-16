@@ -1,10 +1,6 @@
-require "spaceship"
-
 fastlane_version "2.146.0"
 
 skip_docs
-
-@app_identifier = "no.finn.FinniversKitDemo"
 
 desc "Create a new FinniversKit version"
 lane :make_finniverkit_version do |options|
@@ -12,7 +8,7 @@ lane :make_finniverkit_version do |options|
 end
 
 desc "Build archive for uploading Demo app to Testflight"
-lane :release_to_testflight do
+lane :build_demo_for_testflight do
   build_archive_for_testflight("FinniversKit.xcworkspace", "Demo")
 
   UI.message "To send demo app to Testflight open Xcode Organizer and locate the new FinniversKit Demo archive and select distribute. Use automatic signing."
@@ -100,9 +96,6 @@ def make_release(project, tag_prefix, options)
 end
 
 def build_archive_for_testflight(workspace, scheme)
-  ## Login to developer portal and App Store Connect
-  create_login_session_for_testflight
-
   build_app(
     scheme: scheme,
     workspace: workspace,
@@ -191,32 +184,4 @@ def verify_env_var(envVar, errorMessage)
   else
     return ENV[envVar]
   end
-end
-
-def apple_id_username
-  return verify_env_var("FINN_FASTLANE_USERNAME", "No username found!")
-end
-
-def appstore_team_id
-  return verify_env_var("FINN_FASTLANE_APPSTORE_TEAM_ID", "No team id found!")
-end
-
-def appstoreconnect_team_id
-  return verify_env_var("FINN_FASTLANE_APPSTORE_CONNECT_TEAM_ID", "No AppStore Connect team id found!")
-end
-
-def create_login_session_for_testflight
-  UI.header "Initializing sessions to Developer Portal and AppStore Connect"
-  username = apple_id_username
-  teamid = appstore_team_id
-  appstore_connect_team_id = appstoreconnect_team_id
-
-  UI.message "Connecting to Developer Portal with user #{username}"
-  Spaceship::Portal::login(username)
-  UI.message "Setting developer portal team to #{teamid}"
-  Spaceship::Portal::client.team_id = teamid
-  UI.message "Connecting to AppStore Connect with user #{username}"
-  Spaceship::Tunes::login(username)
-  UI.message "Setting AppStore Connect team to #{appstore_connect_team_id}"
-  Spaceship::Tunes::client.team_id = appstore_connect_team_id
 end
