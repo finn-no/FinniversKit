@@ -139,9 +139,11 @@ extension IconCollectionView: UICollectionViewDelegateFlowLayout {
         margins
     }
 
-    public func collectionView(_ collectionView: UICollectionView,
-                               layout collectionViewLayout: UICollectionViewLayout,
-                               sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(
+        _ collectionView: UICollectionView,
+       layout collectionViewLayout: UICollectionViewLayout,
+       sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         let viewModel = viewModels[indexPath.item]
         let width = cellWidth(forWidth: collectionView.frame.width - margins.horizontalMargins, viewModel: viewModel)
         let height = cellHeight(for: viewModel, withWidth: width)
@@ -151,7 +153,7 @@ extension IconCollectionView: UICollectionViewDelegateFlowLayout {
 
     private func cellWidth(forWidth width: CGFloat, viewModel: IconCollectionViewModel) -> CGFloat {
         let width = isHorizontalSizeClassRegular
-            ? max(width / CGFloat(viewModels.count), viewModel.image.size.width * 2)
+            ? max(width / min(4, CGFloat(viewModels.count)), viewModel.image.size.width * 2)
             : width / 2
         return width
     }
