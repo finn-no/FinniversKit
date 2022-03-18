@@ -5,8 +5,7 @@
 import UIKit
 
 public final class FloatingButton: UIButton {
-    public var primaryBackgroundColor: UIColor = .bgPrimary { didSet { updateBackgroundColor() }}
-    public var highlightedBackgroundColor: UIColor = .bgSecondary { didSet { updateBackgroundColor() }}
+    private let style: FloatingButton.Style
     public override var isHighlighted: Bool { didSet { updateBackgroundColor() }}
     public override var isSelected: Bool { didSet { updateBackgroundColor() }}
 
@@ -19,27 +18,41 @@ public final class FloatingButton: UIButton {
 
     private lazy var badgeView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .btnPrimary
-        view.layer.cornerRadius = badgeSize / 2
+        view.backgroundColor = style.badgeBackgroundColor
+        view.layer.cornerRadius = style.badgeSize / 2
         view.isHidden = true
         return view
     }()
 
     private lazy var badgeLabel: UILabel = {
         let label = Label(style: .captionStrong)
-        label.textColor = .textPrimary
+        label.textColor = style.badgeTextColor
         label.text = "12"
         label.textAlignment = .center
         return label
     }()
 
-    private let badgeSize: CGFloat = 30
+    private var badgeWidthConstraint: NSLayoutConstraint?
 
     // MARK: - Init
 
-    public override init(frame: CGRect) {
+    public convenience init(withAutoLayout autoLayout: Bool, style: FloatingButton.Style) {
+        self.init(style: style)
+        translatesAutoresizingMaskIntoConstraints = !autoLayout
+    }
+
+    public override convenience init(frame: CGRect) {
+        self.init(frame: frame, style: .default)
+    }
+
+    public init(frame: CGRect, style: FloatingButton.Style) {
+        self.style = style
         super.init(frame: frame)
-        setupStyles()
+        setup()
+    }
+
+    public convenience init(style: FloatingButton.Style) {
+        self.init(frame: .zero, style: style)
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -54,46 +67,60 @@ public final class FloatingButton: UIButton {
         if transform == .identity {
             layer.cornerRadius = frame.height / 2
         }
+        updateLayerColors()
 
-        guard let imageView = imageView, let titleLabel = titleLabel else { return }
+        if let imageView = imageView, let titleLabel = titleLabel {
+            let imageSize = imageView.frame.size
+            titleEdgeInsets = UIEdgeInsets(top: 0, leading: -imageSize.width, bottom: 0, trailing: 0)
 
-        let imageSize = imageView.frame.size
-        titleEdgeInsets = UIEdgeInsets(top: 0, leading: -imageSize.width, bottom: 0, trailing: 0)
-
-        let titleSize = titleLabel.bounds.size
-        imageEdgeInsets = UIEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -titleSize.width)
+            let titleSize = titleLabel.bounds.size
+            imageEdgeInsets = UIEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -titleSize.width)
+        }
     }
 
-    private func setupStyles() {
-        updateBackgroundColor()
-        tintColor = .btnPrimary
-
+    private func setup() {
+        configureStyle()
         contentMode = .center
 
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 5)
-        layer.shadowRadius = 8
-        layer.shadowOpacity = 0.6
-
-        setTitleColor(.white, for: .normal)
         titleLabel?.font = .detail
 
         adjustsImageWhenHighlighted = false
-        setImage(UIImage(named: .easterEgg), for: .normal)
 
         addSubview(badgeView)
         badgeView.addSubview(badgeLabel)
         badgeLabel.fillInSuperview()
 
+        let badgeWidthConstraint = badgeView.widthAnchor.constraint(equalToConstant: style.badgeSize)
+        self.badgeWidthConstraint = badgeWidthConstraint
         NSLayoutConstraint.activate([
-            badgeView.widthAnchor.constraint(equalToConstant: badgeSize),
-            badgeView.heightAnchor.constraint(equalToConstant: badgeSize),
+            badgeWidthConstraint,
+            badgeView.heightAnchor.constraint(equalTo: badgeView.widthAnchor),
             badgeView.topAnchor.constraint(equalTo: topAnchor, constant: -.spacingXS),
             badgeView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .spacingXS),
         ])
     }
 
     private func updateBackgroundColor() {
-        backgroundColor = isSelected || isHighlighted ? highlightedBackgroundColor : primaryBackgroundColor
+        backgroundColor = isSelected || isHighlighted ? style.highlightedBackgroundColor : style.primaryBackgroundColor
+    }
+
+    private func updateLayerColors() {
+        layer.shadowColor = style.shadowColor.cgColor
+        layer.borderColor = style.borderColor?.cgColor
+    }
+
+    private func configureStyle() {
+        updateBackgroundColor()
+        updateLayerColors()
+        layer.shadowOpacity = 1
+        layer.borderWidth = style.borderWidth
+        badgeView.backgroundColor = style.badgeBackgroundColor
+        badgeView.layer.cornerRadius = style.badgeSize / 2
+        badgeLabel.textColor = style.badgeTextColor
+        tintColor = style.tintColor
+        layer.shadowOffset = style.shadowOffset
+        layer.shadowRadius = style.shadowRadius
+        setTitleColor(style.titleColor, for: .normal)
+        badgeWidthConstraint?.constant = style.badgeSize
     }
 }
