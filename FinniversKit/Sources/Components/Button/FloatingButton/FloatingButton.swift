@@ -5,7 +5,25 @@
 import UIKit
 
 public final class FloatingButton: UIButton {
-    private let style: FloatingButton.Style
+    @available(*, deprecated, message: "Use style instead.")
+    public var primaryBackgroundColor: UIColor {
+        get { style.primaryBackgroundColor }
+        set {
+            style = style.overrideStyle(primaryBackgroundColor: newValue)
+        }
+    }
+    @available(*, deprecated, message: "Use style instead.")
+    public var highlightedBackgroundColor: UIColor {
+        get { style.highlightedBackgroundColor }
+        set {
+            style = style.overrideStyle(primaryBackgroundColor: newValue)
+        }
+    }
+    private var style: FloatingButton.Style {
+        didSet {
+            configureStyle()
+        }
+    }
     public override var isHighlighted: Bool { didSet { updateBackgroundColor() }}
     public override var isSelected: Bool { didSet { updateBackgroundColor() }}
 
