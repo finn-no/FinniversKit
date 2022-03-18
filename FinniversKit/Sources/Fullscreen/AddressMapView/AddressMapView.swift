@@ -213,11 +213,17 @@ private class AddressAnnotation: NSObject, MKAnnotation {
 
 private extension UIButton {
     static var mapButton: UIButton {
-        let button = FloatingButton(withAutoLayout: true)
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 0, height: 3)
-        button.layer.shadowRadius = 3
-        button.layer.shadowOpacity = 0.5
+        let button = FloatingButton(withAutoLayout: true, style: .mapButton)
         return button
+    }
+}
+
+private extension FloatingButton.Style {
+    static var mapButton: FloatingButton.Style {
+        .default.overrideStyle(
+            shadowColor: .black.withAlphaComponent(0.5),
+            shadowOffset: CGSize(width: 0, height: 3),
+            shadowRadius: 3
+        )
     }
 }

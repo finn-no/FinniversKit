@@ -56,6 +56,7 @@ enum ImageAsset: String {
     case displayTypeList
     case dissatisfiedFace
     case distance
+    case easterEgg
     case emptyMoon
     case emptyStateSaveSearch
     case favoriteActive
@@ -151,6 +152,7 @@ enum ImageAsset: String {
             .displayTypeList,
             .dissatisfiedFace,
             .distance,
+            .easterEgg,
             .emptyMoon,
             .emptyStateSaveSearch,
             .favoriteActive,
