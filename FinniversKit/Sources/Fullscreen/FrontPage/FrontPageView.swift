@@ -50,11 +50,8 @@ public final class FrontPageView: UIView {
     private weak var delegate: FrontPageViewDelegate?
     private var marketsViewDataSource: MarketsViewDataSource
     private var adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource
-    
-    
     private var didSetupView = false
-    
-    private var isChristmasPromotionShowing = false
+    private var isPromoViewShowing = false
 
     // MARK: - Subviews
 
@@ -76,7 +73,7 @@ public final class FrontPageView: UIView {
         return view
     }()
 
-    private let christmasPromotionContainer = UIView(withAutoLayout: true)
+    private let promoContainer = UIView(withAutoLayout: true)
     private let shelfContainer = UIView(withAutoLayout: true)
     private var isShowingShelf: Bool {
         guard let model = shelfViewModel else { return false }
@@ -169,8 +166,16 @@ public final class FrontPageView: UIView {
         adRecommendationsGridView.scrollToTop()
     }
 
-    public func showChristmasPromotion(withModel model: ChristmasPromotionViewModel, andDelegate delegate: PromotionViewDelegate) {
-        addChristmasPromotion(withModel: model, andDelegate: delegate)
+    public func showPromotion(withModel model: PromotionViewModel, andDelegate delegate: PromotionViewDelegate) {
+        let promotionView = PromotionView(model: model)
+        promotionView.translatesAutoresizingMaskIntoConstraints = false
+        promotionView.delegate = delegate
+
+        promoContainer.addSubview(promotionView)
+        promotionView.fillInSuperview()
+        promotionView.heightAnchor.constraint(equalToConstant: PromotionView.height).isActive = true
+        isPromoViewShowing = true
+        setupFrames()
     }
 
     // MARK: - Setup
@@ -183,7 +188,7 @@ public final class FrontPageView: UIView {
         adRecommendationsGridView.collectionView.addSubview(adsRetryView)
 
         headerView.addSubview(marketsGridView)
-        headerView.addSubview(christmasPromotionContainer)
+        headerView.addSubview(promoContainer)
         headerView.addSubview(shelfContainer)
         headerView.addSubview(headerLabel)
 
@@ -195,11 +200,11 @@ public final class FrontPageView: UIView {
             marketsGridView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             marketsGridViewHeight,
             
-            christmasPromotionContainer.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor, constant: isChristmasPromotionShowing ? .spacingL : 0),
-            christmasPromotionContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
-            christmasPromotionContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
+            promoContainer.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor, constant: isPromoViewShowing ? .spacingL : 0),
+            promoContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
+            promoContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
             
-            shelfContainer.topAnchor.constraint(equalTo: christmasPromotionContainer.bottomAnchor),
+            shelfContainer.topAnchor.constraint(equalTo: promoContainer.bottomAnchor),
             shelfContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
             shelfContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             
@@ -229,7 +234,7 @@ public final class FrontPageView: UIView {
 
         let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: bounds.size.width).height + .spacingXS
         var height = headerTopSpacing + labelHeight + marketGridViewHeight + headerBottomSpacing
-        height += isChristmasPromotionShowing ? ChristmasPromotionView.height + .spacingL : 0
+        height += isPromoViewShowing ? PromotionView.height + .spacingL : 0
         
         let shelfContainerHeight = shelfViewModel?.heightForShelf ?? 0
         height += shelfContainerHeight + (shelfContainerHeight > 0 ? FrontPageShelfView.topPadding : 0)
@@ -243,19 +248,6 @@ public final class FrontPageView: UIView {
     }
 
     // MARK: - Private methods
-    
-    private func addChristmasPromotion(withModel model: ChristmasPromotionViewModel, andDelegate delegate: PromotionViewDelegate) {
-        let promotionView = ChristmasPromotionView(model: model)
-        promotionView.translatesAutoresizingMaskIntoConstraints = false
-        promotionView.delegate = delegate
-        
-        christmasPromotionContainer.addSubview(promotionView)
-        promotionView.fillInSuperview()
-        promotionView.heightAnchor.constraint(equalToConstant: ChristmasPromotionView.height).isActive = true
-        isChristmasPromotionShowing = true
-        setupFrames()
-        
-    }
     
     public func configureFrontPageShelves(_ model: FrontPageShelfViewModel, firstVisibleSavedSearchIndex: Int?) {
         self.shelfViewModel = model

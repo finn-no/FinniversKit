@@ -204,7 +204,7 @@
 		D75E14D42734856D008EB126 /* FrontPageShelfDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E14D32734856D008EB126 /* FrontPageShelfDemoView.swift */; };
 		D75E14D727371692008EB126 /* SavedSearchFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E14D627371692008EB126 /* SavedSearchFactory.swift */; };
 		D7C750382731C61A002BDE98 /* SavedSearchShelfDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C750372731C61A002BDE98 /* SavedSearchShelfDemoView.swift */; };
-		D7D514C7272942E10065E2F6 /* ChristmasPromotionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D514C6272942E10065E2F6 /* ChristmasPromotionDemoView.swift */; };
+		D7D514C7272942E10065E2F6 /* PromotionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D514C6272942E10065E2F6 /* PromotionDemoView.swift */; };
 		DA083C2E2462BCA800B26235 /* SwiftUIDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */; };
 		DA82B1ED268B62D2005F67C3 /* LoadingRetryDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA82B1EC268B62D2005F67C3 /* LoadingRetryDemoView.swift */; };
 		DAE9CA8724602CB000C7552F /* SwiftUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */; };
@@ -435,7 +435,7 @@
 		D75E14D32734856D008EB126 /* FrontPageShelfDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageShelfDemoView.swift; sourceTree = "<group>"; };
 		D75E14D627371692008EB126 /* SavedSearchFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedSearchFactory.swift; sourceTree = "<group>"; };
 		D7C750372731C61A002BDE98 /* SavedSearchShelfDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedSearchShelfDemoView.swift; sourceTree = "<group>"; };
-		D7D514C6272942E10065E2F6 /* ChristmasPromotionDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasPromotionDemoView.swift; sourceTree = "<group>"; };
+		D7D514C6272942E10065E2F6 /* PromotionDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionDemoView.swift; sourceTree = "<group>"; };
 		DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDemoViews.swift; sourceTree = "<group>"; };
 		DA82B1EC268B62D2005F67C3 /* LoadingRetryDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingRetryDemoView.swift; sourceTree = "<group>"; };
 		DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewTests.swift; sourceTree = "<group>"; };
@@ -818,7 +818,7 @@
 				D75E14D22734855B008EB126 /* FrontPageShelfDemoView */,
 				D7C750362731C5FF002BDE98 /* RecentlySavedShelfDemoView */,
 				D75523A02730090300C0C7DD /* RecentlyFavoritedShelfDemoView */,
-				D7D514C5272942C50065E2F6 /* ChristmasPromotionDemoView */,
+				D7D514C5272942C50065E2F6 /* PromotionDemoView */,
 				AA189E8526847AA900FD3A41 /* BlockUserView */,
 				DA82B1EB268B62B7005F67C3 /* LoadingRetryView */,
 				4D01FC94261C48E1008B9913 /* TransactionEntryView */,
@@ -1767,12 +1767,12 @@
 			path = RecentlySavedShelfDemoView;
 			sourceTree = "<group>";
 		};
-		D7D514C5272942C50065E2F6 /* ChristmasPromotionDemoView */ = {
+		D7D514C5272942C50065E2F6 /* PromotionDemoView */ = {
 			isa = PBXGroup;
 			children = (
-				D7D514C6272942E10065E2F6 /* ChristmasPromotionDemoView.swift */,
+				D7D514C6272942E10065E2F6 /* PromotionDemoView.swift */,
 			);
-			path = ChristmasPromotionDemoView;
+			path = PromotionDemoView;
 			sourceTree = "<group>";
 		};
 		DA82B1EB268B62B7005F67C3 /* LoadingRetryView */ = {
@@ -2044,7 +2044,7 @@
 				46E773DE242CEF0A008A5E93 /* BetaFeatureDemoView.swift in Sources */,
 				46E7740F242CEF0A008A5E93 /* CalloutDemoView.swift in Sources */,
 				46E7741C242CEF0A008A5E93 /* CollapsibleContentDemoView.swift in Sources */,
-				D7D514C7272942E10065E2F6 /* ChristmasPromotionDemoView.swift in Sources */,
+				D7D514C7272942E10065E2F6 /* PromotionDemoView.swift in Sources */,
 				46E7740B242CEF0A008A5E93 /* StepIndicatorDemoView.swift in Sources */,
 				46E773AC242CEF0A008A5E93 /* DemoViewsTableViewController.swift in Sources */,
 				46E773D7242CEF0A008A5E93 /* FavoriteAdsListDemoViewController.swift in Sources */,

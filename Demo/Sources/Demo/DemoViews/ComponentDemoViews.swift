@@ -212,7 +212,7 @@ public enum ComponentDemoViews: String, DemoViews {
         case .loadingRetryView:
             return DemoViewController<LoadingRetryDemoView>()
         case .promotionView:
-            return DemoViewController<ChristmasPromotionDemoView>()
+            return DemoViewController<PromotionDemoView>()
         case .recentlyfavoritedShelf:
             return DemoViewController<RecentlyFavoritedShelfDemoView>()
         case .savedSearchShelf:

@@ -1,27 +1,29 @@
 import UIKit
 
 public protocol PromotionViewDelegate: AnyObject {
-    func christmasPromotionView(_ promotionView: ChristmasPromotionView, didSelect action: ChristmasPromotionView.Action)
+    func promotionView(_ promotionView: PromotionView, didSelect action: PromotionView.Action)
 }
 
-public struct ChristmasPromotionViewModel {
-
+public struct PromotionViewModel {
     let title: String
-    let helpButtonTitle: String
-    let adsButtonTitle: String
+    let image: UIImage
+    let primaryButtonTitle: String?
+    let secondaryButtonTitle: String?
 
-    public init(title: String, helpButtonTitle: String, adsButtonTitle: String) {
+    public init(title: String, image: UIImage, primaryButtonTitle: String? = nil, secondaryButtonTitle: String? = nil) {
         self.title = title
-        self.helpButtonTitle = helpButtonTitle
-        self.adsButtonTitle = adsButtonTitle
+        self.image = image
+        self.primaryButtonTitle = primaryButtonTitle
+        self.secondaryButtonTitle = secondaryButtonTitle
     }
 }
 
-public class ChristmasPromotionView: UIView {
+public class PromotionView: UIView {
     static let height: CGFloat = 150
+
     public enum Action {
-        case seeAds
-        case help
+        case primary
+        case secondary
     }
 
     private lazy var backgroundView: UIView = {
@@ -57,26 +59,24 @@ public class ChristmasPromotionView: UIView {
         return label
     }()
 
-    private lazy var helpButton: Button = {
+    private lazy var primaryButton: Button = {
         let button = Button(style: .customStyle, size: .small, withAutoLayout: true)
-        button.addTarget(self, action: #selector(seeHelpButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(secondaryButtonTapped), for: .touchUpInside)
         button.heightAnchor.constraint(equalToConstant: .spacingXL).isActive = true
         button.setContentCompressionResistancePriority(.required, for: .vertical)
         return button
     }()
 
-    private lazy var seeAdsButton: Button = {
+    private lazy var secondaryButton: Button = {
         let button = Button(style: .customStyle, size: .small, withAutoLayout: true)
-        button.addTarget(self, action: #selector(seeAdsButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(primaryButtonTapped), for: .touchUpInside)
         button.heightAnchor.constraint(equalToConstant: .spacingXL).isActive = true
         button.setContentCompressionResistancePriority(.required, for: .vertical)
         return button
     }()
 
-    private lazy var image: UIImageView = {
-        let image = UIImage(named: .christmasPromotion)
+    private lazy var imageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = image
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         return imageView
@@ -87,36 +87,36 @@ public class ChristmasPromotionView: UIView {
         stack.axis = .vertical
         stack.spacing = .spacingXS + .spacingS
         stack.distribution = .fillProportionally
-        stack.addArrangedSubviews([titleLabel, helpButton, seeAdsButton])
-        stack.setCustomSpacing(.spacingM, after: titleLabel)
         stack.setContentCompressionResistancePriority(.required, for: .horizontal)
+        stack.alignment = .leading
         return stack
     }()
 
     public weak var delegate: PromotionViewDelegate?
-    public var model: ChristmasPromotionViewModel {
-        didSet {
-            self.titleLabel.text = model.title
-            self.helpButton.setTitle(model.helpButtonTitle, for: .normal)
-            self.seeAdsButton.setTitle(model.adsButtonTitle, for: .normal)
-        }
-    }
 
-    public init (model: ChristmasPromotionViewModel) {
-        self.model = model
+    public init (model: PromotionViewModel) {
         super.init(frame: .zero)
         setup()
+        configure(with: model)
     }
-
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    func configure(with viewModel: PromotionViewModel) {
+        titleLabel.text = viewModel.title
+        imageView.image = viewModel.image
+        primaryButton.configure(withTitle: viewModel.primaryButtonTitle)
+        secondaryButton.configure(withTitle: viewModel.secondaryButtonTitle)
+    }
 }
 
-//MARK: - Private functions
-extension ChristmasPromotionView {
+// MARK: - Private functions
+extension PromotionView {
     private func setup() {
+        translatesAutoresizingMaskIntoConstraints = false
+
         addSubview(largeShadowView)
         largeShadowView.fillInSuperview()
         largeShadowView.addSubview(smallShadowView)
@@ -124,21 +124,17 @@ extension ChristmasPromotionView {
         smallShadowView.addSubview(backgroundView)
         backgroundView.fillInSuperview()
         backgroundView.addSubview(verticalStack)
-        backgroundView.addSubview(image)
+        backgroundView.addSubview(imageView)
 
-        titleLabel.text = model.title
-        helpButton.setTitle(model.helpButtonTitle, for: .normal)
-        helpButton.sizeToFit()
-
-        seeAdsButton.setTitle(model.adsButtonTitle, for: .normal)
-        seeAdsButton.sizeToFit()
+        verticalStack.addArrangedSubviews([titleLabel, primaryButton, secondaryButton])
+        verticalStack.setCustomSpacing(.spacingM, after: titleLabel)
 
         NSLayoutConstraint.activate([
-            image.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
-            image.topAnchor.constraint(equalTo: backgroundView.topAnchor),
-            image.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
-            image.leadingAnchor.constraint(greaterThanOrEqualTo: verticalStack.trailingAnchor, constant: .spacingM),
-            image.widthAnchor.constraint(equalToConstant: 100),
+            imageView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
+            imageView.topAnchor.constraint(equalTo: backgroundView.topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
+            imageView.leadingAnchor.constraint(greaterThanOrEqualTo: verticalStack.trailingAnchor, constant: .spacingM),
+            imageView.widthAnchor.constraint(equalToConstant: 100),
             verticalStack.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
             verticalStack.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingL),
             verticalStack.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -(.spacingM + .spacingXXS)),
@@ -146,16 +142,17 @@ extension ChristmasPromotionView {
         ])
     }
 
-    @objc private func seeAdsButtonTapped() {
-        delegate?.christmasPromotionView(self, didSelect: .seeAds)
+    @objc private func primaryButtonTapped() {
+        delegate?.promotionView(self, didSelect: .primary)
     }
 
-    @objc private func seeHelpButtonTapped() {
-        delegate?.christmasPromotionView(self, didSelect: .help)
+    @objc private func secondaryButtonTapped() {
+        delegate?.promotionView(self, didSelect: .secondary)
     }
 }
 
-//MARK: - Shadow Color
+// MARK: - Private extensions
+
 private extension UIColor {
     static var shadowColor: UIColor {
         return UIColor(hex: "475569")
@@ -166,7 +163,16 @@ private extension UIColor {
     }
 }
 
-// MARK: - Button style
 private extension Button.Style {
     static var customStyle = Button.Style.default.overrideStyle(bodyColor: .bgColor, highlightedBodyColor: .bgSecondary)
+}
+
+private extension Button {
+    func configure(withTitle title: String?) {
+        if let title = title {
+            setTitle(title, for: .normal)
+        } else {
+            isHidden = true
+        }
+    }
 }
