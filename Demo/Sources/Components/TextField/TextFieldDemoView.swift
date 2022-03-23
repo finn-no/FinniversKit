@@ -56,7 +56,7 @@ public class TextFieldDemoView: UIView {
         fullBorder.translatesAutoresizingMaskIntoConstraints = false
         fullBorder.placeholderText = "Phone Number Full Border"
         fullBorder.configure(textFieldBackgroundColor: .bgPrimary)
-        fullBorder.configureFullBorder(radius: 4, width: 1, color: .dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine))
+        fullBorder.configureBorder(radius: 4, width: 1, color: .dynamicColor(defaultColor: .blue, darkModeColor: .blue), dynamicBorder: true)
 
         stackView.addArrangedSubviews([
             emailTextField,

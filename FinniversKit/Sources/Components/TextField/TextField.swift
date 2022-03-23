@@ -314,8 +314,8 @@ public class TextField: UIView {
         setNeedsLayout()
     }
     
-    public func configureFullBorder(radius: CGFloat, width: CGFloat, color: UIColor) {
-        textFieldFullBorder = true
+    public func configureBorder(radius: CGFloat, width: CGFloat, color: UIColor, dynamicBorder: Bool) {
+        textFieldFullBorder = dynamicBorder
         textFieldBackgroundView.clipsToBounds = true
         textFieldBorderColor = color
         textFieldBackgroundView.layer.cornerRadius = radius
@@ -405,8 +405,15 @@ public class TextField: UIView {
 
     private func transition(to state: State) {
         layoutIfNeeded()
-        underlineHeightConstraint?.constant = state.underlineHeight
-
+        
+        if let fullBorder = self.textFieldFullBorder, fullBorder == true {
+            self.textFieldBorderColor = state.underlineColor
+            self.layoutSubviews()
+        }
+        else{
+            underlineHeightConstraint?.constant = state.underlineHeight
+        }
+        
         if isHelpTextForErrors() {
             if shouldDisplayErrorHelpText() {
                 helpTextLabelLeadingConstraint?.constant = errorIconImageView.frame.size.width + .spacingXS
@@ -421,14 +428,11 @@ public class TextField: UIView {
         UIView.animate(withDuration: animationDuration) {
             self.layoutIfNeeded()
             self.underline.backgroundColor = state.underlineColor
+
             self.textFieldBackgroundView.backgroundColor = self.textFieldBackgroundColorOverride ?? state.textFieldBackgroundColor
             self.typeLabel.textColor = state.accessoryLabelTextColor
             self.helpTextLabel.textColor = state.accessoryLabelTextColor
             
-            if let fullBorder = self.textFieldFullBorder, fullBorder == true {
-                self.textFieldBorderColor = .green
-            }
-
             if self.isHelpTextForErrors() {
                 if self.shouldDisplayErrorHelpText() {
                     self.helpTextLabel.alpha = 1.0
