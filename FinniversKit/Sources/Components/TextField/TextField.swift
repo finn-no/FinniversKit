@@ -53,6 +53,7 @@ public class TextField: UIView {
     private let errorIconWidth: CGFloat = 16
     private var textFieldBackgroundColorOverride: UIColor?
     private var textFieldBorderColor: UIColor?
+    private var textFieldFullBorder: Bool?
 
     private var underlineHeightConstraint: NSLayoutConstraint?
     private var helpTextLabelLeadingConstraint: NSLayoutConstraint?
@@ -312,6 +313,16 @@ public class TextField: UIView {
         transition(to: state)
         setNeedsLayout()
     }
+    
+    public func configureFullBorder(radius: CGFloat, width: CGFloat, color: UIColor) {
+        textFieldFullBorder = true
+        textFieldBackgroundView.clipsToBounds = true
+        textFieldBorderColor = color
+        textFieldBackgroundView.layer.cornerRadius = radius
+        textFieldBackgroundView.layer.borderWidth = width
+        transition(to: state)
+        setNeedsLayout()
+    }
 
     // MARK: - Actions
 
@@ -413,6 +424,10 @@ public class TextField: UIView {
             self.textFieldBackgroundView.backgroundColor = self.textFieldBackgroundColorOverride ?? state.textFieldBackgroundColor
             self.typeLabel.textColor = state.accessoryLabelTextColor
             self.helpTextLabel.textColor = state.accessoryLabelTextColor
+            
+            if let fullBorder = self.textFieldFullBorder, fullBorder == true {
+                self.textFieldBorderColor = .green
+            }
 
             if self.isHelpTextForErrors() {
                 if self.shouldDisplayErrorHelpText() {

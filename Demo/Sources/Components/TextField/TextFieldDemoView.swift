@@ -52,6 +52,12 @@ public class TextFieldDemoView: UIView {
         overrideBgColor.configure(textFieldBackgroundColor: .bgPrimary)
         overrideBgColor.configureBorder(radius: 4, width: 1, color: .dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine))
 
+        let fullBorder = TextField(inputType: .phoneNumber)
+        fullBorder.translatesAutoresizingMaskIntoConstraints = false
+        fullBorder.placeholderText = "Phone Number Full Border"
+        fullBorder.configure(textFieldBackgroundColor: .bgPrimary)
+        fullBorder.configureFullBorder(radius: 4, width: 1, color: .dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine))
+
         stackView.addArrangedSubviews([
             emailTextField,
             passwordTextField,
@@ -59,6 +65,7 @@ public class TextFieldDemoView: UIView {
             normalWithHelpTextTextField,
             multilineTextField,
             overrideBgColor,
+            fullBorder,
         ])
         addSubview(stackView)
 
