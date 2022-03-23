@@ -53,7 +53,8 @@ public class TextField: UIView {
     private let errorIconWidth: CGFloat = 16
     private var textFieldBackgroundColorOverride: UIColor?
     private var textFieldBorderColor: UIColor?
-    private var textFieldFullBorder: Bool?
+    private var textFieldDefaultBorderColor: UIColor?
+    private var textFieldDynamicBorder: Bool?
 
     private var underlineHeightConstraint: NSLayoutConstraint?
     private var helpTextLabelLeadingConstraint: NSLayoutConstraint?
@@ -315,7 +316,8 @@ public class TextField: UIView {
     }
     
     public func configureBorder(radius: CGFloat, width: CGFloat, color: UIColor, dynamicBorder: Bool) {
-        textFieldFullBorder = dynamicBorder
+        textFieldDynamicBorder = dynamicBorder
+        textFieldDefaultBorderColor = color
         textFieldBackgroundView.clipsToBounds = true
         textFieldBorderColor = color
         textFieldBackgroundView.layer.cornerRadius = radius
@@ -406,8 +408,13 @@ public class TextField: UIView {
     private func transition(to state: State) {
         layoutIfNeeded()
         
-        if let fullBorder = self.textFieldFullBorder, fullBorder == true {
-            self.textFieldBorderColor = state.underlineColor
+        if let dynamicBorder = self.textFieldDynamicBorder, dynamicBorder == true {
+            if state != .normal {
+                self.textFieldBorderColor = state.underlineColor
+            }
+            else{
+                self.textFieldBorderColor = self.textFieldDefaultBorderColor
+            }
             self.layoutSubviews()
         }
         else{
