@@ -5,40 +5,6 @@ public protocol PromotionViewDelegate: AnyObject {
     func promotionViewTapped(_ promotionView: PromotionView)
 }
 
-public struct PromotionViewModel {
-    let title: String
-    let text: String?
-    let image: UIImage
-    let imageAlignment: ImageAlignment
-    let imageBackgroundColor: UIColor?
-    let primaryButtonTitle: String?
-    let secondaryButtonTitle: String?
-
-    /// Image's alignment inside image container. The full image will always be visible.
-    public enum ImageAlignment {
-        case trailing
-        case centered
-    }
-
-    public init(
-        title: String,
-        text: String? = nil,
-        image: UIImage,
-        imageAlignment: ImageAlignment,
-        imageBackgroundColor: UIColor? = nil,
-        primaryButtonTitle: String? = nil,
-        secondaryButtonTitle: String? = nil
-    ) {
-        self.title = title
-        self.text = text
-        self.image = image
-        self.imageAlignment = imageAlignment
-        self.imageBackgroundColor = imageBackgroundColor
-        self.primaryButtonTitle = primaryButtonTitle
-        self.secondaryButtonTitle = secondaryButtonTitle
-    }
-}
-
 public class PromotionView: UIView {
     private lazy var backgroundView: UIView = {
         let view = UIView(withAutoLayout: true)
