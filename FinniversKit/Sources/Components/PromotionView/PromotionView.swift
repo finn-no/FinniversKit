@@ -159,18 +159,16 @@ extension PromotionView {
 
         verticalStackView.addArrangedSubviews([titleLabel, textLabel, primaryButton, secondaryButton])
 
-        imageContainer.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        verticalStackView.setContentHuggingPriority(.defaultLow, for: .horizontal)
-
         NSLayoutConstraint.activate([
             imageContainer.topAnchor.constraint(equalTo: backgroundView.topAnchor),
             imageContainer.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
             imageContainer.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
             imageContainer.heightAnchor.constraint(equalTo: backgroundView.heightAnchor),
-            verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
+
             verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
+            verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
+            verticalStackView.trailingAnchor.constraint(equalTo: imageContainer.leadingAnchor, constant: -.spacingS),
             verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
-            verticalStackView.trailingAnchor.constraint(equalTo: imageContainer.leadingAnchor, constant: -.spacingM),
             verticalStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6)
         ])
     }
