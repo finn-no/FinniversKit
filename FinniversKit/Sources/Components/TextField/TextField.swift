@@ -187,7 +187,11 @@ public class TextField: UIView {
         case .phoneNumber:
             isValidByInputType = isValidPhoneNumber(text)
         case .normal, .multiline:
-            isValidByInputType = isValidRegEx(text)
+            if let textRegex = textRegex {
+                isValidByInputType = evaluate(textRegex, with: text)
+            } else {
+                isValidByInputType = true
+            }
         }
 
         if isValidByInputType, let customValidator = customValidator {
@@ -317,7 +321,7 @@ public class TextField: UIView {
         setNeedsLayout()
     }
     
-    public func configureBorder(radius: CGFloat, width: CGFloat, color: UIColor, dynamicBorder: Bool) {
+    public func configureBorder(radius: CGFloat, width: CGFloat, color: UIColor, dynamicBorder: Bool = false) {
         textFieldDynamicBorder = dynamicBorder
         textFieldDefaultBorderColor = color
         textFieldBackgroundView.clipsToBounds = true
@@ -379,13 +383,6 @@ public class TextField: UIView {
     private func isValidPassword(_ password: String) -> Bool {
         return !password.isEmpty
     }
-    
-    private func isValidRegEx(_ text: String) -> Bool {
-        guard let regex = textRegex else {
-            return true
-        }
-        return evaluate(regex, with: text)
-    }
 
     private func isHelpTextForErrors() -> Bool {
         if inputType == .email || inputType == .phoneNumber {
@@ -418,13 +415,13 @@ public class TextField: UIView {
         layoutIfNeeded()
         
         if let dynamicBorder = self.textFieldDynamicBorder, dynamicBorder == true {
-            if state != .normal {
+            switch state {
+            case .normal :
+                self.textFieldBorderColor = self.textFieldDefaultBorderColor
+            default :
                 self.textFieldBorderColor = state.underlineColor
             }
-            else{
-                self.textFieldBorderColor = self.textFieldDefaultBorderColor
-            }
-            self.layoutSubviews()
+            setNeedsLayout()
         }
         else{
             underlineHeightConstraint?.constant = state.underlineHeight
