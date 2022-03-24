@@ -173,7 +173,7 @@ public final class FrontPageView: UIView {
         promoContainer.addSubview(promotionView)
 
         promotionView.fillInSuperview(
-            insets: .init(top: .spacingL, leading: 0, bottom: 0, trailing: 0)
+            insets: .init(top: .spacingL, leading: .spacingM, bottom: 0, trailing: -.spacingM)
         )
         setupFrames()
     }
@@ -201,8 +201,8 @@ public final class FrontPageView: UIView {
             marketsGridViewHeight,
             
             promoContainer.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor),
-            promoContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
-            promoContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
+            promoContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            promoContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             
             shelfContainer.topAnchor.constraint(equalTo: promoContainer.bottomAnchor),
             shelfContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
