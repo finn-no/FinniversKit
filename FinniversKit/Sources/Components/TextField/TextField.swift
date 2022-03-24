@@ -55,7 +55,9 @@ public class TextField: UIView {
     private var textFieldBorderColor: UIColor?
     private var textFieldDefaultBorderColor: UIColor?
     private var textFieldDynamicBorder: Bool?
-
+    
+    public var textRegex: String?
+    
     private var underlineHeightConstraint: NSLayoutConstraint?
     private var helpTextLabelLeadingConstraint: NSLayoutConstraint?
 
@@ -185,7 +187,7 @@ public class TextField: UIView {
         case .phoneNumber:
             isValidByInputType = isValidPhoneNumber(text)
         case .normal, .multiline:
-            isValidByInputType = true
+            isValidByInputType = isValidRegEx(text)
         }
 
         if isValidByInputType, let customValidator = customValidator {
@@ -376,6 +378,13 @@ public class TextField: UIView {
 
     private func isValidPassword(_ password: String) -> Bool {
         return !password.isEmpty
+    }
+    
+    private func isValidRegEx(_ text: String) -> Bool {
+        guard let regex = textRegex else {
+            return true
+        }
+        return evaluate(regex, with: text)
     }
 
     private func isHelpTextForErrors() -> Bool {
