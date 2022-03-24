@@ -125,7 +125,7 @@ public class PromotionView: UIView {
                 imageView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
                 imageView.trailingAnchor.constraint(equalTo: imageContainer.trailingAnchor),
                 imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor),
-                imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: imageRatio)
+                imageView.widthAnchor.constraint(lessThanOrEqualTo: imageView.heightAnchor, multiplier: imageRatio),
             ])
 
         case .centered:
@@ -163,7 +163,6 @@ extension PromotionView {
             imageContainer.topAnchor.constraint(equalTo: backgroundView.topAnchor),
             imageContainer.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
             imageContainer.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
-            imageContainer.heightAnchor.constraint(equalTo: backgroundView.heightAnchor),
 
             verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
             verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),

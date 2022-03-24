@@ -18,8 +18,7 @@ class PromotionDemoView: UIView {
         image: UIImage(named: .hjerterom),
         imageAlignment: .centered,
         imageBackgroundColor: .primaryBlue,
-        primaryButtonTitle: "Gå til Hjerterom",
-        secondaryButtonTitle: nil
+        primaryButtonTitle: "Gå til Hjerterom"
     )
 
     private lazy var stackView: UIStackView = {
