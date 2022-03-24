@@ -26,7 +26,7 @@ public class FrontpageViewDemoView: UIView {
             text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
             image: UIImage(named: .hjerterom),
             imageAlignment: .centered,
-            imageBackgroundColor: .bgPrimary,
+            imageBackgroundColor: .primaryBlue,
             primaryButtonTitle: "Gå til Hjerterom"
         )
         view.showPromotion(withModel: hjerteromPromoViewModel, andDelegate: self)
@@ -82,6 +82,10 @@ public class FrontpageViewDemoView: UIView {
 // MARK: - PromotionViewDelegate
 
 extension FrontpageViewDemoView: PromotionViewDelegate {
+    public func promotionViewTapped(_ promotionView: PromotionView) {
+        print("Promo tapped")
+    }
+
     public func promotionView(_ promotionView: PromotionView, didSelect action: PromotionView.Action) {
         print("Selected : \(action)")
     }

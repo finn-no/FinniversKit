@@ -55,6 +55,10 @@ class PromotionDemoView: UIView {
 }
 
 extension PromotionDemoView: PromotionViewDelegate {
+    func promotionViewTapped(_ promotionView: PromotionView) {
+        print("Promo tapped")
+    }
+
     func promotionView(_ promotionView: PromotionView, didSelect action: PromotionView.Action) {
         print("Selected : \(action)")
     }

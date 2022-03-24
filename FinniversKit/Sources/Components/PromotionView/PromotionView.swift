@@ -2,6 +2,7 @@ import UIKit
 
 public protocol PromotionViewDelegate: AnyObject {
     func promotionView(_ promotionView: PromotionView, didSelect action: PromotionView.Action)
+    func promotionViewTapped(_ promotionView: PromotionView)
 }
 
 public struct PromotionViewModel {
@@ -92,7 +93,7 @@ public class PromotionView: UIView {
 
     private lazy var primaryButton: Button = {
         let button = Button(style: .customStyle, size: .small, withAutoLayout: true)
-        button.addTarget(self, action: #selector(secondaryButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(primaryButtonTapped), for: .touchUpInside)
         button.setContentCompressionResistancePriority(.required, for: .vertical)
         button.setContentHuggingPriority(.required, for: .vertical)
         return button
@@ -100,7 +101,7 @@ public class PromotionView: UIView {
 
     private lazy var secondaryButton: Button = {
         let button = Button(style: .customStyle, size: .small, withAutoLayout: true)
-        button.addTarget(self, action: #selector(primaryButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(secondaryButtonTapped), for: .touchUpInside)
         button.setContentCompressionResistancePriority(.required, for: .vertical)
         button.setContentHuggingPriority(.required, for: .vertical)
         return button
@@ -179,6 +180,9 @@ extension PromotionView {
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
 
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewWasTapped))
+        addGestureRecognizer(tapGesture)
+
         addSubview(largeShadowView)
         largeShadowView.fillInSuperview()
         largeShadowView.addSubview(smallShadowView)
@@ -212,6 +216,10 @@ extension PromotionView {
 
     @objc private func secondaryButtonTapped() {
         delegate?.promotionView(self, didSelect: .secondary)
+    }
+
+    @objc private func viewWasTapped() {
+        delegate?.promotionViewTapped(self)
     }
 }
 
