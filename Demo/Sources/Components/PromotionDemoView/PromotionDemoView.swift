@@ -7,14 +7,17 @@ class PromotionDemoView: UIView {
     private let christmasPromoViewModel = PromotionViewModel(
         title: "Hjelp til jul hos FINN",
         image: UIImage(named: .christmasPromotion),
+        imageContentMode: .filled,
         primaryButtonTitle: "Be om eller tilby hjelp",
         secondaryButtonTitle: "Se annonsene"
     )
 
     private let hjerteromPromoViewModel = PromotionViewModel(
         title: "Hjerterom - hjelp til flyktninger",
-        image: UIImage(named: .christmasPromotion),
-        primaryButtonTitle: nil,
+        text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
+        image: UIImage(named: .hjerterom),
+        imageContentMode: .fitted(backgroundColor: .primaryBlue),
+        primaryButtonTitle: "Gå til Hjerterom",
         secondaryButtonTitle: nil
     )
 

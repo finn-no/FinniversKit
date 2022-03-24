@@ -6,13 +6,29 @@ public protocol PromotionViewDelegate: AnyObject {
 
 public struct PromotionViewModel {
     let title: String
+    let text: String?
     let image: UIImage
+    let imageContentMode: ImageContentMode
     let primaryButtonTitle: String?
     let secondaryButtonTitle: String?
 
-    public init(title: String, image: UIImage, primaryButtonTitle: String? = nil, secondaryButtonTitle: String? = nil) {
+    public enum ImageContentMode {
+        case filled
+        case fitted(backgroundColor: UIColor)
+    }
+
+    public init(
+        title: String,
+        text: String? = nil,
+        image: UIImage,
+        imageContentMode: ImageContentMode,
+        primaryButtonTitle: String? = nil,
+        secondaryButtonTitle: String? = nil
+    ) {
         self.title = title
+        self.text = text
         self.image = image
+        self.imageContentMode = imageContentMode
         self.primaryButtonTitle = primaryButtonTitle
         self.secondaryButtonTitle = secondaryButtonTitle
     }
@@ -36,20 +52,23 @@ public class PromotionView: UIView {
 
     private lazy var smallShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.dropShadow(color: .shadowColor,
-                        opacity: 0.24,
-                        offset: CGSize(width: 0, height: 1),
-                        radius: 1)
-
+        view.dropShadow(
+            color: .shadowColor,
+            opacity: 0.24,
+            offset: CGSize(width: 0, height: 1),
+            radius: 1
+        )
         return view
     }()
 
     private lazy var largeShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.dropShadow(color: .shadowColor,
-                        opacity: 0.16,
-                        offset: CGSize(width: 0, height: 1),
-                        radius: 5)
+        view.dropShadow(
+            color: .shadowColor,
+            opacity: 0.16,
+            offset: CGSize(width: 0, height: 1),
+            radius: 5
+        )
         return view
     }()
 
@@ -77,10 +96,11 @@ public class PromotionView: UIView {
 
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         return imageView
     }()
+
+    private lazy var imageContainer = UIView(withAutoLayout: true)
 
     private lazy var verticalStack: UIStackView = {
         let stack = UIStackView(withAutoLayout: true)
@@ -94,7 +114,7 @@ public class PromotionView: UIView {
 
     public weak var delegate: PromotionViewDelegate?
 
-    public init (model: PromotionViewModel) {
+    public init(model: PromotionViewModel) {
         super.init(frame: .zero)
         setup()
         configure(with: model)
@@ -107,8 +127,22 @@ public class PromotionView: UIView {
     func configure(with viewModel: PromotionViewModel) {
         titleLabel.text = viewModel.title
         imageView.image = viewModel.image
+
         primaryButton.configure(withTitle: viewModel.primaryButtonTitle)
         secondaryButton.configure(withTitle: viewModel.secondaryButtonTitle)
+
+        switch viewModel.imageContentMode {
+        case .filled:
+            imageView.contentMode = .scaleAspectFill
+            imageContainer.addSubview(imageView)
+            imageView.fillInSuperview()
+        case .fitted(let backgroundColor):
+            imageView.contentMode = .scaleAspectFit
+            imageView.image = viewModel.image
+            imageContainer.backgroundColor = backgroundColor
+            imageContainer.addSubview(imageView)
+            imageView.fillInSuperview(insets: UIEdgeInsets(top: 0, leading: .spacingS, bottom: 0, trailing: -.spacingS))
+        }
     }
 }
 
@@ -124,21 +158,20 @@ extension PromotionView {
         smallShadowView.addSubview(backgroundView)
         backgroundView.fillInSuperview()
         backgroundView.addSubview(verticalStack)
-        backgroundView.addSubview(imageView)
+        backgroundView.addSubview(imageContainer)
 
         verticalStack.addArrangedSubviews([titleLabel, primaryButton, secondaryButton])
         verticalStack.setCustomSpacing(.spacingM, after: titleLabel)
 
         NSLayoutConstraint.activate([
-            imageView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
-            imageView.topAnchor.constraint(equalTo: backgroundView.topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
-            imageView.leadingAnchor.constraint(greaterThanOrEqualTo: verticalStack.trailingAnchor, constant: .spacingM),
-            imageView.widthAnchor.constraint(equalToConstant: 100),
+            imageContainer.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
+            imageContainer.topAnchor.constraint(equalTo: backgroundView.topAnchor),
+            imageContainer.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
+            imageContainer.leadingAnchor.constraint(greaterThanOrEqualTo: verticalStack.trailingAnchor, constant: .spacingM),
+            imageContainer.widthAnchor.constraint(equalToConstant: 100),
             verticalStack.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
             verticalStack.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingL),
             verticalStack.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -(.spacingM + .spacingXXS)),
-            verticalStack.widthAnchor.constraint(equalToConstant: 150),
         ])
     }
 

@@ -24,6 +24,7 @@ public class FrontpageViewDemoView: UIView {
         let model = PromotionViewModel(
             title: "Hjelp til jul hos FINN",
             image: UIImage(named: .christmasPromotion),
+            imageContentMode: .filled,
             primaryButtonTitle: "Be om eller tilby hjelp",
             secondaryButtonTitle: "Se annonsene"
         )
