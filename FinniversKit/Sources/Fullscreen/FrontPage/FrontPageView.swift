@@ -51,7 +51,6 @@ public final class FrontPageView: UIView {
     private var marketsViewDataSource: MarketsViewDataSource
     private var adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource
     private var didSetupView = false
-    private var isPromoViewShowing = false
 
     // MARK: - Subviews
 
@@ -172,9 +171,10 @@ public final class FrontPageView: UIView {
         promotionView.delegate = delegate
 
         promoContainer.addSubview(promotionView)
-        promotionView.fillInSuperview()
-        promotionView.heightAnchor.constraint(equalToConstant: PromotionView.height).isActive = true
-        isPromoViewShowing = true
+
+        promotionView.fillInSuperview(
+            insets: .init(top: .spacingL, leading: 0, bottom: 0, trailing: 0)
+        )
         setupFrames()
     }
 
@@ -200,7 +200,7 @@ public final class FrontPageView: UIView {
             marketsGridView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             marketsGridViewHeight,
             
-            promoContainer.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor, constant: isPromoViewShowing ? .spacingL : 0),
+            promoContainer.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor),
             promoContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
             promoContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
             
@@ -232,10 +232,16 @@ public final class FrontPageView: UIView {
         let headerBottomSpacing: CGFloat = .spacingS
         let labelHeight = headerLabel.intrinsicContentSize.height + .spacingM
 
+        let promoContainerHeight = promoContainer
+             .systemLayoutSizeFitting(
+                 CGSize(width: bounds.size.width, height: 0),
+                 withHorizontalFittingPriority: .required,
+                 verticalFittingPriority: .fittingSizeLevel)
+             .height
+
         let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: bounds.size.width).height + .spacingXS
-        var height = headerTopSpacing + labelHeight + marketGridViewHeight + headerBottomSpacing
-        height += isPromoViewShowing ? PromotionView.height + .spacingL : 0
-        
+        var height = headerTopSpacing + labelHeight + marketGridViewHeight + promoContainerHeight + headerBottomSpacing
+
         let shelfContainerHeight = shelfViewModel?.heightForShelf ?? 0
         height += shelfContainerHeight + (shelfContainerHeight > 0 ? FrontPageShelfView.topPadding : 0)
 

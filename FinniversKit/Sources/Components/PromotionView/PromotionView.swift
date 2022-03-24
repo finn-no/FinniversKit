@@ -35,8 +35,6 @@ public struct PromotionViewModel {
 }
 
 public class PromotionView: UIView {
-    static let height: CGFloat = 150
-
     public enum Action {
         case primary
         case secondary
@@ -74,23 +72,33 @@ public class PromotionView: UIView {
 
     private lazy var titleLabel: UILabel = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
+        label.numberOfLines = 0
         label.setContentCompressionResistancePriority(.required, for: .vertical)
+        label.setContentHuggingPriority(.defaultLow, for: .vertical)
+        return label
+    }()
+
+    private lazy var textLabel: Label = {
+        let label = Label(style: .body, withAutoLayout: true)
+        label.numberOfLines = 0
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
+        label.setContentHuggingPriority(.required, for: .vertical)
         return label
     }()
 
     private lazy var primaryButton: Button = {
         let button = Button(style: .customStyle, size: .small, withAutoLayout: true)
         button.addTarget(self, action: #selector(secondaryButtonTapped), for: .touchUpInside)
-        button.heightAnchor.constraint(equalToConstant: .spacingXL).isActive = true
         button.setContentCompressionResistancePriority(.required, for: .vertical)
+        button.setContentHuggingPriority(.required, for: .vertical)
         return button
     }()
 
     private lazy var secondaryButton: Button = {
         let button = Button(style: .customStyle, size: .small, withAutoLayout: true)
         button.addTarget(self, action: #selector(primaryButtonTapped), for: .touchUpInside)
-        button.heightAnchor.constraint(equalToConstant: .spacingXL).isActive = true
         button.setContentCompressionResistancePriority(.required, for: .vertical)
+        button.setContentHuggingPriority(.required, for: .vertical)
         return button
     }()
 
@@ -105,7 +113,7 @@ public class PromotionView: UIView {
     private lazy var verticalStack: UIStackView = {
         let stack = UIStackView(withAutoLayout: true)
         stack.axis = .vertical
-        stack.spacing = .spacingXS + .spacingS
+        stack.spacing = .spacingS + .spacingXS
         stack.distribution = .fillProportionally
         stack.setContentCompressionResistancePriority(.required, for: .horizontal)
         stack.alignment = .leading
@@ -127,6 +135,12 @@ public class PromotionView: UIView {
     func configure(with viewModel: PromotionViewModel) {
         titleLabel.text = viewModel.title
         imageView.image = viewModel.image
+
+        if let text = viewModel.text {
+            textLabel.text = text
+        } else {
+            textLabel.isHidden = true
+        }
 
         primaryButton.configure(withTitle: viewModel.primaryButtonTitle)
         secondaryButton.configure(withTitle: viewModel.secondaryButtonTitle)
@@ -160,18 +174,21 @@ extension PromotionView {
         backgroundView.addSubview(verticalStack)
         backgroundView.addSubview(imageContainer)
 
-        verticalStack.addArrangedSubviews([titleLabel, primaryButton, secondaryButton])
-        verticalStack.setCustomSpacing(.spacingM, after: titleLabel)
+        verticalStack.addArrangedSubviews([titleLabel, textLabel, primaryButton, secondaryButton])
+
+        imageContainer.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        verticalStack.setContentHuggingPriority(.defaultLow, for: .horizontal)
 
         NSLayoutConstraint.activate([
-            imageContainer.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
             imageContainer.topAnchor.constraint(equalTo: backgroundView.topAnchor),
+            imageContainer.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
             imageContainer.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
-            imageContainer.leadingAnchor.constraint(greaterThanOrEqualTo: verticalStack.trailingAnchor, constant: .spacingM),
-            imageContainer.widthAnchor.constraint(equalToConstant: 100),
+            imageContainer.heightAnchor.constraint(equalTo: backgroundView.heightAnchor),
             verticalStack.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
-            verticalStack.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingL),
-            verticalStack.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -(.spacingM + .spacingXXS)),
+            verticalStack.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
+            verticalStack.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
+            verticalStack.trailingAnchor.constraint(equalTo: imageContainer.leadingAnchor, constant: -.spacingM),
+            verticalStack.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6)
         ])
     }
 

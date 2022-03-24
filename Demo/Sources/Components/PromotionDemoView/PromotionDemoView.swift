@@ -48,7 +48,6 @@ class PromotionDemoView: UIView {
         for viewModel in viewModels {
             let view = PromotionView(model: viewModel)
             view.delegate = self
-            view.heightAnchor.constraint(equalToConstant: 150).isActive = true
             stackView.addArrangedSubview(view)
         }
     }

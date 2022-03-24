@@ -21,14 +21,14 @@ public class FrontpageViewDemoView: UIView {
         view.isRefreshEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
 
-        let model = PromotionViewModel(
-            title: "Hjelp til jul hos FINN",
-            image: UIImage(named: .christmasPromotion),
-            imageContentMode: .filled,
-            primaryButtonTitle: "Be om eller tilby hjelp",
-            secondaryButtonTitle: "Se annonsene"
+        let hjerteromPromoViewModel = PromotionViewModel(
+            title: "Hjerterom - hjelp til flyktninger",
+            text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
+            image: UIImage(named: .hjerterom),
+            imageContentMode: .fitted(backgroundColor: .primaryBlue),
+            primaryButtonTitle: "Gå til Hjerterom"
         )
-        view.showPromotion(withModel: model, andDelegate: self)
+        view.showPromotion(withModel: hjerteromPromoViewModel, andDelegate: self)
 
         let shelfModel = FrontPageShelfViewModel(favoritedItems: RecentlyFavoritedFactory.create(numberOfItems: 10),
                                                  savedSearchItems: SavedSearchShelfFactory.create(numberOfItems: 10),
