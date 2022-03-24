@@ -40,11 +40,6 @@ public struct PromotionViewModel {
 }
 
 public class PromotionView: UIView {
-    public enum Action {
-        case primary
-        case secondary
-    }
-
     private lazy var backgroundView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .bgColor
@@ -113,22 +108,28 @@ public class PromotionView: UIView {
 
     private lazy var imageContainer = UIView(withAutoLayout: true)
 
-    private lazy var verticalStack: UIStackView = {
-        let stack = UIStackView(withAutoLayout: true)
-        stack.axis = .vertical
-        stack.spacing = .spacingS + .spacingXS
-        stack.distribution = .fillProportionally
-        stack.setContentCompressionResistancePriority(.required, for: .horizontal)
-        stack.alignment = .leading
-        return stack
+    private lazy var verticalStackView: UIStackView = {
+        let stackView = UIStackView(axis: .vertical, spacing: .spacingS + .spacingXS, withAutoLayout: true)
+        stackView.distribution = .fillProportionally
+        stackView.alignment = .leading
+        return stackView
     }()
+
+    // MARK: - Public properties
+
+    public enum Action {
+        case primary
+        case secondary
+    }
 
     public weak var delegate: PromotionViewDelegate?
 
-    public init(model: PromotionViewModel) {
+    // MARK: - Init
+
+    public init(viewModel: PromotionViewModel) {
         super.init(frame: .zero)
         setup()
-        configure(with: model)
+        configure(with: viewModel)
     }
 
     required init?(coder: NSCoder) {
@@ -187,24 +188,24 @@ extension PromotionView {
         smallShadowView.fillInSuperview()
         smallShadowView.addSubview(backgroundView)
         backgroundView.fillInSuperview()
-        backgroundView.addSubview(verticalStack)
+        backgroundView.addSubview(verticalStackView)
         backgroundView.addSubview(imageContainer)
 
-        verticalStack.addArrangedSubviews([titleLabel, textLabel, primaryButton, secondaryButton])
+        verticalStackView.addArrangedSubviews([titleLabel, textLabel, primaryButton, secondaryButton])
 
         imageContainer.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        verticalStack.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        verticalStackView.setContentHuggingPriority(.defaultLow, for: .horizontal)
 
         NSLayoutConstraint.activate([
             imageContainer.topAnchor.constraint(equalTo: backgroundView.topAnchor),
             imageContainer.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
             imageContainer.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
             imageContainer.heightAnchor.constraint(equalTo: backgroundView.heightAnchor),
-            verticalStack.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
-            verticalStack.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
-            verticalStack.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
-            verticalStack.trailingAnchor.constraint(equalTo: imageContainer.leadingAnchor, constant: -.spacingM),
-            verticalStack.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6)
+            verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
+            verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
+            verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
+            verticalStackView.trailingAnchor.constraint(equalTo: imageContainer.leadingAnchor, constant: -.spacingM),
+            verticalStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6)
         ])
     }
 

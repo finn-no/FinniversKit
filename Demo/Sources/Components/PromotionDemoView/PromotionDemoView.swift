@@ -47,7 +47,7 @@ class PromotionDemoView: UIView {
         ])
 
         for viewModel in viewModels {
-            let view = PromotionView(model: viewModel)
+            let view = PromotionView(viewModel: viewModel)
             view.delegate = self
             stackView.addArrangedSubview(view)
         }

@@ -165,8 +165,8 @@ public final class FrontPageView: UIView {
         adRecommendationsGridView.scrollToTop()
     }
 
-    public func showPromotion(withModel model: PromotionViewModel, andDelegate delegate: PromotionViewDelegate) {
-        let promotionView = PromotionView(model: model)
+    public func showPromotion(withViewModel viewModel: PromotionViewModel, andDelegate delegate: PromotionViewDelegate) {
+        let promotionView = PromotionView(viewModel: viewModel)
         promotionView.translatesAutoresizingMaskIntoConstraints = false
         promotionView.delegate = delegate
 

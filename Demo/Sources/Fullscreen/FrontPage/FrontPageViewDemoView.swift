@@ -29,7 +29,7 @@ public class FrontpageViewDemoView: UIView {
             imageBackgroundColor: .primaryBlue,
             primaryButtonTitle: "Gå til Hjerterom"
         )
-        view.showPromotion(withModel: hjerteromPromoViewModel, andDelegate: self)
+        view.showPromotion(withViewModel: hjerteromPromoViewModel, andDelegate: self)
 
         let shelfModel = FrontPageShelfViewModel(favoritedItems: RecentlyFavoritedFactory.create(numberOfItems: 10),
                                                  savedSearchItems: SavedSearchShelfFactory.create(numberOfItems: 10),
