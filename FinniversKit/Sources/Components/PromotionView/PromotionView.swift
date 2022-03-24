@@ -94,7 +94,6 @@ public class PromotionView: UIView {
     private lazy var primaryButton: Button = {
         let button = Button(style: .customStyle, size: .small, withAutoLayout: true)
         button.addTarget(self, action: #selector(primaryButtonTapped), for: .touchUpInside)
-        button.setContentCompressionResistancePriority(.required, for: .vertical)
         button.setContentHuggingPriority(.required, for: .vertical)
         return button
     }()
@@ -102,7 +101,6 @@ public class PromotionView: UIView {
     private lazy var secondaryButton: Button = {
         let button = Button(style: .customStyle, size: .small, withAutoLayout: true)
         button.addTarget(self, action: #selector(secondaryButtonTapped), for: .touchUpInside)
-        button.setContentCompressionResistancePriority(.required, for: .vertical)
         button.setContentHuggingPriority(.required, for: .vertical)
         return button
     }()
