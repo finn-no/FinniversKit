@@ -79,7 +79,7 @@ public final class FrontPageView: UIView {
         return model.heightForShelf > 0
     }
     
-    private lazy var headerView = UIView()
+    private lazy var headerView = UIView(withAutoLayout: true)
     private var frontPageShelfView: FrontPageShelfView?
     
     private lazy var headerLabel: Label = {
@@ -232,12 +232,12 @@ public final class FrontPageView: UIView {
         let headerBottomSpacing: CGFloat = .spacingS
         let labelHeight = headerLabel.intrinsicContentSize.height + .spacingM
 
-        let promoContainerHeight = promoContainer
-             .systemLayoutSizeFitting(
-                 CGSize(width: bounds.size.width, height: 0),
-                 withHorizontalFittingPriority: .required,
-                 verticalFittingPriority: .fittingSizeLevel)
-             .height
+        let promoContainerHeight = bounds.size.width == 0 ? 0 : promoContainer
+            .systemLayoutSizeFitting(
+                CGSize(width: bounds.size.width, height: 0),
+                withHorizontalFittingPriority: .required,
+                verticalFittingPriority: .fittingSizeLevel)
+            .height
 
         let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: bounds.size.width).height + .spacingXS
         var height = headerTopSpacing + labelHeight + marketGridViewHeight + promoContainerHeight + headerBottomSpacing
