@@ -25,7 +25,8 @@ public class FrontpageViewDemoView: UIView {
             title: "Hjerterom - hjelp til flyktninger",
             text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
             image: UIImage(named: .hjerterom),
-            imageContentMode: .fitted(backgroundColor: .primaryBlue),
+            imageAlignment: .centered,
+            imageBackgroundColor: .bgPrimary,
             primaryButtonTitle: "Gå til Hjerterom"
         )
         view.showPromotion(withModel: hjerteromPromoViewModel, andDelegate: self)

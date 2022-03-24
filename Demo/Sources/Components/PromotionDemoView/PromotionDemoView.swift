@@ -7,7 +7,7 @@ class PromotionDemoView: UIView {
     private let christmasPromoViewModel = PromotionViewModel(
         title: "Hjelp til jul hos FINN",
         image: UIImage(named: .christmasPromotion),
-        imageContentMode: .filled,
+        imageAlignment: .trailing,
         primaryButtonTitle: "Be om eller tilby hjelp",
         secondaryButtonTitle: "Se annonsene"
     )
@@ -16,7 +16,8 @@ class PromotionDemoView: UIView {
         title: "Hjerterom - hjelp til flyktninger",
         text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
         image: UIImage(named: .hjerterom),
-        imageContentMode: .fitted(backgroundColor: .primaryBlue),
+        imageAlignment: .centered,
+        imageBackgroundColor: .primaryBlue,
         primaryButtonTitle: "Gå til Hjerterom",
         secondaryButtonTitle: nil
     )

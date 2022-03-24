@@ -8,27 +8,31 @@ public struct PromotionViewModel {
     let title: String
     let text: String?
     let image: UIImage
-    let imageContentMode: ImageContentMode
+    let imageAlignment: ImageAlignment
+    let imageBackgroundColor: UIColor?
     let primaryButtonTitle: String?
     let secondaryButtonTitle: String?
 
-    public enum ImageContentMode {
-        case filled
-        case fitted(backgroundColor: UIColor)
+    /// Image's alignment inside image container. The full image will always be visible.
+    public enum ImageAlignment {
+        case trailing
+        case centered
     }
 
     public init(
         title: String,
         text: String? = nil,
         image: UIImage,
-        imageContentMode: ImageContentMode,
+        imageAlignment: ImageAlignment,
+        imageBackgroundColor: UIColor? = nil,
         primaryButtonTitle: String? = nil,
         secondaryButtonTitle: String? = nil
     ) {
         self.title = title
         self.text = text
         self.image = image
-        self.imageContentMode = imageContentMode
+        self.imageAlignment = imageAlignment
+        self.imageBackgroundColor = imageBackgroundColor
         self.primaryButtonTitle = primaryButtonTitle
         self.secondaryButtonTitle = secondaryButtonTitle
     }
@@ -135,6 +139,7 @@ public class PromotionView: UIView {
     func configure(with viewModel: PromotionViewModel) {
         titleLabel.text = viewModel.title
         imageView.image = viewModel.image
+        imageView.contentMode = .scaleAspectFit
 
         if let text = viewModel.text {
             textLabel.text = text
@@ -145,17 +150,26 @@ public class PromotionView: UIView {
         primaryButton.configure(withTitle: viewModel.primaryButtonTitle)
         secondaryButton.configure(withTitle: viewModel.secondaryButtonTitle)
 
-        switch viewModel.imageContentMode {
-        case .filled:
-            imageView.contentMode = .scaleAspectFill
+        switch viewModel.imageAlignment {
+        case .trailing:
+            let imageRatio = viewModel.image.size.width / viewModel.image.size.height
             imageContainer.addSubview(imageView)
-            imageView.fillInSuperview()
-        case .fitted(let backgroundColor):
-            imageView.contentMode = .scaleAspectFit
-            imageView.image = viewModel.image
+
+            NSLayoutConstraint.activate([
+                imageView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
+                imageView.trailingAnchor.constraint(equalTo: imageContainer.trailingAnchor),
+                imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor),
+                imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: imageRatio)
+            ])
+
+        case .centered:
             imageContainer.backgroundColor = backgroundColor
             imageContainer.addSubview(imageView)
-            imageView.fillInSuperview(insets: UIEdgeInsets(top: 0, leading: .spacingS, bottom: 0, trailing: -.spacingS))
+            imageView.fillInSuperview(insets: UIEdgeInsets(top: .spacingM, leading: .spacingS, bottom: -.spacingM, trailing: -.spacingS))
+        }
+
+        if let imageBackgroundColor = viewModel.imageBackgroundColor {
+            imageContainer.backgroundColor = imageBackgroundColor
         }
     }
 }
