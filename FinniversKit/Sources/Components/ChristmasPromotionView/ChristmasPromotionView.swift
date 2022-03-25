@@ -128,7 +128,7 @@ public class ChristmasPromotionView: UIView {
                 imageView.widthAnchor.constraint(lessThanOrEqualTo: imageView.heightAnchor, multiplier: imageRatio),
             ])
 
-        case .centered:
+        case .fullWidth:
             imageContainer.addSubview(imageView)
             imageView.fillInSuperview(insets: UIEdgeInsets(top: .spacingM, leading: .spacingS, bottom: -.spacingM, trailing: -.spacingS))
         }

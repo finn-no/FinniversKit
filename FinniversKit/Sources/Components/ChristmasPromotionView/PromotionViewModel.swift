@@ -12,7 +12,7 @@ public struct PromotionViewModel {
     /// Image's alignment inside the image container. The full image will always be visible.
     public enum ImageAlignment {
         case trailing
-        case centered
+        case fullWidth
     }
 
     public init(
