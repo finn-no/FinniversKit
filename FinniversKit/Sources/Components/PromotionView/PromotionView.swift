@@ -166,7 +166,7 @@ extension PromotionView {
 
             verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
             verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
-            verticalStackView.trailingAnchor.constraint(equalTo: imageContainer.leadingAnchor, constant: -.spacingS),
+            verticalStackView.trailingAnchor.constraint(equalTo: imageContainer.leadingAnchor, constant: -.spacingM),
             verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
             verticalStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6)
         ])
