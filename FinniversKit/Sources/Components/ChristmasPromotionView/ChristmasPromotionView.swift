@@ -69,6 +69,7 @@ public class ChristmasPromotionView: UIView {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
@@ -104,8 +105,8 @@ public class ChristmasPromotionView: UIView {
 
     func configure(with viewModel: PromotionViewModel) {
         titleLabel.text = viewModel.title
-        imageView.image = viewModel.image
-        imageView.contentMode = .scaleAspectFit
+        primaryButton.configure(withTitle: viewModel.primaryButtonTitle)
+        secondaryButton.configure(withTitle: viewModel.secondaryButtonTitle)
 
         if let text = viewModel.text {
             textLabel.text = text
@@ -113,24 +114,20 @@ public class ChristmasPromotionView: UIView {
             textLabel.isHidden = true
         }
 
-        primaryButton.configure(withTitle: viewModel.primaryButtonTitle)
-        secondaryButton.configure(withTitle: viewModel.secondaryButtonTitle)
+        imageContainer.addSubview(imageView)
+        imageView.image = viewModel.image
 
         switch viewModel.imageAlignment {
+        case .fullWidth:
+            imageView.fillInSuperview(insets: UIEdgeInsets(top: .spacingM, leading: .spacingS, bottom: -.spacingM, trailing: -.spacingS))
         case .trailing:
             let imageRatio = viewModel.image.size.width / viewModel.image.size.height
-            imageContainer.addSubview(imageView)
-
             NSLayoutConstraint.activate([
                 imageView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
                 imageView.trailingAnchor.constraint(equalTo: imageContainer.trailingAnchor),
                 imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor),
                 imageView.widthAnchor.constraint(lessThanOrEqualTo: imageView.heightAnchor, multiplier: imageRatio),
             ])
-
-        case .fullWidth:
-            imageContainer.addSubview(imageView)
-            imageView.fillInSuperview(insets: UIEdgeInsets(top: .spacingM, leading: .spacingS, bottom: -.spacingM, trailing: -.spacingS))
         }
 
         if let imageBackgroundColor = viewModel.imageBackgroundColor {
