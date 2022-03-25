@@ -167,14 +167,13 @@ public final class FrontPageView: UIView {
 
     public func showPromotion(withViewModel viewModel: PromotionViewModel, andDelegate delegate: PromotionViewDelegate) {
         let promotionView = ChristmasPromotionView(viewModel: viewModel)
-        promotionView.translatesAutoresizingMaskIntoConstraints = false
         promotionView.delegate = delegate
 
         promoContainer.addSubview(promotionView)
-
         promotionView.fillInSuperview(
             insets: .init(top: .spacingL, leading: .spacingM, bottom: 0, trailing: -.spacingM)
         )
+
         setupFrames()
     }
 
