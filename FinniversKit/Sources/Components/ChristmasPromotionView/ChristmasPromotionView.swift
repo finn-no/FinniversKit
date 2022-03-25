@@ -1,11 +1,11 @@
 import UIKit
 
 public protocol PromotionViewDelegate: AnyObject {
-    func promotionView(_ promotionView: PromotionView, didSelect action: PromotionView.Action)
-    func promotionViewTapped(_ promotionView: PromotionView)
+    func promotionView(_ promotionView: ChristmasPromotionView, didSelect action: ChristmasPromotionView.Action)
+    func promotionViewTapped(_ promotionView: ChristmasPromotionView)
 }
 
-public class PromotionView: UIView {
+public class ChristmasPromotionView: UIView {
     private lazy var backgroundView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .bgColor
@@ -129,7 +129,6 @@ public class PromotionView: UIView {
             ])
 
         case .centered:
-            imageContainer.backgroundColor = backgroundColor
             imageContainer.addSubview(imageView)
             imageView.fillInSuperview(insets: UIEdgeInsets(top: .spacingM, leading: .spacingS, bottom: -.spacingM, trailing: -.spacingS))
         }
@@ -141,7 +140,7 @@ public class PromotionView: UIView {
 }
 
 // MARK: - Private functions
-extension PromotionView {
+extension ChristmasPromotionView {
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
 

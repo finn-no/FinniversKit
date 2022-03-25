@@ -166,7 +166,7 @@ public final class FrontPageView: UIView {
     }
 
     public func showPromotion(withViewModel viewModel: PromotionViewModel, andDelegate delegate: PromotionViewDelegate) {
-        let promotionView = PromotionView(viewModel: viewModel)
+        let promotionView = ChristmasPromotionView(viewModel: viewModel)
         promotionView.translatesAutoresizingMaskIntoConstraints = false
         promotionView.delegate = delegate
 
