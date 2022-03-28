@@ -407,7 +407,7 @@ public class TextField: UIView {
     }
 
     private func evaluateCurrentTextState() {
-        if let text = text, !text.isEmpty, !isValid {
+        if let text = text, !isValid, !text.isEmpty {
             state = .error
         } else {
             state = .normal
