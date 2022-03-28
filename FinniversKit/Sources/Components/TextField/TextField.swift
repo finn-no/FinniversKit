@@ -388,6 +388,9 @@ public class TextField: UIView {
         if inputType == .email || inputType == .phoneNumber {
             return true
         }
+        if textRegex != nil {
+            return true
+        }
         return customValidator != nil
     }
 
