@@ -421,7 +421,7 @@ public class TextField: UIView {
             default :
                 self.textFieldBorderColor = state.underlineColor
             }
-            setNeedsLayout()
+            layoutIfNeeded()
         }
         else{
             underlineHeightConstraint?.constant = state.underlineHeight
