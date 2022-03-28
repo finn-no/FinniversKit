@@ -20,13 +20,17 @@ public class FrontpageViewDemoView: UIView {
         view.model = FrontpageViewDefaultData()
         view.isRefreshEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Christmas promotion Data
-        let model = ChristmasPromotionViewModel(title: "Hjelp til jul hos FINN",
-                                                helpButtonTitle: "Be om eller tilby hjelp",
-                                                adsButtonTitle: "Se annonsene")
-        view.showChristmasPromotion(withModel: model, andDelegate: self)
-        
+
+        let hjerteromPromoViewModel = PromotionViewModel(
+            title: "Hjerterom - hjelp til flyktninger",
+            text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
+            image: UIImage(named: .hjerterom),
+            imageAlignment: .fullWidth,
+            imageBackgroundColor: .primaryBlue,
+            primaryButtonTitle: "Gå til Hjerterom"
+        )
+        view.showPromotion(withViewModel: hjerteromPromoViewModel, andDelegate: self)
+
         let shelfModel = FrontPageShelfViewModel(favoritedItems: RecentlyFavoritedFactory.create(numberOfItems: 10),
                                                  savedSearchItems: SavedSearchShelfFactory.create(numberOfItems: 10),
                                                  sectionTitles: ["Lagrede søk", "Nylige favoritter"],
@@ -76,8 +80,13 @@ public class FrontpageViewDemoView: UIView {
 }
 
 // MARK: - PromotionViewDelegate
+
 extension FrontpageViewDemoView: PromotionViewDelegate {
-    public func christmasPromotionView(_ promotionView: ChristmasPromotionView, didSelect action: ChristmasPromotionView.Action) {
+    public func promotionViewTapped(_ promotionView: PromotionView) {
+        print("Promo tapped")
+    }
+
+    public func promotionView(_ promotionView: PromotionView, didSelect action: PromotionView.Action) {
         print("Selected : \(action)")
     }
 }
