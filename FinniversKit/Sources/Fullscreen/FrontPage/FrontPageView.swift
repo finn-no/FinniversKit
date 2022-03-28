@@ -166,7 +166,7 @@ public final class FrontPageView: UIView {
     }
 
     public func showPromotion(withViewModel viewModel: PromotionViewModel, andDelegate delegate: PromotionViewDelegate) {
-        let promotionView = ChristmasPromotionView(viewModel: viewModel)
+        let promotionView = PromotionView(viewModel: viewModel)
         promotionView.delegate = delegate
 
         promoContainer.addSubview(promotionView)

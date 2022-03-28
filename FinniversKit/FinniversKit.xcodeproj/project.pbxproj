@@ -132,7 +132,7 @@
 		4D3D48EA26394C1E006A0181 /* TransactionStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D48E926394C1E006A0181 /* TransactionStepView.swift */; };
 		4D3D48EE26394C3E006A0181 /* TransactionEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3D48ED26394C3E006A0181 /* TransactionEntryViewModel.swift */; };
 		4D9C10CE27636B31000FD357 /* StoryBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9C10CD27636B31000FD357 /* StoryBorderView.swift */; };
-		4DA1C60B27EB6E0D00B615A3 /* ChristmasPromotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA1C60A27EB6E0C00B615A3 /* ChristmasPromotionView.swift */; };
+		4DA1C60B27EB6E0D00B615A3 /* PromotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA1C60A27EB6E0C00B615A3 /* PromotionView.swift */; };
 		4DA1C74E27EC987F00B615A3 /* PromotionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA1C74D27EC987F00B615A3 /* PromotionViewModel.swift */; };
 		4DD3AA7C27B56592007B107E /* DetailCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3AA7B27B56591007B107E /* DetailCalloutView.swift */; };
 		55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* Broadcast.swift */; };
@@ -584,7 +584,7 @@
 		4D3D48E926394C1E006A0181 /* TransactionStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepView.swift; sourceTree = "<group>"; };
 		4D3D48ED26394C3E006A0181 /* TransactionEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionEntryViewModel.swift; sourceTree = "<group>"; };
 		4D9C10CD27636B31000FD357 /* StoryBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBorderView.swift; sourceTree = "<group>"; };
-		4DA1C60A27EB6E0C00B615A3 /* ChristmasPromotionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChristmasPromotionView.swift; sourceTree = "<group>"; };
+		4DA1C60A27EB6E0C00B615A3 /* PromotionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromotionView.swift; sourceTree = "<group>"; };
 		4DA1C74D27EC987F00B615A3 /* PromotionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewModel.swift; sourceTree = "<group>"; };
 		4DD3AA7B27B56591007B107E /* DetailCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCalloutView.swift; sourceTree = "<group>"; };
 		55C5B273203D8E20007D7277 /* Broadcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Broadcast.swift; sourceTree = "<group>"; };
@@ -1311,7 +1311,7 @@
 			children = (
 				D75E14CF27347535008EB126 /* FrontPageShelfView */,
 				D75523A8273159E900C0C7DD /* FrontPageShelfHeaderView */,
-				D7D514C227293F5D0065E2F6 /* ChristmasPromotionView */,
+				D7D514C227293F5D0065E2F6 /* PromotionView */,
 				AA189E80268479B100FD3A41 /* BlockUserView */,
 				DA82B1EA268B61AA005F67C3 /* LoadingRetryView */,
 				4D0CF28B261C46670008CC43 /* TransactionEntryView */,
@@ -2831,13 +2831,13 @@
 			path = SavedSearchShelfCell;
 			sourceTree = "<group>";
 		};
-		D7D514C227293F5D0065E2F6 /* ChristmasPromotionView */ = {
+		D7D514C227293F5D0065E2F6 /* PromotionView */ = {
 			isa = PBXGroup;
 			children = (
-				4DA1C60A27EB6E0C00B615A3 /* ChristmasPromotionView.swift */,
+				4DA1C60A27EB6E0C00B615A3 /* PromotionView.swift */,
 				4DA1C74D27EC987F00B615A3 /* PromotionViewModel.swift */,
 			);
-			path = ChristmasPromotionView;
+			path = PromotionView;
 			sourceTree = "<group>";
 		};
 		DA5A858A24617DE200AC0DFE /* SwiftUI */ = {
@@ -3530,7 +3530,7 @@
 				CF4A053B21FB2ACB000BB7DA /* PianoSliderView.swift in Sources */,
 				CF87A855229C0C5700DA8243 /* ContactFormViewModel.swift in Sources */,
 				CFB61376229ACB0C00DE283D /* IconCollectionViewModel.swift in Sources */,
-				4DA1C60B27EB6E0D00B615A3 /* ChristmasPromotionView.swift in Sources */,
+				4DA1C60B27EB6E0D00B615A3 /* PromotionView.swift in Sources */,
 				44587018213FA344009187BE /* RegisterView.swift in Sources */,
 				082D80CF21C13E8B00831BDE /* ChristmasOrnamentView.swift in Sources */,
 				449C60B4234DD85C00C51A63 /* ShadowScrollView.swift in Sources */,

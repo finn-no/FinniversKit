@@ -1,11 +1,11 @@
 import UIKit
 
 public protocol PromotionViewDelegate: AnyObject {
-    func promotionView(_ promotionView: ChristmasPromotionView, didSelect action: ChristmasPromotionView.Action)
-    func promotionViewTapped(_ promotionView: ChristmasPromotionView)
+    func promotionView(_ promotionView: PromotionView, didSelect action: PromotionView.Action)
+    func promotionViewTapped(_ promotionView: PromotionView)
 }
 
-public class ChristmasPromotionView: UIView {
+public class PromotionView: UIView {
     private lazy var backgroundView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .bgColor
@@ -137,7 +137,7 @@ public class ChristmasPromotionView: UIView {
 }
 
 // MARK: - Private functions
-extension ChristmasPromotionView {
+extension PromotionView {
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
 
