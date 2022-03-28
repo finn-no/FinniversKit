@@ -328,8 +328,8 @@ public class TextField: UIView {
         textFieldBorderColor = color
         textFieldBackgroundView.layer.cornerRadius = radius
         textFieldBackgroundView.layer.borderWidth = width
-        transition(to: state)
         setNeedsLayout()
+        transition(to: state)
     }
 
     // MARK: - Actions
