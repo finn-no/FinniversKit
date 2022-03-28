@@ -46,7 +46,7 @@ class PromotionDemoView: UIView {
         ])
 
         for viewModel in viewModels {
-            let view = ChristmasPromotionView(viewModel: viewModel)
+            let view = PromotionView(viewModel: viewModel)
             view.delegate = self
             stackView.addArrangedSubview(view)
         }
@@ -54,11 +54,11 @@ class PromotionDemoView: UIView {
 }
 
 extension PromotionDemoView: PromotionViewDelegate {
-    func promotionViewTapped(_ promotionView: ChristmasPromotionView) {
+    func promotionViewTapped(_ promotionView: PromotionView) {
         print("Promo tapped")
     }
 
-    func promotionView(_ promotionView: ChristmasPromotionView, didSelect action: ChristmasPromotionView.Action) {
+    func promotionView(_ promotionView: PromotionView, didSelect action: PromotionView.Action) {
         print("Selected : \(action)")
     }
 }

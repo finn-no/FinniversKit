@@ -82,11 +82,11 @@ public class FrontpageViewDemoView: UIView {
 // MARK: - PromotionViewDelegate
 
 extension FrontpageViewDemoView: PromotionViewDelegate {
-    public func promotionViewTapped(_ promotionView: ChristmasPromotionView) {
+    public func promotionViewTapped(_ promotionView: PromotionView) {
         print("Promo tapped")
     }
 
-    public func promotionView(_ promotionView: ChristmasPromotionView, didSelect action: ChristmasPromotionView.Action) {
+    public func promotionView(_ promotionView: PromotionView, didSelect action: PromotionView.Action) {
         print("Selected : \(action)")
     }
 }
