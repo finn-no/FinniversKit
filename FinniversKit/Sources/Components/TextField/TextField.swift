@@ -56,6 +56,8 @@ public class TextField: UIView {
     private var textFieldDefaultBorderColor: UIColor?
     private var textFieldDynamicBorder: Bool?
     
+    private var untouched = true
+    
     public var textRegex: String?
     
     private var underlineHeightConstraint: NSLayoutConstraint?
@@ -144,6 +146,7 @@ public class TextField: UIView {
     public let inputType: InputType
     public let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 
+    @available(*, message: "deprecated in favor of TextField+InputType.swift phoneNumber(String)")
     public var phoneNumberRegEx = "^((\\+|00)\\d{2}\\s?)?(?:\\s*\\d){8,11}$"
 
     public var placeholderText: String = "" {
@@ -186,7 +189,9 @@ public class TextField: UIView {
             isValidByInputType = isValidEmail(text)
         case .phoneNumber:
             isValidByInputType = isValidPhoneNumber(text)
-        case .normal, .multiline:
+        case .multiline:
+            isValidByInputType = true
+        case .normal:
             if let textRegex = textRegex {
                 isValidByInputType = evaluate(textRegex, with: text)
             } else {
@@ -407,7 +412,10 @@ public class TextField: UIView {
     }
 
     private func evaluateCurrentTextState() {
-        if let text = text, !isValid, !text.isEmpty {
+        if textRegex != nil, !untouched, let text = text, text.isEmpty {
+            state = .error
+        }
+        else if let text = text, !text.isEmpty, !isValid {
             state = .error
         } else {
             state = .normal
@@ -476,6 +484,7 @@ extension TextField: UITextFieldDelegate {
     }
 
     public func textFieldDidBeginEditing(_ textField: UITextField) {
+        untouched = false
         delegate?.textFieldDidBeginEditing(self)
         state = .focus
     }
