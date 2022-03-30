@@ -111,6 +111,14 @@ public final class CalloutView: UIView {
         )
     }
 
+    /// Used to override the default font on the callout
+    ///
+    /// - Parameters:
+    ///   - font: font on the callout
+    public func setFont(_ font: UIFont) {
+        textLabel.font = font
+    }
+
     // MARK: - Setup
 
     private func setup() {
