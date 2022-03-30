@@ -56,7 +56,7 @@ public class TextField: UIView {
     private var textFieldDefaultBorderColor: UIColor?
     private var textFieldDynamicBorder: Bool?
     
-    private var displayHelpTextOnFirstRender = true
+    private var displayHelpTextAfterFirstTouch = true
     
     public var textRegex: String?
     
@@ -411,7 +411,7 @@ public class TextField: UIView {
     }
 
     private func evaluateCurrentTextState() {
-        if textRegex != nil, !displayHelpTextOnFirstRender, let text = text, text.isEmpty {
+        if textRegex != nil, !displayHelpTextAfterFirstTouch, let text = text, text.isEmpty {
             state = .error
         }
         else if let text = text, !text.isEmpty, !isValid {
@@ -483,7 +483,7 @@ extension TextField: UITextFieldDelegate {
     }
 
     public func textFieldDidBeginEditing(_ textField: UITextField) {
-        displayHelpTextOnFirstRender = false
+        displayHelpTextAfterFirstTouch = false
         delegate?.textFieldDidBeginEditing(self)
         state = .focus
     }
