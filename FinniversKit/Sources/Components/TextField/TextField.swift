@@ -53,7 +53,13 @@ public class TextField: UIView {
     private let errorIconWidth: CGFloat = 16
     private var textFieldBackgroundColorOverride: UIColor?
     private var textFieldBorderColor: UIColor?
-
+    private var textFieldDefaultBorderColor: UIColor?
+    private var textFieldDynamicBorder: Bool?
+    
+    private var displayHelpTextAfterFirstTouch = true
+    
+    public var textRegex: String?
+    
     private var underlineHeightConstraint: NSLayoutConstraint?
     private var helpTextLabelLeadingConstraint: NSLayoutConstraint?
 
@@ -182,8 +188,14 @@ public class TextField: UIView {
             isValidByInputType = isValidEmail(text)
         case .phoneNumber:
             isValidByInputType = isValidPhoneNumber(text)
-        case .normal, .multiline:
+        case .multiline:
             isValidByInputType = true
+        case .normal:
+            if let textRegex = textRegex {
+                isValidByInputType = evaluate(textRegex, with: text)
+            } else {
+                isValidByInputType = true
+            }
         }
 
         if isValidByInputType, let customValidator = customValidator {
@@ -312,6 +324,17 @@ public class TextField: UIView {
         transition(to: state)
         setNeedsLayout()
     }
+    
+    public func configureBorder(radius: CGFloat, width: CGFloat, color: UIColor, dynamicBorder: Bool = false) {
+        textFieldDynamicBorder = dynamicBorder
+        textFieldDefaultBorderColor = color
+        textFieldBackgroundView.clipsToBounds = true
+        textFieldBorderColor = color
+        textFieldBackgroundView.layer.cornerRadius = radius
+        textFieldBackgroundView.layer.borderWidth = width
+        transition(to: state)
+        setNeedsLayout()
+    }
 
     // MARK: - Actions
 
@@ -369,6 +392,9 @@ public class TextField: UIView {
         if inputType == .email || inputType == .phoneNumber {
             return true
         }
+        if textRegex != nil {
+            return true
+        }
         return customValidator != nil
     }
 
@@ -385,7 +411,10 @@ public class TextField: UIView {
     }
 
     private func evaluateCurrentTextState() {
-        if let text = text, !text.isEmpty, !isValid {
+        if textRegex != nil, !displayHelpTextAfterFirstTouch, let text = text, text.isEmpty {
+            state = .error
+        }
+        else if let text = text, !text.isEmpty, !isValid {
             state = .error
         } else {
             state = .normal
@@ -394,8 +423,20 @@ public class TextField: UIView {
 
     private func transition(to state: State) {
         layoutIfNeeded()
-        underlineHeightConstraint?.constant = state.underlineHeight
-
+        
+        if let dynamicBorder = self.textFieldDynamicBorder, dynamicBorder == true {
+            switch state {
+            case .normal :
+                self.textFieldBorderColor = self.textFieldDefaultBorderColor
+            default :
+                self.textFieldBorderColor = state.underlineColor
+            }
+            layoutIfNeeded()
+        }
+        else{
+            underlineHeightConstraint?.constant = state.underlineHeight
+        }
+        
         if isHelpTextForErrors() {
             if shouldDisplayErrorHelpText() {
                 helpTextLabelLeadingConstraint?.constant = errorIconImageView.frame.size.width + .spacingXS
@@ -410,10 +451,11 @@ public class TextField: UIView {
         UIView.animate(withDuration: animationDuration) {
             self.layoutIfNeeded()
             self.underline.backgroundColor = state.underlineColor
+
             self.textFieldBackgroundView.backgroundColor = self.textFieldBackgroundColorOverride ?? state.textFieldBackgroundColor
             self.typeLabel.textColor = state.accessoryLabelTextColor
             self.helpTextLabel.textColor = state.accessoryLabelTextColor
-
+            
             if self.isHelpTextForErrors() {
                 if self.shouldDisplayErrorHelpText() {
                     self.helpTextLabel.alpha = 1.0
@@ -441,6 +483,7 @@ extension TextField: UITextFieldDelegate {
     }
 
     public func textFieldDidBeginEditing(_ textField: UITextField) {
+        displayHelpTextAfterFirstTouch = false
         delegate?.textFieldDidBeginEditing(self)
         state = .focus
     }
