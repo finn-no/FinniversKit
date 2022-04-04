@@ -10,7 +10,7 @@ public extension Button.Style {
             borderWidth: 0,
             stateStyles: [
                 .normal: Button.StateStyle(
-                    textColor: .licorice,
+                    textColor: .stone,
                     backgroundColor: .clear,
                     borderColor: .btnDisabled
                 )
