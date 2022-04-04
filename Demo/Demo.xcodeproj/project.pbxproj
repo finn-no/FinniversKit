@@ -208,6 +208,7 @@
 		DA083C2E2462BCA800B26235 /* SwiftUIDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */; };
 		DA82B1ED268B62D2005F67C3 /* LoadingRetryDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA82B1EC268B62D2005F67C3 /* LoadingRetryDemoView.swift */; };
 		DAE9CA8724602CB000C7552F /* SwiftUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */; };
+		E6510A6727FB378B001B40D6 /* SidescrollableDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510A6627FB378B001B40D6 /* SidescrollableDemoView.swift */; };
 		F023EAEB27B6951400F6286B /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = F023EAEA27B6951400F6286B /* SnapshotTesting */; };
 /* End PBXBuildFile section */
 
@@ -439,6 +440,7 @@
 		DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDemoViews.swift; sourceTree = "<group>"; };
 		DA82B1EC268B62D2005F67C3 /* LoadingRetryDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingRetryDemoView.swift; sourceTree = "<group>"; };
 		DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewTests.swift; sourceTree = "<group>"; };
+		E6510A6627FB378B001B40D6 /* SidescrollableDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidescrollableDemoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -877,6 +879,7 @@
 				8D680C5C0B76EA3807545F4D /* NumberedListView */,
 				5B9595478D0D9DE21CFCDF7C /* MultilineButton */,
 				5B959406F634CEBB6F0318BB /* OverflowCollectionView */,
+				E6510A6527FB378A001B40D6 /* SidescrollableDemoView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1783,6 +1786,14 @@
 			path = LoadingRetryView;
 			sourceTree = "<group>";
 		};
+		E6510A6527FB378A001B40D6 /* SidescrollableDemoView */ = {
+			isa = PBXGroup;
+			children = (
+				E6510A6627FB378B001B40D6 /* SidescrollableDemoView.swift */,
+			);
+			path = SidescrollableDemoView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2107,6 +2118,7 @@
 				46E77454242CEF0A008A5E93 /* Tweakable.swift in Sources */,
 				5DA190D525A5BC5B002305A8 /* FinnTextField+Previews.swift in Sources */,
 				46E7743E242CEF0A008A5E93 /* VerificationDemoView.swift in Sources */,
+				E6510A6727FB378B001B40D6 /* SidescrollableDemoView.swift in Sources */,
 				46E773FC242CEF0A008A5E93 /* FavoriteButtonData.swift in Sources */,
 				46E773A5242CEF0A008A5E93 /* DnaDemoViews.swift in Sources */,
 				D75E14D42734856D008EB126 /* FrontPageShelfDemoView.swift in Sources */,
