@@ -294,4 +294,8 @@ class ComponentViewTests: XCTestCase {
     func testDetailCallout() {
         snapshot(.detailCallout)
     }
+    
+    func testSideScrollableDemoView() {
+        snapshot(.sideScrollableDemoView)
+    }
 }
