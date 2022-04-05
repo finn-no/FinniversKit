@@ -5,6 +5,8 @@
 import Combine
 import UIKit
 
+// Found on https://www.avanderlee.com/swift/custom-combine-publisher.
+
 /// A custom subscription to capture UIControl target events.
 final class UIControlSubscription<SubscriberType: Subscriber, Control: UIControl>: Subscription where SubscriberType.Input == Control {
     private var subscriber: SubscriberType?
@@ -47,14 +49,5 @@ struct UIControlPublisher<Control: UIControl>: Publisher {
     func receive<S>(subscriber: S) where S : Subscriber, S.Failure == UIControlPublisher.Failure, S.Input == UIControlPublisher.Output {
         let subscription = UIControlSubscription(subscriber: subscriber, control: control, event: controlEvents)
         subscriber.receive(subscription: subscription)
-    }
-}
-
-/// Extending the `UIControl` types to be able to produce a `UIControl.Event` publisher.
-protocol CombineCompatible { }
-extension UIControl: CombineCompatible { }
-extension CombineCompatible where Self: UIControl {
-    func publisher(for events: UIControl.Event) -> UIControlPublisher<Self> {
-        return UIControlPublisher(control: self, events: events)
     }
 }
