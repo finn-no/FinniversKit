@@ -5,15 +5,15 @@
 import Combine
 import UIKit
 
-public protocol SideScrollableViewDelegate: AnyObject {
-    func sidescrollableViewDidTapItem(
-        _ sidescrollableView: SideScrollableView,
+public protocol ScrollableTabViewDelegate: AnyObject {
+    func scrollableTabViewDidTapItem(
+        _ sidescrollableView: ScrollableTabView,
         item: String,
         itemIndex: Int
     )
 }
 
-public class SideScrollableView: UIView {
+public class ScrollableTabView: UIView {
     
     // MARK: - Class variables
     
@@ -30,16 +30,16 @@ public class SideScrollableView: UIView {
     // MARK: - Public properties
     
     public override var intrinsicContentSize: CGSize {
-        let height = SideScrollableView.contentInset.top +
+        let height = ScrollableTabView.contentInset.top +
                      labelHeight +
-                     SideScrollableView.contentInset.bottom
+                     ScrollableTabView.contentInset.bottom
         return CGSize(
             width: UIView.noIntrinsicMetric,
             height: height
         )
     }
 
-    public weak var delegate: SideScrollableViewDelegate?
+    public weak var delegate: ScrollableTabViewDelegate?
     
     // MARK: - Private properties
     
@@ -49,7 +49,7 @@ public class SideScrollableView: UIView {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.contentInset = .init(
             vertical: 0,
-            horizontal: SideScrollableView.horizontalInset
+            horizontal: ScrollableTabView.horizontalInset
         )
         return scrollView
     }()
@@ -57,7 +57,7 @@ public class SideScrollableView: UIView {
     private lazy var contentView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .horizontal
-        stackView.spacing = SideScrollableView.itemSpacing
+        stackView.spacing = ScrollableTabView.itemSpacing
         return stackView
     }()
     
@@ -91,7 +91,7 @@ public class SideScrollableView: UIView {
     
     // MARK: - Setup
     
-    public func configure(with viewModel: SideScrollableItemModel) {
+    public func configure(with viewModel: ScrollableTabViewItemModel) {
         cleanup()
         createButtons(withTitles: viewModel.items)
     }
@@ -180,7 +180,7 @@ public class SideScrollableView: UIView {
             self.layoutIfNeeded()
         }
         
-        delegate?.sidescrollableViewDidTapItem(
+        delegate?.scrollableTabViewDidTapItem(
             self,
             item: selectedItem.title,
             itemIndex: index

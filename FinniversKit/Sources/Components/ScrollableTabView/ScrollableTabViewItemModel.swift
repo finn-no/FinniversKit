@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct SideScrollableItemModel {
+public struct ScrollableTabViewItemModel {
     let items: [String]
     
     public init(items: [String]) {

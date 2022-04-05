@@ -433,9 +433,9 @@
 		DAD6EB2C2369916100968497 /* SettingsSectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB232369916100968497 /* SettingsSectionFooterView.swift */; };
 		DAD6EB322369BCFD00968497 /* SettingDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB312369BCFD00968497 /* SettingDetailsView.swift */; };
 		DAE6A55C21CA524B00837BFA /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE6A55B21CA524B00837BFA /* CGPoint.swift */; };
-		E6510A6227FB3691001B40D6 /* SideScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510A6027FB3691001B40D6 /* SideScrollableView.swift */; };
+		E6510A6227FB3691001B40D6 /* ScrollableTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510A6027FB3691001B40D6 /* ScrollableTabView.swift */; };
 		E6510A6427FB36E5001B40D6 /* UIControlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510A6327FB36E5001B40D6 /* UIControlExtensions.swift */; };
-		E6510B5727FC3DB7001B40D6 /* SideScrollableItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510B5627FC3DB7001B40D6 /* SideScrollableItemModel.swift */; };
+		E6510B5727FC3DB7001B40D6 /* ScrollableTabViewItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510B5627FC3DB7001B40D6 /* ScrollableTabViewItemModel.swift */; };
 		E6510B5A27FC3F5F001B40D6 /* CombineCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510B5927FC3F5F001B40D6 /* CombineCompatible.swift */; };
 		F22612D822572D9400472D22 /* StatisticsItemEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */; };
 		F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */; };
@@ -891,9 +891,9 @@
 		DAD6EB232369916100968497 /* SettingsSectionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSectionFooterView.swift; sourceTree = "<group>"; };
 		DAD6EB312369BCFD00968497 /* SettingDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDetailsView.swift; sourceTree = "<group>"; };
 		DAE6A55B21CA524B00837BFA /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
-		E6510A6027FB3691001B40D6 /* SideScrollableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideScrollableView.swift; sourceTree = "<group>"; };
+		E6510A6027FB3691001B40D6 /* ScrollableTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableTabView.swift; sourceTree = "<group>"; };
 		E6510A6327FB36E5001B40D6 /* UIControlExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlExtensions.swift; sourceTree = "<group>"; };
-		E6510B5627FC3DB7001B40D6 /* SideScrollableItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideScrollableItemModel.swift; sourceTree = "<group>"; };
+		E6510B5627FC3DB7001B40D6 /* ScrollableTabViewItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTabViewItemModel.swift; sourceTree = "<group>"; };
 		E6510B5927FC3F5F001B40D6 /* CombineCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineCompatible.swift; sourceTree = "<group>"; };
 		F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyView.swift; sourceTree = "<group>"; };
 		F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyViewModel.swift; sourceTree = "<group>"; };
@@ -1382,7 +1382,7 @@
 				8D6801547E743D68C510139B /* SearchListEmptyView */,
 				8D680E7F9086E07B63CB9D23 /* SelectionView */,
 				8D6807E8380DAE7E730CC80D /* NumberedListView */,
-				E6510A5E27FB3691001B40D6 /* SideScrollableView */,
+				E6510A5E27FB3691001B40D6 /* ScrollableTabView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2988,13 +2988,13 @@
 			path = "Core Graphics";
 			sourceTree = "<group>";
 		};
-		E6510A5E27FB3691001B40D6 /* SideScrollableView */ = {
+		E6510A5E27FB3691001B40D6 /* ScrollableTabView */ = {
 			isa = PBXGroup;
 			children = (
-				E6510B5627FC3DB7001B40D6 /* SideScrollableItemModel.swift */,
-				E6510A6027FB3691001B40D6 /* SideScrollableView.swift */,
+				E6510B5627FC3DB7001B40D6 /* ScrollableTabViewItemModel.swift */,
+				E6510A6027FB3691001B40D6 /* ScrollableTabView.swift */,
 			);
-			path = SideScrollableView;
+			path = ScrollableTabView;
 			sourceTree = "<group>";
 		};
 		E6510B5827FC3F4C001B40D6 /* Combine */ = {
@@ -3365,7 +3365,7 @@
 				D76B477E273925A30054E853 /* FrontPageShelfViewModel.swift in Sources */,
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
 				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
-				E6510B5727FC3DB7001B40D6 /* SideScrollableItemModel.swift in Sources */,
+				E6510B5727FC3DB7001B40D6 /* ScrollableTabViewItemModel.swift in Sources */,
 				CFB775F22359D8360097C0ED /* FloatingButton+Favorites.swift in Sources */,
 				441FE44B209A2F2C00B04EF1 /* NotificationsListViewCell.swift in Sources */,
 				CF0F6B992360784C00CA62FD /* PrimingViewModel.swift in Sources */,
@@ -3482,7 +3482,7 @@
 				CF7C460822257A8A001FB92C /* EarthHourView.swift in Sources */,
 				14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */,
 				CFB61374229ACA6900DE283D /* IconCollectionView.swift in Sources */,
-				E6510A6227FB3691001B40D6 /* SideScrollableView.swift in Sources */,
+				E6510A6227FB3691001B40D6 /* ScrollableTabView.swift in Sources */,
 				CF848C2C21C7E0860086530E /* CogWheelButton.swift in Sources */,
 				DAD6EB322369BCFD00968497 /* SettingDetailsView.swift in Sources */,
 				DAB7FAAB21B690DD00BF8CC6 /* BottomSheetInteractionController.swift in Sources */,
