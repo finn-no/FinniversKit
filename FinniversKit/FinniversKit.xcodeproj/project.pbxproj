@@ -433,9 +433,10 @@
 		DAD6EB2C2369916100968497 /* SettingsSectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB232369916100968497 /* SettingsSectionFooterView.swift */; };
 		DAD6EB322369BCFD00968497 /* SettingDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB312369BCFD00968497 /* SettingDetailsView.swift */; };
 		DAE6A55C21CA524B00837BFA /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE6A55B21CA524B00837BFA /* CGPoint.swift */; };
-		E6510A6127FB3691001B40D6 /* Button+SideScollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510A5F27FB3691001B40D6 /* Button+SideScollableView.swift */; };
 		E6510A6227FB3691001B40D6 /* SideScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510A6027FB3691001B40D6 /* SideScrollableView.swift */; };
 		E6510A6427FB36E5001B40D6 /* UIControlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510A6327FB36E5001B40D6 /* UIControlExtensions.swift */; };
+		E6510B5727FC3DB7001B40D6 /* SideScrollableItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510B5627FC3DB7001B40D6 /* SideScrollableItemModel.swift */; };
+		E6510B5A27FC3F5F001B40D6 /* CombineCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510B5927FC3F5F001B40D6 /* CombineCompatible.swift */; };
 		F22612D822572D9400472D22 /* StatisticsItemEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */; };
 		F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */; };
 		F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */; };
@@ -890,9 +891,10 @@
 		DAD6EB232369916100968497 /* SettingsSectionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSectionFooterView.swift; sourceTree = "<group>"; };
 		DAD6EB312369BCFD00968497 /* SettingDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDetailsView.swift; sourceTree = "<group>"; };
 		DAE6A55B21CA524B00837BFA /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
-		E6510A5F27FB3691001B40D6 /* Button+SideScollableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button+SideScollableView.swift"; sourceTree = "<group>"; };
 		E6510A6027FB3691001B40D6 /* SideScrollableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideScrollableView.swift; sourceTree = "<group>"; };
 		E6510A6327FB36E5001B40D6 /* UIControlExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlExtensions.swift; sourceTree = "<group>"; };
+		E6510B5627FC3DB7001B40D6 /* SideScrollableItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideScrollableItemModel.swift; sourceTree = "<group>"; };
+		E6510B5927FC3F5F001B40D6 /* CombineCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineCompatible.swift; sourceTree = "<group>"; };
 		F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyView.swift; sourceTree = "<group>"; };
 		F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyViewModel.swift; sourceTree = "<group>"; };
 		F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdManagementStatisticsEmptyViewCell.swift; sourceTree = "<group>"; };
@@ -1509,6 +1511,7 @@
 		44898D591FE5B9C200F6017B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E6510B5827FC3F4C001B40D6 /* Combine */,
 				DA5A858A24617DE200AC0DFE /* SwiftUI */,
 				44F8831020551D59003E3171 /* Foundation */,
 				9135BF8822F2C2EC00C8E1F5 /* MapKit */,
@@ -2988,10 +2991,18 @@
 		E6510A5E27FB3691001B40D6 /* SideScrollableView */ = {
 			isa = PBXGroup;
 			children = (
-				E6510A5F27FB3691001B40D6 /* Button+SideScollableView.swift */,
+				E6510B5627FC3DB7001B40D6 /* SideScrollableItemModel.swift */,
 				E6510A6027FB3691001B40D6 /* SideScrollableView.swift */,
 			);
 			path = SideScrollableView;
+			sourceTree = "<group>";
+		};
+		E6510B5827FC3F4C001B40D6 /* Combine */ = {
+			isa = PBXGroup;
+			children = (
+				E6510B5927FC3F5F001B40D6 /* CombineCompatible.swift */,
+			);
+			path = Combine;
 			sourceTree = "<group>";
 		};
 		F22612D6225631FD00472D22 /* StatisticsView */ = {
@@ -3354,6 +3365,7 @@
 				D76B477E273925A30054E853 /* FrontPageShelfViewModel.swift in Sources */,
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
 				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
+				E6510B5727FC3DB7001B40D6 /* SideScrollableItemModel.swift in Sources */,
 				CFB775F22359D8360097C0ED /* FloatingButton+Favorites.swift in Sources */,
 				441FE44B209A2F2C00B04EF1 /* NotificationsListViewCell.swift in Sources */,
 				CF0F6B992360784C00CA62FD /* PrimingViewModel.swift in Sources */,
@@ -3579,6 +3591,7 @@
 				CF3D5EE2215A6525006E4D08 /* InstrumentSelectorView.swift in Sources */,
 				5DA190C725A4A7E0002305A8 /* Transition+Extensions.swift in Sources */,
 				9A37D9EDC4E78EC664D528FE /* FeedbackView.swift in Sources */,
+				E6510B5A27FC3F5F001B40D6 /* CombineCompatible.swift in Sources */,
 				9F213438F5413991D1B3D7CD /* FullscreenGalleryViewModel.swift in Sources */,
 				9F2138937E903BEA8F7A8C7C /* FullscreenGalleryViewController.swift in Sources */,
 				CFF54E2E234E192A008E18BE /* FavoriteAdsSubtitleView.swift in Sources */,
@@ -3617,7 +3630,6 @@
 				9A37D015952CBD1FEF4F0E20 /* FavoriteAdViewModel.swift in Sources */,
 				9A37DFD7CA27F4F25F613DE2 /* FavoriteAdsListView.swift in Sources */,
 				9BEB2878231D26C100D28BAD /* LoanCalculatorView.swift in Sources */,
-				E6510A6127FB3691001B40D6 /* Button+SideScollableView.swift in Sources */,
 				9A37D0977C75034FE9603C2C /* FavoriteAdsListTableHeader.swift in Sources */,
 				5DA385C925B991E9006F8C34 /* JobAdRecommendationCell.swift in Sources */,
 				9A37D91577C7406D942AF82E /* FavoriteAdsSortingView.swift in Sources */,

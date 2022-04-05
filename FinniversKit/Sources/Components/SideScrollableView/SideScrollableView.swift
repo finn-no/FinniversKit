@@ -5,20 +5,12 @@
 import Combine
 import UIKit
 
-public struct SideScrollableItemModel {
-    
-    let items: [String]
-    
-    public init(items: [String]) {
-        self.items = items
-    }
-}
-
 public protocol SideScrollableViewDelegate: AnyObject {
-    
-    func sidescrollableViewDidTapItem(_ sidescrollableView: SideScrollableView,
-                                      item: String,
-                                      itemIndex: Int)
+    func sidescrollableViewDidTapItem(
+        _ sidescrollableView: SideScrollableView,
+        item: String,
+        itemIndex: Int
+    )
 }
 
 public class SideScrollableView: UIView {
@@ -26,25 +18,39 @@ public class SideScrollableView: UIView {
     // MARK: - Class variables
     
     static let itemSpacing: CGFloat = 32
-    static let contentInset: UIEdgeInsets = .init(top: 8,
-                                                  leading: 16,
-                                                  bottom: 12,
-                                                  trailing: 16)
+    static let contentInset: UIEdgeInsets =
+        .init(
+            top: 8,
+            leading: 16,
+            bottom: 12,
+            trailing: 16
+        )
     static let horizontalInset: CGFloat = 16
+
+    // MARK: - Public properties
+    
+    public override var intrinsicContentSize: CGSize {
+        let height = SideScrollableView.contentInset.top +
+                     labelHeight +
+                     SideScrollableView.contentInset.bottom
+        return CGSize(
+            width: UIView.noIntrinsicMetric,
+            height: height
+        )
+    }
+
+    public weak var delegate: SideScrollableViewDelegate?
     
     // MARK: - Private properties
-    
-    private struct ButtonItem {
-        let title: String
-        let button: Button
-    }
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
         scrollView.addSubview(contentView)
         scrollView.showsHorizontalScrollIndicator = false
-        scrollView.contentInset = .init(vertical: 0,
-                                        horizontal: SideScrollableView.horizontalInset)
+        scrollView.contentInset = .init(
+            vertical: 0,
+            horizontal: SideScrollableView.horizontalInset
+        )
         return scrollView
     }()
     
@@ -58,7 +64,6 @@ public class SideScrollableView: UIView {
     private lazy var indicatorView: UIView = {
         let indicatorView = UIView(withAutoLayout: true)
         indicatorView.backgroundColor = .primaryBlue
-        indicatorView.heightAnchor.constraint(equalToConstant: 4).isActive = true
         return indicatorView
     }()
     
@@ -66,24 +71,11 @@ public class SideScrollableView: UIView {
         "I".height(withConstrainedWidth: .greatestFiniteMagnitude, font: .captionStrong)
     }()
     
-    private var buttons: [ButtonItem] = []
-    private let selectedItemPublisher = PassthroughSubject<Int, Never>()
+    private var buttonItems: [ButtonItem] = []
     private var cancellables: Set<AnyCancellable> = []
     
     private var indicatorViewLeadingConstraint: NSLayoutConstraint!
     private var indicatorViewWidthConstraint: NSLayoutConstraint!
-    
-    // MARK: - Public properties
-    
-    public override var intrinsicContentSize: CGSize {
-        let height = SideScrollableView.contentInset.top +
-                     labelHeight +
-                     SideScrollableView.contentInset.bottom
-        return CGSize(width: UIView.noIntrinsicMetric,
-                      height: height)
-    }
-
-    public weak var delegate: SideScrollableViewDelegate?
     
     // MARK: - Init
     
@@ -102,7 +94,6 @@ public class SideScrollableView: UIView {
     public func configure(with viewModel: SideScrollableItemModel) {
         cleanup()
         createButtons(withTitles: viewModel.items)
-        subscribeToButtonTaps()
     }
 
     private func setup() {
@@ -126,6 +117,7 @@ public class SideScrollableView: UIView {
             contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor)
         ])
         
+        indicatorView.heightAnchor.constraint(equalToConstant: 4).isActive = true
         indicatorViewLeadingConstraint = indicatorView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor)
         indicatorViewWidthConstraint = indicatorView.widthAnchor.constraint(equalToConstant: 0)
         
@@ -138,7 +130,7 @@ public class SideScrollableView: UIView {
 
     private func cleanup() {
         cancellables.removeAll()
-        buttons.removeAll()
+        buttonItems.removeAll()
         contentView.removeArrangedSubviews()
     }
     
@@ -147,42 +139,84 @@ public class SideScrollableView: UIView {
         for (index, itemName) in itemTitles.enumerated() {
             let button = Button.makeSideScrollableButton(withTitle: itemName)
             contentView.addArrangedSubview(button)
-            buttons.append(ButtonItem(title: itemName,
-                                      button: button))
+            buttonItems.append(
+                ButtonItem(
+                    title: itemName,
+                    button: button
+                )
+            )
 
             button
                 .publisher(for: .touchUpInside)
-                .sink { [weak self, index] _ in
-                    self?.selectedItemPublisher.send(index)
+                .sink { [weak self] _ in
+                    self?.handleTap(on: button, at: index)
                 }
                 .store(in: &cancellables)
         }
 
         contentView.layoutIfNeeded()
-        indicatorViewWidthConstraint.constant = buttons[0].button.frame.width
+        
+        guard !buttonItems.isEmpty else { return }
+        
+        indicatorViewWidthConstraint.constant = buttonItems[0].button.frame.width
     }
     
-    private func subscribeToButtonTaps() {
-        selectedItemPublisher
-            .sink { [weak self] selectedIndex in
-                guard let self = self else { return }
-                
-                let selectedItem = self.buttons[selectedIndex]
-                let selectedButton = selectedItem.button
-                self.scrollView.scrollRectToVisible(selectedButton.frame,
-                                                    animated: true)
-                
-                self.indicatorViewWidthConstraint.constant = selectedButton.frame.width
-                self.indicatorViewLeadingConstraint.constant = selectedButton.frame.minX
-                
-                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut) {
-                    self.layoutIfNeeded()
-                }
-                
-                self.delegate?.sidescrollableViewDidTapItem(self,
-                                                            item: selectedItem.title,
-                                                            itemIndex: selectedIndex)
-            }
-            .store(in: &cancellables)
+    private func handleTap(on button: Button, at index: Int) {
+        let selectedItem = buttonItems[index]
+        let selectedButton = selectedItem.button
+        scrollView.scrollRectToVisible(
+            selectedButton.frame,
+            animated: true
+        )
+        
+        indicatorViewWidthConstraint.constant = selectedButton.frame.width
+        indicatorViewLeadingConstraint.constant = selectedButton.frame.minX
+        
+        UIView.animate(
+            withDuration: 0.2,
+            delay: 0,
+            options: .curveEaseOut)
+        {
+            self.layoutIfNeeded()
+        }
+        
+        delegate?.sidescrollableViewDidTapItem(
+            self,
+            item: selectedItem.title,
+            itemIndex: index
+        )
+    }
+}
+
+private struct ButtonItem {
+    let title: String
+    let button: Button
+}
+
+private extension Button.Style {
+    static var `sideScrollOption`: Button.Style {
+        Button.Style(
+            borderWidth: 0,
+            stateStyles: [
+                .normal: Button.StateStyle(
+                    textColor: .stone,
+                    backgroundColor: .clear,
+                    borderColor: .btnDisabled
+                )
+                ],
+            margins: .zero,
+            normalFont: .captionStrong
+        )
+    }
+}
+
+private extension Button {
+    static func makeSideScrollableButton(withTitle title: String) -> Button {
+        let button = Button(
+            style: .sideScrollOption,
+            withAutoLayout: true
+        )
+        button.setTitle(title, for: .normal)
+        return button
     }
 }
