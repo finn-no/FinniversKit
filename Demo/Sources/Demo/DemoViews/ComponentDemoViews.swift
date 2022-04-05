@@ -73,7 +73,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case savedSearchShelf
     case frontPageShelf
     case overFlowCollectionView
-    case sideScrollableDemoView
+    case scrollableTabDemoView
 
     public var viewController: UIViewController {
         switch self {
@@ -222,8 +222,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<FrontPageShelfDemoView>()
         case .overFlowCollectionView:
             return DemoViewController<OverflowCollectionViewDemo>()
-        case .sideScrollableDemoView:
-            return DemoViewController<SideScrollableDemoView>()
+        case .scrollableTabDemoView:
+            return DemoViewController<ScrollableTabDemoView>()
         }
     }
 }

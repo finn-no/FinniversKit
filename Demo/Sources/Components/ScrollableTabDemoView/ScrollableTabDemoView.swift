@@ -4,12 +4,12 @@
 
 import FinniversKit
 
-class SideScrollableDemoView: UIView {
+class ScrollableTabDemoView: UIView {
     
     // MARK: - Private properties
 
-    lazy var sideScrollableView: SideScrollableView = {
-        let sideScrollableView = SideScrollableView(withAutoLayout: true)
+    lazy var sideScrollableView: ScrollableTabView = {
+        let sideScrollableView = ScrollableTabView(withAutoLayout: true)
         return sideScrollableView
     }()
     
@@ -51,7 +51,7 @@ class SideScrollableDemoView: UIView {
             label.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
         
-        let viewModel = SideScrollableItemModel(
+        let viewModel = ScrollableTabViewItemModel(
             items: [
                 "Alle",
                 "Aktiv (3)",
@@ -65,10 +65,10 @@ class SideScrollableDemoView: UIView {
     }
 }
 
-extension SideScrollableDemoView: SideScrollableViewDelegate {
+extension ScrollableTabDemoView: ScrollableTabViewDelegate {
 
-    func sidescrollableViewDidTapItem(
-        _ sidescrollableView: SideScrollableView,
+    func scrollableTabViewDidTapItem(
+        _ sidescrollableView: ScrollableTabView,
         item: String,
         itemIndex: Int
     ) {
