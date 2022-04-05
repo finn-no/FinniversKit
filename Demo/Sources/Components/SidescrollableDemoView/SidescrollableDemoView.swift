@@ -14,8 +14,10 @@ class SideScrollableDemoView: UIView {
     }()
     
     lazy var label: Label = {
-        let label = Label(style: .bodyRegular,
-                             withAutoLayout: true)
+        let label = Label(
+            style: .bodyRegular,
+            withAutoLayout: true
+        )
         label.textAlignment = .center
         label.text = "Select an item..."
         return label
@@ -49,13 +51,15 @@ class SideScrollableDemoView: UIView {
             label.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
         
-        let viewModel = SideScrollableItemModel(items: [
-            "Alle",
-            "Aktiv (3)",
-            "Påbegynte (17)",
-            "Avvist (2)",
-            "Lorem ipsum (42)"
-        ])
+        let viewModel = SideScrollableItemModel(
+            items: [
+                "Alle",
+                "Aktiv (3)",
+                "Påbegynte (17)",
+                "Avvist (2)",
+                "Lorem ipsum (42)"
+            ]
+        )
         sideScrollableView.configure(with: viewModel)
         sideScrollableView.delegate = self
     }
@@ -63,9 +67,11 @@ class SideScrollableDemoView: UIView {
 
 extension SideScrollableDemoView: SideScrollableViewDelegate {
 
-    func sidescrollableViewDidTapItem(_ sidescrollableView: SideScrollableView,
-                                      item: String,
-                                      itemIndex: Int) {
+    func sidescrollableViewDidTapItem(
+        _ sidescrollableView: SideScrollableView,
+        item: String,
+        itemIndex: Int
+    ) {
         label.text = "\(item) was selected 🎉"
     }
 }
