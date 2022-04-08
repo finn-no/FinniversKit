@@ -2,11 +2,11 @@ import UIKit
 
 public protocol OverflowCollectionViewDelegate: AnyObject {
     func overflowCollectionView<Cell>(_ view: OverflowCollectionView<Cell>, didSelectItemAtIndex index: Int)
-    func overflowCollectionView<Cell>(_ view: OverflowCollectionView<Cell>, didDequeueCell cell: Cell)
+    func overflowCollectionView<Cell>(_ view: OverflowCollectionView<Cell>, didConfigureCell cell: Cell, atIndex index: Int)
 }
 
 public extension OverflowCollectionViewDelegate {
-    func overflowCollectionView<Cell>(_ view: OverflowCollectionView<Cell>, didDequeueCell cell: Cell) {}
+    func overflowCollectionView<Cell>(_ view: OverflowCollectionView<Cell>, didConfigureCell cell: Cell, atIndex index: Int) {}
 }
 
 public class OverflowCollectionView<Cell: OverflowCollectionViewCell>: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -87,7 +87,7 @@ public class OverflowCollectionView<Cell: OverflowCollectionViewCell>: UIView, U
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(cellType.self, for: indexPath)
         cell.configure(using: models[indexPath.item])
-        delegate?.overflowCollectionView(self, didDequeueCell: cell)
+        delegate?.overflowCollectionView(self, didConfigureCell: cell, atIndex: indexPath.item)
         return cell
     }
 
