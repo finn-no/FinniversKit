@@ -26,6 +26,22 @@ class MonthAndYearPickerDemoView: UIView {
         return label
     }()
 
+    private lazy var toolbar: UIToolbar = {
+        let toolbar = UIToolbar()
+
+        if #available(iOS 14.0, *) {
+            let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let item = UIBarButtonItem(title: "Ferdig", image: nil, primaryAction: UIAction(handler: { [weak self] _ in
+                self?.textField.endEditing(true)
+            }))
+
+            toolbar.sizeToFit()
+            toolbar.items = [space, item]
+        }
+
+        return toolbar
+    }()
+
     private lazy var textField: TextField = {
         let picker = MonthAndYearPickerView(frame: .zero, inputViewStyle: .default)
         picker.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -35,6 +51,7 @@ class MonthAndYearPickerDemoView: UIView {
         let textField = TextField(inputType: .normal)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.textField.inputView = picker
+        textField.textField.inputAccessoryView = toolbar
         return textField
     }()
 
