@@ -31,6 +31,11 @@ public class MonthAndYearPickerView: UIInputView {
         return view
     }()
 
+    public convenience init(delegate: MonthAndYearPickerViewDelegate) {
+        self.init(frame: .zero, inputViewStyle: .default)
+        self.delegate = delegate
+    }
+
     public override init(frame: CGRect, inputViewStyle: UIInputView.Style) {
         super.init(frame: frame, inputViewStyle: inputViewStyle)
         setup()
@@ -41,6 +46,7 @@ public class MonthAndYearPickerView: UIInputView {
     }
 
     private func setup() {
+        autoresizingMask = [.flexibleWidth, .flexibleHeight]
         allowsSelfSizing = true
 
         addSubview(pickerView)

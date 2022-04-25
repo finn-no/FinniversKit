@@ -43,10 +43,8 @@ class MonthAndYearPickerDemoView: UIView {
     }()
 
     private lazy var textField: TextField = {
-        let picker = MonthAndYearPickerView(frame: .zero, inputViewStyle: .default)
-        picker.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        let picker = MonthAndYearPickerView(delegate: self)
         picker.setSelectedDate(currentDate, animated: true)
-        picker.delegate = self
 
         let textField = TextField(inputType: .normal)
         textField.translatesAutoresizingMaskIntoConstraints = false
