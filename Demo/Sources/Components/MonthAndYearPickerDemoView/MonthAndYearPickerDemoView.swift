@@ -43,8 +43,9 @@ class MonthAndYearPickerDemoView: UIView {
     }()
 
     private lazy var textField: TextField = {
-        let picker = MonthAndYearPickerView(delegate: self)
+        let picker = MonthAndYearPickerView()
         picker.setSelectedDate(currentDate, animated: true)
+        picker.addTarget(self, action: #selector(handleTextFieldDateInput), for: .valueChanged)
 
         let textField = TextField(inputType: .normal)
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +56,7 @@ class MonthAndYearPickerDemoView: UIView {
 
     private lazy var pickerView: MonthAndYearPickerView = {
         let view = MonthAndYearPickerView(withAutoLayout: true)
-        view.delegate = self
+        view.addTarget(self, action: #selector(handlePickerDateInput), for: .valueChanged)
         return view
     }()
 
@@ -102,20 +103,18 @@ class MonthAndYearPickerDemoView: UIView {
         textField.text = formattedDate
     }
 
-}
+    @objc private func handleTextFieldDateInput(_ sender: MonthAndYearPickerView) {
+        currentDate = sender.selectedDate
 
-extension MonthAndYearPickerDemoView: MonthAndYearPickerViewDelegate {
-    func monthAndYearPickerView(_ view: MonthAndYearPickerView, didSelectDate date: Date) {
-        currentDate = date
+        pickerView.setSelectedDate(currentDate, animated: true)
+    }
 
-        // Update when edited from inputView
-        if view !== pickerView {
-            pickerView.setSelectedDate(date, animated: true)
-        }
+    @objc private func handlePickerDateInput(_ sender: MonthAndYearPickerView) {
+        currentDate = sender.selectedDate
 
-        // Update when edited from pickerView
-        if view === pickerView, let inputView = textField.textField.inputView as? MonthAndYearPickerView {
-            inputView.setSelectedDate(date, animated: true)
+        if let inputView = textField.textField.inputView as? MonthAndYearPickerView {
+            inputView.setSelectedDate(currentDate, animated: true)
         }
     }
+
 }

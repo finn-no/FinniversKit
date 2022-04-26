@@ -1,13 +1,7 @@
 import UIKit
 
-public protocol MonthAndYearPickerViewDelegate: AnyObject {
-    func monthAndYearPickerView(_ view: MonthAndYearPickerView, didSelectDate date: Date)
-}
-
 public class MonthAndYearPickerView: UIControl {
-    public weak var delegate: MonthAndYearPickerViewDelegate?
-
-    public var selectedDate: Date? {
+    public var selectedDate: Date = Date() {
         didSet {
             sendActions(for: .valueChanged)
         }
@@ -37,9 +31,8 @@ public class MonthAndYearPickerView: UIControl {
         return view
     }()
 
-    public convenience init(delegate: MonthAndYearPickerViewDelegate) {
+    public convenience init() {
         self.init(frame: .zero)
-        self.delegate = delegate
     }
 
     public override init(frame: CGRect) {
@@ -123,7 +116,10 @@ extension MonthAndYearPickerView: UIPickerViewDelegate {
         let year = years[pickerView.selectedRow(inComponent: .year)]
 
         let components = DateComponents(calendar: calendar, year: year, month: month)
-        selectedDate = calendar.date(from: components)
+
+        if let date = calendar.date(from: components) {
+            selectedDate = date
+        }
     }
 }
 
