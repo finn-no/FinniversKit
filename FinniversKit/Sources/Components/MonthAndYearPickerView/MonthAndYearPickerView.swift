@@ -4,8 +4,14 @@ public protocol MonthAndYearPickerViewDelegate: AnyObject {
     func monthAndYearPickerView(_ view: MonthAndYearPickerView, didSelectDate date: Date)
 }
 
-public class MonthAndYearPickerView: UIInputView {
+public class MonthAndYearPickerView: UIControl {
     public weak var delegate: MonthAndYearPickerViewDelegate?
+
+    public var selectedDate: Date? {
+        didSet {
+            sendActions(for: .valueChanged)
+        }
+    }
 
     public var minimumYear: Int = 1900
 
@@ -32,12 +38,12 @@ public class MonthAndYearPickerView: UIInputView {
     }()
 
     public convenience init(delegate: MonthAndYearPickerViewDelegate) {
-        self.init(frame: .zero, inputViewStyle: .default)
+        self.init(frame: .zero)
         self.delegate = delegate
     }
 
-    public override init(frame: CGRect, inputViewStyle: UIInputView.Style) {
-        super.init(frame: frame, inputViewStyle: inputViewStyle)
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
         setup()
     }
 
@@ -46,11 +52,18 @@ public class MonthAndYearPickerView: UIInputView {
     }
 
     private func setup() {
-        autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        allowsSelfSizing = true
+        translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(pickerView)
         pickerView.fillInSuperview()
+    }
+
+    public override var intrinsicContentSize: CGSize {
+        pickerView.systemLayoutSizeFitting(
+            CGSize(width: frame.width, height: UIView.layoutFittingCompressedSize.height),
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .fittingSizeLevel
+        )
     }
 
     public func setSelectedDate(_ date: Date, animated: Bool) {
@@ -110,10 +123,7 @@ extension MonthAndYearPickerView: UIPickerViewDelegate {
         let year = years[pickerView.selectedRow(inComponent: .year)]
 
         let components = DateComponents(calendar: calendar, year: year, month: month)
-
-        if let date = calendar.date(from: components) {
-            delegate?.monthAndYearPickerView(self, didSelectDate: date)
-        }
+        selectedDate = calendar.date(from: components)
     }
 }
 
