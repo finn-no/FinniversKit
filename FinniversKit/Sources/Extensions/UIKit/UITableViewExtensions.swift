@@ -17,8 +17,8 @@ public extension UITableView {
         register(headerFooterClass.self, forHeaderFooterViewReuseIdentifier: headerFooterClass.reuseIdentifier)
     }
 
-    func registerNib(_ cellClass: UITableViewCell.Type) {
-        register(UINib(nibName: String(describing: cellClass), bundle: nil), forCellReuseIdentifier: cellClass.reuseIdentifier)
+    func registerNib(_ cellClass: UITableViewCell.Type, bundle: Bundle? = nil) {
+        register(UINib(nibName: String(describing: cellClass), bundle: bundle), forCellReuseIdentifier: cellClass.reuseIdentifier)
     }
 
     func dequeue<T>(_ cellClass: T.Type, for indexPath: IndexPath) -> T where T: UITableViewCell {

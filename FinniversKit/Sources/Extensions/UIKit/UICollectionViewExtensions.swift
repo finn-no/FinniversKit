@@ -15,8 +15,8 @@ public extension UICollectionView {
         register(cellClass.self, forSupplementaryViewOfKind: kind, withReuseIdentifier: cellClass.reuseIdentifier)
     }
 
-    func registerNib(_ cellClass: UICollectionViewCell.Type) {
-        register(UINib(nibName: String(describing: cellClass), bundle: nil), forCellWithReuseIdentifier: cellClass.reuseIdentifier)
+    func registerNib(_ cellClass: UICollectionViewCell.Type, bundle: Bundle? = nil) {
+        register(UINib(nibName: String(describing: cellClass), bundle: bundle), forCellWithReuseIdentifier: cellClass.reuseIdentifier)
     }
 
     func dequeue<T>(_ cellClass: T.Type, for indexPath: IndexPath) -> T where T: UICollectionViewCell {
