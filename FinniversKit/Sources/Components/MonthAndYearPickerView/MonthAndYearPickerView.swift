@@ -1,7 +1,7 @@
 import UIKit
 
 public class MonthAndYearPickerView: UIControl {
-    public var selectedDate: Date = Date() {
+    public private(set) var selectedDate: Date = Date() {
         didSet {
             sendActions(for: .valueChanged)
         }
