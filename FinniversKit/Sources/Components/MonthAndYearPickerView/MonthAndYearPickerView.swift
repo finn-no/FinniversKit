@@ -1,6 +1,18 @@
 import UIKit
 
 public class MonthAndYearPickerView: UIControl {
+    public var locale: Locale = .autoupdatingCurrent {
+        didSet {
+            calendar.locale = locale
+        }
+    }
+
+    public var timeZone: TimeZone = .autoupdatingCurrent {
+        didSet {
+            calendar.timeZone = timeZone
+        }
+    }
+
     public private(set) var selectedDate: Date = Date() {
         didSet {
             if let maximumDate = maximumDate, selectedDateIsAfter(maximumDate) {
@@ -32,6 +44,8 @@ public class MonthAndYearPickerView: UIControl {
 
     public let minimumYear: Int = 1900
 
+    private var calendar = Calendar(identifier: .iso8601)
+
     private var years: [Int] {
         let currentYear = calendar.component(.year, from: Date())
         return [Int](minimumYear...currentYear)
@@ -40,12 +54,6 @@ public class MonthAndYearPickerView: UIControl {
     private var months: [String] {
         calendar.monthSymbols
     }
-
-    private lazy var calendar: Calendar = {
-        var calendar = Calendar(identifier: .iso8601)
-        calendar.locale = .autoupdatingCurrent
-        return calendar
-    }()
 
     private lazy var pickerView: UIPickerView = {
         let view = UIPickerView(withAutoLayout: true)
