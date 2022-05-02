@@ -1,11 +1,24 @@
 import UIKit
 import FinniversKit
 
-class CheckboxSelectionDemoView: UIView {
+class CheckboxSelectionDemoView: UIView, Tweakable {
 
-    // MARK: - Public properties
+    // MARK: - Internal properties
 
-
+    lazy var tweakingOptions: [TweakingOption] = [
+        .init(title: "3 items", action: { [weak self] in
+            self?.checkboxSelectionView.configure(with: .create(number: 3))
+        }),
+        .init(title: "1 items", action: { [weak self] in
+            self?.checkboxSelectionView.configure(with: .create(number: 1))
+        }),
+        .init(title: "2 items", action: { [weak self] in
+            self?.checkboxSelectionView.configure(with: .create(number: 2))
+        }),
+        .init(title: "5 items", action: { [weak self] in
+            self?.checkboxSelectionView.configure(with: .create(number: 5))
+        }),
+    ]
 
     // MARK: - Private properties
 
@@ -19,6 +32,7 @@ class CheckboxSelectionDemoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+        tweakingOptions.first?.action?()
     }
 
     required init?(coder: NSCoder) { fatalError() }
@@ -33,20 +47,20 @@ class CheckboxSelectionDemoView: UIView {
             checkboxSelectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             checkboxSelectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
         ])
+    }
+}
 
-        checkboxSelectionView.configure(with: [
-            .init(
+// MARK: - Private extensions
+
+private extension Array where Element == CheckboxItemModel {
+    static func create(number: Int) -> [CheckboxItemModel] {
+        (0..<number).map {
+            CheckboxItemModel(
                 title: "Jeg kan overlevere ved oppmøte",
                 description: .plain("Du og kjøper gjør en egen avtale"),
                 icon: UIImage(named: .contract),
-                isInitiallySelected: true
-            ),
-            .init(
-                title: "Jeg kan sende",
-                description: .plain("Send og ta betalt gjennom FINN"),
-                icon: UIImage(named: .contract),
-                isInitiallySelected: false
+                isInitiallySelected: $0 == 0
             )
-        ])
+        }
     }
 }
