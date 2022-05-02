@@ -58,7 +58,7 @@ private extension Array where Element == CheckboxItemModel {
             CheckboxItemModel(
                 title: "Jeg kan overlevere ved oppmøte",
                 description: .plain("Du og kjøper gjør en egen avtale"),
-                icon: UIImage(named: .contract),
+                icon: UIImage(named: .favoriteActive).withRenderingMode(.alwaysTemplate),
                 isInitiallySelected: $0 == 0
             )
         }
