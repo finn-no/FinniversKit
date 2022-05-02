@@ -3,7 +3,20 @@ import UIKit
 public class MonthAndYearPickerView: UIControl {
     public private(set) var selectedDate: Date = Date() {
         didSet {
+            if let maximumDate = maximumDate, selectedDateIsBefore(maximumDate) {
+                selectedDate = maximumDate
+            }
+
+            setSelectedDate(selectedDate, animated: true)
             sendActions(for: .valueChanged)
+        }
+    }
+
+    public var maximumDate: Date? {
+        didSet {
+            if let maximumDate = maximumDate, selectedDateIsBefore(maximumDate) {
+                selectedDate = maximumDate
+            }
         }
     }
 
@@ -57,6 +70,10 @@ public class MonthAndYearPickerView: UIControl {
             withHorizontalFittingPriority: .required,
             verticalFittingPriority: .fittingSizeLevel
         )
+    }
+
+    private func selectedDateIsBefore(_ maximumDate: Date) -> Bool {
+        calendar.compare(selectedDate, to: maximumDate, toGranularity: .month) == .orderedDescending
     }
 
     public func setSelectedDate(_ date: Date, animated: Bool) {
