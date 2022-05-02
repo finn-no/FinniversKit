@@ -45,6 +45,8 @@ class CheckboxItemView: UIView {
         self.configuration = configuration
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = !withAutoLayout
+
+        isSelected = model.isInitiallySelected
         setup()
     }
 
@@ -71,7 +73,6 @@ class CheckboxItemView: UIView {
         titleLabel.text = model.title
         descriptionLabel.text = model.description
         iconImageView.image = model.icon
-        checkboxView.animateSelection(selected: model.isInitiallySelected)
 
         textStackView.addArrangedSubviews([titleLabel, descriptionLabel])
 
@@ -102,6 +103,8 @@ class CheckboxItemView: UIView {
             iconImageView.widthAnchor.constraint(equalToConstant: 24),
             iconImageView.heightAnchor.constraint(equalToConstant: 24),
         ])
+
+        updateSelection()
     }
 
     // MARK: - Private methods
