@@ -37,13 +37,13 @@ class CheckboxSelectionDemoView: UIView {
         checkboxSelectionView.configure(with: [
             .init(
                 title: "Jeg kan overlevere ved oppmøte",
-                description: "Du og kjøper gjør en egen avtale",
+                description: .plain("Du og kjøper gjør en egen avtale"),
                 icon: UIImage(named: .contract),
-                isInitiallySelected: false
+                isInitiallySelected: true
             ),
             .init(
                 title: "Jeg kan sende",
-                description: "Send og ta betalt gjennom FINN",
+                description: .plain("Send og ta betalt gjennom FINN"),
                 icon: UIImage(named: .contract),
                 isInitiallySelected: false
             )

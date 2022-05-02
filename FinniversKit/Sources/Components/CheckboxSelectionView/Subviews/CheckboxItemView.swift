@@ -71,8 +71,14 @@ class CheckboxItemView: UIView {
         )
 
         titleLabel.text = model.title
-        descriptionLabel.text = model.description
         iconImageView.image = model.icon
+
+        switch model.description {
+        case .plain(let text):
+            descriptionLabel.text = text
+        case .attributed(let attributedText):
+            descriptionLabel.attributedText = attributedText
+        }
 
         textStackView.addArrangedSubviews([titleLabel, descriptionLabel])
 
