@@ -76,6 +76,9 @@ public class MonthAndYearPickerView: UIControl {
     }
 
     private func setup() {
+        calendar.locale = locale
+        calendar.timeZone = timeZone
+        
         translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(pickerView)
