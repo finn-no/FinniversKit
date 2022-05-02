@@ -11,6 +11,10 @@ public class SearchView: UIView {
 
     public weak var delegate: SearchViewDelegate?
 
+    public var searchText: String? {
+        searchTextField.text
+    }
+
     // MARK: - Private properties
 
     private var items = [String]()
