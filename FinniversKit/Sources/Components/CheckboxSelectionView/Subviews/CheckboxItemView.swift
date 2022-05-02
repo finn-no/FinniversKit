@@ -117,7 +117,11 @@ class CheckboxItemView: UIView {
 
     private func updateSelection() {
         checkboxView.animateSelection(selected: isSelected)
-        backgroundColor = isSelected ? .primaryBlue : .clear
+
+        UIView.animate(withDuration: 0.15, animations: { [weak self] in
+            guard let self = self else { return }
+            self.backgroundColor = self.isSelected ? .primaryBlue : .clear
+        })
     }
 }
 
