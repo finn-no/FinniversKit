@@ -69,7 +69,7 @@ public class SearchView: UIView {
 
     public func configure(items: [String]) {
         self.items = items
-        tableView.reloadData()
+        tableView.reloadSections([0], with: .automatic)
     }
 
     public func configureSearchTextField(placeholder: String, text: String?) {
