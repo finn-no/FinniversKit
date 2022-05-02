@@ -88,6 +88,7 @@ public class SearchView: UIView {
 
 extension SearchView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         delegate?.searchView(self, didSelectItemAtIndex: indexPath.row)
     }
 }
