@@ -13,15 +13,18 @@ public class MonthAndYearPickerView: UIControl {
         }
     }
 
-    public private(set) var selectedDate: Date = Date() {
+    public var selectedDate: Date = Date() {
         didSet {
+            guard selectedDate != oldValue else { return }
+
             if let maximumDate = maximumDate, selectedDateIsAfter(maximumDate) {
                 selectedDate = maximumDate
+                setPickerViewSelection(selectedDate, animated: true)
             } else if let minimumDate = minimumDate, selectedDateIsBefore(minimumDate) {
                 selectedDate = minimumDate
+                setPickerViewSelection(selectedDate, animated: true)
             }
 
-            setSelectedDate(selectedDate, animated: true)
             sendActions(for: .valueChanged)
         }
     }
@@ -102,6 +105,11 @@ public class MonthAndYearPickerView: UIControl {
     }
 
     public func setSelectedDate(_ date: Date, animated: Bool) {
+        selectedDate = date
+        setPickerViewSelection(date, animated: animated)
+    }
+
+    private func setPickerViewSelection(_ date: Date, animated: Bool) {
         let components = calendar.dateComponents([.month, .year], from: date)
 
         guard
