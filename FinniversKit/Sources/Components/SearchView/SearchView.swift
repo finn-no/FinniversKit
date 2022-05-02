@@ -45,6 +45,7 @@ public class SearchView: UIView {
     // MARK: - Setup
 
     private func setup() {
+        backgroundColor = .bgPrimary
         addSubview(searchTextField)
         addSubview(tableView)
 
