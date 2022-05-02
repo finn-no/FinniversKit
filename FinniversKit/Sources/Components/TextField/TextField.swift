@@ -301,6 +301,12 @@ public class TextField: UIView {
 
     // MARK: - Overrides
 
+    public override var canBecomeFirstResponder: Bool { true }
+
+    public override func becomeFirstResponder() -> Bool {
+        textField.becomeFirstResponder()
+    }
+
     public override func layoutSubviews() {
         super.layoutSubviews()
 
