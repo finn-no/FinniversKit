@@ -137,6 +137,7 @@
 		4DD3AA7C27B56592007B107E /* DetailCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3AA7B27B56591007B107E /* DetailCalloutView.swift */; };
 		55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* Broadcast.swift */; };
 		55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B277203DB56A007D7277 /* BroadcastMessage.swift */; };
+		5B9590BF11466FFFC29766C3 /* CheckboxSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9595BF11C0D7740F6E697F /* CheckboxSelectionView.swift */; };
 		5B9596721C36A36728C6E6AD /* OverflowCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9594B274D9B8D8390676E7 /* OverflowCollectionView.swift */; };
 		5B959745935CC23FC0F17ACE /* MultilineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959E64AAE5D542C2168DC2 /* MultilineButton.swift */; };
 		5B9598434FDB0BEC62D2D91D /* OverflowCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959240C94F8A2F44F428F3 /* OverflowCollectionViewCell.swift */; };
@@ -593,6 +594,7 @@
 		55C5B277203DB56A007D7277 /* BroadcastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastMessage.swift; sourceTree = "<group>"; };
 		5B959240C94F8A2F44F428F3 /* OverflowCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverflowCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B9594B274D9B8D8390676E7 /* OverflowCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverflowCollectionView.swift; sourceTree = "<group>"; };
+		5B9595BF11C0D7740F6E697F /* CheckboxSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxSelectionView.swift; sourceTree = "<group>"; };
 		5B9599E22AECDDE0750CBD31 /* CheckboxItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxItemView.swift; sourceTree = "<group>"; };
 		5B959BDD757ABA49DA59E345 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		5B959E64AAE5D542C2168DC2 /* MultilineButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineButton.swift; sourceTree = "<group>"; };
@@ -1796,6 +1798,7 @@
 		5B959846196B48EE2080C452 /* CheckboxSelectionView */ = {
 			isa = PBXGroup;
 			children = (
+				5B9595BF11C0D7740F6E697F /* CheckboxSelectionView.swift */,
 				5B95976975A32A51DFF7F5D1 /* Subviews */,
 			);
 			path = CheckboxSelectionView;
@@ -3675,6 +3678,7 @@
 				5B9596721C36A36728C6E6AD /* OverflowCollectionView.swift in Sources */,
 				5B9598434FDB0BEC62D2D91D /* OverflowCollectionViewCell.swift in Sources */,
 				5B95990406E586D6E278E80E /* SearchView.swift in Sources */,
+				5B9590BF11466FFFC29766C3 /* CheckboxSelectionView.swift in Sources */,
 				5B959F868008E7C5EB3B9EF6 /* CheckboxItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
