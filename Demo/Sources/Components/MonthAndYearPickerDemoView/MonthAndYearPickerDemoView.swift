@@ -93,8 +93,8 @@ class MonthAndYearPickerDemoView: UIView {
     }
 
     private func setInitialDate() {
-        pickerView.setSelectedDate(currentDate, animated: false)
         updateDateLabel()
+        pickerView.setSelectedDate(currentDate, animated: false)
     }
 
     private func updateDateLabel() {
