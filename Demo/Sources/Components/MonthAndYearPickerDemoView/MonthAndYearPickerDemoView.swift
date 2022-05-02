@@ -14,7 +14,7 @@ class MonthAndYearPickerDemoView: UIView {
     private lazy var formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = .init(identifier: "nb_NO")
-        formatter.timeZone = .init(abbreviation: "Europe/Oslo")
+        formatter.timeZone = .autoupdatingCurrent
         formatter.dateFormat = "MMMM yyyy"
         return formatter
     }()
