@@ -36,6 +36,16 @@ public class CheckboxSelectionView: UIView {
 
     // MARK: - Public methods
 
+    public func toggleSelection(forItemAtIndex index: Int) {
+        guard let itemView = stackView.arrangedSubviews[safe: index] as? CheckboxItemView else { return }
+        itemView.isSelected.toggle()
+    }
+
+    public func selectionState(forItemAtIndex index: Int) -> Bool {
+        guard let itemView = stackView.arrangedSubviews[safe: index] as? CheckboxItemView else { return false }
+        return itemView.isSelected
+    }
+
     public func configure(with models: [CheckboxItemModel]) {
         let views = models.enumerated().map { index, model -> CheckboxItemView in
             let configuration = CheckboxItemView.Configuration(
