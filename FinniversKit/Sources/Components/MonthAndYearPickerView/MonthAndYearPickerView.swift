@@ -162,8 +162,11 @@ extension MonthAndYearPickerView: UIPickerViewDelegate {
     }
 
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        guard let year = years[safe: pickerView.selectedRow(inComponent: .year)] else {
+            return
+        }
+
         let month = pickerView.selectedRow(inComponent: .month) + 1
-        let year = years[pickerView.selectedRow(inComponent: .year)]
 
         let components = DateComponents(calendar: calendar, year: year, month: month)
 
