@@ -1,6 +1,6 @@
 import UIKit
 
-class CheckboxItemView: UIView {
+class CheckmarkItemView: UIView {
 
     // MARK: - Internal properties
 
@@ -12,7 +12,7 @@ class CheckboxItemView: UIView {
 
     // MARK: - Private properties
 
-    private let model: CheckboxItemModel
+    private let model: CheckmarkItemModel
     private let configuration: Configuration
     private lazy var contentView = UIView(withAutoLayout: true)
     private lazy var checkboxView = AnimatedCheckboxView(frame: .zero)
@@ -40,7 +40,7 @@ class CheckboxItemView: UIView {
 
     // MARK: - Init
 
-    init(model: CheckboxItemModel, configuration: Configuration, withAutoLayout: Bool) {
+    init(model: CheckmarkItemModel, configuration: Configuration, withAutoLayout: Bool) {
         self.model = model
         self.configuration = configuration
         super.init(frame: .zero)
@@ -134,7 +134,7 @@ class CheckboxItemView: UIView {
 
 // MARK: - Inner types
 
-extension CheckboxItemView {
+extension CheckmarkItemView {
     enum Position {
         case first
         case last

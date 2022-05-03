@@ -1,6 +1,6 @@
 import Foundation
 
-public struct CheckboxItemModel {
+public struct CheckmarkItemModel {
     public let title: String
     public let description: Description
     public let icon: UIImage
