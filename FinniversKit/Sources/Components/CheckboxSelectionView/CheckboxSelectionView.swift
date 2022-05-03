@@ -1,10 +1,14 @@
 import UIKit
 
+public protocol CheckboxSelectionViewDelegate: AnyObject {
+    func checkboxSelectionView(_ view: CheckboxSelectionView, didToggleItemAtIndex index: Int)
+}
+
 public class CheckboxSelectionView: UIView {
 
     // MARK: - Public properties
 
-
+    public weak var delegate: CheckboxSelectionViewDelegate?
 
     // MARK: - Private properties
 
@@ -54,8 +58,13 @@ public class CheckboxSelectionView: UIView {
     // MARK: - Actions
 
     @objc private func didSelectItem(_ gestureRecognizer: UITapGestureRecognizer) {
-        guard let itemView = gestureRecognizer.view as? CheckboxItemView else { return }
+        guard
+            let itemView = gestureRecognizer.view as? CheckboxItemView,
+            let viewIndex = stackView.arrangedSubviews.firstIndex(of: itemView)
+        else { return }
+
         itemView.isSelected.toggle()
+        delegate?.checkboxSelectionView(self, didToggleItemAtIndex: viewIndex)
     }
 }
 

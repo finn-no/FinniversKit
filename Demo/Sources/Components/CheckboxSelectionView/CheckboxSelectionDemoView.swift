@@ -24,6 +24,7 @@ class CheckboxSelectionDemoView: UIView, Tweakable {
 
     private lazy var checkboxSelectionView: CheckboxSelectionView = {
         let view = CheckboxSelectionView(withAutoLayout: true)
+        view.delegate = self
         return view
     }()
 
@@ -47,6 +48,14 @@ class CheckboxSelectionDemoView: UIView, Tweakable {
             checkboxSelectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             checkboxSelectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
         ])
+    }
+}
+
+// MARK: - CheckboxSelectionViewDelegate
+
+extension CheckboxSelectionDemoView: CheckboxSelectionViewDelegate {
+    func checkboxSelectionView(_ view: CheckboxSelectionView, didToggleItemAtIndex index: Int) {
+        print("👉 Did select item at index \(index)")
     }
 }
 
