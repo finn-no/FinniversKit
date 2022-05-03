@@ -6,7 +6,7 @@ class CheckboxItemView: UIView {
 
     var isSelected: Bool = false {
         didSet {
-            updateSelection(animateCheckbox: true)
+            updateSelection(shouldAnimate: true)
         }
     }
 
@@ -110,21 +110,22 @@ class CheckboxItemView: UIView {
             iconImageView.heightAnchor.constraint(equalToConstant: 24),
         ])
 
-        updateSelection(animateCheckbox: false)
+        updateSelection(shouldAnimate: false)
     }
 
     // MARK: - Private methods
 
-    private func updateSelection(animateCheckbox: Bool) {
+    private func updateSelection(shouldAnimate: Bool) {
         if isSelected != checkboxView.isHighlighted {
-            if animateCheckbox {
+            if shouldAnimate {
                 checkboxView.animateSelection(selected: isSelected)
             } else {
                 checkboxView.isHighlighted = isSelected
             }
         }
 
-        UIView.animate(withDuration: 0.15, animations: { [weak self] in
+        let duration = shouldAnimate ? 0.15 : 0
+        UIView.animate(withDuration: duration, animations: { [weak self] in
             guard let self = self else { return }
             self.backgroundColor = self.isSelected ? .primaryBlue : .clear
         })
