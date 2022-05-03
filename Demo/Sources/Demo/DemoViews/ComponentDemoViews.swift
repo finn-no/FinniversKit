@@ -74,7 +74,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case frontPageShelf
     case overFlowCollectionView
     case searchView
-    case checkboxSelectionView
+    case checkmarkListView
 
     public var viewController: UIViewController {
         switch self {
@@ -225,8 +225,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<OverflowCollectionViewDemo>()
         case .searchView:
             return DemoViewController<SearchDemoView>()
-        case .checkboxSelectionView:
-            return DemoViewController<CheckboxSelectionDemoView>(dismissType: .dismissButton)
+        case .checkmarkListView:
+            return DemoViewController<CheckmarkListDemoView>(dismissType: .dismissButton)
         }
     }
 }
