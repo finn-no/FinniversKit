@@ -146,24 +146,6 @@ extension CheckboxItemView {
         let cornerRadius: CGFloat
         let position: Position
 
-        fileprivate var contentSpacingTop: CGFloat {
-            switch position {
-            case .first, .theOnlyOne:
-                return spacing
-            case .last, .middle:
-                return spacing
-            }
-        }
-
-        fileprivate var contentSpacingBottom: CGFloat {
-            switch position {
-            case .first, .middle:
-                return spacing
-            case .last, .theOnlyOne:
-                return spacing
-            }
-        }
-
         fileprivate var maskedCorners: CACornerMask {
             switch position {
             case .first:
