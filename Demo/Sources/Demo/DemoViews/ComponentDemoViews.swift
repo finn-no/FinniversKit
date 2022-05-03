@@ -74,6 +74,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case frontPageShelf
     case overFlowCollectionView
     case monthAndYearPickerView
+    case searchView
 
     public var viewController: UIViewController {
         switch self {
@@ -224,6 +225,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<OverflowCollectionViewDemo>()
         case .monthAndYearPickerView:
             return DemoViewController<MonthAndYearPickerDemoView>()
+        case .searchView:
+            return DemoViewController<SearchDemoView>()
         }
     }
 }
