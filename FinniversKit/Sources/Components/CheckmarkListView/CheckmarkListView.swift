@@ -10,6 +10,10 @@ public class CheckmarkListView: UIView {
 
     public weak var delegate: CheckmarkListViewDelegate?
 
+    public override var intrinsicContentSize: CGSize {
+        stackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+    }
+
     // MARK: - Private properties
 
     private let itemSpacing: CGFloat = 2
@@ -63,6 +67,7 @@ public class CheckmarkListView: UIView {
 
         stackView.removeArrangedSubviews()
         stackView.addArrangedSubviews(views)
+        invalidateIntrinsicContentSize()
     }
 
     // MARK: - Actions
