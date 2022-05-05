@@ -47,7 +47,12 @@ public class MonthAndYearPickerView: UIControl {
 
     public let minimumYear: Int = 1900
 
-    private var calendar = Calendar(identifier: .iso8601)
+    private lazy var calendar: Calendar = {
+        var calendar = Calendar(identifier: .iso8601)
+        calendar.locale = locale
+        calendar.timeZone = timeZone
+        return calendar
+    }()
 
     private var years: [Int] {
         let currentYear = calendar.component(.year, from: Date())
@@ -79,9 +84,6 @@ public class MonthAndYearPickerView: UIControl {
     }
 
     private func setup() {
-        calendar.locale = locale
-        calendar.timeZone = timeZone
-
         translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(pickerView)
