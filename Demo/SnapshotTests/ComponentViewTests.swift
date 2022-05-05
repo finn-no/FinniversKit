@@ -295,6 +295,10 @@ class ComponentViewTests: XCTestCase {
         snapshot(.detailCallout)
     }
 
+    func testMonthAndYearPickerView() {
+        snapshot(.monthAndYearPickerView)
+    }
+
     func testSearchView() {
         snapshot(.searchView)
     }
