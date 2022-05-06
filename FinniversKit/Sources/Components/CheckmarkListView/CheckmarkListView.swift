@@ -59,6 +59,12 @@ public class CheckmarkListView: UIView {
     }
 
     public func configure(with models: [CheckmarkItemModel]) {
+        // Make sure only the first item with ´isInitiallySelected´ is selected, if presentation == .radioButtons.
+        var firstSelectedRadioButtonIndex: Int?
+        if presentation == .radioButtons {
+            firstSelectedRadioButtonIndex = models.firstIndex(where: { $0.isInitiallySelected })
+        }
+
         let views = models.enumerated().map { index, model -> CheckmarkItemView in
             let configuration = CheckmarkItemView.Configuration(
                 spacing: itemSpacing,
@@ -66,6 +72,12 @@ public class CheckmarkListView: UIView {
                 currentIndex: index,
                 numberOfItems: models.count
             )
+
+            var model = model
+            if let firstSelectedRadioButtonIndex = firstSelectedRadioButtonIndex {
+                model = model.override(isInitiallySelected: index == firstSelectedRadioButtonIndex)
+            }
+
             let view = CheckmarkItemView(
                 model: model,
                 configuration: configuration,
@@ -117,5 +129,16 @@ private extension CheckmarkItemView.Configuration {
         }
 
         self.init(spacing: spacing, cornerRadius: cornerRadius, position: position)
+    }
+}
+
+private extension CheckmarkItemModel {
+    func override(isInitiallySelected: Bool) -> Self {
+        CheckmarkItemModel(
+            title: title,
+            description: description,
+            icon: icon,
+            isInitiallySelected: isInitiallySelected
+        )
     }
 }
