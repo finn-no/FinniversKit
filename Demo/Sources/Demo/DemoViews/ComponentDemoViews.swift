@@ -78,6 +78,17 @@ public enum ComponentDemoViews: String, DemoViews {
     case selectionListCheckboxView
     case selectionListRadiobuttonView
 
+    var title: String? {
+        switch self {
+        case .selectionListCheckboxView:
+            return "SelectionListView - checkboxes"
+        case .selectionListRadiobuttonView:
+            return "SelectionListView - radio buttons"
+        default:
+            return nil
+        }
+    }
+
     public var viewController: UIViewController {
         switch self {
         case .addressCardView:
