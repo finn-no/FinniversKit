@@ -76,6 +76,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case monthAndYearPickerView
     case searchView
     case selectionListCheckboxView
+    case selectionListRadiobuttonView
 
     public var viewController: UIViewController {
         switch self {
@@ -230,6 +231,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<SearchDemoView>()
         case .selectionListCheckboxView:
             return DemoViewController<SelectionListCheckboxDemoView>(dismissType: .dismissButton)
+        case .selectionListRadiobuttonView:
+            return DemoViewController<SelectionListRadiobuttonDemoView>(dismissType: .dismissButton)
         }
     }
 }

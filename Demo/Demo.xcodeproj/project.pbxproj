@@ -188,6 +188,7 @@
 		5B959541A9DCE0B0A3C4C731 /* MultilineButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9594F7F4A53013131B6549 /* MultilineButtonDemoView.swift */; };
 		5B959A0F727EB51E56231370 /* OverflowCollectionViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959C33286B6BD7933C9BA9 /* OverflowCollectionViewDemo.swift */; };
 		5B959A8547A482ED59F0E7AC /* SearchDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9594F851141F5FE17439BE /* SearchDemoView.swift */; };
+		5B959B69428E9E09E4256294 /* SelectionListRadiobuttonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9596BFF50B7FDCF25A1E92 /* SelectionListRadiobuttonDemoView.swift */; };
 		5B959D71E45DF88C52F38B78 /* SnapshotWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95911723A1FB1DC9260B22 /* SnapshotWrapperViewController.swift */; };
 		5D62FD7025B03B4800EB882D /* DemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D62FD6F25B03B4800EB882D /* DemoViews.swift */; };
 		5DA190D525A5BC5B002305A8 /* FinnTextField+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190D425A5BC5B002305A8 /* FinnTextField+Previews.swift */; };
@@ -421,6 +422,7 @@
 		5B9594F7F4A53013131B6549 /* MultilineButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineButtonDemoView.swift; sourceTree = "<group>"; };
 		5B9594F851141F5FE17439BE /* SearchDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDemoView.swift; sourceTree = "<group>"; };
 		5B9595B6FD629480500DA12C /* SelectionListCheckboxDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionListCheckboxDemoView.swift; sourceTree = "<group>"; };
+		5B9596BFF50B7FDCF25A1E92 /* SelectionListRadiobuttonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionListRadiobuttonDemoView.swift; sourceTree = "<group>"; };
 		5B959C33286B6BD7933C9BA9 /* OverflowCollectionViewDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverflowCollectionViewDemo.swift; sourceTree = "<group>"; };
 		5B959EE2A1978F8DE0BC95D7 /* IPadSnapshotWrapperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPadSnapshotWrapperViewController.swift; sourceTree = "<group>"; };
 		5D62FD6F25B03B4800EB882D /* DemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViews.swift; sourceTree = "<group>"; };
@@ -1665,6 +1667,7 @@
 			isa = PBXGroup;
 			children = (
 				5B9595B6FD629480500DA12C /* SelectionListCheckboxDemoView.swift */,
+				5B9596BFF50B7FDCF25A1E92 /* SelectionListRadiobuttonDemoView.swift */,
 			);
 			path = SelectionListView;
 			sourceTree = "<group>";
@@ -2155,6 +2158,7 @@
 				5B959A0F727EB51E56231370 /* OverflowCollectionViewDemo.swift in Sources */,
 				5B959A8547A482ED59F0E7AC /* SearchDemoView.swift in Sources */,
 				5B959265245920DA9AC6B68F /* SelectionListCheckboxDemoView.swift in Sources */,
+				5B959B69428E9E09E4256294 /* SelectionListRadiobuttonDemoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
