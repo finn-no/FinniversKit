@@ -1,6 +1,6 @@
 import UIKit
 
-class CheckmarkItemView: UIView {
+class SelectionListItemView: UIView {
 
     // MARK: - Internal properties
 
@@ -12,9 +12,9 @@ class CheckmarkItemView: UIView {
 
     // MARK: - Private properties
 
-    private let model: CheckmarkItemModel
+    private let model: SelectionItemModel
     private let configuration: Configuration
-    private let presentation: CheckmarkListView.Presentation
+    private let presentation: SelectionListView.Presentation
     private lazy var contentView = UIView(withAutoLayout: true)
     private lazy var selectionView = presentation.selectionView
     private lazy var textStackView = UIStackView(axis: .vertical, spacing: .spacingXS, withAutoLayout: true)
@@ -41,7 +41,7 @@ class CheckmarkItemView: UIView {
 
     // MARK: - Init
 
-    init(model: CheckmarkItemModel, configuration: Configuration, presentation: CheckmarkListView.Presentation, withAutoLayout: Bool) {
+    init(model: SelectionItemModel, configuration: Configuration, presentation: SelectionListView.Presentation, withAutoLayout: Bool) {
         self.model = model
         self.configuration = configuration
         self.presentation = presentation
@@ -136,7 +136,7 @@ class CheckmarkItemView: UIView {
 
 // MARK: - Inner types
 
-extension CheckmarkItemView {
+extension SelectionListItemView {
     enum Position {
         case first
         case last
@@ -174,7 +174,7 @@ private extension UIView {
     }
 }
 
-private extension CheckmarkListView.Presentation {
+private extension SelectionListView.Presentation {
     var selectionView: AnimatedSelectionView {
         switch self {
         case .checkboxes:

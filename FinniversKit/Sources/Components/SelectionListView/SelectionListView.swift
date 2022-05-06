@@ -1,10 +1,10 @@
 import UIKit
 
-public protocol CheckmarkListViewDelegate: AnyObject {
-    func checkmarkListView(_ view: CheckmarkListView, didToggleItemAtIndex index: Int)
+public protocol SelectionListViewDelegate: AnyObject {
+    func selectionListView(_ view: SelectionListView, didToggleItemAtIndex index: Int)
 }
 
-public class CheckmarkListView: UIView {
+public class SelectionListView: UIView {
 
     public enum Presentation {
         case checkboxes
@@ -14,7 +14,7 @@ public class CheckmarkListView: UIView {
     // MARK: - Public properties
 
     public let presentation: Presentation
-    public weak var delegate: CheckmarkListViewDelegate?
+    public weak var delegate: SelectionListViewDelegate?
 
     public override var intrinsicContentSize: CGSize {
         stackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
@@ -49,24 +49,24 @@ public class CheckmarkListView: UIView {
     // MARK: - Public methods
 
     public func toggleSelection(forItemAtIndex index: Int) {
-        guard let itemView = stackView.arrangedSubviews[safe: index] as? CheckmarkItemView else { return }
+        guard let itemView = stackView.arrangedSubviews[safe: index] as? SelectionListItemView else { return }
         itemView.isSelected.toggle()
     }
 
     public func selectionState(forItemAtIndex index: Int) -> Bool {
-        guard let itemView = stackView.arrangedSubviews[safe: index] as? CheckmarkItemView else { return false }
+        guard let itemView = stackView.arrangedSubviews[safe: index] as? SelectionListItemView else { return false }
         return itemView.isSelected
     }
 
-    public func configure(with models: [CheckmarkItemModel]) {
+    public func configure(with models: [SelectionItemModel]) {
         // Make sure only the first item with ´isInitiallySelected´ is selected, if presentation == .radioButtons.
         var firstSelectedRadioButtonIndex: Int?
         if presentation == .radioButtons {
             firstSelectedRadioButtonIndex = models.firstIndex(where: { $0.isInitiallySelected })
         }
 
-        let views = models.enumerated().map { index, model -> CheckmarkItemView in
-            let configuration = CheckmarkItemView.Configuration(
+        let views = models.enumerated().map { index, model -> SelectionListItemView in
+            let configuration = SelectionListItemView.Configuration(
                 spacing: itemSpacing,
                 cornerRadius: cornerRadius,
                 currentIndex: index,
@@ -78,7 +78,7 @@ public class CheckmarkListView: UIView {
                 model = model.override(isInitiallySelected: index == firstSelectedRadioButtonIndex)
             }
 
-            let view = CheckmarkItemView(
+            let view = SelectionListItemView(
                 model: model,
                 configuration: configuration,
                 presentation: presentation,
@@ -101,8 +101,8 @@ public class CheckmarkListView: UIView {
 
     @objc private func didSelectItem(_ gestureRecognizer: UITapGestureRecognizer) {
         guard
-            let itemView = gestureRecognizer.view as? CheckmarkItemView,
-            let itemViews = stackView.arrangedSubviews as? [CheckmarkItemView],
+            let itemView = gestureRecognizer.view as? SelectionListItemView,
+            let itemViews = stackView.arrangedSubviews as? [SelectionListItemView],
             let viewIndex = stackView.arrangedSubviews.firstIndex(of: itemView)
         else { return }
 
@@ -115,17 +115,17 @@ public class CheckmarkListView: UIView {
             }
         }
 
-        delegate?.checkmarkListView(self, didToggleItemAtIndex: viewIndex)
+        delegate?.selectionListView(self, didToggleItemAtIndex: viewIndex)
     }
 }
 
 // MARK: - Private extensions
 
-private extension CheckmarkItemView.Configuration {
+private extension SelectionListItemView.Configuration {
     init(spacing: CGFloat, cornerRadius: CGFloat, currentIndex: Int, numberOfItems: Int) {
         let lastIndex = numberOfItems - 1
 
-        let position: CheckmarkItemView.Position
+        let position: SelectionListItemView.Position
         switch (currentIndex, lastIndex) {
         case (0, 0):
             position = .theOnlyOne
@@ -141,9 +141,9 @@ private extension CheckmarkItemView.Configuration {
     }
 }
 
-private extension CheckmarkItemModel {
+private extension SelectionItemModel {
     func override(isInitiallySelected: Bool) -> Self {
-        CheckmarkItemModel(
+        SelectionItemModel(
             title: title,
             description: description,
             icon: icon,
