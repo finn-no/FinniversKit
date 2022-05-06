@@ -102,10 +102,19 @@ public class CheckmarkListView: UIView {
     @objc private func didSelectItem(_ gestureRecognizer: UITapGestureRecognizer) {
         guard
             let itemView = gestureRecognizer.view as? CheckmarkItemView,
+            let itemViews = stackView.arrangedSubviews as? [CheckmarkItemView],
             let viewIndex = stackView.arrangedSubviews.firstIndex(of: itemView)
         else { return }
 
-        itemView.isSelected.toggle()
+        switch presentation {
+        case .checkboxes:
+            itemView.isSelected.toggle()
+        case .radioButtons:
+            itemViews.forEach {
+                $0.isSelected = $0 == itemView
+            }
+        }
+
         delegate?.checkmarkListView(self, didToggleItemAtIndex: viewIndex)
     }
 }
