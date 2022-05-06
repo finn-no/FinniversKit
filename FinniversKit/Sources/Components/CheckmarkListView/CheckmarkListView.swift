@@ -6,8 +6,14 @@ public protocol CheckmarkListViewDelegate: AnyObject {
 
 public class CheckmarkListView: UIView {
 
+    public enum Presentation {
+        case checkboxes
+        case radioButtons
+    }
+
     // MARK: - Public properties
 
+    public let presentation: Presentation
     public weak var delegate: CheckmarkListViewDelegate?
 
     public override var intrinsicContentSize: CGSize {
@@ -22,8 +28,10 @@ public class CheckmarkListView: UIView {
 
     // MARK: - Init
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(presentation: Presentation, withAutoLayout: Bool) {
+        self.presentation = presentation
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setup()
     }
 
@@ -58,10 +66,17 @@ public class CheckmarkListView: UIView {
                 currentIndex: index,
                 numberOfItems: models.count
             )
-            let view = CheckmarkItemView(model: model, configuration: configuration, withAutoLayout: true)
+            let view = CheckmarkItemView(
+                model: model,
+                configuration: configuration,
+                presentation: presentation,
+                withAutoLayout: true
+            )
+
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didSelectItem))
             view.isUserInteractionEnabled = true
             view.addGestureRecognizer(tapGestureRecognizer)
+
             return view
         }
 

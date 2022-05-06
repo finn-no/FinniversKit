@@ -14,8 +14,9 @@ class CheckmarkItemView: UIView {
 
     private let model: CheckmarkItemModel
     private let configuration: Configuration
+    private let presentation: CheckmarkListView.Presentation
     private lazy var contentView = UIView(withAutoLayout: true)
-    private lazy var checkboxView = AnimatedCheckboxView(frame: .zero)
+    private lazy var selectionView = presentation.selectionView
     private lazy var textStackView = UIStackView(axis: .vertical, spacing: .spacingXS, withAutoLayout: true)
 
     private lazy var titleLabel: Label = {
@@ -40,9 +41,10 @@ class CheckmarkItemView: UIView {
 
     // MARK: - Init
 
-    init(model: CheckmarkItemModel, configuration: Configuration, withAutoLayout: Bool) {
+    init(model: CheckmarkItemModel, configuration: Configuration, presentation: CheckmarkListView.Presentation, withAutoLayout: Bool) {
         self.model = model
         self.configuration = configuration
+        self.presentation = presentation
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = !withAutoLayout
 
@@ -83,7 +85,7 @@ class CheckmarkItemView: UIView {
         textStackView.addArrangedSubviews([titleLabel, descriptionLabel])
 
         addSubview(contentView)
-        contentView.addSubview(checkboxView)
+        contentView.addSubview(selectionView)
         contentView.addSubview(textStackView)
         contentView.addSubview(iconImageView)
 
@@ -93,18 +95,18 @@ class CheckmarkItemView: UIView {
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -configuration.spacing),
             contentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -configuration.spacing),
 
-            checkboxView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingL),
-            checkboxView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            selectionView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingL),
+            selectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
 
             textStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
-            textStackView.leadingAnchor.constraint(equalTo: checkboxView.trailingAnchor, constant: .spacingM),
+            textStackView.leadingAnchor.constraint(equalTo: selectionView.trailingAnchor, constant: .spacingM),
             textStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM),
 
             iconImageView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: .spacingS),
             iconImageView.leadingAnchor.constraint(equalTo: textStackView.trailingAnchor, constant: .spacingM),
             iconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
             iconImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -.spacingM),
-            iconImageView.centerYAnchor.constraint(equalTo: checkboxView.centerYAnchor),
+            iconImageView.centerYAnchor.constraint(equalTo: selectionView.centerYAnchor),
 
             iconImageView.widthAnchor.constraint(equalToConstant: 24),
             iconImageView.heightAnchor.constraint(equalToConstant: 24),
@@ -116,11 +118,11 @@ class CheckmarkItemView: UIView {
     // MARK: - Private methods
 
     private func updateSelection(shouldAnimate: Bool) {
-        if isSelected != checkboxView.isHighlighted {
+        if isSelected != selectionView.isHighlighted {
             if shouldAnimate {
-                checkboxView.animateSelection(selected: isSelected)
+                selectionView.animateSelection(selected: isSelected)
             } else {
-                checkboxView.isHighlighted = isSelected
+                selectionView.isHighlighted = isSelected
             }
         }
 
@@ -169,5 +171,16 @@ private extension UIView {
         guard !maskedCorners.isEmpty else { return }
         layer.maskedCorners = maskedCorners
         layer.cornerRadius = cornerRadius
+    }
+}
+
+private extension CheckmarkListView.Presentation {
+    var selectionView: AnimatedSelectionView {
+        switch self {
+        case .checkboxes:
+            return AnimatedCheckboxView(frame: .zero)
+        case .radioButtons:
+            return AnimatedRadioButtonView(frame: .zero)
+        }
     }
 }
