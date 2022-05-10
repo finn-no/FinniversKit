@@ -4,6 +4,8 @@ class SelectionListItemView: UIView {
 
     // MARK: - Internal properties
 
+    let model: SelectionItemModel
+
     var isSelected: Bool = false {
         didSet {
             updateSelection(shouldAnimate: true)
@@ -12,7 +14,6 @@ class SelectionListItemView: UIView {
 
     // MARK: - Private properties
 
-    private let model: SelectionItemModel
     private let configuration: Configuration
     private let presentation: SelectionListView.Presentation
     private lazy var contentView = UIView(withAutoLayout: true)
