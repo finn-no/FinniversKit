@@ -24,6 +24,7 @@ public class SelectionListView: UIView {
 
     private let itemSpacing: CGFloat = 2
     private let cornerRadius: CGFloat = .spacingS
+    private var itemViews = [SelectionListItemView]()
     private lazy var stackView = UIStackView(axis: .vertical, spacing: -itemSpacing, withAutoLayout: true)
 
     // MARK: - Init
@@ -49,12 +50,12 @@ public class SelectionListView: UIView {
     // MARK: - Public methods
 
     public func toggleSelection(forItemAtIndex index: Int) {
-        guard let itemView = stackView.arrangedSubviews[safe: index] as? SelectionListItemView else { return }
+        guard let itemView = itemViews[safe: index] else { return }
         toggle(itemView: itemView)
     }
 
     public func selectionState(forItemAtIndex index: Int) -> Bool {
-        guard let itemView = stackView.arrangedSubviews[safe: index] as? SelectionListItemView else { return false }
+        guard let itemView = itemViews[safe: index] else { return false }
         return itemView.isSelected
     }
 
@@ -65,7 +66,7 @@ public class SelectionListView: UIView {
             firstSelectedRadioButtonIndex = models.firstIndex(where: { $0.isInitiallySelected })
         }
 
-        let views = models.enumerated().map { index, model -> SelectionListItemView in
+        let itemViews = models.enumerated().map { index, model -> SelectionListItemView in
             let configuration = SelectionListItemView.Configuration(
                 spacing: itemSpacing,
                 cornerRadius: cornerRadius,
@@ -93,7 +94,9 @@ public class SelectionListView: UIView {
         }
 
         stackView.removeArrangedSubviews()
-        stackView.addArrangedSubviews(views)
+
+        self.itemViews = itemViews
+        stackView.addArrangedSubviews(itemViews)
         invalidateIntrinsicContentSize()
     }
 
@@ -104,7 +107,6 @@ public class SelectionListView: UIView {
         case .checkboxes:
             itemView.isSelected.toggle()
         case .radioButtons:
-            guard let itemViews = stackView.arrangedSubviews as? [SelectionListItemView] else { return }
             itemViews.forEach {
                 $0.isSelected = $0 == itemView
             }
@@ -116,7 +118,7 @@ public class SelectionListView: UIView {
     @objc private func didSelectItem(_ gestureRecognizer: UITapGestureRecognizer) {
         guard
             let itemView = gestureRecognizer.view as? SelectionListItemView,
-            let viewIndex = stackView.arrangedSubviews.firstIndex(of: itemView)
+            let viewIndex = itemViews.firstIndex(of: itemView)
         else { return }
 
         toggle(itemView: itemView)
