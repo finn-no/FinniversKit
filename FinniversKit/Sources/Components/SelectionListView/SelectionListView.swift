@@ -16,6 +16,10 @@ public class SelectionListView: UIView {
     public let presentation: Presentation
     public weak var delegate: SelectionListViewDelegate?
 
+    public var hasSelection: Bool {
+        itemViews.contains(where: { $0.isSelected })
+    }
+
     public override var intrinsicContentSize: CGSize {
         stackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
     }
