@@ -54,8 +54,8 @@ class SelectionListCheckboxDemoView: UIView, Tweakable {
 // MARK: - SelectionListViewDelegate
 
 extension SelectionListCheckboxDemoView: SelectionListViewDelegate {
-    func selectionListView(_ view: SelectionListView, didToggleItemAtIndex index: Int) {
-        print("👉 Did toggle item at index \(index)")
+    func selectionListView(_ view: SelectionListView, didToggleItemAtIndex index: Int, withIdentifier identifier: String?) {
+        print("👉 Did toggle item at index \(index) with identifier '\(identifier ?? "")'")
     }
 }
 
@@ -65,6 +65,7 @@ private extension Array where Element == SelectionItemModel {
     static func create(number: Int) -> [SelectionItemModel] {
         (0..<number).map {
             SelectionItemModel(
+                identifier: "item-\($0)",
                 title: "Jeg kan overlevere ved oppmøte",
                 description: .plain("Du og kjøper gjør en egen avtale"),
                 icon: UIImage(named: .favoriteActive).withRenderingMode(.alwaysTemplate),
