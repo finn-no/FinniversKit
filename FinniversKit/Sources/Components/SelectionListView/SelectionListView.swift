@@ -54,8 +54,18 @@ public class SelectionListView: UIView {
         toggle(itemView: itemView)
     }
 
+    public func toggleSelection(forItemWithIdentifier identifier: String) {
+        guard let itemView = itemViews.first(where: { $0.model.identifier == identifier }) else { return }
+        toggle(itemView: itemView)
+    }
+
     public func selectionState(forItemAtIndex index: Int) -> Bool {
         guard let itemView = itemViews[safe: index] else { return false }
+        return itemView.isSelected
+    }
+
+    public func selectionState(forItemWithIdentifier identifier: String) -> Bool {
+        guard let itemView = itemViews.first(where: { $0.model.identifier == identifier }) else { return false }
         return itemView.isSelected
     }
 
