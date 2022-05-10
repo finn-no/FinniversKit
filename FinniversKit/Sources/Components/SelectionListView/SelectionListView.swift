@@ -50,7 +50,7 @@ public class SelectionListView: UIView {
 
     public func toggleSelection(forItemAtIndex index: Int) {
         guard let itemView = stackView.arrangedSubviews[safe: index] as? SelectionListItemView else { return }
-        itemView.isSelected.toggle()
+        toggle(itemView: itemView)
     }
 
     public func selectionState(forItemAtIndex index: Int) -> Bool {
@@ -97,23 +97,29 @@ public class SelectionListView: UIView {
         invalidateIntrinsicContentSize()
     }
 
+    // MARK: - Private methods
+
+    private func toggle(itemView: SelectionListItemView) {
+        switch presentation {
+        case .checkboxes:
+            itemView.isSelected.toggle()
+        case .radioButtons:
+            guard let itemViews = stackView.arrangedSubviews as? [SelectionListItemView] else { return }
+            itemViews.forEach {
+                $0.isSelected = $0 == itemView
+            }
+        }
+    }
+
     // MARK: - Actions
 
     @objc private func didSelectItem(_ gestureRecognizer: UITapGestureRecognizer) {
         guard
             let itemView = gestureRecognizer.view as? SelectionListItemView,
-            let itemViews = stackView.arrangedSubviews as? [SelectionListItemView],
             let viewIndex = stackView.arrangedSubviews.firstIndex(of: itemView)
         else { return }
 
-        switch presentation {
-        case .checkboxes:
-            itemView.isSelected.toggle()
-        case .radioButtons:
-            itemViews.forEach {
-                $0.isSelected = $0 == itemView
-            }
-        }
+        toggle(itemView: itemView)
 
         delegate?.selectionListView(self, didToggleItemAtIndex: viewIndex, withIdentifier: itemView.model.identifier)
     }
