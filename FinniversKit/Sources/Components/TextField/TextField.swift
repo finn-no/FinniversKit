@@ -55,11 +55,11 @@ public class TextField: UIView {
     private var textFieldBorderColor: UIColor?
     private var textFieldDefaultBorderColor: UIColor?
     private var textFieldDynamicBorder: Bool?
-    
+
     private var displayHelpTextAfterFirstTouch = true
-    
+
     public var textRegex: String?
-    
+
     private var underlineHeightConstraint: NSLayoutConstraint?
     private var helpTextLabelLeadingConstraint: NSLayoutConstraint?
 
@@ -301,6 +301,12 @@ public class TextField: UIView {
 
     // MARK: - Overrides
 
+    public override var canBecomeFirstResponder: Bool { true }
+
+    public override func becomeFirstResponder() -> Bool {
+        textField.becomeFirstResponder()
+    }
+
     public override func layoutSubviews() {
         super.layoutSubviews()
 
@@ -324,7 +330,7 @@ public class TextField: UIView {
         transition(to: state)
         setNeedsLayout()
     }
-    
+
     public func configureBorder(radius: CGFloat, width: CGFloat, color: UIColor, dynamicBorder: Bool = false) {
         textFieldDynamicBorder = dynamicBorder
         textFieldDefaultBorderColor = color
@@ -423,7 +429,7 @@ public class TextField: UIView {
 
     private func transition(to state: State) {
         layoutIfNeeded()
-        
+
         if let dynamicBorder = self.textFieldDynamicBorder, dynamicBorder == true {
             switch state {
             case .normal :
@@ -436,7 +442,7 @@ public class TextField: UIView {
         else{
             underlineHeightConstraint?.constant = state.underlineHeight
         }
-        
+
         if isHelpTextForErrors() {
             if shouldDisplayErrorHelpText() {
                 helpTextLabelLeadingConstraint?.constant = errorIconImageView.frame.size.width + .spacingXS
@@ -455,7 +461,7 @@ public class TextField: UIView {
             self.textFieldBackgroundView.backgroundColor = self.textFieldBackgroundColorOverride ?? state.textFieldBackgroundColor
             self.typeLabel.textColor = state.accessoryLabelTextColor
             self.helpTextLabel.textColor = state.accessoryLabelTextColor
-            
+
             if self.isHelpTextForErrors() {
                 if self.shouldDisplayErrorHelpText() {
                     self.helpTextLabel.alpha = 1.0
