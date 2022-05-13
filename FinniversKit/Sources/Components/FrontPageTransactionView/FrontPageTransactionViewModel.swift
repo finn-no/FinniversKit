@@ -1,12 +1,12 @@
 import Foundation
 
 public struct FrontPageTransactionViewModel {
-    let headerTitle: String
-    let title: String
-    let subtitle: String
-    let imageUrl: String?
-    let adId: Int?
-    let transactionId: String?
+    public let headerTitle: String
+    public let title: String
+    public let subtitle: String
+    public let imageUrl: String?
+    public let adId: Int?
+    public let transactionId: String?
 
     public init(headerTitle: String,
                 title: String,
