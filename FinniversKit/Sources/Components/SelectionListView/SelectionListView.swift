@@ -1,7 +1,7 @@
 import UIKit
 
 public protocol SelectionListViewDelegate: AnyObject {
-    func selectionListView(_ view: SelectionListView, didToggleItemAtIndex index: Int, withIdentifier identifier: String?)
+    func selectionListView(_ view: SelectionListView, didToggleItemAtIndex index: Int, withIdentifier identifier: String?, isSelected: Bool)
 }
 
 public class SelectionListView: UIView {
@@ -137,7 +137,7 @@ public class SelectionListView: UIView {
 
         toggle(itemView: itemView)
 
-        delegate?.selectionListView(self, didToggleItemAtIndex: viewIndex, withIdentifier: itemView.model.identifier)
+        delegate?.selectionListView(self, didToggleItemAtIndex: viewIndex, withIdentifier: itemView.model.identifier, isSelected: itemView.isSelected)
     }
 }
 

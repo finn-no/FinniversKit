@@ -54,8 +54,8 @@ class SelectionListCheckboxDemoView: UIView, Tweakable {
 // MARK: - SelectionListViewDelegate
 
 extension SelectionListCheckboxDemoView: SelectionListViewDelegate {
-    func selectionListView(_ view: SelectionListView, didToggleItemAtIndex index: Int, withIdentifier identifier: String?) {
-        print("👉 Did toggle item at index \(index) with identifier '\(identifier ?? "")'")
+    func selectionListView(_ view: SelectionListView, didToggleItemAtIndex index: Int, withIdentifier identifier: String?, isSelected: Bool) {
+        print("👉 Did toggle item at index \(index) with identifier '\(identifier ?? "")'. Is selected: \(isSelected)")
     }
 }
 
