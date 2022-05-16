@@ -5,6 +5,10 @@ public protocol FrontPageTransactionViewDelegate: AnyObject {
 }
 
 public class FrontPageTransactionView: UIView {
+
+    public weak var delegate: FrontPageTransactionViewDelegate?
+
+
     private let imageWidth: CGFloat = 56
     private let cornerRadius: CGFloat = 8
     
@@ -23,7 +27,7 @@ public class FrontPageTransactionView: UIView {
         label.textColor = .licorice
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.widthAnchor.constraint(equalToConstant: 228).isActive = true
+
         return label
     }()
     
@@ -32,8 +36,6 @@ public class FrontPageTransactionView: UIView {
         imageView.image = UIImage(named: ImageAsset.noImage)
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
-        imageView.widthAnchor.constraint(equalToConstant: imageWidth).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: imageWidth).isActive = true
         imageView.layer.cornerRadius = cornerRadius
         imageView.clipsToBounds = true
         return imageView
@@ -94,9 +96,7 @@ public class FrontPageTransactionView: UIView {
     }()
 
     private lazy var headerLabel: UILabel = {
-        let label = Label(withAutoLayout: true)
-        label.font = .bodyStrong
-        label.textColor = .textPrimary
+        let label = Label(style: .bodyStrong, withAutoLayout: true)
         return label
     }()
 
@@ -111,8 +111,7 @@ public class FrontPageTransactionView: UIView {
 
     private(set) var viewModel: FrontPageTransactionViewModel?
     private var imageDatasource: RemoteImageViewDataSource?
-    public weak var delegate: FrontPageTransactionViewDelegate?
-    
+
     //MARK: - Lifecycle
     
     override init(frame: CGRect) {
@@ -131,7 +130,6 @@ extension FrontPageTransactionView {
     private func setup() {
         imageContainerView.addSubview(imageView)
         imageView.fillInSuperview()
-        // addSubview(largeShadowView)
         largeShadowView.fillInSuperview()
         largeShadowView.addSubview(smallShadowView)
         smallShadowView.fillInSuperview()
@@ -149,7 +147,10 @@ extension FrontPageTransactionView {
             horizontalStack.leadingAnchor.constraint(equalTo: backgroundContainer.leadingAnchor, constant: .spacingM),
             horizontalStack.topAnchor.constraint(equalTo: backgroundContainer.topAnchor, constant: .spacingM),
             horizontalStack.trailingAnchor.constraint(equalTo: backgroundContainer.trailingAnchor, constant: -.spacingM),
-            horizontalStack.bottomAnchor.constraint(equalTo: backgroundContainer.bottomAnchor, constant: -.spacingM)
+            horizontalStack.bottomAnchor.constraint(equalTo: backgroundContainer.bottomAnchor, constant: -.spacingM),
+            subtitleLabel.widthAnchor.constraint(equalToConstant: 228),
+            imageView.widthAnchor.constraint(equalToConstant: imageWidth),
+            imageView.heightAnchor.constraint(equalToConstant: imageWidth),
         ])
 
         backgroundContainer.backgroundColor = .bgColor
@@ -163,9 +164,11 @@ extension FrontPageTransactionView {
             return
         }
 
-        imageView.loadImage(for: imageUrl,
-                            imageWidth: imageWidth,
-                            fallbackImage: UIImage(named: ImageAsset.noImage))
+        imageView.loadImage(
+            for: imageUrl,
+            imageWidth: imageWidth,
+            fallbackImage: UIImage(named: ImageAsset.noImage)
+        )
     }
 
     @objc private func viewTapped() {

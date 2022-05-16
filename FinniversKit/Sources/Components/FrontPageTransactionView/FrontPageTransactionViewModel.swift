@@ -8,13 +8,14 @@ public struct FrontPageTransactionViewModel {
     public let adId: Int?
     public let transactionId: String?
 
-    public init(headerTitle: String,
-                title: String,
-                subtitle: String,
-                imageUrl: String? = nil,
-                adId: Int? = nil,
-                transactionId: String? = nil
-                ) {
+    public init(
+        headerTitle: String,
+        title: String,
+        subtitle: String,
+        imageUrl: String? = nil,
+        adId: Int? = nil,
+        transactionId: String? = nil
+    ) {
         self.headerTitle = headerTitle
         self.title = title
         self.subtitle = subtitle

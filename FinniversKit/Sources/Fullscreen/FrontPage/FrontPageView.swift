@@ -172,14 +172,21 @@ public final class FrontPageView: UIView {
 
         promoContainer.addSubview(promotionView)
         promotionView.fillInSuperview(
-            insets: .init(top: .spacingL, leading: .spacingM, bottom: 0, trailing: -.spacingM)
+            insets: .init(
+                top: .spacingL,
+                leading: .spacingM,
+                bottom: 0,
+                trailing: -.spacingM
+            )
         )
 
         setupFrames()
     }
 
-    public func showTransactionFeed(withViewModel viewModel: FrontPageTransactionViewModel,
-                                    andDelegate delegate: FrontPageTransactionViewDelegate) {
+    public func showTransactionFeed(
+        withViewModel viewModel: FrontPageTransactionViewModel,
+        andDelegate delegate: FrontPageTransactionViewDelegate
+    ) {
         let transactionView = FrontPageTransactionView(withAutoLayout: true)
         transactionView.delegate = delegate
         transactionView.configure(with: viewModel, andImageDatasource: remoteImageDataSource)
