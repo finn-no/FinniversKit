@@ -306,4 +306,8 @@ class ComponentViewTests: XCTestCase {
     func testCheckmarkListView() {
         snapshot(.checkmarkListView)
     }
+
+    func testAddressComponentView() {
+        snapshot(.addressComponentView)
+    }
 }
