@@ -303,8 +303,12 @@ class ComponentViewTests: XCTestCase {
         snapshot(.searchView)
     }
 
-    func testCheckmarkListView() {
-        snapshot(.checkmarkListView)
+    func testSelectionListCheckboxView() {
+        snapshot(.selectionListCheckboxView)
+    }
+
+    func testSelectionListRadiobuttonView() {
+        snapshot(.selectionListRadiobuttonView)
     }
 
     func testAddressComponentView() {
