@@ -75,7 +75,19 @@ public enum ComponentDemoViews: String, DemoViews {
     case overFlowCollectionView
     case monthAndYearPickerView
     case searchView
-    case checkmarkListView
+    case selectionListCheckboxView
+    case selectionListRadiobuttonView
+
+    var title: String? {
+        switch self {
+        case .selectionListCheckboxView:
+            return "SelectionListView - checkboxes"
+        case .selectionListRadiobuttonView:
+            return "SelectionListView - radio buttons"
+        default:
+            return nil
+        }
+    }
 
     public var viewController: UIViewController {
         switch self {
@@ -228,8 +240,10 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<MonthAndYearPickerDemoView>()
         case .searchView:
             return DemoViewController<SearchDemoView>()
-        case .checkmarkListView:
-            return DemoViewController<CheckmarkListDemoView>(dismissType: .dismissButton)
+        case .selectionListCheckboxView:
+            return DemoViewController<SelectionListCheckboxDemoView>(dismissType: .dismissButton)
+        case .selectionListRadiobuttonView:
+            return DemoViewController<SelectionListRadiobuttonDemoView>(dismissType: .dismissButton)
         }
     }
 }

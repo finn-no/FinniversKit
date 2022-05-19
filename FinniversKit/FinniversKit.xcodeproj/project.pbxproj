@@ -137,13 +137,13 @@
 		4DD3AA7C27B56592007B107E /* DetailCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3AA7B27B56591007B107E /* DetailCalloutView.swift */; };
 		55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* Broadcast.swift */; };
 		55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B277203DB56A007D7277 /* BroadcastMessage.swift */; };
-		5B9590BF11466FFFC29766C3 /* CheckmarkListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9595BF11C0D7740F6E697F /* CheckmarkListView.swift */; };
+		5B9590BF11466FFFC29766C3 /* SelectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9595BF11C0D7740F6E697F /* SelectionListView.swift */; };
 		5B9596721C36A36728C6E6AD /* OverflowCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9594B274D9B8D8390676E7 /* OverflowCollectionView.swift */; };
 		5B959745935CC23FC0F17ACE /* MultilineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959E64AAE5D542C2168DC2 /* MultilineButton.swift */; };
 		5B9598434FDB0BEC62D2D91D /* OverflowCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959240C94F8A2F44F428F3 /* OverflowCollectionViewCell.swift */; };
-		5B9598E9D9A01E990206AC5A /* CheckmarkItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9594720BB424FD1F977364 /* CheckmarkItemModel.swift */; };
+		5B9598E9D9A01E990206AC5A /* SelectionItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9594720BB424FD1F977364 /* SelectionItemModel.swift */; };
 		5B95990406E586D6E278E80E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959BDD757ABA49DA59E345 /* SearchView.swift */; };
-		5B959F868008E7C5EB3B9EF6 /* CheckmarkItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9599E22AECDDE0750CBD31 /* CheckmarkItemView.swift */; };
+		5B959F868008E7C5EB3B9EF6 /* SelectionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9599E22AECDDE0750CBD31 /* SelectionListItemView.swift */; };
 		5D0ED35125A49FA7007750D0 /* FinnTextField+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0ED35025A49FA7007750D0 /* FinnTextField+Style.swift */; };
 		5D0ED35725A49FC9007750D0 /* FinnTextField+Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0ED35625A49FC9007750D0 /* FinnTextField+Input.swift */; };
 		5DA190C725A4A7E0002305A8 /* Transition+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190C625A4A7E0002305A8 /* Transition+Extensions.swift */; };
@@ -597,10 +597,10 @@
 		55C5B273203D8E20007D7277 /* Broadcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Broadcast.swift; sourceTree = "<group>"; };
 		55C5B277203DB56A007D7277 /* BroadcastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastMessage.swift; sourceTree = "<group>"; };
 		5B959240C94F8A2F44F428F3 /* OverflowCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverflowCollectionViewCell.swift; sourceTree = "<group>"; };
-		5B9594720BB424FD1F977364 /* CheckmarkItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkItemModel.swift; sourceTree = "<group>"; };
+		5B9594720BB424FD1F977364 /* SelectionItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionItemModel.swift; sourceTree = "<group>"; };
 		5B9594B274D9B8D8390676E7 /* OverflowCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverflowCollectionView.swift; sourceTree = "<group>"; };
-		5B9595BF11C0D7740F6E697F /* CheckmarkListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkListView.swift; sourceTree = "<group>"; };
-		5B9599E22AECDDE0750CBD31 /* CheckmarkItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkItemView.swift; sourceTree = "<group>"; };
+		5B9595BF11C0D7740F6E697F /* SelectionListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionListView.swift; sourceTree = "<group>"; };
+		5B9599E22AECDDE0750CBD31 /* SelectionListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionListItemView.swift; sourceTree = "<group>"; };
 		5B959BDD757ABA49DA59E345 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		5B959E64AAE5D542C2168DC2 /* MultilineButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineButton.swift; sourceTree = "<group>"; };
 		5D0ED35025A49FA7007750D0 /* FinnTextField+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextField+Style.swift"; sourceTree = "<group>"; };
@@ -1391,7 +1391,7 @@
 				8D680E7F9086E07B63CB9D23 /* SelectionView */,
 				8D6807E8380DAE7E730CC80D /* NumberedListView */,
 				5B959D7A71236CBF67504D3E /* SearchView */,
-				5B959846196B48EE2080C452 /* CheckmarkListView */,
+				5B959846196B48EE2080C452 /* SelectionListView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1800,7 +1800,7 @@
 		5B9593DA14ED6A1E0C8FEF84 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5B9594720BB424FD1F977364 /* CheckmarkItemModel.swift */,
+				5B9594720BB424FD1F977364 /* SelectionItemModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1808,19 +1808,19 @@
 		5B95976975A32A51DFF7F5D1 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				5B9599E22AECDDE0750CBD31 /* CheckmarkItemView.swift */,
+				5B9599E22AECDDE0750CBD31 /* SelectionListItemView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
 		};
-		5B959846196B48EE2080C452 /* CheckmarkListView */ = {
+		5B959846196B48EE2080C452 /* SelectionListView */ = {
 			isa = PBXGroup;
 			children = (
-				5B9595BF11C0D7740F6E697F /* CheckmarkListView.swift */,
+				5B9595BF11C0D7740F6E697F /* SelectionListView.swift */,
 				5B95976975A32A51DFF7F5D1 /* Subviews */,
 				5B9593DA14ED6A1E0C8FEF84 /* Models */,
 			);
-			path = CheckmarkListView;
+			path = SelectionListView;
 			sourceTree = "<group>";
 		};
 		5B959AA16D7FF2BABAF31090 /* OverflowCollectionView */ = {
@@ -3717,9 +3717,9 @@
 				5B9596721C36A36728C6E6AD /* OverflowCollectionView.swift in Sources */,
 				5B9598434FDB0BEC62D2D91D /* OverflowCollectionViewCell.swift in Sources */,
 				5B95990406E586D6E278E80E /* SearchView.swift in Sources */,
-				5B9590BF11466FFFC29766C3 /* CheckmarkListView.swift in Sources */,
-				5B959F868008E7C5EB3B9EF6 /* CheckmarkItemView.swift in Sources */,
-				5B9598E9D9A01E990206AC5A /* CheckmarkItemModel.swift in Sources */,
+				5B9590BF11466FFFC29766C3 /* SelectionListView.swift in Sources */,
+				5B959F868008E7C5EB3B9EF6 /* SelectionListItemView.swift in Sources */,
+				5B9598E9D9A01E990206AC5A /* SelectionItemModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

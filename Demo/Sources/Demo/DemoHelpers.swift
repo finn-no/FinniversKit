@@ -56,7 +56,7 @@ enum Sections: String, CaseIterable {
         case .dna:
             names = DnaDemoViews.items.map { $0.rawValue.capitalizingFirstLetter }
         case .components:
-            names = ComponentDemoViews.items.map { $0.rawValue.capitalizingFirstLetter }
+            names = ComponentDemoViews.items.map { $0.title ?? $0.rawValue.capitalizingFirstLetter }
         case .cells:
             names = CellsDemoViews.items.map { $0.rawValue.capitalizingFirstLetter }
         case .recycling:

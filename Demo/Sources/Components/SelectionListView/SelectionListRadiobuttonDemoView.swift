@@ -1,7 +1,7 @@
 import UIKit
 import FinniversKit
 
-class CheckmarkListDemoView: UIView, Tweakable {
+class SelectionListRadiobuttonDemoView: UIView, Tweakable {
 
     // MARK: - Internal properties
 
@@ -22,8 +22,8 @@ class CheckmarkListDemoView: UIView, Tweakable {
 
     // MARK: - Private properties
 
-    private lazy var checkmarkListView: CheckmarkListView = {
-        let view = CheckmarkListView(withAutoLayout: true)
+    private lazy var checkmarkListView: SelectionListView = {
+        let view = SelectionListView(presentation: .radioButtons, withAutoLayout: true)
         view.delegate = self
         return view
     }()
@@ -51,20 +51,21 @@ class CheckmarkListDemoView: UIView, Tweakable {
     }
 }
 
-// MARK: - CheckmarkListViewDelegate
+// MARK: - SelectionListViewDelegate
 
-extension CheckmarkListDemoView: CheckmarkListViewDelegate {
-    func checkmarkListView(_ view: CheckmarkListView, didToggleItemAtIndex index: Int) {
-        print("👉 Did toggle item at index \(index)")
+extension SelectionListRadiobuttonDemoView: SelectionListViewDelegate {
+    func selectionListView(_ view: SelectionListView, didToggleItemAtIndex index: Int, withIdentifier identifier: String?, isSelected: Bool) {
+        print("👉 Did toggle item at index \(index) with identifier '\(identifier ?? "")'. Is selected: \(isSelected)")
     }
 }
 
 // MARK: - Private extensions
 
-private extension Array where Element == CheckmarkItemModel {
-    static func create(number: Int) -> [CheckmarkItemModel] {
+private extension Array where Element == SelectionItemModel {
+    static func create(number: Int) -> [SelectionItemModel] {
         (0..<number).map {
-            CheckmarkItemModel(
+            SelectionItemModel(
+                identifier: "item-\($0)",
                 title: "Jeg kan overlevere ved oppmøte",
                 description: .plain("Du og kjøper gjør en egen avtale"),
                 icon: UIImage(named: .favoriteActive).withRenderingMode(.alwaysTemplate),
