@@ -133,6 +133,7 @@ class SelectionListItemView: UIView {
         UIView.animate(withDuration: duration, animations: { [weak self] in
             guard let self = self else { return }
             self.backgroundColor = self.isSelected ? .primaryBlue : .clear
+            self.iconImageView.tintColor = self.isSelected ? .textPrimary : .textSecondary
         })
     }
 }
