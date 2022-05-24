@@ -96,18 +96,20 @@ class SelectionListItemView: UIView {
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -configuration.spacing),
             contentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -configuration.spacing),
 
-            selectionView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingL),
+            selectionView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor),
             selectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            selectionView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
+            selectionView.centerYAnchor.constraint(greaterThanOrEqualTo: textStackView.centerYAnchor),
 
             textStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
             textStackView.leadingAnchor.constraint(equalTo: selectionView.trailingAnchor, constant: .spacingM),
             textStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM),
 
-            iconImageView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: .spacingS),
+            iconImageView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: textStackView.trailingAnchor, constant: .spacingM),
             iconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
-            iconImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -.spacingM),
-            iconImageView.centerYAnchor.constraint(equalTo: selectionView.centerYAnchor),
+            iconImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
+            iconImageView.centerYAnchor.constraint(equalTo: textStackView.centerYAnchor),
 
             iconImageView.widthAnchor.constraint(equalToConstant: 24),
             iconImageView.heightAnchor.constraint(equalToConstant: 24),
@@ -131,6 +133,7 @@ class SelectionListItemView: UIView {
         UIView.animate(withDuration: duration, animations: { [weak self] in
             guard let self = self else { return }
             self.backgroundColor = self.isSelected ? .primaryBlue : .clear
+            self.iconImageView.tintColor = self.isSelected ? .textPrimary : .textSecondary
         })
     }
 }
