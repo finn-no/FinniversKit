@@ -19,6 +19,11 @@ public final class FooterButtonView: TopShadowView {
         }
     }
 
+    public var isEnabled: Bool {
+        get { button.isEnabled }
+        set { button.isEnabled = newValue }
+    }
+
     // MARK: - Private properties
 
     private let button: UIButton = {
