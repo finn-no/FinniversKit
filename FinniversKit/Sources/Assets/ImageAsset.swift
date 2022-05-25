@@ -134,6 +134,7 @@ enum ImageAsset: String {
     case ornamentCircleBlue
     case ornamentCircleRed
     case ornamentStar
+    case padlock
     case pencilPaper
     case pin
     case playVideo
@@ -274,6 +275,7 @@ enum ImageAsset: String {
             .ornamentCircleBlue,
             .ornamentCircleRed,
             .ornamentStar,
+            .padlock,
             .pencilPaper,
             .pin,
             .playVideo,
