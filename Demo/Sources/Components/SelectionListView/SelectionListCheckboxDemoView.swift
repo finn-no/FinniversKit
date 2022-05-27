@@ -7,7 +7,7 @@ class SelectionListCheckboxDemoView: UIView, Tweakable {
 
     lazy var tweakingOptions: [TweakingOption] = [
         .init(title: "3 items", action: { [weak self] in
-            self?.checkmarkListView.configure(with: .create(number: 3))
+            self?.checkmarkListView.configure(with: .create(number: 3, includeCheckmarkDetailsForLastItem: true))
         }),
         .init(title: "1 items", action: { [weak self] in
             self?.checkmarkListView.configure(with: .create(number: 1))
@@ -62,15 +62,25 @@ extension SelectionListCheckboxDemoView: SelectionListViewDelegate {
 // MARK: - Private extensions
 
 private extension Array where Element == SelectionItemModel {
-    static func create(number: Int) -> [SelectionItemModel] {
+    static func create(number: Int, includeCheckmarkDetailsForLastItem: Bool = false) -> [SelectionItemModel] {
         (0..<number).map {
-            SelectionItemModel(
+            let includeDetailItems = ($0 == number - 1) && includeCheckmarkDetailsForLastItem
+            return SelectionItemModel(
                 identifier: "item-\($0)",
                 title: "Jeg kan overlevere ved oppmøte",
                 description: .plain("Du og kjøper gjør en egen avtale"),
                 icon: UIImage(named: .favoriteActive).withRenderingMode(.alwaysTemplate),
+                detailItems: includeDetailItems ? Self.detailItems : nil,
                 isInitiallySelected: $0 == 0
             )
         }
+    }
+
+    private static var detailItems: [String] {
+        [
+            "Officia at quas",
+            "Odit cumque et quisquam id ut nesciunt suscipit beatae enim",
+            "Minus corrupti molestiae ad"
+        ]
     }
 }
