@@ -19,6 +19,8 @@ class SelectionListItemView: UIView {
     private lazy var contentView = UIView(withAutoLayout: true)
     private lazy var selectionView = presentation.selectionView
     private lazy var textStackView = UIStackView(axis: .vertical, spacing: .spacingXS, withAutoLayout: true)
+    private lazy var detailViewsStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+    private lazy var detailViewsStackViewBottomConstraint = detailViewsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
@@ -89,6 +91,7 @@ class SelectionListItemView: UIView {
         contentView.addSubview(selectionView)
         contentView.addSubview(textStackView)
         contentView.addSubview(iconImageView)
+        contentView.addSubview(detailViewsStackView)
 
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: topAnchor, constant: configuration.spacing),
@@ -98,21 +101,25 @@ class SelectionListItemView: UIView {
 
             selectionView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor),
             selectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-            selectionView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
+            selectionView.bottomAnchor.constraint(lessThanOrEqualTo: detailViewsStackView.topAnchor),
             selectionView.centerYAnchor.constraint(greaterThanOrEqualTo: textStackView.centerYAnchor),
 
             textStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
             textStackView.leadingAnchor.constraint(equalTo: selectionView.trailingAnchor, constant: .spacingM),
-            textStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM),
+            textStackView.bottomAnchor.constraint(equalTo: detailViewsStackView.topAnchor, constant: -.spacingM),
 
             iconImageView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: textStackView.trailingAnchor, constant: .spacingM),
             iconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
-            iconImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
+            iconImageView.bottomAnchor.constraint(lessThanOrEqualTo: detailViewsStackView.topAnchor),
             iconImageView.centerYAnchor.constraint(equalTo: textStackView.centerYAnchor),
 
             iconImageView.widthAnchor.constraint(equalToConstant: 24),
             iconImageView.heightAnchor.constraint(equalToConstant: 24),
+
+            detailViewsStackView.leadingAnchor.constraint(equalTo: selectionView.trailingAnchor, constant: .spacingM),
+            detailViewsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            detailViewsStackViewBottomConstraint,
         ])
 
         updateSelection(shouldAnimate: false)
