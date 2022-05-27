@@ -85,7 +85,7 @@ class SelectionListItemView: UIView {
             descriptionLabel.attributedText = attributedText
         }
 
-        if let detailItems = model.detailItems {
+        if let detailItems = model.detailItems, !detailItems.isEmpty {
             let itemViews = detailItems.map { CheckmarkItemDetailView(item: $0, withAutoLayout: true) }
             detailViewsStackView.addArrangedSubviews(itemViews)
 
