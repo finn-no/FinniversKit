@@ -183,11 +183,13 @@
 		4D529E13258357D0007AE5B6 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D529E12258357D0007AE5B6 /* Icons.xcassets */; };
 		4D529E2125837087007AE5B6 /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D529E2025837087007AE5B6 /* ImageAsset.swift */; };
 		4DD3AA7A27B5651F007B107E /* DetailCalloutDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3AA7927B5651F007B107E /* DetailCalloutDemoView.swift */; };
-		5B959265245920DA9AC6B68F /* CheckmarkListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9595B6FD629480500DA12C /* CheckmarkListDemoView.swift */; };
+		5B959265245920DA9AC6B68F /* SelectionListCheckboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9595B6FD629480500DA12C /* SelectionListCheckboxDemoView.swift */; };
 		5B95941933E6E48B4DE53E1B /* IPadSnapshotWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959EE2A1978F8DE0BC95D7 /* IPadSnapshotWrapperViewController.swift */; };
 		5B959541A9DCE0B0A3C4C731 /* MultilineButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9594F7F4A53013131B6549 /* MultilineButtonDemoView.swift */; };
+		5B95992679ACA79CA97615BC /* AddressComponentDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959FC32DA7FC5749FC056D /* AddressComponentDemoView.swift */; };
 		5B959A0F727EB51E56231370 /* OverflowCollectionViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959C33286B6BD7933C9BA9 /* OverflowCollectionViewDemo.swift */; };
 		5B959A8547A482ED59F0E7AC /* SearchDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9594F851141F5FE17439BE /* SearchDemoView.swift */; };
+		5B959B69428E9E09E4256294 /* SelectionListRadiobuttonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9596BFF50B7FDCF25A1E92 /* SelectionListRadiobuttonDemoView.swift */; };
 		5B959D71E45DF88C52F38B78 /* SnapshotWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95911723A1FB1DC9260B22 /* SnapshotWrapperViewController.swift */; };
 		5D62FD7025B03B4800EB882D /* DemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D62FD6F25B03B4800EB882D /* DemoViews.swift */; };
 		5DA190D525A5BC5B002305A8 /* FinnTextField+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190D425A5BC5B002305A8 /* FinnTextField+Previews.swift */; };
@@ -420,9 +422,11 @@
 		5B95911723A1FB1DC9260B22 /* SnapshotWrapperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotWrapperViewController.swift; sourceTree = "<group>"; };
 		5B9594F7F4A53013131B6549 /* MultilineButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineButtonDemoView.swift; sourceTree = "<group>"; };
 		5B9594F851141F5FE17439BE /* SearchDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDemoView.swift; sourceTree = "<group>"; };
-		5B9595B6FD629480500DA12C /* CheckmarkListDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkListDemoView.swift; sourceTree = "<group>"; };
+		5B9595B6FD629480500DA12C /* SelectionListCheckboxDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionListCheckboxDemoView.swift; sourceTree = "<group>"; };
+		5B9596BFF50B7FDCF25A1E92 /* SelectionListRadiobuttonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionListRadiobuttonDemoView.swift; sourceTree = "<group>"; };
 		5B959C33286B6BD7933C9BA9 /* OverflowCollectionViewDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverflowCollectionViewDemo.swift; sourceTree = "<group>"; };
 		5B959EE2A1978F8DE0BC95D7 /* IPadSnapshotWrapperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPadSnapshotWrapperViewController.swift; sourceTree = "<group>"; };
+		5B959FC32DA7FC5749FC056D /* AddressComponentDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressComponentDemoView.swift; sourceTree = "<group>"; };
 		5D62FD6F25B03B4800EB882D /* DemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViews.swift; sourceTree = "<group>"; };
 		5DA190D425A5BC5B002305A8 /* FinnTextField+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextField+Previews.swift"; sourceTree = "<group>"; };
 		5DA190EF25A87EAB002305A8 /* FinnTextView+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextView+Previews.swift"; sourceTree = "<group>"; };
@@ -885,7 +889,8 @@
 				5B9595478D0D9DE21CFCDF7C /* MultilineButton */,
 				5B959406F634CEBB6F0318BB /* OverflowCollectionView */,
 				5B9590FE3DEEBCA163F0094E /* SearchView */,
-				5B9592E3B6542A9A678E1E6C /* CheckmarkListView */,
+				5B9595353186CF123865900D /* AddressComponentView */,
+				5B9592E3B6542A9A678E1E6C /* SelectionListView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1661,12 +1666,13 @@
 			path = Wrappers;
 			sourceTree = "<group>";
 		};
-		5B9592E3B6542A9A678E1E6C /* CheckmarkListView */ = {
+		5B9592E3B6542A9A678E1E6C /* SelectionListView */ = {
 			isa = PBXGroup;
 			children = (
-				5B9595B6FD629480500DA12C /* CheckmarkListDemoView.swift */,
+				5B9595B6FD629480500DA12C /* SelectionListCheckboxDemoView.swift */,
+				5B9596BFF50B7FDCF25A1E92 /* SelectionListRadiobuttonDemoView.swift */,
 			);
-			path = CheckmarkListView;
+			path = SelectionListView;
 			sourceTree = "<group>";
 		};
 		5B959406F634CEBB6F0318BB /* OverflowCollectionView */ = {
@@ -1675,6 +1681,14 @@
 				5B959C33286B6BD7933C9BA9 /* OverflowCollectionViewDemo.swift */,
 			);
 			path = OverflowCollectionView;
+			sourceTree = "<group>";
+		};
+		5B9595353186CF123865900D /* AddressComponentView */ = {
+			isa = PBXGroup;
+			children = (
+				5B959FC32DA7FC5749FC056D /* AddressComponentDemoView.swift */,
+			);
+			path = AddressComponentView;
 			sourceTree = "<group>";
 		};
 		5B9595478D0D9DE21CFCDF7C /* MultilineButton */ = {
@@ -1891,7 +1905,7 @@
 			);
 			mainGroup = 46AE6FB7242BADC9007BB005;
 			packageReferences = (
-				F023EAE927B6951400F6286B /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				F023EAE927B6951400F6286B /* XCRemoteSwiftPackageReference "swift-snapshot-testing.git" */,
 			);
 			productRefGroup = 46AE6FC1242BADC9007BB005 /* Products */;
 			projectDirPath = "";
@@ -2154,7 +2168,9 @@
 				5B959541A9DCE0B0A3C4C731 /* MultilineButtonDemoView.swift in Sources */,
 				5B959A0F727EB51E56231370 /* OverflowCollectionViewDemo.swift in Sources */,
 				5B959A8547A482ED59F0E7AC /* SearchDemoView.swift in Sources */,
-				5B959265245920DA9AC6B68F /* CheckmarkListDemoView.swift in Sources */,
+				5B95992679ACA79CA97615BC /* AddressComponentDemoView.swift in Sources */,
+				5B959265245920DA9AC6B68F /* SelectionListCheckboxDemoView.swift in Sources */,
+				5B959B69428E9E09E4256294 /* SelectionListRadiobuttonDemoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2427,7 +2443,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F023EAE927B6951400F6286B /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+		F023EAE927B6951400F6286B /* XCRemoteSwiftPackageReference "swift-snapshot-testing.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pimms/swift-snapshot-testing.git";
 			requirement = {
@@ -2440,7 +2456,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		F023EAEA27B6951400F6286B /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F023EAE927B6951400F6286B /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			package = F023EAE927B6951400F6286B /* XCRemoteSwiftPackageReference "swift-snapshot-testing.git" */;
 			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */

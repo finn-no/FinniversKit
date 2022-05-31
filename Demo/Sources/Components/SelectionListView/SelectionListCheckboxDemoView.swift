@@ -1,13 +1,13 @@
 import UIKit
 import FinniversKit
 
-class CheckmarkListDemoView: UIView, Tweakable {
+class SelectionListCheckboxDemoView: UIView, Tweakable {
 
     // MARK: - Internal properties
 
     lazy var tweakingOptions: [TweakingOption] = [
         .init(title: "3 items", action: { [weak self] in
-            self?.checkmarkListView.configure(with: .create(number: 3))
+            self?.checkmarkListView.configure(with: .create(number: 3, includeCheckmarkDetailsForLastItem: true))
         }),
         .init(title: "1 items", action: { [weak self] in
             self?.checkmarkListView.configure(with: .create(number: 1))
@@ -22,8 +22,8 @@ class CheckmarkListDemoView: UIView, Tweakable {
 
     // MARK: - Private properties
 
-    private lazy var checkmarkListView: CheckmarkListView = {
-        let view = CheckmarkListView(withAutoLayout: true)
+    private lazy var checkmarkListView: SelectionListView = {
+        let view = SelectionListView(presentation: .checkboxes, withAutoLayout: true)
         view.delegate = self
         return view
     }()
@@ -51,25 +51,36 @@ class CheckmarkListDemoView: UIView, Tweakable {
     }
 }
 
-// MARK: - CheckmarkListViewDelegate
+// MARK: - SelectionListViewDelegate
 
-extension CheckmarkListDemoView: CheckmarkListViewDelegate {
-    func checkmarkListView(_ view: CheckmarkListView, didToggleItemAtIndex index: Int) {
-        print("👉 Did toggle item at index \(index)")
+extension SelectionListCheckboxDemoView: SelectionListViewDelegate {
+    func selectionListView(_ view: SelectionListView, didToggleItemAtIndex index: Int, withIdentifier identifier: String?, isSelected: Bool) {
+        print("👉 Did toggle item at index \(index) with identifier '\(identifier ?? "")'. Is selected: \(isSelected)")
     }
 }
 
 // MARK: - Private extensions
 
-private extension Array where Element == CheckmarkItemModel {
-    static func create(number: Int) -> [CheckmarkItemModel] {
+private extension Array where Element == SelectionItemModel {
+    static func create(number: Int, includeCheckmarkDetailsForLastItem: Bool = false) -> [SelectionItemModel] {
         (0..<number).map {
-            CheckmarkItemModel(
+            let includeDetailItems = ($0 == number - 1) && includeCheckmarkDetailsForLastItem
+            return SelectionItemModel(
+                identifier: "item-\($0)",
                 title: "Jeg kan overlevere ved oppmøte",
                 description: .plain("Du og kjøper gjør en egen avtale"),
                 icon: UIImage(named: .favoriteActive).withRenderingMode(.alwaysTemplate),
+                detailItems: includeDetailItems ? Self.detailItems : nil,
                 isInitiallySelected: $0 == 0
             )
         }
+    }
+
+    private static var detailItems: [String] {
+        [
+            "Officia at quas",
+            "Odit cumque et quisquam id ut nesciunt suscipit beatae enim",
+            "Minus corrupti molestiae ad"
+        ]
     }
 }

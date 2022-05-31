@@ -137,13 +137,18 @@
 		4DD3AA7C27B56592007B107E /* DetailCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3AA7B27B56591007B107E /* DetailCalloutView.swift */; };
 		55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* Broadcast.swift */; };
 		55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B277203DB56A007D7277 /* BroadcastMessage.swift */; };
-		5B9590BF11466FFFC29766C3 /* CheckmarkListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9595BF11C0D7740F6E697F /* CheckmarkListView.swift */; };
+		5B9590BF11466FFFC29766C3 /* SelectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9595BF11C0D7740F6E697F /* SelectionListView.swift */; };
+		5B9593883DABC3AF83C45016 /* CheckmarkItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959CD34FCA1F6EE3802802 /* CheckmarkItemDetailView.swift */; };
+		5B9595BEBD22C6F1A6FC3407 /* AddressComponentFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9596BCBD3F9050EB561242 /* AddressComponentFieldView.swift */; };
+		5B9595D20FAD53976DCA8DDB /* AddressComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95948029F509BB6D6AD19B /* AddressComponentView.swift */; };
 		5B9596721C36A36728C6E6AD /* OverflowCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9594B274D9B8D8390676E7 /* OverflowCollectionView.swift */; };
 		5B959745935CC23FC0F17ACE /* MultilineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959E64AAE5D542C2168DC2 /* MultilineButton.swift */; };
+		5B9597CB5D1F98730290733B /* AddressComponentKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95976F11EFB1EC6E583B15 /* AddressComponentKind.swift */; };
+		5B95982B222AD1B86B3C5880 /* AddressComponentPostalFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959FEBE7613F2F8821B0DB /* AddressComponentPostalFieldView.swift */; };
 		5B9598434FDB0BEC62D2D91D /* OverflowCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959240C94F8A2F44F428F3 /* OverflowCollectionViewCell.swift */; };
-		5B9598E9D9A01E990206AC5A /* CheckmarkItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9594720BB424FD1F977364 /* CheckmarkItemModel.swift */; };
+		5B9598E9D9A01E990206AC5A /* SelectionItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9594720BB424FD1F977364 /* SelectionItemModel.swift */; };
 		5B95990406E586D6E278E80E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959BDD757ABA49DA59E345 /* SearchView.swift */; };
-		5B959F868008E7C5EB3B9EF6 /* CheckmarkItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9599E22AECDDE0750CBD31 /* CheckmarkItemView.swift */; };
+		5B959F868008E7C5EB3B9EF6 /* SelectionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9599E22AECDDE0750CBD31 /* SelectionListItemView.swift */; };
 		5D0ED35125A49FA7007750D0 /* FinnTextField+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0ED35025A49FA7007750D0 /* FinnTextField+Style.swift */; };
 		5D0ED35725A49FC9007750D0 /* FinnTextField+Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0ED35625A49FC9007750D0 /* FinnTextField+Input.swift */; };
 		5DA190C725A4A7E0002305A8 /* Transition+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190C625A4A7E0002305A8 /* Transition+Extensions.swift */; };
@@ -400,10 +405,12 @@
 		D755239F273006E900C0C7DD /* RecentlyFavoritedShelfCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D755239E273006E900C0C7DD /* RecentlyFavoritedShelfCell.swift */; };
 		D75523A42730800F00C0C7DD /* RecentlyFavoritedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75523A32730800F00C0C7DD /* RecentlyFavoritedViewModel.swift */; };
 		D75523AA27315EA600C0C7DD /* FrontPageShelfHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75523A927315EA600C0C7DD /* FrontPageShelfHeaderView.swift */; };
+		D759A7FB28043EFD009E9CBB /* FrontPageTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D759A7FA28043EFD009E9CBB /* FrontPageTransactionView.swift */; };
 		D75E14CE27346BEC008EB126 /* SavedSearchShelfViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E14CD27346BEC008EB126 /* SavedSearchShelfViewModel.swift */; };
 		D75E14D127347557008EB126 /* FrontPageShelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E14D027347557008EB126 /* FrontPageShelfView.swift */; };
 		D76B477E273925A30054E853 /* FrontPageShelfViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B477D273925A30054E853 /* FrontPageShelfViewModel.swift */; };
 		D7C750352731C4EF002BDE98 /* SavedSearchShelfCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C750342731C4EF002BDE98 /* SavedSearchShelfCell.swift */; };
+		D7CA52FC28299E9600F51568 /* FrontPageTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA52FB28299E9600F51568 /* FrontPageTransactionViewModel.swift */; };
 		DA083E7324630BC400B26235 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA083E7124630B9200B26235 /* SettingsSection.swift */; };
 		DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */; };
 		DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E438521104EB8000DDEC3 /* AdReporterView.swift */; };
@@ -595,12 +602,17 @@
 		55C5B273203D8E20007D7277 /* Broadcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Broadcast.swift; sourceTree = "<group>"; };
 		55C5B277203DB56A007D7277 /* BroadcastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastMessage.swift; sourceTree = "<group>"; };
 		5B959240C94F8A2F44F428F3 /* OverflowCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverflowCollectionViewCell.swift; sourceTree = "<group>"; };
-		5B9594720BB424FD1F977364 /* CheckmarkItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkItemModel.swift; sourceTree = "<group>"; };
+		5B9594720BB424FD1F977364 /* SelectionItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionItemModel.swift; sourceTree = "<group>"; };
+		5B95948029F509BB6D6AD19B /* AddressComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressComponentView.swift; sourceTree = "<group>"; };
 		5B9594B274D9B8D8390676E7 /* OverflowCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverflowCollectionView.swift; sourceTree = "<group>"; };
-		5B9595BF11C0D7740F6E697F /* CheckmarkListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkListView.swift; sourceTree = "<group>"; };
-		5B9599E22AECDDE0750CBD31 /* CheckmarkItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkItemView.swift; sourceTree = "<group>"; };
+		5B9595BF11C0D7740F6E697F /* SelectionListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionListView.swift; sourceTree = "<group>"; };
+		5B9596BCBD3F9050EB561242 /* AddressComponentFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressComponentFieldView.swift; sourceTree = "<group>"; };
+		5B95976F11EFB1EC6E583B15 /* AddressComponentKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressComponentKind.swift; sourceTree = "<group>"; };
+		5B9599E22AECDDE0750CBD31 /* SelectionListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionListItemView.swift; sourceTree = "<group>"; };
 		5B959BDD757ABA49DA59E345 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		5B959CD34FCA1F6EE3802802 /* CheckmarkItemDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkItemDetailView.swift; sourceTree = "<group>"; };
 		5B959E64AAE5D542C2168DC2 /* MultilineButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineButton.swift; sourceTree = "<group>"; };
+		5B959FEBE7613F2F8821B0DB /* AddressComponentPostalFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressComponentPostalFieldView.swift; sourceTree = "<group>"; };
 		5D0ED35025A49FA7007750D0 /* FinnTextField+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextField+Style.swift"; sourceTree = "<group>"; };
 		5D0ED35625A49FC9007750D0 /* FinnTextField+Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextField+Input.swift"; sourceTree = "<group>"; };
 		5DA190C625A4A7E0002305A8 /* Transition+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Extensions.swift"; sourceTree = "<group>"; };
@@ -858,10 +870,12 @@
 		D755239E273006E900C0C7DD /* RecentlyFavoritedShelfCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyFavoritedShelfCell.swift; sourceTree = "<group>"; };
 		D75523A32730800F00C0C7DD /* RecentlyFavoritedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyFavoritedViewModel.swift; sourceTree = "<group>"; };
 		D75523A927315EA600C0C7DD /* FrontPageShelfHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageShelfHeaderView.swift; sourceTree = "<group>"; };
+		D759A7FA28043EFD009E9CBB /* FrontPageTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageTransactionView.swift; sourceTree = "<group>"; };
 		D75E14CD27346BEC008EB126 /* SavedSearchShelfViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedSearchShelfViewModel.swift; sourceTree = "<group>"; };
 		D75E14D027347557008EB126 /* FrontPageShelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageShelfView.swift; sourceTree = "<group>"; };
 		D76B477D273925A30054E853 /* FrontPageShelfViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageShelfViewModel.swift; sourceTree = "<group>"; };
 		D7C750342731C4EF002BDE98 /* SavedSearchShelfCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedSearchShelfCell.swift; sourceTree = "<group>"; };
+		D7CA52FB28299E9600F51568 /* FrontPageTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageTransactionViewModel.swift; sourceTree = "<group>"; };
 		DA083E7124630B9200B26235 /* SettingsSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterViewModel.swift; sourceTree = "<group>"; };
 		DA4E438521104EB8000DDEC3 /* AdReporterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdReporterView.swift; sourceTree = "<group>"; };
@@ -1320,6 +1334,7 @@
 			isa = PBXGroup;
 			children = (
 				5DCE0880280FDDDA00ED7407 /* MonthAndYearPickerView */,
+				D759A7F928043EE9009E9CBB /* FrontPageTransactionView */,
 				D75E14CF27347535008EB126 /* FrontPageShelfView */,
 				D75523A8273159E900C0C7DD /* FrontPageShelfHeaderView */,
 				D7D514C227293F5D0065E2F6 /* PromotionView */,
@@ -1386,7 +1401,8 @@
 				8D680E7F9086E07B63CB9D23 /* SelectionView */,
 				8D6807E8380DAE7E730CC80D /* NumberedListView */,
 				5B959D7A71236CBF67504D3E /* SearchView */,
-				5B959846196B48EE2080C452 /* CheckmarkListView */,
+				5B9590445C86B656E972AF8E /* AddressComponentView */,
+				5B959846196B48EE2080C452 /* SelectionListView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1792,10 +1808,28 @@
 			path = NavigationLinkView;
 			sourceTree = "<group>";
 		};
+		5B9590445C86B656E972AF8E /* AddressComponentView */ = {
+			isa = PBXGroup;
+			children = (
+				5B95948029F509BB6D6AD19B /* AddressComponentView.swift */,
+				5B9599D9F0192A1BF1ED9DFE /* Subviews */,
+				5B9594A976653A010D69CFB5 /* Models */,
+			);
+			path = AddressComponentView;
+			sourceTree = "<group>";
+		};
 		5B9593DA14ED6A1E0C8FEF84 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5B9594720BB424FD1F977364 /* CheckmarkItemModel.swift */,
+				5B9594720BB424FD1F977364 /* SelectionItemModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5B9594A976653A010D69CFB5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5B95976F11EFB1EC6E583B15 /* AddressComponentKind.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1803,19 +1837,29 @@
 		5B95976975A32A51DFF7F5D1 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				5B9599E22AECDDE0750CBD31 /* CheckmarkItemView.swift */,
+				5B9599E22AECDDE0750CBD31 /* SelectionListItemView.swift */,
+				5B959CD34FCA1F6EE3802802 /* CheckmarkItemDetailView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
 		};
-		5B959846196B48EE2080C452 /* CheckmarkListView */ = {
+		5B959846196B48EE2080C452 /* SelectionListView */ = {
 			isa = PBXGroup;
 			children = (
-				5B9595BF11C0D7740F6E697F /* CheckmarkListView.swift */,
+				5B9595BF11C0D7740F6E697F /* SelectionListView.swift */,
 				5B95976975A32A51DFF7F5D1 /* Subviews */,
 				5B9593DA14ED6A1E0C8FEF84 /* Models */,
 			);
-			path = CheckmarkListView;
+			path = SelectionListView;
+			sourceTree = "<group>";
+		};
+		5B9599D9F0192A1BF1ED9DFE /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				5B9596BCBD3F9050EB561242 /* AddressComponentFieldView.swift */,
+				5B959FEBE7613F2F8821B0DB /* AddressComponentPostalFieldView.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		5B959AA16D7FF2BABAF31090 /* OverflowCollectionView */ = {
@@ -2860,6 +2904,15 @@
 			path = FrontPageShelfHeaderView;
 			sourceTree = "<group>";
 		};
+		D759A7F928043EE9009E9CBB /* FrontPageTransactionView */ = {
+			isa = PBXGroup;
+			children = (
+				D759A7FA28043EFD009E9CBB /* FrontPageTransactionView.swift */,
+				D7CA52FB28299E9600F51568 /* FrontPageTransactionViewModel.swift */,
+			);
+			path = FrontPageTransactionView;
+			sourceTree = "<group>";
+		};
 		D75E14CF27347535008EB126 /* FrontPageShelfView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3375,6 +3428,7 @@
 				DAD6EB2C2369916100968497 /* SettingsSectionFooterView.swift in Sources */,
 				449C60B1234DD82E00C51A63 /* BasicTableView.swift in Sources */,
 				5DEAC62725C95F5F003376AD /* JobAdRecommendationViewModel.swift in Sources */,
+				D759A7FB28043EFD009E9CBB /* FrontPageTransactionView.swift in Sources */,
 				9BC33DEB22D76405007CCD65 /* LoginEntryDialogueView.swift in Sources */,
 				CF164CED230D916000250822 /* FavoriteFolderShareLinkView.swift in Sources */,
 				DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */,
@@ -3586,6 +3640,7 @@
 				CF87A855229C0C5700DA8243 /* ContactFormViewModel.swift in Sources */,
 				CFB61376229ACB0C00DE283D /* IconCollectionViewModel.swift in Sources */,
 				4DA1C60B27EB6E0D00B615A3 /* PromotionView.swift in Sources */,
+				D7CA52FC28299E9600F51568 /* FrontPageTransactionViewModel.swift in Sources */,
 				44587018213FA344009187BE /* RegisterView.swift in Sources */,
 				082D80CF21C13E8B00831BDE /* ChristmasOrnamentView.swift in Sources */,
 				449C60B4234DD85C00C51A63 /* ShadowScrollView.swift in Sources */,
@@ -3701,9 +3756,14 @@
 				5B9596721C36A36728C6E6AD /* OverflowCollectionView.swift in Sources */,
 				5B9598434FDB0BEC62D2D91D /* OverflowCollectionViewCell.swift in Sources */,
 				5B95990406E586D6E278E80E /* SearchView.swift in Sources */,
-				5B9590BF11466FFFC29766C3 /* CheckmarkListView.swift in Sources */,
-				5B959F868008E7C5EB3B9EF6 /* CheckmarkItemView.swift in Sources */,
-				5B9598E9D9A01E990206AC5A /* CheckmarkItemModel.swift in Sources */,
+				5B9590BF11466FFFC29766C3 /* SelectionListView.swift in Sources */,
+				5B959F868008E7C5EB3B9EF6 /* SelectionListItemView.swift in Sources */,
+				5B9598E9D9A01E990206AC5A /* SelectionItemModel.swift in Sources */,
+				5B9595D20FAD53976DCA8DDB /* AddressComponentView.swift in Sources */,
+				5B9595BEBD22C6F1A6FC3407 /* AddressComponentFieldView.swift in Sources */,
+				5B95982B222AD1B86B3C5880 /* AddressComponentPostalFieldView.swift in Sources */,
+				5B9597CB5D1F98730290733B /* AddressComponentKind.swift in Sources */,
+				5B9593883DABC3AF83C45016 /* CheckmarkItemDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

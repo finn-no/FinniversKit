@@ -73,6 +73,7 @@ public final class FrontPageView: UIView {
     }()
 
     private let promoContainer = UIView(withAutoLayout: true)
+    private let transactionFeedContainer = UIView(withAutoLayout: true)
     private let shelfContainer = UIView(withAutoLayout: true)
     private var isShowingShelf: Bool {
         guard let model = shelfViewModel else { return false }
@@ -171,9 +172,30 @@ public final class FrontPageView: UIView {
 
         promoContainer.addSubview(promotionView)
         promotionView.fillInSuperview(
-            insets: .init(top: .spacingL, leading: .spacingM, bottom: 0, trailing: -.spacingM)
+            insets: .init(
+                top: .spacingL,
+                leading: .spacingM,
+                bottom: 0,
+                trailing: -.spacingM
+            )
         )
 
+        setupFrames()
+    }
+
+    public func showTransactionFeed(
+        withViewModel viewModel: FrontPageTransactionViewModel,
+        andDelegate delegate: FrontPageTransactionViewDelegate
+    ) {
+        let transactionView = FrontPageTransactionView(withAutoLayout: true)
+        transactionView.delegate = delegate
+        transactionView.configure(with: viewModel, andImageDatasource: remoteImageDataSource)
+
+        transactionFeedContainer.addSubview(transactionView)
+        transactionView.fillInSuperview(insets: .init(top: .spacingL,
+                                                      leading: .spacingM,
+                                                      bottom: 0,
+                                                      trailing: -.spacingM))
         setupFrames()
     }
 
@@ -188,6 +210,7 @@ public final class FrontPageView: UIView {
 
         headerView.addSubview(marketsGridView)
         headerView.addSubview(promoContainer)
+        headerView.addSubview(transactionFeedContainer)
         headerView.addSubview(shelfContainer)
         headerView.addSubview(headerLabel)
 
@@ -202,8 +225,12 @@ public final class FrontPageView: UIView {
             promoContainer.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor),
             promoContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
             promoContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+
+            transactionFeedContainer.topAnchor.constraint(equalTo: promoContainer.bottomAnchor),
+            transactionFeedContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            transactionFeedContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             
-            shelfContainer.topAnchor.constraint(equalTo: promoContainer.bottomAnchor),
+            shelfContainer.topAnchor.constraint(equalTo: transactionFeedContainer.bottomAnchor),
             shelfContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
             shelfContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             
@@ -237,9 +264,15 @@ public final class FrontPageView: UIView {
                 withHorizontalFittingPriority: .required,
                 verticalFittingPriority: .fittingSizeLevel)
             .height
+        let transactionFeedHeight = bounds.size.width == 0 ? 0 : transactionFeedContainer
+            .systemLayoutSizeFitting(
+                CGSize(width: bounds.size.width, height: 0),
+                withHorizontalFittingPriority: .required,
+                verticalFittingPriority: .fittingSizeLevel)
+            .height
 
         let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: bounds.size.width).height + .spacingXS
-        var height = headerTopSpacing + labelHeight + marketGridViewHeight + promoContainerHeight + headerBottomSpacing
+        var height = headerTopSpacing + labelHeight + marketGridViewHeight + promoContainerHeight + transactionFeedHeight +  headerBottomSpacing
 
         let shelfContainerHeight = shelfViewModel?.heightForShelf ?? 0
         height += shelfContainerHeight + (shelfContainerHeight > 0 ? FrontPageShelfView.topPadding : 0)
