@@ -75,6 +75,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case overFlowCollectionView
     case monthAndYearPickerView
     case searchView
+    case addressComponentView
     case selectionListCheckboxView
     case selectionListRadiobuttonView
 
@@ -240,6 +241,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<MonthAndYearPickerDemoView>()
         case .searchView:
             return DemoViewController<SearchDemoView>()
+        case .addressComponentView:
+            return DemoViewController<AddressComponentDemoView>(dismissType: .dismissButton)
         case .selectionListCheckboxView:
             return DemoViewController<SelectionListCheckboxDemoView>(dismissType: .dismissButton)
         case .selectionListRadiobuttonView:

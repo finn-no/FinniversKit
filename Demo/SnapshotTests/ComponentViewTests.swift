@@ -310,4 +310,8 @@ class ComponentViewTests: XCTestCase {
     func testSelectionListRadiobuttonView() {
         snapshot(.selectionListRadiobuttonView)
     }
+
+    func testAddressComponentView() {
+        snapshot(.addressComponentView)
+    }
 }
