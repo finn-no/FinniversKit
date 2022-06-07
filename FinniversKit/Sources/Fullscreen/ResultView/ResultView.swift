@@ -87,7 +87,7 @@ public class ResultView: UIView {
                 actionButton.size = .normal
                 actionButton.style = style
             }
-            actionButton.setTitle(actionButtonTitle, for: . normal)
+            actionButton.setTitle(actionButtonTitle, for: .normal)
         }
 
         self.backgroundColor = backgroundColor
