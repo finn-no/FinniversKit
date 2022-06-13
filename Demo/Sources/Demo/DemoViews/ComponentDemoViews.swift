@@ -78,6 +78,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case addressComponentView
     case selectionListCheckboxView
     case selectionListRadiobuttonView
+    case badgeView
 
     var title: String? {
         switch self {
@@ -247,6 +248,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<SelectionListCheckboxDemoView>(dismissType: .dismissButton)
         case .selectionListRadiobuttonView:
             return DemoViewController<SelectionListRadiobuttonDemoView>(dismissType: .dismissButton)
+        case .badgeView:
+            return DemoViewController<BadgeDemoView>()
         }
     }
 }

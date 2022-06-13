@@ -36,6 +36,7 @@ enum ImageAsset: String {
     case adsenseDemo
     case arrowCounterClockwise
     case avatar
+    case bapShippable
     case betaImageSearch
     case blinkRocketMini
     case boat
@@ -134,6 +135,7 @@ enum ImageAsset: String {
             .adsenseDemo,
             .arrowCounterClockwise,
             .avatar,
+            .bapShippable,
             .betaImageSearch,
             .blinkRocketMini,
             .boat,
