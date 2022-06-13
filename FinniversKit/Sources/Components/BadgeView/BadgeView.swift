@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-public class BadgeView: UIView {
+public final class BadgeView: UIView {
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFit
@@ -36,7 +36,7 @@ public class BadgeView: UIView {
         addSubview(iconImageView)
         addSubview(textLabel)
 
-        let iconSize: CGFloat = 16
+        let iconSize: CGFloat = .spacingM
 
         NSLayoutConstraint.activate([
             iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
