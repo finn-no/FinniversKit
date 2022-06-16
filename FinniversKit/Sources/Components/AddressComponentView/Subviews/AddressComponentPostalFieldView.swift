@@ -36,6 +36,8 @@ public class AddressComponentPostalFieldView: UIView {
     // MARK: - Setup
 
     private func setup() {
+        isAccessibilityElement = true
+
         backgroundColor = .bgTertiary
 
         addSubview(stackView)
@@ -73,6 +75,10 @@ public class AddressComponentPostalFieldView: UIView {
         ])
 
         hairlineView.backgroundColor = showHairline ? .placeholderText : .clear
+
+        accessibilityLabel = [postalCodeModel, postalPlaceModel].map { model in
+            [model.placeholder, model.value ?? model.noValueAccessibilityLabel].compactMap { $0 }.joined(separator: ": ")
+        }.joined(separator: ", ")
     }
 
     // MARK: - Private methods
