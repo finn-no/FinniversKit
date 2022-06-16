@@ -42,13 +42,13 @@ extension AddressComponentDemoView: AddressComponentViewDelegate {
 private extension Array where Element == AddressComponentKind {
     static var demoItems: [AddressComponentKind] {
         [
-            .regular(.init(value: "Vei veien", placeholder: "Gatenavn")),
-            .regular(.init(value: "123", placeholder: "Gatenummer")),
-            .regular(.init(value: "1", placeholder: "Etasje")),
-            .regular(.init(value: nil, placeholder: "Leilighet")),
+            .regular(.init(value: "Vei veien", placeholder: "Gatenavn", noValueAccessibilityLabel: "Ikke fylt ut")),
+            .regular(.init(value: "123", placeholder: "Gatenummer", noValueAccessibilityLabel: "Ikke fylt ut")),
+            .regular(.init(value: "1", placeholder: "Etasje", noValueAccessibilityLabel: "Ikke fylt ut")),
+            .regular(.init(value: nil, placeholder: "Leilighet", noValueAccessibilityLabel: "Ikke fylt ut")),
             .postalCodeAndPlace(
-                postalCode: .init(value: "0001", placeholder: "Postnummer"),
-                postalPlace: .init(value: "Oslo", placeholder: "Poststed")
+                postalCode: .init(value: "0001", placeholder: "Postnummer", noValueAccessibilityLabel: "Fyll inn adresse først"),
+                postalPlace: .init(value: "Oslo", placeholder: "Poststed", noValueAccessibilityLabel: "Fyll inn adresse først")
             )
         ]
     }
