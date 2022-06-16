@@ -9,7 +9,7 @@ public enum AddressComponentKind {
         public let placeholder: String
         public let noValueAccessibilityLabel: String?
 
-        public init(value: String?, placeholder: String, noValueAccessibilityLabel: String?) {
+        public init(value: String?, placeholder: String, noValueAccessibilityLabel: String? = nil) {
             self.value = value
             self.placeholder = placeholder
             self.noValueAccessibilityLabel = noValueAccessibilityLabel
