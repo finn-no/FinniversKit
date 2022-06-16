@@ -7,10 +7,12 @@ public enum AddressComponentKind {
     public struct Model {
         public let value: String?
         public let placeholder: String
+        public let noValueAccessibilityLabel: String?
 
-        public init(value: String?, placeholder: String) {
+        public init(value: String?, placeholder: String, noValueAccessibilityLabel: String?) {
             self.value = value
             self.placeholder = placeholder
+            self.noValueAccessibilityLabel = noValueAccessibilityLabel
         }
     }
 }
