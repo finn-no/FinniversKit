@@ -56,6 +56,13 @@ public class AddressComponentFieldView: UIView {
             hairlineView.bottomAnchor.constraint(equalTo: bottomAnchor),
             hairlineView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale)
         ])
+
+        setupAccessibility()
+    }
+
+    private func setupAccessibility() {
+        isAccessibilityElement = true
+        accessibilityTraits = .button
     }
 
     // MARK: - Internal methods
@@ -79,6 +86,8 @@ public class AddressComponentFieldView: UIView {
             stackView.addArrangedSubview(placeholderLabel)
             stackView.alignment = .leading
         }
+
+        accessibilityLabel = [model.placeholder, model.value ?? model.noValueAccessibilityLabel].compactMap { $0 }.joined(separator: ": ")
     }
 }
 
