@@ -165,6 +165,12 @@ class SelectionListItemView: UIView {
             }
         }
 
+        if isSelected {
+            accessibilityTraits.insert(.selected)
+        } else {
+            accessibilityTraits.remove(.selected)
+        }
+
         let duration = shouldAnimate ? 0.15 : 0
         UIView.animate(withDuration: duration, animations: { [weak self] in
             guard let self = self else { return }
