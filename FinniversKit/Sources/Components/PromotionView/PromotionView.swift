@@ -73,7 +73,16 @@ public class PromotionView: UIView {
         return imageView
     }()
 
+    private lazy var backgroundImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+
     private lazy var imageContainer = UIView(withAutoLayout: true)
+
+    private lazy var backgroundImageContainer = UIView(withAutoLayout: true)
 
     private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView(axis: .vertical, spacing: .spacingS + .spacingXS, withAutoLayout: true)
@@ -81,6 +90,20 @@ public class PromotionView: UIView {
         stackView.alignment = .leading
         return stackView
     }()
+
+    private lazy var compactDynamicConstraints: [NSLayoutConstraint] = [
+        imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor, constant: -.spacingXXL),
+        imageView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
+        imageView.leadingAnchor.constraint(equalTo: backgroundImageContainer.leadingAnchor, constant: .spacingM),
+        imageView.widthAnchor.constraint(lessThanOrEqualTo: imageView.heightAnchor, multiplier: imageRatio ?? 1),
+        ]
+    private lazy var regularDynamicConstraint: [NSLayoutConstraint] = [
+        imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor),
+        imageView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
+        imageView.leadingAnchor.constraint(equalTo: backgroundImageContainer.leadingAnchor, constant: .spacingM),
+        imageView.widthAnchor.constraint(lessThanOrEqualTo: imageView.heightAnchor, multiplier: imageRatio ?? 1),
+        ]
+    private var imageRatio: CGFloat?
 
     // MARK: - Public properties
 
@@ -107,11 +130,18 @@ public class PromotionView: UIView {
         titleLabel.text = viewModel.title
         primaryButton.configure(withTitle: viewModel.primaryButtonTitle)
         secondaryButton.configure(withTitle: viewModel.secondaryButtonTitle)
+        imageRatio = viewModel.image.size.width / viewModel.image.size.height
 
         if let text = viewModel.text {
             textLabel.text = text
         } else {
             textLabel.isHidden = true
+        }
+
+        if let backgroundImage = viewModel.backgroundImage {
+            backgroundImageContainer.addSubview(backgroundImageView)
+            backgroundImageView.image = backgroundImage
+            backgroundImageView.fillInSuperview()
         }
 
         imageContainer.addSubview(imageView)
@@ -121,18 +151,50 @@ public class PromotionView: UIView {
         case .fullWidth:
             imageView.fillInSuperview(insets: UIEdgeInsets(top: .spacingM, leading: .spacingS, bottom: -.spacingM, trailing: -.spacingS))
         case .trailing:
-            let imageRatio = viewModel.image.size.width / viewModel.image.size.height
+            guard let imageRatio = imageRatio else { return }
             NSLayoutConstraint.activate([
                 imageView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
                 imageView.trailingAnchor.constraint(equalTo: imageContainer.trailingAnchor),
                 imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor),
                 imageView.widthAnchor.constraint(lessThanOrEqualTo: imageView.heightAnchor, multiplier: imageRatio),
             ])
+        case .fullWidthDynamic:
+            if isCompactScreen() {
+                activateCompactConstraints()
+            } else {
+                activateRegularConstraints()
+            }
         }
 
         if let imageBackgroundColor = viewModel.imageBackgroundColor {
             imageContainer.backgroundColor = imageBackgroundColor
         }
+    }
+
+    private func activateCompactConstraints() {
+        NSLayoutConstraint.deactivate(regularDynamicConstraint)
+        NSLayoutConstraint.activate(compactDynamicConstraints)
+    }
+
+    private func activateRegularConstraints() {
+        NSLayoutConstraint.deactivate(compactDynamicConstraints)
+        NSLayoutConstraint.activate(regularDynamicConstraint)
+    }
+
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if previousTraitCollection?.horizontalSizeClass != traitCollection.horizontalSizeClass {
+            if isCompactScreen() {
+                activateCompactConstraints()
+            } else {
+                activateRegularConstraints()
+            }
+        }
+    }
+
+    private func isCompactScreen() -> Bool {
+        return traitCollection.horizontalSizeClass == .compact
     }
 }
 
@@ -151,6 +213,7 @@ extension PromotionView {
         smallShadowView.addSubview(backgroundView)
         backgroundView.fillInSuperview()
         backgroundView.addSubview(verticalStackView)
+        backgroundView.addSubview(backgroundImageContainer)
         backgroundView.addSubview(imageContainer)
 
         verticalStackView.addArrangedSubviews([titleLabel, textLabel, primaryButton, secondaryButton])
@@ -159,6 +222,11 @@ extension PromotionView {
             imageContainer.topAnchor.constraint(equalTo: backgroundView.topAnchor),
             imageContainer.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
             imageContainer.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
+
+            backgroundImageContainer.topAnchor.constraint(equalTo: backgroundView.topAnchor),
+            backgroundImageContainer.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
+            backgroundImageContainer.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
+            backgroundImageContainer.widthAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 0.3),
 
             verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
             verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),

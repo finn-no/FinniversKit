@@ -6,6 +6,7 @@ public struct PromotionViewModel {
     let image: UIImage
     let imageAlignment: ImageAlignment
     let imageBackgroundColor: UIColor?
+    let backgroundImage: UIImage?
     let primaryButtonTitle: String?
     let secondaryButtonTitle: String?
 
@@ -13,6 +14,7 @@ public struct PromotionViewModel {
     public enum ImageAlignment {
         case trailing
         case fullWidth
+        case fullWidthDynamic
     }
 
     public init(
@@ -21,6 +23,7 @@ public struct PromotionViewModel {
         image: UIImage,
         imageAlignment: ImageAlignment,
         imageBackgroundColor: UIColor? = nil,
+        backgroundImage: UIImage? = nil,
         primaryButtonTitle: String? = nil,
         secondaryButtonTitle: String? = nil
     ) {
@@ -29,6 +32,7 @@ public struct PromotionViewModel {
         self.image = image
         self.imageAlignment = imageAlignment
         self.imageBackgroundColor = imageBackgroundColor
+        self.backgroundImage = backgroundImage
         self.primaryButtonTitle = primaryButtonTitle
         self.secondaryButtonTitle = secondaryButtonTitle
     }
