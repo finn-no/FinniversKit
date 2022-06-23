@@ -95,15 +95,15 @@ public class PromotionView: UIView {
         imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor, constant: -.spacingXXL),
         imageView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
         imageView.leadingAnchor.constraint(equalTo: backgroundImageContainer.leadingAnchor, constant: .spacingM),
-        imageView.widthAnchor.constraint(lessThanOrEqualTo: imageView.heightAnchor, multiplier: imageRatio ?? 1),
-        ]
+        imageView.widthAnchor.constraint(lessThanOrEqualTo: imageView.heightAnchor, multiplier: viewModel.imageRatio),
+    ]
     private lazy var regularDynamicConstraint: [NSLayoutConstraint] = [
         imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor),
         imageView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
         imageView.leadingAnchor.constraint(equalTo: backgroundImageContainer.leadingAnchor, constant: .spacingM),
-        imageView.widthAnchor.constraint(lessThanOrEqualTo: imageView.heightAnchor, multiplier: imageRatio ?? 1),
-        ]
-    private var imageRatio: CGFloat?
+        imageView.widthAnchor.constraint(lessThanOrEqualTo: imageView.heightAnchor, multiplier: viewModel.imageRatio),
+    ]
+    private var viewModel: PromotionViewModel
 
     // MARK: - Public properties
 
@@ -117,6 +117,7 @@ public class PromotionView: UIView {
     // MARK: - Init
 
     public init(viewModel: PromotionViewModel) {
+        self.viewModel = viewModel
         super.init(frame: .zero)
         setup()
         configure(with: viewModel)
@@ -130,7 +131,6 @@ public class PromotionView: UIView {
         titleLabel.text = viewModel.title
         primaryButton.configure(withTitle: viewModel.primaryButtonTitle)
         secondaryButton.configure(withTitle: viewModel.secondaryButtonTitle)
-        imageRatio = viewModel.image.size.width / viewModel.image.size.height
 
         if let text = viewModel.text {
             textLabel.text = text
@@ -151,7 +151,7 @@ public class PromotionView: UIView {
         case .fullWidth:
             imageView.fillInSuperview(insets: UIEdgeInsets(top: .spacingM, leading: .spacingS, bottom: -.spacingM, trailing: -.spacingS))
         case .trailing:
-            guard let imageRatio = imageRatio else { return }
+            let imageRatio = viewModel.imageRatio
             NSLayoutConstraint.activate([
                 imageView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
                 imageView.trailingAnchor.constraint(equalTo: imageContainer.trailingAnchor),
@@ -159,10 +159,10 @@ public class PromotionView: UIView {
                 imageView.widthAnchor.constraint(lessThanOrEqualTo: imageView.heightAnchor, multiplier: imageRatio),
             ])
         case .dynamic:
-            if isCompactScreen() {
-                activateCompactConstraints()
-            } else {
+            if UITraitCollection.isHorizontalSizeClassRegular {
                 activateRegularConstraints()
+            } else {
+                activateCompactConstraints()
             }
         }
 
@@ -185,10 +185,10 @@ public class PromotionView: UIView {
         super.traitCollectionDidChange(previousTraitCollection)
 
         if previousTraitCollection?.horizontalSizeClass != traitCollection.horizontalSizeClass {
-            if isCompactScreen() {
-                activateCompactConstraints()
-            } else {
+            if UITraitCollection.isHorizontalSizeClassRegular {
                 activateRegularConstraints()
+            } else {
+                activateCompactConstraints()
             }
         }
     }

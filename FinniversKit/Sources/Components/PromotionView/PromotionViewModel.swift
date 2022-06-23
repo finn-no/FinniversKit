@@ -37,3 +37,9 @@ public struct PromotionViewModel {
         self.secondaryButtonTitle = secondaryButtonTitle
     }
 }
+
+extension PromotionViewModel {
+     var imageRatio: CGFloat {
+          image.size.width / image.size.height
+     }
+}
