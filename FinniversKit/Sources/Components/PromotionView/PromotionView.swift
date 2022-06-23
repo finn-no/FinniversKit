@@ -158,7 +158,7 @@ public class PromotionView: UIView {
                 imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor),
                 imageView.widthAnchor.constraint(lessThanOrEqualTo: imageView.heightAnchor, multiplier: imageRatio),
             ])
-        case .fullWidthDynamic:
+        case .dynamic:
             if isCompactScreen() {
                 activateCompactConstraints()
             } else {

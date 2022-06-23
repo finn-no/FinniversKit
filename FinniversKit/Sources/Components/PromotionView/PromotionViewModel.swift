@@ -14,7 +14,7 @@ public struct PromotionViewModel {
     public enum ImageAlignment {
         case trailing
         case fullWidth
-        case fullWidthDynamic
+        case dynamic
     }
 
     public init(
