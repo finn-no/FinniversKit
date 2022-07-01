@@ -66,6 +66,7 @@ public class ResultView: UIView {
         titleColor: UIColor = .textPrimary,
         description: String? = nil,
         actionButtonTitle: String? = nil,
+        actionButtonStyle: Button.Style? = nil,
         icon: UIImage? = nil,
         backgroundColor: UIColor = .bgTertiary,
         iconTintColor: UIColor? = .iconSecondary,
@@ -82,6 +83,10 @@ public class ResultView: UIView {
 
         actionButton.isHidden = actionButtonTitle == nil
         if let actionButtonTitle = actionButtonTitle {
+            if let style = actionButtonStyle {
+                actionButton.size = .normal
+                actionButton.style = style
+            }
             actionButton.setTitle(actionButtonTitle, for: .normal)
         }
 
