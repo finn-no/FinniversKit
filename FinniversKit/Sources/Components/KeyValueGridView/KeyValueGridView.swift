@@ -108,6 +108,13 @@ public class KeyValueGridView: UIView {
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(valueLabel)
 
+        stackView.isAccessibilityElement = true
+        if let accessibilityLabel = pair.accessibilityLabel {
+            stackView.accessibilityLabel = accessibilityLabel
+        } else {
+            stackView.accessibilityLabel = "\(pair.title): \(pair.value)"
+        }
+
         return stackView
     }
 
