@@ -24,6 +24,7 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
         label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        label.accessibilityTraits = .header
         return label
     }()
 
