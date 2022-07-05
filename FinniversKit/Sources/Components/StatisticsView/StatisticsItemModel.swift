@@ -21,6 +21,6 @@ public struct StatisticsItemModel {
         self.type = type
         self.value = value
         self.text = text
-        self.accessibilityLabel = "\(value)" + text
+        accessibilityLabel = "\(value) \(text)"
     }
 }
