@@ -109,7 +109,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        currentImageViewController()?.updateLayout(withPreviewViewVisible: overlayView.previewViewVisible)
+        currentImageViewController()?.updateLayout(containerSize: view.bounds.size, withPreviewViewVisible: overlayView.previewViewVisible)
 
         if !hasPerformedInitialPreviewScroll {
             if let currentIndex = currentImageViewController()?.imageIndex {
@@ -150,11 +150,11 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: [], animations: {
             self.overlayView.setThumbnailPreviewsVisible(visible)
-            self.viewControllers?.forEach({ vc in
+            self.viewControllers?.forEach({ [weak self] vc in
                 guard let imageVc = vc as? FullscreenImageViewController else {
                     return
                 }
-                imageVc.updateLayout(withPreviewViewVisible: visible)
+                imageVc.updateLayout(containerSize: self?.view.bounds.size, withPreviewViewVisible: visible)
             })
         })
     }
@@ -188,9 +188,9 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
         view.layoutIfNeeded()
         overlayView.setThumbnailPreviewsVisible(visible)
-        viewControllers?.forEach({ vc in
+        viewControllers?.forEach({ [weak self] vc in
             guard let imageVc = vc as? FullscreenImageViewController else { return }
-            imageVc.updateLayout(withPreviewViewVisible: visible)
+            imageVc.updateLayout(containerSize: self?.view.bounds.size, withPreviewViewVisible: visible)
         })
     }
 
@@ -234,7 +234,7 @@ extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
         let vc = FullscreenImageViewController(imageIndex: translatedindex)
         vc.delegate = self
         vc.dataSource = self
-        vc.updateLayout(withPreviewViewVisible: overlayView.previewViewVisible)
+        vc.updateLayout(containerSize: view.bounds.size, withPreviewViewVisible: overlayView.previewViewVisible)
         return vc
     }
 }
@@ -252,9 +252,9 @@ extension FullscreenGalleryViewController: UIPageViewControllerDelegate {
     }
 
     public func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        pendingViewControllers.forEach({ vc in
+        pendingViewControllers.forEach({ [weak self] vc in
             guard let imageVc = vc as? FullscreenImageViewController else { return }
-            imageVc.updateLayout(withPreviewViewVisible: overlayView.previewViewVisible)
+            imageVc.updateLayout(containerSize: self?.view.bounds.size, withPreviewViewVisible: overlayView.previewViewVisible)
         })
     }
 }
