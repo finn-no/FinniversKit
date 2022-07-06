@@ -87,7 +87,8 @@ public class ContractActionView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgTertiary
+        // backgroundColor = .bgTertiary
+        backgroundColor = .green
         layer.cornerRadius = .spacingS
         layoutMargins = UIEdgeInsets(
             top: .spacingM,
@@ -138,7 +139,7 @@ public class ContractActionView: UIView {
 
         if let remoteImageViewDataSource = remoteImageViewDataSource, let videoLink = viewModel.videoLink {
             videoLinkView.configure(with: videoLink, remoteImageViewDataSource: remoteImageViewDataSource)
-            videoLinkView.isHidden = false
+            videoLinkView.isHidden = true
         } else {
             videoLinkView.isHidden = true
         }
