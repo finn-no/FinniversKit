@@ -74,8 +74,8 @@ private extension AddressCardViewModel {
 
     static var withoutDirectionsButton: Self {
         Self.init(
-            title: "Møllerøya 32",
-            subtitle: "7982 Bindalseidet",
+            title: "7982",
+            subtitle: "Bindalseidet",
             copyButtonTitle: "Kopier adresse"
         )
     }
