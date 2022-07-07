@@ -10,34 +10,35 @@ public protocol AddressCardViewDelegate: AnyObject {
 }
 
 public final class AddressCardView: UIView {
+
+    // MARK: - Public properties
+
     public weak var delegate: AddressCardViewDelegate?
 
     // MARK: - Private properties
 
-    private lazy var titleLabel: Label = {
-        let label = Label(style: .title3Strong)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        return label
-    }()
+    private lazy var addressStackView = UIStackView(axis: .vertical, spacing: .spacingXS, withAutoLayout: true)
+    private lazy var contentStackView = UIStackView(axis: .vertical, spacing: .spacingL, withAutoLayout: true)
+    private lazy var titleLabel = Label(style: .title3Strong, withAutoLayout: true)
+    private lazy var subtitleLabel = Label(style: .bodyStrong, withAutoLayout: true)
 
-    private lazy var subtitleLabel: Label = {
-        let label = Label(style: .bodyStrong)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    private lazy var topStackView: UIStackView = {
+        let view = UIStackView(axis: .horizontal, spacing: .spacingM, withAutoLayout: true)
+        view.alignment = .center
+        view.distribution = .equalSpacing
+        return view
     }()
 
     private lazy var copyButton: Button = {
-        let button = Button(style: .default, size: .small)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = Button(style: .default, size: .small, withAutoLayout: true)
+        button.setContentHuggingPriority(.required, for: .horizontal)
         button.setContentCompressionResistancePriority(.required, for: .horizontal)
         button.addTarget(self, action: #selector(copyAction), for: .touchUpInside)
         return button
     }()
 
     private lazy var getDirectionsButton: Button = {
-        let button = Button(style: .callToAction)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = Button(style: .callToAction, withAutoLayout: true)
         button.addTarget(self, action: #selector(getDirectionsAction), for: .touchUpInside)
         return button
     }()
@@ -65,39 +66,12 @@ public final class AddressCardView: UIView {
     private func setup() {
         backgroundColor = .bgPrimary
 
-        addSubview(titleLabel)
-        addSubview(subtitleLabel)
-        addSubview(copyButton)
-        addSubview(getDirectionsButton)
+        addressStackView.addArrangedSubviews([titleLabel, subtitleLabel])
+        topStackView.addArrangedSubviews([addressStackView, copyButton])
+        contentStackView.addArrangedSubviews([topStackView, getDirectionsButton])
 
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            titleLabel.trailingAnchor.constraint(
-                lessThanOrEqualTo: copyButton.leadingAnchor,
-                constant: -.spacingM
-            ),
-
-            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXS),
-            subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            subtitleLabel.trailingAnchor.constraint(
-                lessThanOrEqualTo: copyButton.leadingAnchor,
-                constant: -.spacingM
-            ),
-
-            copyButton.centerYAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXXS),
-            copyButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-
-            getDirectionsButton.topAnchor.constraint(
-                equalTo: subtitleLabel.bottomAnchor,
-                constant: .spacingM + .spacingS
-            ),
-            getDirectionsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-            getDirectionsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            getDirectionsButton.bottomAnchor.constraint(
-                equalTo: bottomAnchor,
-                constant: -.spacingM + -.spacingS)
-        ])
+        addSubview(contentStackView)
+        contentStackView.fillInSuperview(insets: UIEdgeInsets(top: .spacingM, leading: .spacingM, bottom: -.spacingL, trailing: -.spacingM))
     }
 
     // MARK: - Actions
