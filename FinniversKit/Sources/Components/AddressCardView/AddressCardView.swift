@@ -60,7 +60,13 @@ public final class AddressCardView: UIView {
         titleLabel.text = model.title
         subtitleLabel.text = model.subtitle
         copyButton.setTitle(model.copyButtonTitle, for: .normal)
-        getDirectionsButton.setTitle(model.getDirectionsButtonTitle, for: .normal)
+
+        if let getDirectionsButtonTitle = model.getDirectionsButtonTitle {
+            getDirectionsButton.setTitle(getDirectionsButtonTitle, for: .normal)
+            getDirectionsButton.isHidden = false
+        } else {
+            getDirectionsButton.isHidden = true
+        }
     }
 
     private func setup() {
