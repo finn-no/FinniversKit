@@ -314,4 +314,8 @@ class ComponentViewTests: XCTestCase {
     func testAddressComponentView() {
         snapshot(.addressComponentView)
     }
+
+    func testBadgeView() {
+        snapshot(.badgeView)
+    }
 }

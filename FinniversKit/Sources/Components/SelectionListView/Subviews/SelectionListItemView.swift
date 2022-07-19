@@ -129,7 +129,29 @@ class SelectionListItemView: UIView {
             detailViewsStackViewBottomConstraint,
         ])
 
+        setupAccessibility()
         updateSelection(shouldAnimate: false)
+    }
+
+    private func setupAccessibility() {
+        isAccessibilityElement = true
+        accessibilityTraits = .button
+
+        let description = { () -> String in
+            switch model.description {
+            case .plain(let text):
+                return text
+            case .attributed(let attributedText):
+                return attributedText.string
+            }
+        }()
+
+        var detailItemsString: String?
+        if let detailItems = model.detailItems, !detailItems.isEmpty {
+            detailItemsString = detailItems.joined(separator: ", ")
+        }
+
+        accessibilityLabel = [model.title, description, detailItemsString].compactMap { $0 }.joined(separator: ", ")
     }
 
     // MARK: - Private methods
@@ -141,6 +163,12 @@ class SelectionListItemView: UIView {
             } else {
                 selectionView.isHighlighted = isSelected
             }
+        }
+
+        if isSelected {
+            accessibilityTraits.insert(.selected)
+        } else {
+            accessibilityTraits.remove(.selected)
         }
 
         let duration = shouldAnimate ? 0.15 : 0

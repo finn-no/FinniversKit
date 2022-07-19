@@ -34,6 +34,7 @@ public class SearchView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.textField.returnKeyType = .search
         view.delegate = self
+        view.accessibilityTraits = .searchField
         return view
     }()
 
@@ -75,6 +76,8 @@ public class SearchView: UIView {
     public func configureSearchTextField(placeholder: String, text: String?) {
         searchTextField.textField.placeholder = placeholder
         searchTextField.textField.text = text
+
+        setAccessibilityLabel(searchText: text)
     }
 
     // MARK: - Overrides
@@ -85,6 +88,16 @@ public class SearchView: UIView {
 
     public override func becomeFirstResponder() -> Bool {
         searchTextField.becomeFirstResponder()
+    }
+
+    // MARK: - Private methods
+
+    private func setAccessibilityLabel(searchText: String?) {
+        if let searchText = searchText, !searchText.isEmpty {
+            searchTextField.accessibilityLabel = searchText
+        } else {
+            searchTextField.accessibilityLabel = searchTextField.textField.placeholder
+        }
     }
 }
 
@@ -115,6 +128,7 @@ extension SearchView: UITableViewDataSource {
 
 extension SearchView: TextFieldDelegate {
     public func textFieldDidChange(_ textField: TextField) {
+        setAccessibilityLabel(searchText: textField.text)
         delegate?.searchView(self, didChangeSearchText: textField.text)
     }
 }

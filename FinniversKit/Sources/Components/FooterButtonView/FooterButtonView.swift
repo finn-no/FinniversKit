@@ -26,7 +26,7 @@ public final class FooterButtonView: TopShadowView {
 
     // MARK: - Private properties
 
-    private let button: UIButton = {
+    private lazy var button: UIButton = {
         let button = Button(style: .callToAction, size: .normal, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
         return button

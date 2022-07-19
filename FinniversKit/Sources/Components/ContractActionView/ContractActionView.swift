@@ -13,9 +13,9 @@ public class ContractActionView: UIView {
     // MARK: - Public properties
 
     public weak var delegate: ContractActionViewDelegate?
-    private(set) var identifier: String?
-    private(set) var buttonUrl: URL?
-    private(set) var videoUrl: URL?
+    public private(set) var identifier: String?
+    public private(set) var buttonUrl: URL?
+    public private(set) var videoUrl: URL?
 
     // MARK: - Private properties
 
