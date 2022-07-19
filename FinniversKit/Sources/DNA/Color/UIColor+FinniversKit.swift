@@ -208,6 +208,14 @@ import UIKit
     public class var lime: UIColor {
         return UIColor(hex: "#007200")
     }
+
+    public class var green500: UIColor {
+        return UIColor(hex: "#18C884")
+    }
+
+    public class var green700: UIColor {
+        return UIColor(hex: "#217A5F")
+    }
 }
 
 // MARK: - Temporary Markets Colors
@@ -534,6 +542,15 @@ public extension UIColor {
                 return defaultColor
             }
         }
+    }
+
+    /// Returns hexadecimal represetation of a color.
+    var hexString: String {
+        let components = self.cgColor.components
+        let red = components?[0] ?? 0.0
+        let green = components?[1] ?? 0.0
+        let blue = components?[2] ?? 0.0
+        return  String(format: "#%02x%02x%02x", (Int)(red * 255), (Int)(green * 255), (Int)(blue * 255))
     }
 
     @available(*, deprecated, message: "Use dynamicColor(defaultColor:darkModeColor:) instead.")
