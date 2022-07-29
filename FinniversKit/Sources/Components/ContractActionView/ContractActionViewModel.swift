@@ -10,7 +10,6 @@ public struct ContractActionViewModel {
     public let strings: [String]
     public let buttonTitle: String
     public let buttonUrl: URL
-    public let videoLink: VideoLink?
 
     public init(
         identifier: String?,
@@ -19,8 +18,7 @@ public struct ContractActionViewModel {
         description: String? = nil,
         strings: [String],
         buttonTitle: String,
-        buttonUrl: URL,
-        videoLink: VideoLink? = nil
+        buttonUrl: URL
     ) {
         self.identifier = identifier
         self.title = title
@@ -29,18 +27,5 @@ public struct ContractActionViewModel {
         self.strings = strings
         self.buttonTitle = buttonTitle
         self.buttonUrl = buttonUrl
-        self.videoLink = videoLink
-    }
-
-    public struct VideoLink {
-        public let title: String
-        public let videoUrl: URL
-        public let thumbnailUrl: URL
-
-        public init(title: String, videoUrl: URL, thumbnailUrl: URL) {
-            self.title = title
-            self.videoUrl = videoUrl
-            self.thumbnailUrl = thumbnailUrl
-        }
     }
 }
