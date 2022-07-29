@@ -6,7 +6,6 @@ import UIKit
 
 public protocol ContractActionViewDelegate: AnyObject {
     func contractActionView(_ view: ContractActionView, didSelectActionButtonWithUrl url: URL)
-    func contractActionView(_ view: ContractActionView, didSelectVideoWithUrl url: URL)
 }
 
 public class ContractActionView: UIView {
@@ -15,7 +14,6 @@ public class ContractActionView: UIView {
     public weak var delegate: ContractActionViewDelegate?
     public private(set) var identifier: String?
     public private(set) var buttonUrl: URL?
-    public private(set) var videoUrl: URL?
 
     // MARK: - Private properties
 
@@ -63,15 +61,9 @@ public class ContractActionView: UIView {
         return button
     }()
 
-    private lazy var videoLinkView: ContractVideoLinkView = {
-        let view = ContractVideoLinkView(withAutoLayout: true)
-        view.delegate = self
-        return view
-    }()
-
     private lazy var contentStackView: UIStackView = {
         let stackView = UIStackView(axis: .vertical, spacing: .spacingL, withAutoLayout: true)
-        stackView.addArrangedSubviews([titleSubtitleStackView, descriptionLabel, bulletListLabel, actionButton, videoLinkView])
+        stackView.addArrangedSubviews([titleSubtitleStackView, descriptionLabel, actionButton])
         return stackView
     }()
 
@@ -114,7 +106,6 @@ public class ContractActionView: UIView {
     ) {
         identifier = viewModel.identifier
         buttonUrl = viewModel.buttonUrl
-        videoUrl = viewModel.videoLink?.videoUrl
 
         if let title = viewModel.title, !title.isEmpty {
             titleLabel.text = title
@@ -135,13 +126,6 @@ public class ContractActionView: UIView {
             descriptionLabel.isHidden = false
         } else {
             descriptionLabel.isHidden = true
-        }
-
-        if let remoteImageViewDataSource = remoteImageViewDataSource, let videoLink = viewModel.videoLink {
-            videoLinkView.configure(with: videoLink, remoteImageViewDataSource: remoteImageViewDataSource)
-            videoLinkView.isHidden = true
-        } else {
-            videoLinkView.isHidden = true
         }
 
         contentStackView.spacing = contentSpacing
@@ -178,14 +162,5 @@ public class ContractActionView: UIView {
             NSLayoutConstraint.activate([imageViewTrailingAnchor, imageViewTopAnchor])
         }
 
-    }
-}
-
-// MARK: - ContractVideoLinkViewDelegate
-
-extension ContractActionView: ContractVideoLinkViewDelegate {
-    func didSelectVideo() {
-        guard let videoUrl = videoUrl else { return }
-        delegate?.contractActionView(self, didSelectVideoWithUrl: videoUrl)
     }
 }

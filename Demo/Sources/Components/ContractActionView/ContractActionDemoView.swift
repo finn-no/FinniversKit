@@ -21,11 +21,7 @@ class ContractActionDemoView: UIView, Tweakable {
                 contentSpacing: .spacingM,
                 paragraphSpacing: 12
             )
-        }),
-        TweakingOption(title: "With video link") { [weak self] in
-            guard let self = self else { return }
-            self.contractActionView.configure(with: .withVideoLink, remoteImageViewDataSource: self)
-        }
+        })
     ]
 
     private lazy var contractActionView: ContractActionView = {
@@ -140,22 +136,5 @@ private extension ContractActionViewModel {
         ],
         buttonTitle: "Be selger om tilgang til kontrakten",
         buttonUrl: URL(string: "https://www.finn.no/")!
-    )
-
-    static let withVideoLink: ContractActionViewModel = ContractActionViewModel(
-        identifier: "demo-view",
-        title: "Kjøpekontrakt for bruktbil",
-        strings: [
-            "Digital signering",
-            "Ferdig utfylt kontrakt",
-            "1 mnd bilforsikring til kr 0,-"
-        ],
-        buttonTitle: "Opprett kjøpekontrakt",
-        buttonUrl: URL(string: "https://www.finn.no/")!,
-        videoLink: ContractActionViewModel.VideoLink(
-            title: "Se hvordan smidig bilhandel fungerer",
-            videoUrl: URL(string: "https://player.vimeo.com/video/353374268")!,
-            thumbnailUrl: URL(string: "https://apps.finn.no/api/image/videothumb/vimeo/529335358")!
-        )
     )
 }
