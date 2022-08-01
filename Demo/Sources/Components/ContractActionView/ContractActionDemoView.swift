@@ -99,12 +99,6 @@ extension ContractActionDemoView: RemoteImageViewDataSource {
 private extension ContractActionViewModel {
     static let `default`: ContractActionViewModel = ContractActionViewModel(
         identifier: "demo-view",
-        strings: [
-            "Godkjent kontrakt av Forbrukerrådet",
-            "Enkelt og trygt for begge parter",
-            "Oversikt over hele prosessen",
-            "Mulighet for gratis forsikring i 30 dager til 0 kr"
-        ],
         buttonTitle: "Få ferdig utfylt kontrakt",
         buttonUrl: URL(string: "https://www.finn.no/")!
     )
@@ -113,12 +107,6 @@ private extension ContractActionViewModel {
         identifier: "demo-view",
         title: "Smidig bilhandel?",
         subtitle: "FINN guider deg hele veien.",
-        strings: [
-            "Godkjent kontrakt av Forbrukerrådet",
-            "Enkelt og trygt for begge parter",
-            "Oversikt over hele prosessen",
-            "Mulighet for gratis forsikring i 30 dager til 0 kr"
-        ],
         buttonTitle: "Få ferdig utfylt kontrakt",
         buttonUrl: URL(string: "https://www.finn.no/")!
     )
@@ -127,13 +115,6 @@ private extension ContractActionViewModel {
         identifier: "demo-view",
         title: "Smidig bilhandel",
         subtitle: "FINN guider deg hele veien.",
-        description: "Selger har opprettet\nkjøpekontrakt for denne bilen",
-        strings: [
-            "Godkjent kontrakt av Forbrukerrådet",
-            "Enkelt og trygt for begge parter",
-            "Oversikt over hele prosessen",
-            "Mulighet for gratis forsikring i 30 dager til 0 kr"
-        ],
         buttonTitle: "Be selger om tilgang til kontrakten",
         buttonUrl: URL(string: "https://www.finn.no/")!
     )

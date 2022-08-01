@@ -121,15 +121,7 @@ public class ContractActionView: UIView {
             subtitleLabel.isHidden = true
         }
 
-        if let description = viewModel.description, !description.isEmpty {
-            descriptionLabel.text = description
-            descriptionLabel.isHidden = false
-        } else {
-            descriptionLabel.isHidden = true
-        }
-
         contentStackView.spacing = contentSpacing
-        bulletListLabel.attributedText = viewModel.strings.bulletPoints(withFont: .body, paragraphSpacing: paragraphSpacing)
         actionButton.setTitle(viewModel.buttonTitle, for: .normal)
 
         guard let image = trailingImage else {
