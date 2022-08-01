@@ -17,7 +17,14 @@ public class ContractActionView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var imageView: UIImageView = UIImageView(withAutoLayout: true)
+    private lazy var imageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: false)
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: .carFront).withTintColor(.btnPrimary)
+
+        return imageView
+    }()
+
     private lazy var imageViewTopAnchor = NSLayoutConstraint()
     private lazy var imageViewTrailingAnchor = NSLayoutConstraint()
 
@@ -47,12 +54,6 @@ public class ContractActionView: UIView {
         return label
     }()
 
-    private lazy var bulletListLabel: Label = {
-        let label = Label(withAutoLayout: true)
-        label.numberOfLines = 0
-        return label
-    }()
-
     private let buttonStyle = Button.Style.default.overrideStyle(borderColor: .btnDisabled)
 
     private lazy var actionButton: Button = {
@@ -63,7 +64,7 @@ public class ContractActionView: UIView {
 
     private lazy var contentStackView: UIStackView = {
         let stackView = UIStackView(axis: .vertical, spacing: .spacingL, withAutoLayout: true)
-        stackView.addArrangedSubviews([titleSubtitleStackView, descriptionLabel, actionButton])
+        stackView.addArrangedSubviews([imageView, titleSubtitleStackView, descriptionLabel, actionButton])
         return stackView
     }()
 
@@ -97,7 +98,7 @@ public class ContractActionView: UIView {
 
     public func configure(
         with viewModel: ContractActionViewModel,
-        trailingImage: UIImage? = nil,
+        topIcon: UIImage? = nil,
         trailingImageTopConstant: CGFloat = 0,
         trailingImageTrailingConstant: CGFloat = 0,
         contentSpacing: CGFloat = .spacingL,
@@ -123,13 +124,6 @@ public class ContractActionView: UIView {
 
         contentStackView.spacing = contentSpacing
         actionButton.setTitle(viewModel.buttonTitle, for: .normal)
-
-        guard let image = trailingImage else {
-            imageView.removeFromSuperview()
-            return
-        }
-
-        addImage(image, trailingImageTopConstant, trailingImageTrailingConstant)
     }
 
     // MARK: - Private methods
@@ -137,22 +131,5 @@ public class ContractActionView: UIView {
     @objc private func handleActionButtonTap() {
         guard let buttonUrl = buttonUrl else { return }
         delegate?.contractActionView(self, didSelectActionButtonWithUrl: buttonUrl)
-    }
-
-    private func addImage(_ image: UIImage, _ topConstant: CGFloat, _ trailingConstant: CGFloat) {
-        imageView.image = image
-
-        contentStackView.addSubview(imageView)
-        contentStackView.sendSubviewToBack(imageView)
-
-        if imageViewTopAnchor.isActive || imageViewTrailingAnchor.isActive {
-            imageViewTopAnchor.constant = topConstant
-            imageViewTrailingAnchor.constant = trailingConstant
-        } else {
-            imageViewTopAnchor = imageView.topAnchor.constraint(equalTo: topAnchor, constant: topConstant)
-            imageViewTrailingAnchor = imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: trailingConstant)
-            NSLayoutConstraint.activate([imageViewTrailingAnchor, imageViewTopAnchor])
-        }
-
     }
 }

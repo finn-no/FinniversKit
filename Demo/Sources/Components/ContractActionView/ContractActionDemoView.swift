@@ -8,14 +8,14 @@ class ContractActionDemoView: UIView, Tweakable {
         TweakingOption(title: "Car contract", action: { [weak self] in
             self?.contractActionView.configure(
                 with: .carContract,
-                trailingImage: UIImage(named: .carsCircleIllustration),
+                topIcon: UIImage(named: .carFront),
                 paragraphSpacing: 12
             )
         }),
         TweakingOption(title: "Request access to contract", action: { [weak self] in
             self?.contractActionView.configure(
                 with: .requestAccessToContract,
-                trailingImage: UIImage(named: .contract),
+                topIcon: UIImage(named: .contract),
                 trailingImageTopConstant: .spacingM,
                 trailingImageTrailingConstant: -.spacingM,
                 contentSpacing: .spacingM,
@@ -105,9 +105,9 @@ private extension ContractActionViewModel {
 
     static let carContract: ContractActionViewModel = ContractActionViewModel(
         identifier: "demo-view",
-        title: "Smidig bilhandel?",
-        subtitle: "FINN guider deg hele veien.",
-        buttonTitle: "Få ferdig utfylt kontrakt",
+        title: "Kjøp bilen med Smidig bilhandel",
+        subtitle: "Vi hjelper deg ghennom alle stegene i kjøpet. Enkelt, trygt og helt gratis.",
+        buttonTitle: "Jeg vil bruke Smidig bilhandel",
         buttonUrl: URL(string: "https://www.finn.no/")!
     )
 

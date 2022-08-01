@@ -42,6 +42,7 @@ enum ImageAsset: String {
     case boat
     case boatNew
     case car
+    case carFront
     case carIllustration
     case carNew
     case carPromo
@@ -141,6 +142,7 @@ enum ImageAsset: String {
             .boat,
             .boatNew,
             .car,
+            .carFront,
             .carIllustration,
             .carNew,
             .carPromo,
