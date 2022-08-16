@@ -20,7 +20,7 @@ public class ContractActionView: UIView {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: false)
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: .carFront).withTintColor(.btnPrimary)
+        // imageView.image = UIImage(named: .contract) //UIImage(named: .carFront).withTintColor(.btnPrimary)
 
         return imageView
     }()
@@ -107,6 +107,10 @@ public class ContractActionView: UIView {
     ) {
         identifier = viewModel.identifier
         buttonUrl = viewModel.buttonUrl
+
+        if let icon = topIcon {
+            imageView.image = icon
+        }
 
         if let title = viewModel.title, !title.isEmpty {
             titleLabel.text = title
