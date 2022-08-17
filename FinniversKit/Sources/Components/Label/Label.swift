@@ -83,7 +83,7 @@ public extension Label {
         for (itemIndex, styleItem) in style {
             styledText = styledText.replacingOccurrences(of: itemIndex, with: styleItem)
         }
-        let htmlTemplate = "<span style=\"font-family: \(font!.fontName); font-size: \(font!.pointSize)\">\(styledText)</span>"
+        let htmlTemplate = "<span style=\"font-family: \(font!.fontName); font-size: \(font!.pointSize); color: \(textColor.hexString)\">\(styledText)</span>"
 
         guard
             let data = htmlTemplate.data(using: .utf8),
