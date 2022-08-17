@@ -13,18 +13,14 @@ public class FrontPageTransactionView: UIView {
     private let cornerRadius: CGFloat = 8
     
     private lazy var titleLabel: UILabel = {
-        let label = Label(withAutoLayout: true)
-        label.font = .bodyStrong
-        label.textColor = .licorice
+        let label = Label(style: .bodyStrong,withAutoLayout: true)
         label.numberOfLines = 1
         label.textAlignment = .left
         return label
     }()
     
     private lazy var subtitleLabel: UILabel = {
-        let label = Label(withAutoLayout: true)
-        label.font = .body
-        label.textColor = .licorice
+        let label = Label(style: .body, withAutoLayout: true)
         label.numberOfLines = 1
         label.textAlignment = .left
 
