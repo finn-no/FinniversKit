@@ -20,7 +20,6 @@ public class ContractActionView: UIView {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: false)
         imageView.contentMode = .scaleAspectFit
-        // imageView.image = UIImage(named: .contract) //UIImage(named: .carFront).withTintColor(.btnPrimary)
 
         return imageView
     }()
