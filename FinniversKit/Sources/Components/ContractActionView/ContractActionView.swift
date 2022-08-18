@@ -54,6 +54,14 @@ public class ContractActionView: UIView {
         return label
     }()
 
+    private lazy var bulletListLabel: Label = {
+        let label = Label(withAutoLayout: true)
+        label.numberOfLines = 0
+        label.isHidden = true
+        return label
+    }()
+
+
     private let buttonStyle = Button.Style.default.overrideStyle(borderColor: .btnDisabled)
 
     private lazy var actionButton: Button = {
@@ -64,7 +72,7 @@ public class ContractActionView: UIView {
 
     private lazy var contentStackView: UIStackView = {
         let stackView = UIStackView(axis: .vertical, spacing: .spacingL, withAutoLayout: true)
-        stackView.addArrangedSubviews([imageView, titleSubtitleStackView, descriptionLabel, actionButton])
+        stackView.addArrangedSubviews([imageView, titleSubtitleStackView, bulletListLabel, descriptionLabel, actionButton])
         return stackView
     }()
 
@@ -125,8 +133,17 @@ public class ContractActionView: UIView {
             subtitleLabel.isHidden = true
         }
 
+
         contentStackView.spacing = contentSpacing
         actionButton.setTitle(viewModel.buttonTitle, for: .normal)
+
+        if let stringArray = viewModel.strings, !stringArray.isEmpty {
+            bulletListLabel.attributedText = stringArray.bulletPoints(withFont: .body, paragraphSpacing: paragraphSpacing)
+            bulletListLabel.isHidden = false
+        } else {
+            bulletListLabel.isHidden = true
+        }
+
     }
 
     // MARK: - Private methods
