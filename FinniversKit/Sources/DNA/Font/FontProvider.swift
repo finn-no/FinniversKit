@@ -14,6 +14,7 @@ public enum FontWeight: String {
 public protocol FontProvider {
     var title1: UIFont { get }
     var title2: UIFont { get }
+    var title2Strong: UIFont { get }
     var title3Strong: UIFont { get }
     var title3: UIFont { get }
     var bodyStrong: UIFont { get }
@@ -51,6 +52,19 @@ public struct DefaultFontProvider: FontProvider {
         registerCustomFonts()
 
         let font = UIFont(name: FontType.light.rawValue, size: 28.0)!
+        return font.scaledFont(forTextStyle: .title1)
+    }
+
+    /// FINNTypeWebStrippet-Medium with a size of 28 scaled for UIFontTextStyle.title2
+    ///
+    /// ## Usage:
+    /// - A page can contain multiple T2 to divide content into several sections.
+    /// - There should be a lot of space between sections to create a clear distinction on the content.
+    /// - This always has the weight Light.
+    public var title2Strong: UIFont {
+        registerCustomFonts()
+
+        let font = UIFont(name: FontType.medium.rawValue, size: 28.0)!
         return font.scaledFont(forTextStyle: .title1)
     }
 
