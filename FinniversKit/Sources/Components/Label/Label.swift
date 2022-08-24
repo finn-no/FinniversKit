@@ -80,10 +80,10 @@ extension Label {
 public extension Label {
     func setText(fromHTMLString htmlString: String, style: [String: String] = [:]) {
         var styledText = htmlString
-        for (itemIndex, styleItem) in style {
-            styledText = styledText.replacingOccurrences(of: itemIndex, with: styleItem)
+        for (styleIdentifier, styleItem) in style {
+            styledText = styledText.replacingOccurrences(of: styleIdentifier, with: styleItem)
         }
-        let htmlTemplate = "<span style=\"font-family: \(font!.fontName); font-size: \(font!.pointSize); color: \(textColor.hexString)\">\(styledText)</span>"
+        let htmlTemplate = "<span style=\"font-family: \(font.fontName); font-size: \(font.pointSize); color: \(textColor.hexString)\">\(styledText)</span>"
 
         guard
             let data = htmlTemplate.data(using: .utf8),
