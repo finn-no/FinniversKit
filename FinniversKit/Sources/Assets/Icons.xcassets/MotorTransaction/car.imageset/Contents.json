@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "Size=24.svg",
+      "filename" : "car.pdf",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Size=32.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
