@@ -11,16 +11,18 @@ private struct ViewModel: IconTitleTableViewCellViewModel {
     var icon: UIImage?
     var iconTintColor: UIColor?
     var hasChevron: Bool
-
+    var externalIcon: UIImage?
+    
     init(
         title: String, subtitle: String? = nil, detailText: String? = nil,
-        icon: UIImage? = nil, iconTintColor: UIColor? = nil, hasChevron: Bool = false) {
+        icon: UIImage? = nil, iconTintColor: UIColor? = nil, hasChevron: Bool = false, externalIcon: UIImage? = nil) {
         self.title = title
         self.subtitle = subtitle
         self.detailText = detailText
         self.icon = icon
         self.iconTintColor = iconTintColor
         self.hasChevron = hasChevron
+        self.externalIcon = externalIcon
     }
 }
 
@@ -28,6 +30,7 @@ class IconTitleCellDemoView: UIView {
     private var viewModels = [
         ViewModel(title: "Favoritter", icon: UIImage(named: .favouriteAdded), iconTintColor: .textPrimary, hasChevron: true),
         ViewModel(title: "Lagrede søk", icon: UIImage(named: .search), iconTintColor: .textPrimary),
+        ViewModel(title: "Betaling", icon: UIImage(named: .creditCard), iconTintColor: .textPrimary, hasChevron: false, externalIcon: UIImage(named: .webview).withTintColor(.textPrimary, renderingMode: .alwaysOriginal)),
         ViewModel(title: "Varslingsinnstillinger", hasChevron: true),
         ViewModel(title: "Personvernerklæring", hasChevron: true),
         ViewModel(title: "Innstillinger for personvern"),
