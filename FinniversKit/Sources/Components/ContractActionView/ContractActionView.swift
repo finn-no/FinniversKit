@@ -6,6 +6,7 @@ import UIKit
 
 public protocol ContractActionViewDelegate: AnyObject {
     func contractActionView(_ view: ContractActionView, didSelectActionButtonWithUrl url: URL)
+    func contractActionView(_ view: ContractActionView, didSelectVideoWithUrl url: URL)
 }
 
 public class ContractActionView: UIView {
@@ -14,16 +15,11 @@ public class ContractActionView: UIView {
     public weak var delegate: ContractActionViewDelegate?
     public private(set) var identifier: String?
     public private(set) var buttonUrl: URL?
+    public private(set) var videoUrl: URL?
 
     // MARK: - Private properties
 
-    private lazy var imageView: UIImageView = {
-        let imageView = UIImageView(withAutoLayout: false)
-        imageView.contentMode = .scaleAspectFit
-
-        return imageView
-    }()
-
+    private lazy var imageView: UIImageView = UIImageView(withAutoLayout: true)
     private lazy var imageViewTopAnchor = NSLayoutConstraint()
     private lazy var imageViewTrailingAnchor = NSLayoutConstraint()
 
@@ -56,10 +52,8 @@ public class ContractActionView: UIView {
     private lazy var bulletListLabel: Label = {
         let label = Label(withAutoLayout: true)
         label.numberOfLines = 0
-        label.isHidden = true
         return label
     }()
-
 
     private let buttonStyle = Button.Style.default.overrideStyle(borderColor: .btnDisabled)
 
@@ -69,9 +63,15 @@ public class ContractActionView: UIView {
         return button
     }()
 
+    private lazy var videoLinkView: ContractVideoLinkView = {
+        let view = ContractVideoLinkView(withAutoLayout: true)
+        view.delegate = self
+        return view
+    }()
+
     private lazy var contentStackView: UIStackView = {
         let stackView = UIStackView(axis: .vertical, spacing: .spacingL, withAutoLayout: true)
-        stackView.addArrangedSubviews([imageView, titleSubtitleStackView, bulletListLabel, descriptionLabel, actionButton])
+        stackView.addArrangedSubviews([titleSubtitleStackView, descriptionLabel, bulletListLabel, actionButton, videoLinkView])
         return stackView
     }()
 
@@ -104,7 +104,7 @@ public class ContractActionView: UIView {
 
     public func configure(
         with viewModel: ContractActionViewModel,
-        topIcon: UIImage? = nil,
+        trailingImage: UIImage? = nil,
         trailingImageTopConstant: CGFloat = 0,
         trailingImageTrailingConstant: CGFloat = 0,
         contentSpacing: CGFloat = .spacingL,
@@ -113,10 +113,7 @@ public class ContractActionView: UIView {
     ) {
         identifier = viewModel.identifier
         buttonUrl = viewModel.buttonUrl
-
-        if let icon = topIcon {
-            imageView.image = icon
-        }
+        videoUrl = viewModel.videoLink?.videoUrl
 
         if let title = viewModel.title, !title.isEmpty {
             titleLabel.text = title
@@ -132,17 +129,30 @@ public class ContractActionView: UIView {
             subtitleLabel.isHidden = true
         }
 
-
-        contentStackView.spacing = contentSpacing
-        actionButton.setTitle(viewModel.buttonTitle, for: .normal)
-
-        if let stringArray = viewModel.strings, !stringArray.isEmpty {
-            bulletListLabel.attributedText = stringArray.bulletPoints(withFont: .body, paragraphSpacing: paragraphSpacing)
-            bulletListLabel.isHidden = false
+        if let description = viewModel.description, !description.isEmpty {
+            descriptionLabel.text = description
+            descriptionLabel.isHidden = false
         } else {
-            bulletListLabel.isHidden = true
+            descriptionLabel.isHidden = true
         }
 
+        if let remoteImageViewDataSource = remoteImageViewDataSource, let videoLink = viewModel.videoLink {
+            videoLinkView.configure(with: videoLink, remoteImageViewDataSource: remoteImageViewDataSource)
+            videoLinkView.isHidden = false
+        } else {
+            videoLinkView.isHidden = true
+        }
+
+        contentStackView.spacing = contentSpacing
+        bulletListLabel.attributedText = viewModel.strings.bulletPoints(withFont: .body, paragraphSpacing: paragraphSpacing)
+        actionButton.setTitle(viewModel.buttonTitle, for: .normal)
+
+        guard let image = trailingImage else {
+            imageView.removeFromSuperview()
+            return
+        }
+
+        addImage(image, trailingImageTopConstant, trailingImageTrailingConstant)
     }
 
     // MARK: - Private methods
@@ -150,5 +160,31 @@ public class ContractActionView: UIView {
     @objc private func handleActionButtonTap() {
         guard let buttonUrl = buttonUrl else { return }
         delegate?.contractActionView(self, didSelectActionButtonWithUrl: buttonUrl)
+    }
+
+    private func addImage(_ image: UIImage, _ topConstant: CGFloat, _ trailingConstant: CGFloat) {
+        imageView.image = image
+
+        contentStackView.addSubview(imageView)
+        contentStackView.sendSubviewToBack(imageView)
+
+        if imageViewTopAnchor.isActive || imageViewTrailingAnchor.isActive {
+            imageViewTopAnchor.constant = topConstant
+            imageViewTrailingAnchor.constant = trailingConstant
+        } else {
+            imageViewTopAnchor = imageView.topAnchor.constraint(equalTo: topAnchor, constant: topConstant)
+            imageViewTrailingAnchor = imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: trailingConstant)
+            NSLayoutConstraint.activate([imageViewTrailingAnchor, imageViewTopAnchor])
+        }
+
+    }
+}
+
+// MARK: - ContractVideoLinkViewDelegate
+
+extension ContractActionView: ContractVideoLinkViewDelegate {
+    func didSelectVideo() {
+        guard let videoUrl = videoUrl else { return }
+        delegate?.contractActionView(self, didSelectVideoWithUrl: videoUrl)
     }
 }

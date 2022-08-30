@@ -8,20 +8,24 @@ class ContractActionDemoView: UIView, Tweakable {
         TweakingOption(title: "Car contract", action: { [weak self] in
             self?.contractActionView.configure(
                 with: .carContract,
-                topIcon: UIImage(named: .carFront),
+                trailingImage: UIImage(named: .carsCircleIllustration),
                 paragraphSpacing: 12
             )
         }),
         TweakingOption(title: "Request access to contract", action: { [weak self] in
             self?.contractActionView.configure(
                 with: .requestAccessToContract,
-                topIcon: UIImage(named: .contract),
+                trailingImage: UIImage(named: .contract),
                 trailingImageTopConstant: .spacingM,
                 trailingImageTrailingConstant: -.spacingM,
                 contentSpacing: .spacingM,
                 paragraphSpacing: 12
             )
-        })
+        }),
+        TweakingOption(title: "With video link") { [weak self] in
+            guard let self = self else { return }
+            self.contractActionView.configure(with: .withVideoLink, remoteImageViewDataSource: self)
+        }
     ]
 
     private lazy var contractActionView: ContractActionView = {
@@ -99,15 +103,27 @@ extension ContractActionDemoView: RemoteImageViewDataSource {
 private extension ContractActionViewModel {
     static let `default`: ContractActionViewModel = ContractActionViewModel(
         identifier: "demo-view",
+        strings: [
+            "Godkjent kontrakt av Forbrukerrådet",
+            "Enkelt og trygt for begge parter",
+            "Oversikt over hele prosessen",
+            "Mulighet for gratis forsikring i 30 dager til 0 kr"
+        ],
         buttonTitle: "Få ferdig utfylt kontrakt",
         buttonUrl: URL(string: "https://www.finn.no/")!
     )
 
     static let carContract: ContractActionViewModel = ContractActionViewModel(
         identifier: "demo-view",
-        title: "Kjøp bilen med Smidig bilhandel",
-        subtitle: "Vi hjelper deg ghennom alle stegene i kjøpet. Enkelt, trygt og helt gratis.",
-        buttonTitle: "Jeg vil bruke Smidig bilhandel",
+        title: "Smidig bilhandel?",
+        subtitle: "FINN guider deg hele veien.",
+        strings: [
+            "Godkjent kontrakt av Forbrukerrådet",
+            "Enkelt og trygt for begge parter",
+            "Oversikt over hele prosessen",
+            "Mulighet for gratis forsikring i 30 dager til 0 kr"
+        ],
+        buttonTitle: "Få ferdig utfylt kontrakt",
         buttonUrl: URL(string: "https://www.finn.no/")!
     )
 
@@ -115,8 +131,31 @@ private extension ContractActionViewModel {
         identifier: "demo-view",
         title: "Smidig bilhandel",
         subtitle: "FINN guider deg hele veien.",
-        strings: ["a","b","c"],
+        description: "Selger har opprettet\nkjøpekontrakt for denne bilen",
+        strings: [
+            "Godkjent kontrakt av Forbrukerrådet",
+            "Enkelt og trygt for begge parter",
+            "Oversikt over hele prosessen",
+            "Mulighet for gratis forsikring i 30 dager til 0 kr"
+        ],
         buttonTitle: "Be selger om tilgang til kontrakten",
         buttonUrl: URL(string: "https://www.finn.no/")!
+    )
+
+    static let withVideoLink: ContractActionViewModel = ContractActionViewModel(
+        identifier: "demo-view",
+        title: "Kjøpekontrakt for bruktbil",
+        strings: [
+            "Digital signering",
+            "Ferdig utfylt kontrakt",
+            "1 mnd bilforsikring til kr 0,-"
+        ],
+        buttonTitle: "Opprett kjøpekontrakt",
+        buttonUrl: URL(string: "https://www.finn.no/")!,
+        videoLink: ContractActionViewModel.VideoLink(
+            title: "Se hvordan smidig bilhandel fungerer",
+            videoUrl: URL(string: "https://player.vimeo.com/video/353374268")!,
+            thumbnailUrl: URL(string: "https://apps.finn.no/api/image/videothumb/vimeo/529335358")!
+        )
     )
 }
