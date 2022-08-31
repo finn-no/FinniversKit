@@ -86,7 +86,7 @@ public extension Label {
         let htmlTemplate = "<span style=\"font-family: \(font.fontName); font-size: \(font.pointSize); color: \(textColor.hexString)\">\(styledText)</span>"
 
         guard
-            let data = htmlTemplate.data(using: .utf8),
+            let data = htmlTemplate.data(using: .unicode),
             let attrStr = try? NSAttributedString(
                 data: data,
                 options: [.documentType: NSAttributedString.DocumentType.html],
