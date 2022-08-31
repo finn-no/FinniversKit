@@ -83,6 +83,8 @@ class SelectionListItemView: UIView {
             descriptionLabel.text = text
         case .attributed(let attributedText):
             descriptionLabel.attributedText = attributedText
+        case .html(let htmlString, let style, _):
+            descriptionLabel.setText(fromHTMLString: htmlString, style: style)
         }
 
         if let detailItems = model.detailItems, !detailItems.isEmpty {
@@ -143,6 +145,8 @@ class SelectionListItemView: UIView {
                 return text
             case .attributed(let attributedText):
                 return attributedText.string
+            case .html(let htmlString, _, let accessibilityString):
+                return accessibilityString ?? htmlString
             }
         }()
 
