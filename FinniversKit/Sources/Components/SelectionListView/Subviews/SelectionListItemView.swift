@@ -23,13 +23,13 @@ class SelectionListItemView: UIView {
     private lazy var detailViewsStackViewBottomConstraint = detailViewsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .bodyStrong, withAutoLayout: true)
+        let label = Label(style: .captionStrong, withAutoLayout: true)
         label.numberOfLines = 0
         return label
     }()
 
     private lazy var descriptionLabel: Label = {
-        let label = Label(style: .body, withAutoLayout: true)
+        let label = Label(style: .captionStrong, withAutoLayout: true)
         label.textColor = .textSecondary
         label.numberOfLines = 0
         return label
@@ -39,6 +39,8 @@ class SelectionListItemView: UIView {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.tintColor = .textPrimary
         imageView.contentMode = .scaleAspectFit
+        imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
+        imageView.setContentHuggingPriority(.required, for: .horizontal)
         return imageView
     }()
 
@@ -76,7 +78,7 @@ class SelectionListItemView: UIView {
         )
 
         titleLabel.text = model.title
-        iconImageView.image = model.icon
+        iconImageView.image = model.icon.image
 
         switch model.description {
         case .plain(let text):
@@ -102,34 +104,38 @@ class SelectionListItemView: UIView {
         contentView.addSubview(iconImageView)
         contentView.addSubview(detailViewsStackView)
 
-        NSLayoutConstraint.activate([
+        var constraints: [NSLayoutConstraint] = [
             contentView.topAnchor.constraint(equalTo: topAnchor, constant: configuration.spacing),
             contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: configuration.spacing),
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -configuration.spacing),
             contentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -configuration.spacing),
 
-            selectionView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor),
             selectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-            selectionView.bottomAnchor.constraint(lessThanOrEqualTo: detailViewsStackView.topAnchor),
-            selectionView.centerYAnchor.constraint(greaterThanOrEqualTo: textStackView.centerYAnchor),
+            selectionView.centerYAnchor.constraint(equalTo: textStackView.centerYAnchor),
 
             textStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
             textStackView.leadingAnchor.constraint(equalTo: selectionView.trailingAnchor, constant: .spacingM),
             textStackView.bottomAnchor.constraint(equalTo: detailViewsStackView.topAnchor, constant: -.spacingM),
 
-            iconImageView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor),
+            titleLabel.widthAnchor.constraint(equalTo: descriptionLabel.widthAnchor),
+
             iconImageView.leadingAnchor.constraint(equalTo: textStackView.trailingAnchor, constant: .spacingM),
             iconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
-            iconImageView.bottomAnchor.constraint(lessThanOrEqualTo: detailViewsStackView.topAnchor),
             iconImageView.centerYAnchor.constraint(equalTo: textStackView.centerYAnchor),
-
-            iconImageView.widthAnchor.constraint(equalToConstant: 24),
-            iconImageView.heightAnchor.constraint(equalToConstant: 24),
 
             detailViewsStackView.leadingAnchor.constraint(equalTo: selectionView.trailingAnchor, constant: .spacingM),
             detailViewsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
             detailViewsStackViewBottomConstraint,
-        ])
+        ]
+
+        if case .fixedSize = model.icon {
+            constraints.append(contentsOf: [
+                iconImageView.widthAnchor.constraint(equalToConstant: 24),
+                iconImageView.heightAnchor.constraint(equalToConstant: 24)
+            ])
+        }
+
+        NSLayoutConstraint.activate(constraints)
 
         setupAccessibility()
         updateSelection(shouldAnimate: false)

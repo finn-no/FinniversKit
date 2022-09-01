@@ -72,7 +72,7 @@ private extension Array where Element == SelectionItemModel {
                 identifier: "item-\($0)",
                 title: "Jeg kan overlevere ved oppmøte",
                 description: .plain("Du og kjøper gjør en egen avtale"),
-                icon: UIImage(named: .favoriteActive).withRenderingMode(.alwaysTemplate),
+                icon: .fixedSize(UIImage(named: .favoriteActive).withRenderingMode(.alwaysTemplate)),
                 detailItems: includeDetailItems ? Self.detailItems : nil,
                 isInitiallySelected: $0 == 0
             )
@@ -88,12 +88,12 @@ private extension Array where Element == SelectionItemModel {
             let accessibilityString = "Kjøper betaler 40 kroner for frakt. Dette er en tilbudspris og koster 80 kroner til vanlig."
             return SelectionItemModel(
                 identifier: "item-\($0)",
-                title: "Jeg kan overlevere ved oppmøte",
+                title: "Helthjem",
                 description: .html(
                     htmlString: htmlString,
                     style: style,
                     accessibilityString: accessibilityString),
-                icon: UIImage(named: .favoriteActive).withRenderingMode(.alwaysTemplate),
+                icon: .dynamic(UIImage(named: .torgetHelthjem)),
                 isInitiallySelected: true
             )
         }
