@@ -27,8 +27,7 @@ public struct SelectionItemModel {
 
     public enum Description {
         case plain(String)
-        case attributed(NSAttributedString)
-        case html(htmlString: String, style: [String: String], accessibilityString: String?)
+        case html(htmlString: String, style: [String: String] = [:], accessibilityString: String? = nil)
     }
 
     public enum Icon {

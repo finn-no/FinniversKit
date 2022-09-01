@@ -29,7 +29,7 @@ class SelectionListItemView: UIView {
     }()
 
     private lazy var descriptionLabel: Label = {
-        let label = Label(style: .captionStrong, withAutoLayout: true)
+        let label = Label(style: .caption, withAutoLayout: true)
         label.textColor = .textSecondary
         label.numberOfLines = 0
         return label
@@ -83,8 +83,6 @@ class SelectionListItemView: UIView {
         switch model.description {
         case .plain(let text):
             descriptionLabel.text = text
-        case .attributed(let attributedText):
-            descriptionLabel.attributedText = attributedText
         case .html(let htmlString, let style, _):
             descriptionLabel.setText(fromHTMLString: htmlString, style: style)
         }
@@ -149,8 +147,6 @@ class SelectionListItemView: UIView {
             switch model.description {
             case .plain(let text):
                 return text
-            case .attributed(let attributedText):
-                return attributedText.string
             case .html(let htmlString, _, let accessibilityString):
                 return accessibilityString ?? htmlString
             }
