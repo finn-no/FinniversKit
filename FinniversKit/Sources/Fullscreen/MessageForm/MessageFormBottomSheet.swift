@@ -123,7 +123,7 @@ extension MessageFormBottomSheet: BottomSheetDelegate {
 public extension BottomSheet.Height {
     static var messageFormHeight: BottomSheet.Height {
         let screenSize = UIScreen.main.bounds.size
-        let height = screenSize.height / 2
+        let height = screenSize.height - 64
         return BottomSheet.Height(compact: height, expanded: height)
     }
 }

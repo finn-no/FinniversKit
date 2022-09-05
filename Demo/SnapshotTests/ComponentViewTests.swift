@@ -27,6 +27,10 @@ class ComponentViewTests: XCTestCase {
         snapshot(.button)
     }
 
+    func testMultilineButton() {
+        snapshot(.multilineButton, includeIPad: true)
+    }
+
     func testFloatingButton() {
         snapshot(.floatingButton)
     }
@@ -251,14 +255,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.navigationLinkView)
     }
 
-    func testPromoLinkView() {
-        snapshot(.promoLinkView)
-    }
-
-    func testPromoSlidesView() {
-        snapshot(.promoSlidesView)
-    }
-
     func testNumberedListView() {
         snapshot(.numberedListView)
     }
@@ -273,5 +269,53 @@ class ComponentViewTests: XCTestCase {
 
     func testBlockUserView() {
         snapshot(.blockUserView)
+    }
+
+    func testPromotionView() {
+        snapshot(.promotionView)
+    }
+
+    func testRecentlyFavoritedShelf() {
+        snapshot(.recentlyfavoritedShelf)
+    }
+
+    func testSavedSearchShelf() {
+        snapshot(.savedSearchShelf)
+    }
+
+    func testFrontPageShelf() {
+        snapshot(.frontPageShelf)
+    }
+
+    func testOverflowCollectionView() {
+        snapshot(.overFlowCollectionView, includeIPad: true)
+    }
+
+    func testDetailCallout() {
+        snapshot(.detailCallout)
+    }
+
+    func testMonthAndYearPickerView() {
+        snapshot(.monthAndYearPickerView)
+    }
+
+    func testSearchView() {
+        snapshot(.searchView)
+    }
+
+    func testSelectionListCheckboxView() {
+        snapshot(.selectionListCheckboxView)
+    }
+
+    func testSelectionListRadiobuttonView() {
+        snapshot(.selectionListRadiobuttonView)
+    }
+
+    func testAddressComponentView() {
+        snapshot(.addressComponentView)
+    }
+
+    func testBadgeView() {
+        snapshot(.badgeView)
     }
 }

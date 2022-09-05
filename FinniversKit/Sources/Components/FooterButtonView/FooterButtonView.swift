@@ -19,9 +19,14 @@ public final class FooterButtonView: TopShadowView {
         }
     }
 
+    public var isEnabled: Bool {
+        get { button.isEnabled }
+        set { button.isEnabled = newValue }
+    }
+
     // MARK: - Private properties
 
-    private let button: UIButton = {
+    private lazy var button: UIButton = {
         let button = Button(style: .callToAction, size: .normal, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
         return button

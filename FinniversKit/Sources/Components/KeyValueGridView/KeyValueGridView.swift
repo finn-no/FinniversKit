@@ -95,11 +95,11 @@ public class KeyValueGridView: UIView {
 
         let titleLabel = Label(style: titleStyle, withAutoLayout: true)
         titleLabel.numberOfLines = 2
-        titleLabel.lineBreakMode = .byCharWrapping
+        titleLabel.lineBreakMode = .byWordWrapping
 
         let valueLabel = Label(style: valueStyle, withAutoLayout: true)
         valueLabel.numberOfLines = 2
-        valueLabel.lineBreakMode = .byCharWrapping
+        valueLabel.lineBreakMode = .byWordWrapping
         valueLabel.setTextCopyable(true)
 
         titleLabel.text = pair.title
@@ -107,6 +107,13 @@ public class KeyValueGridView: UIView {
 
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(valueLabel)
+
+        stackView.isAccessibilityElement = true
+        if let accessibilityLabel = pair.accessibilityLabel {
+            stackView.accessibilityLabel = accessibilityLabel
+        } else {
+            stackView.accessibilityLabel = "\(pair.title): \(pair.value)"
+        }
 
         return stackView
     }

@@ -4,37 +4,10 @@
 
 import FinniversKit
 
-public class FrontpageViewDemoView: UIView, Tweakable {
+public class FrontpageViewDemoView: UIView {
     private let markets = Market.newMarkets
     private var didSetupView = false
     private var visibleItems = 20
-
-    private lazy var promoLinkView: PromoLinkView = {
-        let view = PromoLinkView(delegate: self, withAutoLayout: true)
-        view.configure(with: PromoViewModel())
-        return view
-    }()
-
-    private lazy var transactionEntryView: TransactionEntryView = {
-        let view = TransactionEntryView(withAutoLayout: true)
-        view.configure(with: TransactionEntryViewModel())
-        view.remoteImageViewDataSource = self
-        return view
-    }()
-
-    lazy var tweakingOptions: [TweakingOption] = {
-        [
-            TweakingOption(title: "No promo", action: {
-                self.frontPageView.insertPromoView(nil)
-            }),
-            TweakingOption(title: "Promo link", action: {
-                self.frontPageView.insertPromoView(self.promoLinkView)
-            }),
-            TweakingOption(title: "Motor transaction entry", action: {
-                self.frontPageView.insertPromoView(self.transactionEntryView)
-            })
-        ]
-    }()
 
     private let ads: [Ad] = {
         var ads = AdFactory.create(numberOfModels: 120)
@@ -43,10 +16,39 @@ public class FrontpageViewDemoView: UIView, Tweakable {
     }()
 
     private lazy var frontPageView: FrontPageView = {
-        let view = FrontPageView(delegate: self, marketsViewDataSource: self, adRecommendationsGridViewDataSource: self)
+        let view = FrontPageView(delegate: self, marketsViewDataSource: self, adRecommendationsGridViewDataSource: self, remoteImageViewDataSource: self)
         view.model = FrontpageViewDefaultData()
         view.isRefreshEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
+
+        let hjerteromPromoViewModel = PromotionViewModel(
+            title: "Hjerterom - hjelp til flyktninger",
+            text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
+            image: UIImage(named: .hjerterom),
+            imageAlignment: .fullWidth,
+            imageBackgroundColor: .primaryBlue,
+            primaryButtonTitle: "Gå til Hjerterom"
+        )
+        view.showPromotion(withViewModel: hjerteromPromoViewModel, andDelegate: self)
+
+        let shelfModel = FrontPageShelfViewModel(favoritedItems: RecentlyFavoritedFactory.create(numberOfItems: 10),
+                                                 savedSearchItems: SavedSearchShelfFactory.create(numberOfItems: 10),
+                                                 sectionTitles: ["Lagrede søk", "Nylige favoritter"],
+                                                 buttonTitles: ["Se alle", "Se alle"])
+        view.configureFrontPageShelves(shelfModel, firstVisibleSavedSearchIndex: 1)
+        view.frontPageShelfDelegate = self
+
+        let transactionViewModel = FrontPageTransactionViewModel(
+            headerTitle: "Dine handler på torget",
+            title: "Flotte lamper med gull greier",
+            subtitle: "Velg en kjøper",
+            imageUrl: "https://images.finncdn.no/dynamic/960w/2021/4/vertical-0/11/5/214/625/615_1292134726.jpg",
+            adId: 1234,
+            transactionId: nil
+        )
+
+        view.showTransactionFeed(withViewModel: transactionViewModel, andDelegate: self)
+
         return view
     }()
 
@@ -89,11 +91,27 @@ public class FrontpageViewDemoView: UIView, Tweakable {
     }
 }
 
+// MARK: - PromotionViewDelegate
+
+extension FrontpageViewDemoView: PromotionViewDelegate {
+    public func promotionViewTapped(_ promotionView: PromotionView) {
+        print("Promo tapped")
+    }
+
+    public func promotionView(_ promotionView: PromotionView, didSelect action: PromotionView.Action) {
+        print("Selected : \(action)")
+    }
+}
+
 // MARK: - AdRecommendationsGridViewDelegate
 
 extension FrontpageViewDemoView: FrontPageViewDelegate {
     public func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView) {
         frontPageView.reloadData()
+    }
+    
+    public func frontPageView(_ frontPageView: FrontPageView, didUnfavoriteRecentlyFavorited item: RecentlyFavoritedViewmodel) {
+        print(item)
     }
 }
 
@@ -193,22 +211,6 @@ extension FrontpageViewDemoView: MarketsViewDataSource {
     }
 }
 
-// MARK: - PromoLinkViewDelegate
-
-extension FrontpageViewDemoView: PromoLinkViewDelegate {
-    public func promoLinkViewWasTapped(_ promoLinkView: PromoLinkView) {
-        print("Tapped promo link!")
-    }
-}
-
-// MARK: - TransactionEntryViewDelegate
-
-extension FrontpageViewDemoView: TransactionEntryViewDelegate {
-    public func transactionEntryViewWasTapped(_ transactionEntryView: TransactionEntryView) {
-        print("Tapped transaction entry!")
-    }
-}
-
 // MARK: - RemoteImageViewDataSource
 
 extension FrontpageViewDemoView: RemoteImageViewDataSource {
@@ -223,9 +225,29 @@ extension FrontpageViewDemoView: RemoteImageViewDataSource {
     public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
 
-// MARK: - Private classes
+// MARK: - FrontPageShelfDelegate
+extension FrontpageViewDemoView: FrontPageShelfDelegate {
+    public func frontPageShelfView(_ view: FrontPageShelfView, didSelectHeaderForSection section: FrontPageShelfView.Section) {
+        switch section {
+        case .recentlyFavorited:
+            print("Header for favorite item selected")
+        case .savedSearch:
+            print("Header for saved search item selected")
+        }
+    }
 
-private class PromoViewModel: PromoLinkViewModel {
-    var title = "Smidig bilhandel? Prøv FINNs nye prosess!"
-    var image = UIImage(named: .transactionJourneyCar)
+    public func frontPageShelfView(_ view: FrontPageShelfView, didSelectSavedSearchItem item: SavedSearchShelfViewModel) {
+        print("saved search item selected")
+    }
+
+    public func frontPageShelfView(_ view: FrontPageShelfView, didSelectFavoriteItem item: RecentlyFavoritedViewmodel) {
+        print("favorited item selected")
+    }
+}
+
+// MARK: - FrontPageTransactionFeedDelegate
+extension FrontpageViewDemoView: FrontPageTransactionViewDelegate {
+    public func transactionViewTapped(_ transactionView: FrontPageTransactionView) {
+        print("TransactionFeedView tapped")
+    }
 }

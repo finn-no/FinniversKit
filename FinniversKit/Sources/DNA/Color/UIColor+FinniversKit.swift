@@ -17,7 +17,7 @@ import UIKit
     public class var bgTertiary: UIColor {
         Config.colorProvider.bgTertiary
     }
-    
+
     public class var bgQuaternary: UIColor {
         Config.colorProvider.bgQuaternary
     }
@@ -208,26 +208,34 @@ import UIKit
     public class var lime: UIColor {
         return UIColor(hex: "#007200")
     }
+
+    public class var green500: UIColor {
+        return UIColor(hex: "#18C884")
+    }
+
+    public class var green700: UIColor {
+        return UIColor(hex: "#217A5F")
+    }
 }
 
 // MARK: - Temporary Markets Colors
 extension UIColor {
-    
+
     public class var blueGray400: UIColor {
         return UIColor(hex: "#94A3B8")
     }
     public class var blueGray600: UIColor {
         return UIColor(hex: "#475569")
     }
-    
+
     public class var blueGray700: UIColor {
         return UIColor(hex: "#323241")
     }
-    
+
     public class var blueGray800: UIColor {
         return UIColor(hex: "#606A7A")
     }
-    
+
     public class var coolGray100: UIColor {
         return UIColor(hex: "#F3F4F6")
     }
@@ -313,7 +321,7 @@ extension CGColor {
     public class var bgTertiary: CGColor {
         return UIColor.bgTertiary.cgColor
     }
-    
+
     public class var bgQuaternary: CGColor {
         UIColor.bgQuaternary.cgColor
     }
@@ -426,7 +434,7 @@ extension CGColor {
     }
 
     public class var defaultButtonHighlightedBodyColor: UIColor {
-        return dynamicColorIfAvailable(defaultColor: UIColor(r: 241, g: 249, b: 255), darkModeColor: UIColor(hex: "#13131A"))
+        return dynamicColor(defaultColor: UIColor(r: 241, g: 249, b: 255), darkModeColor: UIColor(hex: "#13131A"))
     }
 
     public class var linkButtonHighlightedTextColor: UIColor {
@@ -478,7 +486,7 @@ extension CGColor {
 @objc extension UIColor {
     public class var defaultCellSelectedBackgroundColor: UIColor {
         let lightSelectedColor = UIColor(r: 230, g: 235, b: 242)
-        return dynamicColorIfAvailable(defaultColor: lightSelectedColor, darkModeColor: lightSelectedColor.withAlphaComponent(0.1))
+        return dynamicColor(defaultColor: lightSelectedColor, darkModeColor: lightSelectedColor.withAlphaComponent(0.1))
     }
 }
 
@@ -526,33 +534,27 @@ public extension UIColor {
     ///   - defaultColor: light mode version of the color
     ///   - darkModeColor: dark mode version of the color
     class func dynamicColor(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
-        if #available(iOS 13.0, *) {
-            #if swift(>=5.1)
-            return UIColor { traitCollection -> UIColor in
-                switch traitCollection.userInterfaceStyle {
-                case .dark:
-                    return darkModeColor
-                default:
-                    return defaultColor
-                }
+        UIColor { traitCollection -> UIColor in
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+                return darkModeColor
+            default:
+                return defaultColor
             }
-            #endif
         }
-        return defaultColor
     }
 
-    /// Convenience mehtod to create dynamic colors **considering FinniversKit settings** and if the OS supports it
-    /// - Parameters:
-    ///   - defaultColor: light mode version of the color
-    ///   - darkModeColor: dark mode version of the color
+    /// Returns hexadecimal represetation of a color.
+    var hexString: String {
+        let components = self.cgColor.components
+        let red = components?[0] ?? 0.0
+        let green = components?[1] ?? 0.0
+        let blue = components?[2] ?? 0.0
+        return  String(format: "#%02x%02x%02x", (Int)(red * 255), (Int)(green * 255), (Int)(blue * 255))
+    }
+
+    @available(*, deprecated, message: "Use dynamicColor(defaultColor:darkModeColor:) instead.")
     class func dynamicColorIfAvailable(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
-        switch Config.userInterfaceStyleSupport {
-        case .forceDark:
-            return darkModeColor
-        case .forceLight:
-            return defaultColor
-        case .dynamic:
-            return dynamicColor(defaultColor: defaultColor, darkModeColor: darkModeColor)
-        }
+        dynamicColor(defaultColor: defaultColor, darkModeColor: darkModeColor)
     }
 }

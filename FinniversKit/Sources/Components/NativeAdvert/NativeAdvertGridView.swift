@@ -8,6 +8,7 @@ public final class NativeAdvertGridView: UIView {
 
     // MARK: - Public properties
 
+    public var forceCompactSize: Bool = false
     public weak var delegate: NativeAdvertViewDelegate?
     public weak var imageDelegate: NativeAdvertImageDelegate?
 
@@ -108,7 +109,8 @@ public final class NativeAdvertGridView: UIView {
     }
 
     private func setSizeClassConstraints() {
-        if traitCollection.horizontalSizeClass == .regular {
+        if traitCollection.horizontalSizeClass == .regular,
+           !forceCompactSize {
             NSLayoutConstraint.deactivate(compactConstraints)
             NSLayoutConstraint.activate(regularConstraints)
         } else {
@@ -118,7 +120,8 @@ public final class NativeAdvertGridView: UIView {
     }
 
     private func setSizeClassColors() {
-        if traitCollection.horizontalSizeClass == .regular {
+        if traitCollection.horizontalSizeClass == .regular,
+            !forceCompactSize {
             container.backgroundColor = .bgTertiary
         } else {
             container.backgroundColor = .bgPrimary

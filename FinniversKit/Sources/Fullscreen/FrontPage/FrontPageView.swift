@@ -2,6 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+import UIKit
+
 public protocol FrontPageViewModel {
     var adRecommedationsGridViewHeaderTitle: String { get }
     var retryButtonTitle: String { get }
@@ -10,9 +12,10 @@ public protocol FrontPageViewModel {
 
 public protocol FrontPageViewDelegate: MarketsViewDelegate, AdRecommendationsGridViewDelegate {
     func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView)
+    func frontPageView(_ frontPageView: FrontPageView, didUnfavoriteRecentlyFavorited item: RecentlyFavoritedViewmodel)
 }
 
-public final class FrontPageView: UIView, BasicFrontPageView {
+public final class FrontPageView: UIView {
     
     public var model: FrontPageViewModel? {
         didSet {
@@ -30,6 +33,14 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         }
     }
     
+    var shelfViewModel: FrontPageShelfViewModel?
+    
+    public var frontPageShelfDelegate: FrontPageShelfDelegate? {
+        didSet {
+            frontPageShelfView?.shelfDelegate = frontPageShelfDelegate
+        }
+    }
+    
     private enum CompactMarketsViewVisibilityStatus {
         case hidden
         case displaying(progress: CGFloat)
@@ -39,7 +50,6 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     private weak var delegate: FrontPageViewDelegate?
     private var marketsViewDataSource: MarketsViewDataSource
     private var adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource
-    
     private var didSetupView = false
 
     // MARK: - Subviews
@@ -63,11 +73,18 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     }()
 
     private let promoContainer = UIView(withAutoLayout: true)
+    private let transactionFeedContainer = UIView(withAutoLayout: true)
+    private let shelfContainer = UIView(withAutoLayout: true)
+    private var isShowingShelf: Bool {
+        guard let model = shelfViewModel else { return false }
+        return model.heightForShelf > 0
+    }
     
-    private lazy var headerView = UIView()
-
+    private lazy var headerView = UIView(withAutoLayout: true)
+    private var frontPageShelfView: FrontPageShelfView?
+    
     private lazy var headerLabel: Label = {
-        var headerLabel = Label(style: .title3)
+        var headerLabel = Label(style: .title3Strong)
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
         return headerLabel
     }()
@@ -84,13 +101,15 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     private var keyValueObservation: NSKeyValueObservation?
 
     private var boundsForCurrentSubviewSetup = CGRect.zero
+    private var remoteImageDataSource: RemoteImageViewDataSource
 
     // MARK: - Init
 
-    public init(delegate: FrontPageViewDelegate, marketsViewDataSource: MarketsViewDataSource, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource) {
+    public init(delegate: FrontPageViewDelegate, marketsViewDataSource: MarketsViewDataSource, adRecommendationsGridViewDataSource: AdRecommendationsGridViewDataSource, remoteImageViewDataSource: RemoteImageViewDataSource) {
         self.delegate = delegate
         self.adRecommendationsGridViewDataSource = adRecommendationsGridViewDataSource
         self.marketsViewDataSource = marketsViewDataSource
+        self.remoteImageDataSource = remoteImageViewDataSource
         super.init(frame: .zero)
     }
 
@@ -147,8 +166,37 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         adRecommendationsGridView.scrollToTop()
     }
 
-    public func insertPromoView(_ view: UIView?) {
-        addSubviewToPromoContainer(view)
+    public func showPromotion(withViewModel viewModel: PromotionViewModel, andDelegate delegate: PromotionViewDelegate) {
+        let promotionView = PromotionView(viewModel: viewModel)
+        promotionView.delegate = delegate
+
+        promoContainer.addSubview(promotionView)
+        promotionView.fillInSuperview(
+            insets: .init(
+                top: .spacingL,
+                leading: .spacingM,
+                bottom: 0,
+                trailing: -.spacingM
+            )
+        )
+
+        setupFrames()
+    }
+
+    public func showTransactionFeed(
+        withViewModel viewModel: FrontPageTransactionViewModel,
+        andDelegate delegate: FrontPageTransactionViewDelegate
+    ) {
+        let transactionView = FrontPageTransactionView(withAutoLayout: true)
+        transactionView.delegate = delegate
+        transactionView.configure(with: viewModel, andImageDatasource: remoteImageDataSource)
+
+        transactionFeedContainer.addSubview(transactionView)
+        transactionView.fillInSuperview(insets: .init(top: .spacingL,
+                                                      leading: .spacingM,
+                                                      bottom: 0,
+                                                      trailing: -.spacingM))
+        setupFrames()
     }
 
     // MARK: - Setup
@@ -162,8 +210,10 @@ public final class FrontPageView: UIView, BasicFrontPageView {
 
         headerView.addSubview(marketsGridView)
         headerView.addSubview(promoContainer)
+        headerView.addSubview(transactionFeedContainer)
+        headerView.addSubview(shelfContainer)
         headerView.addSubview(headerLabel)
-        
+
         addSubview(compactMarketsView)
 
         NSLayoutConstraint.activate([
@@ -171,14 +221,23 @@ public final class FrontPageView: UIView, BasicFrontPageView {
             marketsGridView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
             marketsGridView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             marketsGridViewHeight,
-
+            
             promoContainer.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor),
             promoContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
             promoContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
 
-            headerLabel.topAnchor.constraint(equalTo: promoContainer.bottomAnchor, constant: .spacingM),
+            transactionFeedContainer.topAnchor.constraint(equalTo: promoContainer.bottomAnchor),
+            transactionFeedContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            transactionFeedContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+            
+            shelfContainer.topAnchor.constraint(equalTo: transactionFeedContainer.bottomAnchor),
+            shelfContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            shelfContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+            
+            headerLabel.topAnchor.constraint(equalTo: shelfContainer.bottomAnchor, constant: .spacingM),
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
+            headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
             
             compactMarketsView.leadingAnchor.constraint(equalTo: leadingAnchor),
             compactMarketsView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -198,7 +257,14 @@ public final class FrontPageView: UIView, BasicFrontPageView {
         let headerTopSpacing: CGFloat = .spacingM
         let headerBottomSpacing: CGFloat = .spacingS
         let labelHeight = headerLabel.intrinsicContentSize.height + .spacingM
-        let promoContainerHeight = promoContainer
+
+        let promoContainerHeight = bounds.size.width == 0 ? 0 : promoContainer
+            .systemLayoutSizeFitting(
+                CGSize(width: bounds.size.width, height: 0),
+                withHorizontalFittingPriority: .required,
+                verticalFittingPriority: .fittingSizeLevel)
+            .height
+        let transactionFeedHeight = bounds.size.width == 0 ? 0 : transactionFeedContainer
             .systemLayoutSizeFitting(
                 CGSize(width: bounds.size.width, height: 0),
                 withHorizontalFittingPriority: .required,
@@ -206,7 +272,10 @@ public final class FrontPageView: UIView, BasicFrontPageView {
             .height
 
         let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: bounds.size.width).height + .spacingXS
-        let height = headerTopSpacing + labelHeight + marketGridViewHeight + promoContainerHeight + headerBottomSpacing
+        var height = headerTopSpacing + labelHeight + marketGridViewHeight + promoContainerHeight + transactionFeedHeight +  headerBottomSpacing
+
+        let shelfContainerHeight = shelfViewModel?.heightForShelf ?? 0
+        height += shelfContainerHeight + (shelfContainerHeight > 0 ? FrontPageShelfView.topPadding : 0)
 
         marketsGridViewHeight.constant = marketGridViewHeight
         headerView.frame.size.height = height
@@ -217,24 +286,38 @@ public final class FrontPageView: UIView, BasicFrontPageView {
     }
 
     // MARK: - Private methods
+    
+    public func configureFrontPageShelves(_ model: FrontPageShelfViewModel, firstVisibleSavedSearchIndex: Int?) {
+        self.shelfViewModel = model
 
-    private func addSubviewToPromoContainer(_ view: UIView?) {
-        promoContainer.subviews.forEach({ $0.removeFromSuperview() })
+        if frontPageShelfView == nil {
+            frontPageShelfView = FrontPageShelfView(withDatasource: self)
+            frontPageShelfView?.translatesAutoresizingMaskIntoConstraints = false
+            shelfContainer.addSubview(frontPageShelfView!)
 
-        guard let view = view else {
-            setupFrames()
-            return
+            frontPageShelfView?.fillInSuperview(
+                insets: .init(top: FrontPageShelfView.topPadding, leading: 0, bottom: 0, trailing: 0)
+            )
+
+            // Add a minimum height, since cells are never queried if the frame initially has height 0.
+            frontPageShelfView?.heightAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
         }
 
-        promoContainer.addSubview(view)
+        frontPageShelfView?.reloadShelf()
 
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: promoContainer.topAnchor, constant: .spacingM),
-            view.leadingAnchor.constraint(equalTo: promoContainer.leadingAnchor, constant: .spacingM),
-            view.trailingAnchor.constraint(equalTo: promoContainer.trailingAnchor, constant: -.spacingM),
-            view.bottomAnchor.constraint(equalTo: promoContainer.bottomAnchor)
-        ])
+        if let firstVisibleSavedSearchIndex = firstVisibleSavedSearchIndex,
+           model.savedSearchItems.indices.contains(firstVisibleSavedSearchIndex) {
+            frontPageShelfView?.scrollToSavedSearch(atIndex: firstVisibleSavedSearchIndex)
+        }
 
+        setupFrames()
+        
+    }
+    
+    public func removeFrontShelf() {
+        self.shelfViewModel = nil
+        frontPageShelfView?.removeFromSuperview()
+        frontPageShelfView = nil
         setupFrames()
     }
     
@@ -310,5 +393,57 @@ extension FrontPageView: AdRecommendationsGridViewDelegate {
 extension FrontPageView: MarketsViewDelegate {
     public func marketsView(_ marketsGridView: MarketsView, didSelectItemAtIndex index: Int) {
         delegate?.marketsView(marketsGridView, didSelectItemAtIndex: index)
+    }
+}
+
+// MARK: - FrontPageShelfDatasource
+extension FrontPageView: FrontPageShelfViewDataSource {
+    public func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForSectionAt index: Int) -> String {
+        shelfViewModel?.titleForSection(at: index) ?? ""
+    }
+    
+    public func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForButtonForSectionAt index: Int) -> String {
+        shelfViewModel?.titleForButton(at: index) ?? ""
+    }
+    
+    public func frontPageShelfView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, withItem item: AnyHashable) -> UICollectionViewCell? {
+        if let item = item as? RecentlyFavoritedViewmodel {
+            let cell = collectionView.dequeue(RecentlyFavoritedShelfCell.self, for: indexPath)
+            cell.configure(withModel: item)
+            cell.buttonAction = { [weak self] _, _ in
+                self?.removeFavoritedItem(item, atIndexPath: indexPath)
+            }
+            cell.datasource = remoteImageDataSource
+            cell.loadImage()
+            
+            return cell
+        } else if let item = item as? SavedSearchShelfViewModel {
+            let cell = collectionView.dequeue(SavedSearchShelfCell.self, for: indexPath)
+            cell.configure(withModel: item)
+            cell.imageDatasource = remoteImageDataSource
+            cell.loadImage()
+            return cell
+        }
+        return nil
+    }
+    
+    public func frontPageShelfView(cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
+        [RecentlyFavoritedShelfCell.self, SavedSearchShelfCell.self]
+    }
+    
+    public func datasource(forSection section: FrontPageShelfView.Section) -> [AnyHashable] {
+        guard let model = shelfViewModel else { return [] }
+        switch section {
+        case .savedSearch: return model.savedSearchItems
+        case .recentlyFavorited: return model.recentlyFavoritedItems
+        }
+    }
+    
+    public func removeFavoritedItem(_ item: AnyHashable, atIndexPath indexPath: IndexPath) {
+        guard
+            let favoriteModel = item as? RecentlyFavoritedViewmodel
+        else { return }
+
+        delegate?.frontPageView(self, didUnfavoriteRecentlyFavorited: favoriteModel)
     }
 }

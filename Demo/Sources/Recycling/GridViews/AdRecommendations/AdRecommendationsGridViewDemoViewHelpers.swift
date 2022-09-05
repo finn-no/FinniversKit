@@ -45,6 +45,19 @@ public struct Ad: StandardAdRecommendationViewModel {
     }
 
     public var favoriteButtonAccessibilityLabel = "Sett annonsen som favoritt"
+
+    public var hideImageOverlay: Bool {
+        imageText.isNilOrEmpty && iconImage == nil
+    }
+}
+
+extension Optional where Wrapped == String {
+    var isNilOrEmpty: Bool {
+        guard let value = self else {
+            return true
+        }
+        return value.isEmpty
+    }
 }
 
 /// A model confirming to the JobAdRecommendationViewModel protocol for showcasing JobAdRecommendationCell in playground.
@@ -82,17 +95,16 @@ struct AdFactory {
             let imageSource = imageSources[dataIndex]
             let title = titles[dataIndex]
             let subtitle = subtitles[dataIndex]
-            let icon = iconImages[dataIndex]
             let price = prices[dataIndex]
             let scaleImageToFillView = scaleImagesToFillView[dataIndex]
 
             return Ad(
                 imagePath: imageSource.path,
                 imageSize: imageSource.size,
-                iconImage: icon,
+                iconImage: nil,
                 title: title,
                 subtitle: subtitle,
-                accessory: index % 2 == 0 ? "Totalpris \(price)" : nil,
+                accessory: index % 2 == 0 ? "Totalpris \(price ?? "mangler")" : nil,
                 imageText: price,
                 isFavorite: false,
                 scaleImageToFillView: scaleImageToFillView,
@@ -100,20 +112,6 @@ struct AdFactory {
                 sponsoredAdData: index % 4 == 0 ? sponsoredAdData : nil,
                 favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt")
         }
-    }
-
-    private static var iconImages: [UIImage] {
-        return [
-            UIImage(named: .realestate),
-            UIImage(named: .realestate),
-            UIImage(named: .realestate),
-            UIImage(named: .jobs),
-            UIImage(named: .realestate),
-            UIImage(named: .realestate),
-            UIImage(named: .realestate),
-            UIImage(named: .realestate),
-            UIImage(named: .realestate)
-        ]
     }
 
     private static var titles: [String] {
@@ -126,7 +124,9 @@ struct AdFactory {
             "Privat slott",
             "Pent brukt bolig",
             "Enebolig i rolig strøk",
-            "Hus til slags"
+            "Hus til slags",
+            "Hus",
+            "Hus uten pris"
         ]
     }
 
@@ -141,34 +141,41 @@ struct AdFactory {
             "Langtvekkistan",
             "Elverum",
             "Brønnøysund",
-            "Bodø"
+            "Bodø",
+            "Langtvekkistan"
         ]
     }
 
-    private static var prices: [String] {
-        return ["845 000,-",
-                "164 000,-",
-                "355 000,-",
-                "",
-                "746 000,-",
-                "347 000,-",
-                "546 000,-",
-                "647 000,-",
-                "264 000,-"]
+    private static var prices: [String?] {
+        return [
+            "845 000,-",
+            "164 000,-",
+            "355 000,-",
+            "",
+            "746 000,-",
+            "347 000,-",
+            "546 000,-",
+            "647 000,-",
+            "264 000,-",
+            "123 456,-",
+            nil
+        ]
     }
 
     private static var scaleImagesToFillView: [Bool] {
-        return [true,
-                true,
-                true,
-                false,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true]
+        return [
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ]
     }
 
     private static var imageSources: [ImageSource] {

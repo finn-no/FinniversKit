@@ -15,19 +15,19 @@ class CompactMarketsViewCell: UICollectionViewCell {
     }
 
     // MARK: - Private properties
-    
+
     private lazy var sharpShadowView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
         return view
     }()
-    
+
     private lazy var smoothShadowView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
         return view
     }()
-    
+
     private lazy var containerView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .tileBackgroundColor
@@ -80,7 +80,7 @@ class CompactMarketsViewCell: UICollectionViewCell {
         contentView.addSubview(smoothShadowView)
         contentView.addSubview(containerView)
         containerView.addSubview(stackView)
-        
+
         containerView.fillInSuperview()
         stackView.fillInSuperview(insets: Self.contentInsets.forLayoutConstraints)
 
@@ -109,12 +109,12 @@ class CompactMarketsViewCell: UICollectionViewCell {
         smoothShadowView.frame = contentView.bounds
         applyShadow()
     }
-    
+
     func applyShadow() {
         sharpShadowView.applyShadow(ofType: .sharp)
         smoothShadowView.applyShadow(ofType: .smooth)
     }
-    
+
     func removeShadow() {
         sharpShadowView.applyShadow(ofType: .none)
         smoothShadowView.applyShadow(ofType: .none)
@@ -165,29 +165,29 @@ extension CompactMarketsViewCell {
 // MARK: - Private extensions
 
 private extension UIView {
-    
+
     enum ShadowType {
         case sharp
         case smooth
         case none
     }
-    
+
     func applyShadow(ofType type: ShadowType) {
         self.layer.masksToBounds = false
-        
+
         switch type {
         case .sharp:
             self.layer.shadowOpacity = 0.25
             self.layer.shadowOffset = CGSize(width: 0, height: 1)
             self.layer.shadowColor = UIColor.tileSharpShadowColor.cgColor
             self.layer.shadowRadius = 1
-            self.layer.shadowPath = UIBezierPath(roundedRect:self.bounds, cornerRadius:self.layer.cornerRadius).cgPath
+            self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius:self.layer.cornerRadius).cgPath
         case .smooth:
             self.layer.shadowOpacity = 0.16
             self.layer.shadowOffset = CGSize(width: 0, height: 1)
             self.layer.shadowColor = UIColor.tileSmoothShadowColor.cgColor
             self.layer.shadowRadius = 5
-            self.layer.shadowPath = UIBezierPath(roundedRect:self.bounds, cornerRadius:self.layer.cornerRadius).cgPath
+            self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius:self.layer.cornerRadius).cgPath
         case .none:
             self.layer.shadowOpacity = 0.0
             self.layer.shadowOffset = .zero
@@ -203,17 +203,17 @@ private extension UIColor {
     class var externalLinkColor: UIColor {
         return .blueGray400
     }
-    
+
     class var tileSharpShadowColor: UIColor {
         return .blueGray600
     }
-    
+
     class var tileSmoothShadowColor: UIColor {
         return .blueGray600
     }
-    
+
     class var tileBackgroundColor: UIColor {
-        return .dynamicColorIfAvailable(defaultColor: .milk, darkModeColor: .blueGray700)
+        return .dynamicColor(defaultColor: .milk, darkModeColor: .blueGray700)
     }
 }
 

@@ -20,6 +20,13 @@ import UIKit
     }
 
     /// ## Usage:
+    /// - A page can contain multiple T2 to divide content into several sections.
+    /// - There should be a lot of space between sections to create a clear distinction on the content.
+    class var title2Strong: UIFont {
+        Config.fontProvider.title2Strong
+    }
+
+    /// ## Usage:
     /// - If a T2 have more sublevels, you can use T3.
     class var title3Strong: UIFont {
         Config.fontProvider.title3Strong

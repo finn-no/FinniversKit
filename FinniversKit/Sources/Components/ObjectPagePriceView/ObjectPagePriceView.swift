@@ -154,7 +154,20 @@ private class PriceView: UIView {
 
     private func setup() {
         isAccessibilityElement = true
-        accessibilityLabel = viewModel.accessibilityLabel
+        if let accessibilityLabel = viewModel.accessibilityLabel {
+            self.accessibilityLabel = accessibilityLabel
+        } else {
+            var accessibilityLabel = viewModel.totalPrice
+
+            if let title = viewModel.title {
+                accessibilityLabel = "\(title): \(accessibilityLabel)"
+            }
+
+            if let subtitle = viewModel.subtitle {
+                accessibilityLabel = "\(accessibilityLabel). \(subtitle)"
+            }
+            self.accessibilityLabel = accessibilityLabel
+        }
 
         titleLabel.text = viewModel.title
         titleLabel.isHidden = viewModel.title?.isEmpty ?? true

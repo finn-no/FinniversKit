@@ -24,6 +24,7 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
         label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        label.accessibilityTraits = .header
         return label
     }()
 
@@ -167,6 +168,6 @@ extension UserAdManagementStatisticsCell {
 
 extension UIColor {
     public class var fullstatisticIconTint: UIColor {
-        dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
+        dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
 }

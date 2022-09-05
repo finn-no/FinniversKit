@@ -109,16 +109,16 @@ class FullscreenImageViewController: UIViewController {
 
     // MARK: - Public methods
 
-    func updateLayout(withPreviewViewVisible previewViewVisible: Bool) {
+    func updateLayout(containerSize: CGSize? = nil, withPreviewViewVisible previewViewVisible: Bool) {
         self.previewViewVisible = previewViewVisible
-        fullscreenImageView.frame = calculateImageFrame()
+        fullscreenImageView.frame = calculateImageFrame(containerSize: containerSize)
         fullscreenImageView.recalculateLimitsAndBounds()
     }
 
     // MARK: - Private methods
 
-    private func calculateImageFrame() -> CGRect {
-        return calculateImageFrame(fromSize: view.bounds.size)
+    private func calculateImageFrame(containerSize: CGSize? = nil) -> CGRect {
+        calculateImageFrame(fromSize: containerSize ?? view.bounds.size)
     }
 
     private func calculateImageFrame(fromSize size: CGSize) -> CGRect {

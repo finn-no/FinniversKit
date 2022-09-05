@@ -37,11 +37,13 @@ enum ImageAsset: String {
     case adsenseDemo
     case arrowCounterClockwise
     case avatar
+    case bapShippable
     case betaImageSearch
     case blinkRocketMini
     case boat
     case boatNew
     case car
+    case carFront
     case carIllustration
     case carNew
     case carPromo
@@ -49,15 +51,18 @@ enum ImageAsset: String {
     case carsSubscription
     case checkCircle
     case checkCircleFilled
+    case christmasPromotion
     case classifieds
     case classifiedsNew
     case consentTransparencyImage
     case contract
+    case creditCard
     case cross
     case displayTypeGrid
     case displayTypeList
     case dissatisfiedFace
     case distance
+    case easterEgg
     case emptyMoon
     case emptyStateSaveSearch
     case eyeHide
@@ -69,6 +74,7 @@ enum ImageAsset: String {
     case finnLogoSimple
     case gift
     case heartEmpty
+    case hjerterom
     case hobbyIllustration
     case home
     case iconRealestateApartments
@@ -142,11 +148,13 @@ enum ImageAsset: String {
             .adsenseDemo,
             .arrowCounterClockwise,
             .avatar,
+            .bapShippable,
             .betaImageSearch,
             .blinkRocketMini,
             .boat,
             .boatNew,
             .car,
+            .carFront,
             .carIllustration,
             .carNew,
             .carPromo,
@@ -154,15 +162,18 @@ enum ImageAsset: String {
             .carsSubscription,
             .checkCircle,
             .checkCircleFilled,
+            .christmasPromotion,
             .classifieds,
             .classifiedsNew,
             .consentTransparencyImage,
             .contract,
+            .creditCard,
             .cross,
             .displayTypeGrid,
             .displayTypeList,
             .dissatisfiedFace,
             .distance,
+            .easterEgg,
             .emptyMoon,
             .emptyStateSaveSearch,
             .eyeHide,
@@ -174,6 +185,7 @@ enum ImageAsset: String {
             .finnLogoSimple,
             .gift,
             .heartEmpty,
+            .hjerterom,
             .hobbyIllustration,
             .home,
             .iconRealestateApartments,

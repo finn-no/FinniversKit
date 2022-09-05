@@ -29,6 +29,7 @@ DerivedData
 *.gcda
 *.bcsymbolmap
 .build/
+Demo.app.dSYM.zip
 
 # Appcode
 .idea/

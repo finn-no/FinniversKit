@@ -6,6 +6,7 @@ import FinniversKit
 public enum ComponentDemoViews: String, DemoViews {
     case addressCardView
     case button
+    case multilineButton
     case floatingButton
     case cogWheelButton
     case iconButton
@@ -35,6 +36,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case stepIndicatorView
     case nativeAdvert
     case callout
+    case detailCallout
     case phaseList
     case iconCollection
     case disclaimerView
@@ -62,12 +64,32 @@ public enum ComponentDemoViews: String, DemoViews {
     case favoriteButton
     case sendInviteView
     case navigationLinkView
-    case promoLinkView
-    case promoSlidesView
     case numberedListView
     case transactionEntryView
     case blockUserView
     case loadingRetryView
+    case promotionView
+    case recentlyfavoritedShelf
+    case savedSearchShelf
+    case frontPageShelf
+    case overFlowCollectionView
+    case monthAndYearPickerView
+    case searchView
+    case addressComponentView
+    case selectionListCheckboxView
+    case selectionListRadiobuttonView
+    case badgeView
+
+    var title: String? {
+        switch self {
+        case .selectionListCheckboxView:
+            return "SelectionListView - checkboxes"
+        case .selectionListRadiobuttonView:
+            return "SelectionListView - radio buttons"
+        default:
+            return nil
+        }
+    }
 
     public var viewController: UIViewController {
         switch self {
@@ -75,6 +97,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<AddressCardDemoView>()
         case .button:
             return DemoViewController<ButtonDemoView>()
+        case .multilineButton:
+            return DemoViewController<MultilineButtonDemoView>()
         case .floatingButton:
             return DemoViewController<FloatingButtonDemoView>()
         case .reviewButtonView:
@@ -135,6 +159,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<NativeAdvertDemoView>(dismissType: .dismissButton)
         case .callout:
             return DemoViewController<CalloutDemoView>()
+        case .detailCallout:
+            return DemoViewController<DetailCalloutDemoView>()
         case .phaseList:
             return DemoViewController<PhaseListDemoView>()
         case .iconCollection:
@@ -194,10 +220,6 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<SendInviteDemoView>(containmentOptions: .bottomSheet)
         case .navigationLinkView:
             return DemoViewController<NavigationLinkViewDemoView>()
-        case .promoLinkView:
-            return DemoViewController<PromoLinkDemoView>()
-        case .promoSlidesView:
-            return DemoViewController<PromoSlidesDemoView>()
         case .numberedListView:
             return DemoViewController<NumberedListDemoView>()
         case .transactionEntryView:
@@ -206,6 +228,28 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<BlockUserDemoView>()
         case .loadingRetryView:
             return DemoViewController<LoadingRetryDemoView>()
+        case .promotionView:
+            return DemoViewController<PromotionDemoView>()
+        case .recentlyfavoritedShelf:
+            return DemoViewController<RecentlyFavoritedShelfDemoView>()
+        case .savedSearchShelf:
+            return DemoViewController<SavedSearchShelfDemoView>()
+        case .frontPageShelf:
+            return DemoViewController<FrontPageShelfDemoView>()
+        case .overFlowCollectionView:
+            return DemoViewController<OverflowCollectionViewDemo>()
+        case .monthAndYearPickerView:
+            return DemoViewController<MonthAndYearPickerDemoView>()
+        case .searchView:
+            return DemoViewController<SearchDemoView>()
+        case .addressComponentView:
+            return DemoViewController<AddressComponentDemoView>(dismissType: .dismissButton)
+        case .selectionListCheckboxView:
+            return DemoViewController<SelectionListCheckboxDemoView>(dismissType: .dismissButton)
+        case .selectionListRadiobuttonView:
+            return DemoViewController<SelectionListRadiobuttonDemoView>(dismissType: .dismissButton)
+        case .badgeView:
+            return DemoViewController<BadgeDemoView>()
         }
     }
 }

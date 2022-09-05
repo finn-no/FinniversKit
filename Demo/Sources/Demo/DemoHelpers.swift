@@ -56,7 +56,7 @@ enum Sections: String, CaseIterable {
         case .dna:
             names = DnaDemoViews.items.map { $0.rawValue.capitalizingFirstLetter }
         case .components:
-            names = ComponentDemoViews.items.map { $0.rawValue.capitalizingFirstLetter }
+            names = ComponentDemoViews.items.map { $0.title ?? $0.rawValue.capitalizingFirstLetter }
         case .cells:
             names = CellsDemoViews.items.map { $0.rawValue.capitalizingFirstLetter }
         case .recycling:
@@ -179,22 +179,4 @@ extension Array {
         return indices.contains(index) ? self[index] : .none
     }
 
-}
-
-extension Foundation.Notification.Name {
-    static let didChangeUserInterfaceStyle = Foundation.Notification.Name("didChangeUserInterfaceStyle")
-}
-
-@objc enum UserInterfaceStyle: Int {
-    case light = 1
-    case dark = 2
-
-    var image: UIImage {
-        switch self {
-        case .light:
-            return UIImage(named: .emptyMoon)
-        case .dark:
-            return UIImage(named: .filledMoon)
-        }
-    }
 }
