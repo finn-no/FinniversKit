@@ -189,6 +189,10 @@ import UIKit
         return UIColor(r: 246, g: 248, b: 251)
     }
 
+    public class var darkMarble: UIColor {
+        return UIColor(hex: "#13131A")
+    }
+
     public class var midnightBackground: UIColor {
         return UIColor(hex: "1D1D26")
     }
