@@ -28,8 +28,8 @@ class SelectionListItemView: UIView {
         return label
     }()
 
-    private lazy var descriptionLabel: Label = {
-        let label = Label(style: .caption, withAutoLayout: true)
+    private lazy var descriptionLabel: HTMLLabel = {
+        let label = HTMLLabel(style: .caption, withAutoLayout: true)
         label.textColor = .textSecondary
         label.numberOfLines = 0
         return label
@@ -84,7 +84,7 @@ class SelectionListItemView: UIView {
         case .plain(let text):
             descriptionLabel.text = text
         case .html(let htmlString, let style, _):
-            descriptionLabel.setText(fromHTMLString: htmlString, style: style)
+            descriptionLabel.setHTMLText(htmlString, with: style)
         }
 
         if let detailItems = model.detailItems, !detailItems.isEmpty {
