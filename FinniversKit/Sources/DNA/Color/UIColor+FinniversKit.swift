@@ -149,6 +149,10 @@ import UIKit
         return UIColor(r: 118, g: 118, b: 118)
     }
 
+    public class var darkStone: UIColor {
+        return UIColor(hex: "#8A8EA1")
+    }
+
     public class var sardine: UIColor {
         return UIColor(r: 195, g: 204, b: 217)
     }
