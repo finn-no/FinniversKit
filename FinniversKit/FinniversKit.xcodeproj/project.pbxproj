@@ -449,6 +449,8 @@
 		E6318FC628D9E7550038DC88 /* ViewModelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6318FC528D9E7550038DC88 /* ViewModelCoordinator.swift */; };
 		E6318FC828D9E7AC0038DC88 /* AnyViewModelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6318FC728D9E7AC0038DC88 /* AnyViewModelCoordinator.swift */; };
 		E6318FCA28D9E7EC0038DC88 /* UnownedViewModelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6318FC928D9E7EC0038DC88 /* UnownedViewModelCoordinator.swift */; };
+		E68D58F628DDE75D001A70CA /* HTMLLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D58F528DDE75D001A70CA /* HTMLLabel.swift */; };
+		E68D58F828DDE77A001A70CA /* HTMLStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D58F728DDE77A001A70CA /* HTMLStyler.swift */; };
 		E6920B2B28474B78008B41C6 /* CombineCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6920B2A28474B78008B41C6 /* CombineCompatible.swift */; };
 		E6920B2D28474BCB008B41C6 /* UIControlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6920B2C28474BCB008B41C6 /* UIControlExtensions.swift */; };
 		F22612D822572D9400472D22 /* StatisticsItemEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */; };
@@ -921,6 +923,8 @@
 		E6318FC528D9E7550038DC88 /* ViewModelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelCoordinator.swift; sourceTree = "<group>"; };
 		E6318FC728D9E7AC0038DC88 /* AnyViewModelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyViewModelCoordinator.swift; sourceTree = "<group>"; };
 		E6318FC928D9E7EC0038DC88 /* UnownedViewModelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnownedViewModelCoordinator.swift; sourceTree = "<group>"; };
+		E68D58F528DDE75D001A70CA /* HTMLLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLabel.swift; sourceTree = "<group>"; };
+		E68D58F728DDE77A001A70CA /* HTMLStyler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStyler.swift; sourceTree = "<group>"; };
 		E6920B2A28474B78008B41C6 /* CombineCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineCompatible.swift; sourceTree = "<group>"; };
 		E6920B2C28474BCB008B41C6 /* UIControlExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlExtensions.swift; sourceTree = "<group>"; };
 		F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyView.swift; sourceTree = "<group>"; };
@@ -1379,6 +1383,7 @@
 				9B2D17CA23E02AA200EF3B50 /* KeyValueGridView */,
 				9BBC8ADC22DF4CA2003453B6 /* Klimabrolet */,
 				4447F6741FDB2B110033DBC1 /* Label */,
+				E68D58F428DDE74F001A70CA /* HTMLLabel */,
 				9A37D55C2A64827FF8CBD6E5 /* LinkButton */,
 				44AFCE44215839F6005984DB /* LoadingIndicator */,
 				9BEB2875231D23F500D28BAD /* LoanCalculator */,
@@ -3103,6 +3108,15 @@
 			path = ViewModelCoordinator;
 			sourceTree = "<group>";
 		};
+		E68D58F428DDE74F001A70CA /* HTMLLabel */ = {
+			isa = PBXGroup;
+			children = (
+				E68D58F528DDE75D001A70CA /* HTMLLabel.swift */,
+				E68D58F728DDE77A001A70CA /* HTMLStyler.swift */,
+			);
+			path = HTMLLabel;
+			sourceTree = "<group>";
+		};
 		E6920B2928474B61008B41C6 /* Combine */ = {
 			isa = PBXGroup;
 			children = (
@@ -3619,6 +3633,7 @@
 				14DC127021593B0000326DC3 /* HorizontalSlideTransition.swift in Sources */,
 				CFA6DC2B23BF5E1B0016E118 /* FavoriteAdCommentInputView.swift in Sources */,
 				4447F6E91FDB2B110033DBC1 /* Ribbon+Style.swift in Sources */,
+				E68D58F628DDE75D001A70CA /* HTMLLabel.swift in Sources */,
 				714B9355253730D900801C99 /* SendInviteViewModel.swift in Sources */,
 				CFCED8DD22CE3EAA0049A3A0 /* AddFavoriteFolderButton.swift in Sources */,
 				DAB7FAA921B690DD00BF8CC6 /* BottomSheetAnimationController.swift in Sources */,
@@ -3628,6 +3643,7 @@
 				CF3DEDB4219465F300DB3E5A /* FrontPageView.swift in Sources */,
 				CF4A053A21FB2ACB000BB7DA /* PianoEffectIndicatorsView.swift in Sources */,
 				45D7C56B204949E2000E788F /* SwitchView.swift in Sources */,
+				E68D58F828DDE77A001A70CA /* HTMLStyler.swift in Sources */,
 				43BACE6A21117D430052114C /* BuyerPickerView.swift in Sources */,
 				CF8F024521DE1013004C4042 /* RefreshControl.swift in Sources */,
 				DA6DC2BB238404B80094C42C /* VersionInfoView.swift in Sources */,
