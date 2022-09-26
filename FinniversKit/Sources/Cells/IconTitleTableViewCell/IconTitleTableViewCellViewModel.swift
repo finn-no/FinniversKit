@@ -8,4 +8,5 @@ public protocol IconTitleTableViewCellViewModel: BasicTableViewCellViewModel {
     var icon: UIImage? { get }
     var iconTintColor: UIColor? { get }
     var hasChevron: Bool { get }
+    var externalIcon: UIImage? { get }
 }

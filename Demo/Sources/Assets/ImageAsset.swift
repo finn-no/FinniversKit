@@ -36,11 +36,13 @@ enum ImageAsset: String {
     case adsenseDemo
     case arrowCounterClockwise
     case avatar
+    case bapShippable
     case betaImageSearch
     case blinkRocketMini
     case boat
     case boatNew
     case car
+    case carFront
     case carIllustration
     case carNew
     case carPromo
@@ -52,6 +54,7 @@ enum ImageAsset: String {
     case classifiedsNew
     case consentTransparencyImage
     case contract
+    case creditCard
     case cross
     case displayTypeGrid
     case displayTypeList
@@ -134,11 +137,13 @@ enum ImageAsset: String {
             .adsenseDemo,
             .arrowCounterClockwise,
             .avatar,
+            .bapShippable,
             .betaImageSearch,
             .blinkRocketMini,
             .boat,
             .boatNew,
             .car,
+            .carFront,
             .carIllustration,
             .carNew,
             .carPromo,
@@ -150,6 +155,7 @@ enum ImageAsset: String {
             .classifiedsNew,
             .consentTransparencyImage,
             .contract,
+            .creditCard,
             .cross,
             .displayTypeGrid,
             .displayTypeList,

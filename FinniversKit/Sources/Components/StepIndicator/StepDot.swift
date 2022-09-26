@@ -67,6 +67,7 @@ class StepDot: UIView {
         self.diameter = diameter
         self.stepIndex = step
         super.init(frame: CGRect(x: 0, y: 0, width: diameter, height: diameter))
+        accessibilityIdentifier = "Step \(step + 1)"
         setup()
     }
 

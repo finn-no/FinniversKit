@@ -71,6 +71,22 @@ public class ObjectPageTitleView: UIView {
     private func setup() {
         addSubview(stackView)
         stackView.fillInSuperview()
+        setupAccessibility()
+    }
+
+    private func setupAccessibility() {
+        isAccessibilityElement = false
+        let accessibilityElements = [titleLabel, subtitleLabel, captionLabel, ribbonView]
+
+        accessibilityElements.forEach {
+            if $0 == titleLabel {
+                $0.accessibilityTraits = .header
+            } else {
+                $0.accessibilityTraits = .staticText
+            }
+        }
+
+        self.accessibilityElements = accessibilityElements
     }
 
     // MARK: - Public methods

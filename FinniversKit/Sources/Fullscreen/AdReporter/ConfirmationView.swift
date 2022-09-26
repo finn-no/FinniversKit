@@ -12,22 +12,19 @@ public class ConfirmationView: UIView {
     // MARK: - Private properties
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .title2)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = Label(style: .title2, withAutoLayout: true)
         return label
     }()
 
     private lazy var messageLabel: Label = {
-        let label = Label(style: .body)
+        let label = Label(style: .body, withAutoLayout: true)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     private lazy var closeButton: Button = {
-        let button = Button(style: .flat)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = Button(style: .flat, withAutoLayout: true)
         return button
     }()
 
@@ -54,7 +51,7 @@ public class ConfirmationView: UIView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = .bgPrimary
 
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false

@@ -8,6 +8,8 @@ public class StatisticsItemView: UIView {
 
     // MARK: - Private
 
+    private let model: StatisticsItemModel
+
     private lazy var imageView: UIImageView = {
         let view = UIImageView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -62,6 +64,7 @@ public class StatisticsItemView: UIView {
     // MARK: - Initalization
 
     init(model: StatisticsItemModel) {
+        self.model = model
         super.init(frame: .zero)
 
         let formatter = NumberFormatter()
@@ -98,6 +101,9 @@ public class StatisticsItemView: UIView {
     // MARK: - Private methods
 
     private func setup() {
+        isAccessibilityElement = true
+        accessibilityLabel = model.accessibilityLabel
+
         addSubview(imageView)
         addSubview(valueLabel)
         addSubview(textLabel)

@@ -298,4 +298,28 @@ class ComponentViewTests: XCTestCase {
     func testScrollableTabDemoView() {
         snapshot(.scrollableTabDemoView)
     }
+
+    func testMonthAndYearPickerView() {
+        snapshot(.monthAndYearPickerView)
+    }
+
+    func testSearchView() {
+        snapshot(.searchView)
+    }
+
+    func testSelectionListCheckboxView() {
+        snapshot(.selectionListCheckboxView)
+    }
+
+    func testSelectionListRadiobuttonView() {
+        snapshot(.selectionListRadiobuttonView)
+    }
+
+    func testAddressComponentView() {
+        snapshot(.addressComponentView)
+    }
+
+    func testBadgeView() {
+        snapshot(.badgeView)
+    }
 }
