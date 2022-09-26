@@ -61,7 +61,7 @@ public class ScrollableTabView: UIView {
 
     // MARK: - Setup
 
-    public func configure(with viewModel: ScrollableTabViewItemModel) {
+    public func configure(with viewModel: ScrollableTabViewModel) {
         cleanup()
         createButtons(withTitles: viewModel.items)
     }

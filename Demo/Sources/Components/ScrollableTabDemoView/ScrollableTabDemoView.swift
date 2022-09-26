@@ -47,7 +47,7 @@ class ScrollableTabDemoView: UIView {
             label.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
 
-        let viewModel = ScrollableTabViewItemModel(
+        let viewModel = ScrollableTabViewModel(
             items: [
                 "Alle",
                 "Aktiv (3)",

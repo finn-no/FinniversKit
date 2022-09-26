@@ -1,6 +1,6 @@
 import Foundation
 
-public struct ScrollableTabViewItemModel {
+public struct ScrollableTabViewModel {
     let items: [String]
 
     public init(items: [String]) {
