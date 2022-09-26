@@ -26,7 +26,12 @@ public class HTMLLabel: Label {
 
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        guard let htmlText = htmlText else { return }
+        guard
+            let htmlText = htmlText,
+            UIApplication.shared.applicationState != .background
+        else {
+            return
+        }
 
         setAttributedString(from: htmlText)
     }
