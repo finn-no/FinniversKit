@@ -4,10 +4,7 @@ class ScrollableTabDemoView: UIView {
 
     // MARK: - Private properties
 
-    lazy var sideScrollableView: ScrollableTabView = {
-        let sideScrollableView = ScrollableTabView(withAutoLayout: true)
-        return sideScrollableView
-    }()
+    lazy var sideScrollableView = ScrollableTabView(withAutoLayout: true)
 
     lazy var label: Label = {
         let label = Label(
@@ -27,7 +24,7 @@ class ScrollableTabDemoView: UIView {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
 
     // MARK: - Setup
@@ -42,18 +39,17 @@ class ScrollableTabDemoView: UIView {
             sideScrollableView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             label.leadingAnchor.constraint(equalTo: leadingAnchor),
-            label.topAnchor.constraint(equalTo: sideScrollableView.bottomAnchor,
-                                       constant: 50),
+            label.topAnchor.constraint(equalTo: sideScrollableView.bottomAnchor, constant: 50),
             label.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
 
         let viewModel = ScrollableTabViewModel(
             items: [
-                "Alle",
-                "Aktiv (3)",
-                "Påbegynte (17)",
-                "Avvist (2)",
-                "Lorem ipsum (42)"
+                .create(title: "Alle"),
+                .create(title: "Aktiv (3)"),
+                .create(title: "Påbegynte (17)"),
+                .create(title: "Avvist (2)"),
+                .create(title: "Lorem ipsum (42)")
             ]
         )
         sideScrollableView.configure(with: viewModel)
@@ -61,13 +57,22 @@ class ScrollableTabDemoView: UIView {
     }
 }
 
-extension ScrollableTabDemoView: ScrollableTabViewDelegate {
+// MARK: - ScrollableTabViewDelegate
 
+extension ScrollableTabDemoView: ScrollableTabViewDelegate {
     func scrollableTabViewDidTapItem(
         _ sidescrollableView: ScrollableTabView,
-        item: String,
+        item: ScrollableTabViewModel.Item,
         itemIndex: Int
     ) {
-        label.text = "\(item) was selected 🎉"
+        label.text = "\(item.title) was selected 🎉"
+    }
+}
+
+// MARK: - Private extensions
+
+private extension ScrollableTabViewModel.Item {
+    static func create(title: String) -> Self {
+        self.init(identifier: title, title: title)
     }
 }
