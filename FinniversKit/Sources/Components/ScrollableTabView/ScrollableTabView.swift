@@ -61,11 +61,6 @@ public class ScrollableTabView: UIView {
 
     // MARK: - Setup
 
-    public func configure(with viewModel: ScrollableTabViewModel) {
-        cleanup()
-        createButtons(using: viewModel)
-    }
-
     private func setup() {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -89,6 +84,15 @@ public class ScrollableTabView: UIView {
         ])
     }
 
+    // MARK: - Public methods
+
+    public func configure(with viewModel: ScrollableTabViewModel) {
+        cleanup()
+        createButtons(using: viewModel)
+    }
+
+    // MARK: - Private methods
+
     private func cleanup() {
         cancellables.removeAll()
         buttonItems.removeAll()
@@ -100,12 +104,7 @@ public class ScrollableTabView: UIView {
         for (index, item) in viewModel.items.enumerated() {
             let button = Button.makeSideScrollableButton(withTitle: item.title)
             contentView.addArrangedSubview(button)
-            buttonItems.append(
-                ButtonItem(
-                    item: item,
-                    button: button
-                )
-            )
+            buttonItems.append(ButtonItem(item: item, button: button))
 
             button
                 .publisher(for: .touchUpInside)
@@ -126,10 +125,7 @@ public class ScrollableTabView: UIView {
         let selectedItem = buttonItems[index]
         let selectedButton = selectedItem.button
 
-        scrollView.scrollRectToVisible(
-            selectedButton.frame,
-            animated: true
-        )
+        scrollView.scrollRectToVisible(selectedButton.frame, animated: true)
 
         indicatorViewWidthConstraint.constant = selectedButton.frame.width
         indicatorViewLeadingConstraint.constant = selectedButton.frame.minX
@@ -173,10 +169,7 @@ private extension Button.Style {
 
 private extension Button {
     static func makeSideScrollableButton(withTitle title: String) -> Button {
-        let button = Button(
-            style: .sideScrollOption,
-            withAutoLayout: true
-        )
+        let button = Button(style: .sideScrollOption, withAutoLayout: true)
         button.setTitle(title, for: .normal)
         return button
     }
