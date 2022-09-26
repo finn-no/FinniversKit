@@ -11,67 +11,44 @@ public protocol ScrollableTabViewDelegate: AnyObject {
 
 public class ScrollableTabView: UIView {
 
-    // MARK: - Class variables
-
-    static let itemSpacing: CGFloat = 32
-    static let contentInset: UIEdgeInsets =
-        .init(
-            top: 8,
-            leading: 16,
-            bottom: 12,
-            trailing: 16
-        )
-    static let horizontalInset: CGFloat = 16
-
     // MARK: - Public properties
-
-    public override var intrinsicContentSize: CGSize {
-        let height = ScrollableTabView.contentInset.top +
-                     labelHeight +
-                     ScrollableTabView.contentInset.bottom
-        return CGSize(
-            width: UIView.noIntrinsicMetric,
-            height: height
-        )
-    }
 
     public weak var delegate: ScrollableTabViewDelegate?
 
+    public override var intrinsicContentSize: CGSize {
+        CGSize(
+            width: UIView.noIntrinsicMetric,
+            height: contentInset.top + labelHeight + contentInset.bottom
+        )
+    }
+
     // MARK: - Private properties
+
+    private let itemSpacing: CGFloat = 32
+    private let horizontalInset: CGFloat = 16
+    private let contentInset: UIEdgeInsets = .init(top: 8, leading: 16, bottom: 12, trailing: 16)
+    private var buttonItems: [ButtonItem] = []
+    private var cancellables: Set<AnyCancellable> = []
+    private lazy var labelHeight = UIFont.captionStrong.capHeight
+    private lazy var contentView = UIStackView(axis: .horizontal, spacing: itemSpacing, withAutoLayout: true)
+    private lazy var indicatorViewLeadingConstraint = indicatorView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor)
+    private lazy var indicatorViewWidthConstraint = indicatorView.widthAnchor.constraint(equalToConstant: 0)
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
-        scrollView.addSubview(contentView)
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.contentInset = .init(
             vertical: 0,
-            horizontal: ScrollableTabView.horizontalInset
+            horizontal: horizontalInset
         )
         return scrollView
     }()
-    
-    private lazy var contentView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .horizontal
-        stackView.spacing = ScrollableTabView.itemSpacing
-        return stackView
-    }()
-    
+
     private lazy var indicatorView: UIView = {
         let indicatorView = UIView(withAutoLayout: true)
         indicatorView.backgroundColor = .primaryBlue
         return indicatorView
     }()
-
-    private lazy var labelHeight: CGFloat = {
-        "I".height(withConstrainedWidth: .greatestFiniteMagnitude, font: .captionStrong)
-    }()
-
-    private var buttonItems: [ButtonItem] = []
-    private var cancellables: Set<AnyCancellable> = []
-
-    private var indicatorViewLeadingConstraint: NSLayoutConstraint!
-    private var indicatorViewWidthConstraint: NSLayoutConstraint!
 
     // MARK: - Init
 
@@ -80,10 +57,7 @@ public class ScrollableTabView: UIView {
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
+    public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     // MARK: - Setup
 
@@ -94,30 +68,21 @@ public class ScrollableTabView: UIView {
 
     private func setup() {
         addSubview(scrollView)
+        scrollView.addSubview(contentView)
         scrollView.addSubview(indicatorView)
 
-        // Bind scrollView to the view boundaries
-        NSLayoutConstraint.activate([
-            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            scrollView.topAnchor.constraint(equalTo: topAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+        scrollView.fillInSuperview()
+        contentView.fillInSuperview()
 
-        // Bind the stackView to the scroll view's content layout guide to
-        // set the content size.
         NSLayoutConstraint.activate([
+            // Bind the stackView to the scroll view's content layout guide to
+            // set the content size.
             contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
             contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor)
-        ])
+            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
 
-        indicatorView.heightAnchor.constraint(equalToConstant: 4).isActive = true
-        indicatorViewLeadingConstraint = indicatorView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor)
-        indicatorViewWidthConstraint = indicatorView.widthAnchor.constraint(equalToConstant: 0)
-
-        NSLayoutConstraint.activate([
+            indicatorView.heightAnchor.constraint(equalToConstant: .spacingXS),
             indicatorViewLeadingConstraint,
             indicatorView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             indicatorViewWidthConstraint
@@ -152,9 +117,9 @@ public class ScrollableTabView: UIView {
 
         contentView.layoutIfNeeded()
 
-        guard !buttonItems.isEmpty else { return }
-
-        indicatorViewWidthConstraint.constant = buttonItems[0].button.frame.width
+        if !buttonItems.isEmpty {
+            indicatorViewWidthConstraint.constant = buttonItems[0].button.frame.width
+        }
     }
 
     private func handleTap(on button: Button, at index: Int) {
@@ -171,18 +136,17 @@ public class ScrollableTabView: UIView {
         UIView.animate(
             withDuration: 0.2,
             delay: 0,
-            options: .curveEaseOut)
-        {
-            self.layoutIfNeeded()
-        }
-
-        delegate?.scrollableTabViewDidTapItem(
-            self,
-            item: selectedItem.title,
-            itemIndex: index
+            options: .curveEaseOut,
+            animations: { [weak self] in
+                self?.layoutIfNeeded()
+            }
         )
+
+        delegate?.scrollableTabViewDidTapItem(self, item: selectedItem.title, itemIndex: index)
     }
 }
+
+// MARK: - Private types / extensions
 
 private struct ButtonItem {
     let title: String
@@ -190,7 +154,7 @@ private struct ButtonItem {
 }
 
 private extension Button.Style {
-    static var `sideScrollOption`: Button.Style {
+    static var sideScrollOption: Button.Style {
         Button.Style(
             borderWidth: 0,
             stateStyles: [
