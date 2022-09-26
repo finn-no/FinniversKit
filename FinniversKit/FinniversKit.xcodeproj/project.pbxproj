@@ -450,7 +450,6 @@
 		E6510A6427FB36E5001B40D6 /* UIControlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510A6327FB36E5001B40D6 /* UIControlExtensions.swift */; };
 		E6510B5727FC3DB7001B40D6 /* ScrollableTabViewItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510B5627FC3DB7001B40D6 /* ScrollableTabViewItemModel.swift */; };
 		E6920B2B28474B78008B41C6 /* CombineCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6920B2A28474B78008B41C6 /* CombineCompatible.swift */; };
-		E6920B2D28474BCB008B41C6 /* UIControlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6920B2C28474BCB008B41C6 /* UIControlExtensions.swift */; };
 		F22612D822572D9400472D22 /* StatisticsItemEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */; };
 		F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */; };
 		F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */; };
@@ -922,7 +921,6 @@
 		E6510A6327FB36E5001B40D6 /* UIControlExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlExtensions.swift; sourceTree = "<group>"; };
 		E6510B5627FC3DB7001B40D6 /* ScrollableTabViewItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTabViewItemModel.swift; sourceTree = "<group>"; };
 		E6920B2A28474B78008B41C6 /* CombineCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineCompatible.swift; sourceTree = "<group>"; };
-		E6920B2C28474BCB008B41C6 /* UIControlExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlExtensions.swift; sourceTree = "<group>"; };
 		F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyView.swift; sourceTree = "<group>"; };
 		F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyViewModel.swift; sourceTree = "<group>"; };
 		F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdManagementStatisticsEmptyViewCell.swift; sourceTree = "<group>"; };
@@ -1574,7 +1572,6 @@
 				9BBC903D24FD24D20003D2D8 /* UITraitCollectionExtensions.swift */,
 				441D69981FEA947500CD919A /* UIViewExtensions.swift */,
 				DAE6A55A21CA523A00837BFA /* Core Graphics */,
-				E6920B2C28474BCB008B41C6 /* UIControlExtensions.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -3572,7 +3569,6 @@
 				CF5CA71422F87729007C4124 /* NeighborhoodProfileViewModel.swift in Sources */,
 				4D37A9BC28571DC400F9460D /* BadgeViewModel.swift in Sources */,
 				082D80D121C1411700831BDE /* StarView.swift in Sources */,
-				E6920B2D28474BCB008B41C6 /* UIControlExtensions.swift in Sources */,
 				CF2E46F22319685C0085A591 /* FavoriteAdActionView.swift in Sources */,
 				9B2D17D223E02B2900EF3B50 /* KeyValuePair.swift in Sources */,
 				62432106231FE97F0027E142 /* UserAdEmphasizedActionTableViewCell.swift in Sources */,
