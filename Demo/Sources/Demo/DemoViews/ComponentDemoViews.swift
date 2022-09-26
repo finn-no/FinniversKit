@@ -240,7 +240,7 @@ public enum ComponentDemoViews: String, DemoViews {
         case .overFlowCollectionView:
             return DemoViewController<OverflowCollectionViewDemo>()
         case .scrollableTabDemoView:
-            return DemoViewController<ScrollableTabDemoView>()
+            return DemoViewController<ScrollableTabDemoView>(dismissType: .dismissButton)
         case .monthAndYearPickerView:
             return DemoViewController<MonthAndYearPickerDemoView>()
         case .searchView:

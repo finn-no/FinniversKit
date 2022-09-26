@@ -1,12 +1,18 @@
 import FinniversKit
+import Combine
 
-class ScrollableTabDemoView: UIView {
+class ScrollableTabDemoView: UIView, Tweakable {
+
+    lazy var tweakingOptions: [TweakingOption] = [
+        TweakingOption(title: "Default") { self.sideScrollableView.configure(with: .default) },
+        TweakingOption(title: "Reversed") { self.sideScrollableView.configure(with: .reversed) }
+    ]
 
     // MARK: - Private properties
 
-    lazy var sideScrollableView = ScrollableTabView(withAutoLayout: true)
+    private lazy var sideScrollableView = ScrollableTabView(withAutoLayout: true)
 
-    lazy var label: Label = {
+    private lazy var label: Label = {
         let label = Label(
             style: .bodyRegular,
             withAutoLayout: true
@@ -21,6 +27,7 @@ class ScrollableTabDemoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+        tweakingOptions.first?.action?()
     }
 
     required init?(coder: NSCoder) {
@@ -43,16 +50,6 @@ class ScrollableTabDemoView: UIView {
             label.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
 
-        let viewModel = ScrollableTabViewModel(
-            items: [
-                .create(title: "Alle"),
-                .create(title: "Aktiv (3)"),
-                .create(title: "Påbegynte (17)"),
-                .create(title: "Avvist (2)"),
-                .create(title: "Lorem ipsum (42)")
-            ]
-        )
-        sideScrollableView.configure(with: viewModel)
         sideScrollableView.delegate = self
     }
 }
@@ -62,8 +59,7 @@ class ScrollableTabDemoView: UIView {
 extension ScrollableTabDemoView: ScrollableTabViewDelegate {
     func scrollableTabViewDidTapItem(
         _ sidescrollableView: ScrollableTabView,
-        item: ScrollableTabViewModel.Item,
-        itemIndex: Int
+        item: ScrollableTabViewModel.Item
     ) {
         label.text = "\(item.title) was selected 🎉"
     }
@@ -71,6 +67,27 @@ extension ScrollableTabDemoView: ScrollableTabViewDelegate {
 
 // MARK: - Private extensions
 
+private extension ScrollableTabViewModel {
+    static var `default`: Self {
+        self.init(items: .defaultItems)
+    }
+
+    static var reversed: Self {
+        self.init(items: .defaultItems.reversed())
+    }
+}
+
+private extension Array where Element == ScrollableTabViewModel.Item {
+    static var defaultItems: [ScrollableTabViewModel.Item] {
+        [
+            .create(title: "Alle"),
+            .create(title: "Aktiv (3)"),
+            .create(title: "Påbegynte (17)"),
+            .create(title: "Avvist (2)"),
+            .create(title: "Lorem ipsum (42)")
+        ]
+    }
+}
 private extension ScrollableTabViewModel.Item {
     static func create(title: String) -> Self {
         self.init(identifier: title, title: title)
