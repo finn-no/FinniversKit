@@ -117,8 +117,8 @@ public class ScrollableTabView: UIView {
 
         contentView.layoutIfNeeded()
 
-        if !buttonItems.isEmpty {
-            indicatorViewWidthConstraint.constant = buttonItems[0].button.frame.width
+        if let firstButtonItem = buttonItems.first {
+            indicatorViewWidthConstraint.constant = firstButtonItem.button.frame.width
         }
     }
 
