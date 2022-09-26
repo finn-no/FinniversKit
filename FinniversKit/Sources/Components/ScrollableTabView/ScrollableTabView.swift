@@ -4,7 +4,7 @@ import UIKit
 public protocol ScrollableTabViewDelegate: AnyObject {
     func scrollableTabViewDidTapItem(
         _ sidescrollableView: ScrollableTabView,
-        item: String,
+        item: ScrollableTabViewModel.Item,
         itemIndex: Int
     )
 }
@@ -63,7 +63,7 @@ public class ScrollableTabView: UIView {
 
     public func configure(with viewModel: ScrollableTabViewModel) {
         cleanup()
-        createButtons(withTitles: viewModel.items)
+        createButtons(using: viewModel)
     }
 
     private func setup() {
@@ -95,14 +95,14 @@ public class ScrollableTabView: UIView {
         contentView.removeArrangedSubviews()
     }
 
-    private func createButtons(withTitles itemTitles: [String]) {
+    private func createButtons(using viewModel: ScrollableTabViewModel) {
         // The current implementation always makes the first item as selected
-        for (index, itemName) in itemTitles.enumerated() {
-            let button = Button.makeSideScrollableButton(withTitle: itemName)
+        for (index, item) in viewModel.items.enumerated() {
+            let button = Button.makeSideScrollableButton(withTitle: item.title)
             contentView.addArrangedSubview(button)
             buttonItems.append(
                 ButtonItem(
-                    title: itemName,
+                    item: item,
                     button: button
                 )
             )
@@ -125,6 +125,7 @@ public class ScrollableTabView: UIView {
     private func handleTap(on button: Button, at index: Int) {
         let selectedItem = buttonItems[index]
         let selectedButton = selectedItem.button
+
         scrollView.scrollRectToVisible(
             selectedButton.frame,
             animated: true
@@ -142,14 +143,14 @@ public class ScrollableTabView: UIView {
             }
         )
 
-        delegate?.scrollableTabViewDidTapItem(self, item: selectedItem.title, itemIndex: index)
+        delegate?.scrollableTabViewDidTapItem(self, item: selectedItem.item, itemIndex: index)
     }
 }
 
 // MARK: - Private types / extensions
 
 private struct ButtonItem {
-    let title: String
+    let item: ScrollableTabViewModel.Item
     let button: Button
 }
 
