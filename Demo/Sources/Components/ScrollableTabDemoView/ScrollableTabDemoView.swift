@@ -1,18 +1,14 @@
-//
-//  Copyright © 2022 FINN.no AS. All rights reserved.
-//
-
 import FinniversKit
 
 class ScrollableTabDemoView: UIView {
-    
+
     // MARK: - Private properties
 
     lazy var sideScrollableView: ScrollableTabView = {
         let sideScrollableView = ScrollableTabView(withAutoLayout: true)
         return sideScrollableView
     }()
-    
+
     lazy var label: Label = {
         let label = Label(
             style: .bodyRegular,
@@ -29,7 +25,7 @@ class ScrollableTabDemoView: UIView {
         super.init(frame: frame)
         setup()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -39,18 +35,18 @@ class ScrollableTabDemoView: UIView {
     private func setup() {
         addSubview(sideScrollableView)
         addSubview(label)
-        
+
         NSLayoutConstraint.activate([
             sideScrollableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             sideScrollableView.topAnchor.constraint(equalTo: topAnchor),
             sideScrollableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            
+
             label.leadingAnchor.constraint(equalTo: leadingAnchor),
             label.topAnchor.constraint(equalTo: sideScrollableView.bottomAnchor,
                                        constant: 50),
             label.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
-        
+
         let viewModel = ScrollableTabViewItemModel(
             items: [
                 "Alle",

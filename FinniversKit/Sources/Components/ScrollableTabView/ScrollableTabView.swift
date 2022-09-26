@@ -1,7 +1,3 @@
-//
-//  Copyright © 2022 FINN.no AS. All rights reserved.
-//
-
 import Combine
 import UIKit
 
@@ -14,9 +10,9 @@ public protocol ScrollableTabViewDelegate: AnyObject {
 }
 
 public class ScrollableTabView: UIView {
-    
+
     // MARK: - Class variables
-    
+
     static let itemSpacing: CGFloat = 32
     static let contentInset: UIEdgeInsets =
         .init(
@@ -28,7 +24,7 @@ public class ScrollableTabView: UIView {
     static let horizontalInset: CGFloat = 16
 
     // MARK: - Public properties
-    
+
     public override var intrinsicContentSize: CGSize {
         let height = ScrollableTabView.contentInset.top +
                      labelHeight +
@@ -40,9 +36,9 @@ public class ScrollableTabView: UIView {
     }
 
     public weak var delegate: ScrollableTabViewDelegate?
-    
+
     // MARK: - Private properties
-    
+
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
         scrollView.addSubview(contentView)
@@ -66,19 +62,19 @@ public class ScrollableTabView: UIView {
         indicatorView.backgroundColor = .primaryBlue
         return indicatorView
     }()
-    
+
     private lazy var labelHeight: CGFloat = {
         "I".height(withConstrainedWidth: .greatestFiniteMagnitude, font: .captionStrong)
     }()
-    
+
     private var buttonItems: [ButtonItem] = []
     private var cancellables: Set<AnyCancellable> = []
-    
+
     private var indicatorViewLeadingConstraint: NSLayoutConstraint!
     private var indicatorViewWidthConstraint: NSLayoutConstraint!
-    
+
     // MARK: - Init
-    
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -88,9 +84,9 @@ public class ScrollableTabView: UIView {
         super.init(coder: aDecoder)
         setup()
     }
-    
+
     // MARK: - Setup
-    
+
     public func configure(with viewModel: ScrollableTabViewItemModel) {
         cleanup()
         createButtons(withTitles: viewModel.items)
@@ -107,7 +103,7 @@ public class ScrollableTabView: UIView {
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-        
+
         // Bind the stackView to the scroll view's content layout guide to
         // set the content size.
         NSLayoutConstraint.activate([
@@ -116,11 +112,11 @@ public class ScrollableTabView: UIView {
             contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor)
         ])
-        
+
         indicatorView.heightAnchor.constraint(equalToConstant: 4).isActive = true
         indicatorViewLeadingConstraint = indicatorView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor)
         indicatorViewWidthConstraint = indicatorView.widthAnchor.constraint(equalToConstant: 0)
-        
+
         NSLayoutConstraint.activate([
             indicatorViewLeadingConstraint,
             indicatorView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
@@ -133,7 +129,7 @@ public class ScrollableTabView: UIView {
         buttonItems.removeAll()
         contentView.removeArrangedSubviews()
     }
-    
+
     private func createButtons(withTitles itemTitles: [String]) {
         // The current implementation always makes the first item as selected
         for (index, itemName) in itemTitles.enumerated() {
@@ -155,12 +151,12 @@ public class ScrollableTabView: UIView {
         }
 
         contentView.layoutIfNeeded()
-        
+
         guard !buttonItems.isEmpty else { return }
-        
+
         indicatorViewWidthConstraint.constant = buttonItems[0].button.frame.width
     }
-    
+
     private func handleTap(on button: Button, at index: Int) {
         let selectedItem = buttonItems[index]
         let selectedButton = selectedItem.button
@@ -168,10 +164,10 @@ public class ScrollableTabView: UIView {
             selectedButton.frame,
             animated: true
         )
-        
+
         indicatorViewWidthConstraint.constant = selectedButton.frame.width
         indicatorViewLeadingConstraint.constant = selectedButton.frame.minX
-        
+
         UIView.animate(
             withDuration: 0.2,
             delay: 0,
@@ -179,7 +175,7 @@ public class ScrollableTabView: UIView {
         {
             self.layoutIfNeeded()
         }
-        
+
         delegate?.scrollableTabViewDidTapItem(
             self,
             item: selectedItem.title,
