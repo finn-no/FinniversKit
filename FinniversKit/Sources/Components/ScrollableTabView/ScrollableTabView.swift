@@ -2,11 +2,7 @@ import Combine
 import UIKit
 
 public protocol ScrollableTabViewDelegate: AnyObject {
-    func scrollableTabViewDidTapItem(
-        _ sidescrollableView: ScrollableTabView,
-        item: ScrollableTabViewModel.Item,
-        itemIndex: Int
-    )
+    func scrollableTabViewDidTapItem(_ sidescrollableView: ScrollableTabView, item: ScrollableTabViewModel.Item)
 }
 
 public class ScrollableTabView: UIView {
@@ -27,8 +23,6 @@ public class ScrollableTabView: UIView {
     private let itemSpacing: CGFloat = 32
     private let horizontalInset: CGFloat = 16
     private let contentInset: UIEdgeInsets = .init(top: 8, leading: 16, bottom: 12, trailing: 16)
-    private var buttonItems: [ButtonItem] = []
-    private var cancellables: Set<AnyCancellable> = []
     private lazy var labelHeight = UIFont.captionStrong.capHeight
     private lazy var contentView = UIStackView(axis: .horizontal, spacing: itemSpacing, withAutoLayout: true)
     private lazy var indicatorViewLeadingConstraint = indicatorView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor)
@@ -67,7 +61,6 @@ public class ScrollableTabView: UIView {
         scrollView.addSubview(indicatorView)
 
         scrollView.fillInSuperview()
-        contentView.fillInSuperview()
 
         NSLayoutConstraint.activate([
             // Bind the stackView to the scroll view's content layout guide to
@@ -87,48 +80,33 @@ public class ScrollableTabView: UIView {
     // MARK: - Public methods
 
     public func configure(with viewModel: ScrollableTabViewModel) {
-        cleanup()
-        createButtons(using: viewModel)
-    }
-
-    // MARK: - Private methods
-
-    private func cleanup() {
-        cancellables.removeAll()
-        buttonItems.removeAll()
         contentView.removeArrangedSubviews()
-    }
 
-    private func createButtons(using viewModel: ScrollableTabViewModel) {
         // The current implementation always makes the first item as selected
-        for (index, item) in viewModel.items.enumerated() {
-            let button = Button.makeSideScrollableButton(withTitle: item.title)
-            contentView.addArrangedSubview(button)
-            buttonItems.append(ButtonItem(item: item, button: button))
-
-            button
-                .publisher(for: .touchUpInside)
-                .sink { [weak self] _ in
-                    self?.handleTap(on: button, at: index)
-                }
-                .store(in: &cancellables)
+        viewModel.items.forEach { item in
+            let itemView = ItemView(item: item, withAutoLayout: true)
+            contentView.addArrangedSubview(itemView)
+            itemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleItemTap)))
         }
 
         contentView.layoutIfNeeded()
 
-        if let firstButtonItem = buttonItems.first {
-            indicatorViewWidthConstraint.constant = firstButtonItem.button.frame.width
+        if let firstItemView = contentView.arrangedSubviews.first as? ItemView {
+            toggleSelection(newSelection: firstItemView)
         }
     }
 
-    private func handleTap(on button: Button, at index: Int) {
-        let selectedItem = buttonItems[index]
-        let selectedButton = selectedItem.button
+    // MARK: - Private methods
 
-        scrollView.scrollRectToVisible(selectedButton.frame, animated: true)
+    private func toggleSelection(newSelection: ItemView) {
+        contentView.arrangedSubviews
+            .compactMap { $0 as? ItemView }
+            .forEach { $0.isSelected = $0 == newSelection }
 
-        indicatorViewWidthConstraint.constant = selectedButton.frame.width
-        indicatorViewLeadingConstraint.constant = selectedButton.frame.minX
+        scrollView.scrollRectToVisible(newSelection.frame, animated: true)
+
+        indicatorViewWidthConstraint.constant = newSelection.frame.width
+        indicatorViewLeadingConstraint.constant = newSelection.frame.minX
 
         UIView.animate(
             withDuration: 0.2,
@@ -139,38 +117,51 @@ public class ScrollableTabView: UIView {
             }
         )
 
-        delegate?.scrollableTabViewDidTapItem(self, item: selectedItem.item, itemIndex: index)
+        delegate?.scrollableTabViewDidTapItem(self, item: newSelection.item)
+    }
+
+    // MARK: - Actions
+
+    @objc private func handleItemTap(sender: UITapGestureRecognizer) {
+        guard let itemView = sender.view as? ItemView else { return }
+        toggleSelection(newSelection: itemView)
     }
 }
 
 // MARK: - Private types / extensions
 
-private struct ButtonItem {
+private class ItemView: UIView {
+
+    // MARK: - Internal properties
+
     let item: ScrollableTabViewModel.Item
-    let button: Button
-}
 
-private extension Button.Style {
-    static var sideScrollOption: Button.Style {
-        Button.Style(
-            borderWidth: 0,
-            stateStyles: [
-                .normal: Button.StateStyle(
-                    textColor: .stone,
-                    backgroundColor: .clear,
-                    borderColor: .btnDisabled
-                )
-                ],
-            margins: .zero,
-            normalFont: .captionStrong
-        )
+    var isSelected: Bool = false {
+        didSet {
+            titleLabel.textColor = isSelected ? .textPrimary : .stone
+        }
     }
-}
 
-private extension Button {
-    static func makeSideScrollableButton(withTitle title: String) -> Button {
-        let button = Button(style: .sideScrollOption, withAutoLayout: true)
-        button.setTitle(title, for: .normal)
-        return button
+    // MARK: - Private properties
+
+    private lazy var titleLabel = Label(style: .captionStrong, withAutoLayout: true)
+
+    // MARK: - Init
+
+    init(item: ScrollableTabViewModel.Item, withAutoLayout: Bool) {
+        self.item = item
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
+        setup()
+    }
+
+    required init?(coder: NSCoder) { fatalError() }
+
+    // MARK: - Setup
+
+    private func setup() {
+        titleLabel.text = item.title
+        addSubview(titleLabel)
+        titleLabel.fillInSuperview()
     }
 }
