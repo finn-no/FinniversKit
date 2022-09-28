@@ -25,7 +25,10 @@ public class HTMLLabel: Label {
     }
 
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        // Overriding this function makes sure that the label always adapts to the
+        // new trait collection automatically (e.g. when changing from light to dark mode).
         super.traitCollectionDidChange(previousTraitCollection)
+
         guard
             let htmlText = htmlText,
             UIApplication.shared.applicationState != .background
