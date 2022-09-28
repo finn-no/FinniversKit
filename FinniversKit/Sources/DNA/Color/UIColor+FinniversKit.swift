@@ -224,6 +224,15 @@ import UIKit
     public class var green700: UIColor {
         return UIColor(hex: "#217A5F")
     }
+    
+    public class var blueGray100: UIColor {
+        return UIColor(r: 241, g: 244, b: 249)
+    }
+
+    public class var blueGray200: UIColor {
+        return UIColor(r: 225, g: 230, b: 238)
+    }
+    
 }
 
 // MARK: - Temporary Markets Colors
