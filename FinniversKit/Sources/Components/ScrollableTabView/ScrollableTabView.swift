@@ -34,10 +34,7 @@ public class ScrollableTabView: UIView {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
         scrollView.showsHorizontalScrollIndicator = false
-        scrollView.contentInset = .init(
-            vertical: 0,
-            horizontal: horizontalInset
-        )
+        scrollView.contentInset = .init(top: 0, leading: horizontalInset, bottom: 4, trailing: horizontalInset)
         return scrollView
     }()
 
