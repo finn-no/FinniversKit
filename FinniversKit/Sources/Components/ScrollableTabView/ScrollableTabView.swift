@@ -14,7 +14,7 @@ public class ScrollableTabView: UIView {
     public override var intrinsicContentSize: CGSize {
         CGSize(
             width: UIView.noIntrinsicMetric,
-            height: contentInset.top + labelHeight + contentInset.bottom
+            height: contentInset.top + labelHeight + 4 + contentInset.bottom
         )
     }
 
