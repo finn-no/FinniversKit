@@ -72,7 +72,7 @@ public class ScrollableTabView: UIView {
 
             indicatorView.heightAnchor.constraint(equalToConstant: .spacingXS),
             indicatorViewLeadingConstraint,
-            indicatorView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            indicatorView.topAnchor.constraint(equalTo: contentView.bottomAnchor),
             indicatorViewWidthConstraint
         ])
     }
