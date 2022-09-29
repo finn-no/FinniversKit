@@ -23,9 +23,9 @@ public class ScrollableTabView: UIView {
     private let labelStyle = Label.Style.captionStrong
     private let itemSpacing: CGFloat = 32
     private let indicatorHeight: CGFloat = 4
+    private var indicatorViewLeadingConstraint: NSLayoutConstraint?
+    private var indicatorViewTrailingConstraint: NSLayoutConstraint?
     private lazy var contentView = UIStackView(axis: .horizontal, spacing: itemSpacing, withAutoLayout: true)
-    private lazy var indicatorViewLeadingConstraint = indicatorView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor)
-    private lazy var indicatorViewWidthConstraint = indicatorView.widthAnchor.constraint(equalToConstant: 0)
 
     private var labelHeight: CGFloat {
         "I".height(withConstrainedWidth: .greatestFiniteMagnitude, font: labelStyle.font)
@@ -79,9 +79,7 @@ public class ScrollableTabView: UIView {
             contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
 
             indicatorView.heightAnchor.constraint(equalToConstant: indicatorHeight),
-            indicatorViewLeadingConstraint,
             indicatorView.topAnchor.constraint(equalTo: contentView.bottomAnchor),
-            indicatorViewWidthConstraint
         ])
     }
 
@@ -111,8 +109,10 @@ public class ScrollableTabView: UIView {
 
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        invalidateIntrinsicContentSize()
-        redrawIndicator(animate: false)
+        if previousTraitCollection?.preferredContentSizeCategory != traitCollection.preferredContentSizeCategory {
+            invalidateIntrinsicContentSize()
+            redrawIndicator(animate: false)
+        }
     }
 
     // MARK: - Private methods
@@ -128,17 +128,27 @@ public class ScrollableTabView: UIView {
     private func redrawIndicator(animate: Bool) {
         guard let selectedItemView = selectedItemView else { return }
 
-        indicatorViewWidthConstraint.constant = selectedItemView.frame.width
-        indicatorViewLeadingConstraint.constant = selectedItemView.frame.minX
+        indicatorViewLeadingConstraint?.isActive = false
+        indicatorViewTrailingConstraint?.isActive = false
 
-        UIView.animate(
-            withDuration: animate ? 0.2 : 0,
-            delay: 0,
-            options: .curveEaseOut,
-            animations: { [weak self] in
-                self?.layoutIfNeeded()
-            }
-        )
+        indicatorViewLeadingConstraint = indicatorView.leadingAnchor.constraint(equalTo: selectedItemView.leadingAnchor)
+        indicatorViewTrailingConstraint = indicatorView.trailingAnchor.constraint(equalTo: selectedItemView.trailingAnchor)
+
+        indicatorViewLeadingConstraint?.isActive = true
+        indicatorViewTrailingConstraint?.isActive = true
+
+        if animate {
+            UIView.animate(
+                withDuration: 0.2,
+                delay: 0,
+                options: .curveEaseOut,
+                animations: { [weak self] in
+                    self?.layoutIfNeeded()
+                }
+            )
+        } else {
+            layoutIfNeeded()
+        }
     }
 
     // MARK: - Actions
