@@ -23,10 +23,13 @@ public class ScrollableTabView: UIView {
     private let itemSpacing: CGFloat = 32
     private let horizontalInset: CGFloat = 16
     private let contentInset: UIEdgeInsets = .init(top: 8, leading: 16, bottom: 12, trailing: 16)
-    private lazy var labelHeight = UIFont.captionStrong.capHeight
     private lazy var contentView = UIStackView(axis: .horizontal, spacing: itemSpacing, withAutoLayout: true)
     private lazy var indicatorViewLeadingConstraint = indicatorView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor)
     private lazy var indicatorViewWidthConstraint = indicatorView.widthAnchor.constraint(equalToConstant: 0)
+
+    private var labelHeight: CGFloat {
+        UIFont.captionStrong.capHeight
+    }
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
