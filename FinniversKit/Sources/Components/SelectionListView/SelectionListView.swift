@@ -21,11 +21,11 @@ public class SelectionListView: UIView {
     }
 
     public var selectedItems: [(index: Int, identifier: String?)] {
-        itemViews.enumerated().map { index, itemView in
+        itemViews.enumerated().compactMap { index, itemView in
             guard itemView.isSelected else { return nil }
 
             return (index: index, identifier: itemView.model.identifier)
-        }.compactMap { $0 }
+        }
     }
     
     public override var intrinsicContentSize: CGSize {
