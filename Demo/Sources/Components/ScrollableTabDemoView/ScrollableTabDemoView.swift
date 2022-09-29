@@ -17,6 +17,7 @@ class ScrollableTabDemoView: UIView, Tweakable {
             style: .bodyRegular,
             withAutoLayout: true
         )
+        label.numberOfLines = 0
         label.textAlignment = .center
         label.text = "Select an item..."
         return label
@@ -45,9 +46,9 @@ class ScrollableTabDemoView: UIView, Tweakable {
             sideScrollableView.topAnchor.constraint(equalTo: topAnchor),
             sideScrollableView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            label.leadingAnchor.constraint(equalTo: leadingAnchor),
-            label.topAnchor.constraint(equalTo: sideScrollableView.bottomAnchor, constant: 50),
-            label.trailingAnchor.constraint(equalTo: trailingAnchor)
+            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            label.centerYAnchor.constraint(equalTo: centerYAnchor),
+            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
         ])
 
         sideScrollableView.delegate = self
