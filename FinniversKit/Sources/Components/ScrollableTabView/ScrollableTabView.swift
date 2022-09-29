@@ -31,6 +31,14 @@ public class ScrollableTabView: UIView {
         "I".height(withConstrainedWidth: .greatestFiniteMagnitude, font: labelStyle.font)
     }
 
+    private var itemViews: [ItemView] {
+        contentView.arrangedSubviews.compactMap { $0 as? ItemView }
+    }
+
+    private var selectedItemView: ItemView? {
+        itemViews.first { $0.isSelected }
+    }
+
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
         scrollView.showsHorizontalScrollIndicator = false
@@ -94,30 +102,43 @@ public class ScrollableTabView: UIView {
         if let firstItemView = contentView.arrangedSubviews.first as? ItemView {
             toggleSelection(newSelection: firstItemView)
         }
+
+        invalidateIntrinsicContentSize()
+        layoutIfNeeded()
+    }
+
+    // MARK: - Overrides
+
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        invalidateIntrinsicContentSize()
+        redrawIndicator(animate: false)
     }
 
     // MARK: - Private methods
 
     private func toggleSelection(newSelection: ItemView) {
-        contentView.arrangedSubviews
-            .compactMap { $0 as? ItemView }
-            .forEach { $0.isSelected = $0 == newSelection }
-
+        if selectedItemView == newSelection { return }
+        itemViews.forEach { $0.isSelected = $0 == newSelection }
         scrollView.scrollRectToVisible(newSelection.frame, animated: true)
+        redrawIndicator(animate: true)
+        delegate?.scrollableTabViewDidTapItem(self, item: newSelection.item)
+    }
 
-        indicatorViewWidthConstraint.constant = newSelection.frame.width
-        indicatorViewLeadingConstraint.constant = newSelection.frame.minX
+    private func redrawIndicator(animate: Bool) {
+        guard let selectedItemView = selectedItemView else { return }
+
+        indicatorViewWidthConstraint.constant = selectedItemView.frame.width
+        indicatorViewLeadingConstraint.constant = selectedItemView.frame.minX
 
         UIView.animate(
-            withDuration: 0.2,
+            withDuration: animate ? 0.2 : 0,
             delay: 0,
             options: .curveEaseOut,
             animations: { [weak self] in
                 self?.layoutIfNeeded()
             }
         )
-
-        delegate?.scrollableTabViewDidTapItem(self, item: newSelection.item)
     }
 
     // MARK: - Actions
