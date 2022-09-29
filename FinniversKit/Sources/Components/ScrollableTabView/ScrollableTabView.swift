@@ -14,27 +14,27 @@ public class ScrollableTabView: UIView {
     public override var intrinsicContentSize: CGSize {
         CGSize(
             width: UIView.noIntrinsicMetric,
-            height: contentInset.top + labelHeight + 4 + contentInset.bottom
+            height: labelHeight + indicatorHeight
         )
     }
 
     // MARK: - Private properties
 
+    private let labelStyle = Label.Style.captionStrong
     private let itemSpacing: CGFloat = 32
-    private let horizontalInset: CGFloat = 16
-    private let contentInset: UIEdgeInsets = .init(top: 8, leading: 16, bottom: 12, trailing: 16)
+    private let indicatorHeight: CGFloat = 4
     private lazy var contentView = UIStackView(axis: .horizontal, spacing: itemSpacing, withAutoLayout: true)
     private lazy var indicatorViewLeadingConstraint = indicatorView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor)
     private lazy var indicatorViewWidthConstraint = indicatorView.widthAnchor.constraint(equalToConstant: 0)
 
     private var labelHeight: CGFloat {
-        UIFont.captionStrong.capHeight
+        "I".height(withConstrainedWidth: .greatestFiniteMagnitude, font: labelStyle.font)
     }
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
         scrollView.showsHorizontalScrollIndicator = false
-        scrollView.contentInset = .init(top: 0, leading: horizontalInset, bottom: 4, trailing: horizontalInset)
+        scrollView.contentInset = .init(vertical: 0, horizontal: .spacingM)
         return scrollView
     }()
 
@@ -70,7 +70,7 @@ public class ScrollableTabView: UIView {
             contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
 
-            indicatorView.heightAnchor.constraint(equalToConstant: .spacingXS),
+            indicatorView.heightAnchor.constraint(equalToConstant: indicatorHeight),
             indicatorViewLeadingConstraint,
             indicatorView.topAnchor.constraint(equalTo: contentView.bottomAnchor),
             indicatorViewWidthConstraint
@@ -84,7 +84,7 @@ public class ScrollableTabView: UIView {
 
         // The current implementation always makes the first item as selected
         viewModel.items.forEach { item in
-            let itemView = ItemView(item: item, withAutoLayout: true)
+            let itemView = ItemView(item: item, labelStyle: labelStyle, withAutoLayout: true)
             contentView.addArrangedSubview(itemView)
             itemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleItemTap)))
         }
@@ -144,12 +144,14 @@ private class ItemView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var titleLabel = Label(style: .captionStrong, withAutoLayout: true)
+    private let labelStyle: Label.Style
+    private lazy var titleLabel = Label(style: labelStyle, withAutoLayout: true)
 
     // MARK: - Init
 
-    init(item: ScrollableTabViewModel.Item, withAutoLayout: Bool) {
+    init(item: ScrollableTabViewModel.Item, labelStyle: Label.Style, withAutoLayout: Bool) {
         self.item = item
+        self.labelStyle = labelStyle
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setup()
