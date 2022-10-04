@@ -68,7 +68,7 @@ private extension Array where Element == SelectionItemModel {
                 identifier: "item-\($0)",
                 title: "Jeg kan overlevere ved oppmøte",
                 description: .plain("Du og kjøper gjør en egen avtale"),
-                icon: UIImage(named: .favoriteActive).withRenderingMode(.alwaysTemplate),
+                icon: .fixedSize(UIImage(named: .favoriteActive).withRenderingMode(.alwaysTemplate)),
                 isInitiallySelected: $0 == 0
             )
         }

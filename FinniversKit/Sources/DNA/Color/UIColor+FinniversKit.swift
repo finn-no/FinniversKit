@@ -149,6 +149,10 @@ import UIKit
         return UIColor(r: 118, g: 118, b: 118)
     }
 
+    public class var darkStone: UIColor {
+        return UIColor(hex: "#8A8EA1")
+    }
+
     public class var sardine: UIColor {
         return UIColor(r: 195, g: 204, b: 217)
     }
@@ -187,6 +191,10 @@ import UIKit
 
     public class var marble: UIColor {
         return UIColor(r: 246, g: 248, b: 251)
+    }
+
+    public class var darkMarble: UIColor {
+        return UIColor(hex: "#13131A")
     }
 
     public class var midnightBackground: UIColor {
