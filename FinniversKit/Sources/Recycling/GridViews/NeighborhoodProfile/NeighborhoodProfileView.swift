@@ -13,21 +13,36 @@ public final class NeighborhoodProfileView: UIView {
     private static let headerSpacingTop: CGFloat = 24
     private static let cellWidth: CGFloat = 204
     private static var minimumCellHeight: CGFloat { return cellWidth }
-
+    
     // MARK: - Public properties
-
+    
     public weak var delegate: NeighborhoodProfileViewDelegate?
-
+    
     // MARK: - Private properties
-
-    private var viewModel = NeighborhoodProfileViewModel(title: "", readMoreLink: nil, cards: [])
-
+    
+    private var viewModel = NeighborhoodProfileViewModel(title: "", readMoreLink: nil, cards: [], banner: nil)
+    
+    private lazy var bannerContainerView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .red
+        return view
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = .spacingM
+        stack.alignment = .fill
+        // stack.distribution = .fillEqually
+        return stack
+    }()
+    
     private lazy var headerView: NeighborhoodProfileHeaderView = {
         let view = NeighborhoodProfileHeaderView(withAutoLayout: true)
         view.delegate = self
         return view
     }()
-
+    
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -46,7 +61,7 @@ public final class NeighborhoodProfileView: UIView {
         collectionView.register(NeighborhoodProfileButtonViewCell.self)
         return collectionView
     }()
-
+    
     private lazy var collectionViewLayout: UICollectionViewFlowLayout = {
         let layout = isPagingEnabled ? PagingCollectionViewLayout() : UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -58,7 +73,7 @@ public final class NeighborhoodProfileView: UIView {
         )
         return layout
     }()
-
+    
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl(withAutoLayout: true)
         pageControl.pageIndicatorTintColor = UIColor.btnPrimary.withAlphaComponent(0.2)
@@ -66,46 +81,58 @@ public final class NeighborhoodProfileView: UIView {
         pageControl.addTarget(self, action: #selector(handlePageControlValueChange), for: .valueChanged)
         return pageControl
     }()
-
+    
     private lazy var collectionViewHeightConstraint: NSLayoutConstraint = {
         return collectionView.heightAnchor.constraint(equalToConstant: collectionViewHeight)
     }()
-
+    
     private var collectionViewHeight: CGFloat {
         return collectionViewHeight(forItemHeight: collectionViewLayout.itemSize.height)
     }
-
+    
     private var isPagingEnabled: Bool {
         return UIDevice.isIPhone()
     }
-
+    
+    private var hasBanner: Bool {
+        return true
+        // return viewModel.banner != nil
+    }
+    
     // MARK: - Init
-
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
-
+    
     // MARK: - Public
-
+    
     public func configure(with viewModel: NeighborhoodProfileViewModel) {
         self.viewModel = viewModel
-
+        
         headerView.title = viewModel.title
         headerView.buttonTitle = viewModel.readMoreLink?.title ?? ""
-
+        print("--- configure - banner: \(String(describing: viewModel.banner))")
+        
         resetPageControl()
         resetCollectionViewLayout()
         collectionView.reloadData()
+        
+        // Check for banner -> addSubview
+        // Adjust height?
+        if viewModel.banner != nil {
+            
+        }
     }
-
+    
     // MARK: - Overrides
-
+    
     // This override exists because of how we calculate view sizes in our objectPage.
     // The objectPage needs to know the size of this view before it's added to the view hierarchy, aka. before
     // the collectionView itself knows it's own contentSize, so we need to calculate the total height of the view manually.
@@ -124,82 +151,111 @@ public final class NeighborhoodProfileView: UIView {
         var height = NeighborhoodProfileView.headerSpacingTop
         height += NeighborhoodProfileHeaderView.height(forTitle: viewModel.title, width: targetSize.width)
         height += .spacingS + collectionViewHeight(forItemHeight: calculateItemSize().height)
-
+        
         if isPagingEnabled {
             height += pageControl.intrinsicContentSize.height + .spacingS
         } else {
             height += .spacingM
         }
-
+        
         return CGSize(
             width: targetSize.width,
             height: height
         )
     }
-
+    
     // MARK: - Setup
-
+    
     private func setup() {
+        print("--- setup()")
         backgroundColor = .bgSecondary
-
+        
         addSubview(headerView)
         addSubview(collectionView)
-
+        
         if isPagingEnabled {
             addSubview(pageControl)
         }
-
+        
+        if hasBanner {
+            addSubview(bannerContainerView)
+        }
+        
         var constraints = [
             headerView.topAnchor.constraint(equalTo: topAnchor, constant: NeighborhoodProfileView.headerSpacingTop),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-
+            
             collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: .spacingS),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionViewHeightConstraint,
         ]
-
+        
         if isPagingEnabled {
+            // Set base constraints for paging
             constraints.append(contentsOf: [
                 pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
                 pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
-                bottomAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: .spacingS)
             ])
-        } else {
+            
+            if !hasBanner {
+                constraints.append(contentsOf: [
+                    bottomAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: .spacingS)
+                ])
+            }
+        }
+        
+        if hasBanner {
+            constraints.append(contentsOf: [
+                bannerContainerView.topAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: .spacingM),
+                bannerContainerView.centerXAnchor.constraint(equalTo: centerXAnchor),
+                bannerContainerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+                bannerContainerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+                
+                bannerContainerView.heightAnchor.constraint(equalToConstant: 60),
+                bottomAnchor.constraint(equalTo: bannerContainerView.bottomAnchor, constant: .spacingS)
+            ])
+        }
+        
+        if !isPagingEnabled && !hasBanner {
             constraints.append(
                 bottomAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingM)
             )
         }
-
+        
         NSLayoutConstraint.activate(constraints)
     }
-
+    
+    private func setupBanner() {
+        
+    }
+    
     private func resetPageControl() {
         pageControl.numberOfPages = viewModel.cards.count
         pageControl.currentPage = 0
         pageControl.isHidden = !isPagingEnabled || viewModel.cards.isEmpty
     }
-
+    
     private func resetCollectionViewLayout() {
         collectionViewLayout.itemSize = calculateItemSize()
         collectionViewHeightConstraint.constant = collectionViewHeight
     }
-
+    
     private func calculateItemSize() -> CGSize {
         let cellWidth = NeighborhoodProfileView.cellWidth
         let cellHeights = viewModel.cards.map({ height(forCard: $0, width: cellWidth) })
-
+        
         return CGSize(
             width: cellWidth,
             height: cellHeights.max() ?? NeighborhoodProfileView.minimumCellHeight
         )
     }
-
+    
     private func collectionViewHeight(forItemHeight itemHeight: CGFloat) -> CGFloat {
         return itemHeight + collectionView.verticalContentInsets
     }
-
+    
     private func height(forCard card: NeighborhoodProfileViewModel.Card, width: CGFloat) -> CGFloat {
         switch card {
         case let .info(content, rows):
@@ -208,13 +264,13 @@ public final class NeighborhoodProfileView: UIView {
             return NeighborhoodProfileButtonViewCell.height(forContent: content, width: width)
         }
     }
-
+    
     // MARK: - Actions
-
+    
     @objc private func handlePageControlValueChange() {
         let indexPath = IndexPath(item: pageControl.currentPage, section: 0)
         let reachedEnd = pageControl.currentPage == viewModel.cards.count - 1
-
+        
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         delegate?.neighborhoodProfileViewDidScroll(self, reachedEnd: reachedEnd)
     }
@@ -226,14 +282,14 @@ extension NeighborhoodProfileView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.cards.count
     }
-
+    
     public func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         let reusableCell: UICollectionViewCell
         let card = viewModel.cards[indexPath.item]
-
+        
         switch card {
         case let .info(content, rows):
             let cell = collectionView.dequeue(NeighborhoodProfileInfoViewCell.self, for: indexPath)
@@ -246,7 +302,7 @@ extension NeighborhoodProfileView: UICollectionViewDataSource {
             cell.configure(withContent: content)
             reusableCell = cell
         }
-
+        
         return reusableCell
     }
 }
@@ -261,14 +317,14 @@ extension NeighborhoodProfileView: UICollectionViewDelegate {
     ) {
         let targetOffsetX = targetContentOffset.pointee.x
         let center = CGPoint(x: targetOffsetX + scrollView.frame.midX, y: scrollView.frame.midY)
-
+        
         if let indexPath = collectionView.indexPathForItem(at: center) {
             pageControl.currentPage = indexPath.row
         }
-
+        
         let rightOffset = scrollView.horizontalRightOffset - .spacingM
         let reachedEnd = targetOffsetX >= rightOffset
-
+        
         delegate?.neighborhoodProfileViewDidScroll(self, reachedEnd: reachedEnd)
     }
 }
@@ -308,22 +364,22 @@ private final class PagingCollectionViewLayout: UICollectionViewFlowLayout {
         guard let bounds = collectionView?.bounds, let layoutAttributes = layoutAttributesForElements(in: bounds) else {
             return super.targetContentOffset(forProposedContentOffset: proposedContentOffset)
         }
-
+        
         let halfWidth = bounds.size.width / 2
         let proposedContentOffsetCenterX = proposedContentOffset.x + halfWidth
         var targetContentOffset = proposedContentOffset
-
+        
         for attributes in layoutAttributes where attributes.representedElementCategory == .cell {
             let currentX = attributes.center.x - proposedContentOffsetCenterX
             let targetX = targetContentOffset.x - proposedContentOffsetCenterX
-
+            
             if abs(currentX) < abs(targetX) {
                 targetContentOffset.x = attributes.center.x
             }
         }
-
+        
         targetContentOffset.x -= halfWidth
-
+        
         return targetContentOffset
     }
 }

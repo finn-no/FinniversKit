@@ -133,7 +133,8 @@ private extension NeighborhoodProfileViewModel {
                         icon: UIImage(named: .npHouseWeather)
                     )
                 ),
-            ]
+            ],
+            banner: Banner(name: "Lol", link: nil)
         )
     }
 }
