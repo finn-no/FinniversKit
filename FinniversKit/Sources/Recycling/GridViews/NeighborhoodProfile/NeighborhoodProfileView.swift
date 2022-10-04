@@ -25,15 +25,28 @@ public final class NeighborhoodProfileView: UIView {
     private lazy var bannerContainerView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .red
+        view.frame.size.height = 30
+        view.frame.size.width = 200
+        
         return view
     }()
     
-    private lazy var stackView: UIStackView = {
-        let stack = UIStackView()
+    private lazy var headerContainerView: UIStackView = {
+        let stack = UIStackView(withAutoLayout: true)
+        stack.axis = .horizontal
+        stack.isLayoutMarginsRelativeArrangement = true
+        stack.directionalLayoutMargins = NSDirectionalEdgeInsets(vertical: 0, horizontal: .spacingM)
+        
+        return stack
+    }()
+    
+    private lazy var containerStackView: UIStackView = {
+        let stack = UIStackView(withAutoLayout: true)
         stack.axis = .vertical
-        stack.spacing = .spacingM
+        stack.spacing = .spacingS
         stack.alignment = .fill
-        // stack.distribution = .fillEqually
+        
+        // stack.backgroundColor = .red
         return stack
     }()
     
@@ -126,9 +139,11 @@ public final class NeighborhoodProfileView: UIView {
         
         // Check for banner -> addSubview
         // Adjust height?
-        if viewModel.banner != nil {
-            
-        }
+//        if viewModel.banner != nil {
+//            setupBanner()
+//            collectionView.heightAnchor.constraint(equalToConstant: collectionViewHeight + 300).isActive = true
+//            layoutIfNeeded()
+//        }
     }
     
     // MARK: - Overrides
@@ -170,18 +185,30 @@ public final class NeighborhoodProfileView: UIView {
         print("--- setup()")
         backgroundColor = .bgSecondary
         
-        addSubview(headerView)
-        addSubview(collectionView)
+        headerContainerView.addArrangedSubview(headerView)
+        containerStackView.addArrangedSubviews([headerContainerView, collectionView])
         
         if isPagingEnabled {
-            addSubview(pageControl)
+            containerStackView.addArrangedSubview(pageControl)
         }
         
-        if hasBanner {
-            addSubview(bannerContainerView)
-        }
+        addSubview(containerStackView)
+        
+//        if hasBanner {
+//            addSubview(bannerContainerView)
+//        }
+        
+        var containerHeightConstraint = containerStackView.heightAnchor.constraint(equalToConstant: 350)
         
         var constraints = [
+            containerStackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            containerStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM),
+            containerStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            containerStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionViewHeightConstraint,
+        ]
+        
+        var _ = [
             headerView.topAnchor.constraint(equalTo: topAnchor, constant: NeighborhoodProfileView.headerSpacingTop),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
@@ -190,45 +217,63 @@ public final class NeighborhoodProfileView: UIView {
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionViewHeightConstraint,
+            
+            containerStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            containerStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            // stackView.heightAnchor.constraint(equalToConstant: 50),
+            
+            bottomAnchor.constraint(equalTo: containerStackView.bottomAnchor, constant: .spacingM)
         ]
         
-        if isPagingEnabled {
-            // Set base constraints for paging
-            constraints.append(contentsOf: [
-                pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
-                pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
-            ])
-            
-            if !hasBanner {
-                constraints.append(contentsOf: [
-                    bottomAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: .spacingS)
-                ])
-            }
-        }
+//        if isPagingEnabled {
+//            constraints.append(contentsOf: [
+//                pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
+//                pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
+//                containerStackView.topAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: .spacingM),
+//            ])
+//        } else {
+//            constraints.append(
+//                containerStackView.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingM)
+//            )
+//        }
         
-        if hasBanner {
-            constraints.append(contentsOf: [
-                bannerContainerView.topAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: .spacingM),
-                bannerContainerView.centerXAnchor.constraint(equalTo: centerXAnchor),
-                bannerContainerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-                bannerContainerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-                
-                bannerContainerView.heightAnchor.constraint(equalToConstant: 60),
-                bottomAnchor.constraint(equalTo: bannerContainerView.bottomAnchor, constant: .spacingS)
-            ])
-        }
+//        if isPagingEnabled   {
+//            // Set base constraints for paging
+//            constraints.append(contentsOf: [
+//                pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
+//                pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
+//                bottomAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: .spacingM)
+//            ])
+//        } else {
+//            constraints.append(
+//                bottomAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingM)
+//            )
+//        }
         
-        if !isPagingEnabled && !hasBanner {
-            constraints.append(
-                bottomAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingM)
-            )
-        }
+//        if hasBanner {
+//            constraints.append(contentsOf: [
+//                bannerContainerView.topAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: .spacingM),
+//                bannerContainerView.centerXAnchor.constraint(equalTo: centerXAnchor),
+//                bannerContainerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+//                bannerContainerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+//
+//                bannerContainerView.heightAnchor.constraint(equalToConstant: 60),
+//                bottomAnchor.constraint(equalTo: bannerContainerView.bottomAnchor, constant: .spacingS)
+//            ])
+//        }
+        
+//        if !isPagingEnabled && !hasBanner {
+//            constraints.append(
+//                bottomAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingM)
+//            )
+//        }
         
         NSLayoutConstraint.activate(constraints)
     }
     
     private func setupBanner() {
-        
+        print("--- setupBanner()")
+        containerStackView.addSubview(bannerContainerView)
     }
     
     private func resetPageControl() {
