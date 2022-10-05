@@ -25,11 +25,11 @@ extension NeighborhoodProfileViewModel {
     }
     
     public struct Banner {
-        public let name: String
-        public let link: Link?
+        public let text: String
+        public let link: Link
     
-        public init(name: String, link: Link? = nil) {
-            self.name = name
+        public init(text: String, link: Link) {
+            self.text = text
             self.link = link
         }
     }

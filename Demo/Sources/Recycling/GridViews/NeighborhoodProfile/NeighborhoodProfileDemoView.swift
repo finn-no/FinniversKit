@@ -134,7 +134,7 @@ private extension NeighborhoodProfileViewModel {
                     )
                 ),
             ],
-            banner: Banner(name: "Lol", link: nil)
+            banner: Banner(text: "Lurer du på hvor langt det er fra <strong>Leirvegen 127</strong> til der du bor, Dyreparken eller Nordkapp?", link: Link(title: "Se reisetider", url: URL(string: "https://profil.nabolag.no/135365605/reisetid?&utm_source=finn.no/web&utm_medium=travel-fhh&utm_campaign=HP&utm_term=fwa-DEV&utm_content=travelTimeBanner")))
         )
     }
 }
