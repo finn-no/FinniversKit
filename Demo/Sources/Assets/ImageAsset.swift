@@ -122,6 +122,7 @@ enum ImageAsset: String {
     case service
     case shopping
     case sold
+    case torgetHelthjem
     case transactionJourneyCar
     case travel
     case travelNew
@@ -223,6 +224,7 @@ enum ImageAsset: String {
             .service,
             .shopping,
             .sold,
+            .torgetHelthjem,
             .transactionJourneyCar,
             .travel,
             .travelNew,
