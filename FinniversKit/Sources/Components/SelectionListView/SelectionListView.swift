@@ -20,6 +20,14 @@ public class SelectionListView: UIView {
         itemViews.contains(where: { $0.isSelected })
     }
 
+    public var selectedItems: [(index: Int, identifier: String?)] {
+        itemViews.enumerated().compactMap { index, itemView in
+            guard itemView.isSelected else { return nil }
+
+            return (index: index, identifier: itemView.model.identifier)
+        }
+    }
+    
     public override var intrinsicContentSize: CGSize {
         stackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
     }

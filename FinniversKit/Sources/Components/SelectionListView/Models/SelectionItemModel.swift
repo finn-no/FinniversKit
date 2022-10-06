@@ -1,10 +1,11 @@
 import Foundation
+import UIKit
 
 public struct SelectionItemModel {
     public let identifier: String?
     public let title: String
     public let description: Description
-    public let icon: UIImage
+    public let icon: Icon
     public let detailItems: [String]?
     public let isInitiallySelected: Bool
 
@@ -12,7 +13,7 @@ public struct SelectionItemModel {
         identifier: String?,
         title: String,
         description: Description,
-        icon: UIImage,
+        icon: Icon,
         detailItems: [String]? = nil,
         isInitiallySelected: Bool
     ) {
@@ -26,6 +27,19 @@ public struct SelectionItemModel {
 
     public enum Description {
         case plain(String)
-        case attributed(NSAttributedString)
+        case html(htmlString: String, style: HTMLStyler.StyleMap = [:], accessibilityString: String? = nil)
+    }
+
+    public enum Icon {
+        case fixedSize(UIImage)
+        case dynamic(UIImage)
+
+        var image: UIImage {
+            switch self {
+            case .fixedSize(let image),
+                    .dynamic(let image):
+                return image
+            }
+        }
     }
 }

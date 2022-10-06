@@ -18,6 +18,9 @@ class SelectionListCheckboxDemoView: UIView, Tweakable {
         .init(title: "5 items", action: { [weak self] in
             self?.checkmarkListView.configure(with: .create(number: 5))
         }),
+        .init(title: "3 items with HTML", action: { [weak self] in
+            self?.checkmarkListView.configure(with: .createWithHTML(number: 3))
+        }),
     ]
 
     // MARK: - Private properties
@@ -69,9 +72,29 @@ private extension Array where Element == SelectionItemModel {
                 identifier: "item-\($0)",
                 title: "Jeg kan overlevere ved oppmøte",
                 description: .plain("Du og kjøper gjør en egen avtale"),
-                icon: UIImage(named: .favoriteActive).withRenderingMode(.alwaysTemplate),
+                icon: .fixedSize(UIImage(named: .favoriteActive).withRenderingMode(.alwaysTemplate)),
                 detailItems: includeDetailItems ? Self.detailItems : nil,
                 isInitiallySelected: $0 == 0
+            )
+        }
+    }
+
+    static func createWithHTML(number: Int) -> [SelectionItemModel] {
+        (0..<number).map {
+            let htmlString = "Kjøper betaler <del>80</del> <b><span style=\"color:tjt-price-highlight\">40 kr</span></b> for frakt."
+            let style: HTMLStyler.StyleMap = [
+                HTMLStyler.StyleKey("tjt-price-highlight"): UIColor.dynamicColor(defaultColor: .red, darkModeColor: .yellow)
+            ]
+            let accessibilityString = "Kjøper betaler 40 kroner for frakt. Dette er en tilbudspris og koster 80 kroner til vanlig."
+            return SelectionItemModel(
+                identifier: "item-\($0)",
+                title: "Helthjem",
+                description: .html(
+                    htmlString: htmlString,
+                    style: style,
+                    accessibilityString: accessibilityString),
+                icon: .dynamic(UIImage(named: .torgetHelthjem)),
+                isInitiallySelected: true
             )
         }
     }
