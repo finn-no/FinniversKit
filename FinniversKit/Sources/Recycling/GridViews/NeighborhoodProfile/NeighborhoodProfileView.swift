@@ -24,9 +24,7 @@ public final class NeighborhoodProfileView: UIView {
     
     private lazy var bannerView: NeighborhoodProfileBannerView = {
         let view = NeighborhoodProfileBannerView(withAutoLayout: true)
-        view.frame.size.height = 30
-        view.frame.size.width = 200
-        
+        view.delegate = self
         return view
     }()
     
@@ -44,8 +42,6 @@ public final class NeighborhoodProfileView: UIView {
         stack.axis = .vertical
         stack.spacing = .spacingS
         stack.alignment = .fill
-        
-        // stack.backgroundColor = .red
         return stack
     }()
     
@@ -106,11 +102,6 @@ public final class NeighborhoodProfileView: UIView {
         return UIDevice.isIPhone()
     }
     
-    private var hasBanner: Bool {
-        return true
-        // return viewModel.banner != nil
-    }
-    
     private var containerHeightConstraint: NSLayoutConstraint?
     
     // MARK: - Init
@@ -132,17 +123,13 @@ public final class NeighborhoodProfileView: UIView {
         
         headerView.title = viewModel.title
         headerView.buttonTitle = viewModel.readMoreLink?.title ?? ""
-        print("--- configure - banner: \(String(describing: viewModel.banner))")
         
         resetPageControl()
         resetCollectionViewLayout()
         collectionView.reloadData()
         
-        // Check for banner -> addSubview
-        // Adjust height?
         if let banner = viewModel.banner {
             setupBanner(with: banner)
-            // collectionView.heightAnchor.constraint(equalToConstant: collectionViewHeight + 300).isActive = true
         }
     }
     
@@ -227,11 +214,9 @@ public final class NeighborhoodProfileView: UIView {
     }
     
     private func setupBanner(with banner: NeighborhoodProfileViewModel.Banner) {
-        print("--- setupBanner()")
         bannerView.text = banner.text
         bannerView.buttonText = banner.link.title
         containerStackView.addArrangedSubview(centeredContainerView(with: [bannerView]))
-        // containerHeightConstraint?.isActive = true
         invalidateIntrinsicContentSize()
         layoutIfNeeded()
     }
@@ -339,6 +324,14 @@ extension NeighborhoodProfileView: UICollectionViewDelegate {
 extension NeighborhoodProfileView: NeighborhoodProfileHeaderViewDelegate {
     func neighborhoodProfileHeaderViewDidSelectButton(_ view: NeighborhoodProfileHeaderView) {
         delegate?.neighborhoodProfileView(self, didSelectUrl: viewModel.readMoreLink?.url)
+    }
+}
+
+// MARK: - NeighborhoodProfileBannerViewDelegate
+
+extension NeighborhoodProfileView: NeighborhoodProfileBannerViewDelegate {
+    func neighborhoodProfileBannerDidSelectButton(_ view: NeighborhoodProfileBannerView) {
+        delegate?.neighborhoodProfileView(self, didSelectUrl: viewModel.banner?.link.url)
     }
 }
 

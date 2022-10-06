@@ -5,7 +5,7 @@
 import UIKit
 
 protocol NeighborhoodProfileBannerViewDelegate: AnyObject {
-    func neighborhoodProfileHeaderViewDidSelectButton(_ view: NeighborhoodProfileHeaderView)
+    func neighborhoodProfileBannerDidSelectButton(_ view: NeighborhoodProfileBannerView)
 }
 
 final class NeighborhoodProfileBannerView: UIView {
@@ -17,11 +17,16 @@ final class NeighborhoodProfileBannerView: UIView {
 
     // MARK: - Internal properties
 
-    var text = "Lurer du på hvor langt det er til et sted som kanskje selger pizza?" {
-        didSet { textLabel.setText(fromHTMLString: text) }
+    weak var delegate: NeighborhoodProfileBannerViewDelegate?
+    
+    var text = "" {
+        didSet {
+            textLabel.setHTMLText(text)
+            textLabel.textAlignment = .center
+        }
     }
     
-    var buttonText = "Se reisetider" {
+    var buttonText = "" {
         didSet { button.setTitle(buttonText, for: .normal) }
     }
     
@@ -43,17 +48,18 @@ final class NeighborhoodProfileBannerView: UIView {
         return stack
     }()
     
-    private lazy var textLabel: Label = {
-        let label = Label(style: .body, withAutoLayout: true)
-        label.setText(fromHTMLString: text)
-        label.textAlignment = .center
+    private lazy var textLabel: HTMLLabel = {
+        let label = HTMLLabel(style: .body, withAutoLayout: true)
+        label.setHTMLText(text)
         label.numberOfLines = 0
+        label.textAlignment = .center
         return label
     }()
     
     private lazy var button: Button = {
         let button = Button(style: .default, size: .normal, withAutoLayout: true)
         button.setTitle(buttonText, for: .normal)
+        button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
         return button
     }()
 
@@ -82,5 +88,11 @@ final class NeighborhoodProfileBannerView: UIView {
             containerStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
             containerStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
+    }
+    
+    // MARK: - Actions
+
+    @objc private func handleButtonTap() {
+        delegate?.neighborhoodProfileBannerDidSelectButton(self)
     }
 }
