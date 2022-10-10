@@ -101,9 +101,7 @@ public final class NeighborhoodProfileView: UIView {
     private var isPagingEnabled: Bool {
         return UIDevice.isIPhone()
     }
-    
-    private var containerHeightConstraint: NSLayoutConstraint?
-    
+        
     // MARK: - Init
     
     public override init(frame: CGRect) {
@@ -132,84 +130,28 @@ public final class NeighborhoodProfileView: UIView {
             setupBanner(with: banner)
         }
     }
-    
-    // MARK: - Overrides
-    
-    // This override exists because of how we calculate view sizes in our objectPage.
-    // The objectPage needs to know the size of this view before it's added to the view hierarchy, aka. before
-    // the collectionView itself knows it's own contentSize, so we need to calculate the total height of the view manually.
-    //
-    // All we're given to answer this question is the width attribute in `targetSize`.
-    //
-    // This implementation may not work for any place other than the objectPage, because:
-    //   - it assumes `targetSize` contains an accurate targetWidth for this view.
-    //   - it ignores any potential targetHeight.
-    //   - it ignores both horizontal and vertical fitting priority.
-    public override func systemLayoutSizeFitting(
-        _ targetSize: CGSize,
-        withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
-        verticalFittingPriority: UILayoutPriority
-    ) -> CGSize {
-        var height = NeighborhoodProfileView.headerSpacingTop
-        height += NeighborhoodProfileHeaderView.height(forTitle: viewModel.title, width: targetSize.width)
-        height += .spacingS + collectionViewHeight(forItemHeight: calculateItemSize().height)
-        
-        if isPagingEnabled {
-            height += pageControl.intrinsicContentSize.height + .spacingS
-        } else {
-            height += .spacingM
-        }
-        
-        return CGSize(
-            width: targetSize.width,
-            height: height
-        )
-    }
-    
+
     // MARK: - Setup
     
     private func setup() {
-        print("--- setup()")
         backgroundColor = .bgSecondary
-        
-        
+
         containerStackView.addArrangedSubviews([centeredContainerView(with: [headerView]), collectionView])
         
         if isPagingEnabled {
             containerStackView.addArrangedSubview(pageControl)
-            containerStackView.setCustomSpacing(.spacingM, after: pageControl)
         }
-        
+
         addSubview(containerStackView)
-        
-        containerHeightConstraint = containerStackView.heightAnchor.constraint(equalToConstant: 350)
-        
+
         let constraints = [
             containerStackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
             containerStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM),
             containerStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             containerStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionViewHeightConstraint,
-            // containerHeightConstraint!
         ]
-        
-        var _ = [
-            headerView.topAnchor.constraint(equalTo: topAnchor, constant: NeighborhoodProfileView.headerSpacingTop),
-            headerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            headerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-            
-            collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: .spacingS),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionViewHeightConstraint,
-            
-            containerStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            containerStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-            // stackView.heightAnchor.constraint(equalToConstant: 50),
-            
-            bottomAnchor.constraint(equalTo: containerStackView.bottomAnchor, constant: .spacingM)
-        ]
-        
+
         NSLayoutConstraint.activate(constraints)
     }
     

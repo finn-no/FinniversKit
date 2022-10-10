@@ -41,7 +41,6 @@ final class NeighborhoodProfileBannerView: UIView {
         stack.layer.masksToBounds = true
         stack.axis = .vertical
         stack.spacing = .spacingM
-        stack.alignment = .fill
         stack.backgroundColor = .bgPrimary
         stack.directionalLayoutMargins = NSDirectionalEdgeInsets(all: .spacingM)
         stack.isLayoutMarginsRelativeArrangement = true
@@ -81,13 +80,7 @@ final class NeighborhoodProfileBannerView: UIView {
     private func setup() {
         containerStackView.addArrangedSubviews([textLabel, button])
         addSubview(containerStackView)
-
-        NSLayoutConstraint.activate([
-            containerStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            containerStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            containerStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            containerStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-        ])
+        containerStackView.fillInSuperview()
     }
     
     // MARK: - Actions
