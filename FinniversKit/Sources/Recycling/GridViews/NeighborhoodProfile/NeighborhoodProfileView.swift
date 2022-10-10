@@ -13,21 +13,21 @@ public final class NeighborhoodProfileView: UIView {
     private static let headerSpacingTop: CGFloat = 24
     private static let cellWidth: CGFloat = 204
     private static var minimumCellHeight: CGFloat { return cellWidth }
-    
+
     // MARK: - Public properties
-    
+
     public weak var delegate: NeighborhoodProfileViewDelegate?
-    
+
     // MARK: - Private properties
-    
+
     private var viewModel = NeighborhoodProfileViewModel(title: "", readMoreLink: nil, cards: [], banner: nil)
-    
+
     private lazy var bannerView: NeighborhoodProfileBannerView = {
         let view = NeighborhoodProfileBannerView(withAutoLayout: true)
         view.delegate = self
         return view
     }()
-    
+
     private func centeredContainerView(with views: [UIView]) -> UIStackView {
         let stack = UIStackView(withAutoLayout: true)
         stack.axis = .horizontal
@@ -36,7 +36,7 @@ public final class NeighborhoodProfileView: UIView {
         stack.addArrangedSubviews(views)
         return stack
     }
-    
+
     private lazy var containerStackView: UIStackView = {
         let stack = UIStackView(withAutoLayout: true)
         stack.axis = .vertical
@@ -44,13 +44,13 @@ public final class NeighborhoodProfileView: UIView {
         stack.alignment = .fill
         return stack
     }()
-    
+
     private lazy var headerView: NeighborhoodProfileHeaderView = {
         let view = NeighborhoodProfileHeaderView(withAutoLayout: true)
         view.delegate = self
         return view
     }()
-    
+
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -69,7 +69,7 @@ public final class NeighborhoodProfileView: UIView {
         collectionView.register(NeighborhoodProfileButtonViewCell.self)
         return collectionView
     }()
-    
+
     private lazy var collectionViewLayout: UICollectionViewFlowLayout = {
         let layout = isPagingEnabled ? PagingCollectionViewLayout() : UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -81,7 +81,7 @@ public final class NeighborhoodProfileView: UIView {
         )
         return layout
     }()
-    
+
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl(withAutoLayout: true)
         pageControl.pageIndicatorTintColor = UIColor.btnPrimary.withAlphaComponent(0.2)
@@ -89,55 +89,55 @@ public final class NeighborhoodProfileView: UIView {
         pageControl.addTarget(self, action: #selector(handlePageControlValueChange), for: .valueChanged)
         return pageControl
     }()
-    
+
     private lazy var collectionViewHeightConstraint: NSLayoutConstraint = {
         return collectionView.heightAnchor.constraint(equalToConstant: collectionViewHeight)
     }()
-    
+
     private var collectionViewHeight: CGFloat {
         return collectionViewHeight(forItemHeight: collectionViewLayout.itemSize.height)
     }
-    
+
     private var isPagingEnabled: Bool {
         return UIDevice.isIPhone()
     }
-        
+
     // MARK: - Init
-    
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
-    
+
     // MARK: - Public
-    
+
     public func configure(with viewModel: NeighborhoodProfileViewModel) {
         self.viewModel = viewModel
-        
+
         headerView.title = viewModel.title
         headerView.buttonTitle = viewModel.readMoreLink?.title ?? ""
-        
+
         resetPageControl()
         resetCollectionViewLayout()
         collectionView.reloadData()
-        
+
         if let banner = viewModel.banner {
             setupBanner(with: banner)
         }
     }
 
     // MARK: - Setup
-    
+
     private func setup() {
         backgroundColor = .bgSecondary
 
         containerStackView.addArrangedSubviews([centeredContainerView(with: [headerView]), collectionView])
-        
+
         if isPagingEnabled {
             containerStackView.addArrangedSubview(pageControl)
         }
@@ -154,7 +154,7 @@ public final class NeighborhoodProfileView: UIView {
 
         NSLayoutConstraint.activate(constraints)
     }
-    
+
     private func setupBanner(with banner: NeighborhoodProfileViewModel.Banner) {
         bannerView.text = banner.text
         bannerView.buttonText = banner.link.title
@@ -163,32 +163,32 @@ public final class NeighborhoodProfileView: UIView {
             containerStackView.addArrangedSubview(centeredContainerView(with: [bannerView]))
         }
     }
-    
+
     private func resetPageControl() {
         pageControl.numberOfPages = viewModel.cards.count
         pageControl.currentPage = 0
         pageControl.isHidden = !isPagingEnabled || viewModel.cards.isEmpty
     }
-    
+
     private func resetCollectionViewLayout() {
         collectionViewLayout.itemSize = calculateItemSize()
         collectionViewHeightConstraint.constant = collectionViewHeight
     }
-    
+
     private func calculateItemSize() -> CGSize {
         let cellWidth = NeighborhoodProfileView.cellWidth
         let cellHeights = viewModel.cards.map({ height(forCard: $0, width: cellWidth) })
-        
+
         return CGSize(
             width: cellWidth,
             height: cellHeights.max() ?? NeighborhoodProfileView.minimumCellHeight
         )
     }
-    
+
     private func collectionViewHeight(forItemHeight itemHeight: CGFloat) -> CGFloat {
         return itemHeight + collectionView.verticalContentInsets
     }
-    
+
     private func height(forCard card: NeighborhoodProfileViewModel.Card, width: CGFloat) -> CGFloat {
         switch card {
         case let .info(content, rows):
@@ -197,13 +197,13 @@ public final class NeighborhoodProfileView: UIView {
             return NeighborhoodProfileButtonViewCell.height(forContent: content, width: width)
         }
     }
-    
+
     // MARK: - Actions
-    
+
     @objc private func handlePageControlValueChange() {
         let indexPath = IndexPath(item: pageControl.currentPage, section: 0)
         let reachedEnd = pageControl.currentPage == viewModel.cards.count - 1
-        
+
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         delegate?.neighborhoodProfileViewDidScroll(self, reachedEnd: reachedEnd)
     }
@@ -215,14 +215,14 @@ extension NeighborhoodProfileView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.cards.count
     }
-    
+
     public func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         let reusableCell: UICollectionViewCell
         let card = viewModel.cards[indexPath.item]
-        
+
         switch card {
         case let .info(content, rows):
             let cell = collectionView.dequeue(NeighborhoodProfileInfoViewCell.self, for: indexPath)
@@ -235,7 +235,7 @@ extension NeighborhoodProfileView: UICollectionViewDataSource {
             cell.configure(withContent: content)
             reusableCell = cell
         }
-        
+
         return reusableCell
     }
 }
@@ -250,14 +250,14 @@ extension NeighborhoodProfileView: UICollectionViewDelegate {
     ) {
         let targetOffsetX = targetContentOffset.pointee.x
         let center = CGPoint(x: targetOffsetX + scrollView.frame.midX, y: scrollView.frame.midY)
-        
+
         if let indexPath = collectionView.indexPathForItem(at: center) {
             pageControl.currentPage = indexPath.row
         }
-        
+
         let rightOffset = scrollView.horizontalRightOffset - .spacingM
         let reachedEnd = targetOffsetX >= rightOffset
-        
+
         delegate?.neighborhoodProfileViewDidScroll(self, reachedEnd: reachedEnd)
     }
 }
@@ -305,22 +305,22 @@ private final class PagingCollectionViewLayout: UICollectionViewFlowLayout {
         guard let bounds = collectionView?.bounds, let layoutAttributes = layoutAttributesForElements(in: bounds) else {
             return super.targetContentOffset(forProposedContentOffset: proposedContentOffset)
         }
-        
+
         let halfWidth = bounds.size.width / 2
         let proposedContentOffsetCenterX = proposedContentOffset.x + halfWidth
         var targetContentOffset = proposedContentOffset
-        
+
         for attributes in layoutAttributes where attributes.representedElementCategory == .cell {
             let currentX = attributes.center.x - proposedContentOffsetCenterX
             let targetX = targetContentOffset.x - proposedContentOffsetCenterX
-            
+
             if abs(currentX) < abs(targetX) {
                 targetContentOffset.x = attributes.center.x
             }
         }
-        
+
         targetContentOffset.x -= halfWidth
-        
+
         return targetContentOffset
     }
 }
@@ -338,3 +338,4 @@ private extension UIScrollView {
         return contentSize.width - bounds.width
     }
 }
+
