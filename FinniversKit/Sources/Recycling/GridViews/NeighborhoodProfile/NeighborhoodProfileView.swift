@@ -158,9 +158,10 @@ public final class NeighborhoodProfileView: UIView {
     private func setupBanner(with banner: NeighborhoodProfileViewModel.Banner) {
         bannerView.text = banner.text
         bannerView.buttonText = banner.link.title
-        containerStackView.addArrangedSubview(centeredContainerView(with: [bannerView]))
-        invalidateIntrinsicContentSize()
-        layoutIfNeeded()
+        if !bannerView.isDescendant(of: containerStackView) {
+            containerStackView.setCustomSpacing(.spacingM, after: pageControl)
+            containerStackView.addArrangedSubview(centeredContainerView(with: [bannerView]))
+        }
     }
     
     private func resetPageControl() {
