@@ -13,7 +13,7 @@ final class NeighborhoodProfileBannerView: UIView {
     var text = "" {
         didSet {
             textLabel.setHTMLText(text)
-            textLabel.textAlignment = .center
+            // textLabel.textAlignment = .center
         }
     }
     
@@ -25,13 +25,11 @@ final class NeighborhoodProfileBannerView: UIView {
     // MARK: - Private properties
     
     private lazy var containerStackView: UIStackView = {
-        let stack = UIStackView(withAutoLayout: true)
+        let stack = UIStackView(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
         stack.layer.borderWidth = 1
         stack.layer.borderColor = .imageBorder
         stack.layer.cornerRadius = .spacingS
         stack.layer.masksToBounds = true
-        stack.axis = .vertical
-        stack.spacing = .spacingM
         stack.backgroundColor = .bgPrimary
         stack.directionalLayoutMargins = NSDirectionalEdgeInsets(all: .spacingM)
         stack.isLayoutMarginsRelativeArrangement = true
@@ -40,9 +38,7 @@ final class NeighborhoodProfileBannerView: UIView {
     
     private lazy var textLabel: HTMLLabel = {
         let label = HTMLLabel(style: .body, withAutoLayout: true)
-        label.setHTMLText(text)
         label.numberOfLines = 0
-        label.textAlignment = .center
         return label
     }()
     

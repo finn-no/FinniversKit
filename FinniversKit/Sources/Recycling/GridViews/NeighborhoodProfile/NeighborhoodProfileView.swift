@@ -28,22 +28,15 @@ public final class NeighborhoodProfileView: UIView {
         return view
     }()
 
-    private func centeredContainerView(with views: [UIView]) -> UIStackView {
-        let stack = UIStackView(withAutoLayout: true)
-        stack.axis = .horizontal
+    private func getCenteredContainerView(with views: [UIView]) -> UIStackView {
+        let stack = UIStackView(axis: .horizontal, withAutoLayout: true)
         stack.isLayoutMarginsRelativeArrangement = true
         stack.directionalLayoutMargins = NSDirectionalEdgeInsets(vertical: 0, horizontal: .spacingM)
         stack.addArrangedSubviews(views)
         return stack
     }
 
-    private lazy var containerStackView: UIStackView = {
-        let stack = UIStackView(withAutoLayout: true)
-        stack.axis = .vertical
-        stack.spacing = .spacingS
-        stack.alignment = .fill
-        return stack
-    }()
+    private lazy var containerStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
 
     private lazy var headerView: NeighborhoodProfileHeaderView = {
         let view = NeighborhoodProfileHeaderView(withAutoLayout: true)
@@ -127,7 +120,13 @@ public final class NeighborhoodProfileView: UIView {
         collectionView.reloadData()
 
         if let banner = viewModel.banner {
-            setupBanner(with: banner)
+            bannerView.text = banner.text
+            bannerView.buttonText = banner.link.title
+            bannerView.isHidden = false
+            containerStackView.setCustomSpacing(.spacingM, after: pageControl)
+        } else {
+            bannerView.isHidden = true
+            containerStackView.setCustomSpacing(.spacingS, after: pageControl)
         }
     }
 
@@ -136,32 +135,23 @@ public final class NeighborhoodProfileView: UIView {
     private func setup() {
         backgroundColor = .bgSecondary
 
-        containerStackView.addArrangedSubviews([centeredContainerView(with: [headerView]), collectionView])
+        containerStackView.addArrangedSubviews([getCenteredContainerView(with: [headerView]), collectionView])
 
         if isPagingEnabled {
             containerStackView.addArrangedSubview(pageControl)
         }
 
+        containerStackView.addArrangedSubview(getCenteredContainerView(with: [bannerView]))
+
         addSubview(containerStackView)
 
-        let constraints = [
+        NSLayoutConstraint.activate([
             containerStackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
             containerStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM),
             containerStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             containerStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionViewHeightConstraint,
-        ]
-
-        NSLayoutConstraint.activate(constraints)
-    }
-
-    private func setupBanner(with banner: NeighborhoodProfileViewModel.Banner) {
-        bannerView.text = banner.text
-        bannerView.buttonText = banner.link.title
-        if !bannerView.isDescendant(of: containerStackView) {
-            containerStackView.setCustomSpacing(.spacingM, after: pageControl)
-            containerStackView.addArrangedSubview(centeredContainerView(with: [bannerView]))
-        }
+        ])
     }
 
     private func resetPageControl() {
