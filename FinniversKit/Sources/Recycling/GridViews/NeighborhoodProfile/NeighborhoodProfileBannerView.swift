@@ -1,7 +1,3 @@
-//
-//  Copyright © FINN.no AS, Inc. All rights reserved.
-//
-
 import UIKit
 
 protocol NeighborhoodProfileBannerViewDelegate: AnyObject {
@@ -9,11 +5,6 @@ protocol NeighborhoodProfileBannerViewDelegate: AnyObject {
 }
 
 final class NeighborhoodProfileBannerView: UIView {
-//    static func height(forTitle title: String, width: CGFloat) -> CGFloat {
-//        return title.height(withConstrainedWidth: width, font: titleFont)
-//    }
-//
-//    private static let titleFont = UIFont.title3
 
     // MARK: - Internal properties
 
