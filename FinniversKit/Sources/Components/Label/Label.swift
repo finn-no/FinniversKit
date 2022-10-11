@@ -12,11 +12,17 @@ public class Label: UILabel {
 
     // MARK: - Setup
 
-    public init(style: Style, withAutoLayout: Bool = false) {
+    public init(
+        style: Style,
+        numberOfLines: Int = 1,
+        textColor: UIColor = .textPrimary,
+        withAutoLayout: Bool = false
+    ) {
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         self.style = style
-        setup()
+        self.numberOfLines = numberOfLines
+        setup(textColor: textColor)
     }
 
     public override init(frame: CGRect) {
@@ -29,14 +35,14 @@ public class Label: UILabel {
         setup()
     }
 
-    private func setup() {
+    private func setup(textColor: UIColor = .textPrimary) {
         addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:))))
 
         isAccessibilityElement = true
 
         accessibilityLabel = text
         font = style?.font
-        textColor = .textPrimary
+        self.textColor = textColor
         adjustsFontForContentSizeCategory = true
     }
 
