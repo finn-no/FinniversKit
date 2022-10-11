@@ -8,6 +8,7 @@ public class Label: UILabel {
 
     // MARK: - Public properties
 
+    public private(set) var style: Style?
     public private(set) var isTextCopyable = false
 
     // MARK: - Setup
@@ -52,10 +53,6 @@ public class Label: UILabel {
         self.isTextCopyable = isTextCopyable
         isUserInteractionEnabled = isTextCopyable
     }
-
-    // MARK: - Dependency injection
-
-    public private(set) var style: Style?
 }
 
 // MARK: - Copying extension
