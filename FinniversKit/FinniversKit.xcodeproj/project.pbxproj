@@ -153,6 +153,7 @@
 		5B9598E9D9A01E990206AC5A /* SelectionItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9594720BB424FD1F977364 /* SelectionItemModel.swift */; };
 		5B95990406E586D6E278E80E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959BDD757ABA49DA59E345 /* SearchView.swift */; };
 		5B95998ECCE506D6F9931F73 /* MyAdsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959BE24502AA4CA7E15031 /* MyAdsListView.swift */; };
+		5B959B5D8A263039AE2F8FA2 /* MyAdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959E9EB7F73EE0A3F83C7D /* MyAdModel.swift */; };
 		5B959C55077A63EDEA526927 /* MyAdStatisticsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95986193F332689C03C7EC /* MyAdStatisticsItemView.swift */; };
 		5B959F868008E7C5EB3B9EF6 /* SelectionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9599E22AECDDE0750CBD31 /* SelectionListItemView.swift */; };
 		5D0ED35125A49FA7007750D0 /* FinnTextField+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0ED35025A49FA7007750D0 /* FinnTextField+Style.swift */; };
@@ -630,6 +631,7 @@
 		5B959BE24502AA4CA7E15031 /* MyAdsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAdsListView.swift; sourceTree = "<group>"; };
 		5B959CD34FCA1F6EE3802802 /* CheckmarkItemDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkItemDetailView.swift; sourceTree = "<group>"; };
 		5B959E64AAE5D542C2168DC2 /* MultilineButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineButton.swift; sourceTree = "<group>"; };
+		5B959E9EB7F73EE0A3F83C7D /* MyAdModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAdModel.swift; sourceTree = "<group>"; };
 		5B959EECE6039AB80528A566 /* MyAdCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAdCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B959FEBE7613F2F8821B0DB /* AddressComponentPostalFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressComponentPostalFieldView.swift; sourceTree = "<group>"; };
 		5D0ED35025A49FA7007750D0 /* FinnTextField+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextField+Style.swift"; sourceTree = "<group>"; };
@@ -1867,6 +1869,14 @@
 			path = AddressComponentView;
 			sourceTree = "<group>";
 		};
+		5B9592CBF41D664E7D906A4F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5B959E9EB7F73EE0A3F83C7D /* MyAdModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		5B9593DA14ED6A1E0C8FEF84 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1934,6 +1944,7 @@
 			children = (
 				5B959BE24502AA4CA7E15031 /* MyAdsListView.swift */,
 				5B959B1742FF262D27BB1861 /* Subviews */,
+				5B9592CBF41D664E7D906A4F /* Models */,
 			);
 			path = MyAdsList;
 			sourceTree = "<group>";
@@ -3865,6 +3876,7 @@
 				5B95998ECCE506D6F9931F73 /* MyAdsListView.swift in Sources */,
 				5B95970F7E967E7833D876B0 /* MyAdCollectionViewCell.swift in Sources */,
 				5B959C55077A63EDEA526927 /* MyAdStatisticsItemView.swift in Sources */,
+				5B959B5D8A263039AE2F8FA2 /* MyAdModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
