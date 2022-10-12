@@ -22,9 +22,9 @@ public class RibbonView: UIView {
     }
 
     public private(set) lazy var titleLabel: Label = {
-        let label = Label(style: .detail)
+        let label = Label(style: .detail, withAutoLayout: true)
         label.setContentHuggingPriority(.required, for: .vertical)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
         label.textAlignment = .center
         return label
     }()
