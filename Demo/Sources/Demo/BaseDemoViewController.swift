@@ -15,17 +15,17 @@ public enum DismissType {
 }
 
 public struct ContainmentOptions: OptionSet {
-    public let rawValue: Int
+    public let rawValue: Int8
 
-    public init(rawValue: Int) {
+    public init(rawValue: Int8) {
         self.rawValue = rawValue
     }
 
-    public static let navigationController = ContainmentOptions(rawValue: 2 << 0)
-    public static let tabBarController = ContainmentOptions(rawValue: 2 << 1)
-    public static let bottomSheet = ContainmentOptions(rawValue: 2 << 2)
+    public static let navigationController = ContainmentOptions(rawValue: 1)
+    public static let tabBarController = ContainmentOptions(rawValue: 1 << 1)
+    public static let bottomSheet = ContainmentOptions(rawValue: 1 << 2)
+    public static let none = ContainmentOptions(rawValue: 1 << 3)
     public static let all: ContainmentOptions = [.navigationController, .tabBarController, .bottomSheet]
-    public static let none = ContainmentOptions(rawValue: 2 << 3)
 }
 
 /// Defines the container or containers to be used when presenting the demo view controller.
