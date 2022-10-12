@@ -5,6 +5,7 @@ class MyAdCollectionViewCell: UICollectionViewCell {
     // MARK: - Private properties
 
     private let imageWidth: CGFloat = 80
+    private lazy var fallbackImage = UIImage(named: .noImage).withRenderingMode(.alwaysTemplate)
     private lazy var titleLabel = Label(style: .bodyStrong, numberOfLines: 2, withAutoLayout: true)
     private lazy var subtitleLabel = Label(style: .caption, textColor: .textSecondary, withAutoLayout: true)
     private lazy var ribbonView = RibbonView(withAutoLayout: true)
@@ -17,6 +18,8 @@ class MyAdCollectionViewCell: UICollectionViewCell {
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = .spacingS
         imageView.layer.borderWidth = 1 / UIScreen.main.scale
+        imageView.tintColor = .textSecondary
+        imageView.backgroundColor = .bgSecondary
         return imageView
     }()
 
@@ -102,11 +105,12 @@ class MyAdCollectionViewCell: UICollectionViewCell {
     // MARK: - Internal methods
 
     func configure(ad: MyAdModel, remoteImageViewDataSource: RemoteImageViewDataSource?) {
+        remoteImageView.image = fallbackImage
+        remoteImageView.backgroundColor = .bgSecondary
+
         remoteImageView.dataSource = remoteImageViewDataSource
         if let imageUrl = ad.imageUrl {
-            remoteImageView.loadImage(for: imageUrl, imageWidth: imageWidth)
-        } else {
-            // TODO: Insert placeholder.
+            remoteImageView.loadImage(for: imageUrl, imageWidth: imageWidth, loadingColor: .bgSecondary, fallbackImage: fallbackImage)
         }
 
         titleLabel.text = ad.title
