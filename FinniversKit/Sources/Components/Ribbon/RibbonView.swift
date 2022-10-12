@@ -29,12 +29,6 @@ public class RibbonView: UIView {
         return label
     }()
 
-    // MARK: - Internal properties
-
-    private let horisontalMargin: CGFloat = 8
-    private let verticalMargin: CGFloat = 2
-    private let cornerRadius: CGFloat = 8
-
     // MARK: - Init
 
     public convenience init(viewModel: RibbonViewModel) {
@@ -72,7 +66,7 @@ public class RibbonView: UIView {
     // MARK: - Private methods
 
     private func setup() {
-        layer.cornerRadius = cornerRadius
+        layer.cornerRadius = .spacingS
         isAccessibilityElement = true
         backgroundColor = style.color
         titleLabel.textColor = style.textColor
@@ -80,10 +74,10 @@ public class RibbonView: UIView {
         addSubview(titleLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: horisontalMargin),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -horisontalMargin),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -verticalMargin),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: verticalMargin)
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingXXS),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXXS)
         ])
     }
 
