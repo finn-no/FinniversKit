@@ -57,6 +57,10 @@ class DemoViewController<View: UIView>: UIViewController, Containable {
         view.fillInSuperview()
 
         if !TestCheck.isTesting {
+            if let navigationContainable = playgroundView as? NavigationControllerContainable {
+                navigationItem.rightBarButtonItems = navigationContainable.rightBarButtonItems
+            }
+
             let tweakablePlaygroundView = (childViewController?.playgroundView as? Tweakable) ?? (self as? Tweakable)
             let options = tweakablePlaygroundView?.tweakingOptions ?? [TweakingOption]()
             let overlayView = CornerAnchoringView(withAutoLayout: true)
