@@ -145,12 +145,14 @@
 		5B9595BEBD22C6F1A6FC3407 /* AddressComponentFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9596BCBD3F9050EB561242 /* AddressComponentFieldView.swift */; };
 		5B9595D20FAD53976DCA8DDB /* AddressComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95948029F509BB6D6AD19B /* AddressComponentView.swift */; };
 		5B9596721C36A36728C6E6AD /* OverflowCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9594B274D9B8D8390676E7 /* OverflowCollectionView.swift */; };
+		5B95970F7E967E7833D876B0 /* MyAdCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959EECE6039AB80528A566 /* MyAdCollectionViewCell.swift */; };
 		5B959745935CC23FC0F17ACE /* MultilineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959E64AAE5D542C2168DC2 /* MultilineButton.swift */; };
 		5B9597CB5D1F98730290733B /* AddressComponentKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95976F11EFB1EC6E583B15 /* AddressComponentKind.swift */; };
 		5B95982B222AD1B86B3C5880 /* AddressComponentPostalFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959FEBE7613F2F8821B0DB /* AddressComponentPostalFieldView.swift */; };
 		5B9598434FDB0BEC62D2D91D /* OverflowCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959240C94F8A2F44F428F3 /* OverflowCollectionViewCell.swift */; };
 		5B9598E9D9A01E990206AC5A /* SelectionItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9594720BB424FD1F977364 /* SelectionItemModel.swift */; };
 		5B95990406E586D6E278E80E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959BDD757ABA49DA59E345 /* SearchView.swift */; };
+		5B959C55077A63EDEA526927 /* MyAdStatisticsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95986193F332689C03C7EC /* MyAdStatisticsItemView.swift */; };
 		5B959F868008E7C5EB3B9EF6 /* SelectionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9599E22AECDDE0750CBD31 /* SelectionListItemView.swift */; };
 		5D0ED35125A49FA7007750D0 /* FinnTextField+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0ED35025A49FA7007750D0 /* FinnTextField+Style.swift */; };
 		5D0ED35725A49FC9007750D0 /* FinnTextField+Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0ED35625A49FC9007750D0 /* FinnTextField+Input.swift */; };
@@ -620,11 +622,13 @@
 		5B9595BF11C0D7740F6E697F /* SelectionListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionListView.swift; sourceTree = "<group>"; };
 		5B9596BCBD3F9050EB561242 /* AddressComponentFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressComponentFieldView.swift; sourceTree = "<group>"; };
 		5B95976F11EFB1EC6E583B15 /* AddressComponentKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressComponentKind.swift; sourceTree = "<group>"; };
+		5B95986193F332689C03C7EC /* MyAdStatisticsItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAdStatisticsItemView.swift; sourceTree = "<group>"; };
 		5B9599E22AECDDE0750CBD31 /* SelectionListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionListItemView.swift; sourceTree = "<group>"; };
 		5B959B13CCE740691D9EF19C /* ScrollableTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableTabViewModel.swift; sourceTree = "<group>"; };
 		5B959BDD757ABA49DA59E345 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		5B959CD34FCA1F6EE3802802 /* CheckmarkItemDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkItemDetailView.swift; sourceTree = "<group>"; };
 		5B959E64AAE5D542C2168DC2 /* MultilineButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineButton.swift; sourceTree = "<group>"; };
+		5B959EECE6039AB80528A566 /* MyAdCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAdCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B959FEBE7613F2F8821B0DB /* AddressComponentPostalFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressComponentPostalFieldView.swift; sourceTree = "<group>"; };
 		5D0ED35025A49FA7007750D0 /* FinnTextField+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextField+Style.swift"; sourceTree = "<group>"; };
 		5D0ED35625A49FC9007750D0 /* FinnTextField+Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FinnTextField+Input.swift"; sourceTree = "<group>"; };
@@ -1426,6 +1430,7 @@
 				5B959D7A71236CBF67504D3E /* SearchView */,
 				5B9590445C86B656E972AF8E /* AddressComponentView */,
 				5B959846196B48EE2080C452 /* SelectionListView */,
+				5B959C7CE13238B7DA139490 /* MyAdsList */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1911,6 +1916,23 @@
 				5B959240C94F8A2F44F428F3 /* OverflowCollectionViewCell.swift */,
 			);
 			path = OverflowCollectionView;
+			sourceTree = "<group>";
+		};
+		5B959B1742FF262D27BB1861 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				5B959EECE6039AB80528A566 /* MyAdCollectionViewCell.swift */,
+				5B95986193F332689C03C7EC /* MyAdStatisticsItemView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		5B959C7CE13238B7DA139490 /* MyAdsList */ = {
+			isa = PBXGroup;
+			children = (
+				5B959B1742FF262D27BB1861 /* Subviews */,
+			);
+			path = MyAdsList;
 			sourceTree = "<group>";
 		};
 		5B959D7A71236CBF67504D3E /* SearchView */ = {
@@ -3837,6 +3859,8 @@
 				5B9597CB5D1F98730290733B /* AddressComponentKind.swift in Sources */,
 				5B9593883DABC3AF83C45016 /* CheckmarkItemDetailView.swift in Sources */,
 				5B959593CA45FF93621D4C36 /* ScrollableTabViewModel.swift in Sources */,
+				5B95970F7E967E7833D876B0 /* MyAdCollectionViewCell.swift in Sources */,
+				5B959C55077A63EDEA526927 /* MyAdStatisticsItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
