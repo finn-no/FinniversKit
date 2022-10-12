@@ -1,6 +1,6 @@
 import FinniversKit
 
-class DemoViewController<View: UIView>: UIViewController {
+class DemoViewController<View: UIView>: UIViewController, Containable {
 
     private(set) var containmentOptions: ContainmentOptions
     private var dismissType: DismissType
