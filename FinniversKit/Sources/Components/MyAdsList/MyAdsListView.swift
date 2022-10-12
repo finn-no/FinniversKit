@@ -94,7 +94,7 @@ private extension MyAdsListView {
     private func createLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .estimated(120)
+            heightDimension: .estimated(112) // Sum of image height + padding top/bottom for MyAdCollectionViewCell.
         )
 
         let item = NSCollectionLayoutItem(layoutSize: itemSize)

@@ -64,7 +64,7 @@ class MyAdCollectionViewCell: UICollectionViewCell {
             remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             remoteImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -.spacingM),
             remoteImageView.widthAnchor.constraint(equalToConstant: imageWidth),
-            remoteImageView.heightAnchor.constraint(equalTo: remoteImageView.widthAnchor),
+            remoteImageView.heightAnchor.constraint(equalToConstant: imageWidth),
 
             textStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
             textStackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .spacingM),
@@ -77,7 +77,7 @@ class MyAdCollectionViewCell: UICollectionViewCell {
             statisticsStackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .spacingM),
             statisticsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM),
 
-            expiresLabel.topAnchor.constraint(equalTo: textStackView.bottomAnchor, constant: .spacingM),
+            expiresLabel.topAnchor.constraint(greaterThanOrEqualTo: textStackView.bottomAnchor, constant: .spacingM),
             expiresLabel.leadingAnchor.constraint(equalTo: statisticsStackView.trailingAnchor, constant: .spacingM),
             expiresLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
             expiresLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM),
