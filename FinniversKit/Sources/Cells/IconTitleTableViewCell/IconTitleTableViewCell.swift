@@ -51,6 +51,7 @@ open class IconTitleTableViewCell: BasicTableViewCell {
         super.prepareForReuse()
         iconImageView.image = nil
         iconImageView.tintColor = UIImageView.appearance().tintColor
+        externalIconImageView.image = nil
     }
 
     open func configure(with viewModel: IconTitleTableViewCellViewModel) {
