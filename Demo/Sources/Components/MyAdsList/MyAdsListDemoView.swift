@@ -39,7 +39,9 @@ extension MyAdsListDemoView: MyAdsListViewDelegate {
     }
 }
 
-extension MyAdsListDemoView: NavigationControllerContainable {
+// MARK: - BarButtonProvider
+
+extension MyAdsListDemoView: BarButtonProvider {
     var rightBarButtonItems: [UIBarButtonItem] {
         if #available(iOS 14.0, *) {
             return [

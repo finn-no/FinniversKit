@@ -1,5 +1,5 @@
 import UIKit
 
-protocol NavigationControllerContainable: UIView {
+protocol BarButtonProvider: UIView {
     var rightBarButtonItems: [UIBarButtonItem] { get }
 }

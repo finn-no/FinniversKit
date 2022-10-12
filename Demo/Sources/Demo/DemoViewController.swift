@@ -57,8 +57,8 @@ class DemoViewController<View: UIView>: UIViewController, Containable {
         view.fillInSuperview()
 
         if !TestCheck.isTesting {
-            if let navigationContainable = playgroundView as? NavigationControllerContainable {
-                navigationItem.rightBarButtonItems = navigationContainable.rightBarButtonItems
+            if let barButtonProvider = playgroundView as? BarButtonProvider {
+                navigationItem.rightBarButtonItems = barButtonProvider.rightBarButtonItems
             }
 
             let tweakablePlaygroundView = (childViewController?.playgroundView as? Tweakable) ?? (self as? Tweakable)
