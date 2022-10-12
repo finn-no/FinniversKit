@@ -5,6 +5,8 @@ class MyAdsListDemoView: UIView {
 
     // MARK: - Private properties
 
+    private var demoAds = Array.demoAds
+
     private lazy var myAdsListView: MyAdsListView = {
         let view = MyAdsListView(remoteImageViewDataSource: self, withAutoLayout: true)
         view.delegate = self
@@ -23,7 +25,7 @@ class MyAdsListDemoView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        myAdsListView.configure(with: .demoAds)
+        myAdsListView.configure(with: demoAds)
         addSubview(myAdsListView)
         myAdsListView.fillInSuperview()
     }
@@ -34,6 +36,51 @@ class MyAdsListDemoView: UIView {
 extension MyAdsListDemoView: MyAdsListViewDelegate {
     func myAdsListView(_ view: MyAdsListView, didSelectAdAt indexPath: IndexPath) {
         print("👉 Did select ad at index \(indexPath.row)")
+    }
+}
+
+extension MyAdsListDemoView: NavigationControllerContainable {
+    var rightBarButtonItems: [UIBarButtonItem] {
+        if #available(iOS 14.0, *) {
+            return [
+                UIBarButtonItem(
+                    title: "Reset",
+                    primaryAction: UIAction(handler: { [weak self] _ in
+                        self?.resetAds()
+                    })
+                ),
+                UIBarButtonItem(
+                    title: "Shift list",
+                    primaryAction: UIAction(handler: { [weak self] _ in
+                        self?.shiftAds()
+                    })
+                ),
+                UIBarButtonItem(
+                    title: "Reverse list",
+                    primaryAction: UIAction(handler: { [weak self] _ in
+                        self?.reverseAds()
+                    })
+                ),
+
+            ]
+        } else {
+            return []
+        }
+    }
+
+    private func resetAds() {
+        demoAds = .demoAds
+        myAdsListView.configure(with: demoAds)
+    }
+
+    private func shiftAds() {
+        demoAds.shiftRight()
+        myAdsListView.configure(with: demoAds)
+    }
+
+    private func reverseAds() {
+        demoAds = demoAds.reversed()
+        myAdsListView.configure(with: demoAds)
     }
 }
 
@@ -71,6 +118,12 @@ extension MyAdsListDemoView: RemoteImageViewDataSource {
 // MARK: - Private extensions
 
 private extension Array where Element == MyAdModel {
+    mutating func shiftRight() {
+        if let lastAd = popLast() {
+            insert(lastAd, at: 0)
+        }
+    }
+
     static var demoAds: [MyAdModel] {
         (0..<15).map {
             MyAdModel(
