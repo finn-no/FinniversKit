@@ -322,4 +322,8 @@ class ComponentViewTests: XCTestCase {
     func testBadgeView() {
         snapshot(.badgeView)
     }
+
+    func testMyAdsListView() {
+        snapshot(.myAdsListView, includeIPad: true)
+    }
 }
