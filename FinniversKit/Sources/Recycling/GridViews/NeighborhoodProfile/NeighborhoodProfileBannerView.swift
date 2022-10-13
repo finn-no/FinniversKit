@@ -13,7 +13,7 @@ final class NeighborhoodProfileBannerView: UIView {
     var text = "" {
         didSet {
             textLabel.setHTMLText(text)
-            // textLabel.textAlignment = .center
+            textLabel.textAlignment = .center
         }
     }
     
