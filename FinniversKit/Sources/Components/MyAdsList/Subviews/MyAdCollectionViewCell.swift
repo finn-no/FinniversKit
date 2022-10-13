@@ -114,10 +114,10 @@ class MyAdCollectionViewCell: UICollectionViewCell {
         }
 
         titleLabel.text = ad.title
-        titleLabel.isHidden = ad.title == nil
-
         expiresLabel.text = ad.expires
+
         subtitleLabel.text = ad.subtitle
+        subtitleLabel.isHidden = ad.subtitle == nil
 
         ribbonView.configure(with: ad.ribbon)
 
