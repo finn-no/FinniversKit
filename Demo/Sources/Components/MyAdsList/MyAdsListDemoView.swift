@@ -146,7 +146,8 @@ private extension Array where Element == MyAdModel {
         randomElement(index: index, from: [
             "Black & Decker Multisliper 220w",
             "Geniale skioppheng for langrennski",
-            "Perfect Click Ultimate Superb Wonderful fliser, nye og/eller pent brukte ønskes kjøpt billig (eller dyrt) snarest mulig"
+            "Perfect Click Ultimate Superb Wonderful fliser, nye og/eller pent brukte ønskes kjøpt billig (eller dyrt) snarest mulig",
+            "Tittel mangler"
         ])
     }
 
@@ -154,6 +155,7 @@ private extension Array where Element == MyAdModel {
         randomElement(index: index, from: [
             "Torget · 100 kr",
             "Torget · Ønskes kjøpt",
+            nil,
             "Bolig til leie · 12 000 000 000 kr/mnd",
             nil
         ])
