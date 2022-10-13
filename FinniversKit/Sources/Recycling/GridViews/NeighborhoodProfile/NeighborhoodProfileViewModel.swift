@@ -6,20 +6,34 @@ public struct NeighborhoodProfileViewModel {
     public let title: String
     public let readMoreLink: Link?
     public let cards: [Card]
+    public let banner: Banner?
 
-    public init(title: String, readMoreLink: Link?, cards: [Card]) {
+    public init(title: String, readMoreLink: Link?, cards: [Card], banner: Banner?) {
         self.title = title
         self.readMoreLink = readMoreLink
         self.cards = cards
+        self.banner = banner
     }
 }
 
-// MARK: - Card
+// MARK: - Types
 
 extension NeighborhoodProfileViewModel {
     public enum Card {
         case info(content: Content, rows: [Row])
         case button(content: Content)
+    }
+    
+    public struct Banner {
+        public let text: String
+        public let link: Link
+        public let iconName: String
+    
+        public init(text: String, link: Link, iconName: String) {
+            self.text = text
+            self.link = link
+            self.iconName = iconName
+        }
     }
 
     public struct Content {
