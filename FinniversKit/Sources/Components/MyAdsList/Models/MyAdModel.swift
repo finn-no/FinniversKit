@@ -2,8 +2,8 @@ import UIKit
 
 public struct MyAdModel: Hashable {
     public let adId: String
-    public let title: String
-    public let subtitle: String?
+    public let title: String?
+    public let subtitle: String
     public let imageUrl: String?
     public let expires: String?
     public let numFavorites: String
