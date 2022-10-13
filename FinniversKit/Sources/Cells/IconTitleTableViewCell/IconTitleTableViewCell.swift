@@ -50,6 +50,7 @@ open class IconTitleTableViewCell: BasicTableViewCell {
     open override func prepareForReuse() {
         super.prepareForReuse()
         iconImageView.image = nil
+        externalIconImageView.image = nil
         iconImageView.tintColor = UIImageView.appearance().tintColor
     }
 
