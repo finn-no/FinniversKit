@@ -14,7 +14,7 @@ public class ScrollableTabView: UIView {
     public override var intrinsicContentSize: CGSize {
         CGSize(
             width: UIView.noIntrinsicMetric,
-            height: labelHeight + indicatorHeight
+            height: labelHeight + indicatorHeight + (verticalPadding * 2)
         )
     }
 
@@ -22,6 +22,7 @@ public class ScrollableTabView: UIView {
 
     private let labelStyle = Label.Style.captionStrong
     private let itemSpacing: CGFloat = 32
+    private let verticalPadding = CGFloat.spacingS
     private let indicatorHeight: CGFloat = 4
     private var currentViewModel: ScrollableTabViewModel?
     private var indicatorViewLeadingConstraint: NSLayoutConstraint?
@@ -74,13 +75,13 @@ public class ScrollableTabView: UIView {
         NSLayoutConstraint.activate([
             // Bind the stackView to the scroll view's content layout guide to
             // set the content size.
+            contentView.topAnchor.constraint(equalTo: scrollView.frameLayoutGuide.topAnchor, constant: verticalPadding),
             contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.frameLayoutGuide.bottomAnchor, constant: -verticalPadding),
 
             indicatorView.heightAnchor.constraint(equalToConstant: indicatorHeight),
-            indicatorView.topAnchor.constraint(equalTo: contentView.bottomAnchor),
+            indicatorView.bottomAnchor.constraint(equalTo: scrollView.frameLayoutGuide.bottomAnchor),
         ])
     }
 
