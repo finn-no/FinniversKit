@@ -25,7 +25,7 @@ class MyAdsListDemoView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        myAdsListView.configure(with: demoAds)
+        myAdsListView.configure(with: demoAds, hasMoreContent: true)
         addSubview(myAdsListView)
         myAdsListView.fillInSuperview()
     }
@@ -36,6 +36,10 @@ class MyAdsListDemoView: UIView {
 extension MyAdsListDemoView: MyAdsListViewDelegate {
     func myAdsListView(_ view: MyAdsListView, didSelectAdAt indexPath: IndexPath) {
         print("👉 Did select ad at index \(indexPath.row)")
+    }
+
+    public func myAdsListViewDidScrollToBottom(_ view: MyAdsListView) {
+        print("📜 Did scroll to bottom")
     }
 }
 
@@ -72,17 +76,17 @@ extension MyAdsListDemoView: BarButtonProvider {
 
     private func resetAds() {
         demoAds = .demoAds
-        myAdsListView.configure(with: demoAds)
+        myAdsListView.configure(with: demoAds, hasMoreContent: true)
     }
 
     private func shiftAds() {
         demoAds.shiftRight()
-        myAdsListView.configure(with: demoAds)
+        myAdsListView.configure(with: demoAds, hasMoreContent: true)
     }
 
     private func reverseAds() {
         demoAds = demoAds.reversed()
-        myAdsListView.configure(with: demoAds)
+        myAdsListView.configure(with: demoAds, hasMoreContent: true)
     }
 }
 
