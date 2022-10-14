@@ -45,6 +45,7 @@ public class ScrollableTabView: UIView {
         let scrollView = UIScrollView(withAutoLayout: true)
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.contentInset = .init(vertical: 0, horizontal: .spacingM)
+        scrollView.alwaysBounceHorizontal = true
         return scrollView
     }()
 
