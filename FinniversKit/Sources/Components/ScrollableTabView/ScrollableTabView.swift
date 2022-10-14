@@ -101,7 +101,7 @@ public class ScrollableTabView: UIView {
         contentView.layoutIfNeeded()
 
         if let firstItemView = contentView.arrangedSubviews.first as? ItemView {
-            toggleSelection(newSelection: firstItemView)
+            toggleSelection(newSelection: firstItemView, notifyDelegate: false)
         }
 
         invalidateIntrinsicContentSize()
@@ -120,12 +120,15 @@ public class ScrollableTabView: UIView {
 
     // MARK: - Private methods
 
-    private func toggleSelection(newSelection: ItemView) {
+    private func toggleSelection(newSelection: ItemView, notifyDelegate: Bool) {
         if selectedItemView == newSelection { return }
         itemViews.forEach { $0.isSelected = $0 == newSelection }
         scrollView.scrollRectToVisible(newSelection.frame, animated: true)
         redrawIndicator(animate: true)
-        delegate?.scrollableTabViewDidTapItem(self, item: newSelection.item)
+
+        if notifyDelegate {
+            delegate?.scrollableTabViewDidTapItem(self, item: newSelection.item)
+        }
     }
 
     private func redrawIndicator(animate: Bool) {
@@ -158,7 +161,7 @@ public class ScrollableTabView: UIView {
 
     @objc private func handleItemTap(sender: UITapGestureRecognizer) {
         guard let itemView = sender.view as? ItemView else { return }
-        toggleSelection(newSelection: itemView)
+        toggleSelection(newSelection: itemView, notifyDelegate: true)
     }
 }
 
