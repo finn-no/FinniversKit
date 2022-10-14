@@ -2,6 +2,7 @@ import UIKit
 
 public protocol MyAdsListViewDelegate: AnyObject {
     func myAdsListView(_ view: MyAdsListView, didSelectAdAt indexPath: IndexPath)
+    func myAdsListViewDidScrollToBottom(_ view: MyAdsListView)
 }
 
 public class MyAdsListView: UIView {
@@ -130,5 +131,13 @@ private extension MyAdsListView {
 extension MyAdsListView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.myAdsListView(self, didSelectAdAt: indexPath)
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let cellCount = collectionView.numberOfItems(inSection: 0)
+        if dataSourceHasMoreContent, !isWaitingForMoreContent && indexPath.item >= cellCount - 5 {
+            isWaitingForMoreContent = true
+            delegate?.myAdsListViewDidScrollToBottom(self)
+        }
     }
 }
