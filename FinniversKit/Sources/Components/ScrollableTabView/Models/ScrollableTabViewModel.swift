@@ -1,9 +1,11 @@
 import Foundation
 
-public struct ScrollableTabViewModel {
-    let items: [Item]
+public struct ScrollableTabViewModel: Hashable {
+    public let selectedIdentifier: String?
+    public let items: [Item]
 
-    public init(items: [Item]) {
+    public init(selectedIdentifier: String? = nil, items: [Item]) {
+        self.selectedIdentifier = selectedIdentifier
         self.items = items
     }
 }
