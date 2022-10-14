@@ -57,9 +57,9 @@ public class MyAdsListView: UIView {
             snapshot.appendItems([.spinner(UUID())], toSection: .spinner)
         }
 
-        dataSource.apply(snapshot)
         dataSourceHasMoreContent = hasMoreContent
         isWaitingForMoreContent = false
+        dataSource.apply(snapshot)
     }
 }
 
