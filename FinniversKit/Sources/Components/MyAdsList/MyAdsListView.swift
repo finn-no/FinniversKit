@@ -12,6 +12,8 @@ public class MyAdsListView: UIView {
 
     // MARK: - Private properties
 
+    private var dataSourceHasMoreContent = false
+    private var isWaitingForMoreContent = false
     private lazy var dataSource = createDataSource()
     private weak var remoteImageViewDataSource: RemoteImageViewDataSource?
 
@@ -19,6 +21,7 @@ public class MyAdsListView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.delegate = self
         collectionView.register(MyAdCollectionViewCell.self)
+        collectionView.register(LoadingIndicatorCollectionViewCell.self)
         return collectionView
     }()
 
@@ -42,40 +45,82 @@ public class MyAdsListView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(with adModels: [MyAdModel]) {
+    public func configure(with adModels: [MyAdModel], hasMoreContent: Bool) {
         var snapshot = Snapshot()
-        snapshot.appendSections([0])
-        snapshot.appendItems(adModels)
+        snapshot.appendSections([.ads])
+        let items = adModels.map { Item.ad($0) }
+        snapshot.appendItems(items, toSection: .ads)
+
+        if hasMoreContent {
+            snapshot.appendSections([.spinner])
+            snapshot.appendItems([.spinner(UUID())], toSection: .spinner)
+        }
+
         dataSource.apply(snapshot)
+        dataSourceHasMoreContent = hasMoreContent
+        isWaitingForMoreContent = false
+    }
+}
+
+// MARK: - Private types
+
+private extension MyAdsListView {
+    enum Section: Int, Hashable {
+        case ads
+        case spinner
+    }
+
+    enum Item: Hashable {
+        case ad(MyAdModel)
+        case spinner(UUID)
     }
 }
 
 // MARK: - CollectionView Datasource and layout
 
 private extension MyAdsListView {
-    private typealias DataSource = UICollectionViewDiffableDataSource<Int, MyAdModel>
-    private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, MyAdModel>
+    private typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
 
     private func createLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .estimated(112) // Sum of image height + padding top/bottom for MyAdCollectionViewCell.
-        )
+        UICollectionViewCompositionalLayout { section, _ in
+            guard let section = Section(rawValue: section) else { return nil }
 
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: itemSize, subitems: [item])
-        let section = NSCollectionLayoutSection(group: group)
+            switch section {
+            case .ads:
+                let itemSize = NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1.0),
+                    heightDimension: .estimated(112) // Sum of image height + padding top/bottom.
+                )
 
-        return UICollectionViewCompositionalLayout(section: section)
+                let item = NSCollectionLayoutItem(layoutSize: itemSize)
+                let group = NSCollectionLayoutGroup.vertical(layoutSize: itemSize, subitems: [item])
+                return NSCollectionLayoutSection(group: group)
+            case .spinner:
+                let itemSize = NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1.0),
+                    heightDimension: .estimated(40) // Sum of spinner height + padding top/bottom.
+                )
+
+                let item = NSCollectionLayoutItem(layoutSize: itemSize)
+                let group = NSCollectionLayoutGroup.vertical(layoutSize: itemSize, subitems: [item])
+                return NSCollectionLayoutSection(group: group)
+            }
+        }
     }
 
     private func createDataSource() -> DataSource {
         DataSource(
             collectionView: collectionView,
             cellProvider: { [weak self] collectionView, indexPath, item in
-                let cell = collectionView.dequeue(MyAdCollectionViewCell.self, for: indexPath)
-                cell.configure(ad: item, remoteImageViewDataSource: self?.remoteImageViewDataSource)
-                return cell
+                switch item {
+                case .ad(let adModel):
+                    let cell = collectionView.dequeue(MyAdCollectionViewCell.self, for: indexPath)
+                    cell.configure(ad: adModel, remoteImageViewDataSource: self?.remoteImageViewDataSource)
+                    return cell
+                case .spinner:
+                    return collectionView.dequeue(LoadingIndicatorCollectionViewCell.self, for: indexPath)
+                }
         })
     }
 }
