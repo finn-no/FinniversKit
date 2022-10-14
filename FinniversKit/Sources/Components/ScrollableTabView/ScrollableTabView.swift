@@ -23,6 +23,7 @@ public class ScrollableTabView: UIView {
     private let labelStyle = Label.Style.captionStrong
     private let itemSpacing: CGFloat = 32
     private let indicatorHeight: CGFloat = 4
+    private var currentItems = [ScrollableTabViewModel.Item]()
     private var indicatorViewLeadingConstraint: NSLayoutConstraint?
     private var indicatorViewTrailingConstraint: NSLayoutConstraint?
     private lazy var contentView = UIStackView(axis: .horizontal, spacing: itemSpacing, withAutoLayout: true)
@@ -86,6 +87,8 @@ public class ScrollableTabView: UIView {
     // MARK: - Public methods
 
     public func configure(with viewModel: ScrollableTabViewModel) {
+        guard viewModel.items != currentItems else { return }
+        currentItems = viewModel.items
         contentView.removeArrangedSubviews()
 
         // The current implementation always makes the first item as selected

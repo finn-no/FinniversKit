@@ -9,7 +9,7 @@ public struct ScrollableTabViewModel {
 }
 
 extension ScrollableTabViewModel {
-    public struct Item {
+    public struct Item: Hashable {
         public let identifier: String
         public let title: String
 
