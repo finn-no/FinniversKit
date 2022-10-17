@@ -41,6 +41,10 @@ extension MyAdsListDemoView: MyAdsListViewDelegate {
     public func myAdsListViewDidScrollToBottom(_ view: MyAdsListView) {
         print("📜 Did scroll to bottom")
     }
+
+    public func myAdsListViewDidStartRefreshing(_ view: MyAdsListView) {
+        print("🔄 Did pull to refresh")
+    }
 }
 
 // MARK: - BarButtonProvider

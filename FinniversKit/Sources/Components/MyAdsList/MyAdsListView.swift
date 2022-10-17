@@ -3,6 +3,7 @@ import UIKit
 public protocol MyAdsListViewDelegate: AnyObject {
     func myAdsListView(_ view: MyAdsListView, didSelectAdAt indexPath: IndexPath)
     func myAdsListViewDidScrollToBottom(_ view: MyAdsListView)
+    func myAdsListViewDidStartRefreshing(_ view: MyAdsListView)
 }
 
 public class MyAdsListView: UIView {
@@ -23,7 +24,14 @@ public class MyAdsListView: UIView {
         collectionView.delegate = self
         collectionView.register(MyAdCollectionViewCell.self)
         collectionView.register(LoadingIndicatorCollectionViewCell.self)
+        collectionView.refreshControl = refreshControl
         return collectionView
+    }()
+
+    private lazy var refreshControl: RefreshControl = {
+        let refreshControl = RefreshControl(frame: .zero)
+        refreshControl.delegate = self
+        return refreshControl
     }()
 
     // MARK: - Init
@@ -59,7 +67,9 @@ public class MyAdsListView: UIView {
 
         dataSourceHasMoreContent = hasMoreContent
         isWaitingForMoreContent = false
-        dataSource.apply(snapshot)
+        dataSource.apply(snapshot, completion: { [weak self] in
+            self?.refreshControl.endRefreshing()
+        })
     }
 }
 
@@ -139,5 +149,12 @@ extension MyAdsListView: UICollectionViewDelegate {
             isWaitingForMoreContent = true
             delegate?.myAdsListViewDidScrollToBottom(self)
         }
+    }
+}
+
+// MARK: - RefreshControlDelegate
+extension MyAdsListView: RefreshControlDelegate {
+    public func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl) {
+        delegate?.myAdsListViewDidStartRefreshing(self)
     }
 }
