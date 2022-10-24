@@ -46,7 +46,7 @@ public final class HTMLParserTextViewTranslator: HTMLParserTranslator {
     private func defaultStyleMapper(elementName: String, attributes: [String: String]) -> Style? {
         switch elementName.lowercased() {
         case "b", "strong":
-            return Style(bold: true)
+            return Style(fontWeight: .bold)
         case "i":
             return Style(italic: true)
         case "s":
@@ -84,8 +84,8 @@ public final class HTMLParserTextViewTranslator: HTMLParserTranslator {
 extension HTMLParserTextViewTranslator {
     public struct Style {
         public var font: Font?
+        public var fontWeight: Font.Weight?
         public var foregroundColor: Color?
-        public var bold: Bool
         public var italic: Bool
         public var strikethrough: Bool
         public var strikethroughColor: Color?
@@ -94,8 +94,8 @@ extension HTMLParserTextViewTranslator {
 
         public init(
             font: Font? = nil,
+            fontWeight: Font.Weight? = nil,
             foregroundColor: Color? = nil,
-            bold: Bool = false,
             italic: Bool = false,
             strikethrough: Bool = false,
             strikethroughColor: Color? = nil,
@@ -103,8 +103,8 @@ extension HTMLParserTextViewTranslator {
             underlineColor: Color? = nil
         ) {
             self.font = font
+            self.fontWeight = fontWeight
             self.foregroundColor = foregroundColor
-            self.bold = bold
             self.italic = italic
             self.strikethrough = strikethrough
             self.strikethroughColor = strikethroughColor
@@ -116,10 +116,12 @@ extension HTMLParserTextViewTranslator {
             if let font = otherStyle.font {
                 self.font = font
             }
+            if let fontWeight = otherStyle.fontWeight {
+                self.fontWeight = fontWeight
+            }
             if let foregroundColor = otherStyle.foregroundColor {
                 self.foregroundColor = foregroundColor
             }
-            self.bold = otherStyle.bold
             self.italic = otherStyle.italic
             self.strikethrough = otherStyle.strikethrough
             if let strikethroughColor = otherStyle.strikethroughColor {
@@ -139,11 +141,11 @@ extension Text {
         if let font = style.font {
             text = text.font(font)
         }
+        if let fontWeight = style.fontWeight {
+            text = text.fontWeight(fontWeight)
+        }
         if let foregroundColor = style.foregroundColor {
             text = text.foregroundColor(foregroundColor)
-        }
-        if style.bold {
-            text = text.bold()
         }
         if style.italic {
             text = text.italic()
