@@ -28,6 +28,8 @@ public final class HTMLParserTextViewTranslator: HTMLParserTranslator {
             case .elementBegin(let name, let attributes):
                 if let style = styleMapper?(name, attributes) {
                     pushStyle(style, elementName: name)
+                } else if let style = defaultStyleMapper(elementName: name, attributes: attributes) {
+                    pushStyle(style, elementName: name)
                 }
             case .elementEnd(let name):
                 popStyle(elementName: name)
@@ -39,6 +41,21 @@ public final class HTMLParserTextViewTranslator: HTMLParserTranslator {
         }
 
         return finalTextView
+    }
+
+    private func defaultStyleMapper(elementName: String, attributes: [String: String]) -> Style? {
+        switch elementName.lowercased() {
+        case "b", "strong":
+            return Style(bold: true)
+        case "i":
+            return Style(italic: true)
+        case "s":
+            return Style(strikethrough: true)
+        case "u":
+            return Style(underline: true)
+        default:
+            return nil
+        }
     }
 
     private func pushStyle(_ style: Style, elementName: String) {

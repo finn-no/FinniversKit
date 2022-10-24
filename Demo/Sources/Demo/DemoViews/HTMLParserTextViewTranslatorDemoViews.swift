@@ -18,7 +18,23 @@ final class HTMLParserPreviewController: DemoViewController<UIView>, Tweakable {
         TweakingOption(title: "Default", action: { [weak self] in
             guard let self = self else { return }
             self.textView = try! self.parser.parse(html: "This is a default style.", translator: .defaultBody)
-        })
+        }),
+        TweakingOption(title: "Bold", action: { [weak self] in
+            guard let self = self else { return }
+            self.textView = try! self.parser.parse(html: "This is <b>bold</b> text.", translator: .defaultBody)
+        }),
+        TweakingOption(title: "Italic", action: { [weak self] in
+            guard let self = self else { return }
+            self.textView = try! self.parser.parse(html: "This is <i>italic</i> text.", translator: .defaultBody)
+        }),
+        TweakingOption(title: "Strikethrough", action: { [weak self] in
+            guard let self = self else { return }
+            self.textView = try! self.parser.parse(html: "This is <s>strikethrough</s> text.", translator: .defaultBody)
+        }),
+        TweakingOption(title: "Underscore", action: { [weak self] in
+            guard let self = self else { return }
+            self.textView = try! self.parser.parse(html: "This is <u>underscore</u> text.", translator: .defaultBody)
+        }),
     ]
 
     init() {
