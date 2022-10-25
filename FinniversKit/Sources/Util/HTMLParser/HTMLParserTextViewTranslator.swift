@@ -5,9 +5,15 @@ public final class HTMLParserTextViewTranslator: HTMLParserTranslator {
     private typealias ElementNameAndStyle = (name: String, style: Style)
     public typealias StyleMapper = (_ elementName: String, _ attributes: [String: String]) -> Style?
 
+    private struct StyleInfo {
+        let elementName: String
+        let style: Style
+    }
+
     private let defaultStyle: Style
     private let styleMapper: StyleMapper?
-    private var styleStack: [ElementNameAndStyle]
+    private var styleStack: [StyleInfo]
+    private var currentStyle: Style
 
     public init(
         defaultStyle: Style,
@@ -16,6 +22,7 @@ public final class HTMLParserTextViewTranslator: HTMLParserTranslator {
         self.defaultStyle = defaultStyle
         self.styleMapper = styleMapper
         self.styleStack = []
+        self.currentStyle = defaultStyle
     }
 
     public func translate(tokens: [HTMLParser.Token]) throws -> Text {
@@ -26,6 +33,13 @@ public final class HTMLParserTextViewTranslator: HTMLParserTranslator {
             case .comment(_):
                 break
             case .elementBegin(let name, let attributes):
+                switch name.lowercased() {
+                case "br":
+                    finalTextView = finalTextView + Text("\n").applyStyle(currentStyle)
+                    continue
+                default:
+                    break
+                }
                 if let style = styleMapper?(name, attributes) {
                     pushStyle(style, elementName: name)
                 } else if let style = defaultStyleMapper(elementName: name, attributes: attributes) {
@@ -34,8 +48,7 @@ public final class HTMLParserTextViewTranslator: HTMLParserTranslator {
             case .elementEnd(let name):
                 popStyle(elementName: name)
             case .text(let text):
-                let style = resolveStyle()
-                let textView = Text(text).applyStyle(style)
+                let textView = Text(text).applyStyle(currentStyle)
                 finalTextView = finalTextView + textView
             }
         }
@@ -49,7 +62,7 @@ public final class HTMLParserTextViewTranslator: HTMLParserTranslator {
             return Style(fontWeight: .bold)
         case "i":
             return Style(italic: true)
-        case "s":
+        case "s", "del":
             return Style(strikethrough: true)
         case "u":
             return Style(underline: true)
@@ -59,14 +72,16 @@ public final class HTMLParserTextViewTranslator: HTMLParserTranslator {
     }
 
     private func pushStyle(_ style: Style, elementName: String) {
-        styleStack.append((elementName, style))
+        styleStack.append(StyleInfo(elementName: elementName, style: style))
+        currentStyle.update(from: style)
     }
 
     private func popStyle(elementName: String) {
         for index in (0 ..< styleStack.count).reversed() {
-            let (name, _) = styleStack[index]
-            if name == elementName {
+            let info = styleStack[index]
+            if info.elementName == elementName {
                 styleStack.remove(at: index)
+                currentStyle = resolveStyle()
                 return
             }
         }
@@ -74,8 +89,8 @@ public final class HTMLParserTextViewTranslator: HTMLParserTranslator {
 
     private func resolveStyle() -> Style {
         var resolvedStyle = defaultStyle
-        for (_, style) in styleStack {
-            resolvedStyle.update(from: style)
+        for info in styleStack {
+            resolvedStyle.update(from: info.style)
         }
         return resolvedStyle
     }

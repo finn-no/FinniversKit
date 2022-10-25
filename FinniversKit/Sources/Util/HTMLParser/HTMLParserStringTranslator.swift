@@ -23,8 +23,14 @@ public struct HTMLParserStringTranslator: HTMLParserTranslator {
                 html.append("<!--\(comment)-->")
 
             case .elementBegin(let name, let attributes):
-                if stripAllHTMLElements { continue }
-                if omitHTMLDocumentElements, name.lowercased() == "html" { continue }
+                let nameLower = name.lowercased()
+                if stripAllHTMLElements {
+                    if nameLower == "br" {
+                        html.append("\n")
+                    }
+                    continue
+                }
+                if omitHTMLDocumentElements, nameLower == "html" { continue }
                 var attributesText = ""
                 if !attributes.isEmpty {
                     attributesText = attributes.reduce(into: "", { partialResult, keyAndValue in
