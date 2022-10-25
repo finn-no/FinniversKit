@@ -39,6 +39,7 @@
 		179D06AD2906A3FA00A65E3A /* HTMLParserStringTranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06AB2906A3FA00A65E3A /* HTMLParserStringTranslatorTests.swift */; };
 		179D06AE2906A3FA00A65E3A /* HTMLParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06AC2906A3FA00A65E3A /* HTMLParserTests.swift */; };
 		179D06B02906A68900A65E3A /* HTMLParserTextViewTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06AF2906A68900A65E3A /* HTMLParserTextViewTranslator.swift */; };
+		179D06B62907D66E00A65E3A /* HTMLStringReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06B52907D66E00A65E3A /* HTMLStringReader.swift */; };
 		431875C1211180F100D71723 /* BuyerPickerProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */; };
 		432CE09D2112DBC500F01EC5 /* BuyerPickerTextHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE09C2112DBC500F01EC5 /* BuyerPickerTextHeader.swift */; };
 		43BACE6A21117D430052114C /* BuyerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BACE6921117D430052114C /* BuyerPickerView.swift */; };
@@ -517,6 +518,7 @@
 		179D06AB2906A3FA00A65E3A /* HTMLParserStringTranslatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLParserStringTranslatorTests.swift; sourceTree = "<group>"; };
 		179D06AC2906A3FA00A65E3A /* HTMLParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLParserTests.swift; sourceTree = "<group>"; };
 		179D06AF2906A68900A65E3A /* HTMLParserTextViewTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLParserTextViewTranslator.swift; sourceTree = "<group>"; };
+		179D06B52907D66E00A65E3A /* HTMLStringReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringReader.swift; sourceTree = "<group>"; };
 		431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerProfileCell.swift; sourceTree = "<group>"; };
 		432CE09C2112DBC500F01EC5 /* BuyerPickerTextHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerTextHeader.swift; sourceTree = "<group>"; };
 		43BACE6921117D430052114C /* BuyerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerView.swift; sourceTree = "<group>"; };
@@ -1104,6 +1106,7 @@
 				179D06A72906A39D00A65E3A /* HTMLParser.swift */,
 				179D06A62906A39D00A65E3A /* HTMLParserStringTranslator.swift */,
 				179D06AF2906A68900A65E3A /* HTMLParserTextViewTranslator.swift */,
+				179D06B52907D66E00A65E3A /* HTMLStringReader.swift */,
 			);
 			path = HTMLParser;
 			sourceTree = "<group>";
@@ -3524,6 +3527,7 @@
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
 				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
 				CFB775F22359D8360097C0ED /* FloatingButton+Favorites.swift in Sources */,
+				179D06B62907D66E00A65E3A /* HTMLStringReader.swift in Sources */,
 				441FE44B209A2F2C00B04EF1 /* NotificationsListViewCell.swift in Sources */,
 				CF0F6B992360784C00CA62FD /* PrimingViewModel.swift in Sources */,
 				082D80D521C15C9200831BDE /* CandyCaneView.swift in Sources */,
