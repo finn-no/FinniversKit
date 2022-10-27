@@ -4,6 +4,17 @@ public protocol MyAdsListViewDelegate: AnyObject {
     func myAdsListView(_ view: MyAdsListView, didSelectAdAt indexPath: IndexPath)
     func myAdsListViewDidScrollToBottom(_ view: MyAdsListView)
     func myAdsListViewDidStartRefreshing(_ view: MyAdsListView)
+
+    /// Optional methods.
+    func myAdsListView(_ view: MyAdsListView, scrollViewWillBeginDragging scrollView: UIScrollView)
+    func myAdsListView(_ view: MyAdsListView, scrollViewDidEndDragging scrollView: UIScrollView, willDecelerate: Bool)
+    func myAdsListView(_ view: MyAdsListView, scrollViewDidEndDecelerating scrollView: UIScrollView)
+}
+
+extension MyAdsListViewDelegate {
+    func myAdsListView(_ view: MyAdsListView, scrollViewWillBeginDragging scrollView: UIScrollView) {}
+    func myAdsListView(_ view: MyAdsListView, scrollViewDidEndDragging scrollView: UIScrollView, willDecelerate: Bool) {}
+    func myAdsListView(_ view: MyAdsListView, scrollViewDidEndDecelerating scrollView: UIScrollView) {}
 }
 
 public class MyAdsListView: UIView {
@@ -150,6 +161,18 @@ extension MyAdsListView: UICollectionViewDelegate {
             isWaitingForMoreContent = true
             delegate?.myAdsListViewDidScrollToBottom(self)
         }
+    }
+
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        delegate?.myAdsListView(self, scrollViewWillBeginDragging: scrollView)
+    }
+
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        delegate?.myAdsListView(self, scrollViewDidEndDragging: scrollView, willDecelerate: decelerate)
+    }
+
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        delegate?.myAdsListView(self, scrollViewDidEndDecelerating: scrollView)
     }
 }
 
