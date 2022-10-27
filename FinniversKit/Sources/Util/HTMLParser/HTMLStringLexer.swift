@@ -9,7 +9,7 @@ public protocol HTMLStringLexerDelegate: AnyObject {
 
 public final class HTMLStringLexer {
     public enum Token: Equatable {
-        case beginTag(name: String, attributes: [String: String])
+        case beginTag(name: String, attributes: [String: String], isSelfClosing: Bool)
         case endTag(name: String)
         case commentTag(text: String)
         case documentTag(name: String, text: String)
@@ -23,16 +23,38 @@ public final class HTMLStringLexer {
 
     public weak var delegate: HTMLStringLexerDelegate?
 
-    /// Regex pattern with capture groups for / end tag marker (optional), tag name, and attributes (optional).
-    /// Test: https://regexr.com/70t11
-    private let tagPattern = #"<(\/)?(\w+)(?:\s*>|\s+(\w+=".*?")+\s*>)"#
+    /**
+     Regex pattern for HTML tag, like `<b>`, `</b>` and `<div foo="bar">`.
 
-    /// Regex pattern for comment tag with capture group for comment text.
-    /// Test: https://regexr.com/70ttk
+     Capture groups:
+     1. End tag marker (optional)
+     2. Tag name
+     3. Attributes (optional)
+     4. End tag marker for self-closed tag (optional)
+
+     [RegExr test](https://regexr.com/70t11)
+     */
+    private let tagPattern = #"<(\/)?(\w+)(?:\s+(\w+=".*?")+\s*|\s*)(\/)?>"#
+
+    /**
+     Regex pattern for HTML comment tag, like `<!-- foo -->`.
+
+     Capture groups:
+     1. Comment text, including whitespace
+
+     [RegExr test](https://regexr.com/70ttk)
+     */
     private let commentPattern = #"<!--(.*?)-->"#
 
-    /// Regex pattern for document tag with capture group for name and optional text.
-    /// Test: https://regexr.com/70ttq
+    /**
+     Regex pattern for HTML document tag, like `<!DOCUMENT HTML>`.
+
+     Capture groups:
+     1. Tag name
+     2. Text (optional)
+
+     [RegExr test](https://regexr.com/70ttq)
+     */
     private let documentPattern = #"<!(\w+)(?:\s*>|\s+(.*?)\s*>)"#
 
     private let tagRegex: NSRegularExpression
@@ -46,6 +68,8 @@ public final class HTMLStringLexer {
         self.commentRegex = try! NSRegularExpression(pattern: commentPattern, options: .dotMatchesLineSeparators)
         self.documentRegex = try! NSRegularExpression(pattern: documentPattern, options: .dotMatchesLineSeparators)
         // swiftlint:enable force_try
+
+        self.delegate = delegate
     }
 
     func read(html: String) {
@@ -142,13 +166,15 @@ public final class HTMLStringLexer {
         }
         let isEndTagNSRange = match.range(at: 1)
         let isEndTag = isEndTagNSRange.lowerBound != NSNotFound
+        let isSelfClosingNSRange = match.range(at: 4)
+        let isSelfClosing = isSelfClosingNSRange.lowerBound != NSNotFound
         let name = String(searchString[nameRange])
         if isEndTag {
             return TagMatch(token: .endTag(name: name), range: tagRange)
         } else {
             // TODO: Parse attributes
             let attributesString = String(searchString[attributesRange])
-            return TagMatch(token: .beginTag(name: name, attributes: [:]), range: tagRange)
+            return TagMatch(token: .beginTag(name: name, attributes: [:], isSelfClosing: isSelfClosing), range: tagRange)
         }
     }
 }
