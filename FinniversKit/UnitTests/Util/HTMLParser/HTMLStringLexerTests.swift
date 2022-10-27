@@ -26,7 +26,7 @@ final class HTMLStringLexerTests: XCTestCase {
     }
 
     func testJustText() throws {
-        let html = "This is a test"
+        let html = #"This is a test"#
         lexer.read(html: html)
         let reference: [HTMLStringLexer.Token] = [
             .text(html)
@@ -35,7 +35,7 @@ final class HTMLStringLexerTests: XCTestCase {
     }
 
     func testBeginMarkerInText() throws {
-        let html = "< This is a <test< <"
+        let html = #"< This is a <test< <"#
         lexer.read(html: html)
         let reference: [HTMLStringLexer.Token] = [
             .text(html)
@@ -44,7 +44,7 @@ final class HTMLStringLexerTests: XCTestCase {
     }
 
     func testBeginTag() throws {
-        let html = "<div><div/>"
+        let html = #"<div><div/>"#
         lexer.read(html: html)
         let reference: [HTMLStringLexer.Token] = [
             .beginTag(name: "div", attributes: [:], isSelfClosing: false),
@@ -54,7 +54,7 @@ final class HTMLStringLexerTests: XCTestCase {
     }
 
     func testBeginTagVariants() throws {
-        let html = "<div ><div   ><div /><div   />"
+        let html = #"<div ><div   ><div /><div   />"#
         lexer.read(html: html)
         let reference: [HTMLStringLexer.Token] = [
             .beginTag(name: "div", attributes: [:], isSelfClosing: false),
@@ -65,19 +65,41 @@ final class HTMLStringLexerTests: XCTestCase {
         XCTAssertEqual(lexerDelegate.tokens, reference)
     }
 
-    /*
     func testBeginTagWithAttributes() throws {
-        let html = "<div>"
+        let html = #"<div foo="bar">"#
         lexer.read(html: html)
         let reference: [HTMLStringLexer.Token] = [
-            .beginTag(name: "div", attributes: [:], isSelfClosing: false)
+            .beginTag(name: "div", attributes: ["foo": "bar"], isSelfClosing: false)
         ]
         XCTAssertEqual(lexerDelegate.tokens, reference)
     }
-     */
+
+    func testBeginTagWithMultipleAttributes() throws {
+        let html = #"<div foo="bar" custom="asdf">"#
+        lexer.read(html: html)
+        let reference: [HTMLStringLexer.Token] = [
+            .beginTag(name: "div", attributes: [
+                "foo": "bar",
+                "custom": "asdf"
+            ], isSelfClosing: false)
+        ]
+        XCTAssertEqual(lexerDelegate.tokens, reference)
+    }
+
+    func testTagAttributeEdgeCases() throws {
+        let html = #"<div  foo=">"   custom="<" >"#
+        lexer.read(html: html)
+        let reference: [HTMLStringLexer.Token] = [
+            .beginTag(name: "div", attributes: [
+                "foo": ">",
+                "custom": "<"
+            ], isSelfClosing: false)
+        ]
+        XCTAssertEqual(lexerDelegate.tokens, reference)
+    }
 
     func testEndTag() throws {
-        let html = "</div>"
+        let html = #"</div>"#
         lexer.read(html: html)
         let reference: [HTMLStringLexer.Token] = [
             .endTag(name: "div")
@@ -86,7 +108,7 @@ final class HTMLStringLexerTests: XCTestCase {
     }
 
     func testEndTagVariants() throws {
-        let html = "</div></div ></div   >"
+        let html = #"</div></div ></div   >"#
         lexer.read(html: html)
         let reference: [HTMLStringLexer.Token] = [
             .endTag(name: "div"),
@@ -97,7 +119,7 @@ final class HTMLStringLexerTests: XCTestCase {
     }
 
     func testSelfClosedTag() throws {
-        let html = "<div/><div /><div   />"
+        let html = #"<div/><div /><div   />"#
         lexer.read(html: html)
         let reference: [HTMLStringLexer.Token] = [
             .beginTag(name: "div", attributes: [:], isSelfClosing: true),
@@ -108,7 +130,7 @@ final class HTMLStringLexerTests: XCTestCase {
     }
 
     func testCommentTag() throws {
-        let html = "<!--foo--><!-- foo --><!----><!--   -->"
+        let html = #"<!--foo--><!-- foo --><!----><!--   -->"#
         lexer.read(html: html)
         let reference: [HTMLStringLexer.Token] = [
             .commentTag(text: "foo"),
@@ -120,7 +142,7 @@ final class HTMLStringLexerTests: XCTestCase {
     }
 
     func testDocumentTag() throws {
-        let html = "<!DOCUMENT HTML><!DOCUMENT HTML foo>"
+        let html = #"<!DOCUMENT HTML><!DOCUMENT HTML foo>"#
         lexer.read(html: html)
         let reference: [HTMLStringLexer.Token] = [
             .documentTag(name: "DOCUMENT", text: "HTML"),
