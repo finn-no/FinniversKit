@@ -20,7 +20,23 @@ public final class NeighborhoodProfileView: UIView {
 
     // MARK: - Private properties
 
-    private var viewModel = NeighborhoodProfileViewModel(title: "", readMoreLink: nil, cards: [])
+    private var viewModel = NeighborhoodProfileViewModel(title: "", readMoreLink: nil, cards: [], banner: nil)
+
+    private lazy var bannerView: NeighborhoodProfileBannerView = {
+        let view = NeighborhoodProfileBannerView(withAutoLayout: true)
+        view.delegate = self
+        return view
+    }()
+
+    private func getCenteredContainerView(with views: [UIView]) -> UIStackView {
+        let stack = UIStackView(axis: .horizontal, withAutoLayout: true)
+        stack.isLayoutMarginsRelativeArrangement = true
+        stack.directionalLayoutMargins = NSDirectionalEdgeInsets(vertical: 0, horizontal: .spacingM)
+        stack.addArrangedSubviews(views)
+        return stack
+    }
+
+    private lazy var containerStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
 
     private lazy var headerView: NeighborhoodProfileHeaderView = {
         let view = NeighborhoodProfileHeaderView(withAutoLayout: true)
@@ -102,39 +118,16 @@ public final class NeighborhoodProfileView: UIView {
         resetPageControl()
         resetCollectionViewLayout()
         collectionView.reloadData()
-    }
 
-    // MARK: - Overrides
-
-    // This override exists because of how we calculate view sizes in our objectPage.
-    // The objectPage needs to know the size of this view before it's added to the view hierarchy, aka. before
-    // the collectionView itself knows it's own contentSize, so we need to calculate the total height of the view manually.
-    //
-    // All we're given to answer this question is the width attribute in `targetSize`.
-    //
-    // This implementation may not work for any place other than the objectPage, because:
-    //   - it assumes `targetSize` contains an accurate targetWidth for this view.
-    //   - it ignores any potential targetHeight.
-    //   - it ignores both horizontal and vertical fitting priority.
-    public override func systemLayoutSizeFitting(
-        _ targetSize: CGSize,
-        withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
-        verticalFittingPriority: UILayoutPriority
-    ) -> CGSize {
-        var height = NeighborhoodProfileView.headerSpacingTop
-        height += NeighborhoodProfileHeaderView.height(forTitle: viewModel.title, width: targetSize.width)
-        height += .spacingS + collectionViewHeight(forItemHeight: calculateItemSize().height)
-
-        if isPagingEnabled {
-            height += pageControl.intrinsicContentSize.height + .spacingS
+        if let banner = viewModel.banner {
+            bannerView.text = banner.text
+            bannerView.buttonText = banner.link.title
+            bannerView.isHidden = false
+            containerStackView.setCustomSpacing(.spacingM, after: pageControl)
         } else {
-            height += .spacingM
+            bannerView.isHidden = true
+            containerStackView.setCustomSpacing(.spacingS, after: pageControl)
         }
-
-        return CGSize(
-            width: targetSize.width,
-            height: height
-        )
     }
 
     // MARK: - Setup
@@ -142,37 +135,23 @@ public final class NeighborhoodProfileView: UIView {
     private func setup() {
         backgroundColor = .bgSecondary
 
-        addSubview(headerView)
-        addSubview(collectionView)
+        containerStackView.addArrangedSubviews([getCenteredContainerView(with: [headerView]), collectionView])
 
         if isPagingEnabled {
-            addSubview(pageControl)
+            containerStackView.addArrangedSubview(pageControl)
         }
 
-        var constraints = [
-            headerView.topAnchor.constraint(equalTo: topAnchor, constant: NeighborhoodProfileView.headerSpacingTop),
-            headerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            headerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+        containerStackView.addArrangedSubview(getCenteredContainerView(with: [bannerView]))
 
-            collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: .spacingS),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+        addSubview(containerStackView)
+
+        NSLayoutConstraint.activate([
+            containerStackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            containerStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM),
+            containerStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            containerStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionViewHeightConstraint,
-        ]
-
-        if isPagingEnabled {
-            constraints.append(contentsOf: [
-                pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
-                pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
-                bottomAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: .spacingS)
-            ])
-        } else {
-            constraints.append(
-                bottomAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingM)
-            )
-        }
-
-        NSLayoutConstraint.activate(constraints)
+        ])
     }
 
     private func resetPageControl() {
@@ -281,6 +260,14 @@ extension NeighborhoodProfileView: NeighborhoodProfileHeaderViewDelegate {
     }
 }
 
+// MARK: - NeighborhoodProfileBannerViewDelegate
+
+extension NeighborhoodProfileView: NeighborhoodProfileBannerViewDelegate {
+    func neighborhoodProfileBannerDidSelectButton(_ view: NeighborhoodProfileBannerView) {
+        delegate?.neighborhoodProfileView(self, didSelectUrl: viewModel.banner?.link.url)
+    }
+}
+
 // MARK: - NeighborhoodProfileInfoViewCellDelegate
 
 extension NeighborhoodProfileView: NeighborhoodProfileInfoViewCellDelegate {
@@ -341,3 +328,4 @@ private extension UIScrollView {
         return contentSize.width - bounds.width
     }
 }
+
