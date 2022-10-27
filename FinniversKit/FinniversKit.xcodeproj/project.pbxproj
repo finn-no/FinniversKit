@@ -40,6 +40,7 @@
 		179D06AE2906A3FA00A65E3A /* HTMLParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06AC2906A3FA00A65E3A /* HTMLParserTests.swift */; };
 		179D06B02906A68900A65E3A /* HTMLParserTextViewTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06AF2906A68900A65E3A /* HTMLParserTextViewTranslator.swift */; };
 		179D06B62907D66E00A65E3A /* HTMLStringLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06B52907D66E00A65E3A /* HTMLStringLexer.swift */; };
+		17E232F5290A7E71003DC8F7 /* HTMLStringLexerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E232F4290A7E71003DC8F7 /* HTMLStringLexerTests.swift */; };
 		431875C1211180F100D71723 /* BuyerPickerProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */; };
 		432CE09D2112DBC500F01EC5 /* BuyerPickerTextHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE09C2112DBC500F01EC5 /* BuyerPickerTextHeader.swift */; };
 		43BACE6A21117D430052114C /* BuyerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BACE6921117D430052114C /* BuyerPickerView.swift */; };
@@ -519,6 +520,7 @@
 		179D06AC2906A3FA00A65E3A /* HTMLParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLParserTests.swift; sourceTree = "<group>"; };
 		179D06AF2906A68900A65E3A /* HTMLParserTextViewTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLParserTextViewTranslator.swift; sourceTree = "<group>"; };
 		179D06B52907D66E00A65E3A /* HTMLStringLexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringLexer.swift; sourceTree = "<group>"; };
+		17E232F4290A7E71003DC8F7 /* HTMLStringLexerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringLexerTests.swift; sourceTree = "<group>"; };
 		431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerProfileCell.swift; sourceTree = "<group>"; };
 		432CE09C2112DBC500F01EC5 /* BuyerPickerTextHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerTextHeader.swift; sourceTree = "<group>"; };
 		43BACE6921117D430052114C /* BuyerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerView.swift; sourceTree = "<group>"; };
@@ -1116,6 +1118,7 @@
 			children = (
 				179D06AB2906A3FA00A65E3A /* HTMLParserStringTranslatorTests.swift */,
 				179D06AC2906A3FA00A65E3A /* HTMLParserTests.swift */,
+				17E232F4290A7E71003DC8F7 /* HTMLStringLexerTests.swift */,
 			);
 			path = HTMLParser;
 			sourceTree = "<group>";
@@ -3403,6 +3406,7 @@
 				CF3D5F00215A75BF006E4D08 /* InstrumentTests.swift in Sources */,
 				CF376C1B231D458200ED2B24 /* ArrayStepTests.swift in Sources */,
 				CF376C1D231D459900ED2B24 /* StepTests.swift in Sources */,
+				17E232F5290A7E71003DC8F7 /* HTMLStringLexerTests.swift in Sources */,
 				179D06AE2906A3FA00A65E3A /* HTMLParserTests.swift in Sources */,
 				9B9663CB2460383900D34BA1 /* ConfigTests.swift in Sources */,
 				9F213830B2F4E5DFE596431F /* KeyboardNotificationInfoTest.swift in Sources */,

@@ -128,12 +128,14 @@ public final class HTMLStringLexer {
         guard
             let match = commentRegex.firstMatch(in: searchString, range: nsRange),
             match.numberOfRanges == 2,
-            let tagRange = Range(match.range(at: 0), in: searchString),
-            let commentRange = Range(match.range(at: 1), in: searchString)
+            let tagRange = Range(match.range(at: 0), in: searchString)
         else {
             return nil
         }
-        let comment = String(searchString[commentRange])
+        var comment = ""
+        if let commentRange = Range(match.range(at: 1), in: searchString) {
+            comment.append(String(searchString[commentRange]))
+        }
         return TagMatch(token: .commentTag(text: comment), range: tagRange)
     }
 
@@ -143,38 +145,49 @@ public final class HTMLStringLexer {
             let match = documentRegex.firstMatch(in: searchString, range: nsRange),
             match.numberOfRanges == 3,
             let tagRange = Range(match.range(at: 0), in: searchString),
-            let nameRange = Range(match.range(at: 1), in: searchString),
-            let textRange = Range(match.range(at: 2), in: searchString)
+            let nameRange = Range(match.range(at: 1), in: searchString)
         else {
             return nil
         }
         let name = String(searchString[nameRange])
-        let text = String(searchString[textRange])
-        return TagMatch(token: .documentTag(name: name, text: text), range: tagRange)
+        var text = ""
+        if let textRange = Range(match.range(at: 2), in: searchString) {
+            text.append(String(searchString[textRange]))
+        }
+        return TagMatch(token: .documentTag(
+            name: name,
+            text: text
+        ), range: tagRange)
     }
 
     private func matchTag(in searchString: String, startIndex: String.Index) -> TagMatch? {
         let nsRange = NSRange(startIndex..<searchString.endIndex, in: searchString)
         guard
             let match = tagRegex.firstMatch(in: searchString, range: nsRange),
-            match.numberOfRanges == 4,
+            match.numberOfRanges == 5,
             let tagRange = Range(match.range(at: 0), in: searchString),
-            let nameRange = Range(match.range(at: 2), in: searchString),
-            let attributesRange = Range(match.range(at: 3), in: searchString)
+            let nameRange = Range(match.range(at: 2), in: searchString)
         else {
             return nil
         }
         let isEndTagNSRange = match.range(at: 1)
         let isEndTag = isEndTagNSRange.lowerBound != NSNotFound
-        let isSelfClosingNSRange = match.range(at: 4)
-        let isSelfClosing = isSelfClosingNSRange.lowerBound != NSNotFound
         let name = String(searchString[nameRange])
         if isEndTag {
             return TagMatch(token: .endTag(name: name), range: tagRange)
         } else {
-            // TODO: Parse attributes
-            let attributesString = String(searchString[attributesRange])
-            return TagMatch(token: .beginTag(name: name, attributes: [:], isSelfClosing: isSelfClosing), range: tagRange)
+            let isSelfClosingNSRange = match.range(at: 4)
+            let isSelfClosing = isSelfClosingNSRange.lowerBound != NSNotFound
+            var attributes: [String: String] = [:]
+            if let attributesRange = Range(match.range(at: 3), in: searchString) {
+                let attributesString = String(searchString[attributesRange])
+                // TODO: Parse attributes
+            }
+            return TagMatch(token: .beginTag(
+                name: name,
+                attributes: attributes,
+                isSelfClosing: isSelfClosing
+            ), range: tagRange)
         }
     }
 }
