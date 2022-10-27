@@ -1,6 +1,7 @@
 //
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
+
 import FinniversKit
 
 /// Defines the way the demo controller will be dismissed
