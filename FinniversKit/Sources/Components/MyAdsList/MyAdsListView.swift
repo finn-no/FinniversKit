@@ -25,6 +25,7 @@ public class MyAdsListView: UIView {
         collectionView.register(MyAdCollectionViewCell.self)
         collectionView.register(LoadingIndicatorCollectionViewCell.self)
         collectionView.refreshControl = refreshControl
+        collectionView.keyboardDismissMode = .onDrag
         return collectionView
     }()
 
