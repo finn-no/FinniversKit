@@ -133,7 +133,8 @@ private extension NeighborhoodProfileViewModel {
                         icon: UIImage(named: .npHouseWeather)
                     )
                 ),
-            ]
+            ],
+            banner: Banner(text: "Lurer du på hvor langt det er fra <strong>Garver Ytteborgs vei 95C</strong> til jobb, trening eller skole?", link: Link(title: "Se reisetider", url: URL(string: "https://profil.nabolag.no/135365605/reisetid?&utm_source=finn.no/web&utm_medium=travel-fhh&utm_campaign=HP&utm_term=fwa-DEV&utm_content=travelTimeBanner")), iconName: "lol")
         )
     }
 }
