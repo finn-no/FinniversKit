@@ -1,7 +1,7 @@
 import XCTest
 import FinniversKit
 
-final class HTMLParserTests: XCTestCase {
+final class HTMLStringParserTests: XCTestCase {
     let parser = HTMLStringParser()
 
     func testHTMLElementIncluded() throws {

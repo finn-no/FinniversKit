@@ -1,7 +1,7 @@
 import XCTest
 import FinniversKit
 
-final class HTMLParserStringTranslatorTests: XCTestCase {
+final class HTMLStringParserStringTranslatorTests: XCTestCase {
     let parser = HTMLStringParser()
     var translator = HTMLStringParserStringTranslator()
 
