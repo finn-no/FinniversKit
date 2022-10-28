@@ -57,4 +57,18 @@ final class HTMLStringParserTests: XCTestCase {
         let tokens = parser.tokenize(html: boldText)
         XCTAssertEqual(tokens, boldTokens)
     }
+
+    func testMixedOrder() throws {
+        let html = #"<div><b></div><i></b></i>"#
+        let reference: [HTMLStringLexer.Token] = [
+            .beginTag(name: "div", attributes: [:], isSelfClosing: false),
+            .beginTag(name: "b", attributes: [:], isSelfClosing: false),
+            .endTag(name: "div"),
+            .beginTag(name: "i", attributes: [:], isSelfClosing: false),
+            .endTag(name: "b"),
+            .endTag(name: "i"),
+        ]
+        let tokens = parser.tokenize(html: html)
+        XCTAssertEqual(tokens, reference)
+    }
 }
