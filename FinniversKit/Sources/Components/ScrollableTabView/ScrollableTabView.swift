@@ -5,7 +5,7 @@ public protocol ScrollableTabViewDelegate: AnyObject {
     func scrollableTabViewDidTapItem(_ sidescrollableView: ScrollableTabView, item: ScrollableTabViewModel.Item)
 }
 
-public class ScrollableTabView: UIView {
+public class ScrollableTabView: BottomShadowView {
 
     // MARK: - Public properties
 
@@ -67,6 +67,7 @@ public class ScrollableTabView: UIView {
     // MARK: - Setup
 
     private func setup() {
+        backgroundColor = .bgPrimary
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         scrollView.addSubview(indicatorView)
