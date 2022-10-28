@@ -6,7 +6,7 @@ import UIKit
 final class HTMLParserPreviewController: DemoViewController<UIView>, Tweakable {
     let hostingController: UIHostingController<Text>
 
-    private let parser = HTMLParser()
+    private let parser = HTMLStringParser()
     private var textView: Text = Text("") {
         didSet {
             hostingController.rootView = textView
@@ -63,8 +63,8 @@ final class HTMLParserPreviewController: DemoViewController<UIView>, Tweakable {
     }
 }
 
-extension HTMLParserTranslator where Self == HTMLParserTextViewTranslator {
-    static var defaultBody: HTMLParserTextViewTranslator {
+extension HTMLStringParserTranslator where Self == HTMLStringParserTextViewTranslator {
+    static var defaultBody: HTMLStringParserTextViewTranslator {
         return .init(
             defaultStyle: .init(font: .finnFont(.body), foregroundColor: .textPrimary),
             styleMapper: nil

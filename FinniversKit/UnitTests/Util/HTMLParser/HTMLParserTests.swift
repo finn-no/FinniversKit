@@ -2,65 +2,59 @@ import XCTest
 import FinniversKit
 
 final class HTMLParserTests: XCTestCase {
-    let parser = HTMLParser()
+    let parser = HTMLStringParser()
 
     func testHTMLElementIncluded() throws {
         let html = "<html>Foo</html>"
-        let htmlTokens: [HTMLParser.Token] = [
-            .elementBegin(name: "html", attributes: [:]),
+        let htmlTokens: [HTMLStringLexer.Token] = [
+            .beginTag(name: "html", attributes: [:], isSelfClosing: false),
             .text("Foo"),
-            .elementEnd(name: "html"),
+            .endTag(name: "html"),
         ]
-        let tokens = try parser.tokenize(html: html)
+        let tokens = parser.tokenize(html: html)
         XCTAssertEqual(tokens, htmlTokens)
     }
 
     func testTokens() throws {
         let boldText = "This is a <b>bold</b> move"
-        let boldTokens: [HTMLParser.Token] = [
-            .elementBegin(name: "html", attributes: [:]),
+        let boldTokens: [HTMLStringLexer.Token] = [
             .text("This is a "),
-            .elementBegin(name: "b", attributes: [:]),
+            .beginTag(name: "b", attributes: [:], isSelfClosing: false),
             .text("bold"),
-            .elementEnd(name: "b"),
+            .endTag(name: "b"),
             .text(" move"),
-            .elementEnd(name: "html"),
         ]
-        let tokens = try parser.tokenize(html: boldText)
+        let tokens = parser.tokenize(html: boldText)
         XCTAssertEqual(tokens, boldTokens)
     }
 
     func testTokensWithAttributes() throws {
         let boldText = "Attributed <b custom1=\"foo\" custom2=\"bar\">bold</b> element"
-        let boldTokens: [HTMLParser.Token] = [
-            .elementBegin(name: "html", attributes: [:]),
+        let boldTokens: [HTMLStringLexer.Token] = [
             .text("Attributed "),
-            .elementBegin(name: "b", attributes: [
+            .beginTag(name: "b", attributes: [
                 "custom1": "foo",
                 "custom2": "bar"
-            ]),
+            ], isSelfClosing: false),
             .text("bold"),
-            .elementEnd(name: "b"),
+            .endTag(name: "b"),
             .text(" element"),
-            .elementEnd(name: "html"),
         ]
-        let tokens = try parser.tokenize(html: boldText)
+        let tokens = parser.tokenize(html: boldText)
         XCTAssertEqual(tokens, boldTokens)
     }
 
     func testCommentToken() throws {
         let boldText = "This is a <b>bold</b><!-- Is it really? --> move"
-        let boldTokens: [HTMLParser.Token] = [
-            .elementBegin(name: "html", attributes: [:]),
+        let boldTokens: [HTMLStringLexer.Token] = [
             .text("This is a "),
-            .elementBegin(name: "b", attributes: [:]),
+            .beginTag(name: "b", attributes: [:], isSelfClosing: false),
             .text("bold"),
-            .elementEnd(name: "b"),
-            .comment(" Is it really? "),
+            .endTag(name: "b"),
+            .commentTag(text: " Is it really? "),
             .text(" move"),
-            .elementEnd(name: "html"),
         ]
-        let tokens = try parser.tokenize(html: boldText)
+        let tokens = parser.tokenize(html: boldText)
         XCTAssertEqual(tokens, boldTokens)
     }
 }

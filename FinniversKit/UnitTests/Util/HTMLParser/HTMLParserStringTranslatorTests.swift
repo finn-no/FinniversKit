@@ -2,8 +2,8 @@ import XCTest
 import FinniversKit
 
 final class HTMLParserStringTranslatorTests: XCTestCase {
-    let parser = HTMLParser()
-    var translator = HTMLParserStringTranslator()
+    let parser = HTMLStringParser()
+    var translator = HTMLStringParserStringTranslator()
 
     func testPreserveAllHTML() throws {
         let boldText = "<html>This is a <b>bold</b> move</html>"

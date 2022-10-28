@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-public final class HTMLParserTextViewTranslator: HTMLParserTranslator {
+public final class HTMLStringParserTextViewTranslator: HTMLStringParserTranslator {
     private typealias ElementNameAndStyle = (name: String, style: Style)
     public typealias StyleMapper = (_ elementName: String, _ attributes: [String: String]) -> Style?
 
@@ -25,14 +25,12 @@ public final class HTMLParserTextViewTranslator: HTMLParserTranslator {
         self.currentStyle = defaultStyle
     }
 
-    public func translate(tokens: [HTMLParser.Token]) throws -> Text {
+    public func translate(tokens: [HTMLStringLexer.Token]) throws -> Text {
         var finalTextView = Text("").applyStyle(defaultStyle)
 
         for token in tokens {
             switch token {
-            case .comment(_):
-                break
-            case .elementBegin(let name, let attributes):
+            case .beginTag(let name, let attributes, _):
                 switch name.lowercased() {
                 case "br":
                     finalTextView = finalTextView + Text("\n").applyStyle(currentStyle)
@@ -45,11 +43,13 @@ public final class HTMLParserTextViewTranslator: HTMLParserTranslator {
                 } else if let style = defaultStyleMapper(elementName: name, attributes: attributes) {
                     pushStyle(style, elementName: name)
                 }
-            case .elementEnd(let name):
+            case .endTag(let name):
                 popStyle(elementName: name)
             case .text(let text):
                 let textView = Text(text).applyStyle(currentStyle)
                 finalTextView = finalTextView + textView
+            default:
+                break
             }
         }
 
@@ -96,7 +96,7 @@ public final class HTMLParserTextViewTranslator: HTMLParserTranslator {
     }
 }
 
-extension HTMLParserTextViewTranslator {
+extension HTMLStringParserTextViewTranslator {
     public struct Style {
         public var font: Font?
         public var fontWeight: Font.Weight?
@@ -151,7 +151,7 @@ extension HTMLParserTextViewTranslator {
 }
 
 extension Text {
-    fileprivate func applyStyle(_ style: HTMLParserTextViewTranslator.Style) -> Text {
+    fileprivate func applyStyle(_ style: HTMLStringParserTextViewTranslator.Style) -> Text {
         var text = self
         if let font = style.font {
             text = text.font(font)
