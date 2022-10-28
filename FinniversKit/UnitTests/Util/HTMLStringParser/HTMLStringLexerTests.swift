@@ -48,7 +48,8 @@ final class HTMLStringLexerTests: XCTestCase {
         lexer.read(html: html)
         let reference: [HTMLStringLexer.Token] = [
             .beginTag(name: "div", attributes: [:], isSelfClosing: false),
-            .beginTag(name: "div", attributes: [:], isSelfClosing: true)
+            .beginTag(name: "div", attributes: [:], isSelfClosing: true),
+            .endTag(name: "div"),
         ]
         XCTAssertEqual(lexerDelegate.tokens, reference)
     }
@@ -60,7 +61,9 @@ final class HTMLStringLexerTests: XCTestCase {
             .beginTag(name: "div", attributes: [:], isSelfClosing: false),
             .beginTag(name: "div", attributes: [:], isSelfClosing: false),
             .beginTag(name: "div", attributes: [:], isSelfClosing: true),
+            .endTag(name: "div"),
             .beginTag(name: "div", attributes: [:], isSelfClosing: true),
+            .endTag(name: "div"),
         ]
         XCTAssertEqual(lexerDelegate.tokens, reference)
     }
@@ -126,8 +129,11 @@ final class HTMLStringLexerTests: XCTestCase {
         lexer.read(html: html)
         let reference: [HTMLStringLexer.Token] = [
             .beginTag(name: "div", attributes: [:], isSelfClosing: true),
+            .endTag(name: "div"),
             .beginTag(name: "div", attributes: [:], isSelfClosing: true),
+            .endTag(name: "div"),
             .beginTag(name: "div", attributes: [:], isSelfClosing: true),
+            .endTag(name: "div"),
         ]
         XCTAssertEqual(lexerDelegate.tokens, reference)
     }
@@ -166,6 +172,7 @@ final class HTMLStringLexerTests: XCTestCase {
             .beginTag(name: "br", attributes: [:], isSelfClosing: false),
             .text(" this"),
             .beginTag(name: "br", attributes: [:], isSelfClosing: true),
+            .endTag(name: "br"),
             .text(" is "),
             .beginTag(name: "div", attributes: ["style": "foo"], isSelfClosing: false),
             .text("custom styled"),

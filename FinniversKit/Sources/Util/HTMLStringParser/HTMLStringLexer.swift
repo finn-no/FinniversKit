@@ -117,6 +117,9 @@ public final class HTMLStringLexer {
                 let textBeforeTag = html[lastTagRange.upperBound..<currentIndex]
                 emitText(textBeforeTag)
                 emitToken(tagMatch.token)
+                if case .beginTag(let name, _, let isSelfClosing) = tagMatch.token, isSelfClosing {
+                    emitToken(.endTag(name: name))
+                }
                 currentIndex = tagMatch.range.upperBound
                 foundTagMatch = nil
                 lastTagRange = tagMatch.range
