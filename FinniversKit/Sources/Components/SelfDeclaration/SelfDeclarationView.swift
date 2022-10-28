@@ -1,61 +1,61 @@
 //
-//  Copyright © FINN.no AS, Inc. All rights reserved.
+//  SelfDeclarationView.swift
+//  FinniversKit
 //
 
-public class SelfDeclarationView: UIView {
+import SwiftUI
 
-    // MARK: - Private properties
+public struct SelfDeclarationView: View {
 
-    private lazy var introductionLabel: Label = {
-        let label = Label(style: .body, withAutoLayout: true)
-        label.numberOfLines = 0
-        return label
-    }()
+    public let vm: SelfDeclarationViewModel
 
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .vertical
-        stackView.spacing = .spacingL
-        return stackView
-    }()
-
-    // MARK: - Init
-
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
+    public init(vm: SelfDeclarationViewModel) {
+        self.vm = vm
     }
 
-    required init?(coder: NSCoder) { fatalError() }
-
-    // MARK: - Setup
-
-    private func setup() {
-        stackView.addArrangedSubview(introductionLabel)
-        stackView.setCustomSpacing(.spacingXL, after: introductionLabel)
-        addSubview(stackView)
-        stackView.fillInSuperview()
-    }
-
-    // MARK: - Public methods
-
-    public func configure(with viewModel: SelfDeclarationViewModel) {
-        introductionLabel.text = viewModel.introduction
-
-        stackView.removeDeclarationItemSubviews()
-
-        viewModel.items.forEach {
-            let view = SelfDeclarationItemView(withAutoLayout: true)
-            view.configure(with: $0)
-            stackView.addArrangedSubview(view)
+    public var body: some View {
+        HStack(alignment: .top) {
+            VStack(alignment: .leading, spacing: .spacingL) {
+                ForEach(vm.items, id: \.self.question) { item in
+                    VStack(alignment: .leading, spacing: .spacingXS) {
+                        Text(item.question)
+                            .font(.finnFont(.body))
+                        Text("\(item.answer) \(item.explanation)")
+                            .font(.finnFont(.bodyStrong))
+                    }
+                }
+            }
+            Spacer()
         }
+        .frame(
+            minWidth: 0,
+            maxWidth: .infinity,
+            minHeight: 0,
+            maxHeight: .infinity,
+            alignment: .top
+        )
     }
 }
 
-// MARK: - Private extensions
-
-private extension UIStackView {
-    func removeDeclarationItemSubviews() {
-        arrangedSubviews.filter { $0 is SelfDeclarationView }.forEach { removeArrangedSubview($0) }
+struct SelfDeclarationView_Previews: PreviewProvider {
+    static let vm = SelfDeclarationViewModel(items: [
+        .init(
+            question: "Kjente feil, mangler eller synlige skader?",
+            answer: "Ja.",
+            explanation: "Liten bulk på støtfanger foran"
+        ),
+        .init(
+            question: "Er det gjort større reparasjoner?",
+            answer: "Nei.",
+            explanation: ""
+        ),
+        .init(
+            question: "Har bilen heftelser/gjeld?",
+            answer: "Nei.",
+            explanation: ""
+        )
+    ])
+    static var previews: some View {
+        SelfDeclarationView(vm: vm)
     }
 }

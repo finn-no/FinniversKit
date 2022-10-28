@@ -3,62 +3,57 @@
 //
 
 import FinniversKit
+import SwiftUI
 
 class SelfDeclarationDemoView: UIView {
 
-    private lazy var selfDeclarationView = SelfDeclarationView(withAutoLayout: true)
-    private lazy var scrollView = UIScrollView(withAutoLayout: true)
+    private lazy var scrollView = {
+        let scrollView = UIScrollView(withAutoLayout: true)
+        scrollView.contentInset = UIEdgeInsets(all: .spacingM)
+        return scrollView
+    }()
+
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         setup()
     }
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
+        let selfDeclarationVC = UIHostingController(rootView: SelfDeclarationView(vm: .example))
+
+        guard let selfDeclarationView = selfDeclarationVC.view else { return }
         addSubview(scrollView)
         scrollView.fillInSuperview()
         scrollView.addSubview(selfDeclarationView)
-
-        NSLayoutConstraint.activate([
-            selfDeclarationView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            selfDeclarationView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-            selfDeclarationView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: .spacingM),
-            selfDeclarationView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -.spacingM),
-        ])
-
-        selfDeclarationView.configure(with: .default)
+        selfDeclarationView.fillInSuperview()
     }
 }
 
 // MARK: - Private extensions
 
 private extension SelfDeclarationViewModel {
-    static let `default`: SelfDeclarationViewModel = {
-        let introduction = "Punktene nedenfor er de vanligste årsakene til tvistesaker ved salg av bruktbil mellom private, og bør sjekkes. Selger har svart ut fra sin kjennskap til bilens historikk."
-        let items = [
-            SelfDeclarationItemViewModel(
-                question: "Mangellapp foreligger",
-                answer: "Ja",
-                explanation: "Hvis svaret er JA her betyr det at bilen har vært på EU-kontroll og ikke blitt godkjent og derfor fått en liste med ting som må utbedres før den blir godkjent."
+    static let example: SelfDeclarationViewModel = {
+        let vm = SelfDeclarationViewModel(items: [
+            .init(
+                question: "Kjente feil, mangler eller synlige skader?",
+                answer: "Ja.",
+                explanation: "Liten bulk på støtfanger foran"
             ),
-            SelfDeclarationItemViewModel(
-                question: "Bilen er brukt i næringsvirksomhet",
-                answer: "Nei",
-                explanation: "Hvis svaret er JA her betyr det at bilen har blitt brukt som drosje, leiebil, begravelsesbil eller annen næringsvirksomhet. Dette er greit å vite om da bruken ofte er mer omfattende enn vanlig privat bruk."
+            .init(
+                question: "Er det gjort større reparasjoner?",
+                answer: "Nei.",
+                explanation: ""
             ),
-            SelfDeclarationItemViewModel(
-                question: "Bilen er eller har vært chiptrimmet",
-                answer: "Vet ikke",
-                explanation: "Dersom svaret er JA her trenger ikke dette å være negativt, men det er viktig å være klar over og lurt å undersøke. Det finnes mange måter å optimalisere eller trimme en motor på, men enkelte metoder gjør at garantier og lignende kan bortfalle eller at forsikringen ikke er dekkende hvis trimmingen ikke er oppgitt til forsikringsselskapet."
-            ),
-            SelfDeclarationItemViewModel(
-                question: "Bilen har hatt en større kollisjonsskade",
-                answer: "Ja",
-                explanation: "Hvis svaret er JA her, burde du be selger for dokumentasjon på hvor og hvordan skaden har blitt reparert. Dette er fordi det kan ofte knyttes usikkerhet til om skaden er fullstendig utbedret eller ikke. "
+            .init(
+                question: "Har bilen heftelser/gjeld?",
+                answer: "Nei.",
+                explanation: ""
             )
-        ]
-        return SelfDeclarationViewModel(introduction: introduction, items: items)
+        ])
+        return vm
     }()
 }
