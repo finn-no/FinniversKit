@@ -75,24 +75,27 @@ final class HTMLStringLexerTests: XCTestCase {
     }
 
     func testBeginTagWithMultipleAttributes() throws {
-        let html = #"<div foo="bar" custom="asdf">"#
+        let html = #"<div foo="bar" custom="asdf" bar='foo'>"#
         lexer.read(html: html)
         let reference: [HTMLStringLexer.Token] = [
             .beginTag(name: "div", attributes: [
                 "foo": "bar",
-                "custom": "asdf"
+                "custom": "asdf",
+                "bar": "foo"
             ], isSelfClosing: false)
         ]
         XCTAssertEqual(lexerDelegate.tokens, reference)
     }
 
     func testTagAttributeEdgeCases() throws {
-        let html = #"<div  foo=">"   custom="<" >"#
+        let html = #"<div foo=">" custom="<" apostrophe="she said 'what?'" ampersand='she said "what?"' >"#
         lexer.read(html: html)
         let reference: [HTMLStringLexer.Token] = [
             .beginTag(name: "div", attributes: [
                 "foo": ">",
-                "custom": "<"
+                "custom": "<",
+                "apostrophe": "she said 'what?'",
+                "ampersand": "she said \"what?\""
             ], isSelfClosing: false)
         ]
         XCTAssertEqual(lexerDelegate.tokens, reference)
@@ -164,7 +167,7 @@ final class HTMLStringLexerTests: XCTestCase {
             .text(" this"),
             .beginTag(name: "br", attributes: [:], isSelfClosing: true),
             .text(" is "),
-            .beginTag(name: "div", attributes: [:], isSelfClosing: false),
+            .beginTag(name: "div", attributes: ["style": "foo"], isSelfClosing: false),
             .text("custom styled"),
             .endTag(name: "div"),
             .text("."),

@@ -34,7 +34,19 @@ public final class HTMLStringLexer {
 
      [RegExr test](https://regexr.com/70t11)
      */
-    private let tagPattern = #"<(\/)?(\w+)(?:\s+(\w+=".*?")+\s*|\s*)(\/)?>"#
+    private let tagPattern = #"<(\/)?(\w+)((?:\s+[^\s=]+=(?:"[^"]*?"|(?:'[^']*?')))+)?\s*(\/)?>"#
+
+    /**
+     Regex pattern for HTML tag attribute, like `foo="bar"`.
+
+     Capture groups:
+     1. Name
+     2. Value (ampersand `"` quoted)
+     3. Value (apostrophe `'` quoted)
+
+     [RegExr test](https://regexr.com/712ca)
+     */
+    private let tagAttributePattern = #"([^\s=]+)=(?:"([^"]*?)"|'([^']*?)')"#
 
     /**
      Regex pattern for HTML comment tag, like `<!-- foo -->`.
@@ -58,6 +70,7 @@ public final class HTMLStringLexer {
     private let documentPattern = #"<!(\w+)(?:\s*>|\s+(.*?)\s*>)"#
 
     private let tagRegex: NSRegularExpression
+    private let tagAttributeRegex: NSRegularExpression
     private let commentRegex: NSRegularExpression
     private let documentRegex: NSRegularExpression
 
@@ -65,6 +78,7 @@ public final class HTMLStringLexer {
         // The tag regex is predefined and validated, and should always compile
         // swiftlint:disable force_try
         self.tagRegex = try! NSRegularExpression(pattern: tagPattern, options: .dotMatchesLineSeparators)
+        self.tagAttributeRegex = try! NSRegularExpression(pattern: tagAttributePattern, options: .dotMatchesLineSeparators)
         self.commentRegex = try! NSRegularExpression(pattern: commentPattern, options: .dotMatchesLineSeparators)
         self.documentRegex = try! NSRegularExpression(pattern: documentPattern, options: .dotMatchesLineSeparators)
         // swiftlint:enable force_try
@@ -176,13 +190,26 @@ public final class HTMLStringLexer {
         if isEndTag {
             return TagMatch(token: .endTag(name: name), range: tagRange)
         } else {
+            var attributes: [String: String] = [:]
+            let attributesNSRange = match.range(at: 3)
+            if attributesNSRange.lowerBound != NSNotFound {
+                for match in tagAttributeRegex.matches(in: searchString, range: attributesNSRange) {
+                    guard
+                        match.numberOfRanges == 4,
+                        let nameRange = Range(match.range(at: 1), in: searchString)
+                    else { continue }
+                    let ampersandValueRange = Range(match.range(at: 2), in: searchString)
+                    let apostropheValueRange = Range(match.range(at: 3), in: searchString)
+                    var value = ""
+                    if let valueRange = ampersandValueRange ?? apostropheValueRange {
+                        value.append(String(searchString[valueRange]))
+                    }
+                    let name = String(searchString[nameRange])
+                    attributes[name] = value
+                }
+            }
             let isSelfClosingNSRange = match.range(at: 4)
             let isSelfClosing = isSelfClosingNSRange.lowerBound != NSNotFound
-            var attributes: [String: String] = [:]
-            if let attributesRange = Range(match.range(at: 3), in: searchString) {
-                let attributesString = String(searchString[attributesRange])
-                // TODO: Parse attributes
-            }
             return TagMatch(token: .beginTag(
                 name: name,
                 attributes: attributes,
