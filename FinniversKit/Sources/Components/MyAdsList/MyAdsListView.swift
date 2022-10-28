@@ -1,4 +1,5 @@
 import UIKit
+import Combine
 
 public protocol MyAdsListViewDelegate: AnyObject {
     func myAdsListView(_ view: MyAdsListView, didSelectAdAt indexPath: IndexPath)
@@ -6,14 +7,14 @@ public protocol MyAdsListViewDelegate: AnyObject {
     func myAdsListViewDidStartRefreshing(_ view: MyAdsListView)
 
     /// Optional methods.
-    func myAdsListView(_ view: MyAdsListView, scrollViewDidScroll scrollView: UIScrollView)
+    func myAdsListView(_ view: MyAdsListView, scrollViewDidChangeContentOffset scrollView: UIScrollView)
     func myAdsListView(_ view: MyAdsListView, scrollViewWillBeginDragging scrollView: UIScrollView)
     func myAdsListView(_ view: MyAdsListView, scrollViewDidEndDragging scrollView: UIScrollView, willDecelerate: Bool)
     func myAdsListView(_ view: MyAdsListView, scrollViewDidEndDecelerating scrollView: UIScrollView)
 }
 
 extension MyAdsListViewDelegate {
-    func myAdsListView(_ view: MyAdsListView, scrollViewDidScroll scrollView: UIScrollView) {}
+    func myAdsListView(_ view: MyAdsListView, scrollViewDidChangeContentOffset scrollView: UIScrollView) {}
     func myAdsListView(_ view: MyAdsListView, scrollViewWillBeginDragging scrollView: UIScrollView) {}
     func myAdsListView(_ view: MyAdsListView, scrollViewDidEndDragging scrollView: UIScrollView, willDecelerate: Bool) {}
     func myAdsListView(_ view: MyAdsListView, scrollViewDidEndDecelerating scrollView: UIScrollView) {}
@@ -29,6 +30,7 @@ public class MyAdsListView: UIView {
 
     private var dataSourceHasMoreContent = false
     private var isWaitingForMoreContent = false
+    private var contentOffsetCancellable: AnyCancellable?
     private lazy var dataSource = createDataSource()
     private weak var remoteImageViewDataSource: RemoteImageViewDataSource?
 
@@ -64,6 +66,13 @@ public class MyAdsListView: UIView {
     private func setup() {
         addSubview(collectionView)
         collectionView.fillInSuperview()
+
+        contentOffsetCancellable = collectionView
+            .publisher(for: \.contentOffset, options: .new)
+            .sink(receiveValue: { [weak self] _ in
+                guard let self = self else { return }
+                self.delegate?.myAdsListView(self, scrollViewDidChangeContentOffset: self.collectionView)
+            })
     }
 
     // MARK: - Public methods
@@ -163,10 +172,6 @@ extension MyAdsListView: UICollectionViewDelegate {
             isWaitingForMoreContent = true
             delegate?.myAdsListViewDidScrollToBottom(self)
         }
-    }
-
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        delegate?.myAdsListView(self, scrollViewDidScroll: scrollView)
     }
 
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
