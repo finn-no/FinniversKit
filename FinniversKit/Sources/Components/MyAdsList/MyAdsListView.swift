@@ -26,6 +26,11 @@ public class MyAdsListView: UIView {
 
     public weak var delegate: MyAdsListViewDelegate?
 
+    public var contentInsetBottom: CGFloat {
+        get { collectionView.contentInset.bottom }
+        set { collectionView.contentInset.bottom = newValue }
+    }
+
     // MARK: - Private properties
 
     private var dataSourceHasMoreContent = false
