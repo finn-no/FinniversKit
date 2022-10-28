@@ -7,7 +7,7 @@ import SwiftUI
 
 class SelfDeclarationDemoView: UIView {
 
-    private lazy var scrollView = {
+    private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
         scrollView.contentInset = UIEdgeInsets(all: .spacingM)
         return scrollView
