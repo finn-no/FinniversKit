@@ -35,6 +35,7 @@
 		14EBA258215A633800613E5A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EBA256215A633800613E5A /* LoadingView.swift */; };
 		14F4F1BE1FD6CEA800E9CECA /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
 		172E74FF290C1B7A00956AC2 /* HTMLStringFinnTextViewTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E74FE290C1B7A00956AC2 /* HTMLStringFinnTextViewTranslator.swift */; };
+		172E7502290FC86B00956AC2 /* HTMLText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E7501290FC86B00956AC2 /* HTMLText.swift */; };
 		179D06A82906A39D00A65E3A /* HTMLStringParserStringTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06A62906A39D00A65E3A /* HTMLStringParserStringTranslator.swift */; };
 		179D06A92906A39D00A65E3A /* HTMLStringParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06A72906A39D00A65E3A /* HTMLStringParser.swift */; };
 		179D06AD2906A3FA00A65E3A /* HTMLStringParserStringTranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06AB2906A3FA00A65E3A /* HTMLStringParserStringTranslatorTests.swift */; };
@@ -516,6 +517,7 @@
 		14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F4F1BD1FD6CEA800E9CECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		172E74FE290C1B7A00956AC2 /* HTMLStringFinnTextViewTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringFinnTextViewTranslator.swift; sourceTree = "<group>"; };
+		172E7501290FC86B00956AC2 /* HTMLText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLText.swift; sourceTree = "<group>"; };
 		179D06A62906A39D00A65E3A /* HTMLStringParserStringTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParserStringTranslator.swift; sourceTree = "<group>"; };
 		179D06A72906A39D00A65E3A /* HTMLStringParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParser.swift; sourceTree = "<group>"; };
 		179D06AB2906A3FA00A65E3A /* HTMLStringParserStringTranslatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParserStringTranslatorTests.swift; sourceTree = "<group>"; };
@@ -1104,6 +1106,14 @@
 			path = UnitTests;
 			sourceTree = "<group>";
 		};
+		172E7500290FC84B00956AC2 /* HTMLText */ = {
+			isa = PBXGroup;
+			children = (
+				172E7501290FC86B00956AC2 /* HTMLText.swift */,
+			);
+			path = HTMLText;
+			sourceTree = "<group>";
+		};
 		179D06A52906A39D00A65E3A /* HTMLStringParser */ = {
 			isa = PBXGroup;
 			children = (
@@ -1390,17 +1400,10 @@
 		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				4D37A9B828571DB400F9460D /* BadgeView */,
-				5DCE0880280FDDDA00ED7407 /* MonthAndYearPickerView */,
-				D759A7F928043EE9009E9CBB /* FrontPageTransactionView */,
-				D75E14CF27347535008EB126 /* FrontPageShelfView */,
-				D75523A8273159E900C0C7DD /* FrontPageShelfHeaderView */,
-				D7D514C227293F5D0065E2F6 /* PromotionView */,
-				AA189E80268479B100FD3A41 /* BlockUserView */,
-				DA82B1EA268B61AA005F67C3 /* LoadingRetryView */,
-				4D0CF28B261C46670008CC43 /* TransactionEntryView */,
-				4D152E722577D7C400282244 /* NavigationLinkView */,
 				CFDF39CB2385419E00D3B966 /* AddressCardView */,
+				5B9590445C86B656E972AF8E /* AddressComponentView */,
+				4D37A9B828571DB400F9460D /* BadgeView */,
+				AA189E80268479B100FD3A41 /* BlockUserView */,
 				DAB7FAAC21B690E900BF8CC6 /* BottomSheet */,
 				AF91BB95202C7487003E6366 /* Broadcast */,
 				4447F6651FDB2B110033DBC1 /* Button */,
@@ -1417,23 +1420,32 @@
 				68AE0C83EEDB0010A3AF0F5C /* FavoriteButton */,
 				9A37D8C01205DC426B502C5F /* Feedback */,
 				CFCC3D2F23686BEF002DD4CF /* FooterButtonView */,
+				D75523A8273159E900C0C7DD /* FrontPageShelfHeaderView */,
+				D75E14CF27347535008EB126 /* FrontPageShelfView */,
+				D759A7F928043EE9009E9CBB /* FrontPageTransactionView */,
 				08F0D3F222259AB800968256 /* HappinessRating */,
 				14DC126821593B0000326DC3 /* HorizontalSlide */,
+				E68D58F428DDE74F001A70CA /* HTMLLabel */,
+				172E7500290FC84B00956AC2 /* HTMLText */,
 				CFB61372229ACA5200DE283D /* IconCollection */,
 				CF136ACB220320DD00247B30 /* Infobox */,
 				9B2D17CA23E02AA200EF3B50 /* KeyValueGridView */,
 				9BBC8ADC22DF4CA2003453B6 /* Klimabrolet */,
 				4447F6741FDB2B110033DBC1 /* Label */,
-				E68D58F428DDE74F001A70CA /* HTMLLabel */,
 				9A37D55C2A64827FF8CBD6E5 /* LinkButton */,
 				44AFCE44215839F6005984DB /* LoadingIndicator */,
+				DA82B1EA268B61AA005F67C3 /* LoadingRetryView */,
 				9BEB2875231D23F500D28BAD /* LoanCalculator */,
+				5DCE0880280FDDDA00ED7407 /* MonthAndYearPickerView */,
 				89A7A63A2253376D0053D33B /* NativeAdvert */,
+				4D152E722577D7C400282244 /* NavigationLinkView */,
+				8D6807E8380DAE7E730CC80D /* NumberedListView */,
 				9A37D31426D9544712EBB534 /* ObjectPagePriceView */,
 				9A37DAE827DC33BADB4C9AAC /* ObjectPageTitleView */,
 				9B28DE7E23266C2500D69C15 /* Panel */,
 				CF13D6CB2292D2100087DA37 /* Phases */,
 				CF0F6B902360682100CA62FD /* Priming */,
+				D7D514C227293F5D0065E2F6 /* PromotionView */,
 				F2C3E95A22CB634700CED7E0 /* QuestionnaireView */,
 				CF8F024321DE0FF9004C4042 /* RefreshControl */,
 				9A37D8B81C3158FE1373F3E4 /* RemoteImageView */,
@@ -1441,7 +1453,12 @@
 				4447F69C1FDB2B110033DBC1 /* Ribbon */,
 				B01D752811A625A4D0690F25 /* RoundedImageView */,
 				9B06096623F14AF4005CB592 /* SafetyElementsView */,
+				8D680EBF14E8055C76C0A1C8 /* SaveSearchPromptView */,
+				8D6801547E743D68C510139B /* SearchListEmptyView */,
+				5B959D7A71236CBF67504D3E /* SearchView */,
 				DAA9A3A2210214B80021F7DC /* SelectionBoxes */,
+				5B959846196B48EE2080C452 /* SelectionListView */,
+				8D680E7F9086E07B63CB9D23 /* SelectionView */,
 				446EE15A2345A6AA00010818 /* SelectorTitleView */,
 				9A37D55FF47FB2736E329236 /* SelfDeclaration */,
 				714B93502537288B00801C99 /* SendInviteView */,
@@ -1452,16 +1469,10 @@
 				4447F6A31FDB2B110033DBC1 /* TextField */,
 				081F51BB222932C900026C84 /* TextView */,
 				4447F6A81FDB2B110033DBC1 /* Toast */,
+				4D0CF28B261C46670008CC43 /* TransactionEntryView */,
 				F2597C73231D1A0B00BE74EC /* VerificationView */,
 				494047FA23CDBA7600ECBCFD /* Viewings */,
 				08E9F54E2341FBC300943E5D /* VisibilityDrivenTitleView */,
-				8D680EBF14E8055C76C0A1C8 /* SaveSearchPromptView */,
-				8D6801547E743D68C510139B /* SearchListEmptyView */,
-				8D680E7F9086E07B63CB9D23 /* SelectionView */,
-				8D6807E8380DAE7E730CC80D /* NumberedListView */,
-				5B959D7A71236CBF67504D3E /* SearchView */,
-				5B9590445C86B656E972AF8E /* AddressComponentView */,
-				5B959846196B48EE2080C452 /* SelectionListView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -3672,6 +3683,7 @@
 				44587019213FA344009187BE /* RegisterViewModel.swift in Sources */,
 				9BEB287F231D488000D28BAD /* TitleValueSliderView.swift in Sources */,
 				CF7C460422257A8A001FB92C /* EarthHourContentView.swift in Sources */,
+				172E7502290FC86B00956AC2 /* HTMLText.swift in Sources */,
 				CF5CA71222F85A94007C4124 /* NeighborhoodProfileHeaderView.swift in Sources */,
 				441FE435209A24E500B04EF1 /* StandardAdRecommendationViewModel.swift in Sources */,
 				F253C51D2315601A008175FD /* VerificationActionSheet.swift in Sources */,

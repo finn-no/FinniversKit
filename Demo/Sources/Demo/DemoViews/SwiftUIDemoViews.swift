@@ -7,14 +7,19 @@ import FinniversKit
 
 public enum SwiftUIDemoViews: String, DemoViews {
     case htmlParser
+    case htmlText
     case textField
     case textView
 
     public var viewController: UIViewController {
-        if self == .htmlParser {
+        switch self {
+        case .htmlParser:
             return HTMLParserPreviewController()
+        case .htmlText:
+            return HTMLTextDemoViewController()
+        default:
+            return PreviewController(hostingController: hostingController)
         }
-        return PreviewController(hostingController: hostingController)
     }
 
     private var hostingController: UIViewController {

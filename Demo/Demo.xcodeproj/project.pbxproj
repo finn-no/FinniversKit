@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		179D06B42906D04000A65E3A /* HTMLParserTextViewTranslatorDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06B32906D04000A65E3A /* HTMLParserTextViewTranslatorDemoViews.swift */; };
+		172E7504290FE28E00956AC2 /* HTMLTextDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */; };
+		179D06B42906D04000A65E3A /* HTMLParserTextViewTranslatorDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06B32906D04000A65E3A /* HTMLParserTextViewTranslatorDemoViewController.swift */; };
 		46AE6FC4242BADC9007BB005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AE6FC3242BADC9007BB005 /* AppDelegate.swift */; };
 		46E773A4242CEF0A008A5E93 /* DemoHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77258242CEF09008A5E93 /* DemoHelpers.swift */; };
 		46E773A5242CEF0A008A5E93 /* DnaDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7725A242CEF09008A5E93 /* DnaDemoViews.swift */; };
@@ -243,7 +244,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		179D06B32906D04000A65E3A /* HTMLParserTextViewTranslatorDemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLParserTextViewTranslatorDemoViews.swift; sourceTree = "<group>"; };
+		172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextDemoViewController.swift; sourceTree = "<group>"; };
+		179D06B32906D04000A65E3A /* HTMLParserTextViewTranslatorDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLParserTextViewTranslatorDemoViewController.swift; sourceTree = "<group>"; };
 		46AE6FC0242BADC9007BB005 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46AE6FC3242BADC9007BB005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46AE6FD1242BADCD007BB005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -539,7 +541,6 @@
 				5D62FD6F25B03B4800EB882D /* DemoViews.swift */,
 				46E7725A242CEF09008A5E93 /* DnaDemoViews.swift */,
 				46E7725B242CEF09008A5E93 /* FullscreenDemoViews.swift */,
-				179D06B32906D04000A65E3A /* HTMLParserTextViewTranslatorDemoViews.swift */,
 				46E7725E242CEF09008A5E93 /* RecyclingDemoViews.swift */,
 				DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */,
 			);
@@ -1782,6 +1783,8 @@
 			children = (
 				5DA190D425A5BC5B002305A8 /* FinnTextField+Previews.swift */,
 				5DA190EF25A87EAB002305A8 /* FinnTextView+Previews.swift */,
+				179D06B32906D04000A65E3A /* HTMLParserTextViewTranslatorDemoViewController.swift */,
+				172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -2163,8 +2166,9 @@
 				46E773A9242CEF0A008A5E93 /* RecyclingDemoViews.swift in Sources */,
 				46E77448242CEF0A008A5E93 /* UserAdCellDemoView.swift in Sources */,
 				46E77468242CEF0A008A5E93 /* FavoriteFoldersListDemoView.swift in Sources */,
+				172E7504290FE28E00956AC2 /* HTMLTextDemoViewController.swift in Sources */,
 				46E77405242CEF0A008A5E93 /* HorizontalSlideDemoViewController.swift in Sources */,
-				179D06B42906D04000A65E3A /* HTMLParserTextViewTranslatorDemoViews.swift in Sources */,
+				179D06B42906D04000A65E3A /* HTMLParserTextViewTranslatorDemoViewController.swift in Sources */,
 				46E773C4242CEF0A008A5E93 /* BuyerPickerDemoData.swift in Sources */,
 				46E7740D242CEF0A008A5E93 /* FeedbackDemoView.swift in Sources */,
 				46E77454242CEF0A008A5E93 /* Tweakable.swift in Sources */,

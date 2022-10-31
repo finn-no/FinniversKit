@@ -38,9 +38,8 @@ public final class HTMLStringParserTextViewTranslator: HTMLStringParserTranslato
                 default:
                     break
                 }
-                if let style = styleMapper?(name, attributes) {
-                    pushStyle(style, elementName: name)
-                } else if let style = defaultStyleMapper(elementName: name, attributes: attributes) {
+                let styleMapper = self.styleMapper ?? defaultStyleMapper
+                if let style = styleMapper(name, attributes) {
                     pushStyle(style, elementName: name)
                 }
             case .endTag(let name):
