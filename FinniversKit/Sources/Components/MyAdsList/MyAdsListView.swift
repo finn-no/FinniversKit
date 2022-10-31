@@ -95,9 +95,8 @@ public class MyAdsListView: UIView {
 
         dataSourceHasMoreContent = hasMoreContent
         isWaitingForMoreContent = false
-        dataSource.apply(snapshot, completion: { [weak self] in
-            self?.refreshControl.endRefreshing()
-        })
+        dataSource.apply(snapshot)
+        refreshControl.endRefreshing()
     }
 }
 
