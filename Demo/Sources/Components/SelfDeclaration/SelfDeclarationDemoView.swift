@@ -23,7 +23,7 @@ class SelfDeclarationDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        let selfDeclarationVC = UIHostingController(rootView: SelfDeclarationView(vm: .example))
+        let selfDeclarationVC = UIHostingController(rootView: SelfDeclarationView(viewModel: .example))
 
         guard let selfDeclarationView = selfDeclarationVC.view else { return }
         addSubview(scrollView)
@@ -37,7 +37,7 @@ class SelfDeclarationDemoView: UIView {
 
 private extension SelfDeclarationViewModel {
     static let example: SelfDeclarationViewModel = {
-        let vm = SelfDeclarationViewModel(items: [
+        let viewModel = SelfDeclarationViewModel(items: [
             .init(
                 question: "Kjente feil, mangler eller synlige skader?",
                 answer: "Ja.",
@@ -54,6 +54,6 @@ private extension SelfDeclarationViewModel {
                 explanation: ""
             )
         ])
-        return vm
+        return viewModel
     }()
 }
