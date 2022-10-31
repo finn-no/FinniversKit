@@ -44,6 +44,11 @@ extension MyAdsListDemoView: MyAdsListViewDelegate {
 
     public func myAdsListViewDidStartRefreshing(_ view: MyAdsListView) {
         print("🔄 Did pull to refresh")
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
+            guard let self = self else { return }
+            self.myAdsListView.configure(with: self.demoAds, hasMoreContent: true)
+        })
     }
 }
 
