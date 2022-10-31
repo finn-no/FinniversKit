@@ -13,7 +13,7 @@ public protocol MyAdsListViewDelegate: AnyObject {
     func myAdsListView(_ view: MyAdsListView, scrollViewDidEndDecelerating scrollView: UIScrollView)
 }
 
-extension MyAdsListViewDelegate {
+public extension MyAdsListViewDelegate {
     func myAdsListView(_ view: MyAdsListView, scrollViewDidChangeContentOffset scrollView: UIScrollView) {}
     func myAdsListView(_ view: MyAdsListView, scrollViewWillBeginDragging scrollView: UIScrollView) {}
     func myAdsListView(_ view: MyAdsListView, scrollViewDidEndDragging scrollView: UIScrollView, willDecelerate: Bool) {}
