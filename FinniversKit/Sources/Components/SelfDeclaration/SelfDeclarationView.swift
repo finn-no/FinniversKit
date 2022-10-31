@@ -7,16 +7,16 @@ import SwiftUI
 
 public struct SelfDeclarationView: View {
 
-    public let vm: SelfDeclarationViewModel
+    public let viewModel: SelfDeclarationViewModel
 
-    public init(vm: SelfDeclarationViewModel) {
-        self.vm = vm
+    public init(viewModel: SelfDeclarationViewModel) {
+        self.viewModel = viewModel
     }
 
     public var body: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading, spacing: .spacingL) {
-                ForEach(vm.items, id: \.self.question) { item in
+                ForEach(viewModel.items, id: \.self.question) { item in
                     VStack(alignment: .leading, spacing: .spacingXS) {
                         Text(item.question)
                             .font(.finnFont(.body))
@@ -38,7 +38,7 @@ public struct SelfDeclarationView: View {
 }
 
 struct SelfDeclarationView_Previews: PreviewProvider {
-    static let vm = SelfDeclarationViewModel(items: [
+    static let viewModel = SelfDeclarationViewModel(items: [
         .init(
             question: "Kjente feil, mangler eller synlige skader?",
             answer: "Ja.",
@@ -56,6 +56,6 @@ struct SelfDeclarationView_Previews: PreviewProvider {
         )
     ])
     static var previews: some View {
-        SelfDeclarationView(vm: vm)
+        SelfDeclarationView(viewModel: viewModel)
     }
 }
