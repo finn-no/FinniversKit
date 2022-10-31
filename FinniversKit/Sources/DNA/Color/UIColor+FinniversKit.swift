@@ -232,7 +232,14 @@ import UIKit
     public class var blueGray200: UIColor {
         return UIColor(r: 225, g: 230, b: 238)
     }
-    
+
+    public class var grayLight: UIColor {
+        return UIColor(hex: "#E5E5E5")
+    }
+
+    public class var grayDark: UIColor {
+        return UIColor(hex: "#625E73")
+    }
 }
 
 // MARK: - Temporary Markets Colors
