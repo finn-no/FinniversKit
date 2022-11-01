@@ -116,11 +116,15 @@ private extension ScrollableTabView {
 // MARK: - UICollectionViewDelegate
 
 extension ScrollableTabView: UICollectionViewDelegate {
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-
-        if let itemModel = itemModels[safe: indexPath.item] {
+    public func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        if !(collectionView.indexPathsForSelectedItems?.contains(indexPath) ?? false), let itemModel = itemModels[safe: indexPath.item] {
             delegate?.scrollableTabViewDidTapItem(self, item: itemModel)
         }
+
+        return true
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 }
