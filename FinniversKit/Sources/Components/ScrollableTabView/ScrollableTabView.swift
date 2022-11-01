@@ -1,4 +1,3 @@
-import Combine
 import UIKit
 
 public protocol ScrollableTabViewDelegate: AnyObject {
