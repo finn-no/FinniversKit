@@ -13,7 +13,6 @@ class SelfDeclarationDemoView: UIView {
         return scrollView
     }()
 
-
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -23,9 +22,9 @@ class SelfDeclarationDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        let selfDeclarationVC = UIHostingController(rootView: SelfDeclarationView(viewModel: .example))
+        let selfDeclarationView = SelfDeclarationView(withAutoLayout: true)
+        selfDeclarationView.configure(with: .example)
 
-        guard let selfDeclarationView = selfDeclarationVC.view else { return }
         addSubview(scrollView)
         scrollView.fillInSuperview()
         scrollView.addSubview(selfDeclarationView)
