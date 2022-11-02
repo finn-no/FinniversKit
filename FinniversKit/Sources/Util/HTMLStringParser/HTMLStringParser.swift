@@ -3,7 +3,7 @@ import Foundation
 public protocol HTMLStringParserTranslator {
     associatedtype Output
 
-    func translate(tokens: [HTMLStringLexer.Token]) throws -> Output
+    func translate(tokens: [HTMLLexer.Token]) throws -> Output
 }
 
 public struct HTMLStringParser {
@@ -26,14 +26,14 @@ public struct HTMLStringParser {
     }
 
     public func parse<Translator>(
-        tokens: [HTMLStringLexer.Token],
+        tokens: [HTMLLexer.Token],
         translator: Translator
     ) throws -> Translator.Output where Translator: HTMLStringParserTranslator {
         return try translator.translate(tokens: tokens)
     }
 
     public func parse<Translator>(
-        tokens: [HTMLStringLexer.Token],
+        tokens: [HTMLLexer.Token],
         translator: Translator
     ) async throws -> Translator.Output where Translator: HTMLStringParserTranslator {
         return try await withCheckedThrowingContinuation { continuation in
@@ -44,14 +44,15 @@ public struct HTMLStringParser {
         }
     }
 
-    public func tokenize(html: String) -> [HTMLStringLexer.Token] {
+    public func tokenize(html: String) -> [HTMLLexer.Token] {
         let delegate = LexerDelegate()
-        let lexer = HTMLStringLexer(delegate: delegate)
-        lexer.read(html: html)
+        let lexer = HTMLLexer(html: html)
+        lexer.delegate = delegate
+        lexer.read()
         return delegate.tokens
     }
 
-    public func tokenize(html: String) async -> [HTMLStringLexer.Token] {
+    public func tokenize(html: String) async -> [HTMLLexer.Token] {
         return await withCheckedContinuation { continuation in
             Task {
                 let tokens = tokenize(html: html)
@@ -62,15 +63,12 @@ public struct HTMLStringParser {
 }
 
 extension HTMLStringParser {
-    private final class LexerDelegate: HTMLStringLexerDelegate {
-        private(set) var tokens: [HTMLStringLexer.Token] = []
+    private final class LexerDelegate: HTMLLexerDelegate {
+        private(set) var tokens: [HTMLLexer.Token] = []
 
-        // MARK: - HTMLStringLexerDelegate
+        // MARK: - HTMLLexerDelegate
 
-        func lexer(
-            _ lexer: HTMLStringLexer,
-            foundToken token: HTMLStringLexer.Token
-        ) {
+        func lexer(_ lexer: HTMLLexer, didFindToken token: HTMLLexer.Token) {
             tokens.append(token)
         }
     }

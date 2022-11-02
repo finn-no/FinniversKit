@@ -14,7 +14,7 @@ public struct HTMLStringParserStringTranslator: HTMLStringParserTranslator {
         self.stripAllHTMLElements = stripAllHTMLElements
     }
 
-    public func translate(tokens: [HTMLStringLexer.Token]) -> String {
+    public func translate(tokens: [HTMLLexer.Token]) -> String {
         var html = ""
         for token in tokens {
             switch token {
@@ -47,12 +47,14 @@ public struct HTMLStringParserStringTranslator: HTMLStringParserTranslator {
                 if stripAllHTMLElements { continue }
                 html.append("<!--\(comment)-->")
 
-            case .documentTag(let name, let text):
-                if stripAllHTMLElements { continue }
-                let nameLower = name.lowercased()
-                if omitHTMLDocumentElements, nameLower == "document" { continue }
-                let textPart = text.isEmpty ? "" : " \(text)"
-                html.append("<!\(name)\(textPart)>")
+            case .doctypeTag(let type, let legacy):
+                if stripAllHTMLElements || omitHTMLDocumentElements { continue }
+                var doctype = "<!DOCTYPE \(type)"
+                if let legacy = legacy {
+                    doctype.append(" \(legacy)")
+                }
+                doctype.append(">")
+                html.append(doctype)
             }
         }
         return html

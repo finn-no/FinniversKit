@@ -25,7 +25,7 @@ public final class HTMLStringParserTextViewTranslator: HTMLStringParserTranslato
         self.currentStyle = defaultStyle
     }
 
-    public func translate(tokens: [HTMLStringLexer.Token]) throws -> Text {
+    public func translate(tokens: [HTMLLexer.Token]) throws -> Text {
         var finalTextView = Text("").applyStyle(defaultStyle)
 
         for token in tokens {
