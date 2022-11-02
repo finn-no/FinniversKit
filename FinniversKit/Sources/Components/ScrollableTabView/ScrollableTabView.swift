@@ -24,6 +24,7 @@ public class ScrollableTabView: BottomShadowView {
 
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+        collectionView.backgroundColor = .bgPrimary
         collectionView.delegate = self
         collectionView.alwaysBounceHorizontal = true
         collectionView.alwaysBounceVertical = false
