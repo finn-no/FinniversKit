@@ -67,6 +67,15 @@ public class ScrollableTabView: BottomShadowView {
         guard let itemIndex = itemIndex else { return nil }
         return IndexPath(item: itemIndex, section: Section.main.rawValue)
     }
+
+    // MARK: - Overrides
+
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if previousTraitCollection?.preferredContentSizeCategory != traitCollection.preferredContentSizeCategory {
+            invalidateIntrinsicContentSize()
+        }
+    }
 }
 
 // MARK: - CollectionView Datasource and layout
