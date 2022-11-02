@@ -83,7 +83,7 @@ public class MyAdsListView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(with adModels: [MyAdModel], hasMoreContent: Bool) {
+    public func configure(with adModels: [MyAdModel], hasMoreContent: Bool, scrollToTop: Bool = true) {
         var snapshot = Snapshot()
         snapshot.appendSections([.ads])
         let items = adModels.map { Item.ad($0) }
@@ -96,6 +96,9 @@ public class MyAdsListView: UIView {
 
         dataSourceHasMoreContent = hasMoreContent
         isWaitingForMoreContent = false
+        if scrollToTop {
+            collectionView.setContentOffset(.zero, animated: true)
+        }
         dataSource.apply(snapshot)
         refreshControl.endRefreshing()
     }
