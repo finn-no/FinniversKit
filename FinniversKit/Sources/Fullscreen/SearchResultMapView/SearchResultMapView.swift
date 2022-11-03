@@ -90,7 +90,7 @@ public final class SearchResultMapView: UIView {
             mapView.removeOverlay(lastOverlay)
         }
 
-        mapView.addOverlay(newOverlay)
+        mapView.addOverlay(newOverlay, level: .aboveLabels)
     }
 
     public func clearMapOverlay(_ overlay: MKTileOverlay) {
