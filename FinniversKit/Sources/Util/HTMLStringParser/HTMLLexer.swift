@@ -4,9 +4,21 @@ public protocol HTMLLexerDelegate: AnyObject {
     func lexer(_ lexer: HTMLLexer, didFindToken token: HTMLLexer.Token)
 }
 
+/// A lexer to parse a HTML string into tokens representing the order of the various elements.
+///
+/// Example: The string "A <b>bold</b> move" will output
+/// ```
+/// [
+///     .text("A "),
+///     .startTag(name: "b", attributes: [:], isSelfClosing: false),
+///     .text("bold"),
+///     .endTag(name: "b"),
+///     .text(" move")
+/// ]
+/// ```
 public final class HTMLLexer {
     public enum Token: Equatable {
-        case beginTag(name: String, attributes: [String: String], isSelfClosing: Bool)
+        case startTag(name: String, attributes: [String: String], isSelfClosing: Bool)
         case endTag(name: String)
         case text(String)
         case commentTag(String)
@@ -44,6 +56,8 @@ public final class HTMLLexer {
         emitText(&accumulatedText)
     }
 
+    // MARK: - Emit functions
+
     private func emitText(_ text: inout String) {
         guard !text.isEmpty else { return }
         emitToken(.text(text))
@@ -53,6 +67,8 @@ public final class HTMLLexer {
     private func emitToken(_ token: Token) {
         delegate?.lexer(self, didFindToken: token)
     }
+
+    // MARK: - String and character identification
 
     private func isAsciiAlphanumeric(_ character: Character) -> Bool {
         return CharacterSet.asciiAlphanumerics.contains(character)
@@ -65,6 +81,8 @@ public final class HTMLLexer {
     private func isEndOfTag(_ character: Character) -> Bool {
         return character == ">" || character == "/"
     }
+
+    // MARK: - Scan helper functions
 
     private var currentCharacter: Character? {
         return scanner.currentCharacter
@@ -110,6 +128,19 @@ public final class HTMLLexer {
         return scanner.scanUpToString(string)
     }
 
+    @discardableResult
+    private func skipAsciiWhitespace() -> Bool {
+        repeat {
+            guard
+                let currentChar = currentCharacter,
+                isAsciiWhitespace(currentChar)
+            else { break }
+        } while scanCharacter() != nil
+        return true
+    }
+
+    // MARK: - Scan functions
+
     private func scanTag() -> Token? {
         guard
             scanCharacter() == "<",
@@ -134,7 +165,36 @@ public final class HTMLLexer {
     }
 
     private func scanDoctypeTag() -> Token? {
-        return nil
+        guard
+            scanCharacter()?.uppercased() == "!",
+            scanCharacter()?.uppercased() == "D",
+            scanCharacter()?.uppercased() == "O",
+            scanCharacter()?.uppercased() == "C",
+            scanCharacter()?.uppercased() == "T",
+            scanCharacter()?.uppercased() == "Y",
+            scanCharacter()?.uppercased() == "P",
+            scanCharacter()?.uppercased() == "E",
+            skipAsciiWhitespace()
+        else { return nil }
+        let typeStartIndex = currentIndex
+        guard
+            scanCharacter()?.lowercased() == "h",
+            scanCharacter()?.lowercased() == "t",
+            scanCharacter()?.lowercased() == "m",
+            scanCharacter()?.lowercased() == "l"
+        else { return nil }
+        let type = scanner.string[typeStartIndex..<currentIndex]
+        guard
+            skipAsciiWhitespace(),
+            let nextChar = currentCharacter
+        else { return nil }
+        if nextChar == ">" {
+            _ = scanCharacter()
+            return .doctypeTag(type: String(type), legacy: nil)
+        }
+        guard let legacyText = scanUpToString(">") else { return nil }
+        _ = scanCharacter()
+        return .doctypeTag(type: String(type), legacy: legacyText)
     }
 
     private func scanBeginTag() -> Token? {
@@ -159,7 +219,7 @@ public final class HTMLLexer {
         if isEndOfTag(currentChar) {
             var isSelfClosing = false
             guard scanEndOfTag(isSelfClosing: &isSelfClosing) else { return nil }
-            return .beginTag(name: name, attributes: [:], isSelfClosing: isSelfClosing)
+            return .startTag(name: name, attributes: [:], isSelfClosing: isSelfClosing)
         }
 
         var attributes: [String: String] = [:]
@@ -168,7 +228,7 @@ public final class HTMLLexer {
         }
         var isSelfClosing = false
         guard scanEndOfTag(isSelfClosing: &isSelfClosing) else { return nil }
-        return .beginTag(name: name, attributes: attributes, isSelfClosing: isSelfClosing)
+        return .startTag(name: name, attributes: attributes, isSelfClosing: isSelfClosing)
     }
 
     private func scanEndTag() -> Token? {
@@ -295,20 +355,9 @@ public final class HTMLLexer {
         let value = scanner.string[valueStartIndex..<scanner.currentIndex]
         return String(value)
     }
-
-    @discardableResult
-    private func skipAsciiWhitespace() -> Bool {
-        repeat {
-            guard
-                let currentChar = currentCharacter,
-                isAsciiWhitespace(currentChar)
-            else { break }
-        } while scanCharacter() != nil
-        return true
-    }
 }
 
-extension Scanner {
+fileprivate extension Scanner {
     var currentCharacter: Character? {
         if isAtEnd { return nil }
         return string[currentIndex]

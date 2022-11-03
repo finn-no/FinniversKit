@@ -18,7 +18,7 @@ public struct HTMLStringParserStringTranslator: HTMLStringParserTranslator {
         var html = ""
         for token in tokens {
             switch token {
-            case .beginTag(let name, let attributes, let isSelfClosing):
+            case .startTag(let name, let attributes, let isSelfClosing):
                 let nameLower = name.lowercased()
                 if stripAllHTMLElements {
                     if nameLower == "br" {

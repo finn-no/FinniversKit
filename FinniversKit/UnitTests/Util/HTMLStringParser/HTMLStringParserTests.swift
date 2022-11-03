@@ -7,7 +7,7 @@ final class HTMLStringParserTests: XCTestCase {
     func testHTMLElementIncluded() throws {
         let html = "<html>Foo</html>"
         let htmlTokens: [HTMLLexer.Token] = [
-            .beginTag(name: "html", attributes: [:], isSelfClosing: false),
+            .startTag(name: "html", attributes: [:], isSelfClosing: false),
             .text("Foo"),
             .endTag(name: "html"),
         ]
@@ -19,7 +19,7 @@ final class HTMLStringParserTests: XCTestCase {
         let boldText = "This is a <b>bold</b> move"
         let boldTokens: [HTMLLexer.Token] = [
             .text("This is a "),
-            .beginTag(name: "b", attributes: [:], isSelfClosing: false),
+            .startTag(name: "b", attributes: [:], isSelfClosing: false),
             .text("bold"),
             .endTag(name: "b"),
             .text(" move"),
@@ -32,7 +32,7 @@ final class HTMLStringParserTests: XCTestCase {
         let boldText = "Attributed <b custom1=\"foo\" custom2=\"bar\">bold</b> element"
         let boldTokens: [HTMLLexer.Token] = [
             .text("Attributed "),
-            .beginTag(name: "b", attributes: [
+            .startTag(name: "b", attributes: [
                 "custom1": "foo",
                 "custom2": "bar"
             ], isSelfClosing: false),
@@ -48,7 +48,7 @@ final class HTMLStringParserTests: XCTestCase {
         let boldText = "This is a <b>bold</b><!-- Is it really? --> move"
         let boldTokens: [HTMLLexer.Token] = [
             .text("This is a "),
-            .beginTag(name: "b", attributes: [:], isSelfClosing: false),
+            .startTag(name: "b", attributes: [:], isSelfClosing: false),
             .text("bold"),
             .endTag(name: "b"),
             .commentTag(" Is it really? "),
@@ -61,10 +61,10 @@ final class HTMLStringParserTests: XCTestCase {
     func testMixedOrder() throws {
         let html = #"<div><b></div><i></b></i>"#
         let reference: [HTMLLexer.Token] = [
-            .beginTag(name: "div", attributes: [:], isSelfClosing: false),
-            .beginTag(name: "b", attributes: [:], isSelfClosing: false),
+            .startTag(name: "div", attributes: [:], isSelfClosing: false),
+            .startTag(name: "b", attributes: [:], isSelfClosing: false),
             .endTag(name: "div"),
-            .beginTag(name: "i", attributes: [:], isSelfClosing: false),
+            .startTag(name: "i", attributes: [:], isSelfClosing: false),
             .endTag(name: "b"),
             .endTag(name: "i"),
         ]

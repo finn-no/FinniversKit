@@ -29,7 +29,7 @@ public final class HTMLStringParserStyleTranslator: HTMLStringParserTranslator {
         var styledText: [StyledText] = []
         for token in tokens {
             switch token {
-            case .beginTag(let name, let attributes, _):
+            case .startTag(let name, let attributes, _):
                 switch name.lowercased() {
                 case "br":
                     styledText.append(StyledText(text: "\n", style: currentStyle))
