@@ -1,13 +1,11 @@
 import SwiftUI
+import UIKit
 
 public struct HTMLText: View {
     public let html: String
 
-    private let htmlParser: HTMLStringParser
-
     public init(_ html: String) {
         self.html = html
-        self.htmlParser = HTMLStringParser()
     }
 
     public var body: some View {
@@ -16,33 +14,49 @@ public struct HTMLText: View {
 
     private func htmlTextHelper() -> some View {
         do {
-            return try htmlParser.parse(html: html, translator: finnTextViewTranslator)
+            let htmlParser = HTMLStringParser()
+            let translator = HTMLStringParserStyleTranslator.finnStyle
+            let styledTexts = try htmlParser.parse(html: html, translator: translator)
+            return styledTexts.reduce(into: Text("").applyStyle(translator.defaultStyle)) { textView, styledText in
+                textView = textView + Text(styledText.text).applyStyle(styledText.style)
+            }
         } catch {
             return Text(html)
         }
     }
+}
 
-    private var finnTextViewTranslator: HTMLStringParserTextViewTranslator = {
-        return HTMLStringParserTextViewTranslator(defaultStyle: .init(
-            font: .finnFont(.body),
-            foregroundColor: .textPrimary
-        )) { elementName, attributes in
-            var style = HTMLStringParserTextViewTranslator.Style()
-            switch elementName.lowercased() {
-            case "b":
-                style.fontWeight = .bold
-            case "span":
-                if let styleAttrib = attributes["style"], styleAttrib == "color:tjt-price-highlight" {
-                    style.foregroundColor = .textCritical
-                }
-            case "del":
-                style.strikethrough = true
-            default:
-                break
-            }
-            return style
+extension Text {
+    fileprivate func applyStyle(_ style: HTMLStringParserStyleTranslator.Style) -> Text {
+        var text = self
+        if let font = style.font {
+            text = text.font(Font(font))
         }
-    }()
+        if let fontWeight = style.fontWeight {
+            text = text.fontWeight(Font.Weight(fontWeight))
+        }
+        if let foregroundColor = style.foregroundColor {
+            text = text.foregroundColor(Color(foregroundColor))
+        }
+        if let italic = style.italic, italic == true {
+            text = text.italic()
+        }
+        if let strikethrough = style.strikethrough, strikethrough == true {
+            var color: Color?
+            if let strikethroughColor = style.strikethroughColor {
+                color = Color(strikethroughColor)
+            }
+            text = text.strikethrough(color: color)
+        }
+        if let underline = style.underline, underline == true {
+            var color: Color?
+            if let underlineColor = style.underlineColor {
+                color = Color(underlineColor)
+            }
+            text = text.underline(color: color)
+        }
+        return text
+    }
 }
 
 struct HTMLText_Previews: PreviewProvider {

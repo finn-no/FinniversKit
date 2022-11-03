@@ -1,7 +1,7 @@
 import Foundation
-import SwiftUI
+import UIKit
 
-public final class HTMLStringParserTextViewTranslator: HTMLStringParserTranslator {
+public final class HTMLStringParserStyleTranslator: HTMLStringParserTranslator {
     private typealias ElementNameAndStyle = (name: String, style: Style)
     public typealias StyleMapper = (_ elementName: String, _ attributes: [String: String]) -> Style?
 
@@ -10,10 +10,10 @@ public final class HTMLStringParserTextViewTranslator: HTMLStringParserTranslato
         let style: Style
     }
 
-    private let defaultStyle: Style
+    let defaultStyle: Style
+    private(set) var currentStyle: Style
     private let styleMapper: StyleMapper?
     private var styleStack: [StyleInfo]
-    private var currentStyle: Style
 
     public init(
         defaultStyle: Style,
@@ -25,15 +25,14 @@ public final class HTMLStringParserTextViewTranslator: HTMLStringParserTranslato
         self.currentStyle = defaultStyle
     }
 
-    public func translate(tokens: [HTMLLexer.Token]) throws -> Text {
-        var finalTextView = Text("").applyStyle(defaultStyle)
-
+    public func translate(tokens: [HTMLLexer.Token]) throws -> [StyledText] {
+        var styledText: [StyledText] = []
         for token in tokens {
             switch token {
             case .beginTag(let name, let attributes, _):
                 switch name.lowercased() {
                 case "br":
-                    finalTextView = finalTextView + Text("\n").applyStyle(currentStyle)
+                    styledText.append(StyledText(text: "\n", style: currentStyle))
                     continue
                 default:
                     break
@@ -45,14 +44,12 @@ public final class HTMLStringParserTextViewTranslator: HTMLStringParserTranslato
             case .endTag(let name):
                 popStyle(elementName: name)
             case .text(let text):
-                let textView = Text(text).applyStyle(currentStyle)
-                finalTextView = finalTextView + textView
+                styledText.append(StyledText(text: text, style: currentStyle))
             default:
                 break
             }
         }
-
-        return finalTextView
+        return styledText
     }
 
     private func defaultStyleMapper(elementName: String, attributes: [String: String]) -> Style? {
@@ -95,26 +92,26 @@ public final class HTMLStringParserTextViewTranslator: HTMLStringParserTranslato
     }
 }
 
-extension HTMLStringParserTextViewTranslator {
+extension HTMLStringParserStyleTranslator {
     public struct Style {
-        public var font: Font?
-        public var fontWeight: Font.Weight?
-        public var foregroundColor: Color?
-        public var italic: Bool
-        public var strikethrough: Bool
-        public var strikethroughColor: Color?
-        public var underline: Bool
-        public var underlineColor: Color?
+        public var font: UIFont?
+        public var fontWeight: UIFont.Weight?
+        public var foregroundColor: UIColor?
+        public var italic: Bool?
+        public var strikethrough: Bool?
+        public var strikethroughColor: UIColor?
+        public var underline: Bool?
+        public var underlineColor: UIColor?
 
         public init(
-            font: Font? = nil,
-            fontWeight: Font.Weight? = nil,
-            foregroundColor: Color? = nil,
-            italic: Bool = false,
-            strikethrough: Bool = false,
-            strikethroughColor: Color? = nil,
-            underline: Bool = false,
-            underlineColor: Color? = nil
+            font: UIFont? = nil,
+            fontWeight: UIFont.Weight? = nil,
+            foregroundColor: UIColor? = nil,
+            italic: Bool? = nil,
+            strikethrough: Bool? = nil,
+            strikethroughColor: UIColor? = nil,
+            underline: Bool? = nil,
+            underlineColor: UIColor? = nil
         ) {
             self.font = font
             self.fontWeight = fontWeight
@@ -136,40 +133,31 @@ extension HTMLStringParserTextViewTranslator {
             if let foregroundColor = otherStyle.foregroundColor {
                 self.foregroundColor = foregroundColor
             }
-            self.italic = otherStyle.italic
-            self.strikethrough = otherStyle.strikethrough
+            if let italic = otherStyle.italic {
+                self.italic = italic
+            }
+            if let strikethrough = otherStyle.strikethrough {
+                self.strikethrough = strikethrough
+            }
             if let strikethroughColor = otherStyle.strikethroughColor {
                 self.strikethroughColor = strikethroughColor
             }
-            self.underline = otherStyle.underline
+            if let underline = otherStyle.underline {
+                self.underline = underline
+            }
             if let underlineColor = otherStyle.underlineColor {
                 self.underlineColor = underlineColor
             }
         }
     }
-}
 
-extension Text {
-    fileprivate func applyStyle(_ style: HTMLStringParserTextViewTranslator.Style) -> Text {
-        var text = self
-        if let font = style.font {
-            text = text.font(font)
+    public struct StyledText {
+        public let text: String
+        public let style: Style
+
+        public init(text: String, style: Style) {
+            self.text = text
+            self.style = style
         }
-        if let fontWeight = style.fontWeight {
-            text = text.fontWeight(fontWeight)
-        }
-        if let foregroundColor = style.foregroundColor {
-            text = text.foregroundColor(foregroundColor)
-        }
-        if style.italic {
-            text = text.italic()
-        }
-        if style.strikethrough {
-            text = text.strikethrough(color: style.strikethroughColor)
-        }
-        if style.underline {
-            text = text.underline(color: style.underlineColor)
-        }
-        return text
     }
 }

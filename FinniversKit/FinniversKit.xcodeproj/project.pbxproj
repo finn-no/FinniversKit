@@ -34,14 +34,15 @@
 		14DC127121593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC126D21593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift */; };
 		14EBA258215A633800613E5A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EBA256215A633800613E5A /* LoadingView.swift */; };
 		14F4F1BE1FD6CEA800E9CECA /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
-		172E74FF290C1B7A00956AC2 /* HTMLStringFinnTextViewTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E74FE290C1B7A00956AC2 /* HTMLStringFinnTextViewTranslator.swift */; };
 		172E7502290FC86B00956AC2 /* HTMLText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E7501290FC86B00956AC2 /* HTMLText.swift */; };
 		177A86CF2912B98C00F02088 /* CharacterSetExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A86CE2912B98C00F02088 /* CharacterSetExtensions.swift */; };
+		177A871C2913B40900F02088 /* HTMLStringParserStyleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A871B2913B40900F02088 /* HTMLStringParserStyleTranslator.swift */; };
+		177A871E2913B87400F02088 /* HTMLTextFinnStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A871D2913B87400F02088 /* HTMLTextFinnStyle.swift */; };
+		177A876A2913EE2F00F02088 /* FontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A87692913EE2F00F02088 /* FontExtensions.swift */; };
 		179D06A82906A39D00A65E3A /* HTMLStringParserStringTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06A62906A39D00A65E3A /* HTMLStringParserStringTranslator.swift */; };
 		179D06A92906A39D00A65E3A /* HTMLStringParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06A72906A39D00A65E3A /* HTMLStringParser.swift */; };
 		179D06AD2906A3FA00A65E3A /* HTMLStringParserStringTranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06AB2906A3FA00A65E3A /* HTMLStringParserStringTranslatorTests.swift */; };
 		179D06AE2906A3FA00A65E3A /* HTMLStringParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06AC2906A3FA00A65E3A /* HTMLStringParserTests.swift */; };
-		179D06B02906A68900A65E3A /* HTMLStringParserTextViewTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06AF2906A68900A65E3A /* HTMLStringParserTextViewTranslator.swift */; };
 		179D06B62907D66E00A65E3A /* HTMLLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06B52907D66E00A65E3A /* HTMLLexer.swift */; };
 		17E232F5290A7E71003DC8F7 /* HTMLLexerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */; };
 		431875C1211180F100D71723 /* BuyerPickerProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */; };
@@ -517,14 +518,15 @@
 		14EBA256215A633800613E5A /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F4F1BD1FD6CEA800E9CECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		172E74FE290C1B7A00956AC2 /* HTMLStringFinnTextViewTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringFinnTextViewTranslator.swift; sourceTree = "<group>"; };
 		172E7501290FC86B00956AC2 /* HTMLText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLText.swift; sourceTree = "<group>"; };
 		177A86CE2912B98C00F02088 /* CharacterSetExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSetExtensions.swift; sourceTree = "<group>"; };
+		177A871B2913B40900F02088 /* HTMLStringParserStyleTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringParserStyleTranslator.swift; sourceTree = "<group>"; };
+		177A871D2913B87400F02088 /* HTMLTextFinnStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextFinnStyle.swift; sourceTree = "<group>"; };
+		177A87692913EE2F00F02088 /* FontExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtensions.swift; sourceTree = "<group>"; };
 		179D06A62906A39D00A65E3A /* HTMLStringParserStringTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParserStringTranslator.swift; sourceTree = "<group>"; };
 		179D06A72906A39D00A65E3A /* HTMLStringParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParser.swift; sourceTree = "<group>"; };
 		179D06AB2906A3FA00A65E3A /* HTMLStringParserStringTranslatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParserStringTranslatorTests.swift; sourceTree = "<group>"; };
 		179D06AC2906A3FA00A65E3A /* HTMLStringParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParserTests.swift; sourceTree = "<group>"; };
-		179D06AF2906A68900A65E3A /* HTMLStringParserTextViewTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringParserTextViewTranslator.swift; sourceTree = "<group>"; };
 		179D06B52907D66E00A65E3A /* HTMLLexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLexer.swift; sourceTree = "<group>"; };
 		17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLexerTests.swift; sourceTree = "<group>"; };
 		431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerProfileCell.swift; sourceTree = "<group>"; };
@@ -1111,6 +1113,7 @@
 		172E7500290FC84B00956AC2 /* HTMLText */ = {
 			isa = PBXGroup;
 			children = (
+				177A871D2913B87400F02088 /* HTMLTextFinnStyle.swift */,
 				172E7501290FC86B00956AC2 /* HTMLText.swift */,
 			);
 			path = HTMLText;
@@ -1119,11 +1122,10 @@
 		179D06A52906A39D00A65E3A /* HTMLStringParser */ = {
 			isa = PBXGroup;
 			children = (
-				172E74FE290C1B7A00956AC2 /* HTMLStringFinnTextViewTranslator.swift */,
 				179D06B52907D66E00A65E3A /* HTMLLexer.swift */,
 				179D06A72906A39D00A65E3A /* HTMLStringParser.swift */,
 				179D06A62906A39D00A65E3A /* HTMLStringParserStringTranslator.swift */,
-				179D06AF2906A68900A65E3A /* HTMLStringParserTextViewTranslator.swift */,
+				177A871B2913B40900F02088 /* HTMLStringParserStyleTranslator.swift */,
 			);
 			path = HTMLStringParser;
 			sourceTree = "<group>";
@@ -2455,9 +2457,10 @@
 		9BB680302462F791001ADACF /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				177A87692913EE2F00F02088 /* FontExtensions.swift */,
 				DA5A858B24617DF000AC0DFE /* ImageExtensions.swift */,
-				9BB680312462F7AC001ADACF /* View+Extensions.swift */,
 				5DA190C625A4A7E0002305A8 /* Transition+Extensions.swift */,
+				9BB680312462F7AC001ADACF /* View+Extensions.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -3481,6 +3484,7 @@
 				918C8A4623A387BD00B566DE /* NativeAdvertDetailsContainer.swift in Sources */,
 				CFF9727521C3E92700C85238 /* BannerTransparencyViewModel.swift in Sources */,
 				45EDD62A20A1CCDF008F4503 /* ConsentTransparencyInfoView.swift in Sources */,
+				177A871E2913B87400F02088 /* HTMLTextFinnStyle.swift in Sources */,
 				9BCDFC7422E09DF700A80D7F /* KlimabroletActionsView.swift in Sources */,
 				91D7F3B62497918400912BC3 /* ConfettiView.swift in Sources */,
 				DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */,
@@ -3758,7 +3762,6 @@
 				082D80CF21C13E8B00831BDE /* ChristmasOrnamentView.swift in Sources */,
 				449C60B4234DD85C00C51A63 /* ShadowScrollView.swift in Sources */,
 				CF164D212310138900250822 /* FavoriteAdActionHeaderView.swift in Sources */,
-				179D06B02906A68900A65E3A /* HTMLStringParserTextViewTranslator.swift in Sources */,
 				45B2E06A207CF5C100C68B92 /* StringExtensions.swift in Sources */,
 				E87A7BF328ED6AE0007094F2 /* NeighborhoodProfileBannerView.swift in Sources */,
 				AA189E82268479DB00FD3A41 /* BlockUserView.swift in Sources */,
@@ -3833,12 +3836,12 @@
 				449C60B5234DD85C00C51A63 /* ShadowView.swift in Sources */,
 				9A37D6BC5F45EACE68F4EF37 /* FavoriteAdsListEmptyView.swift in Sources */,
 				9A37D30A78EB61643224B799 /* HorizontalIconCollectionViewCell.swift in Sources */,
+				177A871C2913B40900F02088 /* HTMLStringParserStyleTranslator.swift in Sources */,
 				9A37DBFD486B7C3CFDA8CBF4 /* SelfDeclarationView.swift in Sources */,
 				9A37D8D25E07F1F1F3875044 /* SelfDeclarationViewModel.swift in Sources */,
 				9A37DA10C8A9D0ABD161B810 /* SelfDeclarationItemViewModel.swift in Sources */,
 				9A37D1D9D2872EC52AF374A2 /* SelfDeclarationItemView.swift in Sources */,
 				9A37DAAFC21354151CA7FC47 /* UIStackViewExtensions.swift in Sources */,
-				172E74FF290C1B7A00956AC2 /* HTMLStringFinnTextViewTranslator.swift in Sources */,
 				9A37D8FB2E0EB9F3A172E23A /* ObjectPagePriceView.swift in Sources */,
 				9A37DEBA80091CD61954E2B9 /* ObjectPagePriceViewModel.swift in Sources */,
 				9A37DA7B24E02E5E9048823A /* LinkButtonListView.swift in Sources */,
@@ -3870,6 +3873,7 @@
 				ADC5C9704E980F30DB92ECF6 /* CollapsibleContentView+Style.swift in Sources */,
 				5B959745935CC23FC0F17ACE /* MultilineButton.swift in Sources */,
 				5B9596721C36A36728C6E6AD /* OverflowCollectionView.swift in Sources */,
+				177A876A2913EE2F00F02088 /* FontExtensions.swift in Sources */,
 				5B9598434FDB0BEC62D2D91D /* OverflowCollectionViewCell.swift in Sources */,
 				5B95990406E586D6E278E80E /* SearchView.swift in Sources */,
 				5B9590BF11466FFFC29766C3 /* SelectionListView.swift in Sources */,

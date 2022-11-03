@@ -6,15 +6,12 @@ import SwiftUI
 import FinniversKit
 
 public enum SwiftUIDemoViews: String, DemoViews {
-    case htmlParser
     case htmlText
     case textField
     case textView
 
     public var viewController: UIViewController {
         switch self {
-        case .htmlParser:
-            return HTMLParserPreviewController()
         case .htmlText:
             return HTMLTextDemoViewController()
         default:
