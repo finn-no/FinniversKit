@@ -46,7 +46,7 @@ class LinkButtonView: UIView {
     private lazy var externalImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = externalImage
-        imageView.tintColor = .externalIconColor
+        imageView.tintColor = .borderDefault
         return imageView
     }()
 
@@ -89,7 +89,7 @@ class LinkButtonView: UIView {
         super.init(frame: .zero)
 
         externalImageView.isHidden = !isExternal
-        externalImageView.tintColor = externalIconColor ?? .externalIconColor
+        externalImageView.tintColor = externalIconColor ?? .borderDefault
         linkButton.setTitle(buttonTitle, for: .normal)
         subtitleLabel.text = subtitle
         subtitleLabel.isHidden = subtitle?.isEmpty ?? true
@@ -117,10 +117,6 @@ class LinkButtonView: UIView {
 }
 
 // MARK: - Private extensions
-
-private extension UIColor {
-    static var externalIconColor = dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
-}
 
 private extension Button.Style {
     static var defaultButtonStyle = Button.Style.link.overrideStyle(smallFont: .body)
