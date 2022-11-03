@@ -8,13 +8,13 @@ public struct AddressCardViewModel {
     public let title: String
     public let subtitle: String
     public let copyButtonTitle: String
-    public let getDirectionsButtonTitle: String
+    public let getDirectionsButtonTitle: String?
 
     public init(
         title: String,
         subtitle: String,
         copyButtonTitle: String,
-        getDirectionsButtonTitle: String
+        getDirectionsButtonTitle: String? = nil
     ) {
         self.title = title
         self.subtitle = subtitle
