@@ -34,6 +34,7 @@ public protocol ColorProvider {
     var iconPrimary: UIColor { get }
     var iconSecondary: UIColor { get }
     var iconTertiary: UIColor { get }
+    var borderDefault: UIColor { get }
 }
 
 // MARK: - Default FINN colors
@@ -76,7 +77,7 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var btnDisabled: UIColor {
-        .dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
+        .borderDefault
     }
 
     public var btnCritical: UIColor {
@@ -104,7 +105,7 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var textDisabled: UIColor {
-        .dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
+        .borderDefault
     }
 
     public var textCritical: UIColor {
@@ -132,11 +133,11 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var tableViewSeparator: UIColor {
-        .dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
+        .borderDefault
     }
 
     public var imageBorder: UIColor {
-        .dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
+        .borderDefault
     }
 
     public var decorationSubtle: UIColor {
@@ -153,5 +154,9 @@ public struct DefaultColorProvider: ColorProvider {
 
     public var iconTertiary: UIColor {
         return .textTertiary
+    }
+
+    public var borderDefault: UIColor {
+        return .dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
 }
