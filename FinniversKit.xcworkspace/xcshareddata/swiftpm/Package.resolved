@@ -1,16 +1,13 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "swift-snapshot-testing",
-        "repositoryURL": "https://github.com/pimms/swift-snapshot-testing.git",
-        "state": {
-          "branch": null,
-          "revision": "0efeef44df913fe60ea868f037f271ac927a8e8c",
-          "version": null
-        }
+  "pins" : [
+    {
+      "identity" : "swift-snapshot-testing",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pimms/swift-snapshot-testing.git",
+      "state" : {
+        "revision" : "0efeef44df913fe60ea868f037f271ac927a8e8c"
       }
-    ]
-  },
-  "version": 1
+    }
+  ],
+  "version" : 2
 }

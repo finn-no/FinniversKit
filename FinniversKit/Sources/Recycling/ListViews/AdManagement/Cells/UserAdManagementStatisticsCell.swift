@@ -134,7 +134,7 @@ extension UserAdManagementStatisticsCell {
         private lazy var iconImageView: UIImageView = {
             let imageView = UIImageView(withAutoLayout: true)
             imageView.image = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
-            imageView.tintColor = .fullstatisticIconTint
+            imageView.tintColor = .borderDefault
 
             return imageView
         }()
@@ -163,11 +163,5 @@ extension UserAdManagementStatisticsCell {
                 iconImageView.heightAnchor.constraint(equalToConstant: iconSize),
             ])
         }
-    }
-}
-
-extension UIColor {
-    public class var fullstatisticIconTint: UIColor {
-        dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
 }
