@@ -121,6 +121,10 @@ import UIKit
     public class var iconTertiary: UIColor {
         Config.colorProvider.iconTertiary
     }
+
+    public class var borderDefault: UIColor {
+        Config.colorProvider.borderDefault
+    }
 }
 
 // MARK: - FINN UIColors
@@ -149,12 +153,16 @@ import UIKit
         return UIColor(r: 118, g: 118, b: 118)
     }
 
+    public class var darkStone: UIColor {
+        return UIColor(hex: "#8A8EA1")
+    }
+
     public class var sardine: UIColor {
-        return UIColor(r: 195, g: 204, b: 217)
+        return UIColor(hex: "#C3CCD9")
     }
 
     public class var darkSardine: UIColor {
-        return UIColor(hex: "434359")
+        return UIColor(hex: "#434359")
     }
 
     public class var salmon: UIColor {
@@ -189,6 +197,10 @@ import UIKit
         return UIColor(r: 246, g: 248, b: 251)
     }
 
+    public class var darkMarble: UIColor {
+        return UIColor(hex: "#13131A")
+    }
+
     public class var midnightBackground: UIColor {
         return UIColor(hex: "1D1D26")
     }
@@ -207,6 +219,22 @@ import UIKit
 
     public class var lime: UIColor {
         return UIColor(hex: "#007200")
+    }
+
+    public class var green500: UIColor {
+        return UIColor(hex: "#18C884")
+    }
+
+    public class var green700: UIColor {
+        return UIColor(hex: "#217A5F")
+    }
+    
+    public class var blueGray100: UIColor {
+        return UIColor(r: 241, g: 244, b: 249)
+    }
+
+    public class var blueGray200: UIColor {
+        return UIColor(r: 225, g: 230, b: 238)
     }
 }
 
@@ -534,6 +562,15 @@ public extension UIColor {
                 return defaultColor
             }
         }
+    }
+
+    /// Returns hexadecimal represetation of a color.
+    var hexString: String {
+        let components = self.cgColor.components
+        let red = components?[0] ?? 0.0
+        let green = components?[1] ?? 0.0
+        let blue = components?[2] ?? 0.0
+        return  String(format: "#%02x%02x%02x", (Int)(red * 255), (Int)(green * 255), (Int)(blue * 255))
     }
 
     @available(*, deprecated, message: "Use dynamicColor(defaultColor:darkModeColor:) instead.")

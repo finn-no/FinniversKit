@@ -13,13 +13,25 @@ open class IconTitleTableViewCell: BasicTableViewCell {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
+    
+    open lazy var externalIconImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
 
     // MARK: - Private properties
 
     let iconSize: CGFloat = 24
+    let externalIconSize: CGFloat = 16
 
     private lazy var stackViewToIconConstraint = stackView.leadingAnchor.constraint(
         equalTo: iconImageView.trailingAnchor, constant: .spacingM
+    )
+    
+    
+    private lazy var stackViewToExternalIconConstraint = stackView.trailingAnchor.constraint(
+        lessThanOrEqualTo: externalIconImageView.leadingAnchor, constant: -.spacingS
     )
 
     // MARK: - Setup
@@ -38,6 +50,7 @@ open class IconTitleTableViewCell: BasicTableViewCell {
     open override func prepareForReuse() {
         super.prepareForReuse()
         iconImageView.image = nil
+        externalIconImageView.image = nil
         iconImageView.tintColor = UIImageView.appearance().tintColor
     }
 
@@ -61,6 +74,16 @@ open class IconTitleTableViewCell: BasicTableViewCell {
 
             separatorInset = .leadingInset(.spacingM)
         }
+        
+        stackViewToExternalIconConstraint.isActive = viewModel.externalIcon != nil
+        if let externalIcon = viewModel.externalIcon {
+            accessoryType = .none
+            selectionStyle = .none
+            externalIconImageView.image = externalIcon
+            if let tintColor = viewModel.iconTintColor {
+                externalIconImageView.tintColor = tintColor
+            }
+        }
 
         setNeedsLayout()
     }
@@ -69,11 +92,17 @@ open class IconTitleTableViewCell: BasicTableViewCell {
 
     private func setup() {
         contentView.addSubview(iconImageView)
+        contentView.addSubview(externalIconImageView)
         NSLayoutConstraint.activate([
             iconImageView.heightAnchor.constraint(equalToConstant: iconSize),
             iconImageView.widthAnchor.constraint(equalToConstant: iconSize),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            
+            externalIconImageView.heightAnchor.constraint(equalToConstant: externalIconSize),
+            externalIconImageView.widthAnchor.constraint(equalToConstant: externalIconSize),
+            externalIconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            externalIconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
 }

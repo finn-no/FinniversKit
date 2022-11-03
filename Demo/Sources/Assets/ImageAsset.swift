@@ -42,6 +42,7 @@ enum ImageAsset: String {
     case boat
     case boatNew
     case car
+    case carFront
     case carIllustration
     case carNew
     case carPromo
@@ -53,6 +54,7 @@ enum ImageAsset: String {
     case classifiedsNew
     case consentTransparencyImage
     case contract
+    case creditCard
     case cross
     case displayTypeGrid
     case displayTypeList
@@ -120,6 +122,7 @@ enum ImageAsset: String {
     case service
     case shopping
     case sold
+    case torgetHelthjem
     case transactionJourneyCar
     case travel
     case travelNew
@@ -141,6 +144,7 @@ enum ImageAsset: String {
             .boat,
             .boatNew,
             .car,
+            .carFront,
             .carIllustration,
             .carNew,
             .carPromo,
@@ -152,6 +156,7 @@ enum ImageAsset: String {
             .classifiedsNew,
             .consentTransparencyImage,
             .contract,
+            .creditCard,
             .cross,
             .displayTypeGrid,
             .displayTypeList,
@@ -219,6 +224,7 @@ enum ImageAsset: String {
             .service,
             .shopping,
             .sold,
+            .torgetHelthjem,
             .transactionJourneyCar,
             .travel,
             .travelNew,
