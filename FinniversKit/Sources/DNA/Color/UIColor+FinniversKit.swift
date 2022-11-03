@@ -121,6 +121,10 @@ import UIKit
     public class var iconTertiary: UIColor {
         Config.colorProvider.iconTertiary
     }
+
+    public class var borderDefault: UIColor {
+        Config.colorProvider.borderDefault
+    }
 }
 
 // MARK: - FINN UIColors
@@ -154,11 +158,11 @@ import UIKit
     }
 
     public class var sardine: UIColor {
-        return UIColor(r: 195, g: 204, b: 217)
+        return UIColor(hex: "#C3CCD9")
     }
 
     public class var darkSardine: UIColor {
-        return UIColor(hex: "434359")
+        return UIColor(hex: "#434359")
     }
 
     public class var salmon: UIColor {
@@ -231,14 +235,6 @@ import UIKit
 
     public class var blueGray200: UIColor {
         return UIColor(r: 225, g: 230, b: 238)
-    }
-
-    public class var grayLight: UIColor {
-        return UIColor(hex: "#E5E5E5")
-    }
-
-    public class var grayDark: UIColor {
-        return UIColor(hex: "#625E73")
     }
 }
 
