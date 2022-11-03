@@ -214,6 +214,7 @@
 		DA083C2E2462BCA800B26235 /* SwiftUIDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */; };
 		DA82B1ED268B62D2005F67C3 /* LoadingRetryDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA82B1EC268B62D2005F67C3 /* LoadingRetryDemoView.swift */; };
 		DAE9CA8724602CB000C7552F /* SwiftUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */; };
+		E6A2412D2912F0C600D9F354 /* HyperlinkTextViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2412C2912F0C600D9F354 /* HyperlinkTextViewDemoView.swift */; };
 		F023EAEB27B6951400F6286B /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = F023EAEA27B6951400F6286B /* SnapshotTesting */; };
 /* End PBXBuildFile section */
 
@@ -451,6 +452,7 @@
 		DA083C2D2462BCA800B26235 /* SwiftUIDemoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDemoViews.swift; sourceTree = "<group>"; };
 		DA82B1EC268B62D2005F67C3 /* LoadingRetryDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingRetryDemoView.swift; sourceTree = "<group>"; };
 		DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewTests.swift; sourceTree = "<group>"; };
+		E6A2412C2912F0C600D9F354 /* HyperlinkTextViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextViewDemoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -827,6 +829,7 @@
 		46E772CB242CEF09008A5E93 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E6A2412B2912F0AE00D9F354 /* HyperlinkTextView */,
 				4D37A9B528571CF300F9460D /* BadgeView */,
 				5DCE0883280FDF0600ED7407 /* MonthAndYearPickerDemoView */,
 				D75E14D22734855B008EB126 /* FrontPageShelfDemoView */,
@@ -1841,6 +1844,14 @@
 			path = LoadingRetryView;
 			sourceTree = "<group>";
 		};
+		E6A2412B2912F0AE00D9F354 /* HyperlinkTextView */ = {
+			isa = PBXGroup;
+			children = (
+				E6A2412C2912F0C600D9F354 /* HyperlinkTextViewDemoView.swift */,
+			);
+			path = HyperlinkTextView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2008,6 +2019,7 @@
 				46E77428242CEF0A008A5E93 /* ReviewButtonViewDemoView.swift in Sources */,
 				46E773D8242CEF0A008A5E93 /* FavoriteAdsDemoDataSource.swift in Sources */,
 				46E773D1242CEF0A008A5E93 /* MessageFormDemoPresenter.swift in Sources */,
+				E6A2412D2912F0C600D9F354 /* HyperlinkTextViewDemoView.swift in Sources */,
 				46E77465242CEF0A008A5E93 /* BasicTableViewDemoView.swift in Sources */,
 				46E773CC242CEF0A008A5E93 /* SearchResultMapViewDemoViewControllerHelpers.swift in Sources */,
 				46E7745C242CEF0A008A5E93 /* NeighborhoodProfileDemoView.swift in Sources */,
