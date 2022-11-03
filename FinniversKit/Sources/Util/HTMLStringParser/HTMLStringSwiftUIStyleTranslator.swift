@@ -1,28 +1,33 @@
 import Foundation
-import UIKit
+import SwiftUI
 
-public final class HTMLStringParserStyleTranslator: HTMLStringParserTranslator {
-    private typealias ElementNameAndStyle = (name: String, style: Style)
+public final class HTMLStringSwiftUIStyleTranslator: HTMLStringParserTranslator {
     public typealias StyleMapper = (_ elementName: String, _ attributes: [String: String]) -> Style?
 
-    private struct StyleInfo {
-        let elementName: String
-        let style: Style
+    public struct StyledText {
+        public let text: String
+        public let style: Style
+
+        public init(text: String, style: Style) {
+            self.text = text
+            self.style = style
+        }
     }
 
-    let defaultStyle: Style
-    private(set) var currentStyle: Style
     private let styleMapper: StyleMapper?
-    private var styleStack: [StyleInfo]
+    private(set) var styleStack: HTMLStringStyleStack<Style>
 
     public init(
         defaultStyle: Style,
         styleMapper: StyleMapper?
     ) {
-        self.defaultStyle = defaultStyle
         self.styleMapper = styleMapper
-        self.styleStack = []
-        self.currentStyle = defaultStyle
+        self.styleStack = HTMLStringStyleStack(
+            defaultStyle: defaultStyle,
+            updateHandler: { style, otherStyle in
+                style.update(from: otherStyle)
+            }
+        )
     }
 
     public func translate(tokens: [HTMLLexer.Token]) throws -> [StyledText] {
@@ -32,19 +37,19 @@ public final class HTMLStringParserStyleTranslator: HTMLStringParserTranslator {
             case .startTag(let name, let attributes, _):
                 switch name.lowercased() {
                 case "br":
-                    styledText.append(StyledText(text: "\n", style: currentStyle))
+                    styledText.append(StyledText(text: "\n", style: styleStack.currentStyle))
                     continue
                 default:
                     break
                 }
                 let styleMapper = self.styleMapper ?? defaultStyleMapper
                 if let style = styleMapper(name, attributes) {
-                    pushStyle(style, elementName: name)
+                    styleStack.pushStyle(style, elementName: name)
                 }
             case .endTag(let name):
-                popStyle(elementName: name)
+                styleStack.popStyle(elementName: name)
             case .text(let text):
-                styledText.append(StyledText(text: text, style: currentStyle))
+                styledText.append(StyledText(text: text, style: styleStack.currentStyle))
             default:
                 break
             }
@@ -55,63 +60,39 @@ public final class HTMLStringParserStyleTranslator: HTMLStringParserTranslator {
     private func defaultStyleMapper(elementName: String, attributes: [String: String]) -> Style? {
         switch elementName.lowercased() {
         case "b", "strong":
-            return Style(fontWeight: .bold)
+            return .init(fontWeight: .bold)
         case "i":
-            return Style(italic: true)
+            return .init(italic: true)
         case "s", "del":
-            return Style(strikethrough: true)
+            return .init(strikethrough: true)
         case "u":
-            return Style(underline: true)
+            return .init(underline: true)
         default:
             return nil
         }
     }
-
-    private func pushStyle(_ style: Style, elementName: String) {
-        styleStack.append(StyleInfo(elementName: elementName, style: style))
-        currentStyle.update(from: style)
-    }
-
-    private func popStyle(elementName: String) {
-        for index in (0 ..< styleStack.count).reversed() {
-            let info = styleStack[index]
-            if info.elementName == elementName {
-                styleStack.remove(at: index)
-                currentStyle = resolveStyle()
-                return
-            }
-        }
-    }
-
-    private func resolveStyle() -> Style {
-        var resolvedStyle = defaultStyle
-        for info in styleStack {
-            resolvedStyle.update(from: info.style)
-        }
-        return resolvedStyle
-    }
 }
 
-extension HTMLStringParserStyleTranslator {
+extension HTMLStringSwiftUIStyleTranslator {
     public struct Style: Equatable {
-        public var font: UIFont?
-        public var fontWeight: UIFont.Weight?
-        public var foregroundColor: UIColor?
+        public var font: Font?
+        public var fontWeight: Font.Weight?
+        public var foregroundColor: Color?
         public var italic: Bool?
         public var strikethrough: Bool?
-        public var strikethroughColor: UIColor?
+        public var strikethroughColor: Color?
         public var underline: Bool?
-        public var underlineColor: UIColor?
+        public var underlineColor: Color?
 
         public init(
-            font: UIFont? = nil,
-            fontWeight: UIFont.Weight? = nil,
-            foregroundColor: UIColor? = nil,
+            font: Font? = nil,
+            fontWeight: Font.Weight? = nil,
+            foregroundColor: Color? = nil,
             italic: Bool? = nil,
             strikethrough: Bool? = nil,
-            strikethroughColor: UIColor? = nil,
+            strikethroughColor: Color? = nil,
             underline: Bool? = nil,
-            underlineColor: UIColor? = nil
+            underlineColor: Color? = nil
         ) {
             self.font = font
             self.fontWeight = fontWeight
@@ -148,16 +129,6 @@ extension HTMLStringParserStyleTranslator {
             if let underlineColor = otherStyle.underlineColor {
                 self.underlineColor = underlineColor
             }
-        }
-    }
-
-    public struct StyledText: Equatable {
-        public let text: String
-        public let style: Style
-
-        public init(text: String, style: Style) {
-            self.text = text
-            self.style = style
         }
     }
 }
