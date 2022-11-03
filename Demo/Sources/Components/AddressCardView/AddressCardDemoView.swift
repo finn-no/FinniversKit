@@ -40,12 +40,6 @@ final class AddressCardDemoView: UIView, Tweakable {
             addressCardView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
-
-    // MARK: - Private methods
-
-    private func configure() {
-
-    }
 }
 
 // MARK: - AddressCardViewDelegate
