@@ -93,7 +93,7 @@ public final class HTMLStringParserStyleTranslator: HTMLStringParserTranslator {
 }
 
 extension HTMLStringParserStyleTranslator {
-    public struct Style {
+    public struct Style: Equatable {
         public var font: UIFont?
         public var fontWeight: UIFont.Weight?
         public var foregroundColor: UIColor?
@@ -151,7 +151,7 @@ extension HTMLStringParserStyleTranslator {
         }
     }
 
-    public struct StyledText {
+    public struct StyledText: Equatable {
         public let text: String
         public let style: Style
 

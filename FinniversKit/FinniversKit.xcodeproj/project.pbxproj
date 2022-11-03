@@ -39,6 +39,7 @@
 		177A871C2913B40900F02088 /* HTMLStringParserStyleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A871B2913B40900F02088 /* HTMLStringParserStyleTranslator.swift */; };
 		177A871E2913B87400F02088 /* HTMLTextFinnStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A871D2913B87400F02088 /* HTMLTextFinnStyle.swift */; };
 		177A876A2913EE2F00F02088 /* FontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A87692913EE2F00F02088 /* FontExtensions.swift */; };
+		177A876C2914184B00F02088 /* HTMLStringParserStyleTranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A876B2914184B00F02088 /* HTMLStringParserStyleTranslatorTests.swift */; };
 		179D06A82906A39D00A65E3A /* HTMLStringParserStringTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06A62906A39D00A65E3A /* HTMLStringParserStringTranslator.swift */; };
 		179D06A92906A39D00A65E3A /* HTMLStringParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06A72906A39D00A65E3A /* HTMLStringParser.swift */; };
 		179D06AD2906A3FA00A65E3A /* HTMLStringParserStringTranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06AB2906A3FA00A65E3A /* HTMLStringParserStringTranslatorTests.swift */; };
@@ -523,6 +524,7 @@
 		177A871B2913B40900F02088 /* HTMLStringParserStyleTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringParserStyleTranslator.swift; sourceTree = "<group>"; };
 		177A871D2913B87400F02088 /* HTMLTextFinnStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextFinnStyle.swift; sourceTree = "<group>"; };
 		177A87692913EE2F00F02088 /* FontExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtensions.swift; sourceTree = "<group>"; };
+		177A876B2914184B00F02088 /* HTMLStringParserStyleTranslatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringParserStyleTranslatorTests.swift; sourceTree = "<group>"; };
 		179D06A62906A39D00A65E3A /* HTMLStringParserStringTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParserStringTranslator.swift; sourceTree = "<group>"; };
 		179D06A72906A39D00A65E3A /* HTMLStringParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParser.swift; sourceTree = "<group>"; };
 		179D06AB2906A3FA00A65E3A /* HTMLStringParserStringTranslatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParserStringTranslatorTests.swift; sourceTree = "<group>"; };
@@ -1133,9 +1135,10 @@
 		179D06AA2906A3FA00A65E3A /* HTMLStringParser */ = {
 			isa = PBXGroup;
 			children = (
-				179D06AB2906A3FA00A65E3A /* HTMLStringParserStringTranslatorTests.swift */,
-				179D06AC2906A3FA00A65E3A /* HTMLStringParserTests.swift */,
 				17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */,
+				179D06AB2906A3FA00A65E3A /* HTMLStringParserStringTranslatorTests.swift */,
+				177A876B2914184B00F02088 /* HTMLStringParserStyleTranslatorTests.swift */,
+				179D06AC2906A3FA00A65E3A /* HTMLStringParserTests.swift */,
 			);
 			path = HTMLStringParser;
 			sourceTree = "<group>";
@@ -3428,6 +3431,7 @@
 				CF376C1D231D459900ED2B24 /* StepTests.swift in Sources */,
 				17E232F5290A7E71003DC8F7 /* HTMLLexerTests.swift in Sources */,
 				179D06AE2906A3FA00A65E3A /* HTMLStringParserTests.swift in Sources */,
+				177A876C2914184B00F02088 /* HTMLStringParserStyleTranslatorTests.swift in Sources */,
 				9B9663CB2460383900D34BA1 /* ConfigTests.swift in Sources */,
 				9F213830B2F4E5DFE596431F /* KeyboardNotificationInfoTest.swift in Sources */,
 			);
