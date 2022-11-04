@@ -85,29 +85,27 @@ public final class HTMLLexer {
     // MARK: - Scan helper functions
 
     private var currentCharacter: Character? {
-        return scanner.currentCharacter
+        if scanner.isAtEnd { return nil }
+        return scanner.string[scanner.currentIndex]
     }
 
     private var currentIndex: String.Index {
         return scanner.currentIndex
     }
 
-    private func nextCharacter(_ offset: Int = 1) -> Character? {
-        return scanner.peekCharacter(offset)
-    }
-
-    private func peekCharacter(_ offset: Int = 0) -> Character? {
-        return scanner.peekCharacter(offset)
-    }
-
-    private func peekCharacter(_ character: Character, offset: Int = 0) -> Bool {
-        if scanner.isAtEnd { return false }
+    private func peekCharacter(offset: Int = 0) -> Character? {
+        if scanner.isAtEnd { return nil }
         var index = scanner.currentIndex
         for _ in 0..<offset {
             index = scanner.string.index(after: index)
-            if index == scanner.string.endIndex { return false }
+            if index == scanner.string.endIndex { return nil }
         }
-        return character == scanner.string[index]
+        return scanner.string[index]
+    }
+
+    private func peekCharacter(_ character: Character, offset: Int = 0) -> Bool {
+        guard let foundCharacter = peekCharacter(offset: offset) else { return false }
+        return character == foundCharacter
     }
 
     private func scanCharacter() -> Character? {
@@ -115,9 +113,13 @@ public final class HTMLLexer {
     }
 
     private func scanCharacter(_ character: Character) -> Bool {
-        guard scanner.currentCharacter == character else { return false }
-        scanner.currentIndex = scanner.string.index(after: scanner.currentIndex)
-        return true
+        guard let foundCharacter = scanner.scanCharacter() else { return false }
+        return character == foundCharacter
+    }
+
+    private func scanCaseInsensitiveCharacter(_ character: Character) -> Bool {
+        guard let foundCharacter = scanner.scanCharacter() else { return false }
+        return character.lowercased() == foundCharacter.lowercased()
     }
 
     private func scanString(_ string: String) -> Bool {
@@ -143,7 +145,7 @@ public final class HTMLLexer {
 
     private func scanTag() -> Token? {
         guard
-            scanCharacter() == "<",
+            scanCharacter("<"),
             let nextCharacter = currentCharacter
         else { return nil }
         if nextCharacter == "!" {
@@ -166,27 +168,27 @@ public final class HTMLLexer {
 
     private func scanDoctypeTag() -> Token? {
         guard
-            scanCharacter()?.uppercased() == "!",
-            scanCharacter()?.uppercased() == "D",
-            scanCharacter()?.uppercased() == "O",
-            scanCharacter()?.uppercased() == "C",
-            scanCharacter()?.uppercased() == "T",
-            scanCharacter()?.uppercased() == "Y",
-            scanCharacter()?.uppercased() == "P",
-            scanCharacter()?.uppercased() == "E",
+            scanCharacter("!"),
+            scanCaseInsensitiveCharacter("D"),
+            scanCaseInsensitiveCharacter("O"),
+            scanCaseInsensitiveCharacter("C"),
+            scanCaseInsensitiveCharacter("T"),
+            scanCaseInsensitiveCharacter("Y"),
+            scanCaseInsensitiveCharacter("P"),
+            scanCaseInsensitiveCharacter("E"),
             skipAsciiWhitespace()
         else { return nil }
         let typeStartIndex = currentIndex
         guard
-            scanCharacter()?.lowercased() == "h",
-            scanCharacter()?.lowercased() == "t",
-            scanCharacter()?.lowercased() == "m",
-            scanCharacter()?.lowercased() == "l"
+            scanCaseInsensitiveCharacter("h"),
+            scanCaseInsensitiveCharacter("t"),
+            scanCaseInsensitiveCharacter("m"),
+            scanCaseInsensitiveCharacter("l")
         else { return nil }
         let type = scanner.string[typeStartIndex..<currentIndex]
         guard
             skipAsciiWhitespace(),
-            let nextChar = currentCharacter
+            let nextChar = peekCharacter()
         else { return nil }
         if nextChar == ">" {
             _ = scanCharacter()
@@ -234,10 +236,10 @@ public final class HTMLLexer {
     private func scanEndTag() -> Token? {
         // https://html.spec.whatwg.org/multipage/syntax.html#end-tags
         guard
-            scanCharacter() == "/",
+            scanCharacter("/"),
             let name = scanTagName(isBeginTag: false),
             skipAsciiWhitespace(),
-            scanCharacter() == ">"
+            scanCharacter(">")
         else { return nil }
         return .endTag(name: name)
     }
@@ -248,17 +250,17 @@ public final class HTMLLexer {
         while let foundChar = scanCharacter() {
             guard
                 isAsciiAlphanumeric(foundChar),
-                let currentChar = currentCharacter
+                let nextChar = peekCharacter()
             else { return nil }
             if isBeginTag {
-                if currentChar == ">"
-                    || currentChar == "/"
-                    || isAsciiWhitespace(currentChar) {
+                if nextChar == ">"
+                    || nextChar == "/"
+                    || isAsciiWhitespace(nextChar) {
                     break
                 }
             } else {
-                if currentChar == ">"
-                    || isAsciiWhitespace(currentChar) {
+                if nextChar == ">"
+                    || isAsciiWhitespace(nextChar) {
                     break
                 }
             }
@@ -270,7 +272,7 @@ public final class HTMLLexer {
     private func scanTagAttributes() -> [String: String]? {
         // https://html.spec.whatwg.org/multipage/syntax.html#attributes-2
         var attributes: [String: String] = [:]
-        while let nextChar = currentCharacter, !isEndOfTag(nextChar) {
+        while let nextChar = peekCharacter(), !isEndOfTag(nextChar) {
             guard let (name, value) = scanTagAttribute() else {
                 skipAsciiWhitespace()
                 continue
@@ -291,15 +293,15 @@ public final class HTMLLexer {
         guard
             let name = scanTagAttributeName(),
             skipAsciiWhitespace(),
-            let nextChar = currentCharacter
+            let nextChar = peekCharacter()
         else { return nil }
         if isEndOfTag(nextChar) || nextChar != "=" {
             return (name, "")
         }
         guard
-            scanCharacter() == "=",
+            scanCharacter("="),
             skipAsciiWhitespace(),
-            let nextChar = currentCharacter
+            let nextChar = peekCharacter()
         else { return nil }
         if isEndOfTag(nextChar) {
             return (name, "")
@@ -310,12 +312,12 @@ public final class HTMLLexer {
 
     private func scanTagAttributeName() -> String? {
         // https://html.spec.whatwg.org/multipage/syntax.html#syntax-attribute-name
-        let nameStartIndex = scanner.currentIndex
+        let nameStartIndex = currentIndex
         while true {
             guard
                 let character = scanCharacter(),
                 CharacterSet.htmlAttributeName.contains(character),
-                let nextChar = currentCharacter
+                let nextChar = peekCharacter()
             else { return nil }
             if nextChar == "=" || isAsciiWhitespace(nextChar) || isEndOfTag(nextChar) {
                 break
@@ -326,7 +328,7 @@ public final class HTMLLexer {
     }
 
     private func scanTagAttributeValue() -> String? {
-        guard let nextChar = currentCharacter else { return nil }
+        guard let nextChar = peekCharacter() else { return nil }
         if nextChar == "\"" || nextChar == "'" {
             return scanTagAttributeQuotedValue()
         }
@@ -340,36 +342,19 @@ public final class HTMLLexer {
         else { return nil }
         guard
             let value = scanner.scanUpToString(String(quote)),
-            scanCharacter() == quote
+            scanCharacter(quote)
         else { return nil }
         return value
     }
 
     private func scanTagAttributeUnquotedValue() -> String? {
-        let valueStartIndex = scanner.currentIndex
+        let valueStartIndex = currentIndex
         while true {
-            guard let nextChar = currentCharacter else { return nil }
+            guard let nextChar = peekCharacter() else { return nil }
             if !CharacterSet.htmlNonQuotedAttributeValue.contains(nextChar) { break }
             guard scanCharacter() != nil else { return nil }
         }
         let value = scanner.string[valueStartIndex..<scanner.currentIndex]
         return String(value)
-    }
-}
-
-fileprivate extension Scanner {
-    var currentCharacter: Character? {
-        if isAtEnd { return nil }
-        return string[currentIndex]
-    }
-
-    func peekCharacter(_ lookAhead: Int = 1) -> Character? {
-        guard !isAtEnd else { return nil }
-        var index = currentIndex
-        for _ in 0 ..< lookAhead {
-            index = string.index(after: index)
-            guard index < string.endIndex else { return nil }
-        }
-        return string[index]
     }
 }

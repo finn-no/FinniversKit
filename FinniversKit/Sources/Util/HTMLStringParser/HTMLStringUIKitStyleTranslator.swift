@@ -4,7 +4,7 @@ import UIKit
 public final class HTMLStringUIKitStyleTranslator: HTMLStringParserTranslator {
     public typealias StyleMapper = (_ elementName: String, _ attributes: [String: String]) -> Style?
 
-    public struct StyledText {
+    public struct StyledText: Equatable {
         public let text: String
         public let style: Style
 
