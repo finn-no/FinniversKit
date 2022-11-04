@@ -34,6 +34,20 @@
 		14DC127121593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC126D21593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift */; };
 		14EBA258215A633800613E5A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EBA256215A633800613E5A /* LoadingView.swift */; };
 		14F4F1BE1FD6CEA800E9CECA /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
+		172E7502290FC86B00956AC2 /* HTMLText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E7501290FC86B00956AC2 /* HTMLText.swift */; };
+		175385AE291468F600DA57D2 /* HTMLStringUIKitStyleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175385AD291468F600DA57D2 /* HTMLStringUIKitStyleTranslator.swift */; };
+		175385B029146A4000DA57D2 /* HTMLStringStyleStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175385AF29146A4000DA57D2 /* HTMLStringStyleStack.swift */; };
+		175385B229150E7800DA57D2 /* HTMLStringUIKitStyleTranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175385B129150E7800DA57D2 /* HTMLStringUIKitStyleTranslatorTests.swift */; };
+		177A86CF2912B98C00F02088 /* CharacterSetExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A86CE2912B98C00F02088 /* CharacterSetExtensions.swift */; };
+		177A871C2913B40900F02088 /* HTMLStringSwiftUIStyleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A871B2913B40900F02088 /* HTMLStringSwiftUIStyleTranslator.swift */; };
+		177A871E2913B87400F02088 /* HTMLTextFinnStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A871D2913B87400F02088 /* HTMLTextFinnStyle.swift */; };
+		177A876C2914184B00F02088 /* HTMLStringSwiftUIStyleTranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A876B2914184B00F02088 /* HTMLStringSwiftUIStyleTranslatorTests.swift */; };
+		179D06A82906A39D00A65E3A /* HTMLStringParserStringTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06A62906A39D00A65E3A /* HTMLStringParserStringTranslator.swift */; };
+		179D06A92906A39D00A65E3A /* HTMLStringParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06A72906A39D00A65E3A /* HTMLStringParser.swift */; };
+		179D06AD2906A3FA00A65E3A /* HTMLStringParserStringTranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06AB2906A3FA00A65E3A /* HTMLStringParserStringTranslatorTests.swift */; };
+		179D06AE2906A3FA00A65E3A /* HTMLStringParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06AC2906A3FA00A65E3A /* HTMLStringParserTests.swift */; };
+		179D06B62907D66E00A65E3A /* HTMLLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06B52907D66E00A65E3A /* HTMLLexer.swift */; };
+		17E232F5290A7E71003DC8F7 /* HTMLLexerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */; };
 		431875C1211180F100D71723 /* BuyerPickerProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */; };
 		432CE09D2112DBC500F01EC5 /* BuyerPickerTextHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE09C2112DBC500F01EC5 /* BuyerPickerTextHeader.swift */; };
 		43BACE6A21117D430052114C /* BuyerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BACE6921117D430052114C /* BuyerPickerView.swift */; };
@@ -509,6 +523,20 @@
 		14EBA256215A633800613E5A /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F4F1BD1FD6CEA800E9CECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		172E7501290FC86B00956AC2 /* HTMLText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLText.swift; sourceTree = "<group>"; };
+		175385AD291468F600DA57D2 /* HTMLStringUIKitStyleTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringUIKitStyleTranslator.swift; sourceTree = "<group>"; };
+		175385AF29146A4000DA57D2 /* HTMLStringStyleStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringStyleStack.swift; sourceTree = "<group>"; };
+		175385B129150E7800DA57D2 /* HTMLStringUIKitStyleTranslatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringUIKitStyleTranslatorTests.swift; sourceTree = "<group>"; };
+		177A86CE2912B98C00F02088 /* CharacterSetExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSetExtensions.swift; sourceTree = "<group>"; };
+		177A871B2913B40900F02088 /* HTMLStringSwiftUIStyleTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringSwiftUIStyleTranslator.swift; sourceTree = "<group>"; };
+		177A871D2913B87400F02088 /* HTMLTextFinnStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextFinnStyle.swift; sourceTree = "<group>"; };
+		177A876B2914184B00F02088 /* HTMLStringSwiftUIStyleTranslatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringSwiftUIStyleTranslatorTests.swift; sourceTree = "<group>"; };
+		179D06A62906A39D00A65E3A /* HTMLStringParserStringTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParserStringTranslator.swift; sourceTree = "<group>"; };
+		179D06A72906A39D00A65E3A /* HTMLStringParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParser.swift; sourceTree = "<group>"; };
+		179D06AB2906A3FA00A65E3A /* HTMLStringParserStringTranslatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParserStringTranslatorTests.swift; sourceTree = "<group>"; };
+		179D06AC2906A3FA00A65E3A /* HTMLStringParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParserTests.swift; sourceTree = "<group>"; };
+		179D06B52907D66E00A65E3A /* HTMLLexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLexer.swift; sourceTree = "<group>"; };
+		17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLexerTests.swift; sourceTree = "<group>"; };
 		431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerProfileCell.swift; sourceTree = "<group>"; };
 		432CE09C2112DBC500F01EC5 /* BuyerPickerTextHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerTextHeader.swift; sourceTree = "<group>"; };
 		43BACE6921117D430052114C /* BuyerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerView.swift; sourceTree = "<group>"; };
@@ -981,9 +1009,10 @@
 			children = (
 				CF0B10972316AC0D001E7A57 /* BottomShadowView.swift */,
 				CF164CFE230EB3D100250822 /* ContentSizedTableView.swift */,
+				179D06A52906A39D00A65E3A /* HTMLStringParser */,
 				087A5BB522A7D85500184640 /* KeyboardNotificationInfo.swift */,
-				CF0647FB2368834B00863D07 /* TopShadowView.swift */,
 				9BA8248523859B4400163F24 /* MapZoomRange.swift */,
+				CF0647FB2368834B00863D07 /* TopShadowView.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1089,6 +1118,40 @@
 				9B9663CA2460383900D34BA1 /* ConfigTests.swift */,
 			);
 			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		172E7500290FC84B00956AC2 /* HTMLText */ = {
+			isa = PBXGroup;
+			children = (
+				177A871D2913B87400F02088 /* HTMLTextFinnStyle.swift */,
+				172E7501290FC86B00956AC2 /* HTMLText.swift */,
+			);
+			path = HTMLText;
+			sourceTree = "<group>";
+		};
+		179D06A52906A39D00A65E3A /* HTMLStringParser */ = {
+			isa = PBXGroup;
+			children = (
+				179D06B52907D66E00A65E3A /* HTMLLexer.swift */,
+				179D06A72906A39D00A65E3A /* HTMLStringParser.swift */,
+				179D06A62906A39D00A65E3A /* HTMLStringParserStringTranslator.swift */,
+				175385AF29146A4000DA57D2 /* HTMLStringStyleStack.swift */,
+				177A871B2913B40900F02088 /* HTMLStringSwiftUIStyleTranslator.swift */,
+				175385AD291468F600DA57D2 /* HTMLStringUIKitStyleTranslator.swift */,
+			);
+			path = HTMLStringParser;
+			sourceTree = "<group>";
+		};
+		179D06AA2906A3FA00A65E3A /* HTMLStringParser */ = {
+			isa = PBXGroup;
+			children = (
+				17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */,
+				179D06AB2906A3FA00A65E3A /* HTMLStringParserStringTranslatorTests.swift */,
+				179D06AC2906A3FA00A65E3A /* HTMLStringParserTests.swift */,
+				177A876B2914184B00F02088 /* HTMLStringSwiftUIStyleTranslatorTests.swift */,
+				175385B129150E7800DA57D2 /* HTMLStringUIKitStyleTranslatorTests.swift */,
+			);
+			path = HTMLStringParser;
 			sourceTree = "<group>";
 		};
 		25D04D721F583B1800EA317D = {
@@ -1367,6 +1430,9 @@
 				4D0CF28B261C46670008CC43 /* TransactionEntryView */,
 				4D152E722577D7C400282244 /* NavigationLinkView */,
 				CFDF39CB2385419E00D3B966 /* AddressCardView */,
+				5B9590445C86B656E972AF8E /* AddressComponentView */,
+				4D37A9B828571DB400F9460D /* BadgeView */,
+				AA189E80268479B100FD3A41 /* BlockUserView */,
 				DAB7FAAC21B690E900BF8CC6 /* BottomSheet */,
 				AF91BB95202C7487003E6366 /* Broadcast */,
 				4447F6651FDB2B110033DBC1 /* Button */,
@@ -1383,23 +1449,32 @@
 				68AE0C83EEDB0010A3AF0F5C /* FavoriteButton */,
 				9A37D8C01205DC426B502C5F /* Feedback */,
 				CFCC3D2F23686BEF002DD4CF /* FooterButtonView */,
+				D75523A8273159E900C0C7DD /* FrontPageShelfHeaderView */,
+				D75E14CF27347535008EB126 /* FrontPageShelfView */,
+				D759A7F928043EE9009E9CBB /* FrontPageTransactionView */,
 				08F0D3F222259AB800968256 /* HappinessRating */,
 				14DC126821593B0000326DC3 /* HorizontalSlide */,
+				E68D58F428DDE74F001A70CA /* HTMLLabel */,
+				172E7500290FC84B00956AC2 /* HTMLText */,
 				CFB61372229ACA5200DE283D /* IconCollection */,
 				CF136ACB220320DD00247B30 /* Infobox */,
 				9B2D17CA23E02AA200EF3B50 /* KeyValueGridView */,
 				9BBC8ADC22DF4CA2003453B6 /* Klimabrolet */,
 				4447F6741FDB2B110033DBC1 /* Label */,
-				E68D58F428DDE74F001A70CA /* HTMLLabel */,
 				9A37D55C2A64827FF8CBD6E5 /* LinkButton */,
 				44AFCE44215839F6005984DB /* LoadingIndicator */,
+				DA82B1EA268B61AA005F67C3 /* LoadingRetryView */,
 				9BEB2875231D23F500D28BAD /* LoanCalculator */,
+				5DCE0880280FDDDA00ED7407 /* MonthAndYearPickerView */,
 				89A7A63A2253376D0053D33B /* NativeAdvert */,
+				4D152E722577D7C400282244 /* NavigationLinkView */,
+				8D6807E8380DAE7E730CC80D /* NumberedListView */,
 				9A37D31426D9544712EBB534 /* ObjectPagePriceView */,
 				9A37DAE827DC33BADB4C9AAC /* ObjectPageTitleView */,
 				9B28DE7E23266C2500D69C15 /* Panel */,
 				CF13D6CB2292D2100087DA37 /* Phases */,
 				CF0F6B902360682100CA62FD /* Priming */,
+				D7D514C227293F5D0065E2F6 /* PromotionView */,
 				F2C3E95A22CB634700CED7E0 /* QuestionnaireView */,
 				CF8F024321DE0FF9004C4042 /* RefreshControl */,
 				9A37D8B81C3158FE1373F3E4 /* RemoteImageView */,
@@ -1407,7 +1482,12 @@
 				4447F69C1FDB2B110033DBC1 /* Ribbon */,
 				B01D752811A625A4D0690F25 /* RoundedImageView */,
 				9B06096623F14AF4005CB592 /* SafetyElementsView */,
+				8D680EBF14E8055C76C0A1C8 /* SaveSearchPromptView */,
+				8D6801547E743D68C510139B /* SearchListEmptyView */,
+				5B959D7A71236CBF67504D3E /* SearchView */,
 				DAA9A3A2210214B80021F7DC /* SelectionBoxes */,
+				5B959846196B48EE2080C452 /* SelectionListView */,
+				8D680E7F9086E07B63CB9D23 /* SelectionView */,
 				446EE15A2345A6AA00010818 /* SelectorTitleView */,
 				9A37D55FF47FB2736E329236 /* SelfDeclaration */,
 				714B93502537288B00801C99 /* SendInviteView */,
@@ -1418,16 +1498,10 @@
 				4447F6A31FDB2B110033DBC1 /* TextField */,
 				081F51BB222932C900026C84 /* TextView */,
 				4447F6A81FDB2B110033DBC1 /* Toast */,
+				4D0CF28B261C46670008CC43 /* TransactionEntryView */,
 				F2597C73231D1A0B00BE74EC /* VerificationView */,
 				494047FA23CDBA7600ECBCFD /* Viewings */,
 				08E9F54E2341FBC300943E5D /* VisibilityDrivenTitleView */,
-				8D680EBF14E8055C76C0A1C8 /* SaveSearchPromptView */,
-				8D6801547E743D68C510139B /* SearchListEmptyView */,
-				8D680E7F9086E07B63CB9D23 /* SelectionView */,
-				8D6807E8380DAE7E730CC80D /* NumberedListView */,
-				5B959D7A71236CBF67504D3E /* SearchView */,
-				5B9590445C86B656E972AF8E /* AddressComponentView */,
-				5B959846196B48EE2080C452 /* SelectionListView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1761,9 +1835,10 @@
 		44F8831020551D59003E3171 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				899D0BF5222D4B3400794DEC /* ArrayExtensions.swift */,
+				177A86CE2912B98C00F02088 /* CharacterSetExtensions.swift */,
 				44F8831120551D59003E3171 /* NSAttributedStringExtensions.swift */,
 				45B2E069207CF5C100C68B92 /* StringExtensions.swift */,
-				899D0BF5222D4B3400794DEC /* ArrayExtensions.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -2408,8 +2483,8 @@
 			isa = PBXGroup;
 			children = (
 				DA5A858B24617DF000AC0DFE /* ImageExtensions.swift */,
-				9BB680312462F7AC001ADACF /* View+Extensions.swift */,
 				5DA190C625A4A7E0002305A8 /* Transition+Extensions.swift */,
+				9BB680312462F7AC001ADACF /* View+Extensions.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -2497,6 +2572,7 @@
 		9F213D8A2542DC1D6D998B43 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				179D06AA2906A3FA00A65E3A /* HTMLStringParser */,
 				9F213CB3556A74594DB59E93 /* KeyboardNotificationInfoTest.swift */,
 			);
 			path = Util;
@@ -3379,9 +3455,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				179D06AD2906A3FA00A65E3A /* HTMLStringParserStringTranslatorTests.swift in Sources */,
 				CF3D5F00215A75BF006E4D08 /* InstrumentTests.swift in Sources */,
 				CF376C1B231D458200ED2B24 /* ArrayStepTests.swift in Sources */,
 				CF376C1D231D459900ED2B24 /* StepTests.swift in Sources */,
+				175385B229150E7800DA57D2 /* HTMLStringUIKitStyleTranslatorTests.swift in Sources */,
+				17E232F5290A7E71003DC8F7 /* HTMLLexerTests.swift in Sources */,
+				179D06AE2906A3FA00A65E3A /* HTMLStringParserTests.swift in Sources */,
+				177A876C2914184B00F02088 /* HTMLStringSwiftUIStyleTranslatorTests.swift in Sources */,
 				9B9663CB2460383900D34BA1 /* ConfigTests.swift in Sources */,
 				9F213830B2F4E5DFE596431F /* KeyboardNotificationInfoTest.swift in Sources */,
 			);
@@ -3395,6 +3476,7 @@
 				895175902248CF79008003FB /* StepIndicator.swift in Sources */,
 				441FE433209A24E500B04EF1 /* AdRecommendationsGridViewLayout.swift in Sources */,
 				08F0D3F422259AD100968256 /* HappinessRatingView.swift in Sources */,
+				179D06A82906A39D00A65E3A /* HTMLStringParserStringTranslator.swift in Sources */,
 				44D9125F2077AC8A00486848 /* EmptyView.swift in Sources */,
 				44A557B622E72187001667AE /* CheckboxTableViewCell.swift in Sources */,
 				CF376C18231D452100ED2B24 /* Array+Step.swift in Sources */,
@@ -3408,6 +3490,7 @@
 				CF136ACD2203211100247B30 /* InfoboxView.swift in Sources */,
 				4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */,
 				9B057AA9235EEB1C007B1CF0 /* ContentView.swift in Sources */,
+				179D06A92906A39D00A65E3A /* HTMLStringParser.swift in Sources */,
 				9B06097023F14BB4005CB592 /* HeaderView.swift in Sources */,
 				AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */,
 				8962DA6B22781A9900A1BC78 /* ImageMemoryCache.swift in Sources */,
@@ -3418,6 +3501,7 @@
 				5DB39C8F25932DC700204B23 /* FinnTextField.swift in Sources */,
 				441FE432209A24E500B04EF1 /* AdRecommendationsGridViewLayoutConfiguration.swift in Sources */,
 				CFCC3D3123686C0D002DD4CF /* FooterButtonView.swift in Sources */,
+				175385B029146A4000DA57D2 /* HTMLStringStyleStack.swift in Sources */,
 				431875C1211180F100D71723 /* BuyerPickerProfileCell.swift in Sources */,
 				5DA190E825A84673002305A8 /* FinnTextView.swift in Sources */,
 				5DEB9B0925C151B20090883B /* ImageLoadable.swift in Sources */,
@@ -3433,9 +3517,11 @@
 				F2C3E96022CB669A00CED7E0 /* QuestionnaireView+Style.swift in Sources */,
 				4441F9F922CF81F700DCFD2F /* AddressCardView.swift in Sources */,
 				9B06097723F14D58005CB592 /* SafetyElementsView.swift in Sources */,
+				175385AE291468F600DA57D2 /* HTMLStringUIKitStyleTranslator.swift in Sources */,
 				918C8A4623A387BD00B566DE /* NativeAdvertDetailsContainer.swift in Sources */,
 				CFF9727521C3E92700C85238 /* BannerTransparencyViewModel.swift in Sources */,
 				45EDD62A20A1CCDF008F4503 /* ConsentTransparencyInfoView.swift in Sources */,
+				177A871E2913B87400F02088 /* HTMLTextFinnStyle.swift in Sources */,
 				9BCDFC7422E09DF700A80D7F /* KlimabroletActionsView.swift in Sources */,
 				91D7F3B62497918400912BC3 /* ConfettiView.swift in Sources */,
 				DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */,
@@ -3505,6 +3591,7 @@
 				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
 				CFB775F22359D8360097C0ED /* FloatingButton+Favorites.swift in Sources */,
 				E6A2412A2912F09000D9F354 /* HyperlinkTextViewViewModel.swift in Sources */,
+				179D06B62907D66E00A65E3A /* HTMLLexer.swift in Sources */,
 				441FE44B209A2F2C00B04EF1 /* NotificationsListViewCell.swift in Sources */,
 				CF0F6B992360784C00CA62FD /* PrimingViewModel.swift in Sources */,
 				082D80D521C15C9200831BDE /* CandyCaneView.swift in Sources */,
@@ -3642,6 +3729,7 @@
 				44587019213FA344009187BE /* RegisterViewModel.swift in Sources */,
 				9BEB287F231D488000D28BAD /* TitleValueSliderView.swift in Sources */,
 				CF7C460422257A8A001FB92C /* EarthHourContentView.swift in Sources */,
+				172E7502290FC86B00956AC2 /* HTMLText.swift in Sources */,
 				CF5CA71222F85A94007C4124 /* NeighborhoodProfileHeaderView.swift in Sources */,
 				441FE435209A24E500B04EF1 /* StandardAdRecommendationViewModel.swift in Sources */,
 				F253C51D2315601A008175FD /* VerificationActionSheet.swift in Sources */,
@@ -3691,6 +3779,7 @@
 				DAD0D492210737A30091DD4D /* TextView.swift in Sources */,
 				AADED71C223FE25500647C50 /* UIDevice.swift in Sources */,
 				D75E14CE27346BEC008EB126 /* SavedSearchShelfViewModel.swift in Sources */,
+				177A86CF2912B98C00F02088 /* CharacterSetExtensions.swift in Sources */,
 				CF3D5EEC215A6741006E4D08 /* DrumMachineView.swift in Sources */,
 				9BC33DE922D72293007CCD65 /* LoginEntryView.swift in Sources */,
 				44D912642077AC8A00486848 /* RectangleView.swift in Sources */,
@@ -3786,6 +3875,7 @@
 				449C60B5234DD85C00C51A63 /* ShadowView.swift in Sources */,
 				9A37D6BC5F45EACE68F4EF37 /* FavoriteAdsListEmptyView.swift in Sources */,
 				9A37D30A78EB61643224B799 /* HorizontalIconCollectionViewCell.swift in Sources */,
+				177A871C2913B40900F02088 /* HTMLStringSwiftUIStyleTranslator.swift in Sources */,
 				9A37DBFD486B7C3CFDA8CBF4 /* SelfDeclarationView.swift in Sources */,
 				9A37D8D25E07F1F1F3875044 /* SelfDeclarationViewModel.swift in Sources */,
 				9A37DA10C8A9D0ABD161B810 /* SelfDeclarationItemViewModel.swift in Sources */,

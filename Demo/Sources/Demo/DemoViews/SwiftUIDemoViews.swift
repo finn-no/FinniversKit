@@ -6,11 +6,17 @@ import SwiftUI
 import FinniversKit
 
 public enum SwiftUIDemoViews: String, DemoViews {
+    case htmlText
     case textField
     case textView
 
     public var viewController: UIViewController {
-        PreviewController(hostingController: hostingController)
+        switch self {
+        case .htmlText:
+            return HTMLTextDemoViewController()
+        default:
+            return PreviewController(hostingController: hostingController)
+        }
     }
 
     private var hostingController: UIViewController {
@@ -23,6 +29,8 @@ public enum SwiftUIDemoViews: String, DemoViews {
             FinnTextField_Previews.previews
         case .textView:
             FinnTextView_Previews.previews
+        default:
+            EmptyView()
         }
     }
 }
