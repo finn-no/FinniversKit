@@ -47,21 +47,21 @@ public class HyperlinkTextViewDemoView: UIView, Tweakable {
 
     private func configureHyper() {
         var viewModel = HyperlinkTextViewViewModel(
-            text: "Med å gjøre en forespørsel aksepterer du også vilkårene for fiks, ferdig frakt og betaling.",
+            text: "Med å gjøre en <tag1>forespørsel</tag1> aksepterer du også <tag2>vilkårene for fiks, ferdig frakt og betaling</tag2>.",
             hyperlinks: [
                 HyperlinkTextViewViewModel.Hyperlink(
-                    hyperlink: "en forespørsel",
+                    hyperlink: "tag1",
                     action: "test://foobar"
                 ),
                 HyperlinkTextViewViewModel.Hyperlink(
-                    hyperlink: "vilkårene for fiks, ferdig frakt og betaling",
+                    hyperlink: "tag2",
                     action: "test://blah"
                 )
             ]
         )
         viewModel.delegate = self
         hyperlinkTextView.font = .caption
-        hyperlinkTextView.configure(viewModel: viewModel)
+        hyperlinkTextView.configure(with: viewModel)
     }
 
     // MARK: - Actions
@@ -76,4 +76,3 @@ extension HyperlinkTextViewDemoView: HyperlinkTextViewViewModelDelegate {
         print("Action \(action) was tapped.")
     }
 }
-

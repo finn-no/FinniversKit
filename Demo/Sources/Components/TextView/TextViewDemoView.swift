@@ -98,7 +98,7 @@ public class TextViewDemoView: UIView, Tweakable {
         )
         viewModel.delegate = self
         hyperlinkTextView.font = .caption
-        hyperlinkTextView.configure(viewModel: viewModel)
+        hyperlinkTextView.configure(with: viewModel)
     }
 
     // MARK: - Actions

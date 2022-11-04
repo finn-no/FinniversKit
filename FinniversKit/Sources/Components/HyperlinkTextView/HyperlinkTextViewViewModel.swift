@@ -3,13 +3,13 @@ public protocol HyperlinkTextViewViewModelDelegate: AnyObject {
 }
 
 public struct HyperlinkTextViewViewModel {
-    public let text: String
+    public let htmlText: String
     public let hyperlinks: [Hyperlink]
 
     public weak var delegate: HyperlinkTextViewViewModelDelegate?
 
     public init(text: String, hyperlinks: [Hyperlink]) {
-        self.text = text
+        self.htmlText = text
         self.hyperlinks = hyperlinks
     }
 
