@@ -57,7 +57,7 @@ public class HyperlinkTextView: UIView {
         textView.fillInSuperview()
     }
 
-    public func configure(viewModel: HyperlinkTextViewViewModel) {
+    public func configure(with viewModel: HyperlinkTextViewViewModel) {
         self.viewModel = viewModel
 
         updateText()
