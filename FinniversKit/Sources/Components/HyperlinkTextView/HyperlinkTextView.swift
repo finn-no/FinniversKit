@@ -1,4 +1,38 @@
 public class HyperlinkTextView: UIView {
+    public var font: UIFont = .body {
+        didSet {
+            textView.font = font
+            updateText()
+        }
+    }
+
+    public var textColor: UIColor = .textPrimary {
+        didSet {
+            textView.textColor = textColor
+            updateText()
+        }
+    }
+
+    public override var backgroundColor: UIColor? {
+        didSet {
+            textView.backgroundColor = backgroundColor
+        }
+    }
+
+    public var linkColor: UIColor = .textAction {
+        didSet {
+            updateText()
+        }
+    }
+
+    public var textAlignment: NSTextAlignment = .left {
+        didSet {
+            updateText()
+        }
+    }
+
+    // MARK: - Private properties
+
     private var viewModel: HyperlinkTextViewViewModel?
 
     private lazy var textView: UITextView = {
@@ -17,29 +51,7 @@ public class HyperlinkTextView: UIView {
         return view
     }()
 
-    public override var intrinsicContentSize: CGSize {
-        return textView.intrinsicContentSize
-    }
-
-    public var font: UIFont = .body {
-        didSet {
-            textView.font = font
-            updateText()
-        }
-    }
-
-    public var textColor: UIColor = .textPrimary {
-        didSet {
-            textView.textColor = textColor
-            updateText()
-        }
-    }
-
-    public var linkColor: UIColor = .textAction {
-        didSet {
-            updateText()
-        }
-    }
+    // MARK: - Init
 
     public init(frame: CGRect = .zero, withAutoLayout: Bool) {
         super.init(frame: frame)
@@ -52,10 +64,7 @@ public class HyperlinkTextView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setup() {
-        addSubview(textView)
-        textView.fillInSuperview()
-    }
+    // MARK: - Public functions
 
     public func configure(with viewModel: HyperlinkTextViewViewModel) {
         self.viewModel = viewModel
@@ -63,11 +72,34 @@ public class HyperlinkTextView: UIView {
         updateText()
     }
 
+    // MARK: - Overrides
+
+    public override var intrinsicContentSize: CGSize {
+        return textView.intrinsicContentSize
+    }
+
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        updateText()
+    }
+
+    // MARK: - Private functions
+
+    private func setup() {
+        addSubview(textView)
+        textView.fillInSuperview()
+    }
+
     private func updateText() {
         guard let viewModel = viewModel else { return }
 
         let parser = HTMLStringParser()
-        let translator = HyperLinkTextViewTranslator(links: viewModel.hyperlinks)
+        let translator = HyperLinkTextViewTranslator(
+            links: viewModel.hyperlinks,
+            textColor: textColor,
+            textAlignment: textAlignment
+        )
         let attributedText = try? parser.parse(
             html: viewModel.htmlText,
             translator: translator
@@ -90,6 +122,8 @@ extension HyperlinkTextView: UITextViewDelegate {
 
 private struct HyperLinkTextViewTranslator: HTMLStringParserTranslator {
     let links: [HyperlinkTextViewViewModel.Hyperlink]
+    let textColor: UIColor
+    let textAlignment: NSTextAlignment
 
     public func translate(tokens: [HTMLLexer.Token]) throws -> NSAttributedString {
         var styledText = NSMutableAttributedString()
@@ -104,17 +138,17 @@ private struct HyperLinkTextViewTranslator: HTMLStringParserTranslator {
                 currentTag = nil
 
             case .text(let string):
-                var attributes: [NSAttributedString.Key : Any]? {
-                    guard
-                        let currentTag,
-                        let hyperlink = links.first(where: { $0.hyperlink == currentTag })
-                    else {
-                        return nil
-                    }
+                let style = NSMutableParagraphStyle()
+                style.alignment = textAlignment
 
-                    return [
-                        .link: hyperlink.action
-                    ]
+                var attributes: [NSAttributedString.Key : Any] = [
+                    .paragraphStyle: style,
+                    .foregroundColor: textColor
+                ]
+
+                if let currentTag,
+                   let hyperlink = links.first(where: { $0.hyperlink == currentTag }) {
+                    attributes[.link] = hyperlink.action
                 }
 
                 let attributedText = NSAttributedString(string: string, attributes: attributes)
