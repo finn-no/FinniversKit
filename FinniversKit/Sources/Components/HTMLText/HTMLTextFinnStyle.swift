@@ -8,8 +8,8 @@ extension HTMLStringSwiftUIStyleTranslator {
         foregroundColor: Color?
     ) -> HTMLStringSwiftUIStyleTranslator {
         return .init(defaultStyle: .init(
-            font: .body,
-            foregroundColor: .textPrimary
+            font: font,
+            foregroundColor: foregroundColor
         )) { elementName, attributes in
             var style = HTMLStringSwiftUIStyleTranslator.Style()
             switch elementName.lowercased() {
@@ -39,8 +39,8 @@ extension HTMLStringUIKitStyleTranslator {
         foregroundColor: UIColor?
     ) -> HTMLStringUIKitStyleTranslator {
         return .init(defaultStyle: .init(
-            font: .body,
-            foregroundColor: .textPrimary
+            font: font,
+            foregroundColor: foregroundColor
         )) { elementName, attributes in
             var style = HTMLStringUIKitStyleTranslator.Style()
             switch elementName.lowercased() {

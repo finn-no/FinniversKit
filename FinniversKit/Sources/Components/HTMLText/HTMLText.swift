@@ -23,7 +23,9 @@ public struct HTMLText: View {
                 foregroundColor: foregroundColor
             )
             let styledTexts = try htmlParser.parse(html: html, translator: translator)
-            return styledTexts.reduce(into: Text("").applyStyle(translator.styleStack.defaultStyle)) { textView, styledText in
+            return styledTexts.reduce(
+                into: Text("").applyStyle(translator.styleStack.defaultStyle)
+            ) { textView, styledText in
                 textView = textView + Text(styledText.text).applyStyle(styledText.style)
             }
         } catch {
