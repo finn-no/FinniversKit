@@ -46,9 +46,9 @@ public struct HTMLStringParser {
 
     public func tokenize(html: String) -> [HTMLLexer.Token] {
         let delegate = LexerDelegate()
-        let lexer = HTMLLexer(html: html)
+        let lexer = HTMLLexer()
         lexer.delegate = delegate
-        lexer.read()
+        lexer.read(html: html)
         return delegate.tokens
     }
 

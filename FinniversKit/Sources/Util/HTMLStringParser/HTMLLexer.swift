@@ -27,15 +27,14 @@ public final class HTMLLexer {
 
     public weak var delegate: HTMLLexerDelegate?
 
-    private let scanner: Scanner
+    private var scanner = Scanner(string: "")
 
-    public init(html: String) {
+    public init() {}
+
+    public func read(html: String) {
         let scanner = Scanner(string: html)
         scanner.charactersToBeSkipped = nil
         self.scanner = scanner
-    }
-
-    public func read() {
         var accumulatedText = ""
         var potentialTagIndex = scanner.currentIndex
         while !scanner.isAtEnd {
