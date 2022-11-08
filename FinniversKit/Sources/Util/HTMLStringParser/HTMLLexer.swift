@@ -57,12 +57,30 @@ public final class HTMLLexer {
 
     // MARK: - Emit functions
 
+    /**
+     Emit a text token to the delegate.
+
+     - Parameters:
+        - text: The accumulated text to emit.
+
+     The text parameter is inout for performance reasons:
+     1) Emitting tokens happens in a tight loop so we want as few allocations as possible.
+     2) Emptying the string with accumulated text instead of replacing it with an empty
+     string is one less allocation and gives us fewer reallocations in the internal storage
+     of the string.
+     */
     private func emitText(_ text: inout String) {
         guard !text.isEmpty else { return }
         emitToken(.text(text))
         text.removeAll()
     }
 
+    /**
+     Emit a token to the delegate.
+
+     - Parameters:
+        - token: The token to emit.
+     */
     private func emitToken(_ token: Token) {
         delegate?.lexer(self, didFindToken: token)
     }
@@ -201,15 +219,21 @@ public final class HTMLLexer {
     private func scanBeginTag() -> Token? {
         // https://html.spec.whatwg.org/multipage/syntax.html#start-tags
 
-        func scanEndOfTag(isSelfClosing: inout Bool) -> Bool {
+        struct EndOfTag {
+            let isSelfClosing: Bool
+        }
+
+        func scanEndOfTag() -> EndOfTag? {
+            var isSelfClosing = false
             var character = scanCharacter()
             if character == "/" {
                 isSelfClosing = true
                 character = scanCharacter()
-            } else {
-                isSelfClosing = false
             }
-            return character == ">"
+            if character == ">" {
+                return EndOfTag(isSelfClosing: isSelfClosing)
+            }
+            return nil
         }
 
         guard
@@ -218,18 +242,16 @@ public final class HTMLLexer {
             let currentChar = currentCharacter
         else { return nil }
         if isEndOfTag(currentChar) {
-            var isSelfClosing = false
-            guard scanEndOfTag(isSelfClosing: &isSelfClosing) else { return nil }
-            return .startTag(name: name, attributes: [:], isSelfClosing: isSelfClosing)
+            guard let endOfTag = scanEndOfTag() else { return nil }
+            return .startTag(name: name, attributes: [:], isSelfClosing: endOfTag.isSelfClosing)
         }
 
         var attributes: [String: String] = [:]
         if let foundAttributes = scanTagAttributes() {
             attributes = foundAttributes
         }
-        var isSelfClosing = false
-        guard scanEndOfTag(isSelfClosing: &isSelfClosing) else { return nil }
-        return .startTag(name: name, attributes: attributes, isSelfClosing: isSelfClosing)
+        guard let endOfTag = scanEndOfTag() else { return nil }
+        return .startTag(name: name, attributes: attributes, isSelfClosing: endOfTag.isSelfClosing)
     }
 
     private func scanEndTag() -> Token? {
