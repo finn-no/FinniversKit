@@ -40,6 +40,7 @@
 		175385B229150E7800DA57D2 /* HTMLStringUIKitStyleTranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175385B129150E7800DA57D2 /* HTMLStringUIKitStyleTranslatorTests.swift */; };
 		1753871D291AA55000DA57D2 /* HTMLStringParserTextTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1753871C291AA55000DA57D2 /* HTMLStringParserTextTranslator.swift */; };
 		1753871F291AA79600DA57D2 /* HTMLStringParserTextTranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1753871E291AA79600DA57D2 /* HTMLStringParserTextTranslatorTests.swift */; };
+		17538723291ABC1B00DA57D2 /* HTMLElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17538722291ABC1B00DA57D2 /* HTMLElement.swift */; };
 		177A86CF2912B98C00F02088 /* CharacterSetExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A86CE2912B98C00F02088 /* CharacterSetExtensions.swift */; };
 		177A871C2913B40900F02088 /* HTMLStringSwiftUIStyleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A871B2913B40900F02088 /* HTMLStringSwiftUIStyleTranslator.swift */; };
 		177A871E2913B87400F02088 /* HTMLTextFinnStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A871D2913B87400F02088 /* HTMLTextFinnStyle.swift */; };
@@ -529,6 +530,7 @@
 		175385B129150E7800DA57D2 /* HTMLStringUIKitStyleTranslatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringUIKitStyleTranslatorTests.swift; sourceTree = "<group>"; };
 		1753871C291AA55000DA57D2 /* HTMLStringParserTextTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringParserTextTranslator.swift; sourceTree = "<group>"; };
 		1753871E291AA79600DA57D2 /* HTMLStringParserTextTranslatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringParserTextTranslatorTests.swift; sourceTree = "<group>"; };
+		17538722291ABC1B00DA57D2 /* HTMLElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLElement.swift; sourceTree = "<group>"; };
 		177A86CE2912B98C00F02088 /* CharacterSetExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSetExtensions.swift; sourceTree = "<group>"; };
 		177A871B2913B40900F02088 /* HTMLStringSwiftUIStyleTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringSwiftUIStyleTranslator.swift; sourceTree = "<group>"; };
 		177A871D2913B87400F02088 /* HTMLTextFinnStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextFinnStyle.swift; sourceTree = "<group>"; };
@@ -1143,10 +1145,11 @@
 		179D06A52906A39D00A65E3A /* HTMLStringParser */ = {
 			isa = PBXGroup;
 			children = (
-				1753871B291AA4F900DA57D2 /* Translators */,
+				17538722291ABC1B00DA57D2 /* HTMLElement.swift */,
 				179D06B52907D66E00A65E3A /* HTMLLexer.swift */,
 				179D06A72906A39D00A65E3A /* HTMLStringParser.swift */,
 				175385AF29146A4000DA57D2 /* HTMLStringStyleStack.swift */,
+				1753871B291AA4F900DA57D2 /* Translators */,
 			);
 			path = HTMLStringParser;
 			sourceTree = "<group>";
@@ -3575,6 +3578,7 @@
 				8908E83622BD0CA100ED671C /* MessageInputTextView.swift in Sources */,
 				9BB12AC2238289F100A04F61 /* StatisticsModel.swift in Sources */,
 				8951759A224902E4008003FB /* StepDotConnector.swift in Sources */,
+				17538723291ABC1B00DA57D2 /* HTMLElement.swift in Sources */,
 				6266C07022081EEA00FB8004 /* StatisticsItemModel.swift in Sources */,
 				D76B477E273925A30054E853 /* FrontPageShelfViewModel.swift in Sources */,
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,

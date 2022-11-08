@@ -12,18 +12,26 @@ extension HTMLStringSwiftUIStyleTranslator {
             foregroundColor: foregroundColor
         )) { elementName, attributes in
             var style = HTMLStringSwiftUIStyleTranslator.Style()
-            switch elementName.lowercased() {
-            case "b", "strong":
+            let element = HTMLElement(elementName)
+            switch element {
+            case .b, .strong:
                 style.fontWeight = .bold
-            case "del", "s":
+            case .del, .s:
                 style.strikethrough = true
-            case "i":
+            case .i:
                 style.italic = true
-            case "span":
-                if let styleAttrib = attributes["style"], styleAttrib == "color:tjt-price-highlight" {
-                    style.foregroundColor = .textCritical
+            case .span:
+                for (name, value) in attributes {
+                    switch name {
+                    case "style":
+                        if value == "color:tjt-price-highlight" {
+                            style.foregroundColor = .textCritical
+                        }
+                    default:
+                        break
+                    }
                 }
-            case "u":
+            case .u:
                 style.underline = true
             default:
                 break
@@ -43,18 +51,26 @@ extension HTMLStringUIKitStyleTranslator {
             foregroundColor: foregroundColor
         )) { elementName, attributes in
             var style = HTMLStringUIKitStyleTranslator.Style()
-            switch elementName.lowercased() {
-            case "b", "strong":
+            let element = HTMLElement(elementName)
+            switch element {
+            case .b, .strong:
                 style.fontWeight = .bold
-            case "del", "s":
+            case .del, .s:
                 style.strikethrough = true
-            case "i":
+            case .i:
                 style.italic = true
-            case "span":
-                if let styleAttrib = attributes["style"], styleAttrib == "color:tjt-price-highlight" {
-                    style.foregroundColor = .textCritical
+            case .span:
+                for (name, value) in attributes {
+                    switch name {
+                    case "style":
+                        if value == "color:tjt-price-highlight" {
+                            style.foregroundColor = .textCritical
+                        }
+                    default:
+                        break
+                    }
                 }
-            case "u":
+            case .u:
                 style.underline = true
             default:
                 break
