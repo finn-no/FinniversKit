@@ -38,7 +38,7 @@ public class FeedbackView: UIView {
 
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = UIImage(named: .ratingCat)
+        imageView.image = UIImage(named: .pusefinnCircle)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
