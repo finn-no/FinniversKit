@@ -81,19 +81,17 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.loginEntryView)
     }
 
-    // crashes on my machine
-//    func testAddressMapView() {
-//        snapshot(.addressMapView)
-//    }
+    func testAddressMapView() {
+        snapshot(.addressMapView)
+    }
 
     func testFavoriteAdsList() {
         snapshot(.favoriteAdsList)
     }
 
-    // crashes on my machine
-//    func testSearchResultMapView() {
-//        snapshot(.searchResultMapView)
-//    }
+    func testSearchResultMapView() {
+        snapshot(.searchResultMapView)
+    }
 
     func testVerificationActionSheet() {
         snapshot(.verificationActionSheet)
