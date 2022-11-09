@@ -13,11 +13,11 @@ extension HTMLElement: Equatable {
         return lhs.name.lowercased() == rhs.name.lowercased()
     }
 
-    public static func == (lhs: any StringProtocol, rhs: Self) -> Bool {
+    public static func == (lhs: String, rhs: Self) -> Bool {
         return lhs.lowercased() == rhs.name.lowercased()
     }
 
-    public static func == (lhs: Self, rhs: any StringProtocol) -> Bool {
+    public static func == (lhs: Self, rhs: String) -> Bool {
         return lhs.name.lowercased() == rhs.lowercased()
     }
 }
