@@ -25,6 +25,10 @@ class SwiftUIViewTests: XCTestCase {
         }
     }
 
+    func testHTMLText() {
+        snapshot(.htmlText)
+    }
+
     func testTextField() {
         snapshot(.textField)
     }
