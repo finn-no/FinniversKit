@@ -50,3 +50,9 @@ extension Color {
     public static var imageBorder: Color         { Color(UIColor.imageBorder) }
     public static var decorationSubtle: Color    { Color(UIColor.decorationSubtle) }
 }
+
+extension Color {
+    public static func finnColor(_ color: UIColor) -> Color {
+        Color(color)
+    }
+}
