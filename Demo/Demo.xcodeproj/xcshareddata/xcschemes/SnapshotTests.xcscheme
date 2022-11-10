@@ -11,7 +11,7 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      language = "nb"
+      language = "en"
       region = "NO">
       <Testables>
          <TestableReference
@@ -30,7 +30,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = "nb"
+      language = "en"
       region = "NO"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
