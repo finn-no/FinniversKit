@@ -30,6 +30,10 @@ import UIKit
         Config.colorProvider.bgAlert
     }
 
+    public class var bgInfo: UIColor {
+        Config.colorProvider.bgInfo
+    }
+
     public class var bgSuccess: UIColor {
         Config.colorProvider.bgSuccess
     }
@@ -348,6 +352,10 @@ extension CGColor {
 
     public class var bgAlert: CGColor {
         return UIColor.bgAlert.cgColor
+    }
+
+    public class var bgInfo: CGColor {
+        return UIColor.bgInfo.cgColor
     }
 
     public class var bgSuccess: CGColor {
