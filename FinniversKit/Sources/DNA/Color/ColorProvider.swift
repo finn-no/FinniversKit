@@ -64,6 +64,10 @@ public struct DefaultColorProvider: ColorProvider {
         .banana
     }
 
+    public var bgInfo: UIColor {
+        .dynamicColor(defaultColor: .ice, darkModeColor: .darkIce)
+    }
+
     public var bgSuccess: UIColor {
         .mint
     }
