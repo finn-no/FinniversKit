@@ -23,7 +23,11 @@ public class ObjectPageTitleView: UIView {
     private let titleStyle: Label.Style
     private let subtitleStyle: Label.Style
     private let captionStyle: Label.Style
-    private lazy var ribbonView = RibbonView(withAutoLayout: true)
+    private lazy var ribbonView: RibbonView = {
+        let ribbonView = RibbonView(withAutoLayout: true)
+        ribbonView.accessibilityTraits = .staticText
+        return ribbonView
+    }()
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [ribbonView, titleLabel, subtitleLabel, captionLabel])
@@ -37,18 +41,21 @@ public class ObjectPageTitleView: UIView {
     private lazy var titleLabel: Label = {
         let label = Label(style: titleStyle, withAutoLayout: true)
         label.numberOfLines = 0
+        label.accessibilityTraits = .header
         return label
     }()
 
     private lazy var subtitleLabel: Label = {
         let label = Label(style: subtitleStyle, withAutoLayout: true)
         label.numberOfLines = 0
+        label.accessibilityTraits = .staticText
         return label
     }()
 
     private lazy var captionLabel: Label = {
         let label = Label(style: captionStyle, withAutoLayout: true)
         label.numberOfLines = 0
+        label.accessibilityTraits = .staticText
         return label
     }()
 
@@ -71,22 +78,6 @@ public class ObjectPageTitleView: UIView {
     private func setup() {
         addSubview(stackView)
         stackView.fillInSuperview()
-        setupAccessibility()
-    }
-
-    private func setupAccessibility() {
-        isAccessibilityElement = false
-        let accessibilityElements = [titleLabel, subtitleLabel, captionLabel, ribbonView]
-
-        accessibilityElements.forEach {
-            if $0 == titleLabel {
-                $0.accessibilityTraits = .header
-            } else {
-                $0.accessibilityTraits = .staticText
-            }
-        }
-
-        self.accessibilityElements = accessibilityElements
     }
 
     // MARK: - Public methods
@@ -115,5 +106,11 @@ public class ObjectPageTitleView: UIView {
 
         stackView.setCustomSpacing(spacingAfterTitle, after: titleLabel)
         stackView.setCustomSpacing(spacingAfterSubtitle, after: subtitleLabel)
+
+        isAccessibilityElement = false
+        let accessibilityElements = [titleLabel, subtitleLabel, captionLabel, ribbonView]
+        // On iOS 15 the hidden elements are still accessible for screen readers (and causes issues navigating further)
+        // so need to filter them out, this is not needed on iOS 16
+        self.accessibilityElements = accessibilityElements.filter({ !$0.isHidden })
     }
 }
