@@ -81,10 +81,14 @@ public struct CallToAction: ButtonStyle {
     private let background: Color
     private let font: Font
 
-    public init(isEnabled: Binding<Bool>, size: Button.Size = .normal, background: Color = .btnPrimary) {
-        self._isEnabled = isEnabled
+    public init(size: Button.Size = .normal, background: Color = .btnPrimary, isEnabled: Binding<Bool>? = nil) {
         self.background = background
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
+        if let isEnabledBinding = isEnabled {
+            self._isEnabled = isEnabledBinding
+        } else {
+            self._isEnabled = .constant(true)
+        }
     }
 
     public func makeBody(configuration: Configuration) -> some View {
