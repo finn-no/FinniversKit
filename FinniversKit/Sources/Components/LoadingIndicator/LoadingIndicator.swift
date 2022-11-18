@@ -1,8 +1,16 @@
 import SwiftUI
 
 public struct LoadingIndicator: UIViewRepresentable {
-    private var startDelay: Double = 0.0
-    private var isAnimating: Bool = true
+    private var isAnimating: Bool
+    private var startDelay: Double
+
+    public init(
+        isAnimating: Bool = true,
+        startDelay: Double = 0.0
+    ) {
+        self.isAnimating = isAnimating
+        self.startDelay = startDelay
+    }
 
     public func makeUIView(context: Context) -> LoadingIndicatorView {
         LoadingIndicatorView(frame: .zero)
