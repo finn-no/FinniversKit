@@ -34,27 +34,15 @@
                ReferencedContainer = "container:../FinniversKit/FinniversKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "46DE7D5B242B9BCB00DB1707"
-               BuildableName = "FinnUITests.xctest"
-               BlueprintName = "FinnUITests"
-               ReferencedContainer = "container:../FinnUI/FinnUI.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      language = "en"
+      region = "NO">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -64,16 +52,6 @@
                BuildableName = "UnitTests.xctest"
                BlueprintName = "UnitTests"
                ReferencedContainer = "container:../FinniversKit/FinniversKit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "46DE7D5B242B9BCB00DB1707"
-               BuildableName = "FinnUITests.xctest"
-               BlueprintName = "FinnUITests"
-               ReferencedContainer = "container:../FinnUI/FinnUI.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
