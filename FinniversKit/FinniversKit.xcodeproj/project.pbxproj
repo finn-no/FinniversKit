@@ -471,6 +471,8 @@
 		E65085D6292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085D5292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift */; };
 		E65085DA292BC03400A43B07 /* SwiftUIRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085D9292BC03400A43B07 /* SwiftUIRadioButton.swift */; };
 		E65085DC292BCD1D00A43B07 /* SwiftUISelectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085DB292BCD1D00A43B07 /* SwiftUISelectionListView.swift */; };
+		E65085E0292BCF7800A43B07 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085DF292BCF7800A43B07 /* RoundedCorner.swift */; };
+		E65085E2292BD01800A43B07 /* SwiftUISelectionListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085E1292BD01800A43B07 /* SwiftUISelectionListItem.swift */; };
 		E681A0E72923FCAC008564E2 /* HyperlinkTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0E62923FCAC008564E2 /* HyperlinkTextView.swift */; };
 		E681A0E92923FCE5008564E2 /* HyperlinkTextViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0E82923FCE5008564E2 /* HyperlinkTextViewViewModel.swift */; };
 		E68D58F628DDE75D001A70CA /* HTMLLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D58F528DDE75D001A70CA /* HTMLLabel.swift */; };
@@ -970,6 +972,8 @@
 		E65085D5292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIHyperlinkTextView.swift; sourceTree = "<group>"; };
 		E65085D9292BC03400A43B07 /* SwiftUIRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIRadioButton.swift; sourceTree = "<group>"; };
 		E65085DB292BCD1D00A43B07 /* SwiftUISelectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISelectionListView.swift; sourceTree = "<group>"; };
+		E65085DF292BCF7800A43B07 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		E65085E1292BD01800A43B07 /* SwiftUISelectionListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISelectionListItem.swift; sourceTree = "<group>"; };
 		E681A0E62923FCAC008564E2 /* HyperlinkTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextView.swift; sourceTree = "<group>"; };
 		E681A0E82923FCE5008564E2 /* HyperlinkTextViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextViewViewModel.swift; sourceTree = "<group>"; };
 		E68D58F528DDE75D001A70CA /* HTMLLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLabel.swift; sourceTree = "<group>"; };
@@ -3218,6 +3222,8 @@
 				E65085D5292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift */,
 				E65085D9292BC03400A43B07 /* SwiftUIRadioButton.swift */,
 				E65085DB292BCD1D00A43B07 /* SwiftUISelectionListView.swift */,
+				E65085DF292BCF7800A43B07 /* RoundedCorner.swift */,
+				E65085E1292BD01800A43B07 /* SwiftUISelectionListItem.swift */,
 			);
 			path = "SwiftUI Components";
 			sourceTree = "<group>";
@@ -3728,6 +3734,7 @@
 				4447F6EC1FDB2B110033DBC1 /* TextField+InputType.swift in Sources */,
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
 				712B0846254AEBC100791C6B /* BuyerPickerFallbackCell.swift in Sources */,
+				E65085E2292BD01800A43B07 /* SwiftUISelectionListItem.swift in Sources */,
 				CF5CA71422F87729007C4124 /* NeighborhoodProfileViewModel.swift in Sources */,
 				E6318FC828D9E7AC0038DC88 /* AnyViewModelCoordinator.swift in Sources */,
 				4D37A9BC28571DC400F9460D /* BadgeViewModel.swift in Sources */,
@@ -3909,6 +3916,7 @@
 				CF05BA02233B78BC003A7F1C /* FavoriteSearchEmptyView.swift in Sources */,
 				9A37D36854B78610AFEADD5C /* UITableViewCellExtensions.swift in Sources */,
 				9A37D6FADD7DBD952AA395F7 /* FavoriteAdTableViewCell.swift in Sources */,
+				E65085E0292BCF7800A43B07 /* RoundedCorner.swift in Sources */,
 				9BCD171523CCBB680045BD61 /* CollapsibleContentView.swift in Sources */,
 				9A37D015952CBD1FEF4F0E20 /* FavoriteAdViewModel.swift in Sources */,
 				9A37DFD7CA27F4F25F613DE2 /* FavoriteAdsListView.swift in Sources */,
