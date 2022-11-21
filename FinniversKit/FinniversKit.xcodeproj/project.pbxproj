@@ -466,6 +466,10 @@
 		E6318FC628D9E7550038DC88 /* ViewModelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6318FC528D9E7550038DC88 /* ViewModelCoordinator.swift */; };
 		E6318FC828D9E7AC0038DC88 /* AnyViewModelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6318FC728D9E7AC0038DC88 /* AnyViewModelCoordinator.swift */; };
 		E6318FCA28D9E7EC0038DC88 /* UnownedViewModelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6318FC928D9E7EC0038DC88 /* UnownedViewModelCoordinator.swift */; };
+		E65085D1292BBF1D00A43B07 /* SwiftUICheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085D0292BBF1D00A43B07 /* SwiftUICheckBox.swift */; };
+		E65085D4292BBF7500A43B07 /* StatefulPreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085D3292BBF7500A43B07 /* StatefulPreviewWrapper.swift */; };
+		E65085D6292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085D5292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift */; };
+		E65085DA292BC03400A43B07 /* SwiftUIRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085D9292BC03400A43B07 /* SwiftUIRadioButton.swift */; };
 		E681A0E72923FCAC008564E2 /* HyperlinkTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0E62923FCAC008564E2 /* HyperlinkTextView.swift */; };
 		E681A0E92923FCE5008564E2 /* HyperlinkTextViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0E82923FCE5008564E2 /* HyperlinkTextViewViewModel.swift */; };
 		E68D58F628DDE75D001A70CA /* HTMLLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D58F528DDE75D001A70CA /* HTMLLabel.swift */; };
@@ -960,6 +964,10 @@
 		E6318FC528D9E7550038DC88 /* ViewModelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelCoordinator.swift; sourceTree = "<group>"; };
 		E6318FC728D9E7AC0038DC88 /* AnyViewModelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyViewModelCoordinator.swift; sourceTree = "<group>"; };
 		E6318FC928D9E7EC0038DC88 /* UnownedViewModelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnownedViewModelCoordinator.swift; sourceTree = "<group>"; };
+		E65085D0292BBF1D00A43B07 /* SwiftUICheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUICheckBox.swift; sourceTree = "<group>"; };
+		E65085D3292BBF7500A43B07 /* StatefulPreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulPreviewWrapper.swift; sourceTree = "<group>"; };
+		E65085D5292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIHyperlinkTextView.swift; sourceTree = "<group>"; };
+		E65085D9292BC03400A43B07 /* SwiftUIRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIRadioButton.swift; sourceTree = "<group>"; };
 		E681A0E62923FCAC008564E2 /* HyperlinkTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextView.swift; sourceTree = "<group>"; };
 		E681A0E82923FCE5008564E2 /* HyperlinkTextViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextViewViewModel.swift; sourceTree = "<group>"; };
 		E68D58F528DDE75D001A70CA /* HTMLLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLabel.swift; sourceTree = "<group>"; };
@@ -1013,6 +1021,7 @@
 		087A5BB422A7D84600184640 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				E65085D2292BBF4500A43B07 /* SwiftUI */,
 				CF0B10972316AC0D001E7A57 /* BottomShadowView.swift */,
 				CF164CFE230EB3D100250822 /* ContentSizedTableView.swift */,
 				179D06A52906A39D00A65E3A /* HTMLStringParser */,
@@ -1416,6 +1425,7 @@
 		4447F6631FDB2B110033DBC1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E65085CF292BBA0600A43B07 /* SwiftUI Components */,
 				4447F6B51FDB2B110033DBC1 /* Info.plist */,
 				4447F6C61FDB2B110033DBC1 /* Config.swift */,
 				9BB734C22462E9C000E05435 /* Base Components */,
@@ -3199,6 +3209,24 @@
 			path = ViewModelCoordinator;
 			sourceTree = "<group>";
 		};
+		E65085CF292BBA0600A43B07 /* SwiftUI Components */ = {
+			isa = PBXGroup;
+			children = (
+				E65085D0292BBF1D00A43B07 /* SwiftUICheckBox.swift */,
+				E65085D5292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift */,
+				E65085D9292BC03400A43B07 /* SwiftUIRadioButton.swift */,
+			);
+			path = "SwiftUI Components";
+			sourceTree = "<group>";
+		};
+		E65085D2292BBF4500A43B07 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				E65085D3292BBF7500A43B07 /* StatefulPreviewWrapper.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
 		E681A0E52923FC9A008564E2 /* HyperlinkTextView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3488,6 +3516,7 @@
 				44D9125F2077AC8A00486848 /* EmptyView.swift in Sources */,
 				44A557B622E72187001667AE /* CheckboxTableViewCell.swift in Sources */,
 				CF376C18231D452100ED2B24 /* Array+Step.swift in Sources */,
+				E65085DA292BC03400A43B07 /* SwiftUIRadioButton.swift in Sources */,
 				F288CB3E233CD53400C1EE8A /* UserAdsRatingView.swift in Sources */,
 				4D01FD5C261C9A5C008B9913 /* TransactionStepIllustrationView.swift in Sources */,
 				45EDD62F20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift in Sources */,
@@ -3572,6 +3601,7 @@
 				DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */,
 				DA84E8E9252DC96900E4E3B3 /* FontProvider.swift in Sources */,
 				CF4A053721FB2ACB000BB7DA /* PianoView.swift in Sources */,
+				E65085D6292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift in Sources */,
 				DA708853211338650067519A /* ConfirmationView.swift in Sources */,
 				14C6F7D5212324CA00A7230C /* FavoritesListViewModel.swift in Sources */,
 				14DC126F21593B0000326DC3 /* HorizontalSlideController.swift in Sources */,
@@ -3826,6 +3856,7 @@
 				43BACE6C21117D530052114C /* BuyerPickerViewModel.swift in Sources */,
 				F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */,
 				895175952248D4D1008003FB /* StepDot.swift in Sources */,
+				E65085D1292BBF1D00A43B07 /* SwiftUICheckBox.swift in Sources */,
 				5D0ED35125A49FA7007750D0 /* FinnTextField+Style.swift in Sources */,
 				F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */,
 				CF4A053921FB2ACB000BB7DA /* PianoEffectView.swift in Sources */,
@@ -3835,6 +3866,7 @@
 				08F0D3F122202DC900968256 /* FeedbackViewModel.swift in Sources */,
 				CF3D5EE2215A6525006E4D08 /* InstrumentSelectorView.swift in Sources */,
 				5DA190C725A4A7E0002305A8 /* Transition+Extensions.swift in Sources */,
+				E65085D4292BBF7500A43B07 /* StatefulPreviewWrapper.swift in Sources */,
 				9A37D9EDC4E78EC664D528FE /* FeedbackView.swift in Sources */,
 				5DCE0882280FDDF100ED7407 /* MonthAndYearPickerView.swift in Sources */,
 				9F213438F5413991D1B3D7CD /* FullscreenGalleryViewModel.swift in Sources */,

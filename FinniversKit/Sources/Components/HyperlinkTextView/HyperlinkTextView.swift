@@ -1,4 +1,6 @@
 public class HyperlinkTextView: UIView {
+    // MARK: - Public properties
+
     public var font: UIFont = .body {
         didSet {
             textView.font = font
