@@ -470,6 +470,7 @@
 		E65085D4292BBF7500A43B07 /* StatefulPreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085D3292BBF7500A43B07 /* StatefulPreviewWrapper.swift */; };
 		E65085D6292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085D5292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift */; };
 		E65085DA292BC03400A43B07 /* SwiftUIRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085D9292BC03400A43B07 /* SwiftUIRadioButton.swift */; };
+		E65085DC292BCD1D00A43B07 /* SwiftUISelectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085DB292BCD1D00A43B07 /* SwiftUISelectionListView.swift */; };
 		E681A0E72923FCAC008564E2 /* HyperlinkTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0E62923FCAC008564E2 /* HyperlinkTextView.swift */; };
 		E681A0E92923FCE5008564E2 /* HyperlinkTextViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0E82923FCE5008564E2 /* HyperlinkTextViewViewModel.swift */; };
 		E68D58F628DDE75D001A70CA /* HTMLLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D58F528DDE75D001A70CA /* HTMLLabel.swift */; };
@@ -968,6 +969,7 @@
 		E65085D3292BBF7500A43B07 /* StatefulPreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulPreviewWrapper.swift; sourceTree = "<group>"; };
 		E65085D5292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIHyperlinkTextView.swift; sourceTree = "<group>"; };
 		E65085D9292BC03400A43B07 /* SwiftUIRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIRadioButton.swift; sourceTree = "<group>"; };
+		E65085DB292BCD1D00A43B07 /* SwiftUISelectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISelectionListView.swift; sourceTree = "<group>"; };
 		E681A0E62923FCAC008564E2 /* HyperlinkTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextView.swift; sourceTree = "<group>"; };
 		E681A0E82923FCE5008564E2 /* HyperlinkTextViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextViewViewModel.swift; sourceTree = "<group>"; };
 		E68D58F528DDE75D001A70CA /* HTMLLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLabel.swift; sourceTree = "<group>"; };
@@ -3215,6 +3217,7 @@
 				E65085D0292BBF1D00A43B07 /* SwiftUICheckBox.swift */,
 				E65085D5292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift */,
 				E65085D9292BC03400A43B07 /* SwiftUIRadioButton.swift */,
+				E65085DB292BCD1D00A43B07 /* SwiftUISelectionListView.swift */,
 			);
 			path = "SwiftUI Components";
 			sourceTree = "<group>";
@@ -3701,6 +3704,7 @@
 				CFF9727121C3BA1D00C85238 /* BannerTransparencySectionView.swift in Sources */,
 				CF45AF89231D3A3000BE8B39 /* StepSlider.swift in Sources */,
 				899D0BF6222D4B3400794DEC /* ArrayExtensions.swift in Sources */,
+				E65085DC292BCD1D00A43B07 /* SwiftUISelectionListView.swift in Sources */,
 				0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */,
 				E6920B2B28474B78008B41C6 /* CombineCompatible.swift in Sources */,
 				9B238F02225B95F600B0E0C2 /* InfoboxView+Style.swift in Sources */,
