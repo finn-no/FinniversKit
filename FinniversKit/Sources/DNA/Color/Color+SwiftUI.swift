@@ -52,9 +52,3 @@ extension Color {
     public static var decorationSubtle: Color    { Color(UIColor.decorationSubtle) }
     public static var borderDefault: Color       { Color(UIColor.borderDefault) }
 }
-
-extension Color {
-    public static func finnColor(_ color: UIColor) -> Color {
-        Color(color)
-    }
-}
