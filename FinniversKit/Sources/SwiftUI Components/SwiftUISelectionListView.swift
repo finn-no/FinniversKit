@@ -39,7 +39,7 @@ public struct SwiftUISelectionListView<ItemValue>: View {
 
                     if itemIndex < items.count - 1 {
                         Rectangle()
-                            .fill(Color.finnColor(.sardine))
+                            .fill(Color(.borderDefault))
                             .frame(height: 1)
                     }
                 }
@@ -47,7 +47,7 @@ public struct SwiftUISelectionListView<ItemValue>: View {
         }
         .background(
             RoundedRectangle(cornerRadius: cornerRadius)
-                .stroke(Color.finnColor(.sardine), lineWidth: 1)
+                .stroke(Color(.borderDefault), lineWidth: 1)
         )
         .onChange(of: selectedItemIndex) { selectedIndex in
             guard let selectedIndex else { return }

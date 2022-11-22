@@ -1,6 +1,8 @@
 import SwiftUI
 
 public struct SwiftUIRadioButton: View {
+    @Environment(\.colorScheme) var colorScheme
+
     @Binding public var isSelected: Bool
 
     private static let size: CGFloat = 16
@@ -10,7 +12,9 @@ public struct SwiftUIRadioButton: View {
     }
 
     private var borderWidth: CGFloat {
-        isSelected ? 5 : 1
+        // The selection border looks too wide in dark mode
+        let selectedBorderWidth: CGFloat = colorScheme == .dark ? 4 : 5
+        return isSelected ? selectedBorderWidth : 1
     }
 
     private var innerSize: CGFloat {
@@ -29,7 +33,7 @@ public struct SwiftUIRadioButton: View {
                 .animation(.spring(response: 0.2, dampingFraction: 0.5), value: isSelected)
 
             Circle()
-                .foregroundColor(Color.white)
+                .foregroundColor(.bgPrimary)
                 .frame(width: innerSize, height: innerSize)
                 .animation(.spring(response: 0.2, dampingFraction: 0.5), value: isSelected)
         }
