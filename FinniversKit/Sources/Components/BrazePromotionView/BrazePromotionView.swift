@@ -6,6 +6,10 @@ public protocol BrazePromotionViewDelegate: AnyObject {
 }
 
 public class BrazePromotionView: UIView {
+
+    private let buttonSize = 26.0
+    private let buttonTouchSurfaceSize = 44.0
+
     private lazy var backgroundView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .bgColor
@@ -37,7 +41,7 @@ public class BrazePromotionView: UIView {
     }()
 
     private lazy var titleLabel: UILabel = {
-        let label = Label(style: .title3Strong, withAutoLayout: true)
+        let label = Label(style: .captionStrong, withAutoLayout: true)
         label.numberOfLines = 0
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.defaultLow, for: .vertical)
@@ -45,7 +49,7 @@ public class BrazePromotionView: UIView {
     }()
 
     private lazy var textLabel: Label = {
-        let label = Label(style: .body, withAutoLayout: true)
+        let label = Label(style: .detail, withAutoLayout: true)
         label.numberOfLines = 0
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.required, for: .vertical)
@@ -53,21 +57,21 @@ public class BrazePromotionView: UIView {
     }()
 
     private lazy var primaryButton: Button = {
-        let button = Button(style: .customStyle, size: .small, withAutoLayout: true)
+        let button = Button(style: .callToAction, size: .small, withAutoLayout: true)
         button.addTarget(self, action: #selector(primaryButtonTapped), for: .touchUpInside)
         button.setContentHuggingPriority(.required, for: .vertical)
         return button
     }()
 
-    private lazy var closeButton: UIButton = {
-        let button = UIButton(withAutoLayout: true)
+    private lazy var closeButton: CloseButton = {
+        let button = CloseButton(withAutoLayout: true)
         button.tintColor = .bgPrimary
         button.setImage(UIImage(named: .cross), for: .normal)
         button.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        button.contentEdgeInsets = UIEdgeInsets(all: 6)
         button.layer.masksToBounds = true
-        button.layer.cornerRadius = button.frame.width / 2.0
+        button.layer.cornerRadius = buttonSize / 2.0
         button.clipsToBounds = true
+        button.imageEdgeInsets = UIEdgeInsets(vertical: .spacingXS, horizontal: .spacingXS)
         button.addTarget(self, action: #selector(handleTapOnCloseButton), for: .touchUpInside)
         return button
     }()
@@ -81,8 +85,6 @@ public class BrazePromotionView: UIView {
         return imageView
     }()
 
-    private lazy var imageContainer = UIView(withAutoLayout: true)
-
     private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView(axis: .vertical, spacing: .spacingS + .spacingXS, withAutoLayout: true)
         stackView.distribution = .fillProportionally
@@ -90,6 +92,20 @@ public class BrazePromotionView: UIView {
         stackView.setContentCompressionResistancePriority(.required, for: .horizontal)
         return stackView
     }()
+
+    private lazy var stackViewConstraintsImage: [NSLayoutConstraint] = [
+        verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
+        verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
+        verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
+        verticalStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
+    ]
+
+    private lazy var stackViewConstraintsNoImage: [NSLayoutConstraint] = [
+        verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
+        verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
+        verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
+        verticalStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -.spacingM),
+    ]
 
     private var viewModel: BrazePromotionViewModel
     private var imageDatasource: RemoteImageViewDataSource?
@@ -117,12 +133,6 @@ public class BrazePromotionView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Overrides
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        closeButton.layer.cornerRadius = closeButton.bounds.width / 2.0
-    }
-
     public func configure(with viewModel: BrazePromotionViewModel, imageDatasource datasource: RemoteImageViewDataSource) {
         titleLabel.text = viewModel.title
         primaryButton.configure(withTitle: viewModel.primaryButtonTitle)
@@ -133,29 +143,36 @@ public class BrazePromotionView: UIView {
             textLabel.isHidden = true
         }
 
-        imageContainer.addSubview(remoteImageView)
-        remoteImageView.dataSource = imageDatasource
-
-        NSLayoutConstraint.activate([
-            remoteImageView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
-            remoteImageView.trailingAnchor.constraint(equalTo: imageContainer.trailingAnchor),
-            remoteImageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor),
-            remoteImageView.widthAnchor.constraint(lessThanOrEqualTo: remoteImageView.heightAnchor),
-        ])
         loadImage()
-        backgroundView.bringSubviewToFront(closeButton)
-        layoutSubviews()
+        if let dismissible = viewModel.dismissible, !dismissible {
+            closeButton.removeFromSuperview()
+        } else {
+            backgroundView.bringSubviewToFront(closeButton)
+        }
     }
 
     private func loadImage() {
         guard let imageUrl = viewModel.image else {
-            imageContainer.removeFromSuperview()
+            remoteImageView.removeFromSuperview()
+            NSLayoutConstraint.deactivate(stackViewConstraintsImage)
+            NSLayoutConstraint.activate(stackViewConstraintsNoImage)
+            closeButton.setImage(UIImage(named: .cross).withTintColor(.textPrimary), for: .normal)
+            closeButton.backgroundColor = UIColor.clear
             return
         }
-
+        NSLayoutConstraint.deactivate(stackViewConstraintsNoImage)
+        NSLayoutConstraint.activate(stackViewConstraintsImage)
+        backgroundView.addSubview(remoteImageView)
+        remoteImageView.dataSource = imageDatasource
+        NSLayoutConstraint.activate([
+            remoteImageView.widthAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 0.3),
+            remoteImageView.topAnchor.constraint(equalTo: backgroundView.topAnchor),
+            remoteImageView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
+            remoteImageView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor)
+        ])
         remoteImageView.loadImage(
             for: imageUrl,
-            imageWidth: 130,
+            imageWidth: 100,
             fallbackImage: UIImage(named: .noImage)
         )
     }
@@ -176,25 +193,14 @@ extension BrazePromotionView {
         smallShadowView.addSubview(backgroundView)
         backgroundView.fillInSuperview()
         backgroundView.addSubview(verticalStackView)
-        backgroundView.addSubview(imageContainer)
         backgroundView.addSubview(closeButton)
-
         verticalStackView.addArrangedSubviews([titleLabel, textLabel, primaryButton])
 
         NSLayoutConstraint.activate([
-            imageContainer.topAnchor.constraint(equalTo: backgroundView.topAnchor),
-            imageContainer.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
-            imageContainer.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
-            imageContainer.leadingAnchor.constraint(equalTo: verticalStackView.trailingAnchor, constant: .spacingM),
-
-            verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
-            verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
-            verticalStackView.trailingAnchor.constraint(equalTo: imageContainer.leadingAnchor, constant: -.spacingM),
-            verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
-            verticalStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
-
-            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
-            closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            closeButton.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingS),
+            closeButton.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -.spacingS),
+            closeButton.widthAnchor.constraint(equalToConstant: buttonSize),
+            closeButton.heightAnchor.constraint(equalToConstant: buttonSize)
         ])
     }
 
@@ -223,10 +229,6 @@ private extension UIColor {
     }
 }
 
-private extension Button.Style {
-    static var customStyle = Button.Style.default.overrideStyle(bodyColor: .bgColor, highlightedBodyColor: .bgSecondary)
-}
-
 private extension Button {
     func configure(withTitle title: String?) {
         if let title = title {
@@ -234,5 +236,14 @@ private extension Button {
         } else {
             isHidden = true
         }
+    }
+}
+
+private class CloseButton: UIButton {
+    // Spacing between button and top/trailing.
+    var touchPointInset: CGFloat = 16
+
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        bounds.insetBy(dx: -touchPointInset, dy: -touchPointInset).contains(point)
     }
 }

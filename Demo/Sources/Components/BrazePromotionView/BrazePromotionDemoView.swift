@@ -2,35 +2,26 @@ import UIKit
 import FinniversKit
 
 class BrazePromotionDemoView: UIView {
-    private lazy var viewModels: [BrazePromotionViewModel] = [christmasPromoViewModel, hjerteromPromoViewModel]
+    private lazy var viewModels: [BrazePromotionViewModel] = [titleTextImageButton, titleTextButton, titleText]
 
-    private let christmasPromoViewModel = BrazePromotionViewModel(
-        title: "Hjelp til jul hos FINN",
-        image: "https://images.finncdn.no/dynamic/1280w/2022/11/vertical-0/18/7/277/904/107_2074842894.jpg",
-        primaryButtonTitle: "Be om eller tilby hjelp"
-    )
-
-    private let hjerteromPromoViewModel = BrazePromotionViewModel(
+    private let titleTextImageButton = BrazePromotionViewModel(
         title: "Hjerterom - hjelp til flyktninger",
         text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
         image: "https://images.finncdn.no/dynamic/1600w/2022/11/vertical-0/18/7/277/904/107_1208691254.jpg",
         primaryButtonTitle: "Gå til Hjerterom"
     )
 
-    private let transactionViewModel = FrontPageTransactionViewModel(
-        headerTitle: "Dine handler på torget",
-        title: "Flotte lamper med gull greier",
-        subtitle: "Velg en kjøper",
-        imageUrl: "https://images.finncdn.no/dynamic/960w/2021/4/vertical-0/11/5/214/625/615_1292134726.jpg",
-        transactionId: nil
+    private let titleTextButton = BrazePromotionViewModel(
+        title: "Hjerterom - hjelp til flyktninger",
+        text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
+        primaryButtonTitle: "Gå til Hjerterom",
+        dismissible: false
     )
 
-    private lazy var transaction: FrontPageTransactionView = {
-        let view = FrontPageTransactionView(withAutoLayout: true)
-        view.delegate = self
-        view.configure(with: transactionViewModel, andImageDatasource: self)
-        return view
-    }()
+    private let titleText = BrazePromotionViewModel(
+        title: "Hjerterom - hjelp til flyktninger",
+        text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge."
+    )
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(axis: .vertical, spacing: .spacingL, withAutoLayout: true)
@@ -61,7 +52,6 @@ class BrazePromotionDemoView: UIView {
             view.delegate = self
             stackView.addArrangedSubview(view)
         }
-        stackView.addArrangedSubview(transaction)
     }
 }
 
