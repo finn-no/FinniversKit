@@ -29,7 +29,7 @@ public struct SwiftUICheckBox: View {
     public init(isChecked: Binding<Bool>) {
         self._isChecked = isChecked
     }
-    
+
     public var body: some View {
         ZStack {
             // Blue background
@@ -39,7 +39,7 @@ public struct SwiftUICheckBox: View {
 
             // Fill area over the background, shrinks to a point when checked
             RoundedRectangle(cornerRadius: isChecked ? size : cornerRadius)
-                .fill(Color.white)
+                .fill(Color(.bgPrimary))
                 .opacity(1)
                 .frame(
                     width: fillinSize.width,
