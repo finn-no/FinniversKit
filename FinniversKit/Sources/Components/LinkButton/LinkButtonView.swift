@@ -73,9 +73,9 @@ class LinkButtonView: UIView {
     }
 
     init(
-        buttonIdentifier: String?,
+        buttonIdentifier: String? = nil,
         buttonTitle: String,
-        subtitle: String?,
+        subtitle: String? = nil,
         linkUrl: URL,
         isExternal: Bool,
         externalIconColor: UIColor? = nil,
