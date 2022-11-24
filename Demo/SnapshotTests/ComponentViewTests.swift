@@ -318,4 +318,8 @@ class ComponentViewTests: XCTestCase {
     func testBadgeView() {
         snapshot(.badgeView)
     }
+
+    func testJobApplyBox() {
+        snapshot(.jobApplyBox)
+    }
 }
