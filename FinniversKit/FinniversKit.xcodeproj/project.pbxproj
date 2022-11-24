@@ -165,8 +165,10 @@
 		5B9597CB5D1F98730290733B /* AddressComponentKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95976F11EFB1EC6E583B15 /* AddressComponentKind.swift */; };
 		5B95982B222AD1B86B3C5880 /* AddressComponentPostalFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959FEBE7613F2F8821B0DB /* AddressComponentPostalFieldView.swift */; };
 		5B9598434FDB0BEC62D2D91D /* OverflowCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959240C94F8A2F44F428F3 /* OverflowCollectionViewCell.swift */; };
+		5B9598AF4BE2BC129A45E749 /* JobApplyBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959B1FE729C53D76A4D63B /* JobApplyBoxViewModel.swift */; };
 		5B9598E9D9A01E990206AC5A /* SelectionItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9594720BB424FD1F977364 /* SelectionItemModel.swift */; };
 		5B95990406E586D6E278E80E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959BDD757ABA49DA59E345 /* SearchView.swift */; };
+		5B959AB695663EC9F45528E8 /* JobApplyBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959BD2BF8803BCD360DCD1 /* JobApplyBoxView.swift */; };
 		5B959F868008E7C5EB3B9EF6 /* SelectionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9599E22AECDDE0750CBD31 /* SelectionListItemView.swift */; };
 		5D0ED35125A49FA7007750D0 /* FinnTextField+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0ED35025A49FA7007750D0 /* FinnTextField+Style.swift */; };
 		5D0ED35725A49FC9007750D0 /* FinnTextField+Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0ED35625A49FC9007750D0 /* FinnTextField+Input.swift */; };
@@ -654,6 +656,8 @@
 		5B9596BCBD3F9050EB561242 /* AddressComponentFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressComponentFieldView.swift; sourceTree = "<group>"; };
 		5B95976F11EFB1EC6E583B15 /* AddressComponentKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressComponentKind.swift; sourceTree = "<group>"; };
 		5B9599E22AECDDE0750CBD31 /* SelectionListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionListItemView.swift; sourceTree = "<group>"; };
+		5B959B1FE729C53D76A4D63B /* JobApplyBoxViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobApplyBoxViewModel.swift; sourceTree = "<group>"; };
+		5B959BD2BF8803BCD360DCD1 /* JobApplyBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobApplyBoxView.swift; sourceTree = "<group>"; };
 		5B959BDD757ABA49DA59E345 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		5B959CD34FCA1F6EE3802802 /* CheckmarkItemDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkItemDetailView.swift; sourceTree = "<group>"; };
 		5B959E64AAE5D542C2168DC2 /* MultilineButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineButton.swift; sourceTree = "<group>"; };
@@ -1504,6 +1508,7 @@
 				F2597C73231D1A0B00BE74EC /* VerificationView */,
 				494047FA23CDBA7600ECBCFD /* Viewings */,
 				08E9F54E2341FBC300943E5D /* VisibilityDrivenTitleView */,
+				5B959DE06908B7F0ACA99C06 /* JobApplyBoxView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1930,6 +1935,14 @@
 			path = AddressComponentView;
 			sourceTree = "<group>";
 		};
+		5B9593B989FECC8F4341C899 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5B959B1FE729C53D76A4D63B /* JobApplyBoxViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		5B9593DA14ED6A1E0C8FEF84 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1989,6 +2002,15 @@
 				5B959BDD757ABA49DA59E345 /* SearchView.swift */,
 			);
 			path = SearchView;
+			sourceTree = "<group>";
+		};
+		5B959DE06908B7F0ACA99C06 /* JobApplyBoxView */ = {
+			isa = PBXGroup;
+			children = (
+				5B959BD2BF8803BCD360DCD1 /* JobApplyBoxView.swift */,
+				5B9593B989FECC8F4341C899 /* Models */,
+			);
+			path = JobApplyBoxView;
 			sourceTree = "<group>";
 		};
 		5D0ED34F25A49F81007750D0 /* SwiftUI */ = {
@@ -3916,6 +3938,8 @@
 				5B95982B222AD1B86B3C5880 /* AddressComponentPostalFieldView.swift in Sources */,
 				5B9597CB5D1F98730290733B /* AddressComponentKind.swift in Sources */,
 				5B9593883DABC3AF83C45016 /* CheckmarkItemDetailView.swift in Sources */,
+				5B959AB695663EC9F45528E8 /* JobApplyBoxView.swift in Sources */,
+				5B9598AF4BE2BC129A45E749 /* JobApplyBoxViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
