@@ -8,7 +8,6 @@ public protocol BrazePromotionViewDelegate: AnyObject {
 public class BrazePromotionView: UIView {
 
     private let buttonSize = 26.0
-    private let buttonTouchSurfaceSize = 44.0
 
     private lazy var backgroundView: UIView = {
         let view = UIView(withAutoLayout: true)
@@ -186,15 +185,17 @@ extension BrazePromotionView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewWasTapped))
         addGestureRecognizer(tapGesture)
 
+        verticalStackView.addArrangedSubviews([titleLabel, textLabel, primaryButton])
+
         addSubview(largeShadowView)
-        largeShadowView.fillInSuperview()
         largeShadowView.addSubview(smallShadowView)
-        smallShadowView.fillInSuperview()
         smallShadowView.addSubview(backgroundView)
-        backgroundView.fillInSuperview()
         backgroundView.addSubview(verticalStackView)
         backgroundView.addSubview(closeButton)
-        verticalStackView.addArrangedSubviews([titleLabel, textLabel, primaryButton])
+
+        largeShadowView.fillInSuperview()
+        smallShadowView.fillInSuperview()
+        backgroundView.fillInSuperview()
 
         NSLayoutConstraint.activate([
             closeButton.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingS),
