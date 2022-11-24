@@ -18,7 +18,6 @@ class LinkButtonView: UIView {
     private let linkUrl: URL
     private let buttonStyle: Button.Style
     private let buttonSize: Button.Size
-    private lazy var fillerView = UIView(withAutoLayout: true)
     private lazy var externalImage = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
 
     private lazy var stackView: UIStackView = {
@@ -30,7 +29,7 @@ class LinkButtonView: UIView {
     }()
 
     private lazy var topRowStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [linkButton, fillerView, externalImageView])
+        let stackView = UIStackView(arrangedSubviews: [linkButton, externalImageView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.alignment = .center
         return stackView
@@ -40,6 +39,7 @@ class LinkButtonView: UIView {
         let button = MultilineButton(style: buttonStyle, size: buttonSize, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
         button.contentHorizontalAlignment = .leading
+        button.setContentHuggingPriority(.defaultLow, for: .horizontal)
         return button
     }()
 
@@ -47,6 +47,7 @@ class LinkButtonView: UIView {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = externalImage
         imageView.tintColor = .borderDefault
+        imageView.setContentHuggingPriority(.required, for: .horizontal)
         return imageView
     }()
 
