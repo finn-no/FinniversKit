@@ -186,6 +186,7 @@
 		4D529E2125837087007AE5B6 /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D529E2025837087007AE5B6 /* ImageAsset.swift */; };
 		4DD3AA7A27B5651F007B107E /* DetailCalloutDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3AA7927B5651F007B107E /* DetailCalloutDemoView.swift */; };
 		5B959265245920DA9AC6B68F /* SelectionListCheckboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9595B6FD629480500DA12C /* SelectionListCheckboxDemoView.swift */; };
+		5B95929116EA2290C003B3A0 /* JobKeyInfoDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9595A12BEF76C89B8A01B7 /* JobKeyInfoDemoView.swift */; };
 		5B95941933E6E48B4DE53E1B /* IPadSnapshotWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959EE2A1978F8DE0BC95D7 /* IPadSnapshotWrapperViewController.swift */; };
 		5B959541A9DCE0B0A3C4C731 /* MultilineButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9594F7F4A53013131B6549 /* MultilineButtonDemoView.swift */; };
 		5B95988313B441C0BEEE3E5C /* JobApplyBoxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95927B996B3FA0F5AE855F /* JobApplyBoxDemoView.swift */; };
@@ -428,6 +429,7 @@
 		5B95927B996B3FA0F5AE855F /* JobApplyBoxDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobApplyBoxDemoView.swift; sourceTree = "<group>"; };
 		5B9594F7F4A53013131B6549 /* MultilineButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineButtonDemoView.swift; sourceTree = "<group>"; };
 		5B9594F851141F5FE17439BE /* SearchDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDemoView.swift; sourceTree = "<group>"; };
+		5B9595A12BEF76C89B8A01B7 /* JobKeyInfoDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobKeyInfoDemoView.swift; sourceTree = "<group>"; };
 		5B9595B6FD629480500DA12C /* SelectionListCheckboxDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionListCheckboxDemoView.swift; sourceTree = "<group>"; };
 		5B9596BFF50B7FDCF25A1E92 /* SelectionListRadiobuttonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionListRadiobuttonDemoView.swift; sourceTree = "<group>"; };
 		5B959C33286B6BD7933C9BA9 /* OverflowCollectionViewDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverflowCollectionViewDemo.swift; sourceTree = "<group>"; };
@@ -899,6 +901,7 @@
 				5B9595353186CF123865900D /* AddressComponentView */,
 				5B9592E3B6542A9A678E1E6C /* SelectionListView */,
 				5B959C720F9AD1D19188F7C3 /* JobApplyBox */,
+				5B95913AB0DF0FDDF06BA9B0 /* JobKeyInfo */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1673,6 +1676,14 @@
 			path = SearchView;
 			sourceTree = "<group>";
 		};
+		5B95913AB0DF0FDDF06BA9B0 /* JobKeyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				5B9595A12BEF76C89B8A01B7 /* JobKeyInfoDemoView.swift */,
+			);
+			path = JobKeyInfo;
+			sourceTree = "<group>";
+		};
 		5B95928DFEE6C3E699C06B61 /* Wrappers */ = {
 			isa = PBXGroup;
 			children = (
@@ -2199,6 +2210,7 @@
 				5B959B69428E9E09E4256294 /* SelectionListRadiobuttonDemoView.swift in Sources */,
 				4D37A9B728571CFF00F9460D /* BadgeDemoView.swift in Sources */,
 				5B95988313B441C0BEEE3E5C /* JobApplyBoxDemoView.swift in Sources */,
+				5B95929116EA2290C003B3A0 /* JobKeyInfoDemoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
