@@ -61,16 +61,22 @@ class AddressMapDemoView: UIView, Tweakable {
         addressMapView.fillInSuperview()
         tweakingOptions.first?.action?()
 
-        // Place a nice looking view in front of the mapView to prevent the UI tests from failing.
+        // Place a nice looking view instead of the mapView to prevent the UI tests from failing.
         for subview in addressMapView.subviews {
             guard let mapView = subview as? MKMapView else { break }
-
             let colorfulView = UIView(withAutoLayout: true)
             colorfulView.backgroundColor = .mint
-            mapView.addSubview(colorfulView)
-            colorfulView.fillInSuperview()
-
+            mapView.superview?.addSubview(colorfulView)
+            let constraints: [NSLayoutConstraint] = [
+                colorfulView.topAnchor.constraint(equalTo: mapView.topAnchor),
+                colorfulView.leadingAnchor.constraint(equalTo: mapView.leadingAnchor),
+                colorfulView.trailingAnchor.constraint(equalTo: mapView.trailingAnchor),
+                colorfulView.bottomAnchor.constraint(equalTo: mapView.bottomAnchor),
+            ]
+            NSLayoutConstraint.activate(constraints)
+            mapView.isHidden = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak colorfulView] in
+                mapView.isHidden = false
                 colorfulView?.removeFromSuperview()
             })
         }
