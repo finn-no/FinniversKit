@@ -29,15 +29,13 @@ class MonthAndYearPickerDemoView: UIView {
     private lazy var toolbar: UIToolbar = {
         let toolbar = UIToolbar()
 
-        if #available(iOS 14.0, *) {
-            let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-            let item = UIBarButtonItem(title: "Ferdig", image: nil, primaryAction: UIAction(handler: { [weak self] _ in
-                self?.textField.endEditing(true)
-            }))
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let item = UIBarButtonItem(title: "Ferdig", image: nil, primaryAction: UIAction(handler: { [weak self] _ in
+            self?.textField.endEditing(true)
+        }))
 
-            toolbar.sizeToFit()
-            toolbar.items = [space, item]
-        }
+        toolbar.sizeToFit()
+        toolbar.items = [space, item]
 
         return toolbar
     }()

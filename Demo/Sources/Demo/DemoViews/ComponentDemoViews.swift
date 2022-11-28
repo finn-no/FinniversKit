@@ -81,6 +81,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case selectionListRadiobuttonView
     case badgeView
     case myAdsListView
+    case brazePromotionView
 
     var title: String? {
         switch self {
@@ -256,6 +257,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<BadgeDemoView>()
         case .myAdsListView:
             return DemoViewController<MyAdsListDemoView>(dismissType: .dismissButton, containmentOptions: .navigationController)
+        case .brazePromotionView:
+            return DemoViewController<BrazePromotionDemoView>()
         }
     }
 }

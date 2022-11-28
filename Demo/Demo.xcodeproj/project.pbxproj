@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		172E7504290FE28E00956AC2 /* HTMLTextDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */; };
 		46AE6FC4242BADC9007BB005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AE6FC3242BADC9007BB005 /* AppDelegate.swift */; };
 		46E773A4242CEF0A008A5E93 /* DemoHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77258242CEF09008A5E93 /* DemoHelpers.swift */; };
 		46E773A5242CEF0A008A5E93 /* DnaDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7725A242CEF09008A5E93 /* DnaDemoViews.swift */; };
@@ -206,7 +207,9 @@
 		91D637DA2488F70A0066D4D0 /* ConfettiDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D637D92488F70A0066D4D0 /* ConfettiDemoView.swift */; };
 		9BA6C4A224336B9A009D417B /* DemoWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */; };
 		9BBC904024FD252B0003D2D8 /* UITraitCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC903F24FD252B0003D2D8 /* UITraitCollection+Extensions.swift */; };
+		9F84F96E292B6DC900631443 /* BrazePromotionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F84F96D292B6DC900631443 /* BrazePromotionDemoView.swift */; };
 		AA189E8726847AE700FD3A41 /* BlockUserDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA189E8626847AE700FD3A41 /* BlockUserDemoView.swift */; };
+		D6E6CF9A291BDBBB00E47B90 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = D6E6CF99291BDBBB00E47B90 /* SnapshotTesting */; };
 		D75523A2273009A200C0C7DD /* RecentlyFavoritedShelfDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75523A1273009A200C0C7DD /* RecentlyFavoritedShelfDemoView.swift */; };
 		D75523A627308C7000C0C7DD /* RecentlyFavoritedFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75523A527308C7000C0C7DD /* RecentlyFavoritedFactory.swift */; };
 		D75E14D42734856D008EB126 /* FrontPageShelfDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E14D32734856D008EB126 /* FrontPageShelfDemoView.swift */; };
@@ -217,7 +220,6 @@
 		DA82B1ED268B62D2005F67C3 /* LoadingRetryDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA82B1EC268B62D2005F67C3 /* LoadingRetryDemoView.swift */; };
 		DAE9CA8724602CB000C7552F /* SwiftUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */; };
 		E6510A6727FB378B001B40D6 /* ScrollableTabDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510A6627FB378B001B40D6 /* ScrollableTabDemoView.swift */; };
-		F023EAEB27B6951400F6286B /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = F023EAEA27B6951400F6286B /* SnapshotTesting */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -245,6 +247,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextDemoViewController.swift; sourceTree = "<group>"; };
 		46AE6FC0242BADC9007BB005 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46AE6FC3242BADC9007BB005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46AE6FD1242BADCD007BB005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -446,6 +449,7 @@
 		91D637D92488F70A0066D4D0 /* ConfettiDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiDemoView.swift; sourceTree = "<group>"; };
 		9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoWrapperView.swift; sourceTree = "<group>"; };
 		9BBC903F24FD252B0003D2D8 /* UITraitCollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITraitCollection+Extensions.swift"; sourceTree = "<group>"; };
+		9F84F96D292B6DC900631443 /* BrazePromotionDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrazePromotionDemoView.swift; sourceTree = "<group>"; };
 		AA189E8626847AE700FD3A41 /* BlockUserDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUserDemoView.swift; sourceTree = "<group>"; };
 		D75523A1273009A200C0C7DD /* RecentlyFavoritedShelfDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyFavoritedShelfDemoView.swift; sourceTree = "<group>"; };
 		D75523A527308C7000C0C7DD /* RecentlyFavoritedFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyFavoritedFactory.swift; sourceTree = "<group>"; };
@@ -473,7 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46E7759D242D6A8A008A5E93 /* FinniversKit.framework in Frameworks */,
-				F023EAEB27B6951400F6286B /* SnapshotTesting in Frameworks */,
+				D6E6CF9A291BDBBB00E47B90 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,9 +543,9 @@
 		46E77259242CEF09008A5E93 /* DemoViews */ = {
 			isa = PBXGroup;
 			children = (
-				5D62FD6F25B03B4800EB882D /* DemoViews.swift */,
 				46E7725C242CEF09008A5E93 /* CellsDemoViews.swift */,
 				46E7725D242CEF09008A5E93 /* ComponentDemoViews.swift */,
+				5D62FD6F25B03B4800EB882D /* DemoViews.swift */,
 				46E7725A242CEF09008A5E93 /* DnaDemoViews.swift */,
 				46E7725B242CEF09008A5E93 /* FullscreenDemoViews.swift */,
 				46E7725E242CEF09008A5E93 /* RecyclingDemoViews.swift */,
@@ -834,6 +838,7 @@
 		46E772CB242CEF09008A5E93 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				9F84F96C292B6DB300631443 /* BrazePromotionView */,
 				4D37A9B528571CF300F9460D /* BadgeView */,
 				5DCE0883280FDF0600ED7407 /* MonthAndYearPickerDemoView */,
 				D75E14D22734855B008EB126 /* FrontPageShelfDemoView */,
@@ -1796,8 +1801,17 @@
 			children = (
 				5DA190D425A5BC5B002305A8 /* FinnTextField+Previews.swift */,
 				5DA190EF25A87EAB002305A8 /* FinnTextView+Previews.swift */,
+				172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */,
 			);
 			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		9F84F96C292B6DB300631443 /* BrazePromotionView */ = {
+			isa = PBXGroup;
+			children = (
+				9F84F96D292B6DC900631443 /* BrazePromotionDemoView.swift */,
+			);
+			path = BrazePromotionView;
 			sourceTree = "<group>";
 		};
 		AA189E8526847AA900FD3A41 /* BlockUserView */ = {
@@ -1906,7 +1920,7 @@
 			);
 			name = SnapshotTests;
 			packageProductDependencies = (
-				F023EAEA27B6951400F6286B /* SnapshotTesting */,
+				D6E6CF99291BDBBB00E47B90 /* SnapshotTesting */,
 			);
 			productName = SnapshotTests;
 			productReference = 46E7756C242D4736008A5E93 /* SnapshotTests.xctest */;
@@ -1941,7 +1955,7 @@
 			);
 			mainGroup = 46AE6FB7242BADC9007BB005;
 			packageReferences = (
-				F023EAE927B6951400F6286B /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				D6E6CF96291BDA2300E47B90 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 46AE6FC1242BADC9007BB005 /* Products */;
 			projectDirPath = "";
@@ -2095,6 +2109,7 @@
 				496F8C172473E7EA00AE0735 /* FavoriteSoldDemoView.swift in Sources */,
 				46E773AF242CEF0A008A5E93 /* DemoViewController.swift in Sources */,
 				46E77467242CEF0A008A5E93 /* SavedSearchesListViewDemoViewHelpers.swift in Sources */,
+				9F84F96E292B6DC900631443 /* BrazePromotionDemoView.swift in Sources */,
 				46E77438242CEF0A008A5E93 /* BroadcastDemoView.swift in Sources */,
 				714B9357253736AD00801C99 /* SendInviteDemoView.swift in Sources */,
 				46E77453242CEF0A008A5E93 /* CornerAnchoringViewController.swift in Sources */,
@@ -2185,6 +2200,7 @@
 				46E773A9242CEF0A008A5E93 /* RecyclingDemoViews.swift in Sources */,
 				46E77448242CEF0A008A5E93 /* UserAdCellDemoView.swift in Sources */,
 				46E77468242CEF0A008A5E93 /* FavoriteFoldersListDemoView.swift in Sources */,
+				172E7504290FE28E00956AC2 /* HTMLTextDemoViewController.swift in Sources */,
 				46E77405242CEF0A008A5E93 /* HorizontalSlideDemoViewController.swift in Sources */,
 				46E773C4242CEF0A008A5E93 /* BuyerPickerDemoData.swift in Sources */,
 				46E7740D242CEF0A008A5E93 /* FeedbackDemoView.swift in Sources */,
@@ -2294,7 +2310,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2352,7 +2368,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -2371,6 +2387,7 @@
 				DEVELOPMENT_TEAM = D34XZHQLE3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Sources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2395,6 +2412,7 @@
 				DEVELOPMENT_TEAM = D34XZHQLE3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Sources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2484,20 +2502,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F023EAE927B6951400F6286B /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+		D6E6CF96291BDA2300E47B90 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pimms/swift-snapshot-testing.git";
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
 			requirement = {
-				kind = revision;
-				revision = 0efeef44df913fe60ea868f037f271ac927a8e8c;
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.10.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F023EAEA27B6951400F6286B /* SnapshotTesting */ = {
+		D6E6CF99291BDBBB00E47B90 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F023EAE927B6951400F6286B /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			package = D6E6CF96291BDA2300E47B90 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */
