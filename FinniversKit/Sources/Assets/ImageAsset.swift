@@ -139,7 +139,6 @@ enum ImageAsset: String {
     case plusMini
     case pusefinnCircle
     case rate
-    case rated
     case ratingFaceAngry
     case ratingFaceDissatisfied
     case ratingFaceHappy
@@ -275,7 +274,6 @@ enum ImageAsset: String {
             .plusMini,
             .pusefinnCircle,
             .rate,
-            .rated,
             .ratingFaceAngry,
             .ratingFaceDissatisfied,
             .ratingFaceHappy,
