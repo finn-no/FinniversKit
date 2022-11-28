@@ -295,6 +295,10 @@ class ComponentViewTests: XCTestCase {
         snapshot(.detailCallout)
     }
 
+    func testScrollableTabDemoView() {
+        snapshot(.scrollableTabDemoView)
+    }
+
     func testMonthAndYearPickerView() {
         snapshot(.monthAndYearPickerView)
     }
@@ -317,5 +321,9 @@ class ComponentViewTests: XCTestCase {
 
     func testBadgeView() {
         snapshot(.badgeView)
+    }
+
+    func testMyAdsListView() {
+        snapshot(.myAdsListView, includeIPad: true)
     }
 }
