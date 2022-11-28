@@ -186,12 +186,14 @@
 		4DD3AA7A27B5651F007B107E /* DetailCalloutDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3AA7927B5651F007B107E /* DetailCalloutDemoView.swift */; };
 		5B959265245920DA9AC6B68F /* SelectionListCheckboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9595B6FD629480500DA12C /* SelectionListCheckboxDemoView.swift */; };
 		5B95941933E6E48B4DE53E1B /* IPadSnapshotWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959EE2A1978F8DE0BC95D7 /* IPadSnapshotWrapperViewController.swift */; };
+		5B9594F1102023731F3327CE /* BarButtonProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959ADE77D05994CBB57998 /* BarButtonProvider.swift */; };
 		5B959541A9DCE0B0A3C4C731 /* MultilineButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9594F7F4A53013131B6549 /* MultilineButtonDemoView.swift */; };
 		5B95992679ACA79CA97615BC /* AddressComponentDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959FC32DA7FC5749FC056D /* AddressComponentDemoView.swift */; };
 		5B959A0F727EB51E56231370 /* OverflowCollectionViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959C33286B6BD7933C9BA9 /* OverflowCollectionViewDemo.swift */; };
 		5B959A8547A482ED59F0E7AC /* SearchDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9594F851141F5FE17439BE /* SearchDemoView.swift */; };
 		5B959B69428E9E09E4256294 /* SelectionListRadiobuttonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9596BFF50B7FDCF25A1E92 /* SelectionListRadiobuttonDemoView.swift */; };
 		5B959D71E45DF88C52F38B78 /* SnapshotWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95911723A1FB1DC9260B22 /* SnapshotWrapperViewController.swift */; };
+		5B959DB44C8E8BCCF1135992 /* MyAdsListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95956E048E07F223E5D55E /* MyAdsListDemoView.swift */; };
 		5D62FD7025B03B4800EB882D /* DemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D62FD6F25B03B4800EB882D /* DemoViews.swift */; };
 		5DA190D525A5BC5B002305A8 /* FinnTextField+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190D425A5BC5B002305A8 /* FinnTextField+Previews.swift */; };
 		5DA190F025A87EAB002305A8 /* FinnTextView+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA190EF25A87EAB002305A8 /* FinnTextView+Previews.swift */; };
@@ -425,8 +427,10 @@
 		5B95911723A1FB1DC9260B22 /* SnapshotWrapperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotWrapperViewController.swift; sourceTree = "<group>"; };
 		5B9594F7F4A53013131B6549 /* MultilineButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineButtonDemoView.swift; sourceTree = "<group>"; };
 		5B9594F851141F5FE17439BE /* SearchDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDemoView.swift; sourceTree = "<group>"; };
+		5B95956E048E07F223E5D55E /* MyAdsListDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAdsListDemoView.swift; sourceTree = "<group>"; };
 		5B9595B6FD629480500DA12C /* SelectionListCheckboxDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionListCheckboxDemoView.swift; sourceTree = "<group>"; };
 		5B9596BFF50B7FDCF25A1E92 /* SelectionListRadiobuttonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionListRadiobuttonDemoView.swift; sourceTree = "<group>"; };
+		5B959ADE77D05994CBB57998 /* BarButtonProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarButtonProvider.swift; sourceTree = "<group>"; };
 		5B959C33286B6BD7933C9BA9 /* OverflowCollectionViewDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverflowCollectionViewDemo.swift; sourceTree = "<group>"; };
 		5B959EE2A1978F8DE0BC95D7 /* IPadSnapshotWrapperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPadSnapshotWrapperViewController.swift; sourceTree = "<group>"; };
 		5B959FC32DA7FC5749FC056D /* AddressComponentDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressComponentDemoView.swift; sourceTree = "<group>"; };
@@ -527,6 +531,7 @@
 				46E7725F242CEF09008A5E93 /* MiniToastView.swift */,
 				46E77265242CEF09008A5E93 /* NavigationController.swift */,
 				46E77260242CEF09008A5E93 /* SplitViewController.swift */,
+				5B959ADE77D05994CBB57998 /* BarButtonProvider.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -897,6 +902,7 @@
 				5B9590FE3DEEBCA163F0094E /* SearchView */,
 				5B9595353186CF123865900D /* AddressComponentView */,
 				5B9592E3B6542A9A678E1E6C /* SelectionListView */,
+				5B9596CE2475206CBC8B02A6 /* MyAdsList */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1713,6 +1719,14 @@
 			path = MultilineButton;
 			sourceTree = "<group>";
 		};
+		5B9596CE2475206CBC8B02A6 /* MyAdsList */ = {
+			isa = PBXGroup;
+			children = (
+				5B95956E048E07F223E5D55E /* MyAdsListDemoView.swift */,
+			);
+			path = MyAdsList;
+			sourceTree = "<group>";
+		};
 		5DCE0883280FDF0600ED7407 /* MonthAndYearPickerDemoView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2195,6 +2209,8 @@
 				5B959265245920DA9AC6B68F /* SelectionListCheckboxDemoView.swift in Sources */,
 				5B959B69428E9E09E4256294 /* SelectionListRadiobuttonDemoView.swift in Sources */,
 				4D37A9B728571CFF00F9460D /* BadgeDemoView.swift in Sources */,
+				5B959DB44C8E8BCCF1135992 /* MyAdsListDemoView.swift in Sources */,
+				5B9594F1102023731F3327CE /* BarButtonProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -141,15 +141,14 @@ enum Sections: String, CaseIterable {
         }
 
         let containmentOptions = (viewController as? Containable)?.containmentOptions ?? .none
-        let shouldIncludeNavigationController = containmentOptions.contains(.navigationController)
-        if shouldIncludeNavigationController {
+
+        if containmentOptions.contains(.navigationController) {
             if let unwrappedViewController = viewController {
                 viewController = NavigationController(rootViewController: unwrappedViewController)
             }
         }
 
-        let shouldIncludeTabBarController = containmentOptions.contains(.tabBarController)
-        if shouldIncludeTabBarController {
+        if containmentOptions.contains(.tabBarController) {
             let tabBarController = UITabBarController()
             if let unwrappedViewController = viewController {
                 tabBarController.viewControllers = [unwrappedViewController]
@@ -157,8 +156,7 @@ enum Sections: String, CaseIterable {
             }
         }
 
-        let shouldPresentInBottomSheet = containmentOptions.contains(.bottomSheet)
-        if shouldPresentInBottomSheet {
+        if containmentOptions.contains(.bottomSheet) {
             if let unwrappedViewController = viewController {
                 let bottomSheet = BottomSheet(rootViewController: unwrappedViewController)
                 viewController = bottomSheet
