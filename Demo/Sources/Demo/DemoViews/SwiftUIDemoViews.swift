@@ -7,6 +7,7 @@ import FinniversKit
 
 public enum SwiftUIDemoViews: String, DemoViews {
     case htmlText
+    case selectionListView
     case textField
     case textView
 
@@ -25,6 +26,8 @@ public enum SwiftUIDemoViews: String, DemoViews {
 
     @ViewBuilder private var previews: some View {
         switch self {
+        case .selectionListView:
+            SwiftUISelectionListDemoView()
         case .textField:
             FinnTextField_Previews.previews
         case .textView:

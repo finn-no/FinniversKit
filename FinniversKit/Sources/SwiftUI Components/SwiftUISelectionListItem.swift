@@ -43,5 +43,39 @@ struct SwiftUISelectionListItem<ItemType>: View {
             }
         }
         .padding(.spacingM)
+        .accessibilityElement(children: .ignore)
+        .accessibilityAddTraits(accessibilityButtonTraits)
+        .accessibilityLabel(accessibilityText)
+    }
+
+    private var accessibilityButtonTraits: AccessibilityTraits {
+        if itemModel.isSelected {
+            return [.isButton, .isSelected]
+        }
+        return [.isButton]
+    }
+
+    private var accessibilityText: String {
+        var text = itemModel.title
+        if let desc = itemModel.description {
+            text += ", \(desc)"
+        }
+        return text
+    }
+}
+
+struct SwiftUISelectionListItem_Previews: PreviewProvider {
+    static var previews: some View {
+        SwiftUISelectionListItem(itemModel: .init(
+            title: "Item A",
+            value: false,
+            isSelected: false
+        ))
+
+        SwiftUISelectionListItem(itemModel: .init(
+            title: "Item B",
+            value: true,
+            isSelected: true
+        ))
     }
 }
