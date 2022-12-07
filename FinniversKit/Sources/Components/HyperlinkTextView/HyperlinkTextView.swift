@@ -41,6 +41,7 @@ public class HyperlinkTextView: UIView {
         let view = UITextView(frame: .zero, textContainer: nil)
         view.font = font
         view.textColor = textColor
+        view.backgroundColor = .bgPrimary
         view.isScrollEnabled = false
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
