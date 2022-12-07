@@ -183,6 +183,29 @@ public final class FrontPageView: UIView {
         setupFrames()
     }
 
+    public func showBrazePromotion(withViewModel viewModel: BrazePromotionViewModel, andDelegate delegate: BrazePromotionViewDelegate) {
+        let promotionView = BrazePromotionView(viewModel: viewModel, imageDatasource: remoteImageDataSource)
+        promotionView.delegate = delegate
+
+        headerView.addSubview(promoContainer)
+        promoContainer.addSubview(promotionView)
+        promotionView.fillInSuperview(
+            insets: .init(
+                top: .spacingL,
+                leading: .spacingM,
+                bottom: 0,
+                trailing: -.spacingM
+            )
+        )
+
+        setupFrames()
+    }
+
+    public func removeBrazePromotion() {
+        promoContainer.subviews.forEach { $0.removeFromSuperview() }
+        setupFrames()
+    }
+
     public func showTransactionFeed(
         withViewModel viewModel: FrontPageTransactionViewModel,
         andDelegate delegate: FrontPageTransactionViewDelegate

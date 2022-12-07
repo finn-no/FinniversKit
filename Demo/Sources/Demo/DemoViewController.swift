@@ -1,6 +1,6 @@
 import FinniversKit
 
-class DemoViewController<View: UIView>: UIViewController {
+class DemoViewController<View: UIView>: UIViewController, Containable {
 
     private(set) var containmentOptions: ContainmentOptions
     private var dismissType: DismissType
@@ -57,6 +57,10 @@ class DemoViewController<View: UIView>: UIViewController {
         view.fillInSuperview()
 
         if !TestCheck.isTesting {
+            if let barButtonProvider = playgroundView as? BarButtonProvider {
+                navigationItem.rightBarButtonItems = barButtonProvider.rightBarButtonItems
+            }
+
             let tweakablePlaygroundView = (childViewController?.playgroundView as? Tweakable) ?? (self as? Tweakable)
             let options = tweakablePlaygroundView?.tweakingOptions ?? [TweakingOption]()
             let overlayView = CornerAnchoringView(withAutoLayout: true)
