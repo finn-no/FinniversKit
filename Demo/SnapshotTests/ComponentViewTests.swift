@@ -331,6 +331,10 @@ class ComponentViewTests: XCTestCase {
         snapshot(.jobApplyBox)
     }
 
+    func testJobKeyInfo() {
+        snapshot(.jobKeyInfo)
+    }
+
     func testMyAdsListView() {
         snapshot(.myAdsListView, includeIPad: true)
     }
