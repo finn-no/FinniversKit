@@ -80,6 +80,8 @@ public enum ComponentDemoViews: String, DemoViews {
     case selectionListCheckboxView
     case selectionListRadiobuttonView
     case badgeView
+    case jobApplyBox
+    case jobKeyInfo
     case myAdsListView
     case brazePromotionView
     case hyperlinkTextView
@@ -256,6 +258,10 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<SelectionListRadiobuttonDemoView>(dismissType: .dismissButton)
         case .badgeView:
             return DemoViewController<BadgeDemoView>()
+        case .jobApplyBox:
+            return DemoViewController<JobApplyBoxDemoView>(dismissType: .dismissButton)
+        case .jobKeyInfo:
+            return DemoViewController<JobKeyInfoDemoView>()
         case .myAdsListView:
             return DemoViewController<MyAdsListDemoView>(dismissType: .dismissButton, containmentOptions: .navigationController)
         case .brazePromotionView:
