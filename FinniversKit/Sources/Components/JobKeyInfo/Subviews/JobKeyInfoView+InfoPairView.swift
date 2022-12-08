@@ -32,7 +32,7 @@ extension JobKeyInfoView {
             setup(infoPair: infoPair)
         }
 
-        required init?(coder: NSCoder) { fatalError() }
+        required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
         // MARK: - Setup
 
