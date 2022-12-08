@@ -40,4 +40,12 @@ public struct SwiftUIRadioButton: View {
     }
 }
 
+struct SwiftUIRadioButton_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            SwiftUIRadioButton(isSelected: .constant(true))
 
+            SwiftUIRadioButton(isSelected: .constant(false))
+        }
+    }
+}
