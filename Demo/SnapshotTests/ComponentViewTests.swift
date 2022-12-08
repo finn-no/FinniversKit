@@ -275,6 +275,10 @@ class ComponentViewTests: XCTestCase {
         snapshot(.promotionView)
     }
 
+    func testBrazePromotionView() {
+        snapshot(.brazePromotionView)
+    }
+
     func testRecentlyFavoritedShelf() {
         snapshot(.recentlyfavoritedShelf)
     }
@@ -293,6 +297,10 @@ class ComponentViewTests: XCTestCase {
 
     func testDetailCallout() {
         snapshot(.detailCallout)
+    }
+
+    func testScrollableTabDemoView() {
+        snapshot(.scrollableTabDemoView)
     }
 
     func testMonthAndYearPickerView() {
@@ -321,5 +329,9 @@ class ComponentViewTests: XCTestCase {
 
     func testJobApplyBox() {
         snapshot(.jobApplyBox)
+    }
+
+    func testMyAdsListView() {
+        snapshot(.myAdsListView, includeIPad: true)
     }
 }

@@ -73,6 +73,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case savedSearchShelf
     case frontPageShelf
     case overFlowCollectionView
+    case scrollableTabDemoView
     case monthAndYearPickerView
     case searchView
     case addressComponentView
@@ -80,6 +81,8 @@ public enum ComponentDemoViews: String, DemoViews {
     case selectionListRadiobuttonView
     case badgeView
     case jobApplyBox
+    case myAdsListView
+    case brazePromotionView
 
     var title: String? {
         switch self {
@@ -239,6 +242,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<FrontPageShelfDemoView>()
         case .overFlowCollectionView:
             return DemoViewController<OverflowCollectionViewDemo>()
+        case .scrollableTabDemoView:
+            return DemoViewController<ScrollableTabDemoView>(dismissType: .dismissButton)
         case .monthAndYearPickerView:
             return DemoViewController<MonthAndYearPickerDemoView>()
         case .searchView:
@@ -253,6 +258,10 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<BadgeDemoView>()
         case .jobApplyBox:
             return DemoViewController<JobApplyBoxDemoView>(dismissType: .dismissButton)
+        case .myAdsListView:
+            return DemoViewController<MyAdsListDemoView>(dismissType: .dismissButton, containmentOptions: .navigationController)
+        case .brazePromotionView:
+            return DemoViewController<BrazePromotionDemoView>()
         }
     }
 }

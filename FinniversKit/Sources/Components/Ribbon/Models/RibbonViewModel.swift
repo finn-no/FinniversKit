@@ -4,7 +4,7 @@
 
 import UIKit
 
-public struct RibbonViewModel {
+public struct RibbonViewModel: Hashable {
     public let style: RibbonView.Style
     public let title: String
 
