@@ -174,8 +174,8 @@
 		5B9598AF4BE2BC129A45E749 /* JobApplyBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959B1FE729C53D76A4D63B /* JobApplyBoxViewModel.swift */; };
 		5B9598E9D9A01E990206AC5A /* SelectionItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9594720BB424FD1F977364 /* SelectionItemModel.swift */; };
 		5B95990406E586D6E278E80E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959BDD757ABA49DA59E345 /* SearchView.swift */; };
-		5B959AB695663EC9F45528E8 /* JobApplyBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959BD2BF8803BCD360DCD1 /* JobApplyBoxView.swift */; };
 		5B95998ECCE506D6F9931F73 /* MyAdsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959BE24502AA4CA7E15031 /* MyAdsListView.swift */; };
+		5B959AB695663EC9F45528E8 /* JobApplyBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959BD2BF8803BCD360DCD1 /* JobApplyBoxView.swift */; };
 		5B959B5D8A263039AE2F8FA2 /* MyAdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959E9EB7F73EE0A3F83C7D /* MyAdModel.swift */; };
 		5B959C55077A63EDEA526927 /* MyAdStatisticsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95986193F332689C03C7EC /* MyAdStatisticsItemView.swift */; };
 		5B959EBFCE35B7B844CC7F98 /* ScrollableTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9597B1B4CBDFBF9858A045 /* ScrollableTabView.swift */; };
@@ -481,7 +481,6 @@
 		E6318FC628D9E7550038DC88 /* ViewModelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6318FC528D9E7550038DC88 /* ViewModelCoordinator.swift */; };
 		E6318FC828D9E7AC0038DC88 /* AnyViewModelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6318FC728D9E7AC0038DC88 /* AnyViewModelCoordinator.swift */; };
 		E6318FCA28D9E7EC0038DC88 /* UnownedViewModelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6318FC928D9E7EC0038DC88 /* UnownedViewModelCoordinator.swift */; };
-		E6510A6427FB36E5001B40D6 /* UIControlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510A6327FB36E5001B40D6 /* UIControlExtensions.swift */; };
 		E65085D1292BBF1D00A43B07 /* SwiftUICheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085D0292BBF1D00A43B07 /* SwiftUICheckBox.swift */; };
 		E65085D4292BBF7500A43B07 /* StatefulPreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085D3292BBF7500A43B07 /* StatefulPreviewWrapper.swift */; };
 		E65085D6292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085D5292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift */; };
@@ -489,11 +488,13 @@
 		E65085DC292BCD1D00A43B07 /* SwiftUISelectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085DB292BCD1D00A43B07 /* SwiftUISelectionListView.swift */; };
 		E65085E0292BCF7800A43B07 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085DF292BCF7800A43B07 /* RoundedCorner.swift */; };
 		E65085E2292BD01800A43B07 /* SwiftUISelectionListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085E1292BD01800A43B07 /* SwiftUISelectionListItem.swift */; };
+		E6510A6427FB36E5001B40D6 /* UIControlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510A6327FB36E5001B40D6 /* UIControlExtensions.swift */; };
 		E681A0E72923FCAC008564E2 /* HyperlinkTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0E62923FCAC008564E2 /* HyperlinkTextView.swift */; };
 		E681A0E92923FCE5008564E2 /* HyperlinkTextViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0E82923FCE5008564E2 /* HyperlinkTextViewViewModel.swift */; };
 		E68D58F628DDE75D001A70CA /* HTMLLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D58F528DDE75D001A70CA /* HTMLLabel.swift */; };
 		E68D58F828DDE77A001A70CA /* HTMLStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D58F728DDE77A001A70CA /* HTMLStyler.swift */; };
 		E6920B2B28474B78008B41C6 /* CombineCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6920B2A28474B78008B41C6 /* CombineCompatible.swift */; };
+		E6E7B97929425C00005B7D64 /* ActionBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E7B97829425C00005B7D64 /* ActionBarButtonItem.swift */; };
 		E87A7BF328ED6AE0007094F2 /* NeighborhoodProfileBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87A7BF228ED6AE0007094F2 /* NeighborhoodProfileBannerView.swift */; };
 		F22612D822572D9400472D22 /* StatisticsItemEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */; };
 		F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */; };
@@ -685,9 +686,9 @@
 		5B9597B1B4CBDFBF9858A045 /* ScrollableTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableTabView.swift; sourceTree = "<group>"; };
 		5B95986193F332689C03C7EC /* MyAdStatisticsItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAdStatisticsItemView.swift; sourceTree = "<group>"; };
 		5B9599E22AECDDE0750CBD31 /* SelectionListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionListItemView.swift; sourceTree = "<group>"; };
+		5B959B13CCE740691D9EF19C /* ScrollableTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableTabViewModel.swift; sourceTree = "<group>"; };
 		5B959B1FE729C53D76A4D63B /* JobApplyBoxViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobApplyBoxViewModel.swift; sourceTree = "<group>"; };
 		5B959BD2BF8803BCD360DCD1 /* JobApplyBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobApplyBoxView.swift; sourceTree = "<group>"; };
-		5B959B13CCE740691D9EF19C /* ScrollableTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableTabViewModel.swift; sourceTree = "<group>"; };
 		5B959BDD757ABA49DA59E345 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		5B959BE24502AA4CA7E15031 /* MyAdsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAdsListView.swift; sourceTree = "<group>"; };
 		5B959CD34FCA1F6EE3802802 /* CheckmarkItemDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkItemDetailView.swift; sourceTree = "<group>"; };
@@ -997,7 +998,6 @@
 		E6318FC528D9E7550038DC88 /* ViewModelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelCoordinator.swift; sourceTree = "<group>"; };
 		E6318FC728D9E7AC0038DC88 /* AnyViewModelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyViewModelCoordinator.swift; sourceTree = "<group>"; };
 		E6318FC928D9E7EC0038DC88 /* UnownedViewModelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnownedViewModelCoordinator.swift; sourceTree = "<group>"; };
-		E6510A6327FB36E5001B40D6 /* UIControlExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlExtensions.swift; sourceTree = "<group>"; };
 		E65085D0292BBF1D00A43B07 /* SwiftUICheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUICheckBox.swift; sourceTree = "<group>"; };
 		E65085D3292BBF7500A43B07 /* StatefulPreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulPreviewWrapper.swift; sourceTree = "<group>"; };
 		E65085D5292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIHyperlinkTextView.swift; sourceTree = "<group>"; };
@@ -1005,11 +1005,13 @@
 		E65085DB292BCD1D00A43B07 /* SwiftUISelectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISelectionListView.swift; sourceTree = "<group>"; };
 		E65085DF292BCF7800A43B07 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		E65085E1292BD01800A43B07 /* SwiftUISelectionListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISelectionListItem.swift; sourceTree = "<group>"; };
+		E6510A6327FB36E5001B40D6 /* UIControlExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlExtensions.swift; sourceTree = "<group>"; };
 		E681A0E62923FCAC008564E2 /* HyperlinkTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextView.swift; sourceTree = "<group>"; };
 		E681A0E82923FCE5008564E2 /* HyperlinkTextViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextViewViewModel.swift; sourceTree = "<group>"; };
 		E68D58F528DDE75D001A70CA /* HTMLLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLabel.swift; sourceTree = "<group>"; };
 		E68D58F728DDE77A001A70CA /* HTMLStyler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStyler.swift; sourceTree = "<group>"; };
 		E6920B2A28474B78008B41C6 /* CombineCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineCompatible.swift; sourceTree = "<group>"; };
+		E6E7B97829425C00005B7D64 /* ActionBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionBarButtonItem.swift; sourceTree = "<group>"; };
 		E87A7BF228ED6AE0007094F2 /* NeighborhoodProfileBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileBannerView.swift; sourceTree = "<group>"; };
 		F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyView.swift; sourceTree = "<group>"; };
 		F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyViewModel.swift; sourceTree = "<group>"; };
@@ -1688,7 +1690,6 @@
 		44898D591FE5B9C200F6017B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				DA5A858A24617DE200AC0DFE,
 				E6920B2928474B61008B41C6 /* Combine */,
 				44F8831020551D59003E3171 /* Foundation */,
 				9135BF8822F2C2EC00C8E1F5 /* MapKit */,
@@ -2004,18 +2005,18 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
-		5B9593B989FECC8F4341C899 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				5B959B1FE729C53D76A4D63B /* JobApplyBoxViewModel.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		5B9592CBF41D664E7D906A4F /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				5B959E9EB7F73EE0A3F83C7D /* MyAdModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5B9593B989FECC8F4341C899 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5B959B1FE729C53D76A4D63B /* JobApplyBoxViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2632,6 +2633,7 @@
 			children = (
 				E6318FC428D9E7410038DC88 /* ViewModelCoordinator */,
 				9BB734C32462EA0500E05435 /* ButtonStyle.swift */,
+				E6E7B97829425C00005B7D64 /* ActionBarButtonItem.swift */,
 			);
 			path = "Base Components";
 			sourceTree = "<group>";
@@ -3339,16 +3341,6 @@
 			path = ViewModelCoordinator;
 			sourceTree = "<group>";
 		};
-		E6510A5E27FB3691001B40D6 /* ScrollableTabView */ = {
-			isa = PBXGroup;
-			children = (
-				5B95902F5528B09260AC4E0C /* Models */,
-				5B9597B1B4CBDFBF9858A045 /* ScrollableTabView.swift */,
-				5B959A777DF7A1B2D6C36447 /* Subviews */,
-			);
-			path = ScrollableTabView;
-			sourceTree = "<group>";
-		};
 		E65085CF292BBA0600A43B07 /* SwiftUI Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -3368,6 +3360,16 @@
 				E65085D3292BBF7500A43B07 /* StatefulPreviewWrapper.swift */,
 			);
 			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		E6510A5E27FB3691001B40D6 /* ScrollableTabView */ = {
+			isa = PBXGroup;
+			children = (
+				5B95902F5528B09260AC4E0C /* Models */,
+				5B9597B1B4CBDFBF9858A045 /* ScrollableTabView.swift */,
+				5B959A777DF7A1B2D6C36447 /* Subviews */,
+			);
+			path = ScrollableTabView;
 			sourceTree = "<group>";
 		};
 		E681A0E52923FC9A008564E2 /* HyperlinkTextView */ = {
@@ -4028,6 +4030,7 @@
 				9F213ABAE416284A53AC6BA5 /* GalleryPreviewCell.swift in Sources */,
 				9F213EA8026933194D7483E0 /* FullscreenImageView.swift in Sources */,
 				9F213036DE161042F54529B0 /* FullscreenGalleryTransitioningController.swift in Sources */,
+				E6E7B97929425C00005B7D64 /* ActionBarButtonItem.swift in Sources */,
 				CF13D6CF2292D40F0087DA37 /* PhaseViewModel.swift in Sources */,
 				D7C750352731C4EF002BDE98 /* SavedSearchShelfCell.swift in Sources */,
 				918C8A4223A3853400B566DE /* NativeAdvertGridView.swift in Sources */,
