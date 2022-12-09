@@ -25,8 +25,16 @@ class SwiftUIViewTests: XCTestCase {
         }
     }
 
+    func testCheckBox() {
+        snapshot(.checkBox)
+    }
+
     func testHTMLText() {
         snapshot(.htmlText)
+    }
+
+    func testRadioButton() {
+        snapshot(.radioButton)
     }
 
     func testSelectionListView() {
