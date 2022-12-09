@@ -16,9 +16,3 @@ struct SwiftUISelectionListDemoView: View {
         .padding()
     }
 }
-
-struct SwiftUISelectionListDemoView_Previews: PreviewProvider {
-    static var previews: some View {
-        SwiftUISelectionListDemoView()
-    }
-}
