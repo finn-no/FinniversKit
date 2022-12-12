@@ -115,6 +115,7 @@ enum ImageAsset: String {
     case magnifyingGlass
     case mapDirections
     case mapDrawarea
+    case mapLocationPin
     case mapMyposition
     case messageUserRequired
     case minus
@@ -250,6 +251,7 @@ enum ImageAsset: String {
             .magnifyingGlass,
             .mapDirections,
             .mapDrawarea,
+            .mapLocationPin,
             .mapMyposition,
             .messageUserRequired,
             .minus,
