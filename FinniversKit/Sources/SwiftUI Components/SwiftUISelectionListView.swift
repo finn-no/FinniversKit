@@ -19,12 +19,10 @@ public struct SwiftUISelectionListView<ItemValue>: View {
                     SwiftUISelectionListItem(
                         itemModel: items[itemIndex]
                     )
-                    .overlay(
-                        Group {
-                                RoundedCorner(radius: cornerRadius, corners: corners(forItemIndex: itemIndex))
-                                .stroke(Color.textAction.opacity(itemIndex == selectedItemIndex ? 1 : 0))
-                        }
-                    )
+                    .overlay(Group {
+                        RoundedCorner(radius: cornerRadius, corners: corners(forItemIndex: itemIndex))
+                            .stroke(Color.textAction.opacity(itemIndex == selectedItemIndex ? 1 : 0))
+                    })
                     .contentShape(Rectangle())
                     .onTapGesture {
                         for index in 0..<items.count {
