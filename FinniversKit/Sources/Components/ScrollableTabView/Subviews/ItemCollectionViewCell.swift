@@ -48,6 +48,9 @@ extension ScrollableTabView {
         // MARK: - Setup
 
         private func setup() {
+            isAccessibilityElement = true
+            accessibilityTraits = [.button]
+
             contentView.addSubview(titleLabel)
             contentView.addSubview(indicatorView)
 
@@ -70,11 +73,17 @@ extension ScrollableTabView {
             self.item = item
             titleLabel.text = item.title
             updateSelection(animate: false)
+            accessibilityLabel = item.title
         }
 
         // MARK: - Private methods
 
         private func updateSelection(animate: Bool) {
+            if isSelected {
+                accessibilityTraits.insert(.selected)
+            } else {
+                accessibilityTraits.remove(.selected)
+            }
             let animationDuration: TimeInterval = animate ? 0.15 : 0
 
             UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseOut, animations: {
