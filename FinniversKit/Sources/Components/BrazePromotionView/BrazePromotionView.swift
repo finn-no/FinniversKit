@@ -85,7 +85,7 @@ public class BrazePromotionView: UIView {
     }()
 
     private lazy var verticalStackView: UIStackView = {
-        let stackView = UIStackView(axis: .vertical, spacing: .spacingS + .spacingXS, withAutoLayout: true)
+        let stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
         stackView.distribution = .fillProportionally
         stackView.alignment = .leading
         stackView.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -125,14 +125,14 @@ public class BrazePromotionView: UIView {
         self.imageDatasource = imageDatasource
         super.init(frame: .zero)
         setup()
-        configure(with: viewModel)
+        configure()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func configure(with viewModel: BrazePromotionViewModel) {
+    private func configure() {
         titleLabel.text = viewModel.title
         primaryButton.configure(withTitle: viewModel.primaryButtonTitle)
 
@@ -190,6 +190,7 @@ extension BrazePromotionView {
         addGestureRecognizer(tapGesture)
 
         verticalStackView.addArrangedSubviews([titleLabel, textLabel, primaryButton])
+        verticalStackView.setCustomSpacing(.spacingS + .spacingXS, after: textLabel)
 
         addSubview(largeShadowView)
         largeShadowView.addSubview(smallShadowView)
