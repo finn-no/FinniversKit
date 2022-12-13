@@ -16,18 +16,22 @@ class MyAdStatisticsItemView: UIView {
 
     // MARK: - Init
 
-    init(value: String, iconName: ImageAsset, withAutoLayout: Bool) {
+    init(model: MyAdModel.StatisticModel, iconName: ImageAsset, withAutoLayout: Bool) {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
-        setup(value: value, iconName: iconName)
+        setup(model: model, iconName: iconName)
     }
 
     required init?(coder: NSCoder) { fatalError() }
 
     // MARK: - Setup
 
-    private func setup(value: String, iconName: ImageAsset) {
-        valueLabel.text = value
+    private func setup(model: MyAdModel.StatisticModel, iconName: ImageAsset) {
+        isAccessibilityElement = true
+        accessibilityTraits = .staticText
+        accessibilityLabel = model.accessibilityTitle
+
+        valueLabel.text = model.title
         iconImageView.image = UIImage(named: iconName).withRenderingMode(.alwaysTemplate)
 
         stackView.addArrangedSubviews([iconImageView, valueLabel])

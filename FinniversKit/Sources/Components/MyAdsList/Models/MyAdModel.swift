@@ -6,8 +6,8 @@ public struct MyAdModel: Hashable {
     public let subtitle: String?
     public let imageUrl: String?
     public let expires: String?
-    public let numFavorites: String
-    public let numViews: String
+    public let statisticFavorites: StatisticModel
+    public let statisticViews: StatisticModel
     public let ribbon: RibbonViewModel
 
     public init(
@@ -16,8 +16,8 @@ public struct MyAdModel: Hashable {
         subtitle: String?,
         imageUrl: String?,
         expires: String?,
-        numFavorites: String,
-        numViews: String,
+        statisticFavorites: StatisticModel,
+        statisticViews: StatisticModel,
         ribbon: RibbonViewModel
     ) {
         self.adId = adId
@@ -25,12 +25,24 @@ public struct MyAdModel: Hashable {
         self.subtitle = subtitle
         self.imageUrl = imageUrl
         self.expires = expires
-        self.numFavorites = numFavorites
-        self.numViews = numViews
+        self.statisticFavorites = statisticFavorites
+        self.statisticViews = statisticViews
         self.ribbon = ribbon
     }
 
     public func hash(into hasher: inout Hasher) {
         hasher.combine(adId)
+    }
+}
+
+extension MyAdModel {
+    public struct StatisticModel: Hashable {
+        public let title: String
+        public let accessibilityTitle: String
+
+        public init(title: String, accessibilityTitle: String) {
+            self.title = title
+            self.accessibilityTitle = accessibilityTitle
+        }
     }
 }

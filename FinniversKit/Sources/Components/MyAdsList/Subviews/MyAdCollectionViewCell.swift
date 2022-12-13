@@ -122,8 +122,8 @@ class MyAdCollectionViewCell: UICollectionViewCell {
         ribbonView.configure(with: ad.ribbon)
 
         statisticsStackView.addArrangedSubviews([
-            MyAdStatisticsItemView(value: ad.numFavorites, iconName: .statsHeart, withAutoLayout: true),
-            MyAdStatisticsItemView(value: ad.numViews, iconName: .view, withAutoLayout: true)
+            MyAdStatisticsItemView(model: ad.statisticFavorites, iconName: .statsHeart, withAutoLayout: true),
+            MyAdStatisticsItemView(model: ad.statisticViews, iconName: .view, withAutoLayout: true)
         ])
 
         updateConstraintsIfNeeded()

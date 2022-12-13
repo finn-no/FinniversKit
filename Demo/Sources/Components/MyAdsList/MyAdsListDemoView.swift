@@ -147,8 +147,8 @@ private extension Array where Element == MyAdModel {
                 subtitle: subtitle(index: $0),
                 imageUrl: imageUrl(index: $0),
                 expires: expires(index: $0),
-                numFavorites: numFavorites(index: $0),
-                numViews: numViews(index: $0),
+                statisticFavorites: numFavorites(index: $0),
+                statisticViews: numViews(index: $0),
                 ribbon: ribbon(index: $0)
             )
         }
@@ -194,22 +194,30 @@ private extension Array where Element == MyAdModel {
         ])
     }
 
-    static func numFavorites(index: Int) -> String {
-        randomElement(index: index, from: [
+    static func numFavorites(index: Int) -> MyAdModel.StatisticModel {
+        let value = randomElement(index: index, from: [
             "0",
             "120",
             "3456",
-            "18 000"
+            "18000"
         ])
+
+        let spelledOut = spellOut(value: value)
+        let accessibilityTitle = (spelledOut ?? value) + " har favorittmarkert annonsen"
+        return MyAdModel.StatisticModel(title: value, accessibilityTitle: accessibilityTitle)
     }
 
-    static func numViews(index: Int) -> String {
-        randomElement(index: index, from: [
-            "5 000",
+    static func numViews(index: Int) -> MyAdModel.StatisticModel {
+        let value = randomElement(index: index, from: [
+            "5000",
             "8",
-            "9 876",
-            "970 000"
+            "9876",
+            "970000"
         ])
+
+        let spelledOut = spellOut(value: value)
+        let accessibilityTitle = (spelledOut ?? value) + " klikk på annonsen"
+        return MyAdModel.StatisticModel(title: value, accessibilityTitle: accessibilityTitle)
     }
 
     static func ribbon(index: Int) -> RibbonViewModel {
@@ -223,5 +231,16 @@ private extension Array where Element == MyAdModel {
 
     static func randomElement<T>(index: Int, from values: [T]) -> T {
         values[index % values.count]
+    }
+
+    static func spellOut(value: String) -> String? {
+        guard let intValue = Int(value) else {
+            return nil
+        }
+
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .spellOut
+
+        return numberFormatter.string(from: intValue as NSNumber)
     }
 }
