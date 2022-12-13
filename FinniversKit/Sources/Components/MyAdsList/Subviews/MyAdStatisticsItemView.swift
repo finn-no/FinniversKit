@@ -16,7 +16,7 @@ class MyAdStatisticsItemView: UIView {
 
     // MARK: - Init
 
-    init(model: MyAdModel.StatisticModel, iconName: ImageAsset, withAutoLayout: Bool) {
+    init(model: MyAdModel.LabelItem, iconName: ImageAsset, withAutoLayout: Bool) {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         setup(model: model, iconName: iconName)
@@ -26,7 +26,7 @@ class MyAdStatisticsItemView: UIView {
 
     // MARK: - Setup
 
-    private func setup(model: MyAdModel.StatisticModel, iconName: ImageAsset) {
+    private func setup(model: MyAdModel.LabelItem, iconName: ImageAsset) {
         isAccessibilityElement = true
         accessibilityTraits = .staticText
         accessibilityLabel = model.accessibilityTitle

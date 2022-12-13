@@ -185,16 +185,19 @@ private extension Array where Element == MyAdModel {
         ])
     }
 
-    static func expires(index: Int) -> String? {
-        randomElement(index: index, from: [
-            "50 dager igjen",
-            "3200 dager igjen",
-            "En fantasillion dager igjen",
+    static func expires(index: Int) -> MyAdModel.LabelItem? {
+        let value = randomElement(index: index, from: [
+            "50",
+            "3200",
+            "En fantasillion",
             nil
         ])
+
+        guard let value = value else { return nil }
+        return MyAdModel.LabelItem.spellOut(value: value, accessibilitySuffix: "dager igjen", appendSuffixToTitle: true)
     }
 
-    static func numFavorites(index: Int) -> MyAdModel.StatisticModel {
+    static func numFavorites(index: Int) -> MyAdModel.LabelItem {
         let value = randomElement(index: index, from: [
             "0",
             "120",
@@ -202,12 +205,10 @@ private extension Array where Element == MyAdModel {
             "18000"
         ])
 
-        let spelledOut = spellOut(value: value)
-        let accessibilityTitle = (spelledOut ?? value) + " har favorittmarkert annonsen"
-        return MyAdModel.StatisticModel(title: value, accessibilityTitle: accessibilityTitle)
+        return MyAdModel.LabelItem.spellOut(value: value, accessibilitySuffix: "har favorittmarkert annonsen")
     }
 
-    static func numViews(index: Int) -> MyAdModel.StatisticModel {
+    static func numViews(index: Int) -> MyAdModel.LabelItem {
         let value = randomElement(index: index, from: [
             "5000",
             "8",
@@ -215,9 +216,7 @@ private extension Array where Element == MyAdModel {
             "970000"
         ])
 
-        let spelledOut = spellOut(value: value)
-        let accessibilityTitle = (spelledOut ?? value) + " klikk på annonsen"
-        return MyAdModel.StatisticModel(title: value, accessibilityTitle: accessibilityTitle)
+        return MyAdModel.LabelItem.spellOut(value: value, accessibilitySuffix: "klikk på annonsen")
     }
 
     static func ribbon(index: Int) -> RibbonViewModel {
@@ -233,7 +232,18 @@ private extension Array where Element == MyAdModel {
         values[index % values.count]
     }
 
-    static func spellOut(value: String) -> String? {
+}
+
+private extension MyAdModel.LabelItem {
+    static func spellOut(value: String, accessibilitySuffix: String, appendSuffixToTitle: Bool = false) -> Self {
+        let spelledOut = spellOut(value: value)
+        let accessibilityTitle = "\(spelledOut ?? value) \(accessibilitySuffix)"
+
+        let title = appendSuffixToTitle ? "\(value) \(accessibilitySuffix)" : value
+        return Self.init(title: title, accessibilityTitle: accessibilityTitle)
+    }
+
+    static private func spellOut(value: String) -> String? {
         guard let intValue = Int(value) else {
             return nil
         }

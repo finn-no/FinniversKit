@@ -114,7 +114,9 @@ class MyAdCollectionViewCell: UICollectionViewCell {
         }
 
         titleLabel.text = ad.title
-        expiresLabel.text = ad.expires
+
+        expiresLabel.text = ad.expires?.title
+        expiresLabel.accessibilityLabel = ad.expires?.accessibilityTitle
 
         subtitleLabel.text = ad.subtitle
         subtitleLabel.isHidden = ad.subtitle == nil

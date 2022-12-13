@@ -5,9 +5,9 @@ public struct MyAdModel: Hashable {
     public let title: String
     public let subtitle: String?
     public let imageUrl: String?
-    public let expires: String?
-    public let statisticFavorites: StatisticModel
-    public let statisticViews: StatisticModel
+    public let expires: LabelItem?
+    public let statisticFavorites: LabelItem
+    public let statisticViews: LabelItem
     public let ribbon: RibbonViewModel
 
     public init(
@@ -15,9 +15,9 @@ public struct MyAdModel: Hashable {
         title: String,
         subtitle: String?,
         imageUrl: String?,
-        expires: String?,
-        statisticFavorites: StatisticModel,
-        statisticViews: StatisticModel,
+        expires: LabelItem?,
+        statisticFavorites: LabelItem,
+        statisticViews: LabelItem,
         ribbon: RibbonViewModel
     ) {
         self.adId = adId
@@ -36,7 +36,7 @@ public struct MyAdModel: Hashable {
 }
 
 extension MyAdModel {
-    public struct StatisticModel: Hashable {
+    public struct LabelItem: Hashable {
         public let title: String
         public let accessibilityTitle: String
 
