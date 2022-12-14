@@ -137,6 +137,10 @@ import UIKit
         return UIColor(r: 255, g: 255, b: 255)
     }
 
+    public class var darkMilk: UIColor {
+        UIColor(hex: "#1B1B24")
+    }
+
     public class var licorice: UIColor {
         return UIColor(r: 71, g: 68, b: 69)
     }
@@ -269,6 +273,10 @@ extension CGColor {
 
     public class var milk: CGColor {
         return UIColor.milk.cgColor
+    }
+
+    public class var darkMilk: CGColor {
+        UIColor.darkMilk.cgColor
     }
 
     public class var licorice: CGColor {

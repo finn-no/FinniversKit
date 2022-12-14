@@ -338,4 +338,8 @@ class ComponentViewTests: XCTestCase {
     func testMyAdsListView() {
         snapshot(.myAdsListView, includeIPad: true)
     }
+
+    func testHyperlinkTextView() {
+        snapshot(.hyperlinkTextView)
+    }
 }
