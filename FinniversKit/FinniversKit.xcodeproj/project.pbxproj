@@ -174,8 +174,8 @@
 		5B9598AF4BE2BC129A45E749 /* JobApplyBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959B1FE729C53D76A4D63B /* JobApplyBoxViewModel.swift */; };
 		5B9598E9D9A01E990206AC5A /* SelectionItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9594720BB424FD1F977364 /* SelectionItemModel.swift */; };
 		5B95990406E586D6E278E80E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959BDD757ABA49DA59E345 /* SearchView.swift */; };
-		5B959AB695663EC9F45528E8 /* JobApplyBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959BD2BF8803BCD360DCD1 /* JobApplyBoxView.swift */; };
 		5B95998ECCE506D6F9931F73 /* MyAdsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959BE24502AA4CA7E15031 /* MyAdsListView.swift */; };
+		5B959AB695663EC9F45528E8 /* JobApplyBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959BD2BF8803BCD360DCD1 /* JobApplyBoxView.swift */; };
 		5B959B5D8A263039AE2F8FA2 /* MyAdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959E9EB7F73EE0A3F83C7D /* MyAdModel.swift */; };
 		5B959C55077A63EDEA526927 /* MyAdStatisticsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95986193F332689C03C7EC /* MyAdStatisticsItemView.swift */; };
 		5B959EBFCE35B7B844CC7F98 /* ScrollableTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9597B1B4CBDFBF9858A045 /* ScrollableTabView.swift */; };
@@ -481,10 +481,20 @@
 		E6318FC628D9E7550038DC88 /* ViewModelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6318FC528D9E7550038DC88 /* ViewModelCoordinator.swift */; };
 		E6318FC828D9E7AC0038DC88 /* AnyViewModelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6318FC728D9E7AC0038DC88 /* AnyViewModelCoordinator.swift */; };
 		E6318FCA28D9E7EC0038DC88 /* UnownedViewModelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6318FC928D9E7EC0038DC88 /* UnownedViewModelCoordinator.swift */; };
+		E65085D1292BBF1D00A43B07 /* SwiftUICheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085D0292BBF1D00A43B07 /* SwiftUICheckBox.swift */; };
+		E65085D4292BBF7500A43B07 /* StatefulPreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085D3292BBF7500A43B07 /* StatefulPreviewWrapper.swift */; };
+		E65085D6292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085D5292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift */; };
+		E65085DA292BC03400A43B07 /* SwiftUIRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085D9292BC03400A43B07 /* SwiftUIRadioButton.swift */; };
+		E65085DC292BCD1D00A43B07 /* SwiftUISelectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085DB292BCD1D00A43B07 /* SwiftUISelectionListView.swift */; };
+		E65085E0292BCF7800A43B07 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085DF292BCF7800A43B07 /* RoundedCorner.swift */; };
+		E65085E2292BD01800A43B07 /* SwiftUISelectionListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085E1292BD01800A43B07 /* SwiftUISelectionListItem.swift */; };
 		E6510A6427FB36E5001B40D6 /* UIControlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510A6327FB36E5001B40D6 /* UIControlExtensions.swift */; };
+		E681A0E72923FCAC008564E2 /* HyperlinkTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0E62923FCAC008564E2 /* HyperlinkTextView.swift */; };
+		E681A0E92923FCE5008564E2 /* HyperlinkTextViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0E82923FCE5008564E2 /* HyperlinkTextViewViewModel.swift */; };
 		E68D58F628DDE75D001A70CA /* HTMLLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D58F528DDE75D001A70CA /* HTMLLabel.swift */; };
 		E68D58F828DDE77A001A70CA /* HTMLStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D58F728DDE77A001A70CA /* HTMLStyler.swift */; };
 		E6920B2B28474B78008B41C6 /* CombineCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6920B2A28474B78008B41C6 /* CombineCompatible.swift */; };
+		E6E7B97929425C00005B7D64 /* ActionBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E7B97829425C00005B7D64 /* ActionBarButtonItem.swift */; };
 		E87A7BF328ED6AE0007094F2 /* NeighborhoodProfileBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87A7BF228ED6AE0007094F2 /* NeighborhoodProfileBannerView.swift */; };
 		F22612D822572D9400472D22 /* StatisticsItemEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */; };
 		F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */; };
@@ -676,9 +686,9 @@
 		5B9597B1B4CBDFBF9858A045 /* ScrollableTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableTabView.swift; sourceTree = "<group>"; };
 		5B95986193F332689C03C7EC /* MyAdStatisticsItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAdStatisticsItemView.swift; sourceTree = "<group>"; };
 		5B9599E22AECDDE0750CBD31 /* SelectionListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionListItemView.swift; sourceTree = "<group>"; };
+		5B959B13CCE740691D9EF19C /* ScrollableTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableTabViewModel.swift; sourceTree = "<group>"; };
 		5B959B1FE729C53D76A4D63B /* JobApplyBoxViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobApplyBoxViewModel.swift; sourceTree = "<group>"; };
 		5B959BD2BF8803BCD360DCD1 /* JobApplyBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobApplyBoxView.swift; sourceTree = "<group>"; };
-		5B959B13CCE740691D9EF19C /* ScrollableTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableTabViewModel.swift; sourceTree = "<group>"; };
 		5B959BDD757ABA49DA59E345 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		5B959BE24502AA4CA7E15031 /* MyAdsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAdsListView.swift; sourceTree = "<group>"; };
 		5B959CD34FCA1F6EE3802802 /* CheckmarkItemDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkItemDetailView.swift; sourceTree = "<group>"; };
@@ -988,10 +998,20 @@
 		E6318FC528D9E7550038DC88 /* ViewModelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelCoordinator.swift; sourceTree = "<group>"; };
 		E6318FC728D9E7AC0038DC88 /* AnyViewModelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyViewModelCoordinator.swift; sourceTree = "<group>"; };
 		E6318FC928D9E7EC0038DC88 /* UnownedViewModelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnownedViewModelCoordinator.swift; sourceTree = "<group>"; };
+		E65085D0292BBF1D00A43B07 /* SwiftUICheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUICheckBox.swift; sourceTree = "<group>"; };
+		E65085D3292BBF7500A43B07 /* StatefulPreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulPreviewWrapper.swift; sourceTree = "<group>"; };
+		E65085D5292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIHyperlinkTextView.swift; sourceTree = "<group>"; };
+		E65085D9292BC03400A43B07 /* SwiftUIRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIRadioButton.swift; sourceTree = "<group>"; };
+		E65085DB292BCD1D00A43B07 /* SwiftUISelectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISelectionListView.swift; sourceTree = "<group>"; };
+		E65085DF292BCF7800A43B07 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		E65085E1292BD01800A43B07 /* SwiftUISelectionListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISelectionListItem.swift; sourceTree = "<group>"; };
 		E6510A6327FB36E5001B40D6 /* UIControlExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlExtensions.swift; sourceTree = "<group>"; };
+		E681A0E62923FCAC008564E2 /* HyperlinkTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextView.swift; sourceTree = "<group>"; };
+		E681A0E82923FCE5008564E2 /* HyperlinkTextViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextViewViewModel.swift; sourceTree = "<group>"; };
 		E68D58F528DDE75D001A70CA /* HTMLLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLabel.swift; sourceTree = "<group>"; };
 		E68D58F728DDE77A001A70CA /* HTMLStyler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStyler.swift; sourceTree = "<group>"; };
 		E6920B2A28474B78008B41C6 /* CombineCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineCompatible.swift; sourceTree = "<group>"; };
+		E6E7B97829425C00005B7D64 /* ActionBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionBarButtonItem.swift; sourceTree = "<group>"; };
 		E87A7BF228ED6AE0007094F2 /* NeighborhoodProfileBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileBannerView.swift; sourceTree = "<group>"; };
 		F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyView.swift; sourceTree = "<group>"; };
 		F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyViewModel.swift; sourceTree = "<group>"; };
@@ -1039,6 +1059,7 @@
 		087A5BB422A7D84600184640 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				E65085D2292BBF4500A43B07 /* SwiftUI */,
 				CF0B10972316AC0D001E7A57 /* BottomShadowView.swift */,
 				CF164CFE230EB3D100250822 /* ContentSizedTableView.swift */,
 				179D06A52906A39D00A65E3A /* HTMLStringParser */,
@@ -1442,6 +1463,7 @@
 		4447F6631FDB2B110033DBC1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E65085CF292BBA0600A43B07 /* SwiftUI Components */,
 				4447F6B51FDB2B110033DBC1 /* Info.plist */,
 				4447F6C61FDB2B110033DBC1 /* Config.swift */,
 				9BB734C22462E9C000E05435 /* Base Components */,
@@ -1489,6 +1511,7 @@
 				14DC126821593B0000326DC3 /* HorizontalSlide */,
 				E68D58F428DDE74F001A70CA /* HTMLLabel */,
 				172E7500290FC84B00956AC2 /* HTMLText */,
+				E681A0E52923FC9A008564E2 /* HyperlinkTextView */,
 				CFB61372229ACA5200DE283D /* IconCollection */,
 				CF136ACB220320DD00247B30 /* Infobox */,
 				9B2D17CA23E02AA200EF3B50 /* KeyValueGridView */,
@@ -1667,7 +1690,6 @@
 		44898D591FE5B9C200F6017B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				DA5A858A24617DE200AC0DFE,
 				E6920B2928474B61008B41C6 /* Combine */,
 				44F8831020551D59003E3171 /* Foundation */,
 				9135BF8822F2C2EC00C8E1F5 /* MapKit */,
@@ -1983,18 +2005,18 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
-		5B9593B989FECC8F4341C899 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				5B959B1FE729C53D76A4D63B /* JobApplyBoxViewModel.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		5B9592CBF41D664E7D906A4F /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				5B959E9EB7F73EE0A3F83C7D /* MyAdModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5B9593B989FECC8F4341C899 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5B959B1FE729C53D76A4D63B /* JobApplyBoxViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2611,6 +2633,7 @@
 			children = (
 				E6318FC428D9E7410038DC88 /* ViewModelCoordinator */,
 				9BB734C32462EA0500E05435 /* ButtonStyle.swift */,
+				E6E7B97829425C00005B7D64 /* ActionBarButtonItem.swift */,
 			);
 			path = "Base Components";
 			sourceTree = "<group>";
@@ -3318,6 +3341,27 @@
 			path = ViewModelCoordinator;
 			sourceTree = "<group>";
 		};
+		E65085CF292BBA0600A43B07 /* SwiftUI Components */ = {
+			isa = PBXGroup;
+			children = (
+				E65085DF292BCF7800A43B07 /* RoundedCorner.swift */,
+				E65085D0292BBF1D00A43B07 /* SwiftUICheckBox.swift */,
+				E65085D5292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift */,
+				E65085D9292BC03400A43B07 /* SwiftUIRadioButton.swift */,
+				E65085E1292BD01800A43B07 /* SwiftUISelectionListItem.swift */,
+				E65085DB292BCD1D00A43B07 /* SwiftUISelectionListView.swift */,
+			);
+			path = "SwiftUI Components";
+			sourceTree = "<group>";
+		};
+		E65085D2292BBF4500A43B07 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				E65085D3292BBF7500A43B07 /* StatefulPreviewWrapper.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
 		E6510A5E27FB3691001B40D6 /* ScrollableTabView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3326,6 +3370,15 @@
 				5B959A777DF7A1B2D6C36447 /* Subviews */,
 			);
 			path = ScrollableTabView;
+			sourceTree = "<group>";
+		};
+		E681A0E52923FC9A008564E2 /* HyperlinkTextView */ = {
+			isa = PBXGroup;
+			children = (
+				E681A0E62923FCAC008564E2 /* HyperlinkTextView.swift */,
+				E681A0E82923FCE5008564E2 /* HyperlinkTextViewViewModel.swift */,
+			);
+			path = HyperlinkTextView;
 			sourceTree = "<group>";
 		};
 		E68D58F428DDE74F001A70CA /* HTMLLabel */ = {
@@ -3608,6 +3661,7 @@
 				44D9125F2077AC8A00486848 /* EmptyView.swift in Sources */,
 				44A557B622E72187001667AE /* CheckboxTableViewCell.swift in Sources */,
 				CF376C18231D452100ED2B24 /* Array+Step.swift in Sources */,
+				E65085DA292BC03400A43B07 /* SwiftUIRadioButton.swift in Sources */,
 				F288CB3E233CD53400C1EE8A /* UserAdsRatingView.swift in Sources */,
 				4D01FD5C261C9A5C008B9913 /* TransactionStepIllustrationView.swift in Sources */,
 				45EDD62F20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift in Sources */,
@@ -3638,6 +3692,7 @@
 				443A6420209A5044006BFB38 /* NotificationsListFooterView.swift in Sources */,
 				441FE44E209A2F2C00B04EF1 /* NotificationsListView.swift in Sources */,
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
+				E681A0E92923FCE5008564E2 /* HyperlinkTextViewViewModel.swift in Sources */,
 				CF4A053C21FB2ACB000BB7DA /* PianoEffectControl.swift in Sources */,
 				441FE42E209A24E500B04EF1 /* MarketsViewModel.swift in Sources */,
 				DAD6EB272369916100968497 /* SettingsViewCellModel.swift in Sources */,
@@ -3691,6 +3746,7 @@
 				DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */,
 				DA84E8E9252DC96900E4E3B3 /* FontProvider.swift in Sources */,
 				CF4A053721FB2ACB000BB7DA /* PianoView.swift in Sources */,
+				E65085D6292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift in Sources */,
 				DA708853211338650067519A /* ConfirmationView.swift in Sources */,
 				14C6F7D5212324CA00A7230C /* FavoritesListViewModel.swift in Sources */,
 				14DC126F21593B0000326DC3 /* HorizontalSlideController.swift in Sources */,
@@ -3792,6 +3848,7 @@
 				CFF9727121C3BA1D00C85238 /* BannerTransparencySectionView.swift in Sources */,
 				CF45AF89231D3A3000BE8B39 /* StepSlider.swift in Sources */,
 				899D0BF6222D4B3400794DEC /* ArrayExtensions.swift in Sources */,
+				E65085DC292BCD1D00A43B07 /* SwiftUISelectionListView.swift in Sources */,
 				0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */,
 				E6920B2B28474B78008B41C6 /* CombineCompatible.swift in Sources */,
 				9B238F02225B95F600B0E0C2 /* InfoboxView+Style.swift in Sources */,
@@ -3815,6 +3872,7 @@
 				4447F6EC1FDB2B110033DBC1 /* TextField+InputType.swift in Sources */,
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
 				712B0846254AEBC100791C6B /* BuyerPickerFallbackCell.swift in Sources */,
+				E65085E2292BD01800A43B07 /* SwiftUISelectionListItem.swift in Sources */,
 				CF5CA71422F87729007C4124 /* NeighborhoodProfileViewModel.swift in Sources */,
 				E6318FC828D9E7AC0038DC88 /* AnyViewModelCoordinator.swift in Sources */,
 				4D37A9BC28571DC400F9460D /* BadgeViewModel.swift in Sources */,
@@ -3946,6 +4004,7 @@
 				43BACE6C21117D530052114C /* BuyerPickerViewModel.swift in Sources */,
 				F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */,
 				895175952248D4D1008003FB /* StepDot.swift in Sources */,
+				E65085D1292BBF1D00A43B07 /* SwiftUICheckBox.swift in Sources */,
 				5D0ED35125A49FA7007750D0 /* FinnTextField+Style.swift in Sources */,
 				9F84F96B29277B1000631443 /* BrazePromotionViewModel.swift in Sources */,
 				F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */,
@@ -3956,6 +4015,7 @@
 				08F0D3F122202DC900968256 /* FeedbackViewModel.swift in Sources */,
 				CF3D5EE2215A6525006E4D08 /* InstrumentSelectorView.swift in Sources */,
 				5DA190C725A4A7E0002305A8 /* Transition+Extensions.swift in Sources */,
+				E65085D4292BBF7500A43B07 /* StatefulPreviewWrapper.swift in Sources */,
 				9A37D9EDC4E78EC664D528FE /* FeedbackView.swift in Sources */,
 				5DCE0882280FDDF100ED7407 /* MonthAndYearPickerView.swift in Sources */,
 				9F213438F5413991D1B3D7CD /* FullscreenGalleryViewModel.swift in Sources */,
@@ -3965,10 +4025,12 @@
 				CF164CFF230EB3D100250822 /* ContentSizedTableView.swift in Sources */,
 				CFB6137C229AD43400DE283D /* VerticalIconCollectionViewCell.swift in Sources */,
 				71C6A9542549636A00D78269 /* MessageUserRequiredSheet.swift in Sources */,
+				E681A0E72923FCAC008564E2 /* HyperlinkTextView.swift in Sources */,
 				9F2133BEBE174152BD809417 /* GalleryPreviewView.swift in Sources */,
 				9F213ABAE416284A53AC6BA5 /* GalleryPreviewCell.swift in Sources */,
 				9F213EA8026933194D7483E0 /* FullscreenImageView.swift in Sources */,
 				9F213036DE161042F54529B0 /* FullscreenGalleryTransitioningController.swift in Sources */,
+				E6E7B97929425C00005B7D64 /* ActionBarButtonItem.swift in Sources */,
 				CF13D6CF2292D40F0087DA37 /* PhaseViewModel.swift in Sources */,
 				D7C750352731C4EF002BDE98 /* SavedSearchShelfCell.swift in Sources */,
 				918C8A4223A3853400B566DE /* NativeAdvertGridView.swift in Sources */,
@@ -3993,6 +4055,7 @@
 				CF05BA02233B78BC003A7F1C /* FavoriteSearchEmptyView.swift in Sources */,
 				9A37D36854B78610AFEADD5C /* UITableViewCellExtensions.swift in Sources */,
 				9A37D6FADD7DBD952AA395F7 /* FavoriteAdTableViewCell.swift in Sources */,
+				E65085E0292BCF7800A43B07 /* RoundedCorner.swift in Sources */,
 				9BCD171523CCBB680045BD61 /* CollapsibleContentView.swift in Sources */,
 				9A37D015952CBD1FEF4F0E20 /* FavoriteAdViewModel.swift in Sources */,
 				9A37DFD7CA27F4F25F613DE2 /* FavoriteAdsListView.swift in Sources */,
