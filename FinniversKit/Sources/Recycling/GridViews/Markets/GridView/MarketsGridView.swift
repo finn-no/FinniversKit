@@ -20,6 +20,16 @@ public class MarketsGridView: UIView, MarketsView {
         return collectionView
     }()
 
+    private lazy var a11yHeader: UILabel = {
+        let label = UILabel(withAutoLayout: true)
+        label.text = nil
+        label.isAccessibilityElement = true
+        label.accessibilityTraits = .header
+
+        label.isHidden = true
+        return label
+    }()
+
     private weak var delegate: MarketsViewDelegate?
     private weak var dataSource: MarketsViewDataSource?
 
@@ -45,12 +55,17 @@ public class MarketsGridView: UIView, MarketsView {
 
     // MARK: - Setup
 
-    public init(frame: CGRect = .zero, delegate: MarketsViewDelegate, dataSource: MarketsViewDataSource) {
+    public init(frame: CGRect = .zero, accessibilityHeader: String, delegate: MarketsViewDelegate, dataSource: MarketsViewDataSource) {
         super.init(frame: frame)
 
         self.delegate = delegate
         self.dataSource = dataSource
 
+        //collectionView.accessibilityLabel = accessibilityHeader
+        //accessibilityLabel = "Test"
+        //accessibilityTraits = .button
+        //a11yHeader.text = "Test"
+        a11yHeader.accessibilityLabel = accessibilityHeader
         setup()
     }
 
@@ -84,6 +99,21 @@ public class MarketsGridView: UIView, MarketsView {
                 self?.updateGradient()
             })
         }
+        setupAccessibility()
+    }
+
+    private func setupAccessibility() {
+        addSubview(a11yHeader)
+        accessibilityElements = [a11yHeader, collectionView]
+        //accessibilityContainerType = .semanticGroup
+        //shouldGroupAccessibilityChildren = true
+
+        NSLayoutConstraint.activate([
+            a11yHeader.topAnchor.constraint(equalTo: topAnchor, constant: -10),
+            a11yHeader.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            a11yHeader.heightAnchor.constraint(equalToConstant: 9),
+            a11yHeader.widthAnchor.constraint(equalToConstant: 1)
+        ])
     }
 
     // MARK: - Functionality
@@ -233,6 +263,14 @@ extension MarketsGridView: UICollectionViewDataSource {
 
         if let model = dataSource?.marketsView(self, modelAtIndex: indexPath.row) {
             cell.model = model
+
+            if model.showExternalLinkIcon {
+                cell.accessibilityTraits.remove(.button)
+                cell.accessibilityTraits.insert(.link)
+            } else {
+                cell.accessibilityTraits.remove(.link)
+                cell.accessibilityTraits.insert(.button)
+            }
         }
 
         return cell

@@ -58,7 +58,7 @@ public class AdRecommendationsGridView: UIView {
     }()
 
     // Have the collection view be private so nobody messes with it.
-    public lazy var collectionView: UICollectionView = {
+    public private(set) lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
@@ -189,6 +189,7 @@ extension AdRecommendationsGridView: UICollectionViewDataSource {
 
         let header = collectionView.dequeue(AdRecommendationsGridHeaderView.self, for: indexPath, ofKind: UICollectionView.elementKindSectionHeader)
         header.contentView = headerView
+        //header.accessibilityElements = []
 
         return header
     }
