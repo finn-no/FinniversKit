@@ -3,19 +3,19 @@ import Foundation
 public extension BadgeView {
     enum Style: Hashable {
         case `default`
-        case alert
+        case fiksFerdig
 
         var color: UIColor {
             switch self {
             case .default: return .bgSecondary
-            case .alert: return .bgAlert
+            case .fiksFerdig: return .bgAlert
             }
         }
 
         var textColor: UIColor {
             switch self {
             case .default: return .textPrimary
-            case .alert: return .alertTextColor
+            case .fiksFerdig: return .fiksFerdigTextColor
             }
         }
     }
@@ -24,7 +24,7 @@ public extension BadgeView {
 // MARK: - Private extensions
 
 private extension UIColor {
-    class var alertTextColor: UIColor {
+    class var fiksFerdigTextColor: UIColor {
         UIColor(hex: "#885407")
     }
 }
