@@ -134,6 +134,14 @@ class MarketsGridViewCell: UICollectionViewCell {
 
             let showExternalLinkIcon = model?.showExternalLinkIcon ?? false
             externalLinkImageView.isHidden = !showExternalLinkIcon
+
+            if showExternalLinkIcon {
+                accessibilityTraits.remove(.button)
+                accessibilityTraits.insert(.link)
+            } else {
+                accessibilityTraits.remove(.link)
+                accessibilityTraits.insert(.button)
+            }
         }
     }
 }
