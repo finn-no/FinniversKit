@@ -2,10 +2,6 @@ import FinniversKit
 
 final public class BadgeDemoView: UIView {
 
-    // MARK: - Internal properties
-
-    private lazy var view = BadgeView()
-
     // MARK: - Setup
 
     public override init(frame: CGRect) {
@@ -18,14 +14,24 @@ final public class BadgeDemoView: UIView {
     }
 
     func setup() {
-        addSubview(view)
-        view.centerInSuperview()
+        let stackView = UIStackView(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
+        stackView.alignment = .center
+        addSubview(stackView)
+        stackView.centerInSuperview()
 
-        let viewModel = BadgeViewModel(
+        let fiksFerdigBadgeView = BadgeView()
+        fiksFerdigBadgeView.configure(with: .init(
+            style: .fiksFerdig,
             title: "Fiks ferdig",
             icon: UIImage(named: .bapShippable)
-        )
+        ))
 
-        view.configure(with: viewModel)
+        let smidigBilhandelBadgeView = BadgeView()
+        smidigBilhandelBadgeView.configure(with: .init(
+            style: .default,
+            title: "Smidig bilhandel"
+        ))
+
+        stackView.addArrangedSubviews([fiksFerdigBadgeView, smidigBilhandelBadgeView])
     }
 }
