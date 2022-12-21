@@ -2,6 +2,12 @@ import Foundation
 import UIKit
 
 public final class BadgeView: UIView {
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(axis: .horizontal, spacing: .spacingXS, withAutoLayout: true)
+        stackView.alignment = .center
+        return stackView
+    }()
+
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFit
@@ -33,21 +39,19 @@ public final class BadgeView: UIView {
         layer.cornerRadius = .spacingS
         layer.maskedCorners = [.layerMaxXMaxYCorner]
 
-        addSubview(iconImageView)
-        addSubview(textLabel)
+        addSubview(stackView)
+        stackView.addArrangedSubviews([iconImageView, textLabel])
 
         let iconSize: CGFloat = .spacingM
 
         NSLayoutConstraint.activate([
-            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
-            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            iconImageView.heightAnchor.constraint(equalToConstant: iconSize),
-            iconImageView.widthAnchor.constraint(equalToConstant: iconSize),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXS),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingXS),
 
-            textLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .spacingXS),
-            textLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXS),
-            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
-            textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingXS),
+            iconImageView.widthAnchor.constraint(equalToConstant: iconSize),
+            iconImageView.heightAnchor.constraint(equalToConstant: iconSize)
         ])
     }
 
@@ -56,6 +60,7 @@ public final class BadgeView: UIView {
     public func configure(with viewModel: BadgeViewModel) {
         textLabel.text = viewModel.title
         iconImageView.image = viewModel.icon
+        iconImageView.isHidden = viewModel.icon == nil
     }
 
     public func attachToTopLeadingAnchor(in superview: UIView) {
