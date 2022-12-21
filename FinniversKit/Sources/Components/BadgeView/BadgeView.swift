@@ -14,11 +14,7 @@ public final class BadgeView: UIView {
         return imageView
     }()
 
-    private lazy var textLabel: Label = {
-        let label = Label(style: .detailStrong, withAutoLayout: true)
-        label.textColor = .badgeTextColor
-        return label
-    }()
+    private lazy var textLabel = Label(style: .detailStrong, withAutoLayout: true)
 
     // MARK: - Init
 
@@ -58,6 +54,8 @@ public final class BadgeView: UIView {
     // MARK: - Public methods
 
     public func configure(with viewModel: BadgeViewModel) {
+        backgroundColor = viewModel.style.color
+        textLabel.textColor = viewModel.style.textColor
         textLabel.text = viewModel.title
         iconImageView.image = viewModel.icon
         iconImageView.isHidden = viewModel.icon == nil
