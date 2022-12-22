@@ -54,7 +54,7 @@ public final class BadgeView: UIView {
     // MARK: - Public methods
 
     public func configure(with viewModel: BadgeViewModel) {
-        backgroundColor = viewModel.style.color
+        backgroundColor = viewModel.style.backgroundColor
         textLabel.textColor = viewModel.style.textColor
         textLabel.text = viewModel.title
         iconImageView.image = viewModel.icon

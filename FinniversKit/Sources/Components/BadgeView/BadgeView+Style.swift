@@ -5,7 +5,7 @@ public extension BadgeView {
         case `default`
         case warning
 
-        var color: UIColor {
+        var backgroundColor: UIColor {
             switch self {
             case .default: return .bgSecondary
             case .warning: return .bgAlert
