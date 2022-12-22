@@ -4,13 +4,13 @@
 
 import Foundation
 
-extension Array where Array.Element: ExpressibleByNilLiteral {
+public extension Array where Array.Element: ExpressibleByNilLiteral {
     subscript(safe index: Index) -> Element {
         return indices.contains(index) ? self[index] : nil
     }
 }
 
-extension Array {
+public extension Array {
     subscript(safe index: Index) -> Element? {
         return indices.contains(index) ? self[index] : nil
     }
