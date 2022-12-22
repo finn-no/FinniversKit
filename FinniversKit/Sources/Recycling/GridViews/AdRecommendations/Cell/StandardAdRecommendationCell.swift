@@ -23,6 +23,12 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     private static let minImageAspectRatio: CGFloat = 0.75
     private static let maxImageAspectRatio: CGFloat = 1.5
 
+    /// Extra container for accessibility issues. The cell should have "all content" and favoriteButton as accessibilty elements but it get confused if favoriteButton is a subview of the other accessibility element (so contentView can not be one of the accessibility elements
+    private lazy var containerView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        return view
+    }()
+
     private lazy var imageContentView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.layer.borderWidth = 1
@@ -158,25 +164,27 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     }
 
     private func setup() {
-        contentView.isAccessibilityElement = true
+        containerView.isAccessibilityElement = true
         favoriteButton.isAccessibilityElement = true
-        accessibilityElements = [contentView, favoriteButton]
-        contentView.accessibilityTraits.insert(.button)
+        accessibilityElements = [containerView, favoriteButton]
+        shouldGroupAccessibilityChildren = true
+        containerView.accessibilityTraits.insert(.button)
         imageView.accessibilityElementsHidden = true
 
-        contentView.addSubview(imageContentView)
+        containerView.addSubview(imageContentView)
         imageContentView.addSubview(imageView)
         imageContentView.addSubview(imageDescriptionBackgroundView)
         imageDescriptionBackgroundView.contentView.addSubview(imageDescriptionStackView)
         imageDescriptionStackView.fillInSuperview(insets: UIEdgeInsets(top: 0, leading: StandardAdRecommendationCell.margin, bottom: 0, trailing: -StandardAdRecommendationCell.margin), isActive: true)
         imageView.fillInSuperview()
 
-        contentView.addSubview(ribbonView)
-        contentView.addSubview(logoImageView)
-        contentView.addSubview(subtitleLabel)
-        contentView.addSubview(titleLabel)
+        contentView.addSubview(containerView)
+        containerView.addSubview(ribbonView)
+        containerView.addSubview(logoImageView)
+        containerView.addSubview(subtitleLabel)
+        containerView.addSubview(titleLabel)
         contentView.addSubview(favoriteButton)
-        contentView.addSubview(accessoryLabel)
+        containerView.addSubview(accessoryLabel)
 
         imageDescriptionStackView.addArrangedSubviews([iconImageView, imageTextLabel])
 
@@ -187,6 +195,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
         imageHeightMinimumConstraint.priority = .defaultHigh
 
+        containerView.fillInSuperview()
         NSLayoutConstraint.activate([
             imageContentView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageContentView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
@@ -246,7 +255,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         subtitleLabel.text = ""
         accessoryLabel.text = ""
         imageTextLabel.text = ""
-        contentView.accessibilityLabel = ""
+        containerView.accessibilityLabel = ""
         favoriteButton.accessibilityLabel = ""
         favoriteButton.setImage(nil, for: .normal)
         logoImageView.cancelLoading()
@@ -272,7 +281,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         subtitleLabel.text = model?.subtitle
         accessoryLabel.text = model?.accessory
         imageTextLabel.text = model?.imageText
-        contentView.accessibilityLabel = model?.accessibilityLabel
+        containerView.accessibilityLabel = model?.accessibilityLabel
         favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityLabel
         isFavorite = model?.isFavorite ?? false
 
