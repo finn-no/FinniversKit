@@ -3,10 +3,13 @@
 //
 
 import SwiftUI
-import FinniversKit
+@testable import FinniversKit
 
 public enum SwiftUIDemoViews: String, DemoViews {
+    case checkBox
     case htmlText
+    case radioButton
+    case selectionListView
     case textField
     case textView
 
@@ -25,6 +28,12 @@ public enum SwiftUIDemoViews: String, DemoViews {
 
     @ViewBuilder private var previews: some View {
         switch self {
+        case .checkBox:
+            SwiftUICheckBox_Previews.previews
+        case .radioButton:
+            SwiftUIRadioButton_Previews.previews
+        case .selectionListView:
+            SwiftUISelectionListDemoView()
         case .textField:
             FinnTextField_Previews.previews
         case .textView:

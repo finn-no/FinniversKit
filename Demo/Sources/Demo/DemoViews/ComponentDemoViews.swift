@@ -80,8 +80,11 @@ public enum ComponentDemoViews: String, DemoViews {
     case selectionListCheckboxView
     case selectionListRadiobuttonView
     case badgeView
+    case jobApplyBox
+    case jobKeyInfo
     case myAdsListView
     case brazePromotionView
+    case hyperlinkTextView
 
     var title: String? {
         switch self {
@@ -255,10 +258,16 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<SelectionListRadiobuttonDemoView>(dismissType: .dismissButton)
         case .badgeView:
             return DemoViewController<BadgeDemoView>()
+        case .jobApplyBox:
+            return DemoViewController<JobApplyBoxDemoView>(dismissType: .dismissButton)
+        case .jobKeyInfo:
+            return DemoViewController<JobKeyInfoDemoView>()
         case .myAdsListView:
             return DemoViewController<MyAdsListDemoView>(dismissType: .dismissButton, containmentOptions: .navigationController)
         case .brazePromotionView:
             return DemoViewController<BrazePromotionDemoView>()
+        case .hyperlinkTextView:
+            return DemoViewController<HyperlinkTextViewDemoView>()
         }
     }
 }
