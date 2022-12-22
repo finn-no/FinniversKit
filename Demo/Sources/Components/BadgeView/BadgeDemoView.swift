@@ -21,7 +21,7 @@ final public class BadgeDemoView: UIView {
 
         let fiksFerdigBadgeView = BadgeView()
         fiksFerdigBadgeView.configure(with: .init(
-            style: .fiksFerdig,
+            style: .warning,
             title: "Fiks ferdig",
             icon: UIImage(named: .bapShippable)
         ))
