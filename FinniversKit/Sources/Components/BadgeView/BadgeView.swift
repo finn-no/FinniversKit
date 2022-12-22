@@ -14,7 +14,7 @@ public final class BadgeView: UIView {
         return imageView
     }()
 
-    private lazy var textLabel = Label(style: .detailStrong, withAutoLayout: true)
+    private lazy var textLabel = Label(style: .detail, withAutoLayout: true)
 
     // MARK: - Init
 
@@ -32,7 +32,7 @@ public final class BadgeView: UIView {
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .banana
-        layer.cornerRadius = .spacingS
+        layer.cornerRadius = .spacingXS
         layer.maskedCorners = [.layerMaxXMaxYCorner]
 
         addSubview(stackView)
@@ -41,10 +41,12 @@ public final class BadgeView: UIView {
         let iconSize: CGFloat = .spacingM
 
         NSLayoutConstraint.activate([
+            heightAnchor.constraint(equalToConstant: 24),
+
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXS),
+            stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingXS),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             iconImageView.widthAnchor.constraint(equalToConstant: iconSize),
             iconImageView.heightAnchor.constraint(equalToConstant: iconSize)
