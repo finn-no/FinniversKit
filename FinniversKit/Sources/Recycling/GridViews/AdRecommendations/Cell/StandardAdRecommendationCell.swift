@@ -158,7 +158,11 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     }
 
     private func setup() {
-        isAccessibilityElement = true
+        contentView.isAccessibilityElement = true
+        favoriteButton.isAccessibilityElement = true
+        accessibilityElements = [contentView, favoriteButton]
+        contentView.accessibilityTraits.insert(.button)
+        imageView.accessibilityElementsHidden = true
 
         contentView.addSubview(imageContentView)
         imageContentView.addSubview(imageView)
@@ -232,6 +236,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
     public override func prepareForReuse() {
         super.prepareForReuse()
+        imageView.cancelLoading()
         imageView.image = nil
         imageView.alpha = 0.0
         imageView.contentMode = .scaleAspectFill
@@ -241,10 +246,9 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         subtitleLabel.text = ""
         accessoryLabel.text = ""
         imageTextLabel.text = ""
-        accessibilityLabel = ""
+        contentView.accessibilityLabel = ""
         favoriteButton.accessibilityLabel = ""
         favoriteButton.setImage(nil, for: .normal)
-        imageView.cancelLoading()
         logoImageView.cancelLoading()
         logoImageView.image = nil
         iconImageView.isHidden = true
@@ -268,7 +272,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         subtitleLabel.text = model?.subtitle
         accessoryLabel.text = model?.accessory
         imageTextLabel.text = model?.imageText
-        accessibilityLabel = model?.accessibilityLabel
+        contentView.accessibilityLabel = model?.accessibilityLabel
         favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityLabel
         isFavorite = model?.isFavorite ?? false
 

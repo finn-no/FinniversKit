@@ -189,7 +189,6 @@ extension AdRecommendationsGridView: UICollectionViewDataSource {
 
         let header = collectionView.dequeue(AdRecommendationsGridHeaderView.self, for: indexPath, ofKind: UICollectionView.elementKindSectionHeader)
         header.contentView = headerView
-        //header.accessibilityElements = []
 
         return header
     }
