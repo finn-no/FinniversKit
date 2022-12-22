@@ -31,7 +31,6 @@ public final class BadgeView: UIView {
 
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .banana
         layer.cornerRadius = .spacingXS
         layer.maskedCorners = [.layerMaxXMaxYCorner]
 
