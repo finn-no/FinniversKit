@@ -41,7 +41,7 @@ public protocol ColorProvider {
 
 public struct DefaultColorProvider: ColorProvider {
     public var bgPrimary: UIColor {
-        .dynamicColor(defaultColor: .milk, darkModeColor: UIColor(hex: "#1B1B24"))
+        .dynamicColor(defaultColor: .milk, darkModeColor: .darkMilk)
     }
 
     public var bgSecondary: UIColor {
@@ -49,11 +49,11 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var bgTertiary: UIColor {
-        .dynamicColor(defaultColor: .marble, darkModeColor: UIColor(hex: "#13131A"))
+        .dynamicColor(defaultColor: .marble, darkModeColor: .darkMarble)
     }
 
     public var bgQuaternary: UIColor {
-        .dynamicColor(defaultColor: .marble, darkModeColor: UIColor(hex: "#1B1B24"))
+        .dynamicColor(defaultColor: .marble, darkModeColor: .darkMilk)
     }
 
     public var bgBottomSheet: UIColor {
@@ -73,11 +73,11 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var btnPrimary: UIColor {
-        .dynamicColor(defaultColor: .primaryBlue, darkModeColor: UIColor(hex: "#006DFB"))
+        .dynamicColor(defaultColor: .primaryBlue, darkModeColor: .darkCallToAction)
     }
 
     public var btnDisabled: UIColor {
-        .borderDefault
+        .dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
 
     public var btnCritical: UIColor {
@@ -85,7 +85,7 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var btnAction: UIColor {
-        .dynamicColor(defaultColor: .primaryBlue, darkModeColor: UIColor(hex: "#3F8BFF"))
+        .dynamicColor(defaultColor: .primaryBlue, darkModeColor: .darkPrimaryBlue)
     }
 
     public var textPrimary: UIColor {
@@ -93,7 +93,7 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var textSecondary: UIColor {
-        .dynamicColor(defaultColor: .stone, darkModeColor: UIColor(hex: "#828699"))
+        .dynamicColor(defaultColor: .stone, darkModeColor: .darkStone)
     }
 
     public var textTertiary: UIColor {
@@ -101,11 +101,11 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var textAction: UIColor {
-        .dynamicColor(defaultColor: .primaryBlue, darkModeColor: UIColor(hex: "#3F8BFF"))
+        .dynamicColor(defaultColor: .primaryBlue, darkModeColor: .darkPrimaryBlue)
     }
 
     public var textDisabled: UIColor {
-        .borderDefault
+        .dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
 
     public var textCritical: UIColor {

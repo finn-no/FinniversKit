@@ -77,9 +77,11 @@ extension CGColor {
     public class var banana: UIColor { .yellow100 }
     public class var cherry: UIColor { .red600 }
     public class var coolGray100: UIColor { .init(hex: "#F3F4F6") }
+    public class var darkCallToAction: UIColor { .init(hex: "#006DFB") }
     public class var darkIce: UIColor { .init(hex: "#262633") }
     public class var darkMarble: UIColor { .init(hex: "#13131A") }
     public class var darkMilk: UIColor { .init(hex: "#1B1B24") }
+    public class var darkPrimaryBlue: UIColor { .init(hex: "#3F8BFF") }
     public class var darkSardine: UIColor { .init(hex: "#434359") }
     public class var darkStone: UIColor { .init(hex: "#8A8EA1") }
     public class var ice: UIColor { .aqua50 }
@@ -106,9 +108,11 @@ extension CGColor {
     public class var banana: CGColor { UIColor.banana.cgColor }
     public class var cherry: CGColor { UIColor.cherry.cgColor }
     public class var coolGray100: CGColor { UIColor.coolGray100.cgColor }
+    public class var darkCallToAction: CGColor { UIColor.darkCallToAction.cgColor }
     public class var darkIce: CGColor { UIColor.darkIce.cgColor }
     public class var darkMarble: CGColor { UIColor.darkMarble.cgColor }
     public class var darkMilk: CGColor { UIColor.darkMilk.cgColor }
+    public class var darkPrimaryBlue: CGColor { UIColor.darkPrimaryBlue.cgColor }
     public class var darkSardine: CGColor { UIColor.darkSardine.cgColor }
     public class var darkStone: CGColor { UIColor.darkStone.cgColor }
     public class var ice: CGColor { UIColor.ice.cgColor }
