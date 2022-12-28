@@ -196,6 +196,8 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         imageHeightMinimumConstraint.priority = .defaultHigh
 
         containerView.fillInSuperview()
+        let accessibilityMultiplier: CGFloat = traitCollection.preferredContentSizeCategory.isAccessibilityCategory ? 2.5 : 1.0
+
         NSLayoutConstraint.activate([
             imageContentView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageContentView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
@@ -214,12 +216,12 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
             subtitleToImageConstraint,
             subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            subtitleLabel.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.subtitleHeight),
+            subtitleLabel.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.subtitleHeight*accessibilityMultiplier),
 
             titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: StandardAdRecommendationCell.titleTopMargin),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.titleHeight),
+            titleLabel.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.titleHeight*accessibilityMultiplier),
 
             accessoryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             accessoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
