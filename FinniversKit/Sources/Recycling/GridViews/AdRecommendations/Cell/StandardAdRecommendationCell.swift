@@ -223,6 +223,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
             ribbonView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: StandardAdRecommendationCell.ribbonTopMargin),
             ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            ribbonView.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.ribbonHeight * accessibilityMultiplier),
 
             logoImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: .spacingS),
             logoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
