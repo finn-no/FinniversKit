@@ -1,27 +1,36 @@
 import UIKit
 
-public protocol FrontPageShelfDelegate: AnyObject {
-    func frontPageShelfView(_ view: FrontPageSavedSearchView, didSelectSavedSearchItem item: SavedSearchShelfViewModel)
-    func frontPageShelfView(_ view: FrontPageSavedSearchView, didSelectHeaderForSection section: FrontPageSavedSearchView.Section)
+public protocol FrontPageSavedSearchesViewDelegate: AnyObject {
+    func frontPageSavedSearchesView(_ view: FrontPageSavedSearchesView, didSelectSavedSearchItem item: FrontPageSavedSearchViewModel)
+    func frontPageSavedSearchesViewDidSelectActionButton(_ view: FrontPageSavedSearchesView)
 }
 
-public class FrontPageSavedSearchView: UIView {
+public class FrontPageSavedSearchesView: UIView {
+
+    // MARK: - Public properties
+
+    public weak var delegate: FrontPageSavedSearchesViewDelegate?
+
+    // MARK: - Internal properties
+
     static let topPadding: CGFloat = .spacingL
-    static let headerHeight: CGFloat = 44
-    static let savedSearchCellHeight: CGFloat = 100
+    static let height: CGFloat = headerHeight + cellHeight
 
-    typealias Datasource = UICollectionViewDiffableDataSource<Section, AnyHashable>
-    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
+    // MARK: - Private properties
 
-    public enum Section: Int, CaseIterable {
+    private static let headerHeight: CGFloat = 44
+    private static let cellHeight: CGFloat = 100
+
+    private typealias Datasource = UICollectionViewDiffableDataSource<Section, AnyHashable>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
+
+    private enum Section: Int, CaseIterable {
         case savedSearch
     }
 
     private var collectionViewDatasource: Datasource!
-    private var items: [Section: [AnyHashable]] = [:]
-    public weak var shelfDelegate: FrontPageShelfDelegate?
     private weak var remoteImageDataSource: RemoteImageViewDataSource?
-    private var scrollToSavedSearchIndexPath: IndexPath?
+    private var scrollToIndexPath: IndexPath?
     private let title: String
     private let buttonTitle: String
 
@@ -39,20 +48,24 @@ public class FrontPageSavedSearchView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: compositionalLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
-        collectionView.register(SavedSearchShelfCell.self)
-        collectionView.register(FrontPageShelfHeaderView.self, ofKind: FrontPageShelfHeaderView.reuseIdentifier)
+        collectionView.register(FrontPageSavedSearchCell.self)
+        collectionView.register(FrontPageHeaderView.self, ofKind: FrontPageHeaderView.reuseIdentifier)
         return collectionView
     }()
+
+    // MARK: - Init
 
     public init(
         title: String,
         buttonTitle: String,
-        remoteImageDataSource: RemoteImageViewDataSource?
+        remoteImageDataSource: RemoteImageViewDataSource?,
+        withAutoLayout: Bool = false
     ) {
         self.title = title
         self.buttonTitle = buttonTitle
         self.remoteImageDataSource = remoteImageDataSource
         super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setup()
     }
 
@@ -60,10 +73,12 @@ public class FrontPageSavedSearchView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Lifecycle
+
     public override func layoutSubviews() {
         super.layoutSubviews()
-        if let indexPath = scrollToSavedSearchIndexPath {
-            self.scrollToSavedSearchIndexPath = nil
+        if let indexPath = scrollToIndexPath {
+            self.scrollToIndexPath = nil
             // Using centeredHorizontally for the first cell to preserve leading content inset for iOS 14 and below.
             let scrollPosition: UICollectionView.ScrollPosition = indexPath.item == 0 ? .centeredHorizontally : .left
             collectionView.scrollToItem(at: indexPath, at: scrollPosition, animated: false)
@@ -72,8 +87,8 @@ public class FrontPageSavedSearchView: UIView {
 }
 
 // MARK: - Public method
-public extension FrontPageSavedSearchView {
-    func configure(with savedSearches: [SavedSearchShelfViewModel]) {
+public extension FrontPageSavedSearchesView {
+    func configure(with savedSearches: [FrontPageSavedSearchViewModel]) {
         var snapshot = Snapshot()
         snapshot.appendSections([.savedSearch])
         snapshot.appendItems(savedSearches, toSection: .savedSearch)
@@ -81,13 +96,13 @@ public extension FrontPageSavedSearchView {
     }
 
     func scrollToSavedSearch(atIndex index: Int) {
-        scrollToSavedSearchIndexPath = IndexPath(item: index, section: Section.savedSearch.rawValue)
+        scrollToIndexPath = IndexPath(item: index, section: Section.savedSearch.rawValue)
         setNeedsLayout()
     }
 }
 
 // MARK: - Setup
-private extension FrontPageSavedSearchView {
+private extension FrontPageSavedSearchesView {
     func setup() {
         addSubview(collectionView)
 
@@ -98,13 +113,13 @@ private extension FrontPageSavedSearchView {
 }
 
 // MARK: - Layout
-private extension FrontPageSavedSearchView {
+private extension FrontPageSavedSearchesView {
     private var savedSearchLayout: NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(Self.savedSearchCellHeight))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(Self.cellHeight))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
         //Groups
-        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(SavedSearchShelfCell.width), heightDimension: .absolute(Self.savedSearchCellHeight))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(FrontPageSavedSearchCell.width), heightDimension: .absolute(Self.cellHeight))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
 
         //Sections
@@ -115,7 +130,7 @@ private extension FrontPageSavedSearchView {
 
         // Header
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(Self.headerHeight))
-        let headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: FrontPageShelfHeaderView.reuseIdentifier, alignment: .top)
+        let headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: FrontPageHeaderView.reuseIdentifier, alignment: .top)
         section.boundarySupplementaryItems = [headerElement]
 
         return section
@@ -123,12 +138,12 @@ private extension FrontPageSavedSearchView {
 }
 
 // MARK: - Datasource
-private extension FrontPageSavedSearchView {
+private extension FrontPageSavedSearchesView {
     private func makeDatasource() -> Datasource {
         let datasource = Datasource(collectionView: collectionView) { [weak self] collectionView, indexPath, item in
-            guard let viewModel = item as? SavedSearchShelfViewModel else { return UICollectionViewCell() }
+            guard let viewModel = item as? FrontPageSavedSearchViewModel else { return UICollectionViewCell() }
 
-            let cell = collectionView.dequeue(SavedSearchShelfCell.self, for: indexPath)
+            let cell = collectionView.dequeue(FrontPageSavedSearchCell.self, for: indexPath)
             cell.configure(withModel: viewModel)
             cell.imageDatasource = self?.remoteImageDataSource
             cell.loadImage()
@@ -138,13 +153,14 @@ private extension FrontPageSavedSearchView {
         datasource.supplementaryViewProvider = { [weak self] (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
             guard let self = self else { return nil }
 
-            let headerView = collectionView.dequeue(FrontPageShelfHeaderView.self, for: indexPath, ofKind: kind)
+            let headerView = collectionView.dequeue(FrontPageHeaderView.self, for: indexPath, ofKind: kind)
             headerView.configureHeaderView(
                 withTitle: self.title,
                 buttonTitle: self.buttonTitle,
                 buttonAction: {
-                self.shelfDelegate?.frontPageShelfView(self, didSelectHeaderForSection: .savedSearch)
-            })
+                    self.delegate?.frontPageSavedSearchesViewDidSelectActionButton(self)
+                }
+            )
             return headerView
         }
 
@@ -153,12 +169,12 @@ private extension FrontPageSavedSearchView {
 }
 
 // MARK: - UICollectionViewDelegate
-extension FrontPageSavedSearchView: UICollectionViewDelegate {
+extension FrontPageSavedSearchesView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard
-            let item = collectionViewDatasource.itemIdentifier(for: indexPath) as? SavedSearchShelfViewModel
+            let item = collectionViewDatasource.itemIdentifier(for: indexPath) as? FrontPageSavedSearchViewModel
         else { return }
 
-        shelfDelegate?.frontPageShelfView(self, didSelectSavedSearchItem: item)
+        delegate?.frontPageSavedSearchesView(self, didSelectSavedSearchItem: item)
     }
 }

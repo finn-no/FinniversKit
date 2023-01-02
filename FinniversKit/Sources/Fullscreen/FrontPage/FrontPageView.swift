@@ -32,12 +32,12 @@ public final class FrontPageView: UIView {
             adRecommendationsGridView.isRefreshEnabled = newValue
         }
     }
-    
-    var shelfViewModel: FrontPageShelfViewModel?
-    
-    public var frontPageShelfDelegate: FrontPageShelfDelegate? {
+
+    var savedSearchesViewModel: FrontPageSavedSearchesViewModel?
+
+    public var savedSearchesViewDelegate: FrontPageSavedSearchesViewDelegate? {
         didSet {
-            frontPageShelfView?.shelfDelegate = frontPageShelfDelegate
+            frontPageSavedSearchView?.delegate = savedSearchesViewDelegate
         }
     }
     
@@ -74,14 +74,14 @@ public final class FrontPageView: UIView {
 
     private let promoContainer = UIView(withAutoLayout: true)
     private let transactionFeedContainer = UIView(withAutoLayout: true)
-    private let shelfContainer = UIView(withAutoLayout: true)
-    private var isShowingShelf: Bool {
-        guard let model = shelfViewModel else { return false }
-        return model.heightForShelf > 0
+    private let savedSearchesContainer = UIView(withAutoLayout: true)
+    private var isShowingSavedSearches: Bool {
+        guard let model = savedSearchesViewModel else { return false }
+        return model.height > 0
     }
     
     private lazy var headerView = UIView(withAutoLayout: true)
-    private var frontPageShelfView: FrontPageSavedSearchView?
+    private var frontPageSavedSearchView: FrontPageSavedSearchesView?
     
     private lazy var headerLabel: Label = {
         var headerLabel = Label(style: .title3Strong)
@@ -235,7 +235,7 @@ public final class FrontPageView: UIView {
         headerView.addSubview(marketsGridView)
         headerView.addSubview(promoContainer)
         headerView.addSubview(transactionFeedContainer)
-        headerView.addSubview(shelfContainer)
+        headerView.addSubview(savedSearchesContainer)
         headerView.addSubview(headerLabel)
 
         addSubview(compactMarketsView)
@@ -254,11 +254,11 @@ public final class FrontPageView: UIView {
             transactionFeedContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
             transactionFeedContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             
-            shelfContainer.topAnchor.constraint(equalTo: transactionFeedContainer.bottomAnchor),
-            shelfContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
-            shelfContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+            savedSearchesContainer.topAnchor.constraint(equalTo: transactionFeedContainer.bottomAnchor),
+            savedSearchesContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            savedSearchesContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             
-            headerLabel.topAnchor.constraint(equalTo: shelfContainer.bottomAnchor, constant: .spacingM),
+            headerLabel.topAnchor.constraint(equalTo: savedSearchesContainer.bottomAnchor, constant: .spacingM),
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
             headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
@@ -298,8 +298,8 @@ public final class FrontPageView: UIView {
         let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: bounds.size.width).height + .spacingXS
         var height = headerTopSpacing + labelHeight + marketGridViewHeight + promoContainerHeight + transactionFeedHeight +  headerBottomSpacing
 
-        let shelfContainerHeight = shelfViewModel?.heightForShelf ?? 0
-        height += shelfContainerHeight + (shelfContainerHeight > 0 ? FrontPageSavedSearchView.topPadding : 0)
+        let savedSearchesHeight = savedSearchesViewModel?.height ?? 0
+        height += savedSearchesHeight + (savedSearchesHeight > 0 ? FrontPageSavedSearchesView.topPadding : 0)
 
         marketsGridViewHeight.constant = marketGridViewHeight
         headerView.frame.size.height = height
@@ -311,45 +311,45 @@ public final class FrontPageView: UIView {
 
     // MARK: - Private methods
 
-    public func configureFrontPageShelves(
-        _ model: FrontPageShelfViewModel,
+    public func configure(
+        withSavedSearches savedSearchesViewModel: FrontPageSavedSearchesViewModel,
         firstVisibleSavedSearchIndex: Int?,
         remoteImageViewDataSource: RemoteImageViewDataSource
     ) {
-        self.shelfViewModel = model
+        self.savedSearchesViewModel = savedSearchesViewModel
 
-        if frontPageShelfView == nil {
-            frontPageShelfView = FrontPageSavedSearchView(
-                title: model.title,
-                buttonTitle: model.buttonTitle,
-                remoteImageDataSource: remoteImageViewDataSource
+        if frontPageSavedSearchView == nil {
+            frontPageSavedSearchView = FrontPageSavedSearchesView(
+                title: savedSearchesViewModel.title,
+                buttonTitle: savedSearchesViewModel.buttonTitle,
+                remoteImageDataSource: remoteImageViewDataSource,
+                withAutoLayout: true
             )
-            frontPageShelfView?.translatesAutoresizingMaskIntoConstraints = false
-            shelfContainer.addSubview(frontPageShelfView!)
+            savedSearchesContainer.addSubview(frontPageSavedSearchView!)
 
-            frontPageShelfView?.fillInSuperview(
-                insets: .init(top: FrontPageSavedSearchView.topPadding, leading: 0, bottom: 0, trailing: 0)
+            frontPageSavedSearchView?.fillInSuperview(
+                insets: .init(top: FrontPageSavedSearchesView.topPadding, leading: 0, bottom: 0, trailing: 0)
             )
 
             // Add a minimum height, since cells are never queried if the frame initially has height 0.
-            frontPageShelfView?.heightAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
+            frontPageSavedSearchView?.heightAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
         }
 
-        frontPageShelfView?.configure(with: model.savedSearchItems)
+        frontPageSavedSearchView?.configure(with: savedSearchesViewModel.searchViewModels)
 
         if let firstVisibleSavedSearchIndex = firstVisibleSavedSearchIndex,
-           model.savedSearchItems.indices.contains(firstVisibleSavedSearchIndex) {
-            frontPageShelfView?.scrollToSavedSearch(atIndex: firstVisibleSavedSearchIndex)
+           savedSearchesViewModel.searchViewModels.indices.contains(firstVisibleSavedSearchIndex) {
+            frontPageSavedSearchView?.scrollToSavedSearch(atIndex: firstVisibleSavedSearchIndex)
         }
 
         setupFrames()
         
     }
     
-    public func removeFrontShelf() {
-        self.shelfViewModel = nil
-        frontPageShelfView?.removeFromSuperview()
-        frontPageShelfView = nil
+    public func removeSavedSearches() {
+        self.savedSearchesViewModel = nil
+        frontPageSavedSearchView?.removeFromSuperview()
+        frontPageSavedSearchView = nil
         setupFrames()
     }
     

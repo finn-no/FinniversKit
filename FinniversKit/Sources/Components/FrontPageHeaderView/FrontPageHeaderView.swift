@@ -1,8 +1,8 @@
 import UIKit
 
-public class FrontPageShelfHeaderView: UICollectionReusableView {
+public class FrontPageHeaderView: UICollectionReusableView {
     public typealias ButtonAction = (()->())
-    
+
     private lazy var titleLabel: UILabel = {
         let label = Label(style: .title3Strong)
         label.translatesAutoresizingMaskIntoConstraints = false
