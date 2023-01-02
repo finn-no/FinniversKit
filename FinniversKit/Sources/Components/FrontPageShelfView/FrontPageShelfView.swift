@@ -2,17 +2,17 @@ import UIKit
 
 public protocol FrontPageShelfViewDataSource: AnyObject {
     func frontPageShelfView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, withItem item: AnyHashable) -> UICollectionViewCell?
-    func datasource(forSection section: FrontPageShelfView.Section) -> [AnyHashable] // delete
-    func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForSectionAt index: Int) -> String
-    func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForButtonForSectionAt index: Int) -> String
+    func datasource(forSection section: FrontPageSavedSearchView.Section) -> [AnyHashable] // delete
+    func frontPageShelfView(_ frontPageSavedSearchView: FrontPageSavedSearchView, titleForSectionAt index: Int) -> String
+    func frontPageShelfView(_ frontPageSavedSearchView: FrontPageSavedSearchView, titleForButtonForSectionAt index: Int) -> String
 }
 
 public protocol FrontPageShelfDelegate: AnyObject {
-    func frontPageShelfView(_ view: FrontPageShelfView, didSelectSavedSearchItem item: SavedSearchShelfViewModel)
-    func frontPageShelfView(_ view: FrontPageShelfView, didSelectHeaderForSection section: FrontPageShelfView.Section)
+    func frontPageShelfView(_ view: FrontPageSavedSearchView, didSelectSavedSearchItem item: SavedSearchShelfViewModel)
+    func frontPageShelfView(_ view: FrontPageSavedSearchView, didSelectHeaderForSection section: FrontPageSavedSearchView.Section)
 }
 
-public class FrontPageShelfView: UIView {
+public class FrontPageSavedSearchView: UIView {
     static let topPadding: CGFloat = .spacingL
     static let headerHeight: CGFloat = 44
     static let savedSearchCellHeight: CGFloat = 100
@@ -71,7 +71,7 @@ public class FrontPageShelfView: UIView {
 }
 
 // MAKR: - Public method
-public extension FrontPageShelfView {
+public extension FrontPageSavedSearchView {
     func reloadShelf() {
         applySnapshot()
     }
@@ -83,7 +83,7 @@ public extension FrontPageShelfView {
 }
 
 // MARK: - Setup
-private extension FrontPageShelfView {
+private extension FrontPageSavedSearchView {
     func setup() {
         addSubview(collectionView)
 
@@ -94,7 +94,7 @@ private extension FrontPageShelfView {
 }
 
 // MARK: - Layout
-private extension FrontPageShelfView {
+private extension FrontPageSavedSearchView {
     private var savedSearchLayout: NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(Self.savedSearchCellHeight))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -119,7 +119,7 @@ private extension FrontPageShelfView {
 }
 
 // MARK: - Datasource
-private extension FrontPageShelfView {
+private extension FrontPageSavedSearchView {
     private func makeDatasource() -> Datasource {
         let datasource = Datasource(collectionView: collectionView) { [weak self] collectionView, indexPath, item in
             self?.shelfDatasource?.frontPageShelfView(collectionView, cellForItemAt: indexPath, withItem: item)
@@ -165,7 +165,7 @@ private extension FrontPageShelfView {
 }
 
 // MARK: - UICollectionViewDelegate
-extension FrontPageShelfView: UICollectionViewDelegate {
+extension FrontPageSavedSearchView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard
             let item = collectionViewDatasource.itemIdentifier(for: indexPath) as? SavedSearchShelfViewModel

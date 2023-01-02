@@ -11,7 +11,7 @@ public class FrontPageShelfViewModel {
 
     private var savedSearchSectionHeight: CGFloat {
         guard !savedSearchItems.isEmpty else { return 0 }
-        return FrontPageShelfView.headerHeight + FrontPageShelfView.savedSearchCellHeight
+        return FrontPageSavedSearchView.headerHeight + FrontPageSavedSearchView.savedSearchCellHeight
     }
 
     public init(savedSearchItems: [SavedSearchShelfViewModel], storiesTitle: String, buttonTitle: String) {

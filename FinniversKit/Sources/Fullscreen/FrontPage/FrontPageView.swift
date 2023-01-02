@@ -81,7 +81,7 @@ public final class FrontPageView: UIView {
     }
     
     private lazy var headerView = UIView(withAutoLayout: true)
-    private var frontPageShelfView: FrontPageShelfView?
+    private var frontPageShelfView: FrontPageSavedSearchView?
     
     private lazy var headerLabel: Label = {
         var headerLabel = Label(style: .title3Strong)
@@ -299,7 +299,7 @@ public final class FrontPageView: UIView {
         var height = headerTopSpacing + labelHeight + marketGridViewHeight + promoContainerHeight + transactionFeedHeight +  headerBottomSpacing
 
         let shelfContainerHeight = shelfViewModel?.heightForShelf ?? 0
-        height += shelfContainerHeight + (shelfContainerHeight > 0 ? FrontPageShelfView.topPadding : 0)
+        height += shelfContainerHeight + (shelfContainerHeight > 0 ? FrontPageSavedSearchView.topPadding : 0)
 
         marketsGridViewHeight.constant = marketGridViewHeight
         headerView.frame.size.height = height
@@ -315,12 +315,12 @@ public final class FrontPageView: UIView {
         self.shelfViewModel = model
 
         if frontPageShelfView == nil {
-            frontPageShelfView = FrontPageShelfView(withDatasource: self)
+            frontPageShelfView = FrontPageSavedSearchView(withDatasource: self)
             frontPageShelfView?.translatesAutoresizingMaskIntoConstraints = false
             shelfContainer.addSubview(frontPageShelfView!)
 
             frontPageShelfView?.fillInSuperview(
-                insets: .init(top: FrontPageShelfView.topPadding, leading: 0, bottom: 0, trailing: 0)
+                insets: .init(top: FrontPageSavedSearchView.topPadding, leading: 0, bottom: 0, trailing: 0)
             )
 
             // Add a minimum height, since cells are never queried if the frame initially has height 0.
@@ -422,11 +422,11 @@ extension FrontPageView: MarketsViewDelegate {
 
 // MARK: - FrontPageShelfDatasource
 extension FrontPageView: FrontPageShelfViewDataSource {
-    public func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForSectionAt index: Int) -> String {
+    public func frontPageShelfView(_ frontPageShelfView: FrontPageSavedSearchView, titleForSectionAt index: Int) -> String {
         shelfViewModel?.storiesTitle ?? ""
     }
     
-    public func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForButtonForSectionAt index: Int) -> String {
+    public func frontPageShelfView(_ frontPageShelfView: FrontPageSavedSearchView, titleForButtonForSectionAt index: Int) -> String {
         shelfViewModel?.buttonTitle ?? ""
     }
 
@@ -440,7 +440,7 @@ extension FrontPageView: FrontPageShelfViewDataSource {
         return cell
     }
 
-    public func datasource(forSection section: FrontPageShelfView.Section) -> [AnyHashable] {
+    public func datasource(forSection section: FrontPageSavedSearchView.Section) -> [AnyHashable] {
         guard let model = shelfViewModel else { return [] }
         switch section {
         case .savedSearch: return model.savedSearchItems

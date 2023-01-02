@@ -224,11 +224,11 @@ extension FrontpageViewDemoView: RemoteImageViewDataSource {
 
 // MARK: - FrontPageShelfDelegate
 extension FrontpageViewDemoView: FrontPageShelfDelegate {
-    public func frontPageShelfView(_ view: FrontPageShelfView, didSelectHeaderForSection section: FrontPageShelfView.Section) {
+    public func frontPageShelfView(_ view: FrontPageSavedSearchView, didSelectHeaderForSection section: FrontPageSavedSearchView.Section) {
         print("Stories header selected")
     }
 
-    public func frontPageShelfView(_ view: FrontPageShelfView, didSelectSavedSearchItem item: SavedSearchShelfViewModel) {
+    public func frontPageShelfView(_ view: FrontPageSavedSearchView, didSelectSavedSearchItem item: SavedSearchShelfViewModel) {
         print("saved search item selected")
     }
 }

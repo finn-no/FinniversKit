@@ -1,8 +1,8 @@
 import FinniversKit
 
 class FrontPageShelfDemoView: UIView {
-    private lazy var shelfView: FrontPageShelfView = {
-        let view = FrontPageShelfView(withDatasource: self)
+    private lazy var shelfView: FrontPageSavedSearchView = {
+        let view = FrontPageSavedSearchView(withDatasource: self)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.shelfDelegate = self
         return view
@@ -28,11 +28,11 @@ class FrontPageShelfDemoView: UIView {
 }
 
 extension FrontPageShelfDemoView: FrontPageShelfViewDataSource {
-    func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForSectionAt index: Int) -> String {
+    func frontPageShelfView(_ frontPageShelfView: FrontPageSavedSearchView, titleForSectionAt index: Int) -> String {
         "Lagrede søk"
     }
 
-    func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForButtonForSectionAt index: Int) -> String {
+    func frontPageShelfView(_ frontPageShelfView: FrontPageSavedSearchView, titleForButtonForSectionAt index: Int) -> String {
         "Se alle"
     }
 
@@ -46,7 +46,7 @@ extension FrontPageShelfDemoView: FrontPageShelfViewDataSource {
         return cell
     }
 
-    func datasource(forSection section: FrontPageShelfView.Section) -> [AnyHashable] {
+    func datasource(forSection section: FrontPageSavedSearchView.Section) -> [AnyHashable] {
         switch section {
         case .savedSearch:
             return savedItems
@@ -81,11 +81,11 @@ extension FrontPageShelfDemoView: RemoteImageViewDataSource {
 }
 
 extension FrontPageShelfDemoView: FrontPageShelfDelegate {
-    func frontPageShelfView(_ view: FrontPageShelfView, didSelectHeaderForSection section: FrontPageShelfView.Section) {
+    func frontPageShelfView(_ view: FrontPageSavedSearchView, didSelectHeaderForSection section: FrontPageSavedSearchView.Section) {
         print("Header for section \(section) pressed")
     }
 
-    func frontPageShelfView(_ view: FrontPageShelfView, didSelectSavedSearchItem item: SavedSearchShelfViewModel) {
+    func frontPageShelfView(_ view: FrontPageSavedSearchView, didSelectSavedSearchItem item: SavedSearchShelfViewModel) {
         print("selected saved item")
     }
 }
