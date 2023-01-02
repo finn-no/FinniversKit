@@ -38,7 +38,6 @@ import UIKit
     public class var textToast: UIColor { Config.colorProvider.textToast }
 }
 
-// MARK: - Semantic CGColors
 extension CGColor {
     public class var accentPea: CGColor { UIColor.accentPea.cgColor }
     public class var accentSecondaryBlue: CGColor { UIColor.accentSecondaryBlue.cgColor }
@@ -72,26 +71,16 @@ extension CGColor {
     public class var textToast: CGColor { UIColor.textToast.cgColor }
 }
 
-// MARK: - FINN UIColors
+// MARK: - FINN UIColors (deprecated)
+@available(*, deprecated, message: "Use Fabric colors instead")
 @objc extension UIColor {
     public class var banana: UIColor { .yellow100 }
     public class var cherry: UIColor { .red600 }
-    public class var coolGray100: UIColor { .init(hex: "#F3F4F6") }
-    public class var darkCallToAction: UIColor { .init(hex: "#006DFB") }
-    public class var darkIce: UIColor { .init(hex: "#262633") }
-    public class var darkMarble: UIColor { .init(hex: "#13131A") }
-    public class var darkMilk: UIColor { .init(hex: "#1B1B24") }
-    public class var darkPrimaryBlue: UIColor { .init(hex: "#3F8BFF") }
-    public class var darkSardine: UIColor { .init(hex: "#434359") }
-    public class var darkStone: UIColor { .init(hex: "#8A8EA1") }
     public class var ice: UIColor { .aqua50 }
     public class var licorice: UIColor { .gray700 }
     public class var lime: UIColor { .green600 }
     public class var marble: UIColor { .blueGray50 }
-    public class var midnightBackground: UIColor { .init(hex: "1D1D26") }
-    public class var midnightSectionHeader: UIColor { .init(hex: "585E8A") }
-    public class var midnightSectionSeparator: UIColor { .init(hex: "34343E") }
-    public class var milk: UIColor { .init(r: 255, g: 255, b: 255) }
+    public class var milk: UIColor { .white }
     public class var mint: UIColor { .green100 }
     public class var pea: UIColor { .green400 }
     public class var primaryBlue: UIColor { .blue600 }
@@ -103,25 +92,14 @@ extension CGColor {
     public class var watermelon: UIColor { .red400 }
 }
 
-// MARK: - FINN CGColors
+@available(*, deprecated, message: "Use Fabric colors instead")
 extension CGColor {
     public class var banana: CGColor { UIColor.banana.cgColor }
     public class var cherry: CGColor { UIColor.cherry.cgColor }
-    public class var coolGray100: CGColor { UIColor.coolGray100.cgColor }
-    public class var darkCallToAction: CGColor { UIColor.darkCallToAction.cgColor }
-    public class var darkIce: CGColor { UIColor.darkIce.cgColor }
-    public class var darkMarble: CGColor { UIColor.darkMarble.cgColor }
-    public class var darkMilk: CGColor { UIColor.darkMilk.cgColor }
-    public class var darkPrimaryBlue: CGColor { UIColor.darkPrimaryBlue.cgColor }
-    public class var darkSardine: CGColor { UIColor.darkSardine.cgColor }
-    public class var darkStone: CGColor { UIColor.darkStone.cgColor }
     public class var ice: CGColor { UIColor.ice.cgColor }
     public class var licorice: CGColor { UIColor.licorice.cgColor }
     public class var lime: CGColor { UIColor.lime.cgColor }
     public class var marble: CGColor { UIColor.marble.cgColor }
-    public class var midnightBackground: CGColor { UIColor.midnightBackground.cgColor }
-    public class var midnightSectionHeader: CGColor { UIColor.midnightSectionHeader.cgColor }
-    public class var midnightSectionSeparator: CGColor { UIColor.midnightSectionSeparator.cgColor }
     public class var milk: CGColor { UIColor.milk.cgColor }
     public class var mint: CGColor { UIColor.mint.cgColor }
     public class var pea: CGColor { UIColor.pea.cgColor }
@@ -132,6 +110,38 @@ extension CGColor {
     public class var stone: CGColor { UIColor.stone.cgColor }
     public class var toothPaste: CGColor { UIColor.toothPaste.cgColor }
     public class var watermelon: CGColor { UIColor.watermelon.cgColor }
+}
+
+// MARK: - Finn Custom Colors
+// These colors are in use but are not part of the Fabric color palette
+extension UIColor {
+    public class var coolGray100: UIColor { .init(hex: "#F3F4F6") }
+    public class var darkCallToAction: UIColor { .init(hex: "#006DFB") }
+    public class var darkIce: UIColor { .init(hex: "#262633") }
+    public class var darkLicorice: UIColor { .init(hex: "#828699") }
+    public class var darkMarble: UIColor { .init(hex: "#13131A") }
+    public class var darkMilk: UIColor { .init(hex: "#1B1B24") }
+    public class var darkPrimaryBlue: UIColor { .init(hex: "#3F8BFF") }
+    public class var darkSardine: UIColor { .init(hex: "#434359") }
+    public class var darkStone: UIColor { .init(hex: "#8A8EA1") }
+    public class var midnightBackground: UIColor { .init(hex: "1D1D26") }
+    public class var midnightSectionHeader: UIColor { .init(hex: "585E8A") }
+    public class var midnightSectionSeparator: UIColor { .init(hex: "34343E") }
+}
+
+extension CGColor {
+    public class var coolGray100: CGColor { UIColor.coolGray100.cgColor }
+    public class var darkCallToAction: CGColor { UIColor.darkCallToAction.cgColor }
+    public class var darkIce: CGColor { UIColor.darkIce.cgColor }
+    public class var darkLicorice: CGColor { UIColor.darkLicorice.cgColor }
+    public class var darkMarble: CGColor { UIColor.darkMarble.cgColor }
+    public class var darkMilk: CGColor { UIColor.darkMilk.cgColor }
+    public class var darkPrimaryBlue: CGColor { UIColor.darkPrimaryBlue.cgColor }
+    public class var darkSardine: CGColor { UIColor.darkSardine.cgColor }
+    public class var darkStone: CGColor { UIColor.darkStone.cgColor }
+    public class var midnightBackground: CGColor { UIColor.midnightBackground.cgColor }
+    public class var midnightSectionHeader: CGColor { UIColor.midnightSectionHeader.cgColor }
+    public class var midnightSectionSeparator: CGColor { UIColor.midnightSectionSeparator.cgColor }
 }
 
 // MARK: - Fabric Colors Aqua

@@ -41,95 +41,95 @@ public protocol ColorProvider {
 
 public struct DefaultColorProvider: ColorProvider {
     public var bgPrimary: UIColor {
-        .dynamicColor(defaultColor: .milk, darkModeColor: .darkMilk)
+        .dynamicColor(defaultColor: .white, darkModeColor: .darkMilk)
     }
 
     public var bgSecondary: UIColor {
-        .dynamicColor(defaultColor: .ice, darkModeColor: .darkIce)
+        .dynamicColor(defaultColor: .aqua50, darkModeColor: .darkIce)
     }
 
     public var bgTertiary: UIColor {
-        .dynamicColor(defaultColor: .marble, darkModeColor: .darkMarble)
+        .dynamicColor(defaultColor: .blueGray50, darkModeColor: .darkMarble)
     }
 
     public var bgQuaternary: UIColor {
-        .dynamicColor(defaultColor: .marble, darkModeColor: .darkMilk)
+        .dynamicColor(defaultColor: .blueGray50, darkModeColor: .darkMilk)
     }
 
     public var bgBottomSheet: UIColor {
-        .dynamicColor(defaultColor: .milk, darkModeColor: .darkIce)
+        .dynamicColor(defaultColor: .white, darkModeColor: .darkIce)
     }
 
     public var bgAlert: UIColor {
-        .banana
+        .yellow100
     }
 
     public var bgSuccess: UIColor {
-        .mint
+        .green100
     }
 
     public var bgCritical: UIColor {
-        .salmon
+        .red100
     }
 
     public var btnPrimary: UIColor {
-        .dynamicColor(defaultColor: .primaryBlue, darkModeColor: .darkCallToAction)
+        .dynamicColor(defaultColor: .blue600, darkModeColor: .darkCallToAction)
     }
 
     public var btnDisabled: UIColor {
-        .dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
+        .dynamicColor(defaultColor: .blueGray300, darkModeColor: .darkSardine)
     }
 
     public var btnCritical: UIColor {
-        .cherry
+        .red600
     }
 
     public var btnAction: UIColor {
-        .dynamicColor(defaultColor: .primaryBlue, darkModeColor: .darkPrimaryBlue)
+        .dynamicColor(defaultColor: .blue600, darkModeColor: .darkPrimaryBlue)
     }
 
     public var textPrimary: UIColor {
-        .dynamicColor(defaultColor: .licorice, darkModeColor: .milk)
+        .dynamicColor(defaultColor: .gray700, darkModeColor: .white)
     }
 
     public var textSecondary: UIColor {
-        .dynamicColor(defaultColor: .stone, darkModeColor: .darkStone)
+        .dynamicColor(defaultColor: .gray500, darkModeColor: .darkStone)
     }
 
     public var textTertiary: UIColor {
-        .milk
+        .white
     }
 
     public var textAction: UIColor {
-        .dynamicColor(defaultColor: .primaryBlue, darkModeColor: .darkPrimaryBlue)
+        .dynamicColor(defaultColor: .blue600, darkModeColor: .darkPrimaryBlue)
     }
 
     public var textDisabled: UIColor {
-        .dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
+        .dynamicColor(defaultColor: .blueGray300, darkModeColor: .darkSardine)
     }
 
     public var textCritical: UIColor {
-        .dynamicColor(defaultColor: .cherry, darkModeColor: .watermelon)
+        .dynamicColor(defaultColor: .red600, darkModeColor: .red400)
     }
 
     public var accentSecondaryBlue: UIColor {
-        .secondaryBlue
+        .aqua400
     }
 
     public var accentPea: UIColor {
-        .pea
+        .green400
     }
 
     public var accentToothpaste: UIColor {
-        .toothPaste
+        .aqua200
     }
 
     public var textCTADisabled: UIColor {
-        .dynamicColor(defaultColor: .licorice, darkModeColor: UIColor(hex: "#828699"))
+        .dynamicColor(defaultColor: .gray700, darkModeColor: .darkLicorice)
     }
 
     public var textToast: UIColor {
-        .licorice
+        .gray700
     }
 
     public var tableViewSeparator: UIColor {
@@ -157,6 +157,6 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var borderDefault: UIColor {
-        return .dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
+        return .dynamicColor(defaultColor: .blueGray300, darkModeColor: .darkSardine)
     }
 }
