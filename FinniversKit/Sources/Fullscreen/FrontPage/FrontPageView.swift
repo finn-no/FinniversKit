@@ -331,7 +331,7 @@ public final class FrontPageView: UIView {
             frontPageShelfView?.heightAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
         }
 
-        frontPageShelfView?.reloadShelf()
+        frontPageShelfView?.configure(with: model.savedSearchItems)
 
         if let firstVisibleSavedSearchIndex = firstVisibleSavedSearchIndex,
            model.savedSearchItems.indices.contains(firstVisibleSavedSearchIndex) {

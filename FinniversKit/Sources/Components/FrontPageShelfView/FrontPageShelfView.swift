@@ -1,7 +1,6 @@
 import UIKit
 
 public protocol FrontPageShelfViewDataSource: AnyObject {
-    func datasource(forSection section: FrontPageSavedSearchView.Section) -> [AnyHashable] // delete
     func frontPageShelfView(_ frontPageSavedSearchView: FrontPageSavedSearchView, titleForSectionAt index: Int) -> String
     func frontPageShelfView(_ frontPageSavedSearchView: FrontPageSavedSearchView, titleForButtonForSectionAt index: Int) -> String
 }
@@ -74,10 +73,13 @@ public class FrontPageSavedSearchView: UIView {
     }
 }
 
-// MAKR: - Public method
+// MARK: - Public method
 public extension FrontPageSavedSearchView {
-    func reloadShelf() {
-        applySnapshot()
+    func configure(with savedSearches: [SavedSearchShelfViewModel]) {
+        var snapshot = Snapshot()
+        snapshot.appendSections([.savedSearch])
+        snapshot.appendItems(savedSearches, toSection: .savedSearch)
+        collectionViewDatasource.apply(snapshot, animatingDifferences: true)
     }
 
     func scrollToSavedSearch(atIndex index: Int) {
@@ -156,20 +158,6 @@ private extension FrontPageSavedSearchView {
         }
 
         return datasource
-    }
-
-    private func applySnapshot() {
-        guard let datasource = shelfDatasource else { return }
-        var snapshot = Snapshot()
-        for section in Section.allCases {
-            let datasource = datasource.datasource(forSection: section)
-            if datasource.isEmpty { continue }
-            items[section] = datasource
-            snapshot.appendSections([section])
-            snapshot.appendItems(datasource, toSection: section)
-        }
-
-        collectionViewDatasource.apply(snapshot, animatingDifferences: true)
     }
 }
 
