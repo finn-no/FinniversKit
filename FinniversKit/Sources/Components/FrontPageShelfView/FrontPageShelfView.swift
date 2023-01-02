@@ -1,10 +1,5 @@
 import UIKit
 
-public protocol FrontPageShelfViewDataSource: AnyObject {
-    func frontPageShelfView(_ frontPageSavedSearchView: FrontPageSavedSearchView, titleForSectionAt index: Int) -> String
-    func frontPageShelfView(_ frontPageSavedSearchView: FrontPageSavedSearchView, titleForButtonForSectionAt index: Int) -> String
-}
-
 public protocol FrontPageShelfDelegate: AnyObject {
     func frontPageShelfView(_ view: FrontPageSavedSearchView, didSelectSavedSearchItem item: SavedSearchShelfViewModel)
     func frontPageShelfView(_ view: FrontPageSavedSearchView, didSelectHeaderForSection section: FrontPageSavedSearchView.Section)
@@ -24,10 +19,11 @@ public class FrontPageSavedSearchView: UIView {
 
     private var collectionViewDatasource: Datasource!
     private var items: [Section: [AnyHashable]] = [:]
-    private weak var shelfDatasource: FrontPageShelfViewDataSource?
     public weak var shelfDelegate: FrontPageShelfDelegate?
     private weak var remoteImageDataSource: RemoteImageViewDataSource?
     private var scrollToSavedSearchIndexPath: IndexPath?
+    private let title: String
+    private let buttonTitle: String
 
     private var compositionalLayout: UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { [weak self] _, _ in
@@ -49,10 +45,12 @@ public class FrontPageSavedSearchView: UIView {
     }()
 
     public init(
-        withDatasource datasource: FrontPageShelfViewDataSource,
+        title: String,
+        buttonTitle: String,
         remoteImageDataSource: RemoteImageViewDataSource?
     ) {
-        self.shelfDatasource = datasource
+        self.title = title
+        self.buttonTitle = buttonTitle
         self.remoteImageDataSource = remoteImageDataSource
         super.init(frame: .zero)
         setup()
@@ -138,22 +136,15 @@ private extension FrontPageSavedSearchView {
         }
 
         datasource.supplementaryViewProvider = { [weak self] (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
-            guard
-                let self = self,
-                  let datasource = self.shelfDatasource
-            else { return nil }
-            
+            guard let self = self else { return nil }
+
             let headerView = collectionView.dequeue(FrontPageShelfHeaderView.self, for: indexPath, ofKind: kind)
-            let section = Section.allCases[indexPath.section]
-            switch section {
-            case .savedSearch:
-                headerView.configureHeaderView(withTitle: datasource.frontPageShelfView(self, titleForSectionAt: Section.savedSearch.rawValue),
-                                               buttonTitle: datasource.frontPageShelfView(self, titleForButtonForSectionAt: Section.savedSearch.rawValue),
-                                               buttonAction: {
-                    
-                    self.shelfDelegate?.frontPageShelfView(self, didSelectHeaderForSection: .savedSearch)
-                })
-            }
+            headerView.configureHeaderView(
+                withTitle: self.title,
+                buttonTitle: self.buttonTitle,
+                buttonAction: {
+                self.shelfDelegate?.frontPageShelfView(self, didSelectHeaderForSection: .savedSearch)
+            })
             return headerView
         }
 

@@ -2,7 +2,7 @@ import Foundation
 
 public class FrontPageShelfViewModel {
     private(set) var savedSearchItems: [SavedSearchShelfViewModel]
-    let storiesTitle: String
+    let title: String
     let buttonTitle: String
 
     var heightForShelf: CGFloat {
@@ -14,9 +14,9 @@ public class FrontPageShelfViewModel {
         return FrontPageSavedSearchView.headerHeight + FrontPageSavedSearchView.savedSearchCellHeight
     }
 
-    public init(savedSearchItems: [SavedSearchShelfViewModel], storiesTitle: String, buttonTitle: String) {
+    public init(savedSearchItems: [SavedSearchShelfViewModel], title: String, buttonTitle: String) {
         self.savedSearchItems = savedSearchItems
-        self.storiesTitle = storiesTitle
+        self.title = title
         self.buttonTitle = buttonTitle
     }
 }

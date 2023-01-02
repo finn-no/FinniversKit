@@ -319,7 +319,11 @@ public final class FrontPageView: UIView {
         self.shelfViewModel = model
 
         if frontPageShelfView == nil {
-            frontPageShelfView = FrontPageSavedSearchView(withDatasource: self, remoteImageDataSource: remoteImageViewDataSource)
+            frontPageShelfView = FrontPageSavedSearchView(
+                title: model.title,
+                buttonTitle: model.buttonTitle,
+                remoteImageDataSource: remoteImageViewDataSource
+            )
             frontPageShelfView?.translatesAutoresizingMaskIntoConstraints = false
             shelfContainer.addSubview(frontPageShelfView!)
 
@@ -421,23 +425,5 @@ extension FrontPageView: AdRecommendationsGridViewDelegate {
 extension FrontPageView: MarketsViewDelegate {
     public func marketsView(_ marketsGridView: MarketsView, didSelectItemAtIndex index: Int) {
         delegate?.marketsView(marketsGridView, didSelectItemAtIndex: index)
-    }
-}
-
-// MARK: - FrontPageShelfDatasource
-extension FrontPageView: FrontPageShelfViewDataSource {
-    public func frontPageShelfView(_ frontPageShelfView: FrontPageSavedSearchView, titleForSectionAt index: Int) -> String {
-        shelfViewModel?.storiesTitle ?? ""
-    }
-    
-    public func frontPageShelfView(_ frontPageShelfView: FrontPageSavedSearchView, titleForButtonForSectionAt index: Int) -> String {
-        shelfViewModel?.buttonTitle ?? ""
-    }
-
-    public func datasource(forSection section: FrontPageSavedSearchView.Section) -> [AnyHashable] {
-        guard let model = shelfViewModel else { return [] }
-        switch section {
-        case .savedSearch: return model.savedSearchItems
-        }
     }
 }
