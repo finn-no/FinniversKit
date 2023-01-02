@@ -12,7 +12,7 @@ private struct ViewModel: IconTitleTableViewCellViewModel {
     var iconTintColor: UIColor?
     var hasChevron: Bool
     var externalIcon: UIImage?
-    
+
     init(
         title: String, subtitle: String? = nil, detailText: String? = nil,
         icon: UIImage? = nil, iconTintColor: UIColor? = nil, hasChevron: Bool = false, externalIcon: UIImage? = nil) {

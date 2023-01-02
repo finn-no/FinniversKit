@@ -115,7 +115,7 @@ private extension ContractActionViewModel {
         identifier: "demo-view",
         title: "Smidig bilhandel",
         subtitle: "FINN guider deg hele veien.",
-        strings: ["a","b","c"],
+        strings: ["a", "b", "c"],
         buttonTitle: "Be selger om tilgang til kontrakten",
         buttonUrl: URL(string: "https://www.finn.no/")!
     )

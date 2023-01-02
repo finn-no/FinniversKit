@@ -26,7 +26,7 @@ public class FrontpageViewDemoView: UIView {
             text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
             image: UIImage(named: .hjerterom),
             imageAlignment: .fullWidth,
-            imageBackgroundColor: .primaryBlue,
+            imageBackgroundColor: .btnAction,
             primaryButtonTitle: "Gå til Hjerterom"
         )
         view.showPromotion(withViewModel: hjerteromPromoViewModel, andDelegate: self)
@@ -109,7 +109,7 @@ extension FrontpageViewDemoView: FrontPageViewDelegate {
     public func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView) {
         frontPageView.reloadData()
     }
-    
+
     public func frontPageView(_ frontPageView: FrontPageView, didUnfavoriteRecentlyFavorited item: RecentlyFavoritedViewmodel) {
         print(item)
     }

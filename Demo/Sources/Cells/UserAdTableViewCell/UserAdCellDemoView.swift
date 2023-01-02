@@ -64,7 +64,7 @@ extension UserAdCellDemoView: UITableViewDataSource {
         let cell = tableView.dequeue(UserAdTableViewCell.self, for: indexPath)
         cell.configure(with: style, model: viewModels[indexPath.row])
         cell.imageDataSource = self
-        cell.loadingColor = .toothPaste
+        cell.loadingColor = .aqua200
         cell.accessoryType = indexPath.row == viewModels.count - 1 ? .disclosureIndicator : .none
 
         return cell

@@ -26,42 +26,34 @@ public class ColorDemoView: UIView {
 
     lazy var items: [ColorItem] = {
         return [
-            ColorItem(color: .ice, title: "ice"),
-            ColorItem(color: .milk, title: "milk"),
-            ColorItem(color: .licorice, title: "licorice"),
-            ColorItem(color: .primaryBlue, title: "primaryBlue"),
-            ColorItem(color: .secondaryBlue, title: "secondaryBlue"),
-            ColorItem(color: .stone, title: "stone"),
-            ColorItem(color: .sardine, title: "sardine"),
-            ColorItem(color: .salmon, title: "salmon"),
-            ColorItem(color: .mint, title: "mint"),
-            ColorItem(color: .toothPaste, title: "toothPaste"),
-            ColorItem(color: .banana, title: "banana"),
-            ColorItem(color: .cherry, title: "cherry"),
-            ColorItem(color: .watermelon, title: "watermelon"),
-            ColorItem(color: .pea, title: "pea"),
-            ColorItem(color: .lime, title: "lime"),
-
-            ColorItem(color: .bgPrimary, title: "bgPrimary"),
-            ColorItem(color: .bgSecondary, title: "bgSecondary"),
-            ColorItem(color: .bgTertiary, title: "bgTertiary"),
+            ColorItem(color: .accentPea, title: "accentPea"),
+            ColorItem(color: .accentSecondaryBlue, title: "accentSecondaryBlue"),
+            ColorItem(color: .accentToothpaste, title: "accentToothpaste"),
             ColorItem(color: .bgAlert, title: "bgAlert"),
-            ColorItem(color: .bgSuccess, title: "bgSuccess"),
+            ColorItem(color: .bgBottomSheet, title: "bgBottomSheet"),
             ColorItem(color: .bgCritical, title: "bgCritical"),
-
-            ColorItem(color: .btnPrimary, title: "btnPrimary"),
-            ColorItem(color: .btnDisabled, title: "btnDisabled"),
+            ColorItem(color: .bgPrimary, title: "bgPrimary"),
+            ColorItem(color: .bgQuaternary, title: "bgQuaternary"),
+            ColorItem(color: .bgSecondary, title: "bgSecondary"),
+            ColorItem(color: .bgSuccess, title: "bgSuccess"),
+            ColorItem(color: .bgTertiary, title: "bgTertiary"),
+            ColorItem(color: .borderDefault, title: "borderDefault"),
+            ColorItem(color: .btnAction, title: "btnAction"),
             ColorItem(color: .btnCritical, title: "btnCritical"),
+            ColorItem(color: .btnDisabled, title: "btnDisabled"),
+            ColorItem(color: .btnPrimary, title: "btnPrimary"),
+            ColorItem(color: .iconPrimary, title: "iconPrimary"),
+            ColorItem(color: .iconSecondary, title: "iconSecondary"),
+            ColorItem(color: .iconTertiary, title: "iconTertiary"),
+            ColorItem(color: .imageBorder, title: "imageBorder"),
+            ColorItem(color: .tableViewSeparator, title: "tableViewSeparator"),
+            ColorItem(color: .textAction, title: "textAction"),
+            ColorItem(color: .textCritical, title: "textCritical"),
+            ColorItem(color: .textCTADisabled, title: "textCTADisabled"),
+            ColorItem(color: .textDisabled, title: "textDisabled"),
             ColorItem(color: .textPrimary, title: "textPrimary"),
             ColorItem(color: .textSecondary, title: "textSecondary"),
             ColorItem(color: .textTertiary, title: "textTertiary"),
-            ColorItem(color: .textAction, title: "textAction"),
-            ColorItem(color: .textDisabled, title: "textDisabled"),
-            ColorItem(color: .textCritical, title: "textCritical"),
-            ColorItem(color: .accentSecondaryBlue, title: "accentSecondaryBlue"),
-            ColorItem(color: .accentPea, title: "accentPea"),
-            ColorItem(color: .accentToothpaste, title: "accentToothpaste"),
-            ColorItem(color: .textCTADisabled, title: "textCTADisabled"),
             ColorItem(color: .textToast, title: "textToast"),
         ]
     }()
@@ -93,9 +85,9 @@ extension ColorDemoView: UITableViewDataSource {
         cell.backgroundColor = item.color
         let title = item.title.capitalizingFirstLetter + "  "
         let attributedTitle = NSMutableAttributedString(string: title)
-        attributedTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.licorice, range: NSRange(location: 0, length: title.count))
+        attributedTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.gray700, range: NSRange(location: 0, length: title.count))
         let whiteTitle = NSMutableAttributedString(string: title)
-        whiteTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.milk, range: NSRange(location: 0, length: title.count))
+        whiteTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: title.count))
         attributedTitle.append(whiteTitle)
         cell.textLabel?.attributedText = attributedTitle
         cell.textLabel?.font = UIFont.detail
