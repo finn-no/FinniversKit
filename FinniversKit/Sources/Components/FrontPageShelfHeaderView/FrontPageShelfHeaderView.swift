@@ -8,6 +8,7 @@ public class FrontPageShelfHeaderView: UICollectionReusableView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
         label.numberOfLines = 1
+        label.accessibilityTraits.insert(.header)
         return label
     }()
     

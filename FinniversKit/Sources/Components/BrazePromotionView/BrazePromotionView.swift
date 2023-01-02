@@ -44,6 +44,7 @@ public class BrazePromotionView: UIView {
         label.numberOfLines = 0
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.defaultLow, for: .vertical)
+        label.accessibilityTraits.insert(.header)
         return label
     }()
 
