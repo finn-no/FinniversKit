@@ -310,12 +310,16 @@ public final class FrontPageView: UIView {
     }
 
     // MARK: - Private methods
-    
-    public func configureFrontPageShelves(_ model: FrontPageShelfViewModel, firstVisibleSavedSearchIndex: Int?) {
+
+    public func configureFrontPageShelves(
+        _ model: FrontPageShelfViewModel,
+        firstVisibleSavedSearchIndex: Int?,
+        remoteImageViewDataSource: RemoteImageViewDataSource
+    ) {
         self.shelfViewModel = model
 
         if frontPageShelfView == nil {
-            frontPageShelfView = FrontPageSavedSearchView(withDatasource: self)
+            frontPageShelfView = FrontPageSavedSearchView(withDatasource: self, remoteImageDataSource: remoteImageViewDataSource)
             frontPageShelfView?.translatesAutoresizingMaskIntoConstraints = false
             shelfContainer.addSubview(frontPageShelfView!)
 
@@ -428,16 +432,6 @@ extension FrontPageView: FrontPageShelfViewDataSource {
     
     public func frontPageShelfView(_ frontPageShelfView: FrontPageSavedSearchView, titleForButtonForSectionAt index: Int) -> String {
         shelfViewModel?.buttonTitle ?? ""
-    }
-
-    public func frontPageShelfView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, withItem item: AnyHashable) -> UICollectionViewCell? {
-        guard let viewModel = item as? SavedSearchShelfViewModel else { return nil }
-
-        let cell = collectionView.dequeue(SavedSearchShelfCell.self, for: indexPath)
-        cell.configure(withModel: viewModel)
-        cell.imageDatasource = remoteImageDataSource
-        cell.loadImage()
-        return cell
     }
 
     public func datasource(forSection section: FrontPageSavedSearchView.Section) -> [AnyHashable] {

@@ -1,7 +1,6 @@
 import UIKit
 
 public protocol FrontPageShelfViewDataSource: AnyObject {
-    func frontPageShelfView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, withItem item: AnyHashable) -> UICollectionViewCell?
     func datasource(forSection section: FrontPageSavedSearchView.Section) -> [AnyHashable] // delete
     func frontPageShelfView(_ frontPageSavedSearchView: FrontPageSavedSearchView, titleForSectionAt index: Int) -> String
     func frontPageShelfView(_ frontPageSavedSearchView: FrontPageSavedSearchView, titleForButtonForSectionAt index: Int) -> String
@@ -28,6 +27,7 @@ public class FrontPageSavedSearchView: UIView {
     private var items: [Section: [AnyHashable]] = [:]
     private weak var shelfDatasource: FrontPageShelfViewDataSource?
     public weak var shelfDelegate: FrontPageShelfDelegate?
+    private weak var remoteImageDataSource: RemoteImageViewDataSource?
     private var scrollToSavedSearchIndexPath: IndexPath?
 
     private var compositionalLayout: UICollectionViewCompositionalLayout {
@@ -49,8 +49,12 @@ public class FrontPageSavedSearchView: UIView {
         return collectionView
     }()
 
-    public init(withDatasource datasource: FrontPageShelfViewDataSource) {
+    public init(
+        withDatasource datasource: FrontPageShelfViewDataSource,
+        remoteImageDataSource: RemoteImageViewDataSource?
+    ) {
         self.shelfDatasource = datasource
+        self.remoteImageDataSource = remoteImageDataSource
         super.init(frame: .zero)
         setup()
     }
@@ -122,8 +126,13 @@ private extension FrontPageSavedSearchView {
 private extension FrontPageSavedSearchView {
     private func makeDatasource() -> Datasource {
         let datasource = Datasource(collectionView: collectionView) { [weak self] collectionView, indexPath, item in
-            self?.shelfDatasource?.frontPageShelfView(collectionView, cellForItemAt: indexPath, withItem: item)
-            
+            guard let viewModel = item as? SavedSearchShelfViewModel else { return UICollectionViewCell() }
+
+            let cell = collectionView.dequeue(SavedSearchShelfCell.self, for: indexPath)
+            cell.configure(withModel: viewModel)
+            cell.imageDatasource = self?.remoteImageDataSource
+            cell.loadImage()
+            return cell
         }
 
         datasource.supplementaryViewProvider = { [weak self] (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
