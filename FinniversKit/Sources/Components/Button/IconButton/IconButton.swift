@@ -19,7 +19,13 @@ public final class IconButton: UIButton {
 
     public var isToggled: Bool = false {
         didSet {
-            setImage(isToggled ? style.iconToggled : style.icon, for: .normal)
+            if isToggled {
+                setImage(style.iconToggled, for: .normal)
+                accessibilityTraits.insert(.selected)
+            } else {
+                setImage(style.icon, for: .normal)
+                accessibilityTraits.remove(.selected)
+            }
         }
     }
 

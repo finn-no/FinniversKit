@@ -22,7 +22,7 @@ public class MarketsGridViewDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        let collectionView = MarketsGridView(delegate: self, dataSource: self)
+        let collectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(collectionView)
         NSLayoutConstraint.activate([

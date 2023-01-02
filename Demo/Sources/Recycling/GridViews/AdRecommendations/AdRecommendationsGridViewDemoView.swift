@@ -120,7 +120,6 @@ extension AdRecommendationsGridViewDemoView: AdRecommendationsGridViewDataSource
                 cell.imageDataSource = adRecommendationsGridView
                 cell.delegate = adRecommendationsGridView
                 cell.configure(with: ad, atIndex: indexPath.item)
-                //cell.showImageDescriptionView = ad.scaleImageToFillView
                 return cell
             }
         case .job(let ad):

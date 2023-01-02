@@ -69,7 +69,7 @@ extension UserAdEmphasizedActionCellDemoView: UITableViewDataSource {
         cell.delegate = self
         cell.configure(with: viewModels[indexPath.row])
         cell.imageDataSource = self
-        cell.loadingColor = .toothPaste
+        cell.loadingColor = .aqua200
         cell.shouldShowAction = !shouldCollapseAction
         return cell
     }

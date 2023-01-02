@@ -11,7 +11,7 @@ class SavedSearchShelfFactory {
             return SavedSearchShelfViewModel(id: Int.random(in: 0...100_000), title: title, imageUrlString: imageUrl, isRead: index > 2)
         }
     }
-    
+
     private static var titles: [String] {
         return [
             "Elektronikk",
@@ -25,7 +25,7 @@ class SavedSearchShelfFactory {
             "Campingvogner"
         ]
     }
-    
+
     private static var imageUrls: [String] {
         return [
             "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg",

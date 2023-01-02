@@ -25,7 +25,7 @@ class SearchResultMapViewDemoViewController: BaseDemoViewController<UIView> {
         for subview in searchResultMapView.subviews {
             guard let mapView = subview as? MKMapView else { continue }
             let colorfulView = UIView(withAutoLayout: true)
-            colorfulView.backgroundColor = .mint
+            colorfulView.backgroundColor = .green100
             mapView.superview?.addSubview(colorfulView)
             let constraints: [NSLayoutConstraint] = [
                 colorfulView.topAnchor.constraint(equalTo: mapView.topAnchor),
