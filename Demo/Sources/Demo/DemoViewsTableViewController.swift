@@ -48,7 +48,7 @@ class DemoViewsTableViewController: UITableViewController {
         navigationItem.titleView = selectorTitleView
         selectorTitleView.title = Sections.title(for: State.lastSelectedSection).uppercased()
 
-        tableView.sectionIndexColor = .primaryBlue
+        tableView.sectionIndexColor = .textAction
         tableView.backgroundColor = .bgPrimary
         setNeedsStatusBarAppearanceUpdate()
     }
@@ -147,7 +147,7 @@ extension DemoViewsTableViewController {
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
-            headerView.textLabel?.textColor = .textDisabled //DARK
+            headerView.textLabel?.textColor = .textDisabled // DARK
             headerView.textLabel?.font = UIFont.captionStrong
         }
     }
