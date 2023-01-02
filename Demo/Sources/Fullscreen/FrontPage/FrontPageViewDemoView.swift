@@ -31,10 +31,11 @@ public class FrontpageViewDemoView: UIView {
         )
         view.showPromotion(withViewModel: hjerteromPromoViewModel, andDelegate: self)
 
-        let shelfModel = FrontPageShelfViewModel(favoritedItems: RecentlyFavoritedFactory.create(numberOfItems: 10),
-                                                 savedSearchItems: SavedSearchShelfFactory.create(numberOfItems: 10),
-                                                 sectionTitles: ["Lagrede søk", "Nylige favoritter"],
-                                                 buttonTitles: ["Se alle", "Se alle"])
+        let shelfModel = FrontPageShelfViewModel(
+            savedSearchItems: SavedSearchShelfFactory.create(numberOfItems: 10),
+            storiesTitle: "Lagrede søk",
+            buttonTitle: "Se alle"
+        )
         view.configureFrontPageShelves(shelfModel, firstVisibleSavedSearchIndex: 1)
         view.frontPageShelfDelegate = self
 
@@ -108,10 +109,6 @@ extension FrontpageViewDemoView: PromotionViewDelegate {
 extension FrontpageViewDemoView: FrontPageViewDelegate {
     public func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView) {
         frontPageView.reloadData()
-    }
-
-    public func frontPageView(_ frontPageView: FrontPageView, didUnfavoriteRecentlyFavorited item: RecentlyFavoritedViewmodel) {
-        print(item)
     }
 }
 
@@ -228,20 +225,11 @@ extension FrontpageViewDemoView: RemoteImageViewDataSource {
 // MARK: - FrontPageShelfDelegate
 extension FrontpageViewDemoView: FrontPageShelfDelegate {
     public func frontPageShelfView(_ view: FrontPageShelfView, didSelectHeaderForSection section: FrontPageShelfView.Section) {
-        switch section {
-        case .recentlyFavorited:
-            print("Header for favorite item selected")
-        case .savedSearch:
-            print("Header for saved search item selected")
-        }
+        print("Stories header selected")
     }
 
     public func frontPageShelfView(_ view: FrontPageShelfView, didSelectSavedSearchItem item: SavedSearchShelfViewModel) {
         print("saved search item selected")
-    }
-
-    public func frontPageShelfView(_ view: FrontPageShelfView, didSelectFavoriteItem item: RecentlyFavoritedViewmodel) {
-        print("favorited item selected")
     }
 }
 

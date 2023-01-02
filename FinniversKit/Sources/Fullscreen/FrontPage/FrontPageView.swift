@@ -13,7 +13,6 @@ public protocol FrontPageViewModel {
 
 public protocol FrontPageViewDelegate: MarketsViewDelegate, AdRecommendationsGridViewDelegate {
     func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView)
-    func frontPageView(_ frontPageView: FrontPageView, didUnfavoriteRecentlyFavorited item: RecentlyFavoritedViewmodel)
 }
 
 public final class FrontPageView: UIView {
@@ -424,51 +423,27 @@ extension FrontPageView: MarketsViewDelegate {
 // MARK: - FrontPageShelfDatasource
 extension FrontPageView: FrontPageShelfViewDataSource {
     public func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForSectionAt index: Int) -> String {
-        shelfViewModel?.titleForSection(at: index) ?? ""
+        shelfViewModel?.storiesTitle ?? ""
     }
     
     public func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForButtonForSectionAt index: Int) -> String {
-        shelfViewModel?.titleForButton(at: index) ?? ""
+        shelfViewModel?.buttonTitle ?? ""
     }
-    
+
     public func frontPageShelfView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, withItem item: AnyHashable) -> UICollectionViewCell? {
-        if let item = item as? RecentlyFavoritedViewmodel {
-            let cell = collectionView.dequeue(RecentlyFavoritedShelfCell.self, for: indexPath)
-            cell.configure(withModel: item)
-            cell.buttonAction = { [weak self] _, _ in
-                self?.removeFavoritedItem(item, atIndexPath: indexPath)
-            }
-            cell.datasource = remoteImageDataSource
-            cell.loadImage()
-            
-            return cell
-        } else if let item = item as? SavedSearchShelfViewModel {
-            let cell = collectionView.dequeue(SavedSearchShelfCell.self, for: indexPath)
-            cell.configure(withModel: item)
-            cell.imageDatasource = remoteImageDataSource
-            cell.loadImage()
-            return cell
-        }
-        return nil
+        guard let viewModel = item as? SavedSearchShelfViewModel else { return nil }
+
+        let cell = collectionView.dequeue(SavedSearchShelfCell.self, for: indexPath)
+        cell.configure(withModel: viewModel)
+        cell.imageDatasource = remoteImageDataSource
+        cell.loadImage()
+        return cell
     }
-    
-    public func frontPageShelfView(cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
-        [RecentlyFavoritedShelfCell.self, SavedSearchShelfCell.self]
-    }
-    
+
     public func datasource(forSection section: FrontPageShelfView.Section) -> [AnyHashable] {
         guard let model = shelfViewModel else { return [] }
         switch section {
         case .savedSearch: return model.savedSearchItems
-        case .recentlyFavorited: return model.recentlyFavoritedItems
         }
-    }
-    
-    public func removeFavoritedItem(_ item: AnyHashable, atIndexPath indexPath: IndexPath) {
-        guard
-            let favoriteModel = item as? RecentlyFavoritedViewmodel
-        else { return }
-
-        delegate?.frontPageView(self, didUnfavoriteRecentlyFavorited: favoriteModel)
     }
 }

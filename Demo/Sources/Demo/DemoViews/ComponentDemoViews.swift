@@ -69,7 +69,6 @@ public enum ComponentDemoViews: String, DemoViews {
     case blockUserView
     case loadingRetryView
     case promotionView
-    case recentlyfavoritedShelf
     case savedSearchShelf
     case frontPageShelf
     case overFlowCollectionView
@@ -236,8 +235,6 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<LoadingRetryDemoView>()
         case .promotionView:
             return DemoViewController<PromotionDemoView>()
-        case .recentlyfavoritedShelf:
-            return DemoViewController<RecentlyFavoritedShelfDemoView>()
         case .savedSearchShelf:
             return DemoViewController<SavedSearchShelfDemoView>()
         case .frontPageShelf:

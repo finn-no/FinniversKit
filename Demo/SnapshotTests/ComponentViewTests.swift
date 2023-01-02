@@ -279,10 +279,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.brazePromotionView)
     }
 
-    func testRecentlyFavoritedShelf() {
-        snapshot(.recentlyfavoritedShelf)
-    }
-
     func testSavedSearchShelf() {
         snapshot(.savedSearchShelf)
     }
