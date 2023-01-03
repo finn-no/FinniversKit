@@ -51,6 +51,7 @@
 		179D06AE2906A3FA00A65E3A /* HTMLStringParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06AC2906A3FA00A65E3A /* HTMLStringParserTests.swift */; };
 		179D06B62907D66E00A65E3A /* HTMLLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06B52907D66E00A65E3A /* HTMLLexer.swift */; };
 		17E232F5290A7E71003DC8F7 /* HTMLLexerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */; };
+		17EAC08A296485C300B3C639 /* UIColor+FinniversKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */; };
 		431875C1211180F100D71723 /* BuyerPickerProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */; };
 		432CE09D2112DBC500F01EC5 /* BuyerPickerTextHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE09C2112DBC500F01EC5 /* BuyerPickerTextHeader.swift */; };
 		43BACE6A21117D430052114C /* BuyerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BACE6921117D430052114C /* BuyerPickerView.swift */; };
@@ -566,6 +567,7 @@
 		179D06AC2906A3FA00A65E3A /* HTMLStringParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParserTests.swift; sourceTree = "<group>"; };
 		179D06B52907D66E00A65E3A /* HTMLLexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLexer.swift; sourceTree = "<group>"; };
 		17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLexerTests.swift; sourceTree = "<group>"; };
+		17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+FinniversKitTests.swift"; sourceTree = "<group>"; };
 		431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerProfileCell.swift; sourceTree = "<group>"; };
 		432CE09C2112DBC500F01EC5 /* BuyerPickerTextHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerTextHeader.swift; sourceTree = "<group>"; };
 		43BACE6921117D430052114C /* BuyerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerView.swift; sourceTree = "<group>"; };
@@ -1164,6 +1166,7 @@
 		14F4F1BA1FD6CEA800E9CECA /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				17EAC0882964859A00B3C639 /* DNA */,
 				CF376C19231D455900ED2B24 /* StepSlider */,
 				CF3D5EFD215A759A006E4D08 /* EasterEggs */,
 				14F4F1BD1FD6CEA800E9CECA /* Info.plist */,
@@ -1216,6 +1219,14 @@
 				175385B129150E7800DA57D2 /* HTMLStringUIKitStyleTranslatorTests.swift */,
 			);
 			path = HTMLStringParser;
+			sourceTree = "<group>";
+		};
+		17EAC0882964859A00B3C639 /* DNA */ = {
+			isa = PBXGroup;
+			children = (
+				17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */,
+			);
+			path = DNA;
 			sourceTree = "<group>";
 		};
 		25D04D721F583B1800EA317D = {
@@ -3636,6 +3647,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1753871F291AA79600DA57D2 /* HTMLStringParserTextTranslatorTests.swift in Sources */,
+				17EAC08A296485C300B3C639 /* UIColor+FinniversKitTests.swift in Sources */,
 				179D06AD2906A3FA00A65E3A /* HTMLStringParserHTMLTranslatorTests.swift in Sources */,
 				CF3D5F00215A75BF006E4D08 /* InstrumentTests.swift in Sources */,
 				CF376C1B231D458200ED2B24 /* ArrayStepTests.swift in Sources */,
