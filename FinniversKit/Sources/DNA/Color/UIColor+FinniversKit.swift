@@ -458,13 +458,20 @@ public extension UIColor {
         }
     }
 
-    /// Returns hexadecimal represetation of a color.
+    /// Returns hexadecimal representation of a color converted to the sRGB color space.
     var hexString: String {
-        let components = self.cgColor.components
+        guard
+            let targetColorSpace = CGColorSpace(name: CGColorSpace.sRGB),
+            let cgColor = self.cgColor.converted(to: targetColorSpace, intent: .relativeColorimetric, options: nil)
+        else {
+            // Not possible to convert source color space to RGB
+            return "#000000"
+        }
+        let components = cgColor.components
         let red = components?[0] ?? 0.0
         let green = components?[1] ?? 0.0
         let blue = components?[2] ?? 0.0
-        return  String(format: "#%02x%02x%02x", (Int)(red * 255), (Int)(green * 255), (Int)(blue * 255))
+        return String(format: "#%02x%02x%02x", (Int)(red * 255), (Int)(green * 255), (Int)(blue * 255))
     }
 
     @available(*, deprecated, message: "Use dynamicColor(defaultColor:darkModeColor:) instead.")
