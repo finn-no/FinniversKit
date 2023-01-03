@@ -44,6 +44,7 @@ public class BrazePromotionView: UIView {
         label.numberOfLines = 0
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.defaultLow, for: .vertical)
+        label.accessibilityTraits.insert(.header)
         return label
     }()
 
@@ -85,7 +86,7 @@ public class BrazePromotionView: UIView {
     }()
 
     private lazy var verticalStackView: UIStackView = {
-        let stackView = UIStackView(axis: .vertical, spacing: .spacingS + .spacingXS, withAutoLayout: true)
+        let stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
         stackView.distribution = .fillProportionally
         stackView.alignment = .leading
         stackView.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -125,14 +126,14 @@ public class BrazePromotionView: UIView {
         self.imageDatasource = imageDatasource
         super.init(frame: .zero)
         setup()
-        configure(with: viewModel, imageDatasource: imageDatasource)
+        configure()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func configure(with viewModel: BrazePromotionViewModel, imageDatasource datasource: RemoteImageViewDataSource) {
+    private func configure() {
         titleLabel.text = viewModel.title
         primaryButton.configure(withTitle: viewModel.primaryButtonTitle)
 
@@ -151,29 +152,33 @@ public class BrazePromotionView: UIView {
     }
 
     private func loadImage() {
-        guard let imageUrl = viewModel.image else {
-            remoteImageView.removeFromSuperview()
-            NSLayoutConstraint.deactivate(stackViewConstraintsImage)
-            NSLayoutConstraint.activate(stackViewConstraintsNoImage)
+        if let imageUrl = viewModel.image {
+            closeButton.setImage(UIImage(named: .cross), for: .normal)
+            closeButton.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+
+            backgroundView.addSubview(remoteImageView)
+            remoteImageView.dataSource = imageDatasource
+
+            NSLayoutConstraint.activate(stackViewConstraintsImage)
+
+            NSLayoutConstraint.activate([
+                remoteImageView.widthAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 0.3),
+                remoteImageView.topAnchor.constraint(equalTo: backgroundView.topAnchor),
+                remoteImageView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
+                remoteImageView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor)
+            ])
+
+            remoteImageView.loadImage(
+                for: imageUrl,
+                imageWidth: 100,
+                fallbackImage: UIImage(named: .noImage)
+            )
+        } else {
             closeButton.setImage(UIImage(named: .cross).withTintColor(.textPrimary), for: .normal)
             closeButton.backgroundColor = UIColor.clear
-            return
+
+            NSLayoutConstraint.activate(stackViewConstraintsNoImage)
         }
-        NSLayoutConstraint.deactivate(stackViewConstraintsNoImage)
-        NSLayoutConstraint.activate(stackViewConstraintsImage)
-        backgroundView.addSubview(remoteImageView)
-        remoteImageView.dataSource = imageDatasource
-        NSLayoutConstraint.activate([
-            remoteImageView.widthAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 0.3),
-            remoteImageView.topAnchor.constraint(equalTo: backgroundView.topAnchor),
-            remoteImageView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
-            remoteImageView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor)
-        ])
-        remoteImageView.loadImage(
-            for: imageUrl,
-            imageWidth: 100,
-            fallbackImage: UIImage(named: .noImage)
-        )
     }
 }
 
@@ -186,6 +191,7 @@ extension BrazePromotionView {
         addGestureRecognizer(tapGesture)
 
         verticalStackView.addArrangedSubviews([titleLabel, textLabel, primaryButton])
+        verticalStackView.setCustomSpacing(.spacingS + .spacingXS, after: textLabel)
 
         addSubview(largeShadowView)
         largeShadowView.addSubview(smallShadowView)

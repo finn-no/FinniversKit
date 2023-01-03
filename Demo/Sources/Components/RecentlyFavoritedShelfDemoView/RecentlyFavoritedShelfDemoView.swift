@@ -9,11 +9,11 @@ class RecentlyFavoritedShelfDemoView: UIView {
     enum Section: CaseIterable {
         case recentlyFavorited
     }
-    
+
     private var datasource: DataSource!
-    
+
     private lazy var compositionalLayout: UICollectionViewCompositionalLayout = {
-        return UICollectionViewCompositionalLayout { _,_  in
+        return UICollectionViewCompositionalLayout { _, _ in
             return self.favoriteLayout
         }
     }()
@@ -73,7 +73,7 @@ private extension RecentlyFavoritedShelfDemoView {
     }
 
     private func makeDatasource() -> DataSource {
-        let datasource =  DataSource(collectionView: collectionView) { [weak self] (collectionView, indexPath, itemIdentifier) -> UICollectionViewCell? in
+        let datasource =  DataSource(collectionView: collectionView) { [weak self] (collectionView, indexPath, _) -> UICollectionViewCell? in
             guard let model = self?.items[indexPath.item] else {
                 return nil
             }
@@ -86,10 +86,10 @@ private extension RecentlyFavoritedShelfDemoView {
             }
 
             cell.datasource = self
-            
+
             return cell
         }
-        
+
         datasource.supplementaryViewProvider = { (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
             if let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FrontPageShelfHeaderView.reuseIdentifier, for: indexPath) as? FrontPageShelfHeaderView {
 

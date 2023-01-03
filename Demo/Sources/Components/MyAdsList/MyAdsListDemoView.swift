@@ -154,7 +154,6 @@ private extension Array where Element == MyAdModel {
         }
     }
 
-
     static func title(index: Int) -> String {
         randomElement(index: index, from: [
             "Black & Decker Multisliper 220w",

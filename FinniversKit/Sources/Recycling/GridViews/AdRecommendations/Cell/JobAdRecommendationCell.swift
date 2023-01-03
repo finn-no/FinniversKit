@@ -34,6 +34,12 @@ public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell
 
     private lazy var defaultImage: UIImage = UIImage(named: .noImage)
 
+    /// Extra container for accessibility issues. The cell should have "all content" and favoriteButton as accessibilty elements but it get confused if favoriteButton is a subview of the other accessibility element (so contentView can not be one of the accessibility elements
+    private lazy var containerView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        return view
+    }()
+
     private lazy var imageViewContainer = UIView(withAutoLayout: true)
 
     private lazy var imageView: RemoteImageView = {
@@ -113,20 +119,22 @@ public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell
         companyLabel.text = nil
         locationAndTimeLabel.text = nil
 
-        contentView.accessibilityLabel = nil
+        containerView.accessibilityLabel = nil
         favoriteButton.accessibilityLabel = nil
     }
 
     private func setup() {
-        contentView.isAccessibilityElement = true
-        accessibilityElements = [contentView, favoriteButton]
+        containerView.isAccessibilityElement = true
+        accessibilityElements = [containerView, favoriteButton]
+        containerView.accessibilityTraits.insert(.button)
 
         contentView.layer.cornerRadius = .spacingS
         contentView.layer.borderWidth = 1
 
-        contentView.addSubview(imageViewContainer)
-        contentView.addSubview(metadataContainer)
-        contentView.addSubview(ribbonView)
+        contentView.addSubview(containerView)
+        containerView.addSubview(imageViewContainer)
+        containerView.addSubview(metadataContainer)
+        containerView.addSubview(ribbonView)
         contentView.addSubview(favoriteButton)
 
         imageViewContainer.addSubview(imageView)
@@ -210,7 +218,7 @@ extension JobAdRecommendationCell: AdRecommendationConfigurable {
 
         loadingColor = loadingColors[index % loadingColors.count]
 
-        contentView.accessibilityLabel = model?.accessibilityLabel
+        containerView.accessibilityLabel = model?.accessibilityLabel
         favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityLabel
 
         titleLabel.text = model?.title

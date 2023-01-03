@@ -17,8 +17,8 @@ public class SpacingDemoView: UIView {
         let label = Label(style: .bodyStrong)
         label.text = text
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .licorice
-        label.textColor = .milk
+        label.backgroundColor = .gray700
+        label.textColor = .white
         label.textAlignment = .center
         return label
     }

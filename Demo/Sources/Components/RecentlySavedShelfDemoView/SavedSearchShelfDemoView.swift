@@ -1,24 +1,23 @@
-
 import FinniversKit
 
 class SavedSearchShelfDemoView: UIView {
     typealias Datasource = UICollectionViewDiffableDataSource<Section, AnyHashable>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
-    
+
     enum Section: CaseIterable {
         case savedSearch
     }
-    
+
     private var items: [SavedSearchShelfViewModel] = []
-    
+
     private var datasource: Datasource!
-    
+
     private lazy var compositionalLayout: UICollectionViewCompositionalLayout = {
-        return UICollectionViewCompositionalLayout { _,_ in
+        return UICollectionViewCompositionalLayout { _, _ in
             return self.recentlySavedLayout
         }
     }()
-    
+
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: compositionalLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,13 +25,13 @@ class SavedSearchShelfDemoView: UIView {
         collectionView.register(FrontPageShelfHeaderView.self, forSupplementaryViewOfKind: FrontPageShelfHeaderView.reuseIdentifier, withReuseIdentifier: FrontPageShelfHeaderView.reuseIdentifier)
         return collectionView
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         items = SavedSearchShelfFactory.create(numberOfItems: 8)
         setup()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -49,18 +48,17 @@ private extension SavedSearchShelfDemoView {
     }
 }
 
-//MARK: - Layout
+// MARK: - Layout
 private extension SavedSearchShelfDemoView {
-    
     private var recentlySavedLayout: NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(100))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
-        //Groups
+        // Groups
         let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(74), heightDimension: .absolute(100))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
-        
-        //Sections
+
+        // Sections
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: .spacingM, bottom: 0, trailing: 0)
         section.orthogonalScrollingBehavior = .continuous
@@ -78,15 +76,15 @@ private extension SavedSearchShelfDemoView {
 // MARK: - DataSource
 private extension SavedSearchShelfDemoView {
     private func makeDatasource() -> Datasource {
-        let datasource = Datasource(collectionView: collectionView) { (collectionView, indexPath, item) in
+        let datasource = Datasource(collectionView: collectionView) { (collectionView, indexPath, _) in
             let cell =  collectionView.dequeue(SavedSearchShelfCell.self, for: indexPath)
             cell.configure(withModel: self.items[indexPath.item])
             return cell
         }
-        
+
         datasource.supplementaryViewProvider = { (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
             if let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FrontPageShelfHeaderView.reuseIdentifier, for: indexPath) as? FrontPageShelfHeaderView {
-                
+
                 headerView.configureHeaderView(withTitle: "Nyeste Lagrede", buttonTitle: "se alle") {
                     print("Header was pressed")
                 }
@@ -97,7 +95,7 @@ private extension SavedSearchShelfDemoView {
         }
         return datasource
     }
-    
+
     private func applySnapshot() {
         var snapshot = Snapshot()
         snapshot.appendSections([.savedSearch])
