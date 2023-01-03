@@ -458,7 +458,7 @@ public extension UIColor {
         }
     }
 
-    /// Returns hexadecimal represetation of a color.
+    /// Returns hexadecimal representation of a color converted to the sRGB color space.
     var hexString: String {
         guard
             let targetColorSpace = CGColorSpace(name: CGColorSpace.sRGB),
