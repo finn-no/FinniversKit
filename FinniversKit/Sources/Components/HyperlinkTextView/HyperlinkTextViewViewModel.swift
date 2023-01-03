@@ -2,7 +2,7 @@ public protocol HyperlinkTextViewViewModelDelegate: AnyObject {
     func didTapHyperlinkAction(_ action: String)
 }
 
-public struct HyperlinkTextViewViewModel {
+public class HyperlinkTextViewViewModel {
     public let htmlText: String
     public let hyperlinks: [Hyperlink]
     public weak var delegate: HyperlinkTextViewViewModelDelegate?

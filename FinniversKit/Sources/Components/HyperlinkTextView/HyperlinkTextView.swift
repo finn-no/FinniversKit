@@ -33,6 +33,10 @@ public class HyperlinkTextView: UIView {
         }
     }
 
+    public var text: String? {
+        textView.attributedText.string
+    }
+    
     // MARK: - Private properties
 
     private var viewModel: HyperlinkTextViewViewModel?
