@@ -332,9 +332,6 @@ public final class FrontPageView: UIView {
             frontPageSavedSearchView?.fillInSuperview(
                 insets: .init(top: FrontPageSavedSearchesView.topPadding, leading: 0, bottom: 0, trailing: 0)
             )
-
-            // Add a minimum height, since cells are never queried if the frame initially has height 0.
-            frontPageSavedSearchView?.heightAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
         }
 
         frontPageSavedSearchView?.configure(with: savedSearchesViewModel.searchViewModels)

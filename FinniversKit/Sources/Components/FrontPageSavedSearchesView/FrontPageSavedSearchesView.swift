@@ -36,7 +36,7 @@ public class FrontPageSavedSearchesView: UIView {
 
     private var compositionalLayout: UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { [weak self] _, _ in
-            return self?.savedSearchLayout
+            return self?.horizontalLayoutSection
         }
 
         let config = UICollectionViewCompositionalLayoutConfiguration()
@@ -86,7 +86,8 @@ public class FrontPageSavedSearchesView: UIView {
     }
 }
 
-// MARK: - Public method
+// MARK: - Public methods
+
 public extension FrontPageSavedSearchesView {
     func configure(with savedSearches: [FrontPageSavedSearchViewModel]) {
         var snapshot = Snapshot()
@@ -102,6 +103,7 @@ public extension FrontPageSavedSearchesView {
 }
 
 // MARK: - Setup
+
 private extension FrontPageSavedSearchesView {
     func setup() {
         addSubview(collectionView)
@@ -114,8 +116,9 @@ private extension FrontPageSavedSearchesView {
 }
 
 // MARK: - Layout
+
 private extension FrontPageSavedSearchesView {
-    private var savedSearchLayout: NSCollectionLayoutSection {
+    private var horizontalLayoutSection: NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(Self.cellHeight))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
@@ -139,6 +142,7 @@ private extension FrontPageSavedSearchesView {
 }
 
 // MARK: - Datasource
+
 private extension FrontPageSavedSearchesView {
     private func makeDatasource() -> Datasource {
         let datasource = Datasource(collectionView: collectionView) { [weak self] collectionView, indexPath, item in
@@ -169,12 +173,10 @@ private extension FrontPageSavedSearchesView {
 }
 
 // MARK: - UICollectionViewDelegate
+
 extension FrontPageSavedSearchesView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard
-            let item = collectionViewDatasource.itemIdentifier(for: indexPath) as? FrontPageSavedSearchViewModel
-        else { return }
-
+        guard let item = collectionViewDatasource.itemIdentifier(for: indexPath) as? FrontPageSavedSearchViewModel else { return }
         delegate?.frontPageSavedSearchesView(self, didSelectSavedSearch: item)
     }
 }
