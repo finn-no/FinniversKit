@@ -1,14 +1,16 @@
 import FinniversKit
 
 class FrontPageShelfDemoView: UIView {
-    private lazy var shelfView: FrontPageSavedSearchView = {
-        let view = FrontPageSavedSearchView(withDatasource: self)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.shelfDelegate = self
+    private lazy var shelfView: FrontPageSavedSearchesView = {
+        let view = FrontPageSavedSearchesView(
+            title: "Nytt i lagrede søk",
+            buttonTitle: "Se alle",
+            remoteImageDataSource: self,
+            withAutoLayout: true
+        )
+        view.delegate = self
         return view
     }()
-
-    private var savedItems: [SavedSearchShelfViewModel] = []
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,37 +22,9 @@ class FrontPageShelfDemoView: UIView {
     }
 
     private func setup() {
-        savedItems = SavedSearchShelfFactory.create(numberOfItems: 10)
         addSubview(shelfView)
         shelfView.fillInSuperview()
-        shelfView.reloadShelf()
-    }
-}
-
-extension FrontPageShelfDemoView: FrontPageShelfViewDataSource {
-    func frontPageShelfView(_ frontPageShelfView: FrontPageSavedSearchView, titleForSectionAt index: Int) -> String {
-        "Lagrede søk"
-    }
-
-    func frontPageShelfView(_ frontPageShelfView: FrontPageSavedSearchView, titleForButtonForSectionAt index: Int) -> String {
-        "Se alle"
-    }
-
-    func frontPageShelfView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, withItem item: AnyHashable) -> UICollectionViewCell? {
-        guard let model = item as? SavedSearchShelfViewModel else { return nil }
-
-        let cell = collectionView.dequeue(SavedSearchShelfCell.self, for: indexPath)
-        cell.configure(withModel: model)
-        cell.imageDatasource = self
-        cell.loadImage()
-        return cell
-    }
-
-    func datasource(forSection section: FrontPageSavedSearchView.Section) -> [AnyHashable] {
-        switch section {
-        case .savedSearch:
-            return savedItems
-        }
+        shelfView.configure(with: SavedSearchShelfFactory.create(numberOfItems: 10))
     }
 }
 
@@ -80,12 +54,12 @@ extension FrontPageShelfDemoView: RemoteImageViewDataSource {
     }
 }
 
-extension FrontPageShelfDemoView: FrontPageShelfDelegate {
-    func frontPageShelfView(_ view: FrontPageSavedSearchView, didSelectHeaderForSection section: FrontPageSavedSearchView.Section) {
-        print("Header for section \(section) pressed")
+extension FrontPageShelfDemoView: FrontPageSavedSearchesViewDelegate {
+    func frontPageSavedSearchesView(_ view: FinniversKit.FrontPageSavedSearchesView, didSelectSavedSearchItem item: FinniversKit.FrontPageSavedSearchViewModel) {
+        print("Did select saved search with title", item.title)
     }
 
-    func frontPageShelfView(_ view: FrontPageSavedSearchView, didSelectSavedSearchItem item: SavedSearchShelfViewModel) {
-        print("selected saved item")
+    func frontPageSavedSearchesViewDidSelectActionButton(_ view: FinniversKit.FrontPageSavedSearchesView) {
+        print("Did select action button")
     }
 }

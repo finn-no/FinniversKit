@@ -31,13 +31,17 @@ public class FrontpageViewDemoView: UIView {
         )
         view.showPromotion(withViewModel: hjerteromPromoViewModel, andDelegate: self)
 
-        let shelfModel = FrontPageShelfViewModel(
-            savedSearchItems: SavedSearchShelfFactory.create(numberOfItems: 10),
-            storiesTitle: "Lagrede søk",
+        let savedSearchesViewModel = FrontPageSavedSearchesViewModel(
+            searchViewModels: SavedSearchShelfFactory.create(numberOfItems: 10),
+            title: "Lagrede søk",
             buttonTitle: "Se alle"
         )
-        view.configureFrontPageShelves(shelfModel, firstVisibleSavedSearchIndex: 1)
-        view.frontPageShelfDelegate = self
+        view.configure(
+            withSavedSearches: savedSearchesViewModel,
+            firstVisibleSavedSearchIndex: 1,
+            remoteImageViewDataSource: self
+        )
+        view.savedSearchesViewDelegate = self
 
         let transactionViewModel = FrontPageTransactionViewModel(
             headerTitle: "Dine handler på torget",
@@ -223,17 +227,19 @@ extension FrontpageViewDemoView: RemoteImageViewDataSource {
 }
 
 // MARK: - FrontPageShelfDelegate
-extension FrontpageViewDemoView: FrontPageShelfDelegate {
-    public func frontPageShelfView(_ view: FrontPageSavedSearchView, didSelectHeaderForSection section: FrontPageSavedSearchView.Section) {
-        print("Stories header selected")
+
+extension FrontpageViewDemoView: FrontPageSavedSearchesViewDelegate {
+    public func frontPageSavedSearchesView(_ view: FrontPageSavedSearchesView, didSelectSavedSearchItem item: FinniversKit.FrontPageSavedSearchViewModel) {
+        print("Did select saved search with title", item.title)
     }
 
-    public func frontPageShelfView(_ view: FrontPageSavedSearchView, didSelectSavedSearchItem item: SavedSearchShelfViewModel) {
-        print("saved search item selected")
+    public func frontPageSavedSearchesViewDidSelectActionButton(_ view: FrontPageSavedSearchesView) {
+        print("Did select action button")
     }
 }
 
 // MARK: - FrontPageTransactionFeedDelegate
+
 extension FrontpageViewDemoView: FrontPageTransactionViewDelegate {
     public func transactionViewTapped(_ transactionView: FrontPageTransactionView) {
         print("TransactionFeedView tapped")
