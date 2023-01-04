@@ -1,7 +1,12 @@
 import UIKit
 
 public protocol JobApplyBoxViewDelegate: AnyObject {
-    func jobApplyBoxView(_ view: JobApplyBoxView, didSelectButton selectedButton: JobApplyBoxView.SelectedButton, withURL url: URL)
+    func jobApplyBoxView(
+        _ view: JobApplyBoxView,
+        didSelectButton selectedButton: JobApplyBoxView.SelectedButton,
+        withURL url: URL,
+        viewModel: JobApplyBoxViewModel
+    )
 }
 
 public class JobApplyBoxView: UIView {
@@ -69,7 +74,7 @@ public class JobApplyBoxView: UIView {
     // MARK: - Actions
 
     @objc private func primaryButtonTapped() {
-        delegate?.jobApplyBoxView(self, didSelectButton: .primary, withURL: viewModel.primaryButton.url)
+        delegate?.jobApplyBoxView(self, didSelectButton: .primary, withURL: viewModel.primaryButton.url, viewModel: viewModel)
     }
 }
 
@@ -77,7 +82,7 @@ public class JobApplyBoxView: UIView {
 
 extension JobApplyBoxView: LinkButtonViewDelegate {
     func linkButton(withIdentifier identifier: String?, wasTappedWithUrl url: URL) {
-        delegate?.jobApplyBoxView(self, didSelectButton: .secondary, withURL: url)
+        delegate?.jobApplyBoxView(self, didSelectButton: .secondary, withURL: url, viewModel: viewModel)
     }
 }
 
