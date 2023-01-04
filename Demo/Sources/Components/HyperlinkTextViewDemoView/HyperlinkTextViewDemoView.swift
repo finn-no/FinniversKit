@@ -42,14 +42,14 @@ public class HyperlinkTextViewDemoView: UIView, Tweakable {
     // MARK: - Configure
 
     private func configureHyper() {
-        var viewModel = HyperlinkTextViewViewModel(
+        var viewModel = HyperlinkTextViewModel(
             text: "Med å gjøre en <tag1>forespørsel</tag1> aksepterer du også <tag2>vilkårene for fiks, ferdig frakt og betaling</tag2>.",
             hyperlinks: [
-                HyperlinkTextViewViewModel.Hyperlink(
+                HyperlinkTextViewModel.Hyperlink(
                     hyperlink: "tag1",
                     action: "test://foobar"
                 ),
-                HyperlinkTextViewViewModel.Hyperlink(
+                HyperlinkTextViewModel.Hyperlink(
                     hyperlink: "tag2",
                     action: "test://blah"
                 )

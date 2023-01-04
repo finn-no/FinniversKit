@@ -1,10 +1,10 @@
 import SwiftUI
 
 public struct SwiftUIHyperlinkTextView: View {
-    let viewModel: HyperlinkTextViewViewModel
+    let viewModel: HyperlinkTextViewModel
     @State var size: CGSize?
 
-    public init(viewModel: HyperlinkTextViewViewModel) {
+    public init(viewModel: HyperlinkTextViewModel) {
         self.viewModel = viewModel
     }
 
@@ -36,7 +36,7 @@ private struct ChildSizeKey: PreferenceKey {
 }
 
 private struct HyperLinkTextViewRepresentable: UIViewRepresentable {
-    let viewModel: HyperlinkTextViewViewModel
+    let viewModel: HyperlinkTextViewModel
     let proposedSize: CGSize
 
     func makeUIView(context: Context) -> HyperlinkTextView {
@@ -55,10 +55,10 @@ private struct HyperLinkTextViewRepresentable: UIViewRepresentable {
 
 struct SwiftUIHyperlinkTextView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = HyperlinkTextViewViewModel(
+        let viewModel = HyperlinkTextViewModel(
             text: "Ved å godta en forespørsel aksepterer du også <tos>vilkårene for Fiks ferdig frakt og betaling hos FINN</tos>",
             hyperlinks: [
-                HyperlinkTextViewViewModel.Hyperlink(
+                HyperlinkTextViewModel.Hyperlink(
                     hyperlink: "tos",
                     action: "blablabla"
                 )
