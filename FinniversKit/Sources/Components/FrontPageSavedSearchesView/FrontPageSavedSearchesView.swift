@@ -14,12 +14,13 @@ public class FrontPageSavedSearchesView: UIView {
     // MARK: - Internal properties
 
     static let topPadding: CGFloat = .spacingL
-    static let height: CGFloat = headerHeight + cellHeight
+    static let height: CGFloat = headerHeight + cellHeight + bottomPadding
 
     // MARK: - Private properties
 
     private static let headerHeight: CGFloat = 44
     private static let cellHeight: CGFloat = 100
+    private static let bottomPadding: CGFloat = .spacingS
 
     private typealias Datasource = UICollectionViewDiffableDataSource<Section, AnyHashable>
     private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
