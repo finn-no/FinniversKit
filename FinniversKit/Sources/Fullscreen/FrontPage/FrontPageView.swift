@@ -299,7 +299,9 @@ public final class FrontPageView: UIView {
         var height = headerTopSpacing + labelHeight + marketGridViewHeight + promoContainerHeight + transactionFeedHeight +  headerBottomSpacing
 
         let savedSearchesHeight = savedSearchesViewModel?.height ?? 0
-        height += savedSearchesHeight + (savedSearchesHeight > 0 ? FrontPageSavedSearchesView.topPadding : 0)
+        if savedSearchesHeight > 0 {
+            height += savedSearchesHeight + FrontPageSavedSearchesView.topPadding
+        }
 
         marketsGridViewHeight.constant = marketGridViewHeight
         headerView.frame.size.height = height

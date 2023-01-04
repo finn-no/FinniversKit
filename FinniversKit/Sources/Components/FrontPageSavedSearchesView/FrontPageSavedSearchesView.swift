@@ -105,6 +105,7 @@ public extension FrontPageSavedSearchesView {
 private extension FrontPageSavedSearchesView {
     func setup() {
         addSubview(collectionView)
+        heightAnchor.constraint(equalToConstant: Self.height).isActive = true
 
         collectionView.backgroundColor = .bgQuaternary
         collectionView.fillInSuperview()
