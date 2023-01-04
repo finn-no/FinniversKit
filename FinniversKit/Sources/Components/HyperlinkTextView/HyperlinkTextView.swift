@@ -39,7 +39,7 @@ public class HyperlinkTextView: UIView {
     
     // MARK: - Private properties
 
-    private var viewModel: HyperlinkTextViewViewModel?
+    private var viewModel: HyperlinkTextViewModel?
 
     private lazy var textView: UITextView = {
         let view = UITextView(frame: .zero, textContainer: nil)
@@ -73,7 +73,7 @@ public class HyperlinkTextView: UIView {
 
     // MARK: - Public functions
 
-    public func configure(with viewModel: HyperlinkTextViewViewModel) {
+    public func configure(with viewModel: HyperlinkTextViewModel) {
         self.viewModel = viewModel
 
         updateText()
@@ -132,7 +132,7 @@ extension HyperlinkTextView: UITextViewDelegate {
 }
 
 private struct HyperLinkTextViewTranslator: HTMLStringParserTranslator {
-    let links: [HyperlinkTextViewViewModel.Hyperlink]
+    let links: [HyperlinkTextViewModel.Hyperlink]
     let textColor: UIColor
     let textAlignment: NSTextAlignment
 

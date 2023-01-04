@@ -490,7 +490,7 @@
 		E65085E2292BD01800A43B07 /* SwiftUISelectionListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085E1292BD01800A43B07 /* SwiftUISelectionListItem.swift */; };
 		E6510A6427FB36E5001B40D6 /* UIControlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510A6327FB36E5001B40D6 /* UIControlExtensions.swift */; };
 		E681A0E72923FCAC008564E2 /* HyperlinkTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0E62923FCAC008564E2 /* HyperlinkTextView.swift */; };
-		E681A0E92923FCE5008564E2 /* HyperlinkTextViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0E82923FCE5008564E2 /* HyperlinkTextViewViewModel.swift */; };
+		E681A0E92923FCE5008564E2 /* HyperlinkTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0E82923FCE5008564E2 /* HyperlinkTextViewModel.swift */; };
 		E68D58F628DDE75D001A70CA /* HTMLLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D58F528DDE75D001A70CA /* HTMLLabel.swift */; };
 		E68D58F828DDE77A001A70CA /* HTMLStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D58F728DDE77A001A70CA /* HTMLStyler.swift */; };
 		E6920B2B28474B78008B41C6 /* CombineCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6920B2A28474B78008B41C6 /* CombineCompatible.swift */; };
@@ -1007,7 +1007,7 @@
 		E65085E1292BD01800A43B07 /* SwiftUISelectionListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISelectionListItem.swift; sourceTree = "<group>"; };
 		E6510A6327FB36E5001B40D6 /* UIControlExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlExtensions.swift; sourceTree = "<group>"; };
 		E681A0E62923FCAC008564E2 /* HyperlinkTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextView.swift; sourceTree = "<group>"; };
-		E681A0E82923FCE5008564E2 /* HyperlinkTextViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextViewViewModel.swift; sourceTree = "<group>"; };
+		E681A0E82923FCE5008564E2 /* HyperlinkTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextViewModel.swift; sourceTree = "<group>"; };
 		E68D58F528DDE75D001A70CA /* HTMLLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLabel.swift; sourceTree = "<group>"; };
 		E68D58F728DDE77A001A70CA /* HTMLStyler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStyler.swift; sourceTree = "<group>"; };
 		E6920B2A28474B78008B41C6 /* CombineCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineCompatible.swift; sourceTree = "<group>"; };
@@ -3376,7 +3376,7 @@
 			isa = PBXGroup;
 			children = (
 				E681A0E62923FCAC008564E2 /* HyperlinkTextView.swift */,
-				E681A0E82923FCE5008564E2 /* HyperlinkTextViewViewModel.swift */,
+				E681A0E82923FCE5008564E2 /* HyperlinkTextViewModel.swift */,
 			);
 			path = HyperlinkTextView;
 			sourceTree = "<group>";
@@ -3692,7 +3692,7 @@
 				443A6420209A5044006BFB38 /* NotificationsListFooterView.swift in Sources */,
 				441FE44E209A2F2C00B04EF1 /* NotificationsListView.swift in Sources */,
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
-				E681A0E92923FCE5008564E2 /* HyperlinkTextViewViewModel.swift in Sources */,
+				E681A0E92923FCE5008564E2 /* HyperlinkTextViewModel.swift in Sources */,
 				CF4A053C21FB2ACB000BB7DA /* PianoEffectControl.swift in Sources */,
 				441FE42E209A24E500B04EF1 /* MarketsViewModel.swift in Sources */,
 				DAD6EB272369916100968497 /* SettingsViewCellModel.swift in Sources */,
