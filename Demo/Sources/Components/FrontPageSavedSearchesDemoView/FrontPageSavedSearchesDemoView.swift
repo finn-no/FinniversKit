@@ -7,6 +7,7 @@ class FrontPageSavedSearchesDemoView: UIView {
             buttonTitle: "Se alle",
             remoteImageDataSource: self
         )
+        view.delegate = self
         return view
     }()
 
@@ -27,6 +28,18 @@ private extension FrontPageSavedSearchesDemoView {
         addSubview(frontPageSavedSearchesView)
         frontPageSavedSearchesView.fillInSuperview()
         frontPageSavedSearchesView.configure(with: SavedSearchShelfFactory.create(numberOfItems: 8))
+    }
+}
+
+// MARK: - FrontPageSavedSearchesViewDelegate
+
+extension FrontPageSavedSearchesDemoView: FrontPageSavedSearchesViewDelegate {
+    func frontPageSavedSearchesView(_ view: FinniversKit.FrontPageSavedSearchesView, didSelectSavedSearch savedSearch: FrontPageSavedSearchViewModel) {
+        print("Did select saved search with title", savedSearch.title)
+    }
+
+    func frontPageSavedSearchesViewDidSelectActionButton(_ view: FinniversKit.FrontPageSavedSearchesView) {
+        print("Did select action button")
     }
 }
 
