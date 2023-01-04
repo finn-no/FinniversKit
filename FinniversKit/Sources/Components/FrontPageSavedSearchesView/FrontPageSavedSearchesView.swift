@@ -1,7 +1,7 @@
 import UIKit
 
 public protocol FrontPageSavedSearchesViewDelegate: AnyObject {
-    func frontPageSavedSearchesView(_ view: FrontPageSavedSearchesView, didSelectSavedSearchItem item: FrontPageSavedSearchViewModel)
+    func frontPageSavedSearchesView(_ view: FrontPageSavedSearchesView, didSelectSavedSearch savedSearch: FrontPageSavedSearchViewModel)
     func frontPageSavedSearchesViewDidSelectActionButton(_ view: FrontPageSavedSearchesView)
 }
 
@@ -141,9 +141,8 @@ private extension FrontPageSavedSearchesView {
 private extension FrontPageSavedSearchesView {
     private func makeDatasource() -> Datasource {
         let datasource = Datasource(collectionView: collectionView) { [weak self] collectionView, indexPath, item in
-            guard let viewModel = item as? FrontPageSavedSearchViewModel else { return UICollectionViewCell() }
-
             let cell = collectionView.dequeue(FrontPageSavedSearchCell.self, for: indexPath)
+            guard let viewModel = item as? FrontPageSavedSearchViewModel else { return cell }
             cell.configure(withModel: viewModel)
             cell.imageDatasource = self?.remoteImageDataSource
             cell.loadImage()
@@ -175,6 +174,6 @@ extension FrontPageSavedSearchesView: UICollectionViewDelegate {
             let item = collectionViewDatasource.itemIdentifier(for: indexPath) as? FrontPageSavedSearchViewModel
         else { return }
 
-        delegate?.frontPageSavedSearchesView(self, didSelectSavedSearchItem: item)
+        delegate?.frontPageSavedSearchesView(self, didSelectSavedSearch: item)
     }
 }

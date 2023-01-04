@@ -33,7 +33,7 @@ public class FrontpageViewDemoView: UIView {
 
         let savedSearchesViewModel = FrontPageSavedSearchesViewModel(
             searchViewModels: SavedSearchShelfFactory.create(numberOfItems: 10),
-            title: "Lagrede søk",
+            title: "Nytt i lagrede søk",
             buttonTitle: "Se alle"
         )
         view.configure(
@@ -229,8 +229,8 @@ extension FrontpageViewDemoView: RemoteImageViewDataSource {
 // MARK: - FrontPageShelfDelegate
 
 extension FrontpageViewDemoView: FrontPageSavedSearchesViewDelegate {
-    public func frontPageSavedSearchesView(_ view: FrontPageSavedSearchesView, didSelectSavedSearchItem item: FinniversKit.FrontPageSavedSearchViewModel) {
-        print("Did select saved search with title", item.title)
+    public func frontPageSavedSearchesView(_ view: FrontPageSavedSearchesView, didSelectSavedSearch savedSearch: FrontPageSavedSearchViewModel) {
+        print("Did select saved search with title", savedSearch.title)
     }
 
     public func frontPageSavedSearchesViewDidSelectActionButton(_ view: FrontPageSavedSearchesView) {

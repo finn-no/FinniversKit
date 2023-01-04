@@ -279,12 +279,8 @@ class ComponentViewTests: XCTestCase {
         snapshot(.brazePromotionView)
     }
 
-    func testSavedSearchShelf() {
-        snapshot(.savedSearchShelf)
-    }
-
-    func testFrontPageShelf() {
-        snapshot(.frontPageShelf)
+    func testFrontPageSavedSearchesView() {
+        snapshot(.frontPageSavedSearchesView)
     }
 
     func testOverflowCollectionView() {

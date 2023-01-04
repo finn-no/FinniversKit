@@ -69,8 +69,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case blockUserView
     case loadingRetryView
     case promotionView
-    case savedSearchShelf
-    case frontPageShelf
+    case frontPageSavedSearchesView
     case overFlowCollectionView
     case scrollableTabDemoView
     case monthAndYearPickerView
@@ -235,10 +234,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<LoadingRetryDemoView>()
         case .promotionView:
             return DemoViewController<PromotionDemoView>()
-        case .savedSearchShelf:
-            return DemoViewController<SavedSearchShelfDemoView>()
-        case .frontPageShelf:
-            return DemoViewController<FrontPageShelfDemoView>()
+        case .frontPageSavedSearchesView:
+            return DemoViewController<FrontPageSavedSearchesDemoView>()
         case .overFlowCollectionView:
             return DemoViewController<OverflowCollectionViewDemo>()
         case .scrollableTabDemoView:

@@ -1,7 +1,7 @@
 import FinniversKit
 
-class SavedSearchShelfDemoView: UIView {
-    private lazy var savedSearchView: FrontPageSavedSearchesView = {
+class FrontPageSavedSearchesDemoView: UIView {
+    private lazy var frontPageSavedSearchesView: FrontPageSavedSearchesView = {
         let view = FrontPageSavedSearchesView(
             title: "Nytt i lagrede søk",
             buttonTitle: "Se alle",
@@ -22,17 +22,17 @@ class SavedSearchShelfDemoView: UIView {
 
 // MARK: - Setup
 
-private extension SavedSearchShelfDemoView {
+private extension FrontPageSavedSearchesDemoView {
     private func setup() {
-        addSubview(savedSearchView)
-        savedSearchView.fillInSuperview()
-        savedSearchView.configure(with: SavedSearchShelfFactory.create(numberOfItems: 8))
+        addSubview(frontPageSavedSearchesView)
+        frontPageSavedSearchesView.fillInSuperview()
+        frontPageSavedSearchesView.configure(with: SavedSearchShelfFactory.create(numberOfItems: 8))
     }
 }
 
 // MARK: - RemoteImageViewDataSource
 
-extension SavedSearchShelfDemoView: RemoteImageViewDataSource {
+extension FrontPageSavedSearchesDemoView: RemoteImageViewDataSource {
     public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let url = URL(string: imagePath) else {
             completion(nil)

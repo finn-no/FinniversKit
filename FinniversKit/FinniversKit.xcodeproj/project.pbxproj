@@ -55,7 +55,7 @@
 		27B0929829534658009B6CC3 /* BadgeView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B0929729534658009B6CC3 /* BadgeView+Style.swift */; };
 		27D4BE09296573A30077D1A4 /* FrontPageSavedSearchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4BE08296573A30077D1A4 /* FrontPageSavedSearchesView.swift */; };
 		27D4BE0B296573AA0077D1A4 /* FrontPageSavedSearchesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4BE0A296573AA0077D1A4 /* FrontPageSavedSearchesViewModel.swift */; };
-		27D4BE0D296573E70077D1A4 /* FrontPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4BE0C296573E70077D1A4 /* FrontPageHeaderView.swift */; };
+		27D4BE1C29657A960077D1A4 /* FrontPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4BE1B29657A960077D1A4 /* FrontPageHeaderView.swift */; };
 		431875C1211180F100D71723 /* BuyerPickerProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */; };
 		432CE09D2112DBC500F01EC5 /* BuyerPickerTextHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE09C2112DBC500F01EC5 /* BuyerPickerTextHeader.swift */; };
 		43BACE6A21117D430052114C /* BuyerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BACE6921117D430052114C /* BuyerPickerView.swift */; };
@@ -570,7 +570,7 @@
 		27B0929729534658009B6CC3 /* BadgeView+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BadgeView+Style.swift"; sourceTree = "<group>"; };
 		27D4BE08296573A30077D1A4 /* FrontPageSavedSearchesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FrontPageSavedSearchesView.swift; path = Sources/Components/FrontPageSavedSearchesView/FrontPageSavedSearchesView.swift; sourceTree = SOURCE_ROOT; };
 		27D4BE0A296573AA0077D1A4 /* FrontPageSavedSearchesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FrontPageSavedSearchesViewModel.swift; path = Sources/Components/FrontPageSavedSearchesView/FrontPageSavedSearchesViewModel.swift; sourceTree = SOURCE_ROOT; };
-		27D4BE0C296573E70077D1A4 /* FrontPageHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FrontPageHeaderView.swift; path = Sources/Components/FrontPageHeaderView/FrontPageHeaderView.swift; sourceTree = SOURCE_ROOT; };
+		27D4BE1B29657A960077D1A4 /* FrontPageHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontPageHeaderView.swift; sourceTree = "<group>"; };
 		431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerProfileCell.swift; sourceTree = "<group>"; };
 		432CE09C2112DBC500F01EC5 /* BuyerPickerTextHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerTextHeader.swift; sourceTree = "<group>"; };
 		43BACE6921117D430052114C /* BuyerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerView.swift; sourceTree = "<group>"; };
@@ -1248,11 +1248,18 @@
 		27D4BE072965733E0077D1A4 /* FrontPageSavedSearches */ = {
 			isa = PBXGroup;
 			children = (
-				27D4BE0C296573E70077D1A4 /* FrontPageHeaderView.swift */,
 				27D4BE0A296573AA0077D1A4 /* FrontPageSavedSearchesViewModel.swift */,
 				27D4BE08296573A30077D1A4 /* FrontPageSavedSearchesView.swift */,
 			);
 			path = FrontPageSavedSearches;
+			sourceTree = "<group>";
+		};
+		27D4BE1A29657A960077D1A4 /* FrontPageHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				27D4BE1B29657A960077D1A4 /* FrontPageHeaderView.swift */,
+			);
+			path = FrontPageHeaderView;
 			sourceTree = "<group>";
 		};
 		431875BF211180C900D71723 /* Cell */ = {
@@ -1502,6 +1509,7 @@
 		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				27D4BE1A29657A960077D1A4 /* FrontPageHeaderView */,
 				27D4BE072965733E0077D1A4 /* FrontPageSavedSearches */,
 				9F84F96729277AF100631443 /* BrazePromotionView */,
 				CFDF39CB2385419E00D3B966 /* AddressCardView */,
@@ -3710,7 +3718,7 @@
 				4447F7031FDB2B110033DBC1 /* Config.swift in Sources */,
 				DAA9A3AC210215400021F7DC /* AnimatedSelectionView.swift in Sources */,
 				9BD8ABC02359B1EE001078CA /* ChristmasWishListView.swift in Sources */,
-				27D4BE0D296573E70077D1A4 /* FrontPageHeaderView.swift in Sources */,
+				27D4BE1C29657A960077D1A4 /* FrontPageHeaderView.swift in Sources */,
 				4DA1C74E27EC987F00B615A3 /* PromotionViewModel.swift in Sources */,
 				CF0F6B972360781E00CA62FD /* PrimingView.swift in Sources */,
 				082D80CD21C13D5300831BDE /* TriangleGiftView.swift in Sources */,
