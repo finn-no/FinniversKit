@@ -116,6 +116,7 @@ extension CGColor {
 // These colors are in use but are not part of the Fabric color palette
 extension UIColor {
     public class var coolGray100: UIColor { .init(hex: "#F3F4F6") }
+    public class var darkBgPrimaryProminent: UIColor { .init(hex: "#323241") }
     public class var darkCallToAction: UIColor { .init(hex: "#006DFB") }
     public class var darkIce: UIColor { .init(hex: "#262633") }
     public class var darkLicorice: UIColor { .init(hex: "#828699") }
@@ -131,6 +132,7 @@ extension UIColor {
 
 extension CGColor {
     public class var coolGray100: CGColor { UIColor.coolGray100.cgColor }
+    public class var darkBgPrimaryProminent: CGColor { UIColor.darkBgPrimaryProminent.cgColor }
     public class var darkCallToAction: CGColor { UIColor.darkCallToAction.cgColor }
     public class var darkIce: CGColor { UIColor.darkIce.cgColor }
     public class var darkLicorice: CGColor { UIColor.darkLicorice.cgColor }
