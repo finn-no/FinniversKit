@@ -195,7 +195,7 @@ private extension UIColor {
     }
 
     static var bgColor: UIColor {
-        return .dynamicColor(defaultColor: .milk, darkModeColor: .blueGray700)
+        return .dynamicColor(defaultColor: .white, darkModeColor: .darkBgPrimaryProminent)
     }
 }
 
