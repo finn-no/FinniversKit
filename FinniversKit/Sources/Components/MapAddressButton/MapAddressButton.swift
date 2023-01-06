@@ -32,6 +32,7 @@ public class MapAddressButton: UIView {
 
         button.setImage(UIImage(named: .mapLocationPin), for: .normal)
         button.imageView?.tintColor = button.style.textColor
+        button.imageView?.contentMode = .scaleAspectFit
         button.adjustsImageWhenHighlighted = false
         return button
     }()
