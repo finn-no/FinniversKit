@@ -58,6 +58,10 @@ public class MapAddressButton: UIView {
         button.setTitle(title, for: .normal)
     }
 
+    public func setIcon(_ icon: UIImage?) {
+        button.setImage(icon, for: .normal)
+    }
+
     // MARK: - Actions
 
     @objc private func handleButtonTap() {
