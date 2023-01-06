@@ -123,10 +123,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.earthHourView)
     }
 
-    func testStepIndicatorView() {
-        snapshot(.stepIndicatorView)
-    }
-
     func testNativeAdvert() {
         snapshot(.nativeAdvert)
     }
