@@ -54,7 +54,7 @@ public class MapAddressButton: UIView {
 
     // MARK: - Public methods
 
-    public func setTitle(_ title: String) {
+    public func setTitle(_ title: String?) {
         button.setTitle(title, for: .normal)
     }
 
