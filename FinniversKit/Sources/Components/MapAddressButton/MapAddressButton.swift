@@ -15,12 +15,7 @@ public class MapAddressButton: UIView {
     private lazy var buttonStyle: Button.Style = {
         let buttonStyle = Button.Style.flat
         return buttonStyle.overrideStyle(
-            margins: UIEdgeInsets(
-                top: buttonStyle.margins.top,
-                leading: 0,
-                bottom: buttonStyle.margins.bottom,
-                trailing: buttonStyle.margins.trailing
-            )
+            margins: UIEdgeInsets(trailing: buttonStyle.margins.trailing)
         )
     }()
 
