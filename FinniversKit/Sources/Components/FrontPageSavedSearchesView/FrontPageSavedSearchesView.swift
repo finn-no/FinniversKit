@@ -13,7 +13,7 @@ public class FrontPageSavedSearchesView: UIView {
 
     // MARK: - Internal properties
 
-    static let topPadding: CGFloat = .spacingL
+    static let topPadding: CGFloat = .spacingM
     static let height: CGFloat = headerHeight + cellHeight + bottomPadding
 
     // MARK: - Private properties
