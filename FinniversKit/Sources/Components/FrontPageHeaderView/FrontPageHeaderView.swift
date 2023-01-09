@@ -13,7 +13,11 @@ public class FrontPageHeaderView: UICollectionReusableView {
     }()
     
     private lazy var button: UIButton = {
-        let button = Button(style: Button.Style.flat)
+        let button = Button(
+            style: .flat.overrideStyle(
+                margins: .init(top: .spacingS, leading: .spacingM, bottom: .spacingS, trailing: 0)
+            )
+        )
         button.size = .normal
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setContentHuggingPriority(.required, for: .horizontal)
