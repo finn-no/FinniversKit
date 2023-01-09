@@ -129,7 +129,7 @@ private extension FrontPageSavedSearchesView {
 
         //Sections
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: .spacingM, bottom: 0, trailing: 0)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: .spacingM, bottom: 0, trailing: .spacingM)
         section.orthogonalScrollingBehavior = .continuous
         section.interGroupSpacing = .spacingS + .spacingXS
 
