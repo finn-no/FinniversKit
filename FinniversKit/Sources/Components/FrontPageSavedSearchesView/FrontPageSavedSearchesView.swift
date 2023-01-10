@@ -29,7 +29,7 @@ public class FrontPageSavedSearchesView: UIView {
         case savedSearch
     }
 
-    private var collectionViewDatasource: Datasource!
+    private lazy var collectionViewDatasource: Datasource = makeDatasource()
     private weak var remoteImageDataSource: RemoteImageViewDataSource?
     private var scrollToIndexPath: IndexPath?
     private let title: String
