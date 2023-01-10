@@ -321,15 +321,16 @@ public final class FrontPageView: UIView {
         self.savedSearchesViewModel = savedSearchesViewModel
 
         if frontPageSavedSearchView == nil {
-            frontPageSavedSearchView = FrontPageSavedSearchesView(
+            let frontPageSavedSearchView = FrontPageSavedSearchesView(
                 title: savedSearchesViewModel.title,
                 buttonTitle: savedSearchesViewModel.buttonTitle,
                 remoteImageDataSource: remoteImageViewDataSource,
                 withAutoLayout: true
             )
-            savedSearchesContainer.addSubview(frontPageSavedSearchView!)
+            self.frontPageSavedSearchView = frontPageSavedSearchView
+            savedSearchesContainer.addSubview(frontPageSavedSearchView)
 
-            frontPageSavedSearchView?.fillInSuperview(
+            frontPageSavedSearchView.fillInSuperview(
                 insets: .init(top: FrontPageSavedSearchesView.topPadding, leading: 0, bottom: 0, trailing: 0)
             )
         }
