@@ -19,11 +19,9 @@ class FrontPageSavedSearchesDemoView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
 
-// MARK: - Setup
+    // MARK: - Setup
 
-private extension FrontPageSavedSearchesDemoView {
     private func setup() {
         addSubview(frontPageSavedSearchesView)
         frontPageSavedSearchesView.fillInSuperview()
