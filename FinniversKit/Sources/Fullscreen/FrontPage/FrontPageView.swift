@@ -347,6 +347,7 @@ public final class FrontPageView: UIView {
     }
     
     public func removeSavedSearches() {
+        guard frontPageSavedSearchView != nil else { return }
         self.savedSearchesViewModel = nil
         frontPageSavedSearchView?.removeFromSuperview()
         frontPageSavedSearchView = nil
