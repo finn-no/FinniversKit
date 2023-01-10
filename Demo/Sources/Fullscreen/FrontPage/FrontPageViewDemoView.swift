@@ -32,7 +32,7 @@ public class FrontpageViewDemoView: UIView {
         view.showPromotion(withViewModel: hjerteromPromoViewModel, andDelegate: self)
 
         let savedSearchesViewModel = FrontPageSavedSearchesViewModel(
-            searchViewModels: SavedSearchShelfFactory.create(numberOfItems: 10),
+            searchViewModels: FrontPageSavedSearchFactory.create(numberOfItems: 10),
             title: "Nytt i lagrede søk",
             buttonTitle: "Se alle"
         )
@@ -226,7 +226,7 @@ extension FrontpageViewDemoView: RemoteImageViewDataSource {
     public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
 
-// MARK: - FrontPageShelfDelegate
+// MARK: - FrontPageSavedSearchesViewDelegate
 
 extension FrontpageViewDemoView: FrontPageSavedSearchesViewDelegate {
     public func frontPageSavedSearchesView(_ view: FrontPageSavedSearchesView, didSelectSavedSearch savedSearch: FrontPageSavedSearchViewModel) {

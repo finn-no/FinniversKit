@@ -1,7 +1,7 @@
 import Foundation
 import FinniversKit
 
-class SavedSearchShelfFactory {
+class FrontPageSavedSearchFactory {
     static func create(numberOfItems items: Int) -> [FrontPageSavedSearchViewModel] {
         let minCount = min(imageUrls.count, titles.count)
         return (0..<items).map { index in

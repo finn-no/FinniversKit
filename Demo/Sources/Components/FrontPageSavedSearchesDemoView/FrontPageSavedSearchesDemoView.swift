@@ -25,7 +25,7 @@ class FrontPageSavedSearchesDemoView: UIView {
     private func setup() {
         addSubview(frontPageSavedSearchesView)
         frontPageSavedSearchesView.fillInSuperview()
-        frontPageSavedSearchesView.configure(with: SavedSearchShelfFactory.create(numberOfItems: 8))
+        frontPageSavedSearchesView.configure(with: FrontPageSavedSearchFactory.create(numberOfItems: 8))
     }
 }
 
