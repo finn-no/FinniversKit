@@ -147,13 +147,12 @@ private extension Array where Element == MyAdModel {
                 subtitle: subtitle(index: $0),
                 imageUrl: imageUrl(index: $0),
                 expires: expires(index: $0),
-                numFavorites: numFavorites(index: $0),
-                numViews: numViews(index: $0),
+                statisticFavorites: numFavorites(index: $0),
+                statisticViews: numViews(index: $0),
                 ribbon: ribbon(index: $0)
             )
         }
     }
-
 
     static func title(index: Int) -> String {
         randomElement(index: index, from: [
@@ -185,31 +184,38 @@ private extension Array where Element == MyAdModel {
         ])
     }
 
-    static func expires(index: Int) -> String? {
-        randomElement(index: index, from: [
-            "50 dager igjen",
-            "3200 dager igjen",
-            "En fantasillion dager igjen",
+    static func expires(index: Int) -> MyAdModel.LabelItem? {
+        let value = randomElement(index: index, from: [
+            "50",
+            "3200",
+            "En fantasillion",
             nil
         ])
+
+        guard let value = value else { return nil }
+        return MyAdModel.LabelItem.spellOut(value: value, accessibilitySuffix: "dager igjen", appendSuffixToTitle: true)
     }
 
-    static func numFavorites(index: Int) -> String {
-        randomElement(index: index, from: [
+    static func numFavorites(index: Int) -> MyAdModel.LabelItem {
+        let value = randomElement(index: index, from: [
             "0",
             "120",
             "3456",
-            "18 000"
+            "18000"
         ])
+
+        return MyAdModel.LabelItem.spellOut(value: value, accessibilitySuffix: "har favorittmarkert annonsen")
     }
 
-    static func numViews(index: Int) -> String {
-        randomElement(index: index, from: [
-            "5 000",
+    static func numViews(index: Int) -> MyAdModel.LabelItem {
+        let value = randomElement(index: index, from: [
+            "5000",
             "8",
-            "9 876",
-            "970 000"
+            "9876",
+            "970000"
         ])
+
+        return MyAdModel.LabelItem.spellOut(value: value, accessibilitySuffix: "klikk på annonsen")
     }
 
     static func ribbon(index: Int) -> RibbonViewModel {
@@ -223,5 +229,27 @@ private extension Array where Element == MyAdModel {
 
     static func randomElement<T>(index: Int, from values: [T]) -> T {
         values[index % values.count]
+    }
+
+}
+
+private extension MyAdModel.LabelItem {
+    static func spellOut(value: String, accessibilitySuffix: String, appendSuffixToTitle: Bool = false) -> Self {
+        let spelledOut = spellOut(value: value)
+        let accessibilityTitle = "\(spelledOut ?? value) \(accessibilitySuffix)"
+
+        let title = appendSuffixToTitle ? "\(value) \(accessibilitySuffix)" : value
+        return Self.init(title: title, accessibilityTitle: accessibilityTitle)
+    }
+
+    static private func spellOut(value: String) -> String? {
+        guard let intValue = Int(value) else {
+            return nil
+        }
+
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .spellOut
+
+        return numberFormatter.string(from: intValue as NSNumber)
     }
 }

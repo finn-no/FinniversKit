@@ -51,6 +51,8 @@
 		179D06AE2906A3FA00A65E3A /* HTMLStringParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06AC2906A3FA00A65E3A /* HTMLStringParserTests.swift */; };
 		179D06B62907D66E00A65E3A /* HTMLLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06B52907D66E00A65E3A /* HTMLLexer.swift */; };
 		17E232F5290A7E71003DC8F7 /* HTMLLexerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */; };
+		17EAC08A296485C300B3C639 /* UIColor+FinniversKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */; };
+		27B0929829534658009B6CC3 /* BadgeView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B0929729534658009B6CC3 /* BadgeView+Style.swift */; };
 		431875C1211180F100D71723 /* BuyerPickerProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */; };
 		432CE09D2112DBC500F01EC5 /* BuyerPickerTextHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE09C2112DBC500F01EC5 /* BuyerPickerTextHeader.swift */; };
 		43BACE6A21117D430052114C /* BuyerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BACE6921117D430052114C /* BuyerPickerView.swift */; };
@@ -213,9 +215,6 @@
 		8908E85322C0D79600ED671C /* MessageFormBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84F22C0D76500ED671C /* MessageFormBottomSheet.swift */; };
 		8908E85722C0E49900ED671C /* MessageFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E85422C0E43C00ED671C /* MessageFormViewModel.swift */; };
 		8908E85E22C21A2300ED671C /* MessageFormTemplateState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E85B22C211D000ED671C /* MessageFormTemplateState.swift */; };
-		895175902248CF79008003FB /* StepIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8951758F2248CF79008003FB /* StepIndicator.swift */; };
-		895175952248D4D1008003FB /* StepDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895175942248D4D1008003FB /* StepDot.swift */; };
-		8951759A224902E4008003FB /* StepDotConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895175982249025B008003FB /* StepDotConnector.swift */; };
 		8962DA6B22781A9900A1BC78 /* ImageMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8962DA6A22781A9900A1BC78 /* ImageMemoryCache.swift */; };
 		899D0BF6222D4B3400794DEC /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899D0BF5222D4B3400794DEC /* ArrayExtensions.swift */; };
 		899D0BF8222D58D700794DEC /* FullscreenGalleryOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899D0BF7222D58D700794DEC /* FullscreenGalleryOverlayView.swift */; };
@@ -482,10 +481,20 @@
 		E6318FC628D9E7550038DC88 /* ViewModelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6318FC528D9E7550038DC88 /* ViewModelCoordinator.swift */; };
 		E6318FC828D9E7AC0038DC88 /* AnyViewModelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6318FC728D9E7AC0038DC88 /* AnyViewModelCoordinator.swift */; };
 		E6318FCA28D9E7EC0038DC88 /* UnownedViewModelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6318FC928D9E7EC0038DC88 /* UnownedViewModelCoordinator.swift */; };
+		E65085D1292BBF1D00A43B07 /* SwiftUICheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085D0292BBF1D00A43B07 /* SwiftUICheckBox.swift */; };
+		E65085D4292BBF7500A43B07 /* StatefulPreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085D3292BBF7500A43B07 /* StatefulPreviewWrapper.swift */; };
+		E65085D6292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085D5292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift */; };
+		E65085DA292BC03400A43B07 /* SwiftUIRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085D9292BC03400A43B07 /* SwiftUIRadioButton.swift */; };
+		E65085DC292BCD1D00A43B07 /* SwiftUISelectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085DB292BCD1D00A43B07 /* SwiftUISelectionListView.swift */; };
+		E65085E0292BCF7800A43B07 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085DF292BCF7800A43B07 /* RoundedCorner.swift */; };
+		E65085E2292BD01800A43B07 /* SwiftUISelectionListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65085E1292BD01800A43B07 /* SwiftUISelectionListItem.swift */; };
 		E6510A6427FB36E5001B40D6 /* UIControlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510A6327FB36E5001B40D6 /* UIControlExtensions.swift */; };
+		E681A0E72923FCAC008564E2 /* HyperlinkTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0E62923FCAC008564E2 /* HyperlinkTextView.swift */; };
+		E681A0E92923FCE5008564E2 /* HyperlinkTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0E82923FCE5008564E2 /* HyperlinkTextViewModel.swift */; };
 		E68D58F628DDE75D001A70CA /* HTMLLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D58F528DDE75D001A70CA /* HTMLLabel.swift */; };
 		E68D58F828DDE77A001A70CA /* HTMLStyler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D58F728DDE77A001A70CA /* HTMLStyler.swift */; };
 		E6920B2B28474B78008B41C6 /* CombineCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6920B2A28474B78008B41C6 /* CombineCompatible.swift */; };
+		E6E7B97929425C00005B7D64 /* ActionBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E7B97829425C00005B7D64 /* ActionBarButtonItem.swift */; };
 		E87A7BF328ED6AE0007094F2 /* NeighborhoodProfileBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87A7BF228ED6AE0007094F2 /* NeighborhoodProfileBannerView.swift */; };
 		F22612D822572D9400472D22 /* StatisticsItemEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */; };
 		F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */; };
@@ -557,6 +566,8 @@
 		179D06AC2906A3FA00A65E3A /* HTMLStringParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParserTests.swift; sourceTree = "<group>"; };
 		179D06B52907D66E00A65E3A /* HTMLLexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLexer.swift; sourceTree = "<group>"; };
 		17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLexerTests.swift; sourceTree = "<group>"; };
+		17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+FinniversKitTests.swift"; sourceTree = "<group>"; };
+		27B0929729534658009B6CC3 /* BadgeView+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BadgeView+Style.swift"; sourceTree = "<group>"; };
 		431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerProfileCell.swift; sourceTree = "<group>"; };
 		432CE09C2112DBC500F01EC5 /* BuyerPickerTextHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerTextHeader.swift; sourceTree = "<group>"; };
 		43BACE6921117D430052114C /* BuyerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerView.swift; sourceTree = "<group>"; };
@@ -990,10 +1001,20 @@
 		E6318FC528D9E7550038DC88 /* ViewModelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelCoordinator.swift; sourceTree = "<group>"; };
 		E6318FC728D9E7AC0038DC88 /* AnyViewModelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyViewModelCoordinator.swift; sourceTree = "<group>"; };
 		E6318FC928D9E7EC0038DC88 /* UnownedViewModelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnownedViewModelCoordinator.swift; sourceTree = "<group>"; };
+		E65085D0292BBF1D00A43B07 /* SwiftUICheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUICheckBox.swift; sourceTree = "<group>"; };
+		E65085D3292BBF7500A43B07 /* StatefulPreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulPreviewWrapper.swift; sourceTree = "<group>"; };
+		E65085D5292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIHyperlinkTextView.swift; sourceTree = "<group>"; };
+		E65085D9292BC03400A43B07 /* SwiftUIRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIRadioButton.swift; sourceTree = "<group>"; };
+		E65085DB292BCD1D00A43B07 /* SwiftUISelectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISelectionListView.swift; sourceTree = "<group>"; };
+		E65085DF292BCF7800A43B07 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		E65085E1292BD01800A43B07 /* SwiftUISelectionListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISelectionListItem.swift; sourceTree = "<group>"; };
 		E6510A6327FB36E5001B40D6 /* UIControlExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlExtensions.swift; sourceTree = "<group>"; };
+		E681A0E62923FCAC008564E2 /* HyperlinkTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextView.swift; sourceTree = "<group>"; };
+		E681A0E82923FCE5008564E2 /* HyperlinkTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextViewModel.swift; sourceTree = "<group>"; };
 		E68D58F528DDE75D001A70CA /* HTMLLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLabel.swift; sourceTree = "<group>"; };
 		E68D58F728DDE77A001A70CA /* HTMLStyler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStyler.swift; sourceTree = "<group>"; };
 		E6920B2A28474B78008B41C6 /* CombineCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineCompatible.swift; sourceTree = "<group>"; };
+		E6E7B97829425C00005B7D64 /* ActionBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionBarButtonItem.swift; sourceTree = "<group>"; };
 		E87A7BF228ED6AE0007094F2 /* NeighborhoodProfileBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileBannerView.swift; sourceTree = "<group>"; };
 		F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyView.swift; sourceTree = "<group>"; };
 		F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyViewModel.swift; sourceTree = "<group>"; };
@@ -1041,6 +1062,7 @@
 		087A5BB422A7D84600184640 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				E65085D2292BBF4500A43B07 /* SwiftUI */,
 				CF0B10972316AC0D001E7A57 /* BottomShadowView.swift */,
 				CF164CFE230EB3D100250822 /* ContentSizedTableView.swift */,
 				179D06A52906A39D00A65E3A /* HTMLStringParser */,
@@ -1145,6 +1167,7 @@
 		14F4F1BA1FD6CEA800E9CECA /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				17EAC0882964859A00B3C639 /* DNA */,
 				CF376C19231D455900ED2B24 /* StepSlider */,
 				CF3D5EFD215A759A006E4D08 /* EasterEggs */,
 				14F4F1BD1FD6CEA800E9CECA /* Info.plist */,
@@ -1197,6 +1220,14 @@
 				175385B129150E7800DA57D2 /* HTMLStringUIKitStyleTranslatorTests.swift */,
 			);
 			path = HTMLStringParser;
+			sourceTree = "<group>";
+		};
+		17EAC0882964859A00B3C639 /* DNA */ = {
+			isa = PBXGroup;
+			children = (
+				17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */,
+			);
+			path = DNA;
 			sourceTree = "<group>";
 		};
 		25D04D721F583B1800EA317D = {
@@ -1444,6 +1475,7 @@
 		4447F6631FDB2B110033DBC1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E65085CF292BBA0600A43B07 /* SwiftUI Components */,
 				4447F6B51FDB2B110033DBC1 /* Info.plist */,
 				4447F6C61FDB2B110033DBC1 /* Config.swift */,
 				9BB734C22462E9C000E05435 /* Base Components */,
@@ -1491,6 +1523,7 @@
 				14DC126821593B0000326DC3 /* HorizontalSlide */,
 				E68D58F428DDE74F001A70CA /* HTMLLabel */,
 				172E7500290FC84B00956AC2 /* HTMLText */,
+				E681A0E52923FC9A008564E2 /* HyperlinkTextView */,
 				CFB61372229ACA5200DE283D /* IconCollection */,
 				CF136ACB220320DD00247B30 /* Infobox */,
 				9B2D17CA23E02AA200EF3B50 /* KeyValueGridView */,
@@ -1670,7 +1703,6 @@
 		44898D591FE5B9C200F6017B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				DA5A858A24617DE200AC0DFE,
 				E6920B2928474B61008B41C6 /* Combine */,
 				44F8831020551D59003E3171 /* Foundation */,
 				9135BF8822F2C2EC00C8E1F5 /* MapKit */,
@@ -1953,6 +1985,7 @@
 		4D37A9B828571DB400F9460D /* BadgeView */ = {
 			isa = PBXGroup;
 			children = (
+				27B0929729534658009B6CC3 /* BadgeView+Style.swift */,
 				4D37A9B928571DC400F9460D /* BadgeView.swift */,
 				4D37A9BA28571DC400F9460D /* BadgeViewModel.swift */,
 			);
@@ -2622,6 +2655,7 @@
 			children = (
 				E6318FC428D9E7410038DC88 /* ViewModelCoordinator */,
 				9BB734C32462EA0500E05435 /* ButtonStyle.swift */,
+				E6E7B97829425C00005B7D64 /* ActionBarButtonItem.swift */,
 			);
 			path = "Base Components";
 			sourceTree = "<group>";
@@ -3329,6 +3363,27 @@
 			path = ViewModelCoordinator;
 			sourceTree = "<group>";
 		};
+		E65085CF292BBA0600A43B07 /* SwiftUI Components */ = {
+			isa = PBXGroup;
+			children = (
+				E65085DF292BCF7800A43B07 /* RoundedCorner.swift */,
+				E65085D0292BBF1D00A43B07 /* SwiftUICheckBox.swift */,
+				E65085D5292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift */,
+				E65085D9292BC03400A43B07 /* SwiftUIRadioButton.swift */,
+				E65085E1292BD01800A43B07 /* SwiftUISelectionListItem.swift */,
+				E65085DB292BCD1D00A43B07 /* SwiftUISelectionListView.swift */,
+			);
+			path = "SwiftUI Components";
+			sourceTree = "<group>";
+		};
+		E65085D2292BBF4500A43B07 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				E65085D3292BBF7500A43B07 /* StatefulPreviewWrapper.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
 		E6510A5E27FB3691001B40D6 /* ScrollableTabView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3337,6 +3392,15 @@
 				5B959A777DF7A1B2D6C36447 /* Subviews */,
 			);
 			path = ScrollableTabView;
+			sourceTree = "<group>";
+		};
+		E681A0E52923FC9A008564E2 /* HyperlinkTextView */ = {
+			isa = PBXGroup;
+			children = (
+				E681A0E62923FCAC008564E2 /* HyperlinkTextView.swift */,
+				E681A0E82923FCE5008564E2 /* HyperlinkTextViewModel.swift */,
+			);
+			path = HyperlinkTextView;
 			sourceTree = "<group>";
 		};
 		E68D58F428DDE74F001A70CA /* HTMLLabel */ = {
@@ -3594,6 +3658,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1753871F291AA79600DA57D2 /* HTMLStringParserTextTranslatorTests.swift in Sources */,
+				17EAC08A296485C300B3C639 /* UIColor+FinniversKitTests.swift in Sources */,
 				179D06AD2906A3FA00A65E3A /* HTMLStringParserHTMLTranslatorTests.swift in Sources */,
 				CF3D5F00215A75BF006E4D08 /* InstrumentTests.swift in Sources */,
 				CF376C1B231D458200ED2B24 /* ArrayStepTests.swift in Sources */,
@@ -3612,13 +3677,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6266C07222081EF600FB8004 /* StatisticsItemView.swift in Sources */,
-				895175902248CF79008003FB /* StepIndicator.swift in Sources */,
 				441FE433209A24E500B04EF1 /* AdRecommendationsGridViewLayout.swift in Sources */,
 				08F0D3F422259AD100968256 /* HappinessRatingView.swift in Sources */,
 				179D06A82906A39D00A65E3A /* HTMLStringParserHTMLTranslator.swift in Sources */,
 				44D9125F2077AC8A00486848 /* EmptyView.swift in Sources */,
 				44A557B622E72187001667AE /* CheckboxTableViewCell.swift in Sources */,
 				CF376C18231D452100ED2B24 /* Array+Step.swift in Sources */,
+				E65085DA292BC03400A43B07 /* SwiftUIRadioButton.swift in Sources */,
 				F288CB3E233CD53400C1EE8A /* UserAdsRatingView.swift in Sources */,
 				4D01FD5C261C9A5C008B9913 /* TransactionStepIllustrationView.swift in Sources */,
 				45EDD62F20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift in Sources */,
@@ -3649,6 +3714,7 @@
 				443A6420209A5044006BFB38 /* NotificationsListFooterView.swift in Sources */,
 				441FE44E209A2F2C00B04EF1 /* NotificationsListView.swift in Sources */,
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
+				E681A0E92923FCE5008564E2 /* HyperlinkTextViewModel.swift in Sources */,
 				CF4A053C21FB2ACB000BB7DA /* PianoEffectControl.swift in Sources */,
 				441FE42E209A24E500B04EF1 /* MarketsViewModel.swift in Sources */,
 				DAD6EB272369916100968497 /* SettingsViewCellModel.swift in Sources */,
@@ -3702,6 +3768,7 @@
 				DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */,
 				DA84E8E9252DC96900E4E3B3 /* FontProvider.swift in Sources */,
 				CF4A053721FB2ACB000BB7DA /* PianoView.swift in Sources */,
+				E65085D6292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift in Sources */,
 				DA708853211338650067519A /* ConfirmationView.swift in Sources */,
 				14C6F7D5212324CA00A7230C /* FavoritesListViewModel.swift in Sources */,
 				14DC126F21593B0000326DC3 /* HorizontalSlideController.swift in Sources */,
@@ -3723,7 +3790,6 @@
 				9B1B12C623D5ACE900282F3E /* ColumnListsView.swift in Sources */,
 				8908E83622BD0CA100ED671C /* MessageInputTextView.swift in Sources */,
 				9BB12AC2238289F100A04F61 /* StatisticsModel.swift in Sources */,
-				8951759A224902E4008003FB /* StepDotConnector.swift in Sources */,
 				17538723291ABC1B00DA57D2 /* HTMLElement.swift in Sources */,
 				6266C07022081EEA00FB8004 /* StatisticsItemModel.swift in Sources */,
 				D76B477E273925A30054E853 /* FrontPageShelfViewModel.swift in Sources */,
@@ -3803,6 +3869,7 @@
 				CFF9727121C3BA1D00C85238 /* BannerTransparencySectionView.swift in Sources */,
 				CF45AF89231D3A3000BE8B39 /* StepSlider.swift in Sources */,
 				899D0BF6222D4B3400794DEC /* ArrayExtensions.swift in Sources */,
+				E65085DC292BCD1D00A43B07 /* SwiftUISelectionListView.swift in Sources */,
 				0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */,
 				E6920B2B28474B78008B41C6 /* CombineCompatible.swift in Sources */,
 				9B238F02225B95F600B0E0C2 /* InfoboxView+Style.swift in Sources */,
@@ -3826,6 +3893,7 @@
 				4447F6EC1FDB2B110033DBC1 /* TextField+InputType.swift in Sources */,
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
 				712B0846254AEBC100791C6B /* BuyerPickerFallbackCell.swift in Sources */,
+				E65085E2292BD01800A43B07 /* SwiftUISelectionListItem.swift in Sources */,
 				CF5CA71422F87729007C4124 /* NeighborhoodProfileViewModel.swift in Sources */,
 				E6318FC828D9E7AC0038DC88 /* AnyViewModelCoordinator.swift in Sources */,
 				4D37A9BC28571DC400F9460D /* BadgeViewModel.swift in Sources */,
@@ -3956,7 +4024,7 @@
 				DAE6A55C21CA524B00837BFA /* CGPoint.swift in Sources */,
 				43BACE6C21117D530052114C /* BuyerPickerViewModel.swift in Sources */,
 				F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */,
-				895175952248D4D1008003FB /* StepDot.swift in Sources */,
+				E65085D1292BBF1D00A43B07 /* SwiftUICheckBox.swift in Sources */,
 				5D0ED35125A49FA7007750D0 /* FinnTextField+Style.swift in Sources */,
 				9F84F96B29277B1000631443 /* BrazePromotionViewModel.swift in Sources */,
 				F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */,
@@ -3967,6 +4035,7 @@
 				08F0D3F122202DC900968256 /* FeedbackViewModel.swift in Sources */,
 				CF3D5EE2215A6525006E4D08 /* InstrumentSelectorView.swift in Sources */,
 				5DA190C725A4A7E0002305A8 /* Transition+Extensions.swift in Sources */,
+				E65085D4292BBF7500A43B07 /* StatefulPreviewWrapper.swift in Sources */,
 				9A37D9EDC4E78EC664D528FE /* FeedbackView.swift in Sources */,
 				5DCE0882280FDDF100ED7407 /* MonthAndYearPickerView.swift in Sources */,
 				9F213438F5413991D1B3D7CD /* FullscreenGalleryViewModel.swift in Sources */,
@@ -3976,10 +4045,12 @@
 				CF164CFF230EB3D100250822 /* ContentSizedTableView.swift in Sources */,
 				CFB6137C229AD43400DE283D /* VerticalIconCollectionViewCell.swift in Sources */,
 				71C6A9542549636A00D78269 /* MessageUserRequiredSheet.swift in Sources */,
+				E681A0E72923FCAC008564E2 /* HyperlinkTextView.swift in Sources */,
 				9F2133BEBE174152BD809417 /* GalleryPreviewView.swift in Sources */,
 				9F213ABAE416284A53AC6BA5 /* GalleryPreviewCell.swift in Sources */,
 				9F213EA8026933194D7483E0 /* FullscreenImageView.swift in Sources */,
 				9F213036DE161042F54529B0 /* FullscreenGalleryTransitioningController.swift in Sources */,
+				E6E7B97929425C00005B7D64 /* ActionBarButtonItem.swift in Sources */,
 				CF13D6CF2292D40F0087DA37 /* PhaseViewModel.swift in Sources */,
 				D7C750352731C4EF002BDE98 /* SavedSearchShelfCell.swift in Sources */,
 				918C8A4223A3853400B566DE /* NativeAdvertGridView.swift in Sources */,
@@ -4004,6 +4075,7 @@
 				CF05BA02233B78BC003A7F1C /* FavoriteSearchEmptyView.swift in Sources */,
 				9A37D36854B78610AFEADD5C /* UITableViewCellExtensions.swift in Sources */,
 				9A37D6FADD7DBD952AA395F7 /* FavoriteAdTableViewCell.swift in Sources */,
+				E65085E0292BCF7800A43B07 /* RoundedCorner.swift in Sources */,
 				9BCD171523CCBB680045BD61 /* CollapsibleContentView.swift in Sources */,
 				9A37D015952CBD1FEF4F0E20 /* FavoriteAdViewModel.swift in Sources */,
 				9A37DFD7CA27F4F25F613DE2 /* FavoriteAdsListView.swift in Sources */,
@@ -4011,6 +4083,7 @@
 				9A37D0977C75034FE9603C2C /* FavoriteAdsListTableHeader.swift in Sources */,
 				5DA385C925B991E9006F8C34 /* JobAdRecommendationCell.swift in Sources */,
 				9A37D91577C7406D942AF82E /* FavoriteAdsSortingView.swift in Sources */,
+				27B0929829534658009B6CC3 /* BadgeView+Style.swift in Sources */,
 				9A37DB2BD626D2CA592D303E /* FavoriteAdsSectionHeaderView.swift in Sources */,
 				9A37DCEF8B61CDA7813AFB16 /* VisibilityDrivenTitleView.swift in Sources */,
 				449C60B5234DD85C00C51A63 /* ShadowView.swift in Sources */,

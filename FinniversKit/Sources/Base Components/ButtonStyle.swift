@@ -77,12 +77,18 @@ public struct DefaultStyle: ButtonStyle {
 }
 
 public struct CallToAction: ButtonStyle {
+    @Binding var isEnabled: Bool
     private let background: Color
     private let font: Font
 
-    public init(size: Button.Size = .normal, background: Color = .btnPrimary) {
+    public init(size: Button.Size = .normal, background: Color = .btnPrimary, isEnabled: Binding<Bool>? = nil) {
         self.background = background
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
+        if let isEnabledBinding = isEnabled {
+            self._isEnabled = isEnabledBinding
+        } else {
+            self._isEnabled = .constant(true)
+        }
     }
 
     public func makeBody(configuration: Configuration) -> some View {
@@ -90,13 +96,14 @@ public struct CallToAction: ButtonStyle {
             Spacer()
             configuration.label
                 .font(font)
-                .foregroundColor(.textTertiary)
+                .foregroundColor(isEnabled ? .textTertiary : .textCTADisabled)
             Spacer()
         }
         .padding(.vertical, .spacingS)
         .padding(.horizontal, .spacingM)
-        .background(dynamicBackground(configuration))
+        .background(isEnabled ? dynamicBackground(configuration) : .btnDisabled)
         .cornerRadius(.spacingS)
+        .animation(.easeOut, value: isEnabled)
     }
 
     private func dynamicBackground(_ configuration: Configuration) -> Color {

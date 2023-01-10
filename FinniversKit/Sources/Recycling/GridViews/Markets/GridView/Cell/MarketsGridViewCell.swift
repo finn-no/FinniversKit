@@ -134,6 +134,14 @@ class MarketsGridViewCell: UICollectionViewCell {
 
             let showExternalLinkIcon = model?.showExternalLinkIcon ?? false
             externalLinkImageView.isHidden = !showExternalLinkIcon
+
+            if showExternalLinkIcon {
+                accessibilityTraits.remove(.button)
+                accessibilityTraits.insert(.link)
+            } else {
+                accessibilityTraits.remove(.link)
+                accessibilityTraits.insert(.button)
+            }
         }
     }
 }
@@ -196,6 +204,6 @@ private extension UIColor {
     }
 
     class var tileBackgroundColor: UIColor {
-        return .dynamicColor(defaultColor: .milk, darkModeColor: .blueGray700)
+        return .dynamicColor(defaultColor: .white, darkModeColor: .darkBgPrimaryProminent)
     }
 }

@@ -33,7 +33,6 @@ public enum ComponentDemoViews: String, DemoViews {
     case broadcast
     case klimabroletView
     case christmasWishListView
-    case stepIndicatorView
     case nativeAdvert
     case callout
     case detailCallout
@@ -85,6 +84,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case myAdsListView
     case brazePromotionView
     case mapAddressButton
+    case hyperlinkTextView
 
     var title: String? {
         switch self {
@@ -159,8 +159,6 @@ public enum ComponentDemoViews: String, DemoViews {
             return KlimabroletDemoViewController(dismissType: .none)
         case .christmasWishListView:
             return DemoViewController<ChristmasWishListDemoView>()
-        case .stepIndicatorView:
-            return DemoViewController<StepIndicatorDemoView>(dismissType: .dismissButton)
         case .nativeAdvert:
             return DemoViewController<NativeAdvertDemoView>(dismissType: .dismissButton)
         case .callout:
@@ -268,6 +266,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<BrazePromotionDemoView>()
         case .mapAddressButton:
             return DemoViewController<MapAddressButtonDemoView>(dismissType: .dismissButton)
+        case .hyperlinkTextView:
+            return DemoViewController<HyperlinkTextViewDemoView>()
         }
     }
 }

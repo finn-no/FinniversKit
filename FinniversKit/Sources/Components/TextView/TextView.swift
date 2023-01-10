@@ -102,10 +102,8 @@ public class TextView: UIView {
     }()
 
     private lazy var placeholderLabel: UILabel = {
-        let label = Label(style: .body)
+        let label = Label(style: .body, numberOfLines: 0, withAutoLayout: true)
         label.textColor = .textDisabled
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
@@ -122,8 +120,18 @@ public class TextView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(textViewBackgroundColor: UIColor) {
+    public func configure(textViewBackgroundColor: UIColor = .bgSecondary,
+                          textViewTextColor: UIColor = .textPrimary,
+                          textViewFont: UIFont = .body,
+                          placeholderLabelTextColor: UIColor = .textDisabled,
+                          placeholderLabelFont: UIFont = .body,
+                          underLineBGColor: UIColor = .accentSecondaryBlue) {
         textView.backgroundColor = textViewBackgroundColor
+        textView.textColor = textViewTextColor
+        textView.font = textViewFont
+        placeholderLabel.textColor = placeholderLabelTextColor
+        placeholderLabel.font = placeholderLabelFont
+        underLine.backgroundColor = underLineBGColor
     }
 
     public func configure(shouldHideUnderLine: Bool) {

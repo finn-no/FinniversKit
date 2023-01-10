@@ -4,6 +4,12 @@
 
 import SwiftUI
 
+extension HTMLText {
+    public func finnFont(_ style: Label.Style) -> HTMLText {
+        font(Font.finnFont(style))
+    }
+}
+
 extension Text {
     public func finnFont(_ style: Label.Style) -> Text {
         font(Font.finnFont(style))

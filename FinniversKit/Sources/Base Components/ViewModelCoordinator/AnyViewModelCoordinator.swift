@@ -4,6 +4,10 @@ extension ViewModelCoordinator {
     public func eraseToAnyCoordinator() -> AnyViewModelCoordinator<Route> {
         return .init(coordinator: self)
     }
+
+    public func eraseToAnyCoordinator<TargetRoute>(transform: @escaping (TargetRoute) -> Route) -> AnyViewModelCoordinator<TargetRoute> {
+        return .init(coordinator: self, transform: transform)
+    }
 }
 
 // MARK: - AnyViewModelCoordinator

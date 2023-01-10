@@ -38,7 +38,7 @@ public class FloatingButtonDemoView: UIView, Tweakable {
                         tintColor: .textTertiary,
                         primaryBackgroundColor: .btnPrimary,
                         highlightedBackgroundColor: .btnPrimary,
-                        badgeBackgroundColor: .cherry,
+                        badgeBackgroundColor: .btnCritical,
                         badgeTextColor: .textTertiary,
                         badgeSize: 20,
                         shadowColor: UIColor(hex: "#303133").withAlphaComponent(0.9),

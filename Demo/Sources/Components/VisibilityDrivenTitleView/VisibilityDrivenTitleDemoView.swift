@@ -35,7 +35,7 @@ class VisibilityDrivenTitleDemoView: UIView {
     // MARK: - Private methods
 
     private func setup() {
-        titleView.layer.borderColor = UIColor.licorice.cgColor
+        titleView.layer.borderColor = .textPrimary
         titleView.layer.borderWidth = 0.5
 
         addSubview(titleView)

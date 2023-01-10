@@ -123,10 +123,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.earthHourView)
     }
 
-    func testStepIndicatorView() {
-        snapshot(.stepIndicatorView)
-    }
-
     func testNativeAdvert() {
         snapshot(.nativeAdvert)
     }
@@ -341,5 +337,9 @@ class ComponentViewTests: XCTestCase {
 
     func testMapAddressButton() {
         snapshot(.mapAddressButton, includeIPad: true)
+    }
+
+    func testHyperlinkTextView() {
+        snapshot(.hyperlinkTextView)
     }
 }

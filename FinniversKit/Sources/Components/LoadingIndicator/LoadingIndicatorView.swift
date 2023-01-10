@@ -91,7 +91,7 @@ extension LoadingIndicatorView {
         backgroundColor = .clear
 
         backgroundLayer.fillColor = UIColor.clear.cgColor
-        backgroundLayer.strokeColor = UIColor.loadingIndicatorBackground?.cgColor
+        backgroundLayer.strokeColor = UIColor.loadingIndicatorBackground.cgColor
         backgroundLayer.strokeStart = 0
         backgroundLayer.strokeEnd = 1
         backgroundLayer.lineWidth = lineWidth
@@ -154,7 +154,7 @@ extension LoadingIndicatorView {
 // MARK: - Private extensions
 
 private extension UIColor {
-    static var loadingIndicatorBackground: UIColor? {
+    static var loadingIndicatorBackground: UIColor {
         return UIColor(r: 221, g: 232, b: 250)
     }
 }
