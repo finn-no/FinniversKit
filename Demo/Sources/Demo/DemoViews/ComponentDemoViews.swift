@@ -83,6 +83,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case jobKeyInfo
     case myAdsListView
     case brazePromotionView
+    case mapAddressButton
     case hyperlinkTextView
 
     var title: String? {
@@ -263,6 +264,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<MyAdsListDemoView>(dismissType: .dismissButton, containmentOptions: .navigationController)
         case .brazePromotionView:
             return DemoViewController<BrazePromotionDemoView>()
+        case .mapAddressButton:
+            return DemoViewController<MapAddressButtonDemoView>(dismissType: .dismissButton)
         case .hyperlinkTextView:
             return DemoViewController<HyperlinkTextViewDemoView>()
         }
