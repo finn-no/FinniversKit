@@ -12,6 +12,7 @@ extension Color {
     public static var bgPrimary: Color     { Color(UIColor.bgPrimary) }
     public static var bgSecondary: Color   { Color(UIColor.bgSecondary) }
     public static var bgTertiary: Color    { Color(UIColor.bgTertiary) }
+    public static var bgQuaternary: Color  { Color(UIColor.bgQuaternary) }
     public static var bgBottomSheet: Color { Color(UIColor.bgBottomSheet) }
     public static var bgAlert: Color       { Color(UIColor.bgAlert) }
     public static var bgSuccess: Color     { Color(UIColor.bgSuccess) }
@@ -49,4 +50,5 @@ extension Color {
     public static var tableViewSeparator: Color  { Color(UIColor.tableViewSeparator) }
     public static var imageBorder: Color         { Color(UIColor.imageBorder) }
     public static var decorationSubtle: Color    { Color(UIColor.decorationSubtle) }
+    public static var borderDefault: Color       { Color(UIColor.borderDefault) }
 }

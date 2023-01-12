@@ -45,7 +45,7 @@ class PriceLinkButtonView: UIView {
     private lazy var externalImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = externalImage
-        imageView.tintColor = .externalIconColor
+        imageView.tintColor = .borderDefault
         return imageView
     }()
 
@@ -142,10 +142,4 @@ class PriceLinkButtonView: UIView {
             buttonStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor)
         ])
     }
-}
-
-// MARK: - Private extensions
-
-private extension UIColor {
-    static var externalIconColor = dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
 }

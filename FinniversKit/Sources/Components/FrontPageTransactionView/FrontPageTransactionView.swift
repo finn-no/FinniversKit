@@ -93,6 +93,7 @@ public class FrontPageTransactionView: UIView {
 
     private lazy var headerLabel: UILabel = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
+        label.accessibilityTraits.insert(.header)
         return label
     }()
 
@@ -194,7 +195,7 @@ private extension UIColor {
     }
 
     static var bgColor: UIColor {
-        return .dynamicColor(defaultColor: .milk, darkModeColor: .blueGray700)
+        return .dynamicColor(defaultColor: .white, darkModeColor: .darkBgPrimaryProminent)
     }
 }
 

@@ -2,17 +2,19 @@ import Foundation
 import UIKit
 
 public final class BadgeView: UIView {
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(axis: .horizontal, spacing: .spacingXS, withAutoLayout: true)
+        stackView.alignment = .center
+        return stackView
+    }()
+
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
-    private lazy var textLabel: Label = {
-        let label = Label(style: .detailStrong, withAutoLayout: true)
-        label.textColor = .badgeTextColor
-        return label
-    }()
+    private lazy var textLabel = Label(style: .detail, withAutoLayout: true)
 
     // MARK: - Init
 
@@ -29,33 +31,35 @@ public final class BadgeView: UIView {
 
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .banana
-        layer.cornerRadius = .spacingS
+        layer.cornerRadius = .spacingXS
         layer.maskedCorners = [.layerMaxXMaxYCorner]
 
-        addSubview(iconImageView)
-        addSubview(textLabel)
+        addSubview(stackView)
+        stackView.addArrangedSubviews([iconImageView, textLabel])
 
         let iconSize: CGFloat = .spacingM
 
         NSLayoutConstraint.activate([
-            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
-            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            iconImageView.heightAnchor.constraint(equalToConstant: iconSize),
-            iconImageView.widthAnchor.constraint(equalToConstant: iconSize),
+            heightAnchor.constraint(equalToConstant: 24),
 
-            textLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .spacingXS),
-            textLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXS),
-            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
-            textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingXS),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+
+            iconImageView.widthAnchor.constraint(equalToConstant: iconSize),
+            iconImageView.heightAnchor.constraint(equalToConstant: iconSize)
         ])
     }
 
     // MARK: - Public methods
 
     public func configure(with viewModel: BadgeViewModel) {
+        backgroundColor = viewModel.style.backgroundColor
+        textLabel.textColor = viewModel.style.textColor
         textLabel.text = viewModel.title
         iconImageView.image = viewModel.icon
+        iconImageView.isHidden = viewModel.icon == nil
     }
 
     public func attachToTopLeadingAnchor(in superview: UIView) {

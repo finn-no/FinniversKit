@@ -18,7 +18,6 @@ class LinkButtonView: UIView {
     private let linkUrl: URL
     private let buttonStyle: Button.Style
     private let buttonSize: Button.Size
-    private lazy var fillerView = UIView(withAutoLayout: true)
     private lazy var externalImage = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
 
     private lazy var stackView: UIStackView = {
@@ -30,7 +29,7 @@ class LinkButtonView: UIView {
     }()
 
     private lazy var topRowStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [linkButton, fillerView, externalImageView])
+        let stackView = UIStackView(arrangedSubviews: [linkButton, externalImageView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.alignment = .center
         return stackView
@@ -40,13 +39,15 @@ class LinkButtonView: UIView {
         let button = MultilineButton(style: buttonStyle, size: buttonSize, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
         button.contentHorizontalAlignment = .leading
+        button.setContentHuggingPriority(.defaultLow, for: .horizontal)
         return button
     }()
 
     private lazy var externalImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = externalImage
-        imageView.tintColor = .externalIconColor
+        imageView.tintColor = .borderDefault
+        imageView.setContentHuggingPriority(.required, for: .horizontal)
         return imageView
     }()
 
@@ -73,9 +74,9 @@ class LinkButtonView: UIView {
     }
 
     init(
-        buttonIdentifier: String?,
+        buttonIdentifier: String? = nil,
         buttonTitle: String,
-        subtitle: String?,
+        subtitle: String? = nil,
         linkUrl: URL,
         isExternal: Bool,
         externalIconColor: UIColor? = nil,
@@ -89,7 +90,7 @@ class LinkButtonView: UIView {
         super.init(frame: .zero)
 
         externalImageView.isHidden = !isExternal
-        externalImageView.tintColor = externalIconColor ?? .externalIconColor
+        externalImageView.tintColor = externalIconColor ?? .borderDefault
         linkButton.setTitle(buttonTitle, for: .normal)
         subtitleLabel.text = subtitle
         subtitleLabel.isHidden = subtitle?.isEmpty ?? true
@@ -117,10 +118,6 @@ class LinkButtonView: UIView {
 }
 
 // MARK: - Private extensions
-
-private extension UIColor {
-    static var externalIconColor = dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine)
-}
 
 private extension Button.Style {
     static var defaultButtonStyle = Button.Style.link.overrideStyle(smallFont: .body)

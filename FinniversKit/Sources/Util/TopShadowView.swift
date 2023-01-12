@@ -31,10 +31,11 @@ public class TopShadowView: UIView {
 
     // MARK: - Shadow
 
-    public func updateShadow(using scrollView: UIScrollView) {
+    public func updateShadow(using scrollView: UIScrollView, scrollViewParentView: UIView? = nil) {
+        let minY = scrollViewParentView?.frame.minY ?? scrollView.frame.minY
         let contentFrame = CGRect(
             x: -scrollView.contentOffset.x,
-            y: scrollView.frame.minY - scrollView.contentOffset.y - scrollView.contentInset.top,
+            y: minY - scrollView.contentOffset.y - scrollView.contentInset.top,
             width: scrollView.contentSize.width,
             height: scrollView.contentSize.height + scrollView.contentInset.top
         )

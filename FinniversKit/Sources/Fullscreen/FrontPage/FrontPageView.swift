@@ -5,6 +5,7 @@
 import UIKit
 
 public protocol FrontPageViewModel {
+    var marketsGridViewAccessibilityHeaderTitle: String { get }
     var adRecommedationsGridViewHeaderTitle: String { get }
     var retryButtonTitle: String { get }
     var noRecommendationsText: String { get }
@@ -55,7 +56,7 @@ public final class FrontPageView: UIView {
     // MARK: - Subviews
 
     private lazy var marketsGridView: MarketsGridView = {
-        let view = MarketsGridView(delegate: self, dataSource: marketsViewDataSource)
+        let view = MarketsGridView(accessibilityHeader: model?.marketsGridViewAccessibilityHeaderTitle ?? "", delegate: self, dataSource: marketsViewDataSource)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -86,6 +87,7 @@ public final class FrontPageView: UIView {
     private lazy var headerLabel: Label = {
         var headerLabel = Label(style: .title3Strong)
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
+        headerLabel.accessibilityTraits.insert(.header)
         return headerLabel
     }()
 
@@ -180,6 +182,29 @@ public final class FrontPageView: UIView {
             )
         )
 
+        setupFrames()
+    }
+
+    public func showBrazePromotion(withViewModel viewModel: BrazePromotionViewModel, andDelegate delegate: BrazePromotionViewDelegate) {
+        let promotionView = BrazePromotionView(viewModel: viewModel, imageDatasource: remoteImageDataSource)
+        promotionView.delegate = delegate
+
+        headerView.addSubview(promoContainer)
+        promoContainer.addSubview(promotionView)
+        promotionView.fillInSuperview(
+            insets: .init(
+                top: .spacingL,
+                leading: .spacingM,
+                bottom: 0,
+                trailing: -.spacingM
+            )
+        )
+
+        setupFrames()
+    }
+
+    public func removeBrazePromotion() {
+        promoContainer.subviews.forEach { $0.removeFromSuperview() }
         setupFrames()
     }
 

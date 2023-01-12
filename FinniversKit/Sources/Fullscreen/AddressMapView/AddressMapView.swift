@@ -74,7 +74,7 @@ public class AddressMapView: UIView {
     public func configureRadiusArea(_ radius: Double, location: CLLocationCoordinate2D) {
         removeCurrentAnnotationAndShapeOverlays()
         let newCircle = MKCircle(center: location, radius: radius)
-        mapView.addOverlay(newCircle)
+        mapView.addOverlay(newCircle, level: .aboveLabels)
         circle = newCircle
     }
 

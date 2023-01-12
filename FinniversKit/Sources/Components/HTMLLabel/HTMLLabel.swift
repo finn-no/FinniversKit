@@ -30,8 +30,7 @@ public class HTMLLabel: Label {
         super.traitCollectionDidChange(previousTraitCollection)
 
         guard
-            let htmlText = htmlText,
-            UIApplication.shared.applicationState != .background
+            let htmlText = htmlText
         else {
             return
         }
@@ -40,6 +39,9 @@ public class HTMLLabel: Label {
     }
 
     private func setAttributedString(from htmlString: String) {
+        // We can not update the (html) attributed string when the app is in the background or it will crash. This can potentially lead to a label that is not getting set
+        guard UIApplication.shared.applicationState != .background else { return }
+
         var styledText = "<span style=\"font-family: \(font.fontName); font-size: \(font.pointSize); color: text-color\">\(htmlString)</span>"
         let combinedStyleMap = styleMap.merging(additionalStyleMap ?? [:], uniquingKeysWith: { $1 })
         for (styleIdentifier, styleColor) in combinedStyleMap {
