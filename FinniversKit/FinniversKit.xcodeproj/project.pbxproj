@@ -730,9 +730,6 @@
 		8908E84F22C0D76500ED671C /* MessageFormBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormBottomSheet.swift; sourceTree = "<group>"; };
 		8908E85422C0E43C00ED671C /* MessageFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormViewModel.swift; sourceTree = "<group>"; };
 		8908E85B22C211D000ED671C /* MessageFormTemplateState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormTemplateState.swift; sourceTree = "<group>"; };
-		8951758F2248CF79008003FB /* StepIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StepIndicator.swift; path = Sources/Components/Broadcast/StepIndicator.swift; sourceTree = SOURCE_ROOT; };
-		895175942248D4D1008003FB /* StepDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepDot.swift; sourceTree = "<group>"; };
-		895175982249025B008003FB /* StepDotConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepDotConnector.swift; sourceTree = "<group>"; };
 		8962DA6A22781A9900A1BC78 /* ImageMemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMemoryCache.swift; sourceTree = "<group>"; };
 		899D0BF5222D4B3400794DEC /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		899D0BF7222D58D700794DEC /* FullscreenGalleryOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenGalleryOverlayView.swift; sourceTree = "<group>"; };
@@ -1560,7 +1557,6 @@
 				9A37D55FF47FB2736E329236 /* SelfDeclaration */,
 				714B93502537288B00801C99 /* SendInviteView */,
 				F22612D6225631FD00472D22 /* StatisticsView */,
-				8951758E2248CF53008003FB /* StepIndicator */,
 				CF45AF03231D24A500BE8B39 /* StepSlider */,
 				45D7C569204949B7000E788F /* Switch */,
 				4447F6A31FDB2B110033DBC1 /* TextField */,
@@ -2249,16 +2245,6 @@
 				8908E85B22C211D000ED671C /* MessageFormTemplateState.swift */,
 			);
 			path = MessageForm;
-			sourceTree = "<group>";
-		};
-		8951758E2248CF53008003FB /* StepIndicator */ = {
-			isa = PBXGroup;
-			children = (
-				8951758F2248CF79008003FB /* StepIndicator.swift */,
-				895175942248D4D1008003FB /* StepDot.swift */,
-				895175982249025B008003FB /* StepDotConnector.swift */,
-			);
-			path = StepIndicator;
 			sourceTree = "<group>";
 		};
 		89A7A63A2253376D0053D33B /* NativeAdvert */ = {
