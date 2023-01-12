@@ -34,7 +34,6 @@ extension UIImage {
 //swiftlint:disable type_body_length
 enum ImageAsset: String {
     case adManagementShare
-    case adManagementTrashcan
     case arrowDown
     case arrowDownSmall
     case arrowRight
@@ -52,7 +51,6 @@ enum ImageAsset: String {
     case carsCircleIllustration
     case carsIllustration
     case check
-    case checkCircle
     case checkCircleFilled
     case checkCircleFilledMini
     case checkmark
@@ -78,7 +76,6 @@ enum ImageAsset: String {
     case editBig
     case error
     case exclamationMarkTriangleMini
-    case eyeHide
     case favoriteActive
     case favoriteAdd
     case favoriteDefault
@@ -118,6 +115,7 @@ enum ImageAsset: String {
     case magnifyingGlass
     case mapDirections
     case mapDrawarea
+    case mapLocationPin
     case mapMyposition
     case messageUserRequired
     case minus
@@ -142,7 +140,6 @@ enum ImageAsset: String {
     case plusMini
     case pusefinnCircle
     case rate
-    case rated
     case ratingFaceAngry
     case ratingFaceDissatisfied
     case ratingFaceHappy
@@ -150,7 +147,6 @@ enum ImageAsset: String {
     case ratingFaceNeutral
     case ratings
     case remove
-    case republish
     case search
     case searchBig
     case send
@@ -160,14 +156,12 @@ enum ImageAsset: String {
     case sliderThumbActive
     case speechbubbleSmiley
     case spidLogo
-    case stakeholder
     case starOutline
     case statsEmpty
     case statsEnvelope
     case statsEye
     case statsHeart
     case success
-    case uncheckCircle
     case view
     case viewMode
     case warning
@@ -176,7 +170,6 @@ enum ImageAsset: String {
     static var imageNames: [ImageAsset] {
         return [
             .adManagementShare,
-            .adManagementTrashcan,
             .arrowDown,
             .arrowDownSmall,
             .arrowRight,
@@ -194,7 +187,6 @@ enum ImageAsset: String {
             .carsCircleIllustration,
             .carsIllustration,
             .check,
-            .checkCircle,
             .checkCircleFilled,
             .checkCircleFilledMini,
             .checkmark,
@@ -220,7 +212,6 @@ enum ImageAsset: String {
             .editBig,
             .error,
             .exclamationMarkTriangleMini,
-            .eyeHide,
             .favoriteActive,
             .favoriteAdd,
             .favoriteDefault,
@@ -260,6 +251,7 @@ enum ImageAsset: String {
             .magnifyingGlass,
             .mapDirections,
             .mapDrawarea,
+            .mapLocationPin,
             .mapMyposition,
             .messageUserRequired,
             .minus,
@@ -284,7 +276,6 @@ enum ImageAsset: String {
             .plusMini,
             .pusefinnCircle,
             .rate,
-            .rated,
             .ratingFaceAngry,
             .ratingFaceDissatisfied,
             .ratingFaceHappy,
@@ -292,7 +283,6 @@ enum ImageAsset: String {
             .ratingFaceNeutral,
             .ratings,
             .remove,
-            .republish,
             .search,
             .searchBig,
             .send,
@@ -302,14 +292,12 @@ enum ImageAsset: String {
             .sliderThumbActive,
             .speechbubbleSmiley,
             .spidLogo,
-            .stakeholder,
             .starOutline,
             .statsEmpty,
             .statsEnvelope,
             .statsEye,
             .statsHeart,
             .success,
-            .uncheckCircle,
             .view,
             .viewMode,
             .warning,

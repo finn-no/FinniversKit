@@ -41,7 +41,7 @@ class SearchDemoView: UIView, Tweakable {
         searchView.fillInSuperview()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
-            self?.searchView.becomeFirstResponder()
+            _ = self?.searchView.becomeFirstResponder()
         })
     }
 }
@@ -54,7 +54,7 @@ extension SearchDemoView: SearchViewDelegate {
     }
 
     func searchView(_ view: SearchView, didChangeSearchText searchText: String?) {
-        print("🖋 Did change search text: '\(searchText)'")
+        print("🖋 Did change search text: '\(searchText ?? "")'")
 
         if let searchText = searchText, !searchText.isEmpty {
             let items = (1...searchText.count).map { "\($0) \(searchText)" }

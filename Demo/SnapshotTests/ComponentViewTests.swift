@@ -123,10 +123,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.earthHourView)
     }
 
-    func testStepIndicatorView() {
-        snapshot(.stepIndicatorView)
-    }
-
     func testNativeAdvert() {
         snapshot(.nativeAdvert)
     }
@@ -275,6 +271,10 @@ class ComponentViewTests: XCTestCase {
         snapshot(.promotionView)
     }
 
+    func testBrazePromotionView() {
+        snapshot(.brazePromotionView)
+    }
+
     func testRecentlyFavoritedShelf() {
         snapshot(.recentlyfavoritedShelf)
     }
@@ -293,6 +293,10 @@ class ComponentViewTests: XCTestCase {
 
     func testDetailCallout() {
         snapshot(.detailCallout)
+    }
+
+    func testScrollableTabDemoView() {
+        snapshot(.scrollableTabDemoView)
     }
 
     func testMonthAndYearPickerView() {
@@ -317,5 +321,25 @@ class ComponentViewTests: XCTestCase {
 
     func testBadgeView() {
         snapshot(.badgeView)
+    }
+
+    func testJobApplyBox() {
+        snapshot(.jobApplyBox)
+    }
+
+    func testJobKeyInfo() {
+        snapshot(.jobKeyInfo)
+    }
+
+    func testMyAdsListView() {
+        snapshot(.myAdsListView, includeIPad: true)
+    }
+
+    func testMapAddressButton() {
+        snapshot(.mapAddressButton, includeIPad: true)
+    }
+
+    func testHyperlinkTextView() {
+        snapshot(.hyperlinkTextView)
     }
 }

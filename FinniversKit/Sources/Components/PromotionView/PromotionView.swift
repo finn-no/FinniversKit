@@ -41,6 +41,7 @@ public class PromotionView: UIView {
         label.numberOfLines = 0
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.defaultLow, for: .vertical)
+        label.accessibilityTraits.insert(.header)
         return label
     }()
 
@@ -257,7 +258,7 @@ private extension UIColor {
     }
 
     static var bgColor: UIColor {
-        return .dynamicColor(defaultColor: .milk, darkModeColor: .blueGray700)
+        return .dynamicColor(defaultColor: .white, darkModeColor: .darkBgPrimaryProminent)
     }
 }
 

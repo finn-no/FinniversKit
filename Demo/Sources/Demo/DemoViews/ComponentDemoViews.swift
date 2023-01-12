@@ -33,7 +33,6 @@ public enum ComponentDemoViews: String, DemoViews {
     case broadcast
     case klimabroletView
     case christmasWishListView
-    case stepIndicatorView
     case nativeAdvert
     case callout
     case detailCallout
@@ -73,12 +72,19 @@ public enum ComponentDemoViews: String, DemoViews {
     case savedSearchShelf
     case frontPageShelf
     case overFlowCollectionView
+    case scrollableTabDemoView
     case monthAndYearPickerView
     case searchView
     case addressComponentView
     case selectionListCheckboxView
     case selectionListRadiobuttonView
     case badgeView
+    case jobApplyBox
+    case jobKeyInfo
+    case myAdsListView
+    case brazePromotionView
+    case mapAddressButton
+    case hyperlinkTextView
 
     var title: String? {
         switch self {
@@ -153,8 +159,6 @@ public enum ComponentDemoViews: String, DemoViews {
             return KlimabroletDemoViewController(dismissType: .none)
         case .christmasWishListView:
             return DemoViewController<ChristmasWishListDemoView>()
-        case .stepIndicatorView:
-            return DemoViewController<StepIndicatorDemoView>(dismissType: .dismissButton)
         case .nativeAdvert:
             return DemoViewController<NativeAdvertDemoView>(dismissType: .dismissButton)
         case .callout:
@@ -238,6 +242,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<FrontPageShelfDemoView>()
         case .overFlowCollectionView:
             return DemoViewController<OverflowCollectionViewDemo>()
+        case .scrollableTabDemoView:
+            return DemoViewController<ScrollableTabDemoView>(dismissType: .dismissButton)
         case .monthAndYearPickerView:
             return DemoViewController<MonthAndYearPickerDemoView>()
         case .searchView:
@@ -250,6 +256,18 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<SelectionListRadiobuttonDemoView>(dismissType: .dismissButton)
         case .badgeView:
             return DemoViewController<BadgeDemoView>()
+        case .jobApplyBox:
+            return DemoViewController<JobApplyBoxDemoView>(dismissType: .dismissButton)
+        case .jobKeyInfo:
+            return DemoViewController<JobKeyInfoDemoView>()
+        case .myAdsListView:
+            return DemoViewController<MyAdsListDemoView>(dismissType: .dismissButton, containmentOptions: .navigationController)
+        case .brazePromotionView:
+            return DemoViewController<BrazePromotionDemoView>()
+        case .mapAddressButton:
+            return DemoViewController<MapAddressButtonDemoView>(dismissType: .dismissButton)
+        case .hyperlinkTextView:
+            return DemoViewController<HyperlinkTextViewDemoView>()
         }
     }
 }

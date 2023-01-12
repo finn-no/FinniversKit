@@ -18,7 +18,7 @@ public class FeedbackView: UIView {
         case negative
     }
 
-    @objc public enum State: Int {
+    public enum State: Int {
         case initial = 0
         case accept
         case decline
@@ -54,7 +54,7 @@ public class FeedbackView: UIView {
 
     private lazy var gridPresentationConstraints: [NSLayoutConstraint] = [
         imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
-        imageView.heightAnchor.constraint(equalToConstant: 130),
+        imageGridHeightConstraint,
         titleView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .spacingS),
         titleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
         buttonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
@@ -64,12 +64,15 @@ public class FeedbackView: UIView {
     private lazy var listPresentationConstraints: [NSLayoutConstraint] = [
         imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
         imageView.widthAnchor.constraint(equalToConstant: 130),
-        imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 100),
+        imageListHeightConstraint,
         titleView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
         titleView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingS),
         buttonView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingS),
         buttonView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS)
     ]
+
+    private lazy var imageListHeightConstraint = imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 100)
+    private lazy var imageGridHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: 130)
 
     // MARK: - Init
 
@@ -104,6 +107,9 @@ public class FeedbackView: UIView {
 
             buttonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
         ])
+
+        imageListHeightConstraint.priority = .required - 1
+        imageGridHeightConstraint.priority = .required - 1
     }
 
     // MARK: - Public methods

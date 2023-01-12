@@ -20,6 +20,13 @@ public class MarketsGridView: UIView, MarketsView {
         return collectionView
     }()
 
+    private lazy var hiddenAccessibilityHeader: UIAccessibilityElement = {
+        let element = UIAccessibilityElement(accessibilityContainer: self)
+        element.isAccessibilityElement = true
+        element.accessibilityTraits = .header
+        return element
+    }()
+
     private weak var delegate: MarketsViewDelegate?
     private weak var dataSource: MarketsViewDataSource?
 
@@ -45,13 +52,15 @@ public class MarketsGridView: UIView, MarketsView {
 
     // MARK: - Setup
 
-    public init(frame: CGRect = .zero, delegate: MarketsViewDelegate, dataSource: MarketsViewDataSource) {
+    public init(frame: CGRect = .zero, accessibilityHeader: String, delegate: MarketsViewDelegate, dataSource: MarketsViewDataSource) {
         super.init(frame: frame)
 
         self.delegate = delegate
         self.dataSource = dataSource
 
         setup()
+        hiddenAccessibilityHeader.accessibilityLabel = accessibilityHeader
+
     }
 
     public override init(frame: CGRect) {
@@ -84,6 +93,12 @@ public class MarketsGridView: UIView, MarketsView {
                 self?.updateGradient()
             })
         }
+        setupAccessibility()
+    }
+
+    private func setupAccessibility() {
+        hiddenAccessibilityHeader.accessibilityFrameInContainerSpace = CGRect(x: -5, y: -5, width: 100, height: 20)
+        accessibilityElements = [hiddenAccessibilityHeader, collectionView]
     }
 
     // MARK: - Functionality

@@ -50,7 +50,7 @@ public class TextFieldDemoView: UIView {
         overrideBgColor.translatesAutoresizingMaskIntoConstraints = false
         overrideBgColor.placeholderText = "Overridden bgColor"
         overrideBgColor.configure(textFieldBackgroundColor: .bgPrimary)
-        overrideBgColor.configureBorder(radius: 4, width: 1, color: .dynamicColor(defaultColor: .sardine, darkModeColor: .darkSardine))
+        overrideBgColor.configureBorder(radius: 4, width: 1, color: .borderDefault)
 
         stackView.addArrangedSubviews([
             emailTextField,
