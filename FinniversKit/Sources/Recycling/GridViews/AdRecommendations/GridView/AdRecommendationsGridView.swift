@@ -229,9 +229,6 @@ extension AdRecommendationsGridView: AdRecommendationCellDelegate {
 
 extension AdRecommendationsGridView: AdRecommendationsGridViewLayoutDelegate {
     func adRecommendationsGridViewLayoutNumberOfColumns(_ layout: AdRecommendationsGridViewLayout) -> Int {
-            if traitCollection.preferredContentSizeCategory.isAccessibilityCategory {
-                    return 1
-            }
         switch dataSource?.numberOfColumns(inAdRecommendationsGridView: self) {
         case .fullWidth: return 1
         case .columns(let columns) where columns > 1 && columns <= 3:
