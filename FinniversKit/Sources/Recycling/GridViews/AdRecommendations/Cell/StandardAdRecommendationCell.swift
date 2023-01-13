@@ -165,7 +165,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
     private func setup() {
         isAccessibilityElement = true
-        let accessibilityMultiplier: CGFloat = {
+        let accessibilityMultiplier: CGFloat = Config.isDynamicTypeEnabled ? {
             switch self.traitCollection.preferredContentSizeCategory {
             case UIContentSizeCategory.accessibilityExtraExtraExtraLarge:
                 return 2.5
@@ -180,7 +180,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
             default:
                 return 1.0
             }
-        }()
+        }() : 1.0
         containerView.isAccessibilityElement = true
         favoriteButton.isAccessibilityElement = true
         accessibilityElements = [containerView, favoriteButton]
