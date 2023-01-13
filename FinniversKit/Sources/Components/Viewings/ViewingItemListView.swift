@@ -1,11 +1,11 @@
 import UIKit
 
-public protocol ViewingsViewDelegate: AnyObject {
-    func viewingsViewDidSelectAddToCalendarButton(_ view: ViewingsView, forIndex index: Int)
+public protocol ViewingItemListViewDelegate: AnyObject {
+    func viewingItemListViewDidSelectAddToCalendarButton(_ view: ViewingItemListView, forIndex index: Int)
 }
 
-public class ViewingsView: UIView {
-    public weak var delegate: ViewingsViewDelegate?
+public class ViewingItemListView: UIView {
+    public weak var delegate: ViewingItemListViewDelegate?
 
     // MARK: - Private properties
 
@@ -104,12 +104,12 @@ public class ViewingsView: UIView {
 
 // MARK: - ViewingViewDelegate
 
-extension ViewingsView: ViewingItemViewDelegate {
+extension ViewingItemListView: ViewingItemViewDelegate {
     func viewingItemViewDidSelectAddToCalendarButton(_ view: ViewingItemView) {
         guard let index = viewingsStackView.arrangedSubviews.firstIndex(of: view) else {
             return
         }
 
-        delegate?.viewingsViewDidSelectAddToCalendarButton(self, forIndex: index)
+        delegate?.viewingItemListViewDidSelectAddToCalendarButton(self, forIndex: index)
     }
 }
