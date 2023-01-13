@@ -143,7 +143,6 @@
 		494047FC23CDBA8D00ECBCFD /* ViewingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494047FB23CDBA8D00ECBCFD /* ViewingsViewModel.swift */; };
 		494047FE23CDBBA100ECBCFD /* ViewingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494047FD23CDBBA100ECBCFD /* ViewingCellViewModel.swift */; };
 		4940480023CDBEC500ECBCFD /* ViewingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494047FF23CDBEC500ECBCFD /* ViewingsView.swift */; };
-		4940480223CDC0F000ECBCFD /* ViewingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940480123CDC0F000ECBCFD /* ViewingCell.swift */; };
 		496F8C142473DCC600AE0735 /* FavoriteSoldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F8C132473DCC600AE0735 /* FavoriteSoldView.swift */; };
 		4D01FD5C261C9A5C008B9913 /* TransactionStepIllustrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01FD5B261C9A5C008B9913 /* TransactionStepIllustrationView.swift */; };
 		4D0CF28D261C467B0008CC43 /* TransactionEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0CF28C261C467B0008CC43 /* TransactionEntryView.swift */; };
@@ -496,6 +495,7 @@
 		E6920B2B28474B78008B41C6 /* CombineCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6920B2A28474B78008B41C6 /* CombineCompatible.swift */; };
 		E6E7B97929425C00005B7D64 /* ActionBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E7B97829425C00005B7D64 /* ActionBarButtonItem.swift */; };
 		E87A7BF328ED6AE0007094F2 /* NeighborhoodProfileBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87A7BF228ED6AE0007094F2 /* NeighborhoodProfileBannerView.swift */; };
+		F085BC2529716CFC00376A8B /* ViewingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F085BC2429716CFC00376A8B /* ViewingItemView.swift */; };
 		F22612D822572D9400472D22 /* StatisticsItemEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */; };
 		F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */; };
 		F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */; };
@@ -658,7 +658,6 @@
 		494047FB23CDBA8D00ECBCFD /* ViewingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingsViewModel.swift; sourceTree = "<group>"; };
 		494047FD23CDBBA100ECBCFD /* ViewingCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingCellViewModel.swift; sourceTree = "<group>"; };
 		494047FF23CDBEC500ECBCFD /* ViewingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingsView.swift; sourceTree = "<group>"; };
-		4940480123CDC0F000ECBCFD /* ViewingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingCell.swift; sourceTree = "<group>"; };
 		496F8C132473DCC600AE0735 /* FavoriteSoldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteSoldView.swift; sourceTree = "<group>"; };
 		4D01FD5B261C9A5C008B9913 /* TransactionStepIllustrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStepIllustrationView.swift; sourceTree = "<group>"; };
 		4D0CF28C261C467B0008CC43 /* TransactionEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionEntryView.swift; sourceTree = "<group>"; };
@@ -1013,6 +1012,7 @@
 		E6920B2A28474B78008B41C6 /* CombineCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineCompatible.swift; sourceTree = "<group>"; };
 		E6E7B97829425C00005B7D64 /* ActionBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionBarButtonItem.swift; sourceTree = "<group>"; };
 		E87A7BF228ED6AE0007094F2 /* NeighborhoodProfileBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileBannerView.swift; sourceTree = "<group>"; };
+		F085BC2429716CFC00376A8B /* ViewingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingItemView.swift; sourceTree = "<group>"; };
 		F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyView.swift; sourceTree = "<group>"; };
 		F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyViewModel.swift; sourceTree = "<group>"; };
 		F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdManagementStatisticsEmptyViewCell.swift; sourceTree = "<group>"; };
@@ -1946,7 +1946,7 @@
 				494047FB23CDBA8D00ECBCFD /* ViewingsViewModel.swift */,
 				494047FD23CDBBA100ECBCFD /* ViewingCellViewModel.swift */,
 				494047FF23CDBEC500ECBCFD /* ViewingsView.swift */,
-				4940480123CDC0F000ECBCFD /* ViewingCell.swift */,
+				F085BC2429716CFC00376A8B /* ViewingItemView.swift */,
 			);
 			path = Viewings;
 			sourceTree = "<group>";
@@ -3719,7 +3719,6 @@
 				44A5579F22E71FEB001667AE /* BasicTableViewCell.swift in Sources */,
 				5DEAC3BF25C16314003376AD /* IconButton.swift in Sources */,
 				F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */,
-				4940480223CDC0F000ECBCFD /* ViewingCell.swift in Sources */,
 				44A149ED21377C7B0053D5F7 /* SavedSearchesListViewModel.swift in Sources */,
 				9BEB287B231D484B00D28BAD /* LoanHeaderView.swift in Sources */,
 				496F8C142473DCC600AE0735 /* FavoriteSoldView.swift in Sources */,
@@ -3742,6 +3741,7 @@
 				CF7C460622257A8A001FB92C /* EarthHourHeaderView.swift in Sources */,
 				91846C4A22E735D80001410F /* SearchResultMapView.swift in Sources */,
 				CF7C460922257A8A001FB92C /* EarthHourViewModel.swift in Sources */,
+				F085BC2529716CFC00376A8B /* ViewingItemView.swift in Sources */,
 				CFEB22252330D1420039421C /* FavoriteAdsListViewModel.swift in Sources */,
 				08796D8821CB89400023A441 /* AnimatedHeartView.swift in Sources */,
 				DAD6EB252369916100968497 /* SettingsViewCell.swift in Sources */,
