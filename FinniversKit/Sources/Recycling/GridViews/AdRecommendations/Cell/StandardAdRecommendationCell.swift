@@ -164,6 +164,23 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     }
 
     private func setup() {
+        isAccessibilityElement = true
+        let accessibilityMultiplier: CGFloat = {
+            switch self.traitCollection.preferredContentSizeCategory {
+            case UIContentSizeCategory.accessibilityExtraExtraExtraLarge:
+                return 2.5
+            case UIContentSizeCategory.accessibilityExtraExtraLarge:
+                return 2.25
+            case UIContentSizeCategory.accessibilityExtraLarge:
+                return 2.0
+            case UIContentSizeCategory.accessibilityLarge:
+                return 1.75
+            case UIContentSizeCategory.accessibilityMedium:
+                return 1.5
+            default:
+                return 1.0
+            }
+        }()
         containerView.isAccessibilityElement = true
         favoriteButton.isAccessibilityElement = true
         accessibilityElements = [containerView, favoriteButton]
@@ -196,6 +213,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         imageHeightMinimumConstraint.priority = .defaultHigh
 
         containerView.fillInSuperview()
+
         NSLayoutConstraint.activate([
             imageContentView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageContentView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
@@ -205,6 +223,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
             ribbonView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: StandardAdRecommendationCell.ribbonTopMargin),
             ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            ribbonView.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.ribbonHeight * accessibilityMultiplier),
 
             logoImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: .spacingS),
             logoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -214,12 +233,12 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
             subtitleToImageConstraint,
             subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            subtitleLabel.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.subtitleHeight),
+            subtitleLabel.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.subtitleHeight*accessibilityMultiplier),
 
             titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: StandardAdRecommendationCell.titleTopMargin),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.titleHeight),
+            titleLabel.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.titleHeight*accessibilityMultiplier),
 
             accessoryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             accessoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
