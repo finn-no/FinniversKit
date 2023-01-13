@@ -1,10 +1,6 @@
-//
-//  Copyright © FINN.no AS, Inc. All rights reserved.
-//
-
 import Foundation
 
-public struct ViewingCellViewModel {
+public struct ViewingItemViewModel {
 
     let weekday: String?
     let month: String?

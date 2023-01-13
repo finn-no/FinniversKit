@@ -88,7 +88,7 @@ class ViewingItemView: UIView {
     // MARK: - Internal methods
 
     func configure(
-        with viewModel: ViewingCellViewModel,
+        with viewModel: ViewingItemViewModel,
         addToCalendarButtonTitle: String,
         showSeparator: Bool,
         topEdgeInset: CGFloat = 0

@@ -1,16 +1,16 @@
 import UIKit
 
-public protocol ViewingItemListViewDelegate: AnyObject {
-    func viewingItemListViewDidSelectAddToCalendarButton(_ view: ViewingItemListView, forIndex index: Int)
+public protocol ViewingsListViewDelegate: AnyObject {
+    func viewingsListViewDidSelectAddToCalendarButton(_ view: ViewingsListView, forIndex index: Int)
 }
 
-public class ViewingItemListView: UIView {
-    public weak var delegate: ViewingItemListViewDelegate?
+public class ViewingsListView: UIView {
+    public weak var delegate: ViewingsListViewDelegate?
 
     // MARK: - Private properties
 
     private let titleStyle: Label.Style
-    private var viewModel: ViewingsViewModel?
+    private var viewModel: ViewingsListViewModel?
     private lazy var titleLabel: Label = Label(style: titleStyle, withAutoLayout: true)
     private lazy var viewingsStackView = UIStackView(axis: .vertical, withAutoLayout: true)
 
@@ -60,7 +60,7 @@ public class ViewingItemListView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(with viewModel: ViewingsViewModel) {
+    public func configure(with viewModel: ViewingsListViewModel) {
         self.viewModel = viewModel
         titleLabel.text = viewModel.title
         if let note = viewModel.note {
@@ -104,12 +104,12 @@ public class ViewingItemListView: UIView {
 
 // MARK: - ViewingViewDelegate
 
-extension ViewingItemListView: ViewingItemViewDelegate {
+extension ViewingsListView: ViewingItemViewDelegate {
     func viewingItemViewDidSelectAddToCalendarButton(_ view: ViewingItemView) {
         guard let index = viewingsStackView.arrangedSubviews.firstIndex(of: view) else {
             return
         }
 
-        delegate?.viewingItemListViewDidSelectAddToCalendarButton(self, forIndex: index)
+        delegate?.viewingsListViewDidSelectAddToCalendarButton(self, forIndex: index)
     }
 }
