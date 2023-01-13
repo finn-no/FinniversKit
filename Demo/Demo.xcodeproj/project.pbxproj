@@ -89,7 +89,7 @@
 		46E7740E242CEF0A008A5E93 /* ChristmasWishListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77305242CEF09008A5E93 /* ChristmasWishListDemoView.swift */; };
 		46E7740F242CEF0A008A5E93 /* CalloutDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77307242CEF09008A5E93 /* CalloutDemoView.swift */; };
 		46E77410242CEF0A008A5E93 /* RibbonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77309242CEF09008A5E93 /* RibbonDemoView.swift */; };
-		46E77411242CEF0A008A5E93 /* ViewingsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7730B242CEF09008A5E93 /* ViewingsDemoView.swift */; };
+		46E77411242CEF0A008A5E93 /* ViewingsListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7730B242CEF09008A5E93 /* ViewingsListDemoView.swift */; };
 		46E77412242CEF0A008A5E93 /* EarthHourDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7730D242CEF09008A5E93 /* EarthHourDefaultData.swift */; };
 		46E77413242CEF0A008A5E93 /* EarthHourDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7730E242CEF09008A5E93 /* EarthHourDemoView.swift */; };
 		46E77416242CEF0A008A5E93 /* StepSliderDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77313242CEF09008A5E93 /* StepSliderDemoView.swift */; };
@@ -335,7 +335,7 @@
 		46E77305242CEF09008A5E93 /* ChristmasWishListDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChristmasWishListDemoView.swift; sourceTree = "<group>"; };
 		46E77307242CEF09008A5E93 /* CalloutDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalloutDemoView.swift; sourceTree = "<group>"; };
 		46E77309242CEF09008A5E93 /* RibbonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonDemoView.swift; sourceTree = "<group>"; };
-		46E7730B242CEF09008A5E93 /* ViewingsDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewingsDemoView.swift; sourceTree = "<group>"; };
+		46E7730B242CEF09008A5E93 /* ViewingsListDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewingsListDemoView.swift; sourceTree = "<group>"; };
 		46E7730D242CEF09008A5E93 /* EarthHourDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourDefaultData.swift; sourceTree = "<group>"; };
 		46E7730E242CEF09008A5E93 /* EarthHourDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourDemoView.swift; sourceTree = "<group>"; };
 		46E77313242CEF09008A5E93 /* StepSliderDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepSliderDemoView.swift; sourceTree = "<group>"; };
@@ -1130,7 +1130,7 @@
 		46E7730A242CEF09008A5E93 /* Viewings */ = {
 			isa = PBXGroup;
 			children = (
-				46E7730B242CEF09008A5E93 /* ViewingsDemoView.swift */,
+				46E7730B242CEF09008A5E93 /* ViewingsListDemoView.swift */,
 			);
 			path = Viewings;
 			sourceTree = "<group>";
@@ -2162,7 +2162,7 @@
 				46E773C8242CEF0A008A5E93 /* FullscreenGalleryDemoViewController.swift in Sources */,
 				46E77412242CEF0A008A5E93 /* EarthHourDefaultData.swift in Sources */,
 				46E77446242CEF0A008A5E93 /* BasicCellVariationsDemoView.swift in Sources */,
-				46E77411242CEF0A008A5E93 /* ViewingsDemoView.swift in Sources */,
+				46E77411242CEF0A008A5E93 /* ViewingsListDemoView.swift in Sources */,
 				46E773F8242CEF0A008A5E93 /* PanelDemoView.swift in Sources */,
 				E681A0EC2923FDA4008564E2 /* HyperlinkTextViewDemoView.swift in Sources */,
 				46E773C9242CEF0A008A5E93 /* ResultDemoView.swift in Sources */,
