@@ -1,8 +1,4 @@
-//
-//  Copyright © FINN.no AS, Inc. All rights reserved.
-//
-
-import Foundation
+import UIKit
 
 public protocol ViewingsViewDelegate: AnyObject {
     func viewingsViewDidSelectAddToCalendarButton(_ view: ViewingsView, forIndex index: Int)
@@ -13,13 +9,10 @@ public class ViewingsView: UIView {
 
     // MARK: - Private properties
 
+    private let titleStyle: Label.Style
     private var viewModel: ViewingsViewModel?
-
-    private let titleHeight: CGFloat = 27
-    private let titleBottomMargin: CGFloat = .spacingS
-    private let noteBottomMargin: CGFloat = .spacingS
-
     private lazy var titleLabel: Label = Label(style: titleStyle, withAutoLayout: true)
+    private lazy var viewingsStackView = UIStackView(axis: .vertical, withAutoLayout: true)
 
     private lazy var noteLabel: Label = {
         let label = Label(withAutoLayout: true)
@@ -28,22 +21,6 @@ public class ViewingsView: UIView {
         label.lineBreakMode = .byWordWrapping
         return label
     }()
-
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView(withAutoLayout: true)
-        tableView.register(ViewingCell.self)
-        tableView.dataSource = self
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = ViewingCell.viewingStackViewHeight
-        tableView.isScrollEnabled = false
-        tableView.separatorColor = .tableViewSeparator
-        tableView.separatorInset = UIEdgeInsets(leading: ViewingCell.dateViewWidth + ViewingCell.contentSpacing)
-        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
-        tableView.tableFooterView?.backgroundColor = .bgPrimary
-        return tableView
-    }()
-
-    private let titleStyle: Label.Style
 
     // MARK: - Init
 
@@ -63,21 +40,21 @@ public class ViewingsView: UIView {
     private func setup() {
         addSubview(titleLabel)
         addSubview(noteLabel)
-        addSubview(tableView)
+        addSubview(viewingsStackView)
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            noteLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: titleBottomMargin),
+            noteLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
             noteLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             noteLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            tableView.topAnchor.constraint(equalTo: noteLabel.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            viewingsStackView.topAnchor.constraint(equalTo: noteLabel.bottomAnchor),
+            viewingsStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            viewingsStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            viewingsStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 
@@ -89,34 +66,26 @@ public class ViewingsView: UIView {
         if let note = viewModel.note {
             noteLabel.attributedText = attributedNoteString(with: note)
             noteLabel.isHidden = false
-        }
-        if viewModel.viewings.count > 0 {
-            tableView.reloadData()
         } else {
-            tableView.isHidden = true
+            noteLabel.isHidden = true
         }
-    }
 
-    public func heightNeeded(forWidth width: CGFloat) -> CGFloat {
-        guard let viewModel = viewModel else { return 0 }
-        var tableHeight: CGFloat = 0
-        for viewing in viewModel.viewings {
-            let measureView = ViewingCell()
-            tableHeight += measureView.heightNeeded(for: width, note: viewing.note)
-        }
-        var noteHeight: CGFloat = 0
-        if viewModel.note != nil {
-            noteHeight = noteLabel.sizeThatFits(CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)).height + noteBottomMargin
-        }
-        return titleHeight + titleBottomMargin + noteHeight + tableHeight
-    }
+        viewingsStackView.removeArrangedSubviews()
 
-    public override func systemLayoutSizeFitting(
-        _ targetSize: CGSize,
-        withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
-        verticalFittingPriority: UILayoutPriority
-    ) -> CGSize {
-        CGSize(width: targetSize.width, height: heightNeeded(forWidth: targetSize.width))
+        viewModel.viewings.enumerated().forEach { index, viewing in
+            let topMargin: CGFloat = viewModel.note != nil && index == 0 ? .spacingS : 0
+            let view = ViewingItemView(withAutoLayout: true)
+            view.configure(
+                with: viewing,
+                addToCalendarButtonTitle: viewModel.addToCalendarButtonTitle,
+                showSeparator: true,
+                topEdgeInset: topMargin
+            )
+
+            view.delegate = self
+
+            viewingsStackView.addArrangedSubview(view)
+        }
     }
 
     // MARK: - Private methods
@@ -133,30 +102,14 @@ public class ViewingsView: UIView {
     }
 }
 
-// MARK: - UITableViewDataSource
+// MARK: - ViewingViewDelegate
 
-extension ViewingsView: UITableViewDataSource {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.viewings.count ?? 0
-    }
+extension ViewingsView: ViewingItemViewDelegate {
+    func viewingItemViewDidSelectAddToCalendarButton(_ view: ViewingItemView) {
+        guard let index = viewingsStackView.arrangedSubviews.firstIndex(of: view) else {
+            return
+        }
 
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(ViewingCell.self, for: indexPath)
-        guard let viewModel = viewModel else { return cell }
-
-        let topMargin = viewModel.note != nil && indexPath.row == 0 ? noteBottomMargin : 0
-        cell.configure(with: viewModel.viewings[indexPath.row], addToCalendarButtonTitle: viewModel.addToCalendarButtonTitle, topEdgeInset: topMargin)
-        cell.selectionStyle = .none
-        cell.delegate = self
-        return cell
-    }
-}
-
-// MARK: - ViewingCellDelegate
-
-extension ViewingsView: ViewingCellDelegate {
-    func viewingCellDidSelectAddToCalendarButton(_ cell: ViewingCell) {
-        guard let indexPath = tableView.indexPath(for: cell) else { return }
-        delegate?.viewingsViewDidSelectAddToCalendarButton(self, forIndex: indexPath.row)
+        delegate?.viewingsViewDidSelectAddToCalendarButton(self, forIndex: index)
     }
 }
