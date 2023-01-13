@@ -74,7 +74,7 @@ public class ViewingsListView: UIView {
 
         viewModel.viewings.enumerated().forEach { index, viewing in
             let topMargin: CGFloat = viewModel.note != nil && index == 0 ? .spacingS : 0
-            let view = ViewingItemView(withAutoLayout: true)
+            let view = ViewingItemView(layout: .original, withAutoLayout: true)
             view.configure(
                 with: viewing,
                 addToCalendarButtonTitle: viewModel.addToCalendarButtonTitle,

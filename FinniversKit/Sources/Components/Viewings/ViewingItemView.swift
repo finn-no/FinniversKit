@@ -5,6 +5,10 @@ protocol ViewingItemViewDelegate: AnyObject {
 }
 
 class ViewingItemView: UIView {
+    enum Layout {
+        case original
+        case redesign
+    }
 
     // MARK: - Internal properties
 
@@ -12,20 +16,19 @@ class ViewingItemView: UIView {
 
     // MARK: - Private properties
 
-    private static let dateViewWidth: CGFloat = 48.0
-    private static let viewingStackViewHeight: CGFloat = 60.0
-
+    private let layout: Layout
     private let noteBottomMargin: CGFloat = .spacingM
     private lazy var dayLabel = Label(style: .title3, withAutoLayout: true)
     private lazy var weekdayLabel = Label(style: .body, withAutoLayout: true)
     private lazy var monthLabel = Label(style: .detail, textColor: .textCritical, withAutoLayout: true)
     private lazy var noteLabel = Label(style: .detail, numberOfLines: 0, textColor: .textSecondary, withAutoLayout: true)
     private lazy var viewingStackView = UIStackView(axis: .horizontal, spacing: .spacingS, alignment: .center, withAutoLayout: true)
-    private lazy var dateStackView = UIStackView(axis: .vertical, alignment: .center, withAutoLayout: true)
+    private lazy var dateStackView = UIStackView(axis: .vertical, withAutoLayout: true)
     private lazy var weekdayTimeStackView = UIStackView(axis: .vertical, spacing: .spacingXXS, alignment: .leading, withAutoLayout: true)
+    private lazy var contentStackViewLeadingConstraint = contentStackView.leadingAnchor.constraint(equalTo: dateStackView.trailingAnchor)
 
     private lazy var contentStackView: UIStackView = {
-        let stackView = UIStackView(axis: .vertical, alignment: .trailing, distribution: .fill, withAutoLayout: true)
+        let stackView = UIStackView(axis: .vertical, withAutoLayout: true)
         stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
@@ -51,8 +54,10 @@ class ViewingItemView: UIView {
 
     // MARK: - Init
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(layout: Layout, withAutoLayout: Bool) {
+        self.layout = layout
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setup()
     }
 
@@ -61,28 +66,46 @@ class ViewingItemView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        addSubview(contentStackView)
-        addSubview(separator)
-        contentStackView.fillInSuperview()
-
         backgroundColor = .bgPrimary
 
         dateStackView.addArrangedSubviews([monthLabel, dayLabel])
         weekdayTimeStackView.addArrangedSubviews([weekdayLabel, timeLabel])
-        viewingStackView.addArrangedSubviews([dateStackView, weekdayTimeStackView, addToCalendarButton])
+        viewingStackView.addArrangedSubviews([weekdayTimeStackView, addToCalendarButton])
         contentStackView.addArrangedSubviews([viewingStackView, noteLabel])
 
-        NSLayoutConstraint.activate([
-            viewingStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: Self.viewingStackViewHeight),
-            viewingStackView.leadingAnchor.constraint(equalTo: contentStackView.leadingAnchor),
-            dateStackView.widthAnchor.constraint(equalToConstant: Self.dateViewWidth),
-            noteLabel.leadingAnchor.constraint(equalTo: dateStackView.trailingAnchor, constant: .spacingS),
+        addSubview(dateStackView)
+        addSubview(contentStackView)
+        addSubview(separator)
 
-            separator.leadingAnchor.constraint(equalTo: weekdayTimeStackView.leadingAnchor),
+        NSLayoutConstraint.activate([
+            viewingStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 60),
+            viewingStackView.centerYAnchor.constraint(equalTo: dateStackView.centerYAnchor),
+
+            dateStackView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor),
+            dateStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+
+            contentStackView.topAnchor.constraint(equalTo: topAnchor),
+            contentStackViewLeadingConstraint,
+            contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+
+            separator.leadingAnchor.constraint(equalTo: contentStackView.leadingAnchor),
             separator.trailingAnchor.constraint(equalTo: trailingAnchor),
             separator.bottomAnchor.constraint(equalTo: bottomAnchor),
             separator.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale)
         ])
+
+        switch layout {
+        case .original:
+            dateStackView.widthAnchor.constraint(equalToConstant: 48).isActive = true
+            dateStackView.alignment = .center
+            contentStackViewLeadingConstraint.constant = .spacingS
+        case .redesign:
+            dateStackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 24).isActive = true
+            contentStackViewLeadingConstraint.constant = .spacingM
+            dateStackView.setContentHuggingPriority(.required, for: .horizontal)
+            dateStackView.setContentCompressionResistancePriority(.required, for: .horizontal)
+        }
     }
 
     // MARK: - Internal methods
@@ -99,23 +122,17 @@ class ViewingItemView: UIView {
         monthLabel.text = viewModel.month
         dayLabel.text = viewModel.day
         addToCalendarButton.setTitle(addToCalendarButtonTitle, for: .normal)
-        
-        if let timeInterval = viewModel.timeInterval {
-            timeLabel.text = timeInterval
-            timeLabel.isHidden = false
-        } else {
-            timeLabel.isHidden = true
-        }
+
+        timeLabel.text = viewModel.timeInterval
+        timeLabel.isHidden = viewModel.timeInterval == nil
         
         var bottomMargin: CGFloat = 0
         if let note = viewModel.note {
             noteLabel.text = note
-            noteLabel.isHidden = false
             bottomMargin = noteBottomMargin
-        } else {
-            noteLabel.isHidden = true
         }
-        
+        noteLabel.isHidden = viewModel.note == nil
+
         contentStackView.layoutMargins = UIEdgeInsets(top: topEdgeInset, bottom: bottomMargin)
     }
 
