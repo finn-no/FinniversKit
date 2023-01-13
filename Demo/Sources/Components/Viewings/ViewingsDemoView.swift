@@ -1,18 +1,15 @@
-//
-//  Copyright © FINN.no AS, Inc. All rights reserved.
-//
-
 import FinniversKit
 
 class ViewingsDemoView: UIView {
 
-    private lazy var viewingsView = ViewingsView(withAutoLayout: true)
+    private lazy var viewingsView = ViewingItemListView(withAutoLayout: true)
 
     private let viewModel = ViewingsViewModel(
         title: "Visninger",
         addToCalendarButtonTitle: "Legg til i kalender",
-        viewings: [ViewingCellViewModel(weekday: "Søndag", month: "JAN", day: "19", timeInterval: "Kl. 12.00 - 13.00", note: "Visningen streames"),
-                   ViewingCellViewModel(weekday: "Mandag", month: "JAN", day: "20", timeInterval: "Kl. 18.30 - 19.30", note: nil)
+        viewings: [
+            ViewingCellViewModel(weekday: "Søndag", month: "JAN", day: "19", timeInterval: "Kl. 12.00 - 13.00", note: "Visningen streames"),
+            ViewingCellViewModel(weekday: "Mandag", month: "JAN", day: "20", timeInterval: "Kl. 18.30 - 19.30", note: nil)
         ],
         note: "Velkommen til visning!"
     )
@@ -25,15 +22,23 @@ class ViewingsDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
+        viewingsView.delegate = self
         addSubview(viewingsView)
         viewingsView.configure(with: viewModel)
 
         NSLayoutConstraint.activate([
             viewingsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
             viewingsView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
-            viewingsView.heightAnchor.constraint(equalToConstant: viewingsView.heightNeeded(forWidth: viewingsView.frame.size.width)),
             viewingsView.centerXAnchor.constraint(equalTo: centerXAnchor),
             viewingsView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
+    }
+}
+
+// MARK: - ViewingsViewDelegate
+
+extension ViewingsDemoView: ViewingItemListViewDelegate {
+    func viewingItemListViewDidSelectAddToCalendarButton(_ view: FinniversKit.ViewingItemListView, forIndex index: Int) {
+        print("👉 Did select viewing at index \(index)")
     }
 }
