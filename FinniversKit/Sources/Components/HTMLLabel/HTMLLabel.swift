@@ -39,30 +39,15 @@ public class HTMLLabel: Label {
     }
 
     private func setAttributedString(from htmlString: String) {
-        // We can not update the (html) attributed string when the app is in the background or it will crash. This can potentially lead to a label that is not getting set
-        guard UIApplication.shared.applicationState != .background else { return }
-
-        var styledText = "<span style=\"font-family: \(font.fontName); font-size: \(font.pointSize); color: text-color\">\(htmlString)</span>"
-        let combinedStyleMap = styleMap.merging(additionalStyleMap ?? [:], uniquingKeysWith: { $1 })
-        for (styleIdentifier, styleColor) in combinedStyleMap {
-            let colorHexValue = styleColor.resolvedColor(with: traitCollection).hexString
-            styledText = styledText.replacingOccurrences(of: styleIdentifier.rawValue, with: colorHexValue)
-        }
-
-        // Setting the default text color if it's not defined in the style map.
-        styledText = styledText.replacingOccurrences(of: "text-color", with: textColor.hexString)
-
-        guard
-            let data = styledText.data(using: .unicode),
-            let attrStr = try? NSAttributedString(
-                data: data,
-                options: [.documentType: NSAttributedString.DocumentType.html],
-                documentAttributes: nil
+        do {
+            let htmlParser = HTMLStringParser()
+            let translator = HTMLStringUIKitStyleTranslator.finnStyle(
+                font: font,
+                foregroundColor: textColor
             )
-        else {
-            return
+            attributedText = try htmlParser.parse(html: htmlString, translator: translator)
+        } catch {
+            text = htmlString
         }
-
-        attributedText = attrStr
     }
 }
