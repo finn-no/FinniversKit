@@ -224,6 +224,7 @@
 		DAE9CA8724602CB000C7552F /* SwiftUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */; };
 		E6510A6727FB378B001B40D6 /* ScrollableTabDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510A6627FB378B001B40D6 /* ScrollableTabDemoView.swift */; };
 		E681A0EC2923FDA4008564E2 /* HyperlinkTextViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0EB2923FDA4008564E2 /* HyperlinkTextViewDemoView.swift */; };
+		F085BC2A29719E5200376A8B /* ViewingsRedesignDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F085BC2929719E5200376A8B /* ViewingsRedesignDemoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -469,6 +470,7 @@
 		DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewTests.swift; sourceTree = "<group>"; };
 		E6510A6627FB378B001B40D6 /* ScrollableTabDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableTabDemoView.swift; sourceTree = "<group>"; };
 		E681A0EB2923FDA4008564E2 /* HyperlinkTextViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextViewDemoView.swift; sourceTree = "<group>"; };
+		F085BC2929719E5200376A8B /* ViewingsRedesignDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingsRedesignDemoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -907,6 +909,7 @@
 				46E772F0242CEF09008A5E93 /* Toast */,
 				46E77358242CEF09008A5E93 /* VerificationView */,
 				46E7730A242CEF09008A5E93 /* Viewings */,
+				F085BC2829719E4200376A8B /* ViewingsRedesign */,
 				46E772F4242CEF09008A5E93 /* VisibilityDrivenTitleView */,
 				8D680C5C0B76EA3807545F4D /* NumberedListView */,
 				5B9595478D0D9DE21CFCDF7C /* MultilineButton */,
@@ -1916,6 +1919,14 @@
 			path = HyperlinkTextViewDemoView;
 			sourceTree = "<group>";
 		};
+		F085BC2829719E4200376A8B /* ViewingsRedesign */ = {
+			isa = PBXGroup;
+			children = (
+				F085BC2929719E5200376A8B /* ViewingsRedesignDemoView.swift */,
+			);
+			path = ViewingsRedesign;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2072,6 +2083,7 @@
 				46E77425242CEF0A008A5E93 /* ConsentTransparencyInfoDemoView.swift in Sources */,
 				46E7744C242CEF0A008A5E93 /* HeartSubtitleCellDemoView.swift in Sources */,
 				46E773BE242CEF0A008A5E93 /* LoginEntryDemoData.swift in Sources */,
+				F085BC2A29719E5200376A8B /* ViewingsRedesignDemoView.swift in Sources */,
 				4D529E2125837087007AE5B6 /* ImageAsset.swift in Sources */,
 				5DCE0885280FDF2A00ED7407 /* MonthAndYearPickerDemoView.swift in Sources */,
 				46E77440242CEF0A008A5E93 /* SpacingDemoView.swift in Sources */,
