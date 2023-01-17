@@ -52,8 +52,6 @@ public final class HTMLStringUIKitStyleTranslator: HTMLStringParserTranslator {
         switch elementName.lowercased() {
         case "b", "strong":
             return .init(fontWeight: .bold)
-        case "i":
-            return .init(italic: true)
         case "s", "del":
             return .init(strikethrough: true)
         case "u":
@@ -69,7 +67,6 @@ extension HTMLStringUIKitStyleTranslator {
         public var font: UIFont?
         public var fontWeight: UIFont.Weight?
         public var foregroundColor: UIColor?
-        public var italic: Bool?
         public var strikethrough: Bool?
         public var strikethroughColor: UIColor?
         public var underline: Bool?
@@ -79,7 +76,6 @@ extension HTMLStringUIKitStyleTranslator {
             font: UIFont? = nil,
             fontWeight: UIFont.Weight? = nil,
             foregroundColor: UIColor? = nil,
-            italic: Bool? = nil,
             strikethrough: Bool? = nil,
             strikethroughColor: UIColor? = nil,
             underline: Bool? = nil,
@@ -88,7 +84,6 @@ extension HTMLStringUIKitStyleTranslator {
             self.font = font
             self.fontWeight = fontWeight
             self.foregroundColor = foregroundColor
-            self.italic = italic
             self.strikethrough = strikethrough
             self.strikethroughColor = strikethroughColor
             self.underline = underline
@@ -104,9 +99,6 @@ extension HTMLStringUIKitStyleTranslator {
             }
             if let foregroundColor = otherStyle.foregroundColor {
                 self.foregroundColor = foregroundColor
-            }
-            if let italic = otherStyle.italic {
-                self.italic = italic
             }
             if let strikethrough = otherStyle.strikethrough {
                 self.strikethrough = strikethrough
@@ -127,20 +119,17 @@ extension HTMLStringUIKitStyleTranslator {
 private extension String {
     func applyStyle(_ style: HTMLStringUIKitStyleTranslator.Style) -> NSAttributedString {
         var attributes: [NSAttributedString.Key: Any] = [:]
-        var fontTraits: UIFontDescriptor.SymbolicTraits = []
+        var fontTraits = UIFontDescriptor.SymbolicTraits()
         if let fontWeight = style.fontWeight {
             switch fontWeight {
             case .bold:
-                fontTraits.insert(.traitBold)
+                fontTraits = fontTraits.union(.traitBold)
             default:
                 break
             }
         }
         if let foregroundColor = style.foregroundColor {
             attributes[.foregroundColor] = foregroundColor
-        }
-        if let italic = style.italic, italic {
-            fontTraits.insert(.traitItalic)
         }
         if let strikeThrough = style.strikethrough, strikeThrough {
             attributes[.strikethroughStyle] = NSUnderlineStyle.single.rawValue

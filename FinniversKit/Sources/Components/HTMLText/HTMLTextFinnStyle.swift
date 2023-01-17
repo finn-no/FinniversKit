@@ -57,8 +57,6 @@ extension HTMLStringUIKitStyleTranslator {
                 style.fontWeight = .bold
             case .del, .s:
                 style.strikethrough = true
-            case .i:
-                style.italic = true
             case .span:
                 for (name, value) in attributes {
                     switch name {
