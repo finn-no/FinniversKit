@@ -65,6 +65,7 @@ public class ResultView: UIView {
         title: String,
         titleColor: UIColor = .textPrimary,
         description: String? = nil,
+        descriptionColor: UIColor = .textPrimary,
         actionButtonTitle: String? = nil,
         actionButtonStyle: Button.Style? = nil,
         icon: UIImage? = nil,
@@ -78,6 +79,7 @@ public class ResultView: UIView {
         titleLabel.textColor = titleColor
         descriptionLabel.text = description
         descriptionLabel.isHidden = description == nil
+        descriptionLabel.textColor = descriptionColor
         iconImageView.image = icon
         iconImageView.isHidden = icon == nil
 
