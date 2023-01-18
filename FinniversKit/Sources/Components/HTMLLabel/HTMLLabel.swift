@@ -1,16 +1,18 @@
 public class HTMLLabel: Label {
     private var htmlText: String?
-    private var styleMap: HTMLStyler.StyleMap
-    private var additionalStyleMap: HTMLStyler.StyleMap?
+    private let spanMapper: HTMLStringUIKitStyleTranslator.SpanMapper
+    private var additionalSpanMapper: HTMLStringUIKitStyleTranslator.SpanMapper = { _, _ in }
 
     public override var textColor: UIColor! {
         didSet {
-            styleMap[.textColor] = textColor
+            guard let htmlText else { return }
+
+            setAttributedString(from: htmlText)
         }
     }
 
-    public init(style: Style, styleMap: HTMLStyler.StyleMap = [:], withAutoLayout: Bool = false) {
-        self.styleMap = styleMap
+    public init(style: Style, spanMapper: @escaping HTMLStringUIKitStyleTranslator.SpanMapper = { _, _ in } , withAutoLayout: Bool = false) {
+        self.spanMapper = spanMapper
         super.init(style: style, withAutoLayout: withAutoLayout)
     }
 
@@ -18,9 +20,12 @@ public class HTMLLabel: Label {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func setHTMLText(_ htmlText: String, with additionalStyleMap: HTMLStyler.StyleMap = [:]) {
+    public func setHTMLText(
+        _ htmlText: String,
+        additionalSpanMapper: @escaping HTMLStringUIKitStyleTranslator.SpanMapper = { _, _ in }
+    ) {
         self.htmlText = htmlText
-        self.additionalStyleMap = additionalStyleMap
+        self.additionalSpanMapper = additionalSpanMapper
         setAttributedString(from: htmlText)
     }
 
@@ -43,7 +48,11 @@ public class HTMLLabel: Label {
             let htmlParser = HTMLStringParser()
             let translator = HTMLStringUIKitStyleTranslator.finnStyle(
                 font: font,
-                foregroundColor: textColor
+                foregroundColor: textColor,
+                spanMapper: { attributes, currentStyle in
+                    self.spanMapper(attributes, &currentStyle)
+                    self.additionalSpanMapper(attributes, &currentStyle)
+                }
             )
             attributedText = try htmlParser.parse(html: htmlString, translator: translator)
         } catch {

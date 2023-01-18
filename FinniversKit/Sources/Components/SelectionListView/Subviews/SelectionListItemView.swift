@@ -83,8 +83,8 @@ class SelectionListItemView: UIView {
         switch model.description {
         case .plain(let text):
             descriptionLabel.text = text
-        case .html(let htmlString, let style, _):
-            descriptionLabel.setHTMLText(htmlString, with: style)
+        case .html(let htmlString, let spanMapper, _):
+            descriptionLabel.setHTMLText(htmlString, additionalSpanMapper: spanMapper)
         }
 
         if let detailItems = model.detailItems, !detailItems.isEmpty {

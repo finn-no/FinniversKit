@@ -27,7 +27,11 @@ public struct SelectionItemModel {
 
     public enum Description {
         case plain(String)
-        case html(htmlString: String, style: HTMLStyler.StyleMap = [:], accessibilityString: String? = nil)
+        case html(
+            htmlString: String,
+            spanMapper: HTMLStringUIKitStyleTranslator.SpanMapper = { _, _ in },
+            accessibilityString: String? = nil
+        )
     }
 
     public enum Icon {
@@ -37,7 +41,7 @@ public struct SelectionItemModel {
         var image: UIImage {
             switch self {
             case .fixedSize(let image),
-                    .dynamic(let image):
+                 .dynamic(let image):
                 return image
             }
         }
