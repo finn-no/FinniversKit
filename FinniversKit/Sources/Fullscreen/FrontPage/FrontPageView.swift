@@ -6,14 +6,13 @@ import UIKit
 
 public protocol FrontPageViewModel {
     var marketsGridViewAccessibilityHeaderTitle: String { get }
-    var adRecommedationsGridViewHeaderTitle: String { get }
+    var adRecommedationsGridViewHeaderTitle: String { get set }
     var retryButtonTitle: String { get }
     var noRecommendationsText: String { get }
 }
 
 public protocol FrontPageViewDelegate: MarketsViewDelegate, AdRecommendationsGridViewDelegate {
     func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView)
-    func frontPageView(_ frontPageView: FrontPageView, didUnfavoriteRecentlyFavorited item: RecentlyFavoritedViewmodel)
 }
 
 public final class FrontPageView: UIView {
@@ -33,12 +32,12 @@ public final class FrontPageView: UIView {
             adRecommendationsGridView.isRefreshEnabled = newValue
         }
     }
-    
-    var shelfViewModel: FrontPageShelfViewModel?
-    
-    public var frontPageShelfDelegate: FrontPageShelfDelegate? {
+
+    var savedSearchesViewModel: FrontPageSavedSearchesViewModel?
+
+    public var savedSearchesViewDelegate: FrontPageSavedSearchesViewDelegate? {
         didSet {
-            frontPageShelfView?.shelfDelegate = frontPageShelfDelegate
+            frontPageSavedSearchView?.delegate = savedSearchesViewDelegate
         }
     }
     
@@ -75,14 +74,14 @@ public final class FrontPageView: UIView {
 
     private let promoContainer = UIView(withAutoLayout: true)
     private let transactionFeedContainer = UIView(withAutoLayout: true)
-    private let shelfContainer = UIView(withAutoLayout: true)
-    private var isShowingShelf: Bool {
-        guard let model = shelfViewModel else { return false }
-        return model.heightForShelf > 0
+    private let savedSearchesContainer = UIView(withAutoLayout: true)
+    private var isShowingSavedSearches: Bool {
+        guard let model = savedSearchesViewModel else { return false }
+        return model.height > 0
     }
     
     private lazy var headerView = UIView(withAutoLayout: true)
-    private var frontPageShelfView: FrontPageShelfView?
+    private var frontPageSavedSearchView: FrontPageSavedSearchesView?
     
     private lazy var headerLabel: Label = {
         var headerLabel = Label(style: .title3Strong)
@@ -236,7 +235,7 @@ public final class FrontPageView: UIView {
         headerView.addSubview(marketsGridView)
         headerView.addSubview(promoContainer)
         headerView.addSubview(transactionFeedContainer)
-        headerView.addSubview(shelfContainer)
+        headerView.addSubview(savedSearchesContainer)
         headerView.addSubview(headerLabel)
 
         addSubview(compactMarketsView)
@@ -255,11 +254,11 @@ public final class FrontPageView: UIView {
             transactionFeedContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
             transactionFeedContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             
-            shelfContainer.topAnchor.constraint(equalTo: transactionFeedContainer.bottomAnchor),
-            shelfContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
-            shelfContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+            savedSearchesContainer.topAnchor.constraint(equalTo: transactionFeedContainer.bottomAnchor),
+            savedSearchesContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            savedSearchesContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             
-            headerLabel.topAnchor.constraint(equalTo: shelfContainer.bottomAnchor, constant: .spacingM),
+            headerLabel.topAnchor.constraint(equalTo: savedSearchesContainer.bottomAnchor, constant: .spacingM),
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
             headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
@@ -299,8 +298,10 @@ public final class FrontPageView: UIView {
         let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: bounds.size.width).height + .spacingXS
         var height = headerTopSpacing + labelHeight + marketGridViewHeight + promoContainerHeight + transactionFeedHeight +  headerBottomSpacing
 
-        let shelfContainerHeight = shelfViewModel?.heightForShelf ?? 0
-        height += shelfContainerHeight + (shelfContainerHeight > 0 ? FrontPageShelfView.topPadding : 0)
+        let savedSearchesHeight = savedSearchesViewModel?.height ?? 0
+        if savedSearchesHeight > 0 {
+            height += savedSearchesHeight + FrontPageSavedSearchesView.topPadding
+        }
 
         marketsGridViewHeight.constant = marketGridViewHeight
         headerView.frame.size.height = height
@@ -311,38 +312,45 @@ public final class FrontPageView: UIView {
     }
 
     // MARK: - Private methods
-    
-    public func configureFrontPageShelves(_ model: FrontPageShelfViewModel, firstVisibleSavedSearchIndex: Int?) {
-        self.shelfViewModel = model
 
-        if frontPageShelfView == nil {
-            frontPageShelfView = FrontPageShelfView(withDatasource: self)
-            frontPageShelfView?.translatesAutoresizingMaskIntoConstraints = false
-            shelfContainer.addSubview(frontPageShelfView!)
+    public func configure(
+        withSavedSearches savedSearchesViewModel: FrontPageSavedSearchesViewModel,
+        firstVisibleSavedSearchIndex: Int?,
+        remoteImageViewDataSource: RemoteImageViewDataSource
+    ) {
+        self.savedSearchesViewModel = savedSearchesViewModel
 
-            frontPageShelfView?.fillInSuperview(
-                insets: .init(top: FrontPageShelfView.topPadding, leading: 0, bottom: 0, trailing: 0)
+        if frontPageSavedSearchView == nil {
+            let frontPageSavedSearchView = FrontPageSavedSearchesView(
+                title: savedSearchesViewModel.title,
+                buttonTitle: savedSearchesViewModel.buttonTitle,
+                remoteImageDataSource: remoteImageViewDataSource,
+                withAutoLayout: true
             )
+            self.frontPageSavedSearchView = frontPageSavedSearchView
+            savedSearchesContainer.addSubview(frontPageSavedSearchView)
 
-            // Add a minimum height, since cells are never queried if the frame initially has height 0.
-            frontPageShelfView?.heightAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
+            frontPageSavedSearchView.fillInSuperview(
+                insets: .init(top: FrontPageSavedSearchesView.topPadding, leading: 0, bottom: 0, trailing: 0)
+            )
         }
 
-        frontPageShelfView?.reloadShelf()
+        frontPageSavedSearchView?.configure(with: savedSearchesViewModel.searchViewModels)
 
         if let firstVisibleSavedSearchIndex = firstVisibleSavedSearchIndex,
-           model.savedSearchItems.indices.contains(firstVisibleSavedSearchIndex) {
-            frontPageShelfView?.scrollToSavedSearch(atIndex: firstVisibleSavedSearchIndex)
+           savedSearchesViewModel.searchViewModels.indices.contains(firstVisibleSavedSearchIndex) {
+            frontPageSavedSearchView?.scrollToSavedSearch(atIndex: firstVisibleSavedSearchIndex)
         }
 
         setupFrames()
         
     }
     
-    public func removeFrontShelf() {
-        self.shelfViewModel = nil
-        frontPageShelfView?.removeFromSuperview()
-        frontPageShelfView = nil
+    public func removeSavedSearches() {
+        guard frontPageSavedSearchView != nil else { return }
+        self.savedSearchesViewModel = nil
+        frontPageSavedSearchView?.removeFromSuperview()
+        frontPageSavedSearchView = nil
         setupFrames()
     }
     
@@ -418,57 +426,5 @@ extension FrontPageView: AdRecommendationsGridViewDelegate {
 extension FrontPageView: MarketsViewDelegate {
     public func marketsView(_ marketsGridView: MarketsView, didSelectItemAtIndex index: Int) {
         delegate?.marketsView(marketsGridView, didSelectItemAtIndex: index)
-    }
-}
-
-// MARK: - FrontPageShelfDatasource
-extension FrontPageView: FrontPageShelfViewDataSource {
-    public func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForSectionAt index: Int) -> String {
-        shelfViewModel?.titleForSection(at: index) ?? ""
-    }
-    
-    public func frontPageShelfView(_ frontPageShelfView: FrontPageShelfView, titleForButtonForSectionAt index: Int) -> String {
-        shelfViewModel?.titleForButton(at: index) ?? ""
-    }
-    
-    public func frontPageShelfView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, withItem item: AnyHashable) -> UICollectionViewCell? {
-        if let item = item as? RecentlyFavoritedViewmodel {
-            let cell = collectionView.dequeue(RecentlyFavoritedShelfCell.self, for: indexPath)
-            cell.configure(withModel: item)
-            cell.buttonAction = { [weak self] _, _ in
-                self?.removeFavoritedItem(item, atIndexPath: indexPath)
-            }
-            cell.datasource = remoteImageDataSource
-            cell.loadImage()
-            
-            return cell
-        } else if let item = item as? SavedSearchShelfViewModel {
-            let cell = collectionView.dequeue(SavedSearchShelfCell.self, for: indexPath)
-            cell.configure(withModel: item)
-            cell.imageDatasource = remoteImageDataSource
-            cell.loadImage()
-            return cell
-        }
-        return nil
-    }
-    
-    public func frontPageShelfView(cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
-        [RecentlyFavoritedShelfCell.self, SavedSearchShelfCell.self]
-    }
-    
-    public func datasource(forSection section: FrontPageShelfView.Section) -> [AnyHashable] {
-        guard let model = shelfViewModel else { return [] }
-        switch section {
-        case .savedSearch: return model.savedSearchItems
-        case .recentlyFavorited: return model.recentlyFavoritedItems
-        }
-    }
-    
-    public func removeFavoritedItem(_ item: AnyHashable, atIndexPath indexPath: IndexPath) {
-        guard
-            let favoriteModel = item as? RecentlyFavoritedViewmodel
-        else { return }
-
-        delegate?.frontPageView(self, didUnfavoriteRecentlyFavorited: favoriteModel)
     }
 }
