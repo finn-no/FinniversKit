@@ -31,12 +31,17 @@ public class FrontpageViewDemoView: UIView {
         )
         view.showPromotion(withViewModel: hjerteromPromoViewModel, andDelegate: self)
 
-        let shelfModel = FrontPageShelfViewModel(favoritedItems: RecentlyFavoritedFactory.create(numberOfItems: 10),
-                                                 savedSearchItems: SavedSearchShelfFactory.create(numberOfItems: 10),
-                                                 sectionTitles: ["Lagrede søk", "Nylige favoritter"],
-                                                 buttonTitles: ["Se alle", "Se alle"])
-        view.configureFrontPageShelves(shelfModel, firstVisibleSavedSearchIndex: 1)
-        view.frontPageShelfDelegate = self
+        let savedSearchesViewModel = FrontPageSavedSearchesViewModel(
+            searchViewModels: FrontPageSavedSearchFactory.create(numberOfItems: 10),
+            title: "Nytt i lagrede søk",
+            buttonTitle: "Se alle"
+        )
+        view.configure(
+            withSavedSearches: savedSearchesViewModel,
+            firstVisibleSavedSearchIndex: 1,
+            remoteImageViewDataSource: self
+        )
+        view.savedSearchesViewDelegate = self
 
         let transactionViewModel = FrontPageTransactionViewModel(
             headerTitle: "Dine handler på torget",
@@ -108,10 +113,6 @@ extension FrontpageViewDemoView: PromotionViewDelegate {
 extension FrontpageViewDemoView: FrontPageViewDelegate {
     public func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView) {
         frontPageView.reloadData()
-    }
-
-    public func frontPageView(_ frontPageView: FrontPageView, didUnfavoriteRecentlyFavorited item: RecentlyFavoritedViewmodel) {
-        print(item)
     }
 }
 
@@ -225,27 +226,20 @@ extension FrontpageViewDemoView: RemoteImageViewDataSource {
     public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
 
-// MARK: - FrontPageShelfDelegate
-extension FrontpageViewDemoView: FrontPageShelfDelegate {
-    public func frontPageShelfView(_ view: FrontPageShelfView, didSelectHeaderForSection section: FrontPageShelfView.Section) {
-        switch section {
-        case .recentlyFavorited:
-            print("Header for favorite item selected")
-        case .savedSearch:
-            print("Header for saved search item selected")
-        }
+// MARK: - FrontPageSavedSearchesViewDelegate
+
+extension FrontpageViewDemoView: FrontPageSavedSearchesViewDelegate {
+    public func frontPageSavedSearchesView(_ view: FrontPageSavedSearchesView, didSelectSavedSearch savedSearch: FrontPageSavedSearchViewModel) {
+        print("Did select saved search with title", savedSearch.title)
     }
 
-    public func frontPageShelfView(_ view: FrontPageShelfView, didSelectSavedSearchItem item: SavedSearchShelfViewModel) {
-        print("saved search item selected")
-    }
-
-    public func frontPageShelfView(_ view: FrontPageShelfView, didSelectFavoriteItem item: RecentlyFavoritedViewmodel) {
-        print("favorited item selected")
+    public func frontPageSavedSearchesViewDidSelectActionButton(_ view: FrontPageSavedSearchesView) {
+        print("Did select action button")
     }
 }
 
 // MARK: - FrontPageTransactionFeedDelegate
+
 extension FrontpageViewDemoView: FrontPageTransactionViewDelegate {
     public func transactionViewTapped(_ transactionView: FrontPageTransactionView) {
         print("TransactionFeedView tapped")

@@ -1,24 +1,22 @@
 import Foundation
 
-public struct SavedSearchShelfViewModel {
+public struct FrontPageSavedSearchViewModel {
     public let title: String
-    public let imageUrlString: String?
+    public let imageUrl: String?
     public let id: Int
-    public let created: Date
     public let isRead: Bool
 
     private let identifier = UUID()
 
-    public init(id: Int, title: String, imageUrlString: String?, created: Date = Date(), isRead: Bool) {
+    public init(id: Int, title: String, imageUrl: String?, isRead: Bool) {
         self.title = title
-        self.imageUrlString = imageUrlString
+        self.imageUrl = imageUrl
         self.id = id
-        self.created = created
         self.isRead = isRead
     }
 }
 
-extension SavedSearchShelfViewModel: Hashable {
+extension FrontPageSavedSearchViewModel: Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(identifier)
     }
