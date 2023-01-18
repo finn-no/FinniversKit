@@ -1,6 +1,6 @@
 import UIKit
 
-public class SavedSearchShelfCell: UICollectionViewCell {
+public class FrontPageSavedSearchCell: UICollectionViewCell {
     static let width: CGFloat = 74
     private let borderInsets: CGFloat = 5
 
@@ -14,7 +14,7 @@ public class SavedSearchShelfCell: UICollectionViewCell {
         }
     }
 
-    private var model: SavedSearchShelfViewModel?
+    private var model: FrontPageSavedSearchViewModel?
 
     private lazy  var remoteImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
@@ -85,9 +85,9 @@ public class SavedSearchShelfCell: UICollectionViewCell {
 
 // MARK: - public functions
 
-public extension SavedSearchShelfCell {
+public extension FrontPageSavedSearchCell {
     func loadImage() {
-        guard let model = model, let url = model.imageUrlString else {
+        guard let model = model, let url = model.imageUrl else {
             remoteImageView.setImage(defaultImage, animated: false)
             return
         }
@@ -95,7 +95,7 @@ public extension SavedSearchShelfCell {
         remoteImageView.loadImage(for: url, imageWidth: Self.width, fallbackImage: defaultImage)
     }
 
-    func configure(withModel model: SavedSearchShelfViewModel) {
+    func configure(withModel model: FrontPageSavedSearchViewModel) {
         self.model = model
         self.titleLabel.text = model.title
         storyBorderView.configure(isRead: model.isRead)

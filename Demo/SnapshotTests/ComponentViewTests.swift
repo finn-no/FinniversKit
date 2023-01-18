@@ -123,10 +123,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.earthHourView)
     }
 
-    func testStepIndicatorView() {
-        snapshot(.stepIndicatorView)
-    }
-
     func testNativeAdvert() {
         snapshot(.nativeAdvert)
     }
@@ -279,16 +275,8 @@ class ComponentViewTests: XCTestCase {
         snapshot(.brazePromotionView)
     }
 
-    func testRecentlyFavoritedShelf() {
-        snapshot(.recentlyfavoritedShelf)
-    }
-
-    func testSavedSearchShelf() {
-        snapshot(.savedSearchShelf)
-    }
-
-    func testFrontPageShelf() {
-        snapshot(.frontPageShelf)
+    func testFrontPageSavedSearchesView() {
+        snapshot(.frontPageSavedSearchesView)
     }
 
     func testOverflowCollectionView() {
@@ -337,6 +325,10 @@ class ComponentViewTests: XCTestCase {
 
     func testMyAdsListView() {
         snapshot(.myAdsListView, includeIPad: true)
+    }
+
+    func testMapAddressButton() {
+        snapshot(.mapAddressButton, includeIPad: true)
     }
 
     func testHyperlinkTextView() {

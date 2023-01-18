@@ -11,6 +11,7 @@ public protocol ColorProvider {
     var bgQuaternary: UIColor { get }
     var bgBottomSheet: UIColor { get }
     var bgAlert: UIColor { get }
+    var bgInfo: UIColor { get }
     var bgSuccess: UIColor { get }
     var bgCritical: UIColor { get }
     var btnPrimary: UIColor { get }
@@ -62,6 +63,10 @@ public struct DefaultColorProvider: ColorProvider {
 
     public var bgAlert: UIColor {
         .yellow100
+    }
+
+    public var bgInfo: UIColor {
+        .dynamicColor(defaultColor: .aqua50, darkModeColor: .darkIce)
     }
 
     public var bgSuccess: UIColor {

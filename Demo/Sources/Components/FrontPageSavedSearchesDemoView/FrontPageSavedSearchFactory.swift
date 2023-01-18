@@ -1,14 +1,14 @@
 import Foundation
 import FinniversKit
 
-class SavedSearchShelfFactory {
-    static func create(numberOfItems items: Int) -> [SavedSearchShelfViewModel] {
+class FrontPageSavedSearchFactory {
+    static func create(numberOfItems items: Int) -> [FrontPageSavedSearchViewModel] {
         let minCount = min(imageUrls.count, titles.count)
         return (0..<items).map { index in
             let dataIndex = index % minCount
             let title = titles[dataIndex]
             let imageUrl = imageUrls[dataIndex]
-            return SavedSearchShelfViewModel(id: Int.random(in: 0...100_000), title: title, imageUrlString: imageUrl, isRead: index > 2)
+            return FrontPageSavedSearchViewModel(id: Int.random(in: 0...100_000), title: title, imageUrl: imageUrl, isRead: index > 2)
         }
     }
 

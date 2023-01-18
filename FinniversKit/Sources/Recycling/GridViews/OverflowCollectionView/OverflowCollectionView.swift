@@ -141,7 +141,7 @@ private extension OverflowCollectionView {
                 let previousCellMaxX = attributes[index - 1].frame.maxX
 
                 // Make sure the new cell is not exceeding the width of the collectionView.
-                if previousCellMaxX + cellSpacing.horizontal + attribute.frame.size.width < collectionViewContentSize.width {
+                if previousCellMaxX + cellSpacing.horizontal + attribute.frame.size.width <= collectionViewContentSize.width {
                     var newFrame = attribute.frame
                     newFrame.origin.x = previousCellMaxX + cellSpacing.horizontal
                     attribute.frame = newFrame
