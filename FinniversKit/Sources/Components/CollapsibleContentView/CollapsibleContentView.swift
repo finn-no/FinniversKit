@@ -36,14 +36,10 @@ public class CollapsibleContentView: UIView {
     // MARK: - Private properties
 
     private let style: Style
+    private var contentTopConstraint: NSLayoutConstraint?
     private lazy var innerContainerView = UIView(withAutoLayout: true)
     private lazy var headerView = UIView(withAutoLayout: true)
-
-    private lazy var titleLabel: Label = {
-        let label = Label(style: style.titleStyle, withAutoLayout: true)
-        label.numberOfLines = 0
-        return label
-    }()
+    private lazy var titleLabel = Label(style: style.titleStyle, numberOfLines: 0, withAutoLayout: true)
 
     private lazy var collapseIndicatorImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
@@ -76,7 +72,11 @@ public class CollapsibleContentView: UIView {
         return constraint
     }()
 
-    private var contentTopConstraint: NSLayoutConstraint?
+    private lazy var hairlineView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = style.hairlineColor
+        return view
+    }()
 
     // MARK: - Initializers
 
@@ -107,6 +107,13 @@ public class CollapsibleContentView: UIView {
         }
     }
 
+    // MARK: - Overrides
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.borderColor = style.borderColor?.cgColor
+    }
+
     // MARK: - Private methods
 
     private func setup() {
@@ -114,11 +121,13 @@ public class CollapsibleContentView: UIView {
 
         backgroundColor = style.backgroundColor
         layer.cornerRadius = style.cornerRadius
+        layer.borderWidth = style.borderWidth
 
         headerView.addSubview(titleLabel)
         headerView.addSubview(collapseIndicatorImageView)
 
         innerContainerView.addSubview(headerView)
+        innerContainerView.addSubview(hairlineView)
         addSubview(innerContainerView)
 
         let contentInsets = style.contentInsets
@@ -141,6 +150,11 @@ public class CollapsibleContentView: UIView {
             collapseIndicatorImageView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             collapseIndicatorImageView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
             compactHeightConstraint,
+
+            hairlineView.leadingAnchor.constraint(equalTo: innerContainerView.leadingAnchor),
+            hairlineView.trailingAnchor.constraint(equalTo: innerContainerView.trailingAnchor),
+            hairlineView.bottomAnchor.constraint(equalTo: innerContainerView.bottomAnchor),
+            hairlineView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
         ])
 
         headerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toggleContent)))
