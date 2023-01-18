@@ -6,7 +6,7 @@ import UIKit
 
 public protocol FrontPageViewModel {
     var marketsGridViewAccessibilityHeaderTitle: String { get }
-    var adRecommedationsGridViewHeaderTitle: String { get }
+    var adRecommedationsGridViewHeaderTitle: String { get set }
     var retryButtonTitle: String { get }
     var noRecommendationsText: String { get }
 }
