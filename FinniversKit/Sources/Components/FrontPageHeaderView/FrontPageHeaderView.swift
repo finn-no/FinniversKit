@@ -1,8 +1,8 @@
 import UIKit
 
-public class FrontPageShelfHeaderView: UICollectionReusableView {
+public class FrontPageHeaderView: UICollectionReusableView {
     public typealias ButtonAction = (()->())
-    
+
     private lazy var titleLabel: UILabel = {
         let label = Label(style: .title3Strong)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -13,7 +13,11 @@ public class FrontPageShelfHeaderView: UICollectionReusableView {
     }()
     
     private lazy var button: UIButton = {
-        let button = Button(style: Button.Style.flat)
+        let button = Button(
+            style: .flat.overrideStyle(
+                margins: .init(top: .spacingS, leading: .spacingM, bottom: .spacingS, trailing: 0)
+            )
+        )
         button.size = .normal
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setContentHuggingPriority(.required, for: .horizontal)
