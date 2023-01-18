@@ -13,7 +13,7 @@ public class FrontPageSavedSearchesView: UIView {
 
     // MARK: - Internal properties
 
-    static let topPadding: CGFloat = .spacingL
+    static let topPadding: CGFloat = .spacingM
     static let height: CGFloat = headerHeight + cellHeight + bottomPadding
 
     // MARK: - Private properties
@@ -29,7 +29,7 @@ public class FrontPageSavedSearchesView: UIView {
         case savedSearch
     }
 
-    private var collectionViewDatasource: Datasource!
+    private lazy var collectionViewDatasource: Datasource = makeDatasource()
     private weak var remoteImageDataSource: RemoteImageViewDataSource?
     private var scrollToIndexPath: IndexPath?
     private let title: String
@@ -129,7 +129,7 @@ private extension FrontPageSavedSearchesView {
 
         //Sections
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: .spacingM, bottom: 0, trailing: 0)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: .spacingM, bottom: 0, trailing: .spacingM)
         section.orthogonalScrollingBehavior = .continuous
         section.interGroupSpacing = .spacingS + .spacingXS
 
