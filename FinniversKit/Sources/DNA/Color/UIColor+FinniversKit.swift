@@ -12,6 +12,7 @@ import UIKit
     public class var bgAlert: UIColor { Config.colorProvider.bgAlert }
     public class var bgBottomSheet: UIColor { Config.colorProvider.bgBottomSheet }
     public class var bgCritical: UIColor { Config.colorProvider.bgCritical }
+    public class var bgInfo: UIColor { Config.colorProvider.bgInfo }
     public class var bgPrimary: UIColor { Config.colorProvider.bgPrimary }
     public class var bgQuaternary: UIColor { Config.colorProvider.bgQuaternary }
     public class var bgSecondary: UIColor { Config.colorProvider.bgSecondary }
@@ -45,6 +46,7 @@ extension CGColor {
     public class var bgAlert: CGColor { UIColor.bgAlert.cgColor }
     public class var bgBottomSheet: CGColor { UIColor.bgBottomSheet.cgColor }
     public class var bgCritical: CGColor { UIColor.bgCritical.cgColor }
+    public class var bgInfo: CGColor { UIColor.bgInfo.cgColor }
     public class var bgPrimary: CGColor { UIColor.bgPrimary.cgColor }
     public class var bgQuaternary: CGColor { UIColor.bgQuaternary.cgColor }
     public class var bgSecondary: CGColor { UIColor.bgSecondary.cgColor }
@@ -116,6 +118,7 @@ extension CGColor {
 // These colors are in use but are not part of the Fabric color palette
 extension UIColor {
     public class var coolGray100: UIColor { .init(hex: "#F3F4F6") }
+    public class var darkBgPrimaryProminent: UIColor { .init(hex: "#323241") }
     public class var darkCallToAction: UIColor { .init(hex: "#006DFB") }
     public class var darkIce: UIColor { .init(hex: "#262633") }
     public class var darkLicorice: UIColor { .init(hex: "#828699") }
@@ -131,6 +134,7 @@ extension UIColor {
 
 extension CGColor {
     public class var coolGray100: CGColor { UIColor.coolGray100.cgColor }
+    public class var darkBgPrimaryProminent: CGColor { UIColor.darkBgPrimaryProminent.cgColor }
     public class var darkCallToAction: CGColor { UIColor.darkCallToAction.cgColor }
     public class var darkIce: CGColor { UIColor.darkIce.cgColor }
     public class var darkLicorice: CGColor { UIColor.darkLicorice.cgColor }

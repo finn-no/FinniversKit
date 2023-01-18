@@ -47,7 +47,8 @@ extension JobApplyBoxDemoView: JobApplyBoxViewDelegate {
     func jobApplyBoxView(
         _ view: JobApplyBoxView,
         didSelectButton selectedButton: JobApplyBoxView.SelectedButton,
-        withURL url: URL
+        withURL url: URL,
+        viewModel: JobApplyBoxViewModel
     ) {
         print("👉 Did select button: \(selectedButton)")
     }

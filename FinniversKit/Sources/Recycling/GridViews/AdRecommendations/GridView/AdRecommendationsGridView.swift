@@ -234,7 +234,11 @@ extension AdRecommendationsGridView: AdRecommendationsGridViewLayoutDelegate {
         case .columns(let columns) where columns > 1 && columns <= 3:
             return columns
         default:
-            return traitCollection.horizontalSizeClass == .regular ? 3 : 2
+           var columns = traitCollection.horizontalSizeClass == .regular ? 3 : 2
+           if traitCollection.preferredContentSizeCategory.isAccessibilityCategory && Config.isDynamicTypeEnabled {
+              columns -= 1
+           }
+           return columns
         }
     }
 

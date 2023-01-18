@@ -68,6 +68,7 @@ import UIKit
     init(window: UIWindow? = UIApplication.shared.keyWindow) {
         super.init(frame: .zero)
         defaultWindow = window
+        accessibilityViewIsModal = true
         alpha = 0
         translatesAutoresizingMaskIntoConstraints = false
         setup()
@@ -83,6 +84,7 @@ import UIKit
     /// - Parameter afterDelay: The delay time (in seconds) before the loading view will be shown (optional, defaults to 0.5s)
     @objc public class func show(withMessage message: String? = nil, afterDelay delay: Double = 0.5, displayType: DisplayType = .fullscreen) {
         LoadingView.shared.state = .message
+        UIAccessibility.post(notification: .announcement, argument: message)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
             if LoadingView.shared.state == .message {
@@ -97,6 +99,7 @@ import UIKit
     /// - Parameter afterDelay: The delay time (in seconds) before the success view will be shown (optional, defaults to 0.5s)
     @objc public class func showSuccess(withMessage message: String? = nil, afterDelay delay: Double = 0.5, displayType: DisplayType = .fullscreen) {
         LoadingView.shared.state = .success
+        UIAccessibility.post(notification: .announcement, argument: message)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
             if LoadingView.shared.state == .success {
