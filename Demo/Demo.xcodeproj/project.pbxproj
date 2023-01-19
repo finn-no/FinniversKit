@@ -43,8 +43,6 @@
 		46E773C8242CEF0A008A5E93 /* FullscreenGalleryDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77293242CEF09008A5E93 /* FullscreenGalleryDemoViewController.swift */; };
 		46E773C9242CEF0A008A5E93 /* ResultDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77295242CEF09008A5E93 /* ResultDemoView.swift */; };
 		46E773CA242CEF0A008A5E93 /* ConfirmationViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77297242CEF09008A5E93 /* ConfirmationViewDemoView.swift */; };
-		46E773CB242CEF0A008A5E93 /* SearchResultMapViewDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77299242CEF09008A5E93 /* SearchResultMapViewDemoViewController.swift */; };
-		46E773CC242CEF0A008A5E93 /* SearchResultMapViewDemoViewControllerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7729A242CEF09008A5E93 /* SearchResultMapViewDemoViewControllerHelpers.swift */; };
 		46E773CD242CEF0A008A5E93 /* FavoriteAdCommentInputDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7729C242CEF09008A5E93 /* FavoriteAdCommentInputDemoView.swift */; };
 		46E773CE242CEF0A008A5E93 /* RegisterViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7729E242CEF09008A5E93 /* RegisterViewDefaultData.swift */; };
 		46E773CF242CEF0A008A5E93 /* RegisterViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7729F242CEF09008A5E93 /* RegisterViewDemoView.swift */; };
@@ -286,8 +284,6 @@
 		46E77293242CEF09008A5E93 /* FullscreenGalleryDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenGalleryDemoViewController.swift; sourceTree = "<group>"; };
 		46E77295242CEF09008A5E93 /* ResultDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultDemoView.swift; sourceTree = "<group>"; };
 		46E77297242CEF09008A5E93 /* ConfirmationViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationViewDemoView.swift; sourceTree = "<group>"; };
-		46E77299242CEF09008A5E93 /* SearchResultMapViewDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultMapViewDemoViewController.swift; sourceTree = "<group>"; };
-		46E7729A242CEF09008A5E93 /* SearchResultMapViewDemoViewControllerHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultMapViewDemoViewControllerHelpers.swift; sourceTree = "<group>"; };
 		46E7729C242CEF09008A5E93 /* FavoriteAdCommentInputDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdCommentInputDemoView.swift; sourceTree = "<group>"; };
 		46E7729E242CEF09008A5E93 /* RegisterViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewDefaultData.swift; sourceTree = "<group>"; };
 		46E7729F242CEF09008A5E93 /* RegisterViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewDemoView.swift; sourceTree = "<group>"; };
@@ -601,7 +597,6 @@
 				46E772A2242CEF09008A5E93 /* MessageForm */,
 				46E7727A242CEF09008A5E93 /* Popup */,
 				46E7729D242CEF09008A5E93 /* Register */,
-				46E77298242CEF09008A5E93 /* SearchResultMapView */,
 				46E77287242CEF09008A5E93 /* SettingDetailsView */,
 				46E7727F242CEF09008A5E93 /* SoldView */,
 				71C6AA972549D27000D78269 /* MessageUserRequired */,
@@ -740,15 +735,6 @@
 				46E77297242CEF09008A5E93 /* ConfirmationViewDemoView.swift */,
 			);
 			path = ConfirmationView;
-			sourceTree = "<group>";
-		};
-		46E77298242CEF09008A5E93 /* SearchResultMapView */ = {
-			isa = PBXGroup;
-			children = (
-				46E77299242CEF09008A5E93 /* SearchResultMapViewDemoViewController.swift */,
-				46E7729A242CEF09008A5E93 /* SearchResultMapViewDemoViewControllerHelpers.swift */,
-			);
-			path = SearchResultMapView;
 			sourceTree = "<group>";
 		};
 		46E7729B242CEF09008A5E93 /* FavoriteAdCommentInput */ = {
@@ -2051,7 +2037,6 @@
 				46E773D8242CEF0A008A5E93 /* FavoriteAdsDemoDataSource.swift in Sources */,
 				46E773D1242CEF0A008A5E93 /* MessageFormDemoPresenter.swift in Sources */,
 				46E77465242CEF0A008A5E93 /* BasicTableViewDemoView.swift in Sources */,
-				46E773CC242CEF0A008A5E93 /* SearchResultMapViewDemoViewControllerHelpers.swift in Sources */,
 				46E7745C242CEF0A008A5E93 /* NeighborhoodProfileDemoView.swift in Sources */,
 				46E77403242CEF0A008A5E93 /* RefreshControlDemo.swift in Sources */,
 				46E773AA242CEF0A008A5E93 /* MiniToastView.swift in Sources */,
@@ -2065,7 +2050,6 @@
 				46E77469242CEF0A008A5E93 /* FavoriteFoldersListViewDemoViewHelpers.swift in Sources */,
 				46E7741F242CEF0A008A5E93 /* ButtonDemoView.swift in Sources */,
 				46E773D3242CEF0A008A5E93 /* EmptyViewDemoView.swift in Sources */,
-				46E773CB242CEF0A008A5E93 /* SearchResultMapViewDemoViewController.swift in Sources */,
 				46E77459242CEF0A008A5E93 /* AdRecommendationsGridViewDemoViewHelpers.swift in Sources */,
 				46E773C0242CEF0A008A5E93 /* LoginEntryDemoPageViewController.swift in Sources */,
 				46E773F2242CEF0A008A5E93 /* NativeAdvertDefaultData.swift in Sources */,
