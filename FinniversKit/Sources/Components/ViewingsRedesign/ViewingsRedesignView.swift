@@ -11,7 +11,7 @@ public class ViewingsRedesignView: UIView {
     private let viewModel: ViewingsRedesignViewModel
     private weak var delegate: ViewingsRedesignViewDelegate?
     private lazy var titleLabel = Label(style: .title3, numberOfLines: 0, withAutoLayout: true)
-    private lazy var moreInfoLabel = Label(style: .caption, numberOfLines: 0, withAutoLayout: true)
+    private lazy var moreInfoLabel = Label(style: .body, numberOfLines: 0, withAutoLayout: true)
     private lazy var prospectusDescriptionLabel = Label(style: .body, numberOfLines: 0, withAutoLayout: true)
     private lazy var prospectusStackView = UIStackView(axis: .vertical, withAutoLayout: true)
     private lazy var viewingsStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
