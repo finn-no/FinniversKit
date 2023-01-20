@@ -90,6 +90,7 @@ struct AdFactory {
             ribbonTitle: "Betalt plassering",
             logoImagePath: "https://static.finncdn.no/_c/pf-logos/dnbnor_logo.png"
         )
+        let badgeViewModel = BadgeViewModel(style: .warning, title: "Fiks ferdig", icon: UIImage(named: .bapShippable))
 
         return (0 ..< numberOfModels).map { index in
             let dataIndex = index % minimumDataItemsCount
@@ -98,7 +99,6 @@ struct AdFactory {
             let subtitle = subtitles[dataIndex]
             let price = prices[dataIndex]
             let scaleImageToFillView = scaleImagesToFillView[dataIndex]
-            let badgeViewModel = BadgeViewModel(style: .warning, title: "Fiks ferdig", icon: UIImage(named: .bapShippable))
 
             return Ad(
                 imagePath: imageSource.path,
