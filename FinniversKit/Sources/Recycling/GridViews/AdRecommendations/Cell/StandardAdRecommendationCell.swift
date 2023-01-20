@@ -367,6 +367,10 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         return imageHeight + contentHeight
     }
 
+    public static func extraHeight() -> CGFloat {
+        return nonImageHeight
+    }
+
     public func loadImage() {
         if imageView.image == nil {
             if let imagePath = model?.imagePath {
