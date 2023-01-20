@@ -29,6 +29,7 @@ public struct Ad: StandardAdRecommendationViewModel {
     public var scaleImageToFillView = true
     public var adType: AdType
     public var sponsoredAdData: SponsoredAdData?
+    public var badgeViewModel: BadgeViewModel? = nil
 
     public var accessibilityLabel: String {
         var message = title
@@ -97,6 +98,7 @@ struct AdFactory {
             let subtitle = subtitles[dataIndex]
             let price = prices[dataIndex]
             let scaleImageToFillView = scaleImagesToFillView[dataIndex]
+            let badgeViewModel = BadgeViewModel(style: .warning, title: "Fiks ferdig", icon: UIImage(named: .bapShippable))
 
             return Ad(
                 imagePath: imageSource.path,
@@ -110,7 +112,9 @@ struct AdFactory {
                 scaleImageToFillView: scaleImageToFillView,
                 adType: .normal,
                 sponsoredAdData: index % 4 == 0 ? sponsoredAdData : nil,
-                favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt")
+                badgeViewModel: index == 1 ? badgeViewModel : nil,
+                favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt"
+            )
         }
     }
 
