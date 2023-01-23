@@ -29,6 +29,7 @@ public struct Ad: StandardAdRecommendationViewModel {
     public var scaleImageToFillView = true
     public var adType: AdType
     public var sponsoredAdData: SponsoredAdData?
+    public var badgeViewModel: BadgeViewModel? = nil
 
     public var accessibilityLabel: String {
         var message = title
@@ -89,6 +90,7 @@ struct AdFactory {
             ribbonTitle: "Betalt plassering",
             logoImagePath: "https://static.finncdn.no/_c/pf-logos/dnbnor_logo.png"
         )
+        let badgeViewModel = BadgeViewModel(style: .warning, title: "Fiks ferdig", icon: UIImage(named: .bapShippable))
 
         return (0 ..< numberOfModels).map { index in
             let dataIndex = index % minimumDataItemsCount
@@ -110,7 +112,9 @@ struct AdFactory {
                 scaleImageToFillView: scaleImageToFillView,
                 adType: .normal,
                 sponsoredAdData: index % 4 == 0 ? sponsoredAdData : nil,
-                favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt")
+                badgeViewModel: index == 1 ? badgeViewModel : nil,
+                favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt"
+            )
         }
     }
 
