@@ -32,7 +32,7 @@ class SettingsHeaderView: UIView {
     // MARK: - Private methods
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .bgTertiary
         addSubview(headerLabel)
         headerLabel.fillInSuperview(insets: UIEdgeInsets(top: .spacingM, left: .spacingM, bottom: -.spacingM, right: -.spacingM))
     }
