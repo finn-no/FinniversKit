@@ -14,7 +14,7 @@ public protocol SettingsViewDataSource: AnyObject {
 public protocol SettingsViewDelegate: AnyObject {
     func settingsView(_ settingsView: SettingsView, didSelectModelAt indexPath: IndexPath)
     func settingsView(_ settingsView: SettingsView, didToggleSettingAt indexPath: IndexPath, isOn: Bool)
-    func settingsView(_ settingsView: SettingsView, titleForHeaderInSection section: Int) -> String?
+    func settingsView(_ settingsView: SettingsView, titleForHeaderInSection section: Int) -> SettingsHeaderType?
     func settingsView(_ settingsView: SettingsView, titleForFooterInSection section: Int) -> String?
 }
 
@@ -25,8 +25,17 @@ public class SettingsView: UIView {
     public weak var dataSource: SettingsViewDataSource?
     public weak var delegate: SettingsViewDelegate?
 
+    public var viewTitle: String? {
+        didSet {
+            if let viewTitle = viewTitle {
+                headerView.configure(withText: viewTitle)
+            }
+        }
+    }
+
     public var versionText: String? {
         didSet {
+            tableView.tableFooterView = versionText != nil ? versionInfoView : nil
             versionInfoView.configure(withText: versionText)
         }
     }
@@ -43,6 +52,7 @@ public class SettingsView: UIView {
         tableView.register(SettingsViewToggleCell.self)
         tableView.register(SettingsViewConsentCell.self)
         tableView.register(SettingsSectionHeaderView.self)
+        tableView.register(SettingsSectionComplexHeaderView.self)
         tableView.register(SettingsSectionFooterView.self)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -51,6 +61,10 @@ public class SettingsView: UIView {
     private lazy var versionInfoView = VersionInfoView(
         frame: .zero
     )
+
+    private lazy var headerView: SettingsHeaderView = {
+        return SettingsHeaderView(withAutoLayout: true)
+    }()
 
     // MARK: - Init
 
@@ -136,14 +150,20 @@ extension SettingsView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let title = delegate?.settingsView(self, titleForHeaderInSection: section) else {
+        guard let headerType = delegate?.settingsView(self, titleForHeaderInSection: section) else {
             return nil
         }
 
-        let headerView = tableView.dequeue(SettingsSectionHeaderView.self)
-        headerView.configure(with: title.uppercased())
-
-        return headerView
+        switch headerType {
+        case .plain(title: let title):
+            let headerView = tableView.dequeue(SettingsSectionHeaderView.self)
+            headerView.configure(with: title)
+            return headerView
+        case .complex(title: let title, subtitle: let subtitle, image: let image):
+            let headerView = tableView.dequeue(SettingsSectionComplexHeaderView.self)
+            headerView.configure(with: title, subtitle: subtitle, image: image)
+            return headerView
+        }
     }
 
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -162,7 +182,7 @@ extension SettingsView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        48
+        UITableView.automaticDimension
     }
 
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -177,8 +197,16 @@ extension SettingsView: UITableViewDelegate {
 // MARK: - Private Methods
 private extension SettingsView {
     func setup() {
+        addSubview(headerView)
         addSubview(tableView)
-        tableView.tableFooterView = versionInfoView
-        tableView.fillInSuperview()
+        NSLayoutConstraint.activate([
+            headerView.topAnchor.constraint(equalTo: topAnchor),
+            headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: .spacingS),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 }
