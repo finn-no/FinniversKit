@@ -4,7 +4,6 @@
 
 import Foundation
 
-public protocol SettingsViewConsentCellModel: SettingsViewCellModel, Identifiable {
-    var id: String { get }
+public protocol SettingsViewConsentCellModel: SettingsViewCellModel {
     var status: String { get }
 }
