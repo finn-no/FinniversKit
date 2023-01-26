@@ -3,8 +3,12 @@ import SwiftUI
 
 struct SwiftUILoadingIndicatorDemoView: View {
     var body: some View {
-        VStack {
+        VStack(spacing: .spacingXXL) {
             SwiftUILoadingIndicator()
+                .frame(width: 40, height: 40)
+
+            SwiftUILoadingIndicator(delay: 2)
+                .frame(width: 40, height: 40)
         }
     }
 }

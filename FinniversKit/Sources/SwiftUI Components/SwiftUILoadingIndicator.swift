@@ -27,13 +27,15 @@ public struct SwiftUILoadingIndicator: View {
         }
     }
 
-    @State private var isAnimating: Bool = false
+    @State private var isVisible: Bool = false
 
     @State private var progressCircleStartAngle: Angle = .degrees(0)
 
     @State private var progressCircleEndAngle: Angle = .degrees(1)
 
     @State private var rotationAngle: Angle = .degrees(-90)
+
+    private let animationDelay: Double?
 
     private let animationDuration: CGFloat = 2.5
 
@@ -43,30 +45,44 @@ public struct SwiftUILoadingIndicator: View {
         Color(red: 221/255, green: 232/255, blue: 250/255)
     }
 
-    public init() {}
+    public init(delay: Double? = nil) {
+        animationDelay = delay
+    }
 
     public var body: some View {
         ZStack {
-            Circle()
-                .strokeBorder(loadingIndicatorBackgroundColor, lineWidth: lineWidth)
+            if isVisible {
+                Circle()
+                    .strokeBorder(loadingIndicatorBackgroundColor, lineWidth: lineWidth)
 
-            ProgressCircle(startAngle: progressCircleStartAngle, endAngle: progressCircleEndAngle, lineWidth: lineWidth)
-                .stroke(Color.accentSecondaryBlue, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
-                .rotationEffect(rotationAngle)
-                .onAppear {
-                    isAnimating = true
-                    startRotationAnimation()
-                    startStrokeAnimation()
-                }
-                .onDisappear {
-                    isAnimating = false
-                }
+                ProgressCircle(startAngle: progressCircleStartAngle, endAngle: progressCircleEndAngle, lineWidth: lineWidth)
+                    .stroke(Color.accentSecondaryBlue, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
+                    .rotationEffect(rotationAngle) // Initial rotation to start at top
+                    .onAppear {
+                        startAnimating()
+                    }
+            }
+        }
+        .onAppear {
+            guard let delay = animationDelay else {
+                isVisible = true
+                return
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                isVisible = true
+            }
+        }
+        .onDisappear {
+            isVisible = false
         }
     }
 
-    private func startRotationAnimation() {
-        guard isAnimating else { return }
+    private func startAnimating() {
+        startRotationAnimation()
+        startStrokeAnimation()
+    }
 
+    private func startRotationAnimation() {
         let rotationAnimation = Animation
             .linear(duration: animationDuration)
             .repeatForever(autoreverses: false)
@@ -77,7 +93,8 @@ public struct SwiftUILoadingIndicator: View {
     }
 
     private func startStrokeAnimation() {
-        guard isAnimating else { return }
+        // Terminate animation loop due to dispatch
+        guard isVisible else { return }
 
         progressCircleStartAngle = .degrees(0)
         progressCircleEndAngle = .degrees(1)
@@ -103,7 +120,12 @@ public struct SwiftUILoadingIndicator: View {
 
 struct SwiftUILoadingIndicator_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUILoadingIndicator()
-            .frame(width: 50, height: 50)
+        VStack {
+            SwiftUILoadingIndicator()
+                .frame(width: 50, height: 50)
+
+            SwiftUILoadingIndicator(delay: 2)
+                .frame(width: 50, height: 50)
+        }
     }
 }

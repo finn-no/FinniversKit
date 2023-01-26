@@ -3316,10 +3316,10 @@
 				E65085DF292BCF7800A43B07 /* RoundedCorner.swift */,
 				E65085D0292BBF1D00A43B07 /* SwiftUICheckBox.swift */,
 				E65085D5292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift */,
+				1700944A297EE12300E5650A /* SwiftUILoadingIndicator.swift */,
 				E65085D9292BC03400A43B07 /* SwiftUIRadioButton.swift */,
 				E65085E1292BD01800A43B07 /* SwiftUISelectionListItem.swift */,
 				E65085DB292BCD1D00A43B07 /* SwiftUISelectionListView.swift */,
-				1700944A297EE12300E5650A /* SwiftUILoadingIndicator.swift */,
 			);
 			path = "SwiftUI Components";
 			sourceTree = "<group>";
