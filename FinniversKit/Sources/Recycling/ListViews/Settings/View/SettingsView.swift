@@ -48,7 +48,6 @@ public class SettingsView: UIView {
         tableView.register(SettingsSectionComplexHeaderView.self)
         tableView.register(SettingsSectionFooterView.self)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.tableHeaderView = tableHeaderView
         return tableView
     }()
 
@@ -61,6 +60,15 @@ public class SettingsView: UIView {
     private lazy var versionInfoView = VersionInfoView(
         frame: .zero
     )
+
+    private func configureHeaderViewIfNeeded() {
+        tableView.tableHeaderView = tableHeaderView
+        NSLayoutConstraint.activate([
+            tableHeaderView.widthAnchor.constraint(equalTo: tableView.widthAnchor),
+            tableHeaderView.topAnchor.constraint(equalTo: tableView.topAnchor),
+            tableHeaderView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+        ])
+    }
 
     // MARK: - Init
     public init(viewTitle: String?) {
@@ -213,10 +221,8 @@ private extension SettingsView {
         addSubview(tableView)
         tableView.fillInSuperview()
 
-        NSLayoutConstraint.activate([
-            tableHeaderView.widthAnchor.constraint(equalTo: tableView.widthAnchor),
-            tableHeaderView.topAnchor.constraint(equalTo: tableView.topAnchor),
-            tableHeaderView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
-        ])
+        if viewTitle != nil {
+            configureHeaderViewIfNeeded()
+        }
     }
 }
