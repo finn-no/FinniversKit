@@ -170,7 +170,6 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     }
 
     private func setup() {
-        isAccessibilityElement = true
         var accessibilityMultiplier: CGFloat = 1.0
         if Config.isDynamicTypeEnabled {
             accessibilityMultiplier = {
