@@ -116,6 +116,12 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         return button
     }()
 
+    private lazy var badgeView: BadgeView = {
+        let badgeView = BadgeView()
+        badgeView.attachToTopLeadingAnchor(in: imageView)
+        return badgeView
+    }()
+
     private lazy var subtitleToImageConstraint = subtitleLabel.topAnchor.constraint(
         equalTo: imageContentView.bottomAnchor,
         constant: StandardAdRecommendationCell.subtitleTopMargin
@@ -164,7 +170,6 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     }
 
     private func setup() {
-        isAccessibilityElement = true
         var accessibilityMultiplier: CGFloat = 1.0
         if Config.isDynamicTypeEnabled {
             accessibilityMultiplier = {
@@ -286,6 +291,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         iconImageView.isHidden = true
         imageTextLabel.isHidden = true
         imageDescriptionBackgroundView.isHidden = true
+        badgeView.isHidden = true
     }
 
     public override func layoutSubviews() {
@@ -330,6 +336,11 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         iconImageView.isHidden = iconImageView.image == nil
         imageTextLabel.isHidden = imageTextLabel.text == nil
         imageDescriptionBackgroundView.isHidden = model?.hideImageOverlay ?? false
+        badgeView.isHidden = model?.badgeViewModel == nil
+
+        if let badgeViewModel = model?.badgeViewModel {
+            badgeView.configure(with: badgeViewModel)
+        }
     }
 
     public var isFavorite = false {
