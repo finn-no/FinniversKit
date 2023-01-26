@@ -25,14 +25,7 @@ public class SettingsView: UIView {
     public weak var dataSource: SettingsViewDataSource?
     public weak var delegate: SettingsViewDelegate?
 
-    public var viewTitle: String? {
-        didSet {
-            if let viewTitle = viewTitle {
-                headerView.configure(withText: viewTitle)
-            }
-        }
-    }
-
+    private var viewTitle: String?
     public var versionText: String? {
         didSet {
             tableView.tableFooterView = versionText != nil ? versionInfoView : nil
@@ -42,7 +35,7 @@ public class SettingsView: UIView {
 
     // MARK: - Private Properties
 
-    private lazy var tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .bgTertiary
         tableView.separatorStyle = .none
@@ -55,26 +48,46 @@ public class SettingsView: UIView {
         tableView.register(SettingsSectionComplexHeaderView.self)
         tableView.register(SettingsSectionFooterView.self)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.tableHeaderView = tableHeaderView
         return tableView
+    }()
+
+    private lazy var tableHeaderView: SettingsHeaderView = {
+        let view = SettingsHeaderView(withAutoLayout: true)
+        view.configure(withText: viewTitle)
+        return view
     }()
 
     private lazy var versionInfoView = VersionInfoView(
         frame: .zero
     )
 
-    private lazy var headerView: SettingsHeaderView = {
-        return SettingsHeaderView(withAutoLayout: true)
-    }()
-
     // MARK: - Init
-
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(viewTitle: String?) {
+        self.viewTitle = viewTitle
+        super.init(frame: .zero)
         setup()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+
+        if viewTitle != nil, let headerView = tableView.tableHeaderView {
+            let width = tableView.bounds.size.width
+
+            let size = headerView.systemLayoutSizeFitting(
+                CGSize(width: width, height: UIView.layoutFittingCompressedSize.height)
+            )
+
+            if headerView.frame.size.height != size.height {
+                headerView.frame.size.height = size.height
+                tableView.tableHeaderView = headerView
+            }
+        }
     }
 }
 
@@ -197,16 +210,13 @@ extension SettingsView: UITableViewDelegate {
 // MARK: - Private Methods
 private extension SettingsView {
     func setup() {
-        addSubview(headerView)
         addSubview(tableView)
+        tableView.fillInSuperview()
+
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: topAnchor),
-            headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: .spacingS),
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            tableHeaderView.widthAnchor.constraint(equalTo: tableView.widthAnchor),
+            tableHeaderView.topAnchor.constraint(equalTo: tableView.topAnchor),
+            tableHeaderView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
         ])
     }
 }
