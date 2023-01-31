@@ -13,35 +13,37 @@ extension ToastSwiftUIView {
                         .buttonStyle(InlineFlatStyle())
                 case .promoted:
                     SwiftUI.Button(action.title, action: action.action)
-                        .buttonStyle(ToastPromotedButtonStyle(style: style))
+                        .buttonStyle(PromotedStyle(style: style))
                 }
             }
         }
     }
 }
 
-struct ToastPromotedButtonStyle: ButtonStyle {
-    let style: ToastSwiftUIView.Style
-    private let cornerRadius: CGFloat = .spacingL
+extension ToastSwiftUIView.ActionButton {
+    struct PromotedStyle: ButtonStyle {
+        let style: ToastSwiftUIView.Style
+        private let cornerRadius: CGFloat = .spacingL
 
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .finnFont(.bodyStrong)
-            .padding(.vertical, .spacingS)
-            .padding(.horizontal, .spacingM)
-            .foregroundColor(.textToast)
-            .background(backgroundColor)
-            .cornerRadius(cornerRadius)
-            .overlay(
-                RoundedRectangle(cornerRadius: cornerRadius)
-                    .stroke(Color.white, lineWidth: 2)
-            )
-    }
+        func makeBody(configuration: Configuration) -> some View {
+            configuration.label
+                .finnFont(.bodyStrong)
+                .padding(.vertical, .spacingS)
+                .padding(.horizontal, .spacingM)
+                .foregroundColor(.textToast)
+                .background(backgroundColor)
+                .cornerRadius(cornerRadius)
+                .overlay(
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .stroke(Color.white, lineWidth: 2)
+                )
+        }
 
-    var backgroundColor: Color {
-        switch style {
-        case .success: return .accentPea
-        case .error: return .init(UIColor.red400)
+        var backgroundColor: Color {
+            switch style {
+            case .success: return .accentPea
+            case .error: return .init(UIColor.red400)
+            }
         }
     }
 }
