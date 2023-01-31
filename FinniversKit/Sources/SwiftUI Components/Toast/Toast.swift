@@ -1,43 +1,72 @@
 import SwiftUI
 
-struct Toast: ViewModifier {
-    let toastView: ToastSwiftUIView
-    let timeout: TimeInterval
-    let position: ToastPosition
-    @Binding var isShowing: Bool
+public enum Toast {} // Empty for namespacing
 
-    func body(content: Content) -> some View {
-        ZStack {
-            content
-            VStack {
-                if position == .bottom {
-                    Spacer()
-                }
-                if isShowing {
-                    toastView
-                        .transition(.move(edge: position == .top ? .top : .bottom))
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + timeout) {
-                                isShowing.toggle()
-                            }
-                        }
-                }
-                if position == .top {
-                    Spacer()
-                }
+// MARK: - Public API
+
+extension Toast {
+    public enum Position {
+        case top
+        case bottom
+    }
+
+    public enum Style {
+        case success
+        case error
+
+        var color: Color {
+            switch self {
+            case .success: return .bgSuccess
+            case .error: return .bgCritical
             }
-            .animation(.easeInOut(duration: 0.3), value: isShowing)
+        }
+
+        var imageAsset: ImageAsset {
+            switch self {
+            case .success: return .checkCircleFilledMini
+            case .error: return .exclamationMarkTriangleMini
+            }
+        }
+    }
+
+    public struct Action {
+        public enum ButtonStyle {
+            case flat
+            case promoted
+        }
+
+        public let title: String
+        public let buttonStyle: ButtonStyle
+        public let action: (() -> Void)
+
+        public init(
+            title: String,
+            buttonStyle: ButtonStyle = .flat,
+            action: @escaping (() -> Void)
+        ) {
+            self.title = title
+            self.buttonStyle = buttonStyle
+            self.action = action
         }
     }
 }
 
-public enum ToastPosition {
-    case top
-    case bottom
-}
-
 extension View {
-    public func toast(view: ToastSwiftUIView, isShowing: Binding<Bool>, timeout: TimeInterval = 5, position: ToastPosition = .bottom) -> some View {
-        self.modifier(Toast(toastView: view, timeout: timeout, position: position, isShowing: isShowing))
+    public func toast(
+        text: String,
+        style: Toast.Style,
+        action: Toast.Action? = nil,
+        timeout: TimeInterval = 5,
+        position: Toast.Position = .bottom,
+        isShowing: Binding<Bool>
+    ) -> some View {
+        self.modifier(
+            ToastViewModifier(
+                toastView: .init(text: text, style: style),
+                timeout: timeout,
+                position: position,
+                isShowing: isShowing
+            )
+        )
     }
 }

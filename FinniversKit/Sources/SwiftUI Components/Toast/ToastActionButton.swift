@@ -2,13 +2,13 @@ import SwiftUI
 
 extension ToastSwiftUIView {
     struct ActionButton: View {
-        let action: Action
-        let style: Style
+        let action: Toast.Action
+        let style: Toast.Style
 
         var body: some View {
             Group {
                 switch action.buttonStyle {
-                case .normal:
+                case .flat:
                     SwiftUI.Button(action.title, action: action.action)
                         .buttonStyle(InlineFlatStyle())
                 case .promoted:
@@ -22,7 +22,7 @@ extension ToastSwiftUIView {
 
 extension ToastSwiftUIView.ActionButton {
     struct PromotedStyle: ButtonStyle {
-        let style: ToastSwiftUIView.Style
+        let style: Toast.Style
         private let cornerRadius: CGFloat = .spacingL
 
         func makeBody(configuration: Configuration) -> some View {
@@ -51,7 +51,7 @@ extension ToastSwiftUIView.ActionButton {
 struct ToastSwiftUIViewActionButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: .spacingL) {
-            ToastSwiftUIView.ActionButton(action: .init(title: "Undo", buttonStyle: .normal, action: {}), style: .success)
+            ToastSwiftUIView.ActionButton(action: .init(title: "Undo", buttonStyle: .flat, action: {}), style: .success)
             ToastSwiftUIView.ActionButton(action: .init(title: "Undo", buttonStyle: .promoted, action: {}), style: .success)
             ToastSwiftUIView.ActionButton(action: .init(title: "Undo", buttonStyle: .promoted, action: {}), style: .error)
         }

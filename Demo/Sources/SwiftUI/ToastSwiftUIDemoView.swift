@@ -24,14 +24,16 @@ struct ToastSwiftUIDemoView: View {
             }
         }
         .toast(
-            view: ToastSwiftUIView(text: "Animated from bottom", style: .success),
-            isShowing: $showToastFromBottom,
-            position: .bottom
+            text: "Animated from bottom",
+            style: .success,
+            position: .bottom,
+            isShowing: $showToastFromBottom
         )
         .toast(
-            view: ToastSwiftUIView(text: "Animated from top", style: .success),
-            isShowing: $showToastFromTop,
-            position: .top
+            text: "Animated from top",
+            style: .success,
+            position: .top,
+            isShowing: $showToastFromTop
         )
     }
 }

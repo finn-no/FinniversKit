@@ -54,14 +54,13 @@
 		179D06B62907D66E00A65E3A /* HTMLLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06B52907D66E00A65E3A /* HTMLLexer.swift */; };
 		17E232F5290A7E71003DC8F7 /* HTMLLexerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */; };
 		17EAC08A296485C300B3C639 /* UIColor+FinniversKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */; };
+		279C40C429896C2900B5BC51 /* ToastViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279C40C329896C2900B5BC51 /* ToastViewModifier.swift */; };
 		27AE25A6298957D00091E957 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AE25A5298957D00091E957 /* Toast.swift */; };
 		27B0929829534658009B6CC3 /* BadgeView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B0929729534658009B6CC3 /* BadgeView+Style.swift */; };
 		27D4BE09296573A30077D1A4 /* FrontPageSavedSearchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4BE08296573A30077D1A4 /* FrontPageSavedSearchesView.swift */; };
 		27D4BE0B296573AA0077D1A4 /* FrontPageSavedSearchesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4BE0A296573AA0077D1A4 /* FrontPageSavedSearchesViewModel.swift */; };
 		27D4BE1C29657A960077D1A4 /* FrontPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4BE1B29657A960077D1A4 /* FrontPageHeaderView.swift */; };
 		27FAFCBC2988FEBB00FEDAE0 /* ToastSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAFCBB2988FEBB00FEDAE0 /* ToastSwiftUIView.swift */; };
-		27FAFCBF2989010700FEDAE0 /* ToastSwiftUIView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAFCBE2989010700FEDAE0 /* ToastSwiftUIView+Style.swift */; };
-		27FAFCC12989131900FEDAE0 /* ToastSwiftUIView+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAFCC02989131900FEDAE0 /* ToastSwiftUIView+Action.swift */; };
 		27FAFCC32989150900FEDAE0 /* ToastActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAFCC22989150900FEDAE0 /* ToastActionButton.swift */; };
 		431875C1211180F100D71723 /* BuyerPickerProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */; };
 		432CE09D2112DBC500F01EC5 /* BuyerPickerTextHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE09C2112DBC500F01EC5 /* BuyerPickerTextHeader.swift */; };
@@ -572,14 +571,13 @@
 		179D06B52907D66E00A65E3A /* HTMLLexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLexer.swift; sourceTree = "<group>"; };
 		17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLexerTests.swift; sourceTree = "<group>"; };
 		17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+FinniversKitTests.swift"; sourceTree = "<group>"; };
+		279C40C329896C2900B5BC51 /* ToastViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewModifier.swift; sourceTree = "<group>"; };
 		27AE25A5298957D00091E957 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		27B0929729534658009B6CC3 /* BadgeView+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BadgeView+Style.swift"; sourceTree = "<group>"; };
 		27D4BE08296573A30077D1A4 /* FrontPageSavedSearchesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FrontPageSavedSearchesView.swift; path = Sources/Components/FrontPageSavedSearchesView/FrontPageSavedSearchesView.swift; sourceTree = SOURCE_ROOT; };
 		27D4BE0A296573AA0077D1A4 /* FrontPageSavedSearchesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FrontPageSavedSearchesViewModel.swift; path = Sources/Components/FrontPageSavedSearchesView/FrontPageSavedSearchesViewModel.swift; sourceTree = SOURCE_ROOT; };
 		27D4BE1B29657A960077D1A4 /* FrontPageHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontPageHeaderView.swift; sourceTree = "<group>"; };
 		27FAFCBB2988FEBB00FEDAE0 /* ToastSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastSwiftUIView.swift; sourceTree = "<group>"; };
-		27FAFCBE2989010700FEDAE0 /* ToastSwiftUIView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToastSwiftUIView+Style.swift"; sourceTree = "<group>"; };
-		27FAFCC02989131900FEDAE0 /* ToastSwiftUIView+Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToastSwiftUIView+Action.swift"; sourceTree = "<group>"; };
 		27FAFCC22989150900FEDAE0 /* ToastActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastActionButton.swift; sourceTree = "<group>"; };
 		431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerProfileCell.swift; sourceTree = "<group>"; };
 		432CE09C2112DBC500F01EC5 /* BuyerPickerTextHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerTextHeader.swift; sourceTree = "<group>"; };
@@ -1272,10 +1270,9 @@
 			isa = PBXGroup;
 			children = (
 				27FAFCBB2988FEBB00FEDAE0 /* ToastSwiftUIView.swift */,
-				27FAFCBE2989010700FEDAE0 /* ToastSwiftUIView+Style.swift */,
-				27FAFCC02989131900FEDAE0 /* ToastSwiftUIView+Action.swift */,
 				27FAFCC22989150900FEDAE0 /* ToastActionButton.swift */,
 				27AE25A5298957D00091E957 /* Toast.swift */,
+				279C40C329896C2900B5BC51 /* ToastViewModifier.swift */,
 			);
 			path = Toast;
 			sourceTree = "<group>";
@@ -4038,7 +4035,6 @@
 				9F21325E45E1BB6A5F076211 /* FullscreenGalleryDismissalTransition.swift in Sources */,
 				CF87A856229C0C5700DA8243 /* ContactFormCheckbox.swift in Sources */,
 				9F213D4043DC51660E6EF81B /* FullscreenGalleryTransitionAware.swift in Sources */,
-				27FAFCC12989131900FEDAE0 /* ToastSwiftUIView+Action.swift in Sources */,
 				CF164D17230FFDEB00250822 /* FavoriteAdAction.swift in Sources */,
 				DA083E7324630BC400B26235 /* SettingsSection.swift in Sources */,
 				494047FE23CDBBA100ECBCFD /* ViewingCellViewModel.swift in Sources */,
@@ -4056,7 +4052,6 @@
 				9A37DFD7CA27F4F25F613DE2 /* FavoriteAdsListView.swift in Sources */,
 				9BEB2878231D26C100D28BAD /* LoanCalculatorView.swift in Sources */,
 				9A37D0977C75034FE9603C2C /* FavoriteAdsListTableHeader.swift in Sources */,
-				27FAFCBF2989010700FEDAE0 /* ToastSwiftUIView+Style.swift in Sources */,
 				5DA385C925B991E9006F8C34 /* JobAdRecommendationCell.swift in Sources */,
 				9A37D91577C7406D942AF82E /* FavoriteAdsSortingView.swift in Sources */,
 				27B0929829534658009B6CC3 /* BadgeView+Style.swift in Sources */,
@@ -4084,6 +4079,7 @@
 				8D680EAA171AAD536A2E0FDC /* SearchListEmptyView.swift in Sources */,
 				8D680B43A9AC644605694747 /* SelectionView.swift in Sources */,
 				8D68049F4E30F91924B67CD3 /* SelectionOptionCell.swift in Sources */,
+				279C40C429896C2900B5BC51 /* ToastViewModifier.swift in Sources */,
 				8D680C60027F241553ECB6C5 /* SelectionOptionModel.swift in Sources */,
 				8D6808DF0714CB32FD27AD37 /* PriceLinkButtonView.swift in Sources */,
 				8D680B3932E934A7BD81FA3C /* PriceLinkButtonViewModel.swift in Sources */,

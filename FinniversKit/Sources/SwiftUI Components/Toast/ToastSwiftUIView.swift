@@ -2,13 +2,13 @@ import SwiftUI
 
 public struct ToastSwiftUIView: View {
     private let text: String
-    private let style: Style
-    private let action: Action?
+    private let style: Toast.Style
+    private let action: Toast.Action?
 
     public init(
         text: String,
-        style: Style,
-        action: Action? = nil
+        style: Toast.Style,
+        action: Toast.Action? = nil
     ) {
         self.text = text
         self.style = style
