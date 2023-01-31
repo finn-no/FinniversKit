@@ -20,7 +20,7 @@ struct Toast: ViewModifier {
                     }
                 }
             }
-            .animation(.easeInOut, value: isShowing)
+            .animation(.easeInOut(duration: 0.3), value: isShowing)
         }
     }
 }
