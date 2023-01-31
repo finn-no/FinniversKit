@@ -20,13 +20,14 @@ public struct ToastSwiftUIView: View {
             Image(style.imageAsset)
             Text(text)
                 .finnFont(.body)
+                .padding(.vertical, .spacingM)
             Spacer()
             if let action {
                 ToastActionButton(action: action, style: style)
             }
         }
         .frame(maxWidth: .infinity)
-        .padding(.spacingM)
+        .padding(.horizontal, .spacingM)
         .background(style.color)
     }
 }
