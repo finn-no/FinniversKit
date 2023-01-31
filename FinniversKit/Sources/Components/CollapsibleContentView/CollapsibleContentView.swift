@@ -153,7 +153,7 @@ public class CollapsibleContentView: UIView {
 
             hairlineView.leadingAnchor.constraint(equalTo: innerContainerView.leadingAnchor),
             hairlineView.trailingAnchor.constraint(equalTo: innerContainerView.trailingAnchor),
-            hairlineView.bottomAnchor.constraint(equalTo: innerContainerView.bottomAnchor),
+            hairlineView.bottomAnchor.constraint(equalTo: bottomAnchor),
             hairlineView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
         ])
 
