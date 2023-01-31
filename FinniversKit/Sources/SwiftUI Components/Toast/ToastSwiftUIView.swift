@@ -13,12 +13,13 @@ public struct ToastSwiftUIView: View {
     }
 
     public var body: some View {
-        HStack {
+        HStack(spacing: .spacingM) {
             Image(style.imageAsset)
             Text("Toast")
             Spacer()
         }
         .frame(maxWidth: .infinity)
+        .padding(.spacingM)
         .background(style.color)
     }
 }
