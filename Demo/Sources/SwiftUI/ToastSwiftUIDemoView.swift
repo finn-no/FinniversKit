@@ -4,13 +4,13 @@ import FinniversKit
 struct ToastSwiftUIDemoView: View {
     var body: some View {
         VStack(spacing: .spacingM) {
-            ToastSwiftUIView(style: .success)
-            ToastSwiftUIView(style: .successButton)
-            ToastSwiftUIView(style: .successButton, buttonStyle: .promoted)
+            ToastSwiftUIView(text: "Success", style: .success)
+            ToastSwiftUIView(text: "Action success, with a pretty long text which should wrap nicely", style: .successButton)
+            ToastSwiftUIView(text: "Action success", style: .successButton, buttonStyle: .promoted)
 
-            ToastSwiftUIView(style: .error)
-            ToastSwiftUIView(style: .errorButton)
-            ToastSwiftUIView(style: .errorButton, buttonStyle: .promoted)
+            ToastSwiftUIView(text: "Error", style: .error)
+            ToastSwiftUIView(text: "Action error", style: .errorButton)
+            ToastSwiftUIView(text: "Action error", style: .errorButton, buttonStyle: .promoted)
         }
     }
 }

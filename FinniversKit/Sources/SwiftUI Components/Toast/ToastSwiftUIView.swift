@@ -1,13 +1,16 @@
 import SwiftUI
 
 public struct ToastSwiftUIView: View {
+    private let text: String
     private let style: Style
     private let buttonStyle: ButtonStyle
 
     public init(
+        text: String,
         style: Style,
         buttonStyle: ButtonStyle = .normal
     ) {
+        self.text = text
         self.style = style
         self.buttonStyle = buttonStyle
     }
@@ -15,7 +18,8 @@ public struct ToastSwiftUIView: View {
     public var body: some View {
         HStack(spacing: .spacingM) {
             Image(style.imageAsset)
-            Text("Toast")
+            Text(text)
+                .finnFont(.body)
             Spacer()
         }
         .frame(maxWidth: .infinity)
@@ -26,6 +30,6 @@ public struct ToastSwiftUIView: View {
 
 struct ToastSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        ToastSwiftUIView(style: .success)
+        ToastSwiftUIView(text: "Success", style: .success)
     }
 }
