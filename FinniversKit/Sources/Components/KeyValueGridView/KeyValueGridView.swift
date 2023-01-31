@@ -97,8 +97,8 @@ public class KeyValueGridView: UIView {
         titleLabel.text = pair.title
         valueLabel.text = pair.value
 
-        stackView.addArrangedSubview(titleLabel)
-        stackView.addArrangedSubview(valueLabel)
+        stackView.addArrangedSubviews([titleLabel, valueLabel])
+        stackView.arrangedSubviews.forEach { $0.setContentCompressionResistancePriority(.required, for: .vertical) }
 
         stackView.isAccessibilityElement = true
         if let accessibilityLabel = pair.accessibilityLabel {
