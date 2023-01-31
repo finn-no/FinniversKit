@@ -61,7 +61,7 @@
 		27D4BE0B296573AA0077D1A4 /* FrontPageSavedSearchesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4BE0A296573AA0077D1A4 /* FrontPageSavedSearchesViewModel.swift */; };
 		27D4BE1C29657A960077D1A4 /* FrontPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4BE1B29657A960077D1A4 /* FrontPageHeaderView.swift */; };
 		27FAFCBC2988FEBB00FEDAE0 /* ToastSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAFCBB2988FEBB00FEDAE0 /* ToastSwiftUIView.swift */; };
-		27FAFCC32989150900FEDAE0 /* ToastActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAFCC22989150900FEDAE0 /* ToastActionButton.swift */; };
+		27FAFCC32989150900FEDAE0 /* ToastSwiftUIView+ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAFCC22989150900FEDAE0 /* ToastSwiftUIView+ActionButton.swift */; };
 		431875C1211180F100D71723 /* BuyerPickerProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */; };
 		432CE09D2112DBC500F01EC5 /* BuyerPickerTextHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE09C2112DBC500F01EC5 /* BuyerPickerTextHeader.swift */; };
 		43BACE6A21117D430052114C /* BuyerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BACE6921117D430052114C /* BuyerPickerView.swift */; };
@@ -578,7 +578,7 @@
 		27D4BE0A296573AA0077D1A4 /* FrontPageSavedSearchesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FrontPageSavedSearchesViewModel.swift; path = Sources/Components/FrontPageSavedSearchesView/FrontPageSavedSearchesViewModel.swift; sourceTree = SOURCE_ROOT; };
 		27D4BE1B29657A960077D1A4 /* FrontPageHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontPageHeaderView.swift; sourceTree = "<group>"; };
 		27FAFCBB2988FEBB00FEDAE0 /* ToastSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastSwiftUIView.swift; sourceTree = "<group>"; };
-		27FAFCC22989150900FEDAE0 /* ToastActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastActionButton.swift; sourceTree = "<group>"; };
+		27FAFCC22989150900FEDAE0 /* ToastSwiftUIView+ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToastSwiftUIView+ActionButton.swift"; sourceTree = "<group>"; };
 		431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerProfileCell.swift; sourceTree = "<group>"; };
 		432CE09C2112DBC500F01EC5 /* BuyerPickerTextHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerTextHeader.swift; sourceTree = "<group>"; };
 		43BACE6921117D430052114C /* BuyerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerView.swift; sourceTree = "<group>"; };
@@ -1270,7 +1270,7 @@
 			isa = PBXGroup;
 			children = (
 				27FAFCBB2988FEBB00FEDAE0 /* ToastSwiftUIView.swift */,
-				27FAFCC22989150900FEDAE0 /* ToastActionButton.swift */,
+				27FAFCC22989150900FEDAE0 /* ToastSwiftUIView+ActionButton.swift */,
 				27AE25A5298957D00091E957 /* Toast.swift */,
 				279C40C329896C2900B5BC51 /* ToastViewModifier.swift */,
 			);
@@ -3842,7 +3842,7 @@
 				E6920B2B28474B78008B41C6 /* CombineCompatible.swift in Sources */,
 				9B238F02225B95F600B0E0C2 /* InfoboxView+Style.swift in Sources */,
 				9B9663CD24603AAE00D34BA1 /* Color+SwiftUI.swift in Sources */,
-				27FAFCC32989150900FEDAE0 /* ToastActionButton.swift in Sources */,
+				27FAFCC32989150900FEDAE0 /* ToastSwiftUIView+ActionButton.swift in Sources */,
 				43EA977F21941E5D003A548A /* SoldView.swift in Sources */,
 				44A557B422E72187001667AE /* SelectableTableViewCellViewModel.swift in Sources */,
 				1700944B297EE12300E5650A /* SwiftUILoadingIndicator.swift in Sources */,
