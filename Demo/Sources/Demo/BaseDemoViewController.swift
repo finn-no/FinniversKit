@@ -103,7 +103,7 @@ public class BaseDemoViewController<View: UIView>: UIViewController, Containable
     }
 
     @objc private func didDoubleTap() {
-        State.lastSelectedIndexPath = nil
+        DemoState.lastSelectedIndexPath = nil
         dismiss(animated: true, completion: nil)
     }
 
@@ -135,9 +135,9 @@ public class BaseDemoViewController<View: UIView>: UIViewController, Containable
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if State.shouldShowDismissInstructions {
+        if DemoState.shouldShowDismissInstructions {
             miniToastView.show(in: view)
-            State.shouldShowDismissInstructions = false
+            DemoState.shouldShowDismissInstructions = false
         }
     }
 }

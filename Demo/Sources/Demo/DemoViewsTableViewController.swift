@@ -30,7 +30,7 @@ class DemoViewsTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if let indexPath = State.lastSelectedIndexPath {
+        if let indexPath = DemoState.lastSelectedIndexPath {
             if let viewController = Sections.viewController(for: indexPath) {
                 if let bottomSheet = viewController as? BottomSheet {
                     present(bottomSheet, animated: true)
@@ -46,7 +46,7 @@ class DemoViewsTableViewController: UITableViewController {
         tableView.delegate = self
         tableView.separatorStyle = .none
         navigationItem.titleView = selectorTitleView
-        selectorTitleView.title = Sections.title(for: State.lastSelectedSection).uppercased()
+        selectorTitleView.title = Sections.title(for: DemoState.lastSelectedSection).uppercased()
 
         tableView.sectionIndexColor = .textAction
         tableView.backgroundColor = .bgPrimary
@@ -56,7 +56,7 @@ class DemoViewsTableViewController: UITableViewController {
     private func evaluateIndexAndValues() {
         indexAndValues.removeAll()
 
-        for name in Sections.formattedNames(for: State.lastSelectedSection) {
+        for name in Sections.formattedNames(for: DemoState.lastSelectedSection) {
             let firstLetter = String(name.prefix(1))
             var values = [String]()
             if let existingValues = indexAndValues[firstLetter] {
@@ -84,7 +84,7 @@ class DemoViewsTableViewController: UITableViewController {
             row += elementsInSection
         }
         row += indexPath.row
-        return IndexPath(row: row, section: State.lastSelectedSection)
+        return IndexPath(row: row, section: DemoState.lastSelectedSection)
     }
 
     private var sections: [String] {
@@ -131,7 +131,7 @@ extension DemoViewsTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let realIndexPath = evaluateRealIndexPath(for: indexPath)
-        State.lastSelectedIndexPath = realIndexPath
+        DemoState.lastSelectedIndexPath = realIndexPath
         if let viewController = Sections.viewController(for: realIndexPath) {
             present(viewController, animated: true)
         }
@@ -163,7 +163,7 @@ extension DemoViewsTableViewController: SelectorTitleViewDelegate {
     func selectorTitleViewDidSelectButton(_ selectorTitleView: SelectorTitleView) {
         let items = Sections.items.map { BasicTableViewItem(title: $0.rawValue.uppercased()) }
         let sectionsTableView = BasicTableView(items: items)
-        sectionsTableView.selectedIndexPath = IndexPath(row: State.lastSelectedSection, section: 0)
+        sectionsTableView.selectedIndexPath = IndexPath(row: DemoState.lastSelectedSection, section: 0)
         sectionsTableView.delegate = self
         bottomSheet = BottomSheet(view: sectionsTableView, draggableArea: .everything)
         if let controller = bottomSheet {
@@ -176,8 +176,8 @@ extension DemoViewsTableViewController: SelectorTitleViewDelegate {
 
 extension DemoViewsTableViewController: BasicTableViewDelegate {
     func basicTableView(_ basicTableView: BasicTableView, didSelectItemAtIndex index: Int) {
-        State.lastSelectedSection = index
-        selectorTitleView.title = Sections.title(for: State.lastSelectedSection).uppercased()
+        DemoState.lastSelectedSection = index
+        selectorTitleView.title = Sections.title(for: DemoState.lastSelectedSection).uppercased()
         evaluateIndexAndValues()
         tableView.reloadData()
         bottomSheet?.state = .dismissed

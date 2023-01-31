@@ -2,6 +2,8 @@ import SwiftUI
 import FinniversKit
 
 struct ToastSwiftUIDemoView: View {
+    @State var showToast: Bool = false
+
     var body: some View {
         VStack(spacing: .spacingM) {
             ToastSwiftUIView(text: "Success", style: .success)
@@ -11,7 +13,12 @@ struct ToastSwiftUIDemoView: View {
             ToastSwiftUIView(text: "Error", style: .error)
             ToastSwiftUIView(text: "Action error", style: .error, action: .init(title: "Undo", action: {}))
             ToastSwiftUIView(text: "Action error", style: .error, action: .init(title: "Undo", buttonStyle: .promoted, action: {}))
+
+            SwiftUI.Button("Animate from bottom") {
+                showToast = true
+            }
         }
+        .toast(view: ToastSwiftUIView(text: "Success", style: .success), isShowing: $showToast)
     }
 }
 

@@ -55,7 +55,7 @@ class KlimabroletDemoViewController: BaseDemoViewController<UIView> {
     }
 
     private func close() {
-        State.lastSelectedIndexPath = nil
+        DemoState.lastSelectedIndexPath = nil
         dismiss(animated: true, completion: nil)
     }
 }

@@ -54,6 +54,7 @@
 		179D06B62907D66E00A65E3A /* HTMLLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06B52907D66E00A65E3A /* HTMLLexer.swift */; };
 		17E232F5290A7E71003DC8F7 /* HTMLLexerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */; };
 		17EAC08A296485C300B3C639 /* UIColor+FinniversKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */; };
+		27AE25A6298957D00091E957 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AE25A5298957D00091E957 /* Toast.swift */; };
 		27B0929829534658009B6CC3 /* BadgeView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B0929729534658009B6CC3 /* BadgeView+Style.swift */; };
 		27D4BE09296573A30077D1A4 /* FrontPageSavedSearchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4BE08296573A30077D1A4 /* FrontPageSavedSearchesView.swift */; };
 		27D4BE0B296573AA0077D1A4 /* FrontPageSavedSearchesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4BE0A296573AA0077D1A4 /* FrontPageSavedSearchesViewModel.swift */; };
@@ -571,6 +572,7 @@
 		179D06B52907D66E00A65E3A /* HTMLLexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLexer.swift; sourceTree = "<group>"; };
 		17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLexerTests.swift; sourceTree = "<group>"; };
 		17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+FinniversKitTests.swift"; sourceTree = "<group>"; };
+		27AE25A5298957D00091E957 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		27B0929729534658009B6CC3 /* BadgeView+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BadgeView+Style.swift"; sourceTree = "<group>"; };
 		27D4BE08296573A30077D1A4 /* FrontPageSavedSearchesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FrontPageSavedSearchesView.swift; path = Sources/Components/FrontPageSavedSearchesView/FrontPageSavedSearchesView.swift; sourceTree = SOURCE_ROOT; };
 		27D4BE0A296573AA0077D1A4 /* FrontPageSavedSearchesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FrontPageSavedSearchesViewModel.swift; path = Sources/Components/FrontPageSavedSearchesView/FrontPageSavedSearchesViewModel.swift; sourceTree = SOURCE_ROOT; };
@@ -1273,6 +1275,7 @@
 				27FAFCBE2989010700FEDAE0 /* ToastSwiftUIView+Style.swift */,
 				27FAFCC02989131900FEDAE0 /* ToastSwiftUIView+Action.swift */,
 				27FAFCC22989150900FEDAE0 /* ToastActionButton.swift */,
+				27AE25A5298957D00091E957 /* Toast.swift */,
 			);
 			path = Toast;
 			sourceTree = "<group>";
@@ -3714,6 +3717,7 @@
 				DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */,
 				4447F7031FDB2B110033DBC1 /* Config.swift in Sources */,
 				DAA9A3AC210215400021F7DC /* AnimatedSelectionView.swift in Sources */,
+				27AE25A6298957D00091E957 /* Toast.swift in Sources */,
 				9BD8ABC02359B1EE001078CA /* ChristmasWishListView.swift in Sources */,
 				27D4BE1C29657A960077D1A4 /* FrontPageHeaderView.swift in Sources */,
 				4DA1C74E27EC987F00B615A3 /* PromotionViewModel.swift in Sources */,
