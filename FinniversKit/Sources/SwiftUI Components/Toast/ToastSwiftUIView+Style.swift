@@ -4,20 +4,18 @@ extension ToastSwiftUIView {
     public enum Style {
         case success
         case error
-        case successButton
-        case errorButton
 
         var color: Color {
             switch self {
-            case .error, .errorButton: return .bgCritical
-            default: return .bgSuccess
+            case .success: return .bgSuccess
+            case .error: return .bgCritical
             }
         }
 
         var imageAsset: ImageAsset {
             switch self {
-            case .error, .errorButton: return .exclamationMarkTriangleMini
-            default: return .checkCircleFilledMini
+            case .success: return .checkCircleFilledMini
+            case .error: return .exclamationMarkTriangleMini
             }
         }
     }

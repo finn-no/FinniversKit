@@ -3,16 +3,16 @@ import SwiftUI
 public struct ToastSwiftUIView: View {
     private let text: String
     private let style: Style
-    private let buttonStyle: ButtonStyle
+    private let action: Action?
 
     public init(
         text: String,
         style: Style,
-        buttonStyle: ButtonStyle = .normal
+        action: Action? = nil
     ) {
         self.text = text
         self.style = style
-        self.buttonStyle = buttonStyle
+        self.action = action
     }
 
     public var body: some View {
@@ -21,6 +21,9 @@ public struct ToastSwiftUIView: View {
             Text(text)
                 .finnFont(.body)
             Spacer()
+            if let action {
+                ToastActionButton(action: action, style: style)
+            }
         }
         .frame(maxWidth: .infinity)
         .padding(.spacingM)

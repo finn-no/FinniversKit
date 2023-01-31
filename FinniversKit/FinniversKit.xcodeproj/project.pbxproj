@@ -60,6 +60,8 @@
 		27D4BE1C29657A960077D1A4 /* FrontPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4BE1B29657A960077D1A4 /* FrontPageHeaderView.swift */; };
 		27FAFCBC2988FEBB00FEDAE0 /* ToastSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAFCBB2988FEBB00FEDAE0 /* ToastSwiftUIView.swift */; };
 		27FAFCBF2989010700FEDAE0 /* ToastSwiftUIView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAFCBE2989010700FEDAE0 /* ToastSwiftUIView+Style.swift */; };
+		27FAFCC12989131900FEDAE0 /* ToastSwiftUIView+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAFCC02989131900FEDAE0 /* ToastSwiftUIView+Action.swift */; };
+		27FAFCC32989150900FEDAE0 /* ToastActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAFCC22989150900FEDAE0 /* ToastActionButton.swift */; };
 		431875C1211180F100D71723 /* BuyerPickerProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */; };
 		432CE09D2112DBC500F01EC5 /* BuyerPickerTextHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE09C2112DBC500F01EC5 /* BuyerPickerTextHeader.swift */; };
 		43BACE6A21117D430052114C /* BuyerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BACE6921117D430052114C /* BuyerPickerView.swift */; };
@@ -575,6 +577,8 @@
 		27D4BE1B29657A960077D1A4 /* FrontPageHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontPageHeaderView.swift; sourceTree = "<group>"; };
 		27FAFCBB2988FEBB00FEDAE0 /* ToastSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastSwiftUIView.swift; sourceTree = "<group>"; };
 		27FAFCBE2989010700FEDAE0 /* ToastSwiftUIView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToastSwiftUIView+Style.swift"; sourceTree = "<group>"; };
+		27FAFCC02989131900FEDAE0 /* ToastSwiftUIView+Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToastSwiftUIView+Action.swift"; sourceTree = "<group>"; };
+		27FAFCC22989150900FEDAE0 /* ToastActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastActionButton.swift; sourceTree = "<group>"; };
 		431875C0211180F000D71723 /* BuyerPickerProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerProfileCell.swift; sourceTree = "<group>"; };
 		432CE09C2112DBC500F01EC5 /* BuyerPickerTextHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerTextHeader.swift; sourceTree = "<group>"; };
 		43BACE6921117D430052114C /* BuyerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPickerView.swift; sourceTree = "<group>"; };
@@ -1267,6 +1271,8 @@
 			children = (
 				27FAFCBB2988FEBB00FEDAE0 /* ToastSwiftUIView.swift */,
 				27FAFCBE2989010700FEDAE0 /* ToastSwiftUIView+Style.swift */,
+				27FAFCC02989131900FEDAE0 /* ToastSwiftUIView+Action.swift */,
+				27FAFCC22989150900FEDAE0 /* ToastActionButton.swift */,
 			);
 			path = Toast;
 			sourceTree = "<group>";
@@ -3835,6 +3841,7 @@
 				E6920B2B28474B78008B41C6 /* CombineCompatible.swift in Sources */,
 				9B238F02225B95F600B0E0C2 /* InfoboxView+Style.swift in Sources */,
 				9B9663CD24603AAE00D34BA1 /* Color+SwiftUI.swift in Sources */,
+				27FAFCC32989150900FEDAE0 /* ToastActionButton.swift in Sources */,
 				43EA977F21941E5D003A548A /* SoldView.swift in Sources */,
 				44A557B422E72187001667AE /* SelectableTableViewCellViewModel.swift in Sources */,
 				1700944B297EE12300E5650A /* SwiftUILoadingIndicator.swift in Sources */,
@@ -4027,6 +4034,7 @@
 				9F21325E45E1BB6A5F076211 /* FullscreenGalleryDismissalTransition.swift in Sources */,
 				CF87A856229C0C5700DA8243 /* ContactFormCheckbox.swift in Sources */,
 				9F213D4043DC51660E6EF81B /* FullscreenGalleryTransitionAware.swift in Sources */,
+				27FAFCC12989131900FEDAE0 /* ToastSwiftUIView+Action.swift in Sources */,
 				CF164D17230FFDEB00250822 /* FavoriteAdAction.swift in Sources */,
 				DA083E7324630BC400B26235 /* SettingsSection.swift in Sources */,
 				494047FE23CDBBA100ECBCFD /* ViewingCellViewModel.swift in Sources */,
