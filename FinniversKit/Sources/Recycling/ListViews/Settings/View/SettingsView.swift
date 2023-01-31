@@ -53,7 +53,7 @@ public class SettingsView: UIView {
 
     private lazy var tableHeaderView: SettingsHeaderView = {
         let view = SettingsHeaderView(withAutoLayout: true)
-        view.configure(withText: viewTitle)
+        view.configure(viewTitle)
         return view
     }()
 

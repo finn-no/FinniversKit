@@ -25,7 +25,7 @@ class SettingsHeaderView: UIView {
         setup()
     }
 
-    func configure(withText text: String?) {
+    func configure(_ text: String?) {
         headerLabel.text = text
     }
 
