@@ -4,7 +4,11 @@ import FinniversKit
 struct ToastSwiftUIDemoView: View {
     var body: some View {
         VStack(spacing: .spacingM) {
-            ToastSwiftUIView()
+            ToastSwiftUIView(style: .success)
+            ToastSwiftUIView(style: .successButton)
+
+            ToastSwiftUIView(style: .error)
+
         }
     }
 }
