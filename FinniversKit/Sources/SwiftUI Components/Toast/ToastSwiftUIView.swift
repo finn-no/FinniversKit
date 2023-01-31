@@ -23,7 +23,7 @@ public struct ToastSwiftUIView: View {
                 .padding(.vertical, .spacingM)
             Spacer()
             if let action {
-                ToastActionButton(action: action, style: style)
+                ActionButton(action: action, style: style)
             }
         }
         .frame(maxWidth: .infinity)
