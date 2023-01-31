@@ -13,8 +13,11 @@ public struct ToastSwiftUIView: View {
     }
 
     public var body: some View {
-        Text("Toast")
-            .background(style.color)
+        HStack {
+            Image(style.imageAsset)
+            Text("Toast")
+        }
+        .background(style.color)
     }
 }
 

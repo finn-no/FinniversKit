@@ -13,6 +13,13 @@ extension ToastSwiftUIView {
             default: return .bgSuccess
             }
         }
+
+        var imageAsset: ImageAsset {
+            switch self {
+            case .error, .errorButton: return .exclamationMarkTriangleMini
+            default: return .checkCircleFilledMini
+            }
+        }
     }
 
     public enum ButtonStyle {
