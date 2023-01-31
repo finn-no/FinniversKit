@@ -2,7 +2,7 @@ import SwiftUI
 
 struct Toast: ViewModifier {
     let toastView: ToastSwiftUIView
-    let duration: TimeInterval = 2
+    let timeout: TimeInterval
     @Binding var isShowing: Bool
 
     func body(content: Content) -> some View {
@@ -14,7 +14,7 @@ struct Toast: ViewModifier {
                     toastView
                     .transition(.move(edge: .bottom))
                     .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + timeout) {
                             isShowing.toggle()
                         }
                     }
@@ -26,7 +26,7 @@ struct Toast: ViewModifier {
 }
 
 extension View {
-    public func toast(view: ToastSwiftUIView, isShowing: Binding<Bool>) -> some View {
-        self.modifier(Toast(toastView: view, isShowing: isShowing))
+    public func toast(view: ToastSwiftUIView, isShowing: Binding<Bool>, timeout: TimeInterval = 5) -> some View {
+        self.modifier(Toast(toastView: view, timeout: timeout, isShowing: isShowing))
     }
 }
