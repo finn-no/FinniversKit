@@ -10,6 +10,7 @@
 		172E7504290FE28E00956AC2 /* HTMLTextDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */; };
 		1732932D29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1732932C29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift */; };
 		17F8EEC629409FE3000E26C9 /* SwiftUISelectionListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8EEC529409FE3000E26C9 /* SwiftUISelectionListDemoView.swift */; };
+		27FAFCB82988FE6100FEDAE0 /* ToastSwiftUIDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAFCB72988FE6100FEDAE0 /* ToastSwiftUIDemoView.swift */; };
 		46AE6FC4242BADC9007BB005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AE6FC3242BADC9007BB005 /* AppDelegate.swift */; };
 		46E773A4242CEF0A008A5E93 /* DemoHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77258242CEF09008A5E93 /* DemoHelpers.swift */; };
 		46E773A5242CEF0A008A5E93 /* DnaDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7725A242CEF09008A5E93 /* DnaDemoViews.swift */; };
@@ -252,6 +253,7 @@
 		172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextDemoViewController.swift; sourceTree = "<group>"; };
 		1732932C29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUILoadingIndicatorDemoView.swift; sourceTree = "<group>"; };
 		17F8EEC529409FE3000E26C9 /* SwiftUISelectionListDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISelectionListDemoView.swift; sourceTree = "<group>"; };
+		27FAFCB72988FE6100FEDAE0 /* ToastSwiftUIDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastSwiftUIDemoView.swift; sourceTree = "<group>"; };
 		46AE6FC0242BADC9007BB005 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46AE6FC3242BADC9007BB005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46AE6FD1242BADCD007BB005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1825,6 +1827,7 @@
 				172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */,
 				1732932C29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift */,
 				17F8EEC529409FE3000E26C9 /* SwiftUISelectionListDemoView.swift */,
+				27FAFCB72988FE6100FEDAE0 /* ToastSwiftUIDemoView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -2043,6 +2046,7 @@
 				46E7744C242CEF0A008A5E93 /* HeartSubtitleCellDemoView.swift in Sources */,
 				46E773BE242CEF0A008A5E93 /* LoginEntryDemoData.swift in Sources */,
 				4D529E2125837087007AE5B6 /* ImageAsset.swift in Sources */,
+				27FAFCB82988FE6100FEDAE0 /* ToastSwiftUIDemoView.swift in Sources */,
 				5DCE0885280FDF2A00ED7407 /* MonthAndYearPickerDemoView.swift in Sources */,
 				46E77440242CEF0A008A5E93 /* SpacingDemoView.swift in Sources */,
 				5DEAC3C425C164D9003376AD /* IconButtonDemoView.swift in Sources */,
