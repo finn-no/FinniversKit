@@ -69,4 +69,18 @@ extension View {
             )
         )
     }
+
+    public func toast(
+        viewModel: ToastViewModel,
+        isShowing: Binding<Bool>
+    ) -> some View {
+        return self.modifier(
+            ToastViewModifier(
+                toastView: .init(text: viewModel.text, style: viewModel.style),
+                timeout: viewModel.timeout,
+                position: viewModel.position,
+                isShowing: isShowing
+            )
+        )
+    }
 }
