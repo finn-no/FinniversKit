@@ -33,5 +33,10 @@ final public class BadgeDemoView: UIView {
         ))
 
         stackView.addArrangedSubviews([fiksFerdigBadgeView, smidigBilhandelBadgeView])
+
+        let blackoutView = UIView(withAutoLayout: true)
+        blackoutView.backgroundColor = .black
+        addSubview(blackoutView)
+        blackoutView.fillInSuperview()
     }
 }
