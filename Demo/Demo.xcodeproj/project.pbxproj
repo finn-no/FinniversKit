@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		172E7504290FE28E00956AC2 /* HTMLTextDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */; };
+		1732932D29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1732932C29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift */; };
 		17F8EEC629409FE3000E26C9 /* SwiftUISelectionListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8EEC529409FE3000E26C9 /* SwiftUISelectionListDemoView.swift */; };
 		46AE6FC4242BADC9007BB005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AE6FC3242BADC9007BB005 /* AppDelegate.swift */; };
 		46E773A4242CEF0A008A5E93 /* DemoHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77258242CEF09008A5E93 /* DemoHelpers.swift */; };
@@ -250,6 +251,7 @@
 
 /* Begin PBXFileReference section */
 		172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextDemoViewController.swift; sourceTree = "<group>"; };
+		1732932C29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUILoadingIndicatorDemoView.swift; sourceTree = "<group>"; };
 		17F8EEC529409FE3000E26C9 /* SwiftUISelectionListDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISelectionListDemoView.swift; sourceTree = "<group>"; };
 		46AE6FC0242BADC9007BB005 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46AE6FC3242BADC9007BB005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1824,6 +1826,7 @@
 				5DA190D425A5BC5B002305A8 /* FinnTextField+Previews.swift */,
 				5DA190EF25A87EAB002305A8 /* FinnTextView+Previews.swift */,
 				172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */,
+				1732932C29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift */,
 				17F8EEC529409FE3000E26C9 /* SwiftUISelectionListDemoView.swift */,
 			);
 			path = SwiftUI;
@@ -2070,6 +2073,7 @@
 				46E773F1242CEF0A008A5E93 /* IconCollectionViewDemo.swift in Sources */,
 				9BBC904024FD252B0003D2D8 /* UITraitCollection+Extensions.swift in Sources */,
 				46E7740C242CEF0A008A5E93 /* LoadingIndicatorViewDemoView.swift in Sources */,
+				1732932D29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift in Sources */,
 				46E7744D242CEF0A008A5E93 /* RadioButtonCellDemoView.swift in Sources */,
 				46E773F0242CEF0A008A5E93 /* IntegerNumberSuffixFormatter.swift in Sources */,
 				46E77466242CEF0A008A5E93 /* SavedSearchesListViewDemoView.swift in Sources */,

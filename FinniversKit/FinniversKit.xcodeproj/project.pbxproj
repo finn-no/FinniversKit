@@ -34,6 +34,8 @@
 		14DC127121593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC126D21593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift */; };
 		14EBA258215A633800613E5A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EBA256215A633800613E5A /* LoadingView.swift */; };
 		14F4F1BE1FD6CEA800E9CECA /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
+		17009449297EE0E700E5650A /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17009448297EE0E700E5650A /* LoadingIndicator.swift */; };
+		1700944B297EE12300E5650A /* SwiftUILoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1700944A297EE12300E5650A /* SwiftUILoadingIndicator.swift */; };
 		172E7502290FC86B00956AC2 /* HTMLText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E7501290FC86B00956AC2 /* HTMLText.swift */; };
 		175385AE291468F600DA57D2 /* HTMLStringUIKitStyleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175385AD291468F600DA57D2 /* HTMLStringUIKitStyleTranslator.swift */; };
 		175385B029146A4000DA57D2 /* HTMLStringStyleStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175385AF29146A4000DA57D2 /* HTMLStringStyleStack.swift */; };
@@ -342,6 +344,8 @@
 		AF91BB97202C74D0003E6366 /* BroadcastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BB96202C74D0003E6366 /* BroadcastItem.swift */; };
 		AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BBA0202C8B72003E6366 /* Broadcast+Style.swift */; };
 		B01D70BABC86CE9552C07C2A /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D7CF174F019F9D8C9DA51 /* RoundedImageView.swift */; };
+		B6801C1C2982ECCA004A0F4F /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6801C1B2982ECCA004A0F4F /* SettingsHeaderView.swift */; };
+		B6801C1E2982ECD5004A0F4F /* SettingsSectionComplexHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6801C1D2982ECD5004A0F4F /* SettingsSectionComplexHeaderView.swift */; };
 		CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F08C20615990002AA385 /* TextField+State.swift */; };
 		CF05B7E023325968003A7F1C /* FavoriteFolderActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05B7DF23325968003A7F1C /* FavoriteFolderActionButton.swift */; };
 		CF05BA02233B78BC003A7F1C /* FavoriteSearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05BA01233B78BC003A7F1C /* FavoriteSearchEmptyView.swift */; };
@@ -547,6 +551,8 @@
 		14EBA256215A633800613E5A /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F4F1BD1FD6CEA800E9CECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17009448297EE0E700E5650A /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		1700944A297EE12300E5650A /* SwiftUILoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUILoadingIndicator.swift; sourceTree = "<group>"; };
 		172E7501290FC86B00956AC2 /* HTMLText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLText.swift; sourceTree = "<group>"; };
 		175385AD291468F600DA57D2 /* HTMLStringUIKitStyleTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringUIKitStyleTranslator.swift; sourceTree = "<group>"; };
 		175385AF29146A4000DA57D2 /* HTMLStringStyleStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringStyleStack.swift; sourceTree = "<group>"; };
@@ -855,6 +861,8 @@
 		AF91BB96202C74D0003E6366 /* BroadcastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastItem.swift; sourceTree = "<group>"; };
 		AF91BBA0202C8B72003E6366 /* Broadcast+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Broadcast+Style.swift"; sourceTree = "<group>"; };
 		B01D7CF174F019F9D8C9DA51 /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
+		B6801C1B2982ECCA004A0F4F /* SettingsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
+		B6801C1D2982ECD5004A0F4F /* SettingsSectionComplexHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSectionComplexHeaderView.swift; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD2F08C20615990002AA385 /* TextField+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+State.swift"; sourceTree = "<group>"; };
 		CF05B7DF23325968003A7F1C /* FavoriteFolderActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFolderActionButton.swift; sourceTree = "<group>"; };
@@ -1843,6 +1851,7 @@
 		44AFCE44215839F6005984DB /* LoadingIndicator */ = {
 			isa = PBXGroup;
 			children = (
+				17009448297EE0E700E5650A /* LoadingIndicator.swift */,
 				44AFCE47215839F6005984DB /* LoadingIndicatorView.swift */,
 			);
 			path = LoadingIndicator;
@@ -3278,8 +3287,10 @@
 			children = (
 				DAD6EB212369916100968497 /* SettingsView.swift */,
 				DAD6EB222369916100968497 /* SettingsSectionHeaderView.swift */,
+				B6801C1D2982ECD5004A0F4F /* SettingsSectionComplexHeaderView.swift */,
 				DAD6EB232369916100968497 /* SettingsSectionFooterView.swift */,
 				DA8F32B3238295F900EF645F /* VersionInfoView.swift */,
+				B6801C1B2982ECCA004A0F4F /* SettingsHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3316,6 +3327,7 @@
 				E65085DF292BCF7800A43B07 /* RoundedCorner.swift */,
 				E65085D0292BBF1D00A43B07 /* SwiftUICheckBox.swift */,
 				E65085D5292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift */,
+				1700944A297EE12300E5650A /* SwiftUILoadingIndicator.swift */,
 				E65085D9292BC03400A43B07 /* SwiftUIRadioButton.swift */,
 				E65085E1292BD01800A43B07 /* SwiftUISelectionListItem.swift */,
 				E65085DB292BCD1D00A43B07 /* SwiftUISelectionListView.swift */,
@@ -3782,6 +3794,7 @@
 				F22612D822572D9400472D22 /* StatisticsItemEmptyView.swift in Sources */,
 				44A149EB21377C7B0053D5F7 /* SavedSearchesListViewCell.swift in Sources */,
 				9BCDFC7622E09E3C00A80D7F /* KlimabroletViewModel.swift in Sources */,
+				B6801C1C2982ECCA004A0F4F /* SettingsHeaderView.swift in Sources */,
 				CF5012452360909200138A36 /* PrimingHeaderView.swift in Sources */,
 				9BA8248623859B4400163F24 /* MapZoomRange.swift in Sources */,
 				CF136ACF220327F500247B30 /* InfoboxViewModel.swift in Sources */,
@@ -3831,6 +3844,7 @@
 				9B9663CD24603AAE00D34BA1 /* Color+SwiftUI.swift in Sources */,
 				43EA977F21941E5D003A548A /* SoldView.swift in Sources */,
 				44A557B422E72187001667AE /* SelectableTableViewCellViewModel.swift in Sources */,
+				1700944B297EE12300E5650A /* SwiftUILoadingIndicator.swift in Sources */,
 				625A220B221EB26500733101 /* AdManagementActionCellModel.swift in Sources */,
 				CFCED8D922CE2BE90049A3A0 /* FavoriteFoldersSearchBar.swift in Sources */,
 				14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */,
@@ -3894,11 +3908,13 @@
 				172E7502290FC86B00956AC2 /* HTMLText.swift in Sources */,
 				CF5CA71222F85A94007C4124 /* NeighborhoodProfileHeaderView.swift in Sources */,
 				441FE435209A24E500B04EF1 /* StandardAdRecommendationViewModel.swift in Sources */,
+				17009449297EE0E700E5650A /* LoadingIndicator.swift in Sources */,
 				F253C51D2315601A008175FD /* VerificationActionSheet.swift in Sources */,
 				91341EDB23C38288005B65CF /* NativeAdvertRecommendationView.swift in Sources */,
 				CFEB220F232B96550039421C /* UIBarButtonItemExtensions.swift in Sources */,
 				44A149EC21377C7B0053D5F7 /* SavedSearchesListView.swift in Sources */,
 				91D2A55422F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift in Sources */,
+				B6801C1E2982ECD5004A0F4F /* SettingsSectionComplexHeaderView.swift in Sources */,
 				14DC127021593B0000326DC3 /* HorizontalSlideTransition.swift in Sources */,
 				CFA6DC2B23BF5E1B0016E118 /* FavoriteAdCommentInputView.swift in Sources */,
 				4447F6E91FDB2B110033DBC1 /* Ribbon+Style.swift in Sources */,

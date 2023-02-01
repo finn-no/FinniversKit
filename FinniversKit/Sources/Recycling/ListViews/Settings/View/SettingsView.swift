@@ -14,7 +14,7 @@ public protocol SettingsViewDataSource: AnyObject {
 public protocol SettingsViewDelegate: AnyObject {
     func settingsView(_ settingsView: SettingsView, didSelectModelAt indexPath: IndexPath)
     func settingsView(_ settingsView: SettingsView, didToggleSettingAt indexPath: IndexPath, isOn: Bool)
-    func settingsView(_ settingsView: SettingsView, titleForHeaderInSection section: Int) -> String?
+    func settingsView(_ settingsView: SettingsView, titleForHeaderInSection section: Int) -> SettingsHeaderType?
     func settingsView(_ settingsView: SettingsView, titleForFooterInSection section: Int) -> String?
 }
 
@@ -25,15 +25,17 @@ public class SettingsView: UIView {
     public weak var dataSource: SettingsViewDataSource?
     public weak var delegate: SettingsViewDelegate?
 
+    private var viewTitle: String?
     public var versionText: String? {
         didSet {
+            tableView.tableFooterView = versionText != nil ? versionInfoView : nil
             versionInfoView.configure(withText: versionText)
         }
     }
 
     // MARK: - Private Properties
 
-    private lazy var tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .bgTertiary
         tableView.separatorStyle = .none
@@ -43,24 +45,57 @@ public class SettingsView: UIView {
         tableView.register(SettingsViewToggleCell.self)
         tableView.register(SettingsViewConsentCell.self)
         tableView.register(SettingsSectionHeaderView.self)
+        tableView.register(SettingsSectionComplexHeaderView.self)
         tableView.register(SettingsSectionFooterView.self)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
+    }()
+
+    private lazy var tableHeaderView: SettingsHeaderView = {
+        let view = SettingsHeaderView(withAutoLayout: true)
+        view.configure(viewTitle)
+        return view
     }()
 
     private lazy var versionInfoView = VersionInfoView(
         frame: .zero
     )
 
-    // MARK: - Init
+    private func configureHeaderViewIfNeeded() {
+        tableView.tableHeaderView = tableHeaderView
+        NSLayoutConstraint.activate([
+            tableHeaderView.widthAnchor.constraint(equalTo: tableView.widthAnchor),
+            tableHeaderView.topAnchor.constraint(equalTo: tableView.topAnchor),
+            tableHeaderView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+        ])
+    }
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    // MARK: - Init
+    public init(viewTitle: String?) {
+        self.viewTitle = viewTitle
+        super.init(frame: .zero)
         setup()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+
+        if viewTitle != nil, let headerView = tableView.tableHeaderView {
+            let width = tableView.bounds.size.width
+
+            let size = headerView.systemLayoutSizeFitting(
+                CGSize(width: width, height: UIView.layoutFittingCompressedSize.height)
+            )
+
+            if headerView.frame.size.height != size.height {
+                headerView.frame.size.height = size.height
+                tableView.tableHeaderView = headerView
+            }
+        }
     }
 }
 
@@ -136,14 +171,20 @@ extension SettingsView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let title = delegate?.settingsView(self, titleForHeaderInSection: section) else {
+        guard let headerType = delegate?.settingsView(self, titleForHeaderInSection: section) else {
             return nil
         }
 
-        let headerView = tableView.dequeue(SettingsSectionHeaderView.self)
-        headerView.configure(with: title.uppercased())
-
-        return headerView
+        switch headerType {
+        case .plain(title: let title):
+            let headerView = tableView.dequeue(SettingsSectionHeaderView.self)
+            headerView.configure(with: title)
+            return headerView
+        case .complex(title: let title, subtitle: let subtitle, image: let image):
+            let headerView = tableView.dequeue(SettingsSectionComplexHeaderView.self)
+            headerView.configure(with: title, subtitle: subtitle, image: image)
+            return headerView
+        }
     }
 
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -162,7 +203,7 @@ extension SettingsView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        48
+        UITableView.automaticDimension
     }
 
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -178,7 +219,10 @@ extension SettingsView: UITableViewDelegate {
 private extension SettingsView {
     func setup() {
         addSubview(tableView)
-        tableView.tableFooterView = versionInfoView
         tableView.fillInSuperview()
+
+        if viewTitle != nil {
+            configureHeaderViewIfNeeded()
+        }
     }
 }
