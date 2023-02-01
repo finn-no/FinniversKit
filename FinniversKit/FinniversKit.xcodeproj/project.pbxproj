@@ -55,7 +55,7 @@
 		17E232F5290A7E71003DC8F7 /* HTMLLexerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */; };
 		17EAC08A296485C300B3C639 /* UIColor+FinniversKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */; };
 		279C40C429896C2900B5BC51 /* ToastViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279C40C329896C2900B5BC51 /* ToastViewModifier.swift */; };
-		279C40C6298A6A3D00B5BC51 /* ToastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279C40C5298A6A3D00B5BC51 /* ToastViewModel.swift */; };
+		279C40C6298A6A3D00B5BC51 /* Toast+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279C40C5298A6A3D00B5BC51 /* Toast+ViewModel.swift */; };
 		27AE25A6298957D00091E957 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AE25A5298957D00091E957 /* Toast.swift */; };
 		27B0929829534658009B6CC3 /* BadgeView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B0929729534658009B6CC3 /* BadgeView+Style.swift */; };
 		27D4BE09296573A30077D1A4 /* FrontPageSavedSearchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4BE08296573A30077D1A4 /* FrontPageSavedSearchesView.swift */; };
@@ -573,7 +573,7 @@
 		17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLexerTests.swift; sourceTree = "<group>"; };
 		17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+FinniversKitTests.swift"; sourceTree = "<group>"; };
 		279C40C329896C2900B5BC51 /* ToastViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewModifier.swift; sourceTree = "<group>"; };
-		279C40C5298A6A3D00B5BC51 /* ToastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewModel.swift; sourceTree = "<group>"; };
+		279C40C5298A6A3D00B5BC51 /* Toast+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Toast+ViewModel.swift"; sourceTree = "<group>"; };
 		27AE25A5298957D00091E957 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		27B0929729534658009B6CC3 /* BadgeView+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BadgeView+Style.swift"; sourceTree = "<group>"; };
 		27D4BE08296573A30077D1A4 /* FrontPageSavedSearchesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FrontPageSavedSearchesView.swift; path = Sources/Components/FrontPageSavedSearchesView/FrontPageSavedSearchesView.swift; sourceTree = SOURCE_ROOT; };
@@ -1275,7 +1275,7 @@
 				27FAFCC22989150900FEDAE0 /* ToastSwiftUIView+ActionButton.swift */,
 				27AE25A5298957D00091E957 /* Toast.swift */,
 				279C40C329896C2900B5BC51 /* ToastViewModifier.swift */,
-				279C40C5298A6A3D00B5BC51 /* ToastViewModel.swift */,
+				279C40C5298A6A3D00B5BC51 /* Toast+ViewModel.swift */,
 			);
 			path = Toast;
 			sourceTree = "<group>";
@@ -4065,7 +4065,7 @@
 				9A37D30A78EB61643224B799 /* HorizontalIconCollectionViewCell.swift in Sources */,
 				9A37DA10C8A9D0ABD161B810 /* SelfDeclarationViewModel.swift in Sources */,
 				177A871C2913B40900F02088 /* HTMLStringSwiftUIStyleTranslator.swift in Sources */,
-				279C40C6298A6A3D00B5BC51 /* ToastViewModel.swift in Sources */,
+				279C40C6298A6A3D00B5BC51 /* Toast+ViewModel.swift in Sources */,
 				9A37DAAFC21354151CA7FC47 /* UIStackViewExtensions.swift in Sources */,
 				9A37D8FB2E0EB9F3A172E23A /* ObjectPagePriceView.swift in Sources */,
 				9A37DEBA80091CD61954E2B9 /* ObjectPagePriceViewModel.swift in Sources */,
