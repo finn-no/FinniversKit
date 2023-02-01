@@ -3,11 +3,11 @@ import SwiftUI
 
 extension Toast {
     public struct ViewModel {
-        public var text: String
-        public var style: Style
-        public var action: Action?
-        public var timeout: TimeInterval
-        public var position: Position
+        public let text: String
+        public let style: Style
+        public let action: Action?
+        public let timeout: TimeInterval
+        public let position: Position
 
         public init(
             text: String,
