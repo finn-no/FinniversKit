@@ -5,20 +5,20 @@ extension Toast {
     public struct ViewModel {
         public let text: String
         public let style: Style
-        public let action: Action?
+        public let actionButton: ActionButton?
         public let timeout: TimeInterval
         public let position: Position
 
         public init(
             text: String,
             style: Style,
-            action: Action? = nil,
+            actionButton: ActionButton? = nil,
             position: Position = .bottom,
             timeout: TimeInterval = 5
         ) {
             self.text = text
             self.style = style
-            self.action = action
+            self.actionButton = actionButton
             self.position = position
             self.timeout = timeout
         }
@@ -48,23 +48,23 @@ extension Toast {
         }
     }
 
-    public struct Action {
-        public enum ButtonStyle {
+    public struct ActionButton {
+        public enum Style {
             case flat
             case promoted
         }
 
         public let title: String
-        public let buttonStyle: ButtonStyle
+        public let style: Style
         public let action: (() -> Void)
 
         public init(
             title: String,
-            buttonStyle: ButtonStyle = .flat,
+            buttonStyle: Style = .flat,
             action: @escaping (() -> Void)
         ) {
             self.title = title
-            self.buttonStyle = buttonStyle
+            self.style = buttonStyle
             self.action = action
         }
     }

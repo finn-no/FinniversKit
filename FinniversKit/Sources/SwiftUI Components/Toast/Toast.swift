@@ -8,14 +8,14 @@ extension View {
     public func toast(
         text: String,
         style: Toast.Style,
-        action: Toast.Action? = nil,
+        actionButton: Toast.ActionButton? = nil,
         timeout: TimeInterval = 5,
         position: Toast.Position = .bottom,
         isShowing: Binding<Bool>
     ) -> some View {
         self.modifier(
             ToastViewModifier(
-                toastView: .init(text: text, style: style),
+                toastView: .init(text: text, style: style, actionButton: actionButton),
                 timeout: timeout,
                 position: position,
                 isShowing: isShowing
@@ -29,7 +29,7 @@ extension View {
     ) -> some View {
         return self.modifier(
             ToastViewModifier(
-                toastView: .init(text: viewModel.text, style: viewModel.style),
+                toastView: .init(text: viewModel.text, style: viewModel.style, actionButton: viewModel.actionButton),
                 timeout: viewModel.timeout,
                 position: viewModel.position,
                 isShowing: isShowing

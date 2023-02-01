@@ -1,18 +1,18 @@
 import SwiftUI
 
 extension ToastSwiftUIView {
-    struct ActionButton: View {
-        let action: Toast.Action
+    struct ActionButtonView: View {
+        let actionButton: Toast.ActionButton
         let style: Toast.Style
 
         var body: some View {
             Group {
-                switch action.buttonStyle {
+                switch actionButton.style {
                 case .flat:
-                    SwiftUI.Button(action.title, action: action.action)
+                    SwiftUI.Button(actionButton.title, action: actionButton.action)
                         .buttonStyle(InlineFlatStyle())
                 case .promoted:
-                    SwiftUI.Button(action.title, action: action.action)
+                    SwiftUI.Button(actionButton.title, action: actionButton.action)
                         .buttonStyle(PromotedStyle(style: style))
                 }
             }
@@ -20,7 +20,7 @@ extension ToastSwiftUIView {
     }
 }
 
-extension ToastSwiftUIView.ActionButton {
+extension ToastSwiftUIView.ActionButtonView {
     struct PromotedStyle: ButtonStyle {
         let style: Toast.Style
         private let cornerRadius: CGFloat = .spacingL
@@ -51,9 +51,9 @@ extension ToastSwiftUIView.ActionButton {
 struct ToastSwiftUIViewActionButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: .spacingL) {
-            ToastSwiftUIView.ActionButton(action: .init(title: "Undo", buttonStyle: .flat, action: {}), style: .success)
-            ToastSwiftUIView.ActionButton(action: .init(title: "Undo", buttonStyle: .promoted, action: {}), style: .success)
-            ToastSwiftUIView.ActionButton(action: .init(title: "Undo", buttonStyle: .promoted, action: {}), style: .error)
+            ToastSwiftUIView.ActionButtonView(actionButton: .init(title: "Undo", buttonStyle: .flat, action: {}), style: .success)
+            ToastSwiftUIView.ActionButtonView(actionButton: .init(title: "Undo", buttonStyle: .promoted, action: {}), style: .success)
+            ToastSwiftUIView.ActionButtonView(actionButton: .init(title: "Undo", buttonStyle: .promoted, action: {}), style: .error)
         }
         .previewLayout(.sizeThatFits)
         .padding()
