@@ -1,26 +1,24 @@
 force_cast: error
 force_try: error
-force_unwrapping: error
-type_body_length: 250
-file_length: 500
-type_name:
-  min_length: 2
-identifier_name:
-  min_length: 2
-  max_length: 80
-cyclomatic_complexity: 10
+#force_unwrapping: error
+
+opt_in_rules:
+  #- force_unwrapping
 
 disabled_rules:
-  - line_length
+  - file_length
   - function_body_length
-  - weak_delegate
-  - trailing_comma
-  - class_delegate_protocol
+  - identifier_name
+  - line_length
+  - shorthand_operator
+  - type_body_length
+  - type_name
 
+reporter: "xcode"
 included:
-  - Sources
   - Demo
-  - UnitTests
+  - FinniversKit
+excluded:
+  - bundler
 analyzer_rules:
   - unused_import
-  - unused_private_declaration

@@ -7,7 +7,7 @@ import UIKit
 class SettingsSectionHeaderView: UITableViewHeaderFooterView {
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .detailStrong, withAutoLayout: true)
+        let label = Label(style: .bodyStrong, withAutoLayout: true)
         label.textColor = .textSecondary
         return label
     }()
@@ -27,10 +27,6 @@ class SettingsSectionHeaderView: UITableViewHeaderFooterView {
 
     private func setup() {
         contentView.addSubview(titleLabel)
-
-        NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingS)
-        ])
+        titleLabel.fillInSuperview(insets: UIEdgeInsets(top: .spacingM, left: .spacingM, bottom: -.spacingM, right: -.spacingM))
     }
 }
