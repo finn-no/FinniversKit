@@ -19,9 +19,21 @@ struct ToastViewModifier: ViewModifier {
                         .transition(.move(edge: position == .top ? .top : .bottom))
                         .onAppear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + timeout) {
-                                isShowing.toggle()
+                                isShowing = false
                             }
                         }
+                        .gesture(
+                            DragGesture(minimumDistance: 20, coordinateSpace: .local)
+                                .onEnded { value in
+                                    let swipedVertically = abs(value.translation.height) > abs(value.translation.width)
+                                    guard swipedVertically else { return }
+                                    let swipedDown = value.translation.height > 0
+                                    let swipedUp = !swipedDown
+                                    if position == .bottom && swipedDown || position == .top && swipedUp {
+                                        isShowing = false
+                                    }
+                                }
+                        )
                 }
                 if position == .top {
                     Spacer()
