@@ -24,14 +24,14 @@ class SettingsViewDemoView: UIView {
 
      private var sections = [
         SettingsSection(
-            title: "Varslinger",
+            header: .plain(title: "Varslinger"),
             items: [
                 SettingsToggleItem(title: "Prisnedgang på favoritter - Torget", isOn: true)
             ],
             footerTitle: "FINN varsler deg når priser på en av dine favoritter på Torget blir satt ned i pris."
         ),
         SettingsSection(
-            title: "Personvern",
+            header: .plain(title: "Personvern"),
             items: [
                 SettingsConsentItem(title: "Få nyhetsbrev fra FINN", status: "Av"),
                 SettingsConsentItem(title: "Personlig tilpasset FINN", status: "På"),
@@ -45,7 +45,8 @@ class SettingsViewDemoView: UIView {
     ]
 
     private lazy var settingsView: SettingsView = {
-        let settingsView = SettingsView(withAutoLayout: true)
+        let settingsView = SettingsView(viewTitle: nil)
+        settingsView.translatesAutoresizingMaskIntoConstraints = false
         settingsView.dataSource = self
         settingsView.delegate = self
         settingsView.versionText = "FinniversKit Demo"
@@ -96,8 +97,8 @@ extension SettingsViewDemoView: SettingsViewDelegate {
         print("Did toggle settings for model:\n\t- \(model)")
     }
 
-    func settingsView(_ settingsView: SettingsView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section].title
+    func settingsView(_ settingsView: FinniversKit.SettingsView, titleForHeaderInSection section: Int) -> FinniversKit.SettingsHeaderType? {
+        return sections[section].header
     }
 
     func settingsView(_ settingsView: SettingsView, titleForFooterInSection section: Int) -> String? {
