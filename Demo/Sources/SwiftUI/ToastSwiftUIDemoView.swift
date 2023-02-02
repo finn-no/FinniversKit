@@ -2,13 +2,17 @@ import SwiftUI
 import FinniversKit
 
 struct ToastSwiftUIDemoView: View {
-    @State var showToastFromBottom: Bool = false
-    @State var showToastFromTop: Bool = false
+    @State var topToastViewModel: Toast.ViewModel? = nil
+    @State var bottomToastViewModel: Toast.ViewModel? = nil
 
     var body: some View {
         VStack(spacing: .spacingM) {
             SwiftUI.Button("Animate from top") {
-                showToastFromTop = true
+                topToastViewModel = .init(
+                    text: "Animated from top",
+                    style: .success,
+                    position: .top
+                )
             }
 
             ToastSwiftUIView(text: "Success", style: .success)
@@ -20,21 +24,15 @@ struct ToastSwiftUIDemoView: View {
             ToastSwiftUIView(text: "Action error", style: .error, actionButton: .init(title: "Undo", buttonStyle: .promoted, action: {}))
 
             SwiftUI.Button("Animate from bottom") {
-                showToastFromBottom = true
+                bottomToastViewModel = .init(
+                    text: "Animated from bottom",
+                    style: .success,
+                    position: .bottom
+                )
             }
         }
-        .toast(
-            text: "Animated from bottom",
-            style: .success,
-            position: .bottom,
-            isShowing: $showToastFromBottom
-        )
-        .toast(
-            text: "Animated from top",
-            style: .success,
-            position: .top,
-            isShowing: $showToastFromTop
-        )
+        .toast(viewModel: $topToastViewModel)
+        .toast(viewModel: $bottomToastViewModel)
     }
 }
 
