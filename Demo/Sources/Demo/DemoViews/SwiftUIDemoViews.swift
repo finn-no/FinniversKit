@@ -9,6 +9,7 @@ public enum SwiftUIDemoViews: String, DemoViews {
     case checkBox
     case htmlText
     case loadingIndicator
+    case loadingView
     case radioButton
     case selectionListView
     case textField
@@ -33,6 +34,8 @@ public enum SwiftUIDemoViews: String, DemoViews {
             SwiftUICheckBox_Previews.previews
         case .loadingIndicator:
             SwiftUILoadingIndicatorDemoView()
+        case .loadingView:
+            SwiftUILoadingDemoView()
         case .radioButton:
             SwiftUIRadioButton_Previews.previews
         case .selectionListView:
