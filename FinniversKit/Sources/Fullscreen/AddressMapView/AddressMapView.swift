@@ -107,7 +107,7 @@ public class AddressMapView: UIView {
         removeCurrentAnnotationAndShapeOverlays()
         polygonPoints.forEach { points in
             let newPolygon = MKPolygon(coordinates: points, count: points.count)
-            mapView.addOverlay(newPolygon)
+            mapView.addOverlay(newPolygon, level: .aboveLabels)
             polygons.append(newPolygon)
         }
     }
