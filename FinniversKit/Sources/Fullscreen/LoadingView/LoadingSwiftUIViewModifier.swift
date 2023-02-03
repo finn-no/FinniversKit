@@ -4,7 +4,20 @@ public struct LoadingSwiftUIViewModifier: ViewModifier {
     private let showAfter: Double?
     private let hideAfter: Double?
 
-    @Binding var viewModel: LoadingSwiftUIViewModel?
+    @Binding var viewModel: LoadingSwiftUIViewModel? {
+        didSet {
+            showWorkItem?.cancel()
+            showWorkItem = nil
+            hideWorkItem?.cancel()
+            hideWorkItem = nil
+
+            if viewModel == nil {
+                withAnimation {
+                    isVisible = false
+                }
+            }
+        }
+    }
 
     @State private var isVisible: Bool = false
     @State private var showWorkItem: DispatchWorkItem?
@@ -18,45 +31,38 @@ public struct LoadingSwiftUIViewModifier: ViewModifier {
         self._viewModel = viewModel
         self.showAfter = showAfter
         self.hideAfter = hideAfter
-        applyViewModel()
     }
 
     public func body(content: Content) -> some View {
-        if isVisible, let viewModel {
-            content
-                .overlay(LoadingSwiftUIView(viewModel: viewModel))
-        } else {
-            content
-        }
-    }
-
-    private func applyViewModel() {
-        showWorkItem?.cancel()
-        showWorkItem = nil
-        hideWorkItem?.cancel()
-        hideWorkItem = nil
-
-        if viewModel == nil {
-            isVisible = false
-        } else {
-            show()
-        }
-    }
-
-    private func show() {
-        let showWork = DispatchWorkItem {
-            self.isVisible = true
-        }
-        showWorkItem = showWork
-        let showDelay = showAfter ?? 0
-        DispatchQueue.main.asyncAfter(deadline: .now() + showDelay, execute: showWork)
-
-        if let hideAfter {
-            let hideWork = DispatchWorkItem {
-                self.viewModel = nil
+        if let viewModel {
+            if isVisible {
+                content
+                    .overlay(LoadingSwiftUIView(viewModel: viewModel))
+                    .onAppear {
+                        guard let hideAfter else { return }
+                        let hideWork = DispatchWorkItem {
+                            withAnimation {
+                                self.viewModel = nil
+                            }
+                        }
+                        hideWorkItem = hideWork
+                        DispatchQueue.main.asyncAfter(deadline: .now() + hideAfter, execute: hideWork)
+                    }
+            } else {
+                content
+                    .onAppear {
+                        let showWork = DispatchWorkItem {
+                            withAnimation {
+                                self.isVisible = true
+                            }
+                        }
+                        showWorkItem = showWork
+                        let showDelay = showAfter ?? 0
+                        DispatchQueue.main.asyncAfter(deadline: .now() + showDelay, execute: showWork)
+                    }
             }
-            hideWorkItem = hideWork
-            DispatchQueue.main.asyncAfter(deadline: .now() + showDelay + hideAfter, execute: hideWork)
+        } else {
+            content
         }
     }
 }
@@ -75,6 +81,7 @@ extension View {
     }
 }
 
+/*
 struct LoadingSwiftUIViewModifier_Previews: PreviewProvider {
     struct DemoView: View {
         @State var loadingViewModel: LoadingSwiftUIViewModel?
@@ -94,7 +101,9 @@ struct LoadingSwiftUIViewModifier_Previews: PreviewProvider {
         }
 
         func toggleViewModel() {
-            loadingViewModel = loadingViewModel == nil ? fullscreenViewModel : nil
+            withAnimation {
+                loadingViewModel = loadingViewModel == nil ? fullscreenViewModel : nil
+            }
         }
     }
 
@@ -102,3 +111,4 @@ struct LoadingSwiftUIViewModifier_Previews: PreviewProvider {
         DemoView()
     }
 }
+*/

@@ -16,7 +16,7 @@ private struct LoadingDemoRow: View {
     }
 }
 
-struct SwiftUILoadingDemoView: View {
+struct LoadingSwiftUIDemoView: View {
     @SwiftUI.State private var loadingViewModel: LoadingSwiftUIViewModel?
     @SwiftUI.State private var showDelay: Double?
     @SwiftUI.State private var hideDelay: Double?
@@ -35,6 +35,16 @@ struct SwiftUILoadingDemoView: View {
                     hideDelay = 1.0
                     loadingViewModel = .init(mode: .fullscreen)
                 }
+                LoadingDemoRow(title: "Show with message", description: "shows immediately, hides after a second") {
+                    showDelay = nil
+                    hideDelay = 1.0
+                    loadingViewModel = .init(mode: .fullscreen, message: "Hi there!")
+                }
+                LoadingDemoRow(title: "Show with message", description: "shows after 0.5s, hides after a second") {
+                    showDelay = 0.5
+                    hideDelay = 1.0
+                    loadingViewModel = .init(mode: .fullscreen, message: "Hi there!")
+                }
             }
         }
         .frame(maxWidth: .infinity)
@@ -44,21 +54,6 @@ struct SwiftUILoadingDemoView: View {
     /*
     private lazy var options: [Option] = {
         var options = [Option]()
-
-        options.append(Option(title: "Simple show", description: "(shows immediately, hides after a second)", action: {
-            LoadingView.show(afterDelay: 0, displayType: self.currentDisplayType)
-            LoadingView.hide(afterDelay: 1.0)
-        }))
-
-        options.append(Option(title: "Show with message", description: "shows after 0.5s, hides after a second", action: {
-            LoadingView.show(withMessage: "Hi there!", displayType: self.currentDisplayType)
-            LoadingView.hide(afterDelay: 1.0)
-        }))
-
-        options.append(Option(title: "Show with message", description: "shows immediately, hides after a second", action: {
-            LoadingView.show(withMessage: "Hi there!", afterDelay: 0, displayType: self.currentDisplayType)
-            LoadingView.hide(afterDelay: 1.0)
-        }))
 
         options.append(Option(title: "Show success", description: "shows after 0.5s, hides after a second", action: {
             LoadingView.showSuccess(displayType: self.currentDisplayType)
@@ -115,8 +110,8 @@ struct SwiftUILoadingDemoView: View {
 */
 }
 
-struct SwiftUILoadingDemoView_Previews: PreviewProvider {
+struct LoadingSwiftUIDemoView_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUILoadingDemoView()
+        LoadingSwiftUIDemoView()
     }
 }

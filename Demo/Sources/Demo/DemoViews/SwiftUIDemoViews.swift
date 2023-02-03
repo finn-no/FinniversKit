@@ -35,7 +35,7 @@ public enum SwiftUIDemoViews: String, DemoViews {
         case .loadingIndicator:
             SwiftUILoadingIndicatorDemoView()
         case .loadingView:
-            SwiftUILoadingDemoView()
+            LoadingSwiftUIDemoView()
         case .radioButton:
             SwiftUIRadioButton_Previews.previews
         case .selectionListView:
