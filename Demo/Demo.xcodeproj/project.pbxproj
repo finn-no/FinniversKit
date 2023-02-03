@@ -10,6 +10,7 @@
 		172E7504290FE28E00956AC2 /* HTMLTextDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */; };
 		1732932D29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1732932C29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift */; };
 		17F8EEC629409FE3000E26C9 /* SwiftUISelectionListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8EEC529409FE3000E26C9 /* SwiftUISelectionListDemoView.swift */; };
+		277307E5298C108800B8E27F /* ResultSwiftUIDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277307E4298C108800B8E27F /* ResultSwiftUIDemoView.swift */; };
 		27FAFCB82988FE6100FEDAE0 /* ToastSwiftUIDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAFCB72988FE6100FEDAE0 /* ToastSwiftUIDemoView.swift */; };
 		46AE6FC4242BADC9007BB005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AE6FC3242BADC9007BB005 /* AppDelegate.swift */; };
 		46E773A4242CEF0A008A5E93 /* DemoHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77258242CEF09008A5E93 /* DemoHelpers.swift */; };
@@ -253,6 +254,7 @@
 		172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextDemoViewController.swift; sourceTree = "<group>"; };
 		1732932C29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUILoadingIndicatorDemoView.swift; sourceTree = "<group>"; };
 		17F8EEC529409FE3000E26C9 /* SwiftUISelectionListDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISelectionListDemoView.swift; sourceTree = "<group>"; };
+		277307E4298C108800B8E27F /* ResultSwiftUIDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSwiftUIDemoView.swift; sourceTree = "<group>"; };
 		27FAFCB72988FE6100FEDAE0 /* ToastSwiftUIDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastSwiftUIDemoView.swift; sourceTree = "<group>"; };
 		46AE6FC0242BADC9007BB005 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46AE6FC3242BADC9007BB005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1828,6 +1830,7 @@
 				1732932C29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift */,
 				17F8EEC529409FE3000E26C9 /* SwiftUISelectionListDemoView.swift */,
 				27FAFCB72988FE6100FEDAE0 /* ToastSwiftUIDemoView.swift */,
+				277307E4298C108800B8E27F /* ResultSwiftUIDemoView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -2072,6 +2075,7 @@
 				DA083C2E2462BCA800B26235 /* SwiftUIDemoViews.swift in Sources */,
 				46E77469242CEF0A008A5E93 /* FavoriteFoldersListViewDemoViewHelpers.swift in Sources */,
 				46E7741F242CEF0A008A5E93 /* ButtonDemoView.swift in Sources */,
+				277307E5298C108800B8E27F /* ResultSwiftUIDemoView.swift in Sources */,
 				46E773D3242CEF0A008A5E93 /* EmptyViewDemoView.swift in Sources */,
 				46E773CB242CEF0A008A5E93 /* SearchResultMapViewDemoViewController.swift in Sources */,
 				46E77459242CEF0A008A5E93 /* AdRecommendationsGridViewDemoViewHelpers.swift in Sources */,

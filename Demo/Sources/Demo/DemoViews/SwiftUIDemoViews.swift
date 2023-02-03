@@ -14,11 +14,14 @@ public enum SwiftUIDemoViews: String, DemoViews {
     case textField
     case textView
     case toast
+    case resultView
 
     public var viewController: UIViewController {
         switch self {
         case .htmlText:
             return HTMLTextDemoViewController()
+        case .resultView:
+            return ResultSwiftUIDemoViewController()
         default:
             return PreviewController(hostingController: hostingController)
         }

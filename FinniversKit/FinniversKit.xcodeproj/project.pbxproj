@@ -56,6 +56,7 @@
 		17EAC08A296485C300B3C639 /* UIColor+FinniversKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */; };
 		279C40C429896C2900B5BC51 /* ToastViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279C40C329896C2900B5BC51 /* ToastViewModifier.swift */; };
 		279C40C6298A6A3D00B5BC51 /* Toast+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279C40C5298A6A3D00B5BC51 /* Toast+ViewModel.swift */; };
+		279C4202298BC32600B5BC51 /* ResultSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279C4201298BC32600B5BC51 /* ResultSwiftUIView.swift */; };
 		27AE25A6298957D00091E957 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AE25A5298957D00091E957 /* Toast.swift */; };
 		27B0929829534658009B6CC3 /* BadgeView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B0929729534658009B6CC3 /* BadgeView+Style.swift */; };
 		27D4BE09296573A30077D1A4 /* FrontPageSavedSearchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4BE08296573A30077D1A4 /* FrontPageSavedSearchesView.swift */; };
@@ -574,6 +575,7 @@
 		17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+FinniversKitTests.swift"; sourceTree = "<group>"; };
 		279C40C329896C2900B5BC51 /* ToastViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewModifier.swift; sourceTree = "<group>"; };
 		279C40C5298A6A3D00B5BC51 /* Toast+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Toast+ViewModel.swift"; sourceTree = "<group>"; };
+		279C4201298BC32600B5BC51 /* ResultSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSwiftUIView.swift; sourceTree = "<group>"; };
 		27AE25A5298957D00091E957 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		27B0929729534658009B6CC3 /* BadgeView+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BadgeView+Style.swift"; sourceTree = "<group>"; };
 		27D4BE08296573A30077D1A4 /* FrontPageSavedSearchesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FrontPageSavedSearchesView.swift; path = Sources/Components/FrontPageSavedSearchesView/FrontPageSavedSearchesView.swift; sourceTree = SOURCE_ROOT; };
@@ -3343,6 +3345,7 @@
 				E65085D9292BC03400A43B07 /* SwiftUIRadioButton.swift */,
 				E65085E1292BD01800A43B07 /* SwiftUISelectionListItem.swift */,
 				E65085DB292BCD1D00A43B07 /* SwiftUISelectionListView.swift */,
+				279C4201298BC32600B5BC51 /* ResultSwiftUIView.swift */,
 			);
 			path = "SwiftUI Components";
 			sourceTree = "<group>";
@@ -4124,6 +4127,7 @@
 				5B959EBFCE35B7B844CC7F98 /* ScrollableTabView.swift in Sources */,
 				5B9596604C5199CC513CE40F /* ItemCollectionViewCell.swift in Sources */,
 				5B9599F2C83BB04E3E6CFAD4 /* MapAddressButton.swift in Sources */,
+				279C4202298BC32600B5BC51 /* ResultSwiftUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

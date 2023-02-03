@@ -80,9 +80,11 @@ public struct CallToAction: ButtonStyle {
     @Binding var isEnabled: Bool
     private let background: Color
     private let font: Font
+    private let fullWidth: Bool
 
-    public init(size: Button.Size = .normal, background: Color = .btnPrimary, isEnabled: Binding<Bool>? = nil) {
+    public init(size: Button.Size = .normal, background: Color = .btnPrimary, fullWidth: Bool = true, isEnabled: Binding<Bool>? = nil) {
         self.background = background
+        self.fullWidth = fullWidth
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
         if let isEnabledBinding = isEnabled {
             self._isEnabled = isEnabledBinding
@@ -93,11 +95,15 @@ public struct CallToAction: ButtonStyle {
 
     public func makeBody(configuration: Configuration) -> some View {
         HStack {
-            Spacer()
+            if fullWidth {
+                Spacer()
+            }
             configuration.label
                 .font(font)
                 .foregroundColor(isEnabled ? .textTertiary : .textCTADisabled)
-            Spacer()
+            if fullWidth {
+                Spacer()
+            }
         }
         .padding(.vertical, .spacingS)
         .padding(.horizontal, .spacingM)
