@@ -17,97 +17,111 @@ private struct LoadingDemoRow: View {
 }
 
 struct LoadingSwiftUIDemoView: View {
-    @SwiftUI.State private var loadingViewModel: LoadingSwiftUIViewModel?
+    @SwiftUI.State private var isActive: Bool = false
+    @SwiftUI.State private var message: String?
+    @SwiftUI.State private var showSuccess: Bool = false
     @SwiftUI.State private var showDelay: Double?
     @SwiftUI.State private var hideDelay: Double?
+    @SwiftUI.State private var isFullscreen: Bool = true
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: .spacingS) {
-                Text(loadingViewModel == nil ? " " : "Selected view model")
-                LoadingDemoRow(title: "Simple show", description: "(shows immediately, hides after a second)") {
-                    showDelay = nil
-                    hideDelay = 1.0
-                    loadingViewModel = .init(mode: .fullscreen)
+            VStack(alignment: .leading, spacing: .spacingM) {
+                Text(isActive ? "Active" : "Not active")
+
+                Toggle(isOn: $isFullscreen) {
+                    Text(isFullscreen ? "Fullscreen" : "Box")
                 }
-                LoadingDemoRow(title: "Simple show", description: "(shows after 0.5s, hides after a second)") {
-                    showDelay = 0.5
-                    hideDelay = 1.0
-                    loadingViewModel = .init(mode: .fullscreen)
+
+                Group {
+                    LoadingDemoRow(title: "Simple show", description: "(shows immediately, hides after a second)") {
+                        message = nil
+                        showSuccess = false
+                        showDelay = nil
+                        hideDelay = 1.0
+                        isActive = true
+                    }
+                    LoadingDemoRow(title: "Simple show", description: "(shows after 0.5s, hides after a second)") {
+                        message = nil
+                        showSuccess = false
+                        showDelay = 0.5
+                        hideDelay = 1.0
+                        isActive = true
+                    }
+                    LoadingDemoRow(title: "Show with message", description: "shows immediately, hides after a second") {
+                        message = "Hi there!"
+                        showSuccess = false
+                        showDelay = nil
+                        hideDelay = 1.0
+                        isActive = true
+                    }
+                    LoadingDemoRow(title: "Show with message", description: "shows after 0.5s, hides after a second") {
+                        message = "Hi there!"
+                        showSuccess = false
+                        showDelay = 0.5
+                        hideDelay = 1.0
+                        isActive = true
+                    }
                 }
-                LoadingDemoRow(title: "Show with message", description: "shows immediately, hides after a second") {
-                    showDelay = nil
-                    hideDelay = 1.0
-                    loadingViewModel = .init(mode: .fullscreen, message: "Hi there!")
+                Group {
+                    LoadingDemoRow(title: "Show success", description: "shows immediately, hides after a second") {
+                        message = nil
+                        showSuccess = true
+                        showDelay = nil
+                        hideDelay = 1.0
+                        isActive = true
+                    }
+                    LoadingDemoRow(title: "Show success", description: "shows after 0.5s, hides after a second") {
+                        message = nil
+                        showSuccess = true
+                        showDelay = 0.5
+                        hideDelay = 1.0
+                        isActive = true
+                    }
+                    LoadingDemoRow(title: "Show success with message", description: "shows immediately, hides after a second") {
+                        message = "Hi there!"
+                        showSuccess = true
+                        showDelay = nil
+                        hideDelay = 1.0
+                        isActive = true
+                    }
+                    LoadingDemoRow(title: "Show success with message", description: "shows after 0.5s, hides after a second") {
+                        message = "Hi there!"
+                        showSuccess = true
+                        showDelay = 0.5
+                        hideDelay = 1.0
+                        isActive = true
+                    }
                 }
-                LoadingDemoRow(title: "Show with message", description: "shows after 0.5s, hides after a second") {
-                    showDelay = 0.5
-                    hideDelay = 1.0
-                    loadingViewModel = .init(mode: .fullscreen, message: "Hi there!")
+                Group {
+                    LoadingDemoRow(title: "Show with message, Success, Hides", description: "Shows immediately, hides after 2s") {
+                        message = "Hi there!"
+                        showSuccess = false
+                        showDelay = nil
+                        hideDelay = 2.0
+                        isActive = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            message = "It worked!"
+                            showSuccess = true
+                        }
+                    }
+                    LoadingDemoRow(title: "Show with message, Success, Hides", description: "Shows after 0.5s, hides after 2s") {
+                        message = "Hi there!"
+                        showSuccess = false
+                        showDelay = 0.5
+                        hideDelay = 2.0
+                        isActive = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                            message = "It worked!"
+                            showSuccess = true
+                        }
+                    }
                 }
             }
         }
         .frame(maxWidth: .infinity)
-        .loadingOverlay(viewModel: $loadingViewModel, showAfter: showDelay, hideAfter: hideDelay)
+        .loadingOverlay(isActive: $isActive, displayMode: isFullscreen ? .fullscreen : .boxed, message: message, showSuccess: showSuccess, showAfter: showDelay, hideAfter: hideDelay)
     }
-
-    /*
-    private lazy var options: [Option] = {
-        var options = [Option]()
-
-        options.append(Option(title: "Show success", description: "shows after 0.5s, hides after a second", action: {
-            LoadingView.showSuccess(displayType: self.currentDisplayType)
-            LoadingView.hide(afterDelay: 1.0)
-        }))
-
-        options.append(Option(title: "Show success", description: "shows immediately, hides after a second", action: {
-            LoadingView.showSuccess(afterDelay: 0, displayType: self.currentDisplayType)
-            LoadingView.hide(afterDelay: 1.0)
-        }))
-
-        options.append(Option(title: "Show success with message", description: "shows after 0.5s, hides after a second", action: {
-            LoadingView.showSuccess(withMessage: "Hi there!", displayType: self.currentDisplayType)
-            LoadingView.hide(afterDelay: 1.0)
-        }))
-
-        options.append(Option(title: "Show success with message", description: "shows immediately, hides after a second", action: {
-            LoadingView.showSuccess(withMessage: "Hi there!", afterDelay: 0, displayType: self.currentDisplayType)
-            LoadingView.hide(afterDelay: 1.0)
-        }))
-
-        options.append(Option(title: "Full: Shows w/ message, Success, Hides", description: "shows after 0.5s, hides after 2s", action: {
-            LoadingView.show(withMessage: "Hi there!", displayType: self.currentDisplayType)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-                LoadingView.showSuccess(withMessage: "It worked!", displayType: self.currentDisplayType)
-                LoadingView.hide(afterDelay: 1.0)
-            })
-        }))
-
-        options.append(Option(title: "Full: Show w/ message, Success, Hides", description: "shows immediately, hides after 2s", action: {
-            LoadingView.show(withMessage: "Hi there!", afterDelay: 0, displayType: self.currentDisplayType)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-                LoadingView.showSuccess(withMessage: "It worked!", afterDelay: 0, displayType: self.currentDisplayType)
-                LoadingView.hide(afterDelay: 1.0)
-            })
-        }))
-
-        options.append(Option(title: "throttling: show and hide right after", description: "should not be visible at all", action: {
-            LoadingView.show(withMessage: "Hi there!", displayType: self.currentDisplayType)
-            LoadingView.hide()
-        }))
-
-        options.append(Option(title: "Racy scheduling", description: "Show only show the success-view", action: {
-            LoadingView.show(withMessage: "Should not be visible", afterDelay: 0.2, displayType: self.currentDisplayType)
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-                LoadingView.showSuccess(withMessage: "Success", afterDelay: 0, displayType: self.currentDisplayType)
-                LoadingView.hide(afterDelay: 0.5)
-            })
-        }))
-
-        return options
-    }()
-*/
 }
 
 struct LoadingSwiftUIDemoView_Previews: PreviewProvider {

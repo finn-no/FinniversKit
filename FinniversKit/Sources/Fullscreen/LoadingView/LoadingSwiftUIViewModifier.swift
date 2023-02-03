@@ -1,17 +1,14 @@
 import SwiftUI
 
 public struct LoadingSwiftUIViewModifier: ViewModifier {
-    private let showAfter: Double?
-    private let hideAfter: Double?
-
-    @Binding var viewModel: LoadingSwiftUIViewModel? {
+    @Binding var isActive: Bool {
         didSet {
             showWorkItem?.cancel()
             showWorkItem = nil
             hideWorkItem?.cancel()
             hideWorkItem = nil
 
-            if viewModel == nil {
+            if !isActive {
                 withAnimation {
                     isVisible = false
                 }
@@ -19,30 +16,42 @@ public struct LoadingSwiftUIViewModifier: ViewModifier {
         }
     }
 
+    private let displayMode: LoadingSwiftUIView.DisplayMode
+    private let message: String?
+    private let showSuccess: Bool
+    private let showAfter: Double?
+    private let hideAfter: Double?
+
     @State private var isVisible: Bool = false
     @State private var showWorkItem: DispatchWorkItem?
     @State private var hideWorkItem: DispatchWorkItem?
 
     public init(
-        viewModel: Binding<LoadingSwiftUIViewModel?>,
+        isActive: Binding<Bool>,
+        displayMode: LoadingSwiftUIView.DisplayMode = .fullscreen,
+        message: String? = nil,
+        showSuccess: Bool = false,
         showAfter: Double? = nil,
         hideAfter: Double? = nil
     ) {
-        self._viewModel = viewModel
+        self._isActive = isActive
+        self.displayMode = displayMode
+        self.message = message
+        self.showSuccess = showSuccess
         self.showAfter = showAfter
         self.hideAfter = hideAfter
     }
 
     public func body(content: Content) -> some View {
-        if let viewModel {
+        if isActive {
             if isVisible {
                 content
-                    .overlay(LoadingSwiftUIView(viewModel: viewModel))
+                    .overlay(LoadingSwiftUIView(mode: displayMode, message: message, showSuccess: showSuccess))
                     .onAppear {
                         guard let hideAfter else { return }
                         let hideWork = DispatchWorkItem {
                             withAnimation {
-                                self.viewModel = nil
+                                self.isActive = false
                             }
                         }
                         hideWorkItem = hideWork
@@ -69,12 +78,18 @@ public struct LoadingSwiftUIViewModifier: ViewModifier {
 
 extension View {
     public func loadingOverlay(
-        viewModel: Binding<LoadingSwiftUIViewModel?>,
+        isActive: Binding<Bool>,
+        displayMode: LoadingSwiftUIView.DisplayMode = .fullscreen,
+        message: String? = nil,
+        showSuccess: Bool = false,
         showAfter: Double? = nil,
         hideAfter: Double? = nil
     ) -> some View {
         modifier(LoadingSwiftUIViewModifier(
-            viewModel: viewModel,
+            isActive: isActive,
+            displayMode: displayMode,
+            message: message,
+            showSuccess: showSuccess,
             showAfter: showAfter,
             hideAfter: hideAfter
         ))
