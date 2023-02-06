@@ -65,7 +65,7 @@ import UIKit
 
     private weak var defaultWindow: UIWindow?
 
-    public init(window: UIWindow? = nil) {
+    init(window: UIWindow? = nil) {
         super.init(frame: .zero)
         defaultWindow = window ?? UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }
