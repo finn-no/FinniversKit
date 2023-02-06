@@ -15,7 +15,6 @@ public struct LoadingSwiftUIView: View {
     private let initialScale: CGFloat = 0.7
     private let loadingIndicatorSize: CGFloat = 40
     private var isFullscreen: Bool { displayMode == .fullscreen }
-    private var boxMaxSize: CGFloat { isFullscreen ? .greatestFiniteMagnitude : 120 }
     private let boxMinSize: CGFloat = 120
     private var textColor: Color { isFullscreen ? .textPrimary : .textTertiary }
 
@@ -32,6 +31,8 @@ public struct LoadingSwiftUIView: View {
     public var body: some View {
         ZStack {
             backgroundView
+                .ignoresSafeArea()
+                .disabled(true)
 
             VStack(spacing: .spacingS) {
                 // Since the indicator view starts at a smaller size we must wrap it for fixed size
@@ -44,7 +45,7 @@ public struct LoadingSwiftUIView: View {
                             .scaleEffect(loadingIndicatorScale)
                             .onAppear {
                                 loadingIndicatorScale = initialScale
-                                withAnimation(.linear(duration: animationDuration)) {
+                                withAnimation(.easeInOut(duration: animationDuration)) {
                                     loadingIndicatorScale = 1.0
                                 }
                             }
@@ -53,7 +54,7 @@ public struct LoadingSwiftUIView: View {
                             .scaleEffect(loadingIndicatorScale)
                             .onAppear {
                                 loadingIndicatorScale = initialScale
-                                withAnimation(.linear(duration: animationDuration)) {
+                                withAnimation(.easeInOut(duration: animationDuration)) {
                                     loadingIndicatorScale = 1.0
                                 }
                             }
@@ -67,19 +68,21 @@ public struct LoadingSwiftUIView: View {
                         .foregroundColor(textColor)
                 }
             }
-            .ignoresSafeArea(edges: [])
+            .frame(minWidth: boxMinSize, maxWidth: boxMinSize, minHeight: boxMinSize)
+            .background(isFullscreen ? Color.clear : Color.black.opacity(0.8))
+            .cornerRadius(isFullscreen ? 0 : .spacingM)
             .padding(.spacingM)
         }
-        .frame(minWidth: boxMinSize, maxWidth: boxMaxSize, minHeight: boxMinSize, maxHeight: boxMaxSize)
-        .cornerRadius(isFullscreen ? 0 : .spacingM)
-        .ignoresSafeArea()
-        .disabled(isFullscreen)
-        .transition(.opacity.animation(.linear(duration: animationDuration)))
+        .transition(.opacity.animation(.easeInOut(duration: animationDuration)))
     }
 
     private var backgroundView: some View {
-        let color: Color = isFullscreen ? .bgPrimary : .black
-        return color.opacity(0.8)
+        if isFullscreen {
+            return Color.bgPrimary.opacity(0.8)
+        }
+        // Plain clear color always allows touch passthrough so use a very transparent
+        // color instead.
+        return Color.black.opacity(0.00001)
     }
 }
 

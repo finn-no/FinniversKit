@@ -118,6 +118,7 @@ struct LoadingSwiftUIDemoView: View {
                     }
                 }
             }
+            .padding(.spacingM)
         }
         .frame(maxWidth: .infinity)
         .loadingOverlay(isActive: $isActive, displayMode: isFullscreen ? .fullscreen : .boxed, message: message, showSuccess: showSuccess, showAfter: showDelay, hideAfter: hideDelay)

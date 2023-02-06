@@ -95,35 +95,3 @@ extension View {
         ))
     }
 }
-
-/*
-struct LoadingSwiftUIViewModifier_Previews: PreviewProvider {
-    struct DemoView: View {
-        @State var loadingViewModel: LoadingSwiftUIViewModel?
-
-        let fullscreenViewModel = LoadingSwiftUIViewModel(mode: .fullscreen, message: "Loading")
-
-        var body: some View {
-            VStack {
-                Text("Hello World!")
-
-                SwiftUI.Button(action: toggleViewModel) {
-                    Text(loadingViewModel == nil ? "Show loading view" : "Hide loading view")
-                }
-
-            }
-            .loadingOverlay(viewModel: $loadingViewModel)
-        }
-
-        func toggleViewModel() {
-            withAnimation {
-                loadingViewModel = loadingViewModel == nil ? fullscreenViewModel : nil
-            }
-        }
-    }
-
-    static var previews: some View {
-        DemoView()
-    }
-}
-*/
