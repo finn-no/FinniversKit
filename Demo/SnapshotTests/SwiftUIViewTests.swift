@@ -37,6 +37,10 @@ class SwiftUIViewTests: XCTestCase {
         snapshot(.loadingIndicator)
     }
 
+    func testLoadingView() {
+        snapshot(.loadingView)
+    }
+
     func testRadioButton() {
         snapshot(.radioButton)
     }
