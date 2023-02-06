@@ -40,6 +40,8 @@ public struct ResultSwiftUIView: View {
             Text(title)
                 .finnFont(.title3Strong)
                 .foregroundColor(.textPrimary)
+                .multilineTextAlignment(.center)
+                .padding(.bottom, .spacingXS)
             if let text {
                 Text(text)
                     .finnFont(.body)
@@ -52,6 +54,9 @@ public struct ResultSwiftUIView: View {
                     .buttonStyle(CallToAction(size: .small, fullWidth: false))
             }
         }
+        .padding(.horizontal, .spacingXL)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.bgPrimary)
     }
 }
 
