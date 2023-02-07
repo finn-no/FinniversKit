@@ -28,7 +28,7 @@ class StatisticsItemView: UIView {
     }()
 
     private lazy var valueLabel: Label = {
-        let label = Label(style: .title2, withAutoLayout: true)
+        let label = Label(style: .title3Strong, withAutoLayout: true)
         label.textAlignment = .center
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
