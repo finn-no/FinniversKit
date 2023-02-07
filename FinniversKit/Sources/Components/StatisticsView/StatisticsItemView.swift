@@ -11,30 +11,21 @@ public class StatisticsItemView: UIView {
     private let model: StatisticsItemModel
 
     private lazy var imageView: UIImageView = {
-        let view = UIImageView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = UIImageView(withAutoLayout: true)
         view.contentMode = .scaleAspectFit
         view.tintColor = .iconPrimary
         return view
     }()
 
-    private lazy var valueLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 1
-        label.font = UIFont.title2 // subject to change medium/26 seems closer to the sketches
-        label.textColor = .textPrimary
+    private lazy var valueLabel: Label = {
+        let label = Label(style: .title2, withAutoLayout: true)
         label.textAlignment = .center
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
     }()
 
-    private lazy var textLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        label.font = UIFont.caption
-        label.textColor = .textPrimary
+    private lazy var textLabel: Label = {
+        let label = Label(style: .caption, numberOfLines: 0, withAutoLayout: true)
         label.textAlignment = .center
         return label
     }()
