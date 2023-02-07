@@ -157,6 +157,7 @@ enum ImageAsset: String {
     case speechbubbleSmiley
     case spidLogo
     case starOutline
+    case statsClick
     case statsEmpty
     case statsEnvelope
     case statsEye
@@ -293,6 +294,7 @@ enum ImageAsset: String {
             .speechbubbleSmiley,
             .spidLogo,
             .starOutline,
+            .statsClick,
             .statsEmpty,
             .statsEnvelope,
             .statsEye,
