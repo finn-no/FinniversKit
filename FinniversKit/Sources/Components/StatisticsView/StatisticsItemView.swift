@@ -110,8 +110,8 @@ class StatisticsItemView: UIView {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: topAnchor, constant: 12),
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: 40),
-            imageView.widthAnchor.constraint(equalToConstant: 40),
+            imageView.heightAnchor.constraint(equalToConstant: 24),
+            imageView.widthAnchor.constraint(equalToConstant: 24),
 
             valueLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             valueLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 6),
