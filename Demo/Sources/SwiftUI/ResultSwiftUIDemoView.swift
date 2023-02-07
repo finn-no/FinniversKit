@@ -28,7 +28,7 @@ final class ResultSwiftUIDemoViewController: DemoViewController<UIView>, Tweakab
 
     private lazy var emptyResultView: ResultSwiftUIView = {
         .init(
-            image: Image(uiImage: UIImage(named: .magnifyingGlass)), // magnifyingGlass
+            image: Image(uiImage: UIImage(named: .magnifyingGlass)),
             title: "Klarte ikke finne annonsen",
             text: "Det kan se ut som annonsen du kikker etter har blitt slettet"
         )
