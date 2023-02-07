@@ -160,7 +160,6 @@ enum ImageAsset: String {
     case statsClick
     case statsEmpty
     case statsEnvelope
-    case statsEye
     case statsHeart
     case success
     case view
@@ -297,7 +296,6 @@ enum ImageAsset: String {
             .statsClick,
             .statsEmpty,
             .statsEnvelope,
-            .statsEye,
             .statsHeart,
             .success,
             .view,
