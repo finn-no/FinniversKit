@@ -4,9 +4,19 @@
 
 import UIKit
 
-public class StatisticsItemView: UIView {
+class StatisticsItemView: UIView {
 
-    // MARK: - Private
+    // MARK: - Internal properties
+
+    var shouldShowLeftSeparator: Bool = false {
+        didSet { leftSeparator.isHidden = !shouldShowLeftSeparator }
+    }
+
+    var shouldShowRightSeparator: Bool = false {
+        didSet { rightSeparator.isHidden = !shouldShowRightSeparator }
+    }
+
+    // MARK: - Private properties
 
     private let model: StatisticsItemModel
 
@@ -42,17 +52,7 @@ public class StatisticsItemView: UIView {
         return view
     }()
 
-    // MARK: - Public
-
-    public var shouldShowLeftSeparator: Bool = false {
-        didSet { leftSeparator.isHidden = !shouldShowLeftSeparator }
-    }
-
-    public var shouldShowRightSeparator: Bool = false {
-        didSet { rightSeparator.isHidden = !shouldShowRightSeparator }
-    }
-
-    // MARK: - Initalization
+    // MARK: - Init
 
     init(model: StatisticsItemModel) {
         self.model = model
@@ -102,9 +102,9 @@ public class StatisticsItemView: UIView {
         addSubview(rightSeparator)
     }
 
-    // MARK: - Private methods
+    // MARK: - Internal methods
 
-    public func setupConstraints() {
+    func setupConstraints() {
         let hairLineSize = 1.0/UIScreen.main.scale
 
         NSLayoutConstraint.activate([
