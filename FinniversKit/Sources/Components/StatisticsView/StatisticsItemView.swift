@@ -4,7 +4,7 @@
 
 import UIKit
 
-class StatisticsItemView: UIView {
+final class StatisticsItemView: UIView {
 
     // MARK: - Internal properties
 
