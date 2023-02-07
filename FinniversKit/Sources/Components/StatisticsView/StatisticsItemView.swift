@@ -80,7 +80,7 @@ public class StatisticsItemView: UIView {
             case .email:
                 return UIImage(named: .statsEnvelope).withRenderingMode(.alwaysTemplate)
             case .seen:
-                return UIImage(named: .statsEye).withRenderingMode(.alwaysTemplate)
+                return UIImage(named: .statsClick).withRenderingMode(.alwaysTemplate)
             case .favourited:
                 return UIImage(named: .statsHeart).withRenderingMode(.alwaysTemplate)
             }
