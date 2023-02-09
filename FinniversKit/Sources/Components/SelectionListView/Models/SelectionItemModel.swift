@@ -28,6 +28,7 @@ public struct SelectionItemModel {
     public enum Description {
         case plain(String)
         case html(htmlString: String, style: HTMLStyler.StyleMap = [:], accessibilityString: String? = nil)
+        case none
     }
 
     public enum Icon {

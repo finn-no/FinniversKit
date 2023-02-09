@@ -85,6 +85,8 @@ class SelectionListItemView: UIView {
             descriptionLabel.text = text
         case .html(let htmlString, let style, _):
             descriptionLabel.setHTMLText(htmlString, with: style)
+        case .none:
+            descriptionLabel.text = nil
         }
 
         if let detailItems = model.detailItems, !detailItems.isEmpty {
@@ -94,7 +96,11 @@ class SelectionListItemView: UIView {
             detailViewsStackViewBottomConstraint.constant = -.spacingM
         }
 
-        textStackView.addArrangedSubviews([titleLabel, descriptionLabel])
+        if case .none = model.description {
+            textStackView.addArrangedSubviews([titleLabel])
+        } else {
+            textStackView.addArrangedSubviews([titleLabel, descriptionLabel])
+        }
 
         addSubview(contentView)
         contentView.addSubview(selectionView)
@@ -114,8 +120,6 @@ class SelectionListItemView: UIView {
             textStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
             textStackView.leadingAnchor.constraint(equalTo: selectionView.trailingAnchor, constant: .spacingM),
             textStackView.bottomAnchor.constraint(equalTo: detailViewsStackView.topAnchor, constant: -.spacingM),
-
-            titleLabel.widthAnchor.constraint(equalTo: descriptionLabel.widthAnchor),
 
             iconImageView.leadingAnchor.constraint(equalTo: textStackView.trailingAnchor, constant: .spacingM),
             iconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
@@ -143,12 +147,14 @@ class SelectionListItemView: UIView {
         isAccessibilityElement = true
         accessibilityTraits = .button
 
-        let description = { () -> String in
+        let description = { () -> String? in
             switch model.description {
             case .plain(let text):
                 return text
             case .html(let htmlString, _, let accessibilityString):
                 return accessibilityString ?? htmlString
+            case .none:
+                return nil
             }
         }()
 
