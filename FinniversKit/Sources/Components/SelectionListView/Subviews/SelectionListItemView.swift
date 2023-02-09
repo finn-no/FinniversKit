@@ -105,7 +105,6 @@ class SelectionListItemView: UIView {
         addSubview(contentView)
         contentView.addSubview(selectionView)
         contentView.addSubview(textStackView)
-        contentView.addSubview(iconImageView)
         contentView.addSubview(detailViewsStackView)
 
         var constraints: [NSLayoutConstraint] = [
@@ -121,14 +120,19 @@ class SelectionListItemView: UIView {
             textStackView.leadingAnchor.constraint(equalTo: selectionView.trailingAnchor, constant: .spacingM),
             textStackView.bottomAnchor.constraint(equalTo: detailViewsStackView.topAnchor, constant: -.spacingM),
 
-            iconImageView.leadingAnchor.constraint(equalTo: textStackView.trailingAnchor, constant: .spacingM),
-            iconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
-            iconImageView.centerYAnchor.constraint(equalTo: textStackView.centerYAnchor),
-
             detailViewsStackView.leadingAnchor.constraint(equalTo: selectionView.trailingAnchor, constant: .spacingM),
             detailViewsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
             detailViewsStackViewBottomConstraint,
         ]
+
+        if case .none = model.icon {} else {
+            contentView.addSubview(iconImageView)
+            constraints.append(contentsOf: [
+                iconImageView.leadingAnchor.constraint(equalTo: textStackView.trailingAnchor, constant: .spacingM),
+                iconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+                iconImageView.centerYAnchor.constraint(equalTo: textStackView.centerYAnchor)
+            ])
+        }
 
         if case .fixedSize = model.icon {
             constraints.append(contentsOf: [
