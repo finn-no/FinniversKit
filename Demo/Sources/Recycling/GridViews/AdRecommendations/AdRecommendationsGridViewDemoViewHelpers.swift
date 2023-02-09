@@ -8,6 +8,7 @@ import FinniversKit
 enum AdRecommendation {
     case ad(Ad)
     case job(JobAd)
+    case external(ExternalAd)
 }
 
 /// A model confirming to the StandardAdRecommendationViewModel protocol for showcasing StandardAdRecommendationCell in playground.
@@ -243,4 +244,118 @@ struct JobAdFactory {
         "uker siden",
         "måneder siden"
     ]
+}
+
+/// A model confirming to the ExternalAdRecommendationViewModel protocol for showcasing ExternalAdRecommendationCell in playground.
+struct ExternalAd: ExternalAdRecommendationViewModel {
+    var imageSize: CGSize
+    var iconImage: UIImage?
+    var subtitle: String?
+    var accessory: String?
+    var imageText: String?
+    var scaleImageToFillView: Bool
+    var ribbonData: FinniversKit.RibbonData?
+    var hideImageOverlay: Bool
+    var title: String
+    var publishedRelative: String?
+    var ribbonOverlayModel: RibbonViewModel?
+    var imagePath: String?
+}
+struct ExternalAdFactory {
+
+    private static var minimumDataItemsCount = { return min(titles.count, min(imageSources.count, min(prices.count, subtitles.count))) }()
+    private struct ImageSource {
+        let path: String
+        let size: CGSize
+    }
+
+    static func create(numberOfModels: Int) -> [ExternalAd] {
+
+
+        return (0 ..< numberOfModels).map { index in
+            let dataIndex = index % minimumDataItemsCount
+            let imageSource = imageSources[dataIndex]
+            let title = titles[dataIndex]
+            let subtitle = subtitles[dataIndex]
+            let price = prices[dataIndex]
+            let scaleImageToFillView = scaleImagesToFillView[dataIndex]
+
+            return ExternalAd(
+                imageSize: imageSource.size,
+                subtitle: subtitle,
+                scaleImageToFillView: scaleImageToFillView,
+                ribbonData: ribbons[dataIndex],
+                hideImageOverlay: true,
+                title: title,
+                imagePath: imageSource.path
+            )
+        }
+    }
+
+    let ribbonData = RibbonData(
+        ribbonTitle: "Nyttige Artikler",
+        ribbonStyle: "default"
+    )
+
+    private static var ribbons: [RibbonData] {
+        return [
+            RibbonData(
+                ribbonTitle: "Nyttige Artikler",
+                ribbonStyle: "default"),
+            RibbonData(
+                ribbonTitle: "Nyttige Artikler",
+                ribbonStyle: "default"),
+            RibbonData(
+                ribbonTitle: "Nyttige Artikler",
+                ribbonStyle: "default"),
+            RibbonData(
+                ribbonTitle: "",
+                ribbonStyle: "")
+        ]
+    }
+
+    private static var titles: [String] {
+        return [
+            "Dette kan du lære",
+            "Kreta med barn - de beste tipsene",
+            "Jobb her og bli lykkeligere",
+            "Hotell i særklasse",
+        ]
+    }
+
+    private static var subtitles: [String] {
+        return [
+            "",
+            "",
+            "",
+            "Oslo",
+        ]
+    }
+
+    private static var prices: [String?] {
+        return [
+            "845 000,-",
+            "164 000,-",
+            "",
+            nil
+        ]
+    }
+
+    private static var scaleImagesToFillView: [Bool] {
+        return [
+            true,
+            true,
+            true,
+            true,
+        ]
+    }
+
+    private static var imageSources: [ImageSource] {
+        return [
+            ImageSource(path: "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg", size: CGSize(width: 450, height: 354)),
+            ImageSource(path: "http://i3.au.reastatic.net/home-ideas/raw/a96671bab306bcb39783bc703ac67f0278ffd7de0854d04b7449b2c3ae7f7659/facades.jpg", size: CGSize(width: 800, height: 600)),
+            ImageSource(path: "https://finn-content-hub.imgix.net/bilder/Jobb/Jobb-uke-1-3/topp-10.jpg?auto=compress%2Cformat&crop=focalpoint&domain=finn-content-hub.imgix.net&fit=crop&fp-x=0.5&fp-y=0.5&h=360&ixlib=php-3.3.1&w=360", size: CGSize(width: 360, height: 360)),
+            ImageSource(path: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg", size: CGSize(width: 736, height: 566)),
+        ]
+    }
 }
