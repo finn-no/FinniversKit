@@ -248,13 +248,13 @@ struct JobAdFactory {
 
 /// A model confirming to the ExternalAdRecommendationViewModel protocol for showcasing ExternalAdRecommendationCell in playground.
 struct ExternalAd: ExternalAdRecommendationViewModel {
+    var ribbonViewModel: RibbonViewModel?
     var imageSize: CGSize
     var iconImage: UIImage?
     var subtitle: String?
     var accessory: String?
     var imageText: String?
     var scaleImageToFillView: Bool
-    var ribbonData: FinniversKit.RibbonData?
     var hideImageOverlay: Bool
     var title: String
     var publishedRelative: String?
@@ -281,10 +281,10 @@ struct ExternalAdFactory {
             let scaleImageToFillView = scaleImagesToFillView[dataIndex]
 
             return ExternalAd(
+                ribbonViewModel: ribbons[dataIndex],
                 imageSize: imageSource.size,
                 subtitle: subtitle,
                 scaleImageToFillView: scaleImageToFillView,
-                ribbonData: ribbons[dataIndex],
                 hideImageOverlay: true,
                 title: title,
                 imagePath: imageSource.path
@@ -292,25 +292,16 @@ struct ExternalAdFactory {
         }
     }
 
-    let ribbonData = RibbonData(
-        ribbonTitle: "Nyttige Artikler",
-        ribbonStyle: "default"
-    )
-
-    private static var ribbons: [RibbonData] {
+    private static var ribbons: [RibbonViewModel] {
         return [
-            RibbonData(
-                ribbonTitle: "Nyttige Artikler",
-                ribbonStyle: "default"),
-            RibbonData(
-                ribbonTitle: "Nyttige Artikler",
-                ribbonStyle: "default"),
-            RibbonData(
-                ribbonTitle: "Nyttige Artikler",
-                ribbonStyle: "default"),
-            RibbonData(
-                ribbonTitle: "",
-                ribbonStyle: "")
+            RibbonViewModel(
+                style: .default, title: "Nyttige Artikler"),
+            RibbonViewModel(
+                style: .sponsored, title: "Nyttige Artikler"),
+            RibbonViewModel(
+                style: .default, title: "Nyttige Artikler"),
+            RibbonViewModel(
+                style: .warning, title: ""),
         ]
     }
 

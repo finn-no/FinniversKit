@@ -42,7 +42,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
     private lazy var ribbonView = RibbonView(withAutoLayout: true)
 
-    private lazy var externalIconImageView: UIImageView = {
+    private lazy var externalLinkImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = UIImage(named: .webview).withTintColor(.iconSecondary)
         return imageView
@@ -64,27 +64,6 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
-    }()
-
-    private lazy var imageDescriptionBackgroundView: UIVisualEffectView = {
-        let view = UIVisualEffectView(withAutoLayout: true)
-        view.effect = UIBlurEffect(style: .systemThinMaterialDark)
-        view.alpha = 1.0
-        view.layer.cornerRadius = ExternalAdRecommendationCell.imageDescriptionHeight / 2
-        view.clipsToBounds = true
-        return view
-    }()
-
-    private lazy var imageDescriptionStackView: UIStackView = {
-        let stackView = UIStackView(axis: .horizontal, spacing: ExternalAdRecommendationCell.margin, withAutoLayout: true)
-        stackView.alignment = .center
-        return stackView
-    }()
-
-    private lazy var badgeView: BadgeView = {
-        let badgeView = BadgeView()
-        badgeView.attachToTopLeadingAnchor(in: imageView)
-        return badgeView
     }()
 
     private lazy var subtitleToImageConstraint = subtitleLabel.topAnchor.constraint(
@@ -156,7 +135,6 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-        contentView.backgroundColor = .magenta
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -173,14 +151,11 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
         containerView.addSubview(imageContentView)
         imageContentView.addSubview(imageView)
-        imageContentView.addSubview(imageDescriptionBackgroundView)
-        imageDescriptionBackgroundView.contentView.addSubview(imageDescriptionStackView)
-        imageDescriptionStackView.fillInSuperview(insets: UIEdgeInsets(top: 0, leading: ExternalAdRecommendationCell.margin, bottom: 0, trailing: -ExternalAdRecommendationCell.margin), isActive: true)
         imageView.fillInSuperview()
 
         contentView.addSubview(containerView)
         containerView.addSubview(ribbonView)
-        containerView.addSubview(externalIconImageView)
+        containerView.addSubview(externalLinkImageView)
         containerView.addSubview(subtitleLabel)
         containerView.addSubview(titleLabel)
 
@@ -204,10 +179,10 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
             ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             ribbonView.heightAnchor.constraint(equalToConstant: ExternalAdRecommendationCell.ribbonHeight * accessibilityMultiplier),
 
-            externalIconImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: ExternalAdRecommendationCell.ribbonTopMargin),
-            externalIconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            externalIconImageView.widthAnchor.constraint(equalToConstant: 16),
-            externalIconImageView.heightAnchor.constraint(equalToConstant: 16),
+            externalLinkImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: ExternalAdRecommendationCell.ribbonTopMargin),
+            externalLinkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            externalLinkImageView.widthAnchor.constraint(equalToConstant: 16),
+            externalLinkImageView.heightAnchor.constraint(equalToConstant: 16),
 
             subtitleToImageConstraint,
             subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -217,11 +192,6 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
             titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: ExternalAdRecommendationCell.titleTopMargin),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-
-            imageDescriptionBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingS),
-            imageDescriptionBackgroundView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor),
-            imageDescriptionBackgroundView.heightAnchor.constraint(equalToConstant: ExternalAdRecommendationCell.imageDescriptionHeight),
-            imageDescriptionBackgroundView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: -.spacingS)
         ])
     }
 
@@ -237,8 +207,6 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         titleLabel.text = ""
         subtitleLabel.text = ""
         containerView.accessibilityLabel = ""
-        imageDescriptionBackgroundView.isHidden = true
-        badgeView.isHidden = true
         NSLayoutConstraint.deactivate([longTitleHeightConstraint])
         NSLayoutConstraint.activate([shortTitleHeightConstraint])
     }
@@ -291,16 +259,6 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
     // MARK: - Public
 
-    /// Height in cell that is not image
-    private static var nonImageHeight: CGFloat {
-        return subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + bottomMargin
-    }
-
-    /// Height in cell that is not image including the height of accessory label
-    private static var nonImageWithAccessoryHeight: CGFloat {
-        return subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + accessoryHeight + bottomMargin
-    }
-
     public static func height(for model: ExternalAdRecommendationViewModel, width: CGFloat) -> CGFloat {
         let titleHeight = model.title.height(withConstrainedWidth: width, font: .body)
         let imageRatio = model.imageSize.height / model.imageSize.width
@@ -310,11 +268,6 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
         return imageHeight + contentHeight
 
-
-    }
-
-    public static func extraHeight() -> CGFloat {
-        return nonImageHeight
     }
 
     public func loadImage() {
