@@ -19,7 +19,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     private static let minImageAspectRatio: CGFloat = 0.75
     private static let maxImageAspectRatio: CGFloat = 1.5
 
-    /// Extra container for accessibility issues. The cell should have "all content" and favoriteButton as accessibilty elements but it get confused if favoriteButton is a subview of the other accessibility element (so contentView can not be one of the accessibility elements
+    /// Extra container for accessibility issues. The cell should have "all content" and favoriteButton (if added) as accessibilty elements but it get confused if favoriteButton is a subview of the other accessibility element (so contentView can not be one of the accessibility elements
     private lazy var containerView: UIView = {
         let view = UIView(withAutoLayout: true)
         return view
@@ -255,6 +255,8 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         }
     }
 
+    //This variable is included to conform to protocol 'AdRecommendationCell',
+    //but currently there is no favorite button in the external ad cell
     public var isFavorite = false
 
     // MARK: - Public
