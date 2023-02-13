@@ -96,10 +96,9 @@ class SelectionListItemView: UIView {
             detailViewsStackViewBottomConstraint.constant = -.spacingM
         }
 
-        if case .none = model.description {
-            textStackView.addArrangedSubviews([titleLabel])
-        } else {
-            textStackView.addArrangedSubviews([titleLabel, descriptionLabel])
+        textStackView.addArrangedSubviews([titleLabel])
+        if case .none = model.description {} else {
+            textStackView.addArrangedSubviews([descriptionLabel])
         }
 
         addSubview(contentView)
