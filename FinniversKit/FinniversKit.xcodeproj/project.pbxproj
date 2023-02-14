@@ -52,6 +52,8 @@
 		179D06AD2906A3FA00A65E3A /* HTMLStringParserHTMLTranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06AB2906A3FA00A65E3A /* HTMLStringParserHTMLTranslatorTests.swift */; };
 		179D06AE2906A3FA00A65E3A /* HTMLStringParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06AC2906A3FA00A65E3A /* HTMLStringParserTests.swift */; };
 		179D06B62907D66E00A65E3A /* HTMLLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06B52907D66E00A65E3A /* HTMLLexer.swift */; };
+		17BF44C72987FC8F001A5877 /* LoadingSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BF44C62987FC8F001A5877 /* LoadingSwiftUIView.swift */; };
+		17BF4B5B298BE918001A5877 /* LoadingSwiftUIViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BF4B5A298BE918001A5877 /* LoadingSwiftUIViewModifier.swift */; };
 		17E232F5290A7E71003DC8F7 /* HTMLLexerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */; };
 		17EAC08A296485C300B3C639 /* UIColor+FinniversKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */; };
 		27B0929829534658009B6CC3 /* BadgeView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B0929729534658009B6CC3 /* BadgeView+Style.swift */; };
@@ -567,6 +569,8 @@
 		179D06AB2906A3FA00A65E3A /* HTMLStringParserHTMLTranslatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParserHTMLTranslatorTests.swift; sourceTree = "<group>"; };
 		179D06AC2906A3FA00A65E3A /* HTMLStringParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParserTests.swift; sourceTree = "<group>"; };
 		179D06B52907D66E00A65E3A /* HTMLLexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLexer.swift; sourceTree = "<group>"; };
+		17BF44C62987FC8F001A5877 /* LoadingSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSwiftUIView.swift; sourceTree = "<group>"; };
+		17BF4B5A298BE918001A5877 /* LoadingSwiftUIViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSwiftUIViewModifier.swift; sourceTree = "<group>"; };
 		17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLexerTests.swift; sourceTree = "<group>"; };
 		17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+FinniversKitTests.swift"; sourceTree = "<group>"; };
 		27B0929729534658009B6CC3 /* BadgeView+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BadgeView+Style.swift"; sourceTree = "<group>"; };
@@ -1157,6 +1161,8 @@
 			isa = PBXGroup;
 			children = (
 				14EBA256215A633800613E5A /* LoadingView.swift */,
+				17BF44C62987FC8F001A5877 /* LoadingSwiftUIView.swift */,
+				17BF4B5A298BE918001A5877 /* LoadingSwiftUIViewModifier.swift */,
 			);
 			path = LoadingView;
 			sourceTree = "<group>";
@@ -3839,6 +3845,7 @@
 				CF3D5EF9215A6F3B006E4D08 /* FloatingButton.swift in Sources */,
 				44D912622077AC8A00486848 /* CircleView.swift in Sources */,
 				8908E85722C0E49900ED671C /* MessageFormViewModel.swift in Sources */,
+				17BF44C72987FC8F001A5877 /* LoadingSwiftUIView.swift in Sources */,
 				55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */,
 				44D912612077AC8A00486848 /* RoundedRectangleView.swift in Sources */,
 				432CE09D2112DBC500F01EC5 /* BuyerPickerTextHeader.swift in Sources */,
@@ -3927,6 +3934,7 @@
 				27D4BE0B296573AA0077D1A4 /* FrontPageSavedSearchesViewModel.swift in Sources */,
 				4408A6A52027AC41008C0BD9 /* UIFont+FinniversKit.swift in Sources */,
 				4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */,
+				17BF4B5B298BE918001A5877 /* LoadingSwiftUIViewModifier.swift in Sources */,
 				CFFDF89722F311F600FE68EA /* NeighborhoodProfileView.swift in Sources */,
 				CF0647FC2368834B00863D07 /* TopShadowView.swift in Sources */,
 				44A557AF22E7211E001667AE /* RemoteImageTableViewCellViewModel.swift in Sources */,

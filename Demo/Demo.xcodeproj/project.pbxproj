@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		172E7504290FE28E00956AC2 /* HTMLTextDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */; };
 		1732932D29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1732932C29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift */; };
+		17BF44C929893E98001A5877 /* LoadingSwiftUIDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BF44C829893E98001A5877 /* LoadingSwiftUIDemoView.swift */; };
 		17F8EEC629409FE3000E26C9 /* SwiftUISelectionListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8EEC529409FE3000E26C9 /* SwiftUISelectionListDemoView.swift */; };
 		46AE6FC4242BADC9007BB005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AE6FC3242BADC9007BB005 /* AppDelegate.swift */; };
 		46E773A4242CEF0A008A5E93 /* DemoHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77258242CEF09008A5E93 /* DemoHelpers.swift */; };
@@ -251,6 +252,7 @@
 /* Begin PBXFileReference section */
 		172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextDemoViewController.swift; sourceTree = "<group>"; };
 		1732932C29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUILoadingIndicatorDemoView.swift; sourceTree = "<group>"; };
+		17BF44C829893E98001A5877 /* LoadingSwiftUIDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSwiftUIDemoView.swift; sourceTree = "<group>"; };
 		17F8EEC529409FE3000E26C9 /* SwiftUISelectionListDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISelectionListDemoView.swift; sourceTree = "<group>"; };
 		46AE6FC0242BADC9007BB005 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46AE6FC3242BADC9007BB005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -623,6 +625,7 @@
 		46E7726D242CEF09008A5E93 /* LoadingView */ = {
 			isa = PBXGroup;
 			children = (
+				17BF44C829893E98001A5877 /* LoadingSwiftUIDemoView.swift */,
 				46E7726E242CEF09008A5E93 /* LoadingViewDemoView.swift */,
 			);
 			path = LoadingView;
@@ -2223,6 +2226,7 @@
 				46E7743F242CEF0A008A5E93 /* ColorDemoView.swift in Sources */,
 				8D680A0AEE158DE3250140C2 /* CompactMarketsDemoView.swift in Sources */,
 				8D68030CF404D02BA5F8A618 /* NumberedListDemoView.swift in Sources */,
+				17BF44C929893E98001A5877 /* LoadingSwiftUIDemoView.swift in Sources */,
 				5B959541A9DCE0B0A3C4C731 /* MultilineButtonDemoView.swift in Sources */,
 				5B959A0F727EB51E56231370 /* OverflowCollectionViewDemo.swift in Sources */,
 				5B959A8547A482ED59F0E7AC /* SearchDemoView.swift in Sources */,
