@@ -85,6 +85,8 @@ class SelectionListItemView: UIView {
             descriptionLabel.text = text
         case .html(let htmlString, let style, _):
             descriptionLabel.setHTMLText(htmlString, with: style)
+        case .none:
+            descriptionLabel.text = nil
         }
 
         if let detailItems = model.detailItems, !detailItems.isEmpty {
@@ -94,12 +96,14 @@ class SelectionListItemView: UIView {
             detailViewsStackViewBottomConstraint.constant = -.spacingM
         }
 
-        textStackView.addArrangedSubviews([titleLabel, descriptionLabel])
+        textStackView.addArrangedSubviews([titleLabel])
+        if case .none = model.description {} else {
+            textStackView.addArrangedSubviews([descriptionLabel])
+        }
 
         addSubview(contentView)
         contentView.addSubview(selectionView)
         contentView.addSubview(textStackView)
-        contentView.addSubview(iconImageView)
         contentView.addSubview(detailViewsStackView)
 
         var constraints: [NSLayoutConstraint] = [
@@ -115,16 +119,19 @@ class SelectionListItemView: UIView {
             textStackView.leadingAnchor.constraint(equalTo: selectionView.trailingAnchor, constant: .spacingM),
             textStackView.bottomAnchor.constraint(equalTo: detailViewsStackView.topAnchor, constant: -.spacingM),
 
-            titleLabel.widthAnchor.constraint(equalTo: descriptionLabel.widthAnchor),
-
-            iconImageView.leadingAnchor.constraint(equalTo: textStackView.trailingAnchor, constant: .spacingM),
-            iconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
-            iconImageView.centerYAnchor.constraint(equalTo: textStackView.centerYAnchor),
-
             detailViewsStackView.leadingAnchor.constraint(equalTo: selectionView.trailingAnchor, constant: .spacingM),
             detailViewsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
             detailViewsStackViewBottomConstraint,
         ]
+
+        if case .none = model.icon {} else {
+            contentView.addSubview(iconImageView)
+            constraints.append(contentsOf: [
+                iconImageView.leadingAnchor.constraint(equalTo: textStackView.trailingAnchor, constant: .spacingM),
+                iconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+                iconImageView.centerYAnchor.constraint(equalTo: textStackView.centerYAnchor)
+            ])
+        }
 
         if case .fixedSize = model.icon {
             constraints.append(contentsOf: [
@@ -143,12 +150,14 @@ class SelectionListItemView: UIView {
         isAccessibilityElement = true
         accessibilityTraits = .button
 
-        let description = { () -> String in
+        let description = { () -> String? in
             switch model.description {
             case .plain(let text):
                 return text
             case .html(let htmlString, _, let accessibilityString):
                 return accessibilityString ?? htmlString
+            case .none:
+                return nil
             }
         }()
 

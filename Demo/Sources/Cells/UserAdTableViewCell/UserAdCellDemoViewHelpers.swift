@@ -10,21 +10,6 @@ public struct UserAdCellViewModel: UserAdTableViewCellViewModel {
     public let detailText: String?
     public let imagePath: String?
     public let ribbonViewModel: RibbonViewModel
-    public var actionViewModel: UserAdTableViewCellActionViewModel?
-    public var ratingViewModel: UserAdTableViewCellRatingViewModel?
-}
-
-public struct UserAdCellAction: UserAdTableViewCellActionViewModel {
-    public let title: String?
-    public let description: String
-    public let buttonTitle: String
-    public let cancelButtonTitle: String?
-    public var isExternalAction: Bool
-}
-
-public struct UserAdCellRatingAction: UserAdTableViewCellRatingViewModel {
-    public var title: String
-    public var feedbackText: String
 }
 
 public struct UserAdsFactory {
@@ -53,18 +38,7 @@ public struct UserAdsFactory {
             subtitleText: "Schmorget - Huh?",
             detailText: nil,
             imagePath: imagePaths[0],
-            ribbonViewModel: RibbonViewModel(style: .success, title: "Aktiv"),
-            actionViewModel: UserAdCellAction(
-                title: "Her går det unna!",
-                description: "Nå er det mange som selger Rancho Cuccamonga! For 89 kr kan du løfte annonsen din øverst i resultatlista, akkurat som da den var ny",
-                buttonTitle: "Legg annonsen min øverst",
-                cancelButtonTitle: "Nei takk",
-                isExternalAction: hasExternalAction
-            ),
-            ratingViewModel: UserAdCellRatingAction(
-                title: "Hva synes du om å få tips om produktkjøp til dine annonser på denne måten?",
-                feedbackText: "Takk for tilbakemeldingen"
-            )
+            ribbonViewModel: RibbonViewModel(style: .success, title: "Aktiv")
         )
     }
 

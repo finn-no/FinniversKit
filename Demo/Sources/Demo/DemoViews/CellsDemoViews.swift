@@ -14,7 +14,6 @@ public enum CellsDemoViews: String, DemoViews {
     case remoteImageCell
     case favoriteAdCell
     case userAdCell
-    case userAdEmphasizedActionCell
 
     public var viewController: UIViewController {
         switch self {
@@ -38,8 +37,6 @@ public enum CellsDemoViews: String, DemoViews {
             return DemoViewController<FavoriteAdCellDemoView>(dismissType: .dismissButton)
         case .userAdCell:
             return DemoViewController<UserAdCellDemoView>(dismissType: .dismissButton)
-        case .userAdEmphasizedActionCell:
-            return DemoViewController<UserAdEmphasizedActionCellDemoView>(dismissType: .doubleTap)
         }
     }
 }
