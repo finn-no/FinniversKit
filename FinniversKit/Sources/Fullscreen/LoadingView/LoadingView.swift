@@ -63,11 +63,14 @@ import UIKit
         return view
     }()
 
-    private var defaultWindow: UIWindow?
+    private weak var defaultWindow: UIWindow?
 
-    init(window: UIWindow? = UIApplication.shared.keyWindow) {
+    init(window: UIWindow? = nil) {
         super.init(frame: .zero)
-        defaultWindow = window
+        defaultWindow = window ?? UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first { $0.isKeyWindow }
         accessibilityViewIsModal = true
         alpha = 0
         translatesAutoresizingMaskIntoConstraints = false
