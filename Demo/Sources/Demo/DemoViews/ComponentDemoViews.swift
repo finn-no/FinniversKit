@@ -50,7 +50,8 @@ public enum ComponentDemoViews: String, DemoViews {
     case priming
     case footerButtonView
     case checkmarkTitleView
-    case viewingsView
+    case viewingsListView
+    case viewingsRedesignView
     case selfDeclarationView
     case collapsibleContentView
     case columnListsView
@@ -196,8 +197,10 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<FooterButtonDemoView>(constrainToBottomSafeArea: false)
         case .checkmarkTitleView:
             return DemoViewController<CheckmarkTitleViewDemoView>()
-        case .viewingsView:
-            return DemoViewController<ViewingsDemoView>()
+        case .viewingsListView:
+            return DemoViewController<ViewingsListDemoView>()
+        case .viewingsRedesignView:
+            return DemoViewController<ViewingsRedesignDemoView>()
         case .selfDeclarationView:
             return DemoViewController<SelfDeclarationDemoView>()
         case .collapsibleContentView:
