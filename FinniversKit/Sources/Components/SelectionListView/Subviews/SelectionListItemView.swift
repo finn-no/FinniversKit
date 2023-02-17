@@ -67,7 +67,7 @@ class SelectionListItemView: UIView {
         if configuration.isIndependent {
             contentView.layer.borderWidth = 1
             contentView.layer.cornerRadius = configuration.cornerRadius
-            contentView.layer.borderColor = UIColor.clear.cgColor
+            contentView.layer.borderColor = .borderDefault
         }
 
         addCornerRadius(
@@ -195,9 +195,9 @@ class SelectionListItemView: UIView {
         UIView.animate(withDuration: duration, animations: { [weak self] in
             guard let self = self else { return }
             if self.configuration.isIndependent {
-                self.contentView.layer.borderColor = self.isSelected ? .primaryBlue : UIColor.clear.cgColor
+                self.contentView.layer.borderColor = self.isSelected ? .btnAction : .borderDefault
             } else {
-                self.backgroundColor = self.isSelected ? .primaryBlue : .clear
+                self.backgroundColor = self.isSelected ? .btnAction : .clear
             }
             self.iconImageView.tintColor = self.isSelected ? .textPrimary : .textSecondary
         })
