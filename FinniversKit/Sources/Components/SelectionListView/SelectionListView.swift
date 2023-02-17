@@ -15,6 +15,7 @@ public class SelectionListView: UIView {
 
     public let presentation: Presentation
     public weak var delegate: SelectionListViewDelegate?
+    let isSeparatedListElementDesign: Bool
 
     public var hasSelection: Bool {
         itemViews.contains(where: { $0.isSelected })
@@ -27,22 +28,31 @@ public class SelectionListView: UIView {
             return (index: index, identifier: itemView.model.identifier)
         }
     }
-    
+
     public override var intrinsicContentSize: CGSize {
         stackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
     }
 
     // MARK: - Private properties
 
-    private let itemSpacing: CGFloat = 2
+    private let horizontalSpacing: CGFloat = .spacingXXS
+    private var verticalSpacing: CGFloat {
+        isSeparatedListElementDesign ? .spacingM : horizontalSpacing
+    }
     private let cornerRadius: CGFloat = .spacingS
     private var itemViews = [SelectionListItemView]()
-    private lazy var stackView = UIStackView(axis: .vertical, spacing: -itemSpacing, withAutoLayout: true)
+    private lazy var stackView = UIStackView(axis: .vertical, spacing: -verticalSpacing, withAutoLayout: true)
 
     // MARK: - Init
 
-    public init(presentation: Presentation, withAutoLayout: Bool) {
+    /// Create a selection list view
+    /// - Parameters:
+    ///   - presentation: Determines if list elements should be radio buttons or checkboxes
+    ///   - withAutoLayout: If true, sets `translatesAutoresizingMaskIntoConstraints` to false
+    ///   - isSeparatedListElementDesign: If true, list elements are rendered as separate elements with vertical spacing.
+    public init(presentation: Presentation, withAutoLayout: Bool, isSeparatedListElementDesign: Bool = false) {
         self.presentation = presentation
+        self.isSeparatedListElementDesign = isSeparatedListElementDesign
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setup()
@@ -90,10 +100,10 @@ public class SelectionListView: UIView {
 
         let itemViews = models.enumerated().map { index, model -> SelectionListItemView in
             let configuration = SelectionListItemView.Configuration(
-                spacing: itemSpacing,
+                horizontalSpacing: horizontalSpacing,
+                verticalSpacing: verticalSpacing,
                 cornerRadius: cornerRadius,
-                currentIndex: index,
-                numberOfItems: models.count
+                position: isSeparatedListElementDesign ? .independent : .fromIndex(index, withNumberOfItems: models.count)
             )
 
             var model = model
@@ -151,8 +161,8 @@ public class SelectionListView: UIView {
 
 // MARK: - Private extensions
 
-private extension SelectionListItemView.Configuration {
-    init(spacing: CGFloat, cornerRadius: CGFloat, currentIndex: Int, numberOfItems: Int) {
+private extension SelectionListItemView.Position {
+    static func fromIndex(_ currentIndex: Int, withNumberOfItems numberOfItems: Int) -> SelectionListItemView.Position {
         let lastIndex = numberOfItems - 1
 
         let position: SelectionListItemView.Position
@@ -166,8 +176,8 @@ private extension SelectionListItemView.Configuration {
         default:
             position = .middle
         }
-
-        self.init(spacing: spacing, cornerRadius: cornerRadius, position: position)
+        
+        return position
     }
 }
 

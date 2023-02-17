@@ -223,6 +223,7 @@
 		E681A0EC2923FDA4008564E2 /* HyperlinkTextViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0EB2923FDA4008564E2 /* HyperlinkTextViewDemoView.swift */; };
 		F085BC2A29719E5200376A8B /* ViewingsRedesignDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F085BC2929719E5200376A8B /* ViewingsRedesignDemoView.swift */; };
 		F08D93AC298BF05D004F899E /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = F08D93AB298BF05D004F899E /* SnapshotTesting */; };
+		F3D30537299F8FC200C4C4ED /* SelectionListSeparatedRadiobuttonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D30536299F8FC200C4C4ED /* SelectionListSeparatedRadiobuttonDemoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -467,6 +468,7 @@
 		E6510A6627FB378B001B40D6 /* ScrollableTabDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableTabDemoView.swift; sourceTree = "<group>"; };
 		E681A0EB2923FDA4008564E2 /* HyperlinkTextViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextViewDemoView.swift; sourceTree = "<group>"; };
 		F085BC2929719E5200376A8B /* ViewingsRedesignDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingsRedesignDemoView.swift; sourceTree = "<group>"; };
+		F3D30536299F8FC200C4C4ED /* SelectionListSeparatedRadiobuttonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionListSeparatedRadiobuttonDemoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1704,6 +1706,7 @@
 			children = (
 				5B9595B6FD629480500DA12C /* SelectionListCheckboxDemoView.swift */,
 				5B9596BFF50B7FDCF25A1E92 /* SelectionListRadiobuttonDemoView.swift */,
+				F3D30536299F8FC200C4C4ED /* SelectionListSeparatedRadiobuttonDemoView.swift */,
 			);
 			path = SelectionListView;
 			sourceTree = "<group>";
@@ -2224,6 +2227,7 @@
 				46E7740D242CEF0A008A5E93 /* FeedbackDemoView.swift in Sources */,
 				46E77454242CEF0A008A5E93 /* Tweakable.swift in Sources */,
 				5DA190D525A5BC5B002305A8 /* FinnTextField+Previews.swift in Sources */,
+				F3D30537299F8FC200C4C4ED /* SelectionListSeparatedRadiobuttonDemoView.swift in Sources */,
 				46E7743E242CEF0A008A5E93 /* VerificationDemoView.swift in Sources */,
 				E6510A6727FB378B001B40D6 /* ScrollableTabDemoView.swift in Sources */,
 				46E773FC242CEF0A008A5E93 /* FavoriteButtonData.swift in Sources */,
