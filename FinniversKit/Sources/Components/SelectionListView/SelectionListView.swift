@@ -15,7 +15,7 @@ public class SelectionListView: UIView {
 
     public let presentation: Presentation
     public weak var delegate: SelectionListViewDelegate?
-    let isSeparatedListElementDesign: Bool
+    private let isSeparatedListElementDesign: Bool
 
     public var hasSelection: Bool {
         itemViews.contains(where: { $0.isSelected })
