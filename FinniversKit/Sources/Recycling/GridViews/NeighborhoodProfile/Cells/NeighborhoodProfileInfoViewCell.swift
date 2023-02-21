@@ -12,14 +12,21 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
     typealias Content = NeighborhoodProfileViewModel.Content
     typealias Row = NeighborhoodProfileViewModel.Row
 
+    // MARK: - Internal properties
+
     weak var delegate: NeighborhoodProfileInfoViewCellDelegate?
     private(set) var linkButtonUrl: URL?
 
+    // MARK: - Private properties
+
     private lazy var titleLabel: UILabel = makeTitleLabel()
+    private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingXS, alignment: .fill, distribution: .fillEqually, withAutoLayout: true)
+    private lazy var stackViewTopConstraint = stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM)
+    private lazy var linkButtonToStackViewConstraint = linkButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .spacingS)
+    private lazy var linkButtonToTitleLabelConstraint = linkButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS)
 
     private lazy var linkButton: Button = {
-        let button = Button(style: .link)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = Button(style: .link, withAutoLayout: true)
         button.titleLabel?.font = NeighborhoodProfileInfoViewCell.linkButtonFont
         button.titleLabel?.numberOfLines = 0
         button.contentHorizontalAlignment = .left
@@ -27,31 +34,10 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
         return button
     }()
 
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .vertical
-        stackView.spacing = .spacingXS
-        stackView.distribution = .fillEqually
-        stackView.alignment = .fill
-        return stackView
-    }()
-
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFit
         return imageView
-    }()
-
-    private lazy var stackViewTopConstraint: NSLayoutConstraint = {
-        return stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM)
-    }()
-
-    private lazy var linkButtonToStackViewConstraint: NSLayoutConstraint = {
-        return linkButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .spacingS)
-    }()
-
-    private lazy var linkButtonToTitleLabelConstraint: NSLayoutConstraint = {
-        return linkButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS)
     }()
 
     // MARK: - Init
