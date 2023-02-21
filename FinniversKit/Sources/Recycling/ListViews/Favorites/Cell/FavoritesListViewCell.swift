@@ -61,6 +61,7 @@ public class FavoritesListViewCell: UITableViewCell {
     }
 
     private func setup() {
+        accessibilityTraits = .header
         isAccessibilityElement = true
 
         addSubview(adImageView)
