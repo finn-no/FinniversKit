@@ -24,29 +24,15 @@ public class FavoritesListViewCell: UITableViewCell {
     private static let imageSize: CGFloat = 74.0
 
     private lazy var adImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        let imageView = UIImageView(withAutoLayout: true)
         imageView.layer.cornerRadius = FavoritesListViewCell.cornerRadius
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
 
-    private lazy var detailLabel: Label = {
-        let label = Label(style: .detail)
-        label.textColor = .textSecondary
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .clear
-        return label
-    }()
-
-    private lazy var titleLabel: Label = {
-        let label = Label(style: .body)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .clear
-        label.numberOfLines = 2
-        return label
-    }()
+    private lazy var titleLabel = Label(style: .body, numberOfLines: 2, withAutoLayout: true)
+    private lazy var detailLabel = Label(style: .detail, textColor: .textSecondary, withAutoLayout: true)
 
     // MARK: - Setup
 
