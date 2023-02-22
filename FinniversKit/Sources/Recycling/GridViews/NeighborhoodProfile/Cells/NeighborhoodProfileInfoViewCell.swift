@@ -83,11 +83,8 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
         stackView.isHidden = rows.isEmpty
         stackViewTopConstraint.constant = rows.isEmpty ? 0 : .spacingM
 
-        for row in rows {
-            let rowView = InfoRowView()
-            rowView.configure(withTitle: row.title, detailText: row.detailText, icon: row.icon)
-            stackView.addArrangedSubview(rowView)
-        }
+        let rowViews = rows.map(InfoRowView.init(row:))
+        stackView.addArrangedSubviews(rowViews)
     }
 
     private func setup() {
@@ -175,9 +172,10 @@ private final class InfoRowView: UIView {
         return imageView
     }()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(row: NeighborhoodProfileViewModel.Row) {
+        super.init(frame: .zero)
         setup()
+        configure(with: row)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -185,13 +183,18 @@ private final class InfoRowView: UIView {
         setup()
     }
 
-    func configure(withTitle title: String, detailText: String?, icon: UIImage?) {
-        titleLabel.text = title
-        detailTextLabel.text = detailText
-        iconImageView.image = icon?.withRenderingMode(.alwaysTemplate)
+    private func configure(with row: NeighborhoodProfileViewModel.Row) {
+        titleLabel.text = row.title
+        detailTextLabel.text = row.detailText
+        iconImageView.image = row.icon?.withRenderingMode(.alwaysTemplate)
+
+        accessibilityLabel = row.accessibilityLabel ?? [row.title, row.detailText].compactMap { $0 }.joined(separator: ". ")
     }
 
     private func setup() {
+        isAccessibilityElement = true
+        accessibilityTraits = .staticText
+
         addSubview(titleLabel)
         addSubview(iconImageView)
         addSubview(detailTextLabel)
