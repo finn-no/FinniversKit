@@ -9,7 +9,10 @@ class FavoriteAdsSortingView: UIView {
     // MARK: - Internal properties
 
     var title: String = "" {
-        didSet { sortingLabel.text = title.uppercased() }
+        didSet {
+            sortingLabel.text = title.uppercased()
+            accessibilityLabel = title
+        }
     }
 
     // MARK: - Private properties
@@ -42,6 +45,9 @@ class FavoriteAdsSortingView: UIView {
     // MARK: - Setup
 
     private func setup() {
+        isAccessibilityElement = true
+        accessibilityTraits = .button
+
         addSubview(sortingLabel)
         addSubview(arrowImage)
 
