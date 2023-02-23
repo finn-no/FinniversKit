@@ -14,6 +14,7 @@ public enum SwiftUIDemoViews: String, DemoViews {
     case selectionListView
     case textField
     case textView
+    case toast
 
     public var viewController: UIViewController {
         switch self {
@@ -44,6 +45,8 @@ public enum SwiftUIDemoViews: String, DemoViews {
             FinnTextField_Previews.previews
         case .textView:
             FinnTextView_Previews.previews
+        case .toast:
+            ToastSwiftUIDemoView_Previews.previews
         default:
             EmptyView()
         }
