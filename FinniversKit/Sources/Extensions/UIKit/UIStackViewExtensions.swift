@@ -5,12 +5,26 @@
 import UIKit
 
 public extension UIStackView {
-    convenience init(axis: NSLayoutConstraint.Axis, spacing: CGFloat? = nil, withAutoLayout: Bool = false) {
+    convenience init(
+        axis: NSLayoutConstraint.Axis,
+        spacing: CGFloat? = nil,
+        alignment: UIStackView.Alignment? = nil,
+        distribution: UIStackView.Distribution? = nil,
+        withAutoLayout: Bool = false
+    ) {
         self.init(withAutoLayout: withAutoLayout)
         self.axis = axis
 
         if let spacing = spacing {
             self.spacing = spacing
+        }
+
+        if let alignment = alignment {
+            self.alignment = alignment
+        }
+
+        if let distribution = distribution {
+            self.distribution = distribution
         }
     }
 

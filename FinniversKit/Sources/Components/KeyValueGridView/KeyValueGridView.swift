@@ -13,18 +13,9 @@ public class KeyValueGridView: UIView {
     // MARK: - Private properties
 
     private var data: [KeyValuePair] = []
-
-    private lazy var verticalStackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
-        stackView.spacing = .spacingM
-        stackView.alignment = .leading
-        return stackView
-    }()
-
     private var titleStyle: Label.Style = .body
     private var valueStyle: Label.Style = .bodyStrong
+    private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: .spacingM, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
 
     // MARK: - Initializers
 
@@ -88,25 +79,26 @@ public class KeyValueGridView: UIView {
     }
 
     private func createCellView(for pair: KeyValuePair) -> UIView {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
-        stackView.spacing = .spacingXXS
+        let stackView = UIStackView(axis: .vertical, spacing: .spacingXXS, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
 
-        let titleLabel = Label(style: titleStyle, withAutoLayout: true)
-        titleLabel.numberOfLines = 2
+        let titleLabel = Label(style: titleStyle, numberOfLines: 2, withAutoLayout: true)
         titleLabel.lineBreakMode = .byWordWrapping
 
-        let valueLabel = Label(style: valueStyle, withAutoLayout: true)
-        valueLabel.numberOfLines = 2
+        let valueLabel = PaddableLabel(style: valueStyle, numberOfLines: 2, withAutoLayout: true)
         valueLabel.lineBreakMode = .byWordWrapping
         valueLabel.setTextCopyable(true)
+
+        if let valueStyle = pair.valueStyle {
+            valueLabel.textColor = valueStyle.textColor
+            valueLabel.backgroundColor = valueStyle.backgroundColor
+            valueLabel.textPadding = .init(vertical: 0, horizontal: valueStyle.horizontalPadding)
+        }
 
         titleLabel.text = pair.title
         valueLabel.text = pair.value
 
-        stackView.addArrangedSubview(titleLabel)
-        stackView.addArrangedSubview(valueLabel)
+        stackView.addArrangedSubviews([titleLabel, valueLabel])
+        stackView.arrangedSubviews.forEach { $0.setContentCompressionResistancePriority(.required, for: .vertical) }
 
         stackView.isAccessibilityElement = true
         if let accessibilityLabel = pair.accessibilityLabel {
@@ -125,5 +117,28 @@ public class KeyValueGridView: UIView {
         stackView.alignment = .top
         stackView.spacing = .spacingM
         return stackView
+    }
+}
+
+// MARK: - Private types
+
+private class PaddableLabel: Label {
+    var textPadding = UIEdgeInsets.zero {
+        didSet {
+            invalidateIntrinsicContentSize()
+        }
+    }
+
+    // MARK: - Overrides
+
+    override func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
+        let insetRect = bounds.inset(by: textPadding)
+        let textRect = super.textRect(forBounds: insetRect, limitedToNumberOfLines: numberOfLines)
+        let invertedInsets = UIEdgeInsets(top: -textPadding.top, left: -textPadding.left, bottom: -textPadding.bottom, right: -textPadding.right)
+        return textRect.inset(by: invertedInsets)
+    }
+
+    override func drawText(in rect: CGRect) {
+        super.drawText(in: rect.inset(by: textPadding))
     }
 }
