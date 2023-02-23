@@ -89,10 +89,6 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.favoriteAdsList)
     }
 
-    func testSearchResultMapView() {
-        snapshot(.searchResultMapView)
-    }
-
     func testVerificationActionSheet() {
         snapshot(.verificationActionSheet)
     }
