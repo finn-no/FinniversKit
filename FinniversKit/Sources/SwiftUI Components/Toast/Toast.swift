@@ -6,34 +6,10 @@ public enum Toast {} // Empty for namespacing
 
 extension View {
     public func toast(
-        text: String,
-        style: Toast.Style,
-        actionButton: Toast.ActionButton? = nil,
-        timeout: TimeInterval = 5,
-        position: Toast.Position = .bottom,
-        isShowing: Binding<Bool>
-    ) -> some View {
-        self.modifier(
-            ToastViewModifier(
-                toastView: .init(text: text, style: style, actionButton: actionButton),
-                timeout: timeout,
-                position: position,
-                isShowing: isShowing
-            )
-        )
-    }
-
-    public func toast(
-        viewModel: Toast.ViewModel,
-        isShowing: Binding<Bool>
+        viewModel: Binding<Toast.ViewModel?>
     ) -> some View {
         return self.modifier(
-            ToastViewModifier(
-                toastView: .init(text: viewModel.text, style: viewModel.style, actionButton: viewModel.actionButton),
-                timeout: viewModel.timeout,
-                position: viewModel.position,
-                isShowing: isShowing
-            )
+            ToastViewModifier(viewModel: viewModel)
         )
     }
 }
