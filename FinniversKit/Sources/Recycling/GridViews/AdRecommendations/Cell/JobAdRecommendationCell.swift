@@ -126,7 +126,7 @@ public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell
     private func setup() {
         containerView.isAccessibilityElement = true
         accessibilityElements = [containerView, favoriteButton]
-        containerView.accessibilityTraits.insert(.button)
+        containerView.accessibilityTraits = [.button]
 
         contentView.layer.cornerRadius = .spacingS
         contentView.layer.borderWidth = 1

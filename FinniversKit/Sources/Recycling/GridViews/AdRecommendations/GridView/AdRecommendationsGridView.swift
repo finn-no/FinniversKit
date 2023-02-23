@@ -125,6 +125,7 @@ public class AdRecommendationsGridView: UIView {
                 self?.endRefreshing()
             })
         }
+        UIAccessibility.post(notification: .layoutChanged, argument: nil)
     }
 
     public func endRefreshing() {

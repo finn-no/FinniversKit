@@ -23,7 +23,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     private static let minImageAspectRatio: CGFloat = 0.75
     private static let maxImageAspectRatio: CGFloat = 1.5
 
-    /// Extra container for accessibility issues. The cell should have "all content" and favoriteButton as accessibilty elements but it get confused if favoriteButton is a subview of the other accessibility element (so contentView can not be one of the accessibility elements
+    /// Extra container to hold the accessibility elements in the order we want them read
     private lazy var containerView: UIView = {
         let view = UIView(withAutoLayout: true)
         return view
@@ -65,6 +65,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         label.setContentHuggingPriority(.required, for: .vertical)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
+        label.accessibilityTraits = [.header]
         return label
     }()
 
@@ -190,13 +191,6 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
             }()
         }
 
-        containerView.isAccessibilityElement = true
-        favoriteButton.isAccessibilityElement = true
-        accessibilityElements = [containerView, favoriteButton]
-        shouldGroupAccessibilityChildren = true
-        containerView.accessibilityTraits.insert(.button)
-        imageView.accessibilityElementsHidden = true
-
         containerView.addSubview(imageContentView)
         imageContentView.addSubview(imageView)
         imageContentView.addSubview(imageDescriptionBackgroundView)
@@ -267,6 +261,8 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
             favoriteButton.widthAnchor.constraint(equalToConstant: 34),
             favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.heightAnchor)
         ])
+
+        containerView.accessibilityElements = [titleLabel, subtitleLabel, imageTextLabel, ribbonView, badgeView]
     }
 
     // MARK: - Superclass Overrides
@@ -283,7 +279,6 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         subtitleLabel.text = ""
         accessoryLabel.text = ""
         imageTextLabel.text = ""
-        containerView.accessibilityLabel = ""
         favoriteButton.accessibilityLabel = ""
         favoriteButton.setImage(nil, for: .normal)
         logoImageView.cancelLoading()
@@ -310,7 +305,6 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         subtitleLabel.text = model?.subtitle
         accessoryLabel.text = model?.accessory
         imageTextLabel.text = model?.imageText
-        containerView.accessibilityLabel = model?.accessibilityLabel
         favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityLabel
         isFavorite = model?.isFavorite ?? false
 
