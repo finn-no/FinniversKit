@@ -9,13 +9,12 @@ jobs:
       - run: sudo defaults write com.apple.dt.Xcode IDEPackageSupportUseBuiltinSCM YES
       - run: rm ~/.ssh/id_rsa || true
       - run: for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts || true
-      - run: xcodebuild -quiet -workspace FinniversKit.xcworkspace -scheme 'Demo' -sdk iphonesimulator -destination 'platform=iOS Simulator,OS=16.1,name=iPhone 14 Pro' build test | xcpretty
+      - run: xcodebuild -workspace FinniversKit.xcworkspace -scheme 'Demo' -sdk iphonesimulator -destination 'platform=iOS Simulator,OS=16.1,name=iPhone 14 Pro' build test | xcpretty
 
   swiftlint:
-    docker:
-      - image: dantoml/swiftlint:latest
     steps:
       - checkout
+      - run: brew install swiftlint
       - run: swiftlint lint
 
 workflows:

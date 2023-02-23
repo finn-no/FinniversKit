@@ -18,6 +18,9 @@ class SelectionListRadiobuttonDemoView: UIView, Tweakable {
         .init(title: "5 items", action: { [weak self] in
             self?.checkmarkListView.configure(with: .create(number: 5))
         }),
+        .init(title: "3 items (title only)", action: { [weak self] in
+            self?.checkmarkListView.configure(with: .createTitleOnly(number: 3))
+        })
     ]
 
     // MARK: - Private properties
@@ -69,6 +72,18 @@ private extension Array where Element == SelectionItemModel {
                 title: "Jeg kan overlevere ved oppmøte",
                 description: .plain("Du og kjøper gjør en egen avtale"),
                 icon: .fixedSize(UIImage(named: .favoriteActive).withRenderingMode(.alwaysTemplate)),
+                isInitiallySelected: $0 == 0
+            )
+        }
+    }
+
+    static func createTitleOnly(number: Int) -> [SelectionItemModel] {
+        (0..<number).map {
+            SelectionItemModel(
+                identifier: "item-\($0)",
+                title: "Jeg kan overlevere ved oppmøte",
+                description: .none,
+                icon: .none,
                 isInitiallySelected: $0 == 0
             )
         }

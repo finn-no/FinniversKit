@@ -16,8 +16,7 @@ class VersionInfoView: UIView {
     }()
 
     private lazy var versionLabel: UILabel = {
-        let label = Label(style: .detail)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = Label(style: .detail, withAutoLayout: true)
         label.textAlignment = .center
         return label
     }()
