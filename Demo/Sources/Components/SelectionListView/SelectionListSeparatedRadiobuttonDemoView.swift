@@ -1,7 +1,7 @@
 import UIKit
 import FinniversKit
 
-class SelectionListRadiobuttonDemoView: UIView, Tweakable {
+class SelectionListSeparatedRadiobuttonDemoView: UIView, Tweakable {
 
     // MARK: - Internal properties
 
@@ -26,7 +26,7 @@ class SelectionListRadiobuttonDemoView: UIView, Tweakable {
     // MARK: - Private properties
 
     private lazy var checkmarkListView: SelectionListView = {
-        let view = SelectionListView(presentation: .radioButtons, withAutoLayout: true)
+        let view = SelectionListView(presentation: .radioButtons, withAutoLayout: true, isSeparatedListElementDesign: true)
         view.delegate = self
         return view
     }()
@@ -56,7 +56,7 @@ class SelectionListRadiobuttonDemoView: UIView, Tweakable {
 
 // MARK: - SelectionListViewDelegate
 
-extension SelectionListRadiobuttonDemoView: SelectionListViewDelegate {
+extension SelectionListSeparatedRadiobuttonDemoView: SelectionListViewDelegate {
     func selectionListView(_ view: SelectionListView, didToggleItemAtIndex index: Int, withIdentifier identifier: String?, isSelected: Bool) {
         print("👉 Did toggle item at index \(index) with identifier '\(identifier ?? "")'. Is selected: \(isSelected)")
     }
