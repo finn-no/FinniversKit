@@ -77,6 +77,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case addressComponentView
     case selectionListCheckboxView
     case selectionListRadiobuttonView
+    case selectionListSeparatedRadiobuttonView
     case badgeView
     case jobApplyBox
     case jobKeyInfo
@@ -91,6 +92,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return "SelectionListView - checkboxes"
         case .selectionListRadiobuttonView:
             return "SelectionListView - radio buttons"
+        case .selectionListSeparatedRadiobuttonView:
+            return "SelectionListView - separated radio buttons"
         default:
             return nil
         }
@@ -251,6 +254,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<SelectionListCheckboxDemoView>(dismissType: .dismissButton)
         case .selectionListRadiobuttonView:
             return DemoViewController<SelectionListRadiobuttonDemoView>(dismissType: .dismissButton)
+        case .selectionListSeparatedRadiobuttonView:
+            return DemoViewController<SelectionListSeparatedRadiobuttonDemoView>(dismissType: .dismissButton)
         case .badgeView:
             return DemoViewController<BadgeDemoView>()
         case .jobApplyBox:

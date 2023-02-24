@@ -14,11 +14,15 @@ public enum SwiftUIDemoViews: String, DemoViews {
     case selectionListView
     case textField
     case textView
+    case toast
+    case resultView
 
     public var viewController: UIViewController {
         switch self {
         case .htmlText:
             return HTMLTextDemoViewController()
+        case .resultView:
+            return ResultSwiftUIDemoViewController()
         default:
             return PreviewController(hostingController: hostingController)
         }
@@ -44,6 +48,8 @@ public enum SwiftUIDemoViews: String, DemoViews {
             FinnTextField_Previews.previews
         case .textView:
             FinnTextView_Previews.previews
+        case .toast:
+            ToastSwiftUIDemoView_Previews.previews
         default:
             EmptyView()
         }
