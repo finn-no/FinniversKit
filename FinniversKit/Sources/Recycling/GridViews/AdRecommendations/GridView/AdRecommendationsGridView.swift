@@ -123,6 +123,7 @@ public class AdRecommendationsGridView: UIView {
         if refreshControl.isRefreshing {
             collectionView.performBatchUpdates(nil, completion: { [weak self] _ in
                 self?.endRefreshing()
+                UIAccessibility.post(notification: .layoutChanged, argument: nil)
             })
         }
         UIAccessibility.post(notification: .layoutChanged, argument: nil)
