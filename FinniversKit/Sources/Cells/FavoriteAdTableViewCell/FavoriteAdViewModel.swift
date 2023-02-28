@@ -4,7 +4,7 @@
 
 import UIKit
 
-public struct FavoriteAdViewModel {
+public struct FavoriteAdViewModel: Hashable {
     public let addressText: String?
     public let titleText: String
     public let titleColor: UIColor
