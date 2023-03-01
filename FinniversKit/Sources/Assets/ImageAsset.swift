@@ -63,7 +63,6 @@ enum ImageAsset: String {
     case contract
     case creditcard
     case cross
-    case distanceOutlined
     case document
     case download
     case earthHourClock
@@ -109,7 +108,6 @@ enum ImageAsset: String {
     case help
     case hide
     case important
-    case info
     case klimabroletBanner
     case listView
     case magnifyingGlass
@@ -199,7 +197,6 @@ enum ImageAsset: String {
             .contract,
             .creditcard,
             .cross,
-            .distanceOutlined,
             .document,
             .download,
             .earthHourClock,
@@ -245,7 +242,6 @@ enum ImageAsset: String {
             .help,
             .hide,
             .important,
-            .info,
             .klimabroletBanner,
             .listView,
             .magnifyingGlass,
