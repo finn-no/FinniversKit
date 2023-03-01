@@ -65,7 +65,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         label.setContentHuggingPriority(.required, for: .vertical)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
-        label.accessibilityTraits = [.header]
+        label.accessibilityTraits = .header
         return label
     }()
 
