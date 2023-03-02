@@ -271,12 +271,10 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     }
 
     public func loadImage() {
-        if imageView.image == nil {
-            if let imagePath = model?.imagePath {
-                imageView.loadImage(for: imagePath, imageWidth: frame.size.width, fallbackImage: defaultImage)
-            } else {
-                setDefaultImage()
-            }
+        if let imagePath = model?.imagePath {
+            imageView.loadImage(for: imagePath, imageWidth: frame.size.width, fallbackImage: defaultImage)
+        } else {
+            setDefaultImage()
         }
     }
 
