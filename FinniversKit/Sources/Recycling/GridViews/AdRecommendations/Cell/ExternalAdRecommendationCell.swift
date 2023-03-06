@@ -1,6 +1,33 @@
 import Foundation
 
 public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendationCell, AdRecommendationConfigurable {
+    // MARK: - External properties
+
+    /// The loading color is used to fill the image view while we load the image.
+    public var loadingColor: UIColor? {
+        didSet {
+            imageContentView.backgroundColor = loadingColor
+        }
+    }
+
+    /// A data source for the loading of the image
+    public weak var imageDataSource: RemoteImageViewDataSource? {
+        didSet {
+            imageView.dataSource = imageDataSource
+        }
+    }
+
+    /// A delegate for actions triggered from the cell
+    public weak var delegate: AdRecommendationCellDelegate?
+
+    /// Optional index of the cell
+    public var index: Int?
+
+
+    //This variable is included to conform to protocol 'AdRecommendationCell',
+    //but currently there is no favorite button in the external ad cell
+    public var isFavorite = false
+
     // MARK: - Internal properties
 
     private static let titleHeight: CGFloat = 20.0
@@ -18,10 +45,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     private static let maxImageAspectRatio: CGFloat = 1.5
 
     /// Extra container for accessibility issues. The cell should have "all content" and favoriteButton (if added) as accessibilty elements but it get confused if favoriteButton is a subview of the other accessibility element (so contentView can not be one of the accessibility elements
-    private lazy var containerView: UIView = {
-        let view = UIView(withAutoLayout: true)
-        return view
-    }()
+    private lazy var containerView = UIView(withAutoLayout: true)
 
     private lazy var imageContentView: UIView = {
         let view = UIView(withAutoLayout: true)
@@ -47,19 +71,15 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     }()
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .body)
+        let label = Label(style: .body, numberOfLines: 3, withAutoLayout: true)
         label.setContentHuggingPriority(.required, for: .vertical)
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
-        label.numberOfLines = 3
         return label
     }()
 
     private lazy var subtitleLabel: Label = {
-        let label = Label(style: .detail)
+        let label = Label(style: .detail, textColor: .textSecondary, withAutoLayout: true)
         label.setContentHuggingPriority(.required, for: .vertical)
-        label.textColor = .textSecondary
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
     }()
@@ -103,30 +123,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         return 1.0
     }
 
-
     private var model: ExternalAdRecommendationViewModel?
-
-    // MARK: - External properties
-
-    /// The loading color is used to fill the image view while we load the image.
-    public var loadingColor: UIColor? {
-        didSet {
-            imageContentView.backgroundColor = loadingColor
-        }
-    }
-
-    /// A data source for the loading of the image
-    public weak var imageDataSource: RemoteImageViewDataSource? {
-        didSet {
-            imageView.dataSource = imageDataSource
-        }
-    }
-
-    /// A delegate for actions triggered from the cell
-    public weak var delegate: AdRecommendationCellDelegate?
-
-    /// Optional index of the cell
-    public var index: Int?
 
     // MARK: - Setup
 
@@ -179,8 +176,8 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
             externalLinkImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: ExternalAdRecommendationCell.ribbonTopMargin),
             externalLinkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            externalLinkImageView.widthAnchor.constraint(equalToConstant: 16),
-            externalLinkImageView.heightAnchor.constraint(equalToConstant: 16),
+            externalLinkImageView.widthAnchor.constraint(equalToConstant: .spacingM),
+            externalLinkImageView.heightAnchor.constraint(equalToConstant: .spacingM),
 
             subtitleToImageConstraint,
             subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -242,7 +239,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
         // Show a pretty color while we load the image
         let colors: [UIColor] = [.aqua200, .green100, .yellow100, .red100]
-        let color = colors[index % 4]
+        let color = colors[index % colors.count]
         loadingColor = color
 
         if let model = model {
@@ -252,10 +249,6 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
             }
         }
     }
-
-    //This variable is included to conform to protocol 'AdRecommendationCell',
-    //but currently there is no favorite button in the external ad cell
-    public var isFavorite = false
 
     // MARK: - Public
 
@@ -267,7 +260,6 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         var contentHeight = subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + bottomMargin
 
         return imageHeight + contentHeight
-
     }
 
     public func loadImage() {
