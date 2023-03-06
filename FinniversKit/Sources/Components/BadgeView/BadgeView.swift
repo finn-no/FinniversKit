@@ -50,6 +50,8 @@ public final class BadgeView: UIView {
             iconImageView.widthAnchor.constraint(equalToConstant: iconSize),
             iconImageView.heightAnchor.constraint(equalToConstant: iconSize)
         ])
+
+        textLabel.isAccessibilityElement = true
     }
 
     // MARK: - Public methods

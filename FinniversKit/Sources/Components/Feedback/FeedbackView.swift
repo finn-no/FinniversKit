@@ -218,6 +218,7 @@ private class TitleView: UIView {
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.8
+        label.accessibilityTraits = .header
         return label
     }()
 

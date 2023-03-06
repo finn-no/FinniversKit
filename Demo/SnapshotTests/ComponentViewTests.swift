@@ -207,8 +207,12 @@ class ComponentViewTests: XCTestCase {
         snapshot(.collapsibleContentView)
     }
 
-    func testViewingsView() {
-        snapshot(.viewingsView)
+    func testViewingsListView() {
+        snapshot(.viewingsListView)
+    }
+
+    func testViewingsRedesignView() {
+        snapshot(.viewingsRedesignView)
     }
 
     func testColumnListsView() {
@@ -305,6 +309,10 @@ class ComponentViewTests: XCTestCase {
 
     func testSelectionListRadiobuttonView() {
         snapshot(.selectionListRadiobuttonView)
+    }
+
+    func testSelectionListSeparatedRadiobuttonView() {
+        snapshot(.selectionListSeparatedRadiobuttonView)
     }
 
     func testAddressComponentView() {

@@ -54,4 +54,12 @@ class SwiftUIViewTests: XCTestCase {
     func testTextView() {
         snapshot(.textView)
     }
+
+    func testToast() {
+        snapshot(.toast)
+    }
+
+    func testResultView() {
+        snapshot(.resultView)
+    }
 }

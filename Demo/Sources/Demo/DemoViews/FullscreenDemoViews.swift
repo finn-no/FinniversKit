@@ -4,7 +4,6 @@
 import FinniversKit
 
 public enum FullscreenDemoViews: String, DemoViews {
-    case searchResultMapView
     case frontPageView
     case popupView
     case emptyView
@@ -36,8 +35,6 @@ public enum FullscreenDemoViews: String, DemoViews {
 
     public var viewController: UIViewController {
         switch self {
-        case .searchResultMapView:
-            return SearchResultMapViewDemoViewController()
         case .frontPageView:
             return DemoViewController<FrontpageViewDemoView>()
         case .emptyView:

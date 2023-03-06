@@ -70,7 +70,7 @@ class TweakingOptionsTableViewController: ScrollViewController {
 
         navigationItem.titleView = selectorTitleView
 
-        if let deviceIndex = State.lastSelectedDevice, deviceIndex < Device.all.count {
+        if let deviceIndex = DemoState.lastSelectedDevice, deviceIndex < Device.all.count {
             selectorTitleView.title = Device.all[deviceIndex].title
         } else {
             selectorTitleView.title = "Choose a device"
@@ -146,7 +146,7 @@ extension TweakingOptionsTableViewController: BasicTableViewDelegate {
             let device = Device.all[index]
             selectorTitleView.title = device.title
             hideDevicesViewController()
-            State.lastSelectedDevice = index
+            DemoState.lastSelectedDevice = index
             delegate?.tweakingOptionsTableViewController(self, didSelectDevice: device)
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {

@@ -20,7 +20,7 @@ class SelectionListRadiobuttonDemoView: UIView, Tweakable {
         }),
         .init(title: "3 items (title only)", action: { [weak self] in
             self?.checkmarkListView.configure(with: .createTitleOnly(number: 3))
-        }),
+        })
     ]
 
     // MARK: - Private properties

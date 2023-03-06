@@ -64,17 +64,22 @@ class SelectionListItemView: UIView {
     private func setup() {
         backgroundColor = .clear
         contentView.backgroundColor = .bgPrimary
+        if configuration.isIndependent {
+            contentView.layer.borderWidth = 1
+            contentView.layer.cornerRadius = configuration.cornerRadius
+            contentView.layer.borderColor = .borderDefault
+        }
 
         addCornerRadius(
-            maskedCorners:configuration.maskedCorners,
+            maskedCorners: configuration.maskedCorners,
             cornerRadius: configuration.cornerRadius
         )
 
-        /// Because of the margins outside contentView we need to adjust the corner radius to
-        /// not make it look weird.
+        // Because of the margins outside contentView we need to
+        // adjust the corner radius to not make it look weird.
         contentView.addCornerRadius(
             maskedCorners: configuration.maskedCorners,
-            cornerRadius: configuration.cornerRadius - configuration.spacing
+            cornerRadius: configuration.cornerRadius - configuration.horizontalSpacing
         )
 
         titleLabel.text = model.title
@@ -107,10 +112,10 @@ class SelectionListItemView: UIView {
         contentView.addSubview(detailViewsStackView)
 
         var constraints: [NSLayoutConstraint] = [
-            contentView.topAnchor.constraint(equalTo: topAnchor, constant: configuration.spacing),
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: configuration.spacing),
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -configuration.spacing),
-            contentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -configuration.spacing),
+            contentView.topAnchor.constraint(equalTo: topAnchor, constant: configuration.verticalSpacing),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: configuration.horizontalSpacing),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -configuration.horizontalSpacing),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -configuration.verticalSpacing),
 
             selectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             selectionView.centerYAnchor.constraint(equalTo: textStackView.centerYAnchor),
@@ -121,7 +126,7 @@ class SelectionListItemView: UIView {
 
             detailViewsStackView.leadingAnchor.constraint(equalTo: selectionView.trailingAnchor, constant: .spacingM),
             detailViewsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
-            detailViewsStackViewBottomConstraint,
+            detailViewsStackViewBottomConstraint
         ]
 
         if case .none = model.icon {} else {
@@ -189,7 +194,11 @@ class SelectionListItemView: UIView {
         let duration = shouldAnimate ? 0.15 : 0
         UIView.animate(withDuration: duration, animations: { [weak self] in
             guard let self = self else { return }
-            self.backgroundColor = self.isSelected ? .primaryBlue : .clear
+            if self.configuration.isIndependent {
+                self.contentView.layer.borderColor = self.isSelected ? .btnAction : .borderDefault
+            } else {
+                self.backgroundColor = self.isSelected ? .primaryBlue : .clear
+            }
             self.iconImageView.tintColor = self.isSelected ? .textPrimary : .textSecondary
         })
     }
@@ -200,13 +209,15 @@ class SelectionListItemView: UIView {
 extension SelectionListItemView {
     enum Position {
         case first
+        case independent /// Used for lists where the elements are spaced out
         case last
         case middle
         case theOnlyOne
     }
 
     struct Configuration {
-        let spacing: CGFloat
+        let horizontalSpacing: CGFloat
+        let verticalSpacing: CGFloat
         let cornerRadius: CGFloat
         let position: Position
 
@@ -218,9 +229,13 @@ extension SelectionListItemView {
                 return [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
             case .theOnlyOne:
                 return [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-            default:
+            case .independent, .middle:
                 return []
             }
+        }
+
+        fileprivate var isIndependent: Bool {
+            position == .independent
         }
     }
 }

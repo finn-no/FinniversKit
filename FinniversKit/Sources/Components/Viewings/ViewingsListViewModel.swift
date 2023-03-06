@@ -1,17 +1,13 @@
-//
-//  Copyright © FINN.no AS, Inc. All rights reserved.
-//
-
 import Foundation
 
-public struct ViewingsViewModel {
+public struct ViewingsListViewModel {
 
     let title: String
     let addToCalendarButtonTitle: String
-    let viewings: [ViewingCellViewModel]
+    let viewings: [ViewingItemViewModel]
     let note: String?
 
-    public init(title: String, addToCalendarButtonTitle: String, viewings: [ViewingCellViewModel] = [], note: String?) {
+    public init(title: String, addToCalendarButtonTitle: String, viewings: [ViewingItemViewModel] = [], note: String?) {
         self.title = title
         self.addToCalendarButtonTitle = addToCalendarButtonTitle
         self.viewings = viewings
