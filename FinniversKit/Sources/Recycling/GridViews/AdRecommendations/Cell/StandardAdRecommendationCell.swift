@@ -316,7 +316,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         NSLayoutConstraint.activate([ribbonView.title.isEmpty ? subtitleToImageConstraint : subtitleToRibbonConstraint])
 
         // Show a pretty color while we load the image
-        let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
+        let colors: [UIColor] = [.aqua200, .green100, .yellow100, .red100]
         let color = colors[index % 4]
         loadingColor = color
 
