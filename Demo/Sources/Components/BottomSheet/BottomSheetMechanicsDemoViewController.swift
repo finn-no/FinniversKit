@@ -194,7 +194,7 @@ class BottomSheetMechanicsDemoViewController: UIViewController {
     }
 
     @objc private func handleDoubleTap() {
-        State.lastSelectedIndexPath = nil
+        DemoState.lastSelectedIndexPath = nil
         dismiss(animated: true)
     }
 
