@@ -5,7 +5,7 @@
 import Foundation
 
 public extension RibbonView {
-    enum Style: Hashable, Codable {
+    enum Style: Hashable {
         case `default`
         case success
         case warning
