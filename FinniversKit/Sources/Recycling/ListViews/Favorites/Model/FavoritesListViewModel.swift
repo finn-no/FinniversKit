@@ -14,8 +14,8 @@ public protocol FavoritesListViewModel {
 
 public extension FavoritesListViewModel {
     var accessibilityLabel: String {
-        var message = detail
-        message += ". " + title
+        var message = title
+        message += ". " + detail
         return message
     }
 }

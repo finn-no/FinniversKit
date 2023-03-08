@@ -21,6 +21,7 @@ public final class FavoriteFolderActionView: UIView {
     public var isShared: Bool {
         didSet {
             updateSeparators()
+            shareLinkView.isHidden = !isShared
         }
     }
 

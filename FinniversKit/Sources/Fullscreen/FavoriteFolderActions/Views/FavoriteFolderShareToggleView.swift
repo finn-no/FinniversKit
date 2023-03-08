@@ -69,7 +69,6 @@ final class FavoriteFolderShareToggleView: UIView {
     }
 
     private func setup() {
-        isAccessibilityElement = true
         backgroundColor = .bgPrimary
 
         addSubview(iconImageView)
