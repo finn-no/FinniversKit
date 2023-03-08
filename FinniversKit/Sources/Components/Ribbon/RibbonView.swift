@@ -26,8 +26,13 @@ public class RibbonView: UIView {
         label.setContentHuggingPriority(.required, for: .vertical)
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         label.textAlignment = .center
+        label.numberOfLines = 0
         return label
     }()
+    
+    public override var intrinsicContentSize: CGSize {
+        return titleLabel.intrinsicContentSize
+    }
 
     // MARK: - Init
 

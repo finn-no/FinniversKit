@@ -10,6 +10,9 @@ public struct RibbonViewRepresentable: UIViewRepresentable {
     
     public func makeUIView(context: Context) -> RibbonView {
         let view = RibbonView(viewModel: ribbonViewModel)
+        view.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        view.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        view.clipsToBounds = true
         return view
     }
     
