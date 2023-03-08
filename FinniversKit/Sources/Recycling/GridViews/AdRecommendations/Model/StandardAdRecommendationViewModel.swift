@@ -15,7 +15,6 @@ public protocol StandardAdRecommendationViewModel {
     var isFavorite: Bool { get }
     var scaleImageToFillView: Bool { get }
     var sponsoredAdData: SponsoredAdData? { get }
-    var accessibilityLabel: String { get }
     var favoriteButtonAccessibilityLabel: String { get }
     var hideImageOverlay: Bool { get }
     var badgeViewModel: BadgeViewModel? { get }
@@ -28,21 +27,5 @@ public struct SponsoredAdData {
     public init(ribbonTitle: String, logoImagePath: String?) {
         self.ribbonTitle = ribbonTitle
         self.logoImagePath = logoImagePath
-    }
-}
-
-public extension StandardAdRecommendationViewModel {
-    var accessibilityLabel: String {
-        var message = title
-
-        if let subtitle = subtitle {
-            message += ". " + subtitle
-        }
-
-        if let imageText = imageText {
-            message += ". " + imageText
-        }
-
-        return message
     }
 }
