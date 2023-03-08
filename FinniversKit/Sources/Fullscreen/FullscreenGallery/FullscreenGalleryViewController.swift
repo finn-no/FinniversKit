@@ -268,7 +268,7 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
         }
 
         let url = viewModel.imageUrls[vc.imageIndex]
-        let imageWidth = min(view.bounds.width, view.bounds.height)
+        let imageWidth = CGFloat(3840)
 
         galleryDataSource.fullscreenGalleryViewController(self, imageForUrlString: url, width: imageWidth, completionHandler: { (_, image, _) in
             dataCallback(image)
