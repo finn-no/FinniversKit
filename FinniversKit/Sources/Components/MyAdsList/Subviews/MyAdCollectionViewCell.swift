@@ -50,6 +50,7 @@ class MyAdCollectionViewCell: UICollectionViewCell {
     // MARK: - Setup
 
     private func setup() {
+        titleLabel.accessibilityTraits = .header
         textStackView.addArrangedSubviews([titleLabel, subtitleLabel])
 
         contentView.addSubview(remoteImageView)

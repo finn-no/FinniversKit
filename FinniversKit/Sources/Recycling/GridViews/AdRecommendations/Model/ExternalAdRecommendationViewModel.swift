@@ -4,18 +4,24 @@
 
 import Foundation
 
-public protocol FavoritesListViewModel {
+public protocol ExternalAdRecommendationViewModel {
     var imagePath: String? { get }
     var imageSize: CGSize { get }
-    var detail: String { get }
     var title: String { get }
+    var subtitle: String? { get }
+    var scaleImageToFillView: Bool { get }
+    var ribbonViewModel: RibbonViewModel? { get }
     var accessibilityLabel: String { get }
 }
 
-public extension FavoritesListViewModel {
+public extension ExternalAdRecommendationViewModel {
     var accessibilityLabel: String {
         var message = title
-        message += ". " + detail
+
+        if let subtitle = subtitle {
+            message += ". " + subtitle
+        }
+
         return message
     }
 }

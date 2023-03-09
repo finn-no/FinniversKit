@@ -29,6 +29,8 @@ final class NeighborhoodProfileHeaderView: UIView {
 
     // MARK: - Private properties
 
+    private lazy var stackView = UIStackView(axis: .horizontal, spacing: .spacingM, alignment: .center, distribution: .fill, withAutoLayout: true)
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
@@ -58,18 +60,9 @@ final class NeighborhoodProfileHeaderView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        addSubview(titleLabel)
-        addSubview(button)
-
-        NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: button.leadingAnchor, constant: -.spacingM),
-            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-
-            button.centerYAnchor.constraint(equalTo: centerYAnchor),
-            button.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
+        stackView.addArrangedSubviews([titleLabel, UIView(), button])
+        addSubview(stackView)
+        stackView.fillInSuperview()
     }
 
     // MARK: - Actions

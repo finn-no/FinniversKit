@@ -11,6 +11,8 @@ public struct AdDataSource {
         ads.insert(contentsOf: JobAdFactory.create(numberOfModels: 2).map { .job($0) }, at: 1)
         ads.insert(.ad(AdFactory.googleDemoAd), at: 4)
         ads.insert(.ad(AdFactory.nativeDemoAd), at: 8)
+        var externals: [AdRecommendation] = ExternalAdFactory.create(numberOfModels: 4).map { .external($0) }
+        ads.append(contentsOf: externals)
         return ads
     }()
 }
@@ -84,6 +86,7 @@ extension AdRecommendationsGridViewDemoView: AdRecommendationsGridViewDataSource
             JobAdRecommendationCell.self,
             BannerAdDemoCell.self,
             NativeAdvertRecommendationDemoCell.self,
+            ExternalAdRecommendationCell.self
         ]
     }
 
@@ -100,6 +103,8 @@ extension AdRecommendationsGridViewDemoView: AdRecommendationsGridViewDataSource
             default:
                 return StandardAdRecommendationCell.height(for: ad, width: width)
             }
+        case .external(let ad):
+            return ExternalAdRecommendationCell.height(for: ad, width: width)
         case .job(let ad):
             return JobAdRecommendationCell.height(for: ad, width: width)
         }
@@ -124,6 +129,12 @@ extension AdRecommendationsGridViewDemoView: AdRecommendationsGridViewDataSource
             }
         case .job(let ad):
             let cell = collectionView.dequeue(JobAdRecommendationCell.self, for: indexPath)
+            cell.imageDataSource = adRecommendationsGridView
+            cell.delegate = adRecommendationsGridView
+            cell.configure(with: ad, atIndex: indexPath.item)
+            return cell
+        case .external(let ad):
+            let cell = collectionView.dequeue(ExternalAdRecommendationCell.self, for: indexPath)
             cell.imageDataSource = adRecommendationsGridView
             cell.delegate = adRecommendationsGridView
             cell.configure(with: ad, atIndex: indexPath.item)
