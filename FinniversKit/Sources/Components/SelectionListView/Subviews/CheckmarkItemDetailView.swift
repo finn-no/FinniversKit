@@ -8,7 +8,7 @@ class CheckmarkItemDetailView: UIView {
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(axis: .horizontal, spacing: .spacingS, withAutoLayout: true)
-        stackView.alignment = .top
+        stackView.alignment = .center
         stackView.distribution = .fill
         stackView.addArrangedSubviews([iconImageView, titleLabel])
         return stackView
