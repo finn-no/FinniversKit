@@ -32,7 +32,7 @@ public class RemoteImageView: UIImageView {
         for imagePath: String,
         imageWidth: CGFloat,
         loadingColor: UIColor? = nil,
-        loadedColor: UIColor? = nil,
+        loadedColor: UIColor = .clear,
         fallbackImage: UIImage? = nil,
         modify: ((UIImage?) -> UIImage?)? = nil
     ) {
@@ -60,13 +60,13 @@ public class RemoteImageView: UIImageView {
         dataSource?.remoteImageView(self, cancelLoadingImageWithPath: currentImagePath, imageWidth: imageWidth)
     }
 
-    public func setImage(_ image: UIImage?, animated: Bool, loadedColor: UIColor? = nil) {
+    public func setImage(_ image: UIImage?, animated: Bool, loadedColor: UIColor = .clear) {
         let performViewChanges = { [weak self] in
             guard let self = self else { return }
 
             self.image = image
             self.alpha = 1.0
-            self.backgroundColor = loadedColor ?? .clear
+            self.backgroundColor = loadedColor
             self.delegate?.remoteImageViewDidSetImage(self)
         }
 
