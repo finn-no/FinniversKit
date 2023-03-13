@@ -4,11 +4,13 @@ public extension BadgeView {
     enum Style: Hashable {
         case `default`
         case warning
+        case sponsored
 
         var backgroundColor: UIColor {
             switch self {
             case .default: return .bgSecondary
             case .warning: return .bgAlert
+            case .sponsored: return .accentToothpaste
             }
         }
 
@@ -16,6 +18,7 @@ public extension BadgeView {
             switch self {
             case .default: return .textPrimary
             case .warning: return .warningTextColor
+            case .sponsored: return .aqua800
             }
         }
     }
