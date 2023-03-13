@@ -45,12 +45,12 @@ public class RemoteImageView: UIImageView {
         }
 
         if let cachedImage = dataSource.remoteImageView(self, cachedImageWithPath: imagePath, imageWidth: imageWidth) {
-            setImage(modify?(cachedImage) ?? cachedImage, animated: false, loadedColor: loadedColor)
+            setImage(modify?(cachedImage) ?? cachedImage, animated: false, backgroundColor: loadedColor)
         } else {
             backgroundColor = loadingColor
             dataSource.remoteImageView(self, loadImageWithPath: imagePath, imageWidth: imageWidth, completion: { [weak self] fetchedImage in
                 let image = modify?(fetchedImage) ?? fetchedImage
-                self?.setImage(image ?? fallbackImage, animated: false, loadedColor: loadedColor)
+                self?.setImage(image ?? fallbackImage, animated: false, backgroundColor: loadedColor)
             })
         }
     }
@@ -60,13 +60,13 @@ public class RemoteImageView: UIImageView {
         dataSource?.remoteImageView(self, cancelLoadingImageWithPath: currentImagePath, imageWidth: imageWidth)
     }
 
-    public func setImage(_ image: UIImage?, animated: Bool, loadedColor: UIColor = .clear) {
+    public func setImage(_ image: UIImage?, animated: Bool, backgroundColor: UIColor = .clear) {
         let performViewChanges = { [weak self] in
             guard let self = self else { return }
 
             self.image = image
             self.alpha = 1.0
-            self.backgroundColor = loadedColor
+            self.backgroundColor = backgroundColor
             self.delegate?.remoteImageViewDidSetImage(self)
         }
 
