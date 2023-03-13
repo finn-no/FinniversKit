@@ -3,13 +3,13 @@
 //
 
 public struct ObjectPagePriceViewModel {
-    let mainPriceModel: Price?
-    let secondaryPriceModel: Price?
-    let links: [PriceLinkButtonViewModel]
-    let priceDetails: [KeyValuePair]
-    let priceDetailsNumberOfColumns: Int
-    let adTypeText: String?
-    let captionText: NSAttributedString?
+    public let mainPriceModel: Price?
+    public let secondaryPriceModel: Price?
+    public let links: [PriceLinkButtonViewModel]
+    public let priceDetails: [KeyValuePair]
+    public let priceDetailsNumberOfColumns: Int
+    public let adTypeText: String?
+    public let captionText: NSAttributedString?
 
     public init(
         title: String? = nil,
