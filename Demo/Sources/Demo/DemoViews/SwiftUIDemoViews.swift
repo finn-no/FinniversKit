@@ -7,6 +7,7 @@ import SwiftUI
 
 public enum SwiftUIDemoViews: String, DemoViews {
     case checkBox
+    case floatingButton
     case htmlText
     case loadingIndicator
     case loadingView
@@ -36,6 +37,8 @@ public enum SwiftUIDemoViews: String, DemoViews {
         switch self {
         case .checkBox:
             SwiftUICheckBox_Previews.previews
+        case .floatingButton:
+            SwiftUIFloatingButton_Previews.previews
         case .loadingIndicator:
             SwiftUILoadingIndicatorDemoView()
         case .loadingView:
