@@ -8,7 +8,7 @@ class CheckmarkItemDetailView: UIView {
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(axis: .horizontal, spacing: .spacingS, withAutoLayout: true)
-        stackView.alignment = .center
+        stackView.alignment = .top
         stackView.distribution = .fill
         stackView.addArrangedSubviews([iconImageView, titleLabel])
         return stackView
@@ -23,7 +23,7 @@ class CheckmarkItemDetailView: UIView {
     }()
 
     private lazy var iconImageView: UIImageView = {
-        let imageView = UIImageView(withAutoLayout: true)
+        let imageView = UIImageView()
         imageView.image = UIImage(named: .checkmark)
         imageView.tintColor = .textSecondary
         imageView.contentMode = .scaleAspectFit
@@ -50,6 +50,7 @@ class CheckmarkItemDetailView: UIView {
         NSLayoutConstraint.activate([
             iconImageView.widthAnchor.constraint(equalToConstant: 12),
             iconImageView.heightAnchor.constraint(equalToConstant: 12),
+            iconImageView.bottomAnchor.constraint(equalTo: titleLabel.firstBaselineAnchor, constant: .spacingXXS)
         ])
     }
 }
