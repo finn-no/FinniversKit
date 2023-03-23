@@ -50,7 +50,8 @@ public enum ComponentDemoViews: String, DemoViews {
     case priming
     case footerButtonView
     case checkmarkTitleView
-    case viewingsView
+    case viewingsListView
+    case viewingsRedesignView
     case selfDeclarationView
     case collapsibleContentView
     case columnListsView
@@ -76,6 +77,7 @@ public enum ComponentDemoViews: String, DemoViews {
     case addressComponentView
     case selectionListCheckboxView
     case selectionListRadiobuttonView
+    case selectionListSeparatedRadiobuttonView
     case badgeView
     case jobApplyBox
     case jobKeyInfo
@@ -90,6 +92,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return "SelectionListView - checkboxes"
         case .selectionListRadiobuttonView:
             return "SelectionListView - radio buttons"
+        case .selectionListSeparatedRadiobuttonView:
+            return "SelectionListView - separated radio buttons"
         default:
             return nil
         }
@@ -196,8 +200,10 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<FooterButtonDemoView>(constrainToBottomSafeArea: false)
         case .checkmarkTitleView:
             return DemoViewController<CheckmarkTitleViewDemoView>()
-        case .viewingsView:
-            return DemoViewController<ViewingsDemoView>()
+        case .viewingsListView:
+            return DemoViewController<ViewingsListDemoView>()
+        case .viewingsRedesignView:
+            return DemoViewController<ViewingsRedesignDemoView>()
         case .selfDeclarationView:
             return DemoViewController<SelfDeclarationDemoView>()
         case .collapsibleContentView:
@@ -248,6 +254,8 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<SelectionListCheckboxDemoView>(dismissType: .dismissButton)
         case .selectionListRadiobuttonView:
             return DemoViewController<SelectionListRadiobuttonDemoView>(dismissType: .dismissButton)
+        case .selectionListSeparatedRadiobuttonView:
+            return DemoViewController<SelectionListSeparatedRadiobuttonDemoView>(dismissType: .dismissButton)
         case .badgeView:
             return DemoViewController<BadgeDemoView>()
         case .jobApplyBox:

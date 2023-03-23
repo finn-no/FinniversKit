@@ -32,17 +32,21 @@ public struct SelectionItemModel {
             spanMapper: HTMLStringUIKitStyleTranslator.SpanMapper = { _, _ in },
             accessibilityString: String? = nil
         )
+        case none
     }
 
     public enum Icon {
         case fixedSize(UIImage)
         case dynamic(UIImage)
+        case none
 
-        var image: UIImage {
+        var image: UIImage? {
             switch self {
             case .fixedSize(let image),
                  .dynamic(let image):
                 return image
+            case .none:
+                return nil
             }
         }
     }

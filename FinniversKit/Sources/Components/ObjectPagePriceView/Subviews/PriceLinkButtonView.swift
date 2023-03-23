@@ -88,6 +88,7 @@ class PriceLinkButtonView: UIView {
 
         externalImageView.isHidden = !viewModel.isExternal
         linkButton.setTitle(viewModel.buttonTitle, for: .normal)
+        linkButton.accessibilityTraits = viewModel.isExternal ? .link : .button
 
         subtitleLabel.text = viewModel.subtitle
         subtitleLabel.isHidden = viewModel.subtitle?.isEmpty ?? true

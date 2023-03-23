@@ -154,6 +154,7 @@ private class PriceView: UIView {
 
     private func setup() {
         isAccessibilityElement = true
+        accessibilityTraits = .staticText
         if let accessibilityLabel = viewModel.accessibilityLabel {
             self.accessibilityLabel = accessibilityLabel
         } else {

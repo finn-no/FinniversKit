@@ -11,7 +11,7 @@ extension String {
     }
 }
 
-struct State {
+struct DemoState {
     private static let lastSelectedIndexPathRowKey = "lastSelectedIndexPathRowKey"
     private static let lastSelectedIndexPathSectionKey = "lastSelectedIndexPathSectionKey"
     private static let lastCornerForTweakingButtonKey = "lastCornerForTweakingButtonKey"

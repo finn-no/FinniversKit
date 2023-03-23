@@ -32,6 +32,16 @@ final public class BadgeDemoView: UIView {
             title: "Smidig bilhandel"
         ))
 
-        stackView.addArrangedSubviews([fiksFerdigBadgeView, smidigBilhandelBadgeView])
+        let sponsoredBadge = BadgeView()
+        sponsoredBadge.configure(with: .init(
+            style: .sponsored,
+            title: "Sponsored"
+        ))
+
+        stackView.addArrangedSubviews([
+            fiksFerdigBadgeView,
+            smidigBilhandelBadgeView,
+            sponsoredBadge
+        ])
     }
 }

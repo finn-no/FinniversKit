@@ -4,37 +4,38 @@
 
 import UIKit
 
-public class StatisticsItemView: UIView {
+final class StatisticsItemView: UIView {
 
-    // MARK: - Private
+    // MARK: - Internal properties
+
+    var shouldShowLeftSeparator: Bool = false {
+        didSet { leftSeparator.isHidden = !shouldShowLeftSeparator }
+    }
+
+    var shouldShowRightSeparator: Bool = false {
+        didSet { rightSeparator.isHidden = !shouldShowRightSeparator }
+    }
+
+    // MARK: - Private properties
 
     private let model: StatisticsItemModel
 
     private lazy var imageView: UIImageView = {
-        let view = UIImageView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = UIImageView(withAutoLayout: true)
         view.contentMode = .scaleAspectFit
         view.tintColor = .iconPrimary
         return view
     }()
 
-    private lazy var valueLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 1
-        label.font = UIFont.title2 // subject to change medium/26 seems closer to the sketches
-        label.textColor = .textPrimary
+    private lazy var valueLabel: Label = {
+        let label = Label(style: .title3Strong, withAutoLayout: true)
         label.textAlignment = .center
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
     }()
 
-    private lazy var textLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        label.font = UIFont.caption
-        label.textColor = .textPrimary
+    private lazy var textLabel: Label = {
+        let label = Label(style: .caption, numberOfLines: 0, withAutoLayout: true)
         label.textAlignment = .center
         return label
     }()
@@ -51,17 +52,7 @@ public class StatisticsItemView: UIView {
         return view
     }()
 
-    // MARK: - Public
-
-    public var shouldShowLeftSeparator: Bool = false {
-        didSet { leftSeparator.isHidden = !shouldShowLeftSeparator }
-    }
-
-    public var shouldShowRightSeparator: Bool = false {
-        didSet { rightSeparator.isHidden = !shouldShowRightSeparator }
-    }
-
-    // MARK: - Initalization
+    // MARK: - Init
 
     init(model: StatisticsItemModel) {
         self.model = model
@@ -80,7 +71,7 @@ public class StatisticsItemView: UIView {
             case .email:
                 return UIImage(named: .statsEnvelope).withRenderingMode(.alwaysTemplate)
             case .seen:
-                return UIImage(named: .statsEye).withRenderingMode(.alwaysTemplate)
+                return UIImage(named: .statsClick).withRenderingMode(.alwaysTemplate)
             case .favourited:
                 return UIImage(named: .statsHeart).withRenderingMode(.alwaysTemplate)
             }
@@ -111,16 +102,16 @@ public class StatisticsItemView: UIView {
         addSubview(rightSeparator)
     }
 
-    // MARK: - Private methods
+    // MARK: - Internal methods
 
-    public func setupConstraints() {
+    func setupConstraints() {
         let hairLineSize = 1.0/UIScreen.main.scale
 
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: topAnchor, constant: 12),
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: 40),
-            imageView.widthAnchor.constraint(equalToConstant: 40),
+            imageView.heightAnchor.constraint(equalToConstant: 24),
+            imageView.widthAnchor.constraint(equalToConstant: 24),
 
             valueLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             valueLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 6),

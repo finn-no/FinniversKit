@@ -52,11 +52,13 @@ extension NeighborhoodProfileViewModel {
         public let title: String
         public let detailText: String?
         public let icon: UIImage?
+        public let accessibilityLabel: String?
 
-        public init(title: String, detailText: String? = nil, icon: UIImage? = nil) {
+        public init(title: String, detailText: String? = nil, icon: UIImage? = nil, accessibilityLabel: String? = nil) {
             self.title = title
             self.detailText = detailText
             self.icon = icon
+            self.accessibilityLabel = accessibilityLabel
         }
     }
 

@@ -61,7 +61,6 @@ enum ImageAsset: String {
     case displayTypeGrid
     case displayTypeList
     case dissatisfiedFace
-    case distance
     case easterEgg
     case emptyMoon
     case emptyStateSaveSearch
@@ -95,7 +94,6 @@ enum ImageAsset: String {
     case moteplassenNew
     case nettbilNew
     case notifications
-    case notificationsBell
     case npCompare
     case npDrive
     case npHouseWeather
@@ -173,7 +171,6 @@ enum ImageAsset: String {
             .displayTypeGrid,
             .displayTypeList,
             .dissatisfiedFace,
-            .distance,
             .easterEgg,
             .emptyMoon,
             .emptyStateSaveSearch,
@@ -207,7 +204,6 @@ enum ImageAsset: String {
             .moteplassenNew,
             .nettbilNew,
             .notifications,
-            .notificationsBell,
             .npCompare,
             .npDrive,
             .npHouseWeather,
