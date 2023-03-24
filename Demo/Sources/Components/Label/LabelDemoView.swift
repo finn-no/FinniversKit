@@ -5,6 +5,8 @@
 import FinniversKit
 
 public class LabelDemoView: UIView {
+    private lazy var labelLinkTap = Label(style: .detail, withAutoLayout: true)
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -84,6 +86,7 @@ public class LabelDemoView: UIView {
         addSubview(labelWithLink)
         addSubview(labelWithCustomLink)
         addSubview(labelWithTwoLinks)
+        addSubview(labelLinkTap)
 
         NSLayoutConstraint.activate([
             labelT1.topAnchor.constraint(equalTo: topAnchor, constant: topSpacing),
@@ -141,7 +144,11 @@ public class LabelDemoView: UIView {
 
             labelWithTwoLinks.topAnchor.constraint(equalTo: labelWithCustomLink.bottomAnchor, constant: topSpacing),
             labelWithTwoLinks.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            labelWithTwoLinks.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
+            labelWithTwoLinks.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+
+            labelLinkTap.topAnchor.constraint(equalTo: labelWithTwoLinks.bottomAnchor, constant: topSpacing),
+            labelLinkTap.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            labelLinkTap.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
         ])
 
         label1.text = "Test"
@@ -181,6 +188,8 @@ public class LabelDemoView: UIView {
         labelWithTwoLinksText.append(NSAttributedString(string: ", and this is the "))
         labelWithTwoLinksText.append(attributedCustomLink)
         labelWithTwoLinks.attributedText = labelWithTwoLinksText
+
+        labelLinkTap.text = "Link tap:"
     }
 }
 
@@ -193,6 +202,6 @@ extension LabelDemoView: LabelLinkDelegate {
         case .url(let url):
             text = url.absoluteString
         }
-        print("Label link tapped: \(text)")
+        labelLinkTap.text = "Link tap: \(text)"
     }
 }
