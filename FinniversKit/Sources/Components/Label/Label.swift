@@ -158,7 +158,8 @@ extension Label {
         let characterRect = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textContainer)
         guard
             characterRect.contains(touchLocation),
-            let link = textStorage.attribute(.link, at: characterIndex, effectiveRange: nil)
+            let link = textStorage.attribute(.linkCustom, at: characterIndex, effectiveRange: nil)
+                ?? textStorage.attribute(.link, at: characterIndex, effectiveRange: nil)
         else { return nil }
 
         if let text = link as? String {

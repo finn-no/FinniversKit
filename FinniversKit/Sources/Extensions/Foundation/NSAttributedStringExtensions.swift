@@ -52,3 +52,8 @@ public extension NSAttributedString {
         return bulletList
     }
 }
+
+public extension NSAttributedString.Key {
+    /// The `link` key uses a default appearance that can not be overridden in a UILabel.
+    static var linkCustom: NSAttributedString.Key { .init("linkCustom") }
+}
