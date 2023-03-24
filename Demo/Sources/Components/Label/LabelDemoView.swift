@@ -35,6 +35,16 @@ public class LabelDemoView: UIView {
         let label3 = Label(style: testStyle)
         let labelWide = Label(style: .body)
 
+        let labelWithLink = Label(style: .body)
+        let labelWithCustomLink = Label(style: .body)
+        let labelWithTwoLinks = Label(style: .body)
+        [labelWithLink, labelWithCustomLink, labelWithTwoLinks].forEach {
+            $0.isUserInteractionEnabled = true
+            $0.numberOfLines = 0
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.linkDelegate = self
+        }
+
         labelT1.translatesAutoresizingMaskIntoConstraints = false
         labelT2.translatesAutoresizingMaskIntoConstraints = false
         labelT3.translatesAutoresizingMaskIntoConstraints = false
@@ -70,6 +80,10 @@ public class LabelDemoView: UIView {
         addSubview(label2)
         addSubview(label3)
         addSubview(labelWide)
+
+        addSubview(labelWithLink)
+        addSubview(labelWithCustomLink)
+        addSubview(labelWithTwoLinks)
 
         NSLayoutConstraint.activate([
             labelT1.topAnchor.constraint(equalTo: topAnchor, constant: topSpacing),
@@ -115,7 +129,19 @@ public class LabelDemoView: UIView {
             labelWide.topAnchor.constraint(equalTo: label3.bottomAnchor, constant: 16),
             labelWide.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             labelWide.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            labelWide.heightAnchor.constraint(equalToConstant: 40)
+            labelWide.heightAnchor.constraint(equalToConstant: 40),
+
+            labelWithLink.topAnchor.constraint(equalTo: labelWide.bottomAnchor, constant: topSpacing),
+            labelWithLink.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            labelWithLink.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .spacingM),
+
+            labelWithCustomLink.topAnchor.constraint(equalTo: labelWithLink.bottomAnchor, constant: topSpacing),
+            labelWithCustomLink.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            labelWithCustomLink.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .spacingM),
+
+            labelWithTwoLinks.topAnchor.constraint(equalTo: labelWithCustomLink.bottomAnchor, constant: topSpacing),
+            labelWithTwoLinks.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            labelWithTwoLinks.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
         ])
 
         label1.text = "Test"
@@ -133,5 +159,40 @@ public class LabelDemoView: UIView {
         labelCaption.text = "Label Caption"
         labelBody.text = "Label Body"
         labelDetail.text = "Label Detail"
+
+        let attributedLink = NSAttributedString(string: "first example link", attributes: [
+            .link: URL(string: "https://finn.no")!
+        ])
+        let attributedCustomLink = NSAttributedString(string: "second example link", attributes: [
+            .foregroundColor: UIColor.red,
+            .linkCustom: "linkCustom"
+        ])
+
+        let labelWithLinkText = NSMutableAttributedString(string: "This is the ")
+        labelWithLinkText.append(attributedLink)
+        labelWithLink.attributedText = labelWithLinkText
+
+        let labelWithCustomLinkText = NSMutableAttributedString(string: "This is the ")
+        labelWithCustomLinkText.append(attributedCustomLink)
+        labelWithCustomLink.attributedText = labelWithCustomLinkText
+
+        let labelWithTwoLinksText = NSMutableAttributedString(string: "This is the ")
+        labelWithTwoLinksText.append(attributedLink)
+        labelWithTwoLinksText.append(NSAttributedString(string: ", and this is the "))
+        labelWithTwoLinksText.append(attributedCustomLink)
+        labelWithTwoLinks.attributedText = labelWithTwoLinksText
+    }
+}
+
+extension LabelDemoView: LabelLinkDelegate {
+    public func labelDidTapLink(_ label: Label, kind: LabelLinkKind) {
+        let text: String
+        switch kind {
+        case .text(let linkText):
+            text = linkText
+        case .url(let url):
+            text = url.absoluteString
+        }
+        print("Label link tapped: \(text)")
     }
 }
