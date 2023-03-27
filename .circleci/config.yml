@@ -12,9 +12,10 @@ jobs:
       - run: xcodebuild -workspace FinniversKit.xcworkspace -scheme 'Demo' -sdk iphonesimulator -destination 'platform=iOS Simulator,OS=16.1,name=iPhone 14 Pro' build test | xcpretty
 
   swiftlint:
+    docker:
+      - image: dantoml/swiftlint:latest
     steps:
       - checkout
-      - run: brew install swiftlint
       - run: swiftlint lint
 
 workflows:
