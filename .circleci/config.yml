@@ -16,12 +16,8 @@ jobs:
       xcode: 14.2.0
     steps:
       - checkout
-      - run:
-        name: Install swiftlint
-        command: brew install swiftlint
-      - run:
-        name: Run swiftlint
-        command: swiftlint lint
+      - run: brew install swiftlint
+      - run: swiftlint lint
 
 workflows:
   version: 2
