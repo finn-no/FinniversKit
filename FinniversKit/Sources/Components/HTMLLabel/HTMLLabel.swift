@@ -1,16 +1,18 @@
 public class HTMLLabel: Label {
     private var htmlText: String?
-    private var styleMap: HTMLStyler.StyleMap
-    private var additionalStyleMap: HTMLStyler.StyleMap?
+    private let spanMapper: HTMLStringUIKitStyleTranslator.SpanMapper
+    private var additionalSpanMapper: HTMLStringUIKitStyleTranslator.SpanMapper = { _, _ in }
 
     public override var textColor: UIColor! {
         didSet {
-            styleMap[.textColor] = textColor
+            guard let htmlText else { return }
+
+            setAttributedString(from: htmlText)
         }
     }
 
-    public init(style: Style, styleMap: HTMLStyler.StyleMap = [:], withAutoLayout: Bool = false) {
-        self.styleMap = styleMap
+    public init(style: Style, spanMapper: @escaping HTMLStringUIKitStyleTranslator.SpanMapper = { _, _ in } , withAutoLayout: Bool = false) {
+        self.spanMapper = spanMapper
         super.init(style: style, withAutoLayout: withAutoLayout)
     }
 
@@ -18,9 +20,12 @@ public class HTMLLabel: Label {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func setHTMLText(_ htmlText: String, with additionalStyleMap: HTMLStyler.StyleMap = [:]) {
+    public func setHTMLText(
+        _ htmlText: String,
+        additionalSpanMapper: @escaping HTMLStringUIKitStyleTranslator.SpanMapper = { _, _ in }
+    ) {
         self.htmlText = htmlText
-        self.additionalStyleMap = additionalStyleMap
+        self.additionalSpanMapper = additionalSpanMapper
         setAttributedString(from: htmlText)
     }
 
@@ -39,30 +44,19 @@ public class HTMLLabel: Label {
     }
 
     private func setAttributedString(from htmlString: String) {
-        // We can not update the (html) attributed string when the app is in the background or it will crash. This can potentially lead to a label that is not getting set
-        guard UIApplication.shared.applicationState != .background else { return }
-
-        var styledText = "<span style=\"font-family: \(font.fontName); font-size: \(font.pointSize); color: text-color\">\(htmlString)</span>"
-        let combinedStyleMap = styleMap.merging(additionalStyleMap ?? [:], uniquingKeysWith: { $1 })
-        for (styleIdentifier, styleColor) in combinedStyleMap {
-            let colorHexValue = styleColor.resolvedColor(with: traitCollection).hexString
-            styledText = styledText.replacingOccurrences(of: styleIdentifier.rawValue, with: colorHexValue)
-        }
-
-        // Setting the default text color if it's not defined in the style map.
-        styledText = styledText.replacingOccurrences(of: "text-color", with: textColor.hexString)
-
-        guard
-            let data = styledText.data(using: .unicode),
-            let attrStr = try? NSAttributedString(
-                data: data,
-                options: [.documentType: NSAttributedString.DocumentType.html],
-                documentAttributes: nil
+        do {
+            let htmlParser = HTMLStringParser()
+            let translator = HTMLStringUIKitStyleTranslator.finnStyle(
+                font: font,
+                foregroundColor: textColor,
+                spanMapper: { attributes, currentStyle in
+                    self.spanMapper(attributes, &currentStyle)
+                    self.additionalSpanMapper(attributes, &currentStyle)
+                }
             )
-        else {
-            return
+            attributedText = try htmlParser.parse(html: htmlString, translator: translator)
+        } catch {
+            text = htmlString
         }
-
-        attributedText = attrStr
     }
 }
