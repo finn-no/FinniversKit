@@ -78,7 +78,10 @@ public class Selectionbox: UIView {
 
     public var title: String? {
         get { return titleLabel.text }
-        set { titleLabel.text = newValue }
+        set {
+            titleLabel.text = newValue
+            setupSubviews()
+        }
     }
 
     public var fields = [String]() {
@@ -94,6 +97,8 @@ public class Selectionbox: UIView {
     }
 
     private var highlightedItem: SelectionboxItem?
+    
+    private lazy var containerStack = UIStackView(axis: .vertical, spacing: .spacingS, alignment: .leading, withAutoLayout: true)
 
     private let titleLabel: UILabel = {
         let label = Label(style: .title3)
@@ -115,8 +120,9 @@ public class Selectionbox: UIView {
         setupSubviews()
     }
 
-    public init(strings: [String]) {
+    public init(title: String? = nil, strings: [String]) {
         super.init(frame: .zero)
+        titleLabel.text = title
         setupBoxes(with: strings)
         setupSubviews()
     }
@@ -149,18 +155,24 @@ extension Selectionbox {
     // MARK: Private methods
 
     private func setupSubviews() {
-        addSubview(titleLabel)
-        addSubview(stack)
+        
+        addSubview(containerStack)
+        
+        containerStack.addArrangedSubviews([
+            titleLabel,
+            stack
+        ])
+        
+        if titleLabel.text == nil {
+            titleLabel.removeFromSuperview()
+        }
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
-
-            stack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
-            stack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            stack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-            stack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM)
-            ])
+            containerStack.topAnchor.constraint(equalTo: topAnchor, constant: .zero),
+            containerStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .zero),
+            containerStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .zero),
+            containerStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: .zero)
+        ])
     }
 
     private func setupBoxes(with strings: [String]) {
