@@ -80,7 +80,7 @@ public class Selectionbox: UIView {
         get { return titleLabel.text }
         set {
             titleLabel.text = newValue
-            setupSubviews()
+            titleLabel.isHidden = (newValue == nil)
         }
     }
 
@@ -123,6 +123,7 @@ public class Selectionbox: UIView {
     public init(title: String? = nil, strings: [String]) {
         super.init(frame: .zero)
         titleLabel.text = title
+        titleLabel.isHidden = (title == nil)
         setupBoxes(with: strings)
         setupSubviews()
     }
@@ -163,7 +164,7 @@ extension Selectionbox {
             stack
         ])
         
-        titleLabel.isHidden = (titleLabel.text == nil)
+        //titleLabel.isHidden = (titleLabel.text == nil)
 
         NSLayoutConstraint.activate([
             containerStack.topAnchor.constraint(equalTo: topAnchor, constant: .zero),
