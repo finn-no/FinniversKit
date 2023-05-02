@@ -163,9 +163,7 @@ extension Selectionbox {
             stack
         ])
         
-        if titleLabel.text == nil {
-            titleLabel.removeFromSuperview()
-        }
+        titleLabel.isHidden = (titleLabel.text == nil)
 
         NSLayoutConstraint.activate([
             containerStack.topAnchor.constraint(equalTo: topAnchor, constant: .zero),
