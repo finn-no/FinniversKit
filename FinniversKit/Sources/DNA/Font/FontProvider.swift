@@ -176,6 +176,8 @@ public struct DefaultFontProvider: FontProvider {
     }
 
     public func font(ofSize size: CGFloat, weight: FontWeight) -> UIFont {
+        registerCustomFonts()
+
         switch weight {
         case .light:
             return UIFont(name: FontType.light.rawValue, size: size)!
