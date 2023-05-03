@@ -2,7 +2,7 @@ import UIKit
 
 public class TransactionStepView: UIView {
 
-    public enum SupplementaryView {
+    public enum SupplementaryViewKind {
         case processIllustration
         case checkmark
     }
@@ -10,12 +10,9 @@ public class TransactionStepView: UIView {
     // MARK: - Private properties
 
     private lazy var textLabel = Label(style: .detail, numberOfLines: 2, withAutoLayout: true)
-    private lazy var checkmarkImageView = UIImageView(imageName: .checkmarkBlue, withAutoLayout: true)
     private lazy var warningIconImageView = UIImageView(imageName: .warning, withAutoLayout: true)
-    private lazy var processIllustrationView = TransactionStepIllustrationView(color: .btnPrimary, withAutoLayout: true)
-    private lazy var supplementaryStackView = UIStackView(axis: .vertical, spacing: 0, alignment: .top, withAutoLayout: true)
+    private lazy var supplementaryView = SupplementaryView(withAutoLayout: true)
     private lazy var titleStackView = UIStackView(axis: .horizontal, spacing: .spacingS, alignment: .center, distribution: .equalSpacing, withAutoLayout: true)
-    private lazy var supplementaryStackViewWidthConstraint = supplementaryStackView.widthAnchor.constraint(equalToConstant: 20)
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .captionStrong, numberOfLines: 0, withAutoLayout: true)
@@ -38,30 +35,21 @@ public class TransactionStepView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        supplementaryStackView.addArrangedSubviews([processIllustrationView, checkmarkImageView, UIView(withAutoLayout: true)])
-        processIllustrationView.isHidden = true
-        checkmarkImageView.isHidden = true
-        addSubview(supplementaryStackView)
-
         titleStackView.addArrangedSubviews([titleLabel, warningIconImageView])
         addSubview(titleStackView)
-
+        addSubview(supplementaryView)
         addSubview(textLabel)
 
         NSLayoutConstraint.activate([
-            supplementaryStackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXXS),
-            supplementaryStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            supplementaryStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            supplementaryStackViewWidthConstraint,
+            supplementaryView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXXS),
+            supplementaryView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            supplementaryView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            checkmarkImageView.heightAnchor.constraint(equalToConstant: 20),
-            checkmarkImageView.widthAnchor.constraint(equalToConstant: 20),
-
-            titleStackView.leadingAnchor.constraint(equalTo: supplementaryStackView.trailingAnchor, constant: .spacingS),
+            titleStackView.leadingAnchor.constraint(equalTo: supplementaryView.trailingAnchor, constant: .spacingS),
             titleStackView.topAnchor.constraint(equalTo: topAnchor),
             titleStackView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
 
-            textLabel.leadingAnchor.constraint(equalTo: supplementaryStackView.trailingAnchor, constant: .spacingS),
+            textLabel.leadingAnchor.constraint(equalTo: supplementaryView.trailingAnchor, constant: .spacingS),
             textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXS),
             textLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             textLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -73,7 +61,7 @@ public class TransactionStepView: UIView {
     public func configure(
         withTitle title: String?,
         text: String?,
-        supplementaryView: SupplementaryView = .processIllustration,
+        supplementaryViewKind: SupplementaryViewKind = .processIllustration,
         showWarningIcon: Bool,
         numberOfTextLines: Int = 2
     ) {
@@ -81,17 +69,39 @@ public class TransactionStepView: UIView {
         textLabel.text = text
         textLabel.numberOfLines = numberOfTextLines
         warningIconImageView.isHidden = !showWarningIcon
-
-        switch supplementaryView {
-        case .processIllustration:
-            processIllustrationView.isHidden = false
-            checkmarkImageView.isHidden = true
-            supplementaryStackViewWidthConstraint.constant = 12
-        case .checkmark:
-            checkmarkImageView.isHidden = false
-            processIllustrationView.isHidden = true
-            supplementaryStackViewWidthConstraint.constant = 20
-        }
+        supplementaryView.configure(with: supplementaryViewKind)
         layoutIfNeeded()
+    }
+}
+
+// MARK: - Private subtypes
+
+private extension TransactionStepView {
+    class SupplementaryView: UIView {
+
+        // MARK: - Private properties
+
+        private lazy var checkmarkImageView = UIImageView(imageName: .checkmarkBlue, withAutoLayout: true)
+        private lazy var processIllustrationView = TransactionStepIllustrationView(color: .btnPrimary, withAutoLayout: true)
+
+        // MARK: - Internal methods
+
+        func configure(with kind: SupplementaryViewKind) {
+            subviews.forEach { $0.removeFromSuperview() }
+            switch kind {
+            case .processIllustration:
+                addSubview(processIllustrationView)
+                processIllustrationView.fillInSuperview()
+            case .checkmark:
+                addSubview(checkmarkImageView)
+                NSLayoutConstraint.activate([
+                    checkmarkImageView.topAnchor.constraint(equalTo: topAnchor),
+                    checkmarkImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                    checkmarkImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+                    checkmarkImageView.widthAnchor.constraint(equalToConstant: 20),
+                    checkmarkImageView.heightAnchor.constraint(equalTo: checkmarkImageView.widthAnchor),
+                ])
+            }
+        }
     }
 }
