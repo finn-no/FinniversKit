@@ -82,16 +82,23 @@ private extension Array where Element == SelectionItemModel {
     static func createWithHTML(number: Int) -> [SelectionItemModel] {
         (0..<number).map {
             let htmlString = "Kjøper betaler <del>80</del> <b><span style=\"color:tjt-price-highlight\">40 kr</span></b> for frakt."
-            let style: HTMLStyler.StyleMap = [
-                HTMLStyler.StyleKey("tjt-price-highlight"): UIColor.dynamicColor(defaultColor: .red, darkModeColor: .yellow)
-            ]
+            let spanMapper: HTMLStringUIKitStyleTranslator.SpanMapper = { attributes, currentStyle in
+                for (name, value) in attributes {
+                    guard name == "style",
+                          value == "color:tjt-price-highlight" else {
+                        return
+                    }
+
+                    currentStyle.foregroundColor = .dynamicColor(defaultColor: .red, darkModeColor: .yellow)
+                }
+            }
             let accessibilityString = "Kjøper betaler 40 kroner for frakt. Dette er en tilbudspris og koster 80 kroner til vanlig."
             return SelectionItemModel(
                 identifier: "item-\($0)",
                 title: "Helthjem",
                 description: .html(
                     htmlString: htmlString,
-                    style: style,
+                    spanMapper: spanMapper,
                     accessibilityString: accessibilityString),
                 icon: .dynamic(UIImage(named: .torgetHelthjem)),
                 isInitiallySelected: true

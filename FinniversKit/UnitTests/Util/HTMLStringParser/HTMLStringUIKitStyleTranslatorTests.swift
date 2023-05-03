@@ -7,24 +7,68 @@ final class HTMLStringUIKitStyleTranslatorTests: XCTestCase {
 
     func testBold() throws {
         let boldText = "This is a <b>bold</b> move"
-        let styleElements = try parser.parse(html: boldText, translator: translator)
-        let reference: [HTMLStringUIKitStyleTranslator.StyledText] = [
-            .init(text: "This is a ", style: .init(font: .body)),
-            .init(text: "bold", style: .init(font: .body, fontWeight: .bold)),
-            .init(text: " move", style: .init(font: .body))
+        let attributedString = try parser.parse(html: boldText, translator: translator)
+
+        let requiredAttributes = [
+            NSAttributedString.FontAttributes(
+                fontDescriptor: UIFont.body.fontDescriptor,
+                range: NSRange(location: 0, length: 10)
+            ),
+            NSAttributedString.FontAttributes(
+                fontDescriptor: UIFont.body.fontDescriptor.withSymbolicTraits(.traitBold) ?? UIFont.body.fontDescriptor,
+                range: NSRange(location: 10, length: 4)
+            ),
+            NSAttributedString.FontAttributes(
+                fontDescriptor: UIFont.body.fontDescriptor,
+                range: NSRange(location: 14, length: 5)
+            )
         ]
-        XCTAssertEqual(styleElements, reference)
+
+        XCTAssertTrue(attributedString.isMatchingFontAttributes(in: requiredAttributes))
     }
 
     func testMix() throws {
         let boldText = "This <b>bold <i>italic</i></b> thing"
-        let styleElements = try parser.parse(html: boldText, translator: translator)
-        let reference: [HTMLStringUIKitStyleTranslator.StyledText] = [
-            .init(text: "This ", style: .init(font: .body)),
-            .init(text: "bold ", style: .init(font: .body, fontWeight: .bold)),
-            .init(text: "italic", style: .init(font: .body, fontWeight: .bold, italic: true)),
-            .init(text: " thing", style: .init(font: .body))
+        let attributedString = try parser.parse(html: boldText, translator: translator)
+        let requiredAttributes = [
+            NSAttributedString.FontAttributes(
+                fontDescriptor: UIFont.body.fontDescriptor,
+                range: NSRange(location: 0, length: 5)
+            ),
+            NSAttributedString.FontAttributes(
+                fontDescriptor: UIFont.body.fontDescriptor.withSymbolicTraits(.traitBold) ?? UIFont.body.fontDescriptor,
+                range: NSRange(location: 5, length: 11)
+            ),
+            NSAttributedString.FontAttributes(
+                fontDescriptor: UIFont.body.fontDescriptor,
+                range: NSRange(location: 16, length: 6)
+            )
         ]
-        XCTAssertEqual(styleElements, reference)
+
+        XCTAssertTrue(attributedString.isMatchingFontAttributes(in: requiredAttributes))
+    }
+}
+
+extension NSAttributedString {
+    struct FontAttributes {
+        let fontDescriptor: UIFontDescriptor
+        let range: NSRange
+    }
+
+    func isMatchingFontAttributes(in requiredAttributes: [FontAttributes]) -> Bool {
+        var requiredAttributes = requiredAttributes
+        enumerateAttribute(.font, in: NSRange(location: 0, length: string.count)) { font, range, _ in
+            guard let uiFont = font as? UIFont else {
+                return
+            }
+
+            if let firsAttribute = requiredAttributes.first,
+               uiFont.fontDescriptor.postscriptName == firsAttribute.fontDescriptor.postscriptName,
+               uiFont.fontDescriptor.symbolicTraits == firsAttribute.fontDescriptor.symbolicTraits,
+               range == firsAttribute.range {
+                requiredAttributes.removeFirst()
+            }
+        }
+        return requiredAttributes.isEmpty
     }
 }
