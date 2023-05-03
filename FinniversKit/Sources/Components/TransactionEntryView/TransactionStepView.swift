@@ -12,7 +12,7 @@ public class TransactionStepView: UIView {
     private lazy var textLabel = Label(style: .detail, numberOfLines: 2, withAutoLayout: true)
     private lazy var warningIconImageView = UIImageView(imageName: .warning, withAutoLayout: true)
     private lazy var supplementaryView = SupplementaryView(withAutoLayout: true)
-    private lazy var titleStackView = UIStackView(axis: .horizontal, spacing: .spacingS, alignment: .center, distribution: .equalSpacing, withAutoLayout: true)
+    private lazy var titleStackView = UIStackView(axis: .horizontal, spacing: .spacingS, alignment: .top, distribution: .equalSpacing, withAutoLayout: true)
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .captionStrong, numberOfLines: 0, withAutoLayout: true)
