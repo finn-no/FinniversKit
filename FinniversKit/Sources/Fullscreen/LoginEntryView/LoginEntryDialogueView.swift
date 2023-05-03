@@ -13,9 +13,7 @@ class LoginEntryDialogueView: UIView {
 
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = UIImage(named: .finnLogo)
         imageView.contentMode = .scaleAspectFit
-
         return imageView
     }()
 
@@ -77,6 +75,7 @@ class LoginEntryDialogueView: UIView {
         detailLabel.text = model.detail
         loginButton.setTitle(model.loginButtonTitle, for: .normal)
         registerButton.setTitle(model.registerButtonTitle, for: .normal)
+        logoImageView.image = model.icon
     }
 
     // MARK: - Private methods
