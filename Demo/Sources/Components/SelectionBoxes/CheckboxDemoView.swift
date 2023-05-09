@@ -26,10 +26,10 @@ public class CheckboxDemoView: UIView {
         addSubview(checkbox)
 
         NSLayoutConstraint.activate([
-            checkbox.leadingAnchor.constraint(equalTo: leadingAnchor),
-            checkbox.trailingAnchor.constraint(equalTo: trailingAnchor),
-            checkbox.topAnchor.constraint(equalTo: topAnchor)
-            ])
+            checkbox.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            checkbox.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            checkbox.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM)
+        ])
     }
 
     public required init?(coder aDecoder: NSCoder) {

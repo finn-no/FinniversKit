@@ -128,10 +128,10 @@ public class BlockUserView: UIView {
                 constant: -.spacingXXL
             ),
 
-            radio.topAnchor.constraint(equalTo: subtitle.bottomAnchor, constant: .spacingXS),
-            radio.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            radio.topAnchor.constraint(equalTo: subtitle.bottomAnchor, constant: .spacingL),
+            radio.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
 
-            info.topAnchor.constraint(equalTo: radio.bottomAnchor, constant: .spacingXS),
+            info.topAnchor.constraint(equalTo: radio.bottomAnchor, constant: .spacingL),
             info.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL + .spacingS),
             info.trailingAnchor.constraint(
                 lessThanOrEqualTo: trailingAnchor,
