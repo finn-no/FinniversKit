@@ -163,8 +163,6 @@ extension Selectionbox {
             titleLabel,
             stack
         ])
-        
-        //titleLabel.isHidden = (titleLabel.text == nil)
 
         NSLayoutConstraint.activate([
             containerStack.topAnchor.constraint(equalTo: topAnchor, constant: .zero),
