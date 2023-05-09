@@ -25,9 +25,9 @@ public class RadioButtonDemoView: UIView {
         addSubview(radioButton)
 
         NSLayoutConstraint.activate([
-            radioButton.leadingAnchor.constraint(equalTo: leadingAnchor),
-            radioButton.trailingAnchor.constraint(equalTo: trailingAnchor),
-            radioButton.topAnchor.constraint(equalTo: topAnchor)
+            radioButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            radioButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            radioButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM)
             ])
     }
 
