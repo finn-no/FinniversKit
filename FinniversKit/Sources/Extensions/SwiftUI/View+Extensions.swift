@@ -8,7 +8,7 @@ extension View {
     public func roundedBorder(radius: CGFloat, width: CGFloat = .spacingXXS, color: Color) -> some View {
         self.overlay(
             RoundedRectangle(cornerRadius: radius)
-                .stroke(color, lineWidth: width)
+                .strokeBorder(color, lineWidth: width)
         )
     }
 
