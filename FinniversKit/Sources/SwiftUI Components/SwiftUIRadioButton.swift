@@ -3,28 +3,22 @@ import SwiftUI
 public struct SwiftUIRadioButton: View {
     @Binding public var isSelected: Bool
 
-    private let size: CGFloat
-    private let borderWidth: CGFloat
-    private let selectionScale: CGFloat
+    private var size: CGFloat = 16
+    private var borderWidth: CGFloat = 1
+    private var borderColor: Color = .textSecondary
+    private var selectionColor: Color = .textAction
+    private var selectionScale: CGFloat = 7/16
 
     private var backgroundColor: Color {
-        isSelected ? .textAction : .textSecondary
+        isSelected ? selectionColor : borderColor
     }
 
     private var innerSize: CGFloat {
         isSelected ? size * selectionScale : size - borderWidth * 2
     }
 
-    public init(
-        isSelected: Binding<Bool>,
-        size: CGFloat = 16,
-        borderWidth: CGFloat = 1,
-        selectionScale: CGFloat = 7/16
-    ) {
+    public init(isSelected: Binding<Bool>) {
         self._isSelected = isSelected
-        self.size = size
-        self.borderWidth = borderWidth
-        self.selectionScale = selectionScale
     }
 
     public var body: some View {
@@ -39,6 +33,36 @@ public struct SwiftUIRadioButton: View {
                 .frame(width: innerSize, height: innerSize)
                 .animation(.spring(response: 0.2, dampingFraction: 0.5), value: isSelected)
         }
+    }
+
+    public func size(_ size: CGFloat) -> Self {
+        var view = self
+        view.size = size
+        return view
+    }
+
+    public func borderWidth(_ borderWidth: CGFloat) -> Self {
+        var view = self
+        view.borderWidth = borderWidth
+        return view
+    }
+
+    public func borderColor(_ borderColor: Color) -> Self {
+        var view = self
+        view.borderColor = borderColor
+        return view
+    }
+
+    public func selectionColor(_ selectionColor: Color) -> Self {
+        var view = self
+        view.selectionColor = selectionColor
+        return view
+    }
+
+    public func selectionScale(_ selectionScale: CGFloat) -> Self {
+        var view = self
+        view.selectionScale = selectionScale
+        return view
     }
 }
 

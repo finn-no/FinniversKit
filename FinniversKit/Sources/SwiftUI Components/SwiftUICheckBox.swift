@@ -3,9 +3,10 @@ import SwiftUI
 public struct SwiftUICheckBox: View {
     @Binding var isChecked: Bool
 
-    private let size: CGFloat
-    private let cornerRadius: CGFloat
-    private let borderWidth: CGFloat
+    private var size: CGFloat = 16
+    private var cornerRadius: CGFloat = 2
+    private var borderWidth: CGFloat = 1
+    private var borderColor: Color = .textSecondary
 
     private var fillOpacity: CGFloat {
         isChecked ? 0 : 1
@@ -23,16 +24,8 @@ public struct SwiftUICheckBox: View {
         isChecked ? .zero : CGSize(width: size, height: size)
     }
 
-    public init(
-        isChecked: Binding<Bool>,
-        size: CGFloat = 16,
-        cornerRadius: CGFloat = 2,
-        borderWidth: CGFloat = 1
-    ) {
+    public init(isChecked: Binding<Bool>) {
         self._isChecked = isChecked
-        self.size = size
-        self.cornerRadius = cornerRadius
-        self.borderWidth = borderWidth
     }
 
     public var body: some View {
@@ -53,7 +46,7 @@ public struct SwiftUICheckBox: View {
 
             // The gray border for the control, fades when checked
             RoundedRectangle(cornerRadius: cornerRadius)
-                .strokeBorder(Color.textSecondary, lineWidth: borderWidth)
+                .strokeBorder(borderColor, lineWidth: borderWidth)
                 .frame(
                     width: size,
                     height: size
@@ -81,6 +74,30 @@ public struct SwiftUICheckBox: View {
         .onTapGesture {
             isChecked.toggle()
         }
+    }
+
+    public func size(_ size: CGFloat) -> Self {
+        var view = self
+        view.size = size
+        return view
+    }
+
+    public func cornerRadius(_ cornerRadius: CGFloat) -> Self {
+        var view = self
+        view.cornerRadius = cornerRadius
+        return view
+    }
+
+    public func borderWidth(_ borderWidth: CGFloat) -> Self {
+        var view = self
+        view.borderWidth = borderWidth
+        return view
+    }
+
+    public func borderColor(_ borderColor: Color) -> Self {
+        var view = self
+        view.borderColor = borderColor
+        return view
     }
 }
 
