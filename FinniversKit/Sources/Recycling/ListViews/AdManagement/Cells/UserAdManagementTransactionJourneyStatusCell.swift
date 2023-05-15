@@ -3,7 +3,7 @@
 //
 
 public protocol UserAdManagementTransactionJourneyStatusCellDelegate: AnyObject {
-    func transactionJourneyStatusCellWasTapped(_ sender: UserAdManagementTransactionJourneyStatusCell)
+    func transactionJourneyStatusCellWasTapped(_ view: UserAdManagementTransactionJourneyStatusCell)
 }
 
 public class UserAdManagementTransactionJourneyStatusCell: UITableViewCell {
@@ -16,7 +16,14 @@ public class UserAdManagementTransactionJourneyStatusCell: UITableViewCell {
         }
     }
 
+    public var transactionJourneyStatusURL: String?
+
     private lazy var contentStackViewTrailingConstraint = contentStackView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor)
+
+    private lazy var contentViewTapRecognizer = UITapGestureRecognizer(
+        target: self,
+        action: #selector(didTapContentView)
+    )
 
     private lazy var contentStackView: UIStackView = {
         let stackView = UIStackView(axis: .horizontal, spacing: .spacingM, withAutoLayout: true)
@@ -67,6 +74,7 @@ public class UserAdManagementTransactionJourneyStatusCell: UITableViewCell {
         contentStackView.addArrangedSubviews([iconImageView, transactionStatusLabel])
 
         contentView.addSubview(contentStackView)
+        contentView.addGestureRecognizer(contentViewTapRecognizer)
 
         let iconImageWidthAndHeight: CGFloat = 24
 
@@ -79,5 +87,18 @@ public class UserAdManagementTransactionJourneyStatusCell: UITableViewCell {
             iconImageView.widthAnchor.constraint(equalToConstant: iconImageWidthAndHeight),
             iconImageView.heightAnchor.constraint(equalToConstant: iconImageWidthAndHeight),
         ])
+    }
+
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+
+        contentStackViewTrailingConstraint.constant = 0
+        transactionJourneyStatusURL = nil
+
+    }
+
+    @objc private func didTapContentView() {
+        fatalError()
+        delegate?.transactionJourneyStatusCellWasTapped(self)
     }
 }
