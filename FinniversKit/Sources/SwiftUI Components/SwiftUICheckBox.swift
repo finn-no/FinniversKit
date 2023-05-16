@@ -3,12 +3,10 @@ import SwiftUI
 public struct SwiftUICheckBox: View {
     @Binding var isChecked: Bool
 
-    private let cornerRadius: CGFloat = 2
-    private let size: CGFloat = 16
-
-    private var fillOffset: CGPoint {
-        isChecked ? CGPoint(x: -3.2, y: 1) : .zero
-    }
+    private var size: CGFloat = 16
+    private var cornerRadius: CGFloat = 2
+    private var borderWidth: CGFloat = 1
+    private var borderColor: Color = .textSecondary
 
     private var fillOpacity: CGFloat {
         isChecked ? 0 : 1
@@ -19,11 +17,11 @@ public struct SwiftUICheckBox: View {
     }
 
     private var checkMarkScale: CGFloat {
-        isChecked ? 1 : 0.00001
+        isChecked ? 1 : .zero
     }
 
     private var fillinSize: CGSize {
-        isChecked ? CGSize(width: 1, height: 1) : CGSize(width: size, height: size)
+        isChecked ? .zero : CGSize(width: size, height: size)
     }
 
     public init(isChecked: Binding<Bool>) {
@@ -39,21 +37,16 @@ public struct SwiftUICheckBox: View {
 
             // Fill area over the background, shrinks to a point when checked
             RoundedRectangle(cornerRadius: isChecked ? size : cornerRadius)
-                .fill(Color(.bgPrimary))
-                .opacity(1)
+                .fill(Color.bgPrimary)
                 .frame(
                     width: fillinSize.width,
                     height: fillinSize.height
-                )
-                .offset(
-                    x: fillOffset.x,
-                    y: fillOffset.y
                 )
                 .animation(.easeOut(duration: 0.15), value: fillinSize)
 
             // The gray border for the control, fades when checked
             RoundedRectangle(cornerRadius: cornerRadius)
-                .strokeBorder(Color.textSecondary)
+                .strokeBorder(borderColor, lineWidth: borderWidth)
                 .frame(
                     width: size,
                     height: size
@@ -71,7 +64,7 @@ public struct SwiftUICheckBox: View {
                         lineCap: .round
                     )
                 )
-                .animation(.easeOut(duration: 0.15).delay(0.1), value: checkMarkTrimEnd)
+                .animation(.easeOut(duration: 0.15).delay(0.15), value: checkMarkTrimEnd)
                 .frame(
                     width: size,
                     height: size
@@ -81,6 +74,30 @@ public struct SwiftUICheckBox: View {
         .onTapGesture {
             isChecked.toggle()
         }
+    }
+
+    public func size(_ size: CGFloat) -> Self {
+        var view = self
+        view.size = size
+        return view
+    }
+
+    public func cornerRadius(_ cornerRadius: CGFloat) -> Self {
+        var view = self
+        view.cornerRadius = cornerRadius
+        return view
+    }
+
+    public func borderWidth(_ borderWidth: CGFloat) -> Self {
+        var view = self
+        view.borderWidth = borderWidth
+        return view
+    }
+
+    public func borderColor(_ borderColor: Color) -> Self {
+        var view = self
+        view.borderColor = borderColor
+        return view
     }
 }
 
