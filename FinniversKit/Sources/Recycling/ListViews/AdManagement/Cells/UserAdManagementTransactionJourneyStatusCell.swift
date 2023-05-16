@@ -8,7 +8,7 @@ public protocol UserAdManagementTransactionJourneyStatusCellDelegate: AnyObject 
 
 public class UserAdManagementTransactionJourneyStatusCell: UITableViewCell {
 
-    weak public var delegate: UserAdManagementTransactionJourneyStatusCellDelegate?
+    public weak var delegate: UserAdManagementTransactionJourneyStatusCellDelegate?
 
     public var labelText: String? {
         didSet {
@@ -98,7 +98,6 @@ public class UserAdManagementTransactionJourneyStatusCell: UITableViewCell {
     }
 
     @objc private func didTapContentView() {
-        fatalError()
         delegate?.transactionJourneyStatusCellWasTapped(self)
     }
 }
