@@ -21,6 +21,7 @@ public class UserAdManagementTransactionJourneyStatusCell: UserAdManagementUserA
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -28,12 +29,12 @@ public class UserAdManagementTransactionJourneyStatusCell: UserAdManagementUserA
     }
 
     // MARK: - Setup
+    private func setup() {
+        contentView.addGestureRecognizer(contentViewTapRecognizer)
+    }
 
     public func configure(title: String, iconImage: UIImage) {
         super.configure(with: AdManagementActionCellModel(title: title, iconImage: iconImage))
-
-        showSeparator(false)
-        contentView.addGestureRecognizer(contentViewTapRecognizer)
     }
 
     public override func prepareForReuse() {
