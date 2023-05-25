@@ -1,24 +1,20 @@
 import SwiftUI
 
 public struct SwiftUIRadioButton: View {
-    @Environment(\.colorScheme) var colorScheme
-
     @Binding public var isSelected: Bool
 
-    private static let size: CGFloat = 16
+    private var size: CGFloat = 16
+    private var borderWidth: CGFloat = 1
+    private var borderColor: Color = .textSecondary
+    private var selectionColor: Color = .textAction
+    private var selectionScale: CGFloat = 7/16
 
     private var backgroundColor: Color {
-        isSelected ? .textAction : .textSecondary
-    }
-
-    private var borderWidth: CGFloat {
-        // The selection border looks too wide in dark mode
-        let selectedBorderWidth: CGFloat = colorScheme == .dark ? 4 : 5
-        return isSelected ? selectedBorderWidth : 1
+        isSelected ? selectionColor : borderColor
     }
 
     private var innerSize: CGFloat {
-        SwiftUIRadioButton.size - borderWidth * 2
+        isSelected ? size * selectionScale : size - borderWidth * 2
     }
 
     public init(isSelected: Binding<Bool>) {
@@ -29,7 +25,7 @@ public struct SwiftUIRadioButton: View {
         ZStack {
             Circle()
                 .foregroundColor(backgroundColor)
-                .frame(width: SwiftUIRadioButton.size, height: SwiftUIRadioButton.size)
+                .frame(width: size, height: size)
                 .animation(.spring(response: 0.2, dampingFraction: 0.5), value: isSelected)
 
             Circle()
@@ -38,14 +34,54 @@ public struct SwiftUIRadioButton: View {
                 .animation(.spring(response: 0.2, dampingFraction: 0.5), value: isSelected)
         }
     }
+
+    public func size(_ size: CGFloat) -> Self {
+        var view = self
+        view.size = size
+        return view
+    }
+
+    public func borderWidth(_ borderWidth: CGFloat) -> Self {
+        var view = self
+        view.borderWidth = borderWidth
+        return view
+    }
+
+    public func borderColor(_ borderColor: Color) -> Self {
+        var view = self
+        view.borderColor = borderColor
+        return view
+    }
+
+    public func selectionColor(_ selectionColor: Color) -> Self {
+        var view = self
+        view.selectionColor = selectionColor
+        return view
+    }
+
+    public func selectionScale(_ selectionScale: CGFloat) -> Self {
+        var view = self
+        view.selectionScale = selectionScale
+        return view
+    }
 }
 
 struct SwiftUIRadioButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            SwiftUIRadioButton(isSelected: .constant(true))
+            StatefulPreviewWrapper(true) { binding in
+                SwiftUIRadioButton(isSelected: binding)
+                    .onTapGesture {
+                        binding.wrappedValue.toggle()
+                    }
+            }
 
-            SwiftUIRadioButton(isSelected: .constant(false))
+            StatefulPreviewWrapper(false) { binding in
+                SwiftUIRadioButton(isSelected: binding)
+                    .onTapGesture {
+                        binding.wrappedValue.toggle()
+                    }
+            }
         }
     }
 }

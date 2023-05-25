@@ -95,13 +95,13 @@ public class AdReporterView: UIScrollView {
             contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
             contentView.widthAnchor.constraint(equalTo: widthAnchor),
 
-            radioButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            radioButton.topAnchor.constraint(equalTo: contentView.topAnchor),
-            radioButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            radioButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            radioButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
+            radioButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: .spacingM),
 
             hairlineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
-            hairlineView.topAnchor.constraint(equalTo: radioButton.bottomAnchor),
+            hairlineView.topAnchor.constraint(equalTo: radioButton.bottomAnchor, constant: .spacingM),
             hairlineView.heightAnchor.constraint(equalToConstant: 1),
 
             descriptionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),

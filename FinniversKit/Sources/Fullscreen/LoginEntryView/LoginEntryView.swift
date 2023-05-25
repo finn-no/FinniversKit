@@ -10,6 +10,7 @@ public protocol LoginEntryViewModel {
     var includeSettings: Bool { get }
     var loginButtonTitle: String { get }
     var registerButtonTitle: String { get }
+    var icon: UIImage { get }
 }
 
 public protocol LoginEntryViewDelegate: AnyObject {
