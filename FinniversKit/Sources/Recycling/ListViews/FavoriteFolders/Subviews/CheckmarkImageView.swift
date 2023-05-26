@@ -15,3 +15,12 @@ public extension UIImageView {
         return imageView
     }
 }
+
+// MARK: - Internal extensions
+
+extension UIImageView {
+    convenience init(imageName: ImageAsset, withAutoLayout: Bool) {
+        self.init(withAutoLayout: withAutoLayout)
+        self.image = UIImage(named: imageName)
+    }
+}

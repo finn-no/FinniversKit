@@ -2,14 +2,17 @@ import Foundation
 
 class TransactionStepIllustrationView: UIView {
 
+    // MARK: - Private properties
+
+    private let circleSize: CGFloat = .spacingS + .spacingXS
+    private lazy var line = UIView(withAutoLayout: true)
+
     private lazy var circleView: UIView = {
         let circle = UIView(withAutoLayout: true)
-        circle.layer.cornerRadius = circleSize/2
+        circle.layer.cornerRadius = circleSize / 2
         circle.layer.borderWidth = 2
         return circle
     }()
-
-    private lazy var line = UIView(withAutoLayout: true)
 
     private lazy var gradientLayer: CALayer = {
         let gradientLayer = CAGradientLayer()
@@ -19,12 +22,12 @@ class TransactionStepIllustrationView: UIView {
         return gradientLayer
     }()
 
-    private let circleSize: CGFloat = .spacingS + .spacingXS
 
     // MARK: - Init
 
-    init(color: UIColor) {
+    init(color: UIColor, withAutoLayout: Bool = false) {
         super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         circleView.layer.borderColor = color.cgColor
         line.backgroundColor = color
         setup()

@@ -7,7 +7,23 @@ public protocol TransactionEntryViewDelegate: AnyObject {
 
 public class TransactionEntryView: UIView {
 
+    // MARK: - Public properties
+
+    public weak var delegate: TransactionEntryViewDelegate?
+
+    public weak var remoteImageViewDataSource: RemoteImageViewDataSource? {
+        didSet {
+            imageView.dataSource = remoteImageViewDataSource
+        }
+    }
+
+    // MARK: - Private properties
+    
+    private let imageSize: CGFloat = 32
+    private let navigationLinkBackgroundColor: UIColor
+    private var fallbackImage: UIImage?
     private lazy var contentView = UIView(withAutoLayout: true)
+    private lazy var transactionStepView = TransactionStepView(withAutoLayout: true)
 
     private lazy var imageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
@@ -17,12 +33,6 @@ public class TransactionEntryView: UIView {
         imageView.delegate = self
         imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
         return imageView
-    }()
-
-    private lazy var transactionStepView: TransactionStepView = {
-        let view = TransactionStepView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
     }()
 
     private lazy var navigationLinkView: NavigationLinkView = {
@@ -35,18 +45,6 @@ public class TransactionEntryView: UIView {
         view.delegate = self
         return view
     }()
-
-    private let imageSize: CGFloat = 32
-    private var fallbackImage: UIImage?
-    private let navigationLinkBackgroundColor: UIColor
-
-    public weak var remoteImageViewDataSource: RemoteImageViewDataSource? {
-        didSet {
-            imageView.dataSource = remoteImageViewDataSource
-        }
-    }
-
-    public weak var delegate: TransactionEntryViewDelegate?
 
     // MARK: - Init
 
