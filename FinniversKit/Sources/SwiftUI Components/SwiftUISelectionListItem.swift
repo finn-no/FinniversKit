@@ -30,7 +30,7 @@ struct SwiftUISelectionListItem<ItemType>: View {
                     .foregroundColor(.textPrimary)
 
                 if let description = itemModel.description {
-                    Text(description)
+                    HTMLText(description)
                         .finnFont(.caption)
                         .foregroundColor(.textSecondary)
                 }
