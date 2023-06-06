@@ -56,11 +56,11 @@ public enum ComponentDemoViews: String, DemoViews {
     case collapsibleContentView
     case columnListsView
     case keyValueGridView
-    case objectPagePriceView
+//    case objectPagePriceView
     case linkButtonListView
     case safetyElementsView
     case contractActionView
-    case objectPageTitleView
+//    case objectPageTitleView
     case favoriteButton
     case sendInviteView
     case navigationLinkView
@@ -212,16 +212,16 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<ColumnListsDemoView>()
         case .keyValueGridView:
             return DemoViewController<KeyValueGridDemoView>()
-        case .objectPagePriceView:
-            return DemoViewController<ObjectPagePriceDemoView>()
+//        case .objectPagePriceView:
+//            return DemoViewController<ObjectPagePriceDemoView>()
         case .linkButtonListView:
             return DemoViewController<LinkButtonListDemoView>()
         case .safetyElementsView:
             return DemoViewController<SafetyElementsDemoView>(dismissType: .dismissButton)
         case .contractActionView:
             return DemoViewController<ContractActionDemoView>()
-        case .objectPageTitleView:
-            return DemoViewController<ObjectPageTitleDemoView>()
+//        case .objectPageTitleView:
+//            return DemoViewController<ObjectPageTitleDemoView>()
         case .favoriteButton:
             return DemoViewController<FavoriteButtonDemoView>(dismissType: .dismissButton)
         case .sendInviteView:

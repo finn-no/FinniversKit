@@ -223,9 +223,9 @@ class ComponentViewTests: XCTestCase {
         snapshot(.keyValueGridView)
     }
 
-    func testObjectPagePriceView() {
-        snapshot(.objectPagePriceView)
-    }
+//    func testObjectPagePriceView() {
+//        snapshot(.objectPagePriceView)
+//    }
 
     func testLinkButtonListView() {
         snapshot(.linkButtonListView)
@@ -239,9 +239,9 @@ class ComponentViewTests: XCTestCase {
         snapshot(.contractActionView)
     }
 
-    func testObjectPageTitleView() {
-        snapshot(.objectPageTitleView)
-    }
+//    func testObjectPageTitleView() {
+//        snapshot(.objectPageTitleView)
+//    }
 
     func testFavoriteButton() {
         snapshot(.favoriteButton)
