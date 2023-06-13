@@ -70,7 +70,6 @@
 		46E773F3242CEF0A008A5E93 /* NativeAdvertDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772D3242CEF09008A5E93 /* NativeAdvertDemoView.swift */; };
 		46E773F4242CEF0A008A5E93 /* TextViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772D5242CEF09008A5E93 /* TextViewDemoView.swift */; };
 		46E773F5242CEF0A008A5E93 /* SelectorTitleViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772D7242CEF09008A5E93 /* SelectorTitleViewDemoView.swift */; };
-		46E773F6242CEF0A008A5E93 /* ObjectPageTitleDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772D9242CEF09008A5E93 /* ObjectPageTitleDemoView.swift */; };
 		46E773F7242CEF0A008A5E93 /* SafetyElementsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772DB242CEF09008A5E93 /* SafetyElementsDemoView.swift */; };
 		46E773F8242CEF0A008A5E93 /* PanelDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772DD242CEF09008A5E93 /* PanelDemoView.swift */; };
 		46E773F9242CEF0A008A5E93 /* DisclaimerDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772DF242CEF09008A5E93 /* DisclaimerDemoView.swift */; };
@@ -95,7 +94,6 @@
 		46E77412242CEF0A008A5E93 /* EarthHourDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7730D242CEF09008A5E93 /* EarthHourDefaultData.swift */; };
 		46E77413242CEF0A008A5E93 /* EarthHourDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7730E242CEF09008A5E93 /* EarthHourDemoView.swift */; };
 		46E77416242CEF0A008A5E93 /* StepSliderDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77313242CEF09008A5E93 /* StepSliderDemoView.swift */; };
-		46E77417242CEF0A008A5E93 /* ObjectPagePriceDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77315242CEF09008A5E93 /* ObjectPagePriceDemoView.swift */; };
 		46E77418242CEF0A008A5E93 /* ColumnListsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77317242CEF09008A5E93 /* ColumnListsDemoView.swift */; };
 		46E77419242CEF0A008A5E93 /* InfoboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77319242CEF09008A5E93 /* InfoboxDemoView.swift */; };
 		46E7741A242CEF0A008A5E93 /* InfoboxDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7731A242CEF09008A5E93 /* InfoboxDefaultData.swift */; };
@@ -2180,7 +2178,6 @@
 				46E773AE242CEF0A008A5E93 /* Helpers.swift in Sources */,
 				4D01FC97261C48F5008B9913 /* TransactionEntryDemoView.swift in Sources */,
 				46E77458242CEF0A008A5E93 /* AdRecommendationsGridViewDemoView.swift in Sources */,
-				46E773F6242CEF0A008A5E93 /* ObjectPageTitleDemoView.swift in Sources */,
 				46E77430242CEF0A008A5E93 /* RadioButtonDemoView.swift in Sources */,
 				46E773B3242CEF0A008A5E93 /* FavoriteFolderActionDemoView.swift in Sources */,
 				46E773F9242CEF0A008A5E93 /* DisclaimerDemoView.swift in Sources */,
@@ -2194,7 +2191,6 @@
 				46E7744B242CEF0A008A5E93 /* CheckboxCellDemoView.swift in Sources */,
 				46E77439242CEF0A008A5E93 /* KeyValueGridDemoView.swift in Sources */,
 				46E773C3242CEF0A008A5E93 /* BuyerPickerDemoView.swift in Sources */,
-				46E77417242CEF0A008A5E93 /* ObjectPagePriceDemoView.swift in Sources */,
 				46E773AB242CEF0A008A5E93 /* SplitViewController.swift in Sources */,
 				46E773C1242CEF0A008A5E93 /* ContactFormDemoView.swift in Sources */,
 				46E7740A242CEF0A008A5E93 /* RoundedImageViewDemoView.swift in Sources */,
