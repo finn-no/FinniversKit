@@ -101,7 +101,7 @@ class ViewingItemView: UIView {
             dateStackView.alignment = .center
             contentStackViewLeadingConstraint.constant = .spacingS
         case .redesign:
-            dateStackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 24).isActive = true
+            dateStackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 28).isActive = true
             contentStackViewLeadingConstraint.constant = .spacingM
             dateStackView.setContentHuggingPriority(.required, for: .horizontal)
             dateStackView.setContentCompressionResistancePriority(.required, for: .horizontal)
