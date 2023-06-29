@@ -8,11 +8,7 @@ struct ToastViewModifier: ViewModifier {
         viewModel != nil
     }
 
-    @State private var toastTimeoutWorkItem: DispatchWorkItem? {
-        didSet {
-            oldValue?.cancel()
-        }
-    }
+    @State private var toastID: UUID?
 
     func body(content: Content) -> some View {
         ZStack {
@@ -27,13 +23,6 @@ struct ToastViewModifier: ViewModifier {
 
                     ToastSwiftUIView(text: viewModel.text, style: viewModel.style, actionButton: viewModel.actionButton)
                         .transition(.move(edge: position == .top ? .top : .bottom))
-                        .onAppear {
-                            let dismissToastWorkItem = DispatchWorkItem {
-                                self.viewModel = nil
-                            }
-                            toastTimeoutWorkItem = dismissToastWorkItem
-                            DispatchQueue.main.asyncAfter(deadline: .now() + viewModel.timeout, execute: dismissToastWorkItem)
-                        }
                         .gesture(
                             DragGesture(minimumDistance: 20, coordinateSpace: .local)
                                 .onEnded { value in
@@ -53,6 +42,17 @@ struct ToastViewModifier: ViewModifier {
                 }
             }
             .animation(.easeInOut(duration: 0.3), value: isPresented)
+        }
+        .onChange(of: viewModel) { newValue in
+            guard let viewModel = newValue else { return }
+            let toastID = UUID()
+            let dismissToastWorkItem = DispatchWorkItem {
+                if self.toastID == toastID, self.viewModel != nil {
+                    self.viewModel = nil
+                }
+            }
+            self.toastID = toastID
+            DispatchQueue.main.asyncAfter(deadline: .now() + viewModel.timeout, execute: dismissToastWorkItem)
         }
     }
 }

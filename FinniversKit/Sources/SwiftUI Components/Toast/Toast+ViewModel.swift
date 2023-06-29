@@ -69,3 +69,12 @@ extension Toast {
         }
     }
 }
+
+extension Toast.ViewModel: Equatable {
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.text == rhs.text
+        && lhs.style == rhs.style
+        && lhs.timeout == rhs.timeout
+        && lhs.position == rhs.position
+    }
+}
