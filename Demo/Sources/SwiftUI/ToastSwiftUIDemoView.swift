@@ -4,7 +4,6 @@ import FinniversKit
 struct ToastSwiftUIDemoView: View {
     @State var topToastViewModel: Toast.ViewModel? = nil
     @State var bottomToastViewModel: Toast.ViewModel? = nil
-    @State var toastCount: Int = 0
 
     var body: some View {
         VStack(spacing: .spacingM) {
@@ -27,15 +26,6 @@ struct ToastSwiftUIDemoView: View {
             SwiftUI.Button("Animate from bottom") {
                 bottomToastViewModel = .init(
                     text: "Animated from bottom",
-                    style: .success,
-                    position: .bottom
-                )
-            }
-
-            SwiftUI.Button("Animate another from bottom") {
-                toastCount += 1
-                bottomToastViewModel = .init(
-                    text: "Animated from bottom (\(toastCount))",
                     style: .success,
                     position: .bottom
                 )
