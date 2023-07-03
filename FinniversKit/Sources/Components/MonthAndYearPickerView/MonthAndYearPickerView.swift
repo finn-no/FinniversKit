@@ -46,9 +46,8 @@ public class MonthAndYearPickerView: UIControl {
     }
 
     public let minimumYear: Int = 1900
-    public lazy var maximumYear: Int = {
-        calendar.component(.year, from: Date())
-    }()
+    /// Set a maximum year for the picker. If nil, current year is used.
+    public var maximumYear: Int?
 
     private lazy var calendar: Calendar = {
         var calendar = Calendar(identifier: .iso8601)
@@ -58,7 +57,8 @@ public class MonthAndYearPickerView: UIControl {
     }()
 
     private var years: [Int] {
-        [Int](minimumYear...maximumYear)
+        let max = maximumYear ?? calendar.component(.year, from: Date())
+        return [Int](minimumYear...max)
     }
 
     private var months: [String] {
