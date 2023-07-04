@@ -24,6 +24,7 @@ public protocol ColorProvider {
     var textAction: UIColor { get }
     var textDisabled: UIColor { get }
     var textCritical: UIColor { get }
+    var accentPrimaryBlue: UIColor { get }
     var accentSecondaryBlue: UIColor { get }
     var accentPea: UIColor { get }
     var accentToothpaste: UIColor { get }
@@ -115,6 +116,10 @@ public struct DefaultColorProvider: ColorProvider {
 
     public var textCritical: UIColor {
         .dynamicColor(defaultColor: .red600, darkModeColor: .red400)
+    }
+
+    public var accentPrimaryBlue: UIColor {
+        .blue600
     }
 
     public var accentSecondaryBlue: UIColor {
