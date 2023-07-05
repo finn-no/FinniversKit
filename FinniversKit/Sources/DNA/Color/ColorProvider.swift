@@ -12,6 +12,7 @@ public protocol ColorProvider {
     var bgBottomSheet: UIColor { get }
     var bgAlert: UIColor { get }
     var bgInfo: UIColor { get }
+    var bgInfoHeader: UIColor { get }
     var bgSuccess: UIColor { get }
     var bgCritical: UIColor { get }
     var btnPrimary: UIColor { get }
@@ -68,6 +69,10 @@ public struct DefaultColorProvider: ColorProvider {
 
     public var bgInfo: UIColor {
         .dynamicColor(defaultColor: .aqua50, darkModeColor: .darkIce)
+    }
+
+    public var bgInfoHeader: UIColor {
+        .dynamicColor(defaultColor: .accentToothpaste, darkModeColor: .primaryBlue)
     }
 
     public var bgSuccess: UIColor {
