@@ -42,6 +42,7 @@ import UIKit
 
 extension CGColor {
     public class var accentPea: CGColor { UIColor.accentPea.cgColor }
+    public class var accentPrimaryBlue: CGColor { UIColor.accentPrimaryBlue.cgColor }
     public class var accentSecondaryBlue: CGColor { UIColor.accentSecondaryBlue.cgColor }
     public class var accentToothpaste: CGColor { UIColor.accentToothpaste.cgColor }
     public class var bgAlert: CGColor { UIColor.bgAlert.cgColor }
