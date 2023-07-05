@@ -72,7 +72,7 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var bgInfoHeader: UIColor {
-        .dynamicColor(defaultColor: .accentToothpaste, darkModeColor: .primaryBlue)
+        .dynamicColor(defaultColor: .accentToothpaste, darkModeColor: .accentPrimaryBlue)
     }
 
     public var bgSuccess: UIColor {
