@@ -7,12 +7,14 @@ import UIKit
 // MARK: - Semantic colors, dark mode compatible
 @objc extension UIColor {
     public class var accentPea: UIColor { Config.colorProvider.accentPea }
+    public class var accentPrimaryBlue: UIColor { Config.colorProvider.accentPrimaryBlue }
     public class var accentSecondaryBlue: UIColor { Config.colorProvider.accentSecondaryBlue }
     public class var accentToothpaste: UIColor { Config.colorProvider.accentToothpaste }
     public class var bgAlert: UIColor { Config.colorProvider.bgAlert }
     public class var bgBottomSheet: UIColor { Config.colorProvider.bgBottomSheet }
     public class var bgCritical: UIColor { Config.colorProvider.bgCritical }
     public class var bgInfo: UIColor { Config.colorProvider.bgInfo }
+    public class var bgInfoHeader: UIColor { Config.colorProvider.bgInfoHeader }
     public class var bgPrimary: UIColor { Config.colorProvider.bgPrimary }
     public class var bgQuaternary: UIColor { Config.colorProvider.bgQuaternary }
     public class var bgSecondary: UIColor { Config.colorProvider.bgSecondary }
@@ -41,12 +43,14 @@ import UIKit
 
 extension CGColor {
     public class var accentPea: CGColor { UIColor.accentPea.cgColor }
+    public class var accentPrimaryBlue: CGColor { UIColor.accentPrimaryBlue.cgColor }
     public class var accentSecondaryBlue: CGColor { UIColor.accentSecondaryBlue.cgColor }
     public class var accentToothpaste: CGColor { UIColor.accentToothpaste.cgColor }
     public class var bgAlert: CGColor { UIColor.bgAlert.cgColor }
     public class var bgBottomSheet: CGColor { UIColor.bgBottomSheet.cgColor }
     public class var bgCritical: CGColor { UIColor.bgCritical.cgColor }
     public class var bgInfo: CGColor { UIColor.bgInfo.cgColor }
+    public class var bgInfoHeader: CGColor { UIColor.bgInfoHeader.cgColor }
     public class var bgPrimary: CGColor { UIColor.bgPrimary.cgColor }
     public class var bgQuaternary: CGColor { UIColor.bgQuaternary.cgColor }
     public class var bgSecondary: CGColor { UIColor.bgSecondary.cgColor }

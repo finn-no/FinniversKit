@@ -27,11 +27,14 @@ public class ColorDemoView: UIView {
     lazy var items: [ColorItem] = {
         return [
             ColorItem(color: .accentPea, title: "accentPea"),
+            ColorItem(color: .accentPrimaryBlue, title: "accentPrimaryBlue"),
             ColorItem(color: .accentSecondaryBlue, title: "accentSecondaryBlue"),
             ColorItem(color: .accentToothpaste, title: "accentToothpaste"),
             ColorItem(color: .bgAlert, title: "bgAlert"),
             ColorItem(color: .bgBottomSheet, title: "bgBottomSheet"),
             ColorItem(color: .bgCritical, title: "bgCritical"),
+            ColorItem(color: .bgInfo, title: "bgInfo"),
+            ColorItem(color: .bgInfoHeader, title: "bgInfoHeader"),
             ColorItem(color: .bgPrimary, title: "bgPrimary"),
             ColorItem(color: .bgQuaternary, title: "bgQuaternary"),
             ColorItem(color: .bgSecondary, title: "bgSecondary"),
@@ -42,6 +45,7 @@ public class ColorDemoView: UIView {
             ColorItem(color: .btnCritical, title: "btnCritical"),
             ColorItem(color: .btnDisabled, title: "btnDisabled"),
             ColorItem(color: .btnPrimary, title: "btnPrimary"),
+            ColorItem(color: .decorationSubtle, title: "decorationSubtle"),
             ColorItem(color: .iconPrimary, title: "iconPrimary"),
             ColorItem(color: .iconSecondary, title: "iconSecondary"),
             ColorItem(color: .iconTertiary, title: "iconTertiary"),
@@ -54,7 +58,7 @@ public class ColorDemoView: UIView {
             ColorItem(color: .textPrimary, title: "textPrimary"),
             ColorItem(color: .textSecondary, title: "textSecondary"),
             ColorItem(color: .textTertiary, title: "textTertiary"),
-            ColorItem(color: .textToast, title: "textToast"),
+            ColorItem(color: .textToast, title: "textToast")
         ]
     }()
 

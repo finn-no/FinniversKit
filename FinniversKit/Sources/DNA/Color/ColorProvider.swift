@@ -12,6 +12,7 @@ public protocol ColorProvider {
     var bgBottomSheet: UIColor { get }
     var bgAlert: UIColor { get }
     var bgInfo: UIColor { get }
+    var bgInfoHeader: UIColor { get }
     var bgSuccess: UIColor { get }
     var bgCritical: UIColor { get }
     var btnPrimary: UIColor { get }
@@ -24,6 +25,7 @@ public protocol ColorProvider {
     var textAction: UIColor { get }
     var textDisabled: UIColor { get }
     var textCritical: UIColor { get }
+    var accentPrimaryBlue: UIColor { get }
     var accentSecondaryBlue: UIColor { get }
     var accentPea: UIColor { get }
     var accentToothpaste: UIColor { get }
@@ -67,6 +69,10 @@ public struct DefaultColorProvider: ColorProvider {
 
     public var bgInfo: UIColor {
         .dynamicColor(defaultColor: .aqua50, darkModeColor: .darkIce)
+    }
+
+    public var bgInfoHeader: UIColor {
+        .dynamicColor(defaultColor: .aqua200, darkModeColor: .blue600)
     }
 
     public var bgSuccess: UIColor {
@@ -115,6 +121,10 @@ public struct DefaultColorProvider: ColorProvider {
 
     public var textCritical: UIColor {
         .dynamicColor(defaultColor: .red600, darkModeColor: .red400)
+    }
+
+    public var accentPrimaryBlue: UIColor {
+        .blue600
     }
 
     public var accentSecondaryBlue: UIColor {
