@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol RemoteImageViewDataSource: AnyObject {
-    func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage?
+    @MainActor func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage?
     func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat)
 }
@@ -25,6 +25,7 @@ public class RemoteImageView: UIImageView {
 
     private var imagePath: String?
     private var imageWidth: CGFloat?
+    private var isLoadingImage = false
 
     // MARK: - Public methods
 
@@ -47,17 +48,20 @@ public class RemoteImageView: UIImageView {
         if let cachedImage = dataSource.remoteImageView(self, cachedImageWithPath: imagePath, imageWidth: imageWidth) {
             setImage(modify?(cachedImage) ?? cachedImage, animated: false, backgroundColor: loadedColor)
         } else {
+            isLoadingImage = true
             backgroundColor = loadingColor
             dataSource.remoteImageView(self, loadImageWithPath: imagePath, imageWidth: imageWidth, completion: { [weak self] fetchedImage in
                 let image = modify?(fetchedImage) ?? fetchedImage
                 self?.setImage(image ?? fallbackImage, animated: false, backgroundColor: loadedColor)
+                self?.isLoadingImage = false
             })
         }
     }
 
     public func cancelLoading() {
-        guard let currentImagePath = self.imagePath, let imageWidth = imageWidth else { return }
-        dataSource?.remoteImageView(self, cancelLoadingImageWithPath: currentImagePath, imageWidth: imageWidth)
+        guard isLoadingImage, let imagePath, let imageWidth else { return }
+        dataSource?.remoteImageView(self, cancelLoadingImageWithPath: imagePath, imageWidth: imageWidth)
+        isLoadingImage = false
     }
 
     public func setImage(_ image: UIImage?, animated: Bool, backgroundColor: UIColor = .clear) {
