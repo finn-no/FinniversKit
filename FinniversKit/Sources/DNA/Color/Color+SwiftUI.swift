@@ -17,6 +17,8 @@ extension Color {
     public static var bgAlert: Color       { Color(UIColor.bgAlert) }
     public static var bgSuccess: Color     { Color(UIColor.bgSuccess) }
     public static var bgCritical: Color    { Color(UIColor.bgCritical) }
+    public static var bgInfo: Color        { Color(UIColor.bgInfo) }
+    public static var bgInfoHeader: Color  { Color(UIColor.bgInfoHeader) }
 
     // MARK: - Button
 
@@ -44,6 +46,7 @@ extension Color {
 
     // MARK: - Others
 
+    public static var accentPrimaryBlue: Color   { Color(UIColor.accentPrimaryBlue)}
     public static var accentSecondaryBlue: Color { Color(UIColor.accentSecondaryBlue) }
     public static var accentPea: Color           { Color(UIColor.accentPea) }
     public static var accentToothpaste: Color    { Color(UIColor.accentToothpaste) }
