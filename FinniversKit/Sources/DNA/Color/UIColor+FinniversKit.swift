@@ -39,6 +39,7 @@ import UIKit
     public class var textSecondary: UIColor { Config.colorProvider.textSecondary }
     public class var textTertiary: UIColor { Config.colorProvider.textTertiary }
     public class var textToast: UIColor { Config.colorProvider.textToast }
+    public class var marketplaceNavigationBarIcon: UIColor { Config.colorProvider.marketplaceNavigationBarIcon }
 }
 
 extension CGColor {
@@ -75,6 +76,7 @@ extension CGColor {
     public class var textSecondary: CGColor { UIColor.textSecondary.cgColor }
     public class var textTertiary: CGColor { UIColor.textTertiary.cgColor }
     public class var textToast: CGColor { UIColor.textToast.cgColor }
+    public class var marketplaceNavigationBarIcon: UIColor { Config.colorProvider.marketplaceNavigationBarIcon.cgColor }
 }
 
 // MARK: - FINN UIColors (deprecated)
