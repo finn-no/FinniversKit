@@ -38,6 +38,7 @@ public protocol ColorProvider {
     var iconSecondary: UIColor { get }
     var iconTertiary: UIColor { get }
     var borderDefault: UIColor { get }
+    var marketplaceNavigationBarIcon: UIColor { get }
 }
 
 // MARK: - Default FINN colors
@@ -173,5 +174,9 @@ public struct DefaultColorProvider: ColorProvider {
 
     public var borderDefault: UIColor {
         return .dynamicColor(defaultColor: .blueGray300, darkModeColor: .darkSardine)
+    }
+
+    public var marketplaceNavigationBarIcon: UIColor {
+        .aqua400
     }
 }
