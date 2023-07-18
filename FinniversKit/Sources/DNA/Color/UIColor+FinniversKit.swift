@@ -76,7 +76,7 @@ extension CGColor {
     public class var textSecondary: CGColor { UIColor.textSecondary.cgColor }
     public class var textTertiary: CGColor { UIColor.textTertiary.cgColor }
     public class var textToast: CGColor { UIColor.textToast.cgColor }
-    public class var marketplaceNavigationBarIcon: UIColor { Config.colorProvider.marketplaceNavigationBarIcon.cgColor }
+    public class var marketplaceNavigationBarIcon: CGColor { Config.colorProvider.marketplaceNavigationBarIcon.cgColor }
 }
 
 // MARK: - FINN UIColors (deprecated)
