@@ -8,6 +8,7 @@ public extension Label {
     enum Style {
         case title1
         case title2
+        case title2Strong
         case title3
         case title3Strong
         case bodyStrong
@@ -29,6 +30,7 @@ public extension Label {
             switch self {
             case .title1: return UIFont.title1
             case .title2: return UIFont.title2
+            case .title2Strong: return UIFont.title2Strong
             case .title3: return UIFont.title3
             case .title3Strong: return UIFont.title3Strong
             case .bodyStrong, .title4: return UIFont.bodyStrong
@@ -47,11 +49,10 @@ public extension Label {
 
         var lineSpacing: CGFloat {
             switch self {
-            case .title1: return font.pointSize * 0.5
-            case .title2: return font.pointSize * 0.5
-            case .title3: return font.pointSize * 0.5
-            case .title3Strong: return font.pointSize * 0.5
-            default: return 0
+            case .title1, .title2, .title2Strong, .title3, .title3Strong:
+                return font.pointSize * 0.5
+            default:
+                return 0
             }
         }
     }
