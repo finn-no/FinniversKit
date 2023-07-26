@@ -52,9 +52,12 @@ enum Fullscreen: String, CaseIterable, DemoGroup, DemoGroupItem {
         allCases[index]
     }
 
-    // swiftlint:disable:next cyclomatic_complexity
     static func demoable(for index: Int) -> any Demoable {
-        switch Self.allCases[index] {
+        Self.allCases[index].demoable
+    }
+
+    var demoable: any Demoable {
+        switch self {
         case .frontPageView:
             return FrontpageViewDemoView()
         case .emptyView:

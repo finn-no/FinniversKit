@@ -103,9 +103,12 @@ enum Components: String, CaseIterable, DemoGroup, DemoGroupItem {
         }
     }
 
-    // swiftlint:disable:next cyclomatic_complexity
     static func demoable(for index: Int) -> any Demoable {
-        switch Self.allCases[index] {
+        Self.allCases[index].demoable
+    }
+
+    var demoable: any Demoable {
+        switch self {
         case .addressCardView:
             return AddressCardDemoView()
         case .button:

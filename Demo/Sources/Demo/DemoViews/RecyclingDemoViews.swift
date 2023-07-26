@@ -24,7 +24,11 @@ enum Recycling: String, CaseIterable, DemoGroup, DemoGroupItem {
     }
 
     static func demoable(for index: Int) -> any Demoable {
-        switch Self.allCases[index] {
+        Self.allCases[index].demoable
+    }
+
+    var demoable: any Demoable {
+        switch self {
         case .basicTableView:
             return BasicTableViewDemoView()
         case .notificationsListView:
