@@ -220,7 +220,8 @@
 		E6510A6727FB378B001B40D6 /* ScrollableTabDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510A6627FB378B001B40D6 /* ScrollableTabDemoView.swift */; };
 		E681A0EC2923FDA4008564E2 /* HyperlinkTextViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0EB2923FDA4008564E2 /* HyperlinkTextViewDemoView.swift */; };
 		F085BC2A29719E5200376A8B /* ViewingsRedesignDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F085BC2929719E5200376A8B /* ViewingsRedesignDemoView.swift */; };
-		F08D93AC298BF05D004F899E /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = F08D93AB298BF05D004F899E /* SnapshotTesting */; };
+		F09FBC252A7156F5005C334B /* DemoKit in Frameworks */ = {isa = PBXBuildFile; productRef = F09FBC242A7156F5005C334B /* DemoKit */; };
+		F09FBC272A715704005C334B /* DemoKitSnapshot in Frameworks */ = {isa = PBXBuildFile; productRef = F09FBC262A715704005C334B /* DemoKitSnapshot */; };
 		F3D30537299F8FC200C4C4ED /* SelectionListSeparatedRadiobuttonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D30536299F8FC200C4C4ED /* SelectionListSeparatedRadiobuttonDemoView.swift */; };
 /* End PBXBuildFile section */
 
@@ -474,6 +475,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F09FBC252A7156F5005C334B /* DemoKit in Frameworks */,
 				46E77563242CFFA5008A5E93 /* FinniversKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,8 +484,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F09FBC272A715704005C334B /* DemoKitSnapshot in Frameworks */,
 				46E7759D242D6A8A008A5E93 /* FinniversKit.framework in Frameworks */,
-				F08D93AC298BF05D004F899E /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1910,6 +1912,7 @@
 			);
 			name = Demo;
 			packageProductDependencies = (
+				F09FBC242A7156F5005C334B /* DemoKit */,
 			);
 			productName = Demo;
 			productReference = 46AE6FC0242BADC9007BB005 /* Demo.app */;
@@ -1930,7 +1933,7 @@
 			);
 			name = SnapshotTests;
 			packageProductDependencies = (
-				F08D93AB298BF05D004F899E /* SnapshotTesting */,
+				F09FBC262A715704005C334B /* DemoKitSnapshot */,
 			);
 			productName = SnapshotTests;
 			productReference = 46E7756C242D4736008A5E93 /* SnapshotTests.xctest */;
@@ -1965,7 +1968,7 @@
 			);
 			mainGroup = 46AE6FB7242BADC9007BB005;
 			packageReferences = (
-				F08D93AA298BF05D004F899E /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				F09FBC1F2A7156CF005C334B /* XCRemoteSwiftPackageReference "DemoKit-iOS" */,
 			);
 			productRefGroup = 46AE6FC1242BADC9007BB005 /* Products */;
 			projectDirPath = "";
@@ -2512,21 +2515,26 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F08D93AA298BF05D004F899E /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+		F09FBC1F2A7156CF005C334B /* XCRemoteSwiftPackageReference "DemoKit-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pimms/swift-snapshot-testing.git";
+			repositoryURL = "git@github.com:finn-no/DemoKit-iOS.git";
 			requirement = {
-				kind = revision;
-				revision = 0efeef44df913fe60ea868f037f271ac927a8e8c;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F08D93AB298BF05D004F899E /* SnapshotTesting */ = {
+		F09FBC242A7156F5005C334B /* DemoKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F08D93AA298BF05D004F899E /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
-			productName = SnapshotTesting;
+			package = F09FBC1F2A7156CF005C334B /* XCRemoteSwiftPackageReference "DemoKit-iOS" */;
+			productName = DemoKit;
+		};
+		F09FBC262A715704005C334B /* DemoKitSnapshot */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F09FBC1F2A7156CF005C334B /* XCRemoteSwiftPackageReference "DemoKit-iOS" */;
+			productName = DemoKitSnapshot;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
