@@ -6,6 +6,8 @@ import FinniversKit
 import DemoKit
 
 class PianoDemoView: UIView, Demoable {
+    var shouldSnapshotTest: Bool { false }
+
     private lazy var pianoView = PianoView()
 
     // MARK: - Init
