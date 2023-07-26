@@ -1,18 +1,25 @@
 import FinniversKit
+import DemoKit
 
-public enum DnaDemoViews: String, DemoViews {
+enum DNA: String, CaseIterable, DemoGroup, DemoGroupItem {
     case color
     case font
     case spacing
 
-    public var viewController: UIViewController {
-        switch self {
+    static var numberOfDemos: Int { allCases.count }
+
+    static func demoGroupItem(for index: Int) -> any DemoGroupItem {
+        allCases[index]
+    }
+
+    static func demoable(for index: Int) -> any Demoable {
+        switch Self.allCases[index] {
         case .color:
-            return DemoViewController<ColorDemoView>()
+            return ColorDemoView()
         case .font:
-            return DemoViewController<FontDemoView>()
+            return FontDemoView()
         case .spacing:
-            return DemoViewController<SpacingDemoView>()
+            return SpacingDemoView()
         }
     }
 }
