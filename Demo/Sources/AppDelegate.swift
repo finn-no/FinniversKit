@@ -4,6 +4,7 @@
 
 import UIKit
 import FinniversKit
+import DemoKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,7 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        window?.rootViewController = navigationController
+        let demoViewController = RootDemoViewController(demoGroups: [
+            DNA.self,
+            Cells.self,
+            Components.self,
+            Fullscreen.self,
+            Recycling.self,
+            SwiftUIDemo.self
+        ])
+        window?.rootViewController = UINavigationController(rootViewController: demoViewController)
+
         window?.makeKeyAndVisible()
 
         linkReveal()
