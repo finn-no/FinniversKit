@@ -4,20 +4,15 @@
 
 import XCTest
 import FinniversKit
-import Demo
+@testable import Demo
+import DemoKitSnapshot
 
 class ComponentViewTests: XCTestCase {
-    private func snapshot(_ component: ComponentDemoViews, includeIPad: Bool = false, delay: TimeInterval? = nil, record recording: Bool = false, testName: String = #function) {
-        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, delay: delay, record: recording, testName: testName)
+    private func snapshot(_ component: Components, record: Bool = false, line: UInt = #line) {
+        snapshotTest(demoable: component.demoable, record: record, line: line)
     }
 
     // MARK: - Tests
-
-    func testMissingSnapshotTests() {
-        for element in elementWithoutTests(for: ComponentDemoViews.self) {
-            XCTFail("Not all elements were implemented, missing: \(element.rawValue)")
-        }
-    }
 
     func testAddressCardView() {
         snapshot(.addressCardView)
@@ -28,7 +23,7 @@ class ComponentViewTests: XCTestCase {
     }
 
     func testMultilineButton() {
-        snapshot(.multilineButton, includeIPad: true)
+        snapshot(.multilineButton)
     }
 
     func testFloatingButton() {
@@ -147,10 +142,6 @@ class ComponentViewTests: XCTestCase {
       snapshot(.questionnaireView)
     }
 
-    func testTweakable() {
-        snapshot(.tweakable)
-    }
-
     func testKlimabroletView() {
         snapshot(.klimabroletView)
     }
@@ -228,7 +219,7 @@ class ComponentViewTests: XCTestCase {
     }
 
     func testSafetyElementsView() {
-        snapshot(.safetyElementsView, includeIPad: true)
+        snapshot(.safetyElementsView)
     }
 
     func testContractActionView() {
@@ -276,7 +267,7 @@ class ComponentViewTests: XCTestCase {
     }
 
     func testOverflowCollectionView() {
-        snapshot(.overFlowCollectionView, includeIPad: true)
+        snapshot(.overFlowCollectionView)
     }
 
     func testDetailCallout() {
@@ -324,11 +315,11 @@ class ComponentViewTests: XCTestCase {
     }
 
     func testMyAdsListView() {
-        snapshot(.myAdsListView, includeIPad: true)
+        snapshot(.myAdsListView)
     }
 
     func testMapAddressButton() {
-        snapshot(.mapAddressButton, includeIPad: true)
+        snapshot(.mapAddressButton)
     }
 
     func testHyperlinkTextView() {

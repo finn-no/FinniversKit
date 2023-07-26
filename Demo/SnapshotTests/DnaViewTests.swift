@@ -2,22 +2,17 @@
 //  Copyright © 2018 FINN AS. All rights reserved.
 //
 
-import Demo
+@testable import Demo
 import XCTest
 import FinniversKit
+import DemoKitSnapshot
 
 class DnaViewTests: XCTestCase {
-    private func snapshot(_ component: DnaDemoViews, includeIPad: Bool = false, delay: TimeInterval? = nil, record: Bool = false, testName: String = #function) {
-        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, delay: delay, record: record, testName: testName)
+    private func snapshot(_ component: DNA, record: Bool = false, line: UInt = #line) {
+        snapshotTest(demoable: component.demoable, record: record, line: line)
     }
 
     // MARK: - Tests
-
-    func testMissingSnapshotTests() {
-        for element in elementWithoutTests(for: DnaDemoViews.self, testMethodPrefix: "testDnaViews") {
-            XCTFail("Not all elements were implemented, missing: \(element.rawValue)")
-        }
-    }
 
     func testDnaViewsColor() {
         snapshot(.color)

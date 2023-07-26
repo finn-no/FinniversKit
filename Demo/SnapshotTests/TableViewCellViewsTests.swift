@@ -4,11 +4,12 @@
 
 import FinniversKit
 import XCTest
-import Demo
+@testable import Demo
+import DemoKitSnapshot
 
 class TableViewCellsViewTests: XCTestCase {
-    private func snapshot(_ component: CellsDemoViews, includeIPad: Bool = false, delay: TimeInterval? = nil, record: Bool = false, testName: String = #function) {
-        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, delay: delay, record: record, testName: testName)
+    private func snapshot(_ component: Cells, record: Bool = false, line: UInt = #line) {
+        snapshotTest(demoable: component.demoable, record: record, line: line)
     }
 
     // MARK: - Tests
