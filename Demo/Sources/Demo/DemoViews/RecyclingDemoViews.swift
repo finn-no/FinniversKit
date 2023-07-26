@@ -2,8 +2,9 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 import FinniversKit
+import DemoKit
 
-public enum RecyclingDemoViews: String, DemoViews {
+enum Recycling: String, CaseIterable, DemoGroup, DemoGroupItem {
     case basicTableView
     case notificationsListView
     case favoriteFoldersListView
@@ -16,37 +17,36 @@ public enum RecyclingDemoViews: String, DemoViews {
     case adManagementView
     case neighborhoodProfileView
 
-    public var viewController: UIViewController {
-        switch self {
+    static var numberOfDemos: Int { allCases.count }
+
+    static func demoGroupItem(for index: Int) -> any DemoGroupItem {
+        allCases[index]
+    }
+
+    static func demoable(for index: Int) -> any Demoable {
+        switch Self.allCases[index] {
         case .basicTableView:
-            return DemoViewController<BasicTableViewDemoView>()
+            return BasicTableViewDemoView()
         case .notificationsListView:
-            return DemoViewController<NotificationsListViewDemoView>()
+            return NotificationsListViewDemoView()
         case .favoriteFoldersListView:
-            let viewController = DemoViewController<FavoriteFoldersListDemoView>(constrainToBottomSafeArea: false)
-            viewController.title = "Favoritter"
-
-            let navigationController = NavigationController(rootViewController: viewController)
-            navigationController.navigationBar.barTintColor = .bgPrimary
-            navigationController.navigationBar.shadowImage = UIImage()
-
-            return navigationController
+            return FavoriteFoldersListDemoView()
         case .favoritesListView:
-            return DemoViewController<FavoritesListViewDemoView>()
+            return FavoritesListViewDemoView()
         case .savedSearchesListView:
-            return DemoViewController<SavedSearchesListViewDemoView>()
+            return SavedSearchesListViewDemoView()
         case .marketsGridView:
-            return DemoViewController<MarketsGridViewDemoView>()
+            return MarketsGridViewDemoView()
         case .compactMarketsView:
-            return DemoViewController<CompactMarketsDemoView>()
+            return CompactMarketsDemoView()
         case .adRecommendationsGridView:
-            return DemoViewController<AdRecommendationsGridViewDemoView>()
+            return AdRecommendationsGridViewDemoView()
         case .settingsView:
-            return DemoViewController<SettingsViewDemoView>()
+            return SettingsViewDemoView()
         case .adManagementView:
-            return DemoViewController<AdManagementDemoView>()
+            return AdManagementDemoView()
         case .neighborhoodProfileView:
-            return DemoViewController<NeighborhoodProfileDemoView>()
+            return NeighborhoodProfileDemoView()
         }
     }
 }

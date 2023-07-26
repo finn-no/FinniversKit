@@ -3,13 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class AdManagementDemoView: UIView, Tweakable {
-
-    lazy var tweakingOptions: [TweakingOption] = [
-        TweakingOption(title: "With statistics") { self.statisticsCellModels = AdManagementDemoView.exampleStatisticsCellModels },
-        TweakingOption(title: "Empty statistics") { self.statisticsCellModels = [] },
-    ]
+class AdManagementDemoView: UIView {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(withAutoLayout: true)
@@ -86,21 +82,43 @@ public class AdManagementDemoView: UIView, Tweakable {
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     // MARK: - Setup
 
     private func setup() {
         addSubview(tableView)
         tableView.fillInSuperview()
-        tweakingOptions.first?.action?()
+        configure(forTweakAt: 0)
+    }
+}
+
+extension AdManagementDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, DemoKit.TweakingOption {
+        case withStatistics
+        case emptyStatistics
+    }
+
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any DemoKit.TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .withStatistics:
+            statisticsCellModels = AdManagementDemoView.exampleStatisticsCellModels
+        case .emptyStatistics:
+            statisticsCellModels = []
+        }
     }
 }
 
 // MARK: - UITableViewDataSource
 
 extension AdManagementDemoView: UITableViewDataSource {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         }
@@ -109,11 +127,11 @@ extension AdManagementDemoView: UITableViewDataSource {
 
     }
 
-    public func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         actionCellModels.count + 1
     }
 
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             if indexPath.row == 0 && statisticsCellModels.isEmpty == true {
                 let cell = tableView.dequeue(UserAdManagementStatisticsEmptyViewCell.self, for: indexPath)
@@ -143,7 +161,7 @@ extension AdManagementDemoView: UITableViewDataSource {
         }
     }
 
-    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         UIView()
     }
 }
@@ -151,7 +169,7 @@ extension AdManagementDemoView: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension AdManagementDemoView: UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         16
     }
 }
@@ -159,13 +177,13 @@ extension AdManagementDemoView: UITableViewDelegate {
 // MARK: - UserAdManagementStatisticsCellDelegate
 
 extension AdManagementDemoView: UserAdManagementStatisticsCellDelegate {
-    public func userAdManagementStatisticsCellDidSelectFullStatistics(_ cell: UserAdManagementStatisticsCell) {}
+    func userAdManagementStatisticsCellDidSelectFullStatistics(_ cell: UserAdManagementStatisticsCell) {}
 }
 
 // MARK: - UserAdManagementActionCellDelegate
 
 extension AdManagementDemoView: UserAdManagementActionCellDelegate {
-    public func userAdManagementActionCell(_ cell: UserAdManagementUserActionCell, switchChangedState switchIsOn: Bool) {
+    func userAdManagementActionCell(_ cell: UserAdManagementUserActionCell, switchChangedState switchIsOn: Bool) {
         print("✅ Toggle switched state. Is on: \(switchIsOn)")
     }
 }
