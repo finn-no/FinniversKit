@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class PopupViewDemoView: UIView {
+class PopupViewDemoView: UIView, Demoable {
     private let maxScreenSize = CGSize(width: 320, height: 480)
 
     private lazy var shadedBackgroundView: UIView = {
@@ -28,7 +29,7 @@ public class PopupViewDemoView: UIView {
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
         consentView.model = ConsentTransparencyViewModel()

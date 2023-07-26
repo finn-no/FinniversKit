@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-final class FavoriteAdActionDemoView: UIView {
+final class FavoriteAdActionDemoView: UIView, Demoable {
     private(set) lazy var view: FavoriteAdActionView = {
         let view = FavoriteAdActionView(viewModel: .default)
         view.translatesAutoresizingMaskIntoConstraints = false

@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class LoginViewDemoView: UIView {
+class LoginViewDemoView: UIView, Demoable {
     private lazy var loginView: LoginView = {
         let loginView = LoginView()
         loginView.translatesAutoresizingMaskIntoConstraints = false
@@ -17,7 +18,7 @@ public class LoginViewDemoView: UIView {
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
         loginView.model = LoginViewDefaultData()

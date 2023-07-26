@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import DemoKit
 
 // MARK: - Helpers
 
@@ -109,7 +110,7 @@ private class ImageDownloader: FullscreenGalleryViewControllerDataSource {
 
 // MARK: - Demo view
 
-class FullscreenGalleryDemoViewController: BaseDemoViewController<UIView>, UICollectionViewDelegate, UICollectionViewDataSource {
+class FullscreenGalleryDemoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, Demoable {
 
     // MARK: - Private properties
 
@@ -216,35 +217,36 @@ class FullscreenGalleryDemoViewController: BaseDemoViewController<UIView>, UICol
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
 
-        playgroundView.addSubview(collectionView)
-        playgroundView.addSubview(thumbnailSwitch)
-        playgroundView.addSubview(thumbnailLabel)
-        playgroundView.addSubview(simulateLoadingSwitch)
-        playgroundView.addSubview(simulateLoadingLabel)
-        playgroundView.addSubview(helpLabel)
+        view.addSubview(collectionView)
+        view.addSubview(thumbnailSwitch)
+        view.addSubview(thumbnailLabel)
+        view.addSubview(simulateLoadingSwitch)
+        view.addSubview(simulateLoadingLabel)
+        view.addSubview(helpLabel)
 
         NSLayoutConstraint.activate([
             collectionView.heightAnchor.constraint(equalToConstant: collectionCellHeight + .spacingXL),
-            collectionView.leadingAnchor.constraint(equalTo: playgroundView.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: playgroundView.trailingAnchor),
-            collectionView.centerYAnchor.constraint(equalTo: playgroundView.centerYAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
             thumbnailSwitch.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingXL),
-            thumbnailSwitch.leadingAnchor.constraint(equalTo: playgroundView.leadingAnchor, constant: .spacingXL),
+            thumbnailSwitch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .spacingXL),
 
             thumbnailLabel.leadingAnchor.constraint(equalTo: thumbnailSwitch.trailingAnchor, constant: .spacingM),
             thumbnailLabel.centerYAnchor.constraint(equalTo: thumbnailSwitch.centerYAnchor),
 
             simulateLoadingSwitch.topAnchor.constraint(equalTo: thumbnailSwitch.bottomAnchor, constant: .spacingS),
-            simulateLoadingSwitch.leadingAnchor.constraint(equalTo: playgroundView.leadingAnchor, constant: .spacingXL),
+            simulateLoadingSwitch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .spacingXL),
 
             simulateLoadingLabel.leadingAnchor.constraint(equalTo: simulateLoadingSwitch.trailingAnchor, constant: .spacingM),
             simulateLoadingLabel.centerYAnchor.constraint(equalTo: simulateLoadingSwitch.centerYAnchor),
 
-            helpLabel.leadingAnchor.constraint(equalTo: playgroundView.leadingAnchor, constant: .spacingM),
-            helpLabel.trailingAnchor.constraint(equalTo: playgroundView.trailingAnchor, constant: -.spacingM),
-            helpLabel.topAnchor.constraint(equalTo: playgroundView.safeAreaLayoutGuide.topAnchor, constant: .spacingXL)
+            helpLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .spacingM),
+            helpLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.spacingM),
+            helpLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: .spacingXL)
         ])
     }
 

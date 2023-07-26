@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import DemoKit
 
 private struct DemoViewModel: SettingDetailsViewModel {
     var icon: UIImage {
@@ -45,7 +46,9 @@ private struct DemoViewModel: SettingDetailsViewModel {
     }
 }
 
-final class SettingDetailsDemoViewController: UIViewController {
+final class SettingDetailsDemoViewController: UIViewController, Demoable {
+
+    var presentation: DemoablePresentation { .sheet(detents: [.medium(), .large()]) }
 
     private lazy var settingDetailsView: SettingDetailsView = {
         let detailsView = SettingDetailsView(withAutoLayout: true)

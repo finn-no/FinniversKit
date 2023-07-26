@@ -3,14 +3,16 @@
 //
 
 import FinniversKit
+import DemoKit
 
-class LoginEntryViewDemoViewController: BaseDemoViewController<UIView> {
+class LoginEntryViewDemoViewController: UIViewController, Demoable {
     override var prefersStatusBarHidden: Bool {
         return false
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
 
         addChild(tabBarViewController)
         tabBarViewController.didMove(toParent: self)
