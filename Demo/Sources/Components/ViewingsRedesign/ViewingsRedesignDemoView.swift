@@ -1,36 +1,8 @@
 import UIKit
 import FinniversKit
+import DemoKit
 
-class ViewingsRedesignDemoView: UIView, Tweakable {
-    lazy var tweakingOptions: [TweakingOption] = [
-        TweakingOption(title: "demoModel", action: { [weak self] in
-            self?.configure(with: .demoModel)
-        }),
-        TweakingOption(title: "Only MoreInfo", action: { [weak self] in
-            self?.configure(with: .onlyMoreInfo)
-        }),
-        TweakingOption(title: "Only ProspectusButton", action: { [weak self] in
-            self?.configure(with: .onlyProspectusButton)
-        }),
-        TweakingOption(title: "Only ViewingSignup", action: { [weak self] in
-            self?.configure(with: .onlyViewingSignup)
-        }),
-        TweakingOption(title: "Without Viewings", action: { [weak self] in
-            self?.configure(with: .withoutViewings)
-        }),
-        TweakingOption(title: "Without MoreInfo", action: { [weak self] in
-            self?.configure(with: .withoutMoreInfo)
-        }),
-        TweakingOption(title: "Without Prospectus", action: { [weak self] in
-            self?.configure(with: .withoutProspectus)
-        }),
-        TweakingOption(title: "Without SignupButton", action: { [weak self] in
-            self?.configure(with: .withoutSignupButton)
-        }),
-        TweakingOption(title: "Empty", action: { [weak self] in
-            self?.configure(with: .empty)
-        }),
-    ]
+class ViewingsRedesignDemoView: UIView {
 
     // MARK: - Private properties
 
@@ -40,7 +12,7 @@ class ViewingsRedesignDemoView: UIView, Tweakable {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        tweakingOptions.first?.action?()
+        configure(forTweakAt: 0)
     }
 
     required init?(coder: NSCoder) { fatalError() }
@@ -59,6 +31,49 @@ class ViewingsRedesignDemoView: UIView, Tweakable {
             viewingsView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
         self.viewingsView = viewingsView
+    }
+}
+
+extension ViewingsRedesignDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, DemoKit.TweakingOption {
+        case demoModel
+        case onlyMoreInfo
+        case onlyProspectusButton
+        case onlyViewingSignup
+        case withoutViewings
+        case withoutMoreInfo
+        case withoutProspectus
+        case withoutSignupButton
+        case empty
+    }
+
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any DemoKit.TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .demoModel:
+            configure(with: .demoModel)
+        case .onlyMoreInfo:
+            configure(with: .onlyMoreInfo)
+        case .onlyProspectusButton:
+            configure(with: .onlyProspectusButton)
+        case .onlyViewingSignup:
+            configure(with: .onlyViewingSignup)
+        case .withoutViewings:
+            configure(with: .withoutViewings)
+        case .withoutMoreInfo:
+            configure(with: .withoutMoreInfo)
+        case .withoutProspectus:
+            configure(with: .withoutProspectus)
+        case .withoutSignupButton:
+            configure(with: .withoutSignupButton)
+        case .empty:
+            configure(with: .empty)
+        }
     }
 }
 

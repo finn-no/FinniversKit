@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import DemoKit
 
 protocol RootViewControllerDelegate: AnyObject {
     func rootViewControllerDidPressExpandButton(_ controller: RootViewController)
@@ -109,7 +110,7 @@ class RootViewController: UIViewController {
     }
 }
 
-class BottomSheetMechanicsDemoViewController: UIViewController {
+class BottomSheetMechanicsDemoViewController: UIViewController, Demoable {
     private lazy var requireConfirmationOnDragSwitch: SwitchView = {
         let switchView = SwitchView(withAutoLayout: true)
         switchView.configure(with:

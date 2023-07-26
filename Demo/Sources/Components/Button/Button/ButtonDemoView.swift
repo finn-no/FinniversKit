@@ -4,8 +4,9 @@
 
 import UIKit
 import FinniversKit
+import DemoKit
 
-public class ButtonDemoView: UIView {
+public class ButtonDemoView: UIView, Demoable {
     let states: [UIControl.State] = [.normal, .disabled]
     let sizes: [Button.Size] = [.normal, .small]
 

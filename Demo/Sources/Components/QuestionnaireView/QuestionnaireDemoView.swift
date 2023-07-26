@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class QuestionnaireDemoView: UIView {
+public class QuestionnaireDemoView: UIView, Demoable {
     private lazy var questionnaireView = QuestionnaireView(style: .normal(backgroundColor: .bgSecondary, primaryButtonIcon: UIImage(named: .webview)))
 
     // MARK: - Init

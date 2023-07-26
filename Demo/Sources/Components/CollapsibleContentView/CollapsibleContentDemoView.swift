@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-class CollapsibleContentDemoView: UIView, Tweakable {
+class CollapsibleContentDemoView: UIView {
 
     // MARK: - Private properties
 
@@ -25,28 +26,15 @@ class CollapsibleContentDemoView: UIView, Tweakable {
         return stackView
     }()
 
-    lazy var tweakingOptions: [TweakingOption] = [
-        TweakingOption(title: "Plain style", action: { [weak self] in
-            let overriddenPlainStyle = CollapsibleContentView.Style.plain.withOverride(backgroundColor: .bgTertiary)
-            self?.configureCollapsibleContentView(style: overriddenPlainStyle, title: "Spesifikasjoner")
-        }),
-        TweakingOption(title: "Card style", action: { [weak self] in
-            self?.configureCollapsibleContentView(style: .card, title: "6 tips når du skal kjøpe husdyr")
-        }),
-        TweakingOption(title: "Card style", description: "Long title", action: { [weak self] in
-            self?.configureCollapsibleContentView(style: .card, title: "6 tips til deg som skal kjøpe katt, hund eller annet husdyr")
-        })
-    ]
-
     // MARK: - Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-        tweakingOptions.first?.action?()
+        configure(forTweakAt: 0)
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     // MARK: - Setup
 
@@ -70,5 +58,32 @@ class CollapsibleContentDemoView: UIView, Tweakable {
         collapsibleContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.spacingXL).isActive = true
 
         self.collapsibleContentView = collapsibleContentView
+    }
+}
+
+extension CollapsibleContentDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, DemoKit.TweakingOption {
+        case plainStyle
+        case cardStyle
+        case cardStyleWithLongTitle
+    }
+
+    var dismissKind: DismissKind { .button }
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any DemoKit.TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .plainStyle:
+            let overriddenPlainStyle = CollapsibleContentView.Style.plain.withOverride(backgroundColor: .bgTertiary)
+            configureCollapsibleContentView(style: overriddenPlainStyle, title: "Spesifikasjoner")
+        case .cardStyle:
+            configureCollapsibleContentView(style: .card, title: "6 tips når du skal kjøpe husdyr")
+        case .cardStyleWithLongTitle:
+            configureCollapsibleContentView(style: .card, title: "6 tips til deg som skal kjøpe katt, hund eller annet husdyr")
+        }
     }
 }

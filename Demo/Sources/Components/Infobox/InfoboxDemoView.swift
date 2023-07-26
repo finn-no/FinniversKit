@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class InfoboxDemoView: UIView {
+public class InfoboxDemoView: UIView, Demoable {
     private lazy var smallInfoboxLabel: Label = {
         let label = Label(style: .caption)
         label.translatesAutoresizingMaskIntoConstraints = false

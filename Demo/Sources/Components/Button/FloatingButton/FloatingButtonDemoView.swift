@@ -3,19 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class FloatingButtonDemoView: UIView, Tweakable {
-    lazy var tweakingOptions: [TweakingOption] = {
-        return [
-            TweakingOption(title: "Hide badge") {
-                self.floatingButton.itemsCount = 0
-            },
-            TweakingOption(title: "Show badge") {
-                self.floatingButton.itemsCount = 10
-            }
-        ]
-    }()
-
+class FloatingButtonDemoView: UIView {
     private lazy var floatingButton: FloatingButton = {
         let button = FloatingButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -54,18 +44,20 @@ public class FloatingButtonDemoView: UIView, Tweakable {
 
     // MARK: - Init
 
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - Setup
 
     private func setup() {
+        configure(forTweakAt: 0)
+
         let stackView = UIStackView(axis: .vertical, spacing: 20, withAutoLayout: true)
         stackView.alignment = .center
         stackView.distribution = .equalSpacing
@@ -83,5 +75,27 @@ public class FloatingButtonDemoView: UIView, Tweakable {
             floatingButtonWithRedBadge.widthAnchor.constraint(equalToConstant: 44),
             floatingButtonWithRedBadge.heightAnchor.constraint(equalTo: floatingButtonWithRedBadge.widthAnchor),
         ])
+    }
+}
+
+extension FloatingButtonDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, DemoKit.TweakingOption {
+        case hideBadge
+        case showBadge
+    }
+
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any DemoKit.TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .hideBadge:
+            floatingButton.itemsCount = 0
+        case .showBadge:
+            floatingButton.itemsCount = 10
+        }
     }
 }

@@ -1,29 +1,19 @@
 import FinniversKit
+import DemoKit
 
-final class LoadingRetryDemoView: UIView, Tweakable {
+final class LoadingRetryDemoView: UIView {
     private lazy var loadingRetryView: LoadingRetryView = {
         let view = LoadingRetryView(withAutoLayout: true)
         view.delegate = self
         return view
     }()
 
-    lazy var tweakingOptions: [TweakingOption] = [
-        TweakingOption(title: "Label and button", action: { [weak self] in
-            self?.loadingRetryView.state = .labelAndButton
-        }),
-        TweakingOption(title: "Loading", action: { [weak self] in
-            self?.loadingRetryView.state = .loading
-        }),
-        TweakingOption(title: "Hidden", action: { [weak self] in
-            self?.loadingRetryView.state = .hidden
-        })
-    ]
-
     // MARK: - Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+        configure(forTweakAt: 0)
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -43,7 +33,31 @@ final class LoadingRetryDemoView: UIView, Tweakable {
         ])
 
         loadingRetryView.set(labelText: "Vi klarte dessverre ikke å laste dine anbefalinger.", buttonText: "Prøv igjen")
-        loadingRetryView.state = .labelAndButton
+    }
+}
+
+extension LoadingRetryDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, DemoKit.TweakingOption {
+        case labelAndButton
+        case loading
+        case hidden
+    }
+
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any DemoKit.TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .labelAndButton:
+            loadingRetryView.state = .labelAndButton
+        case .loading:
+            loadingRetryView.state = .loading
+        case .hidden:
+            loadingRetryView.state = .hidden
+        }
     }
 }
 

@@ -1,20 +1,8 @@
 import UIKit
 import FinniversKit
+import DemoKit
 
-class SearchDemoView: UIView, Tweakable {
-
-    // MARK: - Internal properties
-
-    lazy var tweakingOptions: [TweakingOption] = [
-        .init(title: "Demo items", action: { [weak self] in
-            self?.searchView.configureSearchTextField(placeholder: "Placeholder", text: "Lorem ipsum ?")
-            self?.searchView.configure(items: .demoItems)
-        }),
-        .init(title: "Empty search + results", action: { [weak self] in
-            self?.searchView.configureSearchTextField(placeholder: "Placeholder", text: nil)
-            self?.searchView.configure(items: [])
-        }),
-    ]
+class SearchDemoView: UIView {
 
     // MARK: - Private properties
 
@@ -29,7 +17,7 @@ class SearchDemoView: UIView, Tweakable {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-        tweakingOptions.first?.action?()
+        configure(forTweakAt: 0)
     }
 
     required init?(coder aDecoder: NSCoder) { fatalError() }
@@ -43,6 +31,30 @@ class SearchDemoView: UIView, Tweakable {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
             _ = self?.searchView.becomeFirstResponder()
         })
+    }
+}
+
+extension SearchDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, DemoKit.TweakingOption {
+        case demoItems
+        case emptySearchAndResults
+    }
+
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any DemoKit.TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .demoItems:
+            searchView.configureSearchTextField(placeholder: "Placeholder", text: "Lorem ipsum ?")
+            searchView.configure(items: .demoItems)
+        case .emptySearchAndResults:
+            searchView.configureSearchTextField(placeholder: "Placeholder", text: nil)
+            searchView.configure(items: [])
+        }
     }
 }
 

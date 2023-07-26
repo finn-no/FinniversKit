@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import DemoKit
 
 struct LoanCalculatorDemoViewModel: LoanCalculatorViewModel {
     var title: String?
@@ -19,24 +20,7 @@ struct LoanCalculatorDemoViewModel: LoanCalculatorViewModel {
     var paymentYears: TitleValueSliderViewModel
 }
 
-class LoanCalculatorDemoView: UIView, Tweakable {
-    lazy var tweakingOptions: [TweakingOption] = {
-        let options = [
-            TweakingOption(title: "Normal view model", action: {
-                self.loanCalculatorView.configure(with: LoanCalculatorDemoViewModel.makeViewModel())
-            }),
-            TweakingOption(title: "Nordea", action: {
-                self.loanCalculatorView.configure(with: LoanCalculatorDemoViewModel.makeViewModel(bank: LoanCalculatorDemoViewModel.DemoCases.nordea))
-            }),
-            TweakingOption(title: "Danske bank", action: {
-                self.loanCalculatorView.configure(with: LoanCalculatorDemoViewModel.makeViewModel(bank: LoanCalculatorDemoViewModel.DemoCases.danskeBank))
-            }),
-            TweakingOption(title: "Nominal Rate missing error", action: {
-                self.loanCalculatorView.configure(with: LoanCalculatorDemoViewModel.makeViewModel(hasConditions: false))
-            }),
-        ]
-        return options
-    }()
+class LoanCalculatorDemoView: UIView {
 
     private lazy var loanCalculatorView: LoanCalculatorView = {
         let view = LoanCalculatorView(withAutoLayout: true)
@@ -56,7 +40,8 @@ class LoanCalculatorDemoView: UIView, Tweakable {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        loanCalculatorView.configure(with: LoanCalculatorDemoViewModel.makeViewModel())
+        configure(forTweakAt: 0)
+
         addSubview(loanCalculatorView)
         NSLayoutConstraint.activate([
             loanCalculatorView.widthAnchor.constraint(equalTo: widthAnchor, constant: -.spacingXL),
@@ -64,6 +49,34 @@ class LoanCalculatorDemoView: UIView, Tweakable {
             loanCalculatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
             loanCalculatorView.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
+    }
+}
+
+extension LoanCalculatorDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, DemoKit.TweakingOption {
+        case normal
+        case nordea
+        case danskeBank
+        case nominalRentMissingError
+    }
+
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any DemoKit.TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .normal:
+            loanCalculatorView.configure(with: LoanCalculatorDemoViewModel.makeViewModel())
+        case .nordea:
+            loanCalculatorView.configure(with: LoanCalculatorDemoViewModel.makeViewModel(bank: LoanCalculatorDemoViewModel.DemoCases.nordea))
+        case .danskeBank:
+            loanCalculatorView.configure(with: LoanCalculatorDemoViewModel.makeViewModel(bank: LoanCalculatorDemoViewModel.DemoCases.danskeBank))
+        case .nominalRentMissingError:
+            loanCalculatorView.configure(with: LoanCalculatorDemoViewModel.makeViewModel(hasConditions: false))
+        }
     }
 }
 

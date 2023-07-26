@@ -3,14 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-final class AddressCardDemoView: UIView, Tweakable {
-
-    lazy var tweakingOptions: [TweakingOption] = [
-        TweakingOption(title: "Default") { [weak self] in self?.addressCardView.configure(with: .default) },
-        TweakingOption(title: "Wihout directions button") { [weak self] in self?.addressCardView.configure(with: .withoutDirectionsButton) },
-    ]
-
+final class AddressCardDemoView: UIView {
     private lazy var addressCardView: AddressCardView = {
         let view = AddressCardView(withAutoLayout: true)
         view.dropShadow(color: .black, opacity: 0.3, radius: 3)
@@ -31,7 +26,7 @@ final class AddressCardDemoView: UIView, Tweakable {
     // MARK: - Setup
 
     private func setup() {
-        tweakingOptions.first?.action?()
+        configure(forTweakAt: 0)
         addSubview(addressCardView)
 
         NSLayoutConstraint.activate([
@@ -39,6 +34,28 @@ final class AddressCardDemoView: UIView, Tweakable {
             addressCardView.trailingAnchor.constraint(equalTo: trailingAnchor),
             addressCardView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
+    }
+}
+
+extension AddressCardDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, DemoKit.TweakingOption {
+        case `default`
+        case withoutDirectionsButton
+    }
+
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any DemoKit.TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .default:
+            addressCardView.configure(with: .default)
+        case .withoutDirectionsButton:
+            addressCardView.configure(with: .withoutDirectionsButton)
+        }
     }
 }
 

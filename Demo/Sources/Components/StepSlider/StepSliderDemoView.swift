@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-final class StepSliderDemoView: UIView {
+final class StepSliderDemoView: UIView, Demoable {
     private let values = [100, 200, 300, 500, 1000, 2000, 3000, 4000, 5000, 10000]
 
     private lazy var slider: StepSlider = {

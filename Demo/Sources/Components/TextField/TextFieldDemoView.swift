@@ -4,8 +4,9 @@
 
 import UIKit
 import FinniversKit
+import DemoKit
 
-public class TextFieldDemoView: UIView {
+public class TextFieldDemoView: UIView, Demoable {
 
     // MARK: - Private properties
 

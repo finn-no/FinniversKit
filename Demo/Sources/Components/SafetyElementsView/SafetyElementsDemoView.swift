@@ -1,22 +1,12 @@
 import FinniversKit
+import DemoKit
 
-class SafetyElementsDemoView: UIView, Tweakable {
+class SafetyElementsDemoView: UIView {
     private lazy var safetyElementsView: SafetyElementsView = {
         let view = SafetyElementsView(withAutoLayout: true)
         view.useCompactLayout = true
         view.configure(with: sampleData)
         return view
-    }()
-
-    lazy var tweakingOptions: [TweakingOption] = {
-        [
-            TweakingOption(title: "Compact", description: "layout for compact horizontal size class") {
-                self.safetyElementsView.useCompactLayout = true
-            },
-            TweakingOption(title: "Regular", description: "layout for regular horizontal size class") {
-                self.safetyElementsView.useCompactLayout = false
-            }
-        ]
     }()
 
     override init(frame: CGRect) {
@@ -84,5 +74,27 @@ class SafetyElementsDemoView: UIView, Tweakable {
             safetyElementsView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             safetyElementsView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor)
         ])
+    }
+}
+
+extension SafetyElementsDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, DemoKit.TweakingOption {
+        case compactHorizontalSizeClassLayout
+        case regularHorizontalSizeClassLayout
+    }
+
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any DemoKit.TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .compactHorizontalSizeClassLayout:
+            safetyElementsView.useCompactLayout = true
+        case .regularHorizontalSizeClassLayout:
+            safetyElementsView.useCompactLayout = false
+        }
     }
 }

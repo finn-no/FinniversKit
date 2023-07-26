@@ -1,6 +1,7 @@
 import FinniversKit
+import DemoKit
 
-class ViewingsListDemoView: UIView {
+class ViewingsListDemoView: UIView, Demoable {
 
     private lazy var viewingsListView = ViewingsListView(withAutoLayout: true)
 

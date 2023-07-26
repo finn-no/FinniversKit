@@ -1,29 +1,7 @@
 import FinniversKit
+import DemoKit
 
-class ContractActionDemoView: UIView, Tweakable {
-    lazy var tweakingOptions: [TweakingOption]  = [
-        TweakingOption(title: "Basic", action: { [weak self] in
-            self?.contractActionView.configure(with: .default)
-        }),
-        TweakingOption(title: "Car contract", action: { [weak self] in
-            self?.contractActionView.configure(
-                with: .carContract,
-                topIcon: UIImage(named: .carFront),
-                paragraphSpacing: 12
-            )
-        }),
-        TweakingOption(title: "Request access to contract", action: { [weak self] in
-            self?.contractActionView.configure(
-                with: .requestAccessToContract,
-                topIcon: UIImage(named: .contract),
-                trailingImageTopConstant: .spacingM,
-                trailingImageTrailingConstant: -.spacingM,
-                contentSpacing: .spacingM,
-                paragraphSpacing: 12
-            )
-        })
-    ]
-
+class ContractActionDemoView: UIView {
     private lazy var contractActionView: ContractActionView = {
         let view = ContractActionView(withAutoLayout: true)
         view.delegate = self
@@ -35,10 +13,10 @@ class ContractActionDemoView: UIView, Tweakable {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-        tweakingOptions.first?.action?()
+        configure(forTweakAt: 0)
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     // MARK: - Setup
 
@@ -50,6 +28,42 @@ class ContractActionDemoView: UIView, Tweakable {
             contractActionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
             contractActionView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
+    }
+}
+
+extension ContractActionDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, DemoKit.TweakingOption {
+        case basic
+        case carContract
+        case requestAccessToContract
+    }
+
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any DemoKit.TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .basic:
+            contractActionView.configure(with: .default)
+        case .carContract:
+            contractActionView.configure(
+                with: .carContract,
+                topIcon: UIImage(named: .carFront),
+                paragraphSpacing: 12
+            )
+        case .requestAccessToContract:
+            contractActionView.configure(
+                with: .requestAccessToContract,
+                topIcon: UIImage(named: .contract),
+                trailingImageTopConstant: .spacingM,
+                trailingImageTrailingConstant: -.spacingM,
+                contentSpacing: .spacingM,
+                paragraphSpacing: 12
+            )
+        }
     }
 }
 

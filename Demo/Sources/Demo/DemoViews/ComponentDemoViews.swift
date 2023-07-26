@@ -2,8 +2,9 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 import FinniversKit
+import DemoKit
 
-public enum ComponentDemoViews: String, DemoViews {
+enum Components: String, CaseIterable, DemoGroup, DemoGroupItem {
     case addressCardView
     case button
     case multilineButton
@@ -40,7 +41,6 @@ public enum ComponentDemoViews: String, DemoViews {
     case iconCollection
     case disclaimerView
     case questionnaireView
-    case tweakable
     case stepSlider
     case loanCalculatorView
     case verificationView
@@ -84,7 +84,13 @@ public enum ComponentDemoViews: String, DemoViews {
     case mapAddressButton
     case hyperlinkTextView
 
-    var title: String? {
+    static var numberOfDemos: Int { allCases.count }
+
+    static func demoGroupItem(for index: Int) -> any DemoGroupItem {
+        allCases[index]
+    }
+
+    var title: String {
         switch self {
         case .selectionListCheckboxView:
             return "SelectionListView - checkboxes"
@@ -93,177 +99,169 @@ public enum ComponentDemoViews: String, DemoViews {
         case .selectionListSeparatedRadiobuttonView:
             return "SelectionListView - separated radio buttons"
         default:
-            return nil
+            return rawValue.capitalizingFirstLetter
         }
     }
 
-    public var viewController: UIViewController {
-        switch self {
+    // swiftlint:disable:next cyclomatic_complexity
+    static func demoable(for index: Int) -> any Demoable {
+        switch Self.allCases[index] {
         case .addressCardView:
-            return DemoViewController<AddressCardDemoView>()
+            return AddressCardDemoView()
         case .button:
-            return DemoViewController<ButtonDemoView>()
+            return ButtonDemoView()
         case .multilineButton:
-            return DemoViewController<MultilineButtonDemoView>()
+            return MultilineButtonDemoView()
         case .floatingButton:
-            return DemoViewController<FloatingButtonDemoView>()
+            return FloatingButtonDemoView()
         case .reviewButtonView:
-            return DemoViewController<ReviewButtonViewDemoView>()
+            return ReviewButtonViewDemoView()
         case .cogWheelButton:
-            return DemoViewController<CogWheelButtonDemoView>()
+            return CogWheelButtonDemoView()
         case .iconButton:
-            return DemoViewController<IconButtonDemoView>()
+            return IconButtonDemoView()
         case .label:
-            return DemoViewController<LabelDemoView>()
+            return LabelDemoView()
         case .ribbon:
-            return DemoViewController<RibbonDemoView>()
+            return RibbonDemoView()
         case .textField:
-            return DemoViewController<TextFieldDemoView>()
+            return TextFieldDemoView()
         case .textView:
-            return DemoViewController<TextViewDemoView>()
+            return TextViewDemoView()
         case .toast:
-            return DemoViewController<ToastDemoView>()
+            return ToastDemoView()
         case .switchView:
-            return DemoViewController<SwitchViewDemoView>()
+            return SwitchViewDemoView()
         case .infobox:
-            return DemoViewController<InfoboxDemoView>()
+            return InfoboxDemoView()
         case .consentTransparencyInfo:
-            return DemoViewController<ConsentTransparencyInfoDemoView>()
+            return ConsentTransparencyInfoDemoView()
         case .bannerTransparencyView:
-            return DemoViewController<BannerTransparencyDemoView>(containmentOptions: .bottomSheet)
+            return BannerTransparencyDemoView()
         case .checkbox:
-            return DemoViewController<CheckboxDemoView>(dismissType: .dismissButton)
+            return CheckboxDemoView()
         case .radioButton:
-            return DemoViewController<RadioButtonDemoView>(dismissType: .dismissButton)
+            return RadioButtonDemoView()
         case .roundedImageView:
-            return DemoViewController<RoundedImageViewDemoView>()
+            return RoundedImageViewDemoView()
         case .loadingIndicator:
-            return DemoViewController<LoadingIndicatorViewDemoView>()
+            return LoadingIndicatorViewDemoView()
         case .refreshControl:
-            return DemoViewController<RefreshControlDemoView>()
+            return RefreshControlDemoView()
         case .horizontalSlide:
-            let presentedViewController = HorizontalSlideDemoViewController()
-            let secondViewController = NavigationController(rootViewController: presentedViewController)
-            secondViewController.transitioningDelegate = presentedViewController.transition
-            secondViewController.modalPresentationStyle = .custom
-            return secondViewController
+            return HorizontalSlideDemoViewController()
         case .bottomSheetMechanics:
             return BottomSheetMechanicsDemoViewController()
         case .feedbackView:
-            return DemoViewController<FeedbackDemoView>(dismissType: .dismissButton)
+            return FeedbackDemoView()
         case .happinessRating:
-            return DemoViewController<HappinessRatingDemoView>(dismissType: .dismissButton)
+            return HappinessRatingDemoView()
         case .earthHourView:
-            return DemoViewController<EarthHourDemoView>()
+            return EarthHourDemoView()
         case .klimabroletView:
-            return KlimabroletDemoViewController(dismissType: .none)
+            return KlimabroletDemoViewController()
         case .christmasWishListView:
-            return DemoViewController<ChristmasWishListDemoView>()
+            return ChristmasWishListDemoView()
         case .nativeAdvert:
-            return DemoViewController<NativeAdvertDemoView>(dismissType: .dismissButton)
+            return NativeAdvertDemoView()
         case .callout:
-            return DemoViewController<CalloutDemoView>()
+            return CalloutDemoView()
         case .detailCallout:
-            return DemoViewController<DetailCalloutDemoView>()
+            return DetailCalloutDemoView()
         case .phaseList:
-            return DemoViewController<PhaseListDemoView>()
+            return PhaseListDemoView()
         case .iconCollection:
-            return DemoViewController<IconCollectionDemoView>()
+            return IconCollectionDemoView()
         case .disclaimerView:
-            return DemoViewController<DisclaimerDemoView>()
+            return DisclaimerDemoView()
         case .questionnaireView:
-            return DemoViewController<QuestionnaireDemoView>()
-        case .tweakable:
-            return DemoViewController<TweakableDemoView>()
+            return QuestionnaireDemoView()
         case .stepSlider:
-            return DemoViewController<StepSliderDemoView>()
+            return StepSliderDemoView()
         case .verificationView:
-            return DemoViewController<VerificationDemoView>()
+            return VerificationDemoView()
         case .loanCalculatorView:
-            return DemoViewController<LoanCalculatorDemoView>()
+            return LoanCalculatorDemoView()
         case .panel:
-            return DemoViewController<PanelDemoView>()
+            return PanelDemoView()
         case .visibilityDrivenTitleView:
-            return DemoViewController<VisibilityDrivenTitleDemoView>(dismissType: .dismissButton)
+            return VisibilityDrivenTitleDemoView()
         case .broadcast:
-            return DemoViewController<BroadcastDemoView>()
+            return BroadcastDemoView()
         case .selectorTitleView:
-            return DemoViewController<SelectorTitleViewDemoView>()
+            return SelectorTitleViewDemoView()
         case .priming:
-            return DemoViewController<PrimingDemoView>(
-                containmentOptions: .bottomSheet,
-                constrainToBottomSafeArea: false
-            )
+            return PrimingDemoView()
         case .footerButtonView:
-            return DemoViewController<FooterButtonDemoView>(constrainToBottomSafeArea: false)
+            return FooterButtonDemoView()
         case .checkmarkTitleView:
-            return DemoViewController<CheckmarkTitleViewDemoView>()
+            return CheckmarkTitleViewDemoView()
         case .viewingsListView:
-            return DemoViewController<ViewingsListDemoView>()
+            return ViewingsListDemoView()
         case .viewingsRedesignView:
-            return DemoViewController<ViewingsRedesignDemoView>()
+            return ViewingsRedesignDemoView()
         case .selfDeclarationView:
-            return DemoViewController<SelfDeclarationDemoView>()
+            return SelfDeclarationDemoView()
         case .collapsibleContentView:
-            return DemoViewController<CollapsibleContentDemoView>(dismissType: .dismissButton)
+            return CollapsibleContentDemoView()
         case .columnListsView:
-            return DemoViewController<ColumnListsDemoView>()
+            return ColumnListsDemoView()
         case .keyValueGridView:
-            return DemoViewController<KeyValueGridDemoView>()
+            return KeyValueGridDemoView()
         case .linkButtonListView:
-            return DemoViewController<LinkButtonListDemoView>()
+            return LinkButtonListDemoView()
         case .safetyElementsView:
-            return DemoViewController<SafetyElementsDemoView>(dismissType: .dismissButton)
+            return SafetyElementsDemoView()
         case .contractActionView:
-            return DemoViewController<ContractActionDemoView>()
+            return ContractActionDemoView()
         case .favoriteButton:
-            return DemoViewController<FavoriteButtonDemoView>(dismissType: .dismissButton)
+            return FavoriteButtonDemoView()
         case .sendInviteView:
-            return DemoViewController<SendInviteDemoView>(containmentOptions: .bottomSheet)
+            return SendInviteDemoView()
         case .navigationLinkView:
-            return DemoViewController<NavigationLinkViewDemoView>()
+            return NavigationLinkViewDemoView()
         case .numberedListView:
-            return DemoViewController<NumberedListDemoView>()
+            return NumberedListDemoView()
         case .transactionEntryView:
-            return DemoViewController<TransactionEntryDemoView>()
+            return TransactionEntryDemoView()
         case .blockUserView:
-            return DemoViewController<BlockUserDemoView>()
+            return BlockUserDemoView()
         case .loadingRetryView:
-            return DemoViewController<LoadingRetryDemoView>()
+            return LoadingRetryDemoView()
         case .promotionView:
-            return DemoViewController<PromotionDemoView>()
+            return PromotionDemoView()
         case .frontPageSavedSearchesView:
-            return DemoViewController<FrontPageSavedSearchesDemoView>()
+            return FrontPageSavedSearchesDemoView()
         case .overFlowCollectionView:
-            return DemoViewController<OverflowCollectionViewDemo>()
+            return OverflowCollectionViewDemo()
         case .scrollableTabDemoView:
-            return DemoViewController<ScrollableTabDemoView>(dismissType: .dismissButton)
+            return ScrollableTabDemoView()
         case .monthAndYearPickerView:
-            return DemoViewController<MonthAndYearPickerDemoView>()
+            return MonthAndYearPickerDemoView()
         case .searchView:
-            return DemoViewController<SearchDemoView>()
+            return SearchDemoView()
         case .addressComponentView:
-            return DemoViewController<AddressComponentDemoView>(dismissType: .dismissButton)
+            return AddressComponentDemoView()
         case .selectionListCheckboxView:
-            return DemoViewController<SelectionListCheckboxDemoView>(dismissType: .dismissButton)
+            return SelectionListCheckboxDemoView()
         case .selectionListRadiobuttonView:
-            return DemoViewController<SelectionListRadiobuttonDemoView>(dismissType: .dismissButton)
+            return SelectionListRadiobuttonDemoView()
         case .selectionListSeparatedRadiobuttonView:
-            return DemoViewController<SelectionListSeparatedRadiobuttonDemoView>(dismissType: .dismissButton)
+            return SelectionListSeparatedRadiobuttonDemoView()
         case .badgeView:
-            return DemoViewController<BadgeDemoView>()
+            return BadgeDemoView()
         case .jobApplyBox:
-            return DemoViewController<JobApplyBoxDemoView>(dismissType: .dismissButton)
+            return JobApplyBoxDemoView()
         case .jobKeyInfo:
-            return DemoViewController<JobKeyInfoDemoView>()
+            return JobKeyInfoDemoView()
         case .myAdsListView:
-            return DemoViewController<MyAdsListDemoView>(dismissType: .dismissButton, containmentOptions: .navigationController)
+            return MyAdsListDemoView()
         case .brazePromotionView:
-            return DemoViewController<BrazePromotionDemoView>()
+            return BrazePromotionDemoView()
         case .mapAddressButton:
-            return DemoViewController<MapAddressButtonDemoView>(dismissType: .dismissButton)
+            return MapAddressButtonDemoView()
         case .hyperlinkTextView:
-            return DemoViewController<HyperlinkTextViewDemoView>()
+            return HyperlinkTextViewDemoView()
         }
     }
 }

@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class IconButtonDemoView: UIView {
+public class IconButtonDemoView: UIView, Demoable {
 
     private lazy var favoriteStyledButton: IconButton = {
         let button = IconButton(style: .favorite)

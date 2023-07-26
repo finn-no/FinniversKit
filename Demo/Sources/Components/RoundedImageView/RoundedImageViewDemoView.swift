@@ -3,9 +3,9 @@
 //
 
 import FinniversKit
-import Foundation
+import DemoKit
 
-public class RoundedImageViewDemoView: UIView {
+class RoundedImageViewDemoView: UIView, Demoable {
     private lazy var roundedImageView: RoundedImageView = {
         let imageView = RoundedImageView()
         imageView.image = UIImage(named: "AppIcon")
@@ -18,7 +18,7 @@ public class RoundedImageViewDemoView: UIView {
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
         addSubview(roundedImageView)

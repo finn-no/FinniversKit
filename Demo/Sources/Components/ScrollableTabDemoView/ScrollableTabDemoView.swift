@@ -1,13 +1,9 @@
 import UIKit
 import FinniversKit
 import Combine
+import DemoKit
 
-class ScrollableTabDemoView: UIView, Tweakable {
-
-    lazy var tweakingOptions: [TweakingOption] = [
-        TweakingOption(title: "Default") { self.sideScrollableView.configure(with: .default) },
-        TweakingOption(title: "Reversed") { self.sideScrollableView.configure(with: .reversed) }
-    ]
+class ScrollableTabDemoView: UIView {
 
     // MARK: - Private properties
 
@@ -32,7 +28,7 @@ class ScrollableTabDemoView: UIView, Tweakable {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-        tweakingOptions.first?.action?()
+        configure(forTweakAt: 0)
     }
 
     required init?(coder: NSCoder) {
@@ -55,6 +51,29 @@ class ScrollableTabDemoView: UIView, Tweakable {
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
+    }
+}
+
+extension ScrollableTabDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, DemoKit.TweakingOption {
+        case `default`
+        case reversed
+    }
+
+    var dismissKind: DismissKind { .button }
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any DemoKit.TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .default:
+            sideScrollableView.configure(with: .default)
+        case .reversed:
+            sideScrollableView.configure(with: .reversed)
+        }
     }
 }
 

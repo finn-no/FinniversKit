@@ -3,8 +3,11 @@
 //
 
 import FinniversKit
+import DemoKit
 
-class HappinessRatingDemoView: UIView {
+class HappinessRatingDemoView: UIView, Demoable {
+
+    var dismissKind: DismissKind { .button }
 
     // MARK: - Private properties
 
