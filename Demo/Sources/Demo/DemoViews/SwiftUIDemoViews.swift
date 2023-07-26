@@ -4,8 +4,9 @@
 
 import SwiftUI
 @testable import FinniversKit
+import DemoKit
 
-public enum SwiftUIDemoViews: String, DemoViews {
+enum SwiftUIDemo: String, CaseIterable, DemoGroup, DemoGroupItem {
     case checkBox
     case floatingButton
     case htmlText
@@ -18,70 +19,43 @@ public enum SwiftUIDemoViews: String, DemoViews {
     case toast
     case resultView
 
-    public var viewController: UIViewController {
-        switch self {
+    static var numberOfDemos: Int { allCases.count }
+
+    static func demoGroupItem(for index: Int) -> any DemoGroupItem {
+        allCases[index]
+    }
+
+    static func demoable(for index: Int) -> any Demoable {
+        switch Self.allCases[index] {
+        case .checkBox:
+            return SwiftUICheckBox_Previews()
+        case .floatingButton:
+            return SwiftUIFloatingButton_Previews()
         case .htmlText:
             return HTMLTextDemoViewController()
+        case .loadingIndicator:
+            return SwiftUILoadingIndicatorDemoView_Previews()
+        case .loadingView:
+            return LoadingSwiftUIDemoView_Previews()
+        case .radioButton:
+            return SwiftUIRadioButton_Previews()
+        case .selectionListView:
+            return SwiftUISelectionListDemoView_Previews()
+        case .textField:
+            return FinnTextField_Previews()
+        case .textView:
+            return FinnTextView_Previews()
+        case .toast:
+            return ToastSwiftUIDemoView_Previews()
         case .resultView:
             return ResultSwiftUIDemoViewController()
-        default:
-            return PreviewController(hostingController: hostingController)
-        }
-    }
-
-    private var hostingController: UIViewController {
-        UIHostingController(rootView: previews)
-    }
-
-    @ViewBuilder private var previews: some View {
-        switch self {
-        case .checkBox:
-            SwiftUICheckBox_Previews.previews
-        case .floatingButton:
-            SwiftUIFloatingButton_Previews.previews
-        case .loadingIndicator:
-            SwiftUILoadingIndicatorDemoView()
-        case .loadingView:
-            LoadingSwiftUIDemoView()
-        case .radioButton:
-            SwiftUIRadioButton_Previews.previews
-        case .selectionListView:
-            SwiftUISelectionListDemoView()
-        case .textField:
-            FinnTextField_Previews.previews
-        case .textView:
-            FinnTextView_Previews.previews
-        case .toast:
-            ToastSwiftUIDemoView_Previews.previews
-        default:
-            EmptyView()
         }
     }
 }
 
-private final class PreviewController: DemoViewController<UIView> {
-    var hostingController: UIViewController
+// MARK: - PreviewProvider conformances
 
-    init(hostingController: UIViewController) {
-        self.hostingController = hostingController
-        super.init()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        guard let childViewController = childViewController else {
-            return
-        }
-
-        childViewController.addChild(hostingController)
-        hostingController.view.frame = childViewController.view.bounds
-        hostingController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        childViewController.view.addSubview(hostingController.view)
-        hostingController.didMove(toParent: childViewController)
-    }
-}
+extension SwiftUICheckBox_Previews: Demoable {}
+extension SwiftUIFloatingButton_Previews: Demoable {}
+extension SwiftUIRadioButton_Previews: Demoable {}
+extension FinnTextView_Previews: Demoable {}
