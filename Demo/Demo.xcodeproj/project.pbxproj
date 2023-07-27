@@ -138,13 +138,6 @@
 		46E7744E242CEF0A008A5E93 /* CheckboxSubtitleCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77376242CEF09008A5E93 /* CheckboxSubtitleCellDemoView.swift */; };
 		46E7744F242CEF0A008A5E93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46E77377242CEF09008A5E93 /* LaunchScreen.storyboard */; };
 		46E77450242CEF0A008A5E93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46E77378242CEF09008A5E93 /* Assets.xcassets */; };
-		46E77451242CEF0A008A5E93 /* TweakingOptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7737A242CEF09008A5E93 /* TweakingOptionsTableViewController.swift */; };
-		46E77452242CEF0A008A5E93 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7737B242CEF09008A5E93 /* ScrollViewController.swift */; };
-		46E77453242CEF0A008A5E93 /* CornerAnchoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7737C242CEF09008A5E93 /* CornerAnchoringViewController.swift */; };
-		46E77454242CEF0A008A5E93 /* Tweakable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7737D242CEF09008A5E93 /* Tweakable.swift */; };
-		46E77455242CEF0A008A5E93 /* TweakingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7737E242CEF09008A5E93 /* TweakingOption.swift */; };
-		46E77456242CEF0A008A5E93 /* TweakableDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7737F242CEF09008A5E93 /* TweakableDemoView.swift */; };
-		46E77457242CEF0A008A5E93 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77380242CEF09008A5E93 /* Device.swift */; };
 		46E77458242CEF0A008A5E93 /* AdRecommendationsGridViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77384242CEF09008A5E93 /* AdRecommendationsGridViewDemoView.swift */; };
 		46E77459242CEF0A008A5E93 /* AdRecommendationsGridViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77385242CEF0A008A5E93 /* AdRecommendationsGridViewDemoViewHelpers.swift */; };
 		46E7745A242CEF0A008A5E93 /* NativeAdvertRecommendationDemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77386242CEF0A008A5E93 /* NativeAdvertRecommendationDemoCell.swift */; };
@@ -380,13 +373,6 @@
 		46E77376242CEF09008A5E93 /* CheckboxSubtitleCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxSubtitleCellDemoView.swift; sourceTree = "<group>"; };
 		46E77377242CEF09008A5E93 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		46E77378242CEF09008A5E93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		46E7737A242CEF09008A5E93 /* TweakingOptionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakingOptionsTableViewController.swift; sourceTree = "<group>"; };
-		46E7737B242CEF09008A5E93 /* ScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
-		46E7737C242CEF09008A5E93 /* CornerAnchoringViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerAnchoringViewController.swift; sourceTree = "<group>"; };
-		46E7737D242CEF09008A5E93 /* Tweakable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweakable.swift; sourceTree = "<group>"; };
-		46E7737E242CEF09008A5E93 /* TweakingOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakingOption.swift; sourceTree = "<group>"; };
-		46E7737F242CEF09008A5E93 /* TweakableDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakableDemoView.swift; sourceTree = "<group>"; };
-		46E77380242CEF09008A5E93 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		46E77384242CEF09008A5E93 /* AdRecommendationsGridViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdRecommendationsGridViewDemoView.swift; sourceTree = "<group>"; };
 		46E77385242CEF0A008A5E93 /* AdRecommendationsGridViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdRecommendationsGridViewDemoViewHelpers.swift; sourceTree = "<group>"; };
 		46E77386242CEF0A008A5E93 /* NativeAdvertRecommendationDemoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAdvertRecommendationDemoCell.swift; sourceTree = "<group>"; };
@@ -513,7 +499,6 @@
 				46E7726A242CEF09008A5E93 /* Fullscreen */,
 				46E77381242CEF09008A5E93 /* Recycling */,
 				9BE474C724979816009620A5 /* SwiftUI */,
-				46E77379242CEF09008A5E93 /* Tweakable */,
 				46AE6FC3242BADC9007BB005 /* AppDelegate.swift */,
 				46AE6FD1242BADCD007BB005 /* Info.plist */,
 				46E77377242CEF09008A5E93 /* LaunchScreen.storyboard */,
@@ -1448,20 +1433,6 @@
 			path = SelectableTableViewCell;
 			sourceTree = "<group>";
 		};
-		46E77379242CEF09008A5E93 /* Tweakable */ = {
-			isa = PBXGroup;
-			children = (
-				46E7737C242CEF09008A5E93 /* CornerAnchoringViewController.swift */,
-				46E77380242CEF09008A5E93 /* Device.swift */,
-				46E7737B242CEF09008A5E93 /* ScrollViewController.swift */,
-				46E7737D242CEF09008A5E93 /* Tweakable.swift */,
-				46E7737F242CEF09008A5E93 /* TweakableDemoView.swift */,
-				46E7737E242CEF09008A5E93 /* TweakingOption.swift */,
-				46E7737A242CEF09008A5E93 /* TweakingOptionsTableViewController.swift */,
-			);
-			path = Tweakable;
-			sourceTree = "<group>";
-		};
 		46E77381242CEF09008A5E93 /* Recycling */ = {
 			isa = PBXGroup;
 			children = (
@@ -2068,7 +2039,6 @@
 				46E77422242CEF0A008A5E93 /* BannerTransparencyInfoDefaultData.swift in Sources */,
 				46E77444242CEF0A008A5E93 /* FavoriteAdCellDemoView.swift in Sources */,
 				46E7745B242CEF0A008A5E93 /* BannerAdDemoCell.swift in Sources */,
-				46E77452242CEF0A008A5E93 /* ScrollViewController.swift in Sources */,
 				46E7745D242CEF0A008A5E93 /* MarketsGridViewDemoView.swift in Sources */,
 				46AE6FC4242BADC9007BB005 /* AppDelegate.swift in Sources */,
 				46E773C2242CEF0A008A5E93 /* SettingDetailsDemoViewController.swift in Sources */,
@@ -2081,7 +2051,6 @@
 				46E7745F242CEF0A008A5E93 /* SettingsViewDemoView.swift in Sources */,
 				46E7745A242CEF0A008A5E93 /* NativeAdvertRecommendationDemoCell.swift in Sources */,
 				46E773F3242CEF0A008A5E93 /* NativeAdvertDemoView.swift in Sources */,
-				46E77456242CEF0A008A5E93 /* TweakableDemoView.swift in Sources */,
 				4DD3AA7A27B5651F007B107E /* DetailCalloutDemoView.swift in Sources */,
 				46E77404242CEF0A008A5E93 /* ToastDemoView.swift in Sources */,
 				46E773C5242CEF0A008A5E93 /* FavoriteActionDemoView.swift in Sources */,
@@ -2108,16 +2077,12 @@
 				9F84F96E292B6DC900631443 /* BrazePromotionDemoView.swift in Sources */,
 				46E77438242CEF0A008A5E93 /* BroadcastDemoView.swift in Sources */,
 				714B9357253736AD00801C99 /* SendInviteDemoView.swift in Sources */,
-				46E77453242CEF0A008A5E93 /* CornerAnchoringViewController.swift in Sources */,
 				46E773D6242CEF0A008A5E93 /* FavoriteAdsListDemoViewHelper.swift in Sources */,
 				46E7746B242CEF0A008A5E93 /* NotificationsListViewDemoView.swift in Sources */,
 				46E773FE242CEF0A008A5E93 /* FooterButtonView.swift in Sources */,
-				46E77451242CEF0A008A5E93 /* TweakingOptionsTableViewController.swift in Sources */,
 				46E7741A242CEF0A008A5E93 /* InfoboxDefaultData.swift in Sources */,
 				17F8EEC629409FE3000E26C9 /* SwiftUISelectionListDemoView.swift in Sources */,
 				46E77433242CEF0A008A5E93 /* ContractActionDemoView.swift in Sources */,
-				46E77455242CEF0A008A5E93 /* TweakingOption.swift in Sources */,
-				46E77457242CEF0A008A5E93 /* Device.swift in Sources */,
 				46E77443242CEF0A008A5E93 /* RemoteImageCellDemoView.swift in Sources */,
 				46E773C8242CEF0A008A5E93 /* FullscreenGalleryDemoViewController.swift in Sources */,
 				46E77412242CEF0A008A5E93 /* EarthHourDefaultData.swift in Sources */,
@@ -2197,7 +2162,6 @@
 				46E77405242CEF0A008A5E93 /* HorizontalSlideDemoViewController.swift in Sources */,
 				46E773C4242CEF0A008A5E93 /* BuyerPickerDemoData.swift in Sources */,
 				46E7740D242CEF0A008A5E93 /* FeedbackDemoView.swift in Sources */,
-				46E77454242CEF0A008A5E93 /* Tweakable.swift in Sources */,
 				5DA190D525A5BC5B002305A8 /* FinnTextField+Previews.swift in Sources */,
 				F3D30537299F8FC200C4C4ED /* SelectionListSeparatedRadiobuttonDemoView.swift in Sources */,
 				46E7743E242CEF0A008A5E93 /* VerificationDemoView.swift in Sources */,
