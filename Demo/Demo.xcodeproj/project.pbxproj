@@ -14,7 +14,6 @@
 		277307E5298C108800B8E27F /* ResultSwiftUIDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277307E4298C108800B8E27F /* ResultSwiftUIDemoView.swift */; };
 		27FAFCB82988FE6100FEDAE0 /* ToastSwiftUIDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAFCB72988FE6100FEDAE0 /* ToastSwiftUIDemoView.swift */; };
 		46AE6FC4242BADC9007BB005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AE6FC3242BADC9007BB005 /* AppDelegate.swift */; };
-		46E773A4242CEF0A008A5E93 /* DemoHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77258242CEF09008A5E93 /* DemoHelpers.swift */; };
 		46E773A5242CEF0A008A5E93 /* DnaDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7725A242CEF09008A5E93 /* DnaDemoViews.swift */; };
 		46E773A6242CEF0A008A5E93 /* FullscreenDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7725B242CEF09008A5E93 /* FullscreenDemoViews.swift */; };
 		46E773A7242CEF0A008A5E93 /* CellsDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7725C242CEF09008A5E93 /* CellsDemoViews.swift */; };
@@ -256,7 +255,6 @@
 		46AE6FC0242BADC9007BB005 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46AE6FC3242BADC9007BB005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46AE6FD1242BADCD007BB005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		46E77258242CEF09008A5E93 /* DemoHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoHelpers.swift; sourceTree = "<group>"; };
 		46E7725A242CEF09008A5E93 /* DnaDemoViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DnaDemoViews.swift; sourceTree = "<group>"; };
 		46E7725B242CEF09008A5E93 /* FullscreenDemoViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenDemoViews.swift; sourceTree = "<group>"; };
 		46E7725C242CEF09008A5E93 /* CellsDemoViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellsDemoViews.swift; sourceTree = "<group>"; };
@@ -529,7 +527,6 @@
 			isa = PBXGroup;
 			children = (
 				46E77262242CEF09008A5E93 /* BaseDemoViewController.swift */,
-				46E77258242CEF09008A5E93 /* DemoHelpers.swift */,
 				46E77259242CEF09008A5E93 /* DemoViews */,
 				46E77263242CEF09008A5E93 /* Helpers.swift */,
 				46E7725F242CEF09008A5E93 /* MiniToastView.swift */,
@@ -2035,7 +2032,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46E773A4242CEF0A008A5E93 /* DemoHelpers.swift in Sources */,
 				71C6AA992549D28800D78269 /* MessageUserRequiredData.swift in Sources */,
 				46E77425242CEF0A008A5E93 /* ConsentTransparencyInfoDemoView.swift in Sources */,
 				46E7744C242CEF0A008A5E93 /* HeartSubtitleCellDemoView.swift in Sources */,
