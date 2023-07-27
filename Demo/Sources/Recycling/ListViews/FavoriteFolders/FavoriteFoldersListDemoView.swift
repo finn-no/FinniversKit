@@ -56,6 +56,7 @@ extension FavoriteFoldersListDemoView: TweakableDemo {
         case xmasButton
     }
 
+    var shouldSnapshotTweaks: Bool { false }
     var presentation: DemoablePresentation { .navigationController }
     var numberOfTweaks: Int { Tweaks.allCases.count }
 
