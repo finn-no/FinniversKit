@@ -8,7 +8,7 @@ import XCTest
 import DemoKitSnapshot
 
 class TableViewCellsViewTests: XCTestCase {
-    private func snapshot(_ component: Cells, record: Bool = false, line: UInt = #line) {
+    private func snapshot(_ component: CellsDemoViews, record: Bool = false, line: UInt = #line) {
         snapshotTest(demoable: component.demoable, record: record, line: line)
     }
 

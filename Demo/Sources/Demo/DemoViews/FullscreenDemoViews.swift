@@ -16,7 +16,7 @@ extension MessageUserRequiredSheet: Demoable {
     public var overridesModalPresentationStyle: Bool { true }
 }
 
-enum Fullscreen: String, CaseIterable, DemoGroup, DemoGroupItem {
+enum FullscreenDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case frontPageView
     case popupView
     case emptyView

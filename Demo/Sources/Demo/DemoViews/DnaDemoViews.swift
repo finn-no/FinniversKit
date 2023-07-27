@@ -1,7 +1,7 @@
 import FinniversKit
 import DemoKit
 
-enum DNA: String, CaseIterable, DemoGroup, DemoGroupItem {
+enum DnaDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case color
     case font
     case spacing

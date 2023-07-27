@@ -4,7 +4,7 @@
 import FinniversKit
 import DemoKit
 
-enum Cells: String, CaseIterable, DemoGroup, DemoGroupItem {
+enum CellsDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case basicCell
     case basicCellVariations
     case checkboxCell

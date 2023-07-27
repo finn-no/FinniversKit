@@ -14,12 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
 
         let demoViewController = DemoKitViewController(demoGroups: [
-            DNA.self,
-            Cells.self,
-            Components.self,
-            Recycling.self,
-            SwiftUIDemo.self,
-            Fullscreen.self,
+            DnaDemoViews.self,
+            CellsDemoViews.self,
+            ComponentDemoViews.self,
+            RecyclingDemoViews.self,
+            SwiftUIDemoViews.self,
+            FullscreenDemoViews.self,
         ])
         window?.rootViewController = UINavigationController(rootViewController: demoViewController)
 

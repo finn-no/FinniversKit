@@ -8,7 +8,7 @@ import SwiftUI
 import DemoKitSnapshot
 
 class SwiftUIViewTests: XCTestCase {
-    private func snapshot(_ component: SwiftUIDemo, record: Bool = false, line: UInt = #line) {
+    private func snapshot(_ component: SwiftUIDemoViews, record: Bool = false, line: UInt = #line) {
         snapshotTest(demoable: component.demoable, record: record, line: line)
     }
 

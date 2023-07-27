@@ -4,7 +4,7 @@
 import FinniversKit
 import DemoKit
 
-enum Components: String, CaseIterable, DemoGroup, DemoGroupItem {
+enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case addressCardView
     case button
     case multilineButton

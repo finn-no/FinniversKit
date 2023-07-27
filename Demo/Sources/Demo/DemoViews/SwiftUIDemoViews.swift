@@ -6,7 +6,7 @@ import SwiftUI
 @testable import FinniversKit
 import DemoKit
 
-enum SwiftUIDemo: String, CaseIterable, DemoGroup, DemoGroupItem {
+enum SwiftUIDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case checkBox
     case floatingButton
     case htmlText

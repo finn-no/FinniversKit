@@ -4,7 +4,7 @@
 import FinniversKit
 import DemoKit
 
-enum Recycling: String, CaseIterable, DemoGroup, DemoGroupItem {
+enum RecyclingDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case basicTableView
     case notificationsListView
     case favoriteFoldersListView
