@@ -2,7 +2,7 @@ import UIKit
 import FinniversKit
 import DemoKit
 
-class MyAdsListDemoView: UIView, Demoable {
+class MyAdsListDemoView: UIView {
 
     var presentation: DemoablePresentation { .navigationController }
     var dismissKind: DismissKind { .button }
@@ -56,9 +56,9 @@ extension MyAdsListDemoView: MyAdsListViewDelegate {
     }
 }
 
-// MARK: - BarButtonProvider
+// MARK: - Demoable
 
-extension MyAdsListDemoView: BarButtonProvider {
+extension MyAdsListDemoView: Demoable {
     var rightBarButtonItems: [UIBarButtonItem] {
         [
             UIBarButtonItem(
