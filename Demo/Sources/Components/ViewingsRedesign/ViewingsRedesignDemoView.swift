@@ -35,7 +35,7 @@ class ViewingsRedesignDemoView: UIView {
 }
 
 extension ViewingsRedesignDemoView: TweakableDemo {
-    enum Tweaks: String, CaseIterable, DemoKit.TweakingOption {
+    enum Tweaks: String, CaseIterable, TweakingOption {
         case demoModel
         case onlyMoreInfo
         case onlyProspectusButton
@@ -49,7 +49,7 @@ extension ViewingsRedesignDemoView: TweakableDemo {
 
     var numberOfTweaks: Int { Tweaks.allCases.count }
 
-    func tweak(for index: Int) -> any DemoKit.TweakingOption {
+    func tweak(for index: Int) -> any TweakingOption {
         Tweaks.allCases[index]
     }
 

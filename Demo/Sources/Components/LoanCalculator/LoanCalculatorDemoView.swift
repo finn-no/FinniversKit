@@ -53,7 +53,7 @@ class LoanCalculatorDemoView: UIView {
 }
 
 extension LoanCalculatorDemoView: TweakableDemo {
-    enum Tweaks: String, CaseIterable, DemoKit.TweakingOption {
+    enum Tweaks: String, CaseIterable, TweakingOption {
         case normal
         case nordea
         case danskeBank
@@ -62,7 +62,7 @@ extension LoanCalculatorDemoView: TweakableDemo {
 
     var numberOfTweaks: Int { Tweaks.allCases.count }
 
-    func tweak(for index: Int) -> any DemoKit.TweakingOption {
+    func tweak(for index: Int) -> any TweakingOption {
         Tweaks.allCases[index]
     }
 

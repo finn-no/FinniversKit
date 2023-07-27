@@ -36,7 +36,7 @@ class SelectionListRadiobuttonDemoView: UIView {
 }
 
 extension SelectionListRadiobuttonDemoView: TweakableDemo {
-    enum Tweaks: String, CaseIterable, DemoKit.TweakingOption {
+    enum Tweaks: String, CaseIterable, TweakingOption {
         case threeItems
         case oneItem
         case twoItems
@@ -47,7 +47,7 @@ extension SelectionListRadiobuttonDemoView: TweakableDemo {
     var dismissKind: DismissKind { .button }
     var numberOfTweaks: Int { Tweaks.allCases.count }
 
-    func tweak(for index: Int) -> any DemoKit.TweakingOption {
+    func tweak(for index: Int) -> any TweakingOption {
         Tweaks.allCases[index]
     }
 

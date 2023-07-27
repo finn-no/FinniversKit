@@ -24,7 +24,7 @@ class ResultDemoView: UIView {
 }
 
 extension ResultDemoView: TweakableDemo {
-    enum Tweaks: String, CaseIterable, DemoKit.TweakingOption {
+    enum Tweaks: String, CaseIterable, TweakingOption {
         case allElements
         case coloredTitle
         case coloredTitleMultipleLines
@@ -35,7 +35,7 @@ extension ResultDemoView: TweakableDemo {
 
     var numberOfTweaks: Int { Tweaks.allCases.count }
 
-    func tweak(for index: Int) -> any DemoKit.TweakingOption {
+    func tweak(for index: Int) -> any TweakingOption {
         Tweaks.allCases[index]
     }
 

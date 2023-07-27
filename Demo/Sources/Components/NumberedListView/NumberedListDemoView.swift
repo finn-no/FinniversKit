@@ -40,7 +40,7 @@ class NumberedListDemoView: UIView {
 }
 
 extension NumberedListDemoView: TweakableDemo {
-    enum Tweaks: String, CaseIterable, DemoKit.TweakingOption {
+    enum Tweaks: String, CaseIterable, TweakingOption {
         case itemsWithTitleBodyAndButtons
         case itemsWithTitleAndBody
         case itemsWithOnlyBody
@@ -48,7 +48,7 @@ extension NumberedListDemoView: TweakableDemo {
 
     var numberOfTweaks: Int { Tweaks.allCases.count }
 
-    func tweak(for index: Int) -> any DemoKit.TweakingOption {
+    func tweak(for index: Int) -> any TweakingOption {
         Tweaks.allCases[index]
     }
 

@@ -57,14 +57,14 @@ final class ResultSwiftUIDemoViewController: UIViewController {
 }
 
 extension ResultSwiftUIDemoViewController: TweakableDemo {
-    enum Tweaks: String, CaseIterable, DemoKit.TweakingOption {
+    enum Tweaks: String, CaseIterable, TweakingOption {
         case errorRetryView
         case emptyView
     }
 
     var numberOfTweaks: Int { Tweaks.allCases.count }
 
-    func tweak(for index: Int) -> any DemoKit.TweakingOption {
+    func tweak(for index: Int) -> any TweakingOption {
         Tweaks.allCases[index]
     }
 

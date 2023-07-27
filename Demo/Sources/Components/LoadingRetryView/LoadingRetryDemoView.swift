@@ -37,7 +37,7 @@ final class LoadingRetryDemoView: UIView {
 }
 
 extension LoadingRetryDemoView: TweakableDemo {
-    enum Tweaks: String, CaseIterable, DemoKit.TweakingOption {
+    enum Tweaks: String, CaseIterable, TweakingOption {
         case labelAndButton
         case loading
         case hidden
@@ -45,7 +45,7 @@ extension LoadingRetryDemoView: TweakableDemo {
 
     var numberOfTweaks: Int { Tweaks.allCases.count }
 
-    func tweak(for index: Int) -> any DemoKit.TweakingOption {
+    func tweak(for index: Int) -> any TweakingOption {
         Tweaks.allCases[index]
     }
 
