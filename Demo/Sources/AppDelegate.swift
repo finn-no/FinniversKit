@@ -13,13 +13,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        let demoViewController = RootDemoViewController(demoGroups: [
+        let demoViewController = DemoKitViewController(demoGroups: [
             DNA.self,
             Cells.self,
             Components.self,
-            Fullscreen.self,
             Recycling.self,
-            SwiftUIDemo.self
+            SwiftUIDemo.self,
+            Fullscreen.self,
         ])
         window?.rootViewController = UINavigationController(rootViewController: demoViewController)
 
