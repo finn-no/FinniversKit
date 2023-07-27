@@ -89,8 +89,7 @@ extension ColorDemoView: UITableViewDataSource {
         let item = items[indexPath.row]
         cell.backgroundColor = item.color
 
-        // TODO: Make extension in DemoKit public.
-        let title = item.title.prefix(1).uppercased() + item.title.dropFirst() + "  "
+        let title = item.title.capitalizingFirstLetter + "  "
         let attributedTitle = NSMutableAttributedString(string: title)
         attributedTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.gray700, range: NSRange(location: 0, length: title.count))
 

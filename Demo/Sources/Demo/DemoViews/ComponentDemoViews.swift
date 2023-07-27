@@ -100,8 +100,7 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
         case .selectionListSeparatedRadiobuttonView:
             return "SelectionListView - separated radio buttons"
         default:
-            // TODO: Make extension in DemoKit public.
-            return rawValue.prefix(1).uppercased() + rawValue.dropFirst()
+            return rawValue.capitalizingFirstLetter
         }
     }
 
