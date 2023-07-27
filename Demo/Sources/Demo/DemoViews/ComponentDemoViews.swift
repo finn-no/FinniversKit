@@ -84,13 +84,14 @@ enum Components: String, CaseIterable, DemoGroup, DemoGroupItem {
     case mapAddressButton
     case hyperlinkTextView
 
+    static var groupTitle: String { "Components" }
     static var numberOfDemos: Int { allCases.count }
 
     static func demoGroupItem(for index: Int) -> any DemoGroupItem {
         allCases[index]
     }
 
-    var title: String {
+    var groupItemTitle: String {
         switch self {
         case .selectionListCheckboxView:
             return "SelectionListView - checkboxes"

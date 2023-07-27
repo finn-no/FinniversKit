@@ -17,6 +17,7 @@ enum Recycling: String, CaseIterable, DemoGroup, DemoGroupItem {
     case adManagementView
     case neighborhoodProfileView
 
+    static var groupTitle: String { "Recycling" }
     static var numberOfDemos: Int { allCases.count }
 
     static func demoGroupItem(for index: Int) -> any DemoGroupItem {

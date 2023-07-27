@@ -46,6 +46,7 @@ enum Fullscreen: String, CaseIterable, DemoGroup, DemoGroupItem {
     case confettiView
     case messageUserRequiredSheet
 
+    static var groupTitle: String { "Fullscreen" }
     static var numberOfDemos: Int { allCases.count }
 
     static func demoGroupItem(for index: Int) -> any DemoGroupItem {

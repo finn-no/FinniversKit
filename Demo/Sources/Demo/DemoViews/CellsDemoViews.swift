@@ -16,6 +16,7 @@ enum Cells: String, CaseIterable, DemoGroup, DemoGroupItem {
     case favoriteAdCell
     case userAdCell
 
+    static var groupTitle: String { "Cells" }
     static var numberOfDemos: Int { allCases.count }
 
     static func demoGroupItem(for index: Int) -> any DemoGroupItem {

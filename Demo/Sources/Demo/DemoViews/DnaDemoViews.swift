@@ -6,6 +6,7 @@ enum DNA: String, CaseIterable, DemoGroup, DemoGroupItem {
     case font
     case spacing
 
+    static var groupTitle: String { "DNA" }
     static var numberOfDemos: Int { allCases.count }
 
     static func demoGroupItem(for index: Int) -> any DemoGroupItem {

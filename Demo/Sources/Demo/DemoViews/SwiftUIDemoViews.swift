@@ -19,6 +19,7 @@ enum SwiftUIDemo: String, CaseIterable, DemoGroup, DemoGroupItem {
     case toast
     case resultView
 
+    static var groupTitle: String { "SwiftUI" }
     static var numberOfDemos: Int { allCases.count }
 
     static func demoGroupItem(for index: Int) -> any DemoGroupItem {
