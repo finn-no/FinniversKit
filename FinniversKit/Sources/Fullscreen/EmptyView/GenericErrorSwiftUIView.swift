@@ -10,7 +10,7 @@ public final class GenericErrorViewModel {
         title: String,
         description: String? = nil,
         buttonTitle: String? = nil,
-        action: @escaping (() -> Void)
+        action: (() -> Void)? = nil
     ) {
         self.title = title
         self.description = description
