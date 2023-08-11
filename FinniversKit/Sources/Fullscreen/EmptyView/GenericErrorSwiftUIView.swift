@@ -1,12 +1,6 @@
 import SwiftUI
 
-public final class GenericErrorViewModel: Equatable {
-    public static func == (lhs: GenericErrorViewModel, rhs: GenericErrorViewModel) -> Bool {
-        lhs.title == rhs.title &&
-        lhs.description == rhs.description &&
-        lhs.buttonTitle == rhs.buttonTitle
-    }
-
+public final class GenericErrorViewModel {
     private(set) var title: String
     private(set) var description: String?
     private(set) var buttonTitle: String?
@@ -82,5 +76,13 @@ public struct GenericErrorSwiftUIView: UIViewRepresentable {
 public extension View {
     func genericErrorView(for viewModel: Binding<GenericErrorViewModel?>) -> some View {
         modifier(GenericErrorViewModifier(viewModel: viewModel))
+    }
+}
+
+extension GenericErrorViewModel: Equatable {
+    public static func == (lhs: GenericErrorViewModel, rhs: GenericErrorViewModel) -> Bool {
+        lhs.title == rhs.title &&
+        lhs.description == rhs.description &&
+        lhs.buttonTitle == rhs.buttonTitle
     }
 }
