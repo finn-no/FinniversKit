@@ -78,3 +78,11 @@ public extension View {
         modifier(GenericErrorViewModifier(viewModel: viewModel))
     }
 }
+
+extension GenericErrorViewModel: Equatable {
+    public static func == (lhs: GenericErrorViewModel, rhs: GenericErrorViewModel) -> Bool {
+        lhs.title == rhs.title &&
+        lhs.description == rhs.description &&
+        lhs.buttonTitle == rhs.buttonTitle
+    }
+}
