@@ -55,6 +55,8 @@ public class RefreshControl: UIRefreshControl {
 
     private func setup() {
         tintColor = .clear
+        subviews.first?.alpha = 0
+
         addSubview(loadingIndicatorView)
 
         NSLayoutConstraint.activate([
