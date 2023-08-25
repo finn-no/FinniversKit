@@ -64,6 +64,7 @@ extension Optional where Wrapped == String {
 
 /// A model confirming to the JobAdRecommendationViewModel protocol for showcasing JobAdRecommendationCell in playground.
 struct JobAd: JobAdRecommendationViewModel {
+    var id: String
     var title: String
     var company: String
     var location: String
@@ -206,6 +207,7 @@ struct JobAdFactory {
             let dataIndex = index % title.count
 
             return JobAd(
+                id: id[dataIndex],
                 title: title[dataIndex],
                 company: company[dataIndex],
                 location: location[dataIndex],
@@ -216,6 +218,13 @@ struct JobAdFactory {
             )
         }
     }
+
+    private static let id: [String] = [
+        "1",
+        "2",
+        "3",
+        "4"
+    ]
 
     private static let title: [String] = [
         "Vi søker deg som er virkelig brenner for faget og har store ambisjoner!",
@@ -228,7 +237,7 @@ struct JobAdFactory {
         "FINN.no AS",
         "Selskap med veldig langt navn",
         "Rancho Cuccamonga AS",
-        "Reodors sykkelverksted",
+        "Reodors sykkelverksted"
     ]
 
     private static let location: [String] = [
