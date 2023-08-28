@@ -5,6 +5,7 @@
 import Foundation
 
 public protocol JobAdRecommendationViewModel {
+    var id: String { get }
     var title: String { get }
     var company: String { get }
     var location: String { get }
