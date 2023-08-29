@@ -44,6 +44,11 @@ public protocol ColorProvider {
 // MARK: - Default FINN colors
 
 public struct DefaultColorProvider: ColorProvider {
+    
+    public static var shared = {
+        DefaultColorProvider()
+    }
+    
     public var bgPrimary: UIColor {
         .dynamicColor(defaultColor: .white, darkModeColor: .darkMilk)
     }
