@@ -45,7 +45,7 @@ public protocol ColorProvider {
 
 public struct DefaultColorProvider: ColorProvider {
     
-    public static var shared = DefaultColorProvider()
+    public static var sharedInstance = DefaultColorProvider()
     
     public var bgPrimary: UIColor {
         .dynamicColor(defaultColor: .white, darkModeColor: .darkMilk)
