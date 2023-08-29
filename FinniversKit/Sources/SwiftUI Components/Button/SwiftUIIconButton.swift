@@ -16,7 +16,8 @@ public struct SwiftUIIconButton: View {
 
     public var body: some View {
         Image.init(isToggled ? style.iconToggled : style.icon)
-            .accessibility(addTraits: isToggled ? [.isSelected] : [])
+            .accessibilityRemoveTraits(.isImage)
+            .accessibilityAddTraits(isToggled ? [.isButton, .isSelected] : [.isButton])
             .opacity(isToggled ? 0.8 : 1)
     }
 }
