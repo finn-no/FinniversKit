@@ -45,6 +45,8 @@ public protocol ColorProvider {
 
 public struct DefaultColorProvider: ColorProvider {
     
+    public init() {}
+    
     public static var shared = {
         DefaultColorProvider()
     }
