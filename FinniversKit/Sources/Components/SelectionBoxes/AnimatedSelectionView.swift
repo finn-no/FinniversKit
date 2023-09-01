@@ -41,6 +41,7 @@ open class AnimatedSelectionView: UIImageView {
             return
         }
 
+        tintColor = selected ? .nmpBrandControlSelected : .borderDefault
         isHighlighted = selected
         animationDuration = selected ? selectedDuration : unselectedDuration
         startAnimating()

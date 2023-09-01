@@ -21,7 +21,6 @@ public class AnimatedRadioButtonView: AnimatedSelectionView {
     }
 
     private func setup() {
-        tintColor = .accentSecondaryBlue
         translatesAutoresizingMaskIntoConstraints = false
         animationRepeatCount = 1
         NSLayoutConstraint.activate([
