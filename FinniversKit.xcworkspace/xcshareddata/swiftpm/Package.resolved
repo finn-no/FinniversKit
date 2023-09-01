@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "git@github.com:finn-no/DemoKit-iOS.git",
       "state" : {
-        "branch" : "main",
-        "revision" : "b422e321a98bbff271230ee39b6d90e335a36b77"
+        "revision" : "c17f55cf4054fab4cd9a8ce591a4e5c2c465231c",
+        "version" : "0.2.0"
       }
     },
     {
@@ -14,7 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pimms/swift-snapshot-testing.git",
       "state" : {
-        "revision" : "b44b563e6ddc5a613a107fb57626047a7f1d4e1a"
+        "revision" : "b44b563e6ddc5a613a107fb57626047a7f1d4e1a",
+        "version" : "1.9.666"
       }
     }
   ],

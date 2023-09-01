@@ -2447,8 +2447,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:finn-no/DemoKit-iOS.git";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = exactVersion;
+				version = 0.2.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
