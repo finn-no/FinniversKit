@@ -40,6 +40,7 @@ public protocol ColorProvider {
     var borderDefault: UIColor { get }
     var marketplaceNavigationBarIcon: UIColor { get }
     var nmpBrandControlSelected: UIColor { get }
+    var nmpBrandDecoration: UIColor { get }
 }
 
 // MARK: - Default FINN colors
@@ -184,7 +185,12 @@ public struct DefaultColorProvider: ColorProvider {
         .aqua400
     }
     
+    // NMP brand colors
     public var nmpBrandControlSelected: UIColor {
+        .blue600
+    }
+    
+    public var nmpBrandDecoration: UIColor {
         .blue600
     }
 }
