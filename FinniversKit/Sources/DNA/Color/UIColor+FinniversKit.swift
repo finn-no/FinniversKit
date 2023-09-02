@@ -41,6 +41,7 @@ import UIKit
     public class var textToast: UIColor { Config.colorProvider.textToast }
     public class var marketplaceNavigationBarIcon: UIColor { Config.colorProvider.marketplaceNavigationBarIcon }
     public class var nmpBrandControlSelected: UIColor { Config.colorProvider.nmpBrandControlSelected }
+    public class var nmpBrandDecoration: UIColor { Config.colorProvider.nmpBrandDecoration }
 }
 
 extension CGColor {
