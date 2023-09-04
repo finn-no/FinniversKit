@@ -40,6 +40,8 @@ import UIKit
     public class var textTertiary: UIColor { Config.colorProvider.textTertiary }
     public class var textToast: UIColor { Config.colorProvider.textToast }
     public class var marketplaceNavigationBarIcon: UIColor { Config.colorProvider.marketplaceNavigationBarIcon }
+    public class var nmpBrandColorPrimary: UIColor { Config.colorProvider.nmpBrandColorPrimary }
+    public class var nmpBrandColorSecondary: UIColor { Config.colorProvider.nmpBrandColorSecondary }
     public class var nmpBrandControlSelected: UIColor { Config.colorProvider.nmpBrandControlSelected }
     public class var nmpBrandDecoration: UIColor { Config.colorProvider.nmpBrandDecoration }
 }

@@ -39,6 +39,8 @@ public protocol ColorProvider {
     var iconTertiary: UIColor { get }
     var borderDefault: UIColor { get }
     var marketplaceNavigationBarIcon: UIColor { get }
+    var nmpBrandColorPrimary: UIColor { get }
+    var nmpBrandColorSecondary: UIColor { get }
     var nmpBrandControlSelected: UIColor { get }
     var nmpBrandDecoration: UIColor { get }
 }
@@ -184,7 +186,7 @@ public struct DefaultColorProvider: ColorProvider {
     public var marketplaceNavigationBarIcon: UIColor {
         .aqua400
     }
-    
+
     // NMP brand colors
     public var nmpBrandControlSelected: UIColor {
         .blue600
@@ -192,5 +194,13 @@ public struct DefaultColorProvider: ColorProvider {
     
     public var nmpBrandDecoration: UIColor {
         .blue600
+    }
+    
+    public var nmpBrandColorPrimary: UIColor {
+        .blue600
+    }
+    
+    public var nmpBrandColorSecondary: UIColor {
+        .aqua400
     }
 }
