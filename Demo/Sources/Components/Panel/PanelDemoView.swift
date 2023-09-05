@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-class PanelDemoView: UIView {
+class PanelDemoView: UIView, Demoable {
     override init(frame: CGRect) {
         super.init(frame: frame)
 

@@ -3,9 +3,9 @@
 //
 
 import FinniversKit
-import SwiftUI
+import DemoKit
 
-class SelfDeclarationDemoView: UIView {
+class SelfDeclarationDemoView: UIView, Demoable {
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)

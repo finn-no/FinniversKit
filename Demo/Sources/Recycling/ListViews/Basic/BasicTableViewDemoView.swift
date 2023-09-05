@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class BasicTableViewDemoView: UIView {
+class BasicTableViewDemoView: UIView, Demoable {
     lazy var items: [BasicTableViewItem] = {
         var items = [BasicTableViewItem]()
         items.append(BasicTableViewItem(title: "Uno"))
@@ -26,7 +27,7 @@ public class BasicTableViewDemoView: UIView {
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
         let view = BasicTableView(items: items)
@@ -37,5 +38,5 @@ public class BasicTableViewDemoView: UIView {
 }
 
 extension BasicTableViewDemoView: BasicTableViewDelegate {
-    public func basicTableView(_ basicTableView: BasicTableView, didSelectItemAtIndex index: Int) {}
+    func basicTableView(_ basicTableView: BasicTableView, didSelectItemAtIndex index: Int) {}
 }

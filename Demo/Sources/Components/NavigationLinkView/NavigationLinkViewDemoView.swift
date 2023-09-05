@@ -1,6 +1,7 @@
 import FinniversKit
+import DemoKit
 
-class NavigationLinkViewDemoView: UIView {
+class NavigationLinkViewDemoView: UIView, Demoable {
 
     private lazy var view: NavigationLinkView = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)

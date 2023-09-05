@@ -3,8 +3,11 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class CheckboxDemoView: UIView {
+class CheckboxDemoView: UIView, Demoable {
+    var dismissKind: DismissKind { .button }
+
     let strings = [
         "Mistanke om svindel",
         "Regelbrudd",
@@ -19,7 +22,7 @@ public class CheckboxDemoView: UIView {
         return box
     }()
 
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
 
         backgroundColor = .bgPrimary
@@ -32,17 +35,19 @@ public class CheckboxDemoView: UIView {
         ])
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
+// MARK: - CheckboxDelegate
+
 extension CheckboxDemoView: CheckboxDelegate {
-    public func checkbox(_ checkbox: Checkbox, didSelectItem item: CheckboxItem) {
+    func checkbox(_ checkbox: Checkbox, didSelectItem item: CheckboxItem) {
         print("Selected item index:", item.index)
     }
 
-    public func checkbox(_ checkbox: Checkbox, didUnselectItem item: CheckboxItem) {
+    func checkbox(_ checkbox: Checkbox, didUnselectItem item: CheckboxItem) {
         print("Did unselected item", item)
     }
 }

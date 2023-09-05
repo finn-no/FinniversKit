@@ -3,8 +3,11 @@
 //
 
 import FinniversKit
+import DemoKit
 
-class FeedbackDemoView: UIView {
+class FeedbackDemoView: UIView, Demoable {
+
+    var dismissKind: DismissKind { .button }
 
     // MARK: - Private properties
 

@@ -1,7 +1,8 @@
 import UIKit
 import FinniversKit
+import DemoKit
 
-class BrazePromotionDemoView: UIView {
+class BrazePromotionDemoView: UIView, Demoable {
     private lazy var viewModels: [BrazePromotionViewModel] = [titleTextImageButton, titleTextButton, titleText]
 
     private let titleTextImageButton = BrazePromotionViewModel(

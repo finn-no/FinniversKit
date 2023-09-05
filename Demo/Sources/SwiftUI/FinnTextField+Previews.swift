@@ -4,6 +4,7 @@
 
 import SwiftUI
 import FinniversKit
+import DemoKit
 
 struct FinnTextFieldDemoView: View {
 
@@ -35,7 +36,7 @@ struct FinnTextFieldDemoView: View {
 }
 
 // swiftlint:disable:next superfluous_disable_command type_name
-struct FinnTextField_Previews: PreviewProvider {
+struct FinnTextField_Previews: PreviewProvider, Demoable {
     static var previews: some View {
         FinnTextFieldDemoView()
             .padding(.spacingM)

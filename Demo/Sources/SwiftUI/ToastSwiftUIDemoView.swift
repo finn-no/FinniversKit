@@ -1,5 +1,6 @@
 import SwiftUI
 import FinniversKit
+import DemoKit
 
 struct ToastSwiftUIDemoView: View {
     @State var topToastViewModel: Toast.ViewModel? = nil
@@ -36,7 +37,7 @@ struct ToastSwiftUIDemoView: View {
     }
 }
 
-struct ToastSwiftUIDemoView_Previews: PreviewProvider {
+struct ToastSwiftUIDemoView_Previews: PreviewProvider, Demoable {
     static var previews: some View {
         ToastSwiftUIDemoView()
     }

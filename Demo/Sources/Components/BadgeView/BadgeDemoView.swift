@@ -1,15 +1,16 @@
 import FinniversKit
+import DemoKit
 
-final public class BadgeDemoView: UIView {
+final class BadgeDemoView: UIView, Demoable {
 
     // MARK: - Setup
 
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 

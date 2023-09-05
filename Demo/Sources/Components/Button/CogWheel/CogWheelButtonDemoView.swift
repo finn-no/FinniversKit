@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class CogWheelButtonDemoView: UIView {
+public class CogWheelButtonDemoView: UIView, Demoable {
 
     private lazy var leftCogWheelButton = CogWheelButton(alignment: .left, autoLayout: true)
     private lazy var rightCogWheelButton = CogWheelButton(alignment: .right, autoLayout: true)

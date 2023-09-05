@@ -1,6 +1,7 @@
 import FinniversKit
+import DemoKit
 
-class SelectorTitleViewDemoView: UIView {
+class SelectorTitleViewDemoView: UIView, Demoable {
     lazy var selectorTitleView = SelectorTitleView(heading: "Tap to change")
 
     override init(frame: CGRect) {

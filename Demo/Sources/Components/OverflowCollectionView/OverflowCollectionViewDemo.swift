@@ -1,7 +1,8 @@
 import UIKit
 import FinniversKit
+import DemoKit
 
-class OverflowCollectionViewDemo: UIView {
+class OverflowCollectionViewDemo: UIView, Demoable {
     private lazy var overflowCollectionView = OverflowCollectionView(
         cellType: DemoCollectionViewCell.self,
         cellSpacing: .init(horizontal: .spacingS, vertical: .spacingXS),

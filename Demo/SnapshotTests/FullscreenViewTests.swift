@@ -2,24 +2,17 @@
 //  Copyright © 2018 FINN AS. All rights reserved.
 //
 
-import Demo
+@testable import Demo
 import XCTest
 import FinniversKit
+import DemoKitSnapshot
 
 class FullscreenViewTests: XCTestCase {
-    private let excludedComponents: [FullscreenDemoViews] = [.pianoView]
-
-    private func snapshot(_ component: FullscreenDemoViews, includeIPad: Bool = false, delay: TimeInterval? = nil, record: Bool = false, testName: String = #function) {
-        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, delay: delay, record: record, testName: testName)
+    private func snapshot(_ component: FullscreenDemoViews, record: Bool = false, line: UInt = #line) {
+        snapshotTest(demoable: component.demoable, record: record, line: line)
     }
 
     // MARK: - Tests
-
-    func testMissingSnapshotTests() {
-        for element in elementWithoutTests(for: FullscreenDemoViews.self) where !excludedComponents.contains(element) {
-            XCTFail("Not all elements were implemented, missing: \(element.rawValue)")
-        }
-    }
 
     func testFrontpageView() {
         snapshot(.frontPageView)

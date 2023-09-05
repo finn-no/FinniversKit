@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import DemoKit
 
 extension LoadingView.DisplayType {
     var title: String {
@@ -19,7 +20,7 @@ private struct Option {
     var action: (() -> Void)
 }
 
-public class LoadingViewDemoView: UIView {
+class LoadingViewDemoView: UIView, Demoable {
     var currentDisplayType: LoadingView.DisplayType {
         return LoadingView.DisplayType(rawValue: displayTypeSegment.selectedSegmentIndex) ?? .fullscreen
     }
@@ -123,7 +124,7 @@ public class LoadingViewDemoView: UIView {
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
         addSubview(tableView)
@@ -147,11 +148,11 @@ public class LoadingViewDemoView: UIView {
 // MARK: - UITableViewDataSource
 
 extension LoadingViewDemoView: UITableViewDataSource {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return options.count
     }
 
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(OptionCell.self, for: indexPath)
         let option = options[indexPath.row]
         cell.option = option
@@ -162,7 +163,7 @@ extension LoadingViewDemoView: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension LoadingViewDemoView: UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let option = options[indexPath.row]
         option.action()

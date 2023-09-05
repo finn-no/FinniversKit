@@ -3,8 +3,11 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class PrimingDemoView: UIView {
+class PrimingDemoView: UIView, Demoable {
+    var presentation: DemoablePresentation { .sheet(detents: [.medium(), .large()]) }
+
     private lazy var view: PrimingView = {
         let view = PrimingView(withAutoLayout: true)
         view.configure(with: PrimingViewModel())
@@ -19,7 +22,7 @@ public class PrimingDemoView: UIView {
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
 
@@ -34,7 +37,7 @@ public class PrimingDemoView: UIView {
 // MARK: - PrimingViewDelegate
 
 extension PrimingDemoView: PrimingViewDelegate {
-    public func primingViewDidSelectButton(_ view: PrimingView) {
+    func primingViewDidSelectButton(_ view: PrimingView) {
         print("Priming button selected")
     }
 }

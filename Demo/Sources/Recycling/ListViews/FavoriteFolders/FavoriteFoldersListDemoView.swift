@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-final class FavoriteFoldersListDemoView: UIView, Tweakable {
+final class FavoriteFoldersListDemoView: UIView {
     private var allFavorites = FavoriteFoldersFactory.create() { didSet { filterFolders() } }
     private var filteredFavorites = [FavoriteFolder]()
     private var filterString = ""
@@ -23,36 +24,16 @@ final class FavoriteFoldersListDemoView: UIView, Tweakable {
         return view
     }()
 
-    lazy var tweakingOptions: [TweakingOption] = {
-        return [
-            TweakingOption(title: "Toggle mode", description: nil) { [weak self] in
-                self?.isEditing = false
-                self?.allFavorites = FavoriteFoldersFactory.create()
-                self?.view.setEditing(false)
-                self?.view.hideXmasButton()
-            },
-            TweakingOption(title: "Edit mode", description: nil) { [weak self] in
-                self?.isEditing = true
-                self?.allFavorites = FavoriteFoldersFactory.create(withSelectedItems: false)
-                self?.view.setEditing(true)
-                self?.view.hideXmasButton()
-            },
-            TweakingOption(title: "Xmas button", description: nil) { [weak self] in
-                let text = "Tips! Nå kan du endelig opprette og dele din egen juleønskeliste! Her er i såfall knappen for å gjøre det! God jul!"
-                self?.view.showXmasButton(withCalloutText: text)
-            }
-        ]
-    }()
-
     // MARK: - Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         filteredFavorites = allFavorites
         setup()
+        configure(forTweakAt: 0)
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     // MARK: - Setup
 
@@ -65,6 +46,40 @@ final class FavoriteFoldersListDemoView: UIView, Tweakable {
         filteredFavorites = filterString.isEmpty
             ? allFavorites
             : allFavorites.filter({ $0.title.lowercased().contains(filterString) })
+    }
+}
+
+extension FavoriteFoldersListDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, TweakingOption {
+        case toggleMode
+        case editMode
+        case xmasButton
+    }
+
+    var shouldSnapshotTweaks: Bool { false }
+    var presentation: DemoablePresentation { .navigationController }
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .toggleMode:
+            isEditing = false
+            allFavorites = FavoriteFoldersFactory.create()
+            view.setEditing(false)
+            view.hideXmasButton()
+        case .editMode:
+            isEditing = true
+            allFavorites = FavoriteFoldersFactory.create(withSelectedItems: false)
+            view.setEditing(true)
+            view.hideXmasButton()
+        case .xmasButton:
+            let text = "Tips! Nå kan du endelig opprette og dele din egen juleønskeliste! Her er i såfall knappen for å gjøre det! God jul!"
+            view.showXmasButton(withCalloutText: text)
+        }
     }
 }
 
@@ -119,7 +134,7 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDataSource {
         return filteredFavorites[index]
     }
 
-    public func favoriteFoldersListView(_ view: FavoriteFoldersListView,
+    func favoriteFoldersListView(_ view: FavoriteFoldersListView,
                                         loadImageWithPath imagePath: String,
                                         imageWidth: CGFloat,
                                         completion: @escaping ((UIImage?) -> Void)) {

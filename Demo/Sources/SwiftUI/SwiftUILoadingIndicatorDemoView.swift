@@ -1,5 +1,6 @@
 import FinniversKit
 import SwiftUI
+import DemoKit
 
 struct SwiftUILoadingIndicatorDemoView: View {
     var body: some View {
@@ -13,7 +14,7 @@ struct SwiftUILoadingIndicatorDemoView: View {
     }
 }
 
-struct SwiftUILoadingIndicatorDemoView_Previews: PreviewProvider {
+struct SwiftUILoadingIndicatorDemoView_Previews: PreviewProvider, Demoable {
     static var previews: some View {
         SwiftUILoadingIndicatorDemoView()
     }

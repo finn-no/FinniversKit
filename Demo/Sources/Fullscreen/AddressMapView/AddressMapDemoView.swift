@@ -4,41 +4,9 @@
 
 import FinniversKit
 import MapKit
+import DemoKit
 
-class AddressMapDemoView: UIView, Tweakable {
-    lazy var tweakingOptions: [TweakingOption] = {
-        var options = [TweakingOption]()
-
-        options.append(TweakingOption(title: "Address data") {
-            let location = CLLocationCoordinate2D(latitude: 65.10915470111108, longitude: 11.984673996759456)
-            self.addressMapView.configureAnnotation(title: "Møllerøya 32, 7982 Bindalseidet", location: location)
-            self.addressMapView.centerMap(location: location, regionDistance: 500, animated: false)
-        })
-
-        options.append(TweakingOption(title: "Postalcode data") {
-            let location = CLLocationCoordinate2D(latitude: 59.925504072875661, longitude: 10.452107618894244)
-            self.addressMapView.configureRadiusArea(500, location: location)
-            self.addressMapView.centerMap(location: location, regionDistance: 1200, animated: false)
-        })
-
-        let polygonDemoData = [
-            PolygonDemoData(title: "0010", areas: [PolygonDemoArea.area0010]),
-            PolygonDemoData(title: "Multi polygons", areas: [
-                PolygonDemoArea.area0010,
-                PolygonDemoArea(coordinates: [[10.74, 59.92], [10.75, 59.92], [10.74, 59.91]])]
-            )
-        ]
-        polygonDemoData.forEach({
-            let postalCode = $0.title
-            let areas = $0.areas
-            options.append(TweakingOption(title: "Postalcode shape (\(postalCode))") {
-                self.addressMapView.configurePolygons(areas.compactMap({ $0?.coordinates }))
-                self.addressMapView.makePolygonOverlayVisible(additionalEdgeInsets: UIEdgeInsets.zero)
-            })
-        })
-        return options
-    }()
-
+class AddressMapDemoView: UIView {
     private lazy var addressMapView: AddressMapView = {
         let view = AddressMapView(withAutoLayout: true)
         view.delegate = self
@@ -59,7 +27,7 @@ class AddressMapDemoView: UIView, Tweakable {
     private func setup() {
         addSubview(addressMapView)
         addressMapView.fillInSuperview()
-        tweakingOptions.first?.action?()
+        configure(forTweakAt: 0)
 
         // Place a nice looking view instead of the mapView to prevent the UI tests from failing.
         for subview in addressMapView.subviews {
@@ -79,6 +47,46 @@ class AddressMapDemoView: UIView, Tweakable {
                 mapView.isHidden = false
                 colorfulView?.removeFromSuperview()
             })
+        }
+    }
+}
+
+extension AddressMapDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, TweakingOption {
+        case addressData
+        case postalcodeData
+        case postalcodeShape0010
+        case postalcodeShapeMultiPolygons
+    }
+
+    var dismissKind: DismissKind { .button }
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .addressData:
+            let location = CLLocationCoordinate2D(latitude: 65.10915470111108, longitude: 11.984673996759456)
+            addressMapView.configureAnnotation(title: "Møllerøya 32, 7982 Bindalseidet", location: location)
+            addressMapView.centerMap(location: location, regionDistance: 500, animated: false)
+        case .postalcodeData:
+            let location = CLLocationCoordinate2D(latitude: 59.925504072875661, longitude: 10.452107618894244)
+            addressMapView.configureRadiusArea(500, location: location)
+            addressMapView.centerMap(location: location, regionDistance: 1200, animated: false)
+        case .postalcodeShape0010:
+            let areas = [PolygonDemoArea.area0010]
+            addressMapView.configurePolygons(areas.compactMap({ $0?.coordinates }))
+            addressMapView.makePolygonOverlayVisible(additionalEdgeInsets: UIEdgeInsets.zero)
+        case .postalcodeShapeMultiPolygons:
+            let areas = [
+                PolygonDemoArea.area0010,
+                PolygonDemoArea(coordinates: [[10.74, 59.92], [10.75, 59.92], [10.74, 59.91]])
+            ]
+            addressMapView.configurePolygons(areas.compactMap({ $0?.coordinates }))
+            addressMapView.makePolygonOverlayVisible(additionalEdgeInsets: UIEdgeInsets.zero)
         }
     }
 }

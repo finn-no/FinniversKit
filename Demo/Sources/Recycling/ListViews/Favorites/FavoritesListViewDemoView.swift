@@ -3,13 +3,14 @@
 //
 
 import FinniversKit
+import DemoKit
 
 /// For use with FavoritesListView.
-public class FavoriteDataSource: NSObject {
+class FavoriteDataSource: NSObject {
     let favorites = FavoriteFactory.create()
 }
 
-public class FavoritesListViewDemoView: UIView {
+class FavoritesListViewDemoView: UIView, Demoable {
     lazy var dataSource: FavoriteDataSource = {
         return FavoriteDataSource()
     }()
@@ -20,7 +21,7 @@ public class FavoritesListViewDemoView: UIView {
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
         let view = FavoritesListView(delegate: self, dataSource: self)
@@ -31,21 +32,21 @@ public class FavoritesListViewDemoView: UIView {
 }
 
 extension FavoritesListViewDemoView: FavoritesListViewDelegate {
-    public func favoritesListView(_ favoritesListView: FavoritesListView, didSelectItemAtIndex index: Int) {}
-    public func favoritesListView(_ favoritesListView: FavoritesListView, willDisplayItemAtIndex index: Int) {}
-    public func favoritesListView(_ favoritesListView: FavoritesListView, didScrollInScrollView scrollView: UIScrollView) {}
+    func favoritesListView(_ favoritesListView: FavoritesListView, didSelectItemAtIndex index: Int) {}
+    func favoritesListView(_ favoritesListView: FavoritesListView, willDisplayItemAtIndex index: Int) {}
+    func favoritesListView(_ favoritesListView: FavoritesListView, didScrollInScrollView scrollView: UIScrollView) {}
 }
 
 extension FavoritesListViewDemoView: FavoritesListViewDataSource {
-    public func numberOfItems(inFavoritesListView favoritesListView: FavoritesListView) -> Int {
+    func numberOfItems(inFavoritesListView favoritesListView: FavoritesListView) -> Int {
         return dataSource.favorites.count
     }
 
-    public func favoritesListView(_ favoritesListView: FavoritesListView, modelAtIndex index: Int) -> FavoritesListViewModel {
+    func favoritesListView(_ favoritesListView: FavoritesListView, modelAtIndex index: Int) -> FavoritesListViewModel {
         return dataSource.favorites[index]
     }
 
-    public func favoritesListView(_ favoritesListView: FavoritesListView, loadImageForModel model: FavoritesListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    func favoritesListView(_ favoritesListView: FavoritesListView, loadImageForModel model: FavoritesListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let path = model.imagePath, let url = URL(string: path) else {
             completion(nil)
             return
@@ -64,5 +65,5 @@ extension FavoritesListViewDemoView: FavoritesListViewDataSource {
         task.resume()
     }
 
-    public func favoritesListView(_ favoritesListView: FavoritesListView, cancelLoadingImageForModel model: FavoritesListViewModel, imageWidth: CGFloat) {}
+    func favoritesListView(_ favoritesListView: FavoritesListView, cancelLoadingImageForModel model: FavoritesListViewModel, imageWidth: CGFloat) {}
 }

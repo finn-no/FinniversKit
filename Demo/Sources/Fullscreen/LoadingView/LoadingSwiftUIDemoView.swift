@@ -1,5 +1,6 @@
 import FinniversKit
 import SwiftUI
+import DemoKit
 
 private struct LoadingDemoRow: View {
     let title: String
@@ -125,7 +126,7 @@ struct LoadingSwiftUIDemoView: View {
     }
 }
 
-struct LoadingSwiftUIDemoView_Previews: PreviewProvider {
+struct LoadingSwiftUIDemoView_Previews: PreviewProvider, Demoable {
     static var previews: some View {
         LoadingSwiftUIDemoView()
     }

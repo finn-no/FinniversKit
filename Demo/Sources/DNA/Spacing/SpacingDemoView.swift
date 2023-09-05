@@ -3,15 +3,16 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class SpacingDemoView: UIView {
+class SpacingDemoView: UIView, Demoable {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     func makeLabel(text: String) -> Label {
         let label = Label(style: .bodyStrong)

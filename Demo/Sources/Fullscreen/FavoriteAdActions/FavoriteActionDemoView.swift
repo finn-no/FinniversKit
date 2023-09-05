@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-final class FavoriteAdActionDemoView: UIView {
+final class FavoriteAdActionDemoView: UIView, Demoable {
     private(set) lazy var view: FavoriteAdActionView = {
         let view = FavoriteAdActionView(viewModel: .default)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -56,8 +57,11 @@ private extension FavoriteAdActionViewModel {
     static func createImage() -> UIImage? {
         let urlString = "https://i.pinimg.com/736x/72/14/22/721422aa64cbb51ccb5f02eb29c22255--gray-houses-colored-doors-on-houses.jpg"
 
-        guard let url = URL(string: urlString) else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
+        guard
+            !TestCheck.isTesting,
+            let url = URL(string: urlString),
+            let data = try? Data(contentsOf: url)
+        else { return nil }
 
         return UIImage(data: data)
     }
