@@ -18,6 +18,8 @@ public class ConfettiView: UIView {
         .watermelon
     ]
 
+    private(set) var emissionRangeMultiplier: CGFloat = 8.0
+
     // MARK: - Init
 
     public override init(frame: CGRect) {
@@ -85,7 +87,7 @@ public class ConfettiView: UIView {
         cell.color = color.cgColor
 
         cell.emissionLongitude = CGFloat.pi
-        cell.emissionRange = CGFloat.pi / 8
+        cell.emissionRange = CGFloat.pi / emissionRangeMultiplier
 
         cell.velocity = 600
         cell.velocityRange = 50
@@ -97,5 +99,12 @@ public class ConfettiView: UIView {
 
         return cell
     }
+}
 
+public extension ConfettiView {
+    /// Provides ConfettiView with a custom emission range multiplier that affects how wide confetti particles could spread.
+    func withCustomEmissionRangeMultiplier(multiplier: CGFloat) -> Self {
+        self.emissionRangeMultiplier = multiplier
+        return self
+    }
 }
