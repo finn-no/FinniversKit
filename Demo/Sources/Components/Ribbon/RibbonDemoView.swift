@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class RibbonDemoView: UIView {
+public class RibbonDemoView: UIView, Demoable {
     private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
 
     private let ribbonViews: [UIView] = [

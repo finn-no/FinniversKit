@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class EarthHourDemoView: UIView {
+public class EarthHourDemoView: UIView, Demoable {
     private lazy var backgrounView = UIView()
     private lazy var earthHourView = EarthHourView(withAutoLayout: true)
 

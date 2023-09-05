@@ -3,18 +3,22 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public struct AdReporterViewData: AdReporterViewModel {
-    public var radioButtonTitle = "Hva gjelder det?"
-    public var radioButtonFields = ["Mistanke om svindel", "Regelbrudd", "Forhandler opptrer som privat"]
-    public var descriptionViewTitle = "Beskrivelse"
-    public var descriptionViewPlaceholderText = "Beskriv kort hva problemet er"
-    public var helpButtonText = "Trenger du hjelp?"
+struct AdReporterViewData: AdReporterViewModel {
+    var radioButtonTitle = "Hva gjelder det?"
+    var radioButtonFields = ["Mistanke om svindel", "Regelbrudd", "Forhandler opptrer som privat"]
+    var descriptionViewTitle = "Beskrivelse"
+    var descriptionViewPlaceholderText = "Beskriv kort hva problemet er"
+    var helpButtonText = "Trenger du hjelp?"
 
-    public init() {}
+    init() {}
 }
 
-public class AdReporterDemoView: UIView {
+class AdReporterDemoView: UIView, Demoable {
+
+    var dismissKind: DismissKind { .button }
+
     private lazy var adReporterView: AdReporterView = {
         let view = AdReporterView(frame: .zero)
         view.model = AdReporterViewData()
@@ -25,7 +29,7 @@ public class AdReporterDemoView: UIView {
         return view
     }()
 
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         registerKeyboardEvents()
         setupSubviews()
@@ -62,21 +66,21 @@ public class AdReporterDemoView: UIView {
         adReporterView.contentInset.bottom = 0
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 extension AdReporterDemoView: AdReporterDelegate {
-    public func adReporterViewHelpButtonPressed(_ adReporterView: AdReporterView) {
+    func adReporterViewHelpButtonPressed(_ adReporterView: AdReporterView) {
         print("Help button pressed")
     }
 
-    public func radioButton(_ radioButton: RadioButton, didSelectItem item: RadioButtonItem) {
+    func radioButton(_ radioButton: RadioButton, didSelectItem item: RadioButtonItem) {
         print("Did Select Item:", item)
     }
 
-    public func radioButton(_ radioButton: RadioButton, didUnselectItem item: RadioButtonItem) {
+    func radioButton(_ radioButton: RadioButton, didUnselectItem item: RadioButtonItem) {
         print("Did Unselect Item:", item)
     }
 }

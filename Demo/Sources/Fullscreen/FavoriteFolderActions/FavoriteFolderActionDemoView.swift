@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-final class FavoriteFolderActionDemoView: UIView {
+final class FavoriteFolderActionDemoView: UIView, Demoable {
     private(set) lazy var view: FavoriteFolderActionView = {
         let view = FavoriteFolderActionView(viewModel: .default, isShared: true)
         view.delegate = self

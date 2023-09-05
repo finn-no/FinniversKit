@@ -3,12 +3,13 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class SavedSearchesDataSource: NSObject {
+class SavedSearchesDataSource: NSObject {
     let models = SavedSearchFactory.create(numberOfModels: 9)
 }
 
-public class SavedSearchesListViewDemoView: UIView {
+class SavedSearchesListViewDemoView: UIView, Demoable {
     lazy var dataSource: SavedSearchesDataSource = {
         return SavedSearchesDataSource()
     }()
@@ -19,7 +20,7 @@ public class SavedSearchesListViewDemoView: UIView {
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
         let view = SavedSearchesListView(delegate: self, dataSource: self)
@@ -30,15 +31,15 @@ public class SavedSearchesListViewDemoView: UIView {
 }
 
 extension SavedSearchesListViewDemoView: SavedSearchesListViewDelegate {
-    public func savedSearchesListView(_ savedSearchesListView: SavedSearchesListView, didSelectItemAtIndex index: Int) {}
+    func savedSearchesListView(_ savedSearchesListView: SavedSearchesListView, didSelectItemAtIndex index: Int) {}
 }
 
 extension SavedSearchesListViewDemoView: SavedSearchesListViewDataSource {
-    public func numberOfItems(inSavedSearchesListView savedSearchesListView: SavedSearchesListView) -> Int {
+    func numberOfItems(inSavedSearchesListView savedSearchesListView: SavedSearchesListView) -> Int {
         return dataSource.models.count
     }
 
-    public func savedSearchesListView(_ savedSearchesListView: SavedSearchesListView, modelAtIndex index: Int) -> SavedSearchesListViewModel {
+    func savedSearchesListView(_ savedSearchesListView: SavedSearchesListView, modelAtIndex index: Int) -> SavedSearchesListViewModel {
         return dataSource.models[index]
     }
 }

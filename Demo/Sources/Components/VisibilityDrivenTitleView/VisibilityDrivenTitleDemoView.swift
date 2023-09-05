@@ -3,8 +3,11 @@
 //
 
 import FinniversKit
+import DemoKit
 
-class VisibilityDrivenTitleDemoView: UIView {
+class VisibilityDrivenTitleDemoView: UIView, Demoable {
+
+    var dismissKind: DismissKind { .button }
 
     // MARK: - Private properties
 

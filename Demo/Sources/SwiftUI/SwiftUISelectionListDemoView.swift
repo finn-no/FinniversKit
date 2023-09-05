@@ -1,5 +1,6 @@
 import FinniversKit
 import SwiftUI
+import DemoKit
 
 struct SwiftUISelectionListDemoView: View {
     @SwiftUI.State var selectedItem: String?
@@ -14,5 +15,11 @@ struct SwiftUISelectionListDemoView: View {
             selectedItem: $selectedItem
         )
         .padding()
+    }
+}
+
+struct SwiftUISelectionListDemoView_Previews: PreviewProvider, Demoable {
+    static var previews: some View {
+        SwiftUISelectionListDemoView()
     }
 }

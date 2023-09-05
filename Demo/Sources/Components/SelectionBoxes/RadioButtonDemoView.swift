@@ -3,8 +3,11 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class RadioButtonDemoView: UIView {
+class RadioButtonDemoView: UIView, Demoable {
+    var dismissKind: DismissKind { .button }
+    
     let strings = [
         "Mistanke om svindel",
         "Regelbrudd",
@@ -18,7 +21,7 @@ public class RadioButtonDemoView: UIView {
         return box
     }()
 
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
 
         backgroundColor = .bgPrimary
@@ -31,7 +34,7 @@ public class RadioButtonDemoView: UIView {
             ])
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

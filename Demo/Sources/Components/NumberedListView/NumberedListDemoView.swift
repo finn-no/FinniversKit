@@ -1,6 +1,7 @@
 import FinniversKit
+import DemoKit
 
-class NumberedListDemoView: UIView, Tweakable {
+class NumberedListDemoView: UIView {
 
     // MARK: - Private properties
 
@@ -13,29 +14,12 @@ class NumberedListDemoView: UIView, Tweakable {
         return view
     }()
 
-    lazy var tweakingOptions: [TweakingOption] = [
-        TweakingOption(title: "Items with title, body and buttons", action: { [weak self] in
-            guard let self = self else { return }
-            self.numberedListView.configure(with: self.items)
-        }),
-        TweakingOption(title: "Items with title and body", action: { [weak self] in
-            guard let self = self else { return }
-            let itemsWithoutButtons = self.items.map { NumberedDemoListItem(title: $0.heading, body: $0.body) }
-            self.numberedListView.configure(with: itemsWithoutButtons)
-        }),
-        TweakingOption(title: "Items with only body", action: { [weak self] in
-            guard let self = self else { return }
-            let itemsWithoutBodyOrButtons = self.items.map { NumberedDemoListItem(body: $0.body) }
-            self.numberedListView.configure(with: itemsWithoutBodyOrButtons)
-        })
-    ]
-
     // MARK: - Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-        tweakingOptions.first?.action?()
+        configure(forTweakAt: 0)
     }
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
@@ -52,6 +36,33 @@ class NumberedListDemoView: UIView, Tweakable {
         scrollView.addSubview(numberedListView)
         numberedListView.fillInSuperview(margin: .spacingM)
         numberedListView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.spacingXL).isActive = true
+    }
+}
+
+extension NumberedListDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, TweakingOption {
+        case itemsWithTitleBodyAndButtons
+        case itemsWithTitleAndBody
+        case itemsWithOnlyBody
+    }
+
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .itemsWithTitleBodyAndButtons:
+            numberedListView.configure(with: items)
+        case .itemsWithTitleAndBody:
+            let itemsWithoutButtons = items.map { NumberedDemoListItem(title: $0.heading, body: $0.body) }
+            numberedListView.configure(with: itemsWithoutButtons)
+        case .itemsWithOnlyBody:
+            let itemsWithoutBodyOrButtons = items.map { NumberedDemoListItem(body: $0.body) }
+            numberedListView.configure(with: itemsWithoutBodyOrButtons)
+        }
     }
 }
 

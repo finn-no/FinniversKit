@@ -2,8 +2,9 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 import FinniversKit
+import DemoKit
 
-public class RefreshControlDemoView: UIView {
+class RefreshControlDemoView: UIView, Demoable {
     private let items = ["Pull", "to", "animate", "refresh", "control", "for 5 seconds"]
 
     private lazy var tableView: UITableView = {
@@ -23,12 +24,12 @@ public class RefreshControlDemoView: UIView {
 
     // MARK: - Init
 
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -51,11 +52,11 @@ public class RefreshControlDemoView: UIView {
 // MARK: - UITableViewDataSource
 
 extension RefreshControlDemoView: UITableViewDataSource {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
 
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(UITableViewCell.self, for: indexPath)
 
         cell.textLabel?.text = items[indexPath.row]
@@ -69,7 +70,7 @@ extension RefreshControlDemoView: UITableViewDataSource {
 // MARK: - RefreshControlDelegate
 
 extension RefreshControlDemoView: RefreshControlDelegate {
-    public func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl) {
+    func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl) {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) { [weak self] in
             self?.refreshControl.endRefreshing()
             self?.tableView.reloadData()

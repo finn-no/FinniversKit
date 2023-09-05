@@ -4,14 +4,9 @@
 
 import Foundation
 import FinniversKit
+import DemoKit
 
-class UserAdCellDemoView: UIView, Tweakable {
-
-    lazy var tweakingOptions: [TweakingOption] = [
-        TweakingOption(title: "Default") { self.style = .default },
-        TweakingOption(title: "Compact") { self.style = .compressed },
-    ]
-
+class UserAdCellDemoView: UIView {
     private var style: UserAdTableViewCell.Style = .default {
         didSet {
             tableView.reloadData()
@@ -43,6 +38,29 @@ class UserAdCellDemoView: UIView, Tweakable {
         tableView.fillInSuperview()
     }
 
+}
+
+extension UserAdCellDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, TweakingOption {
+        case `default`
+        case compact
+    }
+
+    var dismissKind: DismissKind { .button }
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .default:
+            style = .default
+        case .compact:
+            style = .compressed
+        }
+    }
 }
 
 // MARK: - UITableViewDelegate

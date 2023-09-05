@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import DemoKit
 
 private struct ViewModel: SelectableTableViewCellViewModel {
 
@@ -17,7 +18,10 @@ private struct ViewModel: SelectableTableViewCellViewModel {
     var isSelected: Bool
 }
 
-class RadioButtonCellDemoView: UIView {
+class RadioButtonCellDemoView: UIView, Demoable {
+
+    var dismissKind: DismissKind { .button }
+
     private var viewModels = [
         ViewModel(title: "NRK1", isSelected: true),
         ViewModel(title: "NRK2", isSelected: false),

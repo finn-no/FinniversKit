@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import DemoKit
 
 // MARK: - Models
 private struct SettingsToggleItem: SettingsViewToggleCellModel {
@@ -20,7 +21,7 @@ private struct SettingsItem: SettingsViewCellModel {
 }
 
 // MARK: - SettingsViewDemoView
-class SettingsViewDemoView: UIView {
+class SettingsViewDemoView: UIView, Demoable {
 
      private var sections = [
         SettingsSection(

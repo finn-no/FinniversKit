@@ -1,6 +1,7 @@
 import FinniversKit
+import DemoKit
 
-class CheckmarkTitleViewDemoView: UIView {
+class CheckmarkTitleViewDemoView: UIView, Demoable {
     private lazy var checkmarkTitleView = CheckmarkTitleView(title: "Example", withAutoLayout: true)
 
     override init(frame: CGRect) {

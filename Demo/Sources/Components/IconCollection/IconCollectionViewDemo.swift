@@ -3,21 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class IconCollectionDemoView: UIView, Tweakable {
-
-    // MARK: - Public properties
-
-    lazy var tweakingOptions: [TweakingOption] = {
-        [
-            .init(title: "Vertical alignment") { [weak self] in
-                self?.setupIconCollectionView(withAlignment: .vertical)
-            },
-            .init(title: "Horizontal alignment") { [weak self] in
-                self?.setupIconCollectionView(withAlignment: .horizontal)
-            }
-        ]
-    }()
+class IconCollectionDemoView: UIView {
 
     // MARK: - Private properties
 
@@ -30,15 +18,15 @@ public class IconCollectionDemoView: UIView, Tweakable {
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
 
     // MARK: - Setup
 
     private func setup() {
+        configure(forTweakAt: 0)
         backgroundColor = .bgPrimary
-        tweakingOptions.first?.action?()
     }
 
     // MARK: - Private methods
@@ -74,6 +62,28 @@ public class IconCollectionDemoView: UIView, Tweakable {
         }
 
         self.collectionView = collectionView
+    }
+}
+
+extension IconCollectionDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, TweakingOption {
+        case verticalAlignment
+        case horizontalAlignment
+    }
+
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .verticalAlignment:
+            setupIconCollectionView(withAlignment: .vertical)
+        case .horizontalAlignment:
+            setupIconCollectionView(withAlignment: .horizontal)
+        }
     }
 }
 

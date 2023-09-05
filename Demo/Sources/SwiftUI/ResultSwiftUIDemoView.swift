@@ -2,8 +2,9 @@ import FinniversKit
 import Foundation
 import SwiftUI
 import UIKit
+import DemoKit
 
-final class ResultSwiftUIDemoViewController: DemoViewController<UIView>, Tweakable {
+final class ResultSwiftUIDemoViewController: UIViewController {
     let hostingController: UIHostingController<ResultSwiftUIView>
 
     private var resultView: ResultSwiftUIView? {
@@ -34,21 +35,10 @@ final class ResultSwiftUIDemoViewController: DemoViewController<UIView>, Tweakab
         )
     }()
 
-    lazy var tweakingOptions: [TweakingOption] = [
-        TweakingOption(title: "Error retry view", action: { [weak self] in
-            guard let self = self else { return }
-            self.resultView = self.errorRetryResultView
-        }),
-        TweakingOption(title: "Empty view", action: { [weak self] in
-            guard let self = self else { return }
-            self.resultView = self.emptyResultView
-        })
-    ]
-
     init() {
         self.resultView = errorRetryResultView
         self.hostingController = UIHostingController(rootView: errorRetryResultView)
-        super.init()
+        super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
@@ -58,15 +48,32 @@ final class ResultSwiftUIDemoViewController: DemoViewController<UIView>, Tweakab
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let childViewController = childViewController else {
-            return
-        }
-
-        childViewController.addChild(hostingController)
-        hostingController.view.frame = childViewController.view.bounds
+        addChild(hostingController)
+        hostingController.view.frame = view.bounds
         hostingController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        childViewController.view.addSubview(hostingController.view)
-        hostingController.didMove(toParent: childViewController)
+        view.addSubview(hostingController.view)
+        hostingController.didMove(toParent: self    )
     }
 }
 
+extension ResultSwiftUIDemoViewController: TweakableDemo {
+    enum Tweaks: String, CaseIterable, TweakingOption {
+        case errorRetryView
+        case emptyView
+    }
+
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .errorRetryView:
+            resultView = errorRetryResultView
+        case .emptyView:
+            resultView = emptyResultView
+        }
+    }
+}

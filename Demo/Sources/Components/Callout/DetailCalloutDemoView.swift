@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class DetailCalloutDemoView: UIView {
+public class DetailCalloutDemoView: UIView, Demoable {
 
     private lazy var calloutViews: [DetailCalloutView] = {
         DetailCalloutView.Direction.allCases.map { (direction) -> DetailCalloutView in

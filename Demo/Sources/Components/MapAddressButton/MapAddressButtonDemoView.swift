@@ -1,6 +1,9 @@
 import FinniversKit
+import DemoKit
 
-class MapAddressButtonDemoView: UIView {
+class MapAddressButtonDemoView: UIView, Demoable {
+
+    var dismissKind: DismissKind { .button }
 
     // MARK: - Private properties
 

@@ -1,6 +1,7 @@
 import FinniversKit
+import DemoKit
 
-final public class BlockUserDemoView: UIView {
+final class BlockUserDemoView: UIView, Demoable {
 
     // MARK: - Internal properties
 
@@ -17,12 +18,12 @@ final public class BlockUserDemoView: UIView {
 
     // MARK: - Setup
 
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
@@ -42,15 +43,15 @@ private extension BlockUserDemoView {
 
 extension BlockUserDemoView: BlockUserViewDelegate {
 
-    public func blockUserViewDidTapCancel() {
+    func blockUserViewDidTapCancel() {
         print("Tap cancel")
     }
 
-    public func blockUserViewDidTapBlock(reason: Int) {
+    func blockUserViewDidTapBlock(reason: Int) {
         print("tap block \(reason)")
     }
 
-    public func blockUserViewDidTapLink() {
+    func blockUserViewDidTapLink() {
         print("tap link")
     }
 }

@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class DisclaimerDemoView: UIView {
+public class DisclaimerDemoView: UIView, Demoable {
 
     private lazy var disclaimerView: DisclaimerView = {
         let view = DisclaimerView(withAutoLayout: true)

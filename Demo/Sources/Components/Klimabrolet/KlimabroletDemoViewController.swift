@@ -3,8 +3,12 @@
 //
 
 import FinniversKit
+import DemoKit
 
-class KlimabroletDemoViewController: BaseDemoViewController<UIView> {
+class KlimabroletDemoViewController: UIViewController, Demoable {
+
+    var dismissKind: DismissKind { .none }
+
     private lazy var klimabroletView: KlimabroletView = {
         let view = KlimabroletView(withAutoLayout: true)
         view.configure(with: KlimabroletData.ViewModel())
@@ -40,7 +44,7 @@ class KlimabroletDemoViewController: BaseDemoViewController<UIView> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        playgroundView.backgroundColor = .black
+        view.backgroundColor = .black
 
         addChild(innerNavigationController)
         innerNavigationController.didMove(toParent: self)
@@ -55,7 +59,6 @@ class KlimabroletDemoViewController: BaseDemoViewController<UIView> {
     }
 
     private func close() {
-        DemoState.lastSelectedIndexPath = nil
         dismiss(animated: true, completion: nil)
     }
 }

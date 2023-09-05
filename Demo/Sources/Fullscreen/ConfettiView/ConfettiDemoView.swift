@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-class ConfettiDemoView: UIView {
+class ConfettiDemoView: UIView, Demoable {
 
     // MARK: - Private properties
 

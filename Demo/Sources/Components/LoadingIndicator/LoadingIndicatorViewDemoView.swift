@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class LoadingIndicatorViewDemoView: UIView {
+class LoadingIndicatorViewDemoView: UIView, Demoable {
     private lazy var loadingIndicatorView = LoadingIndicatorView(withAutoLayout: true)
     private lazy var delayedLoadingIndicatorView = LoadingIndicatorView(withAutoLayout: true)
 
@@ -13,7 +14,7 @@ public class LoadingIndicatorViewDemoView: UIView {
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
         addSubview(loadingIndicatorView)

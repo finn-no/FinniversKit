@@ -3,15 +3,16 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class CompactMarketsDemoView: UIView {
+class CompactMarketsDemoView: UIView, Demoable {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
         let collectionView = CompactMarketsView(delegate: self, dataSource: self)
@@ -27,15 +28,15 @@ public class CompactMarketsDemoView: UIView {
 }
 
 extension CompactMarketsDemoView: MarketsViewDataSource {
-    public func numberOfItems(inMarketsView marketsView: MarketsView) -> Int {
+    func numberOfItems(inMarketsView marketsView: MarketsView) -> Int {
         Market.newMarkets.count
     }
 
-    public func marketsView(_ marketsView: MarketsView, modelAtIndex index: Int) -> MarketsViewModel {
+    func marketsView(_ marketsView: MarketsView, modelAtIndex index: Int) -> MarketsViewModel {
         Market.newMarkets[index]
     }
 }
 
 extension CompactMarketsDemoView: MarketsViewDelegate {
-    public func marketsView(_ marketsGridView: MarketsView, didSelectItemAtIndex index: Int) {}
+    func marketsView(_ marketsGridView: MarketsView, didSelectItemAtIndex index: Int) {}
 }

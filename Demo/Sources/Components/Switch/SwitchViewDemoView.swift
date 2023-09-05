@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class SwitchViewDemoView: UIView {
+public class SwitchViewDemoView: UIView, Demoable {
     private lazy var demoSwitch1 = SwitchView(withAutoLayout: true)
     private lazy var demoSwitch2 = SwitchView(withAutoLayout: true)
     private lazy var demoSwitch3 = SwitchView(style: .customStyle, withAutoLayout: true)

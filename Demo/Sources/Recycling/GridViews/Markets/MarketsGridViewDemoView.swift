@@ -3,12 +3,13 @@
 //
 
 import FinniversKit
+import DemoKit
 
 class MarketDataSource: NSObject {
     var models = Market.newMarkets
 }
 
-public class MarketsGridViewDemoView: UIView {
+class MarketsGridViewDemoView: UIView, Demoable {
     lazy var dataSource: MarketDataSource = {
         return MarketDataSource()
     }()
@@ -19,7 +20,7 @@ public class MarketsGridViewDemoView: UIView {
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
         let collectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
@@ -35,15 +36,15 @@ public class MarketsGridViewDemoView: UIView {
 }
 
 extension MarketsGridViewDemoView: MarketsViewDataSource {
-    public func numberOfItems(inMarketsView marketsView: MarketsView) -> Int {
+    func numberOfItems(inMarketsView marketsView: MarketsView) -> Int {
         return dataSource.models.count
     }
 
-    public func marketsView(_ marketsView: MarketsView, modelAtIndex index: Int) -> MarketsViewModel {
+    func marketsView(_ marketsView: MarketsView, modelAtIndex index: Int) -> MarketsViewModel {
         return dataSource.models[index]
     }
 }
 
 extension MarketsGridViewDemoView: MarketsViewDelegate {
-    public func marketsView(_ marketsGridView: MarketsView, didSelectItemAtIndex index: Int) {}
+    func marketsView(_ marketsGridView: MarketsView, didSelectItemAtIndex index: Int) {}
 }

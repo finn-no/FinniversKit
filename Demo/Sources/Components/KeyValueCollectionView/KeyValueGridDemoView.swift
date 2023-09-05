@@ -3,18 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-class KeyValueGridDemoView: UIView, Tweakable {
-    lazy var tweakingOptions: [TweakingOption] = [
-        TweakingOption(title: "Default") { [weak self] in
-            self?.keyValueGridView.configure(with: .demoData)
-            self?.keyValueGridView.backgroundColor = .bgSecondary
-        },
-        TweakingOption(title: "Energy labels") { [weak self] in
-            self?.keyValueGridView.configure(with: .energyLabels)
-            self?.keyValueGridView.backgroundColor = .bgPrimary
-        },
-    ]
+class KeyValueGridDemoView: UIView {
 
     private lazy var keyValueGridView: KeyValueGridView = {
         let view = KeyValueGridView(withAutoLayout: true)
@@ -29,7 +20,7 @@ class KeyValueGridDemoView: UIView, Tweakable {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-        tweakingOptions.first?.action?()
+        configure(forTweakAt: 0)
     }
 
     required init?(coder aDecoder: NSCoder) { fatalError() }
@@ -62,6 +53,30 @@ class KeyValueGridDemoView: UIView, Tweakable {
 
         guard previousTraitCollection != traitCollection else { return }
         keyValueGridView.numberOfColumns = numberOfColumnsForTraits
+    }
+}
+
+extension KeyValueGridDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, TweakingOption {
+        case `default`
+        case energyLabels
+    }
+
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .default:
+            keyValueGridView.configure(with: .demoData)
+            keyValueGridView.backgroundColor = .bgSecondary
+        case .energyLabels:
+            keyValueGridView.configure(with: .energyLabels)
+            keyValueGridView.backgroundColor = .bgPrimary
+        }
     }
 }
 
