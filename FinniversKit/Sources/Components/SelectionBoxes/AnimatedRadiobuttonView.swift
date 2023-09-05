@@ -31,36 +31,18 @@ public class AnimatedRadioButtonView: AnimatedSelectionView {
 
     private func setImages() {
         var selectedImages = [UIImage]()
-        if let selectedImage = UIImage(named: "radiobutton-select-12",
-                                    in: .finniversKit,
-                                       compatibleWith: nil)?.withRenderingMode(.alwaysTemplate) {
-            selectedImages.append(selectedImage)
+        for index in 0 ..< 13 {
+            if let image = UIImage(named: "radiobutton-select-\(index)", in: .finniversKit, compatibleWith: nil) {
+                selectedImages.append(image)
+            }
         }
-        
-        
-//        for index in 0 ..< 13 {
-//            if let image = UIImage(named: "radiobutton-select-\(index)",
-//                                   in: .finniversKit,
-//                                   compatibleWith: nil)?.withRenderingMode(.alwaysTemplate) {
-//                selectedImages.append(image)
-//            }
-//        }
 
         var unselectedImages = [UIImage]()
-        if let unselectedImage = UIImage(named: "radiobutton-select-0",
-                                         in: .finniversKit,
-                                         compatibleWith: nil)?.withRenderingMode(.alwaysTemplate) {
-            unselectedImages.append(unselectedImage)
+        for index in 0 ..< 11 {
+            if let image = UIImage(named: "radiobutton-unselected-\(index)", in: .finniversKit, compatibleWith: nil) {
+                unselectedImages.append(image)
+            }
         }
-        
-        
-//        for index in 0 ..< 11 {
-//            if let image = UIImage(named: "radiobutton-unselected-\(index)",
-//                                   in: .finniversKit,
-//                                   compatibleWith: nil)?.withRenderingMode(.alwaysTemplate) {
-//                unselectedImages.append(image)
-//            }
-//        }
 
         self.selectedImage = selectedImages.last
         self.selectedImages = selectedImages

@@ -40,9 +40,6 @@ open class AnimatedSelectionView: UIImageView {
             isHighlighted = selected
             return
         }
-
-        tintColor = selected ? .nmpBrandControlSelected : .borderDefault
-        reverseImageView.tintColor = selected ? .nmpBrandControlSelected : .borderDefault
         
         isHighlighted = selected
         animationDuration = selected ? selectedDuration : unselectedDuration
