@@ -61,7 +61,7 @@ final class AddFavoriteFolderButton: UIButton {
     private func setup() {
         backgroundColor = .bgPrimary
 
-        imageView?.backgroundColor = .bgPrimary
+        imageView?.backgroundColor = .bgTertiary
         imageView?.tintColor = .btnAction
         imageView?.layer.masksToBounds = true
         imageView?.contentMode = .center
