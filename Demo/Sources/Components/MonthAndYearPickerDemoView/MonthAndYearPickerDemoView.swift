@@ -1,7 +1,8 @@
 import FinniversKit
 import Foundation
+import DemoKit
 
-class MonthAndYearPickerDemoView: UIView {
+class MonthAndYearPickerDemoView: UIView, Demoable {
 
     private var currentDate: Date = Date(timeIntervalSince1970: 1648771200) { // 2022-04-01
         didSet {

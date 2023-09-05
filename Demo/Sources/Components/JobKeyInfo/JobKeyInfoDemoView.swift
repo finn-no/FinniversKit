@@ -1,6 +1,7 @@
 import FinniversKit
+import DemoKit
 
-class JobKeyInfoDemoView: UIView {
+class JobKeyInfoDemoView: UIView, Demoable {
 
     // MARK: - Private properties
 

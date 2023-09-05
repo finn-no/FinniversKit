@@ -1,27 +1,8 @@
 import UIKit
 import FinniversKit
+import DemoKit
 
-class SelectionListSeparatedRadiobuttonDemoView: UIView, Tweakable {
-
-    // MARK: - Internal properties
-
-    lazy var tweakingOptions: [TweakingOption] = [
-        .init(title: "3 items", action: { [weak self] in
-            self?.checkmarkListView.configure(with: .create(number: 3))
-        }),
-        .init(title: "1 items", action: { [weak self] in
-            self?.checkmarkListView.configure(with: .create(number: 1))
-        }),
-        .init(title: "2 items", action: { [weak self] in
-            self?.checkmarkListView.configure(with: .create(number: 2))
-        }),
-        .init(title: "5 items", action: { [weak self] in
-            self?.checkmarkListView.configure(with: .create(number: 5))
-        }),
-        .init(title: "3 items (title only)", action: { [weak self] in
-            self?.checkmarkListView.configure(with: .createTitleOnly(number: 3))
-        })
-    ]
+class SelectionListSeparatedRadiobuttonDemoView: UIView {
 
     // MARK: - Private properties
 
@@ -36,7 +17,7 @@ class SelectionListSeparatedRadiobuttonDemoView: UIView, Tweakable {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-        tweakingOptions.first?.action?()
+        configure(forTweakAt: 0)
     }
 
     required init?(coder: NSCoder) { fatalError() }
@@ -51,6 +32,38 @@ class SelectionListSeparatedRadiobuttonDemoView: UIView, Tweakable {
             checkmarkListView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             checkmarkListView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
         ])
+    }
+}
+
+extension SelectionListSeparatedRadiobuttonDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, TweakingOption {
+        case threeItems
+        case oneItem
+        case twoItems
+        case fiveItems
+        case threeItemsWithTitleOnly
+    }
+
+    var dismissKind: DismissKind { .button }
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .threeItems:
+            checkmarkListView.configure(with: .create(number: 3))
+        case .oneItem:
+            checkmarkListView.configure(with: .create(number: 1))
+        case .twoItems:
+            checkmarkListView.configure(with: .create(number: 2))
+        case .fiveItems:
+            checkmarkListView.configure(with: .create(number: 5))
+        case .threeItemsWithTitleOnly:
+            checkmarkListView.configure(with: .createTitleOnly(number: 3))
+        }
     }
 }
 

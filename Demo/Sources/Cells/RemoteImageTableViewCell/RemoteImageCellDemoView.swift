@@ -3,8 +3,12 @@
 //
 
 import FinniversKit
+import DemoKit
 
-final class RemoteImageCellDemoView: UIView {
+final class RemoteImageCellDemoView: UIView, Demoable {
+
+    var dismissKind: DismissKind { .button }
+
     private let viewModels = AdFactory.create(numberOfModels: 5)
 
     private lazy var tableView: UITableView = {

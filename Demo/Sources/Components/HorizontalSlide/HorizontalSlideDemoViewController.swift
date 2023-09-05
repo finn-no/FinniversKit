@@ -3,13 +3,24 @@
 //
 
 import FinniversKit
+import DemoKit
 
-class HorizontalSlideDemoViewController: UIViewController {
+class HorizontalSlideDemoViewController: UIViewController, Demoable {
+    var overridesModalPresentationStyle: Bool { true }
+
     lazy var transition: HorizontalSlideTransition = {
         let transition = HorizontalSlideTransition()
         transition.delegate = self
         return transition
     }()
+
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        transitioningDelegate = transition
+        modalPresentationStyle = .custom
+    }
+
+    required init?(coder: NSCoder) { fatalError() }
 
     override func viewDidLoad() {
         super.viewDidLoad()

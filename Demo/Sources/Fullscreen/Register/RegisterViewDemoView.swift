@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class RegisterViewDemoView: UIView {
+class RegisterViewDemoView: UIView, Demoable {
     private lazy var registerView: RegisterView = {
         let registerView = RegisterView()
         registerView.translatesAutoresizingMaskIntoConstraints = false
@@ -17,7 +18,7 @@ public class RegisterViewDemoView: UIView {
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
         registerView.model = RegisterViewDefaultData()

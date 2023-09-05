@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class ReviewButtonViewDemoView: UIView {
+public class ReviewButtonViewDemoView: UIView, Demoable {
     private lazy var reviewButtonView: ReviewButtonView = {
         let view = ReviewButtonView()
         view.translatesAutoresizingMaskIntoConstraints = false

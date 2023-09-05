@@ -1,7 +1,8 @@
 import UIKit
 import FinniversKit
+import DemoKit
 
-class MultilineButtonDemoView: UIView {
+class MultilineButtonDemoView: UIView, Demoable {
     let states: [UIControl.State] = [.normal, .disabled]
     let sizes: [Button.Size] = [.normal, .small]
 

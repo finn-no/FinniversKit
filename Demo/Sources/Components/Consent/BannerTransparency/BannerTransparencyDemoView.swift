@@ -3,8 +3,11 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class BannerTransparencyDemoView: UIView {
+class BannerTransparencyDemoView: UIView, Demoable {
+    var presentation: DemoablePresentation { .sheet(detents: [.medium(), .large()]) }
+
     private lazy var bannerTranparencyView = BannerTransparencyView(withAutoLayout: true)
 
     // MARK: - Init
@@ -14,7 +17,7 @@ public class BannerTransparencyDemoView: UIView {
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     // MARK: - Setup
 

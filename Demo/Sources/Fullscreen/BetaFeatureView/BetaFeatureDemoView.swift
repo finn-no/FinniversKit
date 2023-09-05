@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-final class BetaFeatureDemoView: UIView {
+final class BetaFeatureDemoView: UIView, Demoable {
     private lazy var betaFeatureView: BetaFeatureView = {
         let view = BetaFeatureView(withAutoLayout: true)
         view.configure(with: viewModel)

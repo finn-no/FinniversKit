@@ -3,17 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-class LinkButtonListDemoView: UIView, Tweakable {
-    lazy var tweakingOptions: [TweakingOption] = [
-        .init(title: "Misc. buttons", action: { [weak self] in
-            self?.configure(viewModels: .defaults)
-        }),
-        .init(title: "Flat buttons", action: { [weak self] in
-            self?.configure(viewModels: .alternateStyle)
-        })
-    ]
-
+class LinkButtonListDemoView: UIView {
     private lazy var linkListView: LinkButtonListView = {
         let view = LinkButtonListView(withAutoLayout: true)
         view.delegate = self
@@ -25,7 +17,7 @@ class LinkButtonListDemoView: UIView, Tweakable {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-        tweakingOptions.first?.action?()
+        configure(forTweakAt: 0)
     }
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
@@ -40,11 +32,27 @@ class LinkButtonListDemoView: UIView, Tweakable {
             linkListView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
+}
 
-    // MARK: - Private methods
+extension LinkButtonListDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, TweakingOption {
+        case miscButtons
+        case flatButtons
+    }
 
-    func configure(viewModels: [LinkButtonViewModel]) {
-        linkListView.configure(with: viewModels)
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .miscButtons:
+            linkListView.configure(with: .defaults)
+        case .flatButtons:
+            linkListView.configure(with: .alternateStyle)
+        }
     }
 }
 

@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import DemoKit
 
 private struct ViewModel: SelectableTableViewCellViewModel {
     let title: String
@@ -12,7 +13,10 @@ private struct ViewModel: SelectableTableViewCellViewModel {
     var isSelected: Bool
 }
 
-class CheckboxSubtitleCellDemoView: UIView {
+class CheckboxSubtitleCellDemoView: UIView, Demoable {
+
+    var dismissKind: DismissKind { .button }
+
     private var viewModels = [
         ViewModel(title: "Hagemøbler", subtitle: "For deg som liker noe godt å sitte i når du gjør deg flid med grillen", isSelected: false),
         ViewModel(title: "Kattepuser", subtitle: "Fin-fine kattunger", isSelected: true),

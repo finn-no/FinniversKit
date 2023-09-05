@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-final class FavoriteAdCommentInputDemoView: UIView {
+final class FavoriteAdCommentInputDemoView: UIView, Demoable {
     private(set) lazy var view: FavoriteAdCommentInputView = {
         let view = FavoriteAdCommentInputView(
             commentViewModel: .default,

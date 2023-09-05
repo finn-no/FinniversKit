@@ -1,6 +1,7 @@
 import FinniversKit
+import DemoKit
 
-class FrontPageSavedSearchesDemoView: UIView {
+class FrontPageSavedSearchesDemoView: UIView, Demoable {
     private lazy var frontPageSavedSearchesView: FrontPageSavedSearchesView = {
         let view = FrontPageSavedSearchesView(
             title: "Nytt i lagrede søk",

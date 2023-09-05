@@ -4,17 +4,25 @@
 
 import UIKit
 import FinniversKit
+import DemoKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
-    lazy var navigationController = NavigationController(rootViewController: DemoViewsTableViewController())
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        window?.rootViewController = navigationController
+        let demoViewController = DemoKitViewController(demoGroups: [
+            DnaDemoViews.self,
+            CellsDemoViews.self,
+            ComponentDemoViews.self,
+            RecyclingDemoViews.self,
+            SwiftUIDemoViews.self,
+            FullscreenDemoViews.self
+        ])
+        window?.rootViewController = UINavigationController(rootViewController: demoViewController)
+
         window?.makeKeyAndVisible()
 
         linkReveal()

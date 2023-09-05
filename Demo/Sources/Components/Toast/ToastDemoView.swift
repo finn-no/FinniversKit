@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class ToastDemoView: UIView {
+public class ToastDemoView: UIView, Demoable {
     private lazy var topToastButton: Button = {
         let button = Button(style: .callToAction, withAutoLayout: true)
         button.setTitle("Animate From Top", for: .normal)

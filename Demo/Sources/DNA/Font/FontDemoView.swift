@@ -3,13 +3,14 @@
 //
 
 import FinniversKit
+import DemoKit
 
 struct FontItem {
     let font: UIFont
     let title: String
 }
 
-public class FontDemoView: UIView {
+class FontDemoView: UIView, Demoable {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -39,7 +40,7 @@ public class FontDemoView: UIView {
         ]
     }()
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
         addSubview(tableView)
@@ -56,11 +57,11 @@ public class FontDemoView: UIView {
 }
 
 extension FontDemoView: UITableViewDataSource {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
 
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(UITableViewCell.self, for: indexPath)
         let item = items[indexPath.row]
         cell.textLabel?.text = item.title.capitalized

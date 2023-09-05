@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-class NativeAdvertDemoView: UIView {
+class NativeAdvertDemoView: UIView, Demoable {
 
     private lazy var scrollView = UIScrollView(withAutoLayout: true)
 

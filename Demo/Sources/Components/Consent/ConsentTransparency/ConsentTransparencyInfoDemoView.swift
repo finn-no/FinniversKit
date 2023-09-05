@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class ConsentTransparencyInfoDemoView: UIView {
+public class ConsentTransparencyInfoDemoView: UIView, Demoable {
     private let maxScreenWidth: CGFloat = 800.0
 
     private lazy var consentTransparencyInfoView: ConsentTransparencyInfoView = {

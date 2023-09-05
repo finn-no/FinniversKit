@@ -3,47 +3,17 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class EmptyViewDemoView: UIView, Tweakable {
+class EmptyViewDemoView: UIView {
     var emptyView: EmptyView?
-
-    lazy var tweakingOptions: [TweakingOption] = {
-        var options = [TweakingOption]()
-
-        options.append(TweakingOption(title: "Shapes Empty View") {
-            self.setupEmptyView(
-                header: "Her var det stille gitt",
-                message: "Når du prater med andre på FINN, vil meldingene dine dukke opp her.\n\n Søk på noe du har lyst på, send en melding til selgeren og bli enige om en handel på én-to-tre!",
-                actionButtonTitle: "Gjør et søk",
-                shapeType: .default)
-        })
-
-        options.append(TweakingOption(title: "Christmas Empty View") {
-            self.setupEmptyView(
-                header: "Her var det stille gitt",
-                message: "Når du prater med andre på FINN, vil meldingene dine dukke opp her.\n\n Søk på noe du har lyst på, send en melding til selgeren og bli enige om en handel på én-to-tre!",
-                actionButtonTitle: "Gjør et søk",
-                shapeType: .christmas)
-        })
-
-        options.append(TweakingOption(title: "Image Empty View") {
-            self.setupEmptyView(
-                header: "Vi gir deg beskjed når det kommer noe nytt!",
-                message: "Søk på noe du har lyst på og trykk “Lagre søk”. Da varsler FINN deg når det dukker opp nye annonser.\n\nSmart hva?",
-                image: UIImage(named: .emptyStateSaveSearch),
-                shapeType: .none)
-        })
-
-        return options
-    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-        tweakingOptions.first?.action?()
+        configure(forTweakAt: 0)
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setupEmptyView(header: String, message: String, image: UIImage? = nil, actionButtonTitle: String = "", shapeType: EmptyViewShapeType) {
         self.emptyView?.removeFromSuperview()
@@ -56,5 +26,45 @@ public class EmptyViewDemoView: UIView, Tweakable {
         self.emptyView?.message = message
         self.emptyView?.image = image
         self.emptyView?.actionButtonTitle = actionButtonTitle
+    }
+}
+
+extension EmptyViewDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, TweakingOption {
+        case shapesEmptyView
+        case christmasEmptyView
+        case imageEmptyView
+    }
+
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .shapesEmptyView:
+            setupEmptyView(
+                header: "Her var det stille gitt",
+                message: "Når du prater med andre på FINN, vil meldingene dine dukke opp her.\n\n Søk på noe du har lyst på, send en melding til selgeren og bli enige om en handel på én-to-tre!",
+                actionButtonTitle: "Gjør et søk",
+                shapeType: .default
+            )
+        case .christmasEmptyView:
+            setupEmptyView(
+                header: "Her var det stille gitt",
+                message: "Når du prater med andre på FINN, vil meldingene dine dukke opp her.\n\n Søk på noe du har lyst på, send en melding til selgeren og bli enige om en handel på én-to-tre!",
+                actionButtonTitle: "Gjør et søk",
+                shapeType: .christmas
+            )
+        case .imageEmptyView:
+            setupEmptyView(
+                header: "Vi gir deg beskjed når det kommer noe nytt!",
+                message: "Søk på noe du har lyst på og trykk “Lagre søk”. Da varsler FINN deg når det dukker opp nye annonser.\n\nSmart hva?",
+                image: UIImage(named: .emptyStateSaveSearch),
+                shapeType: .none
+            )
+        }
     }
 }

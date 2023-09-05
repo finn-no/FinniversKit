@@ -1,13 +1,8 @@
 import UIKit
 import FinniversKit
+import DemoKit
 
-public class HyperlinkTextViewDemoView: UIView, Tweakable {
-
-    lazy var tweakingOptions: [TweakingOption] = [
-        .init(title: "Hyperlinks yeah", action: { [weak self] in
-            self?.configureHyper()
-        })
-    ]
+class HyperlinkTextViewDemoView: UIView {
 
     // MARK: - Private properties
 
@@ -18,12 +13,10 @@ public class HyperlinkTextViewDemoView: UIView, Tweakable {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-        tweakingOptions.first?.action?()
+        configure(forTweakAt: 0)
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     // MARK: - Setup
 
@@ -67,8 +60,27 @@ public class HyperlinkTextViewDemoView: UIView, Tweakable {
     }
 }
 
+extension HyperlinkTextViewDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, TweakingOption {
+        case hyperlinksYeah
+    }
+
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .hyperlinksYeah:
+            configureHyper()
+        }
+    }
+}
+
 extension HyperlinkTextViewDemoView: HyperlinkTextViewViewModelDelegate {
-    public func didTapHyperlinkAction(_ action: String) {
+    func didTapHyperlinkAction(_ action: String) {
         print("Action \(action) was tapped.")
     }
 }

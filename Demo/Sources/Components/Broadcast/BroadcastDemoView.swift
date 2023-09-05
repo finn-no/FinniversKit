@@ -2,8 +2,9 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 import FinniversKit
+import DemoKit
 
-public class BroadcastDemoView: UIView {
+public class BroadcastDemoView: UIView, Demoable {
     private let items = ["Select", "any", "row", "and", "the", "broadcasts", "will", "reappear", "unless", "it", "is", "already", "visible"]
 
     private lazy var tableView: UITableView = {
