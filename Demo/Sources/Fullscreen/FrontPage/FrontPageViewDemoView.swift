@@ -44,6 +44,7 @@ public class FrontpageViewDemoView: UIView {
         view.savedSearchesViewDelegate = self
 
         let transactionViewModel = FrontPageTransactionViewModel(
+            id: "tjt",
             headerTitle: "Dine handler på torget",
             title: "Flotte lamper med gull greier",
             subtitle: "Velg en kjøper",

@@ -22,6 +22,7 @@ class PromotionDemoView: UIView {
     )
 
     private let transactionViewModel = FrontPageTransactionViewModel(
+        id: "tjt",
         headerTitle: "Dine handler på torget",
         title: "Flotte lamper med gull greier",
         subtitle: "Velg en kjøper",

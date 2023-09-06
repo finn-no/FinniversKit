@@ -27,7 +27,8 @@ public enum ComponentDemoViews: String, DemoViews {
     case floatingButton
     case footerButtonView
     case frontPageSavedSearchesView
-    case frontPageTransactionFeed
+    case frontPageTransactionListView
+    case frontPageTransactionView
     case happinessRating
     case horizontalSlide
     case hyperlinkTextView
@@ -149,7 +150,9 @@ public enum ComponentDemoViews: String, DemoViews {
             return DemoViewController<FooterButtonDemoView>(constrainToBottomSafeArea: false)
         case .frontPageSavedSearchesView:
             return DemoViewController<FrontPageSavedSearchesDemoView>()
-        case .frontPageTransactionFeed:
+        case .frontPageTransactionListView:
+            return DemoViewController<FrontPageTransactionListDemoView>()
+        case .frontPageTransactionView:
             return DemoViewController<FrontPageTransactionDemoView>()
         case .happinessRating:
             return DemoViewController<HappinessRatingDemoView>(dismissType: .dismissButton)

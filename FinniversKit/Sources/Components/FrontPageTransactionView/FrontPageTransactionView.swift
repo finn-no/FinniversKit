@@ -4,29 +4,27 @@ public protocol FrontPageTransactionViewDelegate: AnyObject {
     func transactionViewTapped(_ transactionView: FrontPageTransactionView)
 }
 
-public class FrontPageTransactionView: UIView {
-
+public class FrontPageTransactionView: UIStackView {
     public weak var delegate: FrontPageTransactionViewDelegate?
-
 
     private let imageWidth: CGFloat = 56
     private let cornerRadius: CGFloat = 8
-    
+
     private lazy var titleLabel: UILabel = {
         let label = Label(style: .bodyStrong,withAutoLayout: true)
-        label.numberOfLines = 1
+        label.numberOfLines = 0
         label.textAlignment = .left
         return label
     }()
-    
+
     private lazy var subtitleLabel: UILabel = {
         let label = Label(style: .body, withAutoLayout: true)
-        label.numberOfLines = 1
+        label.numberOfLines = 0
         label.textAlignment = .left
 
         return label
     }()
-    
+
     private lazy var imageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
         imageView.image = UIImage(named: ImageAsset.noImage)
@@ -36,22 +34,22 @@ public class FrontPageTransactionView: UIView {
         imageView.clipsToBounds = true
         return imageView
     }()
-    
-    private lazy var verticalStack: UIStackView = {
+
+    private lazy var contentTextStack: UIStackView = {
         let stack = UIStackView(withAutoLayout: true)
         stack.axis = .vertical
         stack.alignment = .leading
         stack.distribution = .fillProportionally
         return stack
     }()
-    
-    private lazy var backgroundContainer: UIView = {
-        let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .white
+
+    private lazy var backgroundContainer: UIStackView = {
+        let view = UIStackView(axis: .vertical, withAutoLayout: true)
+        view.backgroundColor = .bgColor
         view.layer.cornerRadius = cornerRadius
         return view
     }()
-    
+
     private lazy var imageContainerView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .bgColor
@@ -60,30 +58,34 @@ public class FrontPageTransactionView: UIView {
         view.layer.borderColor = UIColor.black.withAlphaComponent(0.1).cgColor
         return view
     }()
-    
+
     private lazy var smallShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .bgColor
         view.dropShadow(
             color: .shadowColor,
             opacity: 0.24,
             offset: CGSize(width: 0, height: 1),
             radius: 1
         )
+        view.layer.cornerRadius = cornerRadius
         return view
     }()
 
     private lazy var largeShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .bgColor
         view.dropShadow(
             color: .shadowColor,
             opacity: 0.16,
             offset: CGSize(width: 0, height: 1),
             radius: 5
         )
+        view.layer.cornerRadius = cornerRadius
         return view
     }()
-    
-    private lazy var horizontalStack: UIStackView = {
+
+    private lazy var contentStack: UIStackView = {
         let stack = UIStackView(withAutoLayout: true)
         stack.axis = .horizontal
         stack.distribution = .fillProportionally
@@ -94,63 +96,66 @@ public class FrontPageTransactionView: UIView {
     private lazy var headerLabel: UILabel = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
         label.accessibilityTraits.insert(.header)
+        label.numberOfLines = 0
         return label
     }()
 
-    private lazy var containerStack: UIStackView = {
-        let stack = UIStackView(withAutoLayout: true)
-        stack.axis = .vertical
-        stack.distribution = .fillProportionally
-        stack.spacing = .spacingS
-        return stack
-    }()
-
-
-    private(set) var viewModel: FrontPageTransactionViewModel?
-    private var imageDatasource: RemoteImageViewDataSource?
+    public private(set) var viewModel: FrontPageTransactionViewModel?
 
     //MARK: - Lifecycle
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
-    
-    required init?(coder: NSCoder) {
+
+    required init(coder: NSCoder) {
         super.init(coder: coder)
         setup()
     }
 }
 
-//MARK: - Private functions
+// MARK: - Private functions
+
 extension FrontPageTransactionView {
     private func setup() {
+        axis = .vertical
+        distribution = .fillProportionally
+        spacing = .spacingS
+
+        var constraints: [NSLayoutConstraint] = []
+
+        backgroundContainer.isLayoutMarginsRelativeArrangement = true
+        backgroundContainer.layoutMargins = .init(all: .spacingM)
+
+        addArrangedSubviews([headerLabel, backgroundContainer])
+        insertSubview(smallShadowView, belowSubview: backgroundContainer)
+        insertSubview(largeShadowView, belowSubview: smallShadowView)
+        constraints += [
+            smallShadowView.widthAnchor.constraint(equalTo: backgroundContainer.widthAnchor),
+            smallShadowView.heightAnchor.constraint(equalTo: backgroundContainer.heightAnchor),
+            smallShadowView.centerXAnchor.constraint(equalTo: backgroundContainer.centerXAnchor),
+            smallShadowView.centerYAnchor.constraint(equalTo: backgroundContainer.centerYAnchor),
+            largeShadowView.widthAnchor.constraint(equalTo: backgroundContainer.widthAnchor),
+            largeShadowView.heightAnchor.constraint(equalTo: backgroundContainer.heightAnchor),
+            largeShadowView.centerXAnchor.constraint(equalTo: backgroundContainer.centerXAnchor),
+            largeShadowView.centerYAnchor.constraint(equalTo: backgroundContainer.centerYAnchor)
+        ]
+
+        contentTextStack.addArrangedSubviews([titleLabel, subtitleLabel])
+
         imageContainerView.addSubview(imageView)
-        imageView.fillInSuperview()
-        largeShadowView.fillInSuperview()
-        largeShadowView.addSubview(smallShadowView)
-        smallShadowView.fillInSuperview()
-        smallShadowView.addSubview(backgroundContainer)
-        backgroundContainer.fillInSuperview()
-        containerStack.addArrangedSubviews([headerLabel, horizontalStack])
-        backgroundContainer.addSubview(horizontalStack)
-
-        verticalStack.addArrangedSubviews([titleLabel, subtitleLabel])
-        horizontalStack.addArrangedSubviews([verticalStack, imageContainerView])
-        containerStack.addArrangedSubviews([headerLabel, largeShadowView])
-        addSubview(containerStack)
-        containerStack.fillInSuperview()
-        NSLayoutConstraint.activate([
-            horizontalStack.leadingAnchor.constraint(equalTo: backgroundContainer.leadingAnchor, constant: .spacingM),
-            horizontalStack.topAnchor.constraint(equalTo: backgroundContainer.topAnchor, constant: .spacingM),
-            horizontalStack.trailingAnchor.constraint(equalTo: backgroundContainer.trailingAnchor, constant: -.spacingM),
-            horizontalStack.bottomAnchor.constraint(equalTo: backgroundContainer.bottomAnchor, constant: -.spacingM),
-            subtitleLabel.widthAnchor.constraint(equalToConstant: 228),
+        constraints += imageView.fillInSuperview(isActive: false)
+        constraints += [
             imageView.widthAnchor.constraint(equalToConstant: imageWidth),
-            imageView.heightAnchor.constraint(equalToConstant: imageWidth),
-        ])
+            imageView.heightAnchor.constraint(equalToConstant: imageWidth)
+        ]
 
-        backgroundContainer.backgroundColor = .bgColor
+        contentStack.addArrangedSubviews([contentTextStack, imageContainerView])
+
+        backgroundContainer.addArrangedSubview(contentStack)
+
+        NSLayoutConstraint.activate(constraints)
 
         backgroundContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
     }
@@ -175,14 +180,15 @@ extension FrontPageTransactionView {
 
 // MARK: - Public API
 extension FrontPageTransactionView {
-    public func configure(with model: FrontPageTransactionViewModel, andImageDatasource datasource: RemoteImageViewDataSource) {
+    public func configure(
+        with model: FrontPageTransactionViewModel,
+        andImageDatasource datasource: RemoteImageViewDataSource
+    ) {
         self.viewModel = model
-        self.imageDatasource = datasource
         imageView.dataSource = datasource
-
-        titleLabel.text = model.subtitle
-        subtitleLabel.text = model.title
         headerLabel.text = model.headerTitle
+        titleLabel.text = model.title
+        subtitleLabel.text = model.subtitle
         loadImage()
     }
 }

@@ -1,6 +1,7 @@
 import Foundation
 
 public struct FrontPageTransactionViewModel {
+    public let id: String
     public let headerTitle: String
     public let title: String
     public let subtitle: String
@@ -9,6 +10,7 @@ public struct FrontPageTransactionViewModel {
     public let transactionId: String?
 
     public init(
+        id: String,
         headerTitle: String,
         title: String,
         subtitle: String,
@@ -16,6 +18,7 @@ public struct FrontPageTransactionViewModel {
         adId: Int? = nil,
         transactionId: String? = nil
     ) {
+        self.id = id
         self.headerTitle = headerTitle
         self.title = title
         self.subtitle = subtitle

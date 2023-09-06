@@ -3,6 +3,7 @@ import FinniversKit
 final class FrontPageTransactionDemoView: UIView {
     private lazy var frontPageTransactionView: FrontPageTransactionView = {
         let model = FrontPageTransactionViewModel(
+            id: "tjt",
             headerTitle: "Fiks ferdig",
             title: "Gjør klar til sending",
             subtitle: "Velg en kjøper",
