@@ -62,7 +62,7 @@ final class AddFavoriteFolderButton: UIButton {
         backgroundColor = .bgPrimary
 
         imageView?.backgroundColor = .bgTertiary
-//        imageView?.tintColor = .btnAction
+        imageView?.tintColor = .btnAction
         imageView?.layer.masksToBounds = true
         imageView?.contentMode = .center
         imageView?.layer.cornerRadius = 12
@@ -71,7 +71,7 @@ final class AddFavoriteFolderButton: UIButton {
         setImage(UIImage(named: .favoritesPlus).withRenderingMode(.alwaysTemplate), for: .normal)
 
         titleLabel?.font = .bodyStrong
-        setTitleColor(.btnPrimary, for: .normal)
+        setTitleColor(.btnAction, for: .normal)
     }
 
     private func updateAlpha(isHighlighted: Bool) {
