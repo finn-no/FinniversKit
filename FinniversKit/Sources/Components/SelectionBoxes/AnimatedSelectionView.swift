@@ -40,7 +40,7 @@ open class AnimatedSelectionView: UIImageView {
             isHighlighted = selected
             return
         }
-
+        
         isHighlighted = selected
         animationDuration = selected ? selectedDuration : unselectedDuration
         startAnimating()
