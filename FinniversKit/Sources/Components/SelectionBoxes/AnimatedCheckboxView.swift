@@ -32,14 +32,14 @@ public class AnimatedCheckboxView: AnimatedSelectionView {
     private func setImages() {
         var selectedImages = [UIImage]()
         for index in 0 ..< 20 {
-            if let image = UIImage(named: "checkbox-selected-\(index)", in: .finniversKit, compatibleWith: nil) {
+            if let image = UIImage.checkboxSelected(index: index) {
                 selectedImages.append(image)
             }
         }
 
         var unselectedImages = [UIImage]()
         for index in 0 ..< 13 {
-            if let image = UIImage(named: "checkbox-unselected-\(index)", in: .finniversKit, compatibleWith: nil) {
+            if let image = UIImage.checkboxUnselected(index: index) {
                 unselectedImages.append(image)
             }
         }

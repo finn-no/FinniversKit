@@ -32,14 +32,14 @@ public class AnimatedRadioButtonView: AnimatedSelectionView {
     private func setImages() {
         var selectedImages = [UIImage]()
         for index in 0 ..< 13 {
-            if let image = UIImage(named: "radiobutton-select-\(index)", in: .finniversKit, compatibleWith: nil) {
+            if let image = UIImage.radioButtonSelected(index: index) {
                 selectedImages.append(image)
             }
         }
 
         var unselectedImages = [UIImage]()
         for index in 0 ..< 11 {
-            if let image = UIImage(named: "radiobutton-unselected-\(index)", in: .finniversKit, compatibleWith: nil) {
+            if let image = UIImage.radioButtonUnselected(index: index) {
                 unselectedImages.append(image)
             }
         }
