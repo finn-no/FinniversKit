@@ -1,6 +1,7 @@
 import FinniversKit
+import DemoKit
 
-class TransactionEntryDemoView: UIView, Tweakable {
+class TransactionEntryDemoView: UIView {
 
     private lazy var transactionEntryView: TransactionEntryView = {
         let view = TransactionEntryView(withAutoLayout: true)
@@ -9,22 +10,12 @@ class TransactionEntryDemoView: UIView, Tweakable {
         return view
     }()
 
-    lazy var tweakingOptions: [TweakingOption] = {
-        [
-            TweakingOption(title: "Regular", action: { [weak self] in
-                self?.configure(with: TransactionEntryViewModel())
-            }),
-            TweakingOption(title: "With warning", action: { [weak self] in
-                self?.configure(with: TransactionEntryViewModel(showWarning: true))
-            })
-        ]
-    }()
-
     // MARK: - Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+        configure(forTweakAt: 0)
     }
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
@@ -39,12 +30,28 @@ class TransactionEntryDemoView: UIView, Tweakable {
             transactionEntryView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
             transactionEntryView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
+    }
+}
 
-        transactionEntryView.configure(with: TransactionEntryViewModel())
+extension TransactionEntryDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, TweakingOption {
+        case regular
+        case withWarning
     }
 
-    func configure(with viewModel: TransactionEntryViewModel) {
-        transactionEntryView.configure(with: viewModel)
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .regular:
+            transactionEntryView.configure(with: TransactionEntryViewModel())
+        case .withWarning:
+            transactionEntryView.configure(with: TransactionEntryViewModel(showWarning: true))
+        }
     }
 }
 

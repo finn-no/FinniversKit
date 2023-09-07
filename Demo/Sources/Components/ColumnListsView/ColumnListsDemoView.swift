@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-class ColumnListsDemoView: UIView {
+class ColumnListsDemoView: UIView, Demoable {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()

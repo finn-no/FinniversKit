@@ -3,13 +3,14 @@
 //
 
 import FinniversKit
+import DemoKit
 
 struct ColorItem {
     let color: UIColor
     let title: String
 }
 
-public class ColorDemoView: UIView {
+class ColorDemoView: UIView, Demoable {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -62,7 +63,7 @@ public class ColorDemoView: UIView {
         ]
     }()
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
         addSubview(tableView)
@@ -79,17 +80,19 @@ public class ColorDemoView: UIView {
 }
 
 extension ColorDemoView: UITableViewDataSource {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
 
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(UITableViewCell.self, for: indexPath)
         let item = items[indexPath.row]
         cell.backgroundColor = item.color
+
         let title = item.title.capitalizingFirstLetter + "  "
         let attributedTitle = NSMutableAttributedString(string: title)
         attributedTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.gray700, range: NSRange(location: 0, length: title.count))
+
         let whiteTitle = NSMutableAttributedString(string: title)
         whiteTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: title.count))
         attributedTitle.append(whiteTitle)

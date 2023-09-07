@@ -1,17 +1,7 @@
+import DemoKit
 import FinniversKit
 
-final class FrontPageTransactionDemoView: UIView, Tweakable {
-    lazy var tweakingOptions: [TweakingOption] = [
-        .init(title: "Regular") { [weak self] in
-            guard let self else { return }
-            self.frontPageTransactionView.configure(with: .tjtRegular, andImageDatasource: self)
-        },
-        .init(title: "Long text") { [weak self] in
-            guard let self else { return }
-            self.frontPageTransactionView.configure(with: .tjtLong, andImageDatasource: self)
-        }
-    ]
-
+final class FrontPageTransactionDemoView: UIView, Demoable {
     private lazy var frontPageTransactionView: FrontPageTransactionView = {
         let view = FrontPageTransactionView(withAutoLayout: true)
         view.delegate = self
@@ -31,12 +21,35 @@ final class FrontPageTransactionDemoView: UIView, Tweakable {
     // MARK: - Setup
 
     private func setup() {
+        configure(forTweakAt: 0)
         addSubview(frontPageTransactionView)
         NSLayoutConstraint.activate([
             frontPageTransactionView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
             frontPageTransactionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             frontPageTransactionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
         ])
+    }
+}
+
+extension FrontPageTransactionDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, TweakingOption {
+        case regular
+        case longText
+    }
+
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .regular:
+            frontPageTransactionView.configure(with: .tjtRegular, andImageDatasource: self)
+        case .longText:
+            frontPageTransactionView.configure(with: .tjtLong, andImageDatasource: self)
+        }
     }
 }
 

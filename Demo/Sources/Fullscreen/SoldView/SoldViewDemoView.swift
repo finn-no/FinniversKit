@@ -3,15 +3,16 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class SoldViewDemoView: UIView {
+class SoldViewDemoView: UIView, Demoable {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
         let image = UIImage(named: .sold)

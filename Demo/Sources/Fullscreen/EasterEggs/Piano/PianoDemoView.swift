@@ -3,18 +3,21 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class PianoDemoView: UIView {
+class PianoDemoView: UIView, Demoable {
+    var shouldSnapshotTest: Bool { false }
+
     private lazy var pianoView = PianoView()
 
     // MARK: - Init
 
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

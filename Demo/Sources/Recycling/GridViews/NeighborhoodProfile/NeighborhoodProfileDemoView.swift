@@ -4,8 +4,9 @@
 
 import UIKit
 import FinniversKit
+import DemoKit
 
-final class NeighborhoodProfileDemoView: UIView {
+final class NeighborhoodProfileDemoView: UIView, Demoable {
     private lazy var view: NeighborhoodProfileView = {
         let view = NeighborhoodProfileView(withAutoLayout: true)
         view.delegate = self

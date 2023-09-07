@@ -3,15 +3,16 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class ConfirmationViewDemoView: UIView {
+class ConfirmationViewDemoView: UIView, Demoable {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
         let soldView = ConfirmationView(withAutoLayout: true)

@@ -3,11 +3,11 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class LabelDemoView: UIView {
+public class LabelDemoView: UIView, Demoable {
     override init(frame: CGRect) {
         super.init(frame: frame)
-
         setup()
     }
 

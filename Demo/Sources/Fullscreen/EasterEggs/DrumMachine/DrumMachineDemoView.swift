@@ -3,24 +3,25 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class DrumMachineDemoView: UIView {
+class DrumMachineDemoView: UIView, Demoable {
     private lazy var drumMachineView = DrumMachineView()
 
     // MARK: - Init
 
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - Lifecycle
 
-    public override func didMoveToSuperview() {
+    override func didMoveToSuperview() {
         super.didMoveToSuperview()
         if superview == nil {
             drumMachineView.stop()

@@ -3,37 +3,13 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class ContactFormDemoView: UIView, Tweakable {
-
-    lazy var tweakingOptions: [TweakingOption] = {
-        let options = [
-            TweakingOption(title: "Full name and phone number not required", action: {
-                self.contactFormView.configure(with: ViewModel())
-                self.contactFormView.setNeedsLayout()
-            }),
-            TweakingOption(title: "Phone number required", action: {
-                var viewModel = ViewModel()
-                viewModel.phoneNumberRequired = true
-                self.contactFormView.configure(with: viewModel)
-                self.contactFormView.setNeedsLayout()
-            }),
-            TweakingOption(title: "Full name required", action: {
-                var viewModel = ViewModel()
-                viewModel.phoneNumberRequired = false
-                viewModel.fullNameRequired = true
-                viewModel.nameErrorHelpText = "Navn må bestå av fornavn og etternavn"
-                self.contactFormView.configure(with: viewModel)
-                self.contactFormView.setNeedsLayout()
-            }),
-        ]
-        return options
-    }()
+class ContactFormDemoView: UIView {
 
     private lazy var contactFormView: ContactFormView = {
         let view = ContactFormView(withAutoLayout: true)
         view.delegate = self
-        view.configure(with: ViewModel())
         return view
     }()
 
@@ -42,9 +18,10 @@ public class ContactFormDemoView: UIView, Tweakable {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+        configure(forTweakAt: 0)
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
 
@@ -56,14 +33,48 @@ public class ContactFormDemoView: UIView, Tweakable {
     }
 }
 
+extension ContactFormDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, TweakingOption {
+        case fullNameAndPhoneNumberNotRequired
+        case phoneNumberRequired
+        case fullNameRequired
+    }
+
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .fullNameAndPhoneNumberNotRequired:
+            contactFormView.configure(with: ViewModel())
+            contactFormView.setNeedsLayout()
+        case .phoneNumberRequired:
+            var viewModel = ViewModel()
+            viewModel.phoneNumberRequired = true
+            contactFormView.configure(with: viewModel)
+            contactFormView.setNeedsLayout()
+        case .fullNameRequired:
+            var viewModel = ViewModel()
+            viewModel.phoneNumberRequired = false
+            viewModel.fullNameRequired = true
+            viewModel.nameErrorHelpText = "Navn må bestå av fornavn og etternavn"
+            contactFormView.configure(with: viewModel)
+            contactFormView.setNeedsLayout()
+        }
+    }
+}
+
 // MARK: - ContactFormViewDelegate
 
 extension ContactFormDemoView: ContactFormViewDelegate {
-    public func contactFormView(_ view: ContactFormView, didSubmitWithName name: String, email: String, phoneNumber: String?) {
+    func contactFormView(_ view: ContactFormView, didSubmitWithName name: String, email: String, phoneNumber: String?) {
         print("Name: \(name), email: \(email), phone number: \(phoneNumber ?? "-")")
     }
 
-    public func contactFormViewDidTapDisclaimerButton(_ view: ContactFormView) {}
+    func contactFormViewDidTapDisclaimerButton(_ view: ContactFormView) {}
 }
 
 // MARK: - Private types

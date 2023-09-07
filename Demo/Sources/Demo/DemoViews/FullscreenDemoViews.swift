@@ -2,8 +2,21 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 import FinniversKit
+import DemoKit
 
-public enum FullscreenDemoViews: String, DemoViews {
+extension MessageFormBottomSheet: Demoable {
+    public var overridesModalPresentationStyle: Bool { true }
+}
+
+extension VerificationActionSheet: Demoable {
+    public var overridesModalPresentationStyle: Bool { true }
+}
+
+extension MessageUserRequiredSheet: Demoable {
+    public var overridesModalPresentationStyle: Bool { true }
+}
+
+enum FullscreenDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case frontPageView
     case popupView
     case emptyView
@@ -33,82 +46,77 @@ public enum FullscreenDemoViews: String, DemoViews {
     case confettiView
     case messageUserRequiredSheet
 
-    public var viewController: UIViewController {
+    static var groupTitle: String { "Fullscreen" }
+    static var numberOfDemos: Int { allCases.count }
+
+    static func demoGroupItem(for index: Int) -> any DemoGroupItem {
+        allCases[index]
+    }
+
+    static func demoable(for index: Int) -> any Demoable {
+        Self.allCases[index].demoable
+    }
+
+    var demoable: any Demoable {
         switch self {
         case .frontPageView:
-            return DemoViewController<FrontpageViewDemoView>()
+            return FrontpageViewDemoView()
         case .emptyView:
-            return DemoViewController<EmptyViewDemoView>()
+            return EmptyViewDemoView()
         case .popupView:
-            return DemoViewController<PopupViewDemoView>()
+            return PopupViewDemoView()
         case .reportAdView:
-            return DemoViewController<AdReporterDemoView>(dismissType: .dismissButton)
+            return AdReporterDemoView()
         case .buyerPickerView:
-            return DemoViewController<BuyerPickerDemoView>()
+            return BuyerPickerDemoView()
         case .registerView:
-            return DemoViewController<RegisterViewDemoView>()
+            return RegisterViewDemoView()
         case .loginEntryView:
-            return LoginEntryViewDemoViewController(constrainToBottomSafeArea: false)
+            return LoginEntryViewDemoViewController()
         case .loginView:
-            return DemoViewController<LoginViewDemoView>()
+            return LoginViewDemoView()
         case .loadingView:
-            return DemoViewController<LoadingViewDemoView>()
+            return LoadingViewDemoView()
         case .drumMachineView:
-            return DemoViewController<DrumMachineDemoView>()
+            return DrumMachineDemoView()
         case .pianoView:
-            return DemoViewController<PianoDemoView>(supportedInterfaceOrientations: .landscape)
+            return PianoDemoView()
         case .soldView:
-            return DemoViewController<SoldViewDemoView>()
+            return SoldViewDemoView()
         case .confirmationView:
-            return DemoViewController<ConfirmationViewDemoView>()
+            return ConfirmationViewDemoView()
         case .fullscreenGallery:
             return FullscreenGalleryDemoViewController()
         case .contactFormView:
-            return DemoViewController<ContactFormDemoView>()
+            return ContactFormDemoView()
         case .messageFormView:
             let bottomSheet = MessageFormBottomSheet(viewModel: MessageFormDemoViewModel())
             bottomSheet.messageFormDelegate = MessageFormDemoPresenter.shared
             return bottomSheet
         case .addressMapView:
-            return DemoViewController<AddressMapDemoView>(
-                dismissType: .dismissButton,
-                constrainToBottomSafeArea: false
-            )
+            return AddressMapDemoView()
         case .favoriteAdsList:
-            return DemoViewController<FavoriteAdsListDemoView>(constrainToBottomSafeArea: false)
+            return FavoriteAdsListDemoView()
         case .verificationActionSheet:
             let bottomSheet = VerificationActionSheet(viewModel: VerificationViewDefaultData())
             bottomSheet.actionDelegate = VerificationActionSheetDemoDelegate.shared
             return bottomSheet
         case .settingDetails:
-            let viewController = SettingDetailsDemoViewController()
-            viewController.view.layoutIfNeeded()
-            let contentHeight = viewController.contentSize.height
-
-            let bottomSheet = BottomSheet(
-                rootViewController: viewController,
-                height: .init(
-                    compact: contentHeight,
-                    expanded: contentHeight
-                )
-            )
-
-            viewController.bottomSheet = bottomSheet
-            return bottomSheet
+            return SettingDetailsDemoViewController()
         case .favoriteAdActionView:
-            return DemoViewController<FavoriteAdActionDemoView>()
+            return FavoriteAdActionDemoView()
         case .favoriteAdCommentInputView:
-            return DemoViewController<FavoriteAdCommentInputDemoView>()
+            return FavoriteAdCommentInputDemoView()
         case .favoriteFolderActionView:
-            return DemoViewController<FavoriteFolderActionDemoView>()
+            return FavoriteFolderActionDemoView()
         case .favoriteSold:
-            return DemoViewController<FavoriteSoldDemoView>()
+            return FavoriteSoldDemoView()
         case .betaFeatureView:
-            return DemoViewController<BetaFeatureDemoView>()
+            return BetaFeatureDemoView()
         case .resultView:
-            return DemoViewController<ResultDemoView>()
+            return ResultDemoView()
         case .confettiView:
-            return DemoViewController<ConfettiDemoView>()
+            return ConfettiDemoView()
         case .messageUserRequiredSheet:
             let sheet = MessageUserRequiredSheet()
             sheet.configure(MessageUserRequiredData.labelText, buttonText: MessageUserRequiredData.buttonText)

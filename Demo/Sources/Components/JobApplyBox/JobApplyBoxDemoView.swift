@@ -1,15 +1,7 @@
 import FinniversKit
+import DemoKit
 
-class JobApplyBoxDemoView: UIView, Tweakable {
-
-    lazy var tweakingOptions: [TweakingOption] = [
-        .init(title: "Default", action: { [weak self] in
-            self?.configure(viewModel: .default)
-        }),
-        .init(title: "Without secondary button", action: { [weak self] in
-            self?.configure(viewModel: .withoutSecondary)
-        })
-    ]
+class JobApplyBoxDemoView: UIView {
 
     // MARK: - Private properties
 
@@ -19,7 +11,7 @@ class JobApplyBoxDemoView: UIView, Tweakable {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        tweakingOptions.first?.action?()
+        configure(forTweakAt: 0)
     }
 
     required init?(coder: NSCoder) { fatalError() }
@@ -38,6 +30,29 @@ class JobApplyBoxDemoView: UIView, Tweakable {
         ])
 
         self.demoView = demoView
+    }
+}
+
+extension JobApplyBoxDemoView: TweakableDemo {
+    enum Tweaks: String, CaseIterable, TweakingOption {
+        case `default`
+        case withoutSecondaryButton
+    }
+
+    var dismissKind: DismissKind { .button }
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .default:
+            configure(viewModel: .default)
+        case .withoutSecondaryButton:
+            configure(viewModel: .withoutSecondary)
+        }
     }
 }
 

@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-class ChristmasWishListDemoView: UIView {
+class ChristmasWishListDemoView: UIView, Demoable {
     private lazy var backgroundView = UIView()
     private lazy var christmasWishListView = ChristmasWishListView(withAutoLayout: true)
     let viewModel = ChristmasWishListViewModel()

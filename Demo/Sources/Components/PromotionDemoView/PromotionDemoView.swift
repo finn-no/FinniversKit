@@ -1,7 +1,8 @@
 import UIKit
 import FinniversKit
+import DemoKit
 
-class PromotionDemoView: UIView {
+class PromotionDemoView: UIView, Demoable {
     private lazy var viewModels: [PromotionViewModel] = [christmasPromoViewModel, hjerteromPromoViewModel]
 
     private let christmasPromoViewModel = PromotionViewModel(

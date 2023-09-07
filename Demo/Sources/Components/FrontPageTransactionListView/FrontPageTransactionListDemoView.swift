@@ -1,6 +1,7 @@
+import DemoKit
 import FinniversKit
 
-final class FrontPageTransactionListDemoView: UIView {
+final class FrontPageTransactionListDemoView: UIView, Demoable {
     private lazy var frontPageTransactionListView: FrontPageTransactionListView = {
         let view = FrontPageTransactionListView(frame: .zero, withAutoLayout: true)
         view.configure(

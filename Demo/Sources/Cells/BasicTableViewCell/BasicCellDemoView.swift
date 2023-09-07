@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import DemoKit
 
 private struct ViewModel: BasicTableViewCellViewModel {
     var title: String
@@ -11,7 +12,9 @@ private struct ViewModel: BasicTableViewCellViewModel {
     let hasChevron: Bool = false
 }
 
-class BasicCellDemoView: UIView {
+class BasicCellDemoView: UIView, Demoable {
+    var dismissKind: DismissKind { .button }
+
     private let viewModels = [
         ViewModel(title: "Hagemøbler"),
         ViewModel(title: "Kattepuser"),

@@ -39,11 +39,18 @@ public protocol ColorProvider {
     var iconTertiary: UIColor { get }
     var borderDefault: UIColor { get }
     var marketplaceNavigationBarIcon: UIColor { get }
+    var nmpBrandColorPrimary: UIColor { get }
+    var nmpBrandColorSecondary: UIColor { get }
+    var nmpBrandControlSelected: UIColor { get }
+    var nmpBrandDecoration: UIColor { get }
 }
 
 // MARK: - Default FINN colors
 
 public struct DefaultColorProvider: ColorProvider {
+    
+    public static let shared = DefaultColorProvider()
+    
     public var bgPrimary: UIColor {
         .dynamicColor(defaultColor: .white, darkModeColor: .darkMilk)
     }
@@ -161,22 +168,39 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var iconPrimary: UIColor {
-        return .textPrimary
+        .textPrimary
     }
 
     public var iconSecondary: UIColor {
-        return .textSecondary
+        .textSecondary
     }
 
     public var iconTertiary: UIColor {
-        return .textTertiary
+        .textTertiary
     }
 
     public var borderDefault: UIColor {
-        return .dynamicColor(defaultColor: .blueGray300, darkModeColor: .darkSardine)
+        .dynamicColor(defaultColor: .blueGray300, darkModeColor: .darkSardine)
     }
 
     public var marketplaceNavigationBarIcon: UIColor {
+        .aqua400
+    }
+
+    // NMP brand colors
+    public var nmpBrandControlSelected: UIColor {
+        .blue600
+    }
+    
+    public var nmpBrandDecoration: UIColor {
+        .blue600
+    }
+    
+    public var nmpBrandColorPrimary: UIColor {
+        .blue600
+    }
+    
+    public var nmpBrandColorSecondary: UIColor {
         .aqua400
     }
 }

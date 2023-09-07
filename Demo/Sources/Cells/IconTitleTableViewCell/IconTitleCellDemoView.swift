@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import DemoKit
 
 private struct ViewModel: IconTitleTableViewCellViewModel {
     var title: String
@@ -26,7 +27,10 @@ private struct ViewModel: IconTitleTableViewCellViewModel {
     }
 }
 
-class IconTitleCellDemoView: UIView {
+class IconTitleCellDemoView: UIView, Demoable {
+
+    var dismissKind: DismissKind { .button }
+
     private var viewModels = [
         ViewModel(title: "Favoritter", icon: UIImage(named: .favouriteAdded), iconTintColor: .textPrimary, hasChevron: true),
         ViewModel(title: "Lagrede søk", icon: UIImage(named: .search), iconTintColor: .textPrimary),

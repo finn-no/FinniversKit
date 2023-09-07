@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class VerificationDemoView: UIView {
+class VerificationDemoView: UIView, Demoable {
     private lazy var verificationView: VerificationView = {
         let view = VerificationView(withAutoLayout: true)
         view.viewModel = VerificationViewDefaultData()
@@ -12,7 +13,7 @@ public class VerificationDemoView: UIView {
         return view
     }()
 
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
@@ -30,5 +31,5 @@ private extension VerificationDemoView {
 }
 
 extension VerificationDemoView: VerificationViewDelegate {
-    public func didTapVerificationButton(_: VerificationView) {}
+    func didTapVerificationButton(_: VerificationView) {}
 }

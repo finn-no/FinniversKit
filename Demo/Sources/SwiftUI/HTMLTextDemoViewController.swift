@@ -2,8 +2,9 @@ import FinniversKit
 import Foundation
 import SwiftUI
 import UIKit
+import DemoKit
 
-final class HTMLTextDemoViewController: DemoViewController<UIView>, Tweakable {
+final class HTMLTextDemoViewController: UIViewController {
     let hostingController: UIHostingController<HTMLText>
 
     private var htmlView: HTMLText = HTMLText("") {
@@ -12,33 +13,10 @@ final class HTMLTextDemoViewController: DemoViewController<UIView>, Tweakable {
         }
     }
 
-    lazy var tweakingOptions: [TweakingOption] = [
-        TweakingOption(title: "Default", action: { [weak self] in
-            guard let self = self else { return }
-            self.htmlView = HTMLText("This is <b>HTML</b>")
-        }),
-        TweakingOption(title: "Linebreak", action: { [weak self] in
-            guard let self = self else { return }
-            self.htmlView = HTMLText("This is <b>HTML</b><br>over two lines")
-        }),
-        TweakingOption(title: "Price highlight", action: { [weak self] in
-            guard let self = self else { return }
-            self.htmlView = HTMLText("Shipping costs <span style=\"color:tjt-price-highlight\">60 NOK</span>")
-        }),
-        TweakingOption(title: "Strikethrough", action: { [weak self] in
-            guard let self = self else { return }
-            self.htmlView = HTMLText("Old price is <del>80 NOK</del>")
-        }),
-        TweakingOption(title: "Mix", action: { [weak self] in
-            guard let self = self else { return }
-            self.htmlView = HTMLText("New price is <b>60 kr</b>, old price is <del>80 kr</del><br>Shipping is <span style=\"color:tjt-price-highlight\">60 kr</span>")
-        }),
-    ]
-
     init() {
-        self.htmlView = HTMLText("This is <b>HTML</b>")
         self.hostingController = UIHostingController(rootView: htmlView)
-        super.init()
+        super.init(nibName: nil, bundle: nil)
+        configure(forTweakAt: 0)
     }
 
     required init?(coder: NSCoder) {
@@ -48,14 +26,41 @@ final class HTMLTextDemoViewController: DemoViewController<UIView>, Tweakable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let childViewController = childViewController else {
-            return
-        }
-
-        childViewController.addChild(hostingController)
-        hostingController.view.frame = childViewController.view.bounds
+        addChild(hostingController)
+        hostingController.view.frame = view.bounds
         hostingController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        childViewController.view.addSubview(hostingController.view)
-        hostingController.didMove(toParent: childViewController)
+        view.addSubview(hostingController.view)
+        hostingController.didMove(toParent: self)
+    }
+}
+
+extension HTMLTextDemoViewController: TweakableDemo {
+    enum Tweaks: String, CaseIterable, TweakingOption {
+        case `default`
+        case linebreak
+        case priceHighlight
+        case strikethrough
+        case mix
+    }
+
+    var numberOfTweaks: Int { Tweaks.allCases.count }
+
+    func tweak(for index: Int) -> any TweakingOption {
+        Tweaks.allCases[index]
+    }
+
+    func configure(forTweakAt index: Int) {
+        switch Tweaks.allCases[index] {
+        case .default:
+            htmlView = HTMLText("This is <b>HTML</b>")
+        case .linebreak:
+            htmlView = HTMLText("This is <b>HTML</b><br>over two lines")
+        case .priceHighlight:
+            htmlView = HTMLText("Shipping costs <span style=\"color:tjt-price-highlight\">60 NOK</span>")
+        case .strikethrough:
+            htmlView = HTMLText("Old price is <del>80 NOK</del>")
+        case .mix:
+            htmlView = HTMLText("New price is <b>60 kr</b>, old price is <del>80 kr</del><br>Shipping is <span style=\"color:tjt-price-highlight\">60 kr</span>")
+        }
     }
 }

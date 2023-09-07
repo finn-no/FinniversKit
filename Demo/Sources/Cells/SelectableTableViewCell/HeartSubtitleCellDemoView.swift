@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import DemoKit
 
 private struct ViewModel: SelectableTableViewCellViewModel {
     let title: String
@@ -12,7 +13,10 @@ private struct ViewModel: SelectableTableViewCellViewModel {
     var isSelected: Bool
 }
 
-class HeartSubtitleCellDemoView: UIView {
+class HeartSubtitleCellDemoView: UIView, Demoable {
+
+    var dismissKind: DismissKind { .button }
+
     private var viewModels = [
         ViewModel(title: "Mine funn", subtitle: "Ingen annonser", isSelected: false),
         ViewModel(title: "Brettspill", subtitle: "2 annonser", isSelected: true),

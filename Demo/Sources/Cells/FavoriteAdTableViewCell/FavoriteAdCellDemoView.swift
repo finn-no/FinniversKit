@@ -3,8 +3,12 @@
 //
 
 import FinniversKit
+import DemoKit
 
-class FavoriteAdCellDemoView: UIView {
+class FavoriteAdCellDemoView: UIView, Demoable {
+
+    var dismissKind: DismissKind { .button }
+
     private let viewModels = FavoriteAdsFactory.create()
 
     private lazy var tableView: UITableView = {

@@ -1,7 +1,11 @@
 import UIKit
 import FinniversKit
+import DemoKit
 
 class MyAdsListDemoView: UIView {
+
+    var presentation: DemoablePresentation { .navigationController }
+    var dismissKind: DismissKind { .button }
 
     // MARK: - Private properties
 
@@ -52,35 +56,30 @@ extension MyAdsListDemoView: MyAdsListViewDelegate {
     }
 }
 
-// MARK: - BarButtonProvider
+// MARK: - Demoable
 
-extension MyAdsListDemoView: BarButtonProvider {
+extension MyAdsListDemoView: Demoable {
     var rightBarButtonItems: [UIBarButtonItem] {
-        if #available(iOS 14.0, *) {
-            return [
-                UIBarButtonItem(
-                    title: "Reset",
-                    primaryAction: UIAction(handler: { [weak self] _ in
-                        self?.resetAds()
-                    })
-                ),
-                UIBarButtonItem(
-                    title: "Shift list",
-                    primaryAction: UIAction(handler: { [weak self] _ in
-                        self?.shiftAds()
-                    })
-                ),
-                UIBarButtonItem(
-                    title: "Reverse list",
-                    primaryAction: UIAction(handler: { [weak self] _ in
-                        self?.reverseAds()
-                    })
-                ),
-
-            ]
-        } else {
-            return []
-        }
+        [
+            UIBarButtonItem(
+                title: "Reset",
+                primaryAction: UIAction(handler: { [weak self] _ in
+                    self?.resetAds()
+                })
+            ),
+            UIBarButtonItem(
+                title: "Shift list",
+                primaryAction: UIAction(handler: { [weak self] _ in
+                    self?.shiftAds()
+                })
+            ),
+            UIBarButtonItem(
+                title: "Reverse list",
+                primaryAction: UIAction(handler: { [weak self] _ in
+                    self?.reverseAds()
+                })
+            ),
+        ]
     }
 
     private func resetAds() {

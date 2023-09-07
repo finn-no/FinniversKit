@@ -1,6 +1,10 @@
 import FinniversKit
+import DemoKit
 
-public class FrontpageViewDemoView: UIView {
+class FrontpageViewDemoView: UIView, Demoable {
+
+    var presentation: DemoablePresentation { .navigationController }
+
     private let markets = Market.newMarkets
     private var didSetupView = false
     private var visibleItems = 20
@@ -46,7 +50,7 @@ public class FrontpageViewDemoView: UIView {
 
     // MARK: - Setup
 
-    public override func layoutSubviews() {
+    override func layoutSubviews() {
         super.layoutSubviews()
 
         if didSetupView == false {
@@ -86,11 +90,11 @@ public class FrontpageViewDemoView: UIView {
 // MARK: - PromotionViewDelegate
 
 extension FrontpageViewDemoView: PromotionViewDelegate {
-    public func promotionViewTapped(_ promotionView: PromotionView) {
+    func promotionViewTapped(_ promotionView: PromotionView) {
         print("Promo tapped")
     }
 
-    public func promotionView(_ promotionView: PromotionView, didSelect action: PromotionView.Action) {
+    func promotionView(_ promotionView: PromotionView, didSelect action: PromotionView.Action) {
         print("Selected : \(action)")
     }
 }
@@ -98,13 +102,13 @@ extension FrontpageViewDemoView: PromotionViewDelegate {
 // MARK: - AdRecommendationsGridViewDelegate
 
 extension FrontpageViewDemoView: FrontPageViewDelegate {
-    public func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView) {
+    func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView) {
         frontPageView.reloadData()
     }
 }
 
 extension FrontpageViewDemoView: AdRecommendationsGridViewDelegate {
-    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, willDisplayItemAtIndex index: Int) {
+    func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, willDisplayItemAtIndex index: Int) {
         if index >= visibleItems - 10 {
             visibleItems += 10
 
@@ -114,14 +118,14 @@ extension FrontpageViewDemoView: AdRecommendationsGridViewDelegate {
         }
     }
 
-    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didScrollInScrollView scrollView: UIScrollView) {}
-    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didSelectItemAtIndex index: Int) {}
+    func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didScrollInScrollView scrollView: UIScrollView) {}
+    func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didSelectItemAtIndex index: Int) {}
 
-    public func adRecommendationsGridViewDidStartRefreshing(_ adRecommendationsGridView: AdRecommendationsGridView) {
+    func adRecommendationsGridViewDidStartRefreshing(_ adRecommendationsGridView: AdRecommendationsGridView) {
         frontPageView.reloadData()
     }
 
-    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at index: Int) {
+    func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at index: Int) {
         adRecommendationsGridView.updateItem(at: index, isFavorite: !cell.isFavorite)
     }
 }
@@ -129,22 +133,22 @@ extension FrontpageViewDemoView: AdRecommendationsGridViewDelegate {
 // MARK: - AdRecommendationsGridViewDataSource
 
 extension FrontpageViewDemoView: AdRecommendationsGridViewDataSource {
-    public func numberOfColumns(inAdRecommendationsGridView adRecommendationsGridView: AdRecommendationsGridView) -> AdRecommendationsGridView.ColumnConfiguration? {
+    func numberOfColumns(inAdRecommendationsGridView adRecommendationsGridView: AdRecommendationsGridView) -> AdRecommendationsGridView.ColumnConfiguration? {
         return nil
     }
 
-    public func numberOfItems(inAdRecommendationsGridView adRecommendationsGridView: AdRecommendationsGridView) -> Int {
+    func numberOfItems(inAdRecommendationsGridView adRecommendationsGridView: AdRecommendationsGridView) -> Int {
         return min(ads.count, visibleItems)
     }
 
-    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
+    func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
         return [
             StandardAdRecommendationCell.self,
             BannerAdDemoCell.self
         ]
     }
 
-    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
+    func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
         let model = ads[indexPath.item]
 
         switch model.adType {
@@ -158,7 +162,7 @@ extension FrontpageViewDemoView: AdRecommendationsGridViewDataSource {
         }
     }
 
-    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let model = ads[indexPath.item]
 
         switch model.adType {
@@ -174,27 +178,27 @@ extension FrontpageViewDemoView: AdRecommendationsGridViewDataSource {
         }
     }
 
-    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         loadImage(imagePath: imagePath, completion: completion)
     }
 
-    public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
+    func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
 
 // MARK: - MarketsGridViewDelegate
 
 extension FrontpageViewDemoView: MarketsViewDelegate {
-    public func marketsView(_ marketsGridView: MarketsView, didSelectItemAtIndex index: Int) {}
+    func marketsView(_ marketsGridView: MarketsView, didSelectItemAtIndex index: Int) {}
 }
 
 // MARK: - MarketsGridViewDataSource
 
 extension FrontpageViewDemoView: MarketsViewDataSource {
-    public func numberOfItems(inMarketsView marketsView: MarketsView) -> Int {
+    func numberOfItems(inMarketsView marketsView: MarketsView) -> Int {
         return markets.count
     }
 
-    public func marketsView(_ marketsView: MarketsView, modelAtIndex index: Int) -> MarketsViewModel {
+    func marketsView(_ marketsView: MarketsView, modelAtIndex index: Int) -> MarketsViewModel {
         return markets[index]
     }
 }
@@ -202,25 +206,25 @@ extension FrontpageViewDemoView: MarketsViewDataSource {
 // MARK: - RemoteImageViewDataSource
 
 extension FrontpageViewDemoView: RemoteImageViewDataSource {
-    public func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
+    func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
         nil
     }
 
-    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         loadImage(imagePath: imagePath, completion: completion)
     }
 
-    public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
+    func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
 
 // MARK: - FrontPageSavedSearchesViewDelegate
 
 extension FrontpageViewDemoView: FrontPageSavedSearchesViewDelegate {
-    public func frontPageSavedSearchesView(_ view: FrontPageSavedSearchesView, didSelectSavedSearch savedSearch: FrontPageSavedSearchViewModel) {
+    func frontPageSavedSearchesView(_ view: FrontPageSavedSearchesView, didSelectSavedSearch savedSearch: FrontPageSavedSearchViewModel) {
         print("Did select saved search with title", savedSearch.title)
     }
 
-    public func frontPageSavedSearchesViewDidSelectActionButton(_ view: FrontPageSavedSearchesView) {
+    func frontPageSavedSearchesViewDidSelectActionButton(_ view: FrontPageSavedSearchesView) {
         print("Did select action button")
     }
 }
@@ -228,7 +232,7 @@ extension FrontpageViewDemoView: FrontPageSavedSearchesViewDelegate {
 // MARK: - FrontPageTransactionFeedDelegate
 
 extension FrontpageViewDemoView: FrontPageTransactionViewDelegate {
-    public func transactionViewTapped(_ transactionView: FrontPageTransactionView) {
+    func transactionViewTapped(_ transactionView: FrontPageTransactionView) {
         print("TransactionFeedView tapped: \(transactionView.viewModel?.id ?? "")")
     }
 }

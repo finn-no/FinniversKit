@@ -3,8 +3,11 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class SendInviteDemoView: UIView {
+class SendInviteDemoView: UIView, Demoable {
+    var presentation: DemoablePresentation { .sheet(detents: [.medium(), .large()]) }
+
     private lazy var sendInviteView: SendInviteView = {
         let view = SendInviteView(withAutoLayout: true)
         view.delegate = self
@@ -29,7 +32,7 @@ public class SendInviteDemoView: UIView {
 }
 
 extension SendInviteDemoView: SendInviteViewDelegate {
-    public func sendInviteViewLoadImage(_ view: SendInviteView, loadImageWithUrl url: URL, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    func sendInviteViewLoadImage(_ view: SendInviteView, loadImageWithUrl url: URL, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         let task = URLSession.shared.dataTask(with: url) { data, _, _ in
             usleep(50_000)
             DispatchQueue.main.async {
@@ -44,16 +47,16 @@ extension SendInviteDemoView: SendInviteViewDelegate {
         task.resume()
     }
 
-    public func sendInviteViewDidTapSendInviteButton(_ button: Button) {
+    func sendInviteViewDidTapSendInviteButton(_ button: Button) {
         print("didTapSendInviteButton")
     }
 
-    public func sendInviteViewDidTapSendInviteLaterButton(_ button: Button) {
+    func sendInviteViewDidTapSendInviteLaterButton(_ button: Button) {
         print("didTapSendInviteLaterButton")
     }
 }
 
-public extension SendInviteViewModel {
+extension SendInviteViewModel {
     static var defaultData: SendInviteViewModel = .init(
         title: "Vil du invitere selgeren av bilen til kontrakten?",
         profileName: "Hermine",

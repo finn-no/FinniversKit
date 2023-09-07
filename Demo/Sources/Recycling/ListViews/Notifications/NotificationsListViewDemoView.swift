@@ -3,13 +3,14 @@
 //
 
 import FinniversKit
+import DemoKit
 
 /// For use with NotificationsListView.
-public class NotificationDataSource: NSObject {
+class NotificationDataSource: NSObject {
     let groups = NotificationFactory.create(numberOfGroups: 3)
 }
 
-public class NotificationsListViewDemoView: UIView {
+class NotificationsListViewDemoView: UIView, Demoable {
     lazy var dataSource: NotificationDataSource = {
         return NotificationDataSource()
     }()
@@ -20,7 +21,7 @@ public class NotificationsListViewDemoView: UIView {
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
         let view = NotificationsListView(delegate: self, dataSource: self)
@@ -31,38 +32,38 @@ public class NotificationsListViewDemoView: UIView {
 }
 
 extension NotificationsListViewDemoView: NotificationsListViewDelegate {
-    public func notificationsListView(_ notificationsListView: NotificationsListView, didSelectItemAtIndexPath indexPath: IndexPath) {}
+    func notificationsListView(_ notificationsListView: NotificationsListView, didSelectItemAtIndexPath indexPath: IndexPath) {}
 
-    public func notificationsListView(_ notificationsListView: NotificationsListView, willDisplayItemAtIndexPath indexPath: IndexPath) {}
+    func notificationsListView(_ notificationsListView: NotificationsListView, willDisplayItemAtIndexPath indexPath: IndexPath) {}
 
-    public func notificationsListView(_ notificationsListView: NotificationsListView, didScrollInScrollView scrollView: UIScrollView) {}
+    func notificationsListView(_ notificationsListView: NotificationsListView, didScrollInScrollView scrollView: UIScrollView) {}
 
-    public func notificationsListView(_ notificationsListView: NotificationsListView, didSelectHeaderAtSection section: Int) {}
+    func notificationsListView(_ notificationsListView: NotificationsListView, didSelectHeaderAtSection section: Int) {}
 
-    public func notificationsListView(_ notificationsListView: NotificationsListView, didSelectFooterAtSection section: Int) {}
+    func notificationsListView(_ notificationsListView: NotificationsListView, didSelectFooterAtSection section: Int) {}
 }
 
 extension NotificationsListViewDemoView: NotificationsListViewDataSource {
-    public func numberOfSections(inNotificationsListView notificationsListView: NotificationsListView) -> Int {
+    func numberOfSections(inNotificationsListView notificationsListView: NotificationsListView) -> Int {
         return dataSource.groups.count
     }
 
-    public func notificationsListView(_ notificationsListView: NotificationsListView, numberOfItemsInSection section: Int) -> Int {
+    func notificationsListView(_ notificationsListView: NotificationsListView, numberOfItemsInSection section: Int) -> Int {
         let group = dataSource.groups[section]
         return group.notifications.count
     }
 
-    public func notificationsListView(_ notificationsListView: NotificationsListView, groupModelAtSection section: Int) -> NotificationsGroupListViewModel {
+    func notificationsListView(_ notificationsListView: NotificationsListView, groupModelAtSection section: Int) -> NotificationsGroupListViewModel {
         return dataSource.groups[section]
     }
 
-    public func notificationsListView(_ notificationsListView: NotificationsListView, modelAtIndexPath indexPath: IndexPath) -> NotificationsListViewModel {
+    func notificationsListView(_ notificationsListView: NotificationsListView, modelAtIndexPath indexPath: IndexPath) -> NotificationsListViewModel {
         let group = dataSource.groups[indexPath.section]
         let notification = group.notifications[indexPath.row]
         return notification
     }
 
-    public func notificationsListView(_ notificationsListView: NotificationsListView, loadImageForModel model: NotificationsListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    func notificationsListView(_ notificationsListView: NotificationsListView, loadImageForModel model: NotificationsListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let path = model.imagePath, let url = URL(string: path) else {
             completion(nil)
             return
@@ -81,5 +82,5 @@ extension NotificationsListViewDemoView: NotificationsListViewDataSource {
         task.resume()
     }
 
-    public func notificationsListView(_ notificationsListView: NotificationsListView, cancelLoadingImageForModel model: NotificationsListViewModel, imageWidth: CGFloat) {}
+    func notificationsListView(_ notificationsListView: NotificationsListView, cancelLoadingImageForModel model: NotificationsListViewModel, imageWidth: CGFloat) {}
 }

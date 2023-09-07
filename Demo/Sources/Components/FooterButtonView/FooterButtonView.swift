@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-final class FooterButtonDemoView: UIView {
+final class FooterButtonDemoView: UIView, Demoable {
 
     // MARK: - Private properties
 

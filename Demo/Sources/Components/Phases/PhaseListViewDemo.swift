@@ -3,8 +3,9 @@
 //
 
 import FinniversKit
+import DemoKit
 
-public class PhaseListDemoView: UIView {
+public class PhaseListDemoView: UIView, Demoable {
     private lazy var phaseListView = PhaseListView(withAutoLayout: true)
 
     // MARK: - Init
