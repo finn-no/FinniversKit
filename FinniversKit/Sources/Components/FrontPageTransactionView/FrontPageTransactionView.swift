@@ -11,7 +11,7 @@ public class FrontPageTransactionView: UIStackView {
     private let cornerRadius: CGFloat = 8
 
     private lazy var titleLabel: UILabel = {
-        let label = Label(style: .bodyStrong,withAutoLayout: true)
+        let label = Label(style: .bodyStrong, withAutoLayout: true)
         label.numberOfLines = 0
         label.textAlignment = .left
         return label
@@ -21,7 +21,6 @@ public class FrontPageTransactionView: UIStackView {
         let label = Label(style: .body, withAutoLayout: true)
         label.numberOfLines = 0
         label.textAlignment = .left
-
         return label
     }()
 
@@ -29,6 +28,8 @@ public class FrontPageTransactionView: UIStackView {
         let imageView = RemoteImageView(withAutoLayout: true)
         imageView.image = UIImage(named: ImageAsset.noImage)
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.borderWidth = 1
+        imageView.layer.borderColor = UIColor.black.withAlphaComponent(0.1).cgColor
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = cornerRadius
         imageView.clipsToBounds = true
@@ -40,11 +41,14 @@ public class FrontPageTransactionView: UIStackView {
         stack.axis = .vertical
         stack.alignment = .leading
         stack.distribution = .fillProportionally
+        stack.spacing = .spacingXS
         return stack
     }()
 
     private lazy var backgroundContainer: UIStackView = {
-        let view = UIStackView(axis: .vertical, withAutoLayout: true)
+        let view = UIStackView(axis: .horizontal, withAutoLayout: true)
+        view.alignment = .center
+        view.distribution = .fill
         view.backgroundColor = .bgColor
         view.layer.cornerRadius = cornerRadius
         return view
@@ -53,9 +57,6 @@ public class FrontPageTransactionView: UIStackView {
     private lazy var imageContainerView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .bgColor
-        view.layer.cornerRadius = cornerRadius
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.black.withAlphaComponent(0.1).cgColor
         return view
     }()
 
@@ -88,8 +89,9 @@ public class FrontPageTransactionView: UIStackView {
     private lazy var contentStack: UIStackView = {
         let stack = UIStackView(withAutoLayout: true)
         stack.axis = .horizontal
-        stack.distribution = .fillProportionally
-        stack.spacing = .spacingXL
+        stack.alignment = .top
+        stack.distribution = .fill
+        stack.spacing = .spacingM
         return stack
     }()
 
@@ -145,10 +147,13 @@ extension FrontPageTransactionView {
         contentTextStack.addArrangedSubviews([titleLabel, subtitleLabel])
 
         imageContainerView.addSubview(imageView)
-        constraints += imageView.fillInSuperview(isActive: false)
         constraints += [
+            imageView.centerXAnchor.constraint(equalTo: imageContainerView.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: imageContainerView.centerYAnchor),
             imageView.widthAnchor.constraint(equalToConstant: imageWidth),
-            imageView.heightAnchor.constraint(equalToConstant: imageWidth)
+            imageView.heightAnchor.constraint(equalToConstant: imageWidth),
+            imageContainerView.widthAnchor.constraint(equalTo: imageView.widthAnchor),
+            imageContainerView.heightAnchor.constraint(greaterThanOrEqualTo: imageView.heightAnchor)
         ]
 
         contentStack.addArrangedSubviews([contentTextStack, imageContainerView])
