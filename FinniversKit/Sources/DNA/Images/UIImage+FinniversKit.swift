@@ -14,7 +14,6 @@ import UIKit
         Config.imageProvider.brandRadioButtonUnselected(index: index)
     }
     
-    // Images for AnimatedCheckboxView
     class func brandCheckboxSelected(index: Int) -> UIImage? {
         Config.imageProvider.brandCheckboxSelected(index: index)
     }
