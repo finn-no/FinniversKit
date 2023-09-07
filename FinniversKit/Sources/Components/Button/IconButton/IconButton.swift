@@ -48,5 +48,6 @@ public final class IconButton: UIButton {
 }
 
 public extension IconButton.Style {
-    static let favorite = IconButton.Style(icon: UIImage.favouriteAddImg, iconToggled: UIImage.favouriteAddedImg)
+    static let favorite = IconButton.Style(icon: UIImage.brandFavouriteAddImg,
+                                           iconToggled: UIImage.brandFavouriteAddedImg)
 }

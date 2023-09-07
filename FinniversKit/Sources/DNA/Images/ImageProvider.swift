@@ -7,16 +7,16 @@ import UIKit
 public protocol ImageProvider {
     
     // AnimatedRadioButtonView
-    func radioButtonSelected(index: Int) -> UIImage?
-    func radioButtonUnselected(index: Int) -> UIImage?
+    func brandRadioButtonSelected(index: Int) -> UIImage?
+    func brandRadioButtonUnselected(index: Int) -> UIImage?
     
     // AnimatedCheckboxView
-    func checkboxSelected(index: Int) -> UIImage?
-    func checkboxUnselected(index: Int) -> UIImage?
+    func brandCheckboxSelected(index: Int) -> UIImage?
+    func brandCheckboxUnselected(index: Int) -> UIImage?
     
     // FavoriteButton
-    var favouriteAddImg: UIImage { get }
-    var favouriteAddedImg: UIImage { get }
+    var brandFavouriteAddImg: UIImage { get }
+    var brandFavouriteAddedImg: UIImage { get }
 }
 
 // MARK: - Default FINN images
@@ -25,27 +25,27 @@ public struct DefaultImageProvider: ImageProvider {
     
     public static let shared = DefaultImageProvider()
     
-    public func radioButtonSelected(index: Int) -> UIImage? {
+    public func brandRadioButtonSelected(index: Int) -> UIImage? {
         UIImage(named: "radiobutton-select-\(index)", in: .finniversKit, compatibleWith: nil)
     }
     
-    public func radioButtonUnselected(index: Int) -> UIImage? {
+    public func brandRadioButtonUnselected(index: Int) -> UIImage? {
         UIImage(named: "radiobutton-unselected-\(index)", in: .finniversKit, compatibleWith: nil)
     }
     
-    public func checkboxSelected(index: Int) -> UIImage? {
+    public func brandCheckboxSelected(index: Int) -> UIImage? {
         UIImage(named: "checkbox-selected-\(index)", in: .finniversKit, compatibleWith: nil)
     }
     
-    public func checkboxUnselected(index: Int) -> UIImage? {
+    public func brandCheckboxUnselected(index: Int) -> UIImage? {
         UIImage(named: "checkbox-unselected-\(index)", in: .finniversKit, compatibleWith: nil)
     }
     
-    public var favouriteAddImg: UIImage {
+    public var brandFavouriteAddImg: UIImage {
         UIImage(named: .favouriteAddImg)
     }
     
-    public var favouriteAddedImg: UIImage {
+    public var brandFavouriteAddedImg: UIImage {
         UIImage(named: .favouriteAddedImg)
     }
 }
