@@ -1,9 +1,14 @@
 import FinniversKit
 
+extension FrontPageTransactionViewModel.ID {
+    static var tjm: Self { .init(rawValue: "tjm") }
+    static var tjt: Self { .init(rawValue: "tjt") }
+}
+
 extension FrontPageTransactionViewModel {
     static var tjtRegular: Self {
         .init(
-            id: "tjt",
+            id: .tjt,
             headerTitle: "Fiks ferdig",
             title: "Gjør klar til sending",
             subtitle: "Velg en kjøper",
@@ -15,7 +20,7 @@ extension FrontPageTransactionViewModel {
 
     static var tjtLong: Self {
         .init(
-            id: "tjt",
+            id: .tjt,
             headerTitle: "Fiks ferdig Fiks ferdig Fiks ferdig Fiks ferdig Fiks ferdig Fiks ferdig Fiks ferdig",
             title: "Gjør klar til sending. Gjør klar til sending. Gjør klar til sending. Gjør klar til sending. Gjør klar til sending. Gjør klar til sending. Gjør klar til sending. Gjør klar til sending.",
             subtitle: "Velg en kjøper. Velg en kjøper. Velg en kjøper. Velg en kjøper. Velg en kjøper. Velg en kjøper. Velg en kjøper. Velg en kjøper. Velg en kjøper. Velg en kjøper. Velg en kjøper.",
@@ -27,7 +32,7 @@ extension FrontPageTransactionViewModel {
 
     static var tjmRegular: Self {
         .init(
-            id: "tjm",
+            id: .tjm,
             headerTitle: "Smidig handel",
             title: "Kjøperen har blitt med i kontrakten",
             subtitle: "Vi anbefaler at dere blir enige om de siste detaljene i kontrakten sammen under prøvekjøring",

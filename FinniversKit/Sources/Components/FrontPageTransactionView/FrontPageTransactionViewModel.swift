@@ -1,7 +1,15 @@
 import Foundation
 
 public struct FrontPageTransactionViewModel {
-    public let id: String
+    public struct ID: Hashable, RawRepresentable {
+        public let rawValue: String
+
+        public init(rawValue: String) {
+            self.rawValue = rawValue
+        }
+    }
+
+    public let id: ID
     public let headerTitle: String
     public let title: String
     public let subtitle: String
@@ -10,7 +18,7 @@ public struct FrontPageTransactionViewModel {
     public let transactionId: String?
 
     public init(
-        id: String,
+        id: ID,
         headerTitle: String,
         title: String,
         subtitle: String,

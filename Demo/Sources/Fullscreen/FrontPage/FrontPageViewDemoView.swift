@@ -233,6 +233,6 @@ extension FrontpageViewDemoView: FrontPageSavedSearchesViewDelegate {
 
 extension FrontpageViewDemoView: FrontPageTransactionViewDelegate {
     func transactionViewTapped(_ transactionView: FrontPageTransactionView) {
-        print("TransactionFeedView tapped: \(transactionView.viewModel?.id ?? "")")
+        print("TransactionFeedView tapped: \(String(describing: transactionView.viewModel?.id))")
     }
 }
