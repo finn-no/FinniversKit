@@ -23,7 +23,7 @@ public protocol ImageProvider {
 
 public struct DefaultImageProvider: ImageProvider {
     
-    public static let shared = ImageProvider()
+    public static let shared = DefaultImageProvider()
     
     public func radioButtonSelected(index: Int) -> UIImage? {
         UIImage(named: "radiobutton-select-\(index)", in: .finniversKit, compatibleWith: nil)
