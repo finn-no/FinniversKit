@@ -1,7 +1,3 @@
-//
-//  Copyright © FINN.no AS, Inc. All rights reserved.
-//
-
 import FinniversKit
 
 public class FrontpageViewDemoView: UIView {
@@ -43,17 +39,7 @@ public class FrontpageViewDemoView: UIView {
         )
         view.savedSearchesViewDelegate = self
 
-        let transactionViewModel = FrontPageTransactionViewModel(
-            id: "tjt",
-            headerTitle: "Dine handler på torget",
-            title: "Flotte lamper med gull greier",
-            subtitle: "Velg en kjøper",
-            imageUrl: "https://images.finncdn.no/dynamic/960w/2021/4/vertical-0/11/5/214/625/615_1292134726.jpg",
-            adId: 1234,
-            transactionId: nil
-        )
-
-        view.showTransactionFeed(withViewModel: transactionViewModel, andDelegate: self)
+        view.showTransactionFeed(withViewModels: [.tjtRegular, .tjmRegular], andDelegate: self)
 
         return view
     }()
@@ -243,6 +229,6 @@ extension FrontpageViewDemoView: FrontPageSavedSearchesViewDelegate {
 
 extension FrontpageViewDemoView: FrontPageTransactionViewDelegate {
     public func transactionViewTapped(_ transactionView: FrontPageTransactionView) {
-        print("TransactionFeedView tapped")
+        print("TransactionFeedView tapped: \(transactionView.viewModel?.id ?? "")")
     }
 }

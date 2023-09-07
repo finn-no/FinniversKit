@@ -208,18 +208,23 @@ public final class FrontPageView: UIView {
     }
 
     public func showTransactionFeed(
-        withViewModel viewModel: FrontPageTransactionViewModel,
+        withViewModels viewModels: [FrontPageTransactionViewModel],
         andDelegate delegate: FrontPageTransactionViewDelegate
     ) {
-        let transactionView = FrontPageTransactionView(withAutoLayout: true)
-        transactionView.delegate = delegate
-        transactionView.configure(with: viewModel, andImageDatasource: remoteImageDataSource)
+        let transactionView = FrontPageTransactionListView(withAutoLayout: true)
+        transactionView.configure(
+            viewModels: viewModels,
+            delegate: delegate,
+            imageViewDataSource: remoteImageDataSource
+        )
 
         transactionFeedContainer.addSubview(transactionView)
-        transactionView.fillInSuperview(insets: .init(top: .spacingL,
-                                                      leading: .spacingM,
-                                                      bottom: 0,
-                                                      trailing: -.spacingM))
+        transactionView.fillInSuperview(insets: .init(
+            top: .spacingL,
+            leading: .spacingM,
+            bottom: 0,
+            trailing: -.spacingM
+        ))
         setupFrames()
     }
 
