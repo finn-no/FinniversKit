@@ -26,19 +26,19 @@ public struct DefaultImageProvider: ImageProvider {
     public static let shared = DefaultImageProvider()
     
     public func brandRadioButtonSelected(index: Int) -> UIImage? {
-        UIImage(named: "radiobutton-select-\(index)", in: .finniversKit, compatibleWith: nil)
+        UIImage.assetNamed("radiobutton-select-\(index)")
     }
     
     public func brandRadioButtonUnselected(index: Int) -> UIImage? {
-        UIImage(named: "radiobutton-unselected-\(index)", in: .finniversKit, compatibleWith: nil)
+        UIImage.assetNamed("radiobutton-unselected-\(index)")
     }
     
     public func brandCheckboxSelected(index: Int) -> UIImage? {
-        UIImage(named: "checkbox-selected-\(index)", in: .finniversKit, compatibleWith: nil)
+        UIImage.assetNamed("checkbox-selected-\(index)")
     }
     
     public func brandCheckboxUnselected(index: Int) -> UIImage? {
-        UIImage(named: "checkbox-unselected-\(index)", in: .finniversKit, compatibleWith: nil)
+        UIImage.assetNamed("checkbox-unselected-\(index)")
     }
     
     public var brandFavouriteAddImg: UIImage {
