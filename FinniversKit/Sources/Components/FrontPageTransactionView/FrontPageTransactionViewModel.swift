@@ -14,6 +14,7 @@ public struct FrontPageTransactionViewModel {
     public let title: String
     public let subtitle: String
     public let imageUrl: String?
+    public let destinationUrl: URL?
     public let adId: Int?
     public let transactionId: String?
 
@@ -23,6 +24,7 @@ public struct FrontPageTransactionViewModel {
         title: String,
         subtitle: String,
         imageUrl: String? = nil,
+        destinationUrl: URL? = nil,
         adId: Int? = nil,
         transactionId: String? = nil
     ) {
@@ -31,6 +33,7 @@ public struct FrontPageTransactionViewModel {
         self.title = title
         self.subtitle = subtitle
         self.imageUrl = imageUrl
+        self.destinationUrl = destinationUrl
         self.adId = adId
         self.transactionId = transactionId
     }
