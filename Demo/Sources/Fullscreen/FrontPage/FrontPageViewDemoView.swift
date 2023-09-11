@@ -1,12 +1,10 @@
-import FinniversKit
 import DemoKit
+import FinniversKit
 
-class FrontpageViewDemoView: UIView, Demoable {
-
+final class FrontpageViewDemoViewController: UIViewController, Demoable {
     var presentation: DemoablePresentation { .navigationController }
 
     private let markets = Market.newMarkets
-    private var didSetupView = false
     private var visibleItems = 20
 
     private let ads: [Ad] = {
@@ -43,24 +41,17 @@ class FrontpageViewDemoView: UIView, Demoable {
         )
         view.savedSearchesViewDelegate = self
 
-        view.showTransactionFeed(withViewModels: [.tjtRegular, .tjmRegular], andDelegate: self)
+        let transactionVC = view.showTransactionFeed(withViewModels: [.tjtRegular, .tjmRegular], andDelegate: self)
+        addChild(transactionVC)
 
         return view
     }()
 
     // MARK: - Setup
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        if didSetupView == false {
-            setup()
-            didSetupView = true
-        }
-    }
-
-    private func setup() {
-        addSubview(frontPageView)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(frontPageView)
         frontPageView.fillInSuperview()
         frontPageView.reloadData()
     }
@@ -89,7 +80,7 @@ class FrontpageViewDemoView: UIView, Demoable {
 
 // MARK: - PromotionViewDelegate
 
-extension FrontpageViewDemoView: PromotionViewDelegate {
+extension FrontpageViewDemoViewController: PromotionViewDelegate {
     func promotionViewTapped(_ promotionView: PromotionView) {
         print("Promo tapped")
     }
@@ -101,13 +92,13 @@ extension FrontpageViewDemoView: PromotionViewDelegate {
 
 // MARK: - AdRecommendationsGridViewDelegate
 
-extension FrontpageViewDemoView: FrontPageViewDelegate {
+extension FrontpageViewDemoViewController: FrontPageViewDelegate {
     func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView) {
         frontPageView.reloadData()
     }
 }
 
-extension FrontpageViewDemoView: AdRecommendationsGridViewDelegate {
+extension FrontpageViewDemoViewController: AdRecommendationsGridViewDelegate {
     func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, willDisplayItemAtIndex index: Int) {
         if index >= visibleItems - 10 {
             visibleItems += 10
@@ -132,7 +123,7 @@ extension FrontpageViewDemoView: AdRecommendationsGridViewDelegate {
 
 // MARK: - AdRecommendationsGridViewDataSource
 
-extension FrontpageViewDemoView: AdRecommendationsGridViewDataSource {
+extension FrontpageViewDemoViewController: AdRecommendationsGridViewDataSource {
     func numberOfColumns(inAdRecommendationsGridView adRecommendationsGridView: AdRecommendationsGridView) -> AdRecommendationsGridView.ColumnConfiguration? {
         return nil
     }
@@ -187,13 +178,13 @@ extension FrontpageViewDemoView: AdRecommendationsGridViewDataSource {
 
 // MARK: - MarketsGridViewDelegate
 
-extension FrontpageViewDemoView: MarketsViewDelegate {
+extension FrontpageViewDemoViewController: MarketsViewDelegate {
     func marketsView(_ marketsGridView: MarketsView, didSelectItemAtIndex index: Int) {}
 }
 
 // MARK: - MarketsGridViewDataSource
 
-extension FrontpageViewDemoView: MarketsViewDataSource {
+extension FrontpageViewDemoViewController: MarketsViewDataSource {
     func numberOfItems(inMarketsView marketsView: MarketsView) -> Int {
         return markets.count
     }
@@ -205,7 +196,7 @@ extension FrontpageViewDemoView: MarketsViewDataSource {
 
 // MARK: - RemoteImageViewDataSource
 
-extension FrontpageViewDemoView: RemoteImageViewDataSource {
+extension FrontpageViewDemoViewController: RemoteImageViewDataSource {
     func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
         nil
     }
@@ -219,7 +210,7 @@ extension FrontpageViewDemoView: RemoteImageViewDataSource {
 
 // MARK: - FrontPageSavedSearchesViewDelegate
 
-extension FrontpageViewDemoView: FrontPageSavedSearchesViewDelegate {
+extension FrontpageViewDemoViewController: FrontPageSavedSearchesViewDelegate {
     func frontPageSavedSearchesView(_ view: FrontPageSavedSearchesView, didSelectSavedSearch savedSearch: FrontPageSavedSearchViewModel) {
         print("Did select saved search with title", savedSearch.title)
     }
@@ -229,10 +220,10 @@ extension FrontpageViewDemoView: FrontPageSavedSearchesViewDelegate {
     }
 }
 
-// MARK: - FrontPageTransactionFeedDelegate
+// MARK: - FrontPageTransactionViewModelDelegate
 
-extension FrontpageViewDemoView: FrontPageTransactionViewDelegate {
-    func transactionViewTapped(_ transactionView: FrontPageTransactionView) {
-        print("TransactionFeedView tapped: \(String(describing: transactionView.viewModel?.id))")
+extension FrontpageViewDemoViewController: FrontPageTransactionViewModelDelegate {
+    func transactionViewTapped(model: FrontPageTransactionViewModel) {
+        print("TransactionFeedView tapped: \(model.id.rawValue)")
     }
 }

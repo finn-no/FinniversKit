@@ -98,9 +98,3 @@ extension BrazePromotionDemoView: RemoteImageViewDataSource {
         task.resume()
     }
 }
-
-extension BrazePromotionDemoView: FrontPageTransactionViewDelegate {
-    func transactionViewTapped(_ transactionView: FrontPageTransactionView) {
-        print("TransactionView tapped")
-    }
-}

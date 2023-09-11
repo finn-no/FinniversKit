@@ -1,6 +1,10 @@
 import Foundation
 
-public struct FrontPageTransactionViewModel {
+public protocol FrontPageTransactionViewModelDelegate: AnyObject {
+    func transactionViewTapped(model: FrontPageTransactionViewModel)
+}
+
+public struct FrontPageTransactionViewModel: Swift.Identifiable {
     public struct ID: Hashable, RawRepresentable {
         public let rawValue: String
 
@@ -17,6 +21,9 @@ public struct FrontPageTransactionViewModel {
     public let destinationUrl: URL?
     public let adId: Int?
     public let transactionId: String?
+    public weak var delegate: FrontPageTransactionViewModelDelegate?
+
+    let imageWidth: CGFloat = 56
 
     public init(
         id: ID,
@@ -26,7 +33,8 @@ public struct FrontPageTransactionViewModel {
         imageUrl: String? = nil,
         destinationUrl: URL? = nil,
         adId: Int? = nil,
-        transactionId: String? = nil
+        transactionId: String? = nil,
+        delegate: FrontPageTransactionViewModelDelegate? = nil
     ) {
         self.id = id
         self.headerTitle = headerTitle
@@ -36,5 +44,10 @@ public struct FrontPageTransactionViewModel {
         self.destinationUrl = destinationUrl
         self.adId = adId
         self.transactionId = transactionId
+        self.delegate = delegate
+    }
+
+    func transactionTapped() {
+        delegate?.transactionViewTapped(model: self)
     }
 }

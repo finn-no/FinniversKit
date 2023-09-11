@@ -1,7 +1,4 @@
-//
-//  Copyright © FINN.no AS, Inc. All rights reserved.
-//
-
+import SwiftUI
 import UIKit
 
 public protocol FrontPageViewModel {
@@ -79,7 +76,7 @@ public final class FrontPageView: UIView {
         guard let model = savedSearchesViewModel else { return false }
         return model.height > 0
     }
-    
+
     private lazy var headerView = UIView(withAutoLayout: true)
     private var frontPageSavedSearchView: FrontPageSavedSearchesView?
     
@@ -209,23 +206,24 @@ public final class FrontPageView: UIView {
 
     public func showTransactionFeed(
         withViewModels viewModels: [FrontPageTransactionViewModel],
-        andDelegate delegate: FrontPageTransactionViewDelegate
-    ) {
-        let transactionView = FrontPageTransactionListView(withAutoLayout: true)
-        transactionView.configure(
-            viewModels: viewModels,
-            delegate: delegate,
-            imageViewDataSource: remoteImageDataSource
-        )
-
-        transactionFeedContainer.addSubview(transactionView)
-        transactionView.fillInSuperview(insets: .init(
+        andDelegate delegate: FrontPageTransactionViewModelDelegate
+    ) -> UIViewController {
+        var viewModels = viewModels
+        for i in 0..<viewModels.count {
+            viewModels[i].delegate = delegate
+        }
+        let listView = FrontPageTransactionListView(models: viewModels)
+        let transactionListVC = UIHostingController(rootView: listView)
+        transactionListVC.view.backgroundColor = .clear
+        transactionFeedContainer.addSubview(transactionListVC.view)
+        transactionListVC.view.fillInSuperview(insets: .init(
             top: .spacingL,
             leading: .spacingM,
             bottom: 0,
             trailing: -.spacingM
         ))
         setupFrames()
+        return transactionListVC
     }
 
     // MARK: - Setup

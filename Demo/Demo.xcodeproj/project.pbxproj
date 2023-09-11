@@ -10,8 +10,8 @@
 		172E7504290FE28E00956AC2 /* HTMLTextDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */; };
 		1732932D29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1732932C29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift */; };
 		17BF44C929893E98001A5877 /* LoadingSwiftUIDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BF44C829893E98001A5877 /* LoadingSwiftUIDemoView.swift */; };
-		17EE085E2AA720AB00A623F2 /* FrontPageTransactionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE085D2AA720AB00A623F2 /* FrontPageTransactionDemoView.swift */; };
-		17EE08632AA8ABCC00A623F2 /* FrontPageTransactionListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE08622AA8ABCC00A623F2 /* FrontPageTransactionListDemoView.swift */; };
+		17EE085E2AA720AB00A623F2 /* FrontPageTransactionDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE085D2AA720AB00A623F2 /* FrontPageTransactionDemoViewController.swift */; };
+		17EE08632AA8ABCC00A623F2 /* FrontPageTransactionListDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE08622AA8ABCC00A623F2 /* FrontPageTransactionListDemoViewController.swift */; };
 		17EE08712AAA089100A623F2 /* FrontPageTransactionDemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE08702AAA089100A623F2 /* FrontPageTransactionDemoModel.swift */; };
 		17F8EEC629409FE3000E26C9 /* SwiftUISelectionListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8EEC529409FE3000E26C9 /* SwiftUISelectionListDemoView.swift */; };
 		277307E5298C108800B8E27F /* ResultSwiftUIDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277307E4298C108800B8E27F /* ResultSwiftUIDemoView.swift */; };
@@ -240,8 +240,8 @@
 		172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextDemoViewController.swift; sourceTree = "<group>"; };
 		1732932C29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUILoadingIndicatorDemoView.swift; sourceTree = "<group>"; };
 		17BF44C829893E98001A5877 /* LoadingSwiftUIDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSwiftUIDemoView.swift; sourceTree = "<group>"; };
-		17EE085D2AA720AB00A623F2 /* FrontPageTransactionDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageTransactionDemoView.swift; sourceTree = "<group>"; };
-		17EE08622AA8ABCC00A623F2 /* FrontPageTransactionListDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageTransactionListDemoView.swift; sourceTree = "<group>"; };
+		17EE085D2AA720AB00A623F2 /* FrontPageTransactionDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageTransactionDemoViewController.swift; sourceTree = "<group>"; };
+		17EE08622AA8ABCC00A623F2 /* FrontPageTransactionListDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageTransactionListDemoViewController.swift; sourceTree = "<group>"; };
 		17EE08702AAA089100A623F2 /* FrontPageTransactionDemoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageTransactionDemoModel.swift; sourceTree = "<group>"; };
 		17F8EEC529409FE3000E26C9 /* SwiftUISelectionListDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISelectionListDemoView.swift; sourceTree = "<group>"; };
 		277307E4298C108800B8E27F /* ResultSwiftUIDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSwiftUIDemoView.swift; sourceTree = "<group>"; };
@@ -470,7 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				17EE08702AAA089100A623F2 /* FrontPageTransactionDemoModel.swift */,
-				17EE085D2AA720AB00A623F2 /* FrontPageTransactionDemoView.swift */,
+				17EE085D2AA720AB00A623F2 /* FrontPageTransactionDemoViewController.swift */,
 			);
 			path = FrontPageTransactionView;
 			sourceTree = "<group>";
@@ -478,7 +478,7 @@
 		17EE08612AA8ABA000A623F2 /* FrontPageTransactionListView */ = {
 			isa = PBXGroup;
 			children = (
-				17EE08622AA8ABCC00A623F2 /* FrontPageTransactionListDemoView.swift */,
+				17EE08622AA8ABCC00A623F2 /* FrontPageTransactionListDemoViewController.swift */,
 			);
 			path = FrontPageTransactionListView;
 			sourceTree = "<group>";
@@ -2123,7 +2123,7 @@
 				46E77406242CEF0A008A5E93 /* VisibilityDrivenTitleDemoView.swift in Sources */,
 				46E773F5242CEF0A008A5E93 /* SelectorTitleViewDemoView.swift in Sources */,
 				46E773DC242CEF0A008A5E93 /* LoginViewDefaultData.swift in Sources */,
-				17EE08632AA8ABCC00A623F2 /* FrontPageTransactionListDemoView.swift in Sources */,
+				17EE08632AA8ABCC00A623F2 /* FrontPageTransactionListDemoViewController.swift in Sources */,
 				46E77435242CEF0A008A5E93 /* PhaseListViewDemo.swift in Sources */,
 				46E773DD242CEF0A008A5E93 /* LoginViewDemoView.swift in Sources */,
 				46E773BF242CEF0A008A5E93 /* LoginEntryViewDemoViewController.swift in Sources */,
@@ -2148,7 +2148,7 @@
 				46E7744A242CEF0A008A5E93 /* IconTitleCellDemoView.swift in Sources */,
 				D75E14D727371692008EB126 /* FrontPageSavedSearchFactory.swift in Sources */,
 				46E77410242CEF0A008A5E93 /* RibbonDemoView.swift in Sources */,
-				17EE085E2AA720AB00A623F2 /* FrontPageTransactionDemoView.swift in Sources */,
+				17EE085E2AA720AB00A623F2 /* FrontPageTransactionDemoViewController.swift in Sources */,
 				46E7741E242CEF0A008A5E93 /* CogWheelButtonDemoView.swift in Sources */,
 				46E7744B242CEF0A008A5E93 /* CheckboxCellDemoView.swift in Sources */,
 				46E77439242CEF0A008A5E93 /* KeyValueGridDemoView.swift in Sources */,

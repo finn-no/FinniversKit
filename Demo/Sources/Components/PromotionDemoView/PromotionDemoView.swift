@@ -22,23 +22,6 @@ class PromotionDemoView: UIView, Demoable {
         primaryButtonTitle: "Gå til Hjerterom"
     )
 
-    private let transactionViewModel = FrontPageTransactionViewModel(
-        id: .tjt,
-        headerTitle: "Dine handler på torget",
-        title: "Flotte lamper med gull greier",
-        subtitle: "Velg en kjøper",
-        imageUrl: "https://images.finncdn.no/dynamic/960w/2021/4/vertical-0/11/5/214/625/615_1292134726.jpg",
-        adId: 1234,
-        transactionId: nil
-    )
-
-    private lazy var transaction: FrontPageTransactionView = {
-        let view = FrontPageTransactionView(withAutoLayout: true)
-        view.delegate = self
-        view.configure(with: transactionViewModel, andImageDatasource: self)
-        return view
-    }()
-
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(axis: .vertical, spacing: .spacingL, withAutoLayout: true)
         stackView.distribution = .fill
@@ -68,8 +51,6 @@ class PromotionDemoView: UIView, Demoable {
             view.delegate = self
             stackView.addArrangedSubview(view)
         }
-
-        stackView.addArrangedSubview(transaction)
     }
 }
 
@@ -113,11 +94,5 @@ extension PromotionDemoView: RemoteImageViewDataSource {
             }
         }
         task.resume()
-    }
-}
-
-extension PromotionDemoView: FrontPageTransactionViewDelegate {
-    func transactionViewTapped(_ transactionView: FrontPageTransactionView) {
-        print("TransactionView tapped")
     }
 }

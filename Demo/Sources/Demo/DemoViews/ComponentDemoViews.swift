@@ -234,9 +234,9 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
         case .promotionView:
             return PromotionDemoView()
         case .frontPageTransactionView:
-            return FrontPageTransactionDemoView()
+            return FrontPageTransactionDemoViewController()
         case .frontPageTransactionListView:
-            return FrontPageTransactionListDemoView()
+            return FrontPageTransactionListDemoViewController()
         case .frontPageSavedSearchesView:
             return FrontPageSavedSearchesDemoView()
         case .overFlowCollectionView:
