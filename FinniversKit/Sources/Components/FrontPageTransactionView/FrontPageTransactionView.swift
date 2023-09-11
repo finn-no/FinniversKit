@@ -1,9 +1,11 @@
 import SwiftUI
 
 public struct FrontPageTransactionView: View {
-    public let model: FrontPageTransactionViewModel
+    @ObservedObject
+    public var model: FrontPageTransactionViewModel
 
     private let cornerRadius: CGFloat = 8
+    private let imageWidth: CGFloat = 56
 
     public init(model: FrontPageTransactionViewModel) {
         self.model = model
@@ -30,13 +32,21 @@ public struct FrontPageTransactionView: View {
 
                     Spacer()
 
-                    // TODO: Async image
-                    Image(uiImage: UIImage(named: .noImage))
-                        .aspectRatio(contentMode: .fill)
-                        .cornerRadius(cornerRadius)
-                        .frame(width: model.imageWidth, height: model.imageWidth)
-                        .roundedBorder(radius: cornerRadius, width: 1, color: .black.opacity(0.1))
-                        .clipped()
+                    Group {
+                        if let image = model.image {
+                            Image(uiImage: image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                        } else {
+                            Rectangle()
+                                .fill(Color.bgColor)
+                        }
+                    }
+                    .cornerRadius(cornerRadius)
+                    .frame(width: imageWidth, height: imageWidth)
+                    .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+                    .roundedBorder(radius: cornerRadius, width: 1, color: .black.opacity(0.1))
+                    .animation(.easeOut(duration: 0.2), value: model.image)
                 }
                 .padding(.spacingM)
             }
@@ -48,6 +58,11 @@ public struct FrontPageTransactionView: View {
             )
             .onTapGesture {
                 model.transactionTapped()
+            }
+        }
+        .onAppear {
+            Task { @MainActor in
+                await model.loadImage()
             }
         }
     }

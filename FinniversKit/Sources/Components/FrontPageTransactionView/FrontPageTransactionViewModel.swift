@@ -1,10 +1,13 @@
+import Combine
 import Foundation
+import SwiftUI
+import UIKit
 
 public protocol FrontPageTransactionViewModelDelegate: AnyObject {
     func transactionViewTapped(model: FrontPageTransactionViewModel)
 }
 
-public struct FrontPageTransactionViewModel: Swift.Identifiable {
+public final class FrontPageTransactionViewModel: Swift.Identifiable, ObservableObject {
     public struct ID: Hashable, RawRepresentable {
         public let rawValue: String
 
@@ -21,9 +24,11 @@ public struct FrontPageTransactionViewModel: Swift.Identifiable {
     public let destinationUrl: URL?
     public let adId: Int?
     public let transactionId: String?
+    public var imageLoader: (URL) async throws -> UIImage?
     public weak var delegate: FrontPageTransactionViewModelDelegate?
 
-    let imageWidth: CGFloat = 56
+    @Published
+    private(set) var image: UIImage?
 
     public init(
         id: ID,
@@ -34,6 +39,7 @@ public struct FrontPageTransactionViewModel: Swift.Identifiable {
         destinationUrl: URL? = nil,
         adId: Int? = nil,
         transactionId: String? = nil,
+        imageLoader: @escaping (URL) async -> UIImage? = { _ in nil },
         delegate: FrontPageTransactionViewModelDelegate? = nil
     ) {
         self.id = id
@@ -44,7 +50,22 @@ public struct FrontPageTransactionViewModel: Swift.Identifiable {
         self.destinationUrl = destinationUrl
         self.adId = adId
         self.transactionId = transactionId
+        self.imageLoader = imageLoader
         self.delegate = delegate
+    }
+
+    func loadImage() async {
+        var finalImage = UIImage(named: .noImage)
+        if
+            let imageUrl,
+            let url = URL(string: imageUrl),
+            let loadedImage = try? await imageLoader(url)
+        {
+            finalImage = loadedImage
+        }
+        withAnimation(.easeOut(duration: 0.2)) {
+            image = finalImage
+        }
     }
 
     func transactionTapped() {

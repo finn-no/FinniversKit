@@ -25,6 +25,10 @@ final class FrontPageTransactionListDemoViewController: UIHostingController<Fron
         var models: [FrontPageTransactionViewModel] = [.tjtRegular, .tjmRegular]
         for i in 0..<models.count {
             models[i].delegate = self
+            models[i].imageLoader = { url in
+                let (data, _) = try await URLSession.shared.data(from: url)
+                return UIImage(data: data)
+            }
         }
         rootView = FrontPageTransactionListDemoView(models: models)
     }
@@ -35,20 +39,5 @@ final class FrontPageTransactionListDemoViewController: UIHostingController<Fron
 extension FrontPageTransactionListDemoViewController: FrontPageTransactionViewModelDelegate {
     func transactionViewTapped(model: FrontPageTransactionViewModel) {
         print("Tap transaction view, id: \(model.id.rawValue)")
-    }
-}
-
-// MARK: - RemoteImageViewDataSource
-
-extension FrontPageTransactionListDemoViewController: RemoteImageViewDataSource {
-    func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
-        completion(nil)
-    }
-
-    func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
-
-    @MainActor
-    func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
-        return nil
     }
 }

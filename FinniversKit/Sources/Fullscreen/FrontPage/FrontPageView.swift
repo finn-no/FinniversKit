@@ -205,12 +205,14 @@ public final class FrontPageView: UIView {
     }
 
     public func showTransactionFeed(
-        withViewModels viewModels: [FrontPageTransactionViewModel],
-        andDelegate delegate: FrontPageTransactionViewModelDelegate
+        viewModels: [FrontPageTransactionViewModel],
+        delegate: FrontPageTransactionViewModelDelegate,
+        imageLoader: @escaping (URL) async throws -> UIImage?
     ) -> UIViewController {
         var viewModels = viewModels
         for i in 0..<viewModels.count {
             viewModels[i].delegate = delegate
+            viewModels[i].imageLoader = imageLoader
         }
         let listView = FrontPageTransactionListView(models: viewModels)
         let transactionListVC = UIHostingController(rootView: listView)

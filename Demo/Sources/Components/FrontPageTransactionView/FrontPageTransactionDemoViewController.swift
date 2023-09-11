@@ -47,6 +47,10 @@ extension FrontPageTransactionDemoViewController: TweakableDemo {
             model = .tjtLong
         }
         model.delegate = self
+        model.imageLoader = { url in
+            let (data, _) = try await URLSession.shared.data(from: url)
+            return UIImage(data: data)
+        }
         rootView = FrontPageTransactionDemoView(model: model)
     }
 }
@@ -56,20 +60,5 @@ extension FrontPageTransactionDemoViewController: TweakableDemo {
 extension FrontPageTransactionDemoViewController: FrontPageTransactionViewModelDelegate {
     func transactionViewTapped(model: FrontPageTransactionViewModel) {
         print("Tap transaction view \(model.id.rawValue)")
-    }
-}
-
-// MARK: - RemoteImageViewDataSource
-
-extension FrontPageTransactionDemoViewController: RemoteImageViewDataSource {
-    func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
-        completion(nil)
-    }
-
-    func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
-
-    @MainActor
-    func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
-        return nil
     }
 }

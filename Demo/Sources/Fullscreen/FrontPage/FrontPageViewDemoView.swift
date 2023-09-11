@@ -41,7 +41,14 @@ final class FrontpageViewDemoViewController: UIViewController, Demoable {
         )
         view.savedSearchesViewDelegate = self
 
-        let transactionVC = view.showTransactionFeed(withViewModels: [.tjtRegular, .tjmRegular], andDelegate: self)
+        let transactionVC = view.showTransactionFeed(
+            viewModels: [.tjtRegular, .tjmRegular],
+            delegate: self,
+            imageLoader: { url in
+                let (data, _) = try await URLSession.shared.data(from: url)
+                return UIImage(data: data)
+            }
+        )
         addChild(transactionVC)
 
         return view
