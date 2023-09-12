@@ -207,9 +207,8 @@ public final class FrontPageView: UIView {
     public func showTransactionFeed(
         viewModels: [FrontPageTransactionViewModel],
         delegate: FrontPageTransactionViewModelDelegate,
-        imageLoader: @escaping (URL) async throws -> UIImage?
+        imageLoader: @escaping FrontPageTransactionViewModel.ImageLoader
     ) -> UIViewController {
-        var viewModels = viewModels
         for i in 0..<viewModels.count {
             viewModels[i].delegate = delegate
             viewModels[i].imageLoader = imageLoader

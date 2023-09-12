@@ -62,7 +62,7 @@ public struct FrontPageTransactionView: View {
         }
         .onAppear {
             Task { @MainActor in
-                await model.loadImage()
+                await model.loadImage(size: .init(width: imageWidth, height: imageWidth))
             }
         }
     }

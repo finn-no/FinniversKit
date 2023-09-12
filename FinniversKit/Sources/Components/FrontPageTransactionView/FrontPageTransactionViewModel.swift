@@ -8,6 +8,8 @@ public protocol FrontPageTransactionViewModelDelegate: AnyObject {
 }
 
 public final class FrontPageTransactionViewModel: Swift.Identifiable, ObservableObject {
+    public typealias ImageLoader = (URL, CGSize) async throws -> UIImage?
+
     public struct ID: Hashable, RawRepresentable {
         public let rawValue: String
 
@@ -24,7 +26,7 @@ public final class FrontPageTransactionViewModel: Swift.Identifiable, Observable
     public let destinationUrl: URL?
     public let adId: Int?
     public let transactionId: String?
-    public var imageLoader: (URL) async throws -> UIImage?
+    public var imageLoader: ImageLoader
     public weak var delegate: FrontPageTransactionViewModelDelegate?
 
     @Published
@@ -39,7 +41,7 @@ public final class FrontPageTransactionViewModel: Swift.Identifiable, Observable
         destinationUrl: URL? = nil,
         adId: Int? = nil,
         transactionId: String? = nil,
-        imageLoader: @escaping (URL) async -> UIImage? = { _ in nil },
+        imageLoader: @escaping ImageLoader = { _, _ in nil },
         delegate: FrontPageTransactionViewModelDelegate? = nil
     ) {
         self.id = id
@@ -54,12 +56,12 @@ public final class FrontPageTransactionViewModel: Swift.Identifiable, Observable
         self.delegate = delegate
     }
 
-    func loadImage() async {
+    func loadImage(size: CGSize) async {
         var finalImage = UIImage(named: .noImage)
         if
             let imageUrl,
             let url = URL(string: imageUrl),
-            let loadedImage = try? await imageLoader(url)
+            let loadedImage = try? await imageLoader(url, size)
         {
             finalImage = loadedImage
         }
