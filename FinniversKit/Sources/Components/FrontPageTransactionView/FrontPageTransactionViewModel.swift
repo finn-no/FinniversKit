@@ -56,6 +56,7 @@ public final class FrontPageTransactionViewModel: Swift.Identifiable, Observable
         self.delegate = delegate
     }
 
+    @MainActor
     func loadImage(size: CGSize) async {
         var finalImage = UIImage(named: .noImage)
         if
