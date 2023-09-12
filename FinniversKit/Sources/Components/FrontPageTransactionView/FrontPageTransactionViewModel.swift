@@ -25,6 +25,7 @@ public final class FrontPageTransactionViewModel: Swift.Identifiable, Observable
     public let imageUrl: String?
     public let destinationUrl: URL?
     public let adId: Int?
+    public let adType: String?
     public let transactionId: String?
     public var imageLoader: ImageLoader
     public weak var delegate: FrontPageTransactionViewModelDelegate?
@@ -40,6 +41,7 @@ public final class FrontPageTransactionViewModel: Swift.Identifiable, Observable
         imageUrl: String? = nil,
         destinationUrl: URL? = nil,
         adId: Int? = nil,
+        adType: String? = nil,
         transactionId: String? = nil,
         imageLoader: @escaping ImageLoader = { _, _ in nil },
         delegate: FrontPageTransactionViewModelDelegate? = nil
@@ -51,6 +53,7 @@ public final class FrontPageTransactionViewModel: Swift.Identifiable, Observable
         self.imageUrl = imageUrl
         self.destinationUrl = destinationUrl
         self.adId = adId
+        self.adType = adType
         self.transactionId = transactionId
         self.imageLoader = imageLoader
         self.delegate = delegate
