@@ -60,7 +60,7 @@ enum FullscreenDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     var demoable: any Demoable {
         switch self {
         case .frontPageView:
-            return FrontpageViewDemoViewController()
+            return FrontPageViewDemoViewController()
         case .emptyView:
             return EmptyViewDemoView()
         case .popupView:

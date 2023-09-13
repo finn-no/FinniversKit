@@ -209,9 +209,9 @@ public final class FrontPageView: UIView {
         delegate: FrontPageTransactionViewModelDelegate,
         imageLoader: @escaping FrontPageTransactionViewModel.ImageLoader
     ) -> UIViewController {
-        for i in 0..<viewModels.count {
-            viewModels[i].delegate = delegate
-            viewModels[i].imageLoader = imageLoader
+        for viewModel in viewModels {
+            viewModel.delegate = delegate
+            viewModel.imageLoader = imageLoader
         }
         let listView = FrontPageTransactionListView(models: viewModels)
         let transactionListVC = UIHostingController(rootView: listView)
