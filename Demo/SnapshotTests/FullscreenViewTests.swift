@@ -14,7 +14,7 @@ class FullscreenViewTests: XCTestCase {
 
     // MARK: - Tests
 
-    func testFrontpageView() {
+    func testFrontPageView() {
         snapshot(.frontPageView)
     }
 

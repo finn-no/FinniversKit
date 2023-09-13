@@ -1,7 +1,4 @@
-//
-//  Copyright © FINN.no AS, Inc. All rights reserved.
-//
-
+import SwiftUI
 import UIKit
 
 public protocol FrontPageViewModel {
@@ -79,7 +76,7 @@ public final class FrontPageView: UIView {
         guard let model = savedSearchesViewModel else { return false }
         return model.height > 0
     }
-    
+
     private lazy var headerView = UIView(withAutoLayout: true)
     private var frontPageSavedSearchView: FrontPageSavedSearchesView?
     
@@ -208,19 +205,26 @@ public final class FrontPageView: UIView {
     }
 
     public func showTransactionFeed(
-        withViewModel viewModel: FrontPageTransactionViewModel,
-        andDelegate delegate: FrontPageTransactionViewDelegate
-    ) {
-        let transactionView = FrontPageTransactionView(withAutoLayout: true)
-        transactionView.delegate = delegate
-        transactionView.configure(with: viewModel, andImageDatasource: remoteImageDataSource)
-
-        transactionFeedContainer.addSubview(transactionView)
-        transactionView.fillInSuperview(insets: .init(top: .spacingL,
-                                                      leading: .spacingM,
-                                                      bottom: 0,
-                                                      trailing: -.spacingM))
+        viewModels: [FrontPageTransactionViewModel],
+        delegate: FrontPageTransactionViewModelDelegate,
+        imageLoader: @escaping FrontPageTransactionViewModel.ImageLoader
+    ) -> UIViewController {
+        for viewModel in viewModels {
+            viewModel.delegate = delegate
+            viewModel.imageLoader = imageLoader
+        }
+        let listView = FrontPageTransactionListView(models: viewModels)
+        let transactionListVC = UIHostingController(rootView: listView)
+        transactionListVC.view.backgroundColor = .clear
+        transactionFeedContainer.addSubview(transactionListVC.view)
+        transactionListVC.view.fillInSuperview(insets: .init(
+            top: .spacingL,
+            leading: .spacingM,
+            bottom: 0,
+            trailing: -.spacingM
+        ))
         setupFrames()
+        return transactionListVC
     }
 
     // MARK: - Setup

@@ -1,88 +1,87 @@
-//
-//  Copyright © FINN.no AS, Inc. All rights reserved.
-//
 import FinniversKit
 import DemoKit
 
 enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case addressCardView
-    case button
-    case multilineButton
-    case floatingButton
-    case cogWheelButton
-    case iconButton
-    case label
-    case ribbon
-    case textField
-    case textView
-    case toast
-    case switchView
-    case infobox
-    case consentTransparencyInfo
+    case addressComponentView
+    case badgeView
     case bannerTransparencyView
-    case checkbox
-    case radioButton
-    case roundedImageView
-    case loadingIndicator
-    case refreshControl
-    case reviewButtonView
-    case horizontalSlide
+    case blockUserView
     case bottomSheetMechanics
-    case feedbackView
-    case happinessRating
-    case earthHourView
+    case brazePromotionView
     case broadcast
-    case klimabroletView
-    case christmasWishListView
-    case nativeAdvert
+    case button
     case callout
-    case detailCallout
-    case phaseList
-    case iconCollection
-    case disclaimerView
-    case questionnaireView
-    case stepSlider
-    case loanCalculatorView
-    case verificationView
-    case panel
-    case visibilityDrivenTitleView
-    case selectorTitleView
-    case priming
-    case footerButtonView
+    case checkbox
     case checkmarkTitleView
-    case viewingsListView
-    case viewingsRedesignView
-    case selfDeclarationView
+    case christmasWishListView
+    case cogWheelButton
     case collapsibleContentView
     case columnListsView
-    case keyValueGridView
-    case linkButtonListView
-    case safetyElementsView
+    case consentTransparencyInfo
     case contractActionView
+    case detailCallout
+    case disclaimerView
+    case earthHourView
     case favoriteButton
-    case sendInviteView
+    case feedbackView
+    case floatingButton
+    case footerButtonView
+    case frontPageSavedSearchesView
+    case frontPageTransactionListView
+    case frontPageTransactionView
+    case happinessRating
+    case horizontalSlide
+    case hyperlinkTextView
+    case iconButton
+    case iconCollection
+    case infobox
+    case jobApplyBox
+    case jobKeyInfo
+    case keyValueGridView
+    case klimabroletView
+    case label
+    case linkButtonListView
+    case loadingIndicator
+    case loadingRetryView
+    case loanCalculatorView
+    case mapAddressButton
+    case monthAndYearPickerView
+    case multilineButton
+    case myAdsListView
+    case nativeAdvert
     case navigationLinkView
     case numberedListView
-    case transactionEntryView
-    case blockUserView
-    case loadingRetryView
-    case promotionView
-    case frontPageSavedSearchesView
     case overFlowCollectionView
+    case panel
+    case phaseList
+    case priming
+    case promotionView
+    case questionnaireView
+    case radioButton
+    case refreshControl
+    case reviewButtonView
+    case ribbon
+    case roundedImageView
+    case safetyElementsView
     case scrollableTabDemoView
-    case monthAndYearPickerView
     case searchView
-    case addressComponentView
     case selectionListCheckboxView
     case selectionListRadiobuttonView
     case selectionListSeparatedRadiobuttonView
-    case badgeView
-    case jobApplyBox
-    case jobKeyInfo
-    case myAdsListView
-    case brazePromotionView
-    case mapAddressButton
-    case hyperlinkTextView
+    case selectorTitleView
+    case selfDeclarationView
+    case sendInviteView
+    case stepSlider
+    case switchView
+    case textField
+    case textView
+    case toast
+    case transactionEntryView
+    case verificationView
+    case viewingsListView
+    case viewingsRedesignView
+    case visibilityDrivenTitleView
 
     static var groupTitle: String { "Components" }
     static var numberOfDemos: Int { allCases.count }
@@ -234,6 +233,10 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return LoadingRetryDemoView()
         case .promotionView:
             return PromotionDemoView()
+        case .frontPageTransactionView:
+            return FrontPageTransactionDemoViewController()
+        case .frontPageTransactionListView:
+            return FrontPageTransactionListDemoViewController()
         case .frontPageSavedSearchesView:
             return FrontPageSavedSearchesDemoView()
         case .overFlowCollectionView:
