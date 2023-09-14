@@ -253,8 +253,11 @@ extension FullscreenGalleryViewController: UIPageViewControllerDelegate {
 
     public func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         pendingViewControllers.forEach({ [weak self] vc in
-            guard let imageVc = vc as? FullscreenImageViewController else { return }
-            imageVc.updateLayout(containerSize: self?.view.bounds.size, withPreviewViewVisible: overlayView.previewViewVisible)
+            guard
+                let self,
+                let imageVc = vc as? FullscreenImageViewController
+            else { return }
+            imageVc.updateLayout(containerSize: self.view.bounds.size, withPreviewViewVisible: self.overlayView.previewViewVisible)
         })
     }
 }

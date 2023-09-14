@@ -35,7 +35,7 @@ class HyperlinkTextViewDemoView: UIView {
     // MARK: - Configure
 
     private func configureHyper() {
-        var viewModel = HyperlinkTextViewModel(
+        let viewModel = HyperlinkTextViewModel(
             text: "Med å gjøre en <tag1>forespørsel</tag1> aksepterer du også <tag2>vilkårene for fiks, ferdig frakt og betaling</tag2>.",
             hyperlinks: [
                 HyperlinkTextViewModel.Hyperlink(
