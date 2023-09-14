@@ -336,8 +336,6 @@
 		9F213EA8026933194D7483E0 /* FullscreenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F213568D13E929BBB70CF2F /* FullscreenImageView.swift */; };
 		9F84F96929277B0600631443 /* BrazePromotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F84F96829277B0600631443 /* BrazePromotionView.swift */; };
 		9F84F96B29277B1000631443 /* BrazePromotionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F84F96A29277B1000631443 /* BrazePromotionViewModel.swift */; };
-		AA189E82268479DB00FD3A41 /* BlockUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA189E81268479DB00FD3A41 /* BlockUserView.swift */; };
-		AA189E8B26847FA900FD3A41 /* BlockUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA189E8A26847FA900FD3A41 /* BlockUserViewModel.swift */; };
 		AADED71C223FE25500647C50 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADED71B223FE25500647C50 /* UIDevice.swift */; };
 		ADC5C9704E980F30DB92ECF6 /* CollapsibleContentView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC5CE145A903142865FA082 /* CollapsibleContentView+Style.swift */; };
 		AF91BB97202C74D0003E6366 /* BroadcastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BB96202C74D0003E6366 /* BroadcastItem.swift */; };
@@ -851,8 +849,6 @@
 		9F213F9DEE0BF048DD9B29FB /* GalleryPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryPreviewView.swift; sourceTree = "<group>"; };
 		9F84F96829277B0600631443 /* BrazePromotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrazePromotionView.swift; sourceTree = "<group>"; };
 		9F84F96A29277B1000631443 /* BrazePromotionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrazePromotionViewModel.swift; sourceTree = "<group>"; };
-		AA189E81268479DB00FD3A41 /* BlockUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUserView.swift; sourceTree = "<group>"; };
-		AA189E8A26847FA900FD3A41 /* BlockUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUserViewModel.swift; sourceTree = "<group>"; };
 		AADED71B223FE25500647C50 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		ADC5CE145A903142865FA082 /* CollapsibleContentView+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollapsibleContentView+Style.swift"; sourceTree = "<group>"; };
 		AF91BB96202C74D0003E6366 /* BroadcastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastItem.swift; sourceTree = "<group>"; };
@@ -1531,7 +1527,6 @@
 				CFDF39CB2385419E00D3B966 /* AddressCardView */,
 				5B9590445C86B656E972AF8E /* AddressComponentView */,
 				4D37A9B828571DB400F9460D /* BadgeView */,
-				AA189E80268479B100FD3A41 /* BlockUserView */,
 				DAB7FAAC21B690E900BF8CC6 /* BottomSheet */,
 				AF91BB95202C7487003E6366 /* Broadcast */,
 				4447F6651FDB2B110033DBC1 /* Button */,
@@ -2695,15 +2690,6 @@
 			path = BrazePromotionView;
 			sourceTree = "<group>";
 		};
-		AA189E80268479B100FD3A41 /* BlockUserView */ = {
-			isa = PBXGroup;
-			children = (
-				AA189E81268479DB00FD3A41 /* BlockUserView.swift */,
-				AA189E8A26847FA900FD3A41 /* BlockUserViewModel.swift */,
-			);
-			path = BlockUserView;
-			sourceTree = "<group>";
-		};
 		AF91BB95202C7487003E6366 /* Broadcast */ = {
 			isa = PBXGroup;
 			children = (
@@ -3659,7 +3645,6 @@
 				44A149ED21377C7B0053D5F7 /* SavedSearchesListViewModel.swift in Sources */,
 				9BEB287B231D484B00D28BAD /* LoanHeaderView.swift in Sources */,
 				496F8C142473DCC600AE0735 /* FavoriteSoldView.swift in Sources */,
-				AA189E8B26847FA900FD3A41 /* BlockUserViewModel.swift in Sources */,
 				CF7496BF23BE26D700D60901 /* FavoriteFolderActionView.swift in Sources */,
 				CF164CF0230E7FF100250822 /* FavoriteFolderShareToggleView.swift in Sources */,
 				9B06097323F14BD6005CB592 /* ElementContentView.swift in Sources */,
@@ -3943,7 +3928,6 @@
 				CF164D212310138900250822 /* FavoriteAdActionHeaderView.swift in Sources */,
 				45B2E06A207CF5C100C68B92 /* StringExtensions.swift in Sources */,
 				E87A7BF328ED6AE0007094F2 /* NeighborhoodProfileBannerView.swift in Sources */,
-				AA189E82268479DB00FD3A41 /* BlockUserView.swift in Sources */,
 				4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */,
 				9BB6802F2462F763001ADACF /* Font+SwiftUI.swift in Sources */,
 				CF3D5EE4215A65D7006E4D08 /* Instrument.swift in Sources */,

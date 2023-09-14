@@ -43,7 +43,6 @@ enum ImageAsset: String {
     case avatar
     case bankID
     case betaPill
-    case blockUser
     case calendar
     case camera
     case candyCane
@@ -178,7 +177,6 @@ enum ImageAsset: String {
             .avatar,
             .bankID,
             .betaPill,
-            .blockUser,
             .calendar,
             .camera,
             .candyCane,
