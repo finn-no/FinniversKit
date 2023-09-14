@@ -408,7 +408,11 @@ private extension EmptyView {
 
             DispatchQueue.main.async { [weak self] in
                 // Correct for orientation
-                let orientation = UIApplication.shared.statusBarOrientation
+                guard
+                    let self,
+                    let windowScene = UIApplication.shared.connectedScenes.keyWindow?.windowScene
+                else { return }
+                let orientation = windowScene.interfaceOrientation
 
                 switch orientation {
                 case .portrait:
@@ -422,7 +426,7 @@ private extension EmptyView {
                 default: break
                 }
 
-                self?.gravity.gravityDirection = vector
+                self.gravity.gravityDirection = vector
             }
         })
     }
