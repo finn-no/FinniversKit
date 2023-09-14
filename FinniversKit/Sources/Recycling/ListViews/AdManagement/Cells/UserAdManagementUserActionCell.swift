@@ -49,7 +49,7 @@ public class UserAdManagementUserActionCell: UITableViewCell {
     private lazy var trailingImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .stone
+        imageView.tintColor = .textSecondary
         return imageView
     }()
 
