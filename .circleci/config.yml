@@ -13,7 +13,7 @@ jobs:
 
   swiftlint:
     macos:
-      xcode: 14.2.0
+      xcode: 14.3.1
     steps:
       - checkout
       - run: brew install swiftlint
