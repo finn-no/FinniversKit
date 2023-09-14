@@ -14,7 +14,6 @@ public protocol ImageProvider {
     func brandCheckboxSelected(index: Int) -> UIImage?
     func brandCheckboxUnselected(index: Int) -> UIImage?
     
-    // FavoriteButton
     var brandFavouriteAdd: UIImage { get }
     var brandFavouriteAdded: UIImage { get }
     var brandCheckmark: UIImage { get }
