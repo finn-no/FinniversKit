@@ -137,7 +137,7 @@ private struct HyperLinkTextViewTranslator: HTMLStringParserTranslator {
     let textAlignment: NSTextAlignment
 
     public func translate(tokens: [HTMLLexer.Token]) throws -> NSAttributedString {
-        var styledText = NSMutableAttributedString()
+        let styledText = NSMutableAttributedString()
         var currentTag: String?
 
         for token in tokens {
