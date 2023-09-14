@@ -10,6 +10,9 @@
 		172E7504290FE28E00956AC2 /* HTMLTextDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */; };
 		1732932D29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1732932C29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift */; };
 		17BF44C929893E98001A5877 /* LoadingSwiftUIDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BF44C829893E98001A5877 /* LoadingSwiftUIDemoView.swift */; };
+		17EE085E2AA720AB00A623F2 /* FrontPageTransactionDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE085D2AA720AB00A623F2 /* FrontPageTransactionDemoViewController.swift */; };
+		17EE08632AA8ABCC00A623F2 /* FrontPageTransactionListDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE08622AA8ABCC00A623F2 /* FrontPageTransactionListDemoViewController.swift */; };
+		17EE08712AAA089100A623F2 /* FrontPageTransactionDemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE08702AAA089100A623F2 /* FrontPageTransactionDemoModel.swift */; };
 		17F8EEC629409FE3000E26C9 /* SwiftUISelectionListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8EEC529409FE3000E26C9 /* SwiftUISelectionListDemoView.swift */; };
 		277307E5298C108800B8E27F /* ResultSwiftUIDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277307E4298C108800B8E27F /* ResultSwiftUIDemoView.swift */; };
 		27FAFCB82988FE6100FEDAE0 /* ToastSwiftUIDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FAFCB72988FE6100FEDAE0 /* ToastSwiftUIDemoView.swift */; };
@@ -237,6 +240,9 @@
 		172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextDemoViewController.swift; sourceTree = "<group>"; };
 		1732932C29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUILoadingIndicatorDemoView.swift; sourceTree = "<group>"; };
 		17BF44C829893E98001A5877 /* LoadingSwiftUIDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSwiftUIDemoView.swift; sourceTree = "<group>"; };
+		17EE085D2AA720AB00A623F2 /* FrontPageTransactionDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageTransactionDemoViewController.swift; sourceTree = "<group>"; };
+		17EE08622AA8ABCC00A623F2 /* FrontPageTransactionListDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageTransactionListDemoViewController.swift; sourceTree = "<group>"; };
+		17EE08702AAA089100A623F2 /* FrontPageTransactionDemoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageTransactionDemoModel.swift; sourceTree = "<group>"; };
 		17F8EEC529409FE3000E26C9 /* SwiftUISelectionListDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISelectionListDemoView.swift; sourceTree = "<group>"; };
 		277307E4298C108800B8E27F /* ResultSwiftUIDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSwiftUIDemoView.swift; sourceTree = "<group>"; };
 		27FAFCB72988FE6100FEDAE0 /* ToastSwiftUIDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastSwiftUIDemoView.swift; sourceTree = "<group>"; };
@@ -460,6 +466,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17EE085C2AA7207500A623F2 /* FrontPageTransactionView */ = {
+			isa = PBXGroup;
+			children = (
+				17EE08702AAA089100A623F2 /* FrontPageTransactionDemoModel.swift */,
+				17EE085D2AA720AB00A623F2 /* FrontPageTransactionDemoViewController.swift */,
+			);
+			path = FrontPageTransactionView;
+			sourceTree = "<group>";
+		};
+		17EE08612AA8ABA000A623F2 /* FrontPageTransactionListView */ = {
+			isa = PBXGroup;
+			children = (
+				17EE08622AA8ABCC00A623F2 /* FrontPageTransactionListDemoViewController.swift */,
+			);
+			path = FrontPageTransactionListView;
+			sourceTree = "<group>";
+		};
 		46AE6FB7242BADC9007BB005 = {
 			isa = PBXGroup;
 			children = (
@@ -542,7 +565,6 @@
 		46E7726A242CEF09008A5E93 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
-				496F8C152473E7CA00AE0735 /* FavoriteSoldView */,
 				46E77278242CEF09008A5E93 /* AddressMapView */,
 				46E772B1242CEF09008A5E93 /* AdReporter */,
 				46E772B6242CEF09008A5E93 /* BetaFeatureView */,
@@ -552,22 +574,23 @@
 				46E77285242CEF09008A5E93 /* ContactForm */,
 				46E7726F242CEF09008A5E93 /* EasterEggs */,
 				46E772A5242CEF09008A5E93 /* EmptyView */,
-				46E77294242CEF09008A5E93 /* ResultView */,
 				46E7728C242CEF09008A5E93 /* FavoriteAdActions */,
 				46E7729B242CEF09008A5E93 /* FavoriteAdCommentInput */,
 				46E772AA242CEF09008A5E93 /* FavoriteAdsListView */,
 				46E7726B242CEF09008A5E93 /* FavoriteFolderActions */,
+				496F8C152473E7CA00AE0735 /* FavoriteSoldView */,
 				46E772A7242CEF09008A5E93 /* FrontPage */,
 				46E77292242CEF09008A5E93 /* FullscreenGallery */,
 				46E7726D242CEF09008A5E93 /* LoadingView */,
 				46E772B3242CEF09008A5E93 /* Login */,
 				46E77281242CEF09008A5E93 /* LoginEntry */,
 				46E772A2242CEF09008A5E93 /* MessageForm */,
+				71C6AA972549D27000D78269 /* MessageUserRequired */,
 				46E7727A242CEF09008A5E93 /* Popup */,
 				46E7729D242CEF09008A5E93 /* Register */,
+				46E77294242CEF09008A5E93 /* ResultView */,
 				46E77287242CEF09008A5E93 /* SettingDetailsView */,
 				46E7727F242CEF09008A5E93 /* SoldView */,
-				71C6AA972549D27000D78269 /* MessageUserRequired */,
 				46E772C9242CEF09008A5E93 /* VerificationView */,
 			);
 			path = Fullscreen;
@@ -795,18 +818,12 @@
 		46E772CB242CEF09008A5E93 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				9F84F96C292B6DB300631443 /* BrazePromotionView */,
-				E681A0EA2923FD89008564E2 /* HyperlinkTextViewDemoView */,
-				4D37A9B528571CF300F9460D /* BadgeView */,
-				5DCE0883280FDF0600ED7407 /* MonthAndYearPickerDemoView */,
-				D7C750362731C5FF002BDE98 /* FrontPageSavedSearchesDemoView */,
-				D7D514C5272942C50065E2F6 /* PromotionDemoView */,
-				AA189E8526847AA900FD3A41 /* BlockUserView */,
-				DA82B1EB268B62B7005F67C3 /* LoadingRetryView */,
-				4D01FC94261C48E1008B9913 /* TransactionEntryView */,
-				4D152E792577DB0400282244 /* NavigationLinkView */,
 				46E772FA242CEF09008A5E93 /* AddressCardView */,
+				5B9595353186CF123865900D /* AddressComponentView */,
+				4D37A9B528571CF300F9460D /* BadgeView */,
+				AA189E8526847AA900FD3A41 /* BlockUserView */,
 				46E77339242CEF09008A5E93 /* BottomSheet */,
+				9F84F96C292B6DB300631443 /* BrazePromotionView */,
 				46E7734E242CEF09008A5E93 /* Broadcast */,
 				46E7731F242CEF09008A5E93 /* Button */,
 				46E77306242CEF09008A5E93 /* Callout */,
@@ -821,29 +838,47 @@
 				46E772E3242CEF09008A5E93 /* FavoriteButton */,
 				46E77302242CEF09008A5E93 /* Feedback */,
 				46E772E6242CEF09008A5E93 /* FooterButtonView */,
+				D7C750362731C5FF002BDE98 /* FrontPageSavedSearchesDemoView */,
+				17EE08612AA8ABA000A623F2 /* FrontPageTransactionListView */,
+				17EE085C2AA7207500A623F2 /* FrontPageTransactionView */,
 				46E77343242CEF09008A5E93 /* HappinessRating */,
 				46E772F2242CEF09008A5E93 /* HorizontalSlide */,
+				E681A0EA2923FD89008564E2 /* HyperlinkTextViewDemoView */,
 				46E772CF242CEF09008A5E93 /* IconCollection */,
 				46E77318242CEF09008A5E93 /* Infobox */,
+				5B959C720F9AD1D19188F7C3 /* JobApplyBox */,
+				5B95913AB0DF0FDDF06BA9B0 /* JobKeyInfo */,
 				46E77350242CEF09008A5E93 /* KeyValueCollectionView */,
 				46E77335242CEF09008A5E93 /* Klimabrolet */,
 				46E772F6242CEF09008A5E93 /* Label */,
 				46E77347242CEF09008A5E93 /* LinkButtonList */,
 				46E77300242CEF09008A5E93 /* LoadingIndicator */,
+				DA82B1EB268B62B7005F67C3 /* LoadingRetryView */,
 				46E772CC242CEF09008A5E93 /* LoanCalculator */,
+				5B9597F0B3135DCA357463C2 /* MapAddressButton */,
+				5DCE0883280FDF0600ED7407 /* MonthAndYearPickerDemoView */,
+				5B9595478D0D9DE21CFCDF7C /* MultilineButton */,
+				5B9596CE2475206CBC8B02A6 /* MyAdsList */,
 				46E772D1242CEF09008A5E93 /* NativeAdvert */,
+				4D152E792577DB0400282244 /* NavigationLinkView */,
+				8D680C5C0B76EA3807545F4D /* NumberedListView */,
 				46E77314242CEF09008A5E93 /* ObjectPagePriceView */,
 				46E772D8242CEF09008A5E93 /* ObjectPageTitleView */,
+				5B959406F634CEBB6F0318BB /* OverflowCollectionView */,
 				46E772DC242CEF09008A5E93 /* Panel */,
 				46E77349242CEF09008A5E93 /* Phases */,
 				46E7733B242CEF09008A5E93 /* Priming */,
+				D7D514C5272942C50065E2F6 /* PromotionDemoView */,
 				46E7734B242CEF09008A5E93 /* QuestionnaireView */,
 				46E772EE242CEF09008A5E93 /* RefreshControl */,
 				46E77333242CEF09008A5E93 /* ReviewButtonView */,
 				46E77308242CEF09008A5E93 /* Ribbon */,
 				46E772FC242CEF09008A5E93 /* RoundedImageView */,
 				46E772DA242CEF09008A5E93 /* SafetyElementsView */,
+				E6510A6527FB378A001B40D6 /* ScrollableTabDemoView */,
+				5B9590FE3DEEBCA163F0094E /* SearchView */,
 				46E77340242CEF09008A5E93 /* SelectionBoxes */,
+				5B9592E3B6542A9A678E1E6C /* SelectionListView */,
 				46E772D6242CEF09008A5E93 /* SelectorTitleView */,
 				46E772E8242CEF09008A5E93 /* SelfDeclaration */,
 				714B935325372D8500801C99 /* SendInviteView */,
@@ -852,21 +887,11 @@
 				46E772F8242CEF09008A5E93 /* TextField */,
 				46E772D4242CEF09008A5E93 /* TextView */,
 				46E772F0242CEF09008A5E93 /* Toast */,
+				4D01FC94261C48E1008B9913 /* TransactionEntryView */,
 				46E77358242CEF09008A5E93 /* VerificationView */,
 				46E7730A242CEF09008A5E93 /* Viewings */,
 				F085BC2829719E4200376A8B /* ViewingsRedesign */,
 				46E772F4242CEF09008A5E93 /* VisibilityDrivenTitleView */,
-				8D680C5C0B76EA3807545F4D /* NumberedListView */,
-				5B9595478D0D9DE21CFCDF7C /* MultilineButton */,
-				5B959406F634CEBB6F0318BB /* OverflowCollectionView */,
-				E6510A6527FB378A001B40D6 /* ScrollableTabDemoView */,
-				5B9590FE3DEEBCA163F0094E /* SearchView */,
-				5B9595353186CF123865900D /* AddressComponentView */,
-				5B9592E3B6542A9A678E1E6C /* SelectionListView */,
-				5B959C720F9AD1D19188F7C3 /* JobApplyBox */,
-				5B95913AB0DF0FDDF06BA9B0 /* JobKeyInfo */,
-				5B9596CE2475206CBC8B02A6 /* MyAdsList */,
-				5B9597F0B3135DCA357463C2 /* MapAddressButton */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2067,6 +2092,7 @@
 				46E7746B242CEF0A008A5E93 /* NotificationsListViewDemoView.swift in Sources */,
 				46E773FE242CEF0A008A5E93 /* FooterButtonView.swift in Sources */,
 				46E7741A242CEF0A008A5E93 /* InfoboxDefaultData.swift in Sources */,
+				17EE08712AAA089100A623F2 /* FrontPageTransactionDemoModel.swift in Sources */,
 				17F8EEC629409FE3000E26C9 /* SwiftUISelectionListDemoView.swift in Sources */,
 				46E77433242CEF0A008A5E93 /* ContractActionDemoView.swift in Sources */,
 				46E77443242CEF0A008A5E93 /* RemoteImageCellDemoView.swift in Sources */,
@@ -2097,6 +2123,7 @@
 				46E77406242CEF0A008A5E93 /* VisibilityDrivenTitleDemoView.swift in Sources */,
 				46E773F5242CEF0A008A5E93 /* SelectorTitleViewDemoView.swift in Sources */,
 				46E773DC242CEF0A008A5E93 /* LoginViewDefaultData.swift in Sources */,
+				17EE08632AA8ABCC00A623F2 /* FrontPageTransactionListDemoViewController.swift in Sources */,
 				46E77435242CEF0A008A5E93 /* PhaseListViewDemo.swift in Sources */,
 				46E773DD242CEF0A008A5E93 /* LoginViewDemoView.swift in Sources */,
 				46E773BF242CEF0A008A5E93 /* LoginEntryViewDemoViewController.swift in Sources */,
@@ -2121,6 +2148,7 @@
 				46E7744A242CEF0A008A5E93 /* IconTitleCellDemoView.swift in Sources */,
 				D75E14D727371692008EB126 /* FrontPageSavedSearchFactory.swift in Sources */,
 				46E77410242CEF0A008A5E93 /* RibbonDemoView.swift in Sources */,
+				17EE085E2AA720AB00A623F2 /* FrontPageTransactionDemoViewController.swift in Sources */,
 				46E7741E242CEF0A008A5E93 /* CogWheelButtonDemoView.swift in Sources */,
 				46E7744B242CEF0A008A5E93 /* CheckboxCellDemoView.swift in Sources */,
 				46E77439242CEF0A008A5E93 /* KeyValueGridDemoView.swift in Sources */,
