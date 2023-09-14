@@ -1,6 +1,6 @@
 import UIKit
 
-extension Set<UIScene> {
+extension Collection where Element == UIScene {
     public var keyWindow: UIWindow? {
         self.compactMap { $0 as? UIWindowScene }
             .flatMap { $0.windows }
