@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0379D1EC2AB3321300CC1B38 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379D1EA2AB3321300CC1B38 /* ImageProvider.swift */; };
-		0379D1ED2AB3321300CC1B38 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379D1EA2AB3321300CC1B38 /* ImageProvider.swift */; };
 		0379D1EE2AB3321300CC1B38 /* UIImage+FinniversKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379D1EB2AB3321300CC1B38 /* UIImage+FinniversKit.swift */; };
-		0379D1EF2AB3321300CC1B38 /* UIImage+FinniversKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379D1EB2AB3321300CC1B38 /* UIImage+FinniversKit.swift */; };
 		0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */; };
 		0817FFCF21831045001BD9C4 /* AnimatedCheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */; };
 		082D80CB21C13C7B00831BDE /* RoundedRectangleGiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80CA21C13C7B00831BDE /* RoundedRectangleGiftView.swift */; };
@@ -3607,10 +3605,8 @@
 				175385B229150E7800DA57D2 /* HTMLStringUIKitStyleTranslatorTests.swift in Sources */,
 				17E232F5290A7E71003DC8F7 /* HTMLLexerTests.swift in Sources */,
 				179D06AE2906A3FA00A65E3A /* HTMLStringParserTests.swift in Sources */,
-				0379D1EF2AB3321300CC1B38 /* UIImage+FinniversKit.swift in Sources */,
 				177A876C2914184B00F02088 /* HTMLStringSwiftUIStyleTranslatorTests.swift in Sources */,
 				9B9663CB2460383900D34BA1 /* ConfigTests.swift in Sources */,
-				0379D1ED2AB3321300CC1B38 /* ImageProvider.swift in Sources */,
 				9F213830B2F4E5DFE596431F /* KeyboardNotificationInfoTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
