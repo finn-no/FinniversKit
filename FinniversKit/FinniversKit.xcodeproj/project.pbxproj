@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0379D1EC2AB3321300CC1B38 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379D1EA2AB3321300CC1B38 /* ImageProvider.swift */; };
+		0379D1ED2AB3321300CC1B38 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379D1EA2AB3321300CC1B38 /* ImageProvider.swift */; };
+		0379D1EE2AB3321300CC1B38 /* UIImage+FinniversKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379D1EB2AB3321300CC1B38 /* UIImage+FinniversKit.swift */; };
+		0379D1EF2AB3321300CC1B38 /* UIImage+FinniversKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379D1EB2AB3321300CC1B38 /* UIImage+FinniversKit.swift */; };
 		0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */; };
 		0817FFCF21831045001BD9C4 /* AnimatedCheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */; };
 		082D80CB21C13C7B00831BDE /* RoundedRectangleGiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80CA21C13C7B00831BDE /* RoundedRectangleGiftView.swift */; };
@@ -522,6 +526,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0379D1EA2AB3321300CC1B38 /* ImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
+		0379D1EB2AB3321300CC1B38 /* UIImage+FinniversKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+FinniversKit.swift"; sourceTree = "<group>"; };
 		0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedRadiobuttonView.swift; sourceTree = "<group>"; };
 		0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedCheckboxView.swift; sourceTree = "<group>"; };
 		082D80CA21C13C7B00831BDE /* RoundedRectangleGiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleGiftView.swift; sourceTree = "<group>"; };
@@ -1047,6 +1053,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0379D1E92AB3321300CC1B38 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				0379D1EA2AB3321300CC1B38 /* ImageProvider.swift */,
+				0379D1EB2AB3321300CC1B38 /* UIImage+FinniversKit.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		081F51BB222932C900026C84 /* TextView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1309,6 +1324,7 @@
 			children = (
 				4408A69D2027AC41008C0BD9 /* Color */,
 				4408A6A12027AC41008C0BD9 /* Font */,
+				0379D1E92AB3321300CC1B38 /* Images */,
 				4408A69F2027AC41008C0BD9 /* Spacing */,
 			);
 			path = DNA;
@@ -3591,8 +3607,10 @@
 				175385B229150E7800DA57D2 /* HTMLStringUIKitStyleTranslatorTests.swift in Sources */,
 				17E232F5290A7E71003DC8F7 /* HTMLLexerTests.swift in Sources */,
 				179D06AE2906A3FA00A65E3A /* HTMLStringParserTests.swift in Sources */,
+				0379D1EF2AB3321300CC1B38 /* UIImage+FinniversKit.swift in Sources */,
 				177A876C2914184B00F02088 /* HTMLStringSwiftUIStyleTranslatorTests.swift in Sources */,
 				9B9663CB2460383900D34BA1 /* ConfigTests.swift in Sources */,
+				0379D1ED2AB3321300CC1B38 /* ImageProvider.swift in Sources */,
 				9F213830B2F4E5DFE596431F /* KeyboardNotificationInfoTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3941,6 +3959,7 @@
 				449C60B4234DD85C00C51A63 /* ShadowScrollView.swift in Sources */,
 				9F13CAAE298BB5380056C303 /* ExternalAdRecommendationViewModel.swift in Sources */,
 				CF164D212310138900250822 /* FavoriteAdActionHeaderView.swift in Sources */,
+				0379D1EC2AB3321300CC1B38 /* ImageProvider.swift in Sources */,
 				45B2E06A207CF5C100C68B92 /* StringExtensions.swift in Sources */,
 				E87A7BF328ED6AE0007094F2 /* NeighborhoodProfileBannerView.swift in Sources */,
 				AA189E82268479DB00FD3A41 /* BlockUserView.swift in Sources */,
@@ -4001,6 +4020,7 @@
 				494047FE23CDBBA100ECBCFD /* ViewingItemViewModel.swift in Sources */,
 				CF05B7E023325968003A7F1C /* FavoriteFolderActionButton.swift in Sources */,
 				F253C50E2313F9F5008175FD /* VerificationView.swift in Sources */,
+				0379D1EE2AB3321300CC1B38 /* UIImage+FinniversKit.swift in Sources */,
 				9A37DC6E6F0401357C564B93 /* RemoteImageView.swift in Sources */,
 				E8AF8626291132E8008509A0 /* SelfDeclarationView.swift in Sources */,
 				CF5CA71022F82D43007C4124 /* NeighborhoodProfileViewCell.swift in Sources */,
