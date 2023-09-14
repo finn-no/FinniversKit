@@ -31,7 +31,7 @@ public extension UIView {
     }
 
     static var windowSafeAreaInsets: UIEdgeInsets {
-        return UIApplication.shared.keyWindow?.safeAreaInsets ?? .zero
+        return UIApplication.shared.connectedScenes.keyWindow?.safeAreaInsets ?? .zero
     }
 }
 

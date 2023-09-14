@@ -92,7 +92,7 @@ class NativeAdvertDemoView: UIView, Demoable {
 extension NativeAdvertDemoView: NativeAdvertViewDelegate, NativeAdvertImageDelegate {
 
     func nativeAdvertViewDidSelectSettingsButton() {
-        var viewController = UIApplication.shared.keyWindow?.rootViewController
+        var viewController = UIApplication.shared.connectedScenes.keyWindow?.rootViewController
         while viewController?.presentedViewController != nil {
             viewController = viewController?.presentedViewController
         }
