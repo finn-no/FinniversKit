@@ -257,7 +257,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         let imageRatio = model.imageSize.height / model.imageSize.width
         let clippedImageRatio = min(max(imageRatio, ExternalAdRecommendationCell.minImageAspectRatio), ExternalAdRecommendationCell.maxImageAspectRatio)
         let imageHeight = width * clippedImageRatio
-        var contentHeight = subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + bottomMargin
+        let contentHeight = subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + bottomMargin
 
         return imageHeight + contentHeight
     }

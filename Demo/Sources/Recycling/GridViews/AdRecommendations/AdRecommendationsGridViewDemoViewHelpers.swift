@@ -286,7 +286,6 @@ struct ExternalAdFactory {
             let imageSource = imageSources[dataIndex]
             let title = titles[dataIndex]
             let subtitle = subtitles[dataIndex]
-            let price = prices[dataIndex]
             let scaleImageToFillView = scaleImagesToFillView[dataIndex]
 
             return ExternalAd(
