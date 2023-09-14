@@ -22,12 +22,12 @@ import UIKit
         Config.imageProvider.brandCheckboxUnselected(index: index)
     }
     
-    class var brandFavouriteAddImg: UIImage {
-        Config.imageProvider.brandFavouriteAddImg
+    class var brandFavouriteAdd: UIImage {
+        Config.imageProvider.brandFavouriteAdd
     }
     
-    class var brandFavouriteAddedImg: UIImage {
-        Config.imageProvider.brandFavouriteAddedImg
+    class var brandFavouriteAdded: UIImage {
+        Config.imageProvider.brandFavouriteAdded
     }
     
     class var brandCheckmark: UIImage {

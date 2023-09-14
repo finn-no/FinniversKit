@@ -28,8 +28,8 @@ public class AnimatedHeartView: AnimatedSelectionView {
     }
 
     private func setImages() {
-        self.selectedImage = .brandFavouriteAddedImg
-        self.unselectedImage = .brandFavouriteAddImg
+        self.selectedImage = .brandFavouriteAdded
+        self.unselectedImage = .brandFavouriteAdd
 
         image = self.unselectedImage
         highlightedImage = self.selectedImage

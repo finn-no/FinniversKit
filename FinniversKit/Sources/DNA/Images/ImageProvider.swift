@@ -15,8 +15,8 @@ public protocol ImageProvider {
     func brandCheckboxUnselected(index: Int) -> UIImage?
     
     // FavoriteButton
-    var brandFavouriteAddImg: UIImage { get }
-    var brandFavouriteAddedImg: UIImage { get }
+    var brandFavouriteAdd: UIImage { get }
+    var brandFavouriteAdded: UIImage { get }
     var brandCheckmark: UIImage { get }
     var brandSliderThumb: UIImage { get }
     var brandSliderThumbActive: UIImage { get }
@@ -44,11 +44,11 @@ public struct DefaultImageProvider: ImageProvider {
         UIImage.assetNamed("checkbox-unselected-\(index)")
     }
     
-    public var brandFavouriteAddImg: UIImage {
+    public var brandFavouriteAdd: UIImage {
         UIImage(named: .favouriteAddImg)
     }
     
-    public var brandFavouriteAddedImg: UIImage {
+    public var brandFavouriteAdded: UIImage {
         UIImage(named: .favouriteAddedImg)
     }
     
