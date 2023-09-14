@@ -29,4 +29,16 @@ import UIKit
     class var brandFavouriteAddedImg: UIImage {
         Config.imageProvider.brandFavouriteAddedImg
     }
+    
+    class var brandCheckmark: UIImage {
+        Config.imageProvider.brandCheckmark
+    }
+    
+    class var brandSliderThumb: UIImage {
+        Config.imageProvider.brandSliderThumb
+    }
+    
+    class var brandSliderThumbActive: UIImage {
+        Config.imageProvider.brandSliderThumbActive
+    }
 }

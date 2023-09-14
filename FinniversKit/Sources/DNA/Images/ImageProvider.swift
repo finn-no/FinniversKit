@@ -17,6 +17,9 @@ public protocol ImageProvider {
     // FavoriteButton
     var brandFavouriteAddImg: UIImage { get }
     var brandFavouriteAddedImg: UIImage { get }
+    var brandCheckmark: UIImage { get }
+    var brandSliderThumb: UIImage { get }
+    var brandSliderThumbActive: UIImage { get }
 }
 
 // MARK: - Default FINN images
@@ -47,5 +50,17 @@ public struct DefaultImageProvider: ImageProvider {
     
     public var brandFavouriteAddedImg: UIImage {
         UIImage(named: .favouriteAddedImg)
+    }
+    
+    public var brandCheckmark: UIImage {
+        UIImage(named: .checkmarkBlue)
+    }
+    
+    public var brandSliderThumb: UIImage {
+        UIImage(named: .sliderThumb)
+    }
+    
+    public var brandSliderThumbActive: UIImage {
+        UIImage(named: .sliderThumbActive)
     }
 }
