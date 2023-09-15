@@ -16,6 +16,8 @@ public protocol ImageProvider {
     
     var brandFavouriteAdd: UIImage { get }
     var brandFavouriteAdded: UIImage { get }
+    var brandFavouriteAddImg: UIImage { get }
+    var brandFavouriteAddedImg: UIImage { get }
     var brandCheckmark: UIImage { get }
     var brandSliderThumb: UIImage { get }
     var brandSliderThumbActive: UIImage { get }
@@ -44,10 +46,18 @@ public struct DefaultImageProvider: ImageProvider {
     }
     
     public var brandFavouriteAdd: UIImage {
-        UIImage(named: .favouriteAddImg)
+        UIImage(named: .favoriteAdd)
     }
     
     public var brandFavouriteAdded: UIImage {
+        UIImage(named: .favouriteAdded)
+    }
+    
+    public var brandFavouriteAddImg: UIImage {
+        UIImage(named: .favouriteAddImg)
+    }
+    
+    public var brandFavouriteAddedImg: UIImage {
         UIImage(named: .favouriteAddedImg)
     }
     

@@ -24,8 +24,8 @@ public struct SwiftUIIconButton: View {
 
 public extension SwiftUIIconButton.Style {
     static let favorite = SwiftUIIconButton.Style(
-        icon: .brandFavouriteAdd,
-        iconToggled: .brandFavouriteAdded
+        icon: .brandFavouriteAddImg,
+        iconToggled: .brandFavouriteAddedImg
     )
 }
 

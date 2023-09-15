@@ -30,6 +30,14 @@ import UIKit
         Config.imageProvider.brandFavouriteAdded
     }
     
+    class var brandFavouriteAddImg: UIImage {
+        Config.imageProvider.brandFavouriteAddImg
+    }
+    
+    class var brandFavouriteAddedImg: UIImage {
+        Config.imageProvider.brandFavouriteAddedImg
+    }
+    
     class var brandCheckmark: UIImage {
         Config.imageProvider.brandCheckmark
     }
