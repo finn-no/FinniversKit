@@ -163,8 +163,8 @@ public final class StepSlider: UISlider {
         minimumTrackTintColor = .clear
         maximumTrackTintColor = .clear
 
-        setThumbImage(UIImage(named: .sliderThumb), for: .normal)
-        setThumbImage(UIImage(named: .sliderThumbActive), for: .highlighted)
+        setThumbImage(.brandSliderThumb, for: .normal)
+        setThumbImage(.brandSliderThumbActive, for: .highlighted)
 
         addTarget(self, action: #selector(sliderValueChanged(sender:event:)), for: .valueChanged)
 
