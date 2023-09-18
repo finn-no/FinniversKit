@@ -23,4 +23,9 @@ extension UIImageView {
         self.init(withAutoLayout: withAutoLayout)
         self.image = UIImage(named: imageName)
     }
+    
+    convenience init(image: UIImage, withAutoLayout: Bool) {
+        self.init(withAutoLayout: withAutoLayout)
+        self.image = image
+    }
 }
