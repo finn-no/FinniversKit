@@ -109,7 +109,7 @@ public struct FinnTextField: View {
         SwiftUI.Button(action: {
             text = ""
         }, label: {
-            Image(.remove)
+            Image(ImageAsset.remove)
                 .renderingMode(.template)
                 .foregroundColor(Color.iconPrimary)
         })
