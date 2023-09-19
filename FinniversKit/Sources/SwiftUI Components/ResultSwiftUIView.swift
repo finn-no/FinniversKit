@@ -74,7 +74,7 @@ struct ResultSwiftUIView_Previews: PreviewProvider {
             ).previewDisplayName("Error retry")
 
             ResultSwiftUIView(
-                image: Image(.magnifyingGlass),
+                image: Image(ImageAsset.magnifyingGlass),
                 title: "Klarte ikke finne annonsen",
                 text: "Det kan se ut som annonsen du kikker etter har blitt slettet"
             ).previewDisplayName("Not found")
