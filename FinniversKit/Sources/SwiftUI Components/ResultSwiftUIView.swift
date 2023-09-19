@@ -64,7 +64,7 @@ struct ResultSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             ResultSwiftUIView(
-                image: Image(.ratingFaceDissatisfied),
+                image: Image(ImageAsset.ratingFaceDissatisfied),
                 imageSize: 50,
                 imageForegroundColor: .red,
                 title: "Usjda",
