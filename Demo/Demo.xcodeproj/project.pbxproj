@@ -297,7 +297,6 @@
 		46E772D3242CEF09008A5E93 /* NativeAdvertDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAdvertDemoView.swift; sourceTree = "<group>"; };
 		46E772D5242CEF09008A5E93 /* TextViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewDemoView.swift; sourceTree = "<group>"; };
 		46E772D7242CEF09008A5E93 /* SelectorTitleViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorTitleViewDemoView.swift; sourceTree = "<group>"; };
-		46E772D9242CEF09008A5E93 /* ObjectPageTitleDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPageTitleDemoView.swift; sourceTree = "<group>"; };
 		46E772DB242CEF09008A5E93 /* SafetyElementsDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafetyElementsDemoView.swift; sourceTree = "<group>"; };
 		46E772DD242CEF09008A5E93 /* PanelDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelDemoView.swift; sourceTree = "<group>"; };
 		46E772DF242CEF09008A5E93 /* DisclaimerDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclaimerDemoView.swift; sourceTree = "<group>"; };
@@ -860,7 +859,6 @@
 				4D152E792577DB0400282244 /* NavigationLinkView */,
 				8D680C5C0B76EA3807545F4D /* NumberedListView */,
 				46E77314242CEF09008A5E93 /* ObjectPagePriceView */,
-				46E772D8242CEF09008A5E93 /* ObjectPageTitleView */,
 				5B959406F634CEBB6F0318BB /* OverflowCollectionView */,
 				46E772DC242CEF09008A5E93 /* Panel */,
 				46E77349242CEF09008A5E93 /* Phases */,
@@ -933,14 +931,6 @@
 				46E772D7242CEF09008A5E93 /* SelectorTitleViewDemoView.swift */,
 			);
 			path = SelectorTitleView;
-			sourceTree = "<group>";
-		};
-		46E772D8242CEF09008A5E93 /* ObjectPageTitleView */ = {
-			isa = PBXGroup;
-			children = (
-				46E772D9242CEF09008A5E93 /* ObjectPageTitleDemoView.swift */,
-			);
-			path = ObjectPageTitleView;
 			sourceTree = "<group>";
 		};
 		46E772DA242CEF09008A5E93 /* SafetyElementsView */ = {
