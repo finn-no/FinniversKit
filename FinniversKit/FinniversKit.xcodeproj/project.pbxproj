@@ -38,6 +38,7 @@
 		14F4F1BE1FD6CEA800E9CECA /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
 		17009449297EE0E700E5650A /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17009448297EE0E700E5650A /* LoadingIndicator.swift */; };
 		1700944B297EE12300E5650A /* SwiftUILoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1700944A297EE12300E5650A /* SwiftUILoadingIndicator.swift */; };
+		172DCF282AB9A50800D890C2 /* HostingConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DCF272AB9A50800D890C2 /* HostingConfiguration.swift */; };
 		172E7502290FC86B00956AC2 /* HTMLText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E7501290FC86B00956AC2 /* HTMLText.swift */; };
 		175385AE291468F600DA57D2 /* HTMLStringUIKitStyleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175385AD291468F600DA57D2 /* HTMLStringUIKitStyleTranslator.swift */; };
 		175385B029146A4000DA57D2 /* HTMLStringStyleStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175385AF29146A4000DA57D2 /* HTMLStringStyleStack.swift */; };
@@ -553,6 +554,7 @@
 		14F4F1BD1FD6CEA800E9CECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17009448297EE0E700E5650A /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		1700944A297EE12300E5650A /* SwiftUILoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUILoadingIndicator.swift; sourceTree = "<group>"; };
+		172DCF272AB9A50800D890C2 /* HostingConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingConfiguration.swift; sourceTree = "<group>"; };
 		172E7501290FC86B00956AC2 /* HTMLText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLText.swift; sourceTree = "<group>"; };
 		175385AD291468F600DA57D2 /* HTMLStringUIKitStyleTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringUIKitStyleTranslator.swift; sourceTree = "<group>"; };
 		175385AF29146A4000DA57D2 /* HTMLStringStyleStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringStyleStack.swift; sourceTree = "<group>"; };
@@ -2596,6 +2598,7 @@
 				E6318FC428D9E7410038DC88 /* ViewModelCoordinator */,
 				9BB734C32462EA0500E05435 /* ButtonStyle.swift */,
 				E6E7B97829425C00005B7D64 /* ActionBarButtonItem.swift */,
+				172DCF272AB9A50800D890C2 /* HostingConfiguration.swift */,
 			);
 			path = "Base Components";
 			sourceTree = "<group>";
@@ -3705,6 +3708,7 @@
 				9BC33DEB22D76405007CCD65 /* LoginEntryDialogueView.swift in Sources */,
 				CF164CED230D916000250822 /* FavoriteFolderShareLinkView.swift in Sources */,
 				DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */,
+				172DCF282AB9A50800D890C2 /* HostingConfiguration.swift in Sources */,
 				625A220D221EB30700733101 /* UserAdManagementUserActionCell.swift in Sources */,
 				899D0BF8222D58D700794DEC /* FullscreenGalleryOverlayView.swift in Sources */,
 				444246032137D60400D42AB8 /* FavoriteFolderViewModel.swift in Sources */,
