@@ -6,7 +6,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case addressComponentView
     case badgeView
     case bannerTransparencyView
-    case blockUserView
     case bottomSheetMechanics
     case brazePromotionView
     case broadcast
@@ -227,8 +226,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return NumberedListDemoView()
         case .transactionEntryView:
             return TransactionEntryDemoView()
-        case .blockUserView:
-            return BlockUserDemoView()
         case .loadingRetryView:
             return LoadingRetryDemoView()
         case .promotionView:

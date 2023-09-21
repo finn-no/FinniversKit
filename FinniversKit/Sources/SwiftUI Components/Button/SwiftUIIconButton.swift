@@ -2,8 +2,8 @@ import SwiftUI
 
 public struct SwiftUIIconButton: View {
     public struct Style {
-        let icon: ImageAsset
-        let iconToggled: ImageAsset
+        let icon: UIImage
+        let iconToggled: UIImage
     }
 
     @Binding public var isToggled: Bool
@@ -15,7 +15,7 @@ public struct SwiftUIIconButton: View {
     }
 
     public var body: some View {
-        Image.init(isToggled ? style.iconToggled : style.icon)
+        Image.init(uiImage: isToggled ? style.icon : style.iconToggled)
             .accessibilityRemoveTraits(.isImage)
             .accessibilityAddTraits(isToggled ? [.isButton, .isSelected] : [.isButton])
             .opacity(isToggled ? 0.8 : 1)
@@ -24,8 +24,8 @@ public struct SwiftUIIconButton: View {
 
 public extension SwiftUIIconButton.Style {
     static let favorite = SwiftUIIconButton.Style(
-        icon: .favouriteAddImg,
-        iconToggled: .favouriteAddedImg
+        icon: .brandFavouriteAddImg,
+        iconToggled: .brandFavouriteAddedImg
     )
 }
 

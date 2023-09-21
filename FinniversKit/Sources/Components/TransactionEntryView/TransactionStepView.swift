@@ -81,7 +81,7 @@ private extension TransactionStepView {
 
         // MARK: - Private properties
 
-        private lazy var checkmarkImageView = UIImageView(imageName: .checkmarkBlue, withAutoLayout: true)
+        private lazy var checkmarkImageView = UIImageView(image: .brandCheckmark, withAutoLayout: true)
         private lazy var processIllustrationView = TransactionStepIllustrationView(color: .btnPrimary, withAutoLayout: true)
 
         // MARK: - Internal methods
