@@ -64,7 +64,7 @@ struct ResultSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             ResultSwiftUIView(
-                image: Image(ImageAsset.ratingFaceDissatisfied),
+                image: Image(.ratingFaceDissatisfied),
                 imageSize: 50,
                 imageForegroundColor: .red,
                 title: "Usjda",
@@ -74,7 +74,7 @@ struct ResultSwiftUIView_Previews: PreviewProvider {
             ).previewDisplayName("Error retry")
 
             ResultSwiftUIView(
-                image: Image(ImageAsset.magnifyingGlass),
+                image: Image(.magnifyingGlass),
                 title: "Klarte ikke finne annonsen",
                 text: "Det kan se ut som annonsen du kikker etter har blitt slettet"
             ).previewDisplayName("Not found")
