@@ -12,10 +12,10 @@ public class ConfettiView: UIView {
     ]
 
     private let confettiColors: [UIColor] = [
-        .primaryBlue,
-        .secondaryBlue,
-        .pea,
-        .watermelon
+        .blue600,
+        .aqua400,
+        .green400,
+        .red400
     ]
 
     private(set) var emissionRangeMultiplier: CGFloat = 8.0

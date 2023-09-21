@@ -34,9 +34,10 @@ final class FavoriteFolderActionButton: UIButton {
         setTitle(title, for: .normal)
 
         imageView?.tintColor = tintColor
-        adjustsImageWhenHighlighted = false
-        setImage(UIImage(named: icon).withRenderingMode(.alwaysTemplate), for: .normal)
-        setImage(UIImage(named: icon).withRenderingMode(.alwaysTemplate), for: .disabled)
+        let image = UIImage(named: icon).withRenderingMode(.alwaysTemplate)
+        setImage(image, for: .normal)
+        setImage(image, for: .disabled)
+        setImage(image, for: .highlighted)
 
         addSubview(separatorView)
     }

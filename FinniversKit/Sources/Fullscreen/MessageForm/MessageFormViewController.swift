@@ -60,7 +60,7 @@ class MessageFormViewController: UIViewController {
     private var lastUsedTemplate: MessageFormTemplate?
 
     private lazy var safeAreaHeight: CGFloat = {
-        return UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+        return UIApplication.shared.connectedScenes.keyWindow?.safeAreaInsets.bottom ?? 0
     }()
 
     // MARK: - Init

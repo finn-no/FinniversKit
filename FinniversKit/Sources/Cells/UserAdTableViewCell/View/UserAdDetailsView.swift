@@ -14,7 +14,7 @@ final class UserAdDetailsView: UIView {
         }
     }
 
-    var loadingColor: UIColor? = .toothPaste
+    var loadingColor: UIColor? = .aqua200
 
     // MARK: - Private properties
 

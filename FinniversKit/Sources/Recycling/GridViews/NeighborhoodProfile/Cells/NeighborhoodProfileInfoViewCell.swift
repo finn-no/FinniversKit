@@ -168,7 +168,7 @@ private final class InfoRowView: UIView {
     private lazy var detailTextLabel = makeLabel()
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.tintColor = .stone
+        imageView.tintColor = .textSecondary
         return imageView
     }()
 

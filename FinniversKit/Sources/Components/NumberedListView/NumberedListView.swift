@@ -74,7 +74,7 @@ public class NumberedListView: UIView {
 
     private func createNumberLabel(number: Int) -> Label {
         let label = Label(style: numberLabelStyle, withAutoLayout: true)
-        label.textColor = .primaryBlue
+        label.textColor = .textAction
         label.text = "\(number)"
         return label
     }

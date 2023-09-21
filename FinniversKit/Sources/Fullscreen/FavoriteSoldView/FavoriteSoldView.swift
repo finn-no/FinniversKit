@@ -202,7 +202,7 @@ public class FavoriteSoldView: UIView {
         if let imageUrl = model.imageUrl {
             imageView.loadImage(for: imageUrl,
                                 imageWidth: FavoriteSoldView.imageWidth,
-                                loadingColor: .toothPaste,
+                                loadingColor: .aqua200,
                                 fallbackImage: fallbackImage
             )
         } else {

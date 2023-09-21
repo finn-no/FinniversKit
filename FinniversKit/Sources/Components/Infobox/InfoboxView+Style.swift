@@ -83,7 +83,7 @@ public extension InfoboxView {
             case .normal(let backgroundColor, _):
                 return backgroundColor
             case .warning:
-                return .banana
+                return .yellow100
             }
         }
 
