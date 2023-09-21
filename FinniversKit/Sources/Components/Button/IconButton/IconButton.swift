@@ -33,7 +33,7 @@ public final class IconButton: UIButton {
         self.style = style
         super.init(frame: .zero)
         setImage(style.icon, for: .normal)
-        adjustsImageWhenHighlighted = false
+        setImage(style.icon, for: .highlighted)
     }
 
     required init?(coder: NSCoder) {

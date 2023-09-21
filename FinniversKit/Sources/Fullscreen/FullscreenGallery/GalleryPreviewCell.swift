@@ -76,6 +76,6 @@ class GalleryPreviewCell: UICollectionViewCell {
 
 private extension CGColor {
     class var selectedImageBorder: CGColor {
-        return .milk
+        return .white
     }
 }

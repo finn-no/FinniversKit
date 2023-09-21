@@ -18,7 +18,7 @@ enum Instrument: String {
         case .snare:
             return .yellow
         case .hats:
-            return .watermelon
+            return .red400
         case .cat:
             return .accentSecondaryBlue
         }

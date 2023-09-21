@@ -25,10 +25,11 @@ public class MapAddressButton: UIView {
         button.titleEdgeInsets = UIEdgeInsets(vertical: 0, horizontal: .spacingS)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
 
-        button.setImage(UIImage(named: .mapLocationPin), for: .normal)
+        let image = UIImage(named: .mapLocationPin)
+        button.setImage(image, for: .normal)
+        button.setImage(image, for: .highlighted)
         button.imageView?.tintColor = button.style.textColor
         button.imageView?.contentMode = .scaleAspectFit
-        button.adjustsImageWhenHighlighted = false
         return button
     }()
 

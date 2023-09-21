@@ -431,7 +431,7 @@ extension FavoriteAdsListView: UITableViewDelegate {
                 completionHandler(true)
             })
 
-        commentAction.backgroundColor = .licorice
+        commentAction.backgroundColor = .gray700
 
         let deleteAction = UIContextualAction(
             style: .normal,
@@ -487,7 +487,7 @@ extension FavoriteAdsListView: UITableViewDataSource {
         cell.delegate = self
 
         // Show a pretty color while we load the image
-        let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
+        let colors: [UIColor] = [.aqua200, .green100, .yellow100, .red100]
         cell.loadingColor = colors[indexPath.row % colors.count]
         cell.isMoreButtonHidden = isReadOnly
 

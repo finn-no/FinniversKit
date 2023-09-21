@@ -20,12 +20,12 @@ public extension FloatingButton {
 public extension FloatingButton.Style {
     static var favoritesXmasButtonStyle: FloatingButton.Style {
         FloatingButton.Style(
-            tintColor: .milk,
+            tintColor: .white,
             titleColor: .textTertiary,
-            primaryBackgroundColor: .cherry,
-            highlightedBackgroundColor: .cherry.withAlphaComponent(0.8),
+            primaryBackgroundColor: .red600,
+            highlightedBackgroundColor: .red600.withAlphaComponent(0.8),
             borderWidth: .spacingXS,
-            borderColor: .milk,
+            borderColor: .white,
             badgeBackgroundColor: .btnPrimary,
             badgeTextColor: .textPrimary,
             badgeSize: 30,

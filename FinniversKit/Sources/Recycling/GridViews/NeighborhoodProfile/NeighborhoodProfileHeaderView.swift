@@ -105,9 +105,10 @@ private final class ArrowButton: UIButton {
         setTitleColor(.btnPrimary, for: .normal)
         setTitleColor(.linkButtonHighlightedTextColor, for: .highlighted)
 
-        setImage(UIImage(named: .arrowRight).withRenderingMode(.alwaysTemplate), for: .normal)
+        let image = UIImage(named: .arrowRight).withRenderingMode(.alwaysTemplate)
+        setImage(image, for: .normal)
+        setImage(image, for: .highlighted)
         imageEdgeInsets = UIEdgeInsets(top: 3, leading: .spacingXS, bottom: 3, trailing: -.spacingXS)
         imageView?.contentMode = .scaleAspectFit
-        adjustsImageWhenHighlighted = false
     }
 }
