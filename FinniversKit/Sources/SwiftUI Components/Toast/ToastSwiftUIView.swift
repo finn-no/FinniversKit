@@ -17,7 +17,7 @@ public struct ToastSwiftUIView: View {
 
     public var body: some View {
         HStack(spacing: .spacingM) {
-            Image(style.imageAsset)
+            Image(named: style.imageAsset)
             Text(text)
                 .finnFont(.body)
                 .foregroundColor(.textToast)

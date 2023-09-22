@@ -109,7 +109,7 @@ public struct FinnTextField: View {
         SwiftUI.Button(action: {
             text = ""
         }, label: {
-            Image(ImageAsset.remove)
+            Image(named: .remove)
                 .renderingMode(.template)
                 .foregroundColor(Color.iconPrimary)
         })
@@ -119,7 +119,7 @@ public struct FinnTextField: View {
         SwiftUI.Button(action: {
             disclosePassword.toggle()
         }, label: {
-            Image(ImageAsset.view)
+            Image(named: .view)
                 .renderingMode(.template)
                 .foregroundColor(disclosePassword ? Color.accentSecondaryBlue : Color.iconPrimary)
         })
