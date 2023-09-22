@@ -38,7 +38,7 @@ public struct LoadingSwiftUIView: View {
                 // Since the indicator view starts at a smaller size we must wrap it for fixed size
                 VStack {
                     if showSuccess {
-                        Image(named:.checkmarkBig)
+                        Image(named: .checkmarkBig)
                             .renderingMode(.template)
                             .resizable()
                             .foregroundColor(isFullscreen ? .accentSecondaryBlue : .iconTertiary)
