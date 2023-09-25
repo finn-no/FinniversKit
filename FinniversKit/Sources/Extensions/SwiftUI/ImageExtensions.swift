@@ -5,7 +5,7 @@
 import SwiftUI
 
 extension Image {
-    init(_ assetName: ImageAsset) {
+    init(named assetName: ImageAsset) {
         self.init(assetName.rawValue, bundle: .finniversKit)
     }
 }
