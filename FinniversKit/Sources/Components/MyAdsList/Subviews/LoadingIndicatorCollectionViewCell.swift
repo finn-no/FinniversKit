@@ -1,6 +1,6 @@
 import UIKit
 
-public class LoadingIndicatorCollectionViewCell: UICollectionViewCell {
+class LoadingIndicatorCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Private properties
 
