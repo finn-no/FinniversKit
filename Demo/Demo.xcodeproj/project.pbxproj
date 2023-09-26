@@ -57,8 +57,6 @@
 		46E773D7242CEF0A008A5E93 /* FavoriteAdsListDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772AC242CEF09008A5E93 /* FavoriteAdsListDemoViewController.swift */; };
 		46E773D8242CEF0A008A5E93 /* FavoriteAdsDemoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772AD242CEF09008A5E93 /* FavoriteAdsDemoDataSource.swift */; };
 		46E773DB242CEF0A008A5E93 /* AdReporterDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772B2242CEF09008A5E93 /* AdReporterDemoView.swift */; };
-		46E773DC242CEF0A008A5E93 /* LoginViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772B4242CEF09008A5E93 /* LoginViewDefaultData.swift */; };
-		46E773DD242CEF0A008A5E93 /* LoginViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772B5242CEF09008A5E93 /* LoginViewDemoView.swift */; };
 		46E773DE242CEF0A008A5E93 /* BetaFeatureDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772B7242CEF09008A5E93 /* BetaFeatureDemoView.swift */; };
 		46E773EE242CEF0A008A5E93 /* VerificationActionSheetDemoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772CA242CEF09008A5E93 /* VerificationActionSheetDemoDelegate.swift */; };
 		46E773EF242CEF0A008A5E93 /* LoanCalculatorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772CD242CEF09008A5E93 /* LoanCalculatorDemoView.swift */; };
@@ -286,8 +284,6 @@
 		46E772AC242CEF09008A5E93 /* FavoriteAdsListDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListDemoViewController.swift; sourceTree = "<group>"; };
 		46E772AD242CEF09008A5E93 /* FavoriteAdsDemoDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsDemoDataSource.swift; sourceTree = "<group>"; };
 		46E772B2242CEF09008A5E93 /* AdReporterDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdReporterDemoView.swift; sourceTree = "<group>"; };
-		46E772B4242CEF09008A5E93 /* LoginViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDefaultData.swift; sourceTree = "<group>"; };
-		46E772B5242CEF09008A5E93 /* LoginViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDemoView.swift; sourceTree = "<group>"; };
 		46E772B7242CEF09008A5E93 /* BetaFeatureDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetaFeatureDemoView.swift; sourceTree = "<group>"; };
 		46E772CA242CEF09008A5E93 /* VerificationActionSheetDemoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationActionSheetDemoDelegate.swift; sourceTree = "<group>"; };
 		46E772CD242CEF09008A5E93 /* LoanCalculatorDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanCalculatorDemoView.swift; sourceTree = "<group>"; };
@@ -580,7 +576,6 @@
 				46E772A7242CEF09008A5E93 /* FrontPage */,
 				46E77292242CEF09008A5E93 /* FullscreenGallery */,
 				46E7726D242CEF09008A5E93 /* LoadingView */,
-				46E772B3242CEF09008A5E93 /* Login */,
 				46E77281242CEF09008A5E93 /* LoginEntry */,
 				46E772A2242CEF09008A5E93 /* MessageForm */,
 				71C6AA972549D27000D78269 /* MessageUserRequired */,
@@ -786,15 +781,6 @@
 				46E772B2242CEF09008A5E93 /* AdReporterDemoView.swift */,
 			);
 			path = AdReporter;
-			sourceTree = "<group>";
-		};
-		46E772B3242CEF09008A5E93 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				46E772B4242CEF09008A5E93 /* LoginViewDefaultData.swift */,
-				46E772B5242CEF09008A5E93 /* LoginViewDemoView.swift */,
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 		46E772B6242CEF09008A5E93 /* BetaFeatureView */ = {
@@ -2114,10 +2100,8 @@
 				46E773D7242CEF0A008A5E93 /* FavoriteAdsListDemoViewController.swift in Sources */,
 				46E77406242CEF0A008A5E93 /* VisibilityDrivenTitleDemoView.swift in Sources */,
 				46E773F5242CEF0A008A5E93 /* SelectorTitleViewDemoView.swift in Sources */,
-				46E773DC242CEF0A008A5E93 /* LoginViewDefaultData.swift in Sources */,
 				17EE08632AA8ABCC00A623F2 /* FrontPageTransactionListDemoViewController.swift in Sources */,
 				46E77435242CEF0A008A5E93 /* PhaseListViewDemo.swift in Sources */,
-				46E773DD242CEF0A008A5E93 /* LoginViewDemoView.swift in Sources */,
 				46E773BF242CEF0A008A5E93 /* LoginEntryViewDemoViewController.swift in Sources */,
 				46E7746C242CEF0A008A5E93 /* NotificationsListViewDemoViewHelpers.swift in Sources */,
 				46E7741D242CEF0A008A5E93 /* FloatingButtonDemoView.swift in Sources */,
