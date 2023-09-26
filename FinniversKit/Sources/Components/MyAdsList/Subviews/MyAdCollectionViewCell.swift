@@ -1,6 +1,6 @@
 import UIKit
 
-class MyAdCollectionViewCell: UICollectionViewCell {
+public class MyAdCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Private properties
 
@@ -92,20 +92,20 @@ class MyAdCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Overrides
 
-    override func prepareForReuse() {
+    public override func prepareForReuse() {
         super.prepareForReuse()
         remoteImageView.cancelLoading()
         statisticsStackView.removeArrangedSubviews()
     }
 
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         remoteImageView.layer.borderColor = UIColor.imageBorder.cgColor
     }
 
     // MARK: - Internal methods
 
-    func configure(ad: MyAdModel, remoteImageViewDataSource: RemoteImageViewDataSource?) {
+    public func configure(ad: MyAdModel, remoteImageViewDataSource: RemoteImageViewDataSource?) {
         remoteImageView.image = fallbackImage
         remoteImageView.backgroundColor = .bgSecondary
 
