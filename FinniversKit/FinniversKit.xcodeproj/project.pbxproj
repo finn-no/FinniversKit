@@ -561,6 +561,7 @@
 		1753871C291AA55000DA57D2 /* HTMLStringParserTextTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringParserTextTranslator.swift; sourceTree = "<group>"; };
 		1753871E291AA79600DA57D2 /* HTMLStringParserTextTranslatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringParserTextTranslatorTests.swift; sourceTree = "<group>"; };
 		17538722291ABC1B00DA57D2 /* HTMLElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLElement.swift; sourceTree = "<group>"; };
+		176794872AC1AE97006C9649 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
 		177A86CE2912B98C00F02088 /* CharacterSetExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSetExtensions.swift; sourceTree = "<group>"; };
 		177A871B2913B40900F02088 /* HTMLStringSwiftUIStyleTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringSwiftUIStyleTranslator.swift; sourceTree = "<group>"; };
 		177A871D2913B87400F02088 /* HTMLTextFinnStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextFinnStyle.swift; sourceTree = "<group>"; };
@@ -1243,6 +1244,7 @@
 		25D04D721F583B1800EA317D = {
 			isa = PBXGroup;
 			children = (
+				176794872AC1AE97006C9649 /* Package.swift */,
 				4447F6631FDB2B110033DBC1 /* Sources */,
 				14F4F1BA1FD6CEA800E9CECA /* UnitTests */,
 				25D04D7C1F583B1800EA317D /* Products */,
@@ -3478,7 +3480,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				ORGANIZATIONNAME = "FINN AS";
 				TargetAttributes = {
 					14F4F1B81FD6CEA800E9CECA = {
@@ -4145,6 +4147,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -4208,6 +4211,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
