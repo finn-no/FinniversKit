@@ -57,7 +57,7 @@ private struct ConsentTransparencyViewModel: PopupViewModel {
     let linkButtonTitle: String? = nil
     let descriptionTitle = "Dine data, dine valg"
     let descriptionText: String? = nil
-    let image = UIImage(named: "consentTransparencyImage")!
+    let image: UIImage = .brandConsentTransparency
 
     var attributedDescriptionText: NSAttributedString? {
         let mutableAttributedString = NSMutableAttributedString()
