@@ -102,6 +102,7 @@ class MarketsGridViewCell: UICollectionViewCell {
             contentStackView.widthAnchor.constraint(equalTo: widthAnchor),
             contentStackView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor),
             contentStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            contentStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
 
             externalLinkImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             externalLinkImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
