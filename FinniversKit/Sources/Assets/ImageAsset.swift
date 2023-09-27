@@ -33,7 +33,6 @@ extension UIImage {
 //swiftlint:disable superfluous_disable_command
 //swiftlint:disable type_body_length
 enum ImageAsset: String {
-    case attachmentMore
     case adManagementShare
     case arrowDown
     case arrowDownSmall
@@ -41,6 +40,7 @@ enum ImageAsset: String {
     case arrowUp
     case arrowUpSmall
     case attachment
+    case attachmentMore
     case avatar
     case bankID
     case betaPill
@@ -171,7 +171,6 @@ enum ImageAsset: String {
 
     static var imageNames: [ImageAsset] {
         return [
-            .attachmentMore,
             .adManagementShare,
             .arrowDown,
             .arrowDownSmall,
@@ -179,6 +178,7 @@ enum ImageAsset: String {
             .arrowUp,
             .arrowUpSmall,
             .attachment,
+            .attachmentMore,
             .avatar,
             .bankID,
             .betaPill,
