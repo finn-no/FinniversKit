@@ -86,23 +86,23 @@ public struct DefaultImageProvider: ImageProvider {
         UIImage(named: .sliderThumbActive)
     }
     
-    var brandMessageAttachMore: UIImage {
+    public var brandMessageAttachMore: UIImage {
         UIImage(named: .attachmentMore)
     }
     
-    var brandTrust: UIImage {
+    public var brandTrust: UIImage {
         UIImage(named: .trust)
     }
     
-    var brandTrustStarOutline: UIImage {
+    public var brandTrustStarOutline: UIImage {
         UIImage(named: .trustStarOutline)
     }
     
-    var brandTrustVerified: UIImage {
+    public var brandTrustVerified: UIImage {
         UIImage(named: .trustVerified)
     }
     
-    var brandMapDirections: UIImage {
+    public var brandMapDirections: UIImage {
         UIImage(named: .mapDirections)
     }
 }
