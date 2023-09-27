@@ -178,7 +178,7 @@ enum ImageAsset: String {
             .arrowUp,
             .arrowUpSmall,
             .attachment,
-            .attachmentMore
+            .attachmentMore,
             .avatar,
             .bankID,
             .betaPill,
