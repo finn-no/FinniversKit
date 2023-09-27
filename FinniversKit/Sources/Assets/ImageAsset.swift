@@ -40,6 +40,7 @@ enum ImageAsset: String {
     case arrowUp
     case arrowUpSmall
     case attachment
+    case attachmentMore
     case avatar
     case bankID
     case betaPill
@@ -160,6 +161,9 @@ enum ImageAsset: String {
     case statsEnvelope
     case statsHeart
     case success
+    case trust
+    case trustStarOutline
+    case trustVerified
     case view
     case viewMode
     case warning
@@ -174,6 +178,7 @@ enum ImageAsset: String {
             .arrowUp,
             .arrowUpSmall,
             .attachment,
+            .attachmentMore
             .avatar,
             .bankID,
             .betaPill,
@@ -294,6 +299,9 @@ enum ImageAsset: String {
             .statsEnvelope,
             .statsHeart,
             .success,
+            .trust,
+            .trustStarOutline,
+            .trustVerified,
             .view,
             .viewMode,
             .warning,
