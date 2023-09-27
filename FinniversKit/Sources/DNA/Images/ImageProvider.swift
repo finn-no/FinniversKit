@@ -27,7 +27,7 @@ public protocol ImageProvider {
     var brandMessageAttachMore: UIImage { get }
     
     // Trust
-    var brandTrust: UIImage { get }
+    var brandConsentTransparency: UIImage { get }
     var brandTrustStarOutline: UIImage { get }
     var brandTrustVerified: UIImage { get }
     
@@ -90,8 +90,8 @@ public struct DefaultImageProvider: ImageProvider {
         UIImage(named: .attachmentMore)
     }
     
-    public var brandTrust: UIImage {
-        UIImage(named: .trust)
+    public var brandConsentTransparency: UIImage {
+        UIImage(named: .consentTransparency)
     }
     
     public var brandTrustStarOutline: UIImage {

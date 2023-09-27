@@ -59,6 +59,7 @@ enum ImageAsset: String {
     case christmasWishListBanner
     case clock
     case close
+    case consentTransparency
     case confetti1
     case confetti2
     case contract
@@ -161,7 +162,6 @@ enum ImageAsset: String {
     case statsEnvelope
     case statsHeart
     case success
-    case trust
     case trustStarOutline
     case trustVerified
     case view
@@ -197,6 +197,7 @@ enum ImageAsset: String {
             .christmasWishListBanner,
             .clock,
             .close,
+            .consentTransparency,
             .confetti1,
             .confetti2,
             .contract,
@@ -299,7 +300,6 @@ enum ImageAsset: String {
             .statsEnvelope,
             .statsHeart,
             .success,
-            .trust,
             .trustStarOutline,
             .trustVerified,
             .view,

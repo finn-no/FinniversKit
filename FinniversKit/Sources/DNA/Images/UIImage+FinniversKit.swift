@@ -54,8 +54,8 @@ import UIKit
         Config.imageProvider.brandMessageAttachMore
     }
     
-    class var brandTrust: UIImage {
-        Config.imageProvider.brandTrust
+    class var brandConsentTransparency: UIImage {
+        Config.imageProvider.brandConsentTransparency
     }
     
     class var brandTrustStarOutline: UIImage {
