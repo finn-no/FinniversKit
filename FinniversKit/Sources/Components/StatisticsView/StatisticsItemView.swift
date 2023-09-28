@@ -74,6 +74,8 @@ final class StatisticsItemView: UIView {
                 return UIImage(named: .statsClick).withRenderingMode(.alwaysTemplate)
             case .favourited:
                 return UIImage(named: .statsHeart).withRenderingMode(.alwaysTemplate)
+            case .messagesReceived:
+                return UIImage(named: .statsEnvelope).withRenderingMode(.alwaysTemplate)
             }
         }
 
