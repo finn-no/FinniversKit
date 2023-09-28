@@ -49,4 +49,24 @@ import UIKit
     class var brandSliderThumbActive: UIImage {
         Config.imageProvider.brandSliderThumbActive
     }
+    
+    class var brandMessageAttachMore: UIImage {
+        Config.imageProvider.brandMessageAttachMore
+    }
+    
+    class var brandConsentTransparency: UIImage {
+        Config.imageProvider.brandConsentTransparency
+    }
+    
+    class var brandTrustStarOutline: UIImage {
+        Config.imageProvider.brandTrustStarOutline
+    }
+    
+    class var brandTrustVerified: UIImage {
+        Config.imageProvider.brandTrustVerified
+    }
+    
+    class var brandMapDirections: UIImage {
+        Config.imageProvider.brandMapDirections
+    }
 }

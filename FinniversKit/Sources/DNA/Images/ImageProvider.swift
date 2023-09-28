@@ -14,6 +14,7 @@ public protocol ImageProvider {
     func brandCheckboxSelected(index: Int) -> UIImage?
     func brandCheckboxUnselected(index: Int) -> UIImage?
     
+    // General
     var brandFavouriteAdd: UIImage { get }
     var brandFavouriteAdded: UIImage { get }
     var brandFavouriteAddImg: UIImage { get }
@@ -21,6 +22,18 @@ public protocol ImageProvider {
     var brandCheckmark: UIImage { get }
     var brandSliderThumb: UIImage { get }
     var brandSliderThumbActive: UIImage { get }
+    
+    // Messaging
+    var brandMessageAttachMore: UIImage { get }
+    
+    // Trust
+    var brandConsentTransparency: UIImage { get }
+    var brandTrustStarOutline: UIImage { get }
+    var brandTrustVerified: UIImage { get }
+    
+    // Maps
+    var brandMapDirections: UIImage { get }
+    
 }
 
 // MARK: - Default FINN images
@@ -71,5 +84,25 @@ public struct DefaultImageProvider: ImageProvider {
     
     public var brandSliderThumbActive: UIImage {
         UIImage(named: .sliderThumbActive)
+    }
+    
+    public var brandMessageAttachMore: UIImage {
+        UIImage(named: .attachmentMore)
+    }
+    
+    public var brandConsentTransparency: UIImage {
+        UIImage(named: .consentTransparency)
+    }
+    
+    public var brandTrustStarOutline: UIImage {
+        UIImage(named: .trustStarOutline)
+    }
+    
+    public var brandTrustVerified: UIImage {
+        UIImage(named: .trustVerified)
+    }
+    
+    public var brandMapDirections: UIImage {
+        UIImage(named: .mapDirections)
     }
 }

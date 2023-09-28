@@ -43,7 +43,7 @@ extension BuyerPickerDemoView: BuyerPickerViewDelegate {
 
     func buyerPickerView(_ buyerPickerView: BuyerPickerView, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let url = model.image else {
-            let placeholderImage = UIImage(named: .consentTransparencyImage)
+            let placeholderImage: UIImage = .brandConsentTransparency
             completion(placeholderImage)
             return
         }
