@@ -30,7 +30,7 @@ public class MarketsGridView: UIView, MarketsView {
     private weak var delegate: MarketsViewDelegate?
     private weak var dataSource: MarketsViewDataSource?
 
-    private let itemSize = CGSize(width: 92, height: 72)
+    private let itemSize = CGSize(width: 92, height: 80)
     private let itemSpacing: CGFloat = .spacingS
     private let sideMargin: CGFloat = .spacingM
     private let rowSpacing: CGFloat = .spacingS

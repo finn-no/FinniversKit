@@ -35,7 +35,7 @@ class MarketsGridViewCell: UICollectionViewCell {
         return view
     }()
 
-    private lazy var contentStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+    private lazy var contentStackView = UIStackView(axis: .vertical, spacing: .spacingXS, withAutoLayout: true)
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
@@ -65,6 +65,8 @@ class MarketsGridViewCell: UICollectionViewCell {
         }
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
+        label.numberOfLines = 2
+        label.contentMode = .top
         return label
     }()
 
@@ -90,12 +92,14 @@ class MarketsGridViewCell: UICollectionViewCell {
         containerView.addSubview(externalLinkImageView)
         containerView.addSubview(contentStackView)
         contentStackView.addArrangedSubviews([iconImageView, titleLabel])
+        contentStackView.alignment = .center
 
         sharpShadowView.fillInSuperview()
         smoothShadowView.fillInSuperview()
         containerView.fillInSuperview()
 
         NSLayoutConstraint.activate([
+            iconImageView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: 8),
             iconImageView.heightAnchor.constraint(equalToConstant: 28),
             iconImageView.widthAnchor.constraint(equalToConstant: 42),
 
@@ -107,7 +111,12 @@ class MarketsGridViewCell: UICollectionViewCell {
             externalLinkImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             externalLinkImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             externalLinkImageView.widthAnchor.constraint(equalToConstant: 12),
-            externalLinkImageView.heightAnchor.constraint(equalToConstant: 12)
+            externalLinkImageView.heightAnchor.constraint(equalToConstant: 12),
+
+            titleLabel.leadingAnchor.constraint(equalTo: contentStackView.leadingAnchor, constant: 4),
+            titleLabel.trailingAnchor.constraint(equalTo: contentStackView.trailingAnchor, constant: -4),
+
+            titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 2 * titleLabel.font.lineHeight)
         ])
     }
 
