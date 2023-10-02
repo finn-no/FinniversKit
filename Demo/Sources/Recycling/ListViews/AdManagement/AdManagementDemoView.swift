@@ -60,8 +60,7 @@ class AdManagementDemoView: UIView {
     private static var exampleStatisticsCellModels: [StatisticsItemModel] = [
         .init(type: .seen, value: 968, text: "har sett annonsen"),
         .init(type: .favourited, value: 16, text: "har lagret annonsen"),
-        .init(type: .email, value: 1337, text: "har fått e-post om annonsen"),
-        .init(type: .messagesReceived, value: 500, text: "messages received")
+        .init(type: .email, value: 1337, text: "har fått e-post om annonsen")
     ]
 
     private var statisticsCellModels: [StatisticsItemModel] = exampleStatisticsCellModels {
