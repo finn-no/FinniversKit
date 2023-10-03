@@ -59,4 +59,8 @@ class TableViewCellsViewTests: XCTestCase {
     func testUserAdCell() {
         snapshot(.userAdCell)
     }
+
+    func testHostingContentConfigurationCell() {
+        snapshot(.hostingContentConfiguration)
+    }
 }
