@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build-and-test:
     macos:
-      xcode: 14.3.1
+      xcode: 15.0.0
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
@@ -13,7 +13,7 @@ jobs:
 
   swiftlint:
     macos:
-      xcode: 14.3.1
+      xcode: 15.0.0
     steps:
       - checkout
       - run: brew install swiftlint

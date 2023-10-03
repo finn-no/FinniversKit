@@ -54,7 +54,6 @@ enum ImageAsset: String {
     case christmasPromotion
     case classifieds
     case classifiedsNew
-    case consentTransparencyImage
     case contract
     case creditCard
     case cross
@@ -165,7 +164,6 @@ enum ImageAsset: String {
             .christmasPromotion,
             .classifieds,
             .classifiedsNew,
-            .consentTransparencyImage,
             .contract,
             .creditCard,
             .cross,

@@ -73,7 +73,6 @@ extension Label {
 
         becomeFirstResponder()
         let textRect = self.textRect(forBounds: bounds, limitedToNumberOfLines: 1)
-        UIMenuController.shared.setTargetRect(textRect, in: self)
-        UIMenuController.shared.setMenuVisible(true, animated: true)
+        UIMenuController.shared.showMenu(from: self, rect: textRect)
     }
 }

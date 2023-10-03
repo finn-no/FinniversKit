@@ -67,8 +67,9 @@ final class AddFavoriteFolderButton: UIButton {
         imageView?.contentMode = .center
         imageView?.layer.cornerRadius = 12
 
-        adjustsImageWhenHighlighted = false
-        setImage(UIImage(named: .favoritesPlus).withRenderingMode(.alwaysTemplate), for: .normal)
+        let image = UIImage(named: .favoritesPlus).withRenderingMode(.alwaysTemplate)
+        setImage(image, for: .normal)
+        setImage(image, for: .highlighted)
 
         titleLabel?.font = .bodyStrong
         setTitleColor(.btnAction, for: .normal)

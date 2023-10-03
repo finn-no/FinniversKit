@@ -3,7 +3,7 @@
     {
       "identity" : "demokit-ios",
       "kind" : "remoteSourceControl",
-      "location" : "git@github.com:finn-no/DemoKit-iOS.git",
+      "location" : "https://github.com/finn-no/DemoKit-iOS.git",
       "state" : {
         "revision" : "c17f55cf4054fab4cd9a8ce591a4e5c2c465231c",
         "version" : "0.2.0"

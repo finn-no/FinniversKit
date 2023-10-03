@@ -15,10 +15,10 @@ final class InstrumentTests: XCTestCase {
     }
 
     func testColor() {
-        XCTAssertEqual(Instrument.kick.color, .pea)
+        XCTAssertEqual(Instrument.kick.color, .green400)
         XCTAssertEqual(Instrument.snare.color, UIColor(red: 235 / 255.0, green: 201 / 255.0, blue: 62 / 255.0, alpha: 1.0))
-        XCTAssertEqual(Instrument.hats.color, .watermelon)
-        XCTAssertEqual(Instrument.cat.color, .secondaryBlue)
+        XCTAssertEqual(Instrument.hats.color, .red400)
+        XCTAssertEqual(Instrument.cat.color, .aqua400)
     }
 
     func testSound() {

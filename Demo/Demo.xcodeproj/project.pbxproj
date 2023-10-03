@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		170CE96C2ABB3C680069759D /* DemoKitSnapshot in Frameworks */ = {isa = PBXBuildFile; productRef = 170CE96B2ABB3C680069759D /* DemoKitSnapshot */; };
 		172DCF2B2AB9C71200D890C2 /* HostingConfigurationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DCF2A2AB9C71200D890C2 /* HostingConfigurationCell.swift */; };
 		172E7504290FE28E00956AC2 /* HTMLTextDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */; };
 		1732932D29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1732932C29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift */; };
+		17A869A32ABB349300A7054E /* DemoKit in Frameworks */ = {isa = PBXBuildFile; productRef = 17A869A22ABB349300A7054E /* DemoKit */; };
 		17BF44C929893E98001A5877 /* LoadingSwiftUIDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BF44C829893E98001A5877 /* LoadingSwiftUIDemoView.swift */; };
 		17EE085E2AA720AB00A623F2 /* FrontPageTransactionDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE085D2AA720AB00A623F2 /* FrontPageTransactionDemoViewController.swift */; };
 		17EE08632AA8ABCC00A623F2 /* FrontPageTransactionListDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE08622AA8ABCC00A623F2 /* FrontPageTransactionListDemoViewController.swift */; };
@@ -56,8 +58,6 @@
 		46E773D7242CEF0A008A5E93 /* FavoriteAdsListDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772AC242CEF09008A5E93 /* FavoriteAdsListDemoViewController.swift */; };
 		46E773D8242CEF0A008A5E93 /* FavoriteAdsDemoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772AD242CEF09008A5E93 /* FavoriteAdsDemoDataSource.swift */; };
 		46E773DB242CEF0A008A5E93 /* AdReporterDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772B2242CEF09008A5E93 /* AdReporterDemoView.swift */; };
-		46E773DC242CEF0A008A5E93 /* LoginViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772B4242CEF09008A5E93 /* LoginViewDefaultData.swift */; };
-		46E773DD242CEF0A008A5E93 /* LoginViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772B5242CEF09008A5E93 /* LoginViewDemoView.swift */; };
 		46E773DE242CEF0A008A5E93 /* BetaFeatureDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772B7242CEF09008A5E93 /* BetaFeatureDemoView.swift */; };
 		46E773EE242CEF0A008A5E93 /* VerificationActionSheetDemoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772CA242CEF09008A5E93 /* VerificationActionSheetDemoDelegate.swift */; };
 		46E773EF242CEF0A008A5E93 /* LoanCalculatorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772CD242CEF09008A5E93 /* LoanCalculatorDemoView.swift */; };
@@ -207,8 +207,6 @@
 		E6510A6727FB378B001B40D6 /* ScrollableTabDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510A6627FB378B001B40D6 /* ScrollableTabDemoView.swift */; };
 		E681A0EC2923FDA4008564E2 /* HyperlinkTextViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0EB2923FDA4008564E2 /* HyperlinkTextViewDemoView.swift */; };
 		F085BC2A29719E5200376A8B /* ViewingsRedesignDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F085BC2929719E5200376A8B /* ViewingsRedesignDemoView.swift */; };
-		F09FBC252A7156F5005C334B /* DemoKit in Frameworks */ = {isa = PBXBuildFile; productRef = F09FBC242A7156F5005C334B /* DemoKit */; };
-		F09FBC272A715704005C334B /* DemoKitSnapshot in Frameworks */ = {isa = PBXBuildFile; productRef = F09FBC262A715704005C334B /* DemoKitSnapshot */; };
 		F3D30537299F8FC200C4C4ED /* SelectionListSeparatedRadiobuttonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D30536299F8FC200C4C4ED /* SelectionListSeparatedRadiobuttonDemoView.swift */; };
 /* End PBXBuildFile section */
 
@@ -288,8 +286,6 @@
 		46E772AC242CEF09008A5E93 /* FavoriteAdsListDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListDemoViewController.swift; sourceTree = "<group>"; };
 		46E772AD242CEF09008A5E93 /* FavoriteAdsDemoDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsDemoDataSource.swift; sourceTree = "<group>"; };
 		46E772B2242CEF09008A5E93 /* AdReporterDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdReporterDemoView.swift; sourceTree = "<group>"; };
-		46E772B4242CEF09008A5E93 /* LoginViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDefaultData.swift; sourceTree = "<group>"; };
-		46E772B5242CEF09008A5E93 /* LoginViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDemoView.swift; sourceTree = "<group>"; };
 		46E772B7242CEF09008A5E93 /* BetaFeatureDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetaFeatureDemoView.swift; sourceTree = "<group>"; };
 		46E772CA242CEF09008A5E93 /* VerificationActionSheetDemoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationActionSheetDemoDelegate.swift; sourceTree = "<group>"; };
 		46E772CD242CEF09008A5E93 /* LoanCalculatorDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanCalculatorDemoView.swift; sourceTree = "<group>"; };
@@ -449,7 +445,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F09FBC252A7156F5005C334B /* DemoKit in Frameworks */,
+				17A869A32ABB349300A7054E /* DemoKit in Frameworks */,
 				46E77563242CFFA5008A5E93 /* FinniversKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,7 +454,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F09FBC272A715704005C334B /* DemoKitSnapshot in Frameworks */,
+				170CE96C2ABB3C680069759D /* DemoKitSnapshot in Frameworks */,
 				46E7759D242D6A8A008A5E93 /* FinniversKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,7 +586,6 @@
 				46E772A7242CEF09008A5E93 /* FrontPage */,
 				46E77292242CEF09008A5E93 /* FullscreenGallery */,
 				46E7726D242CEF09008A5E93 /* LoadingView */,
-				46E772B3242CEF09008A5E93 /* Login */,
 				46E77281242CEF09008A5E93 /* LoginEntry */,
 				46E772A2242CEF09008A5E93 /* MessageForm */,
 				71C6AA972549D27000D78269 /* MessageUserRequired */,
@@ -796,15 +791,6 @@
 				46E772B2242CEF09008A5E93 /* AdReporterDemoView.swift */,
 			);
 			path = AdReporter;
-			sourceTree = "<group>";
-		};
-		46E772B3242CEF09008A5E93 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				46E772B4242CEF09008A5E93 /* LoginViewDefaultData.swift */,
-				46E772B5242CEF09008A5E93 /* LoginViewDemoView.swift */,
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 		46E772B6242CEF09008A5E93 /* BetaFeatureView */ = {
@@ -1881,7 +1867,7 @@
 			);
 			name = Demo;
 			packageProductDependencies = (
-				F09FBC242A7156F5005C334B /* DemoKit */,
+				17A869A22ABB349300A7054E /* DemoKit */,
 			);
 			productName = Demo;
 			productReference = 46AE6FC0242BADC9007BB005 /* Demo.app */;
@@ -1902,7 +1888,7 @@
 			);
 			name = SnapshotTests;
 			packageProductDependencies = (
-				F09FBC262A715704005C334B /* DemoKitSnapshot */,
+				170CE96B2ABB3C680069759D /* DemoKitSnapshot */,
 			);
 			productName = SnapshotTests;
 			productReference = 46E7756C242D4736008A5E93 /* SnapshotTests.xctest */;
@@ -1916,7 +1902,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				ORGANIZATIONNAME = "FINN.no AS";
 				TargetAttributes = {
 					46AE6FBF242BADC9007BB005 = {
@@ -1938,7 +1924,7 @@
 			);
 			mainGroup = 46AE6FB7242BADC9007BB005;
 			packageReferences = (
-				F09FBC1F2A7156CF005C334B /* XCRemoteSwiftPackageReference "DemoKit-iOS" */,
+				17A869A12ABB349300A7054E /* XCRemoteSwiftPackageReference "DemoKit-iOS" */,
 			);
 			productRefGroup = 46AE6FC1242BADC9007BB005 /* Products */;
 			projectDirPath = "";
@@ -2126,10 +2112,8 @@
 				46E773D7242CEF0A008A5E93 /* FavoriteAdsListDemoViewController.swift in Sources */,
 				46E77406242CEF0A008A5E93 /* VisibilityDrivenTitleDemoView.swift in Sources */,
 				46E773F5242CEF0A008A5E93 /* SelectorTitleViewDemoView.swift in Sources */,
-				46E773DC242CEF0A008A5E93 /* LoginViewDefaultData.swift in Sources */,
 				17EE08632AA8ABCC00A623F2 /* FrontPageTransactionListDemoViewController.swift in Sources */,
 				46E77435242CEF0A008A5E93 /* PhaseListViewDemo.swift in Sources */,
-				46E773DD242CEF0A008A5E93 /* LoginViewDemoView.swift in Sources */,
 				46E773BF242CEF0A008A5E93 /* LoginEntryViewDemoViewController.swift in Sources */,
 				46E7746C242CEF0A008A5E93 /* NotificationsListViewDemoViewHelpers.swift in Sources */,
 				46E7741D242CEF0A008A5E93 /* FloatingButtonDemoView.swift in Sources */,
@@ -2473,9 +2457,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F09FBC1F2A7156CF005C334B /* XCRemoteSwiftPackageReference "DemoKit-iOS" */ = {
+		17A869A12ABB349300A7054E /* XCRemoteSwiftPackageReference "DemoKit-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:finn-no/DemoKit-iOS.git";
+			repositoryURL = "https://github.com/finn-no/DemoKit-iOS.git";
 			requirement = {
 				kind = exactVersion;
 				version = 0.2.0;
@@ -2484,15 +2468,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F09FBC242A7156F5005C334B /* DemoKit */ = {
+		170CE96B2ABB3C680069759D /* DemoKitSnapshot */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F09FBC1F2A7156CF005C334B /* XCRemoteSwiftPackageReference "DemoKit-iOS" */;
-			productName = DemoKit;
-		};
-		F09FBC262A715704005C334B /* DemoKitSnapshot */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F09FBC1F2A7156CF005C334B /* XCRemoteSwiftPackageReference "DemoKit-iOS" */;
+			package = 17A869A12ABB349300A7054E /* XCRemoteSwiftPackageReference "DemoKit-iOS" */;
 			productName = DemoKitSnapshot;
+		};
+		17A869A22ABB349300A7054E /* DemoKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17A869A12ABB349300A7054E /* XCRemoteSwiftPackageReference "DemoKit-iOS" */;
+			productName = DemoKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

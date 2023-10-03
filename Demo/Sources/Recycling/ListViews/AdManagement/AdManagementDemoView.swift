@@ -25,27 +25,27 @@ class AdManagementDemoView: UIView {
 
     private var actionCellModels: [[AdManagementActionCellModel]] = [
         [
-            AdManagementActionCellModel(title: "Gå til enkel utleie dashboard", iconImage: .stakeholder, trailingItem: .external)
+            AdManagementActionCellModel(title: "Gå til enkel utleie dashboard", iconImageAsset: .stakeholder, trailingItem: .external)
         ],
         [
-            AdManagementActionCellModel(title: "Slett annonsen", iconImage: .adManagementTrashcan),
-            AdManagementActionCellModel(title: "Skjul annonsen midlertidig", iconImage: .eyeHide),
-            AdManagementActionCellModel(title: "Flott toggle", iconImage: .checkCircle, trailingItem: .toggle),
+            AdManagementActionCellModel(title: "Slett annonsen", iconImageAsset: .adManagementTrashcan),
+            AdManagementActionCellModel(title: "Skjul annonsen midlertidig", iconImageAsset: .eyeHide),
+            AdManagementActionCellModel(title: "Flott toggle", iconImageAsset: .checkCircle, trailingItem: .toggle),
         ],
         [
-            AdManagementActionCellModel(title: "Rediger annonsen", iconImage: .pencilPaper, trailingItem: .chevron),
-            AdManagementActionCellModel(title: "Legg ut annonsen på nytt", iconImage: .republish, trailingItem: .chevron)
+            AdManagementActionCellModel(title: "Rediger annonsen", iconImageAsset: .pencilPaper, trailingItem: .chevron),
+            AdManagementActionCellModel(title: "Legg ut annonsen på nytt", iconImageAsset: .republish, trailingItem: .chevron)
         ],
         [
-            AdManagementActionCellModel(title: "Marker annonsen som solgt", iconImage: .checkCircle),
-            AdManagementActionCellModel(title: "Eierskifteforsikring", iconImage: .more, trailingItem: .chevron)
+            AdManagementActionCellModel(title: "Marker annonsen som solgt", iconImageAsset: .checkCircle),
+            AdManagementActionCellModel(title: "Eierskifteforsikring", iconImageAsset: .more, trailingItem: .chevron)
         ],
         [
-            AdManagementActionCellModel(title: "Vis annonsen i søkeresultater", iconImage: .view),
-            AdManagementActionCellModel(title: "Fjern solgtmarkering", iconImage: .uncheckCircle)
+            AdManagementActionCellModel(title: "Vis annonsen i søkeresultater", iconImageAsset: .view),
+            AdManagementActionCellModel(title: "Fjern solgtmarkering", iconImageAsset: .uncheckCircle)
         ],
         [
-            AdManagementActionCellModel(title: "Gi en vurdering", iconImage: .rated, trailingItem: .chevron)
+            AdManagementActionCellModel(title: "Gi en vurdering", iconImageAsset: .rated, trailingItem: .chevron)
         ]
     ]
 
@@ -191,7 +191,7 @@ extension AdManagementDemoView: UserAdManagementActionCellDelegate {
 // MARK: - Private extensions
 
 private extension AdManagementActionCellModel {
-    init(title: String, iconImage: ImageAsset, trailingItem: TrailingItem = .none) {
-        self.init(title: title, iconImage: UIImage(named: iconImage), trailingItem: trailingItem)
+    init(title: String, iconImageAsset: ImageAsset, trailingItem: TrailingItem = .none) {
+        self.init(title: title, iconImage: UIImage(named: iconImageAsset), trailingItem: trailingItem)
     }
 }

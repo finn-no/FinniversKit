@@ -8,6 +8,7 @@ public struct StatisticsItemModel {
     public enum StatisticsItemType {
         case seen
         case favourited
+        case messagesReceived
         case email
     }
 

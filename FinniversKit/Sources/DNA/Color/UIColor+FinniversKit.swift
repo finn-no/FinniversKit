@@ -347,6 +347,15 @@ extension CGColor {
     public class var yellow900: CGColor { UIColor.yellow900.cgColor }
 }
 
+#if os(iOS)
+public extension CGColor {
+    // White, black and clear only exists on macOS for CGColor
+    class var black: CGColor { .init(gray: 0, alpha: 1) }
+    class var clear: CGColor { .init(gray: 0, alpha: 0) }
+    class var white: CGColor { .init(gray: 1, alpha: 1) }
+}
+#endif
+
 // MARK: - Button UIColors
 @objc extension UIColor {
     public class var callToActionButtonHighlightedBodyColor: UIColor {
