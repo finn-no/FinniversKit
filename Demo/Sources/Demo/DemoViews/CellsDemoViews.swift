@@ -51,7 +51,7 @@ enum CellsDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
         case .userAdCell:
             return UserAdCellDemoView()
         case .hostingContentConfiguration:
-            return HostingContentConfigurationCellDemoView()
+            return HostingContentConfigurationCellDemoViewController()
         }
     }
 }

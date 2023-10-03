@@ -26,6 +26,8 @@ private final class ContentView<Content>: UIView, UIContentView where Content: V
         }
     }
 
+    private weak var hostingController: UIHostingController<Content>?
+
     init(_ configuration: UIContentConfiguration) {
         self.configuration = configuration
         super.init(frame: .zero)
@@ -33,6 +35,10 @@ private final class ContentView<Content>: UIView, UIContentView where Content: V
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    deinit {
+        hostingController?.removeFromParent()
     }
 
     func configure(_ configuration: UIContentConfiguration) {
@@ -64,6 +70,7 @@ private final class ContentView<Content>: UIView, UIContentView where Content: V
             bottomAnchor.constraint(equalTo: swiftUICellView.bottomAnchor)
         ])
         hostingController.didMove(toParent: parent)
+        self.hostingController = hostingController
     }
 }
 
