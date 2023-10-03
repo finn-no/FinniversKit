@@ -30,6 +30,7 @@ public protocol ImageProvider {
     var brandConsentTransparency: UIImage { get }
     var brandTrustStarOutline: UIImage { get }
     var brandTrustVerified: UIImage { get }
+    var brandTrustVerifiedOutlined: UIImage { get }
     
     // Maps
     var brandMapDirections: UIImage { get }
@@ -100,6 +101,10 @@ public struct DefaultImageProvider: ImageProvider {
     
     public var brandTrustVerified: UIImage {
         UIImage(named: .trustVerified)
+    }
+    
+    public var brandTrustVerifiedOutlined: UIImage {
+        UIImage(named: .trustVerifiedOutline)
     }
     
     public var brandMapDirections: UIImage {

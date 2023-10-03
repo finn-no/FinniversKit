@@ -66,6 +66,10 @@ import UIKit
         Config.imageProvider.brandTrustVerified
     }
     
+    class var brandTrustVerifiedOutline: UIImage {
+        Config.imageProvider.brandTrustVerifiedOutlined
+    }
+    
     class var brandMapDirections: UIImage {
         Config.imageProvider.brandMapDirections
     }
