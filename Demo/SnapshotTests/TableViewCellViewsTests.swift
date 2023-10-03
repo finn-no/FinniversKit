@@ -61,6 +61,6 @@ class TableViewCellsViewTests: XCTestCase {
     }
 
     func testHostingContentConfigurationCell() {
-        snapshot(.hostingContentConfiguration)
+        snapshot(.hostingContentConfigurationCell)
     }
 }
