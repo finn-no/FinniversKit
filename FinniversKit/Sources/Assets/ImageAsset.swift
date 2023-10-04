@@ -164,6 +164,7 @@ enum ImageAsset: String {
     case success
     case trustStarOutline
     case trustVerified
+    case trustVerifiedOutline
     case view
     case viewMode
     case warning
@@ -302,6 +303,7 @@ enum ImageAsset: String {
             .success,
             .trustStarOutline,
             .trustVerified,
+            .trustVerifiedOutline,
             .view,
             .viewMode,
             .warning,
