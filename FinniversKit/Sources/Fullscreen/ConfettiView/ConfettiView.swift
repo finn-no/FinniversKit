@@ -12,8 +12,8 @@ public class ConfettiView: UIView {
     ]
 
     private let confettiColors: [UIColor] = [
-        .blue600,
-        .aqua400,
+        .nmpBrandDecoration,
+        .nmpBrandColorSecondary,
         .green400,
         .red400
     ]
