@@ -10,6 +10,7 @@ enum SwiftUIDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case checkBox
     case floatingButton
     case htmlText
+    case iconButton
     case loadingIndicator
     case loadingView
     case radioButton
@@ -38,6 +39,8 @@ enum SwiftUIDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return SwiftUIFloatingButton_Previews()
         case .htmlText:
             return HTMLTextDemoViewController()
+        case .iconButton:
+            return SwiftUIIconButton_Previews()
         case .loadingIndicator:
             return SwiftUILoadingIndicatorDemoView_Previews()
         case .loadingView:
@@ -60,6 +63,7 @@ enum SwiftUIDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
 
 // MARK: - PreviewProvider conformances
 
+extension SwiftUIIconButton_Previews: Demoable {}
 extension SwiftUICheckBox_Previews: Demoable {}
 extension SwiftUIFloatingButton_Previews: Demoable {}
 extension SwiftUIRadioButton_Previews: Demoable {}
