@@ -31,21 +31,22 @@ public enum Market: MarketsViewModel {
     case leiebilNew
     case nettbilNew
 
+    //ADDED MORE WORDS TO TEST
     public var title: String {
         switch self {
         case .eiendom, .eiendomNew: return "Eiendom"
         case .bil: return "Bil"
         case .torget, .torgetNew: return "Torget"
-        case .jobb, .jobbNew: return "Jobb"
+        case .jobb, .jobbNew: return "Nya andra Jobb och arbeten"
         case .mc, .mcNew: return "MC"
-        case .boat, .boatNew: return "Båt"
+        case .boat, .boatNew: return "Båtar och segelbåtar"
         case .nytte: return "Nyttekjøretøy"
         case .reise, .reiseNew: return "Reise"
         case .shopping: return "Shopping"
-        case .economy, .economyNew: return "Økonomi"
-        case .moteplassen, .moteplassenNew: return "Møteplassen"
+        case .economy, .economyNew: return "Økonomi o pengar"
+        case .moteplassen, .moteplassenNew: return "Møteplassen o test line"
         case .mittAnbud: return "Oppdrag"
-        case .mittAnbudNew: return "Mitt anbud"
+        case .mittAnbudNew: return "Mitt anbud och ditt"
         case .leiebilNew: return "Leiebil"
         case .nettbilNew: return "Nettbil"
         case .bilOgNaering: return "Bil og næring"

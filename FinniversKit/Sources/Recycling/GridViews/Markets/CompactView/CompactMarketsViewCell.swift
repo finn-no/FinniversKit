@@ -3,7 +3,7 @@ import UIKit
 class CompactMarketsViewCell: UICollectionViewCell {
 
     // MARK: - Internal properties
-
+    
     var model: MarketsViewModel? {
         didSet {
             titleLabel.text = model?.title
@@ -55,9 +55,13 @@ class CompactMarketsViewCell: UICollectionViewCell {
     private lazy var titleLabel: Label = {
         let label = Label(style: Self.titleLabelStyle, withAutoLayout: true)
         label.textAlignment = .left
+        
+        
         return label
     }()
 
+    public var isFinn: Bool = true
+    
     // MARK: - Init
 
     override init(frame: CGRect) {
@@ -124,13 +128,15 @@ class CompactMarketsViewCell: UICollectionViewCell {
 // MARK: - Size calculations
 
 extension CompactMarketsViewCell {
+    
     static let contentInsets = UIEdgeInsets(vertical: .spacingS, horizontal: 12)
     static let titleLabelStyle = Label.Style.captionStrong
     static let cellHeight: CGFloat = 34
     static let itemSpacing = CGFloat.spacingS
     static let externalLinkImageSize = CGSize(width: 12, height: 12)
 
-    static func size(for model: MarketsViewModel) -> CGSize {
+    
+    static func size(isFinn: Bool, for model: MarketsViewModel) -> CGSize {
         var widths: [CGFloat] = [
             contentInsets.leading,
             itemSpacing,

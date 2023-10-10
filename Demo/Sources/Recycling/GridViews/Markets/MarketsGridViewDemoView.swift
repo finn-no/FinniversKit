@@ -16,7 +16,6 @@ class MarketsGridViewDemoView: UIView, Demoable {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
         setup()
     }
 
@@ -24,6 +23,7 @@ class MarketsGridViewDemoView: UIView, Demoable {
 
     private func setup() {
         let collectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
+        collectionView.isFinn = true
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(collectionView)
         NSLayoutConstraint.activate([

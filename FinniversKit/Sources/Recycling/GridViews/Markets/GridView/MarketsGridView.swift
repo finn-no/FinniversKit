@@ -19,6 +19,9 @@ public class MarketsGridView: UIView, MarketsView {
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
+    
+    public var isFinn: Bool = false //how to tel if the user is in finn or func or something to set this
+                                    //Solution: could you in set this from the app?
 
     private lazy var hiddenAccessibilityHeader: UIAccessibilityElement = {
         let element = UIAccessibilityElement(accessibilityContainer: self)
@@ -29,8 +32,8 @@ public class MarketsGridView: UIView, MarketsView {
 
     private weak var delegate: MarketsViewDelegate?
     private weak var dataSource: MarketsViewDataSource?
-
-    private let itemSize = CGSize(width: 92, height: 72)
+     
+    private var itemSize = CGSize(width: 92, height: 72)
     private let itemSpacing: CGFloat = .spacingS
     private let sideMargin: CGFloat = .spacingM
     private let rowSpacing: CGFloat = .spacingS
@@ -49,7 +52,7 @@ public class MarketsGridView: UIView, MarketsView {
             rightSideGradientLayer?.removeFromSuperlayer()
         }
     }
-
+    
     // MARK: - Setup
 
     public init(frame: CGRect = .zero, accessibilityHeader: String, delegate: MarketsViewDelegate, dataSource: MarketsViewDataSource) {
@@ -57,7 +60,7 @@ public class MarketsGridView: UIView, MarketsView {
 
         self.delegate = delegate
         self.dataSource = dataSource
-
+        
         setup()
         hiddenAccessibilityHeader.accessibilityLabel = accessibilityHeader
 
@@ -81,8 +84,17 @@ public class MarketsGridView: UIView, MarketsView {
     private func setup() {
         clipsToBounds = false
         backgroundColor = .clear
+        
         collectionView.register(MarketsGridViewCell.self)
+        
         addSubview(collectionView)
+        
+        if isFinn {
+            itemSize = CGSize(width: 92, height: 72)
+        }
+        else {
+            itemSize = CGSize(width: 96, height: 88)
+        }
 
         collectionView.fillInSuperview()
 
@@ -119,8 +131,8 @@ public class MarketsGridView: UIView, MarketsView {
         let gridInsets = insets(for: width)
         let rows = numberOfRows(for: width)
 
-        let height = (itemSize.height * CGFloat(rows)) + (rowSpacing * CGFloat(rows - 1)) + gridInsets.top + gridInsets.bottom
-
+        var height = (itemSize.height * CGFloat(rows)) + (rowSpacing * CGFloat(rows - 1)) + gridInsets.top + gridInsets.bottom
+                
         return CGSize(width: width, height: height)
     }
 
@@ -244,12 +256,16 @@ extension MarketsGridView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let marketCell = MarketsGridViewCell.self
+        
         let cell = collectionView.dequeue(MarketsGridViewCell.self, for: indexPath)
 
         if let model = dataSource?.marketsView(self, modelAtIndex: indexPath.row) {
             cell.model = model
         }
-
+        
+        cell.isFinn = isFinn
+        
         return cell
     }
 }

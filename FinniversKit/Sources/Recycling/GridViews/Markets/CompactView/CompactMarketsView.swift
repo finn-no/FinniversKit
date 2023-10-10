@@ -55,6 +55,7 @@ public class CompactMarketsView: UIView, MarketsView {
         return view
     }()
 
+    public var isFinn: Bool = false
     // MARK: - Init
 
     public init(
@@ -126,7 +127,7 @@ extension CompactMarketsView: UICollectionViewDelegateFlowLayout {
             return .zero
         }
 
-        return CompactMarketsViewCell.size(for: model)
+        return CompactMarketsViewCell.size(isFinn: true, for: model)
     }
 }
 

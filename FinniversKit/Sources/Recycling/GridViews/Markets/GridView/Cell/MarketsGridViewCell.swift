@@ -8,7 +8,9 @@ class MarketsGridViewCell: UICollectionViewCell {
     // MARK: - Internal properties
 
     private let cornerRadius: CGFloat = 16
-
+    
+    var isFinn: Bool = true //
+    
     private lazy var sharpShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .clear
@@ -28,10 +30,11 @@ class MarketsGridViewCell: UICollectionViewCell {
     }()
 
     private lazy var containerView: UIView = {
-        let view = UIView(withAutoLayout: true)
+        var view = UIView(withAutoLayout: true)
         view.backgroundColor = .tileBackgroundColor
         view.layer.cornerRadius = cornerRadius
         view.clipsToBounds = true
+        
         return view
     }()
 
@@ -65,13 +68,15 @@ class MarketsGridViewCell: UICollectionViewCell {
         }
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
+        
         return label
     }()
 
     // MARK: - Setup
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setup()
     }
 
@@ -79,14 +84,16 @@ class MarketsGridViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
         setup()
     }
+    
+  
 
     private func setup() {
         isAccessibilityElement = true
-        backgroundColor = .clear
-
+        
         addSubview(sharpShadowView)
         addSubview(smoothShadowView)
         addSubview(containerView)
+        
         containerView.addSubview(externalLinkImageView)
         containerView.addSubview(contentStackView)
         contentStackView.addArrangedSubviews([iconImageView, titleLabel])
@@ -94,20 +101,32 @@ class MarketsGridViewCell: UICollectionViewCell {
         sharpShadowView.fillInSuperview()
         smoothShadowView.fillInSuperview()
         containerView.fillInSuperview()
-
+        
+        contentStackView.spacing = 8
+        
         NSLayoutConstraint.activate([
             iconImageView.heightAnchor.constraint(equalToConstant: 28),
             iconImageView.widthAnchor.constraint(equalToConstant: 42),
-
+            
             contentStackView.widthAnchor.constraint(equalTo: widthAnchor),
             contentStackView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor),
             contentStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
-
+            
+            contentStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
+            contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 4),
+            
+          //Getting this when removing one of the constraints to satisfy the constraints:  👓❌ Unable to link Reveal. File not found:
+         //   '/Users/joakim.lundberg@schibsted.com/Library/Application Support/Reveal/RevealServer/RevealServer.xcframework/ios-arm64_x86_64-simulator/RevealServer.framework/RevealServer'
+            
             externalLinkImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             externalLinkImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             externalLinkImageView.widthAnchor.constraint(equalToConstant: 12),
-            externalLinkImageView.heightAnchor.constraint(equalToConstant: 12)
+            externalLinkImageView.heightAnchor.constraint(equalToConstant: 12),
+            
+            
         ])
+        
+        
     }
 
     // MARK: - Superclass Overrides
