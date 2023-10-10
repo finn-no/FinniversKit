@@ -10,6 +10,10 @@ public struct HostingContentConfiguration<Content>: UIContentConfiguration where
         hostingController = UIHostingController(rootView: content())
     }
 
+    public init(hostingController: UIHostingController<Content>) {
+        self.hostingController = hostingController
+    }
+
     public func makeContentView() -> UIView & UIContentView {
         ContentView<Content>(self)
     }
