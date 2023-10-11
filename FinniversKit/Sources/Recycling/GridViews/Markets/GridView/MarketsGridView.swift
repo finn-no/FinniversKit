@@ -256,7 +256,6 @@ extension MarketsGridView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let marketCell = MarketsGridViewCell.self
         
         let cell = collectionView.dequeue(MarketsGridViewCell.self, for: indexPath)
 
