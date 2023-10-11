@@ -3,9 +3,12 @@ import FinniversKit
 import SwiftUI
 
 final class HostingContentConfigurationCell: UITableViewCell {
+    var onUpdateCellsConfiguredCount: (() -> Void)?
+
     override func prepareForReuse() {
         super.prepareForReuse()
         self.contentConfiguration = nil
+        onUpdateCellsConfiguredCount?()
     }
 }
 
@@ -32,6 +35,15 @@ final class HostingContentConfigurationCellDemoViewController: UIViewController,
         setup()
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateCellsConfiguredCount()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     private func setup() {
         let contentStack = UIStackView(axis: .vertical, withAutoLayout: true)
         contentStack.addArrangedSubviews([tableView, countLabel])
@@ -44,8 +56,14 @@ final class HostingContentConfigurationCellDemoViewController: UIViewController,
         ])
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    var cellsConfiguredCount = 0 {
+        didSet {
+            updateCellsConfiguredCount()
+        }
+    }
+
+    func updateCellsConfiguredCount() {
+        countLabel.text = "Child controllers: \(cellsConfiguredCount)"
     }
 }
 
@@ -66,9 +84,10 @@ extension HostingContentConfigurationCellDemoViewController: UITableViewDataSour
                 Text("Cell \(index)")
             }
         }
-
-        countLabel.text = "Child controllers: \(children.count)"
-
+        cell.onUpdateCellsConfiguredCount = { [weak self] in
+            self?.cellsConfiguredCount -= 1
+        }
+        cellsConfiguredCount += 1
         return cell
     }
 }
