@@ -11,7 +11,9 @@ public struct HostingContentConfiguration<Content>: UIContentConfiguration where
     public let hostingController: UIHostingController<Content>
 
     public init(@ViewBuilder content: () -> Content) {
-        self.hostingController = UIHostingController(rootView: content())
+        let hostingController = UIHostingController(rootView: content())
+        hostingController.view.backgroundColor = .clear
+        self.hostingController = hostingController
     }
 
     public init(hostingController: UIHostingController<Content>) {
