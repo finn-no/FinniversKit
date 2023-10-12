@@ -8,6 +8,8 @@ class MarketsGridViewCell: UICollectionViewCell {
     // MARK: - Internal properties
 
     private let cornerRadius: CGFloat = 16
+    
+    var isFinn: Bool = true
 
     private lazy var sharpShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
@@ -95,12 +97,14 @@ class MarketsGridViewCell: UICollectionViewCell {
         smoothShadowView.fillInSuperview()
         containerView.fillInSuperview()
 
+        contentStackView.spacing = 8
+        
         NSLayoutConstraint.activate([
             iconImageView.heightAnchor.constraint(equalToConstant: 28),
             iconImageView.widthAnchor.constraint(equalToConstant: 42),
 
-            contentStackView.widthAnchor.constraint(equalTo: widthAnchor),
-            contentStackView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor),
+            contentStackView.widthAnchor.constraint(equalTo: widthAnchor - 8),
+            contentStackView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor - 20),
             contentStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
 
             externalLinkImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),

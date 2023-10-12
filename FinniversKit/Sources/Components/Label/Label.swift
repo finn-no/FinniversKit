@@ -15,7 +15,7 @@ public class Label: UILabel {
 
     public init(
         style: Style,
-        numberOfLines: Int = 1,
+        numberOfLines: Int = 2,
         textColor: UIColor = .textPrimary,
         withAutoLayout: Bool = false
     ) {

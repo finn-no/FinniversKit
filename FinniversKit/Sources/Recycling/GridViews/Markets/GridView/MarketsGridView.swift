@@ -29,8 +29,10 @@ public class MarketsGridView: UIView, MarketsView {
 
     private weak var delegate: MarketsViewDelegate?
     private weak var dataSource: MarketsViewDataSource?
+    
+    public var isFinn: Bool = true //how to tell is the user is in finn?
 
-    private let itemSize = CGSize(width: 92, height: 72)
+    private var itemSize = CGSize(width: 92, height: 72)
     private let itemSpacing: CGFloat = .spacingS
     private let sideMargin: CGFloat = .spacingM
     private let rowSpacing: CGFloat = .spacingS
@@ -83,6 +85,13 @@ public class MarketsGridView: UIView, MarketsView {
         backgroundColor = .clear
         collectionView.register(MarketsGridViewCell.self)
         addSubview(collectionView)
+        
+        if isFinn {
+            itemSize = CGSize(width: 92, height: 72)
+        }
+        else {
+            itemSize = CGSize(width: 96, height: 88)
+        }
 
         collectionView.fillInSuperview()
 
@@ -119,7 +128,7 @@ public class MarketsGridView: UIView, MarketsView {
         let gridInsets = insets(for: width)
         let rows = numberOfRows(for: width)
 
-        let height = (itemSize.height * CGFloat(rows)) + (rowSpacing * CGFloat(rows - 1)) + gridInsets.top + gridInsets.bottom
+        var height = (itemSize.height * CGFloat(rows)) + (rowSpacing * CGFloat(rows - 1)) + gridInsets.top + gridInsets.bottom
 
         return CGSize(width: width, height: height)
     }
@@ -249,6 +258,8 @@ extension MarketsGridView: UICollectionViewDataSource {
         if let model = dataSource?.marketsView(self, modelAtIndex: indexPath.row) {
             cell.model = model
         }
+        
+        cell.isFinn = isFinn
 
         return cell
     }
