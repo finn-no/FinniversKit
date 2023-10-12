@@ -174,6 +174,8 @@
 		4DD3AA7C27B56592007B107E /* DetailCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3AA7B27B56591007B107E /* DetailCalloutView.swift */; };
 		55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* Broadcast.swift */; };
 		55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B277203DB56A007D7277 /* BroadcastMessage.swift */; };
+		573B3FF82ACC1B75005096EC /* SettingsViewIconCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573B3FF72ACC1B75005096EC /* SettingsViewIconCellModel.swift */; };
+		57D7DFFA2ACEAFA9004C6D84 /* SettingsViewIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D7DFF92ACEAFA9004C6D84 /* SettingsViewIconCell.swift */; };
 		5B9590BF11466FFFC29766C3 /* SelectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9595BF11C0D7740F6E697F /* SelectionListView.swift */; };
 		5B9590C4F97B88CEB542E5E7 /* JobKeyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959633B525C75ECF858B21 /* JobKeyInfoView.swift */; };
 		5B9593883DABC3AF83C45016 /* CheckmarkItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959CD34FCA1F6EE3802802 /* CheckmarkItemDetailView.swift */; };
@@ -690,6 +692,8 @@
 		4DD3AA7B27B56591007B107E /* DetailCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCalloutView.swift; sourceTree = "<group>"; };
 		55C5B273203D8E20007D7277 /* Broadcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Broadcast.swift; sourceTree = "<group>"; };
 		55C5B277203DB56A007D7277 /* BroadcastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastMessage.swift; sourceTree = "<group>"; };
+		573B3FF72ACC1B75005096EC /* SettingsViewIconCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewIconCellModel.swift; sourceTree = "<group>"; };
+		57D7DFF92ACEAFA9004C6D84 /* SettingsViewIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewIconCell.swift; sourceTree = "<group>"; };
 		5B959240C94F8A2F44F428F3 /* OverflowCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverflowCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B95934A9A5BBB3F4E389FC4 /* JobKeyInfoView+Separator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JobKeyInfoView+Separator.swift"; sourceTree = "<group>"; };
 		5B9593B3E39A4B31F9FE5B9C /* LoadingIndicatorCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -3204,6 +3208,7 @@
 				DAD6EB192369916100968497 /* SettingsViewConsentCell.swift */,
 				DAD6EB1A2369916100968497 /* SettingsViewCell.swift */,
 				DAD6EB1B2369916100968497 /* SettingsViewToggleCell.swift */,
+				57D7DFF92ACEAFA9004C6D84 /* SettingsViewIconCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -3215,6 +3220,7 @@
 				DAD6EB1D2369916100968497 /* SettingsViewCellModel.swift */,
 				DAD6EB1F2369916100968497 /* SettingsViewConsentCellModel.swift */,
 				DAD6EB1E2369916100968497 /* SettingsViewToggleCellModel.swift */,
+				573B3FF72ACC1B75005096EC /* SettingsViewIconCellModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3653,6 +3659,7 @@
 				44A149ED21377C7B0053D5F7 /* SavedSearchesListViewModel.swift in Sources */,
 				9BEB287B231D484B00D28BAD /* LoanHeaderView.swift in Sources */,
 				496F8C142473DCC600AE0735 /* FavoriteSoldView.swift in Sources */,
+				57D7DFFA2ACEAFA9004C6D84 /* SettingsViewIconCell.swift in Sources */,
 				CF7496BF23BE26D700D60901 /* FavoriteFolderActionView.swift in Sources */,
 				CF164CF0230E7FF100250822 /* FavoriteFolderShareToggleView.swift in Sources */,
 				9B06097323F14BD6005CB592 /* ElementContentView.swift in Sources */,
@@ -3730,6 +3737,7 @@
 				CFF9727221C3BA1D00C85238 /* BannerTransparencyView.swift in Sources */,
 				44A557B522E72187001667AE /* HeartTableViewCell.swift in Sources */,
 				089DF42321C13178008A8711 /* RectangleGiftView.swift in Sources */,
+				573B3FF82ACC1B75005096EC /* SettingsViewIconCellModel.swift in Sources */,
 				4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */,
 				441FE431209A24E500B04EF1 /* AdRecommendationsGridHeaderView.swift in Sources */,
 				0881432A22E1B974008CB5DA /* ToastButton.swift in Sources */,
