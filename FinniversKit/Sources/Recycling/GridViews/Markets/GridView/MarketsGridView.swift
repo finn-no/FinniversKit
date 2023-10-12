@@ -88,8 +88,7 @@ public class MarketsGridView: UIView, MarketsView {
         
         if isFinn {
             itemSize = CGSize(width: 92, height: 72)
-        }
-        else {
+        } else {
             itemSize = CGSize(width: 96, height: 88)
         }
 
