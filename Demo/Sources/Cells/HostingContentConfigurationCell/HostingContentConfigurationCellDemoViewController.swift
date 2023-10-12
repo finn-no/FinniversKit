@@ -2,7 +2,7 @@ import DemoKit
 import FinniversKit
 import SwiftUI
 
-final class HostingContentConfigurationCell: UITableViewCell {
+final class HostingContentConfigurationDemoCell: UITableViewCell {
     var onUpdateCellsConfiguredCount: (() -> Void)?
 
     override func prepareForReuse() {
@@ -18,7 +18,7 @@ final class HostingContentConfigurationCellDemoViewController: UIViewController,
     private lazy var tableView: UITableView = {
         let tableView = UITableView(withAutoLayout: true)
         tableView.dataSource = self
-        tableView.register(HostingContentConfigurationCell.self)
+        tableView.register(HostingContentConfigurationDemoCell.self)
         tableView.separatorInset = .leadingInset(view.bounds.width)
         return tableView
     }()
@@ -76,7 +76,7 @@ extension HostingContentConfigurationCellDemoViewController: UITableViewDataSour
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let index = indexPath.row
-        let cell = tableView.dequeue(HostingContentConfigurationCell.self, for: indexPath)
+        let cell = tableView.dequeue(HostingContentConfigurationDemoCell.self, for: indexPath)
         cell.contentConfiguration = HostingContentConfiguration {
             VStack {
                 Text("Cell \(index)")
