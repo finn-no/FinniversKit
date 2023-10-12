@@ -32,15 +32,15 @@ public struct HostingContentConfiguration<Content>: UIContentConfiguration where
 private final class ContentView<Content>: UIView, UIContentView where Content: View {
     var configuration: UIContentConfiguration
 
-    private var hostingController: UIHostingController<Content> {
-        (configuration as! HostingContentConfiguration<Content>).hostingController
+    private var hostingController: UIHostingController<Content>? {
+        (configuration as? HostingContentConfiguration<Content>)?.hostingController
     }
 
     init(_ configuration: HostingContentConfiguration<Content>) {
         self.configuration = configuration
         super.init(frame: .zero)
 
-        guard let hostingView = hostingController.view else { return }
+        guard let hostingView = hostingController?.view else { return }
         hostingView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(hostingView)
         NSLayoutConstraint.activate([
@@ -56,6 +56,7 @@ private final class ContentView<Content>: UIView, UIContentView where Content: V
     }
 
     override func didMoveToSuperview() {
+        guard let hostingController else { return }
         if superview == nil {
             hostingController.willMove(toParent: nil)
             hostingController.removeFromParent()
