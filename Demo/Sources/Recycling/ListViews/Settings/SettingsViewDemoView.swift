@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import struct SwiftUI.Color
 
 // MARK: - Models
 private struct SettingsToggleItem: SettingsViewToggleCellModel {
@@ -18,6 +19,11 @@ private struct SettingsConsentItem: SettingsViewConsentCellModel {
 
 private struct SettingsItem: SettingsViewCellModel {
     let title: String
+}
+
+private struct SettingsIconItem: SettingsViewIconCellModel {
+    var title: String
+    var icon: (image: UIImage, tintColor: Color?)
 }
 
 // MARK: - SettingsViewDemoView
@@ -39,7 +45,8 @@ class SettingsViewDemoView: UIView, Demoable {
                 SettingsConsentItem(title: "Motta viktig informasjon fra FINN", status: "På"),
                 SettingsItem(title: "Smart reklame"),
                 SettingsItem(title: "Last ned dine data"),
-                SettingsItem(title: "Slett meg som bruker")
+                SettingsItem(title: "Slett meg som bruker"),
+                SettingsIconItem(title: "Personvernerklæring", icon: (image: .init(systemName: "square.and.arrow.up")!, tintColor: .textSecondary))
             ],
             footerTitle: nil
         )

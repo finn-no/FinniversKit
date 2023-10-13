@@ -16,16 +16,17 @@ public struct SwiftUIIconButton: View {
 
     public var body: some View {
         Image.init(uiImage: isToggled ? style.iconToggled : style.icon)
+            .renderingMode(.template)
+            .foregroundColor(isToggled ? .btnPrimary : .iconSecondary)
             .accessibilityRemoveTraits(.isImage)
             .accessibilityAddTraits(isToggled ? [.isButton, .isSelected] : [.isButton])
-            .opacity(isToggled ? 0.8 : 1)
     }
 }
 
 public extension SwiftUIIconButton.Style {
     static let favorite = SwiftUIIconButton.Style(
-        icon: .brandFavouriteAddImg,
-        iconToggled: .brandFavouriteAddedImg
+        icon: UIImage(named: .favoriteDefault),
+        iconToggled: UIImage(named: .favoriteActive)
     )
 }
 

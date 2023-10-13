@@ -9,10 +9,10 @@ public enum SettingsHeaderType {
 
 public struct SettingsSection {
     public let header: SettingsHeaderType?
-    public var items: [SettingsViewCellModel]
+    public var items: [any SettingsViewCellModel]
     public let footerTitle: String?
 
-    public init(header: SettingsHeaderType? = nil, items: [SettingsViewCellModel], footerTitle: String? = nil) {
+    public init(header: SettingsHeaderType? = nil, items: [any SettingsViewCellModel], footerTitle: String? = nil) {
         self.header = header
         self.items = items
         self.footerTitle = footerTitle

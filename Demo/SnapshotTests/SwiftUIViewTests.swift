@@ -22,6 +22,10 @@ class SwiftUIViewTests: XCTestCase {
         snapshot(.htmlText)
     }
 
+    func testIconButton() {
+        snapshot(.iconButton)
+    }
+
     func testLoadingIndicator() {
         snapshot(.loadingIndicator)
     }

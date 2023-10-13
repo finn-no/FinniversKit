@@ -4,9 +4,10 @@
 
 public class CheckmarkTitleView: UIView {
     private lazy var checkmarkImageView: UIImageView = {
-        let image = UIImage(named: .check)
+        let image = UIImage(named: .check).withRenderingMode(.alwaysTemplate)
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
+        imageView.tintColor = .nmpBrandDecoration
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
