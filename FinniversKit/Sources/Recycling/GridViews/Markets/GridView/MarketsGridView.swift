@@ -30,7 +30,8 @@ public class MarketsGridView: UIView, MarketsView {
     private weak var delegate: MarketsViewDelegate?
     private weak var dataSource: MarketsViewDataSource?
     
-    public var isFinn: Bool = true //how to tell is the user is in finn?
+    //how to tell is the user is in finn?
+    public var isFinn: Bool = true
 
     private var itemSize = CGSize(width: 92, height: 72)
     private let itemSpacing: CGFloat = .spacingS
