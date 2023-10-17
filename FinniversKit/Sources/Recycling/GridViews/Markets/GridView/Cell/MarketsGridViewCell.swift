@@ -85,9 +85,8 @@ class MarketsGridViewCell: UICollectionViewCell {
         setup()
     }
     
-  
-
     private func setup() {
+        
         isAccessibilityElement = true
         
         addSubview(sharpShadowView)
@@ -102,24 +101,16 @@ class MarketsGridViewCell: UICollectionViewCell {
         smoothShadowView.fillInSuperview()
         containerView.fillInSuperview()
         
+        contentStackView.alignment = .center
         contentStackView.spacing = 8
+        contentStackView.layoutMargins = UIEdgeInsets(top: 10, leading: 4, bottom: 10, trailing: 4)
         
         NSLayoutConstraint.activate([
-            iconImageView.heightAnchor.constraint(equalToConstant: 28),
-            iconImageView.widthAnchor.constraint(equalToConstant: 42),
             
             contentStackView.widthAnchor.constraint(equalTo: widthAnchor),
+            
             contentStackView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor),
             contentStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            
-            contentStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
-            contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 4),
-            
-            iconImageView.topAnchor.constraint(equalTo: contentStackView.topAnchor, constant: -10),
-            titleLabel.bottomAnchor.constraint(equalTo: contentStackView.bottomAnchor, constant: 10),
-            
-          // Getting this when removing one of the constraints to satisfy the constraints:  👓❌ Unable to link Reveal. File not found:
-         //   '/Users/joakim.lundberg@schibsted.com/Library/Application Support/Reveal/RevealServer/RevealServer.xcframework/ios-arm64_x86_64-simulator/RevealServer.framework/RevealServer'
             
             externalLinkImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             externalLinkImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
