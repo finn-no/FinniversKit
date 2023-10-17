@@ -97,7 +97,7 @@ class MarketsGridViewCell: UICollectionViewCell {
         containerView.addSubview(externalLinkImageView)
         containerView.addSubview(contentStackView)
         contentStackView.addArrangedSubviews([iconImageView, titleLabel])
-
+        
         sharpShadowView.fillInSuperview()
         smoothShadowView.fillInSuperview()
         containerView.fillInSuperview()
@@ -114,6 +114,9 @@ class MarketsGridViewCell: UICollectionViewCell {
             
             contentStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
             contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 4),
+            
+            iconImageView.topAnchor.constraint(equalTo: contentStackView.topAnchor, constant: -10),
+            titleLabel.bottomAnchor.constraint(equalTo: contentStackView.bottomAnchor, constant: 10),
             
           // Getting this when removing one of the constraints to satisfy the constraints:  👓❌ Unable to link Reveal. File not found:
          //   '/Users/joakim.lundberg@schibsted.com/Library/Application Support/Reveal/RevealServer/RevealServer.xcframework/ios-arm64_x86_64-simulator/RevealServer.framework/RevealServer'
