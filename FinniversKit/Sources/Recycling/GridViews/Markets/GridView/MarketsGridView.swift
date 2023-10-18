@@ -82,6 +82,7 @@ public class MarketsGridView: UIView, MarketsView {
     }
 
     private func setup() {
+        print("Setting up;", isFinn)
         clipsToBounds = false
         backgroundColor = .clear
         

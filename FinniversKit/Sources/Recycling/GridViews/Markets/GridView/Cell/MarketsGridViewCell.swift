@@ -9,7 +9,7 @@ class MarketsGridViewCell: UICollectionViewCell {
 
     private let cornerRadius: CGFloat = 16
     
-    var isFinn: Bool = true //
+    var isFinn: Bool = false //
     
     private lazy var sharpShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
@@ -67,6 +67,7 @@ class MarketsGridViewCell: UICollectionViewCell {
             label = Label(style: .detail)
         }
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = isFinn ? 1 : 0
         label.textAlignment = .center
         
         return label
@@ -86,7 +87,7 @@ class MarketsGridViewCell: UICollectionViewCell {
     }
     
     private func setup() {
-        
+        print("______SETTING UP CELL_______")
         isAccessibilityElement = true
         
         addSubview(sharpShadowView)
@@ -101,26 +102,23 @@ class MarketsGridViewCell: UICollectionViewCell {
         smoothShadowView.fillInSuperview()
         containerView.fillInSuperview()
         
-        contentStackView.alignment = .center
+       // contentStackView.alignment = .center
         contentStackView.spacing = 8
-        contentStackView.layoutMargins = UIEdgeInsets(top: 10, leading: 4, bottom: 10, trailing: 4)
+        contentStackView.layoutMargins = UIEdgeInsets(leading: 4, trailing: 4)
+        
         
         NSLayoutConstraint.activate([
             
             contentStackView.widthAnchor.constraint(equalTo: widthAnchor),
-            
             contentStackView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor),
-            contentStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            contentStackView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             
             externalLinkImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             externalLinkImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             externalLinkImageView.widthAnchor.constraint(equalToConstant: 12),
             externalLinkImageView.heightAnchor.constraint(equalToConstant: 12),
             
-            
         ])
-        
-        
     }
 
     // MARK: - Superclass Overrides
