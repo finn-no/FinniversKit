@@ -71,7 +71,6 @@ class MarketsGridViewCell: UICollectionViewCell {
     }()
 
     // MARK: - Setup
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -101,11 +100,11 @@ class MarketsGridViewCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             iconImageView.heightAnchor.constraint(equalToConstant: 28),
-            iconImageView.widthAnchor.constraint(equalToConstant: 42),
 
             contentStackView.widthAnchor.constraint(equalTo: widthAnchor, constant: -8),
             contentStackView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor, constant: -20),
             contentStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            contentStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
 
             externalLinkImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             externalLinkImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),

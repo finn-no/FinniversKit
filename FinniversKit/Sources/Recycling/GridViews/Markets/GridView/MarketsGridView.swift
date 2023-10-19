@@ -30,7 +30,6 @@ public class MarketsGridView: UIView, MarketsView {
     private weak var delegate: MarketsViewDelegate?
     private weak var dataSource: MarketsViewDataSource?
     
-    //how to tell is the user is in finn?
     public var isFinn: Bool = true
 
     private var itemSize = CGSize(width: 92, height: 72)
@@ -128,7 +127,7 @@ public class MarketsGridView: UIView, MarketsView {
         let gridInsets = insets(for: width)
         let rows = numberOfRows(for: width)
 
-        var height = (itemSize.height * CGFloat(rows)) + (rowSpacing * CGFloat(rows - 1)) + gridInsets.top + gridInsets.bottom
+        let height = (itemSize.height * CGFloat(rows)) + (rowSpacing * CGFloat(rows - 1)) + gridInsets.top + gridInsets.bottom
 
         return CGSize(width: width, height: height)
     }
