@@ -42,6 +42,10 @@ class SwiftUIViewTests: XCTestCase {
         snapshot(.textField)
     }
 
+    func testTextFieldNew() {
+        snapshot(.textFieldNew)
+    }
+
     func testTextView() {
         snapshot(.textView)
     }

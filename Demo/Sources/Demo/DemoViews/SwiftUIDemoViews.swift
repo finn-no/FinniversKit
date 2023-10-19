@@ -15,6 +15,7 @@ enum SwiftUIDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case radioButton
     case selectionListView
     case textField
+    case textFieldNew
     case textView
     case toast
     case resultView
@@ -48,6 +49,8 @@ enum SwiftUIDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return SwiftUISelectionListDemoView_Previews()
         case .textField:
             return FinnTextField_Previews()
+        case .textFieldNew:
+            return SwiftUITextFieldStyles_Previews()
         case .textView:
             return FinnTextView_Previews()
         case .toast:
@@ -60,6 +63,11 @@ enum SwiftUIDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
 
 // MARK: - PreviewProvider conformances
 
+extension SwiftUIIconButton_Previews: Demoable {}
+extension SwiftUICheckBox_Previews: Demoable {}
+extension SwiftUIFloatingButton_Previews: Demoable {}
+extension SwiftUIRadioButton_Previews: Demoable {}
+extension SwiftUITextFieldStyles_Previews: Demoable {}
 extension FinnTextView_Previews: Demoable {}
 
 // MARK: - The same previews found in FinniversKit to use for demo
@@ -106,3 +114,4 @@ struct SwiftUIIconButton_Previews: PreviewProvider, Demoable {
         }
     }
 }
+extension SwiftUITextFieldStyles_Previews: Demoable {}

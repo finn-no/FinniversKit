@@ -509,6 +509,7 @@
 		F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95B22CB639200CED7E0 /* QuestionnaireView.swift */; };
 		F2C3E95E22CB63A200CED7E0 /* QuestionnaireViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95D22CB63A200CED7E0 /* QuestionnaireViewModel.swift */; };
 		F2C3E96022CB669A00CED7E0 /* QuestionnaireView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95F22CB669A00CED7E0 /* QuestionnaireView+Style.swift */; };
+		F384DD1B2AE1356B003FD7F8 /* SwiftUITextFieldStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F384DD1A2AE1356B003FD7F8 /* SwiftUITextFieldStyles.swift */; };
 		F3E681ED2A97597C00DB8B82 /* SwiftUIIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E681EC2A97597C00DB8B82 /* SwiftUIIconButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -1028,6 +1029,7 @@
 		F2C3E95B22CB639200CED7E0 /* QuestionnaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireView.swift; sourceTree = "<group>"; };
 		F2C3E95D22CB63A200CED7E0 /* QuestionnaireViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireViewModel.swift; sourceTree = "<group>"; };
 		F2C3E95F22CB669A00CED7E0 /* QuestionnaireView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionnaireView+Style.swift"; sourceTree = "<group>"; };
+		F384DD1A2AE1356B003FD7F8 /* SwiftUITextFieldStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITextFieldStyles.swift; sourceTree = "<group>"; };
 		F3E681EC2A97597C00DB8B82 /* SwiftUIIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIIconButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -3266,6 +3268,7 @@
 			isa = PBXGroup;
 			children = (
 				F39B730F29C9D68B00A02C06 /* Button */,
+				F384DD192AE13556003FD7F8 /* Input */,
 				27FAFCBD298900F200FEDAE0 /* Toast */,
 				E65085DF292BCF7800A43B07 /* RoundedCorner.swift */,
 				E65085D0292BBF1D00A43B07 /* SwiftUICheckBox.swift */,
@@ -3399,6 +3402,14 @@
 				F2C3E95F22CB669A00CED7E0 /* QuestionnaireView+Style.swift */,
 			);
 			path = QuestionnaireView;
+			sourceTree = "<group>";
+		};
+		F384DD192AE13556003FD7F8 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				F384DD1A2AE1356B003FD7F8 /* SwiftUITextFieldStyles.swift */,
+			);
+			path = Input;
 			sourceTree = "<group>";
 		};
 		F39B730F29C9D68B00A02C06 /* Button */ = {
@@ -3952,6 +3963,7 @@
 				DAE6A55C21CA524B00837BFA /* CGPoint.swift in Sources */,
 				43BACE6C21117D530052114C /* BuyerPickerViewModel.swift in Sources */,
 				F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */,
+				F384DD1B2AE1356B003FD7F8 /* SwiftUITextFieldStyles.swift in Sources */,
 				E65085D1292BBF1D00A43B07 /* SwiftUICheckBox.swift in Sources */,
 				5D0ED35125A49FA7007750D0 /* FinnTextField+Style.swift in Sources */,
 				9F84F96B29277B1000631443 /* BrazePromotionViewModel.swift in Sources */,
