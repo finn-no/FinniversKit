@@ -1,10 +1,14 @@
 import SwiftUI
 
-struct DefaultTextFieldStyle: SwiftUI.TextFieldStyle {
+public struct JobsTextFieldStyle: SwiftUI.TextFieldStyle {
     @FocusState var focused: Bool
     let title: String?
 
-    func _body(configuration: SwiftUI.TextField<Self._Label>) -> some View {
+    public init(title: String? = nil) {
+        self.title = title
+    }
+
+    public func _body(configuration: SwiftUI.TextField<Self._Label>) -> some View {
         VStack(alignment: .leading, spacing: .spacingXS) {
             if let title {
                 Text(title)
@@ -24,19 +28,13 @@ struct DefaultTextFieldStyle: SwiftUI.TextFieldStyle {
         .focused($focused)
         .animation(.snappy, value: focused)
     }
-
-    init(
-        title: String? = nil
-    ) {
-        self.title = title
-    }
 }
 
 struct SwiftUITextFieldStyles_Previews: PreviewProvider {
     static var previews: some View {
         SwiftUI.TextField("Batman", text: .constant(""))
             .textFieldStyle(
-                DefaultTextFieldStyle(title: "Name")
+                JobsTextFieldStyle(title: "Name")
             )
             .padding()
     }
