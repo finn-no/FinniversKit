@@ -86,7 +86,7 @@ class CompactMarketsViewCell: UICollectionViewCell {
 
         NSLayoutConstraint.activate([
             externalLinkImageView.widthAnchor.constraint(equalToConstant: Self.externalLinkImageSize.width),
-            externalLinkImageView.heightAnchor.constraint(equalToConstant: Self.externalLinkImageSize.height),
+            externalLinkImageView.heightAnchor.constraint(equalToConstant: Self.externalLinkImageSize.height)
         ])
     }
 
@@ -181,13 +181,13 @@ private extension UIView {
             self.layer.shadowOffset = CGSize(width: 0, height: 1)
             self.layer.shadowColor = UIColor.tileSharpShadowColor.cgColor
             self.layer.shadowRadius = 1
-            self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius:self.layer.cornerRadius).cgPath
+            self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius).cgPath
         case .smooth:
             self.layer.shadowOpacity = 0.16
             self.layer.shadowOffset = CGSize(width: 0, height: 1)
             self.layer.shadowColor = UIColor.tileSmoothShadowColor.cgColor
             self.layer.shadowRadius = 5
-            self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius:self.layer.cornerRadius).cgPath
+            self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius).cgPath
         case .none:
             self.layer.shadowOpacity = 0.0
             self.layer.shadowOffset = .zero

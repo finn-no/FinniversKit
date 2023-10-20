@@ -95,7 +95,7 @@ class MarketsGridViewCell: UICollectionViewCell {
         containerView.fillInSuperview()
 
         contentStackView.spacing = 8
-        
+
         NSLayoutConstraint.activate([
             iconImageView.heightAnchor.constraint(equalToConstant: 28),
 

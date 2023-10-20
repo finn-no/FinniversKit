@@ -13,7 +13,6 @@ public protocol FrontPageViewDelegate: MarketsViewDelegate, AdRecommendationsGri
 }
 
 public final class FrontPageView: UIView {
-    
     public var model: FrontPageViewModel? {
         didSet {
             headerLabel.text = model?.adRecommendationsGridViewHeaderTitle
@@ -55,13 +54,13 @@ public final class FrontPageView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     private lazy var compactMarketsView: CompactMarketsView = {
         let view = CompactMarketsView(delegate: self, dataSource: marketsViewDataSource)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     private lazy var adRecommendationsGridView: AdRecommendationsGridView = {
         let view = AdRecommendationsGridView(delegate: self, dataSource: adRecommendationsGridViewDataSource)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -78,7 +77,7 @@ public final class FrontPageView: UIView {
 
     private lazy var headerView = UIView(withAutoLayout: true)
     private var frontPageSavedSearchView: FrontPageSavedSearchesView?
-    
+
     private lazy var headerLabel: Label = {
         var headerLabel = Label(style: .title3Strong)
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -248,7 +247,7 @@ public final class FrontPageView: UIView {
             marketsGridView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
             marketsGridView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             marketsGridViewHeight,
-            
+
             promoContainer.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor),
             promoContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
             promoContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
@@ -256,16 +255,16 @@ public final class FrontPageView: UIView {
             transactionFeedContainer.topAnchor.constraint(equalTo: promoContainer.bottomAnchor),
             transactionFeedContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
             transactionFeedContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
-            
+
             savedSearchesContainer.topAnchor.constraint(equalTo: transactionFeedContainer.bottomAnchor),
             savedSearchesContainer.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
             savedSearchesContainer.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
-            
+
             headerLabel.topAnchor.constraint(equalTo: savedSearchesContainer.bottomAnchor, constant: .spacingM),
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .spacingM),
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.spacingM),
             headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
-            
+
             compactMarketsView.leadingAnchor.constraint(equalTo: leadingAnchor),
             compactMarketsView.trailingAnchor.constraint(equalTo: trailingAnchor),
             compactMarketsViewBottomConstraint,
@@ -274,7 +273,7 @@ public final class FrontPageView: UIView {
 
         adRecommendationsGridView.fillInSuperview()
         adRecommendationsGridView.headerView = headerView
-        
+
         changeCompactMarketsViewVisibilityStatus(to: .hidden)
 
         setupFrames()
@@ -346,9 +345,9 @@ public final class FrontPageView: UIView {
         }
 
         setupFrames()
-        
+
     }
-    
+
     public func removeSavedSearches() {
         guard frontPageSavedSearchView != nil else { return }
         self.savedSearchesViewModel = nil
@@ -356,7 +355,7 @@ public final class FrontPageView: UIView {
         frontPageSavedSearchView = nil
         setupFrames()
     }
-    
+
     private func changeCompactMarketsViewVisibilityStatus(to status: CompactMarketsViewVisibilityStatus) {
         switch status {
         case .displaying(progress: let progress):
@@ -398,9 +397,9 @@ extension FrontPageView: AdRecommendationsGridViewDelegate {
 
     public func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didScrollInScrollView scrollView: UIScrollView) {
         delegate?.adRecommendationsGridView(adRecommendationsGridView, didScrollInScrollView: scrollView)
-        
+
         let verticalOffset = scrollView.contentOffset.y
-        
+
         // Update Compact Markets View visibility
         let scrollingThreshold: CGFloat = 100
         let compactMarketsFullyDisplayedThreshold: CGFloat = 200
