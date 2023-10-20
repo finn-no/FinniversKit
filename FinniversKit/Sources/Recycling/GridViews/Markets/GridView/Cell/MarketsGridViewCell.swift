@@ -94,15 +94,14 @@ class MarketsGridViewCell: UICollectionViewCell {
         smoothShadowView.fillInSuperview()
         containerView.fillInSuperview()
 
-        contentStackView.spacing = 8
-
         NSLayoutConstraint.activate([
-            iconImageView.heightAnchor.constraint(equalToConstant: 28),
-
-            contentStackView.widthAnchor.constraint(equalTo: widthAnchor, constant: -8),
-            contentStackView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor, constant: -20),
             contentStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
             contentStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+
+            iconImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
 
             externalLinkImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             externalLinkImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
