@@ -3,7 +3,7 @@ import UIKit
 
 public protocol FrontPageViewModel {
     var marketsGridViewAccessibilityHeaderTitle: String { get }
-    var adRecommedationsGridViewHeaderTitle: String { get set }
+    var adRecommendationsGridViewHeaderTitle: String { get set }
     var retryButtonTitle: String { get }
     var noRecommendationsText: String { get }
 }
@@ -16,28 +16,27 @@ public final class FrontPageView: UIView {
     
     public var model: FrontPageViewModel? {
         didSet {
-            headerLabel.text = model?.adRecommedationsGridViewHeaderTitle
+            headerLabel.text = model?.adRecommendationsGridViewHeaderTitle
             adsRetryView.set(labelText: model?.noRecommendationsText, buttonText: model?.retryButtonTitle)
         }
     }
 
     public var isRefreshEnabled: Bool {
-        get {
-            return adRecommendationsGridView.isRefreshEnabled
-        }
-        set {
-            adRecommendationsGridView.isRefreshEnabled = newValue
-        }
+        get { adRecommendationsGridView.isRefreshEnabled }
+        set { adRecommendationsGridView.isRefreshEnabled = newValue }
     }
 
     var savedSearchesViewModel: FrontPageSavedSearchesViewModel?
 
     public var savedSearchesViewDelegate: FrontPageSavedSearchesViewDelegate? {
-        didSet {
-            frontPageSavedSearchView?.delegate = savedSearchesViewDelegate
-        }
+        didSet { frontPageSavedSearchView?.delegate = savedSearchesViewDelegate }
     }
-    
+
+    public var isMarketGridCellLabelTwoLined: Bool {
+        get { marketsGridView.isMarketGridCellLabelTwoLined }
+        set { marketsGridView.isMarketGridCellLabelTwoLined = newValue }
+    }
+
     private enum CompactMarketsViewVisibilityStatus {
         case hidden
         case displaying(progress: CGFloat)

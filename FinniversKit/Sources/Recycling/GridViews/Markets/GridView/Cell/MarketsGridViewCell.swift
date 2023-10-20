@@ -8,8 +8,6 @@ class MarketsGridViewCell: UICollectionViewCell {
     // MARK: - Internal properties
 
     private let cornerRadius: CGFloat = 16
-    
-    var isFinn: Bool = true
 
     private lazy var sharpShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
@@ -58,7 +56,7 @@ class MarketsGridViewCell: UICollectionViewCell {
         return imageView
     }()
 
-    private lazy var titleLabel: Label = {
+    lazy var titleLabel: Label = {
         let label: Label
         if isHorizontalSizeClassRegular {
             label = Label(style: .caption)
