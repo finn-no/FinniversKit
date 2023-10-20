@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 // MARK: - Protocols
 public protocol SettingsViewDataSource: AnyObject {
@@ -155,7 +156,16 @@ extension SettingsView: UITableViewDataSource {
             let cell = tableView.dequeue(SettingsViewConsentCell.self, for: indexPath)
             cell.configure(with: consentModel, isLastItem: isLastItem)
             return cell
-
+        case let iconModel as SettingsViewIconCellModel:
+            let cell = tableView.dequeue(SettingsViewCell.self, for: indexPath)
+            cell.configure(with: iconModel, isLastItem: isLastItem)
+            
+            let (icon, tintColor) = iconModel.icon
+            
+            cell.contentConfiguration = HostingContentConfiguration(content: {
+                SettingsViewIconCell(title: iconModel.title, icon: icon, tintColor: tintColor)
+            })
+            return cell
         default:
             let cell = tableView.dequeue(SettingsViewCell.self, for: indexPath)
             cell.configure(with: model, isLastItem: isLastItem)
