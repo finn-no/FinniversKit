@@ -1,7 +1,7 @@
 import SwiftUI
 
 public struct JobsTextFieldStyle: SwiftUI.TextFieldStyle {
-    @FocusState var focused: Bool
+    @FocusState var isFocused: Bool
     let title: String?
     let footer: String?
 
@@ -26,8 +26,13 @@ public struct JobsTextFieldStyle: SwiftUI.TextFieldStyle {
                 .padding(.spacingM)
                 .overlay(
                     RoundedRectangle(cornerRadius: .spacingXS, style: .continuous)
-                        .stroke(focused ? Color.btnPrimary : Color.borderDefault, lineWidth: 1)
+                        .stroke(isFocused ? Color.btnPrimary : Color.borderDefault, lineWidth: 1)
                 )
+                .onTapGesture {
+                    isFocused = true
+                }
+                .focused($isFocused)
+                .animation(.snappy, value: isFocused)
 
             if let footer {
                 Text(footer)
@@ -35,8 +40,6 @@ public struct JobsTextFieldStyle: SwiftUI.TextFieldStyle {
                     .foregroundColor(.textPrimary)
             }
         }
-        .focused($focused)
-        .animation(.snappy, value: focused)
     }
 }
 
