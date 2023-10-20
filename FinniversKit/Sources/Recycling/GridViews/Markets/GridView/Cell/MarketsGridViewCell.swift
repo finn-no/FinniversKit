@@ -88,20 +88,30 @@ class MarketsGridViewCell: UICollectionViewCell {
         addSubview(containerView)
         containerView.addSubview(externalLinkImageView)
         containerView.addSubview(contentStackView)
-        contentStackView.addArrangedSubviews([iconImageView, titleLabel])
+
+        // allows us to "push" the titleLabel up so both one line and two line labels align
+        let verticalStackView = UIStackView()
+        verticalStackView.axis = .vertical
+        verticalStackView.alignment = .center
+        verticalStackView.spacing = 0
+        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
+
+        let emptyView = UIView()
+        verticalStackView.addArrangedSubviews([titleLabel, emptyView])
+
+        contentStackView.addArrangedSubviews([iconImageView, verticalStackView])
 
         sharpShadowView.fillInSuperview()
         smoothShadowView.fillInSuperview()
         containerView.fillInSuperview()
 
         NSLayoutConstraint.activate([
-            contentStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            contentStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            iconImageView.heightAnchor.constraint(equalToConstant: 29),
 
-            iconImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
+            contentStackView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            contentStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            contentStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
+            contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
 
             externalLinkImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             externalLinkImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),

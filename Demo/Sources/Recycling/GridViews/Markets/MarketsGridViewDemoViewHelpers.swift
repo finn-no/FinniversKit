@@ -35,7 +35,7 @@ public enum Market: MarketsViewModel {
         switch self {
         case .eiendom, .eiendomNew: return "Eiendom"
         case .bil: return "Bil"
-        case .torget, .torgetNew: return "Feriehus og hytter til leie"
+        case .torget, .torgetNew: return "Torget"
         case .jobb, .jobbNew: return "Jobb"
         case .mc, .mcNew: return "MC"
         case .boat, .boatNew: return "Båt"

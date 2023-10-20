@@ -25,7 +25,6 @@ class MarketsGridViewDemoView: UIView, Demoable {
     private func setup() {
         let collectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.isMarketGridCellLabelTwoLined = true
         addSubview(collectionView)
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: topAnchor),
