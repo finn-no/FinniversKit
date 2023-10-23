@@ -36,6 +36,7 @@ class MarketsGridViewCell: UICollectionViewCell {
     }()
 
     private lazy var contentStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+    private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: 0, alignment: .center, withAutoLayout: true)
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
@@ -56,7 +57,7 @@ class MarketsGridViewCell: UICollectionViewCell {
         return imageView
     }()
 
-    private lazy var titleLabel: Label = {
+    lazy var titleLabel: Label = {
         let label: Label
         if isHorizontalSizeClassRegular {
             label = Label(style: .caption)
@@ -69,7 +70,6 @@ class MarketsGridViewCell: UICollectionViewCell {
     }()
 
     // MARK: - Setup
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -89,19 +89,23 @@ class MarketsGridViewCell: UICollectionViewCell {
         addSubview(containerView)
         containerView.addSubview(externalLinkImageView)
         containerView.addSubview(contentStackView)
-        contentStackView.addArrangedSubviews([iconImageView, titleLabel])
+
+        // allows us to "push" the titleLabel up so both one line and two line labels align
+        let emptyView = UIView()
+        verticalStackView.addArrangedSubviews([titleLabel, emptyView])
+        contentStackView.addArrangedSubviews([iconImageView, verticalStackView])
 
         sharpShadowView.fillInSuperview()
         smoothShadowView.fillInSuperview()
         containerView.fillInSuperview()
 
         NSLayoutConstraint.activate([
-            iconImageView.heightAnchor.constraint(equalToConstant: 28),
-            iconImageView.widthAnchor.constraint(equalToConstant: 42),
+            iconImageView.heightAnchor.constraint(equalToConstant: 29),
 
-            contentStackView.widthAnchor.constraint(equalTo: widthAnchor),
-            contentStackView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor),
-            contentStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            contentStackView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            contentStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            contentStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
+            contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
 
             externalLinkImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             externalLinkImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
