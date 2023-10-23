@@ -36,6 +36,7 @@ class MarketsGridViewCell: UICollectionViewCell {
     }()
 
     private lazy var contentStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+    private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: 0, alignment: .center, withAutoLayout: true)
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
@@ -90,15 +91,8 @@ class MarketsGridViewCell: UICollectionViewCell {
         containerView.addSubview(contentStackView)
 
         // allows us to "push" the titleLabel up so both one line and two line labels align
-        let verticalStackView = UIStackView()
-        verticalStackView.axis = .vertical
-        verticalStackView.alignment = .center
-        verticalStackView.spacing = 0
-        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
-
         let emptyView = UIView()
         verticalStackView.addArrangedSubviews([titleLabel, emptyView])
-
         contentStackView.addArrangedSubviews([iconImageView, verticalStackView])
 
         sharpShadowView.fillInSuperview()
