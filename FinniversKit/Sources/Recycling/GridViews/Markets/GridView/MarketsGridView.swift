@@ -30,7 +30,13 @@ public class MarketsGridView: UIView, MarketsView {
     private weak var delegate: MarketsViewDelegate?
     private weak var dataSource: MarketsViewDataSource?
 
-    private let itemSize = CGSize(width: 92, height: 72)
+    public var isMarketGridCellLabelTwoLined: Bool = false
+    private var itemSize: CGSize {
+        isMarketGridCellLabelTwoLined
+        ? CGSize(width: 96, height: 88)
+        : CGSize(width: 92, height: 72)
+    }
+
     private let itemSpacing: CGFloat = .spacingS
     private let sideMargin: CGFloat = .spacingM
     private let rowSpacing: CGFloat = .spacingS
@@ -250,6 +256,11 @@ extension MarketsGridView: UICollectionViewDataSource {
             cell.model = model
         }
 
+        if isMarketGridCellLabelTwoLined {
+            cell.titleLabel.numberOfLines = 2
+        } else {
+            cell.titleLabel.numberOfLines = 1
+        }
         return cell
     }
 }
