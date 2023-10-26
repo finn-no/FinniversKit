@@ -34,16 +34,20 @@ class MarketsGridViewCell: UICollectionViewCell {
         view.clipsToBounds = true
         return view
     }()
+    
+    var isFinn: Bool = false
 
     private lazy var contentStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
     private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: 0, alignment: .center, withAutoLayout: true)
 
-    private lazy var iconImageView: UIImageView = {
+    lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         imageView.setContentHuggingPriority(.defaultHigh, for: .vertical)
         imageView.contentMode = .scaleAspectFit
+        imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
+    
         return imageView
     }()
 
@@ -89,7 +93,12 @@ class MarketsGridViewCell: UICollectionViewCell {
         addSubview(containerView)
         containerView.addSubview(externalLinkImageView)
         containerView.addSubview(contentStackView)
-
+        
+        if isFinn {
+           // iconImageView.tintColor = UIColor.blue
+        } else {
+           // iconImageView.tintColor = UIColor.red
+        }
         // allows us to "push" the titleLabel up so both one line and two line labels align
         let emptyView = UIView()
         verticalStackView.addArrangedSubviews([titleLabel, emptyView])

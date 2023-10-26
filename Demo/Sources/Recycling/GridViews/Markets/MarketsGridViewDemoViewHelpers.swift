@@ -4,6 +4,25 @@
 
 import FinniversKit
 
+public enum ToriMarket: String {
+    case omaisuus
+    case auto
+    case neliö
+    case työpaikat
+    case mc
+    case vene
+    case hyötyajoneuvot
+    case matkustaminen
+    case ostokset
+    case talous
+    case kokouspaikka
+    case tehtävä
+    case myTender
+    case Autonvuokraus
+    case nettiauto
+    case autoJaRavitsemus
+}
+
 public enum Market: MarketsViewModel {
     case eiendom
     case bil
@@ -30,7 +49,8 @@ public enum Market: MarketsViewModel {
     case mittAnbudNew
     case leiebilNew
     case nettbilNew
-
+    
+    
     public var title: String {
         switch self {
         case .eiendom, .eiendomNew: return "Eiendom"
@@ -51,6 +71,28 @@ public enum Market: MarketsViewModel {
         case .bilOgNaering: return "Bil og næring"
         }
     }
+    
+    public var toriTitle: String {
+        switch  self{
+        case .eiendom, .eiendomNew: return "Omaisuus"
+        case .bil: return "Auto"
+        case .torget, .torgetNew: return "Neliö"
+        case .jobb, .jobbNew: return "Työpaikat"
+        case .mc, .mcNew: return "MC"
+        case .boat, .boatNew: return "Vene"
+        case .nytte: return "Hyötyajoneuvot"
+        case .reise, .reiseNew: return "Matkustaminen"
+        case .shopping: return "Ostokset"
+        case .economy, .economyNew: return "Talous"
+        case .moteplassen, .moteplassenNew: return "Kokouspaikka"
+        case .mittAnbud: return "Tehtävä"
+        case .mittAnbudNew: return "My tender"
+        case .leiebilNew: return "Autonvuokraus"
+        case .nettbilNew: return "Nettiauto"
+        case .bilOgNaering: return "Auto ja ravitsemus"
+        }
+    }
+    
 
     public var iconImage: UIImage? {
         switch self {
@@ -111,7 +153,7 @@ public enum Market: MarketsViewModel {
         case .nettbilNew: return true
         }
     }
-
+    
     public var accessibilityLabel: String {
         if showExternalLinkIcon {
             return title + ". Merk: Åpner ekstern link"
@@ -120,7 +162,20 @@ public enum Market: MarketsViewModel {
         }
     }
 
-    public static var allMarkets: [Market] = [.eiendom, .bil, .torget, .jobb, .mc, .boat, .nytte, .economy, .reise, .mittAnbud, .shopping, .moteplassen]
+    public static var allMarkets: [Market] = [
+        .eiendom,
+        .bil,
+        .torget,
+        .jobb,
+        .mc,
+        .boat,
+        .nytte,
+        .economy,
+        .reise,
+        .mittAnbud,
+        .shopping,
+        .moteplassen]
+    
     public static var newMarkets: [Market] = [
         .eiendomNew,
         .bilOgNaering,
@@ -134,5 +189,24 @@ public enum Market: MarketsViewModel {
         .nettbilNew,
         .moteplassenNew,
         .mittAnbudNew
+    ]
+    public static var toriMarkets: [ToriMarket] = [
+        .omaisuus,
+        .Autonvuokraus,
+        .neliö,
+        .työpaikat,
+        .mc,
+        .vene,
+        .hyötyajoneuvot,
+        .matkustaminen,
+        .ostokset,
+        .talous,
+        .kokouspaikka,
+        .tehtävä,
+        .myTender,
+        .Autonvuokraus,
+        .nettiauto,
+        .autoJaRavitsemus
+        
     ]
 }

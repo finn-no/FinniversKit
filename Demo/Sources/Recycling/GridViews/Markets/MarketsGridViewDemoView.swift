@@ -9,11 +9,15 @@ import UIKit
 class MarketDataSource: NSObject {
     var models = Market.newMarkets
 }
+class ToriDataSource: NSObject {
+    var models = Market.toriMarkets
+}
 
 class MarketsGridViewDemoView: UIView, Demoable {
     lazy var dataSource: MarketDataSource = {
         return MarketDataSource()
     }()
+    
 
     var toriLabel = UILabel()
     var finnLabel = UILabel()
@@ -36,7 +40,10 @@ class MarketsGridViewDemoView: UIView, Demoable {
         let toriCollectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
         toriCollectionView.translatesAutoresizingMaskIntoConstraints = false
         toriCollectionView.isMarketGridCellLabelTwoLined = true
+        
         addSubview(toriCollectionView)
+        
+
 
         finnLabel.text = "Finn"
         finnLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
