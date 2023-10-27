@@ -7,7 +7,7 @@ public class MyAdCollectionViewCell: UICollectionViewCell {
     private let imageWidth: CGFloat = 80
     private lazy var fallbackImage = UIImage(named: .noImage).withRenderingMode(.alwaysTemplate)
     private lazy var titleLabel = Label(style: .bodyStrong, numberOfLines: 2, withAutoLayout: true)
-    private lazy var subtitleLabel = Label(style: .caption, textColor: .textSecondary, withAutoLayout: true)
+    private lazy var subtitleLabel = Label(style: .caption, textColor: .textSubtle, withAutoLayout: true)
     private lazy var ribbonView = RibbonView(withAutoLayout: true)
     private lazy var textStackView = UIStackView(axis: .vertical, spacing: .spacingXS, withAutoLayout: true)
     private lazy var statisticsStackView = UIStackView(axis: .horizontal, spacing: .spacingM, withAutoLayout: true)
@@ -18,13 +18,13 @@ public class MyAdCollectionViewCell: UICollectionViewCell {
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = .spacingS
         imageView.layer.borderWidth = 1 / UIScreen.main.scale
-        imageView.tintColor = .textSecondary
+        imageView.tintColor = .textSubtle
         imageView.backgroundColor = .backgroundInfoSubtle
         return imageView
     }()
 
     private lazy var expiresLabel: Label = {
-        let label = Label(style: .detail, numberOfLines: 2, textColor: .textSecondary, withAutoLayout: true)
+        let label = Label(style: .detail, numberOfLines: 2, textColor: .textSubtle, withAutoLayout: true)
         label.textAlignment = .right
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label

@@ -32,14 +32,14 @@ struct SwiftUISelectionListItem<ItemType>: View {
                 if let description = itemModel.description {
                     HTMLText(description)
                         .finnFont(.caption)
-                        .foregroundColor(.textSecondary)
+                        .foregroundColor(.textSubtle)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
 
             if let image = itemModel.image {
                 image
-                    .foregroundColor(.textSecondary)
+                    .foregroundColor(.textSubtle)
             }
         }
         .padding(.spacingM)

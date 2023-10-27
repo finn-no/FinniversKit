@@ -60,9 +60,9 @@ public class QuestionnaireView: UIView {
     private lazy var cancelButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
         let imageView = UIImageView(image: UIImage(named: .remove).withRenderingMode(.alwaysTemplate))
-        imageView.tintColor = .textSecondary
+        imageView.tintColor = .textSubtle
         button.setImage(imageView.image, for: .normal)
-        button.imageView?.tintColor = .textSecondary
+        button.imageView?.tintColor = .textSubtle
         button.addTarget(self, action: #selector(handleCancelButtonTap), for: .touchUpInside)
         return button
     }()

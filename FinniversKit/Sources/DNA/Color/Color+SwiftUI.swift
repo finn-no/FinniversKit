@@ -43,10 +43,14 @@ extension Color {
     // MARK: - Text
     @available(*, deprecated, message: "Use Warp text instead")
     public static var textPrimary: Color     { Color(UIColor.textPrimary) }
+    @available(*, deprecated, message: "Use Warp textSubtle instead")
     public static var textSecondary: Color   { Color(UIColor.textSecondary) }
+    @available(*, deprecated, message: "Use Warp textInverted instead")
     public static var textTertiary: Color    { Color(UIColor.textTertiary) }
+    @available(*, deprecated, message: "Use Warp textLink instead")
     public static var textAction: Color      { Color(UIColor.textAction) }
-    public static var textDisabled: Color    { Color(UIColor.textDisabled) }
+//    public static var textDisabled: Color    { Color(UIColor.textDisabled) }
+    @available(*, deprecated, message: "Use Warp textNegative instead")
     public static var textCritical: Color    { Color(UIColor.textCritical) }
     public static var textToast: Color       { Color(UIColor.textToast) }
     public static var textCTADisabled: Color { Color(UIColor.textCTADisabled) }

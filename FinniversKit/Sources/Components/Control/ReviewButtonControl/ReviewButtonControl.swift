@@ -35,7 +35,7 @@ public final class ReviewButtonControl: UIControl {
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .textTertiary
+        label.textColor = .textInverted
         label.textAlignment = .center
         return label
     }()

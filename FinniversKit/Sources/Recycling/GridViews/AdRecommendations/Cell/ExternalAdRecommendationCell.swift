@@ -78,7 +78,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     }()
 
     private lazy var subtitleLabel: Label = {
-        let label = Label(style: .detail, textColor: .textSecondary, withAutoLayout: true)
+        let label = Label(style: .detail, textColor: .textSubtle, withAutoLayout: true)
         label.setContentHuggingPriority(.required, for: .vertical)
         label.backgroundColor = .clear
         return label

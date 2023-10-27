@@ -6,7 +6,7 @@ public struct SwiftUICheckBox: View {
     private var size: CGFloat = 16
     private var cornerRadius: CGFloat = 2
     private var borderWidth: CGFloat = 1
-    private var borderColor: Color = .textSecondary
+    private var borderColor: Color = .textSubtle
 
     private var fillOpacity: CGFloat {
         isChecked ? 0 : 1
@@ -32,7 +32,7 @@ public struct SwiftUICheckBox: View {
         ZStack {
             // Blue background
             RoundedRectangle(cornerRadius: cornerRadius)
-                .fill(Color.textAction)
+                .fill(Color.textLink)
                 .frame(width: size, height: size)
 
             // Fill area over the background, shrinks to a point when checked

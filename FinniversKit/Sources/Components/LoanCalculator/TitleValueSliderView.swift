@@ -49,7 +49,7 @@ class TitleValueSlider: UIView {
 
     private lazy var valueLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
-        label.textColor = .textAction
+        label.textColor = .textLink
         return label
     }()
 

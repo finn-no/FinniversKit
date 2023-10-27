@@ -168,7 +168,7 @@ private final class InfoRowView: UIView {
     private lazy var detailTextLabel = makeLabel()
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.tintColor = .textSecondary
+        imageView.tintColor = .textSubtle
         return imageView
     }()
 
@@ -220,7 +220,7 @@ private final class InfoRowView: UIView {
     private func makeLabel() -> UILabel {
         let label = UILabel(withAutoLayout: true)
         label.font = InfoRowView.labelFont
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         return label
     }
 }

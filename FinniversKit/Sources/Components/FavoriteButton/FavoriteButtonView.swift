@@ -47,7 +47,7 @@ public class FavoriteButtonView: UIView {
 
     private lazy var subtitleLabel: Label = {
         let label = Label(style: .detail, withAutoLayout: true)
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()

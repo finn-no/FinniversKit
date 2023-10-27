@@ -36,8 +36,8 @@ final class FavoriteAdView: UIView {
 
     private var viewModel: FavoriteAdViewModel?
 
-    private lazy var sortingDetailLabel = label(withFont: .detailStrong, textColor: .textAction, numberOfLines: 2)
-    private lazy var addressLabel = label(withFont: .detail, textColor: .textSecondary, numberOfLines: 2, isHidden: false)
+    private lazy var sortingDetailLabel = label(withFont: .detailStrong, textColor: .textLink, numberOfLines: 2)
+    private lazy var addressLabel = label(withFont: .detail, textColor: .textSubtle, numberOfLines: 2, isHidden: false)
     private lazy var titleLabel = label(withFont: .caption, textColor: .text, numberOfLines: 2, isHidden: false)
     private lazy var descriptionPrimaryLabel = label(withFont: .bodyStrong, textColor: .text, numberOfLines: 0)
     private lazy var descriptionSecondaryLabel = label(withFont: .detail, textColor: .text, numberOfLines: 0)

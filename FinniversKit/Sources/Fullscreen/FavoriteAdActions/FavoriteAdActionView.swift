@@ -83,7 +83,7 @@ extension FavoriteAdActionView: UITableViewDataSource {
         case .share:
             cell.configure(withTitle: viewModel.shareText, icon: .favoritesShare)
         case .delete:
-            cell.configure(withTitle: viewModel.deleteText, icon: .favoritesDelete, tintColor: .textCritical)
+            cell.configure(withTitle: viewModel.deleteText, icon: .favoritesDelete, tintColor: .textNegative)
         }
 
         return cell

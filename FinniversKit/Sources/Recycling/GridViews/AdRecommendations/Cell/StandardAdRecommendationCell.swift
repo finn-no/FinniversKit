@@ -72,7 +72,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     private lazy var subtitleLabel: Label = {
         let label = Label(style: .detail)
         label.setContentHuggingPriority(.required, for: .vertical)
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
@@ -104,7 +104,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
     private lazy var imageTextLabel: Label = {
         let label = Label(style: .captionStrong)
-        label.textColor = .textTertiary
+        label.textColor = .textInverted
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label

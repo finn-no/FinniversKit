@@ -17,6 +17,11 @@ extension Color {
     public static var backgroundDisabled: Color { Config.warpTokenProvider.backgroundDisabled }
     public static var backgroundNegative: Color { Config.warpTokenProvider.backgroundNegative }
     public static var text: Color { Config.warpTokenProvider.text }
+    public static var textSubtle: Color { Config.warpTokenProvider.textSubtle }
+    public static var textInverted: Color { Config.warpTokenProvider.textInverted }
+    public static var textLink: Color { Config.warpTokenProvider.textLink }
+    public static var textDisabled: Color { Config.warpTokenProvider.textDisabled }
+    public static var textNegative: Color { Config.warpTokenProvider.textNegative }
 }
 
 @objc extension UIColor {
@@ -30,6 +35,11 @@ extension Color {
     public static var backgroundDisabled: UIColor { UIColor(.backgroundDisabled) }
     public static var backgroundNegative: UIColor { UIColor(.backgroundNegative) }
     public static var text: UIColor { UIColor(.text) }
+    public static var textSubtle: UIColor { UIColor(.textSubtle) }
+    public static var textInverted: UIColor { UIColor(.textInverted) }
+    public static var textLink: UIColor { UIColor(.textLink) }
+    public static var textDisabled: UIColor { UIColor(.textDisabled) }
+    public static var textNegative: UIColor { UIColor(.textNegative) }
 }
 
 extension CGColor {
@@ -43,6 +53,11 @@ extension CGColor {
     public class var backgroundDisabled: CGColor { UIColor.backgroundDisabled.cgColor }
     public class var backgroundNegative: CGColor { UIColor.backgroundNegative.cgColor }
     public class var text: CGColor { UIColor.text.cgColor }
+    public class var textSubtle: CGColor { UIColor.textSubtle.cgColor }
+    public class var textInverted: CGColor { UIColor.textInverted.cgColor }
+    public class var textLink: CGColor { UIColor.textLink.cgColor }
+    public class var textDisabled: CGColor { UIColor.textDisabled.cgColor }
+    public class var textNegative: CGColor { UIColor.textNegative.cgColor }
 }
 
 // MARK: - Semantic colors, dark mode compatible
@@ -86,13 +101,17 @@ extension CGColor {
     public class var iconTertiary: UIColor { Config.colorProvider.iconTertiary }
     public class var imageBorder: UIColor { Config.colorProvider.imageBorder }
     public class var tableViewSeparator: UIColor { Config.colorProvider.tableViewSeparator }
+    @available(*, deprecated, message: "Use Warp textLink instead")
     public class var textAction: UIColor { Config.colorProvider.textAction }
+    @available(*, deprecated, message: "Use Warp textNegative instead")
     public class var textCritical: UIColor { Config.colorProvider.textCritical }
     public class var textCTADisabled: UIColor { Config.colorProvider.textCTADisabled }
-    public class var textDisabled: UIColor { Config.colorProvider.textDisabled }
+//    public class var textDisabled: UIColor { Config.colorProvider.textDisabled }
     @available(*, deprecated, message: "Use Warp text instead")
     public class var textPrimary: UIColor { Config.colorProvider.textPrimary }
+    @available(*, deprecated, message: "Use Warp textSubtle instead")
     public class var textSecondary: UIColor { Config.colorProvider.textSecondary }
+    @available(*, deprecated, message: "Use Warp textInverted instead")
     public class var textTertiary: UIColor { Config.colorProvider.textTertiary }
     public class var textToast: UIColor { Config.colorProvider.textToast }
     public class var marketplaceNavigationBarIcon: UIColor { Config.colorProvider.marketplaceNavigationBarIcon }
@@ -142,13 +161,17 @@ extension CGColor {
     public class var iconTertiary: CGColor { UIColor.iconTertiary.cgColor }
     public class var imageBorder: CGColor { UIColor.imageBorder.cgColor }
     public class var tableViewSeparator: CGColor { UIColor.tableViewSeparator.cgColor }
+    @available(*, deprecated, message: "Use Warp textLink instead")
     public class var textAction: CGColor { UIColor.textAction.cgColor }
+    @available(*, deprecated, message: "Use Warp textNegative instead")
     public class var textCritical: CGColor { UIColor.textCritical.cgColor }
     public class var textCTADisabled: CGColor { UIColor.textCTADisabled.cgColor }
-    public class var textDisabled: CGColor { UIColor.textDisabled.cgColor }
+//    public class var textDisabled: CGColor { UIColor.textDisabled.cgColor }
     @available(*, deprecated, message: "Use Warp text instead")
     public class var textPrimary: CGColor { UIColor.textPrimary.cgColor }
+    @available(*, deprecated, message: "Use Warp textSubtle instead")
     public class var textSecondary: CGColor { UIColor.textSecondary.cgColor }
+    @available(*, deprecated, message: "Use Warp textInverted instead")
     public class var textTertiary: CGColor { UIColor.textTertiary.cgColor }
     public class var textToast: CGColor { UIColor.textToast.cgColor }
     public class var marketplaceNavigationBarIcon: CGColor { Config.colorProvider.marketplaceNavigationBarIcon.cgColor }
@@ -450,15 +473,15 @@ public extension CGColor {
     }
 
     public class var linkButtonHighlightedTextColor: UIColor {
-        return textAction.withAlphaComponent(0.8)
+        return textLink.withAlphaComponent(0.8)
     }
 
     public class var flatButtonHighlightedTextColor: UIColor {
-        return textAction.withAlphaComponent(0.8)
+        return textLink.withAlphaComponent(0.8)
     }
 
     public class var destructiveFlatButtonHighlightedTextColor: UIColor {
-        return textCritical.withAlphaComponent(0.8)
+        return textNegative.withAlphaComponent(0.8)
     }
 
     public class var utilityButtonHighlightedTextColor: UIColor {

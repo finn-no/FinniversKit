@@ -124,7 +124,7 @@ public class Button: UIButton {
         let disabledAttributedTitle = NSMutableAttributedString(string: title)
         disabledAttributedTitle.addAttribute(
             .foregroundColor,
-            value: style.disabledTextColor ?? UIColor.textTertiary,
+            value: style.disabledTextColor ?? .textInverted,
             range: textRange
         )
 

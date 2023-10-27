@@ -21,7 +21,7 @@ public class HyperlinkTextView: UIView {
         }
     }
 
-    public var linkColor: UIColor = .textAction {
+    public var linkColor: UIColor = .textLink {
         didSet {
             updateText()
         }

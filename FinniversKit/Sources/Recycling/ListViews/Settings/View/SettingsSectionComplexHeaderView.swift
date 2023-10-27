@@ -15,12 +15,12 @@ class SettingsSectionComplexHeaderView: UITableViewHeaderFooterView {
     }()
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .bodyStrong, textColor: .textSecondary, withAutoLayout: true)
+        let label = Label(style: .bodyStrong, textColor: .textSubtle, withAutoLayout: true)
         return label
     }()
 
     private lazy var subtitleLabel: Label = {
-        let label = Label(style: .caption, numberOfLines: 2, textColor: .textSecondary, withAutoLayout: true)
+        let label = Label(style: .caption, numberOfLines: 2, textColor: .textSubtle, withAutoLayout: true)
         return label
     }()
 

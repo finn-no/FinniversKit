@@ -30,7 +30,7 @@ class SelectionListItemView: UIView {
 
     private lazy var descriptionLabel: HTMLLabel = {
         let label = HTMLLabel(style: .caption, withAutoLayout: true)
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         label.numberOfLines = 0
         return label
     }()
@@ -199,7 +199,7 @@ class SelectionListItemView: UIView {
             } else {
                 self.backgroundColor = self.isSelected ? .nmpBrandDecoration : .clear
             }
-            self.iconImageView.tintColor = self.isSelected ? .text : .textSecondary
+            self.iconImageView.tintColor = self.isSelected ? .text : .textSubtle
         })
     }
 }

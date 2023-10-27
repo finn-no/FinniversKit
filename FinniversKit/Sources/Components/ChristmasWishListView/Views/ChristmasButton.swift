@@ -22,7 +22,7 @@ extension ChristmasWishListView {
 
         private func setup() {
             translatesAutoresizingMaskIntoConstraints = false
-            setTitleColor(.textTertiary, for: .normal)
+            setTitleColor(.textInverted, for: .normal)
             backgroundColor = .christmasCallToAction
 
             layer.cornerRadius = .spacingS

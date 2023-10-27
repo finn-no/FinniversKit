@@ -25,7 +25,7 @@ extension HTMLStringSwiftUIStyleTranslator {
                     switch name {
                     case "style":
                         if value == "color:tjt-price-highlight" {
-                            style.foregroundColor = .textCritical
+                            style.foregroundColor = .textNegative
                         }
                     default:
                         break

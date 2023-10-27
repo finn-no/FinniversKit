@@ -44,7 +44,7 @@ public class SelectorTitleView: UIView {
         label.adjustsFontForContentSizeCategory = true
         label.textAlignment = .center
         label.text = heading
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         return label
     }()
 

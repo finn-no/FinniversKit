@@ -32,7 +32,7 @@ public class FavoritesListViewCell: UITableViewCell {
     }()
 
     private lazy var titleLabel = Label(style: .body, numberOfLines: 2, withAutoLayout: true)
-    private lazy var detailLabel = Label(style: .detail, textColor: .textSecondary, withAutoLayout: true)
+    private lazy var detailLabel = Label(style: .detail, textColor: .textSubtle, withAutoLayout: true)
 
     // MARK: - Setup
 

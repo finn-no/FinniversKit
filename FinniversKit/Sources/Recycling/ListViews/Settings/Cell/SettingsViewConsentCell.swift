@@ -8,7 +8,7 @@ class SettingsViewConsentCell: SettingsViewCell {
 
     private lazy var statusLabel: Label = {
         let label = Label(style: .body, withAutoLayout: true)
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         return label
     }()
 

@@ -21,7 +21,7 @@ public struct SwiftUISelectionListView<ItemValue>: View {
                     )
                     .overlay(Group {
                         RoundedCorner(radius: cornerRadius, corners: corners(forItemIndex: itemIndex))
-                            .stroke(Color.textAction.opacity(itemIndex == selectedItemIndex ? 1 : 0))
+                            .stroke(Color.textLink.opacity(itemIndex == selectedItemIndex ? 1 : 0))
                     })
                     .contentShape(Rectangle())
                     .onTapGesture {

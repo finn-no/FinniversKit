@@ -100,7 +100,7 @@ public struct CallToAction: ButtonStyle {
             }
             configuration.label
                 .font(font)
-                .foregroundColor(isEnabled ? .textTertiary : .textCTADisabled)
+                .foregroundColor(isEnabled ? .textInverted : .textCTADisabled)
             if fullWidth {
                 Spacer()
             }

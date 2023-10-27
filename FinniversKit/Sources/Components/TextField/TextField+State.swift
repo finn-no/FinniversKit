@@ -28,7 +28,7 @@ public extension TextField {
         var underlineColor: UIColor {
             switch self {
             case .normal:
-                return .textSecondary
+                return .textSubtle
 
             case .disabled:
                 return .textDisabled
@@ -37,7 +37,7 @@ public extension TextField {
                 return .accentSecondaryBlue
 
             case .error:
-                return .textCritical
+                return .textNegative
 
             case .readOnly:
                 return .clear
@@ -60,7 +60,7 @@ public extension TextField {
                 return .text
 
             case .error:
-                return .textCritical
+                return .textNegative
             }
         }
     }

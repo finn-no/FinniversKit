@@ -71,7 +71,7 @@ public class AddressComponentFieldView: UIView {
         stackView.removeArrangedSubviews()
 
         if let title = model.value {
-            let floatingLabel = Label.create(style: .detail, textColor: .textSecondary)
+            let floatingLabel = Label.create(style: .detail, textColor: .textSubtle)
             floatingLabel.text = model.placeholder
 
             let titleLabel = Label.create(style: .caption)
@@ -80,7 +80,7 @@ public class AddressComponentFieldView: UIView {
             stackView.addArrangedSubviews([floatingLabel, titleLabel])
             stackView.alignment = .top
         } else {
-            let placeholderLabel = Label.create(style: .caption, textColor: .textSecondary)
+            let placeholderLabel = Label.create(style: .caption, textColor: .textSubtle)
             placeholderLabel.text = model.placeholder
 
             stackView.addArrangedSubview(placeholderLabel)

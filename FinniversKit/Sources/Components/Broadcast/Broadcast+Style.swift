@@ -12,6 +12,6 @@ extension BroadcastItem {
             NSAttributedString.Key.font: UIFont.body,
             NSAttributedString.Key.foregroundColor: UIColor.textToast
         ]
-        static let linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.textAction]
+        static let linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.textLink]
     }
 }

@@ -8,7 +8,7 @@ class SettingsSectionHeaderView: UITableViewHeaderFooterView {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         return label
     }()
 

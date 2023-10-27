@@ -25,7 +25,7 @@ class CheckmarkItemDetailView: UIView {
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: .checkmark)
-        imageView.tintColor = .textSecondary
+        imageView.tintColor = .textSubtle
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()

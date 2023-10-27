@@ -8,7 +8,7 @@ class SettingsSectionFooterView: UITableViewHeaderFooterView {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .caption, withAutoLayout: true)
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         label.numberOfLines = 0
         return label
     }()

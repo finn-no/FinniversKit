@@ -17,7 +17,7 @@ import UIKit
 
     @objc lazy var subtitleLabel: UILabel = {
         let label = Label(style: .detail)
-        label.textColor = .textAction
+        label.textColor = .textLink
         label.translatesAutoresizingMaskIntoConstraints = false
 
         return label

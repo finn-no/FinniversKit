@@ -5,8 +5,8 @@ public struct SwiftUIRadioButton: View {
 
     private var size: CGFloat = 16
     private var borderWidth: CGFloat = 1
-    private var borderColor: Color = .textSecondary
-    private var selectionColor: Color = .textAction
+    private var borderColor: Color = .textSubtle
+    private var selectionColor: Color = .textLink
     private var selectionScale: CGFloat = 7/16
 
     private var backgroundColor: Color {

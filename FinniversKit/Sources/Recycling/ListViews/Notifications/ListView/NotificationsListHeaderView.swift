@@ -21,7 +21,7 @@ public class NotificationsListHeaderView: UITableViewHeaderFooterView {
 
     lazy var dateLabel: UILabel = {
         let label = Label(style: .detail)
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

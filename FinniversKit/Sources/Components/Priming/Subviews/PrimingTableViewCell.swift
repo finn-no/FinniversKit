@@ -22,7 +22,7 @@ final class PrimingTableViewCell: UITableViewCell {
 
     private lazy var detailLabel: UILabel = {
         let label = Label(style: .body, withAutoLayout: true)
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         label.numberOfLines = 0
         return label
     }()

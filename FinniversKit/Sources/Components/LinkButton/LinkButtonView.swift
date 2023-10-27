@@ -53,7 +53,7 @@ class LinkButtonView: UIView {
 
     private lazy var subtitleLabel: Label = {
         let label = Label(style: .detail, withAutoLayout: true)
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         label.numberOfLines = 0
         return label
     }()

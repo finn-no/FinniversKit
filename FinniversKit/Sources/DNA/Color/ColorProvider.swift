@@ -35,10 +35,14 @@ public protocol ColorProvider {
     var btnAction: UIColor { get }
     @available(*, deprecated, message: "Use Warp text instead")
     var textPrimary: UIColor { get }
+    @available(*, deprecated, message: "Use Warp textSubtle instead")
     var textSecondary: UIColor { get }
+    @available(*, deprecated, message: "Use Warp textInverted instead")
     var textTertiary: UIColor { get }
+    @available(*, deprecated, message: "Use Warp textLink instead")
     var textAction: UIColor { get }
-    var textDisabled: UIColor { get }
+//    var textDisabled: UIColor { get }
+    @available(*, deprecated, message: "Use Warp textNegative instead")
     var textCritical: UIColor { get }
     var accentPrimaryBlue: UIColor { get }
     var accentSecondaryBlue: UIColor { get }
@@ -125,23 +129,23 @@ public struct DefaultColorProvider: ColorProvider {
     public var textPrimary: UIColor {
         .dynamicColor(defaultColor: .gray700, darkModeColor: .white)
     }
-
+    @available(*, deprecated, message: "Use Warp textSubtle instead")
     public var textSecondary: UIColor {
         .dynamicColor(defaultColor: .gray500, darkModeColor: .darkStone)
     }
-
+    @available(*, deprecated, message: "Use Warp textInverted instead")
     public var textTertiary: UIColor {
         .white
     }
-
+    @available(*, deprecated, message: "Use Warp textLink instead")
     public var textAction: UIColor {
         .dynamicColor(defaultColor: .blue600, darkModeColor: .darkPrimaryBlue)
     }
 
-    public var textDisabled: UIColor {
-        .dynamicColor(defaultColor: .blueGray300, darkModeColor: .darkSardine)
-    }
-
+//    public var textDisabled: UIColor {
+//        .dynamicColor(defaultColor: .blueGray300, darkModeColor: .darkSardine)
+//    }
+    @available(*, deprecated, message: "Use Warp textNegative instead")
     public var textCritical: UIColor {
         .dynamicColor(defaultColor: .red600, darkModeColor: .red400)
     }
@@ -187,11 +191,11 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var iconSecondary: UIColor {
-        .textSecondary
+        .textSubtle
     }
 
     public var iconTertiary: UIColor {
-        .textTertiary
+        .textInverted
     }
 
     public var borderDefault: UIColor {

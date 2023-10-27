@@ -87,7 +87,7 @@ public class AddressComponentPostalFieldView: UIView {
         let stackView = UIStackView(axis: .vertical, spacing: 0, withAutoLayout: true)
 
         if let title = model.value {
-            let floatingLabel = Label.create(style: .detail, textColor: .textSecondary)
+            let floatingLabel = Label.create(style: .detail, textColor: .textSubtle)
             floatingLabel.text = model.placeholder
 
             let titleLabel = Label.create(style: .caption)
@@ -96,7 +96,7 @@ public class AddressComponentPostalFieldView: UIView {
             stackView.addArrangedSubviews([floatingLabel, titleLabel])
             stackView.alignment = .top
         } else {
-            let placeholderLabel = Label.create(style: .caption, textColor: .textSecondary)
+            let placeholderLabel = Label.create(style: .caption, textColor: .textSubtle)
             placeholderLabel.text = model.placeholder
 
             stackView.addArrangedSubview(placeholderLabel)

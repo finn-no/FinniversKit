@@ -30,7 +30,7 @@ open class BasicTableViewCell: UITableViewCell {
     open lazy var detailLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .detail
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         return label
     }()
 
@@ -69,7 +69,7 @@ open class BasicTableViewCell: UITableViewCell {
         titleLabel.text = viewModel.title
 
         let isSelected = selectedIndexPath != nil ? selectedIndexPath == indexPath : false
-        titleLabel.textColor = isSelected ? .textAction : .text
+        titleLabel.textColor = isSelected ? .textLink : .text
 
         titleLabel.isEnabled = isEnabled
 

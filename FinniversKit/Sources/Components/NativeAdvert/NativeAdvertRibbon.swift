@@ -41,7 +41,7 @@ class NativeAdvertRibbon: UIView {
         view.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         view.numberOfLines = 1
         view.lineBreakMode = .byTruncatingTail
-        view.textColor = .textAction
+        view.textColor = .textLink
         return view
     }()
 

@@ -21,7 +21,7 @@ public extension FloatingButton.Style {
     static var favoritesXmasButtonStyle: FloatingButton.Style {
         FloatingButton.Style(
             tintColor: .white,
-            titleColor: .textTertiary,
+            titleColor: .textInverted,
             primaryBackgroundColor: .red600,
             highlightedBackgroundColor: .red600.withAlphaComponent(0.8),
             borderWidth: .spacingXS,

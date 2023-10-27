@@ -20,8 +20,8 @@ class ViewingItemView: UIView {
     private let noteBottomMargin: CGFloat = .spacingM
     private lazy var dayLabel = Label(style: .title3, withAutoLayout: true)
     private lazy var weekdayLabel = Label(style: .body, withAutoLayout: true)
-    private lazy var monthLabel = Label(style: .detail, textColor: .textCritical, withAutoLayout: true)
-    private lazy var noteLabel = Label(style: .detail, numberOfLines: 0, textColor: .textSecondary, withAutoLayout: true)
+    private lazy var monthLabel = Label(style: .detail, textColor: .textNegative, withAutoLayout: true)
+    private lazy var noteLabel = Label(style: .detail, numberOfLines: 0, textColor: .textSubtle, withAutoLayout: true)
     private lazy var viewingStackView = UIStackView(axis: .horizontal, spacing: .spacingS, alignment: .center, withAutoLayout: true)
     private lazy var dateStackView = UIStackView(axis: .vertical, withAutoLayout: true)
     private lazy var weekdayTimeStackView = UIStackView(axis: .vertical, spacing: .spacingXXS, alignment: .leading, withAutoLayout: true)
@@ -34,7 +34,7 @@ class ViewingItemView: UIView {
     }()
 
     private lazy var timeLabel: Label = {
-        let label = Label(style: .detail, textColor: .textSecondary, withAutoLayout: true)
+        let label = Label(style: .detail, textColor: .textSubtle, withAutoLayout: true)
         label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return label
     }()
