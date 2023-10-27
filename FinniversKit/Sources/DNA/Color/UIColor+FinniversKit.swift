@@ -62,9 +62,13 @@ extension CGColor {
 
 // MARK: - Semantic colors, dark mode compatible
 @objc extension UIColor {
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var accentPea: UIColor { Config.colorProvider.accentPea }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var accentPrimaryBlue: UIColor { Config.colorProvider.accentPrimaryBlue }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var accentSecondaryBlue: UIColor { Config.colorProvider.accentSecondaryBlue }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var accentToothpaste: UIColor { Config.colorProvider.accentToothpaste }
     @available(*, deprecated, message: "Use Warp backgroundWarningSubtle instead")
     public class var bgAlert: UIColor { Config.colorProvider.bgAlert }
@@ -122,9 +126,13 @@ extension CGColor {
 }
 
 extension CGColor {
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var accentPea: CGColor { UIColor.accentPea.cgColor }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var accentPrimaryBlue: CGColor { UIColor.accentPrimaryBlue.cgColor }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var accentSecondaryBlue: CGColor { UIColor.accentSecondaryBlue.cgColor }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var accentToothpaste: CGColor { UIColor.accentToothpaste.cgColor }
     @available(*, deprecated, message: "Use Warp backgroundWarningSubtle instead")
     public class var bgAlert: CGColor { UIColor.bgAlert.cgColor }

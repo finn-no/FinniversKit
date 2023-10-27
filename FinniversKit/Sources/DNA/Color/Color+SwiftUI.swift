@@ -62,10 +62,13 @@ extension Color {
     public static var iconTertiary: Color  { Color(UIColor.iconTertiary) }
 
     // MARK: - Others
-
+    @available(*, deprecated, message: "Use Warp color instead")
     public static var accentPrimaryBlue: Color   { Color(UIColor.accentPrimaryBlue)}
+    @available(*, deprecated, message: "Use Warp color instead")
     public static var accentSecondaryBlue: Color { Color(UIColor.accentSecondaryBlue) }
+    @available(*, deprecated, message: "Use Warp color instead")
     public static var accentPea: Color           { Color(UIColor.accentPea) }
+    @available(*, deprecated, message: "Use Warp color instead")
     public static var accentToothpaste: Color    { Color(UIColor.accentToothpaste) }
     public static var tableViewSeparator: Color  { Color(UIColor.tableViewSeparator) }
     public static var imageBorder: Color         { Color(UIColor.imageBorder) }

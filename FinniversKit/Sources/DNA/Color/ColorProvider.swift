@@ -44,9 +44,13 @@ public protocol ColorProvider {
 //    var textDisabled: UIColor { get }
     @available(*, deprecated, message: "Use Warp textNegative instead")
     var textCritical: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var accentPrimaryBlue: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var accentSecondaryBlue: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var accentPea: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var accentToothpaste: UIColor { get }
     var textCTADisabled: UIColor { get }
     var textToast: UIColor { get }
@@ -149,19 +153,19 @@ public struct DefaultColorProvider: ColorProvider {
     public var textCritical: UIColor {
         .dynamicColor(defaultColor: .red600, darkModeColor: .red400)
     }
-
+    @available(*, deprecated, message: "Use Warp color instead")
     public var accentPrimaryBlue: UIColor {
         .blue600
     }
-
+    @available(*, deprecated, message: "Use Warp color instead")
     public var accentSecondaryBlue: UIColor {
         .aqua400
     }
-
+    @available(*, deprecated, message: "Use Warp color instead")
     public var accentPea: UIColor {
         .green400
     }
-
+    @available(*, deprecated, message: "Use Warp color instead")
     public var accentToothpaste: UIColor {
         .aqua200
     }
