@@ -47,7 +47,7 @@ public final class FavoriteFolderActionView: UIView {
         withAction: .delete,
         title: viewModel.deleteText,
         icon: .favoritesDelete,
-        tintColor: .btnCritical
+        tintColor: .backgroundNegative
     )
 
     private lazy var shareToggleView: FavoriteFolderShareToggleView = {

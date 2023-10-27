@@ -245,7 +245,7 @@ public extension Button.Style {
             stateStyles: [
                 .normal: Button.StateStyle(
                     textColor: .textTertiary,
-                    backgroundColor: .btnCritical,
+                    backgroundColor: .backgroundNegative,
                     borderColor: nil
                 ),
                 .highlighted: Button.StateStyle(

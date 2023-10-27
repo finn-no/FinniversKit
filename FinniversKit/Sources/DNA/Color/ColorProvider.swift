@@ -29,7 +29,9 @@ public protocol ColorProvider {
     var btnPrimary: UIColor { get }
     @available(*, deprecated, message: "Use Warp backgroundDisabled instead")
     var btnDisabled: UIColor { get }
+    @available(*, deprecated, message: "Use Warp backgroundNegative instead")
     var btnCritical: UIColor { get }
+    @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     var btnAction: UIColor { get }
     var textPrimary: UIColor { get }
     var textSecondary: UIColor { get }
@@ -110,11 +112,11 @@ public struct DefaultColorProvider: ColorProvider {
     public var btnDisabled: UIColor {
         .dynamicColor(defaultColor: .blueGray300, darkModeColor: .darkSardine)
     }
-
+    @available(*, deprecated, message: "Use Warp backgroundNegative instead")
     public var btnCritical: UIColor {
         .red600
     }
-
+    @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     public var btnAction: UIColor {
         .dynamicColor(defaultColor: .blue600, darkModeColor: .darkPrimaryBlue)
     }

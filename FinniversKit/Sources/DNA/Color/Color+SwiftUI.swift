@@ -35,7 +35,9 @@ extension Color {
     public static var btnPrimary: Color  { Color(UIColor.btnPrimary) }
     @available(*, deprecated, message: "Use Warp backgroundDisabled instead")
     public static var btnDisabled: Color { Color(UIColor.btnDisabled) }
+    @available(*, deprecated, message: "Use Warp backgroundNegative instead")
     public static var btnCritical: Color { Color(UIColor.btnCritical) }
+    @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     public static var btnAction: Color   { Color(UIColor.btnAction) }
 
     // MARK: - Text
