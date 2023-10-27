@@ -15,7 +15,7 @@ public extension RibbonView {
 
         var color: UIColor {
             switch self {
-            case .default: return .bgSecondary
+            case .default: return .backgroundInfoSubtle
             case .success: return .bgSuccess
             case .warning: return .bgAlert
             case .error: return .bgCritical

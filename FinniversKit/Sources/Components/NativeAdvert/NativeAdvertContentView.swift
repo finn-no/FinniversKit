@@ -86,7 +86,7 @@ public final class NativeAdvertContentView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        container.backgroundColor = .bgTertiary
+        container.backgroundColor = .backgroundSubtle
 
         addSubview(container)
         container.addSubview(imageView)

@@ -31,7 +31,7 @@ public class CompactMarketsView: UIView, MarketsView {
 
     private lazy var sharpShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .bgQuaternary
+        view.backgroundColor = .backgroundSubtle
         view.layer.masksToBounds = false
         view.layer.shadowColor = UIColor.shadowColor.cgColor
         view.layer.shadowOpacity = 0.24
@@ -44,7 +44,7 @@ public class CompactMarketsView: UIView, MarketsView {
 
     private lazy var smoothShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .bgQuaternary
+        view.backgroundColor = .backgroundSubtle
         view.layer.masksToBounds = false
         view.layer.shadowColor = UIColor.shadowColor.cgColor
         view.layer.shadowOpacity = 0.16
@@ -83,7 +83,7 @@ public class CompactMarketsView: UIView, MarketsView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgQuaternary
+        backgroundColor = .backgroundSubtle
         clipsToBounds = false
 
         addSubview(smoothShadowView)

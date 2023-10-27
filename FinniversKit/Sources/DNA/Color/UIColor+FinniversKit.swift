@@ -9,16 +9,19 @@ import SwiftUI
 extension Color {
     public static var background: Color { Config.warpTokenProvider.background }
     public static var backgroundInfoSubtle: Color { Config.warpTokenProvider.backgroundInfoSubtle }
+    public static var backgroundSubtle: Color { Config.warpTokenProvider.backgroundSubtle }
 }
 
 @objc extension UIColor {
-    public static var background: UIColor { UIColor(Color.background) }
-    public static var backgroundInfoSubtle: UIColor { UIColor(Color.backgroundInfoSubtle) }
+    public static var background: UIColor { UIColor(.background) }
+    public static var backgroundInfoSubtle: UIColor { UIColor(.backgroundInfoSubtle) }
+    public static var backgroundSubtle: UIColor { UIColor(.backgroundSubtle) }
 }
 
 extension CGColor {
     public class var background: CGColor { UIColor.background.cgColor }
     public class var backgroundInfoSubtle: CGColor { UIColor.backgroundInfoSubtle.cgColor }
+    public class var backgroundSubtle: CGColor { UIColor.backgroundSubtle.cgColor }
 }
 
 // MARK: - Semantic colors, dark mode compatible
@@ -28,16 +31,19 @@ extension CGColor {
     public class var accentSecondaryBlue: UIColor { Config.colorProvider.accentSecondaryBlue }
     public class var accentToothpaste: UIColor { Config.colorProvider.accentToothpaste }
     public class var bgAlert: UIColor { Config.colorProvider.bgAlert }
+    @available(*, deprecated, message: "Use Warp background instead")
     public class var bgBottomSheet: UIColor { Config.colorProvider.bgBottomSheet }
     public class var bgCritical: UIColor { Config.colorProvider.bgCritical }
     public class var bgInfo: UIColor { Config.colorProvider.bgInfo }
     public class var bgInfoHeader: UIColor { Config.colorProvider.bgInfoHeader }
     @available(*, deprecated, message: "Use Warp background instead")
     public class var bgPrimary: UIColor { Config.colorProvider.bgPrimary }
+    @available(*, deprecated, message: "Use Warp backgroundSubtle instead")
     public class var bgQuaternary: UIColor { Config.colorProvider.bgQuaternary }
     @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
     public class var bgSecondary: UIColor { Config.colorProvider.bgSecondary }
     public class var bgSuccess: UIColor { Config.colorProvider.bgSuccess }
+    @available(*, deprecated, message: "Use Warp backgroundSubtle instead")
     public class var bgTertiary: UIColor { Config.colorProvider.bgTertiary }
     public class var borderDefault: UIColor { Config.colorProvider.borderDefault }
     public class var btnAction: UIColor { Config.colorProvider.btnAction }
@@ -71,16 +77,19 @@ extension CGColor {
     public class var accentSecondaryBlue: CGColor { UIColor.accentSecondaryBlue.cgColor }
     public class var accentToothpaste: CGColor { UIColor.accentToothpaste.cgColor }
     public class var bgAlert: CGColor { UIColor.bgAlert.cgColor }
+    @available(*, deprecated, message: "Use Warp background instead")
     public class var bgBottomSheet: CGColor { UIColor.bgBottomSheet.cgColor }
     public class var bgCritical: CGColor { UIColor.bgCritical.cgColor }
     public class var bgInfo: CGColor { UIColor.bgInfo.cgColor }
     public class var bgInfoHeader: CGColor { UIColor.bgInfoHeader.cgColor }
     @available(*, deprecated, message: "Use Warp background instead")
     public class var bgPrimary: CGColor { UIColor.bgPrimary.cgColor }
+    @available(*, deprecated, message: "Use Warp backgroundSubtle instead")
     public class var bgQuaternary: CGColor { UIColor.bgQuaternary.cgColor }
     @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
     public class var bgSecondary: CGColor { UIColor.bgSecondary.cgColor }
     public class var bgSuccess: CGColor { UIColor.bgSuccess.cgColor }
+    @available(*, deprecated, message: "Use Warp backgroundSubtle instead")
     public class var bgTertiary: CGColor { UIColor.bgTertiary.cgColor }
     public class var borderDefault: CGColor { UIColor.borderDefault.cgColor }
     public class var btnAction: CGColor { UIColor.btnAction.cgColor }

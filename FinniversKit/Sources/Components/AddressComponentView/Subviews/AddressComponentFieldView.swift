@@ -32,7 +32,7 @@ public class AddressComponentFieldView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgTertiary
+        backgroundColor = .backgroundSubtle
 
         addSubview(stackView)
         addSubview(chevronImageView)

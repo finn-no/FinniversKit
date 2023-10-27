@@ -38,7 +38,7 @@ public class AddressComponentPostalFieldView: UIView {
     private func setup() {
         isAccessibilityElement = true
 
-        backgroundColor = .bgTertiary
+        backgroundColor = .backgroundSubtle
 
         addSubview(stackView)
         addSubview(lockImageView)

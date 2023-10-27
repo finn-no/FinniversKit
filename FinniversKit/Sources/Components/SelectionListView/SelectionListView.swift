@@ -64,7 +64,7 @@ public class SelectionListView: UIView {
 
     private func setup() {
         layer.cornerRadius = cornerRadius
-        backgroundColor = isSeparatedListElementDesign ? .clear : .bgTertiary
+        backgroundColor = isSeparatedListElementDesign ? .clear : .backgroundSubtle
         addSubview(stackView)
         stackView.fillInSuperview()
     }

@@ -228,7 +228,7 @@ public final class FrontPageView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgQuaternary
+        backgroundColor = .backgroundSubtle
 
         addSubview(adRecommendationsGridView)
 

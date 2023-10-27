@@ -88,7 +88,7 @@ public class FeedbackView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgSecondary
+        backgroundColor = .backgroundInfoSubtle
 
         layer.borderWidth = 1
         layer.cornerRadius = 8

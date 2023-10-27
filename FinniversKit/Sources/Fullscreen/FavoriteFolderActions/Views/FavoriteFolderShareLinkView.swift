@@ -63,7 +63,7 @@ final class FavoriteFolderShareLinkView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .bgSecondary
+        backgroundColor = .backgroundInfoSubtle
 
         addSubview(iconImageView)
         addSubview(descriptionLabel)

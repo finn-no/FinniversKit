@@ -73,13 +73,13 @@ public final class InfoboxView: UIView {
     // MARK: - Init
 
     public override init(frame: CGRect) {
-        style = .small(backgroundColor: .bgSecondary)
+        style = .small(backgroundColor: .backgroundInfoSubtle)
         super.init(frame: frame)
         setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
-        style = .small(backgroundColor: .bgSecondary)
+        style = .small(backgroundColor: .backgroundInfoSubtle)
         super.init(coder: aDecoder)
         setup()
     }

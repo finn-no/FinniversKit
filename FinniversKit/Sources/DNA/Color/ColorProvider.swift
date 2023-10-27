@@ -9,8 +9,11 @@ public protocol ColorProvider {
     var bgPrimary: UIColor { get }
     @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
     var bgSecondary: UIColor { get }
+    @available(*, deprecated, message: "Use Warp backgroundSubtle instead")
     var bgTertiary: UIColor { get }
+    @available(*, deprecated, message: "Use Warp backgroundSubtle instead")
     var bgQuaternary: UIColor { get }
+    @available(*, deprecated, message: "Use Warp background instead")
     var bgBottomSheet: UIColor { get }
     var bgAlert: UIColor { get }
     var bgInfo: UIColor { get }
@@ -60,15 +63,15 @@ public struct DefaultColorProvider: ColorProvider {
     public var bgSecondary: UIColor {
         .dynamicColor(defaultColor: .aqua50, darkModeColor: .darkIce)
     }
-
+    @available(*, deprecated, message: "Use Warp backgroundSubtle instead")
     public var bgTertiary: UIColor {
         .dynamicColor(defaultColor: .blueGray50, darkModeColor: .darkMarble)
     }
-
+    @available(*, deprecated, message: "Use Warp backgroundSubtle instead")
     public var bgQuaternary: UIColor {
         .dynamicColor(defaultColor: .blueGray50, darkModeColor: .darkMilk)
     }
-
+    @available(*, deprecated, message: "Use Warp background instead")
     public var bgBottomSheet: UIColor {
         .dynamicColor(defaultColor: .white, darkModeColor: .darkIce)
     }

@@ -87,7 +87,7 @@ public class ContractActionView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgTertiary
+        backgroundColor = .backgroundSubtle
         layer.cornerRadius = .spacingS
         layoutMargins = UIEdgeInsets(
             top: .spacingM,

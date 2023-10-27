@@ -69,7 +69,7 @@ public class ResultView: UIView {
         actionButtonTitle: String? = nil,
         actionButtonStyle: Button.Style? = nil,
         icon: UIImage? = nil,
-        backgroundColor: UIColor = .bgTertiary,
+        backgroundColor: UIColor = .backgroundSubtle,
         iconTintColor: UIColor? = .iconSecondary,
         iconBottomSpacing: CGFloat = .spacingM,
         titleBottomSpacing: CGFloat = 0,

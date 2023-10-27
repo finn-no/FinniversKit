@@ -66,7 +66,7 @@ public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell
 
     private lazy var metadataContainer: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .bgTertiary
+        view.backgroundColor = .backgroundSubtle
         return view
     }()
 

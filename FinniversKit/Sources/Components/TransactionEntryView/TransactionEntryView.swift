@@ -49,7 +49,7 @@ public class TransactionEntryView: UIView {
     // MARK: - Init
 
     public init(
-        backgroundColor: UIColor = .bgTertiary,
+        backgroundColor: UIColor = .backgroundSubtle,
         withAutoLayout: Bool = false
     ) {
         self.navigationLinkBackgroundColor = backgroundColor

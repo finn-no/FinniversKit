@@ -53,7 +53,7 @@ extension SafetyElementsView {
 
         private lazy var titleView: UIView = {
             let view = UIView(withAutoLayout: true)
-            view.backgroundColor = .bgTertiary
+            view.backgroundColor = .backgroundSubtle
             view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
             view.layer.cornerRadius = .spacingS
             view.layoutMargins = UIEdgeInsets(vertical: .spacingS, horizontal: .spacingM)

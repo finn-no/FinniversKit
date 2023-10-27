@@ -43,7 +43,7 @@ class FavoriteAdsSectionHeaderView: UITableViewHeaderFooterView {
     // MARK: - Setup
 
     private func setup() {
-        contentView.backgroundColor = .bgTertiary
+        contentView.backgroundColor = .backgroundSubtle
         contentView.addSubview(titleLabel)
         contentView.addSubview(detailLabel)
 

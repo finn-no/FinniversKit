@@ -13,8 +13,11 @@ extension Color {
     public static var bgPrimary: Color     { Color(UIColor.bgPrimary) }
     @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
     public static var bgSecondary: Color   { Color(UIColor.bgSecondary) }
+    @available(*, deprecated, message: "Use Warp backgroundSubtle instead")
     public static var bgTertiary: Color    { Color(UIColor.bgTertiary) }
+    @available(*, deprecated, message: "Use Warp backgroundSubtle instead")
     public static var bgQuaternary: Color  { Color(UIColor.bgQuaternary) }
+    @available(*, deprecated, message: "Use Warp background instead")
     public static var bgBottomSheet: Color { Color(UIColor.bgBottomSheet) }
     public static var bgAlert: Color       { Color(UIColor.bgAlert) }
     public static var bgSuccess: Color     { Color(UIColor.bgSuccess) }

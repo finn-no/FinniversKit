@@ -122,7 +122,7 @@ public final class NativeAdvertGridView: UIView {
     private func setSizeClassColors() {
         if traitCollection.horizontalSizeClass == .regular,
             !forceCompactSize {
-            container.backgroundColor = .bgTertiary
+            container.backgroundColor = .backgroundSubtle
         } else {
             container.backgroundColor = .background
         }

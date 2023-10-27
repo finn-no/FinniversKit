@@ -38,7 +38,7 @@ public class SettingsView: UIView {
 
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.backgroundColor = .bgTertiary
+        tableView.backgroundColor = .backgroundSubtle
         tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.delegate = self
