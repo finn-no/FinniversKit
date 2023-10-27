@@ -51,7 +51,7 @@ public class ConfirmationView: UIView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false

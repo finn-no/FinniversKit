@@ -29,7 +29,7 @@ public struct SwiftUIRadioButton: View {
                 .animation(.spring(response: 0.2, dampingFraction: 0.5), value: isSelected)
 
             Circle()
-                .foregroundColor(.bgPrimary)
+                .foregroundColor(.background)
                 .frame(width: innerSize, height: innerSize)
                 .animation(.spring(response: 0.2, dampingFraction: 0.5), value: isSelected)
         }

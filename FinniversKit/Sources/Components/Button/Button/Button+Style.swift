@@ -77,7 +77,7 @@ public extension Button {
         ) {
             self.borderWidth = borderWidth
 
-            self.bodyColor = stateStyles[.normal]?.backgroundColor ?? .bgPrimary
+            self.bodyColor = stateStyles[.normal]?.backgroundColor ?? .background
             self.borderColor = stateStyles[.normal]?.borderColor
             self.textColor = stateStyles[.normal]?.textColor ?? .textAction
 
@@ -176,7 +176,7 @@ public extension Button.Style {
             stateStyles: [
                 .normal: Button.StateStyle(
                     textColor: .textAction,
-                    backgroundColor: .bgPrimary,
+                    backgroundColor: .background,
                     borderColor: .btnDisabled
                 ),
                 .highlighted: Button.StateStyle(
@@ -199,12 +199,12 @@ public extension Button.Style {
             stateStyles: [
                 .normal: Button.StateStyle(
                     textColor: .textPrimary,
-                    backgroundColor: .bgPrimary,
+                    backgroundColor: .background,
                     borderColor: .btnDisabled
                 ),
                 .highlighted: Button.StateStyle(
                     textColor: .utilityButtonHighlightedTextColor,
-                    backgroundColor: .bgPrimary,
+                    backgroundColor: .background,
                     borderColor: .utilityButtonHighlightedBorderColor
                 ),
                 .disabled: Button.StateStyle(

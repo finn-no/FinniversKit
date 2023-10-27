@@ -9,6 +9,7 @@ import SwiftUI
 extension Color {
     // MARK: - Background
 
+    @available(*, deprecated, message: "Use Warp background instead")
     public static var bgPrimary: Color     { Color(UIColor.bgPrimary) }
     public static var bgSecondary: Color   { Color(UIColor.bgSecondary) }
     public static var bgTertiary: Color    { Color(UIColor.bgTertiary) }
@@ -55,3 +56,4 @@ extension Color {
     public static var decorationSubtle: Color    { Color(UIColor.decorationSubtle) }
     public static var borderDefault: Color       { Color(UIColor.borderDefault) }
 }
+// swiftlint:enable opening_brace

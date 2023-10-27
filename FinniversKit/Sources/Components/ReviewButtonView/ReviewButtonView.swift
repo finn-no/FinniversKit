@@ -79,7 +79,7 @@ public final class ReviewButtonView: UIView {
 
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         addSubview(hairlineSeperator)
         addSubview(reviewButtonControl)

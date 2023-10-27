@@ -34,7 +34,7 @@ extension CollapsibleContentView {
         // MARK: - Defined styles
 
         public static let plain = Style(
-            backgroundColor: .bgPrimary,
+            backgroundColor: .background,
             cornerRadius: .zero,
             contentInsets: .init(vertical: .spacingS, horizontal: 0),
             titleStyle: .title3Strong,

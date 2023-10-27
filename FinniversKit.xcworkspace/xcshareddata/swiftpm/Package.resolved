@@ -17,6 +17,15 @@
         "revision" : "b44b563e6ddc5a613a107fb57626047a7f1d4e1a",
         "version" : "1.9.666"
       }
+    },
+    {
+      "identity" : "warp-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/warp-ds/warp-ios.git",
+      "state" : {
+        "branch" : "make-tokens-public",
+        "revision" : "112ef571a9ad1373e8d78df342fb3e6671aab52a"
+      }
     }
   ],
   "version" : 2

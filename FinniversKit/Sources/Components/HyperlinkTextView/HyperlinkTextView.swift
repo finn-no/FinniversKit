@@ -36,7 +36,7 @@ public class HyperlinkTextView: UIView {
     public var text: String? {
         textView.attributedText.string
     }
-    
+
     // MARK: - Private properties
 
     private var viewModel: HyperlinkTextViewModel?
@@ -45,7 +45,7 @@ public class HyperlinkTextView: UIView {
         let view = UITextView(frame: .zero, textContainer: nil)
         view.font = font
         view.textColor = textColor
-        view.backgroundColor = .bgPrimary
+        view.backgroundColor = .background
         view.isScrollEnabled = false
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false

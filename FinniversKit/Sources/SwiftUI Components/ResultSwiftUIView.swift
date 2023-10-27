@@ -56,7 +56,7 @@ public struct ResultSwiftUIView: View {
         }
         .padding(.horizontal, .spacingXL)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.bgPrimary)
+        .background(Color.background)
     }
 }
 

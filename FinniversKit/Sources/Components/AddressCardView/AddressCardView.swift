@@ -70,7 +70,7 @@ public final class AddressCardView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         addressStackView.addArrangedSubviews([titleLabel, subtitleLabel])
         topStackView.addArrangedSubviews([addressStackView, copyButton])

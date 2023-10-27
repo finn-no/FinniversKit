@@ -85,7 +85,7 @@ public extension FloatingButton.Style {
         FloatingButton.Style(
             tintColor: .btnPrimary,
             titleColor: .textTertiary,
-            primaryBackgroundColor: .bgPrimary,
+            primaryBackgroundColor: .background,
             highlightedBackgroundColor: .bgSecondary,
             borderWidth: 0,
             borderColor: nil,

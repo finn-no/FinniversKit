@@ -37,7 +37,7 @@ public struct SwiftUICheckBox: View {
 
             // Fill area over the background, shrinks to a point when checked
             RoundedRectangle(cornerRadius: isChecked ? size : cornerRadius)
-                .fill(Color.bgPrimary)
+                .fill(Color.background)
                 .frame(
                     width: fillinSize.width,
                     height: fillinSize.height

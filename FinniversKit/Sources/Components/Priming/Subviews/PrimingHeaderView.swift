@@ -36,7 +36,7 @@ final class PrimingHeaderView: BottomShadowView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         addSubview(headingLabel)
 
         let verticalSpacing = .spacingM + .spacingS

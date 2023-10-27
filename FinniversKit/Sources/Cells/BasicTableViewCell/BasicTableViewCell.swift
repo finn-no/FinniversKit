@@ -114,7 +114,7 @@ open class BasicTableViewCell: UITableViewCell {
 
     private func setup() {
         setDefaultSelectedBackgound()
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         contentView.addSubview(stackView)
         contentView.addSubview(detailLabel)

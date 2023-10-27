@@ -27,7 +27,7 @@ public final class FavoriteAdActionView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .bgPrimary
+        tableView.backgroundColor = .background
         tableView.rowHeight = FavoriteAdActionView.rowHeight
         tableView.estimatedRowHeight = FavoriteAdActionView.rowHeight
         tableView.tableFooterView = UIView()

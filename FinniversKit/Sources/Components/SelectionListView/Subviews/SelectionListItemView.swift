@@ -63,7 +63,7 @@ class SelectionListItemView: UIView {
 
     private func setup() {
         backgroundColor = .clear
-        contentView.backgroundColor = .bgPrimary
+        contentView.backgroundColor = .background
         if configuration.isIndependent {
             contentView.layer.borderWidth = 1
             contentView.layer.cornerRadius = configuration.cornerRadius

@@ -83,7 +83,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         setDefaultSelectedBackgound()
         contentView.addSubview(adView)
         adView.fillInSuperview()

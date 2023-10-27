@@ -47,7 +47,7 @@ public final class FooterButtonView: TopShadowView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         addSubview(button)
 
         let insets = UIEdgeInsets(

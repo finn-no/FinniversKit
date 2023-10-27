@@ -23,7 +23,7 @@ public class SearchView: UIView {
         let tableView = UITableView(withAutoLayout: true)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.backgroundColor = .bgPrimary
+        tableView.backgroundColor = .background
         tableView.keyboardDismissMode = .onDrag
         tableView.register(ResultTableViewCell.self)
         return tableView
@@ -50,7 +50,7 @@ public class SearchView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         addSubview(searchTextField)
         addSubview(tableView)
 

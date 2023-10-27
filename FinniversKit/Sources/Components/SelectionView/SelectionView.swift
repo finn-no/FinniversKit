@@ -25,7 +25,7 @@ public final class SelectionView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .bgPrimary
+        tableView.backgroundColor = .background
         tableView.rowHeight = SelectionView.rowHeight
         tableView.estimatedRowHeight = SelectionView.rowHeight
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)

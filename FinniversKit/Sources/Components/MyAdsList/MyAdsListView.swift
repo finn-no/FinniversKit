@@ -41,7 +41,7 @@ public class MyAdsListView: UIView {
 
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
-        collectionView.backgroundColor = .bgPrimary
+        collectionView.backgroundColor = .background
         collectionView.delegate = self
         collectionView.register(MyAdCollectionViewCell.self)
         collectionView.register(LoadingIndicatorCollectionViewCell.self)

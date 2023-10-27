@@ -21,7 +21,7 @@ public final class PrimingView: UIView {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(withAutoLayout: true)
-        tableView.backgroundColor = .bgPrimary
+        tableView.backgroundColor = .background
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 80
         tableView.separatorStyle = .none
@@ -67,7 +67,7 @@ public final class PrimingView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         addSubview(tableView)
         addSubview(headerView)

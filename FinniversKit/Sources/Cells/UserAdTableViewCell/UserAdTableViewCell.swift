@@ -59,7 +59,7 @@ public class UserAdTableViewCell: UITableViewCell {
 
     private func setup() {
         isAccessibilityElement = true
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         selectionStyle = .none
 
         contentView.addSubview(userAdDetailsView)

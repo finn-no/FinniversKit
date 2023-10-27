@@ -124,7 +124,7 @@ public final class NativeAdvertGridView: UIView {
             !forceCompactSize {
             container.backgroundColor = .bgTertiary
         } else {
-            container.backgroundColor = .bgPrimary
+            container.backgroundColor = .background
         }
     }
 

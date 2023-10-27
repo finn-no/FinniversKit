@@ -46,7 +46,7 @@ final class FavoriteFoldersFooterView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         isAccessibilityElement = true
 
         layer.masksToBounds = false

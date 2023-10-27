@@ -87,7 +87,7 @@ public class SettingDetailsView: UIView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         setup()
     }
 

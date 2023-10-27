@@ -3,6 +3,20 @@
 //
 
 import UIKit
+import SwiftUI
+
+// MARK: - Warp colors
+extension Color {
+    public static var background: Color { Config.warpTokenProvider.background }
+}
+
+@objc extension UIColor {
+    public static var background: UIColor { UIColor(Color.background) }
+}
+
+extension CGColor {
+    public class var background: CGColor { UIColor.background.cgColor }
+}
 
 // MARK: - Semantic colors, dark mode compatible
 @objc extension UIColor {
@@ -15,6 +29,7 @@ import UIKit
     public class var bgCritical: UIColor { Config.colorProvider.bgCritical }
     public class var bgInfo: UIColor { Config.colorProvider.bgInfo }
     public class var bgInfoHeader: UIColor { Config.colorProvider.bgInfoHeader }
+    @available(*, deprecated, message: "Use Warp background instead")
     public class var bgPrimary: UIColor { Config.colorProvider.bgPrimary }
     public class var bgQuaternary: UIColor { Config.colorProvider.bgQuaternary }
     public class var bgSecondary: UIColor { Config.colorProvider.bgSecondary }
@@ -56,6 +71,7 @@ extension CGColor {
     public class var bgCritical: CGColor { UIColor.bgCritical.cgColor }
     public class var bgInfo: CGColor { UIColor.bgInfo.cgColor }
     public class var bgInfoHeader: CGColor { UIColor.bgInfoHeader.cgColor }
+    @available(*, deprecated, message: "Use Warp background instead")
     public class var bgPrimary: CGColor { UIColor.bgPrimary.cgColor }
     public class var bgQuaternary: CGColor { UIColor.bgQuaternary.cgColor }
     public class var bgSecondary: CGColor { UIColor.bgSecondary.cgColor }

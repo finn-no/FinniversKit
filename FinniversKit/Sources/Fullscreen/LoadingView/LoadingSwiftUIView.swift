@@ -78,7 +78,7 @@ public struct LoadingSwiftUIView: View {
 
     private var backgroundView: some View {
         if isFullscreen {
-            return Color.bgPrimary.opacity(0.8)
+            return Color.background.opacity(0.8)
         }
         // Plain clear color always allows touch passthrough so use a very transparent
         // color instead.

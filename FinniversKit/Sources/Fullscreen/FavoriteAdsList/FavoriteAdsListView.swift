@@ -119,7 +119,7 @@ public class FavoriteAdsListView: UIView {
         tableView.estimatedRowHeight = 130
         tableView.estimatedSectionHeaderHeight = 32
         tableView.allowsMultipleSelectionDuringEditing = true
-        tableView.backgroundColor = .bgPrimary
+        tableView.backgroundColor = .background
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }

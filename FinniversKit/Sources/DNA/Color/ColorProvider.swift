@@ -5,6 +5,7 @@
 import UIKit
 
 public protocol ColorProvider {
+    @available(*, deprecated, message: "Use Warp background instead")
     var bgPrimary: UIColor { get }
     var bgSecondary: UIColor { get }
     var bgTertiary: UIColor { get }

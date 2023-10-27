@@ -96,7 +96,7 @@ public class SelectorTitleView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         updateArrowDirection()
 
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         updateButtonColor()
         addSubview(button)

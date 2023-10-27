@@ -66,7 +66,7 @@ class ViewingItemView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         dateStackView.addArrangedSubviews([monthLabel, dayLabel])
         weekdayTimeStackView.addArrangedSubviews([weekdayLabel, timeLabel])

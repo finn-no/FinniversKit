@@ -33,7 +33,7 @@ final class EarthHourSignUpView: EarthHourContentView {
     // MARK: - Setup
 
     override func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         addSubview(titleLabel)
         addSubview(subtitleTagView)

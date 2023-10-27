@@ -76,7 +76,7 @@ public class UserAdManagementUserActionCell: UITableViewCell {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         contentStackView.addArrangedSubviews([iconImageView, titleLabel, trailingImageView, toggle])
 

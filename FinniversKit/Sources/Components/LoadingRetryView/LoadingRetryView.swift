@@ -68,7 +68,7 @@ public final class LoadingRetryView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         addSubview(label)
         addSubview(button)

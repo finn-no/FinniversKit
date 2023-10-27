@@ -21,7 +21,7 @@ extension ToastView {
 
         var imageBackgroundColor: UIColor {
             switch self {
-            case .sucesssWithImage: return .bgPrimary
+            case .sucesssWithImage: return .background
             default: return .clear
             }
         }

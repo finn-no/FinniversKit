@@ -65,7 +65,7 @@ public class BrazePromotionView: UIView {
 
     private lazy var closeButton: CloseButton = {
         let button = CloseButton(withAutoLayout: true)
-        button.tintColor = .bgPrimary
+        button.tintColor = .background
         button.setImage(UIImage(named: .cross), for: .normal)
         button.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         button.layer.masksToBounds = true

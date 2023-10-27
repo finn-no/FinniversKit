@@ -99,7 +99,7 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
 
     private func setup() {
         selectionStyle = .none
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         headerStackView.addArrangedSubview(titleLabel)
         headerStackView.addArrangedSubview(fullStatisticsButton)

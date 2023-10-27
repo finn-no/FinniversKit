@@ -156,7 +156,7 @@ private extension LoadingView {
             case .fullscreen:
                 successImageView.tintColor = .accentSecondaryBlue
                 messageLabel.textColor = .textPrimary
-                backgroundColor = UIColor.bgPrimary.withAlphaComponent(0.8)
+                backgroundColor = .background.withAlphaComponent(0.8)
                 layer.cornerRadius = 0
                 fillInSuperview()
             case .boxed:

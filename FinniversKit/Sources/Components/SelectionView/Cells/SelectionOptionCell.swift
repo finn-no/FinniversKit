@@ -67,7 +67,7 @@ final class SelectionOptionCell: UITableViewCell {
 
     private func setup() {
         isAccessibilityElement = true
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         setDefaultSelectedBackgound()
         hideCheckmark(true)
 

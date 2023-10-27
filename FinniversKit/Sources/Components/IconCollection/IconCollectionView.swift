@@ -69,7 +69,7 @@ public final class IconCollectionView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         addSubview(collectionView)
         collectionView.fillInSuperview()
     }

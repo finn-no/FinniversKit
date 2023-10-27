@@ -89,7 +89,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         contentView.addSubview(separatorView)
         contentView.addSubview(containerStack)
 
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         let hairLineSize = 1.0 / UIScreen.main.scale
 

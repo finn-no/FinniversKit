@@ -35,7 +35,7 @@ public class UserAdManagementStatisticsEmptyViewCell: UITableViewCell {
     // MARK: - Private methods
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         selectionStyle = .none
         addSubview(emptyView)
 

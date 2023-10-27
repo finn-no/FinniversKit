@@ -33,7 +33,7 @@ open class BasicTableView: ShadowScrollView {
         let tableView = UITableView(withAutoLayout: true)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .bgPrimary
+        tableView.backgroundColor = .background
         tableView.estimatedRowHeight = BasicTableView.estimatedRowHeight
         tableView.separatorColor = .tableViewSeparator
         tableView.separatorInset = .leadingInset(frame.width)
@@ -71,7 +71,7 @@ open class BasicTableView: ShadowScrollView {
 
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         tableView.register(BasicTableViewCell.self)
 
         if usingShadowWhenScrolling {

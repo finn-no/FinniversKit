@@ -33,7 +33,7 @@ struct SwiftUIFloatingButton_Previews: PreviewProvider {
             }
         })
         .buttonStyle(FloatingButtonStyle(
-            backgroundColor: .bgPrimary,
+            backgroundColor: .background,
             backgroundColorPressed: .bgSecondary,
             shadowColor: .black.opacity(0.6),
             shadowOffset: .init(width: 0, height: 5),

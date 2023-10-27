@@ -66,7 +66,7 @@ extension ChristmasWishListView {
         // MARK: - Private methods
 
         private func setup() {
-            backgroundColor = .bgPrimary
+            backgroundColor = .background
             let spacing = .spacingM * 1.5
             layoutMargins = UIEdgeInsets(top: spacing, leading: spacing, bottom: 0, trailing: spacing)
 

@@ -7,7 +7,7 @@ import UIKit
 public class ShadowView: UIView {
     public init() {
         super.init(frame: .zero)
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         layer.masksToBounds = false
         layer.shadowOpacity = 0.3
         layer.shadowRadius = 0

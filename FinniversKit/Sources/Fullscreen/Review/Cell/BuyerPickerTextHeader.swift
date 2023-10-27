@@ -16,7 +16,7 @@ class BuyerPickerTextHeader: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         translatesAutoresizingMaskIntoConstraints = false
-        contentView.backgroundColor = .bgPrimary
+        contentView.backgroundColor = .background
         contentView.addSubview(title)
 
         let inset = UIEdgeInsets(top: .spacingM,

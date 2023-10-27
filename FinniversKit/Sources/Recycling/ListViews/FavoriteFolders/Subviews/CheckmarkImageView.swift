@@ -10,7 +10,7 @@ public extension UIImageView {
         imageView.layer.cornerRadius = 8
         imageView.backgroundColor = .btnPrimary
         imageView.image = UIImage(named: .check)
-        imageView.tintColor = .bgPrimary
+        imageView.tintColor = .background
         imageView.contentMode = .scaleAspectFit
         return imageView
     }
@@ -23,7 +23,7 @@ extension UIImageView {
         self.init(withAutoLayout: withAutoLayout)
         self.image = UIImage(named: imageName)
     }
-    
+
     convenience init(image: UIImage, withAutoLayout: Bool) {
         self.init(withAutoLayout: withAutoLayout)
         self.image = image

@@ -52,7 +52,7 @@ public class MessageUserRequiredView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         addSubview(imageView)
         addSubview(messageView)
         addSubview(actionButton)
