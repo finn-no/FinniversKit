@@ -68,7 +68,7 @@ extension SafetyElementsView: SafetyElementsRegularViewDelegate {
 }
 
 extension UIColor {
-    class var activeSafetyIconTint: UIColor { .btnPrimary }
+    class var activeSafetyIconTint: UIColor { .backgroundPrimary }
 
     class var inactiveSafetyIconTint: UIColor {
         dynamicColor(defaultColor: .gray500, darkModeColor: .white)

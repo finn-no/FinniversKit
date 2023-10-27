@@ -177,14 +177,14 @@ extension AddressMapView: MKMapViewDelegate {
     public func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKCircle {
             let circle = MKCircleRenderer(overlay: overlay)
-            circle.strokeColor = UIColor.btnPrimary
-            circle.fillColor = UIColor.btnPrimary.withAlphaComponent(0.15)
+            circle.strokeColor = .backgroundPrimary
+            circle.fillColor = .backgroundPrimary.withAlphaComponent(0.15)
             circle.lineWidth = 2
             return circle
         } else if overlay is MKPolygon {
             let polygon = MKPolygonRenderer(overlay: overlay)
-            polygon.strokeColor = UIColor.btnPrimary
-            polygon.fillColor = UIColor.btnPrimary.withAlphaComponent(0.15)
+            polygon.strokeColor = .backgroundPrimary
+            polygon.fillColor = .backgroundPrimary.withAlphaComponent(0.15)
             polygon.lineWidth = 2
             return polygon
         } else if let tileOverlay = overlay as? MKTileOverlay {

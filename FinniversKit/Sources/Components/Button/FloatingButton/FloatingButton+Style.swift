@@ -83,13 +83,13 @@ public extension FloatingButton {
 public extension FloatingButton.Style {
     static var `default`: FloatingButton.Style {
         FloatingButton.Style(
-            tintColor: .btnPrimary,
+            tintColor: .backgroundPrimary,
             titleColor: .textTertiary,
             primaryBackgroundColor: .background,
             highlightedBackgroundColor: .backgroundInfoSubtle,
             borderWidth: 0,
             borderColor: nil,
-            badgeBackgroundColor: .btnPrimary,
+            badgeBackgroundColor: .backgroundPrimary,
             badgeTextColor: .textPrimary,
             badgeSize: 30,
             shadowColor: .black.withAlphaComponent(0.6),

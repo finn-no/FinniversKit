@@ -31,7 +31,7 @@ extension Color {
     public static var bgInfoHeader: Color  { Color(UIColor.bgInfoHeader) }
 
     // MARK: - Button
-
+    @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     public static var btnPrimary: Color  { Color(UIColor.btnPrimary) }
     public static var btnDisabled: Color { Color(UIColor.btnDisabled) }
     public static var btnCritical: Color { Color(UIColor.btnCritical) }

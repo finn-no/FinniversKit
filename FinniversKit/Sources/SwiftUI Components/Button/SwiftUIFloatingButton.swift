@@ -26,10 +26,10 @@ struct SwiftUIFloatingButton_Previews: PreviewProvider {
         SwiftUI.Button(action: {}, label: {
             HStack {
                 Image(systemName: "plus")
-                    .foregroundColor(.btnPrimary)
+                    .foregroundColor(.backgroundPrimary)
                 Text("Legg til element")
                     .finnFont(.detail)
-                    .foregroundColor(.btnPrimary)
+                    .foregroundColor(.backgroundPrimary)
             }
         })
         .buttonStyle(FloatingButtonStyle(

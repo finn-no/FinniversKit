@@ -43,12 +43,12 @@ final class SelectionOptionCell: UITableViewCell {
 
     public override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        checkmarkImageView.backgroundColor = .btnPrimary
+        checkmarkImageView.backgroundColor = .backgroundPrimary
     }
 
     public override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
-        checkmarkImageView.backgroundColor = .btnPrimary
+        checkmarkImageView.backgroundColor = .backgroundPrimary
     }
 
     override func prepareForReuse() {
@@ -93,7 +93,7 @@ final class SelectionOptionCell: UITableViewCell {
     }
 
     private func hideCheckmark(_ hide: Bool) {
-        iconImageView.tintColor = hide ? .iconPrimary : .btnPrimary
+        iconImageView.tintColor = hide ? .iconPrimary : .backgroundPrimary
 
         titleLabel.font = hide ? .body : .bodyStrong
         titleLabel.textColor = iconImageView.tintColor

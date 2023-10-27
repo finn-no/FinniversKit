@@ -75,7 +75,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         delegate?.buttonAndInformationCellButtonWasTapped(self)
 
         UIView.animate(withDuration: 0.1, delay: 0, options: .beginFromCurrentState, animations: {
-            sender.backgroundColor = .btnPrimary
+            sender.backgroundColor = .backgroundPrimary
         }, completion: nil)
     }
 

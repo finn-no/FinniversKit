@@ -39,7 +39,7 @@ public class SwitchView: UIView {
 
     private lazy var uiSwitch: UISwitch = {
         let uiSwitch = UISwitch(withAutoLayout: true)
-        uiSwitch.onTintColor = .btnPrimary //DARK
+        uiSwitch.onTintColor = .backgroundPrimary //DARK
         uiSwitch.addTarget(self, action: #selector(swichValueChanged), for: .valueChanged)
         return uiSwitch
     }()

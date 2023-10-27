@@ -8,7 +8,7 @@ public struct InlineFlatStyle: ButtonStyle {
     private let font: Font
     private let textColor: Color
 
-    public init(size: Button.Size = .normal, textColor: Color = .btnPrimary) {
+    public init(size: Button.Size = .normal, textColor: Color = .backgroundPrimary) {
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
         self.textColor = textColor
     }
@@ -26,7 +26,7 @@ public struct FlatStyle: ButtonStyle {
     private let font: Font
     private let textColor: Color
 
-    public init(size: Button.Size = .normal, textColor: Color = .btnPrimary) {
+    public init(size: Button.Size = .normal, textColor: Color = .backgroundPrimary) {
         self.size = size
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
         self.textColor = textColor
@@ -49,7 +49,7 @@ public struct DefaultStyle: ButtonStyle {
     private let font: Font
     private let textColor: Color
 
-    public init(size: Button.Size = .normal, textColor: Color = .btnPrimary) {
+    public init(size: Button.Size = .normal, textColor: Color = .backgroundPrimary) {
         self.size = size
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
         self.textColor = textColor
@@ -71,7 +71,7 @@ public struct DefaultStyle: ButtonStyle {
         )
         .roundedBorder(
             radius: .spacingS,
-            color: configuration.isPressed ? .btnPrimary : .btnDisabled
+            color: configuration.isPressed ? .backgroundPrimary : .btnDisabled
         )
     }
 }
@@ -82,7 +82,7 @@ public struct CallToAction: ButtonStyle {
     private let font: Font
     private let fullWidth: Bool
 
-    public init(size: Button.Size = .normal, background: Color = .btnPrimary, fullWidth: Bool = true, isEnabled: Binding<Bool>? = nil) {
+    public init(size: Button.Size = .normal, background: Color = .backgroundPrimary, fullWidth: Bool = true, isEnabled: Binding<Bool>? = nil) {
         self.background = background
         self.fullWidth = fullWidth
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)

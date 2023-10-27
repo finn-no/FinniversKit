@@ -182,7 +182,7 @@ public extension Button.Style {
                 .highlighted: Button.StateStyle(
                     textColor: nil,
                     backgroundColor: .defaultButtonHighlightedBodyColor,
-                    borderColor: .btnPrimary
+                    borderColor: .backgroundPrimary
                 ),
                 .disabled: Button.StateStyle(
                     textColor: .textDisabled,
@@ -222,7 +222,7 @@ public extension Button.Style {
             stateStyles: [
                 .normal: Button.StateStyle(
                     textColor: .textTertiary,
-                    backgroundColor: .btnPrimary,
+                    backgroundColor: .backgroundPrimary,
                     borderColor: nil
                 ),
                 .highlighted: Button.StateStyle(

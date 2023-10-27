@@ -13,6 +13,7 @@ extension Color {
     public static var backgroundWarningSubtle: Color { Config.warpTokenProvider.backgroundWarningSubtle }
     public static var backgroundPositiveSubtle: Color { Config.warpTokenProvider.backgroundPositiveSubtle }
     public static var backgroundNegativeSubtle: Color { Config.warpTokenProvider.backgroundNegativeSubtle }
+    public static var backgroundPrimary: Color { Config.warpTokenProvider.backgroundPrimary }
 }
 
 @objc extension UIColor {
@@ -22,6 +23,7 @@ extension Color {
     public static var backgroundWarningSubtle: UIColor { UIColor(.backgroundWarningSubtle) }
     public static var backgroundPositiveSubtle: UIColor { UIColor(.backgroundPositiveSubtle) }
     public static var backgroundNegativeSubtle: UIColor { UIColor(.backgroundNegativeSubtle) }
+    public static var backgroundPrimary: UIColor { UIColor(.backgroundPrimary) }
 }
 
 extension CGColor {
@@ -31,6 +33,7 @@ extension CGColor {
     public class var backgroundWarningSubtle: CGColor { UIColor.backgroundWarningSubtle.cgColor }
     public class var backgroundPositiveSubtle: CGColor { UIColor.backgroundPositiveSubtle.cgColor }
     public class var backgroundNegativeSubtle: CGColor { UIColor.backgroundNegativeSubtle.cgColor }
+    public class var backgroundPrimary: CGColor { UIColor.backgroundPrimary.cgColor }
 }
 
 // MARK: - Semantic colors, dark mode compatible
@@ -63,6 +66,7 @@ extension CGColor {
     public class var btnAction: UIColor { Config.colorProvider.btnAction }
     public class var btnCritical: UIColor { Config.colorProvider.btnCritical }
     public class var btnDisabled: UIColor { Config.colorProvider.btnDisabled }
+    @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     public class var btnPrimary: UIColor { Config.colorProvider.btnPrimary }
     public class var decorationSubtle: UIColor { Config.colorProvider.decorationSubtle }
     public class var iconPrimary: UIColor { Config.colorProvider.iconPrimary }
@@ -114,6 +118,7 @@ extension CGColor {
     public class var btnAction: CGColor { UIColor.btnAction.cgColor }
     public class var btnCritical: CGColor { UIColor.btnCritical.cgColor }
     public class var btnDisabled: CGColor { UIColor.btnDisabled.cgColor }
+    @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     public class var btnPrimary: CGColor { UIColor.btnPrimary.cgColor }
     public class var decorationSubtle: CGColor { UIColor.decorationSubtle.cgColor }
     public class var iconPrimary: CGColor { UIColor.iconPrimary.cgColor }
@@ -412,7 +417,7 @@ public extension CGColor {
 // MARK: - Button UIColors
 @objc extension UIColor {
     public class var callToActionButtonHighlightedBodyColor: UIColor {
-        return btnPrimary.withAlphaComponent(0.8)
+        return backgroundPrimary.withAlphaComponent(0.8)
     }
 
     public class var destructiveButtonHighlightedBodyColor: UIColor {

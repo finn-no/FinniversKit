@@ -97,9 +97,9 @@ public class HappinessRatingView: UIView {
 
         let nonSelectedViews = ratingViews.filter { $0.rating != ratingView.rating }
         UIView.animate(withDuration: animationDuration, animations: {
-            ratingView.tintColor = .btnPrimary
+            ratingView.tintColor = .backgroundPrimary
             nonSelectedViews.forEach {
-                $0.tintColor = UIColor.btnPrimary.withAlphaComponent(0.6)
+                $0.tintColor = .backgroundPrimary.withAlphaComponent(0.6)
                 $0.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
             }
         })
@@ -155,7 +155,7 @@ private class RatingView: UIView {
         imageView.image = rating.image
         imageView.isUserInteractionEnabled = true
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .btnPrimary
+        imageView.tintColor = .backgroundPrimary
         imageView.isUserInteractionEnabled = false
 
         return imageView

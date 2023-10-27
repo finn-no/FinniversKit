@@ -37,7 +37,7 @@ final class FavoriteFolderShareToggleView: UIView {
 
     private lazy var switchControl: UISwitch = {
         let control = UISwitch(withAutoLayout: true)
-        control.onTintColor = .btnPrimary
+        control.onTintColor = .backgroundPrimary
         control.addTarget(self, action: #selector(handleSwitchValueChange), for: .valueChanged)
         return control
     }()

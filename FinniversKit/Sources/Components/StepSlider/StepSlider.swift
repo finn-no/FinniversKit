@@ -25,7 +25,7 @@ public final class StepSlider: UISlider {
         return thumbRect(forBounds: bounds, trackRect: currentTrackRect, value: value)
     }
 
-    public var accentColor: UIColor? = UIColor.btnPrimary {
+    public var accentColor: UIColor? = .backgroundPrimary {
         didSet {
             guard let accentColor = accentColor else {
                 return
@@ -53,7 +53,7 @@ public final class StepSlider: UISlider {
     private lazy var activeRangeTrackView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .btnPrimary
+        view.backgroundColor = .backgroundPrimary
         return view
     }()
 

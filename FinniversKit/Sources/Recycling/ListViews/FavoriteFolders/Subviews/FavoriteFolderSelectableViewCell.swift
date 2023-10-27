@@ -43,12 +43,12 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
     public override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        checkmarkImageView.backgroundColor = .btnPrimary
+        checkmarkImageView.backgroundColor = .backgroundPrimary
     }
 
     public override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
-        checkmarkImageView.backgroundColor = .btnPrimary
+        checkmarkImageView.backgroundColor = .backgroundPrimary
     }
 
     public override func prepareForReuse() {
@@ -97,7 +97,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
     // MARK: - Private methods
 
     private func setup() {
-        tintColor = .btnPrimary
+        tintColor = .backgroundPrimary
         subtitleLabel.textColor = .textSecondary
 
         contentView.addSubview(checkmarkImageView)
