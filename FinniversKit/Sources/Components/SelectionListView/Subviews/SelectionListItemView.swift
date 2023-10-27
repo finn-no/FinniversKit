@@ -37,7 +37,7 @@ class SelectionListItemView: UIView {
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.tintColor = .textPrimary
+        imageView.tintColor = .text
         imageView.contentMode = .scaleAspectFit
         imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
         imageView.setContentHuggingPriority(.required, for: .horizontal)
@@ -199,7 +199,7 @@ class SelectionListItemView: UIView {
             } else {
                 self.backgroundColor = self.isSelected ? .nmpBrandDecoration : .clear
             }
-            self.iconImageView.tintColor = self.isSelected ? .textPrimary : .textSecondary
+            self.iconImageView.tintColor = self.isSelected ? .text : .textSecondary
         })
     }
 }

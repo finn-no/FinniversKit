@@ -57,7 +57,7 @@ public extension TextField {
         var accessoryLabelTextColor: UIColor {
             switch self {
             case .disabled, .readOnly, .normal, .focus:
-                return .textPrimary
+                return .text
 
             case .error:
                 return .textCritical

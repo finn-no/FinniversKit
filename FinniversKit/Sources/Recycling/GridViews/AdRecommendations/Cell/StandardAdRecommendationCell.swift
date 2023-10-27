@@ -81,7 +81,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     private lazy var accessoryLabel: Label = {
         let label = Label(style: .detailStrong)
         label.setContentHuggingPriority(.required, for: .vertical)
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label

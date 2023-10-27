@@ -33,6 +33,7 @@ public protocol ColorProvider {
     var btnCritical: UIColor { get }
     @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     var btnAction: UIColor { get }
+    @available(*, deprecated, message: "Use Warp text instead")
     var textPrimary: UIColor { get }
     var textSecondary: UIColor { get }
     var textTertiary: UIColor { get }
@@ -120,7 +121,7 @@ public struct DefaultColorProvider: ColorProvider {
     public var btnAction: UIColor {
         .dynamicColor(defaultColor: .blue600, darkModeColor: .darkPrimaryBlue)
     }
-
+    @available(*, deprecated, message: "Use Warp text instead")
     public var textPrimary: UIColor {
         .dynamicColor(defaultColor: .gray700, darkModeColor: .white)
     }
@@ -182,7 +183,7 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var iconPrimary: UIColor {
-        .textPrimary
+        .text
     }
 
     public var iconSecondary: UIColor {

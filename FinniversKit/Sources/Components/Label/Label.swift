@@ -16,7 +16,7 @@ public class Label: UILabel {
     public init(
         style: Style,
         numberOfLines: Int = 1,
-        textColor: UIColor = .textPrimary,
+        textColor: UIColor = .text,
         withAutoLayout: Bool = false
     ) {
         super.init(frame: .zero)
@@ -36,7 +36,7 @@ public class Label: UILabel {
         setup()
     }
 
-    private func setup(textColor: UIColor = .textPrimary) {
+    private func setup(textColor: UIColor = .text) {
         addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:))))
 
         isAccessibilityElement = true

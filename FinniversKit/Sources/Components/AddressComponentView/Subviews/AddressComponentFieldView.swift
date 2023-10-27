@@ -94,7 +94,7 @@ public class AddressComponentFieldView: UIView {
 // MARK: - Private extensions
 
 private extension Label {
-    static func create(style: Label.Style, textColor: UIColor = .textPrimary) -> Label {
+    static func create(style: Label.Style, textColor: UIColor = .text) -> Label {
         let label = Label(style: style, withAutoLayout: true)
         label.textColor = textColor
         return label

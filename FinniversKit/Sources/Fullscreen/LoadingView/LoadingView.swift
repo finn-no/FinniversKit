@@ -155,7 +155,7 @@ private extension LoadingView {
             switch displayType {
             case .fullscreen:
                 successImageView.tintColor = .accentSecondaryBlue
-                messageLabel.textColor = .textPrimary
+                messageLabel.textColor = .text
                 backgroundColor = .background.withAlphaComponent(0.8)
                 layer.cornerRadius = 0
                 fillInSuperview()

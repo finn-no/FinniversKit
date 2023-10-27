@@ -88,7 +88,7 @@ extension ScrollableTabView {
 
             UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseOut, animations: {
                 UIView.transition(with: self.titleLabel, duration: animationDuration, options: .transitionCrossDissolve, animations: {
-                    self.titleLabel.textColor = self.isSelected ? .textPrimary : .textSecondary
+                    self.titleLabel.textColor = self.isSelected ? .text : .textSecondary
                 })
                 self.indicatorView.alpha = self.isSelected ? 1 : 0
             })

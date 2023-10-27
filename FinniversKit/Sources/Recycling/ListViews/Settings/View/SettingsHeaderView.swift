@@ -9,7 +9,7 @@ class SettingsHeaderView: UIView {
     // MARK: - Private properties
 
     private lazy var headerLabel: UILabel = {
-        let label = Label(style: .body, numberOfLines: 0, textColor: .textPrimary, withAutoLayout: true)
+        let label = Label(style: .body, numberOfLines: 0, textColor: .text, withAutoLayout: true)
         label.textAlignment = .left
         return label
     }()

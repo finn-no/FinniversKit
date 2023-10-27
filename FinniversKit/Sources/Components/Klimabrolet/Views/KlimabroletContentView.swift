@@ -29,7 +29,7 @@ class KlimabroletContentView: UIView {
         let font = UIFont.font(ofSize: 22, weight: .bold, textStyle: .title2)
         label.font = font
         label.textAlignment = .center
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.numberOfLines = 0
         return label
     }()

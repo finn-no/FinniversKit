@@ -41,7 +41,7 @@ public class UserAdManagementUserActionCell: UITableViewCell {
         let label = UILabel(withAutoLayout: true)
         label.numberOfLines = 0
         label.font = .bodyStrong
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.lineBreakMode = .byWordWrapping
         return label
     }()

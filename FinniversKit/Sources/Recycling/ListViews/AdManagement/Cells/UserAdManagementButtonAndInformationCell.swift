@@ -35,7 +35,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.font = .detailStrong
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.textAlignment = .left
         label.setContentHuggingPriority(.defaultLow, for: .horizontal)
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)

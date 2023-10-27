@@ -17,7 +17,7 @@ class CheckmarkItemDetailView: UIView {
     private lazy var titleLabel: Label = {
         let label = Label(style: .caption, withAutoLayout: true)
         label.text = item
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.numberOfLines = 0
         return label
     }()

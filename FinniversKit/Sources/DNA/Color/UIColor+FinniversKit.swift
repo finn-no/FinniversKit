@@ -16,6 +16,7 @@ extension Color {
     public static var backgroundPrimary: Color { Config.warpTokenProvider.backgroundPrimary }
     public static var backgroundDisabled: Color { Config.warpTokenProvider.backgroundDisabled }
     public static var backgroundNegative: Color { Config.warpTokenProvider.backgroundNegative }
+    public static var text: Color { Config.warpTokenProvider.text }
 }
 
 @objc extension UIColor {
@@ -28,6 +29,7 @@ extension Color {
     public static var backgroundPrimary: UIColor { UIColor(.backgroundPrimary) }
     public static var backgroundDisabled: UIColor { UIColor(.backgroundDisabled) }
     public static var backgroundNegative: UIColor { UIColor(.backgroundNegative) }
+    public static var text: UIColor { UIColor(.text) }
 }
 
 extension CGColor {
@@ -40,6 +42,7 @@ extension CGColor {
     public class var backgroundPrimary: CGColor { UIColor.backgroundPrimary.cgColor }
     public class var backgroundDisabled: CGColor { UIColor.backgroundDisabled.cgColor }
     public class var backgroundNegative: CGColor { UIColor.backgroundNegative.cgColor }
+    public class var text: CGColor { UIColor.text.cgColor }
 }
 
 // MARK: - Semantic colors, dark mode compatible
@@ -87,6 +90,7 @@ extension CGColor {
     public class var textCritical: UIColor { Config.colorProvider.textCritical }
     public class var textCTADisabled: UIColor { Config.colorProvider.textCTADisabled }
     public class var textDisabled: UIColor { Config.colorProvider.textDisabled }
+    @available(*, deprecated, message: "Use Warp text instead")
     public class var textPrimary: UIColor { Config.colorProvider.textPrimary }
     public class var textSecondary: UIColor { Config.colorProvider.textSecondary }
     public class var textTertiary: UIColor { Config.colorProvider.textTertiary }
@@ -142,6 +146,7 @@ extension CGColor {
     public class var textCritical: CGColor { UIColor.textCritical.cgColor }
     public class var textCTADisabled: CGColor { UIColor.textCTADisabled.cgColor }
     public class var textDisabled: CGColor { UIColor.textDisabled.cgColor }
+    @available(*, deprecated, message: "Use Warp text instead")
     public class var textPrimary: CGColor { UIColor.textPrimary.cgColor }
     public class var textSecondary: CGColor { UIColor.textSecondary.cgColor }
     public class var textTertiary: CGColor { UIColor.textTertiary.cgColor }
@@ -457,7 +462,7 @@ public extension CGColor {
     }
 
     public class var utilityButtonHighlightedTextColor: UIColor {
-        return textPrimary.withAlphaComponent(0.8)
+        return text.withAlphaComponent(0.8)
     }
 
     public class var dimmingColor: UIColor {

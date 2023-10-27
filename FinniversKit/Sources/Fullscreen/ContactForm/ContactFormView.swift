@@ -34,7 +34,7 @@ public final class ContactFormView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .title3
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.numberOfLines = 0
         return label
     }()
@@ -42,7 +42,7 @@ public final class ContactFormView: UIView {
     private lazy var detailTextLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .body
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.numberOfLines = 0
         return label
     }()

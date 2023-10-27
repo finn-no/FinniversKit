@@ -23,7 +23,7 @@ public class FavoriteAdsListEmptyView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.textAlignment = .center
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.font = .title3Strong
         label.numberOfLines = 0
         return label
@@ -32,7 +32,7 @@ public class FavoriteAdsListEmptyView: UIView {
     private lazy var bodyLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.textAlignment = .center
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.font = .bodyStrong
         label.numberOfLines = 0
         return label

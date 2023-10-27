@@ -8,7 +8,7 @@ public class HyperlinkTextView: UIView {
         }
     }
 
-    public var textColor: UIColor = .textPrimary {
+    public var textColor: UIColor = .text {
         didSet {
             textView.textColor = textColor
             updateText()

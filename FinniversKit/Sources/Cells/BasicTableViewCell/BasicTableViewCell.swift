@@ -14,7 +14,7 @@ open class BasicTableViewCell: UITableViewCell {
     open lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .body
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.numberOfLines = 0
         return label
     }()
@@ -22,7 +22,7 @@ open class BasicTableViewCell: UITableViewCell {
     open lazy var subtitleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .caption
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.numberOfLines = 0
         return label
     }()
@@ -69,7 +69,7 @@ open class BasicTableViewCell: UITableViewCell {
         titleLabel.text = viewModel.title
 
         let isSelected = selectedIndexPath != nil ? selectedIndexPath == indexPath : false
-        titleLabel.textColor = isSelected ? .textAction : .textPrimary
+        titleLabel.textColor = isSelected ? .textAction : .text
 
         titleLabel.isEnabled = isEnabled
 

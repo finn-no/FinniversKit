@@ -48,7 +48,7 @@ public struct FinnTextField: View {
         VStack(alignment: .leading) {
             Text(placeholder)
                 .finnFont(.captionStrong)
-                .foregroundColor(Color.textPrimary)
+                .foregroundColor(Color.text)
 
             TextFieldComponent(
                 input: input,
@@ -192,7 +192,7 @@ struct TextFieldComponent: UIViewRepresentable {
         field.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
         field.delegate = context.coordinator
         field.font = .body
-        field.textColor = .textPrimary
+        field.textColor = .text
         field.keyboardType = input.keyboardType
         field.returnKeyType = input.returnKeyType
         field.textContentType = input.textContentType

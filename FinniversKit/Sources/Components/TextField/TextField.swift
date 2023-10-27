@@ -131,7 +131,7 @@ public class TextField: UIView {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont.body
-        textField.textColor = .textPrimary
+        textField.textColor = .text
         textField.tintColor = .accentSecondaryBlue //DARK
         textField.delegate = self
         textField.autocapitalizationType = .none

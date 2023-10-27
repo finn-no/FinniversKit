@@ -34,7 +34,7 @@ extension Panel {
         var textColor: UIColor {
             switch self {
             case .tips, .newFunctionality, .success, .warning, .error: return .textToast
-            default: return .textPrimary
+            default: return .text
             }
         }
     }

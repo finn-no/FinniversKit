@@ -9,7 +9,7 @@ struct SettingsViewIconCell: View {
         HStack(alignment: .center) {
             Text(title)
                 .finnFont(.body)
-                .foregroundColor(.textPrimary)
+                .foregroundColor(.text)
                 .padding([.leading])
             
             Spacer(minLength: .spacingS)

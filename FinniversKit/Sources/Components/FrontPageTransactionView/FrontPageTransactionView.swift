@@ -15,7 +15,7 @@ public struct FrontPageTransactionView: View {
         VStack(alignment: .leading, spacing: .spacingS) {
             Text(model.headerTitle)
                 .finnFont(.bodyStrong)
-                .foregroundColor(.textPrimary)
+                .foregroundColor(.text)
                 .accessibilityAddTraits(.isHeader)
 
             VStack {
@@ -23,11 +23,11 @@ public struct FrontPageTransactionView: View {
                     VStack(alignment: .leading, spacing: .spacingXS) {
                         Text(model.title)
                             .finnFont(.bodyStrong)
-                            .foregroundColor(.textPrimary)
+                            .foregroundColor(.text)
 
                         Text(model.subtitle)
                             .finnFont(.body)
-                            .foregroundColor(.textPrimary)
+                            .foregroundColor(.text)
                     }
 
                     Spacer()

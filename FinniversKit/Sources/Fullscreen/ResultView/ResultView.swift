@@ -63,9 +63,9 @@ public class ResultView: UIView {
 
     public func configure(
         title: String,
-        titleColor: UIColor = .textPrimary,
+        titleColor: UIColor = .text,
         description: String? = nil,
-        descriptionColor: UIColor = .textPrimary,
+        descriptionColor: UIColor = .text,
         actionButtonTitle: String? = nil,
         actionButtonStyle: Button.Style? = nil,
         icon: UIImage? = nil,

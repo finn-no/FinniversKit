@@ -198,7 +198,7 @@ public extension Button.Style {
             borderWidth: 1.0,
             stateStyles: [
                 .normal: Button.StateStyle(
-                    textColor: .textPrimary,
+                    textColor: .text,
                     backgroundColor: .background,
                     borderColor: .backgroundDisabled
                 ),

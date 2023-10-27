@@ -28,7 +28,7 @@ extension FinnTextField {
         var helpTextColor: Color {
             switch self {
             case .error: return Color.textCritical
-            default: return Color.textPrimary
+            default: return .text
             }
         }
     }

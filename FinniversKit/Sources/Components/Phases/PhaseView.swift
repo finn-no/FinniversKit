@@ -16,7 +16,7 @@ final class PhaseView: UIView {
 
     private lazy var textLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.numberOfLines = 0
         return label
     }()

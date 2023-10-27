@@ -20,7 +20,7 @@ class FavoriteAdsSortingView: UIView {
     private lazy var sortingLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .detailStrong
-        label.textColor = .textPrimary
+        label.textColor = .text
         return label
     }()
 

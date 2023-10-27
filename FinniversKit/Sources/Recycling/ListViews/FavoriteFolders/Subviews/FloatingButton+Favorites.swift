@@ -27,7 +27,7 @@ public extension FloatingButton.Style {
             borderWidth: .spacingXS,
             borderColor: .white,
             badgeBackgroundColor: .backgroundPrimary,
-            badgeTextColor: .textPrimary,
+            badgeTextColor: .text,
             badgeSize: 30,
             shadowColor: .black.withAlphaComponent(0.6),
             shadowOffset: CGSize(width: 0, height: 5),

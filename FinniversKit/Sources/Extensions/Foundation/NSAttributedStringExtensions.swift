@@ -11,8 +11,8 @@ public extension NSAttributedString {
         bullet: String = "\u{2022}",
         indentation: CGFloat = 24,
         paragraphSpacing: CGFloat = 6,
-        textColor: UIColor = .textPrimary,
-        bulletColor: UIColor = .textPrimary
+        textColor: UIColor = .text,
+        bulletColor: UIColor = .text
     ) -> NSAttributedString {
         let bulletList = NSMutableAttributedString()
         let nonOptions = [NSTextTab.OptionKey: Any]()

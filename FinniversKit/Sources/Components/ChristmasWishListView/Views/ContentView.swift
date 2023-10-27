@@ -17,7 +17,7 @@ extension ChristmasWishListView {
             let font = UIFont.font(ofSize: 22, weight: .bold, textStyle: .title2)
             label.font = font
             label.textAlignment = .center
-            label.textColor = .textPrimary
+            label.textColor = .text
             label.adjustsFontForContentSizeCategory = true
             label.numberOfLines = 0
             label.setContentHuggingPriority(.defaultHigh, for: .vertical)

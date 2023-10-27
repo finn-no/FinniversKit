@@ -10,7 +10,7 @@ class MyAdStatisticsItemView: UIView {
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .textPrimary
+        imageView.tintColor = .text
         return imageView
     }()
 

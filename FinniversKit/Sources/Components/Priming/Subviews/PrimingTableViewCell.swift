@@ -16,7 +16,7 @@ final class PrimingTableViewCell: UITableViewCell {
 
     private lazy var titleLabel: UILabel = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
-        label.textColor = .textPrimary
+        label.textColor = .text
         return label
     }()
 

@@ -26,7 +26,7 @@ public extension RibbonView {
 
         var textColor: UIColor {
             switch self {
-            case .default, .disabled: return .textPrimary
+            case .default, .disabled: return .text
             default: return .textToast
             }
         }

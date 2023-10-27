@@ -174,7 +174,7 @@ public class BrazePromotionView: UIView {
                 fallbackImage: UIImage(named: .noImage)
             )
         } else {
-            closeButton.setImage(UIImage(named: .cross).withTintColor(.textPrimary), for: .normal)
+            closeButton.setImage(UIImage(named: .cross).withTintColor(.text), for: .normal)
             closeButton.backgroundColor = UIColor.clear
 
             NSLayoutConstraint.activate(stackViewConstraintsNoImage)

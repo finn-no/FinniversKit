@@ -41,7 +41,7 @@ extension Color {
     public static var btnAction: Color   { Color(UIColor.btnAction) }
 
     // MARK: - Text
-
+    @available(*, deprecated, message: "Use Warp text instead")
     public static var textPrimary: Color     { Color(UIColor.textPrimary) }
     public static var textSecondary: Color   { Color(UIColor.textSecondary) }
     public static var textTertiary: Color    { Color(UIColor.textTertiary) }

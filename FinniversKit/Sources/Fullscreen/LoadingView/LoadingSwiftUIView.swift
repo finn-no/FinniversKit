@@ -16,7 +16,7 @@ public struct LoadingSwiftUIView: View {
     private let loadingIndicatorSize: CGFloat = 40
     private var isFullscreen: Bool { displayMode == .fullscreen }
     private let boxMinSize: CGFloat = 120
-    private var textColor: Color { isFullscreen ? .textPrimary : .textTertiary }
+    private var textColor: Color { isFullscreen ? .text : .textTertiary }
 
     public init(
         mode: DisplayMode = .fullscreen,

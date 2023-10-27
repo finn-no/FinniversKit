@@ -16,7 +16,7 @@ public extension BadgeView {
 
         var textColor: UIColor {
             switch self {
-            case .default: return .textPrimary
+            case .default: return .text
             case .warning: return .warningTextColor
             case .sponsored: return .aqua800
             }

@@ -21,7 +21,7 @@ public class MessageUserRequiredView: UIView {
         let view = UITextView(withAutoLayout: true)
         let style = Label.Style.bodyStrong
         view.font = style.font
-        view.textColor = .textPrimary
+        view.textColor = .text
         view.textAlignment = .center
         view.backgroundColor = .clear
         view.isScrollEnabled = false
