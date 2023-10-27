@@ -258,10 +258,10 @@ extension MarketsGridView: UICollectionViewDataSource {
 
         if isMarketGridCellLabelTwoLined {
             cell.titleLabel.numberOfLines = 2
-            cell.iconImageView.tintColor = .red
+            cell.iconImageView.tintColor = UIColor(red: 6/255.0, green: 190/255.0, blue: 251/255.0, alpha: 1.0)
         } else {
             cell.titleLabel.numberOfLines = 1
-            cell.iconImageView.tintColor = .blue
+            cell.iconImageView.tintColor = UIColor(red: 247/255.0, green: 81/255.0, blue: 89/255.0, alpha: 1)
         }
         return cell
     }

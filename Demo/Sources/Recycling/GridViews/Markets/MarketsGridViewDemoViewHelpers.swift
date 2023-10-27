@@ -4,23 +4,108 @@
 
 import FinniversKit
 
-public enum ToriMarket: String {
-    case omaisuus
-    case auto
-    case neliö
-    case työpaikat
-    case mc
-    case vene
-    case hyötyajoneuvot
-    case matkustaminen
-    case ostokset
-    case talous
-    case kokouspaikka
-    case tehtävä
-    case myTender
-    case Autonvuokraus
-    case nettiauto
-    case autoJaRavitsemus
+public enum ToriMarket: MarketsViewModel {
+    
+    case furniture
+    case clothing // vaatteita, kosmetiikkaa ja asusteita
+    case  parents // vanhemmat ja lapset
+    case sports // urheilu ja ulkoilu
+    case animals // eläimet ja laitteet
+    case leisure // harrastus ja viihde
+    case apartments // asuntoja vuokralle
+    case remppatori
+    case vehicles // ajoneuvojen
+    case electronics // elektroniikka ja kodinkoneet
+    case garden// puutarha, remontti ja talo
+    case vehicleparts// ajoneuvojen osia
+    case jobs // työpaikkoja
+    case antiquities // antiikkia ja taidetta
+    case autovex
+    
+    public var title: String {
+        switch self {
+        case .furniture: return "Huonekalutjasisustus"
+        case .clothing: return "Vaatteita, kosmetiikkaa ja asusteita"
+        case .parents: return "Vanhemmat ja lapset"
+        case .sports: return "Urheilu ja ulkoilu"
+        case .animals: return "eläimet ja laitteet"
+        case .leisure: return "harrastus ja viihde"
+        case .apartments: return "asuntoja vuokralle"
+        case .remppatori: return "remppatori"
+        case .vehicles: return "ajoneuvojen"
+        case .electronics: return "elektroniikka ja kodinkoneet"
+        case .garden: return "puutarha, remontti ja talo"
+        case .vehicleparts: return "ajoneuvojen osia"
+        case .jobs: return "työpaikat"
+        case .antiquities: return "antiikkia ja taidetta"
+        case .autovex: return "Autovex"
+        }
+    }
+    
+    public var iconImage: UIImage? {
+        switch self {
+        case .furniture: return UIImage(named: "furniture")
+        case .clothing: return UIImage(named: "clothing")
+        case .parents: return UIImage(named: "parents_kids")
+        case .sports: return UIImage(named: "sports")
+        case .animals: return UIImage(named: "animals")
+        case .leisure: return UIImage(named: "hobbies")
+        case .apartments: return UIImage(named: "oikotie")
+        case .remppatori: return UIImage(named: "remppatori")
+        case .vehicles: return UIImage(named: "vehicles")
+        case .electronics: return UIImage(named: "electronics")
+        case .garden: return UIImage(named: "renovation")
+        case .vehicleparts: return UIImage(named: "vehicles_parts")
+        case .jobs: return UIImage(named: "oikotie")
+        case .antiquities: return UIImage(named: "antiques")
+        case .autovex: return UIImage(named: "autovex")
+        }
+    }
+    
+    public var showExternalLinkIcon: Bool {
+        switch self {
+        case .furniture: return false
+        case .clothing: return false
+        case .parents: return false
+        case .sports: return false
+        case .animals: return false
+        case .leisure: return false
+        case .apartments: return false
+        case .remppatori: return true
+        case .vehicles: return true
+        case .electronics: return true
+        case .garden: return true
+        case .vehicleparts: return true
+        case .jobs: return false
+        case .antiquities: return false
+        case .autovex: return false
+        }
+    }
+    
+    public var accessibilityLabel: String {
+        if showExternalLinkIcon {
+            return title + ". Merk: Åpner ekstern link"
+        } else {
+            return title
+        }
+    }
+    
+    public static var toriMarkets: [ToriMarket] = [
+        .furniture,
+        .clothing,
+        .parents,
+        .sports,
+        .animals,
+        .leisure,
+        .apartments,
+        .remppatori,
+        .vehicles,
+        .electronics,
+        .garden,
+        .jobs,
+        .antiquities,
+        .autovex
+    ]    
 }
 
 public enum Market: MarketsViewModel {
@@ -71,28 +156,27 @@ public enum Market: MarketsViewModel {
         case .bilOgNaering: return "Bil og næring"
         }
     }
-    
-    public var toriTitle: String {
-        switch  self{
-        case .eiendom, .eiendomNew: return "Omaisuus"
-        case .bil: return "Auto"
-        case .torget, .torgetNew: return "Neliö"
-        case .jobb, .jobbNew: return "Työpaikat"
-        case .mc, .mcNew: return "MC"
-        case .boat, .boatNew: return "Vene"
-        case .nytte: return "Hyötyajoneuvot"
-        case .reise, .reiseNew: return "Matkustaminen"
-        case .shopping: return "Ostokset"
-        case .economy, .economyNew: return "Talous"
-        case .moteplassen, .moteplassenNew: return "Kokouspaikka"
-        case .mittAnbud: return "Tehtävä"
-        case .mittAnbudNew: return "My tender"
-        case .leiebilNew: return "Autonvuokraus"
-        case .nettbilNew: return "Nettiauto"
-        case .bilOgNaering: return "Auto ja ravitsemus"
-        }
-    }
-    
+
+    /*
+    Position    Label (EN)
+    1    Furniture and interiors
+    2    Clothing, cosmetics and accessories
+    3    Parents and children
+    4    Sports and outdoor life
+    5    Animals and equipment
+    6    Leisure, hobby and entertainment
+    7    Apartments for rent
+    8    Remppatori
+    9    Vehicles
+    10    Electronics and appliances
+    11    Garden, renovation and house
+    12    Apartments for sale
+    13    Vehicle parts
+    14    Jobs
+    15    Antiquities and art
+    16    Autovex
+    -    Commercial activities / Business & service
+    */
 
     public var iconImage: UIImage? {
         switch self {
@@ -189,24 +273,5 @@ public enum Market: MarketsViewModel {
         .nettbilNew,
         .moteplassenNew,
         .mittAnbudNew
-    ]
-    public static var toriMarkets: [ToriMarket] = [
-        .omaisuus,
-        .Autonvuokraus,
-        .neliö,
-        .työpaikat,
-        .mc,
-        .vene,
-        .hyötyajoneuvot,
-        .matkustaminen,
-        .ostokset,
-        .talous,
-        .kokouspaikka,
-        .tehtävä,
-        .myTender,
-        .Autonvuokraus,
-        .nettiauto,
-        .autoJaRavitsemus
-        
     ]
 }

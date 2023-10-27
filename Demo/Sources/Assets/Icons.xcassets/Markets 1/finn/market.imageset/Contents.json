@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Torget.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -10,19 +10,21 @@ class MarketDataSource: NSObject {
     var models = Market.newMarkets
 }
 class ToriDataSource: NSObject {
-    var models = Market.toriMarkets
+    var models = ToriMarket.toriMarkets
 }
 
 class MarketsGridViewDemoView: UIView, Demoable {
     lazy var dataSource: MarketDataSource = {
         return MarketDataSource()
     }()
+    lazy var toriDatSource: ToriDataSource = {
+        return ToriDataSource()
+    }()
     
+    var isFinn: Bool = false
 
     var toriLabel = UILabel()
     var finnLabel = UILabel()
-
-    var showingTori = false
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,16 +37,16 @@ class MarketsGridViewDemoView: UIView, Demoable {
     private func setup() {
         let finnCollectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
         finnCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        
         addSubview(finnCollectionView)
 
-        let toriCollectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
+        var toriCollectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
+        
         toriCollectionView.translatesAutoresizingMaskIntoConstraints = false
         toriCollectionView.isMarketGridCellLabelTwoLined = true
         
         addSubview(toriCollectionView)
         
-
-
         finnLabel.text = "Finn"
         finnLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
         finnLabel.textAlignment = .center
@@ -79,11 +81,20 @@ class MarketsGridViewDemoView: UIView, Demoable {
 
 extension MarketsGridViewDemoView: MarketsViewDataSource {
     func numberOfItems(inMarketsView marketsView: MarketsView) -> Int {
-        return dataSource.models.count
+        if isFinn {
+            return dataSource.models.count
+        } else {
+            return toriDatSource.models.count
+        }
     }
 
     func marketsView(_ marketsView: MarketsView, modelAtIndex index: Int) -> MarketsViewModel {
-        return dataSource.models[index]
+        if isFinn {
+            return dataSource.models[index]
+        } else {
+            return toriDatSource.models[index]
+        }
+        
     }
 }
 
