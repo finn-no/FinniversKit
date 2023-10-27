@@ -30,7 +30,7 @@ extension ToastSwiftUIView.ActionButtonView {
                 .finnFont(.bodyStrong)
                 .padding(.vertical, .spacingS)
                 .padding(.horizontal, .spacingM)
-                .foregroundColor(.textToast)
+                .foregroundColor(.text)
                 .background(backgroundColor)
                 .cornerRadius(cornerRadius)
                 .overlay(

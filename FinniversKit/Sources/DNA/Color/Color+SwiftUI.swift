@@ -52,7 +52,9 @@ extension Color {
 //    public static var textDisabled: Color    { Color(UIColor.textDisabled) }
     @available(*, deprecated, message: "Use Warp textNegative instead")
     public static var textCritical: Color    { Color(UIColor.textCritical) }
+    @available(*, deprecated, message: "Use Warp text instead")
     public static var textToast: Color       { Color(UIColor.textToast) }
+    @available(*, deprecated, message: "Use Warp text instead")
     public static var textCTADisabled: Color { Color(UIColor.textCTADisabled) }
 
     // MARK: - Icon

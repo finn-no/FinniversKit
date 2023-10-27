@@ -22,7 +22,7 @@ final class FavoriteAdCommentView: UIView {
 
     private lazy var label: UILabel = {
         let label = Label(style: .captionStrong, withAutoLayout: true)
-        label.textColor = .textToast
+        label.textColor = .text
         label.numberOfLines = 0
         label.textAlignment = .left
         return label

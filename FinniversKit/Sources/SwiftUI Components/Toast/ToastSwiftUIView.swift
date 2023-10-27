@@ -20,7 +20,7 @@ public struct ToastSwiftUIView: View {
             Image(named: style.imageAsset)
             Text(text)
                 .finnFont(.body)
-                .foregroundColor(.textToast)
+                .foregroundColor(.text)
                 .padding(.vertical, .spacingM)
             Spacer()
             if let actionButton {

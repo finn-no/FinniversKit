@@ -109,6 +109,7 @@ extension CGColor {
     public class var textAction: UIColor { Config.colorProvider.textAction }
     @available(*, deprecated, message: "Use Warp textNegative instead")
     public class var textCritical: UIColor { Config.colorProvider.textCritical }
+    @available(*, deprecated, message: "Use Warp text instead")
     public class var textCTADisabled: UIColor { Config.colorProvider.textCTADisabled }
 //    public class var textDisabled: UIColor { Config.colorProvider.textDisabled }
     @available(*, deprecated, message: "Use Warp text instead")
@@ -117,6 +118,7 @@ extension CGColor {
     public class var textSecondary: UIColor { Config.colorProvider.textSecondary }
     @available(*, deprecated, message: "Use Warp textInverted instead")
     public class var textTertiary: UIColor { Config.colorProvider.textTertiary }
+    @available(*, deprecated, message: "Use Warp text instead")
     public class var textToast: UIColor { Config.colorProvider.textToast }
     public class var marketplaceNavigationBarIcon: UIColor { Config.colorProvider.marketplaceNavigationBarIcon }
     public class var nmpBrandColorPrimary: UIColor { Config.colorProvider.nmpBrandColorPrimary }
@@ -173,6 +175,7 @@ extension CGColor {
     public class var textAction: CGColor { UIColor.textAction.cgColor }
     @available(*, deprecated, message: "Use Warp textNegative instead")
     public class var textCritical: CGColor { UIColor.textCritical.cgColor }
+    @available(*, deprecated, message: "Use Warp text instead")
     public class var textCTADisabled: CGColor { UIColor.textCTADisabled.cgColor }
 //    public class var textDisabled: CGColor { UIColor.textDisabled.cgColor }
     @available(*, deprecated, message: "Use Warp text instead")
@@ -181,6 +184,7 @@ extension CGColor {
     public class var textSecondary: CGColor { UIColor.textSecondary.cgColor }
     @available(*, deprecated, message: "Use Warp textInverted instead")
     public class var textTertiary: CGColor { UIColor.textTertiary.cgColor }
+    @available(*, deprecated, message: "Use Warp text instead")
     public class var textToast: CGColor { UIColor.textToast.cgColor }
     public class var marketplaceNavigationBarIcon: CGColor { Config.colorProvider.marketplaceNavigationBarIcon.cgColor }
     public class var nmpBrandColorPrimary: CGColor { Config.colorProvider.nmpBrandColorPrimary.cgColor }

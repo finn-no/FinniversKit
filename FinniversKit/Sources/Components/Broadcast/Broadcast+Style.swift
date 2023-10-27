@@ -10,7 +10,7 @@ extension BroadcastItem {
         static let containerCornerRadius: CGFloat = 8.0
         static let fontAttributes = [
             NSAttributedString.Key.font: UIFont.body,
-            NSAttributedString.Key.foregroundColor: UIColor.textToast
+            NSAttributedString.Key.foregroundColor: UIColor.text
         ]
         static let linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.textLink]
     }

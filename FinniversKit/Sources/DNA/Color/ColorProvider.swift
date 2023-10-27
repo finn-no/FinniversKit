@@ -52,7 +52,9 @@ public protocol ColorProvider {
     var accentPea: UIColor { get }
     @available(*, deprecated, message: "Use Warp color instead")
     var accentToothpaste: UIColor { get }
+    @available(*, deprecated, message: "Use Warp text instead")
     var textCTADisabled: UIColor { get }
+    @available(*, deprecated, message: "Use Warp text instead")
     var textToast: UIColor { get }
     var tableViewSeparator: UIColor { get }
     var imageBorder: UIColor { get }
@@ -169,11 +171,11 @@ public struct DefaultColorProvider: ColorProvider {
     public var accentToothpaste: UIColor {
         .aqua200
     }
-
+    @available(*, deprecated, message: "Use Warp text instead")
     public var textCTADisabled: UIColor {
         .dynamicColor(defaultColor: .gray700, darkModeColor: .darkLicorice)
     }
-
+    @available(*, deprecated, message: "Use Warp text instead")
     public var textToast: UIColor {
         .gray700
     }

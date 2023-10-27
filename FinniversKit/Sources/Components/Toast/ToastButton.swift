@@ -34,7 +34,7 @@ internal class ToastButton: UIButton {
         case .normal:
             setTitleColor(.textLink, for: .normal)
         case .promoted:
-            setTitleColor(.textToast, for: .normal)
+            setTitleColor(.text, for: .normal)
             contentEdgeInsets = UIEdgeInsets(vertical: .spacingS, horizontal: .spacingM)
             layer.borderColor = .white
             layer.borderWidth = 2

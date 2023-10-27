@@ -39,7 +39,7 @@ public final class DetailCalloutView: UIView {
 
     private lazy var textLabel: UILabel = {
         let label = Label(style: .detail, withAutoLayout: true)
-        label.textColor = .textToast
+        label.textColor = .text
         return label
     }()
 
