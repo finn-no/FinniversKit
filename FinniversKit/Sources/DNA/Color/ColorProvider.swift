@@ -15,6 +15,7 @@ public protocol ColorProvider {
     var bgQuaternary: UIColor { get }
     @available(*, deprecated, message: "Use Warp background instead")
     var bgBottomSheet: UIColor { get }
+    @available(*, deprecated, message: "Use Warp backgroundWarningSubtle instead")
     var bgAlert: UIColor { get }
     var bgInfo: UIColor { get }
     var bgInfoHeader: UIColor { get }
@@ -75,7 +76,7 @@ public struct DefaultColorProvider: ColorProvider {
     public var bgBottomSheet: UIColor {
         .dynamicColor(defaultColor: .white, darkModeColor: .darkIce)
     }
-
+    @available(*, deprecated, message: "Use Warp backgroundWarningSubtle instead")
     public var bgAlert: UIColor {
         .yellow100
     }

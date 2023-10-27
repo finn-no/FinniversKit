@@ -10,18 +10,21 @@ extension Color {
     public static var background: Color { Config.warpTokenProvider.background }
     public static var backgroundInfoSubtle: Color { Config.warpTokenProvider.backgroundInfoSubtle }
     public static var backgroundSubtle: Color { Config.warpTokenProvider.backgroundSubtle }
+    public static var backgroundWarningSubtle: Color { Config.warpTokenProvider.backgroundWarningSubtle }
 }
 
 @objc extension UIColor {
     public static var background: UIColor { UIColor(.background) }
     public static var backgroundInfoSubtle: UIColor { UIColor(.backgroundInfoSubtle) }
     public static var backgroundSubtle: UIColor { UIColor(.backgroundSubtle) }
+    public static var backgroundWarningSubtle: UIColor { UIColor(.backgroundWarningSubtle) }
 }
 
 extension CGColor {
     public class var background: CGColor { UIColor.background.cgColor }
     public class var backgroundInfoSubtle: CGColor { UIColor.backgroundInfoSubtle.cgColor }
     public class var backgroundSubtle: CGColor { UIColor.backgroundSubtle.cgColor }
+    public class var backgroundWarningSubtle: CGColor { UIColor.backgroundWarningSubtle.cgColor }
 }
 
 // MARK: - Semantic colors, dark mode compatible
@@ -30,6 +33,7 @@ extension CGColor {
     public class var accentPrimaryBlue: UIColor { Config.colorProvider.accentPrimaryBlue }
     public class var accentSecondaryBlue: UIColor { Config.colorProvider.accentSecondaryBlue }
     public class var accentToothpaste: UIColor { Config.colorProvider.accentToothpaste }
+    @available(*, deprecated, message: "Use Warp backgroundWarningSubtle instead")
     public class var bgAlert: UIColor { Config.colorProvider.bgAlert }
     @available(*, deprecated, message: "Use Warp background instead")
     public class var bgBottomSheet: UIColor { Config.colorProvider.bgBottomSheet }
@@ -76,6 +80,7 @@ extension CGColor {
     public class var accentPrimaryBlue: CGColor { UIColor.accentPrimaryBlue.cgColor }
     public class var accentSecondaryBlue: CGColor { UIColor.accentSecondaryBlue.cgColor }
     public class var accentToothpaste: CGColor { UIColor.accentToothpaste.cgColor }
+    @available(*, deprecated, message: "Use Warp backgroundWarningSubtle instead")
     public class var bgAlert: CGColor { UIColor.bgAlert.cgColor }
     @available(*, deprecated, message: "Use Warp background instead")
     public class var bgBottomSheet: CGColor { UIColor.bgBottomSheet.cgColor }

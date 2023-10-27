@@ -19,6 +19,7 @@ extension Color {
     public static var bgQuaternary: Color  { Color(UIColor.bgQuaternary) }
     @available(*, deprecated, message: "Use Warp background instead")
     public static var bgBottomSheet: Color { Color(UIColor.bgBottomSheet) }
+    @available(*, deprecated, message: "Use Warp backgroundWarningSubtle instead")
     public static var bgAlert: Color       { Color(UIColor.bgAlert) }
     public static var bgSuccess: Color     { Color(UIColor.bgSuccess) }
     public static var bgCritical: Color    { Color(UIColor.bgCritical) }

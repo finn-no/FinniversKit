@@ -9,7 +9,7 @@ public extension BadgeView {
         var backgroundColor: UIColor {
             switch self {
             case .default: return .backgroundInfoSubtle
-            case .warning: return .bgAlert
+            case .warning: return .backgroundWarningSubtle
             case .sponsored: return .accentToothpaste
             }
         }

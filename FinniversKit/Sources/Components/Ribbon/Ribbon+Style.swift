@@ -17,7 +17,7 @@ public extension RibbonView {
             switch self {
             case .default: return .backgroundInfoSubtle
             case .success: return .bgSuccess
-            case .warning: return .bgAlert
+            case .warning: return .backgroundWarningSubtle
             case .error: return .bgCritical
             case .disabled: return .decorationSubtle
             case .sponsored: return .accentToothpaste

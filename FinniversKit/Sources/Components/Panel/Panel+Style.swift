@@ -19,7 +19,7 @@ extension Panel {
             case .tips: return .accentToothpaste
             case .newFunctionality: return .bgSuccess
             case .success: return .bgSuccess
-            case .warning: return .bgAlert
+            case .warning: return .backgroundWarningSubtle
             case .error: return .bgCritical
             }
         }
