@@ -23,6 +23,7 @@ public protocol ColorProvider {
     var bgInfoHeader: UIColor { get }
     @available(*, deprecated, message: "Use Warp backgroundPositiveSubtle instead")
     var bgSuccess: UIColor { get }
+    @available(*, deprecated, message: "Use Warp backgroundNegativeSubtle instead")
     var bgCritical: UIColor { get }
     var btnPrimary: UIColor { get }
     var btnDisabled: UIColor { get }
@@ -95,7 +96,7 @@ public struct DefaultColorProvider: ColorProvider {
     public var bgSuccess: UIColor {
         .green100
     }
-
+    @available(*, deprecated, message: "Use Warp backgroundNegativeSubtle instead")
     public var bgCritical: UIColor {
         .red100
     }

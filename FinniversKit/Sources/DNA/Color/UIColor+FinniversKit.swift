@@ -12,6 +12,7 @@ extension Color {
     public static var backgroundSubtle: Color { Config.warpTokenProvider.backgroundSubtle }
     public static var backgroundWarningSubtle: Color { Config.warpTokenProvider.backgroundWarningSubtle }
     public static var backgroundPositiveSubtle: Color { Config.warpTokenProvider.backgroundPositiveSubtle }
+    public static var backgroundNegativeSubtle: Color { Config.warpTokenProvider.backgroundNegativeSubtle }
 }
 
 @objc extension UIColor {
@@ -20,6 +21,7 @@ extension Color {
     public static var backgroundSubtle: UIColor { UIColor(.backgroundSubtle) }
     public static var backgroundWarningSubtle: UIColor { UIColor(.backgroundWarningSubtle) }
     public static var backgroundPositiveSubtle: UIColor { UIColor(.backgroundPositiveSubtle) }
+    public static var backgroundNegativeSubtle: UIColor { UIColor(.backgroundNegativeSubtle) }
 }
 
 extension CGColor {
@@ -28,6 +30,7 @@ extension CGColor {
     public class var backgroundSubtle: CGColor { UIColor.backgroundSubtle.cgColor }
     public class var backgroundWarningSubtle: CGColor { UIColor.backgroundWarningSubtle.cgColor }
     public class var backgroundPositiveSubtle: CGColor { UIColor.backgroundPositiveSubtle.cgColor }
+    public class var backgroundNegativeSubtle: CGColor { UIColor.backgroundNegativeSubtle.cgColor }
 }
 
 // MARK: - Semantic colors, dark mode compatible
@@ -40,6 +43,7 @@ extension CGColor {
     public class var bgAlert: UIColor { Config.colorProvider.bgAlert }
     @available(*, deprecated, message: "Use Warp background instead")
     public class var bgBottomSheet: UIColor { Config.colorProvider.bgBottomSheet }
+    @available(*, deprecated, message: "Use Warp backgroundNegativeSubtle instead")
     public class var bgCritical: UIColor { Config.colorProvider.bgCritical }
     @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
     public class var bgInfo: UIColor { Config.colorProvider.bgInfo }
@@ -90,6 +94,7 @@ extension CGColor {
     public class var bgAlert: CGColor { UIColor.bgAlert.cgColor }
     @available(*, deprecated, message: "Use Warp background instead")
     public class var bgBottomSheet: CGColor { UIColor.bgBottomSheet.cgColor }
+    @available(*, deprecated, message: "Use Warp backgroundNegativeSubtle instead")
     public class var bgCritical: CGColor { UIColor.bgCritical.cgColor }
     @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
     public class var bgInfo: CGColor { UIColor.bgInfo.cgColor }

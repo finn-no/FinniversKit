@@ -36,7 +36,7 @@ extension Toast {
         var color: Color {
             switch self {
             case .success: return .backgroundPositiveSubtle
-            case .error: return .bgCritical
+            case .error: return .backgroundNegativeSubtle
             }
         }
 

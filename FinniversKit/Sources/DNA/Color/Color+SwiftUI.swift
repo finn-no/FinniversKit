@@ -23,6 +23,7 @@ extension Color {
     public static var bgAlert: Color       { Color(UIColor.bgAlert) }
     @available(*, deprecated, message: "Use Warp backgroundPositiveSubtle instead")
     public static var bgSuccess: Color     { Color(UIColor.bgSuccess) }
+    @available(*, deprecated, message: "Use Warp backgroundNegativeSubtle instead")
     public static var bgCritical: Color    { Color(UIColor.bgCritical) }
     @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
     public static var bgInfo: Color        { Color(UIColor.bgInfo) }

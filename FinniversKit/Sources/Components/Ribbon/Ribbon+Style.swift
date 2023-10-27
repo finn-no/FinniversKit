@@ -18,7 +18,7 @@ public extension RibbonView {
             case .default: return .backgroundInfoSubtle
             case .success: return .backgroundPositiveSubtle
             case .warning: return .backgroundWarningSubtle
-            case .error: return .bgCritical
+            case .error: return .backgroundNegativeSubtle
             case .disabled: return .decorationSubtle
             case .sponsored: return .accentToothpaste
             }

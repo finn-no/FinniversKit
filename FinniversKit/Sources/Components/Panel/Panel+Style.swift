@@ -20,7 +20,7 @@ extension Panel {
             case .newFunctionality: return .backgroundPositiveSubtle
             case .success: return .backgroundPositiveSubtle
             case .warning: return .backgroundWarningSubtle
-            case .error: return .bgCritical
+            case .error: return .backgroundNegativeSubtle
             }
         }
 
