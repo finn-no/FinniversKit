@@ -48,7 +48,7 @@ final class PrimingTableViewCell: UITableViewCell {
     }
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         contentView.addSubview(iconImageView)
         contentView.addSubview(titleLabel)

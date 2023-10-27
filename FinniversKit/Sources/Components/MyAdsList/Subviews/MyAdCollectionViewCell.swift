@@ -19,7 +19,7 @@ public class MyAdCollectionViewCell: UICollectionViewCell {
         imageView.layer.cornerRadius = .spacingS
         imageView.layer.borderWidth = 1 / UIScreen.main.scale
         imageView.tintColor = .textSecondary
-        imageView.backgroundColor = .bgSecondary
+        imageView.backgroundColor = .backgroundInfoSubtle
         return imageView
     }()
 
@@ -107,11 +107,11 @@ public class MyAdCollectionViewCell: UICollectionViewCell {
 
     public func configure(ad: MyAdModel, remoteImageViewDataSource: RemoteImageViewDataSource?) {
         remoteImageView.image = fallbackImage
-        remoteImageView.backgroundColor = .bgSecondary
+        remoteImageView.backgroundColor = .backgroundInfoSubtle
 
         remoteImageView.dataSource = remoteImageViewDataSource
         if let imageUrl = ad.imageUrl {
-            remoteImageView.loadImage(for: imageUrl, imageWidth: imageWidth, loadingColor: .bgSecondary, fallbackImage: fallbackImage)
+            remoteImageView.loadImage(for: imageUrl, imageWidth: imageWidth, loadingColor: .backgroundInfoSubtle, fallbackImage: fallbackImage)
         }
 
         titleLabel.text = ad.title

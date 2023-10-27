@@ -101,7 +101,7 @@ public class TextField: UIView {
 
     private lazy var textFieldBackgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = .bgSecondary
+        view.backgroundColor = .backgroundInfoSubtle
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

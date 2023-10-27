@@ -84,7 +84,7 @@ public class TextView: UIView {
         let view = UITextView(frame: .zero, textContainer: nil)
         view.font = .body
         view.textColor = .textPrimary
-        view.backgroundColor = .bgSecondary
+        view.backgroundColor = .backgroundInfoSubtle
         view.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         view.isScrollEnabled = false
         view.delegate = self
@@ -120,7 +120,7 @@ public class TextView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(textViewBackgroundColor: UIColor = .bgSecondary,
+    public func configure(textViewBackgroundColor: UIColor = .backgroundInfoSubtle,
                           textViewTextColor: UIColor = .textPrimary,
                           textViewFont: UIFont = .body,
                           placeholderLabelTextColor: UIColor = .textDisabled,

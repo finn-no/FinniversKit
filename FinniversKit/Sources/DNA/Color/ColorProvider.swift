@@ -7,6 +7,7 @@ import UIKit
 public protocol ColorProvider {
     @available(*, deprecated, message: "Use Warp background instead")
     var bgPrimary: UIColor { get }
+    @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
     var bgSecondary: UIColor { get }
     var bgTertiary: UIColor { get }
     var bgQuaternary: UIColor { get }
@@ -49,13 +50,13 @@ public protocol ColorProvider {
 // MARK: - Default FINN colors
 
 public struct DefaultColorProvider: ColorProvider {
-    
+
     public static let shared = DefaultColorProvider()
-    
+    @available(*, deprecated, message: "Use Warp background instead")
     public var bgPrimary: UIColor {
         .dynamicColor(defaultColor: .white, darkModeColor: .darkMilk)
     }
-
+    @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
     public var bgSecondary: UIColor {
         .dynamicColor(defaultColor: .aqua50, darkModeColor: .darkIce)
     }

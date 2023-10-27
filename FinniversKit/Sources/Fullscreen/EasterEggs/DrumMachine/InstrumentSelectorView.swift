@@ -26,7 +26,7 @@ final class InstrumentSelectorView: UIView {
         control.translatesAutoresizingMaskIntoConstraints = false
 
         control.selectedSegmentTintColor = .bgTertiary
-        control.backgroundColor = .bgSecondary
+        control.backgroundColor = .backgroundInfoSubtle
         return control
     }()
 

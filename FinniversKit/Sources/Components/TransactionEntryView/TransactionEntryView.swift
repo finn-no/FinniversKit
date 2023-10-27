@@ -27,7 +27,7 @@ public class TransactionEntryView: UIView {
 
     private lazy var imageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
-        imageView.backgroundColor = .bgSecondary
+        imageView.backgroundColor = .backgroundInfoSubtle
         imageView.layer.cornerRadius = .spacingS
         imageView.layer.masksToBounds = true
         imageView.delegate = self
@@ -100,7 +100,7 @@ public class TransactionEntryView: UIView {
 
         if let imageUrl = viewModel.imageUrl {
             imageView.contentMode = .scaleAspectFill
-            imageView.loadImage(for: imageUrl, imageWidth: imageSize, loadingColor: .bgSecondary)
+            imageView.loadImage(for: imageUrl, imageWidth: imageSize, loadingColor: .backgroundInfoSubtle)
         } else {
             setFallbackImage()
         }

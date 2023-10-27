@@ -50,7 +50,7 @@ public extension TextField {
                 return .clear
 
             case .normal, .focus, .error:
-                return .bgSecondary
+                return .backgroundInfoSubtle
             }
         }
 

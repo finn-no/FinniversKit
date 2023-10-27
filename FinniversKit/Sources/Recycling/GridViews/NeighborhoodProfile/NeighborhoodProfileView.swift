@@ -47,7 +47,7 @@ public final class NeighborhoodProfileView: UIView {
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .bgSecondary
+        collectionView.backgroundColor = .backgroundInfoSubtle
         collectionView.contentInset = UIEdgeInsets(
             top: .spacingS,
             left: .spacingM,
@@ -133,7 +133,7 @@ public final class NeighborhoodProfileView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgSecondary
+        backgroundColor = .backgroundInfoSubtle
 
         containerStackView.addArrangedSubviews([getCenteredContainerView(with: [headerView]), collectionView])
 

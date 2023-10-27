@@ -18,7 +18,7 @@ public class StatisticsItemEmptyView: UIView {
         let view = UIImageView(image: UIImage(named: .statsEmpty))
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
-        view.tintColor = .bgSecondary
+        view.tintColor = .backgroundInfoSubtle
         return view
     }()
 

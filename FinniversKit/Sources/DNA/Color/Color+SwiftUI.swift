@@ -11,6 +11,7 @@ extension Color {
 
     @available(*, deprecated, message: "Use Warp background instead")
     public static var bgPrimary: Color     { Color(UIColor.bgPrimary) }
+    @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
     public static var bgSecondary: Color   { Color(UIColor.bgSecondary) }
     public static var bgTertiary: Color    { Color(UIColor.bgTertiary) }
     public static var bgQuaternary: Color  { Color(UIColor.bgQuaternary) }

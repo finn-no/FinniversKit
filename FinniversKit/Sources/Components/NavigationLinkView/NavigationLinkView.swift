@@ -24,7 +24,7 @@ public class NavigationLinkView: UIView {
         withSubview view: UIView,
         withAutoLayout: Bool = false,
         padding: CGFloat = .spacingM,
-        backgroundColor: UIColor = .bgSecondary
+        backgroundColor: UIColor = .backgroundInfoSubtle
     ) {
         self.padding = padding
         super.init(frame: .zero)

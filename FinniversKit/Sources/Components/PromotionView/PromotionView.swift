@@ -263,7 +263,7 @@ private extension UIColor {
 }
 
 private extension Button.Style {
-    static var customStyle = Button.Style.default.overrideStyle(bodyColor: .bgColor, highlightedBodyColor: .bgSecondary)
+    static var customStyle = Button.Style.default.overrideStyle(bodyColor: .bgColor, highlightedBodyColor: .backgroundInfoSubtle)
 }
 
 private extension Button {

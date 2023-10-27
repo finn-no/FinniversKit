@@ -61,7 +61,7 @@ public struct FinnTextField: View {
             .fixedSize(horizontal: false, vertical: true)
             .padding(.vertical, .spacingS + .spacingXS)
             .padding(.horizontal, .spacingS)
-            .background(Color.bgSecondary)
+            .background(Color.backgroundInfoSubtle)
             .overlay(underline, alignment: .bottom)
             .overlay(textfieldTrailingButton.padding(.trailing, .spacingXS), alignment: .trailing)
 

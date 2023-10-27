@@ -42,7 +42,7 @@ extension CollapsibleContentView {
         )
 
         public static let card = Style(
-            backgroundColor: .bgSecondary,
+            backgroundColor: .backgroundInfoSubtle,
             cornerRadius: 8,
             contentInsets: .init(all: .spacingS),
             titleStyle: .title3Strong,

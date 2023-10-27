@@ -49,7 +49,7 @@ public class JobApplyBoxView: UIView {
 
     private func setup() {
         layer.cornerRadius = .spacingS
-        backgroundColor = .bgSecondary
+        backgroundColor = .backgroundInfoSubtle
         titleLabel.text = viewModel.title
         primaryButton.setTitle(viewModel.primaryButton.title, for: .normal)
 
