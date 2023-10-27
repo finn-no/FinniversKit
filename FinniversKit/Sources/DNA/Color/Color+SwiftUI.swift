@@ -21,6 +21,7 @@ extension Color {
     public static var bgBottomSheet: Color { Color(UIColor.bgBottomSheet) }
     @available(*, deprecated, message: "Use Warp backgroundWarningSubtle instead")
     public static var bgAlert: Color       { Color(UIColor.bgAlert) }
+    @available(*, deprecated, message: "Use Warp backgroundPositiveSubtle instead")
     public static var bgSuccess: Color     { Color(UIColor.bgSuccess) }
     public static var bgCritical: Color    { Color(UIColor.bgCritical) }
     @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")

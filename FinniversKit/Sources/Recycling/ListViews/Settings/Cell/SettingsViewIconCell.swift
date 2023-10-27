@@ -26,6 +26,6 @@ struct SettingsViewIconCell: View {
 
 struct SettingsViewIconCell_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsViewIconCell(title: "Personvernerklæring", icon: .init(systemName: "square.and.arrow.up")!, tintColor: .bgSuccess)
+        SettingsViewIconCell(title: "Personvernerklæring", icon: .init(systemName: "square.and.arrow.up")!, tintColor: .backgroundPositiveSubtle)
     }
 }

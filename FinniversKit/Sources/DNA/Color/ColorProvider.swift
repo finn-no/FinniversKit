@@ -21,6 +21,7 @@ public protocol ColorProvider {
     var bgInfo: UIColor { get }
     @available(*, deprecated, message: "Use Warp color instead")
     var bgInfoHeader: UIColor { get }
+    @available(*, deprecated, message: "Use Warp backgroundPositiveSubtle instead")
     var bgSuccess: UIColor { get }
     var bgCritical: UIColor { get }
     var btnPrimary: UIColor { get }
@@ -90,7 +91,7 @@ public struct DefaultColorProvider: ColorProvider {
     public var bgInfoHeader: UIColor {
         .dynamicColor(defaultColor: .aqua200, darkModeColor: .blue600)
     }
-
+    @available(*, deprecated, message: "Use Warp backgroundPositiveSubtle instead")
     public var bgSuccess: UIColor {
         .green100
     }

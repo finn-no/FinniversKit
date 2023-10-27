@@ -17,8 +17,8 @@ extension Panel {
             case .plain: return .background
             case .info: return .backgroundInfoSubtle
             case .tips: return .accentToothpaste
-            case .newFunctionality: return .bgSuccess
-            case .success: return .bgSuccess
+            case .newFunctionality: return .backgroundPositiveSubtle
+            case .success: return .backgroundPositiveSubtle
             case .warning: return .backgroundWarningSubtle
             case .error: return .bgCritical
             }

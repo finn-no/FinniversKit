@@ -11,6 +11,7 @@ extension Color {
     public static var backgroundInfoSubtle: Color { Config.warpTokenProvider.backgroundInfoSubtle }
     public static var backgroundSubtle: Color { Config.warpTokenProvider.backgroundSubtle }
     public static var backgroundWarningSubtle: Color { Config.warpTokenProvider.backgroundWarningSubtle }
+    public static var backgroundPositiveSubtle: Color { Config.warpTokenProvider.backgroundPositiveSubtle }
 }
 
 @objc extension UIColor {
@@ -18,6 +19,7 @@ extension Color {
     public static var backgroundInfoSubtle: UIColor { UIColor(.backgroundInfoSubtle) }
     public static var backgroundSubtle: UIColor { UIColor(.backgroundSubtle) }
     public static var backgroundWarningSubtle: UIColor { UIColor(.backgroundWarningSubtle) }
+    public static var backgroundPositiveSubtle: UIColor { UIColor(.backgroundPositiveSubtle) }
 }
 
 extension CGColor {
@@ -25,6 +27,7 @@ extension CGColor {
     public class var backgroundInfoSubtle: CGColor { UIColor.backgroundInfoSubtle.cgColor }
     public class var backgroundSubtle: CGColor { UIColor.backgroundSubtle.cgColor }
     public class var backgroundWarningSubtle: CGColor { UIColor.backgroundWarningSubtle.cgColor }
+    public class var backgroundPositiveSubtle: CGColor { UIColor.backgroundPositiveSubtle.cgColor }
 }
 
 // MARK: - Semantic colors, dark mode compatible
@@ -48,6 +51,7 @@ extension CGColor {
     public class var bgQuaternary: UIColor { Config.colorProvider.bgQuaternary }
     @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
     public class var bgSecondary: UIColor { Config.colorProvider.bgSecondary }
+    @available(*, deprecated, message: "Use Warp backgroundPositiveSubtle instead")
     public class var bgSuccess: UIColor { Config.colorProvider.bgSuccess }
     @available(*, deprecated, message: "Use Warp backgroundSubtle instead")
     public class var bgTertiary: UIColor { Config.colorProvider.bgTertiary }
@@ -97,6 +101,7 @@ extension CGColor {
     public class var bgQuaternary: CGColor { UIColor.bgQuaternary.cgColor }
     @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
     public class var bgSecondary: CGColor { UIColor.bgSecondary.cgColor }
+    @available(*, deprecated, message: "Use Warp backgroundPositiveSubtle instead")
     public class var bgSuccess: CGColor { UIColor.bgSuccess.cgColor }
     @available(*, deprecated, message: "Use Warp backgroundSubtle instead")
     public class var bgTertiary: CGColor { UIColor.bgTertiary.cgColor }

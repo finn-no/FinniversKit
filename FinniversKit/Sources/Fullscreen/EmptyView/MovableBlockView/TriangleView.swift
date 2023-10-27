@@ -33,7 +33,7 @@ class TriangleView: UIView, AttachableView {
         let path = createTrianglePath(from: rect)
 
         context.addPath(path)
-        context.setFillColor(UIColor.bgSuccess.cgColor)
+        context.setFillColor(CGColor.backgroundPositiveSubtle)
         context.fillPath()
     }
 
