@@ -71,7 +71,7 @@ public struct DefaultStyle: ButtonStyle {
         )
         .roundedBorder(
             radius: .spacingS,
-            color: configuration.isPressed ? .backgroundPrimary : .btnDisabled
+            color: configuration.isPressed ? .backgroundPrimary : .backgroundDisabled
         )
     }
 }
@@ -107,7 +107,7 @@ public struct CallToAction: ButtonStyle {
         }
         .padding(.vertical, .spacingS)
         .padding(.horizontal, .spacingM)
-        .background(isEnabled ? dynamicBackground(configuration) : .btnDisabled)
+        .background(isEnabled ? dynamicBackground(configuration) : .backgroundDisabled)
         .cornerRadius(.spacingS)
         .animation(.easeOut, value: isEnabled)
     }

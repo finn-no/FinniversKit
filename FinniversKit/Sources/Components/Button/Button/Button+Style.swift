@@ -177,7 +177,7 @@ public extension Button.Style {
                 .normal: Button.StateStyle(
                     textColor: .textAction,
                     backgroundColor: .background,
-                    borderColor: .btnDisabled
+                    borderColor: .backgroundDisabled
                 ),
                 .highlighted: Button.StateStyle(
                     textColor: nil,
@@ -187,7 +187,7 @@ public extension Button.Style {
                 .disabled: Button.StateStyle(
                     textColor: .textDisabled,
                     backgroundColor: nil,
-                    borderColor: .btnDisabled
+                    borderColor: .backgroundDisabled
                 )
             ]
         )
@@ -200,7 +200,7 @@ public extension Button.Style {
                 .normal: Button.StateStyle(
                     textColor: .textPrimary,
                     backgroundColor: .background,
-                    borderColor: .btnDisabled
+                    borderColor: .backgroundDisabled
                 ),
                 .highlighted: Button.StateStyle(
                     textColor: .utilityButtonHighlightedTextColor,
@@ -210,7 +210,7 @@ public extension Button.Style {
                 .disabled: Button.StateStyle(
                     textColor: .textDisabled,
                     backgroundColor: nil,
-                    borderColor: .btnDisabled
+                    borderColor: .backgroundDisabled
                 )
             ]
         )
@@ -232,7 +232,7 @@ public extension Button.Style {
                 ),
                 .disabled: Button.StateStyle(
                     textColor: nil,
-                    backgroundColor: .btnDisabled,
+                    backgroundColor: .backgroundDisabled,
                     borderColor: nil
                 )
             ]
@@ -255,7 +255,7 @@ public extension Button.Style {
                 ),
                 .disabled: Button.StateStyle(
                     textColor: nil,
-                    backgroundColor: .btnDisabled,
+                    backgroundColor: .backgroundDisabled,
                     borderColor: nil
                 )
             ]

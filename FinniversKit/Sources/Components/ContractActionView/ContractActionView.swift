@@ -61,7 +61,7 @@ public class ContractActionView: UIView {
     }()
 
 
-    private let buttonStyle = Button.Style.default.overrideStyle(borderColor: .btnDisabled)
+    private let buttonStyle = Button.Style.default.overrideStyle(borderColor: .backgroundDisabled)
 
     private lazy var actionButton: Button = {
         let button = Button(style: buttonStyle, size: .normal, withAutoLayout: true)

@@ -30,7 +30,7 @@ final class FavoriteFolderActionButton: UIButton {
 
         titleLabel?.font = .bodyStrong
         setTitleColor(tintColor, for: .normal)
-        setTitleColor(.btnDisabled, for: .disabled)
+        setTitleColor(.backgroundDisabled, for: .disabled)
         setTitle(title, for: .normal)
 
         imageView?.tintColor = tintColor
@@ -62,7 +62,7 @@ final class FavoriteFolderActionButton: UIButton {
 
     override var isEnabled: Bool {
         didSet {
-            imageView?.tintColor = isEnabled ? enabledTintColor : .btnDisabled
+            imageView?.tintColor = isEnabled ? enabledTintColor : .backgroundDisabled
         }
     }
 

@@ -27,6 +27,7 @@ public protocol ColorProvider {
     var bgCritical: UIColor { get }
     @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     var btnPrimary: UIColor { get }
+    @available(*, deprecated, message: "Use Warp backgroundDisabled instead")
     var btnDisabled: UIColor { get }
     var btnCritical: UIColor { get }
     var btnAction: UIColor { get }
@@ -105,7 +106,7 @@ public struct DefaultColorProvider: ColorProvider {
     public var btnPrimary: UIColor {
         .dynamicColor(defaultColor: .blue600, darkModeColor: .darkCallToAction)
     }
-
+    @available(*, deprecated, message: "Use Warp backgroundDisabled instead")
     public var btnDisabled: UIColor {
         .dynamicColor(defaultColor: .blueGray300, darkModeColor: .darkSardine)
     }
@@ -175,7 +176,7 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var decorationSubtle: UIColor {
-        return .btnDisabled
+        return .backgroundDisabled
     }
 
     public var iconPrimary: UIColor {
