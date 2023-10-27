@@ -38,7 +38,9 @@ extension CGColor {
     @available(*, deprecated, message: "Use Warp background instead")
     public class var bgBottomSheet: UIColor { Config.colorProvider.bgBottomSheet }
     public class var bgCritical: UIColor { Config.colorProvider.bgCritical }
+    @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
     public class var bgInfo: UIColor { Config.colorProvider.bgInfo }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var bgInfoHeader: UIColor { Config.colorProvider.bgInfoHeader }
     @available(*, deprecated, message: "Use Warp background instead")
     public class var bgPrimary: UIColor { Config.colorProvider.bgPrimary }
@@ -85,7 +87,9 @@ extension CGColor {
     @available(*, deprecated, message: "Use Warp background instead")
     public class var bgBottomSheet: CGColor { UIColor.bgBottomSheet.cgColor }
     public class var bgCritical: CGColor { UIColor.bgCritical.cgColor }
+    @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
     public class var bgInfo: CGColor { UIColor.bgInfo.cgColor }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var bgInfoHeader: CGColor { UIColor.bgInfoHeader.cgColor }
     @available(*, deprecated, message: "Use Warp background instead")
     public class var bgPrimary: CGColor { UIColor.bgPrimary.cgColor }

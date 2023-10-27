@@ -23,7 +23,9 @@ extension Color {
     public static var bgAlert: Color       { Color(UIColor.bgAlert) }
     public static var bgSuccess: Color     { Color(UIColor.bgSuccess) }
     public static var bgCritical: Color    { Color(UIColor.bgCritical) }
+    @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
     public static var bgInfo: Color        { Color(UIColor.bgInfo) }
+    @available(*, deprecated, message: "Use Warp color instead")
     public static var bgInfoHeader: Color  { Color(UIColor.bgInfoHeader) }
 
     // MARK: - Button
