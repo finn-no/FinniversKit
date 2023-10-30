@@ -28,12 +28,11 @@ final class PianoKeyboardView: UIView {
         setupLayout()
     }
 
-    // swiftlint:disable identifier_name
     private func setupLayout() {
         let numberOfNaturalKeys: CGFloat = 7
         let widthWithSpacing = bounds.width / numberOfNaturalKeys
         let spacing = widthWithSpacing * 0.4 / 1.4
-        let x = spacing / 2
+        let x = spacing / 2 // swiftlint:disable:this identifier_name
         let width = widthWithSpacing - spacing
         var naturalFrame = CGRect(x: x, y: width, width: width, height: bounds.height - width)
         var accidentalFrame = CGRect(x: x, y: 0, width: width, height: width)

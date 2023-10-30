@@ -1,7 +1,7 @@
 import UIKit
 
 public class FrontPageHeaderView: UICollectionReusableView {
-    public typealias ButtonAction = (()->())
+    public typealias ButtonAction = (() -> Void)
 
     private lazy var titleLabel: UILabel = {
         let label = Label(style: .title3Strong)

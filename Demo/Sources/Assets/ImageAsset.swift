@@ -30,7 +30,9 @@ extension UIImage {
     }
 }
 
+//swiftlint:disable:next blanket_disable_command
 //swiftlint:disable superfluous_disable_command
+//swiftlint:disable:next blanket_disable_command
 //swiftlint:disable type_body_length
 enum ImageAsset: String {
     case adManagementTrashcan
