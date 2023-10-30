@@ -4,14 +4,14 @@ struct SettingsViewIconCell: View {
     let title: String
     let icon: UIImage
     let tintColor: Color?
-    
+
     var body: some View {
         HStack(alignment: .center) {
             Text(title)
                 .finnFont(.body)
                 .foregroundColor(.textPrimary)
                 .padding([.leading])
-            
+
             Spacer(minLength: .spacingS)
 
             Image(uiImage: icon)

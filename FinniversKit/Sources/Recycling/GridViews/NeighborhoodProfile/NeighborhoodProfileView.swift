@@ -328,4 +328,3 @@ private extension UIScrollView {
         return contentSize.width - bounds.width
     }
 }
-

@@ -40,13 +40,13 @@ class MessageInputTextView: UIView {
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
     }()
-    
+
     private lazy var phoneView: TextView = {
         let textView = TextView(withAutoLayout: true)
         textView.isScrollEnabled = false
         return textView
     }()
-    
+
     private lazy var additionalInfoLabel: Label = {
         let label = Label(style: .detail)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -77,7 +77,7 @@ class MessageInputTextView: UIView {
             textView.text = newValue
         }
     }
-    
+
     var inputEnabled: Bool = true {
         didSet {
             textView.isUserInteractionEnabled = inputEnabled
@@ -120,7 +120,7 @@ class MessageInputTextView: UIView {
             textViewLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             textViewLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
             textViewLabel.bottomAnchor.constraint(equalTo: textView.topAnchor, constant: -.spacingS),
-            
+
             textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
             textView.bottomAnchor.constraint(equalTo: disclaimerLabel.topAnchor, constant: -.spacingS),
@@ -128,15 +128,15 @@ class MessageInputTextView: UIView {
             disclaimerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             disclaimerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
             disclaimerLabel.bottomAnchor.constraint(equalTo: phoneViewLabel.topAnchor, constant: -.spacingM),
-            
+
             phoneViewLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             phoneViewLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
             phoneViewLabel.bottomAnchor.constraint(equalTo: phoneView.topAnchor, constant: -.spacingS),
-            
+
             phoneView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             phoneView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
             phoneView.bottomAnchor.constraint(equalTo: additionalInfoLabel.topAnchor, constant: -.spacingS),
-            
+
             additionalInfoLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
             additionalInfoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
             additionalInfoLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS)

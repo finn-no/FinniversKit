@@ -432,14 +432,14 @@ public class TextField: UIView {
 
         if let dynamicBorder = self.textFieldDynamicBorder, dynamicBorder == true {
             switch state {
-            case .normal :
+            case .normal:
                 self.textFieldBorderColor = self.textFieldDefaultBorderColor
-            default :
+            default:
                 self.textFieldBorderColor = state.underlineColor
             }
             layoutIfNeeded()
         }
-        else{
+        else {
             underlineHeightConstraint?.constant = state.underlineHeight
         }
 

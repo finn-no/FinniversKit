@@ -23,12 +23,12 @@ extension NeighborhoodProfileViewModel {
         case info(content: Content, rows: [Row])
         case button(content: Content)
     }
-    
+
     public struct Banner {
         public let text: String
         public let link: Link
         public let iconName: String
-    
+
         public init(text: String, link: Link, iconName: String) {
             self.text = text
             self.link = link
