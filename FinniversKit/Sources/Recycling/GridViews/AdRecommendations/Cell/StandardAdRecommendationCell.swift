@@ -48,7 +48,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         let imageView = UIImageView(withAutoLayout: true)
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .iconTertiary
+        imageView.tintColor = .iconInverted
         return imageView
     }()
 

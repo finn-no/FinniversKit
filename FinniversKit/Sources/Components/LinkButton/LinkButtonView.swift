@@ -46,7 +46,7 @@ class LinkButtonView: UIView {
     private lazy var externalImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = externalImage
-        imageView.tintColor = .borderDefault
+        imageView.tintColor = .border
         imageView.setContentHuggingPriority(.required, for: .horizontal)
         return imageView
     }()
@@ -90,7 +90,7 @@ class LinkButtonView: UIView {
         super.init(frame: .zero)
 
         externalImageView.isHidden = !isExternal
-        externalImageView.tintColor = externalIconColor ?? .borderDefault
+        externalImageView.tintColor = externalIconColor ?? .border
         linkButton.setTitle(buttonTitle, for: .normal)
         linkButton.accessibilityTraits = isExternal ? .link : .button
         subtitleLabel.text = subtitle

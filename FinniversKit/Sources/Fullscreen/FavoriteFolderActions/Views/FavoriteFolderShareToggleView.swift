@@ -20,7 +20,7 @@ final class FavoriteFolderShareToggleView: UIView {
     var isEnabled = true {
         didSet {
             titleLabel.textColor = isEnabled ? .text : .textDisabled
-            iconImageView.tintColor = isEnabled ? .iconPrimary : .decorationSubtle
+            iconImageView.tintColor = isEnabled ? .iconPrimary : .backgroundDisabled
             switchControl.isEnabled = isEnabled
         }
     }

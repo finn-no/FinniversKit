@@ -60,10 +60,14 @@ public protocol ColorProvider {
     var tableViewSeparator: UIColor { get }
     @available(*, deprecated, message: "Use Warp border instead")
     var imageBorder: UIColor { get }
+    @available(*, deprecated, message: "Use Warp backgroundDisabled instead")
     var decorationSubtle: UIColor { get }
-    var iconPrimary: UIColor { get }
+//    var iconPrimary: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var iconSecondary: UIColor { get }
+    @available(*, deprecated, message: "Use Warp iconInverted instead")
     var iconTertiary: UIColor { get }
+    @available(*, deprecated, message: "Use Warp border instead")
     var borderDefault: UIColor { get }
     var marketplaceNavigationBarIcon: UIColor { get }
     var nmpBrandColorPrimary: UIColor { get }
@@ -189,23 +193,23 @@ public struct DefaultColorProvider: ColorProvider {
     public var imageBorder: UIColor {
         .borderDefault
     }
-
+    @available(*, deprecated, message: "Use Warp backgroundDisabled instead")
     public var decorationSubtle: UIColor {
         return .backgroundDisabled
     }
 
-    public var iconPrimary: UIColor {
-        .text
-    }
-
+//    public var iconPrimary: UIColor {
+//        .text
+//    }
+    @available(*, deprecated, message: "Use Warp color instead")
     public var iconSecondary: UIColor {
         .textSubtle
     }
-
+    @available(*, deprecated, message: "Use Warp iconInverted instead")
     public var iconTertiary: UIColor {
         .textInverted
     }
-
+    @available(*, deprecated, message: "Use Warp border instead")
     public var borderDefault: UIColor {
         .dynamicColor(defaultColor: .blueGray300, darkModeColor: .darkSardine)
     }

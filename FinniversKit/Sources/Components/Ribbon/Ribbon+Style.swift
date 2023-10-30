@@ -19,7 +19,7 @@ public extension RibbonView {
             case .success: return .backgroundPositiveSubtle
             case .warning: return .backgroundWarningSubtle
             case .error: return .backgroundNegativeSubtle
-            case .disabled: return .decorationSubtle
+            case .disabled: return .backgroundDisabled
             case .sponsored: return .accentToothpaste
             }
         }

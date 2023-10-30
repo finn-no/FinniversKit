@@ -23,6 +23,8 @@ extension Color {
     public static var textDisabled: Color { Config.warpTokenProvider.textDisabled }
     public static var textNegative: Color { Config.warpTokenProvider.textNegative }
     public static var border: Color { Config.warpTokenProvider.border }
+    public static var iconPrimary: Color { Config.warpTokenProvider.iconPrimary }
+    public static var iconInverted: Color { Config.warpTokenProvider.iconInverted }
 }
 
 @objc extension UIColor {
@@ -42,6 +44,8 @@ extension Color {
     public static var textDisabled: UIColor { UIColor(.textDisabled) }
     public static var textNegative: UIColor { UIColor(.textNegative) }
     public static var border: UIColor { UIColor(.border) }
+    public static var iconPrimary: UIColor { UIColor(.iconPrimary) }
+    public static var iconInverted: UIColor { UIColor(.iconInverted) }
 }
 
 extension CGColor {
@@ -61,6 +65,8 @@ extension CGColor {
     public class var textDisabled: CGColor { UIColor.textDisabled.cgColor }
     public class var textNegative: CGColor { UIColor.textNegative.cgColor }
     public class var border: CGColor { UIColor.border.cgColor }
+    public class var iconPrimary: CGColor { UIColor.iconPrimary.cgColor }
+    public class var iconInverted: CGColor { UIColor.iconInverted.cgColor }
 }
 
 // MARK: - Semantic colors, dark mode compatible
@@ -93,6 +99,7 @@ extension CGColor {
     public class var bgSuccess: UIColor { Config.colorProvider.bgSuccess }
     @available(*, deprecated, message: "Use Warp backgroundSubtle instead")
     public class var bgTertiary: UIColor { Config.colorProvider.bgTertiary }
+    @available(*, deprecated, message: "Use Warp border instead")
     public class var borderDefault: UIColor { Config.colorProvider.borderDefault }
     @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     public class var btnAction: UIColor { Config.colorProvider.btnAction }
@@ -102,9 +109,12 @@ extension CGColor {
     public class var btnDisabled: UIColor { Config.colorProvider.btnDisabled }
     @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     public class var btnPrimary: UIColor { Config.colorProvider.btnPrimary }
+    @available(*, deprecated, message: "Use Warp backgroundDisabled instead")
     public class var decorationSubtle: UIColor { Config.colorProvider.decorationSubtle }
-    public class var iconPrimary: UIColor { Config.colorProvider.iconPrimary }
+//    public class var iconPrimary: UIColor { Config.colorProvider.iconPrimary }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var iconSecondary: UIColor { Config.colorProvider.iconSecondary }
+    @available(*, deprecated, message: "Use Warp iconInverted instead")
     public class var iconTertiary: UIColor { Config.colorProvider.iconTertiary }
     @available(*, deprecated, message: "Use Warp border instead")
     public class var imageBorder: UIColor { Config.colorProvider.imageBorder }
@@ -161,6 +171,7 @@ extension CGColor {
     public class var bgSuccess: CGColor { UIColor.bgSuccess.cgColor }
     @available(*, deprecated, message: "Use Warp backgroundSubtle instead")
     public class var bgTertiary: CGColor { UIColor.bgTertiary.cgColor }
+    @available(*, deprecated, message: "Use Warp border instead")
     public class var borderDefault: CGColor { UIColor.borderDefault.cgColor }
     @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     public class var btnAction: CGColor { UIColor.btnAction.cgColor }
@@ -170,9 +181,12 @@ extension CGColor {
     public class var btnDisabled: CGColor { UIColor.btnDisabled.cgColor }
     @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     public class var btnPrimary: CGColor { UIColor.btnPrimary.cgColor }
+    @available(*, deprecated, message: "Use Warp backgroundDisabled instead")
     public class var decorationSubtle: CGColor { UIColor.decorationSubtle.cgColor }
-    public class var iconPrimary: CGColor { UIColor.iconPrimary.cgColor }
+//    public class var iconPrimary: CGColor { UIColor.iconPrimary.cgColor }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var iconSecondary: CGColor { UIColor.iconSecondary.cgColor }
+    @available(*, deprecated, message: "Use Warp iconInverted instead")
     public class var iconTertiary: CGColor { UIColor.iconTertiary.cgColor }
     @available(*, deprecated, message: "Use Warp border instead")
     public class var imageBorder: CGColor { UIColor.imageBorder.cgColor }

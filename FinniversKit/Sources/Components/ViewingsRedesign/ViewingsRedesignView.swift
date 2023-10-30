@@ -112,7 +112,7 @@ public class ViewingsRedesignView: UIView {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        layer.borderColor = .borderDefault
+        layer.borderColor = .border
     }
 
     // MARK: - Actions

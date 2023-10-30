@@ -184,7 +184,7 @@ public class FeedbackView: UIView {
         super.layoutSubviews()
         hasBeenPresented = true
 
-        layer.borderColor = .decorationSubtle
+        layer.borderColor = .backgroundDisabled
 
         guard allowAutomaticPresentationSwitch else { return }
 

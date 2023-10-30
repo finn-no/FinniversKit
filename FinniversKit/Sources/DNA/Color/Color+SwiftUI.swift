@@ -59,8 +59,10 @@ extension Color {
 
     // MARK: - Icon
 
-    public static var iconPrimary: Color   { Color(UIColor.iconPrimary) }
+//    public static var iconPrimary: Color   { Color(UIColor.iconPrimary) }
+    @available(*, deprecated, message: "Use Warp color instead")
     public static var iconSecondary: Color { Color(UIColor.iconSecondary) }
+    @available(*, deprecated, message: "Use Warp iconInverted instead")
     public static var iconTertiary: Color  { Color(UIColor.iconTertiary) }
 
     // MARK: - Others
@@ -76,7 +78,9 @@ extension Color {
     public static var tableViewSeparator: Color  { Color(UIColor.tableViewSeparator) }
     @available(*, deprecated, message: "Use Warp border instead")
     public static var imageBorder: Color         { Color(UIColor.imageBorder) }
+    @available(*, deprecated, message: "Use Warp backgroundDisabled instead")
     public static var decorationSubtle: Color    { Color(UIColor.decorationSubtle) }
+    @available(*, deprecated, message: "Use Warp border instead")
     public static var borderDefault: Color       { Color(UIColor.borderDefault) }
 }
 // swiftlint:enable opening_brace

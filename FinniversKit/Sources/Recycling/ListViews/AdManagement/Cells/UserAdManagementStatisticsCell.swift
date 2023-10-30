@@ -134,7 +134,7 @@ extension UserAdManagementStatisticsCell {
         private lazy var iconImageView: UIImageView = {
             let imageView = UIImageView(withAutoLayout: true)
             imageView.image = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
-            imageView.tintColor = .borderDefault
+            imageView.tintColor = .border
 
             return imageView
         }()
