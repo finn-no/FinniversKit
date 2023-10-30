@@ -108,13 +108,13 @@ class SingleQuestionFeedback: FeedbackViewDelegate {
     ]
 
     func feedbackView(_ feedbackView: FeedbackView, didSelectButtonOfType buttonType: FeedbackView.ButtonType, forState state: FeedbackView.State) {
-        feedbackView.setState(.finished, withViewModel: viewModels[.finished]!)
+        feedbackView.setState(.finished, withViewModel: viewModels[.finished]!) // swiftlint:disable:this force_unwrapping
     }
 
     func createFeedbackView() -> FeedbackView {
         let feedbackView = FeedbackView(withAutoLayout: true)
         feedbackView.delegate = self
-        feedbackView.setState(.initial, withViewModel: viewModels[.initial]!)
+        feedbackView.setState(.initial, withViewModel: viewModels[.initial]!) // swiftlint:disable:this force_unwrapping
         return feedbackView
     }
 }
@@ -147,7 +147,7 @@ class MultiQuestionFeedback: FeedbackViewDelegate {
     func createFeedbackView() -> FeedbackView {
         let feedbackView = FeedbackView(withAutoLayout: true)
         feedbackView.delegate = self
-        feedbackView.setState(.initial, withViewModel: viewModels[.initial]!)
+        feedbackView.setState(.initial, withViewModel: viewModels[.initial]!) // swiftlint:disable:this force_unwrapping
         return feedbackView
     }
 }

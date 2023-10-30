@@ -23,4 +23,3 @@ public extension SelfDeclarationViewModel {
         }
     }
 }
-

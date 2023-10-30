@@ -126,4 +126,3 @@ struct SwiftUICheckBox_Previews: PreviewProvider {
         }
     }
 }
-

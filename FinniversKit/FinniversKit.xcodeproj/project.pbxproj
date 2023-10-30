@@ -3558,7 +3558,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint --config \"${SRCROOT}/../.swiftlint.yml\"\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint or brew install swiftlint\"\nfi\n";
+			shellScript = "if [ -z \"$TRAVIS\" ]; then\n    case $(arch) in arm64)\n        eval \"$(/opt/homebrew/bin/brew shellenv)\"\n        ;;\n    esac\n    \n    if which swiftlint >/dev/null; then\n        swiftlint --config \"${SRCROOT}/../.swiftlint.yml\"\n    else\n        echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint or brew install swiftlint\"\n    fi\nfi\n";
 		};
 		44C6CE42209CAA3300929269 /* Generate constants for assets names */ = {
 			isa = PBXShellScriptBuildPhase;

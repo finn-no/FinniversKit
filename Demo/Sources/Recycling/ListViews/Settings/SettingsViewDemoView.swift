@@ -46,7 +46,7 @@ class SettingsViewDemoView: UIView, Demoable {
                 SettingsItem(title: "Smart reklame"),
                 SettingsItem(title: "Last ned dine data"),
                 SettingsItem(title: "Slett meg som bruker"),
-                SettingsIconItem(title: "Personvernerklæring", icon: (image: .init(systemName: "square.and.arrow.up")!, tintColor: .textSecondary))
+                SettingsIconItem(title: "Personvernerklæring", icon: (image: .init(systemName: "square.and.arrow.up")!, tintColor: .textSecondary)) // swiftlint:disable:this force_unwrapping
             ],
             footerTitle: nil
         )

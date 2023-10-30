@@ -62,7 +62,7 @@ public class ViewingsRedesignView: UIView {
         addSubview(stackView)
         stackView.fillInSuperview()
 
-        prospectusStackView.addArrangedSubviews([prospectusDescriptionLabel, prospectusButton,])
+        prospectusStackView.addArrangedSubviews([prospectusDescriptionLabel, prospectusButton])
         stackView.addArrangedSubviews([
             titleLabel,
             viewingsStackView,
