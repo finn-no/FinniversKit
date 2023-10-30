@@ -69,10 +69,15 @@ public protocol ColorProvider {
     var iconTertiary: UIColor { get }
     @available(*, deprecated, message: "Use Warp border instead")
     var borderDefault: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var marketplaceNavigationBarIcon: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var nmpBrandColorPrimary: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var nmpBrandColorSecondary: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var nmpBrandControlSelected: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var nmpBrandDecoration: UIColor { get }
 }
 
@@ -213,24 +218,25 @@ public struct DefaultColorProvider: ColorProvider {
     public var borderDefault: UIColor {
         .dynamicColor(defaultColor: .blueGray300, darkModeColor: .darkSardine)
     }
-
+    @available(*, deprecated, message: "Use Warp color instead")
     public var marketplaceNavigationBarIcon: UIColor {
         .aqua400
     }
 
     // NMP brand colors
+    @available(*, deprecated, message: "Use Warp color instead")
     public var nmpBrandControlSelected: UIColor {
         .blue600
     }
-    
+    @available(*, deprecated, message: "Use Warp color instead")
     public var nmpBrandDecoration: UIColor {
         .blue600
     }
-    
+    @available(*, deprecated, message: "Use Warp color instead")
     public var nmpBrandColorPrimary: UIColor {
         .blue600
     }
-    
+    @available(*, deprecated, message: "Use Warp color instead")
     public var nmpBrandColorSecondary: UIColor {
         .aqua400
     }

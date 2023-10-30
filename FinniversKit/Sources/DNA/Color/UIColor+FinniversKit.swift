@@ -135,10 +135,15 @@ extension CGColor {
     public class var textTertiary: UIColor { Config.colorProvider.textTertiary }
     @available(*, deprecated, message: "Use Warp text instead")
     public class var textToast: UIColor { Config.colorProvider.textToast }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var marketplaceNavigationBarIcon: UIColor { Config.colorProvider.marketplaceNavigationBarIcon }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var nmpBrandColorPrimary: UIColor { Config.colorProvider.nmpBrandColorPrimary }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var nmpBrandColorSecondary: UIColor { Config.colorProvider.nmpBrandColorSecondary }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var nmpBrandControlSelected: UIColor { Config.colorProvider.nmpBrandControlSelected }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var nmpBrandDecoration: UIColor { Config.colorProvider.nmpBrandDecoration }
 }
 
@@ -207,10 +212,15 @@ extension CGColor {
     public class var textTertiary: CGColor { UIColor.textTertiary.cgColor }
     @available(*, deprecated, message: "Use Warp text instead")
     public class var textToast: CGColor { UIColor.textToast.cgColor }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var marketplaceNavigationBarIcon: CGColor { Config.colorProvider.marketplaceNavigationBarIcon.cgColor }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var nmpBrandColorPrimary: CGColor { Config.colorProvider.nmpBrandColorPrimary.cgColor }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var nmpBrandColorSecondary: CGColor { Config.colorProvider.nmpBrandColorSecondary.cgColor }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var nmpBrandControlSelected: CGColor { Config.colorProvider.nmpBrandControlSelected.cgColor }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var nmpBrandDecoration: CGColor { Config.colorProvider.nmpBrandDecoration.cgColor }
 }
 
