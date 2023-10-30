@@ -35,7 +35,7 @@ open class BasicTableView: ShadowScrollView {
         tableView.dataSource = self
         tableView.backgroundColor = .background
         tableView.estimatedRowHeight = BasicTableView.estimatedRowHeight
-        tableView.separatorColor = .tableViewSeparator
+        tableView.separatorColor = .border
         tableView.separatorInset = .leadingInset(frame.width)
         return tableView
     }()

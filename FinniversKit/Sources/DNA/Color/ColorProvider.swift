@@ -56,7 +56,9 @@ public protocol ColorProvider {
     var textCTADisabled: UIColor { get }
     @available(*, deprecated, message: "Use Warp text instead")
     var textToast: UIColor { get }
+    @available(*, deprecated, message: "Use Warp border instead")
     var tableViewSeparator: UIColor { get }
+    @available(*, deprecated, message: "Use Warp border instead")
     var imageBorder: UIColor { get }
     var decorationSubtle: UIColor { get }
     var iconPrimary: UIColor { get }
@@ -179,11 +181,11 @@ public struct DefaultColorProvider: ColorProvider {
     public var textToast: UIColor {
         .gray700
     }
-
+    @available(*, deprecated, message: "Use Warp border instead")
     public var tableViewSeparator: UIColor {
         .borderDefault
     }
-
+    @available(*, deprecated, message: "Use Warp border instead")
     public var imageBorder: UIColor {
         .borderDefault
     }

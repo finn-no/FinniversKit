@@ -27,7 +27,7 @@ class BuyerPickerProfileCell: UITableViewCell {
     lazy var hairlineView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .tableViewSeparator
+        view.backgroundColor = .border
         return view
     }()
 

@@ -22,6 +22,7 @@ extension Color {
     public static var textLink: Color { Config.warpTokenProvider.textLink }
     public static var textDisabled: Color { Config.warpTokenProvider.textDisabled }
     public static var textNegative: Color { Config.warpTokenProvider.textNegative }
+    public static var border: Color { Config.warpTokenProvider.border }
 }
 
 @objc extension UIColor {
@@ -40,6 +41,7 @@ extension Color {
     public static var textLink: UIColor { UIColor(.textLink) }
     public static var textDisabled: UIColor { UIColor(.textDisabled) }
     public static var textNegative: UIColor { UIColor(.textNegative) }
+    public static var border: UIColor { UIColor(.border) }
 }
 
 extension CGColor {
@@ -58,6 +60,7 @@ extension CGColor {
     public class var textLink: CGColor { UIColor.textLink.cgColor }
     public class var textDisabled: CGColor { UIColor.textDisabled.cgColor }
     public class var textNegative: CGColor { UIColor.textNegative.cgColor }
+    public class var border: CGColor { UIColor.border.cgColor }
 }
 
 // MARK: - Semantic colors, dark mode compatible
@@ -103,7 +106,9 @@ extension CGColor {
     public class var iconPrimary: UIColor { Config.colorProvider.iconPrimary }
     public class var iconSecondary: UIColor { Config.colorProvider.iconSecondary }
     public class var iconTertiary: UIColor { Config.colorProvider.iconTertiary }
+    @available(*, deprecated, message: "Use Warp border instead")
     public class var imageBorder: UIColor { Config.colorProvider.imageBorder }
+    @available(*, deprecated, message: "Use Warp border instead")
     public class var tableViewSeparator: UIColor { Config.colorProvider.tableViewSeparator }
     @available(*, deprecated, message: "Use Warp textLink instead")
     public class var textAction: UIColor { Config.colorProvider.textAction }
@@ -169,7 +174,9 @@ extension CGColor {
     public class var iconPrimary: CGColor { UIColor.iconPrimary.cgColor }
     public class var iconSecondary: CGColor { UIColor.iconSecondary.cgColor }
     public class var iconTertiary: CGColor { UIColor.iconTertiary.cgColor }
+    @available(*, deprecated, message: "Use Warp border instead")
     public class var imageBorder: CGColor { UIColor.imageBorder.cgColor }
+    @available(*, deprecated, message: "Use Warp border instead")
     public class var tableViewSeparator: CGColor { UIColor.tableViewSeparator.cgColor }
     @available(*, deprecated, message: "Use Warp textLink instead")
     public class var textAction: CGColor { UIColor.textAction.cgColor }

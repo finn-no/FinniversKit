@@ -26,7 +26,7 @@ final class NeighborhoodProfileBannerView: UIView {
     private lazy var containerStackView: UIStackView = {
         let stack = UIStackView(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
         stack.layer.borderWidth = 1
-        stack.layer.borderColor = .imageBorder
+        stack.layer.borderColor = .border
         stack.layer.cornerRadius = .spacingS
         stack.layer.masksToBounds = true
         stack.backgroundColor = .background

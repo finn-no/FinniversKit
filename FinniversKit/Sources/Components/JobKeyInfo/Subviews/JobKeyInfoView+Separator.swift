@@ -15,7 +15,7 @@ extension JobKeyInfoView {
         // MARK: - Setup
 
         private func setup() {
-            backgroundColor = .tableViewSeparator
+            backgroundColor = .border
             heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale).isActive = true
         }
     }

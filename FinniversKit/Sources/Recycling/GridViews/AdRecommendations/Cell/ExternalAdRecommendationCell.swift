@@ -208,7 +208,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        imageContentView.layer.borderColor = .imageBorder
+        imageContentView.layer.borderColor = .border
     }
 
     // MARK: - Dependency injection

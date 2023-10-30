@@ -23,7 +23,7 @@ class NativeAdvertRibbon: UIView {
         view.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         view.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         view.layer.borderWidth = 1
-        view.layer.borderColor = .tableViewSeparator
+        view.layer.borderColor = .border
         view.layer.cornerRadius = .spacingXS
         return view
     }()

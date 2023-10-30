@@ -190,7 +190,7 @@ public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell
     }
 
     public override func layoutSubviews() {
-        contentView.layer.borderColor = .imageBorder
+        contentView.layer.borderColor = .border
 
         super.layoutSubviews()
     }

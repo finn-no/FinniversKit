@@ -72,7 +72,9 @@ extension Color {
     public static var accentPea: Color           { Color(UIColor.accentPea) }
     @available(*, deprecated, message: "Use Warp color instead")
     public static var accentToothpaste: Color    { Color(UIColor.accentToothpaste) }
+    @available(*, deprecated, message: "Use Warp border instead")
     public static var tableViewSeparator: Color  { Color(UIColor.tableViewSeparator) }
+    @available(*, deprecated, message: "Use Warp border instead")
     public static var imageBorder: Color         { Color(UIColor.imageBorder) }
     public static var decorationSubtle: Color    { Color(UIColor.decorationSubtle) }
     public static var borderDefault: Color       { Color(UIColor.borderDefault) }

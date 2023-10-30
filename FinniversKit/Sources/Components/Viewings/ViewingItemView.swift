@@ -48,7 +48,7 @@ class ViewingItemView: UIView {
 
     private lazy var separator: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .tableViewSeparator
+        view.backgroundColor = .border
         return view
     }()
 

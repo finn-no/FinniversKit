@@ -43,7 +43,7 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
 
     private lazy var separatorView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .tableViewSeparator
+        view.backgroundColor = .border
         return view
     }()
 

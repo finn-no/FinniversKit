@@ -32,7 +32,7 @@ public class MyAdCollectionViewCell: UICollectionViewCell {
 
     private lazy var hairlineView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .tableViewSeparator
+        view.backgroundColor = .border
         return view
     }()
 
@@ -100,7 +100,7 @@ public class MyAdCollectionViewCell: UICollectionViewCell {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        remoteImageView.layer.borderColor = UIColor.imageBorder.cgColor
+        remoteImageView.layer.borderColor = CGColor.border
     }
 
     // MARK: - Internal methods
