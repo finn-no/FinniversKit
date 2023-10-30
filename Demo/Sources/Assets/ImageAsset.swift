@@ -17,7 +17,7 @@ extension UIImage {
         #else
         let bundle = Bundle(for: BundleHelper.self)
         #endif
-        self.init(named: imageAsset.rawValue, in: bundle, compatibleWith: nil)!
+        self.init(named: imageAsset.rawValue, in: bundle, compatibleWith: nil)! // swiftlint:disable:this force_unwrapping
     }
 
     @objc class func assetNamed(_ assetName: String) -> UIImage {
@@ -26,7 +26,7 @@ extension UIImage {
         #else
         let bundle = Bundle(for: BundleHelper.self)
         #endif
-        return UIImage(named: assetName, in: bundle, compatibleWith: nil)!
+        return UIImage(named: assetName, in: bundle, compatibleWith: nil)! // swiftlint:disable:this force_unwrapping
     }
 }
 

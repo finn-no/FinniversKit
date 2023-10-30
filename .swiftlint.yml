@@ -3,8 +3,8 @@ included:
   - Demo
   - FinniversKit
 
-#opt_in_rules:
-#  - force_unwrapping
+opt_in_rules:
+  - force_unwrapping
 
 force_cast: error
 force_try: error

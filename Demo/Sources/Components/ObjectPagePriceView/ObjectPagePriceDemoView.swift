@@ -112,19 +112,19 @@ extension ObjectPagePriceViewModel {
                     buttonIdentifier: "loan",
                     buttonTitle: "Lån fra 16 581 kr",
                     subtitle: "Eff.rente 3,89 %. 903 232 o/5 år. Kostnad: 91 628 kr. Totalt 994 860 kr.",
-                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                     isExternal: true
                 ),
                 PriceLinkButtonViewModel(
                     buttonIdentifier: "insurance",
                     buttonTitle: "Pris på forsikring",
-                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                     isExternal: false
                 ),
                 PriceLinkButtonViewModel(
                     buttonIdentifier: "used-car-guarantee",
                     buttonTitle: "Bruktbilgaranti 272 kr",
-                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                     isExternal: true
                 )
             ]
@@ -141,19 +141,19 @@ extension ObjectPagePriceViewModel {
                     buttonIdentifier: "loan",
                     buttonTitle: "Lån fra 16 581 kr",
                     subtitle: "Eff.rente 3,89 %. 903 232 o/5 år. Kostnad: 91 628 kr. Totalt 994 860 kr.",
-                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                     isExternal: true
                 ),
                 PriceLinkButtonViewModel(
                     buttonIdentifier: "pulse",
                     buttonTitle: "Se hva solgte boliger i området ble lagt ut for det siste året",
-                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                     isExternal: true
                 ),
                 PriceLinkButtonViewModel(
                     buttonIdentifier: "used-car-guarantee",
                     buttonTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                     isExternal: true
                 )
             ]
@@ -170,19 +170,19 @@ extension ObjectPagePriceViewModel {
                     buttonIdentifier: "loan",
                     buttonTitle: "Lån fra 16 581 kr",
                     subtitle: "Eff.rente 3,89 %. 903 232 o/5 år. Kostnad: 91 628 kr. Totalt 994 860 kr.",
-                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                     isExternal: true
                 ),
                 PriceLinkButtonViewModel(
                     buttonIdentifier: "insurance",
                     buttonTitle: "Pris på forsikring",
-                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                     isExternal: false
                 ),
                 PriceLinkButtonViewModel(
                     buttonIdentifier: "used-car-guarantee",
                     buttonTitle: "Bruktbilgaranti 272 kr",
-                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                     isExternal: true
                 )
             ]
@@ -201,20 +201,20 @@ extension ObjectPagePriceViewModel {
                     subtitle: "Eff.rente 3,89 %. 903 232 o/5 år. Kostnad: 91 628 kr. Totalt 994 860 kr.",
                     heading: "Pris på lån",
                     subheading: "fra 16 581 kr",
-                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                     isExternal: true,
                     kind: .variantFull
                 ),
                 PriceLinkButtonViewModel(
                     buttonIdentifier: "insurance",
                     buttonTitle: "Pris på forsikring",
-                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                     isExternal: false
                 ),
                 PriceLinkButtonViewModel(
                     buttonIdentifier: "used-car-guarantee",
                     buttonTitle: "Bruktbilgaranti 272 kr",
-                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                     isExternal: true
                 )
             ]
@@ -231,20 +231,20 @@ extension ObjectPagePriceViewModel {
                     buttonTitle: "fra 8 098 kr/mnd",
                     subtitle: "Eff.rente 3,89 %. 903 232 o/5 år. Kostnad: 91 628 kr. Totalt 994 860 kr.",
                     subheading: "Pris på lån:",
-                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                     isExternal: true,
                     kind: .variantCompact
                 ),
                 PriceLinkButtonViewModel(
                     buttonIdentifier: "insurance",
                     buttonTitle: "Pris på forsikring",
-                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                     isExternal: false
                 ),
                 PriceLinkButtonViewModel(
                     buttonIdentifier: "used-car-guarantee",
                     buttonTitle: "Bruktbilgaranti 272 kr",
-                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                     isExternal: true
                 )
             ]
@@ -261,20 +261,20 @@ extension ObjectPagePriceViewModel {
                     buttonTitle: "fra 8 098 kr/mnd",
                     subtitle: "Eff.rente 3,89 %. 903 232 o/5 år. Kostnad: 91 628 kr. Totalt 994 860 kr.",
                     subheading: "Pris på lån:",
-                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                     isExternal: true,
                     kind: .variantCompact
                 ),
                 PriceLinkButtonViewModel(
                     buttonIdentifier: "insurance",
                     buttonTitle: "Pris på forsikring",
-                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                     isExternal: false
                 ),
                 PriceLinkButtonViewModel(
                     buttonIdentifier: "used-car-guarantee",
                     buttonTitle: "Bruktbilgaranti 272 kr",
-                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                     isExternal: true
                 )
             ],
@@ -309,7 +309,7 @@ extension ObjectPagePriceViewModel {
                 PriceLinkButtonViewModel(
                     buttonIdentifier: "insurance",
                     buttonTitle: "Pris på forsikring",
-                    linkUrl: URL(string: "https://www.finn.no/")!,
+                    linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                     isExternal: false
                 )
             ]

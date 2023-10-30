@@ -8,7 +8,7 @@ import XCTest
 class BroadcastMessageTests: XCTestCase {
     func testBroadcastModelCanReplaceHTMLLinkWithAttributedStringWithLinkAttrbutes() {
         // Given
-        let linkURL = URL(string: "https://www.finn.no/")!
+        let linkURL = URL(string: "https://www.finn.no/")! // swiftlint:disable:this force_unwrapping
         let linkText = "Besøk oss på vår nettside"
         let link = "<a href=\"\(linkURL.absoluteString)\" title=\"some title\" target=\"\">\(linkText)</a>"
         let testMessage = "Dette er en melding som inneholder en link \(link)"
