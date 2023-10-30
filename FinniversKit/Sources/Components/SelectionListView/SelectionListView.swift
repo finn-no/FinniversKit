@@ -171,12 +171,12 @@ private extension SelectionListItemView.Position {
             position = .theOnlyOne
         case (0, _):
             position = .first
-        case (let a, let b) where a == b:
+        case (let current, let last) where current == last:
             position = .last
         default:
             position = .middle
         }
-        
+
         return position
     }
 }

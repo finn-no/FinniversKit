@@ -1,24 +1,40 @@
-force_cast: error
-force_try: error
-#force_unwrapping: error
-
-opt_in_rules:
-  #- force_unwrapping
-
-disabled_rules:
-  - file_length
-  - function_body_length
-  - identifier_name
-  - line_length
-  - shorthand_operator
-  - type_body_length
-  - type_name
-
-reporter: "xcode"
+# included paths
 included:
   - Demo
   - FinniversKit
-excluded:
-  - bundler
-analyzer_rules:
-  - unused_import
+
+#opt_in_rules:
+#  - force_unwrapping
+
+force_cast: error
+force_try: error
+force_unwrapping: error
+type_name:
+  min_length: 2
+  max_length: 50
+identifier_name:
+  min_length:
+    warning: 2
+    error: 2
+  max_length: 50
+cyclomatic_complexity: 20
+vertical_whitespace:
+  max_empty_lines: 3
+function_parameter_count:
+  warning: 8
+  error: 10
+
+disabled_rules:
+  - line_length
+  - type_body_length
+  - file_length
+  - function_body_length
+  - trailing_comma
+  - empty_enum_arguments
+  - redundant_optional_initialization
+  - comment_spacing
+  - nesting
+  - empty_parentheses_with_trailing_closure
+  - shorthand_operator
+
+reporter: "xcode"
