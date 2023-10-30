@@ -108,7 +108,7 @@ public enum ToriMarket: MarketsViewModel {
     ]    
 }
 
-public enum Market: MarketsViewModel {
+public enum FinnMarket: MarketsViewModel {
     case eiendom
     case bil
     case torget
@@ -246,7 +246,7 @@ public enum Market: MarketsViewModel {
         }
     }
 
-    public static var allMarkets: [Market] = [
+    public static var allMarkets: [FinnMarket] = [
         .eiendom,
         .bil,
         .torget,
@@ -260,7 +260,7 @@ public enum Market: MarketsViewModel {
         .shopping,
         .moteplassen]
     
-    public static var newMarkets: [Market] = [
+    public static var newMarkets: [FinnMarket] = [
         .eiendomNew,
         .bilOgNaering,
         .torgetNew,
