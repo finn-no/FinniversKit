@@ -8,7 +8,6 @@ import DemoKit
 
 enum SwiftUIDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case checkBox
-    case floatingButton
     case htmlText
     case iconButton
     case loadingIndicator
@@ -35,8 +34,6 @@ enum SwiftUIDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
         switch self {
         case .checkBox:
             return SwiftUICheckBox_Previews()
-        case .floatingButton:
-            return SwiftUIFloatingButton_Previews()
         case .htmlText:
             return HTMLTextDemoViewController()
         case .iconButton:
@@ -63,8 +60,49 @@ enum SwiftUIDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
 
 // MARK: - PreviewProvider conformances
 
-extension SwiftUIIconButton_Previews: Demoable {}
-extension SwiftUICheckBox_Previews: Demoable {}
-extension SwiftUIFloatingButton_Previews: Demoable {}
-extension SwiftUIRadioButton_Previews: Demoable {}
 extension FinnTextView_Previews: Demoable {}
+
+// MARK: - The same previews found in FinniversKit to use for demo
+struct SwiftUIRadioButton_Previews: PreviewProvider, Demoable {
+    static var previews: some View {
+        VStack {
+            StatefulPreviewWrapper(true) { binding in
+                SwiftUIRadioButton(isSelected: binding)
+                    .onTapGesture {
+                        binding.wrappedValue.toggle()
+                    }
+            }
+
+            StatefulPreviewWrapper(false) { binding in
+                SwiftUIRadioButton(isSelected: binding)
+                    .onTapGesture {
+                        binding.wrappedValue.toggle()
+                    }
+            }
+        }
+    }
+}
+
+struct SwiftUICheckBox_Previews: PreviewProvider, Demoable {
+    static var previews: some View {
+        VStack {
+            StatefulPreviewWrapper(false) {
+                SwiftUICheckBox(isChecked: $0)
+            }
+            StatefulPreviewWrapper(true) {
+                SwiftUICheckBox(isChecked: $0)
+            }
+        }
+    }
+}
+
+struct SwiftUIIconButton_Previews: PreviewProvider, Demoable {
+    static var previews: some View {
+        StatefulPreviewWrapper(true) { binding in
+            SwiftUIIconButton(style: .favorite, isToggled: binding)
+                .onTapGesture {
+                    binding.wrappedValue.toggle()
+                }
+        }
+    }
+}

@@ -114,10 +114,8 @@ private struct Checkmark: Shape {
     }
 }
 
-public struct SwiftUICheckBox_Previews: PreviewProvider {
-    public init() {}
-
-    public static var previews: some View {
+struct SwiftUICheckBox_Previews: PreviewProvider {
+    static var previews: some View {
         VStack {
             StatefulPreviewWrapper(false) {
                 SwiftUICheckBox(isChecked: $0)

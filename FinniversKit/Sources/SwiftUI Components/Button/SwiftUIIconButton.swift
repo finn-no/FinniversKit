@@ -30,10 +30,8 @@ public extension SwiftUIIconButton.Style {
     )
 }
 
-public struct SwiftUIIconButton_Previews: PreviewProvider {
-    public init() {}
-
-    public static var previews: some View {
+struct SwiftUIIconButton_Previews: PreviewProvider {
+    static var previews: some View {
         StatefulPreviewWrapper(true) { binding in
             SwiftUIIconButton(style: .favorite, isToggled: binding)
                 .onTapGesture {
