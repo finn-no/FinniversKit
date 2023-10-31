@@ -43,7 +43,7 @@ enum RecyclingDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
         case .savedSearchesListView:
             return SavedSearchesListViewDemoView()
         case .marketsGridView:
-            return FinnMarketsDemoView()
+            return ToriMarketsDemoView()
         case .toriMarketGridView:
             return ToriMarketsDemoView()
         case .finnMarketGridView:

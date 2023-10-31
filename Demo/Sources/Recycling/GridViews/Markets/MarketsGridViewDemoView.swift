@@ -90,6 +90,7 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
     func marketsView(_ marketsGridView: FinniversKit.MarketsView, didSelectItemAtIndex index: Int) {
         print("SELECTED ITEM AT:", index)
     }
+    
 }
 
 class ToriDataSource: NSObject {
@@ -101,6 +102,7 @@ class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
     }()
 
     var titleLable = UILabel()
+    var bottonLable = UILabel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -111,10 +113,15 @@ class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
     required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() { 
+        print("Setting up tori")
         var collectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
 
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isMarketGridCellLabelTwoLined = true
+        
+        var finnDemo = FinnMarketsDemoView()
+        finnDemo.translatesAutoresizingMaskIntoConstraints = false
+
 
         addSubview(collectionView)
 
@@ -124,6 +131,14 @@ class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
         titleLable.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLable)
 
+        bottonLable.text = ""
+        bottonLable.font = UIFont.boldSystemFont(ofSize: 16.0)
+        bottonLable.textAlignment = .center
+        bottonLable.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(bottonLable)
+
+        addSubview(finnDemo)
+        
         NSLayoutConstraint.activate([
             titleLable.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             titleLable.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
@@ -132,9 +147,18 @@ class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: 200),
+            
+            bottonLable.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 10),
+            bottonLable.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            
+            finnDemo.topAnchor.constraint(equalTo: bottonLable.bottomAnchor, constant: 10),
+            finnDemo.leadingAnchor.constraint(equalTo: leadingAnchor),
+            finnDemo.trailingAnchor.constraint(equalTo: trailingAnchor),
+            finnDemo.heightAnchor.constraint(equalToConstant: 200),
+
         ])
     }
-
+    
     func numberOfItems(inMarketsView marketsView: FinniversKit.MarketsView) -> Int {
         return dataSource.models.count
 
@@ -148,6 +172,7 @@ class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
     }
 }
 
+/*
 class MarketsGridViewDemoView: UIView, Demoable {
     lazy var finnDataSource: FinnDataSource = {
         return FinnDataSource()
@@ -202,6 +227,7 @@ class MarketsGridViewDemoView: UIView, Demoable {
     }
 }
 
+
 extension MarketsGridViewDemoView: MarketsViewDataSource {
     func numberOfItems(inMarketsView marketsView: MarketsView) -> Int {
         if isFinn {
@@ -224,3 +250,4 @@ extension MarketsGridViewDemoView: MarketsViewDataSource {
 extension MarketsGridViewDemoView: MarketsViewDelegate {
     func marketsView(_ marketsGridView: MarketsView, didSelectItemAtIndex index: Int) {}
 }
+*/
