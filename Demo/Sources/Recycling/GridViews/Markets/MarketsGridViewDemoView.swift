@@ -70,11 +70,12 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
         NSLayoutConstraint.activate([
             titleLable.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             titleLable.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            
+
             collectionView.topAnchor.constraint(equalTo: titleLable.bottomAnchor, constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 200),
+            collectionView.heightAnchor.constraint(equalToConstant: 166),
+            
 
         ])
     }
@@ -122,6 +123,7 @@ class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
         var finnDemo = FinnMarketsDemoView()
         finnDemo.translatesAutoresizingMaskIntoConstraints = false
 
+        addSubview(finnDemo)
 
         addSubview(collectionView)
 
@@ -137,7 +139,6 @@ class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
         bottonLable.translatesAutoresizingMaskIntoConstraints = false
         addSubview(bottonLable)
 
-        addSubview(finnDemo)
         
         NSLayoutConstraint.activate([
             titleLable.topAnchor.constraint(equalTo: topAnchor, constant: 10),
@@ -154,7 +155,6 @@ class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
             finnDemo.topAnchor.constraint(equalTo: bottonLable.bottomAnchor, constant: 10),
             finnDemo.leadingAnchor.constraint(equalTo: leadingAnchor),
             finnDemo.trailingAnchor.constraint(equalTo: trailingAnchor),
-            finnDemo.heightAnchor.constraint(equalToConstant: 200),
 
         ])
     }
