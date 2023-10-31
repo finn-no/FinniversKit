@@ -6,6 +6,7 @@ import FinniversKit
 import DemoKit
 import UIKit
 
+/*
 class MarketsDemoView: UIView, Demoable {
     
     var finnDemo = FinnMarketsDemoView()
@@ -19,31 +20,26 @@ class MarketsDemoView: UIView, Demoable {
         fatalError("init(coder:) has not been implemented")
     }
     func setUp() {
-        let stackView = UIStackView()
-        stackView.spacing = 20
-        stackView.axis = .vertical
-        stackView.addArrangedSubviews([finnDemo, toriDemo])
         
-        addSubview(stackView)
-        
-        /*
+        addSubview(finnDemo)
         finnDemo.translatesAutoresizingMaskIntoConstraints = false
+
+        
         
         NSLayoutConstraint.activate([
             finnDemo.topAnchor.constraint(equalTo: topAnchor),
             finnDemo.heightAnchor.constraint(equalToConstant: 100)
-        ])*/
+        ])
         
     }
 
 }
+*/
 
 class FinnDataSource: NSObject {
     var models = FinnMarket.newMarkets
 }
-class ToriDataSource: NSObject {
-    var models = ToriMarket.toriMarkets
-}
+
 
 class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewDelegate {
     lazy var dataSource: FinnDataSource = {
@@ -55,7 +51,7 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
         setup()
     }
     required init?(coder aDecoder: NSCoder) { fatalError() }
-    
+
     private func setup() {
         print("SETTING UP FINN")
         titleLable.text = "Finn"
@@ -67,10 +63,9 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
         var collectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.isMarketGridCellLabelTwoLined = true
+        collectionView.isMarketGridCellLabelTwoLined = false
         
         addSubview(collectionView)
-        
         
         NSLayoutConstraint.activate([
             titleLable.topAnchor.constraint(equalTo: topAnchor, constant: 10),
@@ -80,23 +75,26 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: 200),
-            
+
         ])
     }
-    
+
     func numberOfItems(inMarketsView marketsView: FinniversKit.MarketsView) -> Int {
         return dataSource.models.count
-        
+
     }
     func marketsView(_ marketsView: FinniversKit.MarketsView, modelAtIndex index: Int) -> FinniversKit.MarketsViewModel {
         return dataSource.models[index]
-        
+
     }
     func marketsView(_ marketsGridView: FinniversKit.MarketsView, didSelectItemAtIndex index: Int) {
         print("SELECTED ITEM AT:", index)
     }
 }
 
+class ToriDataSource: NSObject {
+    var models = ToriMarket.toriMarkets
+}
 class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewDelegate {
     lazy var dataSource: ToriDataSource = {
         return ToriDataSource()
@@ -172,46 +170,34 @@ class MarketsGridViewDemoView: UIView, Demoable {
     required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
+        print("SETTING UP TORI")
+        var finnCollection = FinnMarketsDemoView()
+       // finnCollection.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(finnCollection)
+
+        /*
         let finnCollectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
         finnCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        
-        addSubview(finnCollectionView)
+        */
 
+        var toriCollection = ToriMarketsDemoView()
+        toriCollection.translatesAutoresizingMaskIntoConstraints = false
+        //addSubview(toriCollection)
+
+        /*
         var toriCollectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
         
         toriCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        toriCollectionView.isMarketGridCellLabelTwoLined = true
+        toriCollectionView.isMarketGridCellLabelTwoLined = true*/
         
-        addSubview(toriCollectionView)
-        
-        finnLabel.text = "Finn"
-        finnLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
-        finnLabel.textAlignment = .center
-        finnLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(finnLabel)
-
-        toriLabel.text = "Tori"
-        toriLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
-        toriLabel.textAlignment = .center
-        toriLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(toriLabel)
 
         NSLayoutConstraint.activate([
-            finnLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            finnLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
 
-            finnCollectionView.topAnchor.constraint(equalTo: finnLabel.bottomAnchor, constant: 10),
-            finnCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            finnCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            finnCollectionView.heightAnchor.constraint(equalToConstant: finnCollectionView.calculateSize(constrainedTo: frame.width).height),
-
-            toriLabel.topAnchor.constraint(equalTo: finnCollectionView.bottomAnchor, constant: 30),
-            toriLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-
-            toriCollectionView.topAnchor.constraint(equalTo: toriLabel.bottomAnchor, constant: 10),
-            toriCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            toriCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            toriCollectionView.heightAnchor.constraint(equalToConstant: finnCollectionView.calculateSize(constrainedTo: frame.width).height + 35)
+            //finnCollection.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+           // finnCollection.leadingAnchor.constraint(equalTo: leadingAnchor),
+/*
+            toriCollection.topAnchor.constraint(equalTo: finnCollection.bottomAnchor, constant: 30),
+            toriCollection.leadingAnchor.constraint(equalTo: leadingAnchor)*/
         ])
     }
 }
