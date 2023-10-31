@@ -19,14 +19,21 @@ class MarketsDemoView: UIView, Demoable {
         fatalError("init(coder:) has not been implemented")
     }
     func setUp() {
+        let stackView = UIStackView()
+        stackView.spacing = 20
+        stackView.axis = .vertical
+        stackView.addArrangedSubviews([finnDemo, toriDemo])
+        
+        addSubview(stackView)
+        
+        /*
         finnDemo.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(finnDemo)
-       // self.addSubview(toriDemo)
         
         NSLayoutConstraint.activate([
             finnDemo.topAnchor.constraint(equalTo: topAnchor),
             finnDemo.heightAnchor.constraint(equalToConstant: 100)
-        ])
+        ])*/
+        
     }
 
 }
@@ -50,7 +57,7 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
     required init?(coder aDecoder: NSCoder) { fatalError() }
     
     private func setup() {
-        
+        print("SETTING UP FINN")
         titleLable.text = "Finn"
         titleLable.font = UIFont.boldSystemFont(ofSize: 16.0)
         titleLable.textAlignment = .center
