@@ -21,8 +21,10 @@ struct FloatingButtonStyle: ButtonStyle {
     }
 }
 
-struct SwiftUIFloatingButton_Previews: PreviewProvider {
-    static var previews: some View {
+public struct SwiftUIFloatingButton_Previews: PreviewProvider {
+    public init() {}
+
+    public static var previews: some View {
         SwiftUI.Button(action: {}, label: {
             HStack {
                 Image(systemName: "plus")

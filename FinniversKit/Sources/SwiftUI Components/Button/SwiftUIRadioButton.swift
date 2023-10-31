@@ -66,8 +66,10 @@ public struct SwiftUIRadioButton: View {
     }
 }
 
-struct SwiftUIRadioButton_Previews: PreviewProvider {
-    static var previews: some View {
+public struct SwiftUIRadioButton_Previews: PreviewProvider {
+    public init() {}
+
+    public static var previews: some View {
         VStack {
             StatefulPreviewWrapper(true) { binding in
                 SwiftUIRadioButton(isSelected: binding)

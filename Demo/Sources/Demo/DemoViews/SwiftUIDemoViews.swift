@@ -3,7 +3,7 @@
 //
 
 import SwiftUI
-@testable import FinniversKit
+import FinniversKit
 import DemoKit
 
 enum SwiftUIDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
