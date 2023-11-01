@@ -6,9 +6,7 @@ import FinniversKit
 import DemoKit
 import UIKit
 
-
 class MarketsDemoView: UIView, Demoable {
-    
     var demoStack = UIStackView()
     var finnDemo = FinnMarketsDemoView()
     var toriDemo = ToriMarketsDemoView()
@@ -37,13 +35,8 @@ class MarketsDemoView: UIView, Demoable {
         demoStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
         demoStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
         demoStack.heightAnchor.constraint(equalToConstant:450).isActive = true
-        //demoStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 100).isActive = true
-
-
     }
-
 }
-
 
 class FinnDataSource: NSObject {
     var models = FinnMarket.newMarkets
@@ -61,8 +54,7 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
     required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        print("SETTING UP FINN:", dataSource.models.count)
-        titleLable.text = "Finn: \(dataSource.models.count)"
+        titleLable.text = "Finn"
         titleLable.font = UIFont.boldSystemFont(ofSize: 16.0)
         titleLable.textAlignment = .center
         titleLable.translatesAutoresizingMaskIntoConstraints = false
@@ -119,7 +111,6 @@ class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
     required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() { 
-        print("Setting up tori", dataSource.models.count)
         var collectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
 
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -127,7 +118,7 @@ class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
         
         addSubview(collectionView)
 
-        titleLable.text = "Tori, \(dataSource.models.count)"
+        titleLable.text = "Tori"
         titleLable.font = UIFont.boldSystemFont(ofSize: 16.0)
         titleLable.textAlignment = .center
         titleLable.translatesAutoresizingMaskIntoConstraints = false
@@ -157,83 +148,3 @@ class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
         print("SELECTED ITEM AT:", index)
     }
 }
-
-/*
-class MarketsGridViewDemoView: UIView, Demoable {
-    lazy var finnDataSource: FinnDataSource = {
-        return FinnDataSource()
-    }()
-    lazy var toriDatSource: ToriDataSource = {
-        return ToriDataSource()
-    }()
-    
-    var isFinn: Bool = false
-
-    var toriLabel = UILabel()
-    var finnLabel = UILabel()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        setup()
-    }
-
-    required init?(coder aDecoder: NSCoder) { fatalError() }
-
-    private func setup() {
-        print("SETTING UP TORI")
-        var finnCollection = FinnMarketsDemoView()
-       // finnCollection.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(finnCollection)
-
-        /*
-        let finnCollectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
-        finnCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        */
-
-        var toriCollection = ToriMarketsDemoView()
-        toriCollection.translatesAutoresizingMaskIntoConstraints = false
-        //addSubview(toriCollection)
-
-        /*
-        var toriCollectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
-        
-        toriCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        toriCollectionView.isMarketGridCellLabelTwoLined = true*/
-        
-
-        NSLayoutConstraint.activate([
-
-            //finnCollection.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-           // finnCollection.leadingAnchor.constraint(equalTo: leadingAnchor),
-/*
-            toriCollection.topAnchor.constraint(equalTo: finnCollection.bottomAnchor, constant: 30),
-            toriCollection.leadingAnchor.constraint(equalTo: leadingAnchor)*/
-        ])
-    }
-}
-
-
-extension MarketsGridViewDemoView: MarketsViewDataSource {
-    func numberOfItems(inMarketsView marketsView: MarketsView) -> Int {
-        if isFinn {
-            return finnDataSource.models.count
-        } else {
-            return toriDatSource.models.count
-        }
-    }
-
-    func marketsView(_ marketsView: MarketsView, modelAtIndex index: Int) -> MarketsViewModel {
-        if isFinn {
-            return finnDataSource.models[index]
-        } else {
-            return toriDatSource.models[index]
-        }
-        
-    }
-}
-
-extension MarketsGridViewDemoView: MarketsViewDelegate {
-    func marketsView(_ marketsGridView: MarketsView, didSelectItemAtIndex index: Int) {}
-}
-*/
