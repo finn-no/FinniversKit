@@ -6,12 +6,13 @@ import FinniversKit
 import DemoKit
 import UIKit
 
-/*
+
 class MarketsDemoView: UIView, Demoable {
     
+    var demoStack = UIStackView()
     var finnDemo = FinnMarketsDemoView()
     var toriDemo = ToriMarketsDemoView()
-    
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
@@ -20,26 +21,33 @@ class MarketsDemoView: UIView, Demoable {
         fatalError("init(coder:) has not been implemented")
     }
     func setUp() {
-        
-        addSubview(finnDemo)
+        demoStack.translatesAutoresizingMaskIntoConstraints = false
         finnDemo.translatesAutoresizingMaskIntoConstraints = false
+        toriDemo.translatesAutoresizingMaskIntoConstraints = false
+        
+        demoStack.axis = .vertical
+        demoStack.spacing = 10.0
+        demoStack.alignment = .fill
+        demoStack.distribution = .fillProportionally
+        demoStack.addArrangedSubviews([finnDemo, toriDemo])
+        
+        addSubview(demoStack)
+        
+        demoStack.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
+        demoStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+        demoStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
+        demoStack.heightAnchor.constraint(equalToConstant:450).isActive = true
+        //demoStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 100).isActive = true
 
-        
-        
-        NSLayoutConstraint.activate([
-            finnDemo.topAnchor.constraint(equalTo: topAnchor),
-            finnDemo.heightAnchor.constraint(equalToConstant: 100)
-        ])
-        
+
     }
 
 }
-*/
+
 
 class FinnDataSource: NSObject {
     var models = FinnMarket.newMarkets
 }
-
 
 class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewDelegate {
     lazy var dataSource: FinnDataSource = {
@@ -53,8 +61,8 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
     required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        print("SETTING UP FINN")
-        titleLable.text = "Finn"
+        print("SETTING UP FINN:", dataSource.models.count)
+        titleLable.text = "Finn: \(dataSource.models.count)"
         titleLable.font = UIFont.boldSystemFont(ofSize: 16.0)
         titleLable.textAlignment = .center
         titleLable.translatesAutoresizingMaskIntoConstraints = false
@@ -74,9 +82,7 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
             collectionView.topAnchor.constraint(equalTo: titleLable.bottomAnchor, constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 166),
-            
-
+            collectionView.heightAnchor.constraint(equalToConstant: 166)
         ])
     }
 
@@ -91,7 +97,6 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
     func marketsView(_ marketsGridView: FinniversKit.MarketsView, didSelectItemAtIndex index: Int) {
         print("SELECTED ITEM AT:", index)
     }
-    
 }
 
 class ToriDataSource: NSObject {
@@ -114,32 +119,20 @@ class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
     required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() { 
-        print("Setting up tori")
+        print("Setting up tori", dataSource.models.count)
         var collectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
 
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isMarketGridCellLabelTwoLined = true
         
-        var finnDemo = FinnMarketsDemoView()
-        finnDemo.translatesAutoresizingMaskIntoConstraints = false
-
-        addSubview(finnDemo)
-
         addSubview(collectionView)
 
-        titleLable.text = "Tori"
+        titleLable.text = "Tori, \(dataSource.models.count)"
         titleLable.font = UIFont.boldSystemFont(ofSize: 16.0)
         titleLable.textAlignment = .center
         titleLable.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLable)
 
-        bottonLable.text = ""
-        bottonLable.font = UIFont.boldSystemFont(ofSize: 16.0)
-        bottonLable.textAlignment = .center
-        bottonLable.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(bottonLable)
-
-        
         NSLayoutConstraint.activate([
             titleLable.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             titleLable.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
@@ -149,13 +142,6 @@ class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: 200),
             
-            bottonLable.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 10),
-            bottonLable.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            
-            finnDemo.topAnchor.constraint(equalTo: bottonLable.bottomAnchor, constant: 10),
-            finnDemo.leadingAnchor.constraint(equalTo: leadingAnchor),
-            finnDemo.trailingAnchor.constraint(equalTo: trailingAnchor),
-
         ])
     }
     
