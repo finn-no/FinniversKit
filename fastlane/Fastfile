@@ -99,7 +99,7 @@ def build_archive_for_testflight(workspace, scheme)
   build_app(
     scheme: scheme,
     workspace: workspace,
-    include_bitcode: true
+    include_bitcode: false
   )
 end
 
