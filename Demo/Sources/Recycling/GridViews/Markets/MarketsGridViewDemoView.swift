@@ -87,7 +87,6 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
 
     }
     func marketsView(_ marketsGridView: FinniversKit.MarketsView, didSelectItemAtIndex index: Int) {
-        print("SELECTED ITEM AT:", index)
     }
 }
 
@@ -132,10 +131,9 @@ class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: 200),
-            
         ])
     }
-    
+
     func numberOfItems(inMarketsView marketsView: FinniversKit.MarketsView) -> Int {
         return dataSource.models.count
 
@@ -144,7 +142,7 @@ class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
         return dataSource.models[index]
 
     }
+    
     func marketsView(_ marketsGridView: FinniversKit.MarketsView, didSelectItemAtIndex index: Int) {
-        print("SELECTED ITEM AT:", index)
     }
 }
