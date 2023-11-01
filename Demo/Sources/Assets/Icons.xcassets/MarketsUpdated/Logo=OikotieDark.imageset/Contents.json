@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Logo=OikotieDark.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

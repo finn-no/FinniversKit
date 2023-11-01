@@ -1,7 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "nettbilNew.pdf",
+      "filename" : "Logo=NettbilLight.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Logo=NettbilDark.pdf",
       "idiom" : "universal"
     }
   ],

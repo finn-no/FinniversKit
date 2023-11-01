@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Logo=AutovexLight.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

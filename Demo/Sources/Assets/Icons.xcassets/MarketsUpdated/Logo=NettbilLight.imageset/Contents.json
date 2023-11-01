@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Logo=NettbilLight.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
