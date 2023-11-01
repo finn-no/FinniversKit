@@ -53,8 +53,4 @@ class SwiftUIViewTests: XCTestCase {
     func testResultView() {
         snapshot(.resultView)
     }
-
-    func testFloatingButton() {
-        snapshot(.floatingButton)
-    }
 }

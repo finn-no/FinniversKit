@@ -23,6 +23,7 @@ extension HTMLElement: Equatable {
 }
 
 extension HTMLElement {
+    // swiftlint:disable identifier_name
     public static var b: Self { .init("b") }
     public static var del: Self { .init("del") }
     public static var i: Self { .init("i") }
@@ -30,4 +31,5 @@ extension HTMLElement {
     public static var span: Self { .init("span") }
     public static var strong: Self { .init("strong") }
     public static var u: Self { .init("u") }
+    // swiftlint:enable identifier_name
 }

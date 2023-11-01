@@ -509,7 +509,6 @@
 		F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95B22CB639200CED7E0 /* QuestionnaireView.swift */; };
 		F2C3E95E22CB63A200CED7E0 /* QuestionnaireViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95D22CB63A200CED7E0 /* QuestionnaireViewModel.swift */; };
 		F2C3E96022CB669A00CED7E0 /* QuestionnaireView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95F22CB669A00CED7E0 /* QuestionnaireView+Style.swift */; };
-		F39B731129C9D69E00A02C06 /* SwiftUIFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39B731029C9D69E00A02C06 /* SwiftUIFloatingButton.swift */; };
 		F3E681ED2A97597C00DB8B82 /* SwiftUIIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E681EC2A97597C00DB8B82 /* SwiftUIIconButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -1029,7 +1028,6 @@
 		F2C3E95B22CB639200CED7E0 /* QuestionnaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireView.swift; sourceTree = "<group>"; };
 		F2C3E95D22CB63A200CED7E0 /* QuestionnaireViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireViewModel.swift; sourceTree = "<group>"; };
 		F2C3E95F22CB669A00CED7E0 /* QuestionnaireView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionnaireView+Style.swift"; sourceTree = "<group>"; };
-		F39B731029C9D69E00A02C06 /* SwiftUIFloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIFloatingButton.swift; sourceTree = "<group>"; };
 		F3E681EC2A97597C00DB8B82 /* SwiftUIIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIIconButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -3406,7 +3404,6 @@
 		F39B730F29C9D68B00A02C06 /* Button */ = {
 			isa = PBXGroup;
 			children = (
-				F39B731029C9D69E00A02C06 /* SwiftUIFloatingButton.swift */,
 				E65085D9292BC03400A43B07 /* SwiftUIRadioButton.swift */,
 				F3E681EC2A97597C00DB8B82 /* SwiftUIIconButton.swift */,
 			);
@@ -3558,7 +3555,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint --config \"${SRCROOT}/../.swiftlint.yml\"\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint or brew install swiftlint\"\nfi\n";
+			shellScript = "if [ -z \"$TRAVIS\" ]; then\n    case $(arch) in arm64)\n        eval \"$(/opt/homebrew/bin/brew shellenv)\"\n        ;;\n    esac\n    \n    if which swiftlint >/dev/null; then\n        swiftlint --config \"${SRCROOT}/../.swiftlint.yml\"\n    else\n        echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint or brew install swiftlint\"\n    fi\nfi\n";
 		};
 		44C6CE42209CAA3300929269 /* Generate constants for assets names */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3809,7 +3806,6 @@
 				14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */,
 				CFCED8E322CF428B0049A3A0 /* FavoriteFoldersListViewModel.swift in Sources */,
 				CFCDDA5C2273022A005E1F4A /* CalloutView.swift in Sources */,
-				F39B731129C9D69E00A02C06 /* SwiftUIFloatingButton.swift in Sources */,
 				DAD6EB262369916100968497 /* SettingsViewToggleCell.swift in Sources */,
 				CF3D5EF9215A6F3B006E4D08 /* FloatingButton.swift in Sources */,
 				44D912622077AC8A00486848 /* CircleView.swift in Sources */,

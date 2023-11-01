@@ -1,0 +1,17 @@
+# Use this file to (only) fix/autocorrect whitespace violations
+# included paths
+included:
+  - Demo
+  - FinniversKit
+
+only_rules:
+  - trailing_whitespace
+  - opening_brace
+  - trailing_newline
+  - colon
+
+trailing_comma:
+  mandatory_comma: true
+
+vertical_whitespace:
+  max_empty_lines: 2

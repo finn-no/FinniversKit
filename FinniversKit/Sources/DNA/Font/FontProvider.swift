@@ -38,7 +38,7 @@ public struct DefaultFontProvider: FontProvider {
     public var title1: UIFont {
         registerCustomFonts()
 
-        let font = UIFont(name: FontType.medium.rawValue, size: 34.0)!
+        let font = UIFont(name: FontType.medium.rawValue, size: 34.0)! // swiftlint:disable:this force_unwrapping
         return font.scaledFont(forTextStyle: .largeTitle)
     }
 
@@ -51,7 +51,7 @@ public struct DefaultFontProvider: FontProvider {
     public var title2: UIFont {
         registerCustomFonts()
 
-        let font = UIFont(name: FontType.light.rawValue, size: 28.0)!
+        let font = UIFont(name: FontType.light.rawValue, size: 28.0)! // swiftlint:disable:this force_unwrapping
         return font.scaledFont(forTextStyle: .title1)
     }
 
@@ -64,7 +64,7 @@ public struct DefaultFontProvider: FontProvider {
     public var title2Strong: UIFont {
         registerCustomFonts()
 
-        let font = UIFont(name: FontType.medium.rawValue, size: 28.0)!
+        let font = UIFont(name: FontType.medium.rawValue, size: 28.0)! // swiftlint:disable:this force_unwrapping
         return font.scaledFont(forTextStyle: .title1)
     }
 
@@ -76,7 +76,7 @@ public struct DefaultFontProvider: FontProvider {
     public var title3Strong: UIFont {
         registerCustomFonts()
 
-        let font = UIFont(name: FontType.medium.rawValue, size: 22)!
+        let font = UIFont(name: FontType.medium.rawValue, size: 22)! // swiftlint:disable:this force_unwrapping
         return font.scaledFont(forTextStyle: .title2)
     }
 
@@ -88,7 +88,7 @@ public struct DefaultFontProvider: FontProvider {
     public var title3: UIFont {
         registerCustomFonts()
 
-        let font = UIFont(name: FontType.light.rawValue, size: 22)!
+        let font = UIFont(name: FontType.light.rawValue, size: 22)! // swiftlint:disable:this force_unwrapping
         return font.scaledFont(forTextStyle: .title2)
     }
 
@@ -99,7 +99,7 @@ public struct DefaultFontProvider: FontProvider {
     public var bodyStrong: UIFont {
         registerCustomFonts()
 
-        let font = UIFont(name: FontType.medium.rawValue, size: 16.0)!
+        let font = UIFont(name: FontType.medium.rawValue, size: 16.0)! // swiftlint:disable:this force_unwrapping
         return font.scaledFont(forTextStyle: .headline)
     }
 
@@ -110,7 +110,7 @@ public struct DefaultFontProvider: FontProvider {
     public var bodyRegular: UIFont {
         registerCustomFonts()
 
-        let font = UIFont(name: FontType.regular.rawValue, size: 16.0)!
+        let font = UIFont(name: FontType.regular.rawValue, size: 16.0)! // swiftlint:disable:this force_unwrapping
         return font.scaledFont(forTextStyle: .headline)
     }
 
@@ -121,7 +121,7 @@ public struct DefaultFontProvider: FontProvider {
     public var body: UIFont {
         registerCustomFonts()
 
-        let font = UIFont(name: FontType.light.rawValue, size: 16.0)!
+        let font = UIFont(name: FontType.light.rawValue, size: 16.0)! // swiftlint:disable:this force_unwrapping
         return font.scaledFont(forTextStyle: .callout)
     }
 
@@ -133,7 +133,7 @@ public struct DefaultFontProvider: FontProvider {
     public var caption: UIFont {
         registerCustomFonts()
 
-        let font = UIFont(name: FontType.light.rawValue, size: 14.0)!
+        let font = UIFont(name: FontType.light.rawValue, size: 14.0)! // swiftlint:disable:this force_unwrapping
         return font.scaledFont(forTextStyle: .footnote)
     }
 
@@ -146,7 +146,7 @@ public struct DefaultFontProvider: FontProvider {
     public var captionStrong: UIFont {
         registerCustomFonts()
 
-        let font = UIFont(name: FontType.medium.rawValue, size: 14.0)!
+        let font = UIFont(name: FontType.medium.rawValue, size: 14.0)! // swiftlint:disable:this force_unwrapping
         return font.scaledFont(forTextStyle: .footnote)
     }
 
@@ -157,7 +157,7 @@ public struct DefaultFontProvider: FontProvider {
     public var detailStrong: UIFont {
         registerCustomFonts()
 
-        let font = UIFont(name: FontType.bold.rawValue, size: 12.0)!
+        let font = UIFont(name: FontType.bold.rawValue, size: 12.0)! // swiftlint:disable:this force_unwrapping
         return font.scaledFont(forTextStyle: .caption1)
     }
 
@@ -171,7 +171,7 @@ public struct DefaultFontProvider: FontProvider {
     public var detail: UIFont {
         registerCustomFonts()
 
-        let font = UIFont(name: FontType.regular.rawValue, size: 12.0)!
+        let font = UIFont(name: FontType.regular.rawValue, size: 12.0)! // swiftlint:disable:this force_unwrapping
         return font.scaledFont(forTextStyle: .caption1)
     }
 
@@ -180,13 +180,13 @@ public struct DefaultFontProvider: FontProvider {
 
         switch weight {
         case .light:
-            return UIFont(name: FontType.light.rawValue, size: size)!
+            return UIFont(name: FontType.light.rawValue, size: size)! // swiftlint:disable:this force_unwrapping
         case .medium:
-            return UIFont(name: FontType.medium.rawValue, size: size)!
+            return UIFont(name: FontType.medium.rawValue, size: size)! // swiftlint:disable:this force_unwrapping
         case .regular:
-            return UIFont(name: FontType.regular.rawValue, size: size)!
+            return UIFont(name: FontType.regular.rawValue, size: size)! // swiftlint:disable:this force_unwrapping
         case .bold:
-            return UIFont(name: FontType.bold.rawValue, size: size)!
+            return UIFont(name: FontType.bold.rawValue, size: size)! // swiftlint:disable:this force_unwrapping
         }
     }
 

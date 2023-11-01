@@ -48,9 +48,9 @@ public protocol ColorProvider {
 // MARK: - Default FINN colors
 
 public struct DefaultColorProvider: ColorProvider {
-    
+
     public static let shared = DefaultColorProvider()
-    
+
     public var bgPrimary: UIColor {
         .dynamicColor(defaultColor: .white, darkModeColor: .darkMilk)
     }
@@ -191,15 +191,15 @@ public struct DefaultColorProvider: ColorProvider {
     public var nmpBrandControlSelected: UIColor {
         .blue600
     }
-    
+
     public var nmpBrandDecoration: UIColor {
         .blue600
     }
-    
+
     public var nmpBrandColorPrimary: UIColor {
         .blue600
     }
-    
+
     public var nmpBrandColorSecondary: UIColor {
         .aqua400
     }

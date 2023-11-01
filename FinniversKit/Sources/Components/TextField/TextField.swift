@@ -419,8 +419,7 @@ public class TextField: UIView {
     private func evaluateCurrentTextState() {
         if textRegex != nil, !displayHelpTextAfterFirstTouch, let text = text, text.isEmpty {
             state = .error
-        }
-        else if let text = text, !text.isEmpty, !isValid {
+        } else if let text = text, !text.isEmpty, !isValid {
             state = .error
         } else {
             state = .normal
@@ -432,14 +431,13 @@ public class TextField: UIView {
 
         if let dynamicBorder = self.textFieldDynamicBorder, dynamicBorder == true {
             switch state {
-            case .normal :
+            case .normal:
                 self.textFieldBorderColor = self.textFieldDefaultBorderColor
-            default :
+            default:
                 self.textFieldBorderColor = state.underlineColor
             }
             layoutIfNeeded()
-        }
-        else{
+        } else {
             underlineHeightConstraint?.constant = state.underlineHeight
         }
 

@@ -1,6 +1,7 @@
 import XCTest
 @testable import FinniversKit
 
+// swiftlint:disable:next type_name
 final class UIColor_FinniversKitTests: XCTestCase {
     func testHexStringGrayscaleColorSpace() throws {
         let black = UIColor(white: 0.0, alpha: 1.0)

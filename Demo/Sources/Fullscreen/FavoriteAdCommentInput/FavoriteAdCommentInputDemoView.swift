@@ -9,7 +9,7 @@ final class FavoriteAdCommentInputDemoView: UIView, Demoable {
     private(set) lazy var view: FavoriteAdCommentInputView = {
         let view = FavoriteAdCommentInputView(
             commentViewModel: .default,
-            adViewModel: FavoriteAdsFactory.create().last!,
+            adViewModel: FavoriteAdsFactory.create().last!, // swiftlint:disable:this force_unwrapping
             remoteImageViewDataSource: self,
             delegate: self
         )

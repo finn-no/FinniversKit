@@ -97,7 +97,7 @@ public class Selectionbox: UIView {
     }
 
     private var highlightedItem: SelectionboxItem?
-    
+
     private lazy var containerStack = UIStackView(axis: .vertical, spacing: .spacingS, alignment: .leading, withAutoLayout: true)
 
     private let titleLabel: UILabel = {
@@ -156,9 +156,9 @@ extension Selectionbox {
     // MARK: Private methods
 
     private func setupSubviews() {
-        
+
         addSubview(containerStack)
-        
+
         containerStack.addArrangedSubviews([
             titleLabel,
             stack

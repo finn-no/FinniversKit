@@ -72,34 +72,34 @@ private extension Array where Element == LinkButtonViewModel {
             LinkButtonViewModel(
                 buttonIdentifier: "loan",
                 buttonTitle: "External link",
-                linkUrl: URL(string: "https://www.finn.no/")!,
+                linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                 isExternal: true
             ),
             LinkButtonViewModel(
                 buttonIdentifier: "loan",
                 buttonTitle: "External link w/ subtitle",
                 subtitle: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.",
-                linkUrl: URL(string: "https://www.finn.no/")!,
+                linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                 isExternal: true
             ),
             LinkButtonViewModel(
                 buttonIdentifier: "loan",
                 buttonTitle: "External link w/ overridden icon color",
-                linkUrl: URL(string: "https://www.finn.no/")!,
+                linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                 isExternal: true,
                 externalIconColor: .red
             ),
             LinkButtonViewModel(
                 buttonIdentifier: "insurance",
                 buttonTitle: "In-app link",
-                linkUrl: URL(string: "https://www.finn.no/")!,
+                linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                 isExternal: false
             ),
             LinkButtonViewModel(
                 buttonIdentifier: "insurance",
                 buttonTitle: "In-app link w/subtitle",
                 subtitle: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.",
-                linkUrl: URL(string: "https://www.finn.no/")!,
+                linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                 isExternal: false
             )
         ]
@@ -110,7 +110,7 @@ private extension Array where Element == LinkButtonViewModel {
             LinkButtonViewModel(
                 buttonIdentifier: "b1",
                 buttonTitle: "Button 1",
-                linkUrl: URL(string: "https://www.finn.no/")!,
+                linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                 isExternal: false,
                 buttonStyle: .flat,
                 buttonSize: .normal
@@ -118,7 +118,7 @@ private extension Array where Element == LinkButtonViewModel {
             LinkButtonViewModel(
                 buttonIdentifier: "b2",
                 buttonTitle: "Button 2",
-                linkUrl: URL(string: "https://www.finn.no/")!,
+                linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                 isExternal: false,
                 buttonStyle: .flat,
                 buttonSize: .normal
@@ -126,7 +126,7 @@ private extension Array where Element == LinkButtonViewModel {
             LinkButtonViewModel(
                 buttonIdentifier: "b3",
                 buttonTitle: "Button 3",
-                linkUrl: URL(string: "https://www.finn.no/")!,
+                linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                 isExternal: false,
                 buttonStyle: .flat,
                 buttonSize: .normal
@@ -134,7 +134,7 @@ private extension Array where Element == LinkButtonViewModel {
             LinkButtonViewModel(
                 buttonIdentifier: "b4",
                 buttonTitle: "Button 4",
-                linkUrl: URL(string: "https://www.finn.no/")!,
+                linkUrl: URL(string: "https://www.finn.no/")!, // swiftlint:disable:this force_unwrapping
                 isExternal: false,
                 buttonStyle: .flat,
                 buttonSize: .normal

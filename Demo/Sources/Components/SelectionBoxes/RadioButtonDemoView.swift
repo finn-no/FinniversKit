@@ -7,7 +7,7 @@ import DemoKit
 
 class RadioButtonDemoView: UIView, Demoable {
     var dismissKind: DismissKind { .button }
-    
+
     let strings = [
         "Mistanke om svindel",
         "Regelbrudd",

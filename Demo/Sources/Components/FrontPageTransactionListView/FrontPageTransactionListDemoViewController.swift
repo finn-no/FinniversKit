@@ -25,7 +25,7 @@ final class FrontPageTransactionListDemoViewController: UIHostingController<Fron
         let models: [FrontPageTransactionViewModel] = [.tjtRegular, .tjmRegular]
         for model in models {
             model.delegate = self
-            model.imageLoader = { url, size in
+            model.imageLoader = { url, _ in
                 let (data, _) = try await URLSession.shared.data(from: url)
                 return UIImage(data: data)
             }

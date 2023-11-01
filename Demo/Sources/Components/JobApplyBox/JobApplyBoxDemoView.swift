@@ -90,10 +90,10 @@ private extension JobApplyBoxViewModel {
 
 private extension JobApplyBoxViewModel.Button {
     static var primary: Self {
-        Self.init(title: "Søk her", url: URL(string: "https://finn.no")!)
+        Self.init(title: "Søk her", url: URL(string: "https://finn.no")!) // swiftlint:disable:this force_unwrapping
     }
 
     static var secondary: Self {
-        Self.init(title: "Se fullstendig annonse", url: URL(string: "https://finn.no")!)
+        Self.init(title: "Se fullstendig annonse", url: URL(string: "https://finn.no")!) // swiftlint:disable:this force_unwrapping
     }
 }

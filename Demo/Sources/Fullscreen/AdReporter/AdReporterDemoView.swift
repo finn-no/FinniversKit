@@ -11,8 +11,6 @@ struct AdReporterViewData: AdReporterViewModel {
     var descriptionViewTitle = "Beskrivelse"
     var descriptionViewPlaceholderText = "Beskriv kort hva problemet er"
     var helpButtonText = "Trenger du hjelp?"
-
-    init() {}
 }
 
 class AdReporterDemoView: UIView, Demoable {
