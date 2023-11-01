@@ -267,6 +267,7 @@ extension CGColor {
 
 // MARK: - Finn Custom Colors
 // These colors are in use but are not part of the Fabric color palette
+@available(*, deprecated, message: "Use Warp token instead")
 extension UIColor {
     public class var coolGray100: UIColor { .init(hex: "#F3F4F6") }
     public class var darkBgPrimaryProminent: UIColor { .init(hex: "#323241") }
@@ -283,6 +284,7 @@ extension UIColor {
     public class var midnightSectionSeparator: UIColor { .init(hex: "34343E") }
 }
 
+@available(*, deprecated, message: "Use Warp token instead")
 extension CGColor {
     public class var coolGray100: CGColor { UIColor.coolGray100.cgColor }
     public class var darkBgPrimaryProminent: CGColor { UIColor.darkBgPrimaryProminent.cgColor }
@@ -300,6 +302,7 @@ extension CGColor {
 }
 
 // MARK: - Fabric Colors Aqua
+@available(*, deprecated, message: "Use Warp token instead")
 extension UIColor {
     public class var aqua50:  UIColor { .init(hex: "#F1F9FF") }
     public class var aqua100: UIColor { .init(hex: "#E0F6FF") }
@@ -313,6 +316,7 @@ extension UIColor {
     public class var aqua900: UIColor { .init(hex: "#15242F") }
 }
 
+@available(*, deprecated, message: "Use Warp token instead")
 extension CGColor {
     public class var aqua50:  CGColor { UIColor.aqua50.cgColor }
     public class var aqua100: CGColor { UIColor.aqua100.cgColor }
@@ -327,6 +331,7 @@ extension CGColor {
 }
 
 // MARK: - Fabric Colors Blue
+@available(*, deprecated, message: "Use Warp token instead")
 extension UIColor {
     public class var blue50:  UIColor { .init(hex: "#EFF5FF") }
     public class var blue100: UIColor { .init(hex: "#E1EDFE") }
@@ -340,6 +345,7 @@ extension UIColor {
     public class var blue900: UIColor { .init(hex: "#191D3A") }
 }
 
+@available(*, deprecated, message: "Use Warp token instead")
 extension CGColor {
     public class var blue50:  CGColor { UIColor.blue50.cgColor }
     public class var blue100: CGColor { UIColor.blue100.cgColor }
@@ -354,6 +360,7 @@ extension CGColor {
 }
 
 // MARK: - Fabric Colors BlueGray
+@available(*, deprecated, message: "Use Warp token instead")
 extension UIColor {
     public class var blueGray50:  UIColor { .init(hex: "#F8FAFC") }
     public class var blueGray100: UIColor { .init(hex: "#F1F4F9") }
@@ -367,6 +374,7 @@ extension UIColor {
     public class var blueGray900: UIColor { .init(hex: "#181A1F") }
 }
 
+@available(*, deprecated, message: "Use Warp token instead")
 extension CGColor {
     public class var blueGray50:  CGColor { UIColor.blueGray50.cgColor }
     public class var blueGray100: CGColor { UIColor.blueGray100.cgColor }
@@ -381,6 +389,7 @@ extension CGColor {
 }
 
 // MARK: - Fabric Colors Gray
+@available(*, deprecated, message: "Use Warp token instead")
 extension UIColor {
     public class var gray50:  UIColor { .init(hex: "#FAFAFA") }
     public class var gray100: UIColor { .init(hex: "#F4F4F5") }
@@ -394,6 +403,7 @@ extension UIColor {
     public class var gray900: UIColor { .init(hex: "#18181B") }
 }
 
+@available(*, deprecated, message: "Use Warp token instead")
 extension CGColor {
     public class var gray50:  CGColor { UIColor.gray50.cgColor }
     public class var gray100: CGColor { UIColor.gray100.cgColor }
@@ -408,6 +418,7 @@ extension CGColor {
 }
 
 // MARK: - Fabric Colors Green
+@available(*, deprecated, message: "Use Warp token instead")
 extension UIColor {
     public class var green50:  UIColor { .init(hex: "#EBFFF6") }
     public class var green100: UIColor { .init(hex: "#CDFEE5") }
@@ -421,6 +432,7 @@ extension UIColor {
     public class var green900: UIColor { .init(hex: "#14291F") }
 }
 
+@available(*, deprecated, message: "Use Warp token instead")
 extension CGColor {
     public class var green50:  CGColor { UIColor.green50.cgColor }
     public class var green100: CGColor { UIColor.green100.cgColor }
@@ -435,6 +447,7 @@ extension CGColor {
 }
 
 // MARK: - Fabric Colors Red
+@available(*, deprecated, message: "Use Warp token instead")
 extension UIColor {
     public class var red50:  UIColor { .init(hex: "#FFF5F5") }
     public class var red100: UIColor { .init(hex: "#FFEFEF") }
@@ -448,6 +461,7 @@ extension UIColor {
     public class var red900: UIColor { .init(hex: "#38140B") }
 }
 
+@available(*, deprecated, message: "Use Warp token instead")
 extension CGColor {
     public class var red50:  CGColor { UIColor.red50.cgColor }
     public class var red100: CGColor { UIColor.red100.cgColor }
@@ -462,6 +476,7 @@ extension CGColor {
 }
 
 // MARK: - Fabric Colors Yellow
+@available(*, deprecated, message: "Use Warp token instead")
 extension UIColor {
     public class var yellow50:  UIColor { .init(hex: "#FFF8E6") }
     public class var yellow100: UIColor { .init(hex: "#FFF5C8") }
@@ -475,6 +490,7 @@ extension UIColor {
     public class var yellow900: UIColor { .init(hex: "#352310") }
 }
 
+@available(*, deprecated, message: "Use Warp token instead")
 extension CGColor {
     public class var yellow50:  CGColor { UIColor.yellow50.cgColor }
     public class var yellow100: CGColor { UIColor.yellow100.cgColor }
