@@ -164,7 +164,7 @@ extension CGColor {
 
 // MARK: - Fabric Colors Aqua
 extension UIColor {
-    public class var aqua50:  UIColor { .init(hex: "#F1F9FF") }
+    public class var aqua50: UIColor { .init(hex: "#F1F9FF") }
     public class var aqua100: UIColor { .init(hex: "#E0F6FF") }
     public class var aqua200: UIColor { .init(hex: "#B6F0FF") }
     public class var aqua300: UIColor { .init(hex: "#66E0FF") }
@@ -177,7 +177,7 @@ extension UIColor {
 }
 
 extension CGColor {
-    public class var aqua50:  CGColor { UIColor.aqua50.cgColor }
+    public class var aqua50: CGColor { UIColor.aqua50.cgColor }
     public class var aqua100: CGColor { UIColor.aqua100.cgColor }
     public class var aqua200: CGColor { UIColor.aqua200.cgColor }
     public class var aqua300: CGColor { UIColor.aqua300.cgColor }
@@ -191,7 +191,7 @@ extension CGColor {
 
 // MARK: - Fabric Colors Blue
 extension UIColor {
-    public class var blue50:  UIColor { .init(hex: "#EFF5FF") }
+    public class var blue50: UIColor { .init(hex: "#EFF5FF") }
     public class var blue100: UIColor { .init(hex: "#E1EDFE") }
     public class var blue200: UIColor { .init(hex: "#C2DAFE") }
     public class var blue300: UIColor { .init(hex: "#9AC1FE") }
@@ -204,7 +204,7 @@ extension UIColor {
 }
 
 extension CGColor {
-    public class var blue50:  CGColor { UIColor.blue50.cgColor }
+    public class var blue50: CGColor { UIColor.blue50.cgColor }
     public class var blue100: CGColor { UIColor.blue100.cgColor }
     public class var blue200: CGColor { UIColor.blue200.cgColor }
     public class var blue300: CGColor { UIColor.blue300.cgColor }
@@ -218,7 +218,7 @@ extension CGColor {
 
 // MARK: - Fabric Colors BlueGray
 extension UIColor {
-    public class var blueGray50:  UIColor { .init(hex: "#F8FAFC") }
+    public class var blueGray50: UIColor { .init(hex: "#F8FAFC") }
     public class var blueGray100: UIColor { .init(hex: "#F1F4F9") }
     public class var blueGray200: UIColor { .init(hex: "#E1E6EE") }
     public class var blueGray300: UIColor { .init(hex: "#C3CCD9") }
@@ -231,7 +231,7 @@ extension UIColor {
 }
 
 extension CGColor {
-    public class var blueGray50:  CGColor { UIColor.blueGray50.cgColor }
+    public class var blueGray50: CGColor { UIColor.blueGray50.cgColor }
     public class var blueGray100: CGColor { UIColor.blueGray100.cgColor }
     public class var blueGray200: CGColor { UIColor.blueGray200.cgColor }
     public class var blueGray300: CGColor { UIColor.blueGray300.cgColor }
@@ -245,7 +245,7 @@ extension CGColor {
 
 // MARK: - Fabric Colors Gray
 extension UIColor {
-    public class var gray50:  UIColor { .init(hex: "#FAFAFA") }
+    public class var gray50: UIColor { .init(hex: "#FAFAFA") }
     public class var gray100: UIColor { .init(hex: "#F4F4F5") }
     public class var gray200: UIColor { .init(hex: "#E4E4E7") }
     public class var gray300: UIColor { .init(hex: "#D4D4D8") }
@@ -258,7 +258,7 @@ extension UIColor {
 }
 
 extension CGColor {
-    public class var gray50:  CGColor { UIColor.gray50.cgColor }
+    public class var gray50: CGColor { UIColor.gray50.cgColor }
     public class var gray100: CGColor { UIColor.gray100.cgColor }
     public class var gray200: CGColor { UIColor.gray200.cgColor }
     public class var gray300: CGColor { UIColor.gray300.cgColor }
@@ -272,7 +272,7 @@ extension CGColor {
 
 // MARK: - Fabric Colors Green
 extension UIColor {
-    public class var green50:  UIColor { .init(hex: "#EBFFF6") }
+    public class var green50: UIColor { .init(hex: "#EBFFF6") }
     public class var green100: UIColor { .init(hex: "#CDFEE5") }
     public class var green200: UIColor { .init(hex: "#9EFCD1") }
     public class var green300: UIColor { .init(hex: "#67EEB8") }
@@ -285,7 +285,7 @@ extension UIColor {
 }
 
 extension CGColor {
-    public class var green50:  CGColor { UIColor.green50.cgColor }
+    public class var green50: CGColor { UIColor.green50.cgColor }
     public class var green100: CGColor { UIColor.green100.cgColor }
     public class var green200: CGColor { UIColor.green200.cgColor }
     public class var green300: CGColor { UIColor.green300.cgColor }
@@ -299,7 +299,7 @@ extension CGColor {
 
 // MARK: - Fabric Colors Red
 extension UIColor {
-    public class var red50:  UIColor { .init(hex: "#FFF5F5") }
+    public class var red50: UIColor { .init(hex: "#FFF5F5") }
     public class var red100: UIColor { .init(hex: "#FFEFEF") }
     public class var red200: UIColor { .init(hex: "#FFD1D1") }
     public class var red300: UIColor { .init(hex: "#FF9999") }
@@ -312,7 +312,7 @@ extension UIColor {
 }
 
 extension CGColor {
-    public class var red50:  CGColor { UIColor.red50.cgColor }
+    public class var red50: CGColor { UIColor.red50.cgColor }
     public class var red100: CGColor { UIColor.red100.cgColor }
     public class var red200: CGColor { UIColor.red200.cgColor }
     public class var red300: CGColor { UIColor.red300.cgColor }
@@ -326,7 +326,7 @@ extension CGColor {
 
 // MARK: - Fabric Colors Yellow
 extension UIColor {
-    public class var yellow50:  UIColor { .init(hex: "#FFF8E6") }
+    public class var yellow50: UIColor { .init(hex: "#FFF8E6") }
     public class var yellow100: UIColor { .init(hex: "#FFF5C8") }
     public class var yellow200: UIColor { .init(hex: "#FEEF90") }
     public class var yellow300: UIColor { .init(hex: "#FAE76B") }
@@ -339,7 +339,7 @@ extension UIColor {
 }
 
 extension CGColor {
-    public class var yellow50:  CGColor { UIColor.yellow50.cgColor }
+    public class var yellow50: CGColor { UIColor.yellow50.cgColor }
     public class var yellow100: CGColor { UIColor.yellow100.cgColor }
     public class var yellow200: CGColor { UIColor.yellow200.cgColor }
     public class var yellow300: CGColor { UIColor.yellow300.cgColor }

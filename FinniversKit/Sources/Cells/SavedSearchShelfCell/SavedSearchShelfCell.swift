@@ -31,7 +31,7 @@ public class FrontPageSavedSearchCell: UICollectionViewCell {
         label.textAlignment = .center
         return label
     }()
-    
+
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical

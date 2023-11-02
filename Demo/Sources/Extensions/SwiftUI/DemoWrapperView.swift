@@ -8,10 +8,6 @@ import SwiftUI
 struct DemoWrapperView<DemoView: UIView>: UIViewRepresentable {
     let view: DemoView
 
-    init(view: DemoView) {
-        self.view = view
-    }
-
     func makeUIView(context: Context) -> DemoView { view }
 
     func updateUIView(_ uiView: DemoView, context: Context) {}

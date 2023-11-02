@@ -44,7 +44,7 @@ final class FrontPageViewDemoViewController: UIViewController, Demoable {
         let transactionVC = view.showTransactionFeed(
             viewModels: [.tjtRegular, .tjmRegular],
             delegate: self,
-            imageLoader: { url, size in
+            imageLoader: { url, _ in
                 let (data, _) = try await URLSession.shared.data(from: url)
                 return UIImage(data: data)
             }

@@ -4,14 +4,14 @@ struct SettingsViewIconCell: View {
     let title: String
     let icon: UIImage
     let tintColor: Color?
-    
+
     var body: some View {
         HStack(alignment: .center) {
             Text(title)
                 .finnFont(.body)
                 .foregroundColor(.textPrimary)
                 .padding([.leading])
-            
+
             Spacer(minLength: .spacingS)
 
             Image(uiImage: icon)
@@ -26,6 +26,6 @@ struct SettingsViewIconCell: View {
 
 struct SettingsViewIconCell_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsViewIconCell(title: "Personvernerklæring", icon: .init(systemName: "square.and.arrow.up")!, tintColor: .bgSuccess)
+        SettingsViewIconCell(title: "Personvernerklæring", icon: .init(systemName: "square.and.arrow.up")!, tintColor: .bgSuccess) // swiftlint:disable:this force_unwrapping
     }
 }

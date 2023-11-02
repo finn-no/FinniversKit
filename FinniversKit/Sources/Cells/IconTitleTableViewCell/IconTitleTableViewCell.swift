@@ -13,7 +13,7 @@ open class IconTitleTableViewCell: BasicTableViewCell {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
+
     open lazy var externalIconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFit
@@ -28,8 +28,8 @@ open class IconTitleTableViewCell: BasicTableViewCell {
     private lazy var stackViewToIconConstraint = stackView.leadingAnchor.constraint(
         equalTo: iconImageView.trailingAnchor, constant: .spacingM
     )
-    
-    
+
+
     private lazy var stackViewToExternalIconConstraint = stackView.trailingAnchor.constraint(
         lessThanOrEqualTo: externalIconImageView.leadingAnchor, constant: -.spacingS
     )
@@ -74,7 +74,7 @@ open class IconTitleTableViewCell: BasicTableViewCell {
 
             separatorInset = .leadingInset(.spacingM)
         }
-        
+
         stackViewToExternalIconConstraint.isActive = viewModel.externalIcon != nil
         if let externalIcon = viewModel.externalIcon {
             accessoryType = .none
@@ -98,7 +98,7 @@ open class IconTitleTableViewCell: BasicTableViewCell {
             iconImageView.widthAnchor.constraint(equalToConstant: iconSize),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            
+
             externalIconImageView.heightAnchor.constraint(equalToConstant: externalIconSize),
             externalIconImageView.widthAnchor.constraint(equalToConstant: externalIconSize),
             externalIconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),

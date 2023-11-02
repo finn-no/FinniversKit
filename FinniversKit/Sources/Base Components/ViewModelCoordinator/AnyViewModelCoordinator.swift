@@ -16,7 +16,7 @@ public final class AnyViewModelCoordinator<Route>: ViewModelCoordinator {
 
     // MARK: - Properties
 
-    internal let handle: (Route) -> ()
+    internal let handle: (Route) -> Void
 
     // MARK: - Init
 

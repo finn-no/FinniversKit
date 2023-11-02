@@ -55,3 +55,5 @@ extension Color {
     public static var decorationSubtle: Color    { Color(UIColor.decorationSubtle) }
     public static var borderDefault: Color       { Color(UIColor.borderDefault) }
 }
+
+// swiftlint:enable opening_brace

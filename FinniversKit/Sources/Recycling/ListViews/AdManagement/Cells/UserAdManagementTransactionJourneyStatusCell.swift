@@ -2,6 +2,7 @@
 //  Copyright © FINN.no AS. All rights reserved.
 //
 
+// swiftlint:disable:next type_name
 public protocol UserAdManagementTransactionJourneyStatusCellDelegate: AnyObject {
     func transactionJourneyStatusCellWasTapped(_ view: UserAdManagementTransactionJourneyStatusCell)
 }

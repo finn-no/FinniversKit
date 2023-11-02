@@ -6,10 +6,7 @@ import UIKit
 
 class MarketsGridViewFlowLayout: UICollectionViewFlowLayout {
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        guard let _ = collectionView else {
-            return false
-        }
         // Always update layout on bounds change
-        return true
+        return collectionView != nil
     }
 }

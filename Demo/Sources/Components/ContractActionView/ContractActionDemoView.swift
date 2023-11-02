@@ -114,7 +114,7 @@ private extension ContractActionViewModel {
     static let `default`: ContractActionViewModel = ContractActionViewModel(
         identifier: "demo-view",
         buttonTitle: "Få ferdig utfylt kontrakt",
-        buttonUrl: URL(string: "https://www.finn.no/")!
+        buttonUrl: URL(string: "https://www.finn.no/")! // swiftlint:disable:this force_unwrapping
     )
 
     static let carContract: ContractActionViewModel = ContractActionViewModel(
@@ -122,7 +122,7 @@ private extension ContractActionViewModel {
         title: "Kjøp bilen med Smidig bilhandel",
         subtitle: "Vi hjelper deg ghennom alle stegene i kjøpet. Enkelt, trygt og helt gratis.",
         buttonTitle: "Jeg vil bruke Smidig bilhandel",
-        buttonUrl: URL(string: "https://www.finn.no/")!
+        buttonUrl: URL(string: "https://www.finn.no/")! // swiftlint:disable:this force_unwrapping
     )
 
     static let requestAccessToContract: ContractActionViewModel = ContractActionViewModel(
@@ -131,6 +131,6 @@ private extension ContractActionViewModel {
         subtitle: "FINN guider deg hele veien.",
         strings: ["a", "b", "c"],
         buttonTitle: "Be selger om tilgang til kontrakten",
-        buttonUrl: URL(string: "https://www.finn.no/")!
+        buttonUrl: URL(string: "https://www.finn.no/")! // swiftlint:disable:this force_unwrapping
     )
 }

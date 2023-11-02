@@ -11,7 +11,7 @@ public class HTMLLabel: Label {
         }
     }
 
-    public init(style: Style, spanMapper: @escaping HTMLStringUIKitStyleTranslator.SpanMapper = { _, _ in } , withAutoLayout: Bool = false) {
+    public init(style: Style, spanMapper: @escaping HTMLStringUIKitStyleTranslator.SpanMapper = { _, _ in }, withAutoLayout: Bool = false) {
         self.spanMapper = spanMapper
         super.init(style: style, withAutoLayout: withAutoLayout)
     }

@@ -18,7 +18,7 @@ public class TransactionEntryView: UIView {
     }
 
     // MARK: - Private properties
-    
+
     private let imageSize: CGFloat = 32
     private let navigationLinkBackgroundColor: UIColor
     private var fallbackImage: UIImage?
