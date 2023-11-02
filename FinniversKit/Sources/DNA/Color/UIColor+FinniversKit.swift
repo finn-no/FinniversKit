@@ -514,6 +514,7 @@ public extension CGColor {
 #endif
 
 // MARK: - Button UIColors
+@available(*, deprecated, message: "Use Warp token instead")
 @objc extension UIColor {
     public class var callToActionButtonHighlightedBodyColor: UIColor {
         return backgroundPrimary.withAlphaComponent(0.8)
@@ -553,6 +554,7 @@ public extension CGColor {
 }
 
 // MARK: - Highlighted buttons CGColors
+@available(*, deprecated, message: "Use Warp token instead")
 extension CGColor {
     public class var callToActionButtonHighlightedBodyColor: CGColor {
         return UIColor.callToActionButtonHighlightedBodyColor.cgColor
