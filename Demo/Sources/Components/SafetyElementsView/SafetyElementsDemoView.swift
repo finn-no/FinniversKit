@@ -41,7 +41,7 @@ class SafetyElementsDemoView: UIView {
             bottomLink: LinkButtonViewModel(
                 buttonIdentifier: nil,
                 buttonTitle: "Les mer om de forskjellige garantitypene på FINNs hjelpesenter.",
-                linkUrl: URL(string: "https://google.com")!,
+                linkUrl: URL(string: "https://google.com")!, // swiftlint:disable:this force_unwrapping
                 isExternal: true
             )
         ),
@@ -58,7 +58,7 @@ class SafetyElementsDemoView: UIView {
             bottomLink: LinkButtonViewModel(
                 buttonIdentifier: nil,
                 buttonTitle: "Les mer om fordelene ved å handle av et NBF medlem.",
-                linkUrl: URL(string: "https://google.com")!,
+                linkUrl: URL(string: "https://google.com")!, // swiftlint:disable:this force_unwrapping
                 isExternal: true
             )
         ),

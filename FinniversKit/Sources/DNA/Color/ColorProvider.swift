@@ -86,6 +86,7 @@ public protocol ColorProvider {
 public struct DefaultColorProvider: ColorProvider {
 
     public static let shared = DefaultColorProvider()
+
     @available(*, deprecated, message: "Use Warp background instead")
     public var bgPrimary: UIColor {
         .dynamicColor(defaultColor: .white, darkModeColor: .darkMilk)

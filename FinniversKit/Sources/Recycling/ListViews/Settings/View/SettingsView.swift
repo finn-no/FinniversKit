@@ -159,9 +159,9 @@ extension SettingsView: UITableViewDataSource {
         case let iconModel as SettingsViewIconCellModel:
             let cell = tableView.dequeue(SettingsViewCell.self, for: indexPath)
             cell.configure(with: iconModel, isLastItem: isLastItem)
-            
+
             let (icon, tintColor) = iconModel.icon
-            
+
             cell.contentConfiguration = HostingContentConfiguration(content: {
                 SettingsViewIconCell(title: iconModel.title, icon: icon, tintColor: tintColor)
             })

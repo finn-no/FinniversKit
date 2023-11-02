@@ -19,7 +19,7 @@ class EmptyViewDemoView: UIView {
         self.emptyView?.removeFromSuperview()
         self.emptyView = nil
         self.emptyView = EmptyView(shapeType: shapeType)
-        self.addSubview(self.emptyView!)
+        self.addSubview(self.emptyView!) // swiftlint:disable:this force_unwrapping
         self.emptyView?.fillInSuperview()
 
         self.emptyView?.header = header

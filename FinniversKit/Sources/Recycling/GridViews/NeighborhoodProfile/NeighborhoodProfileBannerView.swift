@@ -22,7 +22,7 @@ final class NeighborhoodProfileBannerView: UIView {
     }
 
     // MARK: - Private properties
-    
+
     private lazy var containerStackView: UIStackView = {
         let stack = UIStackView(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
         stack.layer.borderWidth = 1

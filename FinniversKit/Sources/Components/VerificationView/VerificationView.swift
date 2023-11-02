@@ -3,7 +3,7 @@
 //
 
 public protocol VerificationViewDelegate: AnyObject {
-    func didTapVerificationButton(_ : VerificationView)
+    func didTapVerificationButton(_: VerificationView)
 }
 
 public class VerificationView: UIView {

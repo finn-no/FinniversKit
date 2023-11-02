@@ -83,4 +83,3 @@ extension Color {
     @available(*, deprecated, message: "Use Warp border instead")
     public static var borderDefault: Color       { Color(UIColor.borderDefault) }
 }
-// swiftlint:enable opening_brace

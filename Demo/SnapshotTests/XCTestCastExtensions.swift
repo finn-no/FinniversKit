@@ -57,7 +57,7 @@ extension XCTestCase {
         let testMethods = (0..<Int(methodCount))
             .map({ index -> String in
                 let selName = sel_getName(method_getName(methodList[index]))
-                return String(cString: selName, encoding: .utf8)!.lowercased()
+                return String(cString: selName, encoding: .utf8)!.lowercased() // swiftlint:disable:this force_unwrapping
             })
             .filter({ $0.starts(with: testMethodPrefix) })
 

@@ -141,8 +141,8 @@ extension IconCollectionView: UICollectionViewDelegateFlowLayout {
 
     public func collectionView(
         _ collectionView: UICollectionView,
-       layout collectionViewLayout: UICollectionViewLayout,
-       sizeForItemAt indexPath: IndexPath
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         let viewModel = viewModels[indexPath.item]
         let width = cellWidth(forWidth: collectionView.frame.width - margins.horizontalMargins, viewModel: viewModel)

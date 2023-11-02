@@ -33,4 +33,3 @@ class LoadingIndicatorCollectionViewCell: UICollectionViewCell {
         ])
     }
 }
-

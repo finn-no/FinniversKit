@@ -152,7 +152,7 @@ private struct HyperLinkTextViewTranslator: HTMLStringParserTranslator {
                 let style = NSMutableParagraphStyle()
                 style.alignment = textAlignment
 
-                var attributes: [NSAttributedString.Key : Any] = [
+                var attributes: [NSAttributedString.Key: Any] = [
                     .paragraphStyle: style,
                     .foregroundColor: textColor
                 ]

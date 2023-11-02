@@ -47,7 +47,7 @@ extension FrontPageTransactionDemoViewController: TweakableDemo {
             model = .tjtLong
         }
         model.delegate = self
-        model.imageLoader = { url, size in
+        model.imageLoader = { url, _ in
             let (data, _) = try await URLSession.shared.data(from: url)
             return UIImage(data: data)
         }

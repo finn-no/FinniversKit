@@ -125,7 +125,7 @@ class ViewingItemView: UIView {
 
         timeLabel.text = viewModel.timeInterval
         timeLabel.isHidden = viewModel.timeInterval == nil
-        
+
         var bottomMargin: CGFloat = 0
         if let note = viewModel.note {
             noteLabel.text = note
