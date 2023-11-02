@@ -5,7 +5,6 @@
 import FinniversKit
 
 public enum ToriMarket: MarketsViewModel {
-    
     case furniture
     case clothing // vaatteita, kosmetiikkaa ja asusteita
     case  parents // vanhemmat ja lapset
@@ -82,14 +81,6 @@ public enum ToriMarket: MarketsViewModel {
         }
     }
     
-    public var accessibilityLabel: String {
-        if showExternalLinkIcon {
-            return title + ". Merk: Åpner ekstern link"
-        } else {
-            return title
-        }
-    }
-    
     public static var toriMarkets: [ToriMarket] = [
         .furniture,
         .clothing,
@@ -156,27 +147,6 @@ public enum FinnMarket: MarketsViewModel {
         case .bilOgNaering: return "Bil og næring"
         }
     }
-
-    /*
-    Position    Label (EN)
-    1    Furniture and interiors
-    2    Clothing, cosmetics and accessories
-    3    Parents and children
-    4    Sports and outdoor life
-    5    Animals and equipment
-    6    Leisure, hobby and entertainment
-    7    Apartments for rent
-    8    Remppatori
-    9    Vehicles
-    10    Electronics and appliances
-    11    Garden, renovation and house
-    12    Apartments for sale
-    13    Vehicle parts
-    14    Jobs
-    15    Antiquities and art
-    16    Autovex
-    -    Commercial activities / Business & service
-    */
 
     public var iconImage: UIImage? {
         switch self {

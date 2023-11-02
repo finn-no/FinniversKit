@@ -46,7 +46,7 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
     lazy var dataSource: FinnDataSource = {
         return FinnDataSource()
     }()
-    var titleLable = UILabel()
+    var titleLabel = UILabel()
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -54,11 +54,11 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
     required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        titleLable.text = "Finn"
-        titleLable.font = UIFont.boldSystemFont(ofSize: 16.0)
-        titleLable.textAlignment = .center
-        titleLable.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(titleLable)
+        titleLabel.text = "Finn"
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+        titleLabel.textAlignment = .center
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(titleLabel)
 
         var collectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
         
@@ -68,10 +68,10 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
         addSubview(collectionView)
         
         NSLayoutConstraint.activate([
-            titleLable.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            titleLable.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
 
-            collectionView.topAnchor.constraint(equalTo: titleLable.bottomAnchor, constant: 10),
+            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: 166)

@@ -5,7 +5,7 @@
 import FinniversKit
 import DemoKit
 
-class ToriCompactMarketsDemoView: UIView, Demoable {
+class CompactMarketsDemoView: UIView, Demoable {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -27,7 +27,7 @@ class ToriCompactMarketsDemoView: UIView, Demoable {
     }
 }
 
-extension ToriCompactMarketsDemoView: MarketsViewDataSource {
+extension CompactMarketsDemoView: MarketsViewDataSource {
     func numberOfItems(inMarketsView marketsView: MarketsView) -> Int {
         ToriMarket.toriMarkets.count
     }
@@ -37,6 +37,6 @@ extension ToriCompactMarketsDemoView: MarketsViewDataSource {
     }
 }
 
-extension ToriCompactMarketsDemoView: MarketsViewDelegate {
+extension CompactMarketsDemoView: MarketsViewDelegate {
     func marketsView(_ marketsGridView: MarketsView, didSelectItemAtIndex index: Int) {}
 }
