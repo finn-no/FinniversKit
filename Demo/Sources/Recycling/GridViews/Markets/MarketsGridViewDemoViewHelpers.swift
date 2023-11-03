@@ -43,21 +43,21 @@ public enum ToriMarket: MarketsViewModel {
     
     public var iconImage: UIImage? {
         switch self {
-        case .furniture: return UIImage(named: "furniture")
-        case .clothing: return UIImage(named: "clothing")
-        case .parents: return UIImage(named: "parents_kids")
-        case .sports: return UIImage(named: "sports")
-        case .animals: return UIImage(named: "animals")
-        case .leisure: return UIImage(named: "hobbies")
-        case .apartments: return UIImage(named: "oikotie")
-        case .remppatori: return UIImage(named: "remppatori")
-        case .vehicles: return UIImage(named: "vehicles")
-        case .electronics: return UIImage(named: "electronics")
-        case .garden: return UIImage(named: "renovation")
-        case .vehicleparts: return UIImage(named: "vehicles_parts")
-        case .jobs: return UIImage(named: "oikotie")
-        case .antiquities: return UIImage(named: "antiques")
-        case .autovex: return UIImage(named: "autovex")
+        case .furniture: return UIImage(named: .chair)
+        case .clothing: return UIImage(named: .shirt)
+        case .parents: return UIImage(named: .stroller)
+        case .sports: return UIImage(named: .iceSkater)
+        case .animals: return UIImage(named: .paw)
+        case .leisure: return UIImage(named: .guitarBat)
+        case .apartments: return UIImage(named: .iconRealestateApartments)
+        case .remppatori: return UIImage(named: .emppatori)
+        case .vehicles: return UIImage(named: .cars)
+        case .electronics: return UIImage(named: .smartPhone)
+        case .garden: return UIImage(named: .tools)
+        case .vehicleparts: return UIImage(named: .carPart)
+        case .jobs: return UIImage(named: .oikotie)
+        case .antiquities: return UIImage(named: .vase)
+        case .autovex: return UIImage(named: .autovex)
         }
     }
     
@@ -165,16 +165,16 @@ public enum FinnMarket: MarketsViewModel {
 
         case .eiendomNew: return UIImage(named: .iconRealestateApartments)
         case .bilOgNaering: return UIImage(named: .carFront)
-        case .torgetNew: return UIImage(named: "cant find")
+        case .torgetNew: return UIImage(named: .torget)
         case .jobbNew: return UIImage(named: .oikotie)
         case .mcNew: return UIImage(named: .motorcycle)
         case .boatNew: return UIImage(named: .boat)
         case .reiseNew: return UIImage(named: .airplane)
         case .economyNew: return UIImage(named: .money)
         case .moteplassenNew: return UIImage(named: "Cant find: .moteplassen")
-        case .mittAnbudNew: return UIImage(named: .mittanbudNew)
-        case .leiebilNew: return UIImage(named: .leiebilNew)
-        case .nettbilNew: return UIImage(named: .nettbilNew)
+        case .mittAnbudNew: return UIImage(named: .mittAnbud)
+        case .leiebilNew: return UIImage(named: .carRent)
+        case .nettbilNew: return UIImage(named: .nettbil)
         }
     }
 

@@ -250,12 +250,13 @@ extension MarketsGridView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeue(MarketsGridViewCell.self, for: indexPath)
+        print("___CELL FOR ROW AT____")
+        var cell = collectionView.dequeue(MarketsGridViewCell.self, for: indexPath)
         
         if let model = dataSource?.marketsView(self, modelAtIndex: indexPath.row) {
             cell.model = model
         }
-
+        
         if isMarketGridCellLabelTwoLined {
             cell.titleLabel.numberOfLines = 2
             cell.iconImageView.tintColor = UIColor(red: 247/255.0, green: 81/255.0, blue: 89/255.0, alpha: 1)

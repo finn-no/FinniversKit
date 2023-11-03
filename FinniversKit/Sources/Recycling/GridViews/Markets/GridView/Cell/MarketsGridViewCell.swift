@@ -8,7 +8,7 @@ class MarketsGridViewCell: UICollectionViewCell {
     // MARK: - Internal properties
 
     private let cornerRadius: CGFloat = 16
-
+    
     private lazy var sharpShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .clear
@@ -116,6 +116,10 @@ class MarketsGridViewCell: UICollectionViewCell {
         ])
     }
 
+    func setImage() {
+        
+    }
+    
     // MARK: - Superclass Overrides
 
     override func layoutSubviews() {
@@ -135,6 +139,7 @@ class MarketsGridViewCell: UICollectionViewCell {
     var model: MarketsViewModel? {
         didSet {
             iconImageView.image = model?.iconImage
+            
             titleLabel.text = model?.title
             accessibilityLabel = model?.accessibilityLabel
 
