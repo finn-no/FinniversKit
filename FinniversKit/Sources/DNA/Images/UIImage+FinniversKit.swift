@@ -73,4 +73,8 @@ import UIKit
     class var brandMapDirections: UIImage {
         Config.imageProvider.brandMapDirections
     }
+
+    class var brandLogoSimple: UIImage {
+        Config.imageProvider.brandLogoSimple
+    }
 }
