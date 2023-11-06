@@ -35,46 +35,53 @@ extension UIImage {
 //swiftlint:disable:next blanket_disable_command
 //swiftlint:disable type_body_length
 enum ImageAsset: String {
-    case airplane = "Airplane"
-    case autovex = "Autovex"
-    case boat = "Boat"
-    case briefcase = "Briefcase"
-    case cabin = "Cabin"
-    case carFront = "CarFront"
-    case carPart = "CarPart"
-    case carRent = "CarRent"
-    case cars = "Cars"
-    case chair = "Chair"
-    case guitarBat = "GuitarBat"
-    case honk = "Honk"
-    case house = "House"
-    case iceSkater = "IceSkater"
-    case mittAnbud = "MittAnbud"
-    case money = "Money"
-    case motorcycle = "Motorcycle"
-    case nettbil = "Nettbil"
-    case oikotie = "Oikotie"
-    case paw = "Paw"
-    case shirt = "Shirt"
-    case smartPhone = "SmartPhone"
-    case storeFront = "StoreFront"
-    case stroller = "Stroller"
-    case tools = "Tools"
-    case torget = "Torget"
-    case vase = "Vase"
+    case airplane2 = "Airplane2"
+    case autovex2 = "Autovex2"
+    case boat2 = "Boat2"
+    case briefcase2 = "Briefcase2"
+    case cabin2 = "Cabin2"
+    case carFront2 = "CarFront2"
+    case carPart2 = "CarPart2"
+    case carRent2 = "CarRent2"
+    case cars2 = "Cars2"
+    case chair2 = "Chair2"
+    case guitarBat2 = "GuitarBat2"
+    case honk2 = "Honk2"
+    case house2 = "House2"
+    case iceSkater2 = "IceSkater2"
+    case mittAnbud2 = "MittAnbud2"
+    case money2 = "Money2"
+    case motorcycle2 = "Motorcycle2"
+    case nettbil2 = "Nettbil2"
+    case oikotie2 = "Oikotie2"
+    case paw2 = "Paw2"
+    case shirt2 = "Shirt2"
+    case smartPhone2 = "SmartPhone2"
+    case storeFront2 = "StoreFront2"
+    case stroller2 = "Stroller2"
+    case tools2 = "Tools2"
+    case torget2 = "Torget2"
+    case vase2 = "Vase2"
     case adManagementTrashcan
     case adsenseDemo
+    case airplane
+    case animals
+    case antiques
     case arrowCounterClockwise
+    case autovex
     case avatar
     case bapShippable
     case betaImageSearch
     case blinkRocketMini
+    case cabin
+    case car
     case carIllustration
     case carPromo
     case carsCircleIllustration
     case checkCircle
     case checkCircleFilled
     case christmasPromotion
+    case clothing
     case contract
     case creditCard
     case cross
@@ -82,7 +89,9 @@ enum ImageAsset: String {
     case displayTypeList
     case dissatisfiedFace
     case easterEgg
-    case emppatori
+    case economy
+    case electronics
+    case emppatori2
     case emptyMoon
     case emptyStateSaveSearch
     case eyeHide
@@ -93,19 +102,27 @@ enum ImageAsset: String {
     case filter
     case finnLogo
     case finnLogoSimple
+    case furniture
     case gift
     case heartEmpty
     case hjerterom
+    case hobbies
     case hobbyIllustration
     case home
+    case honk
     case iconRealestateApartments
     case iconRealestateBedrooms
     case iconRealestateOwner
     case iconRealestatePrice
+    case jobs
     case magnifyingGlass
+    case market
     case messages
+    case mittanbud
     case more
     case motorcarFront
+    case motorcycle
+    case nettbil
     case notifications
     case npCompare
     case npDrive
@@ -118,6 +135,8 @@ enum ImageAsset: String {
     case npStore
     case npWalk
     case nyhetsbrevFraFinn
+    case oikotie
+    case parentskids
     case pencilPaper
     case pin
     case playVideo
@@ -128,67 +147,83 @@ enum ImageAsset: String {
     case profile
     case rated
     case ratings
+    case real_estate
+    case refurbishedelectronics
     case remove
     case removeFilterTag
+    case remppatori
+    case renovation
+    case rentalcar
     case republish
+    case sailboat
     case savedSearches
     case search
     case service
     case sold
+    case sports
     case stakeholder
     case torgetHelthjem
     case transactionJourneyCar
     case uncheckCircle
+    case vehicles
+    case vehiclesparts
     case view
     case virtualViewing
     case warranty
     case webview
     case wrench
-    case ybrukt
+    case ybrukt2
     case yourads
 
     static var imageNames: [ImageAsset] {
         return [
-            .airplane,
-            .autovex,
-            .boat,
-            .briefcase,
-            .cabin,
-            .carFront,
-            .carPart,
-            .carRent,
-            .cars,
-            .chair,
-            .guitarBat,
-            .honk,
-            .house,
-            .iceSkater,
-            .mittAnbud,
-            .money,
-            .motorcycle,
-            .nettbil,
-            .oikotie,
-            .paw,
-            .shirt,
-            .smartPhone,
-            .storeFront,
-            .stroller,
-            .tools,
-            .torget,
-            .vase,
+            .airplane2,
+            .autovex2,
+            .boat2,
+            .briefcase2,
+            .cabin2,
+            .carFront2,
+            .carPart2,
+            .carRent2,
+            .cars2,
+            .chair2,
+            .guitarBat2,
+            .honk2,
+            .house2,
+            .iceSkater2,
+            .mittAnbud2,
+            .money2,
+            .motorcycle2,
+            .nettbil2,
+            .oikotie2,
+            .paw2,
+            .shirt2,
+            .smartPhone2,
+            .storeFront2,
+            .stroller2,
+            .tools2,
+            .torget2,
+            .vase2,
             .adManagementTrashcan,
             .adsenseDemo,
+            .airplane,
+            .animals,
+            .antiques,
             .arrowCounterClockwise,
+            .autovex,
             .avatar,
             .bapShippable,
             .betaImageSearch,
             .blinkRocketMini,
+            .cabin,
+            .car,
             .carIllustration,
             .carPromo,
             .carsCircleIllustration,
             .checkCircle,
             .checkCircleFilled,
             .christmasPromotion,
+            .clothing,
             .contract,
             .creditCard,
             .cross,
@@ -196,7 +231,9 @@ enum ImageAsset: String {
             .displayTypeList,
             .dissatisfiedFace,
             .easterEgg,
-            .emppatori,
+            .economy,
+            .electronics,
+            .emppatori2,
             .emptyMoon,
             .emptyStateSaveSearch,
             .eyeHide,
@@ -207,19 +244,27 @@ enum ImageAsset: String {
             .filter,
             .finnLogo,
             .finnLogoSimple,
+            .furniture,
             .gift,
             .heartEmpty,
             .hjerterom,
+            .hobbies,
             .hobbyIllustration,
             .home,
+            .honk,
             .iconRealestateApartments,
             .iconRealestateBedrooms,
             .iconRealestateOwner,
             .iconRealestatePrice,
+            .jobs,
             .magnifyingGlass,
+            .market,
             .messages,
+            .mittanbud,
             .more,
             .motorcarFront,
+            .motorcycle,
+            .nettbil,
             .notifications,
             .npCompare,
             .npDrive,
@@ -232,6 +277,8 @@ enum ImageAsset: String {
             .npStore,
             .npWalk,
             .nyhetsbrevFraFinn,
+            .oikotie,
+            .parentskids,
             .pencilPaper,
             .pin,
             .playVideo,
@@ -242,23 +289,32 @@ enum ImageAsset: String {
             .profile,
             .rated,
             .ratings,
+            .real_estate,
+            .refurbishedelectronics,
             .remove,
             .removeFilterTag,
+            .remppatori,
+            .renovation,
+            .rentalcar,
             .republish,
+            .sailboat,
             .savedSearches,
             .search,
             .service,
             .sold,
+            .sports,
             .stakeholder,
             .torgetHelthjem,
             .transactionJourneyCar,
             .uncheckCircle,
+            .vehicles,
+            .vehiclesparts,
             .view,
             .virtualViewing,
             .warranty,
             .webview,
             .wrench,
-            .ybrukt,
+            .ybrukt2,
             .yourads,
     ]
   }

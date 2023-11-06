@@ -43,20 +43,20 @@ public enum ToriMarket: MarketsViewModel {
     
     public var iconImage: UIImage? {
         switch self {
-        case .furniture: return UIImage(named: .chair)
-        case .clothing: return UIImage(named: .shirt)
-        case .parents: return UIImage(named: .stroller)
-        case .sports: return UIImage(named: .iceSkater)
-        case .animals: return UIImage(named: .paw)
-        case .leisure: return UIImage(named: .guitarBat)
+        case .furniture: return UIImage(named: .furniture)
+        case .clothing: return UIImage(named: .clothing)
+        case .parents: return UIImage(named: .parentskids)
+        case .sports: return UIImage(named: .sports)
+        case .animals: return UIImage(named: .animals)
+        case .leisure: return UIImage(named: .hobbies)
         case .apartments: return UIImage(named: .iconRealestateApartments)
-        case .remppatori: return UIImage(named: .emppatori)
-        case .vehicles: return UIImage(named: .cars)
-        case .electronics: return UIImage(named: .smartPhone)
-        case .garden: return UIImage(named: .tools)
-        case .vehicleparts: return UIImage(named: .carPart)
+        case .remppatori: return UIImage(named: .remppatori)
+        case .vehicles: return UIImage(named: .vehicles)
+        case .electronics: return UIImage(named: .electronics)
+        case .garden: return UIImage(named: .renovation)
+        case .vehicleparts: return UIImage(named: .car)
         case .jobs: return UIImage(named: .oikotie)
-        case .antiquities: return UIImage(named: .vase)
+        case .antiquities: return UIImage(named: .antiques)
         case .autovex: return UIImage(named: .autovex)
         }
     }
@@ -80,7 +80,6 @@ public enum ToriMarket: MarketsViewModel {
         case .autovex: return false
         }
     }
-    
     public static var toriMarkets: [ToriMarket] = [
         .furniture,
         .clothing,
@@ -96,7 +95,7 @@ public enum ToriMarket: MarketsViewModel {
         .jobs,
         .antiquities,
         .autovex
-    ]    
+    ]
 }
 
 public enum FinnMarket: MarketsViewModel {
@@ -124,7 +123,6 @@ public enum FinnMarket: MarketsViewModel {
     case leiebilNew
     case nettbilNew
     
-    
     public var title: String {
         switch self {
         case .eiendom, .eiendomNew: return "Eiendom"
@@ -148,27 +146,27 @@ public enum FinnMarket: MarketsViewModel {
     public var iconImage: UIImage? {
         switch self {
         case .eiendom: return UIImage(named: .iconRealestateApartments)
-        case .bil: return UIImage(named: .carFront)
-        case .torget: return UIImage(named: .torget)
+        case .bil: return UIImage(named: .car)
+        case .torget: return UIImage(named: .remppatori)
         case .jobb: return UIImage(named: .oikotie)
         case .mc: return UIImage(named: .motorcycle)
-        case .boat: return UIImage(named: .boat)
-        case .nytte: return UIImage(named: .cars)
+        case .boat: return UIImage(named: .sailboat)
+        case .nytte: return UIImage(named: .vehicles)
         case .reise: return UIImage(named: .airplane)
-        case .shopping: return UIImage(named: .storeFront)
-        case .economy: return UIImage(named: .money)
-        case .mittAnbud: return UIImage(named: .mittAnbud)
+        case .shopping: return UIImage(named: .oikotie)
+        case .economy: return UIImage(named: .economy)
+        case .mittAnbud: return UIImage(named: .mittanbud)
 
         case .eiendomNew: return UIImage(named: .iconRealestateApartments)
-        case .bilOgNaering: return UIImage(named: .carFront)
-        case .torgetNew: return UIImage(named: .torget)
+        case .bilOgNaering: return UIImage(named: .car)
+        case .torgetNew: return UIImage(named: .market)
         case .jobbNew: return UIImage(named: .oikotie)
         case .mcNew: return UIImage(named: .motorcycle)
-        case .boatNew: return UIImage(named: .boat)
+        case .boatNew: return UIImage(named: .sailboat)
         case .reiseNew: return UIImage(named: .airplane)
-        case .economyNew: return UIImage(named: .money)
-        case .mittAnbudNew: return UIImage(named: .mittAnbud)
-        case .leiebilNew: return UIImage(named: .carRent)
+        case .economyNew: return UIImage(named: .economy)
+        case .mittAnbudNew: return UIImage(named: .mittanbud)
+        case .leiebilNew: return UIImage(named: .rentalcar)
         case .nettbilNew: return UIImage(named: .nettbil)
         }
     }
@@ -208,6 +206,21 @@ public enum FinnMarket: MarketsViewModel {
             return title
         }
     }
+
+    /*
+    public static var allMarkets: [FinnMarket] = [
+        .eiendom,
+        .bil,
+        .torget,
+        .jobb,
+        .mc,
+        .boat,
+        .nytte,
+        .economy,
+        .reise,
+        .mittAnbud,
+        .shopping
+    ]*/
     
     public static var newMarkets: [FinnMarket] = [
         .eiendomNew,

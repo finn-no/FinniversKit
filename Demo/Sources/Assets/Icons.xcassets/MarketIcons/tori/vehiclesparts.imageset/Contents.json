@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "vehicles_parts.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
