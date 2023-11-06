@@ -110,7 +110,6 @@ public enum FinnMarket: MarketsViewModel {
     case reise
     case shopping
     case economy
-    case moteplassen
     case mittAnbud
 
     case eiendomNew
@@ -121,7 +120,6 @@ public enum FinnMarket: MarketsViewModel {
     case boatNew
     case reiseNew
     case economyNew
-    case moteplassenNew
     case mittAnbudNew
     case leiebilNew
     case nettbilNew
@@ -139,7 +137,6 @@ public enum FinnMarket: MarketsViewModel {
         case .reise, .reiseNew: return "Reise"
         case .shopping: return "Shopping"
         case .economy, .economyNew: return "Økonomi"
-        case .moteplassen, .moteplassenNew: return "Møteplassen"
         case .mittAnbud: return "Oppdrag"
         case .mittAnbudNew: return "Mitt anbud"
         case .leiebilNew: return "Leiebil"
@@ -160,7 +157,6 @@ public enum FinnMarket: MarketsViewModel {
         case .reise: return UIImage(named: .airplane)
         case .shopping: return UIImage(named: .storeFront)
         case .economy: return UIImage(named: .money)
-        case .moteplassen: return UIImage(named: "cant find")
         case .mittAnbud: return UIImage(named: .mittAnbud)
 
         case .eiendomNew: return UIImage(named: .iconRealestateApartments)
@@ -171,7 +167,6 @@ public enum FinnMarket: MarketsViewModel {
         case .boatNew: return UIImage(named: .boat)
         case .reiseNew: return UIImage(named: .airplane)
         case .economyNew: return UIImage(named: .money)
-        case .moteplassenNew: return UIImage(named: "Cant find: .moteplassen")
         case .mittAnbudNew: return UIImage(named: .mittAnbud)
         case .leiebilNew: return UIImage(named: .carRent)
         case .nettbilNew: return UIImage(named: .nettbil)
@@ -190,7 +185,6 @@ public enum FinnMarket: MarketsViewModel {
         case .reise: return true
         case .shopping: return true
         case .economy: return true
-        case .moteplassen: return true
         case .mittAnbud: return true
 
         case .eiendomNew: return false
@@ -201,7 +195,6 @@ public enum FinnMarket: MarketsViewModel {
         case .boatNew: return false
         case .reiseNew: return true
         case .economyNew: return true
-        case .moteplassenNew: return true
         case .mittAnbudNew: return true
         case .leiebilNew: return true
         case .nettbilNew: return true
@@ -227,8 +220,8 @@ public enum FinnMarket: MarketsViewModel {
         .economy,
         .reise,
         .mittAnbud,
-        .shopping,
-        .moteplassen]
+        .shopping
+    ]
     
     public static var newMarkets: [FinnMarket] = [
         .eiendomNew,
@@ -241,7 +234,6 @@ public enum FinnMarket: MarketsViewModel {
         .economyNew,
         .leiebilNew,
         .nettbilNew,
-        .moteplassenNew,
         .mittAnbudNew
     ]
 }
