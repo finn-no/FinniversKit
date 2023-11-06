@@ -9,8 +9,6 @@ import UIKit
 class MarketsDemoView: UIView, Demoable {
     var demoStack = UIStackView()
     var finnDemo = FinnMarketsDemoView()
-    var finnDemo2 = FinnMarketsDemoView2()
-
     var toriDemo = ToriMarketsDemoView()
         
     override init(frame: CGRect) {
@@ -23,13 +21,13 @@ class MarketsDemoView: UIView, Demoable {
     func setUp() {
         demoStack.translatesAutoresizingMaskIntoConstraints = false
         finnDemo.translatesAutoresizingMaskIntoConstraints = false
-        finnDemo2.translatesAutoresizingMaskIntoConstraints = false
+        toriDemo.translatesAutoresizingMaskIntoConstraints = false
         
         demoStack.axis = .vertical
         demoStack.spacing = 10.0
         demoStack.alignment = .fill
         demoStack.distribution = .fillProportionally
-        demoStack.addArrangedSubviews([finnDemo, finnDemo2])
+        demoStack.addArrangedSubviews([finnDemo, toriDemo])
         
         addSubview(demoStack)
         
@@ -38,10 +36,6 @@ class MarketsDemoView: UIView, Demoable {
         demoStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
         demoStack.heightAnchor.constraint(equalToConstant:450).isActive = true
     }
-}
-
-class FinnDataSource: NSObject {
-    var models = FinnMarket.newMarkets
 }
 
 class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewDelegate {
@@ -63,7 +57,6 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
         addSubview(titleLabel)
 
         var collectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
-        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isMarketGridCellLabelTwoLined = false
         
@@ -81,9 +74,7 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
     }
 
     func numberOfItems(inMarketsView marketsView: FinniversKit.MarketsView) -> Int {
-        
         return dataSource.models.count
-
     }
     func marketsView(_ marketsView: FinniversKit.MarketsView, modelAtIndex index: Int) -> FinniversKit.MarketsViewModel {
         return dataSource.models[index]
@@ -93,7 +84,11 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
     }
 }
 
-class FinnMarketsDemoView2: UIView, Demoable, MarketsViewDataSource, MarketsViewDelegate {
+class FinnDataSource: NSObject {
+    var models = FinnMarket.newMarkets
+}
+
+class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewDelegate {
     lazy var dataSource: ToriDataSource = {
         return ToriDataSource()
     }()
@@ -141,92 +136,6 @@ class FinnMarketsDemoView2: UIView, Demoable, MarketsViewDataSource, MarketsView
     }
 }
 
-
-
 class ToriDataSource: NSObject {
     var models = ToriMarket.toriMarkets
-}
-
-
-
-class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewDelegate {
-    lazy var dataSource: ToriDataSource = {
-        return ToriDataSource()
-    }()
-
-    var titleLabel = UILabel()
-
-    var bottomLabel = UILabel()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        setup()
-    }
-
-    required init?(coder aDecoder: NSCoder) { fatalError() }
-
-    private func setup() {
-        titleLabel.text = "Tori"
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
-        titleLabel.textAlignment = .center
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(titleLabel)
-
-        var collectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
-        
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.isMarketGridCellLabelTwoLined = false
-        
-        addSubview(collectionView)
-        
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-
-            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 166)
-        ])
-    }
-    
-    private func setup2() {
-        var collectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
-
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.isMarketGridCellLabelTwoLined = true
-        
-        addSubview(collectionView)
-
-        titleLabel.text = "Tori"
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
-        titleLabel.textAlignment = .center
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(titleLabel)
-
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-
-            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 200),
-        ])
-    }
-
-    func numberOfItems(inMarketsView marketsView: FinniversKit.MarketsView) -> Int {
-        return dataSource.models.count
-
-    }
-    func marketsView(_ marketsView: FinniversKit.MarketsView, modelAtIndex index: Int) -> FinniversKit.MarketsViewModel {
-        return dataSource.models[index]
-
-    }
-    
-    
-    
-    func marketsView(_ marketsGridView: FinniversKit.MarketsView, didSelectItemAtIndex index: Int) {
-    }
 }

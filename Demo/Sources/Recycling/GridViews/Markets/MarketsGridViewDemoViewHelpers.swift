@@ -208,20 +208,6 @@ public enum FinnMarket: MarketsViewModel {
             return title
         }
     }
-
-    public static var allMarkets: [FinnMarket] = [
-        .eiendom,
-        .bil,
-        .torget,
-        .jobb,
-        .mc,
-        .boat,
-        .nytte,
-        .economy,
-        .reise,
-        .mittAnbud,
-        .shopping
-    ]
     
     public static var newMarkets: [FinnMarket] = [
         .eiendomNew,
