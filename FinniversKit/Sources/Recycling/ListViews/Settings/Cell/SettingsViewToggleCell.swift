@@ -48,6 +48,7 @@ class SettingsViewToggleCell: SettingsViewCell {
 
         NSLayoutConstraint.activate([
             uiswitch.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            uiswitch.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 0),
             uiswitch.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
         ])
     }
