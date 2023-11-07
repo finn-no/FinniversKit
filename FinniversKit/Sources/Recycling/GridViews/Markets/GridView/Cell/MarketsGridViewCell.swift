@@ -115,10 +115,6 @@ class MarketsGridViewCell: UICollectionViewCell {
             externalLinkImageView.heightAnchor.constraint(equalToConstant: 12)
         ])
     }
-
-    func setImage() {
-        
-    }
     
     // MARK: - Superclass Overrides
 

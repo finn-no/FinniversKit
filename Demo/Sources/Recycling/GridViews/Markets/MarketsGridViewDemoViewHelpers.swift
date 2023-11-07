@@ -198,14 +198,6 @@ public enum FinnMarket: MarketsViewModel {
         case .nettbilNew: return true
         }
     }
-    
-    public var accessibilityLabel: String {
-        if showExternalLinkIcon {
-            return title + ". Merk: Åpner ekstern link"
-        } else {
-            return title
-        }
-    }
 
     /*
     public static var allMarkets: [FinnMarket] = [

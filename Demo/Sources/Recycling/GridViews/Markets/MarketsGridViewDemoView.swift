@@ -34,7 +34,7 @@ class MarketsDemoView: UIView, Demoable {
         demoStack.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
         demoStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
         demoStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
-        demoStack.heightAnchor.constraint(equalToConstant:450).isActive = true
+        demoStack.heightAnchor.constraint(equalToConstant: 450).isActive = true
     }
 }
 
