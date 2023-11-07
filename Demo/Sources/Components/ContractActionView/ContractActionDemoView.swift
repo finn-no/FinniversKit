@@ -51,7 +51,7 @@ extension ContractActionDemoView: TweakableDemo {
         case .carContract:
             contractActionView.configure(
                 with: .carContract,
-                topIcon: UIImage(named: .carFront),
+                topIcon: UIImage(named: .car),
                 paragraphSpacing: 12
             )
         case .requestAccessToContract:

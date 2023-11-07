@@ -40,7 +40,7 @@ enum ImageAsset: String {
     case boat2 = "Boat2"
     case briefcase2 = "Briefcase2"
     case cabin2 = "Cabin2"
-    case carFront2 = "CarFront2"
+    case carFront = "CarFront"
     case carPart2 = "CarPart2"
     case carRent2 = "CarRent2"
     case cars2 = "Cars2"
@@ -147,7 +147,7 @@ enum ImageAsset: String {
     case profile
     case rated
     case ratings
-    case real_estate
+    case realestate
     case refurbishedelectronics
     case remove
     case removeFilterTag
@@ -182,7 +182,7 @@ enum ImageAsset: String {
             .boat2,
             .briefcase2,
             .cabin2,
-            .carFront2,
+            .carFront,
             .carPart2,
             .carRent2,
             .cars2,
@@ -289,7 +289,7 @@ enum ImageAsset: String {
             .profile,
             .rated,
             .ratings,
-            .real_estate,
+            .realestate,
             .refurbishedelectronics,
             .remove,
             .removeFilterTag,
