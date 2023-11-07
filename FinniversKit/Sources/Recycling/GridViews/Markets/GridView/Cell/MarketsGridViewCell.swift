@@ -8,7 +8,7 @@ class MarketsGridViewCell: UICollectionViewCell {
     // MARK: - Internal properties
 
     private let cornerRadius: CGFloat = 16
-    
+
     private lazy var sharpShadowView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .clear
