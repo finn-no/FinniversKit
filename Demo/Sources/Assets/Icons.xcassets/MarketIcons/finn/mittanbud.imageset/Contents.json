@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "mittAnbud_light.svg",
+      "filename" : "mittAnbud_light.pdf",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "mittAnbud_dark.svg",
+      "filename" : "mittAnbud_dark.pdf",
       "idiom" : "universal"
     }
   ],

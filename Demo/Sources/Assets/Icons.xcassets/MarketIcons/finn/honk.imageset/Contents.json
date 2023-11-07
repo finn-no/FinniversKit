@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Variant=Default, Size=Default.svg",
+      "filename" : "Variant=Default, Size=Default.pdf",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "HONK_Logo_White.svg",
+      "filename" : "HONK_Logo_White.pdf",
       "idiom" : "universal"
     }
   ],
