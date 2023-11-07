@@ -10,7 +10,6 @@ class VersionInfoView: UIView {
 
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = UIImage(named: .finnLogoSimple)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -32,8 +31,9 @@ class VersionInfoView: UIView {
         setup()
     }
 
-    func configure(withText text: String?) {
+    func configure(withText text: String?, image: UIImage?) {
         versionLabel.text = text
+        logoImageView.image = image
 
         let targetSize = CGSize(
             width: superview?.frame.width ?? 0,

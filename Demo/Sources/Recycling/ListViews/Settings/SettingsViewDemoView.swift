@@ -53,11 +53,10 @@ class SettingsViewDemoView: UIView, Demoable {
     ]
 
     private lazy var settingsView: SettingsView = {
-        let settingsView = SettingsView(viewTitle: nil)
+        let settingsView = SettingsView(viewTitle: nil, versionText: "FinniversKit Demo", logoImage: .brandLogoSimple)
         settingsView.translatesAutoresizingMaskIntoConstraints = false
         settingsView.dataSource = self
         settingsView.delegate = self
-        settingsView.versionText = "FinniversKit Demo"
         return settingsView
     }()
 
