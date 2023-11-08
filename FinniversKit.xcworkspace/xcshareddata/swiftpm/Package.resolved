@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/warp-ds/warp-ios.git",
       "state" : {
-        "branch" : "make-tokens-public",
-        "revision" : "112ef571a9ad1373e8d78df342fb3e6671aab52a"
+        "branch" : "main",
+        "revision" : "d4dfee23c6ca89ac0de28efc7d82c75766c1d582"
       }
     }
   ],
