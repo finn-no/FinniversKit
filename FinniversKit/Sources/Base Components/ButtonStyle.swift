@@ -86,7 +86,7 @@ public struct CallToAction: ButtonStyle {
     public init(size: Button.Size = .normal, background: Color = .btnPrimary, fullWidth: Bool = true, isEnabled: Binding<Bool>? = nil) {
         self.background = background
         self.fullWidth = fullWidth
-        self.verticalPadding = size == .normal ? 13 : .spacingS
+        self.verticalPadding = size == .normal ? .normalButtonVerticalSpacing : .spacingS
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
         if let isEnabledBinding = isEnabled {
             self._isEnabled = isEnabledBinding
@@ -117,4 +117,8 @@ public struct CallToAction: ButtonStyle {
     private func dynamicBackground(_ configuration: Configuration) -> Color {
         configuration.isPressed ? background.opacity(0.8) : background
     }
+}
+
+private extension CGFloat {
+    static let normalButtonVerticalSpacing: CGFloat = 13
 }
