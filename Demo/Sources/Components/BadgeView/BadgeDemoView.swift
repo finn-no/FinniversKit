@@ -20,6 +20,12 @@ final class BadgeDemoView: UIView, Demoable {
         addSubview(stackView)
         stackView.centerInSuperview()
 
+        let defaultBadgeView = BadgeView()
+        defaultBadgeView.configure(with: .init(
+            style: .default,
+            title: "Default"
+        ))
+
         let fiksFerdigBadgeView = BadgeView()
         fiksFerdigBadgeView.configure(with: .init(
             style: .warning,
@@ -29,7 +35,7 @@ final class BadgeDemoView: UIView, Demoable {
 
         let smidigBilhandelBadgeView = BadgeView()
         smidigBilhandelBadgeView.configure(with: .init(
-            style: .default,
+            style: .motorSmidig,
             title: "Smidig bilhandel"
         ))
 
@@ -40,6 +46,7 @@ final class BadgeDemoView: UIView, Demoable {
         ))
 
         stackView.addArrangedSubviews([
+            defaultBadgeView,
             fiksFerdigBadgeView,
             smidigBilhandelBadgeView,
             sponsoredBadge
