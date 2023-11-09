@@ -107,7 +107,7 @@ public struct CallToAction: ButtonStyle {
                 Spacer()
             }
         }
-        .padding(.vertical, .spacingS)
+        .padding(.vertical, verticalPadding)
         .padding(.horizontal, .spacingM)
         .background(isEnabled ? dynamicBackground(configuration) : .btnDisabled)
         .cornerRadius(.spacingS)
