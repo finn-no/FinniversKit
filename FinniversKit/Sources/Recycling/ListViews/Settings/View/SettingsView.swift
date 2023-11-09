@@ -27,12 +27,8 @@ public class SettingsView: UIView {
     public weak var delegate: SettingsViewDelegate?
 
     private var viewTitle: String?
-    public var versionText: String? {
-        didSet {
-            tableView.tableFooterView = versionText != nil ? versionInfoView : nil
-            versionInfoView.configure(withText: versionText)
-        }
-    }
+    private var versionText: String?
+    private var logoImage: UIImage?
 
     // MARK: - Private Properties
 
@@ -72,8 +68,10 @@ public class SettingsView: UIView {
     }
 
     // MARK: - Init
-    public init(viewTitle: String?) {
+    public init(viewTitle: String?, versionText: String?, logoImage: UIImage?) {
         self.viewTitle = viewTitle
+        self.versionText = versionText
+        self.logoImage = logoImage
         super.init(frame: .zero)
         setup()
     }
@@ -230,6 +228,8 @@ private extension SettingsView {
     func setup() {
         addSubview(tableView)
         tableView.fillInSuperview()
+        tableView.tableFooterView = versionText != nil ? versionInfoView : nil
+        versionInfoView.configure(withText: versionText, image: logoImage)
 
         if viewTitle != nil {
             configureHeaderViewIfNeeded()
