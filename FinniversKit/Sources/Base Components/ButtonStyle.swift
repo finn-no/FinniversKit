@@ -25,11 +25,17 @@ public struct FlatStyle: ButtonStyle {
     private let size: Button.Size
     private let font: Font
     private let textColor: Color
+    private let padding: EdgeInsets
 
-    public init(size: Button.Size = .normal, textColor: Color = .backgroundPrimary) {
+    public init(
+        size: Button.Size = .normal,
+        textColor: Color = .backgroundPrimary,
+        padding: EdgeInsets = .init(top: .spacingS, leading: .spacingM, bottom: .spacingS, trailing: .spacingM)
+    ) {
         self.size = size
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
         self.textColor = textColor
+        self.padding = padding
     }
 
     public func makeBody(configuration: Configuration) -> some View {
@@ -39,8 +45,7 @@ public struct FlatStyle: ButtonStyle {
                 .makeBody(configuration: configuration)
             Spacer()
         }
-        .padding(.vertical, .spacingS)
-        .padding(.horizontal, .spacingM)
+        .padding(padding)
     }
 }
 
@@ -48,11 +53,17 @@ public struct DefaultStyle: ButtonStyle {
     private let size: Button.Size
     private let font: Font
     private let textColor: Color
+    private let padding: EdgeInsets
 
-    public init(size: Button.Size = .normal, textColor: Color = .backgroundPrimary) {
+    public init(
+        size: Button.Size = .normal,
+        textColor: Color = .backgroundPrimary,
+        padding: EdgeInsets = .init(top: .spacingS, leading: .spacingM, bottom: .spacingS, trailing: .spacingM)
+    ) {
         self.size = size
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
         self.textColor = textColor
+        self.padding = padding
     }
 
     public func makeBody(configuration: Configuration) -> some View {
@@ -64,8 +75,7 @@ public struct DefaultStyle: ButtonStyle {
                 .foregroundColor(textColor)
             Spacer()
         }
-        .padding(.vertical, .spacingS)
-        .padding(.horizontal, .spacingM)
+        .padding(padding)
         .background(
             configuration.isPressed ? Color(UIColor.defaultButtonHighlightedBodyColor) : .background
         )
@@ -81,11 +91,19 @@ public struct CallToAction: ButtonStyle {
     private let background: Color
     private let font: Font
     private let fullWidth: Bool
+    private let padding: EdgeInsets
 
-    public init(size: Button.Size = .normal, background: Color = .backgroundPrimary, fullWidth: Bool = true, isEnabled: Binding<Bool>? = nil) {
+    public init(
+        size: Button.Size = .normal,
+        background: Color = .backgroundPrimary,
+        fullWidth: Bool = true,
+        isEnabled: Binding<Bool>? = nil,
+        padding: EdgeInsets = .init(top: .spacingS, leading: .spacingM, bottom: .spacingS, trailing: .spacingM)
+    ) {
         self.background = background
         self.fullWidth = fullWidth
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
+        self.padding = padding
         if let isEnabledBinding = isEnabled {
             self._isEnabled = isEnabledBinding
         } else {
@@ -105,8 +123,7 @@ public struct CallToAction: ButtonStyle {
                 Spacer()
             }
         }
-        .padding(.vertical, .spacingS)
-        .padding(.horizontal, .spacingM)
+        .padding(padding)
         .background(isEnabled ? dynamicBackground(configuration) : .backgroundDisabled)
         .cornerRadius(.spacingS)
         .animation(.easeOut, value: isEnabled)
