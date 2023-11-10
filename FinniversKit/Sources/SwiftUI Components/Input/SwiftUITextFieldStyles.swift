@@ -23,7 +23,7 @@ public struct JobsTextFieldStyle: SwiftUI.TextFieldStyle {
 
             configuration
                 .finnFont(.bodyRegular)
-                .foregroundColor(isEnabled ? .textPrimary : .textDisabled)
+                .foregroundColor(.textPrimary)
                 .padding(.spacingM)
                 .background(isEnabled ? Color.clear : Color.btnDisabled)
                 .overlay(
