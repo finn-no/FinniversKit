@@ -25,11 +25,17 @@ public struct FlatStyle: ButtonStyle {
     private let size: Button.Size
     private let font: Font
     private let textColor: Color
+    private let padding: EdgeInsets
 
-    public init(size: Button.Size = .normal, textColor: Color = .btnPrimary) {
+    public init(
+        size: Button.Size = .normal,
+        textColor: Color = .btnPrimary,
+        padding: EdgeInsets = .init(top: .spacingS, leading: .spacingM, bottom: .spacingS, trailing: .spacingM)
+    ) {
         self.size = size
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
         self.textColor = textColor
+        self.padding = padding
     }
 
     public func makeBody(configuration: Configuration) -> some View {
@@ -39,8 +45,7 @@ public struct FlatStyle: ButtonStyle {
                 .makeBody(configuration: configuration)
             Spacer()
         }
-        .padding(.vertical, .spacingS)
-        .padding(.horizontal, .spacingM)
+        .padding(padding)
     }
 }
 
@@ -48,11 +53,17 @@ public struct DefaultStyle: ButtonStyle {
     private let size: Button.Size
     private let font: Font
     private let textColor: Color
+    private let padding: EdgeInsets
 
-    public init(size: Button.Size = .normal, textColor: Color = .btnPrimary) {
+    public init(
+        size: Button.Size = .normal,
+        textColor: Color = .btnPrimary,
+        padding: EdgeInsets = .init(top: .spacingS, leading: .spacingM, bottom: .spacingS, trailing: .spacingM)
+    ) {
         self.size = size
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
         self.textColor = textColor
+        self.padding = padding
     }
 
     public func makeBody(configuration: Configuration) -> some View {
@@ -64,8 +75,7 @@ public struct DefaultStyle: ButtonStyle {
                 .foregroundColor(textColor)
             Spacer()
         }
-        .padding(.vertical, .spacingS)
-        .padding(.horizontal, .spacingM)
+        .padding(padding)
         .background(
             configuration.isPressed ? Color(UIColor.defaultButtonHighlightedBodyColor) : Color.bgPrimary
         )
@@ -80,14 +90,28 @@ public struct CallToAction: ButtonStyle {
     @Binding var isEnabled: Bool
     private let background: Color
     private let font: Font
-    private let verticalPadding: CGFloat
     private let fullWidth: Bool
+    private let padding: EdgeInsets
 
-    public init(size: Button.Size = .normal, background: Color = .btnPrimary, fullWidth: Bool = true, isEnabled: Binding<Bool>? = nil) {
+    public init(
+        size: Button.Size = .normal,
+        background: Color = .btnPrimary,
+        fullWidth: Bool = true,
+        isEnabled: Binding<Bool>? = nil,
+        padding: EdgeInsets? = nil
+    ) {
         self.background = background
         self.fullWidth = fullWidth
-        self.verticalPadding = size == .normal ? .normalButtonVerticalSpacing : .spacingS
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
+
+        if let padding {
+            self.padding = padding
+        } else {
+            let verticalPadding: CGFloat = size == .normal ? .normalButtonVerticalPadding : .spacingS
+            let defaultPadding: EdgeInsets = .init(top: verticalPadding, leading: .spacingM, bottom: verticalPadding, trailing: .spacingM)
+            self.padding = defaultPadding
+        }
+
         if let isEnabledBinding = isEnabled {
             self._isEnabled = isEnabledBinding
         } else {
@@ -107,8 +131,7 @@ public struct CallToAction: ButtonStyle {
                 Spacer()
             }
         }
-        .padding(.vertical, verticalPadding)
-        .padding(.horizontal, .spacingM)
+        .padding(padding)
         .background(isEnabled ? dynamicBackground(configuration) : .btnDisabled)
         .cornerRadius(.spacingS)
         .animation(.easeOut, value: isEnabled)
@@ -120,5 +143,5 @@ public struct CallToAction: ButtonStyle {
 }
 
 private extension CGFloat {
-    static let normalButtonVerticalSpacing: CGFloat = 13
+    static let normalButtonVerticalPadding: CGFloat = 13
 }
