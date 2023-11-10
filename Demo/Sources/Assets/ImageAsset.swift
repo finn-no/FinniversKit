@@ -120,6 +120,7 @@ enum ImageAsset: String {
     case messages
     case mittanbud
     case more
+    case moteplassenNew
     case motorcarFront
     case motorcycle
     case nettbil
@@ -262,6 +263,7 @@ enum ImageAsset: String {
             .messages,
             .mittanbud,
             .more,
+            .moteplassenNew,
             .motorcarFront,
             .motorcycle,
             .nettbil,
