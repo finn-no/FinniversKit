@@ -11,6 +11,7 @@ public struct Config {
     public static var fontProvider: FontProvider = DefaultFontProvider()
     public static var colorProvider: ColorProvider = DefaultColorProvider()
     public static var warpTokenProvider = Warp.Config.tokenProvider
+    public static var warpUITokenProvider = Warp.Config.uiTokenProvider
     public static var warpColorProvider = Warp.Config.colorProvider
     public static var imageProvider: ImageProvider = DefaultImageProvider()
     public static var isDynamicTypeEnabled: Bool = true

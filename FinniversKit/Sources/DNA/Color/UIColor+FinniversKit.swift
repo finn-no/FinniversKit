@@ -28,24 +28,24 @@ extension Color {
 }
 
 @objc extension UIColor {
-    public static var background: UIColor { UIColor(.background) }
-    public static var backgroundInfoSubtle: UIColor { UIColor(.backgroundInfoSubtle) }
-    public static var backgroundSubtle: UIColor { UIColor(.backgroundSubtle) }
-    public static var backgroundWarningSubtle: UIColor { UIColor(.backgroundWarningSubtle) }
-    public static var backgroundPositiveSubtle: UIColor { UIColor(.backgroundPositiveSubtle) }
-    public static var backgroundNegativeSubtle: UIColor { UIColor(.backgroundNegativeSubtle) }
-    public static var backgroundPrimary: UIColor { UIColor(.backgroundPrimary) }
-    public static var backgroundDisabled: UIColor { UIColor(.backgroundDisabled) }
-    public static var backgroundNegative: UIColor { UIColor(.backgroundNegative) }
-    public static var text: UIColor { UIColor(.text) }
-    public static var textSubtle: UIColor { UIColor(.textSubtle) }
-    public static var textInverted: UIColor { UIColor(.textInverted) }
-    public static var textLink: UIColor { UIColor(.textLink) }
-    public static var textDisabled: UIColor { UIColor(.textDisabled) }
-    public static var textNegative: UIColor { UIColor(.textNegative) }
-    public static var border: UIColor { UIColor(.border) }
-    public static var iconPrimary: UIColor { UIColor(.iconPrimary) }
-    public static var iconInverted: UIColor { UIColor(.iconInverted) }
+    public static var background: UIColor { Config.warpUITokenProvider.background }
+    public static var backgroundInfoSubtle: UIColor { Config.warpUITokenProvider.backgroundInfoSubtle }
+    public static var backgroundSubtle: UIColor { Config.warpUITokenProvider.backgroundSubtle }
+    public static var backgroundWarningSubtle: UIColor { Config.warpUITokenProvider.backgroundWarningSubtle }
+    public static var backgroundPositiveSubtle: UIColor { Config.warpUITokenProvider.backgroundPositiveSubtle }
+    public static var backgroundNegativeSubtle: UIColor { Config.warpUITokenProvider.backgroundNegativeSubtle }
+    public static var backgroundPrimary: UIColor { Config.warpUITokenProvider.backgroundPrimary }
+    public static var backgroundDisabled: UIColor { Config.warpUITokenProvider.backgroundDisabled }
+    public static var backgroundNegative: UIColor { Config.warpUITokenProvider.backgroundNegative }
+    public static var text: UIColor { Config.warpUITokenProvider.text }
+    public static var textSubtle: UIColor { Config.warpUITokenProvider.textSubtle }
+    public static var textInverted: UIColor { Config.warpUITokenProvider.textInverted }
+    public static var textLink: UIColor { Config.warpUITokenProvider.textLink }
+    public static var textDisabled: UIColor { Config.warpUITokenProvider.textDisabled }
+    public static var textNegative: UIColor { Config.warpUITokenProvider.textNegative }
+    public static var border: UIColor { Config.warpUITokenProvider.border }
+    public static var iconPrimary: UIColor { Config.warpUITokenProvider.iconPrimary }
+    public static var iconInverted: UIColor { Config.warpUITokenProvider.iconInverted }
 }
 
 extension CGColor {
