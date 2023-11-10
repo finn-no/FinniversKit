@@ -22,6 +22,8 @@ public protocol ImageProvider {
     var brandCheckmark: UIImage { get }
     var brandSliderThumb: UIImage { get }
     var brandSliderThumbActive: UIImage { get }
+    var brandLogoSimple: UIImage { get }
+    var brandLogo: UIImage { get }
 
     // Messaging
     var brandMessageAttachMore: UIImage { get }
@@ -85,6 +87,14 @@ public struct DefaultImageProvider: ImageProvider {
 
     public var brandSliderThumbActive: UIImage {
         UIImage(named: .sliderThumbActive)
+    }
+
+    public var brandLogoSimple: UIImage {
+        UIImage(named: .finnLogoSimple)
+    }
+
+    public var brandLogo: UIImage {
+        UIImage(named: .finnLogo)
     }
 
     public var brandMessageAttachMore: UIImage {
