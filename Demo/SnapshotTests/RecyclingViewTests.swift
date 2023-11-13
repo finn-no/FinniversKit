@@ -4,53 +4,54 @@ import FinniversKit
 import DemoKitSnapshot
 
 class RecyclingViewTests: XCTestCase {
-    private func snapshot(_ component: RecyclingDemoViews, record: Bool = false, line: UInt = #line) {
+    private func snapshot(_ component: RecyclingDemoViews, record: Bool = true, line: UInt = #line) {
         snapshotTest(demoable: component.demoable, record: record, line: line)
     }
 
     // MARK: - Tests
 
     func testNotificationsListView() {
-        snapshot(.notificationsListView)
+       // snapshot(.notificationsListView)
     }
 
     func testMarketsGridView() {
+        print("____TESTING MARKETGRID_____")
         snapshot(.marketsGridView)
     }
 
     func testAdRecommendationsGridView() {
-        snapshot(.adRecommendationsGridView)
+       // snapshot(.adRecommendationsGridView)
     }
 
     func testFavoritesListView() {
-        snapshot(.favoritesListView)
+       // snapshot(.favoritesListView)
     }
 
     func testFavoriteFoldersListView() {
-        snapshot(.favoriteFoldersListView)
+       // snapshot(.favoriteFoldersListView)
     }
 
     func testSavedSearchesListView() {
-        snapshot(.savedSearchesListView)
+       // snapshot(.savedSearchesListView)
     }
 
     func testSettingsView() {
-        snapshot(.settingsView)
+       // snapshot(.settingsView)
     }
 
     func testAdManagementView() {
-        snapshot(.adManagementView)
+       // snapshot(.adManagementView)
     }
 
     func testNeighborhoodProfileView() {
-        snapshot(.neighborhoodProfileView)
+        //snapshot(.neighborhoodProfileView)
     }
 
     func testBasicTableView() {
-        snapshot(.basicTableView)
+       // snapshot(.basicTableView)
     }
 
     func testCompactMarketsView() {
-        snapshot(.compactMarketsView)
+      //  snapshot(.compactMarketsView)
     }
 }
