@@ -4,7 +4,7 @@ import FinniversKit
 import DemoKitSnapshot
 
 class RecyclingViewTests: XCTestCase {
-    private func snapshot(_ component: RecyclingDemoViews, record: Bool = true, line: UInt = #line) {
+    private func snapshot(_ component: RecyclingDemoViews, record: Bool = false, line: UInt = #line) {
         snapshotTest(demoable: component.demoable, record: record, line: line)
     }
 
