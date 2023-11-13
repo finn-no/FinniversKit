@@ -140,3 +140,26 @@ public struct CallToAction: ButtonStyle {
         configuration.isPressed ? background.opacity(0.8) : background
     }
 }
+
+#Preview {
+    VStack {
+        HStack(spacing: 0) {
+            Text("Example ")
+                .finnFont(.body)
+            SwiftUI.Button("inline style", action: {})
+                .buttonStyle(InlineFlatStyle())
+            Text(" with some text")
+                .finnFont(.body)
+        }
+        SwiftUI.Button("Flat", action: {})
+            .buttonStyle(FlatStyle())
+        SwiftUI.Button("Default (full width)", action: {})
+            .buttonStyle(DefaultStyle())
+        SwiftUI.Button("Default", action: {})
+            .buttonStyle(DefaultStyle(fullWidth: false))
+        SwiftUI.Button("Call to action (full width)", action: {})
+            .buttonStyle(CallToAction())
+        SwiftUI.Button("Call to action", action: {})
+            .buttonStyle(CallToAction(fullWidth: false))
+    }
+}
