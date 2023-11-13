@@ -100,11 +100,11 @@ class FavoriteAdsListTableHeader: UIView {
     }()
 
     private lazy var infoPanel: Panel = {
-            let panel = Panel(style: .tips)
-            panel.backgroundColor = .aqua50
-            panel.translatesAutoresizingMaskIntoConstraints = false
-            return panel
-        }()
+        let panel = Panel(style: .tips)
+        panel.backgroundColor = .aqua50
+        panel.translatesAutoresizingMaskIntoConstraints = false
+        return panel
+    }()
 
     private lazy var subtitleView: SubtitleView = {
         let view = SubtitleView()
