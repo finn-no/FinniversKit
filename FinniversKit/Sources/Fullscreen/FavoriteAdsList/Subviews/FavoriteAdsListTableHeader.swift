@@ -57,8 +57,8 @@ class FavoriteAdsListTableHeader: UIView {
 
     var viewModel: FavoriteAdsListViewModel? {
         didSet {
-            panelText = viewModel?.panelTextToriOnboarding ?? ""
-            showPanel = viewModel?.showPanelForToriOnboarding ?? false
+            panelText = viewModel?.panelTextOnboarding ?? ""
+            showPanel = viewModel?.showPanelForOnboarding ?? false
         }
     }
 

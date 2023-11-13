@@ -272,7 +272,7 @@ extension FavoriteAdsListViewModel {
         emptyListViewTitle: "Her var det stille gitt...",
         emptyListViewBody: "Det er ikke lagt til noen favoritter i denne listen enda.",
         emptyListViewImage: UIImage(named: .heartEmpty),
-        panelTextToriOnboarding: "Leiligheter og biler har flyttet fra Tori. Du finner leilighetene du har lagret som favoritter i fremtiden på Oikotieltä og kjøretøyene på Tori Autoista.",
-        showPanelForToriOnboarding: true
+        panelTextOnboarding: "Leiligheter og biler har flyttet fra Tori. Du finner leilighetene du har lagret som favoritter i fremtiden på Oikotieltä og kjøretøyene på Tori Autoista.",
+        showPanelForOnboarding: true
     )
 }
