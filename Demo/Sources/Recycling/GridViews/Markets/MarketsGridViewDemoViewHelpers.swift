@@ -4,7 +4,8 @@
 
 import FinniversKit
 
-public enum Market: MarketsViewModel {
+public enum CompactMarket: MarketsViewModel {
+    
     case eiendom
     case bil
     case torget
@@ -51,7 +52,7 @@ public enum Market: MarketsViewModel {
         case .bilOgNaering: return "Bil og næring"
         }
     }
-
+    
     public var iconImage: UIImage? {
         switch self {
         case .eiendom: return UIImage(named: .realestate)
@@ -64,7 +65,7 @@ public enum Market: MarketsViewModel {
         case .reise: return UIImage(named: .airplane)
         case .shopping: return UIImage(named: .clothing)
         case .economy: return UIImage(named: .economy)
-        case .moteplassen: return UIImage(named: .moteplassen2)
+        case .moteplassen: return UIImage(named: .moteplassenNew)
         case .mittAnbud: return UIImage(named: .mittanbud)
 
         case .eiendomNew: return UIImage(named: .realestateNew)
@@ -120,8 +121,8 @@ public enum Market: MarketsViewModel {
         }
     }
 
-    public static var allMarkets: [Market] = [.eiendom, .bil, .torget, .jobb, .mc, .boat, .nytte, .economy, .reise, .mittAnbud, .shopping, .moteplassen]
-    public static var newMarkets: [Market] = [
+    public static var allMarkets: [CompactMarket] = [.eiendom, .bil, .torget, .jobb, .mc, .boat, .nytte, .economy, .reise, .mittAnbud, .shopping, .moteplassen]
+    public static var newMarkets: [CompactMarket] = [
         .eiendomNew,
         .bilOgNaering,
         .torgetNew,
@@ -137,6 +138,7 @@ public enum Market: MarketsViewModel {
     ]
 }
 
+//public var apartmentIcon: UIImage = UIImage(named: .iconRealestateApartments).withRenderingMode(.alwaysTemplate).withTintColor(UIColor(red: 238, green: 80, blue: 88, alpha: 1))
 
 
 public enum ToriMarket: MarketsViewModel {
@@ -146,7 +148,6 @@ public enum ToriMarket: MarketsViewModel {
     case sports // urheilu ja ulkoilu
     case animals // eläimet ja laitteet
     case leisure // harrastus ja viihde
-    case apartments // asuntoja vuokralle
     case remppatori
     case vehicles // ajoneuvojen
     case electronics // elektroniikka ja kodinkoneet
@@ -167,7 +168,6 @@ public enum ToriMarket: MarketsViewModel {
         case .sports: return "Urheilu ja ulkoilu"
         case .animals: return "eläimet ja laitteet"
         case .leisure: return "harrastus ja viihde"
-        case .apartments: return "asuntoja vuokralle"
         case .remppatori: return "remppatori"
         case .vehicles: return "ajoneuvojen"
         case .electronics: return "elektroniikka ja kodinkoneet"
@@ -181,7 +181,7 @@ public enum ToriMarket: MarketsViewModel {
 
         }
     }
-    
+        
     public var iconImage: UIImage? {
         switch self {
         case .furniture: return UIImage(named: .furniture)
@@ -190,7 +190,6 @@ public enum ToriMarket: MarketsViewModel {
         case .sports: return UIImage(named: .sports)
         case .animals: return UIImage(named: .animals)
         case .leisure: return UIImage(named: .hobbies)
-        case .apartments: return UIImage(named: .iconRealestateApartments)
         case .remppatori: return UIImage(named: .remppatori)
         case .vehicles: return UIImage(named: .vehicles)
         case .electronics: return UIImage(named: .electronics)
@@ -213,7 +212,6 @@ public enum ToriMarket: MarketsViewModel {
         case .sports: return false
         case .animals: return false
         case .leisure: return false
-        case .apartments: return false
         case .remppatori: return true
         case .vehicles: return true
         case .electronics: return true
@@ -234,7 +232,6 @@ public enum ToriMarket: MarketsViewModel {
         .sports,
         .animals,
         .leisure,
-        .apartments,
         .remppatori,
         .vehicles,
         .electronics,

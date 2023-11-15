@@ -5,8 +5,9 @@
 import FinniversKit
 import DemoKit
 
+/*
 class MarketDataSource: NSObject {
-    var models = Market.newMarkets
+    var models = CompactMarket.newMarkets
 }
 
 class MarketsGridViewDemoView: UIView, Demoable {
@@ -34,7 +35,9 @@ class MarketsGridViewDemoView: UIView, Demoable {
         ])
     }
 }
+*/
 
+/*
 extension MarketsGridViewDemoView: MarketsViewDataSource {
     func numberOfItems(inMarketsView marketsView: MarketsView) -> Int {
         return dataSource.models.count
@@ -48,6 +51,7 @@ extension MarketsGridViewDemoView: MarketsViewDataSource {
 extension MarketsGridViewDemoView: MarketsViewDelegate {
     func marketsView(_ marketsGridView: MarketsView, didSelectItemAtIndex index: Int) {}
 }
+*/
 
 
 class MarketsDemoView: UIView, Demoable {

@@ -46,11 +46,9 @@ enum ImageAsset: String {
     case bapShippable
     case betaImageSearch
     case blinkRocketMini
-    case boat2
     case boatNew
     case cabin
     case car
-    case car2
     case carFront
     case carIllustration
     case carNew
@@ -60,7 +58,6 @@ enum ImageAsset: String {
     case checkCircle
     case checkCircleFilled
     case christmasPromotion
-    case classifieds2
     case classifiedsNew
     case clothing
     case contract
@@ -95,19 +92,15 @@ enum ImageAsset: String {
     case iconRealestateOwner
     case iconRealestatePrice
     case jobs
-    case jobs2
     case jobsNew
     case leiebilNew
     case magnifyingGlass
     case market
-    case mc2
     case mcNew
     case messages
     case mittanbud
-    case mittanbud2
     case mittanbudNew
     case more
-    case moteplassen2
     case moteplassenNew
     case motorcycle
     case nettbil
@@ -125,7 +118,6 @@ enum ImageAsset: String {
     case npWalk
     case nyhetsbrevFraFinn
     case oikotie
-    case okonomi2
     case okonomiNew
     case parentskids
     case pencilPaper
@@ -139,7 +131,6 @@ enum ImageAsset: String {
     case rated
     case ratings
     case realestate
-    case realestate2
     case realestateNew
     case refurbishedelectronics
     case remove
@@ -152,17 +143,14 @@ enum ImageAsset: String {
     case savedSearches
     case search
     case service
-    case shopping2
     case sold
     case sports
     case stakeholder
     case torgetHelthjem
     case transactionJourneyCar
-    case travel2
     case travelNew
     case uncheckCircle
     case vehicles
-    case vehicles2
     case vehiclesparts
     case view
     case virtualViewing
@@ -184,11 +172,9 @@ enum ImageAsset: String {
             .bapShippable,
             .betaImageSearch,
             .blinkRocketMini,
-            .boat2,
             .boatNew,
             .cabin,
             .car,
-            .car2,
             .carFront,
             .carIllustration,
             .carNew,
@@ -198,7 +184,6 @@ enum ImageAsset: String {
             .checkCircle,
             .checkCircleFilled,
             .christmasPromotion,
-            .classifieds2,
             .classifiedsNew,
             .clothing,
             .contract,
@@ -233,19 +218,15 @@ enum ImageAsset: String {
             .iconRealestateOwner,
             .iconRealestatePrice,
             .jobs,
-            .jobs2,
             .jobsNew,
             .leiebilNew,
             .magnifyingGlass,
             .market,
-            .mc2,
             .mcNew,
             .messages,
             .mittanbud,
-            .mittanbud2,
             .mittanbudNew,
             .more,
-            .moteplassen2,
             .moteplassenNew,
             .motorcycle,
             .nettbil,
@@ -263,7 +244,6 @@ enum ImageAsset: String {
             .npWalk,
             .nyhetsbrevFraFinn,
             .oikotie,
-            .okonomi2,
             .okonomiNew,
             .parentskids,
             .pencilPaper,
@@ -277,7 +257,6 @@ enum ImageAsset: String {
             .rated,
             .ratings,
             .realestate,
-            .realestate2,
             .realestateNew,
             .refurbishedelectronics,
             .remove,
@@ -290,17 +269,14 @@ enum ImageAsset: String {
             .savedSearches,
             .search,
             .service,
-            .shopping2,
             .sold,
             .sports,
             .stakeholder,
             .torgetHelthjem,
             .transactionJourneyCar,
-            .travel2,
             .travelNew,
             .uncheckCircle,
             .vehicles,
-            .vehicles2,
             .vehiclesparts,
             .view,
             .virtualViewing,
