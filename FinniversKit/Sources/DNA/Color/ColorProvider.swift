@@ -39,6 +39,7 @@ public protocol ColorProvider {
     var iconTertiary: UIColor { get }
     var borderDefault: UIColor { get }
     var marketplaceNavigationBarIcon: UIColor { get }
+    var nmpBrandTabBarIconSelected: UIColor { get }
     var nmpBrandColorPrimary: UIColor { get }
     var nmpBrandColorSecondary: UIColor { get }
     var nmpBrandControlSelected: UIColor { get }
@@ -188,6 +189,10 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     // NMP brand colors
+    public var nmpBrandTabBarIconSelected: UIColor {
+        .dynamicColor(defaultColor: .blue600, darkModeColor: .darkCallToAction)
+    }
+
     public var nmpBrandControlSelected: UIColor {
         .blue600
     }
