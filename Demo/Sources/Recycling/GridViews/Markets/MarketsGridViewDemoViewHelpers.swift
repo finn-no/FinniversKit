@@ -298,7 +298,7 @@ public enum FinnMarket: MarketsViewModel {
         case .eiendom: return UIImage(named: .realestate)
         case .bil: return UIImage(named: .car)
         case .torget: return UIImage(named: .remppatori)
-        case .jobb: return UIImage(named: .oikotie)
+        case .jobb: return UIImage(named: .jobs)
         case .mc: return UIImage(named: .motorcycle)
         case .boat: return UIImage(named: .sailboat)
         case .nytte: return UIImage(named: .vehicles)
