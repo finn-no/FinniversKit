@@ -310,7 +310,7 @@ public enum FinnMarket: MarketsViewModel {
         case .eiendomNew: return UIImage(named: .realestate)
         case .bilOgNaering: return UIImage(named: .car)
         case .torgetNew: return UIImage(named: .market)
-        case .jobbNew: return UIImage(named: .oikotie)
+        case .jobbNew: return UIImage(named: .jobs)
         case .mcNew: return UIImage(named: .motorcycle)
         case .boatNew: return UIImage(named: .sailboat)
         case .reiseNew: return UIImage(named: .airplane)
