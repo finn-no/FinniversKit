@@ -46,7 +46,7 @@ public final class CalloutView: UIView {
 
     private lazy var textLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
-        label.font = UIFont.font(ofSize: 16.0, weight: .bold, textStyle: .callout)
+        label.font = UIFont.font(ofSize: 16.0, weight: .regular, textStyle: .callout)
         label.textColor = .textToast
         label.numberOfLines = 0
         return label
