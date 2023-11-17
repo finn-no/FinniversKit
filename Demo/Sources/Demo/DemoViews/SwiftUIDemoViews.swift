@@ -63,11 +63,6 @@ enum SwiftUIDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
 
 // MARK: - PreviewProvider conformances
 
-extension SwiftUIIconButton_Previews: Demoable {}
-extension SwiftUICheckBox_Previews: Demoable {}
-extension SwiftUIFloatingButton_Previews: Demoable {}
-extension SwiftUIRadioButton_Previews: Demoable {}
-extension SwiftUITextFieldStyles_Previews: Demoable {}
 extension FinnTextView_Previews: Demoable {}
 
 // MARK: - The same previews found in FinniversKit to use for demo
@@ -114,4 +109,16 @@ struct SwiftUIIconButton_Previews: PreviewProvider, Demoable {
         }
     }
 }
-extension SwiftUITextFieldStyles_Previews: Demoable {}
+
+struct SwiftUITextFieldStyles_Previews: PreviewProvider, Demoable {
+    static var previews: some View {
+        SwiftUI.TextField("Batman", text: .constant(""))
+            .textFieldStyle(
+                JobsTextFieldStyle(
+                    title: "Name",
+                    footer: "Your real name or a nickname. We use this to personalise your experience in the app."
+                )
+            )
+            .padding()
+    }
+}

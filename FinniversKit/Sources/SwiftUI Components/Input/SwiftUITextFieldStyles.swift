@@ -13,6 +13,7 @@ public struct JobsTextFieldStyle: SwiftUI.TextFieldStyle {
         self.footer = footer
     }
 
+    // swiftlint:disable:next identifier_name
     public func _body(configuration: SwiftUI.TextField<Self._Label>) -> some View {
         VStack(alignment: .leading, spacing: .spacingXS) {
             if let title {
