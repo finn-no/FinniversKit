@@ -4,7 +4,7 @@ import FinniversKit
 import DemoKitSnapshot
 
 class FullscreenViewTests: XCTestCase {
-    private func snapshot(_ component: FullscreenDemoViews, record: Bool = true, line: UInt = #line) {
+    private func snapshot(_ component: FullscreenDemoViews, record: Bool = false, line: UInt = #line) {
         snapshotTest(demoable: component.demoable, record: record, line: line)
     }
 
