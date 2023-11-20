@@ -29,11 +29,11 @@ class CompactMarketsDemoView: UIView, Demoable {
 
 extension CompactMarketsDemoView: MarketsViewDataSource {
     func numberOfItems(inMarketsView marketsView: MarketsView) -> Int {
-        CompactMarket.newMarkets.count
+        FinnMarket.Markets.count
     }
 
     func marketsView(_ marketsView: MarketsView, modelAtIndex index: Int) -> MarketsViewModel {
-        CompactMarket.newMarkets[index]
+        FinnMarket.Markets[index]
     }
 }
 

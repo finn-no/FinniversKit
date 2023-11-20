@@ -133,7 +133,7 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
 }
 
 class FinnDataSource: NSObject {
-    var models = FinnMarket.newMarkets
+    var models = FinnMarket.Markets
 }
 
 class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewDelegate {
