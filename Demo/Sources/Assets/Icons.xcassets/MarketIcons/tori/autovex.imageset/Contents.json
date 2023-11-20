@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "autovex.pdf",
+      "filename" : "autovex_light.pdf",
       "idiom" : "universal"
     },
     {
@@ -18,5 +18,8 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
   }
 }

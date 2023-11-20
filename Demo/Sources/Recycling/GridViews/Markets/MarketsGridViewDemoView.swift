@@ -174,11 +174,9 @@ class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
 
     func numberOfItems(inMarketsView marketsView: FinniversKit.MarketsView) -> Int {
         return dataSource.models.count
-
     }
     func marketsView(_ marketsView: FinniversKit.MarketsView, modelAtIndex index: Int) -> FinniversKit.MarketsViewModel {
         return dataSource.models[index]
-
     }
     func marketsView(_ marketsGridView: FinniversKit.MarketsView, didSelectItemAtIndex index: Int) {
     }
