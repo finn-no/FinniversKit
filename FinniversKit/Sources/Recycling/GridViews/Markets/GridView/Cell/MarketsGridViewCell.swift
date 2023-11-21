@@ -44,7 +44,7 @@ class MarketsGridViewCell: UICollectionViewCell {
         imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         imageView.setContentHuggingPriority(.defaultHigh, for: .vertical)
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = UIColor(red: (247/255.0), green: (81/255.0), blue: (89/255.0), alpha: 1.0)
+
         return imageView
     }()
 

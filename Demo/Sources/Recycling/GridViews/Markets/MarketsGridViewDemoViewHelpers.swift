@@ -7,7 +7,7 @@ import FinniversKit
 public enum ToriMarket: MarketsViewModel {
     case furniture
     case clothing // vaatteita, kosmetiikkaa ja asusteita
-    case  parents // vanhemmat ja lapset
+    case parents // vanhemmat ja lapset
     case sports // urheilu ja ulkoilu
     case animals // eläimet ja laitteet
     case leisure // harrastus ja viihde
@@ -19,7 +19,7 @@ public enum ToriMarket: MarketsViewModel {
     case jobs // työpaikkoja
     case antiquities // antiikkia ja taidetta
     case autovex
-    
+
     public var title: String {
         switch self {
         case .furniture: return "Huonekalutjasisustus"
@@ -39,7 +39,7 @@ public enum ToriMarket: MarketsViewModel {
 
         }
     }
-        
+
     public var iconImage: UIImage? {
         switch self {
         case .furniture: return UIImage(named: .furniture)
@@ -59,7 +59,7 @@ public enum ToriMarket: MarketsViewModel {
 
         }
     }
-    
+
     public var showExternalLinkIcon: Bool {
         switch self {
         case .furniture: return false
@@ -91,12 +91,12 @@ public enum ToriMarket: MarketsViewModel {
         .garden,
         .jobs,
         .antiquities,
-        .autovex,
+        .autovex
     ]
 }
 
 public enum FinnMarket: MarketsViewModel {
-   
+
     case eiendom
     case bilOgNaering
     case torget
@@ -108,10 +108,10 @@ public enum FinnMarket: MarketsViewModel {
     case shopping
     case economy
     case mittAnbud
-    //case moteplassen
+    // case moteplassen
     case leiebil
     case nettbil
-    
+
     public var title: String {
         switch self {
         case .eiendom: return "Eiendom"
@@ -126,7 +126,6 @@ public enum FinnMarket: MarketsViewModel {
         case .leiebil: return "Leiebil"
         case .nettbil: return "Nettbil"
         case .bilOgNaering: return "Bil og næring"
-       // case .moteplassen: return "Møteplassen"
         case .nytte: return "Nyttekjøretøy"
 
         }
@@ -145,7 +144,6 @@ public enum FinnMarket: MarketsViewModel {
         case .shopping: return UIImage(named: .oikotie)
         case .economy: return UIImage(named: .economy)
         case .mittAnbud: return UIImage(named: .mittanbud)
-       // case .moteplassen: return UIImage(named: .remppatori)
         case .leiebil: return UIImage(named: .rentalcar)
         case .nettbil: return UIImage(named: .nettbil)
 
@@ -165,12 +163,11 @@ public enum FinnMarket: MarketsViewModel {
         case .shopping: return true
         case .economy: return true
         case .mittAnbud: return true
-       // case .moteplassen: return true
         case .leiebil: return true
         case .nettbil: return true
         }
-    }    
-    public static var Markets: [FinnMarket] = [
+    }
+    public static var finnMarkets: [FinnMarket] = [
         .eiendom,
         .bilOgNaering,
         .torget,
@@ -181,8 +178,6 @@ public enum FinnMarket: MarketsViewModel {
         .economy,
         .leiebil,
         .nettbil,
-       // .moteplassen,
         .mittAnbud
     ]
 }
-
