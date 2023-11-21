@@ -8,7 +8,7 @@ import DemoKit
 
 class AddressMapDemoView: UIView {
     private lazy var addressMapView: AddressMapView = {
-        let view = AddressMapView(withAutoLayout: true)
+        let view = AddressMapView(isMapTileSelectionEnabled: true, withAutoLayout: true)
         view.delegate = self
         return view
     }()
