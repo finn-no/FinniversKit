@@ -310,11 +310,9 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         let color = colors[index % 4]
         loadingColor = color
 
-        if let model = model {
-            if !model.scaleImageToFillView {
-                imageView.contentMode = .scaleAspectFit
-                imageContentView.backgroundColor = .white
-            }
+        if model?.scaleImageToFillView == false {
+            imageView.contentMode = .scaleAspectFit
+            imageContentView.backgroundColor = .white
         }
 
         iconImageView.isHidden = iconImageView.image == nil
