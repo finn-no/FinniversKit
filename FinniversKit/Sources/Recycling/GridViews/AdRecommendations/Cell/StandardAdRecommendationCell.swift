@@ -37,7 +37,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
     /// Extra container to hold the accessibility elements in the order we want them read
     private lazy var containerView = UIView(withAutoLayout: true)
-    private lazy var imageDescriptionStackView = UIStackView(axis: .horizontal, spacing: StandardAdRecommendationCell.margin, alignment: .center, withAutoLayout: true)
+    private lazy var imageDescriptionStackView = UIStackView(axis: .horizontal, spacing: Self.margin, alignment: .center, withAutoLayout: true)
     private lazy var ribbonView = RibbonView(withAutoLayout: true)
     private lazy var imageTextLabel = Label(style: .captionStrong, textColor: .textTertiary, withAutoLayout: true)
 
@@ -73,7 +73,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     private lazy var imageContentView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.layer.borderWidth = 1
-        view.layer.cornerRadius = StandardAdRecommendationCell.cornerRadius
+        view.layer.cornerRadius = Self.cornerRadius
         view.layer.masksToBounds = true
         return view
     }()
@@ -122,7 +122,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         let view = UIVisualEffectView(withAutoLayout: true)
         view.effect = UIBlurEffect(style: .systemThinMaterialDark)
         view.alpha = 1.0
-        view.layer.cornerRadius = StandardAdRecommendationCell.imageDescriptionHeight / 2
+        view.layer.cornerRadius = Self.imageDescriptionHeight / 2
         view.clipsToBounds = true
         return view
     }()
@@ -141,12 +141,12 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
     private lazy var subtitleToImageConstraint = subtitleLabel.topAnchor.constraint(
         equalTo: imageContentView.bottomAnchor,
-        constant: StandardAdRecommendationCell.subtitleTopMargin
+        constant: Self.subtitleTopMargin
     )
 
     private lazy var subtitleToRibbonConstraint = subtitleLabel.topAnchor.constraint(
         equalTo: ribbonView.bottomAnchor,
-        constant: StandardAdRecommendationCell.subtitleTopMargin
+        constant: Self.subtitleTopMargin
     )
 
     // MARK: - Setup
@@ -185,7 +185,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         imageContentView.addSubview(imageView)
         imageContentView.addSubview(imageDescriptionBackgroundView)
         imageDescriptionBackgroundView.contentView.addSubview(imageDescriptionStackView)
-        imageDescriptionStackView.fillInSuperview(insets: UIEdgeInsets(top: 0, leading: StandardAdRecommendationCell.margin, bottom: 0, trailing: -StandardAdRecommendationCell.margin), isActive: true)
+        imageDescriptionStackView.fillInSuperview(insets: UIEdgeInsets(top: 0, leading: Self.margin, bottom: 0, trailing: -Self.margin), isActive: true)
         imageView.fillInSuperview()
 
         contentView.addSubview(containerView)
@@ -200,8 +200,8 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
         backgroundColor = .clear
 
-        let imageHeightMinimumConstraint = imageContentView.heightAnchor.constraint(equalTo: imageContentView.widthAnchor, multiplier: StandardAdRecommendationCell.minImageAspectRatio)
-        let imageHeightMaximumConstraint = imageContentView.heightAnchor.constraint(lessThanOrEqualTo: imageContentView.widthAnchor, multiplier: StandardAdRecommendationCell.maxImageAspectRatio)
+        let imageHeightMinimumConstraint = imageContentView.heightAnchor.constraint(equalTo: imageContentView.widthAnchor, multiplier: Self.minImageAspectRatio)
+        let imageHeightMaximumConstraint = imageContentView.heightAnchor.constraint(lessThanOrEqualTo: imageContentView.widthAnchor, multiplier: Self.maxImageAspectRatio)
 
         imageHeightMinimumConstraint.priority = .defaultHigh
 
@@ -214,9 +214,9 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             imageHeightMinimumConstraint,
             imageHeightMaximumConstraint,
 
-            ribbonView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: StandardAdRecommendationCell.ribbonTopMargin),
+            ribbonView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: Self.ribbonTopMargin),
             ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            ribbonView.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.ribbonHeight * accessibilityMultiplier),
+            ribbonView.heightAnchor.constraint(equalToConstant: Self.ribbonHeight * accessibilityMultiplier),
 
             logoImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: .spacingS),
             logoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -226,24 +226,24 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             subtitleToImageConstraint,
             subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            subtitleLabel.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.subtitleHeight*accessibilityMultiplier),
+            subtitleLabel.heightAnchor.constraint(equalToConstant: Self.subtitleHeight * accessibilityMultiplier),
 
-            titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: StandardAdRecommendationCell.titleTopMargin),
+            titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: Self.titleTopMargin),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.titleHeight*accessibilityMultiplier),
+            titleLabel.heightAnchor.constraint(equalToConstant: Self.titleHeight * accessibilityMultiplier),
 
             accessoryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             accessoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             accessoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            accessoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -StandardAdRecommendationCell.bottomMargin),
+            accessoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Self.bottomMargin),
 
-            iconImageView.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.iconSize),
-            iconImageView.widthAnchor.constraint(equalToConstant: StandardAdRecommendationCell.iconSize),
+            iconImageView.heightAnchor.constraint(equalToConstant: Self.iconSize),
+            iconImageView.widthAnchor.constraint(equalToConstant: Self.iconSize),
 
             imageDescriptionBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingS),
             imageDescriptionBackgroundView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor),
-            imageDescriptionBackgroundView.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.imageDescriptionHeight),
+            imageDescriptionBackgroundView.heightAnchor.constraint(equalToConstant: Self.imageDescriptionHeight),
             imageDescriptionBackgroundView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: -.spacingS),
 
             favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXS),
@@ -329,7 +329,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
     public static func height(for model: StandardAdRecommendationViewModel, width: CGFloat) -> CGFloat {
         let imageRatio = model.imageSize.height / model.imageSize.width
-        let clippedImageRatio = min(max(imageRatio, StandardAdRecommendationCell.minImageAspectRatio), StandardAdRecommendationCell.maxImageAspectRatio)
+        let clippedImageRatio = min(max(imageRatio, Self.minImageAspectRatio), Self.maxImageAspectRatio)
         let imageHeight = width * clippedImageRatio
         var contentHeight = subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + bottomMargin
 
