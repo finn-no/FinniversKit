@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendationCell, AdRecommendationConfigurable {
+public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendationCell, AdRecommendationConfigurable {
 
     // MARK: - Public properties
 
