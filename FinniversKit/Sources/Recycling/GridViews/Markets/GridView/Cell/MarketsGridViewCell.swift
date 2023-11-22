@@ -44,7 +44,6 @@ class MarketsGridViewCell: UICollectionViewCell {
         imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         imageView.setContentHuggingPriority(.defaultHigh, for: .vertical)
         imageView.contentMode = .scaleAspectFit
-
         return imageView
     }()
 
