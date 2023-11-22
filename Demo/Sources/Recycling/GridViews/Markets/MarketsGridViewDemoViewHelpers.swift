@@ -167,7 +167,7 @@ public enum FinnMarket: MarketsViewModel {
         case .nettbil: return true
         }
     }
-    public static var finnMarkets: [FinnMarket] = [
+    public static var markets: [FinnMarket] = [
         .eiendom,
         .bilOgNaering,
         .torget,

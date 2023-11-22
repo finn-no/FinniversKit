@@ -5,7 +5,7 @@
 import FinniversKit
 import DemoKit
 
-class MarketsDemoView: UIView, Demoable {
+class MarketsGridDemoView: UIView, Demoable {
     var demoStack = UIStackView()
     var finnDemo = FinnMarketsDemoView()
     var toriDemo = ToriMarketsDemoView()
@@ -55,7 +55,7 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLabel)
 
-        var collectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
+        let collectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isMarketGridCellLabelTwoLined = false
 
@@ -84,7 +84,7 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
 }
 
 class FinnDataSource: NSObject {
-    var models = FinnMarket.finnMarkets
+    var models = FinnMarket.markets
 }
 
 class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewDelegate {
@@ -105,7 +105,7 @@ class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLabel)
 
-        var collectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
+        let collectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
 
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isMarketGridCellLabelTwoLined = true
