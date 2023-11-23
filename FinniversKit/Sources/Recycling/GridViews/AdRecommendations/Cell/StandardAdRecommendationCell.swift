@@ -40,6 +40,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     private lazy var imageDescriptionStackView = UIStackView(axis: .horizontal, spacing: Self.margin, alignment: .center, withAutoLayout: true)
     private lazy var ribbonView = RibbonView(withAutoLayout: true)
     private lazy var imageTextLabel = Label(style: .captionStrong, textColor: .textTertiary, withAutoLayout: true)
+    private lazy var subtitleLabelHeightConstraint = subtitleLabel.heightAnchor.constraint(equalToConstant: Self.subtitleHeight)
 
     private static let titleHeight: CGFloat = 20.0
     private static let titleTopMargin: CGFloat = 3.0
@@ -226,7 +227,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             subtitleToImageConstraint,
             subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            subtitleLabel.heightAnchor.constraint(equalToConstant: Self.subtitleHeight * accessibilityMultiplier),
+            subtitleLabelHeightConstraint,
 
             titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: Self.titleTopMargin),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -297,6 +298,13 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         imageTextLabel.text = model?.imageText
         favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityLabel
         isFavorite = model?.isFavorite ?? false
+
+        if let subtitle = model?.subtitle {
+            subtitleLabel.text = subtitle
+            subtitleLabelHeightConstraint.constant = Self.subtitleHeight
+        } else {
+            subtitleLabelHeightConstraint.constant = 0
+        }
 
         ribbonView.style = .sponsored
         ribbonView.title = model?.sponsoredAdData?.ribbonTitle ?? ""
