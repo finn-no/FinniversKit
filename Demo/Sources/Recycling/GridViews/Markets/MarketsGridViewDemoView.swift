@@ -1,7 +1,3 @@
-//
-//  Copyright © FINN.no AS, Inc. All rights reserved.
-//
-
 import FinniversKit
 import DemoKit
 
@@ -68,7 +64,7 @@ class FinnMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
             collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 166),
+            collectionView.heightAnchor.constraint(equalToConstant: 166)
         ])
     }
 
@@ -105,12 +101,11 @@ class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLabel)
 
-        let collectionView = MarketsGridView(accessibilityHeader: "Markeder", delegate: self, dataSource: self)
+        let collectionView = MarketsGridView(accessibilityHeader: "Markkinat", delegate: self, dataSource: self)
 
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isMarketGridCellLabelTwoLined = true
         collectionView.tintColor = UIColor(red: (247/255.0), green: (81/255.0), blue: (89/255.0), alpha: 1.0)
-
 
         addSubview(collectionView)
 
@@ -121,7 +116,7 @@ class ToriMarketsDemoView: UIView, Demoable, MarketsViewDataSource, MarketsViewD
             collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 200),
+            collectionView.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
 

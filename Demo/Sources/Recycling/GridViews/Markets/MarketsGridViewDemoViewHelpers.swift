@@ -1,7 +1,3 @@
-//
-//  Copyright © FINN.no AS, Inc. All rights reserved.
-//
-
 import FinniversKit
 
 public enum ToriMarket: MarketsViewModel {
@@ -108,7 +104,6 @@ public enum FinnMarket: MarketsViewModel {
     case shopping
     case economy
     case mittAnbud
-    // case moteplassen
     case leiebil
     case nettbil
 
@@ -117,7 +112,7 @@ public enum FinnMarket: MarketsViewModel {
         case .eiendom: return "Eiendom"
         case .torget: return "Torget"
         case .jobb: return "Jobb"
-        case  .mc: return "MC"
+        case .mc: return "MC"
         case .boat: return "Båt"
         case .reise: return "Reise"
         case .shopping: return "Shopping"
