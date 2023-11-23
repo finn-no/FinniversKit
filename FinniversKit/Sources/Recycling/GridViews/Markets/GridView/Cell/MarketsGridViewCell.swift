@@ -40,6 +40,7 @@ class MarketsGridViewCell: UICollectionViewCell {
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.tintColor = .marketplaceNavigationBarIcon
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         imageView.setContentHuggingPriority(.defaultHigh, for: .vertical)
