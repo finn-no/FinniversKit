@@ -337,7 +337,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         let imageRatio = model.imageSize.height / model.imageSize.width
         let clippedImageRatio = min(max(imageRatio, Self.minImageAspectRatio), Self.maxImageAspectRatio)
         let imageHeight = width * clippedImageRatio
-        var contentHeight = subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + bottomMargin
+        var contentHeight = subtitleTopMargin + titleTopMargin + titleHeight + bottomMargin
 
         if model.accessory != nil {
             contentHeight += accessoryHeight
@@ -345,6 +345,10 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
         if model.sponsoredAdData?.ribbonTitle != nil {
             contentHeight += ribbonTopMargin + ribbonHeight
+        }
+
+        if model.subtitle != nil {
+            contentHeight += subtitleHeight
         }
 
         return imageHeight + contentHeight
