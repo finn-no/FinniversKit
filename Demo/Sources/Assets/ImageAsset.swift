@@ -37,25 +37,25 @@ extension UIImage {
 enum ImageAsset: String {
     case adManagementTrashcan
     case adsenseDemo
+    case airplane
+    case animals
+    case antiques
     case arrowCounterClockwise
+    case autovex
     case avatar
     case bapShippable
     case betaImageSearch
     case blinkRocketMini
-    case boat
-    case boatNew
+    case cabin
     case car
     case carFront
     case carIllustration
-    case carNew
     case carPromo
     case carsCircleIllustration
-    case carsSubscription
     case checkCircle
     case checkCircleFilled
     case christmasPromotion
-    case classifieds
-    case classifiedsNew
+    case clothing
     case contract
     case creditCard
     case cross
@@ -63,6 +63,8 @@ enum ImageAsset: String {
     case displayTypeList
     case dissatisfiedFace
     case easterEgg
+    case economy
+    case electronics
     case emptyMoon
     case emptyStateSaveSearch
     case eyeHide
@@ -73,28 +75,26 @@ enum ImageAsset: String {
     case filter
     case finnLogo
     case finnLogoSimple
+    case furniture
     case gift
     case heartEmpty
     case hjerterom
+    case hobbies
     case hobbyIllustration
     case home
+    case honk
     case iconRealestateApartments
     case iconRealestateBedrooms
     case iconRealestateOwner
     case iconRealestatePrice
     case jobs
-    case jobsNew
-    case leiebilNew
     case magnifyingGlass
-    case mc
-    case mcNew
+    case market
     case messages
     case mittanbud
-    case mittanbudNew
     case more
-    case moteplassen
-    case moteplassenNew
-    case nettbilNew
+    case motorcycle
+    case nettbil
     case notifications
     case npCompare
     case npDrive
@@ -107,8 +107,8 @@ enum ImageAsset: String {
     case npStore
     case npWalk
     case nyhetsbrevFraFinn
-    case okonomi
-    case okonomiNew
+    case oikotie
+    case parentskids
     case pencilPaper
     case pin
     case playVideo
@@ -120,22 +120,26 @@ enum ImageAsset: String {
     case rated
     case ratings
     case realestate
-    case realestateNew
+    case refurbishedelectronics
     case remove
     case removeFilterTag
+    case remppatori
+    case renovation
+    case rentalcar
     case republish
+    case sailboat
     case savedSearches
     case search
     case service
-    case shopping
+    case shop
     case sold
+    case sports
     case stakeholder
     case torgetHelthjem
     case transactionJourneyCar
-    case travel
-    case travelNew
     case uncheckCircle
     case vehicles
+    case vehiclesparts
     case view
     case virtualViewing
     case warranty
@@ -147,25 +151,25 @@ enum ImageAsset: String {
         return [
             .adManagementTrashcan,
             .adsenseDemo,
+            .airplane,
+            .animals,
+            .antiques,
             .arrowCounterClockwise,
+            .autovex,
             .avatar,
             .bapShippable,
             .betaImageSearch,
             .blinkRocketMini,
-            .boat,
-            .boatNew,
+            .cabin,
             .car,
             .carFront,
             .carIllustration,
-            .carNew,
             .carPromo,
             .carsCircleIllustration,
-            .carsSubscription,
             .checkCircle,
             .checkCircleFilled,
             .christmasPromotion,
-            .classifieds,
-            .classifiedsNew,
+            .clothing,
             .contract,
             .creditCard,
             .cross,
@@ -173,6 +177,8 @@ enum ImageAsset: String {
             .displayTypeList,
             .dissatisfiedFace,
             .easterEgg,
+            .economy,
+            .electronics,
             .emptyMoon,
             .emptyStateSaveSearch,
             .eyeHide,
@@ -183,28 +189,26 @@ enum ImageAsset: String {
             .filter,
             .finnLogo,
             .finnLogoSimple,
+            .furniture,
             .gift,
             .heartEmpty,
             .hjerterom,
+            .hobbies,
             .hobbyIllustration,
             .home,
+            .honk,
             .iconRealestateApartments,
             .iconRealestateBedrooms,
             .iconRealestateOwner,
             .iconRealestatePrice,
             .jobs,
-            .jobsNew,
-            .leiebilNew,
             .magnifyingGlass,
-            .mc,
-            .mcNew,
+            .market,
             .messages,
             .mittanbud,
-            .mittanbudNew,
             .more,
-            .moteplassen,
-            .moteplassenNew,
-            .nettbilNew,
+            .motorcycle,
+            .nettbil,
             .notifications,
             .npCompare,
             .npDrive,
@@ -217,8 +221,8 @@ enum ImageAsset: String {
             .npStore,
             .npWalk,
             .nyhetsbrevFraFinn,
-            .okonomi,
-            .okonomiNew,
+            .oikotie,
+            .parentskids,
             .pencilPaper,
             .pin,
             .playVideo,
@@ -230,22 +234,26 @@ enum ImageAsset: String {
             .rated,
             .ratings,
             .realestate,
-            .realestateNew,
+            .refurbishedelectronics,
             .remove,
             .removeFilterTag,
+            .remppatori,
+            .renovation,
+            .rentalcar,
             .republish,
+            .sailboat,
             .savedSearches,
             .search,
             .service,
-            .shopping,
+            .shop,
             .sold,
+            .sports,
             .stakeholder,
             .torgetHelthjem,
             .transactionJourneyCar,
-            .travel,
-            .travelNew,
             .uncheckCircle,
             .vehicles,
+            .vehiclesparts,
             .view,
             .virtualViewing,
             .warranty,
