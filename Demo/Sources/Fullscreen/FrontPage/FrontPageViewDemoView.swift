@@ -4,7 +4,7 @@ import FinniversKit
 final class FrontPageViewDemoViewController: UIViewController, Demoable {
     var presentation: DemoablePresentation { .navigationController }
 
-    private let markets = Market.newMarkets
+    private let markets = FinnMarket.markets
     private var visibleItems = 20
 
     private let ads: [Ad] = {

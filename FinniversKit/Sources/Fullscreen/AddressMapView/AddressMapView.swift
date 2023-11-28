@@ -16,6 +16,7 @@ public class AddressMapView: UIView {
 
     // MARK: - Private properties
 
+    private let isMapTileSelectionEnabled: Bool
     private var tileOverlay: MKTileOverlay?
     private var circle: MKCircle?
     private var annotation: MKAnnotation?
@@ -46,8 +47,10 @@ public class AddressMapView: UIView {
 
     // MARK: - Init
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(isMapTileSelectionEnabled: Bool, withAutoLayout: Bool) {
+        self.isMapTileSelectionEnabled = isMapTileSelectionEnabled
+        super.init(frame: .zero)
+        self.translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setup()
     }
 
@@ -124,7 +127,6 @@ public class AddressMapView: UIView {
 
     private func setup() {
         addSubview(mapView)
-        addSubview(viewModeButton)
         addSubview(pinButton)
 
         NSLayoutConstraint.activate([
@@ -133,16 +135,25 @@ public class AddressMapView: UIView {
             mapView.trailingAnchor.constraint(equalTo: trailingAnchor),
             mapView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            viewModeButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
-            viewModeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
-            viewModeButton.widthAnchor.constraint(equalToConstant: 46),
-            viewModeButton.heightAnchor.constraint(equalTo: viewModeButton.widthAnchor),
-
-            pinButton.topAnchor.constraint(equalTo: viewModeButton.bottomAnchor, constant: .spacingS),
-            pinButton.trailingAnchor.constraint(equalTo: viewModeButton.trailingAnchor),
-            pinButton.widthAnchor.constraint(equalTo: viewModeButton.heightAnchor),
-            pinButton.heightAnchor.constraint(equalTo: viewModeButton.widthAnchor)
+            pinButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            pinButton.widthAnchor.constraint(equalToConstant: 46),
+            pinButton.heightAnchor.constraint(equalTo: pinButton.widthAnchor)
         ])
+
+        if isMapTileSelectionEnabled {
+            addSubview(viewModeButton)
+
+            NSLayoutConstraint.activate([
+                viewModeButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+                viewModeButton.trailingAnchor.constraint(equalTo: pinButton.trailingAnchor),
+                viewModeButton.widthAnchor.constraint(equalTo: pinButton.widthAnchor),
+                viewModeButton.heightAnchor.constraint(equalTo: pinButton.heightAnchor),
+
+                pinButton.topAnchor.constraint(equalTo: viewModeButton.bottomAnchor, constant: .spacingS)
+            ])
+        } else {
+            pinButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM).isActive = true
+        }
     }
 
     @objc private func handleViewModeButtonTap() {
