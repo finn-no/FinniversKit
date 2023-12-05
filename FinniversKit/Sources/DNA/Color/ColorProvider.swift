@@ -72,6 +72,8 @@ public protocol ColorProvider {
     @available(*, deprecated, message: "Use Warp color instead")
     var marketplaceNavigationBarIcon: UIColor { get }
     @available(*, deprecated, message: "Use Warp color instead")
+    var nmpBrandTabBarIconSelected: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var nmpBrandColorPrimary: UIColor { get }
     @available(*, deprecated, message: "Use Warp color instead")
     var nmpBrandColorSecondary: UIColor { get }
@@ -225,6 +227,11 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     // NMP brand colors
+    @available(*, deprecated, message: "Use Warp color instead")
+    public var nmpBrandTabBarIconSelected: UIColor {
+        .dynamicColor(defaultColor: .blue600, darkModeColor: .darkCallToAction)
+    }
+
     @available(*, deprecated, message: "Use Warp color instead")
     public var nmpBrandControlSelected: UIColor {
         .blue600

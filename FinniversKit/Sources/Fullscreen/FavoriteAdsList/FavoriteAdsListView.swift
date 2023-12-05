@@ -130,6 +130,8 @@ public class FavoriteAdsListView: UIView {
         let tableHeader = FavoriteAdsListTableHeader(withAutoLayout: true)
         tableHeader.delegate = self
         tableHeader.searchBarDelegate = self
+        tableHeader.panelText = viewModel.panelTextOnboarding
+        tableHeader.showPanel = viewModel.showPanelForOnboarding
         return tableHeader
     }()
 

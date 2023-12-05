@@ -138,6 +138,9 @@ extension CGColor {
     @available(*, deprecated, message: "Use Warp color instead")
     public class var marketplaceNavigationBarIcon: UIColor { Config.colorProvider.marketplaceNavigationBarIcon }
     @available(*, deprecated, message: "Use Warp color instead")
+    public class var nmpBrandTabBarIconSelected: UIColor {
+        Config.colorProvider.nmpBrandTabBarIconSelected }
+    @available(*, deprecated, message: "Use Warp color instead")
     public class var nmpBrandColorPrimary: UIColor { Config.colorProvider.nmpBrandColorPrimary }
     @available(*, deprecated, message: "Use Warp color instead")
     public class var nmpBrandColorSecondary: UIColor { Config.colorProvider.nmpBrandColorSecondary }
@@ -214,6 +217,9 @@ extension CGColor {
     public class var textToast: CGColor { UIColor.textToast.cgColor }
     @available(*, deprecated, message: "Use Warp color instead")
     public class var marketplaceNavigationBarIcon: CGColor { Config.colorProvider.marketplaceNavigationBarIcon.cgColor }
+    @available(*, deprecated, message: "Use Warp color instead")
+    public class var nmpBrandTabBarIconSelected: CGColor {
+        Config.colorProvider.nmpBrandTabBarIconSelected.cgColor }
     @available(*, deprecated, message: "Use Warp color instead")
     public class var nmpBrandColorPrimary: CGColor { Config.colorProvider.nmpBrandColorPrimary.cgColor }
     @available(*, deprecated, message: "Use Warp color instead")

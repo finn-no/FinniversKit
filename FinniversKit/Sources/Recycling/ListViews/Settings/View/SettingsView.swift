@@ -105,6 +105,13 @@ public extension SettingsView {
         set { tableView.contentInset = newValue }
     }
 
+    func reconfigureRows(at indexPaths: [IndexPath]) {
+        tableView.reconfigureRows(at: indexPaths)
+        indexPaths.forEach {
+            tableView.deselectRow(at: $0, animated: true)
+        }
+    }
+
     func reloadRows(at indexPaths: [IndexPath], animated: Bool = true) {
         tableView.reloadRows(at: indexPaths, with: animated ? .automatic : .none)
     }
