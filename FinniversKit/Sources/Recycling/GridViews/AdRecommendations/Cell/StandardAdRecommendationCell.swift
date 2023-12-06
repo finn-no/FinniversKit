@@ -4,9 +4,43 @@
 
 import UIKit
 
-public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendationCell, AdRecommendationConfigurable {
+public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendationCell, AdRecommendationConfigurable {
 
-    // MARK: - Internal properties
+    // MARK: - Public properties
+
+    public weak var delegate: AdRecommendationCellDelegate?
+    public var index: Int?
+
+    /// The loading color is used to fill the image view while we load the image.
+    public var loadingColor: UIColor? {
+        didSet {
+            imageContentView.backgroundColor = loadingColor
+        }
+    }
+
+    public weak var imageDataSource: RemoteImageViewDataSource? {
+        didSet {
+            imageView.dataSource = imageDataSource
+            logoImageView.dataSource = imageDataSource
+        }
+    }
+
+    public var isFavorite = false {
+        didSet {
+            favoriteButton.isToggled = isFavorite
+        }
+    }
+
+    // MARK: - Private properties
+
+    private var model: StandardAdRecommendationViewModel?
+
+    /// Extra container to hold the accessibility elements in the order we want them read
+    private lazy var containerView = UIView(withAutoLayout: true)
+    private lazy var imageDescriptionStackView = UIStackView(axis: .horizontal, spacing: Self.margin, alignment: .center, withAutoLayout: true)
+    private lazy var ribbonView = RibbonView(withAutoLayout: true)
+    private lazy var imageTextLabel = Label(style: .captionStrong, textColor: .textTertiary, withAutoLayout: true)
+    private lazy var subtitleLabelHeightConstraint = subtitleLabel.heightAnchor.constraint(equalToConstant: Self.subtitleHeight)
 
     private static let titleHeight: CGFloat = 20.0
     private static let titleTopMargin: CGFloat = 3.0
@@ -23,16 +57,24 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     private static let minImageAspectRatio: CGFloat = 0.75
     private static let maxImageAspectRatio: CGFloat = 1.5
 
-    /// Extra container to hold the accessibility elements in the order we want them read
-    private lazy var containerView: UIView = {
-        let view = UIView(withAutoLayout: true)
-        return view
-    }()
+    private var defaultImage: UIImage {
+        UIImage(named: .noImage)
+    }
+
+    /// Height in cell that is not image
+    private static var nonImageHeight: CGFloat {
+        subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + bottomMargin
+    }
+
+    /// Height in cell that is not image including the height of accessory label
+    private static var nonImageWithAccessoryHeight: CGFloat {
+        subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + accessoryHeight + bottomMargin
+    }
 
     private lazy var imageContentView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.layer.borderWidth = 1
-        view.layer.cornerRadius = StandardAdRecommendationCell.cornerRadius
+        view.layer.cornerRadius = Self.cornerRadius
         view.layer.masksToBounds = true
         return view
     }()
@@ -52,8 +94,6 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         return imageView
     }()
 
-    private lazy var ribbonView = RibbonView(withAutoLayout: true)
-
     private lazy var logoImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFit
@@ -61,29 +101,21 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     }()
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .body)
+        let label = Label(style: .body, withAutoLayout: true)
         label.setContentHuggingPriority(.required, for: .vertical)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .clear
         label.accessibilityTraits = .header
         return label
     }()
 
     private lazy var subtitleLabel: Label = {
-        let label = Label(style: .detail)
+        let label = Label(style: .detail, textColor: .textSecondary, withAutoLayout: true)
         label.setContentHuggingPriority(.required, for: .vertical)
-        label.textColor = .textSecondary
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .clear
         return label
     }()
 
     private lazy var accessoryLabel: Label = {
-        let label = Label(style: .detailStrong)
+        let label = Label(style: .detailStrong, withAutoLayout: true)
         label.setContentHuggingPriority(.required, for: .vertical)
-        label.textColor = .textPrimary
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .clear
         return label
     }()
 
@@ -91,28 +123,13 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         let view = UIVisualEffectView(withAutoLayout: true)
         view.effect = UIBlurEffect(style: .systemThinMaterialDark)
         view.alpha = 1.0
-        view.layer.cornerRadius = StandardAdRecommendationCell.imageDescriptionHeight / 2
+        view.layer.cornerRadius = Self.imageDescriptionHeight / 2
         view.clipsToBounds = true
         return view
     }()
 
-    private lazy var imageDescriptionStackView: UIStackView = {
-        let stackView = UIStackView(axis: .horizontal, spacing: StandardAdRecommendationCell.margin, withAutoLayout: true)
-        stackView.alignment = .center
-        return stackView
-    }()
-
-    private lazy var imageTextLabel: Label = {
-        let label = Label(style: .captionStrong)
-        label.textColor = .textTertiary
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .clear
-        return label
-    }()
-
     private lazy var favoriteButton: IconButton = {
-        let button = IconButton(style: .favorite)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = IconButton(style: .favorite, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleFavoriteButtonTap(_:)), for: .touchUpInside)
         return button
     }()
@@ -125,38 +142,13 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
     private lazy var subtitleToImageConstraint = subtitleLabel.topAnchor.constraint(
         equalTo: imageContentView.bottomAnchor,
-        constant: StandardAdRecommendationCell.subtitleTopMargin
+        constant: Self.subtitleTopMargin
     )
 
     private lazy var subtitleToRibbonConstraint = subtitleLabel.topAnchor.constraint(
         equalTo: ribbonView.bottomAnchor,
-        constant: StandardAdRecommendationCell.subtitleTopMargin
+        constant: Self.subtitleTopMargin
     )
-
-    private var model: StandardAdRecommendationViewModel?
-
-    // MARK: - External properties
-
-    /// The loading color is used to fill the image view while we load the image.
-    public var loadingColor: UIColor? {
-        didSet {
-            imageContentView.backgroundColor = loadingColor
-        }
-    }
-
-    /// A data source for the loading of the image
-    public weak var imageDataSource: RemoteImageViewDataSource? {
-        didSet {
-            imageView.dataSource = imageDataSource
-            logoImageView.dataSource = imageDataSource
-        }
-    }
-
-    /// A delegate for actions triggered from the cell
-    public weak var delegate: AdRecommendationCellDelegate?
-
-    /// Optional index of the cell
-    public var index: Int?
 
     // MARK: - Setup
 
@@ -165,10 +157,9 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
+    public required init?(coder aDecoder: NSCoder) { fatalError() }
+
+    // MARK: - Setup
 
     private func setup() {
         var accessibilityMultiplier: CGFloat = 1.0
@@ -195,7 +186,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         imageContentView.addSubview(imageView)
         imageContentView.addSubview(imageDescriptionBackgroundView)
         imageDescriptionBackgroundView.contentView.addSubview(imageDescriptionStackView)
-        imageDescriptionStackView.fillInSuperview(insets: UIEdgeInsets(top: 0, leading: StandardAdRecommendationCell.margin, bottom: 0, trailing: -StandardAdRecommendationCell.margin), isActive: true)
+        imageDescriptionStackView.fillInSuperview(insets: UIEdgeInsets(top: 0, leading: Self.margin, bottom: 0, trailing: -Self.margin), isActive: true)
         imageView.fillInSuperview()
 
         contentView.addSubview(containerView)
@@ -210,8 +201,8 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
         backgroundColor = .clear
 
-        let imageHeightMinimumConstraint = imageContentView.heightAnchor.constraint(equalTo: imageContentView.widthAnchor, multiplier: StandardAdRecommendationCell.minImageAspectRatio)
-        let imageHeightMaximumConstraint = imageContentView.heightAnchor.constraint(lessThanOrEqualTo: imageContentView.widthAnchor, multiplier: StandardAdRecommendationCell.maxImageAspectRatio)
+        let imageHeightMinimumConstraint = imageContentView.heightAnchor.constraint(equalTo: imageContentView.widthAnchor, multiplier: Self.minImageAspectRatio)
+        let imageHeightMaximumConstraint = imageContentView.heightAnchor.constraint(lessThanOrEqualTo: imageContentView.widthAnchor, multiplier: Self.maxImageAspectRatio)
 
         imageHeightMinimumConstraint.priority = .defaultHigh
 
@@ -224,9 +215,9 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
             imageHeightMinimumConstraint,
             imageHeightMaximumConstraint,
 
-            ribbonView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: StandardAdRecommendationCell.ribbonTopMargin),
+            ribbonView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: Self.ribbonTopMargin),
             ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            ribbonView.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.ribbonHeight * accessibilityMultiplier),
+            ribbonView.heightAnchor.constraint(equalToConstant: Self.ribbonHeight * accessibilityMultiplier),
 
             logoImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: .spacingS),
             logoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -236,24 +227,24 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
             subtitleToImageConstraint,
             subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            subtitleLabel.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.subtitleHeight*accessibilityMultiplier),
+            subtitleLabelHeightConstraint,
 
-            titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: StandardAdRecommendationCell.titleTopMargin),
+            titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: Self.titleTopMargin),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.titleHeight*accessibilityMultiplier),
+            titleLabel.heightAnchor.constraint(equalToConstant: Self.titleHeight * accessibilityMultiplier),
 
             accessoryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             accessoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             accessoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            accessoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -StandardAdRecommendationCell.bottomMargin),
+            accessoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Self.bottomMargin),
 
-            iconImageView.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.iconSize),
-            iconImageView.widthAnchor.constraint(equalToConstant: StandardAdRecommendationCell.iconSize),
+            iconImageView.heightAnchor.constraint(equalToConstant: Self.iconSize),
+            iconImageView.widthAnchor.constraint(equalToConstant: Self.iconSize),
 
             imageDescriptionBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingS),
             imageDescriptionBackgroundView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor),
-            imageDescriptionBackgroundView.heightAnchor.constraint(equalToConstant: StandardAdRecommendationCell.imageDescriptionHeight),
+            imageDescriptionBackgroundView.heightAnchor.constraint(equalToConstant: Self.imageDescriptionHeight),
             imageDescriptionBackgroundView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: -.spacingS),
 
             favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXS),
@@ -265,7 +256,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         containerView.accessibilityElements = [titleLabel, subtitleLabel, imageTextLabel, ribbonView, badgeView]
     }
 
-    // MARK: - Superclass Overrides
+    // MARK: - Overrides
 
     public override func prepareForReuse() {
         super.prepareForReuse()
@@ -294,7 +285,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         imageContentView.layer.borderColor = .imageBorder
     }
 
-    // MARK: - Dependency injection
+    // MARK: - Public methods
 
     public func configure(with model: StandardAdRecommendationViewModel?, atIndex index: Int) {
         self.model = model
@@ -308,6 +299,13 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityLabel
         isFavorite = model?.isFavorite ?? false
 
+        if let subtitle = model?.subtitle {
+            subtitleLabel.text = subtitle
+            subtitleLabelHeightConstraint.constant = Self.subtitleHeight
+        } else {
+            subtitleLabelHeightConstraint.constant = 0
+        }
+
         ribbonView.style = .sponsored
         ribbonView.title = model?.sponsoredAdData?.ribbonTitle ?? ""
         ribbonView.isHidden = ribbonView.title.isEmpty
@@ -320,11 +318,9 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         let color = colors[index % 4]
         loadingColor = color
 
-        if let model = model {
-            if !model.scaleImageToFillView {
-                imageView.contentMode = .scaleAspectFit
-                imageContentView.backgroundColor = .white
-            }
+        if model?.scaleImageToFillView == false {
+            imageView.contentMode = .scaleAspectFit
+            imageContentView.backgroundColor = .white
         }
 
         iconImageView.isHidden = iconImageView.image == nil
@@ -337,29 +333,11 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         }
     }
 
-    public var isFavorite = false {
-        didSet {
-            favoriteButton.isToggled = isFavorite
-        }
-    }
-
-    // MARK: - Public
-
-    /// Height in cell that is not image
-    private static var nonImageHeight: CGFloat {
-        return subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + bottomMargin
-    }
-
-    /// Height in cell that is not image including the height of accessory label
-    private static var nonImageWithAccessoryHeight: CGFloat {
-        return subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + accessoryHeight + bottomMargin
-    }
-
     public static func height(for model: StandardAdRecommendationViewModel, width: CGFloat) -> CGFloat {
         let imageRatio = model.imageSize.height / model.imageSize.width
-        let clippedImageRatio = min(max(imageRatio, StandardAdRecommendationCell.minImageAspectRatio), StandardAdRecommendationCell.maxImageAspectRatio)
+        let clippedImageRatio = min(max(imageRatio, Self.minImageAspectRatio), Self.maxImageAspectRatio)
         let imageHeight = width * clippedImageRatio
-        var contentHeight = subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + bottomMargin
+        var contentHeight = subtitleTopMargin + titleTopMargin + titleHeight + bottomMargin
 
         if model.accessory != nil {
             contentHeight += accessoryHeight
@@ -369,11 +347,15 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
             contentHeight += ribbonTopMargin + ribbonHeight
         }
 
+        if model.subtitle != nil {
+            contentHeight += subtitleHeight
+        }
+
         return imageHeight + contentHeight
     }
 
     public static func extraHeight() -> CGFloat {
-        return nonImageHeight
+        nonImageHeight
     }
 
     public func loadImage() {
@@ -393,7 +375,7 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         }
     }
 
-    // MARK: - Private
+    // MARK: - Private methods
 
     private func setDefaultImage() {
         imageView.image = defaultImage
@@ -414,10 +396,6 @@ public class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         } else {
             performViewChanges()
         }
-    }
-
-    private var defaultImage: UIImage? {
-        return UIImage(named: .noImage)
     }
 
     @objc private func handleFavoriteButtonTap(_ button: UIButton) {
