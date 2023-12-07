@@ -1,6 +1,6 @@
 import SwiftUI
 
-extension View {
+public extension View {
     func onViewFirstAppear(_ action: @escaping () -> Void) -> some View {
         modifier(FirstAppear(action: action))
     }
