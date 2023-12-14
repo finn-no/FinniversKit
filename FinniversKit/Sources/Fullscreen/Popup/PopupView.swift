@@ -39,8 +39,7 @@ public class PopupView: UIView {
     }()
 
     private lazy var dismissButton: Button = {
-        let button = Button(style: .flat)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = Button(style: .flat, withAutoLayout: true)
         button.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -53,36 +52,35 @@ public class PopupView: UIView {
     }()
 
     private lazy var descriptionTitleLabel: Label = {
-        let label = Label(style: .title3)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = Label(style: .title3, withAutoLayout: true)
         label.numberOfLines = 0
         return label
     }()
 
     private lazy var descriptionLabel: Label = {
-        let label = Label(style: .body)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = Label(style: .body, withAutoLayout: true)
         label.numberOfLines = 0
         return label
     }()
 
     private lazy var linkButton: Button = {
-        let button = Button(style: .link)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = Button(style: .link, withAutoLayout: true)
         button.addTarget(self, action: #selector(linkButtonTapped), for: .touchUpInside)
         return button
     }()
 
     private lazy var alternativeActionButton: Button = {
-        let button = Button(style: .flat)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = Button(style: .flat, withAutoLayout: true)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.titleLabel?.minimumScaleFactor = 0.8
         button.addTarget(self, action: #selector(alternativeActionButtonTapped), for: .touchUpInside)
         return button
     }()
 
     private lazy var callToActionButton: Button = {
-        let button = Button(style: .callToAction)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = Button(style: .callToAction, withAutoLayout: true)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.titleLabel?.minimumScaleFactor = 0.8
         button.addTarget(self, action: #selector(callToActionButtonTapped), for: .touchUpInside)
         return button
     }()
