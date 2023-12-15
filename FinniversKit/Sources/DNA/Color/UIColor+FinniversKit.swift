@@ -32,6 +32,7 @@ import UIKit
     public class var imageBorder: UIColor { Config.colorProvider.imageBorder }
     public class var tableViewSeparator: UIColor { Config.colorProvider.tableViewSeparator }
     public class var textAction: UIColor { Config.colorProvider.textAction }
+    public class var textAlert: UIColor { Config.colorProvider.textAlert }
     public class var textCritical: UIColor { Config.colorProvider.textCritical }
     public class var textCTADisabled: UIColor { Config.colorProvider.textCTADisabled }
     public class var textDisabled: UIColor { Config.colorProvider.textDisabled }
