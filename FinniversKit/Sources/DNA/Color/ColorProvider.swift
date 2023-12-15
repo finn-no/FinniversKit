@@ -44,6 +44,7 @@ public protocol ColorProvider {
     var nmpBrandColorSecondary: UIColor { get }
     var nmpBrandControlSelected: UIColor { get }
     var nmpBrandDecoration: UIColor { get }
+    var loadingIndicator: UIColor { get }
 }
 
 // MARK: - Default FINN colors
@@ -206,6 +207,10 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var nmpBrandColorSecondary: UIColor {
+        .aqua400
+    }
+
+    public var loadingIndicator: UIColor {
         .aqua400
     }
 }

@@ -30,6 +30,7 @@ import UIKit
     public class var iconSecondary: UIColor { Config.colorProvider.iconSecondary }
     public class var iconTertiary: UIColor { Config.colorProvider.iconTertiary }
     public class var imageBorder: UIColor { Config.colorProvider.imageBorder }
+    public class var loadingIndicator: UIColor { Config.colorProvider.loadingIndicator }
     public class var tableViewSeparator: UIColor { Config.colorProvider.tableViewSeparator }
     public class var textAction: UIColor { Config.colorProvider.textAction }
     public class var textCritical: UIColor { Config.colorProvider.textCritical }
