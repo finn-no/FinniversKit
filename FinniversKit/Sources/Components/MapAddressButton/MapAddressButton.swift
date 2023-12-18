@@ -59,8 +59,10 @@ public class MapAddressButton: UIView {
         button.setImage(icon, for: .normal)
     }
 
-    public func setTitleColor(_ titleColor: UIColor) {
+    public func setButton(isEnabled: Bool) {
+        let titleColor: UIColor = isEnabled ? .textAction : .textDisabled
         buttonStyle = buttonStyle.overrideStyle(textColor: titleColor)
+        button.isUserInteractionEnabled = isEnabled
 
         // Updating the style sets certain properties on the button back to their default values, including `titleEdgeInsets`.
         // Getting the current value here so we can set it back after changing the style.
