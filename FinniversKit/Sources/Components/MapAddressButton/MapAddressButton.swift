@@ -60,7 +60,7 @@ public class MapAddressButton: UIView {
     }
 
     public func setButton(isEnabled: Bool) {
-        let titleColor: UIColor = isEnabled ? .textAction : .textDisabled
+        let titleColor: UIColor = isEnabled ? buttonStyle.textColor : buttonStyle.disabledTextColor ?? .textDisabled
         buttonStyle = buttonStyle.overrideStyle(textColor: titleColor)
         button.isUserInteractionEnabled = isEnabled
 
