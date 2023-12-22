@@ -13,6 +13,7 @@ public class InfoboxDemoView: UIView, Demoable {
         (style: .small(backgroundColor: .bgSecondary), model: InfoboxDefaultData()),
         (style: .normal(backgroundColor: .bgPrimary, primaryButtonIcon: UIImage(named: .webview)), model: InfoboxOpenBrowserData()),
         (style: .warning, model: InfoboxWarningData()),
+        (style: .warning, model: InfoboxNoButtons()),
     ]
 
     // MARK: - Init
