@@ -118,6 +118,7 @@ public final class InfoboxView: UIView {
 
         if let primaryButtonImageView = primaryButtonImageView {
             primaryButton.addSubview(primaryButtonImageView)
+            
             let imageWidth: CGFloat = 18
             constraints.append(contentsOf: [
                 primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
@@ -126,8 +127,14 @@ public final class InfoboxView: UIView {
                 primaryButtonImageView.heightAnchor.constraint(equalToConstant: imageWidth),
                 primaryButtonImageView.centerYAnchor.constraint(equalTo: primaryButton.centerYAnchor),
                 primaryButtonImageView.trailingAnchor.constraint(equalTo: primaryButton.trailingAnchor, constant: -.spacingM),
-                ])
-            primaryButton.titleEdgeInsets = UIEdgeInsets(top: primaryButton.titleEdgeInsets.top, leading: primaryButton.titleEdgeInsets.leading + .spacingM + imageWidth, bottom: primaryButton.titleEdgeInsets.bottom, trailing: primaryButton.titleEdgeInsets.trailing + .spacingM + imageWidth)
+            ])
+            
+            primaryButton.titleEdgeInsets = UIEdgeInsets(
+                top: primaryButton.titleEdgeInsets.top,
+                leading: primaryButton.titleEdgeInsets.leading + .spacingM + imageWidth,
+                bottom: primaryButton.titleEdgeInsets.bottom,
+                trailing: primaryButton.titleEdgeInsets.trailing + .spacingM + imageWidth
+            )
         }
 
         NSLayoutConstraint.activate(constraints)
