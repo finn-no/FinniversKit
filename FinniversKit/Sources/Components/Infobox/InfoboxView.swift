@@ -16,9 +16,16 @@ public final class InfoboxView: UIView {
         didSet {
             titleLabel.text = model?.title
             detailLabel.text = model?.detail
-            primaryButton.setTitle(model?.primaryButtonTitle, for: .normal)
+
+            if let primaryButtonTitle = model?.primaryButtonTitle,
+               !primaryButtonTitle.isEmpty {
+                primaryButton.setTitle(primaryButtonTitle, for: .normal)
+            } else {
+                primaryButton.isHidden = true
+            }
+
             if let secondaryButtonTitle = model?.secondaryButtonTitle,
-                !secondaryButtonTitle.isEmpty {
+               !secondaryButtonTitle.isEmpty {
                 secondaryButton.setTitle(secondaryButtonTitle, for: .normal)
             } else {
                 secondaryButton.isHidden = true
