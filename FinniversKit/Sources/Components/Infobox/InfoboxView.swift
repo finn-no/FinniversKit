@@ -31,41 +31,32 @@ public final class InfoboxView: UIView {
     // MARK: - Subviews
 
     private lazy var titleLabel: UILabel = {
-        let label = Label(style: style.titleStyle)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = Label(style: style.titleStyle, textColor: style.textColor, withAutoLayout: true)
         label.textAlignment = .center
-        label.textColor = style.textColor
         return label
     }()
 
     private lazy var detailLabel: UILabel = {
-        let label = Label(style: style.detailStyle)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = Label(style: style.detailStyle, numberOfLines: 0, textColor: style.textColor, withAutoLayout: true)
         label.textAlignment = .center
-        label.textColor = style.textColor
-        label.numberOfLines = 0
         return label
     }()
 
     private lazy var primaryButton: UIButton = {
-        let button = Button(style: style.primaryButtonStyle, size: style.primaryButtonSize)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = Button(style: style.primaryButtonStyle, size: style.primaryButtonSize, withAutoLayout: true)
         button.addTarget(self, action: #selector(handlePrimaryButtonTap), for: .touchUpInside)
         return button
     }()
 
     private lazy var primaryButtonImageView: UIImageView? = {
         if let image = style.primaryButtonIcon {
-            let imageView = UIImageView(image: image)
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            return imageView
+            return UIImageView(image: image, withAutoLayout: true)
         }
         return nil
     }()
 
     private lazy var secondaryButton: UIButton = {
-        let button = Button(style: style.secondaryButtonStyle, size: style.secondaryButtonSize)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = Button(style: style.secondaryButtonStyle, size: style.secondaryButtonSize, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleSecondaryButtonTap), for: .touchUpInside)
         return button
     }()
