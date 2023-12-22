@@ -11,6 +11,7 @@ public protocol InfoboxViewDelegate: AnyObject {
 
 public final class InfoboxView: UIView {
     public weak var delegate: InfoboxViewDelegate?
+    public private(set) var style: InfoboxView.Style
 
     public var model: InfoboxViewModel? {
         didSet {
@@ -33,9 +34,9 @@ public final class InfoboxView: UIView {
         }
     }
 
-    public private(set) var style: InfoboxView.Style
-
     // MARK: - Subviews
+
+    private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingS, alignment: .center, distribution: .fill, withAutoLayout: true)
 
     private lazy var titleLabel: UILabel = {
         let label = Label(style: style.titleStyle, textColor: style.textColor, withAutoLayout: true)
@@ -82,9 +83,10 @@ public final class InfoboxView: UIView {
         setup()
     }
 
-    public init(style: InfoboxView.Style) {
+    public init(style: InfoboxView.Style, withAutoLayout: Bool = false) {
         self.style = style
         super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setup()
     }
 
@@ -94,26 +96,15 @@ public final class InfoboxView: UIView {
         backgroundColor = style.backgroundColor
         layer.cornerRadius = 8
 
-        addSubview(titleLabel)
-        addSubview(detailLabel)
-        addSubview(primaryButton)
-        addSubview(secondaryButton)
+        stackView.addArrangedSubviews([titleLabel, detailLabel, primaryButton, secondaryButton])
+        stackView.setCustomSpacing(.spacingM, after: detailLabel)
+        stackView.setCustomSpacing(.spacingXS, after: primaryButton)
+
+        addSubview(stackView)
+        stackView.fillInSuperview(margin: .spacingM)
 
         var constraints: [NSLayoutConstraint] = [
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-
-            detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
-            detailLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             detailLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
-
-            primaryButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .spacingM),
-            primaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-
-            secondaryButton.topAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .spacingXS),
-            secondaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            secondaryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM)
         ]
 
         if let primaryButtonImageView = primaryButtonImageView {
