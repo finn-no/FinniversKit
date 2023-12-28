@@ -133,9 +133,25 @@ class FavoriteAdsListTableHeader: UIView {
         ])
     }
 
+    // MARK: - Internal methods
+
+    func configure(infoMessages: [FavoriteAdsListMessageKind]) {
+        messagesStackView.removeArrangedSubviews()
+        messagesStackView.isHidden = infoMessages.isEmpty
+
+        let messageViews = infoMessages.map { $0.createView() }
+        messagesStackView.addArrangedSubviews(messageViews)
+
+        layoutIfNeeded()
+    }
+
+    // MARK: - Private methods
+
     private func updateSubtitle() {
         subtitleView.configure(withText: subtitle, buttonTitle: shareButtonTitle)
     }
+
+    // MARK: - Actions
 
     @objc private func handleSortingViewTap() {
         searchBar.resignFirstResponder()
@@ -152,5 +168,43 @@ class FavoriteAdsListTableHeader: UIView {
 extension FavoriteAdsListTableHeader: SubtitleViewDelegate {
     func subtitleView(_ view: SubtitleView, didSelectButton button: UIButton) {
         delegate?.favoriteAdsListTableHeader(self, didSelectShareButton: button)
+    }
+}
+
+// MARK: - Private extensions
+
+private extension FavoriteAdsListMessageKind {
+    func createView() -> UIView {
+        switch self {
+        case let .message(message, backgroundColor):
+            return createPanel(message: message, backgroundColor: backgroundColor)
+        case let .infobox(title, message, style):
+            return createInfobox(title: title, message: message, style: style)
+        }
+    }
+
+    private func createPanel(message: String, backgroundColor: UIColor) -> Panel {
+        let panel = Panel(style: .plain, withAutoLayout: true)
+        panel.configure(with: PanelViewModel(text: message))
+        panel.backgroundColor = backgroundColor
+        return panel
+    }
+
+    private func createInfobox(title: String, message: String, style: InfoboxView.Style) -> InfoboxView {
+        let infobox = InfoboxView(style: style, withAutoLayout: true)
+        infobox.model = FavoriteInfoboxMessage(title: title, message: message)
+        return infobox
+    }
+
+    private struct FavoriteInfoboxMessage: InfoboxViewModel {
+        let title: String
+        let detail: String
+        let primaryButtonTitle: String = ""
+        let secondaryButtonTitle: String = ""
+
+        init(title: String, message: String) {
+            self.title = title
+            self.detail = message
+        }
     }
 }
