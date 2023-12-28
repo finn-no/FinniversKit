@@ -43,10 +43,8 @@ public class FavoriteAdsListView: UIView {
 
     public var isReadOnly: Bool {
         didSet {
-            if didSetTableHeader {
-                reloadData(scrollToTop: true)
-                setFooterVewHidden(isReadOnly || isFooterShareButtonHidden)
-            }
+            reloadData(scrollToTop: true)
+            setFooterVewHidden(isReadOnly || isFooterShareButtonHidden)
         }
     }
 
@@ -96,9 +94,7 @@ public class FavoriteAdsListView: UIView {
 
     private let viewModel: FavoriteAdsListViewModel
     private let imageCache = ImageMemoryCache()
-    private var didSetTableHeader = false
     private var sendScrollUpdates: Bool = true
-    private var tableViewConstraints = [NSLayoutConstraint]()
     private var contentSizeObserver: NSKeyValueObservation?
     private lazy var scrollShadowView = BottomShadowView(withAutoLayout: true)
     private lazy var tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: topAnchor)
@@ -212,13 +208,8 @@ public class FavoriteAdsListView: UIView {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-
-        if !didSetTableHeader {
-            setTableHeader()
-            didSetTableHeader = true
-        } else {
-            layoutEmptyViews()
-        }
+        setTableHeader()
+        layoutEmptyViews()
     }
 
     // MARK: - Reload
@@ -327,20 +318,7 @@ public class FavoriteAdsListView: UIView {
 
     private func setTableHeader() {
         tableView.tableHeaderView = tableHeaderView
-
-        NSLayoutConstraint.deactivate(tableViewConstraints)
-        tableHeaderView.removeConstraints(tableViewConstraints)
-
-        tableViewConstraints = [
-            tableHeaderView.topAnchor.constraint(equalTo: tableView.topAnchor),
-            tableHeaderView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
-            tableHeaderView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
-        ]
-
-        NSLayoutConstraint.activate(tableViewConstraints)
-
-        tableView.tableHeaderView?.layoutIfNeeded()
-        tableView.tableHeaderView = tableView.tableHeaderView
+        layoutTableHeaderView()
         tableView.sendSubviewToBack(tableHeaderView)
 
         layoutEmptyViews()
@@ -366,6 +344,38 @@ public class FavoriteAdsListView: UIView {
         footerView.isHidden = hidden
         tableViewBottomConstraint.isActive = hidden
         tableViewFooterBottomConstraint.isActive = !hidden
+    }
+
+    /// Calculates the correct frame for the `tableHeaderView` on each call to `layoutSubviews`.
+    /// Slightly modified of https://stackoverflow.com/a/54237526
+    private func layoutTableHeaderView() {
+        guard let headerView = tableView.tableHeaderView else { return }
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+
+        let headerWidth = bounds.width
+        let temporaryWidthConstraint = headerView.widthAnchor.constraint(equalToConstant: headerWidth)
+
+        headerView.addConstraint(temporaryWidthConstraint)
+
+        headerView.setNeedsLayout()
+        headerView.layoutIfNeeded()
+
+        let headerSize = headerView.systemLayoutSizeFitting(
+            CGSize(width: headerWidth, height: 0),
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .defaultLow
+        )
+
+        let height = headerSize.height
+        var frame = headerView.frame
+
+        frame.size.height = height
+        headerView.frame = frame
+
+        tableView.tableHeaderView = headerView
+
+        headerView.removeConstraint(temporaryWidthConstraint)
+        headerView.translatesAutoresizingMaskIntoConstraints = true
     }
 }
 
