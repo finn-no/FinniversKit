@@ -184,7 +184,7 @@ private extension FavoriteAdsListMessageKind {
     }
 
     private func createPanel(message: String, backgroundColor: UIColor) -> Panel {
-        let panel = Panel(style: .plain, withAutoLayout: true)
+        let panel = Panel(style: .tips, withAutoLayout: true)
         panel.configure(with: PanelViewModel(text: message))
         panel.backgroundColor = backgroundColor
         return panel
