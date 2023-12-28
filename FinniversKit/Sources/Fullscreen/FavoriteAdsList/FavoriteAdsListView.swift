@@ -126,8 +126,6 @@ public class FavoriteAdsListView: UIView {
         let tableHeader = FavoriteAdsListTableHeader(withAutoLayout: true)
         tableHeader.delegate = self
         tableHeader.searchBarDelegate = self
-        tableHeader.panelText = viewModel.panelTextOnboarding
-        tableHeader.showPanel = viewModel.showPanelForOnboarding
         return tableHeader
     }()
 
@@ -224,6 +222,11 @@ public class FavoriteAdsListView: UIView {
     }
 
     // MARK: - Public methods
+
+    public func configure(infoMessages: [FavoriteAdsListMessageKind]) {
+        tableHeaderView.configure(infoMessages: infoMessages)
+        setTableHeader()
+    }
 
     public func configure(scrollShadowHeight: CGFloat) {
         scrollShadowViewTopConstraint.constant = -scrollShadowHeight
