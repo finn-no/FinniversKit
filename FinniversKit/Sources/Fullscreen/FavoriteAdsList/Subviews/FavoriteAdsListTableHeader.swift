@@ -13,6 +13,7 @@ class FavoriteAdsListTableHeader: UIView {
 
     // MARK: - Internal properties
 
+    var viewModel: FavoriteAdsListViewModel?
     weak var delegate: FavoriteAdsListTableHeaderDelegate?
     weak var searchBarDelegate: UISearchBarDelegate? {
         didSet { searchBar.delegate = searchBarDelegate }
@@ -53,42 +54,12 @@ class FavoriteAdsListTableHeader: UIView {
         return CGRect(origin: contentStackView.frame.origin, size: titleLabel.frame.size)
     }
 
-    // MARK: - Tori NMP onboarding (Temporary)
-
-    var viewModel: FavoriteAdsListViewModel? {
-        didSet {
-            panelText = viewModel?.panelTextOnboarding ?? ""
-            showPanel = viewModel?.showPanelForOnboarding ?? false
-        }
-    }
-
-    var showPanel: Bool = false {
-        didSet {
-            infoPanel.isHidden = !showPanel
-        }
-    }
-
-    var panelText: String = "" {
-        didSet {
-            let model = PanelViewModel(text: panelText)
-            infoPanel.configure(with: model)
-        }
-    }
-
     // MARK: - Private properties
 
     private lazy var tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleViewTap))
-
-    private lazy var contentStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleView, infoPanel, searchBar, sortingContainerView])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.setCustomSpacing(.spacingXS, after: titleLabel)
-        stackView.setCustomSpacing(24, after: subtitleView)
-        stackView.setCustomSpacing(.spacingM, after: infoPanel)
-        stackView.setCustomSpacing(28, after: searchBar)
-        return stackView
-    }()
+    private lazy var contentStackView = UIStackView(axis: .vertical, withAutoLayout: true)
+    private lazy var messagesStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+    private lazy var sortingContainerView = UIView()
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
@@ -97,13 +68,6 @@ class FavoriteAdsListTableHeader: UIView {
         label.textColor = .textPrimary
         label.numberOfLines = 3
         return label
-    }()
-
-    private lazy var infoPanel: Panel = {
-        let panel = Panel(style: .tips)
-        panel.backgroundColor = .aqua50
-        panel.translatesAutoresizingMaskIntoConstraints = false
-        return panel
     }()
 
     private lazy var subtitleView: SubtitleView = {
@@ -127,8 +91,6 @@ class FavoriteAdsListTableHeader: UIView {
         return sortingView
     }()
 
-    private lazy var sortingContainerView = UIView()
-
     var isSortingViewHidden: Bool {
         get { return sortingView.isHidden }
         set { sortingView.isHidden = newValue }
@@ -147,9 +109,15 @@ class FavoriteAdsListTableHeader: UIView {
 
     private func setup() {
         addGestureRecognizer(tapRecognizer)
+        sortingContainerView.addSubview(sortingView)
+
+        contentStackView.addArrangedSubviews([titleLabel, subtitleView, messagesStackView, searchBar, sortingContainerView])
+        contentStackView.setCustomSpacing(.spacingXS, after: titleLabel)
+        contentStackView.setCustomSpacing(.spacingL, after: subtitleView)
+        contentStackView.setCustomSpacing(.spacingM, after: messagesStackView)
+        contentStackView.setCustomSpacing(.spacingL + .spacingXS, after: searchBar)
 
         addSubview(contentStackView)
-        sortingContainerView.addSubview(sortingView)
 
         NSLayoutConstraint.activate([
             contentStackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
