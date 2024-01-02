@@ -131,7 +131,7 @@ public struct DefaultColorProvider: ColorProvider {
     }
     
     public var textAlert: UIColor {
-        .yellow800
+        .lightNuttyBrown
     }
 
     public var textCritical: UIColor {

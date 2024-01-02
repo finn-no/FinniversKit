@@ -150,6 +150,7 @@ extension UIColor {
     public class var midnightBackground: UIColor { .init(hex: "1D1D26") }
     public class var midnightSectionHeader: UIColor { .init(hex: "585E8A") }
     public class var midnightSectionSeparator: UIColor { .init(hex: "34343E") }
+    public class var lightNuttyBrown:  UIColor { .init(hex: "#885407") }
 }
 
 extension CGColor {
