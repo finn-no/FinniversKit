@@ -75,7 +75,7 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var bgAlert: UIColor {
-        .dynamicColor(defaultColor: .yellow200, darkModeColor: .yellow100)
+        .yellow100
     }
 
     public var bgInfo: UIColor {
