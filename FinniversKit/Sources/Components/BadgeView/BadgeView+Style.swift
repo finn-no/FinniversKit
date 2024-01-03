@@ -11,16 +11,8 @@ public extension BadgeView {
         }
 
         public static var `default`: Self { .init(backgroundColor: .bgSecondary, textColor: .textPrimary) }
-        public static var warning: Self { .init(backgroundColor: .bgAlert, textColor: .warningTextColor) }
+        public static var warning: Self { .init(backgroundColor: .bgAlert, textColor: .textAlert) }
         public static var sponsored: Self { .init(backgroundColor: .accentToothpaste, textColor: .aqua800) }
         public static var motorSmidig: Self { .init(backgroundColor: .green100, textColor: .gray700) }
-    }
-}
-
-// MARK: - Private extensions
-
-private extension UIColor {
-    class var warningTextColor: UIColor {
-        UIColor(hex: "#885407")
     }
 }

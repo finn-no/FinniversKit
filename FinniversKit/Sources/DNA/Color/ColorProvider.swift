@@ -24,6 +24,7 @@ public protocol ColorProvider {
     var textTertiary: UIColor { get }
     var textAction: UIColor { get }
     var textDisabled: UIColor { get }
+    var textAlert: UIColor { get }
     var textCritical: UIColor { get }
     var accentPrimaryBlue: UIColor { get }
     var accentSecondaryBlue: UIColor { get }
@@ -127,6 +128,10 @@ public struct DefaultColorProvider: ColorProvider {
 
     public var textDisabled: UIColor {
         .dynamicColor(defaultColor: .blueGray300, darkModeColor: .darkSardine)
+    }
+    
+    public var textAlert: UIColor {
+        .lightNuttyBrown
     }
 
     public var textCritical: UIColor {

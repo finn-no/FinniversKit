@@ -33,6 +33,7 @@ import UIKit
     public class var loadingIndicator: UIColor { Config.colorProvider.loadingIndicator }
     public class var tableViewSeparator: UIColor { Config.colorProvider.tableViewSeparator }
     public class var textAction: UIColor { Config.colorProvider.textAction }
+    public class var textAlert: UIColor { Config.colorProvider.textAlert }
     public class var textCritical: UIColor { Config.colorProvider.textCritical }
     public class var textCTADisabled: UIColor { Config.colorProvider.textCTADisabled }
     public class var textDisabled: UIColor { Config.colorProvider.textDisabled }
@@ -149,6 +150,7 @@ extension UIColor {
     public class var midnightBackground: UIColor { .init(hex: "1D1D26") }
     public class var midnightSectionHeader: UIColor { .init(hex: "585E8A") }
     public class var midnightSectionSeparator: UIColor { .init(hex: "34343E") }
+    public class var lightNuttyBrown:  UIColor { .init(hex: "#885407") }
 }
 
 extension CGColor {
