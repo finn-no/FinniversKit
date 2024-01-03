@@ -24,6 +24,7 @@ public protocol ColorProvider {
     var textTertiary: UIColor { get }
     var textAction: UIColor { get }
     var textDisabled: UIColor { get }
+    var textAlert: UIColor { get }
     var textCritical: UIColor { get }
     var accentPrimaryBlue: UIColor { get }
     var accentSecondaryBlue: UIColor { get }
@@ -39,10 +40,12 @@ public protocol ColorProvider {
     var iconTertiary: UIColor { get }
     var borderDefault: UIColor { get }
     var marketplaceNavigationBarIcon: UIColor { get }
+    var nmpBrandTabBarIconSelected: UIColor { get }
     var nmpBrandColorPrimary: UIColor { get }
     var nmpBrandColorSecondary: UIColor { get }
     var nmpBrandControlSelected: UIColor { get }
     var nmpBrandDecoration: UIColor { get }
+    var loadingIndicator: UIColor { get }
 }
 
 // MARK: - Default FINN colors
@@ -126,6 +129,10 @@ public struct DefaultColorProvider: ColorProvider {
     public var textDisabled: UIColor {
         .dynamicColor(defaultColor: .blueGray300, darkModeColor: .darkSardine)
     }
+    
+    public var textAlert: UIColor {
+        .lightNuttyBrown
+    }
 
     public var textCritical: UIColor {
         .dynamicColor(defaultColor: .red600, darkModeColor: .red400)
@@ -188,6 +195,10 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     // NMP brand colors
+    public var nmpBrandTabBarIconSelected: UIColor {
+        .dynamicColor(defaultColor: .blue600, darkModeColor: .darkCallToAction)
+    }
+
     public var nmpBrandControlSelected: UIColor {
         .blue600
     }
@@ -201,6 +212,10 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var nmpBrandColorSecondary: UIColor {
+        .aqua400
+    }
+
+    public var loadingIndicator: UIColor {
         .aqua400
     }
 }

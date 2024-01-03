@@ -1,33 +1,18 @@
 import Foundation
 
 public extension BadgeView {
-    enum Style: Hashable {
-        case `default`
-        case warning
-        case sponsored
+    struct Style: Hashable {
+        public let backgroundColor: UIColor
+        public let textColor: UIColor
 
-        var backgroundColor: UIColor {
-            switch self {
-            case .default: return .bgSecondary
-            case .warning: return .bgAlert
-            case .sponsored: return .accentToothpaste
-            }
+        public init(backgroundColor: UIColor, textColor: UIColor) {
+            self.backgroundColor = backgroundColor
+            self.textColor = textColor
         }
 
-        var textColor: UIColor {
-            switch self {
-            case .default: return .textPrimary
-            case .warning: return .warningTextColor
-            case .sponsored: return .aqua800
-            }
-        }
-    }
-}
-
-// MARK: - Private extensions
-
-private extension UIColor {
-    class var warningTextColor: UIColor {
-        UIColor(hex: "#885407")
+        public static var `default`: Self { .init(backgroundColor: .bgSecondary, textColor: .textPrimary) }
+        public static var warning: Self { .init(backgroundColor: .bgAlert, textColor: .textAlert) }
+        public static var sponsored: Self { .init(backgroundColor: .accentToothpaste, textColor: .aqua800) }
+        public static var motorSmidig: Self { .init(backgroundColor: .green100, textColor: .gray700) }
     }
 }

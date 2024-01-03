@@ -30,8 +30,10 @@ import UIKit
     public class var iconSecondary: UIColor { Config.colorProvider.iconSecondary }
     public class var iconTertiary: UIColor { Config.colorProvider.iconTertiary }
     public class var imageBorder: UIColor { Config.colorProvider.imageBorder }
+    public class var loadingIndicator: UIColor { Config.colorProvider.loadingIndicator }
     public class var tableViewSeparator: UIColor { Config.colorProvider.tableViewSeparator }
     public class var textAction: UIColor { Config.colorProvider.textAction }
+    public class var textAlert: UIColor { Config.colorProvider.textAlert }
     public class var textCritical: UIColor { Config.colorProvider.textCritical }
     public class var textCTADisabled: UIColor { Config.colorProvider.textCTADisabled }
     public class var textDisabled: UIColor { Config.colorProvider.textDisabled }
@@ -40,6 +42,8 @@ import UIKit
     public class var textTertiary: UIColor { Config.colorProvider.textTertiary }
     public class var textToast: UIColor { Config.colorProvider.textToast }
     public class var marketplaceNavigationBarIcon: UIColor { Config.colorProvider.marketplaceNavigationBarIcon }
+    public class var nmpBrandTabBarIconSelected: UIColor {
+        Config.colorProvider.nmpBrandTabBarIconSelected }
     public class var nmpBrandColorPrimary: UIColor { Config.colorProvider.nmpBrandColorPrimary }
     public class var nmpBrandColorSecondary: UIColor { Config.colorProvider.nmpBrandColorSecondary }
     public class var nmpBrandControlSelected: UIColor { Config.colorProvider.nmpBrandControlSelected }
@@ -81,6 +85,8 @@ extension CGColor {
     public class var textTertiary: CGColor { UIColor.textTertiary.cgColor }
     public class var textToast: CGColor { UIColor.textToast.cgColor }
     public class var marketplaceNavigationBarIcon: CGColor { Config.colorProvider.marketplaceNavigationBarIcon.cgColor }
+    public class var nmpBrandTabBarIconSelected: CGColor {
+        Config.colorProvider.nmpBrandTabBarIconSelected.cgColor }
     public class var nmpBrandColorPrimary: CGColor { Config.colorProvider.nmpBrandColorPrimary.cgColor }
     public class var nmpBrandColorSecondary: CGColor { Config.colorProvider.nmpBrandColorSecondary.cgColor }
     public class var nmpBrandControlSelected: CGColor { Config.colorProvider.nmpBrandControlSelected.cgColor }
@@ -144,6 +150,7 @@ extension UIColor {
     public class var midnightBackground: UIColor { .init(hex: "1D1D26") }
     public class var midnightSectionHeader: UIColor { .init(hex: "585E8A") }
     public class var midnightSectionSeparator: UIColor { .init(hex: "34343E") }
+    public class var lightNuttyBrown:  UIColor { .init(hex: "#885407") }
 }
 
 extension CGColor {

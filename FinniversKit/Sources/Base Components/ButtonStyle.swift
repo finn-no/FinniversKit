@@ -53,27 +53,34 @@ public struct DefaultStyle: ButtonStyle {
     private let size: Button.Size
     private let font: Font
     private let textColor: Color
+    private let fullWidth: Bool
     private let padding: EdgeInsets
 
     public init(
         size: Button.Size = .normal,
         textColor: Color = .btnPrimary,
+        fullWidth: Bool = true,
         padding: EdgeInsets = .init(top: .spacingS, leading: .spacingM, bottom: .spacingS, trailing: .spacingM)
     ) {
         self.size = size
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
         self.textColor = textColor
+        self.fullWidth = fullWidth
         self.padding = padding
     }
 
     public func makeBody(configuration: Configuration) -> some View {
         HStack {
-            Spacer()
+            if fullWidth {
+                Spacer()
+            }
             configuration
                 .label
                 .font(font)
                 .foregroundColor(textColor)
-            Spacer()
+            if fullWidth {
+                Spacer()
+            }
         }
         .padding(padding)
         .background(
@@ -144,4 +151,27 @@ public struct CallToAction: ButtonStyle {
 
 private extension CGFloat {
     static let normalButtonVerticalPadding: CGFloat = 13
+}
+
+#Preview {
+    VStack {
+        HStack(spacing: 0) {
+            Text("Example ")
+                .finnFont(.body)
+            SwiftUI.Button("inline style", action: {})
+                .buttonStyle(InlineFlatStyle())
+            Text(" with some text")
+                .finnFont(.body)
+        }
+        SwiftUI.Button("Flat", action: {})
+            .buttonStyle(FlatStyle())
+        SwiftUI.Button("Default (full width)", action: {})
+            .buttonStyle(DefaultStyle())
+        SwiftUI.Button("Default", action: {})
+            .buttonStyle(DefaultStyle(fullWidth: false))
+        SwiftUI.Button("Call to action (full width)", action: {})
+            .buttonStyle(CallToAction())
+        SwiftUI.Button("Call to action", action: {})
+            .buttonStyle(CallToAction(fullWidth: false))
+    }
 }

@@ -416,7 +416,6 @@
 		CF87A856229C0C5700DA8243 /* ContactFormCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87A853229C0C5700DA8243 /* ContactFormCheckbox.swift */; };
 		CF87A857229C0C5700DA8243 /* ContactFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87A854229C0C5700DA8243 /* ContactFormView.swift */; };
 		CF8F024521DE1013004C4042 /* RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8F024421DE1013004C4042 /* RefreshControl.swift */; };
-		CF9AC8C221BEE106005A0D2F /* sleighbell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF9AC8C121BEE106005A0D2F /* sleighbell.mp3 */; };
 		CFA6DC2B23BF5E1B0016E118 /* FavoriteAdCommentInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6DC2A23BF5E1B0016E118 /* FavoriteAdCommentInputView.swift */; };
 		CFB61374229ACA6900DE283D /* IconCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB61373229ACA6900DE283D /* IconCollectionView.swift */; };
 		CFB61376229ACB0C00DE283D /* IconCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB61375229ACB0C00DE283D /* IconCollectionViewModel.swift */; };
@@ -934,7 +933,6 @@
 		CF87A853229C0C5700DA8243 /* ContactFormCheckbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactFormCheckbox.swift; sourceTree = "<group>"; };
 		CF87A854229C0C5700DA8243 /* ContactFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactFormView.swift; sourceTree = "<group>"; };
 		CF8F024421DE1013004C4042 /* RefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshControl.swift; sourceTree = "<group>"; };
-		CF9AC8C121BEE106005A0D2F /* sleighbell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sleighbell.mp3; sourceTree = "<group>"; };
 		CFA6DC2A23BF5E1B0016E118 /* FavoriteAdCommentInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdCommentInputView.swift; sourceTree = "<group>"; };
 		CFB61373229ACA6900DE283D /* IconCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionView.swift; sourceTree = "<group>"; };
 		CFB61375229ACB0C00DE283D /* IconCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewModel.swift; sourceTree = "<group>"; };
@@ -2837,7 +2835,6 @@
 			isa = PBXGroup;
 			children = (
 				CF4A054321FB2B4E000BB7DA /* Piano.sf2 */,
-				CF9AC8C121BEE106005A0D2F /* sleighbell.mp3 */,
 				CF3D5EF0215A6D9E006E4D08 /* hi-hats.wav */,
 				CF3D5EF1215A6D9E006E4D08 /* pusefinn.wav */,
 				CF3D5EF2215A6D9E006E4D08 /* kick.wav */,
@@ -3534,7 +3531,6 @@
 				CF3D5EF7215A6D9E006E4D08 /* snare.wav in Resources */,
 				08D8B2ED2193129700EA22CC /* CheckboxAnimation.xcassets in Resources */,
 				4447F6FA1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf in Resources */,
-				CF9AC8C221BEE106005A0D2F /* sleighbell.mp3 in Resources */,
 				4447F6FC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
