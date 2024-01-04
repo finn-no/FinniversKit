@@ -182,7 +182,7 @@ public extension Button.Style {
                 .highlighted: Button.StateStyle(
                     textColor: nil,
                     backgroundColor: .defaultButtonHighlightedBodyColor,
-                    borderColor: .btnPrimary
+                    borderColor: .btnAction
                 ),
                 .disabled: Button.StateStyle(
                     textColor: .textDisabled,
