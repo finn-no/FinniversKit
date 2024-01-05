@@ -33,7 +33,6 @@ import UIKit
     public class var borderNegative: UIColor { Config.colorProvider.borderNegative }
     public class var borderPositive: UIColor { Config.colorProvider.borderPositive }
     public class var borderWarning: UIColor { Config.colorProvider.borderWarning }
-    public class var btnAction: UIColor { Config.colorProvider.btnAction }
     public class var btnCritical: UIColor { Config.colorProvider.btnCritical }
     public class var btnDisabled: UIColor { Config.colorProvider.btnDisabled }
     public class var btnPrimary: UIColor { Config.colorProvider.btnPrimary }
@@ -60,6 +59,10 @@ import UIKit
     public class var nmpBrandColorSecondary: UIColor { Config.colorProvider.nmpBrandColorSecondary }
     public class var nmpBrandControlSelected: UIColor { Config.colorProvider.nmpBrandControlSelected }
     public class var nmpBrandDecoration: UIColor { Config.colorProvider.nmpBrandDecoration }
+
+    // Deprecated
+    @available(*, deprecated, message: "Replace with textAction, nmpBrandControlSelected or nmpBrandDecoration")
+    public class var btnAction: UIColor { Config.colorProvider.btnAction }
 }
 
 extension CGColor {
