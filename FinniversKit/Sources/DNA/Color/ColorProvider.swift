@@ -260,11 +260,11 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var nmpBrandControlSelected: UIColor {
-        .blue600
+        .dynamicColor(defaultColor: .blue600, darkModeColor: .darkPrimaryBlue)
     }
 
     public var nmpBrandDecoration: UIColor {
-        .blue600
+        .dynamicColor(defaultColor: .blue600, darkModeColor: .darkPrimaryBlue)
     }
 
     public var nmpBrandColorPrimary: UIColor {
