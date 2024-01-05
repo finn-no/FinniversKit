@@ -12,9 +12,21 @@ public protocol ColorProvider {
     var bgBottomSheet: UIColor { get }
     var bgAlert: UIColor { get }
     var bgInfo: UIColor { get }
+    var bgInformationAlert: UIColor { get }
+    var bgInformationCritical: UIColor { get }
+    var bgInformationInfo: UIColor { get }
+    var bgInformationSuccess: UIColor { get }
     var bgInfoHeader: UIColor { get }
     var bgSuccess: UIColor { get }
     var bgCritical: UIColor { get }
+    var borderAlert: UIColor { get }
+    var borderCritical: UIColor { get }
+    var borderInfo: UIColor { get }
+    var borderSuccess: UIColor { get }
+    var sidebarAlert: UIColor { get }
+    var sidebarCritical: UIColor { get }
+    var sidebarInfo: UIColor { get }
+    var sidebarSuccess: UIColor { get }
     var btnPrimary: UIColor { get }
     var btnDisabled: UIColor { get }
     var btnCritical: UIColor { get }
@@ -93,6 +105,50 @@ public struct DefaultColorProvider: ColorProvider {
     public var bgCritical: UIColor {
         .red100
     }
+
+    public var bgInformationAlert: UIColor {
+        .yellow50
+    }
+    public var bgInformationCritical: UIColor {
+        .red50
+    }
+    public var bgInformationInfo: UIColor {
+        .aqua50
+    }
+    public var bgInformationSuccess: UIColor {
+        .green50
+    }
+
+    public var borderAlert: UIColor {
+        .yellow300
+    }
+
+    public var borderCritical: UIColor {
+        .red300
+    }
+    public var borderInfo: UIColor {
+        .aqua300
+    }
+    public var borderSuccess: UIColor {
+        .green300
+    }
+
+    public var sidebarAlert: UIColor {
+        .yellow600
+    }
+
+    public var sidebarCritical: UIColor {
+        .red600
+    }
+
+    public var sidebarInfo: UIColor {
+        .aqua600
+    }
+
+    public var sidebarSuccess: UIColor {
+        .green600
+    }
+
 
     public var btnPrimary: UIColor {
         .dynamicColor(defaultColor: .blue600, darkModeColor: .darkCallToAction)

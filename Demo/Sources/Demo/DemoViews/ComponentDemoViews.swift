@@ -35,6 +35,7 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case iconButton
     case iconCollection
     case infobox
+    case infoboxSwiftUI
     case jobApplyBox
     case jobKeyInfo
     case keyValueGridView
@@ -136,6 +137,8 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return SwitchViewDemoView()
         case .infobox:
             return InfoboxDemoView()
+        case .infoboxSwiftUI:
+            return InfoboxSwiftUIViewController()
         case .consentTransparencyInfo:
             return ConsentTransparencyInfoDemoView()
         case .bannerTransparencyView:

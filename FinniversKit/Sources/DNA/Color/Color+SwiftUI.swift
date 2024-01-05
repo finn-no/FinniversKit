@@ -9,16 +9,26 @@ import SwiftUI
 extension Color {
     // MARK: - Background
 
-    public static var bgPrimary: Color     { Color(UIColor.bgPrimary) }
-    public static var bgSecondary: Color   { Color(UIColor.bgSecondary) }
-    public static var bgTertiary: Color    { Color(UIColor.bgTertiary) }
-    public static var bgQuaternary: Color  { Color(UIColor.bgQuaternary) }
-    public static var bgBottomSheet: Color { Color(UIColor.bgBottomSheet) }
-    public static var bgAlert: Color       { Color(UIColor.bgAlert) }
-    public static var bgSuccess: Color     { Color(UIColor.bgSuccess) }
-    public static var bgCritical: Color    { Color(UIColor.bgCritical) }
-    public static var bgInfo: Color        { Color(UIColor.bgInfo) }
-    public static var bgInfoHeader: Color  { Color(UIColor.bgInfoHeader) }
+    public static var bgPrimary: Color              { Color(UIColor.bgPrimary) }
+    public static var bgSecondary: Color            { Color(UIColor.bgSecondary) }
+    public static var bgTertiary: Color             { Color(UIColor.bgTertiary) }
+    public static var bgQuaternary: Color           { Color(UIColor.bgQuaternary) }
+    public static var bgBottomSheet: Color          { Color(UIColor.bgBottomSheet) }
+    public static var bgAlert: Color                { Color(UIColor.bgAlert) }
+    public static var bgSuccess: Color              { Color(UIColor.bgSuccess) }
+    public static var bgCritical: Color             { Color(UIColor.bgCritical) }
+    public static var bgInfo: Color                 { Color(UIColor.bgInfo) }
+    public static var bgInformationAlert: Color     { Color(UIColor.bgInformationAlert) }
+    public static var bgInformationCritical: Color  { Color(UIColor.bgInformationCritical) }
+    public static var bgInformationInfo: Color      { Color(UIColor.bgInformationInfo) }
+    public static var bgInformationSuccess: Color   { Color(UIColor.bgInformationSuccess) }
+    public static var bgInfoHeader: Color           { Color(UIColor.bgInfoHeader) }
+
+    // MARK: - Border
+    public static var borderAlert: Color    { Color(UIColor.borderAlert ) }
+    public static var borderCritical: Color { Color(UIColor.borderCritical ) }
+    public static var borderInfo: Color     { Color(UIColor.borderInfo ) }
+    public static var borderSuccess: Color  { Color(UIColor.borderSuccess ) }
 
     // MARK: - Button
 
@@ -43,6 +53,13 @@ extension Color {
     public static var iconPrimary: Color   { Color(UIColor.iconPrimary) }
     public static var iconSecondary: Color { Color(UIColor.iconSecondary) }
     public static var iconTertiary: Color  { Color(UIColor.iconTertiary) }
+
+    // MARK: - Infobox Sidebar
+
+    public static var sideboxAlert: Color { Color(UIColor.sidebarAlert ) }
+    public static var sideboxCritical: Color { Color(UIColor.sidebarCritical ) }
+    public static var sideboxInfo: Color { Color(UIColor.sidebarInfo ) }
+    public static var sideboxSuccess: Color { Color(UIColor.sidebarSuccess ) }
 
     // MARK: - Others
 

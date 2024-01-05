@@ -14,13 +14,21 @@ import UIKit
     public class var bgBottomSheet: UIColor { Config.colorProvider.bgBottomSheet }
     public class var bgCritical: UIColor { Config.colorProvider.bgCritical }
     public class var bgInfo: UIColor { Config.colorProvider.bgInfo }
+    public class var bgInformationAlert: UIColor { Config.colorProvider.bgInformationAlert }
+    public class var bgInformationCritical: UIColor { Config.colorProvider.bgInformationCritical }
+    public class var bgInformationInfo: UIColor { Config.colorProvider.bgInformationInfo }
+    public class var bgInformationSuccess: UIColor { Config.colorProvider.bgInformationSuccess }
     public class var bgInfoHeader: UIColor { Config.colorProvider.bgInfoHeader }
     public class var bgPrimary: UIColor { Config.colorProvider.bgPrimary }
     public class var bgQuaternary: UIColor { Config.colorProvider.bgQuaternary }
     public class var bgSecondary: UIColor { Config.colorProvider.bgSecondary }
     public class var bgSuccess: UIColor { Config.colorProvider.bgSuccess }
     public class var bgTertiary: UIColor { Config.colorProvider.bgTertiary }
+    public class var borderAlert: UIColor { Config.colorProvider.borderAlert }
+    public class var borderCritical: UIColor { Config.colorProvider.borderCritical }
     public class var borderDefault: UIColor { Config.colorProvider.borderDefault }
+    public class var borderInfo: UIColor { Config.colorProvider.borderInfo }
+    public class var borderSuccess: UIColor { Config.colorProvider.borderSuccess }
     public class var btnAction: UIColor { Config.colorProvider.btnAction }
     public class var btnCritical: UIColor { Config.colorProvider.btnCritical }
     public class var btnDisabled: UIColor { Config.colorProvider.btnDisabled }
@@ -31,6 +39,10 @@ import UIKit
     public class var iconTertiary: UIColor { Config.colorProvider.iconTertiary }
     public class var imageBorder: UIColor { Config.colorProvider.imageBorder }
     public class var loadingIndicator: UIColor { Config.colorProvider.loadingIndicator }
+    public class var sidebarAlert: UIColor { Config.colorProvider.sidebarAlert }
+    public class var sidebarCritical: UIColor { Config.colorProvider.sidebarCritical }
+    public class var sidebarInfo: UIColor { Config.colorProvider.sidebarInfo }
+    public class var sidebarSuccess: UIColor { Config.colorProvider.sidebarSuccess }
     public class var tableViewSeparator: UIColor { Config.colorProvider.tableViewSeparator }
     public class var textAction: UIColor { Config.colorProvider.textAction }
     public class var textAlert: UIColor { Config.colorProvider.textAlert }
@@ -59,13 +71,21 @@ extension CGColor {
     public class var bgBottomSheet: CGColor { UIColor.bgBottomSheet.cgColor }
     public class var bgCritical: CGColor { UIColor.bgCritical.cgColor }
     public class var bgInfo: CGColor { UIColor.bgInfo.cgColor }
+    public class var bgInformationAlert: CGColor { Config.colorProvider.bgInformationAlert.cgColor }
+    public class var bgInformationCritical: CGColor { Config.colorProvider.bgInformationCritical.cgColor }
+    public class var bgInformationInfo: CGColor { Config.colorProvider.bgInformationInfo.cgColor }
+    public class var bgInformationSuccess: CGColor { Config.colorProvider.bgInformationSuccess.cgColor }
     public class var bgInfoHeader: CGColor { UIColor.bgInfoHeader.cgColor }
     public class var bgPrimary: CGColor { UIColor.bgPrimary.cgColor }
     public class var bgQuaternary: CGColor { UIColor.bgQuaternary.cgColor }
     public class var bgSecondary: CGColor { UIColor.bgSecondary.cgColor }
     public class var bgSuccess: CGColor { UIColor.bgSuccess.cgColor }
     public class var bgTertiary: CGColor { UIColor.bgTertiary.cgColor }
+    public class var borderAlert: CGColor { Config.colorProvider.sidebarAlert.cgColor }
+    public class var borderCritical: CGColor { Config.colorProvider.sidebarCritical.cgColor }
     public class var borderDefault: CGColor { UIColor.borderDefault.cgColor }
+    public class var borderInfo: CGColor { Config.colorProvider.sidebarInfo.cgColor }
+    public class var borderSuccess: CGColor { Config.colorProvider.sidebarSuccess.cgColor }
     public class var btnAction: CGColor { UIColor.btnAction.cgColor }
     public class var btnCritical: CGColor { UIColor.btnCritical.cgColor }
     public class var btnDisabled: CGColor { UIColor.btnDisabled.cgColor }
@@ -75,6 +95,10 @@ extension CGColor {
     public class var iconSecondary: CGColor { UIColor.iconSecondary.cgColor }
     public class var iconTertiary: CGColor { UIColor.iconTertiary.cgColor }
     public class var imageBorder: CGColor { UIColor.imageBorder.cgColor }
+    public class var sidebarAlert: CGColor { Config.colorProvider.sidebarAlert.cgColor }
+    public class var sidebarCritical: CGColor { Config.colorProvider.sidebarCritical.cgColor }
+    public class var sidebarInfo: CGColor { Config.colorProvider.sidebarInfo.cgColor }
+    public class var sidebarSuccess: CGColor { Config.colorProvider.sidebarSuccess.cgColor }
     public class var tableViewSeparator: CGColor { UIColor.tableViewSeparator.cgColor }
     public class var textAction: CGColor { UIColor.textAction.cgColor }
     public class var textCritical: CGColor { UIColor.textCritical.cgColor }
