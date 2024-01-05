@@ -155,7 +155,7 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var btnPrimary: UIColor {
-        .dynamicColor(defaultColor: .blue600, darkModeColor: .darkCallToAction)
+        .dynamicColor(defaultColor: .blue600, darkModeColor: .blue500)
     }
 
     public var btnDisabled: UIColor {
@@ -167,7 +167,7 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var btnAction: UIColor {
-        .dynamicColor(defaultColor: .blue600, darkModeColor: .darkPrimaryBlue)
+        .dynamicColor(defaultColor: .blue600, darkModeColor: .blue500)
     }
 
     public var textPrimary: UIColor {
@@ -183,7 +183,7 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var textAction: UIColor {
-        .dynamicColor(defaultColor: .blue600, darkModeColor: .darkPrimaryBlue)
+        .dynamicColor(defaultColor: .blue600, darkModeColor: .blue500)
     }
 
     public var textDisabled: UIColor {
@@ -256,15 +256,15 @@ public struct DefaultColorProvider: ColorProvider {
 
     // NMP brand colors
     public var nmpBrandTabBarIconSelected: UIColor {
-        .dynamicColor(defaultColor: .blue600, darkModeColor: .darkCallToAction)
+        .dynamicColor(defaultColor: .blue600, darkModeColor: .blue500)
     }
 
     public var nmpBrandControlSelected: UIColor {
-        .dynamicColor(defaultColor: .blue600, darkModeColor: .darkPrimaryBlue)
+        .dynamicColor(defaultColor: .blue600, darkModeColor: .blue500)
     }
 
     public var nmpBrandDecoration: UIColor {
-        .dynamicColor(defaultColor: .blue600, darkModeColor: .darkPrimaryBlue)
+        .dynamicColor(defaultColor: .blue600, darkModeColor: .blue500)
     }
 
     public var nmpBrandColorPrimary: UIColor {
