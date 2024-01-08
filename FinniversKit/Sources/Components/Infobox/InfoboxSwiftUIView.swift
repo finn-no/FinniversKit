@@ -6,13 +6,13 @@ import SwiftUI
 
 public struct InfoboxSwiftUIView: View {
     public let style: InfoboxView.Style
-    public var viewModel: InfoboxViewModel?
+    public var viewModel: InfoboxViewModel
     var onPrimaryButtonTapped: (() -> Void)?
     var onSecondaryButtonTapped: (() -> Void)?
 
     public init(
         style: InfoboxView.Style,
-        viewModel: InfoboxViewModel? = nil
+        viewModel: InfoboxViewModel
     ) {
         self.style = style
         self.viewModel = viewModel
@@ -32,17 +32,15 @@ public struct InfoboxSwiftUIView: View {
 
     public var body: some View {
         VStack(alignment: .center, spacing: .spacingM) {
-            if let viewModel {
-                Text(viewModel.title)
-                    .finnFont(style.titleStyle)
-                Text(viewModel.detail)
-                    .finnFont(style.detailStyle)
+            Text(viewModel.title)
+                .finnFont(style.titleStyle)
+            Text(viewModel.detail)
+                .finnFont(style.detailStyle)
 
-                VStack(spacing: .spacingXS) {
-                    primaryButton(for: viewModel)
+            VStack(spacing: .spacingXS) {
+                primaryButton(for: viewModel)
 
-                    secondaryButton(for: viewModel)
-                }
+                secondaryButton(for: viewModel)
             }
         }
         .multilineTextAlignment(.center)
