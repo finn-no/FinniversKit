@@ -18,7 +18,7 @@ class PromotionDemoView: UIView, Demoable {
         text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
         image: UIImage(named: .hjerterom),
         imageAlignment: .fullWidth,
-        imageBackgroundColor: .btnAction,
+        imageBackgroundColor: .nmpBrandDecoration,
         primaryButtonTitle: "Gå til Hjerterom"
     )
 
