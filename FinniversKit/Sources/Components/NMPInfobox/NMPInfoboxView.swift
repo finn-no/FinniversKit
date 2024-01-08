@@ -95,7 +95,7 @@ public struct NMPInfoboxView: View {
                     .buttonStyle(InlineFlatStyle())
                 }
 
-                HStack(spacing: 8) {
+                HStack(spacing: .spacingS) {
                     if let primaryButtonInteraction = viewModel.primaryButtonInteraction {
                         SwiftUI.Button(
                             action: { primaryButtonInteraction.onTapped() },
@@ -122,7 +122,7 @@ public struct NMPInfoboxView: View {
         .padding(.spacingM)
         .overlay( // border
             RoundedRectangle(cornerRadius: 4)
-                .stroke(viewModel.informationType.borderColor, lineWidth: 1.0)
+                .stroke(viewModel.informationType.borderColor, lineWidth: 1)
         )
         .overlay( // sidebar
             Rectangle()
@@ -132,7 +132,7 @@ public struct NMPInfoboxView: View {
         )
         .frame(maxWidth: .infinity)
         .background(viewModel.informationType.backgroundColor)
-        .cornerRadius(.spacingXS)
+        .cornerRadius(8)
     }
 }
 
