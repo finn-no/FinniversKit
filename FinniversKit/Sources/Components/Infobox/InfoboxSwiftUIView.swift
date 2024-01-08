@@ -7,19 +7,27 @@ import SwiftUI
 public struct InfoboxSwiftUIView: View {
     public let style: InfoboxView.Style
     public var viewModel: InfoboxViewModel?
-    public var onPrimaryButtonTapped: (() -> Void)?
-    public var onSecondaryButtonTapped: (() -> Void)?
+    var onPrimaryButtonTapped: (() -> Void)?
+    var onSecondaryButtonTapped: (() -> Void)?
 
     public init(
         style: InfoboxView.Style,
-        viewModel: InfoboxViewModel? = nil,
-        onPrimaryButtonTapped: (() -> Void)? = nil,
-        onSecondaryButtonTapped: (() -> Void)? = nil
+        viewModel: InfoboxViewModel? = nil
     ) {
         self.style = style
         self.viewModel = viewModel
-        self.onPrimaryButtonTapped = onPrimaryButtonTapped
-        self.onSecondaryButtonTapped = onSecondaryButtonTapped
+    }
+
+    public func onPrimaryButtonTapped(_ handler: @escaping () -> Void) -> Self {
+        var infobox = self
+        infobox.onPrimaryButtonTapped = handler
+        return infobox
+    }
+
+    public func onSecondaryButtonTapped(_ handler: @escaping () -> Void) -> Self {
+        var infobox = self
+        infobox.onSecondaryButtonTapped = handler
+        return infobox
     }
 
     public var body: some View {

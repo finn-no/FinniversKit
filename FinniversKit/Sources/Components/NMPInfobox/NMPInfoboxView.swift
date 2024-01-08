@@ -75,11 +75,11 @@ public struct NMPInfoboxView: View {
     }
 
     public var body: some View {
-        HStack(alignment: .top, spacing: 8) {
+        HStack(alignment: .top, spacing: .spacingS) {
 
             viewModel.informationType.icon
 
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: .spacingS) {
                 Text(viewModel.title)
                     .finnFont(viewModel.titleStyle)
                 Text(viewModel.detail)
@@ -101,7 +101,6 @@ public struct NMPInfoboxView: View {
                             action: { primaryButtonInteraction.onTapped() },
                             label: {
                                 Text(primaryButtonInteraction.title)
-
                             }
                         )
                         .buttonStyle(DefaultStyle(fullWidth: false))
@@ -128,12 +127,12 @@ public struct NMPInfoboxView: View {
         .overlay( // sidebar
             Rectangle()
                 .fill(viewModel.informationType.sideboxColor)
-                .frame(width: 4),
+                .frame(width: .spacingXS),
             alignment: .leading
         )
-        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+        .frame(maxWidth: .infinity)
         .background(viewModel.informationType.backgroundColor)
-        .cornerRadius(4, corners: .allCorners)
+        .cornerRadius(.spacingXS)
     }
 }
 

@@ -10,14 +10,14 @@ struct InfoboxSwiftUIPresentationView: View {
 
                 InfoboxSwiftUIView(
                     style: .small(backgroundColor: .bgSecondary),
-                    viewModel: InfoboxDefaultData(),
-                    onPrimaryButtonTapped: {
-                        print("primary button tapped")
-                    },
-                    onSecondaryButtonTapped: {
-                        print("secondary button tapped")
-                    }
+                    viewModel: InfoboxDefaultData()
                 )
+                .onPrimaryButtonTapped {
+                    print("primary button tapped")
+                }
+                .onSecondaryButtonTapped {
+                    print("secondary button tapped")
+                }
 
                 Divider()
 
@@ -27,28 +27,29 @@ struct InfoboxSwiftUIPresentationView: View {
                         backgroundColor: .bgPrimary,
                         primaryButtonIcon: UIImage(named: .webview)
                     ),
-                    viewModel: InfoboxOpenBrowserData(),
-                    onPrimaryButtonTapped: {
-                        print("primary button tapped")
-                    },
-                    onSecondaryButtonTapped: {
-                        print("secondary button tapped")
-                    }
+                    viewModel: InfoboxOpenBrowserData()
                 )
+                .onPrimaryButtonTapped {
+                    print("primary button tapped")
+                }
+                .onSecondaryButtonTapped {
+                    print("secondary button tapped")
+                }
 
                 Divider()
 
                 Text("Style: .warning")
                 InfoboxSwiftUIView(
                     style: .warning,
-                    viewModel: InfoboxWarningData(),
-                    onPrimaryButtonTapped: {
-                        print("primary button tapped")
-                    },
-                    onSecondaryButtonTapped: {
-                        print("if you can read this...we have a problem :)")
-                    }
+                    viewModel: InfoboxWarningData()
                 )
+                .onPrimaryButtonTapped {
+                    print("primary button tapped")
+                }
+                .onSecondaryButtonTapped {
+                    print("if you can read this...we have a problem :)")
+                }
+
             }
             .finnFont(.caption)
             .foregroundStyle(.secondary)
