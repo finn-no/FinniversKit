@@ -2,13 +2,13 @@ import DemoKit
 import FinniversKit
 import SwiftUI
 
-struct InfoboxSwiftUIPresentationView: View {
-    let models: [InfoboxSwiftUIViewModel]
+struct NMPInfoboxPresentationView: View {
+    let models: [NMPInfoboxView.ViewModel]
     var body: some View {
         ScrollView {
             VStack {
                 ForEach(models) { model in
-                    InfoboxSwiftUIView(viewModel: model)
+                    NMPInfoboxView(viewModel: model)
                 }
             }
             .padding()
@@ -16,10 +16,10 @@ struct InfoboxSwiftUIPresentationView: View {
     }
 }
 
-class InfoboxSwiftUIViewController: UIHostingController<InfoboxSwiftUIPresentationView>, Demoable {
+class NMPInfoboxViewController: UIHostingController<NMPInfoboxPresentationView>, Demoable {
 
     init() {
-        super.init(rootView: InfoboxSwiftUIPresentationView(models: []))
+        super.init(rootView: NMPInfoboxPresentationView(models: []))
     }
 
     @MainActor required dynamic init?(coder aDecoder: NSCoder) {
@@ -28,7 +28,7 @@ class InfoboxSwiftUIViewController: UIHostingController<InfoboxSwiftUIPresentati
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let models: [InfoboxSwiftUIViewModel] = [
+        let models: [NMPInfoboxView.ViewModel] = [
             .init(
                 informationType: .critical,
                 title: "Critical",
@@ -81,6 +81,6 @@ class InfoboxSwiftUIViewController: UIHostingController<InfoboxSwiftUIPresentati
                 detail: "With pretty colors!"
             )
         ]
-        rootView = InfoboxSwiftUIPresentationView(models: models)
+        rootView = NMPInfoboxPresentationView(models: models)
     }
 }
