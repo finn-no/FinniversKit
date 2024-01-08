@@ -104,7 +104,7 @@ public struct NMPInfoboxView: View {
             }
 
         }
-        .padding(16)
+        .padding(.spacingM)
         .overlay( // border
             RoundedRectangle(cornerRadius: 4)
                 .stroke(viewModel.informationType.borderColor, lineWidth: 1.0)
