@@ -94,6 +94,7 @@ public struct InfoboxSwiftUIView: View {
         ),
         viewModel: MockInfoboxViewModel.mock
     )
+    .padding()
 }
 
 private struct MockInfoboxViewModel: InfoboxViewModel {

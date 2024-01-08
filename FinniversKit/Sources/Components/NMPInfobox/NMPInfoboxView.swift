@@ -5,6 +5,17 @@
 import SwiftUI
 
 public extension NMPInfoboxView {
+    /**
+     ViewModel for the NMPInfoboxView
+
+     This allows you to populate the info box with:
+
+     - an`InformationType` `enum` for this view
+     - a title
+     - a detail message
+     - optional link, primary and secondary `Interaction`s  if needed
+
+     */
     struct ViewModel: Swift.Identifiable {
         public struct Interaction {
             public let title: String
@@ -50,7 +61,12 @@ public extension NMPInfoboxView {
     }
 }
 
-#warning("Og så skal der laves en SwiftUI version som rent faktisk bruger den der Infobox ting")
+/**
+ A SwiftUI view to match the Warp Infobox component,
+
+ - Parameters:
+    - viewModel: A `NMPInfobox.ViewModel` to configure the Infobox
+ */
 public struct NMPInfoboxView: View {
     public let viewModel: ViewModel
 

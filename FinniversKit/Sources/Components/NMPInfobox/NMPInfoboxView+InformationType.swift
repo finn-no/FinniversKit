@@ -5,6 +5,15 @@
 import SwiftUI
 
 public extension NMPInfoboxView {
+    /**
+     Describes which type of information to present.
+
+     You can use the default values as defined in Warp or you can create a `.custom` information type and thereby add your own:
+        - backgroundColor
+        - optional borderColor
+        - optional sidebarColor
+        - optional iconImage
+     */
     enum InformationType {
         case critical
         case information
