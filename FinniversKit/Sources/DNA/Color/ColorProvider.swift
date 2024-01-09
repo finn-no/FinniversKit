@@ -195,7 +195,7 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var textCritical: UIColor {
-        .dynamicColor( defaultColor: .red600, darkModeColor: .red400 )
+        .dynamicColor( defaultColor: .red600, darkModeColor: .red400)
     }
 
     public var accentPrimaryBlue: UIColor {
