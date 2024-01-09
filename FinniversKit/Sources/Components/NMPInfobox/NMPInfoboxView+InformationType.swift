@@ -10,9 +10,13 @@ public extension NMPInfoboxView {
 
      You can use the default values as defined in Warp or you can create a `.custom` information type and thereby add your own:
         - backgroundColor
+        - optional subtleBorderColor
         - optional borderColor
-        - optional sidebarColor
         - optional iconImage
+
+    Where
+    - `subtleBorderColor` is the color used for the border around your infobox
+     - `borderColor` is the color used for the left 4px wide border
      */
     enum InformationType {
         case critical
@@ -21,8 +25,8 @@ public extension NMPInfoboxView {
         case warning
         case custom(
             backgroundColor: Color,
+            subtleBorderColor: Color?,
             borderColor: Color?,
-            sidebarColor: Color?,
             iconImage: Image?
         )
 
@@ -41,33 +45,33 @@ public extension NMPInfoboxView {
             }
         }
 
-        var sideboxColor: Color {
-            switch self {
-            case .critical:
-                Color.sideboxCritical
-            case .custom(_, _, let sideboxColor, _):
-                sideboxColor ?? .clear
-            case .information:
-                Color.sideboxInfo
-            case .success:
-                Color.sideboxSuccess
-            case .warning:
-                Color.sideboxAlert
-            }
-        }
-
         var borderColor: Color {
             switch self {
             case .critical:
                 Color.borderCritical
-            case .custom(_, let borderColor, _, _):
+            case .custom(_, _, let borderColor, _):
                 borderColor ?? .clear
             case .information:
                 Color.borderInfo
             case .success:
                 Color.borderSuccess
             case .warning:
-                Color.borderAlert
+                Color.borderWarning
+            }
+        }
+
+        var subtleBorderColor: Color {
+            switch self {
+            case .critical:
+                Color.borderCriticalSubtle
+            case .custom(_, let subtleBorderColor, _, _):
+                subtleBorderColor ?? .clear
+            case .information:
+                Color.borderInfoSubtle
+            case .success:
+                Color.borderSuccessSubtle
+            case .warning:
+                Color.borderWarningSubtle
             }
         }
 

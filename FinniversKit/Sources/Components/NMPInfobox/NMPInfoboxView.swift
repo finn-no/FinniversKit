@@ -122,11 +122,11 @@ public struct NMPInfoboxView: View {
         .padding(.spacingM)
         .overlay( // border
             RoundedRectangle(cornerRadius: 4)
-                .stroke(viewModel.informationType.borderColor, lineWidth: 1)
+                .stroke(viewModel.informationType.subtleBorderColor, lineWidth: 1)
         )
         .overlay( // sidebar
             Rectangle()
-                .fill(viewModel.informationType.sideboxColor)
+                .fill(viewModel.informationType.borderColor)
                 .frame(width: .spacingXS),
             alignment: .leading
         )
@@ -205,8 +205,8 @@ private extension NMPInfoboxView.ViewModel {
         .init(
             informationType: .custom(
                 backgroundColor: .red,
-                borderColor: .blue,
-                sidebarColor: .green,
+                subtleBorderColor: .blue,
+                borderColor: .green,
                 iconImage: nil
             ),
             title: "Custom",

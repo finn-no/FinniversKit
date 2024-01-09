@@ -19,14 +19,14 @@ public protocol ColorProvider {
     var bgInfoHeader: UIColor { get }
     var bgSuccess: UIColor { get }
     var bgCritical: UIColor { get }
-    var borderAlert: UIColor { get }
-    var borderCritical: UIColor { get }
+    var borderInfoSubtle: UIColor { get }
+    var borderNegativeSubtle: UIColor { get }
+    var borderPositiveSubtle: UIColor { get }
+    var borderWarningSubtle: UIColor { get }
     var borderInfo: UIColor { get }
-    var borderSuccess: UIColor { get }
-    var sidebarAlert: UIColor { get }
-    var sidebarCritical: UIColor { get }
-    var sidebarInfo: UIColor { get }
-    var sidebarSuccess: UIColor { get }
+    var borderNegative: UIColor { get }
+    var borderPositive: UIColor { get }
+    var borderWarning: UIColor { get }
     var btnPrimary: UIColor { get }
     var btnDisabled: UIColor { get }
     var btnCritical: UIColor { get }
@@ -94,21 +94,21 @@ public struct DefaultColorProvider: ColorProvider {
 
     public var bgInformationSuccess: UIColor { .green50 }
 
-    public var borderAlert: UIColor { .yellow300 }
+    public var borderWarningSubtle: UIColor { .yellow300 }
 
-    public var borderCritical: UIColor { .red300 }
+    public var borderNegativeSubtle: UIColor { .red300 }
 
-    public var borderInfo: UIColor { .aqua300 }
+    public var borderInfoSubtle: UIColor { .aqua300 }
 
-    public var borderSuccess: UIColor { .green300 }
+    public var borderPositiveSubtle: UIColor { .green300 }
 
-    public var sidebarAlert: UIColor { .yellow600 }
+    public var borderWarning: UIColor { .yellow600 }
 
-    public var sidebarCritical: UIColor { .red600 }
+    public var borderNegative: UIColor { .red600 }
 
-    public var sidebarInfo: UIColor { .aqua600 }
+    public var borderInfo: UIColor { .aqua600 }
 
-    public var sidebarSuccess: UIColor { .green600 }
+    public var borderPositive: UIColor { .green600 }
 
     public var btnPrimary: UIColor { .dynamicColor(defaultColor: .blue600, darkModeColor: .darkCallToAction) }
 
@@ -130,7 +130,12 @@ public struct DefaultColorProvider: ColorProvider {
 
     public var textAlert: UIColor { .lightNuttyBrown }
 
-    public var textCritical: UIColor { .dynamicColor(defaultColor: .red600, darkModeColor: .red400) }
+    public var textCritical: UIColor {
+        .dynamicColor(
+            defaultColor: .red600,
+            darkModeColor: .red400
+        )
+    }
 
     public var accentPrimaryBlue: UIColor { .blue600 }
 

@@ -25,11 +25,16 @@ extension Color {
     public static var bgInfoHeader: Color           { Color(UIColor.bgInfoHeader) }
 
     // MARK: - Border
-    public static var borderAlert: Color    { Color(UIColor.borderAlert ) }
-    public static var borderCritical: Color { Color(UIColor.borderCritical ) }
-    public static var borderInfo: Color     { Color(UIColor.borderInfo ) }
-    public static var borderSuccess: Color  { Color(UIColor.borderSuccess ) }
+    public static var borderCriticalSubtle: Color   { Color(UIColor.borderNegativeSubtle ) }
+    public static var borderInfoSubtle: Color       { Color(UIColor.borderInfoSubtle ) }
+    public static var borderSuccessSubtle: Color    { Color(UIColor.borderPositiveSubtle ) }
+    public static var borderWarningSubtle: Color    { Color(UIColor.borderWarningSubtle ) }
 
+    public static var borderCritical: Color { Color(UIColor.borderNegative ) }
+    public static var borderInfo: Color { Color(UIColor.borderInfo ) }
+    public static var borderSuccess: Color { Color(UIColor.borderPositive ) }
+    public static var borderWarning: Color { Color(UIColor.borderWarning ) }
+    
     // MARK: - Button
 
     public static var btnPrimary: Color  { Color(UIColor.btnPrimary) }
@@ -53,13 +58,6 @@ extension Color {
     public static var iconPrimary: Color   { Color(UIColor.iconPrimary) }
     public static var iconSecondary: Color { Color(UIColor.iconSecondary) }
     public static var iconTertiary: Color  { Color(UIColor.iconTertiary) }
-
-    // MARK: - Infobox Sidebar
-
-    public static var sideboxAlert: Color { Color(UIColor.sidebarAlert ) }
-    public static var sideboxCritical: Color { Color(UIColor.sidebarCritical ) }
-    public static var sideboxInfo: Color { Color(UIColor.sidebarInfo ) }
-    public static var sideboxSuccess: Color { Color(UIColor.sidebarSuccess ) }
 
     // MARK: - Others
 
