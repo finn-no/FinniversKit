@@ -14,10 +14,10 @@ import UIKit
     public class var bgBottomSheet: UIColor { Config.colorProvider.bgBottomSheet }
     public class var bgCritical: UIColor { Config.colorProvider.bgCritical }
     public class var bgInfo: UIColor { Config.colorProvider.bgInfo }
-    public class var bgInformationAlert: UIColor { Config.colorProvider.bgInformationAlert }
-    public class var bgInformationCritical: UIColor { Config.colorProvider.bgInformationCritical }
-    public class var bgInformationInfo: UIColor { Config.colorProvider.bgInformationInfo }
-    public class var bgInformationSuccess: UIColor { Config.colorProvider.bgInformationSuccess }
+    public class var bgInfoSubtle: UIColor { Config.colorProvider.bgInfoSubtle }
+    public class var bgNegativeSubtle: UIColor { Config.colorProvider.bgNegativeSubtle }
+    public class var bgPositiveSubtle: UIColor { Config.colorProvider.bgPositiveSubtle }
+    public class var bgWarningSubtle: UIColor { Config.colorProvider.bgWarningSubtle }
     public class var bgInfoHeader: UIColor { Config.colorProvider.bgInfoHeader }
     public class var bgPrimary: UIColor { Config.colorProvider.bgPrimary }
     public class var bgQuaternary: UIColor { Config.colorProvider.bgQuaternary }
@@ -71,10 +71,10 @@ extension CGColor {
     public class var bgBottomSheet: CGColor { UIColor.bgBottomSheet.cgColor }
     public class var bgCritical: CGColor { UIColor.bgCritical.cgColor }
     public class var bgInfo: CGColor { UIColor.bgInfo.cgColor }
-    public class var bgInformationAlert: CGColor { Config.colorProvider.bgInformationAlert.cgColor }
-    public class var bgInformationCritical: CGColor { Config.colorProvider.bgInformationCritical.cgColor }
-    public class var bgInformationInfo: CGColor { Config.colorProvider.bgInformationInfo.cgColor }
-    public class var bgInformationSuccess: CGColor { Config.colorProvider.bgInformationSuccess.cgColor }
+    public class var bgInfoSubtle: CGColor { Config.colorProvider.bgInfoSubtle.cgColor }
+    public class var bgPositiveSubtle: CGColor { Config.colorProvider.bgPositiveSubtle.cgColor }
+    public class var bgNegativeSubtle: CGColor { Config.colorProvider.bgNegativeSubtle.cgColor }
+    public class var bgWarningSubtle: CGColor { Config.colorProvider.bgWarningSubtle.cgColor }
     public class var bgInfoHeader: CGColor { UIColor.bgInfoHeader.cgColor }
     public class var bgPrimary: CGColor { UIColor.bgPrimary.cgColor }
     public class var bgQuaternary: CGColor { UIColor.bgQuaternary.cgColor }

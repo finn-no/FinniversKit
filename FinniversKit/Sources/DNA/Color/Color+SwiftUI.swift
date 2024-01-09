@@ -18,10 +18,12 @@ extension Color {
     public static var bgSuccess: Color              { Color(UIColor.bgSuccess) }
     public static var bgCritical: Color             { Color(UIColor.bgCritical) }
     public static var bgInfo: Color                 { Color(UIColor.bgInfo) }
-    public static var bgInformationAlert: Color     { Color(UIColor.bgInformationAlert) }
-    public static var bgInformationCritical: Color  { Color(UIColor.bgInformationCritical) }
-    public static var bgInformationInfo: Color      { Color(UIColor.bgInformationInfo) }
-    public static var bgInformationSuccess: Color   { Color(UIColor.bgInformationSuccess) }
+
+    public static var bgInformationCriticalSubtle: Color  { Color(UIColor.bgNegativeSubtle) }
+    public static var bgInformationInfoSubtle: Color      { Color(UIColor.bgInfoSubtle) }
+    public static var bgInformationSuccessSubtle: Color   { Color(UIColor.bgPositiveSubtle) }
+    public static var bgInformationWarningSubtle: Color   { Color(UIColor.bgWarningSubtle) }
+
     public static var bgInfoHeader: Color           { Color(UIColor.bgInfoHeader) }
 
     // MARK: - Border
@@ -30,11 +32,11 @@ extension Color {
     public static var borderSuccessSubtle: Color    { Color(UIColor.borderPositiveSubtle ) }
     public static var borderWarningSubtle: Color    { Color(UIColor.borderWarningSubtle ) }
 
-    public static var borderCritical: Color { Color(UIColor.borderNegative ) }
-    public static var borderInfo: Color { Color(UIColor.borderInfo ) }
-    public static var borderSuccess: Color { Color(UIColor.borderPositive ) }
-    public static var borderWarning: Color { Color(UIColor.borderWarning ) }
-    
+    public static var borderCritical: Color         { Color(UIColor.borderNegative ) }
+    public static var borderInfo: Color             { Color(UIColor.borderInfo ) }
+    public static var borderSuccess: Color          { Color(UIColor.borderPositive ) }
+    public static var borderWarning: Color          { Color(UIColor.borderWarning ) }
+
     // MARK: - Button
 
     public static var btnPrimary: Color  { Color(UIColor.btnPrimary) }

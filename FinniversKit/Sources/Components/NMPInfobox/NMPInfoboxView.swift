@@ -146,7 +146,6 @@ public struct NMPInfoboxView: View {
         NMPInfoboxView(viewModel: .mockWarning)
         NMPInfoboxView(viewModel: .mockCustom)
     }
-    .padding()
 }
 
 private extension NMPInfoboxView.ViewModel {

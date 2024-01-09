@@ -33,15 +33,15 @@ public extension NMPInfoboxView {
         var backgroundColor: Color {
             switch self {
             case .critical:
-                Color.bgInformationCritical
+                Color.bgInformationCriticalSubtle
             case .custom(let backgroundColor, _, _, _):
                 backgroundColor
             case .information:
-                Color.bgInformationInfo
+                Color.bgInformationInfoSubtle
             case .success:
-                Color.bgInformationSuccess
+                Color.bgInformationSuccessSubtle
             case .warning:
-                Color.bgInformationAlert
+                Color.bgInformationWarningSubtle
             }
         }
 
