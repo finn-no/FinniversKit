@@ -26,7 +26,7 @@ public extension FloatingButton.Style {
             highlightedBackgroundColor: .red600.withAlphaComponent(0.8),
             borderWidth: .spacingXS,
             borderColor: .white,
-            badgeBackgroundColor: .btnPrimary,
+            badgeBackgroundColor: .nmpBrandDecoration,
             badgeTextColor: .textPrimary,
             badgeSize: 30,
             shadowColor: .black.withAlphaComponent(0.6),

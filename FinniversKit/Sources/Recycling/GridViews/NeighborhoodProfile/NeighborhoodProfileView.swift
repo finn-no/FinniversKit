@@ -77,8 +77,8 @@ public final class NeighborhoodProfileView: UIView {
 
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl(withAutoLayout: true)
-        pageControl.pageIndicatorTintColor = UIColor.btnPrimary.withAlphaComponent(0.2)
-        pageControl.currentPageIndicatorTintColor = .btnPrimary
+        pageControl.pageIndicatorTintColor = UIColor.nmpBrandControlSelected.withAlphaComponent(0.2)
+        pageControl.currentPageIndicatorTintColor = .nmpBrandControlSelected
         pageControl.addTarget(self, action: #selector(handlePageControlValueChange), for: .valueChanged)
         return pageControl
     }()

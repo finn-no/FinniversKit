@@ -8,7 +8,7 @@ public struct InlineFlatStyle: ButtonStyle {
     private let font: Font
     private let textColor: Color
 
-    public init(size: Button.Size = .normal, textColor: Color = .btnPrimary) {
+    public init(size: Button.Size = .normal, textColor: Color = .textAction) {
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
         self.textColor = textColor
     }
@@ -30,7 +30,7 @@ public struct FlatStyle: ButtonStyle {
 
     public init(
         size: Button.Size = .normal,
-        textColor: Color = .btnPrimary,
+        textColor: Color = .textAction,
         fullWidth: Bool = true,
         padding: EdgeInsets = .init(top: .spacingS, leading: .spacingM, bottom: .spacingS, trailing: .spacingM)
     ) {
@@ -65,7 +65,7 @@ public struct DefaultStyle: ButtonStyle {
 
     public init(
         size: Button.Size = .normal,
-        textColor: Color = .btnPrimary,
+        textColor: Color = .textAction,
         fullWidth: Bool = true,
         padding: EdgeInsets = .init(top: .spacingS, leading: .spacingM, bottom: .spacingS, trailing: .spacingM)
     ) {
@@ -95,7 +95,7 @@ public struct DefaultStyle: ButtonStyle {
         )
         .roundedBorder(
             radius: .spacingS,
-            color: configuration.isPressed ? .btnPrimary : .btnDisabled
+            color: configuration.isPressed ? .nmpBrandControlSelected : .btnDisabled
         )
     }
 }
