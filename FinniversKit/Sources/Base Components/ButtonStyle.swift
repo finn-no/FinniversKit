@@ -25,25 +25,32 @@ public struct FlatStyle: ButtonStyle {
     private let size: Button.Size
     private let font: Font
     private let textColor: Color
+    private let fullWidth: Bool
     private let padding: EdgeInsets
 
     public init(
         size: Button.Size = .normal,
         textColor: Color = .btnPrimary,
+        fullWidth: Bool = true,
         padding: EdgeInsets = .init(top: .spacingS, leading: .spacingM, bottom: .spacingS, trailing: .spacingM)
     ) {
         self.size = size
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
         self.textColor = textColor
+        self.fullWidth = fullWidth
         self.padding = padding
     }
 
     public func makeBody(configuration: Configuration) -> some View {
         HStack {
-            Spacer()
+            if fullWidth {
+                Spacer()
+            }
             InlineFlatStyle(size: size, textColor: textColor)
                 .makeBody(configuration: configuration)
-            Spacer()
+            if fullWidth {
+                Spacer()
+            }
         }
         .padding(padding)
     }
