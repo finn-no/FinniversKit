@@ -106,20 +106,20 @@ public struct DefaultColorProvider: ColorProvider {
         .red100
     }
 
-    public var bgWarningSubtle: UIColor {
-        .dynamicColor(defaultColor: .yellow50, darkModeColor: .yellow900)
+    public var bgInfoSubtle: UIColor {
+        .dynamicColor(defaultColor: .aqua50, darkModeColor: .aqua900)
     }
 
     public var bgNegativeSubtle: UIColor {
         .dynamicColor(defaultColor: .red50, darkModeColor: .red900)
     }
 
-    public var bgInfoSubtle: UIColor {
-        .dynamicColor(defaultColor: .aqua50, darkModeColor: .aqua900)
-    }
-
     public var bgPositiveSubtle: UIColor {
         .dynamicColor(defaultColor: .green50, darkModeColor: .green900)
+    }
+
+    public var bgWarningSubtle: UIColor {
+        .dynamicColor(defaultColor: .yellow50, darkModeColor: .yellow900)
     }
 
     public var borderInfo: UIColor {
