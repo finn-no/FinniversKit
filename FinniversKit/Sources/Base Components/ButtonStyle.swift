@@ -105,12 +105,20 @@ public struct CallToAction: ButtonStyle {
         background: Color = .btnPrimary,
         fullWidth: Bool = true,
         isEnabled: Binding<Bool>? = nil,
-        padding: EdgeInsets = .init(top: .spacingS, leading: .spacingM, bottom: .spacingS, trailing: .spacingM)
+        padding: EdgeInsets? = nil
     ) {
         self.background = background
         self.fullWidth = fullWidth
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
-        self.padding = padding
+
+        if let padding {
+            self.padding = padding
+        } else {
+            let verticalPadding: CGFloat = size == .normal ? .normalButtonVerticalPadding : .spacingS
+            let defaultPadding: EdgeInsets = .init(top: verticalPadding, leading: .spacingM, bottom: verticalPadding, trailing: .spacingM)
+            self.padding = defaultPadding
+        }
+
         if let isEnabledBinding = isEnabled {
             self._isEnabled = isEnabledBinding
         } else {
@@ -139,6 +147,10 @@ public struct CallToAction: ButtonStyle {
     private func dynamicBackground(_ configuration: Configuration) -> Color {
         configuration.isPressed ? background.opacity(0.8) : background
     }
+}
+
+private extension CGFloat {
+    static let normalButtonVerticalPadding: CGFloat = 13
 }
 
 #Preview {
