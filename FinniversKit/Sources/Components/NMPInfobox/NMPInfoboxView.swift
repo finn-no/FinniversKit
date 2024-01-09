@@ -69,6 +69,7 @@ public extension NMPInfoboxView {
  */
 public struct NMPInfoboxView: View {
     public let viewModel: ViewModel
+    private let cornerRadius: Double = 4
 
     public init(viewModel: ViewModel) {
         self.viewModel = viewModel
@@ -121,7 +122,7 @@ public struct NMPInfoboxView: View {
         }
         .padding(.spacingM)
         .overlay( // border
-            RoundedRectangle(cornerRadius: 4)
+            RoundedRectangle(cornerRadius: cornerRadius)
                 .stroke(viewModel.informationType.subtleBorderColor, lineWidth: 1)
         )
         .overlay( // sidebar
@@ -132,7 +133,7 @@ public struct NMPInfoboxView: View {
         )
         .frame(maxWidth: .infinity)
         .background(viewModel.informationType.backgroundColor)
-        .cornerRadius(8)
+        .cornerRadius(cornerRadius)
     }
 }
 

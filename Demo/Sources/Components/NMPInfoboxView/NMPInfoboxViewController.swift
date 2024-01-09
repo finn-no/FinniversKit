@@ -73,8 +73,8 @@ class NMPInfoboxViewController: UIHostingController<NMPInfoboxPresentationView>,
             .init(
                 informationType: .custom(
                     backgroundColor: .red,
-                    borderColor: .green,
-                    sidebarColor: .yellow,
+                    subtleBorderColor: .green,
+                    borderColor: .yellow,
                     iconImage: nil
                 ),
                 title: "Custom",
