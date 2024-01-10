@@ -345,6 +345,9 @@
 		AF91BB97202C74D0003E6366 /* BroadcastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BB96202C74D0003E6366 /* BroadcastItem.swift */; };
 		AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BBA0202C8B72003E6366 /* Broadcast+Style.swift */; };
 		B01D70BABC86CE9552C07C2A /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D7CF174F019F9D8C9DA51 /* RoundedImageView.swift */; };
+		B26B582E2B4BD695000E0245 /* NMPInfoboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26B582C2B4BD695000E0245 /* NMPInfoboxView.swift */; };
+		B26B582F2B4BD695000E0245 /* NMPInfoboxView+InformationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26B582D2B4BD695000E0245 /* NMPInfoboxView+InformationType.swift */; };
+		B26B58312B4BDD15000E0245 /* InfoboxSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26B58302B4BDD15000E0245 /* InfoboxSwiftUIView.swift */; };
 		B6801C1C2982ECCA004A0F4F /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6801C1B2982ECCA004A0F4F /* SettingsHeaderView.swift */; };
 		CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F08C20615990002AA385 /* TextField+State.swift */; };
 		CF05B7E023325968003A7F1C /* FavoriteFolderActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05B7DF23325968003A7F1C /* FavoriteFolderActionButton.swift */; };
@@ -862,6 +865,9 @@
 		AF91BB96202C74D0003E6366 /* BroadcastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastItem.swift; sourceTree = "<group>"; };
 		AF91BBA0202C8B72003E6366 /* Broadcast+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Broadcast+Style.swift"; sourceTree = "<group>"; };
 		B01D7CF174F019F9D8C9DA51 /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
+		B26B582C2B4BD695000E0245 /* NMPInfoboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NMPInfoboxView.swift; sourceTree = "<group>"; };
+		B26B582D2B4BD695000E0245 /* NMPInfoboxView+InformationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NMPInfoboxView+InformationType.swift"; sourceTree = "<group>"; };
+		B26B58302B4BDD15000E0245 /* InfoboxSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxSwiftUIView.swift; sourceTree = "<group>"; };
 		B6801C1B2982ECCA004A0F4F /* SettingsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD2F08C20615990002AA385 /* TextField+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+State.swift"; sourceTree = "<group>"; };
@@ -1579,6 +1585,7 @@
 				5DCE0880280FDDDA00ED7407 /* MonthAndYearPickerView */,
 				89A7A63A2253376D0053D33B /* NativeAdvert */,
 				4D152E722577D7C400282244 /* NavigationLinkView */,
+				B26B582B2B4BD695000E0245 /* NMPInfobox */,
 				8D6807E8380DAE7E730CC80D /* NumberedListView */,
 				9B28DE7E23266C2500D69C15 /* Panel */,
 				CF13D6CB2292D2100087DA37 /* Phases */,
@@ -2720,6 +2727,16 @@
 			path = RoundedImageView;
 			sourceTree = "<group>";
 		};
+		B26B582B2B4BD695000E0245 /* NMPInfobox */ = {
+			isa = PBXGroup;
+			children = (
+				B26B582C2B4BD695000E0245 /* NMPInfoboxView.swift */,
+				B26B582D2B4BD695000E0245 /* NMPInfoboxView+InformationType.swift */,
+			);
+			name = NMPInfobox;
+			path = Sources/Components/NMPInfobox;
+			sourceTree = SOURCE_ROOT;
+		};
 		CF0F6B902360682100CA62FD /* Priming */ = {
 			isa = PBXGroup;
 			children = (
@@ -2736,6 +2753,7 @@
 				CF136ACC2203211100247B30 /* InfoboxView.swift */,
 				9B238F01225B95F600B0E0C2 /* InfoboxView+Style.swift */,
 				CF136ACE220327F500247B30 /* InfoboxViewModel.swift */,
+				B26B58302B4BDD15000E0245 /* InfoboxSwiftUIView.swift */,
 			);
 			path = Infobox;
 			sourceTree = "<group>";
@@ -3719,6 +3737,7 @@
 				CFB775F22359D8360097C0ED /* FloatingButton+Favorites.swift in Sources */,
 				179D06B62907D66E00A65E3A /* HTMLLexer.swift in Sources */,
 				441FE44B209A2F2C00B04EF1 /* NotificationsListViewCell.swift in Sources */,
+				B26B582E2B4BD695000E0245 /* NMPInfoboxView.swift in Sources */,
 				CF0F6B992360784C00CA62FD /* PrimingViewModel.swift in Sources */,
 				082D80D521C15C9200831BDE /* CandyCaneView.swift in Sources */,
 				9BCE6A3E23C7272200F37F6D /* BetaFeatureView.swift in Sources */,
@@ -3953,6 +3972,7 @@
 				43BACE6C21117D530052114C /* BuyerPickerViewModel.swift in Sources */,
 				F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */,
 				E65085D1292BBF1D00A43B07 /* SwiftUICheckBox.swift in Sources */,
+				B26B58312B4BDD15000E0245 /* InfoboxSwiftUIView.swift in Sources */,
 				5D0ED35125A49FA7007750D0 /* FinnTextField+Style.swift in Sources */,
 				9F84F96B29277B1000631443 /* BrazePromotionViewModel.swift in Sources */,
 				F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */,
@@ -3993,6 +4013,7 @@
 				9F21325E45E1BB6A5F076211 /* FullscreenGalleryDismissalTransition.swift in Sources */,
 				CF87A856229C0C5700DA8243 /* ContactFormCheckbox.swift in Sources */,
 				9F213D4043DC51660E6EF81B /* FullscreenGalleryTransitionAware.swift in Sources */,
+				B26B582F2B4BD695000E0245 /* NMPInfoboxView+InformationType.swift in Sources */,
 				CF164D17230FFDEB00250822 /* FavoriteAdAction.swift in Sources */,
 				DA083E7324630BC400B26235 /* SettingsSection.swift in Sources */,
 				494047FE23CDBBA100ECBCFD /* ViewingItemViewModel.swift in Sources */,

@@ -112,6 +112,10 @@ enum ImageAsset: String {
     case help
     case hide
     case important
+    case infoboxCritical
+    case infoboxInfo
+    case infoboxSuccess
+    case infoboxWarning
     case klimabroletBanner
     case listView
     case magnifyingGlass
@@ -251,6 +255,10 @@ enum ImageAsset: String {
             .help,
             .hide,
             .important,
+            .infoboxCritical,
+            .infoboxInfo,
+            .infoboxSuccess,
+            .infoboxWarning,
             .klimabroletBanner,
             .listView,
             .magnifyingGlass,

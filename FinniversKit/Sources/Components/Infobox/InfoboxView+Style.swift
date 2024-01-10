@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 public extension InfoboxView {
     enum Style {
@@ -108,5 +109,45 @@ public extension InfoboxView {
                 return nil
             }
         }
+    }
+}
+
+struct PrimaryButtonStyleModifier: ViewModifier {
+    let style: InfoboxView.Style
+    func body(content: Content) -> some View {
+        switch style {
+        case .small:
+            content.buttonStyle(DefaultStyle())
+        case .normal:
+            content.buttonStyle(CallToAction())
+        case .warning:
+            content.buttonStyle(FlatStyle())
+        }
+    }
+}
+
+extension View {
+    func primaryButtonStyle(for style: InfoboxView.Style) -> some View {
+        self.modifier(PrimaryButtonStyleModifier(style: style))
+    }
+}
+
+struct SecondaryButtonStyleModifier: ViewModifier {
+    let style: InfoboxView.Style
+    func body(content: Content) -> some View {
+        switch style {
+        case .small:
+            content.buttonStyle(FlatStyle())
+        case .normal:
+            content.buttonStyle(InlineFlatStyle())
+        default:
+            content.buttonStyle(DefaultStyle())
+        }
+    }
+}
+
+extension View {
+    func secondaryButtonStyle(for style: InfoboxView.Style) -> some View {
+        self.modifier(SecondaryButtonStyleModifier(style: style))
     }
 }
