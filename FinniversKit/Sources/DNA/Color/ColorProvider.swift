@@ -12,9 +12,21 @@ public protocol ColorProvider {
     var bgBottomSheet: UIColor { get }
     var bgAlert: UIColor { get }
     var bgInfo: UIColor { get }
+    var bgWarningSubtle: UIColor { get }
+    var bgNegativeSubtle: UIColor { get }
+    var bgInfoSubtle: UIColor { get }
+    var bgPositiveSubtle: UIColor { get }
     var bgInfoHeader: UIColor { get }
     var bgSuccess: UIColor { get }
     var bgCritical: UIColor { get }
+    var borderInfo: UIColor { get }
+    var borderNegative: UIColor { get }
+    var borderPositive: UIColor { get }
+    var borderWarning: UIColor { get }
+    var borderInfoSubtle: UIColor { get }
+    var borderNegativeSubtle: UIColor { get }
+    var borderPositiveSubtle: UIColor { get }
+    var borderWarningSubtle: UIColor { get }
     var btnPrimary: UIColor { get }
     var btnDisabled: UIColor { get }
     var btnCritical: UIColor { get }
@@ -94,6 +106,54 @@ public struct DefaultColorProvider: ColorProvider {
         .red100
     }
 
+    public var bgInfoSubtle: UIColor {
+        .dynamicColor(defaultColor: .aqua50, darkModeColor: .aqua900)
+    }
+
+    public var bgNegativeSubtle: UIColor {
+        .dynamicColor(defaultColor: .red50, darkModeColor: .red900)
+    }
+
+    public var bgPositiveSubtle: UIColor {
+        .dynamicColor(defaultColor: .green50, darkModeColor: .green900)
+    }
+
+    public var bgWarningSubtle: UIColor {
+        .dynamicColor(defaultColor: .yellow50, darkModeColor: .yellow900)
+    }
+
+    public var borderInfo: UIColor {
+        .dynamicColor(defaultColor: .aqua600, darkModeColor: .aqua500)
+    }
+
+    public var borderNegative: UIColor {
+        .dynamicColor(defaultColor: .red600, darkModeColor: .red500)
+    }
+
+    public var borderPositive: UIColor {
+        .dynamicColor(defaultColor: .green600, darkModeColor: .green500)
+    }
+
+    public var borderWarning: UIColor {
+        .dynamicColor(defaultColor: .yellow600, darkModeColor: .yellow500)
+    }
+
+    public var borderInfoSubtle: UIColor {
+        .dynamicColor(defaultColor: .aqua300, darkModeColor: .aqua700)
+    }
+
+    public var borderNegativeSubtle: UIColor {
+        .dynamicColor(defaultColor: .red300, darkModeColor: .red700)
+    }
+
+    public var borderPositiveSubtle: UIColor {
+        .dynamicColor(defaultColor: .green300, darkModeColor: .green700)
+    }
+
+    public var borderWarningSubtle: UIColor {
+        .dynamicColor(defaultColor: .yellow300, darkModeColor: .yellow700)
+    }
+
     public var btnPrimary: UIColor {
         .dynamicColor(defaultColor: .blue600, darkModeColor: .darkCallToAction)
     }
@@ -129,13 +189,13 @@ public struct DefaultColorProvider: ColorProvider {
     public var textDisabled: UIColor {
         .dynamicColor(defaultColor: .blueGray300, darkModeColor: .darkSardine)
     }
-    
+
     public var textAlert: UIColor {
         .lightNuttyBrown
     }
 
     public var textCritical: UIColor {
-        .dynamicColor(defaultColor: .red600, darkModeColor: .red400)
+        .dynamicColor( defaultColor: .red600, darkModeColor: .red400)
     }
 
     public var accentPrimaryBlue: UIColor {
@@ -171,7 +231,7 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var decorationSubtle: UIColor {
-        return .btnDisabled
+        .btnDisabled
     }
 
     public var iconPrimary: UIColor {

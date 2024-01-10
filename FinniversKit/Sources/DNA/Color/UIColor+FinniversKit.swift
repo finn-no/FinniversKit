@@ -14,6 +14,10 @@ import UIKit
     public class var bgBottomSheet: UIColor { Config.colorProvider.bgBottomSheet }
     public class var bgCritical: UIColor { Config.colorProvider.bgCritical }
     public class var bgInfo: UIColor { Config.colorProvider.bgInfo }
+    public class var bgInfoSubtle: UIColor { Config.colorProvider.bgInfoSubtle }
+    public class var bgNegativeSubtle: UIColor { Config.colorProvider.bgNegativeSubtle }
+    public class var bgPositiveSubtle: UIColor { Config.colorProvider.bgPositiveSubtle }
+    public class var bgWarningSubtle: UIColor { Config.colorProvider.bgWarningSubtle }
     public class var bgInfoHeader: UIColor { Config.colorProvider.bgInfoHeader }
     public class var bgPrimary: UIColor { Config.colorProvider.bgPrimary }
     public class var bgQuaternary: UIColor { Config.colorProvider.bgQuaternary }
@@ -21,6 +25,14 @@ import UIKit
     public class var bgSuccess: UIColor { Config.colorProvider.bgSuccess }
     public class var bgTertiary: UIColor { Config.colorProvider.bgTertiary }
     public class var borderDefault: UIColor { Config.colorProvider.borderDefault }
+    public class var borderInfoSubtle: UIColor { Config.colorProvider.borderInfoSubtle }
+    public class var borderNegativeSubtle: UIColor { Config.colorProvider.borderNegativeSubtle }
+    public class var borderPositiveSubtle: UIColor { Config.colorProvider.borderPositiveSubtle }
+    public class var borderWarningSubtle: UIColor { Config.colorProvider.borderWarningSubtle }
+    public class var borderInfo: UIColor { Config.colorProvider.borderInfo }
+    public class var borderNegative: UIColor { Config.colorProvider.borderNegative }
+    public class var borderPositive: UIColor { Config.colorProvider.borderPositive }
+    public class var borderWarning: UIColor { Config.colorProvider.borderWarning }
     public class var btnAction: UIColor { Config.colorProvider.btnAction }
     public class var btnCritical: UIColor { Config.colorProvider.btnCritical }
     public class var btnDisabled: UIColor { Config.colorProvider.btnDisabled }
@@ -59,6 +71,10 @@ extension CGColor {
     public class var bgBottomSheet: CGColor { UIColor.bgBottomSheet.cgColor }
     public class var bgCritical: CGColor { UIColor.bgCritical.cgColor }
     public class var bgInfo: CGColor { UIColor.bgInfo.cgColor }
+    public class var bgInfoSubtle: CGColor { Config.colorProvider.bgInfoSubtle.cgColor }
+    public class var bgPositiveSubtle: CGColor { Config.colorProvider.bgPositiveSubtle.cgColor }
+    public class var bgNegativeSubtle: CGColor { Config.colorProvider.bgNegativeSubtle.cgColor }
+    public class var bgWarningSubtle: CGColor { Config.colorProvider.bgWarningSubtle.cgColor }
     public class var bgInfoHeader: CGColor { UIColor.bgInfoHeader.cgColor }
     public class var bgPrimary: CGColor { UIColor.bgPrimary.cgColor }
     public class var bgQuaternary: CGColor { UIColor.bgQuaternary.cgColor }
@@ -66,6 +82,14 @@ extension CGColor {
     public class var bgSuccess: CGColor { UIColor.bgSuccess.cgColor }
     public class var bgTertiary: CGColor { UIColor.bgTertiary.cgColor }
     public class var borderDefault: CGColor { UIColor.borderDefault.cgColor }
+    public class var borderInfo: CGColor { Config.colorProvider.borderInfo.cgColor }
+    public class var borderNegative: CGColor { Config.colorProvider.borderNegative.cgColor }
+    public class var borderPositive: CGColor { Config.colorProvider.borderPositive.cgColor }
+    public class var borderWarning: CGColor { Config.colorProvider.borderWarning.cgColor }
+    public class var borderInfoSubtle: CGColor { Config.colorProvider.borderInfoSubtle.cgColor }
+    public class var borderNegativeSubtle: CGColor { Config.colorProvider.borderNegativeSubtle.cgColor }
+    public class var borderPositiveSubtle: CGColor { Config.colorProvider.borderPositiveSubtle.cgColor }
+    public class var borderWarningSubtle: CGColor { Config.colorProvider.borderWarningSubtle.cgColor }
     public class var btnAction: CGColor { UIColor.btnAction.cgColor }
     public class var btnCritical: CGColor { UIColor.btnCritical.cgColor }
     public class var btnDisabled: CGColor { UIColor.btnDisabled.cgColor }
