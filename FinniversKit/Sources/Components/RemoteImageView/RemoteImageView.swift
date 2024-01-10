@@ -51,6 +51,10 @@ public class RemoteImageView: UIImageView {
             isLoadingImage = true
             backgroundColor = loadingColor
             dataSource.remoteImageView(self, loadImageWithPath: imagePath, imageWidth: imageWidth, completion: { [weak self] fetchedImage in
+                guard imagePath == self?.imagePath else {
+                    return
+                }
+
                 let image = modify?(fetchedImage) ?? fetchedImage
                 self?.setImage(image ?? fallbackImage, animated: false, backgroundColor: loadedColor)
                 self?.isLoadingImage = false
