@@ -173,14 +173,14 @@ extension AdRecommendationsGridView: UICollectionViewDataSource {
             preconditionFailure("Data source not configured correctly")
         }
 
-        return cell
-    }
-
-    public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if let cell = cell as? ImageLoadable {
             cell.loadImage()
         }
 
+        return cell
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         delegate?.adRecommendationsGridView(self, willDisplayItemAtIndex: indexPath.row)
     }
 
