@@ -381,22 +381,6 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         self.imageView.alpha = 1.0
     }
 
-    private func setImage(_ image: UIImage?, animated: Bool) {
-        imageView.image = image
-
-        let performViewChanges = { [weak self] in
-            self?.imageView.alpha = 1.0
-            self?.imageContentView.backgroundColor = .clear
-        }
-
-        if animated {
-            imageView.alpha = 0.0
-            UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseOut], animations: performViewChanges)
-        } else {
-            performViewChanges()
-        }
-    }
-
     @objc private func handleFavoriteButtonTap(_ button: UIButton) {
         delegate?.adRecommendationCell(self, didTapFavoriteButton: button)
     }
