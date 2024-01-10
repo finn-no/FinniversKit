@@ -38,8 +38,10 @@ public class RemoteImageView: UIImageView {
         modify: ((UIImage?) -> UIImage?)? = nil
     ) {
         cancelLoading()
+
         self.imagePath = imagePath
         self.imageWidth = imageWidth
+
         guard let dataSource = dataSource else {
             setImage(fallbackImage, animated: false)
             return
