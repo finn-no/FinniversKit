@@ -86,6 +86,7 @@ class FavoriteAdsListDemoView: UIView {
 extension FavoriteAdsListDemoView: TweakableDemo {
     enum Tweaks: String, CaseIterable, TweakingOption {
         case selectionMode
+        case selectionModeWithMessages
         case selectionModeWithLongTitle
         case emptyFolder
         case editModeNoneSelected
@@ -103,6 +104,8 @@ extension FavoriteAdsListDemoView: TweakableDemo {
     }
 
     func configure(forTweakAt index: Int) {
+        favoritesListView.configure(infoMessages: [])
+
         switch Tweaks.allCases[index] {
         case .selectionMode:
             resetViewModels()
@@ -110,6 +113,23 @@ extension FavoriteAdsListDemoView: TweakableDemo {
             favoritesListView.setEditing(false)
             resetHeader()
             favoritesListView.isFooterShareButtonHidden = true
+        case .selectionModeWithMessages:
+            resetViewModels()
+            setReadOnly(false)
+            favoritesListView.setEditing(false)
+            resetHeader()
+            favoritesListView.isFooterShareButtonHidden = true
+            favoritesListView.configure(infoMessages: [
+                .message(
+                    "This is a single demo message. It's kinda long, but it should still present as needed",
+                    backgroundColor: .aqua50
+                ),
+                .infobox(
+                    title: "Important message",
+                    message: "There is an important message we want to inform you about. That message will appear here.",
+                    style: .warning
+                )
+            ])
         case .selectionModeWithLongTitle:
             resetViewModels()
             setReadOnly(false)
@@ -271,8 +291,6 @@ extension FavoriteAdsListViewModel {
         emptySearchViewBodyPrefix: "Vi fant visst ingen favoritter for",
         emptyListViewTitle: "Her var det stille gitt...",
         emptyListViewBody: "Det er ikke lagt til noen favoritter i denne listen enda.",
-        emptyListViewImage: UIImage(named: .heartEmpty),
-        panelTextOnboarding: "Leiligheter og biler har flyttet fra Tori. Du finner leilighetene du har lagret som favoritter i fremtiden på Oikotieltä og kjøretøyene på Tori Autoista.",
-        showPanelForOnboarding: true
+        emptyListViewImage: UIImage(named: .heartEmpty)
     )
 }
