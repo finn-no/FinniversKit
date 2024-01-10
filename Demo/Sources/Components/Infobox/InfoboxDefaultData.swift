@@ -24,3 +24,10 @@ public struct InfoboxWarningData: InfoboxViewModel {
     public let primaryButtonTitle = "Endre søket"
     public let secondaryButtonTitle = ""
 }
+
+public struct InfoboxNoButtons: InfoboxViewModel {
+    public let title = "Look at me"
+    public let detail = "I'm an Infobox without any buttons!"
+    public let primaryButtonTitle = ""
+    public let secondaryButtonTitle = ""
+}

@@ -18,9 +18,10 @@ public class Panel: UIView {
 
     private let style: Panel.Style
 
-    public init(style: Panel.Style) {
+    public init(style: Panel.Style, withAutoLayout: Bool = false) {
         self.style = style
         super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setup()
     }
 
