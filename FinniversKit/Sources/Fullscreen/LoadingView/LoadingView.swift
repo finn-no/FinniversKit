@@ -57,7 +57,7 @@ import UIKit
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.image = UIImage(named: .checkmarkBig).withRenderingMode(.alwaysTemplate)
-        view.tintColor = LoadingView.shouldUseOldIndicator ? .btnPrimary : .accentSecondaryBlue
+        view.tintColor = LoadingView.shouldUseOldIndicator ? .nmpBrandDecoration : .accentSecondaryBlue
         view.alpha = 0
         view.transform = loadingIndicatorInitialTransform
         return view

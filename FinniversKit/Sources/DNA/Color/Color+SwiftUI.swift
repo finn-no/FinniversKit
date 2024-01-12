@@ -42,6 +42,8 @@ extension Color {
     public static var btnPrimary: Color  { Color(UIColor.btnPrimary) }
     public static var btnDisabled: Color { Color(UIColor.btnDisabled) }
     public static var btnCritical: Color { Color(UIColor.btnCritical) }
+
+    @available(*, deprecated, message: "Replace with textAction, nmpBrandControlSelected or nmpBrandDecoration")
     public static var btnAction: Color   { Color(UIColor.btnAction) }
 
     // MARK: - Text
@@ -63,14 +65,16 @@ extension Color {
 
     // MARK: - Others
 
-    public static var accentPrimaryBlue: Color   { Color(UIColor.accentPrimaryBlue)}
-    public static var accentSecondaryBlue: Color { Color(UIColor.accentSecondaryBlue) }
-    public static var accentPea: Color           { Color(UIColor.accentPea) }
-    public static var accentToothpaste: Color    { Color(UIColor.accentToothpaste) }
-    public static var tableViewSeparator: Color  { Color(UIColor.tableViewSeparator) }
-    public static var imageBorder: Color         { Color(UIColor.imageBorder) }
-    public static var decorationSubtle: Color    { Color(UIColor.decorationSubtle) }
-    public static var borderDefault: Color       { Color(UIColor.borderDefault) }
+    public static var accentPrimaryBlue: Color          { Color(UIColor.accentPrimaryBlue)}
+    public static var accentSecondaryBlue: Color        { Color(UIColor.accentSecondaryBlue) }
+    public static var accentPea: Color                  { Color(UIColor.accentPea) }
+    public static var accentToothpaste: Color           { Color(UIColor.accentToothpaste) }
+    public static var tableViewSeparator: Color         { Color(UIColor.tableViewSeparator) }
+    public static var imageBorder: Color                { Color(UIColor.imageBorder) }
+    public static var decorationSubtle: Color           { Color(UIColor.decorationSubtle) }
+    public static var borderDefault: Color              { Color(UIColor.borderDefault) }
+    public static var nmpBrandControlSelected: Color    { Color(UIColor.nmpBrandControlSelected) }
+    public static var nmpBrandDecoration: Color         { Color(UIColor.nmpBrandDecoration) }
 }
 
 // swiftlint:enable opening_brace

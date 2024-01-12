@@ -77,7 +77,7 @@ public class FavoriteButtonView: UIView {
         subtitleLabel.text = viewModel.subtitle
         let image = viewModel.isFavorite ? UIImage(named: .favoriteActive) : UIImage(named: .favoriteDefault)
         button.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.imageView?.tintColor = .btnAction
+        button.imageView?.tintColor = .nmpBrandControlSelected
     }
 
     // MARK: - Private methods

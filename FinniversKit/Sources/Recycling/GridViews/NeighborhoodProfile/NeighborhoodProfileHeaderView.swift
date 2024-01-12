@@ -87,22 +87,22 @@ private final class ArrowButton: UIButton {
 
     public override var isHighlighted: Bool {
         didSet {
-            tintColor = isHighlighted ? .linkButtonHighlightedTextColor : .btnPrimary
+            tintColor = isHighlighted ? .linkButtonHighlightedTextColor : .textAction
         }
     }
 
     public override var isSelected: Bool {
         didSet {
-            tintColor = isSelected ? .linkButtonHighlightedTextColor : .btnPrimary
+            tintColor = isSelected ? .linkButtonHighlightedTextColor : .textAction
         }
     }
 
     private func setup() {
-        tintColor = .btnPrimary
+        tintColor = .textAction
         semanticContentAttribute = .forceRightToLeft
 
         titleLabel?.font = .captionStrong
-        setTitleColor(.btnPrimary, for: .normal)
+        setTitleColor(.textAction, for: .normal)
         setTitleColor(.linkButtonHighlightedTextColor, for: .highlighted)
 
         let image = UIImage(named: .arrowRight).withRenderingMode(.alwaysTemplate)
