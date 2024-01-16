@@ -107,7 +107,10 @@ public final class CalloutView: UIView {
             animations: { [weak self] in
                 self?.alpha = 0
             },
-            completion: completion
+            completion: { [weak self] finished in
+                self?.removeFromSuperview()
+                completion?(finished)
+            }
         )
     }
 
