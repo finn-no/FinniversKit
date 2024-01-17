@@ -11,10 +11,14 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(url: "https://github.com/warp-ds/warp-ios.git", "0.0.1"..."999.0.0")
     ],
     targets: [
         .target(
             name: "FinniversKit",
+            dependencies: [
+                .product(name: "Warp", package: "warp-ios"),
+            ],
             path: "FinniversKit/Sources",
             resources: [
                 .process("Assets/Fonts"),
