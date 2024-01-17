@@ -124,7 +124,7 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var bgSponsored: UIColor {
-        .aqua200
+        .dynamicColor(defaultColor: .aqua200, darkModeColor: .aqua600)
     }
 
     public var borderInfo: UIColor {
