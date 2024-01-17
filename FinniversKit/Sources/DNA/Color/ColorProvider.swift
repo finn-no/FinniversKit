@@ -19,6 +19,7 @@ public protocol ColorProvider {
     var bgInfoHeader: UIColor { get }
     var bgSuccess: UIColor { get }
     var bgCritical: UIColor { get }
+    var bgSponsored: UIColor { get }
     var borderInfo: UIColor { get }
     var borderNegative: UIColor { get }
     var borderPositive: UIColor { get }
@@ -120,6 +121,10 @@ public struct DefaultColorProvider: ColorProvider {
 
     public var bgWarningSubtle: UIColor {
         .dynamicColor(defaultColor: .yellow50, darkModeColor: .yellow900)
+    }
+
+    public var bgSponsored: UIColor {
+        .aqua200
     }
 
     public var borderInfo: UIColor {

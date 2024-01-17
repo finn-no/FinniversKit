@@ -24,6 +24,7 @@ import UIKit
     public class var bgSecondary: UIColor { Config.colorProvider.bgSecondary }
     public class var bgSuccess: UIColor { Config.colorProvider.bgSuccess }
     public class var bgTertiary: UIColor { Config.colorProvider.bgTertiary }
+    public class var bgSponsored: UIColor { Config.colorProvider.bgSponsored }
     public class var borderDefault: UIColor { Config.colorProvider.borderDefault }
     public class var borderInfoSubtle: UIColor { Config.colorProvider.borderInfoSubtle }
     public class var borderNegativeSubtle: UIColor { Config.colorProvider.borderNegativeSubtle }
