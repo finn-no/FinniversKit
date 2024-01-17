@@ -3,10 +3,10 @@
     {
       "identity" : "demokit-ios",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/adriansergheev/DemoKit-iOS/",
+      "location" : "https://github.com/finn-no/DemoKit-iOS",
       "state" : {
-        "branch" : "upgrade-snapshot-tests-dependency",
-        "revision" : "19ab879cf789a563d81a3e2cfe7aaa59f289ef6e"
+        "revision" : "de28e39c09f8cf006204e34961604e23b50ff7c1",
+        "version" : "0.4.1"
       }
     },
     {
