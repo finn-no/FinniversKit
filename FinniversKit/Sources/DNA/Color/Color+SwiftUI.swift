@@ -10,25 +10,42 @@ extension Color {
     // MARK: - Background
 
     @available(*, deprecated, message: "Use Warp background instead")
-    public static var bgPrimary: Color     { Color(UIColor.bgPrimary) }
+    public static var bgPrimary: Color              { Color(UIColor.bgPrimary) }
     @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
-    public static var bgSecondary: Color   { Color(UIColor.bgSecondary) }
+    public static var bgSecondary: Color            { Color(UIColor.bgSecondary) }
     @available(*, deprecated, message: "Use Warp backgroundSubtle instead")
-    public static var bgTertiary: Color    { Color(UIColor.bgTertiary) }
+    public static var bgTertiary: Color             { Color(UIColor.bgTertiary) }
     @available(*, deprecated, message: "Use Warp backgroundSubtle instead")
-    public static var bgQuaternary: Color  { Color(UIColor.bgQuaternary) }
+    public static var bgQuaternary: Color           { Color(UIColor.bgQuaternary) }
     @available(*, deprecated, message: "Use Warp background instead")
-    public static var bgBottomSheet: Color { Color(UIColor.bgBottomSheet) }
+    public static var bgBottomSheet: Color          { Color(UIColor.bgBottomSheet) }
     @available(*, deprecated, message: "Use Warp backgroundWarningSubtle instead")
-    public static var bgAlert: Color       { Color(UIColor.bgAlert) }
+    public static var bgAlert: Color                { Color(UIColor.bgAlert) }
     @available(*, deprecated, message: "Use Warp backgroundPositiveSubtle instead")
-    public static var bgSuccess: Color     { Color(UIColor.bgSuccess) }
+    public static var bgSuccess: Color              { Color(UIColor.bgSuccess) }
     @available(*, deprecated, message: "Use Warp backgroundNegativeSubtle instead")
-    public static var bgCritical: Color    { Color(UIColor.bgCritical) }
+    public static var bgCritical: Color             { Color(UIColor.bgCritical) }
     @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
-    public static var bgInfo: Color        { Color(UIColor.bgInfo) }
+    public static var bgInfo: Color                 { Color(UIColor.bgInfo) }
     @available(*, deprecated, message: "Use Warp color instead")
-    public static var bgInfoHeader: Color  { Color(UIColor.bgInfoHeader) }
+    public static var bgInfoHeader: Color           { Color(UIColor.bgInfoHeader) }
+
+    public static var bgInformationCriticalSubtle: Color  { Color(UIColor.bgNegativeSubtle) }
+    public static var bgInformationInfoSubtle: Color      { Color(UIColor.bgInfoSubtle) }
+    public static var bgInformationSuccessSubtle: Color   { Color(UIColor.bgPositiveSubtle) }
+    public static var bgInformationWarningSubtle: Color   { Color(UIColor.bgWarningSubtle) }
+
+
+    // MARK: - Border
+    public static var borderCriticalSubtle: Color   { Color(UIColor.borderNegativeSubtle ) }
+    public static var borderInfoSubtle: Color       { Color(UIColor.borderInfoSubtle ) }
+    public static var borderSuccessSubtle: Color    { Color(UIColor.borderPositiveSubtle ) }
+    public static var borderWarningSubtle: Color    { Color(UIColor.borderWarningSubtle ) }
+
+    public static var borderCritical: Color         { Color(UIColor.borderNegative ) }
+    public static var borderInfo: Color             { Color(UIColor.borderInfo ) }
+    public static var borderSuccess: Color          { Color(UIColor.borderPositive ) }
+    public static var borderWarning: Color          { Color(UIColor.borderWarning ) }
 
     // MARK: - Button
     @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
@@ -38,6 +55,7 @@ extension Color {
     @available(*, deprecated, message: "Use Warp backgroundNegative instead")
     public static var btnCritical: Color { Color(UIColor.btnCritical) }
     @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
+    @available(*, deprecated, message: "Replace with textAction, nmpBrandControlSelected or nmpBrandDecoration")
     public static var btnAction: Color   { Color(UIColor.btnAction) }
 
     // MARK: - Text
@@ -67,19 +85,21 @@ extension Color {
 
     // MARK: - Others
     @available(*, deprecated, message: "Use Warp color instead")
-    public static var accentPrimaryBlue: Color   { Color(UIColor.accentPrimaryBlue)}
+    public static var accentPrimaryBlue: Color          { Color(UIColor.accentPrimaryBlue)}
     @available(*, deprecated, message: "Use Warp color instead")
-    public static var accentSecondaryBlue: Color { Color(UIColor.accentSecondaryBlue) }
+    public static var accentSecondaryBlue: Color        { Color(UIColor.accentSecondaryBlue) }
     @available(*, deprecated, message: "Use Warp color instead")
-    public static var accentPea: Color           { Color(UIColor.accentPea) }
+    public static var accentPea: Color                  { Color(UIColor.accentPea) }
     @available(*, deprecated, message: "Use Warp color instead")
-    public static var accentToothpaste: Color    { Color(UIColor.accentToothpaste) }
+    public static var accentToothpaste: Color           { Color(UIColor.accentToothpaste) }
     @available(*, deprecated, message: "Use Warp border instead")
-    public static var tableViewSeparator: Color  { Color(UIColor.tableViewSeparator) }
+    public static var tableViewSeparator: Color         { Color(UIColor.tableViewSeparator) }
     @available(*, deprecated, message: "Use Warp border instead")
-    public static var imageBorder: Color         { Color(UIColor.imageBorder) }
+    public static var imageBorder: Color                { Color(UIColor.imageBorder) }
     @available(*, deprecated, message: "Use Warp backgroundDisabled instead")
-    public static var decorationSubtle: Color    { Color(UIColor.decorationSubtle) }
+    public static var decorationSubtle: Color           { Color(UIColor.decorationSubtle) }
     @available(*, deprecated, message: "Use Warp border instead")
-    public static var borderDefault: Color       { Color(UIColor.borderDefault) }
+    public static var borderDefault: Color              { Color(UIColor.borderDefault) }
+    public static var nmpBrandControlSelected: Color    { Color(UIColor.nmpBrandControlSelected) }
+    public static var nmpBrandDecoration: Color         { Color(UIColor.nmpBrandDecoration) }
 }

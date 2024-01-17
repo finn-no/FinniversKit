@@ -194,7 +194,6 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
     public override func prepareForReuse() {
         super.prepareForReuse()
-        imageView.cancelLoading()
         imageView.image = nil
         imageView.alpha = 0.0
         imageView.contentMode = .scaleAspectFill

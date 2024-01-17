@@ -13,6 +13,7 @@ class FavoriteAdsListTableHeader: UIView {
 
     // MARK: - Internal properties
 
+    var viewModel: FavoriteAdsListViewModel?
     weak var delegate: FavoriteAdsListTableHeaderDelegate?
     weak var searchBarDelegate: UISearchBarDelegate? {
         didSet { searchBar.delegate = searchBarDelegate }
@@ -53,42 +54,12 @@ class FavoriteAdsListTableHeader: UIView {
         return CGRect(origin: contentStackView.frame.origin, size: titleLabel.frame.size)
     }
 
-    // MARK: - Tori NMP onboarding (Temporary)
-
-    var viewModel: FavoriteAdsListViewModel? {
-        didSet {
-            panelText = viewModel?.panelTextOnboarding ?? ""
-            showPanel = viewModel?.showPanelForOnboarding ?? false
-        }
-    }
-
-    var showPanel: Bool = false {
-        didSet {
-            infoPanel.isHidden = !showPanel
-        }
-    }
-
-    var panelText: String = "" {
-        didSet {
-            let model = PanelViewModel(text: panelText)
-            infoPanel.configure(with: model)
-        }
-    }
-
     // MARK: - Private properties
 
     private lazy var tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleViewTap))
-
-    private lazy var contentStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleView, infoPanel, searchBar, sortingContainerView])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.setCustomSpacing(.spacingXS, after: titleLabel)
-        stackView.setCustomSpacing(24, after: subtitleView)
-        stackView.setCustomSpacing(.spacingM, after: infoPanel)
-        stackView.setCustomSpacing(28, after: searchBar)
-        return stackView
-    }()
+    private lazy var contentStackView = UIStackView(axis: .vertical, withAutoLayout: true)
+    private lazy var messagesStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+    private lazy var sortingContainerView = UIView()
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
@@ -97,13 +68,6 @@ class FavoriteAdsListTableHeader: UIView {
         label.textColor = .text
         label.numberOfLines = 3
         return label
-    }()
-
-    private lazy var infoPanel: Panel = {
-        let panel = Panel(style: .tips)
-        panel.backgroundColor = .aqua50
-        panel.translatesAutoresizingMaskIntoConstraints = false
-        return panel
     }()
 
     private lazy var subtitleView: SubtitleView = {
@@ -127,8 +91,6 @@ class FavoriteAdsListTableHeader: UIView {
         return sortingView
     }()
 
-    private lazy var sortingContainerView = UIView()
-
     var isSortingViewHidden: Bool {
         get { return sortingView.isHidden }
         set { sortingView.isHidden = newValue }
@@ -147,9 +109,15 @@ class FavoriteAdsListTableHeader: UIView {
 
     private func setup() {
         addGestureRecognizer(tapRecognizer)
+        sortingContainerView.addSubview(sortingView)
+
+        contentStackView.addArrangedSubviews([titleLabel, subtitleView, messagesStackView, searchBar, sortingContainerView])
+        contentStackView.setCustomSpacing(.spacingXS, after: titleLabel)
+        contentStackView.setCustomSpacing(.spacingL, after: subtitleView)
+        contentStackView.setCustomSpacing(.spacingM, after: messagesStackView)
+        contentStackView.setCustomSpacing(.spacingL + .spacingXS, after: searchBar)
 
         addSubview(contentStackView)
-        sortingContainerView.addSubview(sortingView)
 
         NSLayoutConstraint.activate([
             contentStackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
@@ -165,9 +133,25 @@ class FavoriteAdsListTableHeader: UIView {
         ])
     }
 
+    // MARK: - Internal methods
+
+    func configure(infoMessages: [FavoriteAdsListMessageKind]) {
+        messagesStackView.removeArrangedSubviews()
+        messagesStackView.isHidden = infoMessages.isEmpty
+
+        let messageViews = infoMessages.map { $0.createView() }
+        messagesStackView.addArrangedSubviews(messageViews)
+
+        layoutIfNeeded()
+    }
+
+    // MARK: - Private methods
+
     private func updateSubtitle() {
         subtitleView.configure(withText: subtitle, buttonTitle: shareButtonTitle)
     }
+
+    // MARK: - Actions
 
     @objc private func handleSortingViewTap() {
         searchBar.resignFirstResponder()
@@ -184,5 +168,43 @@ class FavoriteAdsListTableHeader: UIView {
 extension FavoriteAdsListTableHeader: SubtitleViewDelegate {
     func subtitleView(_ view: SubtitleView, didSelectButton button: UIButton) {
         delegate?.favoriteAdsListTableHeader(self, didSelectShareButton: button)
+    }
+}
+
+// MARK: - Private extensions
+
+private extension FavoriteAdsListMessageKind {
+    func createView() -> UIView {
+        switch self {
+        case let .message(message, backgroundColor):
+            return createPanel(message: message, backgroundColor: backgroundColor)
+        case let .infobox(title, message, style):
+            return createInfobox(title: title, message: message, style: style)
+        }
+    }
+
+    private func createPanel(message: String, backgroundColor: UIColor) -> Panel {
+        let panel = Panel(style: .tips, withAutoLayout: true)
+        panel.configure(with: PanelViewModel(text: message))
+        panel.backgroundColor = backgroundColor
+        return panel
+    }
+
+    private func createInfobox(title: String, message: String, style: InfoboxView.Style) -> InfoboxView {
+        let infobox = InfoboxView(style: style, withAutoLayout: true)
+        infobox.model = FavoriteInfoboxMessage(title: title, message: message)
+        return infobox
+    }
+
+    private struct FavoriteInfoboxMessage: InfoboxViewModel {
+        let title: String
+        let detail: String
+        let primaryButtonTitle: String = ""
+        let secondaryButtonTitle: String = ""
+
+        init(title: String, message: String) {
+            self.title = title
+            self.detail = message
+        }
     }
 }

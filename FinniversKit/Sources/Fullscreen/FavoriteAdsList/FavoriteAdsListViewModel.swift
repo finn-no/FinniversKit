@@ -13,8 +13,6 @@ public struct FavoriteAdsListViewModel {
     public let emptyListViewTitle: String
     public let emptyListViewBody: String
     public let emptyListViewImage: UIImage
-    public var panelTextOnboarding: String
-    public var showPanelForOnboarding: Bool
 
     public init(
         searchBarPlaceholder: String,
@@ -26,10 +24,7 @@ public struct FavoriteAdsListViewModel {
         emptySearchViewBodyPrefix: String,
         emptyListViewTitle: String,
         emptyListViewBody: String,
-        emptyListViewImage: UIImage,
-        panelTextOnboarding: String,
-        showPanelForOnboarding: Bool
-
+        emptyListViewImage: UIImage
     ) {
         self.searchBarPlaceholder = searchBarPlaceholder
         self.headerShareButtonTitle = headerShareButtonTitle
@@ -41,7 +36,5 @@ public struct FavoriteAdsListViewModel {
         self.emptyListViewTitle = emptyListViewTitle
         self.emptyListViewBody = emptyListViewBody
         self.emptyListViewImage = emptyListViewImage
-        self.panelTextOnboarding = panelTextOnboarding
-        self.showPanelForOnboarding = showPanelForOnboarding
     }
 }

@@ -136,10 +136,10 @@ struct AdFactory {
         ]
     }
 
-    private static var subtitles: [String] {
+    private static var subtitles: [String?] {
         return [
             "Oslo",
-            "Bergen",
+            nil,
             "Trondheim",
             "Oslo",
             "Toten",

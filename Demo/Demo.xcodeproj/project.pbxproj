@@ -198,6 +198,8 @@
 		9BA6C4A224336B9A009D417B /* DemoWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */; };
 		9BBC904024FD252B0003D2D8 /* UITraitCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC903F24FD252B0003D2D8 /* UITraitCollection+Extensions.swift */; };
 		9F84F96E292B6DC900631443 /* BrazePromotionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F84F96D292B6DC900631443 /* BrazePromotionDemoView.swift */; };
+		B26B58342B4BFEFB000E0245 /* InfoboxSwiftUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26B58332B4BFEFB000E0245 /* InfoboxSwiftUIViewController.swift */; };
+		B2B8F16B2B483F2F0090573E /* NMPInfoboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B8F16A2B483F2F0090573E /* NMPInfoboxViewController.swift */; };
 		D75E14D727371692008EB126 /* FrontPageSavedSearchFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E14D627371692008EB126 /* FrontPageSavedSearchFactory.swift */; };
 		D7C750382731C61A002BDE98 /* FrontPageSavedSearchesDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C750372731C61A002BDE98 /* FrontPageSavedSearchesDemoView.swift */; };
 		D7D514C7272942E10065E2F6 /* PromotionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D514C6272942E10065E2F6 /* PromotionDemoView.swift */; };
@@ -428,6 +430,8 @@
 		9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoWrapperView.swift; sourceTree = "<group>"; };
 		9BBC903F24FD252B0003D2D8 /* UITraitCollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITraitCollection+Extensions.swift"; sourceTree = "<group>"; };
 		9F84F96D292B6DC900631443 /* BrazePromotionDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrazePromotionDemoView.swift; sourceTree = "<group>"; };
+		B26B58332B4BFEFB000E0245 /* InfoboxSwiftUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxSwiftUIViewController.swift; sourceTree = "<group>"; };
+		B2B8F16A2B483F2F0090573E /* NMPInfoboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMPInfoboxViewController.swift; sourceTree = "<group>"; };
 		D75E14D627371692008EB126 /* FrontPageSavedSearchFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageSavedSearchFactory.swift; sourceTree = "<group>"; };
 		D7C750372731C61A002BDE98 /* FrontPageSavedSearchesDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageSavedSearchesDemoView.swift; sourceTree = "<group>"; };
 		D7D514C6272942E10065E2F6 /* PromotionDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionDemoView.swift; sourceTree = "<group>"; };
@@ -839,6 +843,7 @@
 				E681A0EA2923FD89008564E2 /* HyperlinkTextViewDemoView */,
 				46E772CF242CEF09008A5E93 /* IconCollection */,
 				46E77318242CEF09008A5E93 /* Infobox */,
+				B2B8F1692B483EDE0090573E /* InfoboxSwiftUI */,
 				5B959C720F9AD1D19188F7C3 /* JobApplyBox */,
 				5B95913AB0DF0FDDF06BA9B0 /* JobKeyInfo */,
 				46E77350242CEF09008A5E93 /* KeyValueCollectionView */,
@@ -854,6 +859,7 @@
 				5B9596CE2475206CBC8B02A6 /* MyAdsList */,
 				46E772D1242CEF09008A5E93 /* NativeAdvert */,
 				4D152E792577DB0400282244 /* NavigationLinkView */,
+				B26B58322B4BFE8A000E0245 /* NMPInfoboxView */,
 				8D680C5C0B76EA3807545F4D /* NumberedListView */,
 				46E77314242CEF09008A5E93 /* ObjectPagePriceView */,
 				46E772D8242CEF09008A5E93 /* ObjectPageTitleView */,
@@ -1798,6 +1804,22 @@
 			path = BrazePromotionView;
 			sourceTree = "<group>";
 		};
+		B26B58322B4BFE8A000E0245 /* NMPInfoboxView */ = {
+			isa = PBXGroup;
+			children = (
+				B2B8F16A2B483F2F0090573E /* NMPInfoboxViewController.swift */,
+			);
+			path = NMPInfoboxView;
+			sourceTree = "<group>";
+		};
+		B2B8F1692B483EDE0090573E /* InfoboxSwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				B26B58332B4BFEFB000E0245 /* InfoboxSwiftUIViewController.swift */,
+			);
+			path = InfoboxSwiftUI;
+			sourceTree = "<group>";
+		};
 		D7C750362731C5FF002BDE98 /* FrontPageSavedSearchesDemoView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2043,6 +2065,7 @@
 				46E7745B242CEF0A008A5E93 /* BannerAdDemoCell.swift in Sources */,
 				46E7745D242CEF0A008A5E93 /* MarketsGridViewDemoView.swift in Sources */,
 				46AE6FC4242BADC9007BB005 /* AppDelegate.swift in Sources */,
+				B26B58342B4BFEFB000E0245 /* InfoboxSwiftUIViewController.swift in Sources */,
 				46E773C2242CEF0A008A5E93 /* SettingDetailsDemoViewController.swift in Sources */,
 				46E7742F242CEF0A008A5E93 /* SwitchViewDemoView.swift in Sources */,
 				46E773D5242CEF0A008A5E93 /* FrontPageViewDemoView.swift in Sources */,
@@ -2078,6 +2101,7 @@
 				9F84F96E292B6DC900631443 /* BrazePromotionDemoView.swift in Sources */,
 				46E77438242CEF0A008A5E93 /* BroadcastDemoView.swift in Sources */,
 				714B9357253736AD00801C99 /* SendInviteDemoView.swift in Sources */,
+				B2B8F16B2B483F2F0090573E /* NMPInfoboxViewController.swift in Sources */,
 				46E773D6242CEF0A008A5E93 /* FavoriteAdsListDemoViewHelper.swift in Sources */,
 				46E7746B242CEF0A008A5E93 /* NotificationsListViewDemoView.swift in Sources */,
 				46E773FE242CEF0A008A5E93 /* FooterButtonView.swift in Sources */,

@@ -197,7 +197,7 @@ class SelectionListItemView: UIView {
             if self.configuration.isIndependent {
                 self.contentView.layer.borderColor = self.isSelected ? .backgroundPrimary : .border
             } else {
-                self.backgroundColor = self.isSelected ? .nmpBrandDecoration : .clear
+                self.backgroundColor = self.isSelected ? .nmpBrandControlSelected : .clear
             }
             self.iconImageView.tintColor = self.isSelected ? .text : .textSubtle
         })

@@ -25,25 +25,32 @@ public struct FlatStyle: ButtonStyle {
     private let size: Button.Size
     private let font: Font
     private let textColor: Color
+    private let fullWidth: Bool
     private let padding: EdgeInsets
 
     public init(
         size: Button.Size = .normal,
         textColor: Color = .backgroundPrimary,
+        fullWidth: Bool = true,
         padding: EdgeInsets = .init(top: .spacingS, leading: .spacingM, bottom: .spacingS, trailing: .spacingM)
     ) {
         self.size = size
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
         self.textColor = textColor
+        self.fullWidth = fullWidth
         self.padding = padding
     }
 
     public func makeBody(configuration: Configuration) -> some View {
         HStack {
-            Spacer()
+            if fullWidth {
+                Spacer()
+            }
             InlineFlatStyle(size: size, textColor: textColor)
                 .makeBody(configuration: configuration)
-            Spacer()
+            if fullWidth {
+                Spacer()
+            }
         }
         .padding(padding)
     }
@@ -105,12 +112,20 @@ public struct CallToAction: ButtonStyle {
         background: Color = .backgroundPrimary,
         fullWidth: Bool = true,
         isEnabled: Binding<Bool>? = nil,
-        padding: EdgeInsets = .init(top: .spacingS, leading: .spacingM, bottom: .spacingS, trailing: .spacingM)
+        padding: EdgeInsets? = nil
     ) {
         self.background = background
         self.fullWidth = fullWidth
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
-        self.padding = padding
+
+        if let padding {
+            self.padding = padding
+        } else {
+            let verticalPadding: CGFloat = size == .normal ? .normalButtonVerticalPadding : .spacingS
+            let defaultPadding: EdgeInsets = .init(top: verticalPadding, leading: .spacingM, bottom: verticalPadding, trailing: .spacingM)
+            self.padding = defaultPadding
+        }
+
         if let isEnabledBinding = isEnabled {
             self._isEnabled = isEnabledBinding
         } else {
@@ -139,6 +154,10 @@ public struct CallToAction: ButtonStyle {
     private func dynamicBackground(_ configuration: Configuration) -> Color {
         configuration.isPressed ? background.opacity(0.8) : background
     }
+}
+
+private extension CGFloat {
+    static let normalButtonVerticalPadding: CGFloat = 13
 }
 
 #Preview {

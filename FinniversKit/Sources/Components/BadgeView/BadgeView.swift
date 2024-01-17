@@ -75,11 +75,3 @@ public final class BadgeView: UIView {
         ])
     }
 }
-
-// MARK: - Private extensions
-
-private extension UIColor {
-    class var badgeTextColor: UIColor {
-        UIColor(hex: "#885407")
-    }
-}

@@ -87,6 +87,10 @@ extension CGColor {
     public class var bgCritical: UIColor { Config.colorProvider.bgCritical }
     @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
     public class var bgInfo: UIColor { Config.colorProvider.bgInfo }
+    public class var bgInfoSubtle: UIColor { Config.colorProvider.bgInfoSubtle }
+    public class var bgNegativeSubtle: UIColor { Config.colorProvider.bgNegativeSubtle }
+    public class var bgPositiveSubtle: UIColor { Config.colorProvider.bgPositiveSubtle }
+    public class var bgWarningSubtle: UIColor { Config.colorProvider.bgWarningSubtle }
     @available(*, deprecated, message: "Use Warp color instead")
     public class var bgInfoHeader: UIColor { Config.colorProvider.bgInfoHeader }
     @available(*, deprecated, message: "Use Warp background instead")
@@ -101,8 +105,14 @@ extension CGColor {
     public class var bgTertiary: UIColor { Config.colorProvider.bgTertiary }
     @available(*, deprecated, message: "Use Warp border instead")
     public class var borderDefault: UIColor { Config.colorProvider.borderDefault }
-    @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
-    public class var btnAction: UIColor { Config.colorProvider.btnAction }
+    public class var borderInfoSubtle: UIColor { Config.colorProvider.borderInfoSubtle }
+    public class var borderNegativeSubtle: UIColor { Config.colorProvider.borderNegativeSubtle }
+    public class var borderPositiveSubtle: UIColor { Config.colorProvider.borderPositiveSubtle }
+    public class var borderWarningSubtle: UIColor { Config.colorProvider.borderWarningSubtle }
+    public class var borderInfo: UIColor { Config.colorProvider.borderInfo }
+    public class var borderNegative: UIColor { Config.colorProvider.borderNegative }
+    public class var borderPositive: UIColor { Config.colorProvider.borderPositive }
+    public class var borderWarning: UIColor { Config.colorProvider.borderWarning }
     @available(*, deprecated, message: "Use Warp backgroundNegative instead")
     public class var btnCritical: UIColor { Config.colorProvider.btnCritical }
     @available(*, deprecated, message: "Use Warp backgroundDisabled instead")
@@ -118,10 +128,12 @@ extension CGColor {
     public class var iconTertiary: UIColor { Config.colorProvider.iconTertiary }
     @available(*, deprecated, message: "Use Warp border instead")
     public class var imageBorder: UIColor { Config.colorProvider.imageBorder }
+    public class var loadingIndicator: UIColor { Config.colorProvider.loadingIndicator }
     @available(*, deprecated, message: "Use Warp border instead")
     public class var tableViewSeparator: UIColor { Config.colorProvider.tableViewSeparator }
     @available(*, deprecated, message: "Use Warp textLink instead")
     public class var textAction: UIColor { Config.colorProvider.textAction }
+    public class var textAlert: UIColor { Config.colorProvider.textAlert }
     @available(*, deprecated, message: "Use Warp textNegative instead")
     public class var textCritical: UIColor { Config.colorProvider.textCritical }
     @available(*, deprecated, message: "Use Warp text instead")
@@ -148,6 +160,11 @@ extension CGColor {
     public class var nmpBrandControlSelected: UIColor { Config.colorProvider.nmpBrandControlSelected }
     @available(*, deprecated, message: "Use Warp color instead")
     public class var nmpBrandDecoration: UIColor { Config.colorProvider.nmpBrandDecoration }
+
+    // Deprecated
+    @available(*, deprecated, message: "Replace with textAction, nmpBrandControlSelected or nmpBrandDecoration")
+    @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
+    public class var btnAction: UIColor { Config.colorProvider.btnAction }
 }
 
 extension CGColor {
@@ -167,6 +184,10 @@ extension CGColor {
     public class var bgCritical: CGColor { UIColor.bgCritical.cgColor }
     @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
     public class var bgInfo: CGColor { UIColor.bgInfo.cgColor }
+    public class var bgInfoSubtle: CGColor { Config.colorProvider.bgInfoSubtle.cgColor }
+    public class var bgPositiveSubtle: CGColor { Config.colorProvider.bgPositiveSubtle.cgColor }
+    public class var bgNegativeSubtle: CGColor { Config.colorProvider.bgNegativeSubtle.cgColor }
+    public class var bgWarningSubtle: CGColor { Config.colorProvider.bgWarningSubtle.cgColor }
     @available(*, deprecated, message: "Use Warp color instead")
     public class var bgInfoHeader: CGColor { UIColor.bgInfoHeader.cgColor }
     @available(*, deprecated, message: "Use Warp background instead")
@@ -181,6 +202,14 @@ extension CGColor {
     public class var bgTertiary: CGColor { UIColor.bgTertiary.cgColor }
     @available(*, deprecated, message: "Use Warp border instead")
     public class var borderDefault: CGColor { UIColor.borderDefault.cgColor }
+    public class var borderInfo: CGColor { Config.colorProvider.borderInfo.cgColor }
+    public class var borderNegative: CGColor { Config.colorProvider.borderNegative.cgColor }
+    public class var borderPositive: CGColor { Config.colorProvider.borderPositive.cgColor }
+    public class var borderWarning: CGColor { Config.colorProvider.borderWarning.cgColor }
+    public class var borderInfoSubtle: CGColor { Config.colorProvider.borderInfoSubtle.cgColor }
+    public class var borderNegativeSubtle: CGColor { Config.colorProvider.borderNegativeSubtle.cgColor }
+    public class var borderPositiveSubtle: CGColor { Config.colorProvider.borderPositiveSubtle.cgColor }
+    public class var borderWarningSubtle: CGColor { Config.colorProvider.borderWarningSubtle.cgColor }
     @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     public class var btnAction: CGColor { UIColor.btnAction.cgColor }
     @available(*, deprecated, message: "Use Warp backgroundNegative instead")
@@ -277,29 +306,26 @@ extension CGColor {
 extension UIColor {
     public class var coolGray100: UIColor { .init(hex: "#F3F4F6") }
     public class var darkBgPrimaryProminent: UIColor { .init(hex: "#323241") }
-    public class var darkCallToAction: UIColor { .init(hex: "#006DFB") }
     public class var darkIce: UIColor { .init(hex: "#262633") }
     public class var darkLicorice: UIColor { .init(hex: "#828699") }
     public class var darkMarble: UIColor { .init(hex: "#13131A") }
     public class var darkMilk: UIColor { .init(hex: "#1B1B24") }
-    public class var darkPrimaryBlue: UIColor { .init(hex: "#3F8BFF") }
     public class var darkSardine: UIColor { .init(hex: "#434359") }
     public class var darkStone: UIColor { .init(hex: "#8A8EA1") }
     public class var midnightBackground: UIColor { .init(hex: "1D1D26") }
     public class var midnightSectionHeader: UIColor { .init(hex: "585E8A") }
     public class var midnightSectionSeparator: UIColor { .init(hex: "34343E") }
+    public class var lightNuttyBrown:  UIColor { .init(hex: "#885407") }
 }
 
 @available(*, deprecated, message: "Use Warp token instead")
 extension CGColor {
     public class var coolGray100: CGColor { UIColor.coolGray100.cgColor }
     public class var darkBgPrimaryProminent: CGColor { UIColor.darkBgPrimaryProminent.cgColor }
-    public class var darkCallToAction: CGColor { UIColor.darkCallToAction.cgColor }
     public class var darkIce: CGColor { UIColor.darkIce.cgColor }
     public class var darkLicorice: CGColor { UIColor.darkLicorice.cgColor }
     public class var darkMarble: CGColor { UIColor.darkMarble.cgColor }
     public class var darkMilk: CGColor { UIColor.darkMilk.cgColor }
-    public class var darkPrimaryBlue: CGColor { UIColor.darkPrimaryBlue.cgColor }
     public class var darkSardine: CGColor { UIColor.darkSardine.cgColor }
     public class var darkStone: CGColor { UIColor.darkStone.cgColor }
     public class var midnightBackground: CGColor { UIColor.midnightBackground.cgColor }
