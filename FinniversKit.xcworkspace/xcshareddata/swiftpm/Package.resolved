@@ -3,19 +3,37 @@
     {
       "identity" : "demokit-ios",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/finn-no/DemoKit-iOS.git",
+      "location" : "https://github.com/finn-no/DemoKit-iOS",
       "state" : {
-        "revision" : "c17f55cf4054fab4cd9a8ce591a4e5c2c465231c",
-        "version" : "0.2.0"
+        "revision" : "de28e39c09f8cf006204e34961604e23b50ff7c1",
+        "version" : "0.4.1"
       }
     },
     {
       "identity" : "swift-snapshot-testing",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/pimms/swift-snapshot-testing.git",
+      "location" : "https://github.com/pointfreeco/swift-snapshot-testing",
       "state" : {
-        "revision" : "b44b563e6ddc5a613a107fb57626047a7f1d4e1a",
-        "version" : "1.9.666"
+        "revision" : "8e68404f641300bfd0e37d478683bb275926760c",
+        "version" : "1.15.2"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-syntax.git",
+      "state" : {
+        "revision" : "43c802fb7f96e090dde015344a94b5e85779eff1",
+        "version" : "509.1.0"
+      }
+    },
+    {
+      "identity" : "warp-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/warp-ds/warp-ios.git",
+      "state" : {
+        "revision" : "d3b40832670cac10a41f0f550de4f99148c4c43d",
+        "version" : "0.0.1"
       }
     }
   ],

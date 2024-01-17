@@ -7,9 +7,18 @@ import FinniversKit
 @testable import Demo
 import DemoKitSnapshot
 
+@MainActor
 class ComponentViewTests: XCTestCase {
-    private func snapshot(_ component: ComponentDemoViews, record: Bool = false, line: UInt = #line) {
-        snapshotTest(demoable: component.demoable, record: record, line: line)
+    private func snapshot(_ component: ComponentDemoViews, record: Bool = false, line: UInt = #line, relaxedPrecision: Bool = false) {
+        snapshotTest(
+            demoable: component.demoable,
+            record: record,
+            //N.B: CircleCI fails with higher precision
+            //ref: https://github.com/pointfreeco/swift-snapshot-testing/issues/419
+            //ref: https://github.com/pointfreeco/swift-snapshot-testing/pull/628
+            precision: relaxedPrecision ? 0.9 : 0.98,
+            line: line
+        )
     }
 
     // MARK: - Tests
@@ -251,11 +260,11 @@ class ComponentViewTests: XCTestCase {
     }
 
     func testPromotionView() {
-        snapshot(.promotionView)
+        snapshot(.promotionView, relaxedPrecision: true)
     }
 
     func testBrazePromotionView() {
-        snapshot(.brazePromotionView)
+        snapshot(.brazePromotionView, relaxedPrecision: true)
     }
 
     func testFrontPageSavedSearchesView() {
