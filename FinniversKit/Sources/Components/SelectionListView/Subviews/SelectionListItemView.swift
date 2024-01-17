@@ -195,9 +195,9 @@ class SelectionListItemView: UIView {
         UIView.animate(withDuration: duration, animations: { [weak self] in
             guard let self = self else { return }
             if self.configuration.isIndependent {
-                self.contentView.layer.borderColor = self.isSelected ? .btnAction : .borderDefault
+                self.contentView.layer.borderColor = self.isSelected ? .nmpBrandControlSelected : .borderDefault
             } else {
-                self.backgroundColor = self.isSelected ? .nmpBrandDecoration : .clear
+                self.backgroundColor = self.isSelected ? .nmpBrandControlSelected : .clear
             }
             self.iconImageView.tintColor = self.isSelected ? .textPrimary : .textSecondary
         })

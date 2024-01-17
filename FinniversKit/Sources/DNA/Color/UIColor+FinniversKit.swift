@@ -33,7 +33,6 @@ import UIKit
     public class var borderNegative: UIColor { Config.colorProvider.borderNegative }
     public class var borderPositive: UIColor { Config.colorProvider.borderPositive }
     public class var borderWarning: UIColor { Config.colorProvider.borderWarning }
-    public class var btnAction: UIColor { Config.colorProvider.btnAction }
     public class var btnCritical: UIColor { Config.colorProvider.btnCritical }
     public class var btnDisabled: UIColor { Config.colorProvider.btnDisabled }
     public class var btnPrimary: UIColor { Config.colorProvider.btnPrimary }
@@ -60,6 +59,10 @@ import UIKit
     public class var nmpBrandColorSecondary: UIColor { Config.colorProvider.nmpBrandColorSecondary }
     public class var nmpBrandControlSelected: UIColor { Config.colorProvider.nmpBrandControlSelected }
     public class var nmpBrandDecoration: UIColor { Config.colorProvider.nmpBrandDecoration }
+
+    // Deprecated
+    @available(*, deprecated, message: "Replace with textAction, nmpBrandControlSelected or nmpBrandDecoration")
+    public class var btnAction: UIColor { Config.colorProvider.btnAction }
 }
 
 extension CGColor {
@@ -163,12 +166,10 @@ extension CGColor {
 extension UIColor {
     public class var coolGray100: UIColor { .init(hex: "#F3F4F6") }
     public class var darkBgPrimaryProminent: UIColor { .init(hex: "#323241") }
-    public class var darkCallToAction: UIColor { .init(hex: "#006DFB") }
     public class var darkIce: UIColor { .init(hex: "#262633") }
     public class var darkLicorice: UIColor { .init(hex: "#828699") }
     public class var darkMarble: UIColor { .init(hex: "#13131A") }
     public class var darkMilk: UIColor { .init(hex: "#1B1B24") }
-    public class var darkPrimaryBlue: UIColor { .init(hex: "#3F8BFF") }
     public class var darkSardine: UIColor { .init(hex: "#434359") }
     public class var darkStone: UIColor { .init(hex: "#8A8EA1") }
     public class var midnightBackground: UIColor { .init(hex: "1D1D26") }
@@ -180,12 +181,10 @@ extension UIColor {
 extension CGColor {
     public class var coolGray100: CGColor { UIColor.coolGray100.cgColor }
     public class var darkBgPrimaryProminent: CGColor { UIColor.darkBgPrimaryProminent.cgColor }
-    public class var darkCallToAction: CGColor { UIColor.darkCallToAction.cgColor }
     public class var darkIce: CGColor { UIColor.darkIce.cgColor }
     public class var darkLicorice: CGColor { UIColor.darkLicorice.cgColor }
     public class var darkMarble: CGColor { UIColor.darkMarble.cgColor }
     public class var darkMilk: CGColor { UIColor.darkMilk.cgColor }
-    public class var darkPrimaryBlue: CGColor { UIColor.darkPrimaryBlue.cgColor }
     public class var darkSardine: CGColor { UIColor.darkSardine.cgColor }
     public class var darkStone: CGColor { UIColor.darkStone.cgColor }
     public class var midnightBackground: CGColor { UIColor.midnightBackground.cgColor }

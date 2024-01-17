@@ -42,7 +42,6 @@ class ColorDemoView: UIView, Demoable {
             ColorItem(color: .bgSuccess, title: "bgSuccess"),
             ColorItem(color: .bgTertiary, title: "bgTertiary"),
             ColorItem(color: .borderDefault, title: "borderDefault"),
-            ColorItem(color: .btnAction, title: "btnAction"),
             ColorItem(color: .btnCritical, title: "btnCritical"),
             ColorItem(color: .btnDisabled, title: "btnDisabled"),
             ColorItem(color: .btnPrimary, title: "btnPrimary"),

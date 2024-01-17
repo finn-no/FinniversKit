@@ -18,7 +18,7 @@ class SettingsViewToggleCell: SettingsViewCell {
 
     private lazy var uiswitch: UISwitch = {
         let toggle = UISwitch(withAutoLayout: true)
-        toggle.onTintColor = .btnPrimary
+        toggle.onTintColor = .nmpBrandControlSelected
         toggle.addTarget(self, action: #selector(handleValueChanged(toggle:)), for: .valueChanged)
         return toggle
     }()
