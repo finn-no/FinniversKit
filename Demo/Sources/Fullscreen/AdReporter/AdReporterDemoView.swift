@@ -7,7 +7,6 @@ import DemoKit
 
 struct AdReporterViewData: AdReporterViewModel {
     var radioButtonTitle = "Hva gjelder det?"
-    var radioButtonFields = ["Mistanke om svindel", "Regelbrudd", "Forhandler opptrer som privat"]
     var descriptionViewTitle = "Beskrivelse"
     var descriptionViewPlaceholderText = "Beskriv kort hva problemet er"
     var helpButtonText = "Trenger du hjelp?"
@@ -20,6 +19,7 @@ class AdReporterDemoView: UIView, Demoable {
     private lazy var adReporterView: AdReporterView = {
         let view = AdReporterView(frame: .zero)
         view.model = AdReporterViewData()
+        view.setRadioButtonFields(["Mistanke om svindel", "Regelbrudd", "Forhandler opptrer som privat"])
         view.reporterDelegate = self
         view.alwaysBounceVertical = true
         view.keyboardDismissMode = .interactive
