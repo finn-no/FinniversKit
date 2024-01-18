@@ -16,7 +16,7 @@ class ComponentViewTests: XCTestCase {
             //N.B: CircleCI fails with higher precision
             //ref: https://github.com/pointfreeco/swift-snapshot-testing/issues/419
             //ref: https://github.com/pointfreeco/swift-snapshot-testing/pull/628
-            precision: relaxedPrecision ? 0.9 : 0.997,
+            precision: relaxedPrecision ? 0.9 : 1,
             line: line
         )
     }
