@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/finn-no/DemoKit-iOS",
       "state" : {
-        "revision" : "de28e39c09f8cf006204e34961604e23b50ff7c1",
-        "version" : "0.4.1"
+        "branch" : "tweak-precision",
+        "revision" : "5f7537b5709dd3838e15b4e12bc7ce153ba634c0"
       }
     },
     {
