@@ -260,11 +260,11 @@ class ComponentViewTests: XCTestCase {
     }
 
     func testPromotionView() {
-        snapshot(.promotionView, relaxedPrecision: true)
+        snapshot(.promotionView, relaxedPrecision: false)
     }
 
     func testBrazePromotionView() {
-        snapshot(.brazePromotionView, relaxedPrecision: true)
+        snapshot(.brazePromotionView, relaxedPrecision: false)
     }
 
     func testFrontPageSavedSearchesView() {
