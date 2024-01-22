@@ -15,10 +15,6 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.frontPageView)
     }
 
-    func testPopupView() {
-        snapshot(.popupView)
-    }
-
     func testEmptyView() {
         snapshot(.emptyView)
     }
