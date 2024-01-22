@@ -31,7 +31,6 @@
 		46E773B5242CEF0A008A5E93 /* PianoDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77271242CEF09008A5E93 /* PianoDemoView.swift */; };
 		46E773B6242CEF0A008A5E93 /* DrumMachineDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77273242CEF09008A5E93 /* DrumMachineDemoView.swift */; };
 		46E773B9242CEF0A008A5E93 /* AddressMapDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77279242CEF09008A5E93 /* AddressMapDemoView.swift */; };
-		46E773BB242CEF0A008A5E93 /* PopupViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7727C242CEF09008A5E93 /* PopupViewDemoView.swift */; };
 		46E773BD242CEF0A008A5E93 /* SoldViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77280242CEF09008A5E93 /* SoldViewDemoView.swift */; };
 		46E773BE242CEF0A008A5E93 /* LoginEntryDemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77282242CEF09008A5E93 /* LoginEntryDemoData.swift */; };
 		46E773BF242CEF0A008A5E93 /* LoginEntryViewDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77283242CEF09008A5E93 /* LoginEntryViewDemoViewController.swift */; };
@@ -98,8 +97,6 @@
 		46E7741F242CEF0A008A5E93 /* ButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77325242CEF09008A5E93 /* ButtonDemoView.swift */; };
 		46E77422242CEF0A008A5E93 /* BannerTransparencyInfoDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7732B242CEF09008A5E93 /* BannerTransparencyInfoDefaultData.swift */; };
 		46E77423242CEF0A008A5E93 /* BannerTransparencyDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7732C242CEF09008A5E93 /* BannerTransparencyDemoView.swift */; };
-		46E77424242CEF0A008A5E93 /* ConsentTransparencyInfoDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7732E242CEF09008A5E93 /* ConsentTransparencyInfoDefaultData.swift */; };
-		46E77425242CEF0A008A5E93 /* ConsentTransparencyInfoDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7732F242CEF09008A5E93 /* ConsentTransparencyInfoDemoView.swift */; };
 		46E77428242CEF0A008A5E93 /* ReviewButtonViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77334242CEF09008A5E93 /* ReviewButtonViewDemoView.swift */; };
 		46E77429242CEF0A008A5E93 /* KlimabroletEventsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77336242CEF09008A5E93 /* KlimabroletEventsDemoViewController.swift */; };
 		46E7742A242CEF0A008A5E93 /* KlimabroletData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77337242CEF09008A5E93 /* KlimabroletData.swift */; };
@@ -263,7 +260,6 @@
 		46E77271242CEF09008A5E93 /* PianoDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoDemoView.swift; sourceTree = "<group>"; };
 		46E77273242CEF09008A5E93 /* DrumMachineDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrumMachineDemoView.swift; sourceTree = "<group>"; };
 		46E77279242CEF09008A5E93 /* AddressMapDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressMapDemoView.swift; sourceTree = "<group>"; };
-		46E7727C242CEF09008A5E93 /* PopupViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewDemoView.swift; sourceTree = "<group>"; };
 		46E77280242CEF09008A5E93 /* SoldViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldViewDemoView.swift; sourceTree = "<group>"; };
 		46E77282242CEF09008A5E93 /* LoginEntryDemoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEntryDemoData.swift; sourceTree = "<group>"; };
 		46E77283242CEF09008A5E93 /* LoginEntryViewDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEntryViewDemoViewController.swift; sourceTree = "<group>"; };
@@ -332,8 +328,6 @@
 		46E77325242CEF09008A5E93 /* ButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonDemoView.swift; sourceTree = "<group>"; };
 		46E7732B242CEF09008A5E93 /* BannerTransparencyInfoDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerTransparencyInfoDefaultData.swift; sourceTree = "<group>"; };
 		46E7732C242CEF09008A5E93 /* BannerTransparencyDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerTransparencyDemoView.swift; sourceTree = "<group>"; };
-		46E7732E242CEF09008A5E93 /* ConsentTransparencyInfoDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentTransparencyInfoDefaultData.swift; sourceTree = "<group>"; };
-		46E7732F242CEF09008A5E93 /* ConsentTransparencyInfoDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentTransparencyInfoDemoView.swift; sourceTree = "<group>"; };
 		46E77334242CEF09008A5E93 /* ReviewButtonViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewButtonViewDemoView.swift; sourceTree = "<group>"; };
 		46E77336242CEF09008A5E93 /* KlimabroletEventsDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KlimabroletEventsDemoViewController.swift; sourceTree = "<group>"; };
 		46E77337242CEF09008A5E93 /* KlimabroletData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KlimabroletData.swift; sourceTree = "<group>"; };
@@ -593,7 +587,6 @@
 				46E77281242CEF09008A5E93 /* LoginEntry */,
 				46E772A2242CEF09008A5E93 /* MessageForm */,
 				71C6AA972549D27000D78269 /* MessageUserRequired */,
-				46E7727A242CEF09008A5E93 /* Popup */,
 				46E7729D242CEF09008A5E93 /* Register */,
 				46E77294242CEF09008A5E93 /* ResultView */,
 				46E77287242CEF09008A5E93 /* SettingDetailsView */,
@@ -651,14 +644,6 @@
 				46E77279242CEF09008A5E93 /* AddressMapDemoView.swift */,
 			);
 			path = AddressMapView;
-			sourceTree = "<group>";
-		};
-		46E7727A242CEF09008A5E93 /* Popup */ = {
-			isa = PBXGroup;
-			children = (
-				46E7727C242CEF09008A5E93 /* PopupViewDemoView.swift */,
-			);
-			path = Popup;
 			sourceTree = "<group>";
 		};
 		46E7727F242CEF09008A5E93 /* SoldView */ = {
@@ -1196,7 +1181,6 @@
 			isa = PBXGroup;
 			children = (
 				46E7732A242CEF09008A5E93 /* BannerTransparency */,
-				46E7732D242CEF09008A5E93 /* ConsentTransparency */,
 			);
 			path = Consent;
 			sourceTree = "<group>";
@@ -1208,15 +1192,6 @@
 				46E7732C242CEF09008A5E93 /* BannerTransparencyDemoView.swift */,
 			);
 			path = BannerTransparency;
-			sourceTree = "<group>";
-		};
-		46E7732D242CEF09008A5E93 /* ConsentTransparency */ = {
-			isa = PBXGroup;
-			children = (
-				46E7732E242CEF09008A5E93 /* ConsentTransparencyInfoDefaultData.swift */,
-				46E7732F242CEF09008A5E93 /* ConsentTransparencyInfoDemoView.swift */,
-			);
-			path = ConsentTransparency;
 			sourceTree = "<group>";
 		};
 		46E77333242CEF09008A5E93 /* ReviewButtonView */ = {
@@ -2026,7 +2001,6 @@
 			files = (
 				71C6AA992549D28800D78269 /* MessageUserRequiredData.swift in Sources */,
 				172DCF2B2AB9C71200D890C2 /* HostingContentConfigurationCellDemoViewController.swift in Sources */,
-				46E77425242CEF0A008A5E93 /* ConsentTransparencyInfoDemoView.swift in Sources */,
 				46E7744C242CEF0A008A5E93 /* HeartSubtitleCellDemoView.swift in Sources */,
 				46E773BE242CEF0A008A5E93 /* LoginEntryDemoData.swift in Sources */,
 				F085BC2A29719E5200376A8B /* ViewingsRedesignDemoView.swift in Sources */,
@@ -2155,7 +2129,6 @@
 				46E773B3242CEF0A008A5E93 /* FavoriteFolderActionDemoView.swift in Sources */,
 				46E773F9242CEF0A008A5E93 /* DisclaimerDemoView.swift in Sources */,
 				46E773B1242CEF0A008A5E93 /* UIDevice.swift in Sources */,
-				46E77424242CEF0A008A5E93 /* ConsentTransparencyInfoDefaultData.swift in Sources */,
 				46E7743C242CEF0A008A5E93 /* CheckmarkTitleViewDemoView.swift in Sources */,
 				46E7744A242CEF0A008A5E93 /* IconTitleCellDemoView.swift in Sources */,
 				D75E14D727371692008EB126 /* FrontPageSavedSearchFactory.swift in Sources */,
@@ -2172,7 +2145,6 @@
 				46E773BD242CEF0A008A5E93 /* SoldViewDemoView.swift in Sources */,
 				46E773FD242CEF0A008A5E93 /* FavoriteButtonDemoView.swift in Sources */,
 				46E773F7242CEF0A008A5E93 /* SafetyElementsDemoView.swift in Sources */,
-				46E773BB242CEF0A008A5E93 /* PopupViewDemoView.swift in Sources */,
 				46E773CF242CEF0A008A5E93 /* RegisterViewDemoView.swift in Sources */,
 				46E773A6242CEF0A008A5E93 /* FullscreenDemoViews.swift in Sources */,
 				46E773EE242CEF0A008A5E93 /* VerificationActionSheetDemoDelegate.swift in Sources */,

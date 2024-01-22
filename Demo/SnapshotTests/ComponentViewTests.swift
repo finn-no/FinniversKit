@@ -71,10 +71,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.switchView)
     }
 
-    func testConsentTransparencyInfo() {
-        snapshot(.consentTransparencyInfo)
-    }
-
     func testCheckbox() {
         snapshot(.checkbox)
     }
