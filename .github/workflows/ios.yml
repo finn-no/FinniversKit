@@ -10,19 +10,19 @@ jobs:
   build:
     name: Build and Test
     runs-on: macos-13
+    env:
+      scheme: ${{ 'Demo' }}
+      destination: ${{ 'platform=iOS Simulator,OS=15.2,name=iPhone 13 Pro' }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Lint
+        run: |
+          swiftlint lint
       - name: Build
-        env:
-          scheme: ${{ 'Demo' }}
-          destination: ${{ 'platform=iOS Simulator,OS=15.2,name=iPhone 13 Pro' }}
         run: |
-          xcodebuild build-for-testing -scheme "$scheme" -workspace FinniversKit.xcworkspace -destination "$platform"
-      - name: Test
-        env:
-          scheme: ${{ 'Demo' }}
-          destination: ${{ 'platform=iOS Simulator,OS=15.2,name=iPhone 13 Pro' }}
+          xcodebuild build-for-testing -scheme "$scheme" -workspace FinniversKit.xcworkspace -destination "$destination"
+      - name: Test        
         run: |
-          xcodebuild test-without-building -scheme "$scheme" -workspace FinniversKit.xcworkspace -destination "$platform"
+          xcodebuild test-without-building -scheme "$scheme" -workspace FinniversKit.xcworkspace -destination "$destination"
