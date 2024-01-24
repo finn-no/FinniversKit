@@ -17,7 +17,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case cogWheelButton
     case collapsibleContentView
     case columnListsView
-    case consentTransparencyInfo
     case contractActionView
     case detailCallout
     case disclaimerView
@@ -142,8 +141,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return InfoboxSwiftUIViewController()
         case .nmpInfobox:
             return NMPInfoboxViewController()
-        case .consentTransparencyInfo:
-            return ConsentTransparencyInfoDemoView()
         case .bannerTransparencyView:
             return BannerTransparencyDemoView()
         case .checkbox:
