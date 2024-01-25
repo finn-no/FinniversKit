@@ -17,8 +17,8 @@ extension XCTestCase {
         testName: String = #function,
         line: UInt = #line
     ) {
-        let perceptualPrecision: Float = 0.95
-        var snapshotting: Snapshotting = .image(on: .iPhoneX, perceptualPrecision: perceptualPrecision)
+        let subpixelThreshold: UInt8 = 5
+        var snapshotting: Snapshotting = .image(on: .iPhoneX, subpixelThreshold: subpixelThreshold)
         if let delay = delay {
             snapshotting = .wait(for: delay, on: snapshotting)
         }
@@ -30,7 +30,7 @@ extension XCTestCase {
         )
 
         if includeIPad {
-            var snapshotting: Snapshotting = .image(on: .iPadPro11, perceptualPrecision: perceptualPrecision)
+            var snapshotting: Snapshotting = .image(on: .iPadPro11, subpixelThreshold: subpixelThreshold)
             if let delay = delay {
                 snapshotting = .wait(for: delay, on: snapshotting)
             }

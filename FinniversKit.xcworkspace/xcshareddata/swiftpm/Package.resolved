@@ -3,28 +3,19 @@
     {
       "identity" : "demokit-ios",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/finn-no/DemoKit-iOS",
+      "location" : "https://github.com/finn-no/DemoKit-iOS.git",
       "state" : {
-        "revision" : "de28e39c09f8cf006204e34961604e23b50ff7c1",
-        "version" : "0.4.1"
+        "revision" : "0fc2fb8bb8fac93f2be9d07df65074082ca34753",
+        "version" : "0.4.2"
       }
     },
     {
       "identity" : "swift-snapshot-testing",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/pointfreeco/swift-snapshot-testing",
+      "location" : "https://github.com/pimms/swift-snapshot-testing.git",
       "state" : {
-        "revision" : "8e68404f641300bfd0e37d478683bb275926760c",
-        "version" : "1.15.2"
-      }
-    },
-    {
-      "identity" : "swift-syntax",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-syntax.git",
-      "state" : {
-        "revision" : "43c802fb7f96e090dde015344a94b5e85779eff1",
-        "version" : "509.1.0"
+        "revision" : "b44b563e6ddc5a613a107fb57626047a7f1d4e1a",
+        "version" : "1.9.666"
       }
     },
     {
