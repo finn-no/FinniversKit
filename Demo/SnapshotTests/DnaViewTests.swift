@@ -7,7 +7,6 @@ import XCTest
 import FinniversKit
 import DemoKitSnapshot
 
-@MainActor
 class DnaViewTests: XCTestCase {
     private func snapshot(_ component: DnaDemoViews, record: Bool = false, line: UInt = #line) {
         snapshotTest(demoable: component.demoable, record: record, line: line)

@@ -3,7 +3,6 @@ import XCTest
 import FinniversKit
 import DemoKitSnapshot
 
-@MainActor
 class FullscreenViewTests: XCTestCase {
     private func snapshot(_ component: FullscreenDemoViews, record: Bool = false, line: UInt = #line) {
         snapshotTest(demoable: component.demoable, record: record, line: line)

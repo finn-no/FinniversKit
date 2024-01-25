@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		170CE96C2ABB3C680069759D /* DemoKitSnapshot in Frameworks */ = {isa = PBXBuildFile; productRef = 170CE96B2ABB3C680069759D /* DemoKitSnapshot */; };
 		172DCF2B2AB9C71200D890C2 /* HostingContentConfigurationCellDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DCF2A2AB9C71200D890C2 /* HostingContentConfigurationCellDemoViewController.swift */; };
 		172E7504290FE28E00956AC2 /* HTMLTextDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */; };
 		1732932D29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1732932C29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift */; };
+		17A869A32ABB349300A7054E /* DemoKit in Frameworks */ = {isa = PBXBuildFile; productRef = 17A869A22ABB349300A7054E /* DemoKit */; };
 		17BF44C929893E98001A5877 /* LoadingSwiftUIDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BF44C829893E98001A5877 /* LoadingSwiftUIDemoView.swift */; };
 		17EE085E2AA720AB00A623F2 /* FrontPageTransactionDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE085D2AA720AB00A623F2 /* FrontPageTransactionDemoViewController.swift */; };
 		17EE08632AA8ABCC00A623F2 /* FrontPageTransactionListDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE08622AA8ABCC00A623F2 /* FrontPageTransactionListDemoViewController.swift */; };
@@ -189,8 +191,6 @@
 		71C6AA992549D28800D78269 /* MessageUserRequiredData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C6AA982549D28800D78269 /* MessageUserRequiredData.swift */; };
 		8D68030CF404D02BA5F8A618 /* NumberedListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D68050D2A01257562243914 /* NumberedListDemoView.swift */; };
 		8D680A0AEE158DE3250140C2 /* CompactMarketsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680BCAFCC5ACA549D1B6F3 /* CompactMarketsDemoView.swift */; };
-		90385C1B2B57C1170036B8A0 /* DemoKitSnapshot in Frameworks */ = {isa = PBXBuildFile; productRef = 90385C1A2B57C1170036B8A0 /* DemoKitSnapshot */; };
-		90385C1D2B57C18A0036B8A0 /* DemoKit in Frameworks */ = {isa = PBXBuildFile; productRef = 90385C1C2B57C18A0036B8A0 /* DemoKit */; };
 		91D637DA2488F70A0066D4D0 /* ConfettiDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D637D92488F70A0066D4D0 /* ConfettiDemoView.swift */; };
 		9BA6C4A224336B9A009D417B /* DemoWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */; };
 		9BBC904024FD252B0003D2D8 /* UITraitCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC903F24FD252B0003D2D8 /* UITraitCollection+Extensions.swift */; };
@@ -443,7 +443,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90385C1D2B57C18A0036B8A0 /* DemoKit in Frameworks */,
+				17A869A32ABB349300A7054E /* DemoKit in Frameworks */,
 				46E77563242CFFA5008A5E93 /* FinniversKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,7 +452,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90385C1B2B57C1170036B8A0 /* DemoKitSnapshot in Frameworks */,
+				170CE96C2ABB3C680069759D /* DemoKitSnapshot in Frameworks */,
 				46E7759D242D6A8A008A5E93 /* FinniversKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1864,7 +1864,7 @@
 			);
 			name = Demo;
 			packageProductDependencies = (
-				90385C1C2B57C18A0036B8A0 /* DemoKit */,
+				17A869A22ABB349300A7054E /* DemoKit */,
 			);
 			productName = Demo;
 			productReference = 46AE6FC0242BADC9007BB005 /* Demo.app */;
@@ -1885,7 +1885,7 @@
 			);
 			name = SnapshotTests;
 			packageProductDependencies = (
-				90385C1A2B57C1170036B8A0 /* DemoKitSnapshot */,
+				170CE96B2ABB3C680069759D /* DemoKitSnapshot */,
 			);
 			productName = SnapshotTests;
 			productReference = 46E7756C242D4736008A5E93 /* SnapshotTests.xctest */;
@@ -1921,7 +1921,7 @@
 			);
 			mainGroup = 46AE6FB7242BADC9007BB005;
 			packageReferences = (
-				90385C192B57C1170036B8A0 /* XCRemoteSwiftPackageReference "DemoKit-iOS" */,
+				17A869A12ABB349300A7054E /* XCRemoteSwiftPackageReference "DemoKit-iOS" */,
 			);
 			productRefGroup = 46AE6FC1242BADC9007BB005 /* Products */;
 			projectDirPath = "";
@@ -2453,25 +2453,25 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		90385C192B57C1170036B8A0 /* XCRemoteSwiftPackageReference "DemoKit-iOS" */ = {
+		17A869A12ABB349300A7054E /* XCRemoteSwiftPackageReference "DemoKit-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/finn-no/DemoKit-iOS";
+			repositoryURL = "https://github.com/finn-no/DemoKit-iOS.git";
 			requirement = {
 				kind = exactVersion;
-				version = 0.4.1;
+				version = 0.2.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		90385C1A2B57C1170036B8A0 /* DemoKitSnapshot */ = {
+		170CE96B2ABB3C680069759D /* DemoKitSnapshot */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 90385C192B57C1170036B8A0 /* XCRemoteSwiftPackageReference "DemoKit-iOS" */;
+			package = 17A869A12ABB349300A7054E /* XCRemoteSwiftPackageReference "DemoKit-iOS" */;
 			productName = DemoKitSnapshot;
 		};
-		90385C1C2B57C18A0036B8A0 /* DemoKit */ = {
+		17A869A22ABB349300A7054E /* DemoKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 90385C192B57C1170036B8A0 /* XCRemoteSwiftPackageReference "DemoKit-iOS" */;
+			package = 17A869A12ABB349300A7054E /* XCRemoteSwiftPackageReference "DemoKit-iOS" */;
 			productName = DemoKit;
 		};
 /* End XCSwiftPackageProductDependency section */
