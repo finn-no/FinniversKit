@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/finn-no/DemoKit-iOS.git",
       "state" : {
-        "branch" : "revert-snapshot-dependency",
-        "revision" : "ff3a7cc4470c66b01accb54537cc54711a1112d0"
+        "revision" : "0fc2fb8bb8fac93f2be9d07df65074082ca34753",
+        "version" : "0.4.2"
       }
     },
     {
