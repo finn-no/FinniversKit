@@ -24,7 +24,6 @@
 		0884C6CE22B7BE360015474D /* DisclaimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0884C6CD22B7BE360015474D /* DisclaimerViewModel.swift */; };
 		089DF42321C13178008A8711 /* RectangleGiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089DF42221C13178008A8711 /* RectangleGiftView.swift */; };
 		08D70A1B21832901003E2222 /* UIEdgeInsetsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A1A21832901003E2222 /* UIEdgeInsetsExtensions.swift */; };
-		08D8B2ED2193129700EA22CC /* CheckboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */; };
 		08F0D3F122202DC900968256 /* FeedbackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F0D3F022202DC900968256 /* FeedbackViewModel.swift */; };
 		08F0D3F422259AD100968256 /* HappinessRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F0D3F322259AD100968256 /* HappinessRatingView.swift */; };
 		08F0D3F92226966E00968256 /* HappinessRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F0D3F82226966E00968256 /* HappinessRating.swift */; };
@@ -463,7 +462,6 @@
 		DAB7FAAB21B690DD00BF8CC6 /* BottomSheetInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7FAA521B690DD00BF8CC6 /* BottomSheetInteractionController.swift */; };
 		DAB7FAAE21B6924E00BF8CC6 /* SpringAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7FAAD21B6924E00BF8CC6 /* SpringAnimator.swift */; };
 		DAC0383B2119B7DC00CD49B7 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */; };
-		DAD0D48F210735060091DD4D /* RadiobuttonAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadiobuttonAnimation.xcassets */; };
 		DAD0D492210737A30091DD4D /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D491210737A30091DD4D /* TextView.swift */; };
 		DAD0D494210739500091DD4D /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D493210739500091DD4D /* DescriptionView.swift */; };
 		DAD6EB242369916100968497 /* SettingsViewConsentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB192369916100968497 /* SettingsViewConsentCell.swift */; };
@@ -974,8 +972,6 @@
 		DAA9A3A32102153F0021F7DC /* Selectionbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectionbox.swift; sourceTree = "<group>"; };
 		DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionboxItem.swift; sourceTree = "<group>"; };
 		DAA9A3A7210215400021F7DC /* AnimatedSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSelectionView.swift; sourceTree = "<group>"; };
-		DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CheckboxAnimation.xcassets; sourceTree = "<group>"; };
-		DAA9A3AF2102157B0021F7DC /* RadiobuttonAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RadiobuttonAnimation.xcassets; sourceTree = "<group>"; };
 		DAB7FA9F21B690DD00BF8CC6 /* BottomSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		DAB7FAA121B690DD00BF8CC6 /* BottomSheetPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetPresentationController.swift; sourceTree = "<group>"; };
 		DAB7FAA221B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetTransitioningDelegate.swift; sourceTree = "<group>"; };
@@ -1691,8 +1687,6 @@
 				CF3D5EEF215A6D9E006E4D08 /* Sounds */,
 				DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */,
 				4447F6B91FDB2B110033DBC1 /* Assets.xcassets */,
-				DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */,
-				DAA9A3AF2102157B0021F7DC /* RadiobuttonAnimation.xcassets */,
 				44C6CE43209CABFE00929269 /* ImageAsset.swift */,
 			);
 			path = Assets;
@@ -3534,7 +3528,6 @@
 			files = (
 				CF3D5EF6215A6D9E006E4D08 /* kick.wav in Resources */,
 				DAC0383B2119B7DC00CD49B7 /* Icons.xcassets in Resources */,
-				DAD0D48F210735060091DD4D /* RadiobuttonAnimation.xcassets in Resources */,
 				4447F6FD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf in Resources */,
 				4447F6FB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf in Resources */,
 				CF3D5EF5215A6D9E006E4D08 /* pusefinn.wav in Resources */,
@@ -3542,7 +3535,6 @@
 				CF4A054421FB2B4E000BB7DA /* Piano.sf2 in Resources */,
 				CF3D5EF4215A6D9E006E4D08 /* hi-hats.wav in Resources */,
 				CF3D5EF7215A6D9E006E4D08 /* snare.wav in Resources */,
-				08D8B2ED2193129700EA22CC /* CheckboxAnimation.xcassets in Resources */,
 				4447F6FA1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf in Resources */,
 				4447F6FC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf in Resources */,
 			);
