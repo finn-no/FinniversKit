@@ -19,7 +19,7 @@ public class RadioButton: Selectionbox {
 
     // MARK: Private properties
 
-    fileprivate override var animatedImageView: SelectableImageView {
+    fileprivate override var selectableImageView: SelectableImageView {
         return RadioButtonView(frame: .zero)
     }
 
@@ -55,7 +55,7 @@ public class Checkbox: Selectionbox {
 
     // MARK: Private properties
 
-    fileprivate override var animatedImageView: SelectableImageView {
+    fileprivate override var selectableImageView: SelectableImageView {
         return CheckboxView(frame: .zero)
     }
 
@@ -92,8 +92,8 @@ public class Selectionbox: UIView {
 
     // MARK: Private properties
 
-    fileprivate var animatedImageView: SelectableImageView {
-        fatalError("Override this in your subclass to return an appropriate animated image")
+    fileprivate var selectableImageView: SelectableImageView {
+        fatalError("Override this in your subclass to return an appropriate image")
     }
 
     private var highlightedItem: SelectionboxItem?
@@ -174,7 +174,7 @@ extension Selectionbox {
 
     private func setupBoxes(with strings: [String]) {
         for (index, string) in strings.enumerated() {
-            let item = SelectionboxItem(index: index, animatedImageView: animatedImageView)
+            let item = SelectionboxItem(index: index, animatedImageView: selectableImageView)
             item.titleLabel.text = string
             stack.addArrangedSubview(item)
         }
@@ -182,7 +182,7 @@ extension Selectionbox {
 
     private func setFields() {
         for (index, string) in fields.enumerated() {
-            let item = SelectionboxItem(index: index, animatedImageView: animatedImageView)
+            let item = SelectionboxItem(index: index, animatedImageView: selectableImageView)
             item.titleLabel.text = string
             stack.addArrangedSubview(item)
         }
