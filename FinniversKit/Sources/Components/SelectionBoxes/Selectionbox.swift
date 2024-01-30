@@ -56,7 +56,7 @@ public class Checkbox: Selectionbox {
     // MARK: Private properties
 
     fileprivate override var animatedImageView: SelectableImageView {
-        return AnimatedCheckboxView(frame: .zero)
+        return CheckboxView(frame: .zero)
     }
 
     fileprivate override func handleSelecting(_ item: CheckboxItem) {

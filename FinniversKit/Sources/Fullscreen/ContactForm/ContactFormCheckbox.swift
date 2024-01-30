@@ -19,8 +19,8 @@ final class ContactFormCheckbox: UIView {
         return label
     }()
 
-    private lazy var checkboxView: AnimatedCheckboxView = {
-        let view = AnimatedCheckboxView(frame: .zero)
+    private lazy var checkboxView: CheckboxView = {
+        let view = CheckboxView(frame: .zero)
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleCheckboxTap)))
         return view

@@ -8,8 +8,8 @@ open class CheckboxTableViewCell: BasicTableViewCell {
 
     // MARK: - Public properties
 
-    open var checkbox: AnimatedCheckboxView = {
-        let checkbox = AnimatedCheckboxView(frame: .zero)
+    open var checkbox: CheckboxView = {
+        let checkbox = CheckboxView(frame: .zero)
         checkbox.translatesAutoresizingMaskIntoConstraints = false
         return checkbox
     }()

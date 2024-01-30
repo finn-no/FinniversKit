@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class AnimatedCheckboxView: UIImageView, SelectableImageView {
+public class CheckboxView: UIImageView, SelectableImageView {
 
     public var isSelected: Bool {
         isHighlighted
