@@ -19,7 +19,7 @@ public class RadioButton: Selectionbox {
 
     // MARK: Private properties
 
-    fileprivate override var animatedImageView: AnimatedRadioButtonView {
+    fileprivate override var animatedImageView: SelectableImageView {
         return AnimatedRadioButtonView(frame: .zero)
     }
 
@@ -55,7 +55,7 @@ public class Checkbox: Selectionbox {
 
     // MARK: Private properties
 
-    fileprivate override var animatedImageView: AnimatedCheckboxView {
+    fileprivate override var animatedImageView: SelectableImageView {
         return AnimatedCheckboxView(frame: .zero)
     }
 
@@ -92,7 +92,7 @@ public class Selectionbox: UIView {
 
     // MARK: Private properties
 
-    fileprivate var animatedImageView: AnimatedSelectionView {
+    fileprivate var animatedImageView: SelectableImageView {
         fatalError("Override this in your subclass to return an appropriate animated image")
     }
 

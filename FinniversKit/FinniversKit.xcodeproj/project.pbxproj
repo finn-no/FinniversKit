@@ -60,6 +60,7 @@
 		17E232F5290A7E71003DC8F7 /* HTMLLexerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */; };
 		17EAC08A296485C300B3C639 /* UIColor+FinniversKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */; };
 		17EE08602AA73E8700A623F2 /* FrontPageTransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE085F2AA73E8700A623F2 /* FrontPageTransactionListView.swift */; };
+		2714D6932B69258600EF82E1 /* SelectableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714D6922B69258600EF82E1 /* SelectableImageView.swift */; };
 		279C40C429896C2900B5BC51 /* ToastViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279C40C329896C2900B5BC51 /* ToastViewModifier.swift */; };
 		279C40C6298A6A3D00B5BC51 /* Toast+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279C40C5298A6A3D00B5BC51 /* Toast+ViewModel.swift */; };
 		279C4202298BC32600B5BC51 /* ResultSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279C4201298BC32600B5BC51 /* ResultSwiftUIView.swift */; };
@@ -578,6 +579,7 @@
 		17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLexerTests.swift; sourceTree = "<group>"; };
 		17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+FinniversKitTests.swift"; sourceTree = "<group>"; };
 		17EE085F2AA73E8700A623F2 /* FrontPageTransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageTransactionListView.swift; sourceTree = "<group>"; };
+		2714D6922B69258600EF82E1 /* SelectableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableImageView.swift; sourceTree = "<group>"; };
 		279C40C329896C2900B5BC51 /* ToastViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewModifier.swift; sourceTree = "<group>"; };
 		279C40C5298A6A3D00B5BC51 /* Toast+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Toast+ViewModel.swift"; sourceTree = "<group>"; };
 		279C4201298BC32600B5BC51 /* ResultSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSwiftUIView.swift; sourceTree = "<group>"; };
@@ -3136,6 +3138,7 @@
 				0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */,
 				0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */,
 				08796D8721CB89400023A441 /* AnimatedHeartView.swift */,
+				2714D6922B69258600EF82E1 /* SelectableImageView.swift */,
 			);
 			path = SelectionBoxes;
 			sourceTree = "<group>";
@@ -3951,6 +3954,7 @@
 				9BB680322462F7AC001ADACF /* View+Extensions.swift in Sources */,
 				9B057AAC235EEBAA007B1CF0 /* ChristmasButton.swift in Sources */,
 				DAE6A55C21CA524B00837BFA /* CGPoint.swift in Sources */,
+				2714D6932B69258600EF82E1 /* SelectableImageView.swift in Sources */,
 				43BACE6C21117D530052114C /* BuyerPickerViewModel.swift in Sources */,
 				F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */,
 				E65085D1292BBF1D00A43B07 /* SwiftUICheckBox.swift in Sources */,

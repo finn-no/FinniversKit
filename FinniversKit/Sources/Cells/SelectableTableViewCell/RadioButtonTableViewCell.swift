@@ -13,7 +13,7 @@ open class RadioButtonTableViewCell: BasicTableViewCell {
     }()
 
     public func animateSelection(isSelected: Bool) {
-        radioButton.animateSelection(selected: isSelected)
+        radioButton.configure(isSelected: isSelected)
     }
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

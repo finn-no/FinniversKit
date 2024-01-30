@@ -34,14 +34,14 @@ open class CheckboxTableViewCell: BasicTableViewCell {
     open func configure(with viewModel: SelectableTableViewCellViewModel) {
         super.configure(with: viewModel)
         selectionStyle = .none
-        checkbox.isHighlighted = viewModel.isSelected
+        checkbox.configure(isSelected: viewModel.isSelected)
         stackViewToCheckboxConstraint.constant = .spacingM
         separatorInset = .leadingInset(56)
         layoutIfNeeded()
     }
 
     open func animateSelection(isSelected: Bool) {
-        checkbox.animateSelection(selected: isSelected)
+        checkbox.configure(isSelected: isSelected)
     }
 
     open override func prepareForReuse() {

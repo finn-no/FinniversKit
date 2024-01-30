@@ -77,7 +77,7 @@ final class ContactFormCheckbox: UIView {
     @objc private func handleCheckboxTap() {
         let isSelected = !checkboxView.isHighlighted
 
-        checkboxView.animateSelection(selected: isSelected)
+        checkboxView.configure(isSelected: isSelected)
         delegate?.contactFormCheckbox(self, didChangeSelection: isSelected)
     }
 }

@@ -4,9 +4,13 @@
 
 import UIKit
 
-public class AnimatedCheckboxView: AnimatedSelectionView {
+public class AnimatedCheckboxView: UIImageView, SelectableImageView {
 
-    public required init(frame: CGRect) {
+    public var isSelected: Bool {
+        isHighlighted
+    }
+
+    public required override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
@@ -25,5 +29,9 @@ public class AnimatedCheckboxView: AnimatedSelectionView {
             widthAnchor.constraint(equalToConstant: 24),
             heightAnchor.constraint(equalToConstant: 24)
         ])
+    }
+
+    public func configure(isSelected: Bool) {
+        isHighlighted = isSelected
     }
 }

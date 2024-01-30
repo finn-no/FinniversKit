@@ -11,7 +11,7 @@ public typealias CheckboxItem = SelectionboxItem
 public class SelectionboxItem: UIView {
     // MARK: Internal properties
 
-    let imageView: AnimatedSelectionView
+    let imageView: SelectableImageView
 
     let titleLabel: UILabel = {
         let label = Label(style: .body)
@@ -30,13 +30,13 @@ public class SelectionboxItem: UIView {
 
     public var isSelected: Bool = false {
         didSet {
-            imageView.animateSelection(selected: isSelected)
+            imageView.configure(isSelected: isSelected)
         }
     }
 
     // MARK: Implementation
 
-    public init(index: Int, animatedImageView: AnimatedSelectionView) {
+    public init(index: Int, animatedImageView: SelectableImageView) {
         self.index = index
         self.imageView = animatedImageView
         super.init(frame: .zero)
