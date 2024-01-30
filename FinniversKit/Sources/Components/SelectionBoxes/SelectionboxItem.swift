@@ -36,9 +36,9 @@ public class SelectionboxItem: UIView {
 
     // MARK: Implementation
 
-    public init(index: Int, animatedImageView: SelectableImageView) {
+    public init(index: Int, selectableImageView: SelectableImageView) {
         self.index = index
-        self.imageView = animatedImageView
+        self.imageView = selectableImageView
         super.init(frame: .zero)
         setupSubviews()
     }

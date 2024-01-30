@@ -174,7 +174,7 @@ extension Selectionbox {
 
     private func setupBoxes(with strings: [String]) {
         for (index, string) in strings.enumerated() {
-            let item = SelectionboxItem(index: index, animatedImageView: selectableImageView)
+            let item = SelectionboxItem(index: index, selectableImageView: selectableImageView)
             item.titleLabel.text = string
             stack.addArrangedSubview(item)
         }
@@ -182,7 +182,7 @@ extension Selectionbox {
 
     private func setFields() {
         for (index, string) in fields.enumerated() {
-            let item = SelectionboxItem(index: index, animatedImageView: selectableImageView)
+            let item = SelectionboxItem(index: index, selectableImageView: selectableImageView)
             item.titleLabel.text = string
             stack.addArrangedSubview(item)
         }
