@@ -20,7 +20,7 @@ public class RadioButton: Selectionbox {
     // MARK: Private properties
 
     fileprivate override var animatedImageView: SelectableImageView {
-        return AnimatedRadioButtonView(frame: .zero)
+        return RadioButtonView(frame: .zero)
     }
 
     fileprivate override func handleSelecting(_ item: RadioButtonItem) {

@@ -6,8 +6,8 @@ import Foundation
 
 open class RadioButtonTableViewCell: BasicTableViewCell {
 
-    lazy private var radioButton: AnimatedRadioButtonView = {
-        let radioButton = AnimatedRadioButtonView(frame: .zero)
+    lazy private var radioButton: RadioButtonView = {
+        let radioButton = RadioButtonView(frame: .zero)
         radioButton.translatesAutoresizingMaskIntoConstraints = false
         return radioButton
     }()

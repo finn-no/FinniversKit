@@ -252,7 +252,7 @@ private extension SelectionListView.Presentation {
         case .checkboxes:
             return CheckboxView(frame: .zero)
         case .radioButtons:
-            return AnimatedRadioButtonView(frame: .zero)
+            return RadioButtonView(frame: .zero)
         }
     }
 }

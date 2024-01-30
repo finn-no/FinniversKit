@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class AnimatedRadioButtonView: UIImageView, SelectableImageView {
+public class RadioButtonView: UIImageView, SelectableImageView {
 
     public var isSelected: Bool {
         isHighlighted
