@@ -6,19 +6,19 @@ import UIKit
 
 @objc public extension UIImage {
 
-    class func brandRadioButtonSelected(index: Int) -> UIImage? {
+    class var brandRadioButtonSelected: UIImage {
         Config.imageProvider.brandRadioButtonSelected
     }
 
-    class func brandRadioButtonUnselected(index: Int) -> UIImage? {
+    class var brandRadioButtonUnselected: UIImage {
         Config.imageProvider.brandRadioButtonUnselected
     }
 
-    class func brandCheckboxSelected(index: Int) -> UIImage? {
+    class var brandCheckboxSelected: UIImage {
         Config.imageProvider.brandCheckboxSelected
     }
 
-    class func brandCheckboxUnselected(index: Int) -> UIImage? {
+    class var brandCheckboxUnselected: UIImage {
         Config.imageProvider.brandCheckboxUnselected
     }
 
