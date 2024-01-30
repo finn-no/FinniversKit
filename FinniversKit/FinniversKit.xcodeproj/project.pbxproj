@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		0379D1EC2AB3321300CC1B38 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379D1EA2AB3321300CC1B38 /* ImageProvider.swift */; };
 		0379D1EE2AB3321300CC1B38 /* UIImage+FinniversKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0379D1EB2AB3321300CC1B38 /* UIImage+FinniversKit.swift */; };
-		0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */; };
-		0817FFCF21831045001BD9C4 /* AnimatedCheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */; };
 		082D80CB21C13C7B00831BDE /* RoundedRectangleGiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80CA21C13C7B00831BDE /* RoundedRectangleGiftView.swift */; };
 		082D80CD21C13D5300831BDE /* TriangleGiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80CC21C13D5300831BDE /* TriangleGiftView.swift */; };
 		082D80CF21C13E8B00831BDE /* ChristmasOrnamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80CE21C13E8B00831BDE /* ChristmasOrnamentView.swift */; };
@@ -60,6 +58,8 @@
 		17E232F5290A7E71003DC8F7 /* HTMLLexerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */; };
 		17EAC08A296485C300B3C639 /* UIColor+FinniversKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */; };
 		17EE08602AA73E8700A623F2 /* FrontPageTransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE085F2AA73E8700A623F2 /* FrontPageTransactionListView.swift */; };
+		27076AA32B694C2F00B1ADF6 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27076AA12B694C2F00B1ADF6 /* CheckboxView.swift */; };
+		27076AA42B694C2F00B1ADF6 /* RadiobuttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27076AA22B694C2F00B1ADF6 /* RadiobuttonView.swift */; };
 		2714D6932B69258600EF82E1 /* SelectableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714D6922B69258600EF82E1 /* SelectableImageView.swift */; };
 		279C40C429896C2900B5BC51 /* ToastViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279C40C329896C2900B5BC51 /* ToastViewModifier.swift */; };
 		279C40C6298A6A3D00B5BC51 /* Toast+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279C40C5298A6A3D00B5BC51 /* Toast+ViewModel.swift */; };
@@ -526,8 +526,6 @@
 /* Begin PBXFileReference section */
 		0379D1EA2AB3321300CC1B38 /* ImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
 		0379D1EB2AB3321300CC1B38 /* UIImage+FinniversKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+FinniversKit.swift"; sourceTree = "<group>"; };
-		0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedRadiobuttonView.swift; sourceTree = "<group>"; };
-		0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedCheckboxView.swift; sourceTree = "<group>"; };
 		082D80CA21C13C7B00831BDE /* RoundedRectangleGiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleGiftView.swift; sourceTree = "<group>"; };
 		082D80CC21C13D5300831BDE /* TriangleGiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleGiftView.swift; sourceTree = "<group>"; };
 		082D80CE21C13E8B00831BDE /* ChristmasOrnamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasOrnamentView.swift; sourceTree = "<group>"; };
@@ -579,6 +577,8 @@
 		17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLexerTests.swift; sourceTree = "<group>"; };
 		17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+FinniversKitTests.swift"; sourceTree = "<group>"; };
 		17EE085F2AA73E8700A623F2 /* FrontPageTransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageTransactionListView.swift; sourceTree = "<group>"; };
+		27076AA12B694C2F00B1ADF6 /* CheckboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
+		27076AA22B694C2F00B1ADF6 /* RadiobuttonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadiobuttonView.swift; sourceTree = "<group>"; };
 		2714D6922B69258600EF82E1 /* SelectableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableImageView.swift; sourceTree = "<group>"; };
 		279C40C329896C2900B5BC51 /* ToastViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewModifier.swift; sourceTree = "<group>"; };
 		279C40C5298A6A3D00B5BC51 /* Toast+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Toast+ViewModel.swift"; sourceTree = "<group>"; };
@@ -3132,11 +3132,11 @@
 		DAA9A3A2210214B80021F7DC /* SelectionBoxes */ = {
 			isa = PBXGroup;
 			children = (
+				27076AA12B694C2F00B1ADF6 /* CheckboxView.swift */,
+				27076AA22B694C2F00B1ADF6 /* RadiobuttonView.swift */,
 				DAA9A3A32102153F0021F7DC /* Selectionbox.swift */,
 				DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */,
 				DAA9A3A7210215400021F7DC /* AnimatedSelectionView.swift */,
-				0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */,
-				0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */,
 				08796D8721CB89400023A441 /* AnimatedHeartView.swift */,
 				2714D6922B69258600EF82E1 /* SelectableImageView.swift */,
 			);
@@ -3656,6 +3656,7 @@
 				5DEAC3BF25C16314003376AD /* IconButton.swift in Sources */,
 				F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */,
 				44A149ED21377C7B0053D5F7 /* SavedSearchesListViewModel.swift in Sources */,
+				27076AA32B694C2F00B1ADF6 /* CheckboxView.swift in Sources */,
 				9BEB287B231D484B00D28BAD /* LoanHeaderView.swift in Sources */,
 				496F8C142473DCC600AE0735 /* FavoriteSoldView.swift in Sources */,
 				57D7DFFA2ACEAFA9004C6D84 /* SettingsViewIconCell.swift in Sources */,
@@ -3797,7 +3798,6 @@
 				CF45AF89231D3A3000BE8B39 /* StepSlider.swift in Sources */,
 				899D0BF6222D4B3400794DEC /* ArrayExtensions.swift in Sources */,
 				E65085DC292BCD1D00A43B07 /* SwiftUISelectionListView.swift in Sources */,
-				0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */,
 				E6920B2B28474B78008B41C6 /* CombineCompatible.swift in Sources */,
 				9B238F02225B95F600B0E0C2 /* InfoboxView+Style.swift in Sources */,
 				9B9663CD24603AAE00D34BA1 /* Color+SwiftUI.swift in Sources */,
@@ -3822,6 +3822,7 @@
 				D6F5A3B727E48230004BB02B /* FloatingButton+Style.swift in Sources */,
 				F3E681ED2A97597C00DB8B82 /* SwiftUIIconButton.swift in Sources */,
 				4447F6EC1FDB2B110033DBC1 /* TextField+InputType.swift in Sources */,
+				27076AA42B694C2F00B1ADF6 /* RadiobuttonView.swift in Sources */,
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
 				712B0846254AEBC100791C6B /* BuyerPickerFallbackCell.swift in Sources */,
 				E65085E2292BD01800A43B07 /* SwiftUISelectionListItem.swift in Sources */,
@@ -3906,7 +3907,6 @@
 				CFFDF89722F311F600FE68EA /* NeighborhoodProfileView.swift in Sources */,
 				CF0647FC2368834B00863D07 /* TopShadowView.swift in Sources */,
 				44A557AF22E7211E001667AE /* RemoteImageTableViewCellViewModel.swift in Sources */,
-				0817FFCF21831045001BD9C4 /* AnimatedCheckboxView.swift in Sources */,
 				44D912632077AC8A00486848 /* TriangleView.swift in Sources */,
 				9B057AB0235EEC0F007B1CF0 /* ChristmasWishListViewModel.swift in Sources */,
 				712B0812254ADB1F00791C6B /* MessageUserRequiredView.swift in Sources */,
