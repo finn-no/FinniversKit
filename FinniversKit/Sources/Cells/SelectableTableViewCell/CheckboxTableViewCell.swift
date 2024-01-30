@@ -40,7 +40,7 @@ open class CheckboxTableViewCell: BasicTableViewCell {
         layoutIfNeeded()
     }
 
-    open func animateSelection(isSelected: Bool) {
+    open func configure(isSelected: Bool) {
         checkbox.configure(isSelected: isSelected)
     }
 

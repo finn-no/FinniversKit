@@ -12,7 +12,7 @@ open class RadioButtonTableViewCell: BasicTableViewCell {
         return radioButton
     }()
 
-    public func animateSelection(isSelected: Bool) {
+    public func configure(isSelected: Bool) {
         radioButton.configure(isSelected: isSelected)
     }
 
