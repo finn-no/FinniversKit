@@ -91,6 +91,21 @@ public class EmptyView: UIView {
         setup()
     }
 
+    // MARK: - Deprecated
+
+    public enum EmptyViewShapeType {
+        case `default`
+        case christmas
+        case none
+    }
+
+    @available(*, deprecated, message: "shapeType parameter is not supported anymore and should be removed")
+    public init(shapeType: EmptyViewShapeType = .default) {
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = false
+        setup()
+    }
+
     // MARK: - Setup
 
     private func setup() {
