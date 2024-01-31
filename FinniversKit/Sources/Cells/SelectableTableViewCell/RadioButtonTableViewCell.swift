@@ -7,7 +7,7 @@ import Foundation
 open class RadioButtonTableViewCell: BasicTableViewCell {
 
     lazy private var radioButton: RadioButtonView = {
-        let radioButton = RadioButtonView(frame: .zero)
+        let radioButton = RadioButtonView()
         radioButton.translatesAutoresizingMaskIntoConstraints = false
         return radioButton
     }()

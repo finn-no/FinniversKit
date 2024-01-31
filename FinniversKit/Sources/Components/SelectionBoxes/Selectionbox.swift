@@ -20,7 +20,7 @@ public class RadioButton: Selectionbox {
     // MARK: Private properties
 
     fileprivate override var selectableImageView: SelectableImageView {
-        return RadioButtonView(frame: .zero)
+        return RadioButtonView()
     }
 
     fileprivate override func handleSelecting(_ item: RadioButtonItem) {
@@ -56,7 +56,7 @@ public class Checkbox: Selectionbox {
     // MARK: Private properties
 
     fileprivate override var selectableImageView: SelectableImageView {
-        return CheckboxView(frame: .zero)
+        return CheckboxView()
     }
 
     fileprivate override func handleSelecting(_ item: CheckboxItem) {

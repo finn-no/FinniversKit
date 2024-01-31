@@ -20,7 +20,7 @@ final class ContactFormCheckbox: UIView {
     }()
 
     private lazy var checkboxView: CheckboxView = {
-        let view = CheckboxView(frame: .zero)
+        let view = CheckboxView()
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleCheckboxTap)))
         return view

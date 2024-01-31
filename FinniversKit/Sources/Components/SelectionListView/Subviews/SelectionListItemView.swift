@@ -250,9 +250,9 @@ private extension SelectionListView.Presentation {
     var selectionView: SelectableImageView {
         switch self {
         case .checkboxes:
-            return CheckboxView(frame: .zero)
+            return CheckboxView()
         case .radioButtons:
-            return RadioButtonView(frame: .zero)
+            return RadioButtonView()
         }
     }
 }

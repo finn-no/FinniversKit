@@ -9,7 +9,7 @@ open class CheckboxTableViewCell: BasicTableViewCell {
     // MARK: - Public properties
 
     open var checkbox: CheckboxView = {
-        let checkbox = CheckboxView(frame: .zero)
+        let checkbox = CheckboxView()
         checkbox.translatesAutoresizingMaskIntoConstraints = false
         return checkbox
     }()
