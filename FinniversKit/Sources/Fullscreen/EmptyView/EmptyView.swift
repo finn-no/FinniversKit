@@ -10,6 +10,12 @@ public protocol EmptyViewDelegate: AnyObject {
     func emptyView(_ emptyView: EmptyView, didMoveObjectView view: UIView)
 }
 
+public enum EmptyViewShapeType { // Deprecated
+    case `default`
+    case christmas
+    case none
+}
+
 public class EmptyView: UIView {
 
     // MARK: - Other private attributes
@@ -92,12 +98,6 @@ public class EmptyView: UIView {
     }
 
     // MARK: - Deprecated
-
-    public enum EmptyViewShapeType {
-        case `default`
-        case christmas
-        case none
-    }
 
     @available(*, deprecated, message: "shapeType parameter is not supported anymore and should be removed")
     public init(shapeType: EmptyViewShapeType = .default) {
