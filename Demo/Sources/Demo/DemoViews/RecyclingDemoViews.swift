@@ -14,7 +14,6 @@ enum RecyclingDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case compactMarketsView
     case adRecommendationsGridView
     case settingsView
-    case adManagementView
     case neighborhoodProfileView
 
     static var groupTitle: String { "Recycling" }
@@ -48,8 +47,6 @@ enum RecyclingDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return AdRecommendationsGridViewDemoView()
         case .settingsView:
             return SettingsViewDemoView()
-        case .adManagementView:
-            return AdManagementDemoView()
         case .neighborhoodProfileView:
             return NeighborhoodProfileDemoView()
         }
