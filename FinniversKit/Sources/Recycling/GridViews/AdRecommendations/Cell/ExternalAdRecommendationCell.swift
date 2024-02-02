@@ -3,13 +3,6 @@ import Foundation
 public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendationCell, AdRecommendationConfigurable {
     // MARK: - External properties
 
-    /// The loading color is used to fill the image view while we load the image.
-    public var loadingColor: UIColor? {
-        didSet {
-            imageContentView.backgroundColor = loadingColor
-        }
-    }
-
     /// A data source for the loading of the image
     public weak var imageDataSource: RemoteImageViewDataSource? {
         didSet {
@@ -43,6 +36,8 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     private static let cornerRadius: CGFloat = 8.0
     private static let minImageAspectRatio: CGFloat = 0.75
     private static let maxImageAspectRatio: CGFloat = 1.5
+
+    private let loadingColor: UIColor = .bgTertiary
 
     /// Extra container for accessibility issues. The cell should have "all content" and favoriteButton (if added) as accessibilty elements but it get confused if favoriteButton is a subview of the other accessibility element (so contentView can not be one of the accessibility elements
     private lazy var containerView = UIView(withAutoLayout: true)
@@ -236,10 +231,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
         NSLayoutConstraint.activate([ribbonView.title.isEmpty ? titleToRibbonConstraint : subtitleToRibbonConstraint])
 
-        // Show a pretty color while we load the image
-        let colors: [UIColor] = [.aqua200, .green100, .yellow100, .red100]
-        let color = colors[index % colors.count]
-        loadingColor = color
+        imageContentView.backgroundColor = loadingColor
 
         if let model = model {
             if !model.scaleImageToFillView {
