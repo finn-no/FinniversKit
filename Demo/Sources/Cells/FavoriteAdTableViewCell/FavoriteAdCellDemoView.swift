@@ -67,10 +67,6 @@ extension FavoriteAdCellDemoView: UITableViewDataSource {
         cell.configure(with: viewModels[indexPath.row])
         cell.remoteImageViewDataSource = self
 
-        // Show a pretty color while we load the image
-        let colors: [UIColor] = [.aqua200, .green100, .yellow100, .red100]
-        cell.loadingColor = colors[indexPath.row % colors.count]
-
         return cell
     }
 }
