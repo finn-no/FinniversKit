@@ -65,7 +65,7 @@ extension CheckboxCellDemoView: UITableViewDelegate {
         var viewModel = viewModels[indexPath.row]
         viewModel.isSelected = !viewModel.isSelected
         viewModels[indexPath.row] = viewModel
-        cell.animateSelection(isSelected: viewModel.isSelected)
+        cell.configure(isSelected: viewModel.isSelected)
     }
 }
 
