@@ -31,8 +31,8 @@ public final class CalloutView: UIView {
 
     private lazy var boxView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .bgSuccess
-        view.layer.borderColor = .accentPea
+        view.backgroundColor = .bgCallout
+        view.layer.borderColor = .borderCallout
         view.layer.borderWidth = 2
         view.layer.cornerRadius = .spacingS
         return view
@@ -186,14 +186,14 @@ private final class ArrowView: UIView {
     private lazy var triangleLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.lineWidth = 2
-        layer.fillColor = .bgSuccess
-        layer.strokeColor = .accentPea
+        layer.fillColor = .bgCallout
+        layer.strokeColor = .borderCallout
         return layer
     }()
 
     private lazy var bottomBorderLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
-        layer.backgroundColor = .bgSuccess
+        layer.backgroundColor = .bgCallout
         return layer
     }()
 
