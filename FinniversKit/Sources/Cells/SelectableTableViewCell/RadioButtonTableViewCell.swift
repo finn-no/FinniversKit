@@ -6,14 +6,14 @@ import Foundation
 
 open class RadioButtonTableViewCell: BasicTableViewCell {
 
-    lazy private var radioButton: AnimatedRadioButtonView = {
-        let radioButton = AnimatedRadioButtonView(frame: .zero)
+    lazy private var radioButton: RadioButtonView = {
+        let radioButton = RadioButtonView()
         radioButton.translatesAutoresizingMaskIntoConstraints = false
         return radioButton
     }()
 
-    public func animateSelection(isSelected: Bool) {
-        radioButton.animateSelection(selected: isSelected)
+    public func configure(isSelected: Bool) {
+        radioButton.configure(isSelected: isSelected)
     }
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

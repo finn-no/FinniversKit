@@ -54,6 +54,8 @@ enum ImageAsset: String {
     case check
     case checkCircleFilled
     case checkCircleFilledMini
+    case checkboxSelected
+    case checkboxUnselected
     case checkmark
     case checkmarkBig
     case checkmarkBlue
@@ -137,6 +139,8 @@ enum ImageAsset: String {
     case playVideo
     case plusMini
     case pusefinnCircle
+    case radioButtonSelected
+    case radioButtonUnselected
     case rate
     case ratingFaceAngry
     case ratingFaceDissatisfied
@@ -189,6 +193,8 @@ enum ImageAsset: String {
             .check,
             .checkCircleFilled,
             .checkCircleFilledMini,
+            .checkboxSelected,
+            .checkboxUnselected,
             .checkmark,
             .checkmarkBig,
             .checkmarkBlue,
@@ -272,6 +278,8 @@ enum ImageAsset: String {
             .playVideo,
             .plusMini,
             .pusefinnCircle,
+            .radioButtonSelected,
+            .radioButtonUnselected,
             .rate,
             .ratingFaceAngry,
             .ratingFaceDissatisfied,
