@@ -19,10 +19,12 @@ public protocol ColorProvider {
     var bgInfoHeader: UIColor { get }
     var bgSuccess: UIColor { get }
     var bgCritical: UIColor { get }
+    var bgCallout: UIColor { get }
     var borderInfo: UIColor { get }
     var borderNegative: UIColor { get }
     var borderPositive: UIColor { get }
     var borderWarning: UIColor { get }
+    var borderCallout: UIColor { get }
     var borderInfoSubtle: UIColor { get }
     var borderNegativeSubtle: UIColor { get }
     var borderPositiveSubtle: UIColor { get }
@@ -90,6 +92,10 @@ public struct DefaultColorProvider: ColorProvider {
         .yellow100
     }
 
+    public var bgCallout: UIColor {
+        .green100
+    }
+
     public var bgInfo: UIColor {
         .dynamicColor(defaultColor: .aqua50, darkModeColor: .darkIce)
     }
@@ -136,6 +142,10 @@ public struct DefaultColorProvider: ColorProvider {
 
     public var borderWarning: UIColor {
         .dynamicColor(defaultColor: .yellow600, darkModeColor: .yellow500)
+    }
+
+    public var borderCallout: UIColor {
+        .accentPea
     }
 
     public var borderInfoSubtle: UIColor {

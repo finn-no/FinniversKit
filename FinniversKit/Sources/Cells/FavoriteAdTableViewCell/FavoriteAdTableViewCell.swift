@@ -20,8 +20,6 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         }
     }
 
-    public var loadingColor: UIColor?
-
     var isMoreButtonHidden = false {
         didSet {
             adView.isMoreButtonHidden = isMoreButtonHidden
