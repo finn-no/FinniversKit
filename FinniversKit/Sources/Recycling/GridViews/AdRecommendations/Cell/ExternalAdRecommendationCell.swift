@@ -151,10 +151,8 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
         backgroundColor = .clear
 
-        let imageHeightMinimumConstraint = imageContentView.heightAnchor.constraint(equalTo: imageContentView.widthAnchor, multiplier: ExternalAdRecommendationCell.minImageAspectRatio)
+        let imageHeightMinimumConstraint = imageContentView.heightAnchor.constraint(greaterThanOrEqualTo: imageContentView.widthAnchor, multiplier: ExternalAdRecommendationCell.minImageAspectRatio)
         let imageHeightMaximumConstraint = imageContentView.heightAnchor.constraint(lessThanOrEqualTo: imageContentView.widthAnchor, multiplier: ExternalAdRecommendationCell.maxImageAspectRatio)
-
-        imageHeightMinimumConstraint.priority = .defaultHigh
 
         containerView.fillInSuperview()
 
@@ -246,7 +244,10 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     public static func height(for model: ExternalAdRecommendationViewModel, width: CGFloat) -> CGFloat {
         let titleHeight = model.title.height(withConstrainedWidth: width, font: .body)
         let imageRatio = model.imageSize.height / model.imageSize.width
-        let clippedImageRatio = min(max(imageRatio, ExternalAdRecommendationCell.minImageAspectRatio), ExternalAdRecommendationCell.maxImageAspectRatio)
+        let clippedImageRatio = max(
+            max(imageRatio, ExternalAdRecommendationCell.minImageAspectRatio),
+            ExternalAdRecommendationCell.maxImageAspectRatio
+        )
         let imageHeight = width * clippedImageRatio
         let contentHeight = subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + bottomMargin
 
