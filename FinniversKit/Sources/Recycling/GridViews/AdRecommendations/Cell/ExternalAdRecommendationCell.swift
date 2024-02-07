@@ -34,7 +34,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     private static let accessoryHeight: CGFloat = 14.0
     private static let margin: CGFloat = 8.0
     private static let cornerRadius: CGFloat = 8.0
-    private static let heightMultiplier: CGFloat = 1.5
+    private static let heightMultiplier: CGFloat = 1
 
     private let loadingColor: UIColor = .bgTertiary
 
