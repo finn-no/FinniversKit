@@ -48,7 +48,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case mapAddressButton
     case monthAndYearPickerView
     case multilineButton
-    case myAdsListView
     case nativeAdvert
     case navigationLinkView
     case numberedListView
@@ -261,8 +260,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return JobApplyBoxDemoView()
         case .jobKeyInfo:
             return JobKeyInfoDemoView()
-        case .myAdsListView:
-            return MyAdsListDemoView()
         case .brazePromotionView:
             return BrazePromotionDemoView()
         case .mapAddressButton:

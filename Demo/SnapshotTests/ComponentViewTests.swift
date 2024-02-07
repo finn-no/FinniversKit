@@ -307,10 +307,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.jobKeyInfo)
     }
 
-    func testMyAdsListView() {
-        snapshot(.myAdsListView)
-    }
-
     func testMapAddressButton() {
         snapshot(.mapAddressButton)
     }
