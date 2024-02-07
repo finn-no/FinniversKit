@@ -47,13 +47,14 @@ enum ImageAsset: String {
     case betaPill
     case calendar
     case camera
-    case candyCane
     case car
     case carsCircleIllustration
     case carsIllustration
     case check
     case checkCircleFilled
     case checkCircleFilledMini
+    case checkboxSelected
+    case checkboxUnselected
     case checkmark
     case checkmarkBig
     case checkmarkBlue
@@ -101,10 +102,6 @@ enum ImageAsset: String {
     case finnLogoSimple
     case gallery
     case gift
-    case giftRoundedRectRed
-    case giftSquarePink
-    case giftSquareYellow
-    case giftTriangleGreen
     case gridView
     case handshake
     case heartEmptyDashed
@@ -135,15 +132,14 @@ enum ImageAsset: String {
     case navigation
     case noImage
     case notifications
-    case ornamentCircleBlue
-    case ornamentCircleRed
-    case ornamentStar
     case padlock
     case pencilPaper
     case pin
     case playVideo
     case plusMini
     case pusefinnCircle
+    case radioButtonSelected
+    case radioButtonUnselected
     case rate
     case ratingFaceAngry
     case ratingFaceDissatisfied
@@ -185,13 +181,14 @@ enum ImageAsset: String {
             .betaPill,
             .calendar,
             .camera,
-            .candyCane,
             .car,
             .carsCircleIllustration,
             .carsIllustration,
             .check,
             .checkCircleFilled,
             .checkCircleFilledMini,
+            .checkboxSelected,
+            .checkboxUnselected,
             .checkmark,
             .checkmarkBig,
             .checkmarkBlue,
@@ -239,10 +236,6 @@ enum ImageAsset: String {
             .finnLogoSimple,
             .gallery,
             .gift,
-            .giftRoundedRectRed,
-            .giftSquarePink,
-            .giftSquareYellow,
-            .giftTriangleGreen,
             .gridView,
             .handshake,
             .heartEmptyDashed,
@@ -273,15 +266,14 @@ enum ImageAsset: String {
             .navigation,
             .noImage,
             .notifications,
-            .ornamentCircleBlue,
-            .ornamentCircleRed,
-            .ornamentStar,
             .padlock,
             .pencilPaper,
             .pin,
             .playVideo,
             .plusMini,
             .pusefinnCircle,
+            .radioButtonSelected,
+            .radioButtonUnselected,
             .rate,
             .ratingFaceAngry,
             .ratingFaceDissatisfied,
