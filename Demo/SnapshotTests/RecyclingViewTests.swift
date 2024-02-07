@@ -2,6 +2,7 @@
 import XCTest
 import FinniversKit
 import DemoKitSnapshot
+import SnapshotTesting
 
 @MainActor
 class RecyclingViewTests: XCTestCase {
@@ -20,6 +21,7 @@ class RecyclingViewTests: XCTestCase {
     }
 
     func testAdRecommendationsGridView() {
+//        SnapshotTesting.isRecording = true
         snapshot(.adRecommendationsGridView)
     }
 
