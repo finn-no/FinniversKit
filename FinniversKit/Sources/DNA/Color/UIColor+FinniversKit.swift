@@ -35,6 +35,7 @@ import UIKit
     public class var borderPositive: UIColor { Config.colorProvider.borderPositive }
     public class var borderWarning: UIColor { Config.colorProvider.borderWarning }
     public class var borderCallout: UIColor { Config.colorProvider.borderCallout }
+    public class var borderSecondary: UIColor { Config.colorProvider.borderSecondary }
     public class var btnCritical: UIColor { Config.colorProvider.btnCritical }
     public class var btnDisabled: UIColor { Config.colorProvider.btnDisabled }
     public class var btnPrimary: UIColor { Config.colorProvider.btnPrimary }

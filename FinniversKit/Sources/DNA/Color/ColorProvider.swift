@@ -29,6 +29,7 @@ public protocol ColorProvider {
     var borderNegativeSubtle: UIColor { get }
     var borderPositiveSubtle: UIColor { get }
     var borderWarningSubtle: UIColor { get }
+    var borderSecondary: UIColor { get }
     var btnPrimary: UIColor { get }
     var btnDisabled: UIColor { get }
     var btnCritical: UIColor { get }
@@ -162,6 +163,10 @@ public struct DefaultColorProvider: ColorProvider {
 
     public var borderWarningSubtle: UIColor {
         .dynamicColor(defaultColor: .yellow300, darkModeColor: .yellow700)
+    }
+
+    public var borderSecondary: UIColor {
+        .aqua400
     }
 
     public var btnPrimary: UIColor {
