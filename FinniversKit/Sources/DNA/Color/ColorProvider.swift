@@ -234,7 +234,7 @@ public struct DefaultColorProvider: ColorProvider {
     }
 
     public var textToast: UIColor {
-        .gray700
+        .dynamicColor(defaultColor: .gray700, darkModeColor: .darkLicorice)
     }
 
     public var tableViewSeparator: UIColor {
