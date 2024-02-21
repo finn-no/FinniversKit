@@ -7,6 +7,7 @@ import UIKit
 public protocol ImageProvider {
 
     // General
+    var placeholderImage: UIImage { get }
     var brandFavouriteAdd: UIImage { get }
     var brandFavouriteAdded: UIImage { get }
     var brandFavouriteAddImg: UIImage { get }
@@ -38,7 +39,12 @@ public protocol ImageProvider {
 // MARK: - Default FINN images
 
 public struct DefaultImageProvider: ImageProvider {
+
     public static let shared = DefaultImageProvider()
+
+    public var placeholderImage: UIImage {
+        UIImage(named: .noImage)
+    }
 
     public var brandFavouriteAdd: UIImage {
         UIImage(named: .favoriteAdd)
