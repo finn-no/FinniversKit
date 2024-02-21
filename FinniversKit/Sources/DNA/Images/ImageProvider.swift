@@ -7,7 +7,7 @@ import UIKit
 public protocol ImageProvider {
 
     // General
-    var placeholder: UIImage { get }
+    var placeholderAd: UIImage { get }
     var brandFavouriteAdd: UIImage { get }
     var brandFavouriteAdded: UIImage { get }
     var brandFavouriteAddImg: UIImage { get }
@@ -42,7 +42,7 @@ public struct DefaultImageProvider: ImageProvider {
 
     public static let shared = DefaultImageProvider()
 
-    public var placeholder: UIImage {
+    public var placeholderAd: UIImage {
         UIImage(named: .noImage)
     }
 
