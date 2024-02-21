@@ -25,3 +25,10 @@ final class UIColor_FinniversKitTests: XCTestCase {
         XCTAssertEqual(blueExtended.hexString, "#0000ff")
     }
 }
+
+final class FinniversKitPlaceholderImageTest: XCTestCase {
+    func testPlaceholderImage() {
+        let redExtended = UIImage(named: .noImage)
+        XCTAssertEqual(redExtended, PlaceholderImage.noImage)
+    }
+}
