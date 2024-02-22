@@ -6,6 +6,10 @@ import UIKit
 
 @objc public extension UIImage {
 
+    class var placeholderAd: UIImage {
+        Config.imageProvider.placeholderAd
+    }
+
     class var brandRadioButtonSelected: UIImage {
         Config.imageProvider.brandRadioButtonSelected
     }

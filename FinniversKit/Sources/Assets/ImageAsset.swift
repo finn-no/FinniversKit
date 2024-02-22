@@ -48,8 +48,6 @@ enum ImageAsset: String {
     case calendar
     case camera
     case car
-    case carsCircleIllustration
-    case carsIllustration
     case check
     case checkCircleFilled
     case checkCircleFilledMini
@@ -59,7 +57,6 @@ enum ImageAsset: String {
     case checkmarkBig
     case checkmarkBlue
     case christmasWishListBanner
-    case clock
     case close
     case confetti1
     case confetti2
@@ -182,8 +179,6 @@ enum ImageAsset: String {
             .calendar,
             .camera,
             .car,
-            .carsCircleIllustration,
-            .carsIllustration,
             .check,
             .checkCircleFilled,
             .checkCircleFilledMini,
@@ -193,7 +188,6 @@ enum ImageAsset: String {
             .checkmarkBig,
             .checkmarkBlue,
             .christmasWishListBanner,
-            .clock,
             .close,
             .confetti1,
             .confetti2,
