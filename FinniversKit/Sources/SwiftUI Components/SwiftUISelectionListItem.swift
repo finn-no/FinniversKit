@@ -15,6 +15,10 @@ public class SwiftUISelectionListItemModel<ItemValue>: ObservableObject, Identif
     public let description: String?
     public let image: Image?
     @Published public var isSelected: Bool
+
+    public func unselect() {
+        isSelected = false
+    }
 }
 
 struct SwiftUISelectionListItem<ItemType>: View {
