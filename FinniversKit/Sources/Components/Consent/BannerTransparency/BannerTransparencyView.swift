@@ -17,7 +17,6 @@ public final class BannerTransparencyView: UIView {
 
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = UIImage(named: .finnLogo)
         return imageView
     }()
 
@@ -46,6 +45,13 @@ public final class BannerTransparencyView: UIView {
                 return
             }
 
+            switch model.logoType {
+            case .finn:
+                logoImageView.image = UIImage(named: .finnLogo)
+            case .tori:
+                logoImageView.image = UIImage.brandLogo
+            }
+            
             headerLabel.text = model.headerText
             adSettingsSection.model = model.adSettingsModel
             readMoreSection.model = model.readMoreModel
