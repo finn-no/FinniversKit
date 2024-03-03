@@ -200,6 +200,7 @@
 		DA82B1ED268B62D2005F67C3 /* LoadingRetryDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA82B1EC268B62D2005F67C3 /* LoadingRetryDemoView.swift */; };
 		DAE9CA8724602CB000C7552F /* SwiftUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */; };
 		E6510A6727FB378B001B40D6 /* ScrollableTabDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510A6627FB378B001B40D6 /* ScrollableTabDemoView.swift */; };
+		E671C7B02B94F71400154A29 /* AdaptiveForegroundColorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E671C7AF2B94F71400154A29 /* AdaptiveForegroundColorModifier.swift */; };
 		E681A0EC2923FDA4008564E2 /* HyperlinkTextViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0EB2923FDA4008564E2 /* HyperlinkTextViewDemoView.swift */; };
 		F085BC2A29719E5200376A8B /* ViewingsRedesignDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F085BC2929719E5200376A8B /* ViewingsRedesignDemoView.swift */; };
 		F3D30537299F8FC200C4C4ED /* SelectionListSeparatedRadiobuttonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D30536299F8FC200C4C4ED /* SelectionListSeparatedRadiobuttonDemoView.swift */; };
@@ -425,6 +426,7 @@
 		DA82B1EC268B62D2005F67C3 /* LoadingRetryDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingRetryDemoView.swift; sourceTree = "<group>"; };
 		DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewTests.swift; sourceTree = "<group>"; };
 		E6510A6627FB378B001B40D6 /* ScrollableTabDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableTabDemoView.swift; sourceTree = "<group>"; };
+		E671C7AF2B94F71400154A29 /* AdaptiveForegroundColorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveForegroundColorModifier.swift; sourceTree = "<group>"; };
 		E681A0EB2923FDA4008564E2 /* HyperlinkTextViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextViewDemoView.swift; sourceTree = "<group>"; };
 		F085BC2929719E5200376A8B /* ViewingsRedesignDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingsRedesignDemoView.swift; sourceTree = "<group>"; };
 		F3D30536299F8FC200C4C4ED /* SelectionListSeparatedRadiobuttonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionListSeparatedRadiobuttonDemoView.swift; sourceTree = "<group>"; };
@@ -1731,6 +1733,7 @@
 				17F8EEC529409FE3000E26C9 /* SwiftUISelectionListDemoView.swift */,
 				27FAFCB72988FE6100FEDAE0 /* ToastSwiftUIDemoView.swift */,
 				277307E4298C108800B8E27F /* ResultSwiftUIDemoView.swift */,
+				E671C7AF2B94F71400154A29 /* AdaptiveForegroundColorModifier.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -2066,6 +2069,7 @@
 				46E773F4242CEF0A008A5E93 /* TextViewDemoView.swift in Sources */,
 				46E773B4242CEF0A008A5E93 /* LoadingViewDemoView.swift in Sources */,
 				46E773DE242CEF0A008A5E93 /* BetaFeatureDemoView.swift in Sources */,
+				E671C7B02B94F71400154A29 /* AdaptiveForegroundColorModifier.swift in Sources */,
 				46E7740F242CEF0A008A5E93 /* CalloutDemoView.swift in Sources */,
 				46E7741C242CEF0A008A5E93 /* CollapsibleContentDemoView.swift in Sources */,
 				D7D514C7272942E10065E2F6 /* PromotionDemoView.swift in Sources */,
