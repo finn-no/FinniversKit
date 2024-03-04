@@ -19,9 +19,13 @@ public protocol ColorProvider {
     var bgAlert: UIColor { get }
     @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
     var bgInfo: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var bgWarningSubtle: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var bgNegativeSubtle: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var bgInfoSubtle: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var bgPositiveSubtle: UIColor { get }
     @available(*, deprecated, message: "Use Warp color instead")
     var bgInfoHeader: UIColor { get }
@@ -29,16 +33,27 @@ public protocol ColorProvider {
     var bgSuccess: UIColor { get }
     @available(*, deprecated, message: "Use Warp backgroundNegativeSubtle instead")
     var bgCritical: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var bgCallout: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var borderInfo: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var borderNegative: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var borderPositive: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var borderWarning: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var borderCallout: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var borderInfoSubtle: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var borderNegativeSubtle: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var borderPositiveSubtle: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var borderWarningSubtle: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var borderSecondary: UIColor { get }
     @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     var btnPrimary: UIColor { get }
@@ -56,7 +71,9 @@ public protocol ColorProvider {
     var textTertiary: UIColor { get }
     @available(*, deprecated, message: "Use Warp textLink instead")
     var textAction: UIColor { get }
+    @available(*, deprecated, message: "Use Warp textDisabled instead")
     var textDisabled: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var textAlert: UIColor { get }
     @available(*, deprecated, message: "Use Warp textNegative instead")
     var textCritical: UIColor { get }
@@ -97,6 +114,7 @@ public protocol ColorProvider {
     var nmpBrandControlSelected: UIColor { get }
     @available(*, deprecated, message: "Use Warp color instead")
     var nmpBrandDecoration: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var loadingIndicator: UIColor { get }
 }
 
@@ -131,6 +149,7 @@ public struct DefaultColorProvider: ColorProvider {
         .yellow100
     }
 
+    @available(*, deprecated, message: "Use Warp color instead")
     public var bgCallout: UIColor {
         .green100
     }
@@ -151,59 +170,72 @@ public struct DefaultColorProvider: ColorProvider {
     public var bgCritical: UIColor {
         .red100
     }
-    
+    @available(*, deprecated, message: "Use Warp color instead")
     public var bgInfoSubtle: UIColor {
         .dynamicColor(defaultColor: .aqua50, darkModeColor: .aqua900)
     }
 
+    @available(*, deprecated, message: "Use Warp color instead")
     public var bgNegativeSubtle: UIColor {
         .dynamicColor(defaultColor: .red50, darkModeColor: .red900)
     }
 
+    @available(*, deprecated, message: "Use Warp color instead")
     public var bgPositiveSubtle: UIColor {
         .dynamicColor(defaultColor: .green50, darkModeColor: .green900)
     }
 
+    @available(*, deprecated, message: "Use Warp color instead")
     public var bgWarningSubtle: UIColor {
         .dynamicColor(defaultColor: .yellow50, darkModeColor: .yellow900)
     }
 
+    @available(*, deprecated, message: "Use Warp color instead")
     public var borderInfo: UIColor {
         .dynamicColor(defaultColor: .aqua600, darkModeColor: .aqua500)
     }
 
+    @available(*, deprecated, message: "Use Warp color instead")
     public var borderNegative: UIColor {
         .dynamicColor(defaultColor: .red600, darkModeColor: .red500)
     }
 
+    @available(*, deprecated, message: "Use Warp color instead")
     public var borderPositive: UIColor {
         .dynamicColor(defaultColor: .green600, darkModeColor: .green500)
     }
 
+    @available(*, deprecated, message: "Use Warp color instead")
     public var borderWarning: UIColor {
         .dynamicColor(defaultColor: .yellow600, darkModeColor: .yellow500)
     }
 
+    @available(*, deprecated, message: "Use Warp color instead")
     public var borderCallout: UIColor {
         .accentPea
     }
 
+    @available(*, deprecated, message: "Use Warp color instead")
     public var borderInfoSubtle: UIColor {
         .dynamicColor(defaultColor: .aqua300, darkModeColor: .aqua700)
     }
 
+    @available(*, deprecated, message: "Use Warp color instead")
     public var borderNegativeSubtle: UIColor {
         .dynamicColor(defaultColor: .red300, darkModeColor: .red700)
     }
 
+    @available(*, deprecated, message: "Use Warp color instead")
     public var borderPositiveSubtle: UIColor {
         .dynamicColor(defaultColor: .green300, darkModeColor: .green700)
     }
 
+    @available(*, deprecated, message: "Use Warp color instead")
     public var borderWarningSubtle: UIColor {
         .dynamicColor(defaultColor: .yellow300, darkModeColor: .yellow700)
     }
 
+    @available(*, deprecated, message: "Use Warp color instead")
     public var borderSecondary: UIColor {
         .aqua400
     }
@@ -241,10 +273,12 @@ public struct DefaultColorProvider: ColorProvider {
         .dynamicColor(defaultColor: .blue600, darkModeColor: .blue500)
     }
 
+    @available(*, deprecated, message: "Use Warp color instead")
     public var textDisabled: UIColor {
         .dynamicColor(defaultColor: .blueGray300, darkModeColor: .darkSardine)
     }
 
+    @available(*, deprecated, message: "Use Warp color instead")
     public var textAlert: UIColor {
         .lightNuttyBrown
     }
@@ -290,6 +324,7 @@ public struct DefaultColorProvider: ColorProvider {
         .backgroundDisabled
     }
 
+    @available(*, deprecated, message: "Use Warp color instead")
     public var iconPrimary: UIColor {
         .text
     }
@@ -333,6 +368,7 @@ public struct DefaultColorProvider: ColorProvider {
         .aqua400
     }
 
+    @available(*, deprecated, message: "Use Warp color instead")
     public var loadingIndicator: UIColor {
         .aqua400
     }

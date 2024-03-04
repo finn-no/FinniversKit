@@ -30,21 +30,33 @@ extension Color {
     @available(*, deprecated, message: "Use Warp color instead")
     public static var bgInfoHeader: Color           { Color(UIColor.bgInfoHeader) }
 
+    @available(*, deprecated, message: "Use Warp color instead")
     public static var bgInformationCriticalSubtle: Color  { Color(UIColor.bgNegativeSubtle) }
+    @available(*, deprecated, message: "Use Warp color instead")
     public static var bgInformationInfoSubtle: Color      { Color(UIColor.bgInfoSubtle) }
+    @available(*, deprecated, message: "Use Warp color instead")
     public static var bgInformationSuccessSubtle: Color   { Color(UIColor.bgPositiveSubtle) }
+    @available(*, deprecated, message: "Use Warp color instead")
     public static var bgInformationWarningSubtle: Color   { Color(UIColor.bgWarningSubtle) }
 
 
     // MARK: - Border
+    @available(*, deprecated, message: "Use Warp color instead")
     public static var borderCriticalSubtle: Color   { Color(UIColor.borderNegativeSubtle ) }
+    @available(*, deprecated, message: "Use Warp color instead")
     public static var borderInfoSubtle: Color       { Color(UIColor.borderInfoSubtle ) }
+    @available(*, deprecated, message: "Use Warp color instead")
     public static var borderSuccessSubtle: Color    { Color(UIColor.borderPositiveSubtle ) }
+    @available(*, deprecated, message: "Use Warp color instead")
     public static var borderWarningSubtle: Color    { Color(UIColor.borderWarningSubtle ) }
 
+    @available(*, deprecated, message: "Use Warp color instead")
     public static var borderCritical: Color         { Color(UIColor.borderNegative ) }
+    @available(*, deprecated, message: "Use Warp color instead")
     public static var borderInfo: Color             { Color(UIColor.borderInfo ) }
+    @available(*, deprecated, message: "Use Warp color instead")
     public static var borderSuccess: Color          { Color(UIColor.borderPositive ) }
+    @available(*, deprecated, message: "Use Warp color instead")
     public static var borderWarning: Color          { Color(UIColor.borderWarning ) }
 
     // MARK: - Button
@@ -100,6 +112,9 @@ extension Color {
     public static var decorationSubtle: Color           { Color(UIColor.decorationSubtle) }
     @available(*, deprecated, message: "Use Warp border instead")
     public static var borderDefault: Color              { Color(UIColor.borderDefault) }
+    @available(*, deprecated, message: "Use Warp color instead")
     public static var nmpBrandControlSelected: Color    { Color(UIColor.nmpBrandControlSelected) }
+    @available(*, deprecated, message: "Use Warp color instead")
     public static var nmpBrandDecoration: Color         { Color(UIColor.nmpBrandDecoration) }
 }
+// swiftlint:enable opening_brace

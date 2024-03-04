@@ -109,7 +109,7 @@ public final class InfoboxView: UIView {
 
         if let primaryButtonImageView = primaryButtonImageView {
             primaryButton.addSubview(primaryButtonImageView)
-            
+
             let imageWidth: CGFloat = 18
             constraints.append(contentsOf: [
                 primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),

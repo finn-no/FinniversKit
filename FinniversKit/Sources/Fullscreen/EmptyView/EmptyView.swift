@@ -17,7 +17,7 @@ public enum EmptyViewShapeType { // Deprecated
 }
 
 public class EmptyView: UIView {
-    
+
     // MARK: - Other private attributes
 
     private lazy var headerLabel: Label = {
