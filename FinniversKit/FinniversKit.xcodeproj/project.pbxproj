@@ -421,7 +421,6 @@
 		DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */; };
 		DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E438521104EB8000DDEC3 /* AdReporterView.swift */; };
 		DA5A858C24617DF000AC0DFE /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A858B24617DF000AC0DFE /* ImageExtensions.swift */; };
-		DA6DC2BB238404B80094C42C /* VersionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8F32B3238295F900EF645F /* VersionInfoView.swift */; };
 		DA708853211338650067519A /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA708852211338650067519A /* ConfirmationView.swift */; };
 		DA84E8E9252DC96900E4E3B3 /* FontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA84E8E8252DC96900E4E3B3 /* FontProvider.swift */; };
 		DA84E8EF252DD4A100E4E3B3 /* ColorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA84E8EE252DD4A100E4E3B3 /* ColorProvider.swift */; };
@@ -914,7 +913,6 @@
 		DA708852211338650067519A /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
 		DA84E8E8252DC96900E4E3B3 /* FontProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontProvider.swift; sourceTree = "<group>"; };
 		DA84E8EE252DD4A100E4E3B3 /* ColorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorProvider.swift; sourceTree = "<group>"; };
-		DA8F32B3238295F900EF645F /* VersionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfoView.swift; sourceTree = "<group>"; };
 		DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetStateController.swift; sourceTree = "<group>"; };
 		DAA9A3A32102153F0021F7DC /* Selectionbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectionbox.swift; sourceTree = "<group>"; };
 		DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionboxItem.swift; sourceTree = "<group>"; };
@@ -3070,7 +3068,6 @@
 				DAD6EB212369916100968497 /* SettingsView.swift */,
 				DAD6EB222369916100968497 /* SettingsSectionHeaderView.swift */,
 				DAD6EB232369916100968497 /* SettingsSectionFooterView.swift */,
-				DA8F32B3238295F900EF645F /* VersionInfoView.swift */,
 				B6801C1B2982ECCA004A0F4F /* SettingsHeaderView.swift */,
 			);
 			path = View;
@@ -3699,7 +3696,6 @@
 				45D7C56B204949E2000E788F /* SwitchView.swift in Sources */,
 				43BACE6A21117D430052114C /* BuyerPickerView.swift in Sources */,
 				CF8F024521DE1013004C4042 /* RefreshControl.swift in Sources */,
-				DA6DC2BB238404B80094C42C /* VersionInfoView.swift in Sources */,
 				5DEAC3B825C15893003376AD /* AdRecommendationCell.swift in Sources */,
 				8908E85E22C21A2300ED671C /* MessageFormTemplateState.swift in Sources */,
 				9B28DE842326732F00D69C15 /* PanelViewModel.swift in Sources */,
