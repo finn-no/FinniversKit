@@ -7,45 +7,45 @@ import SwiftUI
 
 // MARK: - Warp colors
 extension Color {
-    public static var background: Color { Config.warpTokenProvider.background }
-    public static var backgroundInfoSubtle: Color { Config.warpTokenProvider.backgroundInfoSubtle }
-    public static var backgroundSubtle: Color { Config.warpTokenProvider.backgroundSubtle }
-    public static var backgroundWarningSubtle: Color { Config.warpTokenProvider.backgroundWarningSubtle }
-    public static var backgroundPositiveSubtle: Color { Config.warpTokenProvider.backgroundPositiveSubtle }
-    public static var backgroundNegativeSubtle: Color { Config.warpTokenProvider.backgroundNegativeSubtle }
-    public static var backgroundPrimary: Color { Config.warpTokenProvider.backgroundPrimary }
-    public static var backgroundDisabled: Color { Config.warpTokenProvider.backgroundDisabled }
-    public static var backgroundNegative: Color { Config.warpTokenProvider.backgroundNegative }
-    public static var text: Color { Config.warpTokenProvider.text }
-    public static var textSubtle: Color { Config.warpTokenProvider.textSubtle }
-    public static var textInverted: Color { Config.warpTokenProvider.textInverted }
-    public static var textLink: Color { Config.warpTokenProvider.textLink }
-    public static var textDisabled: Color { Config.warpTokenProvider.textDisabled }
-    public static var textNegative: Color { Config.warpTokenProvider.textNegative }
-    public static var border: Color { Config.warpTokenProvider.border }
-    public static var iconPrimary: Color { Config.warpTokenProvider.iconPrimary }
-    public static var iconInverted: Color { Config.warpTokenProvider.iconInverted }
+    public static var background: Color { warpToken.background }
+    public static var backgroundInfoSubtle: Color { warpToken.backgroundInfoSubtle }
+    public static var backgroundSubtle: Color { warpToken.backgroundSubtle }
+    public static var backgroundWarningSubtle: Color { warpToken.backgroundWarningSubtle }
+    public static var backgroundPositiveSubtle: Color { warpToken.backgroundPositiveSubtle }
+    public static var backgroundNegativeSubtle: Color { warpToken.backgroundNegativeSubtle }
+    public static var backgroundPrimary: Color { warpToken.backgroundPrimary }
+    public static var backgroundDisabled: Color { warpToken.backgroundDisabled }
+    public static var backgroundNegative: Color { warpToken.backgroundNegative }
+    public static var text: Color { warpToken.text }
+    public static var textSubtle: Color { warpToken.textSubtle }
+    public static var textInverted: Color { warpToken.textInverted }
+    public static var textLink: Color { warpToken.textLink }
+    public static var textDisabled: Color { warpToken.textDisabled }
+    public static var textNegative: Color { warpToken.textNegative }
+    public static var border: Color { warpToken.border }
+    public static var iconPrimary: Color { warpToken.iconPrimary }
+    public static var iconInverted: Color { warpToken.iconInverted }
 }
 
 @objc extension UIColor {
-    public static var background: UIColor { Config.warpUITokenProvider.background }
-    public static var backgroundInfoSubtle: UIColor { Config.warpUITokenProvider.backgroundInfoSubtle }
-    public static var backgroundSubtle: UIColor { Config.warpUITokenProvider.backgroundSubtle }
-    public static var backgroundWarningSubtle: UIColor { Config.warpUITokenProvider.backgroundWarningSubtle }
-    public static var backgroundPositiveSubtle: UIColor { Config.warpUITokenProvider.backgroundPositiveSubtle }
-    public static var backgroundNegativeSubtle: UIColor { Config.warpUITokenProvider.backgroundNegativeSubtle }
-    public static var backgroundPrimary: UIColor { Config.warpUITokenProvider.backgroundPrimary }
-    public static var backgroundDisabled: UIColor { Config.warpUITokenProvider.backgroundDisabled }
-    public static var backgroundNegative: UIColor { Config.warpUITokenProvider.backgroundNegative }
-    public static var text: UIColor { Config.warpUITokenProvider.text }
-    public static var textSubtle: UIColor { Config.warpUITokenProvider.textSubtle }
-    public static var textInverted: UIColor { Config.warpUITokenProvider.textInverted }
-    public static var textLink: UIColor { Config.warpUITokenProvider.textLink }
-    public static var textDisabled: UIColor { Config.warpUITokenProvider.textDisabled }
-    public static var textNegative: UIColor { Config.warpUITokenProvider.textNegative }
-    public static var border: UIColor { Config.warpUITokenProvider.border }
-    public static var iconPrimary: UIColor { Config.warpUITokenProvider.iconPrimary }
-    public static var iconInverted: UIColor { Config.warpUITokenProvider.iconInverted }
+    public static var background: UIColor { warpUIToken.background }
+    public static var backgroundInfoSubtle: UIColor { warpUIToken.backgroundInfoSubtle }
+    public static var backgroundSubtle: UIColor { warpUIToken.backgroundSubtle }
+    public static var backgroundWarningSubtle: UIColor { warpUIToken.backgroundWarningSubtle }
+    public static var backgroundPositiveSubtle: UIColor { warpUIToken.backgroundPositiveSubtle }
+    public static var backgroundNegativeSubtle: UIColor { warpUIToken.backgroundNegativeSubtle }
+    public static var backgroundPrimary: UIColor { warpUIToken.backgroundPrimary }
+    public static var backgroundDisabled: UIColor { warpUIToken.backgroundDisabled }
+    public static var backgroundNegative: UIColor { warpUIToken.backgroundNegative }
+    public static var text: UIColor { warpUIToken.text }
+    public static var textSubtle: UIColor { warpUIToken.textSubtle }
+    public static var textInverted: UIColor { warpUIToken.textInverted }
+    public static var textLink: UIColor { warpUIToken.textLink }
+    public static var textDisabled: UIColor { warpUIToken.textDisabled }
+    public static var textNegative: UIColor { warpUIToken.textNegative }
+    public static var border: UIColor { warpUIToken.border }
+    public static var iconPrimary: UIColor { warpUIToken.iconPrimary }
+    public static var iconInverted: UIColor { warpUIToken.iconInverted }
 }
 
 extension CGColor {
