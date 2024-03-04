@@ -35,7 +35,6 @@ extension UIImage {
 //swiftlint:disable:next blanket_disable_command
 //swiftlint:disable type_body_length
 enum ImageAsset: String {
-    case adManagementShare
     case arrowDown
     case arrowDownSmall
     case arrowRight
@@ -48,18 +47,16 @@ enum ImageAsset: String {
     case betaPill
     case calendar
     case camera
-    case candyCane
     case car
-    case carsCircleIllustration
-    case carsIllustration
     case check
     case checkCircleFilled
     case checkCircleFilledMini
+    case checkboxSelected
+    case checkboxUnselected
     case checkmark
     case checkmarkBig
     case checkmarkBlue
     case christmasWishListBanner
-    case clock
     case close
     case confetti1
     case confetti2
@@ -102,10 +99,6 @@ enum ImageAsset: String {
     case finnLogoSimple
     case gallery
     case gift
-    case giftRoundedRectRed
-    case giftSquarePink
-    case giftSquareYellow
-    case giftTriangleGreen
     case gridView
     case handshake
     case heartEmptyDashed
@@ -136,15 +129,14 @@ enum ImageAsset: String {
     case navigation
     case noImage
     case notifications
-    case ornamentCircleBlue
-    case ornamentCircleRed
-    case ornamentStar
     case padlock
     case pencilPaper
     case pin
     case playVideo
     case plusMini
     case pusefinnCircle
+    case radioButtonSelected
+    case radioButtonUnselected
     case rate
     case ratingFaceAngry
     case ratingFaceDissatisfied
@@ -163,10 +155,6 @@ enum ImageAsset: String {
     case speechbubbleSmiley
     case spidLogo
     case starOutline
-    case statsClick
-    case statsEmpty
-    case statsEnvelope
-    case statsHeart
     case success
     case trustStarOutline
     case trustVerified
@@ -178,7 +166,6 @@ enum ImageAsset: String {
 
     static var imageNames: [ImageAsset] {
         return [
-            .adManagementShare,
             .arrowDown,
             .arrowDownSmall,
             .arrowRight,
@@ -191,18 +178,16 @@ enum ImageAsset: String {
             .betaPill,
             .calendar,
             .camera,
-            .candyCane,
             .car,
-            .carsCircleIllustration,
-            .carsIllustration,
             .check,
             .checkCircleFilled,
             .checkCircleFilledMini,
+            .checkboxSelected,
+            .checkboxUnselected,
             .checkmark,
             .checkmarkBig,
             .checkmarkBlue,
             .christmasWishListBanner,
-            .clock,
             .close,
             .confetti1,
             .confetti2,
@@ -245,10 +230,6 @@ enum ImageAsset: String {
             .finnLogoSimple,
             .gallery,
             .gift,
-            .giftRoundedRectRed,
-            .giftSquarePink,
-            .giftSquareYellow,
-            .giftTriangleGreen,
             .gridView,
             .handshake,
             .heartEmptyDashed,
@@ -279,15 +260,14 @@ enum ImageAsset: String {
             .navigation,
             .noImage,
             .notifications,
-            .ornamentCircleBlue,
-            .ornamentCircleRed,
-            .ornamentStar,
             .padlock,
             .pencilPaper,
             .pin,
             .playVideo,
             .plusMini,
             .pusefinnCircle,
+            .radioButtonSelected,
+            .radioButtonUnselected,
             .rate,
             .ratingFaceAngry,
             .ratingFaceDissatisfied,
@@ -306,10 +286,6 @@ enum ImageAsset: String {
             .speechbubbleSmiley,
             .spidLogo,
             .starOutline,
-            .statsClick,
-            .statsEmpty,
-            .statsEnvelope,
-            .statsHeart,
             .success,
             .trustStarOutline,
             .trustVerified,

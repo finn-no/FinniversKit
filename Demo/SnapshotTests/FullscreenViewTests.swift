@@ -3,6 +3,7 @@ import XCTest
 import FinniversKit
 import DemoKitSnapshot
 
+@MainActor
 class FullscreenViewTests: XCTestCase {
     private func snapshot(_ component: FullscreenDemoViews, record: Bool = false, line: UInt = #line) {
         snapshotTest(demoable: component.demoable, record: record, line: line)
@@ -12,10 +13,6 @@ class FullscreenViewTests: XCTestCase {
 
     func testFrontPageView() {
         snapshot(.frontPageView)
-    }
-
-    func testPopupView() {
-        snapshot(.popupView)
     }
 
     func testEmptyView() {

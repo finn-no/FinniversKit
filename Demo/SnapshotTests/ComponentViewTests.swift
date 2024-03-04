@@ -7,6 +7,7 @@ import FinniversKit
 @testable import Demo
 import DemoKitSnapshot
 
+@MainActor
 class ComponentViewTests: XCTestCase {
     private func snapshot(_ component: ComponentDemoViews, record: Bool = false, line: UInt = #line) {
         snapshotTest(demoable: component.demoable, record: record, line: line)
@@ -60,10 +61,6 @@ class ComponentViewTests: XCTestCase {
 
     func testSwitchView() {
         snapshot(.switchView)
-    }
-
-    func testConsentTransparencyInfo() {
-        snapshot(.consentTransparencyInfo)
     }
 
     func testCheckbox() {
@@ -308,10 +305,6 @@ class ComponentViewTests: XCTestCase {
 
     func testJobKeyInfo() {
         snapshot(.jobKeyInfo)
-    }
-
-    func testMyAdsListView() {
-        snapshot(.myAdsListView)
     }
 
     func testMapAddressButton() {

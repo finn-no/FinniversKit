@@ -11,12 +11,11 @@ public class RemoteImageTableViewCell: BasicTableViewCell {
             remoteImageView.dataSource = dataSource
         }
     }
-    /// The loading color is used to fill the image view while we load the image.
-    public var loadingColor: UIColor?
     public var isLoadingEnabled = true
     public var fallbackImage: UIImage = UIImage(named: .noImage)
 
     private var viewModel: RemoteImageTableViewCellViewModel?
+    private let loadingColor: UIColor = .bgTertiary
 
     private(set) lazy var remoteImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)

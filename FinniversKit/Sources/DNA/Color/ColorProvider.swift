@@ -29,14 +29,17 @@ public protocol ColorProvider {
     var bgSuccess: UIColor { get }
     @available(*, deprecated, message: "Use Warp backgroundNegativeSubtle instead")
     var bgCritical: UIColor { get }
+    var bgCallout: UIColor { get }
     var borderInfo: UIColor { get }
     var borderNegative: UIColor { get }
     var borderPositive: UIColor { get }
     var borderWarning: UIColor { get }
+    var borderCallout: UIColor { get }
     var borderInfoSubtle: UIColor { get }
     var borderNegativeSubtle: UIColor { get }
     var borderPositiveSubtle: UIColor { get }
     var borderWarningSubtle: UIColor { get }
+    var borderSecondary: UIColor { get }
     @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     var btnPrimary: UIColor { get }
     @available(*, deprecated, message: "Use Warp backgroundDisabled instead")
@@ -127,6 +130,11 @@ public struct DefaultColorProvider: ColorProvider {
     public var bgAlert: UIColor {
         .yellow100
     }
+
+    public var bgCallout: UIColor {
+        .green100
+    }
+
     @available(*, deprecated, message: "Use Warp backgroundInfoSubtle instead")
     public var bgInfo: UIColor {
         .dynamicColor(defaultColor: .aqua50, darkModeColor: .darkIce)
@@ -176,6 +184,10 @@ public struct DefaultColorProvider: ColorProvider {
         .dynamicColor(defaultColor: .yellow600, darkModeColor: .yellow500)
     }
 
+    public var borderCallout: UIColor {
+        .accentPea
+    }
+
     public var borderInfoSubtle: UIColor {
         .dynamicColor(defaultColor: .aqua300, darkModeColor: .aqua700)
     }
@@ -190,6 +202,10 @@ public struct DefaultColorProvider: ColorProvider {
 
     public var borderWarningSubtle: UIColor {
         .dynamicColor(defaultColor: .yellow300, darkModeColor: .yellow700)
+    }
+
+    public var borderSecondary: UIColor {
+        .aqua400
     }
 
     @available(*, deprecated, message: "Use Warp backgroundPrimary instead")

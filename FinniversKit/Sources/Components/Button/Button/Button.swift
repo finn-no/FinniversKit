@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class Button: UIButton {
+open class Button: UIButton {
     // MARK: - Internal properties
 
     private let cornerRadius: CGFloat = 8.0

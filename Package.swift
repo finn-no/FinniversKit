@@ -11,7 +11,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/warp-ds/warp-ios", branch: "turn-color-to-uicolor")
+        .package(url: "https://github.com/warp-ds/warp-ios", branch: "main")
     ],
     targets: [
         .target(

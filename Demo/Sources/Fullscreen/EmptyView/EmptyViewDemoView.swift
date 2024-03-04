@@ -15,10 +15,10 @@ class EmptyViewDemoView: UIView {
 
     required init?(coder aDecoder: NSCoder) { fatalError() }
 
-    private func setupEmptyView(header: String, message: String, image: UIImage? = nil, actionButtonTitle: String = "", shapeType: EmptyViewShapeType) {
+    private func setupEmptyView(header: String, message: String, image: UIImage? = nil, actionButtonTitle: String = "") {
         self.emptyView?.removeFromSuperview()
         self.emptyView = nil
-        self.emptyView = EmptyView(shapeType: shapeType)
+        self.emptyView = EmptyView()
         self.addSubview(self.emptyView!) // swiftlint:disable:this force_unwrapping
         self.emptyView?.fillInSuperview()
 
@@ -31,8 +31,7 @@ class EmptyViewDemoView: UIView {
 
 extension EmptyViewDemoView: TweakableDemo {
     enum Tweaks: String, CaseIterable, TweakingOption {
-        case shapesEmptyView
-        case christmasEmptyView
+        case actionButtonEmptyView
         case imageEmptyView
     }
 
@@ -44,26 +43,17 @@ extension EmptyViewDemoView: TweakableDemo {
 
     func configure(forTweakAt index: Int) {
         switch Tweaks.allCases[index] {
-        case .shapesEmptyView:
+        case .actionButtonEmptyView:
             setupEmptyView(
                 header: "Her var det stille gitt",
                 message: "Når du prater med andre på FINN, vil meldingene dine dukke opp her.\n\n Søk på noe du har lyst på, send en melding til selgeren og bli enige om en handel på én-to-tre!",
-                actionButtonTitle: "Gjør et søk",
-                shapeType: .default
-            )
-        case .christmasEmptyView:
-            setupEmptyView(
-                header: "Her var det stille gitt",
-                message: "Når du prater med andre på FINN, vil meldingene dine dukke opp her.\n\n Søk på noe du har lyst på, send en melding til selgeren og bli enige om en handel på én-to-tre!",
-                actionButtonTitle: "Gjør et søk",
-                shapeType: .christmas
+                actionButtonTitle: "Gjør et søk"
             )
         case .imageEmptyView:
             setupEmptyView(
                 header: "Vi gir deg beskjed når det kommer noe nytt!",
                 message: "Søk på noe du har lyst på og trykk “Lagre søk”. Da varsler FINN deg når det dukker opp nye annonser.\n\nSmart hva?",
-                image: UIImage(named: .emptyStateSaveSearch),
-                shapeType: .none
+                image: UIImage(named: .emptyStateSaveSearch)
             )
         }
     }

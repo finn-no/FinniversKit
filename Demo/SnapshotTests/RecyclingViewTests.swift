@@ -3,6 +3,7 @@ import XCTest
 import FinniversKit
 import DemoKitSnapshot
 
+@MainActor
 class RecyclingViewTests: XCTestCase {
     private func snapshot(_ component: RecyclingDemoViews, record: Bool = false, line: UInt = #line) {
         snapshotTest(demoable: component.demoable, record: record, line: line)
@@ -36,10 +37,6 @@ class RecyclingViewTests: XCTestCase {
 
     func testSettingsView() {
         snapshot(.settingsView)
-    }
-
-    func testAdManagementView() {
-        snapshot(.adManagementView)
     }
 
     func testNeighborhoodProfileView() {

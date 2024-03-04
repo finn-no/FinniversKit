@@ -7,6 +7,7 @@ import XCTest
 @testable import Demo
 import DemoKitSnapshot
 
+@MainActor
 class TableViewCellsViewTests: XCTestCase {
     private func snapshot(_ component: CellsDemoViews, record: Bool = false, line: UInt = #line) {
         snapshotTest(demoable: component.demoable, record: record, line: line)
@@ -54,10 +55,6 @@ class TableViewCellsViewTests: XCTestCase {
 
     func testFavoriteAdCell() {
         snapshot(.favoriteAdCell)
-    }
-
-    func testUserAdCell() {
-        snapshot(.userAdCell)
     }
 
     func testHostingContentConfigurationCell() {
