@@ -4188,7 +4188,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/warp-ds/warp-ios.git";
 			requirement = {
-				branch = "turn-color-to-uicolor";
+				branch = main;
 				kind = branch;
 			};
 		};

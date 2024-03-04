@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/finn-no/DemoKit-iOS.git",
       "state" : {
-        "revision" : "c17f55cf4054fab4cd9a8ce591a4e5c2c465231c",
-        "version" : "0.2.0"
+        "revision" : "0fc2fb8bb8fac93f2be9d07df65074082ca34753",
+        "version" : "0.4.2"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/warp-ds/warp-ios.git",
       "state" : {
-        "branch" : "turn-color-to-uicolor",
-        "revision" : "9498c146dd1a39603719348b2b0feffb51774615"
+        "branch" : "main",
+        "revision" : "b2be762ccbdee28d01cfc1c85999c4dbdea2516d"
       }
     }
   ],
