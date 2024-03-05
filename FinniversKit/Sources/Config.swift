@@ -14,8 +14,8 @@ public struct Config {
     public static var isDynamicTypeEnabled: Bool = true
 }
 
-public var warpToken = Warp.Config.tokenProvider
-public var warpUIToken = Warp.Config.uiTokenProvider
+public let warpToken = Warp.Config.tokenProvider
+public let warpUIToken = Warp.Config.uiTokenProvider
 
 @objc public extension Bundle {
     static var finniversKit: Bundle {
