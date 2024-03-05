@@ -161,7 +161,6 @@ enum ImageAsset: String {
     case trustVerifiedOutline
     case view
     case viewMode
-    case warning
     case webview
 
     static var imageNames: [ImageAsset] {
@@ -292,7 +291,6 @@ enum ImageAsset: String {
             .trustVerifiedOutline,
             .view,
             .viewMode,
-            .warning,
             .webview,
     ]
   }

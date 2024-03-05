@@ -76,7 +76,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case textField
     case textView
     case toast
-    case transactionEntryView
     case verificationView
     case viewingsListView
     case viewingsRedesignView
@@ -226,8 +225,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return NavigationLinkViewDemoView()
         case .numberedListView:
             return NumberedListDemoView()
-        case .transactionEntryView:
-            return TransactionEntryDemoView()
         case .loadingRetryView:
             return LoadingRetryDemoView()
         case .promotionView:

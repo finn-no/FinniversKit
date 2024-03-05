@@ -239,10 +239,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.numberedListView)
     }
 
-    func testTransactionEntryView() {
-        snapshot(.transactionEntryView)
-    }
-
     func testLoadingRetryView() {
         snapshot(.loadingRetryView)
     }
