@@ -15,7 +15,6 @@ public protocol BannerTransparencyViewModel {
     var readMoreDetailText: String { get }
     var readMoreButtonTitle: String { get }
     
-    var logoType: LogoType { get }
 }
 
 // MARK: - Section View Model
@@ -28,13 +27,6 @@ extension BannerTransparencyViewModel {
     var readMoreModel: BannerTransparencySectionViewModel {
         return .init(headerText: readMoreHeaderText, detailText: readMoreDetailText, buttonTitle: readMoreButtonTitle)
     }
-}
-
-// MARK: - LogoType Enum
-
-public enum LogoType {
-    case finn
-    case tori
 }
 
 struct BannerTransparencySectionViewModel {

@@ -122,7 +122,4 @@ public struct DefaultImageProvider: ImageProvider {
         UIImage(named: .mapDirections)
     }
     
-    public var toriLogo: UIImage {
-        UIImage(named: .toriLogo)
-    }
 }
