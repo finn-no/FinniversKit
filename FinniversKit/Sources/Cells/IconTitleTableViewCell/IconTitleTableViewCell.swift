@@ -20,6 +20,10 @@ open class IconTitleTableViewCell: BasicTableViewCell {
         return imageView
     }()
 
+    public var iconSeparatorInset: CGFloat {
+        .spacingM + iconSize + .spacingM
+    }
+
     // MARK: - Private properties
 
     let iconSize: CGFloat = 24
@@ -67,7 +71,7 @@ open class IconTitleTableViewCell: BasicTableViewCell {
             stackViewToIconConstraint.isActive = true
 
             // align it with the text, considering the size of the icon
-            separatorInset = .leadingInset(.spacingM + iconSize + .spacingM)
+            separatorInset = .leadingInset(iconSeparatorInset)
         } else {
             stackViewToIconConstraint.isActive = false
             stackViewLeadingAnchorConstraint.isActive = true
