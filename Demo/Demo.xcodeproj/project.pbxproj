@@ -162,7 +162,6 @@
 		46E77583242D478D008A5E93 /* XCTestCastExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77582242D478D008A5E93 /* XCTestCastExtensions.swift */; };
 		46E7759D242D6A8A008A5E93 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E77561242CFFA5008A5E93 /* FinniversKit.framework */; };
 		496F8C172473E7EA00AE0735 /* FavoriteSoldDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F8C162473E7EA00AE0735 /* FavoriteSoldDemoView.swift */; };
-		4D01FC97261C48F5008B9913 /* TransactionEntryDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01FC96261C48F5008B9913 /* TransactionEntryDemoView.swift */; };
 		4D152E7B2577DB1300282244 /* NavigationLinkViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D152E7A2577DB1300282244 /* NavigationLinkViewDemoView.swift */; };
 		4D37A9B728571CFF00F9460D /* BadgeDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D37A9B628571CFF00F9460D /* BadgeDemoView.swift */; };
 		4D529E13258357D0007AE5B6 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D529E12258357D0007AE5B6 /* Icons.xcassets */; };
@@ -387,7 +386,6 @@
 		46E7757B242D476B008A5E93 /* FullscreenViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenViewTests.swift; sourceTree = "<group>"; };
 		46E77582242D478D008A5E93 /* XCTestCastExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCastExtensions.swift; sourceTree = "<group>"; };
 		496F8C162473E7EA00AE0735 /* FavoriteSoldDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSoldDemoView.swift; sourceTree = "<group>"; };
-		4D01FC96261C48F5008B9913 /* TransactionEntryDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionEntryDemoView.swift; sourceTree = "<group>"; };
 		4D152E7A2577DB1300282244 /* NavigationLinkViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkViewDemoView.swift; sourceTree = "<group>"; };
 		4D37A9B628571CFF00F9460D /* BadgeDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeDemoView.swift; sourceTree = "<group>"; };
 		4D529E12258357D0007AE5B6 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
@@ -862,7 +860,6 @@
 				46E772F8242CEF09008A5E93 /* TextField */,
 				46E772D4242CEF09008A5E93 /* TextView */,
 				46E772F0242CEF09008A5E93 /* Toast */,
-				4D01FC94261C48E1008B9913 /* TransactionEntryView */,
 				46E77358242CEF09008A5E93 /* VerificationView */,
 				46E7730A242CEF09008A5E93 /* Viewings */,
 				F085BC2829719E4200376A8B /* ViewingsRedesign */,
@@ -1548,14 +1545,6 @@
 			path = FavoriteSoldView;
 			sourceTree = "<group>";
 		};
-		4D01FC94261C48E1008B9913 /* TransactionEntryView */ = {
-			isa = PBXGroup;
-			children = (
-				4D01FC96261C48F5008B9913 /* TransactionEntryDemoView.swift */,
-			);
-			path = TransactionEntryView;
-			sourceTree = "<group>";
-		};
 		4D152E792577DB0400282244 /* NavigationLinkView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2085,7 +2074,6 @@
 				46E7742E242CEF0A008A5E93 /* SwitchViewDefaultData.swift in Sources */,
 				46E77441242CEF0A008A5E93 /* FontDemoView.swift in Sources */,
 				46E77429242CEF0A008A5E93 /* KlimabroletEventsDemoViewController.swift in Sources */,
-				4D01FC97261C48F5008B9913 /* TransactionEntryDemoView.swift in Sources */,
 				46E77458242CEF0A008A5E93 /* AdRecommendationsGridViewDemoView.swift in Sources */,
 				46E77430242CEF0A008A5E93 /* RadioButtonDemoView.swift in Sources */,
 				46E773B3242CEF0A008A5E93 /* FavoriteFolderActionDemoView.swift in Sources */,
