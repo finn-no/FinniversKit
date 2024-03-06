@@ -1,10 +1,11 @@
 import SwiftUI
 
 public class SwiftUISelectionListItemModel<ItemValue>: ObservableObject, Identifiable {
-    public init(title: String, value: ItemValue, description: String? = nil, image: Image? = nil, isSelected: Bool) {
+    public init(title: String, value: ItemValue, description: String? = nil, accessibilityDescription: String? = nil, image: Image? = nil, isSelected: Bool) {
         self.title = title
         self.value = value
         self.description = description
+        self.accessibilityDescription = accessibilityDescription
         self.image = image
         self.isSelected = isSelected
     }
@@ -13,6 +14,7 @@ public class SwiftUISelectionListItemModel<ItemValue>: ObservableObject, Identif
     public let title: String
     public let value: ItemValue
     public let description: String?
+    public let accessibilityDescription: String?
     public let image: Image?
     @Published public var isSelected: Bool
 }
@@ -56,6 +58,10 @@ struct SwiftUISelectionListItem<ItemType>: View {
     }
 
     private var accessibilityText: String {
+        if let accessibilityDescription = itemModel.accessibilityDescription {
+            return accessibilityDescription
+        }
+        
         var text = itemModel.title
         if let desc = itemModel.description {
             text += ", \(desc)"
