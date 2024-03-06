@@ -18,8 +18,6 @@ public struct AdaptiveForegroundColorModifier: ViewModifier {
             return Color(dynamicColor.resolvedColor(with: UITraitCollection(userInterfaceStyle: .light)))
         case .dark:
             return Color(dynamicColor.resolvedColor(with: UITraitCollection(userInterfaceStyle: .dark)))
-        @unknown default:
-            return Color(dynamicColor.resolvedColor(with: UITraitCollection(userInterfaceStyle: .light)))
         }
     }
 }

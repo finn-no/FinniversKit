@@ -1,8 +1,8 @@
 import SwiftUI
 
 public struct RoundedCorner: InsettableShape {
-    public var radius: CGFloat
-    public var corners: UIRectCorner
+    public let radius: CGFloat
+    public let corners: UIRectCorner
 
     public var insetAmount = 0.0
 
