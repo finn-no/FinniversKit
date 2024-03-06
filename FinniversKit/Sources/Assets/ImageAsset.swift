@@ -162,6 +162,7 @@ enum ImageAsset: String {
     case view
     case viewMode
     case webview
+    case toriLogo
 
     static var imageNames: [ImageAsset] {
         return [
@@ -292,6 +293,7 @@ enum ImageAsset: String {
             .view,
             .viewMode,
             .webview,
+            .toriLogo
     ]
   }
 }

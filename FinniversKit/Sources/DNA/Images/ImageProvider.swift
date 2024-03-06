@@ -121,4 +121,8 @@ public struct DefaultImageProvider: ImageProvider {
     public var brandMapDirections: UIImage {
         UIImage(named: .mapDirections)
     }
+    
+    public var toriLogo: UIImage {
+        UIImage(named: .toriLogo)
+    }
 }

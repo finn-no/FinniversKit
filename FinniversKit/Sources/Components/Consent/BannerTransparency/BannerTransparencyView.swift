@@ -17,6 +17,7 @@ public final class BannerTransparencyView: UIView {
 
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
@@ -49,7 +50,7 @@ public final class BannerTransparencyView: UIView {
             case .finn:
                 logoImageView.image = UIImage(named: .finnLogo)
             case .tori:
-                logoImageView.image = UIImage.brandLogo
+                logoImageView.image = UIImage(named: .toriLogo)
             }
             
             headerLabel.text = model.headerText
