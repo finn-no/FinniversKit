@@ -46,7 +46,7 @@ public final class BannerTransparencyView: UIView {
             guard let model = model else {
                 return
             }
-            
+
             headerLabel.text = model.headerText
             adSettingsSection.model = model.adSettingsModel
             readMoreSection.model = model.readMoreModel

@@ -121,5 +121,4 @@ public struct DefaultImageProvider: ImageProvider {
     public var brandMapDirections: UIImage {
         UIImage(named: .mapDirections)
     }
-    
 }

@@ -14,7 +14,6 @@ public protocol BannerTransparencyViewModel {
     var readMoreHeaderText: String { get }
     var readMoreDetailText: String { get }
     var readMoreButtonTitle: String { get }
-    
 }
 
 // MARK: - Section View Model
