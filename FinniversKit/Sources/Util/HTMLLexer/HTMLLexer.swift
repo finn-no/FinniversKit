@@ -113,7 +113,7 @@ where Input: Collection, Input.Element == Character {
         return reader.input[startIndex..<reader.readIndex]
     }
 
-    private func scanString(_ string: String) -> Bool {
+    private func consumeString(_ string: String) -> Bool {
         for character in string {
             guard character == reader.consume()
             else { return false }
@@ -215,7 +215,7 @@ where Input: Collection, Input.Element == Character {
     private func consumeCommentTag() -> HTMLToken? {
         // https://html.spec.whatwg.org/multipage/syntax.html#comments
         guard
-            scanString("!--"),
+            consumeString("!--"),
             let comment = consumeUpToString("-->")
         else { return nil }
         return .comment(String(comment))
