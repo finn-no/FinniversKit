@@ -1,4 +1,5 @@
 {
+  "originHash" : "8d807499ee0402a6c5d61f6ab5f5eb396c02bb4751ade92af1f4b617d3b96191",
   "pins" : [
     {
       "identity" : "demokit-ios",
@@ -23,10 +24,10 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/warp-ds/warp-ios.git",
       "state" : {
-        "branch" : "main",
-        "revision" : "3588275c04469b6bbe85369c6ec4890d77a70fbd"
+        "branch" : "nmp-app",
+        "revision" : "d952595559eabf6cb5e9877c23841480afedc0cf"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

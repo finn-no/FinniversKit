@@ -95,7 +95,7 @@ public struct InfoboxSwiftUIView: View {
 #Preview {
     InfoboxSwiftUIView(
         style: .normal(
-            backgroundColor: .bgSecondary,
+            backgroundColor: .backgroundInfoSubtle,
             primaryButtonIcon: UIImage(named: .webview)
         ),
         viewModel: MockInfoboxViewModel.mock

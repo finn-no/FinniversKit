@@ -181,7 +181,7 @@ public extension Button.Style {
                 ),
                 .highlighted: Button.StateStyle(
                     textColor: nil,
-                    backgroundColor: .defaultButtonHighlightedBodyColor,
+                    backgroundColor: .backgroundActive,
                     borderColor: .backgroundPrimary
                 ),
                 .disabled: Button.StateStyle(
@@ -203,9 +203,9 @@ public extension Button.Style {
                     borderColor: .backgroundDisabled
                 ),
                 .highlighted: Button.StateStyle(
-                    textColor: .utilityButtonHighlightedTextColor,
+                    textColor: .text,
                     backgroundColor: .background,
-                    borderColor: .utilityButtonHighlightedBorderColor
+                    borderColor: .border
                 ),
                 .disabled: Button.StateStyle(
                     textColor: .textDisabled,
@@ -227,7 +227,7 @@ public extension Button.Style {
                 ),
                 .highlighted: Button.StateStyle(
                     textColor: nil,
-                    backgroundColor: .callToActionButtonHighlightedBodyColor,
+                    backgroundColor: .backgroundPrimaryActive,
                     borderColor: nil
                 ),
                 .disabled: Button.StateStyle(
@@ -250,7 +250,7 @@ public extension Button.Style {
                 ),
                 .highlighted: Button.StateStyle(
                     textColor: nil,
-                    backgroundColor: .destructiveButtonHighlightedBodyColor,
+                    backgroundColor: .backgroundNegativeActive,
                     borderColor: nil
                 ),
                 .disabled: Button.StateStyle(
@@ -272,7 +272,7 @@ public extension Button.Style {
                     borderColor: nil
                 ),
                 .highlighted: Button.StateStyle(
-                    textColor: .flatButtonHighlightedTextColor,
+                    textColor: .text,
                     backgroundColor: nil,
                     borderColor: nil
                 ),
@@ -295,7 +295,7 @@ public extension Button.Style {
                     borderColor: nil
                 ),
                 .highlighted: Button.StateStyle(
-                    textColor: .destructiveFlatButtonHighlightedTextColor,
+                    textColor: .textNegative,
                     backgroundColor: nil,
                     borderColor: nil
                 ),
@@ -318,7 +318,7 @@ public extension Button.Style {
                     borderColor: nil
                 ),
                 .highlighted: Button.StateStyle(
-                    textColor: .linkButtonHighlightedTextColor,
+                    textColor: .textLink,
                     backgroundColor: nil,
                     borderColor: nil
                 ),

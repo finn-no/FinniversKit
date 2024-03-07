@@ -198,22 +198,21 @@ private extension UIView {
     }
 }
 
-// TODO: - These colors should be added to the ColorProvider at some point
 private extension UIColor {
     class var externalLinkColor: UIColor {
-        return .blueGray400
+        return .icon
     }
 
     class var tileSharpShadowColor: UIColor {
-        return .blueGray600
+        return .black
     }
 
     class var tileSmoothShadowColor: UIColor {
-        return .blueGray600
+        return .black
     }
 
     class var tileBackgroundColor: UIColor {
-        return .dynamicColor(defaultColor: .white, darkModeColor: .darkBgPrimaryProminent)
+        return .surfaceElevated200
     }
 }
 

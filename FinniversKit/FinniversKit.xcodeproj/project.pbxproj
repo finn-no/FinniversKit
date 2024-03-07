@@ -4160,7 +4160,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/warp-ds/warp-ios.git";
 			requirement = {
-				branch = main;
+				branch = "nmp-app";
 				kind = branch;
 			};
 		};

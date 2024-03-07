@@ -60,11 +60,11 @@ public final class BadgeView: UIView {
         backgroundColor = viewModel.style.backgroundColor
         textLabel.textColor = viewModel.style.textColor
         textLabel.text = viewModel.title
-        iconImageView.image = viewModel.icon
+        iconImageView.image = viewModel.icon?.withRenderingMode(.alwaysTemplate)
         iconImageView.isHidden = viewModel.icon == nil
 
          /// Only applies tintColor if icon is rendered as template
-        iconImageView.tintColor = .nmpBrandDecoration
+        iconImageView.tintColor = .icon
     }
 
     public func attachToTopLeadingAnchor(in superview: UIView) {

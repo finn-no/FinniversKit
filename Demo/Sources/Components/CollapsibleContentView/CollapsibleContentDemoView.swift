@@ -78,7 +78,7 @@ extension CollapsibleContentDemoView: TweakableDemo {
     func configure(forTweakAt index: Int) {
         switch Tweaks.allCases[index] {
         case .plainStyle:
-            let overriddenPlainStyle = CollapsibleContentView.Style.plain.withOverride(backgroundColor: .bgTertiary)
+            let overriddenPlainStyle = CollapsibleContentView.Style.plain.withOverride(backgroundColor: .backgroundSubtle)
             configureCollapsibleContentView(style: overriddenPlainStyle, title: "Spesifikasjoner")
         case .cardStyle:
             configureCollapsibleContentView(style: .card, title: "6 tips når du skal kjøpe husdyr")

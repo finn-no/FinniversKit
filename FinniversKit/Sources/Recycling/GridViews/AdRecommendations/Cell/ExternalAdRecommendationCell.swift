@@ -36,7 +36,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     private static let cornerRadius: CGFloat = 8.0
     private static let heightMultiplier: CGFloat = 1
 
-    private let loadingColor: UIColor = .bgTertiary
+    private let loadingColor: UIColor = .backgroundSubtle
 
     /// Extra container for accessibility issues. The cell should have "all content" and favoriteButton (if added) as accessibilty elements but it get confused if favoriteButton is a subview of the other accessibility element (so contentView can not be one of the accessibility elements
     private lazy var containerView = UIView(withAutoLayout: true)
@@ -60,7 +60,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
     private lazy var externalLinkImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = UIImage(named: .webview).withTintColor(.iconSecondary)
+        imageView.image = UIImage(named: .webview).withTintColor(.icon)
         return imageView
     }()
 

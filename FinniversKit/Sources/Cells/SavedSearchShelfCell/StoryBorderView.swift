@@ -53,10 +53,10 @@ class StoryBorderView: UIView {
 
 private extension UIColor {
     static var unreadStoryTopGradientColor: CGColor {
-        UIColor.nmpBrandColorPrimary.cgColor
+        UIColor.borderPrimary.cgColor
     }
 
     static var unreadStoryBottomGradientColor: CGColor {
-        UIColor.nmpBrandColorSecondary.cgColor
+        UIColor.borderPrimary.cgColor
     }
 }

@@ -37,7 +37,7 @@ extension SafetyElementsView {
         private lazy var iconImageView: UIImageView = {
             let imageView = UIImageView(withAutoLayout: true)
             imageView.contentMode = .scaleAspectFit
-            imageView.tintColor = .inactiveSafetyIconTint
+            imageView.tintColor = .icon
             imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
             return imageView
         }()

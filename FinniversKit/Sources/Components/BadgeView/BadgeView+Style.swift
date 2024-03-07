@@ -11,8 +11,8 @@ public extension BadgeView {
         }
 
         public static var `default`: Self { .init(backgroundColor: .backgroundInfoSubtle, textColor: .text) }
-        public static var warning: Self { .init(backgroundColor: .backgroundWarningSubtle, textColor: .textNegative) }
-        public static var sponsored: Self { .init(backgroundColor: .accentToothpaste, textColor: .aqua800) }
-        public static var motorSmidig: Self { .init(backgroundColor: .green100, textColor: .gray700) }
+        public static var warning: Self { .init(backgroundColor: .backgroundWarningSubtle, textColor: .text) }
+        public static var sponsored: Self { .init(backgroundColor: warpUIColor.badgeSponsoredBackground, textColor: .text) } // change this to backgroundSponsored
+        public static var motorSmidig: Self { .init(backgroundColor: warpUIColor.badgePositiveBackground, textColor: .text) } // use badgePositive
     }
 }

@@ -14,7 +14,7 @@ class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransitioningD
 
     private(set) lazy var dimView: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = .dimmingColor
+        view.backgroundColor = .black.withAlphaComponent(0.3)
         view.alpha = 0
         return view
     }()

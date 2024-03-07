@@ -14,6 +14,8 @@ public struct Config {
     public static var isDynamicTypeEnabled: Bool = true
 }
 
+public let warpColor = Warp.Config.colorProvider
+public let warpUIColor = Warp.Config.uiColorProvider
 public let warpToken = Warp.Config.tokenProvider
 public let warpUIToken = Warp.Config.uiTokenProvider
 

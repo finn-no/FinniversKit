@@ -47,7 +47,7 @@ public final class CogWheelButton: UIButton {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.isUserInteractionEnabled = false
         imageView.image = UIImage(named: .settings).withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .gray500
+        imageView.tintColor = .icon
         return imageView
     }()
 
@@ -127,6 +127,6 @@ private extension UIColor {
     }
 
     static var buttonHighlightedColor: UIColor? {
-        return UIColor.defaultButtonHighlightedBodyColor.withAlphaComponent(0.8)
+        return UIColor.backgroundActive.withAlphaComponent(0.8)
     }
 }

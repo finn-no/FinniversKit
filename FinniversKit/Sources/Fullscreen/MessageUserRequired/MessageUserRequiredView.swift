@@ -12,7 +12,7 @@ public class MessageUserRequiredView: UIView {
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
-        imageView.tintColor = .iconSecondary
+        imageView.tintColor = .icon
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()

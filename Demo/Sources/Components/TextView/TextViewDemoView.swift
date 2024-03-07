@@ -107,9 +107,9 @@ extension TextViewDemoView: TweakableDemo {
         case .underlineHidden:
             configure(placeholderText: "Placeholder", hideUnderLine: true)
         case .otherBackgroundColor:
-            configure(placeholderText: "Placeholder", backgroundColor: .bgTertiary)
+            configure(placeholderText: "Placeholder", backgroundColor: .backgroundSubtle)
         case .otherBackgroundColorAndUnderlineHidden:
-            configure(placeholderText: "Placeholder", hideUnderLine: true, backgroundColor: .bgTertiary)
+            configure(placeholderText: "Placeholder", hideUnderLine: true, backgroundColor: .backgroundSubtle)
         }
     }
 }

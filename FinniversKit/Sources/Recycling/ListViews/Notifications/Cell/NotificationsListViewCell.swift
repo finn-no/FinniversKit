@@ -20,7 +20,7 @@ public class NotificationsListViewCell: UITableViewCell {
     private static let cornerRadius: CGFloat = 2.0
     private static let imageSize: CGFloat = 74.0
 
-    private let loadingColor: UIColor = .bgTertiary
+    private let loadingColor: UIColor = .backgroundSubtle
 
     private lazy var adImageView: UIImageView = {
         let imageView = UIImageView()

@@ -56,8 +56,7 @@ extension Color {
     public static var borderInfo: Color             { Color(UIColor.borderInfo ) }
     @available(*, deprecated, message: "Use Warp color instead")
     public static var borderSuccess: Color          { Color(UIColor.borderPositive ) }
-    @available(*, deprecated, message: "Use Warp color instead")
-    public static var borderWarning: Color          { Color(UIColor.borderWarning ) }
+//    public static var borderWarning: Color          { Color(UIColor.borderWarning ) }
 
     // MARK: - Button
     @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
@@ -90,7 +89,7 @@ extension Color {
     // MARK: - Icon
 
 //    public static var iconPrimary: Color   { Color(UIColor.iconPrimary) }
-    @available(*, deprecated, message: "Use Warp color instead")
+    @available(*, deprecated, message: "Use Warp icon instead")
     public static var iconSecondary: Color { Color(UIColor.iconSecondary) }
     @available(*, deprecated, message: "Use Warp iconInverted instead")
     public static var iconTertiary: Color  { Color(UIColor.iconTertiary) }

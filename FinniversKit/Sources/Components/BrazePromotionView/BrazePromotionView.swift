@@ -11,7 +11,7 @@ public class BrazePromotionView: UIView {
 
     private lazy var backgroundView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .bgColor
+        view.backgroundColor = .surfaceElevated200
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
         return view
@@ -228,11 +228,11 @@ extension BrazePromotionView {
 
 private extension UIColor {
     static var shadowColor: UIColor {
-        return UIColor(hex: "475569")
+        return .black
     }
 
     static var bgColor: UIColor {
-        return .dynamicColor(defaultColor: .white, darkModeColor: .darkBgPrimaryProminent)
+        return .background
     }
 }
 

@@ -13,9 +13,13 @@ extension Color {
     public static var backgroundWarningSubtle: Color { warpToken.backgroundWarningSubtle }
     public static var backgroundPositiveSubtle: Color { warpToken.backgroundPositiveSubtle }
     public static var backgroundNegativeSubtle: Color { warpToken.backgroundNegativeSubtle }
+    public static var backgroundNegativeActive: Color { warpToken.backgroundNegativeActive }
     public static var backgroundPrimary: Color { warpToken.backgroundPrimary }
+    public static var backgroundPrimarySubtle: Color { warpToken.backgroundPrimarySubtle }
+    public static var backgroundPrimaryActive: Color { warpToken.backgroundPrimaryActive }
     public static var backgroundDisabled: Color { warpToken.backgroundDisabled }
     public static var backgroundNegative: Color { warpToken.backgroundNegative }
+    public static var backgroundActive: Color { warpToken.backgroundActive }
     public static var text: Color { warpToken.text }
     public static var textSubtle: Color { warpToken.textSubtle }
     public static var textInverted: Color { warpToken.textInverted }
@@ -23,8 +27,17 @@ extension Color {
     public static var textDisabled: Color { warpToken.textDisabled }
     public static var textNegative: Color { warpToken.textNegative }
     public static var border: Color { warpToken.border }
+    public static var borderActive: Color { warpToken.borderActive }
+    public static var borderPrimary: Color { warpToken.borderPrimary }
+    public static var borderPrimarySubtle: Color { warpToken.borderPrimarySubtle }
+    public static var borderPositive: Color { warpToken.borderPositive }
+    public static var borderWarning: Color { warpToken.borderWarning }
     public static var iconPrimary: Color { warpToken.iconPrimary }
     public static var iconInverted: Color { warpToken.iconInverted }
+    public static var icon: Color { warpToken.icon }
+    public static var iconWarning: Color { warpToken.iconWarning }
+    public static var surfaceSunken: Color { warpToken.surfaceSunken }
+    public static var surfaceElevated200: Color { warpToken.surfaceElevated200 }
 }
 
 @objc extension UIColor {
@@ -34,9 +47,13 @@ extension Color {
     public static var backgroundWarningSubtle: UIColor { warpUIToken.backgroundWarningSubtle }
     public static var backgroundPositiveSubtle: UIColor { warpUIToken.backgroundPositiveSubtle }
     public static var backgroundNegativeSubtle: UIColor { warpUIToken.backgroundNegativeSubtle }
+    public static var backgroundNegativeActive: UIColor { warpUIToken.backgroundNegativeActive }
     public static var backgroundPrimary: UIColor { warpUIToken.backgroundPrimary }
+    public static var backgroundPrimarySubtle: UIColor { warpUIToken.backgroundPrimarySubtle }
+    public static var backgroundPrimaryActive: UIColor { warpUIToken.backgroundPrimaryActive }
     public static var backgroundDisabled: UIColor { warpUIToken.backgroundDisabled }
     public static var backgroundNegative: UIColor { warpUIToken.backgroundNegative }
+    public static var backgroundActive: UIColor { warpUIToken.backgroundActive }
     public static var text: UIColor { warpUIToken.text }
     public static var textSubtle: UIColor { warpUIToken.textSubtle }
     public static var textInverted: UIColor { warpUIToken.textInverted }
@@ -44,8 +61,17 @@ extension Color {
     public static var textDisabled: UIColor { warpUIToken.textDisabled }
     public static var textNegative: UIColor { warpUIToken.textNegative }
     public static var border: UIColor { warpUIToken.border }
+    public static var borderActive: UIColor { warpUIToken.borderActive }
+    public static var borderPrimary: UIColor { warpUIToken.borderPrimary }
+    public static var borderPrimarySubtle: UIColor { warpUIToken.borderPrimarySubtle }
+    public static var borderPositive: UIColor { warpUIToken.borderPositive }
+    public static var borderWarning: UIColor { warpUIToken.borderWarning }
     public static var iconPrimary: UIColor { warpUIToken.iconPrimary }
     public static var iconInverted: UIColor { warpUIToken.iconInverted }
+    public static var icon: UIColor { warpUIToken.icon }
+    public static var iconWarning: UIColor { warpUIToken.iconWarning }
+    public static var surfaceSunken: UIColor { warpUIToken.surfaceSunken }
+    public static var surfaceElevated200: UIColor { warpUIToken.surfaceElevated200 }
 }
 
 extension CGColor {
@@ -55,9 +81,13 @@ extension CGColor {
     public class var backgroundWarningSubtle: CGColor { UIColor.backgroundWarningSubtle.cgColor }
     public class var backgroundPositiveSubtle: CGColor { UIColor.backgroundPositiveSubtle.cgColor }
     public class var backgroundNegativeSubtle: CGColor { UIColor.backgroundNegativeSubtle.cgColor }
+    public class var backgroundNegativeActive: CGColor { UIColor.backgroundNegativeActive.cgColor }
     public class var backgroundPrimary: CGColor { UIColor.backgroundPrimary.cgColor }
+    public class var backgroundPrimarySubtle: CGColor { UIColor.backgroundPrimarySubtle.cgColor }
+    public class var backgroundPrimaryActive: CGColor { UIColor.backgroundPrimaryActive.cgColor }
     public class var backgroundDisabled: CGColor { UIColor.backgroundDisabled.cgColor }
     public class var backgroundNegative: CGColor { UIColor.backgroundNegative.cgColor }
+    public class var backgroundActive: CGColor { UIColor.backgroundActive.cgColor }
     public class var text: CGColor { UIColor.text.cgColor }
     public class var textSubtle: CGColor { UIColor.textSubtle.cgColor }
     public class var textInverted: CGColor { UIColor.textInverted.cgColor }
@@ -65,8 +95,17 @@ extension CGColor {
     public class var textDisabled: CGColor { UIColor.textDisabled.cgColor }
     public class var textNegative: CGColor { UIColor.textNegative.cgColor }
     public class var border: CGColor { UIColor.border.cgColor }
+    public class var borderActive: CGColor { UIColor.borderActive.cgColor }
+    public class var borderPrimary: CGColor { UIColor.borderPrimary.cgColor }
+    public class var borderPrimarySubtle: CGColor { UIColor.borderPrimarySubtle.cgColor }
+    public class var borderPositive: CGColor { UIColor.borderPositive.cgColor }
+    public class var borderWarning: CGColor { UIColor.borderWarning.cgColor }
     public class var iconPrimary: CGColor { UIColor.iconPrimary.cgColor }
     public class var iconInverted: CGColor { UIColor.iconInverted.cgColor }
+    public class var icon: CGColor { UIColor.icon.cgColor }
+    public class var iconWarning: CGColor { UIColor.iconWarning.cgColor }
+    public class var surfaceSunken: CGColor { UIColor.surfaceSunken.cgColor }
+    public class var surfaceElevated200: CGColor { UIColor.surfaceElevated200.cgColor }
 }
 
 // MARK: - Semantic colors, dark mode compatible
@@ -123,10 +162,8 @@ extension CGColor {
     public class var borderInfo: UIColor { Config.colorProvider.borderInfo }
     @available(*, deprecated, message: "Use Warp color instead")
     public class var borderNegative: UIColor { Config.colorProvider.borderNegative }
-    @available(*, deprecated, message: "Use Warp color instead")
-    public class var borderPositive: UIColor { Config.colorProvider.borderPositive }
-    @available(*, deprecated, message: "Use Warp color instead")
-    public class var borderWarning: UIColor { Config.colorProvider.borderWarning }
+//    public class var borderPositive: UIColor { Config.colorProvider.borderPositive }
+//    public class var borderWarning: UIColor { Config.colorProvider.borderWarning }
     @available(*, deprecated, message: "Use Warp color instead")
     public class var borderCallout: UIColor { Config.colorProvider.borderCallout }
     @available(*, deprecated, message: "Use Warp color instead")
@@ -140,7 +177,7 @@ extension CGColor {
     @available(*, deprecated, message: "Use Warp backgroundDisabled instead")
     public class var decorationSubtle: UIColor { Config.colorProvider.decorationSubtle }
 //    public class var iconPrimary: UIColor { Config.colorProvider.iconPrimary }
-    @available(*, deprecated, message: "Use Warp color instead")
+    @available(*, deprecated, message: "Use Warp icon instead")
     public class var iconSecondary: UIColor { Config.colorProvider.iconSecondary }
     @available(*, deprecated, message: "Use Warp iconInverted instead")
     public class var iconTertiary: UIColor { Config.colorProvider.iconTertiary }
@@ -232,10 +269,8 @@ extension CGColor {
     public class var borderInfo: CGColor { Config.colorProvider.borderInfo.cgColor }
     @available(*, deprecated, message: "Use Warp color instead")
     public class var borderNegative: CGColor { Config.colorProvider.borderNegative.cgColor }
-    @available(*, deprecated, message: "Use Warp color instead")
-    public class var borderPositive: CGColor { Config.colorProvider.borderPositive.cgColor }
-    @available(*, deprecated, message: "Use Warp color instead")
-    public class var borderWarning: CGColor { Config.colorProvider.borderWarning.cgColor }
+//    public class var borderPositive: CGColor { Config.colorProvider.borderPositive.cgColor }
+//    public class var borderWarning: CGColor { Config.colorProvider.borderWarning.cgColor }
     @available(*, deprecated, message: "Use Warp color instead")
     public class var borderInfoSubtle: CGColor { Config.colorProvider.borderInfoSubtle.cgColor }
     @available(*, deprecated, message: "Use Warp color instead")
@@ -257,7 +292,7 @@ extension CGColor {
     @available(*, deprecated, message: "Use Warp backgroundDisabled instead")
     public class var decorationSubtle: CGColor { UIColor.decorationSubtle.cgColor }
 //    public class var iconPrimary: CGColor { UIColor.iconPrimary.cgColor }
-    @available(*, deprecated, message: "Use Warp color instead")
+    @available(*, deprecated, message: "Use Warp icon instead")
     public class var iconSecondary: CGColor { UIColor.iconSecondary.cgColor }
     @available(*, deprecated, message: "Use Warp iconInverted instead")
     public class var iconTertiary: CGColor { UIColor.iconTertiary.cgColor }
@@ -573,6 +608,7 @@ extension CGColor {
 }
 
 #if os(iOS)
+@available(*, deprecated, message: "Use Warp token instead")
 public extension CGColor {
     // White, black and clear only exists on macOS for CGColor
     class var black: CGColor { .init(gray: 0, alpha: 1) }
@@ -582,64 +618,64 @@ public extension CGColor {
 #endif
 
 // MARK: - Button UIColors
-@available(*, deprecated, message: "Use Warp token instead")
 @objc extension UIColor {
+    @available(*, deprecated, message: "Use Warp token instead")
     public class var callToActionButtonHighlightedBodyColor: UIColor {
         return backgroundPrimary.withAlphaComponent(0.8)
     }
-
+    @available(*, deprecated, message: "Use Warp token instead")
     public class var destructiveButtonHighlightedBodyColor: UIColor {
         return backgroundNegative.withAlphaComponent(0.8)
     }
-
+    @available(*, deprecated, message: "Use Warp token instead")
     public class var utilityButtonHighlightedBorderColor: UIColor {
         return backgroundDisabled.withAlphaComponent(0.8)
     }
-
+    @available(*, deprecated, message: "Use Warp backgroundActive instead")
     public class var defaultButtonHighlightedBodyColor: UIColor {
         return dynamicColor(defaultColor: UIColor(r: 241, g: 249, b: 255), darkModeColor: UIColor(hex: "#13131A"))
     }
-
+    @available(*, deprecated, message: "Use Warp token instead")
     public class var linkButtonHighlightedTextColor: UIColor {
         return textLink.withAlphaComponent(0.8)
     }
-
+    @available(*, deprecated, message: "Use Warp token instead")
     public class var flatButtonHighlightedTextColor: UIColor {
         return textLink.withAlphaComponent(0.8)
     }
-
+    @available(*, deprecated, message: "Use Warp token instead")
     public class var destructiveFlatButtonHighlightedTextColor: UIColor {
         return textNegative.withAlphaComponent(0.8)
     }
-
+    @available(*, deprecated, message: "Use Warp token instead")
     public class var utilityButtonHighlightedTextColor: UIColor {
         return text.withAlphaComponent(0.8)
     }
-
+    @available(*, deprecated, message: "Use Warp token instead")
     public class var dimmingColor: UIColor {
         return UIColor.black.withAlphaComponent(0.4) //DARK
     }
 }
 
 // MARK: - Highlighted buttons CGColors
-@available(*, deprecated, message: "Use Warp token instead")
 extension CGColor {
+    @available(*, deprecated, message: "Use Warp token instead")
     public class var callToActionButtonHighlightedBodyColor: CGColor {
         return UIColor.callToActionButtonHighlightedBodyColor.cgColor
     }
-
+    @available(*, deprecated, message: "Use Warp token instead")
     public class var destructiveButtonHighlightedBodyColor: CGColor {
         return UIColor.destructiveButtonHighlightedBodyColor.cgColor
     }
-
+    @available(*, deprecated, message: "Use Warp backgroundActive instead")
     public class var defaultButtonHighlightedBodyColor: CGColor {
         return UIColor.defaultButtonHighlightedBodyColor.cgColor
     }
-
+    @available(*, deprecated, message: "Use Warp token instead")
     public class var linkButtonHighlightedTextColor: CGColor {
         return UIColor.linkButtonHighlightedTextColor.cgColor
     }
-
+    @available(*, deprecated, message: "Use Warp token instead")
     public class var flatButtonHighlightedTextColor: CGColor {
         return UIColor.flatButtonHighlightedTextColor.cgColor
     }
@@ -648,6 +684,7 @@ extension CGColor {
 // MARK: - Cell UIColors
 
 @objc extension UIColor {
+    @available(*, deprecated, message: "Use Warp token instead")
     public class var defaultCellSelectedBackgroundColor: UIColor {
         let lightSelectedColor = UIColor(r: 230, g: 235, b: 242)
         return dynamicColor(defaultColor: lightSelectedColor, darkModeColor: lightSelectedColor.withAlphaComponent(0.1))
@@ -655,6 +692,7 @@ extension CGColor {
 }
 
 extension CGColor {
+    @available(*, deprecated, message: "Use Warp token instead")
     public class var defaultCellSelectedBackgroundColor: CGColor {
         return UIColor.defaultCellSelectedBackgroundColor.cgColor
     }
@@ -668,6 +706,7 @@ public extension UIColor {
     ///   - g: green (0-255)
     ///   - b: blue (0-255)
     ///   - a: alpla (0-1)
+    @available(*, deprecated, message: "Use Warp token instead")
     convenience init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1.0) { // swiftlint:disable:this identifier_name
         self.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
     }
@@ -675,6 +714,7 @@ public extension UIColor {
     /// Base initializer, it creates an instance of `UIColor` using an HEX string.
     ///
     /// - Parameter hex: The base HEX string to create the color.
+    @available(*, deprecated, message: "Use Warp token instead")
     convenience init(hex: String) {
         let noHashString = hex.replacingOccurrences(of: "#", with: "")
         let scanner = Scanner(string: noHashString)
@@ -697,6 +737,7 @@ public extension UIColor {
     /// - Parameters:
     ///   - defaultColor: light mode version of the color
     ///   - darkModeColor: dark mode version of the color
+    @available(*, deprecated, message: "Use Warp token instead")
     class func dynamicColor(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
         UIColor { traitCollection -> UIColor in
             switch traitCollection.userInterfaceStyle {
@@ -709,6 +750,7 @@ public extension UIColor {
     }
 
     /// Returns hexadecimal representation of a color converted to the sRGB color space.
+    @available(*, deprecated, message: "Use Warp token instead")
     var hexString: String {
         guard
             let targetColorSpace = CGColorSpace(name: CGColorSpace.sRGB),

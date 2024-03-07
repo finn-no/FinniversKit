@@ -17,7 +17,7 @@ public struct SwiftUIIconButton: View {
     public var body: some View {
         Image.init(uiImage: isToggled ? style.iconToggled : style.icon)
             .renderingMode(.template)
-            .foregroundColor(isToggled ? .backgroundPrimary : .iconSecondary)
+            .foregroundColor(isToggled ? .backgroundPrimary : .icon)
             .accessibilityRemoveTraits(.isImage)
             .accessibilityAddTraits(isToggled ? [.isButton, .isSelected] : [.isButton])
     }

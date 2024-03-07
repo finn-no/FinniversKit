@@ -70,7 +70,7 @@ public class ResultView: UIView {
         actionButtonStyle: Button.Style? = nil,
         icon: UIImage? = nil,
         backgroundColor: UIColor = .backgroundSubtle,
-        iconTintColor: UIColor? = .iconSecondary,
+        iconTintColor: UIColor? = .icon,
         iconBottomSpacing: CGFloat = .spacingM,
         titleBottomSpacing: CGFloat = 0,
         iconHeight: CGFloat = 40

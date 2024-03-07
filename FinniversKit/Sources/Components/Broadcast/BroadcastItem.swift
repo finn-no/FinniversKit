@@ -51,7 +51,7 @@ class BroadcastItem: UIView {
     private lazy var dismissButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setImage(UIImage(named: .remove), for: .normal)
-        button.tintColor = .gray500
+        button.tintColor = .icon
         button.addTarget(self, action: #selector(dismissButtonTapped(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

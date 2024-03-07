@@ -15,7 +15,7 @@ public class RemoteImageTableViewCell: BasicTableViewCell {
     public var fallbackImage: UIImage = UIImage(named: .noImage)
 
     private var viewModel: RemoteImageTableViewCellViewModel?
-    private let loadingColor: UIColor = .bgTertiary
+    private let loadingColor: UIColor = .backgroundSubtle
 
     private(set) lazy var remoteImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)

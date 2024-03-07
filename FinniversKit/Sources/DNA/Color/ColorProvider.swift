@@ -41,7 +41,6 @@ public protocol ColorProvider {
     var borderNegative: UIColor { get }
     @available(*, deprecated, message: "Use Warp color instead")
     var borderPositive: UIColor { get }
-    @available(*, deprecated, message: "Use Warp color instead")
     var borderWarning: UIColor { get }
     @available(*, deprecated, message: "Use Warp color instead")
     var borderCallout: UIColor { get }
@@ -96,7 +95,7 @@ public protocol ColorProvider {
     @available(*, deprecated, message: "Use Warp backgroundDisabled instead")
     var decorationSubtle: UIColor { get }
 //    var iconPrimary: UIColor { get }
-    @available(*, deprecated, message: "Use Warp color instead")
+    @available(*, deprecated, message: "Use Warp icon instead")
     var iconSecondary: UIColor { get }
     @available(*, deprecated, message: "Use Warp iconInverted instead")
     var iconTertiary: UIColor { get }
@@ -328,7 +327,7 @@ public struct DefaultColorProvider: ColorProvider {
     public var iconPrimary: UIColor {
         .text
     }
-    @available(*, deprecated, message: "Use Warp color instead")
+    @available(*, deprecated, message: "Use Warp icon instead")
     public var iconSecondary: UIColor {
         .textSubtle
     }

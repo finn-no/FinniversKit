@@ -119,7 +119,7 @@ public final class InfoboxView: UIView {
                 primaryButtonImageView.centerYAnchor.constraint(equalTo: primaryButton.centerYAnchor),
                 primaryButtonImageView.trailingAnchor.constraint(equalTo: primaryButton.trailingAnchor, constant: -.spacingM),
             ])
-            
+
             primaryButton.titleEdgeInsets = UIEdgeInsets(
                 top: primaryButton.titleEdgeInsets.top,
                 leading: primaryButton.titleEdgeInsets.leading + .spacingM + imageWidth,

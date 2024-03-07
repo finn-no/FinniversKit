@@ -30,20 +30,17 @@ extension ToastSwiftUIView.ActionButtonView {
                 .finnFont(.bodyStrong)
                 .padding(.vertical, .spacingS)
                 .padding(.horizontal, .spacingM)
-                .foregroundColor(.text)
+                .foregroundColor(.textLink)
                 .background(backgroundColor)
                 .cornerRadius(cornerRadius)
                 .overlay(
                     RoundedRectangle(cornerRadius: cornerRadius)
-                        .stroke(Color.white, lineWidth: 2)
+                        .stroke(Color.border, lineWidth: 2)
                 )
         }
 
         var backgroundColor: Color {
-            switch style {
-            case .success: return .accentPea
-            case .error: return .init(UIColor.red400)
-            }
+            .background
         }
     }
 }

@@ -45,7 +45,7 @@ public class CollapsibleContentView: UIView {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = indicatorImage
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .iconSecondary
+        imageView.tintColor = .icon
         imageView.isUserInteractionEnabled = true
         imageView.setContentHuggingPriority(.required, for: .horizontal)
         imageView.setContentCompressionResistancePriority(.required, for: .horizontal)

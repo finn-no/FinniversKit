@@ -15,7 +15,7 @@ class ColumnListsDemoView: UIView, Demoable {
 
     private lazy var columnListsView: ColumnListsView = {
         let view = ColumnListsView(withAutoLayout: true)
-        view.backgroundColor = .bgTertiary
+        view.backgroundColor = .backgroundSubtle
         return view
     }()
 

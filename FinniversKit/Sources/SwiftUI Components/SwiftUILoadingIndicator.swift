@@ -42,7 +42,7 @@ public struct SwiftUILoadingIndicator: View {
     private let lineWidth: CGFloat = 4
 
     private var loadingIndicatorBackgroundColor: Color {
-        Color(red: 221/255, green: 232/255, blue: 250/255)
+        Color.borderPrimarySubtle
     }
 
     public init(delay: Double? = nil) {
@@ -56,7 +56,7 @@ public struct SwiftUILoadingIndicator: View {
                     .strokeBorder(loadingIndicatorBackgroundColor, lineWidth: lineWidth)
 
                 ProgressCircle(startAngle: progressCircleStartAngle, endAngle: progressCircleEndAngle, lineWidth: lineWidth)
-                    .stroke(Color.accentSecondaryBlue, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
+                    .stroke(Color.borderPrimary, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
                     .rotationEffect(rotationAngle) // Initial rotation to start at top
                     .onAppear {
                         startAnimating()

@@ -91,11 +91,11 @@ public struct DefaultStyle: ButtonStyle {
         }
         .padding(padding)
         .background(
-            configuration.isPressed ? Color(UIColor.defaultButtonHighlightedBodyColor) : .background
+            configuration.isPressed ? Color.backgroundActive : .background
         )
         .roundedBorder(
             radius: .spacingS,
-            color: configuration.isPressed ? .backgroundPrimary : .backgroundDisabled
+            color: configuration.isPressed ? .borderActive : .backgroundDisabled
         )
     }
 }
