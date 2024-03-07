@@ -105,13 +105,12 @@ public class HyperlinkTextView: UIView {
     private func updateText() {
         guard let viewModel = viewModel else { return }
 
-        let parser = HTMLStringParser()
         let translator = HyperLinkTextViewTranslator(
             links: viewModel.hyperlinks,
             textColor: textColor,
             textAlignment: textAlignment
         )
-        let attributedText = try? parser.parse(
+        let attributedText = try? HTMLStringParser.parse(
             html: viewModel.htmlText,
             translator: translator
         )
@@ -136,16 +135,16 @@ private struct HyperLinkTextViewTranslator: HTMLStringParserTranslator {
     let textColor: UIColor
     let textAlignment: NSTextAlignment
 
-    public func translate(tokens: [HTMLLexer.Token]) throws -> NSAttributedString {
+    public func translate(tokens: [HTMLToken]) throws -> NSAttributedString {
         let styledText = NSMutableAttributedString()
         var currentTag: String?
 
         for token in tokens {
             switch token {
-            case .startTag(let name, _, _):
+            case .tagStart(let name, _, _):
                 currentTag = name
 
-            case .endTag:
+            case .tagEnd:
                 currentTag = nil
 
             case .text(let string):

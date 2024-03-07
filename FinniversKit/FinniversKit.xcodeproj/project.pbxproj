@@ -41,15 +41,19 @@
 		177A871C2913B40900F02088 /* HTMLStringSwiftUIStyleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A871B2913B40900F02088 /* HTMLStringSwiftUIStyleTranslator.swift */; };
 		177A871E2913B87400F02088 /* HTMLTextFinnStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A871D2913B87400F02088 /* HTMLTextFinnStyle.swift */; };
 		177A876C2914184B00F02088 /* HTMLStringSwiftUIStyleTranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A876B2914184B00F02088 /* HTMLStringSwiftUIStyleTranslatorTests.swift */; };
+		178006A62B99EE560027DD97 /* CharacterReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178006A42B99EE560027DD97 /* CharacterReader.swift */; };
+		178006A72B99EE560027DD97 /* HTMLLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178006A52B99EE560027DD97 /* HTMLLexer.swift */; };
+		178006AB2B99EE9A0027DD97 /* HTMLLexerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178006A92B99EE9A0027DD97 /* HTMLLexerTests.swift */; };
+		178006AC2B99EE9A0027DD97 /* CharacterReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178006AA2B99EE9A0027DD97 /* CharacterReaderTests.swift */; };
+		178006AE2B99F0F20027DD97 /* CharacterSet+ASCII.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178006AD2B99F0F20027DD97 /* CharacterSet+ASCII.swift */; };
+		178006B02B99F0FF0027DD97 /* CharacterSet+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178006AF2B99F0FF0027DD97 /* CharacterSet+HTML.swift */; };
 		179D06A82906A39D00A65E3A /* HTMLStringParserHTMLTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06A62906A39D00A65E3A /* HTMLStringParserHTMLTranslator.swift */; };
 		179D06A92906A39D00A65E3A /* HTMLStringParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06A72906A39D00A65E3A /* HTMLStringParser.swift */; };
 		179D06AD2906A3FA00A65E3A /* HTMLStringParserHTMLTranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06AB2906A3FA00A65E3A /* HTMLStringParserHTMLTranslatorTests.swift */; };
 		179D06AE2906A3FA00A65E3A /* HTMLStringParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06AC2906A3FA00A65E3A /* HTMLStringParserTests.swift */; };
-		179D06B62907D66E00A65E3A /* HTMLLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179D06B52907D66E00A65E3A /* HTMLLexer.swift */; };
 		17BF44C72987FC8F001A5877 /* LoadingSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BF44C62987FC8F001A5877 /* LoadingSwiftUIView.swift */; };
 		17BF4B5B298BE918001A5877 /* LoadingSwiftUIViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BF4B5A298BE918001A5877 /* LoadingSwiftUIViewModifier.swift */; };
 		17BF5B092AB32B3C00DB1A4D /* UISceneExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BF5B082AB32B3C00DB1A4D /* UISceneExtensions.swift */; };
-		17E232F5290A7E71003DC8F7 /* HTMLLexerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */; };
 		17EAC08A296485C300B3C639 /* UIColor+FinniversKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */; };
 		17EE08602AA73E8700A623F2 /* FrontPageTransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE085F2AA73E8700A623F2 /* FrontPageTransactionListView.swift */; };
 		27076AA32B694C2F00B1ADF6 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27076AA12B694C2F00B1ADF6 /* CheckboxView.swift */; };
@@ -526,15 +530,19 @@
 		177A871B2913B40900F02088 /* HTMLStringSwiftUIStyleTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringSwiftUIStyleTranslator.swift; sourceTree = "<group>"; };
 		177A871D2913B87400F02088 /* HTMLTextFinnStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextFinnStyle.swift; sourceTree = "<group>"; };
 		177A876B2914184B00F02088 /* HTMLStringSwiftUIStyleTranslatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringSwiftUIStyleTranslatorTests.swift; sourceTree = "<group>"; };
+		178006A42B99EE560027DD97 /* CharacterReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterReader.swift; sourceTree = "<group>"; };
+		178006A52B99EE560027DD97 /* HTMLLexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLLexer.swift; sourceTree = "<group>"; };
+		178006A92B99EE9A0027DD97 /* HTMLLexerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLLexerTests.swift; sourceTree = "<group>"; };
+		178006AA2B99EE9A0027DD97 /* CharacterReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterReaderTests.swift; sourceTree = "<group>"; };
+		178006AD2B99F0F20027DD97 /* CharacterSet+ASCII.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterSet+ASCII.swift"; sourceTree = "<group>"; };
+		178006AF2B99F0FF0027DD97 /* CharacterSet+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterSet+HTML.swift"; sourceTree = "<group>"; };
 		179D06A62906A39D00A65E3A /* HTMLStringParserHTMLTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParserHTMLTranslator.swift; sourceTree = "<group>"; };
 		179D06A72906A39D00A65E3A /* HTMLStringParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParser.swift; sourceTree = "<group>"; };
 		179D06AB2906A3FA00A65E3A /* HTMLStringParserHTMLTranslatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParserHTMLTranslatorTests.swift; sourceTree = "<group>"; };
 		179D06AC2906A3FA00A65E3A /* HTMLStringParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStringParserTests.swift; sourceTree = "<group>"; };
-		179D06B52907D66E00A65E3A /* HTMLLexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLexer.swift; sourceTree = "<group>"; };
 		17BF44C62987FC8F001A5877 /* LoadingSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSwiftUIView.swift; sourceTree = "<group>"; };
 		17BF4B5A298BE918001A5877 /* LoadingSwiftUIViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSwiftUIViewModifier.swift; sourceTree = "<group>"; };
 		17BF5B082AB32B3C00DB1A4D /* UISceneExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISceneExtensions.swift; sourceTree = "<group>"; };
-		17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLexerTests.swift; sourceTree = "<group>"; };
 		17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+FinniversKitTests.swift"; sourceTree = "<group>"; };
 		17EE085F2AA73E8700A623F2 /* FrontPageTransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageTransactionListView.swift; sourceTree = "<group>"; };
 		27076AA12B694C2F00B1ADF6 /* CheckboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
@@ -1007,12 +1015,13 @@
 		087A5BB422A7D84600184640 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				E65085D2292BBF4500A43B07 /* SwiftUI */,
 				CF0B10972316AC0D001E7A57 /* BottomShadowView.swift */,
 				CF164CFE230EB3D100250822 /* ContentSizedTableView.swift */,
+				178006A32B99EC150027DD97 /* HTMLLexer */,
 				179D06A52906A39D00A65E3A /* HTMLStringParser */,
 				087A5BB522A7D85500184640 /* KeyboardNotificationInfo.swift */,
 				9BA8248523859B4400163F24 /* MapZoomRange.swift */,
+				E65085D2292BBF4500A43B07 /* SwiftUI */,
 				CF0647FB2368834B00863D07 /* TopShadowView.swift */,
 			);
 			path = Util;
@@ -1131,11 +1140,28 @@
 			path = Translators;
 			sourceTree = "<group>";
 		};
+		178006A32B99EC150027DD97 /* HTMLLexer */ = {
+			isa = PBXGroup;
+			children = (
+				178006A42B99EE560027DD97 /* CharacterReader.swift */,
+				178006A52B99EE560027DD97 /* HTMLLexer.swift */,
+			);
+			path = HTMLLexer;
+			sourceTree = "<group>";
+		};
+		178006A82B99EE740027DD97 /* HTMLLexer */ = {
+			isa = PBXGroup;
+			children = (
+				178006AA2B99EE9A0027DD97 /* CharacterReaderTests.swift */,
+				178006A92B99EE9A0027DD97 /* HTMLLexerTests.swift */,
+			);
+			path = HTMLLexer;
+			sourceTree = "<group>";
+		};
 		179D06A52906A39D00A65E3A /* HTMLStringParser */ = {
 			isa = PBXGroup;
 			children = (
 				17538722291ABC1B00DA57D2 /* HTMLElement.swift */,
-				179D06B52907D66E00A65E3A /* HTMLLexer.swift */,
 				179D06A72906A39D00A65E3A /* HTMLStringParser.swift */,
 				175385AF29146A4000DA57D2 /* HTMLStringStyleStack.swift */,
 				1753871B291AA4F900DA57D2 /* Translators */,
@@ -1146,7 +1172,6 @@
 		179D06AA2906A3FA00A65E3A /* HTMLStringParser */ = {
 			isa = PBXGroup;
 			children = (
-				17E232F4290A7E71003DC8F7 /* HTMLLexerTests.swift */,
 				179D06AB2906A3FA00A65E3A /* HTMLStringParserHTMLTranslatorTests.swift */,
 				179D06AC2906A3FA00A65E3A /* HTMLStringParserTests.swift */,
 				1753871E291AA79600DA57D2 /* HTMLStringParserTextTranslatorTests.swift */,
@@ -1841,6 +1866,8 @@
 			isa = PBXGroup;
 			children = (
 				899D0BF5222D4B3400794DEC /* ArrayExtensions.swift */,
+				178006AD2B99F0F20027DD97 /* CharacterSet+ASCII.swift */,
+				178006AF2B99F0FF0027DD97 /* CharacterSet+HTML.swift */,
 				177A86CE2912B98C00F02088 /* CharacterSetExtensions.swift */,
 				44F8831120551D59003E3171 /* NSAttributedStringExtensions.swift */,
 				45B2E069207CF5C100C68B92 /* StringExtensions.swift */,
@@ -2480,6 +2507,7 @@
 		9F213D8A2542DC1D6D998B43 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				178006A82B99EE740027DD97 /* HTMLLexer */,
 				179D06AA2906A3FA00A65E3A /* HTMLStringParser */,
 				9F213CB3556A74594DB59E93 /* KeyboardNotificationInfoTest.swift */,
 			);
@@ -3398,13 +3426,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1753871F291AA79600DA57D2 /* HTMLStringParserTextTranslatorTests.swift in Sources */,
+				178006AB2B99EE9A0027DD97 /* HTMLLexerTests.swift in Sources */,
+				178006AC2B99EE9A0027DD97 /* CharacterReaderTests.swift in Sources */,
 				17EAC08A296485C300B3C639 /* UIColor+FinniversKitTests.swift in Sources */,
 				179D06AD2906A3FA00A65E3A /* HTMLStringParserHTMLTranslatorTests.swift in Sources */,
 				CF3D5F00215A75BF006E4D08 /* InstrumentTests.swift in Sources */,
 				CF376C1B231D458200ED2B24 /* ArrayStepTests.swift in Sources */,
 				CF376C1D231D459900ED2B24 /* StepTests.swift in Sources */,
 				175385B229150E7800DA57D2 /* HTMLStringUIKitStyleTranslatorTests.swift in Sources */,
-				17E232F5290A7E71003DC8F7 /* HTMLLexerTests.swift in Sources */,
 				179D06AE2906A3FA00A65E3A /* HTMLStringParserTests.swift in Sources */,
 				177A876C2914184B00F02088 /* HTMLStringSwiftUIStyleTranslatorTests.swift in Sources */,
 				9B9663CB2460383900D34BA1 /* ConfigTests.swift in Sources */,
@@ -3474,6 +3503,7 @@
 				CF164CF0230E7FF100250822 /* FavoriteFolderShareToggleView.swift in Sources */,
 				9B06097323F14BD6005CB592 /* ElementContentView.swift in Sources */,
 				F253C5142314015C008175FD /* VerificationViewModel.swift in Sources */,
+				178006A62B99EE560027DD97 /* CharacterReader.swift in Sources */,
 				CF16F73823292D34006566DE /* FavoriteAdCommentView.swift in Sources */,
 				DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */,
 				4447F7031FDB2B110033DBC1 /* Config.swift in Sources */,
@@ -3524,7 +3554,6 @@
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
 				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
 				CFB775F22359D8360097C0ED /* FloatingButton+Favorites.swift in Sources */,
-				179D06B62907D66E00A65E3A /* HTMLLexer.swift in Sources */,
 				441FE44B209A2F2C00B04EF1 /* NotificationsListViewCell.swift in Sources */,
 				B26B582E2B4BD695000E0245 /* NMPInfoboxView.swift in Sources */,
 				CF0F6B992360784C00CA62FD /* PrimingViewModel.swift in Sources */,
@@ -3602,6 +3631,7 @@
 				43EA977F21941E5D003A548A /* SoldView.swift in Sources */,
 				44A557B422E72187001667AE /* SelectableTableViewCellViewModel.swift in Sources */,
 				1700944B297EE12300E5650A /* SwiftUILoadingIndicator.swift in Sources */,
+				178006A72B99EE560027DD97 /* HTMLLexer.swift in Sources */,
 				CFCED8D922CE2BE90049A3A0 /* FavoriteFoldersSearchBar.swift in Sources */,
 				14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */,
 				CFCED8E322CF428B0049A3A0 /* FavoriteFoldersListViewModel.swift in Sources */,
@@ -3661,6 +3691,7 @@
 				44587019213FA344009187BE /* RegisterViewModel.swift in Sources */,
 				9BEB287F231D488000D28BAD /* TitleValueSliderView.swift in Sources */,
 				CF7C460422257A8A001FB92C /* EarthHourContentView.swift in Sources */,
+				178006B02B99F0FF0027DD97 /* CharacterSet+HTML.swift in Sources */,
 				172E7502290FC86B00956AC2 /* HTMLText.swift in Sources */,
 				CF5CA71222F85A94007C4124 /* NeighborhoodProfileHeaderView.swift in Sources */,
 				441FE435209A24E500B04EF1 /* StandardAdRecommendationViewModel.swift in Sources */,
@@ -3781,6 +3812,7 @@
 				CF7E7B5D230D3F12001D514E /* FavoriteActionCell.swift in Sources */,
 				9F2133BB9A1CAA93633B406C /* FullscreenGalleryTransitionPresenterDelegate.swift in Sources */,
 				9F2130071B3637C7AD91066E /* FullscreenGalleryTransitionDestinationDelegate.swift in Sources */,
+				178006AE2B99F0F20027DD97 /* CharacterSet+ASCII.swift in Sources */,
 				9F21325E45E1BB6A5F076211 /* FullscreenGalleryDismissalTransition.swift in Sources */,
 				CF87A856229C0C5700DA8243 /* ContactFormCheckbox.swift in Sources */,
 				9F213D4043DC51660E6EF81B /* FullscreenGalleryTransitionAware.swift in Sources */,

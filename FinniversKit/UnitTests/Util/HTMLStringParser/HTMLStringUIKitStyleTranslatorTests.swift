@@ -2,12 +2,11 @@ import XCTest
 import FinniversKit
 
 final class HTMLStringUIKitStyleTranslatorTests: XCTestCase {
-    let parser = HTMLStringParser()
     var translator = HTMLStringUIKitStyleTranslator(defaultStyle: .init(font: .body), styleMapper: nil)
 
     func testBold() throws {
         let boldText = "This is a <b>bold</b> move"
-        let attributedString = try parser.parse(html: boldText, translator: translator)
+        let attributedString = try HTMLStringParser.parse(html: boldText, translator: translator)
 
         let requiredAttributes = [
             NSAttributedString.FontAttributes(
@@ -29,7 +28,7 @@ final class HTMLStringUIKitStyleTranslatorTests: XCTestCase {
 
     func testMix() throws {
         let boldText = "This <b>bold <i>italic</i></b> thing"
-        let attributedString = try parser.parse(html: boldText, translator: translator)
+        let attributedString = try HTMLStringParser.parse(html: boldText, translator: translator)
         let requiredAttributes = [
             NSAttributedString.FontAttributes(
                 fontDescriptor: UIFont.body.fontDescriptor,

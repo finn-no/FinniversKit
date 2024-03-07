@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 public final class HTMLStringSwiftUIStyleTranslator: HTMLStringParserTranslator {
-    public typealias StyleMapper = (_ elementName: String, _ attributes: [String: String]) -> Style?
+    public typealias StyleMapper = (_ elementName: String, _ attributes: [HTMLToken.TagAttribute]) -> Style?
 
     public struct StyledText: Equatable {
         public let text: String
@@ -30,11 +30,11 @@ public final class HTMLStringSwiftUIStyleTranslator: HTMLStringParserTranslator 
         )
     }
 
-    public func translate(tokens: [HTMLLexer.Token]) throws -> [StyledText] {
+    public func translate(tokens: [HTMLToken]) throws -> [StyledText] {
         var styledText: [StyledText] = []
         for token in tokens {
             switch token {
-            case .startTag(let name, let attributes, _):
+            case .tagStart(let name, let attributes, _):
                 switch name.lowercased() {
                 case "br":
                     styledText.append(StyledText(text: "\n", style: styleStack.currentStyle))
@@ -46,7 +46,7 @@ public final class HTMLStringSwiftUIStyleTranslator: HTMLStringParserTranslator 
                 if let style = styleMapper(name, attributes) {
                     styleStack.pushStyle(style, elementName: name)
                 }
-            case .endTag(let name):
+            case .tagEnd(let name):
                 styleStack.popStyle(elementName: name)
             case .text(let text):
                 styledText.append(StyledText(text: text, style: styleStack.currentStyle))
@@ -57,7 +57,7 @@ public final class HTMLStringSwiftUIStyleTranslator: HTMLStringParserTranslator 
         return styledText
     }
 
-    private func defaultStyleMapper(elementName: String, attributes: [String: String]) -> Style? {
+    private func defaultStyleMapper(elementName: String, attributes: [HTMLToken.TagAttribute]) -> Style? {
         switch elementName.lowercased() {
         case "b", "strong":
             return .init(fontWeight: .bold)
