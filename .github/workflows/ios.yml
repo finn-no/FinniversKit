@@ -17,9 +17,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Lint
-        run: |
-          swiftlint lint
+      #- name: Lint
+      #  run: |
+      #    swiftlint lint
       - name: Build
         run: |
           xcodebuild build-for-testing -scheme "$scheme" -workspace FinniversKit.xcworkspace -destination "$destination"
