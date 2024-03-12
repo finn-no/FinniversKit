@@ -36,7 +36,7 @@ extension ChristmasWishListView {
 
 private extension UIColor {
     class var christmasCallToAction: UIColor? {
-        return UIColor(r: 217, g: 39, b: 10)
+        return .backgroundPrimary
     }
 
     class var christmasCallToActionHighlighted: UIColor? {

@@ -7,7 +7,7 @@ public class CheckmarkTitleView: UIView {
         let image = UIImage(named: .check).withRenderingMode(.alwaysTemplate)
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .nmpBrandDecoration
+        imageView.tintColor = .iconPrimary
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

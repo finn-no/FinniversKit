@@ -25,7 +25,7 @@ public final class DetailCalloutView: UIView {
     private lazy var boxView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .backgroundPositiveSubtle
-        view.layer.borderColor = .accentPea
+        view.layer.borderColor = .borderPositive
         view.layer.borderWidth = 2
         view.layer.cornerRadius = .spacingS
         return view
@@ -122,7 +122,7 @@ private final class ArrowView: UIView {
         let layer = CAShapeLayer()
         layer.lineWidth = 2
         layer.fillColor = .backgroundPositiveSubtle
-        layer.strokeColor = .accentPea
+        layer.strokeColor = .borderPositive
         return layer
     }()
 

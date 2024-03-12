@@ -33,45 +33,45 @@ public extension NMPInfoboxView {
         var backgroundColor: Color {
             switch self {
             case .critical:
-                Color.bgInformationCriticalSubtle
+                Color.backgroundNegativeSubtle
             case .custom(let backgroundColor, _, _, _):
                 backgroundColor
             case .information:
-                Color.bgInformationInfoSubtle
+                Color.backgroundInfoSubtle
             case .success:
-                Color.bgInformationSuccessSubtle
+                Color.backgroundPositiveSubtle
             case .warning:
-                Color.bgInformationWarningSubtle
+                Color.backgroundWarningSubtle
             }
         }
 
         var borderColor: Color {
             switch self {
             case .critical:
-                Color.borderCritical
+                warpToken.borderNegative
             case .custom(_, _, let borderColor, _):
                 borderColor ?? .clear
             case .information:
-                Color.borderInfo
+                warpToken.borderInfo
             case .success:
-                Color.borderSuccess
+                warpToken.borderPositive
             case .warning:
-                Color.borderWarning
+                warpToken.borderWarning
             }
         }
 
         var subtleBorderColor: Color {
             switch self {
             case .critical:
-                Color.borderCriticalSubtle
+                warpToken.borderNegativeSubtle
             case .custom(_, let subtleBorderColor, _, _):
                 subtleBorderColor ?? .clear
             case .information:
-                Color.borderInfoSubtle
+                warpToken.borderInfoSubtle
             case .success:
-                Color.borderSuccessSubtle
+                warpToken.borderPositiveSubtle
             case .warning:
-                Color.borderWarningSubtle
+                warpToken.borderWarningSubtle
             }
         }
 

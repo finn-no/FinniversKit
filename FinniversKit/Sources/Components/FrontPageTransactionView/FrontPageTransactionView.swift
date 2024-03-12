@@ -72,11 +72,11 @@ public struct FrontPageTransactionView: View {
 
 private extension Color {
     static var shadowColor: Color {
-        Color(UIColor(hex: "475569"))
+        .black
     }
 
     static var bgColor: Color {
-        Color(UIColor.dynamicColor(defaultColor: .white, darkModeColor: .darkBgPrimaryProminent))
+        .surfaceElevated200
     }
 }
 

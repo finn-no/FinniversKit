@@ -10,8 +10,8 @@ public class InfoboxDemoView: UIView, Demoable {
     private lazy var scrollView = UIScrollView(withAutoLayout: true)
 
     private var infoboxConfigurations: [(style: InfoboxView.Style, model: InfoboxViewModel)] = [
-        (style: .small(backgroundColor: .bgSecondary), model: InfoboxDefaultData()),
-        (style: .normal(backgroundColor: .bgPrimary, primaryButtonIcon: UIImage(named: .webview)), model: InfoboxOpenBrowserData()),
+        (style: .small(backgroundColor: .backgroundInfoSubtle), model: InfoboxDefaultData()),
+        (style: .normal(backgroundColor: .backgroundInfoSubtle, primaryButtonIcon: UIImage(named: .webview)), model: InfoboxOpenBrowserData()),
         (style: .warning, model: InfoboxWarningData()),
         (style: .warning, model: InfoboxNoButtons()),
     ]

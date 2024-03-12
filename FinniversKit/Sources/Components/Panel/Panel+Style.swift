@@ -16,7 +16,7 @@ extension Panel {
             switch self {
             case .plain: return .background
             case .info: return .backgroundInfoSubtle
-            case .tips: return .accentToothpaste
+            case .tips: return warpUIColor.badgeSponsoredBackground
             case .newFunctionality: return .backgroundPositiveSubtle
             case .success: return .backgroundPositiveSubtle
             case .warning: return .backgroundWarningSubtle
@@ -26,7 +26,7 @@ extension Panel {
 
         var borderColor: UIColor? {
             switch self {
-            case .newFunctionality: return .accentPea
+            case .newFunctionality: return .borderPositive
             default: return nil
             }
         }

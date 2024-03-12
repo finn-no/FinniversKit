@@ -61,7 +61,7 @@ struct SwiftUISelectionListItem<ItemType>: View {
         if let accessibilityDescription = itemModel.accessibilityDescription {
             return accessibilityDescription
         }
-        
+
         var text = itemModel.title
         if let desc = itemModel.description {
             text += ", \(desc)"

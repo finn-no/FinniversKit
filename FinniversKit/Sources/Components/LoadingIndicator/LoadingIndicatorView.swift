@@ -91,14 +91,14 @@ extension LoadingIndicatorView {
         backgroundColor = .clear
 
         backgroundLayer.fillColor = UIColor.clear.cgColor
-        backgroundLayer.strokeColor = UIColor.loadingIndicatorBackground.cgColor
+        backgroundLayer.strokeColor = UIColor.borderPrimary.cgColor
         backgroundLayer.strokeStart = 0
         backgroundLayer.strokeEnd = 1
         backgroundLayer.lineWidth = lineWidth
         backgroundLayer.lineCap = .round
 
         animatedLayer.fillColor = UIColor.clear.cgColor
-        animatedLayer.strokeColor = UIColor.loadingIndicator.cgColor
+        animatedLayer.strokeColor = UIColor.borderPrimarySubtle.cgColor
         animatedLayer.strokeStart = 0
         animatedLayer.strokeEnd = 1
         animatedLayer.lineWidth = lineWidth

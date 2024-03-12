@@ -15,12 +15,12 @@ public extension RibbonView {
 
         var color: UIColor {
             switch self {
-            case .default: return .backgroundInfoSubtle
-            case .success: return .backgroundPositiveSubtle
-            case .warning: return .backgroundWarningSubtle
-            case .error: return .backgroundNegativeSubtle
-            case .disabled: return .backgroundDisabled
-            case .sponsored: return .accentToothpaste
+            case .default: return warpUIColor.badgeNeutralBackground
+            case .success: return warpUIColor.badgePositiveBackground
+            case .warning: return warpUIColor.badgeWarningBackground
+            case .error: return warpUIColor.badgeNegativeBackground
+            case .disabled: return warpUIColor.badgeDisabledBackground
+            case .sponsored: return warpUIColor.badgeSponsoredBackground
             }
         }
 

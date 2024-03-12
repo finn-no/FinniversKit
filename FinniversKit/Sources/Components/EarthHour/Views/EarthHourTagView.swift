@@ -8,13 +8,14 @@ final class EarthHourTagView: UIView {
     private(set) lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = UIFont.font(ofSize: 14.0, weight: .regular, textStyle: .footnote)
-        label.textColor = .black
+        label.textColor = .text
         return label
     }()
 
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = UIImage(named: .earthHourClock)
+        imageView.image = UIImage(named: .earthHourClock).withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .icon
         return imageView
     }()
 
@@ -45,7 +46,7 @@ final class EarthHourTagView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = UIColor(r: 196, g: 210, b: 231)
+        backgroundColor = .backgroundInfoSubtle
         layer.cornerRadius = .spacingS
 
         addSubview(stackView)
