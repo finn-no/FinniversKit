@@ -22,8 +22,8 @@ public extension FloatingButton.Style {
         FloatingButton.Style(
             tintColor: .white,
             titleColor: .textInverted,
-            primaryBackgroundColor: .red600,
-            highlightedBackgroundColor: .red600.withAlphaComponent(0.8),
+            primaryBackgroundColor: .backgroundNegative,
+            highlightedBackgroundColor: .backgroundNegativeActive,
             borderWidth: .spacingXS,
             borderColor: .white,
             badgeBackgroundColor: .backgroundPrimary,

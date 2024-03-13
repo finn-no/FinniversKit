@@ -30,7 +30,7 @@ extension ScrollableTabView {
 
         private lazy var indicatorView: UIView = {
             let indicatorView = UIView(withAutoLayout: true)
-            indicatorView.backgroundColor = .nmpBrandControlSelected
+            indicatorView.backgroundColor = .backgroundPrimary
             return indicatorView
         }()
 

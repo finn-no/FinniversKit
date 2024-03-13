@@ -121,7 +121,7 @@ public struct FinnTextField: View {
         }, label: {
             Image(named: .view)
                 .renderingMode(.template)
-                .foregroundColor(disclosePassword ? Color.accentSecondaryBlue : Color.iconPrimary)
+                .foregroundColor(disclosePassword ? Color.iconPrimary : Color.icon)
         })
     }
 }
