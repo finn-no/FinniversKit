@@ -32,9 +32,14 @@ public class MarketsGridView: UIView, MarketsView {
 
     public var isMarketGridCellLabelTwoLined: Bool = false
     private var itemSize: CGSize {
-        isMarketGridCellLabelTwoLined
-        ? CGSize(width: 96, height: 88)
-        : CGSize(width: 92, height: 72)
+        switch (isMarketGridCellLabelTwoLined, UIDevice.isIPad()) {
+        case (true, true):
+            return CGSize(width: 128, height: 92)
+        case (true, false):
+            return CGSize(width: 96, height: 88)
+        case (false, _):
+            return CGSize(width: 92, height: 72)
+        }
     }
 
     private let itemSpacing: CGFloat = .spacingS

@@ -18,20 +18,20 @@ public enum ToriMarket: MarketsViewModel {
 
     public var title: String {
         switch self {
-        case .furniture: return "Huonekalutjasisustus"
-        case .clothing: return "Vaatteita, kosmetiikkaa ja asusteita"
-        case .parents: return "Vanhemmat ja lapset"
+        case .furniture: return "Huonekalut ja sisustus"
+        case .clothing: return "Vaatteet ja asusteet"
+        case .parents: return "Lapset ja vanhemmat"
         case .sports: return "Urheilu ja ulkoilu"
-        case .animals: return "Eläimet ja laitteet"
-        case .leisure: return "Harrastus ja viihde"
+        case .animals: return "Eläimet ja eläintarvikkeet"
+        case .leisure: return "Viihde ja harrastukset"
         case .remppatori: return "Remppatori"
         case .vehicles: return "Ajoneuvojen"
         case .electronics: return "Elektroniikka ja kodinkoneet"
-        case .garden: return "Puutarha, remontti ja talo"
-        case .vehicleparts: return "Ajoneuvojen osia"
-        case .jobs: return "työpaikat"
-        case .antiquities: return "Antiikkia ja taidetta"
-        case .autovex: return "Autovex"
+        case .garden: return "Puutarha ja remontointi"
+        case .vehicleparts: return "Auto-, mp- ja venetarvikkeet"
+        case .jobs: return "Avoimet työpaikat"
+        case .antiquities: return "Antiikki ja taide"
+        case .autovex: return "Myy autosi"
 
         }
     }
