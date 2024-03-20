@@ -57,7 +57,7 @@ import UIKit
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.image = UIImage(named: .checkmarkBig).withRenderingMode(.alwaysTemplate)
-        view.tintColor = LoadingView.shouldUseOldIndicator ? .backgroundPrimary : .accentSecondaryBlue
+        view.tintColor = .iconSecondary
         view.alpha = 0
         view.transform = loadingIndicatorInitialTransform
         return view
@@ -154,14 +154,14 @@ private extension LoadingView {
 
             switch displayType {
             case .fullscreen:
-                successImageView.tintColor = .accentSecondaryBlue
+                successImageView.tintColor = .iconSecondary
                 messageLabel.textColor = .text
                 backgroundColor = .background.withAlphaComponent(0.8)
                 layer.cornerRadius = 0
                 fillInSuperview()
             case .boxed:
-                successImageView.tintColor = .iconInverted
-                messageLabel.textColor = .textInverted
+                successImageView.tintColor = .iconInvertedStatic
+                messageLabel.textColor = .textInvertedStatic
                 backgroundColor = UIColor.black.withAlphaComponent(0.8)
                 layer.cornerRadius = 16
 

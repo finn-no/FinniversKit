@@ -446,7 +446,7 @@ extension FavoriteAdsListView: UITableViewDelegate {
                 completionHandler(true)
             })
 
-        commentAction.backgroundColor = .gray700
+        commentAction.backgroundColor = .backgroundSubtle
 
         let deleteAction = UIContextualAction(
             style: .normal,
@@ -457,7 +457,7 @@ extension FavoriteAdsListView: UITableViewDelegate {
                 completionHandler(true)
             })
 
-        deleteAction.backgroundColor = .systemRed
+        deleteAction.backgroundColor = .backgroundNegative
 
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction, commentAction])
         configuration.performsFirstActionWithFullSwipe = false

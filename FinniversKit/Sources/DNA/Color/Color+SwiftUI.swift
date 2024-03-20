@@ -89,8 +89,8 @@ extension Color {
     // MARK: - Icon
 
 //    public static var iconPrimary: Color   { Color(UIColor.iconPrimary) }
-    @available(*, deprecated, message: "Use Warp icon instead")
-    public static var iconSecondary: Color { Color(UIColor.iconSecondary) }
+//    @available(*, deprecated, message: "Use Warp icon instead")
+//    public static var iconSecondary: Color { Color(UIColor.iconSecondary) }
     @available(*, deprecated, message: "Use Warp iconInverted instead")
     public static var iconTertiary: Color  { Color(UIColor.iconTertiary) }
 
