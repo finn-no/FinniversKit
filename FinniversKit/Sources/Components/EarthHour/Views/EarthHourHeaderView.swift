@@ -8,6 +8,7 @@ final class EarthHourHeaderView: UIView {
     var bottomCurveHeight: CGFloat = 0
 
     private let earthRotationDegrees = 15
+    // ignore
     private lazy var fillColor = UIColor(r: 27, g: 64, b: 134)
 
     private(set) lazy var closeButton: UIButton = {

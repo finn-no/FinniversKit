@@ -10,7 +10,7 @@ public class ConfettiView: UIView {
         .init(named: .confetti1),
         .init(named: .confetti2)
     ]
-
+    // ignore
     private let confettiColors: [UIColor] = [
         .nmpBrandDecoration,
         .nmpBrandColorSecondary,

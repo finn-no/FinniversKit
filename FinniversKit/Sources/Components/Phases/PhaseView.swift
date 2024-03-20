@@ -41,8 +41,8 @@ final class PhaseView: UIView {
     func configure(with viewModel: PhaseViewModel) {
         let dotWidth = viewModel.isHighlighted ? PhaseView.highlightedDotSize : PhaseView.regularDotSize
 
-        dotView.backgroundColor = viewModel.isHighlighted ? .accentSecondaryBlue : .backgroundDisabled
-        dotView.layer.borderColor = viewModel.isHighlighted ? .accentSecondaryBlue : nil
+        dotView.backgroundColor = viewModel.isHighlighted ? .backgroundPrimary : .border
+        dotView.layer.borderColor = viewModel.isHighlighted ? .borderPrimary : nil
         dotView.layer.borderWidth = viewModel.isHighlighted ? 3 : 0
         dotView.layer.cornerRadius = dotWidth / 2
         dotViewWidthConstraint.constant = dotWidth

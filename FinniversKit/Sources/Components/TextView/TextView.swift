@@ -96,7 +96,7 @@ public class TextView: UIView {
 
     private lazy var underLine: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = .accentSecondaryBlue
+        view.backgroundColor = .borderFocus
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -125,7 +125,7 @@ public class TextView: UIView {
                           textViewFont: UIFont = .body,
                           placeholderLabelTextColor: UIColor = .textDisabled,
                           placeholderLabelFont: UIFont = .body,
-                          underLineBGColor: UIColor = .accentSecondaryBlue) {
+                          underLineBGColor: UIColor = .borderFocus) {
         textView.backgroundColor = textViewBackgroundColor
         textView.textColor = textViewTextColor
         textView.font = textViewFont

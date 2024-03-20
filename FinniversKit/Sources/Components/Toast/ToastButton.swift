@@ -34,17 +34,17 @@ internal class ToastButton: UIButton {
         case .normal:
             setTitleColor(.textLink, for: .normal)
         case .promoted:
-            setTitleColor(.text, for: .normal)
+            setTitleColor(.textInverted, for: .normal)
             contentEdgeInsets = UIEdgeInsets(vertical: .spacingS, horizontal: .spacingM)
-            layer.borderColor = .white
+            layer.borderColor = UIColor.clear.cgColor
             layer.borderWidth = 2
         }
 
         switch (toastStyle, buttonStyle) {
         case (.errorButton, .promoted):
-            backgroundColor = .red400
+            backgroundColor = .backgroundNegative
         case (.successButton, .promoted):
-            backgroundColor = .accentPea
+            backgroundColor = .backgroundPositive
         default: break
         }
     }

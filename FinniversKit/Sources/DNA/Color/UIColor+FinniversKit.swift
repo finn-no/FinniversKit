@@ -20,6 +20,7 @@ extension Color {
     public static var backgroundDisabled: Color { warpToken.backgroundDisabled }
     public static var backgroundNegative: Color { warpToken.backgroundNegative }
     public static var backgroundActive: Color { warpToken.backgroundActive }
+    public static var backgroundPositive: Color { warpToken.backgroundPositive }
     public static var text: Color { warpToken.text }
     public static var textSubtle: Color { warpToken.textSubtle }
     public static var textInverted: Color { warpToken.textInverted }
@@ -32,6 +33,9 @@ extension Color {
     public static var borderPrimarySubtle: Color { warpToken.borderPrimarySubtle }
     public static var borderPositive: Color { warpToken.borderPositive }
     public static var borderWarning: Color { warpToken.borderWarning }
+    public static var borderDisabled: Color { warpToken.borderDisabled }
+    public static var borderFocus: Color { warpToken.borderFocus }
+    public static var borderNegative: Color { warpToken.borderNegative }
     public static var iconPrimary: Color { warpToken.iconPrimary }
     public static var iconInverted: Color { warpToken.iconInverted }
     public static var icon: Color { warpToken.icon }
@@ -54,6 +58,7 @@ extension Color {
     public static var backgroundDisabled: UIColor { warpUIToken.backgroundDisabled }
     public static var backgroundNegative: UIColor { warpUIToken.backgroundNegative }
     public static var backgroundActive: UIColor { warpUIToken.backgroundActive }
+    public static var backgroundPositive: UIColor { warpUIToken.backgroundPositive }
     public static var text: UIColor { warpUIToken.text }
     public static var textSubtle: UIColor { warpUIToken.textSubtle }
     public static var textInverted: UIColor { warpUIToken.textInverted }
@@ -66,6 +71,9 @@ extension Color {
     public static var borderPrimarySubtle: UIColor { warpUIToken.borderPrimarySubtle }
     public static var borderPositive: UIColor { warpUIToken.borderPositive }
     public static var borderWarning: UIColor { warpUIToken.borderWarning }
+    public static var borderDisabled: UIColor { warpUIToken.borderDisabled }
+    public static var borderFocus: UIColor { warpUIToken.borderFocus }
+    public static var borderNegative: UIColor { warpUIToken.borderNegative }
     public static var iconPrimary: UIColor { warpUIToken.iconPrimary }
     public static var iconInverted: UIColor { warpUIToken.iconInverted }
     public static var icon: UIColor { warpUIToken.icon }
@@ -88,6 +96,7 @@ extension CGColor {
     public class var backgroundDisabled: CGColor { UIColor.backgroundDisabled.cgColor }
     public class var backgroundNegative: CGColor { UIColor.backgroundNegative.cgColor }
     public class var backgroundActive: CGColor { UIColor.backgroundActive.cgColor }
+    public class var backgroundPositive: CGColor { UIColor.backgroundPositive.cgColor }
     public class var text: CGColor { UIColor.text.cgColor }
     public class var textSubtle: CGColor { UIColor.textSubtle.cgColor }
     public class var textInverted: CGColor { UIColor.textInverted.cgColor }
@@ -100,6 +109,9 @@ extension CGColor {
     public class var borderPrimarySubtle: CGColor { UIColor.borderPrimarySubtle.cgColor }
     public class var borderPositive: CGColor { UIColor.borderPositive.cgColor }
     public class var borderWarning: CGColor { UIColor.borderWarning.cgColor }
+    public class var borderDisabled: CGColor { UIColor.borderDisabled.cgColor }
+    public class var borderFocus: CGColor { UIColor.borderFocus.cgColor }
+    public class var borderNegative: CGColor { UIColor.borderNegative.cgColor }
     public class var iconPrimary: CGColor { UIColor.iconPrimary.cgColor }
     public class var iconInverted: CGColor { UIColor.iconInverted.cgColor }
     public class var icon: CGColor { UIColor.icon.cgColor }
@@ -160,8 +172,8 @@ extension CGColor {
     public class var borderWarningSubtle: UIColor { Config.colorProvider.borderWarningSubtle }
     @available(*, deprecated, message: "Use Warp color instead")
     public class var borderInfo: UIColor { Config.colorProvider.borderInfo }
-    @available(*, deprecated, message: "Use Warp color instead")
-    public class var borderNegative: UIColor { Config.colorProvider.borderNegative }
+//    @available(*, deprecated, message: "Use Warp color instead")
+//    public class var borderNegative: UIColor { Config.colorProvider.borderNegative }
 //    public class var borderPositive: UIColor { Config.colorProvider.borderPositive }
 //    public class var borderWarning: UIColor { Config.colorProvider.borderWarning }
     @available(*, deprecated, message: "Use Warp color instead")
@@ -267,8 +279,8 @@ extension CGColor {
     public class var borderDefault: CGColor { UIColor.borderDefault.cgColor }
     @available(*, deprecated, message: "Use Warp color instead")
     public class var borderInfo: CGColor { Config.colorProvider.borderInfo.cgColor }
-    @available(*, deprecated, message: "Use Warp color instead")
-    public class var borderNegative: CGColor { Config.colorProvider.borderNegative.cgColor }
+//    @available(*, deprecated, message: "Use Warp color instead")
+//    public class var borderNegative: CGColor { Config.colorProvider.borderNegative.cgColor }
 //    public class var borderPositive: CGColor { Config.colorProvider.borderPositive.cgColor }
 //    public class var borderWarning: CGColor { Config.colorProvider.borderWarning.cgColor }
     @available(*, deprecated, message: "Use Warp color instead")

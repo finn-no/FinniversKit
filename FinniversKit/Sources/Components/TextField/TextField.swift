@@ -132,7 +132,7 @@ public class TextField: UIView {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont.body
         textField.textColor = .text
-        textField.tintColor = .accentSecondaryBlue //DARK
+        textField.tintColor = .icon
         textField.delegate = self
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
@@ -348,10 +348,10 @@ public class TextField: UIView {
         sender.isSelected = !sender.isSelected
 
         if sender.isSelected {
-            sender.imageView?.tintColor = .accentSecondaryBlue //DARK
+            sender.imageView?.tintColor = .iconPrimary
             textField.isSecureTextEntry = false
         } else {
-            sender.imageView?.tintColor = .textSubtle //DARK
+            sender.imageView?.tintColor = .icon
             textField.isSecureTextEntry = true
         }
 

@@ -150,11 +150,3 @@ extension LoadingIndicatorView {
         animatedLayer.add(animationGroup, forKey: "loading")
     }
 }
-
-// MARK: - Private extensions
-
-private extension UIColor {
-    static var loadingIndicatorBackground: UIColor {
-        return UIColor(r: 221, g: 232, b: 250)
-    }
-}

@@ -28,16 +28,16 @@ public extension TextField {
         var underlineColor: UIColor {
             switch self {
             case .normal:
-                return .textSubtle
+                return .border
 
             case .disabled:
-                return .textDisabled
+                return .borderDisabled
 
             case .focus:
-                return .accentSecondaryBlue
+                return .borderFocus
 
             case .error:
-                return .textNegative
+                return .borderNegative
 
             case .readOnly:
                 return .clear

@@ -35,7 +35,7 @@ public struct FinnTextView: View {
     private var underline: some View {
         Rectangle()
             .frame(height: 2)
-            .foregroundColor(Color.accentSecondaryBlue)
+            .foregroundColor(.borderFocus)
     }
 
 }

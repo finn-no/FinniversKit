@@ -254,11 +254,11 @@ extension PromotionView {
 
 private extension UIColor {
     static var shadowColor: UIColor {
-        return UIColor(hex: "475569")
+        return .black
     }
 
     static var bgColor: UIColor {
-        return .dynamicColor(defaultColor: .white, darkModeColor: .darkBgPrimaryProminent)
+        return .surfaceElevated200
     }
 }
 

@@ -13,7 +13,7 @@ extension FinnTextField {
         var underlineColor: Color {
             switch self {
             case .default: return .textSubtle
-            case .focused: return Color.accentSecondaryBlue
+            case .focused: return .borderFocus
             case .error: return .textNegative
             }
         }

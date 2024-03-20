@@ -37,10 +37,11 @@ public protocol ColorProvider {
     var bgCallout: UIColor { get }
     @available(*, deprecated, message: "Use Warp color instead")
     var borderInfo: UIColor { get }
-    @available(*, deprecated, message: "Use Warp color instead")
-    var borderNegative: UIColor { get }
+//    @available(*, deprecated, message: "Use Warp color instead")
+//    var borderNegative: UIColor { get }
     @available(*, deprecated, message: "Use Warp color instead")
     var borderPositive: UIColor { get }
+    @available(*, deprecated, message: "Use Warp color instead")
     var borderWarning: UIColor { get }
     @available(*, deprecated, message: "Use Warp color instead")
     var borderCallout: UIColor { get }
@@ -194,10 +195,10 @@ public struct DefaultColorProvider: ColorProvider {
         .dynamicColor(defaultColor: .aqua600, darkModeColor: .aqua500)
     }
 
-    @available(*, deprecated, message: "Use Warp color instead")
-    public var borderNegative: UIColor {
-        .dynamicColor(defaultColor: .red600, darkModeColor: .red500)
-    }
+//    @available(*, deprecated, message: "Use Warp color instead")
+//    public var borderNegative: UIColor {
+//        .dynamicColor(defaultColor: .red600, darkModeColor: .red500)
+//    }
 
     @available(*, deprecated, message: "Use Warp color instead")
     public var borderPositive: UIColor {
