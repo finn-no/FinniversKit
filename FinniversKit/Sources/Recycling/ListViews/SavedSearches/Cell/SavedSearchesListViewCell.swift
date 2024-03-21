@@ -37,7 +37,7 @@ import UIKit
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: .settings), for: .normal)
-        button.tintColor = .nmpBrandDecoration
+        button.tintColor = .iconPrimary
         button.addTarget(self, action: #selector(showSettings(button:)), for: .touchUpInside)
         button.isAccessibilityElement = true
 

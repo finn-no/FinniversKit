@@ -29,7 +29,7 @@ final class FavoriteSearchEmptyView: UIView {
     private lazy var magnifyingGlassImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = UIImage(named: .magnifyingGlass).withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .blueGray300
+        imageView.tintColor = .iconSubtle
         return imageView
     }()
 
@@ -45,9 +45,10 @@ final class FavoriteSearchEmptyView: UIView {
         let button = UIButton(type: .system)
         button.titleLabel?.font = .bodyStrong
         button.setImage(UIImage(named: .plusMini), for: .normal)
-        button.setTitleColor(.backgroundPrimary, for: .normal)
-        button.setTitleColor(.flatButtonHighlightedTextColor, for: .highlighted)
-        button.setTitleColor(.flatButtonHighlightedTextColor, for: .selected)
+        button.tintColor = .link
+        button.setTitleColor(.link, for: .normal)
+        button.setTitleColor(.link, for: .highlighted)
+        button.setTitleColor(.link, for: .selected)
         button.addTarget(self, action: #selector(handleAddFolderButtonTap), for: .touchUpInside)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -.spacingXS, bottom: 0, right: .spacingXS)
         button.contentEdgeInsets = UIEdgeInsets(top: 0, left: .spacingXS, bottom: 0, right: 0)

@@ -29,7 +29,7 @@ class MarketsGridViewCell: UICollectionViewCell {
 
     private lazy var containerView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .tileBackgroundColor
+        view.backgroundColor = .background
         view.layer.cornerRadius = cornerRadius
         view.clipsToBounds = true
         return view
@@ -40,7 +40,7 @@ class MarketsGridViewCell: UICollectionViewCell {
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.tintColor = .marketplaceNavigationBarIcon
+        imageView.tintColor = .iconSecondary
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         imageView.setContentHuggingPriority(.defaultHigh, for: .vertical)
@@ -51,7 +51,7 @@ class MarketsGridViewCell: UICollectionViewCell {
     private lazy var externalLinkImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .externalLinkColor
+        imageView.tintColor = .iconSubtle
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
@@ -183,32 +183,13 @@ private extension CALayer {
         case .sharp:
             self.shadowOpacity = 0.25
             self.shadowOffset = CGSize(width: 0, height: 1)
-            self.shadowColor = UIColor.tileSharpShadowColor.cgColor
+            self.shadowColor = UIColor.black.cgColor
             self.shadowRadius = 1
         case .smooth:
             self.shadowOpacity = 0.16
             self.shadowOffset = CGSize(width: 0, height: 1)
-            self.shadowColor = UIColor.tileSmoothShadowColor.cgColor
+            self.shadowColor = UIColor.black.cgColor
             self.shadowRadius = 5
         }
-    }
-}
-
-// TODO: - These colors should be added to the ColorProvider at some point
-private extension UIColor {
-    class var externalLinkColor: UIColor {
-        return .blueGray400
-    }
-
-    class var tileSharpShadowColor: UIColor {
-        return .blueGray600
-    }
-
-    class var tileSmoothShadowColor: UIColor {
-        return .blueGray600
-    }
-
-    class var tileBackgroundColor: UIColor {
-        return .dynamicColor(defaultColor: .white, darkModeColor: .darkBgPrimaryProminent)
     }
 }

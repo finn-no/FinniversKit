@@ -33,7 +33,7 @@ public class CompactMarketsView: UIView, MarketsView {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .backgroundSubtle
         view.layer.masksToBounds = false
-        view.layer.shadowColor = UIColor.shadowColor.cgColor
+        view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.24
         view.layer.shadowOffset = CGSize(width: 0, height: 1)
         view.layer.shadowRadius = 1
@@ -46,7 +46,7 @@ public class CompactMarketsView: UIView, MarketsView {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .backgroundSubtle
         view.layer.masksToBounds = false
-        view.layer.shadowColor = UIColor.shadowColor.cgColor
+        view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.16
         view.layer.shadowOffset = CGSize(width: 0, height: 1 )
         view.layer.shadowRadius = 5
@@ -178,9 +178,3 @@ private extension CompactMarketsView {
 
     }
 }
-
-private extension UIColor {
-     class var shadowColor: UIColor {
-        return .blueGray800
-     }
- }

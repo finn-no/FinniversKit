@@ -42,6 +42,7 @@ extension Color {
     public static var iconInverted: Color { warpToken.iconInverted }
     public static var iconInvertedStatic: Color { warpToken.iconInvertedStatic }
     public static var icon: Color { warpToken.icon }
+    public static var iconSubtle: Color { warpToken.iconSubtle }
     public static var iconSecondary: Color { warpToken.iconSecondary }
     public static var iconWarning: Color { warpToken.iconWarning }
     public static var surfaceSunken: Color { warpToken.surfaceSunken }
@@ -84,6 +85,7 @@ extension Color {
     public static var iconInverted: UIColor { warpUIToken.iconInverted }
     public static var iconInvertedStatic: UIColor { warpUIToken.iconInvertedStatic }
     public static var icon: UIColor { warpUIToken.icon }
+    public static var iconSubtle: UIColor { warpUIToken.iconSubtle }
     public static var iconSecondary: UIColor { warpUIToken.iconSecondary }
     public static var iconWarning: UIColor { warpUIToken.iconWarning }
     public static var surfaceSunken: UIColor { warpUIToken.surfaceSunken }
@@ -126,6 +128,7 @@ extension CGColor {
     public class var iconInverted: CGColor { UIColor.iconInverted.cgColor }
     public class var iconInvertedStatic: CGColor { UIColor.iconInvertedStatic.cgColor }
     public class var icon: CGColor { UIColor.icon.cgColor }
+    public class var iconSubtle: CGColor { UIColor.iconSubtle.cgColor }
     public class var iconSecondary: CGColor { UIColor.iconSecondary.cgColor }
     public class var iconWarning: CGColor { UIColor.iconWarning.cgColor }
     public class var surfaceSunken: CGColor { UIColor.surfaceSunken.cgColor }
