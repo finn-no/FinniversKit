@@ -32,7 +32,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     private lazy var containerView = UIView(withAutoLayout: true)
     private lazy var imageDescriptionStackView = UIStackView(axis: .horizontal, spacing: Self.margin, alignment: .center, withAutoLayout: true)
     private lazy var ribbonView = RibbonView(withAutoLayout: true)
-    private lazy var imageTextLabel = Label(style: .captionStrong, textColor: .textInverted, withAutoLayout: true)
+    private lazy var imageTextLabel = Label(style: .captionStrong, textColor: .textInvertedStatic, withAutoLayout: true)
     private lazy var subtitleLabelHeightConstraint = subtitleLabel.heightAnchor.constraint(equalToConstant: Self.subtitleHeight)
 
     private static let titleHeight: CGFloat = 20.0
