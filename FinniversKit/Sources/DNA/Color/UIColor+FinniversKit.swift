@@ -22,6 +22,7 @@ extension Color {
     public static var backgroundActive: Color { warpToken.backgroundActive }
     public static var backgroundPositive: Color { warpToken.backgroundPositive }
     public static var text: Color { warpToken.text }
+    public static var textStatic: Color { warpToken.textStatic }
     public static var textSubtle: Color { warpToken.textSubtle }
     public static var textInverted: Color { warpToken.textInverted }
     public static var textInvertedStatic: Color { warpToken.textInvertedStatic }
@@ -63,6 +64,7 @@ extension Color {
     public static var backgroundActive: UIColor { warpUIToken.backgroundActive }
     public static var backgroundPositive: UIColor { warpUIToken.backgroundPositive }
     public static var text: UIColor { warpUIToken.text }
+    public static var textStatic: UIColor { warpUIToken.textStatic }
     public static var textSubtle: UIColor { warpUIToken.textSubtle }
     public static var textInverted: UIColor { warpUIToken.textInverted }
     public static var textInvertedStatic: UIColor { warpUIToken.textInvertedStatic }
@@ -104,6 +106,7 @@ extension CGColor {
     public class var backgroundActive: CGColor { UIColor.backgroundActive.cgColor }
     public class var backgroundPositive: CGColor { UIColor.backgroundPositive.cgColor }
     public class var text: CGColor { UIColor.text.cgColor }
+    public class var textStatic: CGColor { UIColor.textStatic.cgColor }
     public class var textSubtle: CGColor { UIColor.textSubtle.cgColor }
     public class var textInverted: CGColor { UIColor.textInverted.cgColor }
     public class var textInvertedStatic: CGColor { UIColor.textInvertedStatic.cgColor }

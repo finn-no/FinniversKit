@@ -43,7 +43,7 @@ class MessageFormToolbar: UIView {
 
     // MARK: - Private properties
 
-    private static let backgroundColor = UIColor.dynamicColor(defaultColor: UIColor(r: 208, g: 212, b: 215), darkModeColor: UIColor(hex: "#1B1B24"))
+    private static let backgroundColor = UIColor.backgroundSubtle
 
     private let viewModel: MessageFormViewModel
 
@@ -159,10 +159,12 @@ private class MessageFormTemplateCell: UICollectionViewCell {
     private lazy var button: UIButton = {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setBackgroundColor(color: .accentToothpaste, forState: .normal)
-        button.setBackgroundColor(color: .accentSecondaryBlue, forState: .highlighted)
+        button.setBackgroundColor(color: .background, forState: .normal)
+        button.setBackgroundColor(color: .backgroundActive, forState: .highlighted)
+        button.layer.borderColor = .border
+        button.layer.borderWidth = 2
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 4
+        button.layer.cornerRadius = 8
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return button
@@ -174,7 +176,7 @@ private class MessageFormTemplateCell: UICollectionViewCell {
         label.numberOfLines = 3
         label.textAlignment = .center
         label.lineBreakMode = .byTruncatingTail
-        label.textColor = .text
+        label.textColor = .textLink
         return label
     }()
 

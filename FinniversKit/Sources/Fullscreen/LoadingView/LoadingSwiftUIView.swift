@@ -16,7 +16,7 @@ public struct LoadingSwiftUIView: View {
     private let loadingIndicatorSize: CGFloat = 40
     private var isFullscreen: Bool { displayMode == .fullscreen }
     private let boxMinSize: CGFloat = 120
-    private var textColor: Color { isFullscreen ? .text : .textInverted }
+    private var textColor: Color { isFullscreen ? .text : .textInvertedStatic }
 
     public init(
         mode: DisplayMode = .fullscreen,
@@ -41,7 +41,7 @@ public struct LoadingSwiftUIView: View {
                         Image(named: .checkmarkBig)
                             .renderingMode(.template)
                             .resizable()
-                            .foregroundColor(isFullscreen ? .accentSecondaryBlue : .iconInverted)
+                            .foregroundColor(isFullscreen ? .iconSecondary : .iconInvertedStatic)
                             .scaleEffect(loadingIndicatorScale)
                             .onAppear {
                                 loadingIndicatorScale = initialScale

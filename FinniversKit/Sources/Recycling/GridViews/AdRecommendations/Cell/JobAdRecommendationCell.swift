@@ -24,8 +24,6 @@ public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell
         }
     }
 
-    private let loadingColors: [UIColor] = [.yellow100, .red100]
-
     private var loadingColor: UIColor = .clear {
         didSet {
             imageViewContainer.backgroundColor = loadingColor
@@ -216,7 +214,7 @@ extension JobAdRecommendationCell: AdRecommendationConfigurable {
         self.model = model
         self.index = index
 
-        loadingColor = loadingColors[index % loadingColors.count]
+        loadingColor = .backgroundSubtle
 
         containerView.accessibilityLabel = model?.accessibilityLabel
         favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityLabel
