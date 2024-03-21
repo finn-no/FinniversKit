@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 public final class HTMLStringUIKitStyleTranslator: HTMLStringParserTranslator {
-    public typealias StyleMapper = (_ elementName: String, _ attributes: [String: String]) -> Style?
+    public typealias StyleMapper = (_ elementName: String, _ attributes: [HTMLToken.TagAttribute]) -> Style?
 
     private let styleMapper: StyleMapper?
     private var styleStack: HTMLStringStyleStack<Style>
@@ -20,11 +20,11 @@ public final class HTMLStringUIKitStyleTranslator: HTMLStringParserTranslator {
         )
     }
 
-    public func translate(tokens: [HTMLLexer.Token]) throws -> NSAttributedString {
+    public func translate(tokens: [HTMLToken]) throws -> NSAttributedString {
         var finalString = "".applyStyle(styleStack.currentStyle)
         for token in tokens {
             switch token {
-            case .startTag(let name, let attributes, _):
+            case .tagStart(let name, let attributes, _):
                 switch name.lowercased() {
                 case "br":
                     finalString = finalString + "\n".applyStyle(styleStack.currentStyle)
@@ -36,7 +36,7 @@ public final class HTMLStringUIKitStyleTranslator: HTMLStringParserTranslator {
                 if let style = styleMapper(name, attributes) {
                     styleStack.pushStyle(style, elementName: name)
                 }
-            case .endTag(let name):
+            case .tagEnd(let name):
                 styleStack.popStyle(elementName: name)
             case .text(let text):
                 let string = text.applyStyle(styleStack.currentStyle)
@@ -48,7 +48,7 @@ public final class HTMLStringUIKitStyleTranslator: HTMLStringParserTranslator {
         return finalString
     }
 
-    private func defaultStyleMapper(elementName: String, attributes: [String: String]) -> Style? {
+    private func defaultStyleMapper(elementName: String, attributes: [HTMLToken.TagAttribute]) -> Style? {
         switch elementName.lowercased() {
         case "b", "strong":
             return .init(fontWeight: .bold)

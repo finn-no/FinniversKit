@@ -45,7 +45,6 @@ public class HTMLLabel: Label {
 
     private func setAttributedString(from htmlString: String) {
         do {
-            let htmlParser = HTMLStringParser()
             let translator = HTMLStringUIKitStyleTranslator.finnStyle(
                 font: font,
                 foregroundColor: textColor,
@@ -54,7 +53,7 @@ public class HTMLLabel: Label {
                     self.additionalSpanMapper(attributes, &currentStyle)
                 }
             )
-            attributedText = try htmlParser.parse(html: htmlString, translator: translator)
+            attributedText = try HTMLStringParser.parse(html: htmlString, translator: translator)
         } catch {
             text = htmlString
         }
