@@ -29,7 +29,7 @@ class MarketsGridViewCell: UICollectionViewCell {
 
     private lazy var containerView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .background
+        view.backgroundColor = .surfaceElevated200
         view.layer.cornerRadius = cornerRadius
         view.clipsToBounds = true
         return view
