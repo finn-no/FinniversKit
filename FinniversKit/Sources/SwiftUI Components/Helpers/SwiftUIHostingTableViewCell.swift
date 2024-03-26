@@ -6,7 +6,7 @@ public class SwiftUIHostingTableViewCell<Content: View>: UITableViewCell {
 
     public func host(_ view: Content, parent: UIViewController? = nil) {
 
-        if let controller = controller {
+        if let controller {
             controller.rootView = view
             controller.view.layoutIfNeeded()
         } else {
@@ -17,7 +17,7 @@ public class SwiftUIHostingTableViewCell<Content: View>: UITableViewCell {
             
             parent?.addChild(controller)
             
-            addSubview(controller.view)
+            contentView.addSubview(controller.view)
             
             NSLayoutConstraint.activate([
                 controller.view.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -26,7 +26,7 @@ public class SwiftUIHostingTableViewCell<Content: View>: UITableViewCell {
                 controller.view.bottomAnchor.constraint(equalTo: bottomAnchor)
             ])
             
-            if let parent = parent {
+            if let parent {
                 controller.didMove(toParent: parent)
             }
             

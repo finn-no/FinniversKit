@@ -6,7 +6,7 @@ public class SwiftUIHostingCollectionViewCell<Content: View>: UICollectionViewCe
 
     public func host(_ view: Content, parent: UIViewController? = nil) {
 
-        if let controller = controller {
+        if let controller {
             controller.rootView = view
             controller.view.layoutIfNeeded()
         } else {
@@ -17,8 +17,8 @@ public class SwiftUIHostingCollectionViewCell<Content: View>: UICollectionViewCe
 
             parent?.addChild(controller)
 
-            addSubview(controller.view)
-
+            contentView.addSubview(controller.view)
+            
             NSLayoutConstraint.activate([
                 controller.view.leadingAnchor.constraint(equalTo: leadingAnchor),
                 controller.view.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -26,7 +26,7 @@ public class SwiftUIHostingCollectionViewCell<Content: View>: UICollectionViewCe
                 controller.view.bottomAnchor.constraint(equalTo: bottomAnchor)
             ])
 
-            if let parent = parent {
+            if let parent {
                 controller.didMove(toParent: parent)
             }
 
