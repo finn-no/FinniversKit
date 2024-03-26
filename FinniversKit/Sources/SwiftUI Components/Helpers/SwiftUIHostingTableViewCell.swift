@@ -17,13 +17,13 @@ public class SwiftUIHostingTableViewCell<Content: View>: UITableViewCell {
             
             parent?.addChild(controller)
             
-            addSubview(controller.view)
+            contentView.addSubview(controller.view)
             
             NSLayoutConstraint.activate([
-                controller.view.leadingAnchor.constraint(equalTo: leadingAnchor),
-                controller.view.trailingAnchor.constraint(equalTo: trailingAnchor),
-                controller.view.topAnchor.constraint(equalTo: topAnchor),
-                controller.view.bottomAnchor.constraint(equalTo: bottomAnchor)
+                controller.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+                controller.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+                controller.view.topAnchor.constraint(equalTo: contentView.topAnchor),
+                controller.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
             ])
             
             if let parent {
