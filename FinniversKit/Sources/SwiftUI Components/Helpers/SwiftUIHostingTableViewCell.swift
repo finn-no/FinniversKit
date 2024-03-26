@@ -17,7 +17,7 @@ public class SwiftUIHostingTableViewCell<Content: View>: UITableViewCell {
             
             parent?.addChild(controller)
             
-            contentView.addSubview(controller.view)
+            addSubview(controller.view)
             
             NSLayoutConstraint.activate([
                 controller.view.leadingAnchor.constraint(equalTo: leadingAnchor),

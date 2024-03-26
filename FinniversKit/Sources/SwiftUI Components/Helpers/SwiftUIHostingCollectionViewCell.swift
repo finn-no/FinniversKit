@@ -17,7 +17,7 @@ public class SwiftUIHostingCollectionViewCell<Content: View>: UICollectionViewCe
 
             parent?.addChild(controller)
 
-            contentView.addSubview(controller.view)
+            addSubview(controller.view)
             
             NSLayoutConstraint.activate([
                 controller.view.leadingAnchor.constraint(equalTo: leadingAnchor),
