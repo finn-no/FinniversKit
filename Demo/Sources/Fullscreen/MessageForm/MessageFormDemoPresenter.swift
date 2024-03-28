@@ -11,14 +11,8 @@ class MessageFormDemoPresenter {
 extension MessageFormDemoPresenter: MessageFormBottomSheetDelegate {
     func messageFormBottomSheetDidDismiss(_ form: MessageFormBottomSheet) { }
 
-    func messageFormBottomSheet(_ form: MessageFormBottomSheet, didFinishWithText text: String, telephone: String, templateState: MessageFormTemplateState, template: MessageFormTemplate?) {
-        var templateString = ""
-        if let template = template {
-            let id = template.id ?? "<nil>"
-            templateString = "\ntemplate ID: \(id)\n"
-        }
-
-        let alertController = UIAlertController(title: "Message sent!", message: "templateState: \(templateState)\(templateString)\n\n\(text)", preferredStyle: .alert)
+    func messageFormBottomSheet(_ form: MessageFormBottomSheet, didFinishWithText text: String, telephone: String) {
+        let alertController = UIAlertController(title: "Message sent!", message: text, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
         form.present(alertController, animated: true)

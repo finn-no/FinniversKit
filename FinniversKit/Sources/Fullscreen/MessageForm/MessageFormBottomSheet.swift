@@ -8,9 +8,7 @@ public protocol MessageFormBottomSheetDelegate: AnyObject {
     /// Called when the "send"-button was tapped
     func messageFormBottomSheet(_ form: MessageFormBottomSheet,
                                 didFinishWithText text: String,
-                                telephone: String,
-                                templateState: MessageFormTemplateState,
-                                template: MessageFormTemplate?)
+                                telephone: String)
 
     /// Called after the MessageFormBottomSheet disappeared from view
     func messageFormBottomSheetDidDismiss(_ form: MessageFormBottomSheet)
@@ -95,8 +93,8 @@ extension MessageFormBottomSheet: MessageFormViewControllerDelegate {
         dismissWithConfirmationIfNeeded()
     }
 
-    func messageFormViewController(_ viewController: MessageFormViewController, didFinishWithText text: String, telephone: String, templateState: MessageFormTemplateState, template: MessageFormTemplate?) {
-        messageFormDelegate?.messageFormBottomSheet(self, didFinishWithText: text, telephone: telephone, templateState: templateState, template: template)
+    func messageFormViewController(_ viewController: MessageFormViewController, didFinishWithText text: String, telephone: String) {
+        messageFormDelegate?.messageFormBottomSheet(self, didFinishWithText: text, telephone: telephone)
     }
 }
 
