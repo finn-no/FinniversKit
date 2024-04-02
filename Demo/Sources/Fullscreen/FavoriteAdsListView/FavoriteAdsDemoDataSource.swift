@@ -73,7 +73,7 @@ class FavoriteAdsDemoDataSource {
         if year == currentYear {
             FavoriteAdsDemoDataSource.dateFormatter.dateFormat = "MMMM"
         } else {
-            FavoriteAdsDemoDataSource.dateFormatter.dateFormat = "MMMM YYYY"
+            FavoriteAdsDemoDataSource.dateFormatter.dateFormat = "MMMM yyyy"
         }
 
         return FavoriteAdsDemoDataSource.dateFormatter.string(from: date)
