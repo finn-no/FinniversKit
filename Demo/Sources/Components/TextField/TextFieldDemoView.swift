@@ -50,8 +50,8 @@ public class TextFieldDemoView: UIView, Demoable {
         let overrideBgColor = TextField(inputType: .normal)
         overrideBgColor.translatesAutoresizingMaskIntoConstraints = false
         overrideBgColor.placeholderText = "Overridden bgColor"
-        overrideBgColor.configure(textFieldBackgroundColor: .bgPrimary)
-        overrideBgColor.configureBorder(radius: 4, width: 1, color: .borderDefault)
+        overrideBgColor.configure(textFieldBackgroundColor: .background)
+        overrideBgColor.configureBorder(radius: 4, width: 1, color: .border)
 
         stackView.addArrangedSubviews([
             emailTextField,

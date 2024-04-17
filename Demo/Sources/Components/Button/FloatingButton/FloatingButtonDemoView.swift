@@ -25,11 +25,11 @@ class FloatingButtonDemoView: UIView {
         let button = FloatingButton(
             style:
                     .default.overrideStyle(
-                        tintColor: .textTertiary,
-                        primaryBackgroundColor: .btnPrimary,
-                        highlightedBackgroundColor: .btnPrimary,
-                        badgeBackgroundColor: .btnCritical,
-                        badgeTextColor: .textTertiary,
+                        tintColor: .textInverted,
+                        primaryBackgroundColor: .backgroundPrimary,
+                        highlightedBackgroundColor: .backgroundPrimary,
+                        badgeBackgroundColor: .backgroundNegative,
+                        badgeTextColor: .textInverted,
                         badgeSize: 20,
                         shadowColor: UIColor(hex: "#303133").withAlphaComponent(0.9),
                         shadowOffset: CGSize(width: 0, height: 4),

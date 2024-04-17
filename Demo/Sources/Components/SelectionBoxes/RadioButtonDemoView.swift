@@ -24,7 +24,7 @@ class RadioButtonDemoView: UIView, Demoable {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         addSubview(radioButton)
 
         NSLayoutConstraint.activate([

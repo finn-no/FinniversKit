@@ -56,7 +56,7 @@ class RootViewController: UIViewController {
         label.textAlignment = .center
         label.font = UIFont.title2
         label.text = "👆😎👇"
-        label.backgroundColor = .bgCritical
+        label.backgroundColor = .backgroundNegativeSubtle
         return label
     }()
 
@@ -73,7 +73,7 @@ class RootViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .bgPrimary
+        view.backgroundColor = .background
         view.addSubview(expandButton)
         view.addSubview(compactButton)
         view.addSubview(dismissButton)
@@ -160,7 +160,7 @@ class BottomSheetMechanicsDemoViewController: UIViewController, Demoable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .bgPrimary
+        view.backgroundColor = .background
         view.addSubview(requireConfirmationOnDragSwitch)
         view.addSubview(presentAllDraggableButton)
         view.addSubview(presentNavBarDraggableButton)

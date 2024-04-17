@@ -77,7 +77,7 @@ private class DemoCollectionViewCell: UICollectionViewCell, OverflowCollectionVi
 
     private func setup() {
         contentView.layer.borderWidth = 1
-        contentView.backgroundColor = .bgSecondary
+        contentView.backgroundColor = .backgroundInfoSubtle
         contentView.addSubview(label)
 
         NSLayoutConstraint.activate([
@@ -93,7 +93,7 @@ private class DemoCollectionViewCell: UICollectionViewCell, OverflowCollectionVi
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.layer.cornerRadius = min(contentView.bounds.height, contentView.bounds.width) / 2
-        contentView.layer.borderColor = UIColor.textPrimary.withAlphaComponent(0.5).cgColor
+        contentView.layer.borderColor = UIColor.text.withAlphaComponent(0.5).cgColor
     }
 
     // MARK: - OverflowCollectionViewCell

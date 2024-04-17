@@ -72,10 +72,10 @@ extension KeyValueGridDemoView: TweakableDemo {
         switch Tweaks.allCases[index] {
         case .default:
             keyValueGridView.configure(with: .demoData)
-            keyValueGridView.backgroundColor = .bgSecondary
+            keyValueGridView.backgroundColor = .backgroundInfoSubtle
         case .energyLabels:
             keyValueGridView.configure(with: .energyLabels)
-            keyValueGridView.backgroundColor = .bgPrimary
+            keyValueGridView.backgroundColor = .background
         }
     }
 }

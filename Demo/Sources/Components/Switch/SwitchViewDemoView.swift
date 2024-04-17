@@ -43,8 +43,8 @@ public class SwitchViewDemoView: UIView, Demoable {
 private extension SwitchViewStyle {
     static var customStyle = SwitchViewStyle(
         titleLabelStyle: .bodyStrong,
-        titleLabelTextColor: .textPrimary,
+        titleLabelTextColor: .text,
         detailLabelStyle: .caption,
-        detailLabelTextColor: .textPrimary
+        detailLabelTextColor: .text
     )
 }

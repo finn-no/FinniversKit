@@ -24,7 +24,7 @@ class ChristmasWishListDemoView: UIView, Demoable {
     // MARK: - Setup
 
     private func setup() {
-        backgroundView.backgroundColor = .bgSecondary
+        backgroundView.backgroundColor = .backgroundInfoSubtle
         christmasWishListView.configure(with: viewModel)
 
         addSubview(backgroundView)

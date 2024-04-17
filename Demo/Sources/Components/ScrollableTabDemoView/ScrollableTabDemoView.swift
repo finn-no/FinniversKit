@@ -15,7 +15,7 @@ class ScrollableTabDemoView: UIView {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(withAutoLayout: true)
-        tableView.backgroundColor = .bgPrimary
+        tableView.backgroundColor = .background
         tableView.dataSource = self
         tableView.delegate = self
         tableView.allowsSelection = false
@@ -95,7 +95,7 @@ extension ScrollableTabDemoView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(UITableViewCell.self, for: indexPath)
         cell.textLabel?.text = "\(indexPath.row)"
-        cell.backgroundColor = .bgPrimary
+        cell.backgroundColor = .background
         return cell
     }
 }

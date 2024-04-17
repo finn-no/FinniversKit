@@ -9,7 +9,7 @@ struct InfoboxSwiftUIPresentationView: View {
                 Text("Style: .small(backgroundColor: .bgSecondary):")
 
                 InfoboxSwiftUIView(
-                    style: .small(backgroundColor: .bgSecondary),
+                    style: .small(backgroundColor: .backgroundInfoSubtle),
                     viewModel: InfoboxDefaultData()
                 )
                 .onPrimaryButtonTapped {
@@ -24,7 +24,7 @@ struct InfoboxSwiftUIPresentationView: View {
                 Text("Style: .normal(backgroundColor: .bgPrimary, primaryButtonIcon: UIImage(named: .webview):")
                 InfoboxSwiftUIView(
                     style: .normal(
-                        backgroundColor: .bgPrimary,
+                        backgroundColor: .background,
                         primaryButtonIcon: UIImage(named: .webview)
                     ),
                     viewModel: InfoboxOpenBrowserData()

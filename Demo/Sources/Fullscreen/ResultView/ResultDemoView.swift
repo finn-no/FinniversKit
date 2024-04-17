@@ -48,11 +48,11 @@ extension ResultDemoView: TweakableDemo {
                 icon: UIImage(named: .magnifyingGlass).withRenderingMode(.alwaysTemplate)
             )
         case .coloredTitle:
-            resultView.configure(title: "Prøv igjen", titleColor: .textAction)
+            resultView.configure(title: "Prøv igjen", titleColor: .textLink)
         case .coloredTitleMultipleLines:
             resultView.configure(
                 title: "Denne annonsetypen støttesikke i appen, trykk for å åpne i Safari",
-                titleColor: .textAction
+                titleColor: .textLink
             )
         case .justTitle:
             resultView.configure(
@@ -63,7 +63,7 @@ extension ResultDemoView: TweakableDemo {
                 title: "Hurra!",
                 description: "En bekreftelse sendes til navn@mail.no.",
                 icon: UIImage(named: .checkCircleFilled),
-                backgroundColor: .bgPrimary,
+                backgroundColor: .background,
                 iconTintColor: nil,
                 iconBottomSpacing: .spacingL,
                 titleBottomSpacing: .spacingM,
@@ -75,8 +75,8 @@ extension ResultDemoView: TweakableDemo {
                 description: "Noe gikk galt.",
                 actionButtonTitle: "Prøv igjen",
                 icon: UIImage(named: .dissatisfiedFace),
-                backgroundColor: .bgPrimary,
-                iconTintColor: .textCritical,
+                backgroundColor: .background,
+                iconTintColor: .textNegative,
                 iconBottomSpacing: .spacingL,
                 titleBottomSpacing: .spacingM,
                 iconHeight: 64

@@ -30,8 +30,8 @@ class BasicCellDemoView: UIView, Demoable {
         tableView.rowHeight = 48
         tableView.register(BasicTableViewCell.self)
         tableView.separatorInset = .leadingInset(frame.width)
-        tableView.backgroundColor = .bgPrimary
-        tableView.separatorColor = .tableViewSeparator
+        tableView.backgroundColor = .background
+        tableView.separatorColor = .border
         return tableView
     }()
 
