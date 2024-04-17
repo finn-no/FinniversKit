@@ -446,7 +446,7 @@ extension FavoriteAdsListView: UITableViewDelegate {
                 completionHandler(true)
             })
 
-        commentAction.backgroundColor = .backgroundSubtle
+        commentAction.backgroundColor = warpUIToken.iconStatic
 
         let deleteAction = UIContextualAction(
             style: .normal,
