@@ -18,8 +18,8 @@ class SpacingDemoView: UIView, Demoable {
         let label = Label(style: .bodyStrong)
         label.text = text
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .gray700
-        label.textColor = .white
+        label.backgroundColor = .surfaceSunken
+        label.textColor = .text
         label.textAlignment = .center
         return label
     }
@@ -75,5 +75,6 @@ class SpacingDemoView: UIView, Demoable {
             spacingXXLView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXXL),
             spacingXXLView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXXL)
         ])
+        backgroundColor = .background
     }
 }

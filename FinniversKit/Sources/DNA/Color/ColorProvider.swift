@@ -112,7 +112,7 @@ public protocol ColorProvider {
     var nmpBrandColorSecondary: UIColor { get }
     @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     var nmpBrandControlSelected: UIColor { get }
-    @available(*, deprecated, message: "Use Warp color instead")
+    @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     var nmpBrandDecoration: UIColor { get }
     @available(*, deprecated, message: "Use Warp color instead")
     var loadingIndicator: UIColor { get }
@@ -355,7 +355,7 @@ public struct DefaultColorProvider: ColorProvider {
     public var nmpBrandControlSelected: UIColor {
         .dynamicColor(defaultColor: .blue600, darkModeColor: .blue500)
     }
-    @available(*, deprecated, message: "Use Warp color instead")
+    @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     public var nmpBrandDecoration: UIColor {
         .dynamicColor(defaultColor: .blue600, darkModeColor: .blue500)
     }
