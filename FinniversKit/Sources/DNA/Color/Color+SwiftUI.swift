@@ -111,7 +111,7 @@ extension Color {
     public static var decorationSubtle: Color           { Color(UIColor.decorationSubtle) }
     @available(*, deprecated, message: "Use Warp border instead")
     public static var borderDefault: Color              { Color(UIColor.borderDefault) }
-    @available(*, deprecated, message: "Use Warp color instead")
+    @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     public static var nmpBrandControlSelected: Color    { Color(UIColor.nmpBrandControlSelected) }
     @available(*, deprecated, message: "Use Warp color instead")
     public static var nmpBrandDecoration: Color         { Color(UIColor.nmpBrandDecoration) }

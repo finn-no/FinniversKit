@@ -240,7 +240,7 @@ extension CGColor {
     public class var nmpBrandColorPrimary: UIColor { Config.colorProvider.nmpBrandColorPrimary }
     @available(*, deprecated, message: "Use Warp color instead")
     public class var nmpBrandColorSecondary: UIColor { Config.colorProvider.nmpBrandColorSecondary }
-    @available(*, deprecated, message: "Use Warp color instead")
+    @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     public class var nmpBrandControlSelected: UIColor { Config.colorProvider.nmpBrandControlSelected }
     @available(*, deprecated, message: "Use Warp color instead")
     public class var nmpBrandDecoration: UIColor { Config.colorProvider.nmpBrandDecoration }
@@ -351,7 +351,7 @@ extension CGColor {
     public class var nmpBrandColorPrimary: CGColor { Config.colorProvider.nmpBrandColorPrimary.cgColor }
     @available(*, deprecated, message: "Use Warp color instead")
     public class var nmpBrandColorSecondary: CGColor { Config.colorProvider.nmpBrandColorSecondary.cgColor }
-    @available(*, deprecated, message: "Use Warp color instead")
+    @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     public class var nmpBrandControlSelected: CGColor { Config.colorProvider.nmpBrandControlSelected.cgColor }
     @available(*, deprecated, message: "Use Warp color instead")
     public class var nmpBrandDecoration: CGColor { Config.colorProvider.nmpBrandDecoration.cgColor }
