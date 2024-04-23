@@ -21,7 +21,16 @@ struct SettingsViewIconCell: View {
                 .frame(width: .spacingM, height: .spacingM)
                 .foregroundColor(tintColor)
                 .padding([.trailing], .spacingXL)
-        }.hairlineDivider(!isLastItem)
+        }.bottomDivider(!isLastItem)
+    }
+}
+
+extension View {
+    func bottomDivider(
+        _ isLastItem: Bool,
+        inset: EdgeInsets = EdgeInsets(top: 0, leading: .spacingM, bottom: 0, trailing: 0)
+    ) -> some View {
+        modifier(BottomDivider(isLastItem: isLastItem, inset: inset))
     }
 }
 
@@ -31,7 +40,7 @@ struct SettingsViewIconCell_Previews: PreviewProvider {
     }
 }
 
-struct HairlineDividerModifier: ViewModifier {
+struct BottomDivider: ViewModifier {
     let isLastItem: Bool
     let inset: EdgeInsets
 
@@ -45,14 +54,5 @@ struct HairlineDividerModifier: ViewModifier {
                 }
             }
         }.listRowInsets(EdgeInsets())
-    }
-}
-
-extension View {
-    public func hairlineDivider(
-        _ isLastItem: Bool,
-        inset: EdgeInsets = EdgeInsets(top: 0, leading: .spacingM, bottom: 0, trailing: 0)
-    ) -> some View {
-        modifier(HairlineDividerModifier(isLastItem: isLastItem, inset: inset))
     }
 }
