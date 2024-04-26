@@ -85,8 +85,8 @@ public class HorizontalIconCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(bodyLabel)
 
         NSLayoutConstraint.activate([
-            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: HorizontalIconCollectionViewCell.titleSideMargin),
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: HorizontalIconCollectionViewCell.titleSideMargin),
 
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXS),
             titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: HorizontalIconCollectionViewCell.titleSideMargin),
