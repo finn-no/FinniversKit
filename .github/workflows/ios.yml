@@ -26,3 +26,4 @@ jobs:
       - name: Test        
         run: |
           xcodebuild test-without-building -scheme "$scheme" -workspace FinniversKit.xcworkspace -destination "$destination"
+
