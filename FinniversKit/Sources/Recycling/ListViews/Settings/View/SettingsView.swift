@@ -160,7 +160,7 @@ extension SettingsView: UITableViewDataSource {
             let (icon, tintColor) = iconModel.icon
 
             cell.contentConfiguration = HostingContentConfiguration(content: {
-                SettingsViewIconCell(title: iconModel.title, icon: icon, tintColor: tintColor)
+                SettingsViewIconCell(title: iconModel.title, icon: icon, tintColor: tintColor, isLastItem: isLastItem)
             })
             return cell
         default:
