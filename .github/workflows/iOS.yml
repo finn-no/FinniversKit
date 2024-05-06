@@ -18,6 +18,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Select Xcode 15.2
         run: sudo xcode-select -s /Applications/Xcode_15.2.app
+      - name: Install SwiftLint
+        run: brew install swiftlint
       - name: Lint
         run: |
           swiftlint lint
