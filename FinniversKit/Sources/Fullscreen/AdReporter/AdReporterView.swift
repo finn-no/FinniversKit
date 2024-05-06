@@ -53,11 +53,14 @@ public class AdReporterView: UIScrollView {
         didSet {
             guard let model = model else { return }
             radioButton.title = model.radioButtonTitle
-            radioButton.fields = model.radioButtonFields
             descriptionView.titleLabel.text = model.descriptionViewTitle
             descriptionView.textView.placeholderText = model.descriptionViewPlaceholderText
             helpButton.setTitle(model.helpButtonText, for: .normal)
         }
+    }
+
+    public func setRadioButtonFields(_ fields: [String]) {
+        radioButton.fields = fields
     }
 
     public var message: String {

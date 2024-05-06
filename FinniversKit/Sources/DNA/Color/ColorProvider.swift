@@ -19,14 +19,17 @@ public protocol ColorProvider {
     var bgInfoHeader: UIColor { get }
     var bgSuccess: UIColor { get }
     var bgCritical: UIColor { get }
+    var bgCallout: UIColor { get }
     var borderInfo: UIColor { get }
     var borderNegative: UIColor { get }
     var borderPositive: UIColor { get }
     var borderWarning: UIColor { get }
+    var borderCallout: UIColor { get }
     var borderInfoSubtle: UIColor { get }
     var borderNegativeSubtle: UIColor { get }
     var borderPositiveSubtle: UIColor { get }
     var borderWarningSubtle: UIColor { get }
+    var borderSecondary: UIColor { get }
     var btnPrimary: UIColor { get }
     var btnDisabled: UIColor { get }
     var btnCritical: UIColor { get }
@@ -90,6 +93,10 @@ public struct DefaultColorProvider: ColorProvider {
         .yellow100
     }
 
+    public var bgCallout: UIColor {
+        .green100
+    }
+
     public var bgInfo: UIColor {
         .dynamicColor(defaultColor: .aqua50, darkModeColor: .darkIce)
     }
@@ -138,6 +145,10 @@ public struct DefaultColorProvider: ColorProvider {
         .dynamicColor(defaultColor: .yellow600, darkModeColor: .yellow500)
     }
 
+    public var borderCallout: UIColor {
+        .accentPea
+    }
+
     public var borderInfoSubtle: UIColor {
         .dynamicColor(defaultColor: .aqua300, darkModeColor: .aqua700)
     }
@@ -152,6 +163,10 @@ public struct DefaultColorProvider: ColorProvider {
 
     public var borderWarningSubtle: UIColor {
         .dynamicColor(defaultColor: .yellow300, darkModeColor: .yellow700)
+    }
+
+    public var borderSecondary: UIColor {
+        .aqua400
     }
 
     public var btnPrimary: UIColor {

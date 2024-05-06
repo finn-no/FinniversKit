@@ -98,11 +98,6 @@ extension FavoritesListView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(FavoritesListViewCell.self, for: indexPath)
 
-        // Show a pretty color while we load the image
-        let colors: [UIColor] = [.aqua200, .green100, .yellow100, .red100]
-        let color = colors[indexPath.row % 4]
-
-        cell.loadingColor = color
         cell.dataSource = self
 
         if let model = dataSource?.favoritesListView(self, modelAtIndex: indexPath.row) {

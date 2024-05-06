@@ -16,12 +16,11 @@ public struct HTMLText: View {
 
     private func htmlTextHelper() -> some View {
         do {
-            let htmlParser = HTMLStringParser()
             let translator = HTMLStringSwiftUIStyleTranslator.finnStyle(
                 font: font,
                 foregroundColor: foregroundColor
             )
-            let styledTexts = try htmlParser.parse(html: html, translator: translator)
+            let styledTexts = try HTMLStringParser.parse(html: html, translator: translator)
             return styledTexts.reduce(
                 into: Text("").applyStyle(translator.styleStack.defaultStyle)
             ) { textView, styledText in

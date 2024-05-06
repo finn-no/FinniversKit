@@ -96,9 +96,9 @@ private extension Array where Element == SelectionItemModel {
         (0..<number).map {
             let htmlString = "Kjøper betaler <del>80</del> <b><span style=\"color:tjt-price-highlight\">40 kr</span></b> for frakt."
             let spanMapper: HTMLStringUIKitStyleTranslator.SpanMapper = { attributes, currentStyle in
-                for (name, value) in attributes {
-                    guard name == "style",
-                          value == "color:tjt-price-highlight" else {
+                for attribute in attributes {
+                    guard attribute.name == "style",
+                          attribute.value == "color:tjt-price-highlight" else {
                         return
                     }
 

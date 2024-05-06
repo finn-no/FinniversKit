@@ -2,73 +2,79 @@ import XCTest
 import FinniversKit
 
 final class HTMLStringParserTests: XCTestCase {
-    let parser = HTMLStringParser()
+    struct HTMLTokenIdentityTranslator: HTMLStringParserTranslator {
+        func translate(tokens: [HTMLToken]) throws -> [HTMLToken] {
+            return tokens
+        }
+    }
+
+    let translator = HTMLTokenIdentityTranslator()
 
     func testHTMLElementIncluded() throws {
         let html = "<html>Foo</html>"
-        let htmlTokens: [HTMLLexer.Token] = [
-            .startTag(name: "html", attributes: [:], isSelfClosing: false),
+        let htmlTokens: [HTMLToken] = [
+            .tagStart(name: "html", attributes: [], isSelfClosing: false),
             .text("Foo"),
-            .endTag(name: "html"),
+            .tagEnd(name: "html"),
         ]
-        let tokens = parser.tokenize(html: html)
+        let tokens = try HTMLStringParser.parse(html: html, translator: translator)
         XCTAssertEqual(tokens, htmlTokens)
     }
 
     func testTokens() throws {
         let boldText = "This is a <b>bold</b> move"
-        let boldTokens: [HTMLLexer.Token] = [
+        let boldTokens: [HTMLToken] = [
             .text("This is a "),
-            .startTag(name: "b", attributes: [:], isSelfClosing: false),
+            .tagStart(name: "b", attributes: [], isSelfClosing: false),
             .text("bold"),
-            .endTag(name: "b"),
+            .tagEnd(name: "b"),
             .text(" move"),
         ]
-        let tokens = parser.tokenize(html: boldText)
+        let tokens = try HTMLStringParser.parse(html: boldText, translator: translator)
         XCTAssertEqual(tokens, boldTokens)
     }
 
     func testTokensWithAttributes() throws {
         let boldText = "Attributed <b custom1=\"foo\" custom2=\"bar\">bold</b> element"
-        let boldTokens: [HTMLLexer.Token] = [
+        let boldTokens: [HTMLToken] = [
             .text("Attributed "),
-            .startTag(name: "b", attributes: [
-                "custom1": "foo",
-                "custom2": "bar"
+            .tagStart(name: "b", attributes: [
+                .init(name: "custom1", value: "foo"),
+                .init(name: "custom2", value: "bar"),
             ], isSelfClosing: false),
             .text("bold"),
-            .endTag(name: "b"),
+            .tagEnd(name: "b"),
             .text(" element"),
         ]
-        let tokens = parser.tokenize(html: boldText)
+        let tokens = try HTMLStringParser.parse(html: boldText, translator: translator)
         XCTAssertEqual(tokens, boldTokens)
     }
 
     func testCommentToken() throws {
         let boldText = "This is a <b>bold</b><!-- Is it really? --> move"
-        let boldTokens: [HTMLLexer.Token] = [
+        let boldTokens: [HTMLToken] = [
             .text("This is a "),
-            .startTag(name: "b", attributes: [:], isSelfClosing: false),
+            .tagStart(name: "b", attributes: [], isSelfClosing: false),
             .text("bold"),
-            .endTag(name: "b"),
-            .commentTag(" Is it really? "),
+            .tagEnd(name: "b"),
+            .comment(" Is it really? "),
             .text(" move"),
         ]
-        let tokens = parser.tokenize(html: boldText)
+        let tokens = try HTMLStringParser.parse(html: boldText, translator: translator)
         XCTAssertEqual(tokens, boldTokens)
     }
 
     func testMixedOrder() throws {
         let html = #"<div><b></div><i></b></i>"#
-        let reference: [HTMLLexer.Token] = [
-            .startTag(name: "div", attributes: [:], isSelfClosing: false),
-            .startTag(name: "b", attributes: [:], isSelfClosing: false),
-            .endTag(name: "div"),
-            .startTag(name: "i", attributes: [:], isSelfClosing: false),
-            .endTag(name: "b"),
-            .endTag(name: "i"),
+        let reference: [HTMLToken] = [
+            .tagStart(name: "div", attributes: [], isSelfClosing: false),
+            .tagStart(name: "b", attributes: [], isSelfClosing: false),
+            .tagEnd(name: "div"),
+            .tagStart(name: "i", attributes: [], isSelfClosing: false),
+            .tagEnd(name: "b"),
+            .tagEnd(name: "i"),
         ]
-        let tokens = parser.tokenize(html: html)
+        let tokens = try HTMLStringParser.parse(html: html, translator: translator)
         XCTAssertEqual(tokens, reference)
     }
 }

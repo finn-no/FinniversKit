@@ -501,9 +501,6 @@ extension FavoriteAdsListView: UITableViewDataSource {
         cell.remoteImageViewDataSource = self
         cell.delegate = self
 
-        // Show a pretty color while we load the image
-        let colors: [UIColor] = [.aqua200, .green100, .yellow100, .red100]
-        cell.loadingColor = colors[indexPath.row % colors.count]
         cell.isMoreButtonHidden = isReadOnly
 
         if let viewModel = dataSource?.favoriteAdsListView(self, viewModelFor: indexPath) {

@@ -39,10 +39,6 @@ class RecyclingViewTests: XCTestCase {
         snapshot(.settingsView)
     }
 
-    func testAdManagementView() {
-        snapshot(.adManagementView)
-    }
-
     func testNeighborhoodProfileView() {
         snapshot(.neighborhoodProfileView)
     }

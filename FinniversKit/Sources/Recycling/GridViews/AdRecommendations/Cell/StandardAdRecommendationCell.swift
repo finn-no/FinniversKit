@@ -11,13 +11,6 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     public weak var delegate: AdRecommendationCellDelegate?
     public var index: Int?
 
-    /// The loading color is used to fill the image view while we load the image.
-    public var loadingColor: UIColor? {
-        didSet {
-            imageContentView.backgroundColor = loadingColor
-        }
-    }
-
     public weak var imageDataSource: RemoteImageViewDataSource? {
         didSet {
             imageView.dataSource = imageDataSource
@@ -56,6 +49,8 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     private static let iconSize: CGFloat = 23.0
     private static let minImageAspectRatio: CGFloat = 0.75
     private static let maxImageAspectRatio: CGFloat = 1.5
+
+    private let loadingColor: UIColor = .bgTertiary
 
     private var defaultImage: UIImage {
         UIImage(named: .noImage)
@@ -312,10 +307,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         NSLayoutConstraint.deactivate([subtitleToImageConstraint, subtitleToRibbonConstraint])
         NSLayoutConstraint.activate([ribbonView.title.isEmpty ? subtitleToImageConstraint : subtitleToRibbonConstraint])
 
-        // Show a pretty color while we load the image
-        let colors: [UIColor] = [.aqua200, .green100, .yellow100, .red100]
-        let color = colors[index % 4]
-        loadingColor = color
+        imageContentView.backgroundColor = loadingColor
 
         if model?.scaleImageToFillView == false {
             imageView.contentMode = .scaleAspectFit

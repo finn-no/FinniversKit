@@ -17,7 +17,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case cogWheelButton
     case collapsibleContentView
     case columnListsView
-    case consentTransparencyInfo
     case contractActionView
     case detailCallout
     case disclaimerView
@@ -49,7 +48,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case mapAddressButton
     case monthAndYearPickerView
     case multilineButton
-    case myAdsListView
     case nativeAdvert
     case navigationLinkView
     case numberedListView
@@ -78,7 +76,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case textField
     case textView
     case toast
-    case transactionEntryView
     case verificationView
     case viewingsListView
     case viewingsRedesignView
@@ -142,8 +139,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return InfoboxSwiftUIViewController()
         case .nmpInfobox:
             return NMPInfoboxViewController()
-        case .consentTransparencyInfo:
-            return ConsentTransparencyInfoDemoView()
         case .bannerTransparencyView:
             return BannerTransparencyDemoView()
         case .checkbox:
@@ -230,8 +225,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return NavigationLinkViewDemoView()
         case .numberedListView:
             return NumberedListDemoView()
-        case .transactionEntryView:
-            return TransactionEntryDemoView()
         case .loadingRetryView:
             return LoadingRetryDemoView()
         case .promotionView:
@@ -264,8 +257,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return JobApplyBoxDemoView()
         case .jobKeyInfo:
             return JobKeyInfoDemoView()
-        case .myAdsListView:
-            return MyAdsListDemoView()
         case .brazePromotionView:
             return BrazePromotionDemoView()
         case .mapAddressButton:

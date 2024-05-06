@@ -77,7 +77,7 @@ extension RadioButtonCellDemoView: UITableViewDelegate {
             updatedModel.isSelected = index == currentIndex && !model.isSelected
             let indexPath = IndexPath(row: index, section: indexPath.section)
             if let cell = tableView.cellForRow(at: indexPath) as? RadioButtonTableViewCell, updatedModel.isSelected != model.isSelected {
-                cell.animateSelection(isSelected: updatedModel.isSelected)
+                cell.configure(isSelected: updatedModel.isSelected)
                 viewModels[index] = updatedModel
             }
         }

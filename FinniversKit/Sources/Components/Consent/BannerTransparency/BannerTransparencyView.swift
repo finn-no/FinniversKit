@@ -17,7 +17,8 @@ public final class BannerTransparencyView: UIView {
 
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = UIImage(named: .finnLogo)
+        imageView.image = UIImage.brandLogo
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 

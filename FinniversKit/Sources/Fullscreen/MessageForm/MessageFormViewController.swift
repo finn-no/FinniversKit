@@ -8,9 +8,7 @@ protocol MessageFormViewControllerDelegate: AnyObject {
     func messageFormViewControllerDidCancel(_ viewController: MessageFormViewController)
     func messageFormViewController(_ viewController: MessageFormViewController,
                                    didFinishWithText text: String,
-                                   telephone: String,
-                                   templateState: MessageFormTemplateState,
-                                   template: MessageFormTemplate?)
+                                   telephone: String)
 }
 
 class MessageFormViewController: UIViewController {
@@ -25,13 +23,6 @@ class MessageFormViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         return view
-    }()
-
-    private lazy var toolbar: MessageFormToolbar = {
-        let toolbar = MessageFormToolbar(viewModel: viewModel)
-        toolbar.translatesAutoresizingMaskIntoConstraints = false
-        toolbar.delegate = self
-        return toolbar
     }()
 
     private lazy var cancelButton = UIBarButtonItem(title: viewModel.cancelButtonText, style: .plain, target: self, action: #selector(cancelButtonTapped))
@@ -57,7 +48,6 @@ class MessageFormViewController: UIViewController {
     // MARK: - Private properties
 
     private let viewModel: MessageFormViewModel
-    private var lastUsedTemplate: MessageFormTemplate?
 
     private lazy var safeAreaHeight: CGFloat = {
         return UIApplication.shared.connectedScenes.keyWindow?.safeAreaInsets.bottom ?? 0
@@ -86,26 +76,11 @@ class MessageFormViewController: UIViewController {
         view.addSubview(wrapperView)
         wrapperView.addSubview(messageInputTextView)
 
-        let messageFormBottomConstraint: NSLayoutConstraint
-
-        if viewModel.showTemplateToolbar {
-            messageFormBottomConstraint = messageInputTextView.bottomAnchor.constraint(equalTo: toolbar.topAnchor)
-
-            wrapperView.addSubview(toolbar)
-            NSLayoutConstraint.activate([
-                toolbar.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
-                toolbar.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor),
-                toolbar.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor)
-            ])
-        } else {
-            messageFormBottomConstraint = messageInputTextView.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor)
-        }
-
         NSLayoutConstraint.activate([
             messageInputTextView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
             messageInputTextView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor),
             messageInputTextView.topAnchor.constraint(equalTo: wrapperView.topAnchor),
-            messageFormBottomConstraint,
+            messageInputTextView.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor),
 
             wrapperView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             wrapperView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -119,7 +94,6 @@ class MessageFormViewController: UIViewController {
 
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        toolbar.reloadData()
         registerForKeyboardNotifications()
     }
 
@@ -155,28 +129,8 @@ class MessageFormViewController: UIViewController {
     @objc private func sendButtonTapped() {
         let messageText = messageInputTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         let telephoneText = messageInputTextView.telephone.trimmingCharacters(in: .whitespacesAndNewlines)
-        let lastTemplateText = lastUsedTemplate?.text.trimmingCharacters(in: .whitespacesAndNewlines)
-        let templateState: MessageFormTemplateState
-        let usedTemplate: MessageFormTemplate?
 
-        switch lastTemplateText {
-        case messageText:
-            templateState = .template
-            usedTemplate = lastUsedTemplate
-        case .none:
-            templateState = .custom
-            usedTemplate = nil
-        case .some(let val):
-            if messageText.contains(val) {
-                templateState = .modifiedTemplate
-                usedTemplate = lastUsedTemplate
-            } else {
-                templateState = .custom
-                usedTemplate = nil
-            }
-        }
-
-        delegate?.messageFormViewController(self, didFinishWithText: messageText, telephone: telephoneText, templateState: templateState, template: usedTemplate)
+        delegate?.messageFormViewController(self, didFinishWithText: messageText, telephone: telephoneText)
     }
 
     @objc func handleKeyboardNotification(_ notification: Notification) {
@@ -192,47 +146,12 @@ class MessageFormViewController: UIViewController {
     }
 
     private func updateWrapperViewConstraint(withKeyboardVisible keyboardVisible: Bool, keyboardOffset: CGFloat) {
-        var offset: CGFloat = keyboardOffset
-
-        if viewModel.showTemplateToolbar {
-            offset += toolbar.offsetForToolbar(withKeyboardVisible: keyboardVisible)
-        } else {
-            offset += safeAreaHeight
-        }
-
-        wrapperBottomConstraint.constant = -offset
+        wrapperBottomConstraint.constant = -(keyboardOffset + safeAreaHeight)
     }
 }
 
 extension MessageFormViewController: MessageInputTextViewDelegate {
     func messageFormView(_ view: MessageInputTextView, didEditMessageText text: String) {
         sendButton.isEnabled = text.count > 0
-    }
-}
-
-extension MessageFormViewController: MessageFormToolbarDelegate {
-    func messageFormToolbar(_ toolbar: MessageFormToolbar, didSelectMessageTemplate template: MessageFormTemplate) {
-        let currentText = messageInputTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
-        let lastTemplateText = (lastUsedTemplate?.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
-
-        if currentText == lastTemplateText || currentText.count == 0 {
-            messageInputTextView.text = template.text
-            lastUsedTemplate = template
-        } else {
-            let alertStyle: UIAlertController.Style = isHorizontalSizeClassRegular ? .alert : .actionSheet
-            let alertController = UIAlertController(title: viewModel.replaceAlertTitle,
-                                                    message: viewModel.replaceAlertMessage,
-                                                    preferredStyle: alertStyle)
-
-            let cancelAction = UIAlertAction(title: viewModel.replaceAlertCancelText, style: .cancel)
-            let replaceAction = UIAlertAction(title: viewModel.replaceAlertActionText, style: .default, handler: { [weak self] _ in
-                self?.messageInputTextView.text = template.text
-                self?.lastUsedTemplate = template
-            })
-
-            alertController.addAction(replaceAction)
-            alertController.addAction(cancelAction)
-            present(alertController, animated: true)
-        }
     }
 }

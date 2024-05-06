@@ -21,10 +21,10 @@ extension HTMLStringSwiftUIStyleTranslator {
             case .i:
                 style.italic = true
             case .span:
-                for (name, value) in attributes {
-                    switch name {
+                for attribute in attributes {
+                    switch attribute.name {
                     case "style":
-                        if value == "color:tjt-price-highlight" {
+                        if attribute.value == "color:tjt-price-highlight" {
                             style.foregroundColor = .textCritical
                         }
                     default:
@@ -42,12 +42,12 @@ extension HTMLStringSwiftUIStyleTranslator {
 }
 
 extension HTMLStringUIKitStyleTranslator {
-    public typealias SpanMapper = (_ attributes: [String: String], _ currentStyle: inout Style) -> Void
+    public typealias SpanMapper = (_ attributes: [HTMLToken.TagAttribute], _ currentStyle: inout Style) -> Void
 
     static func finnStyle(
         font: UIFont?,
         foregroundColor: UIColor?,
-        spanMapper: @escaping SpanMapper //= { _ in nil }
+        spanMapper: @escaping SpanMapper
     ) -> HTMLStringUIKitStyleTranslator {
         return .init(defaultStyle: .init(
             font: font,

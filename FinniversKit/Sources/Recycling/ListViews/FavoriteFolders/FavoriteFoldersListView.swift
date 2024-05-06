@@ -397,11 +397,6 @@ extension FavoriteFoldersListView: UITableViewDataSource {
         case .folders:
             let cell = tableView.dequeue(FavoriteFolderSelectableViewCell.self, for: indexPath)
 
-            // Show a pretty color while we load the image
-            let colors: [UIColor] = [.aqua200, .green100, .yellow100, .red100]
-            let color = colors[indexPath.row % 4]
-
-            cell.loadingColor = color
             cell.dataSource = self
 
             if let viewModel = dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row) {

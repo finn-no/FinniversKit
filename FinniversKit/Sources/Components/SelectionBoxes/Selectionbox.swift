@@ -19,8 +19,8 @@ public class RadioButton: Selectionbox {
 
     // MARK: Private properties
 
-    fileprivate override var animatedImageView: AnimatedRadioButtonView {
-        return AnimatedRadioButtonView(frame: .zero)
+    fileprivate override var selectableImageView: SelectableImageView {
+        return RadioButtonView()
     }
 
     fileprivate override func handleSelecting(_ item: RadioButtonItem) {
@@ -55,8 +55,8 @@ public class Checkbox: Selectionbox {
 
     // MARK: Private properties
 
-    fileprivate override var animatedImageView: AnimatedCheckboxView {
-        return AnimatedCheckboxView(frame: .zero)
+    fileprivate override var selectableImageView: SelectableImageView {
+        return CheckboxView()
     }
 
     fileprivate override func handleSelecting(_ item: CheckboxItem) {
@@ -92,8 +92,8 @@ public class Selectionbox: UIView {
 
     // MARK: Private properties
 
-    fileprivate var animatedImageView: AnimatedSelectionView {
-        fatalError("Override this in your subclass to return an appropriate animated image")
+    fileprivate var selectableImageView: SelectableImageView {
+        fatalError("Override this in your subclass to return an appropriate image")
     }
 
     private var highlightedItem: SelectionboxItem?
@@ -174,7 +174,7 @@ extension Selectionbox {
 
     private func setupBoxes(with strings: [String]) {
         for (index, string) in strings.enumerated() {
-            let item = SelectionboxItem(index: index, animatedImageView: animatedImageView)
+            let item = SelectionboxItem(index: index, selectableImageView: selectableImageView)
             item.titleLabel.text = string
             stack.addArrangedSubview(item)
         }
@@ -182,7 +182,7 @@ extension Selectionbox {
 
     private func setFields() {
         for (index, string) in fields.enumerated() {
-            let item = SelectionboxItem(index: index, animatedImageView: animatedImageView)
+            let item = SelectionboxItem(index: index, selectableImageView: selectableImageView)
             item.titleLabel.text = string
             stack.addArrangedSubview(item)
         }

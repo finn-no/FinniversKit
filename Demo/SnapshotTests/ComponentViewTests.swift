@@ -71,10 +71,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.switchView)
     }
 
-    func testConsentTransparencyInfo() {
-        snapshot(.consentTransparencyInfo)
-    }
-
     func testCheckbox() {
         snapshot(.checkbox)
     }
@@ -251,10 +247,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.numberedListView)
     }
 
-    func testTransactionEntryView() {
-        snapshot(.transactionEntryView)
-    }
-
     func testLoadingRetryView() {
         snapshot(.loadingRetryView)
     }
@@ -317,10 +309,6 @@ class ComponentViewTests: XCTestCase {
 
     func testJobKeyInfo() {
         snapshot(.jobKeyInfo)
-    }
-
-    func testMyAdsListView() {
-        snapshot(.myAdsListView)
     }
 
     func testMapAddressButton() {

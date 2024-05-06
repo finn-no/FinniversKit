@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "warp-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/warp-ds/warp-ios.git",
+      "state" : {
+        "revision" : "7d24900acc6225655038c7ea5e3e9f9249631d58",
+        "version" : "0.0.3"
+      }
+    }
+  ],
+  "version" : 2
+}

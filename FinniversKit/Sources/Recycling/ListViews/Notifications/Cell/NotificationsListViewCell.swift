@@ -12,9 +12,6 @@ public protocol NotificationsListViewCellDataSource: AnyObject {
 public class NotificationsListViewCell: UITableViewCell {
     // MARK: - External properties
 
-    /// The loading color is used to fill the image view while we load the image.
-    public var loadingColor: UIColor?
-
     /// A data source for the loading of the image
     public weak var dataSource: NotificationsListViewCellDataSource?
 
@@ -22,6 +19,8 @@ public class NotificationsListViewCell: UITableViewCell {
 
     private static let cornerRadius: CGFloat = 2.0
     private static let imageSize: CGFloat = 74.0
+
+    private let loadingColor: UIColor = .bgTertiary
 
     private lazy var adImageView: UIImageView = {
         let imageView = UIImageView()
@@ -140,7 +139,7 @@ public class NotificationsListViewCell: UITableViewCell {
 
     private func loadImage(model: NotificationsListViewModel) {
         guard let dataSource = dataSource, model.imagePath != nil else {
-            loadingColor = .clear
+            adImageView.backgroundColor = .clear
             adImageView.image = defaultImage
             return
         }

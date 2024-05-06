@@ -178,11 +178,7 @@ class SelectionListItemView: UIView {
 
     private func updateSelection(shouldAnimate: Bool) {
         if isSelected != selectionView.isHighlighted {
-            if shouldAnimate {
-                selectionView.animateSelection(selected: isSelected)
-            } else {
-                selectionView.isHighlighted = isSelected
-            }
+            selectionView.configure(isSelected: isSelected)
         }
 
         if isSelected {
@@ -251,12 +247,12 @@ private extension UIView {
 }
 
 private extension SelectionListView.Presentation {
-    var selectionView: AnimatedSelectionView {
+    var selectionView: SelectableImageView {
         switch self {
         case .checkboxes:
-            return AnimatedCheckboxView(frame: .zero)
+            return CheckboxView()
         case .radioButtons:
-            return AnimatedRadioButtonView(frame: .zero)
+            return RadioButtonView()
         }
     }
 }

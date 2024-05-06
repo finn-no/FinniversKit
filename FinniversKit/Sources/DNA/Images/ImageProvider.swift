@@ -6,15 +6,8 @@ import UIKit
 
 public protocol ImageProvider {
 
-    // AnimatedRadioButtonView
-    func brandRadioButtonSelected(index: Int) -> UIImage?
-    func brandRadioButtonUnselected(index: Int) -> UIImage?
-
-    // AnimatedCheckboxView
-    func brandCheckboxSelected(index: Int) -> UIImage?
-    func brandCheckboxUnselected(index: Int) -> UIImage?
-
     // General
+    var placeholderAd: UIImage { get }
     var brandFavouriteAdd: UIImage { get }
     var brandFavouriteAdded: UIImage { get }
     var brandFavouriteAddImg: UIImage { get }
@@ -24,6 +17,10 @@ public protocol ImageProvider {
     var brandSliderThumbActive: UIImage { get }
     var brandLogoSimple: UIImage { get }
     var brandLogo: UIImage { get }
+    var brandCheckboxSelected: UIImage { get }
+    var brandCheckboxUnselected: UIImage { get }
+    var brandRadioButtonSelected: UIImage { get }
+    var brandRadioButtonUnselected: UIImage { get }
 
     // Messaging
     var brandMessageAttachMore: UIImage { get }
@@ -45,20 +42,8 @@ public struct DefaultImageProvider: ImageProvider {
 
     public static let shared = DefaultImageProvider()
 
-    public func brandRadioButtonSelected(index: Int) -> UIImage? {
-        UIImage(named: "radiobutton-select-\(index)", in: .finniversKit, compatibleWith: nil)
-    }
-
-    public func brandRadioButtonUnselected(index: Int) -> UIImage? {
-        UIImage(named: "radiobutton-unselected-\(index)", in: .finniversKit, compatibleWith: nil)
-    }
-
-    public func brandCheckboxSelected(index: Int) -> UIImage? {
-        UIImage(named: "checkbox-selected-\(index)", in: .finniversKit, compatibleWith: nil)
-    }
-
-    public func brandCheckboxUnselected(index: Int) -> UIImage? {
-        UIImage(named: "checkbox-unselected-\(index)", in: .finniversKit, compatibleWith: nil)
+    public var placeholderAd: UIImage {
+        UIImage(named: .noImage)
     }
 
     public var brandFavouriteAdd: UIImage {
@@ -95,6 +80,22 @@ public struct DefaultImageProvider: ImageProvider {
 
     public var brandLogo: UIImage {
         UIImage(named: .finnLogo)
+    }
+
+    public var brandCheckboxSelected: UIImage {
+        UIImage(named: .checkboxSelected)
+    }
+
+    public var brandCheckboxUnselected: UIImage {
+        UIImage(named: .checkboxUnselected)
+    }
+
+    public var brandRadioButtonSelected: UIImage {
+        UIImage(named: .radioButtonSelected)
+    }
+
+    public var brandRadioButtonUnselected: UIImage {
+        UIImage(named: .radioButtonUnselected)
     }
 
     public var brandMessageAttachMore: UIImage {
