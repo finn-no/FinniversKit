@@ -17,7 +17,7 @@ extension XCTestCase {
         testName: String = #function,
         line: UInt = #line
     ) {
-        let perceptualPrecision: Float = 0.95
+        let perceptualPrecision: Float = 0.98
         var snapshotting: Snapshotting = .image(on: .iPhoneX, perceptualPrecision: perceptualPrecision)
         if let delay = delay {
             snapshotting = .wait(for: delay, on: snapshotting)
