@@ -74,6 +74,7 @@ enum ImageAsset: String {
     case easterEgg
     case edit
     case editBig
+    case emptyPersonalNotifications
     case error
     case exclamationMarkTriangleMini
     case favoriteActive
@@ -204,6 +205,7 @@ enum ImageAsset: String {
             .easterEgg,
             .edit,
             .editBig,
+            .emptyPersonalNotifications,
             .error,
             .exclamationMarkTriangleMini,
             .favoriteActive,
