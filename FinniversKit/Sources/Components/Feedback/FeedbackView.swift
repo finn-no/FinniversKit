@@ -7,7 +7,11 @@ import UIKit
 // MARK: - FeedbackViewDelegate
 
 public protocol FeedbackViewDelegate: AnyObject {
-    func feedbackView(_ feedbackView: FeedbackView, didSelectButtonOfType buttonType: FeedbackView.ButtonType, forState state: FeedbackView.State)
+    func feedbackView(
+        _ feedbackView: FeedbackView,
+        didSelectButtonOfType buttonType: FeedbackView.ButtonType,
+        forStep stepIdentifier: String
+    )
 }
 
 // MARK: - FeedbackView
@@ -18,13 +22,6 @@ public class FeedbackView: UIView {
         case negative
     }
 
-    public enum State: Int {
-        case initial = 0
-        case accept
-        case decline
-        case finished
-    }
-
     // MARK: - Public properties
 
     public weak var delegate: FeedbackViewDelegate?
@@ -32,7 +29,7 @@ public class FeedbackView: UIView {
     // MARK: - Private properties
 
     private var hasBeenPresented = false
-    private var state: State = .initial
+    private var stepIdentifier: String = ""
     private var presentation: FeedbackViewPresentation?
     private var allowAutomaticPresentationSwitch: Bool = true
 
@@ -120,8 +117,12 @@ public class FeedbackView: UIView {
         configure(forPresentation: presentation)
     }
 
-    public func setState(_ state: State, withViewModel viewModel: FeedbackViewModel) {
-        self.state = state
+    public func configure<T: RawRepresentable<String>>(stepIdentifier: T, viewModel: FeedbackViewModel) {
+        configure(stepIdentifier: stepIdentifier.rawValue, viewModel: viewModel)
+    }
+
+    public func configure(stepIdentifier: String, viewModel: FeedbackViewModel) {
+        self.stepIdentifier = stepIdentifier
         configure(withViewModel: viewModel)
     }
 
@@ -170,12 +171,12 @@ public class FeedbackView: UIView {
 
     @objc private func positiveButtonTapped() {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        delegate?.feedbackView(self, didSelectButtonOfType: .positive, forState: state)
+        delegate?.feedbackView(self, didSelectButtonOfType: .positive, forStep: stepIdentifier)
     }
 
     @objc private func negativeButtonTapped() {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        delegate?.feedbackView(self, didSelectButtonOfType: .negative, forState: state)
+        delegate?.feedbackView(self, didSelectButtonOfType: .negative, forStep: stepIdentifier)
     }
 
     // MARK: - Overrides
@@ -315,6 +316,8 @@ private class ButtonView: UIView {
     // MARK: - Setup
 
     private func setup() {
+        setButtonTitles(positive: nil, negative: nil)
+
         addSubview(stackView)
         stackView.fillInSuperview()
     }
