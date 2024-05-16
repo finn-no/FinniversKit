@@ -85,4 +85,8 @@ import UIKit
     class var brandLogo: UIImage {
         Config.imageProvider.brandLogo
     }
+
+    class var brandEmptyPersonalNotifications: UIImage {
+        Config.imageProvider.brandEmptyPersonalNotifications
+    }
 }
