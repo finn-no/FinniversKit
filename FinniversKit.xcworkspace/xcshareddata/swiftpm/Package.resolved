@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/finn-no/DemoKit-iOS",
       "state" : {
-        "branch" : "snapshot-testing-take-2",
-        "revision" : "685d997aa47f874e10360a41d39cef419865c1a5"
+        "revision" : "ac26057c3071f386f58427d77dacac98c1d32729",
+        "version" : "0.4.3"
       }
     },
     {
