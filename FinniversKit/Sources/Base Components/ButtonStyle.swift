@@ -93,6 +93,7 @@ public struct DefaultStyle: ButtonStyle {
         .background(
             configuration.isPressed ? Color(UIColor.defaultButtonHighlightedBodyColor) : Color.bgPrimary
         )
+        .cornerRadius(.spacingS)
         .roundedBorder(
             radius: .spacingS,
             color: configuration.isPressed ? .nmpBrandControlSelected : .btnDisabled
