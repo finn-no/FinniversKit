@@ -40,7 +40,9 @@ private struct HyperLinkTextViewRepresentable: UIViewRepresentable {
     let proposedSize: CGSize
 
     func makeUIView(context: Context) -> HyperlinkTextView {
-        HyperlinkTextView(withAutoLayout: false)
+        let view = HyperlinkTextView(withAutoLayout: false)
+        view.font = viewModel.font
+        return view
     }
 
     func updateUIView(_ uiView: HyperlinkTextView, context: Context) {
@@ -53,17 +55,16 @@ private struct HyperLinkTextViewRepresentable: UIViewRepresentable {
     }
 }
 
-struct SwiftUIHyperlinkTextView_Previews: PreviewProvider {
-    static var previews: some View {
-        let viewModel = HyperlinkTextViewModel(
-            text: "Ved å godta en forespørsel aksepterer du også <tos>vilkårene for Fiks ferdig frakt og betaling hos FINN</tos>",
-            hyperlinks: [
-                HyperlinkTextViewModel.Hyperlink(
-                    hyperlink: "tos",
-                    action: "blablabla"
-                )
-            ]
-        )
-        SwiftUIHyperlinkTextView(viewModel: viewModel)
-    }
+#Preview {
+    let viewModel = HyperlinkTextViewModel(
+        text: "Ved å godta en forespørsel aksepterer du også <tos>vilkårene for Fiks ferdig frakt og betaling hos FINN</tos>",
+        hyperlinks: [
+            HyperlinkTextViewModel.Hyperlink(
+                hyperlink: "tos",
+                action: "blablabla"
+            )
+        ],
+        font: .bodyRegular
+    )
+    return SwiftUIHyperlinkTextView(viewModel: viewModel)
 }
