@@ -4,15 +4,19 @@ public struct SwiftUIHyperlinkTextView: View {
     let viewModel: HyperlinkTextViewModel
     @State var size: CGSize?
 
-    public init(viewModel: HyperlinkTextViewModel) {
+    private let font: UIFont
+
+    public init(viewModel: HyperlinkTextViewModel, font: UIFont = .caption) {
         self.viewModel = viewModel
+        self.font = font
     }
 
     public var body: some View {
         GeometryReader { proxy in
             HyperLinkTextViewRepresentable(
                 viewModel: viewModel,
-                proposedSize: proxy.size
+                proposedSize: proxy.size,
+                font: font
             )
             .overlay(
                 GeometryReader { proxy in
@@ -38,10 +42,11 @@ private struct ChildSizeKey: PreferenceKey {
 private struct HyperLinkTextViewRepresentable: UIViewRepresentable {
     let viewModel: HyperlinkTextViewModel
     let proposedSize: CGSize
+    let font: UIFont
 
     func makeUIView(context: Context) -> HyperlinkTextView {
         let view = HyperlinkTextView(withAutoLayout: false)
-        view.font = viewModel.font
+        view.font = font
         return view
     }
 
@@ -63,8 +68,10 @@ private struct HyperLinkTextViewRepresentable: UIViewRepresentable {
                 hyperlink: "tos",
                 action: "blablabla"
             )
-        ],
-        font: .bodyRegular
+        ]
     )
-    return SwiftUIHyperlinkTextView(viewModel: viewModel)
+    return SwiftUIHyperlinkTextView(
+        viewModel: viewModel,
+        font: .body
+    )
 }

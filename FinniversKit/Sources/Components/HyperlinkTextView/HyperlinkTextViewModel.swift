@@ -5,14 +5,12 @@ public protocol HyperlinkTextViewViewModelDelegate: AnyObject {
 public class HyperlinkTextViewModel: Equatable {
     public let htmlText: String
     public let hyperlinks: [Hyperlink]
-    public let font: UIFont
 
     public weak var delegate: HyperlinkTextViewViewModelDelegate?
 
-    public init(text: String, hyperlinks: [Hyperlink], font: UIFont = .caption) {
+    public init(text: String, hyperlinks: [Hyperlink]) {
         self.htmlText = text
         self.hyperlinks = hyperlinks
-        self.font = font
     }
 
     public func openLink(action: String) {
