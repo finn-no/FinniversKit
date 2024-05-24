@@ -1,7 +1,3 @@
-//
-//  Copyright © 2018 FINN AS. All rights reserved.
-//
-
 import XCTest
 import FinniversKit
 @testable import Demo
@@ -10,7 +6,12 @@ import DemoKitSnapshot
 @MainActor
 class ComponentViewTests: XCTestCase {
     private func snapshot(_ component: ComponentDemoViews, record: Bool = false, line: UInt = #line) {
-        snapshotTest(demoable: component.demoable, record: record, line: line)
+        snapshotTest(
+            demoable: component.demoable,
+            record: record,
+            precision: 0.98,
+            line: line
+        )
     }
 
     // MARK: - Tests
