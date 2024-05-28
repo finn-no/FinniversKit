@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-syntax",
       "state" : {
-        "revision" : "fa8f95c2d536d6620cc2f504ebe8a6167c9fc2dd",
-        "version" : "510.0.1"
+        "revision" : "303e5c5c36d6a558407d364878df131c3546fad8",
+        "version" : "510.0.2"
       }
     },
     {
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/warp-ds/warp-ios.git",
       "state" : {
-        "revision" : "7d24900acc6225655038c7ea5e3e9f9249631d58",
-        "version" : "0.0.3"
+        "revision" : "f3b3c78db4d9cac6ad4aa20a33d11f9d80cb1e6e",
+        "version" : "0.0.9"
       }
     }
   ],
