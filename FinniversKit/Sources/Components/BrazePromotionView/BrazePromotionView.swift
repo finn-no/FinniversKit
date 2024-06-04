@@ -63,6 +63,13 @@ public class BrazePromotionView: UIView {
         return button
     }()
 
+    private lazy var borderlessButton: Button = {
+        let button = Button(style: .link, size: .small, withAutoLayout: true)
+        button.addTarget(self, action: #selector(borderlessButtonTapped), for: .touchUpInside)
+        button.setContentHuggingPriority(.required, for: .vertical)
+        return button
+    }()
+
     private lazy var closeButton: CloseButton = {
         let button = CloseButton(withAutoLayout: true)
         button.tintColor = .bgPrimary
@@ -93,6 +100,16 @@ public class BrazePromotionView: UIView {
         return stackView
     }()
 
+    private lazy var horizontalButtonStackView: UIStackView = {
+        let stackView = UIStackView(axis: .horizontal, spacing: .spacingXS, withAutoLayout: true)
+        stackView.distribution = .fill
+        stackView.alignment = .leading
+        stackView.addArrangedSubview(primaryButton)
+        stackView.addArrangedSubview(UIView())
+        stackView.addArrangedSubview(borderlessButton)
+        return stackView
+    }()
+
     private lazy var stackViewConstraintsImage: [NSLayoutConstraint] = [
         verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
         verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
@@ -115,6 +132,7 @@ public class BrazePromotionView: UIView {
     public enum Action {
         case primary
         case secondary
+        case borderless
     }
 
     public weak var delegate: BrazePromotionViewDelegate?
@@ -136,6 +154,7 @@ public class BrazePromotionView: UIView {
     private func configure() {
         titleLabel.text = viewModel.title
         primaryButton.configure(withTitle: viewModel.primaryButtonTitle)
+        borderlessButton.configure(withTitle: viewModel.borderlessButtonTitle)
 
         if let text = viewModel.text {
             textLabel.text = text
@@ -190,7 +209,7 @@ extension BrazePromotionView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewWasTapped))
         addGestureRecognizer(tapGesture)
 
-        verticalStackView.addArrangedSubviews([titleLabel, textLabel, primaryButton])
+        verticalStackView.addArrangedSubviews([titleLabel, textLabel, horizontalButtonStackView])
         verticalStackView.setCustomSpacing(.spacingS + .spacingXS, after: textLabel)
 
         addSubview(largeShadowView)
@@ -213,6 +232,10 @@ extension BrazePromotionView {
 
     @objc private func primaryButtonTapped() {
         delegate?.brazePromotionView(self, didSelect: .primary)
+    }
+
+    @objc private func borderlessButtonTapped() {
+        delegate?.brazePromotionView(self, didSelect: .borderless)
     }
 
     @objc private func viewWasTapped() {

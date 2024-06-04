@@ -5,6 +5,7 @@ public struct BrazePromotionViewModel {
     let text: String?
     let image: String?
     let primaryButtonTitle: String?
+    let borderlessButtonTitle: String?
     let dismissible: Bool?
 
     public init(
@@ -12,12 +13,14 @@ public struct BrazePromotionViewModel {
         text: String? = nil,
         image: String? = nil,
         primaryButtonTitle: String? = nil,
+        borderlessButtonTitle: String? = nil,
         dismissible: Bool? = true
     ) {
         self.title = title
         self.text = text
         self.image = image
         self.primaryButtonTitle = primaryButtonTitle
+        self.borderlessButtonTitle = borderlessButtonTitle
         self.dismissible = dismissible
     }
 }

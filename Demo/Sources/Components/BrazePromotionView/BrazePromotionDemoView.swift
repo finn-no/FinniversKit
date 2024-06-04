@@ -3,7 +3,7 @@ import FinniversKit
 import DemoKit
 
 class BrazePromotionDemoView: UIView, Demoable {
-    private lazy var viewModels: [BrazePromotionViewModel] = [titleTextImageButton, titleTextButton, titleText]
+    private lazy var viewModels: [BrazePromotionViewModel] = [titleTextImageButton, titleTextButton, titleText, titleTextBorderlessButton, titleTextBorderlessButtonPrimaryButton]
 
     private let titleTextImageButton = BrazePromotionViewModel(
         title: "Hjerterom - hjelp til flyktninger",
@@ -22,6 +22,19 @@ class BrazePromotionDemoView: UIView, Demoable {
     private let titleText = BrazePromotionViewModel(
         title: "Hjerterom - hjelp til flyktninger",
         text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge."
+    )
+
+    private let titleTextBorderlessButton = BrazePromotionViewModel(
+        title: "Hjerterom - hjelp til flyktninger",
+        text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
+        borderlessButtonTitle: "Gå til Hjerterom"
+    )
+
+    private let titleTextBorderlessButtonPrimaryButton = BrazePromotionViewModel(
+        title: "Hjerterom - hjelp til flyktninger",
+        text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
+        primaryButtonTitle: "Gå til Hjerterom",
+        borderlessButtonTitle: "Gå til Hjerterom"
     )
 
     private lazy var stackView: UIStackView = {
