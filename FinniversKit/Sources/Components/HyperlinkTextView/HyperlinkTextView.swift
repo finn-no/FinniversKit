@@ -108,7 +108,8 @@ public class HyperlinkTextView: UIView {
         let translator = HyperLinkTextViewTranslator(
             links: viewModel.hyperlinks,
             textColor: textColor,
-            textAlignment: textAlignment
+            textAlignment: textAlignment,
+            font: font
         )
         let attributedText = try? HTMLStringParser.parse(
             html: viewModel.htmlText,
@@ -116,6 +117,7 @@ public class HyperlinkTextView: UIView {
         )
 
         textView.linkTextAttributes = [
+            NSAttributedString.Key.font: font,
             NSAttributedString.Key.foregroundColor: linkColor
         ]
 
@@ -134,6 +136,7 @@ private struct HyperLinkTextViewTranslator: HTMLStringParserTranslator {
     let links: [HyperlinkTextViewModel.Hyperlink]
     let textColor: UIColor
     let textAlignment: NSTextAlignment
+    let font: UIFont
 
     public func translate(tokens: [HTMLToken]) throws -> NSAttributedString {
         let styledText = NSMutableAttributedString()
@@ -153,6 +156,7 @@ private struct HyperLinkTextViewTranslator: HTMLStringParserTranslator {
 
                 var attributes: [NSAttributedString.Key: Any] = [
                     .paragraphStyle: style,
+                    .font: font,
                     .foregroundColor: textColor
                 ]
 

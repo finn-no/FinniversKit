@@ -93,6 +93,7 @@ public struct DefaultStyle: ButtonStyle {
         .background(
             configuration.isPressed ? Color.backgroundActive : .background
         )
+        .cornerRadius(.spacingS)
         .roundedBorder(
             radius: .spacingS,
             color: configuration.isPressed ? .borderActive : .backgroundDisabled

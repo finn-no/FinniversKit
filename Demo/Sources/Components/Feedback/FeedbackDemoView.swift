@@ -101,37 +101,43 @@ class FeedbackDemoView: UIView, Demoable {
 
 // MARK: - SingleQuestionFeedback
 
-class SingleQuestionFeedback: FeedbackViewDelegate {
-    let viewModels: [FeedbackView.State: FeedbackViewModel] = [
-        .initial: FeedbackViewModel(title: "Tjohei! Hvordan var det å bruke det nye filteret?", positiveButtonTitle: "Gi tilbakemelding"),
-        .finished: FeedbackViewModel(title: "Takk!\nVi setter pris på din tilbakemelding - det hjelper oss med å bli bedre")
-    ]
-
-    func feedbackView(_ feedbackView: FeedbackView, didSelectButtonOfType buttonType: FeedbackView.ButtonType, forState state: FeedbackView.State) {
-        feedbackView.setState(.finished, withViewModel: viewModels[.finished]!) // swiftlint:disable:this force_unwrapping
+private class SingleQuestionFeedback: FeedbackViewDelegate {
+    func feedbackView(_ feedbackView: FeedbackView, didSelectButtonOfType buttonType: FeedbackView.ButtonType, forStep stepIdentifier: String) {
+        let step = FeedbackStep.finished
+        feedbackView.configure(stepIdentifier: step, viewModel: step.viewModel)
     }
 
     func createFeedbackView() -> FeedbackView {
         let feedbackView = FeedbackView(withAutoLayout: true)
         feedbackView.delegate = self
-        feedbackView.setState(.initial, withViewModel: viewModels[.initial]!) // swiftlint:disable:this force_unwrapping
+
+        let initialStep = FeedbackStep.initial
+        feedbackView.configure(stepIdentifier: initialStep, viewModel: initialStep.viewModel)
         return feedbackView
+    }
+
+    enum FeedbackStep: String {
+        case initial
+        case finished
+
+        var viewModel: FeedbackViewModel {
+            switch self {
+            case .initial:
+                FeedbackViewModel(title: "Tjohei! Hvordan var det å bruke det nye filteret?", positiveButtonTitle: "Gi tilbakemelding")
+            case .finished:
+                FeedbackViewModel(title: "Takk!\nVi setter pris på din tilbakemelding - det hjelper oss med å bli bedre")
+            }
+        }
     }
 }
 
 // MARK: - MultiQuestionFeedback
 
-class MultiQuestionFeedback: FeedbackViewDelegate {
-    let viewModels: [FeedbackView.State: FeedbackViewModel] = [
-        .initial: FeedbackViewModel(title: "Liker du FINN appen?", positiveButtonTitle: "Ja!", negativeButtonTitle: "Niks."),
-        .accept: FeedbackViewModel(title: "Hurra! Hva med å gi oss noen stjerner i App Store?", positiveButtonTitle: "Klart!", negativeButtonTitle: "Nei"),
-        .decline: FeedbackViewModel(title: "Å nei! Lyst til å hjelpe oss med å bli bedre?", positiveButtonTitle: "Klart!", negativeButtonTitle: "Nei"),
-        .finished: FeedbackViewModel(title: "Takk!\nVi setter pris på din tilbakemelding - det hjelper oss med å bli bedre")
-    ]
+private class MultiQuestionFeedback: FeedbackViewDelegate {
+    func feedbackView(_ feedbackView: FeedbackView, didSelectButtonOfType buttonType: FeedbackView.ButtonType, forStep stepIdentifier: String) {
+        let newState: FeedbackStep
 
-    public func feedbackView(_ feedbackView: FeedbackView, didSelectButtonOfType buttonType: FeedbackView.ButtonType, forState state: FeedbackView.State) {
-        let newState: FeedbackView.State
-        switch (state, buttonType) {
+        switch (FeedbackStep(rawValue: stepIdentifier), buttonType) {
         case (.initial, .positive):
             newState = .accept
         case (.initial, .negative):
@@ -140,14 +146,35 @@ class MultiQuestionFeedback: FeedbackViewDelegate {
             newState = .finished
         }
 
-        guard let viewModel = viewModels[newState] else { return }
-        feedbackView.setState(newState, withViewModel: viewModel)
+        feedbackView.configure(stepIdentifier: newState, viewModel: newState.viewModel)
     }
 
     func createFeedbackView() -> FeedbackView {
         let feedbackView = FeedbackView(withAutoLayout: true)
         feedbackView.delegate = self
-        feedbackView.setState(.initial, withViewModel: viewModels[.initial]!) // swiftlint:disable:this force_unwrapping
+
+        let initialStep = FeedbackStep.initial
+        feedbackView.configure(stepIdentifier: initialStep, viewModel: initialStep.viewModel)
         return feedbackView
+    }
+
+    enum FeedbackStep: String {
+        case initial
+        case accept
+        case decline
+        case finished
+
+        var viewModel: FeedbackViewModel {
+            switch self {
+            case .initial:
+                FeedbackViewModel(title: "Liker du FINN appen?", positiveButtonTitle: "Ja!", negativeButtonTitle: "Niks.")
+            case .accept:
+                FeedbackViewModel(title: "Hurra! Hva med å gi oss noen stjerner i App Store?", positiveButtonTitle: "Klart!", negativeButtonTitle: "Nei")
+            case .decline:
+                FeedbackViewModel(title: "Å nei! Lyst til å hjelpe oss med å bli bedre?", positiveButtonTitle: "Klart!", negativeButtonTitle: "Nei")
+            case .finished:
+                FeedbackViewModel(title: "Takk!\nVi setter pris på din tilbakemelding - det hjelper oss med å bli bedre")
+            }
+        }
     }
 }

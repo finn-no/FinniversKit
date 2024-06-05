@@ -1,7 +1,3 @@
-//
-//  Copyright © 2018 FINN AS. All rights reserved.
-//
-
 @testable import Demo
 import XCTest
 import FinniversKit

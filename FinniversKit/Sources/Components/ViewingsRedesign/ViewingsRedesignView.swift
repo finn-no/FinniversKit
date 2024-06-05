@@ -79,6 +79,8 @@ public class ViewingsRedesignView: UIView {
         titleLabel.text = viewModel.title
         moreInfoLabel.text = viewModel.moreInfoText
         moreInfoLabel.isHidden = viewModel.moreInfoText == nil
+        prospectusStackView.isHidden = viewModel.viewings.isEmpty == true
+        viewingSignupButton.isHidden = viewModel.viewings.isEmpty == true
 
         if let button = viewModel.prospectusButton {
             prospectusDescriptionLabel.text = button.description

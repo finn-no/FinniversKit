@@ -40,7 +40,7 @@ class ViewingItemView: UIView {
     }()
 
     private lazy var addToCalendarButton: Button = {
-        let button = Button(style: .utility, size: .small, withAutoLayout: true)
+        let button = Button(style: .default, size: .small, withAutoLayout: true)
         button.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         button.addTarget(self, action: #selector(addToCalendarButtonTapped), for: .touchUpInside)
         return button

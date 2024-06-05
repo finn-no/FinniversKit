@@ -8,6 +8,7 @@ public protocol ImageProvider {
 
     // General
     var placeholderAd: UIImage { get }
+    var brandEmptyPersonalNotifications: UIImage { get }
     var brandFavouriteAdd: UIImage { get }
     var brandFavouriteAdded: UIImage { get }
     var brandFavouriteAddImg: UIImage { get }
@@ -120,5 +121,9 @@ public struct DefaultImageProvider: ImageProvider {
 
     public var brandMapDirections: UIImage {
         UIImage(named: .mapDirections)
+    }
+
+    public var brandEmptyPersonalNotifications: UIImage {
+        UIImage(named: .emptyPersonalNotifications)
     }
 }
