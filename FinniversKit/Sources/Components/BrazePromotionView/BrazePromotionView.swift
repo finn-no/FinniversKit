@@ -109,8 +109,8 @@ public class BrazePromotionView: UIView {
         let stackView = UIStackView(axis: .vertical, spacing: .spacingXS, withAutoLayout: true)
         stackView.distribution = .fill
         stackView.alignment = .leading
-        stackView.addArrangedSubview(borderlessButton)
         stackView.addArrangedSubview(primaryButton)
+        stackView.addArrangedSubview(borderlessButton)
         return stackView
     }()
 
