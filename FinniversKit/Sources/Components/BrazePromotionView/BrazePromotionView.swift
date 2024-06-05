@@ -106,7 +106,7 @@ public class BrazePromotionView: UIView {
     }()
 
     private lazy var buttonStackView: UIStackView = {
-        let stackView = UIStackView(axis: .vertical, spacing: .spacingXS, withAutoLayout: true)
+        let stackView = UIStackView(axis: UITraitCollection.current.horizontalSizeClass == .regular ? .horizontal : .vertical, spacing: .spacingS, withAutoLayout: true)
         stackView.distribution = .fill
         stackView.alignment = .leading
         stackView.addArrangedSubview(primaryButton)
@@ -147,7 +147,7 @@ public class BrazePromotionView: UIView {
     public init(viewModel: BrazePromotionViewModel, imageDatasource: RemoteImageViewDataSource) {
         self.viewModel = viewModel
         self.imageDatasource = imageDatasource
-        self.imagePosition = (viewModel.style == .leftAlignedGraphic) ? .left : .right
+        self.imagePosition = (viewModel.style == .defaultStyle) ? .right : .left
         super.init(frame: .zero)
         setup()
         configure()
