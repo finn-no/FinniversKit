@@ -230,6 +230,7 @@ public class BrazePromotionView: UIView {
             closeButton.setImage(UIImage(named: .cross).withTintColor(.textPrimary), for: .normal)
             closeButton.backgroundColor = UIColor.clear
 
+            buttonStackView.axis = .horizontal
             NSLayoutConstraint.activate(stackViewConstraintsNoImage)
         }
     }
