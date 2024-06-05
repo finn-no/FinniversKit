@@ -9,12 +9,14 @@ class BrazePromotionDemoView: UIView, Demoable {
         title: "Hjerterom - hjelp til flyktninger",
         text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
         image: "https://images.finncdn.no/dynamic/1600w/2022/11/vertical-0/18/7/277/904/107_1208691254.jpg",
-        primaryButtonTitle: "Gå til Hjerterom"
+        primaryButtonTitle: "Gå til Hjerterom",
+        style: .leftAlignedGraphic
     )
 
     private let titleTextButton = BrazePromotionViewModel(
         title: "Hjerterom - hjelp til flyktninger",
         text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
+        image: "https://images.finncdn.no/dynamic/1600w/2022/11/vertical-0/18/7/277/904/107_1208691254.jpg",
         primaryButtonTitle: "Gå til Hjerterom",
         dismissible: false
     )

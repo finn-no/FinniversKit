@@ -7,6 +7,7 @@ public struct BrazePromotionViewModel {
     let primaryButtonTitle: String?
     let borderlessButtonTitle: String?
     let dismissible: Bool?
+    let style: BrazePromotionView.CardStyle
 
     public init(
         title: String,
@@ -14,7 +15,8 @@ public struct BrazePromotionViewModel {
         image: String? = nil,
         primaryButtonTitle: String? = nil,
         borderlessButtonTitle: String? = nil,
-        dismissible: Bool? = true
+        dismissible: Bool? = true,
+        style: BrazePromotionView.CardStyle = .defaultStyle
     ) {
         self.title = title
         self.text = text
@@ -22,5 +24,6 @@ public struct BrazePromotionViewModel {
         self.primaryButtonTitle = primaryButtonTitle
         self.borderlessButtonTitle = borderlessButtonTitle
         self.dismissible = dismissible
+        self.style = style
     }
 }

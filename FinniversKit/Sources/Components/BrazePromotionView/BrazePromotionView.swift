@@ -9,6 +9,11 @@ public class BrazePromotionView: UIView {
 
     private let buttonSize = 26.0
 
+    public enum ImagePosition {
+        case left
+        case right
+    }
+
     private lazy var backgroundView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .bgColor
@@ -100,22 +105,16 @@ public class BrazePromotionView: UIView {
         return stackView
     }()
 
-    private lazy var horizontalButtonStackView: UIStackView = {
-        let stackView = UIStackView(axis: .horizontal, spacing: .spacingXS, withAutoLayout: true)
+    private lazy var buttonStackView: UIStackView = {
+        let stackView = UIStackView(axis: .vertical, spacing: .spacingXS, withAutoLayout: true)
         stackView.distribution = .fill
         stackView.alignment = .leading
-        stackView.addArrangedSubview(primaryButton)
-        stackView.addArrangedSubview(UIView())
         stackView.addArrangedSubview(borderlessButton)
+        stackView.addArrangedSubview(primaryButton)
         return stackView
     }()
 
-    private lazy var stackViewConstraintsImage: [NSLayoutConstraint] = [
-        verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
-        verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
-        verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
-        verticalStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
-    ]
+    private var stackViewConstraintsImage: [NSLayoutConstraint] = []
 
     private lazy var stackViewConstraintsNoImage: [NSLayoutConstraint] = [
         verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
@@ -126,6 +125,7 @@ public class BrazePromotionView: UIView {
 
     private var viewModel: BrazePromotionViewModel
     private var imageDatasource: RemoteImageViewDataSource?
+    private var imagePosition: ImagePosition
 
     // MARK: - Public properties
 
@@ -135,6 +135,11 @@ public class BrazePromotionView: UIView {
         case borderless
     }
 
+    public enum CardStyle: String, Sendable {
+        case defaultStyle = "default"
+        case leftAlignedGraphic = "leftAlignedGraphic"
+    }
+
     public weak var delegate: BrazePromotionViewDelegate?
 
     // MARK: - Init
@@ -142,6 +147,7 @@ public class BrazePromotionView: UIView {
     public init(viewModel: BrazePromotionViewModel, imageDatasource: RemoteImageViewDataSource) {
         self.viewModel = viewModel
         self.imageDatasource = imageDatasource
+        self.imagePosition = (viewModel.style == .leftAlignedGraphic) ? .left : .right
         super.init(frame: .zero)
         setup()
         configure()
@@ -178,14 +184,42 @@ public class BrazePromotionView: UIView {
             backgroundView.addSubview(remoteImageView)
             remoteImageView.dataSource = imageDatasource
 
-            NSLayoutConstraint.activate(stackViewConstraintsImage)
+            var imageConstraints: [NSLayoutConstraint] = []
 
-            NSLayoutConstraint.activate([
-                remoteImageView.widthAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 0.3),
-                remoteImageView.topAnchor.constraint(equalTo: backgroundView.topAnchor),
-                remoteImageView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
-                remoteImageView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor)
-            ])
+            switch imagePosition {
+            case .left:
+                stackViewConstraintsImage = [
+                    verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
+                    verticalStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -.spacingM),
+                    verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
+                    verticalStackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .spacingM),
+                    verticalStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
+                ]
+
+                imageConstraints = [
+                    remoteImageView.widthAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 0.3),
+                    remoteImageView.topAnchor.constraint(equalTo: backgroundView.topAnchor),
+                    remoteImageView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor),
+                    remoteImageView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor)
+                ]
+
+            case .right:
+                stackViewConstraintsImage = [
+                    verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
+                    verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
+                    verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
+                    verticalStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
+                ]
+
+                imageConstraints = [
+                    remoteImageView.widthAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 0.3),
+                    remoteImageView.topAnchor.constraint(equalTo: backgroundView.topAnchor),
+                    remoteImageView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
+                    remoteImageView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor)
+                ]
+            }
+
+            NSLayoutConstraint.activate(stackViewConstraintsImage + imageConstraints)
 
             remoteImageView.loadImage(
                 for: imageUrl,
@@ -209,7 +243,7 @@ extension BrazePromotionView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewWasTapped))
         addGestureRecognizer(tapGesture)
 
-        verticalStackView.addArrangedSubviews([titleLabel, textLabel, horizontalButtonStackView])
+        verticalStackView.addArrangedSubviews([titleLabel, textLabel, buttonStackView])
         verticalStackView.setCustomSpacing(.spacingS + .spacingXS, after: textLabel)
 
         addSubview(largeShadowView)
