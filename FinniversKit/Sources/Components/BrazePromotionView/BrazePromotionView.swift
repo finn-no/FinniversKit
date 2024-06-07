@@ -107,8 +107,18 @@ public class BrazePromotionView: UIView {
         return stackView
     }()
 
+    private func determineButtonStackViewAxis() -> NSLayoutConstraint.Axis {
+        if viewModel.style == .horizontal || UITraitCollection.current.horizontalSizeClass == .regular {
+            return .horizontal
+        } else {
+            return .vertical
+        }
+    }
+
     private lazy var buttonStackView: UIStackView = {
-        let stackView = UIStackView(axis: UITraitCollection.current.horizontalSizeClass == .regular ? .horizontal : .vertical, spacing: .spacingS, withAutoLayout: true)
+        let axis = determineButtonStackViewAxis()
+        let spacing: CGFloat = axis == .horizontal ? .spacingM : .spacingXS
+        let stackView = UIStackView(axis: axis, spacing: spacing, withAutoLayout: true)
         stackView.distribution = .fill
         stackView.alignment = .leading
         stackView.addArrangedSubview(primaryButton)
@@ -139,6 +149,7 @@ public class BrazePromotionView: UIView {
 
     public enum CardStyle: String, Sendable {
         case defaultStyle = "default"
+        case horizontal = "horizontal"
         case leftAlignedGraphic = "leftAlignedGraphic"
     }
 
