@@ -102,6 +102,8 @@ public class BrazePromotionView: UIView {
         stackView.distribution = .fillProportionally
         stackView.alignment = .leading
         stackView.setContentCompressionResistancePriority(.required, for: .horizontal)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .spacingS)
         return stackView
     }()
 
