@@ -77,8 +77,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case textView
     case toast
     case verificationView
-    case viewingsListView
-    case viewingsRedesignView
     case visibilityDrivenTitleView
 
     static var groupTitle: String { "Components" }
@@ -199,10 +197,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return FooterButtonDemoView()
         case .checkmarkTitleView:
             return CheckmarkTitleViewDemoView()
-        case .viewingsListView:
-            return ViewingsListDemoView()
-        case .viewingsRedesignView:
-            return ViewingsRedesignDemoView()
         case .selfDeclarationView:
             return SelfDeclarationDemoView()
         case .collapsibleContentView:

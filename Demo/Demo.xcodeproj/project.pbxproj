@@ -84,7 +84,6 @@
 		46E7740E242CEF0A008A5E93 /* ChristmasWishListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77305242CEF09008A5E93 /* ChristmasWishListDemoView.swift */; };
 		46E7740F242CEF0A008A5E93 /* CalloutDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77307242CEF09008A5E93 /* CalloutDemoView.swift */; };
 		46E77410242CEF0A008A5E93 /* RibbonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77309242CEF09008A5E93 /* RibbonDemoView.swift */; };
-		46E77411242CEF0A008A5E93 /* ViewingsListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7730B242CEF09008A5E93 /* ViewingsListDemoView.swift */; };
 		46E77412242CEF0A008A5E93 /* EarthHourDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7730D242CEF09008A5E93 /* EarthHourDefaultData.swift */; };
 		46E77413242CEF0A008A5E93 /* EarthHourDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7730E242CEF09008A5E93 /* EarthHourDemoView.swift */; };
 		46E77416242CEF0A008A5E93 /* StepSliderDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77313242CEF09008A5E93 /* StepSliderDemoView.swift */; };
@@ -200,7 +199,6 @@
 		DAE9CA8724602CB000C7552F /* SwiftUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */; };
 		E6510A6727FB378B001B40D6 /* ScrollableTabDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6510A6627FB378B001B40D6 /* ScrollableTabDemoView.swift */; };
 		E681A0EC2923FDA4008564E2 /* HyperlinkTextViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E681A0EB2923FDA4008564E2 /* HyperlinkTextViewDemoView.swift */; };
-		F085BC2A29719E5200376A8B /* ViewingsRedesignDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F085BC2929719E5200376A8B /* ViewingsRedesignDemoView.swift */; };
 		F3D30537299F8FC200C4C4ED /* SelectionListSeparatedRadiobuttonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D30536299F8FC200C4C4ED /* SelectionListSeparatedRadiobuttonDemoView.swift */; };
 /* End PBXBuildFile section */
 
@@ -309,7 +307,6 @@
 		46E77305242CEF09008A5E93 /* ChristmasWishListDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChristmasWishListDemoView.swift; sourceTree = "<group>"; };
 		46E77307242CEF09008A5E93 /* CalloutDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalloutDemoView.swift; sourceTree = "<group>"; };
 		46E77309242CEF09008A5E93 /* RibbonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonDemoView.swift; sourceTree = "<group>"; };
-		46E7730B242CEF09008A5E93 /* ViewingsListDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewingsListDemoView.swift; sourceTree = "<group>"; };
 		46E7730D242CEF09008A5E93 /* EarthHourDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourDefaultData.swift; sourceTree = "<group>"; };
 		46E7730E242CEF09008A5E93 /* EarthHourDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourDemoView.swift; sourceTree = "<group>"; };
 		46E77313242CEF09008A5E93 /* StepSliderDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepSliderDemoView.swift; sourceTree = "<group>"; };
@@ -424,7 +421,6 @@
 		DAE9CA8624602CB000C7552F /* SwiftUIViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewTests.swift; sourceTree = "<group>"; };
 		E6510A6627FB378B001B40D6 /* ScrollableTabDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableTabDemoView.swift; sourceTree = "<group>"; };
 		E681A0EB2923FDA4008564E2 /* HyperlinkTextViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextViewDemoView.swift; sourceTree = "<group>"; };
-		F085BC2929719E5200376A8B /* ViewingsRedesignDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingsRedesignDemoView.swift; sourceTree = "<group>"; };
 		F3D30536299F8FC200C4C4ED /* SelectionListSeparatedRadiobuttonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionListSeparatedRadiobuttonDemoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -861,8 +857,6 @@
 				46E772D4242CEF09008A5E93 /* TextView */,
 				46E772F0242CEF09008A5E93 /* Toast */,
 				46E77358242CEF09008A5E93 /* VerificationView */,
-				46E7730A242CEF09008A5E93 /* Viewings */,
-				F085BC2829719E4200376A8B /* ViewingsRedesign */,
 				46E772F4242CEF09008A5E93 /* VisibilityDrivenTitleView */,
 			);
 			path = Components;
@@ -1070,14 +1064,6 @@
 				46E77309242CEF09008A5E93 /* RibbonDemoView.swift */,
 			);
 			path = Ribbon;
-			sourceTree = "<group>";
-		};
-		46E7730A242CEF09008A5E93 /* Viewings */ = {
-			isa = PBXGroup;
-			children = (
-				46E7730B242CEF09008A5E93 /* ViewingsListDemoView.swift */,
-			);
-			path = Viewings;
 			sourceTree = "<group>";
 		};
 		46E7730C242CEF09008A5E93 /* EarthHour */ = {
@@ -1789,14 +1775,6 @@
 			path = HyperlinkTextViewDemoView;
 			sourceTree = "<group>";
 		};
-		F085BC2829719E4200376A8B /* ViewingsRedesign */ = {
-			isa = PBXGroup;
-			children = (
-				F085BC2929719E5200376A8B /* ViewingsRedesignDemoView.swift */,
-			);
-			path = ViewingsRedesign;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1956,7 +1934,6 @@
 				172DCF2B2AB9C71200D890C2 /* HostingContentConfigurationCellDemoViewController.swift in Sources */,
 				46E7744C242CEF0A008A5E93 /* HeartSubtitleCellDemoView.swift in Sources */,
 				46E773BE242CEF0A008A5E93 /* LoginEntryDemoData.swift in Sources */,
-				F085BC2A29719E5200376A8B /* ViewingsRedesignDemoView.swift in Sources */,
 				4D529E2125837087007AE5B6 /* ImageAsset.swift in Sources */,
 				27FAFCB82988FE6100FEDAE0 /* ToastSwiftUIDemoView.swift in Sources */,
 				5DCE0885280FDF2A00ED7407 /* MonthAndYearPickerDemoView.swift in Sources */,
@@ -2038,7 +2015,6 @@
 				46E773C8242CEF0A008A5E93 /* FullscreenGalleryDemoViewController.swift in Sources */,
 				46E77412242CEF0A008A5E93 /* EarthHourDefaultData.swift in Sources */,
 				46E77446242CEF0A008A5E93 /* BasicCellVariationsDemoView.swift in Sources */,
-				46E77411242CEF0A008A5E93 /* ViewingsListDemoView.swift in Sources */,
 				46E773F8242CEF0A008A5E93 /* PanelDemoView.swift in Sources */,
 				E681A0EC2923FDA4008564E2 /* HyperlinkTextViewDemoView.swift in Sources */,
 				46E773C9242CEF0A008A5E93 /* ResultDemoView.swift in Sources */,
