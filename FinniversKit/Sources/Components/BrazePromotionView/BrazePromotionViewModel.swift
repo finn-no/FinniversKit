@@ -8,6 +8,7 @@ public struct BrazePromotionViewModel {
     let borderlessButtonTitle: String?
     let dismissible: Bool?
     let style: BrazePromotionView.CardStyle
+    let buttonOrientation: BrazePromotionView.ButtonOrientation
 
     public init(
         title: String,
@@ -16,7 +17,8 @@ public struct BrazePromotionViewModel {
         primaryButtonTitle: String? = nil,
         borderlessButtonTitle: String? = nil,
         dismissible: Bool? = true,
-        style: BrazePromotionView.CardStyle = .defaultStyle
+        style: BrazePromotionView.CardStyle = .defaultStyle,
+        buttonOrientation: BrazePromotionView.ButtonOrientation = .vertical
     ) {
         self.title = title
         self.text = text
@@ -25,5 +27,6 @@ public struct BrazePromotionViewModel {
         self.borderlessButtonTitle = borderlessButtonTitle
         self.dismissible = dismissible
         self.style = style
+        self.buttonOrientation = buttonOrientation
     }
 }

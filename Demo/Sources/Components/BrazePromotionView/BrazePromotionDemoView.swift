@@ -36,7 +36,8 @@ class BrazePromotionDemoView: UIView, Demoable {
         title: "Hjerterom - hjelp til flyktninger",
         text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
         primaryButtonTitle: "Gå til Hjerterom",
-        borderlessButtonTitle: "Gå til Hjerterom"
+        borderlessButtonTitle: "Gå til Hjerterom",
+        buttonOrientation: .horizontal
     )
 
     private lazy var stackView: UIStackView = {

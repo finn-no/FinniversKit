@@ -108,7 +108,7 @@ public class BrazePromotionView: UIView {
     }()
 
     private func determineButtonStackViewAxis() -> NSLayoutConstraint.Axis {
-        if viewModel.style == .horizontal || UITraitCollection.current.horizontalSizeClass == .regular {
+        if viewModel.buttonOrientation == .horizontal || UITraitCollection.current.horizontalSizeClass == .regular {
             return .horizontal
         } else {
             return .vertical
@@ -147,9 +147,13 @@ public class BrazePromotionView: UIView {
         case borderless
     }
 
+    public enum ButtonOrientation: String, Sendable {
+        case horizontal = "horizontal"
+        case vertical = "vertical"
+    }
+
     public enum CardStyle: String, Sendable {
         case defaultStyle = "default"
-        case horizontal = "horizontal"
         case leftAlignedGraphic = "leftAlignedGraphic"
     }
 
