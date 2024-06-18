@@ -9,6 +9,11 @@ public class BrazePromotionView: UIView {
 
     private let buttonSize = 26.0
 
+    public enum ImagePosition {
+        case left
+        case right
+    }
+
     private lazy var backgroundView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .bgColor
@@ -63,6 +68,13 @@ public class BrazePromotionView: UIView {
         return button
     }()
 
+    private lazy var borderlessButton: Button = {
+        let button = Button(style: .link, size: .small, withAutoLayout: true)
+        button.addTarget(self, action: #selector(borderlessButtonTapped), for: .touchUpInside)
+        button.setContentHuggingPriority(.required, for: .vertical)
+        return button
+    }()
+
     private lazy var closeButton: CloseButton = {
         let button = CloseButton(withAutoLayout: true)
         button.tintColor = .bgPrimary
@@ -90,15 +102,31 @@ public class BrazePromotionView: UIView {
         stackView.distribution = .fillProportionally
         stackView.alignment = .leading
         stackView.setContentCompressionResistancePriority(.required, for: .horizontal)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .spacingS)
         return stackView
     }()
 
-    private lazy var stackViewConstraintsImage: [NSLayoutConstraint] = [
-        verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
-        verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
-        verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
-        verticalStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
-    ]
+    private func determineButtonStackViewAxis() -> NSLayoutConstraint.Axis {
+        if viewModel.buttonOrientation == .horizontal || UITraitCollection.current.horizontalSizeClass == .regular {
+            return .horizontal
+        } else {
+            return .vertical
+        }
+    }
+
+    private lazy var buttonStackView: UIStackView = {
+        let axis = determineButtonStackViewAxis()
+        let spacing: CGFloat = axis == .horizontal ? .spacingM : .spacingXS
+        let stackView = UIStackView(axis: axis, spacing: spacing, withAutoLayout: true)
+        stackView.distribution = .fill
+        stackView.alignment = .leading
+        stackView.addArrangedSubview(primaryButton)
+        stackView.addArrangedSubview(borderlessButton)
+        return stackView
+    }()
+
+    private var stackViewConstraintsImage: [NSLayoutConstraint] = []
 
     private lazy var stackViewConstraintsNoImage: [NSLayoutConstraint] = [
         verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
@@ -109,12 +137,24 @@ public class BrazePromotionView: UIView {
 
     private var viewModel: BrazePromotionViewModel
     private var imageDatasource: RemoteImageViewDataSource?
+    private var imagePosition: ImagePosition
 
     // MARK: - Public properties
 
     public enum Action {
         case primary
         case secondary
+        case borderless
+    }
+
+    public enum ButtonOrientation: String, Sendable {
+        case horizontal = "horizontal"
+        case vertical = "vertical"
+    }
+
+    public enum CardStyle: String, Sendable {
+        case defaultStyle = "default"
+        case leftAlignedGraphic = "leftAlignedGraphic"
     }
 
     public weak var delegate: BrazePromotionViewDelegate?
@@ -124,6 +164,7 @@ public class BrazePromotionView: UIView {
     public init(viewModel: BrazePromotionViewModel, imageDatasource: RemoteImageViewDataSource) {
         self.viewModel = viewModel
         self.imageDatasource = imageDatasource
+        self.imagePosition = (viewModel.style == .defaultStyle) ? .right : .left
         super.init(frame: .zero)
         setup()
         configure()
@@ -136,6 +177,7 @@ public class BrazePromotionView: UIView {
     private func configure() {
         titleLabel.text = viewModel.title
         primaryButton.configure(withTitle: viewModel.primaryButtonTitle)
+        borderlessButton.configure(withTitle: viewModel.borderlessButtonTitle)
 
         if let text = viewModel.text {
             textLabel.text = text
@@ -159,14 +201,42 @@ public class BrazePromotionView: UIView {
             backgroundView.addSubview(remoteImageView)
             remoteImageView.dataSource = imageDatasource
 
-            NSLayoutConstraint.activate(stackViewConstraintsImage)
+            var imageConstraints: [NSLayoutConstraint] = []
 
-            NSLayoutConstraint.activate([
-                remoteImageView.widthAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 0.3),
-                remoteImageView.topAnchor.constraint(equalTo: backgroundView.topAnchor),
-                remoteImageView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
-                remoteImageView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor)
-            ])
+            switch imagePosition {
+            case .left:
+                stackViewConstraintsImage = [
+                    verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
+                    verticalStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -.spacingM),
+                    verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
+                    verticalStackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .spacingM),
+                    verticalStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
+                ]
+
+                imageConstraints = [
+                    remoteImageView.widthAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 0.3),
+                    remoteImageView.topAnchor.constraint(equalTo: backgroundView.topAnchor),
+                    remoteImageView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor),
+                    remoteImageView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor)
+                ]
+
+            case .right:
+                stackViewConstraintsImage = [
+                    verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
+                    verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
+                    verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
+                    verticalStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
+                ]
+
+                imageConstraints = [
+                    remoteImageView.widthAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 0.3),
+                    remoteImageView.topAnchor.constraint(equalTo: backgroundView.topAnchor),
+                    remoteImageView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
+                    remoteImageView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor)
+                ]
+            }
+
+            NSLayoutConstraint.activate(stackViewConstraintsImage + imageConstraints)
 
             remoteImageView.loadImage(
                 for: imageUrl,
@@ -177,6 +247,7 @@ public class BrazePromotionView: UIView {
             closeButton.setImage(UIImage(named: .cross).withTintColor(.textPrimary), for: .normal)
             closeButton.backgroundColor = UIColor.clear
 
+            buttonStackView.axis = .horizontal
             NSLayoutConstraint.activate(stackViewConstraintsNoImage)
         }
     }
@@ -190,7 +261,7 @@ extension BrazePromotionView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewWasTapped))
         addGestureRecognizer(tapGesture)
 
-        verticalStackView.addArrangedSubviews([titleLabel, textLabel, primaryButton])
+        verticalStackView.addArrangedSubviews([titleLabel, textLabel, buttonStackView])
         verticalStackView.setCustomSpacing(.spacingS + .spacingXS, after: textLabel)
 
         addSubview(largeShadowView)
@@ -213,6 +284,10 @@ extension BrazePromotionView {
 
     @objc private func primaryButtonTapped() {
         delegate?.brazePromotionView(self, didSelect: .primary)
+    }
+
+    @objc private func borderlessButtonTapped() {
+        delegate?.brazePromotionView(self, didSelect: .borderless)
     }
 
     @objc private func viewWasTapped() {
