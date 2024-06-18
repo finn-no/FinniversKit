@@ -39,8 +39,7 @@ import UIKit
     private var loadingIndicatorCenterY: NSLayoutConstraint?
 
     private lazy var loadingIndicator: LoadingIndicatorView = {
-        let view = LoadingIndicatorView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = LoadingIndicatorView(withAutoLayout: true)
         view.transform = loadingIndicatorInitialTransform
         return view
     }()
