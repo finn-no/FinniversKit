@@ -1,5 +1,4 @@
 import Foundation
-import Warp
 
 public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendationCell, AdRecommendationConfigurable {
     // MARK: - External properties
@@ -37,7 +36,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     private static let cornerRadius: CGFloat = 8.0
     private static let heightMultiplier: CGFloat = 1
 
-    private let loadingColor: UIColor = Warp.Config.uiTokenProvider.background
+    private let loadingColor: UIColor = .bgTertiary
 
     /// Extra container for accessibility issues. The cell should have "all content" and favoriteButton (if added) as accessibilty elements but it get confused if favoriteButton is a subview of the other accessibility element (so contentView can not be one of the accessibility elements
     private lazy var containerView = UIView(withAutoLayout: true)

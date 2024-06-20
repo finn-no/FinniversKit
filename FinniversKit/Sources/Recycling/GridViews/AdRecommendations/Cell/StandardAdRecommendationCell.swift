@@ -1,7 +1,7 @@
 //
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
-import Warp
+
 import UIKit
 
 public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendationCell, AdRecommendationConfigurable {
@@ -50,7 +50,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     private static let minImageAspectRatio: CGFloat = 0.75
     private static let maxImageAspectRatio: CGFloat = 1.5
 
-    private let loadingColor: UIColor = Warp.Config.uiTokenProvider.background
+    private let loadingColor: UIColor = .bgTertiary
 
     private var defaultImage: UIImage {
         UIImage(named: .noImage)
