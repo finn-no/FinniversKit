@@ -235,28 +235,17 @@ private extension UIFont {
         }
     }
 
-    private static func registerFontFor(bundle: Bundle, forResource: String) {
-        guard let pathForResourceString = bundle.path(forResource: forResource, ofType: "ttf") else {
-            print("UIFont+: Failed to register font - path for resource not found.")
-            return
-        }
-
-        guard let fontData = NSData(contentsOfFile: pathForResourceString) else {
-            print("UIFont+: Failed to register font - font data could not be loaded.")
-            return
-        }
-
-        guard let dataProvider = CGDataProvider(data: fontData) else {
-            print("UIFont+: Failed to register font - data provider could not be loaded.")
-            return
-        }
-
-        guard let fontRef = CGFont(dataProvider) else {
-            print("UIFont+: Failed to register font - font could not be loaded.")
+    private static func registerFontFor(bundle: Bundle, forResource resource: String) {
+        guard let fontUrl = bundle.url(forResource: resource, withExtension: "ttf") else {
+            print("UIFont+: Failed to register font - URL for resource not found.")
             return
         }
 
         var errorRef: Unmanaged<CFError>?
-        CTFontManagerRegisterGraphicsFont(fontRef, &errorRef)
+        let registeredFont = CTFontManagerRegisterFontsForURL(fontUrl as CFURL, .process, &errorRef)
+
+        if !registeredFont {
+            print("UIFont+: Failed to register font \(resource)")
+        }
     }
 }
