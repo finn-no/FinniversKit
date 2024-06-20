@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell {
 
@@ -66,7 +67,7 @@ public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell
 
     private lazy var metadataContainer: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .bgTertiary
+        view.backgroundColor = Warp.Config.uiTokenProvider.background
         return view
     }()
 
