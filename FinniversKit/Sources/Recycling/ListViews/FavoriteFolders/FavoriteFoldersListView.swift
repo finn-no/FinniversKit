@@ -78,8 +78,8 @@ public class FavoriteFoldersListView: UIView {
     }()
 
     private lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = RefreshControl(frame: .zero)
-        refreshControl.delegate = self
+        let refreshControl = UIRefreshControl(frame: .zero)
+        refreshControl.addTarget(self, action: #selector(handleRefreshBegan), for: .valueChanged)
         return refreshControl
     }()
 
@@ -366,6 +366,10 @@ public class FavoriteFoldersListView: UIView {
     @objc private func handleXmasButtonTap() {
         delegate?.favoriteFoldersListViewDidSelectXmasButton(self)
     }
+
+    @objc private func handleRefreshBegan() {
+        delegate?.favoriteFoldersListViewDidBeginRefreshing(self)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -457,14 +461,6 @@ extension FavoriteFoldersListView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         selectRow(at: indexPath)
-    }
-}
-
-// MARK: - RefreshControlDelegate
-
-extension FavoriteFoldersListView: RefreshControlDelegate {
-    public func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl) {
-        delegate?.favoriteFoldersListViewDidBeginRefreshing(self)
     }
 }
 

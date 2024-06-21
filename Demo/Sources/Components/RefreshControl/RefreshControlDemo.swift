@@ -17,8 +17,8 @@ class RefreshControlDemoView: UIView, Demoable {
     }()
 
     private lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = RefreshControl(frame: .zero)
-        refreshControl.delegate = self
+        let refreshControl = UIRefreshControl(frame: .zero)
+        refreshControl.addTarget(self, action: #selector(handleRefreshBegan), for: .valueChanged)
         return refreshControl
     }()
 
@@ -47,6 +47,13 @@ class RefreshControlDemoView: UIView, Demoable {
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
+
+    @objc private func handleRefreshBegan() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) { [weak self] in
+            self?.refreshControl.endRefreshing()
+            self?.tableView.reloadData()
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -64,16 +71,5 @@ extension RefreshControlDemoView: UITableViewDataSource {
         cell.selectionStyle = .none
 
         return cell
-    }
-}
-
-// MARK: - RefreshControlDelegate
-
-extension RefreshControlDemoView: RefreshControlDelegate {
-    func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl) {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) { [weak self] in
-            self?.refreshControl.endRefreshing()
-            self?.tableView.reloadData()
-        }
     }
 }
