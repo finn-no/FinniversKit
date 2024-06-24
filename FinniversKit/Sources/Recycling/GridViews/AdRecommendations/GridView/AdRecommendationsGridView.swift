@@ -68,8 +68,8 @@ public class AdRecommendationsGridView: UIView {
     }()
 
     private lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = RefreshControl(frame: .zero)
-        refreshControl.delegate = self
+        let refreshControl = UIRefreshControl(frame: .zero)
+        refreshControl.addTarget(self, action: #selector(handleRefreshBegan), for: .valueChanged)
         return refreshControl
     }()
 
@@ -114,6 +114,10 @@ public class AdRecommendationsGridView: UIView {
 
     public func invalidateLayout() {
         collectionView.collectionViewLayout.invalidateLayout()
+    }
+
+    @objc private func handleRefreshBegan() {
+        delegate?.adRecommendationsGridViewDidStartRefreshing(self)
     }
 
     // MARK: - Public methods
@@ -250,13 +254,5 @@ extension AdRecommendationsGridView: AdRecommendationsGridViewLayoutDelegate {
 
     func adRecommendationsGridViewLayout(_ layout: AdRecommendationsGridViewLayout, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
         return dataSource?.adRecommendationsGridView(self, heightForItemWithWidth: width, at: indexPath) ?? 0
-    }
-}
-
-// MARK: - RefreshControlDelegate
-
-extension AdRecommendationsGridView: RefreshControlDelegate {
-    public func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl) {
-        delegate?.adRecommendationsGridViewDidStartRefreshing(self)
     }
 }

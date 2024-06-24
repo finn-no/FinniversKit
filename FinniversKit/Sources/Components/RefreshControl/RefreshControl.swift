@@ -79,7 +79,6 @@ public class RefreshControl: UIRefreshControl {
     private func handleLoadingProgress() {
         let pullDistance = superview.flatMap({ $0.bounds.height / 5 }) ?? defaultPullDistance
         let progress = min(max(topOffset, 0.0), pullDistance) / pullDistance
-        loadingIndicatorView.progress = progress
 
         if topOffset >= pullDistance {
             beginRefreshing()
@@ -105,7 +104,6 @@ public class RefreshControl: UIRefreshControl {
 
     private func startAnimatingLoadingIndicator() {
         isAnimating = true
-        loadingIndicatorView.progress = 1
         loadingIndicatorView.startAnimating()
         delegate?.refreshControlDidBeginRefreshing(self)
     }
