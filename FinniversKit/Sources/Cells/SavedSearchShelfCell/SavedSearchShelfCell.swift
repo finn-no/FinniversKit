@@ -1,7 +1,7 @@
 import UIKit
 
 public class FrontPageSavedSearchCell: UICollectionViewCell {
-    static let width: CGFloat = 74
+    public static let width: CGFloat = 74
     private let borderInsets: CGFloat = 5
 
     private var defaultImage: UIImage? {

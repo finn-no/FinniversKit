@@ -1,11 +1,11 @@
 import Foundation
 
 public class FrontPageSavedSearchesViewModel {
-    let searchViewModels: [FrontPageSavedSearchViewModel]
-    let title: String
-    let buttonTitle: String
+    public let searchViewModels: [FrontPageSavedSearchViewModel]
+    public let title: String
+    public let buttonTitle: String
 
-    var height: CGFloat {
+    public var height: CGFloat {
         searchViewModels.isEmpty ? 0 : FrontPageSavedSearchesView.height
     }
 
