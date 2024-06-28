@@ -15,10 +15,6 @@ class RecyclingViewTests: XCTestCase {
         snapshot(.notificationsListView)
     }
 
-    func testMarketsGridView() {
-        snapshot(.marketsGridView)
-    }
-
     func testAdRecommendationsGridView() {
         snapshot(.adRecommendationsGridView)
     }
@@ -45,9 +41,5 @@ class RecyclingViewTests: XCTestCase {
 
     func testBasicTableView() {
         snapshot(.basicTableView)
-    }
-
-    func testCompactMarketsView() {
-        snapshot(.compactMarketsView)
     }
 }
