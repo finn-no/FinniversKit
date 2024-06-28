@@ -180,11 +180,11 @@ public class BrazePromotionView: UIView {
     private func determineImagePosition() {
         switch viewModel.style {
         case .defaultStyle:
-            self.imagePosition = .right
+            imagePosition = .right
         case .leftAlignedGraphic:
-            self.imagePosition = .left
+            imagePosition = .left
         case .topAlignedGraphic:
-            self.imagePosition = .top
+            imagePosition = .top
         }
     }
 
