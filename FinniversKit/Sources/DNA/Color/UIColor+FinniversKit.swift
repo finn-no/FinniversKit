@@ -487,7 +487,7 @@ public extension UIColor {
     /// Base initializer, it creates an instance of `UIColor` using an HEX string.
     ///
     /// - Parameter hex: The base HEX string to create the color.
-    convenience init(hex: String) {
+    internal convenience init(hex: String) {
         let noHashString = hex.replacingOccurrences(of: "#", with: "")
         let scanner = Scanner(string: noHashString)
         scanner.charactersToBeSkipped = CharacterSet.symbols
