@@ -480,7 +480,7 @@ public extension UIColor {
     ///   - g: green (0-255)
     ///   - b: blue (0-255)
     ///   - a: alpla (0-1)
-    convenience init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1.0) { // swiftlint:disable:this identifier_name
+    internal convenience init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1.0) { // swiftlint:disable:this identifier_name
         self.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
     }
 
