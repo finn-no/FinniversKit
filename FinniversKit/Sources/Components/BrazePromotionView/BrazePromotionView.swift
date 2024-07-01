@@ -12,6 +12,7 @@ public class BrazePromotionView: UIView {
     public enum ImagePosition {
         case left
         case right
+        case top
     }
 
     private lazy var backgroundView: UIView = {
@@ -155,6 +156,7 @@ public class BrazePromotionView: UIView {
     public enum CardStyle: String, Sendable {
         case defaultStyle = "default"
         case leftAlignedGraphic = "leftAlignedGraphic"
+        case topAlignedGraphic = "topAlignedGraphic"
     }
 
     public weak var delegate: BrazePromotionViewDelegate?
@@ -164,14 +166,26 @@ public class BrazePromotionView: UIView {
     public init(viewModel: BrazePromotionViewModel, imageDatasource: RemoteImageViewDataSource) {
         self.viewModel = viewModel
         self.imageDatasource = imageDatasource
-        self.imagePosition = (viewModel.style == .defaultStyle) ? .right : .left
+        self.imagePosition = .right // default value
         super.init(frame: .zero)
+        determineImagePosition()
         setup()
         configure()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    private func determineImagePosition() {
+        switch viewModel.style {
+        case .defaultStyle:
+            imagePosition = .right
+        case .leftAlignedGraphic:
+            imagePosition = .left
+        case .topAlignedGraphic:
+            imagePosition = .top
+        }
     }
 
     private func configure() {
@@ -233,6 +247,22 @@ public class BrazePromotionView: UIView {
                     remoteImageView.topAnchor.constraint(equalTo: backgroundView.topAnchor),
                     remoteImageView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
                     remoteImageView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor)
+                ]
+
+            case .top:
+                stackViewConstraintsImage = [
+                    verticalStackView.topAnchor.constraint(equalTo: remoteImageView.bottomAnchor, constant: .spacingM),
+                    verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
+                    verticalStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -.spacingM),
+                    verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM)
+                ]
+
+                imageConstraints = [
+                    remoteImageView.widthAnchor.constraint(equalTo: backgroundView.widthAnchor),
+                    remoteImageView.topAnchor.constraint(equalTo: backgroundView.topAnchor),
+                    remoteImageView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor),
+                    remoteImageView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
+                    remoteImageView.heightAnchor.constraint(equalTo: remoteImageView.widthAnchor, multiplier: 0.5)
                 ]
             }
 
@@ -329,3 +359,4 @@ private class CloseButton: UIButton {
         bounds.insetBy(dx: -touchPointInset, dy: -touchPointInset).contains(point)
     }
 }
+
