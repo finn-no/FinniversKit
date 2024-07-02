@@ -21,11 +21,6 @@ import UIKit
         case boxed
     }
 
-    /// Allows the loading view to use a plain UIActivityIndicatorView,
-    /// useful for a smooth transition between the old indicator and the new one,
-    /// by using this flag we can avoid having multiple styles of showing progress in our app.
-    @objc public static var shouldUseOldIndicator: Bool = false
-
     private let animationDuration: TimeInterval = 0.3
     private let loadingIndicatorSize: CGFloat = 40
     private let boxedSize: CGFloat = 120
@@ -39,8 +34,7 @@ import UIKit
     private var loadingIndicatorCenterY: NSLayoutConstraint?
 
     private lazy var loadingIndicator: LoadingIndicatorView = {
-        let view = LoadingIndicatorView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = LoadingIndicatorView(withAutoLayout: true)
         view.transform = loadingIndicatorInitialTransform
         return view
     }()

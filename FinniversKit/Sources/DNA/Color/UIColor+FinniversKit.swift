@@ -733,8 +733,9 @@ public extension UIColor {
     ///   - g: green (0-255)
     ///   - b: blue (0-255)
     ///   - a: alpla (0-1)
+
     @available(*, deprecated, message: "Use Warp token instead")
-    convenience init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1.0) { // swiftlint:disable:this identifier_name
+    internal convenience init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1.0) { // swiftlint:disable:this identifier_name
         self.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
     }
 
@@ -742,7 +743,7 @@ public extension UIColor {
     ///
     /// - Parameter hex: The base HEX string to create the color.
     @available(*, deprecated, message: "Use Warp token instead")
-    convenience init(hex: String) {
+    internal convenience init(hex: String) {
         let noHashString = hex.replacingOccurrences(of: "#", with: "")
         let scanner = Scanner(string: noHashString)
         scanner.charactersToBeSkipped = CharacterSet.symbols

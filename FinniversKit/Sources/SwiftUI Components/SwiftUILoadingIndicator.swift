@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// Currently not in use. Replaced with Native ProgressView. Still here in case we decide to go back
 public struct SwiftUILoadingIndicator: View {
     private struct ProgressCircle: Shape {
         var startAngle: Angle

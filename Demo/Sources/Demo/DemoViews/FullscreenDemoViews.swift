@@ -17,7 +17,6 @@ extension MessageUserRequiredSheet: Demoable {
 }
 
 enum FullscreenDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
-    case frontPageView
     case emptyView
     case reportAdView
     case buyerPickerView
@@ -57,8 +56,6 @@ enum FullscreenDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
 
     var demoable: any Demoable {
         switch self {
-        case .frontPageView:
-            return FrontPageViewDemoViewController()
         case .emptyView:
             return EmptyViewDemoView()
         case .reportAdView:

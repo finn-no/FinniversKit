@@ -81,8 +81,6 @@
 		441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D69981FEA947500CD919A /* UIViewExtensions.swift */; };
 		441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D69991FEA947500CD919A /* LayoutHelpers.swift */; };
 		441D699D1FEA947600CD919A /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D699A1FEA947600CD919A /* Layout.swift */; };
-		441FE42D209A24E500B04EF1 /* MarketsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE41C209A24E500B04EF1 /* MarketsGridView.swift */; };
-		441FE42E209A24E500B04EF1 /* MarketsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE41E209A24E500B04EF1 /* MarketsViewModel.swift */; };
 		441FE430209A24E500B04EF1 /* StandardAdRecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE422209A24E500B04EF1 /* StandardAdRecommendationCell.swift */; };
 		441FE431209A24E500B04EF1 /* AdRecommendationsGridHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE424209A24E500B04EF1 /* AdRecommendationsGridHeaderView.swift */; };
 		441FE432209A24E500B04EF1 /* AdRecommendationsGridViewLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE425209A24E500B04EF1 /* AdRecommendationsGridViewLayoutConfiguration.swift */; };
@@ -147,7 +145,6 @@
 		45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C56C20494C7A000E788F /* SwitchViewModel.swift */; };
 		45EDD63E20A9CA22008F4503 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD63C20A9CA22008F4503 /* PopupView.swift */; };
 		45EDD63F20A9CA22008F4503 /* PopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD63D20A9CA22008F4503 /* PopupViewModel.swift */; };
-		468F59F2220B20EA001CC0C5 /* MarketsGridViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468F59F1220B20EA001CC0C5 /* MarketsGridViewFlowLayout.swift */; };
 		494047FC23CDBA8D00ECBCFD /* ViewingsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494047FB23CDBA8D00ECBCFD /* ViewingsListViewModel.swift */; };
 		494047FE23CDBBA100ECBCFD /* ViewingItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494047FD23CDBBA100ECBCFD /* ViewingItemViewModel.swift */; };
 		4940480023CDBEC500ECBCFD /* ViewingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494047FF23CDBEC500ECBCFD /* ViewingsListView.swift */; };
@@ -213,19 +210,15 @@
 		89A7A63D225337B50053D33B /* NativeAdvertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A63C225337B50053D33B /* NativeAdvertViewModel.swift */; };
 		89A7A645225352380053D33B /* NativeAdvertDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A643225352180053D33B /* NativeAdvertDelegates.swift */; };
 		89A7A648225352A30053D33B /* NativeAdvertContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A6462253524E0053D33B /* NativeAdvertContentView.swift */; };
-		8D6803B7010478807AD3DED2 /* CompactMarketsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680D3134966367339F8CB4 /* CompactMarketsViewCell.swift */; };
 		8D680452E7A4C1A4A942F34E /* NumberedListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6805190641E94E919DEA65 /* NumberedListItem.swift */; };
 		8D68049F4E30F91924B67CD3 /* SelectionOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680CAAFFF9E2F39CC9E68A /* SelectionOptionCell.swift */; };
-		8D68062436B7C4B841E0091C /* CompactMarketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680CF7FA4A73358FC5D688 /* CompactMarketsView.swift */; };
 		8D68071A775A6BD8DDE777A3 /* SwitchViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D68098752937463FDA8FF6E /* SwitchViewStyle.swift */; };
-		8D680920DD8531B10F4EFDE6 /* MarketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D68039C958633F7F481BC9E /* MarketsView.swift */; };
 		8D68095830EEFACD7AF7E50E /* RibbonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D68080E57C548D3B81ABC79 /* RibbonViewModel.swift */; };
 		8D680AB3EF002CCBA3CC222B /* IconRibbonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680A562D115D82DE4EBB7C /* IconRibbonView.swift */; };
 		8D680AD53DC8E0C0EFD758F8 /* NumberedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680F3A0BD309B089945E7A /* NumberedListView.swift */; };
 		8D680B43A9AC644605694747 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D68045809E7DBB833984EC6 /* SelectionView.swift */; };
 		8D680C60027F241553ECB6C5 /* SelectionOptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D68079DFA6B62675F1C5CB5 /* SelectionOptionModel.swift */; };
 		8D680D43020F07BDF6D39262 /* IconRibbonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6807BB9D8E109F5C7B3712 /* IconRibbonViewModel.swift */; };
-		8D680E45ACE6F8714A047D7C /* MarketsGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D680E9A39D86B272A9ABDB2 /* MarketsGridViewCell.swift */; };
 		91341EDB23C38288005B65CF /* NativeAdvertRecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91341EDA23C38288005B65CF /* NativeAdvertRecommendationView.swift */; };
 		91341EDD23C46BE5005B65CF /* NativeAdvertRibbon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91341EDC23C46BE5005B65CF /* NativeAdvertRibbon.swift */; };
 		9135BF8A22F2C31300C8E1F5 /* MKMapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9135BF8922F2C31300C8E1F5 /* MKMapViewExtensions.swift */; };
@@ -357,7 +350,6 @@
 		CF3D5EF7215A6D9E006E4D08 /* snare.wav in Resources */ = {isa = PBXBuildFile; fileRef = CF3D5EF3215A6D9E006E4D08 /* snare.wav */; };
 		CF3D5EF9215A6F3B006E4D08 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EF8215A6F3B006E4D08 /* FloatingButton.swift */; };
 		CF3D5F00215A75BF006E4D08 /* InstrumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */; };
-		CF3DEDB4219465F300DB3E5A /* FrontPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */; };
 		CF3F85BF229C29B3003A6748 /* IconCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3F85BE229C29B3003A6748 /* IconCollectionViewFlowLayout.swift */; };
 		CF45AF05231D24E300BE8B39 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45AF04231D24E300BE8B39 /* Step.swift */; };
 		CF45AF89231D3A3000BE8B39 /* StepSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45AF88231D3A3000BE8B39 /* StepSlider.swift */; };
@@ -568,8 +560,6 @@
 		441D69981FEA947500CD919A /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		441D69991FEA947500CD919A /* LayoutHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutHelpers.swift; sourceTree = "<group>"; };
 		441D699A1FEA947600CD919A /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		441FE41C209A24E500B04EF1 /* MarketsGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsGridView.swift; sourceTree = "<group>"; };
-		441FE41E209A24E500B04EF1 /* MarketsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsViewModel.swift; sourceTree = "<group>"; };
 		441FE422209A24E500B04EF1 /* StandardAdRecommendationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardAdRecommendationCell.swift; sourceTree = "<group>"; };
 		441FE424209A24E500B04EF1 /* AdRecommendationsGridHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdRecommendationsGridHeaderView.swift; sourceTree = "<group>"; };
 		441FE425209A24E500B04EF1 /* AdRecommendationsGridViewLayoutConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdRecommendationsGridViewLayoutConfiguration.swift; sourceTree = "<group>"; };
@@ -634,7 +624,6 @@
 		45D7C56C20494C7A000E788F /* SwitchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewModel.swift; sourceTree = "<group>"; };
 		45EDD63C20A9CA22008F4503 /* PopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		45EDD63D20A9CA22008F4503 /* PopupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewModel.swift; sourceTree = "<group>"; };
-		468F59F1220B20EA001CC0C5 /* MarketsGridViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsGridViewFlowLayout.swift; sourceTree = "<group>"; };
 		494047FB23CDBA8D00ECBCFD /* ViewingsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingsListViewModel.swift; sourceTree = "<group>"; };
 		494047FD23CDBBA100ECBCFD /* ViewingItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingItemViewModel.swift; sourceTree = "<group>"; };
 		494047FF23CDBEC500ECBCFD /* ViewingsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewingsListView.swift; sourceTree = "<group>"; };
@@ -699,7 +688,6 @@
 		89A7A63C225337B50053D33B /* NativeAdvertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertViewModel.swift; sourceTree = "<group>"; };
 		89A7A643225352180053D33B /* NativeAdvertDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertDelegates.swift; sourceTree = "<group>"; };
 		89A7A6462253524E0053D33B /* NativeAdvertContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertContentView.swift; sourceTree = "<group>"; };
-		8D68039C958633F7F481BC9E /* MarketsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsView.swift; sourceTree = "<group>"; };
 		8D68045809E7DBB833984EC6 /* SelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
 		8D6805190641E94E919DEA65 /* NumberedListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberedListItem.swift; sourceTree = "<group>"; };
 		8D68079DFA6B62675F1C5CB5 /* SelectionOptionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionOptionModel.swift; sourceTree = "<group>"; };
@@ -708,9 +696,6 @@
 		8D68098752937463FDA8FF6E /* SwitchViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchViewStyle.swift; sourceTree = "<group>"; };
 		8D680A562D115D82DE4EBB7C /* IconRibbonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconRibbonView.swift; sourceTree = "<group>"; };
 		8D680CAAFFF9E2F39CC9E68A /* SelectionOptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionOptionCell.swift; sourceTree = "<group>"; };
-		8D680CF7FA4A73358FC5D688 /* CompactMarketsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompactMarketsView.swift; sourceTree = "<group>"; };
-		8D680D3134966367339F8CB4 /* CompactMarketsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompactMarketsViewCell.swift; sourceTree = "<group>"; };
-		8D680E9A39D86B272A9ABDB2 /* MarketsGridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsGridViewCell.swift; sourceTree = "<group>"; };
 		8D680F3A0BD309B089945E7A /* NumberedListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberedListView.swift; sourceTree = "<group>"; };
 		91341EDA23C38288005B65CF /* NativeAdvertRecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertRecommendationView.swift; sourceTree = "<group>"; };
 		91341EDC23C46BE5005B65CF /* NativeAdvertRibbon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertRibbon.swift; sourceTree = "<group>"; };
@@ -844,7 +829,6 @@
 		CF3D5EF3215A6D9E006E4D08 /* snare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snare.wav; sourceTree = "<group>"; };
 		CF3D5EF8215A6F3B006E4D08 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentTests.swift; sourceTree = "<group>"; };
-		CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageView.swift; sourceTree = "<group>"; };
 		CF3F85BE229C29B3003A6748 /* IconCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		CF45AF04231D24E300BE8B39 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		CF45AF88231D3A3000BE8B39 /* StepSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSlider.swift; sourceTree = "<group>"; };
@@ -1314,40 +1298,10 @@
 			isa = PBXGroup;
 			children = (
 				441FE41F209A24E500B04EF1 /* AdRecommendations */,
-				441FE416209A24E500B04EF1 /* Markets */,
 				CFFDF89522F311E300FE68EA /* NeighborhoodProfile */,
 				5B959AA16D7FF2BABAF31090 /* OverflowCollectionView */,
 			);
 			path = GridViews;
-			sourceTree = "<group>";
-		};
-		441FE416209A24E500B04EF1 /* Markets */ = {
-			isa = PBXGroup;
-			children = (
-				441FE41A209A24E500B04EF1 /* GridView */,
-				441FE41D209A24E500B04EF1 /* Model */,
-				8D68039C958633F7F481BC9E /* MarketsView.swift */,
-				8D680F129DD4E2FA8A5BE346 /* CompactView */,
-			);
-			path = Markets;
-			sourceTree = "<group>";
-		};
-		441FE41A209A24E500B04EF1 /* GridView */ = {
-			isa = PBXGroup;
-			children = (
-				441FE41C209A24E500B04EF1 /* MarketsGridView.swift */,
-				468F59F1220B20EA001CC0C5 /* MarketsGridViewFlowLayout.swift */,
-				8D680C8FF86C7741AA933606 /* Cell */,
-			);
-			path = GridView;
-			sourceTree = "<group>";
-		};
-		441FE41D209A24E500B04EF1 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				441FE41E209A24E500B04EF1 /* MarketsViewModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		441FE41F209A24E500B04EF1 /* AdRecommendations */ = {
@@ -1662,14 +1616,6 @@
 			path = SelectorTitleView;
 			sourceTree = "<group>";
 		};
-		447AFC0E20984B63000F793E /* FrontPage */ = {
-			isa = PBXGroup;
-			children = (
-				CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */,
-			);
-			path = FrontPage;
-			sourceTree = "<group>";
-		};
 		44898D591FE5B9C200F6017B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1826,7 +1772,6 @@
 				CF164DD4231573F100250822 /* FavoriteAdCommentInput */,
 				9A37D4A128C47173977AAE19 /* FavoriteAdsList */,
 				CF7496BD23BE269F00D60901 /* FavoriteFolderActions */,
-				447AFC0E20984B63000F793E /* FrontPage */,
 				9F213E134EF7C0A184D133F5 /* FullscreenGallery */,
 				14EBA253215A633800613E5A /* LoadingView */,
 				9BC33DE422D7219F007CCD65 /* LoginEntryView */,
@@ -2192,14 +2137,6 @@
 			path = NumberedListView;
 			sourceTree = "<group>";
 		};
-		8D680C8FF86C7741AA933606 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				8D680E9A39D86B272A9ABDB2 /* MarketsGridViewCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		8D680E7F9086E07B63CB9D23 /* SelectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2208,15 +2145,6 @@
 				8D6806B769B6F8543CC7CCAF /* Models */,
 			);
 			path = SelectionView;
-			sourceTree = "<group>";
-		};
-		8D680F129DD4E2FA8A5BE346 /* CompactView */ = {
-			isa = PBXGroup;
-			children = (
-				8D680CF7FA4A73358FC5D688 /* CompactMarketsView.swift */,
-				8D680D3134966367339F8CB4 /* CompactMarketsViewCell.swift */,
-			);
-			path = CompactView;
 			sourceTree = "<group>";
 		};
 		9135BF8822F2C2EC00C8E1F5 /* MapKit */ = {
@@ -3481,7 +3409,6 @@
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
 				E681A0E92923FCE5008564E2 /* HyperlinkTextViewModel.swift in Sources */,
 				CF4A053C21FB2ACB000BB7DA /* PianoEffectControl.swift in Sources */,
-				441FE42E209A24E500B04EF1 /* MarketsViewModel.swift in Sources */,
 				DAD6EB272369916100968497 /* SettingsViewCellModel.swift in Sources */,
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
 				F2C3E96022CB669A00CED7E0 /* QuestionnaireView+Style.swift in Sources */,
@@ -3685,7 +3612,6 @@
 				62AAB23A23278087007766E6 /* RadioButtonTableViewCell.swift in Sources */,
 				AF91BB97202C74D0003E6366 /* BroadcastItem.swift in Sources */,
 				441FE434209A24E500B04EF1 /* AdRecommendationsGridView.swift in Sources */,
-				468F59F2220B20EA001CC0C5 /* MarketsGridViewFlowLayout.swift in Sources */,
 				9B06096D23F14B80005CB592 /* CompactView.swift in Sources */,
 				9BC5F40924114085007D74AC /* ResultView.swift in Sources */,
 				CFCED8E522CF71AC0049A3A0 /* FavoriteFoldersFooterView.swift in Sources */,
@@ -3713,7 +3639,6 @@
 				0884C6CE22B7BE360015474D /* DisclaimerViewModel.swift in Sources */,
 				1753871D291AA55000DA57D2 /* HTMLStringParserTextTranslator.swift in Sources */,
 				F2BE6C09236AD24B0085A05A /* CheckmarkTitleView.swift in Sources */,
-				CF3DEDB4219465F300DB3E5A /* FrontPageView.swift in Sources */,
 				CF4A053A21FB2ACB000BB7DA /* PianoEffectIndicatorsView.swift in Sources */,
 				45D7C56B204949E2000E788F /* SwitchView.swift in Sources */,
 				43BACE6A21117D430052114C /* BuyerPickerView.swift in Sources */,
@@ -3746,7 +3671,6 @@
 				5D0ED35725A49FC9007750D0 /* FinnTextField+Input.swift in Sources */,
 				9BEB2881231D489F00D28BAD /* LoanApplyView.swift in Sources */,
 				CF7C460522257A8A001FB92C /* EarthHourSignUpView.swift in Sources */,
-				441FE42D209A24E500B04EF1 /* MarketsGridView.swift in Sources */,
 				45EDD63F20A9CA22008F4503 /* PopupViewModel.swift in Sources */,
 				444246022137D60400D42AB8 /* FavoriteFoldersListView.swift in Sources */,
 				9B06096B23F14B2F005CB592 /* ElementView.swift in Sources */,
@@ -3863,10 +3787,6 @@
 				8D68095830EEFACD7AF7E50E /* RibbonViewModel.swift in Sources */,
 				8D680D43020F07BDF6D39262 /* IconRibbonViewModel.swift in Sources */,
 				8D680AB3EF002CCBA3CC222B /* IconRibbonView.swift in Sources */,
-				8D680920DD8531B10F4EFDE6 /* MarketsView.swift in Sources */,
-				8D680E45ACE6F8714A047D7C /* MarketsGridViewCell.swift in Sources */,
-				8D68062436B7C4B841E0091C /* CompactMarketsView.swift in Sources */,
-				8D6803B7010478807AD3DED2 /* CompactMarketsViewCell.swift in Sources */,
 				8D680AD53DC8E0C0EFD758F8 /* NumberedListView.swift in Sources */,
 				8D680452E7A4C1A4A942F34E /* NumberedListItem.swift in Sources */,
 				ADC5C9704E980F30DB92ECF6 /* CollapsibleContentView+Style.swift in Sources */,

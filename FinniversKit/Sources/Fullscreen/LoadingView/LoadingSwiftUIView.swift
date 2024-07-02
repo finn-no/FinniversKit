@@ -50,7 +50,7 @@ public struct LoadingSwiftUIView: View {
                                 }
                             }
                     } else {
-                        SwiftUILoadingIndicator()
+                        ProgressView()
                             .scaleEffect(loadingIndicatorScale)
                             .onAppear {
                                 loadingIndicatorScale = initialScale

@@ -10,8 +10,6 @@ enum RecyclingDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case favoriteFoldersListView
     case favoritesListView
     case savedSearchesListView
-    case marketsGridView
-    case compactMarketsView
     case adRecommendationsGridView
     case settingsView
     case neighborhoodProfileView
@@ -39,10 +37,6 @@ enum RecyclingDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return FavoritesListViewDemoView()
         case .savedSearchesListView:
             return SavedSearchesListViewDemoView()
-        case .marketsGridView:
-            return MarketsGridDemoView()
-        case .compactMarketsView:
-            return CompactMarketsDemoView()
         case .adRecommendationsGridView:
             return AdRecommendationsGridViewDemoView()
         case .settingsView:
