@@ -3,6 +3,7 @@
 //
 
 import SwiftUI
+import Warp
 
 public extension NMPInfoboxView {
     /**
@@ -48,30 +49,30 @@ public extension NMPInfoboxView {
         var borderColor: Color {
             switch self {
             case .critical:
-                warpToken.borderNegative
+                Warp.Token.borderNegative
             case .custom(_, _, let borderColor, _):
                 borderColor ?? .clear
             case .information:
-                warpToken.borderInfo
+                Warp.Token.borderInfo
             case .success:
-                warpToken.borderPositive
+                Warp.Token.borderPositive
             case .warning:
-                warpToken.borderWarning
+                Warp.Token.borderWarning
             }
         }
 
         var subtleBorderColor: Color {
             switch self {
             case .critical:
-                warpToken.borderNegativeSubtle
+                Warp.Token.borderNegativeSubtle
             case .custom(_, let subtleBorderColor, _, _):
                 subtleBorderColor ?? .clear
             case .information:
-                warpToken.borderInfoSubtle
+                Warp.Token.borderInfoSubtle
             case .success:
-                warpToken.borderPositiveSubtle
+                Warp.Token.borderPositiveSubtle
             case .warning:
-                warpToken.borderWarningSubtle
+                Warp.Token.borderWarningSubtle
             }
         }
 

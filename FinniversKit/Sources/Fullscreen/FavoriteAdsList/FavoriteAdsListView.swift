@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol FavoriteAdsListViewDelegate: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectItemAt indexPath: IndexPath)
@@ -446,7 +447,7 @@ extension FavoriteAdsListView: UITableViewDelegate {
                 completionHandler(true)
             })
 
-        commentAction.backgroundColor = warpUIToken.iconStatic
+        commentAction.backgroundColor = Warp.UIToken.iconStatic
 
         let deleteAction = UIContextualAction(
             style: .normal,

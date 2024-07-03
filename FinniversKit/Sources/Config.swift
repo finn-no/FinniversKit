@@ -16,8 +16,6 @@ public struct Config {
 
 public let warpColor = Warp.Config.colorProvider
 public let warpUIColor = Warp.Config.uiColorProvider
-public let warpToken = Warp.Config.tokenProvider
-public let warpUIToken = Warp.Config.uiTokenProvider
 
 @objc public extension Bundle {
     static var finniversKit: Bundle {
