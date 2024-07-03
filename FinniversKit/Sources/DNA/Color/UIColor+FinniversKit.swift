@@ -243,7 +243,7 @@ extension CGColor {
     @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     public class var nmpBrandControlSelected: UIColor { Config.colorProvider.nmpBrandControlSelected }
     @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
-    public class var nmpBrandDecoration: UIColor { Config.colorProviderWarp.UIToken.backgroundPrimary }
+    public class var nmpBrandDecoration: UIColor { Config.colorProvider.nmpBrandDecoration }
 
     // Deprecated
     @available(*, deprecated, message: "Replace with textAction, nmpBrandControlSelected or nmpBrandDecoration")
@@ -354,7 +354,7 @@ extension CGColor {
     @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     public class var nmpBrandControlSelected: CGColor { Config.colorProvider.nmpBrandControlSelected.cgColor }
     @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
-    public class var nmpBrandDecoration: CGColor { Config.colorProviderWarp.UIToken.backgroundPrimary.cgColor }
+    public class var nmpBrandDecoration: CGColor { Config.colorProvider.nmpBrandDecoration.cgColor }
 }
 
 // MARK: - FINN UIColors (deprecated)
