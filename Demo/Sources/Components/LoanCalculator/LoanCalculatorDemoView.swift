@@ -168,6 +168,7 @@ extension LoanCalculatorDemoViewModel {
 
         var accentColor: UIColor? {
             switch self {
+                // TODO: Should we keep the extention for this use case?
             case .dnb: return UIColor.dynamicColor(
                 defaultColor: UIColor(hex: "#377A82"),
                 darkModeColor: UIColor(hex: "#3AA8B4")

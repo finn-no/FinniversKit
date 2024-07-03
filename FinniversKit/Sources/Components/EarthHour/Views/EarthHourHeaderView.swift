@@ -9,7 +9,7 @@ final class EarthHourHeaderView: UIView {
 
     private let earthRotationDegrees = 15
     // ignore
-    private lazy var fillColor = UIColor(r: 27, g: 64, b: 134)
+    private lazy var fillColor = UIColor(r: 27, g: 64, b: 134) // TODO: What color?
 
     private(set) lazy var closeButton: UIButton = {
         let button = UIButton(withAutoLayout: true)

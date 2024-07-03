@@ -14,22 +14,22 @@ public class SwiftUIHostingTableViewCell<Content: View>: UITableViewCell {
             controller.view.translatesAutoresizingMaskIntoConstraints = false
             controller.view.backgroundColor = .clear
             self.controller = controller
-            
+
             parent?.addChild(controller)
-            
+
             contentView.addSubview(controller.view)
-            
+
             NSLayoutConstraint.activate([
                 controller.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
                 controller.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
                 controller.view.topAnchor.constraint(equalTo: contentView.topAnchor),
                 controller.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
             ])
-            
+
             if let parent {
                 controller.didMove(toParent: parent)
             }
-            
+
             controller.view.layoutIfNeeded()
         }
     }

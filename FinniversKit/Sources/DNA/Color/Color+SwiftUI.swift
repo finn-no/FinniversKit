@@ -114,6 +114,6 @@ extension Color {
     @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
     public static var nmpBrandControlSelected: Color    { Color(UIColor.nmpBrandControlSelected) }
     @available(*, deprecated, message: "Use Warp backgroundPrimary instead")
-    public static var nmpBrandDecoration: Color         { Color(UIColor.nmpBrandDecoration) }
+    public static var nmpBrandDecoration: Color         { Color(UIColorWarp.UIToken.backgroundPrimary) }
 }
 // swiftlint:enable opening_brace

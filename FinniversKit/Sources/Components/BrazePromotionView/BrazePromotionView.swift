@@ -359,4 +359,3 @@ private class CloseButton: UIButton {
         bounds.insetBy(dx: -touchPointInset, dy: -touchPointInset).contains(point)
     }
 }
-

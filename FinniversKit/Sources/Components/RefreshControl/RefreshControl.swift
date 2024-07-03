@@ -78,7 +78,7 @@ public class RefreshControl: UIRefreshControl {
     /// Set progress based on the current scroll position and begin refreshing if needed.
     private func handleLoadingProgress() {
         let pullDistance = superview.flatMap({ $0.bounds.height / 5 }) ?? defaultPullDistance
-        let progress = min(max(topOffset, 0.0), pullDistance) / pullDistance
+        _ = min(max(topOffset, 0.0), pullDistance) / pullDistance
 
         if topOffset >= pullDistance {
             beginRefreshing()

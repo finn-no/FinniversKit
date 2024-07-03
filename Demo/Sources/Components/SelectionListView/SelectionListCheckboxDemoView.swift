@@ -101,7 +101,7 @@ private extension Array where Element == SelectionItemModel {
                           attribute.value == "color:tjt-price-highlight" else {
                         return
                     }
-
+                    // TODO: What token/color?
                     currentStyle.foregroundColor = .dynamicColor(defaultColor: .red, darkModeColor: .yellow)
                 }
             }
