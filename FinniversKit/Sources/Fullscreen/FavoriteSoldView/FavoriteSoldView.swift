@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Warp
 
 public protocol FavoriteSoldViewModel {
     var title: String? { get }
@@ -25,7 +26,7 @@ public class FavoriteSoldView: UIView {
 
     private weak var delegate: FavoriteSoldViewDelegate?
 
-    private static let margins: CGFloat = .spacingM
+    private static let margins: CGFloat = Warp.Spacing.spacing200
     private static let titleTopSpacing: CGFloat = .spacingS
     private static let bodyTopSpacing: CGFloat = .spacingXS
     private static let similarAdsTitleTopSpacing: CGFloat = .spacingXL + .spacingS

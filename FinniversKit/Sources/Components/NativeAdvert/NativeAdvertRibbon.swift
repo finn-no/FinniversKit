@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Warp
 
 public struct NativeAdvertRibbonViewModel {
     let type: String

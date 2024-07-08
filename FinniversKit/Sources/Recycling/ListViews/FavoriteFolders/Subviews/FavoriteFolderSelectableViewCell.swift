@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
     private let titleLabelDefaultFont: UIFont = .bodyRegular
@@ -24,7 +25,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
     private lazy var stackViewToCheckmarkConstraint = stackView.trailingAnchor.constraint(
         equalTo: checkmarkImageView.leadingAnchor,
-        constant: -.spacingM
+        constant: -Warp.Spacing.spacing200
     )
 
     // MARK: - Init
@@ -104,9 +105,9 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         addSubview(editModeView)
 
         NSLayoutConstraint.activate([
-            checkmarkImageView.heightAnchor.constraint(equalToConstant: .spacingM),
-            checkmarkImageView.widthAnchor.constraint(equalToConstant: .spacingM),
-            checkmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            checkmarkImageView.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
+            checkmarkImageView.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
+            checkmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
             checkmarkImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
             stackViewToCheckmarkConstraint,

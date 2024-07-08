@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public class RibbonView: UIView {
 

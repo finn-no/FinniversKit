@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 final class EarthHourHeaderView: UIView {
     var bottomCurveHeight: CGFloat = 0

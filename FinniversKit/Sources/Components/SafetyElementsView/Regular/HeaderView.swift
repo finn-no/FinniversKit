@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 extension SafetyElementsView {
     class HeaderView: UIView {
@@ -56,7 +57,7 @@ extension SafetyElementsView {
             view.backgroundColor = .backgroundSubtle
             view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
             view.layer.cornerRadius = .spacingS
-            view.layoutMargins = UIEdgeInsets(vertical: .spacingS, horizontal: .spacingM)
+            view.layoutMargins = UIEdgeInsets(vertical: .spacingS, horizontal: Warp.Spacing.spacing200)
             return view
         }()
 
@@ -78,8 +79,8 @@ extension SafetyElementsView {
             titleLabel.fillInSuperviewLayoutMargins()
 
             NSLayoutConstraint.activate([
-                iconImageView.heightAnchor.constraint(equalToConstant: .spacingM * 1.5),
-                iconImageView.widthAnchor.constraint(equalToConstant: .spacingM * 1.5),
+                iconImageView.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200 * 1.5),
+                iconImageView.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200 * 1.5),
             ])
 
             outerStackView.addArrangedSubview(iconImageView)

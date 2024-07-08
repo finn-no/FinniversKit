@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public final class NativeAdvertGridView: UIView {
 
@@ -67,10 +68,10 @@ public final class NativeAdvertGridView: UIView {
         imageView.widthAnchor.constraint(equalTo: container.widthAnchor, multiplier: 0.5),
         imageView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
 
-        detailsContainer.topAnchor.constraint(equalTo: container.topAnchor, constant: .spacingM),
-        detailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.spacingM),
-        detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingM),
-        detailsContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -.spacingM)
+        detailsContainer.topAnchor.constraint(equalTo: container.topAnchor, constant: Warp.Spacing.spacing200),
+        detailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -Warp.Spacing.spacing200),
+        detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: Warp.Spacing.spacing200),
+        detailsContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -Warp.Spacing.spacing200)
     ]
 
     // MARK: - Init

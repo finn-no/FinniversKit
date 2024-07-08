@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 class FavoriteAdsSortingView: UIView {
 
@@ -60,7 +61,7 @@ class FavoriteAdsSortingView: UIView {
             arrowImage.heightAnchor.constraint(equalToConstant: 12),
             arrowImage.widthAnchor.constraint(equalToConstant: 12),
             arrowImage.centerYAnchor.constraint(equalTo: sortingLabel.centerYAnchor),
-            arrowImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
+            arrowImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200)
         ])
     }
 }

@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public final class PhaseListView: UIView {
     private lazy var stackView: UIStackView = {
@@ -54,10 +55,10 @@ public final class PhaseListView: UIView {
         addSubview(stackView)
 
         let insets = UIEdgeInsets(
-            top: .spacingM,
-            leading: .spacingM,
-            bottom: -.spacingM,
-            trailing: -.spacingM
+            top: Warp.Spacing.spacing200,
+            leading: Warp.Spacing.spacing200,
+            bottom: -Warp.Spacing.spacing200,
+            trailing: -Warp.Spacing.spacing200
         )
 
         stackView.fillInSuperview(insets: insets)

@@ -3,6 +3,7 @@
 //
 
 import SwiftUI
+import Warp
 
 public struct InfoboxSwiftUIView: View {
     public let style: InfoboxView.Style
@@ -31,7 +32,7 @@ public struct InfoboxSwiftUIView: View {
     }
 
     public var body: some View {
-        VStack(alignment: .center, spacing: .spacingM) {
+        VStack(alignment: .center, spacing: Warp.Spacing.spacing200) {
             Text(viewModel.title)
                 .finnFont(style.titleStyle)
             Text(viewModel.detail)
@@ -45,7 +46,7 @@ public struct InfoboxSwiftUIView: View {
         }
         .multilineTextAlignment(.center)
         .padding(.horizontal, .spacingXL)
-        .padding(.vertical, .spacingM)
+        .padding(.vertical, Warp.Spacing.spacing200)
         .frame(maxWidth: .infinity)
         .foregroundStyle(Color(uiColor: style.textColor))
         .background(Color(uiColor: style.backgroundColor))

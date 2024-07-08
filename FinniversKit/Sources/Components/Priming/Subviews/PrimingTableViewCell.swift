@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 final class PrimingTableViewCell: UITableViewCell {
     // MARK: - Private properties
@@ -58,16 +59,16 @@ final class PrimingTableViewCell: UITableViewCell {
             iconImageView.widthAnchor.constraint(equalToConstant: 56),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 22),
-            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
+            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing200),
 
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
-            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .spacingM),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing200),
+            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: Warp.Spacing.spacing200),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
 
             detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXXS),
             detailLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             detailLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM)
+            detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Warp.Spacing.spacing200)
         ])
     }
 }

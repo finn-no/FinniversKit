@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol BuyerPickerCellDelegate: AnyObject {
     func buyerPickerCell(_ cell: BuyerPickerProfileCell, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
@@ -76,8 +77,8 @@ class BuyerPickerProfileCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             profileStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
-            profileStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-            profileStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            profileStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            profileStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
             profileStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingS),
 
             profileImage.heightAnchor.constraint(equalToConstant: BuyerPickerProfileCell.profileImageSize),

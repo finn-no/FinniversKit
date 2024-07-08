@@ -1,5 +1,6 @@
 import FinniversKit
 import DemoKit
+import Warp
 
 class SafetyElementsDemoView: UIView {
     private lazy var safetyElementsView: SafetyElementsView = {
@@ -67,7 +68,7 @@ class SafetyElementsDemoView: UIView {
     // MARK: - Private methods
     private func setup() {
         addSubview(safetyElementsView)
-        layoutMargins = UIEdgeInsets(all: .spacingM)
+        layoutMargins = UIEdgeInsets(all: Warp.Spacing.spacing200)
 
         NSLayoutConstraint.activate([
             safetyElementsView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),

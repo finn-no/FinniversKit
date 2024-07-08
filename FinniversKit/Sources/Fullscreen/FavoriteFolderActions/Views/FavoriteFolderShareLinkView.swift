@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol FavoriteFolderShareLinkViewDelegate: AnyObject {
     func favoriteFolderShareLinkViewDidSelectButton(_ view: FavoriteFolderShareLinkView)
@@ -71,12 +72,12 @@ final class FavoriteFolderShareLinkView: UIView {
 
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             iconImageView.widthAnchor.constraint(equalToConstant: FavoriteActionCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             descriptionLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            descriptionLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .spacingM),
+            descriptionLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: Warp.Spacing.spacing200),
             descriptionLabel.trailingAnchor.constraint(equalTo: button.leadingAnchor),
 
             button.centerYAnchor.constraint(equalTo: centerYAnchor),

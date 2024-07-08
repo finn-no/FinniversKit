@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public protocol BrazePromotionViewDelegate: AnyObject {
     func brazePromotionView(_ brazePromotionView: BrazePromotionView, didSelect action: BrazePromotionView.Action)
@@ -118,7 +119,7 @@ public class BrazePromotionView: UIView {
 
     private lazy var buttonStackView: UIStackView = {
         let axis = determineButtonStackViewAxis()
-        let spacing: CGFloat = axis == .horizontal ? .spacingM : .spacingXS
+        let spacing: CGFloat = axis == .horizontal ? Warp.Spacing.spacing200 : .spacingXS
         let stackView = UIStackView(axis: axis, spacing: spacing, withAutoLayout: true)
         stackView.distribution = .fill
         stackView.alignment = .leading
@@ -130,10 +131,10 @@ public class BrazePromotionView: UIView {
     private var stackViewConstraintsImage: [NSLayoutConstraint] = []
 
     private lazy var stackViewConstraintsNoImage: [NSLayoutConstraint] = [
-        verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
-        verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
-        verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
-        verticalStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -.spacingM),
+        verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: Warp.Spacing.spacing200),
+        verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: Warp.Spacing.spacing200),
+        verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -Warp.Spacing.spacing200),
+        verticalStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -Warp.Spacing.spacing200),
     ]
 
     private var viewModel: BrazePromotionViewModel
@@ -220,10 +221,10 @@ public class BrazePromotionView: UIView {
             switch imagePosition {
             case .left:
                 stackViewConstraintsImage = [
-                    verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
-                    verticalStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -.spacingM),
-                    verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
-                    verticalStackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .spacingM),
+                    verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: Warp.Spacing.spacing200),
+                    verticalStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -Warp.Spacing.spacing200),
+                    verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -Warp.Spacing.spacing200),
+                    verticalStackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: Warp.Spacing.spacing200),
                     verticalStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
                 ]
 
@@ -236,9 +237,9 @@ public class BrazePromotionView: UIView {
 
             case .right:
                 stackViewConstraintsImage = [
-                    verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
-                    verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
-                    verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
+                    verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: Warp.Spacing.spacing200),
+                    verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: Warp.Spacing.spacing200),
+                    verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -Warp.Spacing.spacing200),
                     verticalStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
                 ]
 
@@ -251,10 +252,10 @@ public class BrazePromotionView: UIView {
 
             case .top:
                 stackViewConstraintsImage = [
-                    verticalStackView.topAnchor.constraint(equalTo: remoteImageView.bottomAnchor, constant: .spacingM),
-                    verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
-                    verticalStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -.spacingM),
-                    verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM)
+                    verticalStackView.topAnchor.constraint(equalTo: remoteImageView.bottomAnchor, constant: Warp.Spacing.spacing200),
+                    verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: Warp.Spacing.spacing200),
+                    verticalStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -Warp.Spacing.spacing200),
+                    verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -Warp.Spacing.spacing200)
                 ]
 
                 imageConstraints = [

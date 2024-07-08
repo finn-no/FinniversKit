@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol NotificationsListFooterViewDelegate: AnyObject {
     func notificationsListFooterView(_ notificationsListFooterView: NotificationsListFooterView, didSelectFooterViewAtSection section: Int)
@@ -38,7 +39,7 @@ public class NotificationsListFooterView: UITableViewHeaderFooterView {
 
         contentView.addSubview(titleLabel)
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
         ])

@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public class Panel: UIView {
     private let cornerRadius: CGFloat = 8
@@ -53,6 +54,6 @@ public class Panel: UIView {
         }
 
         addSubview(textLabel)
-        textLabel.fillInSuperview(margin: .spacingM)
+        textLabel.fillInSuperview(margin: Warp.Spacing.spacing200)
     }
 }

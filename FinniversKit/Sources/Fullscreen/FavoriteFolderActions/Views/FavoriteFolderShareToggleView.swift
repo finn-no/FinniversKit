@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol FavoriteFolderShareToggleViewDelegate: AnyObject {
     func favoriteFolderShareToggleView(_ view: FavoriteFolderShareToggleView, didChangeValueFor switchControl: UISwitch)
@@ -78,16 +79,16 @@ final class FavoriteFolderShareToggleView: UIView {
 
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             iconImageView.widthAnchor.constraint(equalToConstant: FavoriteActionCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .spacingM),
-            titleLabel.trailingAnchor.constraint(equalTo: switchControl.leadingAnchor, constant: -.spacingM),
+            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: Warp.Spacing.spacing200),
+            titleLabel.trailingAnchor.constraint(equalTo: switchControl.leadingAnchor, constant: -Warp.Spacing.spacing200),
 
             switchControl.centerYAnchor.constraint(equalTo: centerYAnchor),
-            switchControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            switchControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
             separatorView.bottomAnchor.constraint(equalTo: bottomAnchor),
             separatorView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),

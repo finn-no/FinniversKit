@@ -1,4 +1,5 @@
 import SwiftUI
+import Warp
 
 public struct FrontPageTransactionView: View {
     @ObservedObject
@@ -48,7 +49,7 @@ public struct FrontPageTransactionView: View {
                     .roundedBorder(radius: cornerRadius, width: 1, color: .black.opacity(0.1))
                     .animation(.easeOut(duration: 0.2), value: model.image)
                 }
-                .padding(.spacingM)
+                .padding(Warp.Spacing.spacing200)
             }
             .background(
                 RoundedRectangle(cornerRadius: cornerRadius)
@@ -94,6 +95,6 @@ struct FrontPageTransactionView_Previews: PreviewProvider {
                 transactionId: nil
             )
         )
-        .padding(.spacingM)
+        .padding(Warp.Spacing.spacing200)
     }
 }

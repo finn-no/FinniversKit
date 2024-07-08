@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public class IconRibbonView: UIView {
 
@@ -10,7 +11,7 @@ public class IconRibbonView: UIView {
 
     private lazy var iconImageView = UIImageView(withAutoLayout: true)
     private var style: RibbonView.Style = .default
-    private let horisontalMargin: CGFloat = .spacingM
+    private let horisontalMargin: CGFloat = Warp.Spacing.spacing200
     private let verticalMargin: CGFloat = 3
     private let cornerRadius: CGFloat = 8
 

@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Warp
 
 protocol MessageInputTextViewDelegate: AnyObject {
     func messageFormView(_ view: MessageInputTextView, didEditMessageText text: String)
@@ -116,28 +117,28 @@ class MessageInputTextView: UIView {
         addSubview(additionalInfoLabel)
 
         NSLayoutConstraint.activate([
-            textViewLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
-            textViewLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            textViewLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200),
+            textViewLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             textViewLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
             textViewLabel.bottomAnchor.constraint(equalTo: textView.topAnchor, constant: -.spacingS),
 
-            textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
             textView.bottomAnchor.constraint(equalTo: disclaimerLabel.topAnchor, constant: -.spacingS),
 
-            disclaimerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            disclaimerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             disclaimerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
-            disclaimerLabel.bottomAnchor.constraint(equalTo: phoneViewLabel.topAnchor, constant: -.spacingM),
+            disclaimerLabel.bottomAnchor.constraint(equalTo: phoneViewLabel.topAnchor, constant: -Warp.Spacing.spacing200),
 
-            phoneViewLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            phoneViewLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             phoneViewLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
             phoneViewLabel.bottomAnchor.constraint(equalTo: phoneView.topAnchor, constant: -.spacingS),
 
-            phoneView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            phoneView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             phoneView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
             phoneView.bottomAnchor.constraint(equalTo: additionalInfoLabel.topAnchor, constant: -.spacingS),
 
-            additionalInfoLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            additionalInfoLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             additionalInfoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
             additionalInfoLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS)
         ])

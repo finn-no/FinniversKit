@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol ResultViewDelegate: AnyObject {
     func resultViewDidTapActionButton(_ resultView: ResultView)
@@ -71,7 +72,7 @@ public class ResultView: UIView {
         icon: UIImage? = nil,
         backgroundColor: UIColor = .backgroundSubtle,
         iconTintColor: UIColor? = .icon,
-        iconBottomSpacing: CGFloat = .spacingM,
+        iconBottomSpacing: CGFloat = Warp.Spacing.spacing200,
         titleBottomSpacing: CGFloat = 0,
         iconHeight: CGFloat = 40
     ) {
@@ -114,7 +115,7 @@ public class ResultView: UIView {
             iconHeightConstraint,
         ])
 
-        stackView.setCustomSpacing(.spacingM, after: descriptionLabel)
+        stackView.setCustomSpacing(Warp.Spacing.spacing200, after: descriptionLabel)
         stackView.centerAndConstraintInSuperview()
     }
 

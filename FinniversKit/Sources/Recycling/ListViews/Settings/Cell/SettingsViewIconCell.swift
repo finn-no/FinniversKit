@@ -1,4 +1,5 @@
 import SwiftUI
+import Warp
 
 struct SettingsViewIconCell: View {
     let title: String
@@ -18,7 +19,7 @@ struct SettingsViewIconCell: View {
             Image(uiImage: icon)
                 .resizable()
                 .renderingMode(.template)
-                .frame(width: .spacingM, height: .spacingM)
+                .frame(width: Warp.Spacing.spacing200, height: Warp.Spacing.spacing200)
                 .foregroundColor(tintColor)
                 .padding([.trailing], .spacingXL)
         }.bottomDivider(!isLastItem)
@@ -28,7 +29,7 @@ struct SettingsViewIconCell: View {
 extension View {
     func bottomDivider(
         _ isLastItem: Bool,
-        inset: EdgeInsets = EdgeInsets(top: 0, leading: .spacingM, bottom: 0, trailing: 0)
+        inset: EdgeInsets = EdgeInsets(top: 0, leading: Warp.Spacing.spacing200, bottom: 0, trailing: 0)
     ) -> some View {
         modifier(BottomDivider(isLastItem: isLastItem, inset: inset))
     }

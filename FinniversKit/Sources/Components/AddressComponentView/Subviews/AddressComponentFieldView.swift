@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public class AddressComponentFieldView: UIView {
 
@@ -40,18 +41,18 @@ public class AddressComponentFieldView: UIView {
 
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
 
             chevronImageView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: .spacingS),
-            chevronImageView.leadingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: .spacingM),
-            chevronImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-            chevronImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingM),
+            chevronImageView.leadingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: Warp.Spacing.spacing200),
+            chevronImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
+            chevronImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -Warp.Spacing.spacing200),
             chevronImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             chevronImageView.heightAnchor.constraint(equalToConstant: 14),
             chevronImageView.widthAnchor.constraint(equalToConstant: 8),
 
-            hairlineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            hairlineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             hairlineView.trailingAnchor.constraint(equalTo: trailingAnchor),
             hairlineView.bottomAnchor.constraint(equalTo: bottomAnchor),
             hairlineView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale)

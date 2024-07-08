@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public protocol NavigationLinkViewDelegate: AnyObject {
     func navigationLinkViewWasTapped(_ navigationLinkView: NavigationLinkView)
@@ -23,7 +24,7 @@ public class NavigationLinkView: UIView {
     public init(
         withSubview view: UIView,
         withAutoLayout: Bool = false,
-        padding: CGFloat = .spacingM,
+        padding: CGFloat = Warp.Spacing.spacing200,
         backgroundColor: UIColor = .backgroundInfoSubtle
     ) {
         self.padding = padding

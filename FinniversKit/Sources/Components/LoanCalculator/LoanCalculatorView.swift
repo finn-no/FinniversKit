@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol LoanCalculatorViewModel: LoanHeaderViewModel, LoanValuesViewModel, LoanApplyViewModel {}
 
@@ -80,7 +81,7 @@ public class LoanCalculatorView: UIView {
     private func setup() {
         backgroundColor = .backgroundSubtle
         layer.cornerRadius = .spacingS
-        directionalLayoutMargins = .init(all: .spacingM * 1.5)
+        directionalLayoutMargins = .init(all: Warp.Spacing.spacing200 * 1.5)
 
         addSubview(headerView)
         addSubview(loanValuesView)

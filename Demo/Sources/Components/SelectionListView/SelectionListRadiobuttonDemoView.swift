@@ -1,6 +1,7 @@
 import UIKit
 import FinniversKit
 import DemoKit
+import Warp
 
 class SelectionListRadiobuttonDemoView: UIView {
 
@@ -28,9 +29,9 @@ class SelectionListRadiobuttonDemoView: UIView {
         addSubview(checkmarkListView)
 
         NSLayoutConstraint.activate([
-            checkmarkListView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
-            checkmarkListView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            checkmarkListView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
+            checkmarkListView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200),
+            checkmarkListView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            checkmarkListView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200)
         ])
     }
 }

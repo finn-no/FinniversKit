@@ -1,6 +1,7 @@
 //
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
+import Warp
 
 public protocol MessageUserRequiredViewDelegate: AnyObject {
     func didTapActionButton(_ sender: Button)
@@ -63,13 +64,13 @@ public class MessageUserRequiredView: UIView {
             imageView.heightAnchor.constraint(equalToConstant: 64),
             imageView.widthAnchor.constraint(equalToConstant: 64),
 
-            messageView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .spacingM),
+            messageView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: Warp.Spacing.spacing200),
             messageView.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor, constant: .spacingS),
             messageView.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor, constant: -.spacingS),
 
             actionButton.topAnchor.constraint(equalTo: messageView.bottomAnchor, constant: .spacingL),
-            actionButton.leadingAnchor.constraint(equalTo: messageView.leadingAnchor, constant: .spacingM),
-            actionButton.trailingAnchor.constraint(equalTo: messageView.trailingAnchor, constant: -.spacingM),
+            actionButton.leadingAnchor.constraint(equalTo: messageView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            actionButton.trailingAnchor.constraint(equalTo: messageView.trailingAnchor, constant: -Warp.Spacing.spacing200),
         ])
     }
 

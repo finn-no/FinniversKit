@@ -1,6 +1,7 @@
 //
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
+import Warp
 
 public protocol LoanApplyViewModel {
     var accentColor: UIColor? { get }
@@ -39,7 +40,7 @@ class LoanApplyView: UIView {
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.spacing = .spacingM
+        stackView.spacing = Warp.Spacing.spacing200
         return stackView
     }()
 

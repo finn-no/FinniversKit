@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public final class IconCollectionView: UIView {
     public enum Alignment {
@@ -45,7 +46,7 @@ public final class IconCollectionView: UIView {
     private lazy var margins: UIEdgeInsets = {
         switch alignment {
         case .horizontal:
-            return UIEdgeInsets(vertical: .spacingM, horizontal: .spacingXS)
+            return UIEdgeInsets(vertical: Warp.Spacing.spacing200, horizontal: .spacingXS)
         case .vertical:
             return .zero
         }

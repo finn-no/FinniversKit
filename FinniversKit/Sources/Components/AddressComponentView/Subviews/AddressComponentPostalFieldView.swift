@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public class AddressComponentPostalFieldView: UIView {
 
@@ -46,18 +47,18 @@ public class AddressComponentPostalFieldView: UIView {
 
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
 
             lockImageView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: .spacingS),
-            lockImageView.leadingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: .spacingM),
-            lockImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-            lockImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingM),
+            lockImageView.leadingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: Warp.Spacing.spacing200),
+            lockImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
+            lockImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -Warp.Spacing.spacing200),
             lockImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             lockImageView.heightAnchor.constraint(equalToConstant: 16),
             lockImageView.widthAnchor.constraint(equalToConstant: 13),
 
-            hairlineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            hairlineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             hairlineView.trailingAnchor.constraint(equalTo: trailingAnchor),
             hairlineView.bottomAnchor.constraint(equalTo: bottomAnchor),
             hairlineView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale)

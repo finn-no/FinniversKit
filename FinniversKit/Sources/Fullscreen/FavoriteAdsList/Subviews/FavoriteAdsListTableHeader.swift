@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol FavoriteAdsListTableHeaderDelegate: AnyObject {
     func favoriteAdsListTableHeader(_ tableHeader: FavoriteAdsListTableHeader, didSelectSortingView view: UIView)
@@ -114,15 +115,15 @@ class FavoriteAdsListTableHeader: UIView {
         contentStackView.addArrangedSubviews([titleLabel, subtitleView, messagesStackView, searchBar, sortingContainerView])
         contentStackView.setCustomSpacing(.spacingXS, after: titleLabel)
         contentStackView.setCustomSpacing(.spacingL, after: subtitleView)
-        contentStackView.setCustomSpacing(.spacingM, after: messagesStackView)
+        contentStackView.setCustomSpacing(Warp.Spacing.spacing200, after: messagesStackView)
         contentStackView.setCustomSpacing(.spacingL + .spacingXS, after: searchBar)
 
         addSubview(contentStackView)
 
         NSLayoutConstraint.activate([
-            contentStackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
-            contentStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            contentStackView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200),
+            contentStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             contentStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             sortingView.leadingAnchor.constraint(equalTo: sortingContainerView.leadingAnchor),

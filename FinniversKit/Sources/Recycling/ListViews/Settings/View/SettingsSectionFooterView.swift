@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 class SettingsSectionFooterView: UITableViewHeaderFooterView {
 
@@ -29,11 +30,11 @@ class SettingsSectionFooterView: UITableViewHeaderFooterView {
     private func setup() {
         contentView.addSubview(titleLabel)
 
-        let trailingConstraint = titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.spacingM)
+        let trailingConstraint = titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200)
         trailingConstraint.priority = .defaultHigh
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
             trailingConstraint
         ])

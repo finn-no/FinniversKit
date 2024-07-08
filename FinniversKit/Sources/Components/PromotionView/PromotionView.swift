@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public protocol PromotionViewDelegate: AnyObject {
     func promotionView(_ promotionView: PromotionView, didSelect action: PromotionView.Action)
@@ -95,13 +96,13 @@ public class PromotionView: UIView {
     private lazy var compactDynamicConstraints: [NSLayoutConstraint] = [
         imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor, constant: -.spacingXXL),
         imageView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
-        imageView.leadingAnchor.constraint(equalTo: backgroundImageContainer.leadingAnchor, constant: .spacingM),
+        imageView.leadingAnchor.constraint(equalTo: backgroundImageContainer.leadingAnchor, constant: Warp.Spacing.spacing200),
         imageView.widthAnchor.constraint(lessThanOrEqualTo: imageView.heightAnchor, multiplier: viewModel.imageRatio),
     ]
     private lazy var regularDynamicConstraint: [NSLayoutConstraint] = [
         imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor),
         imageView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
-        imageView.leadingAnchor.constraint(equalTo: backgroundImageContainer.leadingAnchor, constant: .spacingM),
+        imageView.leadingAnchor.constraint(equalTo: backgroundImageContainer.leadingAnchor, constant: Warp.Spacing.spacing200),
         imageView.widthAnchor.constraint(lessThanOrEqualTo: imageView.heightAnchor, multiplier: viewModel.imageRatio),
     ]
     private var viewModel: PromotionViewModel
@@ -150,7 +151,7 @@ public class PromotionView: UIView {
 
         switch viewModel.imageAlignment {
         case .fullWidth:
-            imageView.fillInSuperview(insets: UIEdgeInsets(top: .spacingM, leading: .spacingS, bottom: -.spacingM, trailing: -.spacingS))
+            imageView.fillInSuperview(insets: UIEdgeInsets(top: Warp.Spacing.spacing200, leading: .spacingS, bottom: -Warp.Spacing.spacing200, trailing: -.spacingS))
         case .trailing:
             let imageRatio = viewModel.imageRatio
             NSLayoutConstraint.activate([
@@ -229,10 +230,10 @@ extension PromotionView {
             backgroundImageContainer.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
             backgroundImageContainer.widthAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 0.3),
 
-            verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
-            verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
-            verticalStackView.trailingAnchor.constraint(equalTo: imageContainer.leadingAnchor, constant: -.spacingM),
-            verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
+            verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: Warp.Spacing.spacing200),
+            verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            verticalStackView.trailingAnchor.constraint(equalTo: imageContainer.leadingAnchor, constant: -Warp.Spacing.spacing200),
+            verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -Warp.Spacing.spacing200),
             verticalStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6)
         ])
     }

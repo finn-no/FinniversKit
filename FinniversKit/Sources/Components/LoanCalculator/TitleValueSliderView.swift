@@ -1,6 +1,7 @@
 //
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
+import Warp
 
 public struct TitleValueSliderViewModel {
     public let title: String
@@ -111,7 +112,7 @@ class TitleValueSlider: UIView {
             valueLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             valueLabel.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor),
 
-            slider.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
+            slider.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
             slider.leadingAnchor.constraint(equalTo: leadingAnchor),
             slider.trailingAnchor.constraint(equalTo: trailingAnchor),
             slider.bottomAnchor.constraint(equalTo: bottomAnchor)

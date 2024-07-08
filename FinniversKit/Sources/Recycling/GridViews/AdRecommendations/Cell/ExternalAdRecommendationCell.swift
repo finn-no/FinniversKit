@@ -1,4 +1,5 @@
 import Foundation
+import Warp
 
 public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendationCell, AdRecommendationConfigurable {
     // MARK: - External properties
@@ -164,8 +165,8 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
             externalLinkImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: ExternalAdRecommendationCell.ribbonTopMargin),
             externalLinkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            externalLinkImageView.widthAnchor.constraint(equalToConstant: .spacingM),
-            externalLinkImageView.heightAnchor.constraint(equalToConstant: .spacingM),
+            externalLinkImageView.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
+            externalLinkImageView.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
 
             subtitleToImageConstraint,
             subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),

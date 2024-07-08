@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 protocol ViewingItemViewDelegate: AnyObject {
     func viewingItemViewDidSelectAddToCalendarButton(_ view: ViewingItemView)
@@ -17,7 +18,7 @@ class ViewingItemView: UIView {
     // MARK: - Private properties
 
     private let layout: Layout
-    private let noteBottomMargin: CGFloat = .spacingM
+    private let noteBottomMargin: CGFloat = Warp.Spacing.spacing200
     private lazy var dayLabel = Label(style: .title3, withAutoLayout: true)
     private lazy var weekdayLabel = Label(style: .body, withAutoLayout: true)
     private lazy var monthLabel = Label(style: .detail, textColor: .textNegative, withAutoLayout: true)
@@ -102,7 +103,7 @@ class ViewingItemView: UIView {
             contentStackViewLeadingConstraint.constant = .spacingS
         case .redesign:
             dateStackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 28).isActive = true
-            contentStackViewLeadingConstraint.constant = .spacingM
+            contentStackViewLeadingConstraint.constant = Warp.Spacing.spacing200
             dateStackView.setContentHuggingPriority(.required, for: .horizontal)
             dateStackView.setContentCompressionResistancePriority(.required, for: .horizontal)
         }

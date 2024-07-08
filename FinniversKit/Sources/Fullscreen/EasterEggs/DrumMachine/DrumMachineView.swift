@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public final class DrumMachineView: UIView {
     private let padSpacing: CGFloat = .spacingXL
@@ -147,8 +148,8 @@ public final class DrumMachineView: UIView {
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: beatsPerMinuteSlider.topAnchor),
 
-            beatsPerMinuteSlider.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor, constant: .spacingM),
-            beatsPerMinuteSlider.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor, constant: -.spacingM),
+            beatsPerMinuteSlider.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            beatsPerMinuteSlider.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor, constant: -Warp.Spacing.spacing200),
             beatsPerMinuteSlider.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }

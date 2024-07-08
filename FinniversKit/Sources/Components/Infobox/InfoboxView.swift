@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol InfoboxViewDelegate: AnyObject {
     func infoboxViewDidSelectPrimaryButton(_ view: InfoboxView)
@@ -97,11 +98,11 @@ public final class InfoboxView: UIView {
         layer.cornerRadius = 8
 
         stackView.addArrangedSubviews([titleLabel, detailLabel, primaryButton, secondaryButton])
-        stackView.setCustomSpacing(.spacingM, after: detailLabel)
+        stackView.setCustomSpacing(Warp.Spacing.spacing200, after: detailLabel)
         stackView.setCustomSpacing(.spacingXS, after: primaryButton)
 
         addSubview(stackView)
-        stackView.fillInSuperview(margin: .spacingM)
+        stackView.fillInSuperview(margin: Warp.Spacing.spacing200)
 
         var constraints: [NSLayoutConstraint] = [
             detailLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
@@ -112,19 +113,19 @@ public final class InfoboxView: UIView {
 
             let imageWidth: CGFloat = 18
             constraints.append(contentsOf: [
-                primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-                primaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+                primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+                primaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
                 primaryButtonImageView.widthAnchor.constraint(equalToConstant: imageWidth),
                 primaryButtonImageView.heightAnchor.constraint(equalToConstant: imageWidth),
                 primaryButtonImageView.centerYAnchor.constraint(equalTo: primaryButton.centerYAnchor),
-                primaryButtonImageView.trailingAnchor.constraint(equalTo: primaryButton.trailingAnchor, constant: -.spacingM),
+                primaryButtonImageView.trailingAnchor.constraint(equalTo: primaryButton.trailingAnchor, constant: -Warp.Spacing.spacing200),
             ])
 
             primaryButton.titleEdgeInsets = UIEdgeInsets(
                 top: primaryButton.titleEdgeInsets.top,
-                leading: primaryButton.titleEdgeInsets.leading + .spacingM + imageWidth,
+                leading: primaryButton.titleEdgeInsets.leading + Warp.Spacing.spacing200 + imageWidth,
                 bottom: primaryButton.titleEdgeInsets.bottom,
-                trailing: primaryButton.titleEdgeInsets.trailing + .spacingM + imageWidth
+                trailing: primaryButton.titleEdgeInsets.trailing + Warp.Spacing.spacing200 + imageWidth
             )
         }
 

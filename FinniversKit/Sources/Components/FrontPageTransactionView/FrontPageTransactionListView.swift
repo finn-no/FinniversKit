@@ -1,4 +1,5 @@
 import SwiftUI
+import Warp
 
 public struct FrontPageTransactionListView: View {
     public let models: [FrontPageTransactionViewModel]
@@ -42,6 +43,6 @@ struct FrontPageTransactionListView_Previews: PreviewProvider {
                 )
             ]
         )
-        .padding(.spacingM)
+        .padding(Warp.Spacing.spacing200)
     }
 }

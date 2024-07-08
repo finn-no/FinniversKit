@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public protocol SelectionListViewDelegate: AnyObject {
     func selectionListView(_ view: SelectionListView, didToggleItemAtIndex index: Int, withIdentifier identifier: String?, isSelected: Bool)
@@ -37,7 +38,7 @@ public class SelectionListView: UIView {
 
     private let horizontalSpacing: CGFloat = .spacingXXS
     private var verticalSpacing: CGFloat {
-        isSeparatedListElementDesign ? .spacingM : horizontalSpacing
+        isSeparatedListElementDesign ? Warp.Spacing.spacing200 : horizontalSpacing
     }
     private let cornerRadius: CGFloat = .spacingS
     private var itemViews = [SelectionListItemView]()

@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class PanelDemoView: UIView, Demoable {
     override init(frame: CGRect) {
@@ -19,7 +20,7 @@ class PanelDemoView: UIView, Demoable {
         stackView.alignment = .center
         stackView.axis = .vertical
         stackView.distribution = .fill
-        stackView.spacing = .spacingM
+        stackView.spacing = Warp.Spacing.spacing200
         addSubview(stackView)
         stackView.fillInSuperview(margin: .spacingS)
 

@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 class SettingsHeaderView: UIView {
 
@@ -34,6 +35,6 @@ class SettingsHeaderView: UIView {
     private func setup() {
         backgroundColor = .background
         addSubview(headerLabel)
-        headerLabel.fillInSuperview(insets: UIEdgeInsets(top: .spacingM, left: .spacingM, bottom: -.spacingM, right: -.spacingM))
+        headerLabel.fillInSuperview(insets: UIEdgeInsets(top: Warp.Spacing.spacing200, left: Warp.Spacing.spacing200, bottom: -Warp.Spacing.spacing200, right: -Warp.Spacing.spacing200))
     }
 }

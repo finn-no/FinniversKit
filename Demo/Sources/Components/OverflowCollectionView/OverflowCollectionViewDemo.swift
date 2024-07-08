@@ -1,6 +1,7 @@
 import UIKit
 import FinniversKit
 import DemoKit
+import Warp
 
 class OverflowCollectionViewDemo: UIView, Demoable {
     private lazy var overflowCollectionView = OverflowCollectionView(
@@ -37,7 +38,7 @@ class OverflowCollectionViewDemo: UIView, Demoable {
 
     private func setup() {
         addSubview(overflowCollectionView)
-        overflowCollectionView.fillInSuperview(margin: .spacingM)
+        overflowCollectionView.fillInSuperview(margin: Warp.Spacing.spacing200)
         overflowCollectionView.configure(with: models)
     }
 }
@@ -61,7 +62,7 @@ private class DemoCollectionViewCell: UICollectionViewCell, OverflowCollectionVi
     // MARK: - Private properties
 
     private static let labelStyle = Label.Style.body
-    private static let margins = UIEdgeInsets(vertical: .spacingS, horizontal: .spacingM)
+    private static let margins = UIEdgeInsets(vertical: .spacingS, horizontal: Warp.Spacing.spacing200)
     private lazy var label = Label(style: .body, withAutoLayout: true)
 
     // MARK: - Init

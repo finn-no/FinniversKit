@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 class DescriptionView: UIView {
     // MARK: - Internal properties
@@ -41,14 +42,14 @@ class DescriptionView: UIView {
         addSubview(textView)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200),
 
-            textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
-            textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
+            textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
-            bottomAnchor.constraint(equalTo: textView.bottomAnchor, constant: .spacingM)
+            bottomAnchor.constraint(equalTo: textView.bottomAnchor, constant: Warp.Spacing.spacing200)
         ])
     }
 

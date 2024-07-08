@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class VisibilityDrivenTitleDemoView: UIView, Demoable {
 
@@ -45,8 +46,8 @@ class VisibilityDrivenTitleDemoView: UIView, Demoable {
         addSubview(visibilitySwitch)
 
         NSLayoutConstraint.activate([
-            titleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            titleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            titleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            titleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             titleView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXL),
             titleView.heightAnchor.constraint(equalToConstant: 50),
 

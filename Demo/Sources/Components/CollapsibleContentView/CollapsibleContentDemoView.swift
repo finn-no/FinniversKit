@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class CollapsibleContentDemoView: UIView {
 
@@ -17,7 +18,7 @@ class CollapsibleContentDemoView: UIView {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
-        stackView.spacing = .spacingM
+        stackView.spacing = Warp.Spacing.spacing200
         (1...20).forEach({ index in
             let label = Label(style: .body, withAutoLayout: true)
             label.text = "Item \(index)"
@@ -54,7 +55,7 @@ class CollapsibleContentDemoView: UIView {
         collapsibleContentView.configure(with: title, contentView: contentView)
 
         scrollView.addSubview(collapsibleContentView)
-        collapsibleContentView.fillInSuperview(margin: .spacingM)
+        collapsibleContentView.fillInSuperview(margin: Warp.Spacing.spacing200)
         collapsibleContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.spacingXL).isActive = true
 
         self.collapsibleContentView = collapsibleContentView

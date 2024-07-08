@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 class SelectionListItemView: UIView {
 
@@ -98,7 +99,7 @@ class SelectionListItemView: UIView {
             let itemViews = detailItems.map { CheckmarkItemDetailView(item: $0, withAutoLayout: true) }
             detailViewsStackView.addArrangedSubviews(itemViews)
 
-            detailViewsStackViewBottomConstraint.constant = -.spacingM
+            detailViewsStackViewBottomConstraint.constant = -Warp.Spacing.spacing200
         }
 
         textStackView.addArrangedSubviews([titleLabel])
@@ -117,23 +118,23 @@ class SelectionListItemView: UIView {
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -configuration.horizontalSpacing),
             contentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -configuration.verticalSpacing),
 
-            selectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            selectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
             selectionView.centerYAnchor.constraint(equalTo: textStackView.centerYAnchor),
 
-            textStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
-            textStackView.leadingAnchor.constraint(equalTo: selectionView.trailingAnchor, constant: .spacingM),
-            textStackView.bottomAnchor.constraint(equalTo: detailViewsStackView.topAnchor, constant: -.spacingM),
+            textStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing200),
+            textStackView.leadingAnchor.constraint(equalTo: selectionView.trailingAnchor, constant: Warp.Spacing.spacing200),
+            textStackView.bottomAnchor.constraint(equalTo: detailViewsStackView.topAnchor, constant: -Warp.Spacing.spacing200),
 
-            detailViewsStackView.leadingAnchor.constraint(equalTo: selectionView.trailingAnchor, constant: .spacingM),
-            detailViewsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            detailViewsStackView.leadingAnchor.constraint(equalTo: selectionView.trailingAnchor, constant: Warp.Spacing.spacing200),
+            detailViewsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
             detailViewsStackViewBottomConstraint
         ]
 
         if case .none = model.icon {} else {
             contentView.addSubview(iconImageView)
             constraints.append(contentsOf: [
-                iconImageView.leadingAnchor.constraint(equalTo: textStackView.trailingAnchor, constant: .spacingM),
-                iconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+                iconImageView.leadingAnchor.constraint(equalTo: textStackView.trailingAnchor, constant: Warp.Spacing.spacing200),
+                iconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
                 iconImageView.centerYAnchor.constraint(equalTo: textStackView.centerYAnchor)
             ])
         }

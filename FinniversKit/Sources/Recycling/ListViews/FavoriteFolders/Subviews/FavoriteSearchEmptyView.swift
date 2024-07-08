@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol FavoriteSearchEmptyViewDelegate: AnyObject {
     func favoriteSearchEmptyViewDidSelectButton(_: FavoriteSearchEmptyView)
@@ -84,7 +85,7 @@ final class FavoriteSearchEmptyView: UIView {
         stackView.addArrangedSubview(addFolderButton)
 
         stackView.setCustomSpacing(.spacingS, after: magnifyingGlassImageView)
-        stackView.setCustomSpacing(.spacingM, after: bodyLabel)
+        stackView.setCustomSpacing(Warp.Spacing.spacing200, after: bodyLabel)
 
         wrapperView.addSubview(stackView)
         addSubview(wrapperView)

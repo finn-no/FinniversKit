@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 final class FavoriteAdActionHeaderView: UIView {
     private lazy var blurView = UIVisualEffectView(effect: UIBlurEffect(style: .prominent))
@@ -84,9 +85,9 @@ final class FavoriteAdActionHeaderView: UIView {
 extension FavoriteAdActionHeaderView {
     private static let layoutMargins = UIEdgeInsets(
         top: .spacingS,
-        left: .spacingM,
+        left: Warp.Spacing.spacing200,
         bottom: 0,
-        right: .spacingM
+        right: Warp.Spacing.spacing200
     )
 
     private static let imageViewSize: CGFloat = 56

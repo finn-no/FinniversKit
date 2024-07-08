@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class SpacingDemoView: UIView, Demoable {
     override init(frame: CGRect) {
@@ -60,8 +61,8 @@ class SpacingDemoView: UIView, Demoable {
             spacingSView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
 
             spacingMView.topAnchor.constraint(equalTo: spacingSView.bottomAnchor, constant: .spacingXXL),
-            spacingMView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            spacingMView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            spacingMView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            spacingMView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
             spacingLView.topAnchor.constraint(equalTo: spacingMView.bottomAnchor, constant: .spacingXXL),
             spacingLView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingL),

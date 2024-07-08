@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol PrimingViewDelegate: AnyObject {
     func primingViewDidSelectButton(_ view: PrimingView)

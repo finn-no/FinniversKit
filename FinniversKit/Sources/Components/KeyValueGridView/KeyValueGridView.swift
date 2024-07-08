@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public class KeyValueGridView: UIView {
     // MARK: - Public properties
@@ -15,7 +16,7 @@ public class KeyValueGridView: UIView {
     private var data: [KeyValuePair] = []
     private var titleStyle: Label.Style = .body
     private var valueStyle: Label.Style = .bodyStrong
-    private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: .spacingM, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
+    private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
 
     // MARK: - Initializers
 
@@ -115,7 +116,7 @@ public class KeyValueGridView: UIView {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.alignment = .top
-        stackView.spacing = .spacingM
+        stackView.spacing = Warp.Spacing.spacing200
         return stackView
     }
 }

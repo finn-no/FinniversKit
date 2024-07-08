@@ -4,6 +4,7 @@
 
 import UIKit
 import MapKit
+import Warp
 
 public protocol AddressMapViewDelegate: AnyObject {
     func addressMapViewDidSelectPinButton(_ addressMapView: AddressMapView)
@@ -144,7 +145,7 @@ public class AddressMapView: UIView {
             addSubview(viewModeButton)
 
             NSLayoutConstraint.activate([
-                viewModeButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+                viewModeButton.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200),
                 viewModeButton.trailingAnchor.constraint(equalTo: pinButton.trailingAnchor),
                 viewModeButton.widthAnchor.constraint(equalTo: pinButton.widthAnchor),
                 viewModeButton.heightAnchor.constraint(equalTo: pinButton.heightAnchor),
@@ -152,7 +153,7 @@ public class AddressMapView: UIView {
                 pinButton.topAnchor.constraint(equalTo: viewModeButton.bottomAnchor, constant: .spacingS)
             ])
         } else {
-            pinButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM).isActive = true
+            pinButton.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200).isActive = true
         }
     }
 

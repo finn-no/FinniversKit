@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 open class BasicTableViewCell: UITableViewCell {
 
@@ -42,7 +43,7 @@ open class BasicTableViewCell: UITableViewCell {
         return stackView
     }()
 
-    open lazy var stackViewLeadingAnchorConstraint = stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM)
+    open lazy var stackViewLeadingAnchorConstraint = stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200)
     open lazy var stackViewTrailingAnchorConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor)
     open lazy var stackViewBottomAnchorConstraint = stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13)
     open lazy var stackViewTopAnchorConstraint = stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13)
@@ -97,11 +98,11 @@ open class BasicTableViewCell: UITableViewCell {
         } else {
             accessoryType = .none
             selectionStyle = .none
-            detailLabelTrailingConstraint.constant = -.spacingM
-            stackViewTrailingAnchorConstraint.constant = -.spacingM
+            detailLabelTrailingConstraint.constant = -Warp.Spacing.spacing200
+            stackViewTrailingAnchorConstraint.constant = -Warp.Spacing.spacing200
         }
 
-        separatorInset = .leadingInset(.spacingM)
+        separatorInset = .leadingInset(Warp.Spacing.spacing200)
     }
 
     open override func prepareForReuse() {

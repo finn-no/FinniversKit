@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol NeighborhoodProfileViewDelegate: AnyObject {
     func neighborhoodProfileView(_ view: NeighborhoodProfileView, didSelectUrl: URL?)
@@ -31,7 +32,7 @@ public final class NeighborhoodProfileView: UIView {
     private func getCenteredContainerView(with views: [UIView]) -> UIStackView {
         let stack = UIStackView(axis: .horizontal, withAutoLayout: true)
         stack.isLayoutMarginsRelativeArrangement = true
-        stack.directionalLayoutMargins = NSDirectionalEdgeInsets(vertical: 0, horizontal: .spacingM)
+        stack.directionalLayoutMargins = NSDirectionalEdgeInsets(vertical: 0, horizontal: Warp.Spacing.spacing200)
         stack.addArrangedSubviews(views)
         return stack
     }
@@ -50,9 +51,9 @@ public final class NeighborhoodProfileView: UIView {
         collectionView.backgroundColor = .backgroundInfoSubtle
         collectionView.contentInset = UIEdgeInsets(
             top: .spacingS,
-            left: .spacingM,
+            left: Warp.Spacing.spacing200,
             bottom: .spacingS,
-            right: .spacingM
+            right: Warp.Spacing.spacing200
         )
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.decelerationRate = .fast
@@ -123,7 +124,7 @@ public final class NeighborhoodProfileView: UIView {
             bannerView.text = banner.text
             bannerView.buttonText = banner.link.title
             bannerView.isHidden = false
-            containerStackView.setCustomSpacing(.spacingM, after: pageControl)
+            containerStackView.setCustomSpacing(Warp.Spacing.spacing200, after: pageControl)
         } else {
             bannerView.isHidden = true
             containerStackView.setCustomSpacing(.spacingS, after: pageControl)
@@ -146,8 +147,8 @@ public final class NeighborhoodProfileView: UIView {
         addSubview(containerStackView)
 
         NSLayoutConstraint.activate([
-            containerStackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
-            containerStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM),
+            containerStackView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200),
+            containerStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing200),
             containerStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             containerStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionViewHeightConstraint,
@@ -245,7 +246,7 @@ extension NeighborhoodProfileView: UICollectionViewDelegate {
             pageControl.currentPage = indexPath.row
         }
 
-        let rightOffset = scrollView.horizontalRightOffset - .spacingM
+        let rightOffset = scrollView.horizontalRightOffset - Warp.Spacing.spacing200
         let reachedEnd = targetOffsetX >= rightOffset
 
         delegate?.neighborhoodProfileViewDidScroll(self, reachedEnd: reachedEnd)

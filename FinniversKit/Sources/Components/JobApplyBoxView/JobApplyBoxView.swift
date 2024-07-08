@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public protocol JobApplyBoxViewDelegate: AnyObject {
     func jobApplyBoxView(
@@ -19,7 +20,7 @@ public class JobApplyBoxView: UIView {
 
     private let viewModel: JobApplyBoxViewModel
     private weak var delegate: JobApplyBoxViewDelegate?
-    private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
+    private lazy var stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, withAutoLayout: true)
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .body, withAutoLayout: true)

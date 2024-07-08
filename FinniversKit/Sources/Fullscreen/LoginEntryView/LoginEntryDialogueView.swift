@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 class LoginEntryDialogueView: UIView {
     // MARK: - Internal properties
@@ -111,7 +112,7 @@ class LoginEntryDialogueView: UIView {
             loginButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
             loginButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
 
-            registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: .spacingM),
+            registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: Warp.Spacing.spacing200),
             registerButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
             registerButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
             registerButton.bottomAnchor.constraint(equalTo: margins.bottomAnchor),

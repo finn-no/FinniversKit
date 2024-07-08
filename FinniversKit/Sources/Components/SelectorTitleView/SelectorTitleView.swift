@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol SelectorTitleViewDelegate: AnyObject {
     func selectorTitleViewDidSelectButton(_ view: SelectorTitleView)
@@ -62,9 +63,9 @@ public class SelectorTitleView: UIView {
         if heading != nil {
             button.contentEdgeInsets = UIEdgeInsets(
                 top: titleLabel.font.pointSize,
-                leading: .spacingM + spacing,
+                leading: Warp.Spacing.spacing200 + spacing,
                 bottom: 0,
-                trailing: .spacingM + spacing
+                trailing: Warp.Spacing.spacing200 + spacing
             )
         }
 

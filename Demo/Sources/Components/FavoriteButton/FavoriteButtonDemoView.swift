@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class FavoriteButtonDemoView: UIView, Demoable {
 
@@ -34,8 +35,8 @@ class FavoriteButtonDemoView: UIView, Demoable {
 
         NSLayoutConstraint.activate([
             favoriteButtonView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            favoriteButtonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            favoriteButtonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
+            favoriteButtonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            favoriteButtonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200)
         ])
     }
 }

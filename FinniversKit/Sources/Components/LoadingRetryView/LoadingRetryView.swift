@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol LoadingRetryViewDelegate: AnyObject {
     func loadingRetryViewDidSelectButton(_ view: LoadingRetryView)

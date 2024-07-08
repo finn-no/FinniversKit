@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public protocol NumberedListViewDelegate: AnyObject {
     func numberedListView(_ view: NumberedListView, didSelectActionButtonForItemAt itemIndex: Int)
@@ -13,7 +14,7 @@ public class NumberedListView: UIView {
     // MARK: - Private properties
 
     private let numberLabelStyle = Label.Style.bodyStrong
-    private lazy var contentStackView = UIStackView(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
+    private lazy var contentStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, withAutoLayout: true)
 
     // MARK: - Init
 
@@ -106,7 +107,7 @@ private class ListItemView: UIView {
     }()
 
     private lazy var actionButton: Button = {
-        let margins = UIEdgeInsets(top: .spacingS, left: .zero, bottom: .spacingS, right: .spacingM)
+        let margins = UIEdgeInsets(top: .spacingS, left: .zero, bottom: .spacingS, right: Warp.Spacing.spacing200)
         let style = Button.Style.flat.overrideStyle(margins: margins)
         let button = Button(style: style, size: .small, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)

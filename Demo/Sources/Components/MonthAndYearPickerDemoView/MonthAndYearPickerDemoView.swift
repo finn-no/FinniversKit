@@ -1,6 +1,7 @@
 import FinniversKit
 import Foundation
 import DemoKit
+import Warp
 
 class MonthAndYearPickerDemoView: UIView, Demoable {
 
@@ -74,18 +75,18 @@ class MonthAndYearPickerDemoView: UIView, Demoable {
         addSubview(textField)
 
         NSLayoutConstraint.activate([
-            currentDateLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingM),
-            currentDateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            currentDateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            currentDateLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Warp.Spacing.spacing200),
+            currentDateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            currentDateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
-            textField.topAnchor.constraint(equalTo: currentDateLabel.bottomAnchor, constant: .spacingM),
-            textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            textField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            textField.topAnchor.constraint(equalTo: currentDateLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
+            textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            textField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
-            pickerView.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: .spacingM),
-            pickerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            pickerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-            pickerView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: .spacingM),
+            pickerView.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: Warp.Spacing.spacing200),
+            pickerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            pickerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
+            pickerView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: Warp.Spacing.spacing200),
         ])
 
         setInitialDate()

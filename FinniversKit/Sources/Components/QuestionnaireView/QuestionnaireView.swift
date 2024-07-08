@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol QuestionnaireViewDelegate: AnyObject {
     func questionnaireViewDidSelectPrimaryButton(_ view: QuestionnaireView)
@@ -99,15 +100,15 @@ public class QuestionnaireView: UIView {
         addSubview(cancelButton)
 
         var constraints: [NSLayoutConstraint] = [
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
             detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
             detailLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             detailLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
 
-            primaryButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .spacingM),
+            primaryButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
             primaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
 
             cancelButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXS),
@@ -123,10 +124,10 @@ public class QuestionnaireView: UIView {
                 primaryButtonImageView.widthAnchor.constraint(equalToConstant: imageWidth),
                 primaryButtonImageView.heightAnchor.constraint(equalToConstant: imageWidth),
                 primaryButtonImageView.centerYAnchor.constraint(equalTo: primaryButton.centerYAnchor),
-                primaryButtonImageView.trailingAnchor.constraint(equalTo: primaryButton.trailingAnchor, constant: -.spacingM),
+                primaryButtonImageView.trailingAnchor.constraint(equalTo: primaryButton.trailingAnchor, constant: -Warp.Spacing.spacing200),
             ])
-            primaryButton.titleEdgeInsets = UIEdgeInsets(top: primaryButton.titleEdgeInsets.top, leading: primaryButton.titleEdgeInsets.leading + .spacingM + imageWidth,
-                                                         bottom: primaryButton.titleEdgeInsets.bottom, trailing: primaryButton.titleEdgeInsets.trailing + .spacingM + imageWidth)
+            primaryButton.titleEdgeInsets = UIEdgeInsets(top: primaryButton.titleEdgeInsets.top, leading: primaryButton.titleEdgeInsets.leading + Warp.Spacing.spacing200 + imageWidth,
+                                                         bottom: primaryButton.titleEdgeInsets.bottom, trailing: primaryButton.titleEdgeInsets.trailing + Warp.Spacing.spacing200 + imageWidth)
         }
 
         NSLayoutConstraint.activate(constraints)

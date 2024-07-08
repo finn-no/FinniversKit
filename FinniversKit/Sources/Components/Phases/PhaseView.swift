@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 final class PhaseView: UIView {
     private static let regularDotSize: CGFloat = 12

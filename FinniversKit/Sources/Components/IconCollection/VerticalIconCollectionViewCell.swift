@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public class VerticalIconCollectionViewCell: UICollectionViewCell {
     private static let textSideMargin = CGFloat.spacingS

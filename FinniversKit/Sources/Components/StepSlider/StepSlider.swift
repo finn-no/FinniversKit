@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol StepSliderDelegate: AnyObject {
     func stepSlider(_ stepSlider: StepSlider, didChangeRawValue value: Float)

@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol KlimabroletViewDelegate: AnyObject {
     func klimabroletViewDidSelectReadMore(_ view: KlimabroletView)

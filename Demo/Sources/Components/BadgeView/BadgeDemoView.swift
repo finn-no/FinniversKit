@@ -1,5 +1,6 @@
 import FinniversKit
 import DemoKit
+import Warp
 
 final class BadgeDemoView: UIView, Demoable {
 
@@ -15,7 +16,7 @@ final class BadgeDemoView: UIView, Demoable {
     }
 
     func setup() {
-        let stackView = UIStackView(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
+        let stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, withAutoLayout: true)
         stackView.alignment = .center
         addSubview(stackView)
         stackView.centerInSuperview()

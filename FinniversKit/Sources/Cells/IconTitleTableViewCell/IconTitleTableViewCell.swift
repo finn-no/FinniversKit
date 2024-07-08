@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 open class IconTitleTableViewCell: BasicTableViewCell {
 
@@ -21,7 +22,7 @@ open class IconTitleTableViewCell: BasicTableViewCell {
     }()
 
     public var iconSeparatorInset: CGFloat {
-        .spacingM + iconSize + .spacingM
+        Warp.Spacing.spacing200 + iconSize + Warp.Spacing.spacing200
     }
 
     // MARK: - Private properties
@@ -30,7 +31,7 @@ open class IconTitleTableViewCell: BasicTableViewCell {
     let externalIconSize: CGFloat = 16
 
     private lazy var stackViewToIconConstraint = stackView.leadingAnchor.constraint(
-        equalTo: iconImageView.trailingAnchor, constant: .spacingM
+        equalTo: iconImageView.trailingAnchor, constant: Warp.Spacing.spacing200
     )
 
 
@@ -76,7 +77,7 @@ open class IconTitleTableViewCell: BasicTableViewCell {
             stackViewToIconConstraint.isActive = false
             stackViewLeadingAnchorConstraint.isActive = true
 
-            separatorInset = .leadingInset(.spacingM)
+            separatorInset = .leadingInset(Warp.Spacing.spacing200)
         }
 
         stackViewToExternalIconConstraint.isActive = viewModel.externalIcon != nil
@@ -100,12 +101,12 @@ open class IconTitleTableViewCell: BasicTableViewCell {
         NSLayoutConstraint.activate([
             iconImageView.heightAnchor.constraint(equalToConstant: iconSize),
             iconImageView.widthAnchor.constraint(equalToConstant: iconSize),
-            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
             externalIconImageView.heightAnchor.constraint(equalToConstant: externalIconSize),
             externalIconImageView.widthAnchor.constraint(equalToConstant: externalIconSize),
-            externalIconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            externalIconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
             externalIconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }

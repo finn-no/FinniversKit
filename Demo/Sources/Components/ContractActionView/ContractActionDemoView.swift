@@ -1,5 +1,6 @@
 import FinniversKit
 import DemoKit
+import Warp
 
 class ContractActionDemoView: UIView {
     private lazy var contractActionView: ContractActionView = {
@@ -58,9 +59,9 @@ extension ContractActionDemoView: TweakableDemo {
             contractActionView.configure(
                 with: .requestAccessToContract,
                 topIcon: UIImage(named: .contract),
-                trailingImageTopConstant: .spacingM,
-                trailingImageTrailingConstant: -.spacingM,
-                contentSpacing: .spacingM,
+                trailingImageTopConstant: Warp.Spacing.spacing200,
+                trailingImageTrailingConstant: -Warp.Spacing.spacing200,
+                contentSpacing: Warp.Spacing.spacing200,
                 paragraphSpacing: 12
             )
         }

@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 // MARK: - LoginViewDelegatew
 
@@ -177,7 +178,7 @@ public class RegisterView: UIView {
             if keyboardEndFrame.intersects(inputsContainer.frame) {
                 let intersectionFrame = keyboardEndFrame.intersection(inputsContainer.frame)
                 let keyboardOverlap = intersectionFrame.height
-                let bottomInset = keyboardOverlap + .spacingM
+                let bottomInset = keyboardOverlap + Warp.Spacing.spacing200
                 let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
 
                 let animationDuration = ((notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]) as? TimeInterval) ?? 0.25
@@ -239,7 +240,7 @@ public class RegisterView: UIView {
             infoLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingXL),
             infoLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingXL),
 
-            inputsContainer.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: .spacingM),
+            inputsContainer.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
             inputsContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingXL),
             inputsContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingXL),
 
@@ -257,7 +258,7 @@ public class RegisterView: UIView {
             registerButton.heightAnchor.constraint(equalToConstant: buttonHeight),
             registerButton.bottomAnchor.constraint(equalTo: inputsContainer.bottomAnchor),
 
-            newUserStackView.topAnchor.constraint(equalTo: inputsContainer.bottomAnchor, constant: .spacingM),
+            newUserStackView.topAnchor.constraint(equalTo: inputsContainer.bottomAnchor, constant: Warp.Spacing.spacing200),
             newUserStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingXL),
             newUserStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             spidLogoImageView.heightAnchor.constraint(equalToConstant: 17),

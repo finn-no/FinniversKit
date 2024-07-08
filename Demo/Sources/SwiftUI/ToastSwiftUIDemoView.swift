@@ -1,13 +1,14 @@
 import SwiftUI
 import FinniversKit
 import DemoKit
+import Warp
 
 struct ToastSwiftUIDemoView: View {
     @State var topToastViewModel: Toast.ViewModel? = nil
     @State var bottomToastViewModel: Toast.ViewModel? = nil
 
     var body: some View {
-        VStack(spacing: .spacingM) {
+        VStack(spacing: Warp.Spacing.spacing200) {
             SwiftUI.Button("Animate from top") {
                 topToastViewModel = .init(
                     text: "Animated from top",

@@ -5,6 +5,7 @@
 import UIKit
 import FinniversKit
 import DemoKit
+import Warp
 
 class TextViewDemoView: UIView {
 
@@ -35,8 +36,8 @@ class TextViewDemoView: UIView {
 
         NSLayoutConstraint.activate([
             textView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
-            textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             textView.bottomAnchor.constraint(equalTo: centerYAnchor)
         ])
     }

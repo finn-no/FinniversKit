@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 extension ScrollableTabView {
     class ItemCollectionViewCell: UICollectionViewCell {

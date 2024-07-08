@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class NativeAdvertDemoView: UIView, Demoable {
 
@@ -21,7 +22,7 @@ class NativeAdvertDemoView: UIView, Demoable {
         let view = UIStackView(withAutoLayout: false)
         view.alignment = .fill
         view.distribution = .fillEqually
-        view.spacing = .spacingM
+        view.spacing = Warp.Spacing.spacing200
         return view
     }()
 

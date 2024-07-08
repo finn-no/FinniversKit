@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol ConfirmationViewDelegate: AnyObject {
     func confirmationViewDidPressDismissButton(_ confirmationView: ConfirmationView)
@@ -65,7 +66,7 @@ public class ConfirmationView: UIView {
             titleLabel.topAnchor.constraint(equalTo: view.topAnchor),
 
             messageLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
+            messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
             messageLabel.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor),
 
             closeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),

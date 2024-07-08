@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 open class HeartTableViewCell: BasicTableViewCell {
 
@@ -37,7 +38,7 @@ open class HeartTableViewCell: BasicTableViewCell {
         heartView.isHighlighted = viewModel.isSelected
 
         if viewModel.subtitle != nil {
-            stackViewToHeartConstraint.constant = .spacingM
+            stackViewToHeartConstraint.constant = Warp.Spacing.spacing200
             separatorInset = .leadingInset(60)
         } else {
             stackViewToHeartConstraint.constant = .spacingS
@@ -65,7 +66,7 @@ open class HeartTableViewCell: BasicTableViewCell {
             stackViewToHeartConstraint,
             heartView.heightAnchor.constraint(equalToConstant: 28),
             heartView.widthAnchor.constraint(equalTo: heartView.heightAnchor),
-            heartView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            heartView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
             heartView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }

@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol ContractActionViewDelegate: AnyObject {
     func contractActionView(_ view: ContractActionView, didSelectActionButtonWithUrl url: URL)
@@ -90,10 +91,10 @@ public class ContractActionView: UIView {
         backgroundColor = .backgroundSubtle
         layer.cornerRadius = .spacingS
         layoutMargins = UIEdgeInsets(
-            top: .spacingM,
-            leading: .spacingM,
+            top: Warp.Spacing.spacing200,
+            leading: Warp.Spacing.spacing200,
             bottom: .spacingL,
-            trailing: .spacingM
+            trailing: Warp.Spacing.spacing200
         )
 
         addSubview(contentStackView)

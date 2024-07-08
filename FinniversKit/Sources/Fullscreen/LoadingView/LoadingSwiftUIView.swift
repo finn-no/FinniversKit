@@ -1,4 +1,5 @@
 import SwiftUI
+import Warp
 
 public struct LoadingSwiftUIView: View {
     public enum DisplayMode: Equatable {
@@ -70,8 +71,8 @@ public struct LoadingSwiftUIView: View {
             }
             .frame(minWidth: boxMinSize, maxWidth: boxMinSize, minHeight: boxMinSize)
             .background(isFullscreen ? Color.clear : Color.black.opacity(0.8))
-            .cornerRadius(isFullscreen ? 0 : .spacingM)
-            .padding(.spacingM)
+            .cornerRadius(isFullscreen ? 0 : Warp.Spacing.spacing200)
+            .padding(Warp.Spacing.spacing200)
         }
         .transition(.opacity.animation(.easeInOut(duration: animationDuration)))
     }

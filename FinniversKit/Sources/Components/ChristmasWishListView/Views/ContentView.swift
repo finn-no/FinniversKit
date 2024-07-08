@@ -1,6 +1,7 @@
 //
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
+import Warp
 
 protocol ChristmasWishListContentViewDelegate: AnyObject {
     func christmasWishListContentDidSelectAccessoryButton(_ view: ChristmasWishListView.ContentView)
@@ -67,7 +68,7 @@ extension ChristmasWishListView {
 
         private func setup() {
             backgroundColor = .background
-            let spacing = .spacingM * 1.5
+            let spacing = Warp.Spacing.spacing200 * 1.5
             layoutMargins = UIEdgeInsets(top: spacing, leading: spacing, bottom: 0, trailing: spacing)
 
             addSubview(titleLabel)
@@ -85,7 +86,7 @@ extension ChristmasWishListView {
                 bodyTextLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
                 bodyTextLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
 
-                accessoryButton.topAnchor.constraint(equalTo: bodyTextLabel.bottomAnchor, constant: .spacingM),
+                accessoryButton.topAnchor.constraint(equalTo: bodyTextLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
                 accessoryButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
                 accessoryButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
                 accessoryButton.heightAnchor.constraint(greaterThanOrEqualToConstant: .spacingXL),

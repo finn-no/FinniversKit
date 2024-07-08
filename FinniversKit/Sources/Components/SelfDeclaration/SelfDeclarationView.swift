@@ -2,6 +2,7 @@
 //  SelfDeclarationView.swift
 //  FinniversKit
 //
+import Warp
 
 public class SelfDeclarationView: UIView {
 

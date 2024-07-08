@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Warp
 
 public extension Button {
     enum Size {
@@ -45,7 +46,7 @@ public extension Button {
             disabledTextColor: UIColor?,
             margins: UIEdgeInsets = UIEdgeInsets(
                 vertical: .spacingS,
-                horizontal: .spacingM
+                horizontal: Warp.Spacing.spacing200
             ),
             smallFont: UIFont = .detailStrong,
             normalFont: UIFont = .bodyStrong
@@ -70,7 +71,7 @@ public extension Button {
             stateStyles: [UIControl.State: StateStyle],
             margins: UIEdgeInsets = UIEdgeInsets(
                 vertical: .spacingS,
-                horizontal: .spacingM
+                horizontal: Warp.Spacing.spacing200
             ),
             smallFont: UIFont = .detailStrong,
             normalFont: UIFont = .bodyStrong

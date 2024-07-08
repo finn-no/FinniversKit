@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 class FavoriteAdsSectionHeaderView: UITableViewHeaderFooterView {
 
@@ -49,12 +50,12 @@ class FavoriteAdsSectionHeaderView: UITableViewHeaderFooterView {
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
             titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingS),
             titleLabel.trailingAnchor.constraint(equalTo: detailLabel.leadingAnchor, constant: -.spacingS),
 
             detailLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
-            detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
             detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingS)
         ])
     }

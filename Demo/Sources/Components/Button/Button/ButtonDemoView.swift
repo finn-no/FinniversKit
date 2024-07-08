@@ -5,6 +5,7 @@
 import UIKit
 import FinniversKit
 import DemoKit
+import Warp
 
 public class ButtonDemoView: UIView, Demoable {
     let states: [UIControl.State] = [.normal, .disabled]
@@ -31,9 +32,9 @@ public class ButtonDemoView: UIView, Demoable {
 
     private func setup() {
         let scrollView = UIScrollView(withAutoLayout: true)
-        scrollView.contentInset = UIEdgeInsets(vertical: .spacingM, horizontal: .spacingL)
+        scrollView.contentInset = UIEdgeInsets(vertical: Warp.Spacing.spacing200, horizontal: .spacingL)
 
-        let verticalStack = UIStackView(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
+        let verticalStack = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, withAutoLayout: true)
 
         styles.forEach { styleTuple in
             let buttonStyleStack = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)

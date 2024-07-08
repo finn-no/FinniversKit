@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 final class EarthHourTagView: UIView {
     private(set) lazy var titleLabel: UILabel = {

@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 class EarthHourContentView: UIView {
     private(set) lazy var titleLabel: UILabel = {
@@ -50,9 +51,9 @@ class EarthHourContentView: UIView {
         addSubview(accessoryButton)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM + .spacingS),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200 + .spacingS),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
             bodyTextLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXS),
             bodyTextLabel.centerXAnchor.constraint(equalTo: centerXAnchor),

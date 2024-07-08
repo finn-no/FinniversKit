@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public final class DetailCalloutView: UIView {
 
@@ -83,8 +84,8 @@ public final class DetailCalloutView: UIView {
             arrowView.centerYAnchor.constraint(equalTo: centerYAnchor),
 
             textLabel.topAnchor.constraint(equalTo: boxView.topAnchor, constant: .spacingS),
-            textLabel.leadingAnchor.constraint(equalTo: boxView.leadingAnchor, constant: .spacingM),
-            textLabel.trailingAnchor.constraint(equalTo: boxView.trailingAnchor, constant: -.spacingM),
+            textLabel.leadingAnchor.constraint(equalTo: boxView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            textLabel.trailingAnchor.constraint(equalTo: boxView.trailingAnchor, constant: -Warp.Spacing.spacing200),
             textLabel.bottomAnchor.constraint(equalTo: boxView.bottomAnchor, constant: -.spacingS)
         ]
 

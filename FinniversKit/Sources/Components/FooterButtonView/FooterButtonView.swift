@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol FooterButtonViewDelegate: AnyObject {
     func footerButtonView(_ view: FooterButtonView, didSelectButton button: UIButton)
@@ -51,10 +52,10 @@ public final class FooterButtonView: TopShadowView {
         addSubview(button)
 
         let insets = UIEdgeInsets(
-            top: .spacingM,
-            leading: .spacingM,
-            bottom: -.spacingM,
-            trailing: -.spacingM
+            top: Warp.Spacing.spacing200,
+            leading: Warp.Spacing.spacing200,
+            bottom: -Warp.Spacing.spacing200,
+            trailing: -Warp.Spacing.spacing200
         )
 
         button.fillInSuperview(insets: insets)

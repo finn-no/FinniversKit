@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public class HorizontalIconCollectionViewCell: UICollectionViewCell {
     private static let titleSideMargin = CGFloat.spacingS

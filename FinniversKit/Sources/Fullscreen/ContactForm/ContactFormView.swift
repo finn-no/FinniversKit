@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol ContactFormViewDelegate: AnyObject {
     func contactFormView(_ view: ContactFormView, didSubmitWithName name: String, email: String, phoneNumber: String?)
@@ -198,9 +199,9 @@ public final class ContactFormView: UIView {
 
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: .spacingXL),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -.spacingM),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .spacingM),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -.spacingM),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -Warp.Spacing.spacing200),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -Warp.Spacing.spacing200),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.spacingXL),
 
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -211,11 +212,11 @@ public final class ContactFormView: UIView {
             detailTextLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             detailTextLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            nameTextField.topAnchor.constraint(equalTo: detailTextLabel.bottomAnchor, constant: .spacingM),
+            nameTextField.topAnchor.constraint(equalTo: detailTextLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
             nameTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             nameTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            emailTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: .spacingM),
+            emailTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: Warp.Spacing.spacing200),
             emailTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             emailTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
@@ -223,11 +224,11 @@ public final class ContactFormView: UIView {
             bottomStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             bottomStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            disclaimerView.topAnchor.constraint(equalTo: bottomStackView.bottomAnchor, constant: .spacingM),
+            disclaimerView.topAnchor.constraint(equalTo: bottomStackView.bottomAnchor, constant: Warp.Spacing.spacing200),
             disclaimerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             disclaimerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            submitButton.topAnchor.constraint(equalTo: disclaimerView.bottomAnchor, constant: .spacingM),
+            submitButton.topAnchor.constraint(equalTo: disclaimerView.bottomAnchor, constant: Warp.Spacing.spacing200),
             submitButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             submitButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5),
             submitButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
@@ -259,7 +260,7 @@ public final class ContactFormView: UIView {
         var yOffset = scrollView.contentSize.height - scrollView.bounds.size.height + scrollView.contentInset.bottom
 
         if let currentTextField = currentTextField, currentTextField != phoneNumberTextField {
-            yOffset = min(yOffset, currentTextField.frame.minY + .spacingM)
+            yOffset = min(yOffset, currentTextField.frame.minY + Warp.Spacing.spacing200)
         }
 
         if yOffset > 0 {

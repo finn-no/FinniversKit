@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 final class SelectionOptionCell: UITableViewCell {
     static let iconSize: CGFloat = 24
@@ -77,17 +78,17 @@ final class SelectionOptionCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
             iconImageView.widthAnchor.constraint(equalToConstant: SelectionOptionCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .spacingM),
+            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: Warp.Spacing.spacing200),
             titleLabel.trailingAnchor.constraint(equalTo: checkmarkImageView.leadingAnchor, constant: -.spacingS),
 
-            checkmarkImageView.heightAnchor.constraint(equalToConstant: .spacingM),
-            checkmarkImageView.widthAnchor.constraint(equalToConstant: .spacingM),
-            checkmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            checkmarkImageView.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
+            checkmarkImageView.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
+            checkmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
             checkmarkImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         ])
     }

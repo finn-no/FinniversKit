@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 public class InfoboxDemoView: UIView, Demoable {
     private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingL, distribution: .equalSpacing, withAutoLayout: true)
@@ -32,13 +33,13 @@ public class InfoboxDemoView: UIView, Demoable {
         stackView.addArrangedSubviews(infoboxes)
 
         scrollView.addSubview(stackView)
-        stackView.fillInSuperview(margin: .spacingM)
+        stackView.fillInSuperview(margin: Warp.Spacing.spacing200)
 
         addSubview(scrollView)
         scrollView.fillInSuperview()
 
         NSLayoutConstraint.activate([
-            stackView.widthAnchor.constraint(equalTo: widthAnchor, constant: -.spacingM * 2)
+            stackView.widthAnchor.constraint(equalTo: widthAnchor, constant: -Warp.Spacing.spacing200 * 2)
         ])
     }
 

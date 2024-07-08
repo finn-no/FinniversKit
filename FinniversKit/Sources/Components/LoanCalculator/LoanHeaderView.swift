@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol LoanHeaderViewModel {
     var title: String? { get }
@@ -42,7 +43,7 @@ class LoanHeaderView: UIView {
     private lazy var outerStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.spacing = .spacingM
+        stackView.spacing = Warp.Spacing.spacing200
 
         return stackView
     }()
@@ -153,7 +154,7 @@ class LoanHeaderView: UIView {
             logoImageView.topAnchor.constraint(equalTo: valuesContainerView.topAnchor),
             logoImageView.heightAnchor.constraint(lessThanOrEqualTo: textContainerView.heightAnchor),
             logoImageView.trailingAnchor.constraint(equalTo: valuesContainerView.trailingAnchor),
-            logoImageView.leadingAnchor.constraint(equalTo: textContainerView.trailingAnchor, constant: .spacingM),
+            logoImageView.leadingAnchor.constraint(equalTo: textContainerView.trailingAnchor, constant: Warp.Spacing.spacing200),
         ])
 
         outerStackView.addArrangedSubview(valuesContainerView)

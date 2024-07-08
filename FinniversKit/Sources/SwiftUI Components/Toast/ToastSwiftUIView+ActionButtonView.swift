@@ -1,4 +1,5 @@
 import SwiftUI
+import Warp
 
 extension ToastSwiftUIView {
     struct ActionButtonView: View {
@@ -29,7 +30,7 @@ extension ToastSwiftUIView.ActionButtonView {
             configuration.label
                 .finnFont(.bodyStrong)
                 .padding(.vertical, .spacingS)
-                .padding(.horizontal, .spacingM)
+                .padding(.horizontal, Warp.Spacing.spacing200)
                 .foregroundColor(.textLink)
                 .background(backgroundColor)
                 .cornerRadius(cornerRadius)

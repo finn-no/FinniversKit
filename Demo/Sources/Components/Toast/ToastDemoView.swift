@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 public class ToastDemoView: UIView, Demoable {
     private lazy var topToastButton: Button = {
@@ -38,7 +39,7 @@ public class ToastDemoView: UIView, Demoable {
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.spacing = .spacingM
+        stackView.spacing = Warp.Spacing.spacing200
         return stackView
     }()
 
@@ -106,7 +107,7 @@ public class ToastDemoView: UIView, Demoable {
         addSubview(containerView)
         containerView.addSubview(containedToastButton)
 
-        directionalLayoutMargins = NSDirectionalEdgeInsets(all: .spacingM)
+        directionalLayoutMargins = NSDirectionalEdgeInsets(all: Warp.Spacing.spacing200)
 
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
@@ -115,19 +116,19 @@ public class ToastDemoView: UIView, Demoable {
 
             topToastButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             topToastButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            topToastButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .spacingM),
+            topToastButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: Warp.Spacing.spacing200),
 
             bottomToastButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             bottomToastButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            bottomToastButton.topAnchor.constraint(equalTo: topToastButton.bottomAnchor, constant: .spacingM),
+            bottomToastButton.topAnchor.constraint(equalTo: topToastButton.bottomAnchor, constant: Warp.Spacing.spacing200),
 
             containerView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            containerView.topAnchor.constraint(equalTo: bottomToastButton.bottomAnchor, constant: .spacingM),
+            containerView.topAnchor.constraint(equalTo: bottomToastButton.bottomAnchor, constant: Warp.Spacing.spacing200),
 
-            containedToastButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: .spacingM),
-            containedToastButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -.spacingM),
-            containedToastButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: .spacingM),
+            containedToastButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            containedToastButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -Warp.Spacing.spacing200),
+            containedToastButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: Warp.Spacing.spacing200),
             containedToastButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -.spacingXXL)
         ])
     }

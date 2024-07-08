@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public class FavoriteAdsListEmptyView: UIView {
 
@@ -56,7 +57,7 @@ public class FavoriteAdsListEmptyView: UIView {
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(bodyLabel)
 
-        stackView.setCustomSpacing(.spacingM, after: iconImageView)
+        stackView.setCustomSpacing(Warp.Spacing.spacing200, after: iconImageView)
 
         addSubview(stackView)
 

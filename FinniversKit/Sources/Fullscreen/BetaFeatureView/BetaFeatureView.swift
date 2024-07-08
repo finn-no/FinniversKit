@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public struct BetaFeatureViewModel {
     public let iconImage: UIImage?
@@ -117,11 +118,11 @@ public class BetaFeatureView: UIView {
             betaFlagView.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor),
             betaFlagView.centerXAnchor.constraint(equalTo: iconImageView.centerXAnchor),
 
-            titleLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: .spacingM),
+            titleLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: Warp.Spacing.spacing200),
             titleLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
 
-            bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
+            bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
             bodyLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             bodyLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, multiplier: 0.8),
 

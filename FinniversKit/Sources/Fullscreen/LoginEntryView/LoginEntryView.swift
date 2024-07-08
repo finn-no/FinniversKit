@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol LoginEntryViewModel {
     var title: String { get }
@@ -48,7 +49,7 @@ public class LoginEntryView: UIView {
         button.tintColor = .textSubtle
         button.isHidden = true
         button.addTarget(self, action: #selector(handleTapOnSettingsButton), for: .touchUpInside)
-        button.contentEdgeInsets = UIEdgeInsets(all: .spacingM)
+        button.contentEdgeInsets = UIEdgeInsets(all: Warp.Spacing.spacing200)
 
         return button
     }()
@@ -117,8 +118,8 @@ public class LoginEntryView: UIView {
             ]
         } else {
             dialogueConstraints = [
-                loginDialogue.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-                loginDialogue.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+                loginDialogue.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
+                loginDialogue.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
                 loginDialogue.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             ]
         }

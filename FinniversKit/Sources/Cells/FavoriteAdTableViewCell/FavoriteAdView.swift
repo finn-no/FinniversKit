@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol FavoriteAdViewDelegate: AnyObject {
     func favoriteAdView(_ view: FavoriteAdView, didSelectMoreButton button: UIButton)
@@ -49,7 +50,7 @@ final class FavoriteAdView: UIView {
     private lazy var rootStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.spacing = .spacingM
+        stackView.spacing = Warp.Spacing.spacing200
         stackView.alignment = .leading
         return stackView
     }()
@@ -57,7 +58,7 @@ final class FavoriteAdView: UIView {
     private lazy var infoStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .horizontal
-        stackView.spacing = .spacingM
+        stackView.spacing = Warp.Spacing.spacing200
         stackView.alignment = .leading
         return stackView
     }()
@@ -219,7 +220,7 @@ final class FavoriteAdView: UIView {
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             rootStackView.topAnchor.constraint(equalTo: topAnchor, constant: padding),
-            rootStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            rootStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             rootStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             rootStackViewBottomConstraint,
 
@@ -242,7 +243,7 @@ final class FavoriteAdView: UIView {
             sortingDetailLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.spacingS),
             addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.spacingS),
 
-            commentView.trailingAnchor.constraint(equalTo: rootStackView.trailingAnchor, constant: -.spacingM)
+            commentView.trailingAnchor.constraint(equalTo: rootStackView.trailingAnchor, constant: -Warp.Spacing.spacing200)
         ])
     }
 

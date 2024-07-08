@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol BannerTransparencySectionViewDelegate: AnyObject {
     func bannerTransparencySectionViewDidSelectExternalLinkButton(_ view: BannerTransparencySectionView)
@@ -87,7 +88,7 @@ final class BannerTransparencySectionView: UIView {
 
             externalLinkButton.topAnchor.constraint(equalTo: detailTextLabel.bottomAnchor, constant: .spacingXS),
             externalLinkButton.leadingAnchor.constraint(equalTo: leadingAnchor),
-            externalLinkButton.trailingAnchor.constraint(equalTo: externalLinkImageView.leadingAnchor, constant: -.spacingM),
+            externalLinkButton.trailingAnchor.constraint(equalTo: externalLinkImageView.leadingAnchor, constant: -Warp.Spacing.spacing200),
 
             externalLinkImageView.centerYAnchor.constraint(equalTo: externalLinkButton.centerYAnchor),
             externalLinkImageView.trailingAnchor.constraint(equalTo: trailingAnchor),

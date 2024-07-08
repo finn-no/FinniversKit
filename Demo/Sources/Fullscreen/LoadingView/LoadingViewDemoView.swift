@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 extension LoadingView.DisplayType {
     var title: String {
@@ -131,13 +132,13 @@ class LoadingViewDemoView: UIView, Demoable {
         addSubview(displayTypeSegment)
 
         NSLayoutConstraint.activate([
-            displayTypeSegment.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            displayTypeSegment.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM),
-            displayTypeSegment.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            displayTypeSegment.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            displayTypeSegment.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing200),
+            displayTypeSegment.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: displayTypeSegment.topAnchor, constant: -.spacingM),
+            tableView.bottomAnchor.constraint(equalTo: displayTypeSegment.topAnchor, constant: -Warp.Spacing.spacing200),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             ])
 

@@ -1,5 +1,6 @@
 import FinniversKit
 import DemoKit
+import Warp
 
 class NumberedListDemoView: UIView {
 
@@ -34,7 +35,7 @@ class NumberedListDemoView: UIView {
         scrollView.alwaysBounceVertical = true
 
         scrollView.addSubview(numberedListView)
-        numberedListView.fillInSuperview(margin: .spacingM)
+        numberedListView.fillInSuperview(margin: Warp.Spacing.spacing200)
         numberedListView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.spacingXL).isActive = true
     }
 }

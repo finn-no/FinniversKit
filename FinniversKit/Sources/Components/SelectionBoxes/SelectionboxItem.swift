@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 // Naming for convenience
 public typealias RadioButtonItem = SelectionboxItem
@@ -62,7 +63,7 @@ extension SelectionboxItem {
             titleLabel.heightAnchor.constraint(greaterThanOrEqualTo: imageView.heightAnchor, multiplier: 1.0),
             titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingS),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.spacingM)
+            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -Warp.Spacing.spacing200)
             ])
     }
 }

@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol RefreshControlDelegate: AnyObject {
     func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl)

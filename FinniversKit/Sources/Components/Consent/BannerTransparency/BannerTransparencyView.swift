@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol BannerTransparencyViewDelegate: AnyObject {
     func bannerTransparencyViewDidSelectAdSettingsButton(_ view: BannerTransparencyView)
@@ -85,18 +86,18 @@ public final class BannerTransparencyView: UIView {
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
-            logoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
-            logoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            logoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing200),
+            logoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
             logoImageView.widthAnchor.constraint(equalToConstant: 77),
             logoImageView.heightAnchor.constraint(equalToConstant: 27),
 
             headerLabel.leadingAnchor.constraint(equalTo: logoImageView.trailingAnchor, constant: .spacingS),
-            headerLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            headerLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
             headerLabel.centerYAnchor.constraint(equalTo: logoImageView.centerYAnchor),
 
-            adSettingsSection.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: .spacingM),
-            adSettingsSection.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-            adSettingsSection.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            adSettingsSection.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
+            adSettingsSection.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            adSettingsSection.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
 
             readMoreSection.topAnchor.constraint(equalTo: adSettingsSection.bottomAnchor),
             readMoreSection.leadingAnchor.constraint(equalTo: adSettingsSection.leadingAnchor),

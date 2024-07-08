@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 final class StepSliderDemoView: UIView, Demoable {
     private let values = [100, 200, 300, 500, 1000, 2000, 3000, 4000, 5000, 10000]
@@ -39,8 +40,8 @@ final class StepSliderDemoView: UIView, Demoable {
         NSLayoutConstraint.activate([
             slider.centerXAnchor.constraint(equalTo: centerXAnchor),
             slider.centerYAnchor.constraint(equalTo: centerYAnchor),
-            slider.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            slider.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            slider.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            slider.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
         ])
     }
 }

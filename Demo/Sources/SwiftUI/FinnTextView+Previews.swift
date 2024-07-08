@@ -4,6 +4,7 @@
 
 import SwiftUI
 import FinniversKit
+import Warp
 
 struct FinnTextViewDemoView: View {
 
@@ -13,7 +14,7 @@ struct FinnTextViewDemoView: View {
         VStack {
             Text("Textviews")
                 .finnFont(.title1)
-                .padding(.bottom, .spacingM)
+                .padding(.bottom, Warp.Spacing.spacing200)
 
             FinnTextView(text: $text).frame(height: 100)
             FinnTextView(placeholder: "Placeholder", text: $text).frame(height: 100)
@@ -27,7 +28,7 @@ struct FinnTextViewDemoView: View {
 struct FinnTextView_Previews: PreviewProvider {
     static var previews: some View {
         FinnTextViewDemoView()
-            .padding(.spacingM)
+            .padding(Warp.Spacing.spacing200)
             .previewLayout(.sizeThatFits)
     }
 }

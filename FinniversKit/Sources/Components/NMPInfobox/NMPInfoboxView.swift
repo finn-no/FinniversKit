@@ -3,6 +3,7 @@
 //
 
 import SwiftUI
+import Warp
 
 public extension NMPInfoboxView {
     /**
@@ -120,7 +121,7 @@ public struct NMPInfoboxView: View {
             }
 
         }
-        .padding(.spacingM)
+        .padding(Warp.Spacing.spacing200)
         .overlay( // border
             RoundedRectangle(cornerRadius: cornerRadius)
                 .stroke(viewModel.informationType.subtleBorderColor, lineWidth: 1)

@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 final class BetaFeatureDemoView: UIView, Demoable {
     private lazy var betaFeatureView: BetaFeatureView = {
@@ -31,7 +32,7 @@ final class BetaFeatureDemoView: UIView, Demoable {
 
     func setup() {
         addSubview(betaFeatureView)
-        layoutMargins = UIEdgeInsets(vertical: 0, horizontal: .spacingM)
+        layoutMargins = UIEdgeInsets(vertical: 0, horizontal: Warp.Spacing.spacing200)
         NSLayoutConstraint.activate([
             betaFeatureView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
             betaFeatureView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),

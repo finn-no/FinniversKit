@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public protocol ScrollableTabViewDelegate: AnyObject {
     func scrollableTabViewDidTapItem(_ sidescrollableView: ScrollableTabView, item: ScrollableTabViewModel.Item)
@@ -105,7 +106,7 @@ private extension ScrollableTabView {
             let section = NSCollectionLayoutSection(group: group)
             section.orthogonalScrollingBehavior = .continuous
             section.interGroupSpacing = 32
-            section.contentInsets = .init(vertical: 0, horizontal: .spacingM)
+            section.contentInsets = .init(vertical: 0, horizontal: Warp.Spacing.spacing200)
             return section
         }
     }

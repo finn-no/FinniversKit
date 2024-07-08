@@ -5,6 +5,7 @@
 import SwiftUI
 import FinniversKit
 import DemoKit
+import Warp
 
 struct FinnTextFieldDemoView: View {
 
@@ -14,7 +15,7 @@ struct FinnTextFieldDemoView: View {
         ScrollView {
             Text("Textfields")
                 .finnFont(.title1)
-                .padding(.bottom, .spacingM)
+                .padding(.bottom, Warp.Spacing.spacing200)
 
             FinnTextField(placeholder: "Default", text: $text)
             FinnTextField(input: .email, placeholder: "Email", helpText: "Help text", text: $text)
@@ -39,7 +40,7 @@ struct FinnTextFieldDemoView: View {
 struct FinnTextField_Previews: PreviewProvider, Demoable {
     static var previews: some View {
         FinnTextFieldDemoView()
-            .padding(.spacingM)
+            .padding(Warp.Spacing.spacing200)
             .previewLayout(.sizeThatFits)
     }
 }

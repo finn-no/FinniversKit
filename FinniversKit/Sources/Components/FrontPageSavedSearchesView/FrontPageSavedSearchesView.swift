@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public protocol FrontPageSavedSearchesViewDelegate: AnyObject {
     func frontPageSavedSearchesView(_ view: FrontPageSavedSearchesView, didSelectSavedSearch savedSearch: FrontPageSavedSearchViewModel)
@@ -13,7 +14,7 @@ public class FrontPageSavedSearchesView: UIView {
 
     // MARK: - Internal properties
 
-    public static let topPadding: CGFloat = .spacingM
+    public static let topPadding: CGFloat = Warp.Spacing.spacing200
     static let height: CGFloat = headerHeight + cellHeight + bottomPadding
 
     // MARK: - Private properties
@@ -129,7 +130,7 @@ private extension FrontPageSavedSearchesView {
 
         //Sections
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: .spacingM, bottom: 0, trailing: .spacingM)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: Warp.Spacing.spacing200, bottom: 0, trailing: Warp.Spacing.spacing200)
         section.orthogonalScrollingBehavior = .continuous
         section.interGroupSpacing = .spacingS + .spacingXS
 

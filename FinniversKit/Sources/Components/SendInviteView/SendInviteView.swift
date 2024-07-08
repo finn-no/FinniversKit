@@ -1,6 +1,7 @@
 //
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
+import Warp
 
 public protocol SendInviteViewDelegate: AnyObject {
     func sendInviteViewLoadImage(_ view: SendInviteView, loadImageWithUrl url: URL, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
@@ -75,8 +76,8 @@ public class SendInviteView: UIView {
             profileStackView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
 
             buttonStackView.topAnchor.constraint(equalTo: profileStackView.bottomAnchor, constant: .spacingL),
-            buttonStackView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: .spacingM),
-            buttonStackView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: -.spacingM),
+            buttonStackView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: Warp.Spacing.spacing200),
+            buttonStackView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: -Warp.Spacing.spacing200),
         ])
     }
 

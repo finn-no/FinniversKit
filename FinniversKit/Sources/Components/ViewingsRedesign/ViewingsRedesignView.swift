@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public protocol ViewingsRedesignViewDelegate: AnyObject {
     func viewingsRedesignView(_ view: ViewingsRedesignView, didSelectButton selectedButton: ViewingsRedesignView.SelectedButton)
@@ -19,7 +20,7 @@ public class ViewingsRedesignView: UIView {
     private lazy var stackView: UIStackView = {
         let view = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
         view.isLayoutMarginsRelativeArrangement = true
-        view.directionalLayoutMargins = .init(all: .spacingM)
+        view.directionalLayoutMargins = .init(all: Warp.Spacing.spacing200)
         return view
     }()
 
@@ -72,9 +73,9 @@ public class ViewingsRedesignView: UIView {
         ])
 
         stackView.setCustomSpacing(.zero, after: viewingsStackView)
-        stackView.setCustomSpacing(.spacingM, after: moreInfoLabel)
-        stackView.setCustomSpacing(.spacingM, after: prospectusStackView)
-        stackView.setCustomSpacing(.spacingM, after: viewingSignupButton)
+        stackView.setCustomSpacing(Warp.Spacing.spacing200, after: moreInfoLabel)
+        stackView.setCustomSpacing(Warp.Spacing.spacing200, after: prospectusStackView)
+        stackView.setCustomSpacing(Warp.Spacing.spacing200, after: viewingSignupButton)
 
         titleLabel.text = viewModel.title
         moreInfoLabel.text = viewModel.moreInfoText

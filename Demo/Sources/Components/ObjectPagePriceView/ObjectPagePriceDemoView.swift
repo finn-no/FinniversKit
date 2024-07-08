@@ -88,8 +88,8 @@ class ObjectPagePriceDemoView: UIView, Tweakable {
     private func setup() {
         addSubview(priceView)
         NSLayoutConstraint.activate([
-            priceView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            priceView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            priceView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            priceView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             priceView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }

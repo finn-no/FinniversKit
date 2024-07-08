@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class ColumnListsDemoView: UIView, Demoable {
     override init(frame: CGRect) {
@@ -88,8 +89,8 @@ class ColumnListsDemoView: UIView, Demoable {
         columnListsView.configure(with: sampleData, numberOfColumns: numberOfColumnsForTraits(), style: .caption)
         NSLayoutConstraint.activate([
             columnListsView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            columnListsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            columnListsView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            columnListsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            columnListsView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
         ])
     }
 }

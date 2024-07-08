@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Warp
 
 internal final class NativeAdvertDetailsContainer: UIView {
 
@@ -72,7 +73,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
         logoView.widthAnchor.constraint(equalToConstant: logoSizeRegular),
         logoView.heightAnchor.constraint(equalToConstant: logoSizeRegular),
 
-        titleLabel.topAnchor.constraint(equalTo: nativeAdvertRibbon.bottomAnchor, constant: .spacingM),
+        titleLabel.topAnchor.constraint(equalTo: nativeAdvertRibbon.bottomAnchor, constant: Warp.Spacing.spacing200),
     ]
 
     // MARK: - Init

@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 final class PrimingHeaderView: BottomShadowView {
     // MARK: - Internal properties
@@ -39,13 +40,13 @@ final class PrimingHeaderView: BottomShadowView {
         backgroundColor = .background
         addSubview(headingLabel)
 
-        let verticalSpacing = .spacingM + .spacingS
+        let verticalSpacing = Warp.Spacing.spacing200 + .spacingS
 
         layoutMargins = UIEdgeInsets(
             top: verticalSpacing,
-            left: .spacingM,
+            left: Warp.Spacing.spacing200,
             bottom: verticalSpacing,
-            right: .spacingM
+            right: Warp.Spacing.spacing200
         )
 
         headingLabel.fillInSuperviewLayoutMargins()

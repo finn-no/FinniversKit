@@ -1,6 +1,7 @@
 //
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
+import Warp
 
 public protocol VerificationViewDelegate: AnyObject {
     func didTapVerificationButton(_: VerificationView)
@@ -76,16 +77,16 @@ private extension VerificationView {
 
         let insets = UIEdgeInsets(
             top: .spacingS,
-            leading: .spacingM,
-            bottom: .spacingM,
-            trailing: .spacingM
+            leading: Warp.Spacing.spacing200,
+            bottom: Warp.Spacing.spacing200,
+            trailing: Warp.Spacing.spacing200
         )
 
         let imageWidth: CGFloat = 18
         verificationButton.titleEdgeInsets = UIEdgeInsets(top: verificationButton.titleEdgeInsets.top,
-                                                          leading: verificationButton.titleEdgeInsets.leading + .spacingM + imageWidth,
+                                                          leading: verificationButton.titleEdgeInsets.leading + Warp.Spacing.spacing200 + imageWidth,
                                                           bottom: verificationButton.titleEdgeInsets.bottom,
-                                                          trailing: verificationButton.titleEdgeInsets.trailing + .spacingM + imageWidth)
+                                                          trailing: verificationButton.titleEdgeInsets.trailing + Warp.Spacing.spacing200 + imageWidth)
 
         NSLayoutConstraint.activate([
             verificationImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: insets.top),
@@ -97,18 +98,18 @@ private extension VerificationView {
             titleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: insets.leading),
             titleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -insets.trailing),
 
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
             descriptionLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: insets.leading),
             descriptionLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -insets.trailing),
 
-            verificationButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: .spacingM),
+            verificationButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
             verificationButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: insets.leading),
             verificationButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -insets.trailing),
 
             verificationButtonImageView.widthAnchor.constraint(equalToConstant: imageWidth),
             verificationButtonImageView.heightAnchor.constraint(equalToConstant: imageWidth),
             verificationButtonImageView.centerYAnchor.constraint(equalTo: verificationButton.centerYAnchor),
-            verificationButtonImageView.trailingAnchor.constraint(equalTo: verificationButton.trailingAnchor, constant: -.spacingM),
+            verificationButtonImageView.trailingAnchor.constraint(equalTo: verificationButton.trailingAnchor, constant: -Warp.Spacing.spacing200),
         ])
     }
 

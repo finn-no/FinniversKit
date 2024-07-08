@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public final class CalloutView: UIView {
 
@@ -147,10 +148,10 @@ public final class CalloutView: UIView {
             arrowView.heightAnchor.constraint(equalToConstant: 12),
             arrowConstraint,
 
-            textLabel.topAnchor.constraint(equalTo: boxView.topAnchor, constant: .spacingM),
-            textLabel.leadingAnchor.constraint(equalTo: boxView.leadingAnchor, constant: .spacingM),
-            textLabel.trailingAnchor.constraint(equalTo: boxView.trailingAnchor, constant: -.spacingM),
-            textLabel.bottomAnchor.constraint(equalTo: boxView.bottomAnchor, constant: -.spacingM)
+            textLabel.topAnchor.constraint(equalTo: boxView.topAnchor, constant: Warp.Spacing.spacing200),
+            textLabel.leadingAnchor.constraint(equalTo: boxView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            textLabel.trailingAnchor.constraint(equalTo: boxView.trailingAnchor, constant: -Warp.Spacing.spacing200),
+            textLabel.bottomAnchor.constraint(equalTo: boxView.bottomAnchor, constant: -Warp.Spacing.spacing200)
         ]
 
         NSLayoutConstraint.activate(defaultConstraints + directionConstraints())

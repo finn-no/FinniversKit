@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class ConfettiDemoView: UIView, Demoable {
 
@@ -60,7 +61,7 @@ class ConfettiDemoView: UIView, Demoable {
             slider.widthAnchor.constraint(equalTo: button.widthAnchor),
             slider.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            button.topAnchor.constraint(equalTo: slider.bottomAnchor, constant: .spacingM),
+            button.topAnchor.constraint(equalTo: slider.bottomAnchor, constant: Warp.Spacing.spacing200),
             buttonWidthConstraint,
             button.widthAnchor.constraint(lessThanOrEqualToConstant: 300),
             button.centerXAnchor.constraint(equalTo: centerXAnchor),

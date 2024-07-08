@@ -4,6 +4,7 @@
 
 import UIKit
 import AVFoundation
+import Warp
 
 public final class PianoView: UIView {
     private let notes: [UInt8] = {
@@ -93,8 +94,8 @@ public final class PianoView: UIView {
         let isPad = UIDevice.current.userInterfaceIdiom == .pad
         let reverbYAnchor = isPad
             ? reverbView.bottomAnchor.constraint(equalTo: centerYAnchor, constant: -.spacingXXL)
-            : reverbView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM)
-        let pianoTopConstant: CGFloat = isPad ? .spacingXXL : .spacingM
+            : reverbView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200)
+        let pianoTopConstant: CGFloat = isPad ? .spacingXXL : Warp.Spacing.spacing200
 
         NSLayoutConstraint.activate([
             reverbYAnchor,

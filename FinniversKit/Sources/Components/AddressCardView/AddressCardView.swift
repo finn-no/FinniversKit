@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol AddressCardViewDelegate: AnyObject {
     func addressCardViewDidSelectCopyButton(_ addressCardView: AddressCardView)
@@ -23,7 +24,7 @@ public final class AddressCardView: UIView {
     private lazy var subtitleLabel = Label(style: .bodyStrong, withAutoLayout: true)
 
     private lazy var topStackView: UIStackView = {
-        let view = UIStackView(axis: .horizontal, spacing: .spacingM, withAutoLayout: true)
+        let view = UIStackView(axis: .horizontal, spacing: Warp.Spacing.spacing200, withAutoLayout: true)
         view.alignment = .center
         view.distribution = .equalSpacing
         return view
@@ -77,7 +78,7 @@ public final class AddressCardView: UIView {
         contentStackView.addArrangedSubviews([topStackView, getDirectionsButton])
 
         addSubview(contentStackView)
-        contentStackView.fillInSuperview(insets: UIEdgeInsets(top: .spacingM, leading: .spacingM, bottom: -.spacingL, trailing: -.spacingM))
+        contentStackView.fillInSuperview(insets: UIEdgeInsets(top: Warp.Spacing.spacing200, leading: Warp.Spacing.spacing200, bottom: -.spacingL, trailing: -Warp.Spacing.spacing200))
     }
 
     // MARK: - Actions

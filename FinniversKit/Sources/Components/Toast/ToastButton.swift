@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 internal class ToastButton: UIButton {
 
@@ -35,7 +36,7 @@ internal class ToastButton: UIButton {
             setTitleColor(.textLink, for: .normal)
         case .promoted:
             setTitleColor(.textInverted, for: .normal)
-            contentEdgeInsets = UIEdgeInsets(vertical: .spacingS, horizontal: .spacingM)
+            contentEdgeInsets = UIEdgeInsets(vertical: .spacingS, horizontal: Warp.Spacing.spacing200)
             layer.borderColor = UIColor.clear.cgColor
             layer.borderWidth = 2
         }

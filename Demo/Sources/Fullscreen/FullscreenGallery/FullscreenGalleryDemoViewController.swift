@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 // MARK: - Helpers
 
@@ -235,17 +236,17 @@ class FullscreenGalleryDemoViewController: UIViewController, UICollectionViewDel
             thumbnailSwitch.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingXL),
             thumbnailSwitch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .spacingXL),
 
-            thumbnailLabel.leadingAnchor.constraint(equalTo: thumbnailSwitch.trailingAnchor, constant: .spacingM),
+            thumbnailLabel.leadingAnchor.constraint(equalTo: thumbnailSwitch.trailingAnchor, constant: Warp.Spacing.spacing200),
             thumbnailLabel.centerYAnchor.constraint(equalTo: thumbnailSwitch.centerYAnchor),
 
             simulateLoadingSwitch.topAnchor.constraint(equalTo: thumbnailSwitch.bottomAnchor, constant: .spacingS),
             simulateLoadingSwitch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .spacingXL),
 
-            simulateLoadingLabel.leadingAnchor.constraint(equalTo: simulateLoadingSwitch.trailingAnchor, constant: .spacingM),
+            simulateLoadingLabel.leadingAnchor.constraint(equalTo: simulateLoadingSwitch.trailingAnchor, constant: Warp.Spacing.spacing200),
             simulateLoadingLabel.centerYAnchor.constraint(equalTo: simulateLoadingSwitch.centerYAnchor),
 
-            helpLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .spacingM),
-            helpLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.spacingM),
+            helpLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Warp.Spacing.spacing200),
+            helpLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Warp.Spacing.spacing200),
             helpLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: .spacingXL)
         ])
     }

@@ -1,4 +1,5 @@
 import SwiftUI
+import Warp
 
 public class SwiftUISelectionListItemModel<ItemValue>: ObservableObject, Identifiable {
     public init(title: String, value: ItemValue, description: String? = nil, accessibilityDescription: String? = nil, image: Image? = nil, isSelected: Bool) {
@@ -23,7 +24,7 @@ struct SwiftUISelectionListItem<ItemType>: View {
     @ObservedObject var itemModel: SwiftUISelectionListItemModel<ItemType>
 
     var body: some View {
-        HStack(spacing: .spacingM) {
+        HStack(spacing: Warp.Spacing.spacing200) {
             SwiftUIRadioButton(isSelected: $itemModel.isSelected)
 
             VStack(alignment: .leading) {
@@ -44,7 +45,7 @@ struct SwiftUISelectionListItem<ItemType>: View {
                     .foregroundColor(.textSubtle)
             }
         }
-        .padding(.spacingM)
+        .padding(Warp.Spacing.spacing200)
         .accessibilityElement(children: .ignore)
         .accessibilityAddTraits(accessibilityButtonTraits)
         .accessibilityLabel(accessibilityText)

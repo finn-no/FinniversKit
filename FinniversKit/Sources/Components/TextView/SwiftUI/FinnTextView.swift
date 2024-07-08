@@ -3,6 +3,7 @@
 //
 
 import SwiftUI
+import Warp
 
 public struct FinnTextView: View {
 

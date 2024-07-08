@@ -1,6 +1,7 @@
 import UIKit
 import FinniversKit
 import DemoKit
+import Warp
 
 class HyperlinkTextViewDemoView: UIView {
 
@@ -27,8 +28,8 @@ class HyperlinkTextViewDemoView: UIView {
 
         NSLayoutConstraint.activate([
             hyperlinkTextView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            hyperlinkTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            hyperlinkTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
+            hyperlinkTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            hyperlinkTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200)
         ])
     }
 

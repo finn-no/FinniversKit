@@ -1,6 +1,7 @@
 //
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
+import Warp
 
 public protocol SafetyElementContentViewDelegate: AnyObject {
     func safetyElementContentView(_ view: SafetyElementsView.ElementContentView, didClickOnLink identifier: String?, url: URL)

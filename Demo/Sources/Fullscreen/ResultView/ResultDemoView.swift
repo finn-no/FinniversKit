@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class ResultDemoView: UIView {
 
@@ -66,7 +67,7 @@ extension ResultDemoView: TweakableDemo {
                 backgroundColor: .background,
                 iconTintColor: nil,
                 iconBottomSpacing: .spacingL,
-                titleBottomSpacing: .spacingM,
+                titleBottomSpacing: Warp.Spacing.spacing200,
                 iconHeight: 64
             )
         case .error:
@@ -78,7 +79,7 @@ extension ResultDemoView: TweakableDemo {
                 backgroundColor: .background,
                 iconTintColor: .textNegative,
                 iconBottomSpacing: .spacingL,
-                titleBottomSpacing: .spacingM,
+                titleBottomSpacing: Warp.Spacing.spacing200,
                 iconHeight: 64
             )
         }

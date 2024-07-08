@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol KlimabroletContentViewDelegate: AnyObject {
     func klimabroletViewDidSelectReadMore(_ view: KlimabroletContentView)
@@ -87,18 +88,18 @@ class KlimabroletContentView: UIView {
             bannerImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             bannerImageView.heightAnchor.constraint(equalTo: bannerImageView.widthAnchor, multiplier: 0.6),
 
-            titleLabel.topAnchor.constraint(equalTo: bannerImageView.bottomAnchor, constant: .spacingM),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            titleLabel.topAnchor.constraint(equalTo: bannerImageView.bottomAnchor, constant: Warp.Spacing.spacing200),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
             subtitleTagView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXS),
             subtitleTagView.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            bodyTextLabel.topAnchor.constraint(equalTo: subtitleTagView.bottomAnchor, constant: .spacingM),
+            bodyTextLabel.topAnchor.constraint(equalTo: subtitleTagView.bottomAnchor, constant: Warp.Spacing.spacing200),
             bodyTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
             bodyTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
 
-            accessoryButton.topAnchor.constraint(equalTo: bodyTextLabel.bottomAnchor, constant: .spacingM),
+            accessoryButton.topAnchor.constraint(equalTo: bodyTextLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
             accessoryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
             accessoryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
             accessoryButton.heightAnchor.constraint(greaterThanOrEqualToConstant: .spacingXL),

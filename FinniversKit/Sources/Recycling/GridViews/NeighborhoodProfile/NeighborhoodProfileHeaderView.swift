@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol NeighborhoodProfileHeaderViewDelegate: AnyObject {
     func neighborhoodProfileHeaderViewDidSelectButton(_ view: NeighborhoodProfileHeaderView)
@@ -29,7 +30,7 @@ final class NeighborhoodProfileHeaderView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var stackView = UIStackView(axis: .horizontal, spacing: .spacingM, alignment: .center, distribution: .fill, withAutoLayout: true)
+    private lazy var stackView = UIStackView(axis: .horizontal, spacing: Warp.Spacing.spacing200, alignment: .center, distribution: .fill, withAutoLayout: true)
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)

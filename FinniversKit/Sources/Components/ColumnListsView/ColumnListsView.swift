@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public class ColumnListsView: UIView {
     // MARK: - Public properties
@@ -27,7 +28,7 @@ public class ColumnListsView: UIView {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
-        stackView.spacing = .spacingM
+        stackView.spacing = Warp.Spacing.spacing200
         return stackView
     }()
 

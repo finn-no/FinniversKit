@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import Warp
 
 public final class BadgeView: UIView {
     private lazy var stackView: UIStackView = {
@@ -37,7 +38,7 @@ public final class BadgeView: UIView {
         addSubview(stackView)
         stackView.addArrangedSubviews([iconImageView, textLabel])
 
-        let iconSize: CGFloat = .spacingM
+        let iconSize: CGFloat = Warp.Spacing.spacing200
 
         NSLayoutConstraint.activate([
             heightAnchor.constraint(equalToConstant: 24),

@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public final class NativeAdvertListView: UIView {
 
@@ -71,7 +72,7 @@ public final class NativeAdvertListView: UIView {
         container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
         container.heightAnchor.constraint(greaterThanOrEqualToConstant: containerMinimumHeightRegular),
 
-        detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingM),
+        detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: Warp.Spacing.spacing200),
 
         imageView.widthAnchor.constraint(equalToConstant: imageWidthRegular),
     ]

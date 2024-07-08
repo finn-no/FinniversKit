@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 final class EarthHourSignUpView: EarthHourContentView {
     private(set) lazy var subtitleTagView = EarthHourTagView(withAutoLayout: true)
@@ -43,9 +44,9 @@ final class EarthHourSignUpView: EarthHourContentView {
         addSubview(accessoryButton)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM + .spacingS),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200 + .spacingS),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
             subtitleTagView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXS),
             subtitleTagView.centerXAnchor.constraint(equalTo: centerXAnchor),

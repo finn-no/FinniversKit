@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 // MARK: - FeedbackViewDelegate
 
@@ -55,7 +56,7 @@ public class FeedbackView: UIView {
         titleView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .spacingS),
         titleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
         buttonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
-        buttonView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM)
+        buttonView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing200)
     ]
 
     private lazy var listPresentationConstraints: [NSLayoutConstraint] = [

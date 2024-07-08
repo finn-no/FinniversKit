@@ -3,6 +3,7 @@
 //
 
 import SwiftUI
+import Warp
 
 public struct InlineFlatStyle: ButtonStyle {
     private let font: Font
@@ -32,7 +33,7 @@ public struct FlatStyle: ButtonStyle {
         size: Button.Size = .normal,
         textColor: Color = .backgroundPrimary,
         fullWidth: Bool = true,
-        padding: EdgeInsets = .init(top: .spacingS, leading: .spacingM, bottom: .spacingS, trailing: .spacingM)
+        padding: EdgeInsets = .init(top: .spacingS, leading: Warp.Spacing.spacing200, bottom: .spacingS, trailing: Warp.Spacing.spacing200)
     ) {
         self.size = size
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
@@ -67,7 +68,7 @@ public struct DefaultStyle: ButtonStyle {
         size: Button.Size = .normal,
         textColor: Color = .backgroundPrimary,
         fullWidth: Bool = true,
-        padding: EdgeInsets = .init(top: .spacingS, leading: .spacingM, bottom: .spacingS, trailing: .spacingM)
+        padding: EdgeInsets = .init(top: .spacingS, leading: Warp.Spacing.spacing200, bottom: .spacingS, trailing: Warp.Spacing.spacing200)
     ) {
         self.size = size
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
@@ -123,7 +124,7 @@ public struct CallToAction: ButtonStyle {
             self.padding = padding
         } else {
             let verticalPadding: CGFloat = size == .normal ? .normalButtonVerticalPadding : .spacingS
-            let defaultPadding: EdgeInsets = .init(top: verticalPadding, leading: .spacingM, bottom: verticalPadding, trailing: .spacingM)
+            let defaultPadding: EdgeInsets = .init(top: verticalPadding, leading: Warp.Spacing.spacing200, bottom: verticalPadding, trailing: Warp.Spacing.spacing200)
             self.padding = defaultPadding
         }
 
