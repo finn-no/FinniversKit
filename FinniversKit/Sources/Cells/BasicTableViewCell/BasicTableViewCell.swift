@@ -51,7 +51,7 @@ open class BasicTableViewCell: UITableViewCell {
 
     // MARK: - Private properties
 
-    private lazy var stackViewToDetailLabelConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: detailLabel.leadingAnchor, constant: -.spacingXS)
+    private lazy var stackViewToDetailLabelConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: detailLabel.leadingAnchor, constant: -Warp.Spacing.spacing50)
 
     // MARK: - Setup
 
@@ -93,8 +93,8 @@ open class BasicTableViewCell: UITableViewCell {
         if viewModel.hasChevron == true {
             accessoryType = .disclosureIndicator
             selectionStyle = .default
-            detailLabelTrailingConstraint.constant = -.spacingS
-            stackViewTrailingAnchorConstraint.constant = -.spacingS
+            detailLabelTrailingConstraint.constant = -Warp.Spacing.spacing100
+            stackViewTrailingAnchorConstraint.constant = -Warp.Spacing.spacing100
         } else {
             accessoryType = .none
             selectionStyle = .none

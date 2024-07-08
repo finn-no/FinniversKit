@@ -59,7 +59,7 @@ class FavoriteAdsListTableHeader: UIView {
 
     private lazy var tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleViewTap))
     private lazy var contentStackView = UIStackView(axis: .vertical, withAutoLayout: true)
-    private lazy var messagesStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+    private lazy var messagesStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
     private lazy var sortingContainerView = UIView()
 
     private lazy var titleLabel: UILabel = {
@@ -113,10 +113,10 @@ class FavoriteAdsListTableHeader: UIView {
         sortingContainerView.addSubview(sortingView)
 
         contentStackView.addArrangedSubviews([titleLabel, subtitleView, messagesStackView, searchBar, sortingContainerView])
-        contentStackView.setCustomSpacing(.spacingXS, after: titleLabel)
-        contentStackView.setCustomSpacing(.spacingL, after: subtitleView)
+        contentStackView.setCustomSpacing(Warp.Spacing.spacing50, after: titleLabel)
+        contentStackView.setCustomSpacing(Warp.Spacing.spacing300, after: subtitleView)
         contentStackView.setCustomSpacing(Warp.Spacing.spacing200, after: messagesStackView)
-        contentStackView.setCustomSpacing(.spacingL + .spacingXS, after: searchBar)
+        contentStackView.setCustomSpacing(Warp.Spacing.spacing300 + Warp.Spacing.spacing50, after: searchBar)
 
         addSubview(contentStackView)
 

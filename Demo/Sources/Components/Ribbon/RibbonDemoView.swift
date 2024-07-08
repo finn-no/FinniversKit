@@ -4,9 +4,10 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 public class RibbonDemoView: UIView, Demoable {
-    private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+    private lazy var stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
 
     private let ribbonViews: [UIView] = [
         RibbonView(style: .success, with: "Success"),
@@ -31,8 +32,8 @@ public class RibbonDemoView: UIView, Demoable {
         addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS)
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100)
         ])
     }
 }

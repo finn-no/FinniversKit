@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public extension FloatingButton {
     static func favoritesXmasButton(withTarget target: Any? = nil, action: Selector? = nil) -> FloatingButton {
@@ -24,7 +25,7 @@ public extension FloatingButton.Style {
             titleColor: .textInverted,
             primaryBackgroundColor: .backgroundNegative,
             highlightedBackgroundColor: .backgroundNegativeActive,
-            borderWidth: .spacingXS,
+            borderWidth: Warp.Spacing.spacing50,
             borderColor: .white,
             badgeBackgroundColor: .backgroundPrimary,
             badgeTextColor: .text,

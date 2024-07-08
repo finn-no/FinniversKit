@@ -70,12 +70,12 @@ public class ConfirmationView: UIView {
             messageLabel.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor),
 
             closeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            closeButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: .spacingXL),
+            closeButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: Warp.Spacing.spacing400),
 
             view.topAnchor.constraint(equalTo: titleLabel.topAnchor),
             view.bottomAnchor.constraint(equalTo: closeButton.bottomAnchor),
-            view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
-            view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
+            view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing400),
+            view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing400),
             view.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
 

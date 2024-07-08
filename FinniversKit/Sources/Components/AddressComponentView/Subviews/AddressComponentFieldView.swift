@@ -40,11 +40,11 @@ public class AddressComponentFieldView: UIView {
         addSubview(hairlineView)
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100),
 
-            chevronImageView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: .spacingS),
+            chevronImageView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: Warp.Spacing.spacing100),
             chevronImageView.leadingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: Warp.Spacing.spacing200),
             chevronImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             chevronImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -Warp.Spacing.spacing200),

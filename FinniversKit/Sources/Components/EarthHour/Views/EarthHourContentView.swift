@@ -51,15 +51,15 @@ class EarthHourContentView: UIView {
         addSubview(accessoryButton)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200 + .spacingS),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200 + Warp.Spacing.spacing100),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
-            bodyTextLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXS),
+            bodyTextLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing50),
             bodyTextLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             bodyTextLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
 
-            accessoryButton.topAnchor.constraint(equalTo: bodyTextLabel.bottomAnchor, constant: .spacingS),
+            accessoryButton.topAnchor.constraint(equalTo: bodyTextLabel.bottomAnchor, constant: Warp.Spacing.spacing100),
             accessoryButton.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }

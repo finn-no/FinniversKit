@@ -40,7 +40,7 @@ final class PrimingHeaderView: BottomShadowView {
         backgroundColor = .background
         addSubview(headingLabel)
 
-        let verticalSpacing = Warp.Spacing.spacing200 + .spacingS
+        let verticalSpacing = Warp.Spacing.spacing200 + Warp.Spacing.spacing100
 
         layoutMargins = UIEdgeInsets(
             top: verticalSpacing,

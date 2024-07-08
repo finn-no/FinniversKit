@@ -78,15 +78,15 @@ final class BannerTransparencySectionView: UIView {
         addSubview(externalLinkImageView)
 
         NSLayoutConstraint.activate([
-            headerLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            headerLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
             headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            detailTextLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: .spacingXS),
+            detailTextLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: Warp.Spacing.spacing50),
             detailTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             detailTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            externalLinkButton.topAnchor.constraint(equalTo: detailTextLabel.bottomAnchor, constant: .spacingXS),
+            externalLinkButton.topAnchor.constraint(equalTo: detailTextLabel.bottomAnchor, constant: Warp.Spacing.spacing50),
             externalLinkButton.leadingAnchor.constraint(equalTo: leadingAnchor),
             externalLinkButton.trailingAnchor.constraint(equalTo: externalLinkImageView.leadingAnchor, constant: -Warp.Spacing.spacing200),
 
@@ -95,7 +95,7 @@ final class BannerTransparencySectionView: UIView {
             externalLinkImageView.widthAnchor.constraint(equalToConstant: 18),
             externalLinkImageView.heightAnchor.constraint(equalTo: externalLinkImageView.widthAnchor),
 
-            externalLinkButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingXS)
+            externalLinkButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing50)
         ])
     }
 

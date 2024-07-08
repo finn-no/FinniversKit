@@ -35,7 +35,7 @@ class SettingsSectionFooterView: UITableViewHeaderFooterView {
 
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing100),
             trailingConstraint
         ])
     }

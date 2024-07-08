@@ -89,11 +89,11 @@ public class SwitchView: UIView {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200),
 
-            detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXXS),
+            detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing25),
             detailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             detailLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing200),
 
-            uiSwitch.leadingAnchor.constraint(equalTo: detailLabel.trailingAnchor, constant: .spacingS),
+            uiSwitch.leadingAnchor.constraint(equalTo: detailLabel.trailingAnchor, constant: Warp.Spacing.spacing100),
             uiSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             uiSwitch.centerYAnchor.constraint(equalTo: centerYAnchor),
             uiSwitch.widthAnchor.constraint(equalToConstant: 49.0)

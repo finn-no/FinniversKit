@@ -51,8 +51,8 @@ final class FavoriteSearchEmptyView: UIView {
         button.setTitleColor(.link, for: .highlighted)
         button.setTitleColor(.link, for: .selected)
         button.addTarget(self, action: #selector(handleAddFolderButtonTap), for: .touchUpInside)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -.spacingXS, bottom: 0, right: .spacingXS)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: .spacingXS, bottom: 0, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -Warp.Spacing.spacing50, bottom: 0, right: Warp.Spacing.spacing50)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: Warp.Spacing.spacing50, bottom: 0, right: 0)
         return button
     }()
 
@@ -84,7 +84,7 @@ final class FavoriteSearchEmptyView: UIView {
         stackView.addArrangedSubview(bodyLabel)
         stackView.addArrangedSubview(addFolderButton)
 
-        stackView.setCustomSpacing(.spacingS, after: magnifyingGlassImageView)
+        stackView.setCustomSpacing(Warp.Spacing.spacing100, after: magnifyingGlassImageView)
         stackView.setCustomSpacing(Warp.Spacing.spacing200, after: bodyLabel)
 
         wrapperView.addSubview(stackView)
@@ -96,9 +96,9 @@ final class FavoriteSearchEmptyView: UIView {
             wrapperView.trailingAnchor.constraint(equalTo: trailingAnchor),
             wrapperViewBottomConstraint,
 
-            stackView.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor, constant: -.spacingS),
-            stackView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor, constant: .spacingXXL),
-            stackView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor, constant: -.spacingXXL),
+            stackView.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor, constant: -Warp.Spacing.spacing100),
+            stackView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor, constant: Warp.Spacing.spacing800),
+            stackView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor, constant: -Warp.Spacing.spacing800),
 
             magnifyingGlassImageView.heightAnchor.constraint(equalToConstant: 48),
             magnifyingGlassImageView.widthAnchor.constraint(equalToConstant: 48)

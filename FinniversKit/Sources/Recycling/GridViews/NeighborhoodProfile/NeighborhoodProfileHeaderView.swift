@@ -109,7 +109,7 @@ private final class ArrowButton: UIButton {
         let image = UIImage(named: .arrowRight).withRenderingMode(.alwaysTemplate)
         setImage(image, for: .normal)
         setImage(image, for: .highlighted)
-        imageEdgeInsets = UIEdgeInsets(top: 3, leading: .spacingXS, bottom: 3, trailing: -.spacingXS)
+        imageEdgeInsets = UIEdgeInsets(top: 3, leading: Warp.Spacing.spacing50, bottom: 3, trailing: -Warp.Spacing.spacing50)
         contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         layer.cornerRadius = 8
         imageView?.contentMode = .scaleAspectFit

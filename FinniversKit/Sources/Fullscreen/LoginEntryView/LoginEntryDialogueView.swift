@@ -84,7 +84,7 @@ class LoginEntryDialogueView: UIView {
     private func setup() {
         layer.cornerRadius = 33
         directionalLayoutMargins = NSDirectionalEdgeInsets(
-            top: .spacingXXL, leading: .spacingXL, bottom: .spacingXL, trailing: .spacingXL
+            top: Warp.Spacing.spacing800, leading: Warp.Spacing.spacing400, bottom: Warp.Spacing.spacing400, trailing: Warp.Spacing.spacing400
         )
 
         addSubview(logoImageView)
@@ -100,15 +100,15 @@ class LoginEntryDialogueView: UIView {
             logoImageView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
             logoImageView.heightAnchor.constraint(equalToConstant: 56),
 
-            titleLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: .spacingXL),
+            titleLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: Warp.Spacing.spacing400),
             titleLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
 
-            detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
-            detailLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: .spacingS),
-            detailLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -.spacingS),
+            detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing100),
+            detailLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: Warp.Spacing.spacing100),
+            detailLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -Warp.Spacing.spacing100),
 
-            loginButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .spacingXL),
+            loginButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: Warp.Spacing.spacing400),
             loginButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
             loginButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
 

@@ -25,7 +25,7 @@ public class DisclaimerDemoView: UIView, Demoable {
         addSubview(disclaimerView)
 
         NSLayoutConstraint.activate([
-            disclaimerView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXL),
+            disclaimerView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing400),
             disclaimerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             disclaimerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200)
         ])

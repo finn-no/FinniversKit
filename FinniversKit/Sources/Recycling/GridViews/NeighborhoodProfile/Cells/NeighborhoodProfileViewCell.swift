@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 class NeighborhoodProfileViewCell: UICollectionViewCell {
     static let titleFont = UIFont.captionStrong
@@ -34,7 +35,7 @@ class NeighborhoodProfileViewCell: UICollectionViewCell {
         backgroundColor = .clear
         contentView.backgroundColor = .background
 
-        contentView.layer.cornerRadius = .spacingS
+        contentView.layer.cornerRadius = Warp.Spacing.spacing100
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor.backgroundDisabled.withAlphaComponent(0.1).cgColor
 

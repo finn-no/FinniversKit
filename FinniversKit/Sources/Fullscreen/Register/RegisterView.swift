@@ -236,35 +236,35 @@ public class RegisterView: UIView {
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.widthAnchor.constraint(equalTo: widthAnchor),
 
-            infoLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXL),
-            infoLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingXL),
-            infoLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingXL),
+            infoLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing400),
+            infoLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing400),
+            infoLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing400),
 
             inputsContainer.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
-            inputsContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingXL),
-            inputsContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingXL),
+            inputsContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing400),
+            inputsContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing400),
 
             emailTextField.topAnchor.constraint(equalTo: inputsContainer.topAnchor),
             emailTextField.leadingAnchor.constraint(equalTo: inputsContainer.leadingAnchor),
             emailTextField.trailingAnchor.constraint(equalTo: inputsContainer.trailingAnchor),
 
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: .spacingXL),
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: Warp.Spacing.spacing400),
             passwordTextField.leadingAnchor.constraint(equalTo: inputsContainer.leadingAnchor),
             passwordTextField.trailingAnchor.constraint(equalTo: inputsContainer.trailingAnchor),
 
-            registerButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: .spacingXL),
+            registerButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: Warp.Spacing.spacing400),
             registerButton.leadingAnchor.constraint(equalTo: inputsContainer.leadingAnchor),
             registerButton.trailingAnchor.constraint(equalTo: inputsContainer.trailingAnchor),
             registerButton.heightAnchor.constraint(equalToConstant: buttonHeight),
             registerButton.bottomAnchor.constraint(equalTo: inputsContainer.bottomAnchor),
 
             newUserStackView.topAnchor.constraint(equalTo: inputsContainer.bottomAnchor, constant: Warp.Spacing.spacing200),
-            newUserStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingXL),
+            newUserStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing400),
             newUserStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             spidLogoImageView.heightAnchor.constraint(equalToConstant: 17),
 
-            userTermsStackView.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -.spacingXXL),
-            userTermsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL)
+            userTermsStackView.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -Warp.Spacing.spacing800),
+            userTermsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing400)
         ])
     }
 

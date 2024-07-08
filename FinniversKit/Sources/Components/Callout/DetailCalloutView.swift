@@ -28,7 +28,7 @@ public final class DetailCalloutView: UIView {
         view.backgroundColor = .backgroundPositiveSubtle
         view.layer.borderColor = .borderPositive
         view.layer.borderWidth = 2
-        view.layer.cornerRadius = .spacingS
+        view.layer.cornerRadius = Warp.Spacing.spacing100
         return view
     }()
 
@@ -83,10 +83,10 @@ public final class DetailCalloutView: UIView {
             arrowView.heightAnchor.constraint(equalToConstant: 16),
             arrowView.centerYAnchor.constraint(equalTo: centerYAnchor),
 
-            textLabel.topAnchor.constraint(equalTo: boxView.topAnchor, constant: .spacingS),
+            textLabel.topAnchor.constraint(equalTo: boxView.topAnchor, constant: Warp.Spacing.spacing100),
             textLabel.leadingAnchor.constraint(equalTo: boxView.leadingAnchor, constant: Warp.Spacing.spacing200),
             textLabel.trailingAnchor.constraint(equalTo: boxView.trailingAnchor, constant: -Warp.Spacing.spacing200),
-            textLabel.bottomAnchor.constraint(equalTo: boxView.bottomAnchor, constant: -.spacingS)
+            textLabel.bottomAnchor.constraint(equalTo: boxView.bottomAnchor, constant: -Warp.Spacing.spacing100)
         ]
 
         NSLayoutConstraint.activate(defaultConstraints + directionConstraints())

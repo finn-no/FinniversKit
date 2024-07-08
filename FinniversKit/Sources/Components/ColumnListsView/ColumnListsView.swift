@@ -84,7 +84,7 @@ public class ColumnListsView: UIView {
     private func createColumnStackView() -> UIStackView {
         let columnStackView = UIStackView(withAutoLayout: true)
         columnStackView.axis = .vertical
-        columnStackView.spacing = .spacingS
+        columnStackView.spacing = Warp.Spacing.spacing100
 
         return columnStackView
     }

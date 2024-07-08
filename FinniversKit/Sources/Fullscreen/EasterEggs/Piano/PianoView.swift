@@ -93,9 +93,9 @@ public final class PianoView: UIView {
 
         let isPad = UIDevice.current.userInterfaceIdiom == .pad
         let reverbYAnchor = isPad
-            ? reverbView.bottomAnchor.constraint(equalTo: centerYAnchor, constant: -.spacingXXL)
+            ? reverbView.bottomAnchor.constraint(equalTo: centerYAnchor, constant: -Warp.Spacing.spacing800)
             : reverbView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200)
-        let pianoTopConstant: CGFloat = isPad ? .spacingXXL : Warp.Spacing.spacing200
+        let pianoTopConstant: CGFloat = isPad ? Warp.Spacing.spacing800 : Warp.Spacing.spacing200
 
         NSLayoutConstraint.activate([
             reverbYAnchor,
@@ -108,7 +108,7 @@ public final class PianoView: UIView {
             pianoView.topAnchor.constraint(equalTo: reverbView.bottomAnchor, constant: pianoTopConstant),
             pianoView.centerXAnchor.constraint(equalTo: centerXAnchor),
             pianoView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
-            pianoView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS)
+            pianoView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100)
         ])
 
         pianoView.reloadData()

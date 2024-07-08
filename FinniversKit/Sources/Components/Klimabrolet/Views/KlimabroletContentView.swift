@@ -92,17 +92,17 @@ class KlimabroletContentView: UIView {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
-            subtitleTagView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXS),
+            subtitleTagView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing50),
             subtitleTagView.centerXAnchor.constraint(equalTo: centerXAnchor),
 
             bodyTextLabel.topAnchor.constraint(equalTo: subtitleTagView.bottomAnchor, constant: Warp.Spacing.spacing200),
-            bodyTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
-            bodyTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
+            bodyTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing400),
+            bodyTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing400),
 
             accessoryButton.topAnchor.constraint(equalTo: bodyTextLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
-            accessoryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
-            accessoryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
-            accessoryButton.heightAnchor.constraint(greaterThanOrEqualToConstant: .spacingXL),
+            accessoryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
+            accessoryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
+            accessoryButton.heightAnchor.constraint(greaterThanOrEqualToConstant: Warp.Spacing.spacing400),
             accessoryButton.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }

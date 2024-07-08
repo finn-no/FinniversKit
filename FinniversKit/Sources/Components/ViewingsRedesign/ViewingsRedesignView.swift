@@ -15,10 +15,10 @@ public class ViewingsRedesignView: UIView {
     private lazy var moreInfoLabel = Label(style: .body, numberOfLines: 0, withAutoLayout: true)
     private lazy var prospectusDescriptionLabel = Label(style: .body, numberOfLines: 0, withAutoLayout: true)
     private lazy var prospectusStackView = UIStackView(axis: .vertical, withAutoLayout: true)
-    private lazy var viewingsStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+    private lazy var viewingsStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
 
     private lazy var stackView: UIStackView = {
-        let view = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+        let view = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
         view.isLayoutMarginsRelativeArrangement = true
         view.directionalLayoutMargins = .init(all: Warp.Spacing.spacing200)
         return view
@@ -57,7 +57,7 @@ public class ViewingsRedesignView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        layer.cornerRadius = .spacingS
+        layer.cornerRadius = Warp.Spacing.spacing100
         layer.borderWidth = 1
 
         addSubview(stackView)

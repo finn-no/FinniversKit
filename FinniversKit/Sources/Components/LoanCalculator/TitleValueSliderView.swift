@@ -106,7 +106,7 @@ class TitleValueSlider: UIView {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: valueLabel.leadingAnchor, constant: -.spacingS),
+            titleLabel.trailingAnchor.constraint(equalTo: valueLabel.leadingAnchor, constant: -Warp.Spacing.spacing100),
 
             valueLabel.topAnchor.constraint(equalTo: topAnchor),
             valueLabel.trailingAnchor.constraint(equalTo: trailingAnchor),

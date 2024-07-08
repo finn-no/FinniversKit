@@ -190,7 +190,7 @@ public final class ContactFormView: UIView {
         let bottomStackView = UIStackView(arrangedSubviews: [showPhoneNumberCheckboxWrapperView, phoneNumberTextField])
         bottomStackView.translatesAutoresizingMaskIntoConstraints = false
         bottomStackView.axis = .vertical
-        bottomStackView.spacing = .spacingS
+        bottomStackView.spacing = Warp.Spacing.spacing100
 
         contentView.addSubview(bottomStackView)
         contentView.addSubview(disclaimerView)
@@ -198,17 +198,17 @@ public final class ContactFormView: UIView {
         scrollView.fillInSuperview()
 
         NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: .spacingXL),
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Warp.Spacing.spacing400),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -Warp.Spacing.spacing200),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: Warp.Spacing.spacing200),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -Warp.Spacing.spacing200),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.spacingXL),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -Warp.Spacing.spacing400),
 
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            detailTextLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXL),
+            detailTextLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing400),
             detailTextLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             detailTextLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
@@ -234,7 +234,7 @@ public final class ContactFormView: UIView {
             submitButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
 
-        showPhoneNumberCheckbox.fillInSuperview(insets: UIEdgeInsets(top: .spacingXL, leading: 0, bottom: 0, trailing: 0), isActive: true)
+        showPhoneNumberCheckbox.fillInSuperview(insets: UIEdgeInsets(top: Warp.Spacing.spacing400, leading: 0, bottom: 0, trailing: 0), isActive: true)
     }
 
     // MARK: - Actions

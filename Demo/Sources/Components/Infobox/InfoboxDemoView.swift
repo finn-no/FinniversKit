@@ -7,7 +7,7 @@ import DemoKit
 import Warp
 
 public class InfoboxDemoView: UIView, Demoable {
-    private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingL, distribution: .equalSpacing, withAutoLayout: true)
+    private lazy var stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing300, distribution: .equalSpacing, withAutoLayout: true)
     private lazy var scrollView = UIScrollView(withAutoLayout: true)
 
     private var infoboxConfigurations: [(style: InfoboxView.Style, model: InfoboxViewModel)] = [

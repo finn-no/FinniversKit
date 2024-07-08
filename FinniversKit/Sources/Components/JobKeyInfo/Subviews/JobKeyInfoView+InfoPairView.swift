@@ -7,7 +7,7 @@ extension JobKeyInfoView {
         // MARK: - Private properties
 
         private lazy var stackView: UIStackView = {
-            let stackView = UIStackView(axis: .horizontal, spacing: .spacingS, withAutoLayout: true)
+            let stackView = UIStackView(axis: .horizontal, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
             stackView.alignment = .top
             return stackView
         }()

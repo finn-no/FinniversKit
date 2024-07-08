@@ -157,7 +157,7 @@ public class PopupView: UIView {
 
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: buttonStackView.topAnchor, constant: -.spacingS),
+            scrollView.bottomAnchor.constraint(equalTo: buttonStackView.topAnchor, constant: -Warp.Spacing.spacing100),
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
@@ -175,11 +175,11 @@ public class PopupView: UIView {
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
 
-            descriptionTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .spacingS),
+            descriptionTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: Warp.Spacing.spacing100),
             descriptionTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
             descriptionTitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
 
-            descriptionLabel.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: .spacingS),
+            descriptionLabel.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: Warp.Spacing.spacing100),
             descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
 
@@ -188,7 +188,7 @@ public class PopupView: UIView {
             linkButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
             linkButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
+            buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100),
             buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200)
         ])

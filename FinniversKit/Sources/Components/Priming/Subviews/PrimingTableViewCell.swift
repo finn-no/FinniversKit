@@ -44,8 +44,8 @@ final class PrimingTableViewCell: UITableViewCell {
 
     func configure(withIcon icon: UIImage, title: String, detailText: String, iconRenderingMode: UIImage.RenderingMode) {
         iconImageView.image = icon.withRenderingMode(iconRenderingMode)
-        titleLabel.attributedText = title.attributedStringWithLineSpacing(.spacingXXS)
-        detailLabel.attributedText = detailText.attributedStringWithLineSpacing(.spacingXXS)
+        titleLabel.attributedText = title.attributedStringWithLineSpacing(Warp.Spacing.spacing25)
+        detailLabel.attributedText = detailText.attributedStringWithLineSpacing(Warp.Spacing.spacing25)
     }
 
     private func setup() {
@@ -65,7 +65,7 @@ final class PrimingTableViewCell: UITableViewCell {
             titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: Warp.Spacing.spacing200),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
 
-            detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXXS),
+            detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing25),
             detailLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             detailLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Warp.Spacing.spacing200)

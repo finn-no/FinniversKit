@@ -56,7 +56,7 @@ class CollapsibleContentDemoView: UIView {
 
         scrollView.addSubview(collapsibleContentView)
         collapsibleContentView.fillInSuperview(margin: Warp.Spacing.spacing200)
-        collapsibleContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.spacingXL).isActive = true
+        collapsibleContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -Warp.Spacing.spacing400).isActive = true
 
         self.collapsibleContentView = collapsibleContentView
     }

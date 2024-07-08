@@ -21,7 +21,7 @@ public class FrontPageSavedSearchesView: UIView {
 
     private static let headerHeight: CGFloat = 44
     private static let cellHeight: CGFloat = 100
-    private static let bottomPadding: CGFloat = .spacingS
+    private static let bottomPadding: CGFloat = Warp.Spacing.spacing100
 
     private typealias Datasource = UICollectionViewDiffableDataSource<Section, AnyHashable>
     private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
@@ -132,7 +132,7 @@ private extension FrontPageSavedSearchesView {
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: Warp.Spacing.spacing200, bottom: 0, trailing: Warp.Spacing.spacing200)
         section.orthogonalScrollingBehavior = .continuous
-        section.interGroupSpacing = .spacingS + .spacingXS
+        section.interGroupSpacing = Warp.Spacing.spacing100 + Warp.Spacing.spacing50
 
         // Header
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(Self.headerHeight))

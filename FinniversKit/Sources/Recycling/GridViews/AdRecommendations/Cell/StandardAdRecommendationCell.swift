@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendationCell, AdRecommendationConfigurable {
 
@@ -214,7 +215,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             ribbonView.heightAnchor.constraint(equalToConstant: Self.ribbonHeight * accessibilityMultiplier),
 
-            logoImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: .spacingS),
+            logoImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: Warp.Spacing.spacing100),
             logoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             logoImageView.widthAnchor.constraint(equalToConstant: 50),
             logoImageView.heightAnchor.constraint(equalToConstant: 30),
@@ -237,13 +238,13 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             iconImageView.heightAnchor.constraint(equalToConstant: Self.iconSize),
             iconImageView.widthAnchor.constraint(equalToConstant: Self.iconSize),
 
-            imageDescriptionBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingS),
+            imageDescriptionBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing100),
             imageDescriptionBackgroundView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor),
             imageDescriptionBackgroundView.heightAnchor.constraint(equalToConstant: Self.imageDescriptionHeight),
-            imageDescriptionBackgroundView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: -.spacingS),
+            imageDescriptionBackgroundView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: -Warp.Spacing.spacing100),
 
-            favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXS),
-            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingXS),
+            favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing50),
+            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing50),
             favoriteButton.widthAnchor.constraint(equalToConstant: 34),
             favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.heightAnchor)
         ])

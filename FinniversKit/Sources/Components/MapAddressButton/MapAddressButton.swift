@@ -23,7 +23,7 @@ public class MapAddressButton: UIView {
     private lazy var button: Button = {
         let button = MultilineButton(style: buttonStyle, size: .normal, withAutoLayout: true)
         button.contentHorizontalAlignment = .left
-        button.titleEdgeInsets = UIEdgeInsets(vertical: 0, horizontal: .spacingS)
+        button.titleEdgeInsets = UIEdgeInsets(vertical: 0, horizontal: Warp.Spacing.spacing100)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
 
         let image = UIImage(named: .mapLocationPin)

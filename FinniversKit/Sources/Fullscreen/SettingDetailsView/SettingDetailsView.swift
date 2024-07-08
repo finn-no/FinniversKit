@@ -143,7 +143,7 @@ extension SettingDetailsView: UIScrollViewDelegate {
 // MARK: - Private methods
 private extension SettingDetailsView {
     var scrollViewBottomInset: CGFloat {
-        bottomInset + 44 + .spacingXL
+        bottomInset + 44 + Warp.Spacing.spacing400
     }
 
     var bottomInset: CGFloat {
@@ -182,18 +182,18 @@ private extension SettingDetailsView {
         scrollView.fillInSuperview()
 
         NSLayoutConstraint.activate([
-            iconView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: .spacingS + Warp.Spacing.spacing200),
+            iconView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Warp.Spacing.spacing100 + Warp.Spacing.spacing200),
             iconView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
 
             titleLabel.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: Warp.Spacing.spacing200),
             titleLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: Warp.Spacing.spacing200),
             titleLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -Warp.Spacing.spacing200),
-            titleLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.spacingXL),
+            titleLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -Warp.Spacing.spacing400),
 
-            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
+            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing100),
             textLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: Warp.Spacing.spacing200),
             textLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -Warp.Spacing.spacing200),
-            textLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.spacingXL),
+            textLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -Warp.Spacing.spacing400),
             textLabel.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -44),
 
             secondaryButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),

@@ -65,9 +65,9 @@ public class FavoriteAdsListEmptyView: UIView {
             iconImageView.widthAnchor.constraint(equalToConstant: 48),
             iconImageView.heightAnchor.constraint(equalToConstant: 48),
 
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXXL * 2),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing800 * 2),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing400),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing400),
         ])
     }
 

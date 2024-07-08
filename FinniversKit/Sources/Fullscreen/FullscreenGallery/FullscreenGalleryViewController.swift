@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol FullscreenGalleryViewControllerDelegate: AnyObject {
     func fullscreenGalleryViewControllerDismissButtonTapped(_: FullscreenGalleryViewController)
@@ -78,7 +79,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
         self.previewViewInitiallyVisible = previewVisible
         self.viewModel = viewModel
         self.currentImageIndex = viewModel.selectedIndex
-        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [.interPageSpacing: CGFloat.spacingXL])
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [.interPageSpacing: Warp.Spacing.spacing400])
 
         modalPresentationStyle = .overCurrentContext
         delegate = self
@@ -283,7 +284,7 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
     }
 
     func heightForPreviewView(forImageViewController vc: FullscreenImageViewController) -> CGFloat {
-        let spacing: CGFloat = .spacingS
+        let spacing: CGFloat = Warp.Spacing.spacing100
         let previewHeight = overlayView.previewViewFrame.height
         let bottomInset: CGFloat = view.safeAreaInsets.bottom
 

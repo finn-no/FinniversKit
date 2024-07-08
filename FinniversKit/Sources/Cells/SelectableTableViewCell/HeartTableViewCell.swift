@@ -41,7 +41,7 @@ open class HeartTableViewCell: BasicTableViewCell {
             stackViewToHeartConstraint.constant = Warp.Spacing.spacing200
             separatorInset = .leadingInset(60)
         } else {
-            stackViewToHeartConstraint.constant = .spacingS
+            stackViewToHeartConstraint.constant = Warp.Spacing.spacing100
             separatorInset = .leadingInset(52)
         }
 

@@ -14,14 +14,14 @@ struct SettingsViewIconCell: View {
                 .foregroundColor(.text)
                 .padding([.leading])
 
-            Spacer(minLength: .spacingS)
+            Spacer(minLength: Warp.Spacing.spacing100)
 
             Image(uiImage: icon)
                 .resizable()
                 .renderingMode(.template)
                 .frame(width: Warp.Spacing.spacing200, height: Warp.Spacing.spacing200)
                 .foregroundColor(tintColor)
-                .padding([.trailing], .spacingXL)
+                .padding([.trailing], Warp.Spacing.spacing400)
         }.bottomDivider(!isLastItem)
     }
 }

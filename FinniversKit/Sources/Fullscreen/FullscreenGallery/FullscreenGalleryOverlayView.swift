@@ -117,11 +117,11 @@ class FullscreenGalleryOverlayView: UIView {
         NSLayoutConstraint.activate([
             captionLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             captionLabel.widthAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.widthAnchor, constant: -(2 * Warp.Spacing.spacing200)),
-            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor, constant: -.spacingS),
-            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: previewView.topAnchor, constant: -.spacingS),
+            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor, constant: -Warp.Spacing.spacing100),
+            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: previewView.topAnchor, constant: -Warp.Spacing.spacing100),
 
-            dismissButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingS),
-            dismissButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingS),
+            dismissButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Warp.Spacing.spacing100),
+            dismissButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Warp.Spacing.spacing100),
             dismissButton.widthAnchor.constraint(equalToConstant: FullscreenGalleryOverlayView.dismissButtonTappableSize),
             dismissButton.heightAnchor.constraint(equalToConstant: FullscreenGalleryOverlayView.dismissButtonTappableSize),
 

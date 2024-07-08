@@ -24,12 +24,12 @@ extension ToastSwiftUIView {
 extension ToastSwiftUIView.ActionButtonView {
     struct PromotedStyle: ButtonStyle {
         let style: Toast.Style
-        private let cornerRadius: CGFloat = .spacingL
+        private let cornerRadius: CGFloat = Warp.Spacing.spacing300
 
         func makeBody(configuration: Configuration) -> some View {
             configuration.label
                 .finnFont(.bodyStrong)
-                .padding(.vertical, .spacingS)
+                .padding(.vertical, Warp.Spacing.spacing100)
                 .padding(.horizontal, Warp.Spacing.spacing200)
                 .foregroundColor(.textLink)
                 .background(backgroundColor)
@@ -48,7 +48,7 @@ extension ToastSwiftUIView.ActionButtonView {
 
 struct ToastSwiftUIViewActionButton_Previews: PreviewProvider {
     static var previews: some View {
-        VStack(spacing: .spacingL) {
+        VStack(spacing: Warp.Spacing.spacing300) {
             ToastSwiftUIView.ActionButtonView(actionButton: .init(title: "Undo", buttonStyle: .flat, action: {}), style: .success)
             ToastSwiftUIView.ActionButtonView(actionButton: .init(title: "Undo", buttonStyle: .promoted, action: {}), style: .success)
             ToastSwiftUIView.ActionButtonView(actionButton: .init(title: "Undo", buttonStyle: .promoted, action: {}), style: .error)

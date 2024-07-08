@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol LinkButtonListViewDelegate: AnyObject {
     func linksListView(_ view: LinkButtonListView, didTapButtonWithIdentifier identifier: String?, url: URL)
@@ -19,7 +20,7 @@ public class LinkButtonListView: UIView {
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.spacing = .spacingS
+        stackView.spacing = Warp.Spacing.spacing100
         return stackView
     }()
 

@@ -53,9 +53,9 @@ class FavoriteAdsSortingView: UIView {
         addSubview(arrowImage)
 
         NSLayoutConstraint.activate([
-            sortingLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            sortingLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
             sortingLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            sortingLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
+            sortingLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100),
 
             arrowImage.leadingAnchor.constraint(equalTo: sortingLabel.trailingAnchor, constant: 1),
             arrowImage.heightAnchor.constraint(equalToConstant: 12),

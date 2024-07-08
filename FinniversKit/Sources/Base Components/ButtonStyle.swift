@@ -33,7 +33,7 @@ public struct FlatStyle: ButtonStyle {
         size: Button.Size = .normal,
         textColor: Color = .backgroundPrimary,
         fullWidth: Bool = true,
-        padding: EdgeInsets = .init(top: .spacingS, leading: Warp.Spacing.spacing200, bottom: .spacingS, trailing: Warp.Spacing.spacing200)
+        padding: EdgeInsets = .init(top: Warp.Spacing.spacing100, leading: Warp.Spacing.spacing200, bottom: Warp.Spacing.spacing100, trailing: Warp.Spacing.spacing200)
     ) {
         self.size = size
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
@@ -68,7 +68,7 @@ public struct DefaultStyle: ButtonStyle {
         size: Button.Size = .normal,
         textColor: Color = .backgroundPrimary,
         fullWidth: Bool = true,
-        padding: EdgeInsets = .init(top: .spacingS, leading: Warp.Spacing.spacing200, bottom: .spacingS, trailing: Warp.Spacing.spacing200)
+        padding: EdgeInsets = .init(top: Warp.Spacing.spacing100, leading: Warp.Spacing.spacing200, bottom: Warp.Spacing.spacing100, trailing: Warp.Spacing.spacing200)
     ) {
         self.size = size
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
@@ -94,9 +94,9 @@ public struct DefaultStyle: ButtonStyle {
         .background(
             configuration.isPressed ? Color.backgroundActive : .background
         )
-        .cornerRadius(.spacingS)
+        .cornerRadius(Warp.Spacing.spacing100)
         .roundedBorder(
-            radius: .spacingS,
+            radius: Warp.Spacing.spacing100,
             color: configuration.isPressed ? .borderActive : .backgroundDisabled
         )
     }
@@ -123,7 +123,7 @@ public struct CallToAction: ButtonStyle {
         if let padding {
             self.padding = padding
         } else {
-            let verticalPadding: CGFloat = size == .normal ? .normalButtonVerticalPadding : .spacingS
+            let verticalPadding: CGFloat = size == .normal ? .normalButtonVerticalPadding : Warp.Spacing.spacing100
             let defaultPadding: EdgeInsets = .init(top: verticalPadding, leading: Warp.Spacing.spacing200, bottom: verticalPadding, trailing: Warp.Spacing.spacing200)
             self.padding = defaultPadding
         }
@@ -149,7 +149,7 @@ public struct CallToAction: ButtonStyle {
         }
         .padding(padding)
         .background(isEnabled ? dynamicBackground(configuration) : .backgroundDisabled)
-        .cornerRadius(.spacingS)
+        .cornerRadius(Warp.Spacing.spacing100)
         .animation(.easeOut, value: isEnabled)
     }
 

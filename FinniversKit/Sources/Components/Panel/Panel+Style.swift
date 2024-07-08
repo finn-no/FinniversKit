@@ -1,6 +1,7 @@
 //
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
+import Warp
 
 extension Panel {
     public enum Style: String {
@@ -16,7 +17,7 @@ extension Panel {
             switch self {
             case .plain: return .background
             case .info: return .backgroundInfoSubtle
-            case .tips: return warpUIColor.badgeSponsoredBackground
+            case .tips: return Warp.UIColor.badgeSponsoredBackground
             case .newFunctionality: return .backgroundPositiveSubtle
             case .success: return .backgroundPositiveSubtle
             case .warning: return .backgroundWarningSubtle

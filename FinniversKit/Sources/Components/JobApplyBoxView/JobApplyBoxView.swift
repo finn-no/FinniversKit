@@ -49,7 +49,7 @@ public class JobApplyBoxView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        layer.cornerRadius = .spacingS
+        layer.cornerRadius = Warp.Spacing.spacing100
         backgroundColor = .backgroundInfoSubtle
         titleLabel.text = viewModel.title
         primaryButton.setTitle(viewModel.primaryButton.title, for: .normal)
@@ -69,7 +69,7 @@ public class JobApplyBoxView: UIView {
         }
 
         addSubview(stackView)
-        stackView.fillInSuperview(margin: .spacingL)
+        stackView.fillInSuperview(margin: Warp.Spacing.spacing300)
     }
 
     // MARK: - Actions
@@ -91,6 +91,6 @@ extension JobApplyBoxView: LinkButtonViewDelegate {
 
 private extension Button.Style {
     static var secondaryButton: Self {
-        .flat.overrideStyle(margins: UIEdgeInsets(vertical: .spacingS, horizontal: 0))
+        .flat.overrideStyle(margins: UIEdgeInsets(vertical: Warp.Spacing.spacing100, horizontal: 0))
     }
 }

@@ -22,7 +22,7 @@ class PanelDemoView: UIView, Demoable {
         stackView.distribution = .fill
         stackView.spacing = Warp.Spacing.spacing200
         addSubview(stackView)
-        stackView.fillInSuperview(margin: .spacingS)
+        stackView.fillInSuperview(margin: Warp.Spacing.spacing100)
 
         let demoCases: [(Panel.Style, PanelViewModel)] = [
             (.plain, PanelViewModel(text: "Plain panel. Are you sure a normal Label isn't a better fit?")),

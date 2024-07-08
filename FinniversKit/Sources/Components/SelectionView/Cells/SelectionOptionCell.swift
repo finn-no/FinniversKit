@@ -84,7 +84,7 @@ final class SelectionOptionCell: UITableViewCell {
 
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: Warp.Spacing.spacing200),
-            titleLabel.trailingAnchor.constraint(equalTo: checkmarkImageView.leadingAnchor, constant: -.spacingS),
+            titleLabel.trailingAnchor.constraint(equalTo: checkmarkImageView.leadingAnchor, constant: -Warp.Spacing.spacing100),
 
             checkmarkImageView.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
             checkmarkImageView.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),

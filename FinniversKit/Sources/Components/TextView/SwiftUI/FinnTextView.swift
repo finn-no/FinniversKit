@@ -27,9 +27,9 @@ public struct FinnTextView: View {
             Text(placeholderText)
                 .foregroundColor(Color.textDisabled)
                 .finnFont(.body)
-                .padding(.vertical, .spacingS)
-                .padding(.leading, .spacingS + 5) // UITextView.textContainerInset.left + 5 to align with caret
-                .padding(.trailing, .spacingS)
+                .padding(.vertical, Warp.Spacing.spacing100)
+                .padding(.leading, Warp.Spacing.spacing100 + 5) // UITextView.textContainerInset.left + 5 to align with caret
+                .padding(.trailing, Warp.Spacing.spacing100)
         }
     }
 
@@ -51,7 +51,7 @@ struct TextViewComponent: UIViewRepresentable {
         view.font = .body
         view.textColor = .text
         view.backgroundColor = .backgroundInfoSubtle
-        view.textContainerInset = UIEdgeInsets(top: .spacingS, left: .spacingS, bottom: .spacingS, right: .spacingS)
+        view.textContainerInset = UIEdgeInsets(top: Warp.Spacing.spacing100, left: Warp.Spacing.spacing100, bottom: Warp.Spacing.spacing100, right: Warp.Spacing.spacing100)
         view.isScrollEnabled = false
         return view
     }

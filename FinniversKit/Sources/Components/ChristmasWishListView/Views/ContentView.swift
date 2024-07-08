@@ -82,14 +82,14 @@ extension ChristmasWishListView {
                 titleLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
                 titleLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
 
-                bodyTextLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXS),
+                bodyTextLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing50),
                 bodyTextLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
                 bodyTextLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
 
                 accessoryButton.topAnchor.constraint(equalTo: bodyTextLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
                 accessoryButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
                 accessoryButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-                accessoryButton.heightAnchor.constraint(greaterThanOrEqualToConstant: .spacingXL),
+                accessoryButton.heightAnchor.constraint(greaterThanOrEqualToConstant: Warp.Spacing.spacing400),
                 accessoryButton.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
             ])
         }

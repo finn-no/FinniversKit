@@ -14,7 +14,7 @@ class NativeAdvertDemoView: UIView, Demoable {
         let view = UIStackView(withAutoLayout: true)
         view.axis = .vertical
         view.distribution = .equalSpacing
-        view.spacing = .spacingXL
+        view.spacing = Warp.Spacing.spacing400
         return view
     }()
 

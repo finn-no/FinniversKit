@@ -49,7 +49,7 @@ final class PhaseView: UIView {
         dotViewWidthConstraint.constant = dotWidth
 
         textLabel.attributedText = viewModel.attributedText
-        textLabelTopConstraint.constant = viewModel.isHighlighted ? -dotWidth / 2 : -.spacingS
+        textLabelTopConstraint.constant = viewModel.isHighlighted ? -dotWidth / 2 : -Warp.Spacing.spacing100
 
         layoutIfNeeded()
     }

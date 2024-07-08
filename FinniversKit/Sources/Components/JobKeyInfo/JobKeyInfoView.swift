@@ -6,7 +6,7 @@ public class JobKeyInfoView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+    private lazy var stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
 
     // MARK: - Init
 

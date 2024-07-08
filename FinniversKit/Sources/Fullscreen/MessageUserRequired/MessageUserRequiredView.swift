@@ -59,16 +59,16 @@ public class MessageUserRequiredView: UIView {
         addSubview(actionButton)
 
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             imageView.heightAnchor.constraint(equalToConstant: 64),
             imageView.widthAnchor.constraint(equalToConstant: 64),
 
             messageView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: Warp.Spacing.spacing200),
-            messageView.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor, constant: .spacingS),
-            messageView.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor, constant: -.spacingS),
+            messageView.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor, constant: Warp.Spacing.spacing100),
+            messageView.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor, constant: -Warp.Spacing.spacing100),
 
-            actionButton.topAnchor.constraint(equalTo: messageView.bottomAnchor, constant: .spacingL),
+            actionButton.topAnchor.constraint(equalTo: messageView.bottomAnchor, constant: Warp.Spacing.spacing300),
             actionButton.leadingAnchor.constraint(equalTo: messageView.leadingAnchor, constant: Warp.Spacing.spacing200),
             actionButton.trailingAnchor.constraint(equalTo: messageView.trailingAnchor, constant: -Warp.Spacing.spacing200),
         ])

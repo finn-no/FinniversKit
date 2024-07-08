@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol FavoriteAdTableViewCellDelegate: AnyObject {
     func favoriteAdTableViewCell(_ cell: FavoriteAdTableViewCell, didSelectMoreButton button: UIButton)
@@ -70,7 +71,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
     // MARK: - Public methods
 
     public func configure(with viewModel: FavoriteAdViewModel) {
-        separatorInset = .leadingInset(.spacingXL + FavoriteAdView.adImageWidth)
+        separatorInset = .leadingInset(Warp.Spacing.spacing400 + FavoriteAdView.adImageWidth)
         adView.configure(with: viewModel)
     }
 

@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class KeyValueGridDemoView: UIView {
 
@@ -28,7 +29,7 @@ class KeyValueGridDemoView: UIView {
     // MARK: - Private methods
 
     private func setup() {
-        directionalLayoutMargins = NSDirectionalEdgeInsets(all: .spacingXL)
+        directionalLayoutMargins = NSDirectionalEdgeInsets(all: Warp.Spacing.spacing400)
         addSubview(scrollView)
 
         scrollView.addSubview(keyValueGridView)
@@ -116,7 +117,7 @@ private extension Array where Element == KeyValuePair {
             valueStyle: .init(
                 textColor: UIColor(hex: "#ffffff"),
                 backgroundColor: UIColor(hex: "#277457"),
-                horizontalPadding: .spacingXS
+                horizontalPadding: Warp.Spacing.spacing50
             )
         ),
         .init(
@@ -125,7 +126,7 @@ private extension Array where Element == KeyValuePair {
             valueStyle: .init(
                 textColor: UIColor(hex: "#474445"),
                 backgroundColor: UIColor(hex: "#68e2b8"),
-                horizontalPadding: .spacingXS
+                horizontalPadding: Warp.Spacing.spacing50
             )
         ),
         .init(
@@ -134,7 +135,7 @@ private extension Array where Element == KeyValuePair {
             valueStyle: .init(
                 textColor: UIColor(hex: "#474445"),
                 backgroundColor: UIColor(hex: "#fff5c8"),
-                horizontalPadding: .spacingXS
+                horizontalPadding: Warp.Spacing.spacing50
             )
         ),
         .init(
@@ -143,7 +144,7 @@ private extension Array where Element == KeyValuePair {
             valueStyle: .init(
                 textColor: UIColor(hex: "#000000"),
                 backgroundColor: UIColor(hex: "#ff5844"),
-                horizontalPadding: .spacingXS
+                horizontalPadding: Warp.Spacing.spacing50
             )
         ),
         .init(
@@ -152,7 +153,7 @@ private extension Array where Element == KeyValuePair {
             valueStyle: .init(
                 textColor: UIColor(hex: "#ffffff"),
                 backgroundColor: UIColor(hex: "#da2400"),
-                horizontalPadding: .spacingXS
+                horizontalPadding: Warp.Spacing.spacing50
             )
         )
     ]

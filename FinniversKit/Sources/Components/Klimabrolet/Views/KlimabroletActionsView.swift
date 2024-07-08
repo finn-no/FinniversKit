@@ -57,7 +57,7 @@ class KlimabroletActionsView: UIView {
         addSubview(secondaryButton)
 
         NSLayoutConstraint.activate([
-            primaryButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            primaryButton.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
             primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             primaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 

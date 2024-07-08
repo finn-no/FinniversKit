@@ -1,6 +1,7 @@
 //
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
+import Warp
 
 public protocol VerificationActionSheetDelegate: AnyObject {
     func didTapVerificationActionSheetButton(_ sheet: VerificationActionSheet)
@@ -17,7 +18,7 @@ public class VerificationActionSheet: BottomSheet {
     // MARK: - Initalization
 
     public required init(viewModel: VerificationViewModel) {
-        let bottomInset = UIView.windowSafeAreaInsets.bottom + .spacingXL
+        let bottomInset = UIView.windowSafeAreaInsets.bottom + Warp.Spacing.spacing400
         let height = verificationActionSheetHeight + bottomInset
         let bottomSheetHeight = BottomSheet.Height(compact: height, expanded: height)
         let viewController = ActionViewController(viewModel: viewModel)

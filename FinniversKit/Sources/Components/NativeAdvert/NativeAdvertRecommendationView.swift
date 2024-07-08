@@ -25,7 +25,7 @@ public final class NativeAdvertRecommendationView: UIView {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.isUserInteractionEnabled = true
-        imageView.layer.cornerRadius = .spacingS
+        imageView.layer.cornerRadius = Warp.Spacing.spacing100
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
@@ -86,11 +86,11 @@ public final class NativeAdvertRecommendationView: UIView {
             logoView.widthAnchor.constraint(equalToConstant: 35),
             logoView.heightAnchor.constraint(equalToConstant: 35),
 
-            ribbon.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .spacingS),
+            ribbon.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: Warp.Spacing.spacing100),
             ribbon.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             ribbon.trailingAnchor.constraint(equalTo: container.trailingAnchor),
 
-            titleLabel.topAnchor.constraint(equalTo: ribbon.bottomAnchor, constant: .spacingS),
+            titleLabel.topAnchor.constraint(equalTo: ribbon.bottomAnchor, constant: Warp.Spacing.spacing100),
             titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: logoView.leadingAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor),

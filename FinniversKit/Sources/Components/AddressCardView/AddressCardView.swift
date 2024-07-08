@@ -18,8 +18,8 @@ public final class AddressCardView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var addressStackView = UIStackView(axis: .vertical, spacing: .spacingXS, withAutoLayout: true)
-    private lazy var contentStackView = UIStackView(axis: .vertical, spacing: .spacingL, withAutoLayout: true)
+    private lazy var addressStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing50, withAutoLayout: true)
+    private lazy var contentStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing300, withAutoLayout: true)
     private lazy var titleLabel = Label(style: .title3Strong, withAutoLayout: true)
     private lazy var subtitleLabel = Label(style: .bodyStrong, withAutoLayout: true)
 
@@ -78,7 +78,7 @@ public final class AddressCardView: UIView {
         contentStackView.addArrangedSubviews([topStackView, getDirectionsButton])
 
         addSubview(contentStackView)
-        contentStackView.fillInSuperview(insets: UIEdgeInsets(top: Warp.Spacing.spacing200, leading: Warp.Spacing.spacing200, bottom: -.spacingL, trailing: -Warp.Spacing.spacing200))
+        contentStackView.fillInSuperview(insets: UIEdgeInsets(top: Warp.Spacing.spacing200, leading: Warp.Spacing.spacing200, bottom: -Warp.Spacing.spacing300, trailing: -Warp.Spacing.spacing200))
     }
 
     // MARK: - Actions

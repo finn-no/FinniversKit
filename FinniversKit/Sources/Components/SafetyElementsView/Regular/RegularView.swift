@@ -60,7 +60,7 @@ extension SafetyElementsView {
             let view = ElementContentView(withAutoLayout: true)
             view.backgroundColor = contentBackgroundColor
             view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner]
-            view.layer.cornerRadius = .spacingS
+            view.layer.cornerRadius = Warp.Spacing.spacing100
             view.layoutMargins = UIEdgeInsets(all: Warp.Spacing.spacing200 * 1.5)
             return view
         }()

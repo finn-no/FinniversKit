@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol NotificationsListHeaderViewDelegate: AnyObject {
     func notificationsListHeaderView(_ notificationsListHeaderView: NotificationsListHeaderView, didSelectHeaderViewAtSection section: Int)
@@ -46,12 +47,12 @@ public class NotificationsListHeaderView: UITableViewHeaderFooterView {
         contentView.addSubview(dateLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
-            titleLabel.trailingAnchor.constraint(equalTo: dateLabel.leadingAnchor, constant: -.spacingS),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
+            titleLabel.trailingAnchor.constraint(equalTo: dateLabel.leadingAnchor, constant: -Warp.Spacing.spacing100),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100),
 
             dateLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor),
-            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
+            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100)
         ])
     }
 

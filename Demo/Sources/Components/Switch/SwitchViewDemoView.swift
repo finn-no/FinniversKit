@@ -15,7 +15,7 @@ public class SwitchViewDemoView: UIView, Demoable {
         let stackView = UIStackView(arrangedSubviews: [demoSwitch1, demoSwitch2, demoSwitch3])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = .spacingS
+        stackView.spacing = Warp.Spacing.spacing100
         return stackView
     }()
     override init(frame: CGRect) {

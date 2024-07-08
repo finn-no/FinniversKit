@@ -9,14 +9,14 @@ public class SelfDeclarationView: UIView {
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.spacing = .spacingL
+        stackView.spacing = Warp.Spacing.spacing300
         return stackView
     }()
 
     func getQuestionStackView(with subviews: [UIView]) -> UIStackView {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.spacing = .spacingXS
+        stackView.spacing = Warp.Spacing.spacing50
         stackView.addArrangedSubviews(subviews)
         return stackView
     }

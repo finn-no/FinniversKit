@@ -197,11 +197,11 @@ final class FavoriteAdView: UIView {
         textStackView.addArrangedSubview(descriptionSecondaryLabel)
         textStackView.addArrangedSubview(descriptionTertiaryLabel)
 
-        textStackView.setCustomSpacing(.spacingXXS, after: sortingDetailLabel)
-        textStackView.setCustomSpacing(.spacingXXS, after: addressLabel)
-        textStackView.setCustomSpacing(.spacingS, after: titleLabel)
-        textStackView.setCustomSpacing(.spacingXS, after: descriptionPrimaryLabel)
-        textStackView.setCustomSpacing(.spacingS, after: descriptionSecondaryLabel)
+        textStackView.setCustomSpacing(Warp.Spacing.spacing25, after: sortingDetailLabel)
+        textStackView.setCustomSpacing(Warp.Spacing.spacing25, after: addressLabel)
+        textStackView.setCustomSpacing(Warp.Spacing.spacing100, after: titleLabel)
+        textStackView.setCustomSpacing(Warp.Spacing.spacing50, after: descriptionPrimaryLabel)
+        textStackView.setCustomSpacing(Warp.Spacing.spacing100, after: descriptionSecondaryLabel)
 
         contentView.addSubview(infoStackView)
         contentView.addSubview(statusRibbon)
@@ -237,11 +237,11 @@ final class FavoriteAdView: UIView {
             remoteImageView.widthAnchor.constraint(equalToConstant: FavoriteAdView.adImageWidth),
             remoteImageView.heightAnchor.constraint(equalTo: remoteImageView.widthAnchor),
 
-            statusRibbon.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
-            statusRibbon.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            statusRibbon.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
+            statusRibbon.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
 
-            sortingDetailLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.spacingS),
-            addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.spacingS),
+            sortingDetailLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -Warp.Spacing.spacing100),
+            addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -Warp.Spacing.spacing100),
 
             commentView.trailingAnchor.constraint(equalTo: rootStackView.trailingAnchor, constant: -Warp.Spacing.spacing200)
         ])

@@ -37,7 +37,7 @@ public final class NeighborhoodProfileView: UIView {
         return stack
     }
 
-    private lazy var containerStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+    private lazy var containerStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
 
     private lazy var headerView: NeighborhoodProfileHeaderView = {
         let view = NeighborhoodProfileHeaderView(withAutoLayout: true)
@@ -50,9 +50,9 @@ public final class NeighborhoodProfileView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .backgroundInfoSubtle
         collectionView.contentInset = UIEdgeInsets(
-            top: .spacingS,
+            top: Warp.Spacing.spacing100,
             left: Warp.Spacing.spacing200,
-            bottom: .spacingS,
+            bottom: Warp.Spacing.spacing100,
             right: Warp.Spacing.spacing200
         )
         collectionView.showsHorizontalScrollIndicator = false
@@ -127,7 +127,7 @@ public final class NeighborhoodProfileView: UIView {
             containerStackView.setCustomSpacing(Warp.Spacing.spacing200, after: pageControl)
         } else {
             bannerView.isHidden = true
-            containerStackView.setCustomSpacing(.spacingS, after: pageControl)
+            containerStackView.setCustomSpacing(Warp.Spacing.spacing100, after: pageControl)
         }
     }
 

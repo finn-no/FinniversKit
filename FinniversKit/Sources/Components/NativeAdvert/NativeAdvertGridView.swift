@@ -19,7 +19,7 @@ public final class NativeAdvertGridView: UIView {
 
     private lazy var container: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.layer.cornerRadius = .spacingS
+        view.layer.cornerRadius = Warp.Spacing.spacing100
         view.layer.masksToBounds = true
         return view
     }()
@@ -42,10 +42,10 @@ public final class NativeAdvertGridView: UIView {
     // MARK: - Constraints
 
     private lazy var sharedConstraints: [NSLayoutConstraint] = [
-        container.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
-        container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
-        container.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
-        container.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+        container.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
+        container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
+        container.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100),
+        container.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
 
         settingsButton.topAnchor.constraint(equalTo: container.topAnchor),
         settingsButton.trailingAnchor.constraint(equalTo: container.trailingAnchor),
@@ -58,8 +58,8 @@ public final class NativeAdvertGridView: UIView {
     private lazy var compactConstraints: [NSLayoutConstraint] = [
         imageView.widthAnchor.constraint(equalTo: container.widthAnchor),
 
-        detailsContainer.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .spacingS),
-        detailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.spacingS),
+        detailsContainer.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: Warp.Spacing.spacing100),
+        detailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -Warp.Spacing.spacing100),
         detailsContainer.leadingAnchor.constraint(equalTo: container.leadingAnchor),
         detailsContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor)
     ]

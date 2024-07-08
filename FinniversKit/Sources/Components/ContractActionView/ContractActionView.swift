@@ -43,7 +43,7 @@ public class ContractActionView: UIView {
     private lazy var titleSubtitleStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = .spacingXS
+        stackView.spacing = Warp.Spacing.spacing50
         stackView.axis = .vertical
         return stackView
     }()
@@ -71,7 +71,7 @@ public class ContractActionView: UIView {
     }()
 
     private lazy var contentStackView: UIStackView = {
-        let stackView = UIStackView(axis: .vertical, spacing: .spacingL, withAutoLayout: true)
+        let stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing300, withAutoLayout: true)
         stackView.addArrangedSubviews([imageView, titleSubtitleStackView, bulletListLabel, descriptionLabel, actionButton])
         return stackView
     }()
@@ -89,11 +89,11 @@ public class ContractActionView: UIView {
 
     private func setup() {
         backgroundColor = .backgroundSubtle
-        layer.cornerRadius = .spacingS
+        layer.cornerRadius = Warp.Spacing.spacing100
         layoutMargins = UIEdgeInsets(
             top: Warp.Spacing.spacing200,
             leading: Warp.Spacing.spacing200,
-            bottom: .spacingL,
+            bottom: Warp.Spacing.spacing300,
             trailing: Warp.Spacing.spacing200
         )
 
@@ -108,7 +108,7 @@ public class ContractActionView: UIView {
         topIcon: UIImage? = nil,
         trailingImageTopConstant: CGFloat = 0,
         trailingImageTrailingConstant: CGFloat = 0,
-        contentSpacing: CGFloat = .spacingL,
+        contentSpacing: CGFloat = Warp.Spacing.spacing300,
         paragraphSpacing: CGFloat = 6,
         remoteImageViewDataSource: RemoteImageViewDataSource? = nil
     ) {

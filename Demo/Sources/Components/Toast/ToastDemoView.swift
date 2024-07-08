@@ -129,7 +129,7 @@ public class ToastDemoView: UIView, Demoable {
             containedToastButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Warp.Spacing.spacing200),
             containedToastButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -Warp.Spacing.spacing200),
             containedToastButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: Warp.Spacing.spacing200),
-            containedToastButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -.spacingXXL)
+            containedToastButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -Warp.Spacing.spacing800)
         ])
     }
 

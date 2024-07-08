@@ -104,8 +104,8 @@ extension BroadcastItem {
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
             messageTextView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            messageTextView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .spacingXS),
-            messageTextView.trailingAnchor.constraint(equalTo: dismissButton.leadingAnchor, constant: -.spacingXS),
+            messageTextView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: Warp.Spacing.spacing50),
+            messageTextView.trailingAnchor.constraint(equalTo: dismissButton.leadingAnchor, constant: -Warp.Spacing.spacing50),
             messageTextView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: Warp.Spacing.spacing200),
 
             iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing200),
@@ -114,7 +114,7 @@ extension BroadcastItem {
             iconImageView.widthAnchor.constraint(equalToConstant: 28),
 
             dismissButton.topAnchor.constraint(equalTo: iconImageView.topAnchor),
-            dismissButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingS),
+            dismissButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing100),
             dismissButton.heightAnchor.constraint(equalToConstant: 28),
             dismissButton.widthAnchor.constraint(equalToConstant: 28),
 

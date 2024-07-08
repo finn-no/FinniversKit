@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public final class FloatingButton: UIButton {
     @available(*, deprecated, message: "Use style instead.")
@@ -113,8 +114,8 @@ public final class FloatingButton: UIButton {
         NSLayoutConstraint.activate([
             badgeWidthConstraint,
             badgeView.heightAnchor.constraint(equalTo: badgeView.widthAnchor),
-            badgeView.topAnchor.constraint(equalTo: topAnchor, constant: -.spacingXS),
-            badgeView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .spacingXS),
+            badgeView.topAnchor.constraint(equalTo: topAnchor, constant: -Warp.Spacing.spacing50),
+            badgeView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Warp.Spacing.spacing50),
         ])
     }
 

@@ -66,7 +66,7 @@ extension ResultDemoView: TweakableDemo {
                 icon: UIImage(named: .checkCircleFilled),
                 backgroundColor: .background,
                 iconTintColor: nil,
-                iconBottomSpacing: .spacingL,
+                iconBottomSpacing: Warp.Spacing.spacing300,
                 titleBottomSpacing: Warp.Spacing.spacing200,
                 iconHeight: 64
             )
@@ -78,7 +78,7 @@ extension ResultDemoView: TweakableDemo {
                 icon: UIImage(named: .dissatisfiedFace),
                 backgroundColor: .background,
                 iconTintColor: .textNegative,
-                iconBottomSpacing: .spacingL,
+                iconBottomSpacing: Warp.Spacing.spacing300,
                 titleBottomSpacing: Warp.Spacing.spacing200,
                 iconHeight: 64
             )

@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 public class CalloutDemoView: UIView, Demoable {
 
@@ -21,7 +22,7 @@ public class CalloutDemoView: UIView, Demoable {
         view.axis = .vertical
         view.distribution = .fillEqually
         view.alignment = .center
-        view.spacing = .spacingXL
+        view.spacing = Warp.Spacing.spacing400
         return view
     }()
 

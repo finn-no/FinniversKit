@@ -36,11 +36,11 @@ public class SelectionListView: UIView {
 
     // MARK: - Private properties
 
-    private let horizontalSpacing: CGFloat = .spacingXXS
+    private let horizontalSpacing: CGFloat = Warp.Spacing.spacing25
     private var verticalSpacing: CGFloat {
         isSeparatedListElementDesign ? Warp.Spacing.spacing200 : horizontalSpacing
     }
-    private let cornerRadius: CGFloat = .spacingS
+    private let cornerRadius: CGFloat = Warp.Spacing.spacing100
     private var itemViews = [SelectionListItemView]()
     private lazy var stackView = UIStackView(axis: .vertical, spacing: -verticalSpacing, withAutoLayout: true)
 

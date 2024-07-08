@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 struct LoanCalculatorDemoViewModel: LoanCalculatorViewModel {
     var title: String?
@@ -44,8 +45,8 @@ class LoanCalculatorDemoView: UIView {
 
         addSubview(loanCalculatorView)
         NSLayoutConstraint.activate([
-            loanCalculatorView.widthAnchor.constraint(equalTo: widthAnchor, constant: -.spacingXL),
-            loanCalculatorView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor, constant: -.spacingXL),
+            loanCalculatorView.widthAnchor.constraint(equalTo: widthAnchor, constant: -Warp.Spacing.spacing400),
+            loanCalculatorView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor, constant: -Warp.Spacing.spacing400),
             loanCalculatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
             loanCalculatorView.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])

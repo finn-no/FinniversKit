@@ -4,6 +4,7 @@
 
 import CoreMotion
 import UIKit
+import Warp
 
 public protocol EmptyViewDelegate: AnyObject {
     func emptyView(_ emptyView: EmptyView, didSelectActionButton button: Button)
@@ -117,21 +118,21 @@ public class EmptyView: UIView {
         addSubview(actionButton)
 
         NSLayoutConstraint.activate([
-            headerLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXXL),
-            headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
-            headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
+            headerLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing800),
+            headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing400),
+            headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing400),
 
-            messageLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: .spacingXL),
-            messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
-            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
+            messageLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: Warp.Spacing.spacing400),
+            messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing400),
+            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing400),
 
-            imageView.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: .spacingXL),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
+            imageView.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: Warp.Spacing.spacing400),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing400),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing400),
 
-            actionButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .spacingXL),
-            actionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
-            actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL)
+            actionButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: Warp.Spacing.spacing400),
+            actionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing400),
+            actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing400)
         ])
     }
 

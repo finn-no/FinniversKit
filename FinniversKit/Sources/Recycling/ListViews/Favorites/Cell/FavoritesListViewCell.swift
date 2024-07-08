@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol FavoritesListViewCellDataSource: AnyObject {
     func favoritesListViewCell(_ favoritesListViewCell: FavoritesListViewCell, loadImageForModel model: FavoritesListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
@@ -56,18 +57,18 @@ public class FavoritesListViewCell: UITableViewCell {
         backgroundColor = .background
 
         NSLayoutConstraint.activate([
-            adImageView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
-            adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            adImageView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
+            adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
             adImageView.heightAnchor.constraint(equalToConstant: FavoritesListViewCell.imageSize),
             adImageView.widthAnchor.constraint(equalToConstant: FavoritesListViewCell.imageSize),
 
-            detailLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
-            detailLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .spacingS),
-            detailLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            detailLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
+            detailLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: Warp.Spacing.spacing100),
+            detailLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
 
-            titleLabel.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .spacingXS),
-            titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .spacingS),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
+            titleLabel.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: Warp.Spacing.spacing50),
+            titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: Warp.Spacing.spacing100),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100)
         ])
     }
 

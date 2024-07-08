@@ -37,7 +37,7 @@ public final class InfoboxView: UIView {
 
     // MARK: - Subviews
 
-    private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingS, alignment: .center, distribution: .fill, withAutoLayout: true)
+    private lazy var stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, alignment: .center, distribution: .fill, withAutoLayout: true)
 
     private lazy var titleLabel: UILabel = {
         let label = Label(style: style.titleStyle, textColor: style.textColor, withAutoLayout: true)
@@ -99,7 +99,7 @@ public final class InfoboxView: UIView {
 
         stackView.addArrangedSubviews([titleLabel, detailLabel, primaryButton, secondaryButton])
         stackView.setCustomSpacing(Warp.Spacing.spacing200, after: detailLabel)
-        stackView.setCustomSpacing(.spacingXS, after: primaryButton)
+        stackView.setCustomSpacing(Warp.Spacing.spacing50, after: primaryButton)
 
         addSubview(stackView)
         stackView.fillInSuperview(margin: Warp.Spacing.spacing200)

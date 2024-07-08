@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol HappinessRatingViewDelegate: AnyObject {
     func happinessRatingView(_ happinessRatingView: HappinessRatingView, didSelectRating rating: HappinessRating)
@@ -145,7 +146,7 @@ private class RatingView: UIView {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
-        stackView.spacing = .spacingS
+        stackView.spacing = Warp.Spacing.spacing100
         stackView.isUserInteractionEnabled = false
         return stackView
     }()

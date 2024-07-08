@@ -1,11 +1,12 @@
 import DemoKit
 import FinniversKit
 import SwiftUI
+import Warp
 
 struct InfoboxSwiftUIPresentationView: View {
     var body: some View {
         ScrollView {
-            VStack(spacing: .spacingS) {
+            VStack(spacing: Warp.Spacing.spacing100) {
                 Text("Style: .small(backgroundColor: .bgSecondary):")
 
                 InfoboxSwiftUIView(

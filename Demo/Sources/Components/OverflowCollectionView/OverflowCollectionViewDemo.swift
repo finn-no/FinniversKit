@@ -6,7 +6,7 @@ import Warp
 class OverflowCollectionViewDemo: UIView, Demoable {
     private lazy var overflowCollectionView = OverflowCollectionView(
         cellType: DemoCollectionViewCell.self,
-        cellSpacing: .init(horizontal: .spacingS, vertical: .spacingXS),
+        cellSpacing: .init(horizontal: Warp.Spacing.spacing100, vertical: Warp.Spacing.spacing50),
         delegate: self,
         withAutoLayout: true
     )
@@ -62,7 +62,7 @@ private class DemoCollectionViewCell: UICollectionViewCell, OverflowCollectionVi
     // MARK: - Private properties
 
     private static let labelStyle = Label.Style.body
-    private static let margins = UIEdgeInsets(vertical: .spacingS, horizontal: Warp.Spacing.spacing200)
+    private static let margins = UIEdgeInsets(vertical: Warp.Spacing.spacing100, horizontal: Warp.Spacing.spacing200)
     private lazy var label = Label(style: .body, withAutoLayout: true)
 
     // MARK: - Init

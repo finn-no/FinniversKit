@@ -1,4 +1,5 @@
 import Foundation
+import Warp
 
 public extension BadgeView {
     struct Style: Hashable {
@@ -12,7 +13,7 @@ public extension BadgeView {
 
         public static var `default`: Self { .init(backgroundColor: .backgroundInfoSubtle, textColor: .text) }
         public static var warning: Self { .init(backgroundColor: .backgroundWarningSubtle, textColor: .text) }
-        public static var sponsored: Self { .init(backgroundColor: warpUIColor.badgeSponsoredBackground, textColor: .text) } // change this to backgroundSponsored
-        public static var motorSmidig: Self { .init(backgroundColor: warpUIColor.badgePositiveBackground, textColor: .text) } // use badgePositive
+        public static var sponsored: Self { .init(backgroundColor: Warp.UIColor.badgeSponsoredBackground, textColor: .text) } // change this to backgroundSponsored
+        public static var motorSmidig: Self { .init(backgroundColor: Warp.UIColor.badgePositiveBackground, textColor: .text) } // use badgePositive
     }
 }

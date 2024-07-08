@@ -1,6 +1,7 @@
 //
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
+import Warp
 
 extension ChristmasWishListView {
     /// A custom call-to-action like button for the christmas wish list
@@ -25,10 +26,10 @@ extension ChristmasWishListView {
             setTitleColor(.textInverted, for: .normal)
             backgroundColor = .christmasCallToAction
 
-            layer.cornerRadius = .spacingS
-            imageEdgeInsets = UIEdgeInsets(trailing: .spacingS)
+            layer.cornerRadius = Warp.Spacing.spacing100
+            imageEdgeInsets = UIEdgeInsets(trailing: Warp.Spacing.spacing100)
             titleLabel?.font = UIFont.bodyStrong
-            contentEdgeInsets = UIEdgeInsets(all: .spacingS * 1.5)
+            contentEdgeInsets = UIEdgeInsets(all: Warp.Spacing.spacing100 * 1.5)
             adjustsImageWhenHighlighted = false
         }
     }

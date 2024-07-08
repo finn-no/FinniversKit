@@ -104,7 +104,7 @@ public class LoginEntryView: UIView {
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.heightAnchor.constraint(
-                equalTo: loginDialogue.widthAnchor, constant: .spacingXL, priority: .defaultLow
+                equalTo: loginDialogue.widthAnchor, constant: Warp.Spacing.spacing400, priority: .defaultLow
             ),
             contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
         ])

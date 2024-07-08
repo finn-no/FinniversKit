@@ -38,14 +38,14 @@ public struct InfoboxSwiftUIView: View {
             Text(viewModel.detail)
                 .finnFont(style.detailStyle)
 
-            VStack(spacing: .spacingXS) {
+            VStack(spacing: Warp.Spacing.spacing50) {
                 primaryButton(for: viewModel)
 
                 secondaryButton(for: viewModel)
             }
         }
         .multilineTextAlignment(.center)
-        .padding(.horizontal, .spacingXL)
+        .padding(.horizontal, Warp.Spacing.spacing400)
         .padding(.vertical, Warp.Spacing.spacing200)
         .frame(maxWidth: .infinity)
         .foregroundStyle(Color(uiColor: style.textColor))

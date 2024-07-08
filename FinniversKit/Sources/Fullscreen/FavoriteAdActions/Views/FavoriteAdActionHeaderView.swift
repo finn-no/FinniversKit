@@ -84,7 +84,7 @@ final class FavoriteAdActionHeaderView: UIView {
 
 extension FavoriteAdActionHeaderView {
     private static let layoutMargins = UIEdgeInsets(
-        top: .spacingS,
+        top: Warp.Spacing.spacing100,
         left: Warp.Spacing.spacing200,
         bottom: 0,
         right: Warp.Spacing.spacing200

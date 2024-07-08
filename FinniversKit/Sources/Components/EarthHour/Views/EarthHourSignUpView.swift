@@ -44,27 +44,27 @@ final class EarthHourSignUpView: EarthHourContentView {
         addSubview(accessoryButton)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200 + .spacingS),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200 + Warp.Spacing.spacing100),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
-            subtitleTagView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXS),
+            subtitleTagView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing50),
             subtitleTagView.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            bodyTextLabel.topAnchor.constraint(equalTo: subtitleTagView.bottomAnchor, constant: .spacingXS * 3),
+            bodyTextLabel.topAnchor.constraint(equalTo: subtitleTagView.bottomAnchor, constant: Warp.Spacing.spacing50 * 3),
             bodyTextLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             bodyTextLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
 
-            accessoryButton.topAnchor.constraint(equalTo: bodyTextLabel.bottomAnchor, constant: .spacingS),
+            accessoryButton.topAnchor.constraint(equalTo: bodyTextLabel.bottomAnchor, constant: Warp.Spacing.spacing100),
             accessoryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            primaryButton.topAnchor.constraint(equalTo: accessoryButton.bottomAnchor, constant: .spacingXS * 3),
+            primaryButton.topAnchor.constraint(equalTo: accessoryButton.bottomAnchor, constant: Warp.Spacing.spacing50 * 3),
             primaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             primaryButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
 
-            secondaryButton.topAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .spacingXS * 3),
+            secondaryButton.topAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: Warp.Spacing.spacing50 * 3),
             secondaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            secondaryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingXS * 4)
+            secondaryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing50 * 4)
         ])
     }
 }

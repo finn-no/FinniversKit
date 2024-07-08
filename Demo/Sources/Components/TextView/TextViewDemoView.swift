@@ -35,7 +35,7 @@ class TextViewDemoView: UIView {
         addSubview(textView)
 
         NSLayoutConstraint.activate([
-            textView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            textView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
             textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             textView.bottomAnchor.constraint(equalTo: centerYAnchor)

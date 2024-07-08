@@ -45,7 +45,7 @@ public extension Button {
             disabledBorderColor: UIColor?,
             disabledTextColor: UIColor?,
             margins: UIEdgeInsets = UIEdgeInsets(
-                vertical: .spacingS,
+                vertical: Warp.Spacing.spacing100,
                 horizontal: Warp.Spacing.spacing200
             ),
             smallFont: UIFont = .detailStrong,
@@ -70,7 +70,7 @@ public extension Button {
             borderWidth: CGFloat,
             stateStyles: [UIControl.State: StateStyle],
             margins: UIEdgeInsets = UIEdgeInsets(
-                vertical: .spacingS,
+                vertical: Warp.Spacing.spacing100,
                 horizontal: Warp.Spacing.spacing200
             ),
             smallFont: UIFont = .detailStrong,
@@ -155,7 +155,7 @@ public extension Button {
 
         func paddings(forSize size: Size) -> UIEdgeInsets {
             switch size {
-            case .normal: return UIEdgeInsets(vertical: .spacingXS, horizontal: 0)
+            case .normal: return UIEdgeInsets(vertical: Warp.Spacing.spacing50, horizontal: 0)
             case .small: return .zero
             }
         }
@@ -330,7 +330,7 @@ public extension Button.Style {
                 ),
             ],
             margins: UIEdgeInsets(
-                vertical: .spacingXS,
+                vertical: Warp.Spacing.spacing50,
                 horizontal: 0
             ),
             smallFont: .detail,

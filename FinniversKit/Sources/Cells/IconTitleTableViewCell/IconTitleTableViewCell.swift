@@ -36,7 +36,7 @@ open class IconTitleTableViewCell: BasicTableViewCell {
 
 
     private lazy var stackViewToExternalIconConstraint = stackView.trailingAnchor.constraint(
-        lessThanOrEqualTo: externalIconImageView.leadingAnchor, constant: -.spacingS
+        lessThanOrEqualTo: externalIconImageView.leadingAnchor, constant: -Warp.Spacing.spacing100
     )
 
     // MARK: - Setup

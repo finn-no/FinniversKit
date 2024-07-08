@@ -13,15 +13,15 @@ public struct FrontPageTransactionView: View {
     }
 
     public var body: some View {
-        VStack(alignment: .leading, spacing: .spacingS) {
+        VStack(alignment: .leading, spacing: Warp.Spacing.spacing100) {
             Text(model.headerTitle)
                 .finnFont(.bodyStrong)
                 .foregroundColor(.text)
                 .accessibilityAddTraits(.isHeader)
 
             VStack {
-                HStack(alignment: .top, spacing: .spacingS) {
-                    VStack(alignment: .leading, spacing: .spacingXS) {
+                HStack(alignment: .top, spacing: Warp.Spacing.spacing100) {
+                    VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
                         Text(model.title)
                             .finnFont(.bodyStrong)
                             .foregroundColor(.text)

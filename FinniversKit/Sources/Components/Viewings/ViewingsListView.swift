@@ -48,7 +48,7 @@ public class ViewingsListView: UIView {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            noteLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
+            noteLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing100),
             noteLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             noteLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
@@ -74,7 +74,7 @@ public class ViewingsListView: UIView {
         viewingsStackView.removeArrangedSubviews()
 
         viewModel.viewings.enumerated().forEach { index, viewing in
-            let topMargin: CGFloat = viewModel.note != nil && index == 0 ? .spacingS : 0
+            let topMargin: CGFloat = viewModel.note != nil && index == 0 ? Warp.Spacing.spacing100 : 0
             let view = ViewingItemView(layout: .original, withAutoLayout: true)
             view.configure(
                 with: viewing,
@@ -93,7 +93,7 @@ public class ViewingsListView: UIView {
 
     private func attributedNoteString(with text: String) -> NSAttributedString {
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = .spacingXXS
+        paragraphStyle.lineSpacing = Warp.Spacing.spacing25
 
         let attributes: [NSAttributedString.Key: Any] = [
             .paragraphStyle: paragraphStyle,

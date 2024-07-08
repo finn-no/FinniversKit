@@ -6,7 +6,7 @@ public class AddressComponentPostalFieldView: UIView {
     // MARK: - Private properties
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(axis: .horizontal, spacing: .spacingS, withAutoLayout: true)
+        let stackView = UIStackView(axis: .horizontal, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
         stackView.distribution = .fillEqually
         return stackView
     }()
@@ -46,11 +46,11 @@ public class AddressComponentPostalFieldView: UIView {
         addSubview(hairlineView)
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100),
 
-            lockImageView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: .spacingS),
+            lockImageView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: Warp.Spacing.spacing100),
             lockImageView.leadingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: Warp.Spacing.spacing200),
             lockImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             lockImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -Warp.Spacing.spacing200),

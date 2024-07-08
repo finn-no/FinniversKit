@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 class SettingsViewConsentCell: SettingsViewCell {
 
@@ -33,7 +34,7 @@ class SettingsViewConsentCell: SettingsViewCell {
         NSLayoutConstraint.activate([
             statusLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             statusLabel.leadingAnchor.constraint(greaterThanOrEqualTo: titleLabel.trailingAnchor, constant: 0),
-            statusLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingS)
+            statusLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing100)
         ])
     }
 }

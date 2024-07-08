@@ -54,7 +54,7 @@ public class SelectorTitleView: UIView {
         button.titleLabel?.font = UIFont.bodyStrong.withSize(17).scaledFont(forTextStyle: .footnote)
         button.titleLabel?.adjustsFontForContentSizeCategory = true
 
-        let spacing: CGFloat = .spacingXXS
+        let spacing: CGFloat = Warp.Spacing.spacing25
         button.semanticContentAttribute = .forceRightToLeft
         button.imageEdgeInsets = UIEdgeInsets(top: spacing, leading: spacing, bottom: 0, trailing: -spacing)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, leading: -spacing, bottom: 0, trailing: spacing)

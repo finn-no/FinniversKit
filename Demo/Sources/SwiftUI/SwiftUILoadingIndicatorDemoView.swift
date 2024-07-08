@@ -1,10 +1,11 @@
 import FinniversKit
 import SwiftUI
 import DemoKit
+import Warp
 
 struct SwiftUILoadingIndicatorDemoView: View {
     var body: some View {
-        VStack(spacing: .spacingXXL) {
+        VStack(spacing: Warp.Spacing.spacing800) {
             SwiftUILoadingIndicator()
                 .frame(width: 40, height: 40)
 

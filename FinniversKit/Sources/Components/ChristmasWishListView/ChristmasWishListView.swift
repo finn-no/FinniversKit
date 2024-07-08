@@ -66,7 +66,7 @@ public class ChristmasWishListView: UIView {
         let view = UIView(withAutoLayout: true)
 
         let margin: CGFloat = Warp.Spacing.spacing200 * 1.5
-        view.layoutMargins = UIEdgeInsets(top: .spacingS, leading: margin, bottom: margin, trailing: margin)
+        view.layoutMargins = UIEdgeInsets(top: Warp.Spacing.spacing100, leading: margin, bottom: margin, trailing: margin)
 
         view.addSubview(firstPageButton)
         view.addSubview(secondPageButton)

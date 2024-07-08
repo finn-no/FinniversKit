@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 final class FavoriteAdCommentView: UIView {
 
@@ -59,18 +60,18 @@ final class FavoriteAdCommentView: UIView {
         addSubview(imageView)
         addSubview(label)
 
-        directionalLayoutMargins = .init(all: .spacingS)
+        directionalLayoutMargins = .init(all: Warp.Spacing.spacing100)
 
         let margins = layoutMarginsGuide
 
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: margins.topAnchor, constant: .spacingXXS),
+            imageView.topAnchor.constraint(equalTo: margins.topAnchor, constant: Warp.Spacing.spacing25),
             imageView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
             imageView.widthAnchor.constraint(equalToConstant: 15),
             imageView.heightAnchor.constraint(equalToConstant: 14),
 
             label.topAnchor.constraint(equalTo: margins.topAnchor),
-            label.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingS),
+            label.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: Warp.Spacing.spacing100),
             label.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
             label.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
         ])

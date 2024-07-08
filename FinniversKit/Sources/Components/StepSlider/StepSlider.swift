@@ -176,8 +176,8 @@ public final class StepSlider: UISlider {
         insertSubview(activeRangeTrackView, aboveSubview: trackView)
 
         NSLayoutConstraint.activate([
-            trackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXXS),
-            trackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXXS),
+            trackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing25),
+            trackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing25),
             trackView.centerYAnchor.constraint(equalTo: centerYAnchor),
             trackView.heightAnchor.constraint(equalToConstant: 3),
 

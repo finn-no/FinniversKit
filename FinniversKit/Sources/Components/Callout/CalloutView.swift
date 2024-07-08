@@ -35,7 +35,7 @@ public final class CalloutView: UIView {
         view.backgroundColor = .backgroundPositiveSubtle
         view.layer.borderColor = .borderPositive
         view.layer.borderWidth = 2
-        view.layer.cornerRadius = .spacingS
+        view.layer.cornerRadius = Warp.Spacing.spacing100
         return view
     }()
 

@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class FloatingButtonDemoView: UIView {
     private lazy var floatingButton: FloatingButton = {
@@ -66,7 +67,7 @@ class FloatingButtonDemoView: UIView {
         stackView.addArrangedSubviews([floatingButton, floatingButtonWithBadge, floatingButtonWithRedBadge])
 
         NSLayoutConstraint.activate([
-            floatingButton.widthAnchor.constraint(equalToConstant: .spacingXXL),
+            floatingButton.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing800),
             floatingButton.heightAnchor.constraint(equalTo: floatingButton.widthAnchor),
 
             floatingButtonWithBadge.widthAnchor.constraint(equalToConstant: 44),

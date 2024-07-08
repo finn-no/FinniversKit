@@ -80,7 +80,7 @@ public class KeyValueGridView: UIView {
     }
 
     private func createCellView(for pair: KeyValuePair) -> UIView {
-        let stackView = UIStackView(axis: .vertical, spacing: .spacingXXS, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
+        let stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing25, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
 
         let titleLabel = Label(style: titleStyle, numberOfLines: 2, withAutoLayout: true)
         titleLabel.lineBreakMode = .byWordWrapping

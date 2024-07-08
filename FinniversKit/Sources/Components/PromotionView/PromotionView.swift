@@ -87,14 +87,14 @@ public class PromotionView: UIView {
     private lazy var backgroundImageContainer = UIView(withAutoLayout: true)
 
     private lazy var verticalStackView: UIStackView = {
-        let stackView = UIStackView(axis: .vertical, spacing: .spacingS + .spacingXS, withAutoLayout: true)
+        let stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100 + Warp.Spacing.spacing50, withAutoLayout: true)
         stackView.distribution = .fillProportionally
         stackView.alignment = .leading
         return stackView
     }()
 
     private lazy var compactDynamicConstraints: [NSLayoutConstraint] = [
-        imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor, constant: -.spacingXXL),
+        imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor, constant: -Warp.Spacing.spacing800),
         imageView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
         imageView.leadingAnchor.constraint(equalTo: backgroundImageContainer.leadingAnchor, constant: Warp.Spacing.spacing200),
         imageView.widthAnchor.constraint(lessThanOrEqualTo: imageView.heightAnchor, multiplier: viewModel.imageRatio),
@@ -151,7 +151,7 @@ public class PromotionView: UIView {
 
         switch viewModel.imageAlignment {
         case .fullWidth:
-            imageView.fillInSuperview(insets: UIEdgeInsets(top: Warp.Spacing.spacing200, leading: .spacingS, bottom: -Warp.Spacing.spacing200, trailing: -.spacingS))
+            imageView.fillInSuperview(insets: UIEdgeInsets(top: Warp.Spacing.spacing200, leading: Warp.Spacing.spacing100, bottom: -Warp.Spacing.spacing200, trailing: -Warp.Spacing.spacing100))
         case .trailing:
             let imageRatio = viewModel.imageRatio
             NSLayoutConstraint.activate([

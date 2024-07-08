@@ -35,7 +35,7 @@ public struct LoadingSwiftUIView: View {
                 .ignoresSafeArea()
                 .disabled(true)
 
-            VStack(spacing: .spacingS) {
+            VStack(spacing: Warp.Spacing.spacing100) {
                 // Since the indicator view starts at a smaller size we must wrap it for fixed size
                 VStack {
                     if showSuccess {

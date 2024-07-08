@@ -108,9 +108,9 @@ public class BetaFeatureView: UIView {
         layoutMargins = UIEdgeInsets(all: 0)
 
         NSLayoutConstraint.activate([
-            iconImageView.widthAnchor.constraint(equalToConstant: .spacingXXL),
-            iconImageView.heightAnchor.constraint(equalToConstant: .spacingXXL),
-            iconImageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: .spacingXL),
+            iconImageView.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing800),
+            iconImageView.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing800),
+            iconImageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: Warp.Spacing.spacing400),
             iconImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
 
             betaFlagView.widthAnchor.constraint(equalToConstant: betaPillSize.width),
@@ -126,18 +126,18 @@ public class BetaFeatureView: UIView {
             bodyLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             bodyLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, multiplier: 0.8),
 
-            firstButton.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: .spacingXL),
+            firstButton.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: Warp.Spacing.spacing400),
             firstButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             firstButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
 
-            secondButton.topAnchor.constraint(equalTo: firstButton.bottomAnchor, constant: .spacingS),
+            secondButton.topAnchor.constraint(equalTo: firstButton.bottomAnchor, constant: Warp.Spacing.spacing100),
             secondButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             secondButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             secondButton.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
         ])
 
         betaFlagView.transform = CGAffineTransform
-            .init(translationX: .spacingXL - .spacingXS, y: -.spacingXL + .spacingXS)
+            .init(translationX: Warp.Spacing.spacing400 - Warp.Spacing.spacing50, y: -Warp.Spacing.spacing400 + Warp.Spacing.spacing50)
             .rotated(by: .pi / 4.5)
     }
 

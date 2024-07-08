@@ -41,7 +41,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
         container.topAnchor.constraint(equalTo: topAnchor),
         container.leadingAnchor.constraint(equalTo: leadingAnchor),
         container.bottomAnchor.constraint(equalTo: bottomAnchor),
-        container.trailingAnchor.constraint(equalTo: logoView.leadingAnchor, constant: -.spacingS),
+        container.trailingAnchor.constraint(equalTo: logoView.leadingAnchor, constant: -Warp.Spacing.spacing100),
 
         nativeAdvertRibbon.leadingAnchor.constraint(equalTo: container.leadingAnchor),
         nativeAdvertRibbon.topAnchor.constraint(equalTo: container.topAnchor),
@@ -50,7 +50,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
         titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
         titleLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor),
 
-        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
+        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing100),
         descriptionLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
         descriptionLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor),
 
@@ -64,7 +64,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
         logoView.widthAnchor.constraint(equalToConstant: logoSizeCompact),
         logoView.heightAnchor.constraint(equalToConstant: logoSizeCompact),
 
-        titleLabel.topAnchor.constraint(equalTo: nativeAdvertRibbon.bottomAnchor, constant: .spacingS),
+        titleLabel.topAnchor.constraint(equalTo: nativeAdvertRibbon.bottomAnchor, constant: Warp.Spacing.spacing100),
     ]
 
     private lazy var regularConstraints: [NSLayoutConstraint] = [

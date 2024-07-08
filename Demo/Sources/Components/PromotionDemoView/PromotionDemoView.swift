@@ -24,7 +24,7 @@ class PromotionDemoView: UIView, Demoable {
     )
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(axis: .vertical, spacing: .spacingL, withAutoLayout: true)
+        let stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing300, withAutoLayout: true)
         stackView.distribution = .fill
         return stackView
     }()

@@ -91,7 +91,7 @@ public final class BannerTransparencyView: UIView {
             logoImageView.widthAnchor.constraint(equalToConstant: 77),
             logoImageView.heightAnchor.constraint(equalToConstant: 27),
 
-            headerLabel.leadingAnchor.constraint(equalTo: logoImageView.trailingAnchor, constant: .spacingS),
+            headerLabel.leadingAnchor.constraint(equalTo: logoImageView.trailingAnchor, constant: Warp.Spacing.spacing100),
             headerLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
             headerLabel.centerYAnchor.constraint(equalTo: logoImageView.centerYAnchor),
 
@@ -102,7 +102,7 @@ public final class BannerTransparencyView: UIView {
             readMoreSection.topAnchor.constraint(equalTo: adSettingsSection.bottomAnchor),
             readMoreSection.leadingAnchor.constraint(equalTo: adSettingsSection.leadingAnchor),
             readMoreSection.trailingAnchor.constraint(equalTo: adSettingsSection.trailingAnchor),
-            readMoreSection.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingS)
+            readMoreSection.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Warp.Spacing.spacing100)
         ])
     }
 }

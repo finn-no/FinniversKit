@@ -99,7 +99,7 @@ public class Selectionbox: UIView {
 
     private var highlightedItem: SelectionboxItem?
 
-    private lazy var containerStack = UIStackView(axis: .vertical, spacing: .spacingS, alignment: .leading, withAutoLayout: true)
+    private lazy var containerStack = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, alignment: .leading, withAutoLayout: true)
 
     private let titleLabel: UILabel = {
         let label = Label(style: .title3)

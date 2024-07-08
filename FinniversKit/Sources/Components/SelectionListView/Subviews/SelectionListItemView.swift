@@ -19,8 +19,8 @@ class SelectionListItemView: UIView {
     private let presentation: SelectionListView.Presentation
     private lazy var contentView = UIView(withAutoLayout: true)
     private lazy var selectionView = presentation.selectionView
-    private lazy var textStackView = UIStackView(axis: .vertical, spacing: .spacingXS, withAutoLayout: true)
-    private lazy var detailViewsStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+    private lazy var textStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing50, withAutoLayout: true)
+    private lazy var detailViewsStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
     private lazy var detailViewsStackViewBottomConstraint = detailViewsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
 
     private lazy var titleLabel: Label = {

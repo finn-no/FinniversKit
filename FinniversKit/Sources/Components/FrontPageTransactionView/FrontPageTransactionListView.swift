@@ -9,7 +9,7 @@ public struct FrontPageTransactionListView: View {
     }
 
     public var body: some View {
-        VStack(alignment: .leading, spacing: .spacingL) {
+        VStack(alignment: .leading, spacing: Warp.Spacing.spacing300) {
             ForEach(models) { model in
                 FrontPageTransactionView(model: model)
             }

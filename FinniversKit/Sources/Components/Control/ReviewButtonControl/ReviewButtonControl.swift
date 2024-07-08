@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol ReviewButtonControlDelegate: AnyObject {
     func reviewButtonControl(_ reviewButtonControl: ReviewButtonControl, giveReviewWasTapped startReview: Bool)
@@ -83,7 +84,7 @@ public final class ReviewButtonControl: UIControl {
 
             imageView.topAnchor.constraint(equalTo: titleLabel.topAnchor),
             imageView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            imageView.trailingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: -.spacingXS)
+            imageView.trailingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: -Warp.Spacing.spacing50)
         ])
     }
 }

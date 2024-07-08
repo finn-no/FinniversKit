@@ -49,14 +49,14 @@ class FavoriteAdsSectionHeaderView: UITableViewHeaderFooterView {
         contentView.addSubview(detailLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing100),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingS),
-            titleLabel.trailingAnchor.constraint(equalTo: detailLabel.leadingAnchor, constant: -.spacingS),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Warp.Spacing.spacing100),
+            titleLabel.trailingAnchor.constraint(equalTo: detailLabel.leadingAnchor, constant: -Warp.Spacing.spacing100),
 
-            detailLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
+            detailLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing100),
             detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
-            detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingS)
+            detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Warp.Spacing.spacing100)
         ])
     }
 

@@ -60,11 +60,11 @@ public struct FinnTextField: View {
                 onCommit: { evaluateTextState() }
             )
             .fixedSize(horizontal: false, vertical: true)
-            .padding(.vertical, .spacingS + .spacingXS)
-            .padding(.horizontal, .spacingS)
+            .padding(.vertical, Warp.Spacing.spacing100 + Warp.Spacing.spacing50)
+            .padding(.horizontal, Warp.Spacing.spacing100)
             .background(Color.backgroundInfoSubtle)
             .overlay(underline, alignment: .bottom)
-            .overlay(textfieldTrailingButton.padding(.trailing, .spacingXS), alignment: .trailing)
+            .overlay(textfieldTrailingButton.padding(.trailing, Warp.Spacing.spacing50), alignment: .trailing)
 
             makeHelpTextLabel()
                 .transition(.asymmetricSlide)

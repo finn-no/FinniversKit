@@ -14,9 +14,6 @@ public struct Config {
     public static var isDynamicTypeEnabled: Bool = true
 }
 
-public let warpColor = Warp.Config.colorProvider
-public let warpUIColor = Warp.Config.uiColorProvider
-
 @objc public extension Bundle {
     static var finniversKit: Bundle {
         #if SWIFT_PACKAGE

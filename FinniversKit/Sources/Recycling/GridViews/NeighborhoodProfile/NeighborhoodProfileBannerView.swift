@@ -28,7 +28,7 @@ final class NeighborhoodProfileBannerView: UIView {
         let stack = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, withAutoLayout: true)
         stack.layer.borderWidth = 1
         stack.layer.borderColor = .border
-        stack.layer.cornerRadius = .spacingS
+        stack.layer.cornerRadius = Warp.Spacing.spacing100
         stack.layer.masksToBounds = true
         stack.backgroundColor = .background
         stack.directionalLayoutMargins = NSDirectionalEdgeInsets(all: Warp.Spacing.spacing200)

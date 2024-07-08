@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol FavoriteFoldersFooterViewDelegate: AnyObject {
     func favoriteFoldersFooterViewDidSelectButton(_ view: FavoriteFoldersFooterView)
@@ -58,7 +59,7 @@ final class FavoriteFoldersFooterView: UIView {
         addSubview(button)
 
         NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            button.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
             button.leadingAnchor.constraint(equalTo: leadingAnchor),
             button.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])

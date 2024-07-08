@@ -18,7 +18,7 @@ public extension SafetyElementsView {
             let stackView = UIStackView(withAutoLayout: true)
             stackView.axis = .vertical
             stackView.alignment = .leading
-            stackView.spacing = .spacingS
+            stackView.spacing = Warp.Spacing.spacing100
             return stackView
         }()
 

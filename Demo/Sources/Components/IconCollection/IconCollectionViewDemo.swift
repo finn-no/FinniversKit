@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class IconCollectionDemoView: UIView {
 
@@ -42,8 +43,8 @@ class IconCollectionDemoView: UIView {
         NSLayoutConstraint.activate([
             collectionView.centerYAnchor.constraint(equalTo: centerYAnchor),
             collectionView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingS),
-            collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS)
+            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Warp.Spacing.spacing100),
+            collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -Warp.Spacing.spacing100)
         ])
 
         switch alignment {

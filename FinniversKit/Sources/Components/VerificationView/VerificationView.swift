@@ -76,7 +76,7 @@ private extension VerificationView {
         addSubview(verificationButtonImageView)
 
         let insets = UIEdgeInsets(
-            top: .spacingS,
+            top: Warp.Spacing.spacing100,
             leading: Warp.Spacing.spacing200,
             bottom: Warp.Spacing.spacing200,
             trailing: Warp.Spacing.spacing200

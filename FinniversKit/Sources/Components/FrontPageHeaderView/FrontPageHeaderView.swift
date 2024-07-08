@@ -16,7 +16,7 @@ public class FrontPageHeaderView: UICollectionReusableView {
     private lazy var button: UIButton = {
         let button = Button(
             style: .flat.overrideStyle(
-                margins: .init(top: .spacingS, leading: Warp.Spacing.spacing200, bottom: .spacingS, trailing: 0)
+                margins: .init(top: Warp.Spacing.spacing100, leading: Warp.Spacing.spacing200, bottom: Warp.Spacing.spacing100, trailing: 0)
             )
         )
         button.size = .normal

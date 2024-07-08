@@ -85,7 +85,7 @@ public class BrazePromotionView: UIView {
         button.layer.masksToBounds = true
         button.layer.cornerRadius = buttonSize / 2.0
         button.clipsToBounds = true
-        button.imageEdgeInsets = UIEdgeInsets(vertical: .spacingXS, horizontal: .spacingXS)
+        button.imageEdgeInsets = UIEdgeInsets(vertical: Warp.Spacing.spacing50, horizontal: Warp.Spacing.spacing50)
         button.addTarget(self, action: #selector(handleTapOnCloseButton), for: .touchUpInside)
         return button
     }()
@@ -100,12 +100,12 @@ public class BrazePromotionView: UIView {
     }()
 
     private lazy var verticalStackView: UIStackView = {
-        let stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+        let stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
         stackView.distribution = .fillProportionally
         stackView.alignment = .leading
         stackView.setContentCompressionResistancePriority(.required, for: .horizontal)
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .spacingS)
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: Warp.Spacing.spacing100)
         return stackView
     }()
 
@@ -119,7 +119,7 @@ public class BrazePromotionView: UIView {
 
     private lazy var buttonStackView: UIStackView = {
         let axis = determineButtonStackViewAxis()
-        let spacing: CGFloat = axis == .horizontal ? Warp.Spacing.spacing200 : .spacingXS
+        let spacing: CGFloat = axis == .horizontal ? Warp.Spacing.spacing200 : Warp.Spacing.spacing50
         let stackView = UIStackView(axis: axis, spacing: spacing, withAutoLayout: true)
         stackView.distribution = .fill
         stackView.alignment = .leading
@@ -293,7 +293,7 @@ extension BrazePromotionView {
         addGestureRecognizer(tapGesture)
 
         verticalStackView.addArrangedSubviews([titleLabel, textLabel, buttonStackView])
-        verticalStackView.setCustomSpacing(.spacingS + .spacingXS, after: textLabel)
+        verticalStackView.setCustomSpacing(Warp.Spacing.spacing100 + Warp.Spacing.spacing50, after: textLabel)
 
         addSubview(largeShadowView)
         largeShadowView.addSubview(smallShadowView)
@@ -306,8 +306,8 @@ extension BrazePromotionView {
         backgroundView.fillInSuperview()
 
         NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingS),
-            closeButton.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -.spacingS),
+            closeButton.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: Warp.Spacing.spacing100),
+            closeButton.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -Warp.Spacing.spacing100),
             closeButton.widthAnchor.constraint(equalToConstant: buttonSize),
             closeButton.heightAnchor.constraint(equalToConstant: buttonSize)
         ])

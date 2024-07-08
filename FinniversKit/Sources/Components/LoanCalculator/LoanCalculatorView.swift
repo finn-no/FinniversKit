@@ -80,7 +80,7 @@ public class LoanCalculatorView: UIView {
     // MARK: - Private methods
     private func setup() {
         backgroundColor = .backgroundSubtle
-        layer.cornerRadius = .spacingS
+        layer.cornerRadius = Warp.Spacing.spacing100
         directionalLayoutMargins = .init(all: Warp.Spacing.spacing200 * 1.5)
 
         addSubview(headerView)
@@ -98,12 +98,12 @@ public class LoanCalculatorView: UIView {
                 loanValuesView.widthAnchor.constraint(equalTo: headerView.widthAnchor),
 
                 headerView.topAnchor.constraint(equalTo: margins.topAnchor),
-                headerView.leadingAnchor.constraint(equalTo: loanValuesView.trailingAnchor, constant: .spacingXXL),
+                headerView.leadingAnchor.constraint(equalTo: loanValuesView.trailingAnchor, constant: Warp.Spacing.spacing800),
                 headerView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-                headerView.bottomAnchor.constraint(equalTo: applyView.topAnchor, constant: -.spacingXL),
+                headerView.bottomAnchor.constraint(equalTo: applyView.topAnchor, constant: -Warp.Spacing.spacing400),
                 headerHeight,
 
-                applyView.leadingAnchor.constraint(equalTo: loanValuesView.trailingAnchor, constant: .spacingXXL),
+                applyView.leadingAnchor.constraint(equalTo: loanValuesView.trailingAnchor, constant: Warp.Spacing.spacing800),
                 applyView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
                 applyView.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
             ])
@@ -112,12 +112,12 @@ public class LoanCalculatorView: UIView {
                 headerView.topAnchor.constraint(equalTo: margins.topAnchor),
                 headerView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
                 headerView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-                headerView.bottomAnchor.constraint(equalTo: loanValuesView.topAnchor, constant: -.spacingXL),
+                headerView.bottomAnchor.constraint(equalTo: loanValuesView.topAnchor, constant: -Warp.Spacing.spacing400),
                 headerHeight,
 
                 loanValuesView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
                 loanValuesView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-                loanValuesView.bottomAnchor.constraint(equalTo: applyView.topAnchor, constant: -.spacingXL),
+                loanValuesView.bottomAnchor.constraint(equalTo: applyView.topAnchor, constant: -Warp.Spacing.spacing400),
 
                 applyView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
                 applyView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),

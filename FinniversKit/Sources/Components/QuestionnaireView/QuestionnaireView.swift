@@ -104,23 +104,23 @@ public class QuestionnaireView: UIView {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
-            detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
+            detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing100),
             detailLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             detailLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
 
             primaryButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
             primaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            cancelButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXS),
-            cancelButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXS),
+            cancelButton.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing50),
+            cancelButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing50),
         ]
 
         if let primaryButtonImageView = primaryButtonImageView {
             primaryButton.addSubview(primaryButtonImageView)
             let imageWidth: CGFloat = 18
             constraints.append(contentsOf: [
-                primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
-                primaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+                primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
+                primaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
                 primaryButtonImageView.widthAnchor.constraint(equalToConstant: imageWidth),
                 primaryButtonImageView.heightAnchor.constraint(equalToConstant: imageWidth),
                 primaryButtonImageView.centerYAnchor.constraint(equalTo: primaryButton.centerYAnchor),

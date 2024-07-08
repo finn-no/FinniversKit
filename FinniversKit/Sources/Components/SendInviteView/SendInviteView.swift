@@ -27,7 +27,7 @@ public class SendInviteView: UIView {
         let stackView = UIStackView(arrangedSubviews: [profileImage, profileNameLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
-        stackView.spacing = .spacingS
+        stackView.spacing = Warp.Spacing.spacing100
         return stackView
     }()
 
@@ -47,7 +47,7 @@ public class SendInviteView: UIView {
         let stackView = UIStackView(arrangedSubviews: [sendInviteButton, sendInviteLaterButton])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = .spacingXL
+        stackView.spacing = Warp.Spacing.spacing400
         return stackView
     }()
 
@@ -65,17 +65,17 @@ public class SendInviteView: UIView {
     private func setup() {
         [titleLabel, profileStackView, buttonStackView].forEach { addSubview($0) }
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingL),
-            titleLabel.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor, constant: .spacingS),
-            titleLabel.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor, constant: -.spacingS),
+            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Warp.Spacing.spacing300),
+            titleLabel.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor, constant: Warp.Spacing.spacing100),
+            titleLabel.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor, constant: -Warp.Spacing.spacing100),
 
             profileImage.widthAnchor.constraint(equalToConstant: SendInviteView.profileImageSize),
             profileImage.heightAnchor.constraint(equalToConstant: SendInviteView.profileImageSize),
 
-            profileStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingL),
+            profileStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing300),
             profileStackView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
 
-            buttonStackView.topAnchor.constraint(equalTo: profileStackView.bottomAnchor, constant: .spacingL),
+            buttonStackView.topAnchor.constraint(equalTo: profileStackView.bottomAnchor, constant: Warp.Spacing.spacing300),
             buttonStackView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: Warp.Spacing.spacing200),
             buttonStackView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: -Warp.Spacing.spacing200),
         ])
