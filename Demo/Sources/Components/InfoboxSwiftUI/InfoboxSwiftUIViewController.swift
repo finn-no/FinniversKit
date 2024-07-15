@@ -1,15 +1,16 @@
 import DemoKit
 import FinniversKit
 import SwiftUI
+import Warp
 
 struct InfoboxSwiftUIPresentationView: View {
     var body: some View {
         ScrollView {
-            VStack(spacing: .spacingS) {
+            VStack(spacing: Warp.Spacing.spacing100) {
                 Text("Style: .small(backgroundColor: .bgSecondary):")
 
                 InfoboxSwiftUIView(
-                    style: .small(backgroundColor: .bgSecondary),
+                    style: .small(backgroundColor: .backgroundInfoSubtle),
                     viewModel: InfoboxDefaultData()
                 )
                 .onPrimaryButtonTapped {
@@ -24,7 +25,7 @@ struct InfoboxSwiftUIPresentationView: View {
                 Text("Style: .normal(backgroundColor: .bgPrimary, primaryButtonIcon: UIImage(named: .webview):")
                 InfoboxSwiftUIView(
                     style: .normal(
-                        backgroundColor: .bgPrimary,
+                        backgroundColor: .background,
                         primaryButtonIcon: UIImage(named: .webview)
                     ),
                     viewModel: InfoboxOpenBrowserData()

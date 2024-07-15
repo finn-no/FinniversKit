@@ -1,11 +1,12 @@
 import UIKit
+import Warp
 
 public class AddressComponentPostalFieldView: UIView {
 
     // MARK: - Private properties
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(axis: .horizontal, spacing: .spacingS, withAutoLayout: true)
+        let stackView = UIStackView(axis: .horizontal, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
         stackView.distribution = .fillEqually
         return stackView
     }()
@@ -38,26 +39,26 @@ public class AddressComponentPostalFieldView: UIView {
     private func setup() {
         isAccessibilityElement = true
 
-        backgroundColor = .bgTertiary
+        backgroundColor = .backgroundSubtle
 
         addSubview(stackView)
         addSubview(lockImageView)
         addSubview(hairlineView)
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100),
 
-            lockImageView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: .spacingS),
-            lockImageView.leadingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: .spacingM),
-            lockImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-            lockImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingM),
+            lockImageView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: Warp.Spacing.spacing100),
+            lockImageView.leadingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: Warp.Spacing.spacing200),
+            lockImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
+            lockImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -Warp.Spacing.spacing200),
             lockImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             lockImageView.heightAnchor.constraint(equalToConstant: 16),
             lockImageView.widthAnchor.constraint(equalToConstant: 13),
 
-            hairlineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            hairlineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             hairlineView.trailingAnchor.constraint(equalTo: trailingAnchor),
             hairlineView.bottomAnchor.constraint(equalTo: bottomAnchor),
             hairlineView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale)
@@ -87,7 +88,7 @@ public class AddressComponentPostalFieldView: UIView {
         let stackView = UIStackView(axis: .vertical, spacing: 0, withAutoLayout: true)
 
         if let title = model.value {
-            let floatingLabel = Label.create(style: .detail, textColor: .textSecondary)
+            let floatingLabel = Label.create(style: .detail, textColor: .textSubtle)
             floatingLabel.text = model.placeholder
 
             let titleLabel = Label.create(style: .caption)
@@ -96,7 +97,7 @@ public class AddressComponentPostalFieldView: UIView {
             stackView.addArrangedSubviews([floatingLabel, titleLabel])
             stackView.alignment = .top
         } else {
-            let placeholderLabel = Label.create(style: .caption, textColor: .textSecondary)
+            let placeholderLabel = Label.create(style: .caption, textColor: .textSubtle)
             placeholderLabel.text = model.placeholder
 
             stackView.addArrangedSubview(placeholderLabel)
@@ -110,7 +111,7 @@ public class AddressComponentPostalFieldView: UIView {
 // MARK: - Private extensions
 
 private extension Label {
-    static func create(style: Label.Style, textColor: UIColor = .textPrimary) -> Label {
+    static func create(style: Label.Style, textColor: UIColor = .text) -> Label {
         let label = Label(style: style, withAutoLayout: true)
         label.textColor = textColor
         return label

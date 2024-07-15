@@ -3,9 +3,10 @@
 //
 
 import UIKit
+import Warp
 
 public class HorizontalIconCollectionViewCell: UICollectionViewCell {
-    private static let titleSideMargin = CGFloat.spacingS
+    private static let titleSideMargin = Warp.Spacing.spacing100
     private static let titleStyle = Label.Style.body
     private static let bodyStyle = Label.Style.bodyStrong
 
@@ -16,7 +17,7 @@ public class HorizontalIconCollectionViewCell: UICollectionViewCell {
         let titleHeight = viewModel.title?.height(withConstrainedWidth: textWidth, font: titleStyle.font) ?? 0
         let bodyHeight = viewModel.text.height(withConstrainedWidth: textWidth, font: bodyStyle.font)
 
-        let textHeight = titleHeight + bodyHeight + .spacingXS
+        let textHeight = titleHeight + bodyHeight + Warp.Spacing.spacing50
 
         return max(imageSize.height, textHeight)
     }
@@ -88,7 +89,7 @@ public class HorizontalIconCollectionViewCell: UICollectionViewCell {
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: HorizontalIconCollectionViewCell.titleSideMargin),
 
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXS),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing50),
             titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: HorizontalIconCollectionViewCell.titleSideMargin),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -HorizontalIconCollectionViewCell.titleSideMargin),
 

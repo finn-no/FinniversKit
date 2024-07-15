@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public class KeyValueGridView: UIView {
     // MARK: - Public properties
@@ -15,7 +16,7 @@ public class KeyValueGridView: UIView {
     private var data: [KeyValuePair] = []
     private var titleStyle: Label.Style = .body
     private var valueStyle: Label.Style = .bodyStrong
-    private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: .spacingM, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
+    private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
 
     // MARK: - Initializers
 
@@ -79,7 +80,7 @@ public class KeyValueGridView: UIView {
     }
 
     private func createCellView(for pair: KeyValuePair) -> UIView {
-        let stackView = UIStackView(axis: .vertical, spacing: .spacingXXS, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
+        let stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing25, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
 
         let titleLabel = Label(style: titleStyle, numberOfLines: 2, withAutoLayout: true)
         titleLabel.lineBreakMode = .byWordWrapping
@@ -115,7 +116,7 @@ public class KeyValueGridView: UIView {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.alignment = .top
-        stackView.spacing = .spacingM
+        stackView.spacing = Warp.Spacing.spacing200
         return stackView
     }
 }

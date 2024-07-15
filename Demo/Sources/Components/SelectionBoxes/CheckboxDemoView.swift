@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class CheckboxDemoView: UIView, Demoable {
     var dismissKind: DismissKind { .button }
@@ -25,13 +26,13 @@ class CheckboxDemoView: UIView, Demoable {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         addSubview(checkbox)
 
         NSLayoutConstraint.activate([
-            checkbox.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            checkbox.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-            checkbox.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM)
+            checkbox.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            checkbox.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
+            checkbox.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200)
         ])
     }
 

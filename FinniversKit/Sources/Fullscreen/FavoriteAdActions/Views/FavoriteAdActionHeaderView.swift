@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 final class FavoriteAdActionHeaderView: UIView {
     private lazy var blurView = UIVisualEffectView(effect: UIBlurEffect(style: .prominent))
@@ -18,7 +19,7 @@ final class FavoriteAdActionHeaderView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = FavoriteAdActionHeaderView.titleLabelFont
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.textAlignment = .center
         label.numberOfLines = 0
         label.setContentHuggingPriority(.required, for: .vertical)
@@ -83,10 +84,10 @@ final class FavoriteAdActionHeaderView: UIView {
 
 extension FavoriteAdActionHeaderView {
     private static let layoutMargins = UIEdgeInsets(
-        top: .spacingS,
-        left: .spacingM,
+        top: Warp.Spacing.spacing100,
+        left: Warp.Spacing.spacing200,
         bottom: 0,
-        right: .spacingM
+        right: Warp.Spacing.spacing200
     )
 
     private static let imageViewSize: CGFloat = 56

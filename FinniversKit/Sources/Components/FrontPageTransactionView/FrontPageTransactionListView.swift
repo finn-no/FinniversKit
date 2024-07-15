@@ -1,4 +1,5 @@
 import SwiftUI
+import Warp
 
 public struct FrontPageTransactionListView: View {
     public let models: [FrontPageTransactionViewModel]
@@ -8,7 +9,7 @@ public struct FrontPageTransactionListView: View {
     }
 
     public var body: some View {
-        VStack(alignment: .leading, spacing: .spacingL) {
+        VStack(alignment: .leading, spacing: Warp.Spacing.spacing300) {
             ForEach(models) { model in
                 FrontPageTransactionView(model: model)
             }
@@ -42,6 +43,6 @@ struct FrontPageTransactionListView_Previews: PreviewProvider {
                 )
             ]
         )
-        .padding(.spacingM)
+        .padding(Warp.Spacing.spacing200)
     }
 }

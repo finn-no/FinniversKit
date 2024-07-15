@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 internal class ToastButton: UIButton {
 
@@ -32,19 +33,19 @@ internal class ToastButton: UIButton {
 
         switch buttonStyle {
         case .normal:
-            setTitleColor(.textAction, for: .normal)
+            setTitleColor(.textLink, for: .normal)
         case .promoted:
-            setTitleColor(.textToast, for: .normal)
-            contentEdgeInsets = UIEdgeInsets(vertical: .spacingS, horizontal: .spacingM)
-            layer.borderColor = .white
+            setTitleColor(.textInverted, for: .normal)
+            contentEdgeInsets = UIEdgeInsets(vertical: Warp.Spacing.spacing100, horizontal: Warp.Spacing.spacing200)
+            layer.borderColor = UIColor.clear.cgColor
             layer.borderWidth = 2
         }
 
         switch (toastStyle, buttonStyle) {
         case (.errorButton, .promoted):
-            backgroundColor = .red400
+            backgroundColor = .backgroundNegative
         case (.successButton, .promoted):
-            backgroundColor = .accentPea
+            backgroundColor = .backgroundPositive
         default: break
         }
     }

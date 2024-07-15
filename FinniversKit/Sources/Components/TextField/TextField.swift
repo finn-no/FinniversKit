@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 // MARK: - TextFieldDelegate
 
@@ -78,7 +79,7 @@ public class TextField: UIView {
     private lazy var clearButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: clearTextIcon.size.width, height: clearTextIcon.size.height))
         button.setImage(clearTextIcon, for: .normal)
-        button.imageView?.tintColor = .textSecondary //DARK
+        button.imageView?.tintColor = .textSubtle //DARK
         button.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
         return button
     }()
@@ -86,7 +87,7 @@ public class TextField: UIView {
     private lazy var showPasswordButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: eyeImage.size.width, height: eyeImage.size.width))
         button.setImage(eyeImage, for: .normal)
-        button.imageView?.tintColor = .textSecondary //DARK
+        button.imageView?.tintColor = .textSubtle //DARK
         button.addTarget(self, action: #selector(showHidePassword), for: .touchUpInside)
         return button
     }()
@@ -94,21 +95,21 @@ public class TextField: UIView {
     private lazy var multilineDisclosureButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: eyeImage.size.width, height: eyeImage.size.width))
         button.setImage(multilineDisclosureIcon, for: .normal)
-        button.imageView?.tintColor = .textSecondary //DARK
+        button.imageView?.tintColor = .textSubtle //DARK
         button.addTarget(self, action: #selector(multilineDisclusureTapped), for: .touchUpInside)
         return button
     }()
 
     private lazy var textFieldBackgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = .bgSecondary
+        view.backgroundColor = .backgroundInfoSubtle
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     private lazy var underline: UIView = {
         let view = UIView()
-        view.backgroundColor = .textSecondary //DARK
+        view.backgroundColor = .textSubtle //DARK
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -131,8 +132,8 @@ public class TextField: UIView {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont.body
-        textField.textColor = .textPrimary
-        textField.tintColor = .accentSecondaryBlue //DARK
+        textField.textColor = .text
+        textField.tintColor = .icon
         textField.delegate = self
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
@@ -271,23 +272,23 @@ public class TextField: UIView {
             typeLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             typeLabel.topAnchor.constraint(equalTo: topAnchor),
 
-            textFieldBackgroundView.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: .spacingXS),
+            textFieldBackgroundView.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: Warp.Spacing.spacing50),
             textFieldBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
             textFieldBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            textField.topAnchor.constraint(equalTo: textFieldBackgroundView.topAnchor, constant: .spacingS + .spacingXS),
-            textField.leadingAnchor.constraint(equalTo: textFieldBackgroundView.leadingAnchor, constant: .spacingS),
-            textField.trailingAnchor.constraint(equalTo: textFieldBackgroundView.trailingAnchor, constant: -.spacingS),
-            textField.bottomAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: -.spacingS + -.spacingXS),
+            textField.topAnchor.constraint(equalTo: textFieldBackgroundView.topAnchor, constant: Warp.Spacing.spacing100 + Warp.Spacing.spacing50),
+            textField.leadingAnchor.constraint(equalTo: textFieldBackgroundView.leadingAnchor, constant: Warp.Spacing.spacing100),
+            textField.trailingAnchor.constraint(equalTo: textFieldBackgroundView.trailingAnchor, constant: -Warp.Spacing.spacing100),
+            textField.bottomAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: -Warp.Spacing.spacing100 + -Warp.Spacing.spacing50),
 
             underline.leadingAnchor.constraint(equalTo: textFieldBackgroundView.leadingAnchor),
             underline.trailingAnchor.constraint(equalTo: textFieldBackgroundView.trailingAnchor),
             underline.bottomAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor),
 
-            errorIconImageView.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: .spacingXS),
+            errorIconImageView.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: Warp.Spacing.spacing50),
             errorIconImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
 
-            helpTextLabel.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: .spacingXS),
+            helpTextLabel.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: Warp.Spacing.spacing50),
             helpTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             helpTextLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
@@ -348,10 +349,10 @@ public class TextField: UIView {
         sender.isSelected = !sender.isSelected
 
         if sender.isSelected {
-            sender.imageView?.tintColor = .accentSecondaryBlue //DARK
+            sender.imageView?.tintColor = .iconPrimary
             textField.isSecureTextEntry = false
         } else {
-            sender.imageView?.tintColor = .textSecondary //DARK
+            sender.imageView?.tintColor = .icon
             textField.isSecureTextEntry = true
         }
 
@@ -443,7 +444,7 @@ public class TextField: UIView {
 
         if isHelpTextForErrors() {
             if shouldDisplayErrorHelpText() {
-                helpTextLabelLeadingConstraint?.constant = errorIconImageView.frame.size.width + .spacingXS
+                helpTextLabelLeadingConstraint?.constant = errorIconImageView.frame.size.width + Warp.Spacing.spacing50
             } else {
                 helpTextLabelLeadingConstraint?.constant = 0.0
             }

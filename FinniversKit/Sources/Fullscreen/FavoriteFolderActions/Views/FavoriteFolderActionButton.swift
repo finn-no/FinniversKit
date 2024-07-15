@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 final class FavoriteFolderActionButton: UIButton {
     let action: FavoriteFolderAction
@@ -30,7 +31,7 @@ final class FavoriteFolderActionButton: UIButton {
 
         titleLabel?.font = .bodyStrong
         setTitleColor(tintColor, for: .normal)
-        setTitleColor(.btnDisabled, for: .disabled)
+        setTitleColor(.backgroundDisabled, for: .disabled)
         setTitle(title, for: .normal)
 
         imageView?.tintColor = tintColor
@@ -62,7 +63,7 @@ final class FavoriteFolderActionButton: UIButton {
 
     override var isEnabled: Bool {
         didSet {
-            imageView?.tintColor = isEnabled ? enabledTintColor : .btnDisabled
+            imageView?.tintColor = isEnabled ? enabledTintColor : .backgroundDisabled
         }
     }
 
@@ -72,10 +73,10 @@ final class FavoriteFolderActionButton: UIButton {
         guard let imageView = imageView, let titleLabel = titleLabel else { return }
 
         imageView.frame.size = CGSize(width: 24, height: 24)
-        imageView.frame.origin.x = .spacingM
+        imageView.frame.origin.x = Warp.Spacing.spacing200
 
-        titleLabel.frame.origin.x = imageView.frame.maxX + .spacingM
-        titleLabel.frame.size.width = bounds.width - titleLabel.frame.origin.x - .spacingM
+        titleLabel.frame.origin.x = imageView.frame.maxX + Warp.Spacing.spacing200
+        titleLabel.frame.size.width = bounds.width - titleLabel.frame.origin.x - Warp.Spacing.spacing200
 
         let separatorHeight = 1 / UIScreen.main.scale
         separatorView.frame.origin = CGPoint(x: titleLabel.frame.minX, y: bounds.height - separatorHeight)
@@ -85,6 +86,6 @@ final class FavoriteFolderActionButton: UIButton {
     // MARK: - Private
 
     private func updateBackground() {
-        backgroundColor = (isHighlighted || isSelected) ? .defaultCellSelectedBackgroundColor : .bgPrimary
+        backgroundColor = (isHighlighted || isSelected) ? .backgroundActive : .background
     }
 }

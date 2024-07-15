@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Warp
 
 public extension RibbonView {
     enum Style: Hashable {
@@ -15,19 +16,19 @@ public extension RibbonView {
 
         var color: UIColor {
             switch self {
-            case .default: return .bgSecondary
-            case .success: return .bgSuccess
-            case .warning: return .bgAlert
-            case .error: return .bgCritical
-            case .disabled: return .decorationSubtle
-            case .sponsored: return .accentToothpaste
+            case .default: return Warp.UIColor.badgeNeutralBackground
+            case .success: return Warp.UIColor.badgePositiveBackground
+            case .warning: return Warp.UIColor.badgeWarningBackground
+            case .error: return Warp.UIColor.badgeNegativeBackground
+            case .disabled: return Warp.UIColor.badgeDisabledBackground
+            case .sponsored: return Warp.UIColor.badgeSponsoredBackground
             }
         }
 
         var textColor: UIColor {
             switch self {
-            case .default, .disabled: return .textPrimary
-            default: return .textToast
+            case .default, .disabled: return .text
+            default: return .text
             }
         }
     }

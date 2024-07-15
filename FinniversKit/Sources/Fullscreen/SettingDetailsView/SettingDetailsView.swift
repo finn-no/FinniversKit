@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 // MARK: - Model
 public protocol SettingDetailsViewModel {
@@ -46,7 +47,7 @@ public class SettingDetailsView: UIView {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .title3Strong, withAutoLayout: true)
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -54,7 +55,7 @@ public class SettingDetailsView: UIView {
 
     private lazy var textLabel: Label = {
         let label = Label(style: .bodyRegular, withAutoLayout: true)
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -87,7 +88,7 @@ public class SettingDetailsView: UIView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         setup()
     }
 
@@ -142,11 +143,11 @@ extension SettingDetailsView: UIScrollViewDelegate {
 // MARK: - Private methods
 private extension SettingDetailsView {
     var scrollViewBottomInset: CGFloat {
-        bottomInset + 44 + .spacingXL
+        bottomInset + 44 + Warp.Spacing.spacing400
     }
 
     var bottomInset: CGFloat {
-        UIView.windowSafeAreaInsets.bottom + .spacingM
+        UIView.windowSafeAreaInsets.bottom + Warp.Spacing.spacing200
     }
 
     @objc func secondaryButtonTapped() {
@@ -181,18 +182,18 @@ private extension SettingDetailsView {
         scrollView.fillInSuperview()
 
         NSLayoutConstraint.activate([
-            iconView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: .spacingS + .spacingM),
+            iconView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Warp.Spacing.spacing100 + Warp.Spacing.spacing200),
             iconView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
 
-            titleLabel.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: .spacingM),
-            titleLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .spacingM),
-            titleLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -.spacingM),
-            titleLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.spacingXL),
+            titleLabel.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: Warp.Spacing.spacing200),
+            titleLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            titleLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -Warp.Spacing.spacing200),
+            titleLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -Warp.Spacing.spacing400),
 
-            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
-            textLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .spacingM),
-            textLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -.spacingM),
-            textLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.spacingXL),
+            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing100),
+            textLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            textLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -Warp.Spacing.spacing200),
+            textLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -Warp.Spacing.spacing400),
             textLabel.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -44),
 
             secondaryButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
@@ -200,11 +201,11 @@ private extension SettingDetailsView {
 
             shadowView.leadingAnchor.constraint(equalTo: leadingAnchor),
             shadowView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            shadowView.topAnchor.constraint(equalTo: primaryButton.topAnchor, constant: -.spacingM),
+            shadowView.topAnchor.constraint(equalTo: primaryButton.topAnchor, constant: -Warp.Spacing.spacing200),
             shadowView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            primaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            primaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             primaryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -bottomInset),
         ])
     }

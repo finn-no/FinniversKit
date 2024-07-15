@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol FavoriteFolderShareToggleViewDelegate: AnyObject {
     func favoriteFolderShareToggleView(_ view: FavoriteFolderShareToggleView, didChangeValueFor switchControl: UISwitch)
@@ -19,8 +20,8 @@ final class FavoriteFolderShareToggleView: UIView {
 
     var isEnabled = true {
         didSet {
-            titleLabel.textColor = isEnabled ? .textPrimary : .textDisabled
-            iconImageView.tintColor = isEnabled ? .iconPrimary : .decorationSubtle
+            titleLabel.textColor = isEnabled ? .text : .textDisabled
+            iconImageView.tintColor = isEnabled ? .iconPrimary : .backgroundDisabled
             switchControl.isEnabled = isEnabled
         }
     }
@@ -37,7 +38,7 @@ final class FavoriteFolderShareToggleView: UIView {
 
     private lazy var switchControl: UISwitch = {
         let control = UISwitch(withAutoLayout: true)
-        control.onTintColor = .nmpBrandControlSelected
+        control.onTintColor = .backgroundPrimary
         control.addTarget(self, action: #selector(handleSwitchValueChange), for: .valueChanged)
         return control
     }()
@@ -69,7 +70,7 @@ final class FavoriteFolderShareToggleView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         addSubview(iconImageView)
         addSubview(titleLabel)
@@ -78,16 +79,16 @@ final class FavoriteFolderShareToggleView: UIView {
 
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             iconImageView.widthAnchor.constraint(equalToConstant: FavoriteActionCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .spacingM),
-            titleLabel.trailingAnchor.constraint(equalTo: switchControl.leadingAnchor, constant: -.spacingM),
+            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: Warp.Spacing.spacing200),
+            titleLabel.trailingAnchor.constraint(equalTo: switchControl.leadingAnchor, constant: -Warp.Spacing.spacing200),
 
             switchControl.centerYAnchor.constraint(equalTo: centerYAnchor),
-            switchControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            switchControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
             separatorView.bottomAnchor.constraint(equalTo: bottomAnchor),
             separatorView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),

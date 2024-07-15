@@ -1,4 +1,5 @@
 import SwiftUI
+import Warp
 
 public struct ResultSwiftUIView: View {
     public let image: Image?
@@ -35,28 +36,28 @@ public struct ResultSwiftUIView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: imageSize, height: imageSize)
                     .foregroundColor(imageForegroundColor)
-                    .padding(.bottom, .spacingS)
+                    .padding(.bottom, Warp.Spacing.spacing100)
             }
             Text(title)
                 .finnFont(.title3Strong)
-                .foregroundColor(.textPrimary)
+                .foregroundColor(.text)
                 .multilineTextAlignment(.center)
-                .padding(.bottom, .spacingXS)
+                .padding(.bottom, Warp.Spacing.spacing50)
             if let text {
                 Text(text)
                     .finnFont(.body)
-                    .foregroundColor(.textPrimary)
+                    .foregroundColor(.text)
                     .multilineTextAlignment(.center)
-                    .padding(.bottom, .spacingS)
+                    .padding(.bottom, Warp.Spacing.spacing100)
             }
             if let buttonTitle, let buttonAction {
                 SwiftUI.Button(buttonTitle, action: buttonAction)
                     .buttonStyle(CallToAction(size: .small, fullWidth: false))
             }
         }
-        .padding(.horizontal, .spacingXL)
+        .padding(.horizontal, Warp.Spacing.spacing400)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.bgPrimary)
+        .background(Color.background)
     }
 }
 

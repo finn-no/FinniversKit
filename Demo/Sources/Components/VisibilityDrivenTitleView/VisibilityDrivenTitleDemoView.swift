@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class VisibilityDrivenTitleDemoView: UIView, Demoable {
 
@@ -38,20 +39,20 @@ class VisibilityDrivenTitleDemoView: UIView, Demoable {
     // MARK: - Private methods
 
     private func setup() {
-        titleView.layer.borderColor = .textPrimary
+        titleView.layer.borderColor = .text
         titleView.layer.borderWidth = 0.5
 
         addSubview(titleView)
         addSubview(visibilitySwitch)
 
         NSLayoutConstraint.activate([
-            titleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            titleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-            titleView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXL),
+            titleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            titleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
+            titleView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing400),
             titleView.heightAnchor.constraint(equalToConstant: 50),
 
             visibilitySwitch.centerXAnchor.constraint(equalTo: centerXAnchor),
-            visibilitySwitch.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: .spacingXL)
+            visibilitySwitch.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: Warp.Spacing.spacing400)
         ])
     }
 

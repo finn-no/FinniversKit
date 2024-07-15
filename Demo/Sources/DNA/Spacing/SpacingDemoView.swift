@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class SpacingDemoView: UIView, Demoable {
     override init(frame: CGRect) {
@@ -18,8 +19,8 @@ class SpacingDemoView: UIView, Demoable {
         let label = Label(style: .bodyStrong)
         label.text = text
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .gray700
-        label.textColor = .white
+        label.backgroundColor = .surfaceSunken
+        label.textColor = .text
         label.textAlignment = .center
         return label
     }
@@ -47,33 +48,34 @@ class SpacingDemoView: UIView, Demoable {
         addSubview(spacingXXLView)
 
         NSLayoutConstraint.activate([
-            spacingXXSView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXXL),
-            spacingXXSView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXXS),
-            spacingXXSView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXXS),
+            spacingXXSView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing800),
+            spacingXXSView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing25),
+            spacingXXSView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing25),
 
-            spacingXSView.topAnchor.constraint(equalTo: spacingXXSView.bottomAnchor, constant: .spacingXXL),
-            spacingXSView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXS),
-            spacingXSView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXS),
+            spacingXSView.topAnchor.constraint(equalTo: spacingXXSView.bottomAnchor, constant: Warp.Spacing.spacing800),
+            spacingXSView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing50),
+            spacingXSView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing50),
 
-            spacingSView.topAnchor.constraint(equalTo: spacingXSView.bottomAnchor, constant: .spacingXXL),
-            spacingSView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
-            spacingSView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            spacingSView.topAnchor.constraint(equalTo: spacingXSView.bottomAnchor, constant: Warp.Spacing.spacing800),
+            spacingSView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
+            spacingSView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
 
-            spacingMView.topAnchor.constraint(equalTo: spacingSView.bottomAnchor, constant: .spacingXXL),
-            spacingMView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            spacingMView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            spacingMView.topAnchor.constraint(equalTo: spacingSView.bottomAnchor, constant: Warp.Spacing.spacing800),
+            spacingMView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            spacingMView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
-            spacingLView.topAnchor.constraint(equalTo: spacingMView.bottomAnchor, constant: .spacingXXL),
-            spacingLView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingL),
-            spacingLView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingL),
+            spacingLView.topAnchor.constraint(equalTo: spacingMView.bottomAnchor, constant: Warp.Spacing.spacing800),
+            spacingLView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing300),
+            spacingLView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing300),
 
-            spacingXLView.topAnchor.constraint(equalTo: spacingLView.bottomAnchor, constant: .spacingXXL),
-            spacingXLView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
-            spacingXLView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
+            spacingXLView.topAnchor.constraint(equalTo: spacingLView.bottomAnchor, constant: Warp.Spacing.spacing800),
+            spacingXLView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing400),
+            spacingXLView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing400),
 
-            spacingXXLView.topAnchor.constraint(equalTo: spacingXLView.bottomAnchor, constant: .spacingXXL),
-            spacingXXLView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXXL),
-            spacingXXLView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXXL)
+            spacingXXLView.topAnchor.constraint(equalTo: spacingXLView.bottomAnchor, constant: Warp.Spacing.spacing800),
+            spacingXXLView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing800),
+            spacingXXLView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing800)
         ])
+        backgroundColor = .background
     }
 }

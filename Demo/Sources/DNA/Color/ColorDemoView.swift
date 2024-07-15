@@ -27,6 +27,7 @@ class ColorDemoView: UIView, Demoable {
 
     lazy var items: [ColorItem] = {
         return [
+            // TODO: Should we change this to Warp tokens?
             ColorItem(color: .accentPea, title: "accentPea"),
             ColorItem(color: .accentPrimaryBlue, title: "accentPrimaryBlue"),
             ColorItem(color: .accentSecondaryBlue, title: "accentSecondaryBlue"),

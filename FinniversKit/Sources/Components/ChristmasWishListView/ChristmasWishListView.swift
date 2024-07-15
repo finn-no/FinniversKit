@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Warp
 
 public protocol ChristmasWishListViewDelegate: AnyObject {
     func christmasWishListViewDidSelectReadMore(_ view: ChristmasWishListView)
@@ -64,8 +65,8 @@ public class ChristmasWishListView: UIView {
     private lazy var stackedButtons: UIView = {
         let view = UIView(withAutoLayout: true)
 
-        let margin: CGFloat = .spacingM * 1.5
-        view.layoutMargins = UIEdgeInsets(top: .spacingS, leading: margin, bottom: margin, trailing: margin)
+        let margin: CGFloat = Warp.Spacing.spacing200 * 1.5
+        view.layoutMargins = UIEdgeInsets(top: Warp.Spacing.spacing100, leading: margin, bottom: margin, trailing: margin)
 
         view.addSubview(firstPageButton)
         view.addSubview(secondPageButton)

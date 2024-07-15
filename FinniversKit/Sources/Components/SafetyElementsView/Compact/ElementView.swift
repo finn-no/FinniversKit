@@ -1,6 +1,7 @@
 //
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
+import Warp
 
 extension SafetyElementsView {
     class ElementView: UIView {
@@ -15,7 +16,7 @@ extension SafetyElementsView {
             let stackView = UIStackView(withAutoLayout: true)
             stackView.axis = .horizontal
             stackView.alignment = .center
-            stackView.spacing = .spacingS
+            stackView.spacing = Warp.Spacing.spacing100
             return stackView
         }()
 
@@ -23,7 +24,7 @@ extension SafetyElementsView {
             let stackView = UIStackView(withAutoLayout: true)
             stackView.axis = .vertical
             stackView.alignment = .leading
-            stackView.spacing = .spacingS
+            stackView.spacing = Warp.Spacing.spacing100
             stackView.distribution = .equalSpacing
             return stackView
         }()
@@ -37,7 +38,7 @@ extension SafetyElementsView {
         private lazy var iconImageView: UIImageView = {
             let imageView = UIImageView(withAutoLayout: true)
             imageView.contentMode = .scaleAspectFit
-            imageView.tintColor = .inactiveSafetyIconTint
+            imageView.tintColor = .icon
             imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
             return imageView
         }()
@@ -65,7 +66,7 @@ extension SafetyElementsView {
         func configure(with viewModel: SafetyElementViewModel, isLastElement: Bool) {
             iconImageView.image = viewModel.icon.withRenderingMode(.alwaysTemplate)
             titleLabel.text = viewModel.title
-            layoutMargins.bottom = isLastElement ? 0 : .spacingM
+            layoutMargins.bottom = isLastElement ? 0 : Warp.Spacing.spacing200
             contentView.configure(with: viewModel)
         }
 
@@ -81,7 +82,7 @@ extension SafetyElementsView {
             addSubview(outerStackView)
             outerStackView.fillInSuperviewLayoutMargins()
 
-            layoutMargins = UIEdgeInsets(top: .spacingM)
+            layoutMargins = UIEdgeInsets(top: Warp.Spacing.spacing200)
         }
     }
 }

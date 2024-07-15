@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol NotificationsListViewCellDataSource: AnyObject {
     func notificationsListViewCell(_ notificationsListViewCell: NotificationsListViewCell, loadImageForModel model: NotificationsListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
@@ -20,7 +21,7 @@ public class NotificationsListViewCell: UITableViewCell {
     private static let cornerRadius: CGFloat = 2.0
     private static let imageSize: CGFloat = 74.0
 
-    private let loadingColor: UIColor = .bgTertiary
+    private let loadingColor: UIColor = .backgroundSubtle
 
     private lazy var adImageView: UIImageView = {
         let imageView = UIImageView()
@@ -33,7 +34,7 @@ public class NotificationsListViewCell: UITableViewCell {
 
     private lazy var detailLabel: Label = {
         let label = Label(style: .detail)
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
@@ -49,7 +50,7 @@ public class NotificationsListViewCell: UITableViewCell {
 
     private lazy var priceLabel: Label = {
         let label = Label(style: .detail)
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
@@ -75,25 +76,25 @@ public class NotificationsListViewCell: UITableViewCell {
         addSubview(titleLabel)
         addSubview(priceLabel)
 
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         NSLayoutConstraint.activate([
-            adImageView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
-            adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            adImageView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
+            adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
             adImageView.heightAnchor.constraint(equalToConstant: NotificationsListViewCell.imageSize),
             adImageView.widthAnchor.constraint(equalToConstant: NotificationsListViewCell.imageSize),
 
-            detailLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
-            detailLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .spacingS),
-            detailLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            detailLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
+            detailLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: Warp.Spacing.spacing100),
+            detailLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
 
-            titleLabel.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .spacingXS),
-            titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .spacingS),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            titleLabel.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: Warp.Spacing.spacing50),
+            titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: Warp.Spacing.spacing100),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
 
-            priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXS),
-            priceLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .spacingS),
-            priceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
+            priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing50),
+            priceLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: Warp.Spacing.spacing100),
+            priceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100)
         ])
     }
 

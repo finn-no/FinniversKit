@@ -3,10 +3,11 @@
 //
 
 import UIKit
+import Warp
 
 final class FavoriteActionCell: UITableViewCell {
     static let iconSize: CGFloat = 24
-    static let separatorLeadingInset = .spacingM * 2 + FavoriteActionCell.iconSize
+    static let separatorLeadingInset = Warp.Spacing.spacing200 * 2 + FavoriteActionCell.iconSize
 
     private lazy var titleLabel = FavoriteActionCell.makeTitleLabel()
 
@@ -30,7 +31,7 @@ final class FavoriteActionCell: UITableViewCell {
 
     // MARK: - Setup
 
-    func configure(withTitle title: String, icon: ImageAsset, tintColor: UIColor = .textPrimary) {
+    func configure(withTitle title: String, icon: ImageAsset, tintColor: UIColor = .text) {
         titleLabel.text = title
         titleLabel.textColor = tintColor
         iconImageView.image = UIImage(named: icon).withRenderingMode(.alwaysTemplate)
@@ -39,7 +40,7 @@ final class FavoriteActionCell: UITableViewCell {
 
     private func setup() {
         isAccessibilityElement = true
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         setDefaultSelectedBackgound()
 
         contentView.addSubview(iconImageView)
@@ -47,13 +48,13 @@ final class FavoriteActionCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
             iconImageView.widthAnchor.constraint(equalToConstant: FavoriteActionCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .spacingM),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM)
+            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: Warp.Spacing.spacing200),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200)
         ])
     }
 }
@@ -64,7 +65,7 @@ extension FavoriteActionCell {
     static func makeTitleLabel() -> UILabel {
         let label = UILabel(withAutoLayout: true)
         label.font = .bodyStrong
-        label.textColor = .textPrimary
+        label.textColor = .text
         return label
     }
 }

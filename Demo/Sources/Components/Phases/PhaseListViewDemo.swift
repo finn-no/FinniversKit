@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 public class PhaseListDemoView: UIView, Demoable {
     private lazy var phaseListView = PhaseListView(withAutoLayout: true)
@@ -32,8 +33,8 @@ public class PhaseListDemoView: UIView, Demoable {
         ])
 
         NSLayoutConstraint.activate([
-            phaseListView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            phaseListView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            phaseListView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            phaseListView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             phaseListView.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
     }

@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol CollapsibleContentViewDelegate: AnyObject {
     func collapsibleContentViewDidTapToggleContent(_ view: CollapsibleContentView)
@@ -45,7 +46,7 @@ public class CollapsibleContentView: UIView {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = indicatorImage
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .iconSecondary
+        imageView.tintColor = .icon
         imageView.isUserInteractionEnabled = true
         imageView.setContentHuggingPriority(.required, for: .horizontal)
         imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -146,7 +147,7 @@ public class CollapsibleContentView: UIView {
             titleLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
 
             collapseIndicatorImageView.topAnchor.constraint(equalTo: headerView.topAnchor),
-            collapseIndicatorImageView.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: .spacingS),
+            collapseIndicatorImageView.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: Warp.Spacing.spacing100),
             collapseIndicatorImageView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             collapseIndicatorImageView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
             compactHeightConstraint,

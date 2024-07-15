@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public class FavoriteAdsListEmptyView: UIView {
 
@@ -23,7 +24,7 @@ public class FavoriteAdsListEmptyView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.textAlignment = .center
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.font = .title3Strong
         label.numberOfLines = 0
         return label
@@ -32,7 +33,7 @@ public class FavoriteAdsListEmptyView: UIView {
     private lazy var bodyLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.textAlignment = .center
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.font = .bodyStrong
         label.numberOfLines = 0
         return label
@@ -50,13 +51,13 @@ public class FavoriteAdsListEmptyView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         stackView.addArrangedSubview(iconImageView)
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(bodyLabel)
 
-        stackView.setCustomSpacing(.spacingM, after: iconImageView)
+        stackView.setCustomSpacing(Warp.Spacing.spacing200, after: iconImageView)
 
         addSubview(stackView)
 
@@ -64,9 +65,9 @@ public class FavoriteAdsListEmptyView: UIView {
             iconImageView.widthAnchor.constraint(equalToConstant: 48),
             iconImageView.heightAnchor.constraint(equalToConstant: 48),
 
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXXL * 2),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing800 * 2),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing400),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing400),
         ])
     }
 

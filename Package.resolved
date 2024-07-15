@@ -3,10 +3,10 @@
     {
       "identity" : "warp-ios",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/warp-ds/warp-ios.git",
+      "location" : "https://github.com/warp-ds/warp-ios",
       "state" : {
-        "revision" : "eff9401d45e51115e3902cee9a01466fcc9fb28c",
-        "version" : "0.0.7"
+        "branch" : "nmp-app",
+        "revision" : "10d1d851fd303bceaa68dd830094bde374e3ad32"
       }
     }
   ],

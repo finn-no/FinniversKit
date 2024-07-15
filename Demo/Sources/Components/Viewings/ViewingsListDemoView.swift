@@ -1,5 +1,6 @@
 import FinniversKit
 import DemoKit
+import Warp
 
 class ViewingsListDemoView: UIView, Demoable {
 
@@ -28,8 +29,8 @@ class ViewingsListDemoView: UIView, Demoable {
         viewingsListView.configure(with: viewModel)
 
         NSLayoutConstraint.activate([
-            viewingsListView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
-            viewingsListView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            viewingsListView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
+            viewingsListView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
             viewingsListView.centerXAnchor.constraint(equalTo: centerXAnchor),
             viewingsListView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])

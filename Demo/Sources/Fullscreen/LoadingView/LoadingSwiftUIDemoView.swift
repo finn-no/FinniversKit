@@ -1,6 +1,7 @@
 import FinniversKit
 import SwiftUI
 import DemoKit
+import Warp
 
 private struct LoadingDemoRow: View {
     let title: String
@@ -27,7 +28,7 @@ struct LoadingSwiftUIDemoView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: .spacingM) {
+            VStack(alignment: .leading, spacing: Warp.Spacing.spacing200) {
                 Text(isActive ? "Active" : "Not active")
 
                 Toggle(isOn: $isFullscreen) {
@@ -119,7 +120,7 @@ struct LoadingSwiftUIDemoView: View {
                     }
                 }
             }
-            .padding(.spacingM)
+            .padding(Warp.Spacing.spacing200)
         }
         .frame(maxWidth: .infinity)
         .loadingOverlay(isActive: $isActive, displayMode: isFullscreen ? .fullscreen : .boxed, message: message, showSuccess: showSuccess, showAfter: showDelay, hideAfter: hideDelay)

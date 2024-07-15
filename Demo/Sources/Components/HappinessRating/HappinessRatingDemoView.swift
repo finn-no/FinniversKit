@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class HappinessRatingDemoView: UIView, Demoable {
 
@@ -35,8 +36,8 @@ class HappinessRatingDemoView: UIView, Demoable {
 
         NSLayoutConstraint.activate([
             happinessRatingView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            happinessRatingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
-            happinessRatingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL)
+            happinessRatingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing400),
+            happinessRatingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing400)
         ])
     }
 }

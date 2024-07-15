@@ -13,7 +13,7 @@ final class SubtitleView: UIView {
         let label = UILabel(withAutoLayout: true)
         label.font = .caption
         label.textAlignment = .center
-        label.textColor = .textPrimary
+        label.textColor = .text
         return label
     }()
 
@@ -21,9 +21,9 @@ final class SubtitleView: UIView {
         let button = UIButton(withAutoLayout: true)
         button.isHidden = true
         button.titleLabel?.font = .captionStrong
-        button.setTitleColor(.textAction, for: .normal)
-        button.setTitleColor(.linkButtonHighlightedTextColor, for: .highlighted)
-        button.setTitleColor(.linkButtonHighlightedTextColor, for: .selected)
+        button.setTitleColor(.textLink, for: .normal)
+        button.setTitleColor(.textLink, for: .highlighted)
+        button.setTitleColor(.textLink, for: .selected)
         button.addTarget(self, action: #selector(handleShareButtonTap), for: .touchUpInside)
         return button
     }()

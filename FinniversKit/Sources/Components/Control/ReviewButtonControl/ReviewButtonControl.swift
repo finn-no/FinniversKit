@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol ReviewButtonControlDelegate: AnyObject {
     func reviewButtonControl(_ reviewButtonControl: ReviewButtonControl, giveReviewWasTapped startReview: Bool)
@@ -26,7 +27,7 @@ public final class ReviewButtonControl: UIControl {
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .clear
-        imageView.tintColor = .iconTertiary
+        imageView.tintColor = .iconInverted
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -35,7 +36,7 @@ public final class ReviewButtonControl: UIControl {
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .textTertiary
+        label.textColor = .textInverted
         label.textAlignment = .center
         return label
     }()
@@ -71,7 +72,7 @@ public final class ReviewButtonControl: UIControl {
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = 8
-        backgroundColor = .btnPrimary
+        backgroundColor = .backgroundPrimary
 
         addSubview(titleLabel)
         addSubview(imageView)
@@ -83,7 +84,7 @@ public final class ReviewButtonControl: UIControl {
 
             imageView.topAnchor.constraint(equalTo: titleLabel.topAnchor),
             imageView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            imageView.trailingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: -.spacingXS)
+            imageView.trailingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: -Warp.Spacing.spacing50)
         ])
     }
 }

@@ -84,18 +84,18 @@ public extension InfoboxView {
             case .normal(let backgroundColor, _):
                 return backgroundColor
             case .warning:
-                return .yellow100
+                return .backgroundWarningSubtle
             }
         }
 
         var textColor: UIColor {
             switch self {
             case .small:
-                return .textPrimary
+                return .text
             case .normal:
-                return .textPrimary
+                return .text
             case .warning:
-                return UIColor(hex: "#1B1B24")
+                return .text
             }
         }
 

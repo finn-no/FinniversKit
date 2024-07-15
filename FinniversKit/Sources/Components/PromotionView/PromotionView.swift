@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public protocol PromotionViewDelegate: AnyObject {
     func promotionView(_ promotionView: PromotionView, didSelect action: PromotionView.Action)
@@ -86,22 +87,22 @@ public class PromotionView: UIView {
     private lazy var backgroundImageContainer = UIView(withAutoLayout: true)
 
     private lazy var verticalStackView: UIStackView = {
-        let stackView = UIStackView(axis: .vertical, spacing: .spacingS + .spacingXS, withAutoLayout: true)
+        let stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100 + Warp.Spacing.spacing50, withAutoLayout: true)
         stackView.distribution = .fillProportionally
         stackView.alignment = .leading
         return stackView
     }()
 
     private lazy var compactDynamicConstraints: [NSLayoutConstraint] = [
-        imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor, constant: -.spacingXXL),
+        imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor, constant: -Warp.Spacing.spacing800),
         imageView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
-        imageView.leadingAnchor.constraint(equalTo: backgroundImageContainer.leadingAnchor, constant: .spacingM),
+        imageView.leadingAnchor.constraint(equalTo: backgroundImageContainer.leadingAnchor, constant: Warp.Spacing.spacing200),
         imageView.widthAnchor.constraint(lessThanOrEqualTo: imageView.heightAnchor, multiplier: viewModel.imageRatio),
     ]
     private lazy var regularDynamicConstraint: [NSLayoutConstraint] = [
         imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor),
         imageView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
-        imageView.leadingAnchor.constraint(equalTo: backgroundImageContainer.leadingAnchor, constant: .spacingM),
+        imageView.leadingAnchor.constraint(equalTo: backgroundImageContainer.leadingAnchor, constant: Warp.Spacing.spacing200),
         imageView.widthAnchor.constraint(lessThanOrEqualTo: imageView.heightAnchor, multiplier: viewModel.imageRatio),
     ]
     private var viewModel: PromotionViewModel
@@ -150,7 +151,7 @@ public class PromotionView: UIView {
 
         switch viewModel.imageAlignment {
         case .fullWidth:
-            imageView.fillInSuperview(insets: UIEdgeInsets(top: .spacingM, leading: .spacingS, bottom: -.spacingM, trailing: -.spacingS))
+            imageView.fillInSuperview(insets: UIEdgeInsets(top: Warp.Spacing.spacing200, leading: Warp.Spacing.spacing100, bottom: -Warp.Spacing.spacing200, trailing: -Warp.Spacing.spacing100))
         case .trailing:
             let imageRatio = viewModel.imageRatio
             NSLayoutConstraint.activate([
@@ -229,10 +230,10 @@ extension PromotionView {
             backgroundImageContainer.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
             backgroundImageContainer.widthAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 0.3),
 
-            verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
-            verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
-            verticalStackView.trailingAnchor.constraint(equalTo: imageContainer.leadingAnchor, constant: -.spacingM),
-            verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
+            verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: Warp.Spacing.spacing200),
+            verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            verticalStackView.trailingAnchor.constraint(equalTo: imageContainer.leadingAnchor, constant: -Warp.Spacing.spacing200),
+            verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -Warp.Spacing.spacing200),
             verticalStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6)
         ])
     }
@@ -254,16 +255,16 @@ extension PromotionView {
 
 private extension UIColor {
     static var shadowColor: UIColor {
-        return UIColor(hex: "475569")
+        return .black
     }
 
     static var bgColor: UIColor {
-        return .dynamicColor(defaultColor: .white, darkModeColor: .darkBgPrimaryProminent)
+        return .surfaceElevated200
     }
 }
 
 private extension Button.Style {
-    static var customStyle = Button.Style.default.overrideStyle(bodyColor: .bgColor, highlightedBodyColor: .bgSecondary)
+    static var customStyle = Button.Style.default.overrideStyle(bodyColor: .bgColor, highlightedBodyColor: .backgroundInfoSubtle)
 }
 
 private extension Button {

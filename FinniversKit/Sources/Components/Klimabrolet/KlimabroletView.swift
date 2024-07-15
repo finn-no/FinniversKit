@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol KlimabroletViewDelegate: AnyObject {
     func klimabroletViewDidSelectReadMore(_ view: KlimabroletView)
@@ -23,7 +24,7 @@ public class KlimabroletView: UIView {
 
     private lazy var closeButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
-        button.tintColor = .bgPrimary
+        button.tintColor = .background
         button.setImage(UIImage(named: .cross), for: .normal)
         button.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         button.contentEdgeInsets = UIEdgeInsets(all: 6)
@@ -35,7 +36,7 @@ public class KlimabroletView: UIView {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
         scrollView.bounces = true
-        scrollView.contentInset = UIEdgeInsets(bottom: .spacingXL)
+        scrollView.contentInset = UIEdgeInsets(bottom: Warp.Spacing.spacing400)
         scrollView.delegate = self
         scrollView.delaysContentTouches = false
         return scrollView
@@ -84,7 +85,7 @@ public class KlimabroletView: UIView {
     // MARK: - Private methods
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         layer.cornerRadius = 20
         clipsToBounds = true
 
@@ -98,8 +99,8 @@ public class KlimabroletView: UIView {
         addSubview(closeButton)
 
         NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
-            closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
+            closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
 
             scrollView.topAnchor.constraint(equalTo: topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),

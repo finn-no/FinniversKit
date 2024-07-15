@@ -2,6 +2,8 @@
 //  Copyright © 2020 FINN.no AS. All rights reserved.
 //
 
+import Warp
+
 public class ConfettiView: UIView {
 
     // MARK: - Private properties
@@ -10,10 +12,10 @@ public class ConfettiView: UIView {
         .init(named: .confetti1),
         .init(named: .confetti2)
     ]
-
+    // ignore
     private let confettiColors: [UIColor] = [
-        .nmpBrandDecoration,
-        .nmpBrandColorSecondary,
+        Warp.UIToken.backgroundPrimary,
+        .nmpBrandColorSecondary, // TODO: What color?
         .green400,
         .red400
     ]

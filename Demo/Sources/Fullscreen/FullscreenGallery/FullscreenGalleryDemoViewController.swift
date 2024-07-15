@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 // MARK: - Helpers
 
@@ -40,10 +41,10 @@ private class DemoPreviewCell: UICollectionViewCell {
         contentView.addSubview(imageView)
 
         NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingS),
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingS),
-            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingS),
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing100),
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing100),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing100),
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Warp.Spacing.spacing100),
         ])
     }
 
@@ -173,7 +174,7 @@ class FullscreenGalleryDemoViewController: UIViewController, UICollectionViewDel
 
     private lazy var thumbnailSwitch: UISwitch = {
         let switchView = UISwitch(withAutoLayout: true)
-        switchView.onTintColor = .nmpBrandControlSelected
+        switchView.onTintColor = .backgroundPrimary
         switchView.isSelected = false
         return switchView
     }()
@@ -189,7 +190,7 @@ class FullscreenGalleryDemoViewController: UIViewController, UICollectionViewDel
 
     private lazy var simulateLoadingSwitch: UISwitch = {
         let switchView = UISwitch(withAutoLayout: true)
-        switchView.onTintColor = .nmpBrandControlSelected
+        switchView.onTintColor = .backgroundPrimary
         switchView.isSelected = false
         switchView.addTarget(self, action: #selector(loadSimulationSwitchToggled), for: .valueChanged)
         return switchView
@@ -227,26 +228,26 @@ class FullscreenGalleryDemoViewController: UIViewController, UICollectionViewDel
         view.addSubview(helpLabel)
 
         NSLayoutConstraint.activate([
-            collectionView.heightAnchor.constraint(equalToConstant: collectionCellHeight + .spacingXL),
+            collectionView.heightAnchor.constraint(equalToConstant: collectionCellHeight + Warp.Spacing.spacing400),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
-            thumbnailSwitch.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .spacingXL),
-            thumbnailSwitch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .spacingXL),
+            thumbnailSwitch.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: Warp.Spacing.spacing400),
+            thumbnailSwitch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Warp.Spacing.spacing400),
 
-            thumbnailLabel.leadingAnchor.constraint(equalTo: thumbnailSwitch.trailingAnchor, constant: .spacingM),
+            thumbnailLabel.leadingAnchor.constraint(equalTo: thumbnailSwitch.trailingAnchor, constant: Warp.Spacing.spacing200),
             thumbnailLabel.centerYAnchor.constraint(equalTo: thumbnailSwitch.centerYAnchor),
 
-            simulateLoadingSwitch.topAnchor.constraint(equalTo: thumbnailSwitch.bottomAnchor, constant: .spacingS),
-            simulateLoadingSwitch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .spacingXL),
+            simulateLoadingSwitch.topAnchor.constraint(equalTo: thumbnailSwitch.bottomAnchor, constant: Warp.Spacing.spacing100),
+            simulateLoadingSwitch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Warp.Spacing.spacing400),
 
-            simulateLoadingLabel.leadingAnchor.constraint(equalTo: simulateLoadingSwitch.trailingAnchor, constant: .spacingM),
+            simulateLoadingLabel.leadingAnchor.constraint(equalTo: simulateLoadingSwitch.trailingAnchor, constant: Warp.Spacing.spacing200),
             simulateLoadingLabel.centerYAnchor.constraint(equalTo: simulateLoadingSwitch.centerYAnchor),
 
-            helpLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .spacingM),
-            helpLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.spacingM),
-            helpLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: .spacingXL)
+            helpLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Warp.Spacing.spacing200),
+            helpLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Warp.Spacing.spacing200),
+            helpLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Warp.Spacing.spacing400)
         ])
     }
 

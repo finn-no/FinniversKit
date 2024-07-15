@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 final class PhaseView: UIView {
     private static let regularDotSize: CGFloat = 12
@@ -16,7 +17,7 @@ final class PhaseView: UIView {
 
     private lazy var textLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.numberOfLines = 0
         return label
     }()
@@ -41,14 +42,14 @@ final class PhaseView: UIView {
     func configure(with viewModel: PhaseViewModel) {
         let dotWidth = viewModel.isHighlighted ? PhaseView.highlightedDotSize : PhaseView.regularDotSize
 
-        dotView.backgroundColor = viewModel.isHighlighted ? .accentSecondaryBlue : .decorationSubtle
-        dotView.layer.borderColor = viewModel.isHighlighted ? .accentSecondaryBlue : nil
+        dotView.backgroundColor = viewModel.isHighlighted ? .backgroundPrimary : .border
+        dotView.layer.borderColor = viewModel.isHighlighted ? .borderPrimary : nil
         dotView.layer.borderWidth = viewModel.isHighlighted ? 3 : 0
         dotView.layer.cornerRadius = dotWidth / 2
         dotViewWidthConstraint.constant = dotWidth
 
         textLabel.attributedText = viewModel.attributedText
-        textLabelTopConstraint.constant = viewModel.isHighlighted ? -dotWidth / 2 : -.spacingS
+        textLabelTopConstraint.constant = viewModel.isHighlighted ? -dotWidth / 2 : -Warp.Spacing.spacing100
 
         layoutIfNeeded()
     }

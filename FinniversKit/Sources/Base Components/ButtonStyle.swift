@@ -3,12 +3,13 @@
 //
 
 import SwiftUI
+import Warp
 
 public struct InlineFlatStyle: ButtonStyle {
     private let font: Font
     private let textColor: Color
 
-    public init(size: Button.Size = .normal, textColor: Color = .textAction) {
+    public init(size: Button.Size = .normal, textColor: Color = .backgroundPrimary) {
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
         self.textColor = textColor
     }
@@ -30,9 +31,9 @@ public struct FlatStyle: ButtonStyle {
 
     public init(
         size: Button.Size = .normal,
-        textColor: Color = .textAction,
+        textColor: Color = .backgroundPrimary,
         fullWidth: Bool = true,
-        padding: EdgeInsets = .init(top: .spacingS, leading: .spacingM, bottom: .spacingS, trailing: .spacingM)
+        padding: EdgeInsets = .init(top: Warp.Spacing.spacing100, leading: Warp.Spacing.spacing200, bottom: Warp.Spacing.spacing100, trailing: Warp.Spacing.spacing200)
     ) {
         self.size = size
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
@@ -65,9 +66,9 @@ public struct DefaultStyle: ButtonStyle {
 
     public init(
         size: Button.Size = .normal,
-        textColor: Color = .textAction,
+        textColor: Color = .backgroundPrimary,
         fullWidth: Bool = true,
-        padding: EdgeInsets = .init(top: .spacingS, leading: .spacingM, bottom: .spacingS, trailing: .spacingM)
+        padding: EdgeInsets = .init(top: Warp.Spacing.spacing100, leading: Warp.Spacing.spacing200, bottom: Warp.Spacing.spacing100, trailing: Warp.Spacing.spacing200)
     ) {
         self.size = size
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
@@ -91,12 +92,12 @@ public struct DefaultStyle: ButtonStyle {
         }
         .padding(padding)
         .background(
-            configuration.isPressed ? Color(UIColor.defaultButtonHighlightedBodyColor) : Color.bgPrimary
+            configuration.isPressed ? Color.backgroundActive : .background
         )
-        .cornerRadius(.spacingS)
+        .cornerRadius(Warp.Spacing.spacing100)
         .roundedBorder(
-            radius: .spacingS,
-            color: configuration.isPressed ? .nmpBrandControlSelected : .btnDisabled
+            radius: Warp.Spacing.spacing100,
+            color: configuration.isPressed ? .borderActive : .backgroundDisabled
         )
     }
 }
@@ -110,7 +111,7 @@ public struct CallToAction: ButtonStyle {
 
     public init(
         size: Button.Size = .normal,
-        background: Color = .btnPrimary,
+        background: Color = .backgroundPrimary,
         fullWidth: Bool = true,
         isEnabled: Binding<Bool>? = nil,
         padding: EdgeInsets? = nil
@@ -122,8 +123,8 @@ public struct CallToAction: ButtonStyle {
         if let padding {
             self.padding = padding
         } else {
-            let verticalPadding: CGFloat = size == .normal ? .normalButtonVerticalPadding : .spacingS
-            let defaultPadding: EdgeInsets = .init(top: verticalPadding, leading: .spacingM, bottom: verticalPadding, trailing: .spacingM)
+            let verticalPadding: CGFloat = size == .normal ? .normalButtonVerticalPadding : Warp.Spacing.spacing100
+            let defaultPadding: EdgeInsets = .init(top: verticalPadding, leading: Warp.Spacing.spacing200, bottom: verticalPadding, trailing: Warp.Spacing.spacing200)
             self.padding = defaultPadding
         }
 
@@ -141,14 +142,14 @@ public struct CallToAction: ButtonStyle {
             }
             configuration.label
                 .font(font)
-                .foregroundColor(isEnabled ? .textTertiary : .textCTADisabled)
+                .foregroundColor(isEnabled ? .textInverted : .text)
             if fullWidth {
                 Spacer()
             }
         }
         .padding(padding)
-        .background(isEnabled ? dynamicBackground(configuration) : .btnDisabled)
-        .cornerRadius(.spacingS)
+        .background(isEnabled ? dynamicBackground(configuration) : .backgroundDisabled)
+        .cornerRadius(Warp.Spacing.spacing100)
         .animation(.easeOut, value: isEnabled)
     }
 

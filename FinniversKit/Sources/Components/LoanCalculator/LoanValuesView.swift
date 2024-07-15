@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Warp
 
 public protocol LoanValuesViewModel {
     var accentColor: UIColor? { get }
@@ -31,7 +32,7 @@ class LoanValuesView: UIView {
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.spacing = .spacingM
+        stackView.spacing = Warp.Spacing.spacing200
         return stackView
     }()
 

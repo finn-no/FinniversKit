@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol FavoriteSearchEmptyViewDelegate: AnyObject {
     func favoriteSearchEmptyViewDidSelectButton(_: FavoriteSearchEmptyView)
@@ -29,7 +30,7 @@ final class FavoriteSearchEmptyView: UIView {
     private lazy var magnifyingGlassImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = UIImage(named: .magnifyingGlass).withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .blueGray300
+        imageView.tintColor = .iconSubtle
         return imageView
     }()
 
@@ -45,12 +46,13 @@ final class FavoriteSearchEmptyView: UIView {
         let button = UIButton(type: .system)
         button.titleLabel?.font = .bodyStrong
         button.setImage(UIImage(named: .plusMini), for: .normal)
-        button.setTitleColor(.textAction, for: .normal)
-        button.setTitleColor(.flatButtonHighlightedTextColor, for: .highlighted)
-        button.setTitleColor(.flatButtonHighlightedTextColor, for: .selected)
+        button.tintColor = .link
+        button.setTitleColor(.link, for: .normal)
+        button.setTitleColor(.link, for: .highlighted)
+        button.setTitleColor(.link, for: .selected)
         button.addTarget(self, action: #selector(handleAddFolderButtonTap), for: .touchUpInside)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -.spacingXS, bottom: 0, right: .spacingXS)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: .spacingXS, bottom: 0, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -Warp.Spacing.spacing50, bottom: 0, right: Warp.Spacing.spacing50)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: Warp.Spacing.spacing50, bottom: 0, right: 0)
         return button
     }()
 
@@ -76,14 +78,14 @@ final class FavoriteSearchEmptyView: UIView {
         )
 
         clipsToBounds = true
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         stackView.addArrangedSubview(magnifyingGlassImageView)
         stackView.addArrangedSubview(bodyLabel)
         stackView.addArrangedSubview(addFolderButton)
 
-        stackView.setCustomSpacing(.spacingS, after: magnifyingGlassImageView)
-        stackView.setCustomSpacing(.spacingM, after: bodyLabel)
+        stackView.setCustomSpacing(Warp.Spacing.spacing100, after: magnifyingGlassImageView)
+        stackView.setCustomSpacing(Warp.Spacing.spacing200, after: bodyLabel)
 
         wrapperView.addSubview(stackView)
         addSubview(wrapperView)
@@ -94,9 +96,9 @@ final class FavoriteSearchEmptyView: UIView {
             wrapperView.trailingAnchor.constraint(equalTo: trailingAnchor),
             wrapperViewBottomConstraint,
 
-            stackView.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor, constant: -.spacingS),
-            stackView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor, constant: .spacingXXL),
-            stackView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor, constant: -.spacingXXL),
+            stackView.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor, constant: -Warp.Spacing.spacing100),
+            stackView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor, constant: Warp.Spacing.spacing800),
+            stackView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor, constant: -Warp.Spacing.spacing800),
 
             magnifyingGlassImageView.heightAnchor.constraint(equalToConstant: 48),
             magnifyingGlassImageView.widthAnchor.constraint(equalToConstant: 48)

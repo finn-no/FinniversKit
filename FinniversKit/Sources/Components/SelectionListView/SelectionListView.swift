@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public protocol SelectionListViewDelegate: AnyObject {
     func selectionListView(_ view: SelectionListView, didToggleItemAtIndex index: Int, withIdentifier identifier: String?, isSelected: Bool)
@@ -35,11 +36,11 @@ public class SelectionListView: UIView {
 
     // MARK: - Private properties
 
-    private let horizontalSpacing: CGFloat = .spacingXXS
+    private let horizontalSpacing: CGFloat = Warp.Spacing.spacing25
     private var verticalSpacing: CGFloat {
-        isSeparatedListElementDesign ? .spacingM : horizontalSpacing
+        isSeparatedListElementDesign ? Warp.Spacing.spacing200 : horizontalSpacing
     }
-    private let cornerRadius: CGFloat = .spacingS
+    private let cornerRadius: CGFloat = Warp.Spacing.spacing100
     private var itemViews = [SelectionListItemView]()
     private lazy var stackView = UIStackView(axis: .vertical, spacing: -verticalSpacing, withAutoLayout: true)
 
@@ -64,7 +65,7 @@ public class SelectionListView: UIView {
 
     private func setup() {
         layer.cornerRadius = cornerRadius
-        backgroundColor = isSeparatedListElementDesign ? .clear : .bgTertiary
+        backgroundColor = isSeparatedListElementDesign ? .clear : .backgroundSubtle
         addSubview(stackView)
         stackView.fillInSuperview()
     }

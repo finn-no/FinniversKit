@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 final class FavoriteFoldersSearchBar: BottomShadowView {
     weak var delegate: UISearchBarDelegate? {
@@ -14,7 +15,7 @@ final class FavoriteFoldersSearchBar: BottomShadowView {
     private(set) lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar(withAutoLayout: true)
         searchBar.searchBarStyle = .minimal
-        searchBar.backgroundColor = .bgPrimary
+        searchBar.backgroundColor = .background
         return searchBar
     }()
 
@@ -46,15 +47,15 @@ final class FavoriteFoldersSearchBar: BottomShadowView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         addSubview(searchBar)
 
         NSLayoutConstraint.activate([
             searchBar.heightAnchor.constraint(equalToConstant: 36),
             searchBar.topAnchor.constraint(equalTo: topAnchor),
-            searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
-            searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
-            searchBar.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS)
+            searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
+            searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
+            searchBar.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100)
         ])
     }
 }

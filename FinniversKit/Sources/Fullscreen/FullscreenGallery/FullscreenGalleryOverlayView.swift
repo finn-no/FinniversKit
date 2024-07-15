@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol FullscreenGalleryOverlayViewDataSource: AnyObject {
     func fullscreenGalleryOverlayView(_: FullscreenGalleryOverlayView, loadImageWithWidth width: CGFloat, imageIndex index: Int, dataCallback: @escaping (Int, UIImage?) -> Void)
@@ -51,7 +52,7 @@ class FullscreenGalleryOverlayView: UIView {
         let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .textTertiary
+        label.textColor = .textStatic
         label.textAlignment = .center
         label.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         label.shadowOffset = CGSize(width: 1.0, height: 1.0)
@@ -85,7 +86,7 @@ class FullscreenGalleryOverlayView: UIView {
 
     // The constant exists to prevent the preview-view from jumping back into the visible area
     // during the dismissal animation.
-    private lazy var previewViewHiddenConstraint = previewView.topAnchor.constraint(equalTo: bottomAnchor, constant: .spacingM)
+    private lazy var previewViewHiddenConstraint = previewView.topAnchor.constraint(equalTo: bottomAnchor, constant: Warp.Spacing.spacing200)
 
     // MARK: - Init
 
@@ -115,12 +116,12 @@ class FullscreenGalleryOverlayView: UIView {
 
         NSLayoutConstraint.activate([
             captionLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            captionLabel.widthAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.widthAnchor, constant: -(2 * CGFloat.spacingM)),
-            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor, constant: -.spacingS),
-            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: previewView.topAnchor, constant: -.spacingS),
+            captionLabel.widthAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.widthAnchor, constant: -(2 * Warp.Spacing.spacing200)),
+            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor, constant: -Warp.Spacing.spacing100),
+            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: previewView.topAnchor, constant: -Warp.Spacing.spacing100),
 
-            dismissButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingS),
-            dismissButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .spacingS),
+            dismissButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Warp.Spacing.spacing100),
+            dismissButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Warp.Spacing.spacing100),
             dismissButton.widthAnchor.constraint(equalToConstant: FullscreenGalleryOverlayView.dismissButtonTappableSize),
             dismissButton.heightAnchor.constraint(equalToConstant: FullscreenGalleryOverlayView.dismissButtonTappableSize),
 

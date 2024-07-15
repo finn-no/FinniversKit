@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class ResultDemoView: UIView {
 
@@ -48,11 +49,11 @@ extension ResultDemoView: TweakableDemo {
                 icon: UIImage(named: .magnifyingGlass).withRenderingMode(.alwaysTemplate)
             )
         case .coloredTitle:
-            resultView.configure(title: "Prøv igjen", titleColor: .textAction)
+            resultView.configure(title: "Prøv igjen", titleColor: .textLink)
         case .coloredTitleMultipleLines:
             resultView.configure(
                 title: "Denne annonsetypen støttesikke i appen, trykk for å åpne i Safari",
-                titleColor: .textAction
+                titleColor: .textLink
             )
         case .justTitle:
             resultView.configure(
@@ -63,10 +64,10 @@ extension ResultDemoView: TweakableDemo {
                 title: "Hurra!",
                 description: "En bekreftelse sendes til navn@mail.no.",
                 icon: UIImage(named: .checkCircleFilled),
-                backgroundColor: .bgPrimary,
+                backgroundColor: .background,
                 iconTintColor: nil,
-                iconBottomSpacing: .spacingL,
-                titleBottomSpacing: .spacingM,
+                iconBottomSpacing: Warp.Spacing.spacing300,
+                titleBottomSpacing: Warp.Spacing.spacing200,
                 iconHeight: 64
             )
         case .error:
@@ -75,10 +76,10 @@ extension ResultDemoView: TweakableDemo {
                 description: "Noe gikk galt.",
                 actionButtonTitle: "Prøv igjen",
                 icon: UIImage(named: .dissatisfiedFace),
-                backgroundColor: .bgPrimary,
-                iconTintColor: .textCritical,
-                iconBottomSpacing: .spacingL,
-                titleBottomSpacing: .spacingM,
+                backgroundColor: .background,
+                iconTintColor: .textNegative,
+                iconBottomSpacing: Warp.Spacing.spacing300,
+                titleBottomSpacing: Warp.Spacing.spacing200,
                 iconHeight: 64
             )
         }

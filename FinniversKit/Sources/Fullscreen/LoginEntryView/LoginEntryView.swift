@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol LoginEntryViewModel {
     var title: String { get }
@@ -38,25 +39,25 @@ public class LoginEntryView: UIView {
 
     private lazy var contentView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .bgTertiary
+        view.backgroundColor = .backgroundSubtle
         return view
     }()
 
     private lazy var settingsButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
         button.setImage(UIImage(named: .settings).withRenderingMode(.alwaysTemplate), for: .normal)
-        button.tintColor = .textSecondary
+        button.tintColor = .textSubtle
         button.isHidden = true
         button.addTarget(self, action: #selector(handleTapOnSettingsButton), for: .touchUpInside)
-        button.contentEdgeInsets = UIEdgeInsets(all: .spacingM)
+        button.contentEdgeInsets = UIEdgeInsets(all: Warp.Spacing.spacing200)
 
         return button
     }()
 
     private lazy var loginDialogue: LoginEntryDialogueView = {
         let view = LoginEntryDialogueView(withAutoLayout: true)
-        view.backgroundColor = .bgPrimary
-        view.dropShadow(color: .decorationSubtle, opacity: 0.3, offset: CGSize(width: 10, height: 0), radius: 24)
+        view.backgroundColor = .background
+        view.dropShadow(color: .backgroundDisabled, opacity: 0.3, offset: CGSize(width: 10, height: 0), radius: 24)
 
         return view
     }()
@@ -103,7 +104,7 @@ public class LoginEntryView: UIView {
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.heightAnchor.constraint(
-                equalTo: loginDialogue.widthAnchor, constant: .spacingXL, priority: .defaultLow
+                equalTo: loginDialogue.widthAnchor, constant: Warp.Spacing.spacing400, priority: .defaultLow
             ),
             contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
         ])
@@ -117,8 +118,8 @@ public class LoginEntryView: UIView {
             ]
         } else {
             dialogueConstraints = [
-                loginDialogue.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-                loginDialogue.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+                loginDialogue.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
+                loginDialogue.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
                 loginDialogue.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             ]
         }

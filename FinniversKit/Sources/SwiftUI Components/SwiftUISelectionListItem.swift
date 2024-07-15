@@ -1,4 +1,5 @@
 import SwiftUI
+import Warp
 
 public class SwiftUISelectionListItemModel<ItemValue>: ObservableObject, Identifiable {
     public init(title: String, value: ItemValue, description: String? = nil, accessibilityDescription: String? = nil, image: Image? = nil, isSelected: Bool) {
@@ -23,28 +24,28 @@ struct SwiftUISelectionListItem<ItemType>: View {
     @ObservedObject var itemModel: SwiftUISelectionListItemModel<ItemType>
 
     var body: some View {
-        HStack(spacing: .spacingM) {
+        HStack(spacing: Warp.Spacing.spacing200) {
             SwiftUIRadioButton(isSelected: $itemModel.isSelected)
 
             VStack(alignment: .leading) {
                 Text(itemModel.title)
                     .finnFont(.captionStrong)
-                    .foregroundColor(.textPrimary)
+                    .foregroundColor(.text)
 
                 if let description = itemModel.description {
                     HTMLText(description)
                         .finnFont(.caption)
-                        .foregroundColor(.textSecondary)
+                        .foregroundColor(.textSubtle)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
 
             if let image = itemModel.image {
                 image
-                    .foregroundColor(.textSecondary)
+                    .foregroundColor(.textSubtle)
             }
         }
-        .padding(.spacingM)
+        .padding(Warp.Spacing.spacing200)
         .accessibilityElement(children: .ignore)
         .accessibilityAddTraits(accessibilityButtonTraits)
         .accessibilityLabel(accessibilityText)
@@ -61,7 +62,7 @@ struct SwiftUISelectionListItem<ItemType>: View {
         if let accessibilityDescription = itemModel.accessibilityDescription {
             return accessibilityDescription
         }
-        
+
         var text = itemModel.title
         if let desc = itemModel.description {
             text += ", \(desc)"

@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public class RemoteImageTableViewCell: BasicTableViewCell {
     /// A data source for the loading of the image
@@ -15,7 +16,7 @@ public class RemoteImageTableViewCell: BasicTableViewCell {
     public var fallbackImage: UIImage = UIImage(named: .noImage)
 
     private var viewModel: RemoteImageTableViewCellViewModel?
-    private let loadingColor: UIColor = .bgTertiary
+    private let loadingColor: UIColor = .backgroundSubtle
 
     private(set) lazy var remoteImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
@@ -55,7 +56,7 @@ public class RemoteImageTableViewCell: BasicTableViewCell {
         self.viewModel = viewModel
 
         selectionStyle = .default
-        separatorInset = .leadingInset(.spacingM * 2 + viewModel.imageViewWidth)
+        separatorInset = .leadingInset(Warp.Spacing.spacing200 * 2 + viewModel.imageViewWidth)
 
         remoteImageView.layer.cornerRadius = viewModel.cornerRadius
         remoteImageWidthConstraint.constant = viewModel.imageViewWidth
@@ -76,7 +77,7 @@ public class RemoteImageTableViewCell: BasicTableViewCell {
 
     private func setup() {
         isAccessibilityElement = true
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         contentView.addSubview(remoteImageView)
 
         stackViewLeadingAnchorConstraint.isActive = false
@@ -84,10 +85,10 @@ public class RemoteImageTableViewCell: BasicTableViewCell {
         NSLayoutConstraint.activate([
             remoteImageWidthConstraint,
             remoteImageView.heightAnchor.constraint(equalTo: remoteImageView.widthAnchor),
-            remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
             remoteImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
-            stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .spacingM)
+            stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: Warp.Spacing.spacing200)
         ])
     }
 }

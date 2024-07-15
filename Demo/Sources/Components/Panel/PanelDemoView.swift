@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class PanelDemoView: UIView, Demoable {
     override init(frame: CGRect) {
@@ -19,9 +20,9 @@ class PanelDemoView: UIView, Demoable {
         stackView.alignment = .center
         stackView.axis = .vertical
         stackView.distribution = .fill
-        stackView.spacing = .spacingM
+        stackView.spacing = Warp.Spacing.spacing200
         addSubview(stackView)
-        stackView.fillInSuperview(margin: .spacingS)
+        stackView.fillInSuperview(margin: Warp.Spacing.spacing100)
 
         let demoCases: [(Panel.Style, PanelViewModel)] = [
             (.plain, PanelViewModel(text: "Plain panel. Are you sure a normal Label isn't a better fit?")),

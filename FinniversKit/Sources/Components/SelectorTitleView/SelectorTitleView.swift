@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol SelectorTitleViewDelegate: AnyObject {
     func selectorTitleViewDidSelectButton(_ view: SelectorTitleView)
@@ -44,7 +45,7 @@ public class SelectorTitleView: UIView {
         label.adjustsFontForContentSizeCategory = true
         label.textAlignment = .center
         label.text = heading
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         return label
     }()
 
@@ -53,7 +54,7 @@ public class SelectorTitleView: UIView {
         button.titleLabel?.font = UIFont.bodyStrong.withSize(17).scaledFont(forTextStyle: .footnote)
         button.titleLabel?.adjustsFontForContentSizeCategory = true
 
-        let spacing: CGFloat = .spacingXXS
+        let spacing: CGFloat = Warp.Spacing.spacing25
         button.semanticContentAttribute = .forceRightToLeft
         button.imageEdgeInsets = UIEdgeInsets(top: spacing, leading: spacing, bottom: 0, trailing: -spacing)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, leading: -spacing, bottom: 0, trailing: spacing)
@@ -62,9 +63,9 @@ public class SelectorTitleView: UIView {
         if heading != nil {
             button.contentEdgeInsets = UIEdgeInsets(
                 top: titleLabel.font.pointSize,
-                leading: .spacingM + spacing,
+                leading: Warp.Spacing.spacing200 + spacing,
                 bottom: 0,
-                trailing: .spacingM + spacing
+                trailing: Warp.Spacing.spacing200 + spacing
             )
         }
 
@@ -96,7 +97,7 @@ public class SelectorTitleView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         updateArrowDirection()
 
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         updateButtonColor()
         addSubview(button)
@@ -121,7 +122,7 @@ public class SelectorTitleView: UIView {
 
     // MARK: - Public
 
-    public func updateButtonColor(_ buttonColor: UIColor = .textAction, buttonDisabledColor: UIColor = .btnDisabled) {
+    public func updateButtonColor(_ buttonColor: UIColor = .backgroundPrimary, buttonDisabledColor: UIColor = .backgroundDisabled) {
         button.setTitleColor(buttonColor, for: .normal)
         button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .highlighted)
         button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .selected)

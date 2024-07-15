@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 protocol NeighborhoodProfileBannerViewDelegate: AnyObject {
     func neighborhoodProfileBannerDidSelectButton(_ view: NeighborhoodProfileBannerView)
@@ -21,17 +22,16 @@ final class NeighborhoodProfileBannerView: UIView {
         didSet { button.setTitle(buttonText, for: .normal) }
     }
 
-
     // MARK: - Private properties
 
     private lazy var containerStackView: UIStackView = {
-        let stack = UIStackView(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
+        let stack = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, withAutoLayout: true)
         stack.layer.borderWidth = 1
-        stack.layer.borderColor = .imageBorder
-        stack.layer.cornerRadius = .spacingS
+        stack.layer.borderColor = .border
+        stack.layer.cornerRadius = Warp.Spacing.spacing100
         stack.layer.masksToBounds = true
-        stack.backgroundColor = .bgPrimary
-        stack.directionalLayoutMargins = NSDirectionalEdgeInsets(all: .spacingM)
+        stack.backgroundColor = .background
+        stack.directionalLayoutMargins = NSDirectionalEdgeInsets(all: Warp.Spacing.spacing200)
         stack.isLayoutMarginsRelativeArrangement = true
         return stack
     }()
@@ -48,7 +48,6 @@ final class NeighborhoodProfileBannerView: UIView {
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
         return button
     }()
-
 
     // MARK: - Init
 

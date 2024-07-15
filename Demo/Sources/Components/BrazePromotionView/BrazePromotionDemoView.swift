@@ -1,6 +1,7 @@
 import UIKit
 import FinniversKit
 import DemoKit
+import Warp
 
 class BrazePromotionDemoView: UIView, Demoable {
     private lazy var viewModels: [BrazePromotionViewModel] = [titleTextImageButton, titleTextButton, titleText, titleTextBorderlessButton, titleTextBorderlessButtonPrimaryButton]
@@ -41,7 +42,7 @@ class BrazePromotionDemoView: UIView, Demoable {
     )
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(axis: .vertical, spacing: .spacingL, withAutoLayout: true)
+        let stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing300, withAutoLayout: true)
         stackView.distribution = .fill
         return stackView
     }()
@@ -59,8 +60,8 @@ class BrazePromotionDemoView: UIView, Demoable {
         addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             stackView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
 

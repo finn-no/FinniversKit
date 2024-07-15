@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class FloatingButtonDemoView: UIView {
     private lazy var floatingButton: FloatingButton = {
@@ -25,11 +26,11 @@ class FloatingButtonDemoView: UIView {
         let button = FloatingButton(
             style:
                     .default.overrideStyle(
-                        tintColor: .textTertiary,
-                        primaryBackgroundColor: .btnPrimary,
-                        highlightedBackgroundColor: .btnPrimary,
-                        badgeBackgroundColor: .btnCritical,
-                        badgeTextColor: .textTertiary,
+                        tintColor: .textInverted,
+                        primaryBackgroundColor: .backgroundPrimary,
+                        highlightedBackgroundColor: .backgroundPrimary,
+                        badgeBackgroundColor: .backgroundNegative,
+                        badgeTextColor: .textInverted,
                         badgeSize: 20,
                         shadowColor: UIColor(hex: "#303133").withAlphaComponent(0.9),
                         shadowOffset: CGSize(width: 0, height: 4),
@@ -66,7 +67,7 @@ class FloatingButtonDemoView: UIView {
         stackView.addArrangedSubviews([floatingButton, floatingButtonWithBadge, floatingButtonWithRedBadge])
 
         NSLayoutConstraint.activate([
-            floatingButton.widthAnchor.constraint(equalToConstant: .spacingXXL),
+            floatingButton.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing800),
             floatingButton.heightAnchor.constraint(equalTo: floatingButton.widthAnchor),
 
             floatingButtonWithBadge.widthAnchor.constraint(equalToConstant: 44),

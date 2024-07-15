@@ -8,7 +8,7 @@ public class HyperlinkTextView: UIView {
         }
     }
 
-    public var textColor: UIColor = .textPrimary {
+    public var textColor: UIColor = .text {
         didSet {
             textView.textColor = textColor
             updateText()
@@ -21,7 +21,7 @@ public class HyperlinkTextView: UIView {
         }
     }
 
-    public var linkColor: UIColor = .textAction {
+    public var linkColor: UIColor = .textLink {
         didSet {
             updateText()
         }
@@ -45,7 +45,7 @@ public class HyperlinkTextView: UIView {
         let view = UITextView(frame: .zero, textContainer: nil)
         view.font = font
         view.textColor = textColor
-        view.backgroundColor = .bgPrimary
+        view.backgroundColor = .background
         view.isScrollEnabled = false
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false

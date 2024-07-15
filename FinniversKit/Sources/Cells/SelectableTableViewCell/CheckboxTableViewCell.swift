@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 open class CheckboxTableViewCell: BasicTableViewCell {
 
@@ -35,7 +36,7 @@ open class CheckboxTableViewCell: BasicTableViewCell {
         super.configure(with: viewModel)
         selectionStyle = .none
         checkbox.configure(isSelected: viewModel.isSelected)
-        stackViewToCheckboxConstraint.constant = .spacingM
+        stackViewToCheckboxConstraint.constant = Warp.Spacing.spacing200
         separatorInset = .leadingInset(56)
         layoutIfNeeded()
     }
@@ -57,7 +58,7 @@ open class CheckboxTableViewCell: BasicTableViewCell {
 
         NSLayoutConstraint.activate([
             stackViewToCheckboxConstraint,
-            checkbox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            checkbox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
             checkbox.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         ])
     }

@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class RadioButtonDemoView: UIView, Demoable {
     var dismissKind: DismissKind { .button }
@@ -24,13 +25,13 @@ class RadioButtonDemoView: UIView, Demoable {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         addSubview(radioButton)
 
         NSLayoutConstraint.activate([
-            radioButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            radioButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-            radioButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM)
+            radioButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            radioButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
+            radioButton.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200)
             ])
     }
 

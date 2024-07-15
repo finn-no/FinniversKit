@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Warp
 
 public extension Button {
     enum Size {
@@ -44,8 +45,8 @@ public extension Button {
             disabledBorderColor: UIColor?,
             disabledTextColor: UIColor?,
             margins: UIEdgeInsets = UIEdgeInsets(
-                vertical: .spacingS,
-                horizontal: .spacingM
+                vertical: Warp.Spacing.spacing100,
+                horizontal: Warp.Spacing.spacing200
             ),
             smallFont: UIFont = .detailStrong,
             normalFont: UIFont = .bodyStrong
@@ -69,17 +70,17 @@ public extension Button {
             borderWidth: CGFloat,
             stateStyles: [UIControl.State: StateStyle],
             margins: UIEdgeInsets = UIEdgeInsets(
-                vertical: .spacingS,
-                horizontal: .spacingM
+                vertical: Warp.Spacing.spacing100,
+                horizontal: Warp.Spacing.spacing200
             ),
             smallFont: UIFont = .detailStrong,
             normalFont: UIFont = .bodyStrong
         ) {
             self.borderWidth = borderWidth
 
-            self.bodyColor = stateStyles[.normal]?.backgroundColor ?? .bgPrimary
+            self.bodyColor = stateStyles[.normal]?.backgroundColor ?? .background
             self.borderColor = stateStyles[.normal]?.borderColor
-            self.textColor = stateStyles[.normal]?.textColor ?? .textAction
+            self.textColor = stateStyles[.normal]?.textColor ?? .textLink
 
             self.highlightedBodyColor = stateStyles[.highlighted]?.backgroundColor
             self.highlightedBorderColor = stateStyles[.highlighted]?.borderColor
@@ -154,7 +155,7 @@ public extension Button {
 
         func paddings(forSize size: Size) -> UIEdgeInsets {
             switch size {
-            case .normal: return UIEdgeInsets(vertical: .spacingXS, horizontal: 0)
+            case .normal: return UIEdgeInsets(vertical: Warp.Spacing.spacing50, horizontal: 0)
             case .small: return .zero
             }
         }
@@ -175,19 +176,19 @@ public extension Button.Style {
             borderWidth: 2.0,
             stateStyles: [
                 .normal: Button.StateStyle(
-                    textColor: .textAction,
-                    backgroundColor: .bgPrimary,
-                    borderColor: .btnDisabled
+                    textColor: .textLink,
+                    backgroundColor: .background,
+                    borderColor: .backgroundDisabled
                 ),
                 .highlighted: Button.StateStyle(
                     textColor: nil,
-                    backgroundColor: .defaultButtonHighlightedBodyColor,
-                    borderColor: .nmpBrandDecoration
+                    backgroundColor: .backgroundActive,
+                    borderColor: .backgroundPrimary
                 ),
                 .disabled: Button.StateStyle(
                     textColor: .textDisabled,
                     backgroundColor: nil,
-                    borderColor: .btnDisabled
+                    borderColor: .backgroundDisabled
                 )
             ]
         )
@@ -198,19 +199,19 @@ public extension Button.Style {
             borderWidth: 1.0,
             stateStyles: [
                 .normal: Button.StateStyle(
-                    textColor: .textPrimary,
-                    backgroundColor: .bgPrimary,
-                    borderColor: .btnDisabled
+                    textColor: .text,
+                    backgroundColor: .background,
+                    borderColor: .backgroundDisabled
                 ),
                 .highlighted: Button.StateStyle(
-                    textColor: .utilityButtonHighlightedTextColor,
-                    backgroundColor: .bgPrimary,
-                    borderColor: .utilityButtonHighlightedBorderColor
+                    textColor: .text,
+                    backgroundColor: .background,
+                    borderColor: .border
                 ),
                 .disabled: Button.StateStyle(
                     textColor: .textDisabled,
                     backgroundColor: nil,
-                    borderColor: .btnDisabled
+                    borderColor: .backgroundDisabled
                 )
             ]
         )
@@ -221,18 +222,18 @@ public extension Button.Style {
             borderWidth: 0.0,
             stateStyles: [
                 .normal: Button.StateStyle(
-                    textColor: .textTertiary,
-                    backgroundColor: .btnPrimary,
+                    textColor: .textInverted,
+                    backgroundColor: .backgroundPrimary,
                     borderColor: nil
                 ),
                 .highlighted: Button.StateStyle(
                     textColor: nil,
-                    backgroundColor: .callToActionButtonHighlightedBodyColor,
+                    backgroundColor: .backgroundPrimaryActive,
                     borderColor: nil
                 ),
                 .disabled: Button.StateStyle(
                     textColor: nil,
-                    backgroundColor: .btnDisabled,
+                    backgroundColor: .backgroundDisabled,
                     borderColor: nil
                 )
             ]
@@ -244,18 +245,18 @@ public extension Button.Style {
             borderWidth: 0.0,
             stateStyles: [
                 .normal: Button.StateStyle(
-                    textColor: .textTertiary,
-                    backgroundColor: .btnCritical,
+                    textColor: .textInverted,
+                    backgroundColor: .backgroundNegative,
                     borderColor: nil
                 ),
                 .highlighted: Button.StateStyle(
                     textColor: nil,
-                    backgroundColor: .destructiveButtonHighlightedBodyColor,
+                    backgroundColor: .backgroundNegativeActive,
                     borderColor: nil
                 ),
                 .disabled: Button.StateStyle(
                     textColor: nil,
-                    backgroundColor: .btnDisabled,
+                    backgroundColor: .backgroundDisabled,
                     borderColor: nil
                 )
             ]
@@ -267,12 +268,12 @@ public extension Button.Style {
             borderWidth: 0.0,
             stateStyles: [
                 .normal: Button.StateStyle(
-                    textColor: .textAction,
+                    textColor: .textLink,
                     backgroundColor: .clear,
                     borderColor: nil
                 ),
                 .highlighted: Button.StateStyle(
-                    textColor: .flatButtonHighlightedTextColor,
+                    textColor: .text,
                     backgroundColor: nil,
                     borderColor: nil
                 ),
@@ -290,12 +291,12 @@ public extension Button.Style {
             borderWidth: 0.0,
             stateStyles: [
                 .normal: Button.StateStyle(
-                    textColor: .textCritical,
+                    textColor: .textNegative,
                     backgroundColor: .clear,
                     borderColor: nil
                 ),
                 .highlighted: Button.StateStyle(
-                    textColor: .destructiveFlatButtonHighlightedTextColor,
+                    textColor: .textNegative,
                     backgroundColor: nil,
                     borderColor: nil
                 ),
@@ -313,12 +314,12 @@ public extension Button.Style {
             borderWidth: 0.0,
             stateStyles: [
                 .normal: Button.StateStyle(
-                    textColor: .textAction,
+                    textColor: .textLink,
                     backgroundColor: .clear,
                     borderColor: nil
                 ),
                 .highlighted: Button.StateStyle(
-                    textColor: .linkButtonHighlightedTextColor,
+                    textColor: .textLink,
                     backgroundColor: nil,
                     borderColor: nil
                 ),
@@ -329,7 +330,7 @@ public extension Button.Style {
                 ),
             ],
             margins: UIEdgeInsets(
-                vertical: .spacingXS,
+                vertical: Warp.Spacing.spacing50,
                 horizontal: 0
             ),
             smallFont: .detail,

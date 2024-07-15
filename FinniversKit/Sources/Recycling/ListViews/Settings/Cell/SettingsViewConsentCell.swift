@@ -3,12 +3,13 @@
 //
 
 import UIKit
+import Warp
 
 class SettingsViewConsentCell: SettingsViewCell {
 
     private lazy var statusLabel: Label = {
         let label = Label(style: .body, withAutoLayout: true)
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         return label
     }()
 
@@ -33,7 +34,7 @@ class SettingsViewConsentCell: SettingsViewCell {
         NSLayoutConstraint.activate([
             statusLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             statusLabel.leadingAnchor.constraint(greaterThanOrEqualTo: titleLabel.trailingAnchor, constant: 0),
-            statusLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingS)
+            statusLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing100)
         ])
     }
 }

@@ -3,13 +3,14 @@
 //
 
 import UIKit
+import Warp
 
 class SettingsHeaderView: UIView {
 
     // MARK: - Private properties
 
     private lazy var headerLabel: UILabel = {
-        let label = Label(style: .body, numberOfLines: 0, textColor: .textPrimary, withAutoLayout: true)
+        let label = Label(style: .body, numberOfLines: 0, textColor: .text, withAutoLayout: true)
         label.textAlignment = .left
         return label
     }()
@@ -32,8 +33,8 @@ class SettingsHeaderView: UIView {
     // MARK: - Private methods
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         addSubview(headerLabel)
-        headerLabel.fillInSuperview(insets: UIEdgeInsets(top: .spacingM, left: .spacingM, bottom: -.spacingM, right: -.spacingM))
+        headerLabel.fillInSuperview(insets: UIEdgeInsets(top: Warp.Spacing.spacing200, left: Warp.Spacing.spacing200, bottom: -Warp.Spacing.spacing200, right: -Warp.Spacing.spacing200))
     }
 }

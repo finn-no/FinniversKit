@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol RefreshControlDelegate: AnyObject {
     func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl)
@@ -62,8 +63,8 @@ public class RefreshControl: UIRefreshControl {
         NSLayoutConstraint.activate([
             loadingIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
             loadingIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            loadingIndicatorView.widthAnchor.constraint(equalToConstant: .spacingXL),
-            loadingIndicatorView.heightAnchor.constraint(equalToConstant: .spacingXL)
+            loadingIndicatorView.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing400),
+            loadingIndicatorView.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing400)
         ])
 
         addTarget(self, action: #selector(handleValueChange), for: .valueChanged)
@@ -78,7 +79,7 @@ public class RefreshControl: UIRefreshControl {
     /// Set progress based on the current scroll position and begin refreshing if needed.
     private func handleLoadingProgress() {
         let pullDistance = superview.flatMap({ $0.bounds.height / 5 }) ?? defaultPullDistance
-        let progress = min(max(topOffset, 0.0), pullDistance) / pullDistance
+        _ = min(max(topOffset, 0.0), pullDistance) / pullDistance
 
         if topOffset >= pullDistance {
             beginRefreshing()

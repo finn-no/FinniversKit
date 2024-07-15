@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public protocol MapAddressButtonDelegate: AnyObject {
     func mapAddressButtonWasSelected(_ button: MapAddressButton)
@@ -22,7 +23,7 @@ public class MapAddressButton: UIView {
     private lazy var button: Button = {
         let button = MultilineButton(style: buttonStyle, size: .normal, withAutoLayout: true)
         button.contentHorizontalAlignment = .left
-        button.titleEdgeInsets = UIEdgeInsets(vertical: 0, horizontal: .spacingS)
+        button.titleEdgeInsets = UIEdgeInsets(vertical: 0, horizontal: Warp.Spacing.spacing100)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
 
         let image = UIImage(named: .mapLocationPin)
@@ -60,7 +61,7 @@ public class MapAddressButton: UIView {
     }
 
     public func setButton(isEnabled: Bool) {
-        let titleColor: UIColor = isEnabled ? buttonStyle.textColor : .textPrimary
+        let titleColor: UIColor = isEnabled ? buttonStyle.textColor : .textDisabled
         buttonStyle = buttonStyle.overrideStyle(textColor: titleColor)
         button.isUserInteractionEnabled = isEnabled
 

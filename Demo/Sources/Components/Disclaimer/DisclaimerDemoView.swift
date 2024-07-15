@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 public class DisclaimerDemoView: UIView, Demoable {
 
@@ -24,9 +25,9 @@ public class DisclaimerDemoView: UIView, Demoable {
         addSubview(disclaimerView)
 
         NSLayoutConstraint.activate([
-            disclaimerView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXL),
-            disclaimerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            disclaimerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
+            disclaimerView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing400),
+            disclaimerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            disclaimerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200)
         ])
     }
 }

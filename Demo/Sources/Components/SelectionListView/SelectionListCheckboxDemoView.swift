@@ -1,6 +1,7 @@
 import UIKit
 import FinniversKit
 import DemoKit
+import Warp
 
 class SelectionListCheckboxDemoView: UIView {
 
@@ -28,9 +29,9 @@ class SelectionListCheckboxDemoView: UIView {
         addSubview(checkmarkListView)
 
         NSLayoutConstraint.activate([
-            checkmarkListView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
-            checkmarkListView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            checkmarkListView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
+            checkmarkListView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200),
+            checkmarkListView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            checkmarkListView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200)
         ])
     }
 }
@@ -101,7 +102,7 @@ private extension Array where Element == SelectionItemModel {
                           attribute.value == "color:tjt-price-highlight" else {
                         return
                     }
-
+                    // TODO: What token/color?
                     currentStyle.foregroundColor = .dynamicColor(defaultColor: .red, darkModeColor: .yellow)
                 }
             }

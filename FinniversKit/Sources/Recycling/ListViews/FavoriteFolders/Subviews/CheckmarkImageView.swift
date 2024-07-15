@@ -8,9 +8,9 @@ public extension UIImageView {
     static var checkmarkImageView: UIImageView {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.layer.cornerRadius = 8
-        imageView.backgroundColor = .nmpBrandControlSelected
+        imageView.backgroundColor = .backgroundPrimary
         imageView.image = UIImage(named: .check)
-        imageView.tintColor = .bgPrimary
+        imageView.tintColor = .background
         imageView.contentMode = .scaleAspectFit
         return imageView
     }

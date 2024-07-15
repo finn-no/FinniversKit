@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol ContractActionViewDelegate: AnyObject {
     func contractActionView(_ view: ContractActionView, didSelectActionButtonWithUrl url: URL)
@@ -42,7 +43,7 @@ public class ContractActionView: UIView {
     private lazy var titleSubtitleStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = .spacingXS
+        stackView.spacing = Warp.Spacing.spacing50
         stackView.axis = .vertical
         return stackView
     }()
@@ -61,7 +62,7 @@ public class ContractActionView: UIView {
     }()
 
 
-    private let buttonStyle = Button.Style.default.overrideStyle(borderColor: .btnDisabled)
+    private let buttonStyle = Button.Style.default.overrideStyle(borderColor: .backgroundDisabled)
 
     private lazy var actionButton: Button = {
         let button = Button(style: buttonStyle, size: .normal, withAutoLayout: true)
@@ -70,7 +71,7 @@ public class ContractActionView: UIView {
     }()
 
     private lazy var contentStackView: UIStackView = {
-        let stackView = UIStackView(axis: .vertical, spacing: .spacingL, withAutoLayout: true)
+        let stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing300, withAutoLayout: true)
         stackView.addArrangedSubviews([imageView, titleSubtitleStackView, bulletListLabel, descriptionLabel, actionButton])
         return stackView
     }()
@@ -87,13 +88,13 @@ public class ContractActionView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgTertiary
-        layer.cornerRadius = .spacingS
+        backgroundColor = .backgroundSubtle
+        layer.cornerRadius = Warp.Spacing.spacing100
         layoutMargins = UIEdgeInsets(
-            top: .spacingM,
-            leading: .spacingM,
-            bottom: .spacingL,
-            trailing: .spacingM
+            top: Warp.Spacing.spacing200,
+            leading: Warp.Spacing.spacing200,
+            bottom: Warp.Spacing.spacing300,
+            trailing: Warp.Spacing.spacing200
         )
 
         addSubview(contentStackView)
@@ -107,7 +108,7 @@ public class ContractActionView: UIView {
         topIcon: UIImage? = nil,
         trailingImageTopConstant: CGFloat = 0,
         trailingImageTrailingConstant: CGFloat = 0,
-        contentSpacing: CGFloat = .spacingL,
+        contentSpacing: CGFloat = Warp.Spacing.spacing300,
         paragraphSpacing: CGFloat = 6,
         remoteImageViewDataSource: RemoteImageViewDataSource? = nil
     ) {

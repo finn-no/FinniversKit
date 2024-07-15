@@ -3,12 +3,13 @@
 //
 
 import UIKit
+import Warp
 
 class SettingsSectionHeaderView: UITableViewHeaderFooterView {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         return label
     }()
 
@@ -27,6 +28,6 @@ class SettingsSectionHeaderView: UITableViewHeaderFooterView {
 
     private func setup() {
         contentView.addSubview(titleLabel)
-        titleLabel.fillInSuperview(insets: UIEdgeInsets(top: .spacingM, left: .spacingM, bottom: -.spacingM, right: -.spacingM))
+        titleLabel.fillInSuperview(insets: UIEdgeInsets(top: Warp.Spacing.spacing200, left: Warp.Spacing.spacing200, bottom: -Warp.Spacing.spacing200, right: -Warp.Spacing.spacing200))
     }
 }

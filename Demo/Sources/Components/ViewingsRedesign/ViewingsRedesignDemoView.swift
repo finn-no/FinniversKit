@@ -1,6 +1,7 @@
 import UIKit
 import FinniversKit
 import DemoKit
+import Warp
 
 class ViewingsRedesignDemoView: UIView {
 
@@ -26,8 +27,8 @@ class ViewingsRedesignDemoView: UIView {
 
         addSubview(viewingsView)
         NSLayoutConstraint.activate([
-            viewingsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            viewingsView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            viewingsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            viewingsView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             viewingsView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
         self.viewingsView = viewingsView

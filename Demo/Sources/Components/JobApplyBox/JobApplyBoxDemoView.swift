@@ -1,5 +1,6 @@
 import FinniversKit
 import DemoKit
+import Warp
 
 class JobApplyBoxDemoView: UIView {
 
@@ -24,8 +25,8 @@ class JobApplyBoxDemoView: UIView {
         let demoView = JobApplyBoxView(viewModel: viewModel, delegate: self, withAutoLayout: true)
         addSubview(demoView)
         NSLayoutConstraint.activate([
-            demoView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            demoView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            demoView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            demoView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             demoView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
 

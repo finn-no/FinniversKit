@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 protocol ViewingItemViewDelegate: AnyObject {
     func viewingItemViewDidSelectAddToCalendarButton(_ view: ViewingItemView)
@@ -17,14 +18,14 @@ class ViewingItemView: UIView {
     // MARK: - Private properties
 
     private let layout: Layout
-    private let noteBottomMargin: CGFloat = .spacingM
+    private let noteBottomMargin: CGFloat = Warp.Spacing.spacing200
     private lazy var dayLabel = Label(style: .title3, withAutoLayout: true)
     private lazy var weekdayLabel = Label(style: .body, withAutoLayout: true)
-    private lazy var monthLabel = Label(style: .detail, textColor: .textCritical, withAutoLayout: true)
-    private lazy var noteLabel = Label(style: .detail, numberOfLines: 0, textColor: .textSecondary, withAutoLayout: true)
-    private lazy var viewingStackView = UIStackView(axis: .horizontal, spacing: .spacingS, alignment: .center, withAutoLayout: true)
+    private lazy var monthLabel = Label(style: .detail, textColor: .textNegative, withAutoLayout: true)
+    private lazy var noteLabel = Label(style: .detail, numberOfLines: 0, textColor: .textSubtle, withAutoLayout: true)
+    private lazy var viewingStackView = UIStackView(axis: .horizontal, spacing: Warp.Spacing.spacing100, alignment: .center, withAutoLayout: true)
     private lazy var dateStackView = UIStackView(axis: .vertical, withAutoLayout: true)
-    private lazy var weekdayTimeStackView = UIStackView(axis: .vertical, spacing: .spacingXXS, alignment: .leading, withAutoLayout: true)
+    private lazy var weekdayTimeStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing25, alignment: .leading, withAutoLayout: true)
     private lazy var contentStackViewLeadingConstraint = contentStackView.leadingAnchor.constraint(equalTo: dateStackView.trailingAnchor)
 
     private lazy var contentStackView: UIStackView = {
@@ -34,7 +35,7 @@ class ViewingItemView: UIView {
     }()
 
     private lazy var timeLabel: Label = {
-        let label = Label(style: .detail, textColor: .textSecondary, withAutoLayout: true)
+        let label = Label(style: .detail, textColor: .textSubtle, withAutoLayout: true)
         label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return label
     }()
@@ -48,7 +49,7 @@ class ViewingItemView: UIView {
 
     private lazy var separator: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .tableViewSeparator
+        view.backgroundColor = .border
         return view
     }()
 
@@ -66,7 +67,7 @@ class ViewingItemView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         dateStackView.addArrangedSubviews([monthLabel, dayLabel])
         weekdayTimeStackView.addArrangedSubviews([weekdayLabel, timeLabel])
@@ -99,10 +100,10 @@ class ViewingItemView: UIView {
         case .original:
             dateStackView.widthAnchor.constraint(equalToConstant: 48).isActive = true
             dateStackView.alignment = .center
-            contentStackViewLeadingConstraint.constant = .spacingS
+            contentStackViewLeadingConstraint.constant = Warp.Spacing.spacing100
         case .redesign:
             dateStackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 28).isActive = true
-            contentStackViewLeadingConstraint.constant = .spacingM
+            contentStackViewLeadingConstraint.constant = Warp.Spacing.spacing200
             dateStackView.setContentHuggingPriority(.required, for: .horizontal)
             dateStackView.setContentCompressionResistancePriority(.required, for: .horizontal)
         }

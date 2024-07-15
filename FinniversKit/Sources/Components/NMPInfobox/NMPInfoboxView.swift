@@ -3,6 +3,7 @@
 //
 
 import SwiftUI
+import Warp
 
 public extension NMPInfoboxView {
     /**
@@ -76,11 +77,11 @@ public struct NMPInfoboxView: View {
     }
 
     public var body: some View {
-        HStack(alignment: .top, spacing: .spacingS) {
+        HStack(alignment: .top, spacing: Warp.Spacing.spacing100) {
 
             viewModel.informationType.icon
 
-            VStack(alignment: .leading, spacing: .spacingS) {
+            VStack(alignment: .leading, spacing: Warp.Spacing.spacing100) {
                 Text(viewModel.title)
                     .finnFont(viewModel.titleStyle)
                 Text(viewModel.detail)
@@ -96,7 +97,7 @@ public struct NMPInfoboxView: View {
                     .buttonStyle(InlineFlatStyle())
                 }
 
-                HStack(spacing: .spacingS) {
+                HStack(spacing: Warp.Spacing.spacing100) {
                     if let primaryButtonInteraction = viewModel.primaryButtonInteraction {
                         SwiftUI.Button(
                             action: { primaryButtonInteraction.onTapped() },
@@ -120,7 +121,7 @@ public struct NMPInfoboxView: View {
             }
 
         }
-        .padding(.spacingM)
+        .padding(Warp.Spacing.spacing200)
         .overlay( // border
             RoundedRectangle(cornerRadius: cornerRadius)
                 .stroke(viewModel.informationType.subtleBorderColor, lineWidth: 1)
@@ -128,7 +129,7 @@ public struct NMPInfoboxView: View {
         .overlay( // sidebar
             Rectangle()
                 .fill(viewModel.informationType.borderColor)
-                .frame(width: .spacingXS),
+                .frame(width: Warp.Spacing.spacing50),
             alignment: .leading
         )
         .frame(maxWidth: .infinity)

@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public protocol ViewingsRedesignViewDelegate: AnyObject {
     func viewingsRedesignView(_ view: ViewingsRedesignView, didSelectButton selectedButton: ViewingsRedesignView.SelectedButton)
@@ -14,12 +15,12 @@ public class ViewingsRedesignView: UIView {
     private lazy var moreInfoLabel = Label(style: .body, numberOfLines: 0, withAutoLayout: true)
     private lazy var prospectusDescriptionLabel = Label(style: .body, numberOfLines: 0, withAutoLayout: true)
     private lazy var prospectusStackView = UIStackView(axis: .vertical, withAutoLayout: true)
-    private lazy var viewingsStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+    private lazy var viewingsStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
 
     private lazy var stackView: UIStackView = {
-        let view = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+        let view = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
         view.isLayoutMarginsRelativeArrangement = true
-        view.directionalLayoutMargins = .init(all: .spacingM)
+        view.directionalLayoutMargins = .init(all: Warp.Spacing.spacing200)
         return view
     }()
 
@@ -56,7 +57,7 @@ public class ViewingsRedesignView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        layer.cornerRadius = .spacingS
+        layer.cornerRadius = Warp.Spacing.spacing100
         layer.borderWidth = 1
 
         addSubview(stackView)
@@ -72,9 +73,9 @@ public class ViewingsRedesignView: UIView {
         ])
 
         stackView.setCustomSpacing(.zero, after: viewingsStackView)
-        stackView.setCustomSpacing(.spacingM, after: moreInfoLabel)
-        stackView.setCustomSpacing(.spacingM, after: prospectusStackView)
-        stackView.setCustomSpacing(.spacingM, after: viewingSignupButton)
+        stackView.setCustomSpacing(Warp.Spacing.spacing200, after: moreInfoLabel)
+        stackView.setCustomSpacing(Warp.Spacing.spacing200, after: prospectusStackView)
+        stackView.setCustomSpacing(Warp.Spacing.spacing200, after: viewingSignupButton)
 
         titleLabel.text = viewModel.title
         moreInfoLabel.text = viewModel.moreInfoText
@@ -112,7 +113,7 @@ public class ViewingsRedesignView: UIView {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        layer.borderColor = .borderDefault
+        layer.borderColor = .border
     }
 
     // MARK: - Actions

@@ -12,9 +12,9 @@ extension FinnTextField {
 
         var underlineColor: Color {
             switch self {
-            case .default: return Color.textSecondary
-            case .focused: return Color.accentSecondaryBlue
-            case .error: return Color.textCritical
+            case .default: return .textSubtle
+            case .focused: return .borderFocus
+            case .error: return .textNegative
             }
         }
 
@@ -27,8 +27,8 @@ extension FinnTextField {
 
         var helpTextColor: Color {
             switch self {
-            case .error: return Color.textCritical
-            default: return Color.textPrimary
+            case .error: return .textNegative
+            default: return .text
             }
         }
     }

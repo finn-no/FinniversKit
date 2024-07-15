@@ -1,11 +1,12 @@
 import UIKit
+import Warp
 
 public class JobKeyInfoView: UIView {
     public typealias InfoPair = (title: String, value: String)
 
     // MARK: - Private properties
 
-    private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+    private lazy var stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
 
     // MARK: - Init
 

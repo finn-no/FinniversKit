@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol ConfirmationViewDelegate: AnyObject {
     func confirmationViewDidPressDismissButton(_ confirmationView: ConfirmationView)
@@ -51,7 +52,7 @@ public class ConfirmationView: UIView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -65,16 +66,16 @@ public class ConfirmationView: UIView {
             titleLabel.topAnchor.constraint(equalTo: view.topAnchor),
 
             messageLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
+            messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
             messageLabel.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor),
 
             closeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            closeButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: .spacingXL),
+            closeButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: Warp.Spacing.spacing400),
 
             view.topAnchor.constraint(equalTo: titleLabel.topAnchor),
             view.bottomAnchor.constraint(equalTo: closeButton.bottomAnchor),
-            view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXL),
-            view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXL),
+            view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing400),
+            view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing400),
             view.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
 

@@ -5,12 +5,13 @@
 import UIKit
 import FinniversKit
 import DemoKit
+import Warp
 
 public class TextFieldDemoView: UIView, Demoable {
 
     // MARK: - Private properties
 
-    private lazy var stackView = UIStackView.init(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
+    private lazy var stackView = UIStackView.init(axis: .vertical, spacing: Warp.Spacing.spacing200, withAutoLayout: true)
 
     // MARK: - Init
 
@@ -50,8 +51,8 @@ public class TextFieldDemoView: UIView, Demoable {
         let overrideBgColor = TextField(inputType: .normal)
         overrideBgColor.translatesAutoresizingMaskIntoConstraints = false
         overrideBgColor.placeholderText = "Overridden bgColor"
-        overrideBgColor.configure(textFieldBackgroundColor: .bgPrimary)
-        overrideBgColor.configureBorder(radius: 4, width: 1, color: .borderDefault)
+        overrideBgColor.configure(textFieldBackgroundColor: .background)
+        overrideBgColor.configureBorder(radius: 4, width: 1, color: .border)
 
         stackView.addArrangedSubviews([
             emailTextField,
@@ -64,9 +65,9 @@ public class TextFieldDemoView: UIView, Demoable {
         addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200)
         ])
     }
 }

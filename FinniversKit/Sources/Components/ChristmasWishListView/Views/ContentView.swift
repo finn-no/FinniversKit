@@ -1,6 +1,7 @@
 //
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
+import Warp
 
 protocol ChristmasWishListContentViewDelegate: AnyObject {
     func christmasWishListContentDidSelectAccessoryButton(_ view: ChristmasWishListView.ContentView)
@@ -17,7 +18,7 @@ extension ChristmasWishListView {
             let font = UIFont.font(ofSize: 22, weight: .bold, textStyle: .title2)
             label.font = font
             label.textAlignment = .center
-            label.textColor = .textPrimary
+            label.textColor = .text
             label.adjustsFontForContentSizeCategory = true
             label.numberOfLines = 0
             label.setContentHuggingPriority(.defaultHigh, for: .vertical)
@@ -66,8 +67,8 @@ extension ChristmasWishListView {
         // MARK: - Private methods
 
         private func setup() {
-            backgroundColor = .bgPrimary
-            let spacing = .spacingM * 1.5
+            backgroundColor = .background
+            let spacing = Warp.Spacing.spacing200 * 1.5
             layoutMargins = UIEdgeInsets(top: spacing, leading: spacing, bottom: 0, trailing: spacing)
 
             addSubview(titleLabel)
@@ -81,14 +82,14 @@ extension ChristmasWishListView {
                 titleLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
                 titleLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
 
-                bodyTextLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXS),
+                bodyTextLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing50),
                 bodyTextLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
                 bodyTextLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
 
-                accessoryButton.topAnchor.constraint(equalTo: bodyTextLabel.bottomAnchor, constant: .spacingM),
+                accessoryButton.topAnchor.constraint(equalTo: bodyTextLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
                 accessoryButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
                 accessoryButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-                accessoryButton.heightAnchor.constraint(greaterThanOrEqualToConstant: .spacingXL),
+                accessoryButton.heightAnchor.constraint(greaterThanOrEqualToConstant: Warp.Spacing.spacing400),
                 accessoryButton.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
             ])
         }

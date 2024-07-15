@@ -4,14 +4,15 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 public class InfoboxDemoView: UIView, Demoable {
-    private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingL, distribution: .equalSpacing, withAutoLayout: true)
+    private lazy var stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing300, distribution: .equalSpacing, withAutoLayout: true)
     private lazy var scrollView = UIScrollView(withAutoLayout: true)
 
     private var infoboxConfigurations: [(style: InfoboxView.Style, model: InfoboxViewModel)] = [
-        (style: .small(backgroundColor: .bgSecondary), model: InfoboxDefaultData()),
-        (style: .normal(backgroundColor: .bgPrimary, primaryButtonIcon: UIImage(named: .webview)), model: InfoboxOpenBrowserData()),
+        (style: .small(backgroundColor: .backgroundInfoSubtle), model: InfoboxDefaultData()),
+        (style: .normal(backgroundColor: .backgroundInfoSubtle, primaryButtonIcon: UIImage(named: .webview)), model: InfoboxOpenBrowserData()),
         (style: .warning, model: InfoboxWarningData()),
         (style: .warning, model: InfoboxNoButtons()),
     ]
@@ -32,13 +33,13 @@ public class InfoboxDemoView: UIView, Demoable {
         stackView.addArrangedSubviews(infoboxes)
 
         scrollView.addSubview(stackView)
-        stackView.fillInSuperview(margin: .spacingM)
+        stackView.fillInSuperview(margin: Warp.Spacing.spacing200)
 
         addSubview(scrollView)
         scrollView.fillInSuperview()
 
         NSLayoutConstraint.activate([
-            stackView.widthAnchor.constraint(equalTo: widthAnchor, constant: -.spacingM * 2)
+            stackView.widthAnchor.constraint(equalTo: widthAnchor, constant: -Warp.Spacing.spacing200 * 2)
         ])
     }
 

@@ -1,6 +1,7 @@
 //
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
+import Warp
 
 protocol SafetyElementsRegularViewDelegate: SafetyElementContentViewDelegate {
     func safetyElementsRegularView(_ view: SafetyElementsView.RegularView, didSelectElementAt index: Int)
@@ -9,7 +10,7 @@ protocol SafetyElementsRegularViewDelegate: SafetyElementContentViewDelegate {
 extension SafetyElementsView {
     class RegularView: UIView {
         // MARK: - Internal properties
-        var contentBackgroundColor: UIColor? = .bgSecondary {
+        var contentBackgroundColor: UIColor? = .backgroundInfoSubtle {
             didSet {
                 contentView.backgroundColor = contentBackgroundColor
             }
@@ -43,7 +44,7 @@ extension SafetyElementsView {
             let stackView = UIStackView(withAutoLayout: true)
             stackView.axis = .horizontal
             stackView.distribution = .equalSpacing
-            stackView.spacing = .spacingM
+            stackView.spacing = Warp.Spacing.spacing200
             return stackView
         }()
 
@@ -59,8 +60,8 @@ extension SafetyElementsView {
             let view = ElementContentView(withAutoLayout: true)
             view.backgroundColor = contentBackgroundColor
             view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner]
-            view.layer.cornerRadius = .spacingS
-            view.layoutMargins = UIEdgeInsets(all: .spacingM * 1.5)
+            view.layer.cornerRadius = Warp.Spacing.spacing100
+            view.layoutMargins = UIEdgeInsets(all: Warp.Spacing.spacing200 * 1.5)
             return view
         }()
 

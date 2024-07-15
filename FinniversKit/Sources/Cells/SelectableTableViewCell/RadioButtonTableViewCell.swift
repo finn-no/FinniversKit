@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Warp
 
 open class RadioButtonTableViewCell: BasicTableViewCell {
 
@@ -31,8 +32,8 @@ open class RadioButtonTableViewCell: BasicTableViewCell {
         stackViewLeadingAnchorConstraint.isActive = false
 
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: radioButton.trailingAnchor, constant: .spacingM),
-            radioButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            stackView.leadingAnchor.constraint(equalTo: radioButton.trailingAnchor, constant: Warp.Spacing.spacing200),
+            radioButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
             radioButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
             ])
     }

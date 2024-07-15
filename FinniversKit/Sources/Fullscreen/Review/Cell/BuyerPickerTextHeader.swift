@@ -4,6 +4,7 @@
 
 import Foundation
 import UIKit
+import Warp
 
 class BuyerPickerTextHeader: UITableViewHeaderFooterView {
     lazy var title: Label = {
@@ -16,12 +17,12 @@ class BuyerPickerTextHeader: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         translatesAutoresizingMaskIntoConstraints = false
-        contentView.backgroundColor = .bgPrimary
+        contentView.backgroundColor = .background
         contentView.addSubview(title)
 
-        let inset = UIEdgeInsets(top: .spacingM,
-                                 left: .spacingM,
-                                 bottom: -.spacingXL,
+        let inset = UIEdgeInsets(top: Warp.Spacing.spacing200,
+                                 left: Warp.Spacing.spacing200,
+                                 bottom: -Warp.Spacing.spacing400,
                                  right: 0)
         title.fillInSuperview(insets: inset, isActive: true)
     }

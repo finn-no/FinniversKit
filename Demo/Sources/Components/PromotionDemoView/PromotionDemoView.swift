@@ -1,6 +1,7 @@
 import UIKit
 import FinniversKit
 import DemoKit
+import Warp
 
 class PromotionDemoView: UIView, Demoable {
     private lazy var viewModels: [PromotionViewModel] = [christmasPromoViewModel, hjerteromPromoViewModel]
@@ -18,12 +19,12 @@ class PromotionDemoView: UIView, Demoable {
         text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
         image: UIImage(named: .hjerterom),
         imageAlignment: .fullWidth,
-        imageBackgroundColor: .nmpBrandDecoration,
+        imageBackgroundColor: .backgroundPrimary,
         primaryButtonTitle: "Gå til Hjerterom"
     )
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(axis: .vertical, spacing: .spacingL, withAutoLayout: true)
+        let stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing300, withAutoLayout: true)
         stackView.distribution = .fill
         return stackView
     }()
@@ -41,8 +42,8 @@ class PromotionDemoView: UIView, Demoable {
         addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             stackView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
 

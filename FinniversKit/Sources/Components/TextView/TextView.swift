@@ -83,8 +83,8 @@ public class TextView: UIView {
     private lazy var textView: UITextView = {
         let view = UITextView(frame: .zero, textContainer: nil)
         view.font = .body
-        view.textColor = .textPrimary
-        view.backgroundColor = .bgSecondary
+        view.textColor = .text
+        view.backgroundColor = .backgroundInfoSubtle
         view.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         view.isScrollEnabled = false
         view.delegate = self
@@ -96,7 +96,7 @@ public class TextView: UIView {
 
     private lazy var underLine: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = .accentSecondaryBlue
+        view.backgroundColor = .borderFocus
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -120,12 +120,12 @@ public class TextView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(textViewBackgroundColor: UIColor = .bgSecondary,
-                          textViewTextColor: UIColor = .textPrimary,
+    public func configure(textViewBackgroundColor: UIColor = .backgroundInfoSubtle,
+                          textViewTextColor: UIColor = .text,
                           textViewFont: UIFont = .body,
                           placeholderLabelTextColor: UIColor = .textDisabled,
                           placeholderLabelFont: UIFont = .body,
-                          underLineBGColor: UIColor = .accentSecondaryBlue) {
+                          underLineBGColor: UIColor = .borderFocus) {
         textView.backgroundColor = textViewBackgroundColor
         textView.textColor = textViewTextColor
         textView.font = textViewFont

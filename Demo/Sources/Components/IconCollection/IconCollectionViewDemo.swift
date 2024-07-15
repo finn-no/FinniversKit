@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class IconCollectionDemoView: UIView {
 
@@ -26,7 +27,7 @@ class IconCollectionDemoView: UIView {
 
     private func setup() {
         configure(forTweakAt: 0)
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
     }
 
     // MARK: - Private methods
@@ -42,21 +43,21 @@ class IconCollectionDemoView: UIView {
         NSLayoutConstraint.activate([
             collectionView.centerYAnchor.constraint(equalTo: centerYAnchor),
             collectionView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .spacingS),
-            collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.spacingS)
+            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Warp.Spacing.spacing100),
+            collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -Warp.Spacing.spacing100)
         ])
 
         switch alignment {
         case .horizontal:
             collectionView.configure(with: .horizontalModels)
-            collectionView.backgroundColor = .bgSecondary
+            collectionView.backgroundColor = .backgroundInfoSubtle
             collectionView.layer.cornerRadius = 8
             collectionView.clipsToBounds = true
-            collectionView.tintColor = .textPrimary
+            collectionView.tintColor = .text
 
         case .vertical:
             collectionView.configure(with: .verticalModels)
-            collectionView.backgroundColor = .bgPrimary
+            collectionView.backgroundColor = .background
             collectionView.layer.cornerRadius = 0
             collectionView.clipsToBounds = false
         }

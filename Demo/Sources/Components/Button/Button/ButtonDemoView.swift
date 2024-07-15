@@ -5,6 +5,7 @@
 import UIKit
 import FinniversKit
 import DemoKit
+import Warp
 
 public class ButtonDemoView: UIView, Demoable {
     let states: [UIControl.State] = [.normal, .disabled]
@@ -31,12 +32,12 @@ public class ButtonDemoView: UIView, Demoable {
 
     private func setup() {
         let scrollView = UIScrollView(withAutoLayout: true)
-        scrollView.contentInset = UIEdgeInsets(vertical: .spacingM, horizontal: .spacingL)
+        scrollView.contentInset = UIEdgeInsets(vertical: Warp.Spacing.spacing200, horizontal: Warp.Spacing.spacing300)
 
-        let verticalStack = UIStackView(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
+        let verticalStack = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, withAutoLayout: true)
 
         styles.forEach { styleTuple in
-            let buttonStyleStack = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+            let buttonStyleStack = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
 
             let titleLabel = Label(style: .title3, withAutoLayout: true)
             titleLabel.text = styleTuple.title
@@ -45,7 +46,7 @@ public class ButtonDemoView: UIView, Demoable {
             sizes.forEach { size in
                 let stateStack = UIStackView(withAutoLayout: true)
                 stateStack.axis = .horizontal
-                stateStack.spacing = .spacingS
+                stateStack.spacing = Warp.Spacing.spacing100
                 stateStack.distribution = .fillEqually
 
                 states.forEach { state in
@@ -70,7 +71,7 @@ public class ButtonDemoView: UIView, Demoable {
         scrollView.fillInSuperview()
         verticalStack.fillInSuperview()
         NSLayoutConstraint.activate([
-            verticalStack.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0, constant: -.spacingL * 2)
+            verticalStack.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0, constant: -Warp.Spacing.spacing300 * 2)
         ])
     }
 

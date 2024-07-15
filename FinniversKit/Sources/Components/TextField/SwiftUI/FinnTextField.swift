@@ -3,6 +3,7 @@
 //
 
 import SwiftUI
+import Warp
 
 public struct FinnTextField: View {
     public typealias CustomValidator = (String) -> Bool
@@ -48,7 +49,7 @@ public struct FinnTextField: View {
         VStack(alignment: .leading) {
             Text(placeholder)
                 .finnFont(.captionStrong)
-                .foregroundColor(Color.textPrimary)
+                .foregroundColor(Color.text)
 
             TextFieldComponent(
                 input: input,
@@ -59,11 +60,11 @@ public struct FinnTextField: View {
                 onCommit: { evaluateTextState() }
             )
             .fixedSize(horizontal: false, vertical: true)
-            .padding(.vertical, .spacingS + .spacingXS)
-            .padding(.horizontal, .spacingS)
-            .background(Color.bgSecondary)
+            .padding(.vertical, Warp.Spacing.spacing100 + Warp.Spacing.spacing50)
+            .padding(.horizontal, Warp.Spacing.spacing100)
+            .background(Color.backgroundInfoSubtle)
             .overlay(underline, alignment: .bottom)
-            .overlay(textfieldTrailingButton.padding(.trailing, .spacingXS), alignment: .trailing)
+            .overlay(textfieldTrailingButton.padding(.trailing, Warp.Spacing.spacing50), alignment: .trailing)
 
             makeHelpTextLabel()
                 .transition(.asymmetricSlide)
@@ -121,7 +122,7 @@ public struct FinnTextField: View {
         }, label: {
             Image(named: .view)
                 .renderingMode(.template)
-                .foregroundColor(disclosePassword ? Color.accentSecondaryBlue : Color.iconPrimary)
+                .foregroundColor(disclosePassword ? Color.iconPrimary : Color.icon)
         })
     }
 }
@@ -192,7 +193,7 @@ struct TextFieldComponent: UIViewRepresentable {
         field.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
         field.delegate = context.coordinator
         field.font = .body
-        field.textColor = .textPrimary
+        field.textColor = .text
         field.keyboardType = input.keyboardType
         field.returnKeyType = input.returnKeyType
         field.textContentType = input.textContentType

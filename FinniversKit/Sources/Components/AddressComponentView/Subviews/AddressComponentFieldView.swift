@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public class AddressComponentFieldView: UIView {
 
@@ -32,26 +33,26 @@ public class AddressComponentFieldView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgTertiary
+        backgroundColor = .backgroundSubtle
 
         addSubview(stackView)
         addSubview(chevronImageView)
         addSubview(hairlineView)
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100),
 
-            chevronImageView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: .spacingS),
-            chevronImageView.leadingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: .spacingM),
-            chevronImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-            chevronImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.spacingM),
+            chevronImageView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: Warp.Spacing.spacing100),
+            chevronImageView.leadingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: Warp.Spacing.spacing200),
+            chevronImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
+            chevronImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -Warp.Spacing.spacing200),
             chevronImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             chevronImageView.heightAnchor.constraint(equalToConstant: 14),
             chevronImageView.widthAnchor.constraint(equalToConstant: 8),
 
-            hairlineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            hairlineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             hairlineView.trailingAnchor.constraint(equalTo: trailingAnchor),
             hairlineView.bottomAnchor.constraint(equalTo: bottomAnchor),
             hairlineView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale)
@@ -71,7 +72,7 @@ public class AddressComponentFieldView: UIView {
         stackView.removeArrangedSubviews()
 
         if let title = model.value {
-            let floatingLabel = Label.create(style: .detail, textColor: .textSecondary)
+            let floatingLabel = Label.create(style: .detail, textColor: .textSubtle)
             floatingLabel.text = model.placeholder
 
             let titleLabel = Label.create(style: .caption)
@@ -80,7 +81,7 @@ public class AddressComponentFieldView: UIView {
             stackView.addArrangedSubviews([floatingLabel, titleLabel])
             stackView.alignment = .top
         } else {
-            let placeholderLabel = Label.create(style: .caption, textColor: .textSecondary)
+            let placeholderLabel = Label.create(style: .caption, textColor: .textSubtle)
             placeholderLabel.text = model.placeholder
 
             stackView.addArrangedSubview(placeholderLabel)
@@ -94,7 +95,7 @@ public class AddressComponentFieldView: UIView {
 // MARK: - Private extensions
 
 private extension Label {
-    static func create(style: Label.Style, textColor: UIColor = .textPrimary) -> Label {
+    static func create(style: Label.Style, textColor: UIColor = .text) -> Label {
         let label = Label(style: style, withAutoLayout: true)
         label.textColor = textColor
         return label

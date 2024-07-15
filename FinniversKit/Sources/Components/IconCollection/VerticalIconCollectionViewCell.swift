@@ -3,9 +3,10 @@
 //
 
 import UIKit
+import Warp
 
 public class VerticalIconCollectionViewCell: UICollectionViewCell {
-    private static let textSideMargin = CGFloat.spacingS
+    private static let textSideMargin = Warp.Spacing.spacing100
     private static let bodyStyle = Label.Style.body
 
     static func height(for viewModel: IconCollectionViewModel, withWidth width: CGFloat) -> CGFloat {
@@ -14,7 +15,7 @@ public class VerticalIconCollectionViewCell: UICollectionViewCell {
 
         let imageHeight = viewModel.image.size.height
 
-        return textHeight + imageHeight + .spacingS
+        return textHeight + imageHeight + Warp.Spacing.spacing100
     }
 
     private lazy var iconImageView: UIImageView = {
@@ -71,7 +72,7 @@ public class VerticalIconCollectionViewCell: UICollectionViewCell {
             iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             iconImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
-            textLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: .spacingXS),
+            textLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: Warp.Spacing.spacing50),
             textLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: VerticalIconCollectionViewCell.textSideMargin),
             textLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -VerticalIconCollectionViewCell.textSideMargin)
         ])

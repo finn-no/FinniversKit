@@ -1,4 +1,5 @@
 import SwiftUI
+import Warp
 
 struct SettingsViewIconCell: View {
     let title: String
@@ -10,17 +11,17 @@ struct SettingsViewIconCell: View {
         HStack(alignment: .center) {
             Text(title)
                 .finnFont(.body)
-                .foregroundColor(.textPrimary)
+                .foregroundColor(.text)
                 .padding([.leading])
 
-            Spacer(minLength: .spacingS)
+            Spacer(minLength: Warp.Spacing.spacing100)
 
             Image(uiImage: icon)
                 .resizable()
                 .renderingMode(.template)
-                .frame(width: .spacingM, height: .spacingM)
+                .frame(width: Warp.Spacing.spacing200, height: Warp.Spacing.spacing200)
                 .foregroundColor(tintColor)
-                .padding([.trailing], .spacingXL)
+                .padding([.trailing], Warp.Spacing.spacing400)
         }.bottomDivider(!isLastItem)
     }
 }
@@ -28,7 +29,7 @@ struct SettingsViewIconCell: View {
 extension View {
     func bottomDivider(
         _ isLastItem: Bool,
-        inset: EdgeInsets = EdgeInsets(top: 0, leading: .spacingM, bottom: 0, trailing: 0)
+        inset: EdgeInsets = EdgeInsets(top: 0, leading: Warp.Spacing.spacing200, bottom: 0, trailing: 0)
     ) -> some View {
         modifier(BottomDivider(isLastItem: isLastItem, inset: inset))
     }
@@ -36,7 +37,7 @@ extension View {
 
 struct SettingsViewIconCell_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsViewIconCell(title: "Personvernerklæring", icon: .init(systemName: "square.and.arrow.up")!, tintColor: .bgSuccess, isLastItem: false) // swiftlint:disable:this force_unwrapping
+        SettingsViewIconCell(title: "Personvernerklæring", icon: .init(systemName: "square.and.arrow.up")!, tintColor: .backgroundPositiveSubtle, isLastItem: false) // swiftlint:disable:this force_unwrapping
     }
 }
 

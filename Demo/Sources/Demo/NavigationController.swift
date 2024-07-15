@@ -21,7 +21,7 @@ class NavigationController: UINavigationController {
 
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .bgPrimary
+        appearance.backgroundColor = .background
         navigationBar.standardAppearance = appearance
         navigationBar.scrollEdgeAppearance = appearance
     }

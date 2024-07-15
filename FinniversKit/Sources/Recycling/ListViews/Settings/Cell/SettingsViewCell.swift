@@ -10,7 +10,7 @@ class SettingsViewCell: BasicTableViewCell {
 
     private lazy var hairLine: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .tableViewSeparator
+        view.backgroundColor = .border
         return view
     }()
 

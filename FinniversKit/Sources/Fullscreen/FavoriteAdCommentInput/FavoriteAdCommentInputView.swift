@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol FavoriteAdCommentInputViewDelegate: AnyObject {
     func favoriteAdCommentInputView(_ view: FavoriteAdCommentInputView, didChangeText text: String)
@@ -105,7 +106,7 @@ public final class FavoriteAdCommentInputView: UIView {
             notificationCenter.addObserver(self, selector: #selector(handleKeyboardNotification(_:)), name: $0, object: nil)
         }
 
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         addSubview(scrollView)
 
         scrollView.addSubview(contentView)
@@ -127,10 +128,10 @@ public final class FavoriteAdCommentInputView: UIView {
             adView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
             textView.topAnchor.constraint(equalTo: adView.bottomAnchor),
-            textView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-            textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            textView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
             textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 86),
-            textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM)
+            textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Warp.Spacing.spacing200)
         ])
 
         scrollViewBottomConstraint.constant = 0

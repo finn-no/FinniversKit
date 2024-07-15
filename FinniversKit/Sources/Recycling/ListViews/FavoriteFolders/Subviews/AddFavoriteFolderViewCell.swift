@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 final class AddFavoriteFolderViewCell: BasicTableViewCell {
     private lazy var button: UIButton = {
@@ -38,6 +39,6 @@ final class AddFavoriteFolderViewCell: BasicTableViewCell {
             button.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
 
-        separatorInset = .leadingInset(.spacingM * 2 + AddFavoriteFolderButton.imageSize)
+        separatorInset = .leadingInset(Warp.Spacing.spacing200 * 2 + AddFavoriteFolderButton.imageSize)
     }
 }

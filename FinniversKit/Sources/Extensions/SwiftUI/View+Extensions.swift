@@ -3,9 +3,10 @@
 //
 
 import SwiftUI
+import Warp
 
 extension View {
-    public func roundedBorder(radius: CGFloat, width: CGFloat = .spacingXXS, color: Color) -> some View {
+    public func roundedBorder(radius: CGFloat, width: CGFloat = Warp.Spacing.spacing25, color: Color) -> some View {
         self.overlay(
             RoundedRectangle(cornerRadius: radius)
                 .strokeBorder(color, lineWidth: width)

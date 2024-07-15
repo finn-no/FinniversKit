@@ -20,10 +20,10 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
                 self?.configureTitleView(title: "Mercedes-Benz C-Klasse", subtitle: "C200 4MATIC aut Hengerfeste, Panoramasoltak, AMG, LED +", ribbonViewModel: .sold)
             },
             TweakingOption(title: "Torget w/ ribbon") { [weak self] in
-                self?.configureTitleView(title: "Sofa med sjeselong - pris diskuterbar!", ribbonViewModel: .sold, spacingAfterTitle: .spacingS)
+                self?.configureTitleView(title: "Sofa med sjeselong - pris diskuterbar!", ribbonViewModel: .sold, spacingAfterTitle: Warp.Spacing.spacing100)
             },
             TweakingOption(title: "Torget giveaway") { [weak self] in
-                self?.configureTitleView(title: "Sofa med sjeselong", subtitle: "Gis bort", subtitleStyle: .title3, spacingAfterTitle: .spacingS)
+                self?.configureTitleView(title: "Sofa med sjeselong", subtitle: "Gis bort", subtitleStyle: .title3, spacingAfterTitle: Warp.Spacing.spacing100)
             },
             TweakingOption(title: "Realestate new construction market") { [weak self] in
                 self?.configureTitleView(title: "Hareveien 11", titleStyle: .body, subtitle: "7 lekre selveierleiligheter uten gjenboere", subtitleStyle: .title2)
@@ -37,8 +37,8 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
                     caption: "Veigatestien 25B, 0101 Oslo",
                     captionStyle: .caption,
                     ribbonViewModel: .sold,
-                    spacingAfterTitle: .spacingXS,
-                    spacingAfterSubtitle: .spacingS
+                    spacingAfterTitle: Warp.Spacing.spacing50,
+                    spacingAfterSubtitle: Warp.Spacing.spacing100
                 )
             }
         ]
@@ -63,8 +63,8 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
         caption: String? = nil,
         captionStyle: Label.Style = .caption,
         ribbonViewModel: RibbonViewModel? = nil,
-        spacingAfterTitle: CGFloat = .spacingXS,
-        spacingAfterSubtitle: CGFloat = .spacingXS,
+        spacingAfterTitle: CGFloat = Warp.Spacing.spacing50,
+        spacingAfterSubtitle: CGFloat = Warp.Spacing.spacing50,
         areLabelsCopyable: Bool = false
     ) {
         titleView?.removeFromSuperview()
@@ -74,8 +74,8 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
         addSubview(newTitleView)
 
         NSLayoutConstraint.activate([
-            newTitleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
-            newTitleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            newTitleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
+            newTitleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
             newTitleView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
         newTitleView.configure(

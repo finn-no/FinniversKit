@@ -31,7 +31,7 @@ public class BuyerPickerView: UIView {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.backgroundColor = .bgPrimary
+        tableView.backgroundColor = .background
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.register(BuyerPickerTextHeader.self)

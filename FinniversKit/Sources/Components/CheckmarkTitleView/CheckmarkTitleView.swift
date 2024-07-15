@@ -1,13 +1,14 @@
 //
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
+import Warp
 
 public class CheckmarkTitleView: UIView {
     private lazy var checkmarkImageView: UIImageView = {
         let image = UIImage(named: .check).withRenderingMode(.alwaysTemplate)
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .nmpBrandDecoration
+        imageView.tintColor = .iconPrimary
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -36,10 +37,10 @@ private extension CheckmarkTitleView {
         NSLayoutConstraint.activate([
             checkmarkImageView.heightAnchor.constraint(equalToConstant: 20),
             checkmarkImageView.widthAnchor.constraint(equalToConstant: 20),
-            checkmarkImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            checkmarkImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
 
             titleLabel.centerYAnchor.constraint(equalTo: checkmarkImageView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: checkmarkImageView.trailingAnchor, constant: .spacingS),
+            titleLabel.leadingAnchor.constraint(equalTo: checkmarkImageView.trailingAnchor, constant: Warp.Spacing.spacing100),
         ])
     }
 }

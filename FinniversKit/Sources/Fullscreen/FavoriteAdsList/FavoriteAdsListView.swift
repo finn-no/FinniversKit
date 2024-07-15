@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol FavoriteAdsListViewDelegate: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectItemAt indexPath: IndexPath)
@@ -115,7 +116,7 @@ public class FavoriteAdsListView: UIView {
         tableView.estimatedRowHeight = 130
         tableView.estimatedSectionHeaderHeight = 32
         tableView.allowsMultipleSelectionDuringEditing = true
-        tableView.backgroundColor = .bgPrimary
+        tableView.backgroundColor = .background
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
@@ -446,7 +447,7 @@ extension FavoriteAdsListView: UITableViewDelegate {
                 completionHandler(true)
             })
 
-        commentAction.backgroundColor = .gray700
+        commentAction.backgroundColor = Warp.UIToken.iconStatic
 
         let deleteAction = UIContextualAction(
             style: .normal,
@@ -457,7 +458,7 @@ extension FavoriteAdsListView: UITableViewDelegate {
                 completionHandler(true)
             })
 
-        deleteAction.backgroundColor = .systemRed
+        deleteAction.backgroundColor = .backgroundNegative
 
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction, commentAction])
         configuration.performsFirstActionWithFullSwipe = false

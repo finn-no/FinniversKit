@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 class CheckmarkItemDetailView: UIView {
 
@@ -7,7 +8,7 @@ class CheckmarkItemDetailView: UIView {
     private let item: String
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(axis: .horizontal, spacing: .spacingS, withAutoLayout: true)
+        let stackView = UIStackView(axis: .horizontal, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
         stackView.alignment = .top
         stackView.distribution = .fill
         stackView.addArrangedSubviews([iconImageView, titleLabel])
@@ -17,7 +18,7 @@ class CheckmarkItemDetailView: UIView {
     private lazy var titleLabel: Label = {
         let label = Label(style: .caption, withAutoLayout: true)
         label.text = item
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.numberOfLines = 0
         return label
     }()
@@ -25,7 +26,7 @@ class CheckmarkItemDetailView: UIView {
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: .checkmark)
-        imageView.tintColor = .textSecondary
+        imageView.tintColor = .textSubtle
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -50,7 +51,7 @@ class CheckmarkItemDetailView: UIView {
         NSLayoutConstraint.activate([
             iconImageView.widthAnchor.constraint(equalToConstant: 12),
             iconImageView.heightAnchor.constraint(equalToConstant: 12),
-            iconImageView.bottomAnchor.constraint(equalTo: titleLabel.firstBaselineAnchor, constant: .spacingXXS)
+            iconImageView.bottomAnchor.constraint(equalTo: titleLabel.firstBaselineAnchor, constant: Warp.Spacing.spacing25)
         ])
     }
 }

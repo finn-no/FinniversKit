@@ -1,5 +1,6 @@
 import FinniversKit
 import DemoKit
+import Warp
 
 class ContractActionDemoView: UIView {
     private lazy var contractActionView: ContractActionView = {
@@ -24,8 +25,8 @@ class ContractActionDemoView: UIView {
         addSubview(contractActionView)
 
         NSLayoutConstraint.activate([
-            contractActionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
-            contractActionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            contractActionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
+            contractActionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
             contractActionView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
@@ -58,9 +59,9 @@ extension ContractActionDemoView: TweakableDemo {
             contractActionView.configure(
                 with: .requestAccessToContract,
                 topIcon: UIImage(named: .contract),
-                trailingImageTopConstant: .spacingM,
-                trailingImageTrailingConstant: -.spacingM,
-                contentSpacing: .spacingM,
+                trailingImageTopConstant: Warp.Spacing.spacing200,
+                trailingImageTrailingConstant: -Warp.Spacing.spacing200,
+                contentSpacing: Warp.Spacing.spacing200,
                 paragraphSpacing: 12
             )
         }

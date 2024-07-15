@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 // MARK: - FeedbackViewDelegate
 
@@ -50,22 +51,22 @@ public class FeedbackView: UIView {
     }()
 
     private lazy var gridPresentationConstraints: [NSLayoutConstraint] = [
-        imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+        imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
         imageGridHeightConstraint,
-        titleView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .spacingS),
-        titleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
-        buttonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
-        buttonView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM)
+        titleView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: Warp.Spacing.spacing100),
+        titleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
+        buttonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
+        buttonView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing200)
     ]
 
     private lazy var listPresentationConstraints: [NSLayoutConstraint] = [
-        imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
+        imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100),
         imageView.widthAnchor.constraint(equalToConstant: 130),
         imageListHeightConstraint,
-        titleView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
-        titleView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingS),
-        buttonView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingS),
-        buttonView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS)
+        titleView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
+        titleView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: Warp.Spacing.spacing100),
+        buttonView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: Warp.Spacing.spacing100),
+        buttonView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100)
     ]
 
     private lazy var imageListHeightConstraint = imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 100)
@@ -85,7 +86,7 @@ public class FeedbackView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgSecondary
+        backgroundColor = .backgroundInfoSubtle
 
         layer.borderWidth = 1
         layer.cornerRadius = 8
@@ -96,13 +97,13 @@ public class FeedbackView: UIView {
         addSubview(buttonView)
 
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
 
-            titleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
-            titleView.bottomAnchor.constraint(equalTo: buttonView.topAnchor, constant: -.spacingS),
+            titleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
+            titleView.bottomAnchor.constraint(equalTo: buttonView.topAnchor, constant: -Warp.Spacing.spacing100),
 
-            buttonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS)
+            buttonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100)
         ])
 
         imageListHeightConstraint.priority = .required - 1
@@ -185,7 +186,7 @@ public class FeedbackView: UIView {
         super.layoutSubviews()
         hasBeenPresented = true
 
-        layer.borderColor = .decorationSubtle
+        layer.borderColor = .backgroundDisabled
 
         guard allowAutomaticPresentationSwitch else { return }
 
@@ -223,7 +224,7 @@ private class TitleView: UIView {
         return label
     }()
 
-    private lazy var titleLabelLeadingConstraint = titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS)
+    private lazy var titleLabelLeadingConstraint = titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100)
 
     // MARK: - Init
 
@@ -244,7 +245,7 @@ private class TitleView: UIView {
         NSLayoutConstraint.activate([
             titleLabelLeadingConstraint,
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
             heightAnchor.constraint(greaterThanOrEqualTo: titleLabel.heightAnchor)
         ])
     }
@@ -264,7 +265,7 @@ private class TitleView: UIView {
         case .grid:
             titleLabel.textAlignment = .center
             titleLabel.font = .bodyStrong
-            titleLabelLeadingConstraint.constant = .spacingS
+            titleLabelLeadingConstraint.constant = Warp.Spacing.spacing100
         }
     }
 }
@@ -295,7 +296,7 @@ private class ButtonView: UIView {
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
-        stackView.spacing = .spacingS
+        stackView.spacing = Warp.Spacing.spacing100
         stackView.distribution = .fillEqually
         stackView.addArrangedSubview(positiveButton)
         stackView.addArrangedSubview(negativeButton)
@@ -359,7 +360,7 @@ private extension Button.Style {
     static func negativeButton() -> Button.Style {
         Button.Style.default.overrideStyle(
             borderWidth: 1.0,
-            borderColor: .nmpBrandDecoration
+            borderColor: .backgroundPrimary
         )
     }
 }

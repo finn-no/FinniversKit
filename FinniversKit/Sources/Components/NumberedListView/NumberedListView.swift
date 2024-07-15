@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public protocol NumberedListViewDelegate: AnyObject {
     func numberedListView(_ view: NumberedListView, didSelectActionButtonForItemAt itemIndex: Int)
@@ -13,7 +14,7 @@ public class NumberedListView: UIView {
     // MARK: - Private properties
 
     private let numberLabelStyle = Label.Style.bodyStrong
-    private lazy var contentStackView = UIStackView(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
+    private lazy var contentStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, withAutoLayout: true)
 
     // MARK: - Init
 
@@ -48,7 +49,7 @@ public class NumberedListView: UIView {
                 self.delegate?.numberedListView(self, didSelectActionButtonForItemAt: index)
             })
 
-            let lineStackView = UIStackView(axis: .horizontal, spacing: .spacingS, withAutoLayout: true)
+            let lineStackView = UIStackView(axis: .horizontal, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
             lineStackView.alignment = .top
             lineStackView.addArrangedSubviews([numberView, itemView])
 
@@ -74,7 +75,7 @@ public class NumberedListView: UIView {
 
     private func createNumberLabel(number: Int) -> Label {
         let label = Label(style: numberLabelStyle, withAutoLayout: true)
-        label.textColor = .textAction
+        label.textColor = .textLink
         label.text = "\(number)"
         return label
     }
@@ -87,7 +88,7 @@ private class ListItemView: UIView {
     private let actionButtonHandler: ButtonHandler?
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(axis: .vertical, spacing: .spacingXS, withAutoLayout: true)
+        let stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing50, withAutoLayout: true)
         stackView.addArrangedSubviews([titleLabel, bodyLabel])
         return stackView
     }()
@@ -106,7 +107,7 @@ private class ListItemView: UIView {
     }()
 
     private lazy var actionButton: Button = {
-        let margins = UIEdgeInsets(top: .spacingS, left: .zero, bottom: .spacingS, right: .spacingM)
+        let margins = UIEdgeInsets(top: Warp.Spacing.spacing100, left: .zero, bottom: Warp.Spacing.spacing100, right: Warp.Spacing.spacing200)
         let style = Button.Style.flat.overrideStyle(margins: margins)
         let button = Button(style: style, size: .small, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)

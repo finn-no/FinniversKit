@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public protocol NavigationLinkViewDelegate: AnyObject {
     func navigationLinkViewWasTapped(_ navigationLinkView: NavigationLinkView)
@@ -23,8 +24,8 @@ public class NavigationLinkView: UIView {
     public init(
         withSubview view: UIView,
         withAutoLayout: Bool = false,
-        padding: CGFloat = .spacingM,
-        backgroundColor: UIColor = .bgSecondary
+        padding: CGFloat = Warp.Spacing.spacing200,
+        backgroundColor: UIColor = .backgroundInfoSubtle
     ) {
         self.padding = padding
         super.init(frame: .zero)
@@ -40,7 +41,7 @@ public class NavigationLinkView: UIView {
     // MARK: - Setup
 
     private func setup(withSubview view: UIView) {
-        layer.cornerRadius = .spacingS
+        layer.cornerRadius = Warp.Spacing.spacing100
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         addGestureRecognizer(tapGestureRecognizer)
@@ -55,7 +56,7 @@ public class NavigationLinkView: UIView {
             view.trailingAnchor.constraint(equalTo: arrowImageView.leadingAnchor, constant: -padding),
 
             arrowImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            arrowImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -(padding + .spacingXS)),
+            arrowImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -(padding + Warp.Spacing.spacing50)),
             arrowImageView.widthAnchor.constraint(equalToConstant: 7),
         ])
     }

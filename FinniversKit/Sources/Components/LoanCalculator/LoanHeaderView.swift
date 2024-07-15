@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol LoanHeaderViewModel {
     var title: String? { get }
@@ -42,7 +43,7 @@ class LoanHeaderView: UIView {
     private lazy var outerStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.spacing = .spacingM
+        stackView.spacing = Warp.Spacing.spacing200
 
         return stackView
     }()
@@ -128,15 +129,15 @@ class LoanHeaderView: UIView {
             titleLabel.leadingAnchor.constraint(equalTo: textContainerView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: textContainerView.trailingAnchor),
 
-            valueLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
+            valueLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing100),
             valueLabel.leadingAnchor.constraint(equalTo: textContainerView.leadingAnchor),
             valueLabel.trailingAnchor.constraint(equalTo: textContainerView.trailingAnchor),
 
-            rentLabel.topAnchor.constraint(equalTo: valueLabel.bottomAnchor, constant: .spacingS),
+            rentLabel.topAnchor.constraint(equalTo: valueLabel.bottomAnchor, constant: Warp.Spacing.spacing100),
             rentLabel.leadingAnchor.constraint(equalTo: textContainerView.leadingAnchor),
             rentLabel.trailingAnchor.constraint(equalTo: textContainerView.trailingAnchor),
 
-            loanTotalLabel.topAnchor.constraint(equalTo: rentLabel.bottomAnchor, constant: .spacingS),
+            loanTotalLabel.topAnchor.constraint(equalTo: rentLabel.bottomAnchor, constant: Warp.Spacing.spacing100),
             loanTotalLabel.leadingAnchor.constraint(equalTo: textContainerView.leadingAnchor),
             loanTotalLabel.trailingAnchor.constraint(equalTo: textContainerView.trailingAnchor),
             loanTotalLabel.bottomAnchor.constraint(equalTo: textContainerView.bottomAnchor),
@@ -153,7 +154,7 @@ class LoanHeaderView: UIView {
             logoImageView.topAnchor.constraint(equalTo: valuesContainerView.topAnchor),
             logoImageView.heightAnchor.constraint(lessThanOrEqualTo: textContainerView.heightAnchor),
             logoImageView.trailingAnchor.constraint(equalTo: valuesContainerView.trailingAnchor),
-            logoImageView.leadingAnchor.constraint(equalTo: textContainerView.trailingAnchor, constant: .spacingM),
+            logoImageView.leadingAnchor.constraint(equalTo: textContainerView.trailingAnchor, constant: Warp.Spacing.spacing200),
         ])
 
         outerStackView.addArrangedSubview(valuesContainerView)

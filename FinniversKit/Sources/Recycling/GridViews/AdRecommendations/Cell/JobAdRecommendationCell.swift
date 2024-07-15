@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell {
 
@@ -23,8 +24,6 @@ public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell
             favoriteButton.isToggled = isFavorite
         }
     }
-
-    private let loadingColors: [UIColor] = [.yellow100, .red100]
 
     private var loadingColor: UIColor = .clear {
         didSet {
@@ -66,7 +65,7 @@ public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell
 
     private lazy var metadataContainer: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .bgTertiary
+        view.backgroundColor = .backgroundSubtle
         return view
     }()
 
@@ -128,7 +127,7 @@ public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell
         accessibilityElements = [containerView, favoriteButton]
         containerView.accessibilityTraits = .button
 
-        contentView.layer.cornerRadius = .spacingS
+        contentView.layer.cornerRadius = Warp.Spacing.spacing100
         contentView.layer.borderWidth = 1
 
         contentView.addSubview(containerView)
@@ -156,33 +155,33 @@ public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell
             imageViewContainer.bottomAnchor.constraint(equalTo: metadataContainer.topAnchor),
 
             imageView.centerXAnchor.constraint(equalTo: imageViewContainer.centerXAnchor),
-            imageView.topAnchor.constraint(equalTo: imageViewContainer.topAnchor, constant: .spacingS),
-            imageView.bottomAnchor.constraint(equalTo: imageViewContainer.bottomAnchor, constant: -.spacingS, priority: .required - 1),
+            imageView.topAnchor.constraint(equalTo: imageViewContainer.topAnchor, constant: Warp.Spacing.spacing100),
+            imageView.bottomAnchor.constraint(equalTo: imageViewContainer.bottomAnchor, constant: -Warp.Spacing.spacing100, priority: .required - 1),
             imageView.widthAnchor.constraint(equalTo: imageViewContainer.widthAnchor, multiplier: JobAdRecommendationCell.imageWidthMultiplier),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: JobAdRecommendationCell.imageHeightMultiplier),
 
-            favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXS),
-            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingXS),
+            favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing50),
+            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing50),
             favoriteButton.widthAnchor.constraint(equalToConstant: 34),
             favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.heightAnchor),
 
-            ribbonView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
-            ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingS),
+            ribbonView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing100),
+            ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing100),
 
             metadataContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             metadataContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             metadataContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            metadataContainerLayoutGuide.topAnchor.constraint(equalTo: metadataContainer.topAnchor, constant: .spacingS),
-            metadataContainerLayoutGuide.leadingAnchor.constraint(equalTo: metadataContainer.leadingAnchor, constant: .spacingS),
-            metadataContainerLayoutGuide.trailingAnchor.constraint(equalTo: metadataContainer.trailingAnchor, constant: -.spacingS),
-            metadataContainerLayoutGuide.bottomAnchor.constraint(equalTo: metadataContainer.bottomAnchor, constant: -.spacingS),
+            metadataContainerLayoutGuide.topAnchor.constraint(equalTo: metadataContainer.topAnchor, constant: Warp.Spacing.spacing100),
+            metadataContainerLayoutGuide.leadingAnchor.constraint(equalTo: metadataContainer.leadingAnchor, constant: Warp.Spacing.spacing100),
+            metadataContainerLayoutGuide.trailingAnchor.constraint(equalTo: metadataContainer.trailingAnchor, constant: -Warp.Spacing.spacing100),
+            metadataContainerLayoutGuide.bottomAnchor.constraint(equalTo: metadataContainer.bottomAnchor, constant: -Warp.Spacing.spacing100),
 
             titleLabel.leadingAnchor.constraint(equalTo: metadataContainerLayoutGuide.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: metadataContainerLayoutGuide.trailingAnchor),
             titleLabel.topAnchor.constraint(equalTo: metadataContainerLayoutGuide.topAnchor),
 
-            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
+            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing100),
             stackView.leadingAnchor.constraint(equalTo: metadataContainerLayoutGuide.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: metadataContainerLayoutGuide.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: metadataContainerLayoutGuide.bottomAnchor),
@@ -190,7 +189,7 @@ public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell
     }
 
     public override func layoutSubviews() {
-        contentView.layer.borderColor = .imageBorder
+        contentView.layer.borderColor = .border
 
         super.layoutSubviews()
     }
@@ -216,7 +215,7 @@ extension JobAdRecommendationCell: AdRecommendationConfigurable {
         self.model = model
         self.index = index
 
-        loadingColor = loadingColors[index % loadingColors.count]
+        loadingColor = .backgroundSubtle
 
         containerView.accessibilityLabel = model?.accessibilityLabel
         favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityLabel
@@ -250,14 +249,14 @@ public extension JobAdRecommendationCell {
             : model.locationAndPublishedRelative
 
         var imageHeight = (width * imageWidthMultiplier) * imageHeightMultiplier
-        imageHeight += .spacingS * 2 // Vertical padding of image
+        imageHeight += Warp.Spacing.spacing100 * 2 // Vertical padding of image
 
-        let horizontalContainerPadding = .spacingS * 2
+        let horizontalContainerPadding = Warp.Spacing.spacing100 * 2
 
-        var height: CGFloat = .spacingS * 2 // Vertical padding of container
+        var height: CGFloat = Warp.Spacing.spacing100 * 2 // Vertical padding of container
         height += imageHeight
         height += titleLabel.sizeThatFits(CGSize(width: width - horizontalContainerPadding, height: CGFloat.greatestFiniteMagnitude)).height
-        height += .spacingS // Vertical padding between labels
+        height += Warp.Spacing.spacing100 // Vertical padding between labels
         height += detailLabel.sizeThatFits(CGSize(width: (width - horizontalContainerPadding) / 2, height: CGFloat.greatestFiniteMagnitude)).height
 
         return ceil(height)

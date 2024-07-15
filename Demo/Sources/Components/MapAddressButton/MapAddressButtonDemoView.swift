@@ -1,5 +1,6 @@
 import FinniversKit
 import DemoKit
+import Warp
 
 class MapAddressButtonDemoView: UIView, Demoable {
 
@@ -7,7 +8,7 @@ class MapAddressButtonDemoView: UIView, Demoable {
 
     // MARK: - Private properties
 
-    private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+    private lazy var stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
 
     // MARK: - Init
 
@@ -27,9 +28,9 @@ class MapAddressButtonDemoView: UIView, Demoable {
         addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200)
         ])
     }
 

@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol FavoriteFolderShareLinkViewDelegate: AnyObject {
     func favoriteFolderShareLinkViewDidSelectButton(_ view: FavoriteFolderShareLinkView)
@@ -13,8 +14,8 @@ final class FavoriteFolderShareLinkView: UIView {
 
     var isEnabled = true {
         didSet {
-            iconImageView.tintColor = isEnabled ? .iconPrimary : .decorationSubtle
-            descriptionLabel.textColor = isEnabled ? .textPrimary : .textDisabled
+            iconImageView.tintColor = isEnabled ? .iconPrimary : .backgroundDisabled
+            descriptionLabel.textColor = isEnabled ? .text : .textDisabled
             button.isEnabled = isEnabled
         }
     }
@@ -30,7 +31,7 @@ final class FavoriteFolderShareLinkView: UIView {
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .caption
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
@@ -63,7 +64,7 @@ final class FavoriteFolderShareLinkView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .bgSecondary
+        backgroundColor = .backgroundInfoSubtle
 
         addSubview(iconImageView)
         addSubview(descriptionLabel)
@@ -71,12 +72,12 @@ final class FavoriteFolderShareLinkView: UIView {
 
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             iconImageView.widthAnchor.constraint(equalToConstant: FavoriteActionCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             descriptionLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            descriptionLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .spacingM),
+            descriptionLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: Warp.Spacing.spacing200),
             descriptionLabel.trailingAnchor.constraint(equalTo: button.leadingAnchor),
 
             button.centerYAnchor.constraint(equalTo: centerYAnchor),

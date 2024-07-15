@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol SettingsViewToggleCellDelegate: AnyObject {
     func settingsViewToggleCell(_ cell: SettingsViewToggleCell, didToggle isOn: Bool)
@@ -18,7 +19,7 @@ class SettingsViewToggleCell: SettingsViewCell {
 
     private lazy var uiswitch: UISwitch = {
         let toggle = UISwitch(withAutoLayout: true)
-        toggle.onTintColor = .nmpBrandControlSelected
+        toggle.onTintColor = .backgroundPrimary
         toggle.addTarget(self, action: #selector(handleValueChanged(toggle:)), for: .valueChanged)
         return toggle
     }()
@@ -49,7 +50,7 @@ class SettingsViewToggleCell: SettingsViewCell {
         NSLayoutConstraint.activate([
             uiswitch.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             uiswitch.leadingAnchor.constraint(greaterThanOrEqualTo: titleLabel.trailingAnchor, constant: 0),
-            uiswitch.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            uiswitch.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
         ])
     }
 }

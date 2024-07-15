@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol ContactFormCheckboxDelegate: AnyObject {
     func contactFormCheckbox(_ checkbox: ContactFormCheckbox, didChangeSelection isSelected: Bool)
@@ -14,7 +15,7 @@ final class ContactFormCheckbox: UIView {
     private lazy var questionLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .body
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.numberOfLines = 0
         return label
     }()
@@ -29,7 +30,7 @@ final class ContactFormCheckbox: UIView {
     private lazy var answerLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .body
-        label.textColor = .textPrimary
+        label.textColor = .text
         return label
     }()
 
@@ -62,12 +63,12 @@ final class ContactFormCheckbox: UIView {
             questionLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             questionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            checkboxView.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: .spacingXS),
+            checkboxView.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: Warp.Spacing.spacing50),
             checkboxView.leadingAnchor.constraint(equalTo: leadingAnchor),
             checkboxView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             answerLabel.centerYAnchor.constraint(equalTo: checkboxView.centerYAnchor),
-            answerLabel.leadingAnchor.constraint(equalTo: checkboxView.trailingAnchor, constant: .spacingXS),
+            answerLabel.leadingAnchor.constraint(equalTo: checkboxView.trailingAnchor, constant: Warp.Spacing.spacing50),
             answerLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }

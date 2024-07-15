@@ -12,9 +12,9 @@ public struct SwitchViewStyle {
 
     public static var `default` = SwitchViewStyle(
         titleLabelStyle: .bodyStrong,
-        titleLabelTextColor: .textSecondary,
+        titleLabelTextColor: .textSubtle,
         detailLabelStyle: .detail,
-        detailLabelTextColor: .textSecondary
+        detailLabelTextColor: .textSubtle
     )
 
     public init(titleLabelStyle: Label.Style, titleLabelTextColor: UIColor, detailLabelStyle: Label.Style, detailLabelTextColor: UIColor) {

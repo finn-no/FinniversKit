@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol FavoriteFoldersListViewDelegate: AnyObject {
     func favoriteFoldersListViewDidBeginRefreshing(_ view: FavoriteFoldersListView)
@@ -63,7 +64,7 @@ public class FavoriteFoldersListView: UIView {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .bgPrimary
+        tableView.backgroundColor = .background
         tableView.rowHeight = FavoriteFoldersListView.estimatedRowHeight
         tableView.estimatedRowHeight = FavoriteFoldersListView.estimatedRowHeight
         tableView.separatorInset = .leadingInset(frame.width)
@@ -327,10 +328,10 @@ public class FavoriteFoldersListView: UIView {
 
             xmasButton.bottomAnchor.constraint(equalTo: footerView.topAnchor, constant: -xmasButtonButtom),
             xmasButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            xmasButton.widthAnchor.constraint(equalToConstant: .spacingXXL),
+            xmasButton.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing800),
             xmasButton.heightAnchor.constraint(equalTo: xmasButton.widthAnchor),
 
-            xmasCalloutView.bottomAnchor.constraint(equalTo: xmasButton.topAnchor, constant: -.spacingS),
+            xmasCalloutView.bottomAnchor.constraint(equalTo: xmasButton.topAnchor, constant: -Warp.Spacing.spacing100),
             xmasCalloutView.trailingAnchor.constraint(equalTo: xmasButton.trailingAnchor),
             xmasCalloutView.widthAnchor.constraint(equalToConstant: 256)
         ])

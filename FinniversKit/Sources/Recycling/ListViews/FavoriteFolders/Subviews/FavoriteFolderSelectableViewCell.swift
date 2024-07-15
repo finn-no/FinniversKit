@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
     private let titleLabelDefaultFont: UIFont = .bodyRegular
@@ -17,14 +18,14 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
     private lazy var editModeView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .bgPrimary
+        view.backgroundColor = .background
         view.isHidden = true
         return view
     }()
 
     private lazy var stackViewToCheckmarkConstraint = stackView.trailingAnchor.constraint(
         equalTo: checkmarkImageView.leadingAnchor,
-        constant: -.spacingM
+        constant: -Warp.Spacing.spacing200
     )
 
     // MARK: - Init
@@ -43,12 +44,12 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
     public override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        checkmarkImageView.backgroundColor = .nmpBrandControlSelected
+        checkmarkImageView.backgroundColor = .backgroundPrimary
     }
 
     public override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
-        checkmarkImageView.backgroundColor = .nmpBrandControlSelected
+        checkmarkImageView.backgroundColor = .backgroundPrimary
     }
 
     public override func prepareForReuse() {
@@ -79,7 +80,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         stackViewTrailingAnchorConstraint.isActive = !stackViewToCheckmarkConstraint.isActive
 
         if isEditing {
-            separatorInset = UIEdgeInsets.leadingInset((.spacingXL + .spacingXS) * 2 + viewModel.imageViewWidth)
+            separatorInset = UIEdgeInsets.leadingInset((Warp.Spacing.spacing400 + Warp.Spacing.spacing50) * 2 + viewModel.imageViewWidth)
         } else if viewModel.isSelected {
             titleLabel.font = titleLabelSelectedFont
         }
@@ -97,16 +98,16 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
     // MARK: - Private methods
 
     private func setup() {
-        tintColor = .nmpBrandControlSelected
-        subtitleLabel.textColor = .textSecondary
+        tintColor = .backgroundPrimary
+        subtitleLabel.textColor = .textSubtle
 
         contentView.addSubview(checkmarkImageView)
         addSubview(editModeView)
 
         NSLayoutConstraint.activate([
-            checkmarkImageView.heightAnchor.constraint(equalToConstant: .spacingM),
-            checkmarkImageView.widthAnchor.constraint(equalToConstant: .spacingM),
-            checkmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            checkmarkImageView.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
+            checkmarkImageView.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
+            checkmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
             checkmarkImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
             stackViewToCheckmarkConstraint,

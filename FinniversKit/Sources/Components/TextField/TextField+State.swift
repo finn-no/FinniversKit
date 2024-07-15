@@ -28,16 +28,16 @@ public extension TextField {
         var underlineColor: UIColor {
             switch self {
             case .normal:
-                return .textSecondary
+                return .border
 
             case .disabled:
-                return .textDisabled
+                return .borderDisabled
 
             case .focus:
-                return .accentSecondaryBlue
+                return .borderFocus
 
             case .error:
-                return .textCritical
+                return .borderNegative
 
             case .readOnly:
                 return .clear
@@ -50,17 +50,17 @@ public extension TextField {
                 return .clear
 
             case .normal, .focus, .error:
-                return .bgSecondary
+                return .backgroundInfoSubtle
             }
         }
 
         var accessoryLabelTextColor: UIColor {
             switch self {
             case .disabled, .readOnly, .normal, .focus:
-                return .textPrimary
+                return .text
 
             case .error:
-                return .textCritical
+                return .textNegative
             }
         }
     }

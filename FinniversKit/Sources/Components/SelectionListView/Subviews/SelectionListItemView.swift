@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 class SelectionListItemView: UIView {
 
@@ -18,8 +19,8 @@ class SelectionListItemView: UIView {
     private let presentation: SelectionListView.Presentation
     private lazy var contentView = UIView(withAutoLayout: true)
     private lazy var selectionView = presentation.selectionView
-    private lazy var textStackView = UIStackView(axis: .vertical, spacing: .spacingXS, withAutoLayout: true)
-    private lazy var detailViewsStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+    private lazy var textStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing50, withAutoLayout: true)
+    private lazy var detailViewsStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
     private lazy var detailViewsStackViewBottomConstraint = detailViewsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
 
     private lazy var titleLabel: Label = {
@@ -30,14 +31,14 @@ class SelectionListItemView: UIView {
 
     private lazy var descriptionLabel: HTMLLabel = {
         let label = HTMLLabel(style: .caption, withAutoLayout: true)
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         label.numberOfLines = 0
         return label
     }()
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.tintColor = .textPrimary
+        imageView.tintColor = .text
         imageView.contentMode = .scaleAspectFit
         imageView.setContentCompressionResistancePriority(.required, for: .horizontal)
         imageView.setContentHuggingPriority(.required, for: .horizontal)
@@ -63,11 +64,11 @@ class SelectionListItemView: UIView {
 
     private func setup() {
         backgroundColor = .clear
-        contentView.backgroundColor = .bgPrimary
+        contentView.backgroundColor = .background
         if configuration.isIndependent {
             contentView.layer.borderWidth = 1
             contentView.layer.cornerRadius = configuration.cornerRadius
-            contentView.layer.borderColor = .borderDefault
+            contentView.layer.borderColor = .border
         }
 
         addCornerRadius(
@@ -98,7 +99,7 @@ class SelectionListItemView: UIView {
             let itemViews = detailItems.map { CheckmarkItemDetailView(item: $0, withAutoLayout: true) }
             detailViewsStackView.addArrangedSubviews(itemViews)
 
-            detailViewsStackViewBottomConstraint.constant = -.spacingM
+            detailViewsStackViewBottomConstraint.constant = -Warp.Spacing.spacing200
         }
 
         textStackView.addArrangedSubviews([titleLabel])
@@ -117,23 +118,23 @@ class SelectionListItemView: UIView {
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -configuration.horizontalSpacing),
             contentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -configuration.verticalSpacing),
 
-            selectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            selectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
             selectionView.centerYAnchor.constraint(equalTo: textStackView.centerYAnchor),
 
-            textStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
-            textStackView.leadingAnchor.constraint(equalTo: selectionView.trailingAnchor, constant: .spacingM),
-            textStackView.bottomAnchor.constraint(equalTo: detailViewsStackView.topAnchor, constant: -.spacingM),
+            textStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing200),
+            textStackView.leadingAnchor.constraint(equalTo: selectionView.trailingAnchor, constant: Warp.Spacing.spacing200),
+            textStackView.bottomAnchor.constraint(equalTo: detailViewsStackView.topAnchor, constant: -Warp.Spacing.spacing200),
 
-            detailViewsStackView.leadingAnchor.constraint(equalTo: selectionView.trailingAnchor, constant: .spacingM),
-            detailViewsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            detailViewsStackView.leadingAnchor.constraint(equalTo: selectionView.trailingAnchor, constant: Warp.Spacing.spacing200),
+            detailViewsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
             detailViewsStackViewBottomConstraint
         ]
 
         if case .none = model.icon {} else {
             contentView.addSubview(iconImageView)
             constraints.append(contentsOf: [
-                iconImageView.leadingAnchor.constraint(equalTo: textStackView.trailingAnchor, constant: .spacingM),
-                iconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+                iconImageView.leadingAnchor.constraint(equalTo: textStackView.trailingAnchor, constant: Warp.Spacing.spacing200),
+                iconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
                 iconImageView.centerYAnchor.constraint(equalTo: textStackView.centerYAnchor)
             ])
         }
@@ -191,11 +192,11 @@ class SelectionListItemView: UIView {
         UIView.animate(withDuration: duration, animations: { [weak self] in
             guard let self = self else { return }
             if self.configuration.isIndependent {
-                self.contentView.layer.borderColor = self.isSelected ? .nmpBrandControlSelected : .borderDefault
+                self.contentView.layer.borderColor = self.isSelected ? .backgroundPrimary : .border
             } else {
-                self.backgroundColor = self.isSelected ? .nmpBrandControlSelected : .clear
+                self.backgroundColor = self.isSelected ? .backgroundPrimary : .clear
             }
-            self.iconImageView.tintColor = self.isSelected ? .textPrimary : .textSecondary
+            self.iconImageView.tintColor = self.isSelected ? .text : .textSubtle
         })
     }
 }

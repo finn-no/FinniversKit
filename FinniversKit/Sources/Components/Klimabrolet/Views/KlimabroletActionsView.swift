@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Warp
 
 protocol KlimabroletActionsViewDelegate: AnyObject {
     func klimabroletViewDidSelectPrimaryButton(_ view: KlimabroletActionsView)
@@ -50,20 +51,20 @@ class KlimabroletActionsView: UIView {
     // MARK: - Private methods
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         addSubview(primaryButton)
         addSubview(secondaryButton)
 
         NSLayoutConstraint.activate([
-            primaryButton.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
-            primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            primaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            primaryButton.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
+            primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            primaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
             secondaryButton.topAnchor.constraint(equalTo: primaryButton.bottomAnchor),
-            secondaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            secondaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
-            secondaryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM),
+            secondaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            secondaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
+            secondaryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing200),
         ])
     }
 

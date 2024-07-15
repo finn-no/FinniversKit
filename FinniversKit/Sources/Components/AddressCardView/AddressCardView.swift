@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol AddressCardViewDelegate: AnyObject {
     func addressCardViewDidSelectCopyButton(_ addressCardView: AddressCardView)
@@ -17,13 +18,13 @@ public final class AddressCardView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var addressStackView = UIStackView(axis: .vertical, spacing: .spacingXS, withAutoLayout: true)
-    private lazy var contentStackView = UIStackView(axis: .vertical, spacing: .spacingL, withAutoLayout: true)
+    private lazy var addressStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing50, withAutoLayout: true)
+    private lazy var contentStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing300, withAutoLayout: true)
     private lazy var titleLabel = Label(style: .title3Strong, withAutoLayout: true)
     private lazy var subtitleLabel = Label(style: .bodyStrong, withAutoLayout: true)
 
     private lazy var topStackView: UIStackView = {
-        let view = UIStackView(axis: .horizontal, spacing: .spacingM, withAutoLayout: true)
+        let view = UIStackView(axis: .horizontal, spacing: Warp.Spacing.spacing200, withAutoLayout: true)
         view.alignment = .center
         view.distribution = .equalSpacing
         return view
@@ -70,14 +71,14 @@ public final class AddressCardView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         addressStackView.addArrangedSubviews([titleLabel, subtitleLabel])
         topStackView.addArrangedSubviews([addressStackView, copyButton])
         contentStackView.addArrangedSubviews([topStackView, getDirectionsButton])
 
         addSubview(contentStackView)
-        contentStackView.fillInSuperview(insets: UIEdgeInsets(top: .spacingM, leading: .spacingM, bottom: -.spacingL, trailing: -.spacingM))
+        contentStackView.fillInSuperview(insets: UIEdgeInsets(top: Warp.Spacing.spacing200, leading: Warp.Spacing.spacing200, bottom: -Warp.Spacing.spacing300, trailing: -Warp.Spacing.spacing200))
     }
 
     // MARK: - Actions

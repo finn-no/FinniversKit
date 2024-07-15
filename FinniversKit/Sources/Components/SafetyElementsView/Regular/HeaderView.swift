@@ -3,10 +3,11 @@
 //
 
 import UIKit
+import Warp
 
 extension SafetyElementsView {
     class HeaderView: UIView {
-        var contentBackgroundColor: UIColor? = .bgSecondary {
+        var contentBackgroundColor: UIColor? = .backgroundInfoSubtle {
             didSet {
                 if isActive {
                     titleView.backgroundColor = contentBackgroundColor
@@ -23,9 +24,9 @@ extension SafetyElementsView {
             didSet {
                 if isActive {
                     titleView.backgroundColor = contentBackgroundColor
-                    iconImageView.tintColor = .activeSafetyIconTint
+                    iconImageView.tintColor = .backgroundPrimary
                 } else {
-                    iconImageView.tintColor = .inactiveSafetyIconTint
+                    iconImageView.tintColor = .icon
                     titleView.backgroundColor = .clear
                 }
             }
@@ -37,7 +38,7 @@ extension SafetyElementsView {
             let stackView = UIStackView(withAutoLayout: true)
             stackView.axis = .vertical
             stackView.alignment = .center
-            stackView.spacing = .spacingS
+            stackView.spacing = Warp.Spacing.spacing100
             stackView.isUserInteractionEnabled = true
             return stackView
         }()
@@ -53,10 +54,10 @@ extension SafetyElementsView {
 
         private lazy var titleView: UIView = {
             let view = UIView(withAutoLayout: true)
-            view.backgroundColor = .bgTertiary
+            view.backgroundColor = .backgroundSubtle
             view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-            view.layer.cornerRadius = .spacingS
-            view.layoutMargins = UIEdgeInsets(vertical: .spacingS, horizontal: .spacingM)
+            view.layer.cornerRadius = Warp.Spacing.spacing100
+            view.layoutMargins = UIEdgeInsets(vertical: Warp.Spacing.spacing100, horizontal: Warp.Spacing.spacing200)
             return view
         }()
 
@@ -78,8 +79,8 @@ extension SafetyElementsView {
             titleLabel.fillInSuperviewLayoutMargins()
 
             NSLayoutConstraint.activate([
-                iconImageView.heightAnchor.constraint(equalToConstant: .spacingM * 1.5),
-                iconImageView.widthAnchor.constraint(equalToConstant: .spacingM * 1.5),
+                iconImageView.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200 * 1.5),
+                iconImageView.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200 * 1.5),
             ])
 
             outerStackView.addArrangedSubview(iconImageView)

@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public protocol BrazePromotionViewDelegate: AnyObject {
     func brazePromotionView(_ brazePromotionView: BrazePromotionView, didSelect action: BrazePromotionView.Action)
@@ -17,7 +18,7 @@ public class BrazePromotionView: UIView {
 
     private lazy var backgroundView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .bgColor
+        view.backgroundColor = .surfaceElevated200
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
         return view
@@ -78,13 +79,13 @@ public class BrazePromotionView: UIView {
 
     private lazy var closeButton: CloseButton = {
         let button = CloseButton(withAutoLayout: true)
-        button.tintColor = .bgPrimary
+        button.tintColor = .background
         button.setImage(UIImage(named: .cross), for: .normal)
         button.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = buttonSize / 2.0
         button.clipsToBounds = true
-        button.imageEdgeInsets = UIEdgeInsets(vertical: .spacingXS, horizontal: .spacingXS)
+        button.imageEdgeInsets = UIEdgeInsets(vertical: Warp.Spacing.spacing50, horizontal: Warp.Spacing.spacing50)
         button.addTarget(self, action: #selector(handleTapOnCloseButton), for: .touchUpInside)
         return button
     }()
@@ -99,12 +100,12 @@ public class BrazePromotionView: UIView {
     }()
 
     private lazy var verticalStackView: UIStackView = {
-        let stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+        let stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
         stackView.distribution = .fillProportionally
         stackView.alignment = .leading
         stackView.setContentCompressionResistancePriority(.required, for: .horizontal)
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .spacingS)
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: Warp.Spacing.spacing100)
         return stackView
     }()
 
@@ -118,7 +119,7 @@ public class BrazePromotionView: UIView {
 
     private lazy var buttonStackView: UIStackView = {
         let axis = determineButtonStackViewAxis()
-        let spacing: CGFloat = axis == .horizontal ? .spacingM : .spacingXS
+        let spacing: CGFloat = axis == .horizontal ? Warp.Spacing.spacing200 : Warp.Spacing.spacing50
         let stackView = UIStackView(axis: axis, spacing: spacing, withAutoLayout: true)
         stackView.distribution = .fill
         stackView.alignment = .leading
@@ -130,10 +131,10 @@ public class BrazePromotionView: UIView {
     private var stackViewConstraintsImage: [NSLayoutConstraint] = []
 
     private lazy var stackViewConstraintsNoImage: [NSLayoutConstraint] = [
-        verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
-        verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
-        verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
-        verticalStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -.spacingM),
+        verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: Warp.Spacing.spacing200),
+        verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: Warp.Spacing.spacing200),
+        verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -Warp.Spacing.spacing200),
+        verticalStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -Warp.Spacing.spacing200),
     ]
 
     private var viewModel: BrazePromotionViewModel
@@ -220,10 +221,10 @@ public class BrazePromotionView: UIView {
             switch imagePosition {
             case .left:
                 stackViewConstraintsImage = [
-                    verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
-                    verticalStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -.spacingM),
-                    verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
-                    verticalStackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .spacingM),
+                    verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: Warp.Spacing.spacing200),
+                    verticalStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -Warp.Spacing.spacing200),
+                    verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -Warp.Spacing.spacing200),
+                    verticalStackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: Warp.Spacing.spacing200),
                     verticalStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
                 ]
 
@@ -236,9 +237,9 @@ public class BrazePromotionView: UIView {
 
             case .right:
                 stackViewConstraintsImage = [
-                    verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingM),
-                    verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
-                    verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM),
+                    verticalStackView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: Warp.Spacing.spacing200),
+                    verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: Warp.Spacing.spacing200),
+                    verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -Warp.Spacing.spacing200),
                     verticalStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
                 ]
 
@@ -251,10 +252,10 @@ public class BrazePromotionView: UIView {
 
             case .top:
                 stackViewConstraintsImage = [
-                    verticalStackView.topAnchor.constraint(equalTo: remoteImageView.bottomAnchor, constant: .spacingM),
-                    verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacingM),
-                    verticalStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -.spacingM),
-                    verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.spacingM)
+                    verticalStackView.topAnchor.constraint(equalTo: remoteImageView.bottomAnchor, constant: Warp.Spacing.spacing200),
+                    verticalStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: Warp.Spacing.spacing200),
+                    verticalStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -Warp.Spacing.spacing200),
+                    verticalStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -Warp.Spacing.spacing200)
                 ]
 
                 imageConstraints = [
@@ -274,7 +275,7 @@ public class BrazePromotionView: UIView {
                 fallbackImage: UIImage(named: .noImage)
             )
         } else {
-            closeButton.setImage(UIImage(named: .cross).withTintColor(.textPrimary), for: .normal)
+            closeButton.setImage(UIImage(named: .cross).withTintColor(.text), for: .normal)
             closeButton.backgroundColor = UIColor.clear
 
             buttonStackView.axis = .horizontal
@@ -292,7 +293,7 @@ extension BrazePromotionView {
         addGestureRecognizer(tapGesture)
 
         verticalStackView.addArrangedSubviews([titleLabel, textLabel, buttonStackView])
-        verticalStackView.setCustomSpacing(.spacingS + .spacingXS, after: textLabel)
+        verticalStackView.setCustomSpacing(Warp.Spacing.spacing100 + Warp.Spacing.spacing50, after: textLabel)
 
         addSubview(largeShadowView)
         largeShadowView.addSubview(smallShadowView)
@@ -305,8 +306,8 @@ extension BrazePromotionView {
         backgroundView.fillInSuperview()
 
         NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: .spacingS),
-            closeButton.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -.spacingS),
+            closeButton.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: Warp.Spacing.spacing100),
+            closeButton.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -Warp.Spacing.spacing100),
             closeButton.widthAnchor.constraint(equalToConstant: buttonSize),
             closeButton.heightAnchor.constraint(equalToConstant: buttonSize)
         ])
@@ -333,11 +334,11 @@ extension BrazePromotionView {
 
 private extension UIColor {
     static var shadowColor: UIColor {
-        return UIColor(hex: "475569")
+        return .black
     }
 
     static var bgColor: UIColor {
-        return .dynamicColor(defaultColor: .white, darkModeColor: .darkBgPrimaryProminent)
+        return .background
     }
 }
 
@@ -359,4 +360,3 @@ private class CloseButton: UIButton {
         bounds.insetBy(dx: -touchPointInset, dy: -touchPointInset).contains(point)
     }
 }
-

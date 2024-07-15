@@ -1,4 +1,5 @@
 import SwiftUI
+import Warp
 
 public struct ToastSwiftUIView: View {
     private let text: String
@@ -16,26 +17,26 @@ public struct ToastSwiftUIView: View {
     }
 
     public var body: some View {
-        HStack(spacing: .spacingM) {
+        HStack(spacing: Warp.Spacing.spacing200) {
             Image(named: style.imageAsset)
             Text(text)
                 .finnFont(.body)
-                .foregroundColor(.textToast)
-                .padding(.vertical, .spacingM)
+                .foregroundColor(.text)
+                .padding(.vertical, Warp.Spacing.spacing200)
             Spacer()
             if let actionButton {
                 ActionButtonView(actionButton: actionButton, style: style)
             }
         }
         .frame(maxWidth: .infinity)
-        .padding(.horizontal, .spacingM)
+        .padding(.horizontal, Warp.Spacing.spacing200)
         .background(style.color)
     }
 }
 
 struct ToastSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        VStack(spacing: .spacingM) {
+        VStack(spacing: Warp.Spacing.spacing200) {
             ToastSwiftUIView(text: "Success", style: .success)
             ToastSwiftUIView(text: "Action success, with a pretty long text which should wrap nicely", style: .success, actionButton: .init(title: "Undo", action: {}))
             ToastSwiftUIView(text: "Action success", style: .success, actionButton: .init(title: "Action", buttonStyle: .promoted, action: {}))

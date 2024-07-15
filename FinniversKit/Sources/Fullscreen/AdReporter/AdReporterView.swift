@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol AdReporterDelegate: RadioButtonDelegate {
     func adReporterViewHelpButtonPressed(_ adReporterView: AdReporterView)
@@ -98,22 +99,22 @@ public class AdReporterView: UIScrollView {
             contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
             contentView.widthAnchor.constraint(equalTo: widthAnchor),
 
-            radioButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-            radioButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingM),
-            radioButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: .spacingM),
+            radioButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            radioButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing200),
+            radioButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: Warp.Spacing.spacing200),
 
-            hairlineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-            hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
-            hairlineView.topAnchor.constraint(equalTo: radioButton.bottomAnchor, constant: .spacingM),
+            hairlineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
+            hairlineView.topAnchor.constraint(equalTo: radioButton.bottomAnchor, constant: Warp.Spacing.spacing200),
             hairlineView.heightAnchor.constraint(equalToConstant: 1),
 
             descriptionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             descriptionView.topAnchor.constraint(equalTo: hairlineView.bottomAnchor),
             descriptionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            helpButton.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: .spacingM),
+            helpButton.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: Warp.Spacing.spacing200),
             helpButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            helpButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingM)
+            helpButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Warp.Spacing.spacing200)
             ])
     }
 

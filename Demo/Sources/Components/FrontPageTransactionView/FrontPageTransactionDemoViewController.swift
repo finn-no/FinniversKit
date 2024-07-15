@@ -1,13 +1,14 @@
 import DemoKit
 import FinniversKit
 import SwiftUI
+import Warp
 
 struct FrontPageTransactionDemoView: View {
     let model: FrontPageTransactionViewModel
 
     var body: some View {
         FrontPageTransactionView(model: model)
-            .padding(.spacingM)
+            .padding(Warp.Spacing.spacing200)
     }
 }
 

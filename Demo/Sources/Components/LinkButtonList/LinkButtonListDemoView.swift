@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class LinkButtonListDemoView: UIView {
     private lazy var linkListView: LinkButtonListView = {
@@ -27,8 +28,8 @@ class LinkButtonListDemoView: UIView {
     private func setup() {
         addSubview(linkListView)
         NSLayoutConstraint.activate([
-            linkListView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            linkListView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            linkListView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            linkListView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             linkListView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }

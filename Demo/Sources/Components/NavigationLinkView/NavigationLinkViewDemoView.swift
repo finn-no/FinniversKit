@@ -1,5 +1,6 @@
 import FinniversKit
 import DemoKit
+import Warp
 
 class NavigationLinkViewDemoView: UIView, Demoable {
 
@@ -21,7 +22,7 @@ class NavigationLinkViewDemoView: UIView, Demoable {
     }()
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+        let stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
         stackView.addArrangedSubviews([view, secondView])
         return stackView
     }()
@@ -41,9 +42,9 @@ class NavigationLinkViewDemoView: UIView, Demoable {
         addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
             stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
         ])
     }
 

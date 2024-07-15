@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Warp
 
 public protocol FavoriteSoldViewModel {
     var title: String? { get }
@@ -25,11 +26,11 @@ public class FavoriteSoldView: UIView {
 
     private weak var delegate: FavoriteSoldViewDelegate?
 
-    private static let margins: CGFloat = .spacingM
-    private static let titleTopSpacing: CGFloat = .spacingS
-    private static let bodyTopSpacing: CGFloat = .spacingXS
-    private static let similarAdsTitleTopSpacing: CGFloat = .spacingXL + .spacingS
-    private static let adsGridTopSpacing: CGFloat = .spacingS
+    private static let margins: CGFloat = Warp.Spacing.spacing200
+    private static let titleTopSpacing: CGFloat = Warp.Spacing.spacing100
+    private static let bodyTopSpacing: CGFloat = Warp.Spacing.spacing50
+    private static let similarAdsTitleTopSpacing: CGFloat = Warp.Spacing.spacing400 + Warp.Spacing.spacing100
+    private static let adsGridTopSpacing: CGFloat = Warp.Spacing.spacing100
     private static let imageCornerRadius: CGFloat = 8.0
     private static let imageWidth: CGFloat = 120
 
@@ -184,7 +185,7 @@ public class FavoriteSoldView: UIView {
         headerView.frame.size = size
         boundsForCurrentSubviewSetup = bounds
 
-        adsRetryView.frame.origin = CGPoint(x: 0, y: headerView.frame.height + .spacingXXL)
+        adsRetryView.frame.origin = CGPoint(x: 0, y: headerView.frame.height + Warp.Spacing.spacing800)
         adsRetryView.frame.size = CGSize(width: bounds.width, height: 200)
 
         adRecommendationsGridView.invalidateLayout()
@@ -202,7 +203,7 @@ public class FavoriteSoldView: UIView {
         if let imageUrl = model.imageUrl {
             imageView.loadImage(for: imageUrl,
                                 imageWidth: FavoriteSoldView.imageWidth,
-                                loadingColor: .aqua200,
+                                loadingColor: .backgroundSubtle,
                                 fallbackImage: fallbackImage
             )
         } else {

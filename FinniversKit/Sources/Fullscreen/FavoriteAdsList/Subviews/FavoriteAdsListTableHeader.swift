@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol FavoriteAdsListTableHeaderDelegate: AnyObject {
     func favoriteAdsListTableHeader(_ tableHeader: FavoriteAdsListTableHeader, didSelectSortingView view: UIView)
@@ -58,14 +59,14 @@ class FavoriteAdsListTableHeader: UIView {
 
     private lazy var tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleViewTap))
     private lazy var contentStackView = UIStackView(axis: .vertical, withAutoLayout: true)
-    private lazy var messagesStackView = UIStackView(axis: .vertical, spacing: .spacingS, withAutoLayout: true)
+    private lazy var messagesStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
     private lazy var sortingContainerView = UIView()
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = UIFont.font(ofSize: 28, weight: .bold, textStyle: .title2)
         label.textAlignment = .center
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.numberOfLines = 3
         return label
     }()
@@ -78,7 +79,7 @@ class FavoriteAdsListTableHeader: UIView {
 
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar(withAutoLayout: true)
-        searchBar.backgroundColor = .bgPrimary
+        searchBar.backgroundColor = .background
         searchBar.searchBarStyle = .minimal
         return searchBar
     }()
@@ -112,17 +113,17 @@ class FavoriteAdsListTableHeader: UIView {
         sortingContainerView.addSubview(sortingView)
 
         contentStackView.addArrangedSubviews([titleLabel, subtitleView, messagesStackView, searchBar, sortingContainerView])
-        contentStackView.setCustomSpacing(.spacingXS, after: titleLabel)
-        contentStackView.setCustomSpacing(.spacingL, after: subtitleView)
-        contentStackView.setCustomSpacing(.spacingM, after: messagesStackView)
-        contentStackView.setCustomSpacing(.spacingL + .spacingXS, after: searchBar)
+        contentStackView.setCustomSpacing(Warp.Spacing.spacing50, after: titleLabel)
+        contentStackView.setCustomSpacing(Warp.Spacing.spacing300, after: subtitleView)
+        contentStackView.setCustomSpacing(Warp.Spacing.spacing200, after: messagesStackView)
+        contentStackView.setCustomSpacing(Warp.Spacing.spacing300 + Warp.Spacing.spacing50, after: searchBar)
 
         addSubview(contentStackView)
 
         NSLayoutConstraint.activate([
-            contentStackView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
-            contentStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            contentStackView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200),
+            contentStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             contentStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             sortingView.leadingAnchor.constraint(equalTo: sortingContainerView.leadingAnchor),

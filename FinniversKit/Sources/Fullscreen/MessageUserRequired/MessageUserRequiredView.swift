@@ -1,6 +1,7 @@
 //
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
+import Warp
 
 public protocol MessageUserRequiredViewDelegate: AnyObject {
     func didTapActionButton(_ sender: Button)
@@ -12,7 +13,7 @@ public class MessageUserRequiredView: UIView {
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
-        imageView.tintColor = .iconSecondary
+        imageView.tintColor = .icon
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -21,7 +22,7 @@ public class MessageUserRequiredView: UIView {
         let view = UITextView(withAutoLayout: true)
         let style = Label.Style.bodyStrong
         view.font = style.font
-        view.textColor = .textPrimary
+        view.textColor = .text
         view.textAlignment = .center
         view.backgroundColor = .clear
         view.isScrollEnabled = false
@@ -52,24 +53,24 @@ public class MessageUserRequiredView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         addSubview(imageView)
         addSubview(messageView)
         addSubview(actionButton)
 
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             imageView.heightAnchor.constraint(equalToConstant: 64),
             imageView.widthAnchor.constraint(equalToConstant: 64),
 
-            messageView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .spacingM),
-            messageView.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor, constant: .spacingS),
-            messageView.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor, constant: -.spacingS),
+            messageView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: Warp.Spacing.spacing200),
+            messageView.leadingAnchor.constraint(equalTo: readableContentGuide.leadingAnchor, constant: Warp.Spacing.spacing100),
+            messageView.trailingAnchor.constraint(equalTo: readableContentGuide.trailingAnchor, constant: -Warp.Spacing.spacing100),
 
-            actionButton.topAnchor.constraint(equalTo: messageView.bottomAnchor, constant: .spacingL),
-            actionButton.leadingAnchor.constraint(equalTo: messageView.leadingAnchor, constant: .spacingM),
-            actionButton.trailingAnchor.constraint(equalTo: messageView.trailingAnchor, constant: -.spacingM),
+            actionButton.topAnchor.constraint(equalTo: messageView.bottomAnchor, constant: Warp.Spacing.spacing300),
+            actionButton.leadingAnchor.constraint(equalTo: messageView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            actionButton.trailingAnchor.constraint(equalTo: messageView.trailingAnchor, constant: -Warp.Spacing.spacing200),
         ])
     }
 

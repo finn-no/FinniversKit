@@ -4,6 +4,7 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 extension LoadingView.DisplayType {
     var title: String {
@@ -131,13 +132,13 @@ class LoadingViewDemoView: UIView, Demoable {
         addSubview(displayTypeSegment)
 
         NSLayoutConstraint.activate([
-            displayTypeSegment.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            displayTypeSegment.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM),
-            displayTypeSegment.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            displayTypeSegment.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            displayTypeSegment.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing200),
+            displayTypeSegment.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: displayTypeSegment.topAnchor, constant: -.spacingM),
+            tableView.bottomAnchor.constraint(equalTo: displayTypeSegment.topAnchor, constant: -Warp.Spacing.spacing200),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             ])
 
@@ -208,14 +209,14 @@ private class OptionCell: UITableViewCell {
         contentView.addSubview(descriptionLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingS),
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
-            titleLabel.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.trailingAnchor, constant: -.spacingS),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing100),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing100),
+            titleLabel.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing100),
 
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingS),
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingS),
-            descriptionLabel.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.trailingAnchor, constant: -.spacingS),
-            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingS)
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing100),
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing100),
+            descriptionLabel.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing100),
+            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Warp.Spacing.spacing100)
         ])
     }
 }

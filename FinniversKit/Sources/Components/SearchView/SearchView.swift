@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public protocol SearchViewDelegate: AnyObject {
     func searchView(_ view: SearchView, didSelectItemAtIndex index: Int)
@@ -23,7 +24,7 @@ public class SearchView: UIView {
         let tableView = UITableView(withAutoLayout: true)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.backgroundColor = .bgPrimary
+        tableView.backgroundColor = .background
         tableView.keyboardDismissMode = .onDrag
         tableView.register(ResultTableViewCell.self)
         return tableView
@@ -50,14 +51,14 @@ public class SearchView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         addSubview(searchTextField)
         addSubview(tableView)
 
         NSLayoutConstraint.activate([
             searchTextField.topAnchor.constraint(equalTo: topAnchor),
-            searchTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            searchTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            searchTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            searchTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
             tableView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -158,7 +159,7 @@ private class ResultTableViewCell: UITableViewCell {
 
     private func setup() {
         contentView.addSubview(titleLabel)
-        titleLabel.fillInSuperview(margin: .spacingM)
+        titleLabel.fillInSuperview(margin: Warp.Spacing.spacing200)
     }
 
     // MARK: - Internal methods

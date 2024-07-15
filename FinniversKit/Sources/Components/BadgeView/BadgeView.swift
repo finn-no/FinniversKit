@@ -1,9 +1,10 @@
 import Foundation
 import UIKit
+import Warp
 
 public final class BadgeView: UIView {
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(axis: .horizontal, spacing: .spacingXS, withAutoLayout: true)
+        let stackView = UIStackView(axis: .horizontal, spacing: Warp.Spacing.spacing50, withAutoLayout: true)
         stackView.alignment = .center
         return stackView
     }()
@@ -31,20 +32,20 @@ public final class BadgeView: UIView {
 
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
-        layer.cornerRadius = .spacingXS
+        layer.cornerRadius = Warp.Spacing.spacing50
         layer.maskedCorners = [.layerMaxXMaxYCorner]
 
         addSubview(stackView)
         stackView.addArrangedSubviews([iconImageView, textLabel])
 
-        let iconSize: CGFloat = .spacingM
+        let iconSize: CGFloat = Warp.Spacing.spacing200
 
         NSLayoutConstraint.activate([
             heightAnchor.constraint(equalToConstant: 24),
 
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
             stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             iconImageView.widthAnchor.constraint(equalToConstant: iconSize),
@@ -60,11 +61,11 @@ public final class BadgeView: UIView {
         backgroundColor = viewModel.style.backgroundColor
         textLabel.textColor = viewModel.style.textColor
         textLabel.text = viewModel.title
-        iconImageView.image = viewModel.icon
+        iconImageView.image = viewModel.icon?.withRenderingMode(.alwaysTemplate)
         iconImageView.isHidden = viewModel.icon == nil
 
          /// Only applies tintColor if icon is rendered as template
-        iconImageView.tintColor = .nmpBrandDecoration
+        iconImageView.tintColor = .icon
     }
 
     public func attachToTopLeadingAnchor(in superview: UIView) {

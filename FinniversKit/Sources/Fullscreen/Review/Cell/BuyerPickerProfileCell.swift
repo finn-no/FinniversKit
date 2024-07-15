@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol BuyerPickerCellDelegate: AnyObject {
     func buyerPickerCell(_ cell: BuyerPickerProfileCell, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
@@ -27,7 +28,7 @@ class BuyerPickerProfileCell: UITableViewCell {
     lazy var hairlineView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .tableViewSeparator
+        view.backgroundColor = .border
         return view
     }()
 
@@ -67,7 +68,7 @@ class BuyerPickerProfileCell: UITableViewCell {
 
         let profileStack = UIStackView(arrangedSubviews: [profileImage, name])
         profileStack.alignment = .center
-        profileStack.spacing = .spacingS
+        profileStack.spacing = Warp.Spacing.spacing100
         profileStack.translatesAutoresizingMaskIntoConstraints = false
 
         contentView.addSubview(profileStack)
@@ -75,20 +76,20 @@ class BuyerPickerProfileCell: UITableViewCell {
         contentView.addSubview(hairlineView)
 
         NSLayoutConstraint.activate([
-            profileStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
-            profileStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-            profileStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
-            profileStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingS),
+            profileStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing100),
+            profileStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            profileStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
+            profileStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Warp.Spacing.spacing100),
 
             profileImage.heightAnchor.constraint(equalToConstant: BuyerPickerProfileCell.profileImageSize),
             profileImage.widthAnchor.constraint(equalToConstant: BuyerPickerProfileCell.profileImageSize),
 
             chevronLabel.centerYAnchor.constraint(equalTo: profileStack.centerYAnchor),
-            chevronLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingS),
+            chevronLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing100),
 
             hairlineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            hairlineView.leadingAnchor.constraint(equalTo: profileImage.leadingAnchor, constant: .spacingS),
-            hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: .spacingXL),
+            hairlineView.leadingAnchor.constraint(equalTo: profileImage.leadingAnchor, constant: Warp.Spacing.spacing100),
+            hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: Warp.Spacing.spacing400),
             hairlineView.heightAnchor.constraint(equalToConstant: 0.5)
         ])
     }

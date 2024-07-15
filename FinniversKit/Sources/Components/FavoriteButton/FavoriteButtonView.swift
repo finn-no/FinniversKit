@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol FavoriteButtonViewModel {
     var title: String { get }
@@ -28,8 +29,8 @@ public class FavoriteButtonView: UIView {
     private lazy var button: Button = {
         let button = Button(style: flatButtonStyle, withAutoLayout: true)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
-        button.titleEdgeInsets = UIEdgeInsets(leading: .spacingS)
-        button.imageEdgeInsets = UIEdgeInsets(top: -.spacingXS)
+        button.titleEdgeInsets = UIEdgeInsets(leading: Warp.Spacing.spacing100)
+        button.imageEdgeInsets = UIEdgeInsets(top: -Warp.Spacing.spacing50)
         button.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         button.contentHorizontalAlignment = .leading
         button.adjustsImageWhenHighlighted = false
@@ -47,7 +48,7 @@ public class FavoriteButtonView: UIView {
 
     private lazy var subtitleLabel: Label = {
         let label = Label(style: .detail, withAutoLayout: true)
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
@@ -77,7 +78,7 @@ public class FavoriteButtonView: UIView {
         subtitleLabel.text = viewModel.subtitle
         let image = viewModel.isFavorite ? UIImage(named: .favoriteActive) : UIImage(named: .favoriteDefault)
         button.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.imageView?.tintColor = .nmpBrandControlSelected
+        button.imageView?.tintColor = .backgroundPrimary
     }
 
     // MARK: - Private methods

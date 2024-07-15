@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol StepSliderDelegate: AnyObject {
     func stepSlider(_ stepSlider: StepSlider, didChangeRawValue value: Float)
@@ -25,7 +26,7 @@ public final class StepSlider: UISlider {
         return thumbRect(forBounds: bounds, trackRect: currentTrackRect, value: value)
     }
 
-    public var accentColor: UIColor? = UIColor.nmpBrandControlSelected {
+    public var accentColor: UIColor? = .backgroundPrimary {
         didSet {
             guard let accentColor = accentColor else {
                 return
@@ -45,7 +46,7 @@ public final class StepSlider: UISlider {
     private lazy var trackView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .decorationSubtle
+        view.backgroundColor = .backgroundDisabled
         view.layer.cornerRadius = 1.0
         return view
     }()
@@ -53,7 +54,7 @@ public final class StepSlider: UISlider {
     private lazy var activeRangeTrackView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .nmpBrandControlSelected
+        view.backgroundColor = .backgroundPrimary
         return view
     }()
 
@@ -175,8 +176,8 @@ public final class StepSlider: UISlider {
         insertSubview(activeRangeTrackView, aboveSubview: trackView)
 
         NSLayoutConstraint.activate([
-            trackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXXS),
-            trackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXXS),
+            trackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing25),
+            trackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing25),
             trackView.centerYAnchor.constraint(equalTo: centerYAnchor),
             trackView.heightAnchor.constraint(equalToConstant: 3),
 

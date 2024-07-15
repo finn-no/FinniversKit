@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public final class PhaseListView: UIView {
     private lazy var stackView: UIStackView = {
@@ -48,16 +49,16 @@ public final class PhaseListView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .bgSecondary
-        layer.cornerRadius = .spacingS
+        backgroundColor = .backgroundInfoSubtle
+        layer.cornerRadius = Warp.Spacing.spacing100
 
         addSubview(stackView)
 
         let insets = UIEdgeInsets(
-            top: .spacingM,
-            leading: .spacingM,
-            bottom: -.spacingM,
-            trailing: -.spacingM
+            top: Warp.Spacing.spacing200,
+            leading: Warp.Spacing.spacing200,
+            bottom: -Warp.Spacing.spacing200,
+            trailing: -Warp.Spacing.spacing200
         )
 
         stackView.fillInSuperview(insets: insets)
@@ -65,7 +66,7 @@ public final class PhaseListView: UIView {
 
     private func addLineView(from viewA: UIView, to viewB: UIView) {
         let lineView = UIView(withAutoLayout: true)
-        lineView.backgroundColor = .textDisabled
+        lineView.backgroundColor = .border
         insertSubview(lineView, belowSubview: stackView)
 
         NSLayoutConstraint.activate([

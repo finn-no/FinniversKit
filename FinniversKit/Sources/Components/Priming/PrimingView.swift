@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol PrimingViewDelegate: AnyObject {
     func primingViewDidSelectButton(_ view: PrimingView)
@@ -21,7 +22,7 @@ public final class PrimingView: UIView {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(withAutoLayout: true)
-        tableView.backgroundColor = .bgPrimary
+        tableView.backgroundColor = .background
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 80
         tableView.separatorStyle = .none
@@ -67,14 +68,14 @@ public final class PrimingView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         addSubview(tableView)
         addSubview(headerView)
         addSubview(footerView)
 
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXL),
+            headerView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing400),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
 

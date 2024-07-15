@@ -1,5 +1,6 @@
 import FinniversKit
 import DemoKit
+import Warp
 
 class JobKeyInfoDemoView: UIView, Demoable {
 
@@ -21,8 +22,8 @@ class JobKeyInfoDemoView: UIView, Demoable {
     private func setup() {
         addSubview(demoView)
         NSLayoutConstraint.activate([
-            demoView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            demoView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            demoView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            demoView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             demoView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }

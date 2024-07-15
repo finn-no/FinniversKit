@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 final class SelectionOptionCell: UITableViewCell {
     static let iconSize: CGFloat = 24
@@ -43,12 +44,12 @@ final class SelectionOptionCell: UITableViewCell {
 
     public override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        checkmarkImageView.backgroundColor = .nmpBrandControlSelected
+        checkmarkImageView.backgroundColor = .backgroundPrimary
     }
 
     public override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
-        checkmarkImageView.backgroundColor = .nmpBrandControlSelected
+        checkmarkImageView.backgroundColor = .backgroundPrimary
     }
 
     override func prepareForReuse() {
@@ -67,7 +68,7 @@ final class SelectionOptionCell: UITableViewCell {
 
     private func setup() {
         isAccessibilityElement = true
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
         setDefaultSelectedBackgound()
         hideCheckmark(true)
 
@@ -77,23 +78,23 @@ final class SelectionOptionCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
             iconImageView.widthAnchor.constraint(equalToConstant: SelectionOptionCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .spacingM),
-            titleLabel.trailingAnchor.constraint(equalTo: checkmarkImageView.leadingAnchor, constant: -.spacingS),
+            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: Warp.Spacing.spacing200),
+            titleLabel.trailingAnchor.constraint(equalTo: checkmarkImageView.leadingAnchor, constant: -Warp.Spacing.spacing100),
 
-            checkmarkImageView.heightAnchor.constraint(equalToConstant: .spacingM),
-            checkmarkImageView.widthAnchor.constraint(equalToConstant: .spacingM),
-            checkmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
+            checkmarkImageView.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
+            checkmarkImageView.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
+            checkmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
             checkmarkImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         ])
     }
 
     private func hideCheckmark(_ hide: Bool) {
-        iconImageView.tintColor = hide ? .iconPrimary : .nmpBrandControlSelected
+        iconImageView.tintColor = hide ? .iconPrimary : .backgroundPrimary
 
         titleLabel.font = hide ? .body : .bodyStrong
         titleLabel.textColor = iconImageView.tintColor

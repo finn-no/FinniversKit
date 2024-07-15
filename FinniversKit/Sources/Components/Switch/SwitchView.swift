@@ -1,6 +1,7 @@
 //
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
+import Warp
 
 public protocol SwitchViewDelegate: AnyObject {
     func switchView(_ switchView: SwitchView, didChangeValueFor switch: UISwitch)
@@ -39,7 +40,7 @@ public class SwitchView: UIView {
 
     private lazy var uiSwitch: UISwitch = {
         let uiSwitch = UISwitch(withAutoLayout: true)
-        uiSwitch.onTintColor = .nmpBrandControlSelected
+        uiSwitch.onTintColor = .backgroundPrimary //DARK
         uiSwitch.addTarget(self, action: #selector(swichValueChanged), for: .valueChanged)
         return uiSwitch
     }()
@@ -85,15 +86,15 @@ public class SwitchView: UIView {
         addSubview(uiSwitch)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200),
 
-            detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingXXS),
-            detailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            detailLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingM),
+            detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing25),
+            detailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            detailLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing200),
 
-            uiSwitch.leadingAnchor.constraint(equalTo: detailLabel.trailingAnchor, constant: .spacingS),
-            uiSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            uiSwitch.leadingAnchor.constraint(equalTo: detailLabel.trailingAnchor, constant: Warp.Spacing.spacing100),
+            uiSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             uiSwitch.centerYAnchor.constraint(equalTo: centerYAnchor),
             uiSwitch.widthAnchor.constraint(equalToConstant: 49.0)
         ])

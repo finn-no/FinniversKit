@@ -68,9 +68,10 @@ extension SafetyElementsView: SafetyElementsRegularViewDelegate {
 }
 
 extension UIColor {
-    class var activeSafetyIconTint: UIColor { .nmpBrandDecoration }
-
+    @available(*, deprecated, message: "Use Warp color instead")
+    class var activeSafetyIconTint: UIColor { .backgroundPrimary }
+    @available(*, deprecated, message: "Use Warp color instead")
     class var inactiveSafetyIconTint: UIColor {
-        dynamicColor(defaultColor: .gray500, darkModeColor: .white)
+        .icon
     }
 }

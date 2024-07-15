@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public protocol LoadingRetryViewDelegate: AnyObject {
     func loadingRetryViewDidSelectButton(_ view: LoadingRetryView)
@@ -68,18 +69,18 @@ public final class LoadingRetryView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         addSubview(label)
         addSubview(button)
         addSubview(loadingIndicatorView)
 
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
-            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
-            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            label.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
+            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
+            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
 
-            button.topAnchor.constraint(equalTo: label.bottomAnchor, constant: .spacingXL),
+            button.topAnchor.constraint(equalTo: label.bottomAnchor, constant: Warp.Spacing.spacing400),
             button.centerXAnchor.constraint(equalTo: label.centerXAnchor),
 
             loadingIndicatorView.centerXAnchor.constraint(equalTo: button.centerXAnchor),

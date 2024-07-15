@@ -1,6 +1,7 @@
 //
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
+import Warp
 
 public protocol MessageUserRequiredSheetDelegate: AnyObject {
     func didTapActionButton(_ sender: Button)
@@ -15,7 +16,7 @@ public class MessageUserRequiredSheet: BottomSheet {
     // MARK: - Initalization
 
     public required init() {
-        let bottomInset = UIView.windowSafeAreaInsets.bottom + .spacingXL
+        let bottomInset = UIView.windowSafeAreaInsets.bottom + Warp.Spacing.spacing400
         let height = sheetHeight + bottomInset
         let bottomSheetHeight = BottomSheet.Height(compact: height, expanded: height)
         let viewController = MessageUserRequiredSheetViewController()

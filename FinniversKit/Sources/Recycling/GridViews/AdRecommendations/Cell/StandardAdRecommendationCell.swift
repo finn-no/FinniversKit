@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendationCell, AdRecommendationConfigurable {
 
@@ -32,7 +33,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     private lazy var containerView = UIView(withAutoLayout: true)
     private lazy var imageDescriptionStackView = UIStackView(axis: .horizontal, spacing: Self.margin, alignment: .center, withAutoLayout: true)
     private lazy var ribbonView = RibbonView(withAutoLayout: true)
-    private lazy var imageTextLabel = Label(style: .captionStrong, textColor: .textTertiary, withAutoLayout: true)
+    private lazy var imageTextLabel = Label(style: .captionStrong, textColor: .textInvertedStatic, withAutoLayout: true)
     private lazy var subtitleLabelHeightConstraint = subtitleLabel.heightAnchor.constraint(equalToConstant: Self.subtitleHeight)
 
     private static let titleHeight: CGFloat = 20.0
@@ -50,7 +51,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     private static let minImageAspectRatio: CGFloat = 0.75
     private static let maxImageAspectRatio: CGFloat = 1.5
 
-    private let loadingColor: UIColor = .bgTertiary
+    private let loadingColor: UIColor = .backgroundSubtle
 
     private var defaultImage: UIImage {
         UIImage(named: .noImage)
@@ -85,7 +86,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         let imageView = UIImageView(withAutoLayout: true)
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .iconTertiary
+        imageView.tintColor = .iconInverted
         return imageView
     }()
 
@@ -103,7 +104,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     }()
 
     private lazy var subtitleLabel: Label = {
-        let label = Label(style: .detail, textColor: .textSecondary, withAutoLayout: true)
+        let label = Label(style: .detail, textColor: .textSubtle, withAutoLayout: true)
         label.setContentHuggingPriority(.required, for: .vertical)
         return label
     }()
@@ -214,7 +215,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             ribbonView.heightAnchor.constraint(equalToConstant: Self.ribbonHeight * accessibilityMultiplier),
 
-            logoImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: .spacingS),
+            logoImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: Warp.Spacing.spacing100),
             logoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             logoImageView.widthAnchor.constraint(equalToConstant: 50),
             logoImageView.heightAnchor.constraint(equalToConstant: 30),
@@ -237,13 +238,13 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             iconImageView.heightAnchor.constraint(equalToConstant: Self.iconSize),
             iconImageView.widthAnchor.constraint(equalToConstant: Self.iconSize),
 
-            imageDescriptionBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingS),
+            imageDescriptionBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing100),
             imageDescriptionBackgroundView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor),
             imageDescriptionBackgroundView.heightAnchor.constraint(equalToConstant: Self.imageDescriptionHeight),
-            imageDescriptionBackgroundView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: -.spacingS),
+            imageDescriptionBackgroundView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: -Warp.Spacing.spacing100),
 
-            favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingXS),
-            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingXS),
+            favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing50),
+            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing50),
             favoriteButton.widthAnchor.constraint(equalToConstant: 34),
             favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.heightAnchor)
         ])
@@ -276,7 +277,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        imageContentView.layer.borderColor = .imageBorder
+        imageContentView.layer.borderColor = .border
     }
 
     // MARK: - Public methods

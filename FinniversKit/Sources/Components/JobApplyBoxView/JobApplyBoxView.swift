@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public protocol JobApplyBoxViewDelegate: AnyObject {
     func jobApplyBoxView(
@@ -19,7 +20,7 @@ public class JobApplyBoxView: UIView {
 
     private let viewModel: JobApplyBoxViewModel
     private weak var delegate: JobApplyBoxViewDelegate?
-    private lazy var stackView = UIStackView(axis: .vertical, spacing: .spacingM, withAutoLayout: true)
+    private lazy var stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, withAutoLayout: true)
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .body, withAutoLayout: true)
@@ -48,8 +49,8 @@ public class JobApplyBoxView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        layer.cornerRadius = .spacingS
-        backgroundColor = .bgSecondary
+        layer.cornerRadius = Warp.Spacing.spacing100
+        backgroundColor = .backgroundInfoSubtle
         titleLabel.text = viewModel.title
         primaryButton.setTitle(viewModel.primaryButton.title, for: .normal)
 
@@ -68,7 +69,7 @@ public class JobApplyBoxView: UIView {
         }
 
         addSubview(stackView)
-        stackView.fillInSuperview(margin: .spacingL)
+        stackView.fillInSuperview(margin: Warp.Spacing.spacing300)
     }
 
     // MARK: - Actions
@@ -90,6 +91,6 @@ extension JobApplyBoxView: LinkButtonViewDelegate {
 
 private extension Button.Style {
     static var secondaryButton: Self {
-        .flat.overrideStyle(margins: UIEdgeInsets(vertical: .spacingS, horizontal: 0))
+        .flat.overrideStyle(margins: UIEdgeInsets(vertical: Warp.Spacing.spacing100, horizontal: 0))
     }
 }

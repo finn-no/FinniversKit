@@ -1,4 +1,5 @@
 import SwiftUI
+import Warp
 
 public struct LoadingSwiftUIView: View {
     public enum DisplayMode: Equatable {
@@ -16,7 +17,7 @@ public struct LoadingSwiftUIView: View {
     private let loadingIndicatorSize: CGFloat = 40
     private var isFullscreen: Bool { displayMode == .fullscreen }
     private let boxMinSize: CGFloat = 120
-    private var textColor: Color { isFullscreen ? .textPrimary : .textTertiary }
+    private var textColor: Color { isFullscreen ? .text : .textInvertedStatic }
 
     public init(
         mode: DisplayMode = .fullscreen,
@@ -34,14 +35,14 @@ public struct LoadingSwiftUIView: View {
                 .ignoresSafeArea()
                 .disabled(true)
 
-            VStack(spacing: .spacingS) {
+            VStack(spacing: Warp.Spacing.spacing100) {
                 // Since the indicator view starts at a smaller size we must wrap it for fixed size
                 VStack {
                     if showSuccess {
                         Image(named: .checkmarkBig)
                             .renderingMode(.template)
                             .resizable()
-                            .foregroundColor(isFullscreen ? .accentSecondaryBlue : .iconTertiary)
+                            .foregroundColor(isFullscreen ? .iconSecondary : .iconInvertedStatic)
                             .scaleEffect(loadingIndicatorScale)
                             .onAppear {
                                 loadingIndicatorScale = initialScale
@@ -70,15 +71,15 @@ public struct LoadingSwiftUIView: View {
             }
             .frame(minWidth: boxMinSize, maxWidth: boxMinSize, minHeight: boxMinSize)
             .background(isFullscreen ? Color.clear : Color.black.opacity(0.8))
-            .cornerRadius(isFullscreen ? 0 : .spacingM)
-            .padding(.spacingM)
+            .cornerRadius(isFullscreen ? 0 : Warp.Spacing.spacing200)
+            .padding(Warp.Spacing.spacing200)
         }
         .transition(.opacity.animation(.easeInOut(duration: animationDuration)))
     }
 
     private var backgroundView: some View {
         if isFullscreen {
-            return Color.bgPrimary.opacity(0.8)
+            return Color.background.opacity(0.8)
         }
         // Plain clear color always allows touch passthrough so use a very transparent
         // color instead.

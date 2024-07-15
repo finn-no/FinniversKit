@@ -26,7 +26,7 @@ final class HostingContentConfigurationCellDemoViewController: UIViewController,
     private lazy var countLabel = {
         let label = Label(style: .body, withAutoLayout: true)
         label.textAlignment = .center
-        label.backgroundColor = .bgPrimary
+        label.backgroundColor = .background
         return label
     }()
 

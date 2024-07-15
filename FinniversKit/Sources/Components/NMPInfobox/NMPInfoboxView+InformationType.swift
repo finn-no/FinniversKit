@@ -3,6 +3,7 @@
 //
 
 import SwiftUI
+import Warp
 
 public extension NMPInfoboxView {
     /**
@@ -33,45 +34,45 @@ public extension NMPInfoboxView {
         var backgroundColor: Color {
             switch self {
             case .critical:
-                Color.bgInformationCriticalSubtle
+                Color.backgroundNegativeSubtle
             case .custom(let backgroundColor, _, _, _):
                 backgroundColor
             case .information:
-                Color.bgInformationInfoSubtle
+                Color.backgroundInfoSubtle
             case .success:
-                Color.bgInformationSuccessSubtle
+                Color.backgroundPositiveSubtle
             case .warning:
-                Color.bgInformationWarningSubtle
+                Color.backgroundWarningSubtle
             }
         }
 
         var borderColor: Color {
             switch self {
             case .critical:
-                Color.borderCritical
+                Warp.Token.borderNegative
             case .custom(_, _, let borderColor, _):
                 borderColor ?? .clear
             case .information:
-                Color.borderInfo
+                Warp.Token.borderInfo
             case .success:
-                Color.borderSuccess
+                Warp.Token.borderPositive
             case .warning:
-                Color.borderWarning
+                Warp.Token.borderWarning
             }
         }
 
         var subtleBorderColor: Color {
             switch self {
             case .critical:
-                Color.borderCriticalSubtle
+                Warp.Token.borderNegativeSubtle
             case .custom(_, let subtleBorderColor, _, _):
                 subtleBorderColor ?? .clear
             case .information:
-                Color.borderInfoSubtle
+                Warp.Token.borderInfoSubtle
             case .success:
-                Color.borderSuccessSubtle
+                Warp.Token.borderPositiveSubtle
             case .warning:
-                Color.borderWarningSubtle
+                Warp.Token.borderWarningSubtle
             }
         }
 

@@ -1,11 +1,12 @@
 import UIKit
 import FinniversKit
 import DemoKit
+import Warp
 
 class OverflowCollectionViewDemo: UIView, Demoable {
     private lazy var overflowCollectionView = OverflowCollectionView(
         cellType: DemoCollectionViewCell.self,
-        cellSpacing: .init(horizontal: .spacingS, vertical: .spacingXS),
+        cellSpacing: .init(horizontal: Warp.Spacing.spacing100, vertical: Warp.Spacing.spacing50),
         delegate: self,
         withAutoLayout: true
     )
@@ -37,7 +38,7 @@ class OverflowCollectionViewDemo: UIView, Demoable {
 
     private func setup() {
         addSubview(overflowCollectionView)
-        overflowCollectionView.fillInSuperview(margin: .spacingM)
+        overflowCollectionView.fillInSuperview(margin: Warp.Spacing.spacing200)
         overflowCollectionView.configure(with: models)
     }
 }
@@ -61,7 +62,7 @@ private class DemoCollectionViewCell: UICollectionViewCell, OverflowCollectionVi
     // MARK: - Private properties
 
     private static let labelStyle = Label.Style.body
-    private static let margins = UIEdgeInsets(vertical: .spacingS, horizontal: .spacingM)
+    private static let margins = UIEdgeInsets(vertical: Warp.Spacing.spacing100, horizontal: Warp.Spacing.spacing200)
     private lazy var label = Label(style: .body, withAutoLayout: true)
 
     // MARK: - Init
@@ -77,7 +78,7 @@ private class DemoCollectionViewCell: UICollectionViewCell, OverflowCollectionVi
 
     private func setup() {
         contentView.layer.borderWidth = 1
-        contentView.backgroundColor = .bgSecondary
+        contentView.backgroundColor = .backgroundInfoSubtle
         contentView.addSubview(label)
 
         NSLayoutConstraint.activate([
@@ -93,7 +94,7 @@ private class DemoCollectionViewCell: UICollectionViewCell, OverflowCollectionVi
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.layer.cornerRadius = min(contentView.bounds.height, contentView.bounds.width) / 2
-        contentView.layer.borderColor = UIColor.textPrimary.withAlphaComponent(0.5).cgColor
+        contentView.layer.borderColor = UIColor.text.withAlphaComponent(0.5).cgColor
     }
 
     // MARK: - OverflowCollectionViewCell

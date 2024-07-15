@@ -4,12 +4,13 @@
 
 import FinniversKit
 import DemoKit
+import Warp
 
 class SelfDeclarationDemoView: UIView, Demoable {
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
-        scrollView.contentInset = UIEdgeInsets(all: .spacingM)
+        scrollView.contentInset = UIEdgeInsets(all: Warp.Spacing.spacing200)
         return scrollView
     }()
 

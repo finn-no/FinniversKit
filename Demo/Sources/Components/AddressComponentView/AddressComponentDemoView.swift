@@ -1,5 +1,6 @@
 import FinniversKit
 import DemoKit
+import Warp
 
 class AddressComponentDemoView: UIView, Demoable {
 
@@ -25,8 +26,8 @@ class AddressComponentDemoView: UIView, Demoable {
         addSubview(addressComponentView)
 
         NSLayoutConstraint.activate([
-            addressComponentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            addressComponentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            addressComponentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            addressComponentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             addressComponentView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }

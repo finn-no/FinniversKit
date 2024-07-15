@@ -5,6 +5,7 @@
 import UIKit
 import FinniversKit
 import DemoKit
+import Warp
 
 class TextViewDemoView: UIView {
 
@@ -34,9 +35,9 @@ class TextViewDemoView: UIView {
         addSubview(textView)
 
         NSLayoutConstraint.activate([
-            textView.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
-            textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            textView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
+            textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             textView.bottomAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
@@ -47,7 +48,7 @@ class TextViewDemoView: UIView {
         placeholderText: String,
         isScrollable: Bool = true,
         hideUnderLine: Bool = false,
-        backgroundColor: UIColor = .bgSecondary
+        backgroundColor: UIColor = .backgroundInfoSubtle
     ) {
         textView.placeholderText = placeholderText
         textView.isScrollEnabled = isScrollable
@@ -107,9 +108,9 @@ extension TextViewDemoView: TweakableDemo {
         case .underlineHidden:
             configure(placeholderText: "Placeholder", hideUnderLine: true)
         case .otherBackgroundColor:
-            configure(placeholderText: "Placeholder", backgroundColor: .bgTertiary)
+            configure(placeholderText: "Placeholder", backgroundColor: .backgroundSubtle)
         case .otherBackgroundColorAndUnderlineHidden:
-            configure(placeholderText: "Placeholder", hideUnderLine: true, backgroundColor: .bgTertiary)
+            configure(placeholderText: "Placeholder", hideUnderLine: true, backgroundColor: .backgroundSubtle)
         }
     }
 }

@@ -3,12 +3,13 @@
 //
 
 import UIKit
+import Warp
 
 class SettingsSectionFooterView: UITableViewHeaderFooterView {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .caption, withAutoLayout: true)
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         label.numberOfLines = 0
         return label
     }()
@@ -29,12 +30,12 @@ class SettingsSectionFooterView: UITableViewHeaderFooterView {
     private func setup() {
         contentView.addSubview(titleLabel)
 
-        let trailingConstraint = titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.spacingM)
+        let trailingConstraint = titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200)
         trailingConstraint.priority = .defaultHigh
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing100),
             trailingConstraint
         ])
     }

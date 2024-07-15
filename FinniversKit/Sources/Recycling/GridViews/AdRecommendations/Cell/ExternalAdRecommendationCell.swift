@@ -1,4 +1,5 @@
 import Foundation
+import Warp
 
 public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendationCell, AdRecommendationConfigurable {
     // MARK: - External properties
@@ -36,7 +37,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     private static let cornerRadius: CGFloat = 8.0
     private static let heightMultiplier: CGFloat = 1
 
-    private let loadingColor: UIColor = .bgTertiary
+    private let loadingColor: UIColor = .backgroundSubtle
 
     /// Extra container for accessibility issues. The cell should have "all content" and favoriteButton (if added) as accessibilty elements but it get confused if favoriteButton is a subview of the other accessibility element (so contentView can not be one of the accessibility elements
     private lazy var containerView = UIView(withAutoLayout: true)
@@ -60,7 +61,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
     private lazy var externalLinkImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = UIImage(named: .webview).withTintColor(.iconSecondary)
+        imageView.image = UIImage(named: .webview).withTintColor(.icon)
         return imageView
     }()
 
@@ -72,7 +73,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     }()
 
     private lazy var subtitleLabel: Label = {
-        let label = Label(style: .detail, textColor: .textSecondary, withAutoLayout: true)
+        let label = Label(style: .detail, textColor: .textSubtle, withAutoLayout: true)
         label.setContentHuggingPriority(.required, for: .vertical)
         label.backgroundColor = .clear
         return label
@@ -164,8 +165,8 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
             externalLinkImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: ExternalAdRecommendationCell.ribbonTopMargin),
             externalLinkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            externalLinkImageView.widthAnchor.constraint(equalToConstant: .spacingM),
-            externalLinkImageView.heightAnchor.constraint(equalToConstant: .spacingM),
+            externalLinkImageView.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
+            externalLinkImageView.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
 
             subtitleToImageConstraint,
             subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -195,7 +196,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        imageContentView.layer.borderColor = .imageBorder
+        imageContentView.layer.borderColor = .border
     }
 
     // MARK: - Dependency injection

@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 extension ScrollableTabView {
     class ItemCollectionViewCell: UICollectionViewCell {
@@ -22,7 +23,7 @@ extension ScrollableTabView {
         private lazy var titleLabel = Label(style: Self.labelStyle, withAutoLayout: true)
         private static let labelStyle = Label.Style.captionStrong
         private static let indicatorHeight: CGFloat = 4
-        private static let verticalPadding = CGFloat.spacingS
+        private static let verticalPadding = Warp.Spacing.spacing100
 
         private static var labelHeight: CGFloat {
             "I".height(withConstrainedWidth: .greatestFiniteMagnitude, font: Self.labelStyle.font)
@@ -30,7 +31,7 @@ extension ScrollableTabView {
 
         private lazy var indicatorView: UIView = {
             let indicatorView = UIView(withAutoLayout: true)
-            indicatorView.backgroundColor = .nmpBrandControlSelected
+            indicatorView.backgroundColor = .backgroundPrimary
             return indicatorView
         }()
 
@@ -88,7 +89,7 @@ extension ScrollableTabView {
 
             UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseOut, animations: {
                 UIView.transition(with: self.titleLabel, duration: animationDuration, options: .transitionCrossDissolve, animations: {
-                    self.titleLabel.textColor = self.isSelected ? .textPrimary : .textSecondary
+                    self.titleLabel.textColor = self.isSelected ? .text : .textSubtle
                 })
                 self.indicatorView.alpha = self.isSelected ? 1 : 0
             })

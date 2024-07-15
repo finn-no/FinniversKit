@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol GalleryPreviewViewDataSource: AnyObject {
     func galleryPreviewView(_: GalleryPreviewView, loadImageWithWidth width: CGFloat, imageIndex index: Int, dataCallback: @escaping (Int, UIImage?) -> Void)
@@ -27,7 +28,7 @@ class GalleryPreviewView: UIView {
 
     // MARK: - Private properties
 
-    private let cellSpacing: CGFloat = .spacingS
+    private let cellSpacing: CGFloat = Warp.Spacing.spacing100
 
     private var images = [UIImage?]()
     private var newSuperviewSize: CGSize?

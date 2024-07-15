@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public class FrontPageSavedSearchCell: UICollectionViewCell {
     public static let width: CGFloat = 74
@@ -36,7 +37,7 @@ public class FrontPageSavedSearchCell: UICollectionViewCell {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
         stackView.alignment = .fill
-        stackView.spacing = .spacingS
+        stackView.spacing = Warp.Spacing.spacing100
         return stackView
     }()
 

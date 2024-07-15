@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 public protocol FrontPageSavedSearchesViewDelegate: AnyObject {
     func frontPageSavedSearchesView(_ view: FrontPageSavedSearchesView, didSelectSavedSearch savedSearch: FrontPageSavedSearchViewModel)
@@ -13,14 +14,14 @@ public class FrontPageSavedSearchesView: UIView {
 
     // MARK: - Internal properties
 
-    public static let topPadding: CGFloat = .spacingM
+    public static let topPadding: CGFloat = Warp.Spacing.spacing200
     static let height: CGFloat = headerHeight + cellHeight + bottomPadding
 
     // MARK: - Private properties
 
     private static let headerHeight: CGFloat = 44
     private static let cellHeight: CGFloat = 100
-    private static let bottomPadding: CGFloat = .spacingS
+    private static let bottomPadding: CGFloat = Warp.Spacing.spacing100
 
     private typealias Datasource = UICollectionViewDiffableDataSource<Section, AnyHashable>
     private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
@@ -110,7 +111,7 @@ private extension FrontPageSavedSearchesView {
         addSubview(collectionView)
         heightAnchor.constraint(equalToConstant: Self.height).isActive = true
 
-        collectionView.backgroundColor = .bgQuaternary
+        collectionView.backgroundColor = .backgroundSubtle
         collectionView.fillInSuperview()
         collectionViewDatasource = makeDatasource()
     }
@@ -129,9 +130,9 @@ private extension FrontPageSavedSearchesView {
 
         //Sections
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: .spacingM, bottom: 0, trailing: .spacingM)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: Warp.Spacing.spacing200, bottom: 0, trailing: Warp.Spacing.spacing200)
         section.orthogonalScrollingBehavior = .continuous
-        section.interGroupSpacing = .spacingS + .spacingXS
+        section.interGroupSpacing = Warp.Spacing.spacing100 + Warp.Spacing.spacing50
 
         // Header
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(Self.headerHeight))

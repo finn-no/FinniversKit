@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public final class DetailCalloutView: UIView {
 
@@ -24,10 +25,10 @@ public final class DetailCalloutView: UIView {
 
     private lazy var boxView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .bgSuccess
-        view.layer.borderColor = .accentPea
+        view.backgroundColor = .backgroundPositiveSubtle
+        view.layer.borderColor = .borderPositive
         view.layer.borderWidth = 2
-        view.layer.cornerRadius = .spacingS
+        view.layer.cornerRadius = Warp.Spacing.spacing100
         return view
     }()
 
@@ -39,7 +40,7 @@ public final class DetailCalloutView: UIView {
 
     private lazy var textLabel: UILabel = {
         let label = Label(style: .detail, withAutoLayout: true)
-        label.textColor = .textToast
+        label.textColor = .text
         return label
     }()
 
@@ -82,10 +83,10 @@ public final class DetailCalloutView: UIView {
             arrowView.heightAnchor.constraint(equalToConstant: 16),
             arrowView.centerYAnchor.constraint(equalTo: centerYAnchor),
 
-            textLabel.topAnchor.constraint(equalTo: boxView.topAnchor, constant: .spacingS),
-            textLabel.leadingAnchor.constraint(equalTo: boxView.leadingAnchor, constant: .spacingM),
-            textLabel.trailingAnchor.constraint(equalTo: boxView.trailingAnchor, constant: -.spacingM),
-            textLabel.bottomAnchor.constraint(equalTo: boxView.bottomAnchor, constant: -.spacingS)
+            textLabel.topAnchor.constraint(equalTo: boxView.topAnchor, constant: Warp.Spacing.spacing100),
+            textLabel.leadingAnchor.constraint(equalTo: boxView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            textLabel.trailingAnchor.constraint(equalTo: boxView.trailingAnchor, constant: -Warp.Spacing.spacing200),
+            textLabel.bottomAnchor.constraint(equalTo: boxView.bottomAnchor, constant: -Warp.Spacing.spacing100)
         ]
 
         NSLayoutConstraint.activate(defaultConstraints + directionConstraints())
@@ -121,14 +122,14 @@ private final class ArrowView: UIView {
     private lazy var triangleLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.lineWidth = 2
-        layer.fillColor = .bgSuccess
-        layer.strokeColor = .accentPea
+        layer.fillColor = .backgroundPositiveSubtle
+        layer.strokeColor = .borderPositive
         return layer
     }()
 
     private lazy var trailingBorderLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
-        layer.backgroundColor = .bgSuccess
+        layer.backgroundColor = .backgroundPositiveSubtle
         return layer
     }()
 

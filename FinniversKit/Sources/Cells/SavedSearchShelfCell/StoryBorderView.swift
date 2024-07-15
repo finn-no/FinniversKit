@@ -39,8 +39,8 @@ class StoryBorderView: UIView {
         shape.strokeColor = UIColor.black.cgColor
         shape.fillColor = UIColor.clear.cgColor
 
-        let topColor = isRead ? .btnDisabled : UIColor.unreadStoryTopGradientColor
-        let bottomColor = isRead ? .btnDisabled : UIColor.unreadStoryBottomGradientColor
+        let topColor = isRead ? .backgroundDisabled : UIColor.unreadStoryTopGradientColor
+        let bottomColor = isRead ? .backgroundDisabled : UIColor.unreadStoryBottomGradientColor
 
         let gradient = CAGradientLayer()
         gradient.frame =  CGRect(origin: .zero, size: frame.size)
@@ -53,10 +53,10 @@ class StoryBorderView: UIView {
 
 private extension UIColor {
     static var unreadStoryTopGradientColor: CGColor {
-        UIColor.nmpBrandColorPrimary.cgColor
+        UIColor.borderPrimary.cgColor
     }
 
     static var unreadStoryBottomGradientColor: CGColor {
-        UIColor.nmpBrandColorSecondary.cgColor
+        UIColor.borderPrimary.cgColor
     }
 }

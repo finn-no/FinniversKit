@@ -47,7 +47,7 @@ public class TopShadowView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         layer.masksToBounds = false
         layer.shadowOpacity = 0.3

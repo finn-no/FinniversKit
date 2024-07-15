@@ -47,7 +47,7 @@ public final class FavoriteFolderActionView: UIView {
         withAction: .delete,
         title: viewModel.deleteText,
         icon: .favoritesDelete,
-        tintColor: .btnCritical
+        tintColor: .backgroundNegative
     )
 
     private lazy var shareToggleView: FavoriteFolderShareToggleView = {
@@ -136,7 +136,7 @@ public final class FavoriteFolderActionView: UIView {
         withAction action: FavoriteFolderAction,
         title: String,
         icon: ImageAsset,
-        tintColor: UIColor = .textPrimary
+        tintColor: UIColor = .text
     ) -> FavoriteFolderActionButton {
         let button = FavoriteFolderActionButton(action: action, title: title, icon: icon, tintColor: tintColor)
         button.translatesAutoresizingMaskIntoConstraints = false

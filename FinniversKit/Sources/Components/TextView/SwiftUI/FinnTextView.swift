@@ -3,6 +3,7 @@
 //
 
 import SwiftUI
+import Warp
 
 public struct FinnTextView: View {
 
@@ -26,16 +27,16 @@ public struct FinnTextView: View {
             Text(placeholderText)
                 .foregroundColor(Color.textDisabled)
                 .finnFont(.body)
-                .padding(.vertical, .spacingS)
-                .padding(.leading, .spacingS + 5) // UITextView.textContainerInset.left + 5 to align with caret
-                .padding(.trailing, .spacingS)
+                .padding(.vertical, Warp.Spacing.spacing100)
+                .padding(.leading, Warp.Spacing.spacing100 + 5) // UITextView.textContainerInset.left + 5 to align with caret
+                .padding(.trailing, Warp.Spacing.spacing100)
         }
     }
 
     private var underline: some View {
         Rectangle()
             .frame(height: 2)
-            .foregroundColor(Color.accentSecondaryBlue)
+            .foregroundColor(.borderFocus)
     }
 
 }
@@ -48,9 +49,9 @@ struct TextViewComponent: UIViewRepresentable {
         let view = UITextView()
         view.delegate = context.coordinator
         view.font = .body
-        view.textColor = .textPrimary
-        view.backgroundColor = .bgSecondary
-        view.textContainerInset = UIEdgeInsets(top: .spacingS, left: .spacingS, bottom: .spacingS, right: .spacingS)
+        view.textColor = .text
+        view.backgroundColor = .backgroundInfoSubtle
+        view.textContainerInset = UIEdgeInsets(top: Warp.Spacing.spacing100, left: Warp.Spacing.spacing100, bottom: Warp.Spacing.spacing100, right: Warp.Spacing.spacing100)
         view.isScrollEnabled = false
         return view
     }

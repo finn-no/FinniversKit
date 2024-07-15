@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 class FavoriteAdsSortingView: UIView {
 
@@ -20,7 +21,7 @@ class FavoriteAdsSortingView: UIView {
     private lazy var sortingLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .detailStrong
-        label.textColor = .textPrimary
+        label.textColor = .text
         return label
     }()
 
@@ -52,15 +53,15 @@ class FavoriteAdsSortingView: UIView {
         addSubview(arrowImage)
 
         NSLayoutConstraint.activate([
-            sortingLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
+            sortingLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
             sortingLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            sortingLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingS),
+            sortingLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100),
 
             arrowImage.leadingAnchor.constraint(equalTo: sortingLabel.trailingAnchor, constant: 1),
             arrowImage.heightAnchor.constraint(equalToConstant: 12),
             arrowImage.widthAnchor.constraint(equalToConstant: 12),
             arrowImage.centerYAnchor.constraint(equalTo: sortingLabel.centerYAnchor),
-            arrowImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM)
+            arrowImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200)
         ])
     }
 }

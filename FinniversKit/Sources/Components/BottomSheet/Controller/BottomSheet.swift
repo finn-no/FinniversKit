@@ -145,7 +145,7 @@ public class BottomSheet: UIViewController {
                             height: Height = .defaultFilterHeight,
                             draggableArea: DraggableArea = .everything) {
         let rootViewController = UIViewController()
-        rootViewController.view.backgroundColor = .bgPrimary
+        rootViewController.view.backgroundColor = .background
         rootViewController.view.addSubview(view)
         view.fillInSuperview()
 
@@ -158,7 +158,7 @@ public class BottomSheet: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = rootViewController.view.backgroundColor ?? .bgPrimary
+        view.backgroundColor = rootViewController.view.backgroundColor ?? .background
         view.clipsToBounds = true
         view.layer.cornerRadius = cornerRadius
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]

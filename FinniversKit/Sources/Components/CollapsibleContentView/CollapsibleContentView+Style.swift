@@ -1,4 +1,5 @@
 import UIKit
+import Warp
 
 extension CollapsibleContentView {
     public struct Style {
@@ -34,17 +35,17 @@ extension CollapsibleContentView {
         // MARK: - Defined styles
 
         public static let plain = Style(
-            backgroundColor: .bgPrimary,
+            backgroundColor: .background,
             cornerRadius: .zero,
-            contentInsets: .init(vertical: .spacingS, horizontal: 0),
+            contentInsets: .init(vertical: Warp.Spacing.spacing100, horizontal: 0),
             titleStyle: .title3Strong,
             headerContentSpacing: 0
         )
 
         public static let card = Style(
-            backgroundColor: .bgSecondary,
+            backgroundColor: .backgroundInfoSubtle,
             cornerRadius: 8,
-            contentInsets: .init(all: .spacingS),
+            contentInsets: .init(all: Warp.Spacing.spacing100),
             titleStyle: .title3Strong,
             headerContentSpacing: 0
         )

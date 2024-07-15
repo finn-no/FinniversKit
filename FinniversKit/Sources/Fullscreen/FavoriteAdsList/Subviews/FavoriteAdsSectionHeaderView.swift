@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 class FavoriteAdsSectionHeaderView: UITableViewHeaderFooterView {
 
@@ -11,14 +12,14 @@ class FavoriteAdsSectionHeaderView: UITableViewHeaderFooterView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .detailStrong
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         return label
     }()
 
     private lazy var detailLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .detailStrong
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.textAlignment = .right
         return label
     }()
@@ -43,19 +44,19 @@ class FavoriteAdsSectionHeaderView: UITableViewHeaderFooterView {
     // MARK: - Setup
 
     private func setup() {
-        contentView.backgroundColor = .bgTertiary
+        contentView.backgroundColor = .surfaceSunken
         contentView.addSubview(titleLabel)
         contentView.addSubview(detailLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM),
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingS),
-            titleLabel.trailingAnchor.constraint(equalTo: detailLabel.leadingAnchor, constant: -.spacingS),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing100),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Warp.Spacing.spacing100),
+            titleLabel.trailingAnchor.constraint(equalTo: detailLabel.leadingAnchor, constant: -Warp.Spacing.spacing100),
 
-            detailLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacingS),
-            detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingM),
-            detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.spacingS)
+            detailLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing100),
+            detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
+            detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Warp.Spacing.spacing100)
         ])
     }
 

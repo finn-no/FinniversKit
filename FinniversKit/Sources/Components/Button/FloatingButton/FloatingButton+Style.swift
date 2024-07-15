@@ -83,14 +83,14 @@ public extension FloatingButton {
 public extension FloatingButton.Style {
     static var `default`: FloatingButton.Style {
         FloatingButton.Style(
-            tintColor: .btnPrimary,
-            titleColor: .textTertiary,
-            primaryBackgroundColor: .bgPrimary,
-            highlightedBackgroundColor: .bgSecondary,
+            tintColor: .backgroundPrimary,
+            titleColor: .textInverted,
+            primaryBackgroundColor: .background,
+            highlightedBackgroundColor: .backgroundInfoSubtle,
             borderWidth: 0,
             borderColor: nil,
-            badgeBackgroundColor: .btnPrimary,
-            badgeTextColor: .textPrimary,
+            badgeBackgroundColor: .backgroundPrimary,
+            badgeTextColor: .text,
             badgeSize: 30,
             shadowColor: .black.withAlphaComponent(0.6),
             shadowOffset: CGSize(width: 0, height: 5),

@@ -33,7 +33,7 @@ class AddressMapDemoView: UIView {
         for subview in addressMapView.subviews {
             guard let mapView = subview as? MKMapView else { break }
             let colorfulView = UIView(withAutoLayout: true)
-            colorfulView.backgroundColor = .green100
+            colorfulView.backgroundColor = .surfaceSunken
             mapView.superview?.addSubview(colorfulView)
             let constraints: [NSLayoutConstraint] = [
                 colorfulView.topAnchor.constraint(equalTo: mapView.topAnchor),

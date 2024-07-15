@@ -1,5 +1,6 @@
 import FinniversKit
 import DemoKit
+import Warp
 
 class NumberedListDemoView: UIView {
 
@@ -27,15 +28,15 @@ class NumberedListDemoView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        directionalLayoutMargins = NSDirectionalEdgeInsets(all: .spacingS)
+        directionalLayoutMargins = NSDirectionalEdgeInsets(all: Warp.Spacing.spacing100)
 
         addSubview(scrollView)
         scrollView.fillInSuperviewLayoutMargins()
         scrollView.alwaysBounceVertical = true
 
         scrollView.addSubview(numberedListView)
-        numberedListView.fillInSuperview(margin: .spacingM)
-        numberedListView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.spacingXL).isActive = true
+        numberedListView.fillInSuperview(margin: Warp.Spacing.spacing200)
+        numberedListView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -Warp.Spacing.spacing400).isActive = true
     }
 }
 

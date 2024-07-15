@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol InstrumentSelectorViewDelegate: AnyObject {
     func instrumentSelectorView(_ view: InstrumentSelectorView, didSelectInstrument instrument: Instrument)
@@ -17,7 +18,7 @@ final class InstrumentSelectorView: UIView {
         let label = UILabel()
         label.font = .title2
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .textTertiary
+        label.textColor = .textInverted
         return label
     }()
 
@@ -25,8 +26,8 @@ final class InstrumentSelectorView: UIView {
         let control = UISegmentedControl(items: self.instruments.map({ $0.rawValue }))
         control.translatesAutoresizingMaskIntoConstraints = false
 
-        control.selectedSegmentTintColor = .bgTertiary
-        control.backgroundColor = .bgSecondary
+        control.selectedSegmentTintColor = .backgroundSubtle
+        control.backgroundColor = .backgroundInfoSubtle
         return control
     }()
 
@@ -54,12 +55,12 @@ final class InstrumentSelectorView: UIView {
         segmentedControl.addTarget(self, action: #selector(handleSegmentedControlChange(_:)), for: .valueChanged)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingM),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200),
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            segmentedControl.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
-            segmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
-            segmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingM),
+            segmentedControl.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
+            segmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            segmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             segmentedControl.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4)
         ])
     }

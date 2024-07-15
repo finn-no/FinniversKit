@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol NeighborhoodProfileHeaderViewDelegate: AnyObject {
     func neighborhoodProfileHeaderViewDidSelectButton(_ view: NeighborhoodProfileHeaderView)
@@ -29,13 +30,13 @@ final class NeighborhoodProfileHeaderView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var stackView = UIStackView(axis: .horizontal, spacing: .spacingM, alignment: .center, distribution: .fill, withAutoLayout: true)
+    private lazy var stackView = UIStackView(axis: .horizontal, spacing: Warp.Spacing.spacing200, alignment: .center, distribution: .fill, withAutoLayout: true)
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         label.font = NeighborhoodProfileHeaderView.titleFont
-        label.textColor = .textPrimary
+        label.textColor = .text
         return label
     }()
 
@@ -87,28 +88,30 @@ private final class ArrowButton: UIButton {
 
     public override var isHighlighted: Bool {
         didSet {
-            tintColor = isHighlighted ? .linkButtonHighlightedTextColor : .textAction
+            backgroundColor = isHighlighted ? .backgroundActive : .clear
         }
     }
 
     public override var isSelected: Bool {
         didSet {
-            tintColor = isSelected ? .linkButtonHighlightedTextColor : .textAction
+            backgroundColor = isSelected ? .backgroundActive : .clear
         }
     }
 
     private func setup() {
-        tintColor = .textAction
+        tintColor = .textLink
         semanticContentAttribute = .forceRightToLeft
 
         titleLabel?.font = .captionStrong
-        setTitleColor(.textAction, for: .normal)
-        setTitleColor(.linkButtonHighlightedTextColor, for: .highlighted)
+        setTitleColor(.textLink, for: .normal)
+        setTitleColor(.textLink, for: .highlighted)
 
         let image = UIImage(named: .arrowRight).withRenderingMode(.alwaysTemplate)
         setImage(image, for: .normal)
         setImage(image, for: .highlighted)
-        imageEdgeInsets = UIEdgeInsets(top: 3, leading: .spacingXS, bottom: 3, trailing: -.spacingXS)
+        imageEdgeInsets = UIEdgeInsets(top: 3, leading: Warp.Spacing.spacing50, bottom: 3, trailing: -Warp.Spacing.spacing50)
+        contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        layer.cornerRadius = 8
         imageView?.contentMode = .scaleAspectFit
     }
 }

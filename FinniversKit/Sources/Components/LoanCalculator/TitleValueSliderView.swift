@@ -1,6 +1,7 @@
 //
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
+import Warp
 
 public struct TitleValueSliderViewModel {
     public let title: String
@@ -49,7 +50,7 @@ class TitleValueSlider: UIView {
 
     private lazy var valueLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
-        label.textColor = .textAction
+        label.textColor = .textLink
         return label
     }()
 
@@ -105,13 +106,13 @@ class TitleValueSlider: UIView {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: valueLabel.leadingAnchor, constant: -.spacingS),
+            titleLabel.trailingAnchor.constraint(equalTo: valueLabel.leadingAnchor, constant: -Warp.Spacing.spacing100),
 
             valueLabel.topAnchor.constraint(equalTo: topAnchor),
             valueLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             valueLabel.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor),
 
-            slider.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .spacingM),
+            slider.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Warp.Spacing.spacing200),
             slider.leadingAnchor.constraint(equalTo: leadingAnchor),
             slider.trailingAnchor.constraint(equalTo: trailingAnchor),
             slider.bottomAnchor.constraint(equalTo: bottomAnchor)

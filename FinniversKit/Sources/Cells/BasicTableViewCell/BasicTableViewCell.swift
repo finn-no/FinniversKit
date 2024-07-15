@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 open class BasicTableViewCell: UITableViewCell {
 
@@ -14,7 +15,7 @@ open class BasicTableViewCell: UITableViewCell {
     open lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .body
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.numberOfLines = 0
         return label
     }()
@@ -22,7 +23,7 @@ open class BasicTableViewCell: UITableViewCell {
     open lazy var subtitleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .caption
-        label.textColor = .textPrimary
+        label.textColor = .text
         label.numberOfLines = 0
         return label
     }()
@@ -30,7 +31,7 @@ open class BasicTableViewCell: UITableViewCell {
     open lazy var detailLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .detail
-        label.textColor = .textSecondary
+        label.textColor = .textSubtle
         return label
     }()
 
@@ -42,7 +43,7 @@ open class BasicTableViewCell: UITableViewCell {
         return stackView
     }()
 
-    open lazy var stackViewLeadingAnchorConstraint = stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingM)
+    open lazy var stackViewLeadingAnchorConstraint = stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200)
     open lazy var stackViewTrailingAnchorConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor)
     open lazy var stackViewBottomAnchorConstraint = stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13)
     open lazy var stackViewTopAnchorConstraint = stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13)
@@ -50,7 +51,7 @@ open class BasicTableViewCell: UITableViewCell {
 
     // MARK: - Private properties
 
-    private lazy var stackViewToDetailLabelConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: detailLabel.leadingAnchor, constant: -.spacingXS)
+    private lazy var stackViewToDetailLabelConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: detailLabel.leadingAnchor, constant: -Warp.Spacing.spacing50)
 
     // MARK: - Setup
 
@@ -69,7 +70,7 @@ open class BasicTableViewCell: UITableViewCell {
         titleLabel.text = viewModel.title
 
         let isSelected = selectedIndexPath != nil ? selectedIndexPath == indexPath : false
-        titleLabel.textColor = isSelected ? .textAction : .textPrimary
+        titleLabel.textColor = isSelected ? .textLink : .text
 
         titleLabel.isEnabled = isEnabled
 
@@ -92,16 +93,16 @@ open class BasicTableViewCell: UITableViewCell {
         if viewModel.hasChevron == true {
             accessoryType = .disclosureIndicator
             selectionStyle = .default
-            detailLabelTrailingConstraint.constant = -.spacingS
-            stackViewTrailingAnchorConstraint.constant = -.spacingS
+            detailLabelTrailingConstraint.constant = -Warp.Spacing.spacing100
+            stackViewTrailingAnchorConstraint.constant = -Warp.Spacing.spacing100
         } else {
             accessoryType = .none
             selectionStyle = .none
-            detailLabelTrailingConstraint.constant = -.spacingM
-            stackViewTrailingAnchorConstraint.constant = -.spacingM
+            detailLabelTrailingConstraint.constant = -Warp.Spacing.spacing200
+            stackViewTrailingAnchorConstraint.constant = -Warp.Spacing.spacing200
         }
 
-        separatorInset = .leadingInset(.spacingM)
+        separatorInset = .leadingInset(Warp.Spacing.spacing200)
     }
 
     open override func prepareForReuse() {
@@ -114,7 +115,7 @@ open class BasicTableViewCell: UITableViewCell {
 
     private func setup() {
         setDefaultSelectedBackgound()
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
         contentView.addSubview(stackView)
         contentView.addSubview(detailLabel)

@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 /// Branded alternative of SVProgressHUD. It's presented on top of the top-most view.
 @objc public class LoadingView: UIView {
@@ -51,7 +52,7 @@ import UIKit
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.image = UIImage(named: .checkmarkBig).withRenderingMode(.alwaysTemplate)
-        view.tintColor = .nmpBrandDecoration
+        view.tintColor = .iconSecondary
         view.alpha = 0
         view.transform = loadingIndicatorInitialTransform
         return view
@@ -135,9 +136,9 @@ private extension LoadingView {
             loadingIndicator.heightAnchor.constraint(equalToConstant: loadingIndicatorSize),
             loadingIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingXS),
-            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingXS),
-            messageLabel.topAnchor.constraint(equalTo: loadingIndicator.bottomAnchor, constant: .spacingS)
+            messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing50),
+            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing50),
+            messageLabel.topAnchor.constraint(equalTo: loadingIndicator.bottomAnchor, constant: Warp.Spacing.spacing100)
         ])
     }
 
@@ -148,14 +149,14 @@ private extension LoadingView {
 
             switch displayType {
             case .fullscreen:
-                successImageView.tintColor = .accentSecondaryBlue
-                messageLabel.textColor = .textPrimary
-                backgroundColor = UIColor.bgPrimary.withAlphaComponent(0.8)
+                successImageView.tintColor = .iconSecondary
+                messageLabel.textColor = .text
+                backgroundColor = .background.withAlphaComponent(0.8)
                 layer.cornerRadius = 0
                 fillInSuperview()
             case .boxed:
-                successImageView.tintColor = .iconTertiary
-                messageLabel.textColor = .textTertiary
+                successImageView.tintColor = .iconInvertedStatic
+                messageLabel.textColor = .textInvertedStatic
                 backgroundColor = UIColor.black.withAlphaComponent(0.8)
                 layer.cornerRadius = 16
 
@@ -173,11 +174,11 @@ private extension LoadingView {
         if let message = message, message.count > 0 {
             messageLabel.text = message
             successImageViewCenterY?.isActive = false
-            successImageViewCenterY = successImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -.spacingS)
+            successImageViewCenterY = successImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -Warp.Spacing.spacing100)
             successImageViewCenterY?.isActive = true
 
             loadingIndicatorCenterY?.isActive = false
-            loadingIndicatorCenterY = loadingIndicator.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -.spacingS)
+            loadingIndicatorCenterY = loadingIndicator.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -Warp.Spacing.spacing100)
             loadingIndicatorCenterY?.isActive = true
         } else {
             successImageViewCenterY?.isActive = false

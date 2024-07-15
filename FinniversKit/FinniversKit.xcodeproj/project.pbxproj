@@ -199,7 +199,7 @@
 		714B9352253728EC00801C99 /* SendInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B9351253728EC00801C99 /* SendInviteView.swift */; };
 		714B9355253730D900801C99 /* SendInviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B9354253730D900801C99 /* SendInviteViewModel.swift */; };
 		71C6A9542549636A00D78269 /* MessageUserRequiredSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C6A9532549636A00D78269 /* MessageUserRequiredSheet.swift */; };
-		826B87532B57C78A00514DFF /* Warp in Frameworks */ = {isa = PBXBuildFile; productRef = 826B87522B57C78A00514DFF /* Warp */; };
+		8281DBA92AFB9E01004580CE /* Warp in Frameworks */ = {isa = PBXBuildFile; productRef = 8281DBA82AFB9E01004580CE /* Warp */; };
 		8908E83622BD0CA100ED671C /* MessageInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E83522BD0CA100ED671C /* MessageInputTextView.swift */; };
 		8908E84922C0C3C600ED671C /* MessageFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84722C0C2F900ED671C /* MessageFormViewController.swift */; };
 		8908E85322C0D79600ED671C /* MessageFormBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84F22C0D76500ED671C /* MessageFormBottomSheet.swift */; };
@@ -967,7 +967,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				826B87532B57C78A00514DFF /* Warp in Frameworks */,
+				8281DBA92AFB9E01004580CE /* Warp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1176,6 +1176,7 @@
 				4447F6631FDB2B110033DBC1 /* Sources */,
 				14F4F1BA1FD6CEA800E9CECA /* UnitTests */,
 				25D04D7C1F583B1800EA317D /* Products */,
+				8281DBA72AFB9E01004580CE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2059,6 +2060,13 @@
 				71C6A9532549636A00D78269 /* MessageUserRequiredSheet.swift */,
 			);
 			path = MessageUserRequired;
+			sourceTree = "<group>";
+		};
+		8281DBA72AFB9E01004580CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		8908E83422BD0C8700ED671C /* MessageForm */ = {
@@ -3228,7 +3236,7 @@
 			);
 			name = FinniversKit;
 			packageProductDependencies = (
-				826B87522B57C78A00514DFF /* Warp */,
+				8281DBA82AFB9E01004580CE /* Warp */,
 			);
 			productName = FinniversKit;
 			productReference = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */;
@@ -3269,7 +3277,7 @@
 			);
 			mainGroup = 25D04D721F583B1800EA317D;
 			packageReferences = (
-				826B87512B57C78A00514DFF /* XCRemoteSwiftPackageReference "warp-ios" */,
+				8217B6D82AEBAD6D000B9CC6 /* XCRemoteSwiftPackageReference "warp-ios" */,
 			);
 			productRefGroup = 25D04D7C1F583B1800EA317D /* Products */;
 			projectDirPath = "";
@@ -4104,21 +4112,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		826B87512B57C78A00514DFF /* XCRemoteSwiftPackageReference "warp-ios" */ = {
+		8217B6D82AEBAD6D000B9CC6 /* XCRemoteSwiftPackageReference "warp-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/warp-ds/warp-ios.git";
 			requirement = {
 				kind = versionRange;
 				maximumVersion = 999.0.0;
-				minimumVersion = 0.0.1;
+				minimumVersion = 0.0.15;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		826B87522B57C78A00514DFF /* Warp */ = {
+		8281DBA82AFB9E01004580CE /* Warp */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 826B87512B57C78A00514DFF /* XCRemoteSwiftPackageReference "warp-ios" */;
+			package = 8217B6D82AEBAD6D000B9CC6 /* XCRemoteSwiftPackageReference "warp-ios" */;
 			productName = Warp;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -3,26 +3,27 @@
 //
 
 import UIKit
+import Warp
 
 final class FavoriteAdCommentView: UIView {
 
     // MARK: - Public properties
 
-    static let defaultBackgroundColor = UIColor.bgAlert
+    static let defaultBackgroundColor = UIColor.backgroundWarningSubtle
 
     // MARK: - Private properties
 
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = UIImage(named: .favoritesComment).withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .highlight
+        imageView.tintColor = .iconWarning
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
     private lazy var label: UILabel = {
         let label = Label(style: .captionStrong, withAutoLayout: true)
-        label.textColor = .textToast
+        label.textColor = .text
         label.numberOfLines = 0
         label.textAlignment = .left
         return label
@@ -53,34 +54,26 @@ final class FavoriteAdCommentView: UIView {
         backgroundColor = FavoriteAdCommentView.defaultBackgroundColor
 
         layer.cornerRadius = 4
-        layer.borderColor = UIColor.highlight?.cgColor
+        layer.borderColor = .borderWarning
         layer.borderWidth = 4.0 / UIScreen.main.scale
 
         addSubview(imageView)
         addSubview(label)
 
-        directionalLayoutMargins = .init(all: .spacingS)
+        directionalLayoutMargins = .init(all: Warp.Spacing.spacing100)
 
         let margins = layoutMarginsGuide
 
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: margins.topAnchor, constant: .spacingXXS),
+            imageView.topAnchor.constraint(equalTo: margins.topAnchor, constant: Warp.Spacing.spacing25),
             imageView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
             imageView.widthAnchor.constraint(equalToConstant: 15),
             imageView.heightAnchor.constraint(equalToConstant: 14),
 
             label.topAnchor.constraint(equalTo: margins.topAnchor),
-            label.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .spacingS),
+            label.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: Warp.Spacing.spacing100),
             label.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
             label.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
         ])
-    }
-}
-
-// MARK: - Private extensions
-
-private extension UIColor {
-    class var highlight: UIColor? {
-        return UIColor(r: 255, g: 204, b: 0)
     }
 }

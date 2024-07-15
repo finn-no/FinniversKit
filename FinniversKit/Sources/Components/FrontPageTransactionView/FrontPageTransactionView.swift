@@ -1,4 +1,5 @@
 import SwiftUI
+import Warp
 
 public struct FrontPageTransactionView: View {
     @ObservedObject
@@ -12,22 +13,22 @@ public struct FrontPageTransactionView: View {
     }
 
     public var body: some View {
-        VStack(alignment: .leading, spacing: .spacingS) {
+        VStack(alignment: .leading, spacing: Warp.Spacing.spacing100) {
             Text(model.headerTitle)
                 .finnFont(.bodyStrong)
-                .foregroundColor(.textPrimary)
+                .foregroundColor(.text)
                 .accessibilityAddTraits(.isHeader)
 
             VStack {
-                HStack(alignment: .top, spacing: .spacingS) {
-                    VStack(alignment: .leading, spacing: .spacingXS) {
+                HStack(alignment: .top, spacing: Warp.Spacing.spacing100) {
+                    VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
                         Text(model.title)
                             .finnFont(.bodyStrong)
-                            .foregroundColor(.textPrimary)
+                            .foregroundColor(.text)
 
                         Text(model.subtitle)
                             .finnFont(.body)
-                            .foregroundColor(.textPrimary)
+                            .foregroundColor(.text)
                     }
 
                     Spacer()
@@ -48,7 +49,7 @@ public struct FrontPageTransactionView: View {
                     .roundedBorder(radius: cornerRadius, width: 1, color: .black.opacity(0.1))
                     .animation(.easeOut(duration: 0.2), value: model.image)
                 }
-                .padding(.spacingM)
+                .padding(Warp.Spacing.spacing200)
             }
             .background(
                 RoundedRectangle(cornerRadius: cornerRadius)
@@ -72,11 +73,11 @@ public struct FrontPageTransactionView: View {
 
 private extension Color {
     static var shadowColor: Color {
-        Color(UIColor(hex: "475569"))
+        .black
     }
 
     static var bgColor: Color {
-        Color(UIColor.dynamicColor(defaultColor: .white, darkModeColor: .darkBgPrimaryProminent))
+        .surfaceElevated200
     }
 }
 
@@ -94,6 +95,6 @@ struct FrontPageTransactionView_Previews: PreviewProvider {
                 transactionId: nil
             )
         )
-        .padding(.spacingM)
+        .padding(Warp.Spacing.spacing200)
     }
 }

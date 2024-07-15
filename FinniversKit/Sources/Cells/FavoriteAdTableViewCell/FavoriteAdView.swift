@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 protocol FavoriteAdViewDelegate: AnyObject {
     func favoriteAdView(_ view: FavoriteAdView, didSelectMoreButton button: UIButton)
@@ -36,12 +37,12 @@ final class FavoriteAdView: UIView {
 
     private var viewModel: FavoriteAdViewModel?
 
-    private lazy var sortingDetailLabel = label(withFont: .detailStrong, textColor: .textAction, numberOfLines: 2)
-    private lazy var addressLabel = label(withFont: .detail, textColor: .textSecondary, numberOfLines: 2, isHidden: false)
-    private lazy var titleLabel = label(withFont: .caption, textColor: .textPrimary, numberOfLines: 2, isHidden: false)
-    private lazy var descriptionPrimaryLabel = label(withFont: .bodyStrong, textColor: .textPrimary, numberOfLines: 0)
-    private lazy var descriptionSecondaryLabel = label(withFont: .detail, textColor: .textPrimary, numberOfLines: 0)
-    private lazy var descriptionTertiaryLabel = label(withFont: .detailStrong, textColor: .textPrimary, numberOfLines: 0)
+    private lazy var sortingDetailLabel = label(withFont: .detailStrong, textColor: .textLink, numberOfLines: 2)
+    private lazy var addressLabel = label(withFont: .detail, textColor: .textSubtle, numberOfLines: 2, isHidden: false)
+    private lazy var titleLabel = label(withFont: .caption, textColor: .text, numberOfLines: 2, isHidden: false)
+    private lazy var descriptionPrimaryLabel = label(withFont: .bodyStrong, textColor: .text, numberOfLines: 0)
+    private lazy var descriptionSecondaryLabel = label(withFont: .detail, textColor: .text, numberOfLines: 0)
+    private lazy var descriptionTertiaryLabel = label(withFont: .detailStrong, textColor: .text, numberOfLines: 0)
     private lazy var statusRibbon = RibbonView(withAutoLayout: true)
     private lazy var commentView = FavoriteAdCommentView(withAutoLayout: true)
     private lazy var fallbackImage: UIImage = UIImage(named: .noImage)
@@ -49,7 +50,7 @@ final class FavoriteAdView: UIView {
     private lazy var rootStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.spacing = .spacingM
+        stackView.spacing = Warp.Spacing.spacing200
         stackView.alignment = .leading
         return stackView
     }()
@@ -57,7 +58,7 @@ final class FavoriteAdView: UIView {
     private lazy var infoStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .horizontal
-        stackView.spacing = .spacingM
+        stackView.spacing = Warp.Spacing.spacing200
         stackView.alignment = .leading
         return stackView
     }()
@@ -85,7 +86,7 @@ final class FavoriteAdView: UIView {
         let image = UIImage(named: .more).withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
-        button.tintColor = .gray500
+        button.tintColor = .backgroundPrimarySubtle
         button.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
         button.contentEdgeInsets = UIEdgeInsets(vertical: 10, horizontal: 8)
         return button
@@ -196,11 +197,11 @@ final class FavoriteAdView: UIView {
         textStackView.addArrangedSubview(descriptionSecondaryLabel)
         textStackView.addArrangedSubview(descriptionTertiaryLabel)
 
-        textStackView.setCustomSpacing(.spacingXXS, after: sortingDetailLabel)
-        textStackView.setCustomSpacing(.spacingXXS, after: addressLabel)
-        textStackView.setCustomSpacing(.spacingS, after: titleLabel)
-        textStackView.setCustomSpacing(.spacingXS, after: descriptionPrimaryLabel)
-        textStackView.setCustomSpacing(.spacingS, after: descriptionSecondaryLabel)
+        textStackView.setCustomSpacing(Warp.Spacing.spacing25, after: sortingDetailLabel)
+        textStackView.setCustomSpacing(Warp.Spacing.spacing25, after: addressLabel)
+        textStackView.setCustomSpacing(Warp.Spacing.spacing100, after: titleLabel)
+        textStackView.setCustomSpacing(Warp.Spacing.spacing50, after: descriptionPrimaryLabel)
+        textStackView.setCustomSpacing(Warp.Spacing.spacing100, after: descriptionSecondaryLabel)
 
         contentView.addSubview(infoStackView)
         contentView.addSubview(statusRibbon)
@@ -219,7 +220,7 @@ final class FavoriteAdView: UIView {
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             rootStackView.topAnchor.constraint(equalTo: topAnchor, constant: padding),
-            rootStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingM),
+            rootStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             rootStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             rootStackViewBottomConstraint,
 
@@ -236,13 +237,13 @@ final class FavoriteAdView: UIView {
             remoteImageView.widthAnchor.constraint(equalToConstant: FavoriteAdView.adImageWidth),
             remoteImageView.heightAnchor.constraint(equalTo: remoteImageView.widthAnchor),
 
-            statusRibbon.topAnchor.constraint(equalTo: topAnchor, constant: .spacingS),
-            statusRibbon.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
+            statusRibbon.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
+            statusRibbon.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
 
-            sortingDetailLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.spacingS),
-            addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.spacingS),
+            sortingDetailLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -Warp.Spacing.spacing100),
+            addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -Warp.Spacing.spacing100),
 
-            commentView.trailingAnchor.constraint(equalTo: rootStackView.trailingAnchor, constant: -.spacingM)
+            commentView.trailingAnchor.constraint(equalTo: rootStackView.trailingAnchor, constant: -Warp.Spacing.spacing200)
         ])
     }
 

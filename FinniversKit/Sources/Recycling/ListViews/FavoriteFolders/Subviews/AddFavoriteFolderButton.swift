@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 final class AddFavoriteFolderButton: UIButton {
     static let imageSize: CGFloat = 40
@@ -46,23 +47,23 @@ final class AddFavoriteFolderButton: UIButton {
         let imageSize = AddFavoriteFolderButton.imageSize
 
         imageView.frame = CGRect(
-            x: .spacingM,
+            x: Warp.Spacing.spacing200,
             y: (bounds.height - imageSize) / 2,
             width: imageSize,
             height: imageSize
         )
 
-        titleLabel.frame.origin.x = imageView.frame.maxX + .spacingM
-        titleLabel.frame.size.width = bounds.width - .spacingM - titleLabel.frame.minX
+        titleLabel.frame.origin.x = imageView.frame.maxX + Warp.Spacing.spacing200
+        titleLabel.frame.size.width = bounds.width - Warp.Spacing.spacing200 - titleLabel.frame.minX
     }
 
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgPrimary
+        backgroundColor = .background
 
-        imageView?.backgroundColor = .bgTertiary
-        imageView?.tintColor = .nmpBrandDecoration
+        imageView?.backgroundColor = .backgroundSubtle
+        imageView?.tintColor = .backgroundPrimary
         imageView?.layer.masksToBounds = true
         imageView?.contentMode = .center
         imageView?.layer.cornerRadius = 12
@@ -72,7 +73,7 @@ final class AddFavoriteFolderButton: UIButton {
         setImage(image, for: .highlighted)
 
         titleLabel?.font = .bodyStrong
-        setTitleColor(.textAction, for: .normal)
+        setTitleColor(.backgroundPrimary, for: .normal)
     }
 
     private func updateAlpha(isHighlighted: Bool) {

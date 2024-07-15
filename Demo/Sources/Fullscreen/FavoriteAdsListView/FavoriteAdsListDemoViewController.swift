@@ -122,7 +122,7 @@ extension FavoriteAdsListDemoView: TweakableDemo {
             favoritesListView.configure(infoMessages: [
                 .message(
                     "This is a single demo message. It's kinda long, but it should still present as needed",
-                    backgroundColor: .aqua50
+                    backgroundColor: .backgroundInfoSubtle
                 ),
                 .infobox(
                     title: "Important message",

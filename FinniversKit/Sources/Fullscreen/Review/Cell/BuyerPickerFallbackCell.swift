@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 class BuyerPickerFallbackCell: UITableViewCell {
     static let cellhHeight: CGFloat = 60
@@ -17,7 +18,7 @@ class BuyerPickerFallbackCell: UITableViewCell {
     private lazy var hairlineView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .tableViewSeparator
+        view.backgroundColor = .border
         return view
     }()
 
@@ -52,13 +53,13 @@ class BuyerPickerFallbackCell: UITableViewCell {
         contentView.addSubview(chevronLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacingL),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing300),
             titleLabel.centerXAnchor.constraint(equalTo: accessoryView?.centerXAnchor ?? contentView.centerXAnchor),
             titleLabel.centerYAnchor.constraint(equalTo: accessoryView?.centerYAnchor ?? contentView.centerYAnchor),
             titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: BuyerPickerFallbackCell.cellhHeight),
 
             chevronLabel.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
-            chevronLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacingS),
+            chevronLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing100),
 
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: BuyerPickerFallbackCell.cellhHeight)
         ])

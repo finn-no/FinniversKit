@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Warp
 
 public class RibbonView: UIView {
 
@@ -66,7 +67,7 @@ public class RibbonView: UIView {
     // MARK: - Private methods
 
     private func setup() {
-        layer.cornerRadius = .spacingS
+        layer.cornerRadius = Warp.Spacing.spacing100
         isAccessibilityElement = true
         backgroundColor = style.color
         titleLabel.textColor = style.textColor
@@ -74,10 +75,10 @@ public class RibbonView: UIView {
         addSubview(titleLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacingS),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacingS),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.spacingXXS),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .spacingXXS)
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing25),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing25)
         ])
     }
 
