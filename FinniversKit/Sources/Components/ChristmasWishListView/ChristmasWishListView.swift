@@ -120,10 +120,10 @@ public class ChristmasWishListView: UIView {
         secondPageView.configure(with: viewModel.secondPage)
 
         firstPageButton.setTitle(viewModel.firstPage.actionButtonTitle, for: .normal)
-        firstPageButton.setImage(viewModel.firstPage.actionButtonIcon, for: .normal)
+        firstPageButton.setImage(viewModel.firstPage.actionButtonIcon?.withRenderingMode(.alwaysTemplate), for: .normal)
 
         secondPageButton.setTitle(viewModel.secondPage.actionButtonTitle, for: .normal)
-        secondPageButton.setImage(viewModel.secondPage.actionButtonIcon, for: .normal)
+        secondPageButton.setImage(viewModel.secondPage.actionButtonIcon?.withRenderingMode(.alwaysTemplate), for: .normal)
     }
 
     // MARK: - Private methods
