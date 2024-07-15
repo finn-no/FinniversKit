@@ -4116,9 +4116,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/warp-ds/warp-ios.git";
 			requirement = {
-				kind = versionRange;
-				maximumVersion = 999.0.0;
-				minimumVersion = 0.0.15;
+				branch = "nmp-app-design-review";
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
