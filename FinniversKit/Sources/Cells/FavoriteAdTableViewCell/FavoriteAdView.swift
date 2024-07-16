@@ -86,7 +86,7 @@ final class FavoriteAdView: UIView {
         let image = UIImage(named: .more).withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
-        button.tintColor = .backgroundPrimarySubtle
+        button.tintColor = Warp.UIToken.iconSubtle
         button.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
         button.contentEdgeInsets = UIEdgeInsets(vertical: 10, horizontal: 8)
         return button
