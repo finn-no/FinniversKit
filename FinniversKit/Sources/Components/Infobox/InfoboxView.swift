@@ -58,8 +58,10 @@ public final class InfoboxView: UIView {
     }()
 
     private lazy var primaryButtonImageView: UIImageView? = {
-        if let image = style.primaryButtonIcon {
-            return UIImageView(image: image, withAutoLayout: true)
+        if let image = style.primaryButtonIcon?.withRenderingMode(.alwaysTemplate) {
+            let imageView = UIImageView(image: image, withAutoLayout: true)
+            imageView.tintColor = Warp.UIToken.iconInverted
+            return imageView
         }
         return nil
     }()
