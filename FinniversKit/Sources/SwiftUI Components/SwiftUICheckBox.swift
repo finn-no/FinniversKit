@@ -6,7 +6,7 @@ public struct SwiftUICheckBox: View {
     private var size: CGFloat = 16
     private var cornerRadius: CGFloat = 2
     private var borderWidth: CGFloat = 1
-    private var borderColor: Color = .textSubtle
+    private var borderColor: Color = .border
 
     private var fillOpacity: CGFloat {
         isChecked ? 0 : 1
