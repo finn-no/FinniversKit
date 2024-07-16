@@ -40,7 +40,8 @@ public class VerificationView: UIView {
     }()
 
     private lazy var verificationButtonImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: .webview))
+        let imageView = UIImageView(image: UIImage(named: .webview).withRenderingMode(.alwaysTemplate))
+        imageView.tintColor = Warp.UIToken.iconInverted
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
