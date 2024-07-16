@@ -63,7 +63,7 @@ open class IconTitleTableViewCell: BasicTableViewCell {
         super.configure(with: viewModel)
         selectionStyle = .default
 
-        if let icon = viewModel.icon {
+        if let icon = viewModel.icon?.withRenderingMode(.alwaysTemplate) {
             iconImageView.image = icon
             if let tintColor = viewModel.iconTintColor {
                 iconImageView.tintColor = tintColor
@@ -81,7 +81,7 @@ open class IconTitleTableViewCell: BasicTableViewCell {
         }
 
         stackViewToExternalIconConstraint.isActive = viewModel.externalIcon != nil
-        if let externalIcon = viewModel.externalIcon {
+        if let externalIcon = viewModel.externalIcon?.withRenderingMode(.alwaysTemplate) {
             accessoryType = .none
             selectionStyle = .none
             externalIconImageView.image = externalIcon
