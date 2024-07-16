@@ -1,12 +1,13 @@
 import SwiftUI
+import Warp
 
 public struct SwiftUIRadioButton: View {
     @Binding public var isSelected: Bool
 
     private var size: CGFloat = 16
     private var borderWidth: CGFloat = 1
-    private var borderColor: Color = .textSubtle
-    private var selectionColor: Color = .textLink
+    private var borderColor: Color = Warp.Token.border
+    private var selectionColor: Color = Warp.Token.iconSelected
     private var selectionScale: CGFloat = 7/16
 
     private var backgroundColor: Color {
