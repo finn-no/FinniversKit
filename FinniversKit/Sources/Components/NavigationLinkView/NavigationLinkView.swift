@@ -10,7 +10,7 @@ public class NavigationLinkView: UIView {
     private lazy var arrowImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = UIImage(named: .arrowRight).withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .iconPrimary
+        imageView.tintColor = .icon
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()

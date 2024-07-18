@@ -57,7 +57,7 @@ class IconCollectionDemoView: UIView {
 
         case .vertical:
             collectionView.configure(with: .verticalModels)
-            collectionView.backgroundColor = .background
+            collectionView.backgroundColor = .backgroundInfoSubtle
             collectionView.layer.cornerRadius = 0
             collectionView.clipsToBounds = false
         }
