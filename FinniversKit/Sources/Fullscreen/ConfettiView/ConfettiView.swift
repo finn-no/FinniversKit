@@ -15,9 +15,9 @@ public class ConfettiView: UIView {
     // ignore
     private let confettiColors: [UIColor] = [
         Warp.UIToken.backgroundPrimary,
-        .nmpBrandColorSecondary, // TODO: What color?
-        .green400,
-        .red400
+        Warp.UIToken.backgroundSecondary,
+        Warp.UIToken.backgroundPositive,
+        Warp.UIToken.backgroundNegative
     ]
 
     private(set) var emissionRangeMultiplier: CGFloat = 8.0

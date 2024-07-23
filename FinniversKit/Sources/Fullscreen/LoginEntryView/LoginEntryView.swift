@@ -39,7 +39,7 @@ public class LoginEntryView: UIView {
 
     private lazy var contentView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .surfaceSunken
+        view.backgroundColor = .background
         return view
     }()
 
@@ -56,7 +56,7 @@ public class LoginEntryView: UIView {
 
     private lazy var loginDialogue: LoginEntryDialogueView = {
         let view = LoginEntryDialogueView(withAutoLayout: true)
-        view.backgroundColor = .background
+        view.backgroundColor = Warp.UIToken.surfaceElevated100
         view.dropShadow(color: .backgroundDisabled, opacity: 0.3, offset: CGSize(width: 10, height: 0), radius: 24)
 
         return view
