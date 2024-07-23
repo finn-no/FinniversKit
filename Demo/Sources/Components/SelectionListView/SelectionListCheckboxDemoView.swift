@@ -102,8 +102,7 @@ private extension Array where Element == SelectionItemModel {
                           attribute.value == "color:tjt-price-highlight" else {
                         return
                     }
-                    // TODO: What token/color?
-                    currentStyle.foregroundColor = .dynamicColor(defaultColor: .red, darkModeColor: .yellow)
+                    currentStyle.foregroundColor = .textNegative
                 }
             }
             let accessibilityString = "Kjøper betaler 40 kroner for frakt. Dette er en tilbudspris og koster 80 kroner til vanlig."

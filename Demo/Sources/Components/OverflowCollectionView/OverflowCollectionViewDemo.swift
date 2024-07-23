@@ -94,7 +94,8 @@ private class DemoCollectionViewCell: UICollectionViewCell, OverflowCollectionVi
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.layer.cornerRadius = min(contentView.bounds.height, contentView.bounds.width) / 2
-        contentView.layer.borderColor = UIColor.text.withAlphaComponent(0.5).cgColor
+        contentView.layer.borderColor = UIColor.border.cgColor
+        label.textColor = .text
     }
 
     // MARK: - OverflowCollectionViewCell
