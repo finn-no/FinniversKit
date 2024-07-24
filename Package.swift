@@ -11,7 +11,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/warp-ds/warp-ios.git", branch: "nmp-app-design-review")
+        .package(url: "https://github.com/warp-ds/warp-ios.git", "0.0.16"..."999.0.0")
     ],
     targets: [
         .target(

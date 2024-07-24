@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/warp-ds/warp-ios.git",
       "state" : {
-        "branch" : "nmp-app-design-review",
-        "revision" : "aec0bddca98d0d0788196d87d24bc5fa44726bed"
+        "version" : "0.0.16"
+        "revision" : "528dc6eacf33b5bb18d094b6154df3071d261620",
       }
     }
   ],
