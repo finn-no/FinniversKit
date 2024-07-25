@@ -359,8 +359,8 @@ private class ButtonView: UIView {
 private extension Button.Style {
     static func negativeButton() -> Button.Style {
         Button.Style.default.overrideStyle(
-            borderWidth: 1.0,
-            borderColor: .backgroundPrimary
+            borderWidth: 2.0,
+            borderColor: .border
         )
     }
 }

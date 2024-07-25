@@ -111,7 +111,7 @@ private extension FrontPageSavedSearchesView {
         addSubview(collectionView)
         heightAnchor.constraint(equalToConstant: Self.height).isActive = true
 
-        collectionView.backgroundColor = .backgroundSubtle
+        collectionView.backgroundColor = .background
         collectionView.fillInSuperview()
         collectionViewDatasource = makeDatasource()
     }

@@ -24,6 +24,7 @@ extension ChristmasWishListView {
         private func setup() {
             translatesAutoresizingMaskIntoConstraints = false
             setTitleColor(.textInverted, for: .normal)
+            imageView?.tintColor = .iconInverted
             backgroundColor = .christmasCallToAction
 
             layer.cornerRadius = Warp.Spacing.spacing100
@@ -37,7 +38,7 @@ extension ChristmasWishListView {
 
 private extension UIColor {
     class var christmasCallToAction: UIColor? {
-        return .backgroundPrimary
+        return .backgroundNegative
     }
 
     class var christmasCallToActionHighlighted: UIColor? {

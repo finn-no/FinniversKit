@@ -43,8 +43,9 @@ class BroadcastItem: UIView {
     }()
 
     private lazy var iconImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: .important))
+        let imageView = UIImageView(image: UIImage(named: .important).withRenderingMode(.alwaysTemplate))
         imageView.contentMode = .scaleAspectFit
+        imageView.tintColor = .iconWarning
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

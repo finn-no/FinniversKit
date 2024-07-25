@@ -33,7 +33,7 @@ public class TextFieldDemoView: UIView, Demoable {
 
         let passwordTextField = TextField(inputType: .password)
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.placeholderText = "Passord"
+        passwordTextField.placeholderText = "Password"
 
         let normalTextField = TextField(inputType: .normal)
         normalTextField.translatesAutoresizingMaskIntoConstraints = false
