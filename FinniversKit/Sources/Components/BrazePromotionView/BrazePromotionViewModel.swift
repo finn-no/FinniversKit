@@ -8,6 +8,7 @@ public struct BrazePromotionViewModel {
     let borderlessButtonTitle: String?
     let dismissible: Bool?
     let style: BrazePromotionView.CardStyle
+    let backgroundColor: BrazePromotionView.BackgroundColor
     let buttonOrientation: BrazePromotionView.ButtonOrientation
 
     public init(
@@ -17,7 +18,8 @@ public struct BrazePromotionViewModel {
         primaryButtonTitle: String? = nil,
         borderlessButtonTitle: String? = nil,
         dismissible: Bool? = true,
-        style: BrazePromotionView.CardStyle = .defaultStyle,
+        style: BrazePromotionView.CardStyle = .rightAlignedGraphic,
+        backgroundColor: BrazePromotionView.BackgroundColor = .elevatedSurfaceColor,
         buttonOrientation: BrazePromotionView.ButtonOrientation = .vertical
     ) {
         self.title = title
@@ -27,6 +29,7 @@ public struct BrazePromotionViewModel {
         self.borderlessButtonTitle = borderlessButtonTitle
         self.dismissible = dismissible
         self.style = style
+        self.backgroundColor = backgroundColor
         self.buttonOrientation = buttonOrientation
     }
 }

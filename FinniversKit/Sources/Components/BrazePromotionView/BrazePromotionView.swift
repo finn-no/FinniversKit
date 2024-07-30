@@ -18,7 +18,6 @@ public class BrazePromotionView: UIView {
 
     private lazy var backgroundView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .surfaceElevated200
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
         return view
@@ -154,9 +153,17 @@ public class BrazePromotionView: UIView {
         case vertical = "vertical"
     }
 
+    public enum BackgroundColor: String, Sendable {
+        case elevatedSurfaceColor = "elevatedSurfaceColor"
+        case subtleBackgroundColor = "subtleBackgroundColor"
+        case primaryBackgroundColor = "primaryBackgroundColor"
+        case positiveBackgroundColor = "positiveBackgroundColor"
+        case warningBackgroundColor = "warningBackgroundColor"
+    }
+
     public enum CardStyle: String, Sendable {
-        case defaultStyle = "default"
         case leftAlignedGraphic = "leftAlignedGraphic"
+        case rightAlignedGraphic = "rightAlignedGraphic"
         case topAlignedGraphic = "topAlignedGraphic"
     }
 
@@ -169,6 +176,7 @@ public class BrazePromotionView: UIView {
         self.imageDatasource = imageDatasource
         self.imagePosition = .right // default value
         super.init(frame: .zero)
+        determineBackgroundColor()
         determineImagePosition()
         setup()
         configure()
@@ -178,9 +186,24 @@ public class BrazePromotionView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    private func determineBackgroundColor() {
+        switch viewModel.backgroundColor {
+        case .elevatedSurfaceColor:
+            backgroundView.backgroundColor = .surfaceElevated200
+        case .subtleBackgroundColor:
+            backgroundView.backgroundColor = .backgroundSubtle
+        case .primaryBackgroundColor:
+            backgroundView.backgroundColor = .backgroundPrimarySubtle
+        case .positiveBackgroundColor:
+            backgroundView.backgroundColor = .backgroundPositiveSubtle
+        case .warningBackgroundColor:
+            backgroundView.backgroundColor = .backgroundWarningSubtle
+        }
+    }
+
     private func determineImagePosition() {
         switch viewModel.style {
-        case .defaultStyle:
+        case .rightAlignedGraphic:
             imagePosition = .right
         case .leftAlignedGraphic:
             imagePosition = .left
