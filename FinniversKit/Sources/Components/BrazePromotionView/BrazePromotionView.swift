@@ -102,7 +102,6 @@ public class BrazePromotionView: UIView {
     private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
         stackView.distribution = .fillProportionally
-        stackView.alignment = .leading
         stackView.setContentCompressionResistancePriority(.required, for: .horizontal)
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: Warp.Spacing.spacing100)
@@ -160,6 +159,11 @@ public class BrazePromotionView: UIView {
         case topAlignedGraphic = "topAlignedGraphic"
     }
 
+    public enum ContentAlignment: String, Sendable {
+        case center = "center"
+        case left = "left"
+    }
+
     public weak var delegate: BrazePromotionViewDelegate?
 
     // MARK: - Init
@@ -169,23 +173,73 @@ public class BrazePromotionView: UIView {
         self.imageDatasource = imageDatasource
         self.imagePosition = .right // default value
         super.init(frame: .zero)
-        determineImagePosition()
-        setup()
-        configure()
+
+        if viewModel.presentation == "modal" {
+            presentAsModal()
+        } else {
+            commonSetup()
+        }
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    private func presentAsModal() {
+        guard let window = UIApplication.shared.activeWindow else {
+            return
+        }
+
+        let modalViewController = UIViewController()
+        modalViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        modalViewController.modalPresentationStyle = .overFullScreen
+
+        window.rootViewController?.present(modalViewController, animated: true) {
+            modalViewController.view.addSubview(self)
+            self.translatesAutoresizingMaskIntoConstraints = false
+
+            var constraints = [
+                self.centerXAnchor.constraint(equalTo: modalViewController.view.centerXAnchor),
+                self.centerYAnchor.constraint(equalTo: modalViewController.view.centerYAnchor),
+                self.leadingAnchor.constraint(greaterThanOrEqualTo: modalViewController.view.leadingAnchor, constant: 20),
+                self.trailingAnchor.constraint(lessThanOrEqualTo: modalViewController.view.trailingAnchor, constant: -20),
+                self.topAnchor.constraint(greaterThanOrEqualTo: modalViewController.view.topAnchor, constant: 20),
+                self.bottomAnchor.constraint(lessThanOrEqualTo: modalViewController.view.bottomAnchor, constant: -20)
+            ]
+
+            if UIDevice.current.userInterfaceIdiom == .pad && (self.viewModel.presentation == "modal") {
+                constraints.append(self.widthAnchor.constraint(equalTo: modalViewController.view.widthAnchor, multiplier: 0.5))
+            }
+
+            NSLayoutConstraint.activate(constraints)
+            self.commonSetup()
+        }
+    }
+
+    private func commonSetup() {
+        determineContentAlignment()
+        determineImagePosition()
+        setup()
+        configure()
+    }
+
     private func determineImagePosition() {
-        switch viewModel.style {
-        case .defaultStyle:
-            imagePosition = .right
+        switch viewModel.cardStyle {
         case .leftAlignedGraphic:
             imagePosition = .left
+        case .defaultStyle:
+            imagePosition = .right
         case .topAlignedGraphic:
             imagePosition = .top
+        }
+    }
+
+    private func determineContentAlignment() {
+        switch viewModel.contentAlignment {
+        case .center:
+            verticalStackView.alignment = .center
+        case .left:
+            verticalStackView.alignment = .leading
         }
     }
 
@@ -326,7 +380,14 @@ extension BrazePromotionView {
     }
 
     @objc private func handleTapOnCloseButton() {
-        delegate?.brazePromotionView(self, didSelect: .secondary)
+        if viewModel.presentation == "modal" {
+            self.removeFromSuperview()
+            if let presentingViewController = UIApplication.shared.windows.first?.rootViewController?.presentedViewController {
+                presentingViewController.dismiss(animated: false, completion: nil)
+            }
+        } else {
+            delegate?.brazePromotionView(self, didSelect: .secondary)
+        }
     }
 }
 
@@ -358,5 +419,15 @@ private class CloseButton: UIButton {
 
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         bounds.insetBy(dx: -touchPointInset, dy: -touchPointInset).contains(point)
+    }
+}
+
+extension UIApplication {
+    var activeWindow: UIWindow? {
+        return self.connectedScenes
+            .filter { $0.activationState == .foregroundActive }
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first { $0.isKeyWindow }
     }
 }
