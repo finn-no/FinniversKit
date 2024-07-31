@@ -46,7 +46,7 @@ class LinkButtonView: UIView {
     private lazy var externalImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = externalImage
-        imageView.tintColor = .border
+        imageView.tintColor = .iconPrimary
         imageView.setContentHuggingPriority(.required, for: .horizontal)
         return imageView
     }()
