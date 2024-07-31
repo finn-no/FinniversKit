@@ -1,6 +1,7 @@
 import Foundation
 
 public struct BrazePromotionViewModel {
+    let backgroundColor: BrazePromotionView.BackgroundColor
     let borderlessButtonTitle: String?
     let buttonOrientation: BrazePromotionView.ButtonOrientation
     let cardStyle: BrazePromotionView.CardStyle
@@ -13,6 +14,7 @@ public struct BrazePromotionViewModel {
     let title: String
 
     public init(
+        backgroundColor: BrazePromotionView.BackgroundColor = .elevatedSurfaceColor,
         borderlessButtonTitle: String? = nil,
         buttonOrientation: BrazePromotionView.ButtonOrientation = .vertical,
         cardStyle: BrazePromotionView.CardStyle = .defaultStyle,
@@ -24,6 +26,7 @@ public struct BrazePromotionViewModel {
         text: String? = nil,
         title: String
     ) {
+        self.backgroundColor = backgroundColor
         self.borderlessButtonTitle = borderlessButtonTitle
         self.buttonOrientation = buttonOrientation
         self.cardStyle = cardStyle

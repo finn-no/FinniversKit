@@ -18,7 +18,6 @@ public class BrazePromotionView: UIView {
 
     private lazy var backgroundView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .surfaceElevated200
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
         return view
@@ -148,20 +147,28 @@ public class BrazePromotionView: UIView {
         case borderless
     }
 
+    public enum BackgroundColor: String, Sendable {
+        case elevatedSurfaceColor
+        case subtleBackgroundColor
+        case primaryBackgroundColor
+        case positiveBackgroundColor
+        case warningBackgroundColor
+    }
+
     public enum ButtonOrientation: String, Sendable {
-        case horizontal = "horizontal"
-        case vertical = "vertical"
+        case horizontal
+        case vertical
     }
 
     public enum CardStyle: String, Sendable {
         case defaultStyle = "default"
-        case leftAlignedGraphic = "leftAlignedGraphic"
-        case topAlignedGraphic = "topAlignedGraphic"
+        case leftAlignedGraphic
+        case topAlignedGraphic
     }
 
     public enum ContentAlignment: String, Sendable {
-        case center = "center"
-        case left = "left"
+        case center
+        case left
     }
 
     public weak var delegate: BrazePromotionViewDelegate?
@@ -217,10 +224,35 @@ public class BrazePromotionView: UIView {
     }
 
     private func commonSetup() {
+        determineBackgroundColor()
         determineContentAlignment()
         determineImagePosition()
         setup()
         configure()
+    }
+
+    private func determineBackgroundColor() {
+        switch viewModel.backgroundColor {
+        case .elevatedSurfaceColor:
+            backgroundView.backgroundColor = .surfaceElevated200
+        case .subtleBackgroundColor:
+            backgroundView.backgroundColor = .backgroundSubtle
+        case .primaryBackgroundColor:
+            backgroundView.backgroundColor = .backgroundPrimarySubtle
+        case .positiveBackgroundColor:
+            backgroundView.backgroundColor = .backgroundPositiveSubtle
+        case .warningBackgroundColor:
+            backgroundView.backgroundColor = .backgroundWarningSubtle
+        }
+    }
+
+    private func determineContentAlignment() {
+        switch viewModel.contentAlignment {
+        case .center:
+            verticalStackView.alignment = .center
+        case .left:
+            verticalStackView.alignment = .leading
+        }
     }
 
     private func determineImagePosition() {
@@ -231,15 +263,6 @@ public class BrazePromotionView: UIView {
             imagePosition = .right
         case .topAlignedGraphic:
             imagePosition = .top
-        }
-    }
-
-    private func determineContentAlignment() {
-        switch viewModel.contentAlignment {
-        case .center:
-            verticalStackView.alignment = .center
-        case .left:
-            verticalStackView.alignment = .leading
         }
     }
 
