@@ -7,38 +7,44 @@ class BrazePromotionDemoView: UIView, Demoable {
     private lazy var viewModels: [BrazePromotionViewModel] = [titleTextImageButton, titleTextButton, titleText, titleTextBorderlessButton, titleTextBorderlessButtonPrimaryButton]
 
     private let titleTextImageButton = BrazePromotionViewModel(
-        title: "Hjerterom - hjelp til flyktninger",
-        text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
+        backgroundColor: .subtleBackgroundColor,
         image: "https://images.finncdn.no/dynamic/1600w/2022/11/vertical-0/18/7/277/904/107_1208691254.jpg",
+        presentation: "default",
         primaryButtonTitle: "Gå til Hjerterom",
-        style: .leftAlignedGraphic
+        text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
+        title: "Hjerterom - hjelp til flyktninger"
     )
 
     private let titleTextButton = BrazePromotionViewModel(
-        title: "Hjerterom - hjelp til flyktninger",
-        text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
+        backgroundColor: .primaryBackgroundColor,
+        dismissible: false,
         image: "https://images.finncdn.no/dynamic/1600w/2022/11/vertical-0/18/7/277/904/107_1208691254.jpg",
+        presentation: "default",
         primaryButtonTitle: "Gå til Hjerterom",
-        dismissible: false
+        text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
+        title: "Hjerterom - hjelp til flyktninger"
     )
 
     private let titleText = BrazePromotionViewModel(
-        title: "Hjerterom - hjelp til flyktninger",
-        text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge."
+        presentation: "default",
+        text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
+        title: "Hjerterom - hjelp til flyktninger"
     )
 
     private let titleTextBorderlessButton = BrazePromotionViewModel(
-        title: "Hjerterom - hjelp til flyktninger",
+        backgroundColor: .warningBackgroundColor,
+        borderlessButtonTitle: "Gå til Hjerterom",
+        presentation: "default",
         text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
-        borderlessButtonTitle: "Gå til Hjerterom"
+        title: "Hjerterom - hjelp til flyktninger"
     )
 
     private let titleTextBorderlessButtonPrimaryButton = BrazePromotionViewModel(
-        title: "Hjerterom - hjelp til flyktninger",
-        text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
-        primaryButtonTitle: "Gå til Hjerterom",
         borderlessButtonTitle: "Gå til Hjerterom",
-        buttonOrientation: .horizontal
+        buttonOrientation: .horizontal, presentation: "default",
+        primaryButtonTitle: "Gå til Hjerterom",
+        text: "Under Hjerterom kan du finne informasjon om hvordan du kan hjelpe flyktninger som kommer til Norge.",
+        title: "Hjerterom - hjelp til flyktninger"
     )
 
     private lazy var stackView: UIStackView = {

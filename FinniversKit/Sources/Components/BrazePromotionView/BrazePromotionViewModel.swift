@@ -1,32 +1,41 @@
 import Foundation
 
 public struct BrazePromotionViewModel {
-    let title: String
-    let text: String?
-    let image: String?
-    let primaryButtonTitle: String?
+    let backgroundColor: BrazePromotionView.BackgroundColor
     let borderlessButtonTitle: String?
-    let dismissible: Bool?
-    let style: BrazePromotionView.CardStyle
     let buttonOrientation: BrazePromotionView.ButtonOrientation
+    let cardStyle: BrazePromotionView.CardStyle
+    let contentAlignment: BrazePromotionView.ContentAlignment
+    let dismissible: Bool?
+    let image: String?
+    let presentation: String?
+    let primaryButtonTitle: String?
+    let text: String?
+    let title: String
 
     public init(
-        title: String,
-        text: String? = nil,
-        image: String? = nil,
-        primaryButtonTitle: String? = nil,
+        backgroundColor: BrazePromotionView.BackgroundColor = .elevatedSurfaceColor,
         borderlessButtonTitle: String? = nil,
+        buttonOrientation: BrazePromotionView.ButtonOrientation = .vertical,
+        cardStyle: BrazePromotionView.CardStyle = .defaultStyle,
+        contentAlignment: BrazePromotionView.ContentAlignment = .left,
         dismissible: Bool? = true,
-        style: BrazePromotionView.CardStyle = .defaultStyle,
-        buttonOrientation: BrazePromotionView.ButtonOrientation = .vertical
+        image: String? = nil,
+        presentation: String?,
+        primaryButtonTitle: String? = nil,
+        text: String? = nil,
+        title: String
     ) {
-        self.title = title
-        self.text = text
-        self.image = image
-        self.primaryButtonTitle = primaryButtonTitle
+        self.backgroundColor = backgroundColor
         self.borderlessButtonTitle = borderlessButtonTitle
-        self.dismissible = dismissible
-        self.style = style
         self.buttonOrientation = buttonOrientation
+        self.cardStyle = cardStyle
+        self.contentAlignment = contentAlignment
+        self.dismissible = dismissible
+        self.image = image
+        self.presentation = presentation
+        self.primaryButtonTitle = primaryButtonTitle
+        self.text = text
+        self.title = title
     }
 }
