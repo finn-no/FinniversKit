@@ -13,7 +13,7 @@ public extension BadgeView {
 
         public static var `default`: Self { .init(backgroundColor: Warp.UIColor.badgeInfoBackground, textColor: .text) }
         public static var warning: Self { .init(backgroundColor: Warp.UIColor.badgeWarningBackground, textColor: .text) }
-        public static var sponsored: Self { .init(backgroundColor: Warp.UIColor.badgeSponsoredBackground, textColor: .text) } // change this to backgroundSponsored
-        public static var motorSmidig: Self { .init(backgroundColor: Warp.UIColor.badgePositiveBackground, textColor: .text) } // use badgePositive
+        public static var sponsored: Self { .init(backgroundColor: Warp.UIColor.badgeSponsoredBackground, textColor: .text) }
+        public static var motorSmidig: Self { .init(backgroundColor: Warp.UIColor.badgePositiveBackground, textColor: .text) }
     }
 }

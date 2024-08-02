@@ -50,7 +50,7 @@ struct TextViewComponent: UIViewRepresentable {
         view.delegate = context.coordinator
         view.font = .body
         view.textColor = .text
-        view.backgroundColor = .backgroundInfoSubtle
+        view.backgroundColor = .backgroundSubtle
         view.textContainerInset = UIEdgeInsets(top: Warp.Spacing.spacing100, left: Warp.Spacing.spacing100, bottom: Warp.Spacing.spacing100, right: Warp.Spacing.spacing100)
         view.isScrollEnabled = false
         return view

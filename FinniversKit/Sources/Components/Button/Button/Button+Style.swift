@@ -178,17 +178,17 @@ public extension Button.Style {
                 .normal: Button.StateStyle(
                     textColor: .textLink,
                     backgroundColor: .background,
-                    borderColor: .backgroundDisabled
+                    borderColor: .border
                 ),
                 .highlighted: Button.StateStyle(
                     textColor: nil,
                     backgroundColor: .backgroundActive,
-                    borderColor: .backgroundPrimary
+                    borderColor: .borderActive
                 ),
                 .disabled: Button.StateStyle(
                     textColor: .textDisabled,
                     backgroundColor: nil,
-                    borderColor: .backgroundDisabled
+                    borderColor: .borderDisabled
                 )
             ]
         )
@@ -201,17 +201,17 @@ public extension Button.Style {
                 .normal: Button.StateStyle(
                     textColor: .text,
                     backgroundColor: .background,
-                    borderColor: .backgroundDisabled
+                    borderColor: .border
                 ),
                 .highlighted: Button.StateStyle(
                     textColor: .text,
                     backgroundColor: .background,
-                    borderColor: .border
+                    borderColor: .borderActive
                 ),
                 .disabled: Button.StateStyle(
                     textColor: .textDisabled,
                     backgroundColor: nil,
-                    borderColor: .backgroundDisabled
+                    borderColor: .borderDisabled
                 )
             ]
         )

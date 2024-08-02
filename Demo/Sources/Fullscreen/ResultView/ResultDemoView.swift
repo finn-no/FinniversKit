@@ -77,7 +77,7 @@ extension ResultDemoView: TweakableDemo {
                 actionButtonTitle: "Prøv igjen",
                 icon: UIImage(named: .dissatisfiedFace),
                 backgroundColor: .background,
-                iconTintColor: .textNegative,
+                iconTintColor: Warp.UIToken.iconNegative,
                 iconBottomSpacing: Warp.Spacing.spacing300,
                 titleBottomSpacing: Warp.Spacing.spacing200,
                 iconHeight: 64

@@ -61,7 +61,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
     private lazy var externalLinkImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = UIImage(named: .webview).withTintColor(.icon)
+        imageView.image = UIImage(named: .webview).withTintColor(.iconSubtle)
         return imageView
     }()
 
