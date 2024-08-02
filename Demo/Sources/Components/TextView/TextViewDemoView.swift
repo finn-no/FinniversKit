@@ -48,7 +48,7 @@ class TextViewDemoView: UIView {
         placeholderText: String,
         isScrollable: Bool = true,
         hideUnderLine: Bool = false,
-        backgroundColor: UIColor = .backgroundInfoSubtle
+        backgroundColor: UIColor = .backgroundSubtle
     ) {
         textView.placeholderText = placeholderText
         textView.isScrollEnabled = isScrollable

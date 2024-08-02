@@ -32,9 +32,9 @@ class IconTitleCellDemoView: UIView, Demoable {
     var dismissKind: DismissKind { .button }
 
     private var viewModels = [
-        ViewModel(title: "Favoritter", icon: UIImage(named: .favouriteAdded), iconTintColor: .text, hasChevron: true),
-        ViewModel(title: "Lagrede søk", icon: UIImage(named: .search), iconTintColor: .text),
-        ViewModel(title: "Betaling", icon: UIImage(named: .creditCard), iconTintColor: .text, hasChevron: false, externalIcon: UIImage(named: .webview).withTintColor(.text, renderingMode: .alwaysOriginal)),
+        ViewModel(title: "Favoritter", icon: UIImage(named: .favouriteAdded), iconTintColor: .iconSubtle, hasChevron: true),
+        ViewModel(title: "Lagrede søk", icon: UIImage(named: .search), iconTintColor: .iconSubtle),
+        ViewModel(title: "Betaling", icon: UIImage(named: .creditCard), iconTintColor: .iconSubtle, hasChevron: false, externalIcon: UIImage(named: .webview).withTintColor(.text, renderingMode: .alwaysOriginal)),
         ViewModel(title: "Varslingsinnstillinger", hasChevron: true),
         ViewModel(title: "Personvernerklæring", hasChevron: true),
         ViewModel(title: "Innstillinger for personvern"),
