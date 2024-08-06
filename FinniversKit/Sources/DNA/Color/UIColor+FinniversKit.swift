@@ -47,7 +47,9 @@ extension Color {
     public static var iconSecondary: Color { Warp.Token.iconSecondary }
     public static var iconWarning: Color { Warp.Token.iconWarning }
     public static var surfaceSunken: Color { Warp.Token.surfaceSunken }
+    public static var surfaceElevated100: Color { Warp.Token.surfaceElevated100 }
     public static var surfaceElevated200: Color { Warp.Token.surfaceElevated200 }
+    public static var surfaceElevated300: Color { Warp.Token.surfaceElevated300 }
 }
 
 @objc extension UIColor {
@@ -90,7 +92,9 @@ extension Color {
     public static var iconSecondary: UIColor { Warp.UIToken.iconSecondary }
     public static var iconWarning: UIColor { Warp.UIToken.iconWarning }
     public static var surfaceSunken: UIColor { Warp.UIToken.surfaceSunken }
+    public static var surfaceElevated100: UIColor { Warp.UIToken.surfaceElevated100 }
     public static var surfaceElevated200: UIColor { Warp.UIToken.surfaceElevated200 }
+    public static var surfaceElevated300: UIColor { Warp.UIToken.surfaceElevated300 }
 }
 
 extension CGColor {
@@ -133,7 +137,9 @@ extension CGColor {
     public class var iconSecondary: CGColor { UIColor.iconSecondary.cgColor }
     public class var iconWarning: CGColor { UIColor.iconWarning.cgColor }
     public class var surfaceSunken: CGColor { UIColor.surfaceSunken.cgColor }
+    public class var surfaceElevated100: CGColor { UIColor.surfaceElevated100.cgColor }
     public class var surfaceElevated200: CGColor { UIColor.surfaceElevated200.cgColor }
+    public class var surfaceElevated300: CGColor { UIColor.surfaceElevated300.cgColor }
 }
 
 // MARK: - Semantic colors, dark mode compatible
