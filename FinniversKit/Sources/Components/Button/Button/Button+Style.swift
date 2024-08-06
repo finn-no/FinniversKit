@@ -223,12 +223,12 @@ public extension Button.Style {
             stateStyles: [
                 .normal: Button.StateStyle(
                     textColor: .textInverted,
-                    backgroundColor: .backgroundPrimary,
+                    backgroundColor: Warp.UIColor.buttonPrimaryBackground,
                     borderColor: nil
                 ),
                 .highlighted: Button.StateStyle(
                     textColor: nil,
-                    backgroundColor: .backgroundPrimaryActive,
+                    backgroundColor: Warp.UIColor.buttonPrimaryBackgroundActive,
                     borderColor: nil
                 ),
                 .disabled: Button.StateStyle(
