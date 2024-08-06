@@ -17,7 +17,7 @@ extension Panel {
             switch self {
             case .plain: return .background
             case .info: return .backgroundInfoSubtle
-            case .tips: return Warp.UIColor.badgeSponsoredBackground
+            case .tips: return .backgroundInfoSubtle
             case .newFunctionality: return .backgroundPositiveSubtle
             case .success: return .backgroundPositiveSubtle
             case .warning: return .backgroundWarningSubtle
