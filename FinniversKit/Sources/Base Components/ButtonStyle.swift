@@ -9,7 +9,7 @@ public struct InlineFlatStyle: ButtonStyle {
     private let font: Font
     private let textColor: Color
 
-    public init(size: Button.Size = .normal, textColor: Color = .backgroundPrimary) {
+    public init(size: Button.Size = .normal, textColor: Color = .textLink) {
         self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
         self.textColor = textColor
     }
@@ -31,7 +31,7 @@ public struct FlatStyle: ButtonStyle {
 
     public init(
         size: Button.Size = .normal,
-        textColor: Color = .backgroundPrimary,
+        textColor: Color = .textLink,
         fullWidth: Bool = true,
         padding: EdgeInsets = .init(top: Warp.Spacing.spacing100, leading: Warp.Spacing.spacing200, bottom: Warp.Spacing.spacing100, trailing: Warp.Spacing.spacing200)
     ) {
@@ -66,7 +66,7 @@ public struct DefaultStyle: ButtonStyle {
 
     public init(
         size: Button.Size = .normal,
-        textColor: Color = .backgroundPrimary,
+        textColor: Color = .textLink,
         fullWidth: Bool = true,
         padding: EdgeInsets = .init(top: Warp.Spacing.spacing100, leading: Warp.Spacing.spacing200, bottom: Warp.Spacing.spacing100, trailing: Warp.Spacing.spacing200)
     ) {
@@ -97,7 +97,7 @@ public struct DefaultStyle: ButtonStyle {
         .cornerRadius(Warp.Spacing.spacing100)
         .roundedBorder(
             radius: Warp.Spacing.spacing100,
-            color: configuration.isPressed ? .borderActive : .backgroundDisabled
+            color: configuration.isPressed ? .borderActive : .borderDisabled
         )
     }
 }
@@ -111,7 +111,7 @@ public struct CallToAction: ButtonStyle {
 
     public init(
         size: Button.Size = .normal,
-        background: Color = .backgroundPrimary,
+        background: Color = Warp.Color.buttonPrimaryBackground,
         fullWidth: Bool = true,
         isEnabled: Binding<Bool>? = nil,
         padding: EdgeInsets? = nil
