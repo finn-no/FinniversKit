@@ -68,7 +68,7 @@ final class SelectionOptionCell: UITableViewCell {
 
     private func setup() {
         isAccessibilityElement = true
-        backgroundColor = .background
+        backgroundColor = .clear
         setDefaultSelectedBackgound()
         hideCheckmark(true)
 
@@ -94,10 +94,10 @@ final class SelectionOptionCell: UITableViewCell {
     }
 
     private func hideCheckmark(_ hide: Bool) {
-        iconImageView.tintColor = hide ? .iconPrimary : .backgroundPrimary
+        iconImageView.tintColor = hide ? .icon : .iconPrimary
 
         titleLabel.font = hide ? .body : .bodyStrong
-        titleLabel.textColor = iconImageView.tintColor
+        titleLabel.textColor = hide ? .text : .textLink
 
         checkmarkImageView.isHidden = hide
     }
