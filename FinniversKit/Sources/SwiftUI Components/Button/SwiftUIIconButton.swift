@@ -2,6 +2,8 @@ import SwiftUI
 
 public struct SwiftUIIconButton: View {
     public struct Style {
+        let color: Color
+        let colorToggled: Color
         let icon: UIImage
         let iconToggled: UIImage
     }
@@ -17,7 +19,7 @@ public struct SwiftUIIconButton: View {
     public var body: some View {
         Image.init(uiImage: isToggled ? style.iconToggled : style.icon)
             .renderingMode(.template)
-            .foregroundColor(isToggled ? .backgroundPrimary : .icon)
+            .foregroundColor(isToggled ? style.colorToggled : style.color)
             .accessibilityRemoveTraits(.isImage)
             .accessibilityAddTraits(isToggled ? [.isButton, .isSelected] : [.isButton])
     }
@@ -25,6 +27,8 @@ public struct SwiftUIIconButton: View {
 
 public extension SwiftUIIconButton.Style {
     static let favorite = SwiftUIIconButton.Style(
+        color: .iconSubtle,
+        colorToggled: .backgroundPrimary,
         icon: UIImage(named: .favoriteDefault),
         iconToggled: UIImage(named: .favoriteActive)
     )
