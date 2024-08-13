@@ -1,7 +1,3 @@
-//
-//  Copyright © FINN.no AS, Inc. All rights reserved.
-//
-
 import UIKit
 
 protocol AdRecommendationsGridViewLayoutDelegate: AnyObject {
@@ -122,7 +118,13 @@ class AdRecommendationsGridViewLayout: UICollectionViewLayout {
     }
 
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return itemAttributes[indexPath.row]
+        guard itemAttributes.indices.contains(indexPath.row)
+        else { return nil }
+        if itemAttributes[indexPath.row].representedElementCategory == .cell {
+            return itemAttributes[indexPath.row]
+        } else {
+            return nil
+        }
     }
 
     override var collectionViewContentSize: CGSize {
