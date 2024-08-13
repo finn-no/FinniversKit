@@ -54,7 +54,6 @@
 		17BF44C72987FC8F001A5877 /* LoadingSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BF44C62987FC8F001A5877 /* LoadingSwiftUIView.swift */; };
 		17BF4B5B298BE918001A5877 /* LoadingSwiftUIViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BF4B5A298BE918001A5877 /* LoadingSwiftUIViewModifier.swift */; };
 		17BF5B092AB32B3C00DB1A4D /* UISceneExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BF5B082AB32B3C00DB1A4D /* UISceneExtensions.swift */; };
-		17EAC08A296485C300B3C639 /* UIColor+FinniversKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */; };
 		17EE08602AA73E8700A623F2 /* FrontPageTransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE085F2AA73E8700A623F2 /* FrontPageTransactionListView.swift */; };
 		27076AA32B694C2F00B1ADF6 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27076AA12B694C2F00B1ADF6 /* CheckboxView.swift */; };
 		27076AA42B694C2F00B1ADF6 /* RadioButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27076AA22B694C2F00B1ADF6 /* RadioButtonView.swift */; };
@@ -340,7 +339,6 @@
 		CF3D5EF6215A6D9E006E4D08 /* kick.wav in Resources */ = {isa = PBXBuildFile; fileRef = CF3D5EF2215A6D9E006E4D08 /* kick.wav */; };
 		CF3D5EF7215A6D9E006E4D08 /* snare.wav in Resources */ = {isa = PBXBuildFile; fileRef = CF3D5EF3215A6D9E006E4D08 /* snare.wav */; };
 		CF3D5EF9215A6F3B006E4D08 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EF8215A6F3B006E4D08 /* FloatingButton.swift */; };
-		CF3D5F00215A75BF006E4D08 /* InstrumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */; };
 		CF3F85BF229C29B3003A6748 /* IconCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3F85BE229C29B3003A6748 /* IconCollectionViewFlowLayout.swift */; };
 		CF45AF05231D24E300BE8B39 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45AF04231D24E300BE8B39 /* Step.swift */; };
 		CF45AF89231D3A3000BE8B39 /* StepSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45AF88231D3A3000BE8B39 /* StepSlider.swift */; };
@@ -510,7 +508,6 @@
 		17BF44C62987FC8F001A5877 /* LoadingSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSwiftUIView.swift; sourceTree = "<group>"; };
 		17BF4B5A298BE918001A5877 /* LoadingSwiftUIViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSwiftUIViewModifier.swift; sourceTree = "<group>"; };
 		17BF5B082AB32B3C00DB1A4D /* UISceneExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISceneExtensions.swift; sourceTree = "<group>"; };
-		17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+FinniversKitTests.swift"; sourceTree = "<group>"; };
 		17EE085F2AA73E8700A623F2 /* FrontPageTransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageTransactionListView.swift; sourceTree = "<group>"; };
 		27076AA12B694C2F00B1ADF6 /* CheckboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		27076AA22B694C2F00B1ADF6 /* RadioButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonView.swift; sourceTree = "<group>"; };
@@ -796,7 +793,6 @@
 		CF3D5EF2215A6D9E006E4D08 /* kick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = kick.wav; sourceTree = "<group>"; };
 		CF3D5EF3215A6D9E006E4D08 /* snare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snare.wav; sourceTree = "<group>"; };
 		CF3D5EF8215A6F3B006E4D08 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
-		CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentTests.swift; sourceTree = "<group>"; };
 		CF3F85BE229C29B3003A6748 /* IconCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		CF45AF04231D24E300BE8B39 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		CF45AF88231D3A3000BE8B39 /* StepSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSlider.swift; sourceTree = "<group>"; };
@@ -1044,9 +1040,7 @@
 		14F4F1BA1FD6CEA800E9CECA /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				17EAC0882964859A00B3C639 /* DNA */,
 				CF376C19231D455900ED2B24 /* StepSlider */,
-				CF3D5EFD215A759A006E4D08 /* EasterEggs */,
 				14F4F1BD1FD6CEA800E9CECA /* Info.plist */,
 				9F213D8A2542DC1D6D998B43 /* Util */,
 				9B9663CA2460383900D34BA1 /* ConfigTests.swift */,
@@ -1113,14 +1107,6 @@
 				175385B129150E7800DA57D2 /* HTMLStringUIKitStyleTranslatorTests.swift */,
 			);
 			path = HTMLStringParser;
-			sourceTree = "<group>";
-		};
-		17EAC0882964859A00B3C639 /* DNA */ = {
-			isa = PBXGroup;
-			children = (
-				17EAC089296485C300B3C639 /* UIColor+FinniversKitTests.swift */,
-			);
-			path = DNA;
 			sourceTree = "<group>";
 		};
 		25D04D721F583B1800EA317D = {
@@ -2534,22 +2520,6 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
-		CF3D5EFD215A759A006E4D08 /* EasterEggs */ = {
-			isa = PBXGroup;
-			children = (
-				CF3D5EFE215A75A6006E4D08 /* DrumMachine */,
-			);
-			path = EasterEggs;
-			sourceTree = "<group>";
-		};
-		CF3D5EFE215A75A6006E4D08 /* DrumMachine */ = {
-			isa = PBXGroup;
-			children = (
-				CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */,
-			);
-			path = DrumMachine;
-			sourceTree = "<group>";
-		};
 		CF45AF03231D24A500BE8B39 /* StepSlider */ = {
 			isa = PBXGroup;
 			children = (
@@ -3209,9 +3179,7 @@
 				1753871F291AA79600DA57D2 /* HTMLStringParserTextTranslatorTests.swift in Sources */,
 				178006AB2B99EE9A0027DD97 /* HTMLLexerTests.swift in Sources */,
 				178006AC2B99EE9A0027DD97 /* CharacterReaderTests.swift in Sources */,
-				17EAC08A296485C300B3C639 /* UIColor+FinniversKitTests.swift in Sources */,
 				179D06AD2906A3FA00A65E3A /* HTMLStringParserHTMLTranslatorTests.swift in Sources */,
-				CF3D5F00215A75BF006E4D08 /* InstrumentTests.swift in Sources */,
 				CF376C1B231D458200ED2B24 /* ArrayStepTests.swift in Sources */,
 				CF376C1D231D459900ED2B24 /* StepTests.swift in Sources */,
 				175385B229150E7800DA57D2 /* HTMLStringUIKitStyleTranslatorTests.swift in Sources */,
