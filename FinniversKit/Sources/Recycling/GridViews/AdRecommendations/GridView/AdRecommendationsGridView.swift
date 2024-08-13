@@ -51,15 +51,20 @@ public class AdRecommendationsGridView: UIView {
 
     private let imageCache = ImageMemoryCache()
 
-    private lazy var collectionViewLayout: AdRecommendationsGridViewLayout = {
-        let layout = AdRecommendationsGridViewLayout()
-        layout.delegate = self
-        return layout
-    }()
+//    private lazy var collectionViewLayout: AdRecommendationsGridViewLayout = {
+//        let layout = AdRecommendationsGridViewLayout()
+//        layout.delegate = self
+//        return layout
+//    }()
 
     // Have the collection view be private so nobody messes with it.
     public private(set) lazy var collectionView: UICollectionView = {
+        let collectionViewLayout = AdRecommendationsGridViewLayout()
+        collectionViewLayout.delegate = self
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+//        let layout = UICollectionViewFlowLayout()
+//        layout.itemSize = CGSize(width: 100, height: 100)
+//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -112,9 +117,9 @@ public class AdRecommendationsGridView: UIView {
         collectionView.refreshControl = isRefreshEnabled ? refreshControl : nil
     }
 
-    public func invalidateLayout() {
-        collectionView.collectionViewLayout.invalidateLayout()
-    }
+//    public func invalidateLayout() {
+//        collectionView.collectionViewLayout.invalidateLayout()
+//    }
 
     @objc private func handleRefreshBegan() {
         delegate?.adRecommendationsGridViewDidStartRefreshing(self)
@@ -124,13 +129,14 @@ public class AdRecommendationsGridView: UIView {
 
     public func reloadData() {
         collectionView.reloadData()
-        if refreshControl.isRefreshing {
-            collectionView.performBatchUpdates(nil, completion: { [weak self] _ in
-                self?.endRefreshing()
-                UIAccessibility.post(notification: .layoutChanged, argument: nil)
-            })
-        }
-        UIAccessibility.post(notification: .layoutChanged, argument: nil)
+        collectionView.collectionViewLayout.invalidateLayout()
+//        if refreshControl.isRefreshing {
+//            collectionView.performBatchUpdates(nil, completion: { [weak self] _ in
+//                self?.endRefreshing()
+//                UIAccessibility.post(notification: .layoutChanged, argument: nil)
+//            })
+//        }
+//        UIAccessibility.post(notification: .layoutChanged, argument: nil)
     }
 
     public func endRefreshing() {

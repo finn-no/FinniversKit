@@ -75,7 +75,7 @@ class AdRecommendationsGridViewLayout: UICollectionViewLayout {
     override func prepare() {
         super.prepare()
 
-        itemAttributes = [UICollectionViewLayoutAttributes]()
+        itemAttributes.removeAll()
 
         guard let collectionView = collectionView else {
             return

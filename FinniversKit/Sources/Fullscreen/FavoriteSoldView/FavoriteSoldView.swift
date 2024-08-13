@@ -188,7 +188,7 @@ public class FavoriteSoldView: UIView {
         adsRetryView.frame.origin = CGPoint(x: 0, y: headerView.frame.height + Warp.Spacing.spacing800)
         adsRetryView.frame.size = CGSize(width: bounds.width, height: 200)
 
-        adRecommendationsGridView.invalidateLayout()
+//        adRecommendationsGridView.invalidateLayout()
     }
 
     // MARK: - Public methods
