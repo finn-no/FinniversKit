@@ -23,8 +23,6 @@ enum FullscreenDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case registerView
     case loginEntryView
     case loadingView
-    case drumMachineView
-    case pianoView
     case soldView
     case confirmationView
     case fullscreenGallery
@@ -68,10 +66,6 @@ enum FullscreenDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return LoginEntryViewDemoViewController()
         case .loadingView:
             return LoadingViewDemoView()
-        case .drumMachineView:
-            return DrumMachineDemoView()
-        case .pianoView:
-            return PianoDemoView()
         case .soldView:
             return SoldViewDemoView()
         case .confirmationView:

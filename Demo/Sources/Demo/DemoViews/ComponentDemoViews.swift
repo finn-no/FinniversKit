@@ -20,7 +20,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case contractActionView
     case detailCallout
     case disclaimerView
-    case earthHourView
     case favoriteButton
     case feedbackView
     case floatingButton
@@ -39,7 +38,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case jobApplyBox
     case jobKeyInfo
     case keyValueGridView
-    case klimabroletView
     case label
     case linkButtonListView
     case loadingIndicator
@@ -159,10 +157,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return FeedbackDemoView()
         case .happinessRating:
             return HappinessRatingDemoView()
-        case .earthHourView:
-            return EarthHourDemoView()
-        case .klimabroletView:
-            return KlimabroletDemoViewController()
         case .christmasWishListView:
             return ChristmasWishListDemoView()
         case .nativeAdvert:

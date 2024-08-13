@@ -28,8 +28,6 @@
 		46E773B2242CEF0A008A5E93 /* TestCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77269242CEF09008A5E93 /* TestCheck.swift */; };
 		46E773B3242CEF0A008A5E93 /* FavoriteFolderActionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7726C242CEF09008A5E93 /* FavoriteFolderActionDemoView.swift */; };
 		46E773B4242CEF0A008A5E93 /* LoadingViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7726E242CEF09008A5E93 /* LoadingViewDemoView.swift */; };
-		46E773B5242CEF0A008A5E93 /* PianoDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77271242CEF09008A5E93 /* PianoDemoView.swift */; };
-		46E773B6242CEF0A008A5E93 /* DrumMachineDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77273242CEF09008A5E93 /* DrumMachineDemoView.swift */; };
 		46E773B9242CEF0A008A5E93 /* AddressMapDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77279242CEF09008A5E93 /* AddressMapDemoView.swift */; };
 		46E773BD242CEF0A008A5E93 /* SoldViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77280242CEF09008A5E93 /* SoldViewDemoView.swift */; };
 		46E773BE242CEF0A008A5E93 /* LoginEntryDemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77282242CEF09008A5E93 /* LoginEntryDemoData.swift */; };
@@ -83,8 +81,6 @@
 		46E7740F242CEF0A008A5E93 /* CalloutDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77307242CEF09008A5E93 /* CalloutDemoView.swift */; };
 		46E77410242CEF0A008A5E93 /* RibbonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77309242CEF09008A5E93 /* RibbonDemoView.swift */; };
 		46E77411242CEF0A008A5E93 /* ViewingsListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7730B242CEF09008A5E93 /* ViewingsListDemoView.swift */; };
-		46E77412242CEF0A008A5E93 /* EarthHourDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7730D242CEF09008A5E93 /* EarthHourDefaultData.swift */; };
-		46E77413242CEF0A008A5E93 /* EarthHourDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7730E242CEF09008A5E93 /* EarthHourDemoView.swift */; };
 		46E77416242CEF0A008A5E93 /* StepSliderDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77313242CEF09008A5E93 /* StepSliderDemoView.swift */; };
 		46E77418242CEF0A008A5E93 /* ColumnListsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77317242CEF09008A5E93 /* ColumnListsDemoView.swift */; };
 		46E77419242CEF0A008A5E93 /* InfoboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77319242CEF09008A5E93 /* InfoboxDemoView.swift */; };
@@ -96,9 +92,6 @@
 		46E77422242CEF0A008A5E93 /* BannerTransparencyInfoDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7732B242CEF09008A5E93 /* BannerTransparencyInfoDefaultData.swift */; };
 		46E77423242CEF0A008A5E93 /* BannerTransparencyDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7732C242CEF09008A5E93 /* BannerTransparencyDemoView.swift */; };
 		46E77428242CEF0A008A5E93 /* ReviewButtonViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77334242CEF09008A5E93 /* ReviewButtonViewDemoView.swift */; };
-		46E77429242CEF0A008A5E93 /* KlimabroletEventsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77336242CEF09008A5E93 /* KlimabroletEventsDemoViewController.swift */; };
-		46E7742A242CEF0A008A5E93 /* KlimabroletData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77337242CEF09008A5E93 /* KlimabroletData.swift */; };
-		46E7742B242CEF0A008A5E93 /* KlimabroletDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77338242CEF09008A5E93 /* KlimabroletDemoViewController.swift */; };
 		46E7742C242CEF0A008A5E93 /* BottomSheetMechanicsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7733A242CEF09008A5E93 /* BottomSheetMechanicsDemoViewController.swift */; };
 		46E7742D242CEF0A008A5E93 /* PrimingDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7733C242CEF09008A5E93 /* PrimingDemoView.swift */; };
 		46E7742E242CEF0A008A5E93 /* SwitchViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7733E242CEF09008A5E93 /* SwitchViewDefaultData.swift */; };
@@ -116,7 +109,6 @@
 		46E7743C242CEF0A008A5E93 /* CheckmarkTitleViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77357242CEF09008A5E93 /* CheckmarkTitleViewDemoView.swift */; };
 		46E7743D242CEF0A008A5E93 /* VerificationViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77359242CEF09008A5E93 /* VerificationViewDefaultData.swift */; };
 		46E7743E242CEF0A008A5E93 /* VerificationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7735A242CEF09008A5E93 /* VerificationDemoView.swift */; };
-		46E7743F242CEF0A008A5E93 /* ColorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7735D242CEF09008A5E93 /* ColorDemoView.swift */; };
 		46E77440242CEF0A008A5E93 /* SpacingDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7735F242CEF09008A5E93 /* SpacingDemoView.swift */; };
 		46E77441242CEF0A008A5E93 /* FontDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77361242CEF09008A5E93 /* FontDemoView.swift */; };
 		46E77443242CEF0A008A5E93 /* RemoteImageCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77366242CEF09008A5E93 /* RemoteImageCellDemoView.swift */; };
@@ -247,8 +239,6 @@
 		46E77269242CEF09008A5E93 /* TestCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCheck.swift; sourceTree = "<group>"; };
 		46E7726C242CEF09008A5E93 /* FavoriteFolderActionDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFolderActionDemoView.swift; sourceTree = "<group>"; };
 		46E7726E242CEF09008A5E93 /* LoadingViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewDemoView.swift; sourceTree = "<group>"; };
-		46E77271242CEF09008A5E93 /* PianoDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoDemoView.swift; sourceTree = "<group>"; };
-		46E77273242CEF09008A5E93 /* DrumMachineDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrumMachineDemoView.swift; sourceTree = "<group>"; };
 		46E77279242CEF09008A5E93 /* AddressMapDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressMapDemoView.swift; sourceTree = "<group>"; };
 		46E77280242CEF09008A5E93 /* SoldViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldViewDemoView.swift; sourceTree = "<group>"; };
 		46E77282242CEF09008A5E93 /* LoginEntryDemoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEntryDemoData.swift; sourceTree = "<group>"; };
@@ -303,8 +293,6 @@
 		46E77307242CEF09008A5E93 /* CalloutDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalloutDemoView.swift; sourceTree = "<group>"; };
 		46E77309242CEF09008A5E93 /* RibbonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonDemoView.swift; sourceTree = "<group>"; };
 		46E7730B242CEF09008A5E93 /* ViewingsListDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewingsListDemoView.swift; sourceTree = "<group>"; };
-		46E7730D242CEF09008A5E93 /* EarthHourDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourDefaultData.swift; sourceTree = "<group>"; };
-		46E7730E242CEF09008A5E93 /* EarthHourDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourDemoView.swift; sourceTree = "<group>"; };
 		46E77313242CEF09008A5E93 /* StepSliderDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepSliderDemoView.swift; sourceTree = "<group>"; };
 		46E77315242CEF09008A5E93 /* ObjectPagePriceDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectPagePriceDemoView.swift; sourceTree = "<group>"; };
 		46E77317242CEF09008A5E93 /* ColumnListsDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnListsDemoView.swift; sourceTree = "<group>"; };
@@ -317,9 +305,6 @@
 		46E7732B242CEF09008A5E93 /* BannerTransparencyInfoDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerTransparencyInfoDefaultData.swift; sourceTree = "<group>"; };
 		46E7732C242CEF09008A5E93 /* BannerTransparencyDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerTransparencyDemoView.swift; sourceTree = "<group>"; };
 		46E77334242CEF09008A5E93 /* ReviewButtonViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewButtonViewDemoView.swift; sourceTree = "<group>"; };
-		46E77336242CEF09008A5E93 /* KlimabroletEventsDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KlimabroletEventsDemoViewController.swift; sourceTree = "<group>"; };
-		46E77337242CEF09008A5E93 /* KlimabroletData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KlimabroletData.swift; sourceTree = "<group>"; };
-		46E77338242CEF09008A5E93 /* KlimabroletDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KlimabroletDemoViewController.swift; sourceTree = "<group>"; };
 		46E7733A242CEF09008A5E93 /* BottomSheetMechanicsDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetMechanicsDemoViewController.swift; sourceTree = "<group>"; };
 		46E7733C242CEF09008A5E93 /* PrimingDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimingDemoView.swift; sourceTree = "<group>"; };
 		46E7733E242CEF09008A5E93 /* SwitchViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchViewDefaultData.swift; sourceTree = "<group>"; };
@@ -337,7 +322,6 @@
 		46E77357242CEF09008A5E93 /* CheckmarkTitleViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkTitleViewDemoView.swift; sourceTree = "<group>"; };
 		46E77359242CEF09008A5E93 /* VerificationViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationViewDefaultData.swift; sourceTree = "<group>"; };
 		46E7735A242CEF09008A5E93 /* VerificationDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationDemoView.swift; sourceTree = "<group>"; };
-		46E7735D242CEF09008A5E93 /* ColorDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorDemoView.swift; sourceTree = "<group>"; };
 		46E7735F242CEF09008A5E93 /* SpacingDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpacingDemoView.swift; sourceTree = "<group>"; };
 		46E77361242CEF09008A5E93 /* FontDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontDemoView.swift; sourceTree = "<group>"; };
 		46E77366242CEF09008A5E93 /* RemoteImageCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImageCellDemoView.swift; sourceTree = "<group>"; };
@@ -554,7 +538,6 @@
 				91D637D82488F6E10066D4D0 /* ConfettiView */,
 				46E77296242CEF09008A5E93 /* ConfirmationView */,
 				46E77285242CEF09008A5E93 /* ContactForm */,
-				46E7726F242CEF09008A5E93 /* EasterEggs */,
 				46E772A5242CEF09008A5E93 /* EmptyView */,
 				46E7728C242CEF09008A5E93 /* FavoriteAdActions */,
 				46E7729B242CEF09008A5E93 /* FavoriteAdCommentInput */,
@@ -590,31 +573,6 @@
 				46E7726E242CEF09008A5E93 /* LoadingViewDemoView.swift */,
 			);
 			path = LoadingView;
-			sourceTree = "<group>";
-		};
-		46E7726F242CEF09008A5E93 /* EasterEggs */ = {
-			isa = PBXGroup;
-			children = (
-				46E77270242CEF09008A5E93 /* Piano */,
-				46E77272242CEF09008A5E93 /* DrumMachine */,
-			);
-			path = EasterEggs;
-			sourceTree = "<group>";
-		};
-		46E77270242CEF09008A5E93 /* Piano */ = {
-			isa = PBXGroup;
-			children = (
-				46E77271242CEF09008A5E93 /* PianoDemoView.swift */,
-			);
-			path = Piano;
-			sourceTree = "<group>";
-		};
-		46E77272242CEF09008A5E93 /* DrumMachine */ = {
-			isa = PBXGroup;
-			children = (
-				46E77273242CEF09008A5E93 /* DrumMachineDemoView.swift */,
-			);
-			path = DrumMachine;
 			sourceTree = "<group>";
 		};
 		46E77278242CEF09008A5E93 /* AddressMapView */ = {
@@ -786,7 +744,6 @@
 				46E77326242CEF09008A5E93 /* Consent */,
 				46E77345242CEF09008A5E93 /* ContractActionView */,
 				46E772DE242CEF09008A5E93 /* Disclaimer */,
-				46E7730C242CEF09008A5E93 /* EarthHour */,
 				46E772E3242CEF09008A5E93 /* FavoriteButton */,
 				46E77302242CEF09008A5E93 /* Feedback */,
 				46E772E6242CEF09008A5E93 /* FooterButtonView */,
@@ -802,7 +759,6 @@
 				5B959C720F9AD1D19188F7C3 /* JobApplyBox */,
 				5B95913AB0DF0FDDF06BA9B0 /* JobKeyInfo */,
 				46E77350242CEF09008A5E93 /* KeyValueCollectionView */,
-				46E77335242CEF09008A5E93 /* Klimabrolet */,
 				46E772F6242CEF09008A5E93 /* Label */,
 				46E77347242CEF09008A5E93 /* LinkButtonList */,
 				46E77300242CEF09008A5E93 /* LoadingIndicator */,
@@ -1060,15 +1016,6 @@
 			path = Viewings;
 			sourceTree = "<group>";
 		};
-		46E7730C242CEF09008A5E93 /* EarthHour */ = {
-			isa = PBXGroup;
-			children = (
-				46E7730D242CEF09008A5E93 /* EarthHourDefaultData.swift */,
-				46E7730E242CEF09008A5E93 /* EarthHourDemoView.swift */,
-			);
-			path = EarthHour;
-			sourceTree = "<group>";
-		};
 		46E77312242CEF09008A5E93 /* StepSlider */ = {
 			isa = PBXGroup;
 			children = (
@@ -1168,16 +1115,6 @@
 				46E77334242CEF09008A5E93 /* ReviewButtonViewDemoView.swift */,
 			);
 			path = ReviewButtonView;
-			sourceTree = "<group>";
-		};
-		46E77335242CEF09008A5E93 /* Klimabrolet */ = {
-			isa = PBXGroup;
-			children = (
-				46E77336242CEF09008A5E93 /* KlimabroletEventsDemoViewController.swift */,
-				46E77337242CEF09008A5E93 /* KlimabroletData.swift */,
-				46E77338242CEF09008A5E93 /* KlimabroletDemoViewController.swift */,
-			);
-			path = Klimabrolet;
 			sourceTree = "<group>";
 		};
 		46E77339242CEF09008A5E93 /* BottomSheet */ = {
@@ -1291,19 +1228,10 @@
 		46E7735B242CEF09008A5E93 /* DNA */ = {
 			isa = PBXGroup;
 			children = (
-				46E7735C242CEF09008A5E93 /* Color */,
 				46E77360242CEF09008A5E93 /* Font */,
 				46E7735E242CEF09008A5E93 /* Spacing */,
 			);
 			path = DNA;
-			sourceTree = "<group>";
-		};
-		46E7735C242CEF09008A5E93 /* Color */ = {
-			isa = PBXGroup;
-			children = (
-				46E7735D242CEF09008A5E93 /* ColorDemoView.swift */,
-			);
-			path = Color;
 			sourceTree = "<group>";
 		};
 		46E7735E242CEF09008A5E93 /* Spacing */ = {
@@ -1963,7 +1891,6 @@
 				4DD3AA7A27B5651F007B107E /* DetailCalloutDemoView.swift in Sources */,
 				46E77404242CEF0A008A5E93 /* ToastDemoView.swift in Sources */,
 				46E773C5242CEF0A008A5E93 /* FavoriteActionDemoView.swift in Sources */,
-				46E773B5242CEF0A008A5E93 /* PianoDemoView.swift in Sources */,
 				5DA190F025A87EAB002305A8 /* FinnTextView+Previews.swift in Sources */,
 				46E77408242CEF0A008A5E93 /* TextFieldDemoView.swift in Sources */,
 				46E77423242CEF0A008A5E93 /* BannerTransparencyDemoView.swift in Sources */,
@@ -1972,7 +1899,6 @@
 				46E77461242CEF0A008A5E93 /* FavoritesListViewDemoView.swift in Sources */,
 				46E773D2242CEF0A008A5E93 /* MessageFormDemoViewModel.swift in Sources */,
 				46E773B0242CEF0A008A5E93 /* NavigationController.swift in Sources */,
-				46E77413242CEF0A008A5E93 /* EarthHourDemoView.swift in Sources */,
 				46E7744E242CEF0A008A5E93 /* CheckboxSubtitleCellDemoView.swift in Sources */,
 				46E77432242CEF0A008A5E93 /* HappinessRatingDemoView.swift in Sources */,
 				46E773A8242CEF0A008A5E93 /* ComponentDemoViews.swift in Sources */,
@@ -1994,7 +1920,6 @@
 				46E77433242CEF0A008A5E93 /* ContractActionDemoView.swift in Sources */,
 				46E77443242CEF0A008A5E93 /* RemoteImageCellDemoView.swift in Sources */,
 				46E773C8242CEF0A008A5E93 /* FullscreenGalleryDemoViewController.swift in Sources */,
-				46E77412242CEF0A008A5E93 /* EarthHourDefaultData.swift in Sources */,
 				46E77446242CEF0A008A5E93 /* BasicCellVariationsDemoView.swift in Sources */,
 				46E77411242CEF0A008A5E93 /* ViewingsListDemoView.swift in Sources */,
 				46E773F8242CEF0A008A5E93 /* PanelDemoView.swift in Sources */,
@@ -2028,10 +1953,8 @@
 				46E773CD242CEF0A008A5E93 /* FavoriteAdCommentInputDemoView.swift in Sources */,
 				DA82B1ED268B62D2005F67C3 /* LoadingRetryDemoView.swift in Sources */,
 				46E77407242CEF0A008A5E93 /* LabelDemoView.swift in Sources */,
-				46E7742B242CEF0A008A5E93 /* KlimabroletDemoViewController.swift in Sources */,
 				46E7742E242CEF0A008A5E93 /* SwitchViewDefaultData.swift in Sources */,
 				46E77441242CEF0A008A5E93 /* FontDemoView.swift in Sources */,
-				46E77429242CEF0A008A5E93 /* KlimabroletEventsDemoViewController.swift in Sources */,
 				46E77458242CEF0A008A5E93 /* AdRecommendationsGridViewDemoView.swift in Sources */,
 				46E77430242CEF0A008A5E93 /* RadioButtonDemoView.swift in Sources */,
 				46E773B3242CEF0A008A5E93 /* FavoriteFolderActionDemoView.swift in Sources */,
@@ -2049,14 +1972,12 @@
 				46E773C1242CEF0A008A5E93 /* ContactFormDemoView.swift in Sources */,
 				46E7740A242CEF0A008A5E93 /* RoundedImageViewDemoView.swift in Sources */,
 				4D152E7B2577DB1300282244 /* NavigationLinkViewDemoView.swift in Sources */,
-				46E7742A242CEF0A008A5E93 /* KlimabroletData.swift in Sources */,
 				46E773BD242CEF0A008A5E93 /* SoldViewDemoView.swift in Sources */,
 				46E773FD242CEF0A008A5E93 /* FavoriteButtonDemoView.swift in Sources */,
 				46E773F7242CEF0A008A5E93 /* SafetyElementsDemoView.swift in Sources */,
 				46E773CF242CEF0A008A5E93 /* RegisterViewDemoView.swift in Sources */,
 				46E773A6242CEF0A008A5E93 /* FullscreenDemoViews.swift in Sources */,
 				46E773EE242CEF0A008A5E93 /* VerificationActionSheetDemoDelegate.swift in Sources */,
-				46E773B6242CEF0A008A5E93 /* DrumMachineDemoView.swift in Sources */,
 				9BA6C4A224336B9A009D417B /* DemoWrapperView.swift in Sources */,
 				46E773A9242CEF0A008A5E93 /* RecyclingDemoViews.swift in Sources */,
 				46E77468242CEF0A008A5E93 /* FavoriteFoldersListDemoView.swift in Sources */,
@@ -2072,7 +1993,6 @@
 				46E773A5242CEF0A008A5E93 /* DnaDemoViews.swift in Sources */,
 				D7C750382731C61A002BDE98 /* FrontPageSavedSearchesDemoView.swift in Sources */,
 				46E77462242CEF0A008A5E93 /* FavoritesListViewDemoViewHelpers.swift in Sources */,
-				46E7743F242CEF0A008A5E93 /* ColorDemoView.swift in Sources */,
 				8D68030CF404D02BA5F8A618 /* NumberedListDemoView.swift in Sources */,
 				17BF44C929893E98001A5877 /* LoadingSwiftUIDemoView.swift in Sources */,
 				5B959541A9DCE0B0A3C4C731 /* MultilineButtonDemoView.swift in Sources */,
