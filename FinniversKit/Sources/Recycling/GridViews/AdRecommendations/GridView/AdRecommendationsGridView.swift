@@ -1,7 +1,3 @@
-//
-//  Copyright © FINN.no AS, Inc. All rights reserved.
-//
-
 import UIKit
 
 public protocol AdRecommendationsGridViewDelegate: AnyObject {
@@ -51,15 +47,14 @@ public class AdRecommendationsGridView: UIView {
 
     private let imageCache = ImageMemoryCache()
 
-    private lazy var collectionViewLayout: AdRecommendationsGridViewLayout = {
+    private func collectionViewLayout() -> AdRecommendationsGridViewLayout {
         let layout = AdRecommendationsGridViewLayout()
         layout.delegate = self
         return layout
-    }()
+    }
 
-    // Have the collection view be private so nobody messes with it.
     public private(set) lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
         collectionView.dataSource = self
