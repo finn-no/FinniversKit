@@ -141,3 +141,22 @@ extension CGColor {
     public class var surfaceElevated200: CGColor { UIColor.surfaceElevated200.cgColor }
     public class var surfaceElevated300: CGColor { UIColor.surfaceElevated300.cgColor }
 }
+
+// MARK: - FINN UIColors (deprecated)
+@available(*, deprecated, message: "Use Fabric colors instead")
+@objc extension UIColor {
+    public class var cherry: UIColor { .red600 }
+    public class var ice: UIColor { .aqua50 }
+    public class var licorice: UIColor { .gray700 }
+    public class var marble: UIColor { .blueGray50 }
+    public class var milk: UIColor { .white }
+    public class var primaryBlue: UIColor { .blue600 }
+    public class var stone: UIColor { .gray500 }
+
+    public class var aqua50: UIColor { .init(hex: "#F1F9FF") }
+    public class var blue600: UIColor { .init(hex: "#0063FB") }
+    public class var blueGray50: UIColor { .init(hex: "#F8FAFC") }
+    public class var gray500: UIColor { .init(hex: "#71717A") }
+    public class var gray700: UIColor { .init(hex: "#3F3F46") }
+    public class var red600: UIColor { .init(hex: "#D91F0A") }
+}
