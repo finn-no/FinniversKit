@@ -183,6 +183,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
             titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: ExternalAdRecommendationCell.titleTopMargin),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
     }
 
