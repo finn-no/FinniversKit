@@ -34,7 +34,7 @@
       "location" : "https://github.com/warp-ds/warp-ios.git",
       "state" : {
         "branch" : "remove-warp-config",
-        "revision" : "c6285c0e591f8419676e78b4b2265643dab9f83a"
+        "revision" : "4207c0ffe171e143e448f24e2a138c734dbaa888"
       }
     }
   ],
