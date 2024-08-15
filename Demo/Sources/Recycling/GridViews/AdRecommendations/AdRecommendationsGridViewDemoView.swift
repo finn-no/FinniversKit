@@ -13,9 +13,9 @@ struct AdDataSource {
         ads.insert(.ad(AdFactory.googleDemoAd), at: 4)
         ads.insert(.ad(AdFactory.nativeDemoAd), at: 8)
         var externals: [AdRecommendation] = ExternalAdFactory.create(numberOfModels: 4)
-            .map { .external($0) }
-        ads.insert(externals[0], at: 0)
-        ads.append(contentsOf: externals.dropFirst())
+             .map { .external($0) }
+         ads.insert(externals[0], at: 0)
+         ads.append(contentsOf: externals.dropFirst())
         return ads
     }()
 }
