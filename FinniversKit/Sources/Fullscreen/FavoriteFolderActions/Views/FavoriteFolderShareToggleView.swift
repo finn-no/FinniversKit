@@ -21,7 +21,7 @@ final class FavoriteFolderShareToggleView: UIView {
     var isEnabled = true {
         didSet {
             titleLabel.textColor = isEnabled ? .text : .textDisabled
-            iconImageView.tintColor = isEnabled ? .iconPrimary : .backgroundDisabled
+            iconImageView.tintColor = isEnabled ? .icon : .backgroundDisabled
             switchControl.isEnabled = isEnabled
         }
     }
@@ -31,7 +31,7 @@ final class FavoriteFolderShareToggleView: UIView {
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = UIImage(named: .favoritesShare).withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .iconPrimary
+        imageView.tintColor = .icon
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -45,7 +45,7 @@ final class FavoriteFolderShareToggleView: UIView {
 
     private lazy var separatorView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .textDisabled
+        view.backgroundColor = .border
         view.isHidden = isSeparatorHidden
         return view
     }()
@@ -70,8 +70,6 @@ final class FavoriteFolderShareToggleView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .background
-
         addSubview(iconImageView)
         addSubview(titleLabel)
         addSubview(switchControl)

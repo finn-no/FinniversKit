@@ -14,7 +14,7 @@ final class FavoriteFolderShareLinkView: UIView {
 
     var isEnabled = true {
         didSet {
-            iconImageView.tintColor = isEnabled ? .iconPrimary : .backgroundDisabled
+            iconImageView.tintColor = isEnabled ? .icon : .backgroundDisabled
             descriptionLabel.textColor = isEnabled ? .text : .textDisabled
             button.isEnabled = isEnabled
         }
@@ -23,7 +23,7 @@ final class FavoriteFolderShareLinkView: UIView {
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = UIImage(named: .favoritesShareLink).withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .iconPrimary
+        imageView.tintColor = .icon
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -64,7 +64,7 @@ final class FavoriteFolderShareLinkView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .backgroundInfoSubtle
+        backgroundColor = .backgroundSubtle
 
         addSubview(iconImageView)
         addSubview(descriptionLabel)
