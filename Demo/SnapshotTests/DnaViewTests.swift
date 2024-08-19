@@ -11,10 +11,6 @@ class DnaViewTests: XCTestCase {
 
     // MARK: - Tests
 
-    func testDnaViewsColor() {
-        snapshot(.color)
-    }
-
     func testDnaViewsFont() {
         snapshot(.font)
     }

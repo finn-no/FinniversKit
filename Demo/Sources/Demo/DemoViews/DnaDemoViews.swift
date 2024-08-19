@@ -2,7 +2,6 @@ import FinniversKit
 import DemoKit
 
 enum DnaDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
-    case color
     case font
     case spacing
 
@@ -19,8 +18,6 @@ enum DnaDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
 
     var demoable: any Demoable {
         switch self {
-        case .color:
-            return ColorDemoView()
         case .font:
             return FontDemoView()
         case .spacing:

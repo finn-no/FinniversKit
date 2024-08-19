@@ -11,7 +11,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/warp-ds/warp-ios.git", "0.0.22"..."999.0.0")
+        .package(url: "https://github.com/warp-ds/warp-ios.git", branch: "remove-warp-config")
     ],
     targets: [
         .target(

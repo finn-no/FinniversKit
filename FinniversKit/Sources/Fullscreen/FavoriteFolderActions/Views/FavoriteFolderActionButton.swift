@@ -11,7 +11,7 @@ final class FavoriteFolderActionButton: UIButton {
 
     private lazy var separatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = .textDisabled
+        view.backgroundColor = .border
         view.isHidden = isSeparatorHidden
         return view
     }()

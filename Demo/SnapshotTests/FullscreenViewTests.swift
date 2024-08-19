@@ -27,10 +27,6 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.registerView)
     }
 
-    func testDrumMachineView() {
-        snapshot(.drumMachineView)
-    }
-
     func testLoadingView() {
         snapshot(.loadingView)
     }

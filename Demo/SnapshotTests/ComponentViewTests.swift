@@ -112,10 +112,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.happinessRating)
     }
 
-    func testEarthHourView() {
-        snapshot(.earthHourView)
-    }
-
     func testNativeAdvert() {
         snapshot(.nativeAdvert)
     }
@@ -138,10 +134,6 @@ class ComponentViewTests: XCTestCase {
 
     func testQuestionnaireView() {
       snapshot(.questionnaireView)
-    }
-
-    func testKlimabroletView() {
-        snapshot(.klimabroletView)
     }
 
     func testStepSlider() {
