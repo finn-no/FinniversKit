@@ -3912,8 +3912,9 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/warp-ds/warp-ios.git";
 			requirement = {
-				branch = "remove-warp-config";
-				kind = branch;
+				kind = versionRange;
+				maximumVersion = 999.0.0;
+				minimumVersion = 0.0.25;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
