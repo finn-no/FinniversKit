@@ -3,9 +3,12 @@ import SwiftUI
 import UIKit
 
 extension HTMLStringSwiftUIStyleTranslator {
+    public typealias SpanMapper = (_ attributes: [HTMLToken.TagAttribute], _ currentStyle: inout Style) -> Void
+
     static func finnStyle(
         font: Font?,
-        foregroundColor: Color?
+        foregroundColor: Color?,
+        spanMapper: @escaping SpanMapper
     ) -> HTMLStringSwiftUIStyleTranslator {
         return .init(defaultStyle: .init(
             font: font,
@@ -21,16 +24,7 @@ extension HTMLStringSwiftUIStyleTranslator {
             case .i:
                 style.italic = true
             case .span:
-                for attribute in attributes {
-                    switch attribute.name {
-                    case "style":
-                        if attribute.value == "color:tjt-price-highlight" {
-                            style.foregroundColor = .textNegative
-                        }
-                    default:
-                        break
-                    }
-                }
+                spanMapper(attributes, &style)
             case .u:
                 style.underline = true
             default:

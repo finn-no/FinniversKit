@@ -2,12 +2,17 @@ import SwiftUI
 
 public struct HTMLText: View {
     public let html: String
+    public let spanMapper: HTMLStringSwiftUIStyleTranslator.SpanMapper
 
     private var font: Font?
     private var foregroundColor: Color?
 
-    public init(_ html: String) {
+    public init(
+        _ html: String,
+        spanMapper: @escaping HTMLStringSwiftUIStyleTranslator.SpanMapper = { _, _ in }
+    ) {
         self.html = html
+        self.spanMapper = spanMapper
     }
 
     public var body: some View {
@@ -18,7 +23,8 @@ public struct HTMLText: View {
         do {
             let translator = HTMLStringSwiftUIStyleTranslator.finnStyle(
                 font: font,
-                foregroundColor: foregroundColor
+                foregroundColor: foregroundColor,
+                spanMapper: spanMapper
             )
             let styledTexts = try HTMLStringParser.parse(html: html, translator: translator)
             return styledTexts.reduce(
