@@ -44,6 +44,7 @@ public final class Broadcast: UIStackView {
             let newMessages = messages.subtracting(self.messages)
             self.messages.formUnion(messages)
             add(newMessages, animated: animated)
+            superview?.bringSubviewToFront(self)
             return
         }
 
