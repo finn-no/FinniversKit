@@ -1,14 +1,15 @@
 {
+  "originHash" : "0d9eedf11daca64801572add0a3be5102458060bc23ba186e10954aa4fcceb89",
   "pins" : [
     {
       "identity" : "warp-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/warp-ds/warp-ios.git",
       "state" : {
-        "revision" : "7d24900acc6225655038c7ea5e3e9f9249631d58",
-        "version" : "0.0.3"
+        "revision" : "aeb72c43f2918a290d00d9fe93035723accb876b",
+        "version" : "0.0.25"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
