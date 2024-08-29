@@ -77,7 +77,6 @@
 		46E7740A242CEF0A008A5E93 /* RoundedImageViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772FD242CEF09008A5E93 /* RoundedImageViewDemoView.swift */; };
 		46E7740C242CEF0A008A5E93 /* LoadingIndicatorViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77301242CEF09008A5E93 /* LoadingIndicatorViewDemoView.swift */; };
 		46E7740D242CEF0A008A5E93 /* FeedbackDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77303242CEF09008A5E93 /* FeedbackDemoView.swift */; };
-		46E7740E242CEF0A008A5E93 /* ChristmasWishListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77305242CEF09008A5E93 /* ChristmasWishListDemoView.swift */; };
 		46E7740F242CEF0A008A5E93 /* CalloutDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77307242CEF09008A5E93 /* CalloutDemoView.swift */; };
 		46E77410242CEF0A008A5E93 /* RibbonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77309242CEF09008A5E93 /* RibbonDemoView.swift */; };
 		46E77411242CEF0A008A5E93 /* ViewingsListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7730B242CEF09008A5E93 /* ViewingsListDemoView.swift */; };
@@ -289,7 +288,6 @@
 		46E772FD242CEF09008A5E93 /* RoundedImageViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageViewDemoView.swift; sourceTree = "<group>"; };
 		46E77301242CEF09008A5E93 /* LoadingIndicatorViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorViewDemoView.swift; sourceTree = "<group>"; };
 		46E77303242CEF09008A5E93 /* FeedbackDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackDemoView.swift; sourceTree = "<group>"; };
-		46E77305242CEF09008A5E93 /* ChristmasWishListDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChristmasWishListDemoView.swift; sourceTree = "<group>"; };
 		46E77307242CEF09008A5E93 /* CalloutDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalloutDemoView.swift; sourceTree = "<group>"; };
 		46E77309242CEF09008A5E93 /* RibbonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonDemoView.swift; sourceTree = "<group>"; };
 		46E7730B242CEF09008A5E93 /* ViewingsListDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewingsListDemoView.swift; sourceTree = "<group>"; };
@@ -738,7 +736,6 @@
 				46E7731F242CEF09008A5E93 /* Button */,
 				46E77306242CEF09008A5E93 /* Callout */,
 				46E77356242CEF09008A5E93 /* CheckmarkTitleView */,
-				46E77304242CEF09008A5E93 /* ChristmasWishList */,
 				46E7731D242CEF09008A5E93 /* CollapsibleContentView */,
 				46E77316242CEF09008A5E93 /* ColumnListsView */,
 				46E77326242CEF09008A5E93 /* Consent */,
@@ -981,14 +978,6 @@
 				46E77303242CEF09008A5E93 /* FeedbackDemoView.swift */,
 			);
 			path = Feedback;
-			sourceTree = "<group>";
-		};
-		46E77304242CEF09008A5E93 /* ChristmasWishList */ = {
-			isa = PBXGroup;
-			children = (
-				46E77305242CEF09008A5E93 /* ChristmasWishListDemoView.swift */,
-			);
-			path = ChristmasWishList;
 			sourceTree = "<group>";
 		};
 		46E77306242CEF09008A5E93 /* Callout */ = {
@@ -1851,7 +1840,6 @@
 				5DCE0885280FDF2A00ED7407 /* MonthAndYearPickerDemoView.swift in Sources */,
 				46E77440242CEF0A008A5E93 /* SpacingDemoView.swift in Sources */,
 				5DEAC3C425C164D9003376AD /* IconButtonDemoView.swift in Sources */,
-				46E7740E242CEF0A008A5E93 /* ChristmasWishListDemoView.swift in Sources */,
 				46E7742D242CEF0A008A5E93 /* PrimingDemoView.swift in Sources */,
 				46E77436242CEF0A008A5E93 /* QuestionnaireDefaultData.swift in Sources */,
 				46E77428242CEF0A008A5E93 /* ReviewButtonViewDemoView.swift in Sources */,

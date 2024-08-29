@@ -244,10 +244,6 @@
 		9A37DC6E6F0401357C564B93 /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D61B28BC0BA6CA6110A5 /* RemoteImageView.swift */; };
 		9A37DCEF8B61CDA7813AFB16 /* VisibilityDrivenTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DAD39379A11C6213043C /* VisibilityDrivenTitleView.swift */; };
 		9A37DFD7CA27F4F25F613DE2 /* FavoriteAdsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DD79F67FC522D64A127E /* FavoriteAdsListView.swift */; };
-		9B057AA9235EEB1C007B1CF0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B057AA8235EEB1C007B1CF0 /* ContentView.swift */; };
-		9B057AAC235EEBAA007B1CF0 /* ChristmasButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B057AAB235EEBAA007B1CF0 /* ChristmasButton.swift */; };
-		9B057AAE235EEBE9007B1CF0 /* MissionPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B057AAD235EEBE9007B1CF0 /* MissionPopupView.swift */; };
-		9B057AB0235EEC0F007B1CF0 /* ChristmasWishListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B057AAF235EEC0F007B1CF0 /* ChristmasWishListViewModel.swift */; };
 		9B06096823F14B0A005CB592 /* SafetyElementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B06096723F14B0A005CB592 /* SafetyElementViewModel.swift */; };
 		9B06096B23F14B2F005CB592 /* ElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B06096A23F14B2F005CB592 /* ElementView.swift */; };
 		9B06096D23F14B80005CB592 /* CompactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B06096C23F14B80005CB592 /* CompactView.swift */; };
@@ -275,7 +271,6 @@
 		9BC5F40924114085007D74AC /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC5F40824114085007D74AC /* ResultView.swift */; };
 		9BCD171523CCBB680045BD61 /* CollapsibleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD171423CCBB680045BD61 /* CollapsibleContentView.swift */; };
 		9BCE6A3E23C7272200F37F6D /* BetaFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCE6A3D23C7272200F37F6D /* BetaFeatureView.swift */; };
-		9BD8ABC02359B1EE001078CA /* ChristmasWishListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD8ABBF2359B1EE001078CA /* ChristmasWishListView.swift */; };
 		9BEB2878231D26C100D28BAD /* LoanCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB2876231D240100D28BAD /* LoanCalculatorView.swift */; };
 		9BEB287B231D484B00D28BAD /* LoanHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB2879231D482F00D28BAD /* LoanHeaderView.swift */; };
 		9BEB287D231D486100D28BAD /* LoanValuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB287C231D486100D28BAD /* LoanValuesView.swift */; };
@@ -696,10 +691,6 @@
 		9A37DD79F67FC522D64A127E /* FavoriteAdsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListView.swift; sourceTree = "<group>"; };
 		9A37DF20BB7306D8D1A25593 /* UITableViewCellExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtensions.swift; sourceTree = "<group>"; };
 		9A37DF9788D8084AE7F0B91B /* LinkButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkButtonView.swift; sourceTree = "<group>"; };
-		9B057AA8235EEB1C007B1CF0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		9B057AAB235EEBAA007B1CF0 /* ChristmasButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasButton.swift; sourceTree = "<group>"; };
-		9B057AAD235EEBE9007B1CF0 /* MissionPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPopupView.swift; sourceTree = "<group>"; };
-		9B057AAF235EEC0F007B1CF0 /* ChristmasWishListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasWishListViewModel.swift; sourceTree = "<group>"; };
 		9B06096723F14B0A005CB592 /* SafetyElementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyElementViewModel.swift; sourceTree = "<group>"; };
 		9B06096A23F14B2F005CB592 /* ElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementView.swift; sourceTree = "<group>"; };
 		9B06096C23F14B80005CB592 /* CompactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactView.swift; sourceTree = "<group>"; };
@@ -727,7 +718,6 @@
 		9BC5F40824114085007D74AC /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		9BCD171423CCBB680045BD61 /* CollapsibleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleContentView.swift; sourceTree = "<group>"; };
 		9BCE6A3D23C7272200F37F6D /* BetaFeatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetaFeatureView.swift; sourceTree = "<group>"; };
-		9BD8ABBF2359B1EE001078CA /* ChristmasWishListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasWishListView.swift; sourceTree = "<group>"; };
 		9BEB2876231D240100D28BAD /* LoanCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanCalculatorView.swift; sourceTree = "<group>"; };
 		9BEB2879231D482F00D28BAD /* LoanHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanHeaderView.swift; sourceTree = "<group>"; };
 		9BEB287C231D486100D28BAD /* LoanValuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanValuesView.swift; sourceTree = "<group>"; };
@@ -1385,7 +1375,6 @@
 				4447F6651FDB2B110033DBC1 /* Button */,
 				CFCDDA5A22730213005E1F4A /* Callout */,
 				F2BE6C0A236C29BA0085A05A /* CheckmarkTitleView */,
-				9BD8ABBE2359B1CE001078CA /* ChristmasWishListView */,
 				9BCD171323CCBB590045BD61 /* CollapsibleContentView */,
 				9B1B12C423D5ACCB00282F3E /* ColumnListsView */,
 				45B2E06B207E181C00C68B92 /* Consent */,
@@ -2183,16 +2172,6 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
-		9B057AAA235EEB1F007B1CF0 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				9B057AA8235EEB1C007B1CF0 /* ContentView.swift */,
-				9B057AAB235EEBAA007B1CF0 /* ChristmasButton.swift */,
-				9B057AAD235EEBE9007B1CF0 /* MissionPopupView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		9B06096623F14AF4005CB592 /* SafetyElementsView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2311,16 +2290,6 @@
 				ADC5CE145A903142865FA082 /* CollapsibleContentView+Style.swift */,
 			);
 			path = CollapsibleContentView;
-			sourceTree = "<group>";
-		};
-		9BD8ABBE2359B1CE001078CA /* ChristmasWishListView */ = {
-			isa = PBXGroup;
-			children = (
-				9BD8ABBF2359B1EE001078CA /* ChristmasWishListView.swift */,
-				9B057AAA235EEB1F007B1CF0 /* Views */,
-				9B057AAF235EEC0F007B1CF0 /* ChristmasWishListViewModel.swift */,
-			);
-			path = ChristmasWishListView;
 			sourceTree = "<group>";
 		};
 		9BEB2875231D23F500D28BAD /* LoanCalculator */ = {
@@ -3203,7 +3172,6 @@
 				CF164D15230FFB7400250822 /* FavoriteAdActionViewModel.swift in Sources */,
 				CF136ACD2203211100247B30 /* InfoboxView.swift in Sources */,
 				4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */,
-				9B057AA9235EEB1C007B1CF0 /* ContentView.swift in Sources */,
 				179D06A92906A39D00A65E3A /* HTMLStringParser.swift in Sources */,
 				9B06097023F14BB4005CB592 /* HeaderView.swift in Sources */,
 				AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */,
@@ -3250,7 +3218,6 @@
 				4447F7031FDB2B110033DBC1 /* Config.swift in Sources */,
 				DAA9A3AC210215400021F7DC /* AnimatedSelectionView.swift in Sources */,
 				27AE25A6298957D00091E957 /* Toast.swift in Sources */,
-				9BD8ABC02359B1EE001078CA /* ChristmasWishListView.swift in Sources */,
 				27D4BE1C29657A960077D1A4 /* FrontPageHeaderView.swift in Sources */,
 				4DA1C74E27EC987F00B615A3 /* PromotionViewModel.swift in Sources */,
 				CF0F6B972360781E00CA62FD /* PrimingView.swift in Sources */,
@@ -3434,7 +3401,6 @@
 				714B9355253730D900801C99 /* SendInviteViewModel.swift in Sources */,
 				CFCED8DD22CE3EAA0049A3A0 /* AddFavoriteFolderButton.swift in Sources */,
 				DAB7FAA921B690DD00BF8CC6 /* BottomSheetAnimationController.swift in Sources */,
-				9B057AAE235EEBE9007B1CF0 /* MissionPopupView.swift in Sources */,
 				0884C6CE22B7BE360015474D /* DisclaimerViewModel.swift in Sources */,
 				1753871D291AA55000DA57D2 /* HTMLStringParserTextTranslator.swift in Sources */,
 				F2BE6C09236AD24B0085A05A /* CheckmarkTitleView.swift in Sources */,
@@ -3452,7 +3418,6 @@
 				CFFDF89722F311F600FE68EA /* NeighborhoodProfileView.swift in Sources */,
 				CF0647FC2368834B00863D07 /* TopShadowView.swift in Sources */,
 				44A557AF22E7211E001667AE /* RemoteImageTableViewCellViewModel.swift in Sources */,
-				9B057AB0235EEC0F007B1CF0 /* ChristmasWishListViewModel.swift in Sources */,
 				712B0812254ADB1F00791C6B /* MessageUserRequiredView.swift in Sources */,
 				714B9352253728EC00801C99 /* SendInviteView.swift in Sources */,
 				CF13D6CD2292D2300087DA37 /* PhaseListView.swift in Sources */,
@@ -3488,7 +3453,6 @@
 				4441F9F322CCF76300DCFD2F /* AddressMapView.swift in Sources */,
 				9BEB287D231D486100D28BAD /* LoanValuesView.swift in Sources */,
 				9BB680322462F7AC001ADACF /* View+Extensions.swift in Sources */,
-				9B057AAC235EEBAA007B1CF0 /* ChristmasButton.swift in Sources */,
 				DAE6A55C21CA524B00837BFA /* CGPoint.swift in Sources */,
 				2714D6932B69258600EF82E1 /* SelectableImageView.swift in Sources */,
 				43BACE6C21117D530052114C /* BuyerPickerViewModel.swift in Sources */,
