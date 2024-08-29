@@ -27,7 +27,7 @@ extension HTMLStringSwiftUIStyleTranslator {
                 spanMapper(attributes, &style)
             case .u:
                 style.underline = true
-           default:
+            default:
                 break
             }
             return style
