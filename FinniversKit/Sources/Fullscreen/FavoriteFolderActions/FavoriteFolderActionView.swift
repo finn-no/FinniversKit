@@ -71,7 +71,7 @@ public final class FavoriteFolderActionView: UIView {
         let constant = isShared ? rowHeight : 0
 
         switch self.viewModel.appearance {
-        case .regular, .xmasFolder:
+        case .regular:
             return deleteButton.topAnchor.constraint(equalTo: shareToggleView.bottomAnchor, constant: constant)
         case .defaultFolder:
             return shareLinkView.topAnchor.constraint(equalTo: shareToggleView.topAnchor, constant: constant)
@@ -188,13 +188,6 @@ public final class FavoriteFolderActionView: UIView {
             constraints.append(contentsOf: [
                 shareToggleView.topAnchor.constraint(equalTo: editButton.bottomAnchor)
             ])
-        case .xmasFolder:
-            addSubview(deleteButton)
-
-            constraints.append(contentsOf: [
-                shareToggleView.topAnchor.constraint(equalTo: editButton.bottomAnchor),
-                shareLinkView.bottomAnchor.constraint(equalTo: deleteButton.topAnchor)
-            ] + deleteButtonConstraints)
         }
 
         constraints.append(animatingConstraint)
@@ -239,8 +232,6 @@ private extension FavoriteFolderActionViewModel.Appearance {
             return Set(FavoriteFolderAction.allCases)
         case .defaultFolder:
             return Set([.edit, .toggleSharing, .shareLink])
-        case .xmasFolder:
-            return Set([.edit, .toggleSharing, .shareLink, .delete])
         }
     }
 }
