@@ -91,7 +91,6 @@ enum ImageAsset: String {
     case favoritesSortDistance
     case favoritesSortLastAdded
     case favoritesXmasButton
-    case favoritesXmasFolder
     case favouriteAddImg
     case favouriteAdded
     case favouriteAddedImg
@@ -222,7 +221,6 @@ enum ImageAsset: String {
             .favoritesSortDistance,
             .favoritesSortLastAdded,
             .favoritesXmasButton,
-            .favoritesXmasFolder,
             .favouriteAddImg,
             .favouriteAdded,
             .favouriteAddedImg,
