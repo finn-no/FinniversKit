@@ -27,7 +27,6 @@ class FavoriteAdsListDemoView: UIView {
         view.title = folderTitle
         view.subtitle = "\(viewModels.count) favoritter"
         view.sortingTitle = currentSorting.rawValue
-        view.isFooterShareButtonHidden = true
         view.configure(scrollShadowHeight: 44)
         return view
     }()
@@ -94,7 +93,6 @@ extension FavoriteAdsListDemoView: TweakableDemo {
         case sharedPersonalFolder
         case readOnlyFolderDefaultModels
         case readOnlyFolderNoFavorites
-        case footerShareButton
     }
 
     var numberOfTweaks: Int { Tweaks.allCases.count }
@@ -112,13 +110,11 @@ extension FavoriteAdsListDemoView: TweakableDemo {
             setReadOnly(false)
             favoritesListView.setEditing(false)
             resetHeader()
-            favoritesListView.isFooterShareButtonHidden = true
         case .selectionModeWithMessages:
             resetViewModels()
             setReadOnly(false)
             favoritesListView.setEditing(false)
             resetHeader()
-            favoritesListView.isFooterShareButtonHidden = true
             favoritesListView.configure(infoMessages: [
                 .message(
                     "This is a single demo message. It's kinda long, but it should still present as needed",
@@ -136,52 +132,39 @@ extension FavoriteAdsListDemoView: TweakableDemo {
             favoritesListView.setEditing(false)
             resetHeader()
             setTitle("Veldig langt navn, ganske nøyaktig 50 tegn faktisk")
-            favoritesListView.isFooterShareButtonHidden = true
         case .emptyFolder:
             setReadOnly(false)
             setViewModels([])
             favoritesListView.setEditing(false)
             resetHeader()
-            favoritesListView.isFooterShareButtonHidden = true
         case .editModeNoneSelected:
             resetViewModels()
             setReadOnly(false)
             favoritesListView.setEditing(true)
             favoritesListView.selectAllRows(false, animated: false)
             resetHeader()
-            favoritesListView.isFooterShareButtonHidden = true
         case .editModeAllSelected:
             resetViewModels()
             setReadOnly(false)
             favoritesListView.setEditing(true)
             favoritesListView.selectAllRows(true, animated: false)
             resetHeader()
-            favoritesListView.isFooterShareButtonHidden = true
         case .sharedPersonalFolder:
             resetViewModels()
             setReadOnly(false)
             favoritesListView.setEditing(false)
             resetHeader()
             favoritesListView.isShared = true
-            favoritesListView.isFooterShareButtonHidden = true
         case .readOnlyFolderDefaultModels:
             resetViewModels()
             setReadOnly(true)
             favoritesListView.setEditing(false)
             resetHeader()
-            favoritesListView.isFooterShareButtonHidden = true
         case .readOnlyFolderNoFavorites:
             setViewModels([])
             setReadOnly(true)
             favoritesListView.setEditing(false)
             resetHeader()
-            favoritesListView.isFooterShareButtonHidden = true
-        case .footerShareButton:
-            resetViewModels()
-            setReadOnly(false)
-            favoritesListView.setEditing(false)
-            resetHeader()
-            favoritesListView.isFooterShareButtonHidden = false
         }
     }
 }
@@ -284,7 +267,6 @@ extension FavoriteAdsListViewModel {
     static let `default` = FavoriteAdsListViewModel(
         searchBarPlaceholder: "Søk etter en av dine favoritter",
         headerShareButtonTitle: "Delt liste",
-        footerShareButtonTitle: "Del ønskelisten din",
         addCommentActionTitle: "Skriv\nnotat",
         editCommentActionTitle: "Rediger\nnotat",
         deleteAdActionTitle: "Slett",

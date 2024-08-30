@@ -5,7 +5,6 @@
 public struct FavoriteAdsListViewModel {
     public let searchBarPlaceholder: String
     public let headerShareButtonTitle: String
-    public let footerShareButtonTitle: String
     public let addCommentActionTitle: String
     public let editCommentActionTitle: String
     public let deleteAdActionTitle: String
@@ -17,7 +16,6 @@ public struct FavoriteAdsListViewModel {
     public init(
         searchBarPlaceholder: String,
         headerShareButtonTitle: String,
-        footerShareButtonTitle: String,
         addCommentActionTitle: String,
         editCommentActionTitle: String,
         deleteAdActionTitle: String,
@@ -28,7 +26,6 @@ public struct FavoriteAdsListViewModel {
     ) {
         self.searchBarPlaceholder = searchBarPlaceholder
         self.headerShareButtonTitle = headerShareButtonTitle
-        self.footerShareButtonTitle = footerShareButtonTitle
         self.addCommentActionTitle = addCommentActionTitle
         self.editCommentActionTitle = editCommentActionTitle
         self.deleteAdActionTitle = deleteAdActionTitle

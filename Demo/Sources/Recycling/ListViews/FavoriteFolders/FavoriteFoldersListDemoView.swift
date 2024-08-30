@@ -53,7 +53,6 @@ extension FavoriteFoldersListDemoView: TweakableDemo {
     enum Tweaks: String, CaseIterable, TweakingOption {
         case toggleMode
         case editMode
-        case xmasButton
     }
 
     var shouldSnapshotTweaks: Bool { false }
@@ -70,15 +69,10 @@ extension FavoriteFoldersListDemoView: TweakableDemo {
             isEditing = false
             allFavorites = FavoriteFoldersFactory.create()
             view.setEditing(false)
-            view.hideXmasButton()
         case .editMode:
             isEditing = true
             allFavorites = FavoriteFoldersFactory.create(withSelectedItems: false)
             view.setEditing(true)
-            view.hideXmasButton()
-        case .xmasButton:
-            let text = "Tips! Nå kan du endelig opprette og dele din egen juleønskeliste! Her er i såfall knappen for å gjøre det! God jul!"
-            view.showXmasButton(withCalloutText: text)
         }
     }
 }
@@ -115,10 +109,6 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDelegate {
 
     func favoriteFoldersListViewDidFocusSearchBar(_ view: FavoriteFoldersListView) {
         // Set bottomSheet to expanded here, if needed.
-    }
-
-    func favoriteFoldersListViewDidSelectXmasButton(_ view: FavoriteFoldersListView) {
-        view.hideXmasButton()
     }
 }
 

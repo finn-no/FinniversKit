@@ -13,7 +13,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case callout
     case checkbox
     case checkmarkTitleView
-    case christmasWishListView
     case cogWheelButton
     case collapsibleContentView
     case columnListsView
@@ -157,8 +156,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return FeedbackDemoView()
         case .happinessRating:
             return HappinessRatingDemoView()
-        case .christmasWishListView:
-            return ChristmasWishListDemoView()
         case .nativeAdvert:
             return NativeAdvertDemoView()
         case .callout:

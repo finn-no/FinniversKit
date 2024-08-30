@@ -12,7 +12,6 @@ public class RemoteImageTableViewCell: BasicTableViewCell {
             remoteImageView.dataSource = dataSource
         }
     }
-    public var isLoadingEnabled = true
     public var fallbackImage: UIImage = UIImage(named: .noImage)
 
     private var viewModel: RemoteImageTableViewCellViewModel?
@@ -65,7 +64,7 @@ public class RemoteImageTableViewCell: BasicTableViewCell {
     }
 
     public func loadImage() {
-        guard let viewModel = viewModel, let imagePath = viewModel.imagePath, isLoadingEnabled else {
+        guard let viewModel = viewModel, let imagePath = viewModel.imagePath else {
             remoteImageView.setImage(fallbackImage, animated: false)
             return
         }

@@ -8,7 +8,6 @@ public struct FavoriteFolderActionViewModel {
     public enum Appearance {
         case regular
         case defaultFolder
-        case xmasFolder
     }
 
     public let appearance: Appearance

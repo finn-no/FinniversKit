@@ -85,12 +85,6 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
             titleLabel.font = titleLabelSelectedFont
         }
 
-        isLoadingEnabled = !viewModel.isXmas
-
-        if viewModel.isXmas {
-            fallbackImage = UIImage(named: .favoritesXmasFolder)
-        }
-
         checkmarkImageView.isHidden = !viewModel.isSelected || isEditing || showDetailLabel
         setNeedsLayout()
     }

@@ -10,7 +10,6 @@ struct FavoriteFolder: FavoriteFolderViewModel {
     let subtitle: String?
     let imagePath: String?
     let isDefault: Bool
-    let isXmas: Bool
     let detailText: String? = "23 annonser"
     let cornerRadius: CGFloat = 12
     let imageViewWidth: CGFloat = 40
@@ -23,14 +22,13 @@ struct FavoriteFoldersFactory {
         var favorites = [FavoriteFolder]()
 
         for (index, (title, imagePath)) in zip(titles, imagePaths).enumerated() {
-            let isSelected = withSelectedItems ? [1, 2].contains(index) : false
+            let isSelected = withSelectedItems ? [0, 1].contains(index) : false
             let folder = FavoriteFolder(
                 id: index,
                 title: title,
-                subtitle: index == 2 ? "Delt liste" : nil,
+                subtitle: index == 1 ? "Delt liste" : nil,
                 imagePath: imagePath,
-                isDefault: index == 1,
-                isXmas: index == 0,
+                isDefault: index == 0,
                 isSelected: isSelected
             )
 
@@ -42,7 +40,6 @@ struct FavoriteFoldersFactory {
 
     private static var titles: [String] {
         return [
-            "Mine julegaveønsker",
             "Mine funn",
             "We accept up to 50 characters for a folder's name",
             "Mansion",
