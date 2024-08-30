@@ -45,7 +45,6 @@ public class FavoriteAdsListView: UIView {
     public var isReadOnly: Bool {
         didSet {
             reloadData(scrollToTop: true)
-            setFooterVewHidden(isReadOnly || isFooterShareButtonHidden)
         }
     }
 
@@ -85,22 +84,13 @@ public class FavoriteAdsListView: UIView {
         }
     }
 
-    public var isFooterShareButtonHidden = true {
-        didSet {
-            setFooterVewHidden(isFooterShareButtonHidden)
-        }
-    }
-
     // MARK: - Private properties
 
     private let viewModel: FavoriteAdsListViewModel
     private let imageCache = ImageMemoryCache()
     private var sendScrollUpdates: Bool = true
-    private var contentSizeObserver: NSKeyValueObservation?
     private lazy var scrollShadowView = BottomShadowView(withAutoLayout: true)
     private lazy var tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: topAnchor)
-    private lazy var tableViewBottomConstraint = tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
-    private lazy var tableViewFooterBottomConstraint = tableView.bottomAnchor.constraint(equalTo: footerView.topAnchor)
     private lazy var scrollShadowViewTopConstraint = scrollShadowView.topAnchor.constraint(equalTo: topAnchor, constant: 0)
     private lazy var scrollShadowViewHeightConstraint = scrollShadowView.heightAnchor.constraint(equalToConstant: 0)
 
@@ -142,14 +132,6 @@ public class FavoriteAdsListView: UIView {
         return emptyView
     }()
 
-    private lazy var footerView: FooterButtonView = {
-        let view = FooterButtonView(withAutoLayout: true)
-        view.buttonTitle = viewModel.footerShareButtonTitle
-        view.isHidden = true
-        view.delegate = self
-        return view
-    }()
-
     // MARK: - Init
 
     public init(viewModel: FavoriteAdsListViewModel, isReadOnly: Bool = false) {
@@ -161,16 +143,10 @@ public class FavoriteAdsListView: UIView {
 
     required init?(coder aDecoder: NSCoder) { fatalError() }
 
-    deinit {
-        contentSizeObserver?.invalidate()
-        contentSizeObserver = nil
-    }
-
     // MARK: - Setup
 
     private func setup() {
         addSubview(tableView)
-        addSubview(footerView)
         addSubview(scrollShadowView)
 
         tableView.addSubview(emptySearchView)
@@ -180,11 +156,7 @@ public class FavoriteAdsListView: UIView {
             tableViewTopConstraint,
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableViewBottomConstraint,
-
-            footerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            footerView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            footerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             scrollShadowViewTopConstraint,
             scrollShadowViewHeightConstraint,
@@ -197,10 +169,6 @@ public class FavoriteAdsListView: UIView {
         emptyListView.configure(withImage: viewModel.emptyListViewImage,
                                 title: viewModel.emptyListViewTitle,
                                 body: viewModel.emptyListViewBody)
-
-        contentSizeObserver = tableView.observe(\UITableView.contentSize, options: [.new], changeHandler: { [weak self] tableView, _ in
-            self?.footerView.updateShadow(using: tableView)
-        })
     }
 
     // MARK: - Overrides
@@ -248,8 +216,6 @@ public class FavoriteAdsListView: UIView {
         let tableHeaderHeight = tableHeaderView.bounds.height
         let hasScrolledPastTableHeader = tableView.contentOffset.y >= tableHeaderHeight
         let isContentTallEnoughForAnimatingOffset = tableView.contentSize.height > bounds.height + tableHeaderHeight
-
-        setFooterVewHidden(editing || isFooterShareButtonHidden)
 
         if !editing {
             sendScrollUpdates = true
@@ -332,7 +298,6 @@ public class FavoriteAdsListView: UIView {
         let shouldShowEmptySearchView = numberOfSections(in: tableView) == 0
         emptySearchView.isHidden = !shouldShowEmptySearchView
         tableHeaderView.isSortingViewHidden = shouldShowEmptySearchView
-        setFooterVewHidden(shouldShowEmptySearchView || isFooterShareButtonHidden)
         setTableHeader()
     }
 
@@ -342,12 +307,6 @@ public class FavoriteAdsListView: UIView {
         emptySearchView.frame.size.height -= emptySearchView.frame.origin.y
 
         emptyListView.frame = emptySearchView.frame
-    }
-
-    private func setFooterVewHidden(_ hidden: Bool) {
-        footerView.isHidden = hidden
-        tableViewBottomConstraint.isActive = hidden
-        tableViewFooterBottomConstraint.isActive = !hidden
     }
 
     /// Calculates the correct frame for the `tableHeaderView` on each call to `layoutSubviews`.
@@ -468,7 +427,6 @@ extension FavoriteAdsListView: UITableViewDelegate {
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollShadowView.updateShadow(using: scrollView)
-        footerView.updateShadow(using: scrollView)
 
         if sendScrollUpdates {
             let isTitleViewVisible = scrollView.bounds.intersects(tableHeaderView.titleLabelFrame)
