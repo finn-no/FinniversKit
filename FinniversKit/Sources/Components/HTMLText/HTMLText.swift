@@ -30,7 +30,14 @@ public struct HTMLText: View {
             return styledTexts.reduce(
                 into: Text("").applyStyle(translator.styleStack.defaultStyle)
             ) { textView, styledText in
-                textView = textView + Text(styledText.text).applyStyle(styledText.style)
+                let newText: Text
+                if let url = styledText.url {
+                    newText = Text("\(styledText.text, link: url)")
+                } else {
+                    newText = Text(styledText.text)
+                }
+                textView = textView + newText
+                    .applyStyle(styledText.style)
             }
         } catch {
             return Text(html)
@@ -87,6 +94,8 @@ struct HTMLText_Previews: PreviewProvider {
             HTMLText("Shipping costs <span style=\"color:tjt-price-highlight\">60 NOK</span>")
 
             HTMLText("Old price is <del>80 NOK</del>")
+
+            HTMLText("A <a href=\"https://google.com\">link</a>")
         }
         .previewLayout(.sizeThatFits)
     }

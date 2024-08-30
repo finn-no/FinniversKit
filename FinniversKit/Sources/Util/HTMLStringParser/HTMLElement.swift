@@ -31,5 +31,6 @@ extension HTMLElement {
     public static var span: Self { .init("span") }
     public static var strong: Self { .init("strong") }
     public static var u: Self { .init("u") }
+    public static var a: Self { .init("a") }
     // swiftlint:enable identifier_name
 }

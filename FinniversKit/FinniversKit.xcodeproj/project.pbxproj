@@ -301,6 +301,8 @@
 		B26B582E2B4BD695000E0245 /* NMPInfoboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26B582C2B4BD695000E0245 /* NMPInfoboxView.swift */; };
 		B26B582F2B4BD695000E0245 /* NMPInfoboxView+InformationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26B582D2B4BD695000E0245 /* NMPInfoboxView+InformationType.swift */; };
 		B26B58312B4BDD15000E0245 /* InfoboxSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26B58302B4BDD15000E0245 /* InfoboxSwiftUIView.swift */; };
+		B2829E2D2C7F054F0032BDFA /* HTMLAttributeStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2829E2C2C7F054F0032BDFA /* HTMLAttributeStack.swift */; };
+		B2829E2F2C7F05D20032BDFA /* LocalizedStringKey+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2829E2E2C7F05D20032BDFA /* LocalizedStringKey+Extensions.swift */; };
 		B6801C1C2982ECCA004A0F4F /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6801C1B2982ECCA004A0F4F /* SettingsHeaderView.swift */; };
 		CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F08C20615990002AA385 /* TextField+State.swift */; };
 		CF05B7E023325968003A7F1C /* FavoriteFolderActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05B7DF23325968003A7F1C /* FavoriteFolderActionButton.swift */; };
@@ -748,6 +750,8 @@
 		B26B582C2B4BD695000E0245 /* NMPInfoboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NMPInfoboxView.swift; sourceTree = "<group>"; };
 		B26B582D2B4BD695000E0245 /* NMPInfoboxView+InformationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NMPInfoboxView+InformationType.swift"; sourceTree = "<group>"; };
 		B26B58302B4BDD15000E0245 /* InfoboxSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxSwiftUIView.swift; sourceTree = "<group>"; };
+		B2829E2C2C7F054F0032BDFA /* HTMLAttributeStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLAttributeStack.swift; sourceTree = "<group>"; };
+		B2829E2E2C7F05D20032BDFA /* LocalizedStringKey+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedStringKey+Extensions.swift"; sourceTree = "<group>"; };
 		B6801C1B2982ECCA004A0F4F /* SettingsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD2F08C20615990002AA385 /* TextField+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+State.swift"; sourceTree = "<group>"; };
@@ -1080,6 +1084,7 @@
 				17538722291ABC1B00DA57D2 /* HTMLElement.swift */,
 				179D06A72906A39D00A65E3A /* HTMLStringParser.swift */,
 				175385AF29146A4000DA57D2 /* HTMLStringStyleStack.swift */,
+				B2829E2C2C7F054F0032BDFA /* HTMLAttributeStack.swift */,
 				1753871B291AA4F900DA57D2 /* Translators */,
 			);
 			path = HTMLStringParser;
@@ -2251,6 +2256,7 @@
 				DA5A858B24617DF000AC0DFE /* ImageExtensions.swift */,
 				5DA190C625A4A7E0002305A8 /* Transition+Extensions.swift */,
 				9BB680312462F7AC001ADACF /* View+Extensions.swift */,
+				B2829E2E2C7F05D20032BDFA /* LocalizedStringKey+Extensions.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -3271,6 +3277,7 @@
 				CFCED8E122CF3A690049A3A0 /* AddFavoriteFolderViewCell.swift in Sources */,
 				CFF9727221C3BA1D00C85238 /* BannerTransparencyView.swift in Sources */,
 				44A557B522E72187001667AE /* HeartTableViewCell.swift in Sources */,
+				B2829E2D2C7F054F0032BDFA /* HTMLAttributeStack.swift in Sources */,
 				573B3FF82ACC1B75005096EC /* SettingsViewIconCellModel.swift in Sources */,
 				4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */,
 				441FE431209A24E500B04EF1 /* AdRecommendationsGridHeaderView.swift in Sources */,
@@ -3317,6 +3324,7 @@
 				DAD6EB2A2369916100968497 /* SettingsView.swift in Sources */,
 				4408A6A32027AC41008C0BD9 /* UIColor+FinniversKit.swift in Sources */,
 				446EE15C2345A6AA00010818 /* SelectorTitleView.swift in Sources */,
+				B2829E2F2C7F05D20032BDFA /* LocalizedStringKey+Extensions.swift in Sources */,
 				DAD6EB292369916100968497 /* SettingsViewConsentCellModel.swift in Sources */,
 				CF3F85BF229C29B3003A6748 /* IconCollectionViewFlowLayout.swift in Sources */,
 				4DD3AA7C27B56592007B107E /* DetailCalloutView.swift in Sources */,
