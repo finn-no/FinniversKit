@@ -7,15 +7,28 @@ public final class HTMLStringSwiftUIStyleTranslator: HTMLStringParserTranslator 
     public struct StyledText: Equatable {
         public let text: String
         public let style: Style
+        public let attributes: [Attribute]?
 
-        public init(text: String, style: Style) {
+        public init(text: String, style: Style, attributes: [Attribute]? = nil) {
             self.text = text
             self.style = style
+            self.attributes = attributes
+        }
+
+        public var url: URL? {
+            attributes?.compactMap { attribute in
+                switch attribute {
+                case .url(let value):
+                    return value
+                }
+            }
+            .first
         }
     }
 
     private let styleMapper: StyleMapper?
     private(set) var styleStack: HTMLStringStyleStack<Style>
+    private(set) var attributeStack: HTMLAttributeStack<Attribute>
 
     public init(
         defaultStyle: Style,
@@ -28,6 +41,7 @@ public final class HTMLStringSwiftUIStyleTranslator: HTMLStringParserTranslator 
                 style.update(from: otherStyle)
             }
         )
+        self.attributeStack = HTMLAttributeStack()
     }
 
     public func translate(tokens: [HTMLToken]) throws -> [StyledText] {
@@ -39,6 +53,11 @@ public final class HTMLStringSwiftUIStyleTranslator: HTMLStringParserTranslator 
                 case "br":
                     styledText.append(StyledText(text: "\n", style: styleStack.currentStyle))
                     continue
+                case "a":
+                    if let urlString = attributes.first(where: { $0.name.lowercased() == "href"})?.value,
+                       let url = URL(string: urlString) {
+                        attributeStack.pushAttribute(.url(value: url), elementName: name)
+                    }
                 default:
                     break
                 }
@@ -47,9 +66,14 @@ public final class HTMLStringSwiftUIStyleTranslator: HTMLStringParserTranslator 
                     styleStack.pushStyle(style, elementName: name)
                 }
             case .tagEnd(let name):
+                attributeStack.popAttribute(elementName: name)
                 styleStack.popStyle(elementName: name)
             case .text(let text):
-                styledText.append(StyledText(text: text, style: styleStack.currentStyle))
+                if let lastAttribute = attributeStack.peek() {
+                    styledText.append(.init(text: text, style: styleStack.currentStyle, attributes: [lastAttribute]))
+                } else {
+                    styledText.append(.init(text: text, style: styleStack.currentStyle, attributes: nil))
+                }
             default:
                 break
             }
@@ -66,6 +90,8 @@ public final class HTMLStringSwiftUIStyleTranslator: HTMLStringParserTranslator 
         case "s", "del":
             return .init(strikethrough: true)
         case "u":
+            return .init(underline: true)
+        case "a":
             return .init(underline: true)
         default:
             return nil
@@ -130,5 +156,15 @@ extension HTMLStringSwiftUIStyleTranslator {
                 self.underlineColor = underlineColor
             }
         }
+    }
+}
+
+extension HTMLStringSwiftUIStyleTranslator {
+    public enum Attribute: Equatable {
+        /*
+         For now we just have a URL attribute here (which is read from the href attribute of an anchor tag)
+         but this could be extended if so needed
+         */
+        case url(value: URL)
     }
 }
