@@ -30,12 +30,12 @@ public extension Label {
             switch self {
             case .title1: return UIFont.title1
             case .title2: return UIFont.title2
-            case .title2Strong: return UIFont.title2Strong
+            case .title2Strong: return UIFont.title2
             case .title3: return UIFont.title3
-            case .title3Strong: return UIFont.title3Strong
+            case .title3Strong: return UIFont.title3
             case .bodyStrong, .title4: return UIFont.bodyStrong
             case .detailStrong, .title5: return UIFont.detailStrong
-            case .bodyRegular: return UIFont.bodyRegular
+            case .bodyRegular: return UIFont.body
             case .body: return UIFont.body
             case .captionStrong, .captionHeavy: return UIFont.captionStrong
             case .caption: return UIFont.caption

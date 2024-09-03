@@ -127,7 +127,7 @@ public extension SettingDetailsView {
             duration: animated ? 0.2 : 0,
             options: .transitionCrossDissolve,
             animations: {
-                self.textLabel.attributedText = model.attributedText(for: self.state).replacingFont(with: .bodyRegular)
+                self.textLabel.attributedText = model.attributedText(for: self.state).replacingFont(with: .body)
                 self.textLabel.textAlignment = model.textAlignment(for: self.state)
             }
         )
@@ -217,7 +217,7 @@ private extension NSAttributedString {
     func replacingFont(with font: UIFont) -> NSAttributedString {
         let range = NSRange(location: 0, length: length)
         let newText = NSMutableAttributedString(attributedString: self)
-        newText.addAttribute(.font, value: UIFont.bodyRegular, range: range)
+        newText.addAttribute(.font, value: UIFont.body, range: range)
         return newText
     }
 }
