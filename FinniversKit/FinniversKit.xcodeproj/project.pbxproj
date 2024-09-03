@@ -384,7 +384,6 @@
 		DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E438521104EB8000DDEC3 /* AdReporterView.swift */; };
 		DA5A858C24617DF000AC0DFE /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A858B24617DF000AC0DFE /* ImageExtensions.swift */; };
 		DA708853211338650067519A /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA708852211338650067519A /* ConfirmationView.swift */; };
-		DA84E8E9252DC96900E4E3B3 /* FontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA84E8E8252DC96900E4E3B3 /* FontProvider.swift */; };
 		DA9A223F21BA8D8C001452F0 /* BottomSheetStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */; };
 		DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A32102153F0021F7DC /* Selectionbox.swift */; };
 		DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */; };
@@ -834,7 +833,6 @@
 		DA4E438521104EB8000DDEC3 /* AdReporterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdReporterView.swift; sourceTree = "<group>"; };
 		DA5A858B24617DF000AC0DFE /* ImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
 		DA708852211338650067519A /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
-		DA84E8E8252DC96900E4E3B3 /* FontProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontProvider.swift; sourceTree = "<group>"; };
 		DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetStateController.swift; sourceTree = "<group>"; };
 		DAA9A3A32102153F0021F7DC /* Selectionbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectionbox.swift; sourceTree = "<group>"; };
 		DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionboxItem.swift; sourceTree = "<group>"; };
@@ -1210,7 +1208,6 @@
 			isa = PBXGroup;
 			children = (
 				9BB6802E2462F763001ADACF /* Font+SwiftUI.swift */,
-				DA84E8E8252DC96900E4E3B3 /* FontProvider.swift */,
 				4408A6A22027AC41008C0BD9 /* UIFont+FinniversKit.swift */,
 			);
 			path = Font;
@@ -3239,7 +3236,6 @@
 				9BB734C42462EA0500E05435 /* ButtonStyle.swift in Sources */,
 				441FE430209A24E500B04EF1 /* StandardAdRecommendationCell.swift in Sources */,
 				DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */,
-				DA84E8E9252DC96900E4E3B3 /* FontProvider.swift in Sources */,
 				E65085D6292BBFB600A43B07 /* SwiftUIHyperlinkTextView.swift in Sources */,
 				DA708853211338650067519A /* ConfirmationView.swift in Sources */,
 				14C6F7D5212324CA00A7230C /* FavoritesListViewModel.swift in Sources */,
@@ -3880,9 +3876,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/warp-ds/warp-ios.git";
 			requirement = {
-				kind = versionRange;
-				maximumVersion = 999.0.0;
-				minimumVersion = 0.0.25;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
