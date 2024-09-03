@@ -6,16 +6,6 @@ import UIKit
 import Warp
 
 @objc extension UIFont {
-    /// Font Medium/Bold with a size of 48 scaled for UIFontTextStyle.largeTitle
-    ///
-    /// ## Usage:
-    /// - It should only be used one T1 and it should be the first text element that catches the users attention.
-    /// - It shall give the user an overview of which page he or she is located.
-    /// - This always has the weight Medium.
-    public static var display: UIFont {
-        Warp.Typography.display.uiFont
-    }
-
     /// Font Medium/Bold with a size of 34 scaled for UIFontTextStyle.largeTitle
     ///
     /// ## Usage:
@@ -36,25 +26,6 @@ import Warp
         Warp.Typography.title2.uiFont
     }
 
-    /// Font Medium/Bold with a size of 28 scaled for UIFontTextStyle.title1
-    ///
-    /// ## Usage:
-    /// - A page can contain multiple T2 to divide content into several sections.
-    /// - There should be a lot of space between sections to create a clear distinction on the content.
-    /// - This always has the weight Light.
-    public static var title2Strong: UIFont {
-        Warp.Typography.title2.uiFont
-    }
-
-    /// Font Medium/Bold with a size of 22 scaled for UIFontTextStyle.title2
-    ///
-    /// ## Usage:
-    /// - If a T2 have more sublevels, you can use T3.
-    /// - This always has the weight Medium.
-    public static var title3Strong: UIFont {
-        Warp.Typography.title3.uiFont
-    }
-
     /// Font Medium/Bold with a size of 22 scaled for UIFontTextStyle.title2
     ///
     /// ## Usage:
@@ -69,15 +40,7 @@ import Warp
     /// ## Usage:
     /// - This have the same size as the body text, but is always bolded (Medium) to differenciate them.
     public static var bodyStrong: UIFont {
-        Warp.Typography.bodyStrong.uiFont
-    }
-
-    /// Font Light/Regular with a size of 16 scaled for UIFontTextStyle.headline
-    ///
-    /// ## Usage:
-    /// - This have the same size as the body text, but is always semibolded (Regular) to differenciate them.
-    public static var bodyRegular: UIFont {
-        Warp.Typography.body.uiFont
+        Warp.Typography.title4.uiFont
     }
 
     /// Font Light/Regular with a size of 16 scaled for UIFontTextStyle.body
