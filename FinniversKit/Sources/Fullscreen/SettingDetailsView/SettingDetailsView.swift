@@ -46,7 +46,7 @@ public class SettingDetailsView: UIView {
     )
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .title3Strong, withAutoLayout: true)
+        let label = Label(style: .title3, withAutoLayout: true)
         label.textColor = .text
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -54,7 +54,7 @@ public class SettingDetailsView: UIView {
     }()
 
     private lazy var textLabel: Label = {
-        let label = Label(style: .bodyRegular, withAutoLayout: true)
+        let label = Label(style: .body, withAutoLayout: true)
         label.textColor = .text
         label.textAlignment = .center
         label.numberOfLines = 0
