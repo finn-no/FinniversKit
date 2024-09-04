@@ -108,10 +108,6 @@
 		4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6AD1FDB2B110033DBC1 /* ToastView.swift */; };
 		4447F6F81FDB2B110033DBC1 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6B71FDB2B110033DBC1 /* Identifiable.swift */; };
 		4447F6F91FDB2B110033DBC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6B91FDB2B110033DBC1 /* Assets.xcassets */; };
-		4447F6FA1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf */; };
-		4447F6FB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf */; };
-		4447F6FC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf */; };
-		4447F6FD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BE1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf */; };
 		4447F7031FDB2B110033DBC1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* Config.swift */; };
 		44587018213FA344009187BE /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44587014213FA344009187BE /* RegisterView.swift */; };
 		44587019213FA344009187BE /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44587015213FA344009187BE /* RegisterViewModel.swift */; };
@@ -558,10 +554,6 @@
 		4447F6B51FDB2B110033DBC1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4447F6B71FDB2B110033DBC1 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		4447F6B91FDB2B110033DBC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4447F6BB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Bold.ttf"; sourceTree = "<group>"; };
-		4447F6BC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Light.ttf"; sourceTree = "<group>"; };
-		4447F6BD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Medium.ttf"; sourceTree = "<group>"; };
-		4447F6BE1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Regular.ttf"; sourceTree = "<group>"; };
 		4447F6C61FDB2B110033DBC1 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		44587014213FA344009187BE /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		44587015213FA344009187BE /* RegisterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -1504,24 +1496,12 @@
 		4447F6B81FDB2B110033DBC1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				4447F6BA1FDB2B110033DBC1 /* Fonts */,
 				CF3D5EEF215A6D9E006E4D08 /* Sounds */,
 				DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */,
 				4447F6B91FDB2B110033DBC1 /* Assets.xcassets */,
 				44C6CE43209CABFE00929269 /* ImageAsset.swift */,
 			);
 			path = Assets;
-			sourceTree = "<group>";
-		};
-		4447F6BA1FDB2B110033DBC1 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				4447F6BB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf */,
-				4447F6BC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf */,
-				4447F6BD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf */,
-				4447F6BE1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		44587013213FA344009187BE /* Register */ = {
@@ -3093,15 +3073,11 @@
 			files = (
 				CF3D5EF6215A6D9E006E4D08 /* kick.wav in Resources */,
 				DAC0383B2119B7DC00CD49B7 /* Icons.xcassets in Resources */,
-				4447F6FD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf in Resources */,
-				4447F6FB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf in Resources */,
 				CF3D5EF5215A6D9E006E4D08 /* pusefinn.wav in Resources */,
 				4447F6F91FDB2B110033DBC1 /* Assets.xcassets in Resources */,
 				CF4A054421FB2B4E000BB7DA /* Piano.sf2 in Resources */,
 				CF3D5EF4215A6D9E006E4D08 /* hi-hats.wav in Resources */,
 				CF3D5EF7215A6D9E006E4D08 /* snare.wav in Resources */,
-				4447F6FA1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf in Resources */,
-				4447F6FC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
