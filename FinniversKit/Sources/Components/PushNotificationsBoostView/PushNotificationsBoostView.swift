@@ -23,25 +23,31 @@ public struct PushNotificationsBoostView: View {
         VStack(alignment: .leading, spacing: Warp.Spacing.spacing200) {
             Divider()
                 .foregroundColor(.border)
-                .padding([.leading, .trailing], Warp.Spacing.spacing200)
 
-            HStack {
+            HStack(spacing: Warp.Spacing.spacing200) {
                 Image(named: .alarmOff)
+                    .padding(.leading)
 
                 VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
                     Text(model.title)
-                        .font(.finnFont(.captionStrong))
+                        .font(.finnFont(.bodyStrong))
                     Text(model.description)
-                        .font(.finnFont(.body))
+                        .finnFont(.caption)
+                        .foregroundColor(.text)
                 }
 
+                Spacer()
+
                 Image(named: .arrowRight)
+                    .foregroundColor(.text)
+                    .padding(.trailing)
             }
 
             Divider()
                 .foregroundColor(.border)
-                .padding([.leading, .trailing], Warp.Spacing.spacing200)
         }
+        .background(Color.backgroundInfoSubtle)
+        .padding([.top, .bottom])
     }
 }
 
