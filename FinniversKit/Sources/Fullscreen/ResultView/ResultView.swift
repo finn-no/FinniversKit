@@ -12,7 +12,7 @@ public protocol ResultViewDelegate: AnyObject {
 public class ResultView: UIView {
     // MARK: - Private variables
     private lazy var titleLabel: Label = {
-        let label = Label(style: .title3Strong, withAutoLayout: true)
+        let label = Label(style: .title3, withAutoLayout: true)
         label.numberOfLines = 0
         label.textAlignment = .center
         return label

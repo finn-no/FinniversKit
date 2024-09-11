@@ -8,7 +8,6 @@ import Warp
 
 public struct Config {
     public static var bundle: Bundle { Bundle.finniversKit }
-    public static var fontProvider: FontProvider = DefaultFontProvider()
     public static var imageProvider: ImageProvider = DefaultImageProvider()
     public static var isDynamicTypeEnabled: Bool = true
 }

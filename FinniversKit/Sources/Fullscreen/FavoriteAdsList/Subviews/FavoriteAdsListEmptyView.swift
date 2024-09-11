@@ -25,7 +25,7 @@ public class FavoriteAdsListEmptyView: UIView {
         let label = UILabel(withAutoLayout: true)
         label.textAlignment = .center
         label.textColor = .text
-        label.font = .title3Strong
+        label.font = .title3
         label.numberOfLines = 0
         return label
     }()

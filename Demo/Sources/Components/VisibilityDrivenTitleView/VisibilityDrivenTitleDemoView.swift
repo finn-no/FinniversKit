@@ -15,7 +15,7 @@ class VisibilityDrivenTitleDemoView: UIView, Demoable {
     private lazy var titleView: VisibilityDrivenTitleView = {
         let view = VisibilityDrivenTitleView(withAutoLayout: true)
         view.title = "Now you see me"
-        view.font = UIFont.title3Strong
+        view.font = UIFont.title3
         view.setIsVisible(true)
         return view
     }()
