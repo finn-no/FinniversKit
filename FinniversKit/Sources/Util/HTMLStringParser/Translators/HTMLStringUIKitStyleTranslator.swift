@@ -120,10 +120,11 @@ extension HTMLStringUIKitStyleTranslator {
 private extension String {
     func applyStyle(_ style: HTMLStringUIKitStyleTranslator.Style) -> NSAttributedString {
         var attributes: [NSAttributedString.Key: Any] = [:]
+        var fontTraits = UIFontDescriptor.SymbolicTraits()
         if let fontWeight = style.fontWeight {
             switch fontWeight {
             case .bold:
-                attributes[.font] = Warp.Typography.body.boldUIFont(for: style.font?.pointSize)
+                fontTraits = fontTraits.union(.traitBold)
             default:
                 break
             }
@@ -136,6 +137,11 @@ private extension String {
         }
         if let underline = style.underline, underline {
             attributes[.underlineStyle] = NSUnderlineStyle.single
+        }
+        if let font = style.font {
+            let warpFont = fontTraits.contains(.traitBold) ? Warp.Typography.body.boldUIFont(for: font.pointSize) : font
+            let fontDescriptor = warpFont.fontDescriptor.withSymbolicTraits(fontTraits) ?? warpFont.fontDescriptor
+            attributes[.font] = UIFont(descriptor: fontDescriptor, size: font.pointSize)
         }
         return NSAttributedString(string: self, attributes: attributes)
     }
