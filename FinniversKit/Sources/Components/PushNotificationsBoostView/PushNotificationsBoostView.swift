@@ -47,7 +47,6 @@ public struct PushNotificationsBoostView: View {
                 .foregroundColor(.border)
         }
         .background(Color.backgroundInfoSubtle)
-        .padding([.top, .bottom])
     }
 }
 
