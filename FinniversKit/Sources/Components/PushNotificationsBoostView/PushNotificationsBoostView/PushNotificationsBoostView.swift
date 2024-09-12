@@ -1,16 +1,6 @@
 import SwiftUI
 import Warp
 
-public struct PushNotificationsBoostViewModel {
-    let title: String
-    let description: String
-
-    public init(title: String, description: String) {
-        self.title = title
-        self.description = description
-    }
-}
-
 public struct PushNotificationsBoostView: View {
     public static let pushNotificationBoostViewCellIdentifier = "pushNotificationBoostViewCellIdentifier"
     let model: PushNotificationsBoostViewModel
@@ -38,15 +28,11 @@ public struct PushNotificationsBoostView: View {
 
                 Spacer()
 
-                Image(named: .arrowRight)
-                    .foregroundColor(.text)
-                    .padding(.trailing)
             }
 
             Divider()
                 .foregroundColor(.border)
         }
-        .background(Color.backgroundInfoSubtle)
     }
 }
 

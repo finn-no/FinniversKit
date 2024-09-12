@@ -108,6 +108,7 @@ enum ImageAsset: String {
     case infoboxInfo
     case infoboxSuccess
     case infoboxWarning
+    case instantUpdates
     case klimabroletBanner
     case listView
     case magnifyingGlass
@@ -134,6 +135,7 @@ enum ImageAsset: String {
     case playVideo
     case plusMini
     case pusefinnCircle
+    case quickResponse
     case radioButtonSelected
     case radioButtonUnselected
     case rate
@@ -154,6 +156,7 @@ enum ImageAsset: String {
     case speechbubbleSmiley
     case spidLogo
     case starOutline
+    case stayAhead
     case success
     case trustStarOutline
     case trustVerified
@@ -237,6 +240,7 @@ enum ImageAsset: String {
             .infoboxInfo,
             .infoboxSuccess,
             .infoboxWarning,
+            .instantUpdates,
             .klimabroletBanner,
             .listView,
             .magnifyingGlass,
@@ -263,6 +267,7 @@ enum ImageAsset: String {
             .playVideo,
             .plusMini,
             .pusefinnCircle,
+            .quickResponse,
             .radioButtonSelected,
             .radioButtonUnselected,
             .rate,
@@ -283,6 +288,7 @@ enum ImageAsset: String {
             .speechbubbleSmiley,
             .spidLogo,
             .starOutline,
+            .stayAhead,
             .success,
             .trustStarOutline,
             .trustVerified,
