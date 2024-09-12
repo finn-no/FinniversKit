@@ -9,26 +9,63 @@ struct PushNotificationsBoostBottomSheet: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: Warp.Spacing.spacing200) {
+        VStack(alignment: .center, spacing: Warp.Spacing.spacing300) {
+            Text(viewModel.title)
+                .font(.finnFont(.title3Strong))
 
+            ForEach(viewModel.sections, id: \.self) {
+                sectionView($0)
+            }
 
+            ForEach(viewModel.buttons, id: \.self) {
+                buttonView($0)
+            }
+        }
+    }
+}
+
+private extension PushNotificationsBoostBottomSheet {
+    private func sectionView(_ section: PushNotificationsBoostBottomSheetViewModel.Section) -> some View {
+        HStack(spacing: Warp.Spacing.spacing200) {
+            section.icon
+                .padding(.leading)
+
+            VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
+                Text(section.title)
+                    .font(.finnFont(.bodyStrong))
+                Text(section.description)
+                    .finnFont(.caption)
+            }
+        }
+    }
+
+    private func buttonView(_ button: PushNotificationsBoostBottomSheetViewModel.Button) -> some View {
+        switch button.kind {
+        case .allow:
+            return Warp.Button.create(for: .primary, title: button.title) {
+                button.handle(button.kind)
+            }
+        case .notNow:
+            return Warp.Button.create(for: .secondary, title: button.title) {
+                button.handle(button.kind)
+            }
         }
     }
 }
 
 #Preview {
-    let section1 = PushNotificationsBoostBottomSheetViewModel.SectionViewModel(
-        icon: Image(.avatar),
+    let section1 = PushNotificationsBoostBottomSheetViewModel.Section(
+        icon: Image(.instantUpdates),
         title: "Instant Updates",
         description: "Receive alerts the moment a buyer shows interest in your items."
     )
-    let section2 = PushNotificationsBoostBottomSheetViewModel.SectionViewModel(
-        icon: Image(.avatar),
+    let section2 = PushNotificationsBoostBottomSheetViewModel.Section(
+        icon: Image(.quickResponse),
         title: "Quick Responses",
         description: "Respond faster to messages, increasing your chances of making a sale."
     )
-    let section3 = PushNotificationsBoostBottomSheetViewModel.SectionViewModel(
-        icon: Image(.avatar),
+    let section3 = PushNotificationsBoostBottomSheetViewModel.Section(
+        icon: Image(.stayAhead),
         title: "Stay ahead",
         description: "Be the first to know when there’s a new match for your listings or a price drop on items you’re following."
     )
