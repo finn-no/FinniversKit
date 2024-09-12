@@ -5,17 +5,28 @@ public struct PushNotificationsBoostBottomSheetViewModel {
         let icon: Image
         let title: String
         let description: String
+
+        public init(icon: Image, title: String, description: String) {
+            self.icon = icon
+            self.title = title
+            self.description = description
+        }
     }
 
     public struct Button {
-        var action: ((Kind) -> Void)?
+        public enum Kind: Hashable {
+            case allow
+            case notNow
+        }
+
+        public var action: ((Kind) -> Void)?
 
         let kind: Kind
         let title: String
 
-        public enum Kind: Hashable {
-            case allow
-            case notNow
+        public init(kind: Kind, title: String) {
+            self.kind = kind
+            self.title = title
         }
 
         func handle(_ kind: Kind) {
