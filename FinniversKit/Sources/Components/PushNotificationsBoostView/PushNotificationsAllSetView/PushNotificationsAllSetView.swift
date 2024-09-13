@@ -1,7 +1,7 @@
 import SwiftUI
 import Warp
 
-struct PushNotificationsAllSetView: View {
+public struct PushNotificationsAllSetView: View {
     public static let pushNotificationAllSetViewCellIdentifier = "pushNotificationAllSetViewCellIdentifier"
     let model: PushNotificationsAllSetViewModel
 
@@ -15,16 +15,11 @@ struct PushNotificationsAllSetView: View {
                 .foregroundColor(.border)
 
             HStack(spacing: Warp.Spacing.spacing200) {
-                Image(named: .alarmOff)
+                Image(named: .bell)
                     .padding(.leading)
 
-                VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
-                    Text(model.title)
-                        .font(.finnFont(.bodyStrong))
-                    Text(model.description)
-                        .finnFont(.caption)
-                        .foregroundColor(.text)
-                }
+                Text(model.title)
+                    .font(.finnFont(.bodyStrong))
 
                 Spacer()
 
@@ -37,5 +32,8 @@ struct PushNotificationsAllSetView: View {
 }
 
 #Preview {
-    PushNotificationsAllSetView(PushNotificationsAllSetViewModel(icon: Image, title: <#T##String#>))
+    PushNotificationsAllSetView(model: PushNotificationsAllSetViewModel(
+        icon: Image(named: .bell),
+        title: "You’re all set!"
+    ))
 }

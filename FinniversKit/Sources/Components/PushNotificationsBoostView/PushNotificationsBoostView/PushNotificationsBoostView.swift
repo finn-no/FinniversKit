@@ -15,7 +15,7 @@ public struct PushNotificationsBoostView: View {
                 .foregroundColor(.border)
 
             HStack(spacing: Warp.Spacing.spacing200) {
-                Image(named: .alarmOff)
+                Image(named: .bell)
                     .padding(.leading)
 
                 VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
