@@ -308,7 +308,7 @@
 		B669C59E2C94289B003F62A6 /* PushNotificationsBoostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669C5982C94289B003F62A6 /* PushNotificationsBoostView.swift */; };
 		B669C59F2C94289B003F62A6 /* PushNotificationsBoostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669C5992C94289B003F62A6 /* PushNotificationsBoostViewModel.swift */; };
 		B669C5A32C9453CE003F62A6 /* PushNotificationsAllSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669C5A02C9453CE003F62A6 /* PushNotificationsAllSetView.swift */; };
-		B669C5A42C9453CE003F62A6 /* PushNotificationsAllSetViewModel in Resources */ = {isa = PBXBuildFile; fileRef = B669C5A12C9453CE003F62A6 /* PushNotificationsAllSetViewModel */; };
+		B669C5A42C9453CE003F62A6 /* PushNotificationsAllSetViewModel.swift in Resources */ = {isa = PBXBuildFile; fileRef = B669C5A12C9453CE003F62A6 /* PushNotificationsAllSetViewModel.swift */; };
 		B6801C1C2982ECCA004A0F4F /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6801C1B2982ECCA004A0F4F /* SettingsHeaderView.swift */; };
 		CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F08C20615990002AA385 /* TextField+State.swift */; };
 		CF05B7E023325968003A7F1C /* FavoriteFolderActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05B7DF23325968003A7F1C /* FavoriteFolderActionButton.swift */; };
@@ -763,7 +763,7 @@
 		B669C5982C94289B003F62A6 /* PushNotificationsBoostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationsBoostView.swift; sourceTree = "<group>"; };
 		B669C5992C94289B003F62A6 /* PushNotificationsBoostViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationsBoostViewModel.swift; sourceTree = "<group>"; };
 		B669C5A02C9453CE003F62A6 /* PushNotificationsAllSetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationsAllSetView.swift; sourceTree = "<group>"; };
-		B669C5A12C9453CE003F62A6 /* PushNotificationsAllSetViewModel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PushNotificationsAllSetViewModel; sourceTree = "<group>"; };
+		B669C5A12C9453CE003F62A6 /* PushNotificationsAllSetViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationsAllSetViewModel.swift; sourceTree = "<group>"; };
 		B6801C1B2982ECCA004A0F4F /* SettingsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD2F08C20615990002AA385 /* TextField+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+State.swift"; sourceTree = "<group>"; };
@@ -2431,7 +2431,7 @@
 			isa = PBXGroup;
 			children = (
 				B669C5A02C9453CE003F62A6 /* PushNotificationsAllSetView.swift */,
-				B669C5A12C9453CE003F62A6 /* PushNotificationsAllSetViewModel */,
+				B669C5A12C9453CE003F62A6 /* PushNotificationsAllSetViewModel.swift */,
 			);
 			path = PushNotificationsAllSetView;
 			sourceTree = "<group>";
@@ -3146,7 +3146,7 @@
 			files = (
 				CF3D5EF6215A6D9E006E4D08 /* kick.wav in Resources */,
 				DAC0383B2119B7DC00CD49B7 /* Icons.xcassets in Resources */,
-				B669C5A42C9453CE003F62A6 /* PushNotificationsAllSetViewModel in Resources */,
+				B669C5A42C9453CE003F62A6 /* PushNotificationsAllSetViewModel.swift in Resources */,
 				4447F6FD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf in Resources */,
 				4447F6FB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf in Resources */,
 				CF3D5EF5215A6D9E006E4D08 /* pusefinn.wav in Resources */,
