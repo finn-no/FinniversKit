@@ -9,63 +9,93 @@ public struct PushNotificationsBoostBottomSheet: View {
     }
 
     public var body: some View {
-        VStack(alignment: .center, spacing: Warp.Spacing.spacing300) {
+        if let cancelButtonTitle = viewModel.cancelButtonTitle {
+            HStack {
+                Spacer()
+
+                Text(cancelButtonTitle)
+                    .finnFont(.bodyStrong)
+                    .foregroundColor(.textLink)
+                    .padding([.top, .trailing])
+                    .onTapGesture {
+                        viewModel.dismiss?()
+                    }
+            }
+        }
+        VStack(alignment: .center, spacing: Warp.Spacing.spacing200) {
             Text(viewModel.title)
                 .font(.finnFont(.title3Strong))
+                .padding(.top)
 
             ForEach(viewModel.sections, id: \.self) {
                 sectionView($0)
-            }
+                    .padding([.leading, .trailing])
+            }.padding(.top)
 
-            ForEach(viewModel.buttons, id: \.self) {
-                buttonView($0)
-            }
+            VStack {
+                ForEach(viewModel.buttons, id: \.self) {
+                    buttonView($0)
+                        .padding([.leading, .trailing])
+                }
+            }.padding(.top)
         }
     }
 }
 
 private extension PushNotificationsBoostBottomSheet {
     private func sectionView(_ section: PushNotificationsBoostBottomSheetViewModel.Section) -> some View {
-        HStack(spacing: Warp.Spacing.spacing200) {
+        HStack(alignment: .center, spacing: Warp.Spacing.spacing200) {
             section.icon
                 .padding(.leading)
 
             VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
                 Text(section.title)
-                    .font(.finnFont(.bodyStrong))
+                    .finnFont(.captionStrong)
                 Text(section.description)
                     .finnFont(.caption)
             }
+
+            Spacer()
         }
     }
 
     private func buttonView(_ button: PushNotificationsBoostBottomSheetViewModel.Button) -> some View {
         switch button.kind {
         case .allow:
-            return Warp.Button.create(for: .primary, title: button.title, action: {
-                button.handle(button.kind)
-            }, fullWidth: true)
+            return Warp.Button.create(
+                for: .primary,
+                title: button.title,
+                action: {
+                    button.handle(button.kind)
+                },
+                fullWidth: true
+            )
         case .notNow:
-            return Warp.Button.create(for: .secondary, title: button.title, action: {
-                button.handle(button.kind)
-            }, fullWidth: true)
+            return Warp.Button.create(
+                for: .secondary,
+                title: button.title,
+                action: {
+                    button.handle(button.kind)
+                },
+                fullWidth: true
+            )
         }
     }
 }
 
 #Preview {
     let section1 = PushNotificationsBoostBottomSheetViewModel.Section(
-        icon: Image(.alarmOff),
+        icon: Image(named: .alarmOff),
         title: "Instant Updates",
         description: "Receive alerts the moment a buyer shows interest in your items."
     )
     let section2 = PushNotificationsBoostBottomSheetViewModel.Section(
-        icon: Image(.alarmOff),
+        icon: Image(named: .alarmOff),
         title: "Quick Responses",
         description: "Respond faster to messages, increasing your chances of making a sale."
     )
     let section3 = PushNotificationsBoostBottomSheetViewModel.Section(
-        icon: Image(.alarmOff),
+        icon: Image(named: .alarmOff),
         title: "Stay ahead",
         description: "Be the first to know when there’s a new match for your listings or a price drop on items you’re following."
     )
@@ -81,6 +111,7 @@ private extension PushNotificationsBoostBottomSheet {
 
     let viewModel = PushNotificationsBoostBottomSheetViewModel(
         title: "Never miss a beat!",
+        cancelButtonTitle: "Cancel",
         sections: [section1, section2, section3],
         buttons: [allowButton, notNowButton]
     )

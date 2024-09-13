@@ -1,6 +1,20 @@
 import SwiftUI
 
 public struct PushNotificationsBoostBottomSheetViewModel {
+    let dismiss: (() -> Void)?
+    let title: String
+    let cancelButtonTitle: String?
+    let sections: [Section]
+    let buttons: [Button]
+
+    public init(title: String, cancelButtonTitle: String? = nil, dismiss: (() -> Void)? = nil, sections: [Section], buttons: [Button]) {
+        self.dismiss = dismiss
+        self.title = title
+        self.cancelButtonTitle = cancelButtonTitle
+        self.sections = sections
+        self.buttons = buttons
+    }
+
     public struct Section {
         let icon: Image
         let title: String
@@ -34,15 +48,7 @@ public struct PushNotificationsBoostBottomSheetViewModel {
         }
     }
 
-    let title: String
-    let sections: [Section]
-    let buttons: [Button]
 
-    public init(title: String, sections: [Section], buttons: [Button]) {
-        self.title = title
-        self.sections = sections
-        self.buttons = buttons
-    }
 }
 
 extension PushNotificationsBoostBottomSheetViewModel.Section: Hashable {
