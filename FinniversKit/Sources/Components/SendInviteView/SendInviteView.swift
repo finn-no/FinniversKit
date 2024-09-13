@@ -13,7 +13,7 @@ public class SendInviteView: UIView {
     static let profileImageSize: CGFloat = 44
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .title3Strong, withAutoLayout: true)
+        let label = Label(style: .title3, withAutoLayout: true)
         label.textAlignment = .center
         label.numberOfLines = 0
         return label

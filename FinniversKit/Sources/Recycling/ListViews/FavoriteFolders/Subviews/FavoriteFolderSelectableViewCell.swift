@@ -6,7 +6,7 @@ import UIKit
 import Warp
 
 public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
-    private let titleLabelDefaultFont: UIFont = .bodyRegular
+    private let titleLabelDefaultFont: UIFont = .body
     private let titleLabelSelectedFont: UIFont = .bodyStrong
     private var isEditable = true
 

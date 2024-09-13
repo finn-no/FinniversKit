@@ -33,7 +33,7 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
                     title: "Oslomoen",
                     titleStyle: .body,
                     subtitle: "SOLGT! Nydelig selveierleilighet uten utsikt og innlagt vann",
-                    subtitleStyle: .title3Strong,
+                    subtitleStyle: .title3,
                     caption: "Veigatestien 25B, 0101 Oslo",
                     captionStyle: .caption,
                     ribbonViewModel: .sold,

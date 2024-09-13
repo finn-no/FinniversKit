@@ -70,7 +70,7 @@ public class FavoriteSoldView: UIView {
     }()
 
     private lazy var titleLabel: Label = {
-        let style: Label.Style = traitCollection.horizontalSizeClass == .compact ? .title3Strong : .title2
+        let style: Label.Style = traitCollection.horizontalSizeClass == .compact ? .title3 : .title2
         let label = Label(style: style, withAutoLayout: true)
         label.numberOfLines = 0
         return label
