@@ -3,10 +3,10 @@ import Warp
 
 public struct PushNotificationsBoostView: View {
     public static let pushNotificationBoostViewCellIdentifier = "pushNotificationBoostViewCellIdentifier"
-    let model: PushNotificationsBoostViewModel
+    let viewModel: PushNotificationsBoostViewModel
 
-    public init(model: PushNotificationsBoostViewModel) {
-        self.model = model
+    public init(viewModel: PushNotificationsBoostViewModel) {
+        self.viewModel = viewModel
     }
 
     public var body: some View {
@@ -15,13 +15,13 @@ public struct PushNotificationsBoostView: View {
                 .foregroundColor(.border)
 
             HStack(spacing: Warp.Spacing.spacing200) {
-                Image(named: .bell)
+                viewModel.icon
                     .padding(.leading)
 
                 VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
-                    Text(model.title)
+                    Text(viewModel.title)
                         .font(.finnFont(.bodyStrong))
-                    Text(model.description)
+                    Text(viewModel.description)
                         .finnFont(.caption)
                         .foregroundColor(.text)
                 }
@@ -37,7 +37,8 @@ public struct PushNotificationsBoostView: View {
 }
 
 #Preview {
-    PushNotificationsBoostView(model: PushNotificationsBoostViewModel(
+    PushNotificationsBoostView(viewModel: PushNotificationsBoostViewModel(
+        icon: Image(named: .bellOff),
         title: "Boost your chances of a quick sale!",
         description: "Get real-time alerts when buyers message you or express interest in your items."
     ))
