@@ -33,18 +33,14 @@ public struct PushNotificationsBoostBottomSheetViewModel {
             case notNow
         }
 
-        public var action: ((Kind) -> Void)?
-
         let kind: Kind
         let title: String
+        let action: (() -> Void)?
 
-        public init(kind: Kind, title: String) {
+        public init(kind: Kind, title: String, action: (() -> Void)? = nil) {
             self.kind = kind
             self.title = title
-        }
-
-        func handle(_ kind: Kind) {
-            action?(kind)
+            self.action = action
         }
     }
 

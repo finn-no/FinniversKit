@@ -35,7 +35,6 @@ extension UIImage {
 //swiftlint:disable:next blanket_disable_command
 //swiftlint:disable type_body_length
 enum ImageAsset: String {
-    case alarmOff
     case arrowDown
     case arrowDownSmall
     case arrowRight
@@ -45,6 +44,8 @@ enum ImageAsset: String {
     case attachmentMore
     case avatar
     case bankID
+    case bell
+    case bellOff
     case betaPill
     case calendar
     case camera
@@ -164,7 +165,6 @@ enum ImageAsset: String {
 
     static var imageNames: [ImageAsset] {
         return [
-            .alarmOff,
             .arrowDown,
             .arrowDownSmall,
             .arrowRight,
@@ -174,6 +174,8 @@ enum ImageAsset: String {
             .attachmentMore,
             .avatar,
             .bankID,
+            .bell,
+            .bellOff,
             .betaPill,
             .calendar,
             .camera,

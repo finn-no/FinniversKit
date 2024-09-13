@@ -37,8 +37,8 @@ public struct PushNotificationsBoostBottomSheet: View {
                     buttonView($0)
                         .padding([.leading, .trailing])
                 }
-            }.padding(.top)
-        }
+            }.padding([.top, .bottom])
+        }.padding(.top)
     }
 }
 
@@ -51,8 +51,10 @@ private extension PushNotificationsBoostBottomSheet {
             VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
                 Text(section.title)
                     .finnFont(.captionStrong)
+                    .fixedSize(horizontal: false, vertical: true)
                 Text(section.description)
                     .finnFont(.caption)
+                    .fixedSize(horizontal: false, vertical: true)
             }
 
             Spacer()
@@ -66,7 +68,7 @@ private extension PushNotificationsBoostBottomSheet {
                 for: .primary,
                 title: button.title,
                 action: {
-                    button.handle(button.kind)
+                    button.action?()
                 },
                 fullWidth: true
             )
@@ -75,7 +77,7 @@ private extension PushNotificationsBoostBottomSheet {
                 for: .secondary,
                 title: button.title,
                 action: {
-                    button.handle(button.kind)
+                    button.action?()
                 },
                 fullWidth: true
             )
@@ -85,17 +87,17 @@ private extension PushNotificationsBoostBottomSheet {
 
 #Preview {
     let section1 = PushNotificationsBoostBottomSheetViewModel.Section(
-        icon: Image(named: .alarmOff),
+        icon: Image(named: .bell),
         title: "Instant Updates",
         description: "Receive alerts the moment a buyer shows interest in your items."
     )
     let section2 = PushNotificationsBoostBottomSheetViewModel.Section(
-        icon: Image(named: .alarmOff),
+        icon: Image(named: .bell),
         title: "Quick Responses",
         description: "Respond faster to messages, increasing your chances of making a sale."
     )
     let section3 = PushNotificationsBoostBottomSheetViewModel.Section(
-        icon: Image(named: .alarmOff),
+        icon: Image(named: .bell),
         title: "Stay ahead",
         description: "Be the first to know when there’s a new match for your listings or a price drop on items you’re following."
     )
