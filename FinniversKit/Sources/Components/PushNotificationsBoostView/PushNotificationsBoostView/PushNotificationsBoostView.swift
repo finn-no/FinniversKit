@@ -21,9 +21,11 @@ public struct PushNotificationsBoostView: View {
                 VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
                     Text(viewModel.title)
                         .font(.finnFont(.bodyStrong))
-                    Text(viewModel.description)
-                        .finnFont(.caption)
-                        .foregroundColor(.text)
+                    if let description = viewModel.description {
+                        Text(description)
+                            .finnFont(.caption)
+                            .foregroundColor(.text)
+                    }
                 }
 
                 Spacer()
@@ -41,5 +43,12 @@ public struct PushNotificationsBoostView: View {
         icon: Image(named: .bellOff),
         title: "Boost your chances of a quick sale!",
         description: "Get real-time alerts when buyers message you or express interest in your items."
+    ))
+}
+
+#Preview {
+    PushNotificationsBoostView(viewModel: PushNotificationsBoostViewModel(
+        icon: Image(named: .bell),
+        title: "You’re all set!"
     ))
 }

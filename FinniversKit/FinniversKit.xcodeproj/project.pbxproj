@@ -307,8 +307,6 @@
 		B669C59D2C94289B003F62A6 /* PushNotificationsBoostBottomSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669C5962C94289B003F62A6 /* PushNotificationsBoostBottomSheetViewModel.swift */; };
 		B669C59E2C94289B003F62A6 /* PushNotificationsBoostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669C5982C94289B003F62A6 /* PushNotificationsBoostView.swift */; };
 		B669C59F2C94289B003F62A6 /* PushNotificationsBoostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669C5992C94289B003F62A6 /* PushNotificationsBoostViewModel.swift */; };
-		B669C5A32C9453CE003F62A6 /* PushNotificationsAllSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669C5A02C9453CE003F62A6 /* PushNotificationsAllSetView.swift */; };
-		B669C5A62C94556F003F62A6 /* PushNotificationsAllSetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B669C5A52C94556F003F62A6 /* PushNotificationsAllSetViewModel.swift */; };
 		B6801C1C2982ECCA004A0F4F /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6801C1B2982ECCA004A0F4F /* SettingsHeaderView.swift */; };
 		CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F08C20615990002AA385 /* TextField+State.swift */; };
 		CF05B7E023325968003A7F1C /* FavoriteFolderActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05B7DF23325968003A7F1C /* FavoriteFolderActionButton.swift */; };
@@ -762,8 +760,6 @@
 		B669C5962C94289B003F62A6 /* PushNotificationsBoostBottomSheetViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationsBoostBottomSheetViewModel.swift; sourceTree = "<group>"; };
 		B669C5982C94289B003F62A6 /* PushNotificationsBoostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationsBoostView.swift; sourceTree = "<group>"; };
 		B669C5992C94289B003F62A6 /* PushNotificationsBoostViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationsBoostViewModel.swift; sourceTree = "<group>"; };
-		B669C5A02C9453CE003F62A6 /* PushNotificationsAllSetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationsAllSetView.swift; sourceTree = "<group>"; };
-		B669C5A52C94556F003F62A6 /* PushNotificationsAllSetViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationsAllSetViewModel.swift; sourceTree = "<group>"; };
 		B6801C1B2982ECCA004A0F4F /* SettingsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD2F08C20615990002AA385 /* TextField+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+State.swift"; sourceTree = "<group>"; };
@@ -2420,20 +2416,10 @@
 		B669C59B2C94289B003F62A6 /* PushNotificationsBoostView */ = {
 			isa = PBXGroup;
 			children = (
-				B669C5A22C9453CE003F62A6 /* PushNotificationsAllSetView */,
 				B669C5972C94289B003F62A6 /* PushNotificationsBoostBottomSheet */,
 				B669C59A2C94289B003F62A6 /* PushNotificationsBoostView */,
 			);
 			path = PushNotificationsBoostView;
-			sourceTree = "<group>";
-		};
-		B669C5A22C9453CE003F62A6 /* PushNotificationsAllSetView */ = {
-			isa = PBXGroup;
-			children = (
-				B669C5A02C9453CE003F62A6 /* PushNotificationsAllSetView.swift */,
-				B669C5A52C94556F003F62A6 /* PushNotificationsAllSetViewModel.swift */,
-			);
-			path = PushNotificationsAllSetView;
 			sourceTree = "<group>";
 		};
 		CF0F6B902360682100CA62FD /* Priming */ = {
@@ -3419,7 +3405,6 @@
 				8908E85322C0D79600ED671C /* MessageFormBottomSheet.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				8908E84922C0C3C600ED671C /* MessageFormViewController.swift in Sources */,
-				B669C5A32C9453CE003F62A6 /* PushNotificationsAllSetView.swift in Sources */,
 				44A5579E22E71FEB001667AE /* BasicTableViewCellViewModel.swift in Sources */,
 				DA5A858C24617DF000AC0DFE /* ImageExtensions.swift in Sources */,
 				DAB7FAA821B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift in Sources */,
@@ -3516,7 +3501,6 @@
 				9BEB287D231D486100D28BAD /* LoanValuesView.swift in Sources */,
 				9BB680322462F7AC001ADACF /* View+Extensions.swift in Sources */,
 				DAE6A55C21CA524B00837BFA /* CGPoint.swift in Sources */,
-				B669C5A62C94556F003F62A6 /* PushNotificationsAllSetViewModel.swift in Sources */,
 				2714D6932B69258600EF82E1 /* SelectableImageView.swift in Sources */,
 				43BACE6C21117D530052114C /* BuyerPickerViewModel.swift in Sources */,
 				E65085D1292BBF1D00A43B07 /* SwiftUICheckBox.swift in Sources */,
