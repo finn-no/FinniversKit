@@ -77,7 +77,7 @@ extension PromotionDemoView: RemoteImageViewDataSource {
     func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {
     }
 
-    private func loadImage(imagePath: String, completion: @escaping((UIImage?) -> Void)) {
+    private func loadImage(imagePath: String, completion: @escaping ((UIImage?) -> Void)) {
         guard let url = URL(string: imagePath) else {
             completion(nil)
             return
