@@ -64,6 +64,7 @@ public final class FavoriteFolderActionView: UIView {
             description: viewModel.shareLinkButtonDescription
         )
         view.delegate = self
+        view.isHidden = !isShared
         return view
     }()
 
