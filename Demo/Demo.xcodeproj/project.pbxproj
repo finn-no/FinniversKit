@@ -175,7 +175,6 @@
 		91D637DA2488F70A0066D4D0 /* ConfettiDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D637D92488F70A0066D4D0 /* ConfettiDemoView.swift */; };
 		9BA6C4A224336B9A009D417B /* DemoWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */; };
 		9BBC904024FD252B0003D2D8 /* UITraitCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC903F24FD252B0003D2D8 /* UITraitCollection+Extensions.swift */; };
-		9F84F96E292B6DC900631443 /* BrazePromotionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F84F96D292B6DC900631443 /* BrazePromotionDemoView.swift */; };
 		B26B58342B4BFEFB000E0245 /* InfoboxSwiftUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26B58332B4BFEFB000E0245 /* InfoboxSwiftUIViewController.swift */; };
 		B2B8F16B2B483F2F0090573E /* NMPInfoboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B8F16A2B483F2F0090573E /* NMPInfoboxViewController.swift */; };
 		D75E14D727371692008EB126 /* FrontPageSavedSearchFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E14D627371692008EB126 /* FrontPageSavedSearchFactory.swift */; };
@@ -385,7 +384,6 @@
 		91D637D92488F70A0066D4D0 /* ConfettiDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiDemoView.swift; sourceTree = "<group>"; };
 		9BA6C4A124336B9A009D417B /* DemoWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoWrapperView.swift; sourceTree = "<group>"; };
 		9BBC903F24FD252B0003D2D8 /* UITraitCollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITraitCollection+Extensions.swift"; sourceTree = "<group>"; };
-		9F84F96D292B6DC900631443 /* BrazePromotionDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrazePromotionDemoView.swift; sourceTree = "<group>"; };
 		B26B58332B4BFEFB000E0245 /* InfoboxSwiftUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxSwiftUIViewController.swift; sourceTree = "<group>"; };
 		B2B8F16A2B483F2F0090573E /* NMPInfoboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMPInfoboxViewController.swift; sourceTree = "<group>"; };
 		D75E14D627371692008EB126 /* FrontPageSavedSearchFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageSavedSearchFactory.swift; sourceTree = "<group>"; };
@@ -731,7 +729,6 @@
 				5B9595353186CF123865900D /* AddressComponentView */,
 				4D37A9B528571CF300F9460D /* BadgeView */,
 				46E77339242CEF09008A5E93 /* BottomSheet */,
-				9F84F96C292B6DB300631443 /* BrazePromotionView */,
 				46E7734E242CEF09008A5E93 /* Broadcast */,
 				46E7731F242CEF09008A5E93 /* Button */,
 				46E77306242CEF09008A5E93 /* Callout */,
@@ -1602,14 +1599,6 @@
 			path = SwiftUI;
 			sourceTree = "<group>";
 		};
-		9F84F96C292B6DB300631443 /* BrazePromotionView */ = {
-			isa = PBXGroup;
-			children = (
-				9F84F96D292B6DC900631443 /* BrazePromotionDemoView.swift */,
-			);
-			path = BrazePromotionView;
-			sourceTree = "<group>";
-		};
 		B26B58322B4BFE8A000E0245 /* NMPInfoboxView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1895,7 +1884,6 @@
 				46E773FF242CEF0A008A5E93 /* SelfDeclarationDemoView.swift in Sources */,
 				496F8C172473E7EA00AE0735 /* FavoriteSoldDemoView.swift in Sources */,
 				46E77467242CEF0A008A5E93 /* SavedSearchesListViewDemoViewHelpers.swift in Sources */,
-				9F84F96E292B6DC900631443 /* BrazePromotionDemoView.swift in Sources */,
 				46E77438242CEF0A008A5E93 /* BroadcastDemoView.swift in Sources */,
 				714B9357253736AD00801C99 /* SendInviteDemoView.swift in Sources */,
 				B2B8F16B2B483F2F0090573E /* NMPInfoboxViewController.swift in Sources */,

@@ -7,7 +7,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case badgeView
     case bannerTransparencyView
     case bottomSheetMechanics
-    case brazePromotionView
     case broadcast
     case button
     case callout
@@ -248,8 +247,6 @@ enum ComponentDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return JobApplyBoxDemoView()
         case .jobKeyInfo:
             return JobKeyInfoDemoView()
-        case .brazePromotionView:
-            return BrazePromotionDemoView()
         case .mapAddressButton:
             return MapAddressButtonDemoView()
         case .hyperlinkTextView:
