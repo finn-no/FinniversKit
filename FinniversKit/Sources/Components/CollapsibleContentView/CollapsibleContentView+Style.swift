@@ -38,7 +38,7 @@ extension CollapsibleContentView {
             backgroundColor: .background,
             cornerRadius: .zero,
             contentInsets: .init(vertical: Warp.Spacing.spacing100, horizontal: 0),
-            titleStyle: .title3Strong,
+            titleStyle: .title3,
             headerContentSpacing: 0
         )
 
@@ -46,7 +46,7 @@ extension CollapsibleContentView {
             backgroundColor: .backgroundInfoSubtle,
             cornerRadius: 8,
             contentInsets: .init(all: Warp.Spacing.spacing100),
-            titleStyle: .title3Strong,
+            titleStyle: .title3,
             headerContentSpacing: 0
         )
 

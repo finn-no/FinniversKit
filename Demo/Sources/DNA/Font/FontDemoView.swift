@@ -34,7 +34,6 @@ class FontDemoView: UIView, Demoable {
             FontItem(font: .detailStrong, title: "detailStrong"),
             FontItem(font: .captionStrong, title: "captionStrong"),
             FontItem(font: .caption, title: "caption"),
-            FontItem(font: .bodyRegular, title: "bodyRegular"),
             FontItem(font: .body, title: "body"),
             FontItem(font: .detail, title: "detail")
         ]

@@ -236,10 +236,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.promotionView)
     }
 
-    func testBrazePromotionView() {
-        snapshot(.brazePromotionView)
-    }
-
     func testFrontPageSavedSearchesView() {
         snapshot(.frontPageSavedSearchesView)
     }

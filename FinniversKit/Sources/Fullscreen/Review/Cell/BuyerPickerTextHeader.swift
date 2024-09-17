@@ -8,7 +8,7 @@ import Warp
 
 class BuyerPickerTextHeader: UITableViewHeaderFooterView {
     lazy var title: Label = {
-        let label = Label(style: .title3Strong)
+        let label = Label(style: .title3)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

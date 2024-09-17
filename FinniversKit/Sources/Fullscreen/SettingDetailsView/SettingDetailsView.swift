@@ -46,7 +46,7 @@ public class SettingDetailsView: UIView {
     )
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .title3Strong, withAutoLayout: true)
+        let label = Label(style: .title3, withAutoLayout: true)
         label.textColor = .text
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -54,7 +54,7 @@ public class SettingDetailsView: UIView {
     }()
 
     private lazy var textLabel: Label = {
-        let label = Label(style: .bodyRegular, withAutoLayout: true)
+        let label = Label(style: .body, withAutoLayout: true)
         label.textColor = .text
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -127,7 +127,7 @@ public extension SettingDetailsView {
             duration: animated ? 0.2 : 0,
             options: .transitionCrossDissolve,
             animations: {
-                self.textLabel.attributedText = model.attributedText(for: self.state).replacingFont(with: .bodyRegular)
+                self.textLabel.attributedText = model.attributedText(for: self.state).replacingFont(with: .body)
                 self.textLabel.textAlignment = model.textAlignment(for: self.state)
             }
         )
@@ -217,7 +217,7 @@ private extension NSAttributedString {
     func replacingFont(with font: UIFont) -> NSAttributedString {
         let range = NSRange(location: 0, length: length)
         let newText = NSMutableAttributedString(attributedString: self)
-        newText.addAttribute(.font, value: UIFont.bodyRegular, range: range)
+        newText.addAttribute(.font, value: UIFont.body, range: range)
         return newText
     }
 }

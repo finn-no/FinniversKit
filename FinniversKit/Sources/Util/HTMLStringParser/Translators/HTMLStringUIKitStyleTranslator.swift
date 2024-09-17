@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import Warp
 
 public final class HTMLStringUIKitStyleTranslator: HTMLStringParserTranslator {
     public typealias StyleMapper = (_ elementName: String, _ attributes: [HTMLToken.TagAttribute]) -> Style?
@@ -138,7 +139,8 @@ private extension String {
             attributes[.underlineStyle] = NSUnderlineStyle.single
         }
         if let font = style.font {
-            let fontDescriptor = font.fontDescriptor.withSymbolicTraits(fontTraits) ?? font.fontDescriptor
+            let warpFont = fontTraits.contains(.traitBold) ? Warp.Typography.body.boldUIFont(for: font.pointSize) : font
+            let fontDescriptor = warpFont.fontDescriptor.withSymbolicTraits(fontTraits) ?? warpFont.fontDescriptor
             attributes[.font] = UIFont(descriptor: fontDescriptor, size: font.pointSize)
         }
         return NSAttributedString(string: self, attributes: attributes)

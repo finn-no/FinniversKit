@@ -5,7 +5,7 @@ public class FrontPageHeaderView: UICollectionReusableView {
     public typealias ButtonAction = (() -> Void)
 
     private lazy var titleLabel: UILabel = {
-        let label = Label(style: .title3Strong)
+        let label = Label(style: .title3)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
         label.numberOfLines = 1

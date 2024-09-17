@@ -20,7 +20,7 @@ public final class AddressCardView: UIView {
 
     private lazy var addressStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing50, withAutoLayout: true)
     private lazy var contentStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing300, withAutoLayout: true)
-    private lazy var titleLabel = Label(style: .title3Strong, withAutoLayout: true)
+    private lazy var titleLabel = Label(style: .title3, withAutoLayout: true)
     private lazy var subtitleLabel = Label(style: .bodyStrong, withAutoLayout: true)
 
     private lazy var topStackView: UIStackView = {

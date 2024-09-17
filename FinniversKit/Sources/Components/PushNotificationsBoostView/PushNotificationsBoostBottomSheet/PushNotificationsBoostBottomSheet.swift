@@ -24,8 +24,8 @@ public struct PushNotificationsBoostBottomSheet: View {
         }
         VStack(alignment: .center, spacing: Warp.Spacing.spacing200) {
             Text(viewModel.title)
-                .font(.finnFont(.title3Strong))
-                .padding(.top)
+                .finnFont(.title3)
+                 .padding(.top)
 
             ForEach(viewModel.sections, id: \.self) {
                 sectionView($0)

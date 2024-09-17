@@ -45,7 +45,7 @@ public class BetaFeatureView: UIView {
 
     private lazy var iconImageView = UIImageView(withAutoLayout: true)
     private lazy var titleLabel: Label = {
-        let label = Label(style: .title3Strong, withAutoLayout: true)
+        let label = Label(style: .title3, withAutoLayout: true)
         label.textAlignment = .center
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label

@@ -3,118 +3,89 @@
 //
 
 import UIKit
+import Warp
 
-@objc public extension UIFont {
+@objc extension UIFont {
+    /// Font Medium/Bold with a size of 34 scaled for UIFontTextStyle.largeTitle
+    ///
     /// ## Usage:
     /// - It should only be used one T1 and it should be the first text element that catches the users attention.
     /// - It shall give the user an overview of which page he or she is located.
-    class var title1: UIFont {
-        Config.fontProvider.title1
+    /// - This always has the weight Medium.
+    public static var title1: UIFont {
+        Warp.Typography.title1.uiFont
     }
 
+    /// Font Medium/Bold with a size of 28 scaled for UIFontTextStyle.title1
+    ///
     /// ## Usage:
     /// - A page can contain multiple T2 to divide content into several sections.
     /// - There should be a lot of space between sections to create a clear distinction on the content.
-    class var title2: UIFont {
-        Config.fontProvider.title2
+    /// - This always has the weight Light.
+    public static var title2: UIFont {
+        Warp.Typography.title2.uiFont
     }
 
-    /// ## Usage:
-    /// - A page can contain multiple T2 to divide content into several sections.
-    /// - There should be a lot of space between sections to create a clear distinction on the content.
-    class var title2Strong: UIFont {
-        Config.fontProvider.title2Strong
-    }
-
+    /// Font Medium/Bold with a size of 22 scaled for UIFontTextStyle.title2
+    ///
     /// ## Usage:
     /// - If a T2 have more sublevels, you can use T3.
-    class var title3Strong: UIFont {
-        Config.fontProvider.title3Strong
+    /// - This always has the weight Light.
+    public static var title3: UIFont {
+        Warp.Typography.title3.uiFont
     }
 
+    /// Font Medium/Bold with a size of 16 scaled for UIFontTextStyle.callout
+    ///
     /// ## Usage:
-    /// - If a T2 have more sublevels, you can use T3.
-    class var title3: UIFont {
-        Config.fontProvider.title3
+    /// - This have the same size as the body text, but is always bolded (Medium) to differenciate them.
+    public static var bodyStrong: UIFont {
+        Warp.Typography.title4.uiFont
     }
 
+    /// Font Light/Regular with a size of 16 scaled for UIFontTextStyle.body
+    ///
     /// ## Usage:
-    /// - This have the same size as the body text, but is always bolded to differenciate them.
-    class var bodyStrong: UIFont {
-        Config.fontProvider.bodyStrong
+    /// - Regular text below titles is called body text and is weighted Medium.
+    public static var body: UIFont {
+        Warp.Typography.body.uiFont
     }
 
-    /// ## Usage:
-    /// - This have the same size as the body text, but is always semibolded (Regular) to differenciate them.
-    class var bodyRegular: UIFont {
-        Config.fontProvider.bodyRegular
-    }
-
-    /// ## Usage:
-    /// - Regular text below titles is called body text
-    class var body: UIFont {
-        Config.fontProvider.body
-    }
-
+    /// Font Light/Regular with a size of 14 scaled for UIFontTextStyle.footnote
+    ///
     /// ## Usage:
     /// - Used for short amount of text if neither the Body or Detail is appropriate.
-    /// - This is slightly smaller than body text.
-    class var caption: UIFont {
-        Config.fontProvider.caption
+    /// - This is slightly smaller than body text. Weighted Light.
+    public static var caption: UIFont {
+        Warp.Typography.caption.uiFont
     }
 
+    /// Font Medium/Bold with a size of 14 scaled for UIFontTextStyle.footnote
+    ///
     /// ## Usage:
     /// - Used for short amount of text if neither the Body or Detail is appropriate.
     /// - Bold version of Caption
-    /// - This is slightly smaller than body text.
-    class var captionStrong: UIFont {
-        Config.fontProvider.captionStrong
+    /// - This is slightly smaller than body text. Weighted Medium.
+    public static var captionStrong: UIFont {
+        Warp.Typography.captionStrong.uiFont
     }
 
+    /// Font Medium/Bold with a size of 12 scaled for UIFontTextStyle.caption1
+    ///
     /// ## Usage:
     /// - Used for small, bold headlines.
-    class var detailStrong: UIFont {
-        Config.fontProvider.detailStrong
+    public static var detailStrong: UIFont {
+        Warp.Typography.detailStrong.uiFont
     }
 
+    /// Font Light/Regular with a size of 12 scaled for UIFontTextStyle.caption1
+    ///
     /// ## Usage:
     /// - Less important information can be shown as detail text, not for long sentences.
-    /// - This is slightly smaller than body text.
-    class var detail: UIFont {
-        Config.fontProvider.detail
-    }
-
-    func scaledFont(forTextStyle textStyle: UIFont.TextStyle) -> UIFont {
-        if Config.isDynamicTypeEnabled {
-            let fontMetrics = UIFontMetrics(forTextStyle: textStyle)
-            return fontMetrics.scaledFont(for: self)
-        } else {
-            return self
-        }
-    }
-}
-
-public extension UIFont {
-    class func font(ofSize size: CGFloat, weight: FontWeight, textStyle: UIFont.TextStyle) -> UIFont {
-        Config.fontProvider.font(ofSize: size, weight: weight).scaledFont(forTextStyle: textStyle)
-    }
-}
-
-// MARK: - Deprecated font names
-
-extension UIFont {
-    @available(*, deprecated, message: "Use bodyStrong instead.")
-    public class var title4: UIFont {
-        return bodyStrong
-    }
-
-    @available(*, deprecated, message: "Use detailStrong instead.")
-    public class var title5: UIFont {
-        return detailStrong
-    }
-
-    @available(*, deprecated, message: "Use captionStrong instead.")
-    public class var captionHeavy: UIFont {
-        return captionStrong
+    /// - This is slightly smaller than body text. Weighted Regular.
+    /// - The color Stone is prefered in most cases with white background.
+    /// - For colored background such as ribbons, the color should be Licorice.
+    public static var detail: UIFont {
+        Warp.Typography.detail.uiFont
     }
 }
