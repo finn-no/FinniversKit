@@ -19,9 +19,11 @@ pod "FinniversKit", git: "https://github.com/finn-no/FinniversKit"
 ```
 
 ### Swift Package Manager
+To integrate using Apple's Swift package manager, add the following as a dependency to your Package.swift:
 
-You can also add FinniversKit using SPM.
-
+```swift
+.package(name: "FINNBottomSheet", url: "https://github.com/finn-no/FinniversKit.git", .upToNextMajor(from: "148.0.0"))
+```
 
 ### Carthage
 
