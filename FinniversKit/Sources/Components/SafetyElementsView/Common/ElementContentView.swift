@@ -31,6 +31,13 @@ public extension SafetyElementsView {
             return label
         }()
 
+        private lazy var emphasizedContentLabel: Label = {
+            let label = Label(style: .bodyStrong, withAutoLayout: true)
+            label.numberOfLines = 0
+            label.lineBreakMode = .byWordWrapping
+            return label
+        }()
+
         private lazy var topLinkButton: Button = makeExternalLinkButton(onTap: #selector(didTapOnTopLink))
         private lazy var bottomLinkButton: Button = makeExternalLinkButton(onTap: #selector(didTapOnBottomLink))
 
@@ -42,17 +49,30 @@ public extension SafetyElementsView {
         public required init?(coder aDecoder: NSCoder) { fatalError() }
 
         public func configure(with viewModel: SafetyElementViewModel) {
-            configure(with: viewModel.body, topLink: viewModel.topLink, bottomLink: viewModel.bottomLink)
+            configure(
+                with: viewModel.body,
+                emphasizedContent: viewModel.emphasizedBody,
+                topLink: viewModel.topLink,
+                bottomLink: viewModel.bottomLink
+            )
         }
 
         public func configure(
             with content: String,
+            emphasizedContent: String? = nil,
             topLink: LinkButtonViewModel? = nil,
             bottomLink: LinkButtonViewModel? = nil
         ) {
             self.topLink = topLink
             self.bottomLink = bottomLink
             contentLabel.text = content
+
+            if let emphasizedContent {
+                emphasizedContentLabel.text = emphasizedContent
+                emphasizedContentLabel.isHidden = false
+            } else {
+                emphasizedContentLabel.isHidden = true
+            }
 
             if let topLink = topLink {
                 topLinkButton.setTitle(topLink.buttonTitle, for: .normal)
