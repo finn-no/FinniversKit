@@ -1,6 +1,3 @@
-//
-//  Copyright © 2020 FINN AS. All rights reserved.
-//
 import Warp
 
 public protocol SafetyElementContentViewDelegate: AnyObject {
@@ -9,10 +6,18 @@ public protocol SafetyElementContentViewDelegate: AnyObject {
 
 public extension SafetyElementsView {
     class ElementContentView: UIView {
+
+        // MARK: - Public properties
+
         public weak var delegate: SafetyElementContentViewDelegate?
 
+        // MARK: - Private properties
+
+        private let linkButtonStyle = Button.Style.link.overrideStyle(normalFont: .body)
         private var topLink: LinkButtonViewModel?
         private var bottomLink: LinkButtonViewModel?
+        private lazy var topLinkButton: Button = makeExternalLinkButton(onTap: #selector(didTapOnTopLink))
+        private lazy var bottomLinkButton: Button = makeExternalLinkButton(onTap: #selector(didTapOnBottomLink))
 
         private lazy var contentStackView: UIStackView = {
             let stackView = UIStackView(withAutoLayout: true)
@@ -21,8 +26,6 @@ public extension SafetyElementsView {
             stackView.spacing = Warp.Spacing.spacing100
             return stackView
         }()
-
-        private let linkButtonStyle = Button.Style.link.overrideStyle(normalFont: .body)
 
         private lazy var contentLabel: Label = {
             let label = Label(style: .body, withAutoLayout: true)
@@ -38,8 +41,7 @@ public extension SafetyElementsView {
             return label
         }()
 
-        private lazy var topLinkButton: Button = makeExternalLinkButton(onTap: #selector(didTapOnTopLink))
-        private lazy var bottomLinkButton: Button = makeExternalLinkButton(onTap: #selector(didTapOnBottomLink))
+        // MARK: - Init
 
         public override init(frame: CGRect) {
             super.init(frame: frame)
@@ -47,6 +49,8 @@ public extension SafetyElementsView {
         }
 
         public required init?(coder aDecoder: NSCoder) { fatalError() }
+
+        // MARK: - Public methods
 
         public func configure(with viewModel: SafetyElementViewModel) {
             configure(
@@ -74,14 +78,14 @@ public extension SafetyElementsView {
                 emphasizedContentLabel.isHidden = true
             }
 
-            if let topLink = topLink {
+            if let topLink {
                 topLinkButton.setTitle(topLink.buttonTitle, for: .normal)
                 topLinkButton.isHidden = false
             } else {
                 topLinkButton.isHidden = true
             }
 
-            if let bottomLink = bottomLink {
+            if let bottomLink {
                 bottomLinkButton.setTitle(bottomLink.buttonTitle, for: .normal)
                 bottomLinkButton.isHidden = false
             } else {
@@ -89,14 +93,21 @@ public extension SafetyElementsView {
             }
         }
 
+        // MARK: - Setup
+
         private func setup() {
             addSubview(contentStackView)
 
-            contentStackView.addArrangedSubview(topLinkButton)
-            contentStackView.addArrangedSubview(contentLabel)
-            contentStackView.addArrangedSubview(bottomLinkButton)
+            contentStackView.addArrangedSubviews([
+                topLinkButton,
+                contentLabel,
+                emphasizedContentLabel,
+                bottomLinkButton,
+            ])
             contentStackView.fillInSuperviewLayoutMargins()
         }
+
+        // MARK: - Private methods
 
         @objc private func didTapOnBottomLink() {
             guard let bottomLink = bottomLink else { return }
