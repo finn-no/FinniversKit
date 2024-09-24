@@ -49,7 +49,14 @@ class SafetyElementsDemoView: UIView {
         SafetyElementViewModel(
             title: "Bytterett",
             icon: UIImage(named: .warranty),
-            body: "Denne bilen selges med bytterett fra forhandler. Det betyr at du som kjøper har mulighet til å bytte den mot en annen bil, i henhold til forhandlerens vilkår. Dette kan du gjøre dersom bilen du har kjøpt av en eller annen grunn ikke tilfredsstiller dine forventninger eller behov. Produktet tilbys for at du som kjøper skal føle deg helt trygg på at du ender opp med riktig bil for ditt behov.",
+            body: "Denne bilen selges med bytterett fra forhandler. Det betyr at du som kjøper har mulighet til å bytte den mot en annen bil, i henhold til forhandlerens vilkår.",
+            bottomLink: nil
+        ),
+        SafetyElementViewModel(
+            title: "Bytterett",
+            icon: UIImage(named: .warranty),
+            body: "Denne bilen selges med bytterett fra forhandler.",
+            emphasizedBody: "Denne bilen selges med bytterett fra forhandler.",
             bottomLink: nil
         ),
         SafetyElementViewModel(
