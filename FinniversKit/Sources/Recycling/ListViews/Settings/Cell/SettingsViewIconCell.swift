@@ -10,7 +10,7 @@ struct SettingsViewIconCell: View {
     var body: some View {
         HStack(alignment: .center) {
             Text(title)
-                .finnFont(.body)
+                .font(from: .body)
                 .foregroundColor(.text)
                 .padding([.leading])
 

@@ -13,7 +13,7 @@ public class NumberedListView: UIView {
 
     // MARK: - Private properties
 
-    private let numberLabelStyle = Label.Style.bodyStrong
+    private let numberLabelStyle = Warp.Typography.bodyStrong
     private lazy var contentStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, withAutoLayout: true)
 
     // MARK: - Init
@@ -64,7 +64,7 @@ public class NumberedListView: UIView {
         var largestLabel = CGFloat.zero
 
         for number in (1...itemCount) {
-            let labelWidth = "\(number)".width(withConstrainedHeight: .infinity, font: numberLabelStyle.font)
+            let labelWidth = "\(number)".width(withConstrainedHeight: .infinity, font: numberLabelStyle.uiFont)
             if labelWidth > largestLabel {
                 largestLabel = labelWidth
             }
