@@ -9,19 +9,6 @@ public struct PushNotificationsBoostBottomSheet: View {
     }
 
     public var body: some View {
-        if let cancelButtonTitle = viewModel.cancelButtonTitle {
-            HStack {
-                Spacer()
-
-                Text(cancelButtonTitle)
-                    .finnFont(.bodyStrong)
-                    .foregroundColor(.textLink)
-                    .padding([.top, .trailing])
-                    .onTapGesture {
-                        viewModel.dismiss?()
-                    }
-            }
-        }
         VStack(alignment: .center, spacing: Warp.Spacing.spacing200) {
             Text(viewModel.title)
                 .finnFont(.title3)
@@ -38,7 +25,7 @@ public struct PushNotificationsBoostBottomSheet: View {
                         .padding([.leading, .trailing])
                 }
             }.padding([.top, .bottom])
-        }.padding(.top)
+        }
     }
 }
 
@@ -113,7 +100,6 @@ private extension PushNotificationsBoostBottomSheet {
 
     let viewModel = PushNotificationsBoostBottomSheetViewModel(
         title: "Never miss a beat!",
-        cancelButtonTitle: "Cancel",
         sections: [section1, section2, section3],
         buttons: [allowButton, notNowButton]
     )

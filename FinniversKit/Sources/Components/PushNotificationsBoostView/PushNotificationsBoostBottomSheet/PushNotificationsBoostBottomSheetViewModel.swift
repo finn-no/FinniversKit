@@ -1,16 +1,12 @@
 import SwiftUI
 
 public struct PushNotificationsBoostBottomSheetViewModel {
-    let dismiss: (() -> Void)?
     let title: String
-    let cancelButtonTitle: String?
     let sections: [Section]
     let buttons: [Button]
 
-    public init(title: String, cancelButtonTitle: String? = nil, dismiss: (() -> Void)? = nil, sections: [Section], buttons: [Button]) {
-        self.dismiss = dismiss
+    public init(title: String, sections: [Section], buttons: [Button]) {
         self.title = title
-        self.cancelButtonTitle = cancelButtonTitle
         self.sections = sections
         self.buttons = buttons
     }
