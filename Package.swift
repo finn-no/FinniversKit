@@ -12,8 +12,8 @@ let package = Package(
     ],
     dependencies: [
         //        .package(url: "https://github.com/warp-ds/warp-ios.git", "0.0.27"..."999.0.0")
-        //        .package(url: "https://github.com/warp-ds/warp-ios.git", branch: "swift-concurrency")
-        .package(url: "https://github.com/warp-ds/warp-ios.git", commit: "d531625")
+        .package(url: "https://github.com/warp-ds/warp-ios.git", branch: "swift-concurrency")
+//        .package(url: "https://github.com/warp-ds/warp-ios.git", commit: "d531625")
     ],
     targets: [
         .target(

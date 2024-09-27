@@ -33,6 +33,7 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/warp-ds/warp-ios.git",
       "state" : {
+        "branch" : "swift-concurrency",
         "revision" : "eb99df2c12b4e7aceb9236c36d583daeef599c39"
       }
     }
