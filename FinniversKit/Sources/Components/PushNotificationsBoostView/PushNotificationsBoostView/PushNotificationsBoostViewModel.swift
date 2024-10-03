@@ -8,6 +8,8 @@ public struct PushNotificationsBoostViewModel {
     let isClosable: Bool
     let isSeparatorsHidden: Bool
 
+    public var closeButtonAction: (() -> Void)?
+
     public init(icon: Image, title: String, description: String? = nil, isClosable: Bool = false, isSeparatorsHidden: Bool = false) {
         self.icon = icon
         self.title = title

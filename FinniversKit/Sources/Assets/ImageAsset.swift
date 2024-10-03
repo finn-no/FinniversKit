@@ -59,6 +59,7 @@ enum ImageAsset: String {
     case checkmarkBig
     case checkmarkBlue
     case close
+    case closeCross
     case confetti1
     case confetti2
     case consentTransparency
@@ -189,6 +190,7 @@ enum ImageAsset: String {
             .checkmarkBig,
             .checkmarkBlue,
             .close,
+            .closeCross,
             .confetti1,
             .confetti2,
             .consentTransparency,

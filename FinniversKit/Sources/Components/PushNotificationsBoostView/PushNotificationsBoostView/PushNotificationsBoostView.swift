@@ -33,7 +33,12 @@ public struct PushNotificationsBoostView: View {
                 Spacer()
 
                 if viewModel.isClosable {
-                    
+                    SwiftUI.Button(action: {
+                        viewModel.closeButtonAction?()
+                    }, label: {
+                        Image(named: .closeCross)
+                            .renderingMode(.original)
+                    })
                 }
 
             }
