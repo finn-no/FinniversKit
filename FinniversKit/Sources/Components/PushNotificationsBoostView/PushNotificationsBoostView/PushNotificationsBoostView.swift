@@ -11,10 +11,8 @@ public struct PushNotificationsBoostView: View {
 
     public var body: some View {
         VStack(alignment: .leading, spacing: Warp.Spacing.spacing200) {
-            if !viewModel.isSeparatorsHidden {
-                Divider()
-                    .foregroundColor(.border)
-            }
+            Divider()
+                .foregroundColor(.border)
 
             HStack(spacing: Warp.Spacing.spacing200) {
                 viewModel.icon
@@ -32,21 +30,25 @@ public struct PushNotificationsBoostView: View {
 
                 Spacer()
 
+                if viewModel.isClickable {
+                    Image(named: .arrowRight)
+                        .padding(.trailing)
+                }
+
                 if viewModel.isClosable {
                     SwiftUI.Button(action: {
                         viewModel.closeButtonAction?()
                     }, label: {
                         Image(named: .closeCross)
                             .renderingMode(.original)
+                            .padding(.trailing)
                     })
                 }
 
             }
 
-            if !viewModel.isSeparatorsHidden {
-                Divider()
-                    .foregroundColor(.border)
-            }
+            Divider()
+                .foregroundColor(.border)
         }
     }
 }
