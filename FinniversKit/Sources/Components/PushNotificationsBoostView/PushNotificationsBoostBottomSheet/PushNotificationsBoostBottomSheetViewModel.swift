@@ -13,10 +13,10 @@ public struct PushNotificationsBoostBottomSheetViewModel {
 
     public struct Section {
         let icon: Image
-        let title: String
+        let title: String?
         let description: String
 
-        public init(icon: Image, title: String, description: String) {
+        public init(icon: Image, title: String? = nil, description: String) {
             self.icon = icon
             self.title = title
             self.description = description

@@ -11,8 +11,10 @@ public struct PushNotificationsBoostView: View {
 
     public var body: some View {
         VStack(alignment: .leading, spacing: Warp.Spacing.spacing200) {
-            Divider()
-                .foregroundColor(.border)
+            if !viewModel.isSeparatorsHidden {
+                Divider()
+                    .foregroundColor(.border)
+            }
 
             HStack(spacing: Warp.Spacing.spacing200) {
                 viewModel.icon
@@ -32,8 +34,10 @@ public struct PushNotificationsBoostView: View {
 
             }
 
-            Divider()
-                .foregroundColor(.border)
+            if !viewModel.isSeparatorsHidden {
+                Divider()
+                    .foregroundColor(.border)
+            }
         }
     }
 }
