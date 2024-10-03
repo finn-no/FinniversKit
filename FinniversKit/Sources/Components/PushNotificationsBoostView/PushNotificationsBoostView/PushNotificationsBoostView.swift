@@ -32,6 +32,10 @@ public struct PushNotificationsBoostView: View {
 
                 Spacer()
 
+                if viewModel.isClosable {
+                    
+                }
+
             }
 
             if !viewModel.isSeparatorsHidden {
