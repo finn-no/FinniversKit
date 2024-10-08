@@ -14,8 +14,6 @@ public struct PushNotificationsBoostBottomSheet: View {
                 .finnFont(.title3)
                  .padding(.top)
 
-            Spacer()
-
             ForEach(viewModel.sections, id: \.self) {
                 sectionView($0)
                     .padding([.leading, .trailing])

@@ -32,9 +32,10 @@ public struct PushNotificationsBoostView: View {
             Divider()
                 .foregroundColor(.border)
 
-            HStack(spacing: Warp.Spacing.spacing200) {
+            HStack {
                 viewModel.icon
-                    .padding(.leading)
+                    .padding(.leading, Warp.Spacing.spacing200)
+                    .padding(.trailing, Warp.Spacing.spacing100)
 
                 VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
                     Text(viewModel.title)
@@ -50,7 +51,7 @@ public struct PushNotificationsBoostView: View {
 
                 if viewModel.isClickable {
                     Image(named: .arrowRight)
-                        .padding(.trailing)
+                        .padding(.trailing, Warp.Spacing.spacing100)
                 }
 
                 if viewModel.isClosable {
@@ -59,7 +60,7 @@ public struct PushNotificationsBoostView: View {
                     }, label: {
                         Image(named: .closeCross)
                             .renderingMode(.original)
-                            .padding(.trailing)
+                            .padding(.trailing, Warp.Spacing.spacing100)
                     })
                 }
 
