@@ -7,6 +7,7 @@ public struct PushNotificationsBoostViewModel {
     let description: String?
     let isClickable: Bool
     let isClosable: Bool
+    let layoutMarginsFollowReadableWidth: Bool
 
     public var closeButtonAction: (() -> Void)?
 
@@ -15,12 +16,14 @@ public struct PushNotificationsBoostViewModel {
         title: String,
         description: String? = nil,
         isClickable: Bool = false,
-        isClosable: Bool = false
+        isClosable: Bool = false,
+        layoutMarginsFollowReadableWidth: Bool = false
     ) {
         self.icon = icon
         self.title = title
         self.description = description
         self.isClickable = isClickable
         self.isClosable = isClosable
+        self.layoutMarginsFollowReadableWidth = layoutMarginsFollowReadableWidth
     }
 }

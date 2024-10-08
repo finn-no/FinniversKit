@@ -2,6 +2,7 @@ import SwiftUI
 import Warp
 
 public struct PushNotificationsBoostView: View {
+    private let layoutMarginsGuideWidth: CGFloat = 685 // Designed to replicate layoutMarginsGuide for cellLayoutMarginsFollowReadableWidth UIKit's tableViews
     public static let pushNotificationBoostViewCellIdentifier = "pushNotificationBoostViewCellIdentifier"
     let viewModel: PushNotificationsBoostViewModel
 
@@ -10,6 +11,23 @@ public struct PushNotificationsBoostView: View {
     }
 
     public var body: some View {
+        if viewModel.layoutMarginsFollowReadableWidth {
+            HStack {
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    Spacer()
+                }
+                content
+                    .frame(idealWidth: layoutMarginsGuideWidth, maxWidth: layoutMarginsGuideWidth)
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    Spacer()
+                }
+            }
+        } else {
+            content
+        }
+    }
+
+    var content: some View {
         VStack(alignment: .leading, spacing: Warp.Spacing.spacing200) {
             Divider()
                 .foregroundColor(.border)
