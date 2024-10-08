@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct PushNotificationsBoostBottomSheetViewModel {
+public struct PushNotificationNudgingBottomSheetViewModel {
     let title: String
     let sections: [Section]
     let buttons: [Button]
@@ -43,15 +43,15 @@ public struct PushNotificationsBoostBottomSheetViewModel {
 
 }
 
-extension PushNotificationsBoostBottomSheetViewModel.Section: Hashable {
+extension PushNotificationNudgingBottomSheetViewModel.Section: Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(title)
         hasher.combine(description)
     }
 }
 
-extension PushNotificationsBoostBottomSheetViewModel.Button: Hashable {
-    public static func == (lhs: PushNotificationsBoostBottomSheetViewModel.Button, rhs: PushNotificationsBoostBottomSheetViewModel.Button) -> Bool {
+extension PushNotificationNudgingBottomSheetViewModel.Button: Hashable {
+    public static func == (lhs: PushNotificationNudgingBottomSheetViewModel.Button, rhs: PushNotificationNudgingBottomSheetViewModel.Button) -> Bool {
         lhs.kind == rhs.kind && lhs.title == rhs.title
     }
     

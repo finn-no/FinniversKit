@@ -1,10 +1,10 @@
 import SwiftUI
 import Warp
 
-public struct PushNotificationsBoostBottomSheet: View {
-    let viewModel: PushNotificationsBoostBottomSheetViewModel
+public struct PushNotificationNudgingBottomSheet: View {
+    let viewModel: PushNotificationNudgingBottomSheetViewModel
 
-    public init(viewModel: PushNotificationsBoostBottomSheetViewModel) {
+    public init(viewModel: PushNotificationNudgingBottomSheetViewModel) {
         self.viewModel = viewModel
     }
 
@@ -31,8 +31,8 @@ public struct PushNotificationsBoostBottomSheet: View {
     }
 }
 
-private extension PushNotificationsBoostBottomSheet {
-    private func sectionView(_ section: PushNotificationsBoostBottomSheetViewModel.Section) -> some View {
+private extension PushNotificationNudgingBottomSheet {
+    private func sectionView(_ section: PushNotificationNudgingBottomSheetViewModel.Section) -> some View {
         HStack(alignment: .center, spacing: Warp.Spacing.spacing200) {
             section.icon
                 .padding(.leading)
@@ -52,7 +52,7 @@ private extension PushNotificationsBoostBottomSheet {
         }
     }
 
-    private func buttonView(_ button: PushNotificationsBoostBottomSheetViewModel.Button) -> some View {
+    private func buttonView(_ button: PushNotificationNudgingBottomSheetViewModel.Button) -> some View {
         switch button.kind {
         case .allow:
             return Warp.Button.create(
@@ -77,33 +77,33 @@ private extension PushNotificationsBoostBottomSheet {
 }
 
 #Preview {
-    let section1 = PushNotificationsBoostBottomSheetViewModel.Section(
+    let section1 = PushNotificationNudgingBottomSheetViewModel.Section(
         icon: Image(named: .bell),
         description: "Receive alerts the moment a buyer shows interest in your items."
     )
-    let section2 = PushNotificationsBoostBottomSheetViewModel.Section(
+    let section2 = PushNotificationNudgingBottomSheetViewModel.Section(
         icon: Image(named: .bell),
         description: "Respond faster to messages, increasing your chances of making a sale."
     )
-    let section3 = PushNotificationsBoostBottomSheetViewModel.Section(
+    let section3 = PushNotificationNudgingBottomSheetViewModel.Section(
         icon: Image(named: .bell),
         description: "Be the first to know when there’s a new match for your listings or a price drop on items you’re following."
     )
 
-    let allowButton = PushNotificationsBoostBottomSheetViewModel.Button(
+    let allowButton = PushNotificationNudgingBottomSheetViewModel.Button(
         kind: .allow,
         title: "Allow Push Notifications"
     )
-    let notNowButton = PushNotificationsBoostBottomSheetViewModel.Button(
+    let notNowButton = PushNotificationNudgingBottomSheetViewModel.Button(
         kind: .notNow,
         title: "Not now"
     )
 
-    let viewModel = PushNotificationsBoostBottomSheetViewModel(
+    let viewModel = PushNotificationNudgingBottomSheetViewModel(
         title: "Never miss a beat!",
         sections: [section1, section2, section3],
         buttons: [allowButton, notNowButton]
     )
 
-    return PushNotificationsBoostBottomSheet(viewModel: viewModel)
+    return PushNotificationNudgingBottomSheet(viewModel: viewModel)
 }

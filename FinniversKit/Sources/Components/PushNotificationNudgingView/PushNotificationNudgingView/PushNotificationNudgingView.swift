@@ -1,12 +1,12 @@
 import SwiftUI
 import Warp
 
-public struct PushNotificationsBoostView: View {
+public struct PushNotificationNudgingView: View {
     private let layoutMarginsGuideWidth: CGFloat = 685 // Designed to replicate layoutMarginsGuide for cellLayoutMarginsFollowReadableWidth UIKit's tableViews
-    public static let pushNotificationBoostViewCellIdentifier = "pushNotificationBoostViewCellIdentifier"
-    let viewModel: PushNotificationsBoostViewModel
+    public static let pushNotificationNudgingViewCellIdentifier = "pushNotificationNudgingViewCellIdentifier"
+    let viewModel: PushNotificationNudgingViewModel
 
-    public init(viewModel: PushNotificationsBoostViewModel) {
+    public init(viewModel: PushNotificationNudgingViewModel) {
         self.viewModel = viewModel
     }
 
@@ -73,7 +73,7 @@ public struct PushNotificationsBoostView: View {
 }
 
 #Preview {
-    PushNotificationsBoostView(viewModel: PushNotificationsBoostViewModel(
+    PushNotificationNudgingView(viewModel: PushNotificationNudgingViewModel(
         icon: Image(named: .bellOff),
         title: "Boost your chances of a quick sale!",
         description: "Get real-time alerts when buyers message you or express interest in your items."
@@ -81,7 +81,7 @@ public struct PushNotificationsBoostView: View {
 }
 
 #Preview {
-    PushNotificationsBoostView(viewModel: PushNotificationsBoostViewModel(
+    PushNotificationNudgingView(viewModel: PushNotificationNudgingViewModel(
         icon: Image(named: .bell),
         title: "You’re all set!"
     ))

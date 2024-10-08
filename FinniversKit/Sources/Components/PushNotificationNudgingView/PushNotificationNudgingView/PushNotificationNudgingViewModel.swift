@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-public struct PushNotificationsBoostViewModel {
+public struct PushNotificationNudgingViewModel {
     let icon: Image
     let title: String
     let description: String?
