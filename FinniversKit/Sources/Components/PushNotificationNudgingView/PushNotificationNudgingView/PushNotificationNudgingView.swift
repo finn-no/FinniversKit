@@ -49,12 +49,12 @@ public struct PushNotificationNudgingView: View {
 
                 Spacer()
 
-                if viewModel.isClickable {
+                if viewModel.state == .initialPrompt {
                     Image(named: .arrowRight)
                         .padding(.trailing, Warp.Spacing.spacing100)
                 }
 
-                if viewModel.isClosable {
+                if viewModel.state == .tunedOff {
                     SwiftUI.Button(action: {
                         viewModel.closeButtonAction?()
                     }, label: {
@@ -76,13 +76,15 @@ public struct PushNotificationNudgingView: View {
     PushNotificationNudgingView(viewModel: PushNotificationNudgingViewModel(
         icon: Image(named: .bellOff),
         title: "Boost your chances of a quick sale!",
-        description: "Get real-time alerts when buyers message you or express interest in your items."
+        description: "Get real-time alerts when buyers message you or express interest in your items.",
+        state: .initialPrompt
     ))
 }
 
 #Preview {
     PushNotificationNudgingView(viewModel: PushNotificationNudgingViewModel(
         icon: Image(named: .bell),
-        title: "You’re all set!"
+        title: "You’re all set!",
+        state: .allSet
     ))
 }
