@@ -45,6 +45,17 @@ public struct PushNotificationNudgingView: View {
                             .finnFont(.caption)
                             .foregroundColor(.text)
                     }
+                    if let linkDescription = viewModel.linkDescription {
+                        SwiftUI.Button(action: {
+                            viewModel.linkAction?()
+                        }, label: {
+                            Text(linkDescription)
+                                .finnFont(.caption)
+                                .foregroundColor(.text)
+                                .multilineTextAlignment(.leading)
+                        })
+
+                    }
                 }
 
                 Spacer()
