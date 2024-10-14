@@ -46,15 +46,13 @@ public struct PushNotificationNudgingView: View {
                             .foregroundColor(.text)
                     }
                     if let linkDescription = viewModel.linkDescription {
-                        SwiftUI.Button(action: {
-                            viewModel.linkAction?()
-                        }, label: {
-                            Text(linkDescription)
-                                .finnFont(.caption)
-                                .foregroundColor(.text)
-                                .multilineTextAlignment(.leading)
-                        })
-
+                        Text(linkDescription)
+                            .finnFont(.caption)
+                            .foregroundColor(.text)
+                            .multilineTextAlignment(.leading)
+                            .onTapGesture {
+                                viewModel.linkAction?()
+                            }
                     }
                 }
 
