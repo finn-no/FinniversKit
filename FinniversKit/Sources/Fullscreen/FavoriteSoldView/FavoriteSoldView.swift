@@ -70,14 +70,14 @@ public class FavoriteSoldView: UIView {
     }()
 
     private lazy var titleLabel: Label = {
-        let style: Label.Style = traitCollection.horizontalSizeClass == .compact ? .title3 : .title2
+        let style: Warp.Typography = traitCollection.horizontalSizeClass == .compact ? .title3 : .title2
         let label = Label(style: style, withAutoLayout: true)
         label.numberOfLines = 0
         return label
     }()
 
     private lazy var bodyLabel: Label = {
-        let style: Label.Style = traitCollection.horizontalSizeClass == .compact ? .detail : .body
+        let style: Warp.Typography = traitCollection.horizontalSizeClass == .compact ? .detail : .body
         let label = Label(style: style, withAutoLayout: true)
         label.numberOfLines = 0
         return label

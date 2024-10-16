@@ -8,7 +8,7 @@ extension CollapsibleContentView {
         public let borderWidth: CGFloat
         public let borderColor: UIColor?
         public let contentInsets: UIEdgeInsets
-        public let titleStyle: Label.Style
+        public let titleStyle: Warp.Typography
         public let headerContentSpacing: CGFloat
         public let hairlineColor: UIColor?
 
@@ -18,7 +18,7 @@ extension CollapsibleContentView {
             borderWidth: CGFloat = 0,
             borderColor: UIColor? = nil,
             contentInsets: UIEdgeInsets,
-            titleStyle: Label.Style,
+            titleStyle: Warp.Typography,
             headerContentSpacing: CGFloat,
             hairlineColor: UIColor? = nil
         ) {
@@ -58,7 +58,7 @@ extension CollapsibleContentView {
             borderWidth: CGFloat? = nil,
             borderColor: UIColor? = nil,
             contentInsets: UIEdgeInsets? = nil,
-            titleStyle: Label.Style? = nil,
+            titleStyle: Warp.Typography? = nil,
             headerContentSpacing: CGFloat? = nil,
             hairlineColor: UIColor? = nil
         ) -> CollapsibleContentView.Style {

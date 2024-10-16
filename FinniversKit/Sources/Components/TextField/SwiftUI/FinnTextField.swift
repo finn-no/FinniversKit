@@ -48,7 +48,7 @@ public struct FinnTextField: View {
     public var body: some View {
         VStack(alignment: .leading) {
             Text(placeholder)
-                .finnFont(.captionStrong)
+                .font(from: .captionStrong)
                 .foregroundColor(Color.text)
 
             TextFieldComponent(
@@ -82,7 +82,7 @@ public struct FinnTextField: View {
     @ViewBuilder
     private func makeHelpTextLabel() -> some View {
         let label = Text(helpText ?? "")
-            .finnFont(.detail)
+            .font(from: .detail)
             .foregroundColor(style.helpTextColor)
 
         if shouldShowHelpText {
