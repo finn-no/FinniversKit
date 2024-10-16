@@ -20,7 +20,7 @@ public extension RibbonView {
             case .success: return Warp.UIColor.badgePositiveBackground
             case .warning: return Warp.UIColor.badgeWarningBackground
             case .error: return Warp.UIColor.badgeNegativeBackground
-            case .disabled: return Warp.UIColor.badgeDisabledBackground
+            case .disabled: return Warp.UIToken.backgroundDisabled
             case .sponsored: return Warp.UIColor.badgeSponsoredBackground
             }
         }
