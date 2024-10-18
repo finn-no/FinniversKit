@@ -12,21 +12,21 @@ public struct PushNotificationNudgingBottomSheet: View {
         VStack(alignment: .center, spacing: Warp.Spacing.spacing200) {
             Text(viewModel.title)
                 .finnFont(.title3)
-                 .padding(.top)
+                .padding(.top, Warp.Spacing.spacing100)
 
             ForEach(viewModel.sections, id: \.self) {
                 sectionView($0)
-                    .padding([.leading, .trailing])
-            }.padding(.top)
+                    .padding([.leading, .trailing], Warp.Spacing.spacing100)
+            }.padding(.top, Warp.Spacing.spacing100)
 
             Spacer()
 
             VStack {
                 ForEach(viewModel.buttons, id: \.self) {
                     buttonView($0)
-                        .padding([.leading, .trailing])
+                        .padding([.leading, .trailing], Warp.Spacing.spacing100)
                 }
-            }.padding([.top, .bottom])
+            }.padding([.top, .bottom], Warp.Spacing.spacing100)
         }
     }
 }
@@ -35,7 +35,7 @@ private extension PushNotificationNudgingBottomSheet {
     private func sectionView(_ section: PushNotificationNudgingBottomSheetViewModel.Section) -> some View {
         HStack(alignment: .center, spacing: Warp.Spacing.spacing200) {
             section.icon
-                .padding(.leading)
+                .padding(.leading, Warp.Spacing.spacing100)
 
             VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
                 if let title = section.title {
