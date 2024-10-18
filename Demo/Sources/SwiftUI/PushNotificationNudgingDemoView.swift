@@ -17,7 +17,7 @@ struct PushNotificationNudgingDemoView_Previews: PreviewProvider, Demoable {
                 icon: Image(uiImage: UIImage(named: .bellOff)),
                 title: "You won’t get notifications for now",
                 description: "If you change your mind, you can edit your notification settings anytime.",
-                state: .tunedOff
+                state: .turnedOff
             ))
 
             PushNotificationNudgingView(viewModel: PushNotificationNudgingViewModel(

@@ -63,7 +63,7 @@ public struct PushNotificationNudgingView: View {
                         .padding(.trailing, Warp.Spacing.spacing100)
                 }
 
-                if viewModel.state == .tunedOff {
+                if viewModel.state == .turnedOff {
                     SwiftUI.Button(action: {
                         viewModel.closeButtonAction?()
                     }, label: {

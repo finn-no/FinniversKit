@@ -3,7 +3,7 @@ import SwiftUI
 
 public enum PushNotificationNudgingState {
     case initialPrompt
-    case tunedOff
+    case turnedOff
     case allSet
 }
 
