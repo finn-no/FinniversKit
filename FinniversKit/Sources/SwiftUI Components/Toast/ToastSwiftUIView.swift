@@ -23,6 +23,7 @@ public struct ToastSwiftUIView: View {
                 .font(from: .body)
                 .foregroundColor(.text)
                 .padding(.vertical, Warp.Spacing.spacing200)
+                .fixedSize(horizontal: false, vertical: true)
             Spacer()
             if let actionButton {
                 ActionButtonView(actionButton: actionButton, style: style)
