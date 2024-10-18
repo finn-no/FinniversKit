@@ -28,7 +28,7 @@ extension ToastSwiftUIView.ActionButtonView {
 
         func makeBody(configuration: Configuration) -> some View {
             configuration.label
-                .finnFont(.bodyStrong)
+                .font(from: .bodyStrong)
                 .padding(.vertical, Warp.Spacing.spacing100)
                 .padding(.horizontal, Warp.Spacing.spacing200)
                 .foregroundColor(.textLink)
