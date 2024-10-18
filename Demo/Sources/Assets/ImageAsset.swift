@@ -44,8 +44,13 @@ enum ImageAsset: String {
     case autovex
     case avatar
     case bapShippable
+    case bell
+    case bellOff
     case betaImageSearch
     case blinkRocketMini
+    case bottomSheetBell
+    case bottomSheetFeedback
+    case bottomSheetSearchFavorites
     case cabin
     case car
     case carFront
@@ -158,8 +163,13 @@ enum ImageAsset: String {
             .autovex,
             .avatar,
             .bapShippable,
+            .bell,
+            .bellOff,
             .betaImageSearch,
             .blinkRocketMini,
+            .bottomSheetBell,
+            .bottomSheetFeedback,
+            .bottomSheetSearchFavorites,
             .cabin,
             .car,
             .carFront,
