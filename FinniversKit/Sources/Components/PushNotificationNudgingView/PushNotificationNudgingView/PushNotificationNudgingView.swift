@@ -60,7 +60,7 @@ public struct PushNotificationNudgingView: View {
 
                 if viewModel.state == .initialPrompt {
                     Image(named: .arrowRight)
-                        .padding(.trailing, Warp.Spacing.spacing100)
+                        .padding(.trailing, Warp.Spacing.spacing200)
                 }
 
                 if viewModel.state == .turnedOff {
@@ -69,7 +69,7 @@ public struct PushNotificationNudgingView: View {
                     }, label: {
                         Image(named: .closeCross)
                             .renderingMode(.original)
-                            .padding(.trailing, Warp.Spacing.spacing100)
+                            .padding(.trailing, Warp.Spacing.spacing200)
                     })
                 }
 
