@@ -132,6 +132,7 @@ enum ImageAsset: String {
     case pin
     case playVideo
     case plusMini
+    case productTop
     case pusefinnCircle
     case radioButtonSelected
     case radioButtonUnselected
@@ -260,6 +261,7 @@ enum ImageAsset: String {
             .pin,
             .playVideo,
             .plusMini,
+            .productTop,
             .pusefinnCircle,
             .radioButtonSelected,
             .radioButtonUnselected,
