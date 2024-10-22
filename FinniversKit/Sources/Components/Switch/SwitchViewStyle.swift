@@ -3,11 +3,12 @@
 //
 
 import UIKit
+import Warp
 
 public struct SwitchViewStyle {
-    public let titleLabelStyle: Label.Style
+    public let titleLabelStyle: Warp.Typography
     public let titleLabelTextColor: UIColor
-    public let detailLabelStyle: Label.Style
+    public let detailLabelStyle: Warp.Typography
     public let detailLabelTextColor: UIColor
 
     public static var `default` = SwitchViewStyle(
@@ -17,7 +18,7 @@ public struct SwitchViewStyle {
         detailLabelTextColor: .textSubtle
     )
 
-    public init(titleLabelStyle: Label.Style, titleLabelTextColor: UIColor, detailLabelStyle: Label.Style, detailLabelTextColor: UIColor) {
+    public init(titleLabelStyle: Warp.Typography, titleLabelTextColor: UIColor, detailLabelStyle: Warp.Typography, detailLabelTextColor: UIColor) {
         self.titleLabelStyle = titleLabelStyle
         self.titleLabelTextColor = titleLabelTextColor
         self.detailLabelStyle = detailLabelStyle

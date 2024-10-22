@@ -10,7 +10,7 @@ public struct InlineFlatStyle: ButtonStyle {
     private let textColor: Color
 
     public init(size: Button.Size = .normal, textColor: Color = .textLink) {
-        self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
+        self.font = Self.font(for: size)
         self.textColor = textColor
     }
 
@@ -36,7 +36,7 @@ public struct FlatStyle: ButtonStyle {
         padding: EdgeInsets = .init(top: Warp.Spacing.spacing100, leading: Warp.Spacing.spacing200, bottom: Warp.Spacing.spacing100, trailing: Warp.Spacing.spacing200)
     ) {
         self.size = size
-        self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
+        self.font = Self.font(for: size)
         self.textColor = textColor
         self.fullWidth = fullWidth
         self.padding = padding
@@ -71,7 +71,7 @@ public struct DefaultStyle: ButtonStyle {
         padding: EdgeInsets = .init(top: Warp.Spacing.spacing100, leading: Warp.Spacing.spacing200, bottom: Warp.Spacing.spacing100, trailing: Warp.Spacing.spacing200)
     ) {
         self.size = size
-        self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
+        self.font = Self.font(for: size)
         self.textColor = textColor
         self.fullWidth = fullWidth
         self.padding = padding
@@ -118,7 +118,7 @@ public struct CallToAction: ButtonStyle {
     ) {
         self.background = background
         self.fullWidth = fullWidth
-        self.font = size == .normal ? .finnFont(.bodyStrong) : .finnFont(.detailStrong)
+        self.font = Self.font(for: size)
 
         if let padding {
             self.padding = padding
@@ -162,15 +162,21 @@ private extension CGFloat {
     static let normalButtonVerticalPadding: CGFloat = 13
 }
 
+private extension ButtonStyle {
+    static func font(for size: Button.Size) -> Font {
+        (size == .normal ? Warp.Typography.bodyStrong : Warp.Typography.detailStrong).font
+    }
+}
+
 #Preview {
     VStack {
         HStack(spacing: 0) {
             Text("Example ")
-                .finnFont(.body)
+                .font(from: .body)
             SwiftUI.Button("inline style", action: {})
                 .buttonStyle(InlineFlatStyle())
             Text(" with some text")
-                .finnFont(.body)
+                .font(from: .body)
         }
         SwiftUI.Button("Flat", action: {})
             .buttonStyle(FlatStyle())

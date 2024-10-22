@@ -61,7 +61,7 @@ private class DemoCollectionViewCell: UICollectionViewCell, OverflowCollectionVi
 
     // MARK: - Private properties
 
-    private static let labelStyle = Label.Style.body
+    private static let labelStyle = Warp.Typography.body
     private static let margins = UIEdgeInsets(vertical: Warp.Spacing.spacing100, horizontal: Warp.Spacing.spacing200)
     private lazy var label = Label(style: .body, withAutoLayout: true)
 
@@ -101,7 +101,7 @@ private class DemoCollectionViewCell: UICollectionViewCell, OverflowCollectionVi
     // MARK: - OverflowCollectionViewCell
 
     static func size(using model: String) -> CGSize {
-        let font = Self.labelStyle.font
+        let font = Self.labelStyle.uiFont
         let margins = Self.margins
 
         let width = model.width(withConstrainedHeight: .infinity, font: font) + (margins.leading + margins.trailing)

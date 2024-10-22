@@ -34,9 +34,9 @@ public struct InfoboxSwiftUIView: View {
     public var body: some View {
         VStack(alignment: .center, spacing: Warp.Spacing.spacing200) {
             Text(viewModel.title)
-                .finnFont(style.titleStyle)
+                .font(from: style.titleStyle)
             Text(viewModel.detail)
-                .finnFont(style.detailStyle)
+                .font(from: style.detailStyle)
 
             VStack(spacing: Warp.Spacing.spacing50) {
                 primaryButton(for: viewModel)
