@@ -1,6 +1,6 @@
-import Foundation
+import UIKit
 
-struct SelectedProductsModel: Hashable {
+public struct SelectedProductsModel: Hashable {
     let name: String?
     let innerProducts: [UpsaleVisibilityModel]?
     let product: UpsaleVisibilityModel?
@@ -14,19 +14,19 @@ struct SelectedProductsModel: Hashable {
 //        }
 //    }
 
-    init(name: String?, innerProducts: [UpsaleVisibilityModel]?, product: UpsaleVisibilityModel?) {
+    public init(name: String?, innerProducts: [UpsaleVisibilityModel]?, product: UpsaleVisibilityModel?) {
         self.name = name
         self.product = product
         self.innerProducts = innerProducts
     }
 }
 
-struct UpsaleVisibilityModel: Hashable {
+public struct UpsaleVisibilityModel: Hashable {
     let title: String
     let description: String?
 //    var category: UpsaleVisibilityResponse.Category?
     let durationRemaining: CGFloat?
-    let icon: ImageAsset?
+    let icon: UIImage?
 
 //    init() {
 //        self.title = response.name
@@ -39,7 +39,7 @@ struct UpsaleVisibilityModel: Hashable {
 //        self.durationRemaining = CGFloat((response.percentageDurationRemaining ?? 100) / 100)
 //    }
 
-    init(title: String, description: String?, durationRemaining: CGFloat?, icon: ImageAsset?) {
+    public init(title: String, description: String?, durationRemaining: CGFloat?, icon: UIImage?) {
         self.title = title
         self.description = description
 //        self.category = category

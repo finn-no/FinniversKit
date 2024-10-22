@@ -8,7 +8,7 @@ struct UpsaleProgressView: View {
     private let maxTrimValue: CGFloat = 0.97
 
     // Category icon
-    let icon: ImageAsset?
+    let icon: UIImage?
     // Circle filling between 0.0 and 1.0
     let progress: CGFloat?
 
@@ -56,7 +56,7 @@ struct UpsaleProgressView: View {
                     .clipShape(Circle())
 
                 if let icon {
-                    Image(uiImage: UIImage(named: icon))
+                    Image(uiImage: icon)
                         .resizable()
                         .frame(width: 24, height: 24)
                 }
@@ -67,7 +67,7 @@ struct UpsaleProgressView: View {
 
 #Preview {
     UpsaleProgressView(
-        icon: .productTop,
+        icon: UIImage(named: .productTop),
         progress: 1.0
     )
 }

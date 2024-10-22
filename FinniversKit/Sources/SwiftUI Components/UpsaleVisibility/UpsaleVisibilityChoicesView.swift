@@ -33,7 +33,7 @@ struct ExtraVisibilityProductView: View {
     var body: some View {
         HStack(spacing: Warp.Spacing.spacing200) {
             if let icon = product?.icon {
-                Image(uiImage: UIImage(named: icon))
+                Image(uiImage: icon)
                     .resizable()
                     .frame(width: 24, height: 24)
             }
@@ -74,6 +74,6 @@ struct ExtraVisibilityProductView: View {
             title: "Anbefalte annonser",
             price: "119 kr",
             description: "Økt synlighet blant lignende annonser - 7 dager",
-            icon: .productTop
+            icon: UIImage(named: .productTop)
         )])
 }

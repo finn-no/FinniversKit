@@ -1,7 +1,7 @@
 import SwiftUI
 import Warp
 
-struct UpsaleVisibilitySectionView: View {
+public struct UpsaleVisibilitySectionView: View {
     static let upsaleVisibilitySectionViewCellIdentifier = "upsaleVisibilitySectionViewCellIdentifier"
     private let hairLineSize = 1.0 / UIScreen.main.scale
 
@@ -15,7 +15,27 @@ struct UpsaleVisibilitySectionView: View {
     var extraVisibilityProductModels: [UpsaleVisibilityChoiceModel]?
     var onBuyExtraButtonTapped: ((String?) -> Void)?
 
-    var body: some View {
+    public init(
+        title: String,
+        buttonTitle: String,
+        upsaleChoicesViewTitle: String,
+        upsaleChoicesViewButtonTitle: String,
+        selectedProductModels: [SelectedProductsModel],
+        onBuyAnotherProductButtonTapped: (() -> Void)? = nil,
+        extraVisibilityProductModels: [UpsaleVisibilityChoiceModel]? = nil,
+        onBuyExtraButtonTapped: ( (String?) -> Void)? = nil
+    ) {
+        self.title = title
+        self.buttonTitle = buttonTitle
+        self.upsaleChoicesViewTitle = upsaleChoicesViewTitle
+        self.upsaleChoicesViewButtonTitle = upsaleChoicesViewButtonTitle
+        self.selectedProductModels = selectedProductModels
+        self.onBuyAnotherProductButtonTapped = onBuyAnotherProductButtonTapped
+        self.extraVisibilityProductModels = extraVisibilityProductModels
+        self.onBuyExtraButtonTapped = onBuyExtraButtonTapped
+    }
+
+    public var body: some View {
         VStack(alignment: .leading, spacing: Warp.Spacing.spacing200) {
             Divider()
                 .foregroundColor(.border)

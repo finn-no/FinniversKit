@@ -1,13 +1,13 @@
-import Foundation
+import UIKit
 
-struct UpsaleVisibilityChoiceModel: Hashable {
+public struct UpsaleVisibilityChoiceModel: Hashable {
 //    let category: UpsaleVisibilityResponse.Category?
     let title: String
     let description: String?
     let specificationUrn: String?
-    let icon: ImageAsset?
+    let icon: UIImage?
 
-    init(title: String, price: String?, description: String?, specificationUrn: String? = nil, icon: ImageAsset?) {
+    public init(title: String, price: String?, description: String?, specificationUrn: String? = nil, icon: UIImage?) {
         if let price {
             self.title = "\(title) - \(price)"
         } else {
