@@ -2,7 +2,7 @@ import SwiftUI
 import Warp
 
 public struct UpsaleVisibilitySectionView: View {
-    static let upsaleVisibilitySectionViewCellIdentifier = "upsaleVisibilitySectionViewCellIdentifier"
+    public static let upsaleVisibilitySectionViewCellIdentifier = "upsaleVisibilitySectionViewCellIdentifier"
     private let hairLineSize = 1.0 / UIScreen.main.scale
 
     let title: String
