@@ -298,6 +298,11 @@
 		B2829E2D2C7F054F0032BDFA /* HTMLAttributeStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2829E2C2C7F054F0032BDFA /* HTMLAttributeStack.swift */; };
 		B2829E2F2C7F05D20032BDFA /* LocalizedStringKey+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2829E2E2C7F05D20032BDFA /* LocalizedStringKey+Extensions.swift */; };
 		B6801C1C2982ECCA004A0F4F /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6801C1B2982ECCA004A0F4F /* SettingsHeaderView.swift */; };
+		C216B4962CC691B3000C4C6B /* UpsaleVisibilityChoicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216B4922CC691B3000C4C6B /* UpsaleVisibilityChoicesView.swift */; };
+		C216B4972CC691B3000C4C6B /* UpsaleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216B4902CC691B3000C4C6B /* UpsaleProgressView.swift */; };
+		C216B4982CC691B3000C4C6B /* UpsaleVisibilityChoiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216B4912CC691B3000C4C6B /* UpsaleVisibilityChoiceModel.swift */; };
+		C216B4992CC691B3000C4C6B /* UpsaleVisibilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216B4932CC691B3000C4C6B /* UpsaleVisibilityModel.swift */; };
+		C216B49A2CC691B3000C4C6B /* UpsaleVisibilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216B4942CC691B3000C4C6B /* UpsaleVisibilityView.swift */; };
 		CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F08C20615990002AA385 /* TextField+State.swift */; };
 		CF05B7E023325968003A7F1C /* FavoriteFolderActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05B7DF23325968003A7F1C /* FavoriteFolderActionButton.swift */; };
 		CF05BA02233B78BC003A7F1C /* FavoriteSearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05BA01233B78BC003A7F1C /* FavoriteSearchEmptyView.swift */; };
@@ -740,6 +745,11 @@
 		B2829E2C2C7F054F0032BDFA /* HTMLAttributeStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLAttributeStack.swift; sourceTree = "<group>"; };
 		B2829E2E2C7F05D20032BDFA /* LocalizedStringKey+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedStringKey+Extensions.swift"; sourceTree = "<group>"; };
 		B6801C1B2982ECCA004A0F4F /* SettingsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
+		C216B4902CC691B3000C4C6B /* UpsaleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpsaleProgressView.swift; sourceTree = "<group>"; };
+		C216B4912CC691B3000C4C6B /* UpsaleVisibilityChoiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpsaleVisibilityChoiceModel.swift; sourceTree = "<group>"; };
+		C216B4922CC691B3000C4C6B /* UpsaleVisibilityChoicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpsaleVisibilityChoicesView.swift; sourceTree = "<group>"; };
+		C216B4932CC691B3000C4C6B /* UpsaleVisibilityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpsaleVisibilityModel.swift; sourceTree = "<group>"; };
+		C216B4942CC691B3000C4C6B /* UpsaleVisibilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpsaleVisibilityView.swift; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD2F08C20615990002AA385 /* TextField+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+State.swift"; sourceTree = "<group>"; };
 		CF05B7DF23325968003A7F1C /* FavoriteFolderActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFolderActionButton.swift; sourceTree = "<group>"; };
@@ -2349,6 +2359,18 @@
 			path = Sources/Components/NMPInfobox;
 			sourceTree = SOURCE_ROOT;
 		};
+		C216B4952CC691B3000C4C6B /* UpsaleVisibility */ = {
+			isa = PBXGroup;
+			children = (
+				C216B4902CC691B3000C4C6B /* UpsaleProgressView.swift */,
+				C216B4912CC691B3000C4C6B /* UpsaleVisibilityChoiceModel.swift */,
+				C216B4922CC691B3000C4C6B /* UpsaleVisibilityChoicesView.swift */,
+				C216B4932CC691B3000C4C6B /* UpsaleVisibilityModel.swift */,
+				C216B4942CC691B3000C4C6B /* UpsaleVisibilityView.swift */,
+			);
+			path = UpsaleVisibility;
+			sourceTree = "<group>";
+		};
 		CF0F6B902360682100CA62FD /* Priming */ = {
 			isa = PBXGroup;
 			children = (
@@ -2808,6 +2830,7 @@
 		E65085CF292BBA0600A43B07 /* SwiftUI Components */ = {
 			isa = PBXGroup;
 			children = (
+				C216B4952CC691B3000C4C6B /* UpsaleVisibility */,
 				F39B730F29C9D68B00A02C06 /* Button */,
 				27FAFCBD298900F200FEDAE0 /* Toast */,
 				E65085DF292BCF7800A43B07 /* RoundedCorner.swift */,
@@ -3208,6 +3231,11 @@
 				449C60B1234DD82E00C51A63 /* BasicTableView.swift in Sources */,
 				5DEAC62725C95F5F003376AD /* JobAdRecommendationViewModel.swift in Sources */,
 				D759A7FB28043EFD009E9CBB /* FrontPageTransactionView.swift in Sources */,
+				C216B4962CC691B3000C4C6B /* UpsaleVisibilityChoicesView.swift in Sources */,
+				C216B4972CC691B3000C4C6B /* UpsaleProgressView.swift in Sources */,
+				C216B4982CC691B3000C4C6B /* UpsaleVisibilityChoiceModel.swift in Sources */,
+				C216B4992CC691B3000C4C6B /* UpsaleVisibilityModel.swift in Sources */,
+				C216B49A2CC691B3000C4C6B /* UpsaleVisibilityView.swift in Sources */,
 				9BC33DEB22D76405007CCD65 /* LoginEntryDialogueView.swift in Sources */,
 				CF164CED230D916000250822 /* FavoriteFolderShareLinkView.swift in Sources */,
 				DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */,
