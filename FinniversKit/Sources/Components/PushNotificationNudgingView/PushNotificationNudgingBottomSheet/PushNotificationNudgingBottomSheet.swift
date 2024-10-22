@@ -27,7 +27,7 @@ public struct PushNotificationNudgingBottomSheet: View {
                         .padding([.leading, .trailing], Warp.Spacing.spacing100)
                 }
             }.padding([.top, .bottom], Warp.Spacing.spacing100)
-        }.background(.background)
+        }.background(.red)
     }
 }
 
