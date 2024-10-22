@@ -10,7 +10,7 @@ public class ViewingsListView: UIView {
 
     // MARK: - Private properties
 
-    private let titleStyle: Label.Style
+    private let titleStyle: Warp.Typography
     private var viewModel: ViewingsListViewModel?
     private lazy var titleLabel: Label = Label(style: titleStyle, withAutoLayout: true)
     private lazy var viewingsStackView = UIStackView(axis: .vertical, withAutoLayout: true)
@@ -25,7 +25,7 @@ public class ViewingsListView: UIView {
 
     // MARK: - Init
 
-    public init(titleStyle: Label.Style = .title3, withAutoLayout: Bool = false) {
+    public init(titleStyle: Warp.Typography = .title3, withAutoLayout: Bool = false) {
         self.titleStyle = titleStyle
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = !withAutoLayout

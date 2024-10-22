@@ -3,18 +3,19 @@
 //
 
 import UIKit
+import Warp
 
 public class Label: UILabel {
 
     // MARK: - Public properties
 
-    public private(set) var style: Style?
+    public private(set) var style: Warp.Typography?
     public private(set) var isTextCopyable = false
 
     // MARK: - Setup
 
     public init(
-        style: Style,
+        style: Warp.Typography,
         numberOfLines: Int = 1,
         textColor: UIColor = .text,
         withAutoLayout: Bool = false
@@ -42,7 +43,7 @@ public class Label: UILabel {
         isAccessibilityElement = true
 
         accessibilityLabel = text
-        font = style?.font
+        font = style?.uiFont
         self.textColor = textColor
         adjustsFontForContentSizeCategory = true
     }
