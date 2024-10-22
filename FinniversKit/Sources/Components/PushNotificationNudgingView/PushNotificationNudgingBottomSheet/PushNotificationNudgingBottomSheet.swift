@@ -27,7 +27,7 @@ public struct PushNotificationNudgingBottomSheet: View {
                         .padding([.leading, .trailing], Warp.Spacing.spacing100)
                 }
             }.padding([.top, .bottom], Warp.Spacing.spacing100)
-        }.background(.red)
+        }.background(Color.background)
     }
 }
 
@@ -40,11 +40,11 @@ private extension PushNotificationNudgingBottomSheet {
             VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
                 if let title = section.title {
                     Text(title)
-                        .finnFont(.captionStrong)
+                        .finnFont(.bodyStrong)
                         .fixedSize(horizontal: false, vertical: true)
                 }
                 Text(section.description)
-                    .finnFont(.caption)
+                    .finnFont(.body)
                     .fixedSize(horizontal: false, vertical: true)
             }
 
