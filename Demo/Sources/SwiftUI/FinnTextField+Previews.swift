@@ -14,7 +14,7 @@ struct FinnTextFieldDemoView: View {
     var body: some View {
         ScrollView {
             Text("Textfields")
-                .font(from: .title1)
+                .finnFont(.title1)
                 .padding(.bottom, Warp.Spacing.spacing200)
 
             FinnTextField(placeholder: "Default", text: $text)

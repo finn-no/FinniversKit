@@ -7,15 +7,15 @@ import Warp
 
 public class HorizontalIconCollectionViewCell: UICollectionViewCell {
     private static let titleSideMargin = Warp.Spacing.spacing100
-    private static let titleStyle = Warp.Typography.body
-    private static let bodyStyle = Warp.Typography.bodyStrong
+    private static let titleStyle = Label.Style.body
+    private static let bodyStyle = Label.Style.bodyStrong
 
     static func height(for viewModel: IconCollectionViewModel, withWidth width: CGFloat) -> CGFloat {
         let imageSize = viewModel.image.size
         let textWidth = width - imageSize.width - (3 * titleSideMargin)
 
-        let titleHeight = viewModel.title?.height(withConstrainedWidth: textWidth, font: titleStyle.uiFont) ?? 0
-        let bodyHeight = viewModel.text.height(withConstrainedWidth: textWidth, font: bodyStyle.uiFont)
+        let titleHeight = viewModel.title?.height(withConstrainedWidth: textWidth, font: titleStyle.font) ?? 0
+        let bodyHeight = viewModel.text.height(withConstrainedWidth: textWidth, font: bodyStyle.font)
 
         let textHeight = titleHeight + bodyHeight + Warp.Spacing.spacing50
 

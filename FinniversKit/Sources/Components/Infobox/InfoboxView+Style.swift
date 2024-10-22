@@ -4,7 +4,6 @@
 
 import Foundation
 import SwiftUI
-import Warp
 
 public extension InfoboxView {
     enum Style {
@@ -12,7 +11,7 @@ public extension InfoboxView {
         case normal(backgroundColor: UIColor, primaryButtonIcon: UIImage?)
         case warning
 
-        var titleStyle: Warp.Typography {
+        var titleStyle: Label.Style {
             switch self {
             case .small:
                 return .bodyStrong
@@ -23,7 +22,7 @@ public extension InfoboxView {
             }
         }
 
-        var detailStyle: Warp.Typography {
+        var detailStyle: Label.Style {
             switch self {
             case .small:
                 return .caption

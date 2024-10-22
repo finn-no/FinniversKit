@@ -20,10 +20,9 @@ public struct ToastSwiftUIView: View {
         HStack(spacing: Warp.Spacing.spacing200) {
             Image(named: style.imageAsset)
             Text(text)
-                .font(from: .body)
+                .finnFont(.body)
                 .foregroundColor(.text)
                 .padding(.vertical, Warp.Spacing.spacing200)
-                .fixedSize(horizontal: false, vertical: true)
             Spacer()
             if let actionButton {
                 ActionButtonView(actionButton: actionButton, style: style)

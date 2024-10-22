@@ -65,7 +65,7 @@ public struct LoadingSwiftUIView: View {
 
                 if let message {
                     Text(message)
-                        .font(from: .bodyStrong)
+                        .finnFont(.bodyStrong)
                         .foregroundColor(textColor)
                 }
             }

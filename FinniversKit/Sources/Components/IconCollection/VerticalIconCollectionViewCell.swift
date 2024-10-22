@@ -7,11 +7,11 @@ import Warp
 
 public class VerticalIconCollectionViewCell: UICollectionViewCell {
     private static let textSideMargin = Warp.Spacing.spacing100
-    private static let bodyStyle = Warp.Typography.body
+    private static let bodyStyle = Label.Style.body
 
     static func height(for viewModel: IconCollectionViewModel, withWidth width: CGFloat) -> CGFloat {
         let textWidth = width - (2 * textSideMargin)
-        let textHeight = viewModel.text.height(withConstrainedWidth: textWidth, font: bodyStyle.uiFont)
+        let textHeight = viewModel.text.height(withConstrainedWidth: textWidth, font: bodyStyle.font)
 
         let imageHeight = viewModel.image.size.height
 

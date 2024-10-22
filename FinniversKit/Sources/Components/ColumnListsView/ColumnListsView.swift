@@ -22,7 +22,7 @@ public class ColumnListsView: UIView {
 
     private var textItems: [String] = []
 
-    private var style: Warp.Typography = .caption
+    private var style: Label.Style = .caption
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
@@ -46,7 +46,7 @@ public class ColumnListsView: UIView {
 
     // MARK: - Public methods
 
-    public func configure(with textItems: [String], numberOfColumns: Int, style: Warp.Typography) {
+    public func configure(with textItems: [String], numberOfColumns: Int, style: Label.Style) {
         self.textItems = textItems
         self.numberOfColumns = numberOfColumns
         self.style = style

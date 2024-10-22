@@ -1,20 +1,19 @@
 //
 //  Copyright © FINN.no AS. All rights reserved.
 //
-import Warp
 
 public extension QuestionnaireView {
     enum Style {
         case normal(backgroundColor: UIColor, primaryButtonIcon: UIImage?)
 
-        var titleStyle: Warp.Typography {
+        var titleStyle: Label.Style {
             switch self {
             case .normal:
                 return .detail
             }
         }
 
-        var detailStyle: Warp.Typography {
+        var detailStyle: Label.Style {
             switch self {
             case .normal:
                 return .bodyStrong

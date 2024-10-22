@@ -4,7 +4,6 @@
 
 import FinniversKit
 import DemoKit
-import Warp
 
 public class LabelDemoView: UIView, Demoable {
     override init(frame: CGRect) {
@@ -29,7 +28,7 @@ public class LabelDemoView: UIView, Demoable {
         let labelBody = Label(style: .body)
         let labelDetail = Label(style: .detail)
 
-        let testStyle: Warp.Typography = .body
+        let testStyle: Label.Style = .body
         let multilineLabel = Label(style: testStyle)
         let label1 = Label(style: testStyle)
         let label2 = Label(style: testStyle)

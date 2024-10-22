@@ -98,6 +98,7 @@
 		444246032137D60400D42AB8 /* FavoriteFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444246002137D60400D42AB8 /* FavoriteFolderViewModel.swift */; };
 		4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6661FDB2B110033DBC1 /* Button+Style.swift */; };
 		4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6671FDB2B110033DBC1 /* Button.swift */; };
+		4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6751FDB2B110033DBC1 /* Label+Style.swift */; };
 		4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6761FDB2B110033DBC1 /* Label.swift */; };
 		4447F6E91FDB2B110033DBC1 /* Ribbon+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F69F1FDB2B110033DBC1 /* Ribbon+Style.swift */; };
 		4447F6EA1FDB2B110033DBC1 /* RibbonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6A01FDB2B110033DBC1 /* RibbonView.swift */; };
@@ -257,6 +258,7 @@
 		9B93F210230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */; };
 		9B9663CB2460383900D34BA1 /* ConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9663CA2460383900D34BA1 /* ConfigTests.swift */; };
 		9BA8248623859B4400163F24 /* MapZoomRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA8248523859B4400163F24 /* MapZoomRange.swift */; };
+		9BB6802F2462F763001ADACF /* Font+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB6802E2462F763001ADACF /* Font+SwiftUI.swift */; };
 		9BB680322462F7AC001ADACF /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB680312462F7AC001ADACF /* View+Extensions.swift */; };
 		9BB734C42462EA0500E05435 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB734C32462EA0500E05435 /* ButtonStyle.swift */; };
 		9BBC903E24FD24D20003D2D8 /* UITraitCollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC903D24FD24D20003D2D8 /* UITraitCollectionExtensions.swift */; };
@@ -543,6 +545,7 @@
 		444246002137D60400D42AB8 /* FavoriteFolderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFolderViewModel.swift; sourceTree = "<group>"; };
 		4447F6661FDB2B110033DBC1 /* Button+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
 		4447F6671FDB2B110033DBC1 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		4447F6751FDB2B110033DBC1 /* Label+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Label+Style.swift"; sourceTree = "<group>"; };
 		4447F6761FDB2B110033DBC1 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		4447F69F1FDB2B110033DBC1 /* Ribbon+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ribbon+Style.swift"; sourceTree = "<group>"; };
 		4447F6A01FDB2B110033DBC1 /* RibbonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonView.swift; sourceTree = "<group>"; };
@@ -701,6 +704,7 @@
 		9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDirectionalEdgeInsetsExtensions.swift; sourceTree = "<group>"; };
 		9B9663CA2460383900D34BA1 /* ConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigTests.swift; sourceTree = "<group>"; };
 		9BA8248523859B4400163F24 /* MapZoomRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoomRange.swift; sourceTree = "<group>"; };
+		9BB6802E2462F763001ADACF /* Font+SwiftUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Font+SwiftUI.swift"; sourceTree = "<group>"; };
 		9BB680312462F7AC001ADACF /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		9BB734C32462EA0500E05435 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		9BBC903D24FD24D20003D2D8 /* UITraitCollectionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITraitCollectionExtensions.swift; sourceTree = "<group>"; };
@@ -1199,6 +1203,7 @@
 		4408A6A12027AC41008C0BD9 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				9BB6802E2462F763001ADACF /* Font+SwiftUI.swift */,
 				4408A6A22027AC41008C0BD9 /* UIFont+FinniversKit.swift */,
 			);
 			path = Font;
@@ -1445,6 +1450,7 @@
 		4447F6741FDB2B110033DBC1 /* Label */ = {
 			isa = PBXGroup;
 			children = (
+				4447F6751FDB2B110033DBC1 /* Label+Style.swift */,
 				4447F6761FDB2B110033DBC1 /* Label.swift */,
 			);
 			path = Label;
@@ -3268,6 +3274,7 @@
 				44A557B522E72187001667AE /* HeartTableViewCell.swift in Sources */,
 				B2829E2D2C7F054F0032BDFA /* HTMLAttributeStack.swift in Sources */,
 				573B3FF82ACC1B75005096EC /* SettingsViewIconCellModel.swift in Sources */,
+				4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */,
 				441FE431209A24E500B04EF1 /* AdRecommendationsGridHeaderView.swift in Sources */,
 				0881432A22E1B974008CB5DA /* ToastButton.swift in Sources */,
 				9B28DE8023266C5000D69C15 /* Panel.swift in Sources */,
@@ -3445,6 +3452,7 @@
 				45B2E06A207CF5C100C68B92 /* StringExtensions.swift in Sources */,
 				E87A7BF328ED6AE0007094F2 /* NeighborhoodProfileBannerView.swift in Sources */,
 				4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */,
+				9BB6802F2462F763001ADACF /* Font+SwiftUI.swift in Sources */,
 				4441F9F322CCF76300DCFD2F /* AddressMapView.swift in Sources */,
 				9BEB287D231D486100D28BAD /* LoanValuesView.swift in Sources */,
 				9BB680322462F7AC001ADACF /* View+Extensions.swift in Sources */,

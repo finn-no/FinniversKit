@@ -39,13 +39,13 @@ public struct ResultSwiftUIView: View {
                     .padding(.bottom, Warp.Spacing.spacing100)
             }
             Text(title)
-                .font(from: .title3)
+                .finnFont(.title3)
                 .foregroundColor(.text)
                 .multilineTextAlignment(.center)
                 .padding(.bottom, Warp.Spacing.spacing50)
             if let text {
                 Text(text)
-                    .font(from: .body)
+                    .finnFont(.body)
                     .foregroundColor(.text)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, Warp.Spacing.spacing100)

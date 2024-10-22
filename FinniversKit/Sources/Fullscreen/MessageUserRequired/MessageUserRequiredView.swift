@@ -20,8 +20,8 @@ public class MessageUserRequiredView: UIView {
 
     private lazy var messageView: UITextView = {
         let view = UITextView(withAutoLayout: true)
-        let style = Warp.Typography.bodyStrong
-        view.font = style.uiFont
+        let style = Label.Style.bodyStrong
+        view.font = style.font
         view.textColor = .text
         view.textAlignment = .center
         view.backgroundColor = .clear

@@ -52,7 +52,7 @@ struct InfoboxSwiftUIPresentationView: View {
                 }
 
             }
-            .font(from: .caption)
+            .finnFont(.caption)
             .foregroundStyle(.secondary)
         }
         .padding()

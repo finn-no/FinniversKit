@@ -57,11 +57,11 @@ class ObjectPageTitleDemoView: UIView, Tweakable {
 
     private func configureTitleView(
         title: String? = nil,
-        titleStyle: Warp.Typography = .title2,
+        titleStyle: Label.Style = .title2,
         subtitle: String? = nil,
-        subtitleStyle: Warp.Typography = .body,
+        subtitleStyle: Label.Style = .body,
         caption: String? = nil,
-        captionStyle: Warp.Typography = .caption,
+        captionStyle: Label.Style = .caption,
         ribbonViewModel: RibbonViewModel? = nil,
         spacingAfterTitle: CGFloat = Warp.Spacing.spacing50,
         spacingAfterSubtitle: CGFloat = Warp.Spacing.spacing50,

@@ -13,7 +13,7 @@ struct FinnTextViewDemoView: View {
     var body: some View {
         VStack {
             Text("Textviews")
-                .font(from: .title1)
+                .finnFont(.title1)
                 .padding(.bottom, Warp.Spacing.spacing200)
 
             FinnTextView(text: $text).frame(height: 100)

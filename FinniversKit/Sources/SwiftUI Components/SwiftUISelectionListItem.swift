@@ -29,12 +29,12 @@ struct SwiftUISelectionListItem<ItemType>: View {
 
             VStack(alignment: .leading) {
                 Text(itemModel.title)
-                    .font(from: .captionStrong)
+                    .finnFont(.captionStrong)
                     .foregroundColor(.text)
 
                 if let description = itemModel.description {
                     HTMLText(description)
-                        .font(from: .caption)
+                        .finnFont(.caption)
                         .foregroundColor(.textSubtle)
                 }
             }

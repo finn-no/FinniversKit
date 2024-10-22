@@ -52,11 +52,11 @@ public extension NMPInfoboxView {
             self.secondaryButtonInteraction = secondaryButtonInteraction
         }
 
-        var titleStyle: Warp.Typography {
+        var titleStyle: Label.Style {
             .bodyStrong
         }
 
-        var detailStyle: Warp.Typography {
+        var detailStyle: Label.Style {
             .body
         }
     }
@@ -83,9 +83,9 @@ public struct NMPInfoboxView: View {
 
             VStack(alignment: .leading, spacing: Warp.Spacing.spacing100) {
                 Text(viewModel.title)
-                    .font(from: viewModel.titleStyle)
+                    .finnFont(viewModel.titleStyle)
                 Text(viewModel.detail)
-                    .font(from: viewModel.detailStyle)
+                    .finnFont(viewModel.detailStyle)
 
                 if let linkInteraction = viewModel.linkInteraction {
                     SwiftUI.Button(

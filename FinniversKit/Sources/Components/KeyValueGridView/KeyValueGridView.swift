@@ -14,8 +14,8 @@ public class KeyValueGridView: UIView {
     // MARK: - Private properties
 
     private var data: [KeyValuePair] = []
-    private var titleStyle: Warp.Typography = .body
-    private var valueStyle: Warp.Typography = .bodyStrong
+    private var titleStyle: Label.Style = .body
+    private var valueStyle: Label.Style = .bodyStrong
     private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
 
     // MARK: - Initializers
@@ -34,8 +34,8 @@ public class KeyValueGridView: UIView {
 
     public func configure(
         with data: [KeyValuePair],
-        titleStyle: Warp.Typography = .body,
-        valueStyle: Warp.Typography = .bodyStrong
+        titleStyle: Label.Style = .body,
+        valueStyle: Label.Style = .bodyStrong
     ) {
         self.data = data
         self.titleStyle = titleStyle

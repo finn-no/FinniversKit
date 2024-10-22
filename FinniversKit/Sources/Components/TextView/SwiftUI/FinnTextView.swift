@@ -26,7 +26,7 @@ public struct FinnTextView: View {
         if text.isEmpty {
             Text(placeholderText)
                 .foregroundColor(Color.textDisabled)
-                .font(from: .body)
+                .finnFont(.body)
                 .padding(.vertical, Warp.Spacing.spacing100)
                 .padding(.leading, Warp.Spacing.spacing100 + 5) // UITextView.textContainerInset.left + 5 to align with caret
                 .padding(.trailing, Warp.Spacing.spacing100)
