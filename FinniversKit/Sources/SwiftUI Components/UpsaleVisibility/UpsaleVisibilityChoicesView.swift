@@ -70,7 +70,6 @@ struct ExtraVisibilityProductView: View {
         title: "adIn.userAdManagement.upsale.extra.title",
         buttonTitle: "adIn.userAdManagement.upsale.extra.button.title",
         productModels: [UpsaleVisibilityChoiceModel(
-//            category: .bump,
             title: "Anbefalte annonser",
             price: "119 kr",
             description: "Økt synlighet blant lignende annonser - 7 dager",

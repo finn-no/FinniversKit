@@ -1,7 +1,6 @@
 import UIKit
 
 public struct UpsaleVisibilityChoiceModel: Hashable {
-//    let category: UpsaleVisibilityResponse.Category?
     let title: String
     let description: String?
     let specificationUrn: String?
@@ -17,14 +16,4 @@ public struct UpsaleVisibilityChoiceModel: Hashable {
         self.specificationUrn = specificationUrn
         self.icon = icon
     }
-
-//    init() {
-//        self.init(
-//            category: response.category,
-//            title: response.heading,
-//            price: response.price?.actual,
-//            description: response.description,
-//            specificationUrn: response.specificationUrn
-//        )
-//    }
 }
