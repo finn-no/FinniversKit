@@ -39,15 +39,15 @@ public struct PushNotificationNudgingView: View {
 
                 VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
                     Text(viewModel.title)
-                        .font(.finnFont(.bodyStrong))
+                        .font(from: .bodyStrong)
                     if let description = viewModel.description {
                         Text(description)
-                            .finnFont(.caption)
+                            .font(from: .caption)
                             .foregroundColor(.text)
                     }
                     if let linkDescription = viewModel.linkDescription {
                         Text(linkDescription)
-                            .finnFont(.caption)
+                            .font(from: .caption)
                             .foregroundColor(.text)
                             .multilineTextAlignment(.leading)
                             .onTapGesture {

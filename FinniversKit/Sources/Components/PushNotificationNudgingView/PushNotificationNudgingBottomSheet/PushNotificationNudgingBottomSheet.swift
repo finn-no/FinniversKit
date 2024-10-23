@@ -11,7 +11,7 @@ public struct PushNotificationNudgingBottomSheet: View {
     public var body: some View {
         VStack(alignment: .center, spacing: Warp.Spacing.spacing200) {
             Text(viewModel.title)
-                .finnFont(.title3)
+                .font(from: .title3)
                 .padding(.top, Warp.Spacing.spacing100)
 
             ForEach(viewModel.sections, id: \.self) {
@@ -40,11 +40,11 @@ private extension PushNotificationNudgingBottomSheet {
             VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
                 if let title = section.title {
                     Text(title)
-                        .finnFont(.bodyStrong)
+                        .font(from: .bodyStrong)
                         .fixedSize(horizontal: false, vertical: true)
                 }
                 Text(section.description)
-                    .finnFont(.body)
+                    .font(from: .body)
                     .fixedSize(horizontal: false, vertical: true)
             }
 
