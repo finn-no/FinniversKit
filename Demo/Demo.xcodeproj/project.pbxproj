@@ -177,6 +177,8 @@
 		9BBC904024FD252B0003D2D8 /* UITraitCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC903F24FD252B0003D2D8 /* UITraitCollection+Extensions.swift */; };
 		B26B58342B4BFEFB000E0245 /* InfoboxSwiftUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26B58332B4BFEFB000E0245 /* InfoboxSwiftUIViewController.swift */; };
 		B2B8F16B2B483F2F0090573E /* NMPInfoboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B8F16A2B483F2F0090573E /* NMPInfoboxViewController.swift */; };
+		B656EA972CC289AB00751289 /* PushNotificationNudgingDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B656EA962CC289AB00751289 /* PushNotificationNudgingDemoView.swift */; };
+		B656EA992CC28A2600751289 /* PushNotificationNudgingBottomSheetDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B656EA982CC28A2600751289 /* PushNotificationNudgingBottomSheetDemoView.swift */; };
 		D75E14D727371692008EB126 /* FrontPageSavedSearchFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75E14D627371692008EB126 /* FrontPageSavedSearchFactory.swift */; };
 		D7C750382731C61A002BDE98 /* FrontPageSavedSearchesDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C750372731C61A002BDE98 /* FrontPageSavedSearchesDemoView.swift */; };
 		D7D514C7272942E10065E2F6 /* PromotionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D514C6272942E10065E2F6 /* PromotionDemoView.swift */; };
@@ -386,6 +388,8 @@
 		9BBC903F24FD252B0003D2D8 /* UITraitCollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITraitCollection+Extensions.swift"; sourceTree = "<group>"; };
 		B26B58332B4BFEFB000E0245 /* InfoboxSwiftUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxSwiftUIViewController.swift; sourceTree = "<group>"; };
 		B2B8F16A2B483F2F0090573E /* NMPInfoboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMPInfoboxViewController.swift; sourceTree = "<group>"; };
+		B656EA962CC289AB00751289 /* PushNotificationNudgingDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationNudgingDemoView.swift; sourceTree = "<group>"; };
+		B656EA982CC28A2600751289 /* PushNotificationNudgingBottomSheetDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationNudgingBottomSheetDemoView.swift; sourceTree = "<group>"; };
 		D75E14D627371692008EB126 /* FrontPageSavedSearchFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageSavedSearchFactory.swift; sourceTree = "<group>"; };
 		D7C750372731C61A002BDE98 /* FrontPageSavedSearchesDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageSavedSearchesDemoView.swift; sourceTree = "<group>"; };
 		D7D514C6272942E10065E2F6 /* PromotionDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionDemoView.swift; sourceTree = "<group>"; };
@@ -1595,6 +1599,8 @@
 				17F8EEC529409FE3000E26C9 /* SwiftUISelectionListDemoView.swift */,
 				27FAFCB72988FE6100FEDAE0 /* ToastSwiftUIDemoView.swift */,
 				277307E4298C108800B8E27F /* ResultSwiftUIDemoView.swift */,
+				B656EA962CC289AB00751289 /* PushNotificationNudgingDemoView.swift */,
+				B656EA982CC28A2600751289 /* PushNotificationNudgingBottomSheetDemoView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -1847,6 +1853,7 @@
 				DA083C2E2462BCA800B26235 /* SwiftUIDemoViews.swift in Sources */,
 				46E77469242CEF0A008A5E93 /* FavoriteFoldersListViewDemoViewHelpers.swift in Sources */,
 				46E7741F242CEF0A008A5E93 /* ButtonDemoView.swift in Sources */,
+				B656EA992CC28A2600751289 /* PushNotificationNudgingBottomSheetDemoView.swift in Sources */,
 				277307E5298C108800B8E27F /* ResultSwiftUIDemoView.swift in Sources */,
 				46E773D3242CEF0A008A5E93 /* EmptyViewDemoView.swift in Sources */,
 				46E77459242CEF0A008A5E93 /* AdRecommendationsGridViewDemoViewHelpers.swift in Sources */,
@@ -1919,6 +1926,7 @@
 				D7D514C7272942E10065E2F6 /* PromotionDemoView.swift in Sources */,
 				46E773D7242CEF0A008A5E93 /* FavoriteAdsListDemoViewController.swift in Sources */,
 				46E77406242CEF0A008A5E93 /* VisibilityDrivenTitleDemoView.swift in Sources */,
+				B656EA972CC289AB00751289 /* PushNotificationNudgingDemoView.swift in Sources */,
 				46E773F5242CEF0A008A5E93 /* SelectorTitleViewDemoView.swift in Sources */,
 				17EE08632AA8ABCC00A623F2 /* FrontPageTransactionListDemoViewController.swift in Sources */,
 				46E77435242CEF0A008A5E93 /* PhaseListViewDemo.swift in Sources */,
