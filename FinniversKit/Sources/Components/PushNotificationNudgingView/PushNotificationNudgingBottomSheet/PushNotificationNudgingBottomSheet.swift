@@ -36,6 +36,7 @@ private extension PushNotificationNudgingBottomSheet {
         HStack(alignment: .center, spacing: Warp.Spacing.spacing200) {
             section.icon
                 .padding(.leading, Warp.Spacing.spacing100)
+                .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
                 if let title = section.title {
