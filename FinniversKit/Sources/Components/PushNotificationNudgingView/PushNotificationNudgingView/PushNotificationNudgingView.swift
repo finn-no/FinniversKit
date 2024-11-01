@@ -78,6 +78,7 @@ public struct PushNotificationNudgingView: View {
             Divider()
                 .foregroundColor(.border)
         }
+        .accessibilityElement(children: .combine)
     }
 }
 
