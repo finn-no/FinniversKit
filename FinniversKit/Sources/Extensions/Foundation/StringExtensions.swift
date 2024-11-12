@@ -35,7 +35,7 @@ public extension String {
 
     // Extension if we want to ignore emojies for VoiceOver reader
     func withoutEmoji() -> String {
-        let filteredScalars = unicodeScalars.filter { !$0.properties.isEmojiPresentation }
+        let filteredScalars = unicodeScalars.filter { $0.value <= 255 }
         return String(filteredScalars)
     }
 }
