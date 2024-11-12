@@ -18,6 +18,8 @@ enum SwiftUIDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case textView
     case toast
     case resultView
+    case pushNotificationNudging
+    case pushNotificationNudgingBottomSheet
 
     static var groupTitle: String { "SwiftUI" }
     static var numberOfDemos: Int { allCases.count }
@@ -54,6 +56,10 @@ enum SwiftUIDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return ToastSwiftUIDemoView_Previews()
         case .resultView:
             return ResultSwiftUIDemoViewController()
+        case .pushNotificationNudging:
+            return PushNotificationNudgingDemoView_Previews()
+        case .pushNotificationNudgingBottomSheet:
+            return PushNotificationNudgingBottomSheetDemoView_Previews()
         }
     }
 }

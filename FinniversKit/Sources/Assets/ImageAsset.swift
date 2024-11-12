@@ -44,6 +44,8 @@ enum ImageAsset: String {
     case attachmentMore
     case avatar
     case bankID
+    case bell
+    case bellOff
     case betaPill
     case calendar
     case camera
@@ -57,6 +59,7 @@ enum ImageAsset: String {
     case checkmarkBig
     case checkmarkBlue
     case close
+    case closeCross
     case confetti1
     case confetti2
     case consentTransparency
@@ -172,6 +175,8 @@ enum ImageAsset: String {
             .attachmentMore,
             .avatar,
             .bankID,
+            .bell,
+            .bellOff,
             .betaPill,
             .calendar,
             .camera,
@@ -185,6 +190,7 @@ enum ImageAsset: String {
             .checkmarkBig,
             .checkmarkBlue,
             .close,
+            .closeCross,
             .confetti1,
             .confetti2,
             .consentTransparency,

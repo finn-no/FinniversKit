@@ -296,6 +296,10 @@
 		B2829E2D2C7F054F0032BDFA /* HTMLAttributeStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2829E2C2C7F054F0032BDFA /* HTMLAttributeStack.swift */; };
 		B2829E2F2C7F05D20032BDFA /* LocalizedStringKey+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2829E2E2C7F05D20032BDFA /* LocalizedStringKey+Extensions.swift */; };
 		B6801C1C2982ECCA004A0F4F /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6801C1B2982ECCA004A0F4F /* SettingsHeaderView.swift */; };
+		B6F5ECB12CB56CCA00E24EC3 /* PushNotificationNudgingBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F5ECAA2CB56CCA00E24EC3 /* PushNotificationNudgingBottomSheet.swift */; };
+		B6F5ECB22CB56CCA00E24EC3 /* PushNotificationNudgingBottomSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F5ECAB2CB56CCA00E24EC3 /* PushNotificationNudgingBottomSheetViewModel.swift */; };
+		B6F5ECB32CB56CCA00E24EC3 /* PushNotificationNudgingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F5ECAD2CB56CCA00E24EC3 /* PushNotificationNudgingView.swift */; };
+		B6F5ECB42CB56CCA00E24EC3 /* PushNotificationNudgingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F5ECAE2CB56CCA00E24EC3 /* PushNotificationNudgingViewModel.swift */; };
 		CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F08C20615990002AA385 /* TextField+State.swift */; };
 		CF05B7E023325968003A7F1C /* FavoriteFolderActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05B7DF23325968003A7F1C /* FavoriteFolderActionButton.swift */; };
 		CF05BA02233B78BC003A7F1C /* FavoriteSearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05BA01233B78BC003A7F1C /* FavoriteSearchEmptyView.swift */; };
@@ -736,6 +740,10 @@
 		B2829E2C2C7F054F0032BDFA /* HTMLAttributeStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLAttributeStack.swift; sourceTree = "<group>"; };
 		B2829E2E2C7F05D20032BDFA /* LocalizedStringKey+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedStringKey+Extensions.swift"; sourceTree = "<group>"; };
 		B6801C1B2982ECCA004A0F4F /* SettingsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
+		B6F5ECAA2CB56CCA00E24EC3 /* PushNotificationNudgingBottomSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationNudgingBottomSheet.swift; sourceTree = "<group>"; };
+		B6F5ECAB2CB56CCA00E24EC3 /* PushNotificationNudgingBottomSheetViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationNudgingBottomSheetViewModel.swift; sourceTree = "<group>"; };
+		B6F5ECAD2CB56CCA00E24EC3 /* PushNotificationNudgingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationNudgingView.swift; sourceTree = "<group>"; };
+		B6F5ECAE2CB56CCA00E24EC3 /* PushNotificationNudgingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationNudgingViewModel.swift; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD2F08C20615990002AA385 /* TextField+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+State.swift"; sourceTree = "<group>"; };
 		CF05B7DF23325968003A7F1C /* FavoriteFolderActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFolderActionButton.swift; sourceTree = "<group>"; };
@@ -1392,6 +1400,7 @@
 				CF0F6B902360682100CA62FD /* Priming */,
 				D7D514C227293F5D0065E2F6 /* PromotionView */,
 				F2C3E95A22CB634700CED7E0 /* QuestionnaireView */,
+				B6F5ECB02CB56CCA00E24EC3 /* PushNotificationNudgingView */,
 				CF8F024321DE0FF9004C4042 /* RefreshControl */,
 				9A37D8B81C3158FE1373F3E4 /* RemoteImageView */,
 				F2772F3F2280397E0002D21F /* ReviewButtonView */,
@@ -2343,6 +2352,33 @@
 			path = Sources/Components/NMPInfobox;
 			sourceTree = SOURCE_ROOT;
 		};
+		B6F5ECAC2CB56CCA00E24EC3 /* PushNotificationNudgingBottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				B6F5ECAA2CB56CCA00E24EC3 /* PushNotificationNudgingBottomSheet.swift */,
+				B6F5ECAB2CB56CCA00E24EC3 /* PushNotificationNudgingBottomSheetViewModel.swift */,
+			);
+			path = PushNotificationNudgingBottomSheet;
+			sourceTree = "<group>";
+		};
+		B6F5ECAF2CB56CCA00E24EC3 /* PushNotificationNudgingView */ = {
+			isa = PBXGroup;
+			children = (
+				B6F5ECAD2CB56CCA00E24EC3 /* PushNotificationNudgingView.swift */,
+				B6F5ECAE2CB56CCA00E24EC3 /* PushNotificationNudgingViewModel.swift */,
+			);
+			path = PushNotificationNudgingView;
+			sourceTree = "<group>";
+		};
+		B6F5ECB02CB56CCA00E24EC3 /* PushNotificationNudgingView */ = {
+			isa = PBXGroup;
+			children = (
+				B6F5ECAC2CB56CCA00E24EC3 /* PushNotificationNudgingBottomSheet */,
+				B6F5ECAF2CB56CCA00E24EC3 /* PushNotificationNudgingView */,
+			);
+			path = PushNotificationNudgingView;
+			sourceTree = "<group>";
+		};
 		CF0F6B902360682100CA62FD /* Priming */ = {
 			isa = PBXGroup;
 			children = (
@@ -3125,12 +3161,14 @@
 				44D9125F2077AC8A00486848 /* EmptyView.swift in Sources */,
 				44A557B622E72187001667AE /* CheckboxTableViewCell.swift in Sources */,
 				CF376C18231D452100ED2B24 /* Array+Step.swift in Sources */,
+				B6F5ECB32CB56CCA00E24EC3 /* PushNotificationNudgingView.swift in Sources */,
 				E65085DA292BC03400A43B07 /* SwiftUIRadioButton.swift in Sources */,
 				CF164CFD230EB0F900250822 /* CheckmarkImageView.swift in Sources */,
 				9B06096823F14B0A005CB592 /* SafetyElementViewModel.swift in Sources */,
 				CF164D15230FFB7400250822 /* FavoriteAdActionViewModel.swift in Sources */,
 				CF136ACD2203211100247B30 /* InfoboxView.swift in Sources */,
 				4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */,
+				B6F5ECB12CB56CCA00E24EC3 /* PushNotificationNudgingBottomSheet.swift in Sources */,
 				179D06A92906A39D00A65E3A /* HTMLStringParser.swift in Sources */,
 				9B06097023F14BB4005CB592 /* HeaderView.swift in Sources */,
 				AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */,
@@ -3425,6 +3463,7 @@
 				E65085D4292BBF7500A43B07 /* StatefulPreviewWrapper.swift in Sources */,
 				9A37D9EDC4E78EC664D528FE /* FeedbackView.swift in Sources */,
 				5DCE0882280FDDF100ED7407 /* MonthAndYearPickerView.swift in Sources */,
+				B6F5ECB42CB56CCA00E24EC3 /* PushNotificationNudgingViewModel.swift in Sources */,
 				9F213438F5413991D1B3D7CD /* FullscreenGalleryViewModel.swift in Sources */,
 				9F2138937E903BEA8F7A8C7C /* FullscreenGalleryViewController.swift in Sources */,
 				CFF54E2E234E192A008E18BE /* FavoriteAdsSubtitleView.swift in Sources */,
@@ -3457,6 +3496,7 @@
 				DA083E7324630BC400B26235 /* SettingsSection.swift in Sources */,
 				494047FE23CDBBA100ECBCFD /* ViewingItemViewModel.swift in Sources */,
 				CF05B7E023325968003A7F1C /* FavoriteFolderActionButton.swift in Sources */,
+				B6F5ECB22CB56CCA00E24EC3 /* PushNotificationNudgingBottomSheetViewModel.swift in Sources */,
 				F253C50E2313F9F5008175FD /* VerificationView.swift in Sources */,
 				0379D1EE2AB3321300CC1B38 /* UIImage+FinniversKit.swift in Sources */,
 				9A37DC6E6F0401357C564B93 /* RemoteImageView.swift in Sources */,
