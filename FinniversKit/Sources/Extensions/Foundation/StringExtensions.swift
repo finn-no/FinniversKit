@@ -32,6 +32,12 @@ public extension String {
     func asAttributedString(attributes: [NSAttributedString.Key: Any]? = nil) -> NSAttributedString {
         NSAttributedString(string: self, attributes: attributes)
     }
+
+    // Extension if we want to ignore emojies for VoiceOver reader
+    func withoutEmoji() -> String {
+        let filteredScalars = unicodeScalars.filter { !$0.properties.isEmojiPresentation }
+        return String(filteredScalars)
+    }
 }
 
 extension Optional where Wrapped == String {
