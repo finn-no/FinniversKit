@@ -40,12 +40,10 @@ public struct PushNotificationNudgingView: View {
                 VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
                     Text(viewModel.title)
                         .font(from: .bodyStrong)
-                        .accessibilityLabel(viewModel.title.withoutEmoji())
                     if let description = viewModel.description {
                         Text(description)
                             .font(from: .caption)
                             .foregroundColor(.text)
-                            .accessibilityLabel(description.withoutEmoji())
                     }
                     if let linkDescription = viewModel.linkDescription {
                         Text(linkDescription)
