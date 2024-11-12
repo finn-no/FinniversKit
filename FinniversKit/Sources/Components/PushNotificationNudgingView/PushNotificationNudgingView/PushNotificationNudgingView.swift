@@ -45,7 +45,7 @@ public struct PushNotificationNudgingView: View {
                         Text(description)
                             .font(from: .caption)
                             .foregroundColor(.text)
-                            .accessibilityLabel(viewModel.title.withoutEmoji())
+                            .accessibilityLabel(description.withoutEmoji())
                     }
                     if let linkDescription = viewModel.linkDescription {
                         Text(linkDescription)
