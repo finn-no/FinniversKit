@@ -33,9 +33,9 @@ public extension String {
         NSAttributedString(string: self, attributes: attributes)
     }
 
-    // Extension if we want to ignore emojies for VoiceOver reader
+    // Ignores emojies symbols accrodingly to https://www.ascii-code.com
     func withoutEmoji() -> String {
-        let filteredScalars = unicodeScalars.filter { $0.value <= 255 }
+        let filteredScalars = unicodeScalars.filter { !$0.properties.isEmojiPresentation }
         return String(filteredScalars)
     }
 }
