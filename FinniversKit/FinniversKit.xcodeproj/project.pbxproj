@@ -296,6 +296,7 @@
 		B2829E2D2C7F054F0032BDFA /* HTMLAttributeStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2829E2C2C7F054F0032BDFA /* HTMLAttributeStack.swift */; };
 		B2829E2F2C7F05D20032BDFA /* LocalizedStringKey+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2829E2E2C7F05D20032BDFA /* LocalizedStringKey+Extensions.swift */; };
 		B6801C1C2982ECCA004A0F4F /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6801C1B2982ECCA004A0F4F /* SettingsHeaderView.swift */; };
+		B6B496952CE4C52400DB2004 /* StringExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B496942CE4C51900DB2004 /* StringExtensionsTests.swift */; };
 		B6F5ECB12CB56CCA00E24EC3 /* PushNotificationNudgingBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F5ECAA2CB56CCA00E24EC3 /* PushNotificationNudgingBottomSheet.swift */; };
 		B6F5ECB22CB56CCA00E24EC3 /* PushNotificationNudgingBottomSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F5ECAB2CB56CCA00E24EC3 /* PushNotificationNudgingBottomSheetViewModel.swift */; };
 		B6F5ECB32CB56CCA00E24EC3 /* PushNotificationNudgingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F5ECAD2CB56CCA00E24EC3 /* PushNotificationNudgingView.swift */; };
@@ -740,6 +741,7 @@
 		B2829E2C2C7F054F0032BDFA /* HTMLAttributeStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLAttributeStack.swift; sourceTree = "<group>"; };
 		B2829E2E2C7F05D20032BDFA /* LocalizedStringKey+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedStringKey+Extensions.swift"; sourceTree = "<group>"; };
 		B6801C1B2982ECCA004A0F4F /* SettingsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
+		B6B496942CE4C51900DB2004 /* StringExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionsTests.swift; sourceTree = "<group>"; };
 		B6F5ECAA2CB56CCA00E24EC3 /* PushNotificationNudgingBottomSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationNudgingBottomSheet.swift; sourceTree = "<group>"; };
 		B6F5ECAB2CB56CCA00E24EC3 /* PushNotificationNudgingBottomSheetViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationNudgingBottomSheetViewModel.swift; sourceTree = "<group>"; };
 		B6F5ECAD2CB56CCA00E24EC3 /* PushNotificationNudgingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationNudgingView.swift; sourceTree = "<group>"; };
@@ -1022,6 +1024,7 @@
 		14F4F1BA1FD6CEA800E9CECA /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				B6B496962CE4C88000DB2004 /* Extensions */,
 				CF376C19231D455900ED2B24 /* StepSlider */,
 				14F4F1BD1FD6CEA800E9CECA /* Info.plist */,
 				9F213D8A2542DC1D6D998B43 /* Util */,
@@ -2352,6 +2355,14 @@
 			path = Sources/Components/NMPInfobox;
 			sourceTree = SOURCE_ROOT;
 		};
+		B6B496962CE4C88000DB2004 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B6B496942CE4C51900DB2004 /* StringExtensionsTests.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B6F5ECAC2CB56CCA00E24EC3 /* PushNotificationNudgingBottomSheet */ = {
 			isa = PBXGroup;
 			children = (
@@ -3137,6 +3148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6B496952CE4C52400DB2004 /* StringExtensionsTests.swift in Sources */,
 				1753871F291AA79600DA57D2 /* HTMLStringParserTextTranslatorTests.swift in Sources */,
 				178006AB2B99EE9A0027DD97 /* HTMLLexerTests.swift in Sources */,
 				178006AC2B99EE9A0027DD97 /* CharacterReaderTests.swift in Sources */,
