@@ -68,7 +68,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
     ]
 
     private lazy var regularConstraints: [NSLayoutConstraint] = [
-        descriptionLabel.bottomAnchor.constraint(lessThanOrEqualTo: container.bottomAnchor),
+        descriptionLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor),
 
         logoView.widthAnchor.constraint(equalToConstant: logoSizeRegular),
         logoView.heightAnchor.constraint(equalToConstant: logoSizeRegular),
