@@ -46,7 +46,7 @@ class MessageInputTextView: UIView {
     }()
 
     private lazy var legalText: UIHostingController<HTMLText> = {
-        let htmlText = HTMLText().font(.detail)
+        let htmlText = HTMLText("").font(.detail)
         let hostingController = UIHostingController(rootView: htmlText)
         hostingController.view.translatesAutoresizingMaskIntoConstraints = false
         hostingController.view.backgroundColor = .clear
