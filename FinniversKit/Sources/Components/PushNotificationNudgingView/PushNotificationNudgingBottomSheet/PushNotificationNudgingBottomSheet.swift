@@ -56,8 +56,7 @@ private extension PushNotificationNudgingBottomSheet {
     private func buttonView(_ button: PushNotificationNudgingBottomSheetViewModel.Button) -> some View {
         switch button.kind {
         case .allow:
-            return Warp.Button.create(
-                for: .primary,
+            return Warp.Button(
                 title: button.title,
                 action: {
                     button.action?()
@@ -65,12 +64,12 @@ private extension PushNotificationNudgingBottomSheet {
                 fullWidth: true
             )
         case .notNow:
-            return Warp.Button.create(
-                for: .secondary,
+            return Warp.Button(
                 title: button.title,
                 action: {
                     button.action?()
                 },
+                type: .secondary,
                 fullWidth: true
             )
         }
