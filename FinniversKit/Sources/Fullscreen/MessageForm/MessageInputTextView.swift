@@ -1,8 +1,5 @@
-//
-//  Copyright © 2019 FINN AS. All rights reserved.
-//
-
 import Foundation
+import SwiftUI
 import Warp
 
 protocol MessageInputTextViewDelegate: AnyObject {
@@ -48,12 +45,13 @@ class MessageInputTextView: UIView {
         return textView
     }()
 
-    private lazy var additionalInfoLabel: Label = {
-        let label = Label(style: .detail)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        return label
+    private lazy var legalText: UIHostingController<HTMLText> = {
+        let htmlText = HTMLText().font(.detail)
+        let hostingController = UIHostingController(rootView: htmlText)
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        hostingController.view.backgroundColor = .clear
+
+        return hostingController
     }()
 
     // MARK: - Internal properties
@@ -97,15 +95,16 @@ class MessageInputTextView: UIView {
     }
 
     required init(disclaimerText: String, additionalInfoText: String, messageLabel: String, messageHint: String, telephoneLabel: String, telephoneHint: String) {
+
         super.init(frame: .zero)
 
         setup()
         disclaimerLabel.text = disclaimerText
-        additionalInfoLabel.text = additionalInfoText
         textViewLabel.text = messageLabel
         textView.placeholderText = messageHint
         phoneViewLabel.text = telephoneLabel
         phoneView.placeholderText = telephoneHint
+        legalText.rootView.setHtml(additionalInfoText)
     }
 
     private func setup() {
@@ -114,33 +113,33 @@ class MessageInputTextView: UIView {
         addSubview(disclaimerLabel)
         addSubview(phoneViewLabel)
         addSubview(phoneView)
-        addSubview(additionalInfoLabel)
+        addSubview(legalText.view)
 
         NSLayoutConstraint.activate([
             textViewLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200),
             textViewLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
-            textViewLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
+            textViewLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             textViewLabel.bottomAnchor.constraint(equalTo: textView.topAnchor, constant: -Warp.Spacing.spacing100),
 
             textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
-            textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
+            textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             textView.bottomAnchor.constraint(equalTo: disclaimerLabel.topAnchor, constant: -Warp.Spacing.spacing100),
 
             disclaimerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
-            disclaimerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
+            disclaimerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             disclaimerLabel.bottomAnchor.constraint(equalTo: phoneViewLabel.topAnchor, constant: -Warp.Spacing.spacing200),
 
             phoneViewLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
-            phoneViewLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
+            phoneViewLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             phoneViewLabel.bottomAnchor.constraint(equalTo: phoneView.topAnchor, constant: -Warp.Spacing.spacing100),
 
             phoneView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
-            phoneView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
-            phoneView.bottomAnchor.constraint(equalTo: additionalInfoLabel.topAnchor, constant: -Warp.Spacing.spacing100),
+            phoneView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
+            phoneView.bottomAnchor.constraint(equalTo: legalText.view.topAnchor, constant: -Warp.Spacing.spacing200),
 
-            additionalInfoLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
-            additionalInfoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
-            additionalInfoLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100)
+            legalText.view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            legalText.view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
+            legalText.view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100)
         ])
     }
 
