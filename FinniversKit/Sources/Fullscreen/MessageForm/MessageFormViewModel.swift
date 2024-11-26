@@ -13,6 +13,7 @@ public protocol MessageFormViewModel: AnyObject {
     var cancelButtonText: String { get }
     var deleteActionText: String { get }
     var transparencyText: String { get }
+    var legalText: String? { get }
     var disclaimerText: String { get }
 
     var messageText: String { get }
