@@ -1,5 +1,4 @@
 import SwiftUI
-import Warp
 
 public struct HTMLText: View {
     public let html: String
