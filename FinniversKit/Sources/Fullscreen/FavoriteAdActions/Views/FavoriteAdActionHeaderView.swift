@@ -52,6 +52,7 @@ final class FavoriteAdActionHeaderView: UIView {
     }
 
     private func setup() {
+        backgroundColor = .background
         addSubview(blurView)
         addSubview(imageView)
         addSubview(titleLabel)
