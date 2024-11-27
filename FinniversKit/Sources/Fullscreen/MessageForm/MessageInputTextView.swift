@@ -44,7 +44,7 @@ class MessageInputTextView: UIView {
         return textView
     }()
 
-    private var legalTextLabel = UIView()
+    private var additionalInfoLabel = UIView()
 
     // MARK: - Internal properties
 
@@ -94,7 +94,7 @@ class MessageInputTextView: UIView {
         textView.placeholderText = messageHint
         phoneViewLabel.text = telephoneLabel
         phoneView.placeholderText = telephoneHint
-        legalTextLabel = setupLegalTextLabel(additionalInfoText)
+        additionalInfoLabel = setupAdditionalInfoLabel(additionalInfoText)
 
         setup()
     }
@@ -105,7 +105,7 @@ class MessageInputTextView: UIView {
         addSubview(disclaimerLabel)
         addSubview(phoneViewLabel)
         addSubview(phoneView)
-        addSubview(legalTextLabel)
+        addSubview(additionalInfoLabel)
 
         NSLayoutConstraint.activate([
             textViewLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200),
@@ -127,15 +127,15 @@ class MessageInputTextView: UIView {
 
             phoneView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             phoneView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
-            phoneView.bottomAnchor.constraint(equalTo: legalTextLabel.topAnchor, constant: -Warp.Spacing.spacing200),
+            phoneView.bottomAnchor.constraint(equalTo: additionalInfoLabel.topAnchor, constant: -Warp.Spacing.spacing200),
 
-            legalTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
-            legalTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
-            legalTextLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100)
+            additionalInfoLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            additionalInfoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
+            additionalInfoLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100)
         ])
     }
 
-    private func setupLegalTextLabel(_ html: String) -> UIView {
+    private func setupAdditionalInfoLabel(_ html: String) -> UIView {
         let htmlView = HTMLText(html)
             .font(from: .detail)
             .frame(maxWidth: .infinity, alignment: .leading)
