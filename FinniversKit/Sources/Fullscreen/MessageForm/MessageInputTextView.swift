@@ -45,14 +45,7 @@ class MessageInputTextView: UIView {
         return textView
     }()
 
-    private lazy var legalText: UIHostingController<HTMLText> = {
-        let htmlText = HTMLText("").font(.detail)
-        let hostingController = UIHostingController(rootView: htmlText)
-        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        hostingController.view.backgroundColor = .clear
-
-        return hostingController
-    }()
+    private var legalTextView = UIView()
 
     // MARK: - Internal properties
 
@@ -98,13 +91,14 @@ class MessageInputTextView: UIView {
 
         super.init(frame: .zero)
 
-        setup()
         disclaimerLabel.text = disclaimerText
         textViewLabel.text = messageLabel
         textView.placeholderText = messageHint
         phoneViewLabel.text = telephoneLabel
         phoneView.placeholderText = telephoneHint
-        legalText.rootView.setHtml(additionalInfoText)
+        legalTextView = setupLegalTextView(additionalInfoText)
+
+        setup()
     }
 
     private func setup() {
@@ -113,7 +107,7 @@ class MessageInputTextView: UIView {
         addSubview(disclaimerLabel)
         addSubview(phoneViewLabel)
         addSubview(phoneView)
-        addSubview(legalText.view)
+        addSubview(legalTextView)
 
         NSLayoutConstraint.activate([
             textViewLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200),
@@ -135,12 +129,23 @@ class MessageInputTextView: UIView {
 
             phoneView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             phoneView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
-            phoneView.bottomAnchor.constraint(equalTo: legalText.view.topAnchor, constant: -Warp.Spacing.spacing200),
+            phoneView.bottomAnchor.constraint(equalTo: legalTextView.topAnchor, constant: -Warp.Spacing.spacing200),
 
-            legalText.view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
-            legalText.view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
-            legalText.view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100)
+            legalTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
+            legalTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
+            legalTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100)
         ])
+    }
+
+    private func setupLegalTextView(_ html: String) -> UIView {
+        let htmlView = HTMLText(html)
+            .font(.detail)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .uiView
+
+        htmlView.translatesAutoresizingMaskIntoConstraints = false
+
+        return htmlView
     }
 
     // MARK: - Overrides
