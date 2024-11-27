@@ -2,7 +2,7 @@ import SwiftUI
 import Warp
 
 public struct HTMLText: View {
-    private(set) var html: String
+    public let html: String
     public let spanMapper: HTMLStringSwiftUIStyleTranslator.SpanMapper
 
     private var font: Font?
@@ -51,20 +51,10 @@ public struct HTMLText: View {
         return text
     }
 
-    public func font(_ typography: Warp.Typography) -> HTMLText {
-        var text = self
-        text.font = typography.font
-        return text
-    }
-
     public func foregroundColor(_ color: Color?) -> HTMLText {
         var text = self
         text.foregroundColor = color
         return text
-    }
-
-    public mutating func setHtml(_ html: String) {
-        self.html = html
     }
 }
 

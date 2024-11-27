@@ -139,7 +139,7 @@ class MessageInputTextView: UIView {
 
     private func setupLegalTextView(_ html: String) -> UIView {
         let htmlView = HTMLText(html)
-            .font(.detail)
+            .font(from: .detail)
             .frame(maxWidth: .infinity, alignment: .leading)
             .uiView
 
