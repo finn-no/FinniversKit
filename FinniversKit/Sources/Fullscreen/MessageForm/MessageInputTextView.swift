@@ -127,7 +127,7 @@ class MessageInputTextView: UIView {
 
             phoneView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             phoneView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
-            phoneView.bottomAnchor.constraint(equalTo: additionalInfoLabel.topAnchor, constant: -Warp.Spacing.spacing200),
+            phoneView.bottomAnchor.constraint(equalTo: additionalInfoLabel.topAnchor, constant: -Warp.Spacing.spacing100),
 
             additionalInfoLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
             additionalInfoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),

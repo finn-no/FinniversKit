@@ -13,6 +13,7 @@ class MessageFormDemoViewModel: MessageFormViewModel {
     let cancelButtonText = "Avbryt"
     var deleteActionText = "Slett"
     let transparencyText = "FINN.no forbeholder seg retten til å kontrollere meldinger og stoppe useriøs e-post."
+    var legalText: String? = "Meldingen vil bli sendt som e-post til annonsøren, med din e-postadresse som avsender. Les mer om <a href=\"https://hjelpesenter.finn.no/hc/no/articles/22619166557330-Brukervilkår\">brukervilkår for FINN</a>."
     let disclaimerText = "FINN.no forbeholder seg retten til å kontrollere og stoppe meldinger"
 
     let messageText = "Melding"
