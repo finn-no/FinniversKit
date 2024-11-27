@@ -1,5 +1,4 @@
 import Foundation
-import SwiftUI
 import Warp
 
 protocol MessageInputTextViewDelegate: AnyObject {
@@ -88,7 +87,6 @@ class MessageInputTextView: UIView {
     }
 
     required init(disclaimerText: String, additionalInfoText: String, messageLabel: String, messageHint: String, telephoneLabel: String, telephoneHint: String) {
-
         super.init(frame: .zero)
 
         disclaimerLabel.text = disclaimerText
