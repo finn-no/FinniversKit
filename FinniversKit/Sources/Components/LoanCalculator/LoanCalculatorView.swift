@@ -79,7 +79,9 @@ public class LoanCalculatorView: UIView {
 
     // MARK: - Private methods
     private func setup() {
-        backgroundColor = .backgroundSubtle
+        backgroundColor = .background
+        layer.borderWidth = 2
+        layer.borderColor = Warp.UIToken.borderSubtle.cgColor
         layer.cornerRadius = Warp.Spacing.spacing100
         directionalLayoutMargins = .init(all: Warp.Spacing.spacing200 * 1.5)
 
