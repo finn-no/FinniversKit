@@ -47,10 +47,6 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.contactFormView)
     }
 
-    func testMessageFormView() {
-        snapshot(.messageFormView)
-    }
-
     func testLoginEntryView() {
         snapshot(.loginEntryView)
     }

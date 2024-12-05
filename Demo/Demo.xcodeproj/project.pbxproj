@@ -44,8 +44,6 @@
 		46E773CD242CEF0A008A5E93 /* FavoriteAdCommentInputDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7729C242CEF09008A5E93 /* FavoriteAdCommentInputDemoView.swift */; };
 		46E773CE242CEF0A008A5E93 /* RegisterViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7729E242CEF09008A5E93 /* RegisterViewDefaultData.swift */; };
 		46E773CF242CEF0A008A5E93 /* RegisterViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7729F242CEF09008A5E93 /* RegisterViewDemoView.swift */; };
-		46E773D1242CEF0A008A5E93 /* MessageFormDemoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772A3242CEF09008A5E93 /* MessageFormDemoPresenter.swift */; };
-		46E773D2242CEF0A008A5E93 /* MessageFormDemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772A4242CEF09008A5E93 /* MessageFormDemoViewModel.swift */; };
 		46E773D3242CEF0A008A5E93 /* EmptyViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772A6242CEF09008A5E93 /* EmptyViewDemoView.swift */; };
 		46E773D6242CEF0A008A5E93 /* FavoriteAdsListDemoViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772AB242CEF09008A5E93 /* FavoriteAdsListDemoViewHelper.swift */; };
 		46E773D7242CEF0A008A5E93 /* FavoriteAdsListDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E772AC242CEF09008A5E93 /* FavoriteAdsListDemoViewController.swift */; };
@@ -255,8 +253,6 @@
 		46E7729C242CEF09008A5E93 /* FavoriteAdCommentInputDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdCommentInputDemoView.swift; sourceTree = "<group>"; };
 		46E7729E242CEF09008A5E93 /* RegisterViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewDefaultData.swift; sourceTree = "<group>"; };
 		46E7729F242CEF09008A5E93 /* RegisterViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewDemoView.swift; sourceTree = "<group>"; };
-		46E772A3242CEF09008A5E93 /* MessageFormDemoPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageFormDemoPresenter.swift; sourceTree = "<group>"; };
-		46E772A4242CEF09008A5E93 /* MessageFormDemoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageFormDemoViewModel.swift; sourceTree = "<group>"; };
 		46E772A6242CEF09008A5E93 /* EmptyViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewDemoView.swift; sourceTree = "<group>"; };
 		46E772AB242CEF09008A5E93 /* FavoriteAdsListDemoViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListDemoViewHelper.swift; sourceTree = "<group>"; };
 		46E772AC242CEF09008A5E93 /* FavoriteAdsListDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListDemoViewController.swift; sourceTree = "<group>"; };
@@ -547,7 +543,6 @@
 				46E77292242CEF09008A5E93 /* FullscreenGallery */,
 				46E7726D242CEF09008A5E93 /* LoadingView */,
 				46E77281242CEF09008A5E93 /* LoginEntry */,
-				46E772A2242CEF09008A5E93 /* MessageForm */,
 				71C6AA972549D27000D78269 /* MessageUserRequired */,
 				46E7729D242CEF09008A5E93 /* Register */,
 				46E77294242CEF09008A5E93 /* ResultView */,
@@ -673,15 +668,6 @@
 				46E7729F242CEF09008A5E93 /* RegisterViewDemoView.swift */,
 			);
 			path = Register;
-			sourceTree = "<group>";
-		};
-		46E772A2242CEF09008A5E93 /* MessageForm */ = {
-			isa = PBXGroup;
-			children = (
-				46E772A3242CEF09008A5E93 /* MessageFormDemoPresenter.swift */,
-				46E772A4242CEF09008A5E93 /* MessageFormDemoViewModel.swift */,
-			);
-			path = MessageForm;
 			sourceTree = "<group>";
 		};
 		46E772A5242CEF09008A5E93 /* EmptyView */ = {
@@ -1839,7 +1825,6 @@
 				46E77436242CEF0A008A5E93 /* QuestionnaireDefaultData.swift in Sources */,
 				46E77428242CEF0A008A5E93 /* ReviewButtonViewDemoView.swift in Sources */,
 				46E773D8242CEF0A008A5E93 /* FavoriteAdsDemoDataSource.swift in Sources */,
-				46E773D1242CEF0A008A5E93 /* MessageFormDemoPresenter.swift in Sources */,
 				46E77465242CEF0A008A5E93 /* BasicTableViewDemoView.swift in Sources */,
 				46E7745C242CEF0A008A5E93 /* NeighborhoodProfileDemoView.swift in Sources */,
 				46E77403242CEF0A008A5E93 /* RefreshControlDemo.swift in Sources */,
@@ -1881,7 +1866,6 @@
 				46E773A7242CEF0A008A5E93 /* CellsDemoViews.swift in Sources */,
 				46E773B9242CEF0A008A5E93 /* AddressMapDemoView.swift in Sources */,
 				46E77461242CEF0A008A5E93 /* FavoritesListViewDemoView.swift in Sources */,
-				46E773D2242CEF0A008A5E93 /* MessageFormDemoViewModel.swift in Sources */,
 				46E773B0242CEF0A008A5E93 /* NavigationController.swift in Sources */,
 				46E7744E242CEF0A008A5E93 /* CheckboxSubtitleCellDemoView.swift in Sources */,
 				46E77432242CEF0A008A5E93 /* HappinessRatingDemoView.swift in Sources */,
