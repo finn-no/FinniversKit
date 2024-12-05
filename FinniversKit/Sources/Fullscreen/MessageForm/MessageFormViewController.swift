@@ -19,7 +19,14 @@ class MessageFormViewController: UIViewController {
     private lazy var wrapperBottomConstraint = wrapperView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 
     private lazy var messageInputTextView: MessageInputTextView = {
-        let view = MessageInputTextView(disclaimerText: viewModel.disclaimerText, additionalInfoText: viewModel.transparencyText, messageLabel: viewModel.messageText, messageHint: viewModel.messageHint, telephoneLabel: viewModel.telephoneText, telephoneHint: viewModel.telephoneHint)
+        let view = MessageInputTextView(
+            disclaimerText: viewModel.disclaimerText,
+            additionalInfoText: viewModel.legalText ?? viewModel.transparencyText,
+            messageLabel: viewModel.messageText,
+            messageHint: viewModel.messageHint,
+            telephoneLabel: viewModel.telephoneText,
+            telephoneHint: viewModel.telephoneHint
+        )
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         return view
