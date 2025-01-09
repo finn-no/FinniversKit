@@ -16,6 +16,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: List Available Simulators
+        run: xcrun simctl list devices
       - name: Select Xcode 16.2
         run: sudo xcode-select -s /Applications/Xcode_16.2.app
       - name: Install SwiftLint
