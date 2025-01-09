@@ -3880,9 +3880,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/warp-ds/warp-ios.git";
 			requirement = {
-				kind = versionRange;
-				maximumVersion = 999.0.0;
-				minimumVersion = 0.0.41;
+				branch = "update-colors";
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
