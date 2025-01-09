@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/warp-ds/warp-ios.git",
       "state" : {
-        "branch" : "update-colors",
-        "revision" : "f3b4214bf1a9ce09b5efc7a3cf56c2e6a9aca82f"
+        "revision" : "e137c0ab1d06d1ce58b6d6d03bdc4f7d8826bf79",
+        "version" : "0.0.49"
       }
     }
   ],
