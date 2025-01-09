@@ -12,11 +12,11 @@ jobs:
     runs-on: macos-14
     env:
       scheme: ${{ 'Demo' }}
-      destination: ${{ 'platform=iOS Simulator,OS=18.0,name=iPhone 16 Pro' }}
+      destination: ${{ 'platform=iOS Simulator,OS=18.2,name=iPhone 16 Pro' }}
 
     steps:
       - uses: actions/checkout@v4
-      - name: Select Xcode 16.0
+      - name: Select Xcode 16.2
         run: sudo xcode-select -s /Applications/Xcode_16.0.app
       - name: Install SwiftLint
         run: brew install swiftlint
