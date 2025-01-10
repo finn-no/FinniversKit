@@ -90,7 +90,7 @@ class LinkButtonView: UIView {
         super.init(frame: .zero)
 
         externalImageView.isHidden = !isExternal
-        externalImageView.tintColor = externalIconColor ?? .border
+        externalImageView.tintColor = externalIconColor ?? .iconSubtle
         linkButton.setTitle(buttonTitle, for: .normal)
         linkButton.accessibilityTraits = isExternal ? .link : .button
         subtitleLabel.text = subtitle
