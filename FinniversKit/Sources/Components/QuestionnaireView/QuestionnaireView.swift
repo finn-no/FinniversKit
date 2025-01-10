@@ -51,7 +51,8 @@ public class QuestionnaireView: UIView {
 
     private lazy var primaryButtonImageView: UIImageView? = {
         if let image = style.primaryButtonIcon {
-            let imageView = UIImageView(image: image)
+            let imageView = UIImageView(image: image.withRenderingMode(.alwaysTemplate))
+            imageView.tintColor = .iconPrimary
             imageView.translatesAutoresizingMaskIntoConstraints = false
             return imageView
         }
