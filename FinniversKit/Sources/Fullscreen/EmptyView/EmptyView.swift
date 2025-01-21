@@ -112,13 +112,17 @@ public class EmptyView: UIView {
     private func setup() {
         backgroundColor = .background
 
+        addSubview(imageView)
         addSubview(headerLabel)
         addSubview(messageLabel)
-        addSubview(imageView)
         addSubview(actionButton)
 
         NSLayoutConstraint.activate([
-            headerLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing800),
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing800),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing400),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing400),
+
+            headerLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: Warp.Spacing.spacing400),
             headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing400),
             headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing400),
 
@@ -126,11 +130,7 @@ public class EmptyView: UIView {
             messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing400),
             messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing400),
 
-            imageView.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: Warp.Spacing.spacing400),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing400),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing400),
-
-            actionButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: Warp.Spacing.spacing400),
+            actionButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: Warp.Spacing.spacing400),
             actionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing400),
             actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing400)
         ])
