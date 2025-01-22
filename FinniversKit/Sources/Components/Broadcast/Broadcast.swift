@@ -31,6 +31,8 @@ public final class Broadcast: UIStackView {
         axis = .vertical
         distribution = .fill
         alignment = .fill
+        isAccessibilityElement = true
+        accessibilityTraits = .summaryElement
     }
 
     public required init(coder: NSCoder) {
