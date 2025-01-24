@@ -194,10 +194,6 @@
 		714B9355253730D900801C99 /* SendInviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B9354253730D900801C99 /* SendInviteViewModel.swift */; };
 		71C6A9542549636A00D78269 /* MessageUserRequiredSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C6A9532549636A00D78269 /* MessageUserRequiredSheet.swift */; };
 		8281DBA92AFB9E01004580CE /* Warp in Frameworks */ = {isa = PBXBuildFile; productRef = 8281DBA82AFB9E01004580CE /* Warp */; };
-		8908E83622BD0CA100ED671C /* MessageInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E83522BD0CA100ED671C /* MessageInputTextView.swift */; };
-		8908E84922C0C3C600ED671C /* MessageFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84722C0C2F900ED671C /* MessageFormViewController.swift */; };
-		8908E85322C0D79600ED671C /* MessageFormBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84F22C0D76500ED671C /* MessageFormBottomSheet.swift */; };
-		8908E85722C0E49900ED671C /* MessageFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E85422C0E43C00ED671C /* MessageFormViewModel.swift */; };
 		8962DA6B22781A9900A1BC78 /* ImageMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8962DA6A22781A9900A1BC78 /* ImageMemoryCache.swift */; };
 		899D0BF6222D4B3400794DEC /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899D0BF5222D4B3400794DEC /* ArrayExtensions.swift */; };
 		899D0BF8222D58D700794DEC /* FullscreenGalleryOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899D0BF7222D58D700794DEC /* FullscreenGalleryOverlayView.swift */; };
@@ -639,10 +635,6 @@
 		714B9351253728EC00801C99 /* SendInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendInviteView.swift; sourceTree = "<group>"; };
 		714B9354253730D900801C99 /* SendInviteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendInviteViewModel.swift; sourceTree = "<group>"; };
 		71C6A9532549636A00D78269 /* MessageUserRequiredSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageUserRequiredSheet.swift; sourceTree = "<group>"; };
-		8908E83522BD0CA100ED671C /* MessageInputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputTextView.swift; sourceTree = "<group>"; };
-		8908E84722C0C2F900ED671C /* MessageFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormViewController.swift; sourceTree = "<group>"; };
-		8908E84F22C0D76500ED671C /* MessageFormBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormBottomSheet.swift; sourceTree = "<group>"; };
-		8908E85422C0E43C00ED671C /* MessageFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormViewModel.swift; sourceTree = "<group>"; };
 		8962DA6A22781A9900A1BC78 /* ImageMemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMemoryCache.swift; sourceTree = "<group>"; };
 		899D0BF5222D4B3400794DEC /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		899D0BF7222D58D700794DEC /* FullscreenGalleryOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenGalleryOverlayView.swift; sourceTree = "<group>"; };
@@ -1680,7 +1672,6 @@
 				9F213E134EF7C0A184D133F5 /* FullscreenGallery */,
 				14EBA253215A633800613E5A /* LoadingView */,
 				9BC33DE422D7219F007CCD65 /* LoginEntryView */,
-				8908E83422BD0C8700ED671C /* MessageForm */,
 				44D9124A2077AC8A00486848 /* Popup */,
 				44587013213FA344009187BE /* Register */,
 				43BACE6721117CF90052114C /* Review */,
@@ -1972,17 +1963,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		8908E83422BD0C8700ED671C /* MessageForm */ = {
-			isa = PBXGroup;
-			children = (
-				8908E83522BD0CA100ED671C /* MessageInputTextView.swift */,
-				8908E84722C0C2F900ED671C /* MessageFormViewController.swift */,
-				8908E84F22C0D76500ED671C /* MessageFormBottomSheet.swift */,
-				8908E85422C0E43C00ED671C /* MessageFormViewModel.swift */,
-			);
-			path = MessageForm;
 			sourceTree = "<group>";
 		};
 		89A7A63A2253376D0053D33B /* NativeAdvert */ = {
@@ -3261,7 +3241,6 @@
 				CF7E7B53230C2A7A001D514E /* FavoriteFolderActionViewModel.swift in Sources */,
 				4940480023CDBEC500ECBCFD /* ViewingsListView.swift in Sources */,
 				9B1B12C623D5ACE900282F3E /* ColumnListsView.swift in Sources */,
-				8908E83622BD0CA100ED671C /* MessageInputTextView.swift in Sources */,
 				17538723291ABC1B00DA57D2 /* HTMLElement.swift in Sources */,
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
 				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
@@ -3346,7 +3325,6 @@
 				CFCDDA5C2273022A005E1F4A /* CalloutView.swift in Sources */,
 				DAD6EB262369916100968497 /* SettingsViewToggleCell.swift in Sources */,
 				CF3D5EF9215A6F3B006E4D08 /* FloatingButton.swift in Sources */,
-				8908E85722C0E49900ED671C /* MessageFormViewModel.swift in Sources */,
 				17BF44C72987FC8F001A5877 /* LoadingSwiftUIView.swift in Sources */,
 				55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */,
 				432CE09D2112DBC500F01EC5 /* BuyerPickerTextHeader.swift in Sources */,
@@ -3364,9 +3342,7 @@
 				CF2E46F22319685C0085A591 /* FavoriteAdActionView.swift in Sources */,
 				9B2D17D223E02B2900EF3B50 /* KeyValuePair.swift in Sources */,
 				F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */,
-				8908E85322C0D79600ED671C /* MessageFormBottomSheet.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
-				8908E84922C0C3C600ED671C /* MessageFormViewController.swift in Sources */,
 				44A5579E22E71FEB001667AE /* BasicTableViewCellViewModel.swift in Sources */,
 				DA5A858C24617DF000AC0DFE /* ImageExtensions.swift in Sources */,
 				DAB7FAA821B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift in Sources */,

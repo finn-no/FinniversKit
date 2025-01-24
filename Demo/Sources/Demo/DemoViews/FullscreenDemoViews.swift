@@ -4,10 +4,6 @@
 import FinniversKit
 import DemoKit
 
-extension MessageFormBottomSheet: Demoable {
-    public var overridesModalPresentationStyle: Bool { true }
-}
-
 extension VerificationActionSheet: Demoable {
     public var overridesModalPresentationStyle: Bool { true }
 }
@@ -28,7 +24,6 @@ enum FullscreenDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case fullscreenGallery
     case contactFormView
     case addressMapView
-    case messageFormView
     case favoriteAdsList
     case verificationActionSheet
     case settingDetails
@@ -74,10 +69,6 @@ enum FullscreenDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return FullscreenGalleryDemoViewController()
         case .contactFormView:
             return ContactFormDemoView()
-        case .messageFormView:
-            let bottomSheet = MessageFormBottomSheet(viewModel: MessageFormDemoViewModel())
-            bottomSheet.messageFormDelegate = MessageFormDemoPresenter.shared
-            return bottomSheet
         case .addressMapView:
             return AddressMapDemoView()
         case .favoriteAdsList:
