@@ -31,8 +31,8 @@ public final class Broadcast: UIStackView {
         axis = .vertical
         distribution = .fill
         alignment = .fill
-        isAccessibilityElement = true
-        accessibilityTraits = .summaryElement
+        isAccessibilityElement = false
+        accessibilityElements = []
     }
 
     public required init(coder: NSCoder) {
@@ -133,6 +133,7 @@ private extension Broadcast {
     func add(_ messages: Set<BroadcastMessage>, animated: Bool) {
         guard let superview = superview else { return }
 
+        // Capture the current content offset for later animation
         var contentOffset: CGFloat = 0
         if let scrollView = scrollView {
             contentOffset = scrollView.contentInset.top + scrollView.contentOffset.y
@@ -168,6 +169,13 @@ private extension Broadcast {
             topConstraint?.constant = -contentOffset
             animate(to: contentOffset - frame.height)
         }
+
+        // Announce the addition of new messages for VoiceOver
+        let newMessageLabels = messages.map { $0.text }.joined(separator: ", ")
+        if !newMessageLabels.isEmpty {
+            let announcement = "New messages: \(newMessageLabels)"
+            UIAccessibility.post(notification: .announcement, argument: announcement)
+        }
     }
 
     func insert(_ messages: Set<BroadcastMessage>) {
@@ -175,6 +183,10 @@ private extension Broadcast {
             let item = BroadcastItem(message: message)
             item.delegate = self
             item.isHidden = true
+            // Accessibility for BroadcastItem
+            item.isAccessibilityElement = true
+            item.accessibilityLabel = "message content" // Replace `message.content` with the actual content string
+            item.accessibilityTraits = .staticText // Set traits appropriately
             insertArrangedSubview(item, at: 0)
         }
     }

@@ -39,6 +39,7 @@ class BroadcastItem: UIView {
         textView.isScrollEnabled = false
         textView.textContainerInset = .zero
         textView.linkTextAttributes = BroadcastItem.Style.linkTextAttributes
+        //textView.isAccessibilityElement = false
         return textView
     }()
 
@@ -56,6 +57,10 @@ class BroadcastItem: UIView {
         button.tintColor = .icon
         button.addTarget(self, action: #selector(dismissButtonTapped(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.isAccessibilityElement = true
+        button.accessibilityTraits = .button
+        button.accessibilityLabel = "Dismiss message"
+        button.accessibilityHint = "Double-tap to remove this message"
         return button
     }()
 
@@ -135,12 +140,15 @@ extension BroadcastItem {
     
     private func setAccessbilityLabel(_ message: BroadcastMessage) {
         messageTextView.accessibilityLabel = message.text
-        accessibilityTraits = .staticText
+        messageTextView.isAccessibilityElement = true
+        accessibilityTraits = .button
     }
 
     // MARK: - Actions
 
     @objc func dismissButtonTapped(_ sender: UIButton) {
+        let dismissalAnnouncement = "Message dismissed: \("broadcastItem.message.content")"
+        UIAccessibility.post(notification: .announcement, argument: dismissalAnnouncement)
         delegate?.broadcastItemDismissButtonTapped(self)
     }
 }
