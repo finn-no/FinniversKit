@@ -37,6 +37,7 @@ class BroadcastItem: UIView {
         textView.isEditable = false
         textView.isSelectable = true
         textView.isScrollEnabled = false
+        textView.accessibilityTraits = .staticText
         textView.textContainerInset = .zero
         textView.linkTextAttributes = BroadcastItem.Style.linkTextAttributes
         return textView
@@ -54,6 +55,9 @@ class BroadcastItem: UIView {
         let button = UIButton(frame: .zero)
         button.setImage(UIImage(named: .remove), for: .normal)
         button.tintColor = .icon
+        button.isAccessibilityElement = true
+        button.accessibilityTraits = .button
+        button.accessibilityLabel = "Close broadcast"
         button.addTarget(self, action: #selector(dismissButtonTapped(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -72,13 +76,9 @@ class BroadcastItem: UIView {
     init(message: BroadcastMessage) {
         self.message = message
         super.init(frame: .zero)
-
-        isAccessibilityElement = true
         clipsToBounds = true
 
         setAttributedText(message)
-        setAccessbilityLabel(message)
-        
         setupSubviews()
     }
 
@@ -94,6 +94,7 @@ extension BroadcastItem {
         contentView.addSubview(messageTextView)
         contentView.addSubview(iconImageView)
         contentView.addSubview(dismissButton)
+
         addSubview(contentView)
 
         heightConstraint = heightAnchor.constraint(equalToConstant: 0)
@@ -131,11 +132,6 @@ extension BroadcastItem {
         let attributedString = NSMutableAttributedString(attributedString: message.attributedString(for: message.text))
         attributedString.addAttributes(BroadcastItem.Style.fontAttributes, range: NSRange(location: 0, length: attributedString.string.utf16.count))
         messageTextView.attributedText = attributedString
-    }
-    
-    private func setAccessbilityLabel(_ message: BroadcastMessage) {
-        messageTextView.accessibilityLabel = message.text
-        accessibilityTraits = .staticText
     }
 
     // MARK: - Actions

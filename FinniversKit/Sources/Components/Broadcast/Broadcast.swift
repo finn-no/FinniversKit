@@ -31,8 +31,9 @@ public final class Broadcast: UIStackView {
         axis = .vertical
         distribution = .fill
         alignment = .fill
-        isAccessibilityElement = true
+        
         accessibilityTraits = .summaryElement
+        accessibilityContainerType = .semanticGroup
     }
 
     public required init(coder: NSCoder) {
@@ -171,12 +172,20 @@ private extension Broadcast {
     }
 
     func insert(_ messages: Set<BroadcastMessage>) {
-        for message in messages {
+        var accessibilityLabelForContainer = ""
+        
+        for (index, message) in messages.enumerated() {
             let item = BroadcastItem(message: message)
+            let accessibleLabelForItem = "Alert \(index + 1), \(item.message.text)"
             item.delegate = self
             item.isHidden = true
+            item.accessibilityLabel = accessibleLabelForItem
             insertArrangedSubview(item, at: 0)
+            
+            accessibilityLabelForContainer += accessibleLabelForItem
         }
+        
+        accessibilityLabel = accessibilityLabelForContainer
     }
 
     func animate(to offset: CGFloat?) {
