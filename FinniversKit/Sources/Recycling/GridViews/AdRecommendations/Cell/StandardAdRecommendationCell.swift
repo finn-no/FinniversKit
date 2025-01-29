@@ -21,6 +21,11 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
     public var isFavorite = false {
         didSet {
+            if isFavorite {
+                favoriteButton.accessibilityHint = model?.favoriteButtonAccessibilityHintRemove
+            } else {
+                favoriteButton.accessibilityHint = model?.favoriteButtonAccessibilityHintAdd
+            }
             favoriteButton.isToggled = isFavorite
         }
     }
