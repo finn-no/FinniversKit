@@ -22,12 +22,15 @@ public final class Broadcast: UIStackView {
     private var topConstraint: NSLayoutConstraint?
     private var animationDuration = 0.3
     private var messages: Set<BroadcastMessage> = []
+    private var accessibilityData: AccessibilityData
 
     // MARK: - Setup
 
-    public override init(frame: CGRect) {
+    public init(frame: CGRect = .zero, accessibilityData: AccessibilityData) {
+        self.accessibilityData = accessibilityData
+        
         super.init(frame: frame)
-
+        
         axis = .vertical
         distribution = .fill
         alignment = .fill
@@ -172,20 +175,22 @@ private extension Broadcast {
     }
 
     func insert(_ messages: Set<BroadcastMessage>) {
-        var accessibilityLabelForContainer = ""
-        
+        var accessibilityLabels = [String]()
+
         for (index, message) in messages.enumerated() {
             let item = BroadcastItem(message: message)
-            let accessibleLabelForItem = "Alert \(index + 1), \(item.message.text)"
             item.delegate = self
             item.isHidden = true
-            item.accessibilityLabel = accessibleLabelForItem
-            insertArrangedSubview(item, at: 0)
             
-            accessibilityLabelForContainer += accessibleLabelForItem
+            let accessibleLabelForItem = "\(accessibilityData.broadcastLabel) (\(index + 1) / \(messages.count)), \(item.message.text)"
+            item.accessibilityLabel = accessibleLabelForItem
+            item.dismissButton.accessibilityLabel = accessibilityData.dismissButtonLabel
+            accessibilityLabels.append(accessibleLabelForItem)
+            
+            insertArrangedSubview(item, at: 0)
         }
         
-        accessibilityLabel = accessibilityLabelForContainer
+        accessibilityLabel = accessibilityLabels.joined(separator: ",")
     }
 
     func animate(to offset: CGFloat?) {

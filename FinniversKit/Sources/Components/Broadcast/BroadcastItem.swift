@@ -51,13 +51,12 @@ class BroadcastItem: UIView {
         return imageView
     }()
 
-    private lazy var dismissButton: UIButton = {
+    private(set) lazy var dismissButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setImage(UIImage(named: .remove), for: .normal)
         button.tintColor = .icon
         button.isAccessibilityElement = true
         button.accessibilityTraits = .button
-        button.accessibilityLabel = "Close broadcast"
         button.addTarget(self, action: #selector(dismissButtonTapped(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -73,11 +72,13 @@ class BroadcastItem: UIView {
 
     // MARK: - Setup
 
-    init(message: BroadcastMessage) {
+    init(
+        message: BroadcastMessage
+    ) {
         self.message = message
         super.init(frame: .zero)
         clipsToBounds = true
-
+        
         setAttributedText(message)
         setupSubviews()
     }
