@@ -22,9 +22,9 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     public var isFavorite = false {
         didSet {
             if isFavorite {
-                favoriteButton.accessibilityHint = model?.favoriteButtonAccessibilityHintRemove
+                favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityLabelActiveState
             } else {
-                favoriteButton.accessibilityHint = model?.favoriteButtonAccessibilityHintAdd
+                favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityLabelInactiveState
             }
             favoriteButton.isToggled = isFavorite
         }
@@ -296,7 +296,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         subtitleLabel.text = model?.subtitle
         accessoryLabel.text = model?.accessory
         imageTextLabel.text = model?.imageText
-        favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityLabel
+        favoriteButton.accessibilityHint = model?.favoriteButtonAccessibilityHint
         isFavorite = model?.isFavorite ?? false
 
         if let subtitle = model?.subtitle {

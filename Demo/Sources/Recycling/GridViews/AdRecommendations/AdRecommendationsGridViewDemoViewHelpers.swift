@@ -46,8 +46,6 @@ public struct Ad: StandardAdRecommendationViewModel {
         return message
     }
 
-    public var favoriteButtonAccessibilityLabel = "Sett annonsen som favoritt"
-
     public var hideImageOverlay: Bool {
         imageText.isNilOrEmpty && iconImage == nil
     }
@@ -72,7 +70,9 @@ struct JobAd: JobAdRecommendationViewModel {
     var ribbonOverlayModel: RibbonViewModel?
     var imagePath: String?
     var isFavorite: Bool = false
-    var favoriteButtonAccessibilityLabel = "Sett annonsen som favoritt"
+    var favoriteButtonAccessibilityLabelInactiveState = "Save to favorites. Heart icon."
+    var favoriteButtonAccessibilityLabelActiveState = "Remove from favorites. Filled heart icon."
+    var favoriteButtonAccessibilityHint = "Tap to change favorite status."
 }
 
 /// Creates Ads
@@ -115,7 +115,9 @@ struct AdFactory {
                 adType: .normal,
                 sponsoredAdData: index % 4 == 0 ? sponsoredAdData : nil,
                 badgeViewModel: index == 1 ? badgeViewModel : nil,
-                favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt"
+                favoriteButtonAccessibilityLabelInactiveState = "Save to favorites. Heart icon.",
+                favoriteButtonAccessibilityLabelActiveState = "Remove from favorites. Filled heart icon.",
+                favoriteButtonAccessibilityHint = "Tap to change favorite status."
             )
         }
     }

@@ -15,9 +15,9 @@ public protocol StandardAdRecommendationViewModel {
     var isFavorite: Bool { get }
     var scaleImageToFillView: Bool { get }
     var sponsoredAdData: SponsoredAdData? { get }
-    var favoriteButtonAccessibilityLabel: String { get }
-    var favoriteButtonAccessibilityHintAdd: String { get }
-    var favoriteButtonAccessibilityHintRemove: String { get }
+    var favoriteButtonAccessibilityLabelInactiveState: String { get }
+    var favoriteButtonAccessibilityLabelActiveState: String { get }
+    var favoriteButtonAccessibilityHint: String { get }
     var hideImageOverlay: Bool { get }
     var badgeViewModel: BadgeViewModel? { get }
 }

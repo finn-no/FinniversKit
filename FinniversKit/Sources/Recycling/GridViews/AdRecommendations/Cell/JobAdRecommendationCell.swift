@@ -218,7 +218,7 @@ extension JobAdRecommendationCell: AdRecommendationConfigurable {
         loadingColor = .backgroundSubtle
 
         containerView.accessibilityLabel = model?.accessibilityLabel
-        favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityLabel
+        favoriteButton.accessibilityHint = model?.favoriteButtonAccessibilityHint
 
         titleLabel.text = model?.title
         companyLabel.text = model?.company
