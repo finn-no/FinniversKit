@@ -23,7 +23,7 @@ public class BroadcastDemoView: UIView, Demoable {
     ]
 
     private lazy var broadcast: Broadcast = {
-        let container = Broadcast(frame: .zero)
+        let container = Broadcast(accessibilityData: .init(broadcastLabel: "Broadcast", dismissButtonLabel: "Close broadcast"))
         container.delegate = self
         container.translatesAutoresizingMaskIntoConstraints = false
         return container
