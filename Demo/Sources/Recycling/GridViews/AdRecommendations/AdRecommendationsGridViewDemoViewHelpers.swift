@@ -13,6 +13,8 @@ enum AdRecommendation {
 
 /// A model confirming to the StandardAdRecommendationViewModel protocol for showcasing StandardAdRecommendationCell in playground.
 public struct Ad: StandardAdRecommendationViewModel {
+
+    
     public enum AdType {
         case native
         case google
@@ -30,6 +32,9 @@ public struct Ad: StandardAdRecommendationViewModel {
     public var scaleImageToFillView = true
     public var adType: AdType
     public var sponsoredAdData: SponsoredAdData?
+    public var favoriteButtonAccessibilityLabelInactiveState: String = "Save to favorites. Heart icon."
+    public var favoriteButtonAccessibilityLabelActiveState: String = "Remove from favorites. Filled heart icon."
+    public var favoriteButtonAccessibilityHint: String = "Tap to change favorite status."
     public var badgeViewModel: BadgeViewModel? = nil
 
     public var accessibilityLabel: String {
@@ -114,10 +119,7 @@ struct AdFactory {
                 scaleImageToFillView: scaleImageToFillView,
                 adType: .normal,
                 sponsoredAdData: index % 4 == 0 ? sponsoredAdData : nil,
-                badgeViewModel: index == 1 ? badgeViewModel : nil,
-                favoriteButtonAccessibilityLabelInactiveState = "Save to favorites. Heart icon.",
-                favoriteButtonAccessibilityLabelActiveState = "Remove from favorites. Filled heart icon.",
-                favoriteButtonAccessibilityHint = "Tap to change favorite status."
+                badgeViewModel: index == 1 ? badgeViewModel : nil
             )
         }
     }
