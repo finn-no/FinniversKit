@@ -153,6 +153,7 @@
 		55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* Broadcast.swift */; };
 		55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B277203DB56A007D7277 /* BroadcastMessage.swift */; };
 		573B3FF82ACC1B75005096EC /* SettingsViewIconCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573B3FF72ACC1B75005096EC /* SettingsViewIconCellModel.swift */; };
+		573C03642D4A6EB200E42111 /* Broadcast+AccessibilityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573C03632D4A6EA500E42111 /* Broadcast+AccessibilityData.swift */; };
 		57D7DFFA2ACEAFA9004C6D84 /* SettingsViewIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D7DFF92ACEAFA9004C6D84 /* SettingsViewIconCell.swift */; };
 		5B9590BF11466FFFC29766C3 /* SelectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9595BF11C0D7740F6E697F /* SelectionListView.swift */; };
 		5B9590C4F97B88CEB542E5E7 /* JobKeyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B959633B525C75ECF858B21 /* JobKeyInfoView.swift */; };
@@ -595,6 +596,7 @@
 		55C5B273203D8E20007D7277 /* Broadcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Broadcast.swift; sourceTree = "<group>"; };
 		55C5B277203DB56A007D7277 /* BroadcastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastMessage.swift; sourceTree = "<group>"; };
 		573B3FF72ACC1B75005096EC /* SettingsViewIconCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewIconCellModel.swift; sourceTree = "<group>"; };
+		573C03632D4A6EA500E42111 /* Broadcast+AccessibilityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Broadcast+AccessibilityData.swift"; sourceTree = "<group>"; };
 		57D7DFF92ACEAFA9004C6D84 /* SettingsViewIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewIconCell.swift; sourceTree = "<group>"; };
 		5B959240C94F8A2F44F428F3 /* OverflowCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverflowCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B95934A9A5BBB3F4E389FC4 /* JobKeyInfoView+Separator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JobKeyInfoView+Separator.swift"; sourceTree = "<group>"; };
@@ -2312,6 +2314,7 @@
 				55C5B273203D8E20007D7277 /* Broadcast.swift */,
 				AF91BB96202C74D0003E6366 /* BroadcastItem.swift */,
 				55C5B277203DB56A007D7277 /* BroadcastMessage.swift */,
+				573C03632D4A6EA500E42111 /* Broadcast+AccessibilityData.swift */,
 				AF91BBA0202C8B72003E6366 /* Broadcast+Style.swift */,
 			);
 			path = Broadcast;
@@ -3343,6 +3346,7 @@
 				9B2D17D223E02B2900EF3B50 /* KeyValuePair.swift in Sources */,
 				F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
+				573C03642D4A6EB200E42111 /* Broadcast+AccessibilityData.swift in Sources */,
 				44A5579E22E71FEB001667AE /* BasicTableViewCellViewModel.swift in Sources */,
 				DA5A858C24617DF000AC0DFE /* ImageExtensions.swift in Sources */,
 				DAB7FAA821B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift in Sources */,
