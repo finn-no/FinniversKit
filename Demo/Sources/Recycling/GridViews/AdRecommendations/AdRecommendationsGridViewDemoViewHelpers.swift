@@ -32,9 +32,9 @@ public struct Ad: StandardAdRecommendationViewModel {
     public var sponsoredAdData: SponsoredAdData?
     public var favoriteButtonAccessibilityData: FavoriteButtonAccessibilityData = FavoriteButtonAccessibilityData(
         labelInactiveState: "Save to favorites. Heart icon.",
-        labelActiveState:  "Remove from favorites. Filled heart icon.",
+        labelActiveState: "Remove from favorites. Filled heart icon.",
         hint: "Tap to change favorite status."
-        
+    )
     public var badgeViewModel: BadgeViewModel? = nil
 
     public var accessibilityLabel: String {
@@ -75,9 +75,11 @@ struct JobAd: JobAdRecommendationViewModel {
     var ribbonOverlayModel: RibbonViewModel?
     var imagePath: String?
     var isFavorite: Bool = false
-    var favoriteButtonAccessibilityLabelInactiveState = "Save to favorites. Heart icon."
-    var favoriteButtonAccessibilityLabelActiveState = "Remove from favorites. Filled heart icon."
-    var favoriteButtonAccessibilityHint = "Tap to change favorite status."
+    var favoriteButtonAccessibilityData: FavoriteButtonAccessibilityData = FavoriteButtonAccessibilityData(
+        labelInactiveState: "Save to favorites. Heart icon.",
+        labelActiveState: "Remove from favorites. Filled heart icon.",
+        hint: "Tap to change favorite status."
+    )
 }
 
 /// Creates Ads
