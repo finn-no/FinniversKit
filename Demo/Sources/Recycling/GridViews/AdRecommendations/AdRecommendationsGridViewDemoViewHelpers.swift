@@ -30,9 +30,11 @@ public struct Ad: StandardAdRecommendationViewModel {
     public var scaleImageToFillView = true
     public var adType: AdType
     public var sponsoredAdData: SponsoredAdData?
-    public var favoriteButtonAccessibilityLabelInactiveState: String = "Save to favorites. Heart icon."
-    public var favoriteButtonAccessibilityLabelActiveState: String = "Remove from favorites. Filled heart icon."
-    public var favoriteButtonAccessibilityHint: String = "Tap to change favorite status."
+    public var favoriteButtonAccessibilityData: FavoriteButtonAccessibilityData = FavoriteButtonAccessibilityData(
+        labelInactiveState: "Save to favorites. Heart icon.",
+        labelActiveState:  "Remove from favorites. Filled heart icon.",
+        hint: "Tap to change favorite status."
+        
     public var badgeViewModel: BadgeViewModel? = nil
 
     public var accessibilityLabel: String {
