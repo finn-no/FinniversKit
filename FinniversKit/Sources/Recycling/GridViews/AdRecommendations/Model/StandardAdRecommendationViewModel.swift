@@ -4,6 +4,22 @@
 
 import Foundation
 
+public struct FavoriteButtonAccessibilityData: Hashable {
+    let labelInactiveState: String
+    let labelActiveState: String
+    let hint: String
+
+    public init(
+        labelInactiveState: String,
+        labelActiveState: String,
+        hint: String
+    ) {
+        self.labelInactiveState = labelInactiveState
+        self.labelActiveState = labelActiveState
+        self.hint = hint
+    }
+}
+
 public protocol StandardAdRecommendationViewModel {
     var imagePath: String? { get }
     var imageSize: CGSize { get }
@@ -15,9 +31,7 @@ public protocol StandardAdRecommendationViewModel {
     var isFavorite: Bool { get }
     var scaleImageToFillView: Bool { get }
     var sponsoredAdData: SponsoredAdData? { get }
-    var favoriteButtonAccessibilityLabelInactiveState: String { get }
-    var favoriteButtonAccessibilityLabelActiveState: String { get }
-    var favoriteButtonAccessibilityHint: String { get }
+    var favoriteButtonAccessibilityData: FavoriteButtonAccessibilityData { get }
     var hideImageOverlay: Bool { get }
     var badgeViewModel: BadgeViewModel? { get }
 }
