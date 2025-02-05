@@ -13,8 +13,6 @@ enum AdRecommendation {
 
 /// A model confirming to the StandardAdRecommendationViewModel protocol for showcasing StandardAdRecommendationCell in playground.
 public struct Ad: StandardAdRecommendationViewModel {
-
-    
     public enum AdType {
         case native
         case google

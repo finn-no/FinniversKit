@@ -32,7 +32,6 @@ public final class IconButton: UIButton {
     public init(style: Style, withAutoLayout: Bool = false) {
         self.style = style
         super.init(frame: .zero)
-        accessibilityTraits = .button
         translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setImage(style.icon, for: .normal)
         setImage(style.icon, for: .highlighted)

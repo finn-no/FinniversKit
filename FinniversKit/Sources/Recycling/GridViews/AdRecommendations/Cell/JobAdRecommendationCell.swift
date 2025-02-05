@@ -21,6 +21,11 @@ public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell
 
     public var isFavorite: Bool = false {
         didSet {
+            if isFavorite {
+                 favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityLabelActiveState
+             } else {
+                 favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityLabelInactiveState
+             }
             favoriteButton.isToggled = isFavorite
         }
     }
