@@ -14,7 +14,7 @@ public protocol JobAdRecommendationViewModel {
     var imagePath: String? { get }
     var isFavorite: Bool { get }
     var accessibilityLabel: String { get }
-    var favoriteButtonAccessibilityLabel: String { get }
+    var favoriteButtonAccessibilityData: FavoriteButtonAccessibilityData { get }
 }
 
 public extension JobAdRecommendationViewModel {

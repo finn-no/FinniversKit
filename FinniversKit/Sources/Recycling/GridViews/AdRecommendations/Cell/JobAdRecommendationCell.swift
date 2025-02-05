@@ -21,6 +21,11 @@ public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell
 
     public var isFavorite: Bool = false {
         didSet {
+            if isFavorite {
+                favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityData.labelActiveState
+             } else {
+                 favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityData.labelInactiveState
+             }
             favoriteButton.isToggled = isFavorite
         }
     }
@@ -218,7 +223,7 @@ extension JobAdRecommendationCell: AdRecommendationConfigurable {
         loadingColor = .backgroundSubtle
 
         containerView.accessibilityLabel = model?.accessibilityLabel
-        favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityLabel
+        favoriteButton.accessibilityHint = model?.favoriteButtonAccessibilityData.hint
 
         titleLabel.text = model?.title
         companyLabel.text = model?.company
