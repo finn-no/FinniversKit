@@ -95,14 +95,19 @@ public class KeyValueGridView: UIView {
         titleContainer.axis = .horizontal
         titleContainer.alignment = .center
         titleContainer.distribution = .fill
-        titleContainer.spacing = 8
+        titleContainer.spacing = Warp.Spacing.spacing100
 
         titleLabel.text = pair.title
 
         titleContainer.addArrangedSubview(titleLabel)
-
         if let infoText = pair.infoTooltip, !infoText.isEmpty {
-            let infoButton = UIButton(type: .infoLight)
+            let infoButton = UIButton(type: .custom)
+            infoButton.setImage(Warp.Icon.info.uiImage, for: .normal)
+            infoButton.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                infoButton.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
+                infoButton.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200)
+            ])
             infoButton.addAction(UIAction(handler: { [weak self] _ in
                 self?.showTooltip(infoText, from: infoButton)
             }), for: .touchUpInside)
@@ -148,7 +153,6 @@ public class KeyValueGridView: UIView {
 
     private func showTooltip(_ text: String, from sourceView: UIView) {
         let tooltipView = Warp.Tooltip(title: text, arrowEdge: .bottom).uiView
-        tooltipView.frame = sourceView.bounds
         sourceView.addSubview(tooltipView)
         tooltipView.translatesAutoresizingMaskIntoConstraints = false
 
