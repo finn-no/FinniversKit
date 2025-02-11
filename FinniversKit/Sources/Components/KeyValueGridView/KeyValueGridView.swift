@@ -80,10 +80,35 @@ public class KeyValueGridView: UIView {
     }
 
     private func createCellView(for pair: KeyValuePair) -> UIView {
-        let stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing25, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
+        let stackView = UIStackView(
+            axis: .vertical,
+            spacing: Warp.Spacing.spacing25,
+            alignment: .leading,
+            distribution: .equalSpacing,
+            withAutoLayout: true
+        )
 
         let titleLabel = Label(style: titleStyle, numberOfLines: 2, withAutoLayout: true)
         titleLabel.lineBreakMode = .byWordWrapping
+
+        let titleContainer = UIStackView()
+        titleContainer.axis = .horizontal
+        titleContainer.alignment = .center
+        titleContainer.distribution = .fill
+        titleContainer.spacing = 8
+
+        titleLabel.text = pair.title
+
+        titleContainer.addArrangedSubview(titleLabel)
+
+        if let infoText = pair.infoTooltip, !infoText.isEmpty {
+            let infoButton = UIButton(type: .infoLight)
+            infoButton.addAction(UIAction(handler: { [weak self] _ in
+                self?.showTooltip(infoText, from: infoButton)
+            }), for: .touchUpInside)
+
+            titleContainer.addArrangedSubview(infoButton)
+        }
 
         let valueLabel = PaddableLabel(style: valueStyle, numberOfLines: 2, withAutoLayout: true)
         valueLabel.lineBreakMode = .byWordWrapping
@@ -95,11 +120,12 @@ public class KeyValueGridView: UIView {
             valueLabel.textPadding = .init(vertical: 0, horizontal: valueStyle.horizontalPadding)
         }
 
-        titleLabel.text = pair.title
         valueLabel.text = pair.value
 
-        stackView.addArrangedSubviews([titleLabel, valueLabel])
-        stackView.arrangedSubviews.forEach { $0.setContentCompressionResistancePriority(.required, for: .vertical) }
+        stackView.addArrangedSubviews([titleContainer, valueLabel])
+        stackView.arrangedSubviews.forEach {
+            $0.setContentCompressionResistancePriority(.required, for: .vertical)
+        }
 
         stackView.isAccessibilityElement = true
         if let accessibilityLabel = pair.accessibilityLabel {
@@ -118,6 +144,18 @@ public class KeyValueGridView: UIView {
         stackView.alignment = .top
         stackView.spacing = Warp.Spacing.spacing200
         return stackView
+    }
+
+    private func showTooltip(_ text: String, from sourceView: UIView) {
+        let tooltipView = Warp.Tooltip(title: text, arrowEdge: .bottom).uiView
+        tooltipView.frame = sourceView.bounds
+        sourceView.addSubview(tooltipView)
+        tooltipView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            tooltipView.centerXAnchor.constraint(equalTo: sourceView.centerXAnchor),
+            tooltipView.centerYAnchor.constraint(equalTo: sourceView.centerYAnchor),
+        ])
     }
 }
 
