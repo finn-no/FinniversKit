@@ -152,14 +152,31 @@ public class KeyValueGridView: UIView {
     }
 
     private func showTooltip(_ text: String, from sourceView: UIView) {
+        guard let keyWindow = UIApplication.shared.firstKeyWindow else { return }
+
+        let overlayView = UIView(frame: keyWindow.bounds)
+        keyWindow.addSubview(overlayView)
+
         let tooltipView = Warp.Tooltip(title: text, arrowEdge: .bottom).uiView
-        sourceView.addSubview(tooltipView)
         tooltipView.translatesAutoresizingMaskIntoConstraints = false
+        overlayView.addSubview(tooltipView)
+
+        /// Convert the sourceView’s frame to keyWindow coordinates for positioning
+        let sourceFrame = sourceView.convert(sourceView.bounds, to: keyWindow)
 
         NSLayoutConstraint.activate([
-            tooltipView.centerXAnchor.constraint(equalTo: sourceView.centerXAnchor),
-            tooltipView.centerYAnchor.constraint(equalTo: sourceView.centerYAnchor),
+            tooltipView.centerXAnchor.constraint(equalTo: overlayView.leftAnchor, constant: sourceFrame.midX),
+            tooltipView.bottomAnchor.constraint(equalTo: overlayView.topAnchor, constant: sourceFrame.minY - Warp.Spacing.spacing100),
+            tooltipView.leadingAnchor.constraint(greaterThanOrEqualTo: overlayView.leadingAnchor, constant: Warp.Spacing.spacing200),
+            tooltipView.trailingAnchor.constraint(lessThanOrEqualTo: overlayView.trailingAnchor, constant: -Warp.Spacing.spacing200)
         ])
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissOverlay(_:)))
+        overlayView.addGestureRecognizer(tapGesture)
+    }
+
+    @objc private func dismissOverlay(_ sender: UITapGestureRecognizer) {
+        sender.view?.removeFromSuperview()
     }
 }
 
