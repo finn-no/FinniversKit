@@ -30,6 +30,11 @@ public struct Ad: StandardAdRecommendationViewModel {
     public var scaleImageToFillView = true
     public var adType: AdType
     public var sponsoredAdData: SponsoredAdData?
+    public var favoriteButtonAccessibilityData: FavoriteButtonAccessibilityData = FavoriteButtonAccessibilityData(
+        labelInactiveState: "Save to favorites. Heart icon.",
+        labelActiveState: "Remove from favorites. Filled heart icon.",
+        hint: "Tap to change favorite status."
+    )
     public var badgeViewModel: BadgeViewModel? = nil
 
     public var accessibilityLabel: String {
@@ -45,8 +50,6 @@ public struct Ad: StandardAdRecommendationViewModel {
 
         return message
     }
-
-    public var favoriteButtonAccessibilityLabel = "Sett annonsen som favoritt"
 
     public var hideImageOverlay: Bool {
         imageText.isNilOrEmpty && iconImage == nil
@@ -72,7 +75,11 @@ struct JobAd: JobAdRecommendationViewModel {
     var ribbonOverlayModel: RibbonViewModel?
     var imagePath: String?
     var isFavorite: Bool = false
-    var favoriteButtonAccessibilityLabel = "Sett annonsen som favoritt"
+    var favoriteButtonAccessibilityData: FavoriteButtonAccessibilityData = FavoriteButtonAccessibilityData(
+        labelInactiveState: "Save to favorites. Heart icon.",
+        labelActiveState: "Remove from favorites. Filled heart icon.",
+        hint: "Tap to change favorite status."
+    )
 }
 
 /// Creates Ads
@@ -114,8 +121,7 @@ struct AdFactory {
                 scaleImageToFillView: scaleImageToFillView,
                 adType: .normal,
                 sponsoredAdData: index % 4 == 0 ? sponsoredAdData : nil,
-                badgeViewModel: index == 1 ? badgeViewModel : nil,
-                favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt"
+                badgeViewModel: index == 1 ? badgeViewModel : nil
             )
         }
     }
