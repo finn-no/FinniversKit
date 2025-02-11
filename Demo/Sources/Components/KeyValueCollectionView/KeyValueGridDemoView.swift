@@ -108,6 +108,7 @@ private extension Array where Element == KeyValuePair {
         .init(title: "Reg.nr", value: "DX11111"),
         .init(title: "Chassis nr. (VIN)", value: "XX1234XX1X099999"),
         .init(title: "Maksimal tilhengervekt", value: "2 500 kg"),
+        .init(title: "Driving range", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual range must be seen in context of age, km, driving pattern and weather conditions"),
     ]
 
     static var energyLabels: [KeyValuePair] = [
