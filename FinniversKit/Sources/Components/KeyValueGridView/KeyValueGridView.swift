@@ -91,11 +91,13 @@ public class KeyValueGridView: UIView {
         let titleLabel = Label(style: titleStyle, numberOfLines: 2, withAutoLayout: true)
         titleLabel.lineBreakMode = .byWordWrapping
 
-        let titleContainer = UIStackView()
-        titleContainer.axis = .horizontal
-        titleContainer.alignment = .center
-        titleContainer.distribution = .fill
-        titleContainer.spacing = Warp.Spacing.spacing100
+        let titleContainer = UIStackView(
+            axis: .horizontal,
+            spacing: Warp.Spacing.spacing100,
+            alignment: .center,
+            distribution: .fill,
+            withAutoLayout: true
+        )
 
         titleLabel.text = pair.title
 
