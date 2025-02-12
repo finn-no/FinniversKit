@@ -1,7 +1,7 @@
 import UIKit
 
 extension UIApplication {
-    public var firstKeyWindow: UIWindow? {
+    public var firstWindow: UIWindow? {
         if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             return scene.windows.filter { $0.isKeyWindow }.first
         }

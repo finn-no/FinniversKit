@@ -152,7 +152,7 @@ public class KeyValueGridView: UIView {
     }
 
     private func showTooltip(_ text: String, from sourceView: UIView) {
-        guard let keyWindow = UIApplication.shared.firstKeyWindow else { return }
+        guard let keyWindow = UIApplication.shared.firstWindow else { return }
 
         let overlayView = UIView(frame: keyWindow.bounds)
         keyWindow.addSubview(overlayView)
