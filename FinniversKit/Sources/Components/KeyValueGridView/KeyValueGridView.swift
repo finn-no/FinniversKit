@@ -110,8 +110,9 @@ public class KeyValueGridView: UIView {
                 infoButton.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
                 infoButton.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200)
             ])
-            infoButton.addAction(UIAction(handler: { [weak self] _ in
-                self?.showTooltip(infoText, from: infoButton)
+            infoButton.addAction(UIAction(handler: { [weak self] action in
+                guard let view = action.sender as? UIView else { return }
+                self?.showTooltip(infoText, from: view)
             }), for: .touchUpInside)
 
             titleContainer.addArrangedSubview(infoButton)
