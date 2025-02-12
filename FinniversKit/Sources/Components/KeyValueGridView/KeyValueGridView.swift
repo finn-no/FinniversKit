@@ -106,6 +106,7 @@ public class KeyValueGridView: UIView {
             let infoButton = UIButton(type: .custom)
             infoButton.setImage(Warp.Icon.info.uiImage, for: .normal)
             infoButton.translatesAutoresizingMaskIntoConstraints = false
+            infoButton.accessibilityLabel = pair.infoTooltipAccessibilityLabel
             NSLayoutConstraint.activate([
                 infoButton.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
                 infoButton.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200)
