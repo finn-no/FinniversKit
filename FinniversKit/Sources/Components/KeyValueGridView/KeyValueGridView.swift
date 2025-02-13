@@ -10,13 +10,6 @@ public class KeyValueGridView: UIView {
             updateLayout()
         }
     }
-    
-    public var parentScrollView: UIScrollView? {
-        didSet {
-            guard let scrollView = parentScrollView else { return }
-            scrollView.panGestureRecognizer.addTarget(self, action: #selector(handleScrollBeginGesture(_:)))
-        }
-    }
 
     // MARK: - Private properties
 
@@ -24,7 +17,6 @@ public class KeyValueGridView: UIView {
     private var titleStyle: Warp.Typography = .body
     private var valueStyle: Warp.Typography = .bodyStrong
     private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
-    private weak var currentOverlayView: PassThroughOverlayView?
 
     // MARK: - Initializers
 
@@ -166,16 +158,12 @@ public class KeyValueGridView: UIView {
     private func showTooltip(_ text: String, from sourceView: UIView) {
         guard let keyWindow = UIApplication.shared.firstWindow else { return }
 
-        dismissOverlayIfVisible()
-
-        let overlayView = PassThroughOverlayView(frame: keyWindow.bounds)
+        let overlayView = UIView(frame: keyWindow.bounds)
         keyWindow.addSubview(overlayView)
-        currentOverlayView = overlayView
 
         let tooltipView = Warp.Tooltip(title: text, arrowEdge: .bottom).uiView
         tooltipView.translatesAutoresizingMaskIntoConstraints = false
         overlayView.addSubview(tooltipView)
-        overlayView.tooltipView = tooltipView
 
         /// Convert the sourceView’s frame to keyWindow coordinates for positioning
         let sourceFrame = sourceView.convert(sourceView.bounds, to: keyWindow)
@@ -192,18 +180,7 @@ public class KeyValueGridView: UIView {
     }
 
     @objc private func dismissOverlay(_ sender: UITapGestureRecognizer) {
-        dismissOverlayIfVisible()
-    }
-    
-    @objc private func handleScrollBeginGesture(_ gesture: UIPanGestureRecognizer) {
-        if gesture.state == .began {
-            dismissOverlayIfVisible()
-        }
-    }
-    
-    private func dismissOverlayIfVisible() {
-        currentOverlayView?.removeFromSuperview()
-        currentOverlayView = nil
+        sender.view?.removeFromSuperview()
     }
 }
 
@@ -227,23 +204,5 @@ private class PaddableLabel: Label {
 
     override func drawText(in rect: CGRect) {
         super.drawText(in: rect.inset(by: textPadding))
-    }
-}
-
-final class PassThroughOverlayView: UIView {
-    weak var tooltipView: UIView?
-
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        guard let tooltip = tooltipView else {
-            return nil
-        }
-
-        let pointInTooltip = convert(point, to: tooltip)
-
-        if tooltip.bounds.contains(pointInTooltip) {
-            return super.hitTest(point, with: event)
-        }
-
-        return nil
     }
 }
