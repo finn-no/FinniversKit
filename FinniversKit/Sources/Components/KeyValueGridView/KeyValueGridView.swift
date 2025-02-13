@@ -17,6 +17,8 @@ public class KeyValueGridView: UIView {
     private var titleStyle: Warp.Typography = .body
     private var valueStyle: Warp.Typography = .bodyStrong
     private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
+    private weak var activeTooltipView: UIView?
+    private weak var activeInfoButton: UIView?
 
     // MARK: - Initializers
 
@@ -113,7 +115,7 @@ public class KeyValueGridView: UIView {
             ])
             infoButton.addAction(UIAction(handler: { [weak self] action in
                 guard let view = action.sender as? UIView else { return }
-                self?.showTooltip(infoText, from: view)
+                self?.toggleTooltip(infoText, from: infoButton)
             }), for: .touchUpInside)
 
             titleContainer.addArrangedSubview(infoButton)
@@ -155,32 +157,47 @@ public class KeyValueGridView: UIView {
         return stackView
     }
 
+    private func toggleTooltip(_ text: String, from infoButton: UIView) {
+        if let activeTooltip = activeTooltipView, activeInfoButton === infoButton {
+            dismissTooltip()
+        } else {
+            dismissTooltip()
+            showTooltip(text, from: infoButton)
+        }
+    }
+    
     private func showTooltip(_ text: String, from sourceView: UIView) {
-        guard let keyWindow = UIApplication.shared.firstWindow else { return }
-
-        let overlayView = UIView(frame: keyWindow.bounds)
-        keyWindow.addSubview(overlayView)
-
         let tooltipView = Warp.Tooltip(title: text, arrowEdge: .bottom).uiView
         tooltipView.translatesAutoresizingMaskIntoConstraints = false
-        overlayView.addSubview(tooltipView)
-
-        /// Convert the sourceView’s frame to keyWindow coordinates for positioning
-        let sourceFrame = sourceView.convert(sourceView.bounds, to: keyWindow)
+        tooltipView.isUserInteractionEnabled = true
+        
+        addSubview(tooltipView)
+        
+        // Convert the button’s frame to the KeyValueGridView’s coordinate system
+        let buttonFrameInSelf = sourceView.convert(sourceView.bounds, to: self)
 
         NSLayoutConstraint.activate([
-            tooltipView.centerXAnchor.constraint(equalTo: overlayView.leftAnchor, constant: sourceFrame.midX),
-            tooltipView.bottomAnchor.constraint(equalTo: overlayView.topAnchor, constant: sourceFrame.minY - Warp.Spacing.spacing100),
-            tooltipView.leadingAnchor.constraint(greaterThanOrEqualTo: overlayView.leadingAnchor, constant: Warp.Spacing.spacing200),
-            tooltipView.trailingAnchor.constraint(lessThanOrEqualTo: overlayView.trailingAnchor, constant: -Warp.Spacing.spacing200)
+            tooltipView.topAnchor.constraint(equalTo: self.topAnchor, constant: buttonFrameInSelf.maxY - Warp.Spacing.spacing50),
+            tooltipView.centerXAnchor.constraint(equalTo: self.leftAnchor, constant: buttonFrameInSelf.midX),
+            tooltipView.leadingAnchor.constraint(greaterThanOrEqualTo: self.leadingAnchor, constant: Warp.Spacing.spacing100),
+            tooltipView.trailingAnchor.constraint(lessThanOrEqualTo: self.trailingAnchor, constant: -Warp.Spacing.spacing100)
         ])
 
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissOverlay(_:)))
-        overlayView.addGestureRecognizer(tapGesture)
-    }
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTooltipTap(_:)))
+        tooltipView.addGestureRecognizer(tapGesture)
 
-    @objc private func dismissOverlay(_ sender: UITapGestureRecognizer) {
-        sender.view?.removeFromSuperview()
+        activeTooltipView = tooltipView
+        activeInfoButton = sourceView
+    }
+    
+    @objc private func handleTooltipTap(_ gesture: UITapGestureRecognizer) {
+        dismissTooltip()
+    }
+    
+    private func dismissTooltip() {
+        activeTooltipView?.removeFromSuperview()
+        activeTooltipView = nil
+        activeInfoButton = nil
     }
 }
 
