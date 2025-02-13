@@ -17,6 +17,8 @@ public class KeyValueGridView: UIView {
     private var titleStyle: Warp.Typography = .body
     private var valueStyle: Warp.Typography = .bodyStrong
     private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
+    private weak var activeTooltipView: UIView?
+    private weak var activeInfoButton: UIView?
 
     // MARK: - Initializers
 
@@ -80,10 +82,44 @@ public class KeyValueGridView: UIView {
     }
 
     private func createCellView(for pair: KeyValuePair) -> UIView {
-        let stackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing25, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
+        let stackView = UIStackView(
+            axis: .vertical,
+            spacing: Warp.Spacing.spacing25,
+            alignment: .leading,
+            distribution: .equalSpacing,
+            withAutoLayout: true
+        )
 
         let titleLabel = Label(style: titleStyle, numberOfLines: 2, withAutoLayout: true)
         titleLabel.lineBreakMode = .byWordWrapping
+
+        let titleContainer = UIStackView(
+            axis: .horizontal,
+            spacing: Warp.Spacing.spacing100,
+            alignment: .center,
+            distribution: .fill,
+            withAutoLayout: true
+        )
+
+        titleLabel.text = pair.title
+        titleContainer.addArrangedSubview(titleLabel)
+
+        if let infoText = pair.infoTooltip, !infoText.isEmpty {
+            let infoButton = UIButton(type: .custom)
+            infoButton.setImage(Warp.Icon.info.uiImage, for: .normal)
+            infoButton.translatesAutoresizingMaskIntoConstraints = false
+            infoButton.accessibilityLabel = pair.infoTooltipAccessibilityLabel
+            NSLayoutConstraint.activate([
+                infoButton.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
+                infoButton.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200)
+            ])
+            infoButton.addAction(UIAction(handler: { [weak self] action in
+                guard let view = action.sender as? UIView else { return }
+                self?.toggleTooltip(infoText, from: infoButton)
+            }), for: .touchUpInside)
+
+            titleContainer.addArrangedSubview(infoButton)
+        }
 
         let valueLabel = PaddableLabel(style: valueStyle, numberOfLines: 2, withAutoLayout: true)
         valueLabel.lineBreakMode = .byWordWrapping
@@ -95,11 +131,12 @@ public class KeyValueGridView: UIView {
             valueLabel.textPadding = .init(vertical: 0, horizontal: valueStyle.horizontalPadding)
         }
 
-        titleLabel.text = pair.title
         valueLabel.text = pair.value
 
-        stackView.addArrangedSubviews([titleLabel, valueLabel])
-        stackView.arrangedSubviews.forEach { $0.setContentCompressionResistancePriority(.required, for: .vertical) }
+        stackView.addArrangedSubviews([titleContainer, valueLabel])
+        stackView.arrangedSubviews.forEach {
+            $0.setContentCompressionResistancePriority(.required, for: .vertical)
+        }
 
         stackView.isAccessibilityElement = true
         if let accessibilityLabel = pair.accessibilityLabel {
@@ -118,6 +155,49 @@ public class KeyValueGridView: UIView {
         stackView.alignment = .top
         stackView.spacing = Warp.Spacing.spacing200
         return stackView
+    }
+
+    private func toggleTooltip(_ text: String, from infoButton: UIView) {
+        if let activeTooltip = activeTooltipView, activeInfoButton === infoButton {
+            dismissTooltip()
+        } else {
+            dismissTooltip()
+            showTooltip(text, from: infoButton)
+        }
+    }
+    
+    private func showTooltip(_ text: String, from sourceView: UIView) {
+        let tooltipView = Warp.Tooltip(title: text, arrowEdge: .bottom).uiView
+        tooltipView.translatesAutoresizingMaskIntoConstraints = false
+        tooltipView.isUserInteractionEnabled = true
+        
+        addSubview(tooltipView)
+        
+        // Convert the button’s frame to the KeyValueGridView’s coordinate system
+        let buttonFrameInSelf = sourceView.convert(sourceView.bounds, to: self)
+
+        NSLayoutConstraint.activate([
+            tooltipView.topAnchor.constraint(equalTo: self.topAnchor, constant: buttonFrameInSelf.maxY - Warp.Spacing.spacing50),
+            tooltipView.centerXAnchor.constraint(equalTo: self.leftAnchor, constant: buttonFrameInSelf.midX),
+            tooltipView.leadingAnchor.constraint(greaterThanOrEqualTo: self.leadingAnchor, constant: Warp.Spacing.spacing100),
+            tooltipView.trailingAnchor.constraint(lessThanOrEqualTo: self.trailingAnchor, constant: -Warp.Spacing.spacing100)
+        ])
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTooltipTap(_:)))
+        tooltipView.addGestureRecognizer(tapGesture)
+
+        activeTooltipView = tooltipView
+        activeInfoButton = sourceView
+    }
+    
+    @objc private func handleTooltipTap(_ gesture: UITapGestureRecognizer) {
+        dismissTooltip()
+    }
+    
+    private func dismissTooltip() {
+        activeTooltipView?.removeFromSuperview()
+        activeTooltipView = nil
+        activeInfoButton = nil
     }
 }
 
