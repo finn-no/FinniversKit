@@ -10,6 +10,14 @@ public class KeyValueGridView: UIView {
             updateLayout()
         }
     }
+    
+    public var parentScrollView: UIScrollView? {
+        didSet {
+            guard let scrollView = parentScrollView else { return }
+            // Observe the pan gesture to know when scrolling begins.
+            scrollView.panGestureRecognizer.addTarget(self, action: #selector(handleScrollBeginGesture(_:)))
+        }
+    }
 
     // MARK: - Private properties
 
@@ -17,6 +25,7 @@ public class KeyValueGridView: UIView {
     private var titleStyle: Warp.Typography = .body
     private var valueStyle: Warp.Typography = .bodyStrong
     private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
+    private weak var currentOverlayView: UIView?
 
     // MARK: - Initializers
 
@@ -100,8 +109,8 @@ public class KeyValueGridView: UIView {
         )
 
         titleLabel.text = pair.title
-
         titleContainer.addArrangedSubview(titleLabel)
+
         if let infoText = pair.infoTooltip, !infoText.isEmpty {
             let infoButton = UIButton(type: .custom)
             infoButton.setImage(Warp.Icon.info.uiImage, for: .normal)
@@ -158,8 +167,11 @@ public class KeyValueGridView: UIView {
     private func showTooltip(_ text: String, from sourceView: UIView) {
         guard let keyWindow = UIApplication.shared.firstWindow else { return }
 
+        dismissOverlayIfVisible()
+
         let overlayView = UIView(frame: keyWindow.bounds)
         keyWindow.addSubview(overlayView)
+        currentOverlayView = overlayView
 
         let tooltipView = Warp.Tooltip(title: text, arrowEdge: .bottom).uiView
         tooltipView.translatesAutoresizingMaskIntoConstraints = false
@@ -180,7 +192,18 @@ public class KeyValueGridView: UIView {
     }
 
     @objc private func dismissOverlay(_ sender: UITapGestureRecognizer) {
-        sender.view?.removeFromSuperview()
+        dismissOverlayIfVisible()
+    }
+    
+    @objc private func handleScrollBeginGesture(_ gesture: UIPanGestureRecognizer) {
+        if gesture.state == .began {
+            dismissOverlayIfVisible()
+        }
+    }
+    
+    private func dismissOverlayIfVisible() {
+        currentOverlayView?.removeFromSuperview()
+        currentOverlayView = nil
     }
 }
 
