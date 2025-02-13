@@ -14,7 +14,6 @@ public class KeyValueGridView: UIView {
     public var parentScrollView: UIScrollView? {
         didSet {
             guard let scrollView = parentScrollView else { return }
-            // Observe the pan gesture to know when scrolling begins.
             scrollView.panGestureRecognizer.addTarget(self, action: #selector(handleScrollBeginGesture(_:)))
         }
     }
@@ -25,7 +24,7 @@ public class KeyValueGridView: UIView {
     private var titleStyle: Warp.Typography = .body
     private var valueStyle: Warp.Typography = .bodyStrong
     private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
-    private weak var currentOverlayView: UIView?
+    private weak var currentOverlayView: PassThroughOverlayView?
 
     // MARK: - Initializers
 
@@ -169,13 +168,14 @@ public class KeyValueGridView: UIView {
 
         dismissOverlayIfVisible()
 
-        let overlayView = UIView(frame: keyWindow.bounds)
+        let overlayView = PassThroughOverlayView(frame: keyWindow.bounds)
         keyWindow.addSubview(overlayView)
         currentOverlayView = overlayView
 
         let tooltipView = Warp.Tooltip(title: text, arrowEdge: .bottom).uiView
         tooltipView.translatesAutoresizingMaskIntoConstraints = false
         overlayView.addSubview(tooltipView)
+        overlayView.tooltipView = tooltipView
 
         /// Convert the sourceView’s frame to keyWindow coordinates for positioning
         let sourceFrame = sourceView.convert(sourceView.bounds, to: keyWindow)
@@ -227,5 +227,23 @@ private class PaddableLabel: Label {
 
     override func drawText(in rect: CGRect) {
         super.drawText(in: rect.inset(by: textPadding))
+    }
+}
+
+final class PassThroughOverlayView: UIView {
+    weak var tooltipView: UIView?
+
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        guard let tooltip = tooltipView else {
+            return nil
+        }
+
+        let pointInTooltip = convert(point, to: tooltip)
+
+        if tooltip.bounds.contains(pointInTooltip) {
+            return super.hitTest(point, with: event)
+        }
+
+        return nil
     }
 }
