@@ -104,17 +104,19 @@ public class KeyValueGridView: UIView {
         titleLabel.text = pair.title
         titleContainer.addArrangedSubview(titleLabel)
 
+        // TODO: add tap area for info button (at least 44x44)
         if let infoText = pair.infoTooltip, !infoText.isEmpty {
             let infoButton = UIButton(type: .custom)
             infoButton.setImage(Warp.Icon.info.uiImage, for: .normal)
             infoButton.translatesAutoresizingMaskIntoConstraints = false
+            // TODO: ask about accessibility 
             infoButton.accessibilityLabel = pair.infoTooltipAccessibilityLabel
             NSLayoutConstraint.activate([
                 infoButton.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
                 infoButton.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200)
             ])
             infoButton.addAction(UIAction(handler: { [weak self] action in
-                guard let view = action.sender as? UIView else { return }
+                guard action.sender is UIView else { return }
                 self?.toggleTooltip(infoText, from: infoButton)
             }), for: .touchUpInside)
 
@@ -158,7 +160,7 @@ public class KeyValueGridView: UIView {
     }
 
     private func toggleTooltip(_ text: String, from infoButton: UIView) {
-        if let activeTooltip = activeTooltipView, activeInfoButton === infoButton {
+        if let activeTooltipView, activeInfoButton === infoButton {
             dismissTooltip()
         } else {
             dismissTooltip()
