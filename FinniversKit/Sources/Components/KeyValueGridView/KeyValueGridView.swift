@@ -165,19 +165,17 @@ public class KeyValueGridView: UIView {
             showTooltip(text, from: infoButton)
         }
     }
-    
+
     private func showTooltip(_ text: String, from sourceView: UIView) {
         let tooltipView = Warp.Tooltip(title: text, arrowEdge: .bottom).uiView
         tooltipView.translatesAutoresizingMaskIntoConstraints = false
         tooltipView.isUserInteractionEnabled = true
-        
         addSubview(tooltipView)
-        
-        // Convert the button’s frame to the KeyValueGridView’s coordinate system
+
         let buttonFrameInSelf = sourceView.convert(sourceView.bounds, to: self)
 
         NSLayoutConstraint.activate([
-            tooltipView.topAnchor.constraint(equalTo: self.topAnchor, constant: buttonFrameInSelf.maxY - Warp.Spacing.spacing50),
+            tooltipView.bottomAnchor.constraint(equalTo: self.topAnchor, constant: buttonFrameInSelf.minY - Warp.Spacing.spacing50),
             tooltipView.centerXAnchor.constraint(equalTo: self.leftAnchor, constant: buttonFrameInSelf.midX),
             tooltipView.leadingAnchor.constraint(greaterThanOrEqualTo: self.leadingAnchor, constant: Warp.Spacing.spacing100),
             tooltipView.trailingAnchor.constraint(lessThanOrEqualTo: self.trailingAnchor, constant: -Warp.Spacing.spacing100)
@@ -189,11 +187,11 @@ public class KeyValueGridView: UIView {
         activeTooltipView = tooltipView
         activeInfoButton = sourceView
     }
-    
+
     @objc private func handleTooltipTap(_ gesture: UITapGestureRecognizer) {
         dismissTooltip()
     }
-    
+
     private func dismissTooltip() {
         activeTooltipView?.removeFromSuperview()
         activeTooltipView = nil
@@ -209,9 +207,9 @@ private class PaddableLabel: Label {
             invalidateIntrinsicContentSize()
         }
     }
-
+    
     // MARK: - Overrides
-
+    
     override func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
         let insetRect = bounds.inset(by: textPadding)
         let textRect = super.textRect(forBounds: insetRect, limitedToNumberOfLines: numberOfLines)
