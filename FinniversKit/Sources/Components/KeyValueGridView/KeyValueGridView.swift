@@ -18,7 +18,6 @@ public class KeyValueGridView: UIView {
     private var valueStyle: Warp.Typography = .bodyStrong
     private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
     private weak var activeTooltipView: UIView?
-    private weak var activeInfoButton: UIView?
 
     // MARK: - Initializers
 
@@ -109,7 +108,7 @@ public class KeyValueGridView: UIView {
             let infoButton = UIButton(type: .custom)
             infoButton.setImage(Warp.Icon.info.uiImage, for: .normal)
             infoButton.translatesAutoresizingMaskIntoConstraints = false
-            // TODO: ask about accessibility 
+            // TODO: ask about accessibility
             infoButton.accessibilityLabel = pair.infoTooltipAccessibilityLabel
             NSLayoutConstraint.activate([
                 infoButton.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
@@ -160,7 +159,7 @@ public class KeyValueGridView: UIView {
     }
 
     private func toggleTooltip(_ text: String, from infoButton: UIView) {
-        if let activeTooltipView, activeInfoButton === infoButton {
+        if activeTooltipView != nil {
             dismissTooltip()
         } else {
             dismissTooltip()
@@ -169,25 +168,81 @@ public class KeyValueGridView: UIView {
     }
 
     private func showTooltip(_ text: String, from sourceView: UIView) {
-        let tooltipView = Warp.Tooltip(title: text, arrowEdge: .bottom).uiView
+        var tooltip = Warp.Tooltip(title: text, arrowEdge: .bottom)
+        let tooltipView = tooltip.uiView
         tooltipView.translatesAutoresizingMaskIntoConstraints = false
         tooltipView.isUserInteractionEnabled = true
+
         addSubview(tooltipView)
 
+        // Temp constraints for measurement
+        let tempConstraints = [
+            tooltipView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            tooltipView.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ]
+        NSLayoutConstraint.activate(tempConstraints)
+        layoutIfNeeded()
+
+        // Measure
+        let measuredSize = tooltipView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        let tooltipHeight = measuredSize.height
+
+        // Remove temp constraints
+        NSLayoutConstraint.deactivate(tempConstraints)
+
+        // Step 3: Find out how much space is above the icon
         let buttonFrameInSelf = sourceView.convert(sourceView.bounds, to: self)
+        let iconTop = buttonFrameInSelf.minY
+        let iconBottom = buttonFrameInSelf.maxY
+        let spacing: CGFloat = 4
 
-        NSLayoutConstraint.activate([
-            tooltipView.bottomAnchor.constraint(equalTo: self.topAnchor, constant: buttonFrameInSelf.minY - Warp.Spacing.spacing50),
-            tooltipView.centerXAnchor.constraint(equalTo: self.leftAnchor, constant: buttonFrameInSelf.midX),
-            tooltipView.leadingAnchor.constraint(greaterThanOrEqualTo: self.leadingAnchor, constant: Warp.Spacing.spacing100),
-            tooltipView.trailingAnchor.constraint(lessThanOrEqualTo: self.trailingAnchor, constant: -Warp.Spacing.spacing100)
-        ])
+        // 8) Calculate how much space is available above the icon
+        //    (We subtract `spacing` to leave a little gap)
+        let spaceAboveIcon = iconTop - spacing
 
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTooltipTap(_:)))
-        tooltipView.addGestureRecognizer(tapGesture)
+        // 9) Check if there's enough space to put the tooltip above the icon
+        let canFitAbove = (tooltipHeight <= spaceAboveIcon)
 
-        activeTooltipView = tooltipView
-        activeInfoButton = sourceView
+        if !canFitAbove {
+            // Remove the old tooltip from superview (the one with arrowEdge = .bottom)
+            tooltipView.removeFromSuperview()
+
+            // Re-create the tooltip with arrowEdge = .top
+            tooltip = Warp.Tooltip(title: text, arrowEdge: .top)
+            let newTooltipView = tooltip.uiView
+            newTooltipView.translatesAutoresizingMaskIntoConstraints = false
+            addSubview(newTooltipView)
+
+            // Place it below the icon
+            NSLayoutConstraint.activate([
+                newTooltipView.topAnchor.constraint(equalTo: topAnchor, constant: iconBottom + spacing),
+                newTooltipView.centerXAnchor.constraint(equalTo: leftAnchor, constant: buttonFrameInSelf.midX),
+                newTooltipView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 8),
+                newTooltipView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -8)
+            ])
+
+            // Optionally dismiss on tap
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTooltipTap(_:)))
+            newTooltipView.addGestureRecognizer(tapGesture)
+
+            // Store references if you want to dismiss it later
+            activeTooltipView = newTooltipView
+        } else {
+            // Keep the original tooltip (arrowEdge = .bottom)
+            // Place it above the icon
+            NSLayoutConstraint.activate([
+                tooltipView.bottomAnchor.constraint(equalTo: topAnchor, constant: iconTop - spacing),
+                tooltipView.centerXAnchor.constraint(equalTo: leftAnchor, constant: buttonFrameInSelf.midX),
+                tooltipView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 8),
+                tooltipView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -8)
+            ])
+
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTooltipTap(_:)))
+            tooltipView.addGestureRecognizer(tapGesture)
+
+            // Store references if you want to dismiss it later
+            activeTooltipView = tooltipView
+        }
     }
 
     @objc private func handleTooltipTap(_ gesture: UITapGestureRecognizer) {
@@ -197,7 +252,6 @@ public class KeyValueGridView: UIView {
     private func dismissTooltip() {
         activeTooltipView?.removeFromSuperview()
         activeTooltipView = nil
-        activeInfoButton = nil
     }
 }
 
@@ -209,9 +263,9 @@ private class PaddableLabel: Label {
             invalidateIntrinsicContentSize()
         }
     }
-    
+
     // MARK: - Overrides
-    
+
     override func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
         let insetRect = bounds.inset(by: textPadding)
         let textRect = super.textRect(forBounds: insetRect, limitedToNumberOfLines: numberOfLines)
