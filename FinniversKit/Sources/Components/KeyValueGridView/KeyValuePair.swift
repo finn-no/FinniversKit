@@ -1,4 +1,4 @@
-public struct KeyValuePair: Hashable {
+public struct KeyValuePair: Hashable, Identifiable {
     public let title: String
     public let value: String
     public let accessibilityLabel: String?

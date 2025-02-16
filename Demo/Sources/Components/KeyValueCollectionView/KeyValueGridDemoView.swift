@@ -1,20 +1,33 @@
 //
 //  Copyright © 2020 FINN AS. All rights reserved.
 //
-
 import FinniversKit
-import DemoKit
 import Warp
+import SwiftUI
+import DemoKit
 
 class KeyValueGridDemoView: UIView {
 
-    private lazy var keyValueGridView: KeyValueGridView = {
-        let view = KeyValueGridView(withAutoLayout: true)
-        view.numberOfColumns = numberOfColumnsForTraits
-        return view
+    // Create a UIHostingController that hosts your SwiftUI grid view.
+    private lazy var hostingController: UIHostingController<KeyValueGridView> = {
+        let swiftUIView = KeyValueGridView(
+            keyValuePairs: .demoData,
+            numberOfColumns: numberOfColumnsForTraits,
+            titleFont: .body,
+            valueFont: .body
+        )
+        let controller = UIHostingController(rootView: swiftUIView)
+        controller.view.translatesAutoresizingMaskIntoConstraints = false
+        // Optionally set a background color if needed.
+        controller.view.backgroundColor = .clear
+        return controller
     }()
 
-    private lazy var scrollView = UIScrollView(withAutoLayout: true)
+    private lazy var scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     // MARK: - Initializers
 
@@ -24,36 +37,47 @@ class KeyValueGridDemoView: UIView {
         configure(forTweakAt: 0)
     }
 
-    required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
     // MARK: - Private methods
 
     private func setup() {
-        directionalLayoutMargins = NSDirectionalEdgeInsets(all: Warp.Spacing.spacing400)
+        directionalLayoutMargins = NSDirectionalEdgeInsets(
+            top: Warp.Spacing.spacing400,
+            leading: Warp.Spacing.spacing400,
+            bottom: Warp.Spacing.spacing400,
+            trailing: Warp.Spacing.spacing400
+        )
         addSubview(scrollView)
-
-        scrollView.addSubview(keyValueGridView)
         scrollView.fillInSuperviewLayoutMargins()
+
+        // Add the hosting controller's view to the scroll view.
+        scrollView.addSubview(hostingController.view)
         NSLayoutConstraint.activate([
-            keyValueGridView.topAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.topAnchor),
-            keyValueGridView.leadingAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.leadingAnchor),
-            keyValueGridView.trailingAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.trailingAnchor),
+            hostingController.view.topAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.topAnchor),
+            hostingController.view.leadingAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.leadingAnchor),
+            hostingController.view.trailingAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.trailingAnchor),
+            hostingController.view.bottomAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.bottomAnchor)
         ])
     }
 
+    /// Determines the number of columns based on the current horizontal size class.
     private var numberOfColumnsForTraits: Int {
-        if case .compact = traitCollection.horizontalSizeClass {
-            return 2
-        } else {
-            return 3
-        }
+        traitCollection.horizontalSizeClass == .compact ? 2 : 3
     }
 
+    /// When traits change, update the SwiftUI view with the new number of columns.
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
         guard previousTraitCollection != traitCollection else { return }
-        keyValueGridView.numberOfColumns = numberOfColumnsForTraits
+        let currentPairs = hostingController.rootView.keyValuePairs
+        hostingController.rootView = KeyValueGridView(
+            keyValuePairs: currentPairs,
+            numberOfColumns: numberOfColumnsForTraits,
+            titleFont: hostingController.rootView.titleFont,
+            valueFont: hostingController.rootView.valueFont
+        )
     }
 }
 
@@ -70,16 +94,27 @@ extension KeyValueGridDemoView: TweakableDemo {
     }
 
     func configure(forTweakAt index: Int) {
-        switch Tweaks.allCases[index] {
-        case .default:
-            keyValueGridView.configure(with: .demoData)
-            keyValueGridView.backgroundColor = .backgroundInfoSubtle
-        case .energyLabels:
-            keyValueGridView.configure(with: .energyLabels)
-            keyValueGridView.backgroundColor = .background
-        }
+//        switch Tweaks.allCases[index] {
+//        case .default:
+//            hostingController.rootView = KeyValueGridView(
+//                keyValuePairs: .demoData,
+//                numberOfColumns: numberOfColumnsForTraits,
+//                titleFont: .body,
+//                valueFont: .body
+//            )
+//            hostingController.view.backgroundColor = .backgroundInfoSubtle
+//        case .energyLabels:
+//            hostingController.rootView = KeyValueGridView(
+//                keyValuePairs: .energyLabels,
+//                numberOfColumns: numberOfColumnsForTraits,
+//                titleFont: .body,
+//                valueFont: .body
+//            )
+//            hostingController.view.backgroundColor = .background
+//        }
     }
 }
+
 
 // MARK: - Private extensions
 
