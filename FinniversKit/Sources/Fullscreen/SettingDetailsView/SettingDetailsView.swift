@@ -20,6 +20,7 @@ public protocol SettingDetailsViewModel {
 public protocol SettingDetailsViewDelegate: AnyObject {
     func settingDetailsView(_ detailsView: SettingDetailsView, didChangeTo state: SettingDetailsView.State, with model: SettingDetailsViewModel)
     func settingDetailsView(_ detailsView: SettingDetailsView, didTapPrimaryButtonWith model: SettingDetailsViewModel)
+    func settingDetailsViewDismissAction(_ detailsView: SettingDetailsView)
 }
 
 // MARK: - View
@@ -70,6 +71,15 @@ public class SettingDetailsView: UIView {
     private lazy var primaryButton: Button = {
         let button = Button(style: .callToAction, withAutoLayout: true)
         button.addTarget(self, action: #selector(primaryButtonTapped), for: .touchUpInside)
+        return button
+    }()
+
+    private lazy var dismissButton: Button = {
+        let button = Button(style: .default, withAutoLayout: true)
+        let img = UIImage(systemName: "xmark")
+        button.setImage(img, for: .normal)
+
+        button.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
         return button
     }()
 
@@ -170,7 +180,12 @@ private extension SettingDetailsView {
         delegate?.settingDetailsView(self, didTapPrimaryButtonWith: model)
     }
 
+    @objc func dismissButtonTapped() {
+        delegate?.settingDetailsViewDismissAction(self)
+    }
+
     func setup() {
+        scrollView.addSubview(dismissButton)
         scrollView.addSubview(iconView)
         scrollView.addSubview(titleLabel)
         scrollView.addSubview(textLabel)
@@ -182,7 +197,11 @@ private extension SettingDetailsView {
         scrollView.fillInSuperview()
 
         NSLayoutConstraint.activate([
-            iconView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Warp.Spacing.spacing100 + Warp.Spacing.spacing200),
+            dismissButton.heightAnchor.constraint(equalToConstant: 44),
+            dismissButton.widthAnchor.constraint(equalToConstant: 44),
+            dismissButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -Warp.Spacing.spacing200),
+            dismissButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Warp.Spacing.spacing100 + Warp.Spacing.spacing200),
+            iconView.topAnchor.constraint(equalTo: dismissButton.bottomAnchor, constant: Warp.Spacing.spacing200),
             iconView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
 
             titleLabel.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: Warp.Spacing.spacing200),
