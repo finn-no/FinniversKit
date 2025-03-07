@@ -75,7 +75,7 @@ public class SettingDetailsView: UIView {
     }()
 
     private lazy var dismissButton: Button = {
-        let button = Button(style: .default, withAutoLayout: true)
+        let button = Button(style: .flat, withAutoLayout: true)
         let img = UIImage(systemName: "xmark")
         button.setImage(img, for: .normal)
 
