@@ -19,7 +19,6 @@ public protocol SettingDetailsViewModel {
 
 // MARK: - Delegate
 public protocol SettingDetailsViewDelegate: AnyObject {
-    func settingDetailsView(_ detailsView: SettingDetailsView, didChangeTo state: SettingDetailsView.State, with model: SettingDetailsViewModel)
     func settingDetailsView(_ detailsView: SettingDetailsView, didTapPrimaryButtonWith model: SettingDetailsViewModel)
     func settingDetailsViewDismissAction(_ detailsView: SettingDetailsView)
 }
@@ -168,7 +167,6 @@ private extension SettingDetailsView {
         }
 
         configure(with: model, animated: true)
-        delegate?.settingDetailsView(self, didChangeTo: state, with: model)
 
         layoutIfNeeded()
         shadowView.updateShadow(using: scrollView)
