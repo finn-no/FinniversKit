@@ -114,13 +114,13 @@ extension BroadcastItem {
 
             iconImageView.topAnchor.constraint(equalTo: messageTextView.topAnchor, constant: Warp.Spacing.spacing25),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
-            iconImageView.heightAnchor.constraint(equalToConstant: 16),
-            iconImageView.widthAnchor.constraint(equalToConstant: 16),
+            iconImageView.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
+            iconImageView.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
 
             dismissButton.topAnchor.constraint(equalTo: messageTextView.topAnchor, constant: Warp.Spacing.spacing25),
             dismissButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
-            dismissButton.heightAnchor.constraint(equalToConstant: 16),
-            dismissButton.widthAnchor.constraint(equalToConstant: 16),
+            dismissButton.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
+            dismissButton.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
 
             contentView.bottomAnchor.constraint(greaterThanOrEqualTo: messageTextView.bottomAnchor, constant: Warp.Spacing.spacing200),
             contentView.bottomAnchor.constraint(greaterThanOrEqualTo: iconImageView.bottomAnchor, constant: Warp.Spacing.spacing200),
