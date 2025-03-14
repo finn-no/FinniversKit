@@ -171,36 +171,38 @@ public class KeyValueGridView: UIView {
     func showTooltip(for infoButton: UIView, text: String) {
         guard let window = infoButton.window else { return }
 
-        // 1. Convert infoButton’s frame to window coords
+        // Convert infoButton’s frame to window coords
         let buttonFrame = infoButton.convert(infoButton.bounds, to: window)
         let screenBounds = window.bounds
 
-        // 2. Figure out best placement
-        let spaceAbove    = buttonFrame.minY
-        let spaceBelow    = screenBounds.maxY - buttonFrame.maxY
-        let spaceLeading  = buttonFrame.minX
+        // Figure out best placement
+        let spaceAbove = buttonFrame.minY
+        let spaceBelow = screenBounds.maxY - buttonFrame.maxY
+        let spaceLeading = buttonFrame.minX
         let spaceTrailing = screenBounds.maxX - buttonFrame.maxX
 
         let placement: Edge
-        if spaceBelow >= spaceAbove && spaceBelow > 100 {
+        if spaceLeading < 100 {
+            // Not enough space on the left
+            placement = .trailing
+        } else if spaceTrailing < 100 {
+            // Not enough space on the right
+            placement = .leading
+        } else if spaceBelow >= spaceAbove && spaceBelow > 100 {
             // Enough space below
             placement = .bottom
         } else if spaceAbove > 100 {
             // Enough above
             placement = .top
-        } else if spaceTrailing >= spaceLeading {
-            // Enough on the right
-            placement = .trailing
         } else {
-            // Otherwise left
-            placement = .leading
+            // Otherwise b
+            placement = .bottom
         }
 
-        // 3. Convert "placement" to Warp.Tooltip’s arrow edge
+        // Convert "placement" to Tooltip’s arrow edge
         let warpArrowEdge: Edge
         switch placement {
         case .top:
-            // If the tooltip is placed above the button, the arrow is drawn at the bottom of the tooltip.
             warpArrowEdge = .bottom
         case .bottom:
             warpArrowEdge = .top
@@ -210,7 +212,7 @@ public class KeyValueGridView: UIView {
             warpArrowEdge = .leading
         }
 
-        // 4. Create the tooltip with the correct arrow edge in the initializer
+        // Create the tooltip with the correct arrow edge in the initializer
         let tooltip = Warp.Tooltip(title: text, arrowEdge: warpArrowEdge)
         let tooltipView = tooltip.uiView
         tooltipView.isUserInteractionEnabled = true
@@ -220,7 +222,7 @@ public class KeyValueGridView: UIView {
 
         window.addSubview(tooltipView)
 
-        // 5. Measure the text to find a suitable size
+        // Measure the text to find a suitable size
         let maxTooltipWidth: CGFloat = 300
         let minTooltipWidth: CGFloat = 150
         let textFont = UIFont.systemFont(ofSize: 14)  // or your custom font
@@ -228,37 +230,37 @@ public class KeyValueGridView: UIView {
         let boundingSize = CGSize(width: maxTooltipWidth, height: .infinity)
         let textRect = (text as NSString).boundingRect(
             with: boundingSize,
-            options: [.usesLineFragmentOrigin, .usesFontLeading],
+            options: [.usesLineFragmentOrigin],
             attributes: [.font: textFont],
             context: nil
         )
-        var tooltipWidth = ceil(textRect.width) + 16 // add some internal padding
+        var tooltipWidth = ceil(textRect.width) + 16
         tooltipWidth = max(minTooltipWidth, min(tooltipWidth, maxTooltipWidth))
 
-        let tooltipHeight = ceil(textRect.height) + 16
+        let tooltipHeight = ceil(textRect.height) + 16 * 2
 
-        // 6. Decide initial origin based on the chosen placement
+        // Decide initial origin based on the chosen placement
         var origin = CGPoint.zero
         switch placement {
         case .top:
             // Place above the button
             origin.x = buttonFrame.midX - (tooltipWidth / 2)
-            origin.y = buttonFrame.minY - tooltipHeight - 8
+            origin.y = buttonFrame.minY - tooltipHeight
         case .bottom:
             // Place below the button
             origin.x = buttonFrame.midX - (tooltipWidth / 2)
-            origin.y = buttonFrame.maxY + 8
+            origin.y = buttonFrame.maxY
         case .leading:
             // Left side
-            origin.x = buttonFrame.minX - tooltipWidth - 8
+            origin.x = buttonFrame.minX - tooltipWidth
             origin.y = buttonFrame.midY - (tooltipHeight / 2)
         case .trailing:
             // Right side
-            origin.x = buttonFrame.maxX + 8
+            origin.x = buttonFrame.maxX
             origin.y = buttonFrame.midY - (tooltipHeight / 2)
         }
 
-        // 7. Clamp to screen edges (8pt margin)
+        // Make sure tooltip stays fully inside the visible screen area
         var frame = CGRect(origin: origin, size: CGSize(width: tooltipWidth, height: tooltipHeight))
         if frame.minX < 8 {
             frame.origin.x = 8
@@ -273,7 +275,6 @@ public class KeyValueGridView: UIView {
             frame.origin.y = screenBounds.maxY - 8 - frame.height
         }
 
-        // 8. Assign final frame
         tooltipView.frame = frame
 
         activeTooltipView = tooltipView
@@ -327,8 +328,9 @@ struct KeyValueGridViewRepresentable: UIViewRepresentable {
 
         // 3. Provide sample data
         var demoData: [KeyValuePair] = [
-            .init(title: "Dri", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual range must be seen in context of age, km, driving pattern and weather conditions"),
+            .init(title: "Dri", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual.WLTP is a metric from when the car was new and the actual"),
             .init(title: "Omregistrering", value: "1 618 kr"),
+            .init(title: "Årsavgifttyhtyh", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual"),
             .init(title: "Pris eks omreg", value: "178 381 kr"),
             .init(title: "Årsavgift", value: "Nye regler."),
             .init(title: "1. gang registrert", value: "30.09.2009"),
@@ -352,19 +354,17 @@ struct KeyValueGridViewRepresentable: UIViewRepresentable {
             .init(title: "Reg.nr", value: "DX11111"),
             .init(title: "Chassis nr. (VIN)", value: "XX1234XX1X099999"),
             .init(title: "Maksimal tilhengervekt", value: "2 500 kg"),
-            .init(title: "Driving range WLTP", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual range must be seen in context of age, km, driving pattern and weather conditions"),
+            .init(title: "Driving range WLTP", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual range must be seen in context of age, km, driving pattern and weather conditions. WLTP is a metric from when the car was new and the actual range must be seen in context of age, km, driving pattern and weather conditions"),
         ]
-        
         // 4. Call configure with desired text styles
         view.configure(
             with: demoData,
             titleStyle: .body,
             valueStyle: .bodyStrong
         )
-        
         return view
     }
-    
+
     // If you need dynamic updates, handle them here.
     func updateUIView(_ uiView: KeyValueGridView, context: Context) {
         // No-op in this simple example
