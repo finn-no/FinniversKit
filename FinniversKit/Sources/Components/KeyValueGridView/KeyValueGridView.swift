@@ -170,6 +170,7 @@ public class KeyValueGridView: UIView {
 
     func showTooltip(for infoButton: UIView, text: String) {
         guard let window = infoButton.window else { return }
+        let minSpace = Warp.Spacing.spacing1200
 
         // Convert infoButton’s frame to window coords
         let buttonFrame = infoButton.convert(infoButton.bounds, to: window)
@@ -182,20 +183,20 @@ public class KeyValueGridView: UIView {
         let spaceTrailing = screenBounds.maxX - buttonFrame.maxX
 
         let placement: Edge
-        if spaceLeading < 100 {
+        if spaceLeading < minSpace {
             // Not enough space on the left
             placement = .trailing
-        } else if spaceTrailing < 100 {
+        } else if spaceTrailing < minSpace {
             // Not enough space on the right
             placement = .leading
-        } else if spaceBelow >= spaceAbove && spaceBelow > 100 {
+        } else if spaceBelow >= spaceAbove && spaceBelow > minSpace {
             // Enough space below
             placement = .bottom
-        } else if spaceAbove > 100 {
+        } else if spaceAbove > minSpace {
             // Enough above
             placement = .top
         } else {
-            // Otherwise b
+            // Default to bottom
             placement = .bottom
         }
 
@@ -225,7 +226,7 @@ public class KeyValueGridView: UIView {
         // Measure the text to find a suitable size
         let maxTooltipWidth: CGFloat = 300
         let minTooltipWidth: CGFloat = 150
-        let textFont = UIFont.systemFont(ofSize: 14)  // or your custom font
+        let textFont = Warp.Typography.caption.uiFont
 
         let boundingSize = CGSize(width: maxTooltipWidth, height: .infinity)
         let textRect = (text as NSString).boundingRect(
@@ -234,10 +235,10 @@ public class KeyValueGridView: UIView {
             attributes: [.font: textFont],
             context: nil
         )
-        var tooltipWidth = ceil(textRect.width) + 16
+        var tooltipWidth = ceil(textRect.width) + Warp.Spacing.spacing200
         tooltipWidth = max(minTooltipWidth, min(tooltipWidth, maxTooltipWidth))
 
-        let tooltipHeight = ceil(textRect.height) + 16 * 2
+        let tooltipHeight = ceil(textRect.height) + Warp.Spacing.spacing200 * 2
 
         // Decide initial origin based on the chosen placement
         var origin = CGPoint.zero
@@ -262,17 +263,17 @@ public class KeyValueGridView: UIView {
 
         // Make sure tooltip stays fully inside the visible screen area
         var frame = CGRect(origin: origin, size: CGSize(width: tooltipWidth, height: tooltipHeight))
-        if frame.minX < 8 {
-            frame.origin.x = 8
+        if frame.minX < Warp.Spacing.spacing200 {
+            frame.origin.x = Warp.Spacing.spacing200
         }
-        if frame.maxX > screenBounds.maxX - 8 {
-            frame.origin.x = screenBounds.maxX - 8 - frame.width
+        if frame.maxX > screenBounds.maxX - Warp.Spacing.spacing200 {
+            frame.origin.x = screenBounds.maxX - Warp.Spacing.spacing200 - frame.width
         }
-        if frame.minY < 8 {
-            frame.origin.y = 8
+        if frame.minY < Warp.Spacing.spacing200 {
+            frame.origin.y = Warp.Spacing.spacing200
         }
-        if frame.maxY > screenBounds.maxY - 8 {
-            frame.origin.y = screenBounds.maxY - 8 - frame.height
+        if frame.maxY > screenBounds.maxY - Warp.Spacing.spacing200 {
+            frame.origin.y = screenBounds.maxY - Warp.Spacing.spacing200 - frame.height
         }
 
         tooltipView.frame = frame
