@@ -172,115 +172,123 @@ public class KeyValueGridView: UIView {
         guard let window = infoButton.window else { return }
         let minSpace = Warp.Spacing.spacing1200
 
-        // Convert infoButton’s frame to window coords
+        // Compute where tooltip should appear (top/bottom/leading/trailing)
+        let placement = computePlacement(for: infoButton, in: window, minSpace: Warp.Spacing.spacing1200)
+
+        // Convert that placement to Warp’s arrow edge
+        let warpArrowEdge = arrowEdge(for: placement)
+
+        // Create the tooltip view (with tap-to-dismiss)
+        let tooltip = Warp.Tooltip(title: text, arrowEdge: warpArrowEdge)
+        let tooltipView = tooltip.uiView
+        tooltipView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTooltipTap(_:)))
+        tooltipView.addGestureRecognizer(tapGesture)
+        window.addSubview(tooltipView)
+
+        // Measure the text so we know how big to make the tooltip
+        let (tooltipWidth, tooltipHeight) = measureText(text: text)
+
+        // Calculate the initial (x, y) origin for the tooltip
+        let buttonFrame = infoButton.convert(infoButton.bounds, to: window)
+        let tooltipOrigin = computeOrigin(placement: placement, buttonFrame: buttonFrame, tooltipWidth: tooltipWidth, tooltipHeight: tooltipHeight)
+
+        // Make sure tooltip stays fully inside the visible screen area
+        var frame = CGRect(origin: tooltipOrigin, size: CGSize(width: tooltipWidth, height: tooltipHeight))
+
+        // Assign final frame
+        tooltipView.frame = frame
+
+        // Keep reference so we can dismiss later
+        activeTooltipView = tooltipView
+    }
+
+    /// Decide if the tooltip will appear top, bottom, leading, or trailing
+    private func computePlacement(for infoButton: UIView, in window: UIWindow, minSpace: CGFloat) -> Edge {
         let buttonFrame = infoButton.convert(infoButton.bounds, to: window)
         let screenBounds = window.bounds
 
-        // Figure out best placement
         let spaceAbove = buttonFrame.minY
         let spaceBelow = screenBounds.maxY - buttonFrame.maxY
         let spaceLeading = buttonFrame.minX
         let spaceTrailing = screenBounds.maxX - buttonFrame.maxX
 
-        let placement: Edge
         if spaceLeading < minSpace {
-            // Not enough space on the left
-            placement = .trailing
+            return .trailing
         } else if spaceTrailing < minSpace {
-            // Not enough space on the right
-            placement = .leading
-        } else if spaceBelow >= spaceAbove && spaceBelow > minSpace {
-            // Enough space below
-            placement = .bottom
+            return .leading
+        } else if spaceBelow >= spaceAbove, spaceBelow > minSpace {
+            return .bottom
         } else if spaceAbove > minSpace {
-            // Enough above
-            placement = .top
+            return .top
         } else {
-            // Default to bottom
-            placement = .bottom
+            return .bottom
         }
+    }
 
-        // Convert "placement" to Tooltip’s arrow edge
-        let warpArrowEdge: Edge
+    /// Warp’s .top means the arrow is drawn on top, so the tooltip is below.
+    /// Our .top means we place tooltip above the button, so arrow must be at .bottom.
+    private func arrowEdge(for placement: Edge) -> Edge {
         switch placement {
-        case .top:
-            warpArrowEdge = .bottom
-        case .bottom:
-            warpArrowEdge = .top
-        case .leading:
-            warpArrowEdge = .trailing
-        case .trailing:
-            warpArrowEdge = .leading
+        case .top: return .bottom
+        case .bottom: return .top
+        case .leading: return .trailing
+        case .trailing: return .leading
         }
+    }
 
-        // Create the tooltip with the correct arrow edge in the initializer
-        let tooltip = Warp.Tooltip(title: text, arrowEdge: warpArrowEdge)
-        let tooltipView = tooltip.uiView
-        tooltipView.isUserInteractionEnabled = true
-
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTooltipTap(_:)))
-        tooltipView.addGestureRecognizer(tapGesture)
-
-        window.addSubview(tooltipView)
-
-        // Measure the text to find a suitable size
-        let maxTooltipWidth: CGFloat = 250
-        let minTooltipWidth: CGFloat = 150
-        let textFont = Warp.Typography.caption.uiFont
-
-        let boundingSize = CGSize(width: maxTooltipWidth, height: .infinity)
+    /// Measures the text size (using boundingRect) so we can manually size the tooltip
+    private func measureText(text: String) -> (width: CGFloat, height: CGFloat) {
+        let boundingSize = CGSize(width: 250.0, height: .infinity)
         let textRect = (text as NSString).boundingRect(
             with: boundingSize,
             options: [.usesLineFragmentOrigin],
-            attributes: [.font: textFont],
+            attributes: [.font: Warp.Typography.caption.uiFont],
             context: nil
         )
         var tooltipWidth = ceil(textRect.width) + Warp.Spacing.spacing200
-        tooltipWidth = max(minTooltipWidth, min(tooltipWidth, maxTooltipWidth))
-
+        tooltipWidth = max(150.0, min(tooltipWidth, 250.0))
         let tooltipHeight = ceil(textRect.height) + Warp.Spacing.spacing200 * 2
+        return (tooltipWidth, tooltipHeight)
+    }
 
-        // Decide initial origin based on the chosen placement
+    /// Based on our placement we place the tooltip relative to the button
+    private func computeOrigin(placement: Edge, buttonFrame: CGRect, tooltipWidth: CGFloat, tooltipHeight: CGFloat) -> CGPoint {
         var origin = CGPoint.zero
+
         switch placement {
         case .top:
-            // Place above the button
             origin.x = buttonFrame.midX - (tooltipWidth / 2)
             origin.y = buttonFrame.minY - tooltipHeight
         case .bottom:
-            // Place below the button
             origin.x = buttonFrame.midX - (tooltipWidth / 2)
             origin.y = buttonFrame.maxY
         case .leading:
-            // Left side
             origin.x = buttonFrame.minX - tooltipWidth
             origin.y = buttonFrame.midY - (tooltipHeight / 2)
         case .trailing:
-            // Right side
             origin.x = buttonFrame.maxX
             origin.y = buttonFrame.midY - (tooltipHeight / 2)
         }
 
-        // Make sure tooltip stays fully inside the visible screen area
-        var frame = CGRect(origin: origin, size: CGSize(width: tooltipWidth, height: tooltipHeight))
-        if frame.minX < Warp.Spacing.spacing200 {
-            frame.origin.x = Warp.Spacing.spacing200
-        }
-        if frame.maxX > screenBounds.maxX - Warp.Spacing.spacing200 {
-            frame.origin.x = screenBounds.maxX - Warp.Spacing.spacing200 - frame.width
-        }
-        if frame.minY < Warp.Spacing.spacing200 {
-            frame.origin.y = Warp.Spacing.spacing200
-        }
-        if frame.maxY > screenBounds.maxY - Warp.Spacing.spacing200 {
-            frame.origin.y = screenBounds.maxY - Warp.Spacing.spacing200 - frame.height
-        }
-
-        tooltipView.frame = frame
-
-        activeTooltipView = tooltipView
+        return origin
     }
 
+    /// Ensures the tooltip doesn’t overflow outside the screen bounds
+    private func clampToScreenEdges(frame: CGRect, in screenBounds: CGRect, margin: CGFloat) -> CGRect {
+        var result = frame
+
+        // Left clamp
+        if result.minX < margin { result.origin.x = margin }
+        // Right clamp
+        if result.maxX > screenBounds.maxX - margin { result.origin.x = screenBounds.maxX - margin - result.width }
+        // Top clamp
+        if result.minY < margin { result.origin.y = margin }
+        // Bottom clamp
+        if result.maxY > screenBounds.maxY - margin { result.origin.y = screenBounds.maxY - margin - result.height }
+
+        return result
+    }
 
     @objc private func handleTooltipTap(_ gesture: UITapGestureRecognizer) {
         dismissTooltip()
