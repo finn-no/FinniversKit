@@ -85,7 +85,7 @@ extension KeyValueGridDemoView: TweakableDemo {
 
 private extension Array where Element == KeyValuePair {
     static var demoData: [KeyValuePair] = [
-        .init(title: "Driving range", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual range must be seen in context of age, km, driving pattern and weather conditions"),
+        .init(title: "Dri", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual range must be seen in context of age, km, driving pattern and weather conditions"),
         .init(title: "Omregistrering", value: "1 618 kr"),
         .init(title: "Pris eks omreg", value: "178 381 kr"),
         .init(title: "Årsavgift", value: "Nye regler."),
