@@ -224,7 +224,7 @@ public class KeyValueGridView: UIView {
         window.addSubview(tooltipView)
 
         // Measure the text to find a suitable size
-        let maxTooltipWidth: CGFloat = 300
+        let maxTooltipWidth: CGFloat = 250
         let minTooltipWidth: CGFloat = 150
         let textFont = Warp.Typography.caption.uiFont
 
