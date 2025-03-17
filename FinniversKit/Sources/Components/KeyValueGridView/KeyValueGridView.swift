@@ -19,7 +19,10 @@ public class KeyValueGridView: UIView {
     private var valueStyle: Warp.Typography = .bodyStrong
     private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
     private weak var activeTooltipView: UIView?
+    private weak var activeTooltipSource: UIView?
+    private var initialTooltipSourceFrame: CGRect?
     private weak var observedScrollView: UIScrollView?
+    private var tooltipDisplayLink: CADisplayLink?
 
     // MARK: - Initializers
 
@@ -201,6 +204,9 @@ public class KeyValueGridView: UIView {
 
         // Keep reference so we can dismiss later
         activeTooltipView = tooltipView
+        activeTooltipSource = infoButton
+        initialTooltipSourceFrame = infoButton.convert(infoButton.bounds, to: window)
+        startTooltipDisplayLink()
     }
 
     /// Decide if the tooltip will appear top, bottom, leading, or trailing
@@ -297,18 +303,43 @@ public class KeyValueGridView: UIView {
     private func dismissTooltip() {
         activeTooltipView?.removeFromSuperview()
         activeTooltipView = nil
+        activeTooltipSource = nil
+        initialTooltipSourceFrame = nil
+        stopTooltipDisplayLink()
     }
 
     func dismissAllTooltips() {
         dismissTooltip()
     }
 
-    // MARK: Logic to dismiss tooltip when scrolling begins
+    private func startTooltipDisplayLink() {
+        stopTooltipDisplayLink()
+        tooltipDisplayLink = CADisplayLink(target: self, selector: #selector(checkTooltipSourceFrame))
+        tooltipDisplayLink?.add(to: .main, forMode: .default)
+    }
+
+    private func stopTooltipDisplayLink() {
+        tooltipDisplayLink?.invalidate()
+        tooltipDisplayLink = nil
+    }
+
+    @objc private func checkTooltipSourceFrame() {
+        guard let window = self.window,
+              let sourceView = activeTooltipSource,
+              let initialFrame = initialTooltipSourceFrame else { return }
+
+        let currentFrame = sourceView.convert(sourceView.bounds, to: window)
+        let threshold: CGFloat = 10.0
+        if abs(currentFrame.midX - initialFrame.midX) > threshold ||
+            abs(currentFrame.midY - initialFrame.midY) > threshold {
+            dismissTooltip()
+        }
+    }
+
     public override func didMoveToSuperview() {
         super.didMoveToSuperview()
         if let scrollView = findScrollView() {
             observedScrollView = scrollView
-            // Observe the pan gesture of the scroll view to dismiss immediately on scrolling.
             scrollView.panGestureRecognizer.addTarget(self, action: #selector(handlePanGesture(_:)))
         }
     }
@@ -317,11 +348,11 @@ public class KeyValueGridView: UIView {
         if let scrollView = observedScrollView {
             scrollView.panGestureRecognizer.removeTarget(self, action: #selector(handlePanGesture(_:)))
         }
+        stopTooltipDisplayLink()
         super.removeFromSuperview()
     }
 
     @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
-        // Dismiss the tooltip immediately when scrolling begins.
         if gesture.state == .changed || gesture.state == .began {
             dismissTooltip()
         }
