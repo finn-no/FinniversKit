@@ -20,6 +20,10 @@ public class KeyValueGridView: UIView {
     private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
     private weak var activeTooltipView: UIView?
 
+    // observer for scroll events
+    private var scrollViewObserver: NSKeyValueObservation?
+    private weak var observedScrollView: UIScrollView?
+
     // MARK: - Initializers
 
     public override init(frame: CGRect) {
@@ -170,7 +174,6 @@ public class KeyValueGridView: UIView {
 
     func showTooltip(for infoButton: UIView, text: String) {
         guard let window = infoButton.window else { return }
-        let minSpace = Warp.Spacing.spacing1200
 
         // Compute where tooltip should appear (top/bottom/leading/trailing)
         let placement = computePlacement(for: infoButton, in: window, minSpace: Warp.Spacing.spacing1200)
@@ -194,7 +197,7 @@ public class KeyValueGridView: UIView {
         let tooltipOrigin = computeOrigin(placement: placement, buttonFrame: buttonFrame, tooltipWidth: tooltipWidth, tooltipHeight: tooltipHeight)
 
         // Make sure tooltip stays fully inside the visible screen area
-        var frame = CGRect(origin: tooltipOrigin, size: CGSize(width: tooltipWidth, height: tooltipHeight))
+        let frame = CGRect(origin: tooltipOrigin, size: CGSize(width: tooltipWidth, height: tooltipHeight))
 
         // Assign final frame
         tooltipView.frame = frame
@@ -297,6 +300,28 @@ public class KeyValueGridView: UIView {
     private func dismissTooltip() {
         activeTooltipView?.removeFromSuperview()
         activeTooltipView = nil
+    }
+    
+    public override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        // Look for a UIScrollView in our hierarchy and observe its contentOffset.
+        if let scrollView = findScrollView() {
+            observedScrollView = scrollView
+            scrollViewObserver = scrollView.observe(\.contentOffset, options: [.new]) { [weak self] _, _ in
+                self?.dismissTooltip()
+            }
+        }
+    }
+    
+    private func findScrollView() -> UIScrollView? {
+        var view: UIView? = self
+        while view != nil {
+            if let scrollView = view as? UIScrollView {
+                return scrollView
+            }
+            view = view?.superview
+        }
+        return nil
     }
 }
 
