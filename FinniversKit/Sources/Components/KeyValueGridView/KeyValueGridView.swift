@@ -20,11 +20,8 @@ public class KeyValueGridView: UIView {
     private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
     private weak var activeTooltipView: UIView?
     private weak var activeTooltipSource: UIView?
-    
     private var initialTooltipSourceFrame: CGRect?
-    private weak var observedScrollView: UIScrollView?
     private var tooltipDisplayLink: CADisplayLink?
-    private var customPanGesture: UIPanGestureRecognizer?
 
     // MARK: - Initializers
 
@@ -351,20 +348,13 @@ public class KeyValueGridView: UIView {
 
     public override func didMoveToSuperview() {
         super.didMoveToSuperview()
+        // Add observer for immediate dismiss notification.
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handleImmediateDismissNotification(_:)),
+                                               name: .ImmediateDismissTooltip,
+                                               object: nil)
         if let scrollView = findScrollView() {
-            // Remove previous target if needed
-            scrollView.panGestureRecognizer.removeTarget(self, action: #selector(handlePanGesture(_:)))
-            // Add our target (this worked in the framework but seems delayed in host project)
             scrollView.panGestureRecognizer.addTarget(self, action: #selector(handlePanGesture(_:)))
-        }
-
-        // Also, add a custom pan gesture recognizer to the window to capture pan events sooner.
-        if let window = self.window, customPanGesture == nil {
-            let pan = UIPanGestureRecognizer(target: self, action: #selector(handleCustomPanGesture(_:)))
-            // Allow other gestures to work simultaneously.
-            pan.cancelsTouchesInView = false
-            window.addGestureRecognizer(pan)
-            customPanGesture = pan
         }
     }
 
@@ -372,10 +362,7 @@ public class KeyValueGridView: UIView {
         if let scrollView = findScrollView() {
             scrollView.panGestureRecognizer.removeTarget(self, action: #selector(handlePanGesture(_:)))
         }
-        if let pan = customPanGesture, let window = self.window {
-            window.removeGestureRecognizer(pan)
-            customPanGesture = nil
-        }
+        NotificationCenter.default.removeObserver(self, name: .ImmediateDismissTooltip, object: nil)
         stopTooltipDisplayLink()
         super.removeFromSuperview()
     }
@@ -386,10 +373,8 @@ public class KeyValueGridView: UIView {
         }
     }
 
-    @objc private func handleCustomPanGesture(_ gesture: UIPanGestureRecognizer) {
-        if gesture.state == .began || gesture.state == .changed {
-            dismissTooltip()
-        }
+    @objc private func handleImmediateDismissNotification(_ notification: Notification) {
+        dismissTooltip()
     }
 }
 
@@ -414,6 +399,10 @@ private class PaddableLabel: Label {
     override func drawText(in rect: CGRect) {
         super.drawText(in: rect.inset(by: textPadding))
     }
+}
+
+extension Notification.Name {
+    static let ImmediateDismissTooltip = Notification.Name("ImmediateDismissTooltip")
 }
 
 #if canImport(SwiftUI) && DEBUG
