@@ -4,28 +4,22 @@ import Warp
 
 public class KeyValueGridView: UIView {
     // MARK: - Public properties
-    
+
     public var numberOfColumns: Int = 1 {
         didSet {
             guard oldValue != numberOfColumns else { return }
             updateLayout()
         }
     }
-    
+
     // MARK: - Private properties
-    
+
     private var data: [KeyValuePair] = []
     private var titleStyle: Warp.Typography = .body
     private var valueStyle: Warp.Typography = .bodyStrong
     private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
     private weak var activeTooltipView: UIView?
-
-    // Track the source view (info button) that generated the tooltip
-    private weak var activeTooltipSource: UIView?
-    // Store the initial frame of the source view when tooltip was shown
-    private var initialTooltipSourceFrame: CGRect?
-    // CADisplayLink to check for source view movement
-    private var tooltipDisplayLink: CADisplayLink?
+    private weak var observedScrollView: UIScrollView?
 
     // MARK: - Initializers
 
@@ -201,19 +195,12 @@ public class KeyValueGridView: UIView {
 
         // Make sure tooltip stays fully inside the visible screen area
         var frame = CGRect(origin: tooltipOrigin, size: CGSize(width: tooltipWidth, height: tooltipHeight))
-        frame = clampToScreenEdges(frame: frame, in: window.bounds, margin: 8)
+        frame = clampToScreenEdges(frame: frame, in: window.bounds, margin: .zero)
         // Assign final frame
         tooltipView.frame = frame
 
         // Keep reference so we can dismiss later
         activeTooltipView = tooltipView
-
-        // Save the source view and its initial frame.
-        activeTooltipSource = infoButton
-        initialTooltipSourceFrame = infoButton.convert(infoButton.bounds, to: window)
-
-        // Start display link to monitor icon position.
-        startTooltipDisplayLink()
     }
 
     /// Decide if the tooltip will appear top, bottom, leading, or trailing
@@ -310,34 +297,45 @@ public class KeyValueGridView: UIView {
     private func dismissTooltip() {
         activeTooltipView?.removeFromSuperview()
         activeTooltipView = nil
-        activeTooltipSource = nil
-        initialTooltipSourceFrame = nil
-        stopTooltipDisplayLink()
     }
 
-    private func startTooltipDisplayLink() {
-        stopTooltipDisplayLink()
-        tooltipDisplayLink = CADisplayLink(target: self, selector: #selector(checkTooltipSourceFrame))
-        tooltipDisplayLink?.add(to: .main, forMode: .default)
+    func dismissAllTooltips() {
+        dismissTooltip()
     }
 
-    private func stopTooltipDisplayLink() {
-        tooltipDisplayLink?.invalidate()
-        tooltipDisplayLink = nil
+    // MARK: Logic to dismiss tooltip when scrolling begins
+    public override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        if let scrollView = findScrollView() {
+            observedScrollView = scrollView
+            // Observe the pan gesture of the scroll view to dismiss immediately on scrolling.
+            scrollView.panGestureRecognizer.addTarget(self, action: #selector(handlePanGesture(_:)))
+        }
     }
-    /// Called on every frame; dismiss tooltip if the source view has moved significantly.
-    @objc private func checkTooltipSourceFrame() {
-        guard let window = self.window,
-              let sourceView = activeTooltipSource,
-              let initialFrame = initialTooltipSourceFrame else { return }
 
-        let currentFrame = sourceView.convert(sourceView.bounds, to: window)
-        let threshold: CGFloat = 10.0  // if the source moves more than 10 points, dismiss tooltip
+    public override func removeFromSuperview() {
+        if let scrollView = observedScrollView {
+            scrollView.panGestureRecognizer.removeTarget(self, action: #selector(handlePanGesture(_:)))
+        }
+        super.removeFromSuperview()
+    }
 
-        if abs(currentFrame.midX - initialFrame.midX) > threshold ||
-            abs(currentFrame.midY - initialFrame.midY) > threshold {
+    @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
+        // Dismiss the tooltip immediately when scrolling begins.
+        if gesture.state == .changed || gesture.state == .began {
             dismissTooltip()
         }
+    }
+
+    private func findScrollView() -> UIScrollView? {
+        var view: UIView? = self
+        while view != nil {
+            if let scrollView = view as? UIScrollView {
+                return scrollView
+            }
+            view = view?.superview
+        }
+        return nil
     }
 }
 
@@ -364,7 +362,6 @@ private class PaddableLabel: Label {
     }
 }
 
-
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
 
@@ -379,7 +376,7 @@ struct KeyValueGridViewRepresentable: UIViewRepresentable {
         let demoData: [KeyValuePair] = [
             .init(title: "Dri", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual.WLTP is a metric from when the car was new and the actual"),
             .init(title: "Omregistrering", value: "1 618 kr"),
-            .init(title: "Årsavgifttyhtyh", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual"),
+            .init(title: "Årsavgifttp", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual"),
             .init(title: "Pris eks omreg", value: "178 381 kr"),
             .init(title: "Årsavgift", value: "Nye regler."),
             .init(title: "1. gang registrert", value: "30.09.2009"),
