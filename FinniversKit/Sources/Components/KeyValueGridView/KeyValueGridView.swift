@@ -20,9 +20,11 @@ public class KeyValueGridView: UIView {
     private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
     private weak var activeTooltipView: UIView?
     private weak var activeTooltipSource: UIView?
+    
     private var initialTooltipSourceFrame: CGRect?
     private weak var observedScrollView: UIScrollView?
     private var tooltipDisplayLink: CADisplayLink?
+    private var customPanGesture: UIPanGestureRecognizer?
 
     // MARK: - Initializers
 
@@ -336,28 +338,6 @@ public class KeyValueGridView: UIView {
         }
     }
 
-    public override func didMoveToSuperview() {
-        super.didMoveToSuperview()
-        if let scrollView = findScrollView() {
-            observedScrollView = scrollView
-            scrollView.panGestureRecognizer.addTarget(self, action: #selector(handlePanGesture(_:)))
-        }
-    }
-
-    public override func removeFromSuperview() {
-        if let scrollView = observedScrollView {
-            scrollView.panGestureRecognizer.removeTarget(self, action: #selector(handlePanGesture(_:)))
-        }
-        stopTooltipDisplayLink()
-        super.removeFromSuperview()
-    }
-
-    @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
-        if gesture.state == .changed || gesture.state == .began {
-            dismissTooltip()
-        }
-    }
-
     private func findScrollView() -> UIScrollView? {
         var view: UIView? = self
         while view != nil {
@@ -367,6 +347,49 @@ public class KeyValueGridView: UIView {
             view = view?.superview
         }
         return nil
+    }
+
+    public override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        if let scrollView = findScrollView() {
+            // Remove previous target if needed
+            scrollView.panGestureRecognizer.removeTarget(self, action: #selector(handlePanGesture(_:)))
+            // Add our target (this worked in the framework but seems delayed in host project)
+            scrollView.panGestureRecognizer.addTarget(self, action: #selector(handlePanGesture(_:)))
+        }
+
+        // Also, add a custom pan gesture recognizer to the window to capture pan events sooner.
+        if let window = self.window, customPanGesture == nil {
+            let pan = UIPanGestureRecognizer(target: self, action: #selector(handleCustomPanGesture(_:)))
+            // Allow other gestures to work simultaneously.
+            pan.cancelsTouchesInView = false
+            window.addGestureRecognizer(pan)
+            customPanGesture = pan
+        }
+    }
+
+    public override func removeFromSuperview() {
+        if let scrollView = findScrollView() {
+            scrollView.panGestureRecognizer.removeTarget(self, action: #selector(handlePanGesture(_:)))
+        }
+        if let pan = customPanGesture, let window = self.window {
+            window.removeGestureRecognizer(pan)
+            customPanGesture = nil
+        }
+        stopTooltipDisplayLink()
+        super.removeFromSuperview()
+    }
+
+    @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
+        if gesture.state == .began || gesture.state == .changed {
+            dismissTooltip()
+        }
+    }
+
+    @objc private func handleCustomPanGesture(_ gesture: UIPanGestureRecognizer) {
+        if gesture.state == .began || gesture.state == .changed {
+            dismissTooltip()
+        }
     }
 }
 
