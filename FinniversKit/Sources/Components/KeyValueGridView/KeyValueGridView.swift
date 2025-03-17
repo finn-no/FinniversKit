@@ -4,25 +4,28 @@ import Warp
 
 public class KeyValueGridView: UIView {
     // MARK: - Public properties
-
+    
     public var numberOfColumns: Int = 1 {
         didSet {
             guard oldValue != numberOfColumns else { return }
             updateLayout()
         }
     }
-
+    
     // MARK: - Private properties
-
+    
     private var data: [KeyValuePair] = []
     private var titleStyle: Warp.Typography = .body
     private var valueStyle: Warp.Typography = .bodyStrong
     private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
     private weak var activeTooltipView: UIView?
 
-    // observer for scroll events
-    private var scrollViewObserver: NSKeyValueObservation?
-    private weak var observedScrollView: UIScrollView?
+    // Track the source view (info button) that generated the tooltip
+    private weak var activeTooltipSource: UIView?
+    // Store the initial frame of the source view when tooltip was shown
+    private var initialTooltipSourceFrame: CGRect?
+    // CADisplayLink to check for source view movement
+    private var tooltipDisplayLink: CADisplayLink?
 
     // MARK: - Initializers
 
@@ -197,13 +200,20 @@ public class KeyValueGridView: UIView {
         let tooltipOrigin = computeOrigin(placement: placement, buttonFrame: buttonFrame, tooltipWidth: tooltipWidth, tooltipHeight: tooltipHeight)
 
         // Make sure tooltip stays fully inside the visible screen area
-        let frame = CGRect(origin: tooltipOrigin, size: CGSize(width: tooltipWidth, height: tooltipHeight))
-
+        var frame = CGRect(origin: tooltipOrigin, size: CGSize(width: tooltipWidth, height: tooltipHeight))
+        frame = clampToScreenEdges(frame: frame, in: window.bounds, margin: 8)
         // Assign final frame
         tooltipView.frame = frame
 
         // Keep reference so we can dismiss later
         activeTooltipView = tooltipView
+
+        // Save the source view and its initial frame.
+        activeTooltipSource = infoButton
+        initialTooltipSourceFrame = infoButton.convert(infoButton.bounds, to: window)
+
+        // Start display link to monitor icon position.
+        startTooltipDisplayLink()
     }
 
     /// Decide if the tooltip will appear top, bottom, leading, or trailing
@@ -300,28 +310,34 @@ public class KeyValueGridView: UIView {
     private func dismissTooltip() {
         activeTooltipView?.removeFromSuperview()
         activeTooltipView = nil
+        activeTooltipSource = nil
+        initialTooltipSourceFrame = nil
+        stopTooltipDisplayLink()
     }
-    
-    public override func didMoveToSuperview() {
-        super.didMoveToSuperview()
-        // Look for a UIScrollView in our hierarchy and observe its contentOffset.
-        if let scrollView = findScrollView() {
-            observedScrollView = scrollView
-            scrollViewObserver = scrollView.observe(\.contentOffset, options: [.new]) { [weak self] _, _ in
-                self?.dismissTooltip()
-            }
-        }
+
+    private func startTooltipDisplayLink() {
+        stopTooltipDisplayLink()
+        tooltipDisplayLink = CADisplayLink(target: self, selector: #selector(checkTooltipSourceFrame))
+        tooltipDisplayLink?.add(to: .main, forMode: .default)
     }
-    
-    private func findScrollView() -> UIScrollView? {
-        var view: UIView? = self
-        while view != nil {
-            if let scrollView = view as? UIScrollView {
-                return scrollView
-            }
-            view = view?.superview
+
+    private func stopTooltipDisplayLink() {
+        tooltipDisplayLink?.invalidate()
+        tooltipDisplayLink = nil
+    }
+    /// Called on every frame; dismiss tooltip if the source view has moved significantly.
+    @objc private func checkTooltipSourceFrame() {
+        guard let window = self.window,
+              let sourceView = activeTooltipSource,
+              let initialFrame = initialTooltipSourceFrame else { return }
+
+        let currentFrame = sourceView.convert(sourceView.bounds, to: window)
+        let threshold: CGFloat = 10.0  // if the source moves more than 10 points, dismiss tooltip
+
+        if abs(currentFrame.midX - initialFrame.midX) > threshold ||
+            abs(currentFrame.midY - initialFrame.midY) > threshold {
+            dismissTooltip()
         }
-        return nil
     }
 }
 
@@ -353,15 +369,14 @@ private class PaddableLabel: Label {
 import SwiftUI
 
 struct KeyValueGridViewRepresentable: UIViewRepresentable {
-    func makeUIView(context: Context) -> KeyValueGridView {
-        // 1. Instantiate
-        let view = KeyValueGridView()
-        
-        // 2. Configure properties for demonstration
-        view.numberOfColumns = 2
-
-        // 3. Provide sample data
-        var demoData: [KeyValuePair] = [
+    func makeUIView(context: Context) -> UIScrollView {
+        let scrollView = UIScrollView(frame: .zero)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        let keyValueView = KeyValueGridView()
+        keyValueView.translatesAutoresizingMaskIntoConstraints = false
+        keyValueView.numberOfColumns = 2
+        scrollView.addSubview(keyValueView)
+        let demoData: [KeyValuePair] = [
             .init(title: "Dri", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual.WLTP is a metric from when the car was new and the actual"),
             .init(title: "Omregistrering", value: "1 618 kr"),
             .init(title: "Årsavgifttyhtyh", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual"),
@@ -390,24 +405,26 @@ struct KeyValueGridViewRepresentable: UIViewRepresentable {
             .init(title: "Maksimal tilhengervekt", value: "2 500 kg"),
             .init(title: "Driving range WLTP", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual range must be seen in context of age, km, driving pattern and weather conditions. WLTP is a metric from when the car was new and the actual range must be seen in context of age, km, driving pattern and weather conditions"),
         ]
-        // 4. Call configure with desired text styles
-        view.configure(
-            with: demoData,
-            titleStyle: .body,
-            valueStyle: .bodyStrong
-        )
-        return view
+        keyValueView.configure(with: demoData, titleStyle: .body, valueStyle: .bodyStrong)
+
+        NSLayoutConstraint.activate([
+            keyValueView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            keyValueView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
+            keyValueView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
+            keyValueView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+            keyValueView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor)
+        ])
+        return scrollView
     }
 
     // If you need dynamic updates, handle them here.
-    func updateUIView(_ uiView: KeyValueGridView, context: Context) {
+    func updateUIView(_ uiView: UIScrollView, context: Context) {
         // No-op in this simple example
     }
 }
 
 struct KeyValueGridView_Previews: PreviewProvider {
     static var previews: some View {
-        // Show the UIKit view wrapped in SwiftUI’s preview system
         KeyValueGridViewRepresentable()
             .previewLayout(.sizeThatFits)
             .padding()
