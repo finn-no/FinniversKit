@@ -18,6 +18,8 @@ public class KeyValueGridView: UIView {
     private var titleStyle: Warp.Typography = .body
     private var valueStyle: Warp.Typography = .bodyStrong
     private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
+    
+    // MARK: - Tooltip properties
     private weak var activeTooltipView: UIView?
     private weak var activeTooltipSource: UIView?
     private var initialTooltipSourceFrame: CGRect?
@@ -311,6 +313,7 @@ public class KeyValueGridView: UIView {
         dismissTooltip()
     }
 
+    // MARK: - Logic for dismissing tooltip when scrolling
     private func startTooltipDisplayLink() {
         stopTooltipDisplayLink()
         tooltipDisplayLink = CADisplayLink(target: self, selector: #selector(checkTooltipSourceFrame))
@@ -404,70 +407,3 @@ private class PaddableLabel: Label {
 public extension Notification.Name {
     static let ImmediateDismissTooltip = Notification.Name("ImmediateDismissTooltip")
 }
-
-#if canImport(SwiftUI) && DEBUG
-import SwiftUI
-
-struct KeyValueGridViewRepresentable: UIViewRepresentable {
-    func makeUIView(context: Context) -> UIScrollView {
-        let scrollView = UIScrollView(frame: .zero)
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        let keyValueView = KeyValueGridView()
-        keyValueView.translatesAutoresizingMaskIntoConstraints = false
-        keyValueView.numberOfColumns = 2
-        scrollView.addSubview(keyValueView)
-        let demoData: [KeyValuePair] = [
-            .init(title: "Dri", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual.WLTP is a metric from when the car was new and the actual"),
-            .init(title: "Omregistrering", value: "1 618 kr"),
-            .init(title: "Årsavgifttp", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual"),
-            .init(title: "Pris eks omreg", value: "178 381 kr"),
-            .init(title: "Årsavgift", value: "Nye regler."),
-            .init(title: "1. gang registrert", value: "30.09.2009"),
-            .init(title: "Farge", value: "Svart"),
-            .init(title: "Fargebeskrivelse", value: "Black Pearl Magic"),
-            .init(title: "Interiørfarge", value: "Grå"),
-            .init(title: "Hjuldrift", value: "Firehjulsdrift"),
-            .init(title: "Hjuldriftnavn", value: "4MOTION"),
-            .init(title: "Effekt", value: "174 Hk"),
-            .init(title: "Sylindervolum", value: "2,5 l"),
-            .init(title: "Vekt", value: "2 005 kg"),
-            .init(title: "CO2-utslipp", value: "254 g/km"),
-            .init(title: "Driving range", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual range must be seen in context of age, km, driving pattern and weather conditions"),
-            .init(title: "Antall seter", value: "7"),
-            .init(title: "Karosseri", value: "Kasse"),
-            .init(title: "Antall dører", value: "4"),
-            .init(title: "Antall eiere", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat, elit porta dictum semper, dui purus tincidunt metus, vel hendrerit lectus est at erat. Cras fringilla nisl et ipsum aliquam auctor. Aenean scelerisque lacinia ultrices. Aenean ante velit, tempus ac lacinia ut, laoreet sed dolor. Donec scelerisque erat ut enim dictum interdum. Phasellus condimentum, sapien id convallis elementum, nunc felis auctor lectus, in rutrum nisi massa molestie arcu. Mauris pellentesque egestas hendrerit. Maecenas interdum, erat in vehicula volutpat, leo nulla imperdiet turpis, at dapibus augue purus ut mauris. In varius tortor eget eros ultricies sagittis. Aenean aliquam, justo vel interdum condimentum, diam massa accumsan metus, non consequat nisl odio id lacus. Duis vehicula vulputate euismod."),
-            .init(title: "Bilen står i", value: "Norge"),
-            .init(title: "Salgsform", value: "Bruktbil til salgs"),
-            .init(title: "Avgiftsklasse", value: "Personbil"),
-            .init(title: "Reg.nr", value: "DX11111"),
-            .init(title: "Chassis nr. (VIN)", value: "XX1234XX1X099999"),
-            .init(title: "Maksimal tilhengervekt", value: "2 500 kg"),
-            .init(title: "Driving range WLTP", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual range must be seen in context of age, km, driving pattern and weather conditions. WLTP is a metric from when the car was new and the actual range must be seen in context of age, km, driving pattern and weather conditions"),
-        ]
-        keyValueView.configure(with: demoData, titleStyle: .body, valueStyle: .bodyStrong)
-
-        NSLayoutConstraint.activate([
-            keyValueView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            keyValueView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-            keyValueView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-            keyValueView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-            keyValueView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor)
-        ])
-        return scrollView
-    }
-
-    // If you need dynamic updates, handle them here.
-    func updateUIView(_ uiView: UIScrollView, context: Context) {
-        // No-op in this simple example
-    }
-}
-
-struct KeyValueGridView_Previews: PreviewProvider {
-    static var previews: some View {
-        KeyValueGridViewRepresentable()
-            .previewLayout(.sizeThatFits)
-            .padding()
-    }
-}
-#endif
