@@ -44,7 +44,7 @@ class BroadcastItem: UIView {
     }()
 
     private lazy var iconImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: .important).withRenderingMode(.alwaysTemplate))
+        let imageView = UIImageView(image: Warp.Icon.warning.uiImage.withRenderingMode(.alwaysTemplate))
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .iconWarning
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -53,7 +53,7 @@ class BroadcastItem: UIView {
 
     private(set) lazy var dismissButton: UIButton = {
         let button = UIButton(frame: .zero)
-        button.setImage(UIImage(named: .remove), for: .normal)
+        button.setImage(Warp.Icon.close.uiImage, for: .normal)
         button.tintColor = .icon
         button.isAccessibilityElement = true
         button.accessibilityTraits = .button
@@ -108,20 +108,19 @@ extension BroadcastItem {
             topConstraint,
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
 
-            messageTextView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             messageTextView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: Warp.Spacing.spacing50),
             messageTextView.trailingAnchor.constraint(equalTo: dismissButton.leadingAnchor, constant: -Warp.Spacing.spacing50),
-            messageTextView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: Warp.Spacing.spacing200),
+            messageTextView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing200),
 
-            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing200),
+            iconImageView.topAnchor.constraint(equalTo: messageTextView.topAnchor, constant: Warp.Spacing.spacing25),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
-            iconImageView.heightAnchor.constraint(equalToConstant: 28),
-            iconImageView.widthAnchor.constraint(equalToConstant: 28),
+            iconImageView.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
+            iconImageView.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
 
-            dismissButton.topAnchor.constraint(equalTo: iconImageView.topAnchor),
-            dismissButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing100),
-            dismissButton.heightAnchor.constraint(equalToConstant: 28),
-            dismissButton.widthAnchor.constraint(equalToConstant: 28),
+            dismissButton.topAnchor.constraint(equalTo: messageTextView.topAnchor, constant: Warp.Spacing.spacing25),
+            dismissButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
+            dismissButton.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
+            dismissButton.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
 
             contentView.bottomAnchor.constraint(greaterThanOrEqualTo: messageTextView.bottomAnchor, constant: Warp.Spacing.spacing200),
             contentView.bottomAnchor.constraint(greaterThanOrEqualTo: iconImageView.bottomAnchor, constant: Warp.Spacing.spacing200),
