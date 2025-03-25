@@ -21,15 +21,19 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
     public var isFavorite = false {
         didSet {
-            if isFavorite {
-                favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityData.labelActiveState
-             } else {
-                 favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityData.labelInactiveState
-             }
             favoriteButton.isToggled = isFavorite
+            guard let model else { return }
+            let actionTitle = isFavorite
+            ? model.favoriteButtonAccessibilityData.labelActiveState
+            : model.favoriteButtonAccessibilityData.labelInactiveState
+            let favoriteAction = UIAccessibilityCustomAction(
+                name: actionTitle,
+                target: self,
+                selector: #selector(handleFavoriteButtonTap(_:))
+            )
+            accessibilityCustomActions = [favoriteAction]
         }
     }
-
     // MARK: - Private properties
 
     private var model: StandardAdRecommendationViewModel?
@@ -254,6 +258,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             favoriteButton.heightAnchor.constraint(equalToConstant: 48)
         ])
 
+        favoriteButton.isAccessibilityElement = false
         containerView.accessibilityElements = [titleLabel, subtitleLabel, imageTextLabel, ribbonView, badgeView]
     }
 
@@ -270,7 +275,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         subtitleLabel.text = ""
         accessoryLabel.text = ""
         imageTextLabel.text = ""
-        favoriteButton.accessibilityLabel = ""
+        accessibilityCustomActions = []
         favoriteButton.setImage(nil, for: .normal)
         logoImageView.cancelLoading()
         logoImageView.image = nil
