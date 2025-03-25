@@ -248,10 +248,10 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             imageDescriptionBackgroundView.heightAnchor.constraint(equalToConstant: Self.imageDescriptionHeight),
             imageDescriptionBackgroundView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: -Warp.Spacing.spacing100),
 
-            favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing50),
-            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing50),
-            favoriteButton.widthAnchor.constraint(equalToConstant: 34),
-            favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.heightAnchor)
+            favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -Warp.Spacing.spacing50),
+            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: Warp.Spacing.spacing50),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 48),
+            favoriteButton.heightAnchor.constraint(equalToConstant: 48)
         ])
 
         containerView.accessibilityElements = [titleLabel, subtitleLabel, imageTextLabel, ribbonView, badgeView]
