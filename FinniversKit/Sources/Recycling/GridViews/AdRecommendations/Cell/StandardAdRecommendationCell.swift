@@ -21,15 +21,19 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
     public var isFavorite = false {
         didSet {
-            if isFavorite {
-                favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityData.labelActiveState
-             } else {
-                 favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityData.labelInactiveState
-             }
             favoriteButton.isToggled = isFavorite
+            guard let model else { return }
+            let actionTitle = isFavorite
+            ? model.favoriteButtonAccessibilityData.labelActiveState
+            : model.favoriteButtonAccessibilityData.labelInactiveState
+            let favoriteAction = UIAccessibilityCustomAction(
+                name: actionTitle,
+                target: self,
+                selector: #selector(handleFavoriteButtonTap(_:))
+            )
+            accessibilityCustomActions = [favoriteAction]
         }
     }
-
     // MARK: - Private properties
 
     private var model: StandardAdRecommendationViewModel?
@@ -248,13 +252,16 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             imageDescriptionBackgroundView.heightAnchor.constraint(equalToConstant: Self.imageDescriptionHeight),
             imageDescriptionBackgroundView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: -Warp.Spacing.spacing100),
 
-            favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing50),
-            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing50),
-            favoriteButton.widthAnchor.constraint(equalToConstant: 34),
-            favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.heightAnchor)
+            favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -Warp.Spacing.spacing50),
+            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: Warp.Spacing.spacing50),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 48),
+            favoriteButton.heightAnchor.constraint(equalToConstant: 48)
         ])
 
-        containerView.accessibilityElements = [titleLabel, subtitleLabel, imageTextLabel, ribbonView, badgeView]
+        favoriteButton.isAccessibilityElement = false
+        containerView.isAccessibilityElement = true
+        containerView.accessibilityTraits.insert(.button)
+        accessibilityElements = [containerView]
     }
 
     // MARK: - Overrides
@@ -270,7 +277,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         subtitleLabel.text = ""
         accessoryLabel.text = ""
         imageTextLabel.text = ""
-        favoriteButton.accessibilityLabel = ""
+        accessibilityCustomActions = []
         favoriteButton.setImage(nil, for: .normal)
         logoImageView.cancelLoading()
         logoImageView.image = nil
@@ -328,6 +335,9 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         if let badgeViewModel = model?.badgeViewModel {
             badgeView.configure(with: badgeViewModel)
         }
+
+        containerView.accessibilityLabel = [model?.title, model?.subtitle, model?.sponsoredAdData?.ribbonTitle]
+            .compactMap { $0 }.joined(separator: " ")
     }
 
     public static func height(for model: StandardAdRecommendationViewModel, width: CGFloat) -> CGFloat {
