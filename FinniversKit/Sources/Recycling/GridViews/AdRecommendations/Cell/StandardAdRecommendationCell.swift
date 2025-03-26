@@ -259,7 +259,9 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         ])
 
         favoriteButton.isAccessibilityElement = false
-        containerView.accessibilityElements = [titleLabel, subtitleLabel, imageTextLabel, ribbonView, badgeView]
+        containerView.isAccessibilityElement = true
+        containerView.accessibilityTraits.insert(.button)
+        accessibilityElements = [containerView]
     }
 
     // MARK: - Overrides
@@ -333,6 +335,9 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         if let badgeViewModel = model?.badgeViewModel {
             badgeView.configure(with: badgeViewModel)
         }
+
+        containerView.accessibilityLabel = [model?.title, model?.subtitle, model?.sponsoredAdData?.ribbonTitle]
+            .compactMap { $0 }.joined(separator: " ")
     }
 
     public static func height(for model: StandardAdRecommendationViewModel, width: CGFloat) -> CGFloat {
