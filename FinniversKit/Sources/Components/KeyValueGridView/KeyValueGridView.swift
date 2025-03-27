@@ -348,12 +348,10 @@ public class KeyValueGridView: UIView {
     }
 
     private func findScrollView() -> UIScrollView? {
-        var view: UIView? = self
-        while view != nil {
+        for view in sequence(first: self, next: { $0.superview }) {
             if let scrollView = view as? UIScrollView {
                 return scrollView
             }
-            view = view?.superview
         }
         return nil
     }
