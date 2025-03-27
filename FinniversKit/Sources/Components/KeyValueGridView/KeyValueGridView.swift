@@ -18,7 +18,7 @@ public class KeyValueGridView: UIView {
     private var titleStyle: Warp.Typography = .body
     private var valueStyle: Warp.Typography = .bodyStrong
     private lazy var verticalStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing200, alignment: .leading, distribution: .equalSpacing, withAutoLayout: true)
-    
+
     // MARK: - Tooltip properties
     private weak var activeTooltipView: UIView?
     private weak var activeTooltipSource: UIView?
@@ -109,13 +109,12 @@ public class KeyValueGridView: UIView {
         titleLabel.text = pair.title
         titleContainer.addArrangedSubview(titleLabel)
 
-        // TODO: add tap area for info button (at least 44x44)
         if let infoText = pair.infoTooltip, !infoText.isEmpty {
             let infoButton = UIButton(type: .custom)
             infoButton.setImage(Warp.Icon.info.uiImage, for: .normal)
             infoButton.translatesAutoresizingMaskIntoConstraints = false
-            // TODO: ask about accessibility
-            infoButton.accessibilityLabel = pair.infoTooltipAccessibilityLabel
+            infoButton.accessibilityLabel = "More info"
+            infoButton.accessibilityHint = "Double-tap to show or hide the tooltip"
             NSLayoutConstraint.activate([
                 infoButton.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
                 infoButton.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200)
@@ -167,9 +166,11 @@ public class KeyValueGridView: UIView {
     private func toggleTooltip(_ text: String, from infoButton: UIView) {
         if activeTooltipView != nil {
             dismissTooltip()
+            infoButton.accessibilityLabel = "Show info"
         } else {
             dismissTooltip()
             showTooltip(for: infoButton, text: text)
+            infoButton.accessibilityLabel = "Hide info"
         }
     }
 
@@ -185,6 +186,9 @@ public class KeyValueGridView: UIView {
         // Create the tooltip view (with tap-to-dismiss)
         let tooltip = Warp.Tooltip(title: text, arrowEdge: warpArrowEdge)
         let tooltipView = tooltip.uiView
+        tooltipView.isAccessibilityElement = true
+        tooltipView.accessibilityLabel = text
+        tooltipView.accessibilityViewIsModal = true
         tooltipView.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTooltipTap(_:)))
         tooltipView.addGestureRecognizer(tapGesture)

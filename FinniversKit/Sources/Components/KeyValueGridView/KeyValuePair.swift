@@ -4,22 +4,19 @@ public struct KeyValuePair: Hashable {
     public let accessibilityLabel: String?
     public let valueStyle: Style?
     public let infoTooltip: String?
-    public let infoTooltipAccessibilityLabel: String?
 
     public init(
         title: String,
         value: String,
         accessibilityLabel: String? = nil,
         valueStyle: Style? = nil,
-        infoTooltip: String? = nil,
-        infoTooltipAccessibilityLabel: String? = nil
+        infoTooltip: String? = nil
     ) {
         self.title = title
         self.value = value
         self.accessibilityLabel = accessibilityLabel
         self.valueStyle = valueStyle
         self.infoTooltip = infoTooltip
-        self.infoTooltipAccessibilityLabel = infoTooltipAccessibilityLabel
     }
 }
 
