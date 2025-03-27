@@ -411,6 +411,6 @@ private class PaddableLabel: Label {
     }
 }
 
-extension Notification.Name {
+public extension Notification.Name {
     static let immediateDismissTooltip = Notification.Name("ImmediateDismissTooltip")
 }
