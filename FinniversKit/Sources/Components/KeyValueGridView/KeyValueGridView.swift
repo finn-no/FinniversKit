@@ -361,7 +361,7 @@ public class KeyValueGridView: UIView {
         // Add observer for immediate dismiss notification.
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(handleImmediateDismissNotification(_:)),
-                                               name: .ImmediateDismissTooltip,
+                                               name: .immediateDismissTooltip,
                                                object: nil)
         if let scrollView = findScrollView() {
             scrollView.panGestureRecognizer.addTarget(self, action: #selector(handlePanGesture(_:)))
@@ -372,7 +372,7 @@ public class KeyValueGridView: UIView {
         if let scrollView = findScrollView() {
             scrollView.panGestureRecognizer.removeTarget(self, action: #selector(handlePanGesture(_:)))
         }
-        NotificationCenter.default.removeObserver(self, name: .ImmediateDismissTooltip, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .immediateDismissTooltip, object: nil)
         stopTooltipDisplayLink()
         super.removeFromSuperview()
     }
@@ -411,6 +411,6 @@ private class PaddableLabel: Label {
     }
 }
 
-public extension Notification.Name {
-    static let ImmediateDismissTooltip = Notification.Name("ImmediateDismissTooltip")
+extension Notification.Name {
+    static let immediateDismissTooltip = Notification.Name("ImmediateDismissTooltip")
 }
