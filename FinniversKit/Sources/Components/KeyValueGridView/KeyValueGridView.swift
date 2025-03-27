@@ -97,6 +97,7 @@ public class KeyValueGridView: UIView {
 
         let titleLabel = Label(style: titleStyle, numberOfLines: 2, withAutoLayout: true)
         titleLabel.lineBreakMode = .byWordWrapping
+        titleLabel.isAccessibilityElement = true
 
         let titleContainer = UIStackView(
             axis: .horizontal,
@@ -113,8 +114,8 @@ public class KeyValueGridView: UIView {
             let infoButton = UIButton(type: .custom)
             infoButton.setImage(Warp.Icon.info.uiImage, for: .normal)
             infoButton.translatesAutoresizingMaskIntoConstraints = false
-            infoButton.accessibilityLabel = "More info"
-            infoButton.accessibilityHint = "Double-tap to show or hide the tooltip"
+            infoButton.isAccessibilityElement = true
+            infoButton.accessibilityLabel = pair.infoTooltipAccessibilityLabel
             NSLayoutConstraint.activate([
                 infoButton.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
                 infoButton.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200)
@@ -129,6 +130,8 @@ public class KeyValueGridView: UIView {
 
         let valueLabel = PaddableLabel(style: valueStyle, numberOfLines: 2, withAutoLayout: true)
         valueLabel.lineBreakMode = .byWordWrapping
+        valueLabel.isAccessibilityElement = true
+        valueLabel.accessibilityTraits = .staticText
         valueLabel.setTextCopyable(true)
 
         if let valueStyle = pair.valueStyle {
@@ -144,7 +147,6 @@ public class KeyValueGridView: UIView {
             $0.setContentCompressionResistancePriority(.required, for: .vertical)
         }
 
-        stackView.isAccessibilityElement = true
         if let accessibilityLabel = pair.accessibilityLabel {
             stackView.accessibilityLabel = accessibilityLabel
         } else {
@@ -166,11 +168,9 @@ public class KeyValueGridView: UIView {
     private func toggleTooltip(_ text: String, from infoButton: UIView) {
         if activeTooltipView != nil {
             dismissTooltip()
-            infoButton.accessibilityLabel = "Show info"
         } else {
             dismissTooltip()
             showTooltip(for: infoButton, text: text)
-            infoButton.accessibilityLabel = "Hide info"
         }
     }
 
@@ -211,6 +211,10 @@ public class KeyValueGridView: UIView {
         activeTooltipView = tooltipView
         activeTooltipSource = infoButton
         initialTooltipSourceFrame = infoButton.convert(infoButton.bounds, to: window)
+
+        // Post a notification to shift focus to the tooltip
+        UIAccessibility.post(notification: .layoutChanged, argument: tooltipView)
+
         startTooltipDisplayLink()
     }
 
@@ -307,6 +311,7 @@ public class KeyValueGridView: UIView {
 
     private func dismissTooltip() {
         activeTooltipView?.removeFromSuperview()
+        UIAccessibility.post(notification: .layoutChanged, argument: activeTooltipSource)
         activeTooltipView = nil
         activeTooltipSource = nil
         initialTooltipSourceFrame = nil
