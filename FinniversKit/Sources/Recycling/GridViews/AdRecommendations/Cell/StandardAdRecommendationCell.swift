@@ -303,7 +303,6 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         subtitleLabel.text = model?.subtitle
         accessoryLabel.text = model?.accessory
         imageTextLabel.text = model?.imageText
-        favoriteButton.accessibilityHint = model?.favoriteButtonAccessibilityData.hint
         isFavorite = model?.isFavorite ?? false
 
         if let subtitle = model?.subtitle {
@@ -336,7 +335,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             badgeView.configure(with: badgeViewModel)
         }
 
-        containerView.accessibilityLabel = [model?.title, model?.subtitle, model?.sponsoredAdData?.ribbonTitle]
+        containerView.accessibilityLabel = [model?.title, model?.imageText, model?.subtitle, model?.sponsoredAdData?.ribbonTitle, model?.badgeViewModel?.title]
             .compactMap { $0 }.joined(separator: " ")
     }
 
