@@ -2,13 +2,10 @@
 import XCTest
 import FinniversKit
 import DemoKitSnapshot
-import SnapshotTesting
 
 @MainActor
 class FullscreenViewTests: XCTestCase {
     private func snapshot(_ component: FullscreenDemoViews, record: Bool = false, line: UInt = #line) {
-//        SnapshotTesting.diffTool = "ksdiff"
-//        SnapshotTesting.isRecording = true
         snapshotTest(demoable: component.demoable, record: record, line: line)
     }
 
