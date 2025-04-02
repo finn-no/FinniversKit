@@ -138,8 +138,6 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         accessibilityElements = [containerView]
         shouldGroupAccessibilityChildren = true
         containerView.accessibilityTraits.insert(.link)
-        imageView.accessibilityElementsHidden = true
-
         containerView.addSubview(imageContentView)
         imageContentView.addSubview(imageView)
         imageView.fillInSuperview()
@@ -225,8 +223,8 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         } else {
             titleToRibbonConstraint.isActive = true
         }
-
-        containerView.accessibilityLabel = model?.accessibilityLabel
+        containerView.accessibilityLabel = [model?.accessibilityLabel, model?.ribbonViewModel?.title]
+            .compactMap { $0 }.joined(separator: " ")
         ribbonView.style = model?.ribbonViewModel?.style ?? .sponsored
         ribbonView.title = model?.ribbonViewModel?.title ?? ""
         ribbonView.isHidden = ribbonView.title.isEmpty
