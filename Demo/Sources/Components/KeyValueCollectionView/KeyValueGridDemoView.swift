@@ -85,6 +85,7 @@ extension KeyValueGridDemoView: TweakableDemo {
 
 private extension Array where Element == KeyValuePair {
     static var demoData: [KeyValuePair] = [
+        .init(title: "Driving range", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual range must be seen in context of age, km, driving pattern and weather conditions", infoTooltipAccessibilityLabel: "More info"),
         .init(title: "Omregistrering", value: "1 618 kr"),
         .init(title: "Pris eks omreg", value: "178 381 kr"),
         .init(title: "Årsavgift", value: "Nye regler."),
@@ -98,16 +99,18 @@ private extension Array where Element == KeyValuePair {
         .init(title: "Sylindervolum", value: "2,5 l"),
         .init(title: "Vekt", value: "2 005 kg"),
         .init(title: "CO2-utslipp", value: "254 g/km"),
+        .init(title: "Driving range", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual range must be seen in context of age, km, driving pattern and weather conditions", infoTooltipAccessibilityLabel: "More info"),
         .init(title: "Antall seter", value: "7"),
         .init(title: "Karosseri", value: "Kasse"),
         .init(title: "Antall dører", value: "4"),
-        .init(title: "Antall eiere", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat, elit porta dictum semper, dui purus tincidunt metus, vel hendrerit lectus est at erat. Cras fringilla nisl et ipsum aliquam auctor. Aenean scelerisque lacinia ultrices. Aenean ante velit, tempus ac lacinia ut, laoreet sed dolor. Donec scelerisque erat ut enim dictum interdum. Phasellus condimentum, sapien id convallis elementum, nunc felis auctor lectus, in rutrum nisi massa molestie arcu. Mauris pellentesque egestas hendrerit. Maecenas interdum, erat in vehicula volutpat, leo nulla imperdiet turpis, at dapibus augue purus ut mauris. In varius tortor eget eros ultricies sagittis. Aenean aliquam, justo vel interdum condimentum, diam massa accumsan metus, non consequat nisl odio id lacus. Duis vehicula vulputate euismod."),
+        .init(title: "Antall eiere", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat, elit porta dictum semper, dui purus tincidunt metus, vel hendrerit lectus est at erat. Cras fringilla nisl et ipsum aliquam auctor. Aenean scelerisque lacinia ultrices. Aenean ante velit, tempus ac lacinia ut, laoreet sed dolor. Donec scelerisque erat ut enim dictum interdum. Phasellus condimentum, sapien id convallis elementum, nunc felis auctor lectus, in rutrum nisi massa molestie arcu. Mauris pellentesque egestas hendrerit. Maecenas interdum, erat in vehicula volutpat, leo nulla imperdiet turpis, at dapibus augue purus ut mauris. In varius tortor eget eros ultricies sagittis. Aenean aliquam, justo vel interdum condimentum, diam massa accumsan metus, non consequat nisl odio id lacus. Duis vehicula vulputate euismod.", infoTooltipAccessibilityLabel: "More info"),
         .init(title: "Bilen står i", value: "Norge"),
         .init(title: "Salgsform", value: "Bruktbil til salgs"),
         .init(title: "Avgiftsklasse", value: "Personbil"),
         .init(title: "Reg.nr", value: "DX11111"),
         .init(title: "Chassis nr. (VIN)", value: "XX1234XX1X099999"),
         .init(title: "Maksimal tilhengervekt", value: "2 500 kg"),
+        .init(title: "Driving range", value: "409 km", infoTooltip: "WLTP is a metric from when the car was new and the actual range must be seen in context of age, km, driving pattern and weather conditions", infoTooltipAccessibilityLabel: "More info"),
     ]
 
     static var energyLabels: [KeyValuePair] = [
