@@ -340,17 +340,40 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     }
 
     public static func height(for model: StandardAdRecommendationViewModel, width: CGFloat) -> CGFloat {
+        var accessibilityMultiplier: CGFloat = 1.0
+        if Config.isDynamicTypeEnabled {
+            accessibilityMultiplier = {
+                switch UIScreen.main.traitCollection.preferredContentSizeCategory {
+                case UIContentSizeCategory.accessibilityExtraExtraExtraLarge:
+                    return 2.5
+                case UIContentSizeCategory.accessibilityExtraExtraLarge:
+                    return 2.25
+                case UIContentSizeCategory.accessibilityExtraLarge:
+                    return 2.0
+                case UIContentSizeCategory.accessibilityLarge:
+                    return 1.75
+                case UIContentSizeCategory.accessibilityMedium:
+                    return 1.5
+                default:
+                    return 1.0
+                }
+            }()
+        }
+
         let imageRatio = model.imageSize.height / model.imageSize.width
         let clippedImageRatio = min(max(imageRatio, Self.minImageAspectRatio), Self.maxImageAspectRatio)
         let imageHeight = width * clippedImageRatio
-        var contentHeight = subtitleTopMargin + titleTopMargin + titleHeight + bottomMargin
+        var contentHeight = subtitleTopMargin
+        + titleTopMargin
+        + (titleHeight * accessibilityMultiplier)
+        + bottomMargin
 
         if model.accessory != nil {
             contentHeight += accessoryHeight
         }
 
         if model.sponsoredAdData?.ribbonTitle != nil {
-            contentHeight += ribbonTopMargin + ribbonHeight
+            contentHeight += ribbonTopMargin + (ribbonHeight * accessibilityMultiplier)
         }
 
         if model.subtitle != nil {
