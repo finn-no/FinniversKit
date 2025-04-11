@@ -41,8 +41,8 @@ public final class BadgeView: UIView {
         let iconSize: CGFloat = Warp.Spacing.spacing200
 
         NSLayoutConstraint.activate([
-            heightAnchor.constraint(equalToConstant: 24),
-
+            heightAnchor.constraint(greaterThanOrEqualToConstant: 24),
+            
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing100),
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
