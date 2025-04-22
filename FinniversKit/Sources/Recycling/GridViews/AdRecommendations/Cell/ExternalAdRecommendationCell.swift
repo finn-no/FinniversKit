@@ -95,29 +95,9 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
         constant: ExternalAdRecommendationCell.titleTopMargin
     )
 
-    private lazy var shortTitleHeightConstraint =  titleLabel.heightAnchor.constraint(equalToConstant: ExternalAdRecommendationCell.titleHeight*accessibilityMultiplier)
+    private lazy var shortTitleHeightConstraint = titleLabel.heightAnchor.constraint(equalToConstant: ExternalAdRecommendationCell.titleHeight * Config.accessibilityMultiplier())
 
-    private lazy var longTitleHeightConstraint =  titleLabel.heightAnchor.constraint(equalToConstant: ExternalAdRecommendationCell.titleHeightTwoLines*accessibilityMultiplier)
-
-    var accessibilityMultiplier: CGFloat {
-        if Config.isDynamicTypeEnabled {
-            switch self.traitCollection.preferredContentSizeCategory {
-            case UIContentSizeCategory.accessibilityExtraExtraExtraLarge:
-                return 2.5
-            case UIContentSizeCategory.accessibilityExtraExtraLarge:
-                return 2.25
-            case UIContentSizeCategory.accessibilityExtraLarge:
-                return 2.0
-            case UIContentSizeCategory.accessibilityLarge:
-                return 1.75
-            case UIContentSizeCategory.accessibilityMedium:
-                return 1.5
-            default:
-                return 1.0
-            }
-        }
-        return 1.0
-    }
+    private lazy var longTitleHeightConstraint = titleLabel.heightAnchor.constraint(equalToConstant: ExternalAdRecommendationCell.titleHeightTwoLines * Config.accessibilityMultiplier())
 
     private var model: ExternalAdRecommendationViewModel?
 
@@ -166,7 +146,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
             ribbonView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: ExternalAdRecommendationCell.ribbonTopMargin),
             ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            ribbonView.heightAnchor.constraint(equalToConstant: ExternalAdRecommendationCell.ribbonHeight * accessibilityMultiplier),
+            ribbonView.heightAnchor.constraint(equalToConstant: ExternalAdRecommendationCell.ribbonHeight * Config.accessibilityMultiplier()),
 
             externalLinkImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: ExternalAdRecommendationCell.ribbonTopMargin),
             externalLinkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -176,7 +156,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
             subtitleToImageConstraint,
             subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            subtitleLabel.heightAnchor.constraint(equalToConstant: ExternalAdRecommendationCell.subtitleHeight*accessibilityMultiplier),
+            subtitleLabel.heightAnchor.constraint(equalToConstant: ExternalAdRecommendationCell.subtitleHeight * Config.accessibilityMultiplier()),
 
             titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: ExternalAdRecommendationCell.titleTopMargin),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),

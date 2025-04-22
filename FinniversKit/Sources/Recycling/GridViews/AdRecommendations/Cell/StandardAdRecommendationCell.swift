@@ -1,27 +1,6 @@
 import UIKit
 import Warp
 
-fileprivate func accessibilityMultiplier() -> CGFloat {
-    if Config.isDynamicTypeEnabled {
-        switch UIScreen.main.traitCollection.preferredContentSizeCategory {
-        case UIContentSizeCategory.accessibilityExtraExtraExtraLarge:
-            return 2.5
-        case UIContentSizeCategory.accessibilityExtraExtraLarge:
-            return 2.25
-        case UIContentSizeCategory.accessibilityExtraLarge:
-            return 2.0
-        case UIContentSizeCategory.accessibilityLarge:
-            return 1.75
-        case UIContentSizeCategory.accessibilityMedium:
-            return 1.5
-        default:
-            return 1.0
-        }
-    } else {
-        return 1.0
-    }
-}
-
 public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecommendationCell, AdRecommendationConfigurable {
 
     // MARK: - Public properties
@@ -60,7 +39,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     private lazy var imageDescriptionStackView = UIStackView(axis: .horizontal, spacing: Self.margin, alignment: .center, withAutoLayout: true)
     private lazy var ribbonView = RibbonView(withAutoLayout: true)
     private lazy var imageTextLabel = Label(style: .captionStrong, textColor: .textInvertedStatic, withAutoLayout: true)
-    private lazy var subtitleLabelHeightConstraint = subtitleLabel.heightAnchor.constraint(equalToConstant: Self.subtitleHeight * accessibilityMultiplier())
+    private lazy var subtitleLabelHeightConstraint = subtitleLabel.heightAnchor.constraint(equalToConstant: Self.subtitleHeight * Config.accessibilityMultiplier())
 
     private static let titleHeight: CGFloat = 20.0
     private static let titleTopMargin: CGFloat = 3.0
@@ -219,7 +198,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
             ribbonView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: Self.ribbonTopMargin),
             ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            ribbonView.heightAnchor.constraint(equalToConstant: Self.ribbonHeight * accessibilityMultiplier()),
+            ribbonView.heightAnchor.constraint(equalToConstant: Self.ribbonHeight * Config.accessibilityMultiplier()),
 
             logoImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: Warp.Spacing.spacing100),
             logoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -234,7 +213,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: Self.titleTopMargin),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: Self.titleHeight * accessibilityMultiplier()),
+            titleLabel.heightAnchor.constraint(equalToConstant: Self.titleHeight * Config.accessibilityMultiplier()),
 
             accessoryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             accessoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -304,7 +283,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
         if let subtitle = model?.subtitle {
             subtitleLabel.text = subtitle
-            subtitleLabelHeightConstraint.constant = Self.subtitleHeight * accessibilityMultiplier()
+            subtitleLabelHeightConstraint.constant = Self.subtitleHeight * Config.accessibilityMultiplier()
         } else {
             subtitleLabelHeightConstraint.constant = 0
         }
@@ -342,7 +321,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         let imageHeight = width * clippedImageRatio
         var contentHeight = subtitleTopMargin
         + titleTopMargin
-        + (titleHeight * accessibilityMultiplier())
+        + (titleHeight * Config.accessibilityMultiplier())
         + bottomMargin
 
         if model.accessory != nil {
@@ -350,11 +329,11 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         }
 
         if model.sponsoredAdData?.ribbonTitle != nil {
-            contentHeight += ribbonTopMargin + (ribbonHeight * accessibilityMultiplier())
+            contentHeight += ribbonTopMargin + (ribbonHeight * Config.accessibilityMultiplier())
         }
 
         if model.subtitle != nil {
-            contentHeight += (subtitleHeight * accessibilityMultiplier())
+            contentHeight += (subtitleHeight * Config.accessibilityMultiplier())
         }
 
         return imageHeight + contentHeight
