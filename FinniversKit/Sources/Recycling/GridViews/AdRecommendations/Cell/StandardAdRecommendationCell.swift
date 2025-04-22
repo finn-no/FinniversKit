@@ -311,7 +311,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             badgeView.configure(with: badgeViewModel)
         }
 
-        containerView.accessibilityLabel = [model?.title, model?.imageText, model?.subtitle, model?.sponsoredAdData?.ribbonTitle, model?.badgeViewModel?.title]
+        containerView.accessibilityLabel = [model?.title, model?.imageText, model?.subtitle, model?.accessory, model?.sponsoredAdData?.ribbonTitle, model?.badgeViewModel?.title]
             .compactMap { $0 }.joined(separator: " ")
     }
 
