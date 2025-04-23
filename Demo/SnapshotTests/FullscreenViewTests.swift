@@ -48,7 +48,7 @@ class FullscreenViewTests: XCTestCase {
     }
 
     func testLoginEntryView() {
-        snapshot(.loginEntryView)
+        snapshot(.loginEntryView, record: true)
     }
 
     func testAddressMapView() {
@@ -68,7 +68,7 @@ class FullscreenViewTests: XCTestCase {
     }
 
     func testFavoriteAdActionView() {
-        snapshot(.favoriteAdActionView)
+        snapshot(.favoriteAdActionView, record: true)
     }
 
     func testFavoriteAdCommentInputView() {
