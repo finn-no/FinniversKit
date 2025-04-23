@@ -22,6 +22,10 @@ private struct DemoViewModel: SettingDetailsViewModel {
         return "Skru på nyhetsbrev"
     }
 
+    var doneButtonTitle: String {
+        return "Ferdig"
+    }
+
     func attributedText(for state: SettingDetailsView.State) -> NSAttributedString {
         switch state {
         case .lessDetails:
