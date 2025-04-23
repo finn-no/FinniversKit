@@ -132,7 +132,15 @@ Make sure to replace the file path correctly to the one that circle ci reported.
 
 #### Verifying changes for an existing component
 
-If you make changes to any components you'll have to run the test for that component after changing `recordMode` to `true`. Doing this will generate a new reference image that will be used later to verify for changes that affect your component. After you've generated the reference image change `recordMode` back to `false`.
+If you make changes to any of existed components you'll have to complete next steps to update snapshots for CI:
+
+- switch to the same simulator you find in [workflow file](https://github.com/finn-no/FinniversKit/actions/runs/14619386347/workflow )
+- set `recordMode` to `true` for all failed tests
+- run SnapshotTests scheme by presing `cmd` + `U`
+- after test finishes new screenshots should be generated
+- verify that all changes are expected
+- change `recordMode` back to `false`
+- commit updated images
 
 ## License
 
