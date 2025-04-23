@@ -78,14 +78,11 @@ final class SettingDetailsDemoViewController: UIViewController, Demoable {
 }
 
 extension SettingDetailsDemoViewController: SettingDetailsViewDelegate {
-    func settingDetailsView(_ detailsView: SettingDetailsView, didChangeTo state: SettingDetailsView.State, with model: SettingDetailsViewModel) {
-        view.layoutIfNeeded()
-        let contentHeight = contentSize.height
-        let height = min(contentHeight, BottomSheet.Height.defaultFilterHeight.expanded)
-        bottomSheet?.height = .init(compact: height, expanded: height)
-    }
-
     func settingDetailsView(_ detailsView: SettingDetailsView, didTapPrimaryButtonWith model: SettingDetailsViewModel) {
         print("Did tap action button with model:\n\t- \(model)")
+    }
+
+    func settingDetailsViewDismissAction(_ detailsView: FinniversKit.SettingDetailsView) {
+        print("Did dismiss")
     }
 }
