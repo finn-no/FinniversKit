@@ -134,7 +134,7 @@ Make sure to replace the file path correctly to the one that circle ci reported.
 
 If you make changes to any of existed components you'll have to complete next steps to update snapshots for CI:
 
-- switch to the same simulator you find in [workflow file](https://github.com/finn-no/FinniversKit/actions/runs/14619386347/workflow )
+- switch to the same simulator you find in [workflow file](https://github.com/finn-no/FinniversKit/blob/master/.github/workflows/iOS.yml)
 - set `recordMode` to `true` for all failed tests
 - run SnapshotTests scheme by presing `cmd` + `U`
 - after test finishes new screenshots should be generated
