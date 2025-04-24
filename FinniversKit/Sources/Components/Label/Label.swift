@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 import UIKit
 import Warp
 
@@ -35,11 +39,11 @@ public class Label: UILabel {
 
     private func setup(textColor: UIColor = .text) {
         addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:))))
+
         isAccessibilityElement = true
+
         accessibilityLabel = text
-        if let font = style?.uiFont {
-            self.font = UIFontMetrics.default.scaledFont(for: font)
-        }
+        font = style?.uiFont
         self.textColor = textColor
         adjustsFontForContentSizeCategory = true
     }
