@@ -1,7 +1,3 @@
-//
-//  Copyright © 2021 FINN AS. All rights reserved.
-//
-
 import UIKit
 import Warp
 

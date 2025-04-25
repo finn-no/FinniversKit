@@ -1,7 +1,3 @@
-//
-//  Copyright © FINN.no AS, Inc. All rights reserved.
-//
-
 import UIKit
 import Warp
 
@@ -21,15 +17,19 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
     public var isFavorite = false {
         didSet {
-            if isFavorite {
-                favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityData.labelActiveState
-             } else {
-                 favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityData.labelInactiveState
-             }
             favoriteButton.isToggled = isFavorite
+            guard let model else { return }
+            let actionTitle = isFavorite
+            ? model.favoriteButtonAccessibilityData.labelActiveState
+            : model.favoriteButtonAccessibilityData.labelInactiveState
+            let favoriteAction = UIAccessibilityCustomAction(
+                name: actionTitle,
+                target: self,
+                selector: #selector(handleFavoriteButtonTap(_:))
+            )
+            accessibilityCustomActions = [favoriteAction]
         }
     }
-
     // MARK: - Private properties
 
     private var model: StandardAdRecommendationViewModel?
@@ -39,7 +39,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     private lazy var imageDescriptionStackView = UIStackView(axis: .horizontal, spacing: Self.margin, alignment: .center, withAutoLayout: true)
     private lazy var ribbonView = RibbonView(withAutoLayout: true)
     private lazy var imageTextLabel = Label(style: .captionStrong, textColor: .textInvertedStatic, withAutoLayout: true)
-    private lazy var subtitleLabelHeightConstraint = subtitleLabel.heightAnchor.constraint(equalToConstant: Self.subtitleHeight)
+    private lazy var subtitleLabelHeightConstraint = subtitleLabel.heightAnchor.constraint(equalToConstant: Self.subtitleHeight * Config.accessibilityMultiplier())
 
     private static let titleHeight: CGFloat = 20.0
     private static let titleTopMargin: CGFloat = 3.0
@@ -163,26 +163,6 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     // MARK: - Setup
 
     private func setup() {
-        var accessibilityMultiplier: CGFloat = 1.0
-        if Config.isDynamicTypeEnabled {
-            accessibilityMultiplier = {
-                switch self.traitCollection.preferredContentSizeCategory {
-                case UIContentSizeCategory.accessibilityExtraExtraExtraLarge:
-                    return 2.5
-                case UIContentSizeCategory.accessibilityExtraExtraLarge:
-                    return 2.25
-                case UIContentSizeCategory.accessibilityExtraLarge:
-                    return 2.0
-                case UIContentSizeCategory.accessibilityLarge:
-                    return 1.75
-                case UIContentSizeCategory.accessibilityMedium:
-                    return 1.5
-                default:
-                    return 1.0
-                }
-            }()
-        }
-
         containerView.addSubview(imageContentView)
         imageContentView.addSubview(imageView)
         imageContentView.addSubview(imageDescriptionBackgroundView)
@@ -218,7 +198,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
             ribbonView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: Self.ribbonTopMargin),
             ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            ribbonView.heightAnchor.constraint(equalToConstant: Self.ribbonHeight * accessibilityMultiplier),
+            ribbonView.heightAnchor.constraint(equalToConstant: Self.ribbonHeight * Config.accessibilityMultiplier()),
 
             logoImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: Warp.Spacing.spacing100),
             logoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -233,7 +213,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: Self.titleTopMargin),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: Self.titleHeight * accessibilityMultiplier),
+            titleLabel.heightAnchor.constraint(equalToConstant: Self.titleHeight * Config.accessibilityMultiplier()),
 
             accessoryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             accessoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -248,13 +228,16 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             imageDescriptionBackgroundView.heightAnchor.constraint(equalToConstant: Self.imageDescriptionHeight),
             imageDescriptionBackgroundView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: -Warp.Spacing.spacing100),
 
-            favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing50),
-            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing50),
-            favoriteButton.widthAnchor.constraint(equalToConstant: 34),
-            favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.heightAnchor)
+            favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -Warp.Spacing.spacing50),
+            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: Warp.Spacing.spacing50),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 48),
+            favoriteButton.heightAnchor.constraint(equalToConstant: 48)
         ])
 
-        containerView.accessibilityElements = [titleLabel, subtitleLabel, imageTextLabel, ribbonView, badgeView]
+        favoriteButton.isAccessibilityElement = false
+        containerView.isAccessibilityElement = true
+        containerView.accessibilityTraits.insert(.button)
+        accessibilityElements = [containerView]
     }
 
     // MARK: - Overrides
@@ -270,7 +253,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         subtitleLabel.text = ""
         accessoryLabel.text = ""
         imageTextLabel.text = ""
-        favoriteButton.accessibilityLabel = ""
+        accessibilityCustomActions = []
         favoriteButton.setImage(nil, for: .normal)
         logoImageView.cancelLoading()
         logoImageView.image = nil
@@ -296,12 +279,11 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         subtitleLabel.text = model?.subtitle
         accessoryLabel.text = model?.accessory
         imageTextLabel.text = model?.imageText
-        favoriteButton.accessibilityHint = model?.favoriteButtonAccessibilityData.hint
         isFavorite = model?.isFavorite ?? false
 
         if let subtitle = model?.subtitle {
             subtitleLabel.text = subtitle
-            subtitleLabelHeightConstraint.constant = Self.subtitleHeight
+            subtitleLabelHeightConstraint.constant = Self.subtitleHeight * Config.accessibilityMultiplier()
         } else {
             subtitleLabelHeightConstraint.constant = 0
         }
@@ -328,24 +310,30 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         if let badgeViewModel = model?.badgeViewModel {
             badgeView.configure(with: badgeViewModel)
         }
+
+        containerView.accessibilityLabel = [model?.title, model?.imageText, model?.subtitle, model?.accessory, model?.sponsoredAdData?.ribbonTitle, model?.badgeViewModel?.title]
+            .compactMap { $0 }.joined(separator: " ")
     }
 
     public static func height(for model: StandardAdRecommendationViewModel, width: CGFloat) -> CGFloat {
         let imageRatio = model.imageSize.height / model.imageSize.width
         let clippedImageRatio = min(max(imageRatio, Self.minImageAspectRatio), Self.maxImageAspectRatio)
         let imageHeight = width * clippedImageRatio
-        var contentHeight = subtitleTopMargin + titleTopMargin + titleHeight + bottomMargin
+        var contentHeight = subtitleTopMargin
+        + titleTopMargin
+        + (titleHeight * Config.accessibilityMultiplier())
+        + bottomMargin
 
         if model.accessory != nil {
             contentHeight += accessoryHeight
         }
 
         if model.sponsoredAdData?.ribbonTitle != nil {
-            contentHeight += ribbonTopMargin + ribbonHeight
+            contentHeight += ribbonTopMargin + (ribbonHeight * Config.accessibilityMultiplier())
         }
 
         if model.subtitle != nil {
-            contentHeight += subtitleHeight
+            contentHeight += (subtitleHeight * Config.accessibilityMultiplier())
         }
 
         return imageHeight + contentHeight
