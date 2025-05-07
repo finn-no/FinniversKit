@@ -80,6 +80,7 @@ enum ImageAsset: String {
     case filter
     case finnLogo
     case finnLogoSimple
+    case finnVendLogo
     case furniture
     case gift
     case heartEmpty
@@ -199,6 +200,7 @@ enum ImageAsset: String {
             .filter,
             .finnLogo,
             .finnLogoSimple,
+            .finnVendLogo,
             .furniture,
             .gift,
             .heartEmpty,

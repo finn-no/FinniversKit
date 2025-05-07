@@ -12,6 +12,7 @@ public protocol LoginEntryViewModel {
     var loginButtonTitle: String { get }
     var registerButtonTitle: String { get }
     var icon: UIImage { get }
+    var vendLogo: UIImage { get }
 }
 
 public protocol LoginEntryViewDelegate: AnyObject {
