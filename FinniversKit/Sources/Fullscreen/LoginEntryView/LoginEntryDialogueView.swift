@@ -59,7 +59,6 @@ class LoginEntryDialogueView: UIView {
 
     private lazy var vendLogoView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
