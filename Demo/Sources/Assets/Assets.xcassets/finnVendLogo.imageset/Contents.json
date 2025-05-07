@@ -3,6 +3,16 @@
     {
       "filename" : "finnVendLogo.pdf",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "finnVendLogo 1.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {
