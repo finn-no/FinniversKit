@@ -17,6 +17,7 @@ public enum EmptyViewShapeType { // Deprecated
     case none
 }
 
+@available(*, deprecated, message: "This view is deprecated. Use `StateViews.EmptyStateView` instead")
 public class EmptyView: UIView {
 
     // MARK: - Other private attributes
