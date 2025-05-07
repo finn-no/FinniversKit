@@ -57,6 +57,13 @@ class LoginEntryDialogueView: UIView {
         return button
     }()
 
+    private lazy var vendLogoView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+
     // MARK: - Initializers
 
     override init(frame: CGRect) {
@@ -77,6 +84,7 @@ class LoginEntryDialogueView: UIView {
         loginButton.setTitle(model.loginButtonTitle, for: .normal)
         registerButton.setTitle(model.registerButtonTitle, for: .normal)
         logoImageView.image = model.icon
+        vendLogoView.image = model.vendLogo
     }
 
     // MARK: - Private methods
@@ -92,6 +100,7 @@ class LoginEntryDialogueView: UIView {
         addSubview(detailLabel)
         addSubview(loginButton)
         addSubview(registerButton)
+        addSubview(vendLogoView)
 
         let margins = layoutMarginsGuide
         NSLayoutConstraint.activate([
@@ -115,7 +124,12 @@ class LoginEntryDialogueView: UIView {
             registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: Warp.Spacing.spacing200),
             registerButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
             registerButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            registerButton.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
+
+            vendLogoView.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: Warp.Spacing.spacing400),
+            vendLogoView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            vendLogoView.heightAnchor.constraint(equalToConstant: 60),
+            vendLogoView.widthAnchor.constraint(lessThanOrEqualToConstant: 200),
+            vendLogoView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
         ])
     }
 

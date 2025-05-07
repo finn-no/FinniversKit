@@ -11,6 +11,8 @@ struct LoginEntryDemoData: LoginEntryViewModel {
     let loginButtonTitle: String = "Logg inn"
     let registerButtonTitle: String = "Opprett en konto"
     let icon = UIImage(named: .finnLogo)
+    let vendLogo = UIImage(named: .finnVendLogo)
+
 
     init(title: String, detail: String, includeSettings: Bool = false) {
         self.title = title
