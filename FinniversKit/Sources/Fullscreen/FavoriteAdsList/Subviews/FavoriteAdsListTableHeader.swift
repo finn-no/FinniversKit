@@ -82,6 +82,7 @@ class FavoriteAdsListTableHeader: UIView {
         let searchBar = UISearchBar(withAutoLayout: true)
         searchBar.backgroundColor = .background
         searchBar.searchBarStyle = .minimal
+        searchBar.maximumContentSizeCategory = .extraExtraLarge
         return searchBar
     }()
 
