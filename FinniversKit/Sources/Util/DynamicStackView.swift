@@ -1,0 +1,143 @@
+import Foundation
+import UIKit
+
+public protocol DynamicStackViewDelegate: AnyObject {
+    func dynamicStackViewDidChangePresentationAxis(
+        _ dynamicStackView: DynamicStackView,
+        newAxis: NSLayoutConstraint.Axis
+    )
+}
+
+public class DynamicStackView: UIView {
+
+    // MARK: - Public properties
+
+    public weak var delegate: DynamicStackViewDelegate?
+    public let breakAtContentSize: UIContentSizeCategory
+    public let spacing: Value<CGFloat>?
+    public let alignment: Value<UIStackView.Alignment>?
+    public let distribution: Value<UIStackView.Distribution>?
+    public let stackView = UIStackView(axis: .horizontal, withAutoLayout: true)
+
+    // MARK: - Private properties
+
+    private var didInitialSetup = false
+
+    // MARK: - Init
+
+    public required init(
+        breakAtContentSize: UIContentSizeCategory,
+        spacing: Value<CGFloat>? = nil,
+        alignment: Value<UIStackView.Alignment>? = nil,
+        distribution: Value<UIStackView.Distribution>? = nil,
+        delegate: DynamicStackViewDelegate? = nil,
+        withAutoLayout: Bool = false
+    ) {
+        self.breakAtContentSize = breakAtContentSize
+        self.spacing = spacing
+        self.alignment = alignment
+        self.distribution = distribution
+        self.delegate = delegate
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
+
+        setup()
+    }
+
+    required public init(coder: NSCoder) { fatalError() }
+
+    // MARK: - Setup
+
+    private func setup() {
+        addSubview(stackView)
+        stackView.fillInSuperview()
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(contentSizeCategoryDidChange(_:)),
+            name: UIContentSizeCategory.didChangeNotification,
+            object: nil
+        )
+
+        configure(for: traitCollection.preferredContentSizeCategory)
+    }
+
+    // MARK: - Public methods
+
+    public func addArrangedSubview(_ view: UIView) {
+        stackView.addArrangedSubview(view)
+    }
+
+    public func addArrangedSubviews(_ views: [UIView]) {
+        stackView.addArrangedSubviews(views)
+    }
+
+    public func removeArrangedSubviews() {
+        stackView.removeArrangedSubviews()
+    }
+
+    // MARK: - Private methods
+
+    private func configure(for contentSizeCategory: UIContentSizeCategory) {
+        if breakAtContentSize <= contentSizeCategory {
+            configure(for: .vertical)
+        } else {
+            configure(for: .horizontal)
+        }
+    }
+
+    private func configure(for axis: NSLayoutConstraint.Axis) {
+        if stackView.axis == axis, didInitialSetup { return }
+
+        didInitialSetup = true
+
+        if let spacing {
+            stackView.spacing = spacing.value(for: axis)
+        }
+
+        if let alignment {
+            stackView.alignment = alignment.value(for: axis)
+        }
+
+        if let distribution {
+            stackView.distribution = distribution.value(for: axis)
+        }
+
+        stackView.axis = axis
+
+        stackView.invalidateIntrinsicContentSize()
+        setNeedsLayout()
+        layoutIfNeeded()
+
+        delegate?.dynamicStackViewDidChangePresentationAxis(self, newAxis: axis)
+    }
+
+    // MARK: - Actions
+
+    @objc private func contentSizeCategoryDidChange(_ notification: Notification) {
+        guard
+            let userInfo = notification.userInfo,
+            let contentSizeCategory = userInfo[UIContentSizeCategory.newValueUserInfoKey] as? UIContentSizeCategory
+        else { return }
+        configure(for: contentSizeCategory)
+    }
+}
+
+extension DynamicStackView {
+    /// Contains a value that will be set/used for either horizontal presentation, vertical presentation, or both.
+    public enum Value<T> {
+        case both(T)
+        case individual(horizontal: T, vertical: T)
+
+        func value(for axis: NSLayoutConstraint.Axis) -> T {
+            switch self {
+            case .both(let value): return value
+            case .individual(let horizontalValue, let verticalValue):
+                switch axis {
+                case .horizontal: return horizontalValue
+                case .vertical: return verticalValue
+                }
+            }
+        }
+    }
+}
