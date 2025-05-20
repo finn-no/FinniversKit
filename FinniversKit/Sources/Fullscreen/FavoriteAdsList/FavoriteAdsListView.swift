@@ -177,6 +177,15 @@ public class FavoriteAdsListView: UIView {
         layoutEmptyViews()
     }
 
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        // Reset header if content size category changes.
+        if previousTraitCollection?.preferredContentSizeCategory != traitCollection.preferredContentSizeCategory {
+            setTableHeader()
+        }
+    }
+
     // MARK: - Reload
 
     public func reloadData(scrollToTop: Bool) {
