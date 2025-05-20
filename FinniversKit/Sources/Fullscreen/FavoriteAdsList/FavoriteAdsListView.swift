@@ -376,11 +376,6 @@ extension FavoriteAdsListView: UITableViewDelegate {
         return headerView
     }
 
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard dataSource?.favoriteAdsListView(self, titleForHeaderInSection: section) != nil else { return .leastNonzeroMagnitude }
-        return 32
-    }
-
     public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return !isReadOnly
     }
