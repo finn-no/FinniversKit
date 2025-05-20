@@ -1,5 +1,5 @@
 {
-  "originHash" : "1ec169403b4b9847b5a93ff251f5ef22c783f0d0cf693969ca8093467a042997",
+  "originHash" : "c741f72a6b4a20b084e1ab9fa4ccb4cd07496ba75bf0a7453997865fc609e138",
   "pins" : [
     {
       "identity" : "demokit-ios",
@@ -26,15 +26,6 @@
       "state" : {
         "revision" : "303e5c5c36d6a558407d364878df131c3546fad8",
         "version" : "510.0.2"
-      }
-    },
-    {
-      "identity" : "warp-ios",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/warp-ds/warp-ios.git",
-      "state" : {
-        "revision" : "19c894ecbbc22835f7870a4841317370ab86b5a6",
-        "version" : "0.0.61"
       }
     }
   ],
