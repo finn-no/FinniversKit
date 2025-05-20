@@ -8,6 +8,15 @@ public protocol DynamicStackViewDelegate: AnyObject {
     )
 }
 
+/// A utility view that reconfigures a `UIStackView` based on the current `UIContentSizeCategory` to better support dynamic font sizes.
+///
+/// - If the current `UIContentSizeCategory` is less than the specified `breakAtContentSize`, the stack view will be presented **horizontally**.
+/// - If the current `UIContentSizeCategory` is equal to, or greater than, the specified `breakAtContentSize`, the stack view will be presented **vertically**.
+///
+/// Use the properties of the init to specify various properties on the `UIStackView` that should change between these two presentations.
+///
+/// Implement the delegate if you want to get notified when the axis/presentation of the `UIStackView` changes.
+/// Usecases for `dynamicStackViewDidChangePresentationAxis(_:newAxis:)` can be to add/remove subviews, replace content or change properties on the contained views (e.g. `Label.numberOfLines`).
 public class DynamicStackView: UIView {
 
     // MARK: - Public properties
@@ -25,8 +34,15 @@ public class DynamicStackView: UIView {
 
     // MARK: - Init
 
+    /// - Parameters:
+    ///   - breakAtContentSize: Specifies the `UIContentSizeCategory` where this view will break into vertical presentation.
+    ///   - spacing: Spacing for the stack view.
+    ///   - alignment: Alignment for the stack view.
+    ///   - distribution: Distribution for the stack view.
+    ///   - delegate: An object that acts as a delegate for this view.
+    ///   - withAutoLayout: Whether to enable auto layout or not for this view.
     public required init(
-        breakAtContentSize: UIContentSizeCategory,
+        breakAtContentSize: UIContentSizeCategory = .extraExtraLarge,
         spacing: Value<CGFloat>? = nil,
         alignment: Value<UIStackView.Alignment>? = nil,
         distribution: Value<UIStackView.Distribution>? = nil,
