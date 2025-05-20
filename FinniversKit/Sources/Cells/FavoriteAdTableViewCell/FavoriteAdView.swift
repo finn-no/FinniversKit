@@ -37,12 +37,12 @@ final class FavoriteAdView: UIView {
 
     private var viewModel: FavoriteAdViewModel?
 
-    private lazy var sortingDetailLabel = label(withFont: .detailStrong, textColor: .textLink, numberOfLines: 2)
-    private lazy var addressLabel = label(withFont: .detail, textColor: .textSubtle, numberOfLines: 2, isHidden: false)
-    private lazy var titleLabel = label(withFont: .caption, textColor: .text, numberOfLines: 2, isHidden: false)
-    private lazy var descriptionPrimaryLabel = label(withFont: .bodyStrong, textColor: .text, numberOfLines: 0)
-    private lazy var descriptionSecondaryLabel = label(withFont: .detail, textColor: .text, numberOfLines: 0)
-    private lazy var descriptionTertiaryLabel = label(withFont: .detailStrong, textColor: .text, numberOfLines: 0)
+    private lazy var sortingDetailLabel = label(style: .detailStrong, textColor: .textLink, numberOfLines: 2)
+    private lazy var addressLabel = label(style: .detail, textColor: .textSubtle, numberOfLines: 2, isHidden: false)
+    private lazy var titleLabel = label(style: .caption, textColor: .text, numberOfLines: 2, isHidden: false)
+    private lazy var descriptionPrimaryLabel = label(style: .bodyStrong, textColor: .text, numberOfLines: 0)
+    private lazy var descriptionSecondaryLabel = label(style: .detail, textColor: .text, numberOfLines: 0)
+    private lazy var descriptionTertiaryLabel = label(style: .detailStrong, textColor: .text, numberOfLines: 0)
     private lazy var statusRibbon = RibbonView(withAutoLayout: true)
     private lazy var commentView = FavoriteAdCommentView(withAutoLayout: true)
     private lazy var fallbackImage: UIImage = UIImage(named: .noImage)
@@ -262,12 +262,14 @@ final class FavoriteAdView: UIView {
         }
     }
 
-    private func label(withFont font: UIFont, textColor: UIColor, numberOfLines: Int, isHidden: Bool = true) -> UILabel {
-        let label = UILabel(withAutoLayout: true)
+    private func label(style: Warp.Typography, textColor: UIColor, numberOfLines: Int, isHidden: Bool = true) -> Label {
+        let label = Label(
+            style: style,
+            numberOfLines: numberOfLines,
+            textColor: textColor,
+            withAutoLayout: true
+        )
         label.setContentCompressionResistancePriority(.required, for: .vertical)
-        label.font = font
-        label.textColor = textColor
-        label.numberOfLines = numberOfLines
         label.isHidden = isHidden
         return label
     }
