@@ -18,12 +18,11 @@ class FavoriteAdsSortingView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var sortingLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .detailStrong
-        label.textColor = .text
-        return label
-    }()
+    private lazy var sortingLabel = Label(
+        style: .detailStrong,
+        numberOfLines: 0,
+        withAutoLayout: true
+    )
 
     private lazy var arrowImage: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
