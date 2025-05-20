@@ -130,7 +130,7 @@ public final class FavoriteAdCommentInputView: UIView {
             textView.topAnchor.constraint(equalTo: adView.bottomAnchor),
             textView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
             textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
-            textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 86),
+            textView.heightAnchor.constraint(greaterThanOrEqualToConstant: Warp.Spacing.spacing1600),
             textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Warp.Spacing.spacing200)
         ])
 
