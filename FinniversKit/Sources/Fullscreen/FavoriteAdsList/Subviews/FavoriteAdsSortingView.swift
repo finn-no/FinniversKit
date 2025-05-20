@@ -18,6 +18,8 @@ class FavoriteAdsSortingView: UIView {
 
     // MARK: - Private properties
 
+    private lazy var stackView = UIStackView(axis: .horizontal, spacing: 1, alignment: .center, withAutoLayout: true)
+
     private lazy var sortingLabel = Label(
         style: .detailStrong,
         numberOfLines: 0,
@@ -48,19 +50,17 @@ class FavoriteAdsSortingView: UIView {
         isAccessibilityElement = true
         accessibilityTraits = .button
 
-        addSubview(sortingLabel)
-        addSubview(arrowImage)
+        stackView.addArrangedSubviews([sortingLabel, arrowImage])
+        addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            sortingLabel.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
-            sortingLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            sortingLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Warp.Spacing.spacing100),
 
-            arrowImage.leadingAnchor.constraint(equalTo: sortingLabel.trailingAnchor, constant: 1),
             arrowImage.heightAnchor.constraint(equalToConstant: 12),
             arrowImage.widthAnchor.constraint(equalToConstant: 12),
-            arrowImage.centerYAnchor.constraint(equalTo: sortingLabel.centerYAnchor),
-            arrowImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200)
         ])
     }
 }

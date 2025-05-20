@@ -131,6 +131,7 @@ class FavoriteAdsListTableHeader: UIView {
             sortingView.leadingAnchor.constraint(equalTo: sortingContainerView.leadingAnchor),
             sortingView.topAnchor.constraint(equalTo: sortingContainerView.topAnchor),
             sortingView.bottomAnchor.constraint(equalTo: sortingContainerView.bottomAnchor),
+            sortingView.trailingAnchor.constraint(lessThanOrEqualTo: sortingContainerView.trailingAnchor),
 
             searchBar.heightAnchor.constraint(equalToConstant: 36),
         ])
