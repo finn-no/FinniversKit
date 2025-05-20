@@ -62,12 +62,13 @@ class FavoriteAdsListTableHeader: UIView {
     private lazy var messagesStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
     private lazy var sortingContainerView = UIView()
 
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = UIFont.title2
+    private lazy var titleLabel: Label = {
+        let label = Label(
+            style: .title2,
+            numberOfLines: 0,
+            withAutoLayout: true
+        )
         label.textAlignment = .center
-        label.textColor = .text
-        label.numberOfLines = 3
         return label
     }()
 
