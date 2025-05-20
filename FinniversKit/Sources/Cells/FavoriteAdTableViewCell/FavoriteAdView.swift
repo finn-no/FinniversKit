@@ -96,6 +96,12 @@ final class FavoriteAdView: UIView {
         return button
     }()
 
+    // MARK: - Overrides
+
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: bounds.width, height: rootStackView.bounds.maxY + FavoriteAdView.verticalPadding)
+    }
+
     // MARK: - Init
 
     public override init(frame: CGRect) {
