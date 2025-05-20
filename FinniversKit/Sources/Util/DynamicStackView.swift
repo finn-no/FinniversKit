@@ -23,9 +23,9 @@ public class DynamicStackView: UIView {
 
     public weak var delegate: DynamicStackViewDelegate?
     public let breakAtContentSize: UIContentSizeCategory
-    public let spacing: Value<CGFloat>?
-    public let alignment: Value<UIStackView.Alignment>?
-    public let distribution: Value<UIStackView.Distribution>?
+    public let spacing: AxisDependentValue<CGFloat>?
+    public let alignment: AxisDependentValue<UIStackView.Alignment>?
+    public let distribution: AxisDependentValue<UIStackView.Distribution>?
     public let stackView = UIStackView(axis: .horizontal, withAutoLayout: true)
 
     // MARK: - Private properties
@@ -43,9 +43,9 @@ public class DynamicStackView: UIView {
     ///   - withAutoLayout: Whether to enable auto layout or not for this view.
     public required init(
         breakAtContentSize: UIContentSizeCategory = .extraExtraLarge,
-        spacing: Value<CGFloat>? = nil,
-        alignment: Value<UIStackView.Alignment>? = nil,
-        distribution: Value<UIStackView.Distribution>? = nil,
+        spacing: AxisDependentValue<CGFloat>? = nil,
+        alignment: AxisDependentValue<UIStackView.Alignment>? = nil,
+        distribution: AxisDependentValue<UIStackView.Distribution>? = nil,
         delegate: DynamicStackViewDelegate? = nil,
         withAutoLayout: Bool = false
     ) {
@@ -141,7 +141,7 @@ public class DynamicStackView: UIView {
 
 extension DynamicStackView {
     /// Contains a value that will be set/used for either horizontal presentation, vertical presentation, or both.
-    public enum Value<T> {
+    public enum AxisDependentValue<T> {
         case both(T)
         case individual(horizontal: T, vertical: T)
 
