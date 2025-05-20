@@ -55,13 +55,17 @@ final class FavoriteAdView: UIView {
         return stackView
     }()
 
-    private lazy var infoStackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .horizontal
-        stackView.spacing = Warp.Spacing.spacing200
-        stackView.alignment = .leading
-        return stackView
-    }()
+    private lazy var infoStackView = DynamicStackView(
+        breakAtContentSize: .extraExtraLarge,
+        spacing: .individual(
+            horizontal: Warp.Spacing.spacing200,
+            vertical: Warp.Spacing.spacing100
+        ),
+        alignment: .both(.leading),
+        distribution: .both(.fill),
+        delegate: nil,
+        withAutoLayout: true
+    )
 
     private lazy var textStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
