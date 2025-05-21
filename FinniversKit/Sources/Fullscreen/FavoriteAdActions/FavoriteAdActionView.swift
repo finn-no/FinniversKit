@@ -28,10 +28,9 @@ public final class FavoriteAdActionView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .background
-        tableView.rowHeight = FavoriteAdActionView.rowHeight
         tableView.estimatedRowHeight = FavoriteAdActionView.rowHeight
         tableView.tableFooterView = UIView()
-        tableView.isScrollEnabled = false
+        tableView.alwaysBounceVertical = false
         tableView.register(FavoriteActionCell.self)
         return tableView
     }()
