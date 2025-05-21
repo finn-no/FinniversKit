@@ -62,12 +62,13 @@ class FavoriteAdsListTableHeader: UIView {
     private lazy var messagesStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
     private lazy var sortingContainerView = UIView()
 
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = UIFont.title2
+    private lazy var titleLabel: Label = {
+        let label = Label(
+            style: .title2,
+            numberOfLines: 0,
+            withAutoLayout: true
+        )
         label.textAlignment = .center
-        label.textColor = .text
-        label.numberOfLines = 3
         return label
     }()
 
@@ -81,6 +82,7 @@ class FavoriteAdsListTableHeader: UIView {
         let searchBar = UISearchBar(withAutoLayout: true)
         searchBar.backgroundColor = .background
         searchBar.searchBarStyle = .minimal
+        searchBar.maximumContentSizeCategory = .extraExtraLarge
         return searchBar
     }()
 
@@ -129,6 +131,7 @@ class FavoriteAdsListTableHeader: UIView {
             sortingView.leadingAnchor.constraint(equalTo: sortingContainerView.leadingAnchor),
             sortingView.topAnchor.constraint(equalTo: sortingContainerView.topAnchor),
             sortingView.bottomAnchor.constraint(equalTo: sortingContainerView.bottomAnchor),
+            sortingView.trailingAnchor.constraint(lessThanOrEqualTo: sortingContainerView.trailingAnchor),
 
             searchBar.heightAnchor.constraint(equalToConstant: 36),
         ])

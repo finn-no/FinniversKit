@@ -9,11 +9,9 @@ protocol SubtitleViewDelegate: AnyObject {
 final class SubtitleView: UIView {
     weak var delegate: SubtitleViewDelegate?
 
-    private(set) lazy var label: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .caption
+    private(set) lazy var label: Label = {
+        let label = Label(style: .caption, numberOfLines: 0, withAutoLayout: true)
         label.textAlignment = .center
-        label.textColor = .text
         return label
     }()
 
