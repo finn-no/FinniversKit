@@ -8,8 +8,11 @@ import Warp
 final class FavoriteActionCell: UITableViewCell {
     static let iconSize: CGFloat = 24
     static let separatorLeadingInset = Warp.Spacing.spacing200 * 2 + FavoriteActionCell.iconSize
+    static let titleLabelStyle = Warp.Typography.bodyStrong
+    static let horzontalSpacing = Warp.Spacing.spacing200
+    static let verticalSpacing = Warp.Spacing.spacing100
 
-    private lazy var titleLabel = Label(style: .bodyStrong, numberOfLines: 0, withAutoLayout: true)
+    private lazy var titleLabel = Label(style: Self.titleLabelStyle, numberOfLines: 0, withAutoLayout: true)
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
@@ -48,14 +51,20 @@ final class FavoriteActionCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
-            iconImageView.widthAnchor.constraint(equalToConstant: FavoriteActionCell.iconSize),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Self.horzontalSpacing),
+            iconImageView.widthAnchor.constraint(equalToConstant: Self.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Warp.Spacing.spacing100),
-            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: Warp.Spacing.spacing200),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Warp.Spacing.spacing100),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Self.verticalSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: Self.horzontalSpacing),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Self.horzontalSpacing),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Self.verticalSpacing),
         ])
+    }
+
+    static func height(forWidth width: CGFloat, usingText string: String) -> CGFloat {
+        let availableTextWidth = width - iconSize - (3 * horzontalSpacing)
+        let textHeight = string.height(withConstrainedWidth: availableTextWidth, font: titleLabelStyle.uiFont)
+        return textHeight + (2 * verticalSpacing)
     }
 }
