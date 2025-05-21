@@ -107,9 +107,7 @@ public class FavoriteAdsListView: UIView {
         tableView.estimatedSectionHeaderHeight = 32
         tableView.allowsMultipleSelectionDuringEditing = true
         tableView.backgroundColor = .background
-        if #available(iOS 15.0, *) {
-            tableView.sectionHeaderTopPadding = 0
-        }
+        tableView.sectionHeaderTopPadding = 0
         return tableView
     }()
 
@@ -177,6 +175,15 @@ public class FavoriteAdsListView: UIView {
         super.layoutSubviews()
         setTableHeader()
         layoutEmptyViews()
+    }
+
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        // Reset header if content size category changes.
+        if previousTraitCollection?.preferredContentSizeCategory != traitCollection.preferredContentSizeCategory {
+            setTableHeader()
+        }
     }
 
     // MARK: - Reload
@@ -376,11 +383,6 @@ extension FavoriteAdsListView: UITableViewDelegate {
         let headerView = tableView.dequeue(FavoriteAdsSectionHeaderView.self)
         headerView.configure(title: sectionTitle, detail: sectionDetail)
         return headerView
-    }
-
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard dataSource?.favoriteAdsListView(self, titleForHeaderInSection: section) != nil else { return .leastNonzeroMagnitude }
-        return 32
     }
 
     public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
