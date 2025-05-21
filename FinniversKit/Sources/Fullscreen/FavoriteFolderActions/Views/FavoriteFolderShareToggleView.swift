@@ -26,7 +26,7 @@ final class FavoriteFolderShareToggleView: UIView {
         }
     }
 
-    private lazy var titleLabel = FavoriteActionCell.makeTitleLabel()
+    private lazy var titleLabel = Label(style: .bodyStrong, numberOfLines: 0, withAutoLayout: true)
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)

@@ -9,7 +9,7 @@ final class FavoriteActionCell: UITableViewCell {
     static let iconSize: CGFloat = 24
     static let separatorLeadingInset = Warp.Spacing.spacing200 * 2 + FavoriteActionCell.iconSize
 
-    private lazy var titleLabel = FavoriteActionCell.makeTitleLabel()
+    private lazy var titleLabel = Label(style: .bodyStrong, numberOfLines: 0, withAutoLayout: true)
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
@@ -56,16 +56,5 @@ final class FavoriteActionCell: UITableViewCell {
             titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: Warp.Spacing.spacing200),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200)
         ])
-    }
-}
-
-// MARK: - Factory
-
-extension FavoriteActionCell {
-    static func makeTitleLabel() -> UILabel {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .bodyStrong
-        label.textColor = .text
-        return label
     }
 }
