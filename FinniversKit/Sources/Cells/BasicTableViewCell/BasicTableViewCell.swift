@@ -12,25 +12,32 @@ open class BasicTableViewCell: UITableViewCell {
     open var selectedIndexPath: IndexPath?
     open var isEnabled: Bool = true
 
-    open lazy var titleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .body
+    open lazy var titleLabel: Label = {
+        let label = Label(
+            style: Warp.Typography.body,
+            numberOfLines: 0,
+            withAutoLayout: true
+        )
         label.textColor = .text
-        label.numberOfLines = 0
         return label
     }()
 
-    open lazy var subtitleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .caption
+    open lazy var subtitleLabel: Label = {
+        let label = Label(
+            style: Warp.Typography.caption,
+            numberOfLines: 0,
+            withAutoLayout: true
+        )
         label.textColor = .text
-        label.numberOfLines = 0
         return label
     }()
 
-    open lazy var detailLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .detail
+    open lazy var detailLabel: Label = {
+        let label = Label(
+            style: Warp.Typography.detail,
+            numberOfLines: 0,
+            withAutoLayout: true
+        )
         label.textColor = .textSubtle
         return label
     }()
