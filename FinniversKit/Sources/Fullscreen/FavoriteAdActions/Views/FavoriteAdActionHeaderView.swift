@@ -16,12 +16,13 @@ final class FavoriteAdActionHeaderView: UIView {
         return imageView
     }()
 
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = FavoriteAdActionHeaderView.titleLabelFont
-        label.textColor = .text
+    private lazy var titleLabel: Label = {
+        let label = Label(
+            style: Self.titleLabelStyle,
+            numberOfLines: 0,
+            withAutoLayout: true
+        )
         label.textAlignment = .center
-        label.numberOfLines = 0
         label.setContentHuggingPriority(.required, for: .vertical)
         return label
     }()
@@ -92,14 +93,14 @@ extension FavoriteAdActionHeaderView {
     )
 
     private static let imageViewSize: CGFloat = 56
-    private static let titleLabelFont = UIFont.body
+    private static let titleLabelStyle = Warp.Typography.body
 
     static func height(forTitle title: String, width: CGFloat) -> CGFloat {
         let width = width - layoutMargins.left - layoutMargins.right
         var height = layoutMargins.top
 
         height += imageViewSize
-        height += .titleLabelTopSpacing + title.height(withConstrainedWidth: width, font: titleLabelFont)
+        height += .titleLabelTopSpacing + title.height(withConstrainedWidth: width, font: titleLabelStyle.uiFont)
         height += .hairlineTopSpacing + .hairlineHeight
         height += layoutMargins.bottom
 
