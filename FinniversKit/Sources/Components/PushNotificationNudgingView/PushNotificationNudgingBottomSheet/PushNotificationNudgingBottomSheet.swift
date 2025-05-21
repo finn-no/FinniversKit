@@ -9,25 +9,37 @@ public struct PushNotificationNudgingBottomSheet: View {
     }
 
     public var body: some View {
-        VStack(alignment: .center, spacing: Warp.Spacing.spacing200) {
-            Text(viewModel.title)
-                .font(from: .title3)
-                .padding(.top, Warp.Spacing.spacing100)
+        GeometryReader { geometry in
+            ScrollView(showsIndicators: false) {
+                VStack(alignment: .center, spacing: Warp.Spacing.spacing200) {
+                    Text(viewModel.title)
+                        .font(from: .title3)
+                        .multilineTextAlignment(.center)
+                        .padding(.top, Warp.Spacing.spacing100)
 
-            ForEach(viewModel.sections, id: \.self) {
-                sectionView($0)
-                    .padding([.leading, .trailing], Warp.Spacing.spacing100)
-            }.padding(.top, Warp.Spacing.spacing100)
+                    VStack(spacing: Warp.Spacing.spacing100) {
+                        ForEach(viewModel.sections, id: \.self) {
+                            sectionView($0)
+                                .padding([.leading, .trailing], Warp.Spacing.spacing100)
+                        }
+                    }
 
-            Spacer()
+                    Spacer(minLength: Warp.Spacing.spacing200)
 
-            VStack {
-                ForEach(viewModel.buttons, id: \.self) {
-                    buttonView($0)
-                        .padding([.leading, .trailing], Warp.Spacing.spacing100)
+                    VStack {
+                        ForEach(viewModel.buttons, id: \.self) {
+                            buttonView($0)
+                                .padding([.leading, .trailing], Warp.Spacing.spacing100)
+                        }
+                    }
+                    .padding([.top, .bottom], Warp.Spacing.spacing100)
                 }
-            }.padding([.top, .bottom], Warp.Spacing.spacing100)
-        }.background(Color.background)
+                .frame(minHeight: geometry.size.height)
+                .padding(.bottom)
+                .background(Color.background)
+            }
+            .frame(width: geometry.size.width)
+        }
     }
 }
 
