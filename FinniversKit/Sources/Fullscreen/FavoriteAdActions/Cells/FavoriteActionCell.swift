@@ -10,7 +10,7 @@ final class FavoriteActionCell: UITableViewCell {
     static let separatorLeadingInset = Warp.Spacing.spacing200 * 2 + FavoriteActionCell.iconSize
     static let titleLabelStyle = Warp.Typography.bodyStrong
     static let horzontalSpacing = Warp.Spacing.spacing200
-    static let verticalSpacing = Warp.Spacing.spacing100
+    static let verticalSpacing = Warp.Spacing.spacing200
 
     private lazy var titleLabel = Label(style: Self.titleLabelStyle, numberOfLines: 0, withAutoLayout: true)
 
