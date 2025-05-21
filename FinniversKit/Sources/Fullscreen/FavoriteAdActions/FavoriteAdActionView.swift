@@ -28,10 +28,9 @@ public final class FavoriteAdActionView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .background
-        tableView.rowHeight = FavoriteAdActionView.rowHeight
-        tableView.estimatedRowHeight = FavoriteAdActionView.rowHeight
+        tableView.estimatedRowHeight = 48
         tableView.tableFooterView = UIView()
-        tableView.isScrollEnabled = false
+        tableView.alwaysBounceVertical = false
         tableView.register(FavoriteActionCell.self)
         return tableView
     }()
@@ -64,6 +63,21 @@ public final class FavoriteAdActionView: UIView {
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+
+    // MARK: - Overrides
+
+    public override func systemLayoutSizeFitting(
+        _ targetSize: CGSize,
+        withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
+        verticalFittingPriority: UILayoutPriority
+    ) -> CGSize {
+        let requiredHeight = Self.totalHeight(for: viewModel, width: targetSize.width)
+
+        return CGSize(
+            width: targetSize.width,
+            height: requiredHeight
+        )
     }
 }
 
@@ -108,12 +122,21 @@ extension FavoriteAdActionView: UITableViewDelegate {
 // MARK: - Static
 
 public extension FavoriteAdActionView {
-    static let rowHeight: CGFloat = 48.0
-
-    static func totalHeight(for viewModel: FavoriteAdActionViewModel, width: CGFloat) -> CGFloat {
+    static func totalHeight(for viewModel: FavoriteAdActionViewModel, width: CGFloat, method: String = #function) -> CGFloat {
         let headerViewHeight = FavoriteAdActionHeaderView.height(forTitle: viewModel.headerTitle, width: width)
-        let tableViewHeight = rowHeight * CGFloat(FavoriteAdAction.allCases.count)
+
+        let tableViewHeight = viewModel.actionTitles.reduce(0) { sum, actionTitle in
+            sum + FavoriteActionCell.height(forWidth: width, usingText: actionTitle)
+        }
 
         return headerViewHeight + tableViewHeight
+    }
+}
+
+// MARK: - Private extensions
+
+private extension FavoriteAdActionViewModel {
+    var actionTitles: [String] {
+        [commentText, shareText, deleteText]
     }
 }
