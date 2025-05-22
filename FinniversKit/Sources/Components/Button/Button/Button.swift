@@ -65,12 +65,7 @@ open class Button: UIButton {
     }
 
     public override func setTitle(_ title: String?, for state: UIControl.State) {
-        guard let title = title else {
-            return
-        }
-
-        titleHeight = title.height(withConstrainedWidth: bounds.width, font: style.font(forSize: size))
-        titleWidth = title.width(withConstrainedHeight: bounds.height, font: style.font(forSize: size))
+        guard let title else { return }
 
         if style == .link {
             setAsLink(title: title)
@@ -81,6 +76,8 @@ open class Button: UIButton {
         if state == .normal {
             accessibilityLabel = title
         }
+
+        calculateSizes()
     }
 
     public override func setTitleColor(_ color: UIColor?, for state: UIControl.State) {
@@ -112,6 +109,17 @@ open class Button: UIButton {
         super.setTitleColor(style.textColor, for: .normal)
         super.setTitleColor(style.highlightedTextColor, for: .highlighted)
         super.setTitleColor(style.disabledTextColor, for: .disabled)
+    }
+
+    private func calculateSizes(method: String = #function) {
+        guard let title = title(for: state) else { return }
+
+        titleHeight = title.height(withConstrainedWidth: .greatestFiniteMagnitude, font: style.font(forSize: size))
+        titleWidth = title.width(withConstrainedHeight: .greatestFiniteMagnitude, font: style.font(forSize: size))
+
+        invalidateIntrinsicContentSize()
+        setNeedsLayout()
+        layoutIfNeeded()
     }
 
     private func setAsLink(title: String) {
