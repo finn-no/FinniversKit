@@ -24,7 +24,7 @@ struct SettingsViewIconCell: View {
                 .foregroundColor(tintColor)
                 .padding([.trailing], Warp.Spacing.spacing400)
         }
-        .padding(.vertical, Warp.Spacing.spacing100)
+        .padding(.vertical, Warp.Spacing.spacing200)
         .bottomDivider(!isLastItem)
     }
 }
