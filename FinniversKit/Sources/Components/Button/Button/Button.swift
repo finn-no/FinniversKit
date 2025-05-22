@@ -127,7 +127,7 @@ open class Button: UIButton {
         super.setTitleColor(style.disabledTextColor, for: .disabled)
     }
 
-    private func calculateSizes(method: String = #function) {
+    private func calculateSizes() {
         guard let title = title(for: state) else { return }
 
         titleHeight = title.height(withConstrainedWidth: .greatestFiniteMagnitude, font: style.font(forSize: size))
