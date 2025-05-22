@@ -41,6 +41,7 @@ open class Button: UIButton {
         didSet {
             backgroundColor = style.backgroundColor(forState: state)
             layer.borderColor = style.borderColor(forState: state)
+            calculateSizes()
         }
     }
 
@@ -48,6 +49,13 @@ open class Button: UIButton {
         didSet {
             backgroundColor = style.backgroundColor(forState: state)
             layer.borderColor = style.borderColor(forState: state)
+            calculateSizes()
+        }
+    }
+
+    public override var isSelected: Bool {
+        didSet {
+            calculateSizes()
         }
     }
 
