@@ -99,6 +99,14 @@ open class Button: UIButton {
         layer.borderColor = style.borderColor(forState: state)
     }
 
+    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if previousTraitCollection?.preferredContentSizeCategory != traitCollection.preferredContentSizeCategory {
+            calculateSizes()
+        }
+    }
+
     // MARK: - Private methods
 
     private func setup() {
