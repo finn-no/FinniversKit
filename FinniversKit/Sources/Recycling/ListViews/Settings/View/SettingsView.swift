@@ -43,9 +43,6 @@ public class SettingsView: UIView {
         tableView.register(SettingsSectionComplexHeaderView.self)
         tableView.register(SettingsSectionFooterView.self)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.sectionHeaderHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 44
-        tableView.estimatedSectionHeaderHeight = 48
         return tableView
     }()
 
@@ -90,51 +87,6 @@ public class SettingsView: UIView {
                 tableView.tableHeaderView = headerView
             }
         }
-    }
-
-    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        // Reset header if content size category changes.
-        if previousTraitCollection?.preferredContentSizeCategory != traitCollection.preferredContentSizeCategory {
-            setTableHeader()
-        }
-    }
-
-    private func setTableHeader() {
-        tableView.tableHeaderView = tableHeaderView
-        layoutTableHeaderView()
-        tableView.sendSubviewToBack(tableHeaderView)
-    }
-
-    private func layoutTableHeaderView() {
-        guard let headerView = tableView.tableHeaderView else { return }
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-
-        let headerWidth = bounds.width
-        let temporaryWidthConstraint = headerView.widthAnchor.constraint(equalToConstant: headerWidth)
-
-        headerView.addConstraint(temporaryWidthConstraint)
-
-        headerView.setNeedsLayout()
-        headerView.layoutIfNeeded()
-
-        let headerSize = headerView.systemLayoutSizeFitting(
-            CGSize(width: headerWidth, height: 0),
-            withHorizontalFittingPriority: .required,
-            verticalFittingPriority: .defaultLow
-        )
-
-        let height = headerSize.height
-        var frame = headerView.frame
-
-        frame.size.height = height
-        headerView.frame = frame
-
-        tableView.tableHeaderView = headerView
-
-        headerView.removeConstraint(temporaryWidthConstraint)
-        headerView.translatesAutoresizingMaskIntoConstraints = true
     }
 }
 
@@ -254,7 +206,7 @@ extension SettingsView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        48
+        UITableView.automaticDimension
     }
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -263,10 +215,14 @@ extension SettingsView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if delegate?.settingsView(self, titleForFooterInSection: section) != nil {
-            return 48
+            return UITableView.automaticDimension
         } else {
             return 0
         }
+    }
+
+    public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        48
     }
 
     public func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {

@@ -13,6 +13,7 @@ struct SettingsViewIconCell: View {
                 .font(from: .body)
                 .foregroundColor(.text)
                 .padding([.leading])
+                .fixedSize(horizontal: false, vertical: true)
 
             Spacer(minLength: Warp.Spacing.spacing100)
 
@@ -22,7 +23,9 @@ struct SettingsViewIconCell: View {
                 .frame(width: Warp.Spacing.spacing200, height: Warp.Spacing.spacing200)
                 .foregroundColor(tintColor)
                 .padding([.trailing], Warp.Spacing.spacing400)
-        }.bottomDivider(!isLastItem)
+        }
+        .padding(.vertical, Warp.Spacing.spacing100)
+        .bottomDivider(!isLastItem)
     }
 }
 
