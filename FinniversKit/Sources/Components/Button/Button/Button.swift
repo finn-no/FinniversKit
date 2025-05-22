@@ -8,8 +8,7 @@ open class Button: UIButton {
     // MARK: - Internal properties
 
     private let cornerRadius: CGFloat = 8.0
-    private var titleHeight: CGFloat?
-    private var titleWidth: CGFloat?
+    private var titleSize: CGSize?
 
     // MARK: - External properties
 
@@ -60,15 +59,15 @@ open class Button: UIButton {
     }
 
     public override var intrinsicContentSize: CGSize {
-        guard let titleWidth = titleWidth, let titleHeight = titleHeight else {
+        guard let titleSize else {
             return CGSize.zero
         }
         let paddings = style.paddings(forSize: size)
         let imageSize = imageView?.image?.size ?? .zero
 
         return CGSize(
-            width: titleWidth + imageSize.width + style.margins.left + style.margins.right,
-            height: titleHeight + style.margins.top + style.margins.bottom + paddings.top + paddings.bottom
+            width: titleSize.width + imageSize.width + style.margins.left + style.margins.right,
+            height: titleSize.height + style.margins.top + style.margins.bottom + paddings.top + paddings.bottom
         )
     }
 
@@ -130,8 +129,7 @@ open class Button: UIButton {
     private func calculateSizes() {
         guard let title = title(for: state) else { return }
 
-        titleHeight = title.height(withConstrainedWidth: .greatestFiniteMagnitude, font: style.font(forSize: size))
-        titleWidth = title.width(withConstrainedHeight: .greatestFiniteMagnitude, font: style.font(forSize: size))
+        titleSize = title.size(withConstrainedRect: bounds.size, font: style.font(forSize: size))
 
         invalidateIntrinsicContentSize()
         setNeedsLayout()
