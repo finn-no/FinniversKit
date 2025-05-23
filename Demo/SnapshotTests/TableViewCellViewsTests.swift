@@ -18,31 +18,31 @@ class TableViewCellsViewTests: XCTestCase {
     }
 
     func testBasicCell() {
-        snapshot(.basicCell)
+        snapshot(.basicCell, record: true)
     }
 
     func testBasicCellVariations() {
-        snapshot(.basicCellVariations)
+        snapshot(.basicCellVariations, record: true)
     }
 
     func testCheckboxCell() {
-        snapshot(.checkboxCell)
+        snapshot(.checkboxCell, record: true)
     }
 
     func testCheckboxSubtitleCell() {
-        snapshot(.checkboxSubtitleCell)
+        snapshot(.checkboxSubtitleCell, record: true)
     }
 
     func testRadioButtonCell() {
-        snapshot(.radioButtonCell)
+        snapshot(.radioButtonCell, record: true)
     }
 
     func testHeartSubtitleCell() {
-        snapshot(.heartSubtitleCell)
+        snapshot(.heartSubtitleCell, record: true)
     }
 
     func testIconTitleCell() {
-        snapshot(.iconTitleCell)
+        snapshot(.iconTitleCell, record: true)
     }
 
     func testRemoteImageCell() {
