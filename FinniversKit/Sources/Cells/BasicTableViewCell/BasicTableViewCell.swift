@@ -12,28 +12,24 @@ open class BasicTableViewCell: UITableViewCell {
     open var selectedIndexPath: IndexPath?
     open var isEnabled: Bool = true
 
-    open lazy var titleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .body
-        label.textColor = .text
-        label.numberOfLines = 0
-        return label
-    }()
+    open lazy var titleLabel = Label(
+        style: Warp.Typography.body,
+        numberOfLines: 0,
+        withAutoLayout: true
+    )
 
-    open lazy var subtitleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .caption
-        label.textColor = .text
-        label.numberOfLines = 0
-        return label
-    }()
+    open lazy var subtitleLabel = Label(
+        style: Warp.Typography.caption,
+        numberOfLines: 0,
+        withAutoLayout: true
+    )
 
-    open lazy var detailLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .detail
-        label.textColor = .textSubtle
-        return label
-    }()
+    open lazy var detailLabel = Label(
+        style: Warp.Typography.detail,
+        numberOfLines: 0,
+        textColor: .textSubtle,
+        withAutoLayout: true
+    )
 
     open lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
@@ -125,9 +121,9 @@ open class BasicTableViewCell: UITableViewCell {
             stackViewLeadingAnchorConstraint,
             stackViewTrailingAnchorConstraint,
             stackViewBottomAnchorConstraint,
-
+            
             detailLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             detailLabelTrailingConstraint
-            ])
+        ])
     }
 }

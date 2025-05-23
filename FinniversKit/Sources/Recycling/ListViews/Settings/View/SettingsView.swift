@@ -42,6 +42,9 @@ public class SettingsView: UIView {
         tableView.register(SettingsSectionHeaderView.self)
         tableView.register(SettingsSectionComplexHeaderView.self)
         tableView.register(SettingsSectionFooterView.self)
+        tableView.estimatedRowHeight = 48
+        tableView.estimatedSectionHeaderHeight = 48
+        tableView.estimatedSectionFooterHeight = 48
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -206,7 +209,7 @@ extension SettingsView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        48
+        UITableView.automaticDimension
     }
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -215,7 +218,7 @@ extension SettingsView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if delegate?.settingsView(self, titleForFooterInSection: section) != nil {
-            return 48
+            return UITableView.automaticDimension
         } else {
             return 0
         }

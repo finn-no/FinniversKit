@@ -8,7 +8,11 @@ import Warp
 class SettingsSectionHeaderView: UITableViewHeaderFooterView {
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .bodyStrong, withAutoLayout: true)
+        let label = Label(
+            style: .bodyStrong,
+            numberOfLines: 0,
+            withAutoLayout: true
+        )
         label.textColor = .textSubtle
         return label
     }()
