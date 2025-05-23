@@ -40,6 +40,6 @@ class RecyclingViewTests: XCTestCase {
     }
 
     func testBasicTableView() {
-        snapshot(.basicTableView, record: true)
+        snapshot(.basicTableView)
     }
 }
