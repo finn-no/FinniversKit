@@ -24,7 +24,7 @@ class RecyclingViewTests: XCTestCase {
     }
 
     func testFavoriteFoldersListView() {
-        snapshot(.favoriteFoldersListView, record: true)
+        snapshot(.favoriteFoldersListView)
     }
 
     func testSavedSearchesListView() {
@@ -32,7 +32,7 @@ class RecyclingViewTests: XCTestCase {
     }
 
     func testSettingsView() {
-        snapshot(.settingsView, record: true)
+        snapshot(.settingsView)
     }
 
     func testNeighborhoodProfileView() {
@@ -40,6 +40,6 @@ class RecyclingViewTests: XCTestCase {
     }
 
     func testBasicTableView() {
-        snapshot(.basicTableView)
+        snapshot(.basicTableView, record: true)
     }
 }
