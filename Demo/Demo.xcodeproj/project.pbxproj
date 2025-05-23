@@ -2251,8 +2251,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/finn-no/DemoKit-iOS";
 			requirement = {
-				branch = "fix/replace-usage-of-deprecation";
-				kind = branch;
+				kind = exactVersion;
+				version = 0.4.5;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

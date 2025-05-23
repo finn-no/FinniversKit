@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/finn-no/DemoKit-iOS",
       "state" : {
-        "branch" : "fix/replace-usage-of-deprecation",
-        "revision" : "97a804f5bc807e3a214ea911e8d7eac512ef179d"
+        "revision" : "6fa8b97a0d71601acfd152bfc783ba9362bb297d",
+        "version" : "0.4.5"
       }
     },
     {
