@@ -30,8 +30,8 @@ public extension Button {
         let disabledBorderColor: UIColor?
         let disabledTextColor: UIColor?
         let margins: UIEdgeInsets
-        let smallFont: UIFont
-        let normalFont: UIFont
+        let smallFont: Warp.Typography
+        let normalFont: Warp.Typography
 
         init(
             bodyColor: UIColor,
@@ -48,8 +48,8 @@ public extension Button {
                 vertical: Warp.Spacing.spacing100,
                 horizontal: Warp.Spacing.spacing200
             ),
-            smallFont: UIFont = .detailStrong,
-            normalFont: UIFont = .bodyStrong
+            smallFont: Warp.Typography = .detailStrong,
+            normalFont: Warp.Typography = .bodyStrong
         ) {
             self.bodyColor = bodyColor
             self.borderWidth = borderWidth
@@ -73,8 +73,8 @@ public extension Button {
                 vertical: Warp.Spacing.spacing100,
                 horizontal: Warp.Spacing.spacing200
             ),
-            smallFont: UIFont = .detailStrong,
-            normalFont: UIFont = .bodyStrong
+            smallFont: Warp.Typography = .detailStrong,
+            normalFont: Warp.Typography = .bodyStrong
         ) {
             self.borderWidth = borderWidth
 
@@ -131,8 +131,8 @@ public extension Button {
             disabledBorderColor: UIColor? = nil,
             disabledTextColor: UIColor? = nil,
             margins: UIEdgeInsets? = nil,
-            smallFont: UIFont? = nil,
-            normalFont: UIFont? = nil
+            smallFont: Warp.Typography? = nil,
+            normalFont: Warp.Typography? = nil
         ) -> Style {
             Style(
                 bodyColor: bodyColor ?? self.bodyColor,
@@ -162,8 +162,8 @@ public extension Button {
 
         func font(forSize size: Size) -> UIFont {
             switch size {
-            case .normal: return normalFont
-            case .small: return smallFont
+            case .normal: return normalFont.uiFont
+            case .small: return smallFont.uiFont
             }
         }
     }

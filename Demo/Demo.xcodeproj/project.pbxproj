@@ -2252,7 +2252,7 @@
 			repositoryURL = "https://github.com/finn-no/DemoKit-iOS";
 			requirement = {
 				kind = exactVersion;
-				version = 0.4.3;
+				version = 0.4.5;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
