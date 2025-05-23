@@ -28,7 +28,7 @@ class SettingsSectionComplexHeaderView: UITableViewHeaderFooterView {
     private lazy var subtitleLabel: Label = {
         let label = Label(
             style: .caption,
-            numberOfLines: 2,
+            numberOfLines: 0,
             textColor: .textSubtle,
             withAutoLayout: true
             )
