@@ -8,8 +8,7 @@ open class Button: UIButton {
     // MARK: - Internal properties
 
     private let cornerRadius: CGFloat = 8.0
-    private var titleHeight: CGFloat?
-    private var titleWidth: CGFloat?
+    private var titleSize: CGSize?
 
     // MARK: - External properties
 
@@ -41,6 +40,7 @@ open class Button: UIButton {
         didSet {
             backgroundColor = style.backgroundColor(forState: state)
             layer.borderColor = style.borderColor(forState: state)
+            calculateSizes()
         }
     }
 
@@ -48,29 +48,31 @@ open class Button: UIButton {
         didSet {
             backgroundColor = style.backgroundColor(forState: state)
             layer.borderColor = style.borderColor(forState: state)
+            calculateSizes()
+        }
+    }
+
+    public override var isSelected: Bool {
+        didSet {
+            calculateSizes()
         }
     }
 
     public override var intrinsicContentSize: CGSize {
-        guard let titleWidth = titleWidth, let titleHeight = titleHeight else {
+        guard let titleSize else {
             return CGSize.zero
         }
         let paddings = style.paddings(forSize: size)
         let imageSize = imageView?.image?.size ?? .zero
 
         return CGSize(
-            width: titleWidth + imageSize.width + style.margins.left + style.margins.right,
-            height: titleHeight + style.margins.top + style.margins.bottom + paddings.top + paddings.bottom
+            width: titleSize.width + imageSize.width + style.margins.left + style.margins.right,
+            height: titleSize.height + style.margins.top + style.margins.bottom + paddings.top + paddings.bottom
         )
     }
 
     public override func setTitle(_ title: String?, for state: UIControl.State) {
-        guard let title = title else {
-            return
-        }
-
-        titleHeight = title.height(withConstrainedWidth: bounds.width, font: style.font(forSize: size))
-        titleWidth = title.width(withConstrainedHeight: bounds.height, font: style.font(forSize: size))
+        guard let title else { return }
 
         if style == .link {
             setAsLink(title: title)
@@ -81,6 +83,8 @@ open class Button: UIButton {
         if state == .normal {
             accessibilityLabel = title
         }
+
+        calculateSizes()
     }
 
     public override func setTitleColor(_ color: UIColor?, for state: UIControl.State) {
@@ -92,6 +96,14 @@ open class Button: UIButton {
         // Border color is set in a lifecycle method to ensure it is dark mode compatible.
         // Changing border color for a `Button` must be done with the `overrideStyle` method.
         layer.borderColor = style.borderColor(forState: state)
+    }
+
+    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if previousTraitCollection?.preferredContentSizeCategory != traitCollection.preferredContentSizeCategory {
+            calculateSizes()
+        }
     }
 
     // MARK: - Private methods
@@ -112,6 +124,16 @@ open class Button: UIButton {
         super.setTitleColor(style.textColor, for: .normal)
         super.setTitleColor(style.highlightedTextColor, for: .highlighted)
         super.setTitleColor(style.disabledTextColor, for: .disabled)
+    }
+
+    private func calculateSizes() {
+        guard let title = title(for: state) else { return }
+
+        titleSize = title.size(withConstrainedRect: bounds.size, font: style.font(forSize: size))
+
+        invalidateIntrinsicContentSize()
+        setNeedsLayout()
+        layoutIfNeeded()
     }
 
     private func setAsLink(title: String) {

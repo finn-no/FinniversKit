@@ -6,17 +6,25 @@ import Foundation
 
 public extension String {
     func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = (self as NSString).boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
-
-        return ceil(boundingBox.height)
+        size(withConstrainedRect: CGSize(width: width, height: .greatestFiniteMagnitude), font: font).height
     }
 
     func width(withConstrainedHeight height: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
-        let boundingBox = (self as NSString).boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
+        size(withConstrainedRect: CGSize(width: .greatestFiniteMagnitude, height: height), font: font).width
+    }
 
-        return ceil(boundingBox.width)
+    func size(withConstrainedRect rect: CGSize, font: UIFont) -> CGSize {
+        let boundingBox = (self as NSString).boundingRect(
+            with: rect,
+            options: .usesLineFragmentOrigin,
+            attributes: [.font: font],
+            context: nil
+        )
+
+        return CGSize(
+            width: ceil(boundingBox.width),
+            height: ceil(boundingBox.height)
+        )
     }
 
     func attributedStringWithLineSpacing(_ space: CGFloat) -> NSAttributedString {
