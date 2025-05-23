@@ -46,7 +46,7 @@ class TableViewCellsViewTests: XCTestCase {
     }
 
     func testRemoteImageCell() {
-        snapshot(.remoteImageCell)
+        snapshot(.remoteImageCell, record: true)
     }
 
     func testFavoriteAdCell() {
