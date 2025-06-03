@@ -40,6 +40,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     private lazy var ribbonView = RibbonView(withAutoLayout: true)
     private lazy var imageTextLabel = Label(style: .captionStrong, textColor: .textInvertedStatic, withAutoLayout: true)
     private lazy var subtitleLabelHeightConstraint = subtitleLabel.heightAnchor.constraint(equalToConstant: Self.subtitleHeight * Config.accessibilityMultiplier())
+    private lazy var accessoryLabelHeightConstraint = accessoryLabel.heightAnchor.constraint(equalToConstant: Self.accessoryHeight * Config.accessibilityMultiplier())
 
     private static let titleHeight: CGFloat = 20.0
     private static let titleTopMargin: CGFloat = 3.0
@@ -219,6 +220,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             accessoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             accessoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             accessoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Self.bottomMargin),
+            accessoryLabelHeightConstraint,
 
             iconImageView.heightAnchor.constraint(equalToConstant: Self.iconSize),
             iconImageView.widthAnchor.constraint(equalToConstant: Self.iconSize),
