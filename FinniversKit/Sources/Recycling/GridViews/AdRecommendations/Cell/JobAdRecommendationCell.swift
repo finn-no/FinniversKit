@@ -121,6 +121,7 @@ public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell
 
         containerView.accessibilityLabel = nil
         favoriteButton.accessibilityLabel = nil
+        imageView.accessibilityLabel = nil
     }
 
     private func setup() {
@@ -220,6 +221,7 @@ extension JobAdRecommendationCell: AdRecommendationConfigurable {
 
         containerView.accessibilityLabel = model?.accessibilityLabel
         favoriteButton.accessibilityHint = model?.favoriteButtonAccessibilityData.hint
+        imageView.accessibilityLabel = model?.company
 
         titleLabel.text = model?.title
         companyLabel.text = model?.company
