@@ -313,8 +313,8 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             badgeView.configure(with: badgeViewModel)
         }
 
-        containerView.accessibilityLabel = [model?.title, model?.imageText, model?.subtitle, model?.accessory, model?.sponsoredAdData?.ribbonTitle, model?.badgeViewModel?.title]
-            .compactMap { $0 }.joined(separator: " ")
+        containerView.accessibilityLabel = [model?.title, model?.imageText, model?.companyName, model?.subtitle, model?.accessory, model?.sponsoredAdData?.ribbonTitle, model?.badgeViewModel?.title]
+            .compactMap { $0 }.joined(separator: ", ")
     }
 
     public static func height(for model: StandardAdRecommendationViewModel, width: CGFloat) -> CGFloat {

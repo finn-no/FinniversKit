@@ -204,7 +204,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
             titleToRibbonConstraint.isActive = true
         }
         containerView.accessibilityLabel = [model?.accessibilityLabel, model?.ribbonViewModel?.title]
-            .compactMap { $0 }.joined(separator: " ")
+            .compactMap { $0 }.joined(separator: ", ")
         ribbonView.style = model?.ribbonViewModel?.style ?? .sponsored
         ribbonView.title = model?.ribbonViewModel?.title ?? ""
         ribbonView.isHidden = ribbonView.title.isEmpty
