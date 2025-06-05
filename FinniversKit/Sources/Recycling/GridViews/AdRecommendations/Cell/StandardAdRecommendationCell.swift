@@ -279,9 +279,15 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         iconImageView.image = model?.iconImage?.withRenderingMode(.alwaysTemplate)
         titleLabel.text = model?.title
         subtitleLabel.text = model?.subtitle
-        accessoryLabel.text = model?.accessory
         imageTextLabel.text = model?.imageText
         isFavorite = model?.isFavorite ?? false
+
+        if let accessory = model?.accessory {
+            accessoryLabel.text = model?.accessory
+            accessoryLabelHeightConstraint.constant = Self.accessoryHeight * Config.accessibilityMultiplier()
+        } else {
+            accessoryLabelHeightConstraint.constant = 0
+        }
 
         if let subtitle = model?.subtitle {
             subtitleLabel.text = subtitle
