@@ -283,7 +283,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         isFavorite = model?.isFavorite ?? false
 
         if let accessory = model?.accessory {
-            accessoryLabel.text = model?.accessory
+            accessoryLabel.text = accessory
             accessoryLabelHeightConstraint.constant = Self.accessoryHeight * Config.accessibilityMultiplier()
         } else {
             accessoryLabelHeightConstraint.constant = 0
