@@ -36,6 +36,7 @@ public struct Ad: StandardAdRecommendationViewModel {
         hint: "Tap to change favorite status."
     )
     public var badgeViewModel: BadgeViewModel? = nil
+    public var companyName: String? = nil
 
     public var accessibilityLabel: String {
         var message = title
