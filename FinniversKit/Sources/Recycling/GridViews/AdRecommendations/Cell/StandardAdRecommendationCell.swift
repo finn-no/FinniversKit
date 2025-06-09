@@ -40,6 +40,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     private lazy var ribbonView = RibbonView(withAutoLayout: true)
     private lazy var imageTextLabel = Label(style: .captionStrong, textColor: .textInvertedStatic, withAutoLayout: true)
     private lazy var subtitleLabelHeightConstraint = subtitleLabel.heightAnchor.constraint(equalToConstant: Self.subtitleHeight * Config.accessibilityMultiplier())
+    private lazy var accessoryLabelHeightConstraint = accessoryLabel.heightAnchor.constraint(equalToConstant: Self.accessoryHeight * Config.accessibilityMultiplier())
 
     private static let titleHeight: CGFloat = 20.0
     private static let titleTopMargin: CGFloat = 3.0
@@ -219,6 +220,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             accessoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             accessoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             accessoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Self.bottomMargin),
+            accessoryLabelHeightConstraint,
 
             iconImageView.heightAnchor.constraint(equalToConstant: Self.iconSize),
             iconImageView.widthAnchor.constraint(equalToConstant: Self.iconSize),
@@ -277,9 +279,15 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         iconImageView.image = model?.iconImage?.withRenderingMode(.alwaysTemplate)
         titleLabel.text = model?.title
         subtitleLabel.text = model?.subtitle
-        accessoryLabel.text = model?.accessory
         imageTextLabel.text = model?.imageText
         isFavorite = model?.isFavorite ?? false
+
+        if let accessory = model?.accessory {
+            accessoryLabel.text = accessory
+            accessoryLabelHeightConstraint.constant = Self.accessoryHeight * Config.accessibilityMultiplier()
+        } else {
+            accessoryLabelHeightConstraint.constant = 0
+        }
 
         if let subtitle = model?.subtitle {
             subtitleLabel.text = subtitle
@@ -311,8 +319,8 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             badgeView.configure(with: badgeViewModel)
         }
 
-        containerView.accessibilityLabel = [model?.title, model?.imageText, model?.subtitle, model?.accessory, model?.sponsoredAdData?.ribbonTitle, model?.badgeViewModel?.title]
-            .compactMap { $0 }.joined(separator: " ")
+        containerView.accessibilityLabel = [model?.title, model?.imageText, model?.companyName, model?.subtitle, model?.accessory, model?.sponsoredAdData?.ribbonTitle, model?.badgeViewModel?.title]
+            .compactMap { $0 }.joined(separator: ", ")
     }
 
     public static func height(for model: StandardAdRecommendationViewModel, width: CGFloat) -> CGFloat {

@@ -34,6 +34,7 @@ public protocol StandardAdRecommendationViewModel {
     var favoriteButtonAccessibilityData: FavoriteButtonAccessibilityData { get }
     var hideImageOverlay: Bool { get }
     var badgeViewModel: BadgeViewModel? { get }
+    var companyName: String? { get }
 }
 
 public struct SponsoredAdData {
