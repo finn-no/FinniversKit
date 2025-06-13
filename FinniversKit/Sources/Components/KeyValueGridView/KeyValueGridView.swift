@@ -1,5 +1,5 @@
 import UIKit
-import SwiftUICore
+import SwiftUI
 import Warp
 
 public class KeyValueGridView: UIView {
