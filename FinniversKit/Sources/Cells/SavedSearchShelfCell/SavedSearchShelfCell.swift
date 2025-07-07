@@ -28,7 +28,7 @@ public class FrontPageSavedSearchCell: UICollectionViewCell {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .detailStrong, withAutoLayout: true)
-        label.numberOfLines = 1
+        label.numberOfLines = 2
         label.textAlignment = .center
         return label
     }()
