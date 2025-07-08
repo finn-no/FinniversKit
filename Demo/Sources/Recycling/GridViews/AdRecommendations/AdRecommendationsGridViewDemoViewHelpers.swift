@@ -33,7 +33,8 @@ public struct Ad: StandardAdRecommendationViewModel {
     public var favoriteButtonAccessibilityData: FavoriteButtonAccessibilityData = FavoriteButtonAccessibilityData(
         labelInactiveState: "Save to favorites. Heart icon.",
         labelActiveState: "Remove from favorites. Filled heart icon.",
-        hint: "Tap to change favorite status."
+        hint: "Tap to change favorite status.",
+        iconDescription: "Icon of a heart"
     )
     public var badgeViewModel: BadgeViewModel? = nil
     public var companyName: String? = nil
@@ -79,7 +80,8 @@ struct JobAd: JobAdRecommendationViewModel {
     var favoriteButtonAccessibilityData: FavoriteButtonAccessibilityData = FavoriteButtonAccessibilityData(
         labelInactiveState: "Save to favorites. Heart icon.",
         labelActiveState: "Remove from favorites. Filled heart icon.",
-        hint: "Tap to change favorite status."
+        hint: "Tap to change favorite status.",
+        iconDescription: "Icon of a heart"
     )
 }
 
