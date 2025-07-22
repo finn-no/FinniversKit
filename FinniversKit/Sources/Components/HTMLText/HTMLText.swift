@@ -87,6 +87,8 @@ struct HTMLText_Previews: PreviewProvider {
         Group {
             HTMLText("<p>This is <i>a paragraph</i>.</p><p>And this is another one.</p>")
 
+            HTMLText("<ul><li>List element one</li><li>List element two</li><li>List element three</li></ul>")
+
             HTMLText("This is <b>bold</b> stuff.")
                 .font(.largeTitle)
 
