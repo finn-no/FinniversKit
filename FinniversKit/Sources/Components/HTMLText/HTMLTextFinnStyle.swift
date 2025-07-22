@@ -21,6 +21,8 @@ extension HTMLStringSwiftUIStyleTranslator {
                 style.fontWeight = .bold
             case .del, .s:
                 style.strikethrough = true
+            case .p:
+                break
             case .i:
                 style.italic = true
             case .span:
@@ -54,6 +56,8 @@ extension HTMLStringUIKitStyleTranslator {
                 style.fontWeight = .bold
             case .del, .s:
                 style.strikethrough = true
+            case .p:
+                break
             case .span:
                 spanMapper(attributes, &style)
             case .u:

@@ -85,6 +85,8 @@ extension Text {
 struct HTMLText_Previews: PreviewProvider {
     static var previews: some View {
         Group {
+            HTMLText("<p>This is <i>a paragraph</i>.</p><p>And this is another one.</p>")
+
             HTMLText("This is <b>bold</b> stuff.")
                 .font(.largeTitle)
 

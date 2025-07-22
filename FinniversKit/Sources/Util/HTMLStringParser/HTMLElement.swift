@@ -27,6 +27,7 @@ extension HTMLElement {
     public static var b: Self { .init("b") }
     public static var del: Self { .init("del") }
     public static var i: Self { .init("i") }
+    public static var p: Self { .init("p") }
     public static var s: Self { .init("s") }
     public static var span: Self { .init("span") }
     public static var strong: Self { .init("strong") }

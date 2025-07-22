@@ -53,6 +53,10 @@ public final class HTMLStringSwiftUIStyleTranslator: HTMLStringParserTranslator 
                 case "br":
                     styledText.append(StyledText(text: "\n", style: styleStack.currentStyle))
                     continue
+                case "p":
+                    if !styledText.isEmpty {
+                        styledText.append(StyledText(text: "\n", style: styleStack.currentStyle))
+                    }
                 case "a":
                     if let urlString = attributes.first(where: { $0.name.lowercased() == "href"})?.value,
                        let url = URL(string: urlString) {
