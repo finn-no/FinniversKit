@@ -191,7 +191,7 @@ private extension SettingDetailsView {
         addSubview(shadowView)
         addSubview(primaryButton)
 
-        scrollView.fillInSuperview()
+        scrollView.fillInSuperviewSafeArea()
 
         NSLayoutConstraint.activate([
             doneButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -Warp.Spacing.spacing200),
@@ -218,8 +218,8 @@ private extension SettingDetailsView {
             shadowView.topAnchor.constraint(equalTo: primaryButton.topAnchor, constant: -Warp.Spacing.spacing200),
             shadowView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
-            primaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
+            primaryButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Warp.Spacing.spacing200),
+            primaryButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -Warp.Spacing.spacing200),
             primaryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -bottomInset),
         ])
     }
