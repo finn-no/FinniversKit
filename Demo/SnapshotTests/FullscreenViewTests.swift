@@ -64,7 +64,7 @@ class FullscreenViewTests: XCTestCase {
     }
 
     func testSettingDetails() {
-        snapshot(.settingDetails, record: true)
+        snapshot(.settingDetails)
     }
 
     func testFavoriteAdActionView() {
