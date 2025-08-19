@@ -57,6 +57,15 @@ class LoginEntryDialogueView: UIView {
         return button
     }()
 
+    private lazy var proLoginButton: UIButton = {
+        let button = Button(style: .flat)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(handleProLoginButtonTap), for: .touchUpInside)
+        button.titleLabel?.numberOfLines = 0
+
+        return button
+    }()
+
     private lazy var vendLogoView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFit
@@ -84,6 +93,11 @@ class LoginEntryDialogueView: UIView {
         registerButton.setTitle(model.registerButtonTitle, for: .normal)
         logoImageView.image = model.icon
         vendLogoView.image = model.vendLogo
+        if model.includeProLoginButton {
+            proLoginButton.setTitle(model.proLoginButtonTitle, for: .normal)
+        } else {
+            proLoginButton.isHidden = true
+        }
     }
 
     // MARK: - Private methods
@@ -99,6 +113,7 @@ class LoginEntryDialogueView: UIView {
         addSubview(detailLabel)
         addSubview(loginButton)
         addSubview(registerButton)
+        addSubview(proLoginButton)
         addSubview(vendLogoView)
 
         let margins = layoutMarginsGuide
@@ -124,7 +139,11 @@ class LoginEntryDialogueView: UIView {
             registerButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
             registerButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
 
-            vendLogoView.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: Warp.Spacing.spacing400),
+            proLoginButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: Warp.Spacing.spacing100),
+            proLoginButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+            proLoginButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+
+            vendLogoView.topAnchor.constraint(equalTo: proLoginButton.bottomAnchor, constant: Warp.Spacing.spacing400),
             vendLogoView.centerXAnchor.constraint(equalTo: centerXAnchor),
             vendLogoView.heightAnchor.constraint(equalToConstant: 60),
             vendLogoView.widthAnchor.constraint(lessThanOrEqualToConstant: 200),
@@ -138,5 +157,9 @@ class LoginEntryDialogueView: UIView {
 
     @objc private func handleRegisterButtonTap() {
         delegate?.loginEntryViewDidSelectRegisterButton()
+    }
+
+    @objc private func handleProLoginButtonTap() {
+        delegate?.loginEntryViewDidSelectProLoginButton()
     }
 }

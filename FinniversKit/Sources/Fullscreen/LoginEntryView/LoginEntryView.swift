@@ -9,7 +9,9 @@ public protocol LoginEntryViewModel {
     var title: String { get }
     var detail: String { get }
     var includeSettings: Bool { get }
+    var includeProLoginButton: Bool { get }
     var loginButtonTitle: String { get }
+    var proLoginButtonTitle: String { get }
     var registerButtonTitle: String { get }
     var icon: UIImage { get }
     var vendLogo: UIImage { get }
@@ -19,6 +21,7 @@ public protocol LoginEntryViewDelegate: AnyObject {
     func loginEntryViewDidSelectLoginButton()
     func loginEntryViewDidSelectRegisterButton()
     func loginEntryViewDidSelectSettingsButton()
+    func loginEntryViewDidSelectProLoginButton()
 }
 
 public class LoginEntryView: UIView {

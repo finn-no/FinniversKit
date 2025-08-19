@@ -7,17 +7,20 @@ import FinniversKit
 struct LoginEntryDemoData: LoginEntryViewModel {
     let title: String
     let detail: String
+    let includeProLoginButton: Bool
     let includeSettings: Bool
     let loginButtonTitle: String = "Logg inn"
+    let proLoginButtonTitle: String = "For bedrifter"
     let registerButtonTitle: String = "Opprett en konto"
     let icon = UIImage(named: .finnLogo)
     let vendLogo = UIImage(named: .finnVendLogo)
 
 
-    init(title: String, detail: String, includeSettings: Bool = false) {
+    init(title: String, detail: String, includeSettings: Bool = false, includeProLoginButton: Bool = false) {
         self.title = title
         self.detail = detail
         self.includeSettings = includeSettings
+        self.includeProLoginButton = includeProLoginButton
     }
 }
 
@@ -58,7 +61,8 @@ extension LoginEntryDemoData {
                 return LoginEntryDemoData(
                     title: "Mulighetenes\nmarked",
                     detail: "Logg inn for å kjøpe, selge eller drømme deg bort i biler, hus eller tingene på torget.",
-                    includeSettings: true
+                    includeSettings: true,
+                    includeProLoginButton: true
                 )
             }
         }
