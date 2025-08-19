@@ -20,7 +20,7 @@ public final class IconCollectionView: UIView {
 
     // MARK: - Private properties
 
-    private var alignment: Alignment
+    private let alignment: Alignment
     private let horisontalPadding: CGFloat
     private var viewModels = [IconCollectionViewModel]()
 
