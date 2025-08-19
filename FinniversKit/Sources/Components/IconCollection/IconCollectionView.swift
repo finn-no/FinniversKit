@@ -20,7 +20,8 @@ public final class IconCollectionView: UIView {
 
     // MARK: - Private properties
 
-    private var alignment: Alignment
+    private let alignment: Alignment
+    private let horisontalPadding: CGFloat
     private var viewModels = [IconCollectionViewModel]()
 
     private lazy var collectionView: UICollectionView = {
@@ -46,7 +47,7 @@ public final class IconCollectionView: UIView {
     private lazy var margins: UIEdgeInsets = {
         switch alignment {
         case .horizontal:
-            return UIEdgeInsets(vertical: Warp.Spacing.spacing200, horizontal: Warp.Spacing.spacing50)
+            return UIEdgeInsets(vertical: Warp.Spacing.spacing200, horizontal: horisontalPadding)
         case .vertical:
             return .zero
         }
@@ -54,8 +55,9 @@ public final class IconCollectionView: UIView {
 
     // MARK: - Init
 
-    public init(alignment: Alignment = .vertical) {
+    public init(alignment: Alignment = .vertical, horisontalPadding: CGFloat = Warp.Spacing.spacing50) {
         self.alignment = alignment
+        self.horisontalPadding = horisontalPadding
         super.init(frame: .zero)
         setup()
     }
