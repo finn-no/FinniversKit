@@ -6,10 +6,9 @@ import UIKit
 import Warp
 
 public class HorizontalIconCollectionViewCell: UICollectionViewCell {
-    //    private static let titleSideMargin = Warp.Spacing.spacing100
-    private static let leadingInset: CGFloat = 0                              // was spacing100; set to 0 to remove left padding
-    private static let trailingInset: CGFloat = Warp.Spacing.spacing100       // right edge inset
-    private static let iconToTextSpacing: CGFloat = Warp.Spacing.spacing100   // gap between icon and text
+    private static let leadingInset: CGFloat = 0
+    private static let trailingInset: CGFloat = Warp.Spacing.spacing100
+    private static let iconToTextSpacing: CGFloat = Warp.Spacing.spacing100
     private static let verticalPadding: CGFloat = Warp.Spacing.spacing50
     private static let titleStyle = Warp.Typography.body
     private static let bodyStyle = Warp.Typography.bodyStrong
@@ -87,36 +86,23 @@ public class HorizontalIconCollectionViewCell: UICollectionViewCell {
     private func setup() {
         isAccessibilityElement = true
 
-        preservesSuperviewLayoutMargins = false
-        contentView.preservesSuperviewLayoutMargins = false
-        insetsLayoutMarginsFromSafeArea = false
-        contentView.insetsLayoutMarginsFromSafeArea = false
-        contentView.layoutMargins = .zero
-
         contentView.addSubview(iconImageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(bodyLabel)
 
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
-                                                   constant: Self.leadingInset),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Self.leadingInset),
 
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor,
-                                            constant: Self.verticalPadding),
-            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor,
-                                                constant: Self.iconToTextSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
-                                                 constant: -Self.trailingInset),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Self.verticalPadding),
+            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: Self.iconToTextSpacing),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Self.trailingInset),
 
             bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            bodyLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor,
-                                               constant: Self.iconToTextSpacing),
-            bodyLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
-                                                constant: -Self.trailingInset),
+            bodyLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: Self.iconToTextSpacing),
+            bodyLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Self.trailingInset),
 
-            bodyLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor,
-                                              constant: -Self.verticalPadding)
+            bodyLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -Self.verticalPadding)
         ])
     }
 }
