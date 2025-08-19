@@ -139,7 +139,7 @@ class LoginEntryDialogueView: UIView {
             registerButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
             registerButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
 
-            proLoginButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: Warp.Spacing.spacing100),
+            proLoginButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: Warp.Spacing.spacing25),
             proLoginButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
             proLoginButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
 
