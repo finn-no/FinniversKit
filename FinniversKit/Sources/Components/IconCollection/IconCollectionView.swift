@@ -55,7 +55,7 @@ public final class IconCollectionView: UIView {
 
     // MARK: - Init
 
-    public init(alignment: Alignment = .vertical, horisontalPadding: CGFloat) {
+    public init(alignment: Alignment = .vertical, horisontalPadding: CGFloat = Warp.Spacing.spacing50) {
         self.alignment = alignment
         self.horisontalPadding = horisontalPadding
         super.init(frame: .zero)
