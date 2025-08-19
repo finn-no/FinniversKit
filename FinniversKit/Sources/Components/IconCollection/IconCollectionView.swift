@@ -21,7 +21,7 @@ public final class IconCollectionView: UIView {
     // MARK: - Private properties
 
     private var alignment: Alignment
-    private var horisontalPadding: CGFloat
+    private let horisontalPadding: CGFloat
     private var viewModels = [IconCollectionViewModel]()
 
     private lazy var collectionView: UICollectionView = {
