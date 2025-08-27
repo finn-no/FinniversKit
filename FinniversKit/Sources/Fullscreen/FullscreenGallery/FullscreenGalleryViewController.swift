@@ -37,6 +37,13 @@ public class FullscreenGalleryViewController: UIPageViewController {
     private var previewViewWasVisibleBeforePanning = false
     private var hasPerformedInitialPreviewScroll = false
 
+    public var makeAdContainerView: ((_ containerWidth: CGFloat) -> UIView)?
+    private var hasAdPage: Bool { makeAdContainerView != nil }
+
+    public var isShowingAdPage: Bool {
+        return viewControllers?.first is FullscreenAdViewController
+    }
+
     private var galleryTransitioningController: FullscreenGalleryTransitioningController? {
         return transitioningDelegate as? FullscreenGalleryTransitioningController
     }
@@ -181,6 +188,20 @@ public class FullscreenGalleryViewController: UIPageViewController {
             }
         }
     }
+    
+    public func setAdVisible(_ visible: Bool) {
+        overlayView.additionalTrailingPages = visible ? 1 : 0
+        updatePagerForCurrentPage()
+    }
+    
+    private func updatePagerForCurrentPage() {
+        if isShowingAdPage {
+            overlayView.setCounterForAdPage(totalImages: viewModel.imageUrls.count)
+        } else if let idx = currentImageViewController()?.imageIndex {
+            // Re-drive the overlay so it recomputes "(x / total)" with the new total
+            overlayView.scrollToImage(atIndex: idx, animated: false)
+        }
+    }
 
     private func setThumbnailPreviewsVisible(_ visible: Bool) {
         guard visible != overlayView.previewViewVisible else {
@@ -203,11 +224,30 @@ public class FullscreenGalleryViewController: UIPageViewController {
 // MARK: - UIPageViewControllerDataSource
 extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        if viewController is FullscreenAdViewController {
+            return imageViewController(forIndex: viewModel.imageUrls.count - 1)
+        }
+        
         return imageViewController(forIndex: currentImageIndex - 1)
     }
 
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return imageViewController(forIndex: currentImageIndex + 1)
+        if viewController is FullscreenAdViewController {
+            return imageViewController(forIndex: 0)
+        }
+
+        if let current = viewController as? FullscreenImageViewController {
+            if hasAdPage, current.imageIndex == viewModel.imageUrls.count - 1 {
+                return makeAdViewController()
+            }
+            return imageViewController(forIndex: current.imageIndex + 1)
+        }
+        return nil
+    }
+
+    private func makeAdViewController() -> UIViewController? {
+        guard let factory = makeAdContainerView else { return nil }
+        return FullscreenAdViewController(makeView: factory)
     }
 
     private func imageViewController(forIndex index: Int) -> FullscreenImageViewController? {
@@ -317,7 +357,7 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate
     func fullscreenImageViewControllerDidEndPan(_: FullscreenImageViewController, withTranslation translation: CGPoint, velocity: CGPoint) -> Bool {
         if translation.length >= 200 || velocity.length >= 100 {
             galleryTransitioningController?.dismissVelocity = velocity
-            dismiss(animated: true)
+            dismiss(animated: !isShowingAdPage)
             return false
         } else {
             UIView.animate(withDuration: 0.3, animations: {
@@ -432,3 +472,35 @@ extension FullscreenGalleryViewController: UIGestureRecognizerDelegate {
         return true
     }
 }
+
+private final class FullscreenAdViewController: UIViewController {
+    private let makeView: (CGFloat) -> UIView
+    private var mounted = false
+
+    init(makeView: @escaping (CGFloat) -> UIView) {
+        self.makeView = makeView
+        super.init(nibName: nil, bundle: nil)
+        view.backgroundColor = .black
+    }
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        print("ANKAN -> FullscreenAdViewController didLayoutSubviews, width=\(view.bounds.width)")
+        guard !mounted else { return }
+        mounted = true
+        print("ANKAN -> mounting ad container")
+        let adContainer = makeView(view.bounds.width)
+        adContainer.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(adContainer)
+
+        NSLayoutConstraint.activate([
+            adContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            adContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            adContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -Warp.Spacing.spacing100),
+            adContainer.topAnchor.constraint(equalTo: view.topAnchor, constant: Warp.Spacing.spacing400),
+            adContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        ])
+    }
+}
+
