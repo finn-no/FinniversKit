@@ -124,8 +124,8 @@ class FavoriteAdsListTableHeader: UIView {
 
         NSLayoutConstraint.activate([
             contentStackView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200),
-            contentStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing200),
-            contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
+            contentStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Warp.Spacing.spacing200),
+            contentStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -Warp.Spacing.spacing200),
             contentStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             sortingView.leadingAnchor.constraint(equalTo: sortingContainerView.leadingAnchor),

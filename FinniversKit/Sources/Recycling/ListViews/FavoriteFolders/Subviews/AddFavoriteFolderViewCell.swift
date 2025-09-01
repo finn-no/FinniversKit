@@ -34,8 +34,8 @@ final class AddFavoriteFolderViewCell: BasicTableViewCell {
         contentView.addSubview(button)
 
         NSLayoutConstraint.activate([
-            button.leadingAnchor.constraint(equalTo: leadingAnchor),
-            button.trailingAnchor.constraint(equalTo: trailingAnchor),
+            button.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            button.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             button.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
 
