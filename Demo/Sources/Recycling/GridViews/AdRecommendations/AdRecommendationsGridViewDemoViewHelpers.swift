@@ -34,7 +34,8 @@ public struct Ad: StandardAdRecommendationViewModel {
         labelInactiveState: "Save to favorites. Heart icon.",
         labelActiveState: "Remove from favorites. Filled heart icon.",
         hint: "Tap to change favorite status.",
-        iconDescription: "Icon of a heart"
+        iconDescriptionInactiveState: "Icon of an outlined heart",
+        iconDescriptionActiveState: "Icon of a filled heart"
     )
     public var badgeViewModel: BadgeViewModel? = nil
     public var companyName: String? = nil
@@ -81,7 +82,8 @@ struct JobAd: JobAdRecommendationViewModel {
         labelInactiveState: "Save to favorites. Heart icon.",
         labelActiveState: "Remove from favorites. Filled heart icon.",
         hint: "Tap to change favorite status.",
-        iconDescription: "Icon of a heart"
+        iconDescriptionInactiveState: "Icon of an outlined heart",
+        iconDescriptionActiveState: "Icon of a filled heart"
     )
 }
 
