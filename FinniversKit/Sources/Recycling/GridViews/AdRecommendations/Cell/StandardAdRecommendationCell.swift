@@ -327,7 +327,9 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             model?.subtitle,
             model?.accessory,
             model?.sponsoredAdData?.ribbonTitle,
-            model?.favoriteButtonAccessibilityData.iconDescription
+
+            // Favorite button accessibility label
+            isFavorite ? model?.favoriteButtonAccessibilityData.iconDescriptionActiveState : model?.favoriteButtonAccessibilityData.iconDescriptionInactiveState
         ]
             .compactMap { $0 }.joined(separator: ", ")
     }
