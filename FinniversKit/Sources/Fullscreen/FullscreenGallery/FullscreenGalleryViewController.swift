@@ -154,6 +154,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
     // MARK: - View interactions
 
     @objc private func onSingleTap() {
+        guard !isShowingAdPage else { return }
         let visible = !overlayView.previewViewVisible
 
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: [], animations: {
@@ -228,7 +229,13 @@ extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
             return imageViewController(forIndex: viewModel.imageUrls.count - 1)
         }
         
-        return imageViewController(forIndex: currentImageIndex - 1)
+        if let current = viewController as? FullscreenImageViewController {
+            if hasAdPage, current.imageIndex == 0 {
+                return makeAdViewController()
+            }
+            return imageViewController(forIndex: current.imageIndex - 1)
+        }
+        return nil
     }
 
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
@@ -283,6 +290,13 @@ extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
 // MARK: - UIPageViewControllerDelegate
 extension FullscreenGalleryViewController: UIPageViewControllerDelegate {
     public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        // If we’re now showing the ad page, hide the mini gallery and update the pager.
+        if isShowingAdPage {
+            setThumbnailPreviewsVisible(false)
+            updatePagerForCurrentPage()
+            return
+        }
+
         guard let currentVC = pageViewController.viewControllers?.first as? FullscreenImageViewController else {
             return
         }
@@ -482,14 +496,15 @@ private final class FullscreenAdViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .black
     }
-    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        print("ANKAN -> FullscreenAdViewController didLayoutSubviews, width=\(view.bounds.width)")
         guard !mounted else { return }
         mounted = true
-        print("ANKAN -> mounting ad container")
         let adContainer = makeView(view.bounds.width)
         adContainer.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(adContainer)
