@@ -14,14 +14,15 @@ public class FrontPageSavedSearchesView: UIView {
 
     // MARK: - Internal properties
 
-    public static let topPadding: CGFloat = Warp.Spacing.spacing200
-    static let height: CGFloat = headerHeight + cellHeight + bottomPadding
+    // Arbitrary spacing values to align with previous layout
+    public static let verticalPadding: CGFloat = Warp.Spacing.spacing200 + Warp.Spacing.spacing150
+    static var height: CGFloat = headerHeight + cellHeight + Warp.Spacing.spacing100
 
     // MARK: - Private properties
 
     private static let headerHeight: CGFloat = 44
     private static let cellHeight: CGFloat = 100
-    private static let bottomPadding: CGFloat = Warp.Spacing.spacing100
+    private var heightConstraint: NSLayoutConstraint?
 
     private typealias Datasource = UICollectionViewDiffableDataSource<Section, AnyHashable>
     private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
@@ -91,11 +92,15 @@ public class FrontPageSavedSearchesView: UIView {
 // MARK: - Public methods
 
 public extension FrontPageSavedSearchesView {
-    func configure(with savedSearches: [FrontPageSavedSearchViewModel]) {
+    func configure(with savedSearches: [FrontPageSavedSearchViewModel], completion: (() -> Void)? = nil) {
         var snapshot = Snapshot()
         snapshot.appendSections([.savedSearch])
         snapshot.appendItems(savedSearches, toSection: .savedSearch)
-        collectionViewDatasource.apply(snapshot, animatingDifferences: true)
+        collectionViewDatasource.apply(snapshot, animatingDifferences: true) { [weak self] in
+            DispatchQueue.main.async {
+                self?.updateHeight(completion: completion)
+            }
+        }
     }
 
     func scrollToSavedSearch(atIndex index: Int) {
@@ -109,11 +114,26 @@ public extension FrontPageSavedSearchesView {
 private extension FrontPageSavedSearchesView {
     func setup() {
         addSubview(collectionView)
-        heightAnchor.constraint(equalToConstant: Self.height).isActive = true
+        heightConstraint = heightAnchor.constraint(equalToConstant: Self.height)
+        heightConstraint?.isActive = true
 
         collectionView.backgroundColor = .background
         collectionView.fillInSuperview()
         collectionViewDatasource = makeDatasource()
+    }
+
+    private func updateHeight(completion: (() -> Void)? = nil) {
+        let newHeight = collectionView.collectionViewLayout.collectionViewContentSize.height
+
+        guard newHeight > 0 else {
+            completion?()
+            return
+        }
+
+        heightConstraint?.constant = newHeight
+        Self.height = newHeight
+
+        completion?()
     }
 }
 
@@ -121,22 +141,40 @@ private extension FrontPageSavedSearchesView {
 
 private extension FrontPageSavedSearchesView {
     private var horizontalLayoutSection: NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(Self.cellHeight))
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(Self.cellHeight)
+        )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
         //Groups
-        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(FrontPageSavedSearchCell.width), heightDimension: .absolute(Self.cellHeight))
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .absolute(FrontPageSavedSearchCell.width),
+            heightDimension: .estimated(Self.cellHeight)
+        )
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
 
         //Sections
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: Warp.Spacing.spacing200, bottom: 0, trailing: Warp.Spacing.spacing200)
+        section.contentInsets = NSDirectionalEdgeInsets(
+            top: 0,
+            leading: Warp.Spacing.spacing200,
+            bottom: 0,
+            trailing: Warp.Spacing.spacing200
+        )
         section.orthogonalScrollingBehavior = .continuous
         section.interGroupSpacing = Warp.Spacing.spacing100 + Warp.Spacing.spacing50
 
         // Header
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(Self.headerHeight))
-        let headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: FrontPageHeaderView.reuseIdentifier, alignment: .top)
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(Self.headerHeight)
+        )
+        let headerElement = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: FrontPageHeaderView.reuseIdentifier,
+            alignment: .top
+        )
         section.boundarySupplementaryItems = [headerElement]
 
         return section

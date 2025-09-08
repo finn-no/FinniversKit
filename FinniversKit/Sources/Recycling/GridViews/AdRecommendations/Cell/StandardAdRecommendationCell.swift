@@ -319,7 +319,18 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             badgeView.configure(with: badgeViewModel)
         }
 
-        containerView.accessibilityLabel = [model?.title, model?.imageText, model?.companyName, model?.subtitle, model?.accessory, model?.sponsoredAdData?.ribbonTitle, model?.badgeViewModel?.title]
+        containerView.accessibilityLabel = [
+            model?.title,
+            model?.badgeViewModel?.title,
+            model?.imageText,
+            model?.companyName,
+            model?.subtitle,
+            model?.accessory,
+            model?.sponsoredAdData?.ribbonTitle,
+
+            // Favorite button accessibility label
+            isFavorite ? model?.favoriteButtonAccessibilityData.iconDescriptionActiveState : model?.favoriteButtonAccessibilityData.iconDescriptionInactiveState
+        ]
             .compactMap { $0 }.joined(separator: ", ")
     }
 
