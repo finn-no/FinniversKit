@@ -8,15 +8,21 @@ public struct FavoriteButtonAccessibilityData: Hashable {
     let labelInactiveState: String
     let labelActiveState: String
     let hint: String
+    let iconDescriptionInactiveState: String
+    let iconDescriptionActiveState: String
 
     public init(
         labelInactiveState: String,
         labelActiveState: String,
-        hint: String
+        hint: String,
+        iconDescriptionInactiveState: String,
+        iconDescriptionActiveState: String
     ) {
         self.labelInactiveState = labelInactiveState
         self.labelActiveState = labelActiveState
         self.hint = hint
+        self.iconDescriptionInactiveState = iconDescriptionInactiveState
+        self.iconDescriptionActiveState = iconDescriptionActiveState
     }
 }
 
