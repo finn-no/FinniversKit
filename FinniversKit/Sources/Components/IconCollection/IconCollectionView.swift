@@ -99,7 +99,10 @@ public final class IconCollectionView: UIView {
         }
 
         guard let firstItem = cellSizes.first else { return targetSize }
-        let numberOfCellsInRow = Int(floor(targetWidth / firstItem.width))
+
+        // Guard against division by zero and ensure we have at least 1 cell per row
+        guard firstItem.width > 0 else { return targetSize }
+        let numberOfCellsInRow = max(1, Int(floor(targetWidth / firstItem.width)))
         let cellRows = cellSizes.chunked(into: numberOfCellsInRow)
         let totalHeight = cellRows.compactMap { $0.max(by: { $0.height < $1.height }) }.reduce(0, { $0 + $1.height })
 
