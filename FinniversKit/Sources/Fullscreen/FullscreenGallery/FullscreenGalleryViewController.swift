@@ -235,7 +235,7 @@ extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
             }
             return imageViewController(forIndex: current.imageIndex - 1)
         }
-        return nil
+        return imageViewController(forIndex: currentImageIndex - 1)
     }
 
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
@@ -249,7 +249,7 @@ extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
             }
             return imageViewController(forIndex: current.imageIndex + 1)
         }
-        return nil
+        return imageViewController(forIndex: currentImageIndex + 1)
     }
 
     private func makeAdViewController() -> UIViewController? {
