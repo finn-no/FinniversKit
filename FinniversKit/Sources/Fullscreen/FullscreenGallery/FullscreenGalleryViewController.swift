@@ -37,6 +37,13 @@ public class FullscreenGalleryViewController: UIPageViewController {
     private var previewViewWasVisibleBeforePanning = false
     private var hasPerformedInitialPreviewScroll = false
 
+    public var makeAdContainerView: ((_ containerWidth: CGFloat) -> UIView)?
+    private var hasAdPage: Bool { makeAdContainerView != nil }
+
+    public var isShowingAdPage: Bool {
+        return viewControllers?.first is FullscreenAdViewController
+    }
+
     private var galleryTransitioningController: FullscreenGalleryTransitioningController? {
         return transitioningDelegate as? FullscreenGalleryTransitioningController
     }
@@ -147,6 +154,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
     // MARK: - View interactions
 
     @objc private func onSingleTap() {
+        guard !isShowingAdPage else { return }
         let visible = !overlayView.previewViewVisible
 
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: [], animations: {
@@ -181,6 +189,20 @@ public class FullscreenGalleryViewController: UIPageViewController {
             }
         }
     }
+    
+    public func setAdVisible(_ visible: Bool) {
+        overlayView.additionalTrailingPages = visible ? 1 : 0
+        updatePagerForCurrentPage()
+    }
+    
+    private func updatePagerForCurrentPage() {
+        if isShowingAdPage {
+            overlayView.setCounterForAdPage(totalImages: viewModel.imageUrls.count)
+        } else if let idx = currentImageViewController()?.imageIndex {
+            // Re-drive the overlay so it recomputes "(x / total)" with the new total
+            overlayView.scrollToImage(atIndex: idx, animated: false)
+        }
+    }
 
     private func setThumbnailPreviewsVisible(_ visible: Bool) {
         guard visible != overlayView.previewViewVisible else {
@@ -203,11 +225,36 @@ public class FullscreenGalleryViewController: UIPageViewController {
 // MARK: - UIPageViewControllerDataSource
 extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        if viewController is FullscreenAdViewController {
+            return imageViewController(forIndex: viewModel.imageUrls.count - 1)
+        }
+        
+        if let current = viewController as? FullscreenImageViewController {
+            if hasAdPage, current.imageIndex == 0 {
+                return makeAdViewController()
+            }
+            return imageViewController(forIndex: current.imageIndex - 1)
+        }
         return imageViewController(forIndex: currentImageIndex - 1)
     }
 
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        if viewController is FullscreenAdViewController {
+            return imageViewController(forIndex: 0)
+        }
+
+        if let current = viewController as? FullscreenImageViewController {
+            if hasAdPage, current.imageIndex == viewModel.imageUrls.count - 1 {
+                return makeAdViewController()
+            }
+            return imageViewController(forIndex: current.imageIndex + 1)
+        }
         return imageViewController(forIndex: currentImageIndex + 1)
+    }
+
+    private func makeAdViewController() -> UIViewController? {
+        guard let factory = makeAdContainerView else { return nil }
+        return FullscreenAdViewController(makeView: factory)
     }
 
     private func imageViewController(forIndex index: Int) -> FullscreenImageViewController? {
@@ -243,6 +290,13 @@ extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
 // MARK: - UIPageViewControllerDelegate
 extension FullscreenGalleryViewController: UIPageViewControllerDelegate {
     public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        // If we’re now showing the ad page, hide the mini gallery and update the pager.
+        if isShowingAdPage {
+            setThumbnailPreviewsVisible(false)
+            updatePagerForCurrentPage()
+            return
+        }
+
         guard let currentVC = pageViewController.viewControllers?.first as? FullscreenImageViewController else {
             return
         }
@@ -317,7 +371,7 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate
     func fullscreenImageViewControllerDidEndPan(_: FullscreenImageViewController, withTranslation translation: CGPoint, velocity: CGPoint) -> Bool {
         if translation.length >= 200 || velocity.length >= 100 {
             galleryTransitioningController?.dismissVelocity = velocity
-            dismiss(animated: true)
+            dismiss(animated: !isShowingAdPage)
             return false
         } else {
             UIView.animate(withDuration: 0.3, animations: {

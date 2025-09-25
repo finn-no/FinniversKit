@@ -39,10 +39,15 @@ class FullscreenGalleryOverlayView: UIView {
         }
     }
 
+    var additionalTrailingPages: Int = 0 {
+        didSet { setCaptionLabel(index: currentIndex) }
+    }
+
     // MARK: - Private properties
 
     private static let dismissButtonTappableSize: CGFloat = 55.0
     private static let captionFadeDuration = 0.2
+    private var currentIndex: Int = 0
 
     // MARK: - UI properties
 
@@ -135,9 +140,21 @@ class FullscreenGalleryOverlayView: UIView {
     // MARK: - Public methods
 
     func scrollToImage(atIndex index: Int, animated: Bool) {
+        currentIndex = index
         previewView.scrollToItem(atIndex: index, animated: animated)
         previewView.addBorderToItem(atIndex: index)
         setCaptionLabel(index: index)
+    }
+
+    func setCounterForAdPage(totalImages: Int) {
+        let total = totalImages + additionalTrailingPages
+        let text = " (\(total)/\(total))"
+        UIView.transition(with: captionLabel,
+                          duration: FullscreenGalleryOverlayView.captionFadeDuration,
+                          options: .transitionCrossDissolve,
+                          animations: { [weak self] in
+            self?.captionLabel.text = text
+        })
     }
 
     func setThumbnailPreviewsVisible(_ visible: Bool) {
@@ -180,9 +197,12 @@ class FullscreenGalleryOverlayView: UIView {
 
     private func setCaptionLabel(index: Int) {
         var caption = viewModel?.imageCaptions[safe: index] ?? ""
-
-        if let count = viewModel?.imageUrls.count {
-            caption += " (\(index + 1)/\(count))"
+        
+        let base = viewModel?.imageUrls.count ?? 0
+        let total = base + additionalTrailingPages
+        
+        if total > 0 {
+            caption += " (\(index + 1)/\(total))"
         }
 
         UIView.transition(with: captionLabel, duration: FullscreenGalleryOverlayView.captionFadeDuration, options: .transitionCrossDissolve, animations: { [weak self] in
@@ -233,6 +253,7 @@ extension FullscreenGalleryOverlayView: GalleryPreviewViewDataSource {
 // MARK: - GalleryPreviewViewDelegate
 extension FullscreenGalleryOverlayView: GalleryPreviewViewDelegate {
     func galleryPreviewView(_ previewView: GalleryPreviewView, selectedImageAtIndex index: Int) {
+        currentIndex = index
         delegate?.fullscreenGalleryOverlayView(self, selectedImageAtIndex: index)
         setCaptionLabel(index: index)
         previewView.scrollToItem(atIndex: index, animated: true)
