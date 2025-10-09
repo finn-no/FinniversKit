@@ -15,6 +15,19 @@ public protocol FullscreenGalleryViewControllerDataSource: AnyObject {
                                          imageForUrlString urlString: String,
                                          width: CGFloat,
                                          completionHandler handler: @escaping (String, UIImage?, Error?) -> Void)
+
+    func fullscreenGalleryViewControllerMakeBanner(
+        _ controller: FullscreenGalleryViewController,
+        itemCount: Int
+    ) -> UIViewController?
+}
+
+/// With this extension we avoid having to implement this method in Real Estate and Jobs seeing as it only serves Mobility / Recommerce.
+public extension FullscreenGalleryViewControllerDataSource {
+    func fullscreenGalleryViewControllerMakeBanner(
+        _ controller: FullscreenGalleryViewController,
+        itemCount: Int
+    ) -> UIViewController? { nil }
 }
 
 public class FullscreenGalleryViewController: UIPageViewController {
@@ -37,11 +50,14 @@ public class FullscreenGalleryViewController: UIPageViewController {
     private var previewViewWasVisibleBeforePanning = false
     private var hasPerformedInitialPreviewScroll = false
 
-    public var makeAdContainerView: ((_ containerWidth: CGFloat) -> UIView)?
-    private var hasAdPage: Bool { makeAdContainerView != nil }
+    private lazy var adViewController: UIViewController? = {
+        galleryDataSource?.fullscreenGalleryViewControllerMakeBanner(self, itemCount: viewModel.imageUrls.count)
+    }()
+
+    private var hasAdPage: Bool { adViewController != nil }
 
     public var isShowingAdPage: Bool {
-        return viewControllers?.first is FullscreenAdViewController
+        return viewControllers?.first === adViewController
     }
 
     private var galleryTransitioningController: FullscreenGalleryTransitioningController? {
@@ -224,37 +240,32 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
 // MARK: - UIPageViewControllerDataSource
 extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
-    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        if viewController is FullscreenAdViewController {
+    public func pageViewController(_ pageViewController: UIPageViewController,
+                                   viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        if viewController === adViewController {
             return imageViewController(forIndex: viewModel.imageUrls.count - 1)
         }
-        
         if let current = viewController as? FullscreenImageViewController {
             if hasAdPage, current.imageIndex == 0 {
-                return makeAdViewController()
+                return adViewController
             }
             return imageViewController(forIndex: current.imageIndex - 1)
         }
         return imageViewController(forIndex: currentImageIndex - 1)
     }
 
-    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        if viewController is FullscreenAdViewController {
+    public func pageViewController(_ pageViewController: UIPageViewController,
+                                   viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        if viewController === adViewController {
             return imageViewController(forIndex: 0)
         }
-
         if let current = viewController as? FullscreenImageViewController {
             if hasAdPage, current.imageIndex == viewModel.imageUrls.count - 1 {
-                return makeAdViewController()
+                return adViewController
             }
             return imageViewController(forIndex: current.imageIndex + 1)
         }
         return imageViewController(forIndex: currentImageIndex + 1)
-    }
-
-    private func makeAdViewController() -> UIViewController? {
-        guard let factory = makeAdContainerView else { return nil }
-        return FullscreenAdViewController(makeView: factory)
     }
 
     private func imageViewController(forIndex index: Int) -> FullscreenImageViewController? {
