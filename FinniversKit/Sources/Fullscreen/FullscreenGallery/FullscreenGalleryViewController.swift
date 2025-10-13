@@ -125,6 +125,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
         overlayView.fillInSuperview()
 
         overlayView.viewModel = viewModel
+        if hasAdPage { setAdVisible(true) }
         overlayView.layoutIfNeeded()
 
         transitionToImage(atIndex: viewModel.selectedIndex, animated: false)
