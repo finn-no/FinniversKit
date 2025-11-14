@@ -96,7 +96,7 @@ public class FavoriteFoldersListView: UIView {
         return emptyView
     }()
 
-    private lazy var searchBarTop = searchBar.topAnchor.constraint(equalTo: topAnchor)
+    private lazy var searchBarTop = searchBar.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200)
     private lazy var footerViewTop = footerView.topAnchor.constraint(equalTo: bottomAnchor)
 
     private lazy var footerHeight: CGFloat = {
