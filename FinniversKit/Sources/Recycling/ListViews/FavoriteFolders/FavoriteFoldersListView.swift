@@ -96,7 +96,7 @@ public class FavoriteFoldersListView: UIView {
         return emptyView
     }()
 
-    private lazy var searchBarTop = searchBar.topAnchor.constraint(equalTo: topAnchor)
+    private lazy var searchBarTop = searchBar.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200)
     private lazy var footerViewTop = footerView.topAnchor.constraint(equalTo: bottomAnchor)
 
     private lazy var footerHeight: CGFloat = {
@@ -194,12 +194,12 @@ public class FavoriteFoldersListView: UIView {
             searchBar.resignFirstResponder()
         }
 
-        let numberOfItems = self.tableView(tableView, numberOfRowsInSection: Section.addButton.rawValue)
+        let numberOfItems = self.tableView(tableView, numberOfRowsInSection: Section.folders.rawValue)
         let performBatchUpdates = editing && numberOfItems == 1 || !editing && numberOfItems == 0
 
         tableView.setEditing(editing, animated: true)
         footerViewTop.constant = 0
-        searchBarTop.constant = editing ? -searchBar.frame.height : 0
+        searchBarTop.constant = editing ? -searchBar.frame.height : Warp.Spacing.spacing200
 
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.layoutIfNeeded()
@@ -225,6 +225,7 @@ public class FavoriteFoldersListView: UIView {
     // MARK: - Setup
 
     private func setup() {
+        backgroundColor = .background
         searchBar.configure(withPlaceholder: viewModel.searchBarPlaceholder)
         footerView.configure(withTitle: viewModel.addFolderText)
 
