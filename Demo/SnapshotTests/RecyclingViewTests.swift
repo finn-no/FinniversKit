@@ -24,7 +24,7 @@ class RecyclingViewTests: XCTestCase {
     }
 
     func testFavoriteFoldersListView() {
-        snapshot(.favoriteFoldersListView)
+        snapshot(.favoriteFoldersListView, record: true)
     }
 
     func testSavedSearchesListView() {
