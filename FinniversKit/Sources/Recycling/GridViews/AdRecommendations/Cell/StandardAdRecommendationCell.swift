@@ -103,14 +103,15 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     }()
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .body, withAutoLayout: true)
+        let label = Label(style: .caption, withAutoLayout: true)
         label.setContentHuggingPriority(.required, for: .vertical)
+        label.numberOfLines = 2
         label.accessibilityTraits = .header
         return label
     }()
 
     private lazy var subtitleLabel: Label = {
-        let label = Label(style: .detail, textColor: .textSubtle, withAutoLayout: true)
+        let label = Label(style: .caption, textColor: .textSubtle, withAutoLayout: true)
         label.setContentHuggingPriority(.required, for: .vertical)
         return label
     }()
