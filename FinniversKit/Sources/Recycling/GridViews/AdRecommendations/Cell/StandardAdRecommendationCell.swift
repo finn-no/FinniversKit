@@ -181,7 +181,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         contentView.addSubview(favoriteButton)
         containerView.addSubview(accessoryLabel)
 
-        imageDescriptionStackView.addArrangedSubviews([iconImageView, priceLabel])
+        imageDescriptionStackView.addArrangedSubview(iconImageView)
 
         backgroundColor = .clear
 
