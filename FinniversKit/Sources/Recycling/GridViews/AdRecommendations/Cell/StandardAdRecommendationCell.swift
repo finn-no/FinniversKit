@@ -42,10 +42,11 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     private lazy var subtitleLabelHeightConstraint = subtitleLabel.heightAnchor.constraint(equalToConstant: Self.subtitleHeight * Config.accessibilityMultiplier())
     private lazy var accessoryLabelHeightConstraint = accessoryLabel.heightAnchor.constraint(equalToConstant: Self.accessoryHeight * Config.accessibilityMultiplier())
 
-    private static let titleHeight: CGFloat = 20.0
+    private static let titleHeight: CGFloat = 36.0
     private static let titleTopMargin: CGFloat = 3.0
     private static let bottomMargin: CGFloat = 15.0
-    private static let subtitleHeight: CGFloat = 17.0
+    private static let subtitleHeight: CGFloat = 18.0
+    private static let priceHeight: CGFloat = 22.0
     private static let ribbonTopMargin: CGFloat = 6.0
     private static let ribbonHeight: CGFloat = 19.0
     private static let subtitleTopMargin: CGFloat = 6.0
@@ -216,11 +217,12 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: Self.titleTopMargin),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            //titleLabel.heightAnchor.constraint(equalToConstant: Self.titleHeight * Config.accessibilityMultiplier()),
+            titleLabel.heightAnchor.constraint(equalToConstant: Self.titleHeight * Config.accessibilityMultiplier()),
 
             priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8.0),
             priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            priceLabel.heightAnchor.constraint(equalToConstant: Self.priceHeight * Config.accessibilityMultiplier()),
 
             accessoryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             accessoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -354,6 +356,10 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
         if model.accessory != nil {
             contentHeight += accessoryHeight
+        }
+
+        if model.imageText != nil {
+            contentHeight += (priceHeight * Config.accessibilityMultiplier())
         }
 
         if model.sponsoredAdData?.ribbonTitle != nil {
