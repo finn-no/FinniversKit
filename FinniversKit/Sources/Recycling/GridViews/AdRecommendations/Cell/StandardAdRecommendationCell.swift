@@ -177,6 +177,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         containerView.addSubview(logoImageView)
         containerView.addSubview(subtitleLabel)
         containerView.addSubview(titleLabel)
+        containerView.addSubview(priceLabel)
         contentView.addSubview(favoriteButton)
         containerView.addSubview(accessoryLabel)
 
@@ -215,7 +216,11 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: Self.titleTopMargin),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: Self.titleHeight * Config.accessibilityMultiplier()),
+            //titleLabel.heightAnchor.constraint(equalToConstant: Self.titleHeight * Config.accessibilityMultiplier()),
+
+            priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8.0),
+            priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
             accessoryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             accessoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
