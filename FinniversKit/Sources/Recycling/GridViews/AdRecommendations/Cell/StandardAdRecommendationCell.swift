@@ -38,7 +38,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     private lazy var containerView = UIView(withAutoLayout: true)
     private lazy var imageDescriptionStackView = UIStackView(axis: .horizontal, spacing: Self.margin, alignment: .center, withAutoLayout: true)
     private lazy var ribbonView = RibbonView(withAutoLayout: true)
-    private lazy var imageTextLabel = Label(style: .captionStrong, textColor: .textInvertedStatic, withAutoLayout: true)
+    private lazy var priceLabel = Label(style: .title4, textColor: .text, withAutoLayout: true)
     private lazy var subtitleLabelHeightConstraint = subtitleLabel.heightAnchor.constraint(equalToConstant: Self.subtitleHeight * Config.accessibilityMultiplier())
     private lazy var accessoryLabelHeightConstraint = accessoryLabel.heightAnchor.constraint(equalToConstant: Self.accessoryHeight * Config.accessibilityMultiplier())
 
@@ -179,7 +179,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         contentView.addSubview(favoriteButton)
         containerView.addSubview(accessoryLabel)
 
-        imageDescriptionStackView.addArrangedSubviews([iconImageView, imageTextLabel])
+        imageDescriptionStackView.addArrangedSubviews([iconImageView, priceLabel])
 
         backgroundColor = .clear
 
@@ -254,13 +254,13 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         titleLabel.text = ""
         subtitleLabel.text = ""
         accessoryLabel.text = ""
-        imageTextLabel.text = ""
+        priceLabel.text = ""
         accessibilityCustomActions = []
         favoriteButton.setImage(nil, for: .normal)
         logoImageView.cancelLoading()
         logoImageView.image = nil
         iconImageView.isHidden = true
-        imageTextLabel.isHidden = true
+        priceLabel.isHidden = true
         imageDescriptionBackgroundView.isHidden = true
         badgeView.isHidden = true
     }
@@ -278,8 +278,10 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
         iconImageView.image = model?.iconImage?.withRenderingMode(.alwaysTemplate)
         titleLabel.text = model?.title
+        titleLabel.backgroundColor = .green
         subtitleLabel.text = model?.subtitle
-        imageTextLabel.text = "Is this is?"//model?.imageText
+        subtitleLabel.backgroundColor = .blue
+        priceLabel.text = model?.imageText
         isFavorite = model?.isFavorite ?? false
 
         if let accessory = model?.accessory {
@@ -299,6 +301,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         ribbonView.style = .sponsored
         ribbonView.title = model?.sponsoredAdData?.ribbonTitle ?? ""
         ribbonView.isHidden = ribbonView.title.isEmpty
+        ribbonView.backgroundColor = .red
 
         NSLayoutConstraint.deactivate([subtitleToImageConstraint, subtitleToRibbonConstraint])
         NSLayoutConstraint.activate([ribbonView.title.isEmpty ? subtitleToImageConstraint : subtitleToRibbonConstraint])
@@ -311,7 +314,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         }
 
         iconImageView.isHidden = iconImageView.image == nil
-        imageTextLabel.isHidden = imageTextLabel.text == nil
+        priceLabel.isHidden = priceLabel.text == nil
         imageDescriptionBackgroundView.isHidden = model?.hideImageOverlay ?? false
         badgeView.isHidden = model?.badgeViewModel == nil
 
