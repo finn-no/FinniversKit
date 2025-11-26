@@ -279,7 +279,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         iconImageView.image = model?.iconImage?.withRenderingMode(.alwaysTemplate)
         titleLabel.text = model?.title
         subtitleLabel.text = model?.subtitle
-        imageTextLabel.text = model?.imageText
+        imageTextLabel.text = "Is this is?"//model?.imageText
         isFavorite = model?.isFavorite ?? false
 
         if let accessory = model?.accessory {
