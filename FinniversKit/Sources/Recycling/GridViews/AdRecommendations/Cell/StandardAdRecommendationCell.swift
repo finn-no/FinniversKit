@@ -43,7 +43,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     private lazy var accessoryLabelHeightConstraint = accessoryLabel.heightAnchor.constraint(equalToConstant: Self.accessoryHeight * Config.accessibilityMultiplier())
     private lazy var titleLabelHeightConstraint = titleLabel.heightAnchor.constraint(equalToConstant: Self.titleHeight * Config.accessibilityMultiplier())
 
-    private static let titleHeight: CGFloat = 36.0
+    private static let titleHeight: CGFloat = 44.0
     private static let titleTopMargin: CGFloat = 3.0
     private static let bottomMargin: CGFloat = 15.0
     private static let subtitleHeight: CGFloat = 18.0
