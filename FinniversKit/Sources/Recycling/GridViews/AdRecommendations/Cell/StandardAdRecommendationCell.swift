@@ -41,6 +41,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     private lazy var priceLabel = Label(style: .title4, textColor: .text, withAutoLayout: true)
     private lazy var subtitleLabelHeightConstraint = subtitleLabel.heightAnchor.constraint(equalToConstant: Self.subtitleHeight * Config.accessibilityMultiplier())
     private lazy var accessoryLabelHeightConstraint = accessoryLabel.heightAnchor.constraint(equalToConstant: Self.accessoryHeight * Config.accessibilityMultiplier())
+    private lazy var titleLabelHeightConstraint = titleLabel.heightAnchor.constraint(equalToConstant: Self.titleHeight * Config.accessibilityMultiplier())
 
     private static let titleHeight: CGFloat = 36.0
     private static let titleTopMargin: CGFloat = 3.0
@@ -209,22 +210,22 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             logoImageView.widthAnchor.constraint(equalToConstant: 50),
             logoImageView.heightAnchor.constraint(equalToConstant: 30),
 
-            subtitleToImageConstraint,
+            titleLabel.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: Self.titleTopMargin),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            titleLabelHeightConstraint,
+
+            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Self.subtitleTopMargin),
             subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             subtitleLabelHeightConstraint,
 
-            titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: Self.titleTopMargin),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: Self.titleHeight * Config.accessibilityMultiplier()),
-
-            priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8.0),
+            priceLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 8.0),
             priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             priceLabel.heightAnchor.constraint(equalToConstant: Self.priceHeight * Config.accessibilityMultiplier()),
 
-            accessoryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            accessoryLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor),
             accessoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             accessoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             accessoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Self.bottomMargin),
