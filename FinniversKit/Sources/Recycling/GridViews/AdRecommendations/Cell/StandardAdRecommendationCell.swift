@@ -312,8 +312,8 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         ribbonView.isHidden = ribbonView.title.isEmpty
         ribbonView.backgroundColor = .red
 
-        NSLayoutConstraint.deactivate([subtitleToImageConstraint, subtitleToRibbonConstraint])
-        NSLayoutConstraint.activate([ribbonView.title.isEmpty ? subtitleToImageConstraint : subtitleToRibbonConstraint])
+        //NSLayoutConstraint.deactivate([subtitleToImageConstraint, subtitleToRibbonConstraint])
+        //NSLayoutConstraint.activate([ribbonView.title.isEmpty ? subtitleToImageConstraint : subtitleToRibbonConstraint])
 
         imageContentView.backgroundColor = loadingColor
 
