@@ -188,9 +188,9 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         backgroundColor = .clear
 
         let imageHeightMinimumConstraint = imageContentView.heightAnchor.constraint(equalTo: imageContentView.widthAnchor, multiplier: Self.minImageAspectRatio)
-        let imageHeightMaximumConstraint = imageContentView.heightAnchor.constraint(lessThanOrEqualTo: imageContentView.widthAnchor, multiplier: Self.maxImageAspectRatio)
+        let imageHeightMaximumConstraint = imageContentView.heightAnchor.constraint(equalTo: imageContentView.widthAnchor, multiplier: Self.maxImageAspectRatio)
 
-        imageHeightMinimumConstraint.priority = .defaultHigh
+        imageHeightMinimumConstraint.priority = .required
 
         containerView.fillInSuperview()
 
