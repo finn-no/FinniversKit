@@ -187,19 +187,13 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
         backgroundColor = .clear
 
-        let imageHeightMinimumConstraint = imageContentView.heightAnchor.constraint(equalTo: imageContentView.widthAnchor, multiplier: Self.minImageAspectRatio)
-        let imageHeightMaximumConstraint = imageContentView.heightAnchor.constraint(equalTo: imageContentView.widthAnchor, multiplier: Self.maxImageAspectRatio)
-
-        imageHeightMinimumConstraint.priority = .required
-
         containerView.fillInSuperview()
 
         NSLayoutConstraint.activate([
             imageContentView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageContentView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            imageContentView.heightAnchor.constraint(equalTo: contentView.widthAnchor),
             imageContentView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            imageHeightMinimumConstraint,
-            imageHeightMaximumConstraint,
 
             ribbonView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: Self.ribbonTopMargin),
             ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -347,9 +341,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     }
 
     public static func height(for model: StandardAdRecommendationViewModel, width: CGFloat) -> CGFloat {
-        let imageRatio = model.imageSize.height / model.imageSize.width
-        let clippedImageRatio = min(max(imageRatio, Self.minImageAspectRatio), Self.maxImageAspectRatio)
-        let imageHeight = width * clippedImageRatio
+        let imageHeight = width
         var contentHeight = subtitleTopMargin
         + titleTopMargin
         + (titleHeight * Config.accessibilityMultiplier())
