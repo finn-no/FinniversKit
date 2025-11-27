@@ -86,7 +86,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     private lazy var imageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
         imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
