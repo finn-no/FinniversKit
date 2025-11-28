@@ -42,7 +42,7 @@ public struct LoadingSwiftUIView: View {
                         Image(named: .checkmarkBig)
                             .renderingMode(.template)
                             .resizable()
-                            .foregroundColor(isFullscreen ? .iconSecondary : .iconInvertedStatic)
+                            .foregroundColor(isFullscreen ? .iconPrimary : .iconInvertedStatic)
                             .scaleEffect(loadingIndicatorScale)
                             .onAppear {
                                 loadingIndicatorScale = initialScale
