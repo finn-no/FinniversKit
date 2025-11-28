@@ -141,19 +141,8 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
     private lazy var badgeView: BadgeView = {
         let badgeView = BadgeView()
-        badgeView.attachToTopLeadingAnchor(in: imageView)
         return badgeView
     }()
-
-    private lazy var subtitleToImageConstraint = subtitleLabel.topAnchor.constraint(
-        equalTo: imageContentView.bottomAnchor,
-        constant: Self.subtitleTopMargin
-    )
-
-    private lazy var subtitleToRibbonConstraint = subtitleLabel.topAnchor.constraint(
-        equalTo: ribbonView.bottomAnchor,
-        constant: Self.subtitleTopMargin
-    )
 
     // MARK: - Setup
 
@@ -180,6 +169,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         containerView.addSubview(subtitleLabel)
         containerView.addSubview(titleLabel)
         containerView.addSubview(priceLabel)
+        containerView.addSubview(badgeView)
         contentView.addSubview(favoriteButton)
         containerView.addSubview(accessoryLabel)
 
@@ -213,6 +203,10 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             subtitleLabelHeightConstraint,
+
+            badgeView.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 8.0),
+            badgeView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            badgeView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
             priceLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 8.0),
             priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -305,9 +299,6 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         ribbonView.title = model?.sponsoredAdData?.ribbonTitle ?? ""
         ribbonView.isHidden = ribbonView.title.isEmpty
         ribbonView.backgroundColor = .red
-
-        //NSLayoutConstraint.deactivate([subtitleToImageConstraint, subtitleToRibbonConstraint])
-        //NSLayoutConstraint.activate([ribbonView.title.isEmpty ? subtitleToImageConstraint : subtitleToRibbonConstraint])
 
         imageContentView.backgroundColor = loadingColor
 
