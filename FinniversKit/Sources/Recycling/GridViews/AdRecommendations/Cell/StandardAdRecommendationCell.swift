@@ -37,8 +37,12 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     /// Extra container to hold the accessibility elements in the order we want them read
     private lazy var containerView = UIView(withAutoLayout: true)
     private lazy var imageDescriptionStackView = UIStackView(axis: .horizontal, spacing: Self.margin, alignment: .center, withAutoLayout: true)
+
+    private lazy var testVerticalStackView = UIStackView(axis: .vertical, spacing: 6.0, alignment: .leading, withAutoLayout: true)
+
     private lazy var ribbonView = RibbonView(withAutoLayout: true)
     private lazy var priceLabel = Label(style: .title4, textColor: .text, withAutoLayout: true)
+
     private lazy var subtitleLabelHeightConstraint = subtitleLabel.heightAnchor.constraint(equalToConstant: Self.subtitleHeight * Config.accessibilityMultiplier())
     private lazy var accessoryLabelHeightConstraint = accessoryLabel.heightAnchor.constraint(equalToConstant: Self.accessoryHeight * Config.accessibilityMultiplier())
     private lazy var titleLabelHeightConstraint = titleLabel.heightAnchor.constraint(equalToConstant: Self.titleHeight * Config.accessibilityMultiplier())
@@ -52,6 +56,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     private static let ribbonHeight: CGFloat = 19.0
     private static let subtitleTopMargin: CGFloat = 6.0
     private static let accessoryHeight: CGFloat = 14.0
+    private static let badgeViewHeight: CGFloat = 24.0
     private static let margin: CGFloat = 8.0
     private static let cornerRadius: CGFloat = 8.0
     private static let imageDescriptionHeight: CGFloat = 35.0
@@ -158,6 +163,17 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     // MARK: - Setup
 
     private func setup() {
+
+        testVerticalStackView.addArrangedSubviews([titleLabel, subtitleLabel, priceLabel, badgeView])
+        contentView.addSubview(testVerticalStackView)
+
+        NSLayoutConstraint.activate([
+            testVerticalStackView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: 8.0),
+            testVerticalStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 8.0),
+            testVerticalStackView.leadingAnchor.constraint(equalTo: imageContentView.leadingAnchor),
+            testVerticalStackView.trailingAnchor.constraint(equalTo: imageContentView.trailingAnchor)
+        ])
+
         containerView.addSubview(imageContentView)
         imageContentView.addSubview(imageView)
         imageContentView.addSubview(imageDescriptionBackgroundView)
@@ -181,7 +197,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
         containerView.fillInSuperview()
 
-        NSLayoutConstraint.activate([
+        /*NSLayoutConstraint.activate([
             imageContentView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageContentView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             imageContentView.heightAnchor.constraint(equalTo: contentView.widthAnchor),
@@ -213,7 +229,10 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
             badgeView.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 8.0),
             badgeView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            badgeView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+
+            ribbonView.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: Self.ribbonTopMargin),
+            ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            ribbonView.heightAnchor.constraint(equalToConstant: Self.ribbonHeight * Config.accessibilityMultiplier()),
 
             accessoryLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor),
             accessoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -233,7 +252,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: Warp.Spacing.spacing50),
             favoriteButton.widthAnchor.constraint(equalToConstant: 48),
             favoriteButton.heightAnchor.constraint(equalToConstant: 48)
-        ])
+        ]) */
 
         favoriteButton.isAccessibilityElement = false
         containerView.isAccessibilityElement = true
@@ -283,18 +302,11 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         priceLabel.text = model?.imageText
         isFavorite = model?.isFavorite ?? false
 
-        if let accessory = model?.accessory {
-            accessoryLabel.text = accessory
-            accessoryLabelHeightConstraint.constant = Self.accessoryHeight * Config.accessibilityMultiplier()
-        } else {
-            accessoryLabelHeightConstraint.constant = 0
-        }
-
         if let subtitle = model?.subtitle {
             subtitleLabel.text = subtitle
-            subtitleLabelHeightConstraint.constant = Self.subtitleHeight * Config.accessibilityMultiplier()
+            subtitleLabel.isHidden = false
         } else {
-            subtitleLabelHeightConstraint.constant = 0
+            subtitleLabel.isHidden = true
         }
 
         ribbonView.style = .sponsored
