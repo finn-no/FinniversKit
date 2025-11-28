@@ -141,6 +141,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
     private lazy var badgeView: BadgeView = {
         let badgeView = BadgeView()
+        badgeView.layer.cornerRadius = Warp.Spacing.spacing50
         return badgeView
     }()
 
@@ -352,6 +353,10 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
         if model.subtitle != nil {
             contentHeight += (subtitleHeight * Config.accessibilityMultiplier())
+        }
+
+        if model.badgeViewModel != nil {
+            contentHeight += 24 * Config.accessibilityMultiplier()
         }
 
         return imageHeight + contentHeight
