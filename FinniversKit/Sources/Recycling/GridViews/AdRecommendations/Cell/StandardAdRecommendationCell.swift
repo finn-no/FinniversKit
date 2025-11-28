@@ -142,6 +142,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     private lazy var badgeView: BadgeView = {
         let badgeView = BadgeView()
         badgeView.layer.cornerRadius = Warp.Spacing.spacing50
+        badgeView.layer.maskedCorners = []
         return badgeView
     }()
 
@@ -205,14 +206,14 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             subtitleLabelHeightConstraint,
 
-            badgeView.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 8.0),
-            badgeView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            badgeView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-
             priceLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 8.0),
             priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             priceLabel.heightAnchor.constraint(equalToConstant: Self.priceHeight * Config.accessibilityMultiplier()),
+
+            badgeView.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 8.0),
+            badgeView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            badgeView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
             accessoryLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor),
             accessoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
