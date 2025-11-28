@@ -167,13 +167,6 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         testVerticalStackView.addArrangedSubviews([titleLabel, subtitleLabel, priceLabel, badgeView])
         contentView.addSubview(testVerticalStackView)
 
-        NSLayoutConstraint.activate([
-            testVerticalStackView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: 8.0),
-            testVerticalStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 8.0),
-            testVerticalStackView.leadingAnchor.constraint(equalTo: imageContentView.leadingAnchor),
-            testVerticalStackView.trailingAnchor.constraint(equalTo: imageContentView.trailingAnchor)
-        ])
-
         containerView.addSubview(imageContentView)
         imageContentView.addSubview(imageView)
         imageContentView.addSubview(imageDescriptionBackgroundView)
@@ -197,62 +190,17 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
         containerView.fillInSuperview()
 
-        /*NSLayoutConstraint.activate([
+        NSLayoutConstraint.activate([
             imageContentView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageContentView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             imageContentView.heightAnchor.constraint(equalTo: contentView.widthAnchor),
             imageContentView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
-            ribbonView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: Self.ribbonTopMargin),
-            ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            ribbonView.heightAnchor.constraint(equalToConstant: Self.ribbonHeight * Config.accessibilityMultiplier()),
-
-            logoImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: Warp.Spacing.spacing100),
-            logoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            logoImageView.widthAnchor.constraint(equalToConstant: 50),
-            logoImageView.heightAnchor.constraint(equalToConstant: 30),
-
-            titleLabel.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: Self.titleTopMargin),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            titleLabelHeightConstraint,
-
-            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Self.subtitleTopMargin),
-            subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            subtitleLabelHeightConstraint,
-
-            priceLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 8.0),
-            priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            priceLabel.heightAnchor.constraint(equalToConstant: Self.priceHeight * Config.accessibilityMultiplier()),
-
-            badgeView.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 8.0),
-            badgeView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-
-            ribbonView.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: Self.ribbonTopMargin),
-            ribbonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            ribbonView.heightAnchor.constraint(equalToConstant: Self.ribbonHeight * Config.accessibilityMultiplier()),
-
-            accessoryLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor),
-            accessoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            accessoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            accessoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Self.bottomMargin),
-            accessoryLabelHeightConstraint,
-
-            iconImageView.heightAnchor.constraint(equalToConstant: Self.iconSize),
-            iconImageView.widthAnchor.constraint(equalToConstant: Self.iconSize),
-
-            imageDescriptionBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing100),
-            imageDescriptionBackgroundView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor),
-            imageDescriptionBackgroundView.heightAnchor.constraint(equalToConstant: Self.imageDescriptionHeight),
-            imageDescriptionBackgroundView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: -Warp.Spacing.spacing100),
-
-            favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -Warp.Spacing.spacing50),
-            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: Warp.Spacing.spacing50),
-            favoriteButton.widthAnchor.constraint(equalToConstant: 48),
-            favoriteButton.heightAnchor.constraint(equalToConstant: 48)
-        ]) */
+            testVerticalStackView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: 8.0),
+            testVerticalStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 8.0),
+            testVerticalStackView.leadingAnchor.constraint(equalTo: imageContentView.leadingAnchor),
+            testVerticalStackView.trailingAnchor.constraint(equalTo: imageContentView.trailingAnchor),
+        ])
 
         favoriteButton.isAccessibilityElement = false
         containerView.isAccessibilityElement = true
