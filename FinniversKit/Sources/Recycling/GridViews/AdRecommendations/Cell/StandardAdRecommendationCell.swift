@@ -164,9 +164,6 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
     private func setup() {
 
-        testVerticalStackView.addArrangedSubviews([titleLabel, subtitleLabel, priceLabel, badgeView])
-        contentView.addSubview(testVerticalStackView)
-
         containerView.addSubview(imageContentView)
         imageContentView.addSubview(imageView)
         imageContentView.addSubview(imageDescriptionBackgroundView)
@@ -174,20 +171,22 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         imageDescriptionStackView.fillInSuperview(insets: UIEdgeInsets(top: 0, leading: Self.margin, bottom: 0, trailing: -Self.margin), isActive: true)
         imageView.fillInSuperview()
 
-        contentView.addSubview(containerView)
-        containerView.addSubview(ribbonView)
-        containerView.addSubview(logoImageView)
-        containerView.addSubview(subtitleLabel)
-        containerView.addSubview(titleLabel)
-        containerView.addSubview(priceLabel)
-        containerView.addSubview(badgeView)
-        contentView.addSubview(favoriteButton)
-        containerView.addSubview(accessoryLabel)
+        //contentView.addSubview(containerView)
+        //containerView.addSubview(ribbonView)
+        //containerView.addSubview(logoImageView)
+        //containerView.addSubview(subtitleLabel)
+        //containerView.addSubview(titleLabel)
+        //containerView.addSubview(priceLabel)
+        //containerView.addSubview(badgeView)
+        //contentView.addSubview(favoriteButton)
+        //containerView.addSubview(accessoryLabel)
 
-        imageDescriptionStackView.addArrangedSubview(iconImageView)
+        //imageDescriptionStackView.addArrangedSubview(iconImageView)
+
+        testVerticalStackView.addArrangedSubviews([titleLabel, subtitleLabel, priceLabel, badgeView])
+        contentView.addSubview(testVerticalStackView)
 
         backgroundColor = .clear
-
         containerView.fillInSuperview()
 
         NSLayoutConstraint.activate([
