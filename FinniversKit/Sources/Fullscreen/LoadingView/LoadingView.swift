@@ -52,7 +52,7 @@ import Warp
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.image = UIImage(named: .checkmarkBig).withRenderingMode(.alwaysTemplate)
-        view.tintColor = .iconSecondary
+        view.tintColor = .iconPrimary
         view.alpha = 0
         view.transform = loadingIndicatorInitialTransform
         return view
@@ -149,7 +149,7 @@ private extension LoadingView {
 
             switch displayType {
             case .fullscreen:
-                successImageView.tintColor = .iconSecondary
+                successImageView.tintColor = .iconPrimary
                 messageLabel.textColor = .text
                 backgroundColor = .background.withAlphaComponent(0.8)
                 layer.cornerRadius = 0
