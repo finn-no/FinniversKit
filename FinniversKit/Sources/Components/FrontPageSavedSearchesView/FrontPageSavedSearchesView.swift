@@ -24,8 +24,8 @@ public class FrontPageSavedSearchesView: UIView {
     private static let cellHeight: CGFloat = 100
     private var heightConstraint: NSLayoutConstraint?
 
-    private typealias Datasource = UICollectionViewDiffableDataSource<Section, AnyHashable>
-    private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
+    private typealias Datasource = UICollectionViewDiffableDataSource<Section, FrontPageSavedSearchViewModel>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, FrontPageSavedSearchViewModel>
 
     private enum Section: Int, CaseIterable {
         case savedSearch
@@ -185,9 +185,8 @@ private extension FrontPageSavedSearchesView {
 
 private extension FrontPageSavedSearchesView {
     private func makeDatasource() -> Datasource {
-        let datasource = Datasource(collectionView: collectionView) { [weak self] collectionView, indexPath, item in
+        let datasource = Datasource(collectionView: collectionView) { [weak self] collectionView, indexPath, viewModel in
             let cell = collectionView.dequeue(FrontPageSavedSearchCell.self, for: indexPath)
-            guard let viewModel = item as? FrontPageSavedSearchViewModel else { return cell }
             cell.configure(withModel: viewModel)
             cell.imageDatasource = self?.remoteImageDataSource
             cell.loadImage()
@@ -216,7 +215,7 @@ private extension FrontPageSavedSearchesView {
 
 extension FrontPageSavedSearchesView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let item = collectionViewDatasource.itemIdentifier(for: indexPath) as? FrontPageSavedSearchViewModel else { return }
+        guard let item = collectionViewDatasource.itemIdentifier(for: indexPath) else { return }
         delegate?.frontPageSavedSearchesView(self, didSelectSavedSearch: item)
     }
 }
