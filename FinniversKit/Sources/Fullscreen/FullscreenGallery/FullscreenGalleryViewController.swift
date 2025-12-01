@@ -206,12 +206,12 @@ public class FullscreenGalleryViewController: UIPageViewController {
             }
         }
     }
-    
+
     public func setAdVisible(_ visible: Bool) {
         overlayView.additionalTrailingPages = visible ? 1 : 0
         updatePagerForCurrentPage()
     }
-    
+
     private func updatePagerForCurrentPage() {
         if isShowingAdPage {
             overlayView.setCounterForAdPage(totalImages: viewModel.imageUrls.count)

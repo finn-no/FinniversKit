@@ -197,10 +197,10 @@ class FullscreenGalleryOverlayView: UIView {
 
     private func setCaptionLabel(index: Int) {
         var caption = viewModel?.imageCaptions[safe: index] ?? ""
-        
+
         let base = viewModel?.imageUrls.count ?? 0
         let total = base + additionalTrailingPages
-        
+
         if total > 0 {
             caption += " (\(index + 1)/\(total))"
         }

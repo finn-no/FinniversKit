@@ -121,7 +121,7 @@ open class BasicTableViewCell: UITableViewCell {
             stackViewLeadingAnchorConstraint,
             stackViewTrailingAnchorConstraint,
             stackViewBottomAnchorConstraint,
-            
+
             detailLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             detailLabelTrailingConstraint
         ])

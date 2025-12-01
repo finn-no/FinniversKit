@@ -62,13 +62,13 @@ public final class FrontPageTransactionViewModel: Swift.Identifiable, Observable
     @MainActor
     func loadImage(size: CGSize) async {
         var finalImage = UIImage(named: .noImage)
-        if
-            let imageUrl,
-            let url = URL(string: imageUrl),
-            let loadedImage = try? await imageLoader(url, size)
-        {
+
+        if let imageUrl,
+           let url = URL(string: imageUrl),
+           let loadedImage = try? await imageLoader(url, size) {
             finalImage = loadedImage
         }
+
         withAnimation(.easeOut(duration: 0.2)) {
             image = finalImage
         }
