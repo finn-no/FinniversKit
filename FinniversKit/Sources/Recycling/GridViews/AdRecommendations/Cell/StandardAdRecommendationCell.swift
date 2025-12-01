@@ -164,30 +164,17 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
     private func setup() {
 
-        containerView.addSubview(imageContentView)
         imageContentView.addSubview(imageView)
         imageContentView.addSubview(imageDescriptionBackgroundView)
         imageDescriptionBackgroundView.contentView.addSubview(imageDescriptionStackView)
         imageDescriptionStackView.fillInSuperview(insets: UIEdgeInsets(top: 0, leading: Self.margin, bottom: 0, trailing: -Self.margin), isActive: true)
         imageView.fillInSuperview()
 
-        //contentView.addSubview(containerView)
-        //containerView.addSubview(ribbonView)
-        //containerView.addSubview(logoImageView)
-        //containerView.addSubview(subtitleLabel)
-        //containerView.addSubview(titleLabel)
-        //containerView.addSubview(priceLabel)
-        //containerView.addSubview(badgeView)
-        //contentView.addSubview(favoriteButton)
-        //containerView.addSubview(accessoryLabel)
-
-        //imageDescriptionStackView.addArrangedSubview(iconImageView)
-
         testVerticalStackView.addArrangedSubviews([titleLabel, subtitleLabel, priceLabel, badgeView])
+        contentView.addSubview(imageContentView)
         contentView.addSubview(testVerticalStackView)
 
         backgroundColor = .clear
-        containerView.fillInSuperview()
 
         NSLayoutConstraint.activate([
             imageContentView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -196,7 +183,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             imageContentView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
             testVerticalStackView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: 8.0),
-            testVerticalStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 8.0),
+            testVerticalStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0),
             testVerticalStackView.leadingAnchor.constraint(equalTo: imageContentView.leadingAnchor),
             testVerticalStackView.trailingAnchor.constraint(equalTo: imageContentView.trailingAnchor),
         ])
