@@ -2,6 +2,7 @@ import Foundation
 import Warp
 @_exported import UIKit
 
+@MainActor
 public struct Config {
     public static var bundle: Bundle { Bundle.finniversKit }
     public static var imageProvider: ImageProvider = DefaultImageProvider()
