@@ -4,6 +4,7 @@
 
 import UIKit
 
+@MainActor
 @objc public extension UIImage {
 
     class var placeholderAd: UIImage {
