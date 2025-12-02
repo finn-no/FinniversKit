@@ -173,6 +173,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
         testVerticalStackView.addArrangedSubviews([titleLabel, subtitleLabel, priceLabel, badgeView])
         contentView.addSubview(imageContentView)
         contentView.addSubview(testVerticalStackView)
+        contentView.addSubview(favoriteButton)
 
         backgroundColor = .clear
 
@@ -186,6 +187,11 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
             testVerticalStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0),
             testVerticalStackView.leadingAnchor.constraint(equalTo: imageContentView.leadingAnchor),
             testVerticalStackView.trailingAnchor.constraint(equalTo: imageContentView.trailingAnchor),
+
+            favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -Warp.Spacing.spacing50),
+            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: Warp.Spacing.spacing50),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 48),
+            favoriteButton.heightAnchor.constraint(equalToConstant: 48)
         ])
 
         favoriteButton.isAccessibilityElement = false
