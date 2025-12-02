@@ -38,7 +38,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     private lazy var containerView = UIView(withAutoLayout: true)
     private lazy var imageDescriptionStackView = UIStackView(axis: .horizontal, spacing: Self.margin, alignment: .center, withAutoLayout: true)
 
-    private lazy var testVerticalStackView = UIStackView(axis: .vertical, spacing: 6.0, alignment: .leading, withAutoLayout: true)
+    private lazy var testVerticalStackView = UIStackView(axis: .vertical, spacing: 6.0, alignment: .leading, distribution: .fill, withAutoLayout: true)
 
     private lazy var ribbonView = RibbonView(withAutoLayout: true)
     private lazy var priceLabel = Label(style: .title4, textColor: .text, withAutoLayout: true)
