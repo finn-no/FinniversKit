@@ -339,4 +339,4 @@ public extension Button.Style {
     }
 }
 
-extension UIControl.State: Hashable {}
+extension UIControl.State: @retroactive Hashable {}

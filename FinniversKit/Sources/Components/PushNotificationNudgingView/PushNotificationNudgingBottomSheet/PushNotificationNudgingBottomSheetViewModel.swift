@@ -54,7 +54,7 @@ extension PushNotificationNudgingBottomSheetViewModel.Button: Hashable {
     public static func == (lhs: PushNotificationNudgingBottomSheetViewModel.Button, rhs: PushNotificationNudgingBottomSheetViewModel.Button) -> Bool {
         lhs.kind == rhs.kind && lhs.title == rhs.title
     }
-    
+
     public func hash(into hasher: inout Hasher) {
         hasher.combine(kind)
         hasher.combine(title)

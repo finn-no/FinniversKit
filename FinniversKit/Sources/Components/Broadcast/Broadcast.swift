@@ -28,13 +28,13 @@ public final class Broadcast: UIStackView {
 
     public init(frame: CGRect = .zero, accessibilityData: AccessibilityData) {
         self.accessibilityData = accessibilityData
-        
+
         super.init(frame: frame)
-        
+
         axis = .vertical
         distribution = .fill
         alignment = .fill
-        
+
         accessibilityTraits = .summaryElement
         accessibilityContainerType = .semanticGroup
     }
@@ -181,15 +181,15 @@ private extension Broadcast {
             let item = BroadcastItem(message: message)
             item.delegate = self
             item.isHidden = true
-            
+
             let accessibleLabelForItem = "\(accessibilityData.broadcastLabel) (\(index + 1) / \(messages.count)), \(item.message.text)"
             item.accessibilityLabel = accessibleLabelForItem
             item.dismissButton.accessibilityLabel = accessibilityData.dismissButtonLabel
             accessibilityLabels.append(accessibleLabelForItem)
-            
+
             insertArrangedSubview(item, at: 0)
         }
-        
+
         accessibilityLabel = accessibilityLabels.joined(separator: ",")
     }
 

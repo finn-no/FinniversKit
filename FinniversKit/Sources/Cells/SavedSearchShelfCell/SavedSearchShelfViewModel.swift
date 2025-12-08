@@ -16,7 +16,7 @@ public struct FrontPageSavedSearchViewModel {
     }
 }
 
-extension FrontPageSavedSearchViewModel: Hashable {
+extension FrontPageSavedSearchViewModel: Hashable, Sendable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(identifier)
     }

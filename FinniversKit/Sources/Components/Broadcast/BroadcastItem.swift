@@ -78,7 +78,7 @@ class BroadcastItem: UIView {
         self.message = message
         super.init(frame: .zero)
         clipsToBounds = true
-        
+
         setAttributedText(message)
         setupSubviews()
     }
