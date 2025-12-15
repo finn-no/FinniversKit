@@ -7,11 +7,11 @@ public protocol AdRecommendationCellDelegate: AnyObject {
 public protocol AdRecommendationCell: UICollectionViewCell, ImageLoadable {
     var delegate: AdRecommendationCellDelegate? { get set }
     var isFavorite: Bool { get set }
-    var index: Int? { get }
+    var indexPath: IndexPath? { get }
 }
 
 public protocol AdRecommendationConfigurable: AdRecommendationCell {
     associatedtype Model
 
-    func configure(with model: Model?, atIndex index: Int)
+    func configure(with model: Model?, at indexPath: IndexPath)
 }
