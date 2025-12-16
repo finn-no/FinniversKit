@@ -15,7 +15,7 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
     public weak var delegate: AdRecommendationCellDelegate?
 
     /// Optional index of the cell
-    public var index: Int?
+    public var indexPath: IndexPath?
 
 
     //This variable is included to conform to protocol 'AdRecommendationCell',
@@ -187,9 +187,9 @@ public class ExternalAdRecommendationCell: UICollectionViewCell, AdRecommendatio
 
     // MARK: - Dependency injection
 
-    public func configure(with model: ExternalAdRecommendationViewModel?, atIndex index: Int) {
+    public func configure(with model: ExternalAdRecommendationViewModel?, at indexPath: IndexPath) {
         self.model = model
-        self.index = index
+        self.indexPath = indexPath
 
         titleLabel.text = model?.title
         if let height = model?.title.height(withConstrainedWidth: contentView.frame.width, font: titleLabel.font), height > ExternalAdRecommendationCell.titleHeight {

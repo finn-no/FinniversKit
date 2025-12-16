@@ -5,7 +5,7 @@ public protocol AdRecommendationsGridViewDelegate: AnyObject {
     func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didSelectItemAtIndex index: Int)
     func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, willDisplayItemAtIndex index: Int)
     func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didScrollInScrollView scrollView: UIScrollView)
-    func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at index: Int)
+    func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at indexPath: IndexPath)
 }
 
 public protocol AdRecommendationsGridViewDataSource: AnyObject {
@@ -221,8 +221,8 @@ extension AdRecommendationsGridView: RemoteImageViewDataSource {
 
 extension AdRecommendationsGridView: AdRecommendationCellDelegate {
     public func adRecommendationCell(_ cell: AdRecommendationCell, didTapFavoriteButton button: UIButton) {
-        guard let index = cell.index else { return }
-        delegate?.adRecommendationsGridView(self, didSelectFavoriteButton: button, on: cell, at: index)
+        guard let indexPath = cell.indexPath else { return }
+        delegate?.adRecommendationsGridView(self, didSelectFavoriteButton: button, on: cell, at: indexPath)
     }
 }
 

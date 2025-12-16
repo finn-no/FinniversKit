@@ -6,7 +6,7 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
     // MARK: - Public properties
 
     public weak var delegate: AdRecommendationCellDelegate?
-    public var index: Int?
+    public var indexPath: IndexPath?
 
     public weak var imageDataSource: RemoteImageViewDataSource? {
         didSet {
@@ -272,9 +272,9 @@ public final class StandardAdRecommendationCell: UICollectionViewCell, AdRecomme
 
     // MARK: - Public methods
 
-    public func configure(with model: StandardAdRecommendationViewModel?, atIndex index: Int) {
+    public func configure(with model: StandardAdRecommendationViewModel?, at indexPath: IndexPath) {
         self.model = model
-        self.index = index
+        self.indexPath = indexPath
 
         iconImageView.image = model?.iconImage?.withRenderingMode(.alwaysTemplate)
         titleLabel.text = model?.title

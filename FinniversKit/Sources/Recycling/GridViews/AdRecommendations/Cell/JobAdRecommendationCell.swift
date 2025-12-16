@@ -13,7 +13,7 @@ public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell
         }
     }
 
-    public var index: Int?
+    public var indexPath: IndexPath?
 
     public var isFavorite: Bool = false {
         didSet {
@@ -213,9 +213,9 @@ public class JobAdRecommendationCell: UICollectionViewCell, AdRecommendationCell
 
 // MARK: - AdRecommendationConfigurable
 extension JobAdRecommendationCell: AdRecommendationConfigurable {
-    public func configure(with model: JobAdRecommendationViewModel?, atIndex index: Int) {
+    public func configure(with model: JobAdRecommendationViewModel?, at indexPath: IndexPath) {
         self.model = model
-        self.index = index
+        self.indexPath = indexPath
 
         loadingColor = .backgroundSubtle
 

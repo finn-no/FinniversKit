@@ -88,8 +88,8 @@ extension AdRecommendationsGridViewDemoView: AdRecommendationsGridViewDelegate {
 
     func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didScrollInScrollView scrollView: UIScrollView) {}
 
-    func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at index: Int) {
-        adRecommendationsGridView.updateItem(at: index, isFavorite: !cell.isFavorite)
+    func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at indexPath: IndexPath) {
+        adRecommendationsGridView.updateItem(at: indexPath.item, isFavorite: !cell.isFavorite)
     }
 }
 
@@ -146,20 +146,20 @@ extension AdRecommendationsGridViewDemoView: AdRecommendationsGridViewDataSource
                 let cell = collectionView.dequeue(StandardAdRecommendationCell.self, for: indexPath)
                 cell.imageDataSource = adRecommendationsGridView
                 cell.delegate = adRecommendationsGridView
-                cell.configure(with: ad, atIndex: indexPath.item)
+                cell.configure(with: ad, at: indexPath)
                 return cell
             }
         case .job(let ad):
             let cell = collectionView.dequeue(JobAdRecommendationCell.self, for: indexPath)
             cell.imageDataSource = adRecommendationsGridView
             cell.delegate = adRecommendationsGridView
-            cell.configure(with: ad, atIndex: indexPath.item)
+            cell.configure(with: ad, at: indexPath)
             return cell
         case .external(let ad):
             let cell = collectionView.dequeue(ExternalAdRecommendationCell.self, for: indexPath)
             cell.imageDataSource = adRecommendationsGridView
             cell.delegate = adRecommendationsGridView
-            cell.configure(with: ad, atIndex: indexPath.item)
+            cell.configure(with: ad, at: indexPath)
             return cell
         }
     }
