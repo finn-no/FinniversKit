@@ -123,7 +123,7 @@ extension FavoriteSoldDemoView: AdRecommendationsGridViewDataSource {
         let cell = collectionView.dequeue(StandardAdRecommendationCell.self, for: indexPath)
         cell.imageDataSource = adRecommendationsGridView
         cell.delegate = adRecommendationsGridView
-        cell.configure(with: model, atIndex: indexPath.item)
+        cell.configure(with: model, at: indexPath)
         return cell
     }
 

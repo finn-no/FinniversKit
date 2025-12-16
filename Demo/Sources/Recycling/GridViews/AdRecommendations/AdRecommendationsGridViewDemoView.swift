@@ -146,20 +146,20 @@ extension AdRecommendationsGridViewDemoView: AdRecommendationsGridViewDataSource
                 let cell = collectionView.dequeue(StandardAdRecommendationCell.self, for: indexPath)
                 cell.imageDataSource = adRecommendationsGridView
                 cell.delegate = adRecommendationsGridView
-                cell.configure(with: ad, atIndex: indexPath.item)
+                cell.configure(with: ad, at: indexPath)
                 return cell
             }
         case .job(let ad):
             let cell = collectionView.dequeue(JobAdRecommendationCell.self, for: indexPath)
             cell.imageDataSource = adRecommendationsGridView
             cell.delegate = adRecommendationsGridView
-            cell.configure(with: ad, atIndex: indexPath.item)
+            cell.configure(with: ad, at: indexPath)
             return cell
         case .external(let ad):
             let cell = collectionView.dequeue(ExternalAdRecommendationCell.self, for: indexPath)
             cell.imageDataSource = adRecommendationsGridView
             cell.delegate = adRecommendationsGridView
-            cell.configure(with: ad, atIndex: indexPath.item)
+            cell.configure(with: ad, at: indexPath)
             return cell
         }
     }
