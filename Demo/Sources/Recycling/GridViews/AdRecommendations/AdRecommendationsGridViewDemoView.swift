@@ -88,8 +88,8 @@ extension AdRecommendationsGridViewDemoView: AdRecommendationsGridViewDelegate {
 
     func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didScrollInScrollView scrollView: UIScrollView) {}
 
-    func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at index: Int) {
-        adRecommendationsGridView.updateItem(at: index, isFavorite: !cell.isFavorite)
+    func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at indexPath: IndexPath) {
+        adRecommendationsGridView.updateItem(at: indexPath.item, isFavorite: !cell.isFavorite)
     }
 }
 
