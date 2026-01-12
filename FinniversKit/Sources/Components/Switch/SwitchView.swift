@@ -35,6 +35,8 @@ public class SwitchView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textColor = style.detailLabelTextColor
+        // Tell Auto layout that its ok to compress this label to fit available space
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
