@@ -98,7 +98,6 @@ public class SwitchView: UIView {
             uiSwitch.leadingAnchor.constraint(equalTo: detailLabel.trailingAnchor, constant: Warp.Spacing.spacing100),
             uiSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             uiSwitch.centerYAnchor.constraint(equalTo: centerYAnchor),
-            uiSwitch.widthAnchor.constraint(equalToConstant: 49.0)
         ])
     }
 
