@@ -35,6 +35,8 @@ public class SwitchView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textColor = style.detailLabelTextColor
+        // Tell Auto layout that its ok to compress this label to fit available space
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
@@ -96,7 +98,6 @@ public class SwitchView: UIView {
             uiSwitch.leadingAnchor.constraint(equalTo: detailLabel.trailingAnchor, constant: Warp.Spacing.spacing100),
             uiSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing200),
             uiSwitch.centerYAnchor.constraint(equalTo: centerYAnchor),
-            uiSwitch.widthAnchor.constraint(equalToConstant: 49.0)
         ])
     }
 
