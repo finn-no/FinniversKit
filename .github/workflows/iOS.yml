@@ -16,20 +16,32 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      
       - name: Select Xcode 16.4
         run: sudo xcode-select -s /Applications/Xcode_16.4.app
-      - name: Xcode first launch (installs some components)
-        run: sudo xcodebuild -runFirstLaunch
+        echo "Using Xcode at $(xcode-select -p)"
+        xcodebuild -version
+        
+      - name: Accept Xcode license & runFirstLaunch
+        run: |
+          # tolerate failures so the job continues if already accepted
+          sudo xcodebuild -license accept || true
+          sudo xcodebuild -runFirstLaunch || true
+                  
       - name: Download iOS platform support (fixes "iOS 18.4 is not installed")
         run: sudo xcodebuild -downloadPlatform iOS
+        
       - name: Install SwiftLint
         run: brew install swiftlint
+        
       - name: Lint
         run: |
           swiftlint lint
+          
       - name: Build
         run: |
           xcodebuild build-for-testing -scheme "$scheme" -workspace FinniversKit.xcworkspace -destination "$destination"
-      - name: Test        
+          
+      - name: Test
         run: |
           xcodebuild test-without-building -scheme "$scheme" -workspace FinniversKit.xcworkspace -destination "$destination" 
