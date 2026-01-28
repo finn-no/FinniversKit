@@ -69,7 +69,7 @@ public final class Broadcast: UIStackView {
         translatesAutoresizingMaskIntoConstraints = false
         leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        topConstraint = topAnchor.constraint(equalTo: view.topAnchor)
+        topConstraint = topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
         topConstraint?.isActive = true
 
         self.messages.formUnion(messages)
