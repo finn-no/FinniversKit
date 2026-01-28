@@ -100,7 +100,7 @@ extension BroadcastItem {
 
         heightConstraint = heightAnchor.constraint(equalToConstant: 0)
 
-        let topConstraint = contentView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200)
+        let topConstraint = contentView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Warp.Spacing.spacing200)
         topConstraint.priority = .defaultHigh
 
         NSLayoutConstraint.activate([
