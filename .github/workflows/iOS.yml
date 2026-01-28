@@ -32,8 +32,30 @@ jobs:
           sudo xcodebuild -license accept || true
           sudo xcodebuild -runFirstLaunch || true
                   
-      - name: Download iOS platform support (fixes "iOS 18.4 is not installed")
-        run: sudo xcodebuild -downloadPlatform iOS
+      - name: Reset simulator services
+        shell: bash
+        run: |
+          xcrun simctl shutdown all || true
+          pkill -9 Simulator || true
+          sudo pkill -9 com.apple.CoreSimulator.CoreSimulatorService || true
+          sleep 2
+          
+      - name: Download iOS platform support
+        shell: bash
+        run: |
+          set -e
+          for i in 1 2 3; do
+            echo "Downloading iOS platform (attempt $i)..."
+            if sudo xcodebuild -downloadPlatform iOS; then
+              echo "iOS platform downloaded"
+              exit 0
+            fi
+            echo "Retrying after reset..."
+            sudo pkill -9 com.apple.CoreSimulator.CoreSimulatorService || true
+            sleep 5
+          done
+          echo "Failed to download iOS platform"
+          exit 70
         
       - name: Install SwiftLint
         run: brew install swiftlint
