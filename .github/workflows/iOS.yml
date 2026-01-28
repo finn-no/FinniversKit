@@ -12,7 +12,7 @@ jobs:
     runs-on: macos-15
     env:
       scheme: ${{ 'Demo' }}
-      destination: ${{ 'platform=iOS Simulator,OS=18.4,name=iPhone 16 Pro' }}
+      destination: ${{ 'platform=iOS Simulator,OS=18.5,name=iPhone 16 Pro' }}
 
     steps:
       - uses: actions/checkout@v4
