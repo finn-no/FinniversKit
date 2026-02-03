@@ -47,7 +47,7 @@ open class BasicTableViewCell: UITableViewCell {
 
     // MARK: - Private properties
 
-//    private lazy var stackViewToDetailLabelConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: detailLabel.leadingAnchor, constant: -Warp.Spacing.spacing50)
+    private lazy var stackViewToDetailLabelConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: detailLabel.leadingAnchor, constant: -Warp.Spacing.spacing50)
 
     // MARK: - Setup
 
@@ -80,10 +80,10 @@ open class BasicTableViewCell: UITableViewCell {
         if let detailText = viewModel.detailText {
             detailLabel.text = detailText
             detailLabel.isHidden = false
-//            stackViewToDetailLabelConstraint.isActive = true
+            stackViewToDetailLabelConstraint.isActive = true
         } else {
             detailLabel.isHidden = true
-//            stackViewToDetailLabelConstraint.isActive = false
+            stackViewToDetailLabelConstraint.isActive = false
         }
 
         if viewModel.hasChevron == true {
@@ -112,6 +112,9 @@ open class BasicTableViewCell: UITableViewCell {
     private func setup() {
         setDefaultSelectedBackgound()
         backgroundColor = .background
+
+        stackView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        detailLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         contentView.addSubview(stackView)
         contentView.addSubview(detailLabel)
