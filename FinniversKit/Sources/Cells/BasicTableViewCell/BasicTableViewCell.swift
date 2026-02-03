@@ -47,7 +47,7 @@ open class BasicTableViewCell: UITableViewCell {
 
     // MARK: - Private properties
 
-    private lazy var stackViewToDetailLabelConstraint = stackView.trailingAnchor.constraint(equalTo: detailLabel.leadingAnchor, constant: -Warp.Spacing.spacing50)
+    private lazy var stackViewToDetailLabelConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: detailLabel.leadingAnchor, constant: -Warp.Spacing.spacing50)
 
     // MARK: - Setup
 
@@ -81,9 +81,11 @@ open class BasicTableViewCell: UITableViewCell {
             detailLabel.text = detailText
             detailLabel.isHidden = false
             stackViewToDetailLabelConstraint.isActive = true
+            stackViewTrailingAnchorConstraint.isActive = false  // ADD THIS
         } else {
             detailLabel.isHidden = true
             stackViewToDetailLabelConstraint.isActive = false
+            stackViewTrailingAnchorConstraint.isActive = true   // ADD THIS
         }
 
         if viewModel.hasChevron == true {
@@ -112,10 +114,6 @@ open class BasicTableViewCell: UITableViewCell {
     private func setup() {
         setDefaultSelectedBackgound()
         backgroundColor = .background
-
-        // Set content hugging so title doesn't stretch but subtitle can fill width
-        titleLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        subtitleLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
 
         contentView.addSubview(stackView)
         contentView.addSubview(detailLabel)
