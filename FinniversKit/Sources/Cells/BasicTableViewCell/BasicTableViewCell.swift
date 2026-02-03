@@ -47,7 +47,7 @@ open class BasicTableViewCell: UITableViewCell {
 
     // MARK: - Private properties
 
-    private lazy var stackViewToDetailLabelConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: detailLabel.leadingAnchor, constant: -Warp.Spacing.spacing50)
+    private lazy var stackViewToDetailLabelConstraint = stackView.trailingAnchor.constraint(equalTo: detailLabel.leadingAnchor, constant: -Warp.Spacing.spacing50)
 
     // MARK: - Setup
 
