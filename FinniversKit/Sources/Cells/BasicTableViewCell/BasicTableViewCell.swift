@@ -113,6 +113,10 @@ open class BasicTableViewCell: UITableViewCell {
         setDefaultSelectedBackgound()
         backgroundColor = .background
 
+        // Set content hugging so title doesn't stretch but subtitle can fill width
+        titleLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        subtitleLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
+
         contentView.addSubview(stackView)
         contentView.addSubview(detailLabel)
 
