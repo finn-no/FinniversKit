@@ -113,6 +113,9 @@ open class BasicTableViewCell: UITableViewCell {
         setDefaultSelectedBackgound()
         backgroundColor = .background
 
+        stackView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        detailLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+
         contentView.addSubview(stackView)
         contentView.addSubview(detailLabel)
 
