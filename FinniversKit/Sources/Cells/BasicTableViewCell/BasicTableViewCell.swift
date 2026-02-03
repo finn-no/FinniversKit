@@ -47,7 +47,7 @@ open class BasicTableViewCell: UITableViewCell {
 
     // MARK: - Private properties
 
-    private lazy var stackViewToDetailLabelConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: detailLabel.leadingAnchor, constant: -Warp.Spacing.spacing50)
+//    private lazy var stackViewToDetailLabelConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: detailLabel.leadingAnchor, constant: -Warp.Spacing.spacing50)
 
     // MARK: - Setup
 
@@ -80,12 +80,10 @@ open class BasicTableViewCell: UITableViewCell {
         if let detailText = viewModel.detailText {
             detailLabel.text = detailText
             detailLabel.isHidden = false
-            stackViewToDetailLabelConstraint.isActive = true
-            stackViewTrailingAnchorConstraint.isActive = false  // ADD THIS
+//            stackViewToDetailLabelConstraint.isActive = true
         } else {
             detailLabel.isHidden = true
-            stackViewToDetailLabelConstraint.isActive = false
-            stackViewTrailingAnchorConstraint.isActive = true   // ADD THIS
+//            stackViewToDetailLabelConstraint.isActive = false
         }
 
         if viewModel.hasChevron == true {
