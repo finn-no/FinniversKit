@@ -54,12 +54,26 @@ public class FavoriteFoldersListView: UIView {
     private var isSearchActive = false
     private let imageCache = ImageMemoryCache()
 
-    private(set) lazy var searchBar: FavoriteFoldersSearchBar = {
-        let view = FavoriteFoldersSearchBar(withAutoLayout: true)
-        view.delegate = self
+    private(set) lazy var searchBarContainer: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .background
         return view
     }()
 
+    private(set) lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar(withAutoLayout: true)
+        searchBar.searchBarStyle = .minimal
+        searchBar.backgroundColor = .background
+        searchBar.delegate = self
+        
+        let textField = searchBar.searchTextField
+        textField.borderStyle = .none
+        textField.backgroundColor = .backgroundSubtle
+        textField.layer.cornerRadius = Warp.Border.borderRadius100
+        textField.clipsToBounds = true
+        return searchBar
+    }()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -88,7 +102,7 @@ public class FavoriteFoldersListView: UIView {
         view.delegate = self
         // Don't show "Create new item" footer with liquid glass tab bar.
         // This is temporary solution until we have proper new design
-        if #available(iOS 26, *) {
+        if Config.isLiquidGlassCompatible {
             view.isHidden = true
         }
         return view
@@ -101,7 +115,7 @@ public class FavoriteFoldersListView: UIView {
         return emptyView
     }()
 
-    private lazy var searchBarTop = searchBar.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200)
+    private lazy var searchBarContainerTop = searchBarContainer.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200)
     private lazy var footerViewTop = footerView.topAnchor.constraint(equalTo: bottomAnchor)
 
     private lazy var footerHeight: CGFloat = {
@@ -204,7 +218,7 @@ public class FavoriteFoldersListView: UIView {
 
         tableView.setEditing(editing, animated: true)
         footerViewTop.constant = 0
-        searchBarTop.constant = editing ? -searchBar.frame.height : Warp.Spacing.spacing200
+        searchBarContainerTop.constant = editing ? -searchBarContainer.frame.height : Warp.Spacing.spacing200
 
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.layoutIfNeeded()
@@ -231,25 +245,32 @@ public class FavoriteFoldersListView: UIView {
 
     private func setup() {
         backgroundColor = .background
-        searchBar.configure(withPlaceholder: viewModel.searchBarPlaceholder)
+        searchBar.placeholder = viewModel.searchBarPlaceholder
         footerView.configure(withTitle: viewModel.addFolderText)
 
         addSubview(tableView)
-        addSubview(searchBar)
+        addSubview(searchBarContainer)
+        searchBarContainer.addSubview(searchBar)
         addSubview(footerView)
 
         tableView.addSubview(emptyView)
 
         NSLayoutConstraint.activate([
-            searchBarTop,
-            searchBar.leadingAnchor.constraint(equalTo: leadingAnchor),
-            searchBar.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
+            searchBarContainerTop,
+            searchBarContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
+            searchBarContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+            searchBar.topAnchor.constraint(equalTo: searchBarContainer.topAnchor),
+            searchBar.leadingAnchor.constraint(equalTo: searchBarContainer.leadingAnchor, constant: Warp.Spacing.spacing100),
+            searchBar.trailingAnchor.constraint(equalTo: searchBarContainer.trailingAnchor, constant: -Warp.Spacing.spacing100),
+            searchBar.bottomAnchor.constraint(equalTo: searchBarContainer.bottomAnchor, constant: -Warp.Spacing.spacing100),
+            searchBar.heightAnchor.constraint(equalToConstant: 36),
+            
+            tableView.topAnchor.constraint(equalTo: searchBarContainer.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: footerView.topAnchor),
-
+            
             footerViewTop,
             footerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             footerView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -415,7 +436,6 @@ extension FavoriteFoldersListView: RemoteImageViewDataSource {
 
 extension FavoriteFoldersListView: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        searchBar.updateShadow(using: scrollView)
 
         guard !tableView.isEditing else {
             return
@@ -446,11 +466,13 @@ extension FavoriteFoldersListView: UIScrollViewDelegate {
 
 extension FavoriteFoldersListView: UISearchBarDelegate {
     public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
         showRefreshControl(false)
         delegate?.favoriteFoldersListViewDidFocusSearchBar(self)
     }
 
     public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
         if searchBar.text?.isEmpty ?? true {
             isSearchActive = false
             showRefreshControl(true)
@@ -459,6 +481,15 @@ extension FavoriteFoldersListView: UISearchBarDelegate {
 
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+    }
+    
+    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.resignFirstResponder()
+        isSearchActive = false
+        showRefreshControl(true)
+        delegate?.favoriteFoldersListView(self, didChangeSearchText: "")
     }
 
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
