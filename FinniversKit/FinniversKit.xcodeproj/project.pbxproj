@@ -355,7 +355,6 @@
 		CFB6137C229AD43400DE283D /* VerticalIconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB6137A229AD41600DE283D /* VerticalIconCollectionViewCell.swift */; };
 		CFCC3D3123686C0D002DD4CF /* FooterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC3D3023686C0D002DD4CF /* FooterButtonView.swift */; };
 		CFCDDA5C2273022A005E1F4A /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDDA5B2273022A005E1F4A /* CalloutView.swift */; };
-		CFCED8D922CE2BE90049A3A0 /* FavoriteFoldersSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCED8D822CE2BE90049A3A0 /* FavoriteFoldersSearchBar.swift */; };
 		CFCED8DD22CE3EAA0049A3A0 /* AddFavoriteFolderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCED8DC22CE3EAA0049A3A0 /* AddFavoriteFolderButton.swift */; };
 		CFCED8E122CF3A690049A3A0 /* AddFavoriteFolderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCED8E022CF3A690049A3A0 /* AddFavoriteFolderViewCell.swift */; };
 		CFCED8E322CF428B0049A3A0 /* FavoriteFoldersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCED8E222CF428B0049A3A0 /* FavoriteFoldersListViewModel.swift */; };
@@ -799,7 +798,6 @@
 		CFB6137A229AD41600DE283D /* VerticalIconCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalIconCollectionViewCell.swift; sourceTree = "<group>"; };
 		CFCC3D3023686C0D002DD4CF /* FooterButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterButtonView.swift; sourceTree = "<group>"; };
 		CFCDDA5B2273022A005E1F4A /* CalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalloutView.swift; sourceTree = "<group>"; };
-		CFCED8D822CE2BE90049A3A0 /* FavoriteFoldersSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersSearchBar.swift; sourceTree = "<group>"; };
 		CFCED8DC22CE3EAA0049A3A0 /* AddFavoriteFolderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFavoriteFolderButton.swift; sourceTree = "<group>"; };
 		CFCED8E022CF3A690049A3A0 /* AddFavoriteFolderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavoriteFolderViewCell.swift; sourceTree = "<group>"; };
 		CFCED8E222CF428B0049A3A0 /* FavoriteFoldersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersListViewModel.swift; sourceTree = "<group>"; };
@@ -2605,7 +2603,6 @@
 				CF164CFC230EB0F900250822 /* CheckmarkImageView.swift */,
 				0881432722E05391008CB5DA /* FavoriteFolderSelectableViewCell.swift */,
 				CFCED8E422CF71AC0049A3A0 /* FavoriteFoldersFooterView.swift */,
-				CFCED8D822CE2BE90049A3A0 /* FavoriteFoldersSearchBar.swift */,
 				CF05BA01233B78BC003A7F1C /* FavoriteSearchEmptyView.swift */,
 			);
 			path = Subviews;
@@ -3325,7 +3322,6 @@
 				44A557B422E72187001667AE /* SelectableTableViewCellViewModel.swift in Sources */,
 				1700944B297EE12300E5650A /* SwiftUILoadingIndicator.swift in Sources */,
 				178006A72B99EE560027DD97 /* HTMLLexer.swift in Sources */,
-				CFCED8D922CE2BE90049A3A0 /* FavoriteFoldersSearchBar.swift in Sources */,
 				14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */,
 				CFCED8E322CF428B0049A3A0 /* FavoriteFoldersListViewModel.swift in Sources */,
 				CFCDDA5C2273022A005E1F4A /* CalloutView.swift in Sources */,
