@@ -65,7 +65,7 @@ public class FavoriteFoldersListView: UIView {
         searchBar.searchBarStyle = .minimal
         searchBar.backgroundColor = .background
         searchBar.delegate = self
-        
+
         let textField = searchBar.searchTextField
         textField.borderStyle = .none
         textField.backgroundColor = .backgroundSubtle
@@ -73,7 +73,7 @@ public class FavoriteFoldersListView: UIView {
         textField.clipsToBounds = true
         return searchBar
     }()
-    
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -259,18 +259,18 @@ public class FavoriteFoldersListView: UIView {
             searchBarContainerTop,
             searchBarContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
             searchBarContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
-            
+
             searchBar.topAnchor.constraint(equalTo: searchBarContainer.topAnchor),
             searchBar.leadingAnchor.constraint(equalTo: searchBarContainer.leadingAnchor, constant: Warp.Spacing.spacing100),
             searchBar.trailingAnchor.constraint(equalTo: searchBarContainer.trailingAnchor, constant: -Warp.Spacing.spacing100),
             searchBar.bottomAnchor.constraint(equalTo: searchBarContainer.bottomAnchor, constant: -Warp.Spacing.spacing100),
             searchBar.heightAnchor.constraint(equalToConstant: 36),
-            
+
             tableView.topAnchor.constraint(equalTo: searchBarContainer.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: footerView.topAnchor),
-            
+
             footerViewTop,
             footerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             footerView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -482,7 +482,7 @@ extension FavoriteFoldersListView: UISearchBarDelegate {
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
-    
+
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = nil
         searchBar.setShowsCancelButton(false, animated: true)
