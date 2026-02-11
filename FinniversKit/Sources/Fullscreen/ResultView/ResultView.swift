@@ -116,7 +116,7 @@ public class ResultView: UIView {
         ])
 
         stackView.setCustomSpacing(Warp.Spacing.spacing200, after: descriptionLabel)
-        stackView.centerAndConstraintInSuperview()
+        stackView.centerAndConstraintInSuperview(margins: Warp.Spacing.spacing200)
     }
 
     // MARK: - Actions
