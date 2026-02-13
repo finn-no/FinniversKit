@@ -16,7 +16,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      
+
+      - name: List available Xcode versions
+        run: |
+          ls -la /Applications | grep Xcode
+          xcodes installed || true
+
+      - name: List available simulators
+        run: |
+          xcrun simctl list devices available
+
       - name: Select Xcode 26
         shell: bash
         run: |
