@@ -20,7 +20,7 @@ jobs:
       - name: Select Xcode 26
         shell: bash
         run: |
-          sudo xcode-select -s /Applications/Xcode_26.0.app
+          sudo xcode-select -s /Applications/Xcode_26.2.app
           XCODE_PATH="$(xcode-select -p)"
           echo "Using Xcode at ${XCODE_PATH}"
           xcodebuild -version
