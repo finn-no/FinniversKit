@@ -6,7 +6,7 @@ import DemoKitSnapshot
 @MainActor
 class SwiftUIViewTests: XCTestCase {
     private func snapshot(_ component: SwiftUIDemoViews, record: Bool = false, line: UInt = #line) {
-        snapshotTest(demoable: component.demoable, record: record, line: line)
+        snapshotTest(demoable: component.demoable, record: shouldRecordSnapshots || record, line: line)
     }
 
     // MARK: - Tests

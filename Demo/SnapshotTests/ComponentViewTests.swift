@@ -8,7 +8,7 @@ class ComponentViewTests: XCTestCase {
     private func snapshot(_ component: ComponentDemoViews, record: Bool = false, line: UInt = #line) {
         snapshotTest(
             demoable: component.demoable,
-            record: record,
+            record: shouldRecordSnapshots || record,
             precision: 0.98,
             line: line
         )
