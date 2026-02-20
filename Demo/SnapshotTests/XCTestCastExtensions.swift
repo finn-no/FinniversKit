@@ -7,15 +7,6 @@ import SnapshotTesting
 import Foundation
 
 extension XCTestCase {
-    /// Returns `true` if the `SNAPSHOT_RECORD` environment variable is set to "1" or "true".
-    /// Use this to enable recording mode on CI.
-    var shouldRecordSnapshots: Bool {
-        guard let value = ProcessInfo.processInfo.environment["SNAPSHOT_RECORD"] else {
-            return false
-        }
-        return value == "1" || value.lowercased() == "true"
-    }
-
     func assertSnapshots(
         matching viewController: UIViewController,
         includeDarkMode: Bool = true,

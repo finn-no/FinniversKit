@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [ "master" ]
 
-permissions:
-  contents: write
-
 jobs:
   build:
     name: build-and-test
@@ -18,9 +15,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref || github.ref }}
-          fetch-depth: 0
 
       - name: Select Xcode 26
         shell: bash
@@ -54,34 +48,5 @@ jobs:
           xcodebuild test-without-building -scheme "Demo" -workspace FinniversKit.xcworkspace -destination "$destination" -only-testing:UnitTests
 
       - name: Snapshot Tests
-        id: snapshot_tests
-        continue-on-error: true
         run: |
-          xcodebuild test-without-building -scheme "SnapshotTests" -workspace FinniversKit.xcworkspace -destination "$destination"
-
-      - name: Record Snapshots (on failure)
-        if: steps.snapshot_tests.outcome == 'failure' && github.event_name == 'pull_request'
-        env:
-          SNAPSHOT_RECORD: "1"
-        run: |
-          xcodebuild test-without-building -scheme "SnapshotTests" -workspace FinniversKit.xcworkspace -destination "$destination" || true
-
-      - name: Commit Updated Snapshots
-        if: steps.snapshot_tests.outcome == 'failure' && github.event_name == 'pull_request'
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add Demo/SnapshotTests/__Snapshots__
-          if git diff --staged --quiet; then
-            echo "No snapshot changes to commit"
-          else
-            git commit -m "Update snapshot references from CI"
-            git push origin HEAD:${{ github.head_ref }}
-          fi
-
-      - name: Fail if Snapshots Were Updated
-        if: steps.snapshot_tests.outcome == 'failure'
-        run: |
-          echo "Snapshot tests failed. New snapshots have been recorded and committed to your branch."
-          echo "Please pull the latest changes and verify the updated snapshots."
-          exit 1
+          xcodebuild test-without-building -scheme "SnapshotTests" -workspace FinniversKit.xcworkspace -destination "$destination" 
