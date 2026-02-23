@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     name: build-and-test
-    runs-on: macos-15
+    runs-on: macos-26
     env:
       destination: ${{ 'platform=iOS Simulator,OS=26.2,name=iPhone 17 Pro' }}
 
