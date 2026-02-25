@@ -139,6 +139,10 @@ public class AddressMapView: UIView {
         mapView.setCameraZoomRange(range.toCameraZoomRange(), animated: false)
     }
 
+    public func setDirectionsButtonAccessibilityLabel(_ label: String) {
+        directionsButton.accessibilityLabel = label
+    }
+
     // MARK: - Setup
 
     private func setup() {
