@@ -53,11 +53,6 @@ public class AddressMapView: UIView {
         button.setImage(UIImage(systemName: "arrow.triangle.turn.up.right.diamond"), for: .normal)
         button.addTarget(self, action: #selector(handleDirectionsButtonTap), for: .touchUpInside)
 
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleDirectionsButtonLongPress(_:)))
-        longPressGesture.minimumPressDuration = 0.45
-        longPressGesture.cancelsTouchesInView = true
-        button.addGestureRecognizer(longPressGesture)
-
         return button
     }()
 
@@ -195,11 +190,6 @@ public class AddressMapView: UIView {
 
     @objc private func handleDirectionsButtonTap() {
         delegate?.addressMapViewDidSelectDirectionsButton(self, sender: directionsButton)
-    }
-
-    @objc private func handleDirectionsButtonLongPress(_ recognizer: UILongPressGestureRecognizer) {
-        guard recognizer.state == .began else { return }
-        delegate?.addressMapViewDidLongPressDirectionsButton(self)
     }
 
     @objc private func handleMapTap() {
