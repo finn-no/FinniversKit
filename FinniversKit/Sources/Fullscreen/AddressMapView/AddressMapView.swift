@@ -238,11 +238,6 @@ extension AddressMapView: MKMapViewDelegate {
     }
 }
 
-public extension AddressMapViewDelegate {
-    func addressMapViewDidSelectDirectionsButton(_ addressMapView: AddressMapView, sender: UIView) {}
-    func addressMapViewDidLongPressDirectionsButton(_ addressMapView: AddressMapView) {}
-}
-
 // MARK: - Private types
 
 private class AddressAnnotation: NSObject, MKAnnotation {
