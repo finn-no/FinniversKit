@@ -10,7 +10,6 @@ public protocol AddressMapViewDelegate: AnyObject {
     func addressMapViewDidSelectPinButton(_ addressMapView: AddressMapView)
     func addressMapViewDidSelectViewModeButton(_ addressMapView: AddressMapView, sender: UIView)
     func addressMapViewDidSelectDirectionsButton(_ addressMapView: AddressMapView, sender: UIView)
-    func addressMapViewDidLongPressDirectionsButton(_ addressMapView: AddressMapView)
     func addressMapViewDidInteractWithMapView(_ addressMapView: AddressMapView)
 }
 
