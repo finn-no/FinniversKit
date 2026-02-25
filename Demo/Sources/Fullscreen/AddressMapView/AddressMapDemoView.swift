@@ -106,6 +106,14 @@ extension AddressMapDemoView: AddressMapViewDelegate {
     func addressMapViewDidInteractWithMapView(_ addressMapView: AddressMapView) {
         print("addressMapViewDidInteractWithMapView")
     }
+
+    func addressMapViewDidSelectDirectionsButton(_ addressMapView: AddressMapView, sender: UIView) {
+        print("addressMapViewDidSelectDirectionsButton")
+    }
+
+    func addressMapViewDidLongPressDirectionsButton(_ addressMapView: AddressMapView) {
+        print("addressMapViewDidLongPressDirectionsButton")
+    }
 }
 
 // MARK: - Demo data
