@@ -9,6 +9,7 @@ import Warp
 public protocol AddressMapViewDelegate: AnyObject {
     func addressMapViewDidSelectPinButton(_ addressMapView: AddressMapView)
     func addressMapViewDidSelectViewModeButton(_ addressMapView: AddressMapView, sender: UIView)
+    func addressMapViewDidSelectDirectionsButton(_ addressMapView: AddressMapView, sender: UIView)
     func addressMapViewDidInteractWithMapView(_ addressMapView: AddressMapView)
 }
 
@@ -43,6 +44,14 @@ public class AddressMapView: UIView {
         let button = UIButton.mapButton
         button.setImage(UIImage(named: .pin).withRenderingMode(.alwaysTemplate), for: .normal)
         button.addTarget(self, action: #selector(handlePinButtonTap), for: .touchUpInside)
+        return button
+    }()
+
+    private lazy var directionsButton: UIButton = {
+        let button = UIButton.mapButton
+        button.setImage(UIImage(systemName: "arrow.triangle.turn.up.right.diamond"), for: .normal)
+        button.addTarget(self, action: #selector(handleDirectionsButtonTap), for: .touchUpInside)
+
         return button
     }()
 
@@ -128,9 +137,14 @@ public class AddressMapView: UIView {
 
     private func setup() {
         addSubview(mapView)
+        addSubview(directionsButton)
         addSubview(pinButton)
 
-        NSLayoutConstraint.activate([
+        var controlConstraints = [
+            directionsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
+            directionsButton.widthAnchor.constraint(equalToConstant: 46),
+            directionsButton.heightAnchor.constraint(equalTo: directionsButton.widthAnchor),
+
             mapView.topAnchor.constraint(equalTo: topAnchor),
             mapView.leadingAnchor.constraint(equalTo: leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -138,23 +152,27 @@ public class AddressMapView: UIView {
 
             pinButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
             pinButton.widthAnchor.constraint(equalToConstant: 46),
-            pinButton.heightAnchor.constraint(equalTo: pinButton.widthAnchor)
-        ])
+            pinButton.heightAnchor.constraint(equalTo: pinButton.widthAnchor),
+            pinButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -Warp.Spacing.spacing200)
+        ]
 
         if isMapTileSelectionEnabled {
             addSubview(viewModeButton)
 
-            NSLayoutConstraint.activate([
-                viewModeButton.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200),
+            controlConstraints.append(contentsOf: [
                 viewModeButton.trailingAnchor.constraint(equalTo: pinButton.trailingAnchor),
                 viewModeButton.widthAnchor.constraint(equalTo: pinButton.widthAnchor),
                 viewModeButton.heightAnchor.constraint(equalTo: pinButton.heightAnchor),
-
-                pinButton.topAnchor.constraint(equalTo: viewModeButton.bottomAnchor, constant: Warp.Spacing.spacing100)
+                viewModeButton.bottomAnchor.constraint(equalTo: pinButton.topAnchor, constant: -Warp.Spacing.spacing100),
+                directionsButton.bottomAnchor.constraint(equalTo: viewModeButton.topAnchor, constant: -Warp.Spacing.spacing100)
             ])
         } else {
-            pinButton.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing200).isActive = true
+            controlConstraints.append(
+                directionsButton.bottomAnchor.constraint(equalTo: pinButton.topAnchor, constant: -Warp.Spacing.spacing100)
+            )
         }
+
+        NSLayoutConstraint.activate(controlConstraints)
     }
 
     @objc private func handleViewModeButtonTap() {
@@ -163,6 +181,10 @@ public class AddressMapView: UIView {
 
     @objc private func handlePinButtonTap() {
         delegate?.addressMapViewDidSelectPinButton(self)
+    }
+
+    @objc private func handleDirectionsButtonTap() {
+        delegate?.addressMapViewDidSelectDirectionsButton(self, sender: directionsButton)
     }
 
     @objc private func handleMapTap() {
