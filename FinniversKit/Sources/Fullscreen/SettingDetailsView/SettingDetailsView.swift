@@ -11,7 +11,6 @@ public protocol SettingDetailsViewModel {
     var title: String { get }
     var primaryButtonStyle: Button.Style { get }
     var primaryButtonTitle: String { get }
-    var doneButtonTitle: String { get }
     func attributedText(for state: SettingDetailsView.State) -> NSAttributedString
     func textAlignment(for state: SettingDetailsView.State) -> NSTextAlignment
     func secondaryButtonTitle(for state: SettingDetailsView.State) -> String?
@@ -20,7 +19,6 @@ public protocol SettingDetailsViewModel {
 // MARK: - Delegate
 public protocol SettingDetailsViewDelegate: AnyObject {
     func settingDetailsView(_ detailsView: SettingDetailsView, didTapPrimaryButtonWith model: SettingDetailsViewModel)
-    func settingDetailsViewDismissAction(_ detailsView: SettingDetailsView)
 }
 
 // MARK: - View
@@ -74,12 +72,6 @@ public class SettingDetailsView: UIView {
         return button
     }()
 
-    private lazy var doneButton: Button = {
-        let button = Button(style: .flat, withAutoLayout: true)
-        button.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
-        return button
-    }()
-
     private lazy var shadowView = TopShadowView(
         withAutoLayout: true
     )
@@ -128,7 +120,6 @@ public extension SettingDetailsView {
         primaryButton.style = model.primaryButtonStyle
         secondaryButton.isHidden = model.secondaryButtonTitle(for: state) == nil
         secondaryButton.setTitle(model.secondaryButtonTitle(for: state), for: .normal)
-        doneButton.setTitle(model.doneButtonTitle, for: .normal)
 
         UIView.transition(
             with: textLabel,
@@ -177,12 +168,7 @@ private extension SettingDetailsView {
         delegate?.settingDetailsView(self, didTapPrimaryButtonWith: model)
     }
 
-    @objc func dismissButtonTapped() {
-        delegate?.settingDetailsViewDismissAction(self)
-    }
-
     func setup() {
-        scrollView.addSubview(doneButton)
         scrollView.addSubview(iconView)
         scrollView.addSubview(titleLabel)
         scrollView.addSubview(textLabel)
@@ -194,9 +180,7 @@ private extension SettingDetailsView {
         scrollView.fillInSuperviewSafeArea()
 
         NSLayoutConstraint.activate([
-            doneButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -Warp.Spacing.spacing200),
-            doneButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Warp.Spacing.spacing100 + Warp.Spacing.spacing200),
-            iconView.topAnchor.constraint(equalTo: doneButton.bottomAnchor, constant: Warp.Spacing.spacing200),
+            iconView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Warp.Spacing.spacing200),
             iconView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
 
             titleLabel.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: Warp.Spacing.spacing200),
