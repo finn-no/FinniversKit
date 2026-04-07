@@ -6,7 +6,6 @@ public struct Config {
     public static var bundle: Bundle { Bundle.finniversKit }
     public static var imageProvider: ImageProvider = DefaultImageProvider()
     public static var isDynamicTypeEnabled: Bool = true
-    public static var isLiquidGlassCompatible: Bool = false
 
     public static func accessibilityMultiplier() -> CGFloat {
         if Self.isDynamicTypeEnabled {

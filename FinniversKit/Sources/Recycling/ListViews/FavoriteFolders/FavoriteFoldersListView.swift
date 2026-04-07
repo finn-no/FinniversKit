@@ -102,7 +102,7 @@ public class FavoriteFoldersListView: UIView {
         view.delegate = self
         // Don't show "Create new item" footer with liquid glass tab bar.
         // This is temporary solution until we have proper new design
-        if Config.isLiquidGlassCompatible {
+        if #available(iOS 26, ) {
             view.isHidden = true
         }
         return view
