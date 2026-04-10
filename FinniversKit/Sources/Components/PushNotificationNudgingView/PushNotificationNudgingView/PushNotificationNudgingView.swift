@@ -40,6 +40,7 @@ public struct PushNotificationNudgingView: View {
                 VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
                     Text(viewModel.title)
                         .font(from: .bodyStrong)
+                        .fixedSize(horizontal: false, vertical: true)
                         .accessibilityLabel(viewModel.title.withoutEmoji())
                     if let description = viewModel.description {
                         Text(description)
