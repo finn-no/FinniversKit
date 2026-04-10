@@ -13,7 +13,8 @@ public struct PushNotificationNudgingBottomSheet: View {
             Text(viewModel.title)
                 .font(from: .title3)
                 .multilineTextAlignment(.center)
-                .padding(.top, Warp.Spacing.spacing100)
+                .safeAreaPadding(.top)
+                .padding(.top, Warp.Spacing.spacing200)
 
             VStack(spacing: Warp.Spacing.spacing100) {
                 ForEach(viewModel.sections, id: \.self) {
