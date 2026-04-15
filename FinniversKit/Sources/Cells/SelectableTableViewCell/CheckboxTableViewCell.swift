@@ -15,9 +15,24 @@ open class CheckboxTableViewCell: BasicTableViewCell {
         return checkbox
     }()
 
+    open var onCheckboxTap: (() -> Void)? {
+        didSet {
+            checkboxButton.isUserInteractionEnabled = onCheckboxTap != nil
+        }
+    }
+
     // MARK: - Private properties
 
     private lazy var stackViewToCheckboxConstraint = stackView.leadingAnchor.constraint(equalTo: checkbox.trailingAnchor)
+
+    private lazy var checkboxButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(checkboxButtonTapped), for: .touchUpInside)
+        button.isUserInteractionEnabled = false
+        button.accessibilityElementsHidden = true
+        return button
+    }()
 
     // MARK: - Setup
 
@@ -48,18 +63,29 @@ open class CheckboxTableViewCell: BasicTableViewCell {
     open override func prepareForReuse() {
         super.prepareForReuse()
         checkbox.isHighlighted = false
+        onCheckboxTap = nil
     }
 
     // MARK: - Private methods
 
+    @objc private func checkboxButtonTapped() {
+        onCheckboxTap?()
+    }
+
     private func setup() {
         contentView.addSubview(checkbox)
+        contentView.addSubview(checkboxButton)
         stackViewLeadingAnchorConstraint.isActive = false
 
         NSLayoutConstraint.activate([
             stackViewToCheckboxConstraint,
             checkbox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Warp.Spacing.spacing200),
             checkbox.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+
+            checkboxButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            checkboxButton.topAnchor.constraint(equalTo: contentView.topAnchor),
+            checkboxButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            checkboxButton.trailingAnchor.constraint(equalTo: stackView.leadingAnchor),
         ])
     }
 }
