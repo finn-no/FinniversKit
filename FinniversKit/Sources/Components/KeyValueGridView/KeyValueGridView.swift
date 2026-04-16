@@ -133,8 +133,10 @@ public class KeyValueGridView: UIView {
             let imageView = UIImageView(withAutoLayout: true)
             imageView.image = image
             imageView.contentMode = .scaleAspectFit
+            let aspectRatio = image.size.width / image.size.height
             NSLayoutConstraint.activate([
-                imageView.heightAnchor.constraint(equalToConstant: 32)
+                imageView.heightAnchor.constraint(equalToConstant: 32),
+                imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: aspectRatio)
             ])
             valueView = imageView
         } else {
