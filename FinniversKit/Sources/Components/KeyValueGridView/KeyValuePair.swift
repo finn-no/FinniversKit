@@ -3,6 +3,7 @@ public struct KeyValuePair: Hashable {
     public let value: String
     public let accessibilityLabel: String?
     public let valueStyle: Style?
+    public let valueImage: UIImage?
     public let infoTooltip: String?
     public let infoTooltipAccessibilityLabel: String?
 
@@ -11,6 +12,7 @@ public struct KeyValuePair: Hashable {
         value: String,
         accessibilityLabel: String? = nil,
         valueStyle: Style? = nil,
+        valueImage: UIImage? = nil,
         infoTooltip: String? = nil,
         infoTooltipAccessibilityLabel: String? = nil
     ) {
@@ -18,6 +20,7 @@ public struct KeyValuePair: Hashable {
         self.value = value
         self.accessibilityLabel = accessibilityLabel
         self.valueStyle = valueStyle
+        self.valueImage = valueImage
         self.infoTooltip = infoTooltip
         self.infoTooltipAccessibilityLabel = infoTooltipAccessibilityLabel
     }
