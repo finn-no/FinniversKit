@@ -128,21 +128,33 @@ public class KeyValueGridView: UIView {
             titleContainer.addArrangedSubview(infoButton)
         }
 
-        let valueLabel = PaddableLabel(style: valueStyle, numberOfLines: 2, withAutoLayout: true)
-        valueLabel.lineBreakMode = .byWordWrapping
-        valueLabel.isAccessibilityElement = true
-        valueLabel.accessibilityTraits = .staticText
-        valueLabel.setTextCopyable(true)
+        let valueView: UIView
+        if let image = pair.valueImage {
+            let imageView = UIImageView(withAutoLayout: true)
+            imageView.image = image
+            imageView.contentMode = .scaleAspectFit
+            NSLayoutConstraint.activate([
+                imageView.heightAnchor.constraint(equalToConstant: 32)
+            ])
+            valueView = imageView
+        } else {
+            let valueLabel = PaddableLabel(style: valueStyle, numberOfLines: 2, withAutoLayout: true)
+            valueLabel.lineBreakMode = .byWordWrapping
+            valueLabel.isAccessibilityElement = true
+            valueLabel.accessibilityTraits = .staticText
+            valueLabel.setTextCopyable(true)
 
-        if let valueStyle = pair.valueStyle {
-            valueLabel.textColor = valueStyle.textColor
-            valueLabel.backgroundColor = valueStyle.backgroundColor
-            valueLabel.textPadding = .init(vertical: 0, horizontal: valueStyle.horizontalPadding)
+            if let valueStyle = pair.valueStyle {
+                valueLabel.textColor = valueStyle.textColor
+                valueLabel.backgroundColor = valueStyle.backgroundColor
+                valueLabel.textPadding = .init(vertical: 0, horizontal: valueStyle.horizontalPadding)
+            }
+
+            valueLabel.text = pair.value
+            valueView = valueLabel
         }
 
-        valueLabel.text = pair.value
-
-        stackView.addArrangedSubviews([titleContainer, valueLabel])
+        stackView.addArrangedSubviews([titleContainer, valueView])
         stackView.arrangedSubviews.forEach {
             $0.setContentCompressionResistancePriority(.required, for: .vertical)
         }
