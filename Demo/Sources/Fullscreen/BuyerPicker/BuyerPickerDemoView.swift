@@ -48,11 +48,18 @@ extension BuyerPickerDemoView: BuyerPickerViewDelegate {
             return
         }
 
+        if let placeholder = makePlaceholderImage(from: url) {
+            completion(placeholder)
+            return
+        }
+
         // Demo code only.
         let task = URLSession.shared.dataTask(with: url) { data, _, _ in
             DispatchQueue.main.async {
                 if let data = data, let image = UIImage(data: data) {
                     completion(image)
+                } else {
+                    completion(nil)
                 }
             }
         }
@@ -64,5 +71,62 @@ extension BuyerPickerDemoView: BuyerPickerViewDelegate {
 
     func buyerPickerViewCenterTitleInHeaderView(_ buyerPickerView: BuyerPickerView, viewForHeaderInSection section: Int) -> Bool {
         return false
+    }
+
+    private func makePlaceholderImage(from url: URL) -> UIImage? {
+        guard url.host == "via.placeholder.com" else {
+            return nil
+        }
+
+        let pathComponents = url.path
+            .split(separator: "/")
+            .map(String.init)
+
+        guard
+            pathComponents.count >= 2,
+            let size = parseSize(pathComponents[0]),
+            let color = UIColor(hex: pathComponents[1])
+        else {
+            return nil
+        }
+
+        let renderer = UIGraphicsImageRenderer(size: size)
+        return renderer.image { context in
+            context.cgContext.setFillColor(color.cgColor)
+            context.fill(CGRect(origin: .zero, size: size))
+        }
+    }
+
+    private func parseSize(_ value: String) -> CGSize? {
+        let components = value.split(separator: "x")
+        guard
+            components.count == 2,
+            let width = Double(components[0]),
+            let height = Double(components[1])
+        else {
+            return nil
+        }
+
+        return CGSize(width: width, height: height)
+    }
+}
+
+private extension UIColor {
+    convenience init?(hex: String) {
+        let sanitized = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        guard sanitized.count == 6 else {
+            return nil
+        }
+
+        var value: UInt64 = 0
+        guard Scanner(string: sanitized).scanHexInt64(&value) else {
+            return nil
+        }
+
+        let red = CGFloat((value & 0xFF0000) >> 16) / 255
+        let green = CGFloat((value & 0x00FF00) >> 8) / 255
+        let blue = CGFloat(value & 0x0000FF) / 255
+
+        self.init(red: red, green: green, blue: blue, alpha: 1)
     }
 }

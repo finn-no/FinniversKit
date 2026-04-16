@@ -22,10 +22,6 @@ private struct DemoViewModel: SettingDetailsViewModel {
         return "Skru på nyhetsbrev"
     }
 
-    var doneButtonTitle: String {
-        return "Ferdig"
-    }
-
     func attributedText(for state: SettingDetailsView.State) -> NSAttributedString {
         switch state {
         case .lessDetails:
@@ -80,9 +76,5 @@ final class SettingDetailsDemoViewController: UIViewController, Demoable {
 extension SettingDetailsDemoViewController: SettingDetailsViewDelegate {
     func settingDetailsView(_ detailsView: SettingDetailsView, didTapPrimaryButtonWith model: SettingDetailsViewModel) {
         print("Did tap action button with model:\n\t- \(model)")
-    }
-
-    func settingDetailsViewDismissAction(_ detailsView: FinniversKit.SettingDetailsView) {
-        print("Did dismiss")
     }
 }
