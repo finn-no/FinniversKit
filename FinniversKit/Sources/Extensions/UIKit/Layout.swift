@@ -109,7 +109,7 @@ public extension UIView {
     }
 
     @discardableResult
-    func centerAndConstraintInSuperview() -> [NSLayoutConstraint] {
+    func centerAndConstraintInSuperview(margin: CGFloat = 0) -> [NSLayoutConstraint] {
         guard let superview = superview else {
             return []
         }
@@ -117,8 +117,8 @@ public extension UIView {
         centerInSuperview()
 
         let constraints: [NSLayoutConstraint] = [
-            heightAnchor.constraint(lessThanOrEqualTo: superview.heightAnchor),
-            widthAnchor.constraint(lessThanOrEqualTo: superview.widthAnchor),
+            heightAnchor.constraint(lessThanOrEqualTo: superview.heightAnchor, constant: -margin * 2),
+            widthAnchor.constraint(lessThanOrEqualTo: superview.widthAnchor, constant: -margin * 2),
         ]
 
         NSLayoutConstraint.activate(constraints)
