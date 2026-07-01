@@ -6,7 +6,7 @@ import FinniversKit
 import DemoKit
 
 class EmptyViewDemoView: UIView {
-    var emptyView: EmptyView?
+    var emptyView: LegacyEmptyView?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -18,7 +18,7 @@ class EmptyViewDemoView: UIView {
     private func setupEmptyView(header: String, message: String, image: UIImage? = nil, actionButtonTitle: String = "") {
         self.emptyView?.removeFromSuperview()
         self.emptyView = nil
-        self.emptyView = EmptyView()
+        self.emptyView = LegacyEmptyView()
         self.addSubview(self.emptyView!) // swiftlint:disable:this force_unwrapping
         self.emptyView?.fillInSuperview()
 

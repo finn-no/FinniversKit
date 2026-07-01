@@ -6,19 +6,19 @@ import CoreMotion
 import UIKit
 import Warp
 
-public protocol EmptyViewDelegate: AnyObject {
-    func emptyView(_ emptyView: EmptyView, didSelectActionButton button: Button)
-    func emptyView(_ emptyView: EmptyView, didMoveObjectView view: UIView)
+public protocol LegacyEmptyViewDelegate: AnyObject {
+    func emptyView(_ emptyView: LegacyEmptyView, didSelectActionButton button: Button)
+    func emptyView(_ emptyView: LegacyEmptyView, didMoveObjectView view: UIView)
 }
 
-public enum EmptyViewShapeType { // Deprecated
+public enum LegacyEmptyViewShapeType { // Deprecated
     case `default`
     case christmas
     case none
 }
 
 @available(*, deprecated, message: "This view is deprecated. Use `StateViews.EmptyStateView` instead")
-public class EmptyView: UIView {
+public class LegacyEmptyView: UIView {
 
     // MARK: - Other private attributes
 
@@ -56,7 +56,7 @@ public class EmptyView: UIView {
 
     // MARK: - External properties / Dependency injection
 
-    public weak var delegate: EmptyViewDelegate?
+    public weak var delegate: LegacyEmptyViewDelegate?
 
     public var header: String = "" {
         didSet {
@@ -102,7 +102,7 @@ public class EmptyView: UIView {
     // MARK: - Deprecated
 
     @available(*, deprecated, message: "shapeType parameter is not supported anymore and should be removed")
-    public init(shapeType: EmptyViewShapeType = .default) {
+    public init(shapeType: LegacyEmptyViewShapeType = .default) {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         setup()
@@ -143,3 +143,12 @@ public class EmptyView: UIView {
         delegate?.emptyView(self, didSelectActionButton: actionButton)
     }
 }
+
+@available(*, deprecated, renamed: "LegacyEmptyView")
+public typealias EmptyView = LegacyEmptyView
+
+@available(*, deprecated, renamed: "LegacyEmptyViewDelegate")
+public typealias EmptyViewDelegate = LegacyEmptyViewDelegate
+
+@available(*, deprecated, renamed: "LegacyEmptyViewShapeType")
+public typealias EmptyViewShapeType = LegacyEmptyViewShapeType

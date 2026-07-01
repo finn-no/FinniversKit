@@ -40,8 +40,8 @@ public struct GenericErrorSwiftUIView: UIViewRepresentable {
         self.viewModel = viewModel
     }
 
-    public func makeUIView(context: Context) -> FinniversKit.EmptyView {
-        let genericView = FinniversKit.EmptyView(shapeType: .default)
+    public func makeUIView(context: Context) -> LegacyEmptyView {
+        let genericView = LegacyEmptyView(shapeType: .default)
         genericView.header = viewModel.title
         genericView.message = viewModel.description ?? ""
         genericView.actionButtonTitle = viewModel.buttonTitle ?? ""
@@ -50,25 +50,25 @@ public struct GenericErrorSwiftUIView: UIViewRepresentable {
         return genericView
     }
 
-    public func updateUIView(_ uiView: FinniversKit.EmptyView, context: Context) {
+    public func updateUIView(_ uiView: LegacyEmptyView, context: Context) {
     }
 
     public func makeCoordinator() -> Coordinator {
         Coordinator(parent: self)
     }
 
-    public class Coordinator: NSObject, EmptyViewDelegate {
+    public class Coordinator: NSObject, LegacyEmptyViewDelegate {
         let parent: GenericErrorSwiftUIView
 
         init(parent: GenericErrorSwiftUIView) {
             self.parent = parent
         }
 
-        public func emptyView(_ emptyView: FinniversKit.EmptyView, didSelectActionButton button: FinniversKit.Button) {
+        public func emptyView(_ emptyView: LegacyEmptyView, didSelectActionButton button: FinniversKit.Button) {
             parent.viewModel.action?()
         }
 
-        public func emptyView(_ emptyView: FinniversKit.EmptyView, didMoveObjectView view: UIView) {
+        public func emptyView(_ emptyView: LegacyEmptyView, didMoveObjectView view: UIView) {
         }
     }
 }
