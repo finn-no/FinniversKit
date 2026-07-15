@@ -57,7 +57,7 @@ extension FavoriteAdCommentInputDemoView: RemoteImageViewDataSource {
         _ view: RemoteImageView,
         loadImageWithPath imagePath: String,
         imageWidth: CGFloat,
-        completion: @escaping ((UIImage?) -> Void)
+        completion: @escaping @Sendable ((UIImage?) -> Void)
     ) {
         guard let url = URL(string: imagePath) else {
             completion(nil)

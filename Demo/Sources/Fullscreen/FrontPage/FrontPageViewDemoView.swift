@@ -63,7 +63,7 @@ final class FrontPageViewDemoViewController: UIViewController, Demoable {
         frontPageView.reloadData()
     }
 
-    private func loadImage(imagePath: String, completion: @escaping ((UIImage?) -> Void)) {
+    private func loadImage(imagePath: String, completion: @escaping @Sendable ((UIImage?) -> Void)) {
         guard let url = URL(string: imagePath) else {
             completion(nil)
             return
@@ -176,7 +176,7 @@ extension FrontPageViewDemoViewController: AdRecommendationsGridViewDataSource {
         }
     }
 
-    func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping @Sendable ((UIImage?) -> Void)) {
         loadImage(imagePath: imagePath, completion: completion)
     }
 
@@ -208,7 +208,7 @@ extension FrontPageViewDemoViewController: RemoteImageViewDataSource {
         nil
     }
 
-    func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping @Sendable ((UIImage?) -> Void)) {
         loadImage(imagePath: imagePath, completion: completion)
     }
 

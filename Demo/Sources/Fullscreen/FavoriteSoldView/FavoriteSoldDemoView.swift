@@ -49,7 +49,7 @@ class FavoriteSoldDemoView: UIView, Demoable {
         favoriteSoldView.reloadAds()
     }
 
-    private func loadImageWithPath(_ imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    private func loadImageWithPath(_ imagePath: String, imageWidth: CGFloat, completion: @escaping @Sendable ((UIImage?) -> Void)) {
         guard let url = URL(string: imagePath) else {
             completion(nil)
             return
@@ -127,7 +127,7 @@ extension FavoriteSoldDemoView: AdRecommendationsGridViewDataSource {
         return cell
     }
 
-    func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping @Sendable ((UIImage?) -> Void)) {
         return loadImageWithPath(imagePath, imageWidth: imageWidth, completion: completion)
     }
 
@@ -145,7 +145,7 @@ extension FavoriteSoldDemoView: RemoteImageViewDataSource {
         _ view: RemoteImageView,
         loadImageWithPath imagePath: String,
         imageWidth: CGFloat,
-        completion: @escaping ((UIImage?) -> Void)
+        completion: @escaping @Sendable ((UIImage?) -> Void)
     ) {
         return loadImageWithPath(imagePath, imageWidth: imageWidth, completion: completion)
     }

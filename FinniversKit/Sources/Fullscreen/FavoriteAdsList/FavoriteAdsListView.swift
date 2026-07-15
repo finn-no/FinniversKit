@@ -27,7 +27,7 @@ public protocol FavoriteAdsListViewDataSource: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView,
                              loadImageWithPath imagePath: String,
                              imageWidth: CGFloat,
-                             completion: @escaping ((UIImage?) -> Void)
+                             completion: @escaping @Sendable ((UIImage?) -> Void)
     )
     func favoriteAdsListView(_ view: FavoriteAdsListView,
                              cancelLoadingImageWithPath imagePath: String,
@@ -494,7 +494,7 @@ extension FavoriteAdsListView: RemoteImageViewDataSource {
     public func remoteImageView(_ view: RemoteImageView,
                                 loadImageWithPath imagePath: String,
                                 imageWidth: CGFloat,
-                                completion: @escaping ((UIImage?) -> Void)) {
+                                completion: @escaping @Sendable ((UIImage?) -> Void)) {
         dataSource?.favoriteAdsListView(self, loadImageWithPath: imagePath, imageWidth: imageWidth, completion: { [weak self] image in
             if let image = image {
                 self?.imageCache.add(image, forKey: imagePath)

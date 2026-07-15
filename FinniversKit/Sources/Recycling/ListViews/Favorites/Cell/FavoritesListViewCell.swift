@@ -6,7 +6,7 @@ import UIKit
 import Warp
 
 public protocol FavoritesListViewCellDataSource: AnyObject {
-    func favoritesListViewCell(_ favoritesListViewCell: FavoritesListViewCell, loadImageForModel model: FavoritesListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func favoritesListViewCell(_ favoritesListViewCell: FavoritesListViewCell, loadImageForModel model: FavoritesListViewModel, imageWidth: CGFloat, completion: @escaping @Sendable ((UIImage?) -> Void))
     func favoritesListViewCell(_ favoritesListViewCell: FavoritesListViewCell, cancelLoadingImageForModel model: FavoritesListViewModel, imageWidth: CGFloat)
 }
 
