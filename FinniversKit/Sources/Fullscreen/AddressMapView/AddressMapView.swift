@@ -6,6 +6,7 @@ import UIKit
 import MapKit
 import Warp
 
+@MainActor
 public protocol AddressMapViewDelegate: AnyObject {
     func addressMapViewDidSelectPinButton(_ addressMapView: AddressMapView)
     func addressMapViewDidSelectViewModeButton(_ addressMapView: AddressMapView, sender: UIView)
