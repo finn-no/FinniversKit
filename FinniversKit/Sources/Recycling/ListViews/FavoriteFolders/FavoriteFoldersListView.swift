@@ -21,7 +21,7 @@ public protocol FavoriteFoldersListViewDataSource: AnyObject {
         _ view: FavoriteFoldersListView,
         loadImageWithPath imagePath: String,
         imageWidth: CGFloat,
-        completion: @escaping ((UIImage?) -> Void)
+        completion: @escaping @Sendable ((UIImage?) -> Void)
     )
     func favoriteFoldersListView(
         _ view: FavoriteFoldersListView,
@@ -417,7 +417,7 @@ extension FavoriteFoldersListView: RemoteImageViewDataSource {
         return imageCache.image(forKey: imagePath)
     }
 
-    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping @Sendable ((UIImage?) -> Void)) {
         dataSource?.favoriteFoldersListView(self, loadImageWithPath: imagePath, imageWidth: imageWidth, completion: { [weak self] image in
             if let image = image {
                 self?.imageCache.add(image, forKey: imagePath)

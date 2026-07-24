@@ -17,7 +17,7 @@ public protocol NotificationsListViewDataSource: AnyObject {
     func notificationsListView(_ notificationsListView: NotificationsListView, numberOfItemsInSection section: Int) -> Int
     func notificationsListView(_ notificationsListView: NotificationsListView, groupModelAtSection section: Int) -> NotificationsGroupListViewModel
     func notificationsListView(_ notificationsListView: NotificationsListView, modelAtIndexPath indexPath: IndexPath) -> NotificationsListViewModel
-    func notificationsListView(_ notificationsListView: NotificationsListView, loadImageForModel model: NotificationsListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func notificationsListView(_ notificationsListView: NotificationsListView, loadImageForModel model: NotificationsListViewModel, imageWidth: CGFloat, completion: @escaping @Sendable ((UIImage?) -> Void))
     func notificationsListView(_ notificationsListView: NotificationsListView, cancelLoadingImageForModel model: NotificationsListViewModel, imageWidth: CGFloat)
 }
 
@@ -165,7 +165,7 @@ extension NotificationsListView: UITableViewDataSource {
 // MARK: - NotificationsListViewCellDataSource
 
 extension NotificationsListView: NotificationsListViewCellDataSource {
-    public func notificationsListViewCell(_ notificationsListViewCell: NotificationsListViewCell, loadImageForModel model: NotificationsListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    public func notificationsListViewCell(_ notificationsListViewCell: NotificationsListViewCell, loadImageForModel model: NotificationsListViewModel, imageWidth: CGFloat, completion: @escaping @Sendable ((UIImage?) -> Void)) {
         dataSource?.notificationsListView(self, loadImageForModel: model, imageWidth: imageWidth, completion: completion)
     }
 

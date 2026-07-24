@@ -13,7 +13,7 @@ public protocol FavoritesListViewDelegate: AnyObject {
 public protocol FavoritesListViewDataSource: AnyObject {
     func numberOfItems(inFavoritesListView favoritesListView: FavoritesListView) -> Int
     func favoritesListView(_ favoritesListView: FavoritesListView, modelAtIndex index: Int) -> FavoritesListViewModel
-    func favoritesListView(_ favoritesListView: FavoritesListView, loadImageForModel model: FavoritesListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func favoritesListView(_ favoritesListView: FavoritesListView, loadImageForModel model: FavoritesListViewModel, imageWidth: CGFloat, completion: @escaping @Sendable ((UIImage?) -> Void))
     func favoritesListView(_ favoritesListView: FavoritesListView, cancelLoadingImageForModel model: FavoritesListViewModel, imageWidth: CGFloat)
 }
 
@@ -119,7 +119,7 @@ extension FavoritesListView: UITableViewDataSource {
 // MARK: - FavoritesListViewCellDataSource
 
 extension FavoritesListView: FavoritesListViewCellDataSource {
-    public func favoritesListViewCell(_ favoritesListViewCell: FavoritesListViewCell, loadImageForModel model: FavoritesListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    public func favoritesListViewCell(_ favoritesListViewCell: FavoritesListViewCell, loadImageForModel model: FavoritesListViewModel, imageWidth: CGFloat, completion: @escaping @Sendable ((UIImage?) -> Void)) {
         dataSource?.favoritesListView(self, loadImageForModel: model, imageWidth: imageWidth, completion: completion)
     }
 

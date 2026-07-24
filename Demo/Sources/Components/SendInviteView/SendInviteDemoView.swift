@@ -32,7 +32,7 @@ class SendInviteDemoView: UIView, Demoable {
 }
 
 extension SendInviteDemoView: SendInviteViewDelegate {
-    func sendInviteViewLoadImage(_ view: SendInviteView, loadImageWithUrl url: URL, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    func sendInviteViewLoadImage(_ view: SendInviteView, loadImageWithUrl url: URL, imageWidth: CGFloat, completion: @escaping @Sendable ((UIImage?) -> Void)) {
         let task = URLSession.shared.dataTask(with: url) { data, _, _ in
             usleep(50_000)
             DispatchQueue.main.async {
