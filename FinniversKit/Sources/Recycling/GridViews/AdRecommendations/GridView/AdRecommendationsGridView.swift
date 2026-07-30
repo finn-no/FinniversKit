@@ -8,6 +8,7 @@ public protocol AdRecommendationsGridViewDelegate: AnyObject {
     func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didSelectFavoriteButton button: UIButton, on cell: AdRecommendationCell, at indexPath: IndexPath)
 }
 
+@MainActor
 public protocol AdRecommendationsGridViewDataSource: AnyObject {
     func numberOfItems(inAdRecommendationsGridView adRecommendationsGridView: AdRecommendationsGridView) -> Int
     func numberOfColumns(inAdRecommendationsGridView adRecommendationsGridView: AdRecommendationsGridView) -> AdRecommendationsGridView.ColumnConfiguration?
