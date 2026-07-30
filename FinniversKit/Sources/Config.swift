@@ -4,8 +4,9 @@ import Warp
 
 public struct Config {
     public static var bundle: Bundle { Bundle.finniversKit }
-    public static var imageProvider: ImageProvider = DefaultImageProvider()
-    public static var isDynamicTypeEnabled: Bool = true
+    // Set once during app startup, read-only afterwards.
+    nonisolated(unsafe) public static var imageProvider: ImageProvider = DefaultImageProvider()
+    nonisolated(unsafe) public static var isDynamicTypeEnabled: Bool = true
 
     public static func accessibilityMultiplier() -> CGFloat {
         if Self.isDynamicTypeEnabled {
