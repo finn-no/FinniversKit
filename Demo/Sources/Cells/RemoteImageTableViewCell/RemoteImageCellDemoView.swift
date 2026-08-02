@@ -74,7 +74,7 @@ extension RemoteImageCellDemoView: UITableViewDataSource {
 // MARK: - RemoteImageTableViewCellDataSource
 
 extension RemoteImageCellDemoView: RemoteImageViewDataSource {
-    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping @Sendable ((UIImage?) -> Void)) {
         guard let url = URL(string: imagePath) else {
             completion(nil)
             return

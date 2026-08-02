@@ -70,14 +70,14 @@ extension PromotionDemoView: RemoteImageViewDataSource {
         nil
     }
 
-    func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping @Sendable ((UIImage?) -> Void)) {
         loadImage(imagePath: imagePath, completion: completion)
     }
 
     func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {
     }
 
-    private func loadImage(imagePath: String, completion: @escaping ((UIImage?) -> Void)) {
+    private func loadImage(imagePath: String, completion: @escaping @Sendable ((UIImage?) -> Void)) {
         guard let url = URL(string: imagePath) else {
             completion(nil)
             return

@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol BuyerPickerViewDelegate: AnyObject {
-    func buyerPickerView(_ buyerPickerView: BuyerPickerView, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func buyerPickerView(_ buyerPickerView: BuyerPickerView, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping @Sendable ((UIImage?) -> Void))
     func buyerPickerView(_ buyerPickerView: BuyerPickerView, cancelLoadingImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat)
     func buyerPickerView(_ buyerPickerView: BuyerPickerView, didSelect profile: BuyerPickerProfileModel, forRowAt indexPath: IndexPath)
     func buyerPickerViewDidSelectFallbackCell(_ buyerPickerView: BuyerPickerView)
@@ -132,7 +132,7 @@ extension BuyerPickerView: UITableViewDelegate {
 // MARK: - ReviewProfileCellDelegate
 
 extension BuyerPickerView: BuyerPickerCellDelegate {
-    func buyerPickerCell(_ reviewProfileCell: BuyerPickerProfileCell, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    func buyerPickerCell(_ reviewProfileCell: BuyerPickerProfileCell, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping @Sendable ((UIImage?) -> Void)) {
         delegate?.buyerPickerView(self, loadImageForModel: model, imageWidth: imageWidth, completion: completion)
     }
 

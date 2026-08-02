@@ -4,7 +4,7 @@
 import Warp
 
 public protocol SendInviteViewDelegate: AnyObject {
-    func sendInviteViewLoadImage(_ view: SendInviteView, loadImageWithUrl url: URL, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func sendInviteViewLoadImage(_ view: SendInviteView, loadImageWithUrl url: URL, imageWidth: CGFloat, completion: @escaping @Sendable ((UIImage?) -> Void))
     func sendInviteViewDidTapSendInviteButton(_ button: Button)
     func sendInviteViewDidTapSendInviteLaterButton(_ button: Button)
 }

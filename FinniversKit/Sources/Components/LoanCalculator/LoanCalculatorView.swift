@@ -14,7 +14,7 @@ public extension LoanCalculatorViewModel {
 public protocol LoanCalculatorDataSource: AnyObject {
     func loanCalculatorView(_ view: LoanCalculatorView, formattedCurrencyValue: Float) -> String?
     func loanCalculatorView(_ view: LoanCalculatorView, formattedYearsValue: Int) -> String?
-    func loanCalculatorView(_ view: LoanCalculatorView, loadImageWithUrl: URL, completion: @escaping ((UIImage?) -> Void))
+    func loanCalculatorView(_ view: LoanCalculatorView, loadImageWithUrl: URL, completion: @escaping @Sendable ((UIImage?) -> Void))
     func loanCalculatorView(_ view: LoanCalculatorView, cancelLoadingImageWithUrl: URL)
 }
 
@@ -151,7 +151,7 @@ extension LoanCalculatorView: RemoteImageViewDataSource {
         _ view: RemoteImageView,
         loadImageWithPath imagePath: String,
         imageWidth: CGFloat,
-        completion: @escaping ((UIImage?) -> Void)
+        completion: @escaping @Sendable ((UIImage?) -> Void)
     ) {
         guard let url = URL(string: imagePath) else {
             completion(nil)

@@ -95,7 +95,7 @@ extension LoanCalculatorDemoView: LoanCalculatorDataSource {
     func loanCalculatorView(
         _ view: LoanCalculatorView,
         loadImageWithUrl url: URL,
-        completion: @escaping ((UIImage?) -> Void)
+        completion: @escaping @Sendable ((UIImage?) -> Void)
     ) {
         // Demo code only.
         let task = URLSession.shared.dataTask(with: url) { data, _, _ in

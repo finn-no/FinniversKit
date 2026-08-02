@@ -46,7 +46,7 @@ extension FavoritesListViewDemoView: FavoritesListViewDataSource {
         return dataSource.favorites[index]
     }
 
-    func favoritesListView(_ favoritesListView: FavoritesListView, loadImageForModel model: FavoritesListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    func favoritesListView(_ favoritesListView: FavoritesListView, loadImageForModel model: FavoritesListViewModel, imageWidth: CGFloat, completion: @escaping @Sendable ((UIImage?) -> Void)) {
         guard let path = model.imagePath, let url = URL(string: path) else {
             completion(nil)
             return
