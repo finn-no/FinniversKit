@@ -4,6 +4,7 @@
 
 import UIKit
 
+@MainActor
 public protocol TextViewDelegate: AnyObject {
     func textViewDidChange(_ textView: TextView)
     func textViewShouldBeginEditing(_ textView: TextView) -> Bool
