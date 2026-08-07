@@ -48,6 +48,28 @@ public class FavoriteFoldersListView: UIView {
     public weak var delegate: FavoriteFoldersListViewDelegate?
     public weak var dataSource: FavoriteFoldersListViewDataSource?
 
+    /// Hides the built-in search bar. Set to `true` when the host provides its own search UI
+    /// (for example a navigation-bar search button that reveals a docked search bar). The
+    /// table view collapses into the space previously occupied by the search bar.
+    /// Defaults to `false` to preserve existing behavior.
+    public var isSearchBarHidden: Bool = false {
+        didSet {
+            guard isSearchBarHidden != oldValue else { return }
+            searchBarContainer.isHidden = isSearchBarHidden
+            updateSearchBarContainerTopConstant()
+        }
+    }
+
+    /// Hides the built-in "add folder" row. Set to `true` when the host provides its own
+    /// add-folder affordance (for example a navigation-bar plus button).
+    /// Defaults to `false` to preserve existing behavior.
+    public var isAddButtonHidden: Bool = false {
+        didSet {
+            guard isAddButtonHidden != oldValue else { return }
+            tableView.reloadData()
+        }
+    }
+
     // MARK: - Private properties
 
     private let viewModel: FavoriteFoldersListViewModel
@@ -218,7 +240,7 @@ public class FavoriteFoldersListView: UIView {
 
         tableView.setEditing(editing, animated: true)
         footerViewTop.constant = 0
-        searchBarContainerTop.constant = editing ? -searchBarContainer.frame.height : Warp.Spacing.spacing200
+        updateSearchBarContainerTopConstant()
 
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.layoutIfNeeded()
@@ -285,6 +307,11 @@ public class FavoriteFoldersListView: UIView {
         emptyView.isHidden = !shouldShowEmptyView
     }
 
+    private func updateSearchBarContainerTopConstant() {
+        let shouldCollapse = isSearchBarHidden || tableView.isEditing
+        searchBarContainerTop.constant = shouldCollapse ? -searchBarContainer.frame.height : Warp.Spacing.spacing200
+    }
+
     private func showRefreshControl(_ show: Bool) {
         tableView.refreshControl = show ? refreshControl : nil
     }
@@ -322,7 +349,7 @@ extension FavoriteFoldersListView: UITableViewDataSource {
 
         switch section {
         case .addButton:
-            return isSearchActive || tableView.isEditing ? 0 : 1
+            return isSearchActive || tableView.isEditing || isAddButtonHidden ? 0 : 1
         case .folders:
             return dataSource?.numberOfItems(inFavoriteFoldersListView: self) ?? 0
         }
