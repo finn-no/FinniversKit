@@ -5,6 +5,7 @@
 import UIKit
 import Warp
 
+@MainActor
 public protocol AdReporterDelegate: RadioButtonDelegate {
     func adReporterViewHelpButtonPressed(_ adReporterView: AdReporterView)
 }
