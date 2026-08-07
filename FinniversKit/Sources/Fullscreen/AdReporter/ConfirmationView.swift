@@ -5,6 +5,7 @@
 import UIKit
 import Warp
 
+@MainActor
 public protocol ConfirmationViewDelegate: AnyObject {
     func confirmationViewDidPressDismissButton(_ confirmationView: ConfirmationView)
 }

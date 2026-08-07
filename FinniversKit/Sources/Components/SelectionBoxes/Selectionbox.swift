@@ -7,6 +7,7 @@ import Warp
 
 /* Selection box for selecting a single item */
 
+@MainActor
 public protocol RadioButtonDelegate: AnyObject {
     func radioButton(_ radioButton: RadioButton, didSelectItem item: RadioButtonItem)
     func radioButton(_ radioButton: RadioButton, didUnselectItem item: RadioButtonItem)
