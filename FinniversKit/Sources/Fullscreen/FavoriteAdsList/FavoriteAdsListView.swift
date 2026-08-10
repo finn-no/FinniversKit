@@ -56,6 +56,31 @@ public class FavoriteAdsListView: UIView {
         }
     }
 
+    /// When true, hides the built-in search bar and prevents `setListIsEmpty(_:)` from
+    /// toggling it back on. Set this when the host provides its own search UI
+    /// (for example a navigation-bar search button that reveals a docked search bar).
+    /// Defaults to false to preserve existing behavior.
+    public var isSearchBarPermanentlyHidden: Bool = false {
+        didSet {
+            if isSearchBarPermanentlyHidden {
+                isSearchBarHidden = true
+            }
+        }
+    }
+
+    /// When true, hides the built-in sorting view (the "Sort by" dropdown) and prevents
+    /// `setListIsEmpty(_:)` from toggling it back on. Set this when the host exposes sort
+    /// through a different affordance (for example a navigation-bar overflow menu).
+    /// Defaults to false to preserve existing behavior.
+    public var isSortingViewPermanentlyHidden: Bool = false {
+        didSet {
+            if isSortingViewPermanentlyHidden {
+                tableHeaderView.isSortingViewHidden = true
+                setTableHeader()
+            }
+        }
+    }
+
     public var title = "" {
         didSet {
             tableHeaderView.title = title
@@ -210,10 +235,22 @@ public class FavoriteAdsListView: UIView {
         layoutIfNeeded()
     }
 
+    /// Updates the "no results" empty view text using the view model's prefix.
+    /// Call this from a consumer when using a custom (external) search input, since
+    /// the built-in search bar is the only thing that updates this text automatically.
+    public func updateSearchEmptyText(for searchText: String) {
+        let emptyViewText = "\(viewModel.emptySearchViewBodyPrefix) \"\(searchText)\""
+        emptySearchView.configure(withText: emptyViewText, buttonTitle: nil)
+    }
+
     public func setListIsEmpty(_ isEmpty: Bool) {
         emptyListView.isHidden = !isEmpty
-        tableHeaderView.isSearchBarHidden = isEmpty
-        tableHeaderView.isSortingViewHidden = isEmpty
+        if !isSearchBarPermanentlyHidden {
+            tableHeaderView.isSearchBarHidden = isEmpty
+        }
+        if !isSortingViewPermanentlyHidden {
+            tableHeaderView.isSortingViewHidden = isEmpty
+        }
         setTableHeader()
     }
 
@@ -304,16 +341,19 @@ public class FavoriteAdsListView: UIView {
     private func showEmptySearchViewIfNeeded() {
         let shouldShowEmptySearchView = numberOfSections(in: tableView) == 0
         emptySearchView.isHidden = !shouldShowEmptySearchView
-        tableHeaderView.isSortingViewHidden = shouldShowEmptySearchView
+        if !isSortingViewPermanentlyHidden {
+            tableHeaderView.isSortingViewHidden = shouldShowEmptySearchView
+        }
         setTableHeader()
     }
 
     private func layoutEmptyViews() {
+        // Both empty views cover the full table area so their hosted Warp StateView
+        // centers vertically in the whole visible region. The tableHeaderView (title
+        // + subtitle) remains visible because both empty views use a clear
+        // background.
         emptySearchView.frame = tableView.bounds
-        emptySearchView.frame.origin.y = tableView.tableHeaderView?.frame.height ?? 0
-        emptySearchView.frame.size.height -= emptySearchView.frame.origin.y
-
-        emptyListView.frame = emptySearchView.frame
+        emptyListView.frame = tableView.bounds
     }
 
     /// Calculates the correct frame for the `tableHeaderView` on each call to `layoutSubviews`.
