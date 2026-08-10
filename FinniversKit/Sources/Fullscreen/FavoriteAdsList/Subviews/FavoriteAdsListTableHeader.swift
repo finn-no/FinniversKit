@@ -68,7 +68,7 @@ class FavoriteAdsListTableHeader: UIView {
             numberOfLines: 0,
             withAutoLayout: true
         )
-        label.textAlignment = .center
+        label.textAlignment = .left
         return label
     }()
 
@@ -116,7 +116,7 @@ class FavoriteAdsListTableHeader: UIView {
 
         contentStackView.addArrangedSubviews([titleLabel, subtitleView, messagesStackView, searchBar, sortingContainerView])
         contentStackView.setCustomSpacing(Warp.Spacing.spacing50, after: titleLabel)
-        contentStackView.setCustomSpacing(Warp.Spacing.spacing300, after: subtitleView)
+        contentStackView.setCustomSpacing(Warp.Spacing.spacing100, after: subtitleView)
         contentStackView.setCustomSpacing(Warp.Spacing.spacing200, after: messagesStackView)
         contentStackView.setCustomSpacing(Warp.Spacing.spacing300 + Warp.Spacing.spacing50, after: searchBar)
 
