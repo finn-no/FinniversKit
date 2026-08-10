@@ -103,6 +103,8 @@ public class FavoriteFoldersListView: UIView {
         tableView.rowHeight = FavoriteFoldersListView.estimatedRowHeight
         tableView.estimatedRowHeight = FavoriteFoldersListView.estimatedRowHeight
         tableView.separatorInset = .leadingInset(frame.width)
+        tableView.sectionHeaderTopPadding = 0
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
@@ -385,6 +387,14 @@ extension FavoriteFoldersListView: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension FavoriteFoldersListView: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return .leastNonzeroMagnitude
+    }
+
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNonzeroMagnitude
+    }
+
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? RemoteImageTableViewCell else {
             return
