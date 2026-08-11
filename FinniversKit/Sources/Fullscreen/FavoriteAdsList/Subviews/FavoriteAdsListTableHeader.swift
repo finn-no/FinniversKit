@@ -61,6 +61,7 @@ class FavoriteAdsListTableHeader: UIView {
     private lazy var contentStackView = UIStackView(axis: .vertical, withAutoLayout: true)
     private lazy var messagesStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
     private lazy var sortingContainerView = UIView()
+    private weak var bottomAccessoryView: UIView?
 
     private lazy var titleLabel: Label = {
         let label = Label(
@@ -147,6 +148,23 @@ class FavoriteAdsListTableHeader: UIView {
         messagesStackView.addArrangedSubviews(messageViews)
 
         layoutIfNeeded()
+    }
+
+    /// Installs a view at the very bottom of the header's content stack (below
+    /// the sorting row). Pass `nil` to remove any previously installed accessory.
+    /// The consumer is responsible for calling `FavoriteAdsListView.reloadTableHeader()`
+    /// after adding/removing, so the header re-measures.
+    func setBottomAccessoryView(_ view: UIView?) {
+        if let existing = bottomAccessoryView, existing !== view {
+            contentStackView.removeArrangedSubview(existing)
+            existing.removeFromSuperview()
+        }
+        bottomAccessoryView = view
+        if let view {
+            view.translatesAutoresizingMaskIntoConstraints = false
+            contentStackView.addArrangedSubview(view)
+            contentStackView.setCustomSpacing(Warp.Spacing.spacing200, after: sortingContainerView)
+        }
     }
 
     // MARK: - Private methods

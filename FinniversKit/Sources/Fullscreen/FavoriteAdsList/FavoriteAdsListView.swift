@@ -109,6 +109,31 @@ public class FavoriteAdsListView: UIView {
         }
     }
 
+    /// Optional accessory view rendered at the bottom of the built-in table header, below
+    /// the title/subtitle/messages/sorting content. Consumers use this to layer secondary
+    /// controls (e.g. a status segmented control) that should scroll together with the
+    /// header content. Set to `nil` to remove. Assigning triggers a header relayout.
+    public var tableHeaderAccessoryView: UIView? {
+        didSet {
+            tableHeaderView.setBottomAccessoryView(tableHeaderAccessoryView)
+            reloadTableHeader()
+        }
+    }
+
+    /// Optional view used as the section header for section 0. Because the underlying
+    /// table view uses `.plain` style, this view pins to the top of the visible area
+    /// when the user scrolls past the built-in title header — matching designs that
+    /// need a control (e.g. a status segmented control) to stay reachable while the
+    /// list scrolls. When `nil`, section 0 uses the default title-based header.
+    public var pinnedSectionZeroHeaderView: UIView? {
+        didSet {
+            // Reload only the header of section 0 so the new view is picked up
+            // without disrupting cell state.
+            guard tableView.numberOfSections > 0 else { return }
+            tableView.reloadSections(IndexSet(integer: 0), with: .none)
+        }
+    }
+
     // MARK: - Private properties
 
     private let viewModel: FavoriteAdsListViewModel
@@ -229,6 +254,12 @@ public class FavoriteAdsListView: UIView {
         setTableHeader()
     }
 
+    /// Re-measures and re-installs the built-in table header. Call after changing
+    /// `tableHeaderAccessoryView` at runtime, so the tableView picks up the new size.
+    public func reloadTableHeader() {
+        setTableHeader()
+    }
+
     public func configure(scrollShadowHeight: CGFloat) {
         scrollShadowViewTopConstraint.constant = -scrollShadowHeight
         scrollShadowViewHeightConstraint.constant = scrollShadowHeight
@@ -339,7 +370,12 @@ public class FavoriteAdsListView: UIView {
     }
 
     private func showEmptySearchViewIfNeeded() {
-        let shouldShowEmptySearchView = numberOfSections(in: tableView) == 0
+        // The search-specific empty view should only appear when the user is
+        // actually searching. Without this gate it stacks on top of the
+        // "no favorites yet" empty view whenever both the section count is zero
+        // and the folder is empty, producing two overlapping empty states.
+        let hasSearchText = !searchBarText.isEmpty
+        let shouldShowEmptySearchView = numberOfSections(in: tableView) == 0 && hasSearchText
         emptySearchView.isHidden = !shouldShowEmptySearchView
         if !isSortingViewPermanentlyHidden {
             tableHeaderView.isSortingViewHidden = shouldShowEmptySearchView
@@ -417,12 +453,23 @@ extension FavoriteAdsListView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0, let pinnedView = pinnedSectionZeroHeaderView {
+            return PinnedHeaderContainerView(contentView: pinnedView)
+        }
+
         guard let sectionTitle = dataSource?.favoriteAdsListView(self, titleForHeaderInSection: section) else { return nil }
         let sectionDetail = dataSource?.favoriteAdsListView(self, detailForHeaderInSection: section)
 
         let headerView = tableView.dequeue(FavoriteAdsSectionHeaderView.self)
         headerView.configure(title: sectionTitle, detail: sectionDetail)
         return headerView
+    }
+
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0, pinnedSectionZeroHeaderView != nil {
+            return UITableView.automaticDimension
+        }
+        return UITableView.automaticDimension
     }
 
     public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -599,4 +646,28 @@ private class TableView: UITableView {
         super.setEditing(editing, animated: animated)
         performBatchUpdates(nil)
     }
+}
+
+// MARK: - PinnedHeaderContainerView
+
+/// Wraps a caller-supplied view so it can be returned from `viewForHeaderInSection`.
+/// Section headers must be `UITableViewHeaderFooterView` (or a UIView) that owns the
+/// content; embedding the caller's view lets us reuse it across section reloads
+/// without recreating it. Height is driven by the caller's Auto Layout constraints.
+private final class PinnedHeaderContainerView: UIView {
+    init(contentView: UIView) {
+        super.init(frame: .zero)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        // Remove from any prior superview so section reloads don't leave it detached.
+        contentView.removeFromSuperview()
+        addSubview(contentView)
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
+    }
+
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 }
