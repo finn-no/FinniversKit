@@ -9,6 +9,19 @@ public struct FavoriteFoldersListViewModel {
     public let isEditable: Bool
     public let addBottomSafeAreaInset: Bool
 
+    /// Title for the trailing "rename" swipe action. When `nil` the action is
+    /// omitted from the swipe row (backwards-compatible with hosts that only
+    /// support delete).
+    public let renameActionTitle: String?
+
+    /// Title for the trailing "share" swipe action. When `nil` the action is
+    /// omitted from the swipe row.
+    public let shareActionTitle: String?
+
+    /// Title for the trailing "delete" swipe action. Falls back to the system
+    /// default when `nil`.
+    public let deleteActionTitle: String?
+
     // MARK: - Init
 
     public init(
@@ -16,12 +29,18 @@ public struct FavoriteFoldersListViewModel {
         addFolderText: String,
         emptyViewBodyPrefix: String,
         isEditable: Bool,
-        addBottomSafeAreaInset: Bool = true
+        addBottomSafeAreaInset: Bool = true,
+        renameActionTitle: String? = nil,
+        shareActionTitle: String? = nil,
+        deleteActionTitle: String? = nil
     ) {
         self.searchBarPlaceholder = searchBarPlaceholder
         self.addFolderText = addFolderText
         self.emptyViewBodyPrefix = emptyViewBodyPrefix
         self.isEditable = isEditable
         self.addBottomSafeAreaInset = addBottomSafeAreaInset
+        self.renameActionTitle = renameActionTitle
+        self.shareActionTitle = shareActionTitle
+        self.deleteActionTitle = deleteActionTitle
     }
 }

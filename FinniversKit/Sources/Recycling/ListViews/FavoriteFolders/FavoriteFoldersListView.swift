@@ -9,9 +9,17 @@ public protocol FavoriteFoldersListViewDelegate: AnyObject {
     func favoriteFoldersListViewDidBeginRefreshing(_ view: FavoriteFoldersListView)
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didSelectItemAtIndex index: Int)
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didDeleteItemAtIndex index: Int)
+    func favoriteFoldersListView(_ view: FavoriteFoldersListView, didRenameItemAtIndex index: Int)
+    func favoriteFoldersListView(_ view: FavoriteFoldersListView, didShareItemAtIndex index: Int, sender: UIView)
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView, withSearchText searchText: String?)
     func favoriteFoldersListViewDidFocusSearchBar(_ view: FavoriteFoldersListView)
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String)
+}
+
+// Default implementations keep older hosts (delete-only) source-compatible.
+public extension FavoriteFoldersListViewDelegate {
+    func favoriteFoldersListView(_ view: FavoriteFoldersListView, didRenameItemAtIndex index: Int) {}
+    func favoriteFoldersListView(_ view: FavoriteFoldersListView, didShareItemAtIndex index: Int, sender: UIView) {}
 }
 
 public protocol FavoriteFoldersListViewDataSource: AnyObject {
@@ -424,6 +432,80 @@ extension FavoriteFoldersListView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return viewModel.isEditable ? .delete : .none
+    }
+
+    // Native swipe-actions row for folders. Presented order in the swipe reads
+    // right-to-left, so the array below places delete first (rightmost, matching
+    // the platform destructive convention) then share, then rename.
+    // Multi-select editing mode still uses the legacy `commit editingStyle` path,
+    // which is preserved above.
+    public func tableView(
+        _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        guard
+            viewModel.isEditable,
+            !tableView.isEditing,
+            canEditRow(at: indexPath)
+        else { return nil }
+
+        var actions: [UIContextualAction] = []
+
+        // Icons are SF Symbols so the native swipe row renders "icon over title",
+        // matching the platform Mail/Reminders pattern. Diverges from Figma's
+        // circle-icon-with-label-under design; matching that exactly would need
+        // a bespoke swipe view (deferred).
+        let deleteAction = UIContextualAction(
+            style: .destructive,
+            title: viewModel.deleteActionTitle
+        ) { [weak self] _, _, completion in
+            guard let self = self else { completion(false); return }
+            self.delegate?.favoriteFoldersListView(self, didDeleteItemAtIndex: indexPath.row)
+            completion(true)
+        }
+        deleteAction.image = UIImage(systemName: "trash")
+        // Explicit Warp negative overrides the `.destructive` style's default
+        // system red so the swipe matches the rest of the FINN palette.
+        deleteAction.backgroundColor = Warp.UIToken.backgroundNegative
+        actions.append(deleteAction)
+
+        if let shareTitle = viewModel.shareActionTitle {
+            let shareAction = UIContextualAction(
+                style: .normal,
+                title: shareTitle
+            ) { [weak self, weak tableView] _, _, completion in
+                guard let self = self else { completion(false); return }
+                let sender: UIView = tableView?.cellForRow(at: indexPath) ?? self
+                self.delegate?.favoriteFoldersListView(self, didShareItemAtIndex: indexPath.row, sender: sender)
+                completion(true)
+            }
+            shareAction.image = UIImage(systemName: "square.and.arrow.up")
+            // Warp `backgroundInfo` matches the softer Figma share swatch — the
+            // brighter `backgroundPrimary` (primary CTA blue) reads too strong here.
+            shareAction.backgroundColor = Warp.UIToken.backgroundInfo
+            actions.append(shareAction)
+        }
+
+        if let renameTitle = viewModel.renameActionTitle {
+            let renameAction = UIContextualAction(
+                style: .normal,
+                title: renameTitle
+            ) { [weak self] _, _, completion in
+                guard let self = self else { completion(false); return }
+                self.delegate?.favoriteFoldersListView(self, didRenameItemAtIndex: indexPath.row)
+                completion(true)
+            }
+            renameAction.image = UIImage(systemName: "pencil")
+            renameAction.backgroundColor = Warp.UIToken.backgroundWarning
+            actions.append(renameAction)
+        }
+
+        let configuration = UISwipeActionsConfiguration(actions: actions)
+        // Delete sits first in the array (rightmost). A full-swipe would
+        // otherwise auto-delete the folder — require an explicit tap instead
+        // to prevent accidental destruction.
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
     }
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
