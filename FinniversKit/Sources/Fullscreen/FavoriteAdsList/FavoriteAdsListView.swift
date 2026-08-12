@@ -10,6 +10,7 @@ public protocol FavoriteAdsListViewDelegate: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButton button: UIButton, at indexPath: IndexPath)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath, sender: UIView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath, sender: UIView)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectShareItemAt indexPath: IndexPath, sender: UIView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectSortingView sortingView: UIView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectHeaderShareButton button: UIButton)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectFooterShareButton button: UIButton)
@@ -78,6 +79,17 @@ public class FavoriteAdsListView: UIView {
                 tableHeaderView.isSortingViewHidden = true
                 setTableHeader()
             }
+        }
+    }
+
+    /// When true, the per-row ⋮ affordance is hidden on every editable row. Use
+    /// this when a consumer has migrated the per-item actions (comment / share /
+    /// delete) to trailing swipes and doesn't want the redundant button.
+    /// Defaults to false to preserve existing behavior.
+    public var isMoreButtonPermanentlyHidden: Bool = false {
+        didSet {
+            guard isMoreButtonPermanentlyHidden != oldValue else { return }
+            tableView.reloadData()
         }
     }
 
@@ -495,7 +507,24 @@ extension FavoriteAdsListView: UITableViewDelegate {
                 completionHandler(true)
             })
 
-        commentAction.backgroundColor = Warp.UIToken.iconStatic
+        // Warp amber matches Figma's "Add note" / "Edit note" affordance and
+        // groups the action visually with note-editing (soft warning tone).
+        commentAction.backgroundColor = Warp.UIToken.backgroundWarning
+        commentAction.image = UIImage(systemName: "pencil")
+
+        let shareAction = UIContextualAction(
+            style: .normal,
+            title: viewModel.shareAdActionTitle,
+            handler: { [weak self] _, sender, completionHandler in
+                guard let self = self else { return }
+                self.delegate?.favoriteAdsListView(self, didSelectShareItemAt: indexPath, sender: sender)
+                completionHandler(true)
+            })
+
+        // Warp `backgroundInfo` matches the softer Figma share swatch — the
+        // brighter `backgroundPrimary` (primary CTA blue) reads too strong here.
+        shareAction.backgroundColor = Warp.UIToken.backgroundInfo
+        shareAction.image = UIImage(systemName: "square.and.arrow.up")
 
         let deleteAction = UIContextualAction(
             style: .normal,
@@ -507,8 +536,13 @@ extension FavoriteAdsListView: UITableViewDelegate {
             })
 
         deleteAction.backgroundColor = .backgroundNegative
+        deleteAction.image = UIImage(systemName: "trash")
 
-        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, commentAction])
+        // Rightmost (index 0) is comment because it is the most-used per-ad
+        // action; delete moves to the far left where the destructive action
+        // requires an explicit reach. Matches the Figma "Add note | Share | Delete"
+        // visual order (right-to-left in swipe reveal terms).
+        let configuration = UISwipeActionsConfiguration(actions: [commentAction, shareAction, deleteAction])
         configuration.performsFirstActionWithFullSwipe = false
 
         return configuration
@@ -549,7 +583,7 @@ extension FavoriteAdsListView: UITableViewDataSource {
         cell.remoteImageViewDataSource = self
         cell.delegate = self
 
-        cell.isMoreButtonHidden = isReadOnly
+        cell.isMoreButtonHidden = isReadOnly || isMoreButtonPermanentlyHidden
 
         if let viewModel = dataSource?.favoriteAdsListView(self, viewModelFor: indexPath) {
             cell.configure(with: viewModel)
