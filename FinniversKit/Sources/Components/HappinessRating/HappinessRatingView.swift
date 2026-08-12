@@ -5,6 +5,7 @@
 import UIKit
 import Warp
 
+@MainActor
 public protocol HappinessRatingViewDelegate: AnyObject {
     func happinessRatingView(_ happinessRatingView: HappinessRatingView, didSelectRating rating: HappinessRating)
     func happinessRatingView(_ happinessRatingView: HappinessRatingView, textFor rating: HappinessRating) -> String?
@@ -132,6 +133,7 @@ extension HappinessRatingView: RatingViewDelegate {
 
 // MARK: - RatingView
 
+@MainActor
 private protocol RatingViewDelegate: AnyObject {
     func ratingViewText(for rating: HappinessRating) -> String?
 }

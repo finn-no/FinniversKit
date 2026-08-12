@@ -1,5 +1,6 @@
 import UIKit
 
+@MainActor
 protocol HorizontalSlideControllerDelegate: AnyObject {
     func horizontalSlideControllerDidDismiss(_ horizontalSlideController: HorizontalSlideController)
 }

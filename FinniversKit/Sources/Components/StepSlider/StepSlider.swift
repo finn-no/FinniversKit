@@ -5,6 +5,7 @@
 import UIKit
 import Warp
 
+@MainActor
 public protocol StepSliderDelegate: AnyObject {
     func stepSlider(_ stepSlider: StepSlider, didChangeRawValue value: Float)
     func stepSlider(_ stepSlider: StepSlider, canChangeToStep step: Step) -> Bool

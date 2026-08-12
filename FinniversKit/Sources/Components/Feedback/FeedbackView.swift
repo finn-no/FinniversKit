@@ -7,6 +7,7 @@ import Warp
 
 // MARK: - FeedbackViewDelegate
 
+@MainActor
 public protocol FeedbackViewDelegate: AnyObject {
     func feedbackView(
         _ feedbackView: FeedbackView,

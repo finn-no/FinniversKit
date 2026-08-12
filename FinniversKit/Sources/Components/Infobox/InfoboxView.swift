@@ -5,6 +5,7 @@
 import UIKit
 import Warp
 
+@MainActor
 public protocol InfoboxViewDelegate: AnyObject {
     func infoboxViewDidSelectPrimaryButton(_ view: InfoboxView)
     func infoboxViewDidSelectSecondaryButton(_ view: InfoboxView)
