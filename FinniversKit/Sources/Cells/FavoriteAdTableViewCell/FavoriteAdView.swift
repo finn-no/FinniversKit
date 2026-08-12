@@ -2,6 +2,7 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+import SwiftUI
 import UIKit
 import Warp
 
@@ -44,8 +45,28 @@ final class FavoriteAdView: UIView {
     private lazy var descriptionPrimaryLabel = label(style: .bodyStrong, textColor: .text, numberOfLines: 0)
     private lazy var descriptionSecondaryLabel = label(style: .detail, textColor: .text, numberOfLines: 0)
     private lazy var descriptionTertiaryLabel = label(style: .detailStrong, textColor: .text, numberOfLines: 0)
-    private lazy var statusRibbon = RibbonView(withAutoLayout: true)
-    private lazy var commentView = FavoriteAdCommentView(withAutoLayout: true)
+    // Hosted Warp.Badge replaces the legacy FinniversKit RibbonView. Same
+    // top-right placement and semantic content (status text + variant); the
+    // public API still speaks `RibbonViewModel` so callers do not change.
+    private lazy var statusBadgeHostingController: UIHostingController<StatusBadgeView> = {
+        let host = UIHostingController(rootView: StatusBadgeView(text: "", variant: .neutral))
+        host.view.translatesAutoresizingMaskIntoConstraints = false
+        host.view.backgroundColor = .clear
+        host.view.isAccessibilityElement = true
+        return host
+    }()
+    private var statusBadgeView: UIView { statusBadgeHostingController.view }
+    // Hosted Warp.Alert for the per-ad note. Rebuilt with the current comment
+    // text on configure/reset; accessed by helper methods on this cell instead
+    // of a separate wrapper class.
+    private lazy var commentHostingController: UIHostingController<CommentAlertView> = {
+        let host = UIHostingController(rootView: CommentAlertView(title: "", text: ""))
+        host.view.translatesAutoresizingMaskIntoConstraints = false
+        host.view.backgroundColor = .clear
+        host.view.isAccessibilityElement = true
+        return host
+    }()
+    private var commentView: UIView { commentHostingController.view }
     private lazy var fallbackImage: UIImage = UIImage(named: .noImage)
 
     private lazy var rootStackView: UIStackView = {
@@ -120,10 +141,10 @@ final class FavoriteAdView: UIView {
         configureCommentView()
 
         if let ribbonViewModel = viewModel.ribbonViewModel {
-            statusRibbon.isHidden = false
-            statusRibbon.configure(with: ribbonViewModel)
+            updateStatusBadge(from: ribbonViewModel)
+            statusBadgeView.isHidden = false
         } else {
-            statusRibbon.isHidden = true
+            statusBadgeView.isHidden = true
         }
 
         addressLabel.text = viewModel.addressText ?? " "
@@ -176,16 +197,18 @@ final class FavoriteAdView: UIView {
             $0.isHidden = true
         }
 
-        commentView.configure(withText: nil)
+        updateCommentAlert(title: "", text: "")
+        commentView.accessibilityLabel = nil
         commentView.isHidden = true
     }
 
     func resetBackgroundColors() {
         remoteImageView.backgroundColor = remoteImageView.image == nil ? loadingColor : .clear
-        commentView.backgroundColor = FavoriteAdCommentView.defaultBackgroundColor
+        // Warp.Alert draws its own background — cell just keeps the container clear.
+        commentView.backgroundColor = .clear
 
         if let ribbonViewModel = viewModel?.ribbonViewModel {
-            statusRibbon.style = ribbonViewModel.style
+            updateStatusBadge(from: ribbonViewModel)
         }
     }
 
@@ -209,7 +232,7 @@ final class FavoriteAdView: UIView {
         textStackView.setCustomSpacing(Warp.Spacing.spacing100, after: descriptionSecondaryLabel)
 
         contentView.addSubview(infoStackView)
-        contentView.addSubview(statusRibbon)
+        contentView.addSubview(statusBadgeView)
         contentView.addSubview(moreButton)
 
         rootStackView.addArrangedSubview(contentView)
@@ -242,11 +265,11 @@ final class FavoriteAdView: UIView {
             remoteImageView.widthAnchor.constraint(equalToConstant: FavoriteAdView.adImageWidth),
             remoteImageView.heightAnchor.constraint(equalTo: remoteImageView.widthAnchor),
 
-            statusRibbon.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
-            statusRibbon.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
+            statusBadgeView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
+            statusBadgeView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
 
-            sortingDetailLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -Warp.Spacing.spacing100),
-            addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -Warp.Spacing.spacing100),
+            sortingDetailLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusBadgeView.leadingAnchor, constant: -Warp.Spacing.spacing100),
+            addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusBadgeView.leadingAnchor, constant: -Warp.Spacing.spacing100),
 
             commentView.trailingAnchor.constraint(equalTo: rootStackView.trailingAnchor, constant: -Warp.Spacing.spacing200)
         ])
@@ -260,11 +283,24 @@ final class FavoriteAdView: UIView {
 
     private func configureCommentView() {
         if let comment = viewModel?.comment, !comment.isEmpty, !isCommentViewHidden {
-            commentView.configure(withText: comment)
+            updateCommentAlert(title: viewModel?.commentAlertTitle ?? "", text: comment)
+            commentView.accessibilityLabel = comment
             commentView.isHidden = false
         } else {
             commentView.isHidden = true
         }
+    }
+
+    private func updateCommentAlert(title: String, text: String) {
+        commentHostingController.rootView = CommentAlertView(title: title, text: text)
+    }
+
+    private func updateStatusBadge(from ribbonViewModel: RibbonViewModel) {
+        statusBadgeHostingController.rootView = StatusBadgeView(
+            text: ribbonViewModel.title,
+            variant: Warp.BadgeVariant(ribbonStyle: ribbonViewModel.style)
+        )
+        statusBadgeView.accessibilityLabel = ribbonViewModel.title
     }
 
     private func label(style: Warp.Typography, textColor: UIColor, numberOfLines: Int, isHidden: Bool = true) -> Label {
@@ -277,5 +313,45 @@ final class FavoriteAdView: UIView {
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.isHidden = isHidden
         return label
+    }
+}
+
+// Title supplied by the consumer via FavoriteAdViewModel.commentAlertTitle so
+// the string is localized in the host app rather than baked into FinniversKit.
+private struct CommentAlertView: View {
+    let title: String
+    let text: String
+
+    var body: some View {
+        Warp.Alert(
+            style: .info,
+            title: title,
+            subtitle: text
+        )
+    }
+}
+
+private struct StatusBadgeView: View {
+    let text: String
+    let variant: Warp.BadgeVariant
+
+    var body: some View {
+        Warp.Badge(text: text, variant: variant)
+    }
+}
+
+private extension Warp.BadgeVariant {
+    // Bridges the FinniversKit RibbonView.Style domain into Warp's badge
+    // variants so `FavoriteAdViewModel.ribbonViewModel` stays the public API
+    // while the cell renders a Warp.Badge internally.
+    init(ribbonStyle: RibbonView.Style) {
+        switch ribbonStyle {
+        case .default: self = .neutral
+        case .success: self = .success
+        case .warning: self = .warning
+        case .error: self = .negative
+        case .disabled: self = .disabled
+        case .sponsored: self = .sponsored
+        }
     }
 }

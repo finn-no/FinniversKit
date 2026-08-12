@@ -17,6 +17,10 @@ public struct FavoriteAdViewModel {
     public let addedToFolderDate: Date
     public let lastUpdated: Date?
     public let comment: String?
+    /// Title displayed above the per-ad note in the Warp.Alert. Consumers supply
+    /// their own localized string ("Notat" / "Note" / etc). Defaults to empty
+    /// for backwards-compat; the cell hides the alert when comment itself is nil.
+    public let commentAlertTitle: String
 
     public init(addressText: String?,
                 titleText: String,
@@ -29,7 +33,8 @@ public struct FavoriteAdViewModel {
                 sortingDetailText: String?,
                 addedToFolderDate: Date,
                 lastUpdated: Date?,
-                comment: String?) {
+                comment: String?,
+                commentAlertTitle: String = "") {
         self.addressText = addressText
         self.titleText = titleText
         self.titleColor = titleColor
@@ -42,5 +47,6 @@ public struct FavoriteAdViewModel {
         self.addedToFolderDate = addedToFolderDate
         self.lastUpdated = lastUpdated
         self.comment = comment
+        self.commentAlertTitle = commentAlertTitle
     }
 }
