@@ -68,7 +68,6 @@ final class FavoriteSearchEmptyView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        // Transparent so anything behind (e.g. the folder title header) shows through.
         backgroundColor = .clear
 
         stackView.addArrangedSubview(iconImageView)
@@ -81,8 +80,6 @@ final class FavoriteSearchEmptyView: UIView {
             iconImageView.widthAnchor.constraint(equalToConstant: 64),
             iconImageView.heightAnchor.constraint(equalToConstant: 64),
 
-            // Pin leading/trailing so the label has a width to wrap in, and
-            // center the whole stack vertically inside the empty view.
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing400),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing400),
             stackView.centerYAnchor.constraint(equalTo: centerYAnchor),

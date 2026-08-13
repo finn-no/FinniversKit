@@ -19,6 +19,10 @@ public protocol FavoriteAdsListViewDelegate: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didUpdateTitleLabelVisibility isVisible: Bool)
 }
 
+public extension FavoriteAdsListViewDelegate {
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectShareItemAt indexPath: IndexPath, sender: UIView) {}
+}
+
 public protocol FavoriteAdsListViewDataSource: AnyObject {
     func numberOfSections(inFavoriteAdsListView view: FavoriteAdsListView) -> Int
     func numberOfItems(inFavoriteAdsListView view: FavoriteAdsListView, forSection section: Int) -> Int
@@ -57,10 +61,6 @@ public class FavoriteAdsListView: UIView {
         }
     }
 
-    /// When true, hides the built-in search bar and prevents `setListIsEmpty(_:)` from
-    /// toggling it back on. Set this when the host provides its own search UI
-    /// (for example a navigation-bar search button that reveals a docked search bar).
-    /// Defaults to false to preserve existing behavior.
     public var isSearchBarPermanentlyHidden: Bool = false {
         didSet {
             if isSearchBarPermanentlyHidden {
@@ -69,10 +69,6 @@ public class FavoriteAdsListView: UIView {
         }
     }
 
-    /// When true, hides the built-in sorting view (the "Sort by" dropdown) and prevents
-    /// `setListIsEmpty(_:)` from toggling it back on. Set this when the host exposes sort
-    /// through a different affordance (for example a navigation-bar overflow menu).
-    /// Defaults to false to preserve existing behavior.
     public var isSortingViewPermanentlyHidden: Bool = false {
         didSet {
             if isSortingViewPermanentlyHidden {
@@ -82,10 +78,6 @@ public class FavoriteAdsListView: UIView {
         }
     }
 
-    /// When true, the per-row ⋮ affordance is hidden on every editable row. Use
-    /// this when a consumer has migrated the per-item actions (comment / share /
-    /// delete) to trailing swipes and doesn't want the redundant button.
-    /// Defaults to false to preserve existing behavior.
     public var isMoreButtonPermanentlyHidden: Bool = false {
         didSet {
             guard isMoreButtonPermanentlyHidden != oldValue else { return }
@@ -121,10 +113,6 @@ public class FavoriteAdsListView: UIView {
         }
     }
 
-    /// Optional accessory view rendered at the bottom of the built-in table header, below
-    /// the title/subtitle/messages/sorting content. Consumers use this to layer secondary
-    /// controls (e.g. a status segmented control) that should scroll together with the
-    /// header content. Set to `nil` to remove. Assigning triggers a header relayout.
     public var tableHeaderAccessoryView: UIView? {
         didSet {
             tableHeaderView.setBottomAccessoryView(tableHeaderAccessoryView)
@@ -132,15 +120,8 @@ public class FavoriteAdsListView: UIView {
         }
     }
 
-    /// Optional view used as the section header for section 0. Because the underlying
-    /// table view uses `.plain` style, this view pins to the top of the visible area
-    /// when the user scrolls past the built-in title header — matching designs that
-    /// need a control (e.g. a status segmented control) to stay reachable while the
-    /// list scrolls. When `nil`, section 0 uses the default title-based header.
     public var pinnedSectionZeroHeaderView: UIView? {
         didSet {
-            // Reload only the header of section 0 so the new view is picked up
-            // without disrupting cell state.
             guard tableView.numberOfSections > 0 else { return }
             tableView.reloadSections(IndexSet(integer: 0), with: .none)
         }
@@ -507,8 +488,6 @@ extension FavoriteAdsListView: UITableViewDelegate {
                 completionHandler(true)
             })
 
-        // Warp amber matches Figma's "Add note" / "Edit note" affordance and
-        // groups the action visually with note-editing (soft warning tone).
         commentAction.backgroundColor = Warp.UIToken.backgroundWarning
         commentAction.image = UIImage(systemName: "pencil")
 
@@ -521,8 +500,6 @@ extension FavoriteAdsListView: UITableViewDelegate {
                 completionHandler(true)
             })
 
-        // Warp `backgroundInfo` matches the softer Figma share swatch — the
-        // brighter `backgroundPrimary` (primary CTA blue) reads too strong here.
         shareAction.backgroundColor = Warp.UIToken.backgroundInfo
         shareAction.image = UIImage(systemName: "square.and.arrow.up")
 
@@ -538,10 +515,6 @@ extension FavoriteAdsListView: UITableViewDelegate {
         deleteAction.backgroundColor = .backgroundNegative
         deleteAction.image = UIImage(systemName: "trash")
 
-        // Rightmost (index 0) is comment because it is the most-used per-ad
-        // action; delete moves to the far left where the destructive action
-        // requires an explicit reach. Matches the Figma "Add note | Share | Delete"
-        // visual order (right-to-left in swipe reveal terms).
         let configuration = UISwipeActionsConfiguration(actions: [commentAction, shareAction, deleteAction])
         configuration.performsFirstActionWithFullSwipe = false
 

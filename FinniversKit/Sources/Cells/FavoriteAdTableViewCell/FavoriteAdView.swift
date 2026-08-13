@@ -45,20 +45,17 @@ final class FavoriteAdView: UIView {
     private lazy var descriptionPrimaryLabel = label(style: .bodyStrong, textColor: .text, numberOfLines: 0)
     private lazy var descriptionSecondaryLabel = label(style: .detail, textColor: .text, numberOfLines: 0)
     private lazy var descriptionTertiaryLabel = label(style: .detailStrong, textColor: .text, numberOfLines: 0)
-    // Hosted Warp.Badge replaces the legacy FinniversKit RibbonView. Same
-    // top-right placement and semantic content (status text + variant); the
-    // public API still speaks `RibbonViewModel` so callers do not change.
     private lazy var statusBadgeHostingController: UIHostingController<StatusBadgeView> = {
         let host = UIHostingController(rootView: StatusBadgeView(text: "", variant: .neutral))
         host.view.translatesAutoresizingMaskIntoConstraints = false
         host.view.backgroundColor = .clear
         host.view.isAccessibilityElement = true
+        if #available(iOS 16, *) {
+            host.sizingOptions = .intrinsicContentSize
+        }
         return host
     }()
     private var statusBadgeView: UIView { statusBadgeHostingController.view }
-    // Hosted Warp.Alert for the per-ad note. Rebuilt with the current comment
-    // text on configure/reset; accessed by helper methods on this cell instead
-    // of a separate wrapper class.
     private lazy var commentHostingController: UIHostingController<CommentAlertView> = {
         let host = UIHostingController(rootView: CommentAlertView(title: "", text: ""))
         host.view.translatesAutoresizingMaskIntoConstraints = false
@@ -204,7 +201,6 @@ final class FavoriteAdView: UIView {
 
     func resetBackgroundColors() {
         remoteImageView.backgroundColor = remoteImageView.image == nil ? loadingColor : .clear
-        // Warp.Alert draws its own background — cell just keeps the container clear.
         commentView.backgroundColor = .clear
 
         if let ribbonViewModel = viewModel?.ribbonViewModel {
@@ -316,8 +312,6 @@ final class FavoriteAdView: UIView {
     }
 }
 
-// Title supplied by the consumer via FavoriteAdViewModel.commentAlertTitle so
-// the string is localized in the host app rather than baked into FinniversKit.
 private struct CommentAlertView: View {
     let title: String
     let text: String
@@ -341,9 +335,6 @@ private struct StatusBadgeView: View {
 }
 
 private extension Warp.BadgeVariant {
-    // Bridges the FinniversKit RibbonView.Style domain into Warp's badge
-    // variants so `FavoriteAdViewModel.ribbonViewModel` stays the public API
-    // while the cell renders a Warp.Badge internally.
     init(ribbonStyle: RibbonView.Style) {
         switch ribbonStyle {
         case .default: self = .neutral

@@ -150,10 +150,6 @@ class FavoriteAdsListTableHeader: UIView {
         layoutIfNeeded()
     }
 
-    /// Installs a view at the very bottom of the header's content stack (below
-    /// the sorting row). Pass `nil` to remove any previously installed accessory.
-    /// The consumer is responsible for calling `FavoriteAdsListView.reloadTableHeader()`
-    /// after adding/removing, so the header re-measures.
     func setBottomAccessoryView(_ view: UIView?) {
         if let existing = bottomAccessoryView, existing !== view {
             contentStackView.removeArrangedSubview(existing)

@@ -16,7 +16,6 @@ public protocol FavoriteFoldersListViewDelegate: AnyObject {
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String)
 }
 
-// Default implementations keep older hosts (delete-only) source-compatible.
 public extension FavoriteFoldersListViewDelegate {
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didRenameItemAtIndex index: Int) {}
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didShareItemAtIndex index: Int, sender: UIView) {}
@@ -56,10 +55,6 @@ public class FavoriteFoldersListView: UIView {
     public weak var delegate: FavoriteFoldersListViewDelegate?
     public weak var dataSource: FavoriteFoldersListViewDataSource?
 
-    /// Hides the built-in search bar. Set to `true` when the host provides its own search UI
-    /// (for example a navigation-bar search button that reveals a docked search bar). The
-    /// table view collapses into the space previously occupied by the search bar.
-    /// Defaults to `false` to preserve existing behavior.
     public var isSearchBarHidden: Bool = false {
         didSet {
             guard isSearchBarHidden != oldValue else { return }
@@ -68,9 +63,6 @@ public class FavoriteFoldersListView: UIView {
         }
     }
 
-    /// Hides the built-in "add folder" row. Set to `true` when the host provides its own
-    /// add-folder affordance (for example a navigation-bar plus button).
-    /// Defaults to `false` to preserve existing behavior.
     public var isAddButtonHidden: Bool = false {
         didSet {
             guard isAddButtonHidden != oldValue else { return }
@@ -176,6 +168,12 @@ public class FavoriteFoldersListView: UIView {
 
     // MARK: - Data
 
+    public func updateSearchEmptyText(for searchText: String) {
+        let trimmed = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        let emptyViewText = "\(viewModel.emptyViewBodyPrefix) \"\(trimmed)\""
+        emptyView.configure(withText: emptyViewText, buttonTitle: viewModel.addFolderText)
+    }
+
     public func reloadData() {
         showEmptyViewIfNeeded()
 
@@ -193,7 +191,6 @@ public class FavoriteFoldersListView: UIView {
         tableView.reloadData()
     }
 
-    /// Perform necessary updates using an instance of UITableView and folders section
     public func performUpdates(using closure: (UpdateContext) -> Void) {
         closure(UpdateContext(tableView: tableView, section: Section.folders.rawValue))
     }
@@ -434,11 +431,6 @@ extension FavoriteFoldersListView: UITableViewDelegate {
         return viewModel.isEditable ? .delete : .none
     }
 
-    // Native swipe-actions row for folders. Presented order in the swipe reads
-    // right-to-left, so the array below places delete first (rightmost, matching
-    // the platform destructive convention) then share, then rename.
-    // Multi-select editing mode still uses the legacy `commit editingStyle` path,
-    // which is preserved above.
     public func tableView(
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
@@ -451,10 +443,6 @@ extension FavoriteFoldersListView: UITableViewDelegate {
 
         var actions: [UIContextualAction] = []
 
-        // Icons are SF Symbols so the native swipe row renders "icon over title",
-        // matching the platform Mail/Reminders pattern. Diverges from Figma's
-        // circle-icon-with-label-under design; matching that exactly would need
-        // a bespoke swipe view (deferred).
         let deleteAction = UIContextualAction(
             style: .destructive,
             title: viewModel.deleteActionTitle
@@ -464,8 +452,6 @@ extension FavoriteFoldersListView: UITableViewDelegate {
             completion(true)
         }
         deleteAction.image = UIImage(systemName: "trash")
-        // Explicit Warp negative overrides the `.destructive` style's default
-        // system red so the swipe matches the rest of the FINN palette.
         deleteAction.backgroundColor = Warp.UIToken.backgroundNegative
         actions.append(deleteAction)
 
@@ -480,8 +466,6 @@ extension FavoriteFoldersListView: UITableViewDelegate {
                 completion(true)
             }
             shareAction.image = UIImage(systemName: "square.and.arrow.up")
-            // Warp `backgroundInfo` matches the softer Figma share swatch — the
-            // brighter `backgroundPrimary` (primary CTA blue) reads too strong here.
             shareAction.backgroundColor = Warp.UIToken.backgroundInfo
             actions.append(shareAction)
         }
@@ -501,9 +485,6 @@ extension FavoriteFoldersListView: UITableViewDelegate {
         }
 
         let configuration = UISwipeActionsConfiguration(actions: actions)
-        // Delete sits first in the array (rightmost). A full-swipe would
-        // otherwise auto-delete the folder — require an explicit tap instead
-        // to prevent accidental destruction.
         configuration.performsFirstActionWithFullSwipe = false
         return configuration
     }
