@@ -488,8 +488,12 @@ extension FavoriteAdsListView: UITableViewDelegate {
                 completionHandler(true)
             })
 
-        commentAction.backgroundColor = Warp.UIToken.backgroundWarning
-        commentAction.image = UIImage(systemName: "pencil")
+        commentAction.image = .warpSwipeActionDisc(icon: Warp.Icon.edit.uiImage, fill: Warp.UIToken.backgroundWarning)
+        if #available(iOS 26, *) {
+            commentAction.backgroundColor = .clear
+        } else {
+            commentAction.backgroundColor = Warp.UIToken.background
+        }
 
         let shareAction = UIContextualAction(
             style: .normal,
@@ -500,8 +504,12 @@ extension FavoriteAdsListView: UITableViewDelegate {
                 completionHandler(true)
             })
 
-        shareAction.backgroundColor = Warp.UIToken.backgroundInfo
-        shareAction.image = UIImage(systemName: "square.and.arrow.up")
+        shareAction.image = .warpSwipeActionDisc(icon: Warp.Icon.share.uiImage, fill: Warp.UIToken.backgroundInfo)
+        if #available(iOS 26, *) {
+            shareAction.backgroundColor = .clear
+        } else {
+            shareAction.backgroundColor = Warp.UIToken.background
+        }
 
         let deleteAction = UIContextualAction(
             style: .normal,
@@ -512,10 +520,14 @@ extension FavoriteAdsListView: UITableViewDelegate {
                 completionHandler(true)
             })
 
-        deleteAction.backgroundColor = .backgroundNegative
-        deleteAction.image = UIImage(systemName: "trash")
+        deleteAction.image = .warpSwipeActionDisc(icon: Warp.Icon.bin.uiImage, fill: Warp.UIToken.backgroundNegative)
+        if #available(iOS 26, *) {
+            deleteAction.backgroundColor = .clear
+        } else {
+            deleteAction.backgroundColor = Warp.UIToken.background
+        }
 
-        let configuration = UISwipeActionsConfiguration(actions: [commentAction, shareAction, deleteAction])
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, shareAction, commentAction])
         configuration.performsFirstActionWithFullSwipe = false
 
         return configuration

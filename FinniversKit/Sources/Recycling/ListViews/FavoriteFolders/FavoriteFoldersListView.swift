@@ -48,7 +48,7 @@ public class FavoriteFoldersListView: UIView {
         public let section: Int
     }
 
-    public static let estimatedRowHeight: CGFloat = 64.0
+    public static let estimatedRowHeight: CGFloat = 80.0
 
     // MARK: - Public properties
 
@@ -420,15 +420,12 @@ extension FavoriteFoldersListView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if tableView.isEditing {
-            return Section(rawValue: indexPath.section) == .folders && canEditRow(at: indexPath)
-        } else {
-            return canEditRow(at: indexPath)
-        }
+        guard Section(rawValue: indexPath.section) == .folders else { return false }
+        return tableView.isEditing ? canEditRow(at: indexPath) : true
     }
 
     public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return viewModel.isEditable ? .delete : .none
+        return .none
     }
 
     public func tableView(
@@ -438,22 +435,48 @@ extension FavoriteFoldersListView: UITableViewDelegate {
         guard
             viewModel.isEditable,
             !tableView.isEditing,
-            canEditRow(at: indexPath)
+            Section(rawValue: indexPath.section) == .folders
         else { return nil }
+
+        let isDefaultFolder = dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row).isDefault == true
 
         var actions: [UIContextualAction] = []
 
-        let deleteAction = UIContextualAction(
-            style: .destructive,
-            title: viewModel.deleteActionTitle
-        ) { [weak self] _, _, completion in
-            guard let self = self else { completion(false); return }
-            self.delegate?.favoriteFoldersListView(self, didDeleteItemAtIndex: indexPath.row)
-            completion(true)
+        if !isDefaultFolder {
+            let deleteAction = UIContextualAction(
+                style: .normal,
+                title: viewModel.deleteActionTitle
+            ) { [weak self] _, _, completion in
+                guard let self = self else { completion(false); return }
+                self.delegate?.favoriteFoldersListView(self, didDeleteItemAtIndex: indexPath.row)
+                completion(true)
+            }
+            deleteAction.image = .warpSwipeActionDisc(icon: Warp.Icon.bin.uiImage, fill: Warp.UIToken.backgroundNegative)
+            if #available(iOS 26, *) {
+                deleteAction.backgroundColor = .clear
+            } else {
+                deleteAction.backgroundColor = Warp.UIToken.background
+            }
+            actions.append(deleteAction)
         }
-        deleteAction.image = UIImage(systemName: "trash")
-        deleteAction.backgroundColor = Warp.UIToken.backgroundNegative
-        actions.append(deleteAction)
+
+        if !isDefaultFolder, let renameTitle = viewModel.renameActionTitle {
+            let renameAction = UIContextualAction(
+                style: .normal,
+                title: renameTitle
+            ) { [weak self] _, _, completion in
+                guard let self = self else { completion(false); return }
+                self.delegate?.favoriteFoldersListView(self, didRenameItemAtIndex: indexPath.row)
+                completion(true)
+            }
+            renameAction.image = .warpSwipeActionDisc(icon: Warp.Icon.edit.uiImage, fill: Warp.UIToken.backgroundWarning)
+            if #available(iOS 26, *) {
+                renameAction.backgroundColor = .clear
+            } else {
+                renameAction.backgroundColor = Warp.UIToken.background
+            }
+            actions.append(renameAction)
+        }
 
         if let shareTitle = viewModel.shareActionTitle {
             let shareAction = UIContextualAction(
@@ -465,23 +488,13 @@ extension FavoriteFoldersListView: UITableViewDelegate {
                 self.delegate?.favoriteFoldersListView(self, didShareItemAtIndex: indexPath.row, sender: sender)
                 completion(true)
             }
-            shareAction.image = UIImage(systemName: "square.and.arrow.up")
-            shareAction.backgroundColor = Warp.UIToken.backgroundInfo
-            actions.append(shareAction)
-        }
-
-        if let renameTitle = viewModel.renameActionTitle {
-            let renameAction = UIContextualAction(
-                style: .normal,
-                title: renameTitle
-            ) { [weak self] _, _, completion in
-                guard let self = self else { completion(false); return }
-                self.delegate?.favoriteFoldersListView(self, didRenameItemAtIndex: indexPath.row)
-                completion(true)
+            shareAction.image = .warpSwipeActionDisc(icon: Warp.Icon.share.uiImage, fill: Warp.UIToken.backgroundInfo)
+            if #available(iOS 26, *) {
+                shareAction.backgroundColor = .clear
+            } else {
+                shareAction.backgroundColor = Warp.UIToken.background
             }
-            renameAction.image = UIImage(systemName: "pencil")
-            renameAction.backgroundColor = Warp.UIToken.backgroundWarning
-            actions.append(renameAction)
+            actions.append(shareAction)
         }
 
         let configuration = UISwipeActionsConfiguration(actions: actions)
