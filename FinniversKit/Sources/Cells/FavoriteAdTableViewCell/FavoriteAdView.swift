@@ -61,6 +61,9 @@ final class FavoriteAdView: UIView {
         host.view.translatesAutoresizingMaskIntoConstraints = false
         host.view.backgroundColor = .clear
         host.view.isAccessibilityElement = true
+        if #available(iOS 16, *) {
+            host.sizingOptions = .intrinsicContentSize
+        }
         return host
     }()
     private var commentView: UIView { commentHostingController.view }
@@ -317,11 +320,20 @@ private struct CommentAlertView: View {
     let text: String
 
     var body: some View {
-        Warp.Alert(
-            style: .info,
-            title: title,
-            subtitle: text
-        )
+        HStack(alignment: .center, spacing: Warp.Spacing.spacing100) {
+            Warp.IconView(.fileText, size: .small, color: Warp.Token.iconSubtle)
+            Text(text)
+                .font(from: Warp.Typography.caption)
+                .foregroundStyle(Warp.Token.text)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(.vertical, Warp.Spacing.spacing100)
+        .padding(.horizontal, Warp.Spacing.spacing150)
+        .background(Warp.Token.surfaceSunken, in: RoundedRectangle(cornerRadius: Warp.Border.borderRadius100))
+        .padding(.leading, FavoriteAdView.adImageWidth + Warp.Spacing.spacing200 - Warp.Spacing.spacing150)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(title.isEmpty ? text : "\(title): \(text)")
     }
 }
 
