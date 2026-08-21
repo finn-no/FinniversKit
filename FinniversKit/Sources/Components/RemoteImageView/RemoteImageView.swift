@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol RemoteImageViewDataSource: AnyObject, Sendable {
+public protocol RemoteImageViewDataSource: AnyObject {
     @MainActor func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage?
     @MainActor func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping @Sendable ((UIImage?) -> Void))
     @MainActor func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat)
