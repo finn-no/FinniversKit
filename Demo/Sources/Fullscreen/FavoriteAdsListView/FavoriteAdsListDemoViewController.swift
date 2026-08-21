@@ -269,6 +269,7 @@ extension FavoriteAdsListViewModel {
         headerShareButtonTitle: "Delt liste",
         addCommentActionTitle: "Skriv\nnotat",
         editCommentActionTitle: "Rediger\nnotat",
+        shareAdActionTitle: "Del annonsen",
         deleteAdActionTitle: "Slett",
         emptySearchViewBodyPrefix: "Vi fant visst ingen favoritter for",
         emptyListViewTitle: "Her var det stille gitt...",
