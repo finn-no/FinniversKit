@@ -16,6 +16,7 @@ public struct SoldViewModel {
     }
 }
 
+@MainActor
 public protocol SoldViewDelegate: NSObjectProtocol {
     func soldView(_ soldView: SoldView, didSelectCallToAction: Button)
 }
