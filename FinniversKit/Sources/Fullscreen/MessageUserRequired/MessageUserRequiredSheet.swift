@@ -3,6 +3,7 @@
 //
 import Warp
 
+@MainActor
 public protocol MessageUserRequiredSheetDelegate: AnyObject {
     func didTapActionButton(_ sender: Button)
 }

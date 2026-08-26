@@ -5,6 +5,7 @@
 import UIKit
 import Warp
 
+@MainActor
 public protocol SelectorTitleViewDelegate: AnyObject {
     func selectorTitleViewDidSelectButton(_ view: SelectorTitleView)
 }
