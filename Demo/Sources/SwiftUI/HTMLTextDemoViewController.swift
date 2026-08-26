@@ -39,6 +39,8 @@ extension HTMLTextDemoViewController: TweakableDemo {
     enum Tweaks: String, CaseIterable, TweakingOption {
         case `default`
         case linebreak
+        case list
+        case paragraph
         case priceHighlight
         case strikethrough
         case mix
@@ -67,6 +69,10 @@ extension HTMLTextDemoViewController: TweakableDemo {
             htmlView = HTMLText("This is <b>HTML</b>")
         case .linebreak:
             htmlView = HTMLText("This is <b>HTML</b><br>over two lines")
+        case .list:
+            htmlView = HTMLText("This is a list:<ul><li>Item one</li><li>Item two</li><li>Item three</li></ul>")
+        case .paragraph:
+            htmlView = HTMLText("<p>This is a paragraph.</p><p>And this is another one.</p>")
         case .priceHighlight:
             htmlView = HTMLText(
                 "Shipping costs <span style=\"color:tjt-price-highlight\">60 NOK</span>",
