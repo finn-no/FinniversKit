@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/warp-ds/warp-ios.git",
       "state" : {
-        "revision" : "0798efa8bc0082185f9d3c747b168a33139182cc",
-        "version" : "0.0.84"
+        "version" : "0.0.16"
+        "revision" : "528dc6eacf33b5bb18d094b6154df3071d261620",
       }
     }
   ],

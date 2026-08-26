@@ -322,7 +322,7 @@ private struct CommentAlertView: View {
 
     var body: some View {
         HStack(alignment: .center, spacing: Warp.Spacing.spacing100) {
-            Warp.IconView(.fileText, size: .small, color: Warp.Token.iconSubtle)
+            Warp.IconView(.messages, size: .small, color: Warp.Token.iconSubtle)
             Text(text)
                 .font(from: Warp.Typography.caption)
                 .foregroundStyle(Warp.Token.text)
