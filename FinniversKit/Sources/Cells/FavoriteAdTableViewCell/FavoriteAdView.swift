@@ -282,8 +282,9 @@ final class FavoriteAdView: UIView {
 
     private func configureCommentView() {
         if let comment = viewModel?.comment, !comment.isEmpty, !isCommentViewHidden {
-            updateCommentAlert(title: viewModel?.commentAlertTitle ?? "", text: comment)
-            commentView.accessibilityLabel = comment
+            let title = viewModel?.commentAlertTitle ?? ""
+            updateCommentAlert(title: title, text: comment)
+            commentView.accessibilityLabel = title.isEmpty ? comment : "\(title): \(comment)"
             commentView.isHidden = false
         } else {
             commentView.isHidden = true

@@ -17,6 +17,12 @@ final class FavoriteSearchEmptyView: UIView {
 
     // MARK: - Private properties
 
+    private lazy var wrapperView = UIView(withAutoLayout: true)
+    private lazy var wrapperViewBottomConstraint = wrapperView.bottomAnchor.constraint(
+        equalTo: bottomAnchor,
+        constant: -windowSafeAreaInsets.bottom
+    )
+
     private lazy var stackView: UIStackView = {
         let stack = UIStackView(withAutoLayout: true)
         stack.axis = .vertical
@@ -68,21 +74,34 @@ final class FavoriteSearchEmptyView: UIView {
     // MARK: - Setup
 
     private func setup() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleKeyboardNotification),
+            name: UIResponder.keyboardWillChangeFrameNotification,
+            object: nil
+        )
+
         backgroundColor = .clear
 
         stackView.addArrangedSubview(iconImageView)
         stackView.addArrangedSubview(bodyLabel)
         stackView.addArrangedSubview(addFolderButton)
 
-        addSubview(stackView)
+        wrapperView.addSubview(stackView)
+        addSubview(wrapperView)
 
         NSLayoutConstraint.activate([
+            wrapperView.topAnchor.constraint(equalTo: topAnchor),
+            wrapperView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            wrapperView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            wrapperViewBottomConstraint,
+
             iconImageView.widthAnchor.constraint(equalToConstant: 64),
             iconImageView.heightAnchor.constraint(equalToConstant: 64),
 
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing400),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing400),
-            stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            stackView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor, constant: Warp.Spacing.spacing400),
+            stackView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor, constant: -Warp.Spacing.spacing400),
+            stackView.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor),
         ])
     }
 
@@ -95,6 +114,20 @@ final class FavoriteSearchEmptyView: UIView {
     }
 
     // MARK: - Private methods
+
+    @objc private func handleKeyboardNotification(_ notification: Notification) {
+        guard let keyboardInfo = KeyboardNotificationInfo(notification) else { return }
+
+        let keyboardIntersection = keyboardInfo.keyboardFrameEndIntersectHeight(inView: wrapperView)
+        let wrapperBottomOffset = keyboardIntersection > 0
+            ? keyboardIntersection + windowSafeAreaInsets.bottom
+            : windowSafeAreaInsets.bottom
+        wrapperViewBottomConstraint.constant = -wrapperBottomOffset
+
+        UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo) { [weak self] in
+            self?.layoutIfNeeded()
+        }
+    }
 
     @objc private func handleAddFolderButtonTap() {
         delegate?.favoriteSearchEmptyViewDidSelectButton(self)

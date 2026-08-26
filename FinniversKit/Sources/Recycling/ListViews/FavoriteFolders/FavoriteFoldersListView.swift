@@ -316,7 +316,10 @@ public class FavoriteFoldersListView: UIView {
 
     private func updateSearchBarContainerTopConstant() {
         let shouldCollapse = isSearchBarHidden || tableView.isEditing
-        searchBarContainerTop.constant = shouldCollapse ? -searchBarContainer.frame.height : Warp.Spacing.spacing200
+        let searchBarContainerHeight = searchBarContainer.systemLayoutSizeFitting(
+            UIView.layoutFittingCompressedSize
+        ).height
+        searchBarContainerTop.constant = shouldCollapse ? -searchBarContainerHeight : Warp.Spacing.spacing200
     }
 
     private func showRefreshControl(_ show: Bool) {
@@ -442,10 +445,10 @@ extension FavoriteFoldersListView: UITableViewDelegate {
 
         var actions: [UIContextualAction] = []
 
-        if !isDefaultFolder {
+        if !isDefaultFolder, let deleteTitle = viewModel.deleteActionTitle {
             let deleteAction = UIContextualAction(
                 style: .normal,
-                title: viewModel.deleteActionTitle
+                title: deleteTitle
             ) { [weak self] _, _, completion in
                 guard let self = self else { completion(false); return }
                 self.delegate?.favoriteFoldersListView(self, didDeleteItemAtIndex: indexPath.row)
