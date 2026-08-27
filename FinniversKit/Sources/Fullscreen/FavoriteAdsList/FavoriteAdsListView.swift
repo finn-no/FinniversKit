@@ -247,8 +247,6 @@ public class FavoriteAdsListView: UIView {
         setTableHeader()
     }
 
-    /// Re-measures and re-installs the built-in table header. Call after changing
-    /// `tableHeaderAccessoryView` at runtime, so the tableView picks up the new size.
     public func reloadTableHeader() {
         setTableHeader()
     }
@@ -259,9 +257,6 @@ public class FavoriteAdsListView: UIView {
         layoutIfNeeded()
     }
 
-    /// Updates the "no results" empty view text using the view model's prefix.
-    /// Call this from a consumer when using a custom (external) search input, since
-    /// the built-in search bar is the only thing that updates this text automatically.
     public func updateSearchEmptyText(for searchText: String) {
         let emptyViewText = "\(viewModel.emptySearchViewBodyPrefix) \"\(searchText)\""
         emptySearchView.configure(withText: emptyViewText, buttonTitle: nil)
@@ -363,10 +358,6 @@ public class FavoriteAdsListView: UIView {
     }
 
     private func showEmptySearchViewIfNeeded() {
-        // The search-specific empty view should only appear when the user is
-        // actually searching. Without this gate it stacks on top of the
-        // "no favorites yet" empty view whenever both the section count is zero
-        // and the folder is empty, producing two overlapping empty states.
         let hasSearchText = !searchBarText.isEmpty
         let shouldShowEmptySearchView = numberOfSections(in: tableView) == 0 && hasSearchText
         emptySearchView.isHidden = !shouldShowEmptySearchView
@@ -377,10 +368,6 @@ public class FavoriteAdsListView: UIView {
     }
 
     private func layoutEmptyViews() {
-        // Both empty views cover the full table area so their hosted Warp StateView
-        // centers vertically in the whole visible region. The tableHeaderView (title
-        // + subtitle) remains visible because both empty views use a clear
-        // background.
         emptySearchView.frame = tableView.bounds
         emptyListView.frame = tableView.bounds
     }
@@ -667,17 +654,10 @@ private class TableView: UITableView {
     }
 }
 
-// MARK: - PinnedHeaderContainerView
-
-/// Wraps a caller-supplied view so it can be returned from `viewForHeaderInSection`.
-/// Section headers must be `UITableViewHeaderFooterView` (or a UIView) that owns the
-/// content; embedding the caller's view lets us reuse it across section reloads
-/// without recreating it. Height is driven by the caller's Auto Layout constraints.
 private final class PinnedHeaderContainerView: UIView {
     init(contentView: UIView) {
         super.init(frame: .zero)
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        // Remove from any prior superview so section reloads don't leave it detached.
         contentView.removeFromSuperview()
         addSubview(contentView)
         NSLayoutConstraint.activate([
