@@ -8,7 +8,11 @@ import Warp
 public protocol FavoriteFoldersListViewDelegate: AnyObject {
     func favoriteFoldersListViewDidBeginRefreshing(_ view: FavoriteFoldersListView)
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didSelectItemAtIndex index: Int)
-    func favoriteFoldersListView(_ view: FavoriteFoldersListView, didDeleteItemAtIndex index: Int)
+    func favoriteFoldersListView(
+        _ view: FavoriteFoldersListView,
+        didDeleteItemAtIndex index: Int,
+        completion: @escaping (Bool) -> Void
+    )
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didRenameItemAtIndex index: Int)
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didShareItemAtIndex index: Int, sender: UIView)
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView, withSearchText searchText: String?)
@@ -388,7 +392,11 @@ extension FavoriteFoldersListView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
-        delegate?.favoriteFoldersListView(self, didDeleteItemAtIndex: indexPath.row)
+        delegate?.favoriteFoldersListView(
+            self,
+            didDeleteItemAtIndex: indexPath.row,
+            completion: { _ in }
+        )
     }
 }
 
@@ -451,8 +459,12 @@ extension FavoriteFoldersListView: UITableViewDelegate {
                 title: deleteTitle
             ) { [weak self] _, _, completion in
                 guard let self = self else { completion(false); return }
-                self.delegate?.favoriteFoldersListView(self, didDeleteItemAtIndex: indexPath.row)
-                completion(true)
+                guard let delegate else { completion(false); return }
+                delegate.favoriteFoldersListView(
+                    self,
+                    didDeleteItemAtIndex: indexPath.row,
+                    completion: completion
+                )
             }
             deleteAction.image = .warpSwipeActionDisc(icon: Warp.Icon.bin.uiImage, fill: Warp.UIToken.backgroundNegative)
             if #available(iOS 26, *) {
