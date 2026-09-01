@@ -104,7 +104,13 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDelegate {
         view.reloadData()
     }
 
-    func favoriteFoldersListView(_ favoriteFoldersListView: FavoriteFoldersListView, didDeleteItemAtIndex index: Int) {}
+    func favoriteFoldersListView(
+        _ favoriteFoldersListView: FavoriteFoldersListView,
+        didDeleteItemAtIndex index: Int,
+        completion: @escaping (Bool) -> Void
+    ) {
+        completion(false)
+    }
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView, withSearchText searchText: String?) {}
 
     func favoriteFoldersListViewDidFocusSearchBar(_ view: FavoriteFoldersListView) {
