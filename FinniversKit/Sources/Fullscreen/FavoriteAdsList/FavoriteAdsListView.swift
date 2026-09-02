@@ -448,13 +448,6 @@ extension FavoriteAdsListView: UITableViewDelegate {
         return headerView
     }
 
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0, pinnedSectionZeroHeaderView != nil {
-            return UITableView.automaticDimension
-        }
-        return UITableView.automaticDimension
-    }
-
     public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return !isReadOnly
     }
