@@ -11,15 +11,15 @@ class FavoriteAdsSectionHeaderView: UITableViewHeaderFooterView {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
-        label.font = .detailStrong
-        label.textColor = .textSubtle
+        label.font = .bodyStrong
+        label.textColor = Warp.UIToken.text
         return label
     }()
 
     private lazy var detailLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .detailStrong
-        label.textColor = .text
+        label.textColor = Warp.UIToken.text
         label.textAlignment = .right
         return label
     }()
@@ -44,7 +44,7 @@ class FavoriteAdsSectionHeaderView: UITableViewHeaderFooterView {
     // MARK: - Setup
 
     private func setup() {
-        contentView.backgroundColor = .surfaceSunken
+        contentView.backgroundColor = Warp.UIToken.background
         contentView.addSubview(titleLabel)
         contentView.addSubview(detailLabel)
 
@@ -63,7 +63,7 @@ class FavoriteAdsSectionHeaderView: UITableViewHeaderFooterView {
     // MARK: - Internal methods
 
     func configure(title: String, detail: String? = nil) {
-        titleLabel.text = title.uppercased()
-        detailLabel.text = detail?.uppercased()
+        titleLabel.text = title.capitalized
+        detailLabel.text = detail
     }
 }

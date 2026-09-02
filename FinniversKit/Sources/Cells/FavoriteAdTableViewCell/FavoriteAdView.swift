@@ -2,6 +2,7 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+import SwiftUI
 import UIKit
 import Warp
 
@@ -37,14 +38,35 @@ final class FavoriteAdView: UIView {
 
     private var viewModel: FavoriteAdViewModel?
 
-    private lazy var sortingDetailLabel = label(style: .detailStrong, textColor: .textLink, numberOfLines: 2)
+    private lazy var sortingDetailLabel = label(style: .detailStrong, textColor: Warp.UIToken.textSubtle, numberOfLines: 2)
+
     private lazy var addressLabel = label(style: .detail, textColor: .textSubtle, numberOfLines: 2, isHidden: false)
     private lazy var titleLabel = label(style: .caption, textColor: .text, numberOfLines: 2, isHidden: false)
     private lazy var descriptionPrimaryLabel = label(style: .bodyStrong, textColor: .text, numberOfLines: 0)
     private lazy var descriptionSecondaryLabel = label(style: .detail, textColor: .text, numberOfLines: 0)
     private lazy var descriptionTertiaryLabel = label(style: .detailStrong, textColor: .text, numberOfLines: 0)
-    private lazy var statusRibbon = RibbonView(withAutoLayout: true)
-    private lazy var commentView = FavoriteAdCommentView(withAutoLayout: true)
+    private lazy var statusBadgeHostingController: UIHostingController<StatusBadgeView> = {
+        let host = UIHostingController(rootView: StatusBadgeView(text: "", variant: .neutral))
+        host.view.translatesAutoresizingMaskIntoConstraints = false
+        host.view.backgroundColor = .clear
+        host.view.isAccessibilityElement = true
+        if #available(iOS 16, *) {
+            host.sizingOptions = .intrinsicContentSize
+        }
+        return host
+    }()
+    private var statusBadgeView: UIView { statusBadgeHostingController.view }
+    private lazy var commentHostingController: UIHostingController<CommentAlertView> = {
+        let host = UIHostingController(rootView: CommentAlertView(title: "", text: ""))
+        host.view.translatesAutoresizingMaskIntoConstraints = false
+        host.view.backgroundColor = .clear
+        host.view.isAccessibilityElement = true
+        if #available(iOS 16, *) {
+            host.sizingOptions = .intrinsicContentSize
+        }
+        return host
+    }()
+    private var commentView: UIView { commentHostingController.view }
     private lazy var fallbackImage: UIImage = UIImage(named: .noImage)
 
     private lazy var rootStackView: UIStackView = {
@@ -119,10 +141,10 @@ final class FavoriteAdView: UIView {
         configureCommentView()
 
         if let ribbonViewModel = viewModel.ribbonViewModel {
-            statusRibbon.isHidden = false
-            statusRibbon.configure(with: ribbonViewModel)
+            updateStatusBadge(from: ribbonViewModel)
+            statusBadgeView.isHidden = false
         } else {
-            statusRibbon.isHidden = true
+            statusBadgeView.isHidden = true
         }
 
         addressLabel.text = viewModel.addressText ?? " "
@@ -175,16 +197,17 @@ final class FavoriteAdView: UIView {
             $0.isHidden = true
         }
 
-        commentView.configure(withText: nil)
+        updateCommentAlert(title: "", text: "")
+        commentView.accessibilityLabel = nil
         commentView.isHidden = true
     }
 
     func resetBackgroundColors() {
         remoteImageView.backgroundColor = remoteImageView.image == nil ? loadingColor : .clear
-        commentView.backgroundColor = FavoriteAdCommentView.defaultBackgroundColor
+        commentView.backgroundColor = .clear
 
         if let ribbonViewModel = viewModel?.ribbonViewModel {
-            statusRibbon.style = ribbonViewModel.style
+            updateStatusBadge(from: ribbonViewModel)
         }
     }
 
@@ -208,7 +231,7 @@ final class FavoriteAdView: UIView {
         textStackView.setCustomSpacing(Warp.Spacing.spacing100, after: descriptionSecondaryLabel)
 
         contentView.addSubview(infoStackView)
-        contentView.addSubview(statusRibbon)
+        contentView.addSubview(statusBadgeView)
         contentView.addSubview(moreButton)
 
         rootStackView.addArrangedSubview(contentView)
@@ -241,11 +264,11 @@ final class FavoriteAdView: UIView {
             remoteImageView.widthAnchor.constraint(equalToConstant: FavoriteAdView.adImageWidth),
             remoteImageView.heightAnchor.constraint(equalTo: remoteImageView.widthAnchor),
 
-            statusRibbon.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
-            statusRibbon.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
+            statusBadgeView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
+            statusBadgeView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing100),
 
-            sortingDetailLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -Warp.Spacing.spacing100),
-            addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -Warp.Spacing.spacing100),
+            sortingDetailLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusBadgeView.leadingAnchor, constant: -Warp.Spacing.spacing100),
+            addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusBadgeView.leadingAnchor, constant: -Warp.Spacing.spacing100),
 
             commentView.trailingAnchor.constraint(equalTo: rootStackView.trailingAnchor, constant: -Warp.Spacing.spacing200)
         ])
@@ -259,11 +282,25 @@ final class FavoriteAdView: UIView {
 
     private func configureCommentView() {
         if let comment = viewModel?.comment, !comment.isEmpty, !isCommentViewHidden {
-            commentView.configure(withText: comment)
+            let title = viewModel?.commentAlertTitle ?? ""
+            updateCommentAlert(title: title, text: comment)
+            commentView.accessibilityLabel = title.isEmpty ? comment : "\(title): \(comment)"
             commentView.isHidden = false
         } else {
             commentView.isHidden = true
         }
+    }
+
+    private func updateCommentAlert(title: String, text: String) {
+        commentHostingController.rootView = CommentAlertView(title: title, text: text)
+    }
+
+    private func updateStatusBadge(from ribbonViewModel: RibbonViewModel) {
+        statusBadgeHostingController.rootView = StatusBadgeView(
+            text: ribbonViewModel.title,
+            variant: Warp.BadgeVariant(ribbonStyle: ribbonViewModel.style)
+        )
+        statusBadgeView.accessibilityLabel = ribbonViewModel.title
     }
 
     private func label(style: Warp.Typography, textColor: UIColor, numberOfLines: Int, isHidden: Bool = true) -> Label {
@@ -276,5 +313,49 @@ final class FavoriteAdView: UIView {
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.isHidden = isHidden
         return label
+    }
+}
+
+private struct CommentAlertView: View {
+    let title: String
+    let text: String
+
+    var body: some View {
+        HStack(alignment: .center, spacing: Warp.Spacing.spacing100) {
+            Warp.IconView(.messages, size: .small, color: Warp.Token.iconSubtle)
+            Text(text)
+                .font(from: Warp.Typography.caption)
+                .foregroundStyle(Warp.Token.text)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(.vertical, Warp.Spacing.spacing100)
+        .padding(.horizontal, Warp.Spacing.spacing150)
+        .background(Warp.Token.surfaceSunken, in: RoundedRectangle(cornerRadius: Warp.Border.borderRadius100))
+        .padding(.leading, FavoriteAdView.adImageWidth + Warp.Spacing.spacing200 - Warp.Spacing.spacing150)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(title.isEmpty ? text : "\(title): \(text)")
+    }
+}
+
+private struct StatusBadgeView: View {
+    let text: String
+    let variant: Warp.BadgeVariant
+
+    var body: some View {
+        Warp.Badge(text: text, variant: variant)
+    }
+}
+
+private extension Warp.BadgeVariant {
+    init(ribbonStyle: RibbonView.Style) {
+        switch ribbonStyle {
+        case .default: self = .neutral
+        case .success: self = .success
+        case .warning: self = .warning
+        case .error: self = .negative
+        case .disabled: self = .disabled
+        case .sponsored: self = .sponsored
+        }
     }
 }

@@ -10,12 +10,17 @@ public protocol FavoriteAdsListViewDelegate: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButton button: UIButton, at indexPath: IndexPath)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath, sender: UIView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath, sender: UIView)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectShareItemAt indexPath: IndexPath, sender: UIView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectSortingView sortingView: UIView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectHeaderShareButton button: UIButton)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectFooterShareButton button: UIButton)
     func favoriteAdsListViewDidFocusSearchBar(_ view: FavoriteAdsListView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didChangeSearchText searchText: String)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didUpdateTitleLabelVisibility isVisible: Bool)
+}
+
+public extension FavoriteAdsListViewDelegate {
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectShareItemAt indexPath: IndexPath, sender: UIView) {}
 }
 
 public protocol FavoriteAdsListViewDataSource: AnyObject {
@@ -56,6 +61,30 @@ public class FavoriteAdsListView: UIView {
         }
     }
 
+    public var isSearchBarPermanentlyHidden: Bool = false {
+        didSet {
+            if isSearchBarPermanentlyHidden {
+                isSearchBarHidden = true
+            }
+        }
+    }
+
+    public var isSortingViewPermanentlyHidden: Bool = false {
+        didSet {
+            if isSortingViewPermanentlyHidden {
+                tableHeaderView.isSortingViewHidden = true
+                setTableHeader()
+            }
+        }
+    }
+
+    public var isMoreButtonPermanentlyHidden: Bool = false {
+        didSet {
+            guard isMoreButtonPermanentlyHidden != oldValue else { return }
+            tableView.reloadData()
+        }
+    }
+
     public var title = "" {
         didSet {
             tableHeaderView.title = title
@@ -81,6 +110,20 @@ public class FavoriteAdsListView: UIView {
     public var isShared = false {
         didSet {
             tableHeaderView.shareButtonTitle = isShared ? viewModel.headerShareButtonTitle : ""
+        }
+    }
+
+    public var tableHeaderAccessoryView: UIView? {
+        didSet {
+            tableHeaderView.setBottomAccessoryView(tableHeaderAccessoryView)
+            reloadTableHeader()
+        }
+    }
+
+    public var pinnedSectionZeroHeaderView: UIView? {
+        didSet {
+            guard tableView.numberOfSections > 0 else { return }
+            tableView.reloadSections(IndexSet(integer: 0), with: .none)
         }
     }
 
@@ -204,16 +247,29 @@ public class FavoriteAdsListView: UIView {
         setTableHeader()
     }
 
+    public func reloadTableHeader() {
+        setTableHeader()
+    }
+
     public func configure(scrollShadowHeight: CGFloat) {
         scrollShadowViewTopConstraint.constant = -scrollShadowHeight
         scrollShadowViewHeightConstraint.constant = scrollShadowHeight
         layoutIfNeeded()
     }
 
+    public func updateSearchEmptyText(for searchText: String) {
+        let emptyViewText = "\(viewModel.emptySearchViewBodyPrefix) \"\(searchText)\""
+        emptySearchView.configure(withText: emptyViewText, buttonTitle: nil)
+    }
+
     public func setListIsEmpty(_ isEmpty: Bool) {
         emptyListView.isHidden = !isEmpty
-        tableHeaderView.isSearchBarHidden = isEmpty
-        tableHeaderView.isSortingViewHidden = isEmpty
+        if !isSearchBarPermanentlyHidden {
+            tableHeaderView.isSearchBarHidden = isEmpty
+        }
+        if !isSortingViewPermanentlyHidden {
+            tableHeaderView.isSortingViewHidden = isEmpty
+        }
         setTableHeader()
     }
 
@@ -302,9 +358,12 @@ public class FavoriteAdsListView: UIView {
     }
 
     private func showEmptySearchViewIfNeeded() {
-        let shouldShowEmptySearchView = numberOfSections(in: tableView) == 0
+        let hasSearchText = !searchBarText.isEmpty
+        let shouldShowEmptySearchView = numberOfSections(in: tableView) == 0 && hasSearchText
         emptySearchView.isHidden = !shouldShowEmptySearchView
-        tableHeaderView.isSortingViewHidden = shouldShowEmptySearchView
+        if !isSortingViewPermanentlyHidden {
+            tableHeaderView.isSortingViewHidden = shouldShowEmptySearchView || !emptyListView.isHidden
+        }
         setTableHeader()
     }
 
@@ -377,6 +436,10 @@ extension FavoriteAdsListView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0, let pinnedView = pinnedSectionZeroHeaderView {
+            return PinnedHeaderContainerView(contentView: pinnedView)
+        }
+
         guard let sectionTitle = dataSource?.favoriteAdsListView(self, titleForHeaderInSection: section) else { return nil }
         let sectionDetail = dataSource?.favoriteAdsListView(self, detailForHeaderInSection: section)
 
@@ -408,7 +471,28 @@ extension FavoriteAdsListView: UITableViewDelegate {
                 completionHandler(true)
             })
 
-        commentAction.backgroundColor = Warp.UIToken.iconStatic
+        commentAction.image = .warpSwipeActionDisc(icon: Warp.Icon.edit.uiImage, fill: Warp.UIToken.backgroundWarning)
+        if #available(iOS 26, *) {
+            commentAction.backgroundColor = .clear
+        } else {
+            commentAction.backgroundColor = Warp.UIToken.background
+        }
+
+        let shareAction = UIContextualAction(
+            style: .normal,
+            title: viewModel.shareAdActionTitle,
+            handler: { [weak self] _, sender, completionHandler in
+                guard let self = self else { return }
+                self.delegate?.favoriteAdsListView(self, didSelectShareItemAt: indexPath, sender: sender)
+                completionHandler(true)
+            })
+
+        shareAction.image = .warpSwipeActionDisc(icon: Warp.Icon.share.uiImage, fill: Warp.UIToken.backgroundInfo)
+        if #available(iOS 26, *) {
+            shareAction.backgroundColor = .clear
+        } else {
+            shareAction.backgroundColor = Warp.UIToken.background
+        }
 
         let deleteAction = UIContextualAction(
             style: .normal,
@@ -419,9 +503,14 @@ extension FavoriteAdsListView: UITableViewDelegate {
                 completionHandler(true)
             })
 
-        deleteAction.backgroundColor = .backgroundNegative
+        deleteAction.image = .warpSwipeActionDisc(icon: Warp.Icon.bin.uiImage, fill: Warp.UIToken.backgroundNegative)
+        if #available(iOS 26, *) {
+            deleteAction.backgroundColor = .clear
+        } else {
+            deleteAction.backgroundColor = Warp.UIToken.background
+        }
 
-        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, commentAction])
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, shareAction, commentAction])
         configuration.performsFirstActionWithFullSwipe = false
 
         return configuration
@@ -462,7 +551,7 @@ extension FavoriteAdsListView: UITableViewDataSource {
         cell.remoteImageViewDataSource = self
         cell.delegate = self
 
-        cell.isMoreButtonHidden = isReadOnly
+        cell.isMoreButtonHidden = isReadOnly || isMoreButtonPermanentlyHidden
 
         if let viewModel = dataSource?.favoriteAdsListView(self, viewModelFor: indexPath) {
             cell.configure(with: viewModel)
@@ -559,4 +648,21 @@ private class TableView: UITableView {
         super.setEditing(editing, animated: animated)
         performBatchUpdates(nil)
     }
+}
+
+private final class PinnedHeaderContainerView: UIView {
+    init(contentView: UIView) {
+        super.init(frame: .zero)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.removeFromSuperview()
+        addSubview(contentView)
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
+    }
+
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 }

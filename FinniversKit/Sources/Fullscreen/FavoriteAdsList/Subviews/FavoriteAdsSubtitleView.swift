@@ -11,7 +11,7 @@ final class SubtitleView: UIView {
 
     private(set) lazy var label: Label = {
         let label = Label(style: .caption, numberOfLines: 0, withAutoLayout: true)
-        label.textAlignment = .center
+        label.textAlignment = .left
         return label
     }()
 
@@ -67,7 +67,7 @@ final class SubtitleView: UIView {
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: topAnchor),
             contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            contentView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
 
             label.topAnchor.constraint(equalTo: contentView.topAnchor),
             label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),

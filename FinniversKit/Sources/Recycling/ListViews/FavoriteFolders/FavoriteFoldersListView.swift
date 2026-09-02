@@ -8,10 +8,21 @@ import Warp
 public protocol FavoriteFoldersListViewDelegate: AnyObject {
     func favoriteFoldersListViewDidBeginRefreshing(_ view: FavoriteFoldersListView)
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didSelectItemAtIndex index: Int)
-    func favoriteFoldersListView(_ view: FavoriteFoldersListView, didDeleteItemAtIndex index: Int)
+    func favoriteFoldersListView(
+        _ view: FavoriteFoldersListView,
+        didDeleteItemAtIndex index: Int,
+        completion: @escaping (Bool) -> Void
+    )
+    func favoriteFoldersListView(_ view: FavoriteFoldersListView, didRenameItemAtIndex index: Int)
+    func favoriteFoldersListView(_ view: FavoriteFoldersListView, didShareItemAtIndex index: Int, sender: UIView)
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView, withSearchText searchText: String?)
     func favoriteFoldersListViewDidFocusSearchBar(_ view: FavoriteFoldersListView)
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String)
+}
+
+public extension FavoriteFoldersListViewDelegate {
+    func favoriteFoldersListView(_ view: FavoriteFoldersListView, didRenameItemAtIndex index: Int) {}
+    func favoriteFoldersListView(_ view: FavoriteFoldersListView, didShareItemAtIndex index: Int, sender: UIView) {}
 }
 
 public protocol FavoriteFoldersListViewDataSource: AnyObject {
@@ -41,12 +52,27 @@ public class FavoriteFoldersListView: UIView {
         public let section: Int
     }
 
-    public static let estimatedRowHeight: CGFloat = 64.0
+    public static let estimatedRowHeight: CGFloat = 80.0
 
     // MARK: - Public properties
 
     public weak var delegate: FavoriteFoldersListViewDelegate?
     public weak var dataSource: FavoriteFoldersListViewDataSource?
+
+    public var isSearchBarHidden: Bool = false {
+        didSet {
+            guard isSearchBarHidden != oldValue else { return }
+            searchBarContainer.isHidden = isSearchBarHidden
+            updateSearchBarContainerTopConstant()
+        }
+    }
+
+    public var isAddButtonHidden: Bool = false {
+        didSet {
+            guard isAddButtonHidden != oldValue else { return }
+            tableView.reloadData()
+        }
+    }
 
     // MARK: - Private properties
 
@@ -78,9 +104,11 @@ public class FavoriteFoldersListView: UIView {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .background
-        tableView.rowHeight = FavoriteFoldersListView.estimatedRowHeight
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = FavoriteFoldersListView.estimatedRowHeight
         tableView.separatorInset = .leadingInset(frame.width)
+        tableView.sectionHeaderTopPadding = 0
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
@@ -144,6 +172,12 @@ public class FavoriteFoldersListView: UIView {
 
     // MARK: - Data
 
+    public func updateSearchEmptyText(for searchText: String) {
+        let trimmed = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        let emptyViewText = "\(viewModel.emptyViewBodyPrefix) \"\(trimmed)\""
+        emptyView.configure(withText: emptyViewText, buttonTitle: viewModel.addFolderText)
+    }
+
     public func reloadData() {
         showEmptyViewIfNeeded()
 
@@ -161,7 +195,6 @@ public class FavoriteFoldersListView: UIView {
         tableView.reloadData()
     }
 
-    /// Perform necessary updates using an instance of UITableView and folders section
     public func performUpdates(using closure: (UpdateContext) -> Void) {
         closure(UpdateContext(tableView: tableView, section: Section.folders.rawValue))
     }
@@ -218,7 +251,7 @@ public class FavoriteFoldersListView: UIView {
 
         tableView.setEditing(editing, animated: true)
         footerViewTop.constant = 0
-        searchBarContainerTop.constant = editing ? -searchBarContainer.frame.height : Warp.Spacing.spacing200
+        updateSearchBarContainerTopConstant()
 
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.layoutIfNeeded()
@@ -285,6 +318,14 @@ public class FavoriteFoldersListView: UIView {
         emptyView.isHidden = !shouldShowEmptyView
     }
 
+    private func updateSearchBarContainerTopConstant() {
+        let shouldCollapse = isSearchBarHidden || tableView.isEditing
+        let searchBarContainerHeight = searchBarContainer.systemLayoutSizeFitting(
+            UIView.layoutFittingCompressedSize
+        ).height
+        searchBarContainerTop.constant = shouldCollapse ? -searchBarContainerHeight : Warp.Spacing.spacing200
+    }
+
     private func showRefreshControl(_ show: Bool) {
         tableView.refreshControl = show ? refreshControl : nil
     }
@@ -322,7 +363,7 @@ extension FavoriteFoldersListView: UITableViewDataSource {
 
         switch section {
         case .addButton:
-            return isSearchActive || tableView.isEditing ? 0 : 1
+            return isSearchActive || tableView.isEditing || isAddButtonHidden ? 0 : 1
         case .folders:
             return dataSource?.numberOfItems(inFavoriteFoldersListView: self) ?? 0
         }
@@ -351,13 +392,25 @@ extension FavoriteFoldersListView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
-        delegate?.favoriteFoldersListView(self, didDeleteItemAtIndex: indexPath.row)
+        delegate?.favoriteFoldersListView(
+            self,
+            didDeleteItemAtIndex: indexPath.row,
+            completion: { _ in }
+        )
     }
 }
 
 // MARK: - UITableViewDelegate
 
 extension FavoriteFoldersListView: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return .leastNonzeroMagnitude
+    }
+
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNonzeroMagnitude
+    }
+
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? RemoteImageTableViewCell else {
             return
@@ -378,15 +431,90 @@ extension FavoriteFoldersListView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if tableView.isEditing {
-            return Section(rawValue: indexPath.section) == .folders && canEditRow(at: indexPath)
-        } else {
-            return canEditRow(at: indexPath)
-        }
+        guard Section(rawValue: indexPath.section) == .folders else { return false }
+        return tableView.isEditing ? canEditRow(at: indexPath) : true
     }
 
     public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return viewModel.isEditable ? .delete : .none
+        return .none
+    }
+
+    public func tableView(
+        _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        guard
+            viewModel.isEditable,
+            !tableView.isEditing,
+            Section(rawValue: indexPath.section) == .folders
+        else { return nil }
+
+        let isDefaultFolder = dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row).isDefault == true
+
+        var actions: [UIContextualAction] = []
+
+        if !isDefaultFolder, let deleteTitle = viewModel.deleteActionTitle {
+            let deleteAction = UIContextualAction(
+                style: .normal,
+                title: deleteTitle
+            ) { [weak self] _, _, completion in
+                guard let self = self else { completion(false); return }
+                guard let delegate else { completion(false); return }
+                delegate.favoriteFoldersListView(
+                    self,
+                    didDeleteItemAtIndex: indexPath.row,
+                    completion: completion
+                )
+            }
+            deleteAction.image = .warpSwipeActionDisc(icon: Warp.Icon.bin.uiImage, fill: Warp.UIToken.backgroundNegative)
+            if #available(iOS 26, *) {
+                deleteAction.backgroundColor = .clear
+            } else {
+                deleteAction.backgroundColor = Warp.UIToken.background
+            }
+            actions.append(deleteAction)
+        }
+
+        if !isDefaultFolder, let renameTitle = viewModel.renameActionTitle {
+            let renameAction = UIContextualAction(
+                style: .normal,
+                title: renameTitle
+            ) { [weak self] _, _, completion in
+                guard let self = self else { completion(false); return }
+                self.delegate?.favoriteFoldersListView(self, didRenameItemAtIndex: indexPath.row)
+                completion(true)
+            }
+            renameAction.image = .warpSwipeActionDisc(icon: Warp.Icon.edit.uiImage, fill: Warp.UIToken.backgroundWarning)
+            if #available(iOS 26, *) {
+                renameAction.backgroundColor = .clear
+            } else {
+                renameAction.backgroundColor = Warp.UIToken.background
+            }
+            actions.append(renameAction)
+        }
+
+        if let shareTitle = viewModel.shareActionTitle {
+            let shareAction = UIContextualAction(
+                style: .normal,
+                title: shareTitle
+            ) { [weak self, weak tableView] _, _, completion in
+                guard let self = self else { completion(false); return }
+                let sender: UIView = tableView?.cellForRow(at: indexPath) ?? self
+                self.delegate?.favoriteFoldersListView(self, didShareItemAtIndex: indexPath.row, sender: sender)
+                completion(true)
+            }
+            shareAction.image = .warpSwipeActionDisc(icon: Warp.Icon.share.uiImage, fill: Warp.UIToken.backgroundInfo)
+            if #available(iOS 26, *) {
+                shareAction.backgroundColor = .clear
+            } else {
+                shareAction.backgroundColor = Warp.UIToken.background
+            }
+            actions.append(shareAction)
+        }
+
+        let configuration = UISwipeActionsConfiguration(actions: actions)
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
     }
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
