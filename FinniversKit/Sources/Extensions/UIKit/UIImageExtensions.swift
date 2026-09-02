@@ -13,8 +13,7 @@ extension UIImage {
     static func warpSwipeActionDisc(icon: UIImage, fill: UIColor) -> UIImage {
         let baseDiameter: CGFloat = 40
         let baseIconSize: CGFloat = 20
-        let maxDiameter: CGFloat = 80
-        let diameter = min(UIFontMetrics.default.scaledValue(for: baseDiameter), maxDiameter)
+        let diameter = UIFontMetrics.default.scaledValue(for: baseDiameter)
         let iconSize = diameter * (baseIconSize / baseDiameter)
         let size = CGSize(width: diameter, height: diameter)
         let renderer = UIGraphicsImageRenderer(size: size)

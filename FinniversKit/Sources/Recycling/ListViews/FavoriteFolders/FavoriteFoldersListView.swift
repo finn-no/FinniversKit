@@ -104,7 +104,7 @@ public class FavoriteFoldersListView: UIView {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .background
-        tableView.rowHeight = FavoriteFoldersListView.estimatedRowHeight
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = FavoriteFoldersListView.estimatedRowHeight
         tableView.separatorInset = .leadingInset(frame.width)
         tableView.sectionHeaderTopPadding = 0
