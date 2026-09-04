@@ -52,7 +52,8 @@ public class FavoriteFoldersListView: UIView {
         public let section: Int
     }
 
-    public static let estimatedRowHeight: CGFloat = 80.0
+    static let minimumRowHeight: CGFloat = 80.0
+    public static let estimatedRowHeight: CGFloat = minimumRowHeight
 
     // MARK: - Public properties
 

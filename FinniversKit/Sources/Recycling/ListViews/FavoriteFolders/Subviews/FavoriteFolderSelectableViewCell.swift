@@ -99,6 +99,8 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         addSubview(editModeView)
 
         NSLayoutConstraint.activate([
+            contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: FavoriteFoldersListView.minimumRowHeight),
+
             checkmarkImageView.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
             checkmarkImageView.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
             checkmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
