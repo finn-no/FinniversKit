@@ -11,9 +11,10 @@ extension UIImage {
     }
 
     static func warpSwipeActionDisc(icon: UIImage, fill: UIColor) -> UIImage {
-        let baseDiameter: CGFloat = 40
-        let baseIconSize: CGFloat = 20
-        let diameter = UIFontMetrics.default.scaledValue(for: baseDiameter)
+        let baseDiameter: CGFloat = 44
+        let baseIconSize: CGFloat = 22
+        let maxDiameter: CGFloat = 88
+        let diameter = min(UIFontMetrics.default.scaledValue(for: baseDiameter), maxDiameter)
         let iconSize = diameter * (baseIconSize / baseDiameter)
         let size = CGSize(width: diameter, height: diameter)
         let renderer = UIGraphicsImageRenderer(size: size)
@@ -29,5 +30,17 @@ extension UIImage {
             icon.withTintColor(Warp.UIToken.iconInverted, renderingMode: .alwaysOriginal).draw(in: iconRect)
         }
         return composed.withRenderingMode(.alwaysOriginal)
+    }
+}
+
+extension UIContextualAction {
+    func configureWarpAppearance(icon: UIImage, fill: UIColor) {
+        if #available(iOS 26, *) {
+            image = .warpSwipeActionDisc(icon: icon, fill: fill)
+            backgroundColor = .clear
+        } else {
+            image = icon
+            backgroundColor = fill
+        }
     }
 }

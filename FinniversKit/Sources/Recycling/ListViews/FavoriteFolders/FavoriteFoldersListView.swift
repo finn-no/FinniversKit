@@ -451,7 +451,6 @@ extension FavoriteFoldersListView: UITableViewDelegate {
         else { return nil }
 
         let isDefaultFolder = dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row).isDefault == true
-
         var actions: [UIContextualAction] = []
 
         if !isDefaultFolder, let deleteTitle = viewModel.deleteActionTitle {
@@ -467,12 +466,10 @@ extension FavoriteFoldersListView: UITableViewDelegate {
                     completion: completion
                 )
             }
-            deleteAction.image = .warpSwipeActionDisc(icon: Warp.Icon.bin.uiImage, fill: Warp.UIToken.backgroundNegative)
-            if #available(iOS 26, *) {
-                deleteAction.backgroundColor = .clear
-            } else {
-                deleteAction.backgroundColor = Warp.UIToken.background
-            }
+            deleteAction.configureWarpAppearance(
+                icon: Warp.Icon.bin.uiImage,
+                fill: Warp.UIToken.backgroundNegative
+            )
             actions.append(deleteAction)
         }
 
@@ -485,12 +482,10 @@ extension FavoriteFoldersListView: UITableViewDelegate {
                 self.delegate?.favoriteFoldersListView(self, didRenameItemAtIndex: indexPath.row)
                 completion(true)
             }
-            renameAction.image = .warpSwipeActionDisc(icon: Warp.Icon.edit.uiImage, fill: Warp.UIToken.backgroundWarning)
-            if #available(iOS 26, *) {
-                renameAction.backgroundColor = .clear
-            } else {
-                renameAction.backgroundColor = Warp.UIToken.background
-            }
+            renameAction.configureWarpAppearance(
+                icon: Warp.Icon.edit.uiImage,
+                fill: Warp.UIToken.backgroundWarning
+            )
             actions.append(renameAction)
         }
 
@@ -504,12 +499,10 @@ extension FavoriteFoldersListView: UITableViewDelegate {
                 self.delegate?.favoriteFoldersListView(self, didShareItemAtIndex: indexPath.row, sender: sender)
                 completion(true)
             }
-            shareAction.image = .warpSwipeActionDisc(icon: Warp.Icon.share.uiImage, fill: Warp.UIToken.backgroundInfo)
-            if #available(iOS 26, *) {
-                shareAction.backgroundColor = .clear
-            } else {
-                shareAction.backgroundColor = Warp.UIToken.background
-            }
+            shareAction.configureWarpAppearance(
+                icon: Warp.Icon.share.uiImage,
+                fill: Warp.UIToken.backgroundInfo
+            )
             actions.append(shareAction)
         }
 
