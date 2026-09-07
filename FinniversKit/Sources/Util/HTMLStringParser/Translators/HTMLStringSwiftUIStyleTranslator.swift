@@ -53,11 +53,21 @@ public final class HTMLStringSwiftUIStyleTranslator: HTMLStringParserTranslator 
                 case "br":
                     styledText.append(StyledText(text: "\n", style: styleStack.currentStyle))
                     continue
+                case "p":
+                    if !styledText.isEmpty {
+                        styledText.append(StyledText(text: "\n", style: styleStack.currentStyle))
+                    }
                 case "a":
                     if let urlString = attributes.first(where: { $0.name.lowercased() == "href"})?.value,
                        let url = URL(string: urlString) {
                         attributeStack.pushAttribute(.url(value: url), elementName: name)
                     }
+                case "ul":
+                    if !styledText.isEmpty {
+                        styledText.append(StyledText(text: "\n", style: styleStack.currentStyle))
+                    }
+                case "li":
+                    styledText.append(StyledText(text: "• ", style: styleStack.currentStyle))
                 default:
                     break
                 }
@@ -66,6 +76,12 @@ public final class HTMLStringSwiftUIStyleTranslator: HTMLStringParserTranslator 
                     styleStack.pushStyle(style, elementName: name)
                 }
             case .tagEnd(let name):
+                switch name.lowercased() {
+                case "li":
+                    styledText.append(StyledText(text: "\n", style: styleStack.currentStyle))
+                default:
+                    break
+                }
                 attributeStack.popAttribute(elementName: name)
                 styleStack.popStyle(elementName: name)
             case .text(let text):
