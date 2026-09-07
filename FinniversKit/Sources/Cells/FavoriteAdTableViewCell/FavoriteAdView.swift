@@ -45,28 +45,12 @@ final class FavoriteAdView: UIView {
     private lazy var descriptionPrimaryLabel = label(style: .bodyStrong, textColor: .text, numberOfLines: 0)
     private lazy var descriptionSecondaryLabel = label(style: .detail, textColor: .text, numberOfLines: 0)
     private lazy var descriptionTertiaryLabel = label(style: .detailStrong, textColor: .text, numberOfLines: 0)
-    private lazy var statusBadgeHostingController: UIHostingController<StatusBadgeView> = {
-        let host = UIHostingController(rootView: StatusBadgeView(text: "", variant: .neutral))
-        host.view.translatesAutoresizingMaskIntoConstraints = false
-        host.view.backgroundColor = .clear
-        host.view.isAccessibilityElement = true
-        if #available(iOS 16, *) {
-            host.sizingOptions = .intrinsicContentSize
-        }
-        return host
-    }()
-    private var statusBadgeView: UIView { statusBadgeHostingController.view }
-    private lazy var commentHostingController: UIHostingController<CommentAlertView> = {
-        let host = UIHostingController(rootView: CommentAlertView(title: "", text: ""))
-        host.view.translatesAutoresizingMaskIntoConstraints = false
-        host.view.backgroundColor = .clear
-        host.view.isAccessibilityElement = true
-        if #available(iOS 16, *) {
-            host.sizingOptions = .intrinsicContentSize
-        }
-        return host
-    }()
-    private var commentView: UIView { commentHostingController.view }
+    private lazy var statusBadgeView = hostingContentView {
+        StatusBadgeView(text: "", variant: .neutral)
+    }
+    private lazy var commentView = hostingContentView {
+        CommentAlertView(title: "", text: "")
+    }
     private lazy var fallbackImage: UIImage = UIImage(named: .noImage)
 
     private lazy var rootStackView: UIStackView = {
@@ -292,15 +276,40 @@ final class FavoriteAdView: UIView {
     }
 
     private func updateCommentAlert(title: String, text: String) {
-        commentHostingController.rootView = CommentAlertView(title: title, text: text)
+        commentView.configuration = commentConfiguration(title: title, text: text)
     }
 
     private func updateStatusBadge(from ribbonViewModel: RibbonViewModel) {
-        statusBadgeHostingController.rootView = StatusBadgeView(
+        statusBadgeView.configuration = statusBadgeConfiguration(
             text: ribbonViewModel.title,
             variant: Warp.BadgeVariant(ribbonStyle: ribbonViewModel.style)
         )
         statusBadgeView.accessibilityLabel = ribbonViewModel.title
+    }
+
+    private func hostingContentView<Content: View>(
+        @ViewBuilder content: () -> Content
+    ) -> UIView & UIContentView {
+        let configuration = UIHostingConfiguration(content: content).margins(.all, 0)
+        let contentView = configuration.makeContentView()
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.backgroundColor = .clear
+        contentView.isAccessibilityElement = true
+        return contentView
+    }
+
+    private func statusBadgeConfiguration(text: String, variant: Warp.BadgeVariant) -> UIContentConfiguration {
+        UIHostingConfiguration {
+            StatusBadgeView(text: text, variant: variant)
+        }
+        .margins(.all, 0)
+    }
+
+    private func commentConfiguration(title: String, text: String) -> UIContentConfiguration {
+        UIHostingConfiguration {
+            CommentAlertView(title: title, text: text)
+        }
+        .margins(.all, 0)
     }
 
     private func label(style: Warp.Typography, textColor: UIColor, numberOfLines: Int, isHidden: Bool = true) -> Label {
