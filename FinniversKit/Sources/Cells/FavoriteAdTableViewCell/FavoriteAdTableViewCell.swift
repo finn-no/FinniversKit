@@ -35,6 +35,18 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         return view
     }()
 
+    private lazy var swipeHighlightBackgroundView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .clear
+        view.layer.cornerRadius = Warp.Spacing.spacing300
+        view.layer.cornerCurve = .continuous
+        return view
+    }()
+
+    private var separatorInsetBeforeSwipe: UIEdgeInsets?
+    private weak var precedingCellWithHiddenSeparator: UITableViewCell?
+    private var precedingCellSeparatorInsetBeforeSwipe: UIEdgeInsets?
+
     // MARK: - Init
 
     public override init(style: CellStyle, reuseIdentifier: String?) {
@@ -48,6 +60,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
     public override func prepareForReuse() {
         super.prepareForReuse()
+        restoreSeparatorsAfterSwipe()
         adView.resetContent()
     }
 
@@ -68,6 +81,12 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         adView.isMoreButtonHidden = isEditing || isMoreButtonHidden
     }
 
+    public override func updateConfiguration(using state: UICellConfigurationState) {
+        super.updateConfiguration(using: state)
+        swipeHighlightBackgroundView.backgroundColor = state.isSwiped ? Warp.UIToken.backgroundSubtle : .clear
+        updateSeparator(for: state)
+    }
+
     // MARK: - Public methods
 
     public func configure(with viewModel: FavoriteAdViewModel) {
@@ -84,8 +103,46 @@ public class FavoriteAdTableViewCell: UITableViewCell {
     private func setup() {
         backgroundColor = .background
         setDefaultSelectedBackgound()
+        contentView.addSubview(swipeHighlightBackgroundView)
         contentView.addSubview(adView)
+
+        swipeHighlightBackgroundView.fillInSuperview()
         adView.fillInSuperview()
+    }
+
+    private func updateSeparator(for state: UICellConfigurationState) {
+        if state.isSwiped {
+            separatorInsetBeforeSwipe = separatorInsetBeforeSwipe ?? separatorInset
+            separatorInset = .leadingInset(.greatestFiniteMagnitude)
+            hidePrecedingCellSeparator()
+        } else {
+            restoreSeparatorsAfterSwipe()
+        }
+    }
+
+    private func hidePrecedingCellSeparator() {
+        guard precedingCellWithHiddenSeparator == nil,
+              let tableView = sequence(first: superview, next: { $0?.superview }).first(where: { $0 is UITableView }) as? UITableView,
+              let indexPath = tableView.indexPath(for: self),
+              indexPath.row > 0,
+              let precedingCell = tableView.cellForRow(at: IndexPath(row: indexPath.row - 1, section: indexPath.section)) else { return }
+
+        precedingCellWithHiddenSeparator = precedingCell
+        precedingCellSeparatorInsetBeforeSwipe = precedingCell.separatorInset
+        precedingCell.separatorInset = .leadingInset(.greatestFiniteMagnitude)
+    }
+
+    private func restoreSeparatorsAfterSwipe() {
+        if let separatorInsetBeforeSwipe {
+            separatorInset = separatorInsetBeforeSwipe
+            self.separatorInsetBeforeSwipe = nil
+        }
+
+        if let precedingCellWithHiddenSeparator, let precedingCellSeparatorInsetBeforeSwipe {
+            precedingCellWithHiddenSeparator.separatorInset = precedingCellSeparatorInsetBeforeSwipe
+        }
+        precedingCellWithHiddenSeparator = nil
+        precedingCellSeparatorInsetBeforeSwipe = nil
     }
 }
 

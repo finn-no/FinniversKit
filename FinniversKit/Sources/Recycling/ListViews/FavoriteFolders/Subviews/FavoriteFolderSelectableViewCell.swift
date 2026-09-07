@@ -23,6 +23,18 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         return view
     }()
 
+    private lazy var swipeHighlightBackgroundView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .clear
+        view.layer.cornerRadius = Warp.Spacing.spacing300
+        view.layer.cornerCurve = .continuous
+        return view
+    }()
+
+    private var separatorInsetBeforeSwipe: UIEdgeInsets?
+    private weak var precedingCellWithHiddenSeparator: UITableViewCell?
+    private var precedingCellSeparatorInsetBeforeSwipe: UIEdgeInsets?
+
     private lazy var stackViewToCheckmarkConstraint = stackView.trailingAnchor.constraint(
         equalTo: checkmarkImageView.leadingAnchor,
         constant: -Warp.Spacing.spacing200
@@ -54,6 +66,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
     public override func prepareForReuse() {
         super.prepareForReuse()
+        restoreSeparatorsAfterSwipe()
         titleLabel.font = titleLabelDefaultFont
         checkmarkImageView.isHidden = true
     }
@@ -66,6 +79,12 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         editModeView.isHidden = isEditable
         titleLabel.font = titleLabelDefaultFont
         checkmarkImageView.isHidden = true
+    }
+
+    public override func updateConfiguration(using state: UICellConfigurationState) {
+        super.updateConfiguration(using: state)
+        swipeHighlightBackgroundView.backgroundColor = state.isSwiped ? Warp.UIToken.backgroundSubtle : .clear
+        updateSeparator(for: state)
     }
 
     // MARK: - Public
@@ -95,10 +114,16 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         tintColor = .backgroundPrimary
         subtitleLabel.textColor = .textSubtle
 
+        contentView.insertSubview(swipeHighlightBackgroundView, at: 0)
         contentView.addSubview(checkmarkImageView)
         addSubview(editModeView)
 
         NSLayoutConstraint.activate([
+            swipeHighlightBackgroundView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            swipeHighlightBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            swipeHighlightBackgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            swipeHighlightBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: FavoriteFoldersListView.minimumRowHeight),
 
             checkmarkImageView.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
@@ -113,5 +138,40 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
             editModeView.topAnchor.constraint(equalTo: topAnchor),
             editModeView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+
+    private func updateSeparator(for state: UICellConfigurationState) {
+        if state.isSwiped {
+            separatorInsetBeforeSwipe = separatorInsetBeforeSwipe ?? separatorInset
+            separatorInset = .leadingInset(.greatestFiniteMagnitude)
+            hidePrecedingCellSeparator()
+        } else {
+            restoreSeparatorsAfterSwipe()
+        }
+    }
+
+    private func hidePrecedingCellSeparator() {
+        guard precedingCellWithHiddenSeparator == nil,
+              let tableView = sequence(first: superview, next: { $0?.superview }).first(where: { $0 is UITableView }) as? UITableView,
+              let indexPath = tableView.indexPath(for: self),
+              indexPath.row > 0,
+              let precedingCell = tableView.cellForRow(at: IndexPath(row: indexPath.row - 1, section: indexPath.section)) else { return }
+
+        precedingCellWithHiddenSeparator = precedingCell
+        precedingCellSeparatorInsetBeforeSwipe = precedingCell.separatorInset
+        precedingCell.separatorInset = .leadingInset(.greatestFiniteMagnitude)
+    }
+
+    private func restoreSeparatorsAfterSwipe() {
+        if let separatorInsetBeforeSwipe {
+            separatorInset = separatorInsetBeforeSwipe
+            self.separatorInsetBeforeSwipe = nil
+        }
+
+        if let precedingCellWithHiddenSeparator, let precedingCellSeparatorInsetBeforeSwipe {
+            precedingCellWithHiddenSeparator.separatorInset = precedingCellSeparatorInsetBeforeSwipe
+        }
+        precedingCellWithHiddenSeparator = nil
+        precedingCellSeparatorInsetBeforeSwipe = nil
     }
 }

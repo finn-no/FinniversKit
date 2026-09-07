@@ -372,7 +372,7 @@ public class FavoriteAdsListView: UIView {
         emptySearchView.frame.origin.y = tableView.tableHeaderView?.frame.height ?? 0
         emptySearchView.frame.size.height -= emptySearchView.frame.origin.y
 
-        emptyListView.frame = emptySearchView.frame
+        emptyListView.frame = tableView.bounds
     }
 
     /// Calculates the correct frame for the `tableHeaderView` on each call to `layoutSubviews`.
@@ -473,7 +473,8 @@ extension FavoriteAdsListView: UITableViewDelegate {
 
         commentAction.configureWarpAppearance(
             icon: Warp.Icon.edit.uiImage,
-            fill: Warp.UIToken.backgroundWarning
+            fill: Warp.UIToken.backgroundWarning,
+            maximumDiameter: 48
         )
 
         let shareAction = UIContextualAction(
@@ -487,7 +488,8 @@ extension FavoriteAdsListView: UITableViewDelegate {
 
         shareAction.configureWarpAppearance(
             icon: Warp.Icon.share.uiImage,
-            fill: Warp.UIToken.backgroundInfo
+            fill: Warp.UIToken.backgroundInfo,
+            maximumDiameter: 48
         )
 
         let deleteAction = UIContextualAction(
@@ -501,7 +503,8 @@ extension FavoriteAdsListView: UITableViewDelegate {
 
         deleteAction.configureWarpAppearance(
             icon: Warp.Icon.bin.uiImage,
-            fill: Warp.UIToken.backgroundNegative
+            fill: Warp.UIToken.backgroundNegative,
+            maximumDiameter: 48
         )
 
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction, shareAction, commentAction])

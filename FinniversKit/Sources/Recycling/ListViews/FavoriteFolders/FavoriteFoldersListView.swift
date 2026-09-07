@@ -468,7 +468,8 @@ extension FavoriteFoldersListView: UITableViewDelegate {
             }
             deleteAction.configureWarpAppearance(
                 icon: Warp.Icon.bin.uiImage,
-                fill: Warp.UIToken.backgroundNegative
+                fill: Warp.UIToken.backgroundNegative,
+                maximumDiameter: 48
             )
             actions.append(deleteAction)
         }
@@ -484,7 +485,8 @@ extension FavoriteFoldersListView: UITableViewDelegate {
             }
             renameAction.configureWarpAppearance(
                 icon: Warp.Icon.edit.uiImage,
-                fill: Warp.UIToken.backgroundWarning
+                fill: Warp.UIToken.backgroundWarning,
+                maximumDiameter: 48
             )
             actions.append(renameAction)
         }
@@ -501,7 +503,8 @@ extension FavoriteFoldersListView: UITableViewDelegate {
             }
             shareAction.configureWarpAppearance(
                 icon: Warp.Icon.share.uiImage,
-                fill: Warp.UIToken.backgroundInfo
+                fill: Warp.UIToken.backgroundInfo,
+                maximumDiameter: 48
             )
             actions.append(shareAction)
         }
