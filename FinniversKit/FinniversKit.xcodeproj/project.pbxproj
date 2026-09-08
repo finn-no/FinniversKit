@@ -253,6 +253,7 @@
 		9B2D17D623E02B6900EF3B50 /* KeyValueGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D17D523E02B6900EF3B50 /* KeyValueGridView.swift */; };
 		9B93F210230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */; };
 		9B9663CB2460383900D34BA1 /* ConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9663CA2460383900D34BA1 /* ConfigTests.swift */; };
+		A13068012D00000100000001 /* FavoriteFoldersListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13068012D00000100000002 /* FavoriteFoldersListViewTests.swift */; };
 		9BA8248623859B4400163F24 /* MapZoomRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA8248523859B4400163F24 /* MapZoomRange.swift */; };
 		9BB680322462F7AC001ADACF /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB680312462F7AC001ADACF /* View+Extensions.swift */; };
 		9BB734C42462EA0500E05435 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB734C32462EA0500E05435 /* ButtonStyle.swift */; };
@@ -694,6 +695,7 @@
 		9B2D17D523E02B6900EF3B50 /* KeyValueGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueGridView.swift; sourceTree = "<group>"; };
 		9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDirectionalEdgeInsetsExtensions.swift; sourceTree = "<group>"; };
 		9B9663CA2460383900D34BA1 /* ConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigTests.swift; sourceTree = "<group>"; };
+		A13068012D00000100000002 /* FavoriteFoldersListViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersListViewTests.swift; sourceTree = "<group>"; };
 		9BA8248523859B4400163F24 /* MapZoomRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoomRange.swift; sourceTree = "<group>"; };
 		9BB680312462F7AC001ADACF /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		9BB734C32462EA0500E05435 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
@@ -1022,6 +1024,7 @@
 				14F4F1BD1FD6CEA800E9CECA /* Info.plist */,
 				9F213D8A2542DC1D6D998B43 /* Util */,
 				9B9663CA2460383900D34BA1 /* ConfigTests.swift */,
+				A13068012D00000100000002 /* FavoriteFoldersListViewTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -3139,6 +3142,7 @@
 				179D06AE2906A3FA00A65E3A /* HTMLStringParserTests.swift in Sources */,
 				177A876C2914184B00F02088 /* HTMLStringSwiftUIStyleTranslatorTests.swift in Sources */,
 				9B9663CB2460383900D34BA1 /* ConfigTests.swift in Sources */,
+				A13068012D00000100000001 /* FavoriteFoldersListViewTests.swift in Sources */,
 				9F213830B2F4E5DFE596431F /* KeyboardNotificationInfoTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -248,7 +248,7 @@ public class FavoriteFoldersListView: UIView {
         }
 
         let numberOfItems = self.tableView(tableView, numberOfRowsInSection: Section.folders.rawValue)
-        let performBatchUpdates = editing && numberOfItems == 1 || !editing && numberOfItems == 0
+        let performBatchUpdates = !isAddButtonHidden && (editing && numberOfItems == 1 || !editing && numberOfItems == 0)
 
         tableView.setEditing(editing, animated: true)
         footerViewTop.constant = 0
