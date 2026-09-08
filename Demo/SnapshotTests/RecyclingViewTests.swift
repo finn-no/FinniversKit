@@ -41,24 +41,31 @@ class RecyclingViewTests: XCTestCase {
         ]
 
         for configuration in configurations {
-            let demoView = FavoriteFoldersListDemoView()
-            demoView.loadsRemoteImages = false
-
-            let viewController = UIViewController()
-            viewController.view.backgroundColor = .systemBackground
-            viewController.view.addSubview(demoView)
-            demoView.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                demoView.topAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.topAnchor),
-                demoView.leadingAnchor.constraint(equalTo: viewController.view.leadingAnchor),
-                demoView.trailingAnchor.constraint(equalTo: viewController.view.trailingAnchor),
-                demoView.bottomAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.bottomAnchor),
-            ])
-
             let traits = UITraitCollection(traitsFrom: [
                 UITraitCollection(userInterfaceStyle: configuration.style),
                 UITraitCollection(horizontalSizeClass: configuration.horizontalSizeClass),
             ])
+            let demoView = FavoriteFoldersListDemoView()
+            demoView.prepareForSnapshotTesting()
+
+            let demoViewController = UIViewController()
+            demoViewController.view.backgroundColor = .systemBackground
+            demoViewController.view.addSubview(demoView)
+            demoView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                demoView.topAnchor.constraint(equalTo: demoViewController.view.safeAreaLayoutGuide.topAnchor),
+                demoView.leadingAnchor.constraint(equalTo: demoViewController.view.leadingAnchor),
+                demoView.trailingAnchor.constraint(equalTo: demoViewController.view.trailingAnchor),
+                demoView.bottomAnchor.constraint(equalTo: demoViewController.view.safeAreaLayoutGuide.bottomAnchor),
+            ])
+
+            let viewController = UIViewController()
+            viewController.addChild(demoViewController)
+            viewController.view.addSubview(demoViewController.view)
+            demoViewController.view.frame = viewController.view.bounds
+            demoViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            demoViewController.didMove(toParent: viewController)
+            viewController.setOverrideTraitCollection(traits, forChild: demoViewController)
 
             if let size = configuration.imageConfig.size {
                 viewController.view.frame = CGRect(origin: .zero, size: size)

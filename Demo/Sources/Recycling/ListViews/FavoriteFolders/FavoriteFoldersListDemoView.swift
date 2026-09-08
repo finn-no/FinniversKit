@@ -36,6 +36,11 @@ final class FavoriteFoldersListDemoView: UIView {
 
     required init?(coder aDecoder: NSCoder) { fatalError() }
 
+    func prepareForSnapshotTesting() {
+        loadsRemoteImages = false
+        allFavorites.removeAll { $0.subtitle != nil }
+    }
+
     // MARK: - Setup
 
     private func setup() {
