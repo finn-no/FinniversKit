@@ -6,6 +6,7 @@ import FinniversKit
 import DemoKit
 
 final class FavoriteFoldersListDemoView: UIView {
+    var loadsRemoteImages = true
     private var allFavorites = FavoriteFoldersFactory.create() { didSet { filterFolders() } }
     private var filteredFavorites = [FavoriteFolder]()
     private var filterString = ""
@@ -134,7 +135,24 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDataSource {
                                  loadImageWithPath imagePath: String,
                                  imageWidth: CGFloat,
                                  completion: @escaping @Sendable ((UIImage?) -> Void)) {
-        completion(nil)
+        guard loadsRemoteImages, let url = URL(string: imagePath) else {
+            completion(nil)
+            return
+        }
+
+        // Demo code only.
+        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+            usleep(50_000)
+            DispatchQueue.main.async {
+                if let data = data, let image = UIImage(data: data) {
+                    completion(image)
+                } else {
+                    completion(nil)
+                }
+            }
+        }
+
+        task.resume()
     }
 
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
