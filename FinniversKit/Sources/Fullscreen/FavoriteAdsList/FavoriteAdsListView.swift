@@ -273,7 +273,7 @@ public class FavoriteAdsListView: UIView {
         setTableHeader()
     }
 
-    public func setEditing(_ editing: Bool) {
+    public func setEditing(_ editing: Bool, animated: Bool = true) {
         guard editing != tableView.isEditing else { return }
 
         let tableHeaderHeight = tableHeaderView.bounds.height
@@ -281,12 +281,13 @@ public class FavoriteAdsListView: UIView {
         let isContentTallEnoughForAnimatingOffset = tableView.contentSize.height > bounds.height + tableHeaderHeight
 
         if !editing {
+            tableView.setEditing(false, animated: animated)
             sendScrollUpdates = true
             setTableHeader()
             tableView.contentOffset.y += tableHeaderHeight
         }
 
-        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+        UIView.animate(withDuration: animated ? 0.3 : 0, animations: { [weak self] in
             guard let self = self else { return }
             self.tableHeaderView.alpha = editing ? 0 : 1
             if editing && !isContentTallEnoughForAnimatingOffset {
@@ -310,7 +311,9 @@ public class FavoriteAdsListView: UIView {
             }
         })
 
-        tableView.setEditing(editing, animated: true)
+        if editing {
+            tableView.setEditing(true, animated: animated)
+        }
     }
 
     public func selectAllRows(_ selected: Bool, animated: Bool) {
@@ -350,6 +353,11 @@ public class FavoriteAdsListView: UIView {
     // MARK: - Private
 
     private func setTableHeader() {
+        guard !tableView.isEditing else {
+            layoutEmptyViews()
+            return
+        }
+
         tableView.tableHeaderView = tableHeaderView
         layoutTableHeaderView()
         tableView.sendSubviewToBack(tableHeaderView)

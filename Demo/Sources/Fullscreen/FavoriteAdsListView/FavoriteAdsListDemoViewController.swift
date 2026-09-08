@@ -138,15 +138,15 @@ extension FavoriteAdsListDemoView: TweakableDemo {
             favoritesListView.setEditing(false)
             resetHeader()
         case .editModeNoneSelected:
-            resetViewModels()
             setReadOnly(false)
-            favoritesListView.setEditing(true)
+            favoritesListView.setEditing(true, animated: false)
+            resetViewModels()
             favoritesListView.selectAllRows(false, animated: false)
             resetHeader()
         case .editModeAllSelected:
             resetViewModels()
             setReadOnly(false)
-            favoritesListView.setEditing(true)
+            favoritesListView.setEditing(true, animated: false)
             favoritesListView.selectAllRows(true, animated: false)
             resetHeader()
         case .sharedPersonalFolder:
