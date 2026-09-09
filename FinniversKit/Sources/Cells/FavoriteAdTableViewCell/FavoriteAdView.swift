@@ -45,9 +45,13 @@ final class FavoriteAdView: UIView {
     private lazy var descriptionPrimaryLabel = label(style: .bodyStrong, textColor: .text, numberOfLines: 0)
     private lazy var descriptionSecondaryLabel = label(style: .detail, textColor: .text, numberOfLines: 0)
     private lazy var descriptionTertiaryLabel = label(style: .detailStrong, textColor: .text, numberOfLines: 0)
-    private lazy var statusBadgeView = hostingContentView {
-        StatusBadgeView(text: "", variant: .neutral)
-    }
+    private lazy var statusBadgeView: UIView & UIContentView = {
+        let view = hostingContentView {
+            StatusBadgeView(text: "", variant: .neutral)
+        }
+        view.setContentCompressionResistancePriority(.required, for: .horizontal)
+        return view
+    }()
     private lazy var commentView = hostingContentView {
         CommentAlertView(title: "", text: "")
     }
@@ -284,6 +288,7 @@ final class FavoriteAdView: UIView {
             text: ribbonViewModel.title,
             variant: Warp.BadgeVariant(ribbonStyle: ribbonViewModel.style)
         )
+        statusBadgeView.invalidateIntrinsicContentSize()
         statusBadgeView.accessibilityLabel = ribbonViewModel.title
     }
 
