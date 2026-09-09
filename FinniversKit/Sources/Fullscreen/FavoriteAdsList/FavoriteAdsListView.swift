@@ -226,8 +226,8 @@ public class FavoriteAdsListView: UIView {
 
         NSLayoutConstraint.activate([
             tableViewTopConstraint,
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             scrollShadowViewTopConstraint,
@@ -420,7 +420,7 @@ public class FavoriteAdsListView: UIView {
         guard let headerView = tableView.tableHeaderView else { return }
         headerView.translatesAutoresizingMaskIntoConstraints = false
 
-        let headerWidth = bounds.width
+        let headerWidth = tableView.bounds.width
         let temporaryWidthConstraint = headerView.widthAnchor.constraint(equalToConstant: headerWidth)
 
         headerView.addConstraint(temporaryWidthConstraint)

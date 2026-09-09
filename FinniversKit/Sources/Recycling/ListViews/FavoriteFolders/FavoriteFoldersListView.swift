@@ -330,8 +330,8 @@ public class FavoriteFoldersListView: UIView {
             searchBar.heightAnchor.constraint(equalToConstant: 36),
 
             tableView.topAnchor.constraint(equalTo: searchBarContainer.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: footerView.topAnchor),
 
             footerViewTop,
