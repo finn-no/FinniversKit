@@ -10,7 +10,19 @@ public protocol FavoriteAdsListViewDelegate: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButton button: UIButton, at indexPath: IndexPath)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath, sender: UIView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath, sender: UIView)
+    func favoriteAdsListView(
+        _ view: FavoriteAdsListView,
+        didSelectCommentForItemAt indexPath: IndexPath,
+        sender: UIView,
+        completion: @escaping (Bool) -> Void
+    )
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectShareItemAt indexPath: IndexPath, sender: UIView)
+    func favoriteAdsListView(
+        _ view: FavoriteAdsListView,
+        didSelectShareItemAt indexPath: IndexPath,
+        sender: UIView,
+        completion: @escaping (Bool) -> Void
+    )
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectSortingView sortingView: UIView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectHeaderShareButton button: UIButton)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectFooterShareButton button: UIButton)
@@ -20,7 +32,26 @@ public protocol FavoriteAdsListViewDelegate: AnyObject {
 }
 
 public extension FavoriteAdsListViewDelegate {
+    func favoriteAdsListView(
+        _ view: FavoriteAdsListView,
+        didSelectCommentForItemAt indexPath: IndexPath,
+        sender: UIView,
+        completion: @escaping (Bool) -> Void
+    ) {
+        favoriteAdsListView(view, didSelectCommentForItemAt: indexPath, sender: sender)
+        completion(true)
+    }
+
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectShareItemAt indexPath: IndexPath, sender: UIView) {}
+    func favoriteAdsListView(
+        _ view: FavoriteAdsListView,
+        didSelectShareItemAt indexPath: IndexPath,
+        sender: UIView,
+        completion: @escaping (Bool) -> Void
+    ) {
+        favoriteAdsListView(view, didSelectShareItemAt: indexPath, sender: sender)
+        completion(true)
+    }
 }
 
 public protocol FavoriteAdsListViewDataSource: AnyObject {
@@ -474,9 +505,14 @@ extension FavoriteAdsListView: UITableViewDelegate {
             style: .normal,
             title: comment == nil ? viewModel.addCommentActionTitle : viewModel.editCommentActionTitle,
             handler: { [weak self] _, sender, completionHandler in
-                guard let self = self else { return }
-                self.delegate?.favoriteAdsListView(self, didSelectCommentForItemAt: indexPath, sender: sender)
-                completionHandler(true)
+                guard let self = self else { completionHandler(false); return }
+                guard let delegate else { completionHandler(false); return }
+                delegate.favoriteAdsListView(
+                    self,
+                    didSelectCommentForItemAt: indexPath,
+                    sender: sender,
+                    completion: completionHandler
+                )
             })
 
         commentAction.configureWarpAppearance(
@@ -489,9 +525,14 @@ extension FavoriteAdsListView: UITableViewDelegate {
             style: .normal,
             title: viewModel.shareAdActionTitle,
             handler: { [weak self] _, sender, completionHandler in
-                guard let self = self else { return }
-                self.delegate?.favoriteAdsListView(self, didSelectShareItemAt: indexPath, sender: sender)
-                completionHandler(true)
+                guard let self = self else { completionHandler(false); return }
+                guard let delegate else { completionHandler(false); return }
+                delegate.favoriteAdsListView(
+                    self,
+                    didSelectShareItemAt: indexPath,
+                    sender: sender,
+                    completion: completionHandler
+                )
             })
 
         shareAction.configureWarpAppearance(
@@ -504,7 +545,7 @@ extension FavoriteAdsListView: UITableViewDelegate {
             style: .normal,
             title: viewModel.deleteAdActionTitle,
             handler: { [weak self] _, sender, completionHandler in
-                guard let self = self else { return }
+                guard let self = self else { completionHandler(false); return }
                 self.delegate?.favoriteAdsListView(self, didSelectDeleteItemAt: indexPath, sender: sender)
                 completionHandler(true)
             })

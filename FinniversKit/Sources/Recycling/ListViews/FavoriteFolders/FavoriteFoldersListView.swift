@@ -14,7 +14,18 @@ public protocol FavoriteFoldersListViewDelegate: AnyObject {
         completion: @escaping (Bool) -> Void
     )
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didRenameItemAtIndex index: Int)
+    func favoriteFoldersListView(
+        _ view: FavoriteFoldersListView,
+        didRenameItemAtIndex index: Int,
+        completion: @escaping (Bool) -> Void
+    )
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didShareItemAtIndex index: Int, sender: UIView)
+    func favoriteFoldersListView(
+        _ view: FavoriteFoldersListView,
+        didShareItemAtIndex index: Int,
+        sender: UIView,
+        completion: @escaping (Bool) -> Void
+    )
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView, withSearchText searchText: String?)
     func favoriteFoldersListViewDidFocusSearchBar(_ view: FavoriteFoldersListView)
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String)
@@ -22,7 +33,25 @@ public protocol FavoriteFoldersListViewDelegate: AnyObject {
 
 public extension FavoriteFoldersListViewDelegate {
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didRenameItemAtIndex index: Int) {}
+    func favoriteFoldersListView(
+        _ view: FavoriteFoldersListView,
+        didRenameItemAtIndex index: Int,
+        completion: @escaping (Bool) -> Void
+    ) {
+        favoriteFoldersListView(view, didRenameItemAtIndex: index)
+        completion(true)
+    }
+
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didShareItemAtIndex index: Int, sender: UIView) {}
+    func favoriteFoldersListView(
+        _ view: FavoriteFoldersListView,
+        didShareItemAtIndex index: Int,
+        sender: UIView,
+        completion: @escaping (Bool) -> Void
+    ) {
+        favoriteFoldersListView(view, didShareItemAtIndex: index, sender: sender)
+        completion(true)
+    }
 }
 
 public protocol FavoriteFoldersListViewDataSource: AnyObject {
@@ -480,8 +509,12 @@ extension FavoriteFoldersListView: UITableViewDelegate {
                 title: renameTitle
             ) { [weak self] _, _, completion in
                 guard let self = self else { completion(false); return }
-                self.delegate?.favoriteFoldersListView(self, didRenameItemAtIndex: indexPath.row)
-                completion(true)
+                guard let delegate else { completion(false); return }
+                delegate.favoriteFoldersListView(
+                    self,
+                    didRenameItemAtIndex: indexPath.row,
+                    completion: completion
+                )
             }
             renameAction.configureWarpAppearance(
                 icon: Warp.Icon.edit.uiImage,
@@ -497,9 +530,14 @@ extension FavoriteFoldersListView: UITableViewDelegate {
                 title: shareTitle
             ) { [weak self, weak tableView] _, _, completion in
                 guard let self = self else { completion(false); return }
+                guard let delegate else { completion(false); return }
                 let sender: UIView = tableView?.cellForRow(at: indexPath) ?? self
-                self.delegate?.favoriteFoldersListView(self, didShareItemAtIndex: indexPath.row, sender: sender)
-                completion(true)
+                delegate.favoriteFoldersListView(
+                    self,
+                    didShareItemAtIndex: indexPath.row,
+                    sender: sender,
+                    completion: completion
+                )
             }
             shareAction.configureWarpAppearance(
                 icon: Warp.Icon.share.uiImage,
