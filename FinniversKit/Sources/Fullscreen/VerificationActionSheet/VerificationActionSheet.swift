@@ -3,6 +3,7 @@
 //
 import Warp
 
+@MainActor
 public protocol VerificationActionSheetDelegate: AnyObject {
     func didTapVerificationActionSheetButton(_ sheet: VerificationActionSheet)
 }

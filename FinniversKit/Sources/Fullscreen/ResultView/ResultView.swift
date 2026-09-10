@@ -5,6 +5,7 @@
 import UIKit
 import Warp
 
+@MainActor
 public protocol ResultViewDelegate: AnyObject {
     func resultViewDidTapActionButton(_ resultView: ResultView)
 }

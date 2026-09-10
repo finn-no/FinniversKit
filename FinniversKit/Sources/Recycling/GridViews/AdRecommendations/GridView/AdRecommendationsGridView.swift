@@ -1,6 +1,6 @@
 import UIKit
 
-public protocol AdRecommendationsGridViewDelegate: AnyObject {
+public protocol AdRecommendationsGridViewDelegate: AnyObject, Sendable {
     func adRecommendationsGridViewDidStartRefreshing(_ adRecommendationsGridView: AdRecommendationsGridView)
     func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, didSelectItemAtIndex index: Int)
     func adRecommendationsGridView(_ adRecommendationsGridView: AdRecommendationsGridView, willDisplayItemAtIndex index: Int)

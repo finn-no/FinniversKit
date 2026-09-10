@@ -4,6 +4,7 @@
 
 import Foundation
 
+@MainActor
 public protocol ImageLoadable {
     var imageDataSource: RemoteImageViewDataSource? { get set }
 

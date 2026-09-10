@@ -5,6 +5,7 @@
 import UIKit
 import Warp
 
+@MainActor
 public protocol FooterButtonViewDelegate: AnyObject {
     func footerButtonView(_ view: FooterButtonView, didSelectButton button: UIButton)
 }
