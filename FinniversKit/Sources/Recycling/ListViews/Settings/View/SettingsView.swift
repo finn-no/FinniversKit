@@ -6,12 +6,14 @@ import UIKit
 import SwiftUI
 
 // MARK: - Protocols
+@MainActor
 public protocol SettingsViewDataSource: AnyObject {
     func numberOfSections(in settingsView: SettingsView) -> Int
     func settingsView(_ settingsView: SettingsView, numberOfItemsInSection section: Int) -> Int
     func settingsView(_ settingsView: SettingsView, modelForItemAt indexPath: IndexPath) -> SettingsViewCellModel
 }
 
+@MainActor
 public protocol SettingsViewDelegate: AnyObject {
     func settingsView(_ settingsView: SettingsView, didSelectModelAt indexPath: IndexPath)
     func settingsView(_ settingsView: SettingsView, didToggleSettingAt indexPath: IndexPath, isOn: Bool)
