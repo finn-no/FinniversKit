@@ -43,9 +43,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         return view
     }()
 
-    private var separatorInsetBeforeSwipe: UIEdgeInsets?
-    private weak var precedingCellWithHiddenSeparator: UITableViewCell?
-    private var precedingCellSeparatorInsetBeforeSwipe: UIEdgeInsets?
+    private var normalSeparatorInset: UIEdgeInsets?
 
     // MARK: - Init
 
@@ -60,7 +58,10 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
     public override func prepareForReuse() {
         super.prepareForReuse()
-        restoreSeparatorsAfterSwipe()
+        if let normalSeparatorInset {
+            separatorInset = normalSeparatorInset
+        }
+        normalSeparatorInset = nil
         adView.resetContent()
     }
 
@@ -91,6 +92,8 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
     public func configure(with viewModel: FavoriteAdViewModel) {
         separatorInset = .leadingInset(Warp.Spacing.spacing400 + FavoriteAdView.adImageWidth)
+        normalSeparatorInset = separatorInset
+        updateSeparator(for: configurationState)
         adView.configure(with: viewModel)
     }
 
@@ -111,39 +114,10 @@ public class FavoriteAdTableViewCell: UITableViewCell {
     }
 
     private func updateSeparator(for state: UICellConfigurationState) {
-        if state.isSwiped {
-            separatorInsetBeforeSwipe = separatorInsetBeforeSwipe ?? separatorInset
-            separatorInset = .leadingInset(.greatestFiniteMagnitude)
-            hidePrecedingCellSeparator()
-        } else {
-            restoreSeparatorsAfterSwipe()
-        }
+        guard let normalSeparatorInset else { return }
+        separatorInset = state.isSwiped ? .leadingInset(.greatestFiniteMagnitude) : normalSeparatorInset
     }
 
-    private func hidePrecedingCellSeparator() {
-        guard precedingCellWithHiddenSeparator == nil,
-              let tableView = sequence(first: superview, next: { $0?.superview }).first(where: { $0 is UITableView }) as? UITableView,
-              let indexPath = tableView.indexPath(for: self),
-              indexPath.row > 0,
-              let precedingCell = tableView.cellForRow(at: IndexPath(row: indexPath.row - 1, section: indexPath.section)) else { return }
-
-        precedingCellWithHiddenSeparator = precedingCell
-        precedingCellSeparatorInsetBeforeSwipe = precedingCell.separatorInset
-        precedingCell.separatorInset = .leadingInset(.greatestFiniteMagnitude)
-    }
-
-    private func restoreSeparatorsAfterSwipe() {
-        if let separatorInsetBeforeSwipe {
-            separatorInset = separatorInsetBeforeSwipe
-            self.separatorInsetBeforeSwipe = nil
-        }
-
-        if let precedingCellWithHiddenSeparator, let precedingCellSeparatorInsetBeforeSwipe {
-            precedingCellWithHiddenSeparator.separatorInset = precedingCellSeparatorInsetBeforeSwipe
-        }
-        precedingCellWithHiddenSeparator = nil
-        precedingCellSeparatorInsetBeforeSwipe = nil
-    }
 }
 
 // MARK: - FavoriteAdViewDelegate

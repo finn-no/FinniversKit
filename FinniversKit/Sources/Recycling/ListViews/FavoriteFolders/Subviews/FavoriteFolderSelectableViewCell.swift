@@ -31,9 +31,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         return view
     }()
 
-    private var separatorInsetBeforeSwipe: UIEdgeInsets?
-    private weak var precedingCellWithHiddenSeparator: UITableViewCell?
-    private var precedingCellSeparatorInsetBeforeSwipe: UIEdgeInsets?
+    private var normalSeparatorInset: UIEdgeInsets?
 
     private lazy var stackViewToCheckmarkConstraint = stackView.trailingAnchor.constraint(
         equalTo: checkmarkImageView.leadingAnchor,
@@ -66,7 +64,10 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
     public override func prepareForReuse() {
         super.prepareForReuse()
-        restoreSeparatorsAfterSwipe()
+        if let normalSeparatorInset {
+            separatorInset = normalSeparatorInset
+        }
+        normalSeparatorInset = nil
         titleLabel.font = titleLabelDefaultFont
         checkmarkImageView.isHidden = true
     }
@@ -103,6 +104,9 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         } else if viewModel.isSelected {
             titleLabel.font = titleLabelSelectedFont
         }
+
+        normalSeparatorInset = separatorInset
+        updateSeparator(for: configurationState)
 
         checkmarkImageView.isHidden = !viewModel.isSelected || isEditing || showDetailLabel
         setNeedsLayout()
@@ -141,37 +145,8 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
     }
 
     private func updateSeparator(for state: UICellConfigurationState) {
-        if state.isSwiped {
-            separatorInsetBeforeSwipe = separatorInsetBeforeSwipe ?? separatorInset
-            separatorInset = .leadingInset(.greatestFiniteMagnitude)
-            hidePrecedingCellSeparator()
-        } else {
-            restoreSeparatorsAfterSwipe()
-        }
+        guard let normalSeparatorInset else { return }
+        separatorInset = state.isSwiped ? .leadingInset(.greatestFiniteMagnitude) : normalSeparatorInset
     }
 
-    private func hidePrecedingCellSeparator() {
-        guard precedingCellWithHiddenSeparator == nil,
-              let tableView = sequence(first: superview, next: { $0?.superview }).first(where: { $0 is UITableView }) as? UITableView,
-              let indexPath = tableView.indexPath(for: self),
-              indexPath.row > 0,
-              let precedingCell = tableView.cellForRow(at: IndexPath(row: indexPath.row - 1, section: indexPath.section)) else { return }
-
-        precedingCellWithHiddenSeparator = precedingCell
-        precedingCellSeparatorInsetBeforeSwipe = precedingCell.separatorInset
-        precedingCell.separatorInset = .leadingInset(.greatestFiniteMagnitude)
-    }
-
-    private func restoreSeparatorsAfterSwipe() {
-        if let separatorInsetBeforeSwipe {
-            separatorInset = separatorInsetBeforeSwipe
-            self.separatorInsetBeforeSwipe = nil
-        }
-
-        if let precedingCellWithHiddenSeparator, let precedingCellSeparatorInsetBeforeSwipe {
-            precedingCellWithHiddenSeparator.separatorInset = precedingCellSeparatorInsetBeforeSwipe
-        }
-        precedingCellWithHiddenSeparator = nil
-        precedingCellSeparatorInsetBeforeSwipe = nil
-    }
 }

@@ -446,12 +446,6 @@ extension FavoriteFoldersListView: UITableViewDelegate {
             return
         }
 
-        let isLastCell = indexPath.row == (self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1)
-
-        if isLastCell {
-            cell.separatorInset = .leadingInset(.greatestFiniteMagnitude)
-        }
-
         cell.loadImage()
     }
 
