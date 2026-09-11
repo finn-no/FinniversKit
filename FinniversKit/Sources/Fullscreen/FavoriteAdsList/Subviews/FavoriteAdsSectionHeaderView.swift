@@ -12,7 +12,8 @@ class FavoriteAdsSectionHeaderView: UITableViewHeaderFooterView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .bodyStrong
-        label.textColor = Warp.UIToken.text
+        label.textColor = Warp.UIToken.textSubtle
+        label.preferredVibrancy = .automatic
         return label
     }()
 
@@ -44,7 +45,7 @@ class FavoriteAdsSectionHeaderView: UITableViewHeaderFooterView {
     // MARK: - Setup
 
     private func setup() {
-        contentView.backgroundColor = Warp.UIToken.background
+        contentView.backgroundColor = .clear
         contentView.addSubview(titleLabel)
         contentView.addSubview(detailLabel)
 
