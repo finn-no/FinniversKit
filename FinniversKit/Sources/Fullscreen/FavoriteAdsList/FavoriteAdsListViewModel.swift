@@ -7,6 +7,7 @@ public struct FavoriteAdsListViewModel {
     public let headerShareButtonTitle: String
     public let addCommentActionTitle: String
     public let editCommentActionTitle: String
+    public let shareAdActionTitle: String
     public let deleteAdActionTitle: String
     public let emptySearchViewBodyPrefix: String
     public let emptyListViewTitle: String
@@ -18,6 +19,7 @@ public struct FavoriteAdsListViewModel {
         headerShareButtonTitle: String,
         addCommentActionTitle: String,
         editCommentActionTitle: String,
+        shareAdActionTitle: String,
         deleteAdActionTitle: String,
         emptySearchViewBodyPrefix: String,
         emptyListViewTitle: String,
@@ -28,6 +30,7 @@ public struct FavoriteAdsListViewModel {
         self.headerShareButtonTitle = headerShareButtonTitle
         self.addCommentActionTitle = addCommentActionTitle
         self.editCommentActionTitle = editCommentActionTitle
+        self.shareAdActionTitle = shareAdActionTitle
         self.deleteAdActionTitle = deleteAdActionTitle
         self.emptySearchViewBodyPrefix = emptySearchViewBodyPrefix
         self.emptyListViewTitle = emptyListViewTitle

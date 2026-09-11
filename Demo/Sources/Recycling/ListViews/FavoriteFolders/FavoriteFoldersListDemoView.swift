@@ -6,6 +6,7 @@ import FinniversKit
 import DemoKit
 
 final class FavoriteFoldersListDemoView: UIView {
+    var loadsRemoteImages = true
     private var allFavorites = FavoriteFoldersFactory.create() { didSet { filterFolders() } }
     private var filteredFavorites = [FavoriteFolder]()
     private var filterString = ""
@@ -34,6 +35,11 @@ final class FavoriteFoldersListDemoView: UIView {
     }
 
     required init?(coder aDecoder: NSCoder) { fatalError() }
+
+    func prepareForSnapshotTesting() {
+        loadsRemoteImages = false
+        allFavorites.removeAll { $0.subtitle != nil }
+    }
 
     // MARK: - Setup
 
@@ -104,7 +110,13 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDelegate {
         view.reloadData()
     }
 
-    func favoriteFoldersListView(_ favoriteFoldersListView: FavoriteFoldersListView, didDeleteItemAtIndex index: Int) {}
+    func favoriteFoldersListView(
+        _ favoriteFoldersListView: FavoriteFoldersListView,
+        didDeleteItemAtIndex index: Int,
+        completion: @escaping (Bool) -> Void
+    ) {
+        completion(false)
+    }
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView, withSearchText searchText: String?) {}
 
     func favoriteFoldersListViewDidFocusSearchBar(_ view: FavoriteFoldersListView) {
@@ -128,7 +140,7 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDataSource {
                                  loadImageWithPath imagePath: String,
                                  imageWidth: CGFloat,
                                  completion: @escaping @Sendable ((UIImage?) -> Void)) {
-        guard let url = URL(string: imagePath) else {
+        guard loadsRemoteImages, let url = URL(string: imagePath) else {
             completion(nil)
             return
         }

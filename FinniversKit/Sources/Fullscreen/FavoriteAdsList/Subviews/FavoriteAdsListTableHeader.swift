@@ -61,6 +61,7 @@ class FavoriteAdsListTableHeader: UIView {
     private lazy var contentStackView = UIStackView(axis: .vertical, withAutoLayout: true)
     private lazy var messagesStackView = UIStackView(axis: .vertical, spacing: Warp.Spacing.spacing100, withAutoLayout: true)
     private lazy var sortingContainerView = UIView()
+    private weak var bottomAccessoryView: UIView?
 
     private lazy var titleLabel: Label = {
         let label = Label(
@@ -68,7 +69,7 @@ class FavoriteAdsListTableHeader: UIView {
             numberOfLines: 0,
             withAutoLayout: true
         )
-        label.textAlignment = .center
+        label.textAlignment = .left
         return label
     }()
 
@@ -116,7 +117,7 @@ class FavoriteAdsListTableHeader: UIView {
 
         contentStackView.addArrangedSubviews([titleLabel, subtitleView, messagesStackView, searchBar, sortingContainerView])
         contentStackView.setCustomSpacing(Warp.Spacing.spacing50, after: titleLabel)
-        contentStackView.setCustomSpacing(Warp.Spacing.spacing300, after: subtitleView)
+        contentStackView.setCustomSpacing(Warp.Spacing.spacing100, after: subtitleView)
         contentStackView.setCustomSpacing(Warp.Spacing.spacing200, after: messagesStackView)
         contentStackView.setCustomSpacing(Warp.Spacing.spacing300 + Warp.Spacing.spacing50, after: searchBar)
 
@@ -147,6 +148,19 @@ class FavoriteAdsListTableHeader: UIView {
         messagesStackView.addArrangedSubviews(messageViews)
 
         layoutIfNeeded()
+    }
+
+    func setBottomAccessoryView(_ view: UIView?) {
+        if let existing = bottomAccessoryView, existing !== view {
+            contentStackView.removeArrangedSubview(existing)
+            existing.removeFromSuperview()
+        }
+        bottomAccessoryView = view
+        if let view {
+            view.translatesAutoresizingMaskIntoConstraints = false
+            contentStackView.addArrangedSubview(view)
+            contentStackView.setCustomSpacing(Warp.Spacing.spacing200, after: sortingContainerView)
+        }
     }
 
     // MARK: - Private methods

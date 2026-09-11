@@ -253,6 +253,7 @@
 		9B2D17D623E02B6900EF3B50 /* KeyValueGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D17D523E02B6900EF3B50 /* KeyValueGridView.swift */; };
 		9B93F210230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */; };
 		9B9663CB2460383900D34BA1 /* ConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9663CA2460383900D34BA1 /* ConfigTests.swift */; };
+		A13068012D00000100000001 /* FavoriteFoldersListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13068012D00000100000002 /* FavoriteFoldersListViewTests.swift */; };
 		9BA8248623859B4400163F24 /* MapZoomRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA8248523859B4400163F24 /* MapZoomRange.swift */; };
 		9BB680322462F7AC001ADACF /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB680312462F7AC001ADACF /* View+Extensions.swift */; };
 		9BB734C42462EA0500E05435 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB734C32462EA0500E05435 /* ButtonStyle.swift */; };
@@ -320,7 +321,6 @@
 		CF164D17230FFDEB00250822 /* FavoriteAdAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D16230FFDEB00250822 /* FavoriteAdAction.swift */; };
 		CF164D212310138900250822 /* FavoriteAdActionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D1F2310031700250822 /* FavoriteAdActionHeaderView.swift */; };
 		CF164DDA2315776E00250822 /* FavoriteAdCommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD92315776E00250822 /* FavoriteAdCommentViewModel.swift */; };
-		CF16F73823292D34006566DE /* FavoriteAdCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF16F73723292D34006566DE /* FavoriteAdCommentView.swift */; };
 		CF2E46F22319685C0085A591 /* FavoriteAdActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E46F12319685C0085A591 /* FavoriteAdActionView.swift */; };
 		CF376C18231D452100ED2B24 /* Array+Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF376C17231D452100ED2B24 /* Array+Step.swift */; };
 		CF376C1B231D458200ED2B24 /* ArrayStepTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF376C1A231D458200ED2B24 /* ArrayStepTests.swift */; };
@@ -695,6 +695,7 @@
 		9B2D17D523E02B6900EF3B50 /* KeyValueGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueGridView.swift; sourceTree = "<group>"; };
 		9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDirectionalEdgeInsetsExtensions.swift; sourceTree = "<group>"; };
 		9B9663CA2460383900D34BA1 /* ConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigTests.swift; sourceTree = "<group>"; };
+		A13068012D00000100000002 /* FavoriteFoldersListViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersListViewTests.swift; sourceTree = "<group>"; };
 		9BA8248523859B4400163F24 /* MapZoomRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoomRange.swift; sourceTree = "<group>"; };
 		9BB680312462F7AC001ADACF /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		9BB734C32462EA0500E05435 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
@@ -763,7 +764,6 @@
 		CF164D16230FFDEB00250822 /* FavoriteAdAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdAction.swift; sourceTree = "<group>"; };
 		CF164D1F2310031700250822 /* FavoriteAdActionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdActionHeaderView.swift; sourceTree = "<group>"; };
 		CF164DD92315776E00250822 /* FavoriteAdCommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdCommentViewModel.swift; sourceTree = "<group>"; };
-		CF16F73723292D34006566DE /* FavoriteAdCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdCommentView.swift; sourceTree = "<group>"; };
 		CF2E46F12319685C0085A591 /* FavoriteAdActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdActionView.swift; sourceTree = "<group>"; };
 		CF376C17231D452100ED2B24 /* Array+Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Step.swift"; sourceTree = "<group>"; };
 		CF376C1A231D458200ED2B24 /* ArrayStepTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayStepTests.swift; sourceTree = "<group>"; };
@@ -1024,6 +1024,7 @@
 				14F4F1BD1FD6CEA800E9CECA /* Info.plist */,
 				9F213D8A2542DC1D6D998B43 /* Util */,
 				9B9663CA2460383900D34BA1 /* ConfigTests.swift */,
+				A13068012D00000100000002 /* FavoriteFoldersListViewTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -2121,7 +2122,6 @@
 				9A37D30A5DD3B5A286743DA3 /* FavoriteAdTableViewCell.swift */,
 				9A37DA1C8FBA8E3FF6355FB5 /* FavoriteAdViewModel.swift */,
 				CF0B101723167EA9001E7A57 /* FavoriteAdView.swift */,
-				CF16F73723292D34006566DE /* FavoriteAdCommentView.swift */,
 			);
 			path = FavoriteAdTableViewCell;
 			sourceTree = "<group>";
@@ -3142,6 +3142,7 @@
 				179D06AE2906A3FA00A65E3A /* HTMLStringParserTests.swift in Sources */,
 				177A876C2914184B00F02088 /* HTMLStringSwiftUIStyleTranslatorTests.swift in Sources */,
 				9B9663CB2460383900D34BA1 /* ConfigTests.swift in Sources */,
+				A13068012D00000100000001 /* FavoriteFoldersListViewTests.swift in Sources */,
 				9F213830B2F4E5DFE596431F /* KeyboardNotificationInfoTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3205,7 +3206,6 @@
 				9B06097323F14BD6005CB592 /* ElementContentView.swift in Sources */,
 				F253C5142314015C008175FD /* VerificationViewModel.swift in Sources */,
 				178006A62B99EE560027DD97 /* CharacterReader.swift in Sources */,
-				CF16F73823292D34006566DE /* FavoriteAdCommentView.swift in Sources */,
 				DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */,
 				4447F7031FDB2B110033DBC1 /* Config.swift in Sources */,
 				DAA9A3AC210215400021F7DC /* AnimatedSelectionView.swift in Sources */,

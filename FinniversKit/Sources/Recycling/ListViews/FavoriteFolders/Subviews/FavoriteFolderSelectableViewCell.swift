@@ -23,6 +23,16 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         return view
     }()
 
+    private lazy var swipeHighlightBackgroundView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .clear
+        view.layer.cornerRadius = Warp.Spacing.spacing300
+        view.layer.cornerCurve = .continuous
+        return view
+    }()
+
+    private var normalSeparatorInset: UIEdgeInsets?
+
     private lazy var stackViewToCheckmarkConstraint = stackView.trailingAnchor.constraint(
         equalTo: checkmarkImageView.leadingAnchor,
         constant: -Warp.Spacing.spacing200
@@ -54,6 +64,10 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
     public override func prepareForReuse() {
         super.prepareForReuse()
+        if let normalSeparatorInset {
+            separatorInset = normalSeparatorInset
+        }
+        normalSeparatorInset = nil
         titleLabel.font = titleLabelDefaultFont
         checkmarkImageView.isHidden = true
     }
@@ -66,6 +80,12 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         editModeView.isHidden = isEditable
         titleLabel.font = titleLabelDefaultFont
         checkmarkImageView.isHidden = true
+    }
+
+    public override func updateConfiguration(using state: UICellConfigurationState) {
+        super.updateConfiguration(using: state)
+        swipeHighlightBackgroundView.backgroundColor = state.isSwiped ? Warp.UIToken.backgroundSubtle : .clear
+        updateSeparator(for: state)
     }
 
     // MARK: - Public
@@ -85,6 +105,9 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
             titleLabel.font = titleLabelSelectedFont
         }
 
+        normalSeparatorInset = separatorInset
+        updateSeparator(for: configurationState)
+
         checkmarkImageView.isHidden = !viewModel.isSelected || isEditing || showDetailLabel
         setNeedsLayout()
     }
@@ -95,10 +118,18 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         tintColor = .backgroundPrimary
         subtitleLabel.textColor = .textSubtle
 
+        contentView.insertSubview(swipeHighlightBackgroundView, at: 0)
         contentView.addSubview(checkmarkImageView)
         addSubview(editModeView)
 
         NSLayoutConstraint.activate([
+            swipeHighlightBackgroundView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            swipeHighlightBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            swipeHighlightBackgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            swipeHighlightBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+
+            contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: FavoriteFoldersListView.minimumRowHeight),
+
             checkmarkImageView.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
             checkmarkImageView.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
             checkmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Warp.Spacing.spacing200),
@@ -112,4 +143,10 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
             editModeView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
+
+    private func updateSeparator(for state: UICellConfigurationState) {
+        guard let normalSeparatorInset else { return }
+        separatorInset = state.isSwiped ? .leadingInset(.greatestFiniteMagnitude) : normalSeparatorInset
+    }
+
 }

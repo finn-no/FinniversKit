@@ -10,12 +10,48 @@ public protocol FavoriteAdsListViewDelegate: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButton button: UIButton, at indexPath: IndexPath)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath, sender: UIView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath, sender: UIView)
+    func favoriteAdsListView(
+        _ view: FavoriteAdsListView,
+        didSelectCommentForItemAt indexPath: IndexPath,
+        sender: UIView,
+        completion: @escaping (Bool) -> Void
+    )
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectShareItemAt indexPath: IndexPath, sender: UIView)
+    func favoriteAdsListView(
+        _ view: FavoriteAdsListView,
+        didSelectShareItemAt indexPath: IndexPath,
+        sender: UIView,
+        completion: @escaping (Bool) -> Void
+    )
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectSortingView sortingView: UIView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectHeaderShareButton button: UIButton)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectFooterShareButton button: UIButton)
     func favoriteAdsListViewDidFocusSearchBar(_ view: FavoriteAdsListView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didChangeSearchText searchText: String)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didUpdateTitleLabelVisibility isVisible: Bool)
+}
+
+public extension FavoriteAdsListViewDelegate {
+    func favoriteAdsListView(
+        _ view: FavoriteAdsListView,
+        didSelectCommentForItemAt indexPath: IndexPath,
+        sender: UIView,
+        completion: @escaping (Bool) -> Void
+    ) {
+        favoriteAdsListView(view, didSelectCommentForItemAt: indexPath, sender: sender)
+        completion(true)
+    }
+
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectShareItemAt indexPath: IndexPath, sender: UIView) {}
+    func favoriteAdsListView(
+        _ view: FavoriteAdsListView,
+        didSelectShareItemAt indexPath: IndexPath,
+        sender: UIView,
+        completion: @escaping (Bool) -> Void
+    ) {
+        favoriteAdsListView(view, didSelectShareItemAt: indexPath, sender: sender)
+        completion(true)
+    }
 }
 
 public protocol FavoriteAdsListViewDataSource: AnyObject {
@@ -56,6 +92,30 @@ public class FavoriteAdsListView: UIView {
         }
     }
 
+    public var isSearchBarPermanentlyHidden: Bool = false {
+        didSet {
+            if isSearchBarPermanentlyHidden {
+                isSearchBarHidden = true
+            }
+        }
+    }
+
+    public var isSortingViewPermanentlyHidden: Bool = false {
+        didSet {
+            if isSortingViewPermanentlyHidden {
+                tableHeaderView.isSortingViewHidden = true
+                setTableHeader()
+            }
+        }
+    }
+
+    public var isMoreButtonPermanentlyHidden: Bool = false {
+        didSet {
+            guard isMoreButtonPermanentlyHidden != oldValue else { return }
+            tableView.reloadData()
+        }
+    }
+
     public var title = "" {
         didSet {
             tableHeaderView.title = title
@@ -81,6 +141,20 @@ public class FavoriteAdsListView: UIView {
     public var isShared = false {
         didSet {
             tableHeaderView.shareButtonTitle = isShared ? viewModel.headerShareButtonTitle : ""
+        }
+    }
+
+    public var tableHeaderAccessoryView: UIView? {
+        didSet {
+            tableHeaderView.setBottomAccessoryView(tableHeaderAccessoryView)
+            reloadTableHeader()
+        }
+    }
+
+    public var pinnedSectionZeroHeaderView: UIView? {
+        didSet {
+            guard tableView.numberOfSections > 0 else { return }
+            tableView.reloadSections(IndexSet(integer: 0), with: .none)
         }
     }
 
@@ -152,8 +226,8 @@ public class FavoriteAdsListView: UIView {
 
         NSLayoutConstraint.activate([
             tableViewTopConstraint,
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             scrollShadowViewTopConstraint,
@@ -204,20 +278,33 @@ public class FavoriteAdsListView: UIView {
         setTableHeader()
     }
 
+    public func reloadTableHeader() {
+        setTableHeader()
+    }
+
     public func configure(scrollShadowHeight: CGFloat) {
         scrollShadowViewTopConstraint.constant = -scrollShadowHeight
         scrollShadowViewHeightConstraint.constant = scrollShadowHeight
         layoutIfNeeded()
     }
 
+    public func updateSearchEmptyText(for searchText: String) {
+        let emptyViewText = "\(viewModel.emptySearchViewBodyPrefix) \"\(searchText)\""
+        emptySearchView.configure(withText: emptyViewText, buttonTitle: nil)
+    }
+
     public func setListIsEmpty(_ isEmpty: Bool) {
         emptyListView.isHidden = !isEmpty
-        tableHeaderView.isSearchBarHidden = isEmpty
-        tableHeaderView.isSortingViewHidden = isEmpty
+        if !isSearchBarPermanentlyHidden {
+            tableHeaderView.isSearchBarHidden = isEmpty
+        }
+        if !isSortingViewPermanentlyHidden {
+            tableHeaderView.isSortingViewHidden = isEmpty
+        }
         setTableHeader()
     }
 
-    public func setEditing(_ editing: Bool) {
+    public func setEditing(_ editing: Bool, animated: Bool = true) {
         guard editing != tableView.isEditing else { return }
 
         let tableHeaderHeight = tableHeaderView.bounds.height
@@ -225,12 +312,13 @@ public class FavoriteAdsListView: UIView {
         let isContentTallEnoughForAnimatingOffset = tableView.contentSize.height > bounds.height + tableHeaderHeight
 
         if !editing {
+            tableView.setEditing(false, animated: animated)
             sendScrollUpdates = true
             setTableHeader()
             tableView.contentOffset.y += tableHeaderHeight
         }
 
-        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+        UIView.animate(withDuration: animated ? 0.3 : 0, animations: { [weak self] in
             guard let self = self else { return }
             self.tableHeaderView.alpha = editing ? 0 : 1
             if editing && !isContentTallEnoughForAnimatingOffset {
@@ -254,7 +342,9 @@ public class FavoriteAdsListView: UIView {
             }
         })
 
-        tableView.setEditing(editing, animated: true)
+        if editing {
+            tableView.setEditing(true, animated: animated)
+        }
     }
 
     public func selectAllRows(_ selected: Bool, animated: Bool) {
@@ -294,6 +384,11 @@ public class FavoriteAdsListView: UIView {
     // MARK: - Private
 
     private func setTableHeader() {
+        guard !tableView.isEditing else {
+            layoutEmptyViews()
+            return
+        }
+
         tableView.tableHeaderView = tableHeaderView
         layoutTableHeaderView()
         tableView.sendSubviewToBack(tableHeaderView)
@@ -302,9 +397,12 @@ public class FavoriteAdsListView: UIView {
     }
 
     private func showEmptySearchViewIfNeeded() {
-        let shouldShowEmptySearchView = numberOfSections(in: tableView) == 0
+        let hasSearchText = !searchBarText.isEmpty
+        let shouldShowEmptySearchView = numberOfSections(in: tableView) == 0 && hasSearchText
         emptySearchView.isHidden = !shouldShowEmptySearchView
-        tableHeaderView.isSortingViewHidden = shouldShowEmptySearchView
+        if !isSortingViewPermanentlyHidden {
+            tableHeaderView.isSortingViewHidden = shouldShowEmptySearchView || !emptyListView.isHidden
+        }
         setTableHeader()
     }
 
@@ -313,7 +411,7 @@ public class FavoriteAdsListView: UIView {
         emptySearchView.frame.origin.y = tableView.tableHeaderView?.frame.height ?? 0
         emptySearchView.frame.size.height -= emptySearchView.frame.origin.y
 
-        emptyListView.frame = emptySearchView.frame
+        emptyListView.frame = tableView.bounds
     }
 
     /// Calculates the correct frame for the `tableHeaderView` on each call to `layoutSubviews`.
@@ -322,7 +420,7 @@ public class FavoriteAdsListView: UIView {
         guard let headerView = tableView.tableHeaderView else { return }
         headerView.translatesAutoresizingMaskIntoConstraints = false
 
-        let headerWidth = bounds.width
+        let headerWidth = tableView.bounds.width
         let temporaryWidthConstraint = headerView.widthAnchor.constraint(equalToConstant: headerWidth)
 
         headerView.addConstraint(temporaryWidthConstraint)
@@ -353,12 +451,6 @@ public class FavoriteAdsListView: UIView {
 
 extension FavoriteAdsListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let isLastCell = indexPath.row == (self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1)
-
-        if isLastCell {
-            cell.separatorInset = .leadingInset(.greatestFiniteMagnitude)
-        }
-
         if let cell = cell as? FavoriteAdTableViewCell {
             cell.loadImage()
         }
@@ -377,6 +469,10 @@ extension FavoriteAdsListView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0, let pinnedView = pinnedSectionZeroHeaderView {
+            return PinnedHeaderContainerView(contentView: pinnedView)
+        }
+
         guard let sectionTitle = dataSource?.favoriteAdsListView(self, titleForHeaderInSection: section) else { return nil }
         let sectionDetail = dataSource?.favoriteAdsListView(self, detailForHeaderInSection: section)
 
@@ -403,25 +499,58 @@ extension FavoriteAdsListView: UITableViewDelegate {
             style: .normal,
             title: comment == nil ? viewModel.addCommentActionTitle : viewModel.editCommentActionTitle,
             handler: { [weak self] _, sender, completionHandler in
-                guard let self = self else { return }
-                self.delegate?.favoriteAdsListView(self, didSelectCommentForItemAt: indexPath, sender: sender)
-                completionHandler(true)
+                guard let self = self else { completionHandler(false); return }
+                guard let delegate else { completionHandler(false); return }
+                delegate.favoriteAdsListView(
+                    self,
+                    didSelectCommentForItemAt: indexPath,
+                    sender: sender,
+                    completion: completionHandler
+                )
             })
 
-        commentAction.backgroundColor = Warp.UIToken.iconStatic
+        commentAction.configureWarpAppearance(
+            icon: Warp.Icon.edit.uiImage,
+            fill: Warp.UIToken.backgroundWarning,
+            maximumDiameter: 48
+        )
+
+        let shareAction = UIContextualAction(
+            style: .normal,
+            title: viewModel.shareAdActionTitle,
+            handler: { [weak self] _, sender, completionHandler in
+                guard let self = self else { completionHandler(false); return }
+                guard let delegate else { completionHandler(false); return }
+                delegate.favoriteAdsListView(
+                    self,
+                    didSelectShareItemAt: indexPath,
+                    sender: sender,
+                    completion: completionHandler
+                )
+            })
+
+        shareAction.configureWarpAppearance(
+            icon: Warp.Icon.shareIOS.uiImage,
+            fill: Warp.UIToken.backgroundInfo,
+            maximumDiameter: 48
+        )
 
         let deleteAction = UIContextualAction(
             style: .normal,
             title: viewModel.deleteAdActionTitle,
             handler: { [weak self] _, sender, completionHandler in
-                guard let self = self else { return }
+                guard let self = self else { completionHandler(false); return }
                 self.delegate?.favoriteAdsListView(self, didSelectDeleteItemAt: indexPath, sender: sender)
                 completionHandler(true)
             })
 
-        deleteAction.backgroundColor = .backgroundNegative
+        deleteAction.configureWarpAppearance(
+            icon: Warp.Icon.bin.uiImage,
+            fill: Warp.UIToken.backgroundNegative,
+            maximumDiameter: 48
+        )
 
-        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, commentAction])
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, shareAction, commentAction])
         configuration.performsFirstActionWithFullSwipe = false
 
         return configuration
@@ -462,7 +591,7 @@ extension FavoriteAdsListView: UITableViewDataSource {
         cell.remoteImageViewDataSource = self
         cell.delegate = self
 
-        cell.isMoreButtonHidden = isReadOnly
+        cell.isMoreButtonHidden = isReadOnly || isMoreButtonPermanentlyHidden
 
         if let viewModel = dataSource?.favoriteAdsListView(self, viewModelFor: indexPath) {
             cell.configure(with: viewModel)
@@ -559,4 +688,21 @@ private class TableView: UITableView {
         super.setEditing(editing, animated: animated)
         performBatchUpdates(nil)
     }
+}
+
+private final class PinnedHeaderContainerView: UIView {
+    init(contentView: UIView) {
+        super.init(frame: .zero)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.removeFromSuperview()
+        addSubview(contentView)
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
+    }
+
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 }

@@ -35,6 +35,16 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         return view
     }()
 
+    private lazy var swipeHighlightBackgroundView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .clear
+        view.layer.cornerRadius = Warp.Spacing.spacing300
+        view.layer.cornerCurve = .continuous
+        return view
+    }()
+
+    private var normalSeparatorInset: UIEdgeInsets?
+
     // MARK: - Init
 
     public override init(style: CellStyle, reuseIdentifier: String?) {
@@ -48,6 +58,10 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
     public override func prepareForReuse() {
         super.prepareForReuse()
+        if let normalSeparatorInset {
+            separatorInset = normalSeparatorInset
+        }
+        normalSeparatorInset = nil
         adView.resetContent()
     }
 
@@ -68,10 +82,18 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         adView.isMoreButtonHidden = isEditing || isMoreButtonHidden
     }
 
+    public override func updateConfiguration(using state: UICellConfigurationState) {
+        super.updateConfiguration(using: state)
+        swipeHighlightBackgroundView.backgroundColor = state.isSwiped ? Warp.UIToken.backgroundSubtle : .clear
+        updateSeparator(for: state)
+    }
+
     // MARK: - Public methods
 
     public func configure(with viewModel: FavoriteAdViewModel) {
         separatorInset = .leadingInset(Warp.Spacing.spacing400 + FavoriteAdView.adImageWidth)
+        normalSeparatorInset = separatorInset
+        updateSeparator(for: configurationState)
         adView.configure(with: viewModel)
     }
 
@@ -84,9 +106,18 @@ public class FavoriteAdTableViewCell: UITableViewCell {
     private func setup() {
         backgroundColor = .background
         setDefaultSelectedBackgound()
+        contentView.addSubview(swipeHighlightBackgroundView)
         contentView.addSubview(adView)
+
+        swipeHighlightBackgroundView.fillInSuperview()
         adView.fillInSuperview()
     }
+
+    private func updateSeparator(for state: UICellConfigurationState) {
+        guard let normalSeparatorInset else { return }
+        separatorInset = state.isSwiped ? .leadingInset(.greatestFiniteMagnitude) : normalSeparatorInset
+    }
+
 }
 
 // MARK: - FavoriteAdViewDelegate
