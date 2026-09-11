@@ -345,7 +345,7 @@ private struct CommentAlertView: View {
         .padding(.vertical, Warp.Spacing.spacing100)
         .padding(.horizontal, Warp.Spacing.spacing150)
         .background(Warp.Token.surfaceSunken, in: RoundedRectangle(cornerRadius: Warp.Border.borderRadius100))
-        .padding(.leading, FavoriteAdView.adImageWidth + Warp.Spacing.spacing200 - Warp.Spacing.spacing150)
+        .padding(.leading, FavoriteAdView.adImageWidth + Warp.Spacing.spacing200)
         .frame(maxWidth: .infinity, alignment: .leading)
         .accessibilityElement(children: .combine)
         .accessibilityLabel(title.isEmpty ? text : "\(title): \(text)")
