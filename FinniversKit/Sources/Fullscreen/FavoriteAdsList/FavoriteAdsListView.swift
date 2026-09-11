@@ -530,7 +530,7 @@ extension FavoriteAdsListView: UITableViewDelegate {
             })
 
         shareAction.configureWarpAppearance(
-            icon: Warp.Icon.share.uiImage,
+            icon: Warp.Icon.shareIOS.uiImage,
             fill: Warp.UIToken.backgroundInfo,
             maximumDiameter: 48
         )
