@@ -2,6 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+import Warp
+
 protocol SubtitleViewDelegate: AnyObject {
     func subtitleView(_ view: SubtitleView, didSelectButton button: UIButton)
 }
@@ -11,6 +13,8 @@ final class SubtitleView: UIView {
 
     private(set) lazy var label: Label = {
         let label = Label(style: .caption, numberOfLines: 0, withAutoLayout: true)
+        label.font = Warp.Typography.captionStrong.uiFont
+        label.textColor = Warp.UIToken.textSubtle
         label.textAlignment = .left
         return label
     }()
