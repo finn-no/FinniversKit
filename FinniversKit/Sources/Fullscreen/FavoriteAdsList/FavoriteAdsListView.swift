@@ -203,6 +203,7 @@ public class FavoriteAdsListView: UIView {
         emptyView.isHidden = true
         return emptyView
     }()
+    private var isListEmpty = false
 
     // MARK: - Init
 
@@ -298,7 +299,8 @@ public class FavoriteAdsListView: UIView {
     }
 
     public func setListIsEmpty(_ isEmpty: Bool) {
-        emptyListView.isHidden = !isEmpty
+        isListEmpty = isEmpty
+        emptyListView.isHidden = !isEmpty || !searchBarText.isEmpty
         if !isSearchBarPermanentlyHidden {
             tableHeaderView.isSearchBarHidden = isEmpty
         }
@@ -404,6 +406,7 @@ public class FavoriteAdsListView: UIView {
         let hasSearchText = !searchBarText.isEmpty
         let shouldShowEmptySearchView = numberOfSections(in: tableView) == 0 && hasSearchText
         emptySearchView.isHidden = !shouldShowEmptySearchView
+        emptyListView.isHidden = !isListEmpty || hasSearchText
         if !isSortingViewPermanentlyHidden {
             tableHeaderView.isSortingViewHidden = shouldShowEmptySearchView || !emptyListView.isHidden
         }
@@ -416,6 +419,8 @@ public class FavoriteAdsListView: UIView {
         emptySearchView.frame.size.height -= emptySearchView.frame.origin.y
 
         emptyListView.frame = tableView.bounds
+        emptyListView.frame.origin.y = tableView.tableHeaderView?.frame.height ?? 0
+        emptyListView.frame.size.height -= emptyListView.frame.origin.y
     }
 
     /// Calculates the correct frame for the `tableHeaderView` on each call to `layoutSubviews`.
