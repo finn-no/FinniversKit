@@ -3,8 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "FinniversKit",
-    // ios-app still has iOS 17 deployment-target dependencies (for example FINNImagePicker).
-    platforms: [.iOS("17.0")],
+    platforms: [.iOS("18.0")],
     products: [
         .library(
             name: "FinniversKit",
