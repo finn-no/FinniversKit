@@ -96,8 +96,8 @@ class FavoriteAdsListTableHeader: UIView {
     }()
 
     var isSortingViewHidden: Bool {
-        get { return sortingView.isHidden }
-        set { sortingView.isHidden = newValue }
+        get { return sortingContainerView.isHidden }
+        set { sortingContainerView.isHidden = newValue }
     }
 
     // MARK: - Init

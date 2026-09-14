@@ -264,11 +264,15 @@ public class FavoriteAdsListView: UIView {
 
     public func reloadData(scrollToTop: Bool) {
         showEmptySearchViewIfNeeded()
+        tableView.reloadData()
 
         if scrollToTop {
-            tableView.setContentOffset(.zero, animated: true)
+            let topOffset = CGPoint(
+                x: -tableView.adjustedContentInset.left,
+                y: -tableView.adjustedContentInset.top
+            )
+            tableView.setContentOffset(topOffset, animated: true)
         }
-        tableView.reloadData()
     }
 
     // MARK: - Public methods
