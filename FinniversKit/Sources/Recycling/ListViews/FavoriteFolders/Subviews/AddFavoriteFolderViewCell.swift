@@ -34,9 +34,10 @@ final class AddFavoriteFolderViewCell: BasicTableViewCell {
         contentView.addSubview(button)
 
         NSLayoutConstraint.activate([
-            button.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            button.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            button.centerYAnchor.constraint(equalTo: centerYAnchor)
+            contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: FavoriteFoldersListView.minimumRowHeight),
+            button.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
+            button.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
+            button.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
 
         separatorInset = .leadingInset(Warp.Spacing.spacing200 * 2 + AddFavoriteFolderButton.imageSize)

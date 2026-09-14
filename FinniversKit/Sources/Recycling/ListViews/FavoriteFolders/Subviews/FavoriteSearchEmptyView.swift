@@ -18,25 +18,31 @@ final class FavoriteSearchEmptyView: UIView {
     // MARK: - Private properties
 
     private lazy var wrapperView = UIView(withAutoLayout: true)
-    private lazy var wrapperViewBottomConstraint = wrapperView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -windowSafeAreaInsets.bottom)
+    private lazy var wrapperViewBottomConstraint = wrapperView.bottomAnchor.constraint(
+        equalTo: bottomAnchor,
+        constant: -windowSafeAreaInsets.bottom
+    )
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        return stackView
+        let stack = UIStackView(withAutoLayout: true)
+        stack.axis = .vertical
+        stack.alignment = .center
+        stack.spacing = Warp.Spacing.spacing200
+        return stack
     }()
 
-    private lazy var magnifyingGlassImageView: UIImageView = {
+    private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = UIImage(named: .magnifyingGlass).withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .iconSubtle
+        imageView.tintColor = Warp.UIToken.iconSubtle
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
     private lazy var bodyLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
-        label.font = .bodyStrong
+        label.font = .title3
+        label.textColor = Warp.UIToken.text
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -44,15 +50,13 @@ final class FavoriteSearchEmptyView: UIView {
 
     private lazy var addFolderButton: UIButton = {
         let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = .bodyStrong
         button.setImage(UIImage(named: .plusMini), for: .normal)
-        button.tintColor = .link
-        button.setTitleColor(.link, for: .normal)
-        button.setTitleColor(.link, for: .highlighted)
-        button.setTitleColor(.link, for: .selected)
+        button.tintColor = Warp.UIToken.textLink
+        button.setTitleColor(Warp.UIToken.textLink, for: .normal)
         button.addTarget(self, action: #selector(handleAddFolderButtonTap), for: .touchUpInside)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -Warp.Spacing.spacing50, bottom: 0, right: Warp.Spacing.spacing50)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: Warp.Spacing.spacing50, bottom: 0, right: 0)
+        button.isHidden = true
         return button
     }()
 
@@ -73,19 +77,15 @@ final class FavoriteSearchEmptyView: UIView {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(handleKeyboardNotification),
-            name: UIResponder.keyboardWillShowNotification,
+            name: UIResponder.keyboardWillChangeFrameNotification,
             object: nil
         )
 
-        clipsToBounds = true
-        backgroundColor = .background
+        backgroundColor = .clear
 
-        stackView.addArrangedSubview(magnifyingGlassImageView)
+        stackView.addArrangedSubview(iconImageView)
         stackView.addArrangedSubview(bodyLabel)
         stackView.addArrangedSubview(addFolderButton)
-
-        stackView.setCustomSpacing(Warp.Spacing.spacing100, after: magnifyingGlassImageView)
-        stackView.setCustomSpacing(Warp.Spacing.spacing200, after: bodyLabel)
 
         wrapperView.addSubview(stackView)
         addSubview(wrapperView)
@@ -96,43 +96,40 @@ final class FavoriteSearchEmptyView: UIView {
             wrapperView.trailingAnchor.constraint(equalTo: trailingAnchor),
             wrapperViewBottomConstraint,
 
-            stackView.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor, constant: -Warp.Spacing.spacing100),
-            stackView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor, constant: Warp.Spacing.spacing800),
-            stackView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor, constant: -Warp.Spacing.spacing800),
+            iconImageView.widthAnchor.constraint(equalToConstant: 64),
+            iconImageView.heightAnchor.constraint(equalToConstant: 64),
 
-            magnifyingGlassImageView.heightAnchor.constraint(equalToConstant: 48),
-            magnifyingGlassImageView.widthAnchor.constraint(equalToConstant: 48)
+            stackView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor, constant: Warp.Spacing.spacing400),
+            stackView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor, constant: -Warp.Spacing.spacing400),
+            stackView.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor),
         ])
-    }
-
-    // MARK: - Private methods
-
-    @objc private func handleAddFolderButtonTap() {
-        delegate?.favoriteSearchEmptyViewDidSelectButton(self)
-    }
-
-    @objc private func handleKeyboardNotification(_ notification: Notification) {
-        guard let keyboardInfo = KeyboardNotificationInfo(notification) else { return }
-
-        let keyboardIntersection = keyboardInfo.keyboardFrameEndIntersectHeight(inView: wrapperView)
-
-        if keyboardIntersection > 0 {
-            let wrapperBottomOffset = keyboardIntersection + windowSafeAreaInsets.bottom
-
-            wrapperViewBottomConstraint.constant = -wrapperBottomOffset
-
-            UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo) { [weak self] in
-                self?.layoutIfNeeded()
-            }
-        }
     }
 
     // MARK: - Public methods
 
     func configure(withText text: String, buttonTitle: String?) {
+        bodyLabel.text = text
         addFolderButton.setTitle(buttonTitle, for: .normal)
         addFolderButton.isHidden = buttonTitle == nil
+    }
 
-        bodyLabel.text = text
+    // MARK: - Private methods
+
+    @objc private func handleKeyboardNotification(_ notification: Notification) {
+        guard let keyboardInfo = KeyboardNotificationInfo(notification) else { return }
+
+        let keyboardIntersection = keyboardInfo.keyboardFrameEndIntersectHeight(inView: wrapperView)
+        let wrapperBottomOffset = keyboardIntersection > 0
+            ? keyboardIntersection + windowSafeAreaInsets.bottom
+            : windowSafeAreaInsets.bottom
+        wrapperViewBottomConstraint.constant = -wrapperBottomOffset
+
+        UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo) { [weak self] in
+            self?.layoutIfNeeded()
+        }
+    }
+
+    @objc private func handleAddFolderButtonTap() {
+        delegate?.favoriteSearchEmptyViewDidSelectButton(self)
     }
 }
