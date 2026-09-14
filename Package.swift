@@ -3,7 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "FinniversKit",
-    platforms: [.iOS(.v17)],
+    platforms: [.iOS("18.0")],
     products: [
         .library(
             name: "FinniversKit",

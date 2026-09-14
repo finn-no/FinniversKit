@@ -144,9 +144,6 @@ public class LegacyEmptyView: UIView {
     }
 }
 
-@available(*, deprecated, renamed: "LegacyEmptyView")
-public typealias EmptyView = LegacyEmptyView
-
 @available(*, deprecated, renamed: "LegacyEmptyViewDelegate")
 public typealias EmptyViewDelegate = LegacyEmptyViewDelegate
 

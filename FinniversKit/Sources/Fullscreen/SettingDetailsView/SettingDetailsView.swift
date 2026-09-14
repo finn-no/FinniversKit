@@ -17,6 +17,7 @@ public protocol SettingDetailsViewModel {
 }
 
 // MARK: - Delegate
+@MainActor
 public protocol SettingDetailsViewDelegate: AnyObject {
     func settingDetailsView(_ detailsView: SettingDetailsView, didTapPrimaryButtonWith model: SettingDetailsViewModel)
 }
