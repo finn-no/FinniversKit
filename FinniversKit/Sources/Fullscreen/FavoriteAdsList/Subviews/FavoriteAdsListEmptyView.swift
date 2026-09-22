@@ -34,7 +34,7 @@ public class FavoriteAdsListEmptyView: UIView {
         let label = UILabel(withAutoLayout: true)
         label.textAlignment = .center
         label.textColor = .text
-        label.font = .bodyStrong
+        label.font = .body
         label.numberOfLines = 0
         return label
     }()
@@ -51,13 +51,14 @@ public class FavoriteAdsListEmptyView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .background
+        backgroundColor = .clear
+        iconImageView.tintColor = .iconPrimary
 
         stackView.addArrangedSubview(iconImageView)
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(bodyLabel)
 
-        stackView.setCustomSpacing(Warp.Spacing.spacing200, after: iconImageView)
+        stackView.setCustomSpacing(Warp.Spacing.spacing300, after: iconImageView)
 
         addSubview(stackView)
 
@@ -65,16 +66,16 @@ public class FavoriteAdsListEmptyView: UIView {
             iconImageView.widthAnchor.constraint(equalToConstant: 48),
             iconImageView.heightAnchor.constraint(equalToConstant: 48),
 
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing800 * 2),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing400),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing400),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing300),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Warp.Spacing.spacing300),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Warp.Spacing.spacing300),
         ])
     }
 
     // MARK: - Public methods
 
     public func configure(withImage image: UIImage, title: String, body: String) {
-        iconImageView.image = image
+        iconImageView.image = image.withRenderingMode(.alwaysTemplate)
         titleLabel.text = title
         bodyLabel.text = body
     }
