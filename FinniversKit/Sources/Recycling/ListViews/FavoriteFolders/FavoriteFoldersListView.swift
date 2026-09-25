@@ -104,6 +104,14 @@ public class FavoriteFoldersListView: UIView {
         }
     }
 
+    /// Insets the initial table content while allowing it to scroll beneath the navigation bar.
+    public var contentTopInset: CGFloat = 0 {
+        didSet {
+            guard contentTopInset != oldValue else { return }
+            updateContentInsets()
+        }
+    }
+
     // MARK: - Private properties
 
     private let viewModel: FavoriteFoldersListViewModel
@@ -198,6 +206,11 @@ public class FavoriteFoldersListView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         emptyView.frame = tableView.bounds
+    }
+
+    public override func safeAreaInsetsDidChange() {
+        super.safeAreaInsetsDidChange()
+        updateContentInsets()
     }
 
     // MARK: - Data
@@ -354,6 +367,17 @@ public class FavoriteFoldersListView: UIView {
             UIView.layoutFittingCompressedSize
         ).height
         searchBarContainerTop.constant = shouldCollapse ? -searchBarContainerHeight : Warp.Spacing.spacing200
+    }
+
+    private func updateContentInsets() {
+        let automaticTopInset = tableView.adjustedContentInset.top - tableView.contentInset.top
+        var contentInset = tableView.contentInset
+        contentInset.top = max(0, contentTopInset - automaticTopInset)
+        tableView.contentInset = contentInset
+
+        var scrollIndicatorInsets = tableView.verticalScrollIndicatorInsets
+        scrollIndicatorInsets.top = max(0, contentTopInset - automaticTopInset)
+        tableView.verticalScrollIndicatorInsets = scrollIndicatorInsets
     }
 
     private func showRefreshControl(_ show: Bool) {
