@@ -104,6 +104,10 @@ public class FavoriteFoldersListView: UIView {
         }
     }
 
+    /// Safety killswitch for Favorite Folders list swipe actions. When disabled, the swipe
+    /// UI is suppressed entirely while the underlying handlers stay in place (just unreachable).
+    public var areSwipeActionsEnabled = true
+
     // MARK: - Private properties
 
     private let viewModel: FavoriteFoldersListViewModel
@@ -469,6 +473,7 @@ extension FavoriteFoldersListView: UITableViewDelegate {
     ) -> UISwipeActionsConfiguration? {
         guard
             viewModel.isEditable,
+            areSwipeActionsEnabled,
             !tableView.isEditing,
             Section(rawValue: indexPath.section) == .folders
         else { return nil }
