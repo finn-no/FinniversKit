@@ -116,8 +116,8 @@ public final class FavoriteAdCommentInputView: UIView {
 
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             scrollViewBottomConstraint,
 
             contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
@@ -177,14 +177,19 @@ extension FavoriteAdCommentInputView: TextViewDelegate {
 // MARK: - Private extensions
 
 private final class ScrollView: UIScrollView {
-    override var contentSize: CGSize {
-        didSet {
-            scrollToBottom()
-        }
-    }
+    private var previousContentSize: CGSize = .zero
+    private var previousBoundsSize: CGSize = .zero
 
-    private func scrollToBottom() {
-        let yOffset = contentSize.height - bounds.size.height + contentInset.bottom
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        guard contentSize != previousContentSize || bounds.size != previousBoundsSize else { return }
+        previousContentSize = contentSize
+        previousBoundsSize = bounds.size
+
+        let yOffset = contentSize.height <= bounds.height
+            ? -adjustedContentInset.top
+            : contentSize.height - bounds.height + contentInset.bottom
         setContentOffset(CGPoint(x: 0, y: yOffset), animated: false)
     }
 }
