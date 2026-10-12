@@ -58,7 +58,7 @@ import FinniversKit
 ### Folder structure (sources, resources, demo and tests)
 
 - `Sources` folder contains Swift and Objective C files, grouped by relevant category/feature if needed
-- `Assets` folder contains fonts, images, sounds, generated constants and other resources used in the framework
+- `Assets` folder contains fonts, images, generated constants and other resources used in the framework
 - `UnitTests` folder is used for snapshot tests and other files related to testing
 - `Demo` folder is a place for files that belong to `Demo` target. It is good practice to have corresponding demo view for every component, fullscreen or recycling view.
 

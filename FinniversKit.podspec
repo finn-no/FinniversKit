@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'FinniversKit'
-  s.version      = '160.0.0'
+  s.version      = '160.0.1'
   s.summary      = "FINN's iOS Components"
   s.author       = 'FINN.no'
   s.homepage     = 'https://schibsted.frontify.com/d/oCLrx0cypXJM/design-system'
@@ -30,9 +30,9 @@ Pod::Spec.new do |s|
   s.requires_arc  = true
 
   s.source_files = 'FinniversKit/Sources/*.{h,m,swift}', 'FinniversKit/Sources/**/*.{h,m,swift}', 'FinniversKit/Sources/**/**/*.{h,m,swift}'
-  s.resources    = 'FinniversKit/Sources/Assets/Fonts/*.ttf', 'FinniversKit/Sources/Assets/*.xcassets', 'FinniversKit/Sources/Assets/Sounds/*.{mp3,wav,sf2}'
+  s.resources    = 'FinniversKit/Sources/Assets/Fonts/*.ttf', 'FinniversKit/Sources/Assets/*.xcassets'
   s.resource_bundles = {
-      'FinniversKit' => ['FinniversKit/Sources/Assets/*.xcassets', 'FinniversKit/Sources/Assets/Fonts/*.ttf', 'FinniversKit/Sources/Assets/Sounds/*.{mp3,wav,sf2}']
+      'FinniversKit' => ['FinniversKit/Sources/Assets/*.xcassets', 'FinniversKit/Sources/Assets/Fonts/*.ttf']
   }
   s.frameworks = 'Foundation', 'UIKit'
   s.weak_frameworks = 'SwiftUI'
