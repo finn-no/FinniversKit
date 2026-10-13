@@ -55,6 +55,14 @@ public class SavedSearchesListView: UIView {
         setup()
     }
 
+    public var isScrolling: Bool {
+        tableView.isScrolling
+    }
+
+    public func firstFullyVisibleItemView(where isIncluded: (Int) -> Bool = { _ in true }) -> UIView? {
+        tableView.firstFullyVisibleCell { isIncluded($0.row) }
+    }
+
     private func setup() {
         tableView.register(SavedSearchesListViewCell.self)
         addSubview(tableView)

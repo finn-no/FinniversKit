@@ -357,6 +357,15 @@ public class FavoriteAdsListView: UIView {
         }
     }
 
+    public var isScrolling: Bool {
+        tableView.isScrolling
+    }
+
+    public func firstFullyVisibleItemView(where isIncluded: (IndexPath) -> Bool = { _ in true }) -> UIView? {
+        guard !tableView.isEditing else { return nil }
+        return tableView.firstFullyVisibleCell(where: isIncluded)
+    }
+
     public func selectAllRows(_ selected: Bool, animated: Bool) {
         for section in 0..<tableView.numberOfSections {
             for row in 0..<tableView.numberOfRows(inSection: section) {

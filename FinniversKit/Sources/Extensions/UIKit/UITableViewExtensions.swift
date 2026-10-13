@@ -35,3 +35,19 @@ public extension UITableView {
         setContentOffset(contentOffset, animated: false)
     }
 }
+
+extension UITableView {
+    var isScrolling: Bool {
+        isTracking || isDragging || isDecelerating
+    }
+
+    func firstFullyVisibleCell(where isIncluded: (IndexPath) -> Bool) -> UITableViewCell? {
+        let visibleRect = bounds.inset(by: adjustedContentInset)
+        return (indexPathsForVisibleRows ?? [])
+            .sorted()
+            .lazy
+            .filter(isIncluded)
+            .compactMap { self.cellForRow(at: $0) }
+            .first { visibleRect.contains($0.frame) }
+    }
+}

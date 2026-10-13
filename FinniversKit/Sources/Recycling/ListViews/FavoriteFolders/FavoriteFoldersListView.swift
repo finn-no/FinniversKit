@@ -249,6 +249,17 @@ public class FavoriteFoldersListView: UIView {
         tableView.reloadRows(at: [indexPath], with: animation)
     }
 
+    public var isScrolling: Bool {
+        tableView.isScrolling
+    }
+
+    public func firstFullyVisibleItemView(where isIncluded: (Int) -> Bool = { _ in true }) -> UIView? {
+        guard !tableView.isEditing else { return nil }
+        return tableView.firstFullyVisibleCell { indexPath in
+            indexPath.section == Section.folders.rawValue && isIncluded(indexPath.row)
+        }
+    }
+
     public func selectAllRows(_ selected: Bool, animated: Bool) {
         let section = Section.folders.rawValue
         let numberOfRows = tableView.numberOfRows(inSection: section)
