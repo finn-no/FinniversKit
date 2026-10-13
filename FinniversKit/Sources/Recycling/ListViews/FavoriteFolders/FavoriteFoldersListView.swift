@@ -260,6 +260,12 @@ public class FavoriteFoldersListView: UIView {
         }
     }
 
+    @discardableResult
+    public func peekSwipeActions(on itemView: UIView, delay: TimeInterval = 0) -> Bool {
+        guard let cell = itemView as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) else { return false }
+        return tableView.peekTrailingSwipeActions(at: indexPath, delay: delay)
+    }
+
     public func selectAllRows(_ selected: Bool, animated: Bool) {
         let section = Section.folders.rawValue
         let numberOfRows = tableView.numberOfRows(inSection: section)
