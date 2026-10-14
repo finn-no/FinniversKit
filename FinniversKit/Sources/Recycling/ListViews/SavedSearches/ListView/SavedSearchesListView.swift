@@ -55,20 +55,6 @@ public class SavedSearchesListView: UIView {
         setup()
     }
 
-    public var isScrolling: Bool {
-        tableView.isScrolling
-    }
-
-    public func firstFullyVisibleItemView(where isIncluded: (Int) -> Bool = { _ in true }) -> UIView? {
-        tableView.firstFullyVisibleCell { isIncluded($0.row) }
-    }
-
-    @discardableResult
-    public func peekSwipeActions(on itemView: UIView, delay: TimeInterval = 0) -> Bool {
-        guard let cell = itemView as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) else { return false }
-        return tableView.peekTrailingSwipeActions(at: indexPath, delay: delay)
-    }
-
     private func setup() {
         tableView.register(SavedSearchesListViewCell.self)
         addSubview(tableView)
