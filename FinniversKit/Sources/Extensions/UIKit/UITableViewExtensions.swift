@@ -35,3 +35,21 @@ public extension UITableView {
         setContentOffset(contentOffset, animated: false)
     }
 }
+
+extension UITableView {
+    var isScrolling: Bool {
+        isTracking || isDragging || isDecelerating
+    }
+
+    func firstFullyVisibleCell(where isIncluded: (IndexPath) -> Bool) -> UITableViewCell? {
+        let visibleRect = bounds.inset(by: adjustedContentInset)
+        for indexPath in (indexPathsForVisibleRows ?? []).sorted() where isIncluded(indexPath) {
+            guard let cell = cellForRow(at: indexPath), visibleRect.contains(cell.frame) else { continue }
+            let headerMaxY = headerView(forSection: indexPath.section)?.frame.maxY ?? -.greatestFiniteMagnitude
+            if cell.frame.minY >= headerMaxY {
+                return cell
+            }
+        }
+        return nil
+    }
+}
