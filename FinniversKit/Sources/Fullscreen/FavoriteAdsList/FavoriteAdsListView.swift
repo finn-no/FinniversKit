@@ -84,6 +84,10 @@ public class FavoriteAdsListView: UIView {
         }
     }
 
+    /// Safety killswitch for Favorite Ads list swipe actions. When disabled, the swipe
+    /// UI is suppressed entirely while the underlying handlers stay in place (just unreachable).
+    public var areSwipeActionsEnabled = true
+
     public var isSearchBarHidden: Bool {
         get { return tableHeaderView.isSearchBarHidden }
         set {
@@ -353,6 +357,15 @@ public class FavoriteAdsListView: UIView {
         }
     }
 
+    public var isScrolling: Bool {
+        tableView.isScrolling
+    }
+
+    public func firstFullyVisibleItemView(where isIncluded: (IndexPath) -> Bool = { _ in true }) -> UIView? {
+        guard !tableView.isEditing else { return nil }
+        return tableView.firstFullyVisibleCell(where: isIncluded)
+    }
+
     public func selectAllRows(_ selected: Bool, animated: Bool) {
         for section in 0..<tableView.numberOfSections {
             for row in 0..<tableView.numberOfRows(inSection: section) {
@@ -498,7 +511,7 @@ extension FavoriteAdsListView: UITableViewDelegate {
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
-        guard !isReadOnly else {
+        guard !isReadOnly, areSwipeActionsEnabled else {
             return nil
         }
 

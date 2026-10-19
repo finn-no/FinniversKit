@@ -112,6 +112,10 @@ public class FavoriteFoldersListView: UIView {
         }
     }
 
+    /// Safety killswitch for Favorite Folders list swipe actions. When disabled, the swipe
+    /// UI is suppressed entirely while the underlying handlers stay in place (just unreachable).
+    public var areSwipeActionsEnabled = true
+
     // MARK: - Private properties
 
     private let viewModel: FavoriteFoldersListViewModel
@@ -256,6 +260,17 @@ public class FavoriteFoldersListView: UIView {
 
         let indexPath = IndexPath(row: index, section: section)
         tableView.reloadRows(at: [indexPath], with: animation)
+    }
+
+    public var isScrolling: Bool {
+        tableView.isScrolling
+    }
+
+    public func firstFullyVisibleItemView(where isIncluded: (Int) -> Bool = { _ in true }) -> UIView? {
+        guard !tableView.isEditing else { return nil }
+        return tableView.firstFullyVisibleCell { indexPath in
+            indexPath.section == Section.folders.rawValue && isIncluded(indexPath.row)
+        }
     }
 
     public func selectAllRows(_ selected: Bool, animated: Bool) {
@@ -493,6 +508,7 @@ extension FavoriteFoldersListView: UITableViewDelegate {
     ) -> UISwipeActionsConfiguration? {
         guard
             viewModel.isEditable,
+            areSwipeActionsEnabled,
             !tableView.isEditing,
             Section(rawValue: indexPath.section) == .folders
         else { return nil }
