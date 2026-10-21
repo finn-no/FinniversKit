@@ -99,7 +99,11 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         stackViewToCheckmarkConstraint.isActive = !showDetailLabel
         stackViewTrailingAnchorConstraint.isActive = !stackViewToCheckmarkConstraint.isActive
 
-        separatorInset = .zero
+        separatorInset = UIEdgeInsets.leadingInset(
+            isEditing
+                ? (Warp.Spacing.spacing400 + Warp.Spacing.spacing50) * 2 + viewModel.imageViewWidth
+                : Warp.Spacing.spacing200 * 2 + viewModel.imageViewWidth
+        )
         if !isEditing, viewModel.isSelected {
             titleLabel.font = titleLabelSelectedFont
         }
