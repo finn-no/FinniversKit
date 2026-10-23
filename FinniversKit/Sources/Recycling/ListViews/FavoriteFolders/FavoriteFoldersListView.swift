@@ -82,6 +82,7 @@ public class FavoriteFoldersListView: UIView {
     }
 
     static let minimumRowHeight: CGFloat = 80.0
+    static let pickerMinimumRowHeight: CGFloat = 66.0
     public static let estimatedRowHeight: CGFloat = minimumRowHeight
 
     // MARK: - Public properties
@@ -119,6 +120,12 @@ public class FavoriteFoldersListView: UIView {
     // MARK: - Private properties
 
     private let viewModel: FavoriteFoldersListViewModel
+    private var usesCompactPickerRows: Bool {
+        if #available(iOS 26, *) {
+            return !viewModel.isEditable
+        }
+        return false
+    }
     private var isSearchActive = false
     private let imageCache = ImageMemoryCache()
 
@@ -147,7 +154,9 @@ public class FavoriteFoldersListView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .background
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = FavoriteFoldersListView.estimatedRowHeight
+        tableView.estimatedRowHeight = usesCompactPickerRows
+            ? FavoriteFoldersListView.pickerMinimumRowHeight
+            : FavoriteFoldersListView.estimatedRowHeight
         tableView.separatorInset = .leadingInset(frame.width)
         tableView.sectionHeaderTopPadding = 0
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
@@ -452,7 +461,12 @@ extension FavoriteFoldersListView: UITableViewDataSource {
             cell.dataSource = self
 
             if let viewModel = dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row) {
-                cell.configure(with: viewModel, isEditing: tableView.isEditing, isEditable: !viewModel.isDefault)
+                cell.configure(
+                    with: viewModel,
+                    isEditing: tableView.isEditing,
+                    isEditable: !viewModel.isDefault,
+                    usesCompactPickerRows: usesCompactPickerRows
+                )
             }
 
             return cell
