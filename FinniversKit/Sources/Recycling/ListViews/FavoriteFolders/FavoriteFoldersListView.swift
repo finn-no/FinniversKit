@@ -82,6 +82,7 @@ public class FavoriteFoldersListView: UIView {
     }
 
     static let minimumRowHeight: CGFloat = 80.0
+    static let pickerMinimumRowHeight: CGFloat = 66.0
     public static let estimatedRowHeight: CGFloat = minimumRowHeight
 
     // MARK: - Public properties
@@ -104,6 +105,14 @@ public class FavoriteFoldersListView: UIView {
         }
     }
 
+    /// Insets the initial table content while allowing it to scroll beneath the navigation bar.
+    public var contentTopInset: CGFloat = 0 {
+        didSet {
+            guard contentTopInset != oldValue else { return }
+            updateContentInsets()
+        }
+    }
+
     /// Safety killswitch for Favorite Folders list swipe actions. When disabled, the swipe
     /// UI is suppressed entirely while the underlying handlers stay in place (just unreachable).
     public var areSwipeActionsEnabled = true
@@ -111,6 +120,12 @@ public class FavoriteFoldersListView: UIView {
     // MARK: - Private properties
 
     private let viewModel: FavoriteFoldersListViewModel
+    private var usesCompactPickerRows: Bool {
+        if #available(iOS 26, *) {
+            return !viewModel.isEditable
+        }
+        return false
+    }
     private var isSearchActive = false
     private let imageCache = ImageMemoryCache()
 
@@ -139,7 +154,9 @@ public class FavoriteFoldersListView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .background
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = FavoriteFoldersListView.estimatedRowHeight
+        tableView.estimatedRowHeight = usesCompactPickerRows
+            ? FavoriteFoldersListView.pickerMinimumRowHeight
+            : FavoriteFoldersListView.estimatedRowHeight
         tableView.separatorInset = .leadingInset(frame.width)
         tableView.sectionHeaderTopPadding = 0
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
@@ -202,6 +219,11 @@ public class FavoriteFoldersListView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         emptyView.frame = tableView.bounds
+    }
+
+    public override func safeAreaInsetsDidChange() {
+        super.safeAreaInsetsDidChange()
+        updateContentInsets()
     }
 
     // MARK: - Data
@@ -371,6 +393,17 @@ public class FavoriteFoldersListView: UIView {
         searchBarContainerTop.constant = shouldCollapse ? -searchBarContainerHeight : Warp.Spacing.spacing200
     }
 
+    private func updateContentInsets() {
+        let automaticTopInset = tableView.adjustedContentInset.top - tableView.contentInset.top
+        var contentInset = tableView.contentInset
+        contentInset.top = max(0, contentTopInset - automaticTopInset)
+        tableView.contentInset = contentInset
+
+        var scrollIndicatorInsets = tableView.verticalScrollIndicatorInsets
+        scrollIndicatorInsets.top = max(0, contentTopInset - automaticTopInset)
+        tableView.verticalScrollIndicatorInsets = scrollIndicatorInsets
+    }
+
     private func showRefreshControl(_ show: Bool) {
         tableView.refreshControl = show ? refreshControl : nil
     }
@@ -428,7 +461,12 @@ extension FavoriteFoldersListView: UITableViewDataSource {
             cell.dataSource = self
 
             if let viewModel = dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row) {
-                cell.configure(with: viewModel, isEditing: tableView.isEditing, isEditable: !viewModel.isDefault)
+                cell.configure(
+                    with: viewModel,
+                    isEditing: tableView.isEditing,
+                    isEditable: !viewModel.isDefault,
+                    usesCompactPickerRows: usesCompactPickerRows
+                )
             }
 
             return cell

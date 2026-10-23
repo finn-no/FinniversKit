@@ -7,8 +7,9 @@ import Warp
 
 public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
     private let titleLabelDefaultFont: UIFont = .body
-    private let titleLabelSelectedFont: UIFont = .bodyStrong
+    private let titleLabelStrongFont: UIFont = .bodyStrong
     private var isEditable = true
+    private var shouldUseStrongTitleFont = false
 
     private lazy var checkmarkImageView: UIImageView = {
         let imageView = UIImageView.checkmarkImageView
@@ -31,7 +32,18 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         return view
     }()
 
+    private lazy var separatorView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .border
+        view.isUserInteractionEnabled = false
+        return view
+    }()
+
     private var normalSeparatorInset: UIEdgeInsets?
+    private lazy var separatorTrailingConstraint = separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+    private lazy var minimumRowHeightConstraint = contentView.heightAnchor.constraint(
+        greaterThanOrEqualToConstant: FavoriteFoldersListView.minimumRowHeight
+    )
 
     private lazy var stackViewToCheckmarkConstraint = stackView.trailingAnchor.constraint(
         equalTo: checkmarkImageView.leadingAnchor,
@@ -68,6 +80,12 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
             separatorInset = normalSeparatorInset
         }
         normalSeparatorInset = nil
+        if #available(iOS 26, *) {
+            separatorView.isHidden = false
+            separatorTrailingConstraint.constant = 0
+        }
+        shouldUseStrongTitleFont = false
+        minimumRowHeightConstraint.constant = FavoriteFoldersListView.minimumRowHeight
         titleLabel.font = titleLabelDefaultFont
         checkmarkImageView.isHidden = true
     }
@@ -78,7 +96,9 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
         contentView.alpha = state == .showingEditControl && !isEditable ? 0.5 : 1
         editModeView.isHidden = isEditable
-        titleLabel.font = titleLabelDefaultFont
+        titleLabel.font = shouldUseStrongTitleFont && !state.contains(.showingEditControl)
+            ? titleLabelStrongFont
+            : titleLabelDefaultFont
         checkmarkImageView.isHidden = true
     }
 
@@ -90,7 +110,12 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
     // MARK: - Public
 
-    public func configure(with viewModel: FavoriteFolderViewModel, isEditing: Bool, isEditable: Bool) {
+    public func configure(
+        with viewModel: FavoriteFolderViewModel,
+        isEditing: Bool,
+        isEditable: Bool,
+        usesCompactPickerRows: Bool = false
+    ) {
         super.configure(with: viewModel)
 
         self.isEditable = isEditable
@@ -99,11 +124,27 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         stackViewToCheckmarkConstraint.isActive = !showDetailLabel
         stackViewTrailingAnchorConstraint.isActive = !stackViewToCheckmarkConstraint.isActive
 
-        if isEditing {
-            separatorInset = UIEdgeInsets.leadingInset((Warp.Spacing.spacing400 + Warp.Spacing.spacing50) * 2 + viewModel.imageViewWidth)
-        } else if viewModel.isSelected {
-            titleLabel.font = titleLabelSelectedFont
+        if #available(iOS 26, *) {
+            // Use a divider tied to the title; UIKit's separator offset changes as rows are reused.
+            separatorInset = .leadingInset(.greatestFiniteMagnitude)
+        } else {
+            let separatorLeadingInset = isEditing
+                ? (Warp.Spacing.spacing400 + Warp.Spacing.spacing50) * 2 + viewModel.imageViewWidth
+                : Warp.Spacing.spacing200 * 2 + viewModel.imageViewWidth
+            separatorInset = .leadingInset(separatorLeadingInset)
         }
+        let usesPickerLayout: Bool
+        if #available(iOS 26, *) {
+            usesPickerLayout = usesCompactPickerRows
+            separatorTrailingConstraint.constant = usesPickerLayout ? -Warp.Spacing.screenMargin : 0
+        } else {
+            usesPickerLayout = false
+        }
+        minimumRowHeightConstraint.constant = usesPickerLayout
+            ? FavoriteFoldersListView.pickerMinimumRowHeight
+            : FavoriteFoldersListView.minimumRowHeight
+        shouldUseStrongTitleFont = usesPickerLayout || (!isEditing && viewModel.isSelected)
+        titleLabel.font = shouldUseStrongTitleFont ? titleLabelStrongFont : titleLabelDefaultFont
 
         normalSeparatorInset = separatorInset
         updateSeparator(for: configurationState)
@@ -120,7 +161,26 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
         contentView.insertSubview(swipeHighlightBackgroundView, at: 0)
         contentView.addSubview(checkmarkImageView)
+        if #available(iOS 26, *) {
+            contentView.addSubview(separatorView)
+        }
         addSubview(editModeView)
+
+        if #available(iOS 26, *) {
+            stackViewTopAnchorConstraint.isActive = false
+            stackViewBottomAnchorConstraint.isActive = false
+            NSLayoutConstraint.activate([
+                stackView.centerYAnchor.constraint(equalTo: remoteImageView.centerYAnchor),
+                stackView.topAnchor.constraint(
+                    greaterThanOrEqualTo: contentView.topAnchor,
+                    constant: stackViewTopAnchorConstraint.constant
+                ),
+                stackView.bottomAnchor.constraint(
+                    lessThanOrEqualTo: contentView.bottomAnchor,
+                    constant: stackViewBottomAnchorConstraint.constant
+                )
+            ])
+        }
 
         NSLayoutConstraint.activate([
             swipeHighlightBackgroundView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -128,7 +188,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
             swipeHighlightBackgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             swipeHighlightBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: FavoriteFoldersListView.minimumRowHeight),
+            minimumRowHeightConstraint,
 
             checkmarkImageView.heightAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
             checkmarkImageView.widthAnchor.constraint(equalToConstant: Warp.Spacing.spacing200),
@@ -142,11 +202,23 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
             editModeView.topAnchor.constraint(equalTo: topAnchor),
             editModeView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+
+        if #available(iOS 26, *) {
+            NSLayoutConstraint.activate([
+                separatorView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+                separatorTrailingConstraint,
+                separatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+                separatorView.heightAnchor.constraint(equalToConstant: Warp.Border.borderWidth12)
+            ])
+        }
     }
 
     private func updateSeparator(for state: UICellConfigurationState) {
         guard let normalSeparatorInset else { return }
         separatorInset = state.isSwiped ? .leadingInset(.greatestFiniteMagnitude) : normalSeparatorInset
+        if #available(iOS 26, *) {
+            separatorView.isHidden = state.isSwiped
+        }
     }
 
 }

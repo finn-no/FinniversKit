@@ -22,6 +22,7 @@ final class FavoriteAdView: UIView {
     }
 
     var loadingColor: UIColor?
+    var textLeadingAnchor: NSLayoutXAxisAnchor { textStackView.leadingAnchor }
 
     var isMoreButtonHidden: Bool {
         get { return moreButton.isHidden }

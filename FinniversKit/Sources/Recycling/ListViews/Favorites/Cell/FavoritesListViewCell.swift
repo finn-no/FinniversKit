@@ -55,6 +55,7 @@ public class FavoritesListViewCell: UITableViewCell {
         addSubview(titleLabel)
 
         backgroundColor = .background
+        separatorInset = .leadingInset(Warp.Spacing.spacing100 * 2 + FavoritesListViewCell.imageSize)
 
         NSLayoutConstraint.activate([
             adImageView.topAnchor.constraint(equalTo: topAnchor, constant: Warp.Spacing.spacing100),
