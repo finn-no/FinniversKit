@@ -159,7 +159,8 @@ public class FavoriteFoldersListView: UIView {
             : FavoriteFoldersListView.estimatedRowHeight
         tableView.separatorInset = .leadingInset(frame.width)
         tableView.sectionHeaderTopPadding = 0
-        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
+        let headerHeight: CGFloat = usesCompactPickerRows ? Warp.Spacing.spacing100 : .leastNormalMagnitude
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: headerHeight))
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
