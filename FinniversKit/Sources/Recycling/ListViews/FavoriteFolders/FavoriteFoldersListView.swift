@@ -355,6 +355,13 @@ public class FavoriteFoldersListView: UIView {
 
         tableView.addSubview(emptyView)
 
+        let tableViewBottomAnchor: NSLayoutYAxisAnchor
+        if #available(iOS 26, *) {
+            tableViewBottomAnchor = bottomAnchor
+        } else {
+            tableViewBottomAnchor = footerView.topAnchor
+        }
+
         NSLayoutConstraint.activate([
             searchBarContainerTop,
             searchBarContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -369,7 +376,7 @@ public class FavoriteFoldersListView: UIView {
             tableView.topAnchor.constraint(equalTo: searchBarContainer.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: footerView.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: tableViewBottomAnchor),
 
             footerViewTop,
             footerView.leadingAnchor.constraint(equalTo: leadingAnchor),
