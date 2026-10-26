@@ -10,6 +10,8 @@ public protocol FavoriteAdTableViewCellDelegate: AnyObject {
 }
 
 public class FavoriteAdTableViewCell: UITableViewCell {
+    // Keep UIKit separators offscreen without overflowing CoreGraphics calculations.
+    private static let hiddenSeparatorInset: CGFloat = 10_000
 
     // MARK: - Public properties
 
@@ -103,7 +105,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
     public func configure(with viewModel: FavoriteAdViewModel) {
         if #available(iOS 26, *) {
             // Keep the divider stable when the table reuses rows while scrolling.
-            separatorInset = .leadingInset(.greatestFiniteMagnitude)
+            separatorInset = .leadingInset(Self.hiddenSeparatorInset)
         } else {
             separatorInset = .leadingInset(Warp.Spacing.spacing400 + FavoriteAdView.adImageWidth)
         }
@@ -142,7 +144,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
     private func updateSeparator(for state: UICellConfigurationState) {
         guard let normalSeparatorInset else { return }
-        separatorInset = state.isSwiped ? .leadingInset(.greatestFiniteMagnitude) : normalSeparatorInset
+        separatorInset = state.isSwiped ? .leadingInset(Self.hiddenSeparatorInset) : normalSeparatorInset
         if #available(iOS 26, *) {
             separatorView.isHidden = state.isSwiped
         }

@@ -6,6 +6,8 @@ import UIKit
 import Warp
 
 public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
+    // Keep UIKit separators offscreen without overflowing CoreGraphics calculations.
+    private static let hiddenSeparatorInset: CGFloat = 10_000
     private let titleLabelDefaultFont: UIFont = .body
     private let titleLabelStrongFont: UIFont = .bodyStrong
     private var isEditable = true
@@ -126,7 +128,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
         if #available(iOS 26, *) {
             // Use a divider tied to the title; UIKit's separator offset changes as rows are reused.
-            separatorInset = .leadingInset(.greatestFiniteMagnitude)
+            separatorInset = .leadingInset(Self.hiddenSeparatorInset)
         } else {
             let separatorLeadingInset = isEditing
                 ? (Warp.Spacing.spacing400 + Warp.Spacing.spacing50) * 2 + viewModel.imageViewWidth
@@ -215,7 +217,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
     private func updateSeparator(for state: UICellConfigurationState) {
         guard let normalSeparatorInset else { return }
-        separatorInset = state.isSwiped ? .leadingInset(.greatestFiniteMagnitude) : normalSeparatorInset
+        separatorInset = state.isSwiped ? .leadingInset(Self.hiddenSeparatorInset) : normalSeparatorInset
         if #available(iOS 26, *) {
             separatorView.isHidden = state.isSwiped
         }
