@@ -10,6 +10,8 @@ public protocol FavoriteAdTableViewCellDelegate: AnyObject {
 }
 
 public class FavoriteAdTableViewCell: UITableViewCell {
+    // Keep UIKit separators offscreen without overflowing CoreGraphics calculations.
+    private static let hiddenSeparatorInset: CGFloat = 10_000
 
     // MARK: - Public properties
 
@@ -43,6 +45,13 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         return view
     }()
 
+    private lazy var separatorView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .border
+        view.isUserInteractionEnabled = false
+        return view
+    }()
+
     private var normalSeparatorInset: UIEdgeInsets?
 
     // MARK: - Init
@@ -62,6 +71,9 @@ public class FavoriteAdTableViewCell: UITableViewCell {
             separatorInset = normalSeparatorInset
         }
         normalSeparatorInset = nil
+        if #available(iOS 26, *) {
+            separatorView.isHidden = false
+        }
         adView.resetContent()
     }
 
@@ -91,7 +103,12 @@ public class FavoriteAdTableViewCell: UITableViewCell {
     // MARK: - Public methods
 
     public func configure(with viewModel: FavoriteAdViewModel) {
-        separatorInset = .leadingInset(Warp.Spacing.spacing400 + FavoriteAdView.adImageWidth)
+        if #available(iOS 26, *) {
+            // Keep the divider stable when the table reuses rows while scrolling.
+            separatorInset = .leadingInset(Self.hiddenSeparatorInset)
+        } else {
+            separatorInset = .leadingInset(Warp.Spacing.spacing400 + FavoriteAdView.adImageWidth)
+        }
         normalSeparatorInset = separatorInset
         updateSeparator(for: configurationState)
         adView.configure(with: viewModel)
@@ -108,14 +125,29 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         setDefaultSelectedBackgound()
         contentView.addSubview(swipeHighlightBackgroundView)
         contentView.addSubview(adView)
+        if #available(iOS 26, *) {
+            contentView.addSubview(separatorView)
+        }
 
         swipeHighlightBackgroundView.fillInSuperview()
         adView.fillInSuperview()
+
+        if #available(iOS 26, *) {
+            NSLayoutConstraint.activate([
+                separatorView.leadingAnchor.constraint(equalTo: adView.textLeadingAnchor),
+                separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+                separatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+                separatorView.heightAnchor.constraint(equalToConstant: Warp.Border.borderWidth12)
+            ])
+        }
     }
 
     private func updateSeparator(for state: UICellConfigurationState) {
         guard let normalSeparatorInset else { return }
-        separatorInset = state.isSwiped ? .leadingInset(.greatestFiniteMagnitude) : normalSeparatorInset
+        separatorInset = state.isSwiped ? .leadingInset(Self.hiddenSeparatorInset) : normalSeparatorInset
+        if #available(iOS 26, *) {
+            separatorView.isHidden = state.isSwiped
+        }
     }
 
 }
