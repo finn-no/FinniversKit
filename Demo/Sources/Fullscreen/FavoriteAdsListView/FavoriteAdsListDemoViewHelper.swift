@@ -5,7 +5,7 @@
 import FinniversKit
 
 extension FavoriteAdViewModel {
-    static func deletedAd(addedToFolderDate: Date, ribbonViewModel: RibbonViewModel?) -> FavoriteAdViewModel {
+    static func deletedAd(addedToFolderDate: Date, statusBadge: StatusBadge?) -> FavoriteAdViewModel {
         self.init(
             addressText: nil,
             titleText: "Annonsen er slettet",
@@ -14,7 +14,7 @@ extension FavoriteAdViewModel {
             descriptionSecondaryText: nil,
             descriptionTertiaryText: nil,
             imagePath: nil,
-            ribbonViewModel: ribbonViewModel,
+            statusBadge: statusBadge,
             sortingDetailText: nil,
             addedToFolderDate: addedToFolderDate,
             lastUpdated: nil,
@@ -29,7 +29,7 @@ struct FavoriteAdsFactory {
             guard let title = title else {
                 return FavoriteAdViewModel.deletedAd(
                     addedToFolderDate: addedToFolderDates[index],
-                    ribbonViewModel: ribbonViewModels[index]
+                    statusBadge: statusBadges[index]
                 )
             }
             return FavoriteAdViewModel(
@@ -40,11 +40,43 @@ struct FavoriteAdsFactory {
                 descriptionSecondaryText: secondaryDescriptions[index],
                 descriptionTertiaryText: tertiaryDescriptions[index],
                 imagePath: imagePaths[index],
-                ribbonViewModel: ribbonViewModels[index],
+                statusBadge: statusBadges[index],
                 sortingDetailText: sortingDetails[index],
                 addedToFolderDate: addedToFolderDates[index],
                 lastUpdated: nil,
                 comment: comments[index]
+            )
+        }
+    }
+
+    static func createStatusBadgeExamples() -> [FavoriteAdViewModel] {
+        let examples: [FavoriteAdViewModel.StatusBadge] = [
+            .init(text: "Solgt", variant: .price),
+            .init(text: "Gitt bort", variant: .price),
+            .init(text: "Utleid", variant: .price),
+            .init(text: "Kjøpt", variant: .price),
+            .init(text: "Aktiv", variant: .success),
+            .init(text: "Utløpt", variant: .warning),
+            .init(text: "Deaktivert", variant: .disabled),
+            .init(text: "Avvist", variant: .negative),
+            .init(text: "Til behandling", variant: .sponsored),
+            .init(text: "Utkast", variant: .neutral),
+        ]
+
+        return examples.map { statusBadge in
+            FavoriteAdViewModel(
+                addressText: "Oslo",
+                titleText: "Badge variant: \(statusBadge.variant.rawValue)",
+                titleColor: .text,
+                descriptionPrimaryText: "1 250 kr",
+                descriptionSecondaryText: nil,
+                descriptionTertiaryText: nil,
+                imagePath: nil,
+                statusBadge: statusBadge,
+                sortingDetailText: nil,
+                addedToFolderDate: Date(timeIntervalSince1970: 1564653600),
+                lastUpdated: nil,
+                comment: nil
             )
         }
     }
@@ -161,17 +193,17 @@ struct FavoriteAdsFactory {
         ]
     }
 
-    private static var ribbonViewModels: [RibbonViewModel?] {
+    private static var statusBadges: [FavoriteAdViewModel.StatusBadge?] {
         [
-            RibbonViewModel(style: .success, title: "Aktiv"),
-            RibbonViewModel(style: .error, title: "Slettet"),
-            RibbonViewModel(style: .error, title: "Slettet"),
-            RibbonViewModel(style: .warning, title: "Solgt"),
-            RibbonViewModel(style: .disabled, title: "Frist utløpt"),
-            RibbonViewModel(style: .success, title: "Aktiv"),
-            RibbonViewModel(style: .disabled, title: "Deaktivert"),
+            .init(text: "Aktiv", variant: .success),
+            .init(text: "Slettet", variant: .negative),
+            .init(text: "Slettet", variant: .negative),
+            .init(text: "Solgt", variant: .warning),
+            .init(text: "Frist utløpt", variant: .disabled),
+            .init(text: "Aktiv", variant: .success),
+            .init(text: "Deaktivert", variant: .disabled),
             nil,
-            RibbonViewModel(style: .warning, title: "Solgt"),
+            .init(text: "Solgt", variant: .warning),
         ]
     }
 

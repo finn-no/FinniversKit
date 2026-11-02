@@ -9,7 +9,7 @@ class FavoriteAdCellDemoView: UIView, Demoable {
 
     var dismissKind: DismissKind { .button }
 
-    private let viewModels = FavoriteAdsFactory.create()
+    private let viewModels: [FavoriteAdViewModel]
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(withAutoLayout: true)
@@ -20,8 +20,9 @@ class FavoriteAdCellDemoView: UIView, Demoable {
         return tableView
     }()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(viewModels: [FavoriteAdViewModel] = FavoriteAdsFactory.create()) {
+        self.viewModels = viewModels
+        super.init(frame: .zero)
         setup()
     }
 

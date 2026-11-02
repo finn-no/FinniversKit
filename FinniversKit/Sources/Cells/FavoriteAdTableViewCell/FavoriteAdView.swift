@@ -129,8 +129,8 @@ final class FavoriteAdView: UIView {
 
         configureCommentView()
 
-        if let ribbonViewModel = viewModel.ribbonViewModel {
-            updateStatusBadge(from: ribbonViewModel)
+        if let statusBadge = viewModel.statusBadge {
+            updateStatusBadge(statusBadge)
             statusBadgeView.isHidden = false
         } else {
             statusBadgeView.isHidden = true
@@ -195,8 +195,8 @@ final class FavoriteAdView: UIView {
         remoteImageView.backgroundColor = remoteImageView.image == nil ? loadingColor : .clear
         commentView.backgroundColor = .clear
 
-        if let ribbonViewModel = viewModel?.ribbonViewModel {
-            updateStatusBadge(from: ribbonViewModel)
+        if let statusBadge = viewModel?.statusBadge {
+            updateStatusBadge(statusBadge)
         }
     }
 
@@ -284,13 +284,13 @@ final class FavoriteAdView: UIView {
         commentView.configuration = commentConfiguration(title: title, text: text)
     }
 
-    private func updateStatusBadge(from ribbonViewModel: RibbonViewModel) {
+    private func updateStatusBadge(_ statusBadge: FavoriteAdViewModel.StatusBadge) {
         statusBadgeView.configuration = statusBadgeConfiguration(
-            text: ribbonViewModel.title,
-            variant: Warp.BadgeVariant(ribbonStyle: ribbonViewModel.style)
+            text: statusBadge.text,
+            variant: statusBadge.variant
         )
         statusBadgeView.invalidateIntrinsicContentSize()
-        statusBadgeView.accessibilityLabel = ribbonViewModel.title
+        statusBadgeView.accessibilityLabel = statusBadge.text
     }
 
     private func hostingContentView<Content: View>(
@@ -359,18 +359,5 @@ private struct StatusBadgeView: View {
 
     var body: some View {
         Warp.Badge(text: text, variant: variant)
-    }
-}
-
-private extension Warp.BadgeVariant {
-    init(ribbonStyle: RibbonView.Style) {
-        switch ribbonStyle {
-        case .default: self = .neutral
-        case .success: self = .success
-        case .warning: self = .warning
-        case .error: self = .negative
-        case .disabled: self = .disabled
-        case .sponsored: self = .sponsored
-        }
     }
 }

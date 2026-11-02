@@ -110,6 +110,7 @@
 		46E77441242CEF0A008A5E93 /* FontDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77361242CEF09008A5E93 /* FontDemoView.swift */; };
 		46E77443242CEF0A008A5E93 /* RemoteImageCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77366242CEF09008A5E93 /* RemoteImageCellDemoView.swift */; };
 		46E77444242CEF0A008A5E93 /* FavoriteAdCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77368242CEF09008A5E93 /* FavoriteAdCellDemoView.swift */; };
+		C1F2A0012F00000100000001 /* FavoriteAdStatusBadgesDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F2A0012F00000100000002 /* FavoriteAdStatusBadgesDemoView.swift */; };
 		46E77445242CEF0A008A5E93 /* BasicCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7736A242CEF09008A5E93 /* BasicCellDemoView.swift */; };
 		46E77446242CEF0A008A5E93 /* BasicCellVariationsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E7736B242CEF09008A5E93 /* BasicCellVariationsDemoView.swift */; };
 		46E7744A242CEF0A008A5E93 /* IconTitleCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E77371242CEF09008A5E93 /* IconTitleCellDemoView.swift */; };
@@ -319,6 +320,7 @@
 		46E77361242CEF09008A5E93 /* FontDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontDemoView.swift; sourceTree = "<group>"; };
 		46E77366242CEF09008A5E93 /* RemoteImageCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImageCellDemoView.swift; sourceTree = "<group>"; };
 		46E77368242CEF09008A5E93 /* FavoriteAdCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdCellDemoView.swift; sourceTree = "<group>"; };
+		C1F2A0012F00000100000002 /* FavoriteAdStatusBadgesDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdStatusBadgesDemoView.swift; sourceTree = "<group>"; };
 		46E7736A242CEF09008A5E93 /* BasicCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCellDemoView.swift; sourceTree = "<group>"; };
 		46E7736B242CEF09008A5E93 /* BasicCellVariationsDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCellVariationsDemoView.swift; sourceTree = "<group>"; };
 		46E77371242CEF09008A5E93 /* IconTitleCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconTitleCellDemoView.swift; sourceTree = "<group>"; };
@@ -1247,6 +1249,7 @@
 			isa = PBXGroup;
 			children = (
 				46E77368242CEF09008A5E93 /* FavoriteAdCellDemoView.swift */,
+				C1F2A0012F00000100000002 /* FavoriteAdStatusBadgesDemoView.swift */,
 			);
 			path = FavoriteAdTableViewCell;
 			sourceTree = "<group>";
@@ -1839,6 +1842,7 @@
 				46E773F2242CEF0A008A5E93 /* NativeAdvertDefaultData.swift in Sources */,
 				46E77422242CEF0A008A5E93 /* BannerTransparencyInfoDefaultData.swift in Sources */,
 				46E77444242CEF0A008A5E93 /* FavoriteAdCellDemoView.swift in Sources */,
+				C1F2A0012F00000100000001 /* FavoriteAdStatusBadgesDemoView.swift in Sources */,
 				46E7745B242CEF0A008A5E93 /* BannerAdDemoCell.swift in Sources */,
 				46AE6FC4242BADC9007BB005 /* AppDelegate.swift in Sources */,
 				B26B58342B4BFEFB000E0245 /* InfoboxSwiftUIViewController.swift in Sources */,
