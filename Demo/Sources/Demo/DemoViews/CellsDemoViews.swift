@@ -14,6 +14,7 @@ enum CellsDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
     case iconTitleCell
     case remoteImageCell
     case favoriteAdCell
+    case favoriteAdStatusBadges
     case hostingContentConfigurationCell
 
     static var groupTitle: String { "Cells" }
@@ -47,6 +48,8 @@ enum CellsDemoViews: String, CaseIterable, DemoGroup, DemoGroupItem {
             return RemoteImageCellDemoView()
         case .favoriteAdCell:
             return FavoriteAdCellDemoView()
+        case .favoriteAdStatusBadges:
+            return FavoriteAdStatusBadgesDemoView()
         case .hostingContentConfigurationCell:
             return HostingContentConfigurationCellDemoViewController()
         }

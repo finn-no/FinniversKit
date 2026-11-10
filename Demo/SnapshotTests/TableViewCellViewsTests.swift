@@ -53,6 +53,10 @@ class TableViewCellsViewTests: XCTestCase {
         snapshot(.favoriteAdCell)
     }
 
+    func testFavoriteAdStatusBadges() {
+        snapshot(.favoriteAdStatusBadges)
+    }
+
     func testHostingContentConfigurationCell() {
         snapshot(.hostingContentConfigurationCell)
     }
