@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9833A27741EC9C2BC293F9A9 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2375994A2E819B912E0F94 /* UIView+Layout.swift */; };
 		172DCF2B2AB9C71200D890C2 /* HostingContentConfigurationCellDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DCF2A2AB9C71200D890C2 /* HostingContentConfigurationCellDemoViewController.swift */; };
 		172E7504290FE28E00956AC2 /* HTMLTextDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */; };
 		1732932D29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1732932C29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift */; };
@@ -213,6 +214,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AF2375994A2E819B912E0F94 /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		172DCF2A2AB9C71200D890C2 /* HostingContentConfigurationCellDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingContentConfigurationCellDemoViewController.swift; sourceTree = "<group>"; };
 		172E7503290FE28E00956AC2 /* HTMLTextDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextDemoViewController.swift; sourceTree = "<group>"; };
 		1732932C29814F9100C68AD7 /* SwiftUILoadingIndicatorDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUILoadingIndicatorDemoView.swift; sourceTree = "<group>"; };
@@ -518,6 +520,7 @@
 			children = (
 				46E77268242CEF09008A5E93 /* UIDevice.swift */,
 				9BBC903F24FD252B0003D2D8 /* UITraitCollection+Extensions.swift */,
+				AF2375994A2E819B912E0F94 /* UIView+Layout.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1808,6 +1811,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9833A27741EC9C2BC293F9A9 /* UIView+Layout.swift in Sources */,
 				71C6AA992549D28800D78269 /* MessageUserRequiredData.swift in Sources */,
 				172DCF2B2AB9C71200D890C2 /* HostingContentConfigurationCellDemoViewController.swift in Sources */,
 				46E7744C242CEF0A008A5E93 /* HeartSubtitleCellDemoView.swift in Sources */,
