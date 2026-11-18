@@ -252,6 +252,7 @@
 		9B2D17D223E02B2900EF3B50 /* KeyValuePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D17D123E02B2900EF3B50 /* KeyValuePair.swift */; };
 		9B2D17D623E02B6900EF3B50 /* KeyValueGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D17D523E02B6900EF3B50 /* KeyValueGridView.swift */; };
 		9B93F210230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */; };
+		B7A1C0DE2E00000100000001 /* ButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A1C0DE2E00000100000002 /* ButtonTests.swift */; };
 		9B9663CB2460383900D34BA1 /* ConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9663CA2460383900D34BA1 /* ConfigTests.swift */; };
 		A13068012D00000100000003 /* FavoriteAdViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13068012D00000100000004 /* FavoriteAdViewModelTests.swift */; };
 		A13068012D00000100000001 /* FavoriteFoldersListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13068012D00000100000002 /* FavoriteFoldersListViewTests.swift */; };
@@ -686,6 +687,7 @@
 		9B2D17D123E02B2900EF3B50 /* KeyValuePair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValuePair.swift; sourceTree = "<group>"; };
 		9B2D17D523E02B6900EF3B50 /* KeyValueGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueGridView.swift; sourceTree = "<group>"; };
 		9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDirectionalEdgeInsetsExtensions.swift; sourceTree = "<group>"; };
+		B7A1C0DE2E00000100000002 /* ButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTests.swift; sourceTree = "<group>"; };
 		9B9663CA2460383900D34BA1 /* ConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigTests.swift; sourceTree = "<group>"; };
 		A13068012D00000100000004 /* FavoriteAdViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdViewModelTests.swift; sourceTree = "<group>"; };
 		A13068012D00000100000002 /* FavoriteFoldersListViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersListViewTests.swift; sourceTree = "<group>"; };
@@ -1007,6 +1009,7 @@
 				CF376C19231D455900ED2B24 /* StepSlider */,
 				14F4F1BD1FD6CEA800E9CECA /* Info.plist */,
 				9F213D8A2542DC1D6D998B43 /* Util */,
+				B7A1C0DE2E00000100000002 /* ButtonTests.swift */,
 				9B9663CA2460383900D34BA1 /* ConfigTests.swift */,
 				A13068012D00000100000004 /* FavoriteAdViewModelTests.swift */,
 				A13068012D00000100000002 /* FavoriteFoldersListViewTests.swift */,
@@ -3080,6 +3083,7 @@
 				175385B229150E7800DA57D2 /* HTMLStringUIKitStyleTranslatorTests.swift in Sources */,
 				179D06AE2906A3FA00A65E3A /* HTMLStringParserTests.swift in Sources */,
 				177A876C2914184B00F02088 /* HTMLStringSwiftUIStyleTranslatorTests.swift in Sources */,
+				B7A1C0DE2E00000100000001 /* ButtonTests.swift in Sources */,
 				9B9663CB2460383900D34BA1 /* ConfigTests.swift in Sources */,
 				A13068012D00000100000003 /* FavoriteAdViewModelTests.swift in Sources */,
 				A13068012D00000100000001 /* FavoriteFoldersListViewTests.swift in Sources */,

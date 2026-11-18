@@ -74,11 +74,7 @@ open class Button: UIButton {
     public override func setTitle(_ title: String?, for state: UIControl.State) {
         guard let title else { return }
 
-        if style == .link {
-            setAsLink(title: title)
-        } else {
-            super.setTitle(title, for: state)
-        }
+        super.setTitle(title, for: state)
 
         if state == .normal {
             accessibilityLabel = title
@@ -134,30 +130,5 @@ open class Button: UIButton {
         invalidateIntrinsicContentSize()
         setNeedsLayout()
         layoutIfNeeded()
-    }
-
-    private func setAsLink(title: String) {
-        let textRange = NSRange(location: 0, length: title.count)
-        let attributedTitle = NSMutableAttributedString(string: title)
-
-        attributedTitle.addAttribute(.foregroundColor, value: style.textColor, range: textRange)
-        let underlinedAttributedTitle = NSMutableAttributedString(string: title)
-
-        let disabledAttributedTitle = NSMutableAttributedString(string: title)
-        disabledAttributedTitle.addAttribute(
-            .foregroundColor,
-            value: style.disabledTextColor ?? .textInverted,
-            range: textRange
-        )
-
-        let underlineAttributes: [NSAttributedString.Key: Any] = [
-            .underlineStyle: NSUnderlineStyle.single.rawValue,
-            .foregroundColor: style.highlightedTextColor ?? style.textColor
-        ]
-        underlinedAttributedTitle.addAttributes(underlineAttributes, range: textRange)
-
-        super.setAttributedTitle(attributedTitle, for: .normal)
-        super.setAttributedTitle(underlinedAttributedTitle, for: .highlighted)
-        super.setAttributedTitle(disabledAttributedTitle, for: .disabled)
     }
 }
