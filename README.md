@@ -1,5 +1,8 @@
 <p align="center"><img width=100% src="https://raw.githubusercontent.com/finn-no/FinniversKit/master/GitHub/cover-v5.jpg"></p>
 
+> [!WARNING]
+> **FinniversKit is deprecated and no longer maintained.** This repository will be archived and receive no further updates, fixes or releases.
+
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![](https://img.shields.io/badge/platform-iOS-lightgrey.svg) ![](https://img.shields.io/badge/License-GPL%20v3-blue.svg)
 
